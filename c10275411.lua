@@ -41,9 +41,9 @@ function c10275411.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.HintSelection(sg)
 		end
 		Duel.BreakEffect()
+		local oc=sg:GetFirst()
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(10275411,0))
-		local mg=sg:GetFirst():GetOverlayGroup():Select(tp,1,1,nil)
-		local oc=mg:GetFirst():GetOverlayTarget()
+		local mg=oc:GetOverlayGroup():Select(tp,1,1,nil)
 		Duel.Overlay(tc,mg)
 		Duel.RaiseSingleEvent(oc,EVENT_DETACH_MATERIAL,e,0,0,0,0)
 	end
