@@ -48,7 +48,9 @@ end
 function c27552504.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToGrave,tp,LOCATION_DECK,0,1,1,nil)
-	Duel.SendtoGrave(g,REASON_EFFECT)
+	if g:GetCount()>0 then
+		Duel.SendtoGrave(g,REASON_EFFECT)
+	end
 end
 function c27552504.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
