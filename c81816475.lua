@@ -26,6 +26,8 @@ function c81816475.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c81816475.operation(e,tp,eg,ep,ev,re,r,rp)
 	local sg=Duel.GetMatchingGroup(c81816475.cfilter,tp,0,LOCATION_MZONE,nil)
+	local g2=Duel.GetMatchingGroup(c81816475.filter,tp,LOCATION_MZONE,0,nil)
+	if sg:GetCount()==0 or g2:GetCount()==0 then return end
 	if sg:GetCount()>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,532)
 		sg=sg:Select(tp,1,1,nil)
@@ -33,8 +35,6 @@ function c81816475.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 	local oc=sg:GetFirst()
 	local g1=oc:GetOverlayGroup()
-	local g2=Duel.GetMatchingGroup(c81816475.filter,tp,LOCATION_MZONE,0,nil)
-	if g1:GetCount()==0 or g2:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(81816475,2))
 	local mg=g1:Select(tp,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(81816475,1))
