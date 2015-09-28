@@ -56,11 +56,15 @@ function c70913714.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e4:SetCategory(CATEGORY_CONTROL)
 		e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 		e4:SetCode(EVENT_LEAVE_FIELD)
+		e4:SetCondition(c70913714.ctcon)
 		e4:SetTarget(c70913714.cttg)
 		e4:SetOperation(c70913714.ctop)
 		e4:SetReset(RESET_EVENT+0x1020000)
 		c:RegisterEffect(e4)
 	end
+end
+function c70913714.ctcon(e,tp,eg,ep,ev,re,r,rp)
+	return not e:GetHandler():IsReason(REASON_LOST_TARGET)
 end
 function c70913714.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
