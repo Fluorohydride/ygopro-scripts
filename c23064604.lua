@@ -81,7 +81,8 @@ function c23064604.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SendtoGrave(tg1,REASON_EFFECT)~=0 and tg1:IsExists(Card.IsLocation,2,nil,LOCATION_GRAVE) then
 		local sg=nil
 		local tg=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_HAND,nil)
-		if tg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(23064604,3)) then
+		local tg1=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE,nil)
+		if tg:GetCount()>0 and (tg1:GetCount()==0 or Duel.SelectYesNo(tp,aux.Stringid(23064604,3))) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 			sg=tg:RandomSelect(tp,1)
 		else
