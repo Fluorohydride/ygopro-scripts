@@ -48,7 +48,7 @@ function c17016362.mtcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c17016362.mtfilter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsDestructable() and not c:IsHasEffect(EFFECT_EXTRA_ATTACK)
+	return c:IsPosition(POS_FACEUP_ATTACK) and Duel.IsAbleToEnterBP() and not c:IsHasEffect(EFFECT_EXTRA_ATTACK)
 end
 function c17016362.mttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local turnp=Duel.GetTurnPlayer()
@@ -80,22 +80,17 @@ function c17016362.mtop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetLabelObject(tc)
 		e1:SetCondition(c17016362.descon)
 		e1:SetOperation(c17016362.desop)
+		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
 	end
 end
 function c17016362.descon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	if tc:GetFlagEffectLabel(17016362)==e:GetLabel() then
-		return true
-	else
-		e:Reset()
-		return false
-	end
+	return tc:GetFlagEffectLabel(17016362)==e:GetLabel()
 end
 function c17016362.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	Duel.Destroy(tc,REASON_EFFECT)
-	e:Reset()
 end
 function c17016362.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
