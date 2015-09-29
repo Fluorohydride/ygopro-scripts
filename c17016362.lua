@@ -58,28 +58,44 @@ function c17016362.mttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c17016362.mtfilter,turnp,LOCATION_MZONE,0,1,1,e:GetHandler())
 end
 function c17016362.mtop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
+	local fid=c:GetFieldID()
 	if tc:IsRelateToEffect(e) then
-		local e1=Effect.CreateEffect(e:GetHandler())
+		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EXTRA_ATTACK)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetValue(1)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+RESET_END)
+		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
-		local e2=Effect.CreateEffect(e:GetHandler())
-		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e2:SetCode(EVENT_PHASE+PHASE_BATTLE)
-		e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-		e2:SetRange(LOCATION_MZONE)
-		e2:SetCountLimit(1)
-		e2:SetOperation(c17016362.desop)
-		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+RESET_END)
-		tc:RegisterEffect(e2)
+		tc:RegisterFlagEffect(17016362,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1,fid)
+		--destroy
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_PHASE+PHASE_BATTLE)
+		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+		e1:SetCountLimit(1)
+		e1:SetLabel(fid)
+		e1:SetLabelObject(tc)
+		e1:SetCondition(c17016362.descon)
+		e1:SetOperation(c17016362.desop)
+		Duel.RegisterEffect(e1,tp)
+	end
+end
+function c17016362.descon(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	if tc:GetFlagEffectLabel(17016362)==e:GetLabel() then
+		return true
+	else
+		e:Reset()
+		return false
 	end
 end
 function c17016362.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+	local tc=e:GetLabelObject()
+	Duel.Destroy(tc,REASON_EFFECT)
+	e:Reset()
 end
 function c17016362.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
