@@ -22,7 +22,7 @@ function c6691855.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c6691855.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c6691855.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectTarget(tp,c6691855.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	Duel.SelectTarget(tp,c6691855.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
 end
 function c6691855.operation(e,tp,eg,ep,ev,re,r,rp)
@@ -46,6 +46,7 @@ function c6691855.operation(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetRange(LOCATION_SZONE)
 		e2:SetCondition(c6691855.damcon)
 		e2:SetOperation(c6691855.damop)
+		e2:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e2)
 		--Equip limit
 		local e3=Effect.CreateEffect(c)
@@ -57,7 +58,7 @@ function c6691855.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e3)
 	end
 end
-function c6691855.damcon(e)
+function c6691855.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local eq=e:GetHandler():GetEquipTarget()
 	return eq:IsRelateToBattle() and eq:IsDefencePos()
 end
