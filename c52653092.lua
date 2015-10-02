@@ -89,25 +89,14 @@ function c52653092.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og)
 		Duel.DiscardHand(tp,c52653092.cfilter,1,1,REASON_COST+REASON_DISCARD,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,aux.XyzAlterFilter,tp,LOCATION_MZONE,0,1,1,nil,c52653092.ovfilter,c)
-		local g2=g:GetFirst():GetOverlayGroup()
-		if g2:GetCount()~=0 then
-			Duel.Overlay(c,g2)
-		end
 		c:SetMaterial(g)
-		Duel.Overlay(c,g)
+		Duel.Overlay(c,g,true)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g1=mg:FilterSelect(tp,c52653092.xyzfilter1,1,1,nil,mg)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g2=mg:FilterSelect(tp,c52653092.xyzfilter2,2,2,g1:GetFirst(),g1:GetFirst():GetRank())
 		g1:Merge(g2)
-		local sg=Group.CreateGroup()
-		local tc=g1:GetFirst()
-		while tc do
-			sg:Merge(tc:GetOverlayGroup())
-			tc=g1:GetNext()
-		end
-		Duel.SendtoGrave(sg,REASON_RULE)
 		c:SetMaterial(g1)
 		Duel.Overlay(c,g1)
 	end

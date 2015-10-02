@@ -61,13 +61,6 @@ function c23187256.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local g2=mg:FilterSelect(tp,c23187256.xyzfilter2,ct,63,g1:GetFirst(),g1:GetFirst():GetRank())
 	g1:Merge(g2)
-	local sg=Group.CreateGroup()
-	local tc=g1:GetFirst()
-	while tc do
-		sg:Merge(tc:GetOverlayGroup())
-		tc=g1:GetNext()
-	end
-	Duel.SendtoGrave(sg,REASON_RULE)
 	c:SetMaterial(g1)
 	Duel.Overlay(c,g1)
 end

@@ -242,26 +242,10 @@ end
 function Auxiliary.XyzOperation(f,lv,minc,maxc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,og)
 				if og then
-					local sg=Group.CreateGroup()
-					local tc=og:GetFirst()
-					while tc do
-						local sg1=tc:GetOverlayGroup()
-						sg:Merge(sg1)
-						tc=og:GetNext()
-					end
-					Duel.SendtoGrave(sg,REASON_RULE)
 					c:SetMaterial(og)
 					Duel.Overlay(c,og)
 				else
 					local mg=e:GetLabelObject()
-					local sg=Group.CreateGroup()
-					local tc=mg:GetFirst()
-					while tc do
-						local sg1=tc:GetOverlayGroup()
-						sg:Merge(sg1)
-						tc=mg:GetNext()
-					end
-					Duel.SendtoGrave(sg,REASON_RULE)
 					c:SetMaterial(mg)
 					Duel.Overlay(c,mg)
 					mg:DeleteGroup()
@@ -312,14 +296,6 @@ end
 function Auxiliary.XyzOperation2(f,lv,minc,maxc,alterf,desc,op)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,og)
 				if og then
-					local sg=Group.CreateGroup()
-					local tc=og:GetFirst()
-					while tc do
-						local sg1=tc:GetOverlayGroup()
-						sg:Merge(sg1)
-						tc=og:GetNext()
-					end
-					Duel.SendtoGrave(sg,REASON_RULE)
 					c:SetMaterial(og)
 					Duel.Overlay(c,og)
 				else
@@ -327,22 +303,10 @@ function Auxiliary.XyzOperation2(f,lv,minc,maxc,alterf,desc,op)
 						if op then op(e,tp,1) end
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 						local mg=Duel.SelectMatchingCard(tp,Auxiliary.XyzAlterFilter,tp,LOCATION_MZONE,0,1,1,nil,alterf,c)
-						local mg2=mg:GetFirst():GetOverlayGroup()
-						if mg2:GetCount()~=0 then
-							Duel.Overlay(c,mg2)
-						end
 						c:SetMaterial(mg)
-						Duel.Overlay(c,mg)
+						Duel.Overlay(c,mg,true)
 					else
 						local mg=e:GetLabelObject()
-						local sg=Group.CreateGroup()
-						local tc=mg:GetFirst()
-						while tc do
-							local sg1=tc:GetOverlayGroup()
-							sg:Merge(sg1)
-							tc=mg:GetNext()
-						end
-						Duel.SendtoGrave(sg,REASON_RULE)
 						c:SetMaterial(mg)
 						Duel.Overlay(c,mg)
 						mg:DeleteGroup()

@@ -73,14 +73,8 @@ function c65305468.xyzcon(e,c,og)
 end
 function c65305468.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og)
 	local g=nil
-	local sg=Group.CreateGroup()
 	if og then
 		g=og
-		local tc=og:GetFirst()
-		while tc do
-			sg:Merge(tc:GetOverlayGroup())
-			tc=og:GetNext()
-		end
 	else
 		local mg=Duel.GetMatchingGroup(c65305468.mfilter,tp,LOCATION_MZONE,0,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
@@ -90,10 +84,7 @@ function c65305468.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og)
 		local g2=mg:FilterSelect(tp,c65305468.xyzfilter2,1,1,tc1,tc1:GetRank())
 		local tc2=g2:GetFirst()
 		g:Merge(g2)
-		sg:Merge(tc1:GetOverlayGroup())
-		sg:Merge(tc2:GetOverlayGroup())
 	end
-	Duel.SendtoGrave(sg,REASON_RULE)
 	c:SetMaterial(g)
 	Duel.Overlay(c,g)
 end
