@@ -4,6 +4,9 @@ function c70043345.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
+	e1:SetHintTiming(TIMING_DAMAGE_STEP)
+	e1:SetTarget(c70043345.target)
 	c:RegisterEffect(e1)
 	--remove
 	local e2=Effect.CreateEffect(c)
@@ -27,20 +30,34 @@ function c70043345.initial_effect(c)
 	e3:SetOperation(c70043345.thop)
 	c:RegisterEffect(e3)
 end
+function c70043345.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	local b1=Duel.GetCurrentPhase()~=PHASE_DAMAGE
+	local b2=Duel.CheckEvent(EVENT_BATTLE_START) and c70043345.rmcon(e,tp,eg,ep,ev,re,r,rp) and c70043345.rmtg(e,tp,eg,ep,ev,re,r,rp,0)
+	if chk==0 then return b1 or b2 end
+	if b2 then
+		e:SetCategory(CATEGORY_REMOVE)
+		e:SetOperation(c70043345.rmop)
+		c70043345.rmtg(e,tp,eg,ep,ev,re,r,rp,1)
+	else
+		e:SetCategory(0)
+		e:SetOperation(nil)
+	end
+end
 function c70043345.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
 	local bc=Duel.GetAttackTarget()
 	if not bc then return false end
 	if tc:IsControler(1-tp) then tc,bc=bc,tc end
-	if tc:IsSetCard(0xb2) then
+	if tc:IsFaceup() and tc:IsSetCard(0xb2) then
 		e:SetLabelObject(bc)
 		return true
 	else return false end
 end
 function c70043345.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=e:GetLabelObject()
-	if chk==0 then return bc:IsAbleToRemove() end
+	if chk==0 then return bc:IsAbleToRemove() and Duel.GetFlagEffect(tp,70043345)==0 end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,bc,1,0,0)
+	Duel.RegisterFlagEffect(tp,70043345,RESET_PHASE+RESET_END,0,1)
 end
 function c70043345.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
