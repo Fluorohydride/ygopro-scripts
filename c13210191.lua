@@ -26,6 +26,7 @@ function c13210191.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g1=Duel.GetMatchingGroup(c13210191.filter,tp,LOCATION_ONFIELD,0,e:GetHandler())
 	local ct1=Duel.Destroy(g1,REASON_EFFECT)
 	if ct1==0 then return end
+	Duel.BreakEffect()
 	local g2=Duel.GetMatchingGroup(c13210191.filter,tp,0,LOCATION_ONFIELD,nil)
 	if g2:GetCount()<=ct1 then
 		Duel.Destroy(g2,REASON_EFFECT)
