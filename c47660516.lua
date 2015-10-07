@@ -20,6 +20,9 @@ function c47660516.filter2(c,e,tp,mc,rk,rc,code)
 	return c:GetRank()==rk and c:IsRace(rc) and (c:IsSetCard(0x1048) or c:IsSetCard(0x1073)) and mc:IsCanBeXyzMaterial(c)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
 end
+function c47660516.cfilter(c)
+	return c:GetOverlayCount()>0
+end
 function c47660516.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c47660516.filter1(chkc,e,tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
@@ -46,10 +49,15 @@ function c47660516.activate(e,tp,eg,ep,ev,re,r,rp)
 		sc:CompleteProcedure()
 		if Duel.GetOverlayCount(tp,0,1)~=0 then
 			Duel.BreakEffect()
-			local g1=Duel.GetOverlayGroup(tp,0,1)
+			local sg=Duel.GetMatchingGroup(c47660516.cfilter,tp,0,LOCATION_MZONE,nil)
+			if sg:GetCount()>1 then
+				Duel.Hint(HINT_SELECTMSG,tp,532)
+				sg=sg:Select(tp,1,1,nil)
+				Duel.HintSelection(sg)
+			end
+			local oc=sg:GetFirst()
 			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(47660516,0))
-			local mg2=g1:Select(tp,1,1,nil)
-			local oc=mg2:GetFirst():GetOverlayTarget()
+			local mg2=oc:GetOverlayGroup():Select(tp,1,1,nil)
 			Duel.Overlay(sc,mg2)
 			Duel.RaiseSingleEvent(oc,EVENT_DETACH_MATERIAL,e,0,0,0,0)
 		end

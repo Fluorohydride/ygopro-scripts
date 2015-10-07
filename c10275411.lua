@@ -14,7 +14,7 @@ function c10275411.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c10275411.cfilter(c)
-	return c:IsFaceup() and c:GetOverlayCount()>0
+	return c:GetOverlayCount()>0
 end
 function c10275411.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c10275411.cfilter,tp,0,LOCATION_MZONE,1,nil)
@@ -33,12 +33,17 @@ end
 function c10275411.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		local g1=Duel.GetOverlayGroup(tp,0,1)
-		if g1:GetCount()==0 then return end
+		local sg=Duel.GetMatchingGroup(c10275411.cfilter,tp,0,LOCATION_MZONE,nil)
+		if sg:GetCount()==0 then return end
+		if sg:GetCount()>1 then
+			Duel.Hint(HINT_SELECTMSG,tp,532)
+			sg=sg:Select(tp,1,1,nil)
+			Duel.HintSelection(sg)
+		end
 		Duel.BreakEffect()
+		local oc=sg:GetFirst()
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(10275411,0))
-		local mg=g1:Select(tp,1,1,nil)
-		local oc=mg:GetFirst():GetOverlayTarget()
+		local mg=oc:GetOverlayGroup():Select(tp,1,1,nil)
 		Duel.Overlay(tc,mg)
 		Duel.RaiseSingleEvent(oc,EVENT_DETACH_MATERIAL,e,0,0,0,0)
 	end
