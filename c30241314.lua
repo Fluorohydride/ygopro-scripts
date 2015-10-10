@@ -5,7 +5,6 @@ function c30241314.initial_effect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetHintTiming(0,TIMING_DRAW_PHASE)
 	e1:SetOperation(c30241314.activate)
 	c:RegisterEffect(e1)
 	--remove

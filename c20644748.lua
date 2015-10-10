@@ -5,7 +5,6 @@ function c20644748.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCondition(c20644748.condition)
-	e1:SetHintTiming(0,TIMING_DRAW_PHASE)
 	c:RegisterEffect(e1)
 	--adjust
 	local e2=Effect.CreateEffect(c)
