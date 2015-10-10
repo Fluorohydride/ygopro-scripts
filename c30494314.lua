@@ -25,7 +25,10 @@ function c30494314.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c30494314.filter,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function c30494314.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.RemoveOverlayCard(tp,1,1,1,1,REASON_EFFECT) then return end
+	Duel.Hint(HINT_SELECTMSG,tp,532)
+	local sg=Duel.SelectMatchingCard(tp,Card.CheckRemoveOverlayCard,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,tp,1,REASON_EFFECT)
+	if sg:GetCount()==0 then return end
+	sg:GetFirst():RemoveOverlayCard(tp,1,1,REASON_EFFECT)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())
