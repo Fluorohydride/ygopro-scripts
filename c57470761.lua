@@ -100,12 +100,12 @@ end
 function c57470761.atkcon(e)
 	return e:GetHandler():GetEquipTarget():IsDirectAttacked()
 end
-function c57470761.regop(e,tp,eg,ep,ev,re,r,rp)
+function c57470761.regop(e,tp,eg,ep,ev,re,r,rp,c)
 	local c=e:GetHandler()
 	local ec=c:GetEquipTarget()
 	if not ec:IsRelateToBattle() then return end
 	local bc=ec:GetBattleTarget()
-	if bc and bc:IsControler(1-tp) then
+	if bc and bc:IsControler(1-tp) and Duel.GetAttackTarget()~=ec then
 		c:RegisterFlagEffect(57470761,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 	end
 end
