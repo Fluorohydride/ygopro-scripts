@@ -81,17 +81,43 @@ function c23064604.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SendtoGrave(tg1,REASON_EFFECT)~=0 and tg1:IsExists(Card.IsLocation,2,nil,LOCATION_GRAVE) then
 		local sg=nil
 		local hg=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_HAND,nil)
-		local fg=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE,nil)
-		if hg:GetCount()>0 and (fg:GetCount()==0 or Duel.SelectYesNo(tp,aux.Stringid(23064604,3))) then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+		local b1=Duel.IsExistingMatchingCard(Card.IsAbleToDeck,tp,0,LOCATION_HAND,1,nil)
+		local b2=Duel.IsExistingMatchingCard(Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD,1,nil)
+		local b3=Duel.IsExistingMatchingCard(Card.IsAbleToDeck,tp,0,LOCATION_GRAVE,1,nil)
+		local op=0
+		if not b1 and not b2 and not b3 then return end
+		if b1 then
+			if b2 and b3 then
+				op=Duel.SelectOption(tp,aux.Stringid(23064604,3),aux.Stringid(23064604,4),aux.Stringid(23064604,5))
+			elseif b2 and not b3 then
+				op=Duel.SelectOption(tp,aux.Stringid(23064604,3),aux.Stringid(23064604,4))
+			elseif not b2 and b3 then
+				op=Duel.SelectOption(tp,aux.Stringid(23064604,3),aux.Stringid(23064604,5))
+				if op=1 then op=2 end
+			else
+				op=0
+			end
+		else
+			if b2 and b3 then
+				op=Duel.SelectOption(aux.Stringid(23064604,4),aux.Stringid(23064604,5))+1
+			elseif b2 and not b3 then
+				op=1
+			else
+				op=2
+			end
+		end
+		if op==0 then
 			sg=hg:RandomSelect(tp,1)
+		else if op==1 then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+			sg=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD,1,1,nil)
+			Duel.HintSelection(sg)
 		else
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-			sg=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE,1,1,nil)
+			sg=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,0,LOCATION_GRAVE,1,1,nil)
+			Duel.HintSelection(sg)
 		end
-		if sg:GetCount()>0 then
-			Duel.SendtoDeck(sg,nil,2,REASON_EFFECT)
-		end
+		Duel.SendtoDeck(sg,nil,2,REASON_EFFECT)
 	end
 end
 function c23064604.thcon(e,tp,eg,ep,ev,re,r,rp)
