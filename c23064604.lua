@@ -93,7 +93,7 @@ function c23064604.tdop(e,tp,eg,ep,ev,re,r,rp)
 				op=Duel.SelectOption(tp,aux.Stringid(23064604,3),aux.Stringid(23064604,4))
 			elseif not b2 and b3 then
 				op=Duel.SelectOption(tp,aux.Stringid(23064604,3),aux.Stringid(23064604,5))
-				if op=1 then op=2 end
+				if op==1 then op=2 end
 			else
 				op=0
 			end
@@ -108,7 +108,7 @@ function c23064604.tdop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		if op==0 then
 			sg=hg:RandomSelect(tp,1)
-		else if op==1 then
+		elseif op==1 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 			sg=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD,1,1,nil)
 			Duel.HintSelection(sg)
