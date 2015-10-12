@@ -48,7 +48,7 @@ function c16691074.atkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c16691074.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_ONFIELD) and bit.band(c:GetSummonType(),SUMMON_TYPE_XYZ)==SUMMON_TYPE_XYZ
+	return c:IsPreviousLocation(LOCATION_MZONE) and bit.band(c:GetSummonType(),SUMMON_TYPE_XYZ)==SUMMON_TYPE_XYZ
 end
 function c16691074.spfilter2(c,e,tp)
 	return c:IsSetCard(0x99) and not c:IsCode(16691074) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
