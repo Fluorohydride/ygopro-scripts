@@ -17,13 +17,11 @@ function c84171830.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atk
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD)
-	e3:SetCode(EFFECT_UPDATE_ATTACK)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e3:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
 	e3:SetRange(LOCATION_FZONE)
-	e3:SetTargetRange(LOCATION_MZONE,0)
-	e3:SetTarget(c84171830.atktg)
 	e3:SetCondition(c84171830.atkcon)
-	e3:SetValue(800)
+	e3:SetOperation(c84171830.atkop)
 	c:RegisterEffect(e3)
 	--lv
 	local e4=Effect.CreateEffect(c)
@@ -47,11 +45,24 @@ function c84171830.discon(e)
 		and Duel.IsExistingMatchingCard(c84171830.cfilter,tp,LOCATION_MZONE,0,1,nil)
 		and not Duel.IsExistingMatchingCard(c84171830.cfilter,tp,0,LOCATION_MZONE,1,nil)
 end
-function c84171830.atktg(e,c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE and Duel.GetAttacker()==c
+function c84171830.atkcon(e,tp,eg,ep,ev,re,r,rp)
+	local c=Duel.GetAttacker()
+	local atg=Duel.GetAttackTarget()
+	return c:IsControler(tp) and bit.band(c:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE and atg and atg:IsControler(1-tp)
 end
-function c84171830.atkcon(e)
-	return Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL and Duel.GetAttackTarget()~=nil
+function c84171830.atktg(e,c)
+	return Duel.GetAttacker()==c
+end
+function c84171830.atkop(e,tp,eg,ep,ev,re,r,rp)
+	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_UPDATE_ATTACK)
+	e1:SetRange(LOCATION_FZONE)
+	e1:SetTargetRange(LOCATION_MZONE,0)
+	e1:SetTarget(c84171830.atktg)
+	e1:SetValue(800)
+	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE_CAL)
+	e:GetHandler():RegisterEffect(e1)
 end
 function c84171830.filter(c)
 	return c:GetAttack()==2800 and c:GetDefence()==1000
