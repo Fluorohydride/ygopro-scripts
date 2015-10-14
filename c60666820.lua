@@ -38,7 +38,7 @@ function c60666820.filter(c)
 	return c:IsFaceup() and c:IsDestructable()
 end
 function c60666820.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c60666820.filter(chkc) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.IsExistingTarget(c60666820.filter,tp,LOCATION_MZONE,0,1,nil) end
