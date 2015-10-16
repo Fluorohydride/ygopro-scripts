@@ -35,7 +35,7 @@ function c20765952.filter(c)
 end
 function c20765952.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c20765952.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c20765952.filter(chkc) and chkc~=c end
 	if chk==0 then return Duel.IsExistingTarget(c20765952.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c20765952.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,c)
