@@ -36,7 +36,7 @@ end
 function c11501629.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	local ct=eg:FilterCount(c11501629.ctfilter,nil,tp)
 	e:SetLabel(ct)
-	return ct>0
+	return ct>0 and e:GetHandler():IsCanAddCounter(0x2d,ct)
 end
 function c11501629.ctop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x2d,e:GetLabel())
