@@ -31,7 +31,7 @@ function c2403771.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,0,LOCATION_DECK)
 end
 function c2403771.thop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_DECK,0,nil,TYPE_EQUIP)
+	local g=Duel.GetMatchingGroup(c2403771.thfilter,tp,LOCATION_DECK,0,nil)
 	if g:GetCount()>=3 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,3,3,nil)
@@ -40,8 +40,7 @@ function c2403771.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
 		local tg=sg:Select(1-tp,1,1,nil)
 		local tc=tg:GetFirst()
-		if tc:IsAbleToHand() then Duel.SendtoHand(tc,nil,REASON_EFFECT)
-		else Duel.SendtoGrave(tc,REASON_EFFECT) end
+		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
 function c2403771.repfilter(c)

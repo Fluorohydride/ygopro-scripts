@@ -44,7 +44,7 @@ end
 function c27564031.operation(e,tp,eg,ep,ev,re,r,rp)
 	_replace_count=_replace_count+1
 	if _replace_count>_replace_max or not e:GetHandler():IsRelateToEffect(e) then return end
-	local g=Duel.GetMatchingGroup(Card.IsSetCard,tp,LOCATION_DECK,0,nil,0x23)
+	local g=Duel.GetMatchingGroup(c27564031.filter,tp,LOCATION_DECK,0,nil)
 	if g:GetCount()>=3 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,3,3,nil)
@@ -53,7 +53,6 @@ function c27564031.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
 		local tg=sg:Select(1-tp,1,1,nil)
 		local tc=tg:GetFirst()
-		if tc:IsAbleToHand() then Duel.SendtoHand(tc,nil,REASON_EFFECT)
-		else Duel.SendtoGrave(tc,REASON_EFFECT) end
+		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

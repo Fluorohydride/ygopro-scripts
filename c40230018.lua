@@ -37,21 +37,18 @@ end
 function c40230018.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and not re:GetHandler():IsSetCard(0x106e)
 end
-function c40230018.filter1(c)
+function c40230018.filter(c)
 	return c:IsSetCard(0x106e) and c:IsType(TYPE_SPELL) and c:IsAbleToHand()
-end
-function c40230018.filter2(c)
-	return c:IsSetCard(0x106e) and c:IsType(TYPE_SPELL)
 end
 function c40230018.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local g=Duel.GetMatchingGroup(c40230018.filter1,tp,LOCATION_DECK,0,nil)
+		local g=Duel.GetMatchingGroup(c40230018.filter,tp,LOCATION_DECK,0,nil)
 		return g:GetClassCount(Card.GetCode)>=3
 	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,0,LOCATION_DECK)
 end
 function c40230018.operation(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c40230018.filter2,tp,LOCATION_DECK,0,nil)
+	local g=Duel.GetMatchingGroup(c40230018.filter,tp,LOCATION_DECK,0,nil)
 	if g:GetClassCount(Card.GetCode)>=3 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 		local sg1=g:Select(tp,1,1,nil)
@@ -68,10 +65,6 @@ function c40230018.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
 		local tg=sg1:Select(1-tp,1,1,nil)
 		local tc=tg:GetFirst()
-		if tc:IsAbleToHand() then
-			Duel.SendtoHand(tc,nil,REASON_EFFECT)
-		else
-			Duel.SendtoGrave(tc,REASON_EFFECT)
-		end
+		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
