@@ -14,7 +14,7 @@ function c44424095.filter(c)
 	return c:IsSetCard(0x26) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck()
 end
 function c44424095.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsDestructable() end
+	if chkc then return chkc:IsOnField() and chkc:IsDestructable() and chkc~=e:GetHandler() end
 	if chk==0 then return Duel.IsExistingMatchingCard(c44424095.filter,tp,LOCATION_HAND,0,1,nil)
 		and Duel.IsExistingTarget(Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler())
 		and Duel.IsPlayerCanDraw(tp,1) end
