@@ -35,6 +35,6 @@ function c48716527.distg(e,c)
 end
 function c48716527.tgcon(e)
 	local tp=e:GetHandlerPlayer()
-	return Duel.GetTurnPlayer()==tp
+	return Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_END
 		and not Duel.IsExistingMatchingCard(c48716527.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
