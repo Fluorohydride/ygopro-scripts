@@ -57,7 +57,7 @@ function c81810441.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c81810441.eqlimit(e,c)
-	return c:IsSetCard(0x9c)
+	return c:IsSetCard(0x9c) and c:GetControler()==e:GetHandler():GetControler()
 end
 function c81810441.efilter(e,re)
 	return e:GetHandlerPlayer()~=re:GetOwnerPlayer()
