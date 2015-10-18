@@ -12,7 +12,8 @@ function c73783043.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c73783043.filter(c,e,tp)
-	return c:IsSetCard(0x2) and c:IsControler(tp) and c:IsPreviousLocation(LOCATION_DECK) and not c:IsPublic()
+	return c:IsSetCard(0x2) and c:IsControler(tp) and not c:IsPublic()
+		and c:IsPreviousLocation(LOCATION_DECK) and c:GetPreviousControler()==tp
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c73783043.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
