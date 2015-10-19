@@ -28,7 +28,7 @@ function c99668578.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c99668578.operation(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.DiscardHand(tp,c99668578.filter,1,1,REASON_EFFECT)~=0 then
+	if Duel.DiscardHand(tp,c99668578.filter,1,1,REASON_EFFECT) then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end
 end

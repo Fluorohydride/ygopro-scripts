@@ -41,7 +41,7 @@ function c49959355.lvtg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
 end
 function c49959355.lvop1(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT+REASON_DISCARD)==0 then return end
+	if not Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT+REASON_DISCARD) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())

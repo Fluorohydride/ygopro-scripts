@@ -41,7 +41,7 @@ function c36499284.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if not tc then return end
-	if Duel.DiscardHand(tp,c36499284.filter2,1,1,REASON_EFFECT+REASON_DISCARD)>0 and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if Duel.DiscardHand(tp,c36499284.filter2,1,1,REASON_EFFECT+REASON_DISCARD) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

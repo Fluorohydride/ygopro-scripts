@@ -28,7 +28,7 @@ function c24903843.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
 end
 function c24903843.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.DiscardHand(tp,c24903843.filter,1,1,REASON_EFFECT+REASON_DISCARD,nil)~=0 then
+	if Duel.DiscardHand(tp,c24903843.filter,1,1,REASON_EFFECT+REASON_DISCARD,nil) then
 		Duel.BreakEffect()
 		Duel.Draw(tp,2,REASON_EFFECT)
 	end

@@ -405,6 +405,7 @@ EFFECT_COUNTER_LIMIT			=0x20000--允许放置指示物数量
 EFFECT_RCOUNTER_REPLACE			=0x30000--代替取除指示物
 EFFECT_LPCOST_CHANGE			=170	--改变生命值代价數值
 EFFECT_LPCOST_REPLACE			=171	--以其他動作代替生命值代价
+EFFECT_DISCARD_HAND_CHANGE		=172	--改变丢弃手卡
 EFFECT_SKIP_DP					=180	--跳过抽卡阶段
 EFFECT_SKIP_SP					=181	--跳过准备阶段
 EFFECT_SKIP_M1					=182	--跳过主要阶段1
@@ -481,7 +482,6 @@ EFFECT_ADD_SETCODE				=334	--规则上视为「XX」字段
 EFFECT_NO_EFFECT_DAMAGE			=335	--玩家已受到"效果傷害變成0"的效果影響
 EFFECT_UNSUMMONABLE_CARD		=336	--不能通常召唤的怪獸
 EFFECT_DISABLE_CHAIN_FIELD		=337	--連鎖串中場上發動的效果無效(Duel.NegateRelatedChain())
-EFFECT_DISCARD_COST_CHANGE		=338	--反制陷阱捨棄手牌的代價改變(解放之阿里阿德涅)
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
 EVENT_STARTUP					=1000	--游戏开始时

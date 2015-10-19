@@ -50,7 +50,7 @@ function c9418365.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,PLAYER_ALL,1)
 end
 function c9418365.hdop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT+REASON_DISCARD)~=0 then
+	if Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT+REASON_DISCARD) then
 		Duel.BreakEffect()
 		Duel.DiscardHand(1-tp,nil,1,1,REASON_EFFECT+REASON_DISCARD)
 	end
