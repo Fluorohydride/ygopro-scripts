@@ -21,6 +21,7 @@ function c56993276.cfilter(c)
 	return c:IsSetCard(0xe) and c:IsType(TYPE_MONSTER) and c:IsDiscardable()
 end
 function c56993276.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	if Duel.IsPlayerAffectedByEffect(tp,98301564) then return true end
 	if chk==0 then return Duel.IsExistingMatchingCard(c56993276.cfilter,tp,LOCATION_HAND,0,1,nil) end
 	Duel.DiscardHand(tp,c56993276.cfilter,1,1,REASON_COST+REASON_DISCARD,nil)
 end
