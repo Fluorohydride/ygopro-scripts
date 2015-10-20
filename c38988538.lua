@@ -1,4 +1,4 @@
---Dinomist Plesios
+--ダイナミスト・プレシオス
 function c38988538.initial_effect(c)
 	--pendulum summon
 	aux.AddPendulumProcedure(c)
@@ -7,18 +7,17 @@ function c38988538.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(38988538,0))
 	e2:SetCategory(CATEGORY_DISABLE)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
-	e2:SetProperty(EFFECT_FLAG_NO_TURN_RESET)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetRange(LOCATION_PZONE)
-	e2:SetCountLimit(1)
 	e2:SetCondition(c38988538.negcon)
-	e2:SetTarget(c38988538.negtg)
 	e2:SetOperation(c38988538.negop)
 	c:RegisterEffect(e2)
+	--
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetCode(EFFECT_UPDATE_ATTACK)
@@ -34,24 +33,26 @@ function c38988538.initial_effect(c)
 	e4:SetValue(c38988538.atkval)
 	c:RegisterEffect(e4)
 end
-function c38988538.tfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x1e71) and c:IsControler(tp)
+function c38988538.tfilter(c,tp)
+	return c:IsFaceup() and c:IsSetCard(0xd8) and c:IsControler(tp) and c:IsOnField()
 end
 function c38988538.negcon(e,tp,eg,ep,ev,re,r,rp)
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
-	if not re:IsHasType(EFFECT_TYPE_ACTIVATE) then return false end
+	if not e:GetHandler():GetFlagEffect(38988538)==0 then return end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
-	return g and g:IsExists(c38988538.tfilter,1,nil)and g:GetFirst()~=e:GetHandler() and Duel.IsChainDisablable(ev)
-end
-function c38988538.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
+	return g and g:IsExists(c38988538.tfilter,1,e:GetHandler(),tp) and Duel.IsChainDisablable(ev)
 end
 function c38988538.negop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateEffect(ev)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+	if Duel.SelectYesNo(tp,aux.Stringid(38988538,1)) then
+		e:GetHandler():RegisterFlagEffect(38988538,RESET_EVENT+0x1fe0000,0,1)
+		Duel.NegateEffect(ev)
+		Duel.BreakEffect()
+		Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+	end
 end
-
+function c38988538.cfilter(c)
+	return c:IsFaceup() and c:IsSetCard(0xd8)
+end
 function c38988538.atkval(e,c)
-	return Duel.GetMatchingGroupCount(Card.IsSetCard,tp,LOCATION_ONFIELD,0,nil,0x1e71)*-100
+	return Duel.GetMatchingGroupCount(c38988538.cfilter,e:GetHandlerPlayer(),LOCATION_ONFIELD,0,nil)*-100
 end

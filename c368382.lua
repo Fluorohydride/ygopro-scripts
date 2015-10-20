@@ -1,4 +1,4 @@
---Dinomist Brachion
+--ダイナミスト・ブラキオン
 function c368382.initial_effect(c)
 	--pendulum summon
 	aux.AddPendulumProcedure(c)
@@ -7,15 +7,13 @@ function c368382.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(368382,0))
 	e2:SetCategory(CATEGORY_DISABLE)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetProperty(EFFECT_FLAG_NO_TURN_RESET)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetRange(LOCATION_PZONE)
 	e2:SetCondition(c368382.negcon)
-	e2:SetTarget(c368382.negtg)
 	e2:SetOperation(c368382.negop)
 	c:RegisterEffect(e2)
 	--special summon
@@ -27,40 +25,33 @@ function c368382.initial_effect(c)
 	e3:SetCondition(c368382.spcon)
 	c:RegisterEffect(e3)
 end
-
-function c368382.tfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x1e71) and c:IsControler(tp) and c:GetLocation()==LOCATION_ONFIELD
+function c368382.tfilter(c,tp)
+	return c:IsFaceup() and c:IsSetCard(0xd8) and c:IsControler(tp) and c:IsOnField()
 end
 function c368382.negcon(e,tp,eg,ep,ev,re,r,rp)
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
 	if not e:GetHandler():GetFlagEffect(368382)==0 then return end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
-	return g and g:IsExists(c368382.tfilter,1,nil)and g:GetFirst()~=e:GetHandler() and Duel.IsChainDisablable(ev)
-end
-function c368382.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
+	return g and g:IsExists(c368382.tfilter,1,e:GetHandler(),tp) and Duel.IsChainDisablable(ev)
 end
 function c368382.negop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SelectYesNo(tp,aux.Stringid(368382,1)) then
-		e:GetHandler():RegisterFlagEffect(368382,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(368382,RESET_EVENT+0x1fe0000,0,1)
 		Duel.NegateEffect(ev)
+		Duel.BreakEffect()
 		Duel.Destroy(e:GetHandler(),REASON_EFFECT)
-	else end
+	end
 end
-
-
 function c368382.cfilter(c)
-	return c:IsFaceup() and c:GetCode()==368382
+	return c:IsFaceup() and c:IsCode(368382)
 end
-function c368382.mafilter(c)
-	local atk=c:GetAttack()
-	return c:IsFaceup() and not Duel.IsExistingMatchingCard(c368382.cmafilter,tp,LOCATION_MZONE,0,1,nil,atk)
-end
-function c368382.cmafilter(c,atk)
-	return c:IsFaceup() and c:GetAttack()>=atk
-end
-function c368382.spcon(e,tp)
-	return Duel.IsExistingMatchingCard(c368382.mafilter,tp,0,LOCATION_MZONE,1,nil)
+function c368382.spcon(e,c)
+	if c==nil then return true end
+	local tp=c:GetControler()
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	if g:GetCount()==0 then return false end
+	local tg=g:GetMaxGroup(Card.GetAttack)
+	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and not Duel.IsExistingMatchingCard(c368382.cfilter,tp,LOCATION_MZONE,0,1,nil)
+		and tg:IsExists(Card.IsControler,1,nil,1-tp)
 end

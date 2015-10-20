@@ -1,4 +1,4 @@
---Solemn Notice
+--神の通告
 function c40605147.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -25,8 +25,8 @@ function c40605147.condition(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
 end
 function c40605147.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckLPCost(tp,1500)
-	else Duel.PayLPCost(tp,1500) end
+	if chk==0 then return Duel.CheckLPCost(tp,1500) end
+	Duel.PayLPCost(tp,1500)
 end
 function c40605147.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

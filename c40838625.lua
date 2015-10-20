@@ -1,8 +1,8 @@
---Dustorm Mirror Force
+--砂塵のバリア －ダスト・フォース－
 function c40838625.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_DESTROY)
+	e1:SetCategory(CATEGORY_POSITION)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetCondition(c40838625.condition)
@@ -23,16 +23,16 @@ function c40838625.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c40838625.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c40838625.filter,tp,0,LOCATION_MZONE,nil)
-	if g:GetCount()>0 then
-		Duel.ChangePosition(g,POS_FACEDOWN_DEFENCE)
-		local tc=g:GetFirst()
+	if Duel.ChangePosition(g,POS_FACEDOWN_DEFENCE)~=0 then
+		local og=Duel.GetOperatedGroup()
+		local tc=og:GetFirst()
 		while tc do
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
 			e1:SetReset(RESET_EVENT+0x1fe0000)
 			tc:RegisterEffect(e1)
-			tc=g:GetNext()
+			tc=og:GetNext()
 		end
 	end
 end

@@ -1,4 +1,4 @@
---Youtou - Shiranui
+--妖刀－不知火
 function c36630403.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -7,17 +7,15 @@ function c36630403.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCountLimit(1,36630403)
-	e1:SetCondition(c36630403.descon)
+	e1:SetCondition(aux.exccon)
 	e1:SetTarget(c36630403.target)
 	e1:SetOperation(c36630403.operation)
 	c:RegisterEffect(e1)
 end
-function c36630403.descon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnCount()~=e:GetHandler():GetTurnID()
-end
 function c36630403.filter1(c,e,tp,lv)
-	return (not c:IsType(TYPE_TUNER)) and c:IsAbleToRemove()
-		and Duel.IsExistingMatchingCard(c36630403.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,lv+c:GetLevel())
+	local clv=c:GetLevel()
+	return clv>0 and not c:IsType(TYPE_TUNER) and c:IsRace(RACE_ZOMBIE) and c:IsAbleToRemove()
+		and Duel.IsExistingMatchingCard(c36630403.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,lv+clv)
 end
 function c36630403.filter2(c,e,tp,lv)
 	return c:GetLevel()==lv and c:IsRace(RACE_ZOMBIE) and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -47,4 +45,3 @@ function c36630403.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-
