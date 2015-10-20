@@ -1,4 +1,4 @@
---Majespecter Sonic
+--マジェスペクター・ソニック
 function c13611090.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -20,11 +20,9 @@ function c13611090.filter(c)
 end
 function c13611090.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c13611090.filter(chkc) end
-	local exc=nil
-	if Duel.GetCurrentPhase()==PHASE_DAMAGE and Duel.GetAttackTarget()==nil then exc=Duel.GetAttacker() end
-	if chk==0 then return Duel.IsExistingTarget(c13611090.filter,tp,LOCATION_MZONE,0,1,exc) end
+	if chk==0 then return Duel.IsExistingTarget(c13611090.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c13611090.filter,tp,LOCATION_MZONE,0,1,1,exc)
+	Duel.SelectTarget(tp,c13611090.filter,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function c13611090.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
