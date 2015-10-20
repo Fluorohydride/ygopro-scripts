@@ -1,4 +1,4 @@
--- Hi-Speedroid Mach Hagoita
+--HSRマッハゴー・イータ
 function c21516908.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
@@ -9,9 +9,9 @@ function c21516908.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetCost(c21516908.lcost)
-	e1:SetTarget(c21516908.ltg)
-	e1:SetOperation(c21516908.lpop)
+	e1:SetCost(c21516908.lvcost)
+	e1:SetTarget(c21516908.lvtg)
+	e1:SetOperation(c21516908.lvop)
 	c:RegisterEffect(e1)
 	--summon
 	local e2=Effect.CreateEffect(c)
@@ -24,19 +24,18 @@ function c21516908.initial_effect(c)
 	e2:SetTarget(c21516908.sptg)
 	e2:SetOperation(c21516908.spop)
 	c:RegisterEffect(e2)
-	
 end
-function c21516908.lcost(e,tp,eg,ep,ev,re,r,rp,chk)
+function c21516908.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c21516908.filter(c)
-	return c:IsFaceup()
+	return c:IsFaceup() and c:GetLevel()>0
 end
-function c21516908.ltg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c21516908.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+function c21516908.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsExistingMatchingCard(c21516908.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler()) end
 end
-function c21516908.lpop(e,tp,eg,ep,ev,re,r,rp)
+function c21516908.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c21516908.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	local tc=g:GetFirst()
 	while tc do
@@ -65,6 +64,9 @@ function c21516908.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 end
 function c21516908.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) then
+		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
+	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
@@ -73,7 +75,4 @@ function c21516908.spop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTarget(c21516908.splimit)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	if c:IsRelateToEffect(e) then
-		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
-	end
 end

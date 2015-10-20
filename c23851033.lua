@@ -1,8 +1,9 @@
---Odd-Eyes Gravity Dragon
+--オッドアイズ・グラビティ・ドラゴン
 function c23851033.initial_effect(c)
 	c:EnableReviveLimit()
+	--tohand
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(81896370,0))
+	e1:SetDescription(aux.Stringid(23851033,0))
 	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -17,7 +18,6 @@ function c23851033.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetTargetRange(0,1)
-	e2:SetTarget(c23851033.actarget)
 	e2:SetCost(c23851033.costchk)
 	e2:SetOperation(c23851033.costop)
 	c:RegisterEffect(e2)
@@ -37,13 +37,6 @@ end
 function c23851033.operation(e,tp,eg,ep,ev,re,r,rp)
 	local sg=Duel.GetMatchingGroup(c23851033.filter,tp,0,LOCATION_ONFIELD,nil)
 	Duel.SendtoHand(sg,nil,REASON_EFFECT)
-end
-
-
-
-
-function c23851033.actarget(e,te,tp)
-	return te:GetHandler():GetControler()~=e:GetHandler():GetControler()
 end
 function c23851033.costchk(e,te_or_c,tp)
 	return Duel.CheckLPCost(tp,500)

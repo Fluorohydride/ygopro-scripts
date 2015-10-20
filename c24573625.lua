@@ -1,4 +1,4 @@
---Deskbot 008
+--ブンボーグ008
 function c24573625.initial_effect(c)
 	--pendulum summon
 	aux.AddPendulumProcedure(c)
@@ -17,6 +17,7 @@ function c24573625.initial_effect(c)
 	e2:SetCondition(c24573625.splimcon)
 	e2:SetTarget(c24573625.splimit)
 	c:RegisterEffect(e2)
+	--atk
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
@@ -24,17 +25,18 @@ function c24573625.initial_effect(c)
 	e3:SetCode(EFFECT_UPDATE_ATTACK)
 	e3:SetValue(c24573625.value)
 	c:RegisterEffect(e3)
+	--attack twice
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE)
+	e4:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e4:SetRange(LOCATION_MZONE)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e4:SetCode(EFFECT_EXTRA_ATTACK)
 	e4:SetValue(1)
 	c:RegisterEffect(e4)
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_SINGLE)
 	e5:SetRange(LOCATION_MZONE)
-	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e5:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e5:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
 	e5:SetCondition(c24573625.dircon)
 	c:RegisterEffect(e5)
@@ -42,6 +44,7 @@ function c24573625.initial_effect(c)
 	e6:SetCode(EFFECT_CANNOT_ATTACK)
 	e6:SetCondition(c24573625.atkcon2)
 	c:RegisterEffect(e6)
+	--cannot be target
 	local e7=Effect.CreateEffect(c)
 	e7:SetType(EFFECT_TYPE_FIELD)
 	e7:SetRange(LOCATION_MZONE)
@@ -66,7 +69,6 @@ end
 function c24573625.atkcon2(e)
 	return e:GetHandler():IsDirectAttacked()
 end
-
 function c24573625.tglimit(e,re,c)
-	return c:IsControler(e:GetHandlerPlayer()) and c:IsLocation(LOCATION_MZONE) and c~=e:GetHandler() and c:IsSetCard(0xab)
+	return c:IsLocation(LOCATION_MZONE) and c~=e:GetHandler() and c:IsSetCard(0xab)
 end
