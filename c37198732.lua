@@ -14,8 +14,14 @@ function c37198732.cfilter(c)
 	return c:GetLevel()>0 and c:IsAbleToGraveAsCost()
 end
 function c37198732.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	e:SetLabel(1)
-	if chk==0 then return Duel.IsExistingMatchingCard(c37198732.cfilter,tp,LOCATION_HAND,0,1,nil) end
+	if chk==0 then 
+		if Duel.IsExistingMatchingCard(c37198732.cfilter,tp,LOCATION_HAND,0,1,nil) then
+			e:SetLabel(1)
+			return true
+		else
+			return false
+		end
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c37198732.cfilter,tp,LOCATION_HAND,0,1,1,nil)
 	Duel.SendtoGrave(g,REASON_COST)

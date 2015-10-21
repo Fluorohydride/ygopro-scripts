@@ -19,7 +19,7 @@ function c52097679.filter(c,e)
 	return c:IsFaceup() and c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
 end
 function c52097679.activate(e,tp,eg,ep,ev,re,r,rp)
-	local sg=Duel.GetMatchingGroup(c52097679.filter,tp,LOCATION_MZONE,0,nil,e)
+	local sg=Duel.GetMatchingGroup(c52097679.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,e)
 	local c=e:GetHandler()
 	local tc=sg:GetFirst()
 	while tc do
