@@ -7,17 +7,17 @@ function c94585852.initial_effect(c)
 	c:RegisterEffect(e1)
 	--cost change
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EFFECT_LPCOST_REPLACE)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_LPCOST_CHANGE)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e2:SetRange(LOCATION_SZONE)
+	e2:SetRange(LOCATION_FZONE)
 	e2:SetTargetRange(1,1)
-	e2:SetCondition(c94585852.repcon)
+	e2:SetCondition(c94585852.costchange)
 	c:RegisterEffect(e2)
 	--search
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetRange(LOCATION_SZONE)
+	e3:SetRange(LOCATION_FZONE)
 	e3:SetCode(EVENT_TO_GRAVE)
 	e3:SetOperation(c94585852.regop)
 	c:RegisterEffect(e3)
@@ -31,10 +31,12 @@ function c94585852.initial_effect(c)
 	e4:SetOperation(c94585852.operation)
 	c:RegisterEffect(e4)
 end
-function c94585852.repcon(e,tp,eg,ep,ev,re,r,rp)
-	if not re then return false end
-	local rc=re:GetHandler()
-	return Duel.GetCurrentPhase()==PHASE_STANDBY and rc:IsSetCard(0x45) and rc:IsType(TYPE_MONSTER)
+function c94585852.costchange(e,re,rp,val)
+	if Duel.GetCurrentPhase()==PHASE_STANDBY and re and re:GetHandler():IsSetCard(0x45) and re:GetHandler():IsType(TYPE_MONSTER) then
+		return 0
+	else
+		return val
+	end
 end
 function c94585852.regop(e,tp,eg,ep,ev,re,r,rp)
 	local lv1=0
