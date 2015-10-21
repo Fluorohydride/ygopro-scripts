@@ -10,10 +10,16 @@ function c52097679.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c52097679.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+		and Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	Duel.SetTargetCard(g)
+end
+function c52097679.filter(c,e)
+	return c:IsFaceup() and c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
 end
 function c52097679.activate(e,tp,eg,ep,ev,re,r,rp)
-	local sg=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local sg=Duel.GetMatchingGroup(c52097679.filter,tp,LOCATION_MZONE,0,nil,e)
 	local c=e:GetHandler()
 	local tc=sg:GetFirst()
 	while tc do
