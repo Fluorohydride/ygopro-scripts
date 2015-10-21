@@ -14,6 +14,7 @@ function c37198732.cfilter(c)
 	return c:GetLevel()>0 and c:IsAbleToGraveAsCost()
 end
 function c37198732.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	e:SetLabel(1)
 	if chk==0 then return Duel.IsExistingMatchingCard(c37198732.cfilter,tp,LOCATION_HAND,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c37198732.cfilter,tp,LOCATION_HAND,0,1,1,nil)
@@ -26,7 +27,11 @@ function c37198732.filter(c)
 end
 function c37198732.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c37198732.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c37198732.filter,tp,LOCATION_MZONE,0,1,nil) end
+	if chk==0 then
+		if e:GetLabel()~=1 then return false end
+		e:SetLabel(0)
+		return Duel.IsExistingTarget(c37198732.filter,tp,LOCATION_MZONE,0,1,nil)
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c37198732.filter,tp,LOCATION_MZONE,0,1,2,nil)
 end
