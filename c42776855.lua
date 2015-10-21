@@ -1,4 +1,4 @@
---Dragon's Bind
+--追走の翼
 function c42776855.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -30,9 +30,9 @@ function c42776855.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO)
 end
 function c42776855.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c42776855.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c42776855.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c42776855.filter,tp,LOCATION_MZONE,0,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUPATTACK)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c42776855.filter,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function c42776855.operation(e,tp,eg,ep,ev,re,r,rp)
@@ -54,29 +54,22 @@ function c42776855.operation(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(c42776855.efilter)
 		tc:RegisterEffect(e2,true)
 		local e3=Effect.CreateEffect(c)
-		e3:SetDescription(aux.Stringid(80485722,0))
+		e3:SetDescription(aux.Stringid(42776855,0))
 		e3:SetCategory(CATEGORY_DESTROY)
 		e3:SetType(EFFECT_TYPE_QUICK_O)
-		e3:SetCode(EVENT_FREE_CHAIN)
-		e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
-		e3:SetHintTiming(TIMING_DAMAGE_STEP)
+		e3:SetCode(EVENT_BATTLE_START)
 		e3:SetRange(LOCATION_SZONE)
 		e3:SetCondition(c42776855.atkcon)
-		e3:SetOperation(c42776855.adesop)
+		e3:SetOperation(c42776855.atkop)
+		e3:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e3)
 	end
 end
 function c42776855.rcon(e)
 	return e:GetOwner():IsHasCardTarget(e:GetHandler())
 end
-function c42776855.acon(e)
-	return e:GetOwner():IsHasCardTarget(e:GetHandler()) and e:GetHandlerPlayer()==e:GetLabel()
-end
 function c42776855.efilter(e,re)
 	return e:GetOwnerPlayer()~=re:GetOwnerPlayer()
-end
-function c42776855.tgval(e,re,rp)
-	return rp~=e:GetOwnerPlayer() and aux.tgval(e,re,rp)
 end
 function c42776855.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsDisabled() then
@@ -88,35 +81,25 @@ function c42776855.descon2(e,tp,eg,ep,ev,re,r,rp)
 	return tc and eg:IsContains(tc)
 end
 function c42776855.desop2(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(), REASON_EFFECT)
+	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 end
 function c42776855.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	local ph=Duel.GetCurrentPhase()
 	local c=e:GetHandler()
 	local tc=c:GetFirstCardTarget()
-	local a=Duel.GetAttacker()
-	local d=Duel.GetAttackTarget()
 	local bc=tc:GetBattleTarget()
-	return ph==PHASE_DAMAGE and not c:IsStatus(STATUS_CHAINING)
-	and a:IsLocation(LOCATION_MZONE) and d:IsLocation(LOCATION_MZONE) 
-	and (tc==a or tc==d) and bc:IsLevelAbove(5) and not Duel.IsDamageCalculated()
-	and e:GetHandler():GetFlagEffect(42776855)==0
+	return tc and tc:IsLocation(LOCATION_MZONE) and bc and bc:IsFaceup() and bc:IsLocation(LOCATION_MZONE) and bc:IsLevelAbove(5)
 end
-function c42776855.adesop(e,tp,eg,ep,ev,re,r,rp)
+function c42776855.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=c:GetFirstCardTarget()
 	local bc=tc:GetBattleTarget()
 	local atk=bc:GetBaseAttack()
-	if bc:IsRelateToBattle() then 
-		Duel.Destroy(bc,REASON_EFFECT) 
-		if bc:IsLocation(LOCATION_GRAVE) and bc:IsType(TYPE_MONSTER) then
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_UPDATE_ATTACK)
-			e1:SetValue(atk)
-			e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+RESET_END)
-			tc:RegisterEffect(e1)
-		end
+	if bc:IsRelateToBattle() and Duel.Destroy(bc,REASON_EFFECT)~=0 and bc:IsType(TYPE_MONSTER) then
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_UPDATE_ATTACK)
+		e1:SetValue(atk)
+		e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+RESET_END)
+		tc:RegisterEffect(e1)
 	end
-	e:GetHandler():RegisterFlagEffect(42776855,RESET_PHASE+RESET_DAMAGE_CAL,0,1)
 end

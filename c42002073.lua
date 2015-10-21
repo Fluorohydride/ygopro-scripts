@@ -1,4 +1,4 @@
---Performapal Trump Girl
+--EMトランプ・ガール
 function c42002073.initial_effect(c)
 	--pendulum summon
 	aux.AddPendulumProcedure(c)
@@ -7,6 +7,7 @@ function c42002073.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
@@ -15,12 +16,12 @@ function c42002073.initial_effect(c)
 	e2:SetTarget(c42002073.target)
 	e2:SetOperation(c42002073.operation)
 	c:RegisterEffect(e2)
+	--
 	local e6=Effect.CreateEffect(c)
 	e6:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e6:SetCode(EVENT_DESTROYED)
 	e6:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
-	e6:SetCountLimit(1,10117149)
 	e6:SetCondition(c42002073.spcon)
 	e6:SetTarget(c42002073.sptg)
 	e6:SetOperation(c42002073.spop)

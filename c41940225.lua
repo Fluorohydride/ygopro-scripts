@@ -1,4 +1,4 @@
---Destroyer Fusion
+--破壊剣士融合
 function c41940225.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -9,17 +9,17 @@ function c41940225.initial_effect(c)
 	e1:SetTarget(c41940225.target)
 	e1:SetOperation(c41940225.activate)
 	c:RegisterEffect(e1)
-	--spsummon
-	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_TOHAND)
-	e1:SetType(EFFECT_TYPE_IGNITION)
-	e1:SetRange(LOCATION_GRAVE)
-	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CARD_TARGET)
-	e1:SetCountLimit(1,419402252)
-	e1:SetCost(c41940225.cost)
-	e1:SetTarget(c41940225.sptg)
-	e1:SetOperation(c41940225.spop)
-	c:RegisterEffect(e1)
+	--tohand
+	local e2=Effect.CreateEffect(c)
+	e2:SetCategory(CATEGORY_TOHAND)
+	e2:SetType(EFFECT_TYPE_IGNITION)
+	e2:SetRange(LOCATION_GRAVE)
+	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e2:SetCountLimit(1,41940226)
+	e2:SetCost(c41940225.thcost)
+	e2:SetTarget(c41940225.thtg)
+	e2:SetOperation(c41940225.thop)
+	c:RegisterEffect(e2)
 end
 function c41940225.filter0(c,tp)
 	return (c:IsControler(tp) or c:IsFaceup()) and c:IsCanBeFusionMaterial()
@@ -28,7 +28,7 @@ function c41940225.filter1(c,e,tp)
 	return (c:IsControler(tp) or c:IsFaceup()) and c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
 end
 function c41940225.filter2(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and (c:GetCode()==98502113 or c:GetCode()==86240887)  and (not f or f(c))
+	return (c:IsCode(98502113) or c:IsCode(86240887)) and (not f or f(c))
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
 function c41940225.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -82,16 +82,15 @@ function c41940225.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:CompleteProcedure()
 	end
 end
-
-function c41940225.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+function c41940225.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToGraveAsCost,tp,LOCATION_HAND,0,1,nil) end
 	Duel.DiscardHand(tp,Card.IsAbleToGraveAsCost,1,1,REASON_COST)
 end
-function c41940225.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c41940225.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToHand() end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetHandler(),1,0,0)
 end
-function c41940225.spop(e,tp,eg,ep,ev,re,r,rp)
+function c41940225.thop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
 		Duel.SendtoHand(e:GetHandler(),nil,REASON_EFFECT)
 	end
