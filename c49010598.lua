@@ -15,7 +15,7 @@ function c49010598.condition(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
 end
 function c49010598.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if Duel.IsPlayerAffectedByEffect(tp,98301564) then return true end
+	if Duel.IsPlayerAffectedByEffect(tp,EFFECT_DISCARD_COST_CHANGE) then return true end
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,e:GetHandler()) end
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
