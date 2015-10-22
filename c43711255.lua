@@ -5,6 +5,7 @@ function c43711255.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(c43711255.target)
+	e1:SetOperation(c43711255.activate)
 	c:RegisterEffect(e1)
 	--forbidden
 	local e2=Effect.CreateEffect(c)
@@ -32,6 +33,11 @@ function c43711255.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,564)
 	local ac=Duel.AnnounceCard(tp)
+	Duel.SetTargetParam(ac)
+	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,ANNOUNCE_CARD)
+end
+function c43711255.activate(e,tp,eg,ep,ev,re,r,rp)
+	local ac=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	e:SetLabel(ac)
 	e:GetHandler():SetHint(CHINT_CARD,ac)
 end
