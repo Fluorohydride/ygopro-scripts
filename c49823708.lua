@@ -1,4 +1,4 @@
---Companion of the Dragonbane
+--破壊剣士の伴竜
 function c49823708.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)
@@ -10,6 +10,7 @@ function c49823708.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(49823708,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
@@ -20,7 +21,7 @@ function c49823708.initial_effect(c)
 	c:RegisterEffect(e2)
 	--special summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(24861088,1))
+	e3:SetDescription(aux.Stringid(49823708,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_GRAVE)
@@ -32,7 +33,7 @@ function c49823708.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c49823708.filter(c)
-	return c:IsSetCard(0x1e7) and not c:IsCode(49823708) and c:IsAbleToHand()
+	return c:IsSetCard(0xd6) and not c:IsCode(49823708) and c:IsAbleToHand()
 end
 function c49823708.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c49823708.filter,tp,LOCATION_DECK,0,1,nil) end
@@ -46,13 +47,12 @@ function c49823708.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
-
 function c49823708.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c49823708.spfilter(c,e,tp)
-	return c:IsCode(78193831) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(78193831) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
 end
 function c49823708.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
@@ -67,25 +67,18 @@ function c49823708.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-
-function c49823708.bbfilter(c)
-	return c:GetCode()==78193831 and c:IsAbleToHand()
+function c49823708.cfilter(c)
+	return c:IsFaceup() and c:IsCode(78193831)
 end
 function c49823708.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)>0
-		and Duel.IsExistingMatchingCard(c49823708.bbfilter,tp,LOCATION_MZONE,0,1,nil)
+	return Duel.IsExistingMatchingCard(c49823708.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c49823708.costfilter(c)
-	return c:IsSetCard(0x1e7) and c:IsAbleToGraveAsCost()
+	return c:IsSetCard(0xd6) and c:IsAbleToGraveAsCost()
 end
 function c49823708.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c49823708.costfilter,tp,LOCATION_HAND,0,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c49823708.costfilter,tp,LOCATION_HAND,0,1,1,nil)
-	Duel.SendtoGrave(g,REASON_COST)
-end
-function c49823708.aclimit(e,re,tp)
-	return not re:GetHandler():IsSetCard(0x70)
+	Duel.DiscardHand(tp,c49823708.costfilter,1,1,REASON_COST)
 end
 function c49823708.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
