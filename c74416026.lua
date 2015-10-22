@@ -52,7 +52,13 @@ function c74416026.activate(e,tp,eg,ep,ev,re,r,rp)
 				e1:SetLabelObject(sc)
 				e1:SetCondition(c74416026.rmcon)
 				e1:SetOperation(c74416026.rmop)
-				e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN)
+				if Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_END then
+					e1:SetLabel(Duel.GetTurnCount())
+					e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
+				else
+					e:SetLabel(0)
+					e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN)
+				end
 				Duel.RegisterEffect(e1,tp)
 				Duel.SpecialSummonComplete()
 				sc:CompleteProcedure()
@@ -63,7 +69,7 @@ function c74416026.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c74416026.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	return Duel.GetTurnPlayer()==tp and tc:GetFlagEffect(74416026)~=0
+	return Duel.GetTurnPlayer()==tp and Duel.GetTurnCount()~=e:GetLabel() and tc:GetFlagEffect(74416026)~=0
 end
 function c74416026.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
