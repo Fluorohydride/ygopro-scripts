@@ -581,6 +581,7 @@ CATEGORY_DICE				=0x2000000	--骰子效果
 CATEGORY_LEAVE_GRAVE		=0x4000000	--离开墓地效果
 CATEGORY_LVCHANGE			=0x8000000	--改变等级效果
 CATEGORY_NEGATE				=0x10000000	--使发动无效效果
+CATEGORY_ANNOUNCE			=0x20000000	--宣言效果
 --Hint
 HINT_EVENT				=1
 HINT_MESSAGE			=2
@@ -696,3 +697,5 @@ ACTIVITY_FLIPSUMMON		=4		--
 ACTIVITY_ATTACK			=5		--
 ACTIVITY_BATTLE_PHASE	=6		-- not available in custom counter
 ACTIVITY_CHAIN			=7		-- only available in custom counter
+--announce type（宣言类型，CATEGORY_ANNOUNCE的OperationInfo的target_param）
+ANNOUNCE_CARD			=1		--宣言卡片
