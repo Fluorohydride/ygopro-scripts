@@ -65,7 +65,7 @@ function c56585883.regop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterFlagEffect(56585883,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c56585883.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(56585883)>0
+	return e:GetHandler():GetFlagEffect(56585883)>0 and not e:GetHandler():IsPreviousLocation(LOCATION_REMOVED)
 end
 function c56585883.thfilter(c)
 	return c:IsAttackBelow(1500) and c:IsRace(RACE_WINDBEAST) and c:GetLevel()==4 and c:IsAbleToHand()
