@@ -1,4 +1,4 @@
---P° Reborn
+--ペンデュラム・リボーン
 function c77826734.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -11,11 +11,11 @@ function c77826734.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c77826734.filter(c,e,tp)
-	return (c:IsFaceup() and c:IsLocation(LOCATION_EXTRA) or c:IsLocation(LOCATION_GRAVE)) and c:IsType(TYPE_PENDULUM)
-	 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsType(TYPE_PENDULUM) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
 end
 function c77826734.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_EXTRA) and c77826734.filter(chkc,e,tp) end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_EXTRA) and chkc:IsControler(tp) and c77826734.filter(chkc,e,tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c77826734.filter,tp,LOCATION_GRAVE+LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

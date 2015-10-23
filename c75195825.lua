@@ -1,4 +1,4 @@
---Supreme Warrior Ritual
+--竜剣士マスターP
 function c75195825.initial_effect(c)
 	--pendulum summon
 	aux.AddPendulumProcedure(c)
@@ -7,9 +7,10 @@ function c75195825.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
-	--change scale
+	--destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(88757791,0))
+	e2:SetDescription(aux.Stringid(75195825,0))
+	e2:SetCategory(CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_PZONE)
 	e2:SetProperty(EFFECT_FLAG_NO_TURN_RESET+EFFECT_FLAG_CARD_TARGET)

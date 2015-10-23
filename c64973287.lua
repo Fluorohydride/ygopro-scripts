@@ -1,4 +1,4 @@
---Dinomist Stegosaurus
+--ダイナミスト・プテラン
 function c64973287.initial_effect(c)
 	--pendulum summon
 	aux.AddPendulumProcedure(c)
@@ -18,39 +18,32 @@ function c64973287.initial_effect(c)
 	c:RegisterEffect(e2)
 	--search
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(64973287,0))
+	e3:SetDescription(aux.Stringid(64973287,1))
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BATTLE_DESTROYING)
 	e3:SetCountLimit(1,64973287)
-	e3:SetCondition(c64973287.condition)
+	e3:SetCondition(aux.bdocon)
 	e3:SetTarget(c64973287.target)
 	e3:SetOperation(c64973287.operation)
 	c:RegisterEffect(e3)
-	
 end
-function c64973287.filter(c,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0x1e71) and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT))
+function c64973287.repfilter(c,tp)
+	return c:IsFaceup() and c:IsControler(tp) and c:IsOnField() and c:IsSetCard(0xd8)
+		and (c:IsReason(REASON_BATTLE) or (c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()~=tp))
 end
 function c64973287.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c64973287.filter,1,e:GetHandler(),tp) and not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED) end
-	return Duel.SelectYesNo(tp,aux.Stringid(37752990,0))
+	if chk==0 then return eg:IsExists(c64973287.repfilter,1,e:GetHandler(),tp) and not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED) end
+	return Duel.SelectYesNo(tp,aux.Stringid(64973287,0))
 end
 function c64973287.repval(e,c)
-	return c64973287.filter(c,e:GetHandlerPlayer())
+	return c64973287.repfilter(c,e:GetHandlerPlayer())
 end
 function c64973287.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)
 end
-
-
-function c64973287.condition(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local bc=c:GetBattleTarget()
-	return c:IsRelateToBattle() and bc:IsType(TYPE_MONSTER)
-end
 function c64973287.filter(c)
-	return c:IsSetCard(0x1e71) and c:IsAbleToHand()
+	return c:IsSetCard(0xd8) and c:IsAbleToHand()
 end
 function c64973287.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c64973287.filter,tp,LOCATION_DECK,0,1,nil) end

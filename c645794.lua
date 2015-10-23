@@ -1,4 +1,4 @@
---Majespecter Frog
+--マジェスペクター・フロッグ
 function c645794.initial_effect(c)
 	--pendulum summon
 	aux.AddPendulumProcedure(c)
@@ -11,10 +11,9 @@ function c645794.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_SINGLE)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)
-	--e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetCountLimit(1,645794)
-	e2:SetTarget(c645794.thtg)
-	e2:SetOperation(c645794.thop)
+	e2:SetTarget(c645794.settg)
+	e2:SetOperation(c645794.setop)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -36,15 +35,17 @@ function c645794.initial_effect(c)
 	e5:SetValue(c645794.indval)
 	c:RegisterEffect(e5)
 end
-function c645794.thfilter(c)
-	return c:IsSetCard(0xd0) and (not c:IsType(TYPE_MONSTER)) and c:IsSSetable()
+function c645794.filter(c)
+	return c:IsSetCard(0xd0) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable()
 end
-function c645794.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and Duel.IsExistingMatchingCard(c645794.thfilter,tp,LOCATION_DECK,0,1,nil) end
+function c645794.settg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+		and Duel.IsExistingMatchingCard(c645794.filter,tp,LOCATION_DECK,0,1,nil) end
 end
-function c645794.thop(e,tp,eg,ep,ev,re,r,rp)
+function c645794.setop(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-	local g=Duel.SelectMatchingCard(tp,c645794.thfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c645794.filter,tp,LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.SSet(tp,tc)
