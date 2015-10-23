@@ -25,7 +25,7 @@ function c18631392.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1)
 	e3:SetLabel(0)
-	e3:SetProperty(EFFECT_FLAG_DECLEAR)
+	e3:SetProperty(EFFECT_FLAG_DECLARE)
 	e3:SetTarget(c18631392.anctg)
 	c:RegisterEffect(e3)
 end
