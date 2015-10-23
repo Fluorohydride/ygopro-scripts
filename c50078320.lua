@@ -23,7 +23,7 @@ function c50078320.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c50078320.deccon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and re:IsHasProperty(EFFECT_FLAG_DECLEAR)
+	return ep~=tp and re:IsHasProperty(EFFECT_FLAG_DECLARE)
 end
 function c50078320.deccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end
