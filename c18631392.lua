@@ -24,6 +24,8 @@ function c18631392.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1)
+	e3:SetLabel(0)
+	e3:SetProperty(EFFECT_FLAG_DECLEAR)
 	e3:SetTarget(c18631392.anctg)
 	c:RegisterEffect(e3)
 end
@@ -63,6 +65,11 @@ function c18631392.retop(code1,code2,code3)
 	return
 		function (e,tp,eg,ep,ev,re,r,rp)
 			if not Duel.IsPlayerCanDiscardDeck(tp,3) then return end
+			local lab=e:GetLabel()
+			if lab~=0 then
+				code1,code2,code3=lab,lab,lab
+				e:SetLabel(0)
+			end
 			local c=e:GetHandler()
 			Duel.ConfirmDecktop(tp,3)
 			local g=Duel.GetDecktopGroup(tp,3)
