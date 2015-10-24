@@ -1,4 +1,4 @@
---Deskbot 007
+--ブンボーグ007
 function c97588916.initial_effect(c)
 	--pendulum summon
 	aux.AddPendulumProcedure(c)
@@ -17,6 +17,7 @@ function c97588916.initial_effect(c)
 	e2:SetCondition(c97588916.splimcon)
 	e2:SetTarget(c97588916.splimit)
 	c:RegisterEffect(e2)
+	--
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
@@ -29,6 +30,7 @@ function c97588916.initial_effect(c)
 	e5:SetType(EFFECT_TYPE_SINGLE)
 	e5:SetCode(EFFECT_PIERCE)
 	c:RegisterEffect(e5)
+	--
 	local e6=Effect.CreateEffect(c)
 	e6:SetType(EFFECT_TYPE_FIELD)
 	e6:SetRange(LOCATION_MZONE)
@@ -46,8 +48,6 @@ end
 function c97588916.value(e,c)
 	return Duel.GetMatchingGroupCount(Card.IsSetCard,c:GetControler(),LOCATION_GRAVE,0,nil,0xab)*500
 end
-
-
 function c97588916.atlimit(e,c)
-	return c~=e:GetHandler() and c:IsSetCard(0xab)
+	return c:IsFaceup() and c:IsSetCard(0xab) and c~=e:GetHandler()
 end

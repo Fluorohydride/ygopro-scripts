@@ -1,5 +1,4 @@
---Chief Priest of Shiranui
---Scripted by Ragna_Edge
+--不知火の宮司
 function c99423156.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -10,19 +9,20 @@ function c99423156.initial_effect(c)
 	e1:SetTarget(c99423156.sumtg)
 	e1:SetOperation(c99423156.sumop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(99423156,1))
 	e2:SetCategory(CATEGORY_DESTROY)
-	e2:SetCountLimit(1,99423156)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_REMOVE)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
+	e2:SetCountLimit(1,99423156)
 	e2:SetTarget(c99423156.target)
 	e2:SetOperation(c99423156.operation)
 	c:RegisterEffect(e2)
 end
 function c99423156.spfilter(c,e,tp)
-	return c:GetCode()~=99423156 and c:IsSetCard(0xd7) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0xd9) and not c:IsCode(99423156) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c99423156.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -55,7 +55,7 @@ function c99423156.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c99423156.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
