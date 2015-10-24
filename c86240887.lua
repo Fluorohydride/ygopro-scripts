@@ -1,5 +1,4 @@
---Buster Blader, the Dragon Destroyer
---Fixed by Ragna as well... 
+--竜破壊の剣士－バスター・ブレイダー
 function c86240887.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

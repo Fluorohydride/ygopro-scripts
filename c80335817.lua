@@ -1,4 +1,4 @@
---Timesword Magician
+--刻剣の魔術師
 function c80335817.initial_effect(c)
 	--pendulum summon
 	aux.AddPendulumProcedure(c)
@@ -16,14 +16,14 @@ function c80335817.initial_effect(c)
 	e2:SetTarget(c80335817.indtg)
 	e2:SetValue(c80335817.indval)
 	c:RegisterEffect(e2)
-	--tohand
+	--double
 	local e3=Effect.CreateEffect(c)
-	e3:SetCategory(CATEGORY_TOHAND)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e3:SetRange(LOCATION_MZONE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e3:SetCondition(c80335817.thcon)
-	e3:SetOperation(c80335817.thop)
+	e3:SetCondition(c80335817.atkcon)
+	e3:SetOperation(c80335817.atkop)
 	c:RegisterEffect(e3)
 	--Banish
 	local e4=Effect.CreateEffect(c)
@@ -47,15 +47,12 @@ end
 function c80335817.indval(e,c)
 	return c80335817.filter(c,e:GetHandlerPlayer())
 end
-function c80335817.cfilter(c)
-	return c:GetTurnID()==Duel.GetTurnCount() and c:GetSummonType()==SUMMON_TYPE_PENDULUM and c:IsPreviousLocation(LOCATION_HAND)
-end
-function c80335817.thcon(e,tp,eg,ep,ev,re,r,rp)
+function c80335817.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetSummonType()==SUMMON_TYPE_PENDULUM and c:IsPreviousLocation(LOCATION_HAND)
-		and not Duel.IsExistingMatchingCard(c80335817.cfilter,tp,LOCATION_MZONE,0,1,c)
+	return eg:GetCount()==1 and eg:GetFirst()==c
+		and c:GetSummonType()==SUMMON_TYPE_PENDULUM and c:IsPreviousLocation(LOCATION_HAND)
 end
-function c80335817.thop(e,tp,eg,ep,ev,re,r,rp)
+function c80335817.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
@@ -66,14 +63,14 @@ function c80335817.thop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 	end
 end
-function c80335817.rmfil(c)
-	return c:IsAbleToRemove()
-end
 function c80335817.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c80335817.rmfil(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c80335817.rmfil,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler()) and e:GetHandler():IsAbleToRemove() end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c80335817.rmfil,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,e:GetHandler())
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsAbleToRemove() end
+	if chk==0 then return e:GetHandler():IsAbleToRemove()
+		and Duel.IsExistingTarget(Card.IsAbleToRemove,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler()) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local g=Duel.SelectTarget(tp,Card.IsAbleToRemove,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,e:GetHandler())
+	g:AddCard(e:GetHandler())
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,2,0,0)
 end
 function c80335817.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -84,7 +81,11 @@ function c80335817.rmop(e,tp,eg,ep,ev,re,r,rp)
 		local og=Duel.GetOperatedGroup()
 		local oc=og:GetFirst()
 		while oc do
-			oc:RegisterFlagEffect(80335817,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+			if oc:IsControler(tp) then
+				oc:RegisterFlagEffect(80335817,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1)
+			else
+				oc:RegisterFlagEffect(80335817,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY+RESET_OPPO_TURN,0,1)
+			end
 			oc=og:GetNext()
 		end
 		og:KeepAlive()
@@ -93,8 +94,8 @@ function c80335817.rmop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
 		e1:SetReset(RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN)
 		e1:SetCountLimit(1)
-		e1:SetCondition(c80335817.retcon)
 		e1:SetLabelObject(og)
+		e1:SetCondition(c80335817.retcon)
 		e1:SetOperation(c80335817.retop)
 		Duel.RegisterEffect(e1,tp)
 	end
@@ -106,7 +107,8 @@ function c80335817.retcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c80335817.retop(e,tp,eg,ep,ev,re,r,rp)
-	local sg=e:GetLabelObject()
+	local g=e:GetLabelObject()
+	local sg=g:Filter(c80335817.retfilter,nil)
 	local tc=sg:GetFirst()
 	while tc do
 		Duel.ReturnToField(tc)
