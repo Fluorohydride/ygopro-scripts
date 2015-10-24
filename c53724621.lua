@@ -7,36 +7,33 @@ function c53724621.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
-	--
+	--draw
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_DRAW)
-	e2:SetType(EFFECT_TYPE_QUICK_O)
-	e2:SetCode(EVENT_CHAINING)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e2:SetCode(EVENT_CHAIN_SOLVING)
 	e2:SetRange(LOCATION_PZONE)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCountLimit(1,53724621)
 	e2:SetCondition(c53724621.drcon)
 	e2:SetTarget(c53724621.drtg)
 	e2:SetOperation(c53724621.drop)
 	c:RegisterEffect(e2)
-	--
+	--scale
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetCountLimit(1)
 	e3:SetTarget(c53724621.target)
-	e3:SetOperation(c53724621.activate)
+	e3:SetOperation(c53724621.operation)
 	c:RegisterEffect(e3)
 end
 function c53724621.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_PENDULUM)
+	return rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_PENDULUM) and re:GetHandler():IsSetCard(0x9f)
 end
 function c53724621.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then
-		local seq=e:GetHandler():GetSequence()
-		local tc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-seq)
-		return Duel.IsPlayerCanDraw(tp,1) and tc and tc:IsSetCard(0x9f)
-	end
+	if chk==0 then Duel.IsPlayerCanDraw(tp,1) end
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c53724621.drop(e,tp,eg,ep,ev,re,r,rp)
@@ -52,7 +49,7 @@ function c53724621.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c53724621.filter,tp,LOCATION_SZONE,0,1,1,nil)
 end
-function c53724621.activate(e,tp,eg,ep,ev,re,r,rp)
+function c53724621.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())

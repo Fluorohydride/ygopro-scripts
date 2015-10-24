@@ -32,7 +32,7 @@ function c41128647.aclimit(e,re,tp)
 	return not re:GetHandler():IsImmuneToEffect(e)
 end
 function c41128647.cfilter(c,tp)
-	return c:IsSetCard(0xd8) and c:IsControler(tp)
+	return c:IsFaceup() and c:IsSetCard(0xd8) and c:IsControler(tp)
 end
 function c41128647.actcon(e)
 	local tp=e:GetHandlerPlayer()

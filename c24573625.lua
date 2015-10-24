@@ -70,5 +70,5 @@ function c24573625.atkcon2(e)
 	return e:GetHandler():IsDirectAttacked()
 end
 function c24573625.tglimit(e,re,c)
-	return c:IsLocation(LOCATION_MZONE) and c~=e:GetHandler() and c:IsSetCard(0xab)
+	return c:IsFaceup() and c:IsSetCard(0x2b) and c~=e:GetHandler()
 end
