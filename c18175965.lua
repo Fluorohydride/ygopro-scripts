@@ -104,7 +104,7 @@ function c18175965.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c18175965.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT) then return end
+	if Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT)==0 then return end
 	if c:IsRelateToEffect(e) then
 		Duel.SpecialSummon(c,0,tp,tp,true,true,POS_FACEUP)
 	end
