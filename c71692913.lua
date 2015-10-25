@@ -53,7 +53,7 @@ function c71692913.xyzlv(e,c,rc)
 	return c:GetRank()
 end
 function c71692913.disfilter(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT) and not c:IsDisabled()
+	return c:IsAttribute(ATTRIBUTE_LIGHT) and aux.disfilter1(c)
 end
 function c71692913.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c71692913.disfilter(chkc) end
