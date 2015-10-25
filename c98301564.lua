@@ -40,9 +40,8 @@ function c98301564.costchange(e,re,rp,val)
 		return val
 	end
 end
-
 function c98301564.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_EFFECT+REASON_BATTLE)
+	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0
 end
 function c98301564.cfilter(c)
 	return c:IsType(TYPE_TRAP) and c:IsType(TYPE_COUNTER) and c:IsAbleToHand()
@@ -63,4 +62,3 @@ function c98301564.regop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
-

@@ -17,7 +17,7 @@ function c10678778.initial_effect(c)
 	--destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(10678778,1))
-	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_DESTROY)
+	e2:SetCategory(CATEGORY_TODECK+CATEGORY_DESTROY)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -28,12 +28,15 @@ function c10678778.initial_effect(c)
 	e2:SetOperation(c10678778.desop)
 	c:RegisterEffect(e2)
 end
+function c10678778.rmfilter(c)
+	return c:IsFacedown() and c:IsAbleToRemove()
+end
 function c10678778.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFieldGroupCount(1-tp,LOCATION_EXTRA,0)>0 end
+	if chk==0 then return Duel.IsExistingMatchingCard(c10678778.rmfilter,tp,0,LOCATION_EXTRA,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,LOCATION_EXTRA)
 end
 function c10678778.rmop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetFieldGroup(1-tp,LOCATION_EXTRA,0)
+	local g=Duel.GetMatchingGroup(c10678778.rmfilter,tp,0,LOCATION_EXTRA,nil)
 	if g:GetCount()==0 then return end
 	local tc=g:RandomSelect(tp,1):GetFirst()
 	Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
@@ -54,7 +57,7 @@ function c10678778.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c10678778.filter(c,tp)
 	local ctype=bit.band(c:GetType(),TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)
-	return c:IsFaceup() and ctype~=0 and c:IsAbleToHand()
+	return c:IsFaceup() and ctype~=0 and c:IsAbleToExtra()
 		and Duel.IsExistingMatchingCard(c10678778.filter2,tp,0,LOCATION_MZONE,1,nil,ctype)
 end
 function c10678778.filter2(c,ctype)
@@ -63,16 +66,16 @@ end
 function c10678778.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(1-tp) and c10678778.filter(chkc,tp) end
 	if chk==0 then return Duel.IsExistingTarget(c10678778.filter,tp,0,LOCATION_REMOVED,1,nil,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectTarget(tp,c10678778.filter,tp,0,LOCATION_REMOVED,1,1,nil,tp)
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,1,0,0)
 	local ctype=bit.band(g:GetFirst():GetType(),TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)
 	local dg=Duel.GetMatchingGroup(c10678778.filter2,tp,0,LOCATION_MZONE,nil,ctype)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,dg,1,0,0)
 end
 function c10678778.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 then
+	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)~=0 then
 		local ctype=bit.band(tc:GetType(),TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local g=Duel.SelectMatchingCard(tp,c10678778.filter2,tp,0,LOCATION_MZONE,1,1,nil,ctype)

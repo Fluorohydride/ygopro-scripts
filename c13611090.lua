@@ -40,8 +40,7 @@ function c13611090.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(tc:GetDefence()*2)
 		tc:RegisterEffect(e2)
 		local e3=Effect.CreateEffect(e:GetHandler())
-		e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-		e3:SetRange(LOCATION_MZONE)
+		e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
 		e3:SetCode(EVENT_PRE_BATTLE_DAMAGE)
 		e3:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+RESET_END)
 		e3:SetCondition(c13611090.rdcon)
@@ -49,7 +48,6 @@ function c13611090.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e3)
 	end
 end
-
 function c13611090.rdcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp
 end
