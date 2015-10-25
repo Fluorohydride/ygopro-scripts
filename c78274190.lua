@@ -65,6 +65,7 @@ function c78274190.cacon(e,tp,eg,ep,ev,re,r,rp)
 	else return false end
 end
 function c78274190.caop(e,tp,eg,ep,ev,re,r,rp)
+	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=e:GetLabelObject()
 	if tc:IsFaceup() and tc:IsControler(tp) and tc:IsRelateToBattle() then
 		Duel.ChainAttack()
