@@ -18,10 +18,11 @@ function c98301564.initial_effect(c)
 	c:RegisterEffect(e2)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
-	e3:SetCode(EFFECT_DISCARD_COST_CHANGE)
+	e3:SetCode(EFFECT_DISCARD_HAND_CHANGE)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e3:SetRange(LOCATION_PZONE)
 	e3:SetTargetRange(1,0)
+	e3:SetValue(c98301564.valcheck)
 	c:RegisterEffect(e3)
 	--search
 	local e4=Effect.CreateEffect(c)
@@ -34,13 +35,16 @@ function c98301564.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c98301564.costchange(e,re,rp,val)
-	if re and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsType(TYPE_TRAP) and re:GetHandler():IsType(TYPE_COUNTER) then
+	if re and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_TRAP) and re:GetHandler():IsType(TYPE_COUNTER) then
 		return 0
 	else
 		return val
 	end
 end
-
+function c98301564.valcheck(e,re,r,rp)
+	return bit.band(r,REASON_COST)~=0 and re:IsHasType(EFFECT_TYPE_ACTIVATE)
+		and re:IsActiveType(TYPE_TRAP) and re:GetHandler():IsType(TYPE_COUNTER)
+end
 function c98301564.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT+REASON_BATTLE)
 end
@@ -63,4 +67,3 @@ function c98301564.regop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
-
