@@ -48,22 +48,22 @@ end
 function c22638495.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
-function c22638495.spfilter1(c,tp)
-	return c:IsSetCard(0xc7) and c:IsType(TYPE_PENDULUM) and c:IsCanBeFusionMaterial()
-		and Duel.CheckReleaseGroup(tp,c22638495.spfilter2,1,c)
+function c22638495.spfilter1(c,tp,fc)
+	return c:IsSetCard(0xc7) and c:IsType(TYPE_PENDULUM) and c:IsCanBeFusionMaterial(fc)
+		and Duel.CheckReleaseGroup(tp,c22638495.spfilter2,1,c,fc)
 end
-function c22638495.spfilter2(c)
-	return c:IsType(TYPE_PENDULUM) and c:IsCanBeFusionMaterial()
+function c22638495.spfilter2(c,fc)
+	return c:IsType(TYPE_PENDULUM) and c:IsCanBeFusionMaterial(fc)
 end
 function c22638495.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and Duel.CheckReleaseGroup(tp,c22638495.spfilter1,1,nil,tp)
+		and Duel.CheckReleaseGroup(tp,c22638495.spfilter1,1,nil,tp,c)
 end
 function c22638495.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g1=Duel.SelectReleaseGroup(tp,c22638495.spfilter1,1,1,nil,tp)
-	local g2=Duel.SelectReleaseGroup(tp,c22638495.spfilter2,1,1,g1:GetFirst())
+	local g1=Duel.SelectReleaseGroup(tp,c22638495.spfilter1,1,1,nil,tp,c)
+	local g2=Duel.SelectReleaseGroup(tp,c22638495.spfilter2,1,1,g1:GetFirst(),c)
 	g1:Merge(g2)
 	c:SetMaterial(g1)
 	Duel.Release(g1,REASON_COST+REASON_FUSION+REASON_MATERIAL)

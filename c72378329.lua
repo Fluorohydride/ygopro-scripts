@@ -42,22 +42,22 @@ end
 function c72378329.splimit(e,se,sp,st)
 	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
 end
-function c72378329.spfilter1(c,tp)
-	return c:IsRace(RACE_DRAGON) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsCanBeFusionMaterial()
-		and Duel.CheckReleaseGroup(tp,c72378329.spfilter2,1,c)
+function c72378329.spfilter1(c,tp,fc)
+	return c:IsRace(RACE_DRAGON) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsCanBeFusionMaterial(fc)
+		and Duel.CheckReleaseGroup(tp,c72378329.spfilter2,1,c,fc)
 end
-function c72378329.spfilter2(c)
-	return c:IsRace(RACE_BEAST) and c:IsCanBeFusionMaterial()
+function c72378329.spfilter2(c,fc)
+	return c:IsRace(RACE_BEAST) and c:IsCanBeFusionMaterial(fc)
 end
 function c72378329.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and Duel.CheckReleaseGroup(tp,c72378329.spfilter1,1,nil,tp)
+		and Duel.CheckReleaseGroup(tp,c72378329.spfilter1,1,nil,tp,c)
 end
 function c72378329.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g1=Duel.SelectReleaseGroup(tp,c72378329.spfilter1,1,1,nil,tp)
-	local g2=Duel.SelectReleaseGroup(tp,c72378329.spfilter2,1,1,g1:GetFirst())
+	local g1=Duel.SelectReleaseGroup(tp,c72378329.spfilter1,1,1,nil,tp,c)
+	local g2=Duel.SelectReleaseGroup(tp,c72378329.spfilter2,1,1,g1:GetFirst(),c)
 	g1:Merge(g2)
 	c:SetMaterial(g1)
 	Duel.Release(g1,REASON_COST+REASON_FUSION+REASON_MATERIAL)
