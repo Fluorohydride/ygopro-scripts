@@ -42,9 +42,8 @@ function c80532587.initial_effect(c)
 end
 function c80532587.sprfilter1(c,tp,fc)
 	return c:IsType(TYPE_SYNCHRO) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc)
-		and Duel.IsExistingMatchingCard(c80532587.sprfilter2,tp,LOCATION_MZONE,0,1,c)
 end
-function c80532587.sprfilter2(c,fc)
+function c80532587.sprfilter2(c,tp,fc)
 	return c:IsType(TYPE_XYZ) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc)
 end
 function c80532587.sprcon(e,c)
@@ -52,12 +51,13 @@ function c80532587.sprcon(e,c)
 	local tp=c:GetControler()
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
 		and Duel.IsExistingMatchingCard(c80532587.sprfilter1,tp,LOCATION_MZONE,0,1,nil,tp,c)
+		and Duel.IsExistingMatchingCard(c80532587.sprfilter2,tp,LOCATION_MZONE,0,1,nil,tp,c)
 end
 function c80532587.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g1=Duel.SelectMatchingCard(tp,c80532587.sprfilter1,tp,LOCATION_MZONE,0,1,1,nil,tp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectMatchingCard(tp,c80532587.sprfilter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst(),c)
+	local g2=Duel.SelectMatchingCard(tp,c80532587.sprfilter2,tp,LOCATION_MZONE,0,1,1,nil,tp,c)
 	g1:Merge(g2)
 	c:SetMaterial(g1)
 	Duel.SendtoGrave(g1,REASON_COST)
