@@ -30,10 +30,10 @@ function c53724621.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c53724621.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_PENDULUM) and re:GetHandler():IsSetCard(0x9f)
+	return rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_PENDULUM) and re:GetHandler():IsSetCard(0x9f) and e:GetHandler()~=re:GetHandler()
 end
 function c53724621.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then Duel.IsPlayerCanDraw(tp,1) end
+	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c53724621.drop(e,tp,eg,ep,ev,re,r,rp)
