@@ -42,7 +42,7 @@ function c80532587.initial_effect(c)
 end
 function c80532587.sprfilter1(c,tp,fc)
 	return c:IsType(TYPE_SYNCHRO) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc)
-		and Duel.IsExistingMatchingCard(c80532587.sprfilter2,tp,LOCATION_MZONE,0,1,c)
+		and Duel.IsExistingMatchingCard(c80532587.sprfilter2,tp,LOCATION_MZONE,0,1,c,fc)
 end
 function c80532587.sprfilter2(c,fc)
 	return c:IsType(TYPE_XYZ) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc)
