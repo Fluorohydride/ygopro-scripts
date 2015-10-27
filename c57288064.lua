@@ -32,7 +32,7 @@ end
 function c57288064.filter(c,tp)
 	local atk=c:GetAttack()
 	return c:IsFaceup() and c:IsRace(RACE_ZOMBIE) and atk>=0 and c:IsAbleToDeck()
-		and Duel.IsExistingMatchingCard(c57288064.posfilter,tp,LOCATION_MZONE,0,1,nil,atk)
+		and Duel.IsExistingMatchingCard(c57288064.posfilter,tp,0,LOCATION_MZONE,1,nil,atk)
 end
 function c57288064.posfilter(c,atk)
 	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsAttackBelow(atk)
