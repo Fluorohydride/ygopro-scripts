@@ -52,6 +52,7 @@ function c27564031.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ShuffleDeck(tp)
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
 		local tg=sg:Select(1-tp,1,1,nil)
+		tg=sg:RandomSelect(1-tp,1)
 		local tc=tg:GetFirst()
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
