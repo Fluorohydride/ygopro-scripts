@@ -33,8 +33,8 @@ function c3428069.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c3428069.cfilter(c,e,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsControler(1-tp) and c:IsLocation(LOCATION_GRAVE)
-		and c:IsReason(REASON_EFFECT+REASON_BATTLE) and c:IsCanBeEffectTarget(e)
+	return c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==1-tp 
+		and c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_EFFECT+REASON_BATTLE)
 end
 function c3428069.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c3428069.cfilter,1,nil,e,tp)
@@ -79,7 +79,7 @@ end
 function c3428069.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetEquipGroup():IsExists(c3428069.tgfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=e:GetHandler():GetEquipGroup():FilterSelect(tp,1,1,nil,tp)
+	local g=e:GetHandler():GetEquipGroup():FilterSelect(tp,c3428069.tgfilter,1,1,nil,tp)
 	e:SetLabel(g:GetFirst():GetRace())
 	Duel.SendtoGrave(g,REASON_COST)
 end
