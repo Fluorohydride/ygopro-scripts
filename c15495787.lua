@@ -28,7 +28,7 @@ function c15495787.sumcon(e)
 	return Duel.IsExistingMatchingCard(c15495787.sfilter,e:GetHandlerPlayer(),LOCATION_GRAVE,0,1,nil)
 end
 function c15495787.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep==tp and c15495787.sumcon(e)
+	return ep==tp and not c15495787.sumcon(e)
 end
 function c15495787.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if Duel.IsExistingMatchingCard(c15495787.sfilter,tp,LOCATION_GRAVE,0,1,nil) then return false end
