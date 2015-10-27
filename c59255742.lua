@@ -84,11 +84,11 @@ function c59255742.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c59255742.filter(c,tp)
-	return c:GetSummonPlayer()~=tp and c:IsControlerCanBeChanged()
+	return c:GetSummonPlayer()==1-tp and c:IsControlerCanBeChanged()
 end
 function c59255742.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=eg:Filter(c59255742.filter,nil,tp)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>=g:GetCount()-1 end
+	if chk==0 then return g:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>=g:GetCount()-1 end
 	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,g:GetCount(),0,0)
 end
