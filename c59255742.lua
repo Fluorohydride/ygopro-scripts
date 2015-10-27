@@ -3,7 +3,7 @@ function c59255742.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c59255742.ffilter,2,false)
-	--
+	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetCode(EVENT_BATTLE_DESTROYING)
@@ -12,7 +12,7 @@ function c59255742.initial_effect(c)
 	e1:SetTarget(c59255742.sptg)
 	e1:SetOperation(c59255742.spop)
 	c:RegisterEffect(e1)
-	--
+	--special summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
@@ -22,7 +22,7 @@ function c59255742.initial_effect(c)
 	e2:SetTarget(c59255742.sptg2)
 	e2:SetOperation(c59255742.spop)
 	c:RegisterEffect(e2)
-	--
+	--take control
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_CONTROL)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
@@ -32,7 +32,7 @@ function c59255742.initial_effect(c)
 	e3:SetTarget(c59255742.target)
 	e3:SetOperation(c59255742.operation)
 	c:RegisterEffect(e3)
-	--
+	--return control
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_LEAVE_FIELD)
@@ -84,11 +84,11 @@ function c59255742.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c59255742.filter(c,tp)
-	return c:GetSummonPlayer()~=tp and c:IsControlerCanBeChanged()
+	return c:GetSummonPlayer()==1-tp and c:IsControlerCanBeChanged()
 end
 function c59255742.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=eg:Filter(c59255742.filter,nil,tp)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>=g:GetCount()-1 end
+	if chk==0 then return g:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>=g:GetCount()-1 end
 	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,g:GetCount(),0,0)
 end
