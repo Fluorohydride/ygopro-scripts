@@ -37,24 +37,24 @@ end
 function c27346636.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
-function c27346636.spfilter1(c,tp)
-	return c:IsCode(78868776) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(nil,true)
-		and Duel.IsExistingMatchingCard(c27346636.spfilter2,tp,LOCATION_MZONE,0,2,c)
+function c27346636.spfilter1(c,tp,fc)
+	return c:IsCode(78868776) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(fc,true)
+		and Duel.IsExistingMatchingCard(c27346636.spfilter2,tp,LOCATION_MZONE,0,2,c,fc)
 end
-function c27346636.spfilter2(c)
-	return c:IsSetCard(0x19) and c:IsCanBeFusionMaterial() and c:IsAbleToDeckOrExtraAsCost()
+function c27346636.spfilter2(c,fc)
+	return c:IsSetCard(0x19) and c:IsCanBeFusionMaterial(fc) and c:IsAbleToDeckOrExtraAsCost()
 end
 function c27346636.sprcon(e,c)
 	if c==nil then return true end 
 	local tp=c:GetControler()
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-3
-		and Duel.IsExistingMatchingCard(c27346636.spfilter1,tp,LOCATION_ONFIELD,0,1,nil,tp)
+		and Duel.IsExistingMatchingCard(c27346636.spfilter1,tp,LOCATION_ONFIELD,0,1,nil,tp,c)
 end
 function c27346636.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(27346636,2))
-	local g1=Duel.SelectMatchingCard(tp,c27346636.spfilter1,tp,LOCATION_ONFIELD,0,1,1,nil,tp)
+	local g1=Duel.SelectMatchingCard(tp,c27346636.spfilter1,tp,LOCATION_ONFIELD,0,1,1,nil,tp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(27346636,3))
-	local g2=Duel.SelectMatchingCard(tp,c27346636.spfilter2,tp,LOCATION_MZONE,0,2,2,g1:GetFirst())
+	local g2=Duel.SelectMatchingCard(tp,c27346636.spfilter2,tp,LOCATION_MZONE,0,2,2,g1:GetFirst(),c)
 	g1:Merge(g2)
 	local tc=g1:GetFirst()
 	while tc do

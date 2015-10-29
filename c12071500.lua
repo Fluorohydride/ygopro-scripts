@@ -10,10 +10,10 @@ function c12071500.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c12071500.filter0(c)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
+	return c:IsAbleToRemove()
 end
 function c12071500.filter1(c,e)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
+	return c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
 end
 function c12071500.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x102) and (not f or f(c))

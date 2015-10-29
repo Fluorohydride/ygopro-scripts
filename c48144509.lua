@@ -11,16 +11,16 @@ function c48144509.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c48144509.filter0(c)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
+	return c:IsAbleToGrave()
 end
 function c48144509.filter1(c,e)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
+	return c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
 end
 function c48144509.exfilter0(c)
-	return c:IsSetCard(0x99) and c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
+	return c:IsSetCard(0x99) and c:IsAbleToGrave()
 end
 function c48144509.exfilter1(c,e)
-	return c:IsSetCard(0x99) and c:IsCanBeFusionMaterial() and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
+	return c:IsSetCard(0x99) and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
 end
 function c48144509.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsRace(RACE_DRAGON) and (not f or f(c))

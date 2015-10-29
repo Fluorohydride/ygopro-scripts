@@ -51,18 +51,18 @@ end
 function c29357956.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
-function c29357956.spfilter(c)
-	return c:IsSetCard(0x19) and c:IsCanBeFusionMaterial() and c:IsAbleToDeckOrExtraAsCost()
+function c29357956.spfilter(c,fc)
+	return c:IsSetCard(0x19) and c:IsCanBeFusionMaterial(fc) and c:IsAbleToDeckOrExtraAsCost()
 end
 function c29357956.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-3
-		and Duel.IsExistingMatchingCard(c29357956.spfilter,tp,LOCATION_MZONE,0,3,nil)
+		and Duel.IsExistingMatchingCard(c29357956.spfilter,tp,LOCATION_MZONE,0,3,nil,c)
 end
 function c29357956.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g=Duel.SelectMatchingCard(tp,c29357956.spfilter,tp,LOCATION_MZONE,0,3,3,nil)
+	local g=Duel.SelectMatchingCard(tp,c29357956.spfilter,tp,LOCATION_MZONE,0,3,3,nil,c)
 	local cg=g:Filter(Card.IsFacedown,nil)
 	if cg:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,cg)

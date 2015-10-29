@@ -20,15 +20,16 @@ function c1784686.initial_effect(c)
 end
 function c1784686.tgfilter0(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0xa2)
-		and c:IsCanBeFusionMaterial() and Duel.IsExistingMatchingCard(c1784686.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetCode())
+		and Duel.IsExistingMatchingCard(c1784686.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c)
 end
 function c1784686.tgfilter(c,e,tp)
-	return c:IsFaceup() and c:IsSetCard(0xa2)
-		and c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
-		and Duel.IsExistingMatchingCard(c1784686.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetCode())
+	return c:IsFaceup() and c:IsSetCard(0xa2) and not c:IsImmuneToEffect(e)
+		and Duel.IsExistingMatchingCard(c1784686.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c)
 end
-function c1784686.spfilter(c,e,tp,code)
+function c1784686.spfilter(c,e,tp,gc)
+	if not gc:IsCanBeFusionMaterial(c) then return false end
 	if not c.material_count or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) then return false end
+	local code=gc:GetCode()
 	for i=1,c.material_count do
 		if code==c.material[i] then return true end
 	end
@@ -45,7 +46,7 @@ end
 function c1784686.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<0 then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsCanBeFusionMaterial() and not tc:IsImmuneToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,c1784686.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetCode())
 		local sc=sg:GetFirst()

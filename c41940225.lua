@@ -22,10 +22,10 @@ function c41940225.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c41940225.filter0(c,tp)
-	return (c:IsControler(tp) or c:IsFaceup()) and c:IsCanBeFusionMaterial()
+	return c:IsControler(tp) or c:IsFaceup()
 end
 function c41940225.filter1(c,e,tp)
-	return (c:IsControler(tp) or c:IsFaceup()) and c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
+	return (c:IsControler(tp) or c:IsFaceup()) and not c:IsImmuneToEffect(e)
 end
 function c41940225.filter2(c,e,tp,m,f,chkf)
 	return (c:IsCode(98502113) or c:IsCode(86240887)) and (not f or f(c))

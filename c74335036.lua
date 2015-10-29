@@ -21,7 +21,7 @@ function c74335036.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c74335036.filter1(c,e)
-	return c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
+	return not c:IsImmuneToEffect(e)
 end
 function c74335036.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and (not f or f(c))
