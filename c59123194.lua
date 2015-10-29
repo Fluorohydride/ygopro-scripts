@@ -20,7 +20,7 @@ function c59123194.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetCode(EVENT_BATTLE_DESTROYING)
-	e2:SetCondition(c59123194.damcon)
+	e2:SetCondition(aux.bdocon)
 	e2:SetTarget(c59123194.damtg)
 	e2:SetOperation(c59123194.damop)
 	c:RegisterEffect(e2)
@@ -48,11 +48,6 @@ function c59123194.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tc)
 	end
-end
-function c59123194.damcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local bc=c:GetBattleTarget()
-	return c:IsRelateToBattle() and bc:IsLocation(LOCATION_GRAVE) and bc:IsType(TYPE_MONSTER)
 end
 function c59123194.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
