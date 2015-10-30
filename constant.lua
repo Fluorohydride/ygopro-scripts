@@ -1,6 +1,6 @@
 --Card id
 MIN_ID	=1000		--4 digit, by DataManager::GetDesc()
-MAX_ID	=999999999	--9 digit, by Auxiliary.Stringid(), field::select_chain()
+MAX_ID	=999999999	--9 digit, by field::select_chain()
 --Locations 区域
 LOCATION_DECK		=0x01		--卡组
 LOCATION_HAND		=0x02		--手牌
@@ -175,7 +175,7 @@ PHASE_DRAW			=0x01	--抽卡阶段
 PHASE_STANDBY		=0x02	--准备阶段
 PHASE_MAIN1			=0x04	--主要阶段1
 PHASE_BATTLE		=0x08	--战斗阶段
-PHASE_DAMAGE		=0x10	--伤害计算前
+PHASE_DAMAGE		=0x10	--伤害步驟
 PHASE_DAMAGE_CAL	=0x20	--伤害计算时
 PHASE_MAIN2			=0x40	--主要阶段2
 PHASE_END			=0x80	--结束阶段
@@ -680,8 +680,8 @@ EFFECT_COUNT_CODE_OATH			=0x10000000 --使用次数限制(誓约效果)
 EFFECT_COUNT_CODE_DUEL			=0x20000000 --决斗中使用次数
 EFFECT_COUNT_CODE_SINGLE		=0x1		--多个效果公共使用次数
 --特殊选项
-DUEL_TEST_MODE			=0x01		--测试模式？坑了？
-DUEL_ATTACK_FIRST_TURN	=0x02		--第一回合可以攻击（用于残局
+DUEL_TEST_MODE			=0x01		--测试模式(目前暫無)
+DUEL_ATTACK_FIRST_TURN	=0x02		--第一回合可以攻击(用于残局)
 DUEL_NO_CHAIN_HINT		=0x04		--不提示连锁
 DUEL_ENABLE_PRIORITY	=0x08		--启动优先权
 DUEL_PSEUDO_SHUFFLE		=0x10		--不洗牌
@@ -699,3 +699,7 @@ ACTIVITY_BATTLE_PHASE	=6		-- not available in custom counter
 ACTIVITY_CHAIN			=7		-- only available in custom counter
 --announce type（宣言类型，CATEGORY_ANNOUNCE的OperationInfo的target_param）
 ANNOUNCE_CARD			=1		--宣言卡片
+--special cards
+CARD_COF				=12470447	--邪惡的儀式
+CARD_MARINE_DOLPHIN		=78734254	--海洋海豚
+CARD_TWINKLE_MOSS		=13857930	--光輝苔蘚
