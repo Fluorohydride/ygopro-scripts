@@ -54,7 +54,7 @@ function c84305651.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	elseif b1 then
 		op=Duel.SelectOption(tp,aux.Stringid(84305651,1))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(84305651,1))+1
+		op=Duel.SelectOption(tp,aux.Stringid(84305651,2))+1
 	end
 	if op==0 then
 		Duel.SetTargetCard(bc)
