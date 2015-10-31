@@ -50,15 +50,20 @@ function c84305651.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
-		op=Duel.SelectOption(tp,aux.Stringid(84305651,1),aux.Stringid(84305651,2))+1
+		op=Duel.SelectOption(tp,aux.Stringid(84305651,1),aux.Stringid(84305651,2))
+	elseif b1 then
+		op=Duel.SelectOption(tp,aux.Stringid(84305651,1))
+	else
+		op=Duel.SelectOption(tp,aux.Stringid(84305651,1))+1
 	end
-	if op==1 then
+	if op==0 then
 		Duel.SetTargetCard(bc)
+		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,bc,1,0,0)
 	end
 	e:SetLabel(op)
 end
 function c84305651.spop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetLabel()==1 then
+	if e:GetLabel()==0 then
 		local tc=Duel.GetFirstTarget()
 		if tc:IsRelateToEffect(e) then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
