@@ -91,6 +91,7 @@ function c42776855.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c42776855.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	if not c:IsRelateToEffect(e) then return end
 	local tc=c:GetFirstCardTarget()
 	local bc=tc:GetBattleTarget()
 	local atk=bc:GetBaseAttack()
