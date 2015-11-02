@@ -268,7 +268,7 @@ EFFECT_FLAG_OWNER_RELATE	=0x1000000	--持續成為對象
 EFFECT_FLAG_AVAILABLE_BD	=0x2000000	--战斗破坏确定时效果也适用（纳祭之魔 地狱战士）
 EFFECT_FLAG_CLIENT_HINT		=0x4000000	--客户端提示
 EFFECT_FLAG_CHAIN_UNIQUE	=0x8000000	--同一组连锁只能发动一次
-EFFECT_FLAG_NAGA			=0x10000000 --神卡纳迦！
+EFFECT_FLAG_NAGA			=0x10000000 --N/A
 EFFECT_FLAG_COF				=0x20000000 --N/A
 EFFECT_FLAG_CVAL_CHECK		=0x40000000	--以卡为COST的诱发效果需要使用
 EFFECT_FLAG_IMMEDIATELY_APPLY	=0x80000000	--卡在发动时效果就立即适用（卡通王國）
@@ -703,6 +703,5 @@ ACTIVITY_CHAIN			=7		-- only available in custom counter
 --announce type（宣言类型，CATEGORY_ANNOUNCE的OperationInfo的target_param）
 ANNOUNCE_CARD			=1		--宣言卡片
 --special cards
-CARD_COF				=12470447	--邪惡的儀式
 CARD_MARINE_DOLPHIN		=78734254	--海洋海豚
 CARD_TWINKLE_MOSS		=13857930	--光輝苔蘚
