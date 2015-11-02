@@ -9,17 +9,17 @@ function c15155568.initial_effect(c)
 	e1:SetTarget(c15155568.target)
 	e1:SetOperation(c15155568.activate)
 	c:RegisterEffect(e1)
-	--
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_QUICK_O)
-	e4:SetCategory(CATEGORY_DISABLE)
-	e4:SetCode(EVENT_CHAINING)
-	e4:SetRange(LOCATION_GRAVE)
-	e4:SetCondition(c15155568.ngcon)
-	e4:SetCost(c15155568.ngcost)
-	e4:SetTarget(c15155568.ngtg)
-	e4:SetOperation(c15155568.ngop)
-	c:RegisterEffect(e4)
+	--to hand
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_QUICK_O)
+	e2:SetCategory(CATEGORY_DISABLE)
+	e2:SetCode(EVENT_CHAINING)
+	e2:SetRange(LOCATION_GRAVE)
+	e2:SetCondition(c15155568.ngcon)
+	e2:SetCost(c15155568.ngcost)
+	e2:SetTarget(c15155568.ngtg)
+	e2:SetOperation(c15155568.ngop)
+	c:RegisterEffect(e2)
 end
 function c15155568.cfilter(c)
 	return c:IsFaceup() and (c:IsCode(98502113) or c:IsCode(86240887))
@@ -39,6 +39,7 @@ end
 function c15155568.ngcon(e,tp,eg,ep,ev,re,r,rp)
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
 	local loc,tg=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TARGET_CARDS)
+	if not tg then return false end
 	local tc=tg:GetFirst()
 	if tg:GetCount()~=1 or not tc:IsLocation(LOCATION_MZONE) or not tc:IsSetCard(0xd7) or tc:IsControler(1-tp) then return false end
 	return Duel.IsChainDisablable(ev) and loc~=LOCATION_DECK
