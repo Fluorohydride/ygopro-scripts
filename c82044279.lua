@@ -42,7 +42,7 @@ function c82044279.condition2(e,tp,eg,ep,ev,re,r,rp)
 	if not g or g:GetCount()~=1 then return false end
 	local tc=g:GetFirst()
 	local c=e:GetHandler()
-	return re:IsActiveType(TYPE_MONSTER) and tc:IsLevelAbove(5) and tc:IsLocation(LOCATION_MZONE)
+	return re:IsActiveType(TYPE_MONSTER) and tc:IsFaceup() and tc:IsLevelAbove(5) and tc:IsLocation(LOCATION_MZONE)
 		and not c:IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev)
 end
 function c82044279.target(e,tp,eg,ep,ev,re,r,rp,chk)
