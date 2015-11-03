@@ -1185,6 +1185,16 @@ function Auxiliary.PendOperation()
 				Duel.HintSelection(Group.FromCards(rpz))
 			end
 end
+function Auxiliary.IsMaterialListCode(c,code)
+	if not c.material_count then return false end
+	for i=1,c.material_count do
+		if code==c.material[i] then return true end
+	end
+	return false
+end
+function Auxiliary.IsMaterialListSetCard(c,setcode)
+	return c.material_setcode and c.material_setcode==setcode
+end
 --card effect disable filter(target)
 function Auxiliary.disfilter1(c)
 	return c:IsFaceup() and not c:IsDisabled() and (not c:IsType(TYPE_NORMAL) or bit.band(c:GetOriginalType(),TYPE_EFFECT)~=0)

@@ -15,6 +15,7 @@ function c42810973.initial_effect(c)
 	e1:SetOperation(c42810973.operation)
 	c:RegisterEffect(e1)
 end
+c42810973.material_setcode=0x17
 function c42810973.tfilter(c)
 	return c:IsCode(63977008) or c:IsHasEffect(20932152)
 end
