@@ -2,6 +2,7 @@
 function c80831721.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(80831721,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -12,7 +13,7 @@ function c80831721.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atkup
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(80831721,0))
+	e2:SetDescription(aux.Stringid(80831721,1))
 	e2:SetCategory(CATEGORY_ATKCHANGE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_IGNITION)

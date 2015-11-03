@@ -2,6 +2,7 @@
 function c81994591.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(81994591,0))
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -10,7 +11,7 @@ function c81994591.initial_effect(c)
 	c:RegisterEffect(e1)
 	--indes
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(81994591,0))
+	e2:SetDescription(aux.Stringid(81994591,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCost(c81994591.indcost)
