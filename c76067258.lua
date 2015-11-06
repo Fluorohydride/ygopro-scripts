@@ -14,16 +14,6 @@ function c76067258.initial_effect(c)
 	e1:SetTarget(c76067258.target)
 	e1:SetOperation(c76067258.operation)
 	c:RegisterEffect(e1)
-	--indes
-	local e2=Effect.CreateEffect(c)
-	e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetRange(LOCATION_MZONE)
-	e2:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-	e2:SetTargetRange(LOCATION_ONFIELD,LOCATION_ONFIELD)
-	e2:SetTarget(c76067258.indtg)
-	e2:SetValue(1)
-	c:RegisterEffect(e2)
 	--desrep
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
@@ -54,10 +44,15 @@ function c76067258.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
 		tc:RegisterFlagEffect(76067258,RESET_EVENT+0x1fe0000,0,0)
+		--indes
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
+		e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_OWNER_RELATE)
+		e2:SetValue(1)
+		e2:SetReset(RESET_EVENT+0x1fe0000)
+		tc:RegisterEffect(e2)
 	end
-end
-function c76067258.indtg(e,c)
-	return e:GetHandler():IsHasCardTarget(c) and c:GetFlagEffect(76067258)~=0
 end
 function c76067258.repfilter(c,tp)
 	return c:IsControler(tp) and c:GetFlagEffect(76067258)~=0
