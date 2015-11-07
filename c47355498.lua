@@ -80,7 +80,12 @@ function c47355498.discheck(ev,category,re,im0,im1,targets)
 	if not ex then return false end
 	if tg and tg:GetCount()>0 then
 		if targets then
-			return tg:IsExists(c47355498.disfilter1,1,nil,im0,im1,targets)
+			if targets:GetCount()==1 then
+				local tc=targets:GetFirst()
+				return tc:IsHasEffect(EFFECT_NECRO_VALLEY) and tc~=re:GetHandler() and tc:GetLocation()==LOCATION_GRAVE
+			else
+				return tg:IsExists(c47355498.disfilter1,1,nil,im0,im1,targets)
+			end 
 		else
 			return tg:IsExists(c47355498.disfilter2,1,re:GetHandler(),im0,im1)
 		end
