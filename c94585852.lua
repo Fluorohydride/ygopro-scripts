@@ -12,7 +12,7 @@ function c94585852.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetTargetRange(1,1)
-	e2:SetCondition(c94585852.costchange)
+	e2:SetValue(c94585852.costchange)
 	c:RegisterEffect(e2)
 	--search
 	local e3=Effect.CreateEffect(c)
