@@ -26,7 +26,7 @@ function c11760174.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(c11760174.aclimit)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	Duel.RegisterFlagEffect(tp,11760174,RESET_PHASE+RESET_END,0,1)
+	Duel.RegisterFlagEffect(tp,11760174,RESET_PHASE+PHASE_END,0,1)
 end
 function c11760174.aclimit(e,re,tp)
 	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP)

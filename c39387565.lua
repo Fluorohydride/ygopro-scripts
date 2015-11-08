@@ -59,7 +59,7 @@ function c39387565.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c39387565.spfilter1,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 		and Duel.GetFlagEffect(tp,39387565)==0 end
-	Duel.RegisterFlagEffect(tp,39387565,RESET_PHASE+RESET_END,0,1)
+	Duel.RegisterFlagEffect(tp,39387565,RESET_PHASE+PHASE_END,0,1)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c39387565.spfilter1,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)

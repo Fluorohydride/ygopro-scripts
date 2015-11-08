@@ -69,7 +69,7 @@ function c19508728.atkop(e,tp,eg,ep,ev,re,r,rp)
 		else
 			e1:SetValue(def+100)
 		end
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+RESET_DAMAGE_CAL)
+		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE_CAL)
 		ec:RegisterEffect(e1)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_SET_DEFENCE_FINAL)

@@ -69,7 +69,7 @@ end
 function c92266279.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000) and Duel.GetFlagEffect(tp,92266279)==0 end
 	Duel.PayLPCost(tp,1000)
-	Duel.RegisterFlagEffect(tp,92266279,RESET_PHASE+RESET_END,0,1)
+	Duel.RegisterFlagEffect(tp,92266279,RESET_PHASE+PHASE_END,0,1)
 end
 function c92266279.thfilter(c)
 	return c:IsSetCard(0xc9) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
@@ -95,7 +95,7 @@ function c92266279.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(500)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,500)
-	Duel.RegisterFlagEffect(tp,92266280,RESET_PHASE+RESET_END,0,1)
+	Duel.RegisterFlagEffect(tp,92266280,RESET_PHASE+PHASE_END,0,1)
 end
 function c92266279.recop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end

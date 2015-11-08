@@ -145,7 +145,7 @@ STATUS_BATTLE_DESTROYED		=0x4000		--战斗破坏确定後尚未移動
 STATUS_COPYING_EFFECT		=0x8000		--复制效果
 STATUS_CHAINING				=0x10000	--正在連鎖串中
 STATUS_SUMMON_DISABLED		=0x20000	--召唤无效後尚未移動
-STATUS_ACTIVATE_DISABLED	=0x40000	--发动无效
+STATUS_ACTIVATE_DISABLED	=0x40000	--发动无效後尚未移動
 STATUS_UNSUMMONABLE_CARD	=0x80000	--(N/A)
 STATUS_UNION				=0x100000	--同盟
 STATUS_ATTACK_CANCELED		=0x200000	--攻击取消（卷回？）
@@ -198,14 +198,14 @@ CHAININFO_CHAIN_ID				=0x800	--连锁ID
 CHAININFO_TYPE					=0x1000	--连锁类型
 CHAININFO_EXTTYPE				=0x2000	--连锁额外类型
 --========== Reset ==========	--重置条件（注意：重置条件可以多个相加）
-RESET_DRAW			=PHASE_DRAW			--抽卡阶段重置
-RESET_STANDBY		=PHASE_STANDBY		--准备阶段重置
-RESET_MAIN1			=PHASE_MAIN1		--主要阶段1重置
-RESET_BATTLE		=PHASE_BATTLE		--战斗阶段重置
-RESET_DAMAGE		=PHASE_DAMAGE		--伤害计算前重置
-RESET_DAMAGE_CAL	=PHASE_DAMAGE_CAL	--伤害计算时重置
-RESET_MAIN2			=PHASE_MAIN2		--主要阶段2重置
-RESET_END			=PHASE_END			--结束阶段重置
+--PHASE_DRAW		--抽卡阶段重置
+--PHASE_STANDBY		--准备阶段重置
+--PHASE_MAIN1		--主要阶段1重置
+--PHASE_BATTLE		--战斗阶段重置
+--PHASE_DAMAGE		--伤害计算前重置
+--PHASE_DAMAGE_CAL	--伤害计算时重置
+--PHASE_MAIN2		--主要阶段2重置
+--PHASE_END			--结束阶段重置
 RESET_SELF_TURN		=0x0100				--自己回合结束重置
 RESET_OPPO_TURN		=0x0200				--对方回合结束重置
 RESET_PHASE			=0x0400				--阶段结束重置(一般和上面那些阶段配合使用)

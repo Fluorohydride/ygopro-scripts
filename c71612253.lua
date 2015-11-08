@@ -41,7 +41,7 @@ function c71612253.ovfilter(c)
 end
 function c71612253.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if bit.band(r,REASON_EFFECT)~=0 then
-		Duel.RegisterFlagEffect(ep,71612253,RESET_PHASE+RESET_END,0,1)
+		Duel.RegisterFlagEffect(ep,71612253,RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c71612253.condition(e,tp,eg,ep,ev,re,r,rp)

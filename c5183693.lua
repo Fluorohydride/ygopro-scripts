@@ -63,7 +63,7 @@ function c5183693.atkup(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)
-	e1:SetReset(RESET_PHASE+RESET_DAMAGE_CAL)
+	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
 	if a==eqc then
 		e1:SetValue((ld-la)*500)
 		a:RegisterEffect(e1)

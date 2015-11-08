@@ -21,7 +21,7 @@ end
 function c33883834.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
-	Duel.RegisterFlagEffect(tp,33883834,RESET_PHASE+RESET_DAMAGE_CAL,0,1)
+	Duel.RegisterFlagEffect(tp,33883834,RESET_PHASE+PHASE_DAMAGE_CAL,0,1)
 end
 function c33883834.op(e,tp,eg,ep,ev,re,r,rp,chk)
 	local a=Duel.GetAttacker()

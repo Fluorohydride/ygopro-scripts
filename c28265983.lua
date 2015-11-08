@@ -79,7 +79,7 @@ function c28265983.destg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c28265983.desfilter1,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
-	Duel.RegisterFlagEffect(tp,28265983,RESET_PHASE+RESET_END,0,1)
+	Duel.RegisterFlagEffect(tp,28265983,RESET_PHASE+PHASE_END,0,1)
 end
 function c28265983.desop1(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
@@ -99,7 +99,7 @@ function c28265983.descost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,lp) and Duel.GetFlagEffect(tp,28265984)==0 end
 	Duel.PayLPCost(tp,lp)
 	e:SetLabel(lp)
-	Duel.RegisterFlagEffect(tp,28265984,RESET_PHASE+RESET_END,0,1)
+	Duel.RegisterFlagEffect(tp,28265984,RESET_PHASE+PHASE_END,0,1)
 end
 function c28265983.desfilter2(c,num)
 	return c:IsFaceup() and c:IsAttackBelow(num) and c:IsDestructable()

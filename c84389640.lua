@@ -46,7 +46,7 @@ function c84389640.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local pay=Duel.AnnounceNumber(tp,table.unpack(t))
 	Duel.PayLPCost(tp,pay)
 	e:SetLabel(-pay)
-	e:GetHandler():RegisterFlagEffect(84389640,RESET_PHASE+RESET_DAMAGE,0,1)
+	e:GetHandler():RegisterFlagEffect(84389640,RESET_PHASE+PHASE_DAMAGE,0,1)
 end
 function c84389640.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tc=e:GetLabelObject()

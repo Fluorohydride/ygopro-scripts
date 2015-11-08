@@ -19,14 +19,14 @@ end
 function c79575620.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,2000) end
 	Duel.PayLPCost(tp,2000)
-	e:GetHandler():RegisterFlagEffect(79575620,RESET_PHASE+RESET_DAMAGE_CAL,0,1)
+	e:GetHandler():RegisterFlagEffect(79575620,RESET_PHASE+PHASE_DAMAGE_CAL,0,1)
 end
 function c79575620.op(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)
-	e1:SetReset(RESET_PHASE+RESET_DAMAGE_CAL)
+	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
 	e1:SetValue(3000)
 	c:RegisterEffect(e1)
 end
