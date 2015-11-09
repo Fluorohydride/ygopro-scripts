@@ -3,7 +3,6 @@ function c19406822.initial_effect(c)
 	--adjust
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetCode(EVENT_ADJUST)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetOperation(c19406822.adjustop)
@@ -31,10 +30,12 @@ function c19406822.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	if dg:GetCount()==0 or Duel.Destroy(dg,REASON_EFFECT)==0 then
 		pg:Clear()
 		pg:Merge(g)
+		pg:Sub(dg)
 	else
 		g=Duel.GetMatchingGroup(Card.IsFaceup,0,LOCATION_MZONE,LOCATION_MZONE,nil)
 		pg:Clear()
 		pg:Merge(g)
+		pg:Sub(dg)
 		Duel.Readjust()
 	end
 end
