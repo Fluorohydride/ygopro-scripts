@@ -25,7 +25,9 @@ function c3784434.seqcon(e,tp,eg,ep,ev,re,r,rp)
 		or (seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1))
 end
 function c3784434.seqop(e,tp,eg,ep,ev,re,r,rp)
-	local seq=e:GetHandler():GetSequence()
+	local c=e:GetHandler()
+	if not c:IsRelateToEffect(e) or c:IsControler(1-tp) then return end
+	local seq=c:GetSequence()
 	if (seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1))
 		or (seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1)) then
 		local flag=0
@@ -39,7 +41,7 @@ function c3784434.seqop(e,tp,eg,ep,ev,re,r,rp)
 		elseif s==4 then nseq=2
 		elseif s==8 then nseq=3
 		else nseq=4 end
-		Duel.MoveSequence(e:GetHandler(),nseq)
+		Duel.MoveSequence(c,nseq)
 	end
 end
 function c3784434.dircon(e,tp)
