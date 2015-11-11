@@ -26,6 +26,7 @@ function c81057455.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_DELAY)
 	e3:SetCode(EVENT_TO_GRAVE)
+	e3:SetCountLimit(1,81057455)
 	e3:SetCondition(c81057455.drcon)
 	e3:SetTarget(c81057455.drtg)
 	e3:SetOperation(c81057455.drop)
@@ -64,7 +65,7 @@ end
 function c81057455.posop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.ChangePosition(tc,POS_FACEDOWN_DEFENCE) then
+	if tc:IsRelateToEffect(e) and Duel.ChangePosition(tc,POS_FACEDOWN_DEFENCE)~=0 then
 		e:GetHandler():AddCounter(0x37,1)
 	end
 end
