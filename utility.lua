@@ -424,7 +424,7 @@ function Auxiliary.FOperationCode2(code1,code2,sub,insf)
 					elseif gc:IsCode(code1) then
 						g1=g:FilterSelect(tp,Card.IsCode,1,1,gc,code2)
 					else
-						g1=e:FilterSelect(tp,Card.IsCode,1,1,gc,code1)
+						g1=g:FilterSelect(tp,Card.IsCode,1,1,gc,code1)
 					end
 					Duel.SetFusionMaterial(g1)
 					return
