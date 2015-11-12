@@ -14,7 +14,7 @@ function c37675138.initial_effect(c)
 	--special summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e2:SetCode(EVENT_SPSUMMON_SUCCESS+EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e2:SetOperation(c37675138.regop)
 	c:RegisterEffect(e2)

@@ -26,6 +26,7 @@ function c49249907.initial_effect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_SPSUMMON_SUCCESS)
 		ge1:SetLabel(49249907)
+		ge1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_DAMAGE_STEP)
 		ge1:SetOperation(aux.sumreg)
 		Duel.RegisterEffect(ge1,0)
 	end

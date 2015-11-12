@@ -7,6 +7,7 @@ function c17330916.initial_effect(c)
 	e1:SetDescription(aux.Stringid(17330916,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetOperation(c17330916.regop)
 	c:RegisterEffect(e1)
 	--scale
