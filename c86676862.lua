@@ -35,6 +35,7 @@ function c86676862.initial_effect(c)
 	e5:SetValue(aux.imval1)
 	c:RegisterEffect(e5)
 end
+c86676862.dark_calling=true
 function c86676862.splimit(e,se,sp,st)
 	return st==SUMMON_TYPE_FUSION+0x10
 end
