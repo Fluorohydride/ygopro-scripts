@@ -9,20 +9,24 @@ function c15155568.initial_effect(c)
 	e1:SetTarget(c15155568.target)
 	e1:SetOperation(c15155568.activate)
 	c:RegisterEffect(e1)
-	--
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_QUICK_O)
-	e4:SetCategory(CATEGORY_DISABLE)
-	e4:SetCode(EVENT_CHAINING)
-	e4:SetRange(LOCATION_GRAVE)
-	e4:SetCondition(c15155568.ngcon)
-	e4:SetCost(c15155568.ngcost)
-	e4:SetTarget(c15155568.ngtg)
-	e4:SetOperation(c15155568.ngop)
-	c:RegisterEffect(e4)
+	--disable
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_QUICK_O)
+	e2:SetCategory(CATEGORY_DISABLE+CATEGORY_DESTROY)
+	e2:SetCode(EVENT_CHAINING)
+	e2:SetRange(LOCATION_GRAVE)
+	e2:SetCondition(c15155568.discon)
+	e2:SetCost(c15155568.discost)
+	e2:SetTarget(c15155568.distg)
+	e2:SetOperation(c15155568.disop)
+	c:RegisterEffect(e2)
 end
 function c15155568.cfilter(c)
-	return c:IsFaceup() and (c:IsCode(98502113) or c:IsCode(86240887))
+	if c:IsFacedown() or not c.material_count then return false end
+	for i=1,c.material_count do
+		if c.material[i]==78193831 then return true end
+	end
+	return false
 end
 function c15155568.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c15155568.cfilter,tp,LOCATION_MZONE,0,1,nil)
@@ -36,22 +40,26 @@ function c15155568.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_MZONE,nil)
 	Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 end
-function c15155568.ngcon(e,tp,eg,ep,ev,re,r,rp)
-	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
-	local loc,tg=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TARGET_CARDS)
-	local tc=tg:GetFirst()
-	if tg:GetCount()~=1 or not tc:IsLocation(LOCATION_MZONE) or not tc:IsSetCard(0xd7) or tc:IsControler(1-tp) then return false end
-	return Duel.IsChainDisablable(ev) and loc~=LOCATION_DECK
+function c15155568.tgfilter(c,tp)
+	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and c:IsSetCard(0xd7)
 end
-function c15155568.ngcost(e,tp,eg,ep,ev,re,r,rp,chk)
+function c15155568.discon(e,tp,eg,ep,ev,re,r,rp)
+	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return false end
+	local tg=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
+	return tg and tg:IsExists(c15155568.tgfilter,1,nil,tp) and Duel.IsChainDisablable(ev)
+end
+function c15155568.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
-function c15155568.ngtg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c15155568.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
+	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
+		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
+	end
 end
-function c15155568.ngop(e,tp,eg,ep,ev,re,r,rp)
+function c15155568.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
 	if re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)

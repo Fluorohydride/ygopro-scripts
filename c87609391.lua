@@ -81,7 +81,7 @@ function c87609391.thop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetCode(EFFECT_AVOID_BATTLE_DAMAGE)
 			e1:SetValue(1)
 			e1:SetCondition(c87609391.damcon)
-			e1:SetReset(RESET_PHASE+RESET_DAMAGE_CAL)
+			e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
 			e1:SetLabelObject(tc)
 			c:GetEquipTarget():RegisterEffect(e1,true)
 		end

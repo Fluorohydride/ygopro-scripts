@@ -13,9 +13,9 @@ function c4227096.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_CANNOT_TO_HAND)
 	e1:SetTargetRange(LOCATION_DECK,LOCATION_DECK)
 	if Duel.GetTurnPlayer()==tp then
-		e1:SetReset(RESET_PHASE+RESET_END+RESET_SELF_TURN,2)
+		e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
 	else
-		e1:SetReset(RESET_PHASE+RESET_END+RESET_SELF_TURN)
+		e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN)
 	end
 	Duel.RegisterEffect(e1,tp)
 end

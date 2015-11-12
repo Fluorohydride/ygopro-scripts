@@ -45,7 +45,7 @@ function c96864105.atkop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetOwnerPlayer(tp)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+RESET_DAMAGE_CAL)
+	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE_CAL)
 	e1:SetValue(d:GetAttack())
 	a:RegisterEffect(e1)
 end

@@ -47,7 +47,7 @@ function c46925518.fdop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCountLimit(1)
 	e1:SetCondition(c46925518.condition)
 	e1:SetOperation(c46925518.operation)
-	e1:SetReset(RESET_PHASE+RESET_END)
+	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 end
 function c46925518.filter(c)

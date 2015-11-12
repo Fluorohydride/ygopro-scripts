@@ -74,6 +74,7 @@ function c78949372.drtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c78949372.drop(e,tp,eg,ep,ev,re,r,rp)
+	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	if not tg or tg:FilterCount(Card.IsRelateToEffect,nil,e)~=5 then return end
 	Duel.SendtoDeck(tg,nil,0,REASON_EFFECT)
@@ -85,7 +86,8 @@ function c78949372.drop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end
 end
-function c78949372.tgcon(e,tp,eg,ep,ev,re,r,rp)
+function c78949372.tgcon(e)
+	local tp=e:GetHandlerPlayer()
 	local tc1=Duel.GetFieldCard(tp,LOCATION_SZONE,6)
 	local tc2=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
 	return (tc1 and tc1:IsSetCard(0xd0)) or (tc2 and tc2:IsSetCard(0xd0))

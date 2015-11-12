@@ -26,7 +26,7 @@ function c95254840.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTargetRange(LOCATION_MZONE,0)
 	e1:SetTarget(c95254840.rmtg)
 	e1:SetValue(LOCATION_HAND)
-	e1:SetReset(RESET_PHASE+RESET_END)
+	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 end
 function c95254840.rmtg(e,c)

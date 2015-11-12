@@ -25,7 +25,7 @@ function c86466163.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTargetRange(LOCATION_MZONE,0)
 	e1:SetTarget(c86466163.xyztg)
 	e1:SetValue(c86466163.xyzlv)
-	e1:SetReset(RESET_PHASE+RESET_END)
+	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 end
 function c86466163.xyztg(e,c)

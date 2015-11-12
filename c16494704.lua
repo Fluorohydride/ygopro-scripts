@@ -9,21 +9,21 @@ function c16494704.initial_effect(c)
 	e1:SetOperation(c16494704.operation)
 	c:RegisterEffect(e1)
 end
-function c16494704.pfilter(c,rc)
-	return c:IsType(TYPE_PENDULUM) and c:IsCanBeRitualMaterial(rc)
-end
 function c16494704.exfilter0(c)
 	return c:IsSetCard(0x99) and c:GetLevel()>=1 and c:IsAbleToGrave()
 end
 function c16494704.filter(c,e,tp,m)
 	if not c:IsRace(RACE_DRAGON) or bit.band(c:GetType(),0x81)~=0x81
 		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
-	local mg=m:Filter(c16494704.pfilter,c,c)
+	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
+	if c.mat_filter then
+		mg=mg:Filter(c.mat_filter,nil)
+	end
 	return mg:CheckWithSumGreater(Card.GetRitualLevel,c:GetLevel(),c)
 end
 function c16494704.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local mg=Duel.GetRitualMaterial(tp)
+		local mg=Duel.GetRitualMaterial(tp):Filter(Card.IsType,nil,TYPE_PENDULUM)
 		if Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>1 then
 			local sg=Duel.GetMatchingGroup(c16494704.exfilter0,tp,LOCATION_EXTRA,0,nil)
 			mg:Merge(sg)
@@ -33,7 +33,7 @@ function c16494704.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 end
 function c16494704.operation(e,tp,eg,ep,ev,re,r,rp)
-	local mg=Duel.GetRitualMaterial(tp)
+	local mg=Duel.GetRitualMaterial(tp):Filter(Card.IsType,nil,TYPE_PENDULUM)
 	if Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>1 then
 		local sg=Duel.GetMatchingGroup(c16494704.exfilter0,tp,LOCATION_EXTRA,0,nil)
 		mg:Merge(sg)
@@ -42,7 +42,10 @@ function c16494704.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.SelectMatchingCard(tp,c16494704.filter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp,mg)
 	local tc=tg:GetFirst()
 	if tc then
-		mg=mg:Filter(c16494704.pfilter,tc,tc)
+		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
+		if tc.mat_filter then
+			mg=mg:Filter(tc.mat_filter,nil)
+		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		local mat=mg:SelectWithSumGreater(tp,Card.GetRitualLevel,tc:GetLevel(),tc)
 		tc:SetMaterial(mat)

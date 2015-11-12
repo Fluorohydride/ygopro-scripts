@@ -53,7 +53,7 @@ function c26268488.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=eg:Filter(c26268488.repfilter,nil,tp)
 	local tc=g:GetFirst()
 	while tc do
-		tc:RegisterFlagEffect(26268488,RESET_EVENT+0x1fc0000+RESET_PHASE+RESET_END,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(26268488,2))
+		tc:RegisterFlagEffect(26268488,RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(26268488,2))
 		tc=g:GetNext()
 	end
 	e:GetLabelObject():Clear()

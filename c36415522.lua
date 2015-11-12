@@ -101,7 +101,7 @@ function c36415522.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetTargetRange(1,0)
 		e1:SetValue(1)
 		e1:SetCondition(c36415522.damcon)
-		e1:SetReset(RESET_PHASE+RESET_DAMAGE_CAL)
+		e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
 		e1:SetLabelObject(tc)
 		Duel.RegisterEffect(e1,tp)
 	end

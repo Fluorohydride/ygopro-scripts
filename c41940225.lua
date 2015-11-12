@@ -2,6 +2,7 @@
 function c41940225.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(41940225,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -11,10 +12,10 @@ function c41940225.initial_effect(c)
 	c:RegisterEffect(e1)
 	--tohand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(41940225,1))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCountLimit(1,41940226)
 	e2:SetCost(c41940225.thcost)
 	e2:SetTarget(c41940225.thtg)
@@ -28,8 +29,15 @@ function c41940225.filter1(c,e,tp)
 	return (c:IsControler(tp) or c:IsFaceup()) and not c:IsImmuneToEffect(e)
 end
 function c41940225.filter2(c,e,tp,m,f,chkf)
-	return (c:IsCode(98502113) or c:IsCode(86240887)) and (not f or f(c))
+	return c41940225.spfilter(c) and (not f or f(c))
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
+end
+function c41940225.spfilter(c)
+	if not c.material_count then return false end
+	for i=1,c.material_count do
+		if c.material[i]==78193831 then return true end
+	end
+	return false
 end
 function c41940225.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

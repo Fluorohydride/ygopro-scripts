@@ -1,6 +1,6 @@
 --Card id
 MIN_ID	=1000		--4 digit, by DataManager::GetDesc()
-MAX_ID	=999999999	--9 digit, by Auxiliary.Stringid(), field::select_chain()
+MAX_ID	=999999999	--9 digit, by field::select_chain()
 --Locations 区域
 LOCATION_DECK		=0x01		--卡组
 LOCATION_HAND		=0x02		--手牌
@@ -141,11 +141,11 @@ STATUS_EFFECT_ENABLED		=0x0400		--效果有效
 STATUS_SUMMON_TURN			=0x0800		--在本回合召喚/SET
 STATUS_DESTROY_CONFIRMED	=0x1000		--破坏确定
 STATUS_LEAVE_CONFIRMED		=0x2000		--連鎖處理完後送去墓地的魔法陷阱
-STATUS_BATTLE_DESTROYED		=0x4000		--战斗破坏确定
+STATUS_BATTLE_DESTROYED		=0x4000		--战斗破坏确定後尚未移動
 STATUS_COPYING_EFFECT		=0x8000		--复制效果
 STATUS_CHAINING				=0x10000	--正在連鎖串中
 STATUS_SUMMON_DISABLED		=0x20000	--召唤无效後尚未移動
-STATUS_ACTIVATE_DISABLED	=0x40000	--发动无效
+STATUS_ACTIVATE_DISABLED	=0x40000	--发动无效後尚未移動
 STATUS_UNSUMMONABLE_CARD	=0x80000	--(N/A)
 STATUS_UNION				=0x100000	--同盟
 STATUS_ATTACK_CANCELED		=0x200000	--攻击取消（卷回？）
@@ -175,7 +175,7 @@ PHASE_DRAW			=0x01	--抽卡阶段
 PHASE_STANDBY		=0x02	--准备阶段
 PHASE_MAIN1			=0x04	--主要阶段1
 PHASE_BATTLE		=0x08	--战斗阶段
-PHASE_DAMAGE		=0x10	--伤害计算前
+PHASE_DAMAGE		=0x10	--伤害步驟
 PHASE_DAMAGE_CAL	=0x20	--伤害计算时
 PHASE_MAIN2			=0x40	--主要阶段2
 PHASE_END			=0x80	--结束阶段
@@ -198,14 +198,14 @@ CHAININFO_CHAIN_ID				=0x800	--连锁ID
 CHAININFO_TYPE					=0x1000	--连锁类型
 CHAININFO_EXTTYPE				=0x2000	--连锁额外类型
 --========== Reset ==========	--重置条件（注意：重置条件可以多个相加）
-RESET_DRAW			=PHASE_DRAW			--抽卡阶段重置
-RESET_STANDBY		=PHASE_STANDBY		--准备阶段重置
-RESET_MAIN1			=PHASE_MAIN1		--主要阶段1重置
-RESET_BATTLE		=PHASE_BATTLE		--战斗阶段重置
-RESET_DAMAGE		=PHASE_DAMAGE		--伤害计算前重置
-RESET_DAMAGE_CAL	=PHASE_DAMAGE_CAL	--伤害计算时重置
-RESET_MAIN2			=PHASE_MAIN2		--主要阶段2重置
-RESET_END			=PHASE_END			--结束阶段重置
+--PHASE_DRAW		--抽卡阶段重置
+--PHASE_STANDBY		--准备阶段重置
+--PHASE_MAIN1		--主要阶段1重置
+--PHASE_BATTLE		--战斗阶段重置
+--PHASE_DAMAGE		--伤害计算前重置
+--PHASE_DAMAGE_CAL	--伤害计算时重置
+--PHASE_MAIN2		--主要阶段2重置
+--PHASE_END			--结束阶段重置
 RESET_SELF_TURN		=0x0100				--自己回合结束重置
 RESET_OPPO_TURN		=0x0200				--对方回合结束重置
 RESET_PHASE			=0x0400				--阶段结束重置(一般和上面那些阶段配合使用)
@@ -268,23 +268,26 @@ EFFECT_FLAG_OWNER_RELATE	=0x1000000	--持續成為對象
 EFFECT_FLAG_AVAILABLE_BD	=0x2000000	--战斗破坏确定时效果也适用（纳祭之魔 地狱战士）
 EFFECT_FLAG_CLIENT_HINT		=0x4000000	--客户端提示
 EFFECT_FLAG_CHAIN_UNIQUE	=0x8000000	--同一组连锁只能发动一次
-EFFECT_FLAG_NAGA			=0x10000000 --神卡纳迦！
+EFFECT_FLAG_NAGA			=0x10000000 --N/A
 EFFECT_FLAG_COF				=0x20000000 --N/A
 EFFECT_FLAG_CVAL_CHECK		=0x40000000	--以卡为COST的诱发效果需要使用
 EFFECT_FLAG_IMMEDIATELY_APPLY	=0x80000000	--卡在发动时效果就立即适用（卡通王國）
+
+EFFECT_FLAG2_NAGA			=0x0001 --
+EFFECT_FLAG2_COF			=0x0002 --
 --========== Codes ==========	--对永续性效果表示效果类型 EFFECT开头，对诱发型效果表示触发效果的事件/时点 EVENT开头
 EFFECT_IMMUNE_EFFECT			=1		--效果免疫
 EFFECT_DISABLE					=2		--效果无效（技能抽取）
-EFFECT_CANNOT_DISABLE			=3		--效果不能无效
-EFFECT_SET_CONTROL				=4		--改变控制器
+EFFECT_CANNOT_DISABLE			=3		--卡不能被无效
+EFFECT_SET_CONTROL				=4		--设置控制权
 EFFECT_CANNOT_CHANGE_CONTROL	=5		--不能改变控制权
 EFFECT_CANNOT_ACTIVATE			=6		--玩家不能发动效果
-EFFECT_CANNOT_TRIGGER			=7		--不能发动效果
+EFFECT_CANNOT_TRIGGER			=7		--卡不能发动效果
 EFFECT_DISABLE_EFFECT			=8		--效果无效 （聖杯）
 EFFECT_DISABLE_CHAIN			=9		--在連鎖串中無效(processor.cpp)
 EFFECT_DISABLE_TRAPMONSTER		=10		--陷阱怪兽无效
-EFFECT_CANNOT_INACTIVATE		=12		--不能发动
-EFFECT_CANNOT_DISEFFECT			=13		--效果不能被无效（魔法·陷阱）
+EFFECT_CANNOT_INACTIVATE		=12		--发动不能被无效
+EFFECT_CANNOT_DISEFFECT			=13		--效果不能被无效
 EFFECT_CANNOT_CHANGE_POSITION	=14		--不能改变表示形式
 EFFECT_TRAP_ACT_IN_HAND			=15		--陷阱可以从手牌发动
 EFFECT_TRAP_ACT_IN_SET_TURN		=16		--陷阱可以在盖放的回合发动
@@ -680,8 +683,8 @@ EFFECT_COUNT_CODE_OATH			=0x10000000 --使用次数限制(誓约效果)
 EFFECT_COUNT_CODE_DUEL			=0x20000000 --决斗中使用次数
 EFFECT_COUNT_CODE_SINGLE		=0x1		--多个效果公共使用次数
 --特殊选项
-DUEL_TEST_MODE			=0x01		--测试模式？坑了？
-DUEL_ATTACK_FIRST_TURN	=0x02		--第一回合可以攻击（用于残局
+DUEL_TEST_MODE			=0x01		--测试模式(目前暫無)
+DUEL_ATTACK_FIRST_TURN	=0x02		--第一回合可以攻击(用于残局)
 DUEL_NO_CHAIN_HINT		=0x04		--不提示连锁
 DUEL_ENABLE_PRIORITY	=0x08		--启动优先权
 DUEL_PSEUDO_SHUFFLE		=0x10		--不洗牌
@@ -699,3 +702,6 @@ ACTIVITY_BATTLE_PHASE	=6		-- not available in custom counter
 ACTIVITY_CHAIN			=7		-- only available in custom counter
 --announce type（宣言类型，CATEGORY_ANNOUNCE的OperationInfo的target_param）
 ANNOUNCE_CARD			=1		--宣言卡片
+--special cards
+CARD_MARINE_DOLPHIN		=78734254	--海洋海豚
+CARD_TWINKLE_MOSS		=13857930	--光輝苔蘚

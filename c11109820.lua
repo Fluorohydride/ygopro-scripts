@@ -40,30 +40,7 @@ function c11109820.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c11109820.operation(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tc1=g:GetFirst()
-	local tc2=g:GetNext()
-	if not tc1:IsRelateToEffect(e) or not tc2:IsRelateToEffect(e) then return end
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if tc1:IsControler(tp) then ft=ft+1 end
-	if tc2:IsControler(tp) then ft=ft+1 end
-	if ft<=0 then return end
-	Duel.SendtoGrave(g,REASON_EFFECT)
-	local og=Duel.GetOperatedGroup()
-	if og:FilterCount(Card.IsLocation,nil,LOCATION_GRAVE)<2 then return end
-	local sg=Duel.GetMatchingGroup(c11109820.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp,tc1:GetRank()+tc2:GetRank())
-	if sg:GetCount()==0 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local ssg=sg:Select(tp,1,1,nil)
-	local sc=ssg:GetFirst()
-	if sc then
-		Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
-		if c:IsRelateToEffect(e) then
-			c:CancelToGrave()
-			Duel.Overlay(sc,Group.FromCards(c))
-		end
-	end
+	--change damage
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CHANGE_DAMAGE)
@@ -76,4 +53,25 @@ function c11109820.operation(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetCode(EFFECT_NO_EFFECT_DAMAGE)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
+	--sp_summon
+	local c=e:GetHandler()
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
+	local tc1=g:GetFirst()
+	local tc2=g:GetNext()
+	if not tc1:IsRelateToEffect(e) or not tc2:IsRelateToEffect(e) then return end
+	Duel.SendtoGrave(g,REASON_EFFECT)
+	local og=Duel.GetOperatedGroup()
+	if og:FilterCount(Card.IsLocation,nil,LOCATION_GRAVE)<2 or Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	local sg=Duel.GetMatchingGroup(c11109820.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp,tc1:GetRank()+tc2:GetRank())
+	if sg:GetCount()==0 then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local ssg=sg:Select(tp,1,1,nil)
+	local sc=ssg:GetFirst()
+	if sc then
+		Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
+		if c:IsRelateToEffect(e) then
+			c:CancelToGrave()
+			Duel.Overlay(sc,Group.FromCards(c))
+		end
+	end
 end

@@ -6,7 +6,6 @@ function c7634581.initial_effect(c)
 	e1:SetDescription(aux.Stringid(7634581,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)
 	e1:SetCondition(c7634581.spcon)
@@ -38,7 +37,7 @@ function c7634581.efilter(e,c)
 	return c:IsType(TYPE_NORMAL) and c:GetLevel()==4
 end
 function c7634581.cfilter(c,tp)
-	return c:IsType(TYPE_NORMAL) and c:GetPreviousControler()==tp
+	return bit.band(c:GetPreviousTypeOnField(),TYPE_NORMAL)~=0 and c:GetPreviousControler()==tp
 end
 function c7634581.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c7634581.cfilter,1,nil,tp)

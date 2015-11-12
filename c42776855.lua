@@ -60,6 +60,7 @@ function c42776855.operation(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetCode(EVENT_BATTLE_START)
 		e3:SetRange(LOCATION_SZONE)
 		e3:SetCondition(c42776855.atkcon)
+		e3:SetTarget(c42776855.atktg)
 		e3:SetOperation(c42776855.atkop)
 		e3:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e3)
@@ -89,8 +90,13 @@ function c42776855.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local bc=tc:GetBattleTarget()
 	return tc and tc:IsLocation(LOCATION_MZONE) and bc and bc:IsFaceup() and bc:IsLocation(LOCATION_MZONE) and bc:IsLevelAbove(5)
 end
+function c42776855.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return e:GetHandler():GetFlagEffect(42776855)==0 end
+	e:GetHandler():RegisterFlagEffect(42776855,RESET_CHAIN,0,1)
+end
 function c42776855.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	if not c:IsRelateToEffect(e) then return end
 	local tc=c:GetFirstCardTarget()
 	local bc=tc:GetBattleTarget()
 	local atk=bc:GetBaseAttack()
@@ -99,7 +105,7 @@ function c42776855.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(atk)
-		e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+RESET_END)
+		e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 	end
 end

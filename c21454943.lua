@@ -46,7 +46,7 @@ function c21454943.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	Duel.PayLPCost(tp,alp)
 	e:SetLabel(-alp)
-	e:GetHandler():RegisterFlagEffect(21454943,RESET_PHASE+RESET_DAMAGE,0,1)
+	e:GetHandler():RegisterFlagEffect(21454943,RESET_PHASE+PHASE_DAMAGE,0,1)
 end
 function c21454943.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tc=e:GetLabelObject()

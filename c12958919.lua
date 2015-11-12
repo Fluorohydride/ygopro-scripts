@@ -73,7 +73,7 @@ function c12958919.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetProperty(EFFECT_FLAG_OATH)
 	e1:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x49))
 	e1:SetTargetRange(LOCATION_MZONE,0)
-	e1:SetReset(RESET_PHASE+RESET_END)
+	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 end
 function c12958919.damfilter(c)

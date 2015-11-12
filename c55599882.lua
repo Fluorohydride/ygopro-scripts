@@ -28,7 +28,7 @@ function c55599882.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EVENT_BATTLE_DESTROYING)
 		e1:SetTarget(c55599882.rmtg)
 		e1:SetOperation(c55599882.rmop)
-		e1:SetReset(RESET_EVENT+0x1620000+RESET_PHASE+RESET_END)
+		e1:SetReset(RESET_EVENT+0x1620000+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 	end
 end

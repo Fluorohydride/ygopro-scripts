@@ -14,7 +14,7 @@ function c91754175.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c91754175.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttackTarget()~=nil
+	return e:GetHandler():GetBattleTarget()
 end
 function c91754175.tgfilter(c)
 	return c:IsRace(RACE_BEAST+RACE_BEASTWARRIOR+RACE_WINDBEAST) and c:IsAbleToGrave()

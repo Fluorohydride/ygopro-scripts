@@ -49,7 +49,7 @@ function c65872270.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c65872270.desfilter,tp,LOCATION_ONFIELD,0,1,e:GetHandler())
 		and Duel.IsExistingMatchingCard(Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,1,nil)
 		and e:GetHandler():GetFlagEffect(65872270)==0 end
-	e:GetHandler():RegisterFlagEffect(65872270,RESET_PHASE+RESET_END,0,1)
+	e:GetHandler():RegisterFlagEffect(65872270,RESET_PHASE+PHASE_END,0,1)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,nil,1,tp,LOCATION_ONFIELD)
 end
 function c65872270.desop(e,tp,eg,ep,ev,re,r,rp)

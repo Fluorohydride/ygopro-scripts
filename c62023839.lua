@@ -36,7 +36,7 @@ function c62023839.spop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EVENT_PHASE_START+PHASE_BATTLE)
 		e1:SetCountLimit(1)
 		e1:SetOperation(c62023839.desop)
-		e1:SetReset(RESET_PHASE+RESET_END)
+		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
 	end
 end

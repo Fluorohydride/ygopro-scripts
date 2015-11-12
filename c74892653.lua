@@ -53,7 +53,7 @@ end
 function c74892653.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateSummon(eg)
 	Duel.Destroy(eg,REASON_EFFECT)
-	e:GetHandler():RegisterFlagEffect(74892653,RESET_EVENT+0x1fe0000+RESET_PHASE+RESET_END,0,1)
+	e:GetHandler():RegisterFlagEffect(74892653,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c74892653.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

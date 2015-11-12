@@ -78,7 +78,7 @@ function c10960419.rmop(e,tp,eg,ep,ev,re,r,rp)
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 			e1:SetCode(EVENT_PHASE_START+PHASE_DRAW)
-			e1:SetReset(RESET_PHASE+RESET_STANDBY,ct)
+			e1:SetReset(RESET_PHASE+PHASE_STANDBY,ct)
 			e1:SetLabel(ct)
 			e1:SetLabelObject(tc)
 			e1:SetCountLimit(1)
@@ -90,7 +90,7 @@ function c10960419.rmop(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetCondition(c10960419.retcon)
 			e2:SetOperation(c10960419.retop)
 			Duel.RegisterEffect(e2,tp)
-			tc:RegisterFlagEffect(1082946,RESET_PHASE+RESET_STANDBY,0,ct)
+			tc:RegisterFlagEffect(1082946,RESET_PHASE+PHASE_STANDBY,0,ct)
 			local mt=_G["c"..tc:GetCode()]
 			mt[tc]=e1
 		end

@@ -48,7 +48,7 @@ function c15939229.sumsuc(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetCode(EFFECT_DISABLE)
 	e2:SetTargetRange(LOCATION_ONFIELD,LOCATION_ONFIELD)
 	e2:SetTarget(c15939229.disable)
-	e2:SetReset(RESET_PHASE+RESET_END)
+	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
 end
 function c15939229.aclimit(e,re,tp)

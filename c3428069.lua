@@ -16,7 +16,6 @@ function c3428069.initial_effect(c)
 	e2:SetCode(EVENT_DESTROYED)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCondition(c3428069.eqcon)
 	e2:SetTarget(c3428069.eqtg)
 	e2:SetOperation(c3428069.eqop)
 	c:RegisterEffect(e2)
@@ -32,17 +31,15 @@ function c3428069.initial_effect(c)
 	e3:SetOperation(c3428069.desop)
 	c:RegisterEffect(e3)
 end
-function c3428069.cfilter(c,e,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==1-tp 
-		and c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_EFFECT+REASON_BATTLE)
-end
-function c3428069.eqcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c3428069.cfilter,1,nil,e,tp)
+function c3428069.filter(c,e,tp)
+	return c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==1-tp
+		and c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_EFFECT+REASON_BATTLE) and c:IsCanBeEffectTarget(e)
 end
 function c3428069.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(1-tp) and c3428069.cfilter(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
-	local g=eg:Filter(c3428069.cfilter,nil,e,tp)
+	if chkc then return eg:IsContains(chkc) and c3428069.filter(chkc,e,tp) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+		and eg:IsExists(c3428069.filter,1,nil,e,tp) end
+	local g=eg:Filter(c3428069.filter,nil,e,tp)
 	local tc=nil
 	if g:GetCount()>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)

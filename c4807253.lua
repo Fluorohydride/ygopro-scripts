@@ -55,7 +55,7 @@ function c4807253.spop(e,tp,eg,ep,ev,re,r,rp)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e3:SetTargetRange(1,0)
 	e3:SetTarget(c4807253.splimit)
-	e3:SetReset(RESET_PHASE+RESET_END)
+	e3:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e3,tp)
 end
 function c4807253.damval(e,re,val,r,rp,rc)

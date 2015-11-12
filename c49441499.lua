@@ -39,7 +39,7 @@ function c49441499.efilter(e,te)
 	return te:IsActiveType(TYPE_SPELL)
 end
 function c49441499.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(49441499,RESET_EVENT+0x1ec0000+RESET_PHASE+RESET_END,0,1)
+	e:GetHandler():RegisterFlagEffect(49441499,RESET_EVENT+0x1ec0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c49441499.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer() and e:GetHandler():GetFlagEffect(49441499)==0

@@ -45,7 +45,7 @@ function c69155991.desop1(e,tp,eg,ep,ev,re,r,rp)
 	c:ResetFlagEffect(69155991)
 	local ph=Duel.GetCurrentPhase()
 	if (ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL) and not Duel.IsDamageCalculated() then
-		c:RegisterFlagEffect(69155992,RESET_EVENT+0x1fe0000+RESET_PHASE+RESET_DAMAGE,0,1)
+		c:RegisterFlagEffect(69155992,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE,0,1)
 	else
 		Duel.Destroy(c,REASON_EFFECT)
 	end

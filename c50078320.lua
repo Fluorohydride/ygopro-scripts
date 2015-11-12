@@ -58,7 +58,7 @@ function c50078320.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetLabelObject(tc)
 		e1:SetCondition(c50078320.descon)
 		e1:SetOperation(c50078320.desop)
-		e1:SetReset(RESET_PHASE+RESET_END,2)
+		e1:SetReset(RESET_PHASE+PHASE_END,2)
 		Duel.RegisterEffect(e1,tp)
 	end
 end

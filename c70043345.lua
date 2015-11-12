@@ -57,7 +57,7 @@ function c70043345.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=e:GetLabelObject()
 	if chk==0 then return bc:IsAbleToRemove() and Duel.GetFlagEffect(tp,70043345)==0 end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,bc,1,0,0)
-	Duel.RegisterFlagEffect(tp,70043345,RESET_PHASE+RESET_END,0,1)
+	Duel.RegisterFlagEffect(tp,70043345,RESET_PHASE+PHASE_END,0,1)
 end
 function c70043345.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
@@ -67,7 +67,7 @@ function c70043345.rmop(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetReset(RESET_PHASE+RESET_END+RESET_OPPO_TURN,2)
+		e1:SetReset(RESET_PHASE+PHASE_END+RESET_OPPO_TURN,2)
 		e1:SetLabelObject(bc)
 		e1:SetCountLimit(1)
 		e1:SetCondition(c70043345.retcon)

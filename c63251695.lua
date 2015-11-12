@@ -9,16 +9,16 @@ function c63251695.initial_effect(c)
 	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(63251695,0))
 	e2:SetCategory(CATEGORY_DISABLE)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_CHAINING)
+	e2:SetCode(EVENT_CHAIN_SOLVING)
 	e2:SetRange(LOCATION_PZONE)
 	e2:SetCondition(c63251695.negcon)
 	e2:SetOperation(c63251695.negop)
 	c:RegisterEffect(e2)
 	--
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(63251695,0))
 	e3:SetCategory(CATEGORY_TODECK)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_DAMAGE_STEP_END)
@@ -29,13 +29,12 @@ function c63251695.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c63251695.tfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0xd8) and c:IsControler(tp) and c:IsOnField()
+	return c:IsFaceup() and c:IsSetCard(0xd8) and c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD)
 end
 function c63251695.negcon(e,tp,eg,ep,ev,re,r,rp)
-	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
-	if not e:GetHandler():GetFlagEffect(63251695)==0 then return end
-	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
-	return g and g:IsExists(c63251695.tfilter,1,e:GetHandler(),tp) and Duel.IsChainDisablable(ev)
+	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)	
+	return e:GetHandler():GetFlagEffect(63251695)==0 and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) 
+		and g and g:IsExists(c63251695.tfilter,1,e:GetHandler(),tp) and Duel.IsChainDisablable(ev)
 end
 function c63251695.negop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SelectYesNo(tp,aux.Stringid(63251695,1)) then
@@ -87,22 +86,24 @@ function c63251695.effop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE_CAL)
 		c:RegisterEffect(e2)
 	else
-		local g1=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD,nil)
-		local g2=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_HAND,nil)
+		local g1=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_HAND,nil)
+		local g2=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD,nil)
 		local opt=0
 		if g1:GetCount()>0 and g2:GetCount()>0 then
 			opt=Duel.SelectOption(tp,aux.Stringid(63251695,4),aux.Stringid(63251695,5))
 		elseif g1:GetCount()>0 then
 			opt=0
-		else
+		elseif g2:GetCount()>0 then
 			opt=1
+		else
+			return
 		end
 		local sg=nil
 		if opt==0 then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-			sg=g1:Select(tp,1,1,nil)
+			sg=g1:RandomSelect(tp,1)
 		else
-			sg=g2:RandomSelect(tp,1)
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+			sg=g2:Select(tp,1,1,nil)
 		end
 		Duel.SendtoDeck(sg,nil,2,REASON_EFFECT)
 		if sg:GetFirst():IsLocation(LOCATION_DECK) and c:IsRelateToEffect(e) and c:IsFaceup() then
