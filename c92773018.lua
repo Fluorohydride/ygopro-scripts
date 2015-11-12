@@ -25,7 +25,7 @@ function c92773018.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer()
 end
 function c92773018.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x103) and c:IsAbleToGraveAsCost()
+	return c:IsFaceup() and (c:IsCode(70095154) or aux.IsMaterialListCode(c,70095154)) and c:IsAbleToGraveAsCost()
 end
 function c92773018.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c92773018.cfilter,tp,LOCATION_MZONE,0,1,nil) end

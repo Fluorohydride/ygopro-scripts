@@ -52,6 +52,7 @@ function c21113684.initial_effect(c)
 	e6:SetValue(c21113684.splimit)
 	c:RegisterEffect(e6)
 end
+c21113684.miracle_synchro_fusion=true
 function c21113684.splimit(e,se,sp,st)
 	if e:GetHandler():IsLocation(LOCATION_EXTRA) then 
 		return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION

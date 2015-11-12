@@ -41,6 +41,7 @@ function c59255742.initial_effect(c)
 	e4:SetOperation(c59255742.ctop)
 	c:RegisterEffect(e4)
 end
+c59255742.miracle_synchro_fusion=true
 function c59255742.ffilter(c)
 	return c:IsAttribute(ATTRIBUTE_EARTH) and c:IsRace(RACE_WARRIOR) and c:IsType(TYPE_SYNCHRO)
 end

@@ -31,6 +31,7 @@ function c14017402.initial_effect(c)
 	e4:SetValue(c14017402.splimit)
 	c:RegisterEffect(e4)
 end
+c14017402.miracle_synchro_fusion=true
 function c14017402.splimit(e,se,sp,st)
 	if e:GetHandler():IsLocation(LOCATION_EXTRA) then 
 		return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
@@ -57,7 +58,7 @@ function c14017402.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) then
-		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=1 then	return end
+		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=1 then return end
 		local code=tc:GetOriginalCode()
 		local reset_flag=RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END
 		c:CopyEffect(code, reset_flag, 1)
