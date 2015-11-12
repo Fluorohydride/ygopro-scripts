@@ -27,6 +27,7 @@ function c45349196.initial_effect(c)
 	e2:SetOperation(c45349196.damop)
 	c:RegisterEffect(e2)
 end
+c45349196.material_setcode=0x3b
 function c45349196.mfilter1(c)
 	return c:IsSetCard(0x45) and c:IsType(TYPE_NORMAL) and c:GetLevel()==6
 end
