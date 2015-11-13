@@ -7,7 +7,7 @@ function c17330916.initial_effect(c)
 	e1:SetDescription(aux.Stringid(17330916,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetOperation(c17330916.regop)
+	e1:SetCost(c17330916.reg)
 	c:RegisterEffect(e1)
 	--scale
 	local e2=Effect.CreateEffect(c)
@@ -31,23 +31,27 @@ function c17330916.initial_effect(c)
 	e4:SetTarget(c17330916.lvtg)
 	e4:SetOperation(c17330916.lvop)
 	c:RegisterEffect(e4)
+	--to hand
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_IGNITION)
+	e5:SetRange(LOCATION_PZONE)
+	e5:SetCountLimit(1,17330916)
+	e5:SetCondition(c17330916.thcon)
+	e5:SetTarget(c17330916.thtg)
+	e5:SetOperation(c17330916.thop)
+	c:RegisterEffect(e5)
 end
 function c17330916.sccon(e)
 	local seq=e:GetHandler():GetSequence()
 	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_SZONE,13-seq)
 	return not tc or not tc:IsSetCard(0x9f)
 end
-function c17330916.regop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_IGNITION)
-	e1:SetCountLimit(1,17330916)
-	e1:SetRange(LOCATION_PZONE)
-	e1:SetTarget(c17330916.thtg)
-	e1:SetOperation(c17330916.thop)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
-	c:RegisterEffect(e1)
+function c17330916.reg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	e:GetHandler():RegisterFlagEffect(17330916,RESET_PHASE+PHASE_END,EFFECT_FLAG_OATH,1)
+end
+function c17330916.thcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(17330916)~=0
 end
 function c17330916.thfilter(c)
 	return c:IsLevelBelow(4) and c:IsSetCard(0x9f) and c:IsAbleToHand()
