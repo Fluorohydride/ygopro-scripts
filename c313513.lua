@@ -18,6 +18,7 @@ function c313513.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c313513.cfilter,tp,LOCATION_ONFIELD,0,3,3,nil)
 	Duel.SendtoGrave(g,REASON_COST)
+	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_SUMMON)

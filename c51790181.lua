@@ -22,7 +22,7 @@ function c51790181.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
 	Duel.SendtoDeck(sg,nil,2,REASON_EFFECT)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToEffect(e) and e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_EFFECT)
 	end
 end
