@@ -19,6 +19,7 @@ function c75500286.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=g:GetFirst()
 	if tg==nil then return end
 	Duel.Remove(tg,POS_FACEUP,REASON_EFFECT)
+	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetRange(LOCATION_REMOVED)

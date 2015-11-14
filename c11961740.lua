@@ -19,8 +19,7 @@ function c11961740.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local g=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,LOCATION_DECK,0,1,1,nil)
 		local tc=g:GetFirst()
-		if tc then
-			Duel.Remove(tc,POS_FACEDOWN,REASON_EFFECT)
+		if tc and Duel.Remove(tc,POS_FACEDOWN,REASON_EFFECT)~=0 and e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 			tc:RegisterFlagEffect(11961740,RESET_EVENT+0x1fe0000,0,1)
 			c:CancelToGrave()
 			local e1=Effect.CreateEffect(c)
