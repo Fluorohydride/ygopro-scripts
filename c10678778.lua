@@ -29,7 +29,7 @@ function c10678778.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c10678778.rmfilter(c)
-	return not c:IsFaceup() and c:IsAbleToRemove()
+	return c:IsFacedown() and c:IsAbleToRemove()
 end
 function c10678778.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c10678778.rmfilter,tp,0,LOCATION_EXTRA,1,nil) end
