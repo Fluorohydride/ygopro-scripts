@@ -41,7 +41,10 @@ function c77783947.sccon(e,tp,eg,ep,ev,re,r,rp)
 	return ph==PHASE_MAIN1 or ph==PHASE_BATTLE or ph==PHASE_MAIN2
 end
 function c77783947.mfilter(c)
-	return c:IsSetCard(0x9e)
+	return c:IsSetCard(0x9e) and c:IsType(TYPE_MONSTER)
+end
+function c77783947.mfilter2(c)
+	return c:IsHasEffect(55863245)
 end
 function c77783947.cfilter(c,syn)
 	return syn:IsSynchroSummonable(c)
@@ -56,12 +59,24 @@ end
 function c77783947.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local mg=Duel.GetMatchingGroup(c77783947.mfilter,tp,LOCATION_MZONE,0,nil)
+		local exg=Duel.GetMatchingGroup(c77783947.mfilter2,tp,LOCATION_MZONE,0,nil)
+		if exg:GetCount()>0 then
+			local mg2=Duel.GetMatchingGroup(c77783947.mfilter,tp,LOCATION_HAND,0,nil)
+			mg:Merge(exg)
+			mg:Merge(mg2)
+		end
 		return Duel.IsExistingMatchingCard(c77783947.spfilter,tp,LOCATION_EXTRA,0,1,nil,mg)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c77783947.scop(e,tp,eg,ep,ev,re,r,rp)
 	local mg=Duel.GetMatchingGroup(c77783947.mfilter,tp,LOCATION_MZONE,0,nil)
+	local exg=Duel.GetMatchingGroup(c77783947.mfilter2,tp,LOCATION_MZONE,0,nil)
+	if exg:GetCount()>0 then
+		local mg2=Duel.GetMatchingGroup(c77783947.mfilter,tp,LOCATION_HAND,0,nil)
+		mg:Merge(exg)
+		mg:Merge(mg2)
+	end
 	local g=Duel.GetMatchingGroup(c77783947.spfilter,tp,LOCATION_EXTRA,0,nil,mg)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
