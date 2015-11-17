@@ -62,7 +62,7 @@ function c97489701.synfilter1(c,syncard,lv,g1,g2,g3)
 	local tlv=c:GetSynchroLevel(syncard)
 	if lv-tlv<=0 then return false end
 	local f1=c.tuner_filter
-	if c:IsHasEffect(55863245) then
+	if c:IsHasEffect(EFFECT_HAND_SYNCHRO) then
 		return g3:IsExists(c97489701.synfilter2,1,c,syncard,lv-tlv,g2,f1,c)
 	else
 		return g1:IsExists(c97489701.synfilter2,1,c,syncard,lv-tlv,g2,f1,c)
@@ -166,7 +166,7 @@ function c97489701.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 		local f1=tuner1.tuner_filter
 		local t2=nil
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		if tuner1:IsHasEffect(55863245) then
+		if tuner1:IsHasEffect(EFFECT_HAND_SYNCHRO) then
 			t2=g3:FilterSelect(tp,c97489701.synfilter2,1,1,tuner1,c,lv-lv1,g2,f1,tuner1)
 		else
 			t2=g1:FilterSelect(tp,c97489701.synfilter2,1,1,tuner1,c,lv-lv1,g2,f1,tuner1)

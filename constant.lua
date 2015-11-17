@@ -324,9 +324,9 @@ EFFECT_INDESTRUCTABLE_COUNT		=47 	--一回合几次不会被破坏
 EFFECT_UNRELEASABLE_EFFECT		=48		--不能被解放
 EFFECT_DESTROY_REPLACE			=50		--代替破坏（自己破坏时牺牲别人
 EFFECT_RELEASE_REPLACE			=51		--代替解放
-EFFECT_SEND_REPLACE				=52		--可以不送去XX而送去OO（宝玉 甜点城堡等）
+EFFECT_SEND_REPLACE				=52		--可以不送去XX而送去OO（甜点城堡等）
 EFFECT_CANNOT_DISCARD_HAND		=55		--不能丢弃手牌
-EFFECT_CANNOT_DISCARD_DECK		=56		--不能把卡组上方的卡送去墓地
+EFFECT_CANNOT_DISCARD_DECK		=56		--不能把卡组的卡送去墓地
 EFFECT_CANNOT_USE_AS_COST		=57		--不能作为COST使用
 EFFECT_CANNOT_PLACE_COUNTER		=58		--不能放置counter
 
@@ -485,6 +485,7 @@ EFFECT_NO_EFFECT_DAMAGE			=335	--玩家已受到"效果傷害變成0"的效果�
 EFFECT_UNSUMMONABLE_CARD		=336	--不能通常召唤的怪獸
 EFFECT_DISABLE_CHAIN_FIELD		=337	--連鎖串中場上發動的效果無效(Duel.NegateRelatedChain())
 EFFECT_DISCARD_COST_CHANGE		=338	--反制陷阱捨棄手牌的代價改變(解放之阿里阿德涅)
+EFFECT_HAND_SYNCHRO				=339	--用手牌的怪獸當作同步素材(用於雙重協調判斷)
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
 EVENT_STARTUP					=1000	--游戏开始时

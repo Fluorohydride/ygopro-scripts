@@ -44,7 +44,7 @@ function c77783947.mfilter(c)
 	return c:IsSetCard(0x9e) and c:IsType(TYPE_MONSTER)
 end
 function c77783947.mfilter2(c)
-	return c:IsHasEffect(55863245)
+	return c:IsHasEffect(EFFECT_HAND_SYNCHRO)
 end
 function c77783947.cfilter(c,syn)
 	return syn:IsSynchroSummonable(c)

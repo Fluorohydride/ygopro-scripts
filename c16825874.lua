@@ -21,7 +21,7 @@ function c16825874.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e3:SetCode(55863245)
+	e3:SetCode(EFFECT_HAND_SYNCHRO)
 	c:RegisterEffect(e3)
 end
 c16825874.tuner_filter=aux.FALSE

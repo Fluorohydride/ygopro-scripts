@@ -55,7 +55,7 @@ function c93157004.synfilter1(c,syncard,lv,g1,g2,g3,g4)
 	local tlv=c:GetSynchroLevel(syncard)
 	if lv-tlv<=0 then return false end
 	local f1=c.tuner_filter
-	if c:IsHasEffect(55863245) then
+	if c:IsHasEffect(EFFECT_HAND_SYNCHRO) then
 		return g3:IsExists(c93157004.synfilter2,1,c,syncard,lv-tlv,g2,g4,f1,c)
 	else
 		return g1:IsExists(c93157004.synfilter2,1,c,syncard,lv-tlv,g2,g4,f1,c)
@@ -67,7 +67,7 @@ function c93157004.synfilter2(c,syncard,lv,g2,g4,f1,tuner1)
 	local f2=c.tuner_filter
 	if f1 and not f1(c) then return false end
 	if f2 and not f2(tuner1) then return false end
-	if (tuner1:IsHasEffect(55863245) and not c:IsLocation(LOCATION_HAND)) or c:IsHasEffect(55863245) then
+	if (tuner1:IsHasEffect(EFFECT_HAND_SYNCHRO) and not c:IsLocation(LOCATION_HAND)) or c:IsHasEffect(EFFECT_HAND_SYNCHRO) then
 		return g4:IsExists(c93157004.synfilter3,1,nil,syncard,lv-tlv,f1,f2)
 	else
 		return g2:IsExists(c93157004.synfilter3,1,nil,syncard,lv-tlv,f1,f2)
@@ -153,7 +153,7 @@ function c93157004.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 		local f2=tuner2.tuner_filter
 		local m3=nil
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		if tuner2:IsHasEffect(55863245) then
+		if tuner2:IsHasEffect(EFFECT_HAND_SYNCHRO) then
 			m3=g4:FilterSelect(tp,c93157004.synfilter3,1,1,nil,c,lv-lv1-lv2,f1,f2)
 		else
 			m3=g2:FilterSelect(tp,c93157004.synfilter3,1,1,nil,c,lv-lv1-lv2,f1,f2)
@@ -175,7 +175,7 @@ function c93157004.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 		local f1=tuner1.tuner_filter
 		local tuner2=nil
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		if tuner1:IsHasEffect(55863245) then
+		if tuner1:IsHasEffect(EFFECT_HAND_SYNCHRO) then
 			local t2=g3:FilterSelect(tp,c93157004.synfilter2,1,1,tuner1,c,lv-lv1,g2,g4,f1,tuner1)
 			tuner2=t2:GetFirst()
 		else
@@ -187,8 +187,8 @@ function c93157004.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 		local f2=tuner2.tuner_filter
 		local m3=nil
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		if (tuner1:IsHasEffect(55863245) and not tuner2:IsLocation(LOCATION_HAND))
-			or tuner2:IsHasEffect(55863245) then
+		if (tuner1:IsHasEffect(EFFECT_HAND_SYNCHRO) and not tuner2:IsLocation(LOCATION_HAND))
+			or tuner2:IsHasEffect(EFFECT_HAND_SYNCHRO) then
 			m3=g4:FilterSelect(tp,c93157004.synfilter3,1,1,nil,c,lv-lv1-lv2,f1,f2)
 		else
 			m3=g2:FilterSelect(tp,c93157004.synfilter3,1,1,nil,c,lv-lv1-lv2,f1,f2)
