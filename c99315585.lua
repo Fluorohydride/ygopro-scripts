@@ -55,7 +55,7 @@ function c99315585.regop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c99315585.thfilter(c)
-	return c:IsSetCard(0x10db) or (c:IsSetCard(0xdb) and c:IsType(TYPE_SPELL+TYPE_TRAP)) and c:IsAbleToHand()
+	return (c:IsSetCard(0x10db) or (c:IsSetCard(0xdb) and c:IsType(TYPE_SPELL+TYPE_TRAP))) and c:IsAbleToHand()
 		and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
 end
 function c99315585.thcon(e,tp,eg,ep,ev,re,r,rp)

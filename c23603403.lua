@@ -63,7 +63,7 @@ function c23603403.valcheck(e,c)
 		e:GetLabelObject():SetLabel(0)
 	end
 end
-function c23603403.condition(e,tp,eg,ep,ev,re,r,rp)
+function c23603403.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c23603403.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)

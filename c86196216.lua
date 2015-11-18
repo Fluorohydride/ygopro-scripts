@@ -22,7 +22,7 @@ function c86196216.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do
 		if tc:IsSetCard(0xba) and tc:IsType(TYPE_XYZ) and tc:IsReason(REASON_DESTROY) and tc:IsReason(REASON_BATTLE) then
-			tc:RegisterFlagEffect(86196216,RESET_EVENT+0x1fe0000+RESET_PHASE+RESET_END,0,1)
+			tc:RegisterFlagEffect(86196216,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 		end
 		tc=eg:GetNext()
 	end

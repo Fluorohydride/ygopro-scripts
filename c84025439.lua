@@ -31,14 +31,14 @@ function c84025439.initial_effect(c)
 	e3:SetCode(EFFECT_CANNOT_TO_HAND)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(0,LOCATION_DECK)
-	e3:SetCondition(c84025439.con1)
+	e3:SetCondition(c84025439.drcon)
 	c:RegisterEffect(e3)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
 	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCode(EFFECT_CANNOT_DRAW)
-	e4:SetCondition(c84025439.con2)
+	e4:SetCondition(c84025439.drcon)
 	e4:SetTargetRange(0,1)
 	c:RegisterEffect(e4)
 	--spsummon
@@ -50,19 +50,6 @@ function c84025439.initial_effect(c)
 	e6:SetTarget(c84025439.sptg)
 	e6:SetOperation(c84025439.spop)
 	c:RegisterEffect(e6)
-	if not c84025439.global_check then
-		c84025439.global_check=true
-		local ge1=Effect.CreateEffect(c)
-		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge1:SetCode(EVENT_PREDRAW)
-		ge1:SetOperation(c84025439.checkop)
-		Duel.RegisterEffect(ge1,0)
-		local ge2=Effect.CreateEffect(c)
-		ge2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge2:SetCode(EVENT_DRAW)
-		ge2:SetOperation(c84025439.clearop)
-		Duel.RegisterEffect(ge2,0)
-	end
 end
 function c84025439.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetOverlayGroup():GetClassCount(Card.GetCode)>=2 and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
@@ -84,27 +71,16 @@ function c84025439.tdop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoDeck(sg,nil,2,REASON_EFFECT)
 	end
 end
-function c84025439.imcon(e,tp,eg,ep,ev,re,r,rp)
+function c84025439.imcon(e)
 	return e:GetHandler():GetOverlayGroup():GetClassCount(Card.GetCode)>=4
 end
 function c84025439.efilter(e,te)
 	return not te:GetHandler():IsSetCard(0xdc)
 end
-function c84025439.con1(e)
+function c84025439.drcon(e)
 	return e:GetHandler():GetOverlayGroup():GetClassCount(Card.GetCode)>=6
 end
-function c84025439.con2(e)
-	return e:GetHandler():GetOverlayGroup():GetClassCount(Card.GetCode)>=6 and Duel.GetFlagEffect(tp,84025439)==0
-end
-function c84025439.checkop(e)
-	local p=Duel.GetTurnPlayer()
-	Duel.RegisterFlagEffect(p,84025439,RESET_PHASE+PHASE_DRAW,0,1)
-end
-function c84025439.clearop(e)
-	local p=Duel.GetTurnPlayer()
-	Duel.ResetFlagEffect(p,84025439)
-end
-function c84025439.spfilter(c,e,tp,tc)
+function c84025439.spfilter(c,e,tp)
 	return c:IsSetCard(0x20dc) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
 end
 function c84025439.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
