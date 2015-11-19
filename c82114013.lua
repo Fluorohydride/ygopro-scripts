@@ -1,22 +1,17 @@
 --ドラコニアの海竜騎兵
 function c82114013.initial_effect(c)
 	--pendulum summon
-	aux.AddPendulumProcedure(c)
-	--Activate
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	c:RegisterEffect(e1)
+	aux.EnablePendulumAttribute(c)
 	--spsummon
-	local e2=Effect.CreateEffect(c)
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCode(EVENT_BATTLE_DESTROYED)
-	e2:SetRange(LOCATION_PZONE)
-	e2:SetCountLimit(1,82114013)
-	e2:SetTarget(c82114013.sptg)
-	e2:SetOperation(c82114013.spop)
-	c:RegisterEffect(e2)
+	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e1:SetCode(EVENT_BATTLE_DESTROYED)
+	e1:SetRange(LOCATION_PZONE)
+	e1:SetCountLimit(1,82114013)
+	e1:SetTarget(c82114013.sptg)
+	e1:SetOperation(c82114013.spop)
+	c:RegisterEffect(e1)
 end
 function c82114013.spfilter(c,e,tp)
 	return c:IsType(TYPE_NORMAL) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
