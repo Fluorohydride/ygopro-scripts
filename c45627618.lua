@@ -4,7 +4,7 @@ function c45627618.initial_effect(c)
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),7,2)
 	c:EnableReviveLimit()
 	--pendulum summon
-	aux.AddPendulumProcedure(c)
+	aux.EnablePendulumAttribute(c,false)
 	--pendulum set
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_IGNITION)
