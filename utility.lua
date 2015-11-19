@@ -1134,6 +1134,7 @@ function Auxiliary.EnablePendulumAttribute(c,reg)
 	e1:SetOperation(Auxiliary.PendOperation())
 	e1:SetValue(SUMMON_TYPE_PENDULUM)
 	c:RegisterEffect(e1)
+	--register by default
 	if reg==nil or reg then
 		local e2=Effect.CreateEffect(c)
 		e2:SetDescription(1160)
