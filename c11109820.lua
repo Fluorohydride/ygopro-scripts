@@ -28,7 +28,8 @@ end
 function c11109820.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if chk==0 then return Duel.IsExistingTarget(c11109820.filter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,e,tp,ft) end
+	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+		and Duel.IsExistingTarget(c11109820.filter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,e,tp,ft) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g1=Duel.SelectTarget(tp,c11109820.filter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,e,tp,ft)
 	local tc=g1:GetFirst()
@@ -40,8 +41,9 @@ function c11109820.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c11109820.operation(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	--change damage
-	local e1=Effect.CreateEffect(e:GetHandler())
+	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CHANGE_DAMAGE)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
@@ -54,7 +56,6 @@ function c11109820.operation(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
 	--sp_summon
-	local c=e:GetHandler()
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc1=g:GetFirst()
 	local tc2=g:GetNext()
