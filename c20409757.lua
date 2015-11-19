@@ -1,7 +1,7 @@
 --時読みの魔術師
 function c20409757.initial_effect(c)
 	--pendulum summon
-	aux.EnablePendulumAttribute(c,false)
+	aux.EnablePendulumAttribute(c,true)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1160)
