@@ -38,7 +38,7 @@ function c35544402.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_LEVEL)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
-		if Duel.SelectOption(tp,aux.Stringid(35544402,0),aux.Stringid(35544402,1))==0 then
+		if Duel.SelectOption(tp,aux.Stringid(35544402,2),aux.Stringid(35544402,3))==0 then
 			e1:SetValue(1)
 		else e1:SetValue(2) end
 		tc:RegisterEffect(e1)
