@@ -62,8 +62,8 @@ end
 function c13893596.tgfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
 end
-function c13893596.filter(c,rc,code)
-	return c:IsRelateToCard(rc) and c:GetCode()==code
+function c13893596.filter(c,rc)
+	return c:IsRelateToCard(rc) and c:IsSetCard(0x40)
 end
 function c13893596.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local WIN_REASON_EXODIUS = 0x14
@@ -73,20 +73,9 @@ function c13893596.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE)
 		and c:IsRelateToEffect(e) and c:IsFaceup() then
-		tc:CreateRelation(c,RESET_EVENT+0x1fe0000)
-		local a1=false local a2=false local a3=false local a4=false local a5=false 
-		local g=Duel.GetFieldGroup(tp,LOCATION_GRAVE,0)
-		local gc=g:GetFirst()
-		while gc do
-			if c13893596.filter(gc,c,8124921) then a1=true
-			elseif c13893596.filter(gc,c,44519536) then a2=true
-			elseif c13893596.filter(gc,c,70903634) then a3=true
-			elseif c13893596.filter(gc,c,7902349) then a4=true
-			elseif c13893596.filter(gc,c,33396948) then a5=true
-			end
-			gc=g:GetNext()
-		end
-		if a1 and a2 and a3 and a4 and a5 then
+		tc:CreateRelation(c,RESET_EVENT+0x1fe0000) 
+		local g=Duel.GetMatchingGroup(c13893596.filter,tp,LOCATION_GRAVE,0,nil,c)
+		if g:GetClassCount(Card.GetCode)==5 then
 			Duel.Win(tp,WIN_REASON_EXODIUS)
 		end
 	end
