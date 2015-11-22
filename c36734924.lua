@@ -28,7 +28,7 @@ function c36734924.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsContains(e:GetHandler())
 end
 function c36734924.tgfilter(c)
-	return c:IsType(TYPE_EFFECT) and c:IsAbleToGrave()
+	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsAbleToGrave()
 end
 function c36734924.thfilter(c)
 	return c:IsSetCard(0xdd) and c:IsAbleToHand()
@@ -42,7 +42,8 @@ end
 function c36734924.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local tg=Duel.SelectMatchingCard(tp,c36734924.tgfilter,tp,LOCATION_MZONE,0,1,1,nil)
-	if tg:GetCount()>0 and Duel.SendtoGrave(tg,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
+	local tc=tg:GetFirst()
+	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
 		local g=Duel.GetMatchingGroup(c36734924.thfilter,tp,LOCATION_DECK,0,nil)
 		if g:GetCount()<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

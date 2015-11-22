@@ -82,36 +82,37 @@ function c10424147.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and g:GetClassCount(Card.GetCode)>2
 		and Duel.IsExistingMatchingCard(c10424147.spfilter4,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local sg1=g:Select(tp,1,1,nil)
 	g:Remove(Card.IsCode,nil,sg1:GetFirst():GetCode())
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local sg2=g:Select(tp,1,1,nil)
 	g:Remove(Card.IsCode,nil,sg2:GetFirst():GetCode())
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local sg3=g:Select(tp,1,1,nil)
 	sg1:Merge(sg2)
 	sg1:Merge(sg3)
 	Duel.SetTargetCard(sg1)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
+function c10424147.mtfilter(c,e)
+	return c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
+end
 function c10424147.spop2(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<0 then return end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c10424147.spfilter4,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
-	local sc=g:GetFirst()
+	local sg=Duel.SelectMatchingCard(tp,c10424147.spfilter4,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
+	local sc=sg:GetFirst()
 	if sc and Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-		local g=tg:Filter(Card.IsRelateToEffect,nil,e)
+		local g=tg:Filter(c10424147.mtfilter,nil,e)
 		local tc=g:GetFirst()
 		while tc do
 			local mg=tc:GetOverlayGroup()
 			if mg:GetCount()~=0 then
 				Duel.Overlay(sc,mg)
 			end
-			if not tc:IsImmuneToEffect(e) then
-				Duel.Overlay(sc,Group.FromCards(tc))
-			end
+			Duel.Overlay(sc,Group.FromCards(tc))
 			tc=g:GetNext()
 		end
 	end
