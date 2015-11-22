@@ -53,7 +53,7 @@ function c72258771.mtop(e,tp,eg,ep,ev,re,r,rp)
 		local g=g1:Select(tp,1,1,nil)
 		Duel.SendtoGrave(g,REASON_COST)
 	else
-		Duel.Destroy(e:GetHandler(),REASON_COST)
+		Duel.Destroy(e:GetHandler(),REASON_RULE)
 	end
 end
 function c72258771.otfilter(c,tp)
