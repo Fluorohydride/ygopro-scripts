@@ -23,7 +23,7 @@ function c99315585.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c99315585.tgfilter(c,tp)
-	return c:IsControler(tp) and c:IsSetCard(0x10db) or (c:IsSetCard(0xdb) and c:IsType(TYPE_SPELL+TYPE_TRAP))
+	return c:IsControler(tp) and (c:IsSetCard(0x10db) or c:IsSetCard(0xdb) and c:IsType(TYPE_SPELL+TYPE_TRAP))
 end
 function c99315585.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c99315585.tgfilter,1,nil,tp)
@@ -56,7 +56,6 @@ function c99315585.regop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c99315585.thfilter(c)
 	return (c:IsSetCard(0x10db) or (c:IsSetCard(0xdb) and c:IsType(TYPE_SPELL+TYPE_TRAP))) and c:IsAbleToHand()
-		and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
 end
 function c99315585.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c99315585.thfilter,tp,LOCATION_GRAVE,0,1,nil)
@@ -64,8 +63,9 @@ end
 function c99315585.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c99315585.thfilter,tp,LOCATION_GRAVE,0,1,1,nil)
-	if g:GetCount()>0 then
-		Duel.SendtoHand(g,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,g)
+	local tc=g:GetFirst()
+	if tc and not tc:IsHasEffect(EFFECT_NECRO_VALLEY) then
+		Duel.SendtoHand(tc,nil,REASON_EFFECT)
+		Duel.ConfirmCards(1-tp,tc)
 	end
 end
