@@ -1122,8 +1122,8 @@ function Auxiliary.RPEOperation2(filter)
 				end
 			end
 end
---add procedure to Pendulum monster
-function Auxiliary.AddPendulumProcedure(c)
+--add procedure to Pendulum monster, also allows registeration of activation effect
+function Auxiliary.EnablePendulumAttribute(c,reg)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC_G)
@@ -1134,6 +1134,14 @@ function Auxiliary.AddPendulumProcedure(c)
 	e1:SetOperation(Auxiliary.PendOperation())
 	e1:SetValue(SUMMON_TYPE_PENDULUM)
 	c:RegisterEffect(e1)
+	--register by default
+	if reg==nil or reg then
+		local e2=Effect.CreateEffect(c)
+		e2:SetDescription(1160)
+		e2:SetType(EFFECT_TYPE_ACTIVATE)
+		e2:SetCode(EVENT_FREE_CHAIN)
+		c:RegisterEffect(e2)
+	end
 end
 function Auxiliary.PConditionFilter(c,e,tp,lscale,rscale)
 	local lv=0

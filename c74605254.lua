@@ -1,13 +1,7 @@
 --DD魔導賢者ガリレイ
 function c74605254.initial_effect(c)
 	--pendulum summon
-	aux.AddPendulumProcedure(c)
-	--Activate
-	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(74605254,1))
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	c:RegisterEffect(e1)
+	aux.EnablePendulumAttribute(c)
 	--splimit
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
