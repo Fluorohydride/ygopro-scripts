@@ -44,7 +44,7 @@ function c39984786.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local mg=e:GetHandler():GetMaterial()
 	local g=mg:FilterSelect(tp,c39984786.filter,1,1,nil,e,tp)
 	Duel.SetTargetCard(g)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,g:GetCount(),0,0)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c39984786.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

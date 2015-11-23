@@ -77,7 +77,7 @@ function c27756115.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and eg:IsExists(c27756115.cfilter,1,nil,e,tp) end
 	local g=eg:Filter(c27756115.cfilter,nil,e,tp)
 	Duel.SetTargetCard(g)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,g:GetCount(),0,0)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c27756115.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)

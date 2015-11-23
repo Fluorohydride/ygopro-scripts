@@ -35,7 +35,7 @@ function c66727115.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Release(g,REASON_COST)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=Duel.SelectTarget(tp,c66727115.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,code,e,tp)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,sg:GetCount(),0,0)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,1,0,0)
 end
 function c66727115.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
