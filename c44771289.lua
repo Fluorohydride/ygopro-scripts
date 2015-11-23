@@ -16,7 +16,7 @@ function c44771289.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e2:SetCondition(c44771289.atkcon)
+	e2:SetCondition(aux.exccon)
 	e2:SetCost(c44771289.atkcost)
 	e2:SetTarget(c44771289.atktg)
 	e2:SetOperation(c44771289.atkop)
@@ -88,9 +88,6 @@ function c44771289.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ShuffleHand(tp)
 		end
 	end
-end
-function c44771289.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetTurnID()~=Duel.GetTurnCount()
 end
 function c44771289.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
