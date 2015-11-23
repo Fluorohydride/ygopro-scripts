@@ -22,12 +22,12 @@ function c58753372.initial_effect(c)
 	e2:SetOperation(c58753372.spop)
 	c:RegisterEffect(e2)
 end
-function c58753372.filter1(c)
-	return c:IsFaceup() and c:GetLevel()>0
+function c58753372.filter1(c,lv)
+	return c:IsFaceup() and c:GetLevel()>0 and (lv==nil or c:GetLevel()~=lv)
 end
 function c58753372.filter2(c,tp)
 	return c58753372.filter1(c) and c:IsSetCard(0xdc)
-		and Duel.IsExistingMatchingCard(c58753372.filter1,tp,LOCATION_MZONE,0,1,c)
+		and Duel.IsExistingMatchingCard(c58753372.filter1,tp,LOCATION_MZONE,0,1,c,c:GetLevel())
 end
 function c58753372.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c58753372.filter2(chkc,tp) end
@@ -38,7 +38,7 @@ end
 function c58753372.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		local g=Duel.GetMatchingGroup(c58753372.filter1,tp,LOCATION_MZONE,0,tc)
+		local g=Duel.GetMatchingGroup(c58753372.filter1,tp,LOCATION_MZONE,0,tc,tc:GetLevel())
 		local lc=g:GetFirst()
 		local lv=tc:GetLevel()
 		while lc do
