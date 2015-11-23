@@ -32,7 +32,7 @@ function c8339504.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
+		return e:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
 			and Duel.CheckReleaseGroup(tp,c8339504.cfilter,1,nil,e,tp)
 	end
 	e:SetLabel(0)
