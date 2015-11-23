@@ -1,27 +1,32 @@
 --相克の魔術師
 function c71692913.initial_effect(c)
 	--pendulum summon
-	aux.EnablePendulumAttribute(c)
-	--xyz level
+	aux.AddPendulumProcedure(c)
+	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_IGNITION)
-	e1:SetRange(LOCATION_PZONE)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e1:SetCountLimit(1)
-	e1:SetTarget(c71692913.xyztg)
-	e1:SetOperation(c71692913.xyzop)
+	e1:SetType(EFFECT_TYPE_ACTIVATE)
+	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
-	--disable
+	--xyz level
 	local e2=Effect.CreateEffect(c)
-	e2:SetCategory(CATEGORY_DISABLE)
-	e2:SetType(EFFECT_TYPE_QUICK_O)
-	e2:SetCode(EVENT_FREE_CHAIN)
-	e2:SetRange(LOCATION_MZONE)
+	e2:SetType(EFFECT_TYPE_IGNITION)
+	e2:SetRange(LOCATION_PZONE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCountLimit(1)
-	e2:SetTarget(c71692913.distg)
-	e2:SetOperation(c71692913.disop)
+	e2:SetTarget(c71692913.xyztg)
+	e2:SetOperation(c71692913.xyzop)
 	c:RegisterEffect(e2)
+	--disable
+	local e3=Effect.CreateEffect(c)
+	e3:SetCategory(CATEGORY_DISABLE)
+	e3:SetType(EFFECT_TYPE_QUICK_O)
+	e3:SetCode(EVENT_FREE_CHAIN)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e3:SetCountLimit(1)
+	e3:SetTarget(c71692913.distg)
+	e3:SetOperation(c71692913.disop)
+	c:RegisterEffect(e3)
 end
 function c71692913.xyzfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)

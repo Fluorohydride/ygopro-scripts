@@ -1,17 +1,22 @@
 --武神－ヒルコ
 function c70026064.initial_effect(c)
 	--pendulum summon
-	aux.EnablePendulumAttribute(c)
-	--spsummon
+	aux.AddPendulumProcedure(c)
+	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e1:SetType(EFFECT_TYPE_IGNITION)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e1:SetRange(LOCATION_PZONE)
-	e1:SetCost(c70026064.spcost)
-	e1:SetTarget(c70026064.sptg)
-	e1:SetOperation(c70026064.spop)
+	e1:SetType(EFFECT_TYPE_ACTIVATE)
+	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
+	--spsummon
+	local e2=Effect.CreateEffect(c)
+	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e2:SetType(EFFECT_TYPE_IGNITION)
+	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e2:SetRange(LOCATION_PZONE)
+	e2:SetCost(c70026064.spcost)
+	e2:SetTarget(c70026064.sptg)
+	e2:SetOperation(c70026064.spop)
+	c:RegisterEffect(e2)
 end
 function c70026064.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
