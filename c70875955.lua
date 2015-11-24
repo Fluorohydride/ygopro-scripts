@@ -19,8 +19,9 @@ function c70875955.initial_effect(c)
 	e2:SetOperation(c70875955.spop)
 	e2:SetLabel(1)
 	c:RegisterEffect(e2)
-	--spsummon
+	--cost
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(70875955,2))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCode(EVENT_PHASE+PHASE_END)
@@ -33,7 +34,7 @@ function c70875955.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,31533705,0x101b,0x4011,0,0,3,RACE_MACHINE,ATTRIBUTE_WIND)
-		and Duel.SelectYesNo(tp,aux.Stringid(70875955,1)) then
+		and Duel.SelectYesNo(tp,94) then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		e:SetLabel(1)
 		e:GetHandler():RegisterFlagEffect(70875955,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
