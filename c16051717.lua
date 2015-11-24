@@ -6,6 +6,7 @@ function c16051717.initial_effect(c)
 	--add type
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetCondition(c16051717.tncon)
 	e1:SetOperation(c16051717.tnop)
