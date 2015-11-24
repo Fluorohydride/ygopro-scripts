@@ -19,8 +19,9 @@ function c70875955.initial_effect(c)
 	e2:SetOperation(c70875955.spop)
 	e2:SetLabel(1)
 	c:RegisterEffect(e2)
-	--spsummon
+	--cost
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(70875955,2))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCode(EVENT_PHASE+PHASE_END)
