@@ -33,7 +33,7 @@ function c70875955.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,31533705,0x101b,0x4011,0,0,3,RACE_MACHINE,ATTRIBUTE_WIND)
-		and Duel.SelectYesNo(tp,aux.Stringid(70875955,1)) then
+		and Duel.SelectYesNo(tp,94) then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		e:SetLabel(1)
 		e:GetHandler():RegisterFlagEffect(70875955,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
