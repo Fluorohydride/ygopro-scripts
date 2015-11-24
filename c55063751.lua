@@ -55,7 +55,7 @@ function c55063751.spcon2(e,c)
 end
 function c55063751.negcon(e,tp,eg,ep,ev,re,r,rp)
 	if ep==tp or e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) then return false end
-	return (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE)) and not re:GetHandler():IsCode(55063751) and Duel.IsChainNegatable(ev)
+	return not re:GetHandler():IsCode(55063751) and Duel.IsChainNegatable(ev)
 end
 function c55063751.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0x37,2,REASON_COST) end
