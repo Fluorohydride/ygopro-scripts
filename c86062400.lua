@@ -42,7 +42,8 @@ function c86062400.tgop(e,tp,eg,ep,ev,re,r,rp)
 	if bc:IsFaceup() and bc:IsRelateToBattle() then
 		local rk=bc:GetRank()
 		local g=nil
-		local tg=Duel.GetFieldGroup(tp,0,LOCATION_EXTRA)
+		local tg=Duel.GetMatchingGroup(Card.IsAbleToGrave,tp,0,LOCATION_EXTRA,nil)
+		if tg:GetCount()==0 then return end
 		if rk<4 then
 			Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
 			g=tg:Select(1-tp,1,1,nil)
