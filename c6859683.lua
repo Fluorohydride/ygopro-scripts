@@ -16,8 +16,8 @@ function c6859683.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return g:FilterCount(c6859683.filter,nil)>=2 end
 end
 function c6859683.operation(e,tp,eg,ep,ev,re,r,rp)
-	if g:FilterCount(c6859683.filter,nil)<2 then return end
 	local cg=Duel.GetFieldGroup(tp,0,LOCATION_EXTRA)
+	if cg:FilterCount(c6859683.filter,nil)<2 then return end
 	Duel.ConfirmCards(tp,cg)
 	local g=Duel.GetMatchingGroup(Card.IsType,1-tp,LOCATION_EXTRA,0,nil,TYPE_FUSION)
 	if g:GetCount()<2 then return end
