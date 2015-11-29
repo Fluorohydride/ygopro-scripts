@@ -67,7 +67,7 @@ function c58604027.spcon(e,c)
 		and Duel.CheckReleaseGroup(c:GetControler(),Card.IsSetCard,1,nil,0x40)
 end
 function c58604027.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(c:GetControler(),Card.IsSetCard,1,1,nil,0x40)
+	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0x40)
 	Duel.Release(g,REASON_COST)
 end
 function c58604027.efilter(e,te)
@@ -104,8 +104,10 @@ function c58604027.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c58604027.drop(e,tp,eg,ep,ev,re,r,rp)
+	local dt=Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)
+	if dt==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-	local cg=Duel.SelectMatchingCard(tp,c58604027.cfilter,tp,LOCATION_HAND,0,1,99,nil)
+	local cg=Duel.SelectMatchingCard(tp,c58604027.cfilter,tp,LOCATION_HAND,0,1,dt,nil)
 	Duel.ConfirmCards(1-tp,cg)
 	Duel.ShuffleHand(tp)
 	local ct=cg:GetCount()
