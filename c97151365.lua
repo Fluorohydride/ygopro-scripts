@@ -27,7 +27,7 @@ function c97151365.initial_effect(c)
 end
 function c97151365.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetTurnPlayer()~=tp or Duel.GetAttackTarget()~=nil then
-		e:GetHandler():AddCounter(0x1e,1)
+		e:GetHandler():AddCounter(0x1e+COUNTER_NEED_ENABLE,1)
 	end
 end
 function c97151365.spcon(e,tp,eg,ep,ev,re,r,rp)

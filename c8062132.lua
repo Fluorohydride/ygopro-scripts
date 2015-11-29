@@ -81,7 +81,7 @@ function c8062132.ctcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c8062132.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	c:AddCounter(0x11,1)
+	c:AddCounter(0x11+COUNTER_NEED_ENABLE,1)
 	if c:GetCounter(0x11)>=3 then
 		Duel.Win(tp,0x12)
 	end

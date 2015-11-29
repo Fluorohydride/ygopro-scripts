@@ -42,7 +42,7 @@ function c25518020.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c25518020.ctfilter,1,nil)
 end
 function c25518020.ctop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x1d,2)
+	e:GetHandler():AddCounter(0x1d+COUNTER_NEED_ENABLE,2)
 end
 function c25518020.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

@@ -32,7 +32,7 @@ end
 function c71071546.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		c:AddCounter(0x2c,1)
+		c:AddCounter(0x2c+COUNTER_NEED_ENABLE,1)
 	end
 end
 function c71071546.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)

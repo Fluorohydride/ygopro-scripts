@@ -47,7 +47,7 @@ function c57543573.accon3(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c57543573.filter3,1,nil,tp)
 end
 function c57543573.acop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0xf,1)
+	e:GetHandler():AddCounter(0xf+COUNTER_NEED_ENABLE,1)
 end
 function c57543573.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0xf,2,REASON_COST) end

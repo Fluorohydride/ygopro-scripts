@@ -39,7 +39,7 @@ end
 function c56111151.counter(e,tp,eg,ep,ev,re,r,rp)
 	local ct=eg:FilterCount(c56111151.cfilter,nil)
 	if ct>0 then
-		e:GetHandler():AddCounter(0x37,ct)
+		e:GetHandler():AddCounter(0x37+COUNTER_NEED_ENABLE,ct)
 	end
 end
 function c56111151.thfilter(c)

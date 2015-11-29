@@ -40,6 +40,6 @@ end
 function c78574395.operation(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		c:AddCounter(0x32,e:GetLabel())
+		c:AddCounter(0x32+COUNTER_NEED_ENABLE,e:GetLabel())
 	end
 end

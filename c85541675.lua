@@ -34,7 +34,7 @@ function c85541675.accon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c85541675.cfilter,1,nil)
 end
 function c85541675.acop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x12,1)
+	e:GetHandler():AddCounter(0x12+COUNTER_NEED_ENABLE,1)
 end
 function c85541675.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

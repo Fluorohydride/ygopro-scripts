@@ -41,7 +41,7 @@ end
 function c94243005.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=eg:FilterCount(c94243005.ctfilter,nil)
 	if ct>0 then
-		e:GetHandler():AddCounter(0x13,ct)
+		e:GetHandler():AddCounter(0x13+COUNTER_NEED_ENABLE,ct)
 	end
 end
 function c94243005.spfilter(c,e,tp)

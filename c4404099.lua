@@ -26,7 +26,7 @@ function c4404099.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c4404099.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x23,1)
+		e:GetHandler():AddCounter(0x23+COUNTER_NEED_ENABLE,1)
 	end
 end
 function c4404099.atkcon(e,tp,eg,ep,ev,re,r,rp)

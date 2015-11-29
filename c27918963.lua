@@ -34,7 +34,7 @@ function c27918963.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c27918963.cfilter,1,nil)
 end
 function c27918963.ctop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x33,1)
+	e:GetHandler():AddCounter(0x33+COUNTER_NEED_ENABLE,1)
 end
 function c27918963.filter1(c)
 	return c:IsFaceup() and c:IsSetCard(0xb3)

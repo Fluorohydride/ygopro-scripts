@@ -19,10 +19,10 @@ end
 function c35787450.addc(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
 	if tc and tc:IsFaceup() and tc:IsCode(75041269) then
-		tc:AddCounter(0x1b,2)
+		tc:AddCounter(0x1b+COUNTER_NEED_ENABLE,2)
 	end
 	tc=Duel.GetFieldCard(1-tp,LOCATION_SZONE,5)
 	if tc and tc:IsFaceup() and tc:IsCode(75041269) then
-		tc:AddCounter(0x1b,2)
+		tc:AddCounter(0x1b+COUNTER_NEED_ENABLE,2)
 	end
 end

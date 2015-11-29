@@ -40,7 +40,7 @@ function c81524977.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c81524977.ctfilter,1,nil)
 end
 function c81524977.ctop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x20,1)
+	e:GetHandler():AddCounter(0x20+COUNTER_NEED_ENABLE,1)
 end
 function c81524977.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

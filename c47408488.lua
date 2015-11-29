@@ -40,7 +40,7 @@ function c47408488.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return tc:IsFaceup() and tc:IsSetCard(0x1034)
 end
 function c47408488.ctop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x6,1)
+	e:GetHandler():AddCounter(0x6+COUNTER_NEED_ENABLE,1)
 end
 function c47408488.plcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

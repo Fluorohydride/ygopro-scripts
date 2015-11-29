@@ -66,7 +66,7 @@ function c81057455.posop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.ChangePosition(tc,POS_FACEDOWN_DEFENCE)~=0 then
-		e:GetHandler():AddCounter(0x37,1)
+		e:GetHandler():AddCounter(0x37+COUNTER_NEED_ENABLE,1)
 	end
 end
 function c81057455.drcon(e,tp,eg,ep,ev,re,r,rp)

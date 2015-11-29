@@ -46,7 +46,7 @@ function c52518793.accon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c52518793.cfilter,1,nil,tp)
 end
 function c52518793.acop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x7,1)
+	e:GetHandler():AddCounter(0x7+COUNTER_NEED_ENABLE,1)
 end
 function c52518793.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsReason(REASON_RULE)

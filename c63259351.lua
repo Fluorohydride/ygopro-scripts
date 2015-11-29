@@ -30,7 +30,7 @@ function c63259351.ctfilter(c,tp)
 end
 function c63259351.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c63259351.ctfilter,1,nil,tp) then
-		e:GetHandler():AddCounter(0x14,2)
+		e:GetHandler():AddCounter(0x14+COUNTER_NEED_ENABLE,2)
 	end
 end
 function c63259351.spcost(e,tp,eg,ep,ev,re,r,rp,chk)

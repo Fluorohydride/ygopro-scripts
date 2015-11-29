@@ -57,7 +57,7 @@ function c17601919.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c17601919.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x2f,1)
+		e:GetHandler():AddCounter(0x2f+COUNTER_NEED_ENABLE,1)
 	end
 end
 function c17601919.adval(e,c)

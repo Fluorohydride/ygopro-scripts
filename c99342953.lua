@@ -32,7 +32,7 @@ function c99342953.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c99342953.ctfilter,1,nil)
 end
 function c99342953.ctop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0xe,1)
+	e:GetHandler():AddCounter(0xe+COUNTER_NEED_ENABLE,1)
 end
 function c99342953.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0xe,2,REASON_COST) end

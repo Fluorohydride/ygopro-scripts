@@ -30,7 +30,7 @@ end
 function c14306092.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		c:AddCounter(0x2e,1)
+		c:AddCounter(0x2e+COUNTER_NEED_ENABLE,1)
 	end
 end
 function c14306092.atkcon(e)

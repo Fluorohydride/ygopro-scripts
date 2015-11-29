@@ -52,7 +52,7 @@ function c44954628.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c44954628.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x1f,3)
+		e:GetHandler():AddCounter(0x1f+COUNTER_NEED_ENABLE,3)
 	end
 end
 function c44954628.rctcon(e,tp,eg,ep,ev,re,r,rp)

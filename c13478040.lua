@@ -24,7 +24,7 @@ function c13478040.cfilter(c,tp)
 end
 function c13478040.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c13478040.cfilter,1,nil,1-tp) then
-		e:GetHandler():AddCounter(0x17,1)
+		e:GetHandler():AddCounter(0x17+COUNTER_NEED_ENABLE,1)
 	end
 end
 function c13478040.descost(e,tp,eg,ep,ev,re,r,rp,chk)

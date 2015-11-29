@@ -54,7 +54,7 @@ function c5973663.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c5973663.ctfilter,1,nil)
 end
 function c5973663.ctop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x18,1)
+	e:GetHandler():AddCounter(0x18+COUNTER_NEED_ENABLE,1)
 end
 function c5973663.cost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x18,1,REASON_COST) end

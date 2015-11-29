@@ -26,7 +26,7 @@ function c33904024.initial_effect(c)
 end
 function c33904024.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if ep==tp and r==REASON_RULE then
-		e:GetHandler():AddCounter(0xd,1)
+		e:GetHandler():AddCounter(0xd+COUNTER_NEED_ENABLE,1)
 	end
 end
 function c33904024.drcon(e,tp,eg,ep,ev,re,r,rp)
