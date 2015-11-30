@@ -3,13 +3,7 @@ function c464362.initial_effect(c)
 	c:SetUniqueOnField(1,0,464362)
 	--fusion material
 	c:EnableReviveLimit()
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetCode(EFFECT_FUSION_MATERIAL)
-	e1:SetCondition(c464362.fscon)
-	e1:SetOperation(c464362.fsop)
-	c:RegisterEffect(e1)
+	aux.AddFusionProcCodeFunRep(c,30068120,aux.FilterBoolFunction(Card.IsSetCard,0xa9),1,63,true,true)
 	--destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_DESTROY)
@@ -29,31 +23,6 @@ function c464362.initial_effect(c)
 	e3:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0xad))
 	e3:SetValue(c464362.atkval)
 	c:RegisterEffect(e3)
-end
-c464362.material_count=1
-c464362.material={30068120}
-function c464362.mfilter(c,mg)
-	return (c:IsCode(30068120) or c:IsHasEffect(EFFECT_FUSION_SUBSTITUTE)) and mg:IsExists(Card.IsSetCard,1,c,0xa9)
-end
-function c464362.fscon(e,mg,gc)
-	if mg==nil then return true end
-	if gc then return (gc:IsCode(30068120) or gc:IsHasEffect(EFFECT_FUSION_SUBSTITUTE))
-		and mg:IsExists(Card.IsSetCard,1,gc,0xa9) end
-	return mg:IsExists(c464362.mfilter,1,nil,mg)
-end
-function c464362.fsop(e,tp,eg,ep,ev,re,r,rp,gc)
-	if gc then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local g1=eg:FilterSelect(tp,Card.IsSetCard,1,63,nil,0xa9)
-		Duel.SetFusionMaterial(g1)
-		return
-	end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g1=eg:FilterSelect(tp,c464362.mfilter,1,1,nil,eg)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g2=eg:FilterSelect(tp,Card.IsSetCard,1,63,g1:GetFirst(),0xa9)
-	g1:Merge(g2)
-	Duel.SetFusionMaterial(g1)
 end
 function c464362.descon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
