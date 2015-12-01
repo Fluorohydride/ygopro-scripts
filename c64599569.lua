@@ -2,13 +2,7 @@
 function c64599569.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion material
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetCode(EFFECT_FUSION_MATERIAL)
-	e1:SetCondition(c64599569.fscondition)
-	e1:SetOperation(c64599569.fsoperation)
-	c:RegisterEffect(e1)
+	aux.AddFusionProcCodeFunRep(c,70095154,aux.FilterBoolFunction(Card.IsRace,RACE_MACHINE),1,63,true,true)
 	--spsummon condition
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
@@ -27,25 +21,6 @@ function c64599569.initial_effect(c)
 	e4:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e4:SetOperation(c64599569.tgop)
 	c:RegisterEffect(e4)
-end
-c64599569.material_count=1
-c64599569.material={70095154}
-function c64599569.spfilter(c,mg)
-	return (c:IsCode(70095154) or c:IsHasEffect(EFFECT_FUSION_SUBSTITUTE))
-		and mg:IsExists(Card.IsRace,1,c,RACE_MACHINE)
-end
-function c64599569.fscondition(e,mg,gc)
-	if mg==nil then return false end
-	if gc then return false end
-	return mg:IsExists(c64599569.spfilter,1,nil,mg)
-end
-function c64599569.fsoperation(e,tp,eg,ep,ev,re,r,rp,gc)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g1=eg:FilterSelect(tp,c64599569.spfilter,1,1,nil,eg)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g2=eg:FilterSelect(tp,Card.IsRace,1,63,g1:GetFirst(),RACE_MACHINE)
-	g1:Merge(g2)
-	Duel.SetFusionMaterial(g1)
 end
 function c64599569.sucop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
