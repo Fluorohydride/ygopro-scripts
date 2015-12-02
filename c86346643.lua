@@ -2,13 +2,13 @@
 function c86346643.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcCodeFun(c,89943723,c86346643.fusfilter,1,false,false)
+	aux.AddFusionProcCodeFun(c,89943723,aux.FilterBoolFunction(Card.IsSetCard,0x2034),1,false,false)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetValue(c86346643.splimit)
+	e1:SetValue(aux.fuslimit)
 	c:RegisterEffect(e1)
 	--to deck
 	local e2=Effect.CreateEffect(c)
@@ -41,13 +41,6 @@ function c86346643.initial_effect(c)
 	e4:SetTarget(c86346643.tdtg3)
 	e4:SetOperation(c86346643.tdop3)
 	c:RegisterEffect(e4)
-end
-function c86346643.splimit(e,se,sp,st)
-	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
-end
-function c86346643.fusfilter(c)
-	local code=c:GetCode()
-	return code==79856792 or code==79407975
 end
 function c86346643.cfilter1(c)
 	return c:IsAbleToGraveAsCost()
