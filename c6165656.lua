@@ -63,6 +63,5 @@ function c6165656.wincon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp and Duel.GetLP(1-tp)<=2000 and e:GetHandler():GetOverlayCount()==0
 end
 function c6165656.winop(e,tp,eg,ep,ev,re,r,rp)
-	local WIN_REASON_DISASTER_LEO=0x18
-	Duel.Win(tp,WIN_REASON_DISASTER_LEO)
+	Duel.Win(tp)
 end

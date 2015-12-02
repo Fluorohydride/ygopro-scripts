@@ -40,8 +40,7 @@ function c81171949.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0 then
 		c:RegisterFlagEffect(81171949,RESET_EVENT+0x1fe0000,0,0)
 		if Duel.IsExistingMatchingCard(c81171949.filter,tp,LOCATION_REMOVED,0,3,nil) then
-			local WIN_REASON_JACKPOT7=0x19
-			Duel.Win(tp,WIN_REASON_JACKPOT7)
+			Duel.Win(tp)
 		end
 	end
 end

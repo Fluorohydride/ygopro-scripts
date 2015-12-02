@@ -39,9 +39,8 @@ function c53334641.ovfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x8d) and c:IsType(TYPE_XYZ) and not c:IsCode(53334641)
 end
 function c53334641.winop(e,tp,eg,ep,ev,re,r,rp)
-	local WIN_REASON_GHOSTRICK_SPOILEDANGEL=0x1b
 	if e:GetHandler():GetOverlayCount()==10 then
-		Duel.Win(tp,WIN_REASON_GHOSTRICK_SPOILEDANGEL)
+		Duel.Win(tp)
 	end
 end
 function c53334641.thcost(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -42,6 +42,5 @@ function c10000040.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	g1:Merge(g2)
 	g1:Merge(g3)
 	Duel.Release(g1,REASON_COST)
-	local WIN_REASON_CREATORGOD = 0x13
-	Duel.Win(tp,WIN_REASON_CREATORGOD)
+	Duel.Win(tp)
 end

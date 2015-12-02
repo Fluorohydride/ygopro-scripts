@@ -33,7 +33,7 @@ function c95308449.checkop(e,tp,eg,ep,ev,re,r,rp)
 	ct=ct+1
 	c:SetTurnCounter(ct)
 	if ct==20 then
-		Duel.Win(tp,0x11)
+		Duel.Win(tp)
 		c:ResetFlagEffect(1082946)
 	end
 end
