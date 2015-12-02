@@ -39,24 +39,24 @@ function c12678870.initial_effect(c)
 	e4:SetOperation(c12678870.spop)
 	c:RegisterEffect(e4)
 end
-function c12678870.spfilter1(c,tp)
-	return c:IsSetCard(0x10b5) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial()
-		and Duel.IsExistingMatchingCard(c12678870.spfilter2,tp,LOCATION_MZONE,0,1,c)
+function c12678870.spfilter1(c,tp,fc)
+	return c:IsSetCard(0x10b5) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(fc)
+		and Duel.IsExistingMatchingCard(c12678870.spfilter2,tp,LOCATION_MZONE,0,1,c,fc)
 end
-function c12678870.spfilter2(c)
-	return c:IsSetCard(0x20b5) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial()
+function c12678870.spfilter2(c,fc)
+	return c:IsSetCard(0x20b5) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(fc)
 end
 function c12678870.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and Duel.IsExistingMatchingCard(c12678870.spfilter1,tp,LOCATION_MZONE,0,1,nil,tp)
+		and Duel.IsExistingMatchingCard(c12678870.spfilter1,tp,LOCATION_MZONE,0,1,nil,tp,c)
 end
 function c12678870.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectMatchingCard(tp,c12678870.spfilter1,tp,LOCATION_MZONE,0,1,1,nil,tp)
+	local g1=Duel.SelectMatchingCard(tp,c12678870.spfilter1,tp,LOCATION_MZONE,0,1,1,nil,tp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=Duel.SelectMatchingCard(tp,c12678870.spfilter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst())
+	local g2=Duel.SelectMatchingCard(tp,c12678870.spfilter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst(),c)
 	g1:Merge(g2)
 	c:SetMaterial(g1)
 	Duel.Remove(g1,POS_FACEUP,REASON_COST)

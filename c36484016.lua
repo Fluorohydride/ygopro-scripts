@@ -21,10 +21,10 @@ function c36484016.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c36484016.filter0(c)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
+	return c:IsAbleToRemove()
 end
 function c36484016.filter1(c,e)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
+	return c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
 end
 function c36484016.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c.miracle_synchro_fusion and (not f or f(c))

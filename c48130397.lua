@@ -12,10 +12,10 @@ function c48130397.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c48130397.filter0(c,tp)
-	return (c:IsControler(tp) or c:IsFaceup()) and c:IsCanBeFusionMaterial()
+	return c:IsControler(tp) or c:IsFaceup()
 end
 function c48130397.filter1(c,e,tp)
-	return (c:IsControler(tp) or c:IsFaceup()) and c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
+	return (c:IsControler(tp) or c:IsFaceup()) and not c:IsImmuneToEffect(e)
 end
 function c48130397.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and (not f or f(c))

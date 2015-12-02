@@ -55,7 +55,7 @@ function c20366274.ffilter2(c)
 	return c:IsAttribute(ATTRIBUTE_LIGHT) or c:IsHasEffect(4904633)
 end
 function c20366274.exfilter(c,g)
-	return c:IsFaceup() and c:IsCanBeFusionMaterial() and not g:IsContains(c)
+	return c:IsFaceup() and not g:IsContains(c)
 end
 function c20366274.fuscon(e,g,gc,chkf)
 	if g==nil then return true end

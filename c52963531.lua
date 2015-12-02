@@ -47,7 +47,7 @@ function c52963531.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c52963531.filter1(c,e)
-	return c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
+	return not c:IsImmuneToEffect(e)
 end
 function c52963531.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsRace(RACE_DRAGON) and (not f or f(c))
@@ -56,7 +56,7 @@ end
 function c52963531.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
-		local mg1=Duel.GetMatchingGroup(Card.IsCanBeFusionMaterial,tp,LOCATION_MZONE,0,nil)
+		local mg1=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 		local res=Duel.IsExistingMatchingCard(c52963531.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)

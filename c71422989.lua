@@ -37,7 +37,7 @@ function c71422989.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c71422989.filter1(c,e)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
+	return c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
 end
 function c71422989.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x1047) and (not f or f(c))

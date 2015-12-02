@@ -21,7 +21,7 @@ function c45206713.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c45206713.filter1(c,e)
-	return c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
+	return not c:IsImmuneToEffect(e)
 end
 function c45206713.filter2(c,e,tp,m,f,gc)
 	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x10af) and (not f or f(c))
@@ -30,7 +30,7 @@ end
 function c45206713.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then
-		local mg1=Duel.GetMatchingGroup(Card.IsCanBeFusionMaterial,tp,LOCATION_HAND,0,c)
+		local mg1=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,c)
 		local res=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 			and Duel.IsExistingMatchingCard(c45206713.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,c)
 		if not res then
