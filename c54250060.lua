@@ -11,7 +11,7 @@ function c54250060.initial_effect(c)
 	e2:SetCode(EFFECT_UPDATE_ATTACK)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetTargetRange(LOCATION_MZONE,0)
-	e2:SetTarget(c54250060.atktg)
+	e2:SetTarget(aux.TargetBoolFunction(Card.IsRace,RACE_DRAGON+RACE_WARRIOR+RACE_SPELLCASTER))
 	e2:SetValue(300)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
@@ -39,9 +39,6 @@ function c54250060.initial_effect(c)
 	e5:SetTarget(c54250060.thtg)
 	e5:SetOperation(c54250060.thop)
 	c:RegisterEffect(e5)
-end
-function c54250060.atktg(e,c)
-	return c:IsRace(RACE_DRAGON+RACE_WARRIOR+RACE_SPELLCASTER)
 end
 function c54250060.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
