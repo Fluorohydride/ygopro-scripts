@@ -1055,15 +1055,15 @@ function Auxiliary.FOperationCodeFunRep(code,f,minc,maxc,sub,insf)
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 						local mg2=g2:Select(tp,math.max(minc+offset,1),maxc+offset,nil)
 						mg1:Merge(mg2)
-					end
-					--if gc fits both, should allow an extra material that fits code but doesn't fit f
-					if v2 then
-						g:Sub(mg1)
-						local smg=g:Filter(aux.FConditionFilterCFR2,nil,code,sub,f)
-						if smg:GetCount()>0 and Duel.SelectYesNo(tp,93) then
-							Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-							local mg4=smg:Select(tp,1,1,nil)
-							mg1:Merge(mg4)
+						--if gc fits both, should allow an extra material that fits code but doesn't fit f
+						if v2 then
+							g:Sub(mg1)
+							local smg=g:Filter(aux.FConditionFilterCFR2,nil,code,sub,f)
+							if smg:GetCount()>0 and Duel.SelectYesNo(tp,93) then
+								Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+								local mg4=smg:Select(tp,1,1,nil)
+								mg1:Merge(mg4)
+							end
 						end
 					end
 					Duel.SetFusionMaterial(mg1)
@@ -1169,15 +1169,15 @@ function Auxiliary.FOperationFunFunRep(f1,f2,minc,maxc,insf)
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 						local mg2=g2:Select(tp,math.max(minc+offset,1),maxc+offset,nil)
 						mg1:Merge(mg2)
-					end
-					--if gc fits both, should allow an extra material that fits f1 but doesn't fit f2
-					if v2 then
-						g:Sub(mg1)
-						local smg=g:Filter(aux.FConditionFilterFFR2,nil,f1,f2)
-						if smg:GetCount()>0 and Duel.SelectYesNo(tp,93) then
-							Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-							local mg4=smg:Select(tp,1,1,nil)
-							mg1:Merge(mg4)
+						--if gc fits both, should allow an extra material that fits f1 but doesn't fit f2
+						if v2 then
+							g:Sub(mg1)
+							local smg=g:Filter(aux.FConditionFilterFFR2,nil,f1,f2)
+							if smg:GetCount()>0 and Duel.SelectYesNo(tp,93) then
+								Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+								local mg4=smg:Select(tp,1,1,nil)
+								mg1:Merge(mg4)
+							end
 						end
 					end
 					Duel.SetFusionMaterial(mg1)
