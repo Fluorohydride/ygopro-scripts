@@ -63,7 +63,7 @@ end
 function c13629812.retcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=c:GetFirstCardTarget()
-	if tc and tc:IsLocation(LOCATION_REMOVED) and tc:IsFaceup() and not c:IsLocation(LOCATION_DECK) then
+	if tc and tc:IsLocation(LOCATION_REMOVED) and not c:IsLocation(LOCATION_DECK) then
 		e:SetLabelObject(tc)
 		tc:CreateEffectRelation(e)
 		return true
