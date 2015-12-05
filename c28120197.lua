@@ -8,7 +8,7 @@ function c28120197.initial_effect(c)
 	--damage amp
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e2:SetRange(LOCATION_SZONE)
+	e2:SetRange(LOCATION_FZONE)
 	e2:SetCode(EVENT_PRE_BATTLE_DAMAGE)
 	e2:SetCondition(c28120197.dcon)
 	e2:SetOperation(c28120197.dop)
