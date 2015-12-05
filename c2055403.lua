@@ -23,12 +23,16 @@ end
 function c2055403.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c2055403.filter,nil,tp):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()>0 then
-		local ct=Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
-		Duel.BreakEffect()
-		if Duel.GetLP(tp)>=ct*1000 then
-			Duel.SetLP(tp,Duel.GetLP(tp)-ct*1000)
-		else
-			Duel.SetLP(tp,0)
+		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		local og=Duel.GetOperatedGroup()
+		local ct=og:FilterCount(Card.IsLocation,nil,LOCATION_DECK)
+		if ct>0 then
+			Duel.BreakEffect()
+			if Duel.GetLP(tp)>=ct*1000 then
+				Duel.SetLP(tp,Duel.GetLP(tp)-ct*1000)
+			else
+				Duel.SetLP(tp,0)
+			end
 		end
 	end
 end
