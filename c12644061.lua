@@ -35,9 +35,8 @@ function c12644061.initial_effect(c)
 end
 function c12644061.discon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
-	local code=a:GetCode()
 	local at=Duel.GetAttackTarget()
-	return at and (code==79856792 or code==79407975)
+	return at and a:IsSetCard(0x2034)
 end
 function c12644061.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttackTarget()

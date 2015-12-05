@@ -24,7 +24,7 @@ function c14469229.initial_effect(c)
 end
 function c14469229.indfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsOnField() and c:IsReason(REASON_EFFECT)
-		and (c:IsSetCard(0x1034) or (c:IsLocation(LOCATION_MZONE) and (c:IsCode(79407975) or c:IsCode(79856792))))
+		and (c:IsSetCard(0x1034) or (c:IsLocation(LOCATION_MZONE) and c:IsSetCard(0x2034)))
 end
 function c14469229.indtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c14469229.indfilter,1,nil,tp) end
