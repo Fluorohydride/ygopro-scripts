@@ -11,6 +11,19 @@ function c88513608.initial_effect(c)
 	e1:SetTarget(c88513608.target)
 	e1:SetOperation(c88513608.activate)
 	c:RegisterEffect(e1)
+	if not c88513608.global_check then
+		c88513608.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_CHANGE_POS)
+		ge1:SetOperation(c88513608.poscheck)
+		Duel.RegisterEffect(ge1,0)
+	end
+end
+function c88513608.poscheck(e,tp,eg,ep,ev,re,r,rp)
+	if re==nil then
+		Duel.RegisterFlagEffect(rp,88513608,RESET_PHASE+PHASE_END,0,1)
+	end
 end
 function c88513608.check(tp)
 	local at1=0
@@ -38,7 +51,9 @@ function c88513608.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c88513608.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetActivityCount(tp,ACTIVITY_SUMMON)==0
-		and Duel.GetActivityCount(tp,ACTIVITY_FLIPSUMMON)==0 and Duel.GetActivityCount(tp,ACTIVITY_SPSUMMON)==0 end
+		and Duel.GetActivityCount(tp,ACTIVITY_FLIPSUMMON)==0
+		and Duel.GetActivityCount(tp,ACTIVITY_SPSUMMON)==0
+		and Duel.GetFlagEffect(tp,88513608)==0 end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_OATH)
