@@ -66,7 +66,6 @@ function c13893596.filter(c,rc)
 	return c:IsRelateToCard(rc) and c:IsSetCard(0x40)
 end
 function c13893596.tgop(e,tp,eg,ep,ev,re,r,rp)
-	local WIN_REASON_EXODIUS = 0x14
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local c=e:GetHandler()
 	local g=Duel.SelectMatchingCard(tp,c13893596.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil)
@@ -76,7 +75,7 @@ function c13893596.tgop(e,tp,eg,ep,ev,re,r,rp)
 		tc:CreateRelation(c,RESET_EVENT+0x1fe0000) 
 		local g=Duel.GetMatchingGroup(c13893596.filter,tp,LOCATION_GRAVE,0,nil,c)
 		if g:GetClassCount(Card.GetCode)==5 then
-			Duel.Win(tp,WIN_REASON_EXODIUS)
+			Duel.Win(tp)
 		end
 	end
 end

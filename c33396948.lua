@@ -28,20 +28,19 @@ function c33396948.check(g)
 	return a1 and a2 and a3 and a4 and a5
 end
 function c33396948.operation(e,tp,eg,ep,ev,re,r,rp)
-	local WIN_REASON_EXODIA = 0x10
 	local g1=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 	local g2=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
 	local wtp=c33396948.check(g1)
 	local wntp=c33396948.check(g2)
 	if wtp and not wntp	then
 		Duel.ConfirmCards(1-tp,g1)
-		Duel.Win(tp,WIN_REASON_EXODIA)
+		Duel.Win(tp)
 	elseif not wtp and wntp then
 		Duel.ConfirmCards(tp,g2)
-		Duel.Win(1-tp,WIN_REASON_EXODIA)
+		Duel.Win(1-tp)
 	elseif wtp and wntp then
 		Duel.ConfirmCards(1-tp,g1)
 		Duel.ConfirmCards(tp,g2)
-		Duel.Win(PLAYER_NONE,WIN_REASON_EXODIA)
+		Duel.Win(PLAYER_NONE)
 	end
 end

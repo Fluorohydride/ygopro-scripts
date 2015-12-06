@@ -55,10 +55,10 @@ function c28566710.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local t1=Duel.GetFieldGroupCount(0,LOCATION_MZONE,0)
 	local t2=Duel.GetFieldGroupCount(1,LOCATION_MZONE,0)
 	if t1>0 and t2==0 then
-		Duel.Win(0,0x16)
+		Duel.Win(0)
 	elseif t2>0 and t1==0 then
-		Duel.Win(1,0x16)
+		Duel.Win(1)
 	else
-		Duel.Win(PLAYER_NONE,0x16)
+		Duel.Win(PLAYER_NONE)
 	end
 end

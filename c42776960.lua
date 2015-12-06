@@ -52,6 +52,5 @@ function c42776960.con(e)
 	return e:GetHandlerPlayer()==e:GetOwnerPlayer()
 end
 function c42776960.leaveop(e,tp,eg,ep,ev,re,r,rp)
-	local WIN_REASON_RELAY_SOUL=0x1a
-	Duel.Win(e:GetLabel(),WIN_REASON_RELAY_SOUL)
+	Duel.Win(e:GetLabel())
 end

@@ -44,8 +44,7 @@ function c48995978.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and c:IsFaceup() and c:RemoveOverlayCard(tp,1,1,REASON_EFFECT) then
 		c:AddCounter(0x302b,1)
 		if c:GetCounter(0x302b)==3 then
-			local WIN_REASON_DESTINY_LEO=0x17
-			Duel.Win(c:GetControler(),WIN_REASON_DESTINY_LEO)
+			Duel.Win(c:GetControler())
 		end
 	end
 end

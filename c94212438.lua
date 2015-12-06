@@ -62,7 +62,7 @@ function c94212438.operation(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,Card.IsCode,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,30170981)
 		if g:GetCount()>0 then
 			Duel.MoveToField(g:GetFirst(),tp,tp,LOCATION_SZONE,POS_FACEUP,true)
-			Duel.Win(tp,0x15)
+			Duel.Win(tp)
 		end
 	end
 end
