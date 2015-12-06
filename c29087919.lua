@@ -17,49 +17,45 @@ end
 function c29087919.xyzfilter(c,mg,ct)
 	return c:IsXyzSummonable(mg) and c.xyz_count<=ct
 end
-function c29087919.mfilter1(c,exg)
-	return exg:IsExists(c29087919.mfilter2,1,nil,c)
+function c29087919.mfilter1(c,xc)
+	return xc.xyz_filter(c)
 end
-function c29087919.mfilter2(c,mc)
-	return c.xyz_filter(mc)
-end
-function c29087919.xyzct(c)
-	return c.xyz_count
+function c29087919.mfilter2(c,xc,mg)
+	local mg1=mg:Clone()
+	mg1:AddCard(c)
+	return xc:IsXyzSummonable(mg1)
 end
 function c29087919.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	local mg=Duel.GetMatchingGroup(c29087919.filter,tp,LOCATION_GRAVE,0,nil,e,tp)
-	local mct=mg:GetClassCount(Card.GetCode)
-	local ct=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ct>mct then ct=mct end
-	local exg=Duel.GetMatchingGroup(c29087919.xyzfilter,tp,LOCATION_EXTRA,0,nil,mg,ct)
-	local maxg,maxc=exg:GetMaxGroup(c29087919.xyzct)
-	if maxc and ct>maxc then ct=maxc end
-	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
-		and ct>1 and Duel.IsExistingMatchingCard(c29087919.xyzfilter,tp,LOCATION_EXTRA,0,1,nil,mg,ct) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg1=mg:FilterSelect(tp,c29087919.mfilter1,1,1,nil,exg)
-	local tc1=sg1:GetFirst()
-	local exg2=exg:Filter(c29087919.mfilter2,nil,tc1)
-	mg:Remove(Card.IsCode,nil,tc1:GetCode())
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg2=mg:FilterSelect(tp,c29087919.mfilter1,1,1,nil,exg2)
-	sg1:Merge(sg2)
-	mg:Remove(Card.IsCode,nil,sg2:GetFirst():GetCode())
-	ct=ct-2
-	local minc=2
-	local exg3=Duel.GetMatchingGroup(c29087919.spfilter,tp,LOCATION_EXTRA,0,nil,sg1,minc)
-	while mg:GetCount()>0 and ct>0 and (exg3:GetCount()==0 or Duel.SelectYesNo(tp,aux.Stringid(29087919,0))) do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg3=mg:FilterSelect(tp,c29087919.mfilter1,1,1,nil,exg2)
-		sg1:Merge(sg3)
-		mg:Remove(Card.IsCode,nil,sg3:GetFirst():GetCode())
-		ct=ct-1
-		minc=minc+1
-		exg3=Duel.GetMatchingGroup(c29087919.spfilter,tp,LOCATION_EXTRA,0,nil,sg1,minc)
+	local g=Duel.GetMatchingGroup(c29087919.filter,tp,LOCATION_GRAVE,0,nil,e,tp)
+	local mg=Group.CreateGroup()
+	local tc=g:GetFirst()
+	while tc do
+		if not mg:IsExists(Card.IsCode,1,nil,tc:GetCode()) then
+			mg:AddCard(tc)
+		end
+		tc=g:GetNext()
 	end
-	Duel.SetTargetCard(sg1)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg1,sg1:GetCount(),0,0)
+	local ct=math.min(mg:GetCount(),Duel.GetLocationCount(tp,LOCATION_MZONE))
+	local exg=Duel.GetMatchingGroup(c29087919.xyzfilter,tp,LOCATION_EXTRA,0,nil,mg,ct)
+	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2) and ct>1 and exg:GetCount()>=1 end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local xg=exg:Select(tp,1,1,nil)
+	local xc=xg:GetFirst()
+	local count=xc.xyz_count
+	local sg=Group.CreateGroup()
+	while count>1 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local sg1=g:FilterSelect(tp,c29087919.mfilter1,1,1,nil,xc)
+		g:Remove(Card.IsCode,nil,sg1:GetFirst():GetCode())
+		sg:Merge(sg1)
+		count=count-1
+	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local sg2=g:FilterSelect(tp,c29087919.mfilter2,1,1,nil,xc,sg)
+	sg:Merge(sg2)
+	Duel.SetTargetCard(sg)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,sg:GetCount(),0,0)
 end
 function c29087919.filter2(c,e,tp)
 	return c:IsRelateToEffect(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -40,7 +40,7 @@ function c24658418.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
 end
 function c24658418.mfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x7b) and not c:IsType(TYPE_TOKEN+TYPE_XYZ)
+	return c:IsFaceup() and c:IsSetCard(0x7b) and not c:IsType(TYPE_TOKEN)
 end
 function c24658418.xyzfilter(c,mg)
 	return c:IsSetCard(0x7b) and c:IsXyzSummonable(mg)
@@ -58,8 +58,15 @@ function c24658418.spop(e,tp,eg,ep,ev,re,r,rp)
 	if xyzg:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local xyz=xyzg:Select(tp,1,1,nil):GetFirst()
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local sg=g:FilterSelect(tp,xyz.xyz_filter,xyz.xyz_count,xyz.xyz_count,nil)
-		Duel.XyzSummon(tp,xyz,sg)
+		local e1=Effect.GlobalEffect()
+		e1:SetType(EFFECT_TYPE_FIELD)
+		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+		e1:SetCode(EFFECT_CANNOT_BE_XYZ_MATERIAL)
+		e1:SetTarget(function(e,c) return not c24658418.mfilter(c) end)
+		e1:SetTargetRange(LOCATION_MZONE,0)
+		e1:SetValue(1)
+		Duel.RegisterEffect(e1,tp)
+		Duel.XyzSummon(tp,xyz,nil)
+		e1:Reset()
 	end
 end
