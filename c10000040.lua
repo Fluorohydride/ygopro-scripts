@@ -22,6 +22,14 @@ function c10000040.initial_effect(c)
 	e3:SetCode(EFFECT_CANNOT_DISABLE_SPSUMMON)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	c:RegisterEffect(e3)
+	--win sub
+	local e4=Effect.CreateEffect(c)
+	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e4:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e4:SetOperation(c10000040.sumsuc)
+	e4:SetLabelObject(e1)
+	c:RegisterEffect(e4)
 end
 function c10000040.spfilter(c,code)
 	local code1,code2=c:GetOriginalCodeRule()
@@ -43,4 +51,9 @@ function c10000040.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	g1:Merge(g3)
 	Duel.Release(g1,REASON_COST)
 	Duel.Win(tp)
+end
+function c10000040.sumsuc(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetHandler():GetReasonEffect()~=e:GetLabelObject() then
+		Duel.Win(tp)
+	end
 end
