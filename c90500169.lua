@@ -14,12 +14,13 @@ function c90500169.filter(c,e,tp)
 	if c:IsFacedown() or not c:IsSetCard(0x41) or not c:IsAbleToDeck() then return false end
 	local code=c:GetCode()
 	local class=_G["c"..code]
-	return class and class.lvdncount~=nil and Duel.IsExistingMatchingCard(c90500169.spfilter,tp,LOCATION_GRAVE,0,1,nil,class,e,tp)
+	return class and class.lvdncount~=nil and Duel.IsExistingMatchingCard(c90500169.spfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,class,e,tp,c:GetOwner())
 end
-function c90500169.spfilter(c,class,e,tp)
+function c90500169.spfilter(c,class,e,tp,op)
+	if not c:IsControler(op) then return false end
 	local code=c:GetCode()
 	for i=1,class.lvdncount do
-		if code==class.lvdn[i] then	return c:IsCanBeSpecialSummoned(e,0,tp,true,true) end
+		if code==class.lvdn[i] then	return c:IsCanBeSpecialSummoned(e,0,tp,true,false,POS_FACEUP,op) end
 	end
 	return false
 end
@@ -35,17 +36,15 @@ end
 function c90500169.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local code=tc:GetCode()
-	if not tc:IsRelateToEffect(e) then return end
-	local rc=Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
-	if tc:GetLocation()==LOCATION_DECK then Duel.ShuffleDeck(tc:GetControler()) end
-	if rc==0 then return end
+	local op=tc:GetOwner()
+	if not tc:IsRelateToEffect(e) or not tc:IsFaceup() then return end
+	if not Duel.SendtoDeck(tc,nil,2,REASON_EFFECT) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local class=_G["c"..code]
 	if class==nil or class.lvdncount==nil then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c90500169.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,class,e,tp)
-	local tc=g:GetFirst()
-	if tc then
-		Duel.SpecialSummon(tc,0,tp,tp,true,true,POS_FACEUP)
+	local g=Duel.SelectMatchingCard(tp,c90500169.spfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil,class,e,tp,op)
+	if g:GetCount()>0 then
+		Duel.SpecialSummon(g,0,tp,op,true,false,POS_FACEUP)
 	end
 end
