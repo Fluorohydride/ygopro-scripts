@@ -63,7 +63,7 @@ function c5050644.recon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c5050644.cfilter2,1,nil,tp)
 end
 function c5050644.retg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return true end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1000)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,1000)
