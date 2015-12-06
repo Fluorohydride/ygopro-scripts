@@ -30,8 +30,9 @@ function c58753372.filter2(c,tp)
 		and Duel.IsExistingMatchingCard(c58753372.filter1,tp,LOCATION_MZONE,0,1,c)
 end
 function c58753372.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	local g1=Duel.GetMatchingGroup(c58753372.filter1,tp,LOCATION_MZONE,0,nil)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c58753372.filter2(chkc,tp) end
-	if chk==0 then return Duel.IsExistingTarget(c58753372.filter2,tp,LOCATION_MZONE,0,1,nil,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c58753372.filter2,tp,LOCATION_MZONE,0,1,nil,tp) and g1:GetClassCount(Card.GetLevel)>1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c58753372.filter2,tp,LOCATION_MZONE,0,1,1,nil,tp)
 end

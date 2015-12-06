@@ -75,7 +75,7 @@ function c84025439.imcon(e)
 	return e:GetHandler():GetOverlayGroup():GetClassCount(Card.GetCode)>=4
 end
 function c84025439.efilter(e,te)
-	return not te:GetHandler():IsSetCard(0xdc)
+	return not te:GetOwner():IsSetCard(0xdc)
 end
 function c84025439.drcon(e)
 	return e:GetHandler():GetOverlayGroup():GetClassCount(Card.GetCode)>=6
