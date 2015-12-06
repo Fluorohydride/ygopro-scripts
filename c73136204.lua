@@ -15,7 +15,7 @@ function c73136204.initial_effect(c)
 	e2:SetDescription(aux.Stringid(73136204,2))
 	e2:SetCategory(CATEGORY_TODECK)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
+	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetCondition(c73136204.tdcon)
 	e2:SetTarget(c73136204.tdtg)
@@ -49,8 +49,7 @@ function c73136204.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c73136204.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_DECK) and
-		(c:IsReason(REASON_REVEAL) or c:GetPreviousPosition()==POS_FACEUP_DEFENCE or Duel.IsPlayerAffectedByEffect(tp,EFFECT_REVERSE_DECK))
+	return c:IsPreviousLocation(LOCATION_DECK) and (c:IsReason(REASON_REVEAL) or c:GetPreviousPosition()==POS_FACEUP_DEFENCE)
 end
 function c73136204.filter(c)
 	return c:IsSetCard(0x90) and not c:IsCode(73136204) and c:IsAbleToDeck()

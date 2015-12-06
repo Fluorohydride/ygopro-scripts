@@ -14,7 +14,7 @@ function c11682713.initial_effect(c)
 	e2:SetDescription(aux.Stringid(11682713,1))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_TO_GRAVE)
-	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCondition(c11682713.tdcon)
 	e2:SetTarget(c11682713.tdtg)
 	e2:SetOperation(c11682713.tdop)
@@ -37,8 +37,7 @@ function c11682713.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c11682713.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_DECK) and
-		(c:IsReason(REASON_REVEAL) or c:GetPreviousPosition()==POS_FACEUP_DEFENCE or Duel.IsPlayerAffectedByEffect(tp,EFFECT_REVERSE_DECK))
+	return c:IsPreviousLocation(LOCATION_DECK) and (c:IsReason(REASON_REVEAL) or c:GetPreviousPosition()==POS_FACEUP_DEFENCE)
 end
 function c11682713.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToHand() end

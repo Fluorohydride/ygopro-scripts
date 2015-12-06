@@ -43,8 +43,7 @@ function c47077318.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c47077318.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_DECK) and
-		(c:IsReason(REASON_REVEAL) or c:GetPreviousPosition()==POS_FACEUP_DEFENCE or Duel.IsPlayerAffectedByEffect(tp,EFFECT_REVERSE_DECK))
+	return c:IsPreviousLocation(LOCATION_DECK) and (c:IsReason(REASON_REVEAL) or c:GetPreviousPosition()==POS_FACEUP_DEFENCE)
 end
 function c47077318.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_PLANT)

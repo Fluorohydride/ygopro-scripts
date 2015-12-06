@@ -17,7 +17,7 @@ function c63257623.initial_effect(c)
 	e3:SetDescription(aux.Stringid(63257623,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
+	e3:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
 	e3:SetCode(EVENT_TO_GRAVE)
 	e3:SetCountLimit(1,63257623)
 	e3:SetCondition(c63257623.spcon)
@@ -42,8 +42,7 @@ function c63257623.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c63257623.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_DECK) and
-		(c:IsReason(REASON_REVEAL) or c:GetPreviousPosition()==POS_FACEUP_DEFENCE or Duel.IsPlayerAffectedByEffect(tp,EFFECT_REVERSE_DECK))
+	return c:IsPreviousLocation(LOCATION_DECK) and (c:IsReason(REASON_REVEAL) or c:GetPreviousPosition()==POS_FACEUP_DEFENCE)
 end
 function c63257623.filter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsRace(RACE_PLANT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
