@@ -14,7 +14,7 @@ function c72714392.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
-	e2:SetValue(aux.TRUE)
+	e2:SetValue(c72714392.synlimit)
 	c:RegisterEffect(e2)
 end
 function c72714392.filter(c,e,tp)
@@ -56,4 +56,7 @@ function c72714392.operation(e,tp,eg,ep,ev,re,r,rp)
 			sc:RegisterEffect(e2)
 		end
 	end
+end
+function c72714392.synlimit(e,c)
+	return c:IsLocation(LOCATION_MZONE)
 end
