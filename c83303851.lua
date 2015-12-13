@@ -54,12 +54,24 @@ function c83303851.filter(c)
 end
 function c83303851.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ct=-ft+1
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c83303851.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c83303851.filter,tp,LOCATION_ONFIELD,0,2,nil)
-		and not c:IsStatus(STATUS_CHAINING) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
+		and ct<=2 and (ct<=0 or Duel.IsExistingTarget(c83303851.filter,tp,LOCATION_MZONE,0,ct,nil))
+		and not c:IsStatus(STATUS_CHAINING) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c83303851.filter,tp,LOCATION_ONFIELD,0,2,2,nil)
+	local g=nil
+	if ct<=0 then
+		g=Duel.SelectTarget(tp,c83303851.filter,tp,LOCATION_ONFIELD,0,2,2,nil)
+	elseif ct==1 then
+		g=Duel.SelectTarget(tp,c83303851.filter,tp,LOCATION_MZONE,0,1,1,nil)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+		local g2=Duel.SelectTarget(tp,c83303851.filter,tp,LOCATION_ONFIELD,0,1,1,g:GetFirst())
+		g:Merge(g2)
+	else
+		g=Duel.SelectTarget(tp,c83303851.filter,tp,LOCATION_MZONE,0,2,2,nil)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end

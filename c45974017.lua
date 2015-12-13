@@ -30,9 +30,6 @@ end
 function c45974017.pcfilter(c)
 	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsSetCard(0xaf) and c:IsType(TYPE_PENDULUM) and not c:IsForbidden()
 end
-function c45974017.filter(c)
-	return c:IsSetCard(0xaf) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
-end
 function c45974017.pctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c45974017.pcfilter(chkc) end
 	local b1=Duel.IsExistingTarget(c45974017.pcfilter,tp,LOCATION_GRAVE,0,1,nil)

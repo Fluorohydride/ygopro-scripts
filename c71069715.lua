@@ -38,10 +38,10 @@ function c71069715.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c71069715.tdfilter(c)
-	return c:IsSetCard(0xaf) and c:IsAbleToDeck()
+	return c:IsFaceup() and c:IsSetCard(0xaf) and c:IsAbleToDeck()
 end
 function c71069715.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c71069715.tdfilter(chkc) and chkc~=e:GetHandler() end
+	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c71069715.tdfilter(chkc) and chkc~=e:GetHandler() end
 	if chk==0 then return Duel.IsExistingTarget(c71069715.tdfilter,tp,LOCATION_REMOVED,0,1,e:GetHandler())
 		and not e:GetHandler():IsStatus(STATUS_CHAINING) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
