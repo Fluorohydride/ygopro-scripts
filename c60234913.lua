@@ -1,6 +1,6 @@
 --救世の儀式
 function c60234913.initial_effect(c)
-	aux.AddRitualProcGreater(c,aux.FilterBoolFunction(Card.IsCode,61757117))
+	aux.AddRitualProcGreaterCode(c,61757117)
 	--untargetable
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(60234913,0))

@@ -1,6 +1,6 @@
 --光子竜降臨
 function c34834619.initial_effect(c)
-	aux.AddRitualProcEqual(c,aux.FilterBoolFunction(Card.IsCode,85346853))
+	aux.AddRitualProcEqualCode(c,85346853)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(34834619,0))

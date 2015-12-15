@@ -1,6 +1,6 @@
 --破滅の儀式
 function c52913738.initial_effect(c)
-	aux.AddRitualProcGreater(c,aux.FilterBoolFunction(Card.IsCode,30646525))
+	aux.AddRitualProcGreaterCode(c,30646525)
 	--To Deck
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(52913738,0))

@@ -1,6 +1,6 @@
 --善悪の彼岸
 function c62835876.initial_effect(c)
-	aux.AddRitualProcGreater(c,aux.FilterBoolFunction(Card.IsCode,35330871))
+	aux.AddRitualProcGreaterCode(c,35330871)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)

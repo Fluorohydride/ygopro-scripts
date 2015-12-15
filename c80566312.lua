@@ -1,6 +1,6 @@
 --祝祷の聖歌
 function c80566312.initial_effect(c)
-	aux.AddRitualProcGreater(c,aux.FilterBoolFunction(Card.IsCode,56350972))
+	aux.AddRitualProcGreaterCode(c,56350972)
 	--destroy replace
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
