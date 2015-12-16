@@ -11,14 +11,11 @@ function c66127916.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c66127916.filter1(c,tp)
-	return c.material_count and Duel.IsExistingMatchingCard(c66127916.filter2,tp,LOCATION_DECK,0,1,nil,c)
+	return c.material and Duel.IsExistingMatchingCard(c66127916.filter2,tp,LOCATION_DECK,0,1,nil,c)
 end
 function c66127916.filter2(c,fc)
 	if c:IsHasEffect(EFFECT_FORBIDDEN) or not c:IsAbleToHand() then return false end
-	for i=1,fc.material_count do
-		if c:IsCode(fc.material[i]) then return true end
-	end
-	return false
+	return c:IsCode(table.unpack(fc.material))
 end
 function c66127916.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c66127916.filter1,tp,LOCATION_EXTRA,0,1,nil,tp) end

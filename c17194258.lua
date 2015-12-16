@@ -11,14 +11,11 @@ function c17194258.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c17194258.filter1(c,tp)
-	return c.material_count and Duel.IsExistingMatchingCard(c17194258.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,c)
+	return c.material and Duel.IsExistingMatchingCard(c17194258.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,c)
 end
 function c17194258.filter2(c,fc)
 	if c:IsForbidden() or not c:IsAbleToHand() or c:IsHasEffect(EFFECT_NECRO_VALLEY) then return false end
-	for i=1,fc.material_count do
-		if c:IsCode(fc.material[i]) then return true end
-	end
-	return false
+	return c:IsCode(table.unpack(fc.material))
 end
 function c17194258.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c17194258.filter1,tp,LOCATION_EXTRA,0,1,nil,tp) end

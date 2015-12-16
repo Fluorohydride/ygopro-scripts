@@ -1382,9 +1382,9 @@ function Auxiliary.PendOperation()
 			end
 end
 function Auxiliary.IsMaterialListCode(c,code)
-	if not c.material_count then return false end
-	for i=1,c.material_count do
-		if code==c.material[i] then return true end
+	if not c.material then return false end
+	for i,mcode in ipairs(c.material) do
+		if code==mcode then return true end
 	end
 	return false
 end

@@ -33,9 +33,9 @@ function c41940225.filter2(c,e,tp,m,f,chkf)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
 function c41940225.spfilter(c)
-	if not c.material_count then return false end
-	for i=1,c.material_count do
-		if c.material[i]==78193831 then return true end
+	if not c.material then return false end
+	for i,mcode in ipairs(c.material) do
+		if mcode==78193831 then return true end
 	end
 	return false
 end

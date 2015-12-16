@@ -22,9 +22,9 @@ function c15155568.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c15155568.cfilter(c)
-	if c:IsFacedown() or not c.material_count then return false end
-	for i=1,c.material_count do
-		if c.material[i]==78193831 then return true end
+	if c:IsFacedown() or not c.material then return false end
+	for i,mcode in ipairs(c.material) do
+		if mcode==78193831 then return true end
 	end
 	return false
 end

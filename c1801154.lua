@@ -18,9 +18,9 @@ function c1801154.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c1801154.filter2(c,code)
-	if not c.material_count or not c:IsReason(REASON_DESTROY) or not c:IsReason(REASON_EFFECT) then return false end
-	for i=1,c.material_count do
-		if code==c.material[i] then return true end
+	if not c.material or not c:IsReason(REASON_DESTROY) or not c:IsReason(REASON_EFFECT) then return false end
+	for i,mcode in ipairs(c.material) do
+		if code==mcode then return true end
 	end
 	return false
 end

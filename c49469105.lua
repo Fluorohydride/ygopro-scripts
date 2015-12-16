@@ -17,16 +17,11 @@ function c49469105.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c49469105.cfilter,tp,LOCATION_HAND,0,1,nil) end
 	Duel.DiscardHand(tp,c49469105.cfilter,1,1,REASON_COST+REASON_DISCARD)
 end
-function c49469105.filter2(c,fc)
-	local fd=c:GetCode()
-	for i=1,fc.material_count do
-		if fd==fc.material[i] then return true end
-	end
-	return false
-end
 function c49469105.filter1(c,g)
-	local ct=c.material_count
-	return ct~=nil and g:IsExists(c49469105.filter2,1,nil,c)
+	return c.material and g:IsExists(c49469105.filter2,1,nil,c)
+end
+function c49469105.filter2(c,fc)
+	return c:IsCode(table.unpack(fc.material))
 end
 function c49469105.spfilter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
