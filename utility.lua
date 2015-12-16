@@ -1191,11 +1191,10 @@ function Auxiliary.RPGOperation(filter)
 			end
 end
 function Auxiliary.AddRitualProcGreaterCode(c,code1)
-	if c.material_count==nil then
+	if c.fit_monster==nil then
 		local code=c:GetOriginalCode()
 		local mt=_G["c" .. code]
-		mt.material_count=1
-		mt.material={code1}
+		mt.fit_monster={code1}
 	end
 	Auxiliary.AddRitualProcGreater(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1))
 end
@@ -1242,11 +1241,10 @@ function Auxiliary.RPEOperation(filter)
 			end
 end
 function Auxiliary.AddRitualProcEqualCode(c,code1)
-	if c.material_count==nil then
+	if c.fit_monster==nil then
 		local code=c:GetOriginalCode()
 		local mt=_G["c" .. code]
-		mt.material_count=1
-		mt.material={code1}
+		mt.fit_monster={code1}
 	end
 	Auxiliary.AddRitualProcEqual(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1))
 end
@@ -1293,20 +1291,18 @@ function Auxiliary.RPEOperation2(filter)
 			end
 end
 function Auxiliary.AddRitualProcEqual2Code(c,code1)
-	if c.material_count==nil then
+	if c.fit_monster==nil then
 		local code=c:GetOriginalCode()
 		local mt=_G["c" .. code]
-		mt.material_count=1
-		mt.material={code1}
+		mt.fit_monster={code1}
 	end
 	Auxiliary.AddRitualProcEqual2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1))
 end
 function Auxiliary.AddRitualProcEqual2Code2(c,code1,code2)
-	if c.material_count==nil then
+	if c.fit_monster==nil then
 		local code=c:GetOriginalCode()
 		local mt=_G["c" .. code]
-		mt.material_count=2
-		mt.material={code1,code2}
+		mt.fit_monster={code1,code2}
 	end
 	Auxiliary.AddRitualProcEqual2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1,code2))
 end
