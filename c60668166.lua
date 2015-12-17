@@ -17,7 +17,7 @@ function c60668166.condition(e,tp,eg,ep,ev,re,r,rp)
 	return rp~=tp and c:GetPreviousControler()==tp and bit.band(c:GetPreviousLocation(),LOCATION_ONFIELD)~=0
 end
 function c60668166.filter(c,e,tp)
-	return c:GetCode()==60668166 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN)
+	return c:IsCode(60668166) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN)
 end
 function c60668166.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

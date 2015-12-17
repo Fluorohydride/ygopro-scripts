@@ -57,13 +57,13 @@ function c86742443.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Damage(1-tp,1000,REASON_EFFECT)
 end
 function c86742443.damop2(e,tp,eg,ep,ev,re,r,rp)
-	if eg:GetFirst():GetCode()==e:GetLabel() then
+	if eg:GetFirst():IsCode(e:GetLabel()) then
 		Duel.Damage(tp,1000,REASON_EFFECT)
 		e:GetLabelObject():SetLabel(1)
 	end
 end
 function c86742443.damop3(e,tp,eg,ep,ev,re,r,rp)
-	if re:GetHandler():GetCode()==e:GetLabel() then
+	if re:GetHandler():IsCode(e:GetLabel()) then
 		Duel.Damage(tp,1000,REASON_EFFECT)
 		e:GetLabelObject():SetLabel(1)
 	end

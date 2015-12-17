@@ -16,7 +16,7 @@ function c52624755.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c52624755.filter(c,e,sp)
-	return c:GetCode()==52624755 and c:IsCanBeSpecialSummoned(e,0,sp,false,false)
+	return c:IsCode(52624755) and c:IsCanBeSpecialSummoned(e,0,sp,false,false)
 end
 function c52624755.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

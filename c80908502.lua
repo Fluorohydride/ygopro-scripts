@@ -25,7 +25,7 @@ function c80908502.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(c,REASON_COST+REASON_DISCARD)
 end
 function c80908502.filter(c)
-	return c:GetCode()==63035430 and c:IsAbleToHand()
+	return c:IsCode(63035430) and c:IsAbleToHand()
 end
 function c80908502.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingMatchingCard(c80908502.filter,tp,LOCATION_DECK,0,1,nil) end

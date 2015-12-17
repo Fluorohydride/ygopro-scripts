@@ -53,7 +53,7 @@ function c131182.initial_effect(c)
 	c:RegisterEffect(e7)
 end
 function c131182.exfilter(c)
-	return c:IsFaceup() and c:GetCode()==131182
+	return c:IsFaceup() and c:IsCode(131182)
 end
 function c131182.excon(e)
 	local c=e:GetHandler()

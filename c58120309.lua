@@ -19,7 +19,7 @@ function c58120309.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ex and tg~=nil and tc+tg:FilterCount(c58120309.filter,nil,tp)-tg:GetCount()>1
 end
 function c58120309.sfilter(c,e,tp)
-	return c:GetCode()==44508094 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(44508094) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c58120309.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

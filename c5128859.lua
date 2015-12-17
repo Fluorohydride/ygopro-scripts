@@ -34,7 +34,7 @@ function c5128859.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
 function c5128859.spfilter(c,code)
-	return c:IsAbleToDeckOrExtraAsCost() and c:GetCode()==code
+	return c:IsAbleToDeckOrExtraAsCost() and c:IsCode(code)
 end
 function c5128859.spfilter2(c,code)
 	return c:IsAbleToDeckOrExtraAsCost() and c:GetOriginalCode()==code

@@ -27,7 +27,7 @@ function c71587526.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
 end
 function c71587526.rfilter(c,code)
-	return c:GetCode()==code and c:IsAbleToRemove()
+	return c:IsCode(code) and c:IsAbleToRemove()
 end
 function c71587526.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

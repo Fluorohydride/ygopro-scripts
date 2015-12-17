@@ -17,7 +17,7 @@ function c80186010.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(c,REASON_COST+REASON_DISCARD)
 end
 function c80186010.filter(c)
-	return c:GetCode()==10080320 and c:IsAbleToHand()
+	return c:IsCode(10080320) and c:IsAbleToHand()
 end
 function c80186010.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingMatchingCard(c80186010.filter,tp,LOCATION_DECK,0,1,nil) end
