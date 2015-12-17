@@ -14,7 +14,7 @@ function c12538374.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c12538374.filter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) or (c:GetCode()==12538374 and c:IsFaceup())
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) or (c:IsCode(12538374) and c:IsFaceup())
 end
 function c12538374.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer() and not Duel.IsExistingMatchingCard(c12538374.filter,tp,LOCATION_ONFIELD,0,1,nil) 

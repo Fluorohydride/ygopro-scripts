@@ -16,7 +16,7 @@ function c9411399.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c9411399.filter(c,e,sp)
-	return c:GetCode()==9411399 and c:IsCanBeSpecialSummoned(e,0,sp,false,false)
+	return c:IsCode(9411399) and c:IsCanBeSpecialSummoned(e,0,sp,false,false)
 end
 function c9411399.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c9411399.filter,tp,LOCATION_DECK,0,1,nil,e,tp)

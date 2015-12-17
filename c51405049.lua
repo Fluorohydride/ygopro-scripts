@@ -50,7 +50,7 @@ end
 function c51405049.regop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 then return end
 	local tc=eg:GetFirst()
-	if tc:GetCode()==e:GetLabel() then
+	if tc:IsCode(e:GetLabel()) then
 		e:SetLabel(0)
 	end
 end

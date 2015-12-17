@@ -17,7 +17,7 @@ function c18698739.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c18698739.filter(c)
-	return c:GetCode()==44682448 and c:IsAbleToHand()
+	return c:IsCode(44682448) and c:IsAbleToHand()
 end
 function c18698739.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c18698739.filter,tp,LOCATION_DECK,0,1,nil) end

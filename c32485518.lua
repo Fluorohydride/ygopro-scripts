@@ -23,7 +23,7 @@ function c32485518.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c32485518.filter(c)
-	return c:GetCode()==4064256 and c:IsAbleToHand()
+	return c:IsCode(4064256) and c:IsAbleToHand()
 end
 function c32485518.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c32485518.filter(chkc) end

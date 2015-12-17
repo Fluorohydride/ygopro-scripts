@@ -11,7 +11,7 @@ function c79814787.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c79814787.filter(c)
-	return c:GetCode()==89631139 and c:IsAbleToHand()
+	return c:IsCode(89631139) and c:IsAbleToHand()
 end
 function c79814787.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

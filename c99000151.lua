@@ -16,7 +16,7 @@ function c99000151.condition(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(e:GetHandler():GetReason(),0x41)==0x41
 end
 function c99000151.filter(c,e,tp)
-	return c:GetCode()==36405256 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(36405256) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c99000151.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

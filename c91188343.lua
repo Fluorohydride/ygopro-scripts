@@ -14,7 +14,7 @@ function c91188343.filter1(c)
 	return c:IsSetCard(0x44) and c:GetCode()~=91188343 and c:IsAbleToHand()
 end
 function c91188343.filter2(c)
-	return ((c:IsSetCard(0x44) and c:GetCode()~=91188343) or c:GetCode()==55794644) and c:IsAbleToHand()
+	return ((c:IsSetCard(0x44) and c:GetCode()~=91188343) or c:IsCode(55794644)) and c:IsAbleToHand()
 end
 function c91188343.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

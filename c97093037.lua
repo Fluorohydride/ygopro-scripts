@@ -16,7 +16,7 @@ function c97093037.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c97093037.filter(c,e,tp)
-	return c:GetCode()==61505339 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(61505339) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c97093037.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1

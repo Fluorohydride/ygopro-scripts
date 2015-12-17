@@ -22,7 +22,7 @@ function c75014062.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x3001)
 end
 function c75014062.tfilter(c)
-	return c:GetCode()==75014062 and c:IsAbleToHand()
+	return c:IsCode(75014062) and c:IsAbleToHand()
 end
 function c75014062.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

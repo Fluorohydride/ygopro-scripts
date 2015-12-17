@@ -14,7 +14,7 @@ function c67757079.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c67757079.cfilter(c)
-	return c:IsFaceup() and c:GetCode()==94878265
+	return c:IsFaceup() and c:IsCode(94878265)
 end
 function c67757079.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c67757079.cfilter,1,nil) end

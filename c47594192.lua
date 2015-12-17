@@ -16,7 +16,7 @@ function c47594192.cfilter(c,tp)
 	return c:IsFaceup() and not c:IsType(TYPE_TOKEN) and Duel.IsExistingMatchingCard(c47594192.cfilter2,tp,LOCATION_MZONE,0,2,c,c:GetCode())
 end
 function c47594192.cfilter2(c,code)
-	return c:IsFaceup() and c:GetCode()==code
+	return c:IsFaceup() and c:IsCode(code)
 end
 function c47594192.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c47594192.cfilter,tp,LOCATION_MZONE,0,1,nil,tp)

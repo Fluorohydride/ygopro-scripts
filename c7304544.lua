@@ -22,7 +22,7 @@ function c7304544.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c7304544.filter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) or (c:GetCode()==7304544 and c:IsFaceup())
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) or (c:IsCode(7304544) and c:IsFaceup())
 end
 function c7304544.filter2(c)
 	return c:IsType(TYPE_MONSTER) and not c:IsRace(RACE_PLANT+RACE_BEAST)

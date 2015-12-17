@@ -95,7 +95,7 @@ function c35952884.sumcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousPosition(POS_FACEUP) and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c35952884.filter(c,e,tp)
-	return c:GetCode()==24696097 and c:IsCanBeSpecialSummoned(e,0,tp,false,true)
+	return c:IsCode(24696097) and c:IsCanBeSpecialSummoned(e,0,tp,false,true)
 end
 function c35952884.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
