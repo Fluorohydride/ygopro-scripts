@@ -21,14 +21,16 @@ function c63630268.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and tc:IsPosition(POS_FACEUP_ATTACK) then
 		Duel.ChangePosition(tc,POS_FACEUP_DEFENCE)
 	end
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_CHANGE_DAMAGE)
-	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e1:SetTargetRange(1,0)
-	e1:SetValue(c63630268.damval)
-	e1:SetReset(RESET_PHASE+PHASE_END,1)
-	Duel.RegisterEffect(e1,tp)
+	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_FIELD)
+		e1:SetCode(EFFECT_CHANGE_DAMAGE)
+		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+		e1:SetTargetRange(1,0)
+		e1:SetValue(c63630268.damval)
+		e1:SetReset(RESET_PHASE+PHASE_END,1)
+		Duel.RegisterEffect(e1,tp)
+	end
 end
 function c63630268.damval(e,re,val,r,rp,rc)
 	return val/2

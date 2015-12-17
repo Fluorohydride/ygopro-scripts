@@ -5,6 +5,7 @@ function c26285788.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,26285788+EFFECT_COUNT_CODE_OATH)
+	e1:SetTarget(c26285788.target)
 	e1:SetOperation(c26285788.activate)
 	c:RegisterEffect(e1)
 	if c26285788.global_effect==nil then
@@ -25,6 +26,9 @@ function c26285788.addcount(e,tp,eg,ep,ev,re,r,rp)
 		end
 		c=eg:GetNext()
 	end
+end
+function c26285788.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE) end
 end
 function c26285788.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

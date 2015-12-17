@@ -23,7 +23,7 @@ function c7165085.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) or tc:IsFaceup() then
-		if c:IsRelateToEffect(e) then
+		if c:IsRelateToEffect(e) and e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 			c:CancelToGrave()
 			Duel.SendtoDeck(c,nil,2,REASON_EFFECT)
 		end
@@ -73,7 +73,7 @@ function c7165085.activate(e,tp,eg,ep,ev,re,r,rp)
 			end
 		end
 	end
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToEffect(e) and e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		c:CancelToGrave()
 		Duel.SendtoDeck(c,nil,2,REASON_EFFECT)
 	end
