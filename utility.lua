@@ -395,7 +395,7 @@ function Auxiliary.FConditionCode2(code1,code2,sub,insf)
 					if sub and gc:IsHasEffect(EFFECT_FUSION_SUBSTITUTE) then bw=1 end
 					if b1+b2+bw==0 then return false end
 					if b1+b2+bw==1 then b1=b1*2 b2=b2*2 bw=bw*2 end
-					if chkf~=PLAYER_NONE and Auxiliary.FConditionCheckF(gc,chkf) then
+					if chkf~=PLAYER_NONE and not Auxiliary.FConditionCheckF(gc,chkf) then
 						mg=mg:Filter(Auxiliary.FConditionCheckF,nil,chkf)
 					end
 					if b1==2 then
@@ -419,7 +419,7 @@ function Auxiliary.FConditionCode2(code1,code2,sub,insf)
 					if c1+c2+cw>0 then
 						if Auxiliary.FConditionCheckF(tc,chkf) then fs=true end
 						if c1+c2+cw>1 then b1=b1+c1 b2=b2+c2 bw=bw+cw
-						elseif c1+c2+cw==1 then b1=b1+c1*2 b2=b2+c2*2 bw=bw+cw*2
+						else b1=b1+c1*2 b2=b2+c2*2 bw=bw+cw*2
 						end
 					end
 					tc=mg:GetNext()
@@ -437,7 +437,7 @@ function Auxiliary.FOperationCode2(code1,code2,sub,insf)
 				local tc=gc
 				local g1=nil
 				if gc then
-					if chkf~=PLAYER_NONE and Auxiliary.FConditionCheckF(gc,chkf) then
+					if chkf~=PLAYER_NONE and not Auxiliary.FConditionCheckF(gc,chkf) then
 						g=g:Filter(Auxiliary.FConditionCheckF,nil,chkf)
 					end
 				else
