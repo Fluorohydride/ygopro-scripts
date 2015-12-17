@@ -23,9 +23,12 @@ function c45082499.initial_effect(c)
 	c:RegisterEffect(e2)
 	--destroy sub
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_EQUIP)
-	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e3:SetCode(EFFECT_DESTROY_REPLACE)
+	e3:SetRange(LOCATION_SZONE)
+	e3:SetCondition(c45082499.repcon)
+	e3:SetTarget(c45082499.reptg)
+	e3:SetOperation(c45082499.repop)
 	e3:SetValue(c45082499.repval)
 	c:RegisterEffect(e3)
 end
@@ -73,6 +76,17 @@ end
 function c45082499.indval(e,re,tp)
 	return e:GetHandler():GetControler()~=tp
 end
-function c45082499.repval(e,re,r,rp)
-	return bit.band(r,REASON_EFFECT)~=0
+function c45082499.repcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetEquipTarget()~=nil
+end
+function c45082499.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return bit.band(r,REASON_EFFECT)~=0
+		and eg:IsContains(e:GetHandler():GetEquipTarget()) end
+	return true
+end
+function c45082499.repop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+end
+function c45082499.repval(e,c)
+	return c==e:GetHandler():GetEquipTarget()
 end
