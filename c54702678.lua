@@ -35,7 +35,7 @@ function c54702678.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c54702678.ffilter(c)
-	return c:IsSetCard(0x16) and c:IsRace(RACE_MACHINE)
+	return c:IsFusionSetCard(0x16) and c:IsRace(RACE_MACHINE)
 end
 function c54702678.discon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttackTarget() and e:GetHandler()==Duel.GetAttacker()

@@ -40,7 +40,7 @@ function c83866861.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c83866861.ffilter(c)
-	return c:IsSetCard(0xad) or c:IsHasEffect(36693940)
+	return c:IsFusionSetCard(0xad) or c:IsHasEffect(36693940)
 end
 function c83866861.aclimit(e,re,tp)
 	return not re:GetHandler():IsImmuneToEffect(e)

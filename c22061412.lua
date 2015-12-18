@@ -2,7 +2,7 @@
 function c22061412.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsSetCard,0x3008),aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_LIGHT),true)
+	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x3008),aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_LIGHT),true)
 	--tohand
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(22061412,0))
