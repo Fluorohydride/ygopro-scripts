@@ -394,41 +394,35 @@ function Auxiliary.FConditionCode2(code1,code2,sub,insf)
 					if gc:IsFusionCode(code2) then b2=1 end
 					if sub and gc:IsHasEffect(EFFECT_FUSION_SUBSTITUTE) then bw=1 end
 					if b1+b2+bw==0 then return false end
-					if b1+b2+bw==1 then b1=b1*2 b2=b2*2 bw=bw*2 end
 					if chkf~=PLAYER_NONE and not Auxiliary.FConditionCheckF(gc,chkf) then
 						mg=mg:Filter(Auxiliary.FConditionCheckF,nil,chkf)
 					end
-					if b1==2 then
-						return mg:IsExists(Auxiliary.FConditionFilter12,1,nil,code2,sub)
-					elseif b2==2 then
-						return mg:IsExists(Auxiliary.FConditionFilter12,1,nil,code1,sub)
-					elseif bw==2 then
-						return mg:IsExists(Auxiliary.FConditionFilter21,1,nil,code1,code2)
-					else
+					if b1+b2+bw>1 then
 						return mg:IsExists(Auxiliary.FConditionFilter22,1,nil,code1,code2,sub)
+					elseif b1==1 then
+						return mg:IsExists(Auxiliary.FConditionFilter12,1,nil,code2,sub)
+					elseif b2==1 then
+						return mg:IsExists(Auxiliary.FConditionFilter12,1,nil,code1,sub)
+					else
+						return mg:IsExists(Auxiliary.FConditionFilter21,1,nil,code1,code2)
 					end
 				end
 				local b1=0 local b2=0 local bw=0
+				local ct=0
 				local fs=chkf==PLAYER_NONE
 				local tc=mg:GetFirst()
 				while tc do
-					local c1=0 local c2=0 local cw=0
-					if tc:IsFusionCode(code1) then c1=1 end
-					if tc:IsFusionCode(code2) then c2=1 end
-					if sub and tc:IsHasEffect(EFFECT_FUSION_SUBSTITUTE) then cw=1 end
-					if c1+c2+cw>0 then
+					local match=false
+					if tc:IsFusionCode(code1) then b1=1 match=true end
+					if tc:IsFusionCode(code2) then b2=1 match=true end
+					if sub and tc:IsHasEffect(EFFECT_FUSION_SUBSTITUTE) then bw=1 match=true end
+					if match then
 						if Auxiliary.FConditionCheckF(tc,chkf) then fs=true end
-						if c1+c2+cw>1 then b1=b1+c1 b2=b2+c2 bw=bw+cw
-						else b1=b1+c1*2 b2=b2+c2*2 bw=bw+cw*2
-						end
+						ct=ct+1
 					end
 					tc=mg:GetNext()
 				end
-				local c1=0 local c2=0
-				if b1==1 then c1=c1+1 elseif b1>1 then c2=c2+1 end
-				if b2==1 then c1=c1+1 elseif b2>1 then c2=c2+1 end
-				if bw==1 then c1=c1+1 elseif bw>1 then c2=c2+1 end
-				return c2>0 and c1+c2>1 and fs
+				return ct>1 and b1+b2+bw>1 and fs
 			end
 end
 function Auxiliary.FOperationCode2(code1,code2,sub,insf)
@@ -452,17 +446,16 @@ function Auxiliary.FOperationCode2(code1,code2,sub,insf)
 				if tc:IsFusionCode(code1) then b1=1 end
 				if tc:IsFusionCode(code2) then b2=1 end
 				if sub and tc:IsHasEffect(EFFECT_FUSION_SUBSTITUTE) then bw=1 end
-				if b1+b2+bw==1 then b1=b1*2 b2=b2*2 bw=bw*2 end
 				local g2=nil
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-				if b1==2 then
-					g2=g:FilterSelect(tp,Auxiliary.FConditionFilter12,1,1,nil,code2,sub)
-				elseif b2==2 then
-					g2=g:FilterSelect(tp,Auxiliary.FConditionFilter12,1,1,nil,code1,sub)
-				elseif bw==2 then
-					g2=g:FilterSelect(tp,Auxiliary.FConditionFilter21,1,1,nil,code1,code2)
-				else
+				if b1+b2+bw>1 then
 					g2=g:FilterSelect(tp,Auxiliary.FConditionFilter22,1,1,nil,code1,code2,sub)
+				elseif b1==1 then
+					g2=g:FilterSelect(tp,Auxiliary.FConditionFilter12,1,1,nil,code2,sub)
+				elseif b2==1 then
+					g2=g:FilterSelect(tp,Auxiliary.FConditionFilter12,1,1,nil,code1,sub)
+				else
+					g2=g:FilterSelect(tp,Auxiliary.FConditionFilter21,1,1,nil,code1,code2)
 				end
 				if g1 then g2:Merge(g1) end
 				Duel.SetFusionMaterial(g2)
