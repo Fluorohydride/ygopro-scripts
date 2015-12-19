@@ -10,6 +10,7 @@ function c78053598.initial_effect(c)
 end
 function c78053598.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToHand,tp,0,LOCATION_DECK,1,nil) end
+	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,TYPE_MONSTER)
 end
 function c78053598.filter(c,code)
 	return c:IsType(TYPE_MONSTER) and c:IsCode(code) and c:IsAbleToHand()

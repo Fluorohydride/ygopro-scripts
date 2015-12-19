@@ -23,17 +23,17 @@ function c50078320.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c50078320.condition(e,tp,eg,ep,ev,re,r,rp)
-	if rp==tp then return false end
 	local ex,cg,ct,cp,cv=Duel.GetOperationInfo(ev,CATEGORY_ANNOUNCE)
-	return ex and cv==ANNOUNCE_CARD
+	return rp~=tp and ex and bit.band(cv,ANNOUNCE_CARD)~=0
 end
 function c50078320.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c50078320.operation(e,tp,eg,ep,ev,re,r,rp)
+	local ex,cg,ct,cp,cv=Duel.GetOperationInfo(ev,CATEGORY_ANNOUNCE)
 	Duel.Hint(HINT_SELECTMSG,tp,564)
-	local ac=Duel.AnnounceCard(tp)
+	local ac=Duel.AnnounceCard(tp,cv)
 	Duel.ChangeTargetParam(ev,ac)
 end
 function c50078320.desfilter(c)
