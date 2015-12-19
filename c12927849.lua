@@ -51,7 +51,7 @@ function c12927849.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c12927849.eqfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x7f)
+	return c:IsFaceup() and c:IsSetCard(0x107f)
 end
 function c12927849.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c12927849.eqfilter(chkc) end

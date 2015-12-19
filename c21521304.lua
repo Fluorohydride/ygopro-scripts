@@ -30,7 +30,7 @@ function c21521304.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e3:SetCode(EFFECT_ADD_SETCODE)
-	e3:SetValue(0x7f)
+	e3:SetValue(0x107f)
 	c:RegisterEffect(e3)
 end
 c21521304.xyz_number=39
@@ -58,7 +58,7 @@ function c21521304.rmfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsAbleToRemove()
 end
 function c21521304.spfilter(c,e,tp)
-	return c:IsSetCard(0x7f) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x107f) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c21521304.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

@@ -61,7 +61,7 @@ function c60992364.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c60992364.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x7f)
+	return c:IsFaceup() and c:IsSetCard(0x107f)
 end
 function c60992364.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c60992364.filter(chkc) end

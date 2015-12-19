@@ -38,7 +38,7 @@ function c26493435.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c26493435.ctfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x7f) and c:IsControler(tp)
+	return c:IsFaceup() and c:IsSetCard(0x107f) and c:IsControler(tp)
 end
 function c26493435.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c26493435.ctfilter,1,nil,tp)

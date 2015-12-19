@@ -21,7 +21,7 @@ function c11705261.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c11705261.filter(c,tp)
-	return c:IsSetCard(0x7f) and c:IsControler(tp) and c:GetSummonType()==SUMMON_TYPE_XYZ
+	return c:IsSetCard(0x107f) and c:IsControler(tp) and c:GetSummonType()==SUMMON_TYPE_XYZ
 end
 function c11705261.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c11705261.filter,1,nil,tp)
