@@ -27,7 +27,7 @@ function c38723936.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc=g:GetNext()
 	end
 	Duel.Hint(HINT_SELECTMSG,1-tp,564)
-	local ac=Duel.AnnounceCard(1-tp)
+	local ac=Duel.AnnounceCard(1-tp,TYPE_MONSTER)
 	if ac~=last:GetCode() then
 		Duel.SpecialSummon(last,0,tp,tp,false,false,POS_FACEUP)
 	else
