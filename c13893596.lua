@@ -63,7 +63,7 @@ function c13893596.tgfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
 end
 function c13893596.filter(c,rc)
-	return c:IsRelateToCard(rc) and c:IsSetCard(0x40)
+	return c:IsRelateToCard(rc) and c:IsSetCard(0x40) and c:IsType(TYPE_MONSTER)
 end
 function c13893596.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local WIN_REASON_EXODIUS = 0x14
