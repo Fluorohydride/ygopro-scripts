@@ -9,6 +9,7 @@ function c79306385.initial_effect(c)
 	e1:SetOperation(c79306385.activate)
 	c:RegisterEffect(e1)
 end
+c79306385.fit_monster={48546368}
 function c79306385.filter(c,e,tp,m)
 	if not c:IsCode(48546368) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)

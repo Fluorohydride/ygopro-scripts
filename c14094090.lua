@@ -1,6 +1,6 @@
 --超戦士の儀式
 function c14094090.initial_effect(c)
-	aux.AddRitualProcEqual(c,c14094090.ritual_filter)
+	aux.AddRitualProcEqual(c,8,c14094090.ritual_filter)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
