@@ -8,28 +8,18 @@ function c43730887.initial_effect(c)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetTarget(c43730887.target)
+	e1:SetOperation(c43730887.operation)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e2)
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetRange(LOCATION_MZONE)
-	e3:SetCode(EVENT_CHAIN_SOLVED)
-	e3:SetCondition(c43730887.tgcon)
-	e3:SetOperation(c43730887.tgop)
-	e3:SetLabelObject(e1)
-	c:RegisterEffect(e3)
-	local e4=e3:Clone()
-	e4:SetLabelObject(e2)
-	c:RegisterEffect(e4)
 	--disable
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
 	e4:SetCode(EFFECT_DISABLE)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e4:SetTarget(c43730887.distg)
 	c:RegisterEffect(e4)
 	--cannot attack
@@ -49,9 +39,6 @@ function c43730887.initial_effect(c)
 	e7:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	c:RegisterEffect(e7)
 end
-function c43730887.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT)
-end
 function c43730887.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsFaceup() end
 	if chk==0 then return true end
@@ -59,13 +46,10 @@ function c43730887.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end
-function c43730887.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	return re==e:GetLabelObject()
-end
-function c43730887.tgop(e,tp,eg,ep,ev,re,r,rp)
+function c43730887.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local tc=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS):GetFirst()
-	if tc and c:IsRelateToEffect(re) and tc:IsFaceup() and tc:IsRelateToEffect(re) then
+	local tc=Duel.GetFirstTarget()
+	if c:IsRelateToEffect(re) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
 	end
 end

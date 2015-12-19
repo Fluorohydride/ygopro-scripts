@@ -49,9 +49,9 @@ function c10000090.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c10000090.cfilter(c,tp)
-	return c:IsCode(10000010) and c:IsControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsCode(10000010) and c:IsControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
-function c10000090.spcon1(e,tp,eg,ep,ev,re,r,rp,chk)
+function c10000090.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c10000090.cfilter,1,nil,tp)
 end
 function c10000090.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -74,7 +74,7 @@ function c10000090.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c10000090.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToGrave,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,1-tp,LOCATION_MZONE)
+	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,PLAYER_ALL,LOCATION_MZONE)
 end
 function c10000090.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
