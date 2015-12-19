@@ -1,4 +1,4 @@
---魔帝アングマール
+--鬲泌ｸ昴い繝ｳ繧ｰ繝槭�ｼ繝ｫ
 function c65612386.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)
