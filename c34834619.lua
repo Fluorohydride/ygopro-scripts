@@ -12,6 +12,8 @@ function c34834619.initial_effect(c)
 	e1:SetOperation(c34834619.spop)
 	c:RegisterEffect(e1)
 end
+c34834619.ritual_text_code_count=1
+c34834619.ritual_text_code_set={85346853}
 function c34834619.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)

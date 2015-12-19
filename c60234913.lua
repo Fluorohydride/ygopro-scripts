@@ -12,6 +12,8 @@ function c60234913.initial_effect(c)
 	e1:SetOperation(c60234913.utop)
 	c:RegisterEffect(e1)
 end
+c60234913.ritual_text_code_count=1
+c60234913.ritual_text_code_set={61757117}
 function c60234913.utcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)

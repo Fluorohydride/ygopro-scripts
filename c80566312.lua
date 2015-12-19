@@ -11,6 +11,8 @@ function c80566312.initial_effect(c)
 	e1:SetOperation(c80566312.repop)
 	c:RegisterEffect(e1)
 end
+c80566312.ritual_text_code_count=1
+c80566312.ritual_text_code_set={56350972}
 function c80566312.repfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:IsType(TYPE_RITUAL)
 		and c:IsReason(REASON_EFFECT+REASON_BATTLE)

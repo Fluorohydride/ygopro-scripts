@@ -13,6 +13,8 @@ function c62835876.initial_effect(c)
 	e1:SetOperation(c62835876.thop)
 	c:RegisterEffect(e1)
 end
+c62835876.ritual_text_code_count=1
+c62835876.ritual_text_code_set={35330871}
 function c62835876.cfilter(c)
 	return c:IsSetCard(0xb1) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
 end

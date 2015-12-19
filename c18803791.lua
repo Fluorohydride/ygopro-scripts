@@ -12,6 +12,8 @@ function c18803791.initial_effect(c)
 	e1:SetOperation(c18803791.thop)
 	c:RegisterEffect(e1)
 end
+c18803791.ritual_text_code_count=1
+c18803791.ritual_text_code_set={71408082}
 function c18803791.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
