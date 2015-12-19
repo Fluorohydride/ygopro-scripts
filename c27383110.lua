@@ -21,6 +21,7 @@ function c27383110.initial_effect(c)
 	e2:SetLabelObject(e1)
 	c:RegisterEffect(e2)
 end
+c27383110.fit_monster={44665365}
 function c27383110.filter(c,e,tp,m)
 	if not c:IsCode(44665365) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)

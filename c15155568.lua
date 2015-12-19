@@ -22,11 +22,7 @@ function c15155568.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c15155568.cfilter(c)
-	if c:IsFacedown() or not c.material then return false end
-	for i,mcode in ipairs(c.material) do
-		if mcode==78193831 then return true end
-	end
-	return false
+	return c:IsFaceup() and aux.IsMaterialListCode(c,78193831)
 end
 function c15155568.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c15155568.cfilter,tp,LOCATION_MZONE,0,1,nil)
