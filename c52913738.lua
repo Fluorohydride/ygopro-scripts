@@ -11,6 +11,8 @@ function c52913738.initial_effect(c)
 	e1:SetOperation(c52913738.regop)
 	c:RegisterEffect(e1)
 end
+c52913738.ritual_text_code_count=1
+c52913738.ritual_text_code_set={30646525}
 function c52913738.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1
 end
