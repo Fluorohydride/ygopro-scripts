@@ -24,25 +24,24 @@ function c23536866.xyzfilter(c,mg)
 	if c.xyz_count~=2 then return false end
 	return c:IsAttribute(ATTRIBUTE_WATER) and c:IsXyzSummonable(mg)
 end
-function c23536866.mfilter1(c,exg)
-	return exg:IsExists(c23536866.mfilter2,1,nil,c)
+function c23536866.mfilter1(c,mg,exg)
+	return mg:IsExists(c23536866.mfilter2,1,c,c,exg)
 end
-function c23536866.mfilter2(c,mc)
-	return c.xyz_filter(mc)
+function c23536866.mfilter2(c,mc,exg)
+	return exg:IsExists(Card.IsXyzSummonable,1,nil,Group.FromCards(c,mc))
 end
 function c23536866.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local mg=Duel.GetMatchingGroup(c23536866.filter,tp,LOCATION_GRAVE,0,nil,e,tp)
-	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1 and mg:GetCount()>1
-		and Duel.IsExistingMatchingCard(c23536866.xyzfilter,tp,LOCATION_EXTRA,0,1,nil,mg) end
 	local exg=Duel.GetMatchingGroup(c23536866.xyzfilter,tp,LOCATION_EXTRA,0,nil,mg)
+	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+		and mg:IsExists(c23536866.mfilter1,1,nil,mg,exg) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg1=mg:FilterSelect(tp,c23536866.mfilter1,1,1,nil,exg)
+	local sg1=mg:FilterSelect(tp,c23536866.mfilter1,1,1,nil,mg,exg)
 	local tc1=sg1:GetFirst()
-	local exg2=exg:Filter(c23536866.mfilter2,nil,tc1)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg2=mg:FilterSelect(tp,c23536866.mfilter1,1,1,tc1,exg2)
+	local sg2=mg:FilterSelect(tp,c23536866.mfilter2,1,1,tc1,tc1,exg)
 	sg1:Merge(sg2)
 	Duel.SetTargetCard(sg1)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg1,2,0,0)
