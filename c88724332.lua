@@ -7,7 +7,7 @@ function c88724332.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTarget(c88724332.target)
 	e1:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e1:SetValue(POS_FACEUP_DEFENCE)
+	e1:SetValue(c88724332.posval)
 	c:RegisterEffect(e1)
 	--def
 	local e2=Effect.CreateEffect(c)
@@ -20,9 +20,16 @@ function c88724332.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c88724332.target(e,c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and not c:IsRace(RACE_WYRM)
+	return not c:IsRace(RACE_WYRM)
 		and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
 		and bit.band(c:GetSummonLocation(),LOCATION_DECK+LOCATION_EXTRA)~=0
+end
+function c88724332.posval(e,c)
+	if c:IsPosition(POS_FACEUP_ATTACK) then
+		return POS_FACEUP_DEFENCE
+	else
+		return c:GetPosition()
+	end
 end
 function c88724332.deftg(e,c)
 	return c:IsFaceup() and not c:IsRace(RACE_WYRM)
