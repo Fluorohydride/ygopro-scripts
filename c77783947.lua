@@ -38,7 +38,7 @@ function c77783947.becon(e)
 end
 function c77783947.sccon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	return ph==PHASE_MAIN1 or ph==PHASE_BATTLE or ph==PHASE_MAIN2
+	return ph==PHASE_MAIN1 or (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE) or ph==PHASE_MAIN2
 end
 function c77783947.mfilter(c)
 	return c:IsSetCard(0x9e) and c:IsType(TYPE_MONSTER)

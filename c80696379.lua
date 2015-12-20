@@ -53,7 +53,7 @@ function c80696379.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c80696379.condition(e)
 	local ph=Duel.GetCurrentPhase()
-	return ph==PHASE_BATTLE or ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL
+	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE
 end
 function c80696379.aclimit(e,re,tp)
 	return re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)

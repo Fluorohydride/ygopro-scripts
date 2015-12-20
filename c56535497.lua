@@ -27,12 +27,7 @@ function c56535497.filter(c)
 end
 function c56535497.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then
-		local ph=Duel.GetCurrentPhase()
-		if Duel.GetTurnPlayer()==tp then return ph==PHASE_MAIN1 or ph==PHASE_MAIN2
-		else return ph==PHASE_BATTLE or (ph==PHASE_DAMAGE
-			and Duel.IsExistingTarget(c56535497.filter,tp,LOCATION_MZONE,LOCATION_MZONE,2,nil)) end
-	end
+	if chk==0 then return true end
 	if Duel.GetCurrentPhase()==PHASE_DAMAGE or 
 		(Duel.IsExistingTarget(c56535497.filter,tp,LOCATION_MZONE,LOCATION_MZONE,2,nil) and Duel.SelectYesNo(tp,aux.Stringid(56535497,0))) then
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
@@ -50,7 +45,7 @@ end
 function c56535497.condition2(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
 	if Duel.GetTurnPlayer()==tp then return ph==PHASE_MAIN1 or ph==PHASE_MAIN2
-	else return ph==PHASE_BATTLE or ph==PHASE_DAMAGE end
+	else return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and (not ph==PHASE_DAMAGE or Duel.IsDamageCalculated()) end
 end
 function c56535497.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

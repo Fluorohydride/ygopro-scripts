@@ -174,11 +174,13 @@ COUNTER_NEED_ENABLE			=0x2000	--可以放置某指示物
 PHASE_DRAW			=0x01	--抽卡阶段
 PHASE_STANDBY		=0x02	--准备阶段
 PHASE_MAIN1			=0x04	--主要阶段1
-PHASE_BATTLE		=0x08	--战斗阶段
-PHASE_DAMAGE		=0x10	--伤害步驟
-PHASE_DAMAGE_CAL	=0x20	--伤害计算时
-PHASE_MAIN2			=0x40	--主要阶段2
-PHASE_END			=0x80	--结束阶段
+PHASE_BATTLE_START	=0x08	--战斗阶段开始
+PHASE_BATTLE_STEP	=0x10	--战斗步驟
+PHASE_DAMAGE		=0x20	--伤害步驟
+PHASE_DAMAGE_CAL	=0x40	--伤害计算时
+PHASE_BATTLE		=0x80	--战斗阶段結束
+PHASE_MAIN2			=0x100	--主要阶段2
+PHASE_END			=0x200	--结束阶段
 --Player	--玩家
 PLAYER_NONE			=2		--2个玩家都不是
 PLAYER_ALL			=3		--2个玩家都是
@@ -198,18 +200,10 @@ CHAININFO_CHAIN_ID				=0x800	--连锁ID
 CHAININFO_TYPE					=0x1000	--连锁类型
 CHAININFO_EXTTYPE				=0x2000	--连锁额外类型
 --========== Reset ==========	--重置条件（注意：重置条件可以多个相加）
---PHASE_DRAW		--抽卡阶段重置
---PHASE_STANDBY		--准备阶段重置
---PHASE_MAIN1		--主要阶段1重置
---PHASE_BATTLE		--战斗阶段重置
---PHASE_DAMAGE		--伤害计算前重置
---PHASE_DAMAGE_CAL	--伤害计算时重置
---PHASE_MAIN2		--主要阶段2重置
---PHASE_END			--结束阶段重置
-RESET_SELF_TURN		=0x0100				--自己回合结束重置
-RESET_OPPO_TURN		=0x0200				--对方回合结束重置
-RESET_PHASE			=0x0400				--阶段结束重置(一般和上面那些阶段配合使用)
-RESET_CHAIN			=0x0800				--连锁结束重置
+RESET_SELF_TURN		=0x10000000			--自己回合结束重置
+RESET_OPPO_TURN		=0x20000000			--对方回合结束重置
+RESET_PHASE			=0x40000000			--阶段结束重置(一般和上面那些阶段配合使用)
+RESET_CHAIN			=0x80000000			--连锁结束重置
 RESET_EVENT			=0x1000				--指定的條件下重置(一般和下面这些事件配合使用)
 RESET_CARD			=0x2000				--重置Owner為指定卡片的效果
 RESET_CODE			=0x4000				--重置指定Code的single效果(不含EFFECT_FLAG_SINGLE_RANGE)

@@ -25,7 +25,7 @@ function c5026221.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local tn=Duel.GetTurnPlayer()
 	local ph=Duel.GetCurrentPhase()
-	if ((tn==tp and (ph==PHASE_MAIN1 or ph==PHASE_MAIN2)) or (tn~=tp and ph==PHASE_BATTLE)) 
+	if ((tn==tp and (ph==PHASE_MAIN1 or ph==PHASE_MAIN2)) or (tn~=tp and (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE)))
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c5026221.filter,tp,LOCATION_HAND,0,1,nil,e,tp)
 		and Duel.SelectYesNo(tp,94) then

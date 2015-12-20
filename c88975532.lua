@@ -13,7 +13,7 @@ function c88975532.initial_effect(c)
 end
 function c88975532.con(e)
 	local ph=Duel.GetCurrentPhase()
-	return ph==PHASE_BATTLE or ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL
+	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE
 end
 function c88975532.aclimit(e,re,tp)
 	return re:GetHandler():IsType(TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE)

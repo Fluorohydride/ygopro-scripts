@@ -25,7 +25,7 @@ function c46772449.condition(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetTurnPlayer()==tp then
 		return ph==PHASE_MAIN1 or ph==PHASE_MAIN2
 	else
-		return ph==PHASE_BATTLE
+		return (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE)
 	end
 end
 function c46772449.cost(e,tp,eg,ep,ev,re,r,rp,chk)

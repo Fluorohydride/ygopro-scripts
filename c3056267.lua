@@ -16,7 +16,7 @@ function c3056267.swapfilter(c)
 end
 function c3056267.condition(e)
 	local ph=Duel.GetCurrentPhase()
-	return not (ph==PHASE_BATTLE or ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL)
+	return not (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE)
 end
 function c3056267.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

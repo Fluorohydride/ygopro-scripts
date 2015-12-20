@@ -17,7 +17,7 @@ function c55461064.initial_effect(c)
 end
 function c55461064.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local phase=Duel.GetCurrentPhase()
-	return Duel.GetTurnPlayer()~=tp and (phase==PHASE_BATTLE or (phase==PHASE_DAMAGE and not Duel.IsDamageCalculated()))
+	return Duel.GetTurnPlayer()~=tp and ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and (not ph==PHASE_DAMAGE or Duel.IsDamageCalculated())
 end
 function c55461064.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

@@ -57,7 +57,7 @@ function c75987257.eqlimit(e,c)
 end
 function c75987257.poscon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	return (ph==PHASE_MAIN1 or ph==PHASE_BATTLE or ph==PHASE_MAIN2) and e:GetHandler():GetEquipTarget()
+	return ph>=PHASE_MAIN1 and ph<=PHASE_MAIN2 and e:GetHandler():GetEquipTarget()
 end
 function c75987257.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
