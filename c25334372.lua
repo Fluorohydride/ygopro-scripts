@@ -16,7 +16,7 @@ function c25334372.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	if not d then return false end
 	return a:IsControler(tp) and a:GetAttack()<d:GetAttack() and Duel.GetLP(tp)~=Duel.GetLP(1-tp)
 end
-function c25334372.atkop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c25334372.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=Duel.GetAttacker()
 	if c:IsFaceup() and c:IsRelateToBattle() then
 		local atk=math.abs(Duel.GetLP(tp)-Duel.GetLP(1-tp))

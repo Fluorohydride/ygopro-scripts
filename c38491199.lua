@@ -15,8 +15,8 @@ function c38491199.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c38491199.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsDiscardable() end
-	Duel.SendtoGrave(e:GetHandler(),REASON_COST+REASON_DISCARD)
+	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
+	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c38491199.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsChainNegatable(ev) and aux.damcon1(e,tp,eg,ep,ev,re,r,rp)

@@ -6,7 +6,6 @@ function c24590232.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetCondition(c24590232.condition)
-	e1:SetCost(c24590232.cost)
 	e1:SetOperation(c24590232.activate)
 	c:RegisterEffect(e1)
 end
@@ -19,30 +18,28 @@ function c24590232.filter1(c,e,tp)
 		and Duel.IsExistingMatchingCard(c24590232.filter2,tp,LOCATION_GRAVE,0,1,nil,tp,lv)
 end
 function c24590232.filter2(c,tp,lv)
-	local rlv=0
-	rlv=lv-c:GetLevel()
+	local rlv=lv-c:GetLevel()
 	local rg=Duel.GetMatchingGroup(c24590232.filter3,tp,LOCATION_GRAVE,0,c)
 	return rlv>0 and c:IsType(TYPE_TUNER) and c:IsAbleToRemove()
-		and rg:CheckWithSumGreater(Card.GetLevel,rlv,63)
+		and rg:CheckWithSumEqual(Card.GetLevel,rlv,1,63)
 end
-function c24590232.filter3(c,tp,lv)
-	return not c:IsType(TYPE_TUNER) and c:IsAbleToRemove()
+function c24590232.filter3(c)
+	return c:GetLevel()>0 and not c:IsType(TYPE_TUNER) and c:IsAbleToRemove()
 end
 function c24590232.activate(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if Duel.NegateAttack() and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+	if Duel.NegateAttack() and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c24590232.filter1,tp,LOCATION_EXTRA,0,1,nil,e,tp)
 		and Duel.SelectYesNo(tp,aux.Stringid(24590232,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g1=Duel.SelectMatchingCard(tp,c24590232.filter1,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
+		local lv=g1:GetFirst():GetLevel()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g2=Duel.SelectMatchingCard(tp,c24590232.filter2,tp,LOCATION_GRAVE,0,1,1,nil,e,tp,g1:GetLevel())
-		local lv=0
-		lv=g1:GetLevel()-g2:GetLevel()
+		local g2=Duel.SelectMatchingCard(tp,c24590232.filter2,tp,LOCATION_GRAVE,0,1,1,nil,tp,lv)
+		local rlv=lv-g2:GetFirst():GetLevel()
 		local rg=Duel.GetMatchingGroup(c24590232.filter3,tp,LOCATION_GRAVE,0,g2:GetFirst())
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g3=rg:SelectWithSumEqual(tp,Card.GetLevel,lv,1,63)
+		local g3=rg:SelectWithSumEqual(tp,Card.GetLevel,rlv,1,63)
 		g2:Merge(g3)
 		Duel.Remove(g2,POS_FACEUP,REASON_EFFECT)
 		Duel.SpecialSummon(g1,SUMMON_TYPE_SYNCHRO,tp,tp,false,false,POS_FACEUP)

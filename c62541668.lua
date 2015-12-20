@@ -5,7 +5,7 @@ function c62541668.initial_effect(c)
 	c:EnableReviveLimit()
 	--remove
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(1006081,1))
+	e1:SetDescription(aux.Stringid(62541668,1))
 	e1:SetCategory(CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)

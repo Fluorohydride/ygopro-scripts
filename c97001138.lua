@@ -23,16 +23,15 @@ function c97001138.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c97001138.thfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c97001138.thfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local sg=Duel.SelectTarget(tp,c97001138.thfilter,tp,LOCATION_GRAVE,0,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,sg,sg:GetCount(),0,0)
+	local g=Duel.SelectTarget(tp,c97001138.thfilter,tp,LOCATION_GRAVE,0,1,1,nil)
+	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
 function c97001138.sumfilter(c)
 	return c:IsSummonable(true,nil,1)
 end
 function c97001138.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
-		Duel.SendtoHand(tc,nil,REASON_EFFECT)
+	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
 		Duel.ConfirmCards(1-tp,tc)
 		local g=Duel.GetMatchingGroup(c97001138.sumfilter,tp,LOCATION_HAND,0,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(97001138,0)) then

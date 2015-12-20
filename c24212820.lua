@@ -44,7 +44,8 @@ function c24212820.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c24212820.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
+	return Duel.GetFieldGroupCount(tp,LOCATION_ONFIELD,0)==0
+		and Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end
 function c24212820.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsStatus(STATUS_CHAINING) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -74,7 +75,7 @@ function c24212820.spop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e2,true)
 	end
 end
-function c24212820.defcon(e,tp,eg,ep,ev,re,r,rp)
+function c24212820.defcon(e)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
 end
 function c24212820.filter(c)
