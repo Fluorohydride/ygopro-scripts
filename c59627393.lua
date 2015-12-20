@@ -20,7 +20,7 @@ c59627393.xyz_number=105
 function c59627393.condition(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local at=Duel.GetAttackTarget()
-	return Duel.GetCurrentPhase()==PHASE_BATTLE and at and ((a:IsControler(tp) and a:IsOnField() and a:IsSetCard(0x84))
+	return (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE) and at and ((a:IsControler(tp) and a:IsOnField() and a:IsSetCard(0x84))
 		or (at:IsControler(tp) and at:IsOnField() and at:IsFaceup() and at:IsSetCard(0x84)))
 end
 function c59627393.cost(e,tp,eg,ep,ev,re,r,rp,chk)

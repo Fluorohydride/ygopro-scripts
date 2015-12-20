@@ -21,7 +21,7 @@ function c37055344.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c37055344.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()==PHASE_BATTLE
+	return (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c37055344.filter1(c)
 	return c:IsFaceup() and c:IsSetCard(0x8d) and c:IsCanTurnSet()
@@ -44,7 +44,7 @@ function c37055344.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b1=Duel.IsExistingTarget(c37055344.filter1,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(c37055344.filter2,tp,0,LOCATION_MZONE,1,nil)
 	local b2=Duel.IsExistingTarget(c37055344.filter3,tp,LOCATION_MZONE,0,1,nil)
-	if Duel.GetCurrentPhase()==PHASE_BATTLE
+	if (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 		and (b1 or b2) and Duel.SelectYesNo(tp,aux.Stringid(37055344,3)) then
 		local op=0
 		if b1 and b2 then

@@ -38,7 +38,7 @@ function c81167171.clear(e,tp,eg,ep,ev,re,r,rp)
 	c81167171[1]=false
 end
 function c81167171.condition(e,tp,eg,ep,ev,re,r,rp)
-	return c81167171[tp] and Duel.GetCurrentPhase()==PHASE_BATTLE
+	return c81167171[tp] and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c81167171.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

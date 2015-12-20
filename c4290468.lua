@@ -53,7 +53,7 @@ function c4290468.atkop(e,tp,eg,ep,ev,re,r,rp)
 	tc:RegisterEffect(e1)
 end
 function c4290468.dacon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()==PHASE_BATTLE and e:GetHandler():GetAttackedGroupCount()~=0
+	return (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE) and e:GetHandler():GetAttackedGroupCount()~=0
 		and Duel.GetAttacker()==nil and Duel.GetCurrentChain()==0
 end
 function c4290468.dacost(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -18,7 +18,7 @@ end
 function c64268668.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	return Duel.GetCurrentPhase()==PHASE_BATTLE
+	return (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 		and ((a and a:IsControler(tp) and a:IsFaceup() and a:IsCode(64268668))
 		or (d and d:IsControler(tp) and d:IsFaceup() and d:IsCode(64268668)))
 end

@@ -12,7 +12,7 @@ function c8964854.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c8964854.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()==PHASE_BATTLE
+	return (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c8964854.filter(c,e,tp)
 	return c:GetAttackAnnouncedCount()>0 and Duel.IsExistingMatchingCard(c8964854.eqfilter,tp,LOCATION_SZONE,0,1,nil,e,tp,c)

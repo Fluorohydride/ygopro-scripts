@@ -12,7 +12,7 @@ function c62878208.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c62878208.eqcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()==PHASE_BATTLE
+	return (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c62878208.filter1(c,e,tp)
 	local ec=c:GetEquipTarget()

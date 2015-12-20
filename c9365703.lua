@@ -24,7 +24,7 @@ function c9365703.sumop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c9365703.dacon(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.CheckTiming(TIMING_BATTLE_START) or Duel.CheckTiming(TIMING_BATTLE_END) then return false end
-	return Duel.GetCurrentPhase()==PHASE_BATTLE and Duel.GetCurrentChain()==0
+	return (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE) and Duel.GetCurrentChain()==0
 		and e:GetHandler():GetFlagEffect(9365703)~=0
 end
 function c9365703.daop(e,tp,eg,ep,ev,re,r,rp)

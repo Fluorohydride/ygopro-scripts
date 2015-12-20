@@ -11,7 +11,7 @@ function c89914395.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c89914395.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsAbleToEnterBP() or Duel.GetCurrentPhase()==PHASE_BATTLE
+	return Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c89914395.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x4b) and not c:IsHasEffect(EFFECT_EXTRA_ATTACK)

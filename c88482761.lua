@@ -61,7 +61,7 @@ function c88482761.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c88482761.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and Duel.GetCurrentPhase()==PHASE_BATTLE
+	return Duel.GetTurnPlayer()~=tp and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 		and not Duel.CheckTiming(TIMING_BATTLE_START+TIMING_BATTLE_END)
 end
 function c88482761.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)

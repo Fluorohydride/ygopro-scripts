@@ -20,7 +20,7 @@ function c67381587.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c67381587.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and Duel.GetCurrentPhase()==PHASE_BATTLE
+	return Duel.GetTurnPlayer()~=tp and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 		and Duel.IsExistingMatchingCard(Card.IsPosition,tp,LOCATION_MZONE,0,2,nil,POS_FACEDOWN_DEFENCE)
 end
 function c67381587.activate(e,tp,eg,ep,ev,re,r,rp)

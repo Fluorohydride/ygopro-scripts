@@ -12,7 +12,7 @@ function c91677585.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c91677585.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_BATTLE
+	return Duel.GetTurnPlayer()==tp and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c91677585.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)
