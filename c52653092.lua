@@ -54,7 +54,7 @@ function c52653092.cfilter(c)
 	return c:IsSetCard(0x95) and c:GetType()==TYPE_SPELL and c:IsDiscardable()
 end
 function c52653092.ovfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x7f)
+	return c:IsFaceup() and c:IsSetCard(0x107f)
 end
 function c52653092.mfilter(c,xyzc)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsSetCard(0x48) and c:IsCanBeXyzMaterial(xyzc)

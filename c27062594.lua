@@ -46,7 +46,7 @@ function c27062594.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c27062594.cfilter(c)
-	return c:IsSetCard(0x7f) and c:IsAbleToRemoveAsCost()
+	return c:IsSetCard(0x107f) and c:IsAbleToRemoveAsCost()
 end
 function c27062594.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c27062594.cfilter,tp,LOCATION_GRAVE,0,1,nil) end

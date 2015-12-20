@@ -30,7 +30,7 @@ function c18865703.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():CheckUniqueOnField(tp)
 end
 function c18865703.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x7f)
+	return c:IsFaceup() and c:IsSetCard(0x107f)
 end
 function c18865703.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c18865703.filter(chkc) end

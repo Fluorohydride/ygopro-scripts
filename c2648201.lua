@@ -28,7 +28,7 @@ function c2648201.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():CheckUniqueOnField(tp)
 end
 function c2648201.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x7f)
+	return c:IsFaceup() and c:IsSetCard(0x107f)
 end
 function c2648201.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c2648201.filter(chkc) end
@@ -71,7 +71,7 @@ function c2648201.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsReason(REASON_LOST_TARGET) and c:GetPreviousControler()==tp and ec:IsReason(REASON_DESTROY) and ec:GetReasonPlayer()~=tp
 end
 function c2648201.spfilter(c,e,tp)
-	return c:IsSetCard(0x7f) and c:IsCanBeSpecialSummoned(e,0,tp,tp,false,false)
+	return c:IsSetCard(0x107f) and c:IsCanBeSpecialSummoned(e,0,tp,tp,false,false)
 end
 function c2648201.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c2648201.spfilter(chkc,e,tp) end

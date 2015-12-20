@@ -12,11 +12,11 @@ function c71345905.initial_effect(c)
 end
 function c71345905.filter1(c,e,tp)
 	local rk=c:GetRank()
-	return rk>1 and c:IsFaceup() and c:IsSetCard(0x7f)
+	return rk>1 and c:IsFaceup() and c:IsSetCard(0x107f)
 		and Duel.IsExistingMatchingCard(c71345905.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,rk)
 end
 function c71345905.filter2(c,e,tp,mc,rk)
-	return c:IsRankBelow(rk-1) and c:IsSetCard(0x7f) and mc:IsCanBeXyzMaterial(c)
+	return c:IsRankBelow(rk-1) and c:IsSetCard(0x107f) and mc:IsCanBeXyzMaterial(c)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
 end
 function c71345905.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
