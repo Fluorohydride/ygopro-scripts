@@ -17,7 +17,7 @@ function c74506079.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c74506079.ffilter(c)
-	return c:IsSetCard(0x3e) and c:IsRace(RACE_REPTILE)
+	return c:IsFusionSetCard(0x3e) and c:IsRace(RACE_REPTILE)
 end
 function c74506079.fscondition(e,g,gc)
 	if g==nil then return true end

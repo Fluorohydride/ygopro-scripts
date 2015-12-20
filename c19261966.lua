@@ -38,7 +38,7 @@ function c19261966.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c19261966.ffilter1(c)
-	return c:IsSetCard(0x9d)
+	return c:IsFusionSetCard(0x9d)
 end
 function c19261966.ffilter2(c)
 	return c:IsAttribute(ATTRIBUTE_WATER) or c:IsHasEffect(4904633)
