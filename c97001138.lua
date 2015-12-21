@@ -27,7 +27,7 @@ function c97001138.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
 function c97001138.sumfilter(c)
-	return c:IsSummonable(true,nil,1)
+	return c:IsAttackAbove(2400) and c:GetDefence()==1000 and c:IsSummonable(true,nil,1)
 end
 function c97001138.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
