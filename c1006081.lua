@@ -25,9 +25,9 @@ function c1006081.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local op=0
 	Duel.Hint(HINT_SELECTMSG,tp,550)
 	if g:GetFirst():GetLevel()==1 then
-		op=Duel.SelectOption(tp,aux.Stringid(1006081,0))
+		op=Duel.SelectOption(tp,aux.Stringid(1006081,1))
 	else
-		op=Duel.SelectOption(tp,aux.Stringid(1006081,0),aux.Stringid(1006081,1))
+		op=Duel.SelectOption(tp,aux.Stringid(1006081,1),aux.Stringid(1006081,2))
 	end
 	e:SetLabel(op)
 end
