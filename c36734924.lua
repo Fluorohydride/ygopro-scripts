@@ -49,7 +49,7 @@ function c36734924.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg1=g:Select(tp,1,1,nil)
 		g:Remove(Card.IsCode,nil,sg1:GetFirst():GetCode())
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(36734924,2)) then
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,210) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local sg2=g:Select(tp,1,1,nil)
 			sg1:Merge(sg2)
