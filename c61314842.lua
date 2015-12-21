@@ -14,8 +14,7 @@ function c61314842.filter(c,e,tp)
 	return c:IsSetCard(0x76) and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c61314842.xyzfilter(c,mg)
-	if c.xyz_count~=2 then return false end
-	return c:IsXyzSummonable(mg)
+	return c:IsXyzSummonable(mg,2,2)
 end
 function c61314842.mfilter1(c,mg,exg)
 	return mg:IsExists(c61314842.mfilter2,1,c,c,exg)

@@ -213,35 +213,46 @@ function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,desc,maxct,op)
 	e1:SetValue(SUMMON_TYPE_XYZ)
 	c:RegisterEffect(e1)
 end
---Xyz Summon(normnal)
+--Xyz Summon(normal)
 function Auxiliary.XyzCondition(f,lv,minc,maxc)
 	--og: use special material
-	return	function(e,c,og)
+	return	function(e,c,og,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local ft=Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)
 				local ct=-ft
-				if minc<=ct then return false end
-				return Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
+				local minc=minc
+				local maxc=maxc
+				if min then
+					if min>minc then minc=min end
+					if max<maxc then maxc=max end
+					if minc>maxc then return false end
+				end
+				return ct<minc and Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
 			end
 end
 function Auxiliary.XyzTarget(f,lv,minc,maxc)
-	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,og)
-				if og then
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
+				if og and not min then
 					return true
-				else
-					local g=Duel.SelectXyzMaterial(tp,c,f,lv,minc,maxc)
-					if g then
-						g:KeepAlive()
-						e:SetLabelObject(g)
-						return true
-					else return false end
 				end
+				local minc=minc
+				local maxc=maxc
+				if min then
+					if min>minc then minc=min end
+					if max<maxc then maxc=max end
+				end
+				local g=Duel.SelectXyzMaterial(tp,c,f,lv,minc,maxc,og)
+				if g then
+					g:KeepAlive()
+					e:SetLabelObject(g)
+					return true
+				else return false end
 			end
 end
 function Auxiliary.XyzOperation(f,lv,minc,maxc)
-	return	function(e,tp,eg,ep,ev,re,r,rp,c,og)
-				if og then
+	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
+				if og and not min then
 					local sg=Group.CreateGroup()
 					local tc=og:GetFirst()
 					while tc do
@@ -270,48 +281,59 @@ function Auxiliary.XyzOperation(f,lv,minc,maxc)
 end
 --Xyz summon(alterf)
 function Auxiliary.XyzCondition2(f,lv,minc,maxc,alterf,desc,op)
-	return	function(e,c,og)
+	return	function(e,c,og,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp=c:GetControler()
 				local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 				local ct=-ft
-				if minc<=ct then return false end
 				if ct<1 and not og and Duel.IsExistingMatchingCard(Auxiliary.XyzAlterFilter,tp,LOCATION_MZONE,0,1,nil,alterf,c)
 					and (not op or op(e,tp,0)) then
 					return true
 				end
-				return Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
+				local minc=minc
+				local maxc=maxc
+				if min then
+					if min>minc then minc=min end
+					if max<maxc then maxc=max end
+					if minc>maxc then return false end
+				end
+				return ct<minc and Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
 			end
 end
 function Auxiliary.XyzTarget2(f,lv,minc,maxc,alterf,desc,op)
-	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,og)
-				if og then
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
+				if og and not min then
+					return true
+				end
+				local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+				local ct=-ft
+				local minc=minc
+				local maxc=maxc
+				if min then
+					if min>minc then minc=min end
+					if max<maxc then maxc=max end
+				end
+				local b1=ct<minc and Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
+				local b2=ct<1 and not og and Duel.IsExistingMatchingCard(Auxiliary.XyzAlterFilter,tp,LOCATION_MZONE,0,1,nil,alterf,c)
+					and (not op or op(e,tp,0))
+				if b2 and (not b1 or Duel.SelectYesNo(tp,desc)) then
+					e:SetLabel(1)
 					return true
 				else
-					local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-					local ct=-ft
-					local b1=Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
-					local b2=ct<1 and Duel.IsExistingMatchingCard(Auxiliary.XyzAlterFilter,tp,LOCATION_MZONE,0,1,nil,alterf,c)
-						and (not op or op(e,tp,0))
-					if b2 and (not b1 or Duel.SelectYesNo(tp,desc)) then
-						e:SetLabel(1)
+					e:SetLabel(0)
+					local g=Duel.SelectXyzMaterial(tp,c,f,lv,minc,maxc,og)
+					if g then
+						g:KeepAlive()
+						e:SetLabelObject(g)
 						return true
-					else
-						e:SetLabel(0)
-						local g=Duel.SelectXyzMaterial(tp,c,f,lv,minc,maxc)
-						if g then
-							g:KeepAlive()
-							e:SetLabelObject(g)
-							return true
-						else return false end
-					end
+					else return false end
 				end
 			end
 end
 function Auxiliary.XyzOperation2(f,lv,minc,maxc,alterf,desc,op)
-	return	function(e,tp,eg,ep,ev,re,r,rp,c,og)
-				if og then
+	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
+				if og and not min then
 					local sg=Group.CreateGroup()
 					local tc=og:GetFirst()
 					while tc do

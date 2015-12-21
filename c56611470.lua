@@ -25,8 +25,7 @@ function c56611470.filter(c,e)
 	return c:IsFaceup() and c:IsSetCard(0x97) and c:IsCanBeEffectTarget(e)
 end
 function c56611470.xyzfilter(c,mg)
-	if c.xyz_count~=2 then return false end
-	return c:IsXyzSummonable(mg)
+	return c:IsXyzSummonable(mg,2,2)
 end
 function c56611470.mfilter1(c,mg,exg)
 	return mg:IsExists(c56611470.mfilter2,1,c,c,exg)

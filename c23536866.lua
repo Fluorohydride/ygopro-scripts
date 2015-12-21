@@ -21,8 +21,7 @@ function c23536866.filter(c,e,tp)
 		and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c23536866.xyzfilter(c,mg)
-	if c.xyz_count~=2 then return false end
-	return c:IsAttribute(ATTRIBUTE_WATER) and c:IsXyzSummonable(mg)
+	return c:IsAttribute(ATTRIBUTE_WATER) and c:IsXyzSummonable(mg,2,2)
 end
 function c23536866.mfilter1(c,mg,exg)
 	return mg:IsExists(c23536866.mfilter2,1,c,c,exg)

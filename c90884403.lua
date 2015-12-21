@@ -1,4 +1,4 @@
---‹†‹ÉŒ¶_ ƒAƒ‹ƒeƒBƒ~ƒgƒ‹EƒrƒVƒo[ƒ‹ƒLƒ“
+--ç©¶æ¥µå¹»ç¥ ã‚¢ãƒ«ãƒ†ã‚£ãƒŸãƒˆãƒ«ãƒ»ãƒ“ã‚·ãƒãƒ¼ãƒ«ã‚­ãƒ³
 function c90884403.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

@@ -30,8 +30,7 @@ function c62829077.filter(c,e,tp)
 	return c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c62829077.xyzfilter(c,mg)
-	if c.xyz_count~=3 then return false end
-	return c:IsSetCard(0x7f) and c:IsXyzSummonable(mg)
+	return c:IsSetCard(0x7f) and c:IsXyzSummonable(mg,3,3)
 end
 function c62829077.mfilter1(c,mg,exg)
 	return mg:IsExists(c62829077.mfilter2,1,c,c,mg,exg)
