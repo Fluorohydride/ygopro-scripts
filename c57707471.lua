@@ -8,6 +8,7 @@ function c57707471.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_EXTRA)
 	e1:SetCondition(c57707471.xyzcon)
+	e1:SetTarget(c57707471.xyztg)
 	e1:SetOperation(c57707471.xyzop)
 	e1:SetValue(SUMMON_TYPE_XYZ)
 	c:RegisterEffect(e1)
@@ -39,27 +40,45 @@ function c57707471.ovfilter(c,tp,xyzc)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:GetRank()==5 and c:IsCanBeXyzMaterial(xyzc)
 		and c:CheckRemoveOverlayCard(tp,1,REASON_COST)
 end
-function c57707471.xyzcon(e,c,og)
+function c57707471.xyzcon(e,c,og,min,max)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=-ft
 	if 2<=ct then return false end
+	if min and (min>2 or max<2) then return false end
 	if ct<1 and not og and Duel.IsExistingMatchingCard(c57707471.ovfilter,tp,LOCATION_MZONE,0,1,nil,tp,c) then
 		return true
 	end
 	return Duel.CheckXyzMaterial(c,nil,6,2,2,og)
 end
-function c57707471.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og)
-	if og then
+function c57707471.xyztg(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
+	if og and not min then
+		return true
+	end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ct=-ft
+	local b1=Duel.CheckXyzMaterial(c,nil,6,2,2,og)
+	local b2=ct<1 and not og and Duel.IsExistingMatchingCard(c57707471.ovfilter,tp,LOCATION_MZONE,0,1,nil)
+	if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(57707471,0))) then
+		e:SetLabel(1)
+		return true
+	else
+		e:SetLabel(0)
+		local g=Duel.SelectXyzMaterial(tp,c,nil,6,2,2,og)
+		if g then
+			g:KeepAlive()
+			e:SetLabelObject(g)
+			return true
+		else return false end
+	end
+end
+function c57707471.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
+	if og and not min then
 		c:SetMaterial(og)
 		Duel.Overlay(c,og)
 	else
-		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-		local ct=-ft
-		local b1=Duel.CheckXyzMaterial(c,nil,6,2,2,og)
-		local b2=ct<1 and Duel.IsExistingMatchingCard(c57707471.ovfilter,tp,LOCATION_MZONE,0,1,nil,tp,c)
-		if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(57707471,0))) then
+		if e:GetLabel()==1 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 			local mg=Duel.SelectMatchingCard(tp,c57707471.ovfilter,tp,LOCATION_MZONE,0,1,1,nil,tp,c)
 			mg:GetFirst():RemoveOverlayCard(tp,1,1,REASON_COST)
@@ -70,9 +89,10 @@ function c57707471.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og)
 			c:SetMaterial(mg)
 			Duel.Overlay(c,mg)
 		else
-			local mg=Duel.SelectXyzMaterial(tp,c,nil,6,2,2)
+			local mg=e:GetLabelObject()
 			c:SetMaterial(mg)
 			Duel.Overlay(c,mg)
+			mg:DeleteGroup()
 		end
 	end
 end

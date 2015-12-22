@@ -48,8 +48,14 @@ function c52653092.initial_effect(c)
 	e6:SetCost(c52653092.actcost)
 	e6:SetOperation(c52653092.actop)
 	c:RegisterEffect(e6)
+	if not c52653092.xyz_filter then
+		c52653092.xyz_filter=function(mc)
+			return mc:IsType(TYPE_XYZ) and mc:IsSetCard(0x48) and mc:IsCanBeXyzMaterial(c)
+		end
+	end
 end
 c52653092.xyz_number=0
+c52653092.xyz_count=3
 function c52653092.cfilter(c)
 	return c:IsSetCard(0x95) and c:GetType()==TYPE_SPELL and c:IsDiscardable()
 end
@@ -65,25 +71,48 @@ end
 function c52653092.xyzfilter2(c,rk)
 	return c:GetRank()==rk
 end
-function c52653092.xyzcon(e,c,og)
+function c52653092.xyzcon(e,c,og,min,max)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=-ft
 	if 3<=ct then return false end
-	if ct<1 and Duel.IsExistingMatchingCard(aux.XyzAlterFilter,tp,LOCATION_MZONE,0,1,nil,c52653092.ovfilter,c)
+	if min and (min>3 or max<3) then return false end
+	if ct<1 and not og and Duel.IsExistingMatchingCard(aux.XyzAlterFilter,tp,LOCATION_MZONE,0,1,nil,c52653092.ovfilter,c)
 		and Duel.IsExistingMatchingCard(c52653092.cfilter,tp,LOCATION_HAND,0,1,nil) then
 		return true
 	end
-	local mg=Duel.GetMatchingGroup(c52653092.mfilter,tp,LOCATION_MZONE,0,nil,c)
+	local mg=nil
+	if og then
+		mg=og:Filter(c52653092.mfilter,nil,c)
+	else
+		mg=Duel.GetMatchingGroup(c52653092.mfilter,tp,LOCATION_MZONE,0,nil,c)
+	end
 	return mg:IsExists(c52653092.xyzfilter1,1,nil,mg)
 end
-function c52653092.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og)
+function c52653092.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
+	if og and not min then
+		local sg=Group.CreateGroup()
+		local tc=og:GetFirst()
+		while tc do
+			sg:Merge(tc:GetOverlayGroup())
+			tc=og:GetNext()
+		end
+		Duel.SendtoGrave(sg,REASON_RULE)
+		c:SetMaterial(og)
+		Duel.Overlay(c,og)
+		return
+	end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=-ft
-	local mg=Duel.GetMatchingGroup(c52653092.mfilter,tp,LOCATION_MZONE,0,nil,c)
+	local mg=nil
+	if og then
+		mg=og:Filter(c52653092.mfilter,nil,c)
+	else
+		mg=Duel.GetMatchingGroup(c52653092.mfilter,tp,LOCATION_MZONE,0,nil,c)
+	end
 	local b1=mg:IsExists(c52653092.xyzfilter1,1,nil,mg)
-	local b2=ct<1 and Duel.IsExistingMatchingCard(aux.XyzAlterFilter,tp,LOCATION_MZONE,0,1,nil,c52653092.ovfilter,c)
+	local b2=ct<1 and not og and Duel.IsExistingMatchingCard(aux.XyzAlterFilter,tp,LOCATION_MZONE,0,1,nil,c52653092.ovfilter,c)
 		and Duel.IsExistingMatchingCard(c52653092.cfilter,tp,LOCATION_HAND,0,1,nil)
 	if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(52653092,0))) then
 		Duel.DiscardHand(tp,c52653092.cfilter,1,1,REASON_COST+REASON_DISCARD,nil)

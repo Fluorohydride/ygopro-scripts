@@ -59,7 +59,7 @@ end
 function c65305468.xyzfilter2(c,rk)
 	return c:GetRank()==rk
 end
-function c65305468.xyzcon(e,c,og)
+function c65305468.xyzcon(e,c,og,min,max)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local mg=nil
@@ -69,12 +69,13 @@ function c65305468.xyzcon(e,c,og)
 		mg=Duel.GetMatchingGroup(c65305468.mfilter,tp,LOCATION_MZONE,0,nil,c)
 	end
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
+		and (not min or min<=2 and max>=2)
 		and mg:IsExists(c65305468.xyzfilter1,1,nil,mg)
 end
-function c65305468.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og)
+function c65305468.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 	local g=nil
 	local sg=Group.CreateGroup()
-	if og then
+	if og and not min then
 		g=og
 		local tc=og:GetFirst()
 		while tc do
@@ -82,7 +83,12 @@ function c65305468.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og)
 			tc=og:GetNext()
 		end
 	else
-		local mg=Duel.GetMatchingGroup(c65305468.mfilter,tp,LOCATION_MZONE,0,nil)
+		local mg=nil
+		if og then
+			mg=og:Filter(c65305468.mfilter,nil,c)
+		else
+			mg=Duel.GetMatchingGroup(c65305468.mfilter,tp,LOCATION_MZONE,0,nil,c)
+		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		g=mg:FilterSelect(tp,c65305468.xyzfilter1,1,1,nil,mg)
 		local tc1=g:GetFirst()
