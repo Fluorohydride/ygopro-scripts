@@ -3,6 +3,7 @@ function c23536866.initial_effect(c)
 	--xyz
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(23536866,0))
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -35,7 +36,7 @@ function c23536866.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local exg=Duel.GetMatchingGroup(c23536866.xyzfilter,tp,LOCATION_EXTRA,0,nil,mg)
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
-		and mg:IsExists(c23536866.mfilter1,1,nil,mg,exg) end
+		and exg:GetCount()>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg1=mg:FilterSelect(tp,c23536866.mfilter1,1,1,nil,mg,exg)
 	local tc1=sg1:GetFirst()

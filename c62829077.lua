@@ -39,7 +39,7 @@ function c62829077.mfilter2(c,mc,mg,exg)
 	return mg:IsExists(c62829077.mfilter3,1,c,c,mc,exg)
 end
 function c62829077.mfilter3(c,mc1,mc2,exg)
-	return c~=mc2 and exg:IsExists(Card.IsXyzSummonable,1,nil,Group.FromCards(c,mc1,mc2))
+	return c~=mc2 and exg:IsExists(Card.IsXyzSummonable,1,nil,Group.FromCards(c,mc1,mc2),3,3)
 end
 function c62829077.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
@@ -47,7 +47,7 @@ function c62829077.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local exg=Duel.GetMatchingGroup(c62829077.xyzfilter,tp,LOCATION_EXTRA,0,nil,mg)
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>2
-		and mg:IsExists(c62829077.mfilter1,1,nil,mg,exg) end
+		and exg:GetCount()>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg1=mg:FilterSelect(tp,c62829077.mfilter1,1,1,nil,mg,exg)
 	local tc1=sg1:GetFirst()

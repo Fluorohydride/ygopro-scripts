@@ -28,7 +28,7 @@ function c61314842.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local exg=Duel.GetMatchingGroup(c61314842.xyzfilter,tp,LOCATION_EXTRA,0,nil,mg)
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
-		and mg:IsExists(c61314842.mfilter1,1,nil,mg,exg) end
+		and exg:GetCount()>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg1=mg:FilterSelect(tp,c61314842.mfilter1,1,1,nil,mg,exg)
 	local tc1=sg1:GetFirst()

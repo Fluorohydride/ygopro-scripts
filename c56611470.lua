@@ -38,7 +38,7 @@ function c56611470.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local mg=Duel.GetMatchingGroup(c56611470.filter,tp,LOCATION_MZONE,0,nil,e)
 	local exg=Duel.GetMatchingGroup(c56611470.xyzfilter,tp,LOCATION_EXTRA,0,nil,mg)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and mg:IsExists(c56611470.mfilter1,1,nil,mg,exg) end
+		and exg:GetCount()>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local sg1=mg:FilterSelect(tp,c56611470.mfilter1,1,1,nil,mg,exg)
 	local tc1=sg1:GetFirst()
