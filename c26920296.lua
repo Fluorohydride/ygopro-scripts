@@ -25,7 +25,6 @@ function c26920296.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SUMMON_SUCCESS)
 	e3:SetRange(LOCATION_FZONE)
-	e3:SetCondition(c26920296.lvcon)
 	e3:SetTarget(c26920296.lvtg)
 	e3:SetOperation(c26920296.lvop)
 	c:RegisterEffect(e3)
@@ -52,11 +51,11 @@ function c26920296.drcfilter(c,tp)
 	return c:IsPreviousLocation(LOCATION_HAND+LOCATION_MZONE) and c:IsType(TYPE_MONSTER) and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp
 end
 function c26920296.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c26920296.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,TYPE_FUSION)
-		and eg:IsExists(c26920296.drcfilter,1,nil,tp)
+	return eg:IsExists(c26920296.drcfilter,1,nil,tp)
 end
 function c26920296.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
+	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) and e:GetHandler():IsRelateToEffect(e)
+		and Duel.IsExistingMatchingCard(c26920296.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,TYPE_FUSION) end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
@@ -67,14 +66,12 @@ function c26920296.drop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Draw(p,d,REASON_EFFECT)
 end
-function c26920296.lvcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c26920296.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,TYPE_SYNCHRO)
-end
 function c26920296.lvfilter(c)
 	return c:IsFaceup() and c:GetLevel()>0
 end
 function c26920296.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c26920296.lvfilter,1,nil) end
+	if chk==0 then return eg:IsExists(c26920296.lvfilter,1,nil)
+		and Duel.IsExistingMatchingCard(c26920296.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,TYPE_SYNCHRO) end
 	Duel.SetTargetCard(eg)
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
@@ -93,11 +90,11 @@ function c26920296.lvop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c26920296.descon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c26920296.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,TYPE_XYZ)
-		and Duel.GetTurnPlayer()==tp
+	return Duel.GetTurnPlayer()==tp
 end
 function c26920296.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return e:GetHandler():IsRelateToEffect(e)
+		and Duel.IsExistingMatchingCard(c26920296.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,TYPE_XYZ) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if g:GetCount()==0 then return end
