@@ -287,7 +287,13 @@ function Auxiliary.XyzCondition2(f,lv,minc,maxc,alterf,desc,op)
 				local tp=c:GetControler()
 				local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 				local ct=-ft
-				if ct<1 and not og and Duel.IsExistingMatchingCard(Auxiliary.XyzAlterFilter,tp,LOCATION_MZONE,0,1,nil,alterf,c)
+				local mg=nil
+				if og then
+					mg=og
+				else
+					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
+				end
+				if ct<1 and (not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c)
 					and (not op or op(e,tp,0)) then
 					return true
 				end
@@ -314,21 +320,30 @@ function Auxiliary.XyzTarget2(f,lv,minc,maxc,alterf,desc,op)
 					if min>minc then minc=min end
 					if max<maxc then maxc=max end
 				end
+				local mg=nil
+				if og then
+					mg=og
+				else
+					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
+				end
 				local b1=ct<minc and Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
-				local b2=ct<1 and not og and Duel.IsExistingMatchingCard(Auxiliary.XyzAlterFilter,tp,LOCATION_MZONE,0,1,nil,alterf,c)
+				local b2=ct<1 and (not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c)
 					and (not op or op(e,tp,0))
+				local g=nil
 				if b2 and (not b1 or Duel.SelectYesNo(tp,desc)) then
 					e:SetLabel(1)
-					return true
+					if op then op(e,tp,1) end
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+					g=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c)
 				else
 					e:SetLabel(0)
-					local g=Duel.SelectXyzMaterial(tp,c,f,lv,minc,maxc,og)
-					if g then
-						g:KeepAlive()
-						e:SetLabelObject(g)
-						return true
-					else return false end
+					g=Duel.SelectXyzMaterial(tp,c,f,lv,minc,maxc,og)
 				end
+				if g then
+					g:KeepAlive()
+					e:SetLabelObject(g)
+					return true
+				else return false end
 			end
 end
 function Auxiliary.XyzOperation2(f,lv,minc,maxc,alterf,desc,op)
@@ -345,18 +360,13 @@ function Auxiliary.XyzOperation2(f,lv,minc,maxc,alterf,desc,op)
 					c:SetMaterial(og)
 					Duel.Overlay(c,og)
 				else
+					local mg=e:GetLabelObject()
 					if e:GetLabel()==1 then
-						if op then op(e,tp,1) end
-						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-						local mg=Duel.SelectMatchingCard(tp,Auxiliary.XyzAlterFilter,tp,LOCATION_MZONE,0,1,1,nil,alterf,c)
 						local mg2=mg:GetFirst():GetOverlayGroup()
 						if mg2:GetCount()~=0 then
 							Duel.Overlay(c,mg2)
 						end
-						c:SetMaterial(mg)
-						Duel.Overlay(c,mg)
 					else
-						local mg=e:GetLabelObject()
 						local sg=Group.CreateGroup()
 						local tc=mg:GetFirst()
 						while tc do
@@ -365,10 +375,10 @@ function Auxiliary.XyzOperation2(f,lv,minc,maxc,alterf,desc,op)
 							tc=mg:GetNext()
 						end
 						Duel.SendtoGrave(sg,REASON_RULE)
-						c:SetMaterial(mg)
-						Duel.Overlay(c,mg)
-						mg:DeleteGroup()
 					end
+					c:SetMaterial(mg)
+					Duel.Overlay(c,mg)
+					mg:DeleteGroup()
 				end
 			end
 end
@@ -1057,7 +1067,7 @@ function Auxiliary.FConditionFunFunRep(f1,f2,minc,maxc,insf)
 		end
 end
 function Auxiliary.FOperationFunFunRep(f1,f2,minc,maxc,insf)
-	return 	function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 			local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 			local minct=minc
 			local maxct=maxc
