@@ -2,7 +2,7 @@
 function c83866861.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcFunRep(c,c83866861.ffilter,3,false)
+	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0xad),3,false)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -38,9 +38,6 @@ function c83866861.initial_effect(c)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetValue(c83866861.atkval)
 	c:RegisterEffect(e4)
-end
-function c83866861.ffilter(c)
-	return c:IsFusionSetCard(0xad) or c:IsHasEffect(36693940)
 end
 function c83866861.aclimit(e,re,tp)
 	return not re:GetHandler():IsImmuneToEffect(e)
