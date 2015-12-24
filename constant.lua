@@ -480,7 +480,8 @@ EFFECT_UNSUMMONABLE_CARD		=336	--不能通常召唤的怪獸
 EFFECT_DISABLE_CHAIN_FIELD		=337	--連鎖串中場上發動的效果無效(Duel.NegateRelatedChain())
 EFFECT_DISCARD_COST_CHANGE		=338	--反制陷阱捨棄手牌的代價改變(解放之阿里阿德涅)
 EFFECT_HAND_SYNCHRO				=339	--用手牌的怪獸當作同步素材
-EFFECT_ADD_FUSION_CODE			=340	--
+EFFECT_ADD_FUSION_CODE			=340	--作为融合素材时可以当作某一卡名(融合识别)
+EFFECT_ADD_FUSION_SETCODE		=341	--作为融合素材时可以当作某一字段(魔玩具改造)
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
 EVENT_STARTUP					=1000	--游戏开始时
