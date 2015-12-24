@@ -317,10 +317,11 @@ function Auxiliary.XyzTarget2(f,lv,minc,maxc,alterf,desc,op)
 				local b1=ct<minc and Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
 				local b2=ct<1 and not og and Duel.IsExistingMatchingCard(Auxiliary.XyzAlterFilter,tp,LOCATION_MZONE,0,1,nil,alterf,c)
 					and (not op or op(e,tp,0))
-				if b2 and (not b1 or Duel.SelectYesNo(tp,desc)) then
+				if b2 and Duel.SelectYesNo(tp,desc) then
 					e:SetLabel(1)
 					return true
 				else
+					if not b1 then return false end
 					e:SetLabel(0)
 					local g=Duel.SelectXyzMaterial(tp,c,f,lv,minc,maxc,og)
 					if g then
@@ -346,9 +347,9 @@ function Auxiliary.XyzOperation2(f,lv,minc,maxc,alterf,desc,op)
 					Duel.Overlay(c,og)
 				else
 					if e:GetLabel()==1 then
-						if op then op(e,tp,1) end
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 						local mg=Duel.SelectMatchingCard(tp,Auxiliary.XyzAlterFilter,tp,LOCATION_MZONE,0,1,1,nil,alterf,c)
+						if op then op(e,tp,1,mg:GetFirst()) end
 						local mg2=mg:GetFirst():GetOverlayGroup()
 						if mg2:GetCount()~=0 then
 							Duel.Overlay(c,mg2)
