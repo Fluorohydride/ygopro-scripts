@@ -40,7 +40,7 @@ function c24658418.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
 end
 function c24658418.mfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x7b) and not c:IsType(TYPE_TOKEN+TYPE_XYZ)
+	return c:IsFaceup() and c:IsSetCard(0x7b) and not c:IsType(TYPE_TOKEN)
 end
 function c24658418.xyzfilter(c,mg)
 	return c:IsSetCard(0x7b) and c:IsXyzSummonable(mg)
@@ -56,8 +56,21 @@ function c24658418.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c24658418.mfilter,tp,LOCATION_MZONE,0,nil)
 	local xyzg=Duel.GetMatchingGroup(c24658418.xyzfilter,tp,LOCATION_EXTRA,0,nil,g)
 	if xyzg:GetCount()>0 then
+		--this card is can Xyz summon Number:95 above Number:62 now
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local xyz=xyzg:Select(tp,1,1,nil):GetFirst()
-		Duel.XyzSummon(tp,xyz,g,1,5)
+		local e1=Effect.GlobalEffect()
+		e1:SetType(EFFECT_TYPE_FIELD)
+		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+		e1:SetCode(EFFECT_CANNOT_BE_XYZ_MATERIAL)
+		e1:SetTarget(c24658418.lfilter)
+		e1:SetTargetRange(LOCATION_MZONE,0)
+		e1:SetValue(1)
+		Duel.RegisterEffect(e1,tp)
+		Duel.XyzSummon(tp,xyz,nil)
+		e1:Reset()
 	end
+end
+function c24658418.lfilter(e,c)
+	return not c24658418.mfilter(c)
 end
