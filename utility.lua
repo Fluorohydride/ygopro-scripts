@@ -291,7 +291,7 @@ function Auxiliary.XyzCondition2(f,lv,minc,maxc,alterf,desc,op)
 					and (not op or op(e,tp,0)) then
 					return true
 				end
-				if not min and og:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c) and (not op or op(e,tp,0)) then return true end
+				if (not min or min<=1) and og:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c) and (not op or op(e,tp,0)) then return true end
 				local minc=minc
 				local maxc=maxc
 				if min then
