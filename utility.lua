@@ -332,9 +332,9 @@ function Auxiliary.XyzTarget2(f,lv,minc,maxc,alterf,desc,op)
 				local g=nil
 				if b2 and Duel.SelectYesNo(tp,desc) then
 					e:SetLabel(1)
-					if op then op(e,tp,1) end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 					g=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c)
+					if op then op(e,tp,1,g:GetFirst()) end
 				else
 					if not b1 then return false end
 					e:SetLabel(0)
