@@ -47,7 +47,13 @@ function c57707471.xyzcon(e,c,og,min,max)
 	local ct=-ft
 	if 2<=ct then return false end
 	if min and (min>2 or max<2) then return false end
-	if ct<1 and not og and Duel.IsExistingMatchingCard(c57707471.ovfilter,tp,LOCATION_MZONE,0,1,nil,tp,c) then
+	local mg=nil
+	if og then
+		mg=og
+	else
+		mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
+	end
+	if ct<1 and (not min or min<=1) and mg:IsExists(c57707471.ovfilter,1,nil,tp,c) then
 		return true
 	end
 	return Duel.CheckXyzMaterial(c,nil,6,2,2,og)
@@ -58,42 +64,45 @@ function c57707471.xyztg(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
 	end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=-ft
+	local mg=nil
+	if og then
+		mg=og
+	else
+		mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
+	end
 	local b1=Duel.CheckXyzMaterial(c,nil,6,2,2,og)
-	local b2=ct<1 and not og and Duel.IsExistingMatchingCard(c57707471.ovfilter,tp,LOCATION_MZONE,0,1,nil)
+	local b2=ct<1 and (not min or min<=1) and mg:IsExists(c57707471.ovfilter,1,nil)
+	local g=nil
 	if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(57707471,0))) then
 		e:SetLabel(1)
-		return true
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+		g=mg:FilterSelect(tp,c57707471.ovfilter,1,1,nil,tp,c)
+		g:GetFirst():RemoveOverlayCard(tp,1,1,REASON_COST)
 	else
 		e:SetLabel(0)
-		local g=Duel.SelectXyzMaterial(tp,c,nil,6,2,2,og)
-		if g then
-			g:KeepAlive()
-			e:SetLabelObject(g)
-			return true
-		else return false end
+		g=Duel.SelectXyzMaterial(tp,c,nil,6,2,2,og)
 	end
+	if g then
+		g:KeepAlive()
+		e:SetLabelObject(g)
+		return true
+	else return false end
 end
 function c57707471.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 	if og and not min then
 		c:SetMaterial(og)
 		Duel.Overlay(c,og)
 	else
+		local mg=e:GetLabelObject()
 		if e:GetLabel()==1 then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-			local mg=Duel.SelectMatchingCard(tp,c57707471.ovfilter,tp,LOCATION_MZONE,0,1,1,nil,tp,c)
-			mg:GetFirst():RemoveOverlayCard(tp,1,1,REASON_COST)
 			local mg2=mg:GetFirst():GetOverlayGroup()
 			if mg2:GetCount()~=0 then
 				Duel.Overlay(c,mg2)
 			end
-			c:SetMaterial(mg)
-			Duel.Overlay(c,mg)
-		else
-			local mg=e:GetLabelObject()
-			c:SetMaterial(mg)
-			Duel.Overlay(c,mg)
-			mg:DeleteGroup()
 		end
+		c:SetMaterial(mg)
+		Duel.Overlay(c,mg)
+		mg:DeleteGroup()
 	end
 end
 function c57707471.atkval(e,c)

@@ -78,7 +78,13 @@ function c52653092.xyzcon(e,c,og,min,max)
 	local ct=-ft
 	if 3<=ct then return false end
 	if min and (min>3 or max<3) then return false end
-	if ct<1 and not og and Duel.IsExistingMatchingCard(aux.XyzAlterFilter,tp,LOCATION_MZONE,0,1,nil,c52653092.ovfilter,c)
+	local altmg=nil
+	if og then
+		altmg=og
+	else
+		altmg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
+	end
+	if ct<1 and (not min or min<=1) and altmg:IsExists(aux.XyzAlterFilter,1,nil,c52653092.ovfilter,c)
 		and Duel.IsExistingMatchingCard(c52653092.cfilter,tp,LOCATION_HAND,0,1,nil) then
 		return true
 	end
@@ -106,18 +112,21 @@ function c52653092.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=-ft
 	local mg=nil
+	local altmg=nil
 	if og then
 		mg=og:Filter(c52653092.mfilter,nil,c)
+		altmg=og
 	else
 		mg=Duel.GetMatchingGroup(c52653092.mfilter,tp,LOCATION_MZONE,0,nil,c)
+		altmg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 	end
 	local b1=mg:IsExists(c52653092.xyzfilter1,1,nil,mg)
-	local b2=ct<1 and not og and Duel.IsExistingMatchingCard(aux.XyzAlterFilter,tp,LOCATION_MZONE,0,1,nil,c52653092.ovfilter,c)
+	local b2=ct<1 and (not min or min<=1) and altmg:IsExists(aux.XyzAlterFilter,1,nil,c52653092.ovfilter,c)
 		and Duel.IsExistingMatchingCard(c52653092.cfilter,tp,LOCATION_HAND,0,1,nil)
 	if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(52653092,0))) then
 		Duel.DiscardHand(tp,c52653092.cfilter,1,1,REASON_COST+REASON_DISCARD,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local g=Duel.SelectMatchingCard(tp,aux.XyzAlterFilter,tp,LOCATION_MZONE,0,1,1,nil,c52653092.ovfilter,c)
+		local g=altmg:FilterSelect(tp,aux.XyzAlterFilter,1,1,nil,c52653092.ovfilter,c)
 		local g2=g:GetFirst():GetOverlayGroup()
 		if g2:GetCount()~=0 then
 			Duel.Overlay(c,g2)
