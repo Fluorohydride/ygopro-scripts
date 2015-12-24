@@ -347,9 +347,9 @@ function Auxiliary.XyzOperation2(f,lv,minc,maxc,alterf,desc,op)
 					Duel.Overlay(c,og)
 				else
 					if e:GetLabel()==1 then
+						if op then op(e,tp,1) end
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 						local mg=Duel.SelectMatchingCard(tp,Auxiliary.XyzAlterFilter,tp,LOCATION_MZONE,0,1,1,nil,alterf,c)
-						if op then op(e,tp,1,mg:GetFirst()) end
 						local mg2=mg:GetFirst():GetOverlayGroup()
 						if mg2:GetCount()~=0 then
 							Duel.Overlay(c,mg2)
