@@ -53,8 +53,11 @@ function c72621670.activate(e,tp,eg,ep,ev,re,r,rp)
 		dg:Clear()
 	end
 	local tc=sg:GetFirst()
+	local tct=1
+	if Duel.GetTurnPlayer()~=tp then tct=2
+	elseif Duel.GetCurrentPhase()==PHASE_END then tct=3 end
 	while tc do
-		Duel.GetControl(tc,tp,PHASE_END+RESET_SELF_TURN,1)
+		Duel.GetControl(tc,tp,PHASE_END+RESET_SELF_TURN,tct)
 		tc=sg:GetNext()
 	end
 	if dg:GetCount()>0 then Duel.Destroy(dg,REASON_RULE) end
