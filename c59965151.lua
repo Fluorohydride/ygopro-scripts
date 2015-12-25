@@ -26,7 +26,10 @@ function c59965151.cbcon(e,tp,eg,ep,ev,re,r,rp)
 	return c~=bt and bt:IsFaceup() and bt:GetControler()==c:GetControler()
 end
 function c59965151.cbop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeAttackTarget(e:GetHandler())
+	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) and not Duel.GetAttacker():IsImmuneToEffect(e) then
+		Duel.ChangeAttackTarget(c)
+	end
 end
 function c59965151.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_DESTROY)

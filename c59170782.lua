@@ -72,7 +72,7 @@ function c59170782.tgcon2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c59170782.tgop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToEffect(e) and not Duel.GetAttacker():IsImmuneToEffect(e) then
 		Duel.ChangeAttackTarget(c)
 	end
 end

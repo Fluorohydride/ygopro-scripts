@@ -37,7 +37,7 @@ function c59560625.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c59560625.activate1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and not Duel.GetAttacker():IsImmuneToEffect(e) then
 		Duel.ChangeAttackTarget(tc)
 	end
 end

@@ -57,5 +57,8 @@ function c79473793.cbcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c79473793.cbop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeAttackTarget(e:GetHandler())
+	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) and not Duel.GetAttacker():IsImmuneToEffect(e) then
+		Duel.ChangeAttackTarget(c)
+	end
 end
