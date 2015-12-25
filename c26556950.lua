@@ -41,10 +41,10 @@ end
 c26556950.xyz_number=84
 function c26556950.ovfilter(c)
 	local rk=c:GetRank()
-	return c:IsFaceup() and c:GetOverlayCount()>=2 and c:IsType(TYPE_XYZ) and rk>=8 and rk<=10
+	return c:IsFaceup() and c:GetOverlayCount()>=2 and c:IsType(TYPE_XYZ) and c:IsAttribute(ATTRIBUTE_DARK) and rk>=8 and rk<=10
 end
 function c26556950.defval(e,c)
-	local g=Duel.GetMatchingGroup(Card.IsFaceup,c:GetControler(),0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,c:GetControler(),LOCATION_MZONE,0,nil)
 	return g:GetSum(Card.GetRank)*200
 end
 function c26556950.regop(e,tp,eg,ep,ev,re,r,rp)
@@ -69,12 +69,12 @@ end
 function c26556950.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.IsExistingMatchingCard(c26556950.desfilter,tp,LOCATION_MZONE,0,1,nil,c:GetDefence()) end
-	local g=Duel.GetMatchingGroup(c26556950.desfilter,tp,LOCATION_MZONE,0,nil,c:GetDefence())
+	local g=Duel.GetMatchingGroup(c26556950.desfilter,tp,0,LOCATION_MZONE,nil,c:GetDefence())
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c26556950.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	local g=Duel.GetMatchingGroup(c26556950.desfilter,tp,LOCATION_MZONE,0,nil,c:GetDefence())
+	local g=Duel.GetMatchingGroup(c26556950.desfilter,tp,0,LOCATION_MZONE,nil,c:GetDefence())
 	Duel.Destroy(g,REASON_EFFECT)
 end
