@@ -6,6 +6,7 @@ function c59546797.initial_effect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_RECOVER)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetHintTiming(0,TIMING_BATTLE_STEP_END)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,59546797)
 	e1:SetCondition(c59546797.spcon)
@@ -28,7 +29,7 @@ function c59546797.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c59546797.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE) and not Duel.CheckTiming(TIMING_BATTLE_START+TIMING_BATTLE_END)
+	return Duel.GetCurrentPhase()==PHASE_BATTLE_STEP
 end
 function c59546797.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsStatus(STATUS_CHAINING) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -42,7 +43,7 @@ function c59546797.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		Duel.Recover(tp,1000,REASON_EFFECT)
 	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
-		Duel.SendtoGrave(c,REASON_EFFECT)
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c59546797.atkcon(e,tp,eg,ep,ev,re,r,rp)

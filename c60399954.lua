@@ -33,7 +33,7 @@ function c60399954.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PHASE_START+PHASE_BATTLE)
+		e1:SetCode(EVENT_PHASE+PHASE_BATTLE_START)
 		e1:SetRange(LOCATION_MZONE)
 		e1:SetCountLimit(1)
 		e1:SetOperation(c60399954.atkop)

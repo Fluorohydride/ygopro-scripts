@@ -31,7 +31,7 @@ NO_FLIP_EFFECT			=0x10000--不发动反转效果
 TYPE_MONSTER		=0x1		--怪兽卡
 TYPE_SPELL			=0x2		--魔法卡
 TYPE_TRAP			=0x4		--陷阱卡
-TYPE_NORMAL			=0x10		--通常
+TYPE_NORMAL			=0x10		--通常怪兽
 TYPE_EFFECT			=0x20		--效果
 TYPE_FUSION			=0x40		--融合
 TYPE_RITUAL			=0x80		--仪式
@@ -664,6 +664,7 @@ TIMING_TODECK				=0x400000   	--回卡组时点
 TIMING_TOGRAVE				=0x800000   	--进墓地时点
 TIMING_BATTLE_PHASE			=0x1000000  	--战斗阶段时点
 TIMING_EQUIP				=0x2000000  	--装备时点
+TIMING_BATTLE_STEP_END		=0x4000000  	--
 --Global flag	--特殊标记
 GLOBALFLAG_DECK_REVERSE_CHECK	=0x1		--卡组翻转标记
 GLOBALFLAG_BRAINWASHING_CHECK	=0x2		--洗脑解除标记

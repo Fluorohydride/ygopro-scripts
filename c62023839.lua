@@ -33,7 +33,7 @@ function c62023839.spop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PHASE_START+PHASE_BATTLE)
+		e1:SetCode(EVENT_PHASE+PHASE_BATTLE_START)
 		e1:SetCountLimit(1)
 		e1:SetOperation(c62023839.desop)
 		e1:SetReset(RESET_PHASE+PHASE_END)

@@ -28,7 +28,7 @@ function c15894048.initial_effect(c)
 		Duel.RegisterEffect(ge1,0)
 		local ge2=Effect.CreateEffect(c)
 		ge2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge2:SetCode(EVENT_PHASE_START+PHASE_BATTLE)
+		ge2:SetCode(EVENT_PHASE_START+PHASE_BATTLE_START)
 		ge2:SetOperation(c15894048.clear)
 		Duel.RegisterEffect(ge2,0)
 	end

@@ -29,7 +29,7 @@ function c27769400.initial_effect(c)
 		c27769400[1]=0
 		local ge1=Effect.GlobalEffect()
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge1:SetCode(EVENT_PHASE_START+PHASE_BATTLE)
+		ge1:SetCode(EVENT_PHASE_START+PHASE_BATTLE_START)
 		ge1:SetOperation(c27769400.checkop1)
 		Duel.RegisterEffect(ge1,0)
 		local ge2=Effect.GlobalEffect()

@@ -40,7 +40,7 @@ function c41382147.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and c:IsFaceup() and Duel.Remove(c,POS_FACEUP,REASON_EFFECT+REASON_TEMPORARY)==1 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PHASE_START+PHASE_BATTLE)
+		e1:SetCode(EVENT_PHASE+PHASE_BATTLE_START)
 		e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
 		e1:SetLabelObject(c)
 		e1:SetCountLimit(1)
