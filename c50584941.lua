@@ -54,6 +54,6 @@ function c50584941.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(code)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		tc:RegisterEffect(e1)
-		tc:CopyEffect(code,RESET_EVENT+0x1fe0000)
+		tc:ReplaceEffect(code,RESET_EVENT+0x1fe0000)
 	end
 end
