@@ -68,7 +68,7 @@ function c26556950.desfilter(c,def)
 end
 function c26556950.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.IsExistingMatchingCard(c26556950.desfilter,tp,LOCATION_MZONE,0,1,nil,c:GetDefence()) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c26556950.desfilter,tp,0,LOCATION_MZONE,1,nil,c:GetDefence()) end
 	local g=Duel.GetMatchingGroup(c26556950.desfilter,tp,0,LOCATION_MZONE,nil,c:GetDefence())
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end

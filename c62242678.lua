@@ -194,7 +194,7 @@ function c62242678.limop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c62242678.aclimit(e,re,tp)
-	return re:GetHandler():IsOnField()
+	return re:GetHandler():IsOnField() or re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c62242678.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
