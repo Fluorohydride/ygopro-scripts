@@ -330,13 +330,12 @@ function Auxiliary.XyzTarget2(f,lv,minc,maxc,alterf,desc,op)
 				local b2=ct<1 and (not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c)
 					and (not op or op(e,tp,0))
 				local g=nil
-				if b2 and Duel.SelectYesNo(tp,desc) then
+				if b2 and (not b1 or Duel.SelectYesNo(tp,desc)) then
 					e:SetLabel(1)
 					if op then op(e,tp,1) end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 					g=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c)
 				else
-					if not b1 then return false end
 					e:SetLabel(0)
 					g=Duel.SelectXyzMaterial(tp,c,f,lv,minc,maxc,og)
 				end
