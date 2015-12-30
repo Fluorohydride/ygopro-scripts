@@ -11,8 +11,8 @@ function c72204747.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c72204747.filter1(c,e,sp)
-	local lv=c:GetLevel()/2
-	return lv>1 and c:IsSetCard(0xc008) 
+	local lv=math.floor(c:GetLevel()/2)
+	return lv>0 and c:IsSetCard(0xc008)
 		and Duel.IsExistingMatchingCard(c72204747.filter2,sp,LOCATION_DECK,0,1,nil,lv,e,sp)
 end
 function c72204747.filter2(c,lv,e,sp)
@@ -31,10 +31,10 @@ function c72204747.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc or not tc:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local cg=Duel.SelectMatchingCard(tp,c72204747.filter2,tp,LOCATION_DECK,0,1,1,nil,tc:GetLevel()/2,e,tp)
+	local cg=Duel.SelectMatchingCard(tp,c72204747.filter2,tp,LOCATION_DECK,0,1,1,nil,math.floor(tc:GetLevel()/2),e,tp)
 	if cg:GetCount()==0 then return end
 	local sc=cg:GetFirst()
-	Duel.SpecialSummon(cg,0,tp,tp,false,false,POS_FACEUP);
+	Duel.SpecialSummon(cg,0,tp,tp,false,false,POS_FACEUP)
 	--destroy
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
@@ -46,5 +46,5 @@ function c72204747.activate(e,tp,eg,ep,ev,re,r,rp)
 	sc:RegisterEffect(e1)
 end
 function c72204747.des(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(), REASON_EFFECT)
+	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 end
