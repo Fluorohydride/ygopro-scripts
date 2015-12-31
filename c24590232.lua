@@ -43,5 +43,6 @@ function c24590232.activate(e,tp,eg,ep,ev,re,r,rp)
 		g2:Merge(g3)
 		Duel.Remove(g2,POS_FACEUP,REASON_EFFECT)
 		Duel.SpecialSummon(g1,SUMMON_TYPE_SYNCHRO,tp,tp,false,false,POS_FACEUP)
+		g1:GetFirst():CompleteProcedure()
 	end
 end
