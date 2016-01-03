@@ -28,13 +28,13 @@ function c56981417.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.ShuffleHand(tp)
 end
 function c56981417.filter(c)
-	return c:IsSetCard(0x106e) and c:GetCode()~=56981417 and c:GetType()==TYPE_SPELL and c:CheckActivateEffect(true,true,false)~=nil
+	return c:IsSetCard(0x106e) and not c:IsCode(56981417) and c:GetType()==TYPE_SPELL and c:CheckActivateEffect(true,true,false)~=nil
 end
 function c56981417.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then
 		local te=e:GetLabelObject()
 		local tg=te:GetTarget()
-		return tg and tg(te,tp,eg,ep,ev,re,r,rp,0,chkc)
+		return tg and tg(e,tp,eg,ep,ev,re,r,rp,0,chkc)
 	end
 	if chk==0 then return Duel.IsExistingTarget(c56981417.filter,tp,LOCATION_GRAVE,0,1,nil) end
 	e:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -42,30 +42,25 @@ function c56981417.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g=Duel.SelectTarget(tp,c56981417.filter,tp,LOCATION_GRAVE,0,1,1,nil)
 	local te=g:GetFirst():CheckActivateEffect(true,true,false)
-	e:SetLabelObject(te)
 	Duel.ClearTargetCard()
-	g:GetFirst():CreateEffectRelation(e)
-	local tg=te:GetTarget()
 	e:SetCategory(te:GetCategory())
 	e:SetProperty(te:GetProperty())
-	if tg then tg(te,tp,eg,ep,ev,re,r,rp,1) end
-	local cg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tc=cg:GetFirst()
-	while tc do
-		tc:CreateEffectRelation(te)
-		tc=cg:GetNext()
-	end
+	e:SetLabel(te:GetLabel())
+	e:SetLabelObject(te:GetLabelObject())
+	local tg=te:GetTarget()
+	if tg then tg(e,tp,eg,ep,ev,re,r,rp,1) end
+	te:SetLabel(e:GetLabel())
+	te:SetLabelObject(e:GetLabelObject())
+	e:SetLabelObject(te)
 end
 function c56981417.operation(e,tp,eg,ep,ev,re,r,rp)
 	local te=e:GetLabelObject()
 	if te:GetHandler():IsRelateToEffect(e) then
+		e:SetLabel(te:GetLabel())
+		e:SetLabelObject(te:GetLabelObject())
 		local op=te:GetOperation()
-		if op then op(te,tp,eg,ep,ev,re,r,rp) end
-		local cg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-		local tc=cg:GetFirst()
-		while tc do
-			tc:ReleaseEffectRelation(te)
-			tc=cg:GetNext()
-		end
+		if op then op(e,tp,eg,ep,ev,re,r,rp) end
+		te:SetLabel(e:GetLabel())
+		te:SetLabelObject(e:GetLabelObject())
 	end
 end

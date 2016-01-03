@@ -80,13 +80,24 @@ function c56907986.spop2(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetRange(LOCATION_MZONE)
 		e3:SetCode(EVENT_PHASE+PHASE_END)
 		e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-		e3:SetOperation(c56907986.desop)
-		e3:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		e3:SetCountLimit(1)
-		tc:RegisterEffect(e3,true)
+		e3:SetCondition(c56907986.descon)
+		e3:SetOperation(c56907986.desop)
+		e3:SetLabelObject(tc)
+		Duel.RegisterEffect(e3,tp)
+		tc:RegisterFlagEffect(56907986,RESET_EVENT+0x1fe0000,0,1)
 		Duel.SpecialSummonComplete()
 	end
 end
+function c56907986.descon(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	if tc:GetFlagEffect(56907986)==0 then
+		e:Reset()
+		return false
+	end
+	return true
+end
 function c56907986.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+	local tc=e:GetLabelObject()
+	Duel.Destroy(tc,REASON_EFFECT)
 end

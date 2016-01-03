@@ -81,7 +81,7 @@ function c45803070.setop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c45803070.rmcon)
 		e1:SetOperation(c45803070.rmop)
 		Duel.RegisterEffect(e1,tp)
-		tc:CreateEffectRelation(e1)
+		tc:RegisterFlagEffect(45803070,RESET_EVENT+0x1fe0000,0,1)
 	end
 end
 function c45803070.rmcon(e,tp,eg,ep,ev,re,r,rp)
@@ -89,7 +89,7 @@ function c45803070.rmcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c45803070.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	if tc:IsRelateToEffect(e) then
+	if tc:GetFlagEffect(45803070)~=0 then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	end
 end
