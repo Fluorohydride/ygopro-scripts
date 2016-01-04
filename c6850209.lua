@@ -27,7 +27,7 @@ end
 function c6850209.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do
-		if tc:IsLevelAbove(8) and tc:IsPreviousLocation(LOCATION_ONFIELD) then
+		if tc:IsLevelAbove(8) and tc:IsPreviousLocation(LOCATION_MZONE) then
 			c6850209[tc:GetPreviousControler()]=true
 		end
 		tc=eg:GetNext()
