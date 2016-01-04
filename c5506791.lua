@@ -9,6 +9,7 @@ function c5506791.initial_effect(c)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetCountLimit(1,5506791)
+	e2:SetTarget(c5506791.regtg)
 	e2:SetOperation(c5506791.regop)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
@@ -33,6 +34,9 @@ function c5506791.initial_effect(c)
 end
 function c5506791.thfilter(c)
 	return c:IsSetCard(0xd0) and c:IsAbleToHand()
+end
+function c5506791.regtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_DECK,0,1,nil,0xd0) end
 end
 function c5506791.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
