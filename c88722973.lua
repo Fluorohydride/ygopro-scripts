@@ -9,6 +9,7 @@ function c88722973.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetCondition(c88722973.regcon)
+	e1:SetTarget(c88722973.regtg)
 	e1:SetOperation(c88722973.regop)
 	c:RegisterEffect(e1)
 	--spsummon
@@ -24,6 +25,9 @@ function c88722973.initial_effect(c)
 end
 function c88722973.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+end
+function c88722973.regtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_DECK,0,1,nil,TYPE_PENDULUM) end
 end
 function c88722973.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
