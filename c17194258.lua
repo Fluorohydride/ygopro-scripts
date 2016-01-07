@@ -14,7 +14,7 @@ function c17194258.filter1(c,tp)
 	return c.material and Duel.IsExistingMatchingCard(c17194258.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,c)
 end
 function c17194258.filter2(c,fc)
-	if c:IsForbidden() or not c:IsAbleToHand() or c:IsHasEffect(EFFECT_NECRO_VALLEY) then return false end
+	if c:IsForbidden() or not c:IsAbleToHand() then return false end
 	return c:IsCode(table.unpack(fc.material))
 end
 function c17194258.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -29,7 +29,7 @@ function c17194258.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c17194258.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,cg:GetFirst())
 	local tc=g:GetFirst()
-	if tc and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
+	if tc and not tc:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
 		Duel.ConfirmCards(1-tp,tc)
 		if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
 		local e1=Effect.CreateEffect(e:GetHandler())

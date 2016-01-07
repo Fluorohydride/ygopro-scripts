@@ -19,7 +19,7 @@ function c56641453.filter1(c,e,tp)
 	return tcode and Duel.IsExistingTarget(c56641453.filter2,tp,0x13,0,1,nil,tcode,e,tp)
 end
 function c56641453.filter2(c,tcode,e,tp)
-	return c:IsCode(tcode) and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsCode(tcode) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c56641453.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
@@ -56,7 +56,7 @@ function c56641453.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tcode=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c56641453.filter2,tp,0x13,0,1,1,nil,tcode,e,tp)
-	if g:GetCount()>0 then
+	if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

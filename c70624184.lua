@@ -16,7 +16,7 @@ function c70624184.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c70624184.filter(c,e,tp)
-	return c:IsSetCard(0x53) and c:GetCode()~=70624184 and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsSetCard(0x53) and not c:IsCode(70624184) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c70624184.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
@@ -27,5 +27,6 @@ function c70624184.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c70624184.filter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
+	if g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
 end

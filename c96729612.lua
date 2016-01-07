@@ -13,7 +13,7 @@ function c96729612.filter(c)
 	return bit.band(c:GetType(),0x81)==0x81 and c:GetLevel()<=7 and c:IsAbleToHand()
 end
 function c96729612.filter2(c)
-	return bit.band(c:GetType(),0x82)==0x82 and c:IsAbleToHand() and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return bit.band(c:GetType(),0x82)==0x82 and c:IsAbleToHand()
 end
 function c96729612.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c96729612.filter,tp,LOCATION_DECK,0,1,nil) end
@@ -30,6 +30,7 @@ function c96729612.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local sg=mg:Select(tp,1,1,nil)
+			if sg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 			Duel.SendtoHand(sg,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,sg)
 		end

@@ -11,12 +11,12 @@ function c80033124.initial_effect(c)
 end
 function c80033124.ffilter0(c)
 	local code=c:GetCode()
-	return (code==41230939 or code==77625948 or code==3019642) and c:IsAbleToDeck() and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return (code==41230939 or code==77625948 or code==3019642) and c:IsAbleToDeck()
 end
 function c80033124.ffilter(c,e)
 	local code=c:GetCode()
 	return (code==41230939 or code==77625948 or code==3019642) and c:IsAbleToDeck()
-		and not c:IsImmuneToEffect(e) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+		and not c:IsImmuneToEffect(e)
 end
 function c80033124.spfilter(c,e,tp)
 	return c:IsCode(40418351) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)
@@ -58,6 +58,7 @@ function c80033124.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,cg)
 		Duel.ShuffleHand(tp)
 	end
+	if g1:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 	Duel.SendtoDeck(g1,nil,2,REASON_EFFECT)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=Duel.SelectMatchingCard(tp,c80033124.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)

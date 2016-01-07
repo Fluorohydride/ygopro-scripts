@@ -10,7 +10,7 @@ function c35255456.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c35255456.filter1(c,e)
-	return c:IsAbleToDeck() and c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsAbleToDeck() and c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
 end
 function c35255456.filter2(c,e,tp,m,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x3008) and c:IsSetCard(0x9) and c:GetCode()~=31111109 
@@ -36,6 +36,7 @@ function c35255456.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
 		local mat=Duel.SelectFusionMaterial(tp,tc,mg,nil,chkf)
+		if mat:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 		local cf=mat:Filter(c35255456.cffilter,nil)
 		if cf:GetCount()>0 then
 			Duel.ConfirmCards(1-tp,cf)

@@ -103,7 +103,6 @@ function c53315891.atkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c53315891.spfilter(c,e,tp)
 	return c:IsSetCard(0xa0) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)
-		and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
 end
 function c53315891.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>=3
@@ -116,6 +115,7 @@ function c53315891.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,3,3,nil)
+		if sg:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 		Duel.SpecialSummon(sg,0,tp,tp,true,true,POS_FACEUP)
 	end
 end

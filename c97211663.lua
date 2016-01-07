@@ -22,7 +22,7 @@ function c97211663.initial_effect(c)
 end
 function c97211663.filter(c,e,tp,m)
 	if not c:IsSetCard(0xb4) or bit.band(c:GetType(),0x81)~=0x81
-		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) or c:IsHasEffect(EFFECT_NECRO_VALLEY) then return false end
+		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
 	if c:IsCode(21105106) then return c:ritual_custom_condition(mg) end
 	if c.mat_filter then
@@ -42,7 +42,7 @@ function c97211663.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tg=Duel.SelectMatchingCard(tp,c97211663.filter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp,mg)
 	local tc=tg:GetFirst()
-	if tc then
+	if tc and not tc:IsHasEffect(EFFECT_NECRO_VALLEY) then
 		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
 		if tc:IsCode(21105106) then
 			tc:ritual_custom_operation(mg)

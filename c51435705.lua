@@ -25,7 +25,6 @@ function c51435705.shcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c51435705.filter(c)
 	return c:IsSetCard(0x70) and c:GetCode()~=51435705 and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
-		and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
 end
 function c51435705.shtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c51435705.filter,tp,LOCATION_GRAVE+LOCATION_DECK,0,1,nil) end
@@ -34,7 +33,7 @@ end
 function c51435705.shop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c51435705.filter,tp,LOCATION_GRAVE+LOCATION_DECK,0,1,1,nil)
-	if g:GetCount()>0 then
+	if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end

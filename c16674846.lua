@@ -13,7 +13,7 @@ function c16674846.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c16674846.filter(c)
 	return c:IsDefenceBelow(1500) and c:IsType(TYPE_TUNER) and c:IsRace(RACE_WARRIOR)
-		and c:IsAbleToHand() and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+		and c:IsAbleToHand()
 end
 function c16674846.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
@@ -26,6 +26,7 @@ function c16674846.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()~=0 and Duel.SelectYesNo(tp,aux.Stringid(16674846,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
+		if sg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,sg)
 	end

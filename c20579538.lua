@@ -31,7 +31,7 @@ function c20579538.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,1) end
 end
 function c20579538.tdfilter(c)
-	return c:IsSetCard(0xa6) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck() and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsSetCard(0xa6) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck()
 end
 function c20579538.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerCanDiscardDeck(tp,1) then return end
@@ -45,6 +45,7 @@ function c20579538.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local tg=dg:Select(tp,1,1,nil)
 		Duel.HintSelection(tg)
+		if tg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 		Duel.SendtoDeck(tg,nil,0,REASON_EFFECT)
 	end
 end

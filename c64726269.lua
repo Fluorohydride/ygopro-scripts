@@ -27,7 +27,7 @@ function c64726269.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c64726269.tdfilter(c)
-	return c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsAbleToDeck() and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsAbleToDeck()
 end
 function c64726269.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
@@ -41,6 +41,7 @@ function c64726269.spop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 			local tg=sg:Select(tp,1,1,nil)
 			Duel.HintSelection(tg)
+			if tg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 			Duel.SendtoDeck(tg,nil,0,REASON_EFFECT)
 		end
 	end

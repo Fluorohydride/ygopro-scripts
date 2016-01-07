@@ -22,7 +22,7 @@ function c22747316.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c22747316.filter(c,code)
-	return c:IsCode(code) and c:IsAbleToHand() and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsCode(code) and c:IsAbleToHand()
 end
 function c22747316.activate(e,tp,eg,ep,ev,re,r,rp)
 	local code=re:GetHandler():GetCode()
@@ -35,6 +35,7 @@ function c22747316.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local sg=g:Select(tp,1,1,nil)
+		if sg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,sg)
 	end

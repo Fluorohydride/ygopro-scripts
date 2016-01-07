@@ -32,7 +32,7 @@ function c2519690.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c2519690.thfilter(c)
-	return c:IsCode(49328340) and c:IsAbleToHand() and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsCode(49328340) and c:IsAbleToHand()
 end
 function c2519690.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c2519690.thfilter,tp,LOCATION_GRAVE+LOCATION_DECK,0,1,nil) end
@@ -41,7 +41,7 @@ end
 function c2519690.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c2519690.thfilter,tp,LOCATION_GRAVE+LOCATION_DECK,0,1,1,nil)
-	if g:GetCount()>0 then
+	if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end

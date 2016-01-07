@@ -40,7 +40,7 @@ function c27918963.filter1(c)
 	return c:IsFaceup() and c:IsSetCard(0xb3)
 end
 function c27918963.filter2(c)
-	return c:IsSetCard(0xb3) and c:IsAbleToHand() and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsSetCard(0xb3) and c:IsAbleToHand()
 end
 function c27918963.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=e:GetHandler():IsCanRemoveCounter(tp,0x33,1,REASON_COST)
@@ -84,7 +84,7 @@ function c27918963.operation(e,tp,eg,ep,ev,re,r,rp)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,c27918963.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
-		if g:GetCount()>0 then
+		if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,g)
 		end

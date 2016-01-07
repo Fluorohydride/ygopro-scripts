@@ -37,8 +37,8 @@ function c28124263.cona(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetLabelObject():GetLabel()==1
 end
 function c28124263.filter(c,e,tp)
-	return c:IsLevelBelow(4) and c:IsSetCard(0x26) and c:GetCode()~=28124263
-		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsLevelBelow(4) and c:IsSetCard(0x26) and not c:IsCode(28124263)
+		and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c28124263.tga(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -49,6 +49,7 @@ function c28124263.opa(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c28124263.filter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
+	if g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 end
 function c28124263.cond(e)

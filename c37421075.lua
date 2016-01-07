@@ -22,7 +22,6 @@ function c37421075.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c37421075.spfilter(c,e,tp)
 	return c:IsLevelBelow(3) and c:IsRace(RACE_REPTILE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
 end
 function c37421075.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -41,6 +40,7 @@ function c37421075.activate(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,2,2,nil)
+		if sg:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

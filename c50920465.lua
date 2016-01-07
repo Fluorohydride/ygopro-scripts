@@ -21,7 +21,7 @@ function c50920465.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50920465.filter(c,e,tp)
 	return c:IsRace(RACE_WINDBEAST) and c:IsAttribute(ATTRIBUTE_WATER)
-		and not c:IsCode(50920465) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+		and not c:IsCode(50920465) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c50920465.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
@@ -38,6 +38,7 @@ function c50920465.operation(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg2=g2:Select(tp,1,1,nil)
 	sg1:Merge(sg2)
+	if sg1:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 	Duel.SpecialSummon(sg1,0,tp,tp,false,false,POS_FACEUP)
 	if e:GetHandler():IsRelateToEffect(e) then
 		Duel.BreakEffect()

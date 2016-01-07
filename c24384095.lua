@@ -17,8 +17,7 @@ function c24384095.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():IsReason(REASON_RELEASE)
 end
 function c24384095.filter(c)
-	return c:IsLevelBelow(4) and c:IsAttribute(ATTRIBUTE_WIND) and c:GetCode()~=24384095
-		and not c:IsHasEffect(EFFECT_NECRO_VALLEY) and c:IsAbleToHand()
+	return c:IsLevelBelow(4) and c:IsAttribute(ATTRIBUTE_WIND) and not c:IsCode(24384095) and c:IsAbleToHand()
 end
 function c24384095.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c24384095.filter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end
@@ -27,7 +26,7 @@ end
 function c24384095.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c24384095.filter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
-	if g:GetCount()>0 then
+	if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end

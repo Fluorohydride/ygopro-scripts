@@ -68,7 +68,7 @@ function c77799846.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c77799846.mfilter(c)
-	return c:IsSetCard(0x85) and c:IsType(TYPE_MONSTER) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsSetCard(0x85) and c:IsType(TYPE_MONSTER)
 end
 function c77799846.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -78,6 +78,7 @@ function c77799846.spop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 			local mg=g:Select(tp,1,1,nil)
+			if mg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 			Duel.Overlay(c,mg)
 		end
 	end

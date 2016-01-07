@@ -32,7 +32,7 @@ function c6061630.acop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c6061630.filter(c,cc,e,tp)
-	return c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and c:GetLevel()>0 and cc:IsCanRemoveCounter(tp,0x3001,c:GetLevel(),REASON_COST)
 end
 function c6061630.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -58,7 +58,7 @@ function c6061630.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 end
 function c6061630.sfilter(c,lv,e,tp)
-	return c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and c:GetLevel()==lv
 end
 function c6061630.spop(e,tp,eg,ep,ev,re,r,rp)
@@ -66,7 +66,7 @@ function c6061630.spop(e,tp,eg,ep,ev,re,r,rp)
 	local lv=e:GetLabel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c6061630.sfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,lv,e,tp)
-	if g:GetCount()>0 then
+	if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

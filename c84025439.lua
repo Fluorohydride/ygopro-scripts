@@ -81,7 +81,7 @@ function c84025439.drcon(e)
 	return e:GetHandler():GetOverlayGroup():GetClassCount(Card.GetCode)>=6
 end
 function c84025439.spfilter(c,e,tp)
-	return c:IsSetCard(0x20dc) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsSetCard(0x20dc) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c84025439.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -104,6 +104,7 @@ function c84025439.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g3=g:Select(tp,1,1,nil)
 		g1:Merge(g3)
+		if g1:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 		Duel.SpecialSummon(g1,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
