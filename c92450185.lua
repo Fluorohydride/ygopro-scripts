@@ -15,13 +15,13 @@ function c92450185.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK+LOCATION_HAND+LOCATION_GRAVE)
 end
 function c92450185.spfilter(c,e,tp)
-	return c:IsCode(9365703) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsCode(9365703) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c92450185.thop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c92450185.spfilter,tp,LOCATION_DECK+LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
-	if g:GetCount()~=0 then
+	if g:GetCount()~=0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

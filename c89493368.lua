@@ -85,7 +85,7 @@ function c89493368.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g1,REASON_COST)
 end
 function c89493368.spfilter(c,e,tp)
-	return c:IsCode(16898077) and c:IsCanBeSpecialSummoned(e,0,tp,true,true) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsCode(16898077) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)
 end
 function c89493368.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c89493368.spfilter,tp,0x13,0,1,nil,e,tp) end
@@ -95,7 +95,7 @@ function c89493368.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c89493368.spfilter,tp,0x13,0,1,1,nil,e,tp)
-	if g:GetCount()~=0 then
+	if g:GetCount()~=0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 		Duel.SpecialSummon(g,0,tp,tp,true,true,POS_FACEUP)
 		g:GetFirst():CompleteProcedure()
 	end

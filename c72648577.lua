@@ -17,7 +17,7 @@ function c72648577.filter(c)
 	return c:IsSetCard(0xaf) and c:IsAbleToDeck()
 end
 function c72648577.thfilter(c)
-	return c:IsSetCard(0xaf) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand() and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsSetCard(0xaf) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c72648577.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c72648577.filter,tp,LOCATION_ONFIELD+LOCATION_GRAVE+LOCATION_HAND,0,3,nil) end
@@ -28,6 +28,7 @@ function c72648577.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()<3 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=g:Select(tp,3,3,nil)
+	if sg:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 	local cg=sg:Filter(Card.IsLocation,nil,LOCATION_HAND)
 	Duel.ConfirmCards(1-tp,cg)
 	Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)

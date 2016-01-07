@@ -21,7 +21,7 @@ end
 function c29455728.mgfilter(c,e,tp,fusc)
 	return not c:IsControler(tp) or not c:IsLocation(LOCATION_GRAVE)
 		or bit.band(c:GetReason(),0x40008)~=0x40008 or c:GetReasonCard()~=fusc
-		or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsHasEffect(EFFECT_NECRO_VALLEY)
+		or not c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c29455728.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=e:GetHandler():GetMaterial()
@@ -33,7 +33,8 @@ end
 function c29455728.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetHandler():GetMaterial()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>=g:GetCount()
-		and not g:IsExists(c29455728.mgfilter,1,nil,e,tp,e:GetHandler()) then
+		and not g:IsExists(c29455728.mgfilter,1,nil,e,tp,e:GetHandler())
+		and not g:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

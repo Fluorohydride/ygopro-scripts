@@ -17,7 +17,6 @@ function c41741922.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c41741922.filter(c,e,tp)
 	return c:IsLevelBelow(3) and c:IsRace(RACE_DRAGON) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
 end
 function c41741922.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -36,7 +35,7 @@ function c41741922.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	g=Duel.SelectMatchingCard(tp,c41741922.filter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	tc=g:GetFirst()
-	if tc then
+	if tc and not tc:IsHasEffect(EFFECT_NECRO_VALLEY) then
 		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 	Duel.SpecialSummonComplete()

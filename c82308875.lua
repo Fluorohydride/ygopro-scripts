@@ -56,6 +56,7 @@ function c82308875.operation(e,tp,eg,ep,ev,re,r,rp)
 		elseif op==1 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=spg:Select(tp,1,1,nil)
+			if sg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 		else
 			Duel.Draw(tp,3,REASON_EFFECT)

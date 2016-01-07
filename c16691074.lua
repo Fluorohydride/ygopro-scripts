@@ -33,7 +33,6 @@ function c16691074.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c16691074.spfilter1(c,e,tp)
 	return c:IsSetCard(0x99) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
 end
 function c16691074.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateAttack() then
@@ -42,6 +41,7 @@ function c16691074.atkop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local g2=g1:Select(tp,1,1,nil)
+			if g2:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 			Duel.SpecialSummon(g2,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

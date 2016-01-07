@@ -51,7 +51,7 @@ function c74329404.filter1(c,e,tp)
 		and Duel.IsExistingMatchingCard(c74329404.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,c:GetCode())
 end
 function c74329404.filter2(c,code)
-	return c:IsCode(code) and c:IsAbleToHand() and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsCode(code) and c:IsAbleToHand()
 end
 function c74329404.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c74329404.filter1,1,nil,nil,tp) end
@@ -68,6 +68,7 @@ function c74329404.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local ag=Duel.SelectMatchingCard(tp,c74329404.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,2,nil,tc:GetCode())
+	if ag:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 	Duel.SendtoHand(ag,nil,REASON_EFFECT)
 	Duel.ConfirmCards(1-tp,ag)
 end

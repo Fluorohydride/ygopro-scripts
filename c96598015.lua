@@ -31,7 +31,6 @@ function c96598015.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 end
 function c96598015.filter(c)
 	return c:IsType(TYPE_PENDULUM) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsAbleToDeck()
-		and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
 end
 function c96598015.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,2)
@@ -44,6 +43,7 @@ function c96598015.activate(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()<3 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=g:Select(tp,3,3,nil)
+	if sg:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 	Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)
 	Duel.ShuffleDeck(tp)
 	if sg:IsExists(Card.IsLocation,3,nil,LOCATION_DECK+LOCATION_EXTRA) then

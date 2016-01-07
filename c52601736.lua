@@ -27,7 +27,7 @@ function c52601736.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c52601736.filter(c)
-	return c:IsSetCard(0x56) and c:IsType(TYPE_MONSTER) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsSetCard(0x56) and c:IsType(TYPE_MONSTER)
 end
 function c52601736.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
@@ -41,7 +41,7 @@ function c52601736.eqop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectMatchingCard(tp,c52601736.filter,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,1,nil)
 	local tc=g:GetFirst()
-	if tc then
+	if tc and not tc:IsHasEffect(EFFECT_NECRO_VALLEY) then
 		if not Duel.Equip(tp,tc,c,true) then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

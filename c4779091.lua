@@ -85,7 +85,6 @@ function c4779091.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c4779091.filter(c,e,tp)
 	return c:IsCode(31764700) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)
-		and (not c:IsLocation(LOCATION_GRAVE) or not c:IsHasEffect(EFFECT_NECRO_VALLEY))
 end
 function c4779091.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -96,7 +95,7 @@ function c4779091.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c4779091.filter,tp,0x13,0,1,1,nil,e,tp)
-	if g:GetCount()>0 then
+	if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 		Duel.SpecialSummon(g,0,tp,tp,true,true,POS_FACEUP)
 	end
 end

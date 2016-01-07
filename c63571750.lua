@@ -35,9 +35,6 @@ end
 function c63571750.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_DRAW)
 end
-function c63571750.filter(c)
-	return c:IsAbleToHand() and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
-end
 function c63571750.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_GRAVE)
@@ -47,8 +44,8 @@ function c63571750.thop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g=Duel.SelectMatchingCard(tp,c63571750.filter,tp,LOCATION_GRAVE,0,1,1,c)
-		if g:GetCount()>0 then
+		local g=Duel.SelectMatchingCard(tp,Card.IsAbleToHand,tp,LOCATION_GRAVE,0,1,1,c)
+		if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,g)
 		end

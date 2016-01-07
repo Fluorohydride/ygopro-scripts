@@ -41,13 +41,13 @@ function c41234315.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e3,tp)
 end
 function c41234315.spfilter(c,e,tp)
-	return c:IsCode(89493368) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsCode(89493368) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c41234315.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c41234315.spfilter,tp,0x12,0,1,1,nil,e,tp)
-	if g:GetCount()~=0 then
+	if g:GetCount()~=0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 		Duel.SpecialSummon(g,0,tp,tp,true,true,POS_FACEUP)
 	end
 end

@@ -35,7 +35,7 @@ function c46239604.condition(e,tp,eg,ep,ev,re,r,rp,chk)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c46239604.filter(c)
-	return c:IsSetCard(0x12) and c:GetCode()~=46239604 and c:IsAbleToHand() and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsSetCard(0x12) and not c:IsCode(46239604) and c:IsAbleToHand()
 end
 function c46239604.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c46239604.filter,tp,LOCATION_GRAVE+LOCATION_DECK,0,1,nil) end
@@ -44,7 +44,7 @@ end
 function c46239604.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c46239604.filter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
-	if g:GetCount()>0 then
+	if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end

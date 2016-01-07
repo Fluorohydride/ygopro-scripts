@@ -18,7 +18,7 @@ function c5672432.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c5672432.cfilter,1,nil,tp)
 end
 function c5672432.filter(c,e,tp)
-	return c:IsSetCard(0x9f) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsSetCard(0x9f) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c5672432.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -29,7 +29,7 @@ function c5672432.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c5672432.filter,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,1,nil,e,tp)
-	if g:GetCount()>0 then
+	if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

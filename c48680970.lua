@@ -39,7 +39,7 @@ function c48680970.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c48680970.filter1(c,e,tp)
-	return c:IsCode(46986414) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsCode(46986414) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c48680970.filter2(c)
 	return (c:IsCode(2314238) or c:IsCode(63391643)) and c:IsAbleToHand()
@@ -76,7 +76,7 @@ function c48680970.operation(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c48680970.filter1,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
-		if g:GetCount()>0 then
+		if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		end
 	else

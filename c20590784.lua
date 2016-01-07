@@ -22,7 +22,7 @@ function c20590784.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		and bit.band(at:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL end
 end
 function c20590784.filter(c,e,tp)
-	return c:IsSetCard(0xa3) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsSetCard(0xa3) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c20590784.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateAttack() and Duel.Draw(tp,1,REASON_EFFECT)~=0 then
@@ -32,6 +32,7 @@ function c20590784.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,1,nil)
+			if sg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

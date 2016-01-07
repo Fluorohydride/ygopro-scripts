@@ -78,7 +78,6 @@ function c58604027.thcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c58604027.thfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x40) and c:IsAbleToHand()
-		and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
 end
 function c58604027.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

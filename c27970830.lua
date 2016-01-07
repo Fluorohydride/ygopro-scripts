@@ -90,7 +90,7 @@ function c27970830.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RemoveCounter(tp,1,0,0x3003,4,REASON_COST)
 end
 function c27970830.filter2(c)
-	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x3d) and c:IsAbleToHand() and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x3d) and c:IsAbleToHand()
 end
 function c27970830.tg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingMatchingCard(c27970830.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end
@@ -100,7 +100,7 @@ function c27970830.op2(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c27970830.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
-	if g:GetCount()>0 then
+	if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end

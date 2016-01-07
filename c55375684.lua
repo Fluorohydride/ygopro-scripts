@@ -22,7 +22,6 @@ function c55375684.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c55375684.filter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsSetCard(0x18) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
 end
 function c55375684.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -35,7 +34,7 @@ function c55375684.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)>0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c55375684.filter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
-	if g:GetCount()>0 then
+	if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 		local grav=g:GetFirst():IsLocation(LOCATION_GRAVE)
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		if grav then Duel.Destroy(e:GetHandler(),REASON_EFFECT) end
