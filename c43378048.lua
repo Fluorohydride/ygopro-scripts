@@ -39,7 +39,7 @@ function c43378048.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
 function c43378048.spfilter(c,code)
-	return c:IsFaceup() and c:IsCode(code) and c:IsAbleToRemoveAsCost() 
+	return c:IsFaceup() and c:IsFusionCode(code) and c:IsAbleToRemoveAsCost() 
 end
 function c43378048.spcon(e,c)
 	if c==nil then return true end 

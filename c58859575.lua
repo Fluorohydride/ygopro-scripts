@@ -35,7 +35,7 @@ function c58859575.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
 function c58859575.spfilter(c,code)
-	return c:IsCode(code) and c:IsAbleToRemoveAsCost()
+	return c:IsFusionCode(code) and c:IsAbleToRemoveAsCost()
 end
 function c58859575.spcon(e,c)
 	if c==nil then return true end 

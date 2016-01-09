@@ -49,7 +49,7 @@ function c22638495.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
 function c22638495.spfilter1(c,tp,fc)
-	return c:IsSetCard(0xc7) and c:IsType(TYPE_PENDULUM) and c:IsCanBeFusionMaterial(fc)
+	return c:IsFusionSetCard(0xc7) and c:IsType(TYPE_PENDULUM) and c:IsCanBeFusionMaterial(fc)
 		and Duel.CheckReleaseGroup(tp,c22638495.spfilter2,1,c,fc)
 end
 function c22638495.spfilter2(c,fc)

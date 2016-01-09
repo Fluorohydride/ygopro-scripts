@@ -60,7 +60,7 @@ function c49352945.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
 function c49352945.spfilter(c,code)
-	return c:IsAbleToDeckOrExtraAsCost() and c:IsCode(code)
+	return c:IsAbleToDeckOrExtraAsCost() and c:IsFusionCode(code)
 end
 function c49352945.spcon(e,c)
 	if c==nil then return true end 

@@ -26,30 +26,24 @@ function c56655675.initial_effect(c)
 	e3:SetOperation(c56655675.operation)
 	c:RegisterEffect(e3)
 end
-function c56655675.spfilter1(c)
-	return c:IsSetCard(0x40b5) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial()
-end
-function c56655675.spfilter2(c)
-	return c:IsSetCard(0x10b5) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial()
-end
-function c56655675.spfilter3(c)
-	return c:IsSetCard(0x20b5) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial()
+function c56655675.spfilter(c,setcode)
+	return c:IsFusionSetCard(setcode) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial()
 end
 function c56655675.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and Duel.IsExistingMatchingCard(c56655675.spfilter1,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingMatchingCard(c56655675.spfilter2,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingMatchingCard(c56655675.spfilter3,tp,LOCATION_MZONE,0,1,nil)
+		and Duel.IsExistingMatchingCard(c56655675.spfilter,tp,LOCATION_MZONE,0,1,nil,0x40b5)
+		and Duel.IsExistingMatchingCard(c56655675.spfilter,tp,LOCATION_MZONE,0,1,nil,0x10b5)
+		and Duel.IsExistingMatchingCard(c56655675.spfilter,tp,LOCATION_MZONE,0,1,nil,0x20b5)
 end
 function c56655675.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectMatchingCard(tp,c56655675.spfilter1,tp,LOCATION_MZONE,0,1,1,nil)
+	local g1=Duel.SelectMatchingCard(tp,c56655675.spfilter,tp,LOCATION_MZONE,0,1,1,nil,0x40b5)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=Duel.SelectMatchingCard(tp,c56655675.spfilter2,tp,LOCATION_MZONE,0,1,1,nil)
+	local g2=Duel.SelectMatchingCard(tp,c56655675.spfilter,tp,LOCATION_MZONE,0,1,1,nil,0x10b5)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g3=Duel.SelectMatchingCard(tp,c56655675.spfilter3,tp,LOCATION_MZONE,0,1,1,nil)
+	local g3=Duel.SelectMatchingCard(tp,c56655675.spfilter,tp,LOCATION_MZONE,0,1,1,nil,0x20b5)
 	g1:Merge(g2)
 	g1:Merge(g3)
 	c:SetMaterial(g1)
