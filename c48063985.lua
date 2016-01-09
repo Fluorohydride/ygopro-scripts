@@ -44,11 +44,11 @@ function c48063985.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c48063985.spfilter1(c,tp)
-	return c:IsSetCard(0x10b5) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial()
+	return c:IsFusionSetCard(0x10b5) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial()
 		and Duel.IsExistingMatchingCard(c48063985.spfilter2,tp,LOCATION_MZONE,0,1,c)
 end
 function c48063985.spfilter2(c)
-	return c:IsSetCard(0x20b5) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial()
+	return c:IsFusionSetCard(0x20b5) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial()
 end
 function c48063985.sprcon(e,c)
 	if c==nil then return true end

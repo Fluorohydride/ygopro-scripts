@@ -46,11 +46,11 @@ function c48156348.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
 function c48156348.spfilter1(c,tp)
-	return c:IsCode(41470137) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(nil,true)
+	return c:IsFusionCode(41470137) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(nil,true)
 		and Duel.IsExistingMatchingCard(c48156348.spfilter2,tp,LOCATION_MZONE,0,1,c)
 end
 function c48156348.spfilter2(c)
-	return c:IsSetCard(0x19) and c:IsCanBeFusionMaterial() and c:IsAbleToDeckOrExtraAsCost()
+	return c:IsFusionSetCard(0x19) and c:IsCanBeFusionMaterial() and c:IsAbleToDeckOrExtraAsCost()
 end
 function c48156348.sprcon(e,c)
 	if c==nil then return true end 

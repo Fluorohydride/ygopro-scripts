@@ -31,7 +31,7 @@ function c79229522.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
 function c79229522.spfilter1(c,tp,ft)
-	if c:IsCode(70095154) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(nil,true) and (c:IsControler(tp) or c:IsFaceup()) then
+	if c:IsFusionCode(70095154) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(nil,true) and (c:IsControler(tp) or c:IsFaceup()) then
 		if ft>0 or (c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)) then
 			return Duel.IsExistingMatchingCard(c79229522.spfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,c,tp)
 		else
