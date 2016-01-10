@@ -63,10 +63,10 @@ function c90200789.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c90200789.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,lv)
 	local tc=g:GetFirst()
-	if tc then
+	if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		Duel.BreakEffect()
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		c:SetCardTarget(tc)
+		Duel.SpecialSummonComplete()
 	end
 end
 function c90200789.desop(e,tp,eg,ep,ev,re,r,rp)

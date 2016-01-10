@@ -58,17 +58,15 @@ function c61840587.operation(e,tp,eg,ep,ev,re,r,rp)
 		sg=sg:Select(tp,ft,ft,nil)
 		sct=ft
 	end
-	Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP_ATTACK)
 	local tc=sg:GetFirst()
-	c:SetCardTarget(tc)
-	tc:CreateRelation(c,RESET_EVENT+0x1020000)
-	if sct>1 then
-		local tc2=sg:GetNext()
-		c:SetCardTarget(tc2)
-		tc2:CreateRelation(c,RESET_EVENT+0x1020000)
+	while tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK) do
+		c:SetCardTarget(tc)
+		tc:CreateRelation(c,RESET_EVENT+0x1020000)
+		tc=sg:GetNext()
 	end
 	e:SetLabelObject(sg)
 	sg:KeepAlive()
+	Duel.SpecialSummonComplete()
 end
 function c61840587.desfilter1(c,rc)
 	return c:IsRelateToCard(rc) and c:IsLocation(LOCATION_MZONE) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
