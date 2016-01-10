@@ -39,9 +39,10 @@ end
 function c80551130.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
-		if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==0 then return end
+	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e)
+		and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		c:SetCardTarget(tc)
+		Duel.SpecialSummonComplete()
 	end
 end
 function c80551130.desop(e,tp,eg,ep,ev,re,r,rp)
