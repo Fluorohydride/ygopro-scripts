@@ -32,7 +32,8 @@ function c61840587.filter(c,e,tp)
 end
 function c61840587.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c61840587.filter(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and Duel.IsExistingTarget(c61840587.filter,tp,LOCATION_GRAVE,0,2,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c61840587.filter,tp,LOCATION_GRAVE,0,2,2,nil,e,tp)
@@ -51,6 +52,7 @@ function c61840587.operation(e,tp,eg,ep,ev,re,r,rp)
 	local sct=sg:GetCount()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if sct==0 or ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	if sct>ft then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		sg=sg:Select(tp,ft,ft,nil)

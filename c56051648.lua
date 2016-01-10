@@ -16,12 +16,14 @@ function c56051648.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c56051648.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tg=Duel.GetAttacker()
-	if chk==0 then return tg:IsOnField() and Duel.GetLocationCount(tp,LOCATION_MZONE)>=3
+	if chk==0 then return tg:IsOnField() and not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>=3
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,56051649,0,0x4011,100,100,1,RACE_INSECT,ATTRIBUTE_EARTH) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,3,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,3,0,0)
 end
 function c56051648.activate(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.NegateAttack() and Duel.GetLocationCount(tp,LOCATION_MZONE)>2
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,56051649,0,0x4011,100,100,1,RACE_INSECT,ATTRIBUTE_EARTH) then
 		for i=1,3 do

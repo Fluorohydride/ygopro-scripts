@@ -39,13 +39,15 @@ function c17418744.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsAttribute(0x6f)
 end
 function c17418744.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,17418745,0x55,0x4011,2000,0,4,RACE_THUNDER,ATTRIBUTE_LIGHT) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,0,0)
 end
 function c17418744.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>1 
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,17418745,0x55,0x4011,2000,0,4,RACE_THUNDER,ATTRIBUTE_LIGHT) then
 		for i=1,2 do
 			local token=Duel.CreateToken(tp,17418745)

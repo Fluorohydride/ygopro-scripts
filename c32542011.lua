@@ -40,6 +40,7 @@ function c32542011.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	end
 	if b2 then
+		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 		local g=Duel.GetMatchingGroup(c32542011.spfilter,tp,LOCATION_GRAVE,0,nil,Duel.GetTurnCount(),e,tp)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,ft,0,0)
 		local dg=Duel.GetMatchingGroup(c32542011.desfilter,tp,LOCATION_MZONE,0,nil)
@@ -53,6 +54,7 @@ function c32542011.activate(e,tp,eg,ep,ev,re,r,rp)
 	if opt==1 or opt==3 then
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		if ft>0 then
+			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local g=Duel.SelectMatchingCard(tp,c32542011.spfilter,tp,LOCATION_GRAVE,0,1,ft,nil,Duel.GetTurnCount(),e,tp)
 			if g:GetCount()>0 then

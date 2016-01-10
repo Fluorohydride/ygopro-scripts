@@ -28,6 +28,7 @@ function c23557835.op(e,tp,eg,ep,ev,re,r,rp)
 	local count=0
 	local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft1>0 then
+		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft1=1 end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c23557835.filter,tp,LOCATION_REMOVED,0,ft1,ft1,nil,e,tp)
 		if g:GetCount()>0 then
@@ -41,6 +42,7 @@ function c23557835.op(e,tp,eg,ep,ev,re,r,rp)
 	end
 	local ft2=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
 	if ft2>0 then
+		if Duel.IsPlayerAffectedByEffect(1-tp,59822133) then ft2=1 end
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(1-tp,c23557835.filter,tp,0,LOCATION_REMOVED,ft2,ft2,nil,e,1-tp)
 		if g:GetCount()>0 then

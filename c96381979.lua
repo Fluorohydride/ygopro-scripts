@@ -114,11 +114,13 @@ end
 function c96381979.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local g=Duel.GetMatchingGroup(c96381979.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
-		return Duel.GetLocationCount(tp,LOCATION_MZONE)>1 and g:IsExists(c96381979.afilter1,1,nil,g)
+		return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+			and Duel.GetLocationCount(tp,LOCATION_MZONE)>1 and g:IsExists(c96381979.afilter1,1,nil,g)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_DECK)
 end
 function c96381979.spop(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
 	local g=Duel.GetMatchingGroup(c96381979.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 	local dg=g:Filter(c96381979.afilter1,nil,g)

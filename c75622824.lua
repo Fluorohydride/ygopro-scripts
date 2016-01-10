@@ -20,15 +20,18 @@ function c75622824.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c75622824.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.GetFieldGroupCount(1-tp,LOCATION_MZONE,0)>0 end
 	local ct=Duel.GetFieldGroupCount(1-tp,LOCATION_MZONE,0)
+	if chk==0 then return ct>0 and (ct==1 or not Duel.IsPlayerAffectedByEffect(tp,59822133))
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>ct-2 end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,ct,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,ct,0,0)
 end
 function c75622824.activate(e,tp,eg,ep,ev,re,r,rp)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local ct=Duel.GetFieldGroupCount(1-tp,LOCATION_MZONE,0)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<ct then return end
+	if ft<ct then return end
 	if not Duel.IsPlayerCanSpecialSummonMonster(tp,75622825,0,0x4011,2000,1200,5,RACE_SPELLCASTER,ATTRIBUTE_WIND) then return end
 	for i=1,ct do
 		local token=Duel.CreateToken(tp,75622825)

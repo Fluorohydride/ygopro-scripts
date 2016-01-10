@@ -47,6 +47,7 @@ end
 function c58531587.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return end
 	if chk==0 then
+		if Duel.IsPlayerAffectedByEffect(tp,59822133) then return false end
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return false end
 		local g=Duel.GetMatchingGroup(c58531587.filter,tp,LOCATION_GRAVE,0,nil,e,tp)
 		return g:IsExists(c58531587.filter2,1,nil,g)
@@ -62,6 +63,7 @@ function c58531587.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg1,2,0,0)
 end
 function c58531587.spop(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<g:GetCount() then return end
 	local tc=g:GetFirst()

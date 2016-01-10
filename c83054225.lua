@@ -20,12 +20,12 @@ function c83054225.spfilter(c,e,tp)
 	return c:IsSetCard(0x101b) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c83054225.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+	local ct=Duel.GetMatchingGroupCount(c83054225.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 	if chk==0 then
 		if Duel.GetFlagEffect(tp,83054225)~=0 or Duel.GetLocationCount(tp,LOCATION_MZONE)<0 then return false end
-		local ct=Duel.GetMatchingGroupCount(c83054225.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 		return ct>0 and Duel.CheckReleaseGroup(tp,Card.IsCode,1,nil,31533705)
 	end
-	local ct=Duel.GetMatchingGroupCount(c83054225.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 	local g=Duel.SelectReleaseGroup(tp,Card.IsCode,1,ct,nil,31533705)
 	Duel.Release(g,REASON_COST)
 	e:SetLabel(g:GetCount())
@@ -33,8 +33,11 @@ function c83054225.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,g:GetCount(),tp,LOCATION_DECK)
 end
 function c83054225.spop(e,tp,eg,ep,ev,re,r,rp)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local ct=e:GetLabel()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<ct then return end
+	if ft<ct then return end
 	local g=Duel.GetMatchingGroup(c83054225.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 	if g:GetCount()<ct then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

@@ -49,20 +49,24 @@ function c30353551.filter(c,e,tp)
 	return c:IsType(TYPE_NORMAL) and c:IsLevelBelow(2) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c30353551.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return c30353551[tp]~=0 end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,c30353551[tp],tp,LOCATION_DECK)
+	local ct=c30353551[tp]
+	if chk==0 then return ct>0 and (ct==1 or not Duel.IsPlayerAffectedByEffect(tp,59822133)) end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,ct,tp,LOCATION_DECK)
 end
 function c30353551.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
+	local ct=c30353551[tp]
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c30353551.filter,tp,LOCATION_DECK,0,c30353551[tp],c30353551[tp],nil,e,tp)
+	local g=Duel.SelectMatchingCard(tp,c30353551.filter,tp,LOCATION_DECK,0,ct,ct,nil,e,tp)
 	if g:GetCount()==0 then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if ft>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	if ft<=0 then
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	elseif ft>=g:GetCount() then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,ft,ft,nil)
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 		g:Sub(sg)

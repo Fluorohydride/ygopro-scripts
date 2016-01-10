@@ -1405,6 +1405,7 @@ function Auxiliary.PendOperation()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
 				local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+				if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 				if og then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 					local g=og:FilterSelect(tp,Auxiliary.PConditionFilter,1,ft,nil,e,tp,lscale,rscale)

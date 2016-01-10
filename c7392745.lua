@@ -15,6 +15,7 @@ function c7392745.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,3,0,0)
 end
 function c7392745.operation(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(1-tp,LOCATION_MZONE)<3 then return end
 	if not Duel.IsPlayerCanSpecialSummonMonster(tp,7392746,0,0x4011,100,300,1,RACE_ZOMBIE,ATTRIBUTE_EARTH,POS_FACEUP_DEFENCE,1-tp) then return end
 	for i=1,3 do

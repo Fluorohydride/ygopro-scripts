@@ -28,13 +28,15 @@ function c37421075.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		local chkf=(e:GetLabel()==1)
 		e:SetLabel(0)
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-		return Duel.IsExistingMatchingCard(c37421075.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,2,nil,e,tp)
+		return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+			and Duel.IsExistingMatchingCard(c37421075.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,2,nil,e,tp)
 			and ((chkf and ft>0) or (not chkf and ft>1))
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_HAND+LOCATION_GRAVE)
 	e:SetLabel(0)
 end
 function c37421075.activate(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
 	local g=Duel.GetMatchingGroup(c37421075.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
 	if g:GetCount()>1 then

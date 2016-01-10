@@ -46,7 +46,8 @@ function c75347539.spfilter(c,e,tp,code)
 end
 function c75347539.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>=2
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>=2
 		and Duel.IsExistingTarget(c75347539.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp,99785935)
 		and Duel.IsExistingTarget(c75347539.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp,39256679)
 		and Duel.IsExistingTarget(c75347539.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp,11549357) end
@@ -61,6 +62,7 @@ function c75347539.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g1,3,0,0)
 end
 function c75347539.operation(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if g:GetCount()~=3 or ft<3 then return end

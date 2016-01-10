@@ -21,7 +21,8 @@ function c22404675.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c22404675.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,22404676,0,0x4011,800,1000,1,RACE_THUNDER,ATTRIBUTE_LIGHT) end
@@ -30,7 +31,7 @@ function c22404675.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c22404675.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if not Duel.IsPlayerAffectedByEffect(tp,59822133) and c:IsRelateToEffect(e) then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 			Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP)
 		else

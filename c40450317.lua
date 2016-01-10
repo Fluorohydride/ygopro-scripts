@@ -33,7 +33,8 @@ function c40450317.filter2(c,e,tp,tc)
 end
 function c40450317.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c40450317.filter(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and Duel.IsExistingTarget(c40450317.filter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c40450317.filter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
@@ -43,7 +44,8 @@ function c40450317.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local g=Duel.GetMatchingGroup(c40450317.filter2,tp,LOCATION_DECK,0,nil,e,tp,tc)
-	if ft>1 and g:GetClassCount(Card.GetCode)>1 and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and ft>1 and g:GetClassCount(Card.GetCode)>1 and tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g1=g:Select(tp,1,1,nil)
 		g:Remove(Card.IsCode,nil,g1:GetFirst():GetCode())

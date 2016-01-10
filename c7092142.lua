@@ -25,7 +25,8 @@ end
 function c7092142.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local ct=eg:FilterCount(c7092142.spfilter,nil,e,tp)
-		return ct>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>=ct
+		return ct>0 and (ct==1 or not Duel.IsPlayerAffectedByEffect(tp,59822133))
+			and Duel.GetLocationCount(tp,LOCATION_MZONE)>=ct
 	end
 	Duel.SetTargetCard(eg)
 	local g=eg:Filter(c7092142.spfilter,nil,e,tp)
@@ -36,6 +37,8 @@ function c7092142.spfilter2(c,e,tp)
 end
 function c7092142.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local sg=eg:Filter(c7092142.spfilter2,nil,e,tp)
 	if ft<sg:GetCount() then return end
 	local ct=Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)

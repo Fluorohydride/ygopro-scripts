@@ -32,7 +32,8 @@ function c73199638.filter(c,e,tp)
 end
 function c73199638.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c73199638.filter(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>2
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>2
 		and Duel.IsExistingTarget(c73199638.filter,tp,LOCATION_GRAVE,0,3,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c73199638.filter,tp,LOCATION_GRAVE,0,3,3,nil,e,tp)
@@ -42,6 +43,7 @@ function c73199638.rfilter(c,e,tp)
 	return c:IsRelateToEffect(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c73199638.activate(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=2 then return end

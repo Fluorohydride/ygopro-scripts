@@ -74,6 +74,7 @@ function c75361204.spfilter2(c,e,tp,code)
 end
 function c75361204.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetEquipTarget():IsDestructable()
+		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c75361204.spfilter1,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	local ec=e:GetLabelObject()
@@ -84,6 +85,7 @@ end
 function c75361204.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetLabelObject()
 	if ec:IsRelateToEffect(e) and ec:IsFaceup() and Duel.Destroy(ec,REASON_EFFECT)~=0
+		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1 then
 		local fid=e:GetHandler():GetFieldID()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

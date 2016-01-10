@@ -47,6 +47,7 @@ end
 function c12247206.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if ft1>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft1=1 end
 	local gg=Group.CreateGroup()
 	local g=Duel.GetMatchingGroup(c12247206.filter,tp,0x13,0,nil,tc,e,tp)
 	if g:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
@@ -61,12 +62,13 @@ function c12247206.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	local ft2=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
+	if ft2>1 and Duel.IsPlayerAffectedByEffect(1-tp,59822133) then ft2=1 end
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_FACEUP)
 	local sg=Duel.SelectMatchingCard(1-tp,c12247206.selfilter,1-tp,LOCATION_MZONE,0,1,1,nil,e,1-tp)
 	if ft2>0 and sg:GetCount()>0 then
 		local g2=Duel.GetMatchingGroup(c12247206.filter,1-tp,0x13,0,nil,sg:GetFirst(),e,1-tp)
 		if not g2:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then
-			if g2:GetCount()<=ft2 then 
+			if g2:GetCount()<=ft2 then
 				c12247206.sp(g2,1-tp,POS_FACEUP)
 			else
 				Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SPSUMMON)

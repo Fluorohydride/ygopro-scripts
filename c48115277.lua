@@ -42,15 +42,17 @@ function c48115277.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local ct=e:GetHandler():GetFlagEffectLabel(48115277)
 		if not ct then ct=0 end
-		return Duel.GetLocationCount(tp,LOCATION_MZONE)>ct-1
+		return (ct==0 or not Duel.IsPlayerAffectedByEffect(tp,59822133))
+			and Duel.GetLocationCount(tp,LOCATION_MZONE)>ct-1
 			and Duel.IsPlayerCanSpecialSummonMonster(tp,48115278,0,0x4011,1000,1500,4,RACE_ROCK,ATTRIBUTE_EARTH)
 	end
 	local ct=e:GetLabel()
-	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,ct-1,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,ct-1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,ct+1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,ct+1,0,0)
 end
 function c48115277.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetLabel()
+	if ct>0 and Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>ct
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,48115278,0,0x4011,1000,1500,4,RACE_ROCK,ATTRIBUTE_EARTH) then
 		for i=1,ct+1 do

@@ -16,7 +16,9 @@ function c904185.rfilter(c)
 end
 function c904185.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c904185.rfilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,c904185.rfilter,1,10,nil)
+	local maxc=10
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then maxc=1 end
+	local g=Duel.SelectReleaseGroup(tp,c904185.rfilter,1,maxc,nil)
 	e:SetLabel(g:GetCount())
 	Duel.Release(g,REASON_COST)
 end
@@ -27,7 +29,10 @@ function c904185.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,e:GetLabel(),0,0)
 end
 function c904185.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<e:GetLabel() then return end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
+	if ft<e:GetLabel() then return end
 	if Duel.IsPlayerCanSpecialSummonMonster(tp,31533705,0x101b,0x4011,0,0,3,RACE_MACHINE,ATTRIBUTE_WIND) then
 		for i=1,e:GetLabel() do
 			local token=Duel.CreateToken(tp,904186)

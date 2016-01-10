@@ -30,7 +30,8 @@ function c83546647.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=0 then return false end
 		e:SetLabel(1)
-		return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+		return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+			and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 			and Duel.IsExistingMatchingCard(c83546647.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
@@ -55,6 +56,7 @@ function c83546647.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_HAND+LOCATION_DECK)
 end
 function c83546647.activate(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
 	local tc1=Duel.GetFirstTarget()
 	if not tc1:IsRelateToEffect(e) or not tc1:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end

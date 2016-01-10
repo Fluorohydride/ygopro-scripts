@@ -24,7 +24,8 @@ function c80802524.filter(c,e,tp,code)
 end
 function c80802524.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c80802524.filter(chkc,e,tp,e:GetLabel()) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and Duel.IsExistingTarget(c80802524.filter,tp,LOCATION_GRAVE,0,2,nil,e,tp,e:GetLabel()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c80802524.filter,tp,LOCATION_GRAVE,0,2,2,nil,e,tp,e:GetLabel())
@@ -35,6 +36,7 @@ function c80802524.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if sg:GetCount()==0 or ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	if ft<sg:GetCount() then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		sg=sg:FilterSelect(tp,c80802524.filter,ft,ft,nil,e,tp,e:GetLabel())

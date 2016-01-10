@@ -44,6 +44,7 @@ function c97173708.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Release(rg1,REASON_COST)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft>rg1:GetCount() then ft=rg1:GetCount() end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c97173708.spfilter,tp,LOCATION_GRAVE,0,1,ft,nil,e,tp,lv)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,g:GetCount(),0,0)
@@ -51,7 +52,10 @@ end
 function c97173708.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()==0 then return end
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<g:GetCount() then return end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
+	if ft<g:GetCount() then return end
 	local c=e:GetHandler()
 	local fid=c:GetFieldID()
 	local tc=g:GetFirst()

@@ -20,7 +20,8 @@ function c57815601.filter2(c,e,tp)
 end
 function c57815601.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and Duel.IsExistingTarget(c57815601.filter1,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g1=Duel.SelectTarget(tp,c57815601.filter1,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,1,nil,e,tp)
@@ -31,17 +32,18 @@ function c57815601.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c57815601.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<=0 then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
-	if g:GetCount()==0 then return end
-	if g:GetCount()<=ft then
-		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=g:Select(tp,ft,ft,nil)
-		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
-		g:Sub(sg)
-		Duel.SendtoGrave(g,REASON_EFFECT)
+	if ft>0 and g:GetCount()>0 then
+		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
+		if g:GetCount()<=ft then
+			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+		else
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+			local sg=g:Select(tp,ft,ft,nil)
+			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+			g:Sub(sg)
+			Duel.SendtoGrave(g,REASON_EFFECT)
+		end
 	end
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		local e1=Effect.CreateEffect(e:GetHandler())

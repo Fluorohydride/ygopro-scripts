@@ -54,6 +54,7 @@ end
 function c68812773.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,nil,RACE_MACHINE) end
 	local ct=Duel.GetMatchingGroupCount(c68812773.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 	local rg=Duel.SelectReleaseGroup(tp,Card.IsRace,1,ct,nil,RACE_MACHINE)
 	ct=Duel.Release(rg,REASON_COST)
 	e:SetLabel(ct)
@@ -67,9 +68,9 @@ end
 function c68812773.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local ct=e:GetLabel()
-	local ct1=Duel.GetMatchingGroupCount(c68812773.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
-	if ct1<ct then ct=ct1 end
+	if ft<ct then ct=ft end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local dg=Duel.SelectMatchingCard(tp,c68812773.spfilter,tp,LOCATION_HAND,0,ct,ct,nil,e,tp)
 	if dg:GetCount()>0 then

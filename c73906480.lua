@@ -11,7 +11,7 @@ function c73906480.initial_effect(c)
 	e1:SetOperation(c73906480.activate)
 	c:RegisterEffect(e1)
 end
-function c73906480.condition(e,tp,eg,ep,ev,re,r,rp,chk)
+function c73906480.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0
 end
 function c73906480.spfilter1(c,e,tp)
@@ -22,7 +22,8 @@ function c73906480.spfilter2(c,e,tp)
 end
 function c73906480.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and Duel.IsExistingTarget(c73906480.spfilter1,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 		and Duel.IsExistingTarget(c73906480.spfilter2,tp,LOCATION_REMOVED,0,1,nil,e,tp)
 	end
@@ -34,6 +35,7 @@ function c73906480.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g1,2,0,0)
 end
 function c73906480.activate(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()~=2 then return end

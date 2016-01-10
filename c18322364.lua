@@ -23,11 +23,13 @@ function c18322364.spfilter(c,e,tp)
 	return c:GetLevel()==3 and c:IsAttribute(ATTRIBUTE_WATER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c18322364.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and Duel.IsExistingMatchingCard(c18322364.spfilter,tp,LOCATION_DECK,0,3,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,3,tp,LOCATION_DECK)
 end
 function c18322364.operation(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<3 then return end
 	local g=Duel.GetMatchingGroup(c18322364.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 	if g:GetCount()<3 then return end

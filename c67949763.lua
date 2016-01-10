@@ -17,7 +17,8 @@ function c67949763.filter(c,tp)
 end
 function c67949763.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c67949763.filter(chkc,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>2
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>2
 		and Duel.IsExistingTarget(c67949763.filter,tp,LOCATION_MZONE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c67949763.filter,tp,LOCATION_MZONE,0,1,1,nil,tp)
@@ -25,6 +26,7 @@ function c67949763.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,3,0,0)
 end
 function c67949763.activate(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	local tc=Duel.GetFirstTarget()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>2 then
 		local rfid=tc:GetRealFieldID()

@@ -38,13 +38,14 @@ function c46173679.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return e:GetLabelObject()~=se
 end
 function c46173679.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,46173680,0,0x4011,0,0,1,RACE_FIEND,ATTRIBUTE_DARK)
-	end
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,46173680,0,0x4011,0,0,1,RACE_FIEND,ATTRIBUTE_DARK) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,0,0)
 end
 function c46173679.activate(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,46173680,0,0x4011,0,0,1,RACE_FIEND,ATTRIBUTE_DARK) then
 		for i=1,2 do
