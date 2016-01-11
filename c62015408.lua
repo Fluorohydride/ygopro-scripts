@@ -23,7 +23,8 @@ function c62015408.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_DISCARD)
 end
 function c62015408.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_EXTRA,0)>0
+	if chk==0 then return  not Duel.IsPlayerAffectedByEffect(tp,30459350)
+		and Duel.GetFieldGroupCount(tp,LOCATION_EXTRA,0)>0
 		and Duel.GetFieldGroupCount(tp,0,LOCATION_EXTRA)>0 end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,LOCATION_EXTRA)
 end

@@ -1,5 +1,6 @@
---ЧіСеР_
+--йЊНе§Із•Ю
 function c63737050.initial_effect(c)
+	--to grave
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(63737050,0))
 	e1:SetCategory(CATEGORY_TOGRAVE)
