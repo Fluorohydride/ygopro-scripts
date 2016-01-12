@@ -1,4 +1,5 @@
 --逆ギレパンダ
+--Gyaku-Gire Panda
 function c9817927.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

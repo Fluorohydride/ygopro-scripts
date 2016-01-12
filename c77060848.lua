@@ -1,4 +1,5 @@
 --極星霊デックアールヴ
+--Svartalf of the Nordic Alfar
 function c77060848.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --レベルアップ！
+--Level Up!
 function c25290459.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

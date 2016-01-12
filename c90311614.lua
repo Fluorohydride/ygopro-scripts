@@ -1,4 +1,5 @@
 --氷結界の水影
+--Dewdark of the Ice Barrier
 function c90311614.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

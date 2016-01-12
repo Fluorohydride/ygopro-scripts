@@ -1,4 +1,5 @@
 --炎の精霊 イフリート
+--Spirit of Flames
 function c13522325.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

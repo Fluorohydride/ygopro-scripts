@@ -1,4 +1,5 @@
 --世界の平定
+--World Suppression
 function c12253117.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

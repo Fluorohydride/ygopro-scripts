@@ -1,4 +1,5 @@
 --深淵の結界像
+--Barrier Statue of the Abyss
 function c84478195.initial_effect(c)
 	--disable spsummon
 	local e1=Effect.CreateEffect(c)

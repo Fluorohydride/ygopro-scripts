@@ -1,4 +1,5 @@
 --H・C サウザンド・ブレード
+--Heroic Challenger - Thousand Blades
 function c1833916.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

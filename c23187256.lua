@@ -1,4 +1,5 @@
 --No.93 希望皇ホープ・カイザー
+--Number 93: Utopia Kaiser
 function c23187256.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

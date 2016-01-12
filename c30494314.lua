@@ -1,4 +1,5 @@
 --紅血鬼
+--Red-Headed Oni
 function c30494314.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

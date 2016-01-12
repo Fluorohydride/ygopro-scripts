@@ -1,4 +1,5 @@
 --カラクリ守衛 参壱参
+--Karakuri Watchdog mdl 313 "Saizan"
 function c70271583.initial_effect(c)
 	--must attack
 	local e1=Effect.CreateEffect(c)

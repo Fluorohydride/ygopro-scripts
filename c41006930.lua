@@ -1,4 +1,5 @@
 --速攻の黒い忍者
+--Strike Ninja
 function c41006930.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

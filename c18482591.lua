@@ -1,4 +1,5 @@
 --氷結界の破術師
+--Warlock of the Ice Barrier
 function c18482591.initial_effect(c)
 	--cannot activate
 	local e2=Effect.CreateEffect(c)

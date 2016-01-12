@@ -1,4 +1,5 @@
 --王女の試練
+--Trial of the Princesses
 function c72709014.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

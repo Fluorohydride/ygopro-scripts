@@ -1,4 +1,5 @@
 --エクシーズ・オーバーディレイ
+--Xyz Encore
 function c78610936.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

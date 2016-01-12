@@ -1,4 +1,5 @@
 --スーパーチャージ
+--Supercharge
 function c97705809.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

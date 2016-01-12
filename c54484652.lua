@@ -1,4 +1,5 @@
 --超戦士カオス・ソルジャー
+--Black Luster Soldier - Super Soldier
 function c54484652.initial_effect(c)
 	c:SetSPSummonOnce(54484652)
 	c:EnableReviveLimit()

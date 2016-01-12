@@ -1,4 +1,5 @@
 --ランス・リンドブルム
+--Lancer Lindwurm
 function c46272804.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

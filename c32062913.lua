@@ -1,4 +1,5 @@
 --メガトン魔導キャノン
+--Mega Ton Magical Cannon
 function c32062913.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

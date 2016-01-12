@@ -1,4 +1,5 @@
 --天使の手鏡
+--Fairy's Hand Mirror
 function c17653779.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

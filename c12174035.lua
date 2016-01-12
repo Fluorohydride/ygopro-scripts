@@ -1,4 +1,5 @@
 --ハイドロプレッシャーカノン
+--Hydro Pressure Cannon
 function c12174035.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

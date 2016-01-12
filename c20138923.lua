@@ -1,4 +1,5 @@
 --反魔鏡
+--Anti-Magic Prism
 function c20138923.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

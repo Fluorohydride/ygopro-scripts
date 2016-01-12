@@ -1,4 +1,5 @@
 --墓守の祈祷師
+--Gravekeeper's Shaman
 function c58139128.initial_effect(c)
 	--def up
 	local e1=Effect.CreateEffect(c)

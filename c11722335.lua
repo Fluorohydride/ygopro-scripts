@@ -1,4 +1,5 @@
 --ワーム・ゼクス
+--Worm Xex
 function c11722335.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)

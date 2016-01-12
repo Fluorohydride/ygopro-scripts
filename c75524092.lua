@@ -1,4 +1,5 @@
 --ヴィシャス・クロー
+--Vicious Claw
 function c75524092.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

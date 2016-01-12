@@ -1,4 +1,5 @@
 --ペンギン・ナイトメア
+--Nightmare Penguin
 function c81306586.initial_effect(c)
 	--return
 	local e1=Effect.CreateEffect(c)

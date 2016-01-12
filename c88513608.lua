@@ -1,4 +1,5 @@
 --捨て身の宝札
+--Card of Sacrifice
 function c88513608.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

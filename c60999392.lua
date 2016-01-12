@@ -1,4 +1,5 @@
 --マシンナーズ・ソルジャー
+--Machina Soldier
 function c60999392.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

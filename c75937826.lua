@@ -1,4 +1,5 @@
 --巨大戦艦 ビッグ・コアＭｋ－ＩＩ
+--B.E.S. Big Core MK-2
 function c75937826.initial_effect(c)
 	--spsummon success
 	local e1=Effect.CreateEffect(c)

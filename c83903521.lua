@@ -1,4 +1,5 @@
 --ファラオの化身
+--Beast of the Pharaoh
 function c83903521.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

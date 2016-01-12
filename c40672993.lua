@@ -1,4 +1,5 @@
 --避雷神
+--Lightning Rod Lord
 function c40672993.initial_effect(c)
 	--actlimit
 	local e1=Effect.CreateEffect(c)

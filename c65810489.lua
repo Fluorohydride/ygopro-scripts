@@ -1,4 +1,5 @@
 --黄金の邪神像
+--Statue of the Wicked
 function c65810489.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

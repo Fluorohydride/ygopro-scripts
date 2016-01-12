@@ -1,4 +1,5 @@
 --森の聖霊 エーコ
+--Eco, Mystical Spirit of the Forest
 function c4192696.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

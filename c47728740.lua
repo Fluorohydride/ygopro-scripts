@@ -1,4 +1,5 @@
 --Alich, Malebranche of the Burning Abyss
+--Alich, Malebranche of the Burning Abyss
 function c47728740.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

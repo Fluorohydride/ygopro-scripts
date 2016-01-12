@@ -1,4 +1,5 @@
 --王虎ワンフー
+--King Tiger Wanghu
 function c83986578.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

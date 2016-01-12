@@ -1,4 +1,5 @@
 --モアイ迎撃砲
+--Moai Interceptor Cannons
 function c45159319.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

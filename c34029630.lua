@@ -1,4 +1,5 @@
 --漆黒のパワーストーン
+--Pitch-Black Power Stone
 function c34029630.initial_effect(c)
 	--counter permit
 	local e1=Effect.CreateEffect(c)

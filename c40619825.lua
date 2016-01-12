@@ -1,4 +1,5 @@
 --デーモンの斧
+--Axe of Despair
 function c40619825.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

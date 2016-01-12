@@ -1,4 +1,5 @@
 --神の威光
+--Solemn Authority
 function c16308000.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

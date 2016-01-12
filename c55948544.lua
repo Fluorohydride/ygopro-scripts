@@ -1,4 +1,5 @@
 --ファラオの審判
+--Judgment of the Pharaoh
 function c55948544.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

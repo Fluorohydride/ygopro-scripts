@@ -1,4 +1,5 @@
 --X－セイバー パロムロ
+--X-Saber Palomuro
 function c96099959.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

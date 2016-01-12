@@ -1,4 +1,5 @@
 --No.14 強欲のサラメーヤ
+--Number 14: Greedy Sarameya
 function c21313376.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2)

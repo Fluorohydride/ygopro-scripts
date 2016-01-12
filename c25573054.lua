@@ -1,4 +1,5 @@
 --進化する翼
+--Transcendent Wings
 function c25573054.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

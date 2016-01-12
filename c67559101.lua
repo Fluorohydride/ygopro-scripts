@@ -1,4 +1,5 @@
 --先史遺産マッドゴーレム・シャコウキ
+--Chronomaly Mud Golem
 function c67559101.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

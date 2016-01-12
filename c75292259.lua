@@ -1,4 +1,5 @@
 --ポセイドン・オオカブト
+--Poseidon Giant Beetle
 function c75292259.initial_effect(c)
 	--chain attack
 	local e1=Effect.CreateEffect(c)

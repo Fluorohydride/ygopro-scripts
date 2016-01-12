@@ -1,4 +1,5 @@
 --Emハットトリッカー
+--Performage Hat Tricker
 function c31292357.initial_effect(c)
 	c:EnableCounterPermit(0x3036)
 	c:SetCounterLimit(0x3036,3)

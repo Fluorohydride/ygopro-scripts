@@ -1,4 +1,5 @@
 --生贄封じの仮面
+--Mask of Restrict
 function c29549364.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ゲットライド！
+--Roll Out!
 function c91597389.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

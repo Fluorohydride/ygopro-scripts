@@ -1,4 +1,5 @@
 --リバースソウル
+--Soul Reversal
 function c78864369.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

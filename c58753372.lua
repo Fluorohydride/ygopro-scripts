@@ -1,4 +1,5 @@
 --超量妖精アルファン
+--Super Quantum Fairy Alphan
 function c58753372.initial_effect(c)
 	--lv
 	local e1=Effect.CreateEffect(c)

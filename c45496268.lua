@@ -1,4 +1,5 @@
 --SDロボ・エレファン
+--Super Defense Robot Elephan
 function c45496268.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --異星の最終戦士
+--The Last Warrior from Another Planet
 function c86099788.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

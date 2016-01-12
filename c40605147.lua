@@ -1,4 +1,5 @@
 --神の通告
+--Solemn Strike
 function c40605147.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

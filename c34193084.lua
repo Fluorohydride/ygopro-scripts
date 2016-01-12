@@ -1,4 +1,5 @@
 --闇よりの恐怖
+--Fear from the Dark
 function c34193084.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --幻奏の音女カノン
+--Canon the Melodious Diva
 function c16021142.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

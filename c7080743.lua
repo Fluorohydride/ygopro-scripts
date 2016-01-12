@@ -1,4 +1,5 @@
 --豪腕特急トロッコロッコ
+--Express Train Trolley Olley
 function c7080743.initial_effect(c)
 	--effect gain
 	local e1=Effect.CreateEffect(c)

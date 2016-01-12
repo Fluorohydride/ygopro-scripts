@@ -1,4 +1,5 @@
 --地帝グランマーグ
+--Granmarg the Rock Monarch
 function c60229110.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

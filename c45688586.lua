@@ -1,4 +1,5 @@
 --カラクリ蜘蛛
+--Karakuri Spider
 function c45688586.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --宝玉獣 エメラルド・タートル
+--Crystal Beast Emerald Tortoise
 function c68215963.initial_effect(c)
 	--send replace
 	local e1=Effect.CreateEffect(c)

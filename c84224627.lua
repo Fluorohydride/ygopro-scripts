@@ -1,4 +1,5 @@
 --キャット・シャーク
+--Cat Shark
 function c84224627.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,2)

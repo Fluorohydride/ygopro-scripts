@@ -1,4 +1,5 @@
 --連弾の魔術師
+--Rapid-Fire Magician
 function c6337436.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

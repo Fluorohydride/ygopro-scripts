@@ -1,4 +1,5 @@
 --ハーピィの狩場
+--Harpies' Hunting Ground
 function c75782277.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

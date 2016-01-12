@@ -1,4 +1,5 @@
 --水霊術－「葵」
+--Spiritual Water Art - Aoi
 function c6540606.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

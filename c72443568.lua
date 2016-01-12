@@ -1,4 +1,5 @@
 --サイレント・マジシャン LV8
+--Silent Magician LV8
 function c72443568.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

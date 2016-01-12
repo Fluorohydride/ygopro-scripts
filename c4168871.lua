@@ -1,4 +1,5 @@
 --黒羽の宝札
+--Cards for Black Feathers
 function c4168871.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --増殖するG
+--Maxx "C"
 function c23434538.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

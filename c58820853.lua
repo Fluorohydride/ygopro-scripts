@@ -1,4 +1,5 @@
 --BF－蒼炎のシュラ
+--Blackwing - Shura the Blue Flame
 function c58820853.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

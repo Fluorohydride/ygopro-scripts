@@ -1,4 +1,5 @@
 --はがねの甲羅
+--Steel Shell
 function c2370081.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

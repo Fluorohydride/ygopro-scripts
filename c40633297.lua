@@ -1,4 +1,5 @@
 --シモッチによる副作用
+--Bad Reaction to Simochi
 function c40633297.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --超重武者ジシャ－Q
+--Superheavy Samurai Magnet
 function c89091772.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --バトル・テレポーテーション
+--Battle Teleportation
 function c71652522.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

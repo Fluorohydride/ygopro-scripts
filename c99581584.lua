@@ -1,4 +1,5 @@
 --ガード・ペンギン
+--Guard Penguin
 function c99581584.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

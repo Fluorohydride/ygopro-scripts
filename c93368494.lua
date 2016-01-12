@@ -1,4 +1,5 @@
 --魔妖仙獣 大刃禍是
+--Mayosenju Daibak
 function c93368494.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

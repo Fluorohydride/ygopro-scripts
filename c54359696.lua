@@ -1,4 +1,5 @@
 --魔導術士 ラパンデ
+--Stoic of Prophecy
 function c54359696.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

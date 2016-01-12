@@ -1,4 +1,5 @@
 --ガーディアン・エルマ
+--Guardian Elma
 function c74367458.initial_effect(c)
 	--sum limit
 	local e1=Effect.CreateEffect(c)

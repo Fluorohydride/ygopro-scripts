@@ -1,4 +1,5 @@
 --サイコ・トリガー
+--Psychic Trigger
 function c55673611.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

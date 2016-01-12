@@ -1,4 +1,5 @@
 --アスワンの亡霊
+--Aswan Apparition
 function c88236094.initial_effect(c)
 	--todeck
 	local e1=Effect.CreateEffect(c)

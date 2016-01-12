@@ -1,4 +1,5 @@
 --No.56 ゴールドラット
+--Number 56: Gold Rat
 function c55935416.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,1,3)

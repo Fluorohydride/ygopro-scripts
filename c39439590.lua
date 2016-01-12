@@ -1,4 +1,5 @@
 --サイバー・ダイナソー
+--Cyber Dinosaur
 function c39439590.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

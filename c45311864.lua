@@ -1,4 +1,5 @@
 --盗人ゴブリン
+--Goblin Thief
 function c45311864.initial_effect(c)
 	--recover&damage
 	local e1=Effect.CreateEffect(c)

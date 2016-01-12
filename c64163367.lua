@@ -1,4 +1,5 @@
 --「A」細胞培養装置
+--Cell Incubator
 function c64163367.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

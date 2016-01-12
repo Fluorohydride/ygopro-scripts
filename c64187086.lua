@@ -1,4 +1,5 @@
 --地縛神の復活
+--Earthbound Revival
 function c64187086.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --重装武者－ベン・ケイ
+--Armed Samurai - Ben Kei
 function c84430950.initial_effect(c)
 	--multi attack
 	local e1=Effect.CreateEffect(c)

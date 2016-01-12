@@ -1,4 +1,5 @@
 --ドイツ
+--Doitsu
 function c57062206.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

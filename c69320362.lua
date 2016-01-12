@@ -1,4 +1,5 @@
 --伝説のゼンマイ
+--Legendary Wind-Up Key
 function c69320362.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

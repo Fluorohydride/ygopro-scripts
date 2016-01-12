@@ -1,4 +1,5 @@
 --EMリザードロー
+--Performapal Lizardraw
 function c73130445.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

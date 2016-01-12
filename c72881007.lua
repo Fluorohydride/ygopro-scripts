@@ -1,4 +1,5 @@
 --宝玉の氾濫
+--Crystal Abundance
 function c72881007.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

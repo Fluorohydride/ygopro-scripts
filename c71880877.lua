@@ -1,4 +1,5 @@
 --SDロボ・モンキ
+--Super Defense Robot Monki
 function c71880877.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

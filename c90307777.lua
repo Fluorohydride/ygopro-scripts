@@ -1,4 +1,5 @@
 --影霊衣の術士 シュリット
+--Shurit, Strategist of the Nekroz
 function c90307777.initial_effect(c)
 	--ritual level
 	local e1=Effect.CreateEffect(c)

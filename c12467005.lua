@@ -1,4 +1,5 @@
 --タックルセイダー
+--Tackle Crusader
 function c12467005.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

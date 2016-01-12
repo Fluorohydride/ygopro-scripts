@@ -1,4 +1,5 @@
 --サイバー・ヴァリー
+--Cyber Valley
 function c3657444.initial_effect(c)
 	--be target
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --シャインエンジェル
+--Shining Angel
 function c95956346.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

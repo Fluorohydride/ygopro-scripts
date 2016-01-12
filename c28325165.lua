@@ -1,4 +1,5 @@
 --水物語－ウラシマ
+--Aqua Story - Urashima
 function c28325165.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

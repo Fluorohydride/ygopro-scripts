@@ -1,4 +1,5 @@
 --銀河眼の雲篭
+--Galaxy-Eyes Cloudragon
 function c9260791.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

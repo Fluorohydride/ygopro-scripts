@@ -1,4 +1,5 @@
 --デステニー・デストロイ
+--Destruction of Destiny
 function c62980542.initial_effect(c)
 	--discard deck
 	local e1=Effect.CreateEffect(c)

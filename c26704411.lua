@@ -1,4 +1,5 @@
 --魔轟神獣コカトル
+--The Fabled Kokkator
 function c26704411.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --暴風雨
+--Rain Storm
 function c45653036.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

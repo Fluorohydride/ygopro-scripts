@@ -1,4 +1,5 @@
 --アマゾネス転生術
+--Amazoness Shamanism
 function c6459419.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

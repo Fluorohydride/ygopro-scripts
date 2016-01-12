@@ -1,4 +1,5 @@
 --ダブルアタック
+--Double Attack
 function c34187685.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

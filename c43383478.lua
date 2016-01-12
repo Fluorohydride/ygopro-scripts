@@ -1,4 +1,5 @@
 --RUM－ラプターズ・フォース
+--Rank-Up-Magic Raptor's Force
 function c43383478.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

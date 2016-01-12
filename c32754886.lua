@@ -1,4 +1,5 @@
 --ブラック・イリュージョン
+--Black Illusion
 function c32754886.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

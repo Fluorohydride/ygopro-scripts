@@ -1,4 +1,5 @@
 --幸運の笛吹き
+--Lucky Pied Piper
 function c68762510.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--draw

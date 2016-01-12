@@ -1,4 +1,5 @@
 --鉄の騎士 ギア・フリード
+--Gearfried the Iron Knight
 function c423705.initial_effect(c)
 	--destroy equip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --炎塵爆発
+--Dustflame Blast
 function c38049934.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

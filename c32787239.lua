@@ -1,4 +1,5 @@
 --EMラ・パンダ
+--Performapal La Panda
 function c32787239.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --霧の王
+--Fog King
 function c6614221.initial_effect(c)
 	--decrease tribute
 	local e1=Effect.CreateEffect(c)

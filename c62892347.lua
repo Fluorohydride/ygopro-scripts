@@ -1,4 +1,5 @@
 --アルカナフォース0－THE FOOL
+--Arcana Force 0 - The Fool
 function c62892347.initial_effect(c)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)

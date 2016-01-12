@@ -1,4 +1,5 @@
 --ジャンク・アタック
+--Junk Barrage
 function c79068663.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

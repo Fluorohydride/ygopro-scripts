@@ -1,4 +1,5 @@
 --凶暴化の仮面
+--Mask of Brutality
 function c82432018.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

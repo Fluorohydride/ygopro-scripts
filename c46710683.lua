@@ -1,4 +1,5 @@
 --BF－銀盾のミストラル
+--Blackwing - Mistral the Silver Shield
 function c46710683.initial_effect(c)
 	--change damage
 	local e1=Effect.CreateEffect(c)

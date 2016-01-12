@@ -1,4 +1,5 @@
 --ゼンマイナイト
+--Wind-Up Knight
 function c80538728.initial_effect(c)
 	--negate attack
 	local e1=Effect.CreateEffect(c)

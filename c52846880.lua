@@ -1,4 +1,5 @@
 --カタストルの影霊衣
+--Nekroz of Catastor
 function c52846880.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

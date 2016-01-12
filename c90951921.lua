@@ -1,4 +1,5 @@
 --先史遺産技術
+--Chronomaly Technology
 function c90951921.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

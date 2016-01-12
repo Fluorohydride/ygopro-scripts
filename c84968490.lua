@@ -1,4 +1,5 @@
 --針虫の巣窟
+--Needlebug Nest
 function c84968490.initial_effect(c)
 	--discard deck
 	local e1=Effect.CreateEffect(c)

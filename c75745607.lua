@@ -1,4 +1,5 @@
 --火之迦具土
+--Hino-Kagu-Tsuchi
 function c75745607.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

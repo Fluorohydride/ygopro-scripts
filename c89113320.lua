@@ -1,4 +1,5 @@
 --EMビッグバイトタートル
+--Performapal Bit Bite Turtle
 function c89113320.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

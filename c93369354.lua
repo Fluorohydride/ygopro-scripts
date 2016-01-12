@@ -1,4 +1,5 @@
 --フィッシュボーグ－ガンナー
+--Fishborg Blaster
 function c93369354.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

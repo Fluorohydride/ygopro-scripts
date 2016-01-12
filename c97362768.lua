@@ -1,4 +1,5 @@
 --スパークガン
+--Spark Blaster
 function c97362768.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

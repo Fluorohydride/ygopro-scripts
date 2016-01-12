@@ -1,4 +1,5 @@
 --幸運の鉄斧
+--Lucky Iron Axe
 function c34664411.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

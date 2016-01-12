@@ -1,4 +1,5 @@
 --怨念の魂 業火
+--Goka, the Pyre of Malice
 function c23116808.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

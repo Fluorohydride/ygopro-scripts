@@ -1,4 +1,5 @@
 --窮鼠の進撃
+--Attack of the Cornered Rat
 function c84389640.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

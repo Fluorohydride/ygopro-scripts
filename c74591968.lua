@@ -1,4 +1,5 @@
 --ミスティック・ソードマン LV4
+--Mystic Swordsman LV4
 function c74591968.initial_effect(c)
 	--battle destroy
 	local e1=Effect.CreateEffect(c)

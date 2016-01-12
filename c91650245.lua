@@ -1,4 +1,5 @@
 --森羅の恵み
+--Sylvan Blessing
 function c91650245.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

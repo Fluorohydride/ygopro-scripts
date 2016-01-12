@@ -1,4 +1,5 @@
 --ジュラック・プティラ
+--Jurrac Ptera
 function c45711266.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

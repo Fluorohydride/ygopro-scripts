@@ -1,4 +1,5 @@
 --朱光の宣告者
+--Herald of Orange Light
 function c17266660.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

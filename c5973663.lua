@@ -1,4 +1,5 @@
 --世界樹
+--The World Tree
 function c5973663.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

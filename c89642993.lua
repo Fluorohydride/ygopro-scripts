@@ -1,4 +1,5 @@
 --No.63 おしゃもじソルジャー
+--Number 63: Shamoji Soldier
 function c89642993.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,1,2)

@@ -1,4 +1,5 @@
 --エクストリオの牙
+--Exterio's Fang
 function c68456353.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

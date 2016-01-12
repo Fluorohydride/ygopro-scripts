@@ -1,4 +1,5 @@
 --横取りボーン
+--Monster Rebone
 function c60621361.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ディープ・スペース・クルーザー・ナイン
+--Deep-Space Cruiser IX
 function c1586457.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

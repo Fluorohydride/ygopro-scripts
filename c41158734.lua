@@ -1,4 +1,5 @@
 --アポカテクイル
+--Apocatequil
 function c41158734.initial_effect(c)
 	--level change
 	local e1=Effect.CreateEffect(c)

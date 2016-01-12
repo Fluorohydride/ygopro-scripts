@@ -1,4 +1,5 @@
 --仮面魔獣デス・ガーディウス
+--Masked Beast Des Gardius
 function c48948935.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,4 +1,5 @@
 --地縛神 Cusillu
+--Earthbound Immortal Cusillu
 function c33537328.initial_effect(c)
 	c:SetUniqueOnField(1,1,10000000)
 	--

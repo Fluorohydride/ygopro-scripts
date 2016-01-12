@@ -1,4 +1,5 @@
 --ライトロード・ウォリアー ガロス
+--Garoth, Lightsworn Warrior
 function c59019082.initial_effect(c)
 	--discard deck
 	local e1=Effect.CreateEffect(c)

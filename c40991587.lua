@@ -1,4 +1,5 @@
 --ワイト夫人
+--The Lady in Wight
 function c40991587.initial_effect(c)
 	--change code
 	local e1=Effect.CreateEffect(c)

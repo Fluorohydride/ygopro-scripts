@@ -1,4 +1,5 @@
 --アイアイアン
+--Aye-Iron
 function c42969214.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

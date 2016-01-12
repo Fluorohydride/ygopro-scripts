@@ -1,4 +1,5 @@
 --ロケット・ヘルモス・キャノン
+--Rocket Hermos Cannon
 function c46354113.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

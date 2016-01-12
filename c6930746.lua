@@ -1,4 +1,5 @@
 --限界竜シュヴァルツシルト
+--Schwarzschild Limit Dragon
 function c6930746.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

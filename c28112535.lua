@@ -1,4 +1,5 @@
 --トゥーン・リボルバー・ドラゴン
+--Toon Barrel Dragon
 function c28112535.initial_effect(c)
 	--cannot attack
 	local e1=Effect.CreateEffect(c)

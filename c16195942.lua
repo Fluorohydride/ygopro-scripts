@@ -1,4 +1,5 @@
 --ダーク・リベリオン・エクシーズ・ドラゴン
+--Dark Rebellion Xyz Dragon
 function c16195942.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

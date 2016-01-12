@@ -1,4 +1,5 @@
 --前線基地
+--Frontline Base
 function c46181000.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

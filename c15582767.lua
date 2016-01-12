@@ -1,4 +1,5 @@
 --連成する振動
+--Echo Oscillation
 function c15582767.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

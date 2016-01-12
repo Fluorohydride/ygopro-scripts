@@ -1,4 +1,5 @@
 --N・グラン・モール
+--Neo-Spacian Grand Mole
 function c80344569.initial_effect(c)
 	--return to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --アステカの石像
+--Stone Statue of the Aztecs
 function c31812496.initial_effect(c)
 	--deepen damage
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ネクロバレーの祭殿
+--Hidden Temples of Necrovalley
 function c70000776.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

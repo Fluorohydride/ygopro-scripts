@@ -1,4 +1,5 @@
 --殺炎星－ブルキ
+--Brotherhood of the Fire Fist - Buffalo
 function c92572371.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

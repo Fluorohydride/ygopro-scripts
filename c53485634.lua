@@ -1,4 +1,5 @@
 --真紅眼の遡刻竜
+--Red-Eyes Retro Dragon
 function c53485634.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

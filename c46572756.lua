@@ -1,4 +1,5 @@
 --レアル・ジェネクス・ウルティマム
+--R-Genex Ultimum
 function c46572756.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --スノーマンイーター
+--Snowman Eater
 function c91133740.initial_effect(c)
 	--Destroy
 	local e1=Effect.CreateEffect(c)

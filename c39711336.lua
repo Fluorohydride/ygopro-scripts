@@ -1,4 +1,5 @@
 --不死王リッチー
+--Fushioh Richie
 function c39711336.initial_effect(c)
 	c:EnableReviveLimit()
 	--turn set

@@ -1,4 +1,5 @@
 --ガントレット・ウォリアー
+--Gauntlet Warrior
 function c79337169.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

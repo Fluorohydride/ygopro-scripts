@@ -1,4 +1,5 @@
 --魔導獣士 ルード
+--Wheel of Prophecy
 function c65961085.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

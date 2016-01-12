@@ -1,4 +1,5 @@
 --D－HERO ディパーテッドガイ
+--Destiny HERO - Departed
 function c39829561.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

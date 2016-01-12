@@ -1,4 +1,5 @@
 --霊魂消滅
+--Spirit Elimination
 --not fully implemented
 function c69832741.initial_effect(c)
 	--Activate

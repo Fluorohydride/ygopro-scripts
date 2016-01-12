@@ -1,4 +1,5 @@
 --デストーイ・カスタム
+--Designer Frightfur
 function c36693940.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

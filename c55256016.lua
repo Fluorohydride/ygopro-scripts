@@ -1,4 +1,5 @@
 --アヌビスの裁き
+--Judgment of Anubis
 function c55256016.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --未来への思い
+--Message in a Bottle
 function c97433739.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ライト・オブ・デストラクション
+--Light of Destruction
 function c83027236.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

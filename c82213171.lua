@@ -1,4 +1,5 @@
 --闇王プロメティス
+--Prometheus, King of the Shadows
 function c82213171.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

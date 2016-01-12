@@ -1,4 +1,5 @@
 --海竜神－ネオダイダロス
+--Ocean Dragon Lord - Neo-Daedalus
 function c10485110.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

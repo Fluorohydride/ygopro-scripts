@@ -1,4 +1,5 @@
 --ラーの使徒
+--Ra's Disciple
 function c74875003.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

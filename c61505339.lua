@@ -1,4 +1,5 @@
 --創世神
+--The Creator
 function c61505339.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

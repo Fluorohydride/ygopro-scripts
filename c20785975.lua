@@ -1,4 +1,5 @@
 --CNo.103 神葬零嬢ラグナ・インフィニティ
+--Number C103: Ragnafinity
 function c20785975.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

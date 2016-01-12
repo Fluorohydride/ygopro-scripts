@@ -1,4 +1,5 @@
 --儀式魔人プレサイダー
+--Djinn Presider of Rituals
 function c34358408.initial_effect(c)
 	--ritual material
 	local e1=Effect.CreateEffect(c)

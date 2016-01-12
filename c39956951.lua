@@ -1,4 +1,5 @@
 --封魔一閃
+--Flash of the Forbidden Spell
 function c39956951.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

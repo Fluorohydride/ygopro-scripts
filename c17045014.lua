@@ -1,4 +1,5 @@
 --エヴォルダー・ディプロドクス
+--Evolsaur Diplo
 function c17045014.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

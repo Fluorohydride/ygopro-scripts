@@ -1,4 +1,5 @@
 --召喚制限－ディスコードセクター
+--And the Band Played On
 function c47594939.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

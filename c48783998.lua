@@ -1,4 +1,5 @@
 --コーリング・ノヴァ
+--Nova Summoner
 function c48783998.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

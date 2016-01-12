@@ -1,4 +1,5 @@
 --No.32 海咬龍シャーク・ドレイク
+--Number 32: Shark Drake
 function c65676461.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

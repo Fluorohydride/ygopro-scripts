@@ -1,4 +1,5 @@
 --悪魔の手鏡
+--Fiend's Hand Mirror
 function c58607704.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

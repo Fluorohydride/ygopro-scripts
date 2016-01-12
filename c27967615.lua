@@ -1,4 +1,5 @@
 --フュージョン・ウェポン
+--Fusion Weapon
 function c27967615.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --煉獄の落とし穴
+--Void Trap Hole
 function c1005587.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

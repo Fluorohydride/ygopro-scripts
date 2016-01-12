@@ -1,4 +1,5 @@
 --共闘するランドスターの剣士
+--Comrade Swordsman of Landstar
 function c83602069.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

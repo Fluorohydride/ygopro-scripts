@@ -1,4 +1,5 @@
 --マジェスペクター・フォックス
+--Majespecter Fox - Kyubi
 function c94784213.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

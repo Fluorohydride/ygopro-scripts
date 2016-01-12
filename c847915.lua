@@ -1,4 +1,5 @@
 --ナンバーズ・ウォール
+--Number Wall
 function c847915.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

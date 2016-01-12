@@ -1,4 +1,5 @@
 --禁断の異本
+--Forbidden Apocrypha
 function c3211439.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

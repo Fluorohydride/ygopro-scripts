@@ -1,4 +1,5 @@
 --月光蝶
+--Moonlit Papillon
 function c16366944.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --お注射天使リリー
+--Injection Fairy Lily
 function c79575620.initial_effect(c)
 	--attack up
 	local e1=Effect.CreateEffect(c)

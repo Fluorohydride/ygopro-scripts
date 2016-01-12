@@ -1,4 +1,5 @@
 --バブルイリュージョン
+--Bubble Illusion
 function c80075749.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --シンクロ・コントロール
+--Synchro Control
 function c88289295.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

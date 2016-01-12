@@ -1,4 +1,5 @@
 --ガードペナルティ
+--Guard Penalty
 function c48653261.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

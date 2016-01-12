@@ -1,4 +1,5 @@
 --沈黙の邪悪霊
+--Dark Spirit of the Silent
 function c93599951.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

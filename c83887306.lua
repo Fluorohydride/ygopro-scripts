@@ -1,4 +1,5 @@
 --はさみ撃ち
+--Two-Pronged Attack
 function c83887306.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

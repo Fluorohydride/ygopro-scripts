@@ -1,4 +1,5 @@
 --Sin サイバー・エンド・ドラゴン
+--Malefic Cyber End Dragon
 function c1710476.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

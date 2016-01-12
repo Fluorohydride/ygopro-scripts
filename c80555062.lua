@@ -1,4 +1,5 @@
 --武神器－チカヘシ
+--Bujingi Warg
 function c80555062.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

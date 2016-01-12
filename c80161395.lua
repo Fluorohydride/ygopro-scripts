@@ -1,4 +1,5 @@
 --神秘の中華なべ
+--Mystik Wok
 function c80161395.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

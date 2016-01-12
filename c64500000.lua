@@ -1,4 +1,5 @@
 --Z－メタル・キャタピラー
+--Z-Metal Tank
 function c64500000.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

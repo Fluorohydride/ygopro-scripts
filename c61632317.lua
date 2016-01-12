@@ -1,4 +1,5 @@
 --ダーク・スプロケッター
+--Sinister Sprocket
 function c61632317.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

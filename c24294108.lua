@@ -1,4 +1,5 @@
 --燃えさかる大地
+--Burning Land
 function c24294108.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

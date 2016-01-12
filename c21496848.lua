@@ -1,4 +1,5 @@
 --イビリチュア・テトラオーグル
+--Evigishki Tetrogre
 function c21496848.initial_effect(c)
 	c:EnableReviveLimit()
 	--send to grave

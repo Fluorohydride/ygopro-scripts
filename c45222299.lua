@@ -1,4 +1,5 @@
 --イビリチュア・ガストクラーケ
+--Evigishki Gustkraken
 function c45222299.initial_effect(c)
 	c:EnableReviveLimit()
 	--confirm

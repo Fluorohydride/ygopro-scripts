@@ -1,4 +1,5 @@
 --化石調査
+--Fossil Dig
 function c47325505.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

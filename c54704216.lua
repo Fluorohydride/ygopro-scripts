@@ -1,4 +1,5 @@
 --拷問車輪
+--Nightmare Wheel
 function c54704216.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --アーマード・サイキッカー
+--Armored Axon Kicker
 function c62742651.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

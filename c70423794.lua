@@ -1,4 +1,5 @@
 --D・コード
+--Morphtronic Cord
 function c70423794.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

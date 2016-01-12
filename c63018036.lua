@@ -1,4 +1,5 @@
 --緊急鋼核処分
+--Iron Core Immediate Disposal
 function c63018036.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

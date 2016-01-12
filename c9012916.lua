@@ -1,4 +1,5 @@
 --ブラックフェザー・ドラゴン
+--Black-Winged Dragon
 function c9012916.initial_effect(c)
 	c:EnableCounterPermit(0x3010)
 	--synchro summon

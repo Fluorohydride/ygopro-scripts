@@ -1,4 +1,5 @@
 --時限カラクリ爆弾
+--Karakuri Klock
 function c79178930.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

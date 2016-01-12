@@ -1,4 +1,5 @@
 --超合魔獣ラプテノス
+--Superalloy Beast Raptinus
 function c64463828.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

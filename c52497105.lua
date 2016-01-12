@@ -1,4 +1,5 @@
 --蛮勇鱗粉
+--Berserk Scales
 function c52497105.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

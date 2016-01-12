@@ -1,4 +1,5 @@
 --宝玉の解放
+--Crystal Release
 function c10004783.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

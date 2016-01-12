@@ -1,4 +1,5 @@
 --偉大天狗
+--Great Long Nose
 function c2356994.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

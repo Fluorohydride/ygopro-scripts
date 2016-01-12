@@ -1,4 +1,5 @@
 --エヴォルダー・ケラト
+--Evolsaur Cerato
 function c80651316.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

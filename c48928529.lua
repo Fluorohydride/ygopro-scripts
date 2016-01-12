@@ -1,4 +1,5 @@
 --No.83 ギャラクシー・クィーン
+--Number 83: Galaxy Queen
 function c48928529.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,1,3)

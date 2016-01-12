@@ -1,4 +1,5 @@
 --巨竜の羽ばたき
+--A Wingbeat of Giant Dragon
 function c28596933.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

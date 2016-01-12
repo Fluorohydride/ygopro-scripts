@@ -1,4 +1,5 @@
 --フィッシュボーグ－ドクター
+--Fishborg Doctor
 function c10560119.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

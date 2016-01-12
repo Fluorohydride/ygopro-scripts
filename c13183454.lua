@@ -1,4 +1,5 @@
 --零鳥姫リオート・ハルピュイア
+--Ice Princess Zereort
 function c13183454.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_WINDBEAST),5,2)

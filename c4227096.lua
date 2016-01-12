@@ -1,4 +1,5 @@
 --捕違い
+--Mistaken Arrest
 function c4227096.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

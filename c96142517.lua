@@ -1,4 +1,5 @@
 --RUM－千死蛮巧
+--Rank-Up-Magic Admiration of the Thousands
 function c96142517.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

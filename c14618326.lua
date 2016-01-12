@@ -1,4 +1,5 @@
 --赤い忍者
+--Crimson Ninja
 function c14618326.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

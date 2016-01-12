@@ -1,4 +1,5 @@
 --星因士 カペラ
+--Satellarknight Capella
 function c86466163.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_XMAT_COUNT_LIMIT)
 	--xyzlv

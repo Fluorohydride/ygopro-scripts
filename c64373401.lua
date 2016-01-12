@@ -1,4 +1,5 @@
 --超重武者ホラガ－E
+--Superheavy Samurai Trumpeter
 function c64373401.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --聖騎士エクター・ド・マリス
+--Noble Knight Eachtar
 function c93085839.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

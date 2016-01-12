@@ -1,4 +1,5 @@
 --暗黒界の鬼神 ケルト
+--Lucent, Netherlord of Dark World
 function c34968834.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

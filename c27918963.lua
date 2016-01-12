@@ -1,4 +1,5 @@
 --修験の妖社
+--Yosen Training Grounds
 function c27918963.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

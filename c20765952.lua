@@ -1,4 +1,5 @@
 --魔力無力化の仮面
+--Mask of Dispel
 function c20765952.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

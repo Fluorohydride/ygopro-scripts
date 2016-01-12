@@ -1,4 +1,5 @@
 --六武衆－ヤリザ
+--The Six Samurai - Yariza
 function c69025477.initial_effect(c)
 	--diratk
 	local e1=Effect.CreateEffect(c)

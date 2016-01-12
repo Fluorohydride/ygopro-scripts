@@ -1,4 +1,5 @@
 --ウジャト眼を持つ男
+--A Man with Wdjat
 function c51351302.initial_effect(c)
 	--confirm
 	local e1=Effect.CreateEffect(c)

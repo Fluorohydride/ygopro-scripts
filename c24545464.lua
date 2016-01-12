@@ -1,4 +1,5 @@
 --シンクロン・リフレクト
+--Synchro Deflector
 function c24545464.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

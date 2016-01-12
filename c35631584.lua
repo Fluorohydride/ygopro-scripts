@@ -1,4 +1,5 @@
 --セイクリッドの星痕
+--Constellar Star Chart
 function c35631584.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

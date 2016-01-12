@@ -1,4 +1,5 @@
 --BF－蒼天のジェット
+--Blackwing - Jetstream the Blue Sky
 function c87390067.initial_effect(c)
 	--indes
 	local e2=Effect.CreateEffect(c)

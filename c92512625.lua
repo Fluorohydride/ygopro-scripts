@@ -1,4 +1,5 @@
 --神の忠告
+--Solemn Scolding
 function c92512625.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --竜魂の幻泉
+--Oasis of Dragon Souls
 function c39122311.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

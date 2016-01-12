@@ -1,4 +1,5 @@
 --ゾルガ
+--Zolga
 function c16268841.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

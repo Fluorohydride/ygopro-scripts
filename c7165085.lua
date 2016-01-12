@@ -1,4 +1,5 @@
 --おとり人形
+--Bait Doll
 function c7165085.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

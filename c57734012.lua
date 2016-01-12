@@ -1,4 +1,5 @@
 --RUM－七皇の剣
+--Rank-Up-Magic - The Seventh One
 function c57734012.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

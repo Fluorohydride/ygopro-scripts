@@ -1,4 +1,5 @@
 --ジェムナイト・ルビーズ
+--Gem-Knight Ruby
 function c76614340.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

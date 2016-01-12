@@ -1,4 +1,5 @@
 --地帝家臣ランドローブ
+--Landrobe the Rock Vassal
 function c95993388.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

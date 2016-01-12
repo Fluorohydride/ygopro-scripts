@@ -1,4 +1,5 @@
 --アルティメットサイキッカー
+--Ultimate Axon Kicker
 function c40101111.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

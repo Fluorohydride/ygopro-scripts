@@ -1,4 +1,5 @@
 --人海戦術
+--Human-Wave Tactics
 function c30353551.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

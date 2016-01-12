@@ -1,4 +1,5 @@
 --エヴォルダー・ダルウィノス
+--Evolsaur Darwino
 function c39672388.initial_effect(c)
 	--lvup
 	local e1=Effect.CreateEffect(c)

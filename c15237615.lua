@@ -1,4 +1,5 @@
 --裁きを下す女帝
+--Empress Judge
 function c15237615.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

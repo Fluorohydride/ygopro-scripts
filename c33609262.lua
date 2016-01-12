@@ -1,4 +1,5 @@
 --帝王の深怨
+--Tenacity of the Monarchs
 function c33609262.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

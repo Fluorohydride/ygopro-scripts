@@ -1,4 +1,5 @@
 --銀河暴竜
+--Galaxy Tyranno
 function c24658418.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

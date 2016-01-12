@@ -1,4 +1,5 @@
 --D・クリーナン
+--Morphtronic Vacuumen
 function c48868994.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

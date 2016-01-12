@@ -1,4 +1,5 @@
 --護封剣の剣士
+--Swordsman of Revealing Light
 function c64605089.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

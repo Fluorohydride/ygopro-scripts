@@ -1,4 +1,5 @@
 --剣の煌き
+--Sword of Sparkles
 function c48447192.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --マジェスペクター・テンペスト
+--Majespecter Tempest
 function c2572890.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

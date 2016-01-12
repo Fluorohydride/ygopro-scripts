@@ -1,4 +1,5 @@
 --モンスター・アイ
+--Monster Eye
 function c84133008.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

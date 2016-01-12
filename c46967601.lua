@@ -1,4 +1,5 @@
 --呪いのお札
+--Cursed Bill
 function c46967601.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

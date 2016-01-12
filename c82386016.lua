@@ -1,4 +1,5 @@
 --烏合の行進
+--The Big Cattle Drive
 function c82386016.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

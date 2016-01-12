@@ -1,4 +1,5 @@
 --ギャクタン
+--Wiretap
 function c34507039.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

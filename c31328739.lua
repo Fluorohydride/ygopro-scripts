@@ -1,4 +1,5 @@
 --サイキック・インパルス
+--Psi-Impulse
 function c31328739.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

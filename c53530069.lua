@@ -1,4 +1,5 @@
 --そよ風の精霊
+--Spirit of the Breeze
 function c53530069.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

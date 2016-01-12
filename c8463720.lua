@@ -1,4 +1,5 @@
 --DDD剋竜王ベオウルフ
+--D/D/D Cruel Dragon King Beowulf
 function c8463720.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

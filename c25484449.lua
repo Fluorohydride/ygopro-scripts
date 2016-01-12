@@ -1,4 +1,5 @@
 --ゼンマイシャーク
+--Wind-Up Shark
 function c25484449.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

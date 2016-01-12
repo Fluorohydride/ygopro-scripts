@@ -1,4 +1,5 @@
 --財宝への隠し通路
+--Secret Pass to the Treasures
 function c77876207.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

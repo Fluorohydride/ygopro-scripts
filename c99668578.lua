@@ -1,4 +1,5 @@
 --星因士 プロキオン
+--Satellarknight Procyon
 function c99668578.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

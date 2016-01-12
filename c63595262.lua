@@ -1,4 +1,5 @@
 --ユニコーンの導き
+--Unicorn Beacon
 function c63595262.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

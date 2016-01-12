@@ -1,4 +1,5 @@
 --ペンデュラム・ターン
+--Pendulum Shift
 function c69982329.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --究極竜騎士
+--Dragon Master Knight
 function c62873545.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

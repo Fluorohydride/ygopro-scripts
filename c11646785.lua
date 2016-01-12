@@ -1,4 +1,5 @@
 --超量機獣エアロボロス
+--Super Quantum Mecha Beast Aeroboros
 function c11646785.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

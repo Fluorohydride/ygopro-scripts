@@ -1,4 +1,5 @@
 --TG レシプロ・ドラゴン・フライ
+--T.G. Recipro Dragonfly
 function c62560742.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure2(c,nil,aux.NonTuner(nil))

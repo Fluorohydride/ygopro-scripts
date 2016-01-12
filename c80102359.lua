@@ -1,4 +1,5 @@
 --強化人類サイコ
+--Reinforced Human Psychic Borg
 function c80102359.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

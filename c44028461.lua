@@ -1,4 +1,5 @@
 --ブラック・バック
+--Blackback
 function c44028461.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

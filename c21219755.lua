@@ -1,4 +1,5 @@
 --破壊指輪
+--Destruction Ring
 function c21219755.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --スリーカード
+--Three of a Kind
 function c47594192.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

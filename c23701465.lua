@@ -1,4 +1,5 @@
 --原初の種
+--Primal Seed
 function c23701465.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

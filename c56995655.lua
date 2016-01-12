@@ -1,4 +1,5 @@
 --不吉な占い
+--Ominous Fortunetelling
 function c56995655.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

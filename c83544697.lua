@@ -1,4 +1,5 @@
 --ガスタの交信
+--Contact with Gusto
 function c83544697.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

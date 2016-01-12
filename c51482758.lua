@@ -1,4 +1,5 @@
 --罠はずし
+--Remove Trap
 function c51482758.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

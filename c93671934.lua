@@ -1,4 +1,5 @@
 --士気高揚
+--Morale Boost
 function c93671934.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

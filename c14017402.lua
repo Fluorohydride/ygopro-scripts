@@ -1,4 +1,5 @@
 --波動竜騎士 ドラゴエクィテス
+--Dragon Knight Draco-Equiste
 function c14017402.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --プリンセス・コロン
+--Princess Cologne
 function c75574498.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

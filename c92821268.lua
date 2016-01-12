@@ -1,4 +1,5 @@
 --ギミック・パペット－ナイト・ジョーカー
+--Gimmick Puppet Twilight Joker
 function c92821268.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

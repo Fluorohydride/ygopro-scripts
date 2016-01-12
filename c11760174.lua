@@ -1,4 +1,5 @@
 --言語道断侍
+--Sasuke Samurai 2
 function c11760174.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)

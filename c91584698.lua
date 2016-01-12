@@ -1,4 +1,5 @@
 --EMトランプ・ウィッチ
+--Performapal Trump Witch
 function c91584698.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

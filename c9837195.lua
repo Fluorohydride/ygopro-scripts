@@ -1,4 +1,5 @@
 --ガスタの神官 ムスト
+--Musto, Oracle of Gusto
 function c9837195.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --鋼核合成獣研究所
+--Iron Core Specimen Lab
 function c53039326.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

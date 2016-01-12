@@ -1,4 +1,5 @@
 --剣闘獣トラケス
+--Gladiator Beast Torax
 function c65984457.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

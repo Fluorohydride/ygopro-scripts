@@ -1,4 +1,5 @@
 --召喚神エクゾディア
+--Summoned Lord Exodia
 function c58604027.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

@@ -1,4 +1,5 @@
 --天使の施し
+--Graceful Charity
 function c79571449.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --終わりの始まり
+--The Beginning of the End
 function c73680966.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

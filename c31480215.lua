@@ -1,4 +1,5 @@
 --幻獣機ウォーブラン
+--Mecha Phantom Beast Warbluran
 function c31480215.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

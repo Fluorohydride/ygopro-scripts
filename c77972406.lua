@@ -1,4 +1,5 @@
 --反撃の毒牙
+--Ambush Fangs
 function c77972406.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --光子竜降臨
+--Luminous Dragon Ritual
 function c34834619.initial_effect(c)
 	aux.AddRitualProcEqualCode(c,85346853)
 	--spsummon

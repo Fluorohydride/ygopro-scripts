@@ -1,4 +1,5 @@
 --心鎮壷のレプリカ
+--Xing Zhen Hu Replica
 function c40736921.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

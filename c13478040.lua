@@ -1,4 +1,5 @@
 --ドングリス
+--Rodenut
 function c13478040.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

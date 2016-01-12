@@ -1,4 +1,5 @@
 --彼岸の巡礼者 ダンテ
+--Dante, Pilgrim of the Burning Abyss
 function c18386170.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion material

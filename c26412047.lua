@@ -1,4 +1,5 @@
 --ハンマーシュート
+--Hammer Shot
 function c26412047.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

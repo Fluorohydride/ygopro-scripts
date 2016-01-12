@@ -1,4 +1,5 @@
 --炎霊神パイロレクス
+--Pyrorex the Elemental Lord
 function c35842855.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

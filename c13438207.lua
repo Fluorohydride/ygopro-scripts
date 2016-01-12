@@ -1,4 +1,5 @@
 --ブロッサム・ボンバー
+--Blossom Bombardment
 function c13438207.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --クルセイダー・オブ・エンディミオン
+--Crusader of Endymion
 function c73853830.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--add counter

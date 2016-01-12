@@ -1,4 +1,5 @@
 --X－セイバー ガラハド
+--X-Saber Galahad
 function c50604950.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

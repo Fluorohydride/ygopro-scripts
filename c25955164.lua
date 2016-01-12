@@ -1,4 +1,5 @@
 --雷魔神－サンガ
+--Sanga of the Thunder
 function c25955164.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --神殿を守る者
+--Protector of the Sanctuary
 function c24221739.initial_effect(c)
 	--cannot draw
 	local e1=Effect.CreateEffect(c)

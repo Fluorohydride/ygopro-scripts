@@ -1,4 +1,5 @@
 --儀水鏡との交信
+--Contact with the Aquamirror
 function c10925955.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

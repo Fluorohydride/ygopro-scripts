@@ -1,4 +1,5 @@
 --超古代生物の墓場
+--Grave of the Super Ancient Organism
 function c83266092.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

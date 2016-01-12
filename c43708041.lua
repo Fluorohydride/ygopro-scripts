@@ -1,4 +1,5 @@
 --陽炎光輪
+--Hazy Glory
 function c43708041.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

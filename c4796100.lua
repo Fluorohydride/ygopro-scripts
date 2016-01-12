@@ -1,4 +1,5 @@
 --有翼幻獣キマイラ
+--Chimera the Flying Mythical Beast
 function c4796100.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

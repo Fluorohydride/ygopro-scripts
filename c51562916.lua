@@ -1,4 +1,5 @@
 --大波小波
+--Big Wave Small Wave
 function c51562916.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --プリズンクインデーモン
+--Imprisoned Queen Archfiend
 function c52248570.initial_effect(c)
 	--maintain
 	local e1=Effect.CreateEffect(c)

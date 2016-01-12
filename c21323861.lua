@@ -1,4 +1,5 @@
 --酸の嵐
+--Acid Rain
 function c21323861.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --アメーバ
+--Ameba
 function c95174353.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

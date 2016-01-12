@@ -1,4 +1,5 @@
 --甲虫装機 センチピード
+--Inzektor Centipede
 function c21790410.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

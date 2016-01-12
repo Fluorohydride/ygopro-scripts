@@ -1,4 +1,5 @@
 --ハンマー・シャーク
+--Hammer Shark
 function c17201174.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

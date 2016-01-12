@@ -1,4 +1,5 @@
 --ラヴァル炎湖畔の淑女
+--Laval Lakeside Lady
 function c8041569.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

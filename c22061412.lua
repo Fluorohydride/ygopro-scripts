@@ -1,4 +1,5 @@
 --E・HERO The シャイニング
+--Elemental HERO The Shining
 function c22061412.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

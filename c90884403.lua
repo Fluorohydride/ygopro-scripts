@@ -1,4 +1,5 @@
 --究極幻神 アルティミトル・ビシバールキン
+--Ultimitl Bishbalkin the Ultimate Legendary God
 function c90884403.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

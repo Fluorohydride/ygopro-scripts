@@ -1,4 +1,5 @@
 --ジェムナイト・アレキサンド
+--Gem-Knight Alexandrite
 function c90019393.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

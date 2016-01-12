@@ -1,4 +1,5 @@
 --VW－タイガー・カタパルト
+--VW-Tiger Catapult
 function c58859575.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

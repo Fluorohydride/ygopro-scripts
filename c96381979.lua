@@ -1,4 +1,5 @@
 --魁炎星王－ソウコ
+--Brotherhood of the Fire Fist - Tiger King
 function c96381979.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_BEASTWARRIOR),4,2)

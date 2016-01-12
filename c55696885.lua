@@ -1,4 +1,5 @@
 --疫病狼
+--Plague Wolf
 function c55696885.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

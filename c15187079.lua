@@ -1,4 +1,5 @@
 --地縛神 Uru
+--Earthbound Immortal Uru
 function c15187079.initial_effect(c)
 	c:SetUniqueOnField(1,1,10000000)
 	--

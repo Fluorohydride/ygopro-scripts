@@ -1,4 +1,5 @@
 --波動竜フォノン・ドラゴン
+--Phonon Pulse Dragon
 function c67556500.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_MUST_BE_SMATERIAL)
 	c:SetSPSummonOnce(67556500)

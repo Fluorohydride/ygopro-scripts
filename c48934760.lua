@@ -1,4 +1,5 @@
 --終焉の地
+--Demise of the Land
 function c48934760.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

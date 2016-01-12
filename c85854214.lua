@@ -1,4 +1,5 @@
 --ヒーローズルール2
+--Hero's Rule 2
 function c85854214.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

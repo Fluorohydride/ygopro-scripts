@@ -1,4 +1,5 @@
 --二者一両損
+--Simultaneous Loss
 function c92219931.initial_effect(c)
 	--discard deck
 	local e1=Effect.CreateEffect(c)

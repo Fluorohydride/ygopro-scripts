@@ -1,4 +1,5 @@
 --羅刹
+--Rasetsu
 function c43378076.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

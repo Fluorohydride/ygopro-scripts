@@ -1,4 +1,5 @@
 --真実の眼
+--The Eye of Truth
 function c34694160.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

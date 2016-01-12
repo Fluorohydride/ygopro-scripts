@@ -1,4 +1,5 @@
 --地獄の扉越し銃
+--Barrel Behind the Door
 function c78783370.initial_effect(c)
 	--reflect
 	local e1=Effect.CreateEffect(c)

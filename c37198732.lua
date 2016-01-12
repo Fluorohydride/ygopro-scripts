@@ -1,4 +1,5 @@
 --レベル・マイスター
+--Level Lifter
 function c37198732.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

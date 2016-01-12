@@ -1,4 +1,5 @@
 --魔導鬼士 ディアール
+--Prophecy Destroyer
 function c56174248.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

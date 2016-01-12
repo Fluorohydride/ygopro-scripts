@@ -1,4 +1,5 @@
 --BF－煌星のグラム
+--Blackwing - Gram the Shining Star
 function c17377751.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

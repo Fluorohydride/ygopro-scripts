@@ -1,4 +1,5 @@
 --BF－極光のアウロラ
+--Blackwing - Aurora the Northern Lights
 function c4068622.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

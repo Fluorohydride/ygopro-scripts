@@ -1,4 +1,5 @@
 --大気圏外射撃
+--Orbital Bombardment
 function c96875080.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ゼンマイソルジャー
+--Wind-Up Soldier
 function c12299841.initial_effect(c)
 	--atk/lv up
 	local e1=Effect.CreateEffect(c)

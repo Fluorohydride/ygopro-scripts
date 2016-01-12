@@ -1,4 +1,5 @@
 --雷帝ザボルグ
+--Zaborg the Thunder Monarch
 function c51945556.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

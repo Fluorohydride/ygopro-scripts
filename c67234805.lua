@@ -1,4 +1,5 @@
 --能力吸収石
+--Powersink Stone
 function c67234805.initial_effect(c)
 	c:SetCounterLimit(0x16,2)
 	--Activate

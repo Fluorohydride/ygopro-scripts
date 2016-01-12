@@ -1,4 +1,5 @@
 --銀河の施し
+--Galactic Charity
 function c20349913.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

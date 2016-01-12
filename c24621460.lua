@@ -1,4 +1,5 @@
 --カラクリ小町 弐弐四
+--Karakuri Komachi mdl 224 "Ninishi"
 function c24621460.initial_effect(c)
 	--must attack
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --熟練の青魔道士
+--Skilled Blue Magician
 function c88901771.initial_effect(c)
 	c:EnableCounterPermit(0x3001)
 	c:SetCounterLimit(0x3001,3)

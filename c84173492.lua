@@ -1,4 +1,5 @@
 --不屈闘士 レイレイ
+--Indomitable Fighter Lei Lei
 function c84173492.initial_effect(c)
 	--to defence
 	local e1=Effect.CreateEffect(c)

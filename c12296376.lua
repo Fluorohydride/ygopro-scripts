@@ -1,4 +1,5 @@
 --エレキツツキ
+--Wattwoodpecker
 function c12296376.initial_effect(c)
 	--multi attack
 	local e1=Effect.CreateEffect(c)

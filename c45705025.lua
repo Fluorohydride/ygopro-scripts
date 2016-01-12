@@ -1,4 +1,5 @@
 --紋章獣ユニコーン
+--Heraldic Beast Unicorn
 function c45705025.initial_effect(c)
 	--revive 
 	local e1=Effect.CreateEffect(c)

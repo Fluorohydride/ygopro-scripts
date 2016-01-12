@@ -1,4 +1,5 @@
 --アルカナフォースIV－THE EMPEROR
+--Arcana Force IV - The Emperor
 function c61175706.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)

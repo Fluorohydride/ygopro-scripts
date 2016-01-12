@@ -1,4 +1,5 @@
 --A・ジェネクス・ケミストリ
+--Genex Ally Chemistrer
 function c38049541.initial_effect(c)
 	--att change
 	local e1=Effect.CreateEffect(c)

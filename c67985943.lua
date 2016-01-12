@@ -1,4 +1,5 @@
 --ジェムナイト・マディラ
+--Gem-Knight Citrine
 function c67985943.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --機械王－B.C.3000
+--Machine King - 3000 B.C.
 function c70406920.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

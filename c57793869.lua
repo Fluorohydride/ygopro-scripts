@@ -1,4 +1,5 @@
 --邪神イレイザー
+--The Wicked Eraser
 function c57793869.initial_effect(c)
 	--summon with 3 tribute
 	local e1=Effect.CreateEffect(c)

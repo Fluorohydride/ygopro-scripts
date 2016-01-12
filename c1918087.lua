@@ -1,4 +1,5 @@
 --ゴブリンの小役人
+--Minor Goblin Official
 function c1918087.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --SRシェイブー・メラン
+--Speedroid Razorang
 function c80559548.initial_effect(c)
 	--cannot attack
 	local e1=Effect.CreateEffect(c)

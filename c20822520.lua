@@ -1,4 +1,5 @@
 --魔導書庫ソレイン
+--Spellbook Library of the Heliosphere
 function c20822520.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

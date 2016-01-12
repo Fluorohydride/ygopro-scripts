@@ -1,4 +1,5 @@
 --紅蓮魔闘士
+--Knight of the Red Lotus
 function c46237548.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

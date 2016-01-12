@@ -1,4 +1,5 @@
 --No.101 S・H・Ark Knight
+--Number 101: Silent Honor ARK
 function c48739166.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

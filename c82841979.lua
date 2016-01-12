@@ -1,4 +1,5 @@
 --大和神
+--Yamato-no-Kami
 function c82841979.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

@@ -1,4 +1,5 @@
 --ライトロード・アーチャー フェリス
+--Felis, Lightsworn Archer
 function c73176465.initial_effect(c)
 	c:EnableUnsummonable()
 	--special summon

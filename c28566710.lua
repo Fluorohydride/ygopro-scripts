@@ -1,4 +1,5 @@
 --ラストバトル！
+--Last Turn
 function c28566710.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

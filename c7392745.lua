@@ -1,4 +1,5 @@
 --チュウボーン
+--Chewbone
 function c7392745.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

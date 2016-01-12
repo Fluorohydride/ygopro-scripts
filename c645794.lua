@@ -1,4 +1,5 @@
 --マジェスペクター・フロッグ
+--Majespecter Toad - Ogama
 function c645794.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --E・HERO Great TORNADO
+--Elemental HERO Great Tornado
 function c3642509.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

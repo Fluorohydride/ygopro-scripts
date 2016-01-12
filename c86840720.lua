@@ -1,4 +1,5 @@
 --魔轟神ディフ
+--Fabled Dyf
 function c86840720.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

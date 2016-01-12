@@ -1,4 +1,5 @@
 --魔神王の契約書
+--Dark Contract with the Swamp King
 function c73360025.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

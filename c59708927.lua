@@ -1,4 +1,5 @@
 --アンブラル・ゴースト
+--Umbral Horror Ghost
 function c59708927.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

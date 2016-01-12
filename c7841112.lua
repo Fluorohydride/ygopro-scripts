@@ -1,4 +1,5 @@
 --セイヴァー・スター・ドラゴン
+--Majestic Star Dragon
 function c7841112.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()

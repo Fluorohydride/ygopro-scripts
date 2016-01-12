@@ -1,4 +1,5 @@
 --H・C ウォー・ハンマー
+--Heroic Challenger - War Hammer
 function c26885836.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --伝説のフィッシャーマン
+--The Legendary Fisherman
 function c3643300.initial_effect(c)
 	--immune spell
 	local e1=Effect.CreateEffect(c)

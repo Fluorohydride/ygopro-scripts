@@ -1,4 +1,5 @@
 --ゴブリン暗殺部隊
+--Goblin Black Ops
 function c66707058.initial_effect(c)
 	--to defence
 	local e1=Effect.CreateEffect(c)

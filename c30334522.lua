@@ -1,4 +1,5 @@
 --イビリチュア・プシュケローネ
+--Gishki Psychelone
 function c30334522.initial_effect(c)
 	c:EnableReviveLimit()
 	--confirm

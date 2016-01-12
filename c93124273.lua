@@ -1,4 +1,5 @@
 --Samurai Calvary of Reptier
+--Samurai Cavalry of Reptier
 function c93124273.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

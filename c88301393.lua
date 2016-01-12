@@ -1,4 +1,5 @@
 --インフェルノイド・アドラメレク
+--Infernoid Attondel
 function c88301393.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

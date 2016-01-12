@@ -1,4 +1,5 @@
 --サイバー・ドラゴン・インフィニティ
+--Cyber Dragon Infinity
 function c10443957.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,c10443957.mfilter,6,3,c10443957.ovfilter,aux.Stringid(10443957,0),3,c10443957.xyzop)

@@ -1,4 +1,5 @@
 --クレイ・チャージ
+--Clay Charge
 function c22479888.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --大王目玉
+--Big Eye
 function c16768387.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

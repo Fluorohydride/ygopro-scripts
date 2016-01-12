@@ -1,4 +1,5 @@
 --RUM－デス・ダブル・フォース
+--Rank-Up-Magic Death Double Force
 function c86196216.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

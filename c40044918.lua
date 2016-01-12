@@ -1,4 +1,5 @@
 --E・HERO エアーマン
+--Elemental HERO Stratos
 function c40044918.initial_effect(c)
 	--effect
 	local e1=Effect.CreateEffect(c)

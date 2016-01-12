@@ -1,4 +1,5 @@
 --一時休戦
+--One Day of Peace
 function c33782437.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

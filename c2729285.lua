@@ -1,4 +1,5 @@
 --ファーニマル・キャット
+--Fluffal Cat
 function c2729285.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

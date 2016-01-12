@@ -1,4 +1,5 @@
 --エレキック・ファイター
+--Wattsychic Fighter
 function c81028112.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

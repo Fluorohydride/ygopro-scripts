@@ -1,4 +1,5 @@
 --レアル・ジェネクス・クラッシャー
+--R-Genex Crusher
 function c65149697.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

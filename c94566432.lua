@@ -1,4 +1,5 @@
 --カイザー・ドラゴン
+--Kaiser Dragon
 function c94566432.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

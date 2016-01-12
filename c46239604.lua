@@ -1,4 +1,5 @@
 --魔知ガエル
+--Dupe Frog
 function c46239604.initial_effect(c)
 	--change code
 	local e1=Effect.CreateEffect(c)

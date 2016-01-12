@@ -1,4 +1,5 @@
 --幻獣機ブラックファルコン
+--Mecha Phantom Beast Blackfalcon
 function c4417407.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

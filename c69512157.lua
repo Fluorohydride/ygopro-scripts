@@ -1,4 +1,5 @@
 --竜魔王ベクターP
+--Vector Pendulum, the Dracoverlord
 function c69512157.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

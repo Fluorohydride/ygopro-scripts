@@ -1,4 +1,5 @@
 --剣闘獣サムニテ
+--Gladiator Beast Samnite
 function c2619149.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

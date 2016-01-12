@@ -1,4 +1,5 @@
 --バリア・バブル
+--Barrier Bubble
 function c79777187.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

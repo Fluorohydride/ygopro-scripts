@@ -1,4 +1,5 @@
 --妖怪のいたずら
+--Mischief of the Yokai
 function c29795530.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

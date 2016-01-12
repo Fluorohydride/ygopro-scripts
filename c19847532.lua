@@ -1,4 +1,5 @@
 --ヘルフレイムエンペラー
+--Infernal Flame Emperor
 function c19847532.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --タイム・ボマー
+--Jigen Bakudan
 function c90020065.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

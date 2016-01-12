@@ -1,4 +1,5 @@
 --地霊神グランソイル
+--Grandsoil the Elemental Lord
 function c61468779.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

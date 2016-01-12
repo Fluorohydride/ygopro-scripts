@@ -1,4 +1,5 @@
 --ワーム・ウォーロード
+--Worm Warlord
 function c35638627.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

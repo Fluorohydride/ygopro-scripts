@@ -1,4 +1,5 @@
 --M・HERO アシッド
+--Masked HERO Acid
 function c29095552.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

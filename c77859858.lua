@@ -1,4 +1,5 @@
 --破滅へのクイック・ドロー
+--Destructive Draw
 function c77859858.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

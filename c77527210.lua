@@ -1,4 +1,5 @@
 --神聖なる魂
+--Soul of Purity and Light
 function c77527210.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,4 +1,5 @@
 --八汰鏡
+--Mirror of Yata
 function c1200843.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

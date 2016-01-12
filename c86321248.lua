@@ -1,4 +1,5 @@
 --古代の機械合成獣
+--Ancient Gear Gadjiltron Chimera
 function c86321248.initial_effect(c)
 	--mat check
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --轟雷帝ザボルグ
+--Zaborg the Mega Monarch
 function c87602890.initial_effect(c)
 	--summon with 1 tribute
 	local e1=Effect.CreateEffect(c)

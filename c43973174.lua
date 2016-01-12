@@ -1,4 +1,5 @@
 --ドラゴンを呼ぶ笛
+--The Flute of Summoning Dragon
 function c43973174.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

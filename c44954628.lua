@@ -1,4 +1,5 @@
 --巨大戦艦 テトラン
+--B.E.S. Tetran
 function c44954628.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

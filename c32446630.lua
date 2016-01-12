@@ -1,4 +1,5 @@
 --CNo.43 魂魄傀儡鬼神カオス・マリオネッター
+--Number C43: High Manipulator of Chaos
 function c32446630.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_DARK),3,4)

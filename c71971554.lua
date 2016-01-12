@@ -1,4 +1,5 @@
 --ロード・シンクロン
+--Road Synchron
 function c71971554.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

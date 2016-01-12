@@ -1,4 +1,5 @@
 --Emダメージ・ジャグラー
+--Performage Damage Juggler
 function c68819554.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

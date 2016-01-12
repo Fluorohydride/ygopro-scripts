@@ -1,4 +1,5 @@
 --九蛇孔雀
+--Kujakujaku
 function c24384095.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ゴーストリックの雪女
+--Ghostrick Yuki-onna
 function c54490275.initial_effect(c)
 	--summon limit
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --騎士道精神
+--Kishido Spirit
 function c60519422.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

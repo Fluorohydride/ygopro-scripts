@@ -1,4 +1,5 @@
 --琰魔竜王 レッド・デーモン・カラミティ
+--Hot Red Dragon Archfiend King Calamity
 function c62242678.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()

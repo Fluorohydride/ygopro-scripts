@@ -1,4 +1,5 @@
 --エクシーズ・リベンジ
+--Xyz Revenge
 function c10275411.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

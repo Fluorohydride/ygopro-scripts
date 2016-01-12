@@ -1,4 +1,5 @@
 --暴君の暴飲暴食
+--Tyrant's Tummyache
 function c48357738.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

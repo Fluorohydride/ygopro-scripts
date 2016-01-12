@@ -1,4 +1,5 @@
 --アビスケイル－クラーケン
+--Abyss-scale of the Kraken
 function c8719957.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

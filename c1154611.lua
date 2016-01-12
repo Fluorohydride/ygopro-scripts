@@ -1,4 +1,5 @@
 --버제스토마 레안코일리아
+--Burgesstoma Leanchoilia
 function c1154611.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

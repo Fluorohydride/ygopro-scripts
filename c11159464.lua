@@ -1,4 +1,5 @@
 --ワーム・ホープ
+--Worm Hope
 function c11159464.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

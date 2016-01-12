@@ -1,4 +1,5 @@
 --水照明
+--Aquarium Lighting
 function c91831066.initial_effect(c)
 	c:SetUniqueOnField(1,0,91831066)
 	--Activate

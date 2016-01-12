@@ -1,4 +1,5 @@
 --群雄割拠
+--Rivalry of Warlords
 function c90846359.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

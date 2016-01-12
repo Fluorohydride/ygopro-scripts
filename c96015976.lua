@@ -1,4 +1,5 @@
 --再転
+--Diceversity
 function c96015976.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

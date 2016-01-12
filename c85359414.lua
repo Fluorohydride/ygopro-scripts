@@ -1,4 +1,5 @@
 --氷岩魔獣
+--Freezing Beast
 function c85359414.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

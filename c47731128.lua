@@ -1,4 +1,5 @@
 --結界術師 メイコウ
+--Mei-Kou, Master of Barriers
 function c47731128.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

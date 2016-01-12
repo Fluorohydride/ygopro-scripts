@@ -1,4 +1,5 @@
 --ヴォルカニック・チャージ
+--Volcanic Recharge
 function c33725271.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

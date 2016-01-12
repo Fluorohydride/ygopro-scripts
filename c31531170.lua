@@ -1,4 +1,5 @@
 --共鳴する振動
+--Harmonic Oscillation
 function c31531170.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

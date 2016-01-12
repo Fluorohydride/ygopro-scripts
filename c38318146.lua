@@ -1,4 +1,5 @@
 --暴君の暴力
+--Tyrant's Tantrum
 function c38318146.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

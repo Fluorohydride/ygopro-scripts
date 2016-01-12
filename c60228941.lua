@@ -1,4 +1,5 @@
 --暗黒界の術師 スノウ
+--Snoww, Unlight of Dark World
 function c60228941.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

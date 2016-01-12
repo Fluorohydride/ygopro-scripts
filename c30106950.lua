@@ -1,4 +1,5 @@
 --炎竜星－シュンゲイ
+--Suanni, Fire of the Yang Zing
 function c30106950.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

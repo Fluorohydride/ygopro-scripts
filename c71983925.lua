@@ -1,4 +1,5 @@
 --魔法封印の呪符
+--Talisman of Spell Sealing
 function c71983925.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

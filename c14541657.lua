@@ -1,4 +1,5 @@
 --黄昏の忍者－シンゲツ
+--Twilight Ninja Shingetsu
 function c14541657.initial_effect(c)
 	--untargetable
 	local e1=Effect.CreateEffect(c)

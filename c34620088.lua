@@ -1,4 +1,5 @@
 --ギミック・パペット－シャドー・フィーラー
+--Gimmick Puppet Shadow Feeler
 function c34620088.initial_effect(c)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)

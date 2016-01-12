@@ -1,4 +1,5 @@
 --守護天使 ジャンヌ
+--Guardian Angel Joan
 function c68007326.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

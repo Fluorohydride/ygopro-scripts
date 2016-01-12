@@ -1,4 +1,5 @@
 --バーサーク・デッド・ドラゴン
+--Berserk Dragon
 function c85605684.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon limit

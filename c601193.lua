@@ -1,4 +1,5 @@
 --彼岸の詩人 ウェルギリウス
+--Virgil, Rock Star of the Burning Abyss
 function c601193.initial_effect(c)
 	c:SetUniqueOnField(1,0,601193)
 	--synchro summon

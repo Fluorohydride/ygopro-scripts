@@ -1,4 +1,5 @@
 --ガガガマジシャン
+--Gagaga Magician
 function c26082117.initial_effect(c)
 	c:SetUniqueOnField(1,0,26082117)
 	--lv change

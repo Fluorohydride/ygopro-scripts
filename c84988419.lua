@@ -1,4 +1,5 @@
 --幻奏の華歌聖ブルーム・ディーヴァ
+--Bloom Diva the Melodious Choir
 function c84988419.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

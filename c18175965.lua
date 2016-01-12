@@ -1,4 +1,5 @@
 --ガーディアン・デスサイス
+--Guardian Dreadscythe
 function c18175965.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

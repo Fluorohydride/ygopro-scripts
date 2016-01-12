@@ -1,4 +1,5 @@
 --茫漠の死者
+--Endless Decay
 function c7845138.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

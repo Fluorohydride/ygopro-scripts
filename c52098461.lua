@@ -1,4 +1,5 @@
 --ラス・オブ・ネオス
+--Wrath of Neos
 function c52098461.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

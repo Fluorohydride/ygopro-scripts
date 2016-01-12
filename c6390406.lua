@@ -1,4 +1,5 @@
 --竜破壊の証
+--Emblem of Dragon Destroyer
 function c6390406.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

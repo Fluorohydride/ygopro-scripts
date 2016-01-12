@@ -1,4 +1,5 @@
 --幻木龙
+--Mythic Tree Dragon
 function c50457953.initial_effect(c)
 	--lvchange
 	local e1=Effect.CreateEffect(c)

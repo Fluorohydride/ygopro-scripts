@@ -1,4 +1,5 @@
 --チェンジ・デステニー
+--Changing Destiny
 function c24673894.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

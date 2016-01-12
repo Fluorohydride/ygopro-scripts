@@ -1,4 +1,5 @@
 --紋章獣アバコーンウェイ
+--Heraldic Beast Aberconway
 function c60316373.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

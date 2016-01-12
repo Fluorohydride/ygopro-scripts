@@ -1,4 +1,5 @@
 --サイバー・リペア・プラント
+--Cyber Repair Plant
 function c86686671.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

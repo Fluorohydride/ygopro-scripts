@@ -1,4 +1,5 @@
 --クラウソラスの影霊衣
+--Nekroz of Clausolas
 function c99185129.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

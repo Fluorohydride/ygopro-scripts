@@ -1,4 +1,5 @@
 --トークン復活祭
+--Token Sundae
 function c52971673.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

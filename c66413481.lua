@@ -1,4 +1,5 @@
 --炎王獣 ヤクシャ
+--Fire King Avatar Yaksha
 function c66413481.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

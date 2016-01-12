@@ -1,4 +1,5 @@
 --暗黒火炎龍
+--Darkfire Dragon
 function c17881964.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

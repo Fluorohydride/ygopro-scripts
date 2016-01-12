@@ -1,4 +1,5 @@
 --平行世界融合
+--Parallel World Fusion
 function c54283059.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

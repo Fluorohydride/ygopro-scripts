@@ -1,4 +1,5 @@
 --封魔の呪印
+--Cursed Seal of the Forbidden Spell
 function c58851034.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

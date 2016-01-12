@@ -1,4 +1,5 @@
 --薔薇の妖精
+--Rose Fairy
 function c44125452.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

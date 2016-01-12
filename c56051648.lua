@@ -1,4 +1,5 @@
 --スパイダー・エッグ
+--Spider Egg
 function c56051648.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ライトニング・チューン
+--Lightwave Tuning
 function c78845026.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

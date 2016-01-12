@@ -1,4 +1,5 @@
 --トゥーン・ロールバック
+--Toon Rollback
 function c70560957.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

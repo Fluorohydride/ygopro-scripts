@@ -1,4 +1,5 @@
 --幸運を告げるフクロウ
+--An Owl of Luck
 function c23927567.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

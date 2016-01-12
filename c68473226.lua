@@ -1,4 +1,5 @@
 --ハードアームドラゴン
+--Hardened Armed Dragon
 function c68473226.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ワンダー・ワンド
+--Wonder Wand
 function c67775894.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

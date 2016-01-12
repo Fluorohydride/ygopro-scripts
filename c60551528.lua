@@ -1,4 +1,5 @@
 --インフェルノイド・シャイターン
+--Infernoid Pirmais
 function c60551528.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

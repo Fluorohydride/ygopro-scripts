@@ -1,4 +1,5 @@
 --原初のスープ
+--Primordial Soup
 function c78933589.initial_effect(c)
 	c:SetUniqueOnField(1,0,78933589)
 	--activate

@@ -1,4 +1,5 @@
 --超量機獣グランパルス
+--Super Quantum Mecha Beast Granpulse
 function c85252081.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

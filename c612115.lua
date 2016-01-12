@@ -1,4 +1,5 @@
 --剣闘獣レティアリィ
+--Gladiator Beast Retiari
 function c612115.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

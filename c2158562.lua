@@ -1,4 +1,5 @@
 --サイバー・プリマ
+--Cyber Prima
 function c2158562.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

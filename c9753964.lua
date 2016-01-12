@@ -1,4 +1,5 @@
 --琰魔竜 レッド・デーモン・アビス
+--Hot Red Dragon Archfiend Abyss
 function c9753964.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure2(c,nil,aux.NonTuner(c9753964.sfilter))

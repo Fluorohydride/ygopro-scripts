@@ -1,4 +1,5 @@
 --A・O・J コズミック・クローザー
+--Ally of Justice Cosmic Gateway
 function c8822710.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ヴァンパイア帝国
+--Vampire Kingdom
 function c62188962.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --光の追放者
+--Banisher of the Light
 function c61528025.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

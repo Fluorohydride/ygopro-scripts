@@ -1,4 +1,5 @@
 --E・HERO ダーク・ブライトマン
+--Elemental HERO Darkbright
 function c41517968.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

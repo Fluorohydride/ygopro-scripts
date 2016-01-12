@@ -1,4 +1,5 @@
 --パワー・ボンド
+--Power Bond
 function c37630732.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

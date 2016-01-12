@@ -1,4 +1,5 @@
 --奇跡の軌跡
+--Miracle Locus
 function c97168905.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

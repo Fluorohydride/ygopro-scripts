@@ -1,4 +1,5 @@
 --聖刻龍－セテクドラゴン
+--Hieratic Dragon of Sutekh
 function c66789970.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon from hand

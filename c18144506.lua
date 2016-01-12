@@ -1,4 +1,5 @@
 --ハーピィの羽根帚
+--Harpie's Feather Duster
 function c18144506.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

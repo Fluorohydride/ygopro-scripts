@@ -1,4 +1,5 @@
 --謙虚な壺
+--Pot of Generosity
 function c70278545.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

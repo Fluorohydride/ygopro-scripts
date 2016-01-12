@@ -1,4 +1,5 @@
 --D－HERO ドレッドガイ
+--Destiny HERO - Dreadmaster
 function c40591390.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(40591390,0))

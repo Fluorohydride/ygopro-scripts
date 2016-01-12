@@ -1,4 +1,5 @@
 --創星神 sophia
+--Sophia, Goddess of Rebirth
 function c4335427.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,4 +1,5 @@
 --バトル・ブレイク
+--Battle Break
 function c22047978.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --琰魔竜 レッド・デーモン
+--Hot Red Dragon Archfiend
 function c39765958.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

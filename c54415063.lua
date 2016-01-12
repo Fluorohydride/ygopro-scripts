@@ -1,4 +1,5 @@
 --ハーピィ・レディ3
+--Harpie Lady 3
 function c54415063.initial_effect(c)
 	--atk limit
 	local e1=Effect.CreateEffect(c)

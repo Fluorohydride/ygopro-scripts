@@ -1,4 +1,5 @@
 --ライトレイ ダイダロス
+--Lightray Daedalus
 function c38737148.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,4 +1,5 @@
 --古代の採掘機
+--Ancient Gear Drill
 function c67829249.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

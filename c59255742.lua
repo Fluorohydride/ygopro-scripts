@@ -1,4 +1,5 @@
 --ゴヨウ・エンペラー
+--Goyo Emperor
 function c59255742.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --モイスチャー星人
+--Moisture Creature
 function c75285069.initial_effect(c)
 	--summon with 3 tribute
 	local e1=Effect.CreateEffect(c)

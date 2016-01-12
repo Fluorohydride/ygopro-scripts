@@ -1,4 +1,5 @@
 --ミニマム・ガッツ
+--Mini-Guts
 function c99004752.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --電動刃虫
+--Chainsaw Insect
 function c77252217.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(77252217,0))

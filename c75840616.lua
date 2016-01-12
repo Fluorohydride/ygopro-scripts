@@ -1,4 +1,5 @@
 --武神帝－スサノヲ
+--Bujintei Susanowo
 function c75840616.initial_effect(c)
 	c:SetUniqueOnField(1,0,75840616)
 	--xyz summon

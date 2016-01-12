@@ -1,4 +1,5 @@
 --ナチュル・スタッグ
+--Naturia Stag Beetle
 function c23051413.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

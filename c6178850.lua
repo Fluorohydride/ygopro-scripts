@@ -1,4 +1,5 @@
 --ファイティング・スピリッツ
+--Fighting Spirit
 function c6178850.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

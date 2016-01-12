@@ -1,4 +1,5 @@
 --銀の弓矢
+--Silver Bow and Arrow
 function c1557499.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

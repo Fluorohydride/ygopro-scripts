@@ -1,4 +1,5 @@
 --BF－残夜のクリス
+--Blackwing - Kris the Crack of Dawn
 function c81105204.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

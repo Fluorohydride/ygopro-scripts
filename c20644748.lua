@@ -1,4 +1,5 @@
 --宇宙の収縮
+--Spatial Collapse
 function c20644748.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

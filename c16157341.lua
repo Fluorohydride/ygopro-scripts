@@ -1,4 +1,5 @@
 --武神器－オハバリ
+--Bujingi Ibis
 function c16157341.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

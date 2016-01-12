@@ -1,4 +1,5 @@
 --レアル・ジェネクス・コーディネイター
+--R-Genex Overseer
 function c32744558.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

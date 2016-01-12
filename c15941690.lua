@@ -1,4 +1,5 @@
 --先史遺産クリスタル・ボーン
+--Chronomaly Crystal Bones
 function c15941690.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

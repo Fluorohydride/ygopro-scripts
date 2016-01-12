@@ -1,4 +1,5 @@
 --ミノケンタウロス
+--Rabid Horseman
 function c94905343.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

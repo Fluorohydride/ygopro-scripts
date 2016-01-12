@@ -1,4 +1,5 @@
 --物理分身
+--Physical Double
 function c63442604.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

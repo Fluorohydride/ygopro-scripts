@@ -1,4 +1,5 @@
 --ヴァイロン・アルファ
+--Vylon Alpha
 function c56768355.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x30),aux.NonTuner(nil),1)

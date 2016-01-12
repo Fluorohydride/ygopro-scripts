@@ -1,4 +1,5 @@
 --黒翼の魔術師
+--Night Wing Sorceress
 function c49826746.initial_effect(c)
 	--Trap activate in set turn
 	local e1=Effect.CreateEffect(c)

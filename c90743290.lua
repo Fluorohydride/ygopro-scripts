@@ -1,4 +1,5 @@
 --魔導老士 エアミット
+--Hermit of Prophecy
 function c90743290.initial_effect(c)
 	--atk/lvup
 	local e1=Effect.CreateEffect(c)

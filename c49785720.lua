@@ -1,4 +1,5 @@
 --機炎星－ゴヨウテ
+--Brotherhood of the Fire Fist - Coyote
 function c49785720.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

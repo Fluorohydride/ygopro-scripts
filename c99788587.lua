@@ -1,4 +1,5 @@
 --爆導索
+--Blasting Fuse
 function c99788587.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --覚醒の暗黒騎士ガイア
+--Arisen Gaia the Fierce Knight
 function c29904964.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

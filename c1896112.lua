@@ -1,4 +1,5 @@
 --次元誘爆
+--Dimension Explosion
 function c1896112.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

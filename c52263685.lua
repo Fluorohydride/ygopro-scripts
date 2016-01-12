@@ -1,4 +1,5 @@
 --盗み見ゴブリン
+--Peeking Goblin
 function c52263685.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --フェンリル
+--Fenrir
 function c218704.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

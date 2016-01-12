@@ -1,4 +1,5 @@
 --深海に潜むサメ
+--Deepsea Shark
 function c28593363.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --No.43 魂魄傀儡鬼ソウル・マリオネッター
+--Number 43: Manipulator of Souls
 function c56051086.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_DARK),2,3)

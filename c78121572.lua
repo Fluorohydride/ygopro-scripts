@@ -1,4 +1,5 @@
 --黒魔力の精製者
+--Alchemist of Black Spells
 function c78121572.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

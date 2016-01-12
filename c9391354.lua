@@ -1,4 +1,5 @@
 --グラビ・クラッシュドラゴン
+--Gravi-Crush Dragon
 function c9391354.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

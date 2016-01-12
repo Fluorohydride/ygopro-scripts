@@ -1,4 +1,5 @@
 --トライポッド・フィッシュ
+--Tripod Fish
 function c61254509.initial_effect(c)
 	--lv up
 	local e1=Effect.CreateEffect(c)

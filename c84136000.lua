@@ -1,4 +1,5 @@
 --復活の墓穴
+--The Grave of Enkindling
 function c84136000.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

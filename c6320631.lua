@@ -1,4 +1,5 @@
 --コアキメイル・ロック
+--Koa'ki Meiru Boulder
 function c6320631.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ディフェンダーズ・クロス
+--Defenders Intersect
 function c71417170.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

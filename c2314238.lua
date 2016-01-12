@@ -1,4 +1,5 @@
 --黒・魔・導
+--Dark Magic Attack
 function c2314238.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

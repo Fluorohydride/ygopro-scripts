@@ -1,4 +1,5 @@
 --ロード・ウォリアー
+--Road Warrior
 function c2322421.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c2322421.tfilter,aux.NonTuner(nil),2)

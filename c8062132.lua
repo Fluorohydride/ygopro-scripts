@@ -1,4 +1,5 @@
 --毒蛇神ヴェノミナーガ
+--Vennominaga the Deity of Poisonous Snakes
 function c8062132.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

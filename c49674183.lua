@@ -1,4 +1,5 @@
 --魔天使ローズ・ソーサラー
+--Fallen Angel of Roses
 function c49674183.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

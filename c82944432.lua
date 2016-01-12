@@ -1,4 +1,5 @@
 --機甲忍者ブレード・ハート
+--Blade Armor Ninja
 function c82944432.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),4,2)

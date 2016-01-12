@@ -1,4 +1,5 @@
 --コミックハンド
+--Comic Hand
 function c33453260.initial_effect(c)
 	--Equip
 	local e1=Effect.CreateEffect(c)

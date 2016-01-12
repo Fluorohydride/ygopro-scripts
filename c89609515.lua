@@ -1,4 +1,5 @@
 --ラヴァル・フロギス
+--Laval Phlogis
 function c89609515.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

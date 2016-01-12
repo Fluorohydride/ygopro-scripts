@@ -1,4 +1,5 @@
 --銀河眼の光子竜
+--Galaxy-Eyes Photon Dragon
 function c93717133.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ジェムナイトマスター・ダイヤ
+--Gem-Knight Master Diamond
 function c39512984.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

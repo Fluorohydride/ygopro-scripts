@@ -1,4 +1,5 @@
 --柴戦士タロ
+--Shiba-Warrior Taro
 function c27416701.initial_effect(c)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)

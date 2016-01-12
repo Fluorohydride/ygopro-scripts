@@ -1,4 +1,5 @@
 --終焉のカウントダウン
+--Final Countdown
 function c95308449.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

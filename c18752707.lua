@@ -1,4 +1,5 @@
 --マジカル・スター・イリュージョン
+--Magical Star Illusion
 function c18752707.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

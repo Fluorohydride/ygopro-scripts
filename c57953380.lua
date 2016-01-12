@@ -1,4 +1,5 @@
 --生還の宝札
+--Card of Safe Return
 function c57953380.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

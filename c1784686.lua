@@ -1,4 +1,5 @@
 --ティマイオスの眼
+--The Eye of Timaeus
 function c1784686.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

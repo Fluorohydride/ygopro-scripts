@@ -1,4 +1,5 @@
 --No.96 ブラック・ミスト
+--Number 96: Dark Mist
 function c55727845.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,3)

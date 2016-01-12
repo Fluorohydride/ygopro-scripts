@@ -1,4 +1,5 @@
 --星因士 ベテルギウス
+--Satellarknight Betelgeuse
 function c26057276.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

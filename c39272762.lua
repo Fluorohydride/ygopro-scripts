@@ -1,4 +1,5 @@
 --超銀河眼の光子龍
+--Neo Galaxy-Eyes Photon Dragon
 function c39272762.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,3)

@@ -1,4 +1,5 @@
 --永遠の渇水
+--Eternal Drought
 function c56606928.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

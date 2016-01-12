@@ -1,4 +1,5 @@
 --ブリリアント・スパーク
+--Brilliant Spark
 function c3105404.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DELAYED_QUICKEFFECT)
 	--activate

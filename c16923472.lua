@@ -1,4 +1,5 @@
 --ゼンマイハンター
+--Wind-Up Hunter
 function c16923472.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

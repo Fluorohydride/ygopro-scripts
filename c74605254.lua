@@ -1,4 +1,5 @@
 --DD魔導賢者ガリレイ
+--D/D Savant Galilei
 function c74605254.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --王宮の勅命
+--Imperial Order
 function c61740673.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

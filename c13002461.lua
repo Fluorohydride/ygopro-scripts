@@ -1,4 +1,5 @@
 --魔導戦士 フォルス
+--Strength of Prophecy
 function c13002461.initial_effect(c)
 	--atk/lv up
 	local e1=Effect.CreateEffect(c)

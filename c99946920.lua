@@ -1,4 +1,5 @@
 --魔竜星－トウテツ
+--Taotie, Shadow of the Yang Zing
 function c99946920.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

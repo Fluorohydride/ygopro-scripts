@@ -1,4 +1,5 @@
 --黒白の波動
+--Black and White Wave
 function c31677606.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

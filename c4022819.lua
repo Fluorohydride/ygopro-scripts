@@ -1,4 +1,5 @@
 --聖刻龍－アセトドラゴン
+--Hieratic Dragon of Eset
 function c4022819.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

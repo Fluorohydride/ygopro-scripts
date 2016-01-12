@@ -1,4 +1,5 @@
 --C・ピニー
+--Chrysalis Pinny
 function c29246354.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

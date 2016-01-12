@@ -1,4 +1,5 @@
 --神樹の守護獣－牙王
+--Leo, the Keeper of the Sacred Tree
 function c8561192.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

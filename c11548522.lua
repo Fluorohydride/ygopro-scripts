@@ -1,4 +1,5 @@
 --迷犬マロン
+--Outstanding Dog Marron
 function c11548522.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

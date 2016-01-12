@@ -1,4 +1,5 @@
 --円卓の聖騎士
+--Noble Knights of the Round Table
 function c55742055.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

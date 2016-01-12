@@ -1,4 +1,5 @@
 --ライトロード・マジシャン ライラ
+--Lyla, Lightsworn Sorceress
 function c22624373.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

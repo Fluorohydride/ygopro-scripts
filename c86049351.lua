@@ -1,4 +1,5 @@
 --ラスト・カウンター
+--Last Counter
 function c86049351.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

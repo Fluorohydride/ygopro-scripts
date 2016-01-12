@@ -1,4 +1,5 @@
 --CNo.39 希望皇ホープレイ・ヴィクトリー
+--Number C39: Utopia Ray Victory
 function c87911394.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

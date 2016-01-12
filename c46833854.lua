@@ -1,4 +1,5 @@
 --魔轟神トピー
+--Fabled Topi
 function c46833854.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

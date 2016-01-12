@@ -1,4 +1,5 @@
 --同族感染ウィルス
+--Tribe-Infecting Virus
 function c33184167.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

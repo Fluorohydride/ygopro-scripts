@@ -1,4 +1,5 @@
 --ギアギアンカー
+--Geargianchor
 function c92693205.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

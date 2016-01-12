@@ -1,4 +1,5 @@
 --壺魔人
+--Dragon Piper
 function c55763552.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

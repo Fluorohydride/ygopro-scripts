@@ -1,4 +1,5 @@
 --E－エマージェンシーコール
+--E - Emergency Call
 function c213326.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

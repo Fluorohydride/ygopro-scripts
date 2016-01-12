@@ -1,4 +1,5 @@
 --ゾンビ・マスター
+--Zombie Master
 function c17259470.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

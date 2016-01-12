@@ -1,4 +1,5 @@
 --DDD疾風王アレクサンダー
+--DDD Alexander the King of Gales
 function c987311.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0xaf),aux.NonTuner(nil),1)

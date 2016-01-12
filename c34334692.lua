@@ -1,4 +1,5 @@
 --儀式の供物
+--Ritual Raven
 function c34334692.initial_effect(c)
 	--ritual level
 	local e1=Effect.CreateEffect(c)

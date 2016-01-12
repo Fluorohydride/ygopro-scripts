@@ -1,4 +1,5 @@
 --A・O・J アンノウン・クラッシャー
+--Ally of Justice Unknown Crusher
 function c22371016.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

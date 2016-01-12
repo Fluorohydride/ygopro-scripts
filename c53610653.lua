@@ -1,4 +1,5 @@
 --バウンド・ワンド
+--Bound Wand
 function c53610653.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

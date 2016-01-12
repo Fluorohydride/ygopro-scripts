@@ -1,4 +1,5 @@
 --D・ゲイザー
+--Morphtronic Monitron
 function c28284902.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

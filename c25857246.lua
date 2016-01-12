@@ -1,4 +1,5 @@
 --ヴァルキュルスの影霊衣
+--Nekroz of Valkyrus
 function c25857246.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

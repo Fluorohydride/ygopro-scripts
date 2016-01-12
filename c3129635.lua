@@ -1,4 +1,5 @@
 --カース・オブ・スタチュー
+--Tiki Curse
 function c3129635.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

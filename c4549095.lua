@@ -1,4 +1,5 @@
 --BK カウンターブロー
+--Battlin' Boxer Counterpunch
 function c4549095.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

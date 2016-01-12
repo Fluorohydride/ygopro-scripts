@@ -1,4 +1,5 @@
 --嵐征竜－テンペスト
+--Tempest, Dragon Ruler of Storms
 function c89399912.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

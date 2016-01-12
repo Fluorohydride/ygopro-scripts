@@ -1,4 +1,5 @@
 --ジェムナイト・パーズ
+--Gem-Knight Topaz
 function c49597193.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

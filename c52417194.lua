@@ -1,4 +1,5 @@
 --大暴落
+--Heavy Slump
 function c52417194.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

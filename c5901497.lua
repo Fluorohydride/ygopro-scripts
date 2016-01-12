@@ -1,4 +1,5 @@
 --女王の影武者
+--Queen's Double
 function c5901497.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

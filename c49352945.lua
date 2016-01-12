@@ -1,4 +1,5 @@
 --E・HERO ストーム・ネオス
+--Elemental HERO Storm Neos
 function c49352945.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

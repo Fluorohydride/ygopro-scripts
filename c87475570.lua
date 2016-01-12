@@ -1,4 +1,5 @@
 --宝玉の先導者
+--Crystal Vanguard
 function c87475570.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

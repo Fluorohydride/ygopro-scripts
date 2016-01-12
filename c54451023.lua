@@ -1,4 +1,5 @@
 --植物連鎖
+--Plant Food Chain
 function c54451023.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --氷霊神ムーラングレイス
+--Moulinglacia the Elemental Lord
 function c13959634.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

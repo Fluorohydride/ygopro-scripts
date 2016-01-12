@@ -1,4 +1,5 @@
 --紫炎の寄子
+--Shien's Squire
 function c33883834.initial_effect(c)
 	--indestructable
 	local e1=Effect.CreateEffect(c)

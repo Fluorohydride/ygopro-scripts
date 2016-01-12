@@ -1,4 +1,5 @@
 --工作列車シグナル・レッド
+--Construction Train Signal Red
 function c34475451.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

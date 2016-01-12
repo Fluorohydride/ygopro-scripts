@@ -1,4 +1,5 @@
 --先史遺産ゴールデン・シャトル
+--Chronomaly Golden Jet
 function c88552992.initial_effect(c)
 	--lvup
 	local e1=Effect.CreateEffect(c)

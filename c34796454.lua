@@ -1,4 +1,5 @@
 --三連星のトリオン
+--Triple Star Trion
 function c34796454.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

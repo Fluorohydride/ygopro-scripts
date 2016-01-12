@@ -1,4 +1,5 @@
 --絶対服従魔人
+--Ultimate Obedient Fiend
 function c32240937.initial_effect(c)
 	--atk limit
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --氷結界のロイヤル・ナイト
+--Royal Knight of the Ice Barrier
 function c66661678.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

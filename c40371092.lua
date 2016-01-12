@@ -1,4 +1,5 @@
 --白夜の騎士ガイア
+--Gaia, the Mid-Knight Sun
 function c40371092.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

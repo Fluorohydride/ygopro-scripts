@@ -1,4 +1,5 @@
 --即神仏
+--Self-Mummification
 function c15103313.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

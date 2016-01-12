@@ -1,4 +1,5 @@
 --シルフィード
+--Silpheed
 function c73001017.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

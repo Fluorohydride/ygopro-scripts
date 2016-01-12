@@ -1,4 +1,5 @@
 --No.22 不乱健
+--Number 22: Zombiestein
 function c73445448.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_DARK),8,2)

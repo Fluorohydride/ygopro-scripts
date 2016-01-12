@@ -1,4 +1,5 @@
 --ファーニマル・クレーン
+--Fluffal Crane
 function c9298235.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

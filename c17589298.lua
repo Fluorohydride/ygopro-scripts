@@ -1,4 +1,5 @@
 --サクリファイス・ソード
+--Sword of Dark Rites
 function c17589298.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

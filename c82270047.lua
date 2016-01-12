@@ -1,4 +1,5 @@
 --Kozmo Lightsword
+--Kozmo Lightsword
 function c82270047.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --幻魔の殉教者
+--Phantasmal Martyrs
 function c93224848.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

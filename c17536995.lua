@@ -1,4 +1,5 @@
 --紋章変換
+--Heraldry Change
 function c17536995.initial_effect(c)
 	--end battle phase
 	local e1=Effect.CreateEffect(c)

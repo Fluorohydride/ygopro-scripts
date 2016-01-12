@@ -1,4 +1,5 @@
 --連鎖旋風
+--Chain Whirlwind
 function c22205600.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

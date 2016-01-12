@@ -1,4 +1,5 @@
 --甲虫装機の魔剣 ゼクトキャリバー
+--Inzektor Sword - Zektkaliber
 function c16550875.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

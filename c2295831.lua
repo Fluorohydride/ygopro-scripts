@@ -1,4 +1,5 @@
 --ピースの輪
+--Ring of Peace
 function c2295831.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

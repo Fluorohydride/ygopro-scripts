@@ -1,4 +1,5 @@
 --八汰烏
+--Yata-Garasu
 function c3078576.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

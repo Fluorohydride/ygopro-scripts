@@ -1,4 +1,5 @@
 --再融合
+--Re-Fusion
 function c74694807.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --リチュア・ヴァニティ
+--Gishki Vanity
 function c93506862.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)

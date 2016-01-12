@@ -1,4 +1,5 @@
 --レッドアイズ・ダークネスメタルドラゴン
+--Red-Eyes Darkness Metal Dragon
 function c88264978.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

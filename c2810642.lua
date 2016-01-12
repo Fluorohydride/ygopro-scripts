@@ -1,4 +1,5 @@
 --PSYフレームギア・β
+--PSY-Framegear Beta
 function c2810642.initial_effect(c)
 	c:EnableUnsummonable()
 	--splimit

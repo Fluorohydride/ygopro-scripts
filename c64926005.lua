@@ -1,4 +1,5 @@
 --氷結界の武士
+--Samurai of the Ice Barrier
 function c64926005.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --鬼岩城
+--Giganticastle
 function c63422098.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

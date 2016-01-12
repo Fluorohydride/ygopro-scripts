@@ -1,4 +1,5 @@
 --穿孔虫
+--Drill Bug
 function c88733579.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

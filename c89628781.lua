@@ -1,4 +1,5 @@
 --忍法 空蝉の術
+--Ninjitsu Art of Decoy
 function c89628781.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

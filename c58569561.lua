@@ -1,4 +1,5 @@
 --アロマージ－ローズマリー
+--Aromage Rosemary
 function c58569561.initial_effect(c)
 	--active limit
 	local e1=Effect.CreateEffect(c)

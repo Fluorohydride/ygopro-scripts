@@ -1,4 +1,5 @@
 --シンクロ・ストライク
+--Synchro Strike
 function c30123142.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

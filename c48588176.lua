@@ -1,4 +1,5 @@
 --ダニポン
+--Danipon
 function c48588176.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

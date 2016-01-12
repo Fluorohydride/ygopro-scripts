@@ -1,4 +1,5 @@
 --シュレツダー
+--Shreddder
 function c3603242.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

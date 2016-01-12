@@ -1,4 +1,5 @@
 --ボンディング－H2O
+--Bonding - H2O
 function c45898858.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

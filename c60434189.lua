@@ -1,4 +1,5 @@
 --ペンデュラム・モラトリアム
+--Pendulum Impenetrable
 function c60434189.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

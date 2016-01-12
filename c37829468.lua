@@ -1,4 +1,5 @@
 --RAI－JIN
+--Rai-Jin
 function c37829468.initial_effect(c)
 	c:SetUniqueOnField(1,1,37829468)
 	--atkup

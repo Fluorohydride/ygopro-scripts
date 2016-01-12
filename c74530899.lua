@@ -1,4 +1,5 @@
 --時械神メタイオン
+--Metaion, the Timelord
 function c74530899.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

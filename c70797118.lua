@@ -1,4 +1,5 @@
 --雷電娘々
+--Thunder Nyan Nyan
 function c70797118.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --共鳴虫
+--Howling Insect
 function c93107608.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

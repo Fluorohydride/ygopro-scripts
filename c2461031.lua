@@ -1,4 +1,5 @@
 --甲虫装機 グルフ
+--Inzektor Ladybug
 function c2461031.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

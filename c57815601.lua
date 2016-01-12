@@ -1,4 +1,5 @@
 --霊獣の騎襲
+--Ritual Beast Ambush
 function c57815601.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

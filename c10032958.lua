@@ -1,4 +1,5 @@
 --神竜－エクセリオン
+--Divine Dragon - Excelion
 function c10032958.initial_effect(c)
 	--to defence
 	local e1=Effect.CreateEffect(c)

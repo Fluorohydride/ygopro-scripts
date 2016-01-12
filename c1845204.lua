@@ -1,4 +1,5 @@
 --簡易融合
+--Instant Fusion
 function c1845204.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

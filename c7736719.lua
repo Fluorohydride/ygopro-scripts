@@ -1,4 +1,5 @@
 --エア・サーキュレーター
+--Vortex Trooper
 function c7736719.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ウィルスメール
+--Infected Mail
 function c6430659.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

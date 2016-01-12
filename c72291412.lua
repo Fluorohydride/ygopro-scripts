@@ -1,4 +1,5 @@
 --DDネクロ・スライム
+--D/D Necro Slime
 function c72291412.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

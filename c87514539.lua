@@ -1,4 +1,5 @@
 --傀儡虫
+--Marionette Mite
 function c87514539.initial_effect(c)
 	--control
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --クイック・スパナイト
+--Quick-Span Knight
 function c11287364.initial_effect(c)
 	--atk change
 	local e1=Effect.CreateEffect(c)

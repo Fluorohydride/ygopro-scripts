@@ -1,4 +1,5 @@
 --闇の住人シャドウキラー
+--Shadowslayer
 function c20939559.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

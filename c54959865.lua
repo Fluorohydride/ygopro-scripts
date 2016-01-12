@@ -1,4 +1,5 @@
 --N・エア・ハミングバード
+--Neo-Spacian Air Hummingbird
 function c54959865.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

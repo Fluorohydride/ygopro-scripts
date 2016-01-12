@@ -1,4 +1,5 @@
 --ダーク・アドバンス
+--Dark Advance
 function c97001138.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

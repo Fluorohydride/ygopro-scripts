@@ -1,4 +1,5 @@
 --邪竜星－ガイザー
+--Yazi, Evil of the Yang Zing
 function c43202238.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

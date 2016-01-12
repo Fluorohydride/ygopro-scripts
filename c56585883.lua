@@ -1,4 +1,5 @@
 --ハーピィ・ハーピスト
+--Harpie Harpist
 function c56585883.initial_effect(c)
 	--change name
 	local e1=Effect.CreateEffect(c)

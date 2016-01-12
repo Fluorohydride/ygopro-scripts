@@ -1,4 +1,5 @@
 --アマリリース
+--Amarylease
 function c18988391.initial_effect(c)
 	--decrease tribute
 	local e1=Effect.CreateEffect(c)

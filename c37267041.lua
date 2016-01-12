@@ -1,4 +1,5 @@
 --サイレント・ソードマン LV7
+--Silent Swordsman LV7
 function c37267041.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

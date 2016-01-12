@@ -1,4 +1,5 @@
 --No.31 アベルズ・デビル
+--Number 31: Embodiment of Punishment
 function c95442074.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,1,2)

@@ -1,4 +1,5 @@
 --ヴァイロン・オメガ
+--Vylon Omega
 function c93157004.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()

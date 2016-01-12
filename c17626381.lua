@@ -1,4 +1,5 @@
 --補給部隊
+--Supply Squad
 function c17626381.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

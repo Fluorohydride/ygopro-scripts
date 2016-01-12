@@ -1,4 +1,5 @@
 --断頭台の惨劇
+--Tragedy
 function c35686187.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

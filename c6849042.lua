@@ -1,4 +1,5 @@
 --超古代恐獣
+--Super-Ancient Dinobeast
 function c6849042.initial_effect(c)
 	--summon with 1 tribute
 	local e1=Effect.CreateEffect(c)

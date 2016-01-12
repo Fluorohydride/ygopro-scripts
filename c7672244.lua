@@ -1,4 +1,5 @@
 --シエンの間者
+--Shien's Spy
 function c7672244.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

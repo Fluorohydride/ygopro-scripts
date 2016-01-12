@@ -1,4 +1,5 @@
 --スターダスト・チャージ・ウォリアー
+--Stardust Charge Warrior
 function c64880894.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

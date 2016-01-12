@@ -1,4 +1,5 @@
 --雷帝家臣ミスラ
+--Mithra the Thunder Vassal
 function c22404675.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

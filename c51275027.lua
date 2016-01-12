@@ -1,4 +1,5 @@
 --薄幸の美少女
+--The Unhappy Maiden
 function c51275027.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

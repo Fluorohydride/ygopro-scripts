@@ -1,4 +1,5 @@
 --ヂェミナイ・デビル
+--Gemini Imps
 function c67688478.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

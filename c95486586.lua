@@ -1,4 +1,5 @@
 --E・HERO Core
+--Elemental HERO Core
 function c95486586.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

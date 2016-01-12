@@ -1,4 +1,5 @@
 --イグナイト・イーグル
+--Igknight Crusader
 function c61639289.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --電脳増幅器
+--Amplifier
 function c303660.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

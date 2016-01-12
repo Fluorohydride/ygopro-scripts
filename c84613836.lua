@@ -1,4 +1,5 @@
 --神速の具足
+--Swiftstrike Armor
 function c84613836.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

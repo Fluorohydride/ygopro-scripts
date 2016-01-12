@@ -1,4 +1,5 @@
 --逆転する運命
+--Reversal of Fate
 function c36690018.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

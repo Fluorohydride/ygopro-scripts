@@ -1,4 +1,5 @@
 --使徒喰い虫
+--Nobleman-Eater Bug
 function c65878864.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

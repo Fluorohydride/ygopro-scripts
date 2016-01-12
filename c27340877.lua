@@ -1,4 +1,5 @@
 --DNA定期健診
+--DNA Checkup
 function c27340877.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

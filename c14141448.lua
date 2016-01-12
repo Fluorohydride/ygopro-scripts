@@ -1,4 +1,5 @@
 --グレート・モス
+--Great Moth
 function c14141448.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

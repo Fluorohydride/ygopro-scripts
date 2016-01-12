@@ -1,4 +1,5 @@
 --SRダブルヨーヨー
+--Speedroid Double Yoyo
 function c53054833.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

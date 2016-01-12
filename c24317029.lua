@@ -1,4 +1,5 @@
 --墓守の偵察者
+--Gravekeeper's Spy
 function c24317029.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

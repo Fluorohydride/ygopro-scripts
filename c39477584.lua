@@ -1,4 +1,5 @@
 --魔轟神レヴュアタン
+--Fabled Leviathan
 function c39477584.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x35),aux.NonTuner(nil),1)

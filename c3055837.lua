@@ -1,4 +1,5 @@
 --黒板消しの罠
+--Trap of Board Eraser
 function c3055837.initial_effect(c)
 	--reflect
 	local e1=Effect.CreateEffect(c)

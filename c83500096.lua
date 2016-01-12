@@ -1,4 +1,5 @@
 --A・ジェネクス・ソリッド
+--Genex Ally Solid
 function c83500096.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

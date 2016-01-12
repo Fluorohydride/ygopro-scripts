@@ -1,4 +1,5 @@
 --融合禁止エリア
+--Non-Fusion Area
 function c27581098.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

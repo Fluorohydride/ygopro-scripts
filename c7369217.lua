@@ -1,4 +1,5 @@
 --メタル化寄生生物－ルナタイト
+--Metallizing Parasite - Lunatite
 function c7369217.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

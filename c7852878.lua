@@ -1,4 +1,5 @@
 --針三千本
+--Three Thousand Needles
 function c7852878.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

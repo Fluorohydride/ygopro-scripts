@@ -1,4 +1,5 @@
 --星間竜パーセク
+--Parsec, the Interstellar Dragon
 function c32872833.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

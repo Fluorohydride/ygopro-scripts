@@ -1,4 +1,5 @@
 --薔薇恋人
+--Rose Lover
 function c89252157.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

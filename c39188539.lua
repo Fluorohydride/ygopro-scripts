@@ -1,4 +1,5 @@
 --ストーム・シューター
+--Storm Shooter
 function c39188539.initial_effect(c)
 	--move
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --バイス・バーサーカー
+--Vice Berserker
 function c43014054.initial_effect(c)
 	--damage & atk
 	local e1=Effect.CreateEffect(c)

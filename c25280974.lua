@@ -1,4 +1,5 @@
 --魔道化リジョン
+--Legion the Fiend Jester
 function c25280974.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

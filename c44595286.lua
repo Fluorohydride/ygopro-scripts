@@ -1,4 +1,5 @@
 --裁きの光
+--Light of Judgment
 function c44595286.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

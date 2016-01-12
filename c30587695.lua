@@ -1,4 +1,5 @@
 --カブトロン
+--Beetron
 function c30587695.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

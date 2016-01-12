@@ -1,4 +1,5 @@
 --武神－ヒルコ
+--Bujin Hiroko
 function c70026064.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

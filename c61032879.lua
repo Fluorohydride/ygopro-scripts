@@ -1,4 +1,5 @@
 --コモンメンタルワールド
+--Synchronized Realm
 function c61032879.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

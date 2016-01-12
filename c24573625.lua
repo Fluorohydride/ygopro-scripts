@@ -1,4 +1,5 @@
 --ブンボーグ008
+--Deskbot 008
 function c24573625.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

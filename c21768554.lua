@@ -1,4 +1,5 @@
 --集団催眠
+--Mass Hypnosis
 function c21768554.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

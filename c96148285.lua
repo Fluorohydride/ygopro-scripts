@@ -1,4 +1,5 @@
 --誘発召喚
+--Triggered Summon
 function c96148285.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

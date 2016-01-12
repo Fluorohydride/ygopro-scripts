@@ -1,4 +1,5 @@
 --差し戻し
+--Return
 function c47247413.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

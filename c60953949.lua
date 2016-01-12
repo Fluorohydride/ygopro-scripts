@@ -1,4 +1,5 @@
 --古代の機械箱
+--Ancient Gear Box
 function c60953949.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

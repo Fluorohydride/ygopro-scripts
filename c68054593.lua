@@ -1,4 +1,5 @@
 --燃える闘志
+--Fiery Fervor
 function c68054593.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

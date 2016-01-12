@@ -1,4 +1,5 @@
 --TGX300
+--TGX300
 function c58258899.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

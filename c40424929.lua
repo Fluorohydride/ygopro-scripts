@@ -1,4 +1,5 @@
 --烈華砲艦ナデシコ
+--Battlecruiser Dianthus
 function c40424929.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,3)

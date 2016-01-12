@@ -1,4 +1,5 @@
 --デンジャラスマシン TYPE－6
+--Dangerous Machine Type-6
 function c76895648.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

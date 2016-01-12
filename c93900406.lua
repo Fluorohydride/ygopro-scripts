@@ -1,4 +1,5 @@
 --マタンゴ
+--Mushroom Man 2
 function c93900406.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

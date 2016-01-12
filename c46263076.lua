@@ -1,4 +1,5 @@
 --地縛神 Ccapac Apu
+--Earthbound Immortal Ccapac Apu
 function c46263076.initial_effect(c)
 	c:SetUniqueOnField(1,1,10000000)
 	--

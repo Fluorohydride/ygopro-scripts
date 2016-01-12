@@ -1,4 +1,5 @@
 --DDD狙撃王テル
+--D/D/D Marksman King Tell
 function c71612253.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2,c71612253.ovfilter,aux.Stringid(71612253,0))

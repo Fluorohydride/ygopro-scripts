@@ -1,4 +1,5 @@
 --重力解除
+--Zero Gravity
 function c83133491.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

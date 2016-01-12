@@ -1,4 +1,5 @@
 --炎王の急襲
+--Onslaught of the Fire Kings
 function c22993208.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

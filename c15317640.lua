@@ -1,4 +1,5 @@
 --巨大戦艦 カバード・コア
+--B.E.S. Covered Core
 function c15317640.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

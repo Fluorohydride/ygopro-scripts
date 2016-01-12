@@ -1,4 +1,5 @@
 --古代の機械兵士
+--Ancient Gear Soldier
 function c56094445.initial_effect(c)
 	--actlimit
 	local e1=Effect.CreateEffect(c)

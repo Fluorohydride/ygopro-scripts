@@ -1,4 +1,5 @@
 --アーティファクト－デュランダル
+--Artifact Durendal
 function c69840739.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2)

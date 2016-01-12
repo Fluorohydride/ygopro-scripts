@@ -1,4 +1,5 @@
 --妖仙獣 鎌壱太刀
+--Yosenju Kama 1
 function c65247798.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)

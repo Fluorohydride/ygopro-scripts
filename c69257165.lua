@@ -1,4 +1,5 @@
 --精神汚染
+--Mind Pollutant
 function c69257165.initial_effect(c)
 	--control
 	local e1=Effect.CreateEffect(c)

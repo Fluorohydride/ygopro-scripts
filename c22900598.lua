@@ -1,4 +1,5 @@
 --ヴァンパイア・シフト
+--Vampire Takeover
 function c22900598.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

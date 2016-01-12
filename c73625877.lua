@@ -1,4 +1,5 @@
 --タイム・エスケーパー
+--Time Escaper
 function c73625877.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

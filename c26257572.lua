@@ -1,4 +1,5 @@
 --苦痛の回廊
+--Corridor of Agony
 function c26257572.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

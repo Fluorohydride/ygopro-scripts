@@ -1,4 +1,5 @@
 --ガガガガードナー
+--Gagaga Gardna
 function c12423762.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

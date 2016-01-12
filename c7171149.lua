@@ -1,4 +1,5 @@
 --トゥーン・アンティーク・ギアゴーレム
+--Toon Ancient Gear Golem
 function c7171149.initial_effect(c)
 	--cannot attack
 	local e1=Effect.CreateEffect(c)

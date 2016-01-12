@@ -1,4 +1,5 @@
 --カード・ブレイカー
+--Card Breaker
 function c51047350.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,4 +1,5 @@
 --竜剣士ラスターP
+--Luster Pendulum, the Dracoslayer
 function c92746535.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

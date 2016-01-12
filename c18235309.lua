@@ -1,4 +1,5 @@
 --連撃の帝王
+--Escalation of the Monarchs
 function c18235309.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

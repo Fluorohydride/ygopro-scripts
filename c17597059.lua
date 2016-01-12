@@ -1,4 +1,5 @@
 --バイサー・ショック
+--Byser Shock
 function c17597059.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

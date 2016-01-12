@@ -1,4 +1,5 @@
 --爆風トカゲ
+--Gale Lizard
 function c77491079.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

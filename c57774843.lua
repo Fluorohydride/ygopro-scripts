@@ -1,4 +1,5 @@
 --裁きの龍
+--Judgment Dragon
 function c57774843.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

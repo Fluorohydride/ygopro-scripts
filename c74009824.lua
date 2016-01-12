@@ -1,4 +1,5 @@
 --エルシャドール・ウェンディゴ
+--El Shaddoll Wendigo
 function c74009824.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion material

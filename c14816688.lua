@@ -1,4 +1,5 @@
 --シャッフル・リボーン
+--Shuffle Reborn
 function c14816688.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

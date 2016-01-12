@@ -1,4 +1,5 @@
 --岩の精霊 タイタン
+--The Rock Spirit
 function c76305638.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

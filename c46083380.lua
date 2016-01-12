@@ -1,4 +1,5 @@
 --攻通規制
+--Attraffic Control
 function c46083380.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

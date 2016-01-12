@@ -1,4 +1,5 @@
 --キメラテック・ランページ・ドラゴン
+--Chimeratech Rampage Dragon
 function c84058253.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion material

@@ -1,4 +1,5 @@
 --DD魔導賢者コペルニクス
+--D/D Savant Copernicus
 function c46796664.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

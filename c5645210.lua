@@ -1,4 +1,5 @@
 --Ｔｈｅ　ｓｐｌｅｎｄｉｄ　ＶＥＮＵＳ
+--Splendid Venus
 function c5645210.initial_effect(c)
 	--atk,def
 	local e1=Effect.CreateEffect(c)

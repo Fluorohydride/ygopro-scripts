@@ -1,4 +1,5 @@
 --巨大戦艦 ビッグ・コア
+--Big Core
 function c14148099.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

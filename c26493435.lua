@@ -1,4 +1,5 @@
 --希望郷－オノマトピア－
+--Onomatopia
 function c26493435.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

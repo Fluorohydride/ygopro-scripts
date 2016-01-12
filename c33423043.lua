@@ -1,4 +1,5 @@
 --異次元の指名者
+--D.D. Designator
 function c33423043.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

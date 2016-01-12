@@ -1,4 +1,5 @@
 --影霊衣の降魔鏡
+--Nekroz Mirror
 function c14735698.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

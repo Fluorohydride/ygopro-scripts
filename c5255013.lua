@@ -1,4 +1,5 @@
 --セフィラの輝跡
+--Zefra Path
 function c5255013.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

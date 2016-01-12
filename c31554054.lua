@@ -1,4 +1,5 @@
 --エクシーズ・リベンジ・シャッフル
+--Xyz Revenge Shuffle
 function c31554054.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

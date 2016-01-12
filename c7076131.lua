@@ -1,4 +1,5 @@
 --ロスト・ネクスト
+--Next to be Lost
 function c7076131.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

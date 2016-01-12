@@ -1,4 +1,5 @@
 --エンタメ・バンド・ハリケーン
+--Performance Hurricane
 function c46066477.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

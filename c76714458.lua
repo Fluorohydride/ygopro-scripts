@@ -1,4 +1,5 @@
 --痛魂の呪術
+--Spell of Pain
 function c76714458.initial_effect(c)
 	--reflect
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --自律行動ユニット
+--Autonomous Action Unit
 function c71453557.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

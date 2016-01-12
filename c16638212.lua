@@ -1,4 +1,5 @@
 --異次元の精霊
+--D.D. Sprite
 function c16638212.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

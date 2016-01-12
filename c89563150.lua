@@ -1,4 +1,5 @@
 --白銀のバリア－シルバーフォース－
+--Shining Silver Force
 function c89563150.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

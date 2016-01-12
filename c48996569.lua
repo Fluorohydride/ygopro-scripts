@@ -1,4 +1,5 @@
 --E・HERO グラン・ネオス
+--Elemental HERO Grand Neos
 function c48996569.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

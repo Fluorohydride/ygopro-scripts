@@ -1,4 +1,5 @@
 --幻獣機タートレーサー
+--Mecha Phantom Beast Turtletracer
 function c76902476.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

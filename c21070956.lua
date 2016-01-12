@@ -1,4 +1,5 @@
 --生贄の祭壇
+--Altar for Tribute
 function c21070956.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

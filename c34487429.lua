@@ -1,4 +1,5 @@
 --虹の古代都市－レインボー・ルイン
+--Ancient City - Rainbow Ruins
 function c34487429.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

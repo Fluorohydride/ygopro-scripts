@@ -1,4 +1,5 @@
 --吠え猛る大地
+--Roaring Earth
 function c4587638.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

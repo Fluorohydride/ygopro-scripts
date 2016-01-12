@@ -1,4 +1,5 @@
 --火の粉
+--Sparks
 function c76103675.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

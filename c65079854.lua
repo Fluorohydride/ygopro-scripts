@@ -1,4 +1,5 @@
 --憎悪の棘
+--Thorn of Malice
 function c65079854.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

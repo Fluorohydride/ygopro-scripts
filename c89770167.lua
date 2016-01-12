@@ -1,4 +1,5 @@
 --炎熱刀プロミネンス
+--Prominence, Molten Swordsman
 function c89770167.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

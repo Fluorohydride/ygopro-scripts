@@ -1,4 +1,5 @@
 --武装神竜プロテクト・ドラゴン
+--Armed Protector Dragon
 function c29330706.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

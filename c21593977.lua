@@ -1,4 +1,5 @@
 --処刑人－マキュラ
+--Makyura the Destructor
 function c21593977.initial_effect(c)
 	--activate trap in hand
 	local e1=Effect.CreateEffect(c)

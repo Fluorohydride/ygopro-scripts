@@ -1,4 +1,5 @@
 --ガスタの静寂 カーム
+--Caam, Serenity of Gusto
 function c91449144.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

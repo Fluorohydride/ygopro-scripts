@@ -1,4 +1,5 @@
 --ネクロの魔導書
+--Spellbook of Life
 function c52628687.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

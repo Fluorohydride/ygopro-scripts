@@ -1,4 +1,5 @@
 --超弩級砲塔列車グスタフ・マックス
+--Superdreadnought Rail Cannon Gustav Max
 function c56910167.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,10,2)

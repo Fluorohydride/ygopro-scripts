@@ -1,4 +1,5 @@
 --ブンボーグ002
+--Deskbot 002
 function c59368956.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

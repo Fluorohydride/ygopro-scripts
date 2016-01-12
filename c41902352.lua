@@ -1,4 +1,5 @@
 --BF－東雲のコチ
+--Blackwing - Kochi the Daybreak
 function c41902352.initial_effect(c)
 	--synchro limit
 	local e1=Effect.CreateEffect(c)

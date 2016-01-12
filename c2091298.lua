@@ -1,4 +1,5 @@
 --セイクリッド・ビーハイブ
+--Constellar Praesepe
 function c2091298.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x53),4,2)

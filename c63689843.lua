@@ -1,4 +1,5 @@
 --白兵戦
+--Attack and Receive
 function c63689843.initial_effect(c)
 	--Damage
 	local e1=Effect.CreateEffect(c)

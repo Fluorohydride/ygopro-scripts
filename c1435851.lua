@@ -1,4 +1,5 @@
 --ドラゴンの秘宝
+--Dragon Treasure
 function c1435851.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --D－タイム
+--D - Time
 function c99075257.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

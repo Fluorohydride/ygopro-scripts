@@ -1,4 +1,5 @@
 --オーバーレイ・スナイパー
+--Overlay Sentinel
 function c39229392.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --魂を吸う竹光
+--Soul Devouring Bamboo Sword
 function c51670553.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

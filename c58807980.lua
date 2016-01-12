@@ -1,4 +1,5 @@
 --モノケロース
+--Monoceros
 function c58807980.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

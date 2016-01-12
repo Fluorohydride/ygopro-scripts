@@ -1,4 +1,5 @@
 --ゴルゴニック・ガーゴイル
+--Gorgonic Gargoyle
 function c64379261.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --月の書
+--Book of Moon
 function c14087893.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

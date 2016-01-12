@@ -1,4 +1,5 @@
 --極星天ミーミル
+--Mimir of the Nordic Ascendant
 function c76348260.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

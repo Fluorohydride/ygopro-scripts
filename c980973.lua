@@ -1,4 +1,5 @@
 --アームド・ドラゴン LV3
+--Armed Dragon LV3
 function c980973.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

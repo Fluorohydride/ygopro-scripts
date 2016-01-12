@@ -1,4 +1,5 @@
 --トラスト・マインド
+--Mind Trust
 function c38680149.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --エナジー・ドレイン
+--Energy Drain
 function c56916805.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

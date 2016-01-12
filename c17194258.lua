@@ -1,4 +1,5 @@
 --融合徴兵
+--Fusion Conscription
 function c17194258.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

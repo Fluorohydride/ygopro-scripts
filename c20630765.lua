@@ -1,4 +1,5 @@
 --魔石術師 クルード
+--Spellstone Sorcerer Karood
 function c20630765.initial_effect(c)
 	c:SetCounterLimit(0x16,1)
 	--Add counter

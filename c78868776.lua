@@ -1,4 +1,5 @@
 --剣闘獣ラクエル
+--Gladiator Beast Laquari
 function c78868776.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

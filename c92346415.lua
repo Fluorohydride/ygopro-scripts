@@ -1,4 +1,5 @@
 --サイコ・ソード
+--Psychic Sword
 function c92346415.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

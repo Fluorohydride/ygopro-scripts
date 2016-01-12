@@ -1,4 +1,5 @@
 --奇跡の代行者 ジュピター
+--The Agent of Miracles - Jupiter
 function c28573958.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

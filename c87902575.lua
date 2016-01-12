@@ -1,4 +1,5 @@
 --フューチャー・ヴィジョン
+--Future Visions
 function c87902575.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

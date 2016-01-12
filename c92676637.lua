@@ -1,4 +1,5 @@
 --チューニング・サポーター
+--Tuningware
 function c92676637.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --業炎のバリア －ファイヤー・フォース－
+--Blazing Mirror Force
 function c75249652.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

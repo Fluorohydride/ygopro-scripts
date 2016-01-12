@@ -1,4 +1,5 @@
 --縮退回路
+--Degenerate Circuit
 function c36995273.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

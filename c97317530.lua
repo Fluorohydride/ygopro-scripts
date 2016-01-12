@@ -1,4 +1,5 @@
 --森の聖獣 カラントーサ
+--Kalantosa, Mystical Beast of the Forest
 function c97317530.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

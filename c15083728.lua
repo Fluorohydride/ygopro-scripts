@@ -1,4 +1,5 @@
 --粘着テープの家
+--House of Adhesive Tape
 function c15083728.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

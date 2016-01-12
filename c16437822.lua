@@ -1,4 +1,5 @@
 --フリント・アタック
+--Flint Missile
 function c16437822.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

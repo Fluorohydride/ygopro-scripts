@@ -1,4 +1,5 @@
 --融合体駆除装置
+--Anti-Fusion Device
 function c72150572.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

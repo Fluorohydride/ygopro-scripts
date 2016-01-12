@@ -1,4 +1,5 @@
 --融合準備
+--Fusion Reserve
 function c66127916.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

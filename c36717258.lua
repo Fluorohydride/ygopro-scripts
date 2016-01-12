@@ -1,4 +1,5 @@
 --ジュラック・モノロフ
+--Jurrac Monoloph
 function c36717258.initial_effect(c)
 	--attack all
 	local e1=Effect.CreateEffect(c)

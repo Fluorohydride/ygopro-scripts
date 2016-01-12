@@ -1,4 +1,5 @@
 --奇跡の発掘
+--Miracle Dig
 function c6343408.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

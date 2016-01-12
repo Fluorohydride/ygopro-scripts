@@ -1,4 +1,5 @@
 --細胞爆破ウイルス
+--Cell Explosion Virus
 function c84491298.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

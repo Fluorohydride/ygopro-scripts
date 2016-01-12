@@ -1,4 +1,5 @@
 --炎妖蝶ウィルプス
+--Blazewing Butterfly
 function c16984449.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--special summon

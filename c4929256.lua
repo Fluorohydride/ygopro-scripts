@@ -1,4 +1,5 @@
 --氷帝メビウス
+--Mobius the Frost Monarch
 function c4929256.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

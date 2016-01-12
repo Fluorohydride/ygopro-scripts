@@ -1,4 +1,5 @@
 --ジェムナイト・ジルコニア
+--Gem-Knight Zirconia
 function c8692301.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

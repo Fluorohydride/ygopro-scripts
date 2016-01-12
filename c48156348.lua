@@ -1,4 +1,5 @@
 --剣闘獣ガイザレス
+--Gladiator Beast Gyzarus
 function c48156348.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

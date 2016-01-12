@@ -1,4 +1,5 @@
 --氷帝家臣エッシャー
+--Escher the Frost Vassal
 function c24326617.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

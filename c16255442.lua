@@ -1,4 +1,5 @@
 --光の召集
+--Beckoning Light
 function c16255442.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

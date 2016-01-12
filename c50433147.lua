@@ -1,4 +1,5 @@
 --極星の輝き
+--The Nordic Lights
 function c50433147.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

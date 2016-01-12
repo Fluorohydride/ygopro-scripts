@@ -1,4 +1,5 @@
 --バスター・カウンター
+--Assault Counter
 function c76407432.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

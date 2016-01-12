@@ -1,4 +1,5 @@
 --インフェルニティ・ネクロマンサー
+--Infernity Necromancer
 function c56209279.initial_effect(c)
 	--to defence
 	local e1=Effect.CreateEffect(c)

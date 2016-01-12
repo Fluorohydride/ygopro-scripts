@@ -1,4 +1,5 @@
 --シャイニング・アブソーブ
+--Leeching the Light
 function c90263923.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

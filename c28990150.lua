@@ -1,4 +1,5 @@
 --フォトン・ケルベロス
+--Photon Cerberus
 function c28990150.initial_effect(c)
 	--actlimit
 	local e3=Effect.CreateEffect(c)

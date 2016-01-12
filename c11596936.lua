@@ -1,4 +1,5 @@
 --レクリスパワー
+--Reckoned Power
 function c11596936.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

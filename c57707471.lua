@@ -1,4 +1,5 @@
 --No.21 氷結のレディ・ジャスティス
+--Number 21: Frozen Lady Justice
 function c57707471.initial_effect(c)
 	c:EnableReviveLimit()
 	--xyz summon

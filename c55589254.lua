@@ -1,4 +1,5 @@
 --氷炎の双竜
+--Frost and Flame Dragon
 function c55589254.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

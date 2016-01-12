@@ -1,4 +1,5 @@
 --砂漠の守護者
+--Desert Protector
 function c38981606.initial_effect(c)
 	--defup
 	local e1=Effect.CreateEffect(c)

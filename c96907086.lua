@@ -1,4 +1,5 @@
 --地縛旋風
+--Earthbound Whirlwind
 function c96907086.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

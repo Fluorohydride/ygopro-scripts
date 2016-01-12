@@ -1,4 +1,5 @@
 --聖なる輝き
+--Light of Intervention
 function c62867251.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --業火の重騎士
+--Heavy Knight of the Flame
 function c34761062.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--remove

@@ -1,4 +1,5 @@
 --甲虫装機 ホッパー
+--Inzektor Hopper
 function c52601736.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

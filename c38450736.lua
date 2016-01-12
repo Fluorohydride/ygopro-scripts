@@ -1,4 +1,5 @@
 --甲虫装機 ウィーグ
+--Inzektor Earwig
 function c38450736.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

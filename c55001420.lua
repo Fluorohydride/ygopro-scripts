@@ -1,4 +1,5 @@
 --深緑の魔弓使い
+--Arcane Archer of the Forest
 function c55001420.initial_effect(c)
 	--cannot be battle target
 	local e1=Effect.CreateEffect(c)

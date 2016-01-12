@@ -1,4 +1,5 @@
 --針剣士
+--Stinging Swordsman
 function c68167124.initial_effect(c)
 	--return
 	local e1=Effect.CreateEffect(c)

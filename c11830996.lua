@@ -1,4 +1,5 @@
 --エンシェント・リーフ
+--Ancient Leaf
 function c11830996.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --城壁
+--Castle Walls
 function c44209392.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

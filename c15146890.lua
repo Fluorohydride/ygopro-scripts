@@ -1,4 +1,5 @@
 --竜脈の魔術師
+--Dragonpulse Magician
 function c15146890.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

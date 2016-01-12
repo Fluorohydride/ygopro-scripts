@@ -1,4 +1,5 @@
 --A・O・J リサーチャー
+--Ally of Justice Searcher
 function c3648368.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

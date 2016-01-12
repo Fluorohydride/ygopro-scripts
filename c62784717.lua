@@ -1,4 +1,5 @@
 --死神の巡遊
+--Tour of Doom
 function c62784717.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

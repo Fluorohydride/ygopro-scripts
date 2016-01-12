@@ -1,4 +1,5 @@
 --ホーリー・エルフの祝福
+--Gift of the Mystical Elf
 function c98299011.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

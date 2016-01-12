@@ -1,4 +1,5 @@
 --六尺瓊勾玉
+--Musakani Magatama
 function c41458579.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

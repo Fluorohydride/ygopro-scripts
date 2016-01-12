@@ -1,4 +1,5 @@
 --スパルタクァの呪術師
+--Witch Doctor of Sparta
 function c30525991.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

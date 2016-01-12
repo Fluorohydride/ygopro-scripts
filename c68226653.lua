@@ -1,4 +1,5 @@
 --フレムベル・ドラグノフ
+--Flamvell Dragnov
 function c68226653.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

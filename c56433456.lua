@@ -1,4 +1,5 @@
 --天空の聖域
+--The Sanctuary in the Sky
 function c56433456.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

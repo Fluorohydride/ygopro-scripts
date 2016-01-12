@@ -1,4 +1,5 @@
 --EMチアモール
+--Performapal Cheermole
 function c17857780.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

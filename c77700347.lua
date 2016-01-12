@@ -1,4 +1,5 @@
 --ネクロ・ディフェンダー
+--Necro Defender
 function c77700347.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

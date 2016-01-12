@@ -1,4 +1,5 @@
 --Kozmoll Wickedwitch
+--Kozmoll Wickedwitch
 function c93302695.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

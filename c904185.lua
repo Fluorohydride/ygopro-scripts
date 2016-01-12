@@ -1,4 +1,5 @@
 --垂直着陸
+--Vertical Landing
 function c904185.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

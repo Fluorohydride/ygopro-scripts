@@ -1,4 +1,5 @@
 --No.55 ゴゴゴゴライアス
+--Number 55: Gogogo Goliath
 function c46871387.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

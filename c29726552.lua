@@ -1,4 +1,5 @@
 --Kumongous, the Sticky String Kaiju
+--Kumongous, the Sticky String Kaiju
 function c29726552.initial_effect(c)
 	c:SetUniqueOnField(1,0,20000000)
 	--special summon rule

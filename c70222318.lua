@@ -1,4 +1,5 @@
 --森羅の霊峰
+--Mount Sylvania
 function c70222318.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

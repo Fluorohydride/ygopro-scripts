@@ -1,4 +1,5 @@
 --シンクロ・マグネーター
+--Synchro Magnet
 function c50702124.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon

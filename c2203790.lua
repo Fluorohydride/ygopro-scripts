@@ -1,4 +1,5 @@
 --XX－セイバー ヒュンレイ
+--XX-Saber Hyunlei
 function c2203790.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0x100d),1)

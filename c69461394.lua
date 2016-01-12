@@ -1,4 +1,5 @@
 --A・O・J フィールド・マーシャル
+--Ally of Justice Field Marshal
 function c69461394.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),2)

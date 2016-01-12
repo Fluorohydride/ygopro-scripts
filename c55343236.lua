@@ -1,4 +1,5 @@
 --Sin 真紅眼の黒竜
+--Malefic Red-Eyes B. Dragon
 function c55343236.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

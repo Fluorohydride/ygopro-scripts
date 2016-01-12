@@ -1,4 +1,5 @@
 --抹殺の聖刻印
+--Hieratic Seal of Banishment
 function c11975962.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

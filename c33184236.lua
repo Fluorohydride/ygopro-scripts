@@ -1,4 +1,5 @@
 --カラクリ屋敷
+--Karakuri Trick House
 function c33184236.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

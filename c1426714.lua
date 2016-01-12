@@ -1,4 +1,5 @@
 --No.48 シャドー・リッチ
+--Number 48: Shadow Lich
 function c1426714.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

@@ -1,4 +1,5 @@
 --命の綱
+--Rope of Life
 function c93382620.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

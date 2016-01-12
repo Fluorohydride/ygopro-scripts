@@ -1,4 +1,5 @@
 --剣闘獣ダリウス
+--Gladiator Beast Darius
 function c25924653.initial_effect(c)
 	--grave special summon
 	local e1=Effect.CreateEffect(c)

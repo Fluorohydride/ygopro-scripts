@@ -1,4 +1,5 @@
 --素早いモモンガ
+--Nimble Momonga
 function c22567609.initial_effect(c)
 	--battle destroyed
 	local e1=Effect.CreateEffect(c)

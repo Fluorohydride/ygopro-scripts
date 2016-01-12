@@ -1,4 +1,5 @@
 --虚無の波動
+--Wave-Motion Inferno
 function c63665606.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

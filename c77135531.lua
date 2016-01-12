@@ -1,4 +1,5 @@
 --竜の尖兵
+--Vanguard of the Dragon
 function c77135531.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

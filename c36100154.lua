@@ -1,4 +1,5 @@
 --アマゾネスの闘志
+--Amazoness Fighting Spirit
 function c36100154.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

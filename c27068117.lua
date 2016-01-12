@@ -1,4 +1,5 @@
 --オーバーレイ・リジェネレート
+--Overlay Regen
 function c27068117.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

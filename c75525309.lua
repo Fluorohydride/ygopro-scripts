@@ -1,4 +1,5 @@
 --六武派二刀流
+--Six Style - Dual Wield
 function c75525309.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

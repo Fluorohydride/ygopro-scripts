@@ -1,4 +1,5 @@
 --暗黒界の門
+--The Gates of Dark World
 function c33017655.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

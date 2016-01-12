@@ -1,4 +1,5 @@
 --CNo.32 海咬龍シャーク・ドレイク・バイス
+--Number C32: Shark Drake Veiss
 function c49221191.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

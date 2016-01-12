@@ -1,4 +1,5 @@
 --コア転送ユニット
+--Core Transport Unit
 function c30770156.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

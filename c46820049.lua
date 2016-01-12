@@ -1,4 +1,5 @@
 --地獄将軍・メフィスト
+--Mefist the Infernal General
 function c46820049.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

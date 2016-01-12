@@ -1,4 +1,5 @@
 --ホワイト・ホーンズ・ドラゴン
+--White-Horned Dragon
 function c73891874.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

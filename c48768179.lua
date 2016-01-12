@@ -1,4 +1,5 @@
 --黒蠍－強力のゴーグ
+--Dark Scorpion - Gorg the Strong
 function c48768179.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(48768179,0))

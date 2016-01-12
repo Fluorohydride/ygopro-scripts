@@ -1,4 +1,5 @@
 --灼熱ゾンビ
+--Molten Zombie
 function c4732017.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

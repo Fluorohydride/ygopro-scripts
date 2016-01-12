@@ -1,4 +1,5 @@
 --罡炎星－リシュンキ
+--Brotherhood of the Fire Fist - Kirin
 function c89856523.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_FIRE),aux.NonTuner(Card.IsSetCard,0x79),1)

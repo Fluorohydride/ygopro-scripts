@@ -1,4 +1,5 @@
 --ギミック・パペット－ギア・チェンジャー
+--Gimmick Puppet Gear Changer
 function c56427559.initial_effect(c)
 	--lvchange
 	local e1=Effect.CreateEffect(c)

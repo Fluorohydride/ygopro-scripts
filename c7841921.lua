@@ -1,4 +1,5 @@
 --疾走の暗黒騎士ガイア
+--Charging Gaia the Fierce Knight
 function c7841921.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

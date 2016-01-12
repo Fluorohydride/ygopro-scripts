@@ -1,4 +1,5 @@
 --闇霊術－「欲」
+--Dark Spirit Art - Greed
 function c38167722.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

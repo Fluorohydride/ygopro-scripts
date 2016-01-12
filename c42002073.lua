@@ -1,4 +1,5 @@
 --EMトランプ・ガール
+--Performapal Trump Girl
 function c42002073.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

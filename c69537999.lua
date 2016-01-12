@@ -1,4 +1,5 @@
 --ブレイズ・キャノン
+--Blaze Accelerator
 function c69537999.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

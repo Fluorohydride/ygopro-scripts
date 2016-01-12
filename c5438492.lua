@@ -1,4 +1,5 @@
 --荒野の女戦士
+--Warrior Lady of the Wasteland
 function c5438492.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

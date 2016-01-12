@@ -1,4 +1,5 @@
 --泉の精霊
+--Fairy of the Spring
 function c20188127.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

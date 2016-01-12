@@ -1,4 +1,5 @@
 --継承の印
+--Symbol of Heritage
 function c45305419.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

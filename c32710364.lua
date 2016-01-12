@@ -1,4 +1,5 @@
 --宝玉獣ルビー・カーバンクル
+--Crystal Beast Ruby Carbuncle
 function c32710364.initial_effect(c)
 	--send replace
 	local e1=Effect.CreateEffect(c)

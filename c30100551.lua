@@ -1,4 +1,5 @@
 --ライトロード・セイント ミネルバ
+--Minerva, the Exalted Lightsworn
 function c30100551.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

@@ -1,4 +1,5 @@
 --銀幕の鏡壁
+--Mirror Wall
 function c22359980.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

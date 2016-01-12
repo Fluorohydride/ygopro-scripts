@@ -1,4 +1,5 @@
 --輝望道
+--Shining Hope Road
 function c62829077.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

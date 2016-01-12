@@ -1,4 +1,5 @@
 --破邪の大剣－バオウ
+--Wicked-Breaking Flamberge - Baou
 function c68427465.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

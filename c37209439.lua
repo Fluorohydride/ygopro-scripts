@@ -1,4 +1,5 @@
 --誤封の契約書
+--Dark Contract with Errors
 function c37209439.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

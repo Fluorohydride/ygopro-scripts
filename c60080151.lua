@@ -1,4 +1,5 @@
 --好敵手の記憶
+--Memory of an Adversary
 function c60080151.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

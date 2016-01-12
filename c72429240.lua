@@ -1,4 +1,5 @@
 --ヴェルズ・オランタ
+--Evilswarm O'lantern
 function c72429240.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

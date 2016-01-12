@@ -1,4 +1,5 @@
 --大凛魔天使ローザリアン
+--Rosaria, the Stately Fallen Angel
 function c81146288.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

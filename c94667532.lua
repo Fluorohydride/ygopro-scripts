@@ -1,4 +1,5 @@
 --機械犬マロン
+--Mecha-Dog Marron
 function c94667532.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

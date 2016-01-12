@@ -1,4 +1,5 @@
 --パワー・サプライヤー
+--Power Supplier
 function c55063681.initial_effect(c)
 	--set target
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --デス・メテオ
+--Meteor of Destruction
 function c33767325.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

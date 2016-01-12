@@ -1,4 +1,5 @@
 --グレイブ・スクワーマー
+--Grave Squirmer
 function c48343627.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

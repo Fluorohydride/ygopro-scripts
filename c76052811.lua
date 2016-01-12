@@ -1,4 +1,5 @@
 --地獄詩人ヘルポエマー
+--Helpoemer
 function c76052811.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

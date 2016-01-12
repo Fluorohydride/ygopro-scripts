@@ -1,4 +1,5 @@
 --一点買い
+--Single Purchase
 function c68661341.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

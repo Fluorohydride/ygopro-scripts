@@ -1,4 +1,5 @@
 --劫火の舟守 ゴースト・カロン
+--Ghost Charon, the Underworld Boatman
 function c23379054.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

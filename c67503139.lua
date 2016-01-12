@@ -1,4 +1,5 @@
 --占術姫クリスタルウンディーネ
+--Prediction Princess Crystaldine
 function c67503139.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

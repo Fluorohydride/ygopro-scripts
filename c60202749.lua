@@ -1,4 +1,5 @@
 --アビスフィアー
+--Abyss-sphere
 function c60202749.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

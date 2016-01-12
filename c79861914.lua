@@ -1,4 +1,5 @@
 --妖仙大旋風
+--Yosen Whirlwind
 function c79861914.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

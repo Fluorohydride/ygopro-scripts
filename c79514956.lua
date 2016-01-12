@@ -1,4 +1,5 @@
 --幻奏の音女エレジー
+--Elegy the Melodious Diva
 function c79514956.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

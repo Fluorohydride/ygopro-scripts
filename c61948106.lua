@@ -1,4 +1,5 @@
 --ガトムズの非常召集
+--Gottoms' Second Call
 function c61948106.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

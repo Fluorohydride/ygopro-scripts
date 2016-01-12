@@ -1,4 +1,5 @@
 --武神器－ハチ
+--Bujingi Centipede
 function c88940154.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

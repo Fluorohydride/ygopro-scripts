@@ -1,4 +1,5 @@
 --獄落鳥
+--Bird of Paradise Lost
 function c84845628.initial_effect(c)
 	--atk & def
 	local e1=Effect.CreateEffect(c)

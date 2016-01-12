@@ -1,4 +1,5 @@
 --マシンナーズ・ピースキーパー
+--Machina Peacekeeper
 function c78349103.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

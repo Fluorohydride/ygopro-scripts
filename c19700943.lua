@@ -1,4 +1,5 @@
 --ドドドボット
+--Dododo Bot
 function c19700943.initial_effect(c)
 	--summon limit
 	local e1=Effect.CreateEffect(c)

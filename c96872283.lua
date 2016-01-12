@@ -1,4 +1,5 @@
 --エヴォルテクター シュバリエ
+--Evocator Chevalier
 function c96872283.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--destroy

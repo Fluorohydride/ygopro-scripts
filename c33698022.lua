@@ -1,4 +1,5 @@
 --月華竜 ブラック・ローズ
+--Black Rose Moonlight Dragon
 function c33698022.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

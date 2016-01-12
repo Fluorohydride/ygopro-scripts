@@ -1,4 +1,5 @@
 --正々堂々
+--Respect Play
 function c8951260.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

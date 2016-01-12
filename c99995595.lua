@@ -1,4 +1,5 @@
 --バッテリーリサイクル
+--Recycling Batteries
 function c99995595.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

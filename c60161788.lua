@@ -1,4 +1,5 @@
 --氷結界の番人ブリズド
+--Blizzed, Defender of the Ice Barrier
 function c60161788.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

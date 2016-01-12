@@ -1,4 +1,5 @@
 --トゥーン・仮面魔道士
+--Toon Masked Sorcerer
 function c16392422.initial_effect(c)
 	--cannot attack
 	local e1=Effect.CreateEffect(c)

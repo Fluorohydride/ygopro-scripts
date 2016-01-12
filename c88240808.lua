@@ -1,4 +1,5 @@
 --霊滅術師 カイク
+--Kycoo the Ghost Destroyer
 function c88240808.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

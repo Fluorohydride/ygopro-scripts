@@ -1,4 +1,5 @@
 --体力増強剤スーパーZ
+--Nutrient Z
 function c29389368.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

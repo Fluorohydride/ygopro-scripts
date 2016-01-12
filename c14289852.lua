@@ -1,4 +1,5 @@
 --岩投げエリア
+--Catapult Zone
 function c14289852.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

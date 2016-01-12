@@ -1,4 +1,5 @@
 --パワード・チューナー
+--Powered Tuner
 function c50621530.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

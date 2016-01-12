@@ -1,4 +1,5 @@
 --炎熱旋風壁
+--Molten Whirlwind Wall
 function c37436476.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

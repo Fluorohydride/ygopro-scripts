@@ -1,4 +1,5 @@
 --グレイドル・ドラゴン
+--Graydle Dragon
 function c52145422.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_AQUA),aux.NonTuner(nil),1)

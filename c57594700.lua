@@ -1,4 +1,5 @@
 --幻奏の音姫マイスタリン・シューベルト
+--Schuberta the Melodious Maestra
 function c57594700.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

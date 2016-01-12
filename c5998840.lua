@@ -1,4 +1,5 @@
 --XX－セイバー ボガーナイト
+--XX-Saber Boggart Knight
 function c5998840.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

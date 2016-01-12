@@ -1,4 +1,5 @@
 --リチュア・エリアル
+--Gishki Ariel
 function c92784374.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

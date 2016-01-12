@@ -1,4 +1,5 @@
 --強制脱出装置
+--Compulsory Evacuation Device
 function c94192409.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

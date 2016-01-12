@@ -1,4 +1,5 @@
 --弱体化の仮面
+--Mask of Weakness
 function c57882509.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

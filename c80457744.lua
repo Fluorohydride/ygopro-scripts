@@ -1,4 +1,5 @@
 --ブースト・ウォリアー
+--Boost Warrior
 function c80457744.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --進化する人類
+--Unstable Evolution
 function c62991886.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

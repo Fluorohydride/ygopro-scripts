@@ -1,4 +1,5 @@
 --太陽の書
+--Book of Taiyou
 function c38699854.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

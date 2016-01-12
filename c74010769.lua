@@ -1,4 +1,5 @@
 --陽炎獣 グリプス
+--Hazy Flame Griffin
 function c74010769.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)

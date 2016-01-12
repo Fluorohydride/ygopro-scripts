@@ -1,4 +1,5 @@
 --幻獣ワイルドホーン
+--Phantom Beast Wild-Horn
 function c7576264.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

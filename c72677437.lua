@@ -1,4 +1,5 @@
 --毒蛇王ヴェノミノン
+--Vennominon the King of Poisonous Snakes
 function c72677437.initial_effect(c)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

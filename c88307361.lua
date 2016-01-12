@@ -1,4 +1,5 @@
 --超古深海王シーラカンス
+--Superancient Deepsea King Coelacanth
 function c88307361.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

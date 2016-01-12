@@ -1,4 +1,5 @@
 --ブルーアイズ・トゥーン・ドラゴン
+--Blue-Eyes Toon Dragon
 function c53183600.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

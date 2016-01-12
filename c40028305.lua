@@ -1,4 +1,5 @@
 --超重武者装留シャイン・クロー
+--Superheavy Samurai Soulclaw
 function c40028305.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

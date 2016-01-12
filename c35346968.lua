@@ -1,4 +1,5 @@
 --神の恵み
+--Solemn Wishes
 function c35346968.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

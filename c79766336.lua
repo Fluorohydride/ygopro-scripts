@@ -1,4 +1,5 @@
 --闇よりの罠
+--Trap of Darkness
 function c79766336.initial_effect(c)
 	--copy trap
 	local e1=Effect.CreateEffect(c)

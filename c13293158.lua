@@ -1,4 +1,5 @@
 --E－HERO ワイルド・サイクロン
+--Evil HERO Wild Cyclone
 function c13293158.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

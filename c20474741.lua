@@ -1,4 +1,5 @@
 --トライデント・ウォリアー
+--Trident Warrior
 function c20474741.initial_effect(c)
 	--summon success
 	local e2=Effect.CreateEffect(c)

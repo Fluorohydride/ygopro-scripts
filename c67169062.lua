@@ -1,4 +1,5 @@
 --貪欲な壺
+--Pot of Avarice
 function c67169062.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

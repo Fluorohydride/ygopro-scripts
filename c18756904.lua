@@ -1,4 +1,5 @@
 --馬の骨の対価
+--White Elephant's Gift
 function c18756904.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

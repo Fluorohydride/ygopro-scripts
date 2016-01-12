@@ -1,4 +1,5 @@
 --幻影騎士団クラックヘルム
+--The Phantom Knights of Crack Helm
 function c99315585.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

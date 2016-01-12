@@ -1,4 +1,5 @@
 --ペンギン・ソルジャー
+--Penguin Soldier
 function c93920745.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

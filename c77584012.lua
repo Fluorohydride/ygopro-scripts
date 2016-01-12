@@ -1,4 +1,5 @@
 --擬似空間
+--Pseudo Space
 function c77584012.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

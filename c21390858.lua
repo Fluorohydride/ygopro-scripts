@@ -1,4 +1,5 @@
 --凭依装着-达克
+--Familiar-Possessed - Dharc
 function c21390858.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

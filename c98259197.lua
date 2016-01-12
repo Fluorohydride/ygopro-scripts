@@ -1,4 +1,5 @@
 --おジャマッスル
+--Ojamuscle
 function c98259197.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --銀河の魔導師
+--Galaxy Wizard
 function c98555327.initial_effect(c)
 	--lv up
 	local e1=Effect.CreateEffect(c)

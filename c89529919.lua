@@ -1,4 +1,5 @@
 --戦士ラーズ
+--Field-Commander Rahz
 function c89529919.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ポイズン・ファング
+--Poison Fangs
 function c76539047.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

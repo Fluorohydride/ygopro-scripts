@@ -1,4 +1,5 @@
 --ミスティック・ソードマン LV6
+--Mystic Swordsman LV6
 function c60482781.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

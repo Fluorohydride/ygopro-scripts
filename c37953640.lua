@@ -1,4 +1,5 @@
 --竜宮の白タウナギ
+--Royal Swamp Eel
 function c37953640.initial_effect(c)
 	--synchro custom
 	local e1=Effect.CreateEffect(c)

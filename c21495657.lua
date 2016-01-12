@@ -1,4 +1,5 @@
 --宝竜星－セフィラフウシ
+--Zefraxi, Treasure of the Yang Zing
 function c21495657.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --グランド・ドラゴン
+--Cave Dragon
 function c93220472.initial_effect(c)
 	--sumlimit
 	local e1=Effect.CreateEffect(c)

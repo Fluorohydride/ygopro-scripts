@@ -1,4 +1,5 @@
 --Re－BUSTER
+--Assault Revival
 function c56252810.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

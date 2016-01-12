@@ -1,4 +1,5 @@
 --ストーンヘンジ・メソッド
+--Stonehenge Methods
 function c86555018.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

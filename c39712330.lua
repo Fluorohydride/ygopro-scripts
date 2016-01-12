@@ -1,4 +1,5 @@
 --決戦の火蓋
+--Cry Havoc!
 function c39712330.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

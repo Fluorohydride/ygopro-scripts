@@ -1,4 +1,5 @@
 --森の聖獣 ヴァレリフォーン
+--Valerifawn, Mystical Beast of the Forest
 function c24096499.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

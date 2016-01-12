@@ -1,4 +1,5 @@
 --深淵のスタングレイ
+--Abyss Stungray
 function c97232518.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

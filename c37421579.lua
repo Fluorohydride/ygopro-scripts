@@ -1,4 +1,5 @@
 --炎の騎士 キラー
+--Charubin the Fire Knight
 function c37421579.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

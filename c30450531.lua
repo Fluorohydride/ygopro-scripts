@@ -1,4 +1,5 @@
 --降霊の儀式
+--Rite of Spirit
 function c30450531.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

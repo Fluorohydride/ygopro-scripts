@@ -1,4 +1,5 @@
 --氷結界に住む魔酔虫
+--Numbing Grub in the Ice Barrier
 function c92065772.initial_effect(c)
 	--dis field
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --サイコ・ソウル
+--Psychic Soul
 function c33323657.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

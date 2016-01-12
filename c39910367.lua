@@ -1,4 +1,5 @@
 --魔法都市エンディミオン
+--Magical Citadel of Endymion
 function c39910367.initial_effect(c)
 	c:EnableCounterPermit(0x3001)
 	--Activate

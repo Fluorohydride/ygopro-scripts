@@ -1,4 +1,5 @@
 --三段腹ナイト
+--Big Belly Knight
 function c32696942.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ディフォーム
+--Morphtransition
 function c92890308.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

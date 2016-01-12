@@ -1,4 +1,5 @@
 --超伝導恐獣
+--Super Conductor Tyranno
 function c85520851.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

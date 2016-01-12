@@ -1,4 +1,5 @@
 --蒼炎の剣士
+--Blue Flame Swordsman
 function c50903514.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

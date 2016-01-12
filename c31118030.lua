@@ -1,4 +1,5 @@
 --占術姫アローシルフ
+--Prediction Princess Arrowsylph
 function c31118030.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

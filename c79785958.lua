@@ -1,4 +1,5 @@
 --ヴェルズ・カストル
+--Evilswarm Castor
 function c79785958.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

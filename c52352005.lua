@@ -1,4 +1,5 @@
 --XX－セイバー ガトムズ
+--XX-Saber Gottoms
 function c52352005.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_EARTH),1)

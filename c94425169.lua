@@ -1,4 +1,5 @@
 --エレメントの泉
+--Spring of Rebirth
 function c94425169.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

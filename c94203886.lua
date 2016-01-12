@@ -1,4 +1,5 @@
 --ガガガキッド
+--Gagaga Child
 function c94203886.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --白衣の天使
+--Numinous Healer
 function c2130625.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

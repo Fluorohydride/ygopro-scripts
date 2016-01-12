@@ -1,4 +1,5 @@
 --テラ・フォーミング
+--Terraforming
 function c73628505.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

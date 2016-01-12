@@ -1,4 +1,5 @@
 --忍者義賊ゴエゴエ
+--Goe Goe the Gallant Ninja
 function c10236520.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

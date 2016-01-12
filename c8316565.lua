@@ -1,4 +1,5 @@
 --ジョルト・カウンター
+--Jolt Counter
 function c8316565.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

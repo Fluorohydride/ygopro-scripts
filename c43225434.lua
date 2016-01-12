@@ -1,4 +1,5 @@
 --決闘融合－バトル・フュージョン
+--Battle Fusion
 function c43225434.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

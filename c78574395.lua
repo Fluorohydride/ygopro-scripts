@@ -1,4 +1,5 @@
 --ワンダー・バルーン
+--Wonder Balloons
 function c78574395.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

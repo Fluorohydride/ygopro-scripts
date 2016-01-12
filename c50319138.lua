@@ -1,4 +1,5 @@
 --バグマンZ
+--Crashbug Z
 function c50319138.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

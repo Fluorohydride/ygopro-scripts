@@ -1,4 +1,5 @@
 --E・HERO マリン・ネオス
+--Elemental HERO Marine Neos
 function c5128859.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

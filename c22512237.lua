@@ -1,4 +1,5 @@
 --メカニカル・ハウンド
+--Mechanical Hound
 function c22512237.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)

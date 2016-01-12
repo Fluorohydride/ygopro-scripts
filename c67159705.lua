@@ -1,4 +1,5 @@
 --アーマード・サイバーン
+--Armored Cybern
 function c67159705.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

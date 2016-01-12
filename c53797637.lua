@@ -1,4 +1,5 @@
 --炎征竜－バーナー
+--Burner, Dragon Ruler of Sparks
 function c53797637.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

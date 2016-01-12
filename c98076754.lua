@@ -1,4 +1,5 @@
 --セフィラの聖選士
+--Chosen of Zefra
 function c98076754.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

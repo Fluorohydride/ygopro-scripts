@@ -1,4 +1,5 @@
 --メタボ・シャーク
+--Metabo-Shark
 function c37792478.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --侵略の手段
+--Infestation Tool
 function c27207573.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

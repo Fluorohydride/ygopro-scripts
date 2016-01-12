@@ -1,4 +1,5 @@
 --メテオ・レイン
+--Meteorain
 function c64274292.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

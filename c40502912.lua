@@ -1,4 +1,5 @@
 --幻奏の音女アリア
+--Aria the Melodious Diva
 function c40502912.initial_effect(c)
 	--cannot be target/battle indestructable
 	local e1=Effect.CreateEffect(c)

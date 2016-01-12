@@ -1,4 +1,5 @@
 --虚栄の大猿
+--Egotistical Ape
 function c96914272.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

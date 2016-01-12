@@ -1,4 +1,5 @@
 --幻銃士
+--Phantom Skyblaster
 function c12958919.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

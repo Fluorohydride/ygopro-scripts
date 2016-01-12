@@ -1,4 +1,5 @@
 --ステルスバード
+--Stealth Bird
 function c3510565.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

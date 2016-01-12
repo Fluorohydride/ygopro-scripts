@@ -1,4 +1,5 @@
 --TG1－EM1
+--TG1-EM1
 function c76641981.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

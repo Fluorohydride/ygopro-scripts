@@ -1,4 +1,5 @@
 --紅蓮の指名者
+--Appointer of the Red Lotus
 function c43262273.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

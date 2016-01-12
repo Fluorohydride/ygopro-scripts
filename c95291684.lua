@@ -1,4 +1,5 @@
 --異次元の一角戦士
+--D.D. Unicorn Knight
 function c95291684.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon rule

@@ -1,4 +1,5 @@
 --DDD死偉王ヘル・アーマゲドン
+--DDD Infernal Armageddon the Great Des Lord
 function c47198668.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

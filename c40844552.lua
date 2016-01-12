@@ -1,4 +1,5 @@
 --極星天ヴァルキュリア
+--Valkyrie of the Nordic Ascendant
 function c40844552.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

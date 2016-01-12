@@ -1,4 +1,5 @@
 --D－HERO ディフェンドガイ
+--Destiny HERO - Defender
 function c54749427.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

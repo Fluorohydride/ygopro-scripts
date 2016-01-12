@@ -1,4 +1,5 @@
 --『攻撃』封じ
+--Block Attack
 function c25880422.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

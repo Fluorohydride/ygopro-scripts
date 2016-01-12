@@ -1,4 +1,5 @@
 --未熟な密偵
+--The Inexperienced Spy
 function c81820689.initial_effect(c)
 	--confirm
 	local e1=Effect.CreateEffect(c)

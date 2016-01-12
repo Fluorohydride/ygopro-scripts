@@ -1,4 +1,5 @@
 --真源の帝王
+--The Original Monarch
 function c54241725.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

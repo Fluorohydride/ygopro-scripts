@@ -1,4 +1,5 @@
 --雲魔物－ポイズン・クラウド
+--Cloudian - Poison Cloud
 function c83982270.initial_effect(c)
 	--destroy&damage
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ヒエログリフの石版
+--Hieroglyph Lithograph
 function c10248192.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

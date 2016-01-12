@@ -1,4 +1,5 @@
 --リミッター解除
+--Limiter Removal
 function c23171610.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

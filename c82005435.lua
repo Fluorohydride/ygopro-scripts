@@ -1,4 +1,5 @@
 --女忍者ヤエ
+--Lady Ninja Yae
 function c82005435.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --アマゾネスの鎖使い
+--Amazoness Chain Master
 function c29654737.initial_effect(c)
 	--get card
 	local e1=Effect.CreateEffect(c)

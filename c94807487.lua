@@ -1,4 +1,5 @@
 --ホープ剣スラッシュ
+--Rising Sun Slash
 function c94807487.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

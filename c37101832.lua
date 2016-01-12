@@ -1,4 +1,5 @@
 --墓守の番兵
+--Gravekeeper's Guard
 function c37101832.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

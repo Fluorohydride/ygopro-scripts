@@ -1,4 +1,5 @@
 --トリック・ボックス
+--Trick Box
 function c93983867.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DELAYED_QUICKEFFECT)
 	--activate

@@ -1,4 +1,5 @@
 --ギアギアングラー
+--Geargiauger
 function c47687766.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

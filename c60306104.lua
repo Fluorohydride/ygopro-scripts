@@ -1,4 +1,5 @@
 --進入禁止！No Entry！！
+--No Entry!!
 function c60306104.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

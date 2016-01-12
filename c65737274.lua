@@ -1,4 +1,5 @@
 --ドラゴラド
+--Dragard
 function c65737274.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

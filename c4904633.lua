@@ -1,4 +1,5 @@
 --影依の原核
+--Shaddoll Core
 function c4904633.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

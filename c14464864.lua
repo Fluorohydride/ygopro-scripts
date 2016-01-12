@@ -1,4 +1,5 @@
 --神の桎梏グレイプニル
+--Gleipnir, the Fetters of Fenrir
 function c14464864.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

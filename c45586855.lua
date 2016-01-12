@@ -1,4 +1,5 @@
 --A・O・J サイクロン・クリエイター
+--Ally of Justice Cyclone Creator
 function c45586855.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

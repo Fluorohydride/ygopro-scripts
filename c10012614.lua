@@ -1,4 +1,5 @@
 --勇気の旗印
+--Banner of Courage
 function c10012614.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

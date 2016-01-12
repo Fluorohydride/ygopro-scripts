@@ -1,4 +1,5 @@
 --時空混沌渦
+--Tachyon Chaos Hole
 function c59650656.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

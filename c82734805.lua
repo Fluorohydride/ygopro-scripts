@@ -1,4 +1,5 @@
 --インフェルノイド・ティエラ
+--Infernoid Tierra
 function c82734805.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion material

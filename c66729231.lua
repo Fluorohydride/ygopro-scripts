@@ -1,4 +1,5 @@
 --イビリチュア・ジールギガス
+--Gishki Zielgigas
 function c66729231.initial_effect(c)
 	c:EnableReviveLimit()
 	--draw

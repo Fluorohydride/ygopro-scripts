@@ -1,4 +1,5 @@
 --イグナイト・デリンジャー
+--Igknight Cavalier
 function c67273917.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

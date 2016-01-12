@@ -1,4 +1,5 @@
 --アーティファクトの解放
+--Artifacts Unleashed
 function c56611470.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

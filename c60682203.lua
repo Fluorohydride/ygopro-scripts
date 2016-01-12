@@ -1,4 +1,5 @@
 --大寒波
+--Cold Wave
 function c60682203.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

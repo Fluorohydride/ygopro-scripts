@@ -1,4 +1,5 @@
 --サイバーデーモン
+--Cyber Archfiend
 function c59907935.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --疾風の暗黒騎士ガイア
+--Swift Gaia the Fierce Knight
 function c16589042.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)

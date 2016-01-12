@@ -1,4 +1,5 @@
 --機皇帝の賜与
+--Boon of the Meklord Emperor
 function c12986778.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

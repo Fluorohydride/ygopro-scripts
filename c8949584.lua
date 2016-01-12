@@ -1,4 +1,5 @@
 --ヒーローアライブ
+--A Hero Lives
 function c8949584.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --踊る妖精
+--Dancing Fairy
 function c90925163.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

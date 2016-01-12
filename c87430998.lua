@@ -1,4 +1,5 @@
 --森
+--Forest
 function c87430998.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

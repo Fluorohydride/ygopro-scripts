@@ -1,4 +1,5 @@
 --王宮の鉄壁
+--Imperial Iron Wall
 function c30459350.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

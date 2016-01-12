@@ -1,4 +1,5 @@
 --トルネード・バード
+--Tornado Bird
 function c71283180.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

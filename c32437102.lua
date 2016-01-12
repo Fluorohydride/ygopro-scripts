@@ -1,4 +1,5 @@
 --竜魂の力
+--Dragonic Attack
 function c32437102.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

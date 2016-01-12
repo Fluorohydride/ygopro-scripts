@@ -1,4 +1,5 @@
 --真六武衆－シエン
+--Legendary Six Samurai - Shi En
 function c29981921.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),aux.NonTuner(Card.IsSetCard,0x3d),1)

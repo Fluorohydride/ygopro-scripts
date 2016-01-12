@@ -1,4 +1,5 @@
 --ゴーストリック・アウト
+--Ghostrick Vanish
 function c50527144.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

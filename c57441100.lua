@@ -1,4 +1,5 @@
 --金剛真力
+--Herculean Power
 function c57441100.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --墓守の石版
+--Gravekeeper's Stele
 function c99523325.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --CNo.73 激瀧瀑神アビス・スープラ
+--Number C73: Abyss Supra Splash
 function c96864105.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,3)

@@ -1,4 +1,5 @@
 --A・O・J コアデストロイ
+--Ally of Justice Core Destroyer
 function c36629203.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

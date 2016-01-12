@@ -1,4 +1,5 @@
 --オーバー・ザ・レインボー
+--Over the Rainbow
 function c40854824.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

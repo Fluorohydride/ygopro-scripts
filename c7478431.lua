@@ -1,4 +1,5 @@
 --ナチュル・サンフラワー
+--Naturia Sunflower
 function c7478431.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

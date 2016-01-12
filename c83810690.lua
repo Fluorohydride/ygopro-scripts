@@ -1,4 +1,5 @@
 --X－セイバー ウェイン
+--X-Saber Wayne
 function c83810690.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

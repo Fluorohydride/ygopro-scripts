@@ -1,4 +1,5 @@
 --SRオハジキッド
+--Speedroid Ohajikid
 function c89326990.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

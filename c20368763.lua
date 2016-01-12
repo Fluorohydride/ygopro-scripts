@@ -1,4 +1,5 @@
 --幻獣機ハリアード
+--Mecha Phantom Beast Harrliard
 function c20368763.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

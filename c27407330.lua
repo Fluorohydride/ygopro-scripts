@@ -1,4 +1,5 @@
 --ライトレイ グレファー
+--Lightray Grepher
 function c27407330.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

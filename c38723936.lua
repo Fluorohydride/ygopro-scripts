@@ -1,4 +1,5 @@
 --クイズ
+--Question
 --Effect is not fully implemented
 function c38723936.initial_effect(c)
 	--Activate

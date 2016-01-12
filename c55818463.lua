@@ -1,4 +1,5 @@
 --死王リッチーロード
+--Lich Lord, King of the Underworld
 function c55818463.initial_effect(c)
 	--tribute limit
 	local e1=Effect.CreateEffect(c)

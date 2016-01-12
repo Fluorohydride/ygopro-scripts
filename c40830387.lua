@@ -1,4 +1,5 @@
 --古代の機械掌
+--Ancient Gear Fist
 function c40830387.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

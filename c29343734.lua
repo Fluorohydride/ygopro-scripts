@@ -1,4 +1,5 @@
 --E・HERO エリクシーラー
+--Elemental HERO Electrum
 function c29343734.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

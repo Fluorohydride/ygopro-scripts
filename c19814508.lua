@@ -1,4 +1,5 @@
 --U.A.スタジアム
+--U.A. Stadium
 function c19814508.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --光の護封陣
+--Array of Revealing Light
 function c69296555.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

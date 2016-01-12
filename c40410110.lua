@@ -1,4 +1,5 @@
 --錬金生物 ホムンクルス
+--Homunculus the Alchemic Being
 function c40410110.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --子型ペンギン
+--Puny Penguin
 function c76442347.initial_effect(c)
 	--flip effect
 	local e1=Effect.CreateEffect(c)

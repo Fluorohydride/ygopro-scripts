@@ -1,4 +1,5 @@
 --岩盤爆破
+--Minefield Eruption
 function c85519211.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

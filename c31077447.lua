@@ -1,4 +1,5 @@
 --びっくり箱
+--Punch-in-the-Box
 function c31077447.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

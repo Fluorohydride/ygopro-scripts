@@ -1,4 +1,5 @@
 --EMペンデュラム・マジシャン
+--Performapal Pendulum Sorcerer
 function c47075569.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

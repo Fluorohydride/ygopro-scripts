@@ -1,4 +1,5 @@
 --鎖付き爆弾
+--Blast with Chain
 function c98239899.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --記憶破壊王
+--Memory Crush King
 function c75675029.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

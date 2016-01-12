@@ -1,4 +1,5 @@
 --極星霊スヴァルトアールヴ
+--Mara of the Nordic Alfar
 function c73417207.initial_effect(c)
 	--synchro custom
 	local e1=Effect.CreateEffect(c)

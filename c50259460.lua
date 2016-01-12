@@ -1,4 +1,5 @@
 --破壊神 ヴァサーゴ
+--Versago the Destroyer
 function c50259460.initial_effect(c)
 	--fusion substitute
 	local e1=Effect.CreateEffect(c)

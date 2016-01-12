@@ -1,4 +1,5 @@
 --グリフォンの翼
+--Gryphon Wing
 function c55608151.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

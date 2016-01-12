@@ -1,4 +1,5 @@
 --拘束解放波
+--Release Restraint Wave
 function c98847704.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

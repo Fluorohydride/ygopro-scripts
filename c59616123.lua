@@ -1,4 +1,5 @@
 --トラップ・スタン
+--Trap Stun
 function c59616123.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

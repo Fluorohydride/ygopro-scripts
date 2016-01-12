@@ -1,4 +1,5 @@
 --クロック・リゾネーター
+--Clock Resonator
 function c77087109.initial_effect(c)
 	--battle des rep
 	local e1=Effect.CreateEffect(c)

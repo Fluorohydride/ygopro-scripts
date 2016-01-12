@@ -1,4 +1,5 @@
 --独奏の第1楽章
+--1st Movement Solo
 function c44256816.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

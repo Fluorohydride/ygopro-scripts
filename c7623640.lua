@@ -1,4 +1,5 @@
 --暗黒界の導師 セルリ
+--Ceruli, Guru of Dark World
 function c7623640.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

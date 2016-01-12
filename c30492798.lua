@@ -1,4 +1,5 @@
 --儀式魔人ディザーズ
+--Djinn Disserere of Rituals
 function c30492798.initial_effect(c)
 	--ritual material
 	local e1=Effect.CreateEffect(c)

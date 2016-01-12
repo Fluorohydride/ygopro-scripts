@@ -1,4 +1,5 @@
 --カラクリ解体新書
+--Karakuri Anatomy
 function c85541675.initial_effect(c)
 	c:SetCounterLimit(0x12,2)
 	--activate

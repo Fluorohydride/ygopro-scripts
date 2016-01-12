@@ -1,4 +1,5 @@
 --幻影騎士団フラジャイルアーマー
+--The Phantom Knights of Fragile Armor
 function c36704180.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --精霊術師 ドリアード
+--Elemental Mistress Doriado
 function c99414168.initial_effect(c)
 	c:EnableReviveLimit()
 	--Attribute

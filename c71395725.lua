@@ -1,4 +1,5 @@
 --獣人アレス
+--Man Beast of Ares
 function c71395725.initial_effect(c)
 	--chain
 	local e1=Effect.CreateEffect(c)

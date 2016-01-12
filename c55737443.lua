@@ -1,4 +1,5 @@
 --守護神エクゾード
+--Exxod, Master of The Guard
 function c55737443.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

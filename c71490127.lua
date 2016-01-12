@@ -1,4 +1,5 @@
 --龍の鏡
+--Dragon's Mirror
 function c71490127.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

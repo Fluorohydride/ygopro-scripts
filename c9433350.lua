@@ -1,4 +1,5 @@
 --Sin 青眼の白龍
+--Malefic Blue-Eyes White Dragon
 function c9433350.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

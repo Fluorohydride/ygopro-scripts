@@ -1,4 +1,5 @@
 --聖刻龍－ドラゴンゲイヴ
+--Hieratic Dragon of Gebeb
 function c78033100.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

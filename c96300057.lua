@@ -1,4 +1,5 @@
 --W－ウィング・カタパルト
+--W-Wing Catapult
 function c96300057.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

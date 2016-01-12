@@ -1,4 +1,5 @@
 --フライファング
+--Flyfang
 function c11954712.initial_effect(c)
 	--reg
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --闇の指名者
+--Dark Designator
 function c78053598.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --魔導書庫クレッセン
+--Spellbook Library of the Crescent
 function c40230018.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

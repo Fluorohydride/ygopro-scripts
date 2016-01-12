@@ -1,4 +1,5 @@
 --高等紋章術
+--Advanced Heraldry Art
 function c61314842.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

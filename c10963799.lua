@@ -1,4 +1,5 @@
 --豪雨の結界像
+--Barrier Statue of the Torrent
 function c10963799.initial_effect(c)
 	--disable spsummon
 	local e1=Effect.CreateEffect(c)

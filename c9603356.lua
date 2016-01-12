@@ -1,4 +1,5 @@
 --シャドウナイトデーモン
+--Shadowknight Archfiend
 function c9603356.initial_effect(c)
 	--maintain
 	local e1=Effect.CreateEffect(c)

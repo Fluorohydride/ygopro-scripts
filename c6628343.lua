@@ -1,4 +1,5 @@
 --開闢の騎士
+--Beginning Knight
 function c6628343.initial_effect(c)
 	--gain
 	local e1=Effect.CreateEffect(c)

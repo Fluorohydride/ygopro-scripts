@@ -1,4 +1,5 @@
 --Kyoutou Waterfront
+--Kyoutou Waterfront
 function c56111151.initial_effect(c)
 	c:SetCounterLimit(0x37,5)
 	--Activate

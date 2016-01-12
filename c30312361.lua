@@ -1,4 +1,5 @@
 --ファントム・オブ・カオス
+--Phantom of Chaos
 function c30312361.initial_effect(c)
 	--copy
 	local e1=Effect.CreateEffect(c)

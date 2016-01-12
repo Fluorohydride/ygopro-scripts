@@ -1,4 +1,5 @@
 --D－HERO ダイハードガイ
+--Destiny HERO - Captain Tenacious
 function c77608643.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

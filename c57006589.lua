@@ -1,4 +1,5 @@
 --エネルギー吸収板
+--Energy-Absorbing Monolith
 function c57006589.initial_effect(c)
 	--reflect
 	local e1=Effect.CreateEffect(c)

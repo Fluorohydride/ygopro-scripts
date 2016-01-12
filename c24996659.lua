@@ -1,4 +1,5 @@
 --エレキーウィ
+--Wattkiwi
 function c24996659.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

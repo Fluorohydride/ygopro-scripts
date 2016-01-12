@@ -1,4 +1,5 @@
 --次元融合
+--Dimension Fusion
 function c23557835.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

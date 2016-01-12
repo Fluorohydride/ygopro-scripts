@@ -1,4 +1,5 @@
 --sophiaの影霊衣
+--Nekroz of Sophia
 function c21105106.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

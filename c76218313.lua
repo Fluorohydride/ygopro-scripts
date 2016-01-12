@@ -1,4 +1,5 @@
 --破壊剣－ドラゴンバスターブレード
+--Dragon Buster Destruction Sword
 function c76218313.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

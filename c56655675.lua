@@ -1,4 +1,5 @@
 --聖霊獣騎 ガイアペライオ
+--Ritual Beast Ulti-Gaiapelio
 function c56655675.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

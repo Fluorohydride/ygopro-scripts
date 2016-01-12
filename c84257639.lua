@@ -1,4 +1,5 @@
 --治療の神 ディアン・ケト
+--Dian Keto the Cure Master
 function c84257639.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

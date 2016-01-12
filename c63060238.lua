@@ -1,4 +1,5 @@
 --E・HERO ブレイズマン
+--Elemental HERO Blazeman
 function c63060238.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

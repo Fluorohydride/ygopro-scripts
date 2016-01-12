@@ -1,4 +1,5 @@
 --強者の苦痛
+--Burden of the Mighty
 function c44947065.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

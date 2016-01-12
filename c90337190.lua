@@ -1,4 +1,5 @@
 --魚雷魚
+--Torpedo Fish
 function c90337190.initial_effect(c)
 	--immune spell
 	local e1=Effect.CreateEffect(c)

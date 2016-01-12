@@ -1,4 +1,5 @@
 --銀河遠征
+--Galaxy Expedition
 function c60222582.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

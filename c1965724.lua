@@ -1,4 +1,5 @@
 --怒れるもけもけ
+--Mokey Mokey Smackdown
 function c1965724.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --スカルビショップ
+--Skull Knight
 function c2504891.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

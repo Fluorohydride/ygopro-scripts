@@ -1,4 +1,5 @@
 --救済のレイヤード
+--Layard the Liberator
 function c67468948.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

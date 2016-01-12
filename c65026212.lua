@@ -1,4 +1,5 @@
 --コアキメイル・マキシマム
+--Koa'ki Meiru Maximus
 function c65026212.initial_effect(c)
 	c:EnableReviveLimit()
 	--cost

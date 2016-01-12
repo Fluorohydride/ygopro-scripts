@@ -1,4 +1,5 @@
 --究極宝玉神 レインボー・ドラゴン
+--Rainbow Dragon
 function c79856792.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

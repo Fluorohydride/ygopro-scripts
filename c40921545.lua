@@ -1,4 +1,5 @@
 --ヴェルズ・カイトス
+--Evilswarm Ketos
 function c40921545.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

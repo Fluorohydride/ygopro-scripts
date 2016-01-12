@@ -1,4 +1,5 @@
 --極星霊ドヴェルグ
+--Dverg of the Nordic Alfar
 function c13455953.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

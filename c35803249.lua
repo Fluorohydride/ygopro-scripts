@@ -1,4 +1,5 @@
 --人造人間－サイコ・ロード
+--Jinzo - Lord
 function c35803249.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

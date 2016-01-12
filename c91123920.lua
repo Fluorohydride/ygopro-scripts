@@ -1,4 +1,5 @@
 --力の代行者 マーズ
+--The Agent of Force - Mars
 function c91123920.initial_effect(c)
 	--immune spell
 	local e1=Effect.CreateEffect(c)

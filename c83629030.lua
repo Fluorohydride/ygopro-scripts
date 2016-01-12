@@ -1,4 +1,5 @@
 --トゥーン・サイバー・ドラゴン
+--Toon Cyber Dragon
 function c83629030.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

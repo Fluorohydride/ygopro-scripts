@@ -1,4 +1,5 @@
 --埋蔵金の地図
+--Treasure Map
 function c54762426.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

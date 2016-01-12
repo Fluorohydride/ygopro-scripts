@@ -1,4 +1,5 @@
 --アンブラル・ウィル・オ・ザ・ウィスプ
+--Umbral Horror Will o' the Wisp
 function c70546737.initial_effect(c)
 	--lv change
 	local e1=Effect.CreateEffect(c)

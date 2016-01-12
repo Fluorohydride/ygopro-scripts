@@ -1,4 +1,5 @@
 --古代の機械巨竜
+--Ancient Gear Gadjiltron Dragon
 function c50933533.initial_effect(c)
 	--mat check
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --リ・バウンド
+--Rebound
 function c983995.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --聖騎士パーシヴァル
+--Noble Knight Peredur
 function c73359475.initial_effect(c)
 	--Attribute Dark
 	local e2=Effect.CreateEffect(c)

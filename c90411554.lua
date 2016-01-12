@@ -1,4 +1,5 @@
 --巌征竜－レドックス
+--Redox, Dragon Ruler of Boulders
 function c90411554.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

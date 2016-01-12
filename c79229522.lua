@@ -1,4 +1,5 @@
 --キメラテック・フォートレス・ドラゴン
+--Chimeratech Fortress Dragon
 function c79229522.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

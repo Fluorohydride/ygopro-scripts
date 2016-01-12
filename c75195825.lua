@@ -1,4 +1,5 @@
 --竜剣士マスターP
+--Master Pendulum, the Dracoslayer
 function c75195825.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

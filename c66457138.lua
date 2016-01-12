@@ -1,4 +1,5 @@
 --ファーニマル・ライオ
+--Fluffal Leo
 function c66457138.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --トラップ・キャプチャー
+--Trap Reclamation
 function c2122975.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

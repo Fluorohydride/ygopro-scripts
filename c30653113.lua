@@ -1,4 +1,5 @@
 --ナイルの恵み
+--Blessings of the Nile
 function c30653113.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

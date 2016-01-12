@@ -1,4 +1,5 @@
 --輪廻天狗
+--Reborn Tengu
 function c10028593.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

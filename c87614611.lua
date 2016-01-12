@@ -1,4 +1,5 @@
 --紅蓮魔竜の壺
+--Red Dragon Vase
 function c87614611.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --幽獄の時計塔
+--Clock Tower Prison
 function c75041269.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

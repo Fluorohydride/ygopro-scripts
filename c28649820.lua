@@ -1,4 +1,5 @@
 --アポピスの化神
+--Embodiment of Apophis
 function c28649820.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

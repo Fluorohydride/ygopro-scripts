@@ -1,4 +1,5 @@
 --マーダーサーカス
+--Crass Clown
 function c93889755.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

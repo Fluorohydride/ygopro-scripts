@@ -1,4 +1,5 @@
 --超量士ブルーレイヤー
+--Super Quantum Mecha Pilot Blue Layer
 function c12369277.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

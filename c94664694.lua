@@ -1,4 +1,5 @@
 --マッド・デーモン
+--Mad Archfiend
 function c94664694.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

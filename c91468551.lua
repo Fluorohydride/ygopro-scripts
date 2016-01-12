@@ -1,4 +1,5 @@
 --太陽の祭壇
+--Temple of the Sun
 function c91468551.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

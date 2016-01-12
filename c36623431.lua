@@ -1,4 +1,5 @@
 --コアキメイルの鋼核
+--Iron Core of Koa'ki Meiru
 function c36623431.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(36623431,0))

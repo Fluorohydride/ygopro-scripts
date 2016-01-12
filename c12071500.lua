@@ -1,4 +1,5 @@
 --ダーク・コーリング
+--Dark Calling
 function c12071500.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

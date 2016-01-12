@@ -1,4 +1,5 @@
 --ポジションチェンジ
+--Senet Switch
 function c63394872.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

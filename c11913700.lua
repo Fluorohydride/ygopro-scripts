@@ -1,4 +1,5 @@
 --インスタント・ネオスペース
+--Instant Neo Space
 function c11913700.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

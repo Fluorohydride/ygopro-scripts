@@ -1,4 +1,5 @@
 --クロスカウンター
+--Cross Counter
 function c37083210.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

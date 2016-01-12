@@ -1,4 +1,5 @@
 --インヴェルズ万能態
+--Steelswarm Genome
 function c62729173.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

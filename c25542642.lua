@@ -1,4 +1,5 @@
 --幻影霧剣
+--Phantom-Fogblade
 function c25542642.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

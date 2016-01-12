@@ -1,4 +1,5 @@
 --幻影の魔術士
+--Phantom Magician
 function c24103628.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

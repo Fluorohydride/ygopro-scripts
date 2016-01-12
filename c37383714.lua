@@ -1,4 +1,5 @@
 --魂の綱
+--Soul Rope
 function c37383714.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

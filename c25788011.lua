@@ -1,4 +1,5 @@
 --調星師ライズベルト
+--Risebell the Star Adjuster
 function c25788011.initial_effect(c)
 	--lv up
 	local e1=Effect.CreateEffect(c)

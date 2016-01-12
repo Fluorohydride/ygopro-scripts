@@ -1,4 +1,5 @@
 --ジャンク・コレクター
+--Junk Collector
 function c58242947.initial_effect(c)
 	--copy trap
 	local e1=Effect.CreateEffect(c)

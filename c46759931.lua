@@ -1,4 +1,5 @@
 --V・HERO トリニティー
+--Vision HERO Trinity
 function c46759931.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

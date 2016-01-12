@@ -1,4 +1,5 @@
 --女王親衛隊
+--Queen's Bodyguard
 function c71411377.initial_effect(c)
 	--at limit
 	local e1=Effect.CreateEffect(c)

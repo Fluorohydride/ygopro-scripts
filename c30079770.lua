@@ -1,4 +1,5 @@
 --真紅眼の黒炎竜
+--Red-Eyes Black Flare Dragon
 function c30079770.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--damage

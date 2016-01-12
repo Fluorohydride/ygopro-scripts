@@ -1,4 +1,5 @@
 --星輝士 トライヴェール
+--Stellarknight Triverr
 function c42589641.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,c42589641.xyzfilter,4,3)

@@ -1,4 +1,5 @@
 --執念深き老魔術師
+--Old Vindictive Magician
 function c45141844.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

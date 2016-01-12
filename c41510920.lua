@@ -1,4 +1,5 @@
 --神星なる因子
+--Stellarnova Alpha
 function c41510920.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

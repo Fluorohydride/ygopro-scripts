@@ -1,4 +1,5 @@
 --月読命
+--Tsukuyomi
 function c34853266.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

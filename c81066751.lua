@@ -1,4 +1,5 @@
 --神罰
+--Divine Punishment
 function c81066751.initial_effect(c)
 	--Activate(effect)
 	local e4=Effect.CreateEffect(c)

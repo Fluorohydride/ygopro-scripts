@@ -1,4 +1,5 @@
 --EMファイア・マフライオ
+--Performapal Fire Mufflerlion
 function c33823832.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

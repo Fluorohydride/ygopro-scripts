@@ -1,4 +1,5 @@
 --アサルト・アーマー
+--Assault Armor
 function c88190790.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

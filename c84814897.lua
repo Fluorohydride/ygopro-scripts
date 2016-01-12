@@ -1,4 +1,5 @@
 --騎竜
+--Kiryu
 function c84814897.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

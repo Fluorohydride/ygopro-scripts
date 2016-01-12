@@ -1,4 +1,5 @@
 --地雷蜘蛛
+--Jirai Gumo
 function c94773007.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ギミック・パペット－ハンプティ・ダンプティ
+--Gimmick Puppet Humpty Dumpty
 function c8226374.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

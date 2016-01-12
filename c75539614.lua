@@ -1,4 +1,5 @@
 --サイコ・ブレイド
+--Psychic Blade
 function c75539614.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

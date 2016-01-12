@@ -1,4 +1,5 @@
 --レアル・ジェネクス・ターボ
+--R-Genex Turbo
 function c6256844.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

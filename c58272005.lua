@@ -1,4 +1,5 @@
 --生存競争
+--Survival of the Fittest
 function c58272005.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --手札抹殺
+--Card Destruction
 function c72892473.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

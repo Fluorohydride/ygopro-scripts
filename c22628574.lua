@@ -1,4 +1,5 @@
 --フェイク・フェザー
+--Fake Feather
 function c22628574.initial_effect(c)
 	--copy trap
 	local e1=Effect.CreateEffect(c)

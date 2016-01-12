@@ -1,4 +1,5 @@
 --裁きの天秤
+--Balance of Judgment
 function c67443336.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

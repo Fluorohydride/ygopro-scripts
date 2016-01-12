@@ -1,4 +1,5 @@
 --カラクリ樽 真九六
+--Karakuri Barrel mdl 96 "Shinkuro"
 function c92300891.initial_effect(c)
 	--must attack
 	local e1=Effect.CreateEffect(c)

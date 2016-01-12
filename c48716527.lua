@@ -1,4 +1,5 @@
 --帝王の溶撃
+--The Monarchs Erupt
 function c48716527.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	--activate

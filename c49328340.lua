@@ -1,4 +1,5 @@
 --螺旋槍殺
+--Spiral Spear Strike
 function c49328340.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

@@ -1,4 +1,5 @@
 --トゥーン・ヂェミナイ・エルフ
+--Toon Gemini Elf
 function c42386471.initial_effect(c)
 	--cannot attack
 	local e1=Effect.CreateEffect(c)

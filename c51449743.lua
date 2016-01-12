@@ -1,4 +1,5 @@
 --チェーン・ブラスト
+--Chain Detonation
 function c51449743.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

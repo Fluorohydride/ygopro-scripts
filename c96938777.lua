@@ -1,4 +1,5 @@
 --神機王ウル
+--Machine Lord Ür
 function c96938777.initial_effect(c)
 	--attack all
 	local e1=Effect.CreateEffect(c)

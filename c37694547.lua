@@ -1,4 +1,5 @@
 --歯車街
+--Geartown
 function c37694547.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

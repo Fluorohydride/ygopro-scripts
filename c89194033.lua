@@ -1,4 +1,5 @@
 --聖獣セルケト
+--Mystical Beast of Serket
 function c89194033.initial_effect(c)
 	--selfdestroy
 	local e1=Effect.CreateEffect(c)

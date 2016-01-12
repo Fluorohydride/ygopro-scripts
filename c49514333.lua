@@ -1,4 +1,5 @@
 --ソウル・オブ・スタチュー
+--Tiki Soul
 function c49514333.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

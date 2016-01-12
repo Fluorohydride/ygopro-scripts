@@ -1,4 +1,5 @@
 --魂吸収
+--Soul Absorption
 function c68073522.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

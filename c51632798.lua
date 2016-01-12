@@ -1,4 +1,5 @@
 --可変機獣 ガンナードラゴン
+--Fusilier Dragon, the Dual-Mode Beast
 function c51632798.initial_effect(c)
 	--summon & set with no tribute
 	local e1=Effect.CreateEffect(c)

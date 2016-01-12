@@ -1,4 +1,5 @@
 --合成魔獣 ガーゼット
+--Maju Garzett
 function c8794435.initial_effect(c)
 	--tribute check
 	local e1=Effect.CreateEffect(c)

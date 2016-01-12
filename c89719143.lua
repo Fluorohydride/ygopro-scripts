@@ -1,4 +1,5 @@
 --決戦融合－ファイナル・フュージョン
+--Final Fusion
 function c89719143.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

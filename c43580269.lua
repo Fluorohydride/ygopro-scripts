@@ -1,4 +1,5 @@
 --エメス・ザ・インフィニティ
+--Emes the Infinity
 function c43580269.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --邪狂神の使い
+--Maniacal Servant
 function c33455338.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

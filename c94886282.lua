@@ -1,4 +1,5 @@
 --光の援軍
+--Charge of the Light Brigade
 function c94886282.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

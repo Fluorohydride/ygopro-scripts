@@ -1,4 +1,5 @@
 --マジェスペクター・ラクーン
+--Majespecter Raccoon - Bunbuku
 function c31991800.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

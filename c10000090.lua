@@ -1,4 +1,5 @@
 --ラーの翼神竜－不死鳥
+--The Winged Dragon of Ra - God Phoenix
 function c10000090.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

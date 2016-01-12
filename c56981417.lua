@@ -1,4 +1,5 @@
 --セフェルの魔導書
+--Spellbook of the Master
 function c56981417.initial_effect(c)
 	--copy spell
 	local e1=Effect.CreateEffect(c)

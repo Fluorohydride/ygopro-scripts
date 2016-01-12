@@ -1,4 +1,5 @@
 --ドラゴン・シールド
+--Dragon Shield
 function c63300440.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --紫炎の老中 エニシ
+--Enishi, Shien's Chancellor
 function c38280762.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon limit

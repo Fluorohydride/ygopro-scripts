@@ -1,4 +1,5 @@
 --BF－隠れ蓑のスチーム
+--Blackwing - Steam the Cloak
 function c9047460.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

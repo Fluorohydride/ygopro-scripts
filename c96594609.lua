@@ -1,4 +1,5 @@
 --炎王獣 キリン
+--Fire King Avatar Kirin
 function c96594609.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

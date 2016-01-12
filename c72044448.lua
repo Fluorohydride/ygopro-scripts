@@ -1,4 +1,5 @@
 --破滅のフォトン・ストリーム
+--Photon Stream of Destruction
 function c72044448.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

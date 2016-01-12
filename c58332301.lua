@@ -1,4 +1,5 @@
 --E－HERO ダーク・ガイア
+--Evil HERO Dark Gaia
 function c58332301.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

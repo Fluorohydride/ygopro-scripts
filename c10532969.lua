@@ -1,4 +1,5 @@
 --エンシェント・シャーク ハイパー・メガロドン
+--Hyper-Ancient Shark Megalodon
 function c10532969.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

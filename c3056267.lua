@@ -1,4 +1,5 @@
 --王座の侵略者
+--Invader of the Throne
 function c3056267.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --紋章獣ツインヘッド・イーグル
+--Heraldic Beast Twin-Headed Eagle
 function c19310321.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

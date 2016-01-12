@@ -1,4 +1,5 @@
 --武神器－サグサ
+--Bujingi Hare
 function c59251766.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --カオス・ソーサラー
+--Chaos Sorcerer
 function c9596126.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

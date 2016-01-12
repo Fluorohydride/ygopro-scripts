@@ -1,4 +1,5 @@
 --DNA改造手術
+--DNA Surgery
 function c74701381.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

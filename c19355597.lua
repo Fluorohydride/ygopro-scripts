@@ -1,4 +1,5 @@
 --ジェムナイトレディ・ブリリアント・ダイヤ
+--Gem-Knight Lady Brilliant Diamond
 function c19355597.initial_effect(c)
 	c:SetSPSummonOnce(19355597)
 	--fusion material

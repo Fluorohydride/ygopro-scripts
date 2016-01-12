@@ -1,4 +1,5 @@
 --ゴブリンエリート部隊
+--Goblin Elite Attack Force
 function c85306040.initial_effect(c)
 	--to defence
 	local e1=Effect.CreateEffect(c)

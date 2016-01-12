@@ -1,4 +1,5 @@
 --D・クロックン
+--Morphtronic Clocken
 function c91607976.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

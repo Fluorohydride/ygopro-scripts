@@ -1,4 +1,5 @@
 --フレシアの蟲惑魔
+--Traptrix Rafflesia
 function c6511113.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

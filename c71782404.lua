@@ -1,4 +1,5 @@
 --レッドアイズ・バーン
+--Red-Eyes Burn
 function c71782404.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DELAYED_QUICKEFFECT)
 	--Activate

@@ -1,4 +1,5 @@
 --聖導騎士イシュザーク
+--Divine Knight Ishzark
 function c57902462.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

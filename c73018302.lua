@@ -1,4 +1,5 @@
 --黒羽を狩る者
+--Hunter of Black Feathers
 function c73018302.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

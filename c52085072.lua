@@ -1,4 +1,5 @@
 --絶望神アンチホープ
+--Dystopia the Despondent
 function c52085072.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

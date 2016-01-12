@@ -1,4 +1,5 @@
 --増草剤
+--Miracle Fertilizer
 function c44887817.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

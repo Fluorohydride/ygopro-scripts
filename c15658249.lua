@@ -1,4 +1,5 @@
 --ワーム・バルサス
+--Worm Barses
 function c15658249.initial_effect(c)
 	--position
 	local e1=Effect.CreateEffect(c)

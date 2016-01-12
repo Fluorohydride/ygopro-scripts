@@ -1,4 +1,5 @@
 --剣闘獣ネロキウス
+--Gladiator Beast Nerokius
 function c29357956.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

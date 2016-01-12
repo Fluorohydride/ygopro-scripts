@@ -1,4 +1,5 @@
 --オーバーリミット
+--Over Limit
 function c23282832.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

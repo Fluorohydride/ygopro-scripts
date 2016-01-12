@@ -1,4 +1,5 @@
 --凍氷帝メビウス
+--Mobius the Mega Monarch
 function c23689697.initial_effect(c)
 	--summon with 1 tribute
 	local e1=Effect.CreateEffect(c)

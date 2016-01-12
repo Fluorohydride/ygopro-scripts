@@ -1,4 +1,5 @@
 --万魔殿－悪魔の巣窟－
+--Pandemonium
 function c94585852.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

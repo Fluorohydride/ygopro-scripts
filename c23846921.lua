@@ -1,4 +1,5 @@
 --アルカナフォースXXI－THE WORLD
+--Arcana Force XXI - The World
 function c23846921.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)

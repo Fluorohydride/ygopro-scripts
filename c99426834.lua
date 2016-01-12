@@ -1,4 +1,5 @@
 --沼地の魔獣王
+--Beastking of the Swamps
 function c99426834.initial_effect(c)
 	--fusion substitute
 	local e1=Effect.CreateEffect(c)

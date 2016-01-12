@@ -1,4 +1,5 @@
 --狂植物の氾濫
+--Raging Mad Plants
 function c95507060.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

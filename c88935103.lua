@@ -1,4 +1,5 @@
 --貴竜の魔術師
+--Nobledragon Magician
 function c88935103.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

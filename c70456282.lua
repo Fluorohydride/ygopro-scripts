@@ -1,4 +1,5 @@
 --A BF－霧雨のクナイ
+--Assault Blackwing - Kunai the Drizzle
 function c70456282.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

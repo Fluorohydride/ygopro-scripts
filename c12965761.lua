@@ -1,4 +1,5 @@
 --デス・デンドル
+--Des Dendle
 function c12965761.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

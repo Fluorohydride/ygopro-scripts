@@ -1,4 +1,5 @@
 --ゴブリンのその場しのぎ
+--Goblin Out of the Frying Pan
 function c69632396.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

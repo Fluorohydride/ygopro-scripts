@@ -1,4 +1,5 @@
 --先史遺産ソル・モノリス
+--Chronomaly Sol Monolith
 function c93543806.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

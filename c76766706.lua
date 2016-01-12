@@ -1,4 +1,5 @@
 --混沌の種
+--Chaos Seed
 function c76766706.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --金色の魔象
+--Great Mammoth of Goldfine
 function c54622031.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

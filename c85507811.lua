@@ -1,4 +1,5 @@
 --E・HERO グロー・ネオス
+--Elemental HERO Glow Neos
 function c85507811.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --ヴィクティム・カウンター
+--Gemini Counter
 function c81601517.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

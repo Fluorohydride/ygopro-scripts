@@ -1,4 +1,5 @@
 --スピード・ウォリアー
+--Speed Warrior
 function c9365703.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

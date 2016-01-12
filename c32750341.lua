@@ -1,4 +1,5 @@
 --BK スパー
+--Battlin' Boxer Sparrer
 function c32750341.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

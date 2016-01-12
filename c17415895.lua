@@ -1,4 +1,5 @@
 --ヴォルカニック・エッジ
+--Volcanic Slicer
 function c17415895.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

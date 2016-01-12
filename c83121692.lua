@@ -1,4 +1,5 @@
 --E・HERO テンペスター
+--Elemental HERO Tempest
 function c83121692.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

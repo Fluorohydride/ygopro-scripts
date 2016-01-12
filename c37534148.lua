@@ -1,4 +1,5 @@
 --リボーンリボン
+--Ribbon of Rebirth
 function c37534148.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

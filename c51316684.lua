@@ -1,4 +1,5 @@
 --インフェルノイド・ヴァエル
+--Infernoid Seitsemas
 function c51316684.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

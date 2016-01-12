@@ -1,4 +1,5 @@
 --黒き人食い鮫
+--Man-Eating Black Shark
 function c80727036.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

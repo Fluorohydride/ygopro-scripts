@@ -1,4 +1,5 @@
 --RUM－ヌメロン・フォース
+--Rank-Up-Magic Numeron Force
 function c48333324.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

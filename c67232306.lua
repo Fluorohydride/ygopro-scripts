@@ -1,4 +1,5 @@
 --聖なる鎧 －ミラーメール－
+--Mirror Mail
 function c67232306.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

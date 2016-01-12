@@ -1,4 +1,5 @@
 --ヘル・ポリマー
+--Chthonian Polymer
 function c72287557.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --不知火流 転生の陣
+--Shiranui Style Synthesis
 function c40005099.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

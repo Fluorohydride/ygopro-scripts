@@ -1,4 +1,5 @@
 --シャインナイト
+--Shine Knight
 function c86952477.initial_effect(c)
 	--lvchange
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --苦渋の選択
+--Painful Choice
 function c74191942.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

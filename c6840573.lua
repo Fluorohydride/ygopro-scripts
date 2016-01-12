@@ -1,4 +1,5 @@
 --バロックス
+--Barox
 function c6840573.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

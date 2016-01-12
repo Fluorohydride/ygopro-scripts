@@ -1,4 +1,5 @@
 --幻影騎士団ラギッドグローブ
+--The Phantom Knights of Rugged Glove
 function c63821877.initial_effect(c)
 	--effect gain
 	local e1=Effect.CreateEffect(c)

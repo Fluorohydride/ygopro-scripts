@@ -1,4 +1,5 @@
 --臨時ダイヤ
+--Special Schedule
 function c97520701.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

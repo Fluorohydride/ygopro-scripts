@@ -1,4 +1,5 @@
 --魂喰らいの魔刀
+--Sword of the Soul-Eater
 function c5371656.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

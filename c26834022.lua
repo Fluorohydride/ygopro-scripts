@@ -1,4 +1,5 @@
 --ディザーム
+--Disarm
 function c26834022.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

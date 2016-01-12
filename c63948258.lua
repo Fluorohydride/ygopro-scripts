@@ -1,4 +1,5 @@
 --未知ガエル
+--Submarine Frog
 function c63948258.initial_effect(c)
 	--Pierce
 	local e1=Effect.CreateEffect(c)

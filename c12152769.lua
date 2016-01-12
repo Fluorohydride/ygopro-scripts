@@ -1,4 +1,5 @@
 --おねだりゴブリン
+--Scrounging Goblin
 function c12152769.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

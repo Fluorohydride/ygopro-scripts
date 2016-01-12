@@ -1,4 +1,5 @@
 --ブラックポータン
+--Black Potan
 function c76218643.initial_effect(c)
 	--lp damage
 	local e1=Effect.CreateEffect(c)

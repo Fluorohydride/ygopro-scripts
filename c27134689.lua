@@ -1,4 +1,5 @@
 --マスター・オブ・OZ
+--Master of Oz
 function c27134689.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

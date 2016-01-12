@@ -1,4 +1,5 @@
 --霊獣使い ウェン
+--Ritual Beast Tamer Wen
 function c40907115.initial_effect(c)
 	c:SetSPSummonOnce(40907115)
 	--spsummon

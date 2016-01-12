@@ -1,4 +1,5 @@
 --機殻の要塞
+--Laser Qlip
 function c43034264.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

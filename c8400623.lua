@@ -1,4 +1,5 @@
 --邪龍アナンタ
+--Evil Dragon Ananta
 function c8400623.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

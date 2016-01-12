@@ -1,4 +1,5 @@
 --メガキャノン・ソルジャー
+--Cannon Soldier MK-2
 function c14702066.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

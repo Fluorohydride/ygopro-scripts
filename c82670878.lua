@@ -1,4 +1,5 @@
 --血涙のオーガ
+--Ogre of the Scarlet Sorrow
 function c82670878.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

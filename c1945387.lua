@@ -1,4 +1,5 @@
 --E・HERO ノヴァマスター
+--Elemental HERO Nova Master
 function c1945387.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --『守備』封じ
+--Stop Defense
 function c63102017.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

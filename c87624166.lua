@@ -1,4 +1,5 @@
 --古の森
+--Ancient Forest
 function c87624166.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

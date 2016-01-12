@@ -1,4 +1,5 @@
 --シンクロ・クラッカー
+--Synchro Cracker
 function c41097056.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

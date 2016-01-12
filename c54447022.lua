@@ -1,4 +1,5 @@
 --ソウル・チャージ
+--Soul Charge
 function c54447022.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

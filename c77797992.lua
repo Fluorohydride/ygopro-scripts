@@ -1,4 +1,5 @@
 --森の聖獣 アルパカリブ
+--Alpacaribou, Mystical Beast of the Forest
 function c77797992.initial_effect(c)
 	--indes1
 	local e1=Effect.CreateEffect(c)

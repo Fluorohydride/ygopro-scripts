@@ -1,4 +1,5 @@
 --ヴェノム・ボア
+--Venom Boa
 function c9284723.initial_effect(c)
 	--add counter
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --混沌の落とし穴
+--Chaos Trap Hole
 function c11593137.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --念動収集機
+--Telekinetic Power Well
 function c28741524.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

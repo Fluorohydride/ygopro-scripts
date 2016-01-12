@@ -1,4 +1,5 @@
 --ライトレイ ディアボロス
+--Lightray Diabolos
 function c30126992.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

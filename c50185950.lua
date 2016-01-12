@@ -1,4 +1,5 @@
 --サクリボー
+--Sakuriboh
 function c50185950.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

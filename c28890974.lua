@@ -1,4 +1,5 @@
 --光神化
+--Celestial Transformation
 function c28890974.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

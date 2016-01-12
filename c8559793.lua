@@ -1,4 +1,5 @@
 --RR－ネスト
+--Raidraptor - Nest
 function c8559793.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

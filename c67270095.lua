@@ -1,4 +1,5 @@
 --ターボ・シンクロン
+--Turbo Synchron
 function c67270095.initial_effect(c)
 	--pos
 	local e1=Effect.CreateEffect(c)

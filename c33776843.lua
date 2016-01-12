@@ -1,4 +1,5 @@
 --CNo.15 ギミック・パペット－シリアルキラー
+--Number C15: Gimmick Puppet Giant Hunter
 function c33776843.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,9,3)

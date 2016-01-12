@@ -1,4 +1,5 @@
 --遺言状
+--Last Will
 function c85602018.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

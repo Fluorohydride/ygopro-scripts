@@ -1,4 +1,5 @@
 --エッジインプ・DTモドキ
+--Edge Imp Frightfuloid
 function c34566435.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

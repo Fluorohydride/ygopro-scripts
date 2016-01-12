@@ -1,4 +1,5 @@
 --エルシャドール・シェキナーガ
+--El Shaddoll Shekhinaga
 function c74822425.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion material

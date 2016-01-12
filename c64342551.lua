@@ -1,4 +1,5 @@
 --水陸両用バグロス MK－3
+--Amphibious Bugroth MK-3
 function c64342551.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

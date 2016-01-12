@@ -1,4 +1,5 @@
 --E・HERO フレア・ネオス
+--Elemental HERO Flare Neos
 function c81566151.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

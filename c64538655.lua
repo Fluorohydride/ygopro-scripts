@@ -1,4 +1,5 @@
 --一撃必殺侍
+--Sasuke Samurai 4
 function c64538655.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

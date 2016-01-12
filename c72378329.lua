@@ -1,4 +1,5 @@
 --ビーストアイズ・ペンデュラム・ドラゴン
+--Beast-Eyes Pendulum Dragon
 function c72378329.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

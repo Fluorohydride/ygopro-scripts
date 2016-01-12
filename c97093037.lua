@@ -1,4 +1,5 @@
 --創世者の化身
+--The Creator Incarnate
 function c97093037.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

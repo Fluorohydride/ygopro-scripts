@@ -1,4 +1,5 @@
 --コンバート・コンタクト
+--Convert Contact
 function c82639107.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

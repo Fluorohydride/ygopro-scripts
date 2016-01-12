@@ -1,4 +1,5 @@
 --キメラテック・オーバー・ドラゴン
+--Chimeratech Overdragon
 function c64599569.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion material

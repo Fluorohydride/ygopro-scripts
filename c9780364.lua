@@ -1,4 +1,5 @@
 --剣闘調教
+--Gladiator Taming
 function c9780364.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

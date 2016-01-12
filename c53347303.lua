@@ -1,4 +1,5 @@
 --青眼の光龍
+--Blue-Eyes Shining Dragon
 function c53347303.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

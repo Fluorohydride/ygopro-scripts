@@ -1,4 +1,5 @@
 --D－HERO Bloo－D 
+--Destiny HERO - Plasma
 function c83965310.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

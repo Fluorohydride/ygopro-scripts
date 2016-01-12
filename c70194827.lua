@@ -1,4 +1,5 @@
 --ブレード・バウンサー
+--Blade Bounzer
 function c70194827.initial_effect(c)
 	--chain attack
 	local e1=Effect.CreateEffect(c)

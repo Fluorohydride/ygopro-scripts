@@ -1,4 +1,5 @@
 --E・HERO バブルマン・ネオ
+--Elemental HERO Neo Bubbleman
 function c5285665.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

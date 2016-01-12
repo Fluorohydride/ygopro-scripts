@@ -1,4 +1,5 @@
 --廃石融合
+--Fragment Fusion
 function c72029628.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

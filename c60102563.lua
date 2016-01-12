@@ -1,4 +1,5 @@
 --本気ギレパンダ
+--Maji-Gire Panda
 function c60102563.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

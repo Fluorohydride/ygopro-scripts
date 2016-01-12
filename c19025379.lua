@@ -1,4 +1,5 @@
 --ロード・オブ・ザ・レッド
+--Lord of the Red
 function c19025379.initial_effect(c)
 	c:EnableReviveLimit()
 	--destroy monster

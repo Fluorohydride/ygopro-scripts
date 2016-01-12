@@ -1,4 +1,5 @@
 --DDD覇龍王ペンドラゴン
+--D/D/D Dragon King Pendragon
 function c56619314.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

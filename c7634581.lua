@@ -1,4 +1,5 @@
 --オレイカルコス・シュノロス
+--Orichalcos Shunoros
 function c7634581.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

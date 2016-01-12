@@ -1,4 +1,5 @@
 --魔導書整理
+--Spellbook Organization
 function c96677818.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

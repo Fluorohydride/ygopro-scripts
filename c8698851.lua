@@ -1,4 +1,5 @@
 --D－カウンター
+--D - Counter
 function c8698851.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

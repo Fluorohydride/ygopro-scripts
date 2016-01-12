@@ -1,4 +1,5 @@
 --アクアアクトレス・グッピー
+--Aquaactress Guppy
 function c66668900.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

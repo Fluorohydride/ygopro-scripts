@@ -1,4 +1,5 @@
 --八尺勾玉
+--Orb of Yasaka
 function c74115234.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --鳳凰神の羽根
+--A Feather of the Phoenix
 function c49140998.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

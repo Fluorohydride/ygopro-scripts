@@ -1,4 +1,5 @@
 --封印の黄金櫃
+--Gold Sarcophagus
 function c75500286.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

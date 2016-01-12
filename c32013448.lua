@@ -1,4 +1,5 @@
 --宵闇の騎士
+--Evening Twilight Knight
 function c32013448.initial_effect(c)
 	--gain
 	local e1=Effect.CreateEffect(c)

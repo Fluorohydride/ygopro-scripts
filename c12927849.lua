@@ -1,4 +1,5 @@
 --SZW－天聖輝狼剣
+--SZW - Fenrir Sword
 function c12927849.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

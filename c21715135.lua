@@ -1,4 +1,5 @@
 --ガガガ学園の緊急連絡網
+--Gagaga Academy Emergency Network
 function c21715135.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

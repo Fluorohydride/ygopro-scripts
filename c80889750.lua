@@ -1,4 +1,5 @@
 --デストーイ・サーベル・タイガー
+--Frightfur Sabre-Tooth
 function c80889750.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

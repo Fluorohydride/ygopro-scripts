@@ -1,4 +1,5 @@
 --クレボンス
+--Krebons
 function c59575539.initial_effect(c)
 	--be target
 	local e1=Effect.CreateEffect(c)

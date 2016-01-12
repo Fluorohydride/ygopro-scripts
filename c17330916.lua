@@ -1,4 +1,5 @@
 --EMモンキーボード
+--Performapal Monkeyboard
 function c17330916.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c,false)

@@ -1,4 +1,5 @@
 --PSYフレームギア・ε
+--PSY-Framegear Epsilon
 function c1697104.initial_effect(c)
 	c:EnableUnsummonable()
 	--splimit

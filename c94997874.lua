@@ -1,4 +1,5 @@
 --聖占術姫タロットレイ
+--Prediction Princess Tarotrei
 function c94997874.initial_effect(c)
 	c:EnableReviveLimit()
 	--position change

@@ -1,4 +1,5 @@
 --オノマト連携
+--Onomatopaira
 function c6595475.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

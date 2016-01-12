@@ -1,4 +1,5 @@
 --ガガガカイザー
+--Gagaga Caesar
 function c9583383.initial_effect(c)
 	--atklimit
 	local e1=Effect.CreateEffect(c)

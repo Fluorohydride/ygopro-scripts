@@ -1,4 +1,5 @@
 --グリズリーマザー
+--Mother Grizzly
 function c57839750.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

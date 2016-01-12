@@ -1,4 +1,5 @@
 --発条機甲ゼンマイスター
+--Wind-Up Zenmaister
 function c68597372.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

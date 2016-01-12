@@ -1,4 +1,5 @@
 --魔装邪龍 イーサルウェポン
+--Aether, the Wicked Empowering Dragon
 function c28865322.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

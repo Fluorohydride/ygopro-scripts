@@ -1,4 +1,5 @@
 --弱肉一色
+--The Law of the Normal
 function c66926224.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

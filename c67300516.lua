@@ -1,4 +1,5 @@
 --真紅眼の飛竜
+--Red-Eyes Wyvern
 function c67300516.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

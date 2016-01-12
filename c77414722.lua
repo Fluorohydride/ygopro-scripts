@@ -1,4 +1,5 @@
 --マジック・ジャマー
+--Magic Jammer
 function c77414722.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

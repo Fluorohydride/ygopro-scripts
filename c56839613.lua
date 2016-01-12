@@ -1,4 +1,5 @@
 --電池メン－ボタン型
+--Batteryman Micro-Cell
 function c56839613.initial_effect(c)
 	--flip effect
 	local e1=Effect.CreateEffect(c)

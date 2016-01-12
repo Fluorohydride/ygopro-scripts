@@ -1,4 +1,5 @@
 --マインフィールド
+--Minefieldriller
 function c24419823.initial_effect(c)
 	--salvage
 	local e2=Effect.CreateEffect(c)

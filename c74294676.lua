@@ -1,4 +1,5 @@
 --エヴォルカイザー・ラギア
+--Evolzar Laggia
 function c74294676.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DINOSAUR),4,2)

@@ -1,4 +1,5 @@
 --明と宵の逆転
+--Exchange of Night and Day
 function c3160805.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

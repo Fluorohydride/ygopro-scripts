@@ -1,4 +1,5 @@
 --バーバリアン2号
+--Swamp Battleguard
 function c40453765.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

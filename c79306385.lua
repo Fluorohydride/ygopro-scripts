@@ -1,4 +1,5 @@
 --宣告者の神託
+--Oracle of the Herald
 function c79306385.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

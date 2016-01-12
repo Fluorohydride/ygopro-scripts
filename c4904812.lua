@@ -1,4 +1,5 @@
 --ジェネクス・ウンディーネ
+--Genex Undine
 function c4904812.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

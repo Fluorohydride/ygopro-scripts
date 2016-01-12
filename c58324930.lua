@@ -1,4 +1,5 @@
 --破戒僧　ランシン
+--Anarchist Monk Ranshin
 function c58324930.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

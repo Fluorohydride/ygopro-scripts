@@ -1,4 +1,5 @@
 --冥界の魔王 ハ・デス
+--Dark Ruler Ha Des
 function c53982768.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

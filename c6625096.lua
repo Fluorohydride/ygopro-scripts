@@ -1,4 +1,5 @@
 --鰤っ子姫
+--Beautunaful Princess
 function c6625096.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

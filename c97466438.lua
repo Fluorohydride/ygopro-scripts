@@ -1,4 +1,5 @@
 --ヨコシマウマ
+--Zany Zebra
 function c97466438.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c,false)

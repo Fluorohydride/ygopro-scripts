@@ -1,4 +1,5 @@
 --鳳王獣ガイルーダ
+--Phoenix Beast Gairuda
 function c43791861.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

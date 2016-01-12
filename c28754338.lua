@@ -1,4 +1,5 @@
 --真海皇 トライドン
+--Legendary Atlantean Tridon
 function c28754338.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --光鱗のトビウオ
+--Golden Flying Fish
 function c76203291.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

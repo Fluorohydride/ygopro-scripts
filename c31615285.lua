@@ -1,4 +1,5 @@
 --サボウ・クローザー
+--Cactus Bouncer
 function c31615285.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

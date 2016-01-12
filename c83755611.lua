@@ -1,4 +1,5 @@
 --輝竜星－ショウフク
+--Baxia, Brightness of the Yang Zing
 function c83755611.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_WYRM),1)

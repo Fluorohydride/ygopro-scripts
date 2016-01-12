@@ -1,4 +1,5 @@
 --メンタルドレイン
+--Mind Drain
 function c68937720.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

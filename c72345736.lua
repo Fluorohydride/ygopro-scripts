@@ -1,4 +1,5 @@
 --六武衆の結束
+--Six Samurai United
 function c72345736.initial_effect(c)
 	c:EnableCounterPermit(0x3003)
 	c:SetCounterLimit(0x3003,2)

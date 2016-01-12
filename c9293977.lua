@@ -1,4 +1,5 @@
 --メタル・ドラゴン
+--Metal Dragon
 function c9293977.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

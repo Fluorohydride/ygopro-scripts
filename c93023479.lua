@@ -1,4 +1,5 @@
 --墓守の召喚師
+--Gravekeeper's Recruiter
 function c93023479.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ヴァンパイア・ロード
+--Vampire Lord
 function c53839837.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

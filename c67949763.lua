@@ -1,4 +1,5 @@
 --罪鍵の法－シン・キー・ロウ
+--Corrupted Keys
 function c67949763.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

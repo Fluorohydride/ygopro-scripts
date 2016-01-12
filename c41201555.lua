@@ -1,4 +1,5 @@
 --コアキメイル・グラヴィローズ
+--Koa'ki Meiru Gravirose
 function c41201555.initial_effect(c)
 	--cost
 	local e1=Effect.CreateEffect(c)

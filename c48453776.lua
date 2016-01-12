@@ -1,4 +1,5 @@
 --天魔神 ノーレラス
+--Sky Scourge Norleras
 function c48453776.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

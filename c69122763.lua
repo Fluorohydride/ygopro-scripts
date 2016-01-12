@@ -1,4 +1,5 @@
 --守護霊のお守り
+--Deal of Phantom
 function c69122763.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

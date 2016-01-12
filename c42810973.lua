@@ -1,4 +1,5 @@
 --ジャンク・アーチャー
+--Junk Archer
 function c42810973.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c42810973.tfilter,aux.NonTuner(nil),1)

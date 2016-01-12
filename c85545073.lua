@@ -1,4 +1,5 @@
 --デストーイ・シザー・ベアー
+--Frightfur Bear
 function c85545073.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

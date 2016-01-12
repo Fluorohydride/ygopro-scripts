@@ -1,4 +1,5 @@
 --挑発
+--Taunt
 function c90740329.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

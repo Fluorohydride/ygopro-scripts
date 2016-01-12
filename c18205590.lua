@@ -1,4 +1,5 @@
 --天架ける星因士
+--Satellarknight Skybridge
 function c18205590.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

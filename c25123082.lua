@@ -1,4 +1,5 @@
 --ヒュグロの魔導書
+--Spellbook of Power
 function c25123082.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

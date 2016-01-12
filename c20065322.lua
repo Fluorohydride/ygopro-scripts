@@ -1,4 +1,5 @@
 --クリボーを呼ぶ笛
+--The Flute of Summoning Kuriboh
 function c20065322.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

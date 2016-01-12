@@ -1,4 +1,5 @@
 --充電池メン
+--Batteryman Charger
 function c83446909.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

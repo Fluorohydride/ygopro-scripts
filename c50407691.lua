@@ -1,4 +1,5 @@
 --イグナイト・ライオット
+--Igknight Margrave
 function c50407691.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

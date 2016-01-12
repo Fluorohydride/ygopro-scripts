@@ -1,4 +1,5 @@
 --セイクリッド・シェラタン
+--Constellar Sheratan
 function c78486968.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

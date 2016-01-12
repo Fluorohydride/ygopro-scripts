@@ -1,4 +1,5 @@
 --機械複製術
+--Machine Duplication
 function c63995093.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --強制転移
+--Creature Swap
 function c31036355.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

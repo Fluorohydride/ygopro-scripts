@@ -1,4 +1,5 @@
 --死の代行者 ウラヌス
+--The Agent of Entropy - Uranus
 function c97750534.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

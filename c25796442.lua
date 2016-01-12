@@ -1,4 +1,5 @@
 --儀式の檻
+--Ritual Cage
 function c25796442.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

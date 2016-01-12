@@ -1,4 +1,5 @@
 --巨大化
+--Megamorph
 function c22046459.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

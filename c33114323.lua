@@ -1,4 +1,5 @@
 --メタルシルバー・アーマー
+--Metalsilver Armor
 --Effect is not fully implemented
 function c33114323.initial_effect(c)
 	--Activate

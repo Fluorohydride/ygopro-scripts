@@ -1,4 +1,5 @@
 --武神隠
+--Bujincident
 function c11221418.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

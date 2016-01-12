@@ -1,4 +1,5 @@
 --イグナイト・ウージー
+--Igknight Veteran
 function c93662626.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

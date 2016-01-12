@@ -1,4 +1,5 @@
 --No.81 超弩級砲塔列車スペリオル・ドーラ
+--Number 81: Superdreadnought Rail Cannon Superior Dora
 function c49032236.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,10,2)

@@ -1,4 +1,5 @@
 --ライトイレイザー
+--Light Laser
 function c11471117.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

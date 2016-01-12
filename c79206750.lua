@@ -1,4 +1,5 @@
 --アビスコーン
+--Abyss-scorn
 function c79206750.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

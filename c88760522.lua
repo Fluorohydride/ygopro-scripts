@@ -1,4 +1,5 @@
 --多様進化
+--Evo-Diversity
 function c88760522.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --甲虫装機 エクサスタッグ
+--Inzektor Exa-Stag
 function c26211048.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_INSECT),5,2)

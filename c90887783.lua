@@ -1,4 +1,5 @@
 --竜の交感
+--Draconnection
 function c90887783.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

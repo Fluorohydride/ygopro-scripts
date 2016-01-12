@@ -1,4 +1,5 @@
 --ギガント・セファロタス
+--Gigantic Cephalotus
 function c82116191.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

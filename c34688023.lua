@@ -1,4 +1,5 @@
 --エッジインプ・ソウ
+--Edge Imp Saw
 function c34688023.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

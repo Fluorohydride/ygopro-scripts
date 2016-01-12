@@ -1,4 +1,5 @@
 --高等儀式術
+--Advanced Ritual Art
 function c46052429.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

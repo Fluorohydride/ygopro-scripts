@@ -1,4 +1,5 @@
 --記憶破壊者
+--Memory Crusher
 function c48700891.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

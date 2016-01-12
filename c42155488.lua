@@ -1,4 +1,5 @@
 --ジェノミックス・ファイター
+--Genomix Fighter
 function c42155488.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

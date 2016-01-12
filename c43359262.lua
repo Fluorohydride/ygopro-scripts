@@ -1,4 +1,5 @@
 --エレクトロ軍曹
+--Sergeant Electro
 function c43359262.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

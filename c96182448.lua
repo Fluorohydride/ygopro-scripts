@@ -1,4 +1,5 @@
 --ニトロ・シンクロン
+--Nitro Synchron
 function c96182448.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

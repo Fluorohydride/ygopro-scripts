@@ -1,4 +1,5 @@
 --スクラップ・オルトロス
+--Scrap Orthros
 function c64550682.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

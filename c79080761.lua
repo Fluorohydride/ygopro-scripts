@@ -1,4 +1,5 @@
 --ギガストーン・オメガ
+--Gigastone Omega
 function c79080761.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

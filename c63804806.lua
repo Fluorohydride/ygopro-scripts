@@ -1,4 +1,5 @@
 --スピード・キング☆スカル・フレイム
+--Supersonic Skull Flame
 function c63804806.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

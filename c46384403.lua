@@ -1,4 +1,5 @@
 --素早いマンタ
+--Nimble Manta
 function c46384403.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

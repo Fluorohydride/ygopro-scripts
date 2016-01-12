@@ -1,4 +1,5 @@
 --戦士抹殺
+--Warrior Elimination
 function c90873992.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --奇策
+--Nitwit Outwit
 function c49204190.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

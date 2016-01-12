@@ -1,4 +1,5 @@
 --マジカルフィシアリスト
+--Frequency Magician
 function c62154416.initial_effect(c)
 	c:EnableCounterPermit(0x3001)
 	c:SetCounterLimit(0x3001,1)

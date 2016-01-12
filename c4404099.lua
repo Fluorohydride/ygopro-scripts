@@ -1,4 +1,5 @@
 --海底に潜む深海竜
+--The Dragon Dwelling in the Deep
 function c4404099.initial_effect(c)
 	--add counter
 	local e1=Effect.CreateEffect(c)

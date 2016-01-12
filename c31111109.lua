@@ -1,4 +1,5 @@
 --E・HERO ゴッド・ネオス
+--Elemental HERO Divine Neos
 function c31111109.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

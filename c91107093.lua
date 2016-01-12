@@ -1,4 +1,5 @@
 --電磁シールド
+--Electromagnetic Shield
 function c91107093.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

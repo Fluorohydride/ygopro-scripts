@@ -1,4 +1,5 @@
 --チャウチャウちゃん
+--Chow Chow Chan
 function c99902789.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

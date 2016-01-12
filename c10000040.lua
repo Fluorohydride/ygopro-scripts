@@ -1,4 +1,5 @@
 --光の創造神 ホルアクティ
+--The Creator God of Light, Horakhty
 function c10000040.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

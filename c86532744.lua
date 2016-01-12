@@ -1,4 +1,5 @@
 --SNo.39 希望皇ホープONE
+--Number S39: Utopia Prime
 function c86532744.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

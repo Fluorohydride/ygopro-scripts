@@ -1,4 +1,5 @@
 --CX 風紀大宮司サイモン
+--CXyz Simon the Great Moral Leader
 function c41147577.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,3)

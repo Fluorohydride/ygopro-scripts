@@ -1,4 +1,5 @@
 --憑依装着－ウィン
+--Familiar-Possessed - Wynn
 function c31764353.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

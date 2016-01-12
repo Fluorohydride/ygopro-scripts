@@ -1,4 +1,5 @@
 --ナンバーズ・オーバーレイ・ブースト
+--Numbers Overlay Boost
 function c97738431.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

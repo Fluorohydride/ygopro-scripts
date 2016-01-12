@@ -1,4 +1,5 @@
 --スターゲート
+--Spacegate
 function c97151365.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --大番狂わせ
+--A Major Upset
 function c32207100.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

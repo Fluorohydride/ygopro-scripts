@@ -1,4 +1,5 @@
 --人造人間－サイコ・ショッカー
+--Jinzo
 function c77585513.initial_effect(c)
 	--cannot trigger
 	local e1=Effect.CreateEffect(c)

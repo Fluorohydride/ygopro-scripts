@@ -1,4 +1,5 @@
 --記憶抹消
+--Mind Wipe
 function c52817046.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

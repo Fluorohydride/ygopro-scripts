@@ -1,4 +1,5 @@
 --彼岸の悪鬼 ハックルスパー
+--Calcab, Malebranche of the Burning Abyss
 function c73213494.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

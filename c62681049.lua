@@ -1,4 +1,5 @@
 --妖仙郷の眩暈風
+--Dizzying Winds of Yosen Village
 function c62681049.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

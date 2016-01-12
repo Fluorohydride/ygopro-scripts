@@ -1,4 +1,5 @@
 --燃え上がる大海
+--High Tide on Fire Island
 function c32542011.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --超重輝将ヒス－E
+--Superheavy Samurai General Jade
 function c42880485.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

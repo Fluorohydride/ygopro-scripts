@@ -1,4 +1,5 @@
 --幻奏の音女タムタム
+--Tamtam the Melodious Diva
 function c79757784.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

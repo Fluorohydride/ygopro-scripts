@@ -1,4 +1,5 @@
 --風帝家臣ガルーム
+--Garum the Storm Vassal
 function c22382087.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

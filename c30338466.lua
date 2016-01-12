@@ -1,4 +1,5 @@
 --剣現する武神
+--Bujin Regalia - The Sword
 function c30338466.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ポールポジション
+--Pole Position
 function c73578229.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

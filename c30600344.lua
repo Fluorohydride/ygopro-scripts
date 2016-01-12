@@ -1,4 +1,5 @@
 --エクシーズ・バースト
+--Xyz Burst
 function c30600344.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

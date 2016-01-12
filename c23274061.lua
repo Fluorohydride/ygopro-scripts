@@ -1,4 +1,5 @@
 --エレキタリス
+--Wattsquirrel
 function c23274061.initial_effect(c)
 	--Extra attack
 	local e1=Effect.CreateEffect(c)

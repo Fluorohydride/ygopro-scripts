@@ -1,4 +1,5 @@
 --紋章獣バシリスク
+--Heraldic Beast Basilisk
 function c56921677.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

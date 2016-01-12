@@ -1,4 +1,5 @@
 --カラクリ武者 六参壱八
+--Karakuri Bushi mdl 6318 "Muzanichiha"
 function c39118197.initial_effect(c)
 	--must attack
 	local e1=Effect.CreateEffect(c)

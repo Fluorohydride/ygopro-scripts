@@ -1,4 +1,5 @@
 --D－HERO ダイヤモンドガイ
+--Destiny HERO - Diamond Dude
 function c13093792.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

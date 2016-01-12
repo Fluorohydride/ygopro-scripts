@@ -1,4 +1,5 @@
 --アームド・ドラゴン LV5
+--Armed Dragon LV5
 function c46384672.initial_effect(c)
 	--battle destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --コアキメイルの金剛核
+--Diamond Core of Koa'ki Meiru
 function c81994591.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

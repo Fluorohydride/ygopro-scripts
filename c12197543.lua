@@ -1,4 +1,5 @@
 --剣の采配
+--Commander of Swords
 function c12197543.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

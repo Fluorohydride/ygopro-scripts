@@ -1,4 +1,5 @@
 --トゥーン・デーモン
+--Toon Summoned Skull
 function c91842653.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,4 +1,5 @@
 --霊廟の守護者
+--Keeper of the Shrine
 function c66752837.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

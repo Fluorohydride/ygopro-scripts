@@ -1,4 +1,5 @@
 --腐乱犬
+--Zombowwow
 function c27971137.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

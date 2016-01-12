@@ -1,4 +1,5 @@
 --ギアギアギア XG
+--Geargiagear Gigant XG
 function c19891310.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,3)

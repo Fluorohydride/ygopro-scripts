@@ -1,4 +1,5 @@
 --霊魂の護送船
+--Ghost Ship
 function c33347467.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

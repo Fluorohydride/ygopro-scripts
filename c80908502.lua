@@ -1,4 +1,5 @@
 --E・HERO キャプテン・ゴールド
+--Elemental HERO Captain Gold
 function c80908502.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

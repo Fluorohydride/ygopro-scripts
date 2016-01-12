@@ -1,4 +1,5 @@
 --ヒロイック・リベンジ・ソード
+--Heroic Retribution Sword
 function c49551909.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

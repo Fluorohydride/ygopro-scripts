@@ -1,4 +1,5 @@
 --ジャンク・デストロイヤー
+--Junk Destroyer
 function c74860293.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c74860293.tfilter,aux.NonTuner(nil),1)

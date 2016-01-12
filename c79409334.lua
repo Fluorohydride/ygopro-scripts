@@ -1,4 +1,5 @@
 --暗黒ステゴ
+--Black Stego
 function c79409334.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

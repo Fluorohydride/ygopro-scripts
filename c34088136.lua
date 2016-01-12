@@ -1,4 +1,5 @@
 --アルティメット・インセクト LV3
+--Ultimate Insect LV3
 function c34088136.initial_effect(c)
 	--atk down
 	local e1=Effect.CreateEffect(c)

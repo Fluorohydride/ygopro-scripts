@@ -1,4 +1,5 @@
 --超重武者装留ブレイク・アーマー
+--Superheavy Samurai Soulbreaker Armor
 function c77679716.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

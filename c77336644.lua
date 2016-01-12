@@ -1,4 +1,5 @@
 --レッド・デーモンズ・ドラゴン／バスター
+--Red Dragon Archfiend/Assault Mode
 function c77336644.initial_effect(c)
 	c:EnableReviveLimit()
 	--Cannot special summon

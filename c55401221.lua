@@ -1,4 +1,5 @@
 --電池メン－単一型
+--Batteryman D
 function c55401221.initial_effect(c)
 	--cannot be battle target
 	local e1=Effect.CreateEffect(c)

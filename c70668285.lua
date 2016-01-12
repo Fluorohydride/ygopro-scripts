@@ -1,4 +1,5 @@
 --光天使ソード
+--Star Seraph Sword
 function c70668285.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

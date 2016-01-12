@@ -1,4 +1,5 @@
 --エーリアン・マーズ
+--Alien Mars
 function c99532708.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

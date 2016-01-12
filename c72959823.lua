@@ -1,4 +1,5 @@
 --重装機甲 パンツァードラゴン
+--Panzer Dragon
 function c72959823.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

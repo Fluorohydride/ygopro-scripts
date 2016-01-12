@@ -1,4 +1,5 @@
 --メガロック・ドラゴン
+--Megarock Dragon
 function c71544954.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

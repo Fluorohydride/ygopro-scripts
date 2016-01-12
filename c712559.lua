@@ -1,4 +1,5 @@
 --アマゾネスの里
+--Amazoness Village
 function c712559.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

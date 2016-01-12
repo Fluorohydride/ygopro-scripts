@@ -1,4 +1,5 @@
 --ガーディアン・グラール
+--Guardian Grarl
 function c47150851.initial_effect(c)
 	--sum limit
 	local e1=Effect.CreateEffect(c)

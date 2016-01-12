@@ -1,4 +1,5 @@
 --毒蛇の牙
+--Snake Fang
 function c596051.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ヴァイロン・ペンタクロ
+--Vylon Pentachloro
 function c47228077.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

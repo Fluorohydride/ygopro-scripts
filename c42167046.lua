@@ -1,4 +1,5 @@
 --グレイモヤ不発弾
+--Widespread Dud
 function c42167046.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --バースト・リターン
+--Burst Return
 function c27191436.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

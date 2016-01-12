@@ -1,4 +1,5 @@
 --D－HERO ドレッドサーヴァント
+--Destiny HERO - Dread Servant
 function c36625827.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

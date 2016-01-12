@@ -1,4 +1,5 @@
 --地縛神 Wiraqocha Rasca
+--Earthbound Immortal Wiraqocha Rasca
 function c41181774.initial_effect(c)
 	c:SetUniqueOnField(1,1,10000000)
 	--

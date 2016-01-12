@@ -1,4 +1,5 @@
 --ブルーメンブラット
+--Rose Bud
 function c25090294.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

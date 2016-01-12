@@ -1,4 +1,5 @@
 --ジャンク・バーサーカー
+--Junk Berserker
 function c59771339.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c59771339.tfilter,aux.NonTuner(nil),1)

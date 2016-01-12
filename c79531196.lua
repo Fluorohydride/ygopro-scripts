@@ -1,4 +1,5 @@
 --クリスタル・ローズ
+--Crystal Rose
 function c79531196.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

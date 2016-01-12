@@ -1,4 +1,5 @@
 --ドラゴン・目覚めの旋律
+--The Melody of Awakening Dragon
 function c48800175.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

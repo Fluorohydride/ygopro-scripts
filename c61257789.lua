@@ -1,4 +1,5 @@
 --スターダスト・ドラゴン／バスター
+--Stardust Dragon/Assault Mode
 function c61257789.initial_effect(c)
 	c:EnableReviveLimit()
 	--Cannot special summon

@@ -1,4 +1,5 @@
 --超力の聖刻印
+--Hieratic Seal of Supremacy
 function c51365514.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

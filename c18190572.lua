@@ -1,4 +1,5 @@
 --ミクロ光線
+--Micro Ray
 function c18190572.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

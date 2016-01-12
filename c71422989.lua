@@ -1,4 +1,5 @@
 --吸光融合
+--Absorb Fusion
 function c71422989.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

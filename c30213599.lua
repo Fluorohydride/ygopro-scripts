@@ -1,4 +1,5 @@
 --墓守の末裔
+--Gravekeeper's Descendant
 function c30213599.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

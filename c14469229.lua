@@ -1,4 +1,5 @@
 --宝玉の守護者
+--Crystal Defender
 function c14469229.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --武神器－ヤタ
+--Bujingi Crow
 function c89662736.initial_effect(c)
 	--negate attack
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ダーク・ネクロフィア
+--Dark Necrofear
 function c31829185.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

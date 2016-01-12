@@ -1,4 +1,5 @@
 --霊水鳥シレーヌ・オルカ
+--Sirenorca
 function c50074392.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

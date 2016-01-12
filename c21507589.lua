@@ -1,4 +1,5 @@
 --フィッシュアンドバックス
+--Fish and Swaps
 function c21507589.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

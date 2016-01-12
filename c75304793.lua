@@ -1,4 +1,5 @@
 --アンプリファイヤー
+--Amplifire
 function c75304793.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

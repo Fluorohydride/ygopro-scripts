@@ -1,4 +1,5 @@
 --スネーク・ホイッスル
+--Snake Whistle
 function c81791932.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

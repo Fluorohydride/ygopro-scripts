@@ -1,4 +1,5 @@
 --黒竜の聖騎士
+--Paladin of Dark Dragon
 function c71408082.initial_effect(c)
 	c:EnableReviveLimit()
 	--destroy

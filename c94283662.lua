@@ -1,4 +1,5 @@
 --トランス・デーモン
+--Trance Archfiend
 function c94283662.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

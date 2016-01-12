@@ -1,4 +1,5 @@
 --衰弱の霧
+--Enervating Mist
 function c26022485.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

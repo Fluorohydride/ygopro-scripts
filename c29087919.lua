@@ -1,4 +1,5 @@
 --ギアギアチェンジ
+--Geargia Change
 function c29087919.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

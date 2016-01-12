@@ -1,4 +1,5 @@
 --ZS－幻影賢者
+--ZS - Vanish Sage
 function c51865604.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

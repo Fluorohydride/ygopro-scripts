@@ -1,4 +1,5 @@
 --スナップドラゴン
+--Snapdragon
 function c75673220.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

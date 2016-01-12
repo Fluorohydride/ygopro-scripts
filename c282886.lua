@@ -1,4 +1,5 @@
 --水精鱗－アビスノーズ
+--Mermail Abyssnose
 function c282886.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

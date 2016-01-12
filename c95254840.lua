@@ -1,4 +1,5 @@
 --ドタキャン
+--Last Minute Cancel
 function c95254840.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

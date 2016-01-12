@@ -1,4 +1,5 @@
 --魔法の歯車
+--Spell Gear
 function c313513.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

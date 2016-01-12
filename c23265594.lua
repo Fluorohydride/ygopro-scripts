@@ -1,4 +1,5 @@
 --強化支援メカ・ヘビーウェポン
+--Heavy Mech Support Platform
 function c23265594.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

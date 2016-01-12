@@ -1,4 +1,5 @@
 --グラディアル・リターン
+--Gladiator's Return
 function c24285858.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

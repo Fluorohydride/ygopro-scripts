@@ -1,4 +1,5 @@
 --ジャッカルの霊騎士
+--Ghost Knight of Jackal
 function c13386503.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

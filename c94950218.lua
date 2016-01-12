@@ -1,4 +1,5 @@
 --リバース・ブレイカー
+--Reverse Breaker
 function c94950218.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

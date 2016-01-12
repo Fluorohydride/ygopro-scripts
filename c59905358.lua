@@ -1,4 +1,5 @@
 --ダイスインパクト
+--Dice Try!
 function c59905358.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --カラクリ参謀 弐四八
+--Karakuri Strategist mdl 248 "Nishipachi"
 function c66625883.initial_effect(c)
 	--must attack
 	local e1=Effect.CreateEffect(c)

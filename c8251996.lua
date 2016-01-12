@@ -1,4 +1,5 @@
 --おジャマ・デルタハリケーン！！
+--Ojama Delta Hurricane!!
 function c8251996.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

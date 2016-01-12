@@ -1,4 +1,5 @@
 --幻奏の音女スコア
+--Score the Melodious Diva
 function c41767843.initial_effect(c)
 	--atkdef 0
 	local e1=Effect.CreateEffect(c)

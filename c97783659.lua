@@ -1,4 +1,5 @@
 --ブラッド・サッカー
+--Blood Sucker
 function c97783659.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

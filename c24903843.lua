@@ -1,4 +1,5 @@
 --버제스토마 피카이아
+--Burgesstoma Pikaia
 function c24903843.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

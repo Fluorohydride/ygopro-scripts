@@ -1,4 +1,5 @@
 --次元幽閉
+--Dimensional Prison
 function c70342110.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --超融合
+--Super Polymerization
 function c48130397.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

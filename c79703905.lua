@@ -1,4 +1,5 @@
 --雲魔物－アルトス
+--Cloudian - Altus
 function c79703905.initial_effect(c)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)

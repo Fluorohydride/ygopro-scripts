@@ -1,4 +1,5 @@
 --ジェムナイト・フュージョン
+--Gem-Knight Fusion
 function c1264319.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

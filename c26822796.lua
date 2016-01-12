@@ -1,4 +1,5 @@
 --帝王の凍志
+--The Monarchs Awaken
 function c26822796.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

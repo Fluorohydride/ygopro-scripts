@@ -1,4 +1,5 @@
 --ハンディキャップマッチ！
+--Double Tag Team
 function c67223587.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

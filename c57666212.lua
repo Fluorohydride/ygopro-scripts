@@ -1,4 +1,5 @@
 --光帝クライス
+--Kuraz the Light Monarch
 function c57666212.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

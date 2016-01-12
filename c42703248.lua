@@ -1,4 +1,5 @@
 --ハリケーン
+--Giant Trunade
 function c42703248.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

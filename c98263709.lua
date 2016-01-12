@@ -1,4 +1,5 @@
 --銀河魔鏡士
+--Galaxy Mirror Sage
 function c98263709.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

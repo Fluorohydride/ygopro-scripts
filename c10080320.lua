@@ -1,4 +1,5 @@
 --ジュラシックワールド
+--Jurassic World
 function c10080320.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

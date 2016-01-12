@@ -1,4 +1,5 @@
 --ビッグ・シールド・ガードナー
+--Big Shield Gardna
 function c65240384.initial_effect(c)
 	--to attack
 	local e1=Effect.CreateEffect(c)

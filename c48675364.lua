@@ -1,4 +1,5 @@
 --ジェネラルデーモン
+--Archfiend General
 function c48675364.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --EMウィップ・バイパー
+--Performapal Whip Snake
 function c79967395.initial_effect(c)
 	--swap
 	local e1=Effect.CreateEffect(c)

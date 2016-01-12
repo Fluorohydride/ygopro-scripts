@@ -1,4 +1,5 @@
 --A・O・J アンリミッター
+--Ally of Justice Unlimiter
 function c82377606.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

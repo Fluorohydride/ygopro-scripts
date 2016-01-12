@@ -1,4 +1,5 @@
 --おくびょうかぜ
+--Timidity
 function c40350910.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

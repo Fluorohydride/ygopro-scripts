@@ -1,4 +1,5 @@
 --ウィンドファーム・ジェネクス
+--Windmill Genex
 function c43925870.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,68505803),aux.NonTuner(Card.IsAttribute,ATTRIBUTE_WIND),1)

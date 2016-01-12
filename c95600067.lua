@@ -1,4 +1,5 @@
 --宝玉獣 トパーズ・タイガー
+--Crystal Beast Topaz Tiger
 function c95600067.initial_effect(c)
 	--send replace
 	local e1=Effect.CreateEffect(c)

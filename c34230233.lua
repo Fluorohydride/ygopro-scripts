@@ -1,4 +1,5 @@
 --暗黒界の龍神 グラファ
+--Grapha, Dragon Lord of Dark World
 function c34230233.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

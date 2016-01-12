@@ -1,4 +1,5 @@
 --強欲な壺
+--Pot of Greed
 function c55144522.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

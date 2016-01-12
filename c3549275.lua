@@ -1,4 +1,5 @@
 --ダイス・ポット
+--Dice Jar
 function c3549275.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

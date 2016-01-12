@@ -1,4 +1,5 @@
 --昇華する紋章
+--Augmented Heraldry
 function c59048135.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

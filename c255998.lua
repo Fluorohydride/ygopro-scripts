@@ -1,4 +1,5 @@
 --ラピッド・ウォリアー
+--Rapid Warrior
 function c255998.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

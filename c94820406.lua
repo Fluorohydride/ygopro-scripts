@@ -1,4 +1,5 @@
 --ダーク・フュージョン
+--Dark Fusion
 function c94820406.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

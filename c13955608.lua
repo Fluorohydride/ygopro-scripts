@@ -1,4 +1,5 @@
 --機動砦 ストロング・ホールド
+--Stronghold the Moving Fortress
 function c13955608.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

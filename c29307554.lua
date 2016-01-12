@@ -1,4 +1,5 @@
 --破壊神の系譜
+--Lineage of Destruction
 function c29307554.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

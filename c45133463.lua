@@ -1,4 +1,5 @@
 --死神の呼び声
+--Call of the Reaper
 function c45133463.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

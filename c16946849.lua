@@ -1,4 +1,5 @@
 --人造天使
+--Synthetic Seraphim
 function c16946849.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

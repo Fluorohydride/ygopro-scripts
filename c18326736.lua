@@ -1,4 +1,5 @@
 --星守の騎士 プトレマイオス
+--Tellarknight Ptolemaeus
 function c18326736.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2,nil,nil,5)

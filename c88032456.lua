@@ -1,4 +1,5 @@
 --コピーキャット
+--Mimicat
 function c88032456.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --インヴェルズを呼ぶ者
+--Steelswarm Caller
 function c53116300.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

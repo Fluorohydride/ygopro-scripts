@@ -1,4 +1,5 @@
 --軍神ガープ
+--Gaap the Divine Soldier
 function c37955049.initial_effect(c)
 	--Pos Change
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --魔導召喚士 テンペル
+--Temperance of Prophecy
 function c87608852.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

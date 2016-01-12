@@ -1,4 +1,5 @@
 --シー・アーチャー
+--Mermaid Archer
 function c4252828.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

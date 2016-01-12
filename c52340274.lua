@@ -1,4 +1,5 @@
 --ギャラクシー・クィーンズ・ライト
+--Galaxy Queen's Light
 function c52340274.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

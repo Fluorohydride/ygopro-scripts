@@ -1,4 +1,5 @@
 --アポクリフォート・カーネル
+--Apoqliphort Skybase
 function c40061558.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

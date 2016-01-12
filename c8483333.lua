@@ -1,4 +1,5 @@
 --モザイク・マンティコア
+--Mosaic Manticore
 function c8483333.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

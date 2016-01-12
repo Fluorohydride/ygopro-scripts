@@ -1,4 +1,5 @@
 --ゲート・ガーディアン
+--Gate Guardian
 function c25833572.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

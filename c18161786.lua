@@ -1,4 +1,5 @@
 --ダークゾーン
+--Mystic Plasma Zone
 function c18161786.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

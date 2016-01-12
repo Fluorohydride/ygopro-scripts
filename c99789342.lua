@@ -1,4 +1,5 @@
 --黒魔術のカーテン
+--Dark Magic Curtain
 function c99789342.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

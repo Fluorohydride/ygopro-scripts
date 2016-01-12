@@ -1,4 +1,5 @@
 --陽アイルの小剣士
+--The Little Swordsman of Aile
 function c25109950.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

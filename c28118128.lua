@@ -1,4 +1,5 @@
 --子狸たんたん
+--Baby Raccoon Tantan
 function c28118128.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --バーバリアン・レイジ
+--Battleguard Rage
 function c42233477.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

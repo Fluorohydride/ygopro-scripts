@@ -1,4 +1,5 @@
 --ブリューナクの影霊衣
+--Nekroz of Brionac
 function c26674724.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

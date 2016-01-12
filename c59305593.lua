@@ -1,4 +1,5 @@
 --手違い
+--Mistake
 function c59305593.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

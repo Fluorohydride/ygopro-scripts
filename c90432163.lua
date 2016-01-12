@@ -1,4 +1,5 @@
 --幻影騎士団ダスティローブ
+--The Phantom Knights of Dusty Robe
 function c90432163.initial_effect(c)
 	--atk/def up
 	local e1=Effect.CreateEffect(c)

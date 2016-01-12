@@ -1,4 +1,5 @@
 --星因士 ウヌク
+--Satellarknight Unukalhai
 function c1050186.initial_effect(c)
 	--tograve
 	local e1=Effect.CreateEffect(c)

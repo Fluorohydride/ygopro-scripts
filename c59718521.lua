@@ -1,4 +1,5 @@
 --ブローニング・パワー
+--Mind Over Matter
 function c59718521.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

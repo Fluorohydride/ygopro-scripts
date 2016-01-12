@@ -1,4 +1,5 @@
 --闇からの呼び声
+--Call of Darkness
 function c78637313.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

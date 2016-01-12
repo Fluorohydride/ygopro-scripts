@@ -1,4 +1,5 @@
 --ライトロード・エンジェル ケルビム
+--Celestia, Lightsworn Angel
 function c94381039.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

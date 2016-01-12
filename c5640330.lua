@@ -1,4 +1,5 @@
 --ハンニバル・ネクロマンサー
+--Hannibal Necromancer
 function c5640330.initial_effect(c)
 	c:EnableCounterPermit(0x3001)
 	c:SetCounterLimit(0x3001,1)

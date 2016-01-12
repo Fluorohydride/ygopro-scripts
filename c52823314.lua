@@ -1,4 +1,5 @@
 --魔界発現世行きバス
+--Tour Bus From the Underworld
 function c52823314.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

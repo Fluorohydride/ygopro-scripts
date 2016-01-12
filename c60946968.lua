@@ -1,4 +1,5 @@
 --異界空間－Aゾーン
+--Otherworld - The  Zone
 function c60946968.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

@@ -1,4 +1,5 @@
 --我が身を盾に
+--My Body as a Shield
 function c69279219.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

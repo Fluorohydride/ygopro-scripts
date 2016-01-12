@@ -1,4 +1,5 @@
 --迅雷の魔王－スカル・デーモン
+--Skull Archfiend of Lightning
 function c61370518.initial_effect(c)
 	--maintain
 	local e1=Effect.CreateEffect(c)

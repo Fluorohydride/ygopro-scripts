@@ -1,4 +1,5 @@
 --星因士 アルタイル
+--Satellarknight Altair
 function c2273734.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

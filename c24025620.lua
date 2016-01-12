@@ -1,4 +1,5 @@
 --ダブル・プロテクター
+--Twin-Shield Defender
 function c24025620.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

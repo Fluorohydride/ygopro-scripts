@@ -1,4 +1,5 @@
 --白竜の聖騎士
+--Paladin of White Dragon
 function c73398797.initial_effect(c)
 	c:EnableReviveLimit()
 	--destroy

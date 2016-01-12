@@ -1,4 +1,5 @@
 --R－ライトジャスティス
+--R - Righteous Justice
 function c37318031.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

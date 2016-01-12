@@ -1,4 +1,5 @@
 --水陸両用バグロス
+--Amphibious Bugroth
 function c40173854.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --円盤闘士
+--Disc Fighter
 function c19612721.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

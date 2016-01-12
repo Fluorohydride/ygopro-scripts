@@ -1,4 +1,5 @@
 --鳳翼の爆風
+--Phoenix Wing Wind Blast
 function c63356631.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --忍法 影縫いの術
+--Ninjitsu Art of Shadow Sealing
 function c13629812.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

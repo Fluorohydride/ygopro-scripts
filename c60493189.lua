@@ -1,4 +1,5 @@
 --E・HERO プラズマヴァイスマン
+--Elemental HERO Plasma Vice
 function c60493189.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

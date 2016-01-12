@@ -1,4 +1,5 @@
 --番兵ゴーレム
+--Golem Sentry
 function c52323207.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

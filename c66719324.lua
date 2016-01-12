@@ -1,4 +1,5 @@
 --恵みの雨
+--Rain of Mercy
 function c66719324.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

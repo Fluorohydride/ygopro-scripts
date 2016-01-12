@@ -1,4 +1,5 @@
 --ヴェノム・スネーク
+--Venom Snake
 function c73899015.initial_effect(c)
 	--add counter
 	local e1=Effect.CreateEffect(c)

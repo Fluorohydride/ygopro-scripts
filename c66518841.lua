@@ -1,4 +1,5 @@
 --プライドの咆哮
+--Prideful Roar
 function c66518841.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

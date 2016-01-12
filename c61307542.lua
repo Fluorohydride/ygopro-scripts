@@ -1,4 +1,5 @@
 --버제스토마 아노말로카리스
+--Burgesstoma Anomalocaris
 function c61307542.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,3,nil,nil,5)

@@ -1,4 +1,5 @@
 --融合呪印生物－地
+--The Earth - Hex-Sealed Fusion
 function c88696724.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

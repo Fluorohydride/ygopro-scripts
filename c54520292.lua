@@ -1,4 +1,5 @@
 --コアキメイル・アイス
+--Koa'ki Meiru Ice
 function c54520292.initial_effect(c)
 	--cost
 	local e1=Effect.CreateEffect(c)

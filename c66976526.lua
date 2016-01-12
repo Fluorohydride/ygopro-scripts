@@ -1,4 +1,5 @@
 --カラクリ大将軍 無零怒
+--Karakuri Steel Shogun mdl 00X "Bureido"
 function c66976526.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_MACHINE),1)

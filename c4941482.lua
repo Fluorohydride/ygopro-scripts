@@ -1,4 +1,5 @@
 --インフォーマー・スパイダー
+--Informer Spider
 function c4941482.initial_effect(c)
 	--control
 	local e2=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --E・HERO バブルマン
+--Elemental HERO Bubbleman
 function c79979666.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

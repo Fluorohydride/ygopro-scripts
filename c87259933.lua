@@ -1,4 +1,5 @@
 --宝玉の集結
+--Crystal Hoard
 function c87259933.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

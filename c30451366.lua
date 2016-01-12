@@ -1,4 +1,5 @@
 --イリュージョン・シープ
+--Mystical Sheep 1
 function c30451366.initial_effect(c)
 	--fusion substitute
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --コザッキーの自爆装置
+--Kozaky's Self-Destruct Button
 function c21908319.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

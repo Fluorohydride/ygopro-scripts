@@ -1,4 +1,5 @@
 --神竜騎士フェルグラント
+--Divine Dragon Knight Felgrand
 function c1639384.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

@@ -1,4 +1,5 @@
 --ビーストライカー
+--Beast Striker
 function c21362970.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

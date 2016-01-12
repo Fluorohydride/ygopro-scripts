@@ -1,4 +1,5 @@
 --ヒロイック・ギフト
+--Heroic Gift
 function c95920682.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

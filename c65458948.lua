@@ -1,4 +1,5 @@
 --トゥーン・マーメイド
+--Toon Mermaid
 function c65458948.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon rule

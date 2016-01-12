@@ -1,4 +1,5 @@
 --黒・爆・裂・破・魔・導
+--Dark Burning Magic
 function c75190122.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

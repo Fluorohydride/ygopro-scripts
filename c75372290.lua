@@ -1,4 +1,5 @@
 --絶対防御将軍
+--Total Defense Shogun
 function c75372290.initial_effect(c)
 	--to defence
 	local e1=Effect.CreateEffect(c)

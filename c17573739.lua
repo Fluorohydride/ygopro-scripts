@@ -1,4 +1,5 @@
 --神禽王アレクトール
+--Alector, Sovereign of Birds
 function c17573739.initial_effect(c)
 	c:SetUniqueOnField(1,1,17573739)
 	--special summon

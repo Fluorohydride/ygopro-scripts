@@ -1,4 +1,5 @@
 --アルティメット・インセクト LV5
+--Ultimate Insect LV5
 function c34830502.initial_effect(c)
 	--atk down
 	local e1=Effect.CreateEffect(c)

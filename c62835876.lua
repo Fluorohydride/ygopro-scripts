@@ -1,4 +1,5 @@
 --善悪の彼岸
+--Good & Evil in the Burning Abyss
 function c62835876.initial_effect(c)
 	aux.AddRitualProcGreaterCode(c,35330871)
 	--search

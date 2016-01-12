@@ -1,4 +1,5 @@
 --折れ竹光
+--Broken Bamboo Sword
 function c41587307.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

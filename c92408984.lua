@@ -1,4 +1,5 @@
 --ドラゴンの宝珠
+--The Dragon's Bead
 function c92408984.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

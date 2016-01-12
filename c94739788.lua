@@ -1,4 +1,5 @@
 --洗脳解除
+--Remove Brainwashing
 function c94739788.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_BRAINWASHING_CHECK)
 	--Activate

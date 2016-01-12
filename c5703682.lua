@@ -1,4 +1,5 @@
 --サウザンドエナジー
+--Thousand Energy
 function c5703682.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

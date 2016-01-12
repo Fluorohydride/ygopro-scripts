@@ -1,4 +1,5 @@
 --コンビネーション・アタック
+--Combination Attack
 function c8964854.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

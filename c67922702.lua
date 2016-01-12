@@ -1,4 +1,5 @@
 --幻獣機テザーウルフ
+--Mecha Phantom Beast Tetherwolf
 function c67922702.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --氷結界の紋章
+--Medallion of the Ice Barrier
 function c84206435.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

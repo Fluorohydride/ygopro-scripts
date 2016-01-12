@@ -1,4 +1,5 @@
 --武神器－ムラクモ
+--Bujingi Quilin
 function c69723159.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

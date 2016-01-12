@@ -1,4 +1,5 @@
 --戦乙女の契約書
+--Dark Contract with the Witch
 function c9765723.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

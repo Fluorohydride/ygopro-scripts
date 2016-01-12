@@ -1,4 +1,5 @@
 --機皇城
+--Meklord Fortress
 function c67328336.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

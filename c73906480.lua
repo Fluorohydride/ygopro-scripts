@@ -1,4 +1,5 @@
 --武神降臨
+--Bujincarnation
 function c73906480.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --賢者ケイローン
+--Chiron the Mage
 function c16956455.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

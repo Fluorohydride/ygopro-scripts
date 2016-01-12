@@ -1,4 +1,5 @@
 --ゴゴゴアリステラ＆デクシア
+--Gogogo Aristera & Dexia
 function c91718579.initial_effect(c)
 	--untargetable
 	local e1=Effect.CreateEffect(c)

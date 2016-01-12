@@ -1,4 +1,5 @@
 --魔轟神獣ペガラサス
+--The Fabled Peggulsus
 function c90616316.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

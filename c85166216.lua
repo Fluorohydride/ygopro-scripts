@@ -1,4 +1,5 @@
 --恵みの像
+--Elephant Statue of Blessing
 function c85166216.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --不協和音
+--Discord
 function c46480475.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

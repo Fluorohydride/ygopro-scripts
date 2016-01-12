@@ -1,4 +1,5 @@
 --盗賊の極意
+--The Secret of the Bandit
 function c99351431.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

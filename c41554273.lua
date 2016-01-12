@@ -1,4 +1,5 @@
 --ダイナミスト・ラッシュ
+--Dinomist Rush
 function c41554273.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --超重武者装留マカルガエシ
+--Superheavy Samurai Soulbeads
 function c27756115.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

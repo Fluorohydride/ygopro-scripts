@@ -1,4 +1,5 @@
 --火炎地獄
+--Tremendous Fire
 function c46918794.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --E・HERO フレイム・ブラスト
+--Elemental HERO Inferno
 function c68745629.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --Sin レインボー・ドラゴン
+--Malefic Rainbow Dragon
 function c598988.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

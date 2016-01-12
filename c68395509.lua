@@ -1,4 +1,5 @@
 --マジェスペクター・クロウ
+--Majespecter Crow - Yata
 function c68395509.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

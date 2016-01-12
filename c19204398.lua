@@ -1,4 +1,5 @@
 --A・O・J ライト・ゲイザー
+--Ally of Justice Light Gazer
 function c19204398.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

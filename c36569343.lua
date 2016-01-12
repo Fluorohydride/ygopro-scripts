@@ -1,4 +1,5 @@
 --紅炎の騎士
+--Brushfire Knight
 function c36569343.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)

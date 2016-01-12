@@ -1,4 +1,5 @@
 --アマゾネスの吹き矢兵
+--Amazoness Blowpiper
 function c73574678.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

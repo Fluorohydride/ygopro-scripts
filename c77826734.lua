@@ -1,4 +1,5 @@
 --ペンデュラム・リボーン
+--Pendulum Reborn
 function c77826734.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

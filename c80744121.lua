@@ -1,4 +1,5 @@
 --D－HERO ドゥームガイ
+--Destiny HERO - Fear Monger
 function c80744121.initial_effect(c)
 	--reg
 	local e1=Effect.CreateEffect(c)

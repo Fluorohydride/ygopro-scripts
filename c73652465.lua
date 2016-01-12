@@ -1,4 +1,5 @@
 --BF－突風のオロシ
+--Blackwing - Oroshi the Squall
 function c73652465.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

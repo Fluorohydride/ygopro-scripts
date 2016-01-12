@@ -1,4 +1,5 @@
 --幻角獣フュプノコーン
+--Hypnocorn
 function c20351153.initial_effect(c)
 	--destroy
 	local e3=Effect.CreateEffect(c)

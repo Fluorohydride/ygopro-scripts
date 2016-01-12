@@ -1,4 +1,5 @@
 --ワイトプリンス
+--Wightprince
 function c57473560.initial_effect(c)
 	--change code
 	local e1=Effect.CreateEffect(c)

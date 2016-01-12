@@ -1,4 +1,5 @@
 --ソード・マスター
+--Sword Master
 function c81336148.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

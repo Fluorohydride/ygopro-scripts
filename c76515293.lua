@@ -1,4 +1,5 @@
 --心鎮壷
+--Xing Zhen Hu
 function c76515293.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

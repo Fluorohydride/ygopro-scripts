@@ -1,4 +1,5 @@
 --救護部隊
+--First-Aid Squad
 function c33622465.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

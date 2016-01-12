@@ -1,4 +1,5 @@
 --竜破壊の剣士－バスター・ブレイダー
+--Buster Blader, the Dragon Destroyer Swordsman
 function c86240887.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

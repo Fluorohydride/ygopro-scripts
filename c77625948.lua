@@ -1,4 +1,5 @@
 --サイバー・ダーク・エッジ
+--Cyberdark Edge
 function c77625948.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

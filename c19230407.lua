@@ -1,4 +1,5 @@
 --死者への供物
+--Offerings to the Doomed
 function c19230407.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ねずみ取り
+--Eatgaboon
 function c42578427.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

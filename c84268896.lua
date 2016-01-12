@@ -1,4 +1,5 @@
 --アーティファクト－カドケウス
+--Artifact Caduceus
 function c84268896.initial_effect(c)
 	c:SetUniqueOnField(1,0,84268896)
 	--set

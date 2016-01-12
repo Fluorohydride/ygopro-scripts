@@ -1,4 +1,5 @@
 --永遠の魂
+--Eternal Soul
 function c48680970.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

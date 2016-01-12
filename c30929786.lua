@@ -1,4 +1,5 @@
 --立炎星－トウケイ
+--Brotherhood of the Fire Fist - Rooster
 function c30929786.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

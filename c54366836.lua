@@ -1,4 +1,5 @@
 --No.54 反骨の闘士ライオンハート
+--Number 54: Lion Heart
 function c54366836.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,1,3)

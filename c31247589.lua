@@ -1,4 +1,5 @@
 --剣闘獣ディカエリィ
+--Gladiator Beast Dimacari
 function c31247589.initial_effect(c)
 	--double attack
 	local e1=Effect.CreateEffect(c)

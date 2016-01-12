@@ -1,4 +1,5 @@
 --X－セイバー エアベルン
+--X-Saber Airbellum
 function c90508760.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

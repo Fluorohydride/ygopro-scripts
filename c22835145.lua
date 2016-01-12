@@ -1,4 +1,5 @@
 --BF－極北のブリザード
+--Blackwing - Blizzard the Far North
 function c22835145.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

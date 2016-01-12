@@ -1,4 +1,5 @@
 --超重武者カゲボウ－C
+--Superheavy Samurai Flutist
 function c27978707.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ウィジャ盤
+--Destiny Board
 function c94212438.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --インフェルニティ・ブレイク
+--Infernity Break
 function c51717541.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

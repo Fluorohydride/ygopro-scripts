@@ -1,4 +1,5 @@
 --マジック・キャプチャー
+--Spell Reclamation
 function c76137276.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

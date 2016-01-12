@@ -1,4 +1,5 @@
 --虹光の宣告者
+--Herald of the Arc Light
 function c79606837.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

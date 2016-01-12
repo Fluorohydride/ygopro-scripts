@@ -1,4 +1,5 @@
 --魔力浄化
+--Spell Purification
 function c1669772.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

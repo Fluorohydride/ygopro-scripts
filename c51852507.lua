@@ -1,4 +1,5 @@
 --薔薇の聖弓手
+--Rose Archer
 function c51852507.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

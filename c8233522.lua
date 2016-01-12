@@ -1,4 +1,5 @@
 --A・O・J サイクルリーダー
+--Ally of Justice Cycle Reader
 function c8233522.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

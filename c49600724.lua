@@ -1,4 +1,5 @@
 --異次元への隙間
+--Crevice Into the Different Dimension
 function c49600724.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

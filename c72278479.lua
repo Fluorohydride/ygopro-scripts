@@ -1,4 +1,5 @@
 --ブラック・リターン
+--Black Return
 function c72278479.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

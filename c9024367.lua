@@ -1,4 +1,5 @@
 --ギャラクシー・ドラグーン
+--Galaxy Dragon
 function c9024367.initial_effect(c)
 	--atklimit
 	local e1=Effect.CreateEffect(c)

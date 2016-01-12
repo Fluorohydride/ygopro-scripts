@@ -1,4 +1,5 @@
 --次元の裂け目
+--Dimensional Fissure
 function c81674782.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

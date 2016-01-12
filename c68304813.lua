@@ -1,4 +1,5 @@
 --冥界の宝札
+--Precious Cards from Beyond
 function c68304813.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

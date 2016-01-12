@@ -1,4 +1,5 @@
 --光神機－閃空
+--Majestic Mech - Senku
 function c32918479.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

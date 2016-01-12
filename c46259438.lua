@@ -1,4 +1,5 @@
 --契約洗浄
+--Contract Laundering
 function c46259438.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

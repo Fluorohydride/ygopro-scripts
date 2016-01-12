@@ -1,4 +1,5 @@
 --イリュージョン・スナッチ
+--Illusory Snatcher
 function c35073065.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

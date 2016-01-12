@@ -1,4 +1,5 @@
 --PSYフレームギア・γ
+--PSY-Framegear Gamma
 function c38814750.initial_effect(c)
 	c:EnableUnsummonable()
 	--splimit

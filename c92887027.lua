@@ -1,4 +1,5 @@
 --ながれ者傭兵部隊
+--Nomadic Force
 function c92887027.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

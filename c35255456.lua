@@ -1,4 +1,5 @@
 --ミラクル・コンタクト
+--Miracle Contact
 function c35255456.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

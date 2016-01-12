@@ -1,4 +1,5 @@
 --E－HERO インフェルノ・ウィング
+--Evil HERO Inferno Wing
 function c22160245.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

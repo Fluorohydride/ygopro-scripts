@@ -1,4 +1,5 @@
 --璽律する武神
+--Bujin Regalia - The Jewel
 function c63049052.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

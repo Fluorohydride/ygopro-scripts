@@ -1,4 +1,5 @@
 --不知火の鍛師
+--Shiranui Smith
 function c62038047.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

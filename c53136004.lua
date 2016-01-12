@@ -1,4 +1,5 @@
 --魔導皇士 アンプール
+--Emperor of Prophecy
 function c53136004.initial_effect(c)
 	--attack up
 	local e1=Effect.CreateEffect(c)

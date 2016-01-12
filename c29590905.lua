@@ -1,4 +1,5 @@
 --スーパージュニア対決！
+--Super Junior Confrontation
 function c29590905.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

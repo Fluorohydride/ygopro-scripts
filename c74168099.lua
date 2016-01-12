@@ -1,4 +1,5 @@
 --炎星侯－ホウシン
+--Brotherhood of the Fire Fist - Horse Prince
 function c74168099.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_FIRE),aux.NonTuner(nil),1)

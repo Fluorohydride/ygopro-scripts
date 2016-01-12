@@ -1,4 +1,5 @@
 --竜の束縛
+--Dragon's Bind
 function c16278116.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

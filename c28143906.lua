@@ -1,4 +1,5 @@
 --霞の谷の大怪鳥
+--Roc from the Valley of Haze
 function c28143906.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --バイロード・サクリファイス
+--Byroad Sacrifice
 function c36935434.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

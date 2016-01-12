@@ -1,4 +1,5 @@
 --アームド・ドラゴン LV7
+--Armed Dragon LV7
 function c73879377.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

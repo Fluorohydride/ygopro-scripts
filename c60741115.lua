@@ -1,4 +1,5 @@
 --ダメージ・イーター
+--Damage Eater
 function c60741115.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)
