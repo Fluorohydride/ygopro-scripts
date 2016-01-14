@@ -46,9 +46,9 @@ function c84812868.filter2(c)
 end
 function c84812868.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and chkc:IsAbleToHand() end
-	if chk==0 then return Duel.IsExistingMatchingCard(c84812868.filter,tp,LOCATION_MZONE,0,1,e:GetHandler())
+	if chk==0 then return Duel.IsExistingMatchingCard(c84812868.filter,tp,LOCATION_ONFIELD,0,1,e:GetHandler())
 		and Duel.IsExistingTarget(c84812868.filter2,tp,0,LOCATION_SZONE,1,nil) end
-	local ct=Duel.GetMatchingGroupCount(c84812868.filter,tp,LOCATION_MZONE,0,e:GetHandler())
+	local ct=Duel.GetMatchingGroupCount(c84812868.filter,tp,LOCATION_ONFIELD,0,e:GetHandler())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local g=Duel.SelectTarget(tp,c84812868.filter2,tp,0,LOCATION_SZONE,1,ct,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,g:GetCount(),0,0)
