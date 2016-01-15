@@ -29,23 +29,15 @@ function c44584775.condition1(e,tp,eg,ep,ev,re,r,rp)
 	local res,teg,tep,tev,tre,tr,trp=Duel.CheckEvent(EVENT_BATTLE_DAMAGE,true)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	return res and tep==tp and (a:IsRace(RACE_REPTILE) or (d and d:IsRace(RACE_REPTILE)))
+	return res and tep==tp and (a:IsRace(RACE_REPTILE) or (d and d:IsRace(RACE_REPTILE))) 
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c44584775.filter,tp,LOCATION_DECK,0,1,nil,e,tp,ev)
 end
 function c44584775.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local res,teg,tep,tev,tre,tr,trp=Duel.CheckEvent(EVENT_BATTLE_DAMAGE,true)
-	local a=Duel.GetAttacker()
-	local d=Duel.GetAttackTarget()
-	if Duel.GetCurrentPhase()==PHASE_DAMAGE
-		or (res and tep==tp
-		and (a:IsRace(RACE_REPTILE) or (d and d:IsRace(RACE_REPTILE)))
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c44584775.filter,tp,LOCATION_DECK,0,1,nil,e,tp,tev)
-		and Duel.SelectYesNo(tp,94)) then
+	if Duel.GetCurrentPhase()==PHASE_DAMAGE then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 		e:GetHandler():RegisterFlagEffect(44584775,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
-		e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,65)
 	else
 		e:SetCategory(0)
 	end
