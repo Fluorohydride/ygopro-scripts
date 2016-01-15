@@ -25,8 +25,7 @@ function c12255007.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c12255007.condition(e,tp,eg,ep,ev,re,r,rp)
-	local at=Duel.GetAttacker()
-	return at:GetControler()~=tp and Duel.GetAttackTarget()==nil
+	return Duel.GetAttacker():GetControler()~=tp
 end
 function c12255007.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x9f) end
@@ -34,6 +33,7 @@ function c12255007.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c12255007.operation(e,tp,eg,ep,ev,re,r,rp)
+	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.NegateAttack() then
 		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE,1)
 	end
@@ -48,5 +48,5 @@ function c12255007.actcon(e)
 	local tp=e:GetHandlerPlayer()
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	return (a and c41128647.cfilter(a,tp)) or (d and c41128647.cfilter(d,tp))
+	return (a and c12255007.cfilter(a,tp)) or (d and c12255007.cfilter(d,tp))
 end

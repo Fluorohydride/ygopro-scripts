@@ -64,7 +64,7 @@ function c19254117.defop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterEffect(e1,true)
 end
 function c19254117.atcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and Duel.IsAbleToEnterBP()
+	return Duel.GetTurnPlayer()~=tp and (Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE))
 end
 function c19254117.atcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end

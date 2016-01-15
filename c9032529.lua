@@ -16,7 +16,7 @@ end
 function c9032529.activate(e,tp,eg,ep,ev,re,r,rp)
 	local hg=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 	if hg:GetCount()>0 then
-		Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(9032529,0))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(9032529,0))
 		local sg=hg:Select(tp,1,1,nil)
 		if Duel.SendtoHand(sg,1-tp,REASON_EFFECT)>0 then
 			Duel.BreakEffect()
