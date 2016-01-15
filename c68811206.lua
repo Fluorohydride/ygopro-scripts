@@ -1,4 +1,5 @@
 --Tyler the Great Warrior
+--Tyler the Great Warrior
 function c68811206.initial_effect(c)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

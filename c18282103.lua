@@ -1,4 +1,5 @@
 --魔轟神獣ガナシア
+--The Fabled Ganashia
 function c18282103.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

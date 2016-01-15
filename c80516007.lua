@@ -1,4 +1,5 @@
 --レア・フィッシュ
+--Rare Fish
 function c80516007.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

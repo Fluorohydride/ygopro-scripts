@@ -1,4 +1,5 @@
 --アイヴィ・シャックル
+--Ivy Shackles
 function c14730606.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

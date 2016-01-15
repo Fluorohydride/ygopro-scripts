@@ -1,4 +1,5 @@
 --冥界流傀儡術
+--The Puppet Magic of Dark Ruler
 function c40703393.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --サイバー・オーガ・2
+--Cyber Ogre 2
 function c37057012.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

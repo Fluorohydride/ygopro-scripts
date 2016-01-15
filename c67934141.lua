@@ -1,4 +1,5 @@
 --超熱血球児
+--Ultimate Baseball Kid
 function c67934141.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

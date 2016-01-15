@@ -1,4 +1,5 @@
 --ソニック・シューター
+--Sonic Shooter
 function c40384720.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

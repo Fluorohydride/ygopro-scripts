@@ -1,4 +1,5 @@
 --アーティファクト－ラブリュス
+--Artifact Labrys
 function c47863787.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

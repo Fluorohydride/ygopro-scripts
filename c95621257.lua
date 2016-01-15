@@ -1,4 +1,5 @@
 --フレムベル・マジカル
+--Flamvell Magician
 function c95621257.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

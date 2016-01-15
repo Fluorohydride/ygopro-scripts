@@ -1,4 +1,5 @@
 --奈落との契約
+--Contract with the Abyss
 function c69035382.initial_effect(c)
 	aux.AddRitualProcEqual2(c,c69035382.ritual_filter)
 end

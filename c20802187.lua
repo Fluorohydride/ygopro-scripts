@@ -1,4 +1,5 @@
 --スピリット変換装置
+--Spirit Converter
 function c20802187.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

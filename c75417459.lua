@@ -1,4 +1,5 @@
 --拘束解除
+--Release Restraint
 function c75417459.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

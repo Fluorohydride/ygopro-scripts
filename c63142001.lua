@@ -1,4 +1,5 @@
 --電池メン－単三型
+--Batteryman AA
 function c63142001.initial_effect(c)
 	--atk,def
 	local e1=Effect.CreateEffect(c)

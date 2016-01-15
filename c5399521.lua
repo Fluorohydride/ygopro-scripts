@@ -1,4 +1,5 @@
 --音響戦士マイクス
+--Symphonic Warrior Mics
 function c5399521.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

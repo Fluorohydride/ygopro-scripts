@@ -1,4 +1,5 @@
 --EMカレイドスコーピオン
+--Performapal Kaleidoscorp
 function c78835747.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

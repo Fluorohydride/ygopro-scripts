@@ -1,4 +1,5 @@
 --ミニチュアライズ
+--Miniaturize
 function c34815282.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

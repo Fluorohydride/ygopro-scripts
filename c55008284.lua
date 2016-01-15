@@ -1,4 +1,5 @@
 --同姓同名同盟
+--The League of Uniform Nomenclature
 function c55008284.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

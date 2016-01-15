@@ -1,4 +1,5 @@
 --マハー・ヴァイロ
+--Maha Vailo
 function c93013676.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

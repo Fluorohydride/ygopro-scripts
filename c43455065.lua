@@ -1,4 +1,5 @@
 --魔力の泉
+--Magical Spring
 function c43455065.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

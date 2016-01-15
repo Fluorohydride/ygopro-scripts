@@ -1,4 +1,5 @@
 --虹の行方
+--Rainbow Path
 function c7617253.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

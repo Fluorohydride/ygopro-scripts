@@ -1,4 +1,5 @@
 --M・HERO カミカゼ
+--Masked HERO Divine Wind
 function c22093873.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

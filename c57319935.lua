@@ -1,4 +1,5 @@
 --エクシーズ熱戦！！
+--Xyz Xtreme !!
 function c57319935.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

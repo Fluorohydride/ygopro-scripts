@@ -1,4 +1,5 @@
 --エクシーズ・ブロック
+--Xyz Block
 function c44487250.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

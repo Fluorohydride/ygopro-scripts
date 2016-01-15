@@ -1,4 +1,5 @@
 --正義の味方 カイバーマン
+--Kaibaman
 function c34627841.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

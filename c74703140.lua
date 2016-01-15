@@ -1,4 +1,5 @@
 --裁きの鷹
+--Punished Eagle
 function c74703140.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

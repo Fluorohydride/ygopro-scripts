@@ -1,4 +1,5 @@
 --C・パンテール
+--Chrysalis Pantail
 function c43751755.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --押し売りゴブリン
+--Hard-sellin' Goblin
 function c68875140.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

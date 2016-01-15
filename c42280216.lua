@@ -1,4 +1,5 @@
 --太陽の神官
+--Oracle of the Sun
 function c42280216.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

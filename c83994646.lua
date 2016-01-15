@@ -1,4 +1,5 @@
 --死の4つ星てんとう虫
+--4-Starred Ladybug of Doom
 function c83994646.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

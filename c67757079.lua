@@ -1,4 +1,5 @@
 --キング・オブ・ビースト
+--King of the Beasts
 function c67757079.initial_effect(c)
 	c:SetUniqueOnField(1,1,67757079)
 	--special summon

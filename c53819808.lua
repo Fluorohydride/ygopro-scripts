@@ -1,4 +1,5 @@
 --六武院
+--Temple of the Six
 function c53819808.initial_effect(c)
 	c:EnableCounterPermit(0x3003)
 	--Activate

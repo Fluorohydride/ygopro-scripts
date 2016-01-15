@@ -1,4 +1,5 @@
 --カラクリ忍者 九壱九
+--Karakuri Ninja mdl 919 "Kuick"
 function c6276588.initial_effect(c)
 	--must attack
 	local e1=Effect.CreateEffect(c)

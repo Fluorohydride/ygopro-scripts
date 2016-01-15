@@ -1,4 +1,5 @@
 --DD魔導賢者ニュートン
+--D/D Magical Astronomer Newton
 function c19302550.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

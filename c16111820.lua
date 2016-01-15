@@ -1,4 +1,5 @@
 --ジュラック・ヘレラ
+--Jurrac Herra
 function c16111820.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(16111820,0))

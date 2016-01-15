@@ -1,4 +1,5 @@
 --異次元竜 トワイライトゾーンドラゴン
+--Different Dimension Dragon
 function c50939127.initial_effect(c)
 	--indestructable
 	local e1=Effect.CreateEffect(c)

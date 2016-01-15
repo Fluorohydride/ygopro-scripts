@@ -1,4 +1,5 @@
 --極星獣グルファクシ
+--Guldfaxe of the Nordic Beasts
 function c41788781.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

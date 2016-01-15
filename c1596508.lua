@@ -1,4 +1,5 @@
 --次元要塞兵器
+--Dimension Fortress Weapon
 function c1596508.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

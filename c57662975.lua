@@ -1,4 +1,5 @@
 --ダークストーム・ドラゴン
+--Darkstorm Dragon
 function c57662975.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--destroy

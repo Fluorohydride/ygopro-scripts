@@ -1,4 +1,5 @@
 --墓守の長
+--Gravekeeper's Chief
 function c62473983.initial_effect(c)
 	c:SetUniqueOnField(1,0,62473983)
 	--immune to necro valley

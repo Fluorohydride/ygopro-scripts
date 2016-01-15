@@ -1,4 +1,5 @@
 --パーティカル・フュージョン
+--Particle Fusion
 function c39261576.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

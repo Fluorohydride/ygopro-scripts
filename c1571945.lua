@@ -1,4 +1,5 @@
 --白い忍者
+--White Ninja
 function c1571945.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

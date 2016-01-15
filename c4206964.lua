@@ -1,4 +1,5 @@
 --落とし穴
+--Trap Hole
 function c4206964.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

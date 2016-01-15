@@ -1,4 +1,5 @@
 --獣神機王バルバロスUr
+--Beast Machine King Barbaros Ür
 function c19028307.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

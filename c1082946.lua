@@ -1,4 +1,5 @@
 --運命の火時計
+--Pyro Clock of Destiny
 function c1082946.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

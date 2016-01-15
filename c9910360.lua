@@ -1,4 +1,5 @@
 --ガエル・サンデス
+--D.3.S. Frog
 function c9910360.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

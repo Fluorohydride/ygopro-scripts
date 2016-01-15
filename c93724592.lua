@@ -1,4 +1,5 @@
 --カラクリ忍者 参参九
+--Karakuri Ninja mdl 339 "Sazank"
 function c93724592.initial_effect(c)
 	--must attack
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --地獄大百足
+--Hundred-Footed Horror
 function c36029076.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

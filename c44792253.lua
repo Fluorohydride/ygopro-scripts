@@ -1,4 +1,5 @@
 --D.D.デストロイヤー
+--D.D. Destroyer
 function c44792253.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

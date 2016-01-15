@@ -1,4 +1,5 @@
 --アルカナフォースIII－THE EMPRESS
+--Arcana Force III - The Empress
 function c35781051.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)

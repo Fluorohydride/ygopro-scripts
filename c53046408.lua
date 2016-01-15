@@ -1,4 +1,5 @@
 --非常食
+--Emergency Provisions
 function c53046408.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

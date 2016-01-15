@@ -1,4 +1,5 @@
 --吸血コアラ
+--Vampire Koala
 function c1371589.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

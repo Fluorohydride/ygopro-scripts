@@ -1,4 +1,5 @@
 --猛吹雪
+--Driving Snow
 function c473469.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

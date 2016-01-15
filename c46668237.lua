@@ -1,4 +1,5 @@
 --森の番人グリーン・バブーン
+--Green Baboon, Defender of the Forest
 function c46668237.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --炸裂装甲
+--Sakuretsu Armor
 function c56120475.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

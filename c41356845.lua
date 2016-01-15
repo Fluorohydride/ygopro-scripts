@@ -1,4 +1,5 @@
 --硫酸のたまった落とし穴
+--Acid Trap Hole
 function c41356845.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

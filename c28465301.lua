@@ -1,4 +1,5 @@
 --ワーム・オペラ
+--Worm Opera
 function c28465301.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

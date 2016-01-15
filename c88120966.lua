@@ -1,4 +1,5 @@
 --No.15 ギミック・パペット－ジャイアントキラー
+--Number 15: Gimmick Puppet Giant Grinder
 function c88120966.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

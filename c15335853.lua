@@ -1,4 +1,5 @@
 --幻獣機サーバルホーク
+--Mecha Phantom Beast Sabre Hawk
 function c15335853.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

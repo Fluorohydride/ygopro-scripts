@@ -1,4 +1,5 @@
 --エクシーズエフェクト
+--Xyz Effect
 function c58628539.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

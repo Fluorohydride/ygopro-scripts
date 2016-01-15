@@ -1,4 +1,5 @@
 --ミスト・ボディ
+--Mist Body
 function c47529357.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

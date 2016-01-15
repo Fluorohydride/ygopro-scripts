@@ -1,4 +1,5 @@
 --カオス・バースト
+--Chaos Burst
 function c4923662.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

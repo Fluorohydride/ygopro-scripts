@@ -1,4 +1,5 @@
 --究極恐獣
+--Ultimate Tyranno
 function c15894048.initial_effect(c)
 	--attack
 	local e1=Effect.CreateEffect(c)

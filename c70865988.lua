@@ -1,4 +1,5 @@
 --全弾発射
+--Full Salvo
 function c70865988.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

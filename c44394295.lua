@@ -1,4 +1,5 @@
 --影依融合
+--Shaddoll Fusion
 function c44394295.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

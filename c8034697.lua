@@ -1,4 +1,5 @@
 --魔法の操り人形
+--Magical Marionette
 function c8034697.initial_effect(c)
 	c:EnableCounterPermit(0x3001)
 	--add counter

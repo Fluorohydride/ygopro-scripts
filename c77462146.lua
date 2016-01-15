@@ -1,4 +1,5 @@
 --幻影騎士団シャドーベイル
+--The Phantom Knights of Shadow Veil
 function c77462146.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

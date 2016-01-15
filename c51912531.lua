@@ -1,4 +1,5 @@
 --幻妖種ミトラ
+--Mystic Macrocarpa Seed
 function c51912531.initial_effect(c)
 	--synchro limit
 	local e1=Effect.CreateEffect(c)

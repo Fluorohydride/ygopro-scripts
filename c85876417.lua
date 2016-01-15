@@ -1,4 +1,5 @@
 --A・O・J サウザンド・アームズ
+--Ally of Justice Thousand Arms
 function c85876417.initial_effect(c)
 	--attack all
 	local e1=Effect.CreateEffect(c)

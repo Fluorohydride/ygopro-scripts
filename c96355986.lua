@@ -1,4 +1,5 @@
 --ホーリージャベリン
+--Enchanted Javelin
 function c96355986.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

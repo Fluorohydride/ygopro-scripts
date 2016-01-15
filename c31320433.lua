@@ -1,4 +1,5 @@
 --No.47 ナイトメア・シャーク
+--Number 47: Nightmare Shark
 function c31320433.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

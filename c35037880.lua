@@ -1,4 +1,5 @@
 --セイバー・リフレクト
+--Saber Reflect
 function c35037880.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

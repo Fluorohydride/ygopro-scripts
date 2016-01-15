@@ -1,4 +1,5 @@
 --神秘の代行者 アース
+--The Agent of Mystery - Earth
 function c91188343.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

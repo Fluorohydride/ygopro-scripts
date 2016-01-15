@@ -1,4 +1,5 @@
 --悪魂邪苦止
+--T.A.D.P.O.L.E.
 function c10456559.initial_effect(c)
 	--add
 	local e1=Effect.CreateEffect(c)

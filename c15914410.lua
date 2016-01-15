@@ -1,4 +1,5 @@
 --機装天使エンジネル
+--Mechquipped Angineer
 function c15914410.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

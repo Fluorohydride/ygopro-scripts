@@ -1,4 +1,5 @@
 --重力崩壊
+--Gravity Collapse
 function c7811875.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

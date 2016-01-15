@@ -1,4 +1,5 @@
 --ソニックジャマー
+--Sonic Jammer
 function c84550200.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

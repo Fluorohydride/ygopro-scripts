@@ -1,4 +1,5 @@
 --ゴーストリック・デュラハン
+--Ghostrick Dullahan
 function c46895036.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,1,2)

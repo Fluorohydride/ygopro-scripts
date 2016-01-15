@@ -1,4 +1,5 @@
 --Kaiju Capture Mission
+--Kaiju Capture Mission
 function c81057455.initial_effect(c)
 	c:SetCounterLimit(0x37,3)
 	--activate

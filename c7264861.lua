@@ -1,4 +1,5 @@
 --インフェルニティ・ビースト
+--Infernity Beast
 function c7264861.initial_effect(c)
 	--actlimit
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --団結の力
+--United We Stand
 function c56747793.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

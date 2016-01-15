@@ -1,4 +1,5 @@
 --コールド・エンチャンター
+--Cold Enchanter
 function c24661486.initial_effect(c)
 	--add counter
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --炎帝テスタロス
+--Thestalos the Firestorm Monarch
 function c26205777.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

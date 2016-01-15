@@ -1,4 +1,5 @@
 --大革命返し
+--The Huge Revolution is Over
 function c99188141.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

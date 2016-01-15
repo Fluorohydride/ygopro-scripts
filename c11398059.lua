@@ -1,4 +1,5 @@
 --キングレムリン
+--King of the Feral Imps
 function c11398059.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

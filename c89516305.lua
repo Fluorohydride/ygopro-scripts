@@ -1,4 +1,5 @@
 --No.87 雪月花美神クイーン・オブ・ナイツ
+--Number 87: Queen of the Night
 function c89516305.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,3)

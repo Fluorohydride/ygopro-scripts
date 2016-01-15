@@ -1,4 +1,5 @@
 --セコンド・ゴブリン
+--Second Goblin
 function c19086954.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

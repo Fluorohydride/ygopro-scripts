@@ -1,4 +1,5 @@
 --ガード・ヘッジ
+--Hedge Guard
 function c59042331.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

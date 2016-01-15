@@ -1,4 +1,5 @@
 --イルミラージュ
+--Al-Lumi'raj
 function c25795273.initial_effect(c)
 	--atk down
 	local e1=Effect.CreateEffect(c)

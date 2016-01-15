@@ -1,4 +1,5 @@
 --DDD怒濤壊薙王カエサル・ラグナロク
+--D/D/D Wave Oblivion King Caesar Ragnarok
 function c27873305.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

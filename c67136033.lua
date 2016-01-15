@@ -1,4 +1,5 @@
 --熱血獣王ベアーマン
+--Coach Captain Bearman
 function c67136033.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

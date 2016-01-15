@@ -1,4 +1,5 @@
 --憑依するブラッド・ソウル
+--Possessed Dark Soul
 function c52860176.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

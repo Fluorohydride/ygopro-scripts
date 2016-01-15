@@ -1,4 +1,5 @@
 --ライライダー
+--Rai Rider
 function c31173519.initial_effect(c)
 	--atk limit
 	local e1=Effect.CreateEffect(c)

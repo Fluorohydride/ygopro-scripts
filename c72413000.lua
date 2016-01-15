@@ -1,4 +1,5 @@
 --ファーニマル・ウィング
+--Fluffal Wings
 function c72413000.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

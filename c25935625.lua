@@ -1,4 +1,5 @@
 --闇竜星－ジョクト
+--Jiaotu, Darkness of the Yang Zing
 function c25935625.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

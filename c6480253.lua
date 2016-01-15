@@ -1,4 +1,5 @@
 --フレンドッグ
+--Wroughtweiler
 function c6480253.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

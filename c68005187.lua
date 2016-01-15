@@ -1,4 +1,5 @@
 --クロス・ソウル
+--Soul Exchange
 function c68005187.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

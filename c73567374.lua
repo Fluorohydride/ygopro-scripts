@@ -1,4 +1,5 @@
 --フォース・リリース
+--Unleash Your Power!
 function c73567374.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

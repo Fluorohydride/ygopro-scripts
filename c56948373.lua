@@ -1,4 +1,5 @@
 --呪魂の仮面
+--Mask of the Accursed
 function c56948373.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

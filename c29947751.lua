@@ -1,4 +1,5 @@
 --D・マグネンU
+--Morphtronic Magnen
 function c29947751.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

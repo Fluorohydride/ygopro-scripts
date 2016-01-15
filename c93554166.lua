@@ -1,4 +1,5 @@
 --暗黒界の雷
+--Dark World Lightning
 function c93554166.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --殻醒する煉獄
+--Void Launch
 function c94432298.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	--Activate

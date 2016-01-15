@@ -1,4 +1,5 @@
 --合神竜ティマイオス
+--Timaeus the Knight of Destiny
 function c53315891.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

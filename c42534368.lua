@@ -1,4 +1,5 @@
 --黙する死者
+--Silent Doom
 function c42534368.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

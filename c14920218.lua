@@ -1,4 +1,5 @@
 --賤竜の魔術師
+--Oafdragon Magician
 function c14920218.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

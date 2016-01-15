@@ -1,4 +1,5 @@
 --連鎖誘爆
+--Chain Ignition
 function c85893201.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --旗鼓堂々
+--Swords at Dawn
 function c25067275.initial_effect(c)
 	--effect
 	local e1=Effect.CreateEffect(c)

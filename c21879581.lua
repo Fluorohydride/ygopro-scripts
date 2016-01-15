@@ -1,4 +1,5 @@
 --シンクロ・バリアー
+--Synchro Barrier
 function c21879581.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

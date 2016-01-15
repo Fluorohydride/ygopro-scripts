@@ -1,4 +1,5 @@
 --魔導書院ラメイソン
+--The Grand Spellbook Tower
 function c33981008.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --D・バインド
+--Morphtronic Bind
 function c85101228.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

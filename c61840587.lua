@@ -1,4 +1,5 @@
 --携帯型バッテリー
+--Portable Battery Pack
 function c61840587.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --青き眼の巫女
+--Priestess with Eyes of Blue
 function c36734924.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

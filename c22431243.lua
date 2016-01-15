@@ -1,4 +1,5 @@
 --超進化薬
+--Ultra Evolution Pill
 function c22431243.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

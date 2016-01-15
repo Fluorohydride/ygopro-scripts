@@ -1,4 +1,5 @@
 --ドラグニティ－トリブル
+--Dragunity Tribus
 function c81962318.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)

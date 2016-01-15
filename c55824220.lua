@@ -1,4 +1,5 @@
 --輝石融合
+--Pyroxene Fusion
 function c55824220.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

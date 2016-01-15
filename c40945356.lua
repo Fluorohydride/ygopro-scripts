@@ -1,4 +1,5 @@
 --黄昏の中忍－ニチリン
+--Twilight Ninja Nichirin, the Chunin
 function c40945356.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

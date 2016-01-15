@@ -1,4 +1,5 @@
 --No.99 希望皇龍ホープドラグーン
+--Number 99: Utopic Dragon
 function c51543904.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,10,3,c51543904.ovfilter,aux.Stringid(51543904,0),3,c51543904.xyzop)

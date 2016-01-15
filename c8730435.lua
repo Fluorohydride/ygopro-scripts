@@ -1,4 +1,5 @@
 --剣闘獣の闘器デーモンズシールド
+--Gladiator Beast's Battle Archfiend Shield
 function c8730435.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

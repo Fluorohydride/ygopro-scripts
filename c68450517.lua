@@ -1,4 +1,5 @@
 --A・ジェネクス・ドゥルダーク
+--Genex Ally Duradark
 function c68450517.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

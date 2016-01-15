@@ -1,4 +1,5 @@
 --イグナイト・ドラグノフ
+--Igknight Templar
 function c97024987.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

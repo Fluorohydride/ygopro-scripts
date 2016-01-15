@@ -1,4 +1,5 @@
 --ブレンD
+--Morphtronic Mix-up
 function c14613029.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

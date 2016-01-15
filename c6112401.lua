@@ -1,4 +1,5 @@
 --身剣一体
+--At One With the Sword
 function c6112401.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

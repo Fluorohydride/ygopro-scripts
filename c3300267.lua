@@ -1,4 +1,5 @@
 --聖刻龍－シユウドラゴン
+--Hieratic Dragon of Su
 function c3300267.initial_effect(c)
 	--spsummon from hand
 	local e1=Effect.CreateEffect(c)

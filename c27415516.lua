@@ -1,4 +1,5 @@
 --水征竜－ストリーム
+--Stream, Dragon Ruler of Droplets
 function c27415516.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

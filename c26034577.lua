@@ -1,4 +1,5 @@
 --インフェルノイド・ベルゼブル
+--Infernoid Antra
 function c26034577.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

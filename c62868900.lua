@@ -1,4 +1,5 @@
 --D－シールド
+--D - Shield
 function c62868900.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

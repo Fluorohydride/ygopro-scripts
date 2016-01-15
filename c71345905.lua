@@ -1,4 +1,5 @@
 --RDM－ヌメロン・フォール
+--Rank-Down-Magic Numeron Fall
 function c71345905.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

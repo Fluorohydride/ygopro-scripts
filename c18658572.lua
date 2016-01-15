@@ -1,4 +1,5 @@
 --見世物ゴブリン
+--Goblin Circus
 function c18658572.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

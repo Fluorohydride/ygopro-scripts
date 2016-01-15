@@ -1,4 +1,5 @@
 --立ちはだかる強敵
+--Staunch Defender
 function c92854392.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

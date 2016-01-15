@@ -1,4 +1,5 @@
 --ヴァイロン・キューブ
+--Vylon Cube
 function c41431329.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --契約の履行
+--Fulfillment of the Contract
 function c48206762.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

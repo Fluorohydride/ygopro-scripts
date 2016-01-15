@@ -1,4 +1,5 @@
 --防覇龍ヘリオスフィア
+--Heliosphere Dragon
 function c51043053.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

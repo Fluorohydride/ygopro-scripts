@@ -1,4 +1,5 @@
 --威嚇する咆哮
+--Threatening Roar
 function c36361633.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

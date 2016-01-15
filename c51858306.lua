@@ -1,4 +1,5 @@
 --エクリプス・ワイバーン
+--Eclipse Wyvern
 function c51858306.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

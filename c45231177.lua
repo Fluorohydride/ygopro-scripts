@@ -1,4 +1,5 @@
 --炎の剣士
+--Flame Swordsman
 function c45231177.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --いたずら好きな双子悪魔
+--Delinquent Duo
 function c44763025.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

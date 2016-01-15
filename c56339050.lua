@@ -1,4 +1,5 @@
 --地縛神の咆哮
+--Roar of the Earthbound
 function c56339050.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

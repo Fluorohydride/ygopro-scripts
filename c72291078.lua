@@ -1,4 +1,5 @@
 --幻獣機オライオン
+--Mecha Phantom Beast O-Lion
 function c72291078.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

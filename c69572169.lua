@@ -1,4 +1,5 @@
 --E・HERO フラッシュ
+--Elemental HERO Flash
 function c69572169.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

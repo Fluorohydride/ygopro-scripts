@@ -1,4 +1,5 @@
 --魔導獣 ケルベロス
+--Mythical Beast Cerberus
 function c55424270.initial_effect(c)
 	c:EnableCounterPermit(0x3001)
 	--add counter

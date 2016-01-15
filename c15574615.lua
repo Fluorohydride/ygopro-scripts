@@ -1,4 +1,5 @@
 --異次元ジェット・アイアン号
+--D.D. Jet Iron
 function c15574615.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon rule

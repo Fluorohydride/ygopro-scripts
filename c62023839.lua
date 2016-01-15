@@ -1,4 +1,5 @@
 --フィッシュボーグ－アーチャー
+--Fishborg Archer
 function c62023839.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

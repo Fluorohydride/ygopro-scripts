@@ -1,4 +1,5 @@
 --スピリット・フォース
+--Spirit Force
 function c16674846.initial_effect(c)
 	--no damage
 	local e1=Effect.CreateEffect(c)

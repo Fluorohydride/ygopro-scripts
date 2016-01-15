@@ -1,4 +1,5 @@
 --八俣大蛇
+--Yamata Dragon
 function c76862289.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

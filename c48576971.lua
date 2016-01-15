@@ -1,4 +1,5 @@
 --与奪の首飾り
+--Necklace of Command
 function c48576971.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

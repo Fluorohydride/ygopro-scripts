@@ -1,4 +1,5 @@
 --コザッキーの研究成果
+--Fruits of Kozaky's Studies
 function c49998907.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

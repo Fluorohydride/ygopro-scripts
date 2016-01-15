@@ -1,4 +1,5 @@
 --風の精霊 ガルーダ
+--Garuda the Wind Spirit
 function c12800777.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

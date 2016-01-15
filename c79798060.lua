@@ -1,4 +1,5 @@
 --地縛神 Ccarayhua
+--Earthbound Immortal Ccarayhua
 function c79798060.initial_effect(c)
 	c:SetUniqueOnField(1,1,10000000)
 	--

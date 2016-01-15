@@ -1,4 +1,5 @@
 --磨破羅魏
+--Maharaghi
 function c40695128.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

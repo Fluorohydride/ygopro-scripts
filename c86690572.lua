@@ -1,4 +1,5 @@
 --炎渦の胎動
+--Burgeoning Whirlflame
 function c86690572.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

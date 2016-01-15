@@ -1,4 +1,5 @@
 --C・ドルフィーナ
+--Chrysalis Dolphin
 function c42682609.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

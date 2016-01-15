@@ -1,4 +1,5 @@
 --音響戦士ピアーノ
+--Symphonic Warrior Piaano
 function c31826057.initial_effect(c)
 	--race change
 	local e1=Effect.CreateEffect(c)

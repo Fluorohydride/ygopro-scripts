@@ -1,4 +1,5 @@
 --棘の壁
+--Wall of Thorns
 function c2779999.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --レアメタル・ヴァルキリー
+--Super Robolady
 function c75923050.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

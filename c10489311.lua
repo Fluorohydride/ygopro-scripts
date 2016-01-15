@@ -1,4 +1,5 @@
 --ヒーロー・メダル
+--Hero Medal
 function c10489311.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

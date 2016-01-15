@@ -1,4 +1,5 @@
 --魔轟神クシャノ
+--Fabled Kushano
 function c97439806.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

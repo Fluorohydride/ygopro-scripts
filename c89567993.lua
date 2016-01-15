@@ -1,4 +1,5 @@
 --アマゾネス訓練生
+--Amazoness Trainee
 function c89567993.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

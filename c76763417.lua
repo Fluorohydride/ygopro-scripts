@@ -1,4 +1,5 @@
 --サイバー・ジムナティクス
+--Cyber Gymnast
 function c76763417.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

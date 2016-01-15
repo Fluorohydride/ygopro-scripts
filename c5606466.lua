@@ -1,4 +1,5 @@
 --異次元の落とし穴
+--D.D. Trap Hole
 function c5606466.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

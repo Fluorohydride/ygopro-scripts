@@ -1,4 +1,5 @@
 --Vain－裏切りの嘲笑
+--Vain Betrayer
 function c94933468.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

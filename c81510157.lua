@@ -1,4 +1,5 @@
 --ソウルテイカー
+--Soul Taker
 function c81510157.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

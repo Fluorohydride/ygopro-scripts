@@ -1,4 +1,5 @@
 --アマゾネスの剣士
+--Amazoness Swords Woman
 function c94004268.initial_effect(c)
 	--reflect battle dam
 	local e1=Effect.CreateEffect(c)

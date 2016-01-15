@@ -1,4 +1,5 @@
 --灼熱王パイロン
+--King Pyron
 function c20438745.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--damage

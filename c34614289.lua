@@ -1,4 +1,5 @@
 --U.A.ストロングブロッカー
+--U.A. Blockbacker
 function c34614289.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

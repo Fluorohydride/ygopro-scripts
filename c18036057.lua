@@ -1,4 +1,5 @@
 --天空騎士パーシアス
+--Airknight Parshath
 function c18036057.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

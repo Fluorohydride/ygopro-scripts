@@ -1,4 +1,5 @@
 --ソロモンの律法書
+--Solomon's Lawbook
 function c23471572.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

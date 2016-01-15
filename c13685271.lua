@@ -1,4 +1,5 @@
 --同姓同名同盟条約
+--Treaty on Uniform Nomenclature
 function c13685271.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --神海竜ギシルノドン
+--Sea Dragon Lord Gishilnodon
 function c76891401.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure2(c,nil,aux.NonTuner(c76891401.synfilter))

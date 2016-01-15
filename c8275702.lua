@@ -1,4 +1,5 @@
 --宝玉の契約
+--Crystal Promise
 function c8275702.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

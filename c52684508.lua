@@ -1,4 +1,5 @@
 --黒炎弾
+--Inferno Fire Blast
 function c52684508.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --風魔手裏剣
+--Fuhma Shuriken
 function c9373534.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

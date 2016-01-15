@@ -1,4 +1,5 @@
 --怨念のキラードール
+--Malice Doll of Demise
 function c72657739.initial_effect(c)
 	--register
 	local e1=Effect.CreateEffect(c)

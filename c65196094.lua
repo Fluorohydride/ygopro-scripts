@@ -1,4 +1,5 @@
 --バラエティ・アウト
+--Variety Comes Out
 function c65196094.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

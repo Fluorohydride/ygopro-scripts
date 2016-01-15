@@ -1,4 +1,5 @@
 --竜殺しの剣
+--Sword of Dragon's Soul
 function c61405855.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

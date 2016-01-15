@@ -1,4 +1,5 @@
 --突撃ライノス
+--Rampaging Rhynos
 function c3784434.initial_effect(c)
 	--move
 	local e1=Effect.CreateEffect(c)

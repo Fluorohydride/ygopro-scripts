@@ -1,4 +1,5 @@
 --機皇神マシニクル∞
+--Meklord Astro Mekanikle
 function c63468625.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

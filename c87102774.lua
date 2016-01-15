@@ -1,4 +1,5 @@
 --黄金の天道虫
+--Golden Ladybug
 function c87102774.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

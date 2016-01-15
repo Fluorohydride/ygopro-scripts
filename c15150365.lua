@@ -1,4 +1,5 @@
 --白い泥棒
+--White Magical Hat
 function c15150365.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

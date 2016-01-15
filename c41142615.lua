@@ -1,4 +1,5 @@
 --陽気な葬儀屋
+--The Cheerful Coffin
 function c41142615.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

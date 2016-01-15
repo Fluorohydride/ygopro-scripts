@@ -1,4 +1,5 @@
 --アサルト・ガンドッグ
+--Assault Dog
 function c72714226.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

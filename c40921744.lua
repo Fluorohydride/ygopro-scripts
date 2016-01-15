@@ -1,4 +1,5 @@
 --堕天使ゼラート
+--Darklord Zerato
 function c40921744.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

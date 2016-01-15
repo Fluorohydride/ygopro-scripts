@@ -1,4 +1,5 @@
 --アルカナフォースEX－THE LIGHT RULER
+--Arcana Force EX - The Light Ruler
 function c5861892.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon proc

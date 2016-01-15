@@ -1,4 +1,5 @@
 --トリオンの蟲惑魔
+--Traptrix Myrmeleo
 function c91812341.initial_effect(c)
 	--immune
 	local e1=Effect.CreateEffect(c)

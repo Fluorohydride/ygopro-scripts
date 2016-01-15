@@ -1,4 +1,5 @@
 --王宮の号令
+--Royal Command
 function c33950246.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

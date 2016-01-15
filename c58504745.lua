@@ -1,4 +1,5 @@
 --間炎星－コウカンショウ
+--Brotherhood of the Fire Fist - Cardinal
 function c58504745.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x79),4,2)

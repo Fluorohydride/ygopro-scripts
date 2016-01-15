@@ -1,4 +1,5 @@
 --電池メン－角型
+--Batteryman 9-Volt
 function c60549248.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

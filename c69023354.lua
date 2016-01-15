@@ -1,4 +1,5 @@
 --機甲忍者エアー
+--Air Armor Ninja
 function c69023354.initial_effect(c)
 	--lv down
 	local e1=Effect.CreateEffect(c)

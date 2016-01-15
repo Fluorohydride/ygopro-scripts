@@ -1,4 +1,5 @@
 --RUM－ソウル・シェイブ・フォース
+--Rank-Up-Magic Soul Shave Force
 function c23581825.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

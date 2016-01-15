@@ -1,4 +1,5 @@
 --空中補給
+--Aerial Recharge
 function c70875955.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

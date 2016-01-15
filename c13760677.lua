@@ -1,4 +1,5 @@
 --P・M・キャプチャー
+--P.M. Captor
 function c13760677.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

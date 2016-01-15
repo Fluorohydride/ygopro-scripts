@@ -1,4 +1,5 @@
 --音響戦士ベーシス
+--Symphonic Warrior Basses
 function c68933343.initial_effect(c)
 	--lv up
 	local e1=Effect.CreateEffect(c)

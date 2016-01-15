@@ -1,4 +1,5 @@
 --驚天動地
+--Earthshattering Event
 function c54407825.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

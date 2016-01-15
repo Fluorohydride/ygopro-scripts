@@ -1,4 +1,5 @@
 --タイラント・バースト・ドラゴン
+--Tyrant Burst Dragon
 function c58293343.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

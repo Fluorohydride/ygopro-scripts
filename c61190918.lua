@@ -1,4 +1,5 @@
 --トゥーン・バスター・ブレイダー
+--Toon Buster Blader
 function c61190918.initial_effect(c)
 	--cannot attack
 	local e1=Effect.CreateEffect(c)

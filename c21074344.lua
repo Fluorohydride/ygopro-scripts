@@ -1,4 +1,5 @@
 --緑光の宣告者
+--Herald of Green Light
 function c21074344.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

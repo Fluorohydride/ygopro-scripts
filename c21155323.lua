@@ -1,4 +1,5 @@
 --巨人ゴーグル
+--Goggle Golem
 function c21155323.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--change base attack

@@ -1,4 +1,5 @@
 --BK ベイル
+--Battlin' Boxer Veil
 function c13313278.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

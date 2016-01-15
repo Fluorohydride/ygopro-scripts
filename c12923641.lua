@@ -1,4 +1,5 @@
 --闇の護封剣
+--Swords of Concealing Light
 function c12923641.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

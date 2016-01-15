@@ -1,4 +1,5 @@
 --SR三つ目のダイス
+--Speedroid Tri-Eyed Dice
 function c27660735.initial_effect(c)
 	--disable attack
 	local e1=Effect.CreateEffect(c)

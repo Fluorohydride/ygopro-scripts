@@ -1,4 +1,5 @@
 --灰塵王 アッシュ・ガッシュ
+--Gash the Dust Lord
 function c19012345.initial_effect(c)
 	--lvup
 	local e1=Effect.CreateEffect(c)

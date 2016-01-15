@@ -1,4 +1,5 @@
 --ボマー・ドラゴン
+--Exploder Dragon
 function c20586572.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

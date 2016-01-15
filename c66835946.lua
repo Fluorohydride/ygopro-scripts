@@ -1,4 +1,5 @@
 --奇跡のピラミッド
+--Pyramid of Wonders
 function c66835946.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

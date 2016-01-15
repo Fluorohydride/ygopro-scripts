@@ -1,4 +1,5 @@
 --仕込みマシンガン
+--Secret Barrel
 function c27053506.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --幻獣機コンコルーダ
+--Mecha Phantom Beast Concoruda
 function c53451824.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

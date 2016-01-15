@@ -1,4 +1,5 @@
 --グレイドル・スプリット
+--Graydle Split
 function c75361204.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

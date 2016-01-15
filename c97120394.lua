@@ -1,4 +1,5 @@
 --封魔の矢
+--Anti-Magic Arrows
 function c97120394.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

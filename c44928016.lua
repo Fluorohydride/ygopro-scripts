@@ -1,4 +1,5 @@
 --にん人
+--Carrot Human
 function c44928016.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --スタンピング・クラッシュ
+--Stamping Destruction
 function c81385346.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

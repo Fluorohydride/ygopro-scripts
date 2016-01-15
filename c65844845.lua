@@ -1,4 +1,5 @@
 --甲虫装機 ギガグリオル
+--Inzektor Giga-Cricket
 function c65844845.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

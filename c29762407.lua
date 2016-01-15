@@ -1,4 +1,5 @@
 --王家の神殿
+--Temple of the Kings
 function c29762407.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --先史遺産モアイ
+--Chronomaly Moai
 function c87430304.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

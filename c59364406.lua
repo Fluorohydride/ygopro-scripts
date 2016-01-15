@@ -1,4 +1,5 @@
 --灼岩魔獣
+--Burning Beast
 function c59364406.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

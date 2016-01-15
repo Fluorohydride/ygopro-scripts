@@ -1,4 +1,5 @@
 --妖精竜 エンシェント
+--Ancient Pixie Dragon
 function c4179255.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

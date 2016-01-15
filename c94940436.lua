@@ -1,4 +1,5 @@
 --磁力の召喚円 LV2
+--Magnet Circle LV2
 function c94940436.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

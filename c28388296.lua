@@ -1,4 +1,5 @@
 --スクラップ・ファクトリー
+--Scrap Factory
 function c28388296.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

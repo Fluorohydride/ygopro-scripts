@@ -1,4 +1,5 @@
 --サイコ・ウォールド
+--Psychic Snail
 function c58453942.initial_effect(c)
 	--extra atk
 	local e1=Effect.CreateEffect(c)

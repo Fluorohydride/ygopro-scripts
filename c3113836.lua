@@ -1,4 +1,5 @@
 --ジェムナイト・セラフィ
+--Gem-Knight Seraphinite
 function c3113836.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

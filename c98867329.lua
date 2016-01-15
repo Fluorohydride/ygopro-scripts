@@ -1,4 +1,5 @@
 --災いの装備品
+--Cursed Armaments
 function c98867329.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --太陽風帆船
+--Solar Wind Jammer
 function c33911264.initial_effect(c)
 	c:SetUniqueOnField(1,1,33911264)
 	--special summon

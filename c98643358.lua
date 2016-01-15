@@ -1,4 +1,5 @@
 --ダイヤモンド・ダスト
+--Diamond Dust
 function c98643358.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

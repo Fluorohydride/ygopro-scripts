@@ -1,4 +1,5 @@
 --有翼賢者ファルコス
+--Winged Sage Falcos
 function c87523462.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --レプティレス・サーヴァント
+--Reptilianne Servant
 function c16008155.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --暗黒界の書物
+--Dark World Grimoire
 function c61623148.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

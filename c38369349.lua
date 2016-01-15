@@ -1,4 +1,5 @@
 --トゥーン・ドラゴン・エッガー
+--Manga Ryu-Ran
 function c38369349.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

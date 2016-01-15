@@ -1,4 +1,5 @@
 --ダイガスタ・エメラル
+--Daigusto Emeral
 function c581014.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

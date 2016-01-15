@@ -1,4 +1,5 @@
 --万華鏡－華麗なる分身－
+--Elegant Egotist
 function c90219263.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

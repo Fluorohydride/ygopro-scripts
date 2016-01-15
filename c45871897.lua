@@ -1,4 +1,5 @@
 --ロストガーディアン
+--Lost Guardian
 function c45871897.initial_effect(c)
 	--base defence
 	local e1=Effect.CreateEffect(c)

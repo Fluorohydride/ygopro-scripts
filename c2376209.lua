@@ -1,4 +1,5 @@
 --버제스토마 엘도니아
+--Burgesstoma Eldonia
 function c2376209.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

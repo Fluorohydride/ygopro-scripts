@@ -1,4 +1,5 @@
 --傀儡儀式－パペット・リチューアル
+--Puppet Ritual
 function c1969506.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

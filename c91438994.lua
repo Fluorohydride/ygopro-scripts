@@ -1,4 +1,5 @@
 --A・ジェネクス・ベルフレイム
+--Genex Ally Bellflame
 function c91438994.initial_effect(c)
 	--add counter
 	local e1=Effect.CreateEffect(c)

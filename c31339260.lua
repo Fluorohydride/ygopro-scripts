@@ -1,4 +1,5 @@
 --アンデット・ウォーリアー
+--Zombie Warrior
 function c31339260.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

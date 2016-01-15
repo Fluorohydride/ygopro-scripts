@@ -1,4 +1,5 @@
 --精神同調波
+--Synchro Blast Wave
 function c35537860.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

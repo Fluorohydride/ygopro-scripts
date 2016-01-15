@@ -1,4 +1,5 @@
 --ダイナミスト・プテラン
+--Dinomist Pteran
 function c64973287.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

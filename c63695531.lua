@@ -1,4 +1,5 @@
 --墓守の長槍兵
+--Gravekeeper's Spear Soldier
 function c63695531.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

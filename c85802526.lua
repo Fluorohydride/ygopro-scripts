@@ -1,4 +1,5 @@
 --プリンセス人魚
+--Cure Mermaid
 function c85802526.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

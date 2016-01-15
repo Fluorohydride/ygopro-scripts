@@ -1,4 +1,5 @@
 --闇をかき消す光
+--Dark-Piercing Light
 function c45895206.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

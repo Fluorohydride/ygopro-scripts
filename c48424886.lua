@@ -1,4 +1,5 @@
 --エルシャドール・エグリスタ
+--El Shaddoll Grysta
 function c48424886.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion material

@@ -1,4 +1,5 @@
 --M・HERO ダーク・ロウ
+--Masked HERO Dark Law
 function c58481572.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

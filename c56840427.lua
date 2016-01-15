@@ -1,4 +1,5 @@
 --CNo.39 希望皇ホープレイ
+--Number C39: Utopia Ray
 function c56840427.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

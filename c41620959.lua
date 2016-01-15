@@ -1,4 +1,5 @@
 --竜の霊廟
+--Dragon Shrine
 function c41620959.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

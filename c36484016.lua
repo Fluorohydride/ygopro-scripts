@@ -1,4 +1,5 @@
 --ミラクルシンクロフュージョン
+--Miracle Synchro Fusion
 function c36484016.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

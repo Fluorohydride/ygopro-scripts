@@ -1,4 +1,5 @@
 --クラスター・ペンデュラム
+--Cosmic Compass
 function c27450400.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

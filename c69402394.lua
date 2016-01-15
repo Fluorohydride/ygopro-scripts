@@ -1,4 +1,5 @@
 --暗黒の謀略
+--Dark Scheme
 function c69402394.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

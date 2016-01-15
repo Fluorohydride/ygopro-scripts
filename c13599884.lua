@@ -1,4 +1,5 @@
 --鉄のサソリ
+--Steel Scorpion
 function c13599884.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(13599884,0))

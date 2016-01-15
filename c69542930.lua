@@ -1,4 +1,5 @@
 --光と闇の洗礼
+--Dedication through Light and Darkness
 function c69542930.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

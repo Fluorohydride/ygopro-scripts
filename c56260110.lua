@@ -1,4 +1,5 @@
 --雷鳴
+--Raimei
 function c56260110.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

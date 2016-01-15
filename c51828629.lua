@@ -1,4 +1,5 @@
 --魔導騎士ギルティア
+--Giltia the D. Knight
 function c51828629.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

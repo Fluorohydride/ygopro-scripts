@@ -1,4 +1,5 @@
 --セイクリッド・レスカ
+--Constellar Alrescha
 function c16906241.initial_effect(c)
 	--summon success
 	local e2=Effect.CreateEffect(c)

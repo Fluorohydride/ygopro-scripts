@@ -1,4 +1,5 @@
 --王家の財宝
+--Pharaoh's Treasure
 function c63571750.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DECK_REVERSE_CHECK)
 	--Activate

@@ -1,4 +1,5 @@
 --巡死神リーパー
+--Pilgrim Reaper
 function c45742626.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2)

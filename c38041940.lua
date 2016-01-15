@@ -1,4 +1,5 @@
 --シード・オブ・フレイム
+--Seed of Flame
 function c38041940.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

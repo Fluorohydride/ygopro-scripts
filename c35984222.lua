@@ -1,4 +1,5 @@
 --超魔神イド
+--Ido the Supreme Magical Force
 function c35984222.initial_effect(c)
 	c:SetUniqueOnField(1,0,35984222)
 	--spsummon

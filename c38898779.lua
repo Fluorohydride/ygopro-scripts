@@ -1,4 +1,5 @@
 --ギガンテック・ファイター/バスター
+--Colossal Fighter/Assault Mode
 function c38898779.initial_effect(c)
 	c:EnableReviveLimit()
 	--Cannot special summon

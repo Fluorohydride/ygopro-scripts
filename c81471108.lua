@@ -1,4 +1,5 @@
 --ZW－風神雲龍剣
+--ZW - Tornado Bringer
 function c81471108.initial_effect(c)
 	c:SetUniqueOnField(1,0,81471108)
 	--equip

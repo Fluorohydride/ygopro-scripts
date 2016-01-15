@@ -1,4 +1,5 @@
 --デーモンとの駆け引き
+--A Deal with Dark Ruler
 function c6850209.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

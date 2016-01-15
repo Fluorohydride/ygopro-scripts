@@ -1,4 +1,5 @@
 --残骸爆破
+--Blasting the Ruins
 function c21466326.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

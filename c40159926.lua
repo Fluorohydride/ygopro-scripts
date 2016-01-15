@@ -1,4 +1,5 @@
 --ミラー・リゾネーター
+--Mirror Resonator
 function c40159926.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

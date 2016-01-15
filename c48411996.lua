@@ -1,4 +1,5 @@
 --ジュラック・スタウリコ
+--Jurrac Stauriko
 function c48411996.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --カゲトカゲ
+--Kagetokage
 function c94656263.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon

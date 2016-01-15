@@ -1,4 +1,5 @@
 --フォトン・ブースター
+--Photon Booster
 function c71233859.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

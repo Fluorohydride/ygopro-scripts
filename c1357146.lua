@@ -1,4 +1,5 @@
 --粋カエル
+--Ronintoadin
 function c1357146.initial_effect(c)
 	--change code
 	local e1=Effect.CreateEffect(c)

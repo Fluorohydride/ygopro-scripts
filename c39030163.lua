@@ -1,4 +1,5 @@
 --ギャラクシーアイズ FA・フォトン・ドラゴン
+--Galaxy-Eyes Full Armor Photon Dragon
 function c39030163.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,3,c39030163.ovfilter,aux.Stringid(39030163,0))

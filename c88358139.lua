@@ -1,4 +1,5 @@
 --EMヘルプリンセス
+--Performapal Helpprincess
 function c88358139.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

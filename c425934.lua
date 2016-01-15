@@ -1,4 +1,5 @@
 --強欲ゴブリン
+--Goblin of Greed
 function c425934.initial_effect(c)
 	--discard limit
 	local e1=Effect.CreateEffect(c)

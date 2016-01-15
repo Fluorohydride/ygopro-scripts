@@ -1,4 +1,5 @@
 --煉獄の虚夢
+--Void Imagination
 function c31444249.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

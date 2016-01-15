@@ -1,4 +1,5 @@
 --No.77 ザ・セブン・シンズ
+--Number 77: The Seven Sins
 function c62541668.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,12,2,c62541668.ovfilter,aux.Stringid(62541668,0),2,c62541668.xyzop)

@@ -1,4 +1,5 @@
 --暴君の威圧
+--Tyrant's Temper
 function c4638410.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

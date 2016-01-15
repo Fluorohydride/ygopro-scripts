@@ -1,4 +1,5 @@
 --剣聖－ネイキッド・ギア・フリード
+--Gearfried the Swordmaster
 function c57046845.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

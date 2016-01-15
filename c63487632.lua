@@ -1,4 +1,5 @@
 --ドラグニティアームズ－レヴァテイン
+--Dragunity Arma Leyvaten
 function c63487632.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

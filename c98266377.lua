@@ -1,4 +1,5 @@
 --E・HERO ザ・ヒート
+--Elemental HERO Heat
 function c98266377.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

@@ -1,4 +1,5 @@
 --リチュア・キラー
+--Gishki Reliever
 function c37557626.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

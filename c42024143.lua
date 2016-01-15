@@ -1,4 +1,5 @@
 --XX－セイバー ガルドストライク
+--XX-Saber Gardestrike
 function c42024143.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

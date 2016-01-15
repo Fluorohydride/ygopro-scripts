@@ -1,4 +1,5 @@
 --くず鉄の像
+--Scrap-Iron Statue
 function c48497555.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

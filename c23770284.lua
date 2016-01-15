@@ -1,4 +1,5 @@
 --ストロング・ウィンド・ドラゴン
+--Strong Wind Dragon
 function c23770284.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

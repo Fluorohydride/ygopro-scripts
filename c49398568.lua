@@ -1,4 +1,5 @@
 --連続魔法
+--Serial Spell
 function c49398568.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

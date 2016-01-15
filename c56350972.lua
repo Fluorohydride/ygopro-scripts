@@ -1,4 +1,5 @@
 --竜姫神サフィラ
+--Saffira, Queen of Dragons
 function c56350972.initial_effect(c)
 	c:EnableReviveLimit()
 	--effect

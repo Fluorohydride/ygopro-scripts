@@ -1,4 +1,5 @@
 --ジャンク・パペット
+--Junk Puppet
 function c67968069.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

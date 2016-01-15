@@ -1,4 +1,5 @@
 --ミラーフォース・ドラゴン
+--Mirror Force Dragon
 function c84687358.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

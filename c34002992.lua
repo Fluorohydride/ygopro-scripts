@@ -1,4 +1,5 @@
 --レインボー・ライフ
+--Rainbow Life
 function c34002992.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

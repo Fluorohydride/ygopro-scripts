@@ -1,4 +1,5 @@
 --ダーク・アイズ・イリュージョニスト
+--Dark-Eyes Illusionist
 function c38247752.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

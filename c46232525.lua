@@ -1,4 +1,5 @@
 --ヘルモスの爪
+--The Claw of Hermos
 function c46232525.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

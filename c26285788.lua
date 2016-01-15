@@ -1,4 +1,5 @@
 --招来の対価
+--Trial and Tribulation
 function c26285788.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

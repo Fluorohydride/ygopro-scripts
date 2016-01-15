@@ -1,4 +1,5 @@
 --嵐
+--Storm
 function c13210191.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

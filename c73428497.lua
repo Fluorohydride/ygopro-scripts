@@ -1,4 +1,5 @@
 --ギアギアーセナル
+--Geargiarsenal
 function c73428497.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

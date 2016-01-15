@@ -1,4 +1,5 @@
 --魔力の棘
+--Magical Thorn
 function c53119267.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

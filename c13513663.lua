@@ -1,4 +1,5 @@
 --竜魂の城
+--Castle of Dragon Souls
 function c13513663.initial_effect(c)
 	c:SetUniqueOnField(1,0,13513663)
 	--activate

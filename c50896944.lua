@@ -1,4 +1,5 @@
 --暗黒ブラキ
+--Black Brachios
 function c50896944.initial_effect(c)
 	--pos
 	local e1=Effect.CreateEffect(c)

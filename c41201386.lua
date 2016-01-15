@@ -1,4 +1,5 @@
 --RUM－レイド・フォース
+--Rank-Up-Magic Raid Force
 function c41201386.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

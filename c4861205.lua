@@ -1,4 +1,5 @@
 --ミイラの呼び声
+--Call of the Mummy
 function c4861205.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

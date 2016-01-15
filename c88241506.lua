@@ -1,4 +1,5 @@
 --青き眼の乙女
+--Maiden with Eyes of Blue
 function c88241506.initial_effect(c)
 	--negate attack
 	local e1=Effect.CreateEffect(c)

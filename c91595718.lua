@@ -1,4 +1,5 @@
 --秘術の書
+--Book of Secret Arts
 function c91595718.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

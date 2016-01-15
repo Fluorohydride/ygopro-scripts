@@ -1,4 +1,5 @@
 --竜の転生
+--Dragon's Rebirth
 function c20638610.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

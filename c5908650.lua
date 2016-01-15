@@ -1,4 +1,5 @@
 --幻奏の音姫ローリイット・フランソワ
+--Shopina the Melodious Maestra
 function c5908650.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

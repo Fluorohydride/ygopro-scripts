@@ -1,4 +1,5 @@
 --ダイナミスト・ステゴサウラー
+--Dinomist Stegosaurer
 function c1580833.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

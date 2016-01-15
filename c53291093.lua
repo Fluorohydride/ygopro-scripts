@@ -1,4 +1,5 @@
 --トライアングル・エリア
+--Mysterious Triangle
 function c53291093.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

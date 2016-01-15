@@ -1,4 +1,5 @@
 --転生竜 サンサーラ
+--Samsara, Dragon of Rebirth
 function c29143726.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

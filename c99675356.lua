@@ -1,4 +1,5 @@
 --紫炎の足軽
+--Shien's Footsoldier
 function c99675356.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

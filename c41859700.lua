@@ -1,4 +1,5 @@
 --燃える藻
+--Burning Algae
 function c41859700.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

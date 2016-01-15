@@ -1,4 +1,5 @@
 --魔の取引
+--Terrible Deal
 function c69724380.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

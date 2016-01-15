@@ -1,4 +1,5 @@
 --戦火の残滓
+--After the Storm
 function c82263578.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

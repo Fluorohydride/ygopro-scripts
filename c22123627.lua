@@ -1,4 +1,5 @@
 --強欲なウツボ
+--Moray of Greed
 function c22123627.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

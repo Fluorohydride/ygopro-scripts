@@ -1,4 +1,5 @@
 --対空放花
+--Anti-Aircraft Flower
 function c65064143.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

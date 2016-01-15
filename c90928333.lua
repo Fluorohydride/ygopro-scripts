@@ -1,4 +1,5 @@
 --闇の量産工場
+--Dark Factory of Mass Production
 function c90928333.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

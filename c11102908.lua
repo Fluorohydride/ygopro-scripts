@@ -1,4 +1,5 @@
 --紫炎の霞城
+--Shien's Castle of Mist
 function c11102908.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

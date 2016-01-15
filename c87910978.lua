@@ -1,4 +1,5 @@
 --洗脳－ブレインコントロール
+--Brain Control
 function c87910978.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --無欲な壺
+--Pot of Benevolence
 function c51790181.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

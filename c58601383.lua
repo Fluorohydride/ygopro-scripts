@@ -1,4 +1,5 @@
 --地天の騎士ガイアドレイク
+--Gaia Drake, the Universal Force
 function c58601383.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

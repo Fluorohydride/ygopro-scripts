@@ -1,4 +1,5 @@
 --マテリアルドラゴン
+--Prime Material Dragon
 function c12298909.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

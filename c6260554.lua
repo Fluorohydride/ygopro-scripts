@@ -1,4 +1,5 @@
 --弾幕回避
+--Do a Barrel Roll
 function c6260554.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

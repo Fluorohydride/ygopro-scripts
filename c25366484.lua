@@ -1,4 +1,5 @@
 --E・HERO シャイニング・フレア・ウィングマン
+--Elemental HERO Shining Flare Wingman
 function c25366484.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

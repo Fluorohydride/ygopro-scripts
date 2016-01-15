@@ -1,4 +1,5 @@
 --おジャマ・カントリー
+--Ojama Country
 function c90011152.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

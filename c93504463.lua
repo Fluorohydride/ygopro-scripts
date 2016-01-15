@@ -1,4 +1,5 @@
 --進化への懸け橋
+--Evolutionary Bridge
 function c93504463.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

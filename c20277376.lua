@@ -1,4 +1,5 @@
 --神竜 アポカリプス
+--Divine Dragon Apocralyph
 function c20277376.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

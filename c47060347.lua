@@ -1,4 +1,5 @@
 --女神の加護
+--Aegis of Gaia
 function c47060347.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

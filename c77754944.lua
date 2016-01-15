@@ -1,4 +1,5 @@
 --万能地雷グレイモヤ
+--Widespread Ruin
 function c77754944.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

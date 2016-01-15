@@ -1,4 +1,5 @@
 --ダークビショップデーモン
+--Darkbishop Archfiend
 function c35798491.initial_effect(c)
 	--maintain
 	local e1=Effect.CreateEffect(c)

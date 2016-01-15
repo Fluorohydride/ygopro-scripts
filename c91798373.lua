@@ -1,4 +1,5 @@
 --デュアル・スコーピオン
+--Gemini Scorpion
 function c91798373.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

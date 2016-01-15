@@ -1,4 +1,5 @@
 --ヒステリック天使
+--Hysteric Fairy
 function c21297224.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

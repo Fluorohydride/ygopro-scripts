@@ -1,4 +1,5 @@
 --七星の宝刀
+--Sacred Sword of Seven Stars
 function c45725480.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

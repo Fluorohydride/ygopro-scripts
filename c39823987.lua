@@ -1,4 +1,5 @@
 --太陽龍インティ
+--Sun Dragon Inti
 function c39823987.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,78275321),aux.NonTuner(nil),1)

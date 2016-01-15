@@ -1,4 +1,5 @@
 --和魂
+--Nikitama
 function c24701235.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

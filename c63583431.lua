@@ -1,4 +1,5 @@
 --ゴゴゴ護符
+--Gogogo Talisman
 function c63583431.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

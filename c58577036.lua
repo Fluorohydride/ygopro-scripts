@@ -1,4 +1,5 @@
 --名推理
+--Reasoning
 function c58577036.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

@@ -1,4 +1,5 @@
 --甲虫装機の魔弓 ゼクトアロー
+--Inzektor Crossbow - Zektarrow
 function c87047074.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

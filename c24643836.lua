@@ -1,4 +1,5 @@
 --おジャマジック
+--Ojamagic
 function c24643836.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --半蛇人サクズィー
+--Cobraman Sakuzy
 function c75109441.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

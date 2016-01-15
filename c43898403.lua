@@ -1,4 +1,5 @@
 --ツインツイスター
+--Twin Twisters
 function c43898403.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

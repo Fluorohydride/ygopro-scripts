@@ -1,4 +1,5 @@
 --ゴゴゴゴーレム
+--Gogogo Golem
 function c62476815.initial_effect(c)
 	--battle des rep
 	local e1=Effect.CreateEffect(c)

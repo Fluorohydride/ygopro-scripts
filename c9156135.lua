@@ -1,4 +1,5 @@
 --見習い魔術師
+--Apprentice Magician
 function c9156135.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --リチュア・チェイン
+--Gishki Chain
 function c66399675.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --滅びの爆裂疾風弾
+--Burst Stream of Destruction
 function c17655904.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

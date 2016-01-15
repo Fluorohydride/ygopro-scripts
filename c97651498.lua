@@ -1,4 +1,5 @@
 --魔轟神ルリー
+--Fabled Lurrie
 function c97651498.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

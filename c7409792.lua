@@ -1,4 +1,5 @@
 --俊足なカバ バリキテリウム
+--Dynatherium
 function c7409792.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

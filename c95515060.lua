@@ -1,4 +1,5 @@
 --静寂のロッド－ケースト
+--Rod of Silence - Kay'est
 function c95515060.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

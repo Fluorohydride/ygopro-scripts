@@ -1,4 +1,5 @@
 --E・HERO シャドー・ミスト
+--Elemental HERO Shadow Mist
 function c50720316.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

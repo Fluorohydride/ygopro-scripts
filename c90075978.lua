@@ -1,4 +1,5 @@
 --W星雲隕石
+--W Nebula Meteorite
 function c90075978.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

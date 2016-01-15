@@ -1,4 +1,5 @@
 --奇跡の復活
+--Miracle Restoring
 function c68334074.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

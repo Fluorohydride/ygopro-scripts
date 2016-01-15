@@ -1,4 +1,5 @@
 --グレイドル・インパクト
+--Graydle Impact
 function c2759860.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

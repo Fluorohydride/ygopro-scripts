@@ -1,4 +1,5 @@
 --伏魔殿－悪魔の迷宮－
+--Archfiend Palabyrinth
 function c63883999.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

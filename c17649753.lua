@@ -1,4 +1,5 @@
 --ワーム・ルクイエ
+--Worm Rakuyeh
 function c17649753.initial_effect(c)
 	--attack limit
 	local e1=Effect.CreateEffect(c)

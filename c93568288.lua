@@ -1,4 +1,5 @@
 --No.80 狂装覇王ラプソディ・イン・バーサーク
+--Number 80: Rhapsody in Berserk
 function c93568288.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

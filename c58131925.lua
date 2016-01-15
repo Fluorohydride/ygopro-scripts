@@ -1,4 +1,5 @@
 --BF－極夜のダマスカス
+--Blackwing - Damascus the Polar Night
 function c58131925.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

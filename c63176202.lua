@@ -1,4 +1,5 @@
 --大将軍 紫炎
+--Great Shogun Shien
 function c63176202.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

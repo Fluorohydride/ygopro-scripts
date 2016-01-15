@@ -1,4 +1,5 @@
 --神風のバリア －エア・フォース－
+--Storming Mirror Force
 function c5650082.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

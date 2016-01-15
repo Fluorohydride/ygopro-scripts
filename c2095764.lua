@@ -1,4 +1,5 @@
 --水竜星－ビシキ
+--Bixi, Water of the Yang Zing
 function c2095764.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ヒーロー・ヘイロー
+--Hero Ring
 function c26647858.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

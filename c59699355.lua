@@ -1,4 +1,5 @@
 --スクラップ・カウンター
+--Scrap Rage
 function c59699355.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

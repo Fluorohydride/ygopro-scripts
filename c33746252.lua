@@ -1,4 +1,5 @@
 --威光魔人
+--Majesty's Fiend
 function c33746252.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

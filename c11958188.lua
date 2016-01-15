@@ -1,4 +1,5 @@
 --武神器－マフツ
+--Bujingi Raven
 function c11958188.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

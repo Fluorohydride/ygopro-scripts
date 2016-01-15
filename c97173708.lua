@@ -1,4 +1,5 @@
 --トークン生誕祭
+--Oh Tokenbaum!
 function c97173708.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

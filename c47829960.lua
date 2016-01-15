@@ -1,4 +1,5 @@
 --カオスライダー グスタフ
+--Chaosrider Gustaph
 function c47829960.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

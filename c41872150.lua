@@ -1,4 +1,5 @@
 --イナゴの軍勢
+--Swarm of Locusts
 function c41872150.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

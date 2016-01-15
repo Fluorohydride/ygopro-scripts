@@ -1,4 +1,5 @@
 --貪欲な瓶
+--Jar of Avarice
 function c98954106.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

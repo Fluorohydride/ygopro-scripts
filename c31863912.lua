@@ -1,4 +1,5 @@
 --出目出し
+--Dice-nied
 function c31863912.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

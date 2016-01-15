@@ -1,4 +1,5 @@
 --無の煉獄
+--Into the Void
 function c93946239.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

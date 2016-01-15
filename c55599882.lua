@@ -1,4 +1,5 @@
 --武神決戦
+--Bujintervention
 function c55599882.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

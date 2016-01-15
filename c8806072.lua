@@ -1,4 +1,5 @@
 --コンボファイター
+--Combo Fighter
 function c8806072.initial_effect(c)
 	--chain
 	local e1=Effect.CreateEffect(c)

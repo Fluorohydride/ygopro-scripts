@@ -1,4 +1,5 @@
 --ブンボーグ003
+--Deskbot 003
 function c75944053.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

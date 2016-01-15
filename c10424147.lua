@@ -1,4 +1,5 @@
 --超量機艦マグナキャリア
+--Super Quantum Mecha Ship Magnacarrier
 function c10424147.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

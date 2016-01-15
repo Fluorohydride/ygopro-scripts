@@ -1,4 +1,5 @@
 --熟練の赤魔術士
+--Skilled Red Magician
 function c65338781.initial_effect(c)
 	c:EnableCounterPermit(0x3001)
 	c:SetCounterLimit(0x3001,3)

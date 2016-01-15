@@ -1,4 +1,5 @@
 --ハンプティ・ダンディ
+--Humpty Grumpty
 function c71415349.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

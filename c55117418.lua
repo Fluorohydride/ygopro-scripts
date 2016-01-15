@@ -1,4 +1,5 @@
 --能力吸収コア
+--Nega-Ton Corepanel
 function c55117418.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --調和の宝札
+--Cards of Consonance
 function c39701395.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

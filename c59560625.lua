@@ -1,4 +1,5 @@
 --シフトチェンジ
+--Shift
 function c59560625.initial_effect(c)
 	--change target
 	local e1=Effect.CreateEffect(c)

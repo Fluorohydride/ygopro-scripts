@@ -1,4 +1,5 @@
 --U.A.ペナルティ
+--U.A. Penalty Box
 function c70043345.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --シャドール・ファルコン
+--Shaddoll Falco
 function c37445295.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

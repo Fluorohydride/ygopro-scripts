@@ -1,4 +1,5 @@
 --黒鋼竜
+--Black Metal Dragon
 function c93969023.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

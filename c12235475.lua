@@ -1,4 +1,5 @@
 --魔轟神アシェンヴェイル
+--Fabled Ashenveil
 function c12235475.initial_effect(c)
 	--attack up
 	local e1=Effect.CreateEffect(c)

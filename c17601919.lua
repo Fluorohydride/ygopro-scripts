@@ -1,4 +1,5 @@
 --ゴースト姫－パンプリンセス－
+--Pumprincess the Princess of Ghosts
 function c17601919.initial_effect(c)
 	--send replace
 	local e1=Effect.CreateEffect(c)

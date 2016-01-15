@@ -1,4 +1,5 @@
 --侵略の波動
+--Infestation Wave
 function c18816758.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

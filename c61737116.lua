@@ -1,4 +1,5 @@
 --六武衆のご隠居
+--Elder of the Six Samurai
 function c61737116.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

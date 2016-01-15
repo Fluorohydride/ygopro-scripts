@@ -1,4 +1,5 @@
 --魂を喰らう者 バズー
+--Bazoo the Soul-Eater
 function c40133511.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

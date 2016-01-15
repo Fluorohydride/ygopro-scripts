@@ -1,4 +1,5 @@
 --六武衆の荒行
+--Asceticism of the Six Samurai
 function c27821104.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

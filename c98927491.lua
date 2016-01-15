@@ -1,4 +1,5 @@
 --レスキューキューロイド
+--Ambulance Rescueroid
 function c98927491.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

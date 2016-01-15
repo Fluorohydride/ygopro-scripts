@@ -1,4 +1,5 @@
 --影霊衣の反魂術
+--Nekroz Cycle
 function c97211663.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

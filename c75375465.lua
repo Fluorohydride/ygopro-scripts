@@ -1,4 +1,5 @@
 --地獄の番熊
+--Pandemonium Watchbear
 function c75375465.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

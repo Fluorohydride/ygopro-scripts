@@ -1,4 +1,5 @@
 --惑星からの物体A
+--Interplanetary Invader "A"
 function c14729426.initial_effect(c)
 	--return to hand
 	local e1=Effect.CreateEffect(c)

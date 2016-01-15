@@ -1,4 +1,5 @@
 --Sin スターダスト・ドラゴン
+--Malefic Stardust Dragon
 function c36521459.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

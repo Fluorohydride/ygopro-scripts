@@ -1,4 +1,5 @@
 --運命湾曲
+--Bending Destiny
 function c94662235.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

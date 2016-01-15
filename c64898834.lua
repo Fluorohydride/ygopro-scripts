@@ -1,4 +1,5 @@
 --TG カタパルト・ドラゴン
+--T.G. Catapult Dragon
 function c64898834.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

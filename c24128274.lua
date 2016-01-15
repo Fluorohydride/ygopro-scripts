@@ -1,4 +1,5 @@
 --深海の戦士
+--Deepsea Warrior
 function c24128274.initial_effect(c)
 	--immune spell
 	local e1=Effect.CreateEffect(c)

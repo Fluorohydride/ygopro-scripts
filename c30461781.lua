@@ -1,4 +1,5 @@
 --八汰烏の骸
+--Legacy of Yata-Garasu
 function c30461781.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

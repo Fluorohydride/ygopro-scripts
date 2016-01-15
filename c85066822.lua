@@ -1,4 +1,5 @@
 --ウォーター・ドラゴン
+--Water Dragon
 function c85066822.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

@@ -1,4 +1,5 @@
 --機械王
+--Machine King
 function c46700124.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

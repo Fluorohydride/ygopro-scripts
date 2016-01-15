@@ -1,4 +1,5 @@
 --紫炎の計略
+--Shien's Scheme
 function c77847678.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

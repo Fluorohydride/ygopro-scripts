@@ -1,4 +1,5 @@
 --黒蠍団召集
+--Mustering of the Dark Scorpions
 function c68191243.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

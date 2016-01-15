@@ -1,4 +1,5 @@
 --サイバー・ドラゴン・ドライ
+--Cyber Dragon Drei
 function c59281922.initial_effect(c)
 	--lv
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --A・O・J リーサル・ウェポン
+--Ally of Justice Omni-Weapon
 function c45450218.initial_effect(c)
 	--check
 	local e1=Effect.CreateEffect(c)

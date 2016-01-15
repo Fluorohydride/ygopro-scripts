@@ -1,4 +1,5 @@
 --反転世界
+--Inverse Universe
 function c79161790.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --連合軍
+--The A. Forces
 function c403847.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

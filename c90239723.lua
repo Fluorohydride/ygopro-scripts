@@ -1,4 +1,5 @@
 --D・リペアユニット
+--Morphtronic Repair Unit
 function c90239723.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

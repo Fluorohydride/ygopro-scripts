@@ -1,4 +1,5 @@
 --マジドッグ
+--Magidog
 function c47929865.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

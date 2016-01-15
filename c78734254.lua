@@ -1,4 +1,5 @@
 --N・マリン・ドルフィン
+--Neo-Spacian Marine Dolphin
 function c78734254.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

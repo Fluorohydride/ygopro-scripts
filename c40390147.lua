@@ -1,4 +1,5 @@
 --輝光帝ギャラクシオン
+--Starliege Lord Galaxion
 function c40390147.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x55),4,2)

@@ -1,4 +1,5 @@
 --マスターモンク
+--Master Monk
 function c49814180.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

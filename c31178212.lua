@@ -1,4 +1,5 @@
 --マジェスペクター・ユニコーン
+--Majespecter Unicorn - Kirin
 function c31178212.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

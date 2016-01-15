@@ -1,4 +1,5 @@
 --暗躍のドルイド・ウィド
+--Secret Sect Druid Wid
 function c97064649.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --E・HERO マグマ・ネオス
+--Elemental HERO Magma Neos
 function c78512663.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --平和の使者
+--Messenger of Peace
 function c44656491.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

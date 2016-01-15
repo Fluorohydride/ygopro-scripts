@@ -1,4 +1,5 @@
 --突撃指令
+--Order to Charge
 function c78986941.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

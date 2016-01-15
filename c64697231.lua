@@ -1,4 +1,5 @@
 --ダスト・シュート
+--Trap Dustshoot
 function c64697231.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

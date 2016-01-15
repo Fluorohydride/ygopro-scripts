@@ -1,4 +1,5 @@
 --究極宝玉神 レインボー・ダーク・ドラゴン
+--Rainbow Dark Dragon
 function c79407975.initial_effect(c)
 	c:EnableReviveLimit()
 	--splimit

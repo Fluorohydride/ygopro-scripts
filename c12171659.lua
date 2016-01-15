@@ -1,4 +1,5 @@
 --天空の使者 ゼラディアス
+--Zeradias, Herald of Heaven
 function c12171659.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

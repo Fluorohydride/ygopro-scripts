@@ -1,4 +1,5 @@
 --CNo.101 S・H・Dark Knight
+--Number C101: Silent Honor DARK
 function c12744567.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)

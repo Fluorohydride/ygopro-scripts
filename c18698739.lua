@@ -1,4 +1,5 @@
 --ガーベージ・オーガ
+--Garbage Ogre
 function c18698739.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

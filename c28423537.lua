@@ -1,4 +1,5 @@
 --戦慄の凶皇－ジェネシス・デーモン
+--Archfiend Emperor, the First Lord of Horror
 function c28423537.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

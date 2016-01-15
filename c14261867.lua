@@ -1,4 +1,5 @@
 --八つ手サソリ
+--8-Claws Scorpion
 function c14261867.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

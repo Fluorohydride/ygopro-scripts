@@ -1,4 +1,5 @@
 --星因士 ベガ
+--Satellarknight Vega
 function c38667773.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

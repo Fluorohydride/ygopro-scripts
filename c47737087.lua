@@ -1,4 +1,5 @@
 --E・HERO ランパートガンナー
+--Elemental HERO Rampart Blaster
 function c47737087.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

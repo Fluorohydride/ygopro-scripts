@@ -1,4 +1,5 @@
 --N・アクア・ドルフィン
+--Neo-Spacian Aqua Dolphin
 function c17955766.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

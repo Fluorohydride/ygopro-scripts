@@ -1,4 +1,5 @@
 --光子化
+--Lumenize
 function c57115864.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

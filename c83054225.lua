@@ -1,4 +1,5 @@
 --緊急発進
+--Scramble!! Scramble!!
 function c83054225.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

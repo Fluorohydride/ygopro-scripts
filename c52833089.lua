@@ -1,4 +1,5 @@
 --ブラック・サンダー
+--Black Thunder
 function c52833089.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

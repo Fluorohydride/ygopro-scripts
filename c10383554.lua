@@ -1,4 +1,5 @@
 --デストーイ・ホイールソウ・ライオ
+--Frightfur Leo
 function c10383554.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

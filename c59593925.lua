@@ -1,4 +1,5 @@
 --共鳴破
+--Resonant Destruction
 function c59593925.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

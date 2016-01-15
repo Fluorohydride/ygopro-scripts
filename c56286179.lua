@@ -1,4 +1,5 @@
 --ドリル・シンクロン
+--Drill Synchron
 function c56286179.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

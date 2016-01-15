@@ -1,4 +1,5 @@
 --ヴァイパー・リボーン
+--Viper's Rebirth
 function c64973456.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

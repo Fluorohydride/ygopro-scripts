@@ -1,4 +1,5 @@
 --スター・ブライト・ドラゴン
+--Bright Star Dragon
 function c16719802.initial_effect(c)
 	--lv up
 	local e1=Effect.CreateEffect(c)

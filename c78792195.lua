@@ -1,4 +1,5 @@
 --六武衆の露払い
+--Hand of the Six Samurai
 function c78792195.initial_effect(c)
 	--destroy
 	local e2=Effect.CreateEffect(c)

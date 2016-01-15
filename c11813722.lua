@@ -1,4 +1,5 @@
 --パルキオンのうろこ
+--Barkion's Bark
 function c11813722.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --霞の谷の祭壇
+--Shrine of Mist Valley
 function c4215636.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

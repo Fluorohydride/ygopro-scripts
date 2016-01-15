@@ -1,4 +1,5 @@
 --焔紫竜ピュラリス
+--Puralis, the Purple Pyrotile
 function c37038993.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure2(c,nil,aux.NonTuner(nil))

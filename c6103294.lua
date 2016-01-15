@@ -1,4 +1,5 @@
 --オアシスの使者
+--Emissary of the Oasis
 function c6103294.initial_effect(c)
 	--atk target
 	local e1=Effect.CreateEffect(c)

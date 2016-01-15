@@ -1,4 +1,5 @@
 --闇の破神剣
+--Sword of Dark Destruction
 function c37120512.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

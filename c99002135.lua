@@ -1,4 +1,5 @@
 --緊急合成
+--Urgent Synthesis
 function c99002135.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

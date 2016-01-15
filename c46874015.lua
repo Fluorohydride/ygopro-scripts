@@ -1,4 +1,5 @@
 --六武衆推参！
+--Return of the Six Samurai
 function c46874015.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

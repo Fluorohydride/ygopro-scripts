@@ -1,4 +1,5 @@
 --カラスの巨群
+--Swarm of Crows
 function c41039846.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

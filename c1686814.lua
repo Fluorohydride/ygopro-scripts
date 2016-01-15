@@ -1,4 +1,5 @@
 --アルティマヤ・ツィオルキン
+--Ultimaya Tzolkin
 function c1686814.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

@@ -1,4 +1,5 @@
 --静寂のサイコウィッチ
+--Serene Psychic Witch
 function c98358303.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

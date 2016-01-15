@@ -1,4 +1,5 @@
 --借カラクリ整備蔵
+--Karakuri Cash Shed
 function c2924048.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

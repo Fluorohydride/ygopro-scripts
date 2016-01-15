@@ -1,4 +1,5 @@
 --魔導書の神判
+--Spellbook of Judgment
 function c46448938.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

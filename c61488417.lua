@@ -1,4 +1,5 @@
 --光竜星－リフン
+--Chiwen, Light of the Yang Zing
 function c61488417.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

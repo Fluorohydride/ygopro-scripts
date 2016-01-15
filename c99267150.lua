@@ -1,4 +1,5 @@
 --F・G・D
+--Five-Headed Dragon
 function c99267150.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

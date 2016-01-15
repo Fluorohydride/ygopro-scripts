@@ -1,4 +1,5 @@
 --極星邪狼フェンリル
+--Fenrir the Nordic Wolf
 function c91697229.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,4 +1,5 @@
 --リボーン・パズル
+--Puzzle Reborn
 function c30585393.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DELAYED_QUICKEFFECT)
 	--Activate

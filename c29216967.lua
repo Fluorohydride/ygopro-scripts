@@ -1,4 +1,5 @@
 --ギミック・パペット－シザー・アーム
+--Gimmick Puppet Scissor Arms
 function c29216967.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)

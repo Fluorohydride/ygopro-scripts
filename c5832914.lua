@@ -1,4 +1,5 @@
 --トゥーンのかばん
+--Toon Briefcase
 function c5832914.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

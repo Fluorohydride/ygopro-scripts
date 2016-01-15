@@ -1,4 +1,5 @@
 --ブルーサンダーT45
+--Blue Thunder T-45
 function c14089428.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(14089428,0))

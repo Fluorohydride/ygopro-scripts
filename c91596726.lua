@@ -1,4 +1,5 @@
 --ダーク・クルセイダー
+--Dark Crusader
 function c91596726.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

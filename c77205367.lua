@@ -1,4 +1,5 @@
 --CNo.96 ブラック・ストーム
+--Number C96: Dark Storm
 function c77205367.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_DARK),3,4)

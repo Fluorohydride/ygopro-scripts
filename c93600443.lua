@@ -1,4 +1,5 @@
 --マスク・チェンジ・セカンド
+--Mask Change II
 function c93600443.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

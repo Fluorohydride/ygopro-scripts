@@ -1,4 +1,5 @@
 --コダロス
+--Codarus
 function c65496056.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)

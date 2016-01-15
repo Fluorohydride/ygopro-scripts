@@ -1,4 +1,5 @@
 --氷結界の神精霊
+--Sacred Spirit of the Ice Barrier
 function c44877690.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

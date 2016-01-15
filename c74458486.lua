@@ -1,4 +1,5 @@
 --援護射撃
+--Covering Fire
 function c74458486.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

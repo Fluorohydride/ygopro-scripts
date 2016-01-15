@@ -1,4 +1,5 @@
 --宝玉の樹
+--Crystal Tree
 function c47408488.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

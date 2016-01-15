@@ -1,4 +1,5 @@
 --ハーフorストップ
+--Half or Nothing
 function c15552258.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

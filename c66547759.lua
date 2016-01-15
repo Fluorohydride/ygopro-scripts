@@ -1,4 +1,5 @@
 --No.23 冥界の霊騎士ランスロット
+--Number 23: Lancelot, Dark Knight of the Underworld
 function c66547759.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

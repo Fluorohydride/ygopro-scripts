@@ -1,4 +1,5 @@
 --プリーステス・オーム
+--Shadowpriestess of Ohm
 function c27869883.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

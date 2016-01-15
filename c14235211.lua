@@ -1,4 +1,5 @@
 --暴風竜の防人
+--Rider of the Storm Winds
 function c14235211.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ハーフ・シャット
+--Half Shut
 function c73048641.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --武神帝－ツクヨミ
+--Bujintei Tsukuyomi
 function c73289035.initial_effect(c)
 	c:SetUniqueOnField(1,0,73289035)
 	--xyz summon

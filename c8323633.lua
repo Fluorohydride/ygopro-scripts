@@ -1,4 +1,5 @@
 --夜霧のスナイパー
+--Cloak and Dagger
 function c8323633.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --スパウン・アリゲーター
+--Spawn Alligator
 function c39984786.initial_effect(c)
 	--tribute check
 	local e1=Effect.CreateEffect(c)

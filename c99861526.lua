@@ -1,4 +1,5 @@
 --サブマリンロイド
+--Submarineroid
 function c99861526.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

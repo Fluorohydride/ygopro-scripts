@@ -1,4 +1,5 @@
 --海神の巫女
+--Maiden of the Aqua
 function c17214465.initial_effect(c)
 	--field
 	local e1=Effect.CreateEffect(c)

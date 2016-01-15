@@ -1,4 +1,5 @@
 --レアル・ジェネクス・オラクル
+--R-Genex Oracle
 function c10178757.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

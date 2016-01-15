@@ -1,4 +1,5 @@
 --デスグレムリン
+--Des Feral Imp
 function c81985784.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

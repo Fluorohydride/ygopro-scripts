@@ -1,4 +1,5 @@
 --真紅眼の鎧旋
+--Return of the Red-Eyes
 function c39387565.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

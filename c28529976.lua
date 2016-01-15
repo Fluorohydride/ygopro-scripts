@@ -1,4 +1,5 @@
 --超栄養太陽
+--Super Solar Nutrient
 function c28529976.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

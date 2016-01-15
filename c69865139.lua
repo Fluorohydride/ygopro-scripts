@@ -1,4 +1,5 @@
 --天輪の葬送士
+--Guiding Light
 function c69865139.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

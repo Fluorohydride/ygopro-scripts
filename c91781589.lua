@@ -1,4 +1,5 @@
 --覇者の一括
+--Thunder of Ruler
 function c91781589.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

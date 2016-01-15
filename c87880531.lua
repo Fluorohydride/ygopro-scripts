@@ -1,4 +1,5 @@
 --拡散する波動
+--Diffusion Wave-Motion
 function c87880531.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

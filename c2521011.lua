@@ -1,4 +1,5 @@
 --威炎星－ヒエンシャク
+--Brotherhood of the Fire Fist - Swallow
 function c2521011.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

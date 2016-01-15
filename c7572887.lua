@@ -1,4 +1,5 @@
 --異次元の女戦士
+--D.D. Warrior Lady
 function c7572887.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

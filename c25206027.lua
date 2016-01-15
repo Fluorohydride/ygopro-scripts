@@ -1,4 +1,5 @@
 --異界の棘紫竜
+--Interplanetarypurplythorny Dragon
 function c25206027.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

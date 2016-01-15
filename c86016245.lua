@@ -1,4 +1,5 @@
 --弱者の意地
+--Pride of the Weak
 function c86016245.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

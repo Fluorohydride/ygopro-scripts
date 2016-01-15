@@ -1,4 +1,5 @@
 --竜穴の魔術師
+--Dragonpit Magician
 function c51531505.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --召喚僧サモンプリースト
+--Summoner Monk
 function c423585.initial_effect(c)
 	--to defence
 	local e1=Effect.CreateEffect(c)

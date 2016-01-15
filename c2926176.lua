@@ -1,4 +1,5 @@
 --王家の呪い
+--Curse of Royal
 function c2926176.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

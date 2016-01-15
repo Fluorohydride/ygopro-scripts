@@ -1,4 +1,5 @@
 --真紅眼の凶雷皇－エビル・デーモン
+--Red-Eyes Archfiend of Lightning
 function c39357122.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--destroy

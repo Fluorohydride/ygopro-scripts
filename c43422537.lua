@@ -1,4 +1,5 @@
 --二重召喚
+--Double Summon
 function c43422537.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

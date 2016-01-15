@@ -1,4 +1,5 @@
 --ライオ・アリゲーター
+--Lion Alligator
 function c4611269.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

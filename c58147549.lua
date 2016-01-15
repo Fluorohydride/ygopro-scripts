@@ -1,4 +1,5 @@
 --M・HERO 剛火
+--Masked HERO Goka
 function c58147549.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

@@ -1,4 +1,5 @@
 --精神操作
+--Mind Control
 function c37520316.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

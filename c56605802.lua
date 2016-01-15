@@ -1,4 +1,5 @@
 --幻影コオロギ
+--Phantom Cricket
 function c56605802.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

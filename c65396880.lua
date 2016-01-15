@@ -1,4 +1,5 @@
 --大革命
+--Huge Revolution
 function c65396880.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

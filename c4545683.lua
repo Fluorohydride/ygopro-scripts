@@ -1,4 +1,5 @@
 --機皇帝グランエル∞
+--Meklord Emperor Granel
 function c4545683.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

@@ -1,4 +1,5 @@
 --風林火山
+--Fuh-Rin-Ka-Zan
 function c1781310.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --セフィラの神撃
+--Zefra Divine Strike
 function c35561352.initial_effect(c)
 	--Activate(effect)
 	local e1=Effect.CreateEffect(c)

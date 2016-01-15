@@ -1,4 +1,5 @@
 --スライム増殖炉
+--Jam Breeding Machine
 function c21770260.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

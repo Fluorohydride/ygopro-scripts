@@ -1,4 +1,5 @@
 --No.66 覇鍵甲虫マスター・キー・ビートル
+--Number 66: Master Key Beetle
 function c76067258.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_DARK),4,2)

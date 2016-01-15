@@ -1,4 +1,5 @@
 --マンモス・ゾンビ
+--Zombie Mammoth
 function c43642620.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

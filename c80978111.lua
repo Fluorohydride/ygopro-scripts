@@ -1,4 +1,5 @@
 --飛翔するG
+--Flying "C"
 function c80978111.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

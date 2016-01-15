@@ -1,4 +1,5 @@
 --六武式風雷斬
+--Six Strike - Thunder Blast
 function c23212990.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

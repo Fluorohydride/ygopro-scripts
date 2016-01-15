@@ -1,4 +1,5 @@
 --エルシャドール・ネフィリム
+--El Shaddoll Construct
 function c20366274.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion material

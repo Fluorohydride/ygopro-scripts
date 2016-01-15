@@ -1,4 +1,5 @@
 --EMプラスタートル
+--Performapal Stamp Turtle
 function c65195959.initial_effect(c)
 	--lv
 	local e1=Effect.CreateEffect(c)

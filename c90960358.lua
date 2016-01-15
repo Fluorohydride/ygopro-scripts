@@ -1,4 +1,5 @@
 --トゥーン・ブラック・マジシャン・ガール
+--Toon Dark Magician Girl
 function c90960358.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,4 +1,5 @@
 --ヴェルズ・サラマンドラ
+--Evilswarm Salamandra
 function c4058065.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

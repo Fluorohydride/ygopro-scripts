@@ -1,4 +1,5 @@
 --忍び寄る闇
+--Creeping Darkness
 function c78811937.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

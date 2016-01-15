@@ -1,4 +1,5 @@
 --雄炎星－スネイリン
+--Brotherhood of the Fire Fist - Snake
 function c75132317.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

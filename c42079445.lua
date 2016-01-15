@@ -1,4 +1,5 @@
 --ロスト・スター・ディセント
+--Descending Lost Star
 function c42079445.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

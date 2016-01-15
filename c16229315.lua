@@ -1,4 +1,5 @@
 --ゲール・ドグラ
+--Gale Dogra
 function c16229315.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

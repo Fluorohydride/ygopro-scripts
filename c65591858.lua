@@ -1,4 +1,5 @@
 --先史遺産ウィングス・スフィンクス
+--Chronomaly Winged Sphinx
 function c65591858.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

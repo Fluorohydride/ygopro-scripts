@@ -1,4 +1,5 @@
 --オシリスの天空竜
+--Slifer the Sky Dragon
 function c10000020.initial_effect(c)
 	--summon with 3 tribute
 	local e1=Effect.CreateEffect(c)

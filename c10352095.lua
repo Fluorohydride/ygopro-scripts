@@ -1,4 +1,5 @@
 --幻惑の巻物
+--Scroll of Bewitchment
 function c10352095.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

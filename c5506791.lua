@@ -1,4 +1,5 @@
 --マジェスペクター・キャット
+--Majespecter Cat - Nekomata
 function c5506791.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

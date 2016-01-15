@@ -1,4 +1,5 @@
 --カードトレーダー
+--Card Trader
 function c48712195.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

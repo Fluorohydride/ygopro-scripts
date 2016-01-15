@@ -1,4 +1,5 @@
 --女神の聖弓－アルテミス
+--Goddess Bow
 function c83743222.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

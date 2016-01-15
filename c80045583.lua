@@ -1,4 +1,5 @@
 --古代の機械砲台
+--Ancient Gear Cannon
 function c80045583.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

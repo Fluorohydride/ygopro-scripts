@@ -1,4 +1,5 @@
 --暗黒大要塞鯱
+--Orca Mega-Fortress of Darkness
 function c63120904.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --OToサンダー
+--Pahunder
 function c84530620.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)

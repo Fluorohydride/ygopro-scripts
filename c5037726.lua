@@ -1,4 +1,5 @@
 --光霊術－「聖」
+--Spiritual Light Art - Hijiri
 function c5037726.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

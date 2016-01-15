@@ -1,4 +1,5 @@
 --義賊の極意書
+--Secrets of the Gallant
 function c95096437.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

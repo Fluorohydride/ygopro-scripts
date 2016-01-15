@@ -1,4 +1,5 @@
 --コストダウン
+--Cost Down
 function c23265313.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --CNo.5 亡朧龍カオス・キマイラ・ドラゴン
+--Number C5: Chaos Chimera Dragon
 function c69757518.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,3,nil,nil,5)

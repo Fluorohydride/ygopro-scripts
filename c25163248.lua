@@ -1,4 +1,5 @@
 --先史遺産マヤン・マシーン
+--Chronomaly Mayan Machine
 function c25163248.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

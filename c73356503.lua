@@ -1,4 +1,5 @@
 --烈風の結界像
+--Barrier Statue of the Stormwinds
 function c73356503.initial_effect(c)
 	--disable spsummon
 	local e1=Effect.CreateEffect(c)

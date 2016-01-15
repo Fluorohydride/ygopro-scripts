@@ -1,4 +1,5 @@
 --闇晦ましの城
+--Castle of Dark Illusions
 function c62121.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

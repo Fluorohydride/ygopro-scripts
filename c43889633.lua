@@ -1,4 +1,5 @@
 --忘却の海底神殿
+--Forgotten Temple of the Deep
 function c43889633.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

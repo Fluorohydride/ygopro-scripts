@@ -1,4 +1,5 @@
 --E・HERO ジ・アース
+--Elemental HERO Terra Firma
 function c74711057.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

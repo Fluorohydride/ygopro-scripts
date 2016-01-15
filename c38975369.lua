@@ -1,4 +1,5 @@
 --軍荼利
+--Gundari
 function c38975369.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

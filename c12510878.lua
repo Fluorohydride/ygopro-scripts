@@ -1,4 +1,5 @@
 --天空勇士ネオパーシアス
+--Neo-Parshath, the Sky Paladin
 function c12510878.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

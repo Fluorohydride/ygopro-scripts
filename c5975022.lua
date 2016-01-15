@@ -1,4 +1,5 @@
 --剣闘獣ムルミロ
+--Gladiator Beast Murmillo
 function c5975022.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

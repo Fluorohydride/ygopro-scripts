@@ -1,4 +1,5 @@
 --除草獣
+--Snyffus
 function c35448319.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

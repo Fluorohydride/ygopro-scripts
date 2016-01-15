@@ -1,4 +1,5 @@
 --霊子エネルギー固定装置
+--Spiritual Energy Settle Machine
 function c99173029.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

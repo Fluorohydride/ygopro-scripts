@@ -1,4 +1,5 @@
 --侵略の汎発感染
+--Infestation Pandemic
 function c27541267.initial_effect(c)
 	--immune
 	local e1=Effect.CreateEffect(c)

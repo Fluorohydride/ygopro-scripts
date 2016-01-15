@@ -1,4 +1,5 @@
 --ポケ・ドラ
+--Poki Draco
 function c8175346.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

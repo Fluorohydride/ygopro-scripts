@@ -1,4 +1,5 @@
 --魔獣の懐柔
+--Obedience Schooled
 function c72537897.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

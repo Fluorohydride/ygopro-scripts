@@ -1,4 +1,5 @@
 --ピクシーガーディアン
+--Fairy Guardian
 function c22419772.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

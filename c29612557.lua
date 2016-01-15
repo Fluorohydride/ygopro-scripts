@@ -1,4 +1,5 @@
 --サイクロン・ブーメラン
+--Cyclone Boomerang
 function c29612557.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

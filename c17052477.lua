@@ -1,4 +1,5 @@
 --守護神の宝札
+--Guarded Treasure
 function c17052477.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

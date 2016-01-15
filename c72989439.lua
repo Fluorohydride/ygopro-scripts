@@ -1,4 +1,5 @@
 --カオス・ソルジャー －開闢の使者－
+--Black Luster Soldier - Envoy of the Beginning
 function c72989439.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

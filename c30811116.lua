@@ -1,4 +1,5 @@
 --幻獣機レイステイルス
+--Mecha Phantom Beast Stealthray
 function c30811116.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

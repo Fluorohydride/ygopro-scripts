@@ -1,4 +1,5 @@
 --棺桶売り
+--Coffin Seller
 function c65830223.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

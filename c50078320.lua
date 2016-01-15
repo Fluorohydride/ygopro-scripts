@@ -1,4 +1,5 @@
 --刻印の調停者
+--Engraver of the Mark
 function c50078320.initial_effect(c)
 	--Announce
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --突然進化
+--Evo-Instant
 function c24362891.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

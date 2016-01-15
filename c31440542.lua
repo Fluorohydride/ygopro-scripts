@@ -1,4 +1,5 @@
 --幻惑のラフレシア
+--Rafflesia Seduction
 function c31440542.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

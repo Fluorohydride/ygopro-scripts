@@ -1,4 +1,5 @@
 --禁忌の壺
+--Pot of The Forbidden
 function c91501248.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ジェムナイトレディ・ラピスラズリ
+--Gem-Knight Lady Lapis Lazuli
 function c47611119.initial_effect(c)
 	c:SetSPSummonOnce(47611119)
 	--fusion material

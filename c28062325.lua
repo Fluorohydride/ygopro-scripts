@@ -1,4 +1,5 @@
 --竹頭木屑
+--Bamboo Scrap
 function c28062325.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --影無茶ナイト
+--Kagemusha Knight
 function c19353570.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

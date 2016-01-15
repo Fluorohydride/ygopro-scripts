@@ -1,4 +1,5 @@
 --キャッスル・ゲート
+--Castle Gate
 function c36931229.initial_effect(c)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ツイン・フォトン・リザード
+--Twin Photon Lizard
 function c29455728.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

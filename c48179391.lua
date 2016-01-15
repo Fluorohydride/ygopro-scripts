@@ -1,4 +1,5 @@
 --オレイカルコスの結界
+--The Seal of Orichalcos
 function c48179391.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

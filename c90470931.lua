@@ -1,4 +1,5 @@
 --鬼神の連撃
+--Oni-Gami Combo
 function c90470931.initial_effect(c)
 	--multi attack
 	local e1=Effect.CreateEffect(c)

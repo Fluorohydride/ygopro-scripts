@@ -1,4 +1,5 @@
 --紅陽鳥
+--Crimson Sunbird
 function c46696593.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

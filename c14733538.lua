@@ -1,4 +1,5 @@
 --竜呼相打つ
+--Draco Face-Off
 function c14733538.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

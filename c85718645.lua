@@ -1,4 +1,5 @@
 --闇帝ディルグ
+--Delg the Dark Monarch
 function c85718645.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

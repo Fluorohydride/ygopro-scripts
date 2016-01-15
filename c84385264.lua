@@ -1,4 +1,5 @@
 --ライカン・スロープ
+--Lycanthrope
 function c84385264.initial_effect(c)
 	c:EnableReviveLimit()
 	--damage

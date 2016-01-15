@@ -1,4 +1,5 @@
 --砂利ケーン
+--Gravelstorm
 function c48135190.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

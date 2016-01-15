@@ -1,4 +1,5 @@
 --つまずき
+--Stumbling
 function c34646691.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

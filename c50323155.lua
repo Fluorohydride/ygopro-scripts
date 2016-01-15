@@ -1,4 +1,5 @@
 --昇天の黒角笛
+--Black Horn of Heaven
 function c50323155.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

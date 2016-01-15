@@ -1,4 +1,5 @@
 --ハーピィ・レディ －鳳凰の陣－
+--Harpie Lady Phoenix Formation
 function c86308219.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

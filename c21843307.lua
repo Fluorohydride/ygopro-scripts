@@ -1,4 +1,5 @@
 --コピー・ナイト
+--Copy Knight
 function c21843307.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --光天使スローネ
+--Star Seraph Sovereignty
 function c91110378.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_XMAT_COUNT_LIMIT)
 	--xyz limit

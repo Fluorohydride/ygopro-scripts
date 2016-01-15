@@ -1,4 +1,5 @@
 --ダイナソーイング
+--Dinosewing
 function c27143874.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

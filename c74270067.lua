@@ -1,4 +1,5 @@
 --ピケルの魔法陣
+--Pikeru's Circle of Enchantment
 function c74270067.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

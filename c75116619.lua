@@ -1,4 +1,5 @@
 --真六武衆－エニシ
+--Legendary Six Samurai - Enishi
 function c75116619.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

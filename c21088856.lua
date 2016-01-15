@@ -1,4 +1,5 @@
 --華麗なる密偵－C
+--Spy-C-Spy
 function c21088856.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

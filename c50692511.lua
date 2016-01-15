@@ -1,4 +1,5 @@
 --RR－コール
+--Raidraptor - Call
 function c50692511.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

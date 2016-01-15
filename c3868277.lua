@@ -1,4 +1,5 @@
 --TGX3－DX2
+--TGX3-DX2
 function c3868277.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --闇の誘惑
+--Allure of Darkness
 function c1475311.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

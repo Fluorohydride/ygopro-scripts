@@ -1,4 +1,5 @@
 --幻獣サンダーペガス
+--Phantom Beast Thunder-Pegasus
 function c34961968.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

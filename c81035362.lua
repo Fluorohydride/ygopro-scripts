@@ -1,4 +1,5 @@
 --魔サイの戦士
+--Fiendish Rhino Warrior
 function c81035362.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

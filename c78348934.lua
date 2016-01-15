@@ -1,4 +1,5 @@
 --破壊剣士の宿命
+--Karma of the Destruction Swordsman
 function c78348934.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

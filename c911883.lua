@@ -1,4 +1,5 @@
 --予想GUY
+--Unexpected Dai
 function c911883.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

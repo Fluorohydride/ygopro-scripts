@@ -1,4 +1,5 @@
 --RR－リターン
+--Raidraptor - Return
 function c30500113.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

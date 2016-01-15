@@ -1,4 +1,5 @@
 --機関連結
+--Train Connection
 function c60879050.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

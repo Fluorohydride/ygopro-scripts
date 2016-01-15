@@ -1,4 +1,5 @@
 --双龍降臨
+--Double Dragon Descent
 function c13166648.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

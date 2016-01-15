@@ -1,4 +1,5 @@
 --偽りの種
+--Seed of Deception
 function c18752938.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

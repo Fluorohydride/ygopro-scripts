@@ -1,4 +1,5 @@
 --限定解除
+--Ritual Foregone
 function c65450690.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

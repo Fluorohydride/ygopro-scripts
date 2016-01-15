@@ -1,4 +1,5 @@
 --否定ペンギン
+--Nopenguin
 function c32623004.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

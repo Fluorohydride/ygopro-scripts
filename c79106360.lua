@@ -1,4 +1,5 @@
 --カオスポッド
+--Morphing Jar 2
 function c79106360.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

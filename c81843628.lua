@@ -1,4 +1,5 @@
 --ニードルワーム
+--Needle Worm
 function c81843628.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

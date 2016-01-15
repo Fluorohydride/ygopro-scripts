@@ -1,4 +1,5 @@
 --武神帝－カグツチ
+--Bujintei Kagutsuchi
 function c1855932.initial_effect(c)
 	c:SetUniqueOnField(1,0,1855932)
 	--xyz summon

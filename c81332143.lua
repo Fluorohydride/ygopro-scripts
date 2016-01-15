@@ -1,4 +1,5 @@
 --友情 YU－JYO
+--Yu-Jo Friendship
 function c81332143.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

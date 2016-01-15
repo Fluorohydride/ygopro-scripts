@@ -1,4 +1,5 @@
 --無情の抹殺
+--Ruthless Denial
 function c73148972.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --無力の証明
+--Proof of Powerlessness
 function c11373345.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

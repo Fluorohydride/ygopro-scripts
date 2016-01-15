@@ -1,4 +1,5 @@
 --機甲忍者アクア
+--Aqua Armor Ninja
 function c96427353.initial_effect(c)
 	--disable attack
 	local e1=Effect.CreateEffect(c)

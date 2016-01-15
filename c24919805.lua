@@ -1,4 +1,5 @@
 --無頼特急バトレイン
+--Ruffian Railcar
 function c24919805.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

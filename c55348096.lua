@@ -1,4 +1,5 @@
 --武器庫荒らし
+--Arsenal Robber
 function c55348096.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --セイクリッド・ハワー
+--Constellar Rasalhague
 function c70624184.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --フォトン・リード
+--Photon Lead
 function c35848254.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

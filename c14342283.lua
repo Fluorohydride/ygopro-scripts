@@ -1,4 +1,5 @@
 --暴走闘君
+--Token Stampede
 function c14342283.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

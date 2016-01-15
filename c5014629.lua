@@ -1,4 +1,5 @@
 --潜航母艦エアロ・シャーク
+--Submersible Carrier Aero Shark
 function c5014629.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

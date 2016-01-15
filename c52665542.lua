@@ -1,4 +1,5 @@
 --ライトロードの神域
+--Lightsworn Sanctuary
 function c52665542.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ジェムナイト・アンバー
+--Gem-Knight Amber
 function c72056560.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--salvage

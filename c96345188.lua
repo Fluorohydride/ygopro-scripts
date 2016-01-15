@@ -1,4 +1,5 @@
 --RR－ミミクリー・レイニアス
+--Raidraptor - Mimicry Lanius
 function c96345188.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

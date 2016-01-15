@@ -1,4 +1,5 @@
 --ヒーロー・マスク
+--Hero Mask
 function c75141056.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

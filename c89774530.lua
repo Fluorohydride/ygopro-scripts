@@ -1,4 +1,5 @@
 --H・C ダブル・ランス
+--Heroic Challenger - Double Lance
 function c89774530.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

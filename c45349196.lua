@@ -1,4 +1,5 @@
 --悪魔竜ブラック・デーモンズ・ドラゴン
+--Archfiend Black Skull Dragon
 function c45349196.initial_effect(c)
 	c:SetSPSummonOnce(45349196)
 	--fusion material

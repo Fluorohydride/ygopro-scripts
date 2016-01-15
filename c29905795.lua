@@ -1,4 +1,5 @@
 --魔轟神獣チャワ
+--The Fabled Chawa
 function c29905795.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

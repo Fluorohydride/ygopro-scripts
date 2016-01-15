@@ -1,4 +1,5 @@
 --凶悪犯－チョップマン
+--Chopman the Desperate Outlaw
 function c40884383.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

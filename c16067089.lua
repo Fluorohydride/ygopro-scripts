@@ -1,4 +1,5 @@
 --蛇神降臨
+--Rise of the Snake Deity
 function c16067089.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

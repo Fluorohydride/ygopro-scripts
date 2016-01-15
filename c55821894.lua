@@ -1,4 +1,5 @@
 --アマゾネスの格闘戦士
+--Amazoness Fighter
 function c55821894.initial_effect(c)
 	--battle dam 0
 	local e1=Effect.CreateEffect(c)

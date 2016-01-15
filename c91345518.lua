@@ -1,4 +1,5 @@
 --裁きの代行者 サターン
+--The Agent of Judgment - Saturn
 function c91345518.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --呪言の鏡
+--Mirror of Oaths
 function c46656406.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

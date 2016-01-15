@@ -1,4 +1,5 @@
 --猪突猛進
+--Super Rush Headlong
 function c48422921.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

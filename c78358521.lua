@@ -1,4 +1,5 @@
 --セイクリッド・ソンブレス
+--Constellar Sombre
 function c78358521.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

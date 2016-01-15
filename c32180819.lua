@@ -1,4 +1,5 @@
 --最古式念導
+--Psychokinesis
 function c32180819.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

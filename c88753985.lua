@@ -1,4 +1,5 @@
 --きつね火
+--Fox Fire
 function c88753985.initial_effect(c)
 	--register
 	local e1=Effect.CreateEffect(c)

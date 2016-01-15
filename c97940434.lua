@@ -1,4 +1,5 @@
 --カオスハンター
+--Chaos Hunter
 function c97940434.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

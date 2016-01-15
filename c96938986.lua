@@ -1,4 +1,5 @@
 --共振虫
+--Resonance Insect
 function c96938986.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --守護者スフィンクス
+--Guardian Sphinx
 function c40659562.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

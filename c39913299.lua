@@ -1,4 +1,5 @@
 --真実の名
+--True Name
 function c39913299.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

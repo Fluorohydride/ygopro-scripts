@@ -1,4 +1,5 @@
 --神の宣告
+--Solemn Judgment
 function c41420027.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

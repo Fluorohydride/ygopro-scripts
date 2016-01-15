@@ -1,4 +1,5 @@
 --崇光なる宣告者
+--Herald of Ultimateness
 function c48546368.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

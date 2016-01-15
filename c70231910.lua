@@ -1,4 +1,5 @@
 --ブラック・コア
+--Dark Core
 function c70231910.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

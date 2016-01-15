@@ -1,4 +1,5 @@
 --早すぎた埋葬
+--Premature Burial
 function c70828912.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

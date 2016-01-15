@@ -1,4 +1,5 @@
 --魔導師の力
+--Mage Power
 function c83746708.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

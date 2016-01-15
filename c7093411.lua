@@ -1,4 +1,5 @@
 --宝玉獣 サファイア・ペガサス
+--Crystal Beast Sapphire Pegasus
 function c7093411.initial_effect(c)
 	--send replace
 	local e1=Effect.CreateEffect(c)

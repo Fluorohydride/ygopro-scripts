@@ -1,4 +1,5 @@
 --エレキンギョ
+--Wattbetta
 function c18407024.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

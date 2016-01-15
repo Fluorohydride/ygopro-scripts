@@ -1,4 +1,5 @@
 --盗賊の七つ道具
+--Seven Tools of the Bandit
 function c3819470.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --旧神ノーデン
+--Elder Entity Norden
 function c17412721.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

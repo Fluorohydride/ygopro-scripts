@@ -1,4 +1,5 @@
 --金華猫
+--Kinka-byo
 function c45452224.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

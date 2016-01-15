@@ -1,4 +1,5 @@
 --相生の魔術師
+--Xiangsheng Magician
 function c17086528.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

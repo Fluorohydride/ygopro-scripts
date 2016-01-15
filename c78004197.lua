@@ -1,4 +1,5 @@
 --暗黒界の武神 ゴルド
+--Goldd, Wu-Lord of Dark World
 function c78004197.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

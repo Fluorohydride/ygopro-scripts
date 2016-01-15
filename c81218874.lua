@@ -1,4 +1,5 @@
 --侵略の波紋
+--Infestation Ripples
 function c81218874.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

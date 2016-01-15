@@ -1,4 +1,5 @@
 --ブラッド・オーキス
+--Vampire Orchis
 function c46571052.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

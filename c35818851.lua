@@ -1,4 +1,5 @@
 --不知火の武士
+--Shiranui Samurai
 function c35818851.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

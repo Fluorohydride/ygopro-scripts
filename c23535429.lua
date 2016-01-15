@@ -1,4 +1,5 @@
 --牙城のガーディアン
+--Stronghold Guardian
 function c23535429.initial_effect(c)
 	--defup
 	local e1=Effect.CreateEffect(c)

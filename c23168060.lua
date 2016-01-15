@@ -1,4 +1,5 @@
 --鍵戦士キーマン
+--Key Man the Key Warrior
 function c23168060.initial_effect(c)
 	--lv change
 	local e1=Effect.CreateEffect(c)

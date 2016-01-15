@@ -1,4 +1,5 @@
 --炎の女暗殺者
+--Lady Assailant of Flames
 function c90147755.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --所有者の刻印
+--Owner's Seal
 function c9720537.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

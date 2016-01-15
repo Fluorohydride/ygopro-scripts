@@ -1,4 +1,5 @@
 --SRメンコート
+--Speedroid Menko
 function c16947147.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --強制接収
+--Forced Requisition
 function c74923978.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

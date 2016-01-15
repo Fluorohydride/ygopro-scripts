@@ -1,4 +1,5 @@
 --聖騎士モルドレッド
+--Noble Knight Medraut
 function c59057152.initial_effect(c)
 	--normal monster
 	local e1=Effect.CreateEffect(c)

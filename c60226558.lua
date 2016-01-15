@@ -1,4 +1,5 @@
 --魂写しの同化
+--Nephe Shaddoll Fusion
 function c60226558.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --強制進化
+--Evo-Force
 function c5338223.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

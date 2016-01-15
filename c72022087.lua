@@ -1,4 +1,5 @@
 --自由解放
+--Liberty at Last!
 function c72022087.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

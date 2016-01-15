@@ -1,4 +1,5 @@
 --スーパービークロイド－ジャンボドリル
+--Super Vehicroid Jumbo Drill
 function c36256625.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

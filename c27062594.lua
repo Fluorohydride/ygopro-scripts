@@ -1,4 +1,5 @@
 --運命の扉
+--The Door of Destiny
 function c27062594.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

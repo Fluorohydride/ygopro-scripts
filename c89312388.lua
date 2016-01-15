@@ -1,4 +1,5 @@
 --E・HERO プリズマー
+--Elemental HERO Prisma
 function c89312388.initial_effect(c)
 	--cos
 	local e1=Effect.CreateEffect(c)

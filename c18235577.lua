@@ -1,4 +1,5 @@
 --寂々虫
+--Silent Strider
 function c18235577.initial_effect(c)
 	--lvup
 	local e1=Effect.CreateEffect(c)

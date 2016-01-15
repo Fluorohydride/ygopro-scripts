@@ -1,4 +1,5 @@
 --セイクリッド・シェアト
+--Constellar Siat
 function c44635489.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

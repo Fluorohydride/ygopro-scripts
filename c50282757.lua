@@ -1,4 +1,5 @@
 --E－HERO ヘル・スナイパー
+--Evil HERO Infernal Sniper
 function c50282757.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --RR－シンギング・レイニアス
+--Raidraptor - Singing Lanius
 function c31314549.initial_effect(c)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --聖騎士ベディヴィエール
+--Noble Knight Bedwyr
 function c30575681.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --底なし流砂
+--Bottomless Shifting Sand
 function c76532077.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

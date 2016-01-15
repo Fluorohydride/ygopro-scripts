@@ -1,4 +1,5 @@
 --デス・バード
+--Skullbird
 function c8327462.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

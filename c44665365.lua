@@ -1,4 +1,5 @@
 --神光の宣告者
+--Herald of Perfection
 function c44665365.initial_effect(c)
 	c:EnableReviveLimit()
 	--Negate

@@ -1,4 +1,5 @@
 --ラヴァルロード・ジャッジメント
+--Laval Judgment Lord
 function c14047624.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

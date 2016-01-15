@@ -1,4 +1,5 @@
 --悪夢の迷宮
+--Labyrinth of Nightmare
 function c66526672.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

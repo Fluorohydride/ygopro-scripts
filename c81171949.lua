@@ -1,4 +1,5 @@
 --ジャックポット7
+--Jackpot 7
 function c81171949.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

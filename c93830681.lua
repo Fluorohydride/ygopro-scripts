@@ -1,4 +1,5 @@
 --キラー・ラブカ
+--Friller Rabca
 function c93830681.initial_effect(c)
 	--disable attack
 	local e1=Effect.CreateEffect(c)

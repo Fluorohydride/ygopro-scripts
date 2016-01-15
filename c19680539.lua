@@ -1,4 +1,5 @@
 --聖騎士ガウェイン
+--Noble Knight Gawayn
 function c19680539.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

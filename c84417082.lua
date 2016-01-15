@@ -1,4 +1,5 @@
 --No.91 サンダー・スパーク・ドラゴン
+--Number 91: Thunder Spark Dragon
 function c84417082.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

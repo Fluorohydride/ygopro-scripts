@@ -1,4 +1,5 @@
 --超重剣聖ムサ－C
+--Superheavy Samurai Swordmaster Musha - C
 function c75988594.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

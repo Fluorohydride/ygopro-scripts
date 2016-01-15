@@ -1,4 +1,5 @@
 --ガトリング・ドラゴン
+--Gatling Dragon
 function c87751584.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --墓荒らし
+--Graverobber
 function c61705417.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

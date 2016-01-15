@@ -1,4 +1,5 @@
 --地縛神 Aslla piscu
+--Earthbound Immortal Aslla piscu
 function c10875327.initial_effect(c)
 	c:SetUniqueOnField(1,1,10000000)
 	--

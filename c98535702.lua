@@ -1,4 +1,5 @@
 --ダメージ・ワクチンΩMAX
+--Damage Vaccine Ω MAX
 function c98535702.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

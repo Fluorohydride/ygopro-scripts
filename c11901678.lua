@@ -1,4 +1,5 @@
 --ブラック・デーモンズ・ドラゴン
+--B. Skull Dragon
 function c11901678.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

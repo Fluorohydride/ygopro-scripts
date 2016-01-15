@@ -1,4 +1,5 @@
 --霊獣使いの長老
+--Ritual Beast Tamer Elder
 function c14513016.initial_effect(c)
 	c:SetSPSummonOnce(14513016)
 	--extra summon

@@ -1,4 +1,5 @@
 --ファーニマル・ラビット
+--Fluffal Rabbit
 function c38124994.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

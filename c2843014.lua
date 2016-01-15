@@ -1,4 +1,5 @@
 --素早いマンボウ
+--Nimble Sunfish
 function c2843014.initial_effect(c)
 	--battle destroyed
 	local e1=Effect.CreateEffect(c)

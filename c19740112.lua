@@ -1,4 +1,5 @@
 --干ばつの結界像
+--Barrier Statue of the Drought
 function c19740112.initial_effect(c)
 	--disable spsummon
 	local e1=Effect.CreateEffect(c)

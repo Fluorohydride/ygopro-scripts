@@ -1,4 +1,5 @@
 --XX－セイバー フォルトロール
+--XX-Saber Faultroll
 function c51808422.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

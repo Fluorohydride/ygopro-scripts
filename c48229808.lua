@@ -1,4 +1,5 @@
 --ホルスの黒炎竜 LV8
+--Horus the Black Flame Dragon LV8
 function c48229808.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

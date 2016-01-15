@@ -1,4 +1,5 @@
 --影牢の呪縛
+--Curse of the Shadow Prison
 function c81788994.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --E・HERO ブルーメ
+--Elemental HERO Poison Rose
 function c51085303.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

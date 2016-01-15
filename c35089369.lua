@@ -1,4 +1,5 @@
 --風竜星－ホロウ
+--Pulao, Wind of the Yang Zing
 function c35089369.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

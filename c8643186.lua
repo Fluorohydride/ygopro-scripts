@@ -1,4 +1,5 @@
 --DDリクルート
+--DD Recruit
 function c8643186.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

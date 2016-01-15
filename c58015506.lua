@@ -1,4 +1,5 @@
 --ピケルの読心術
+--Pikeru's Second Sight
 function c58015506.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

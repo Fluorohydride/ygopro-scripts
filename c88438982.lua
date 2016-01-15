@@ -1,4 +1,5 @@
 --ワーム・ディミクレス
+--Worm Dimikles
 function c88438982.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

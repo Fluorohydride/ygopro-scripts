@@ -1,4 +1,5 @@
 --ライトニング・ウォリアー
+--Lightning Warrior
 function c87259077.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

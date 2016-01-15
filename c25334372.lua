@@ -1,4 +1,5 @@
 --九十九スラッシュ
+--Tsukumo Slash
 function c25334372.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

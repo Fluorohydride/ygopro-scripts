@@ -1,4 +1,5 @@
 --荒魂
+--Aratama
 function c16889337.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

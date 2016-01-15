@@ -1,4 +1,5 @@
 --おジャマ・ナイト
+--Ojama Knight
 function c40391316.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --トーラの魔導書
+--Spellbook of Wisdom
 function c88616795.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

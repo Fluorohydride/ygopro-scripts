@@ -1,4 +1,5 @@
 --円盤ムスキー
+--Flying Saucer Muusik'i
 function c97697678.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(97697678,0))

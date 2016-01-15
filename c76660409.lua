@@ -1,4 +1,5 @@
 --ペンデュラム・バック
+--Pendulum Back
 function c76660409.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

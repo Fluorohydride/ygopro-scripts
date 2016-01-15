@@ -1,4 +1,5 @@
 --おジャマ・レッド
+--Ojama Red
 function c37132349.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

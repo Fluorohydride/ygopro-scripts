@@ -1,4 +1,5 @@
 --ゴブリンの秘薬
+--Goblin's Secret Remedy
 function c11868825.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

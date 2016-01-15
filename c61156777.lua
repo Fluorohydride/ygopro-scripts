@@ -1,4 +1,5 @@
 --BOXサー
+--BOXer
 function c61156777.initial_effect(c)
 	--Add counter
 	local e1=Effect.CreateEffect(c)

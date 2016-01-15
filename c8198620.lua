@@ -1,4 +1,5 @@
 --冥界龍 ドラゴネクロ
+--Dragonecro Nethersoul Dragon
 function c8198620.initial_effect(c)
 	c:SetUniqueOnField(1,0,8198620)
 	--fusion material

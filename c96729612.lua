@@ -1,4 +1,5 @@
 --儀式の準備
+--Preparation of Rites
 function c96729612.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

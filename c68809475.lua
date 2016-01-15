@@ -1,4 +1,5 @@
 --コアキメイル・スピード
+--Koa'ki Meiru Speeder
 function c68809475.initial_effect(c)
 	--cost
 	local e1=Effect.CreateEffect(c)

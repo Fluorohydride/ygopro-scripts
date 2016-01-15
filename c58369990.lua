@@ -1,4 +1,5 @@
 --凶星の魔術師
+--Doomstar Magician
 function c58369990.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

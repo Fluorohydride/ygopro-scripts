@@ -1,4 +1,5 @@
 --レア・ヴァリュー
+--Rare Value
 function c60876124.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

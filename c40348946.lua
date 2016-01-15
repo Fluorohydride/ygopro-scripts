@@ -1,4 +1,5 @@
 --ハイパー・シンクロン
+--Hyper Synchron
 function c40348946.initial_effect(c)
 	--atk change
 	local e1=Effect.CreateEffect(c)

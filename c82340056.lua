@@ -1,4 +1,5 @@
 --栄誉の贄
+--Offering to the Immortals
 function c82340056.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

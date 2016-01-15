@@ -1,4 +1,5 @@
 --ドリルロイド
+--Drillroid
 function c71218746.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

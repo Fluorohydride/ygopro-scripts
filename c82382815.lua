@@ -1,4 +1,5 @@
 --王者の看破
+--Champion's Vigilance
 function c82382815.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

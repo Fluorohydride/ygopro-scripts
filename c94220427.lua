@@ -1,4 +1,5 @@
 --RUM－アージェント・カオス・フォース
+--Rank-Up-Magic Argent Chaos Force
 function c94220427.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

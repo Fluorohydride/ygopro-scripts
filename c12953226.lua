@@ -1,4 +1,5 @@
 --女邪神ヌヴィア
+--Nuvia the Wicked
 function c12953226.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

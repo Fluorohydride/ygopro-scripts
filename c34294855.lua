@@ -1,4 +1,5 @@
 --カース・オブ・ヴァンパイア
+--Vampire's Curse
 function c34294855.initial_effect(c)
 	--reborn preparation
 	local e1=Effect.CreateEffect(c)

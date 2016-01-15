@@ -1,4 +1,5 @@
 --墓地墓地の恨み
+--Ghost of a Grudge
 function c67113830.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

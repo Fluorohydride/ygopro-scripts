@@ -1,4 +1,5 @@
 --リチュア・ナタリア
+--Gishki Natalia
 function c17241370.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --グレイドル・イーグル
+--Graydle Eagle
 function c29834183.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

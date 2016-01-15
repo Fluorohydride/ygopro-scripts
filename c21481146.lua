@@ -1,4 +1,5 @@
 --閃光のバリア－シャイニング・フォース－
+--Radiant Mirror Force
 function c21481146.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --EMキャスト・チェンジ
+--Performapal Recasting
 function c71705144.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

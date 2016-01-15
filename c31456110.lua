@@ -1,4 +1,5 @@
 --ヴェルズ・ゴーレム
+--Evilswarm Golem
 function c31456110.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

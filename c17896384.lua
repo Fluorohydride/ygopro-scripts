@@ -1,4 +1,5 @@
 --魔法族の結界
+--Arcane Barrier
 function c17896384.initial_effect(c)
 	c:EnableCounterPermit(0x3001)
 	c:SetCounterLimit(0x3001,4)

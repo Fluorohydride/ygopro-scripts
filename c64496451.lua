@@ -1,4 +1,5 @@
 --クリフォート・ディスク
+--Qliphort Disk
 function c64496451.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

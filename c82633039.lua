@@ -1,4 +1,5 @@
 --鳥銃士カステル
+--Castel, the Skyblaster Musketeer
 function c82633039.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

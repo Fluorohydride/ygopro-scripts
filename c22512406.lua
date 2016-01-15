@@ -1,4 +1,5 @@
 --覆面忍者ヱビス
+--Masked Ninja Ebisu
 function c22512406.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

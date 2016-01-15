@@ -1,4 +1,5 @@
 --厳格な老魔術師
+--The Stern Mystic
 function c87557188.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

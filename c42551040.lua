@@ -1,4 +1,5 @@
 --武神器－イクタ
+--Bujingi Boar
 function c42551040.initial_effect(c)
 	--position
 	local e1=Effect.CreateEffect(c)

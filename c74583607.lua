@@ -1,4 +1,5 @@
 --DDD烈火王テムジン
+--DDD Temujin the Raging Inferno King
 function c74583607.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

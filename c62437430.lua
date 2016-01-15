@@ -1,4 +1,5 @@
 --異次元海溝
+--Different Dimension Deepsea Trench
 function c62437430.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

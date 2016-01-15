@@ -1,4 +1,5 @@
 --戦士の生還
+--The Warrior Returning Alive
 function c95281259.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

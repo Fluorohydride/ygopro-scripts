@@ -1,4 +1,5 @@
 --デビルズ・サンクチュアリ
+--Fiend's Sanctuary
 function c24874630.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

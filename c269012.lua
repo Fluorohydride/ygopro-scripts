@@ -1,4 +1,5 @@
 --神縛りの塚
+--Mound of the Bound Creator
 function c269012.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

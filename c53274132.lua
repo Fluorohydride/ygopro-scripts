@@ -1,4 +1,5 @@
 --C・リペアラー
+--Iron Chain Repairman
 function c53274132.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

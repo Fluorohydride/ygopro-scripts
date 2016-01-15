@@ -1,4 +1,5 @@
 --脳開発研究所
+--Brain Research Lab
 function c85668449.initial_effect(c)
 	c:EnableCounterPermit(0x3004)
 	--Activate

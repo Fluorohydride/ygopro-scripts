@@ -1,4 +1,5 @@
 --犬タウルス
+--Kentaurus
 function c91754175.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

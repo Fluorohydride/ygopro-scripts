@@ -1,4 +1,5 @@
 --ビッグ・ジョーズ
+--Big Jaws
 function c51254277.initial_effect(c)
 	--reg
 	local e1=Effect.CreateEffect(c)

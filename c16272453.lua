@@ -1,4 +1,5 @@
 --機甲忍法ゴールド・コンバージョン
+--Armor Ninjitsu Art of Alchemy
 function c16272453.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

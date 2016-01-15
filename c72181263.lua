@@ -1,4 +1,5 @@
 --DDオルトロス
+--D/D Orthros
 function c72181263.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

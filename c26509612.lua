@@ -1,4 +1,5 @@
 --アース・グラビティ
+--Terra Firma Gravity
 function c26509612.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

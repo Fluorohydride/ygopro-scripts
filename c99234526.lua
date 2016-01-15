@@ -1,4 +1,5 @@
 --輝白竜 ワイバースター
+--White Dragon Wyverburster
 function c99234526.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

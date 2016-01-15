@@ -1,4 +1,5 @@
 --不屈の闘志
+--Unbreakable Spirit
 function c88494120.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

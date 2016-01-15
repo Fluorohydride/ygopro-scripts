@@ -1,4 +1,5 @@
 --ドラゴン・ウォリアー
+--Ryu Senshi
 function c49868263.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

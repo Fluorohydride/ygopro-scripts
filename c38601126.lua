@@ -1,4 +1,5 @@
 --破壊剣－アームズバスターブレード
+--Robot Buster Destruction Sword
 function c38601126.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

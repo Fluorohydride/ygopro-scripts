@@ -1,4 +1,5 @@
 --神剣－フェニックスブレード
+--Divine Sword - Phoenix Blade
 function c31423101.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

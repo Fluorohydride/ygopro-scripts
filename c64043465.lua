@@ -1,4 +1,5 @@
 --魔神火炎砲
+--Exod Flame
 function c64043465.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

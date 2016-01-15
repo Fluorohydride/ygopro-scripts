@@ -1,4 +1,5 @@
 --インフェルノイド・ネヘモス
+--Infernoid Onuncu
 function c14799437.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

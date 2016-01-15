@@ -1,4 +1,5 @@
 --BF－竜巻のハリケーン
+--Blackwing - Hurricane the Tornado
 function c36442179.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

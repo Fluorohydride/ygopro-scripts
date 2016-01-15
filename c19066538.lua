@@ -1,4 +1,5 @@
 --轟きの大海蛇
+--Roaring Ocean Snake
 function c19066538.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

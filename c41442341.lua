@@ -1,4 +1,5 @@
 --死霊操りしパペットマスター
+--Puppet Master
 function c41442341.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

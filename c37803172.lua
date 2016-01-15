@@ -1,4 +1,5 @@
 --陽炎獣 ペリュトン
+--Hazy Flame Peryton
 function c37803172.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)

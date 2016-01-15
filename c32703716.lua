@@ -1,4 +1,5 @@
 --フィッシュアンドキックス
+--Fish and Kicks
 function c32703716.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

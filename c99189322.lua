@@ -1,4 +1,5 @@
 --アルカナコール
+--Arcana Call
 function c99189322.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

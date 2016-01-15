@@ -1,4 +1,5 @@
 --ジェノサイドキングデーモン
+--Terrorking Archfiend
 function c35975813.initial_effect(c)
 	--sumlimit
 	local e1=Effect.CreateEffect(c)

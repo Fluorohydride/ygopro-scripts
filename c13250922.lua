@@ -1,4 +1,5 @@
 --オオアリクイクイアリ
+--Anteatereatingant
 function c13250922.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

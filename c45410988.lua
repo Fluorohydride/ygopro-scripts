@@ -1,4 +1,5 @@
 --レッドアイズ・トランスマイグレーション
+--Red-Eyes Transmigration
 function c45410988.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

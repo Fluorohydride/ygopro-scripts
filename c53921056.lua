@@ -1,4 +1,5 @@
 --氷結界の虎将 ガンターラ
+--General Gantala of the Ice Barrier
 function c53921056.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

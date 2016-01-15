@@ -1,4 +1,5 @@
 --鎖付き尖盾
+--Spikeshield with Chain
 function c6691855.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

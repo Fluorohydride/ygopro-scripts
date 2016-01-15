@@ -1,4 +1,5 @@
 --エンタメ・フラッシュ
+--Command Performance
 function c78184733.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --幻影死槍
+--Phantom Spear
 function c98153934.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

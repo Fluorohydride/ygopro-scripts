@@ -1,4 +1,5 @@
 --オービタル 7
+--Orbital 7
 function c71071546.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --聖霊獣騎 カンナホーク
+--Ritual Beast Ulti-Cannahawk
 function c48063985.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --オーバー・デステニー
+--Over Destiny
 function c72204747.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

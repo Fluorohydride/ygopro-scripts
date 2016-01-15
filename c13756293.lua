@@ -1,4 +1,5 @@
 --竜魔人 キングドラグーン
+--King Dragun
 function c13756293.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

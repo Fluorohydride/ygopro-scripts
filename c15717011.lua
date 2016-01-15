@@ -1,4 +1,5 @@
 --融合呪印生物－光
+--The Light - Hex-Sealed Fusion
 function c15717011.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

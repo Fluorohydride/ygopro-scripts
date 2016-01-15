@@ -1,4 +1,5 @@
 --ポイズンマミー
+--Poison Mummy
 function c43716289.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

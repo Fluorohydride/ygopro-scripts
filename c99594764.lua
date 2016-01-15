@@ -1,4 +1,5 @@
 --ドラグニティ－コルセスカ
+--Dragunity Corsesca
 function c99594764.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ヴァイロン・プリズム
+--Vylon Prism
 function c74064212.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

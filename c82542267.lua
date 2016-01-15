@@ -1,4 +1,5 @@
 --墓掘りグール
+--Gravedigger Ghoul
 function c82542267.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

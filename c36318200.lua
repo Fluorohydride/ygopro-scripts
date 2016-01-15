@@ -1,4 +1,5 @@
 --森の聖獣 ユニフォリア
+--Uniflora, Mystical Beast of the Forest
 function c36318200.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

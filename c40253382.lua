@@ -1,4 +1,5 @@
 --TG－SX1
+--TG-SX1
 function c40253382.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --無視加護
+--Insect Neglect
 function c22991179.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

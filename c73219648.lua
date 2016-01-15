@@ -1,4 +1,5 @@
 --ヘルポーンデーモン
+--Vilepawn Archfiend
 function c73219648.initial_effect(c)
 	--maintain
 	local e1=Effect.CreateEffect(c)

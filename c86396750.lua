@@ -1,4 +1,5 @@
 --精霊獣 アペライオ
+--Spiritual Beast Apelio
 function c86396750.initial_effect(c)
 	c:SetSPSummonOnce(86396750)
 	--atk

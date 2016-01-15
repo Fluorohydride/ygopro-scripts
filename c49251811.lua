@@ -1,4 +1,5 @@
 --魔法探査の石版
+--Mystic Probe
 function c49251811.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

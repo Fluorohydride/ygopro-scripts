@@ -1,4 +1,5 @@
 --強制退出装置
+--Compulsory Escape Device
 function c48216773.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

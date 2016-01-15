@@ -1,4 +1,5 @@
 --異国の剣士
+--Swordsman from a Distant Land
 function c85255550.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(85255550,0))

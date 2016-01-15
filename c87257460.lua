@@ -1,4 +1,5 @@
 --魅惑の女王 LV3
+--Allure Queen LV3
 function c87257460.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

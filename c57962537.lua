@@ -1,4 +1,5 @@
 --ゼンマイネズミ
+--Wind-Up Rat
 function c57962537.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

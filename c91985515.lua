@@ -1,4 +1,5 @@
 --鋼核初期化
+--Koa'ki Meiru Initialize!
 function c91985515.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

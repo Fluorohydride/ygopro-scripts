@@ -1,4 +1,5 @@
 --闇魔界の竜騎士 ダークソード
+--Dark Blade the Dragon Knight
 function c86805855.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

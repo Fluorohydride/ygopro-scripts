@@ -1,4 +1,5 @@
 --椿姫ティタニアル
+--Tytannial, Princess of Camellias
 function c11819616.initial_effect(c)
 	--negate
 	local e2=Effect.CreateEffect(c)

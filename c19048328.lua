@@ -1,4 +1,5 @@
 --幻竜星－チョウホウ
+--Chaofeng, Phantom of the Yang Zing
 function c19048328.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

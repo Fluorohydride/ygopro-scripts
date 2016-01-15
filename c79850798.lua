@@ -1,4 +1,5 @@
 --爆走特急ロケット・アロー
+--Rocket Arrow Express
 function c79850798.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

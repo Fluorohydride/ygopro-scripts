@@ -1,4 +1,5 @@
 --ジャイアントワーム
+--Aztekipede, the Worm Warrior
 function c75081613.initial_effect(c)
 	c:EnableReviveLimit()
 	--

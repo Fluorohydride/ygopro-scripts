@@ -1,4 +1,5 @@
 --No.39 希望皇ビヨンド・ザ・ホープ
+--Number 39: Utopia Beyond
 function c21521304.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2)

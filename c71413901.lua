@@ -1,4 +1,5 @@
 --魔導戦士 ブレイカー
+--Breaker the Magical Warrior
 function c71413901.initial_effect(c)
 	c:EnableCounterPermit(0x3001)
 	c:SetCounterLimit(0x3001,1)

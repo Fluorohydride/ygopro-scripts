@@ -1,4 +1,5 @@
 --ドラゴン・ライダー
+--Dragon Manipulator
 function c63018132.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --陽炎獣 サーベラス
+--Hazy Flame Cerbereus
 function c38525760.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)

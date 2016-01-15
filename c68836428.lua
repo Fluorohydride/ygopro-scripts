@@ -1,4 +1,5 @@
 --トライエッジ・リヴァイア
+--Tri-Edge Levia
 function c68836428.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,3)

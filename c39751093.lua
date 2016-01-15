@@ -1,4 +1,5 @@
 --竜宮之姫
+--Otohime
 function c39751093.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

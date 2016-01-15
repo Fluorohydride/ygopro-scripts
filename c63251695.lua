@@ -1,4 +1,5 @@
 --ダイナミスト・レックス
+--Dinomist Rex
 function c63251695.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

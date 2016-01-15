@@ -1,4 +1,5 @@
 --コアキメイル・フルバリア
+--Koa'ki Meiru Hydro Barrier
 function c31692182.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

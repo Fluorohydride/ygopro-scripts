@@ -1,4 +1,5 @@
 --モロコシーナ
+--Sweet Corn
 function c74983881.initial_effect(c)
 	--coin effect
 	local e1=Effect.CreateEffect(c)

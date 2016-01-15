@@ -1,4 +1,5 @@
 --フレムベル・ウルキサス
+--Flamvell Uruquizas
 function c53714009.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

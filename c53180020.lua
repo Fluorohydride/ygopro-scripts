@@ -1,4 +1,5 @@
 --影霊衣の戦士 エグザ
+--Exa, Enforcer of the Nekroz
 function c53180020.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

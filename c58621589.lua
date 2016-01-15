@@ -1,4 +1,5 @@
 --誘惑のシャドウ
+--Shadow of Eyes
 function c58621589.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --異次元の境界線
+--D.D. Borderline
 function c60912752.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

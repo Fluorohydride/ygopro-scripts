@@ -1,4 +1,5 @@
 --渇きの風
+--Dried Winds
 function c28265983.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

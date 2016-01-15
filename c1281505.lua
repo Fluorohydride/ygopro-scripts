@@ -1,4 +1,5 @@
 --ヴァイロン・テトラ
+--Vylon Tetra
 function c1281505.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --グリフォンの羽根帚
+--Gryphon's Feather Duster
 function c34370473.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

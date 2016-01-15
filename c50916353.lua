@@ -1,4 +1,5 @@
 --地獄戦士
+--Chthonian Soldier
 function c50916353.initial_effect(c)
 	--reg
 	local e1=Effect.CreateEffect(c)

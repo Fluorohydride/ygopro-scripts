@@ -1,4 +1,5 @@
 --エクシーズ・トライバル
+--Xyz Tribalrivals
 function c32086564.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

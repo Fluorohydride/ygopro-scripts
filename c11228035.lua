@@ -1,4 +1,5 @@
 --エクシーズ・ソウル
+--Xyz Soul
 function c11228035.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --宝玉獣 コバルト・イーグル
+--Crystal Beast Cobalt Eagle
 function c21698716.initial_effect(c)
 	--send replace
 	local e1=Effect.CreateEffect(c)

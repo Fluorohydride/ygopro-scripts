@@ -1,4 +1,5 @@
 --かつて神と呼ばれた亀
+--Testudo erat Numen
 function c74952447.initial_effect(c)
 	--disable spsummon
 	local e1=Effect.CreateEffect(c)

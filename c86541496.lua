@@ -1,4 +1,5 @@
 --左腕の代償
+--Left Arm Offering
 function c86541496.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

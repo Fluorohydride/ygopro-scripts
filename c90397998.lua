@@ -1,4 +1,5 @@
 --六武衆－カモン
+--The Six Samurai - Kamon
 function c90397998.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

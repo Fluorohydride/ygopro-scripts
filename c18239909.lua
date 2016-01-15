@@ -1,4 +1,5 @@
 --爆竜剣士イグニスターP
+--Ignister Prominence, the Blasting Dracoslayer
 function c18239909.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsType,TYPE_PENDULUM),1)

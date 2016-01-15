@@ -1,4 +1,5 @@
 --暗黒界の尖兵 ベージ
+--Beiige, Vanguard of Dark World
 function c33731070.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

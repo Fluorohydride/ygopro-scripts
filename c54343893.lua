@@ -1,4 +1,5 @@
 --バイス・ドラゴン
+--Vice Dragon
 function c54343893.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

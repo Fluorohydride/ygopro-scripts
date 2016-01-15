@@ -1,4 +1,5 @@
 --黒いペンダント
+--Black Pendant
 function c65169794.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

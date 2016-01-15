@@ -1,4 +1,5 @@
 --D－HERO ダガーガイ
+--Destiny HERO - Blade Master
 function c55461064.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

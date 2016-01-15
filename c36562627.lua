@@ -1,4 +1,5 @@
 --セカンド・チャンス
+--Second Coin Toss
 function c36562627.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

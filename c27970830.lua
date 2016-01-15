@@ -1,4 +1,5 @@
 --六武の門
+--Gateway of the Six
 function c27970830.initial_effect(c)
 	c:EnableCounterPermit(0x3003)
 	--Activate

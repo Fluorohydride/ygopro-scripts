@@ -1,4 +1,5 @@
 --機皇帝ワイゼル∞
+--Meklord Emperor Wisel
 function c68140974.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

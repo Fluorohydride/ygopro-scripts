@@ -1,4 +1,5 @@
 --超重輝将サン－5
+--Superheavy Samurai General Coral
 function c78274190.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --セイクリッドの流星
+--Constellar Meteor
 function c63545861.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

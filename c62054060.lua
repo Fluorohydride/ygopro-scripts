@@ -1,4 +1,5 @@
 --平穏の賢者
+--Sage of Stillness
 function c62054060.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

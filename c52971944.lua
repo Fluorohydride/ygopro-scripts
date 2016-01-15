@@ -1,4 +1,5 @@
 --火遁封印式
+--Sealing Ceremony of Katon
 function c52971944.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

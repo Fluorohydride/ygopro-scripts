@@ -1,4 +1,5 @@
 --再機動
+--Reboot
 function c85775486.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

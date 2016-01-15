@@ -1,4 +1,5 @@
 --救世の美神ノースウェムコ
+--Divine Grace - Northwemko
 function c61757117.initial_effect(c)
 	c:EnableReviveLimit()
 	--set target

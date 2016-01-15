@@ -1,4 +1,5 @@
 --超重武者ヌス－10
+--Superheavy Samurai Thief
 function c14756848.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

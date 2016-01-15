@@ -1,4 +1,5 @@
 --カラクリ忍者 七七四九
+--Karakuri Ninja mdl 7749 "Nanashick"
 function c50615578.initial_effect(c)
 	--must attack
 	local e1=Effect.CreateEffect(c)

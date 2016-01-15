@@ -1,4 +1,5 @@
 --砂漠の裁き
+--Judgment of the Desert
 function c4869446.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --水精鱗－アビストリーテ
+--Mermail Abysstrite
 function c59170782.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,3)

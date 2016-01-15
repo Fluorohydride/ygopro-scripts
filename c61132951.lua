@@ -1,4 +1,5 @@
 --H・C 夜襲のカンテラ
+--Heroic Challenger - Night Watchman
 function c61132951.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

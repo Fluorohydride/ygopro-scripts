@@ -1,4 +1,5 @@
 --砂漠の光
+--Desert Sunlight
 function c93747864.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

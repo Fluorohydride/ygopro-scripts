@@ -1,4 +1,5 @@
 --ドッペル・ウォリアー
+--Doppelwarrior
 function c53855409.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --死霊の誘い
+--Skull Invitation
 function c98139712.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

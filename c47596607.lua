@@ -1,4 +1,5 @@
 --摩天楼2－ヒーローシティ
+--Skyscraper 2 - Hero City
 function c47596607.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

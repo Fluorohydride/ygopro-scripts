@@ -1,4 +1,5 @@
 --水舞台
+--Aquarium Stage
 function c29047353.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

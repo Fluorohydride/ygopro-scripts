@@ -1,4 +1,5 @@
 --モンク・ファイター
+--Monk Fighter
 function c3810071.initial_effect(c)
 	--dam
 	local e1=Effect.CreateEffect(c)

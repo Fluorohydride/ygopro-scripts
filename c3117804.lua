@@ -1,4 +1,5 @@
 --超重武者ビッグベン－K
+--Superheavy Samurai Big Benkei
 function c3117804.initial_effect(c)
 	--pos
 	local e1=Effect.CreateEffect(c)

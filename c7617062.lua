@@ -1,4 +1,5 @@
 --ゴーストリック・ミュージアム
+--Ghostrick Museum
 function c7617062.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --DDD怒濤王シーザー
+--D/D/D Wave King Caesar
 function c3758046.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),4,2)

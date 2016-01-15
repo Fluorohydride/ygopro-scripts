@@ -1,4 +1,5 @@
 --サイコ・ヒーリング
+--Psychic Rejuvenation
 function c21488686.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

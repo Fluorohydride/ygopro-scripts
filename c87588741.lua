@@ -1,4 +1,5 @@
 --クリフォート・アクセス
+--Qliphort Cephalopod
 function c87588741.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

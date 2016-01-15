@@ -1,4 +1,5 @@
 --魔のデッキ破壊ウイルス
+--Deck Devastation Virus
 function c35027493.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

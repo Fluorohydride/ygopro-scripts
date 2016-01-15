@@ -1,4 +1,5 @@
 --アーティファクト－モラルタ
+--Artifact Moralltach
 function c85103922.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

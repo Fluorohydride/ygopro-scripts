@@ -1,4 +1,5 @@
 --シャドール・ハウンド
+--Shaddoll Hound
 function c52551211.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

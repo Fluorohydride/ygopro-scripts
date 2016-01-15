@@ -1,4 +1,5 @@
 --煉獄の死徒
+--Void Seer
 function c8437145.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

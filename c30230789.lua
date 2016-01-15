@@ -1,4 +1,5 @@
 --カラクリ商人 壱七七
+--Karakuri Merchant mdl 177 "Inashichi"
 function c30230789.initial_effect(c)
 	--must attack
 	local e1=Effect.CreateEffect(c)

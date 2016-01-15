@@ -1,4 +1,5 @@
 --DDD反骨王レオニダス
+--D/D/D Rebel King Leonidas
 function c92536468.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

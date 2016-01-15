@@ -1,4 +1,5 @@
 --妖仙獣 大幽谷響
+--Yosenju Oyam
 function c69838592.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

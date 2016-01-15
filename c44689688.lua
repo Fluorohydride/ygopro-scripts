@@ -1,4 +1,5 @@
 --ジュラック・スピノス
+--Jurrac Spinos
 function c44689688.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

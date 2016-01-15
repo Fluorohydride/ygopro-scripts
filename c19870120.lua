@@ -1,4 +1,5 @@
 --進撃の帝王
+--March of the Monarchs
 function c19870120.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

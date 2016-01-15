@@ -1,4 +1,5 @@
 --D－フォーチュン
+--D - Fortune
 function c9201964.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --聖刻神龍－エネアード
+--Hieratic Sun Dragon Overlord of Heliopolis
 function c64332231.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

@@ -1,4 +1,5 @@
 --剣闘獣の闘器グラディウス
+--Gladiator Beast's Battle Gladius
 function c25407406.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

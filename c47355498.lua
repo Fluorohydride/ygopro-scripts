@@ -1,4 +1,5 @@
 --王家の眠る谷－ネクロバレー
+--Necrovalley
 function c47355498.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --コート・オブ・ジャスティス
+--Court of Justice
 function c24449083.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

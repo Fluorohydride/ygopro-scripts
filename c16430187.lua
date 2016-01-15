@@ -1,4 +1,5 @@
 --頼もしき守護者
+--The Reliable Guardian
 function c16430187.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

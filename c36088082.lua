@@ -1,4 +1,5 @@
 --ブルブレーダー
+--Bull Blader
 function c36088082.initial_effect(c)
 	--level change
 	local e1=Effect.CreateEffect(c)

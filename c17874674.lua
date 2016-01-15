@@ -1,4 +1,5 @@
 --破邪の刻印
+--Seal of Wickedness
 function c17874674.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --マリスボラス・ナイフ
+--Malicevorous Knife
 function c98780137.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

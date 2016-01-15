@@ -1,4 +1,5 @@
 --対抗魔術
+--Anti-Spell
 function c53112492.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ジャンク・ブレーダー
+--Junk Blader
 function c51855378.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

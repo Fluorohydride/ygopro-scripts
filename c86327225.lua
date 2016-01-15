@@ -1,4 +1,5 @@
 --天界王 シナト
+--Shinato, King of a Higher Plane
 function c86327225.initial_effect(c)
 	c:EnableReviveLimit()
 	--damage

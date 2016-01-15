@@ -1,4 +1,5 @@
 --デス・ウイルス・ドラゴン
+--Doom Virus Dragon
 function c22804644.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

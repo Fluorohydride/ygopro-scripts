@@ -1,4 +1,5 @@
 --マジェスペクター・ソニック
+--Majespecter Sonics
 function c13611090.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

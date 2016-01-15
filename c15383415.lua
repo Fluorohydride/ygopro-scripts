@@ -1,4 +1,5 @@
 --スカラベの大群
+--Swarm of Scarabs
 function c15383415.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

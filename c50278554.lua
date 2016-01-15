@@ -1,4 +1,5 @@
 --スクラップ・ツイン・ドラゴン
+--Scrap Twin Dragon
 function c50278554.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x24),aux.NonTuner(nil),1)

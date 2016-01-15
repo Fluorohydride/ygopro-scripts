@@ -1,4 +1,5 @@
 --ヴァリュアブル・フォーム
+--Variable Form
 function c64038662.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --蘇りし魂
+--Soul Resurrection
 function c92924317.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

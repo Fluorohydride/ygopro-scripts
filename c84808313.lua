@@ -1,4 +1,5 @@
 --大進化薬
+--Big Evolution Pill
 function c84808313.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

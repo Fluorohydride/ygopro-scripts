@@ -1,4 +1,5 @@
 --No.12 機甲忍者クリムゾン・シャドー
+--Number 12: Crimson Shadow Armor Ninja
 function c19333131.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2)

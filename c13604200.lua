@@ -1,4 +1,5 @@
 --賢者の宝石
+--Sage's Stone
 function c13604200.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

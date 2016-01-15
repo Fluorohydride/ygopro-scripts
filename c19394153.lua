@@ -1,4 +1,5 @@
 --フェザー・ショット
+--Feather Shot
 function c19394153.initial_effect(c)
 	--multi atk
 	local e1=Effect.CreateEffect(c)

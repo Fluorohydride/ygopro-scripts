@@ -1,4 +1,5 @@
 --X・E・N・O
+--Jowls of Dark Demise
 function c5257687.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --CNo.105 BK 彗星のカエストス
+--Number C105: Battlin' Boxer Comet Cestus
 function c85121942.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,4)

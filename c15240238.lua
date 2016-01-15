@@ -1,4 +1,5 @@
 --霞鳥クラウソラス
+--Mist Bird Clausolas
 function c15240238.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

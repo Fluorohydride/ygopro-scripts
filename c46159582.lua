@@ -1,4 +1,5 @@
 --リチュアの儀水鏡
+--Gishki Aquamirror
 function c46159582.initial_effect(c)
 	aux.AddRitualProcEqual2(c,c46159582.ritual_filter)
 	--salvage

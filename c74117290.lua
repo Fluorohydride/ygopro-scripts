@@ -1,4 +1,5 @@
 --暗黒界の取引
+--Dark World Dealings
 function c74117290.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

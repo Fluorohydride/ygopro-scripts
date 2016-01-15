@@ -1,4 +1,5 @@
 --バベル・タワー
+--Tower of Babel
 function c94256039.initial_effect(c)
 	c:EnableCounterPermit(0x3001)
 	--Activate

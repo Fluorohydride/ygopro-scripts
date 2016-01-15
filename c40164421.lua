@@ -1,4 +1,5 @@
 --ライトロード・メイデン ミネルバ
+--Minerva, Lightsworn Maiden
 function c40164421.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

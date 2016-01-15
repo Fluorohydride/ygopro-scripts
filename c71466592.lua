@@ -1,4 +1,5 @@
 --魔力吸収球体
+--Maryokutai
 function c71466592.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

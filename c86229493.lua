@@ -1,4 +1,5 @@
 --ダークネスソウル
+--Umbral Soul
 function c86229493.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

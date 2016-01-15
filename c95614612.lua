@@ -1,4 +1,5 @@
 --砲弾ヤリ貝
+--Cannonball Spear Shellfish
 function c95614612.initial_effect(c)
 	--immune spell
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --失楽の聖女
+--Condemned Maiden
 function c68018709.initial_effect(c)
 	--act qp in hand
 	local e1=Effect.CreateEffect(c)

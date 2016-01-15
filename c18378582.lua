@@ -1,4 +1,5 @@
 --大天使ゼラート
+--Archlord Zerato
 function c18378582.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

@@ -1,4 +1,5 @@
 --E・HERO シャイニング・フェニックスガイ
+--Elemental HERO Shining Phoenix Enforcer
 function c88820235.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

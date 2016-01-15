@@ -1,4 +1,5 @@
 --瓶亀
+--Jar Turtle
 function c96287685.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

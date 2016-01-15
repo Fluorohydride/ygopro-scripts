@@ -1,4 +1,5 @@
 --造反劇
+--Rebellion
 function c87567063.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

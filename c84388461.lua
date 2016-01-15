@@ -1,4 +1,5 @@
 --剣聖の影霊衣－セフィラセイバー
+--Zefrasaber, Swordmaster of the Nekroz
 function c84388461.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

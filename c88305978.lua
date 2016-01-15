@@ -1,4 +1,5 @@
 --BF－陽炎のカーム
+--Blackwing - Calima the Haze
 function c88305978.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

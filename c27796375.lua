@@ -1,4 +1,5 @@
 --影霊衣の大魔道士
+--Great Sorcerer of the Nekroz
 function c27796375.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

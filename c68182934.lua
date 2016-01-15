@@ -1,4 +1,5 @@
 --Sky Dragoons of Draconia
+--Sky Dragoons of Draconia
 function c68182934.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

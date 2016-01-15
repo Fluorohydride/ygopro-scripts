@@ -1,4 +1,5 @@
 --停戦協定
+--Ceasefire
 function c36468556.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --究極時械神セフィロン
+--Sephylon, the Ultimate Timelord
 function c8967776.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

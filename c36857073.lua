@@ -1,4 +1,5 @@
 --琰魔竜 レッド・デーモン・ベリアル
+--Hot Red Dragon Archfiend Bane
 function c36857073.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure2(c,nil,aux.NonTuner(c36857073.sfilter))

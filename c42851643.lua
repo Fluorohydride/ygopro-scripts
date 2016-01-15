@@ -1,4 +1,5 @@
 --穿孔重機ドリルジャンボ
+--Jumbo Drill
 function c42851643.initial_effect(c)
 	--lvup
 	local e1=Effect.CreateEffect(c)

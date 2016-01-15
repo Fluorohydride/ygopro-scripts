@@ -1,4 +1,5 @@
 --ターレット・ウォリアー
+--Turret Warrior
 function c88559132.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

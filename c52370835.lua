@@ -1,4 +1,5 @@
 --H・C ソード・シールド
+--Heroic Challenger - Swordshield
 function c52370835.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

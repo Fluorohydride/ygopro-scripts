@@ -1,4 +1,5 @@
 --BF－疾風のゲイル
+--Blackwing - Gale the Whirlwind
 function c2009101.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

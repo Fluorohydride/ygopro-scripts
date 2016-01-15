@@ -1,4 +1,5 @@
 --アクアの合唱
+--Aqua Chorus
 function c95132338.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

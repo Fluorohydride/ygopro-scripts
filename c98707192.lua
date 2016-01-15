@@ -1,4 +1,5 @@
 --ゴーストリック・マリー
+--Ghostrick Mary
 function c98707192.initial_effect(c)
 	--summon limit
 	local e1=Effect.CreateEffect(c)

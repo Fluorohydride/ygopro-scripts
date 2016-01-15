@@ -1,4 +1,5 @@
 --ラヴァルのマグマ砲兵
+--Laval Magma Cannoneer
 function c46404281.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

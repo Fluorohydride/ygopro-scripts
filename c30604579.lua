@@ -1,4 +1,5 @@
 --極神皇トール
+--Thor, Lord of the Aesir
 function c30604579.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c30604579.tfilter,aux.NonTuner(nil),2)

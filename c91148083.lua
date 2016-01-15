@@ -1,4 +1,5 @@
 --神々の黄昏
+--Gotterdammerung
 function c91148083.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

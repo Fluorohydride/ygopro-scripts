@@ -1,4 +1,5 @@
 --激昂のミノタウルス
+--Enraged Battle Ox
 function c76909279.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --かっとビング・チャレンジ
+--Hi-Five the Sky
 function c91677585.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

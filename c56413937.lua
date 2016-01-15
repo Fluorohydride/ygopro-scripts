@@ -1,4 +1,5 @@
 --戦場の死装束
+--Warrior of Tradition
 function c56413937.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

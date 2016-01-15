@@ -1,4 +1,5 @@
 --引きガエル
+--Poison Draw Frog
 function c56840658.initial_effect(c)
 	--draw
 	local e2=Effect.CreateEffect(c)

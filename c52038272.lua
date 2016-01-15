@@ -1,4 +1,5 @@
 --インフェルノイド・ルキフグス
+--Infernoid Harmadik
 function c52038272.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

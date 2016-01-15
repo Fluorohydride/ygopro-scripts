@@ -1,4 +1,5 @@
 --白夜の女王
+--White Night Queen
 function c20193924.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

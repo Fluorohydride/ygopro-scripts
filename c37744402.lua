@@ -1,4 +1,5 @@
 --風霊使いウィン
+--Wynn the Wind Charmer
 function c37744402.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

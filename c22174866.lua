@@ -1,4 +1,5 @@
 --アロマージ－カナンガ
+--Aromage Cananga
 function c22174866.initial_effect(c)
 	--atk & def
 	local e1=Effect.CreateEffect(c)

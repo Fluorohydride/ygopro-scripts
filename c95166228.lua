@@ -1,4 +1,5 @@
 --ヴァリュアブル・アーマー
+--Grasschopper
 function c95166228.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--attack all

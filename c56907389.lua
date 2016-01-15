@@ -1,4 +1,5 @@
 --音楽家の帝王
+--Musician King
 function c56907389.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --エレメント・マジシャン
+--Element Magician
 function c65260293.initial_effect(c)
 	--control
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --異次元トンネル－ミラーゲート－
+--Mirror Gate
 function c43452193.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --暗黒のミミック LV3
+--Dark Mimic LV3
 function c1102515.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

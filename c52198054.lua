@@ -1,4 +1,5 @@
 --ブレイズ・キャノン・マガジン
+--Blaze Accelerator Reload
 function c52198054.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

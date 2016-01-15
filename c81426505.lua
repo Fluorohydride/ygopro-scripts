@@ -1,4 +1,5 @@
 --六武式三段衝
+--Six Strike - Triple Impact
 function c81426505.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

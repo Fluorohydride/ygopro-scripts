@@ -1,4 +1,5 @@
 --禁止令
+--Prohibition
 function c43711255.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

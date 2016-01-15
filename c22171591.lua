@@ -1,4 +1,5 @@
 --カバリスト
+--Doctor Cranium
 function c22171591.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --凡骨の意地
+--Heart of the Underdog
 function c35762283.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

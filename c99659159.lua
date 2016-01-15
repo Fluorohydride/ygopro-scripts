@@ -1,4 +1,5 @@
 --竜操術
+--Dragon Mastery
 function c99659159.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

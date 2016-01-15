@@ -1,4 +1,5 @@
 --エクシーズ・オーバーライド
+--Xyz Override
 function c32999573.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

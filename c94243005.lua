@@ -1,4 +1,5 @@
 --混沌空間
+--Chaos Zone
 function c94243005.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

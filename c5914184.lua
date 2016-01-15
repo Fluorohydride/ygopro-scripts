@@ -1,4 +1,5 @@
 --倍返し
+--Double Payback
 function c5914184.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

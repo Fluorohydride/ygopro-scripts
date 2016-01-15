@@ -1,4 +1,5 @@
 --強引な番兵
+--The Forceful Sentry
 function c42829885.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

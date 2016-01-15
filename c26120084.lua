@@ -1,4 +1,5 @@
 --スペシャル・デュアル・サモン
+--Super Double Summon
 function c26120084.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

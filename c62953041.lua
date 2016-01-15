@@ -1,4 +1,5 @@
 --稲荷火
+--Inari Fire
 function c62953041.initial_effect(c)
 	c:SetUniqueOnField(1,0,62953041)
 	--special summon

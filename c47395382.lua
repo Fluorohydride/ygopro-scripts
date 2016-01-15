@@ -1,4 +1,5 @@
 --魔轟神レイジオン
+--Fabled Ragin
 function c47395382.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x35),aux.NonTuner(nil),1)

@@ -1,4 +1,5 @@
 --スマイル・ワールド
+--Smile World
 function c2099841.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

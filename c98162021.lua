@@ -1,4 +1,5 @@
 --紫炎の荒武者
+--Shien's Daredevil
 function c98162021.initial_effect(c)
 	c:EnableCounterPermit(0x3003)
 	c:SetCounterLimit(0x3003,1)

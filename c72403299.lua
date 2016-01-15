@@ -1,4 +1,5 @@
 --リチュア・ディバイナー
+--Gishki Diviner
 function c72403299.initial_effect(c)
 	--announce
 	local e1=Effect.CreateEffect(c)

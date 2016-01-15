@@ -1,4 +1,5 @@
 --マイン・モール
+--Mine Mole
 function c94079037.initial_effect(c)
 	--battle indes
 	local e1=Effect.CreateEffect(c)

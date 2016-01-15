@@ -1,4 +1,5 @@
 --孤高の格闘家
+--Lone Wolf
 function c82452993.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

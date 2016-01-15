@@ -1,4 +1,5 @@
 --H・C エクストラ・ソード
+--Heroic Challenger - Extra Sword
 function c34143852.initial_effect(c)
 	--effect gain
 	local e1=Effect.CreateEffect(c)

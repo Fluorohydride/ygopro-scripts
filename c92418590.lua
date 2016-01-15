@@ -1,4 +1,5 @@
 --ギミック・パペット－ネクロ・ドール
+--Gimmick Puppet Dreary Doll
 function c92418590.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

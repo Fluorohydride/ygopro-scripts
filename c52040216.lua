@@ -1,4 +1,5 @@
 --ハーピィズペット竜
+--Harpie's Pet Dragon
 function c52040216.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

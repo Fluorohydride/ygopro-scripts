@@ -1,4 +1,5 @@
 --ワーム・イリダン
+--Worm Illidan
 function c57543573.initial_effect(c)
 	--add counter
 	local e1=Effect.CreateEffect(c)

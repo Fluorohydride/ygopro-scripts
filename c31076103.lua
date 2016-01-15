@@ -1,4 +1,5 @@
 --第一の棺
+--The First Sarcophagus
 function c31076103.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

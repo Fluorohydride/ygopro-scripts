@@ -1,4 +1,5 @@
 --忍法 超変化の術
+--Ninjitsu Art of Super-Transformation
 function c90200789.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

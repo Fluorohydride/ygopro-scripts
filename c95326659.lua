@@ -1,4 +1,5 @@
 --宝玉の導き
+--Crystal Beacon
 function c95326659.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

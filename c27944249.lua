@@ -1,4 +1,5 @@
 --ガスタの賢者 ウィンダール
+--Windaar, Sage of Gusto
 function c27944249.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

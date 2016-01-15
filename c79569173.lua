@@ -1,4 +1,5 @@
 --大地震
+--Seismic Shockwave
 function c79569173.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

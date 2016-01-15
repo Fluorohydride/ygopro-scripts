@@ -1,4 +1,5 @@
 --ニトロユニット
+--Nitro Unit
 function c23842445.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

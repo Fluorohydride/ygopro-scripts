@@ -1,4 +1,5 @@
 --外神ナイアルラ
+--Outer God Nyarla
 function c8809344.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

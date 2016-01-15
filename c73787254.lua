@@ -1,4 +1,5 @@
 --セイバー・ヴォールト
+--Saber Vault
 function c73787254.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

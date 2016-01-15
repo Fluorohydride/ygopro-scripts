@@ -1,4 +1,5 @@
 --ネオス・フォース
+--Neos Force
 function c47274077.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

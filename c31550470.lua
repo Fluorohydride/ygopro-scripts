@@ -1,4 +1,5 @@
 --闇次元の解放
+--Escape from the Dark Dimension
 function c31550470.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

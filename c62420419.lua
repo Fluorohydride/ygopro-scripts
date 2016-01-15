@@ -1,4 +1,5 @@
 --大邪神レシェフ
+--Reshef the Dark Being
 function c62420419.initial_effect(c)
 	c:EnableReviveLimit()
 	--control

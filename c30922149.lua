@@ -1,4 +1,5 @@
 --副作用？
+--Side Effects?
 function c30922149.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

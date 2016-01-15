@@ -1,4 +1,5 @@
 --E・HERO マッドボールマン
+--Elemental HERO Mudballman
 function c52031567.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

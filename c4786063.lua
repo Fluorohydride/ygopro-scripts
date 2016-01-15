@@ -1,4 +1,5 @@
 --超重武者装留ファイヤー・アーマー
+--Superheavy Samurai Soulfire Suit
 function c4786063.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

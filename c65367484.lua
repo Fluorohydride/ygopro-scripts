@@ -1,4 +1,5 @@
 --フォトン・スラッシャー
+--Photon Thrasher
 function c65367484.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

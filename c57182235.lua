@@ -1,4 +1,5 @@
 --トークン収穫祭
+--Token Thanksgiving
 function c57182235.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

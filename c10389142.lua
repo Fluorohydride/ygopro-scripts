@@ -1,4 +1,5 @@
 --No.42 スターシップ・ギャラクシー・トマホーク
+--Number 42: Galaxy Tomahawk
 function c10389142.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,2)

@@ -1,4 +1,5 @@
 --禁じられた聖衣
+--Forbidden Dress
 function c96864811.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --N・グロー・モス
+--Neo-Spacian Glow Moss
 function c17732278.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

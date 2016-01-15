@@ -1,4 +1,5 @@
 --メタモルポット
+--Morphing Jar
 function c33508719.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --波動障壁
+--Barrier Wave
 function c96700602.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_POSITION+CATEGORY_DAMAGE)

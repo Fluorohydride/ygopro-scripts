@@ -1,4 +1,5 @@
 --起爆獣ヴァルカノン
+--Ignition Beast Volcannon
 function c10365322.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

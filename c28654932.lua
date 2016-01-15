@@ -1,4 +1,5 @@
 --深黒の落とし穴
+--Deep Dark Trap Hole
 function c28654932.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

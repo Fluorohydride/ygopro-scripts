@@ -1,4 +1,5 @@
 --魔力誘爆
+--That Wacky Alchemy!
 function c22869904.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DELAYED_QUICKEFFECT)
 	--Activate

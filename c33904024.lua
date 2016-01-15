@@ -1,4 +1,5 @@
 --強欲なカケラ
+--Shard of Greed
 function c33904024.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

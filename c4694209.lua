@@ -1,4 +1,5 @@
 --カードガード
+--Card Guard
 function c4694209.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --No.40 ギミック・パペット－ヘブンズ・ストリングス
+--Number 40: Gimmick Puppet of Strings
 function c75433814.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

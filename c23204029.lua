@@ -1,4 +1,5 @@
 --C・HERO カオス
+--Contrast HERO Chaos
 function c23204029.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --復讐の女戦士ローズ
+--Rose, Warrior of Revenge
 function c1557341.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

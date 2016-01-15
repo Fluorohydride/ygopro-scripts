@@ -1,4 +1,5 @@
 --デストラクト・サークル－A
+--Detonator Circle 
 function c20985997.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

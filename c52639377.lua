@@ -1,4 +1,5 @@
 --魔界闘士 バルムンク
+--Underworld Fighter Balmung
 function c52639377.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

@@ -1,4 +1,5 @@
 --未来融合－フューチャー・フュージョン
+--Future Fusion
 function c77565204.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

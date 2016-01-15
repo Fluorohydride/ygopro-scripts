@@ -1,4 +1,5 @@
 --マジカル・アンドロイド
+--Magical Android
 function c43385557.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

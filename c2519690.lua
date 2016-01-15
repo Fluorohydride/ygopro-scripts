@@ -1,4 +1,5 @@
 --天翔の竜騎士ガイア
+--Gaia the Soaring Dragon Champion
 function c2519690.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

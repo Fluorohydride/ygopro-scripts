@@ -1,4 +1,5 @@
 --マドルチェ・エンジェリー
+--Madolche Anjelly
 function c34680482.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

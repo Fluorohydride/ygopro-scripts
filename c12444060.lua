@@ -1,4 +1,5 @@
 --アーティファクトの神智
+--Artifact Sanctum
 function c12444060.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

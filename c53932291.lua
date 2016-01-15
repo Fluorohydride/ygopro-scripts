@@ -1,4 +1,5 @@
 --SRタケトンボーグ
+--Speedroid Taketomborg
 function c53932291.initial_effect(c)
 	c:SetSPSummonOnce(53932291)
 	--special summon

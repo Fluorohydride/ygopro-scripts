@@ -1,4 +1,5 @@
 --ワーム・プリンス
+--Worm Prince
 function c54860010.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

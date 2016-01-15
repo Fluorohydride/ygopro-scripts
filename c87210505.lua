@@ -1,4 +1,5 @@
 --騎士の称号
+--Knight's Title
 function c87210505.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

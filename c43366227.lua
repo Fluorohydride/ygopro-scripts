@@ -1,4 +1,5 @@
 --セブン・ソード・ウォリアー
+--Seven Swords Warrior
 function c43366227.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

@@ -1,4 +1,5 @@
 --血の沼地
+--Sanguine Swamp
 function c60627999.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

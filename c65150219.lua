@@ -1,4 +1,5 @@
 --機甲忍法フリーズ・ロック
+--Armor Ninjitsu Art of Freezing
 function c65150219.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

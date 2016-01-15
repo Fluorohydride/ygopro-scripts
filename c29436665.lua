@@ -1,4 +1,5 @@
 --黒魔導の執行官
+--Dark Eradicator Warlock
 function c29436665.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

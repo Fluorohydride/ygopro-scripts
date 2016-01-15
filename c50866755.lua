@@ -1,4 +1,5 @@
 --鳳凰
+--Fenghuang
 function c50866755.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

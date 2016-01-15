@@ -1,4 +1,5 @@
 --ぴよコッコ
+--Cheepcheepcheep
 function c27189308.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

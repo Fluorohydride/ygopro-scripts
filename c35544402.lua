@@ -1,4 +1,5 @@
 --ティンクル・セイクリッド
+--Constellar Twinkle
 function c35544402.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

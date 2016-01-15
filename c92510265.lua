@@ -1,4 +1,5 @@
 --聖戦士カオス・ソルジャー
+--Black Luster Soldier - Sacred Soldier
 function c92510265.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

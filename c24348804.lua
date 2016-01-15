@@ -1,4 +1,5 @@
 --一回休み
+--Lose A Turn
 function c24348804.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

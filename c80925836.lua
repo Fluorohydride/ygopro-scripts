@@ -1,4 +1,5 @@
 --コアキメイル・デビル
+--Koa'ki Meiru Doom
 function c80925836.initial_effect(c)
 	--cost
 	local e1=Effect.CreateEffect(c)

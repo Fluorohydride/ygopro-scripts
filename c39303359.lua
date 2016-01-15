@@ -1,4 +1,5 @@
 --古代の機械騎士
+--Ancient Gear Knight
 function c39303359.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--actlimit

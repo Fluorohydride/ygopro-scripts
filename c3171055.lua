@@ -1,4 +1,5 @@
 --連鎖解呪
+--Chain Dispel
 function c3171055.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

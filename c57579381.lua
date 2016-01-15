@@ -1,4 +1,5 @@
 --堕天使マリー
+--Marie the Fallen One
 function c57579381.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

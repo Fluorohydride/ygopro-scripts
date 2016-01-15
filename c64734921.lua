@@ -1,4 +1,5 @@
 --創造の代行者 ヴィーナス
+--The Agent of Creation - Venus
 function c64734921.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

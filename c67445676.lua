@@ -1,4 +1,5 @@
 --マツボックル
+--Pinecono
 function c67445676.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

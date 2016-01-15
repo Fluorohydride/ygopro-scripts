@@ -1,4 +1,5 @@
 --異次元からの帰還
+--Return from the Different Dimension
 function c27174286.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

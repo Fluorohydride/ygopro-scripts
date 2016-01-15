@@ -1,4 +1,5 @@
 --DDD制覇王カイゼル
+--DDD Kaiser the Conqueror
 function c44186624.initial_effect(c)
 	--spsummon success
 	local e1=Effect.CreateEffect(c)

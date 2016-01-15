@@ -1,4 +1,5 @@
 --エルシャドール・アノマリリス
+--El Shaddoll Anoyatyllis
 function c19261966.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion material

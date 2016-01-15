@@ -1,4 +1,5 @@
 --プランクスケール
+--Planckton
 function c10282757.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

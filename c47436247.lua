@@ -1,4 +1,5 @@
 --紫炎の道場
+--Shien's Dojo
 function c47436247.initial_effect(c)
 	c:EnableCounterPermit(0x3003)
 	--Activate

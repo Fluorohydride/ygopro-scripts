@@ -1,4 +1,5 @@
 --EMフレンドンキー
+--Performapal Friendonkey
 function c96606246.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

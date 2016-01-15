@@ -1,4 +1,5 @@
 --トライゴン
+--Trigon
 function c48568432.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

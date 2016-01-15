@@ -1,4 +1,5 @@
 --スピリット・ドラゴン
+--Spirit Ryu
 function c67957315.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ナイト・ショット
+--Night Beam
 function c89882100.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

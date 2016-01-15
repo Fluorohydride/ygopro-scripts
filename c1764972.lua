@@ -1,4 +1,5 @@
 --デスカイザー・ドラゴン／バスター
+--Doomkaiser Dragon/Assault Mode
 function c1764972.initial_effect(c)
 	c:EnableReviveLimit()
 	--Cannot special summon

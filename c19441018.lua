@@ -1,4 +1,5 @@
 --電池メン－業務用
+--Batteryman Industrial Strength
 function c19441018.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

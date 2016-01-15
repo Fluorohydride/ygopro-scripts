@@ -1,4 +1,5 @@
 --星に願いを
+--Star Light, Star Bright
 function c43661068.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

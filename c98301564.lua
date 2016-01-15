@@ -1,4 +1,5 @@
 --解放のアリアドネ
+--Guiding Ariadne
 function c98301564.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --フォーチュン・スリップ
+--Slip of Fortune
 function c72885174.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

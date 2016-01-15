@@ -1,4 +1,5 @@
 --デストーイ・ファクトリー
+--Frightfur Factory
 function c43698897.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

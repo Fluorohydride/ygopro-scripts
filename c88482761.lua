@@ -1,4 +1,5 @@
 --ダイスロール・バトル
+--Dice Roll Battle
 function c88482761.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

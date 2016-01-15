@@ -1,4 +1,5 @@
 --フラワー・ウルフ
+--Flower Wolf
 function c95952802.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

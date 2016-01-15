@@ -1,4 +1,5 @@
 --分断の壁
+--Wall of Disruption
 function c58169731.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --大熱波
+--Heat Wave
 function c45141013.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

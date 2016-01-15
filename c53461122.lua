@@ -1,4 +1,5 @@
 --ガイアフレーム
+--Earth Effigy
 function c53461122.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --TGX1－HL
+--TGX1-HL
 function c11264180.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --蒼焔の煉獄
+--Eye of the Void
 function c57047293.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

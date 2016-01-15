@@ -1,4 +1,5 @@
 --緊急テレポート
+--Emergency Teleport
 function c67723438.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ダーク・アームド・ドラゴン
+--Dark Armed Dragon
 function c65192027.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

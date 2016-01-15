@@ -1,4 +1,5 @@
 --U.A.ドレッドノートダンカー
+--U.A. Dreadnought Dunker
 function c71279983.initial_effect(c)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)

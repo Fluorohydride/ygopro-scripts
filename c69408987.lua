@@ -1,4 +1,5 @@
 --スパイダー・ウェブ
+--Spider Web
 function c69408987.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --スクランブル・エッグ
+--Scramble Egg
 function c75078585.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DELAYED_QUICKEFFECT)
 	--Activate

@@ -1,4 +1,5 @@
 --闇・エネルギー
+--Dark Energy
 function c4614116.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

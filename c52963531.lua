@@ -1,4 +1,5 @@
 --EMマンモスプラッシュ
+--Performapal Splashmammoth
 function c52963531.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

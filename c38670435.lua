@@ -1,4 +1,5 @@
 --暗黒恐獣
+--Black Tyranno
 function c38670435.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

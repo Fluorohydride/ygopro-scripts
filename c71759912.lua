@@ -1,4 +1,5 @@
 --ラッコアラ
+--Tree Otter
 function c71759912.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

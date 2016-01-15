@@ -1,4 +1,5 @@
 --魔装聖龍 イーサルウェポン
+--Aether, the Empowering Dragon
 function c56804361.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ジェネレーション・フォース
+--Generation Force
 function c87890143.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

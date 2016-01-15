@@ -1,4 +1,5 @@
 --人投げトロール
+--Man-Thro' Tro'
 function c43714890.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

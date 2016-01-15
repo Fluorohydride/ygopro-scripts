@@ -1,4 +1,5 @@
 --召集の聖刻印
+--Hieratic Seal of Convocation
 function c25377819.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

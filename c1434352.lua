@@ -1,4 +1,5 @@
 --カオス・ネクロマンサー
+--Chaos Necromancer
 function c1434352.initial_effect(c)
 	--attack
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --狩猟本能
+--Hunting Instinct
 function c11925569.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

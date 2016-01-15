@@ -1,4 +1,5 @@
 --炎熱伝導場
+--Molten Conduction Field
 function c72142276.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

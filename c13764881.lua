@@ -1,4 +1,5 @@
 --チェーン・リゾネーター
+--Chain Resonator
 function c13764881.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

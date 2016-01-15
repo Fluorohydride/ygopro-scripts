@@ -1,4 +1,5 @@
 --光子竜の聖騎士
+--Paladin of Photon Dragon
 function c85346853.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon

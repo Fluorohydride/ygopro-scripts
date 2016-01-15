@@ -1,4 +1,5 @@
 --おろかな転生
+--Foolish Return
 function c88369727.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

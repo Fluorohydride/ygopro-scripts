@@ -1,4 +1,5 @@
 --アマゾネスの弩弓隊
+--Amazoness Archers
 function c67987611.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

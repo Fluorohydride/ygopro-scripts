@@ -1,4 +1,5 @@
 --魔装戦士 ドラゴノックス
+--Dragonox, the Empowered Warrior
 function c92870717.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

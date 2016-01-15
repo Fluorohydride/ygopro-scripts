@@ -1,4 +1,5 @@
 --銀龍の轟咆
+--Silver's Cry
 function c87025064.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --シューティング・クェーサー・ドラゴン
+--Shooting Quasar Dragon
 function c35952884.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsType,TYPE_SYNCHRO),aux.NonTuner(Card.IsType,TYPE_SYNCHRO),2)

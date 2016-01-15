@@ -1,4 +1,5 @@
 --幻獣機メガラプター
+--Mecha Phantom Beast Megaraptor
 function c31533704.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)

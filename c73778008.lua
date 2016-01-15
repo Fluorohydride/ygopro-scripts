@@ -1,4 +1,5 @@
 --深海の怒り
+--Rage of the Deep Sea
 function c73778008.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

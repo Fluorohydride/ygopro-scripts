@@ -1,4 +1,5 @@
 --Dボーイズ
+--D-Boyz
 function c79279397.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

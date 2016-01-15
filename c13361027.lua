@@ -1,4 +1,5 @@
 --ドラグニティ－ブラックスピア
+--Dragunity Darkspear
 function c13361027.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

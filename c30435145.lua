@@ -1,4 +1,5 @@
 --古代の機械工場
+--Ancient Gear Factory
 function c30435145.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

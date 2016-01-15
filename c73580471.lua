@@ -1,4 +1,5 @@
 --ブラック・ローズ・ドラゴン
+--Black Rose Dragon
 function c73580471.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

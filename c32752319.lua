@@ -1,4 +1,5 @@
 --ユーフォロイド・ファイター
+--UFOroid Fighter
 function c32752319.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

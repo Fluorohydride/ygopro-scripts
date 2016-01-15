@@ -1,4 +1,5 @@
 --Sin トゥルース・ドラゴン
+--Malefic Truth Dragon
 function c37115575.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,4 +1,5 @@
 --ユベル－Das Abscheulich Ritter
+--Yubel - Terror Incarnate
 function c4779091.initial_effect(c)
 	c:EnableReviveLimit()
 	--battle

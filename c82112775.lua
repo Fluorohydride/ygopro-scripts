@@ -1,4 +1,5 @@
 --D・D・M
+--D.D.M. - Different Dimension Master
 function c82112775.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

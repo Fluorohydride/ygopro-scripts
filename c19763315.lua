@@ -1,4 +1,5 @@
 --不運なリポート
+--An Unfortunate Report
 function c19763315.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

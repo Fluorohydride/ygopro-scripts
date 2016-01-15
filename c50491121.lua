@@ -1,4 +1,5 @@
 --H・C スパルタス
+--Heroic Challenger - Spartan
 function c50491121.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

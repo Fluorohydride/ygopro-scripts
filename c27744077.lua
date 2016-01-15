@@ -1,4 +1,5 @@
 --絶体絶命
+--Absolute End
 function c27744077.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

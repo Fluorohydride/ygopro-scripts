@@ -1,4 +1,5 @@
 --黒き森のウィッチ
+--Witch of the Black Forest
 function c78010363.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

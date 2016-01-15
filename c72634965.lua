@@ -1,4 +1,5 @@
 --虚無の統括者
+--Vanity's Ruler
 function c72634965.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

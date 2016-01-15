@@ -1,4 +1,5 @@
 --生存本能
+--Survival Instinct
 function c58419204.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

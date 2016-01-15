@@ -1,4 +1,5 @@
 --聖なるあかり
+--Consecrated Light
 function c2980764.initial_effect(c)
 	--battle
 	local e1=Effect.CreateEffect(c)

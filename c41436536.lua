@@ -1,4 +1,5 @@
 --E・HERO フェニックスガイ
+--Elemental HERO Phoenix Enforcer
 function c41436536.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

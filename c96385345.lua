@@ -1,4 +1,5 @@
 --薔薇の聖騎士
+--Rose Paladin
 function c96385345.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

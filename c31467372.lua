@@ -1,4 +1,5 @@
 --不死式冥界砲
+--Everliving Underworld Cannon
 function c31467372.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

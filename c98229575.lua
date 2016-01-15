@@ -1,4 +1,5 @@
 --U.A.フィールドゼネラル
+--U.A. Playmaker
 function c98229575.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

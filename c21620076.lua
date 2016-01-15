@@ -1,4 +1,5 @@
 --ペインペインター
+--Pain Painter
 function c21620076.initial_effect(c)
 	--alias
 	local e1=Effect.CreateEffect(c)

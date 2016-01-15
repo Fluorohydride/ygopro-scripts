@@ -1,4 +1,5 @@
 --剣闘訓練所
+--Gladiator Proving Ground
 function c35224440.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

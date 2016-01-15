@@ -1,4 +1,5 @@
 --カタパルト・ウォリアー
+--Catapult Warrior
 function c37474917.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

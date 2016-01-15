@@ -1,4 +1,5 @@
 --真紅眼の闇竜
+--Red-Eyes Darkness Dragon
 function c96561011.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

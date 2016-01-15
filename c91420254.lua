@@ -1,4 +1,5 @@
 --妖仙獣 右鎌神柱
+--Yosenju Shinchu R
 function c91420254.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

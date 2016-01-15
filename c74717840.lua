@@ -1,4 +1,5 @@
 --ランドオルスのヒカリゴケ
+--Landoise's Luminous Moss
 function c74717840.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

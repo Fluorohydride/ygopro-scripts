@@ -1,4 +1,5 @@
 --木遁封印式
+--Sealing Ceremony of Mokuton
 function c1802450.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --時空の落とし穴
+--Time-Space Trap Hole
 function c2055403.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --異種闘争
+--Battle of the Elements
 function c60530944.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

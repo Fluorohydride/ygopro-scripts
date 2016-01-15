@@ -1,4 +1,5 @@
 --ハーピィ・クィーン
+--Harpie Queen
 function c75064463.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

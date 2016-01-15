@@ -1,4 +1,5 @@
 --カルボナーラ戦士
+--Karbonala Warrior
 function c54541900.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

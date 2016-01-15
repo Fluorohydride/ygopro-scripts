@@ -1,4 +1,5 @@
 --サイバー・ウロボロス
+--Cyber Ouroboros
 function c30042158.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

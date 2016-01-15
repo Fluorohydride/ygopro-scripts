@@ -1,4 +1,5 @@
 --異次元エスパー・スター・ロビン
+--D.D. Esper Star Sparrow
 function c80208158.initial_effect(c)
 	c:SetUniqueOnField(1,1,80208158)
 	--target

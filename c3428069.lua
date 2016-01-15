@@ -1,4 +1,5 @@
 --破壊剣の使い手－バスター・ブレイダー
+--Buster Blader, the Destruction Swordmaster
 function c3428069.initial_effect(c)
 	--Code
 	local e1=Effect.CreateEffect(c)

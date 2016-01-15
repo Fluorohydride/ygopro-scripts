@@ -1,4 +1,5 @@
 --人造人間－サイコ・リターナー
+--Jinzo - Returner
 function c9418534.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

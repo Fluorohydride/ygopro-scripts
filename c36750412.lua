@@ -1,4 +1,5 @@
 --炎龍
+--Magna Drago
 function c36750412.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

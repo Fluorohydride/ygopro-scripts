@@ -1,4 +1,5 @@
 --ヘルウェイ・パトロール
+--Stygian Street Patrol
 function c13521194.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

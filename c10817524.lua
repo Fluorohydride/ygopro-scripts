@@ -1,4 +1,5 @@
 --始祖竜ワイアーム
+--First of the Dragons
 function c10817524.initial_effect(c)
 	c:SetUniqueOnField(1,0,10817524)
 	--fusion material

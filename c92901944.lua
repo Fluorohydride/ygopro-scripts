@@ -1,4 +1,5 @@
 --スクラップ・サーチャー
+--Scrap Searcher
 function c92901944.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --闇の支配者－ゾーク
+--Dark Master - Zorc
 function c97642679.initial_effect(c)
 	c:EnableReviveLimit()
 	--dice

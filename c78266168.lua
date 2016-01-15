@@ -1,4 +1,5 @@
 --ジャイアントマミー
+--Giant Axe Mummy
 function c78266168.initial_effect(c)
 	--turn set
 	local e1=Effect.CreateEffect(c)

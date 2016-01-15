@@ -1,4 +1,5 @@
 --墓荒らしの報い
+--Graverobber's Retribution
 function c33737664.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

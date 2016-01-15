@@ -1,4 +1,5 @@
 --魂の共有－コモンソウル
+--Common Soul
 function c14772491.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ナチュル・ビートル
+--Naturia Beetle
 function c27762803.initial_effect(c)
 	--ad change
 	local e1=Effect.CreateEffect(c)

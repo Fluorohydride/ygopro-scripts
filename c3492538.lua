@@ -1,4 +1,5 @@
 --火器付機甲鎧
+--Insect Armor with Laser Cannon
 function c3492538.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

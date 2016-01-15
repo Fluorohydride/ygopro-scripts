@@ -1,4 +1,5 @@
 --リバイバル・ギフト
+--Revival Gift
 function c93912845.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

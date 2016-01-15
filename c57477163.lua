@@ -1,4 +1,5 @@
 --デストーイ・チェーン・シープ
+--Frightfur Sheep
 function c57477163.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

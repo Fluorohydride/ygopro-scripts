@@ -1,4 +1,5 @@
 --アーティファクト－ベガルタ
+--Artifact Beagalltach
 function c12697630.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

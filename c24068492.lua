@@ -1,4 +1,5 @@
 --自業自得
+--Just Desserts
 function c24068492.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

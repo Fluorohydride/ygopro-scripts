@@ -1,4 +1,5 @@
 --裁きを下す者－ボルテニス
+--Voltanis the Adjudicator
 function c20951752.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

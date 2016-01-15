@@ -1,4 +1,5 @@
 --セイバー・シャーク
+--Saber Shark
 function c63193879.initial_effect(c)
 	--lv change
 	local e1=Effect.CreateEffect(c)

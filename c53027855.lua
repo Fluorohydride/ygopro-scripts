@@ -1,4 +1,5 @@
 --風霊神ウィンドローズ
+--Windrose the Elemental Lord
 function c53027855.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

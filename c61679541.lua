@@ -1,4 +1,5 @@
 --BK ラビット・パンチャー
+--Battlin' Boxer Rabbit Puncher
 function c61679541.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

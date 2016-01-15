@@ -1,4 +1,5 @@
 --ゴーストリック・アルカード
+--Ghostrick Alucard
 function c75367227.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

@@ -1,4 +1,5 @@
 --超重武者ツヅ－3
+--Superheavy Samurai Drum
 function c87535691.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

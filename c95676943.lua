@@ -1,4 +1,5 @@
 --Extinction on Schedule
+--Extinction on Schedule
 function c95676943.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

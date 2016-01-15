@@ -1,4 +1,5 @@
 --剣闘獣の檻－コロッセウム
+--Colosseum - Cage of the Gladiator Beasts
 function c52518793.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

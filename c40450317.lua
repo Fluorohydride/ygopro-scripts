@@ -1,4 +1,5 @@
 --同胞の絆
+--Ties of the Brethren
 function c40450317.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

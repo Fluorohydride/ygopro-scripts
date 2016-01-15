@@ -1,4 +1,5 @@
 --炎王炎環
+--Circle of the Fire Kings
 function c59388357.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

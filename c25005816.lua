@@ -1,4 +1,5 @@
 --鼓舞
+--Inspiration
 function c25005816.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

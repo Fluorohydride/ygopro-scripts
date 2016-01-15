@@ -1,4 +1,5 @@
 --剣闘獣ティゲル
+--Gladiator Beast Tygerius
 function c50893987.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

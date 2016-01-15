@@ -1,4 +1,5 @@
 --阿修羅
+--Asura Priest
 function c2134346.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

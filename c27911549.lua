@@ -1,4 +1,5 @@
 --寄生虫パラサイド
+--Parasite Paracide
 function c27911549.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_DECK_REVERSE_CHECK)
 	--to deck

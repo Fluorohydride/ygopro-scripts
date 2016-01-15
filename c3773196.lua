@@ -1,4 +1,5 @@
 --異次元の偵察機
+--D.D. Scout Plane
 function c3773196.initial_effect(c)
 	--removed
 	local e1=Effect.CreateEffect(c)

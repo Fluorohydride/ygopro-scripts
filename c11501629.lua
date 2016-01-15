@@ -1,4 +1,5 @@
 --キックファイア
+--Kickfire
 function c11501629.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

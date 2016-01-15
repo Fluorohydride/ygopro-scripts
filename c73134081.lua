@@ -1,4 +1,5 @@
 --火あぶりの刑
+--Final Flame
 function c73134081.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

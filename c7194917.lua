@@ -1,4 +1,5 @@
 --No.52 ダイヤモンド・クラブ・キング
+--Number 52: Diamond Crab King
 function c7194917.initial_effect(c)
 	c:SetUniqueOnField(1,0,7194917)
 	--xyz summon

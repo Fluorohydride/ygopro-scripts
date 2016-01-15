@@ -1,4 +1,5 @@
 --マジック・リサイクラー
+--Spell Recycler
 function c45118716.initial_effect(c)
 	--todeck
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --マスク・チャージ
+--Mask Charge
 function c87819421.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

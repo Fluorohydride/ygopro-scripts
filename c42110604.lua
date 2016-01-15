@@ -1,4 +1,5 @@
 --HSRチャンバライダー
+--Hi-Speedroid Chanbara
 function c42110604.initial_effect(c)
 	c:SetSPSummonOnce(42110604)
 	--synchro summon

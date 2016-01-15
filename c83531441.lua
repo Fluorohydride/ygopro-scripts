@@ -1,4 +1,5 @@
 --彼岸の旅人 ダンテ
+--Dante, Traveler of the Burning Abyss
 function c83531441.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

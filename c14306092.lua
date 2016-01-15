@@ -1,4 +1,5 @@
 --牙鮫帝シャーク・カイゼル
+--Shark Caesar
 function c14306092.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,3,nil,nil,5)

@@ -1,4 +1,5 @@
 --地縛神 Chacu Challhua
+--Earthbound Immortal Chacu Challhua
 function c69931927.initial_effect(c)
 	c:SetUniqueOnField(1,1,10000000)
 	--

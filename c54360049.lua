@@ -1,4 +1,5 @@
 --カトブレパスと運命の魔女
+--Catoblepas and the Witch of Fate
 function c54360049.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

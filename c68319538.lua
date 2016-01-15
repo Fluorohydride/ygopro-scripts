@@ -1,4 +1,5 @@
 --宇宙砦ゴルガー
+--Cosmic Fortress Gol'gar
 function c68319538.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,652362),aux.NonTuner(Card.IsSetCard,0xc),1)

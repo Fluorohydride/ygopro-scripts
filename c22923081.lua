@@ -1,4 +1,5 @@
 --黒魔導戦士 ブレイカー
+--Breaker the Dark Magical Warrior
 function c22923081.initial_effect(c)
 	c:EnableCounterPermit(0x3001)
 	--summon success

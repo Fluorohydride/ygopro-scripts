@@ -1,4 +1,5 @@
 --地縛霊の誘い
+--Call of the Earthbound
 function c65743242.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

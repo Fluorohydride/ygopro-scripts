@@ -1,4 +1,5 @@
 --音響戦士サイザス
+--Symphonic Warrior Sizerrs
 function c49919798.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

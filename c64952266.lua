@@ -1,4 +1,5 @@
 --アゲインスト・ウィンド
+--Against the Wind
 function c64952266.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

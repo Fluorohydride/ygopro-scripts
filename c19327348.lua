@@ -1,4 +1,5 @@
 --闇霊使いダルク
+--Dharc the Dark Charmer
 function c19327348.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

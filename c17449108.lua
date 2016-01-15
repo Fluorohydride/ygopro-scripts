@@ -1,4 +1,5 @@
 --撲滅の使徒
+--Nobleman of Extermination
 function c17449108.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

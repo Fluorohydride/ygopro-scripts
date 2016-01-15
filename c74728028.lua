@@ -1,4 +1,5 @@
 --エクシーズ・レセプション
+--Xyz Reception
 function c74728028.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

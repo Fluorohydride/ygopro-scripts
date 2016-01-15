@@ -1,4 +1,5 @@
 --RUM－リミテッド・バリアンズ・フォース
+--Rank-Up-Magic Limited Barian's Force
 function c92365601.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

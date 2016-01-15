@@ -1,4 +1,5 @@
 --RUM－アストラル・フォース
+--Rank-Up-Magic Astral Force
 function c45950291.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --デーモン・イーター
+--Nefarious Archfiend Eater of Nefariousness
 function c60666820.initial_effect(c)
 	c:SetUniqueOnField(1,0,60666820)
 	--spsummon

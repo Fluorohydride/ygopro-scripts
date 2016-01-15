@@ -1,4 +1,5 @@
 --魔術の呪文書
+--Magic Formula
 function c67227834.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

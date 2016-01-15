@@ -1,4 +1,5 @@
 --雷の裁き
+--Judgment of Thunder
 function c85080048.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

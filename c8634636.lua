@@ -1,4 +1,5 @@
 --尾も白い黒猫
+--Dark Cat with White Tail
 function c8634636.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

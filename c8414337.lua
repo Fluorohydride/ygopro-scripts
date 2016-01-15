@@ -1,4 +1,5 @@
 --ガスタの風塵
+--Dust Storm of Gusto
 function c8414337.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

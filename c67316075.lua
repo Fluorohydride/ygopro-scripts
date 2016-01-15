@@ -1,4 +1,5 @@
 --堕天使ナース－レフィキュル
+--Nurse Reficule the Fallen One
 function c67316075.initial_effect(c)
 	--recover conversion
 	local e1=Effect.CreateEffect(c)

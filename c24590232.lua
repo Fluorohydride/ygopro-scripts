@@ -1,4 +1,5 @@
 --王魂調和
+--Harmony of the King's Soul
 function c24590232.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

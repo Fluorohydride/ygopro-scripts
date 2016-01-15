@@ -1,4 +1,5 @@
 --超量士グリーンレイヤー
+--Super Quantum Mecha Pilot Green Layer
 function c85374678.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

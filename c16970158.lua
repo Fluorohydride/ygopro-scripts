@@ -1,4 +1,5 @@
 --墓場からの呼び声
+--Call of the Grave
 function c16970158.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

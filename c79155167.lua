@@ -1,4 +1,5 @@
 --アーマーブラスト
+--Armor Blast
 function c79155167.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

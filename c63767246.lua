@@ -1,4 +1,5 @@
 --No.38 希望魁竜タイタニック・ギャラクシー
+--Number 38: Hope Harbinger Dragon Titanic Galaxy
 function c63767246.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

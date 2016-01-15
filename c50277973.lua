@@ -1,4 +1,5 @@
 --鏡像のスワンプマン
+--Swamp Mirrorer
 function c50277973.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

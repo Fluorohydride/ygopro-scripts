@@ -1,4 +1,5 @@
 --魔導書廊エトワール
+--Spellbook Star Hall
 function c56321639.initial_effect(c)
 	c:EnableCounterPermit(0x3001)
 	--Activate

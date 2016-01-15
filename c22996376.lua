@@ -1,4 +1,5 @@
 --百獣王 ベヒーモス
+--Behemoth the King of All Animals
 function c22996376.initial_effect(c)
 	--summon/set with 1 tribute
 	local e1=Effect.CreateEffect(c)

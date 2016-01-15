@@ -1,4 +1,5 @@
 --統制訓練
+--Attention!
 function c85352446.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

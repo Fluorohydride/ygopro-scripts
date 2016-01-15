@@ -1,4 +1,5 @@
 --曙光の騎士
+--Dawn Knight
 function c6351548.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

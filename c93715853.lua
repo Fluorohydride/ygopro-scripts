@@ -1,4 +1,5 @@
 --魔神アーク・マキナ
+--Wicked God Ark Makina
 function c93715853.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

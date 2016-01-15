@@ -1,4 +1,5 @@
 --氷結界の御庭番
+--Secret Guards of the Ice Barrier
 function c27527047.initial_effect(c)
 	--untargetable
 	local e1=Effect.CreateEffect(c)

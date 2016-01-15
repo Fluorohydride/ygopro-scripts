@@ -1,4 +1,5 @@
 --ダイナミスト・ケラトプス
+--Dinomist Ceratops
 function c37752990.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

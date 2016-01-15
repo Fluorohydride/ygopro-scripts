@@ -1,4 +1,5 @@
 --ダークファミリア
+--Spear Cretin
 function c58551308.initial_effect(c)
 	--flip effect
 	local e1=Effect.CreateEffect(c)

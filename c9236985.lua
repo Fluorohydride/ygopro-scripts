@@ -1,4 +1,5 @@
 --リチュアの写魂鏡
+--Gishki Photomirror
 function c9236985.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --コアキメイル・シーパンサー
+--Koa'ki Meiru Sea Panther
 function c74576482.initial_effect(c)
 	--cost
 	local e1=Effect.CreateEffect(c)

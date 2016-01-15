@@ -1,4 +1,5 @@
 --絶対王 バック・ジャック
+--Absolute King Back Jack
 function c60990740.initial_effect(c)
 	--sset
 	local e1=Effect.CreateEffect(c)

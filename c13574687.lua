@@ -1,4 +1,5 @@
 --ワンショット・キャノン
+--Turbo Cannon
 function c13574687.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure2(c,aux.FilterBoolFunction(Card.IsCode,6142213),aux.NonTuner(nil))

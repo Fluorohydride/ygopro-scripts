@@ -1,4 +1,5 @@
 --青眼の双爆裂龍
+--Blue-Eyes Twin Burst Dragon
 function c2129638.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

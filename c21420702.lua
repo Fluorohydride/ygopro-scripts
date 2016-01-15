@@ -1,4 +1,5 @@
 --ブレイズ・キャノン－トライデント
+--Tri-Blaze Accelerator
 function c21420702.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

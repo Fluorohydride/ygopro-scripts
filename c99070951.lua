@@ -1,4 +1,5 @@
 --サイ・ガール
+--Esper Girl
 function c99070951.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

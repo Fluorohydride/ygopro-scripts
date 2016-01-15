@@ -1,4 +1,5 @@
 --一族の掟
+--The Regulation of Tribe
 function c296499.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

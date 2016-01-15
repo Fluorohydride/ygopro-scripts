@@ -1,4 +1,5 @@
 --XX－セイバー ダークソウル
+--XX-Saber Darksoul
 function c31383545.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

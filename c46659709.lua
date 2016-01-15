@@ -1,4 +1,5 @@
 --銀河戦士
+--Galaxy Soldier
 function c46659709.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

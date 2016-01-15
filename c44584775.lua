@@ -1,4 +1,5 @@
 --ダメージ＝レプトル
+--Damage = Reptile
 function c44584775.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --超戦士の儀式
+--Super Soldier Ritual
 function c14094090.initial_effect(c)
 	aux.AddRitualProcEqual(c,c14094090.ritual_filter)
 	--spsummon

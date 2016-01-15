@@ -1,4 +1,5 @@
 --Emトリック・クラウン
+--Performage Trick Clown
 function c67696066.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --聖霊獣騎 ペトルフィン
+--Ritual Beast Ulti-Pettlephin
 function c12678870.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

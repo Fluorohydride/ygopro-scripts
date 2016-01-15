@@ -1,4 +1,5 @@
 --PSYフレームギア・α
+--PSY-Framegear Alpha
 function c75425043.initial_effect(c)
 	c:EnableUnsummonable()
 	--splimit

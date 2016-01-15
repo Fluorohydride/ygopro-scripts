@@ -1,4 +1,5 @@
 --孤炎星－ロシシン
+--Brotherhood of the Fire Fist - Boar
 function c66762372.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

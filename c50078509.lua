@@ -1,4 +1,5 @@
 --デモンズ・チェーン
+--Fiendish Chain
 function c50078509.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

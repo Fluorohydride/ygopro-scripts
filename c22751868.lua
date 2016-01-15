@@ -1,4 +1,5 @@
 --風雲カラクリ城
+--Karakuri Showdown Castle
 function c22751868.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

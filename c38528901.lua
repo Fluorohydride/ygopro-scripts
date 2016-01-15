@@ -1,4 +1,5 @@
 --氷結界の決起隊
+--Shock Troops of the Ice Barrier
 function c38528901.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

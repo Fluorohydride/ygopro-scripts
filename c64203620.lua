@@ -1,4 +1,5 @@
 --極星邪竜ヨルムンガンド
+--Jormungardr the Nordic Serpent
 function c64203620.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

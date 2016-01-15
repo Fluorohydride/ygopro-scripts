@@ -1,4 +1,5 @@
 --ガスタの巫女 ウィンダ
+--Winda, Priestess of Gusto
 function c54455435.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

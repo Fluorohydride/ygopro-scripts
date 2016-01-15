@@ -1,4 +1,5 @@
 --DDD極智王カオス・アポカリプス
+--D/D/D Great Wise King Chaos Apocalypse
 function c83303851.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

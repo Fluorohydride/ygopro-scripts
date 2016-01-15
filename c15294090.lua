@@ -1,4 +1,5 @@
 --デステニー・ミラージュ
+--Destiny Mirage
 function c15294090.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

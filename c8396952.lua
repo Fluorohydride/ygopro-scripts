@@ -1,4 +1,5 @@
 --アルカナフォースI－THE MAGICIAN
+--Arcana Force I - The Magician
 function c8396952.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ブルーローズ・ドラゴン
+--Blue Rose Dragon
 function c98884569.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

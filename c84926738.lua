@@ -1,4 +1,5 @@
 --雷仙人
+--The Immortal of Thunder
 function c84926738.initial_effect(c)
 	--flip effect
 	local e1=Effect.CreateEffect(c)

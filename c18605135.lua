@@ -1,4 +1,5 @@
 --竜巻海流壁
+--Tornado Wall
 function c18605135.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

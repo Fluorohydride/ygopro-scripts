@@ -1,4 +1,5 @@
 --ジャンク・ジャイアント
+--Junk Giant
 function c34492631.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

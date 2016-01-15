@@ -1,4 +1,5 @@
 --墓穴の道連れ
+--Dragged Down into the Grave
 function c16435215.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

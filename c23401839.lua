@@ -1,4 +1,5 @@
 --センジュ・ゴッド
+--Senju of the Thousand Hands
 function c23401839.initial_effect(c)
 	--effect
 	local e1=Effect.CreateEffect(c)

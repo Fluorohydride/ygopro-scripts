@@ -1,4 +1,5 @@
 --六武衆の師範
+--Grandmaster of the Six Samurai
 function c83039729.initial_effect(c)
 	c:SetUniqueOnField(1,0,83039729)
 	--special summon

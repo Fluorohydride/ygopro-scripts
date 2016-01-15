@@ -1,4 +1,5 @@
 --奇跡の蘇生
+--Miraculous Rebirth
 function c37011715.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

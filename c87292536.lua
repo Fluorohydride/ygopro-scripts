@@ -1,4 +1,5 @@
 --XX－セイバー レイジグラ
+--XX-Saber Ragigura
 function c87292536.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

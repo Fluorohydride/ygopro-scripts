@@ -1,4 +1,5 @@
 --秘竜星－セフィラシウゴ
+--Zefraniu, Secret of the Yang Zing
 function c58990362.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

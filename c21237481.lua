@@ -1,4 +1,5 @@
 --零式魔導粉砕機
+--Type Zero Magic Crusher
 function c21237481.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

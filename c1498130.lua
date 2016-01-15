@@ -1,4 +1,5 @@
 --六武衆の影武者
+--Kagemusha of the Six Samurai
 function c1498130.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

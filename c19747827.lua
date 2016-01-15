@@ -1,4 +1,5 @@
 --真紅眼の黒竜剣
+--Red-Eyes Black Dragon Sword
 function c19747827.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

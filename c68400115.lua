@@ -1,4 +1,5 @@
 --裸の王様
+--The Emperor's Holiday
 function c68400115.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

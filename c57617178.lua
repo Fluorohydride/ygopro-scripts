@@ -1,4 +1,5 @@
 --ソニックバード
+--Sonic Bird
 function c57617178.initial_effect(c)
 	--effect
 	local e1=Effect.CreateEffect(c)

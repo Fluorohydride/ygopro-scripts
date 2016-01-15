@@ -1,4 +1,5 @@
 --サイコ・チャージ
+--Psychic Overload
 function c82633308.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

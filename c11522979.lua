@@ -1,4 +1,5 @@
 --CNo.69 紋章死神カオス・オブ・アームズ
+--Number C69: Heraldry Crest of Horror
 function c11522979.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,4)

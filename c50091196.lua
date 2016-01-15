@@ -1,4 +1,5 @@
 --フォーミュラ・シンクロン
+--Formula Synchron
 function c50091196.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure2(c,nil,aux.NonTuner(nil))

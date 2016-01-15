@@ -1,4 +1,5 @@
 --イビリチュア・リヴァイアニマ
+--Evigishki Levianima
 function c71203602.initial_effect(c)
 	c:EnableReviveLimit()
 	--confirm

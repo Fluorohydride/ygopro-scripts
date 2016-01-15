@@ -1,4 +1,5 @@
 --悪夢再び
+--Recurring Nightmare
 function c81191584.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

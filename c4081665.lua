@@ -1,4 +1,5 @@
 --Emスティルツ・シューター
+--Performage Stilts Launcher
 function c4081665.initial_effect(c)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)

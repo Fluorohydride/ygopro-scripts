@@ -1,4 +1,5 @@
 --波動共鳴
+--Harmonic Waves
 function c58441120.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

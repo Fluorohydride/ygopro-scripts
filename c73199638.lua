@@ -1,4 +1,5 @@
 --海皇の咆哮
+--Call of the Atlanteans
 function c73199638.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

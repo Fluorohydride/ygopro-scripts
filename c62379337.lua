@@ -1,4 +1,5 @@
 --バイオレット・ウィッチ
+--Violet Witch
 function c62379337.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --YZ－キャタピラー・ドラゴン
+--YZ-Tank Dragon
 function c25119460.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

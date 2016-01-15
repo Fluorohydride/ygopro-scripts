@@ -1,4 +1,5 @@
 --魔法族の聖域
+--Secret Sanctuary of the Spellcasters
 function c25407643.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

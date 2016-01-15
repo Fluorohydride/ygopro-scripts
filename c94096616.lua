@@ -1,4 +1,5 @@
 --武神器－オロチ
+--Bujingi Ophidian
 function c94096616.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

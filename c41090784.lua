@@ -1,4 +1,5 @@
 --氷結界の大僧正
+--Dai-sojo of the Ice Barrier
 function c41090784.initial_effect(c)
 	--to defence
 	local e1=Effect.CreateEffect(c)

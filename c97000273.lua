@@ -1,4 +1,5 @@
 --スクラップ・コング
+--Scrap Kong
 function c97000273.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

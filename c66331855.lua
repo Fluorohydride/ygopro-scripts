@@ -1,4 +1,5 @@
 --D・チャッカン
+--Morphtronic Datatron
 function c66331855.initial_effect(c)
 	--damagea
 	local e1=Effect.CreateEffect(c)

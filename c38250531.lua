@@ -1,4 +1,5 @@
 --紅貴士－ヴァンパイア・ブラム
+--Crimson Knight Vampire Bram
 function c38250531.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_ZOMBIE),5,2)

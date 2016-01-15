@@ -1,4 +1,5 @@
 --捷炎星－セイヴン
+--Brotherhood of the Fire Fist - Raven
 function c44860890.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)

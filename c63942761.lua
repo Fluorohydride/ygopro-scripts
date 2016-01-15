@@ -1,4 +1,5 @@
 --リチュア・ノエリア
+--Gishki Noellia
 function c63942761.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

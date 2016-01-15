@@ -1,4 +1,5 @@
 --盗人の煙玉
+--Smoke Grenade of the Thief
 function c63789924.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

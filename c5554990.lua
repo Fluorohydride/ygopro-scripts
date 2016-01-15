@@ -1,4 +1,5 @@
 --エレキンメダイ
+--Wattberyx
 function c5554990.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

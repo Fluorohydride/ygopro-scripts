@@ -1,4 +1,5 @@
 --レアル・ジェネクス・クロキシアン
+--Locomotion R-Genex
 function c38354937.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x2),aux.NonTuner(Card.IsAttribute,ATTRIBUTE_DARK),1)

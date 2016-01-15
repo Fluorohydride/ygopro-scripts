@@ -1,4 +1,5 @@
 --ハーピィ・ダンサー
+--Harpie Dancer
 function c68815132.initial_effect(c)
 	--return
 	local e1=Effect.CreateEffect(c)

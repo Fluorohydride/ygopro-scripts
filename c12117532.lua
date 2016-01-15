@@ -1,4 +1,5 @@
 --罅割れゆく斧
+--Shattered Axe
 function c12117532.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

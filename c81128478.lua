@@ -1,4 +1,5 @@
 --ライヤー・ワイヤー
+--Lair Wire
 function c81128478.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

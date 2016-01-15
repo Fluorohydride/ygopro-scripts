@@ -1,4 +1,5 @@
 --混沌球体
+--Sphere of Chaos
 function c82693042.initial_effect(c)
 	--attribute
 	local e1=Effect.CreateEffect(c)

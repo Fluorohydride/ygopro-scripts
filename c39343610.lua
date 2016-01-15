@@ -1,4 +1,5 @@
 --ダークブレイズドラゴン
+--Darkblaze Dragon
 function c39343610.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

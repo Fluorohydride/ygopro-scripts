@@ -1,4 +1,5 @@
 --悪魔ガエル
+--Beelze Frog
 function c49522489.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

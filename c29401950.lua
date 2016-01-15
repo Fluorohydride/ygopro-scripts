@@ -1,4 +1,5 @@
 --奈落の落とし穴
+--Bottomless Trap Hole
 function c29401950.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)

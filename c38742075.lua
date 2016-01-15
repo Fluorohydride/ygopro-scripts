@@ -1,4 +1,5 @@
 --辺境の大賢者
+--Frontier Wiseman
 function c38742075.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

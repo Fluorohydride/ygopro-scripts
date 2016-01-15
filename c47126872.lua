@@ -1,4 +1,5 @@
 --スペースタイムポリス
+--Space-Time Police
 function c47126872.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

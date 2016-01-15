@@ -1,4 +1,5 @@
 --デビルマゼラ
+--Mazera DeVille
 function c6133894.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

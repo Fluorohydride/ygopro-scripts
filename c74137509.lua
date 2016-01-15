@@ -1,4 +1,5 @@
 --天使のサイコロ
+--Graceful Dice
 function c74137509.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --エヴォルカイザー・ソルデ
+--Evolzar Solda
 function c18511599.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DINOSAUR),6,2)

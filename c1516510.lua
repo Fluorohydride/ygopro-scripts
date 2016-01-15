@@ -1,4 +1,5 @@
 --ルーンアイズ・ペンデュラム・ドラゴン
+--Rune-Eyes Pendulum Dragon
 function c1516510.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

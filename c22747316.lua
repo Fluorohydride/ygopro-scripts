@@ -1,4 +1,5 @@
 --しっぺ返し
+--Retort
 function c22747316.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

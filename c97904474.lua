@@ -1,4 +1,5 @@
 --手錠龍
+--Handcuffs Dragon
 function c97904474.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

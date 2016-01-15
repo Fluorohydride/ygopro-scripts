@@ -1,4 +1,5 @@
 --剣闘獣スパルティクス
+--Gladiator Beast Spartacus
 function c79580323.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

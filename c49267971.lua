@@ -1,4 +1,5 @@
 --死角からの一撃
+--Blind Spot Strike
 function c49267971.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

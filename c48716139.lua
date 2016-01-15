@@ -1,4 +1,5 @@
 --草薙剣
+--Sword of Kusanagi
 function c48716139.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --疾風！凶殺陣
+--Swift Samurai Storm!
 function c71934924.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --しびれ薬
+--Paralyzing Potion
 function c50152549.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --セイクリッド・テンペスト
+--Constellar Tempest
 function c4820694.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --虫除けバリアー
+--Insect Barrier
 function c23615409.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

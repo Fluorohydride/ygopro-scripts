@@ -1,4 +1,5 @@
 --アルカナフォースVII－THE CHARIOT
+--Arcana Force VII - The Chariot
 function c34568403.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)

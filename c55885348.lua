@@ -1,4 +1,5 @@
 --Kozmo Dark Destroyer
+--Kozmo Dark Destroyer
 function c55885348.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

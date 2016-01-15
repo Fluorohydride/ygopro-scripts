@@ -1,4 +1,5 @@
 --伝説の白石
+--The White Stone of Legend
 function c79814787.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

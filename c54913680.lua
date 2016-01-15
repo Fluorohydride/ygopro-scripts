@@ -1,4 +1,5 @@
 --六武ノ書
+--Six Scrolls of the Samurai
 function c54913680.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

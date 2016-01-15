@@ -1,4 +1,5 @@
 --レプティレス・スポーン
+--Reptilianne Spawn
 function c21179143.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

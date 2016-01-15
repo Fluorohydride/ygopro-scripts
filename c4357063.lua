@@ -1,4 +1,5 @@
 --先史遺産都市バビロン
+--Chronomaly City Babylon
 function c4357063.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

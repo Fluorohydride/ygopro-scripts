@@ -1,4 +1,5 @@
 --アシッドレイン
+--Acidic Downpour
 function c35956022.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ハウリング・ウォリアー
+--Feedback Warrior
 function c50785356.initial_effect(c)
 	--lv change
 	local e1=Effect.CreateEffect(c)

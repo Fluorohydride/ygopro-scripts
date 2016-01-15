@@ -1,4 +1,5 @@
 --蝶の短剣－エルマ
+--Butterfly Dagger - Elma
 function c69243953.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --闇の呪縛
+--Shadow Spell
 function c29267084.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --リチュア・マーカー
+--Gishki Marker
 function c39905966.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

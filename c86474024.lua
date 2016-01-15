@@ -1,4 +1,5 @@
 --共同戦線
+--United Front
 function c86474024.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

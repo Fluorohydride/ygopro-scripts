@@ -1,4 +1,5 @@
 --天空聖者メルティウス
+--Meltiel, Sage of the Sky
 function c49905576.initial_effect(c)
 	--recover&destroy
 	local e1=Effect.CreateEffect(c)

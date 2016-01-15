@@ -1,4 +1,5 @@
 --デストーイ・マッド・キマイラ
+--Frightfur Chimera
 function c83866861.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

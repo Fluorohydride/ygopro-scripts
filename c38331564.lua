@@ -1,4 +1,5 @@
 --光天使セプター
+--Star Seraph Scepter
 function c38331564.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

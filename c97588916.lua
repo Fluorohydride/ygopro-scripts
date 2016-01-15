@@ -1,4 +1,5 @@
 --ブンボーグ007
+--Deskbot 007
 function c97588916.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

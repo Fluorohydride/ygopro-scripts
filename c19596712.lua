@@ -1,4 +1,5 @@
 --アビスケイル－ケートス
+--Abyss-scale of Cetus
 function c19596712.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

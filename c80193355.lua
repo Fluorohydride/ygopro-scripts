@@ -1,4 +1,5 @@
 --救出劇
+--Dramatic Rescue
 function c80193355.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

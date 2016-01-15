@@ -1,4 +1,5 @@
 --海竜神の加護
+--Aegis of the Ocean Dragon Lord
 function c7935043.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

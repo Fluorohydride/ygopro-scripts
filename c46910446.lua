@@ -1,4 +1,5 @@
 --ヘル・アライアンス
+--Chthonian Alliance
 function c46910446.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

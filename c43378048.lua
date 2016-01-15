@@ -1,4 +1,5 @@
 --混沌幻魔アーミタイル
+--Armityle the Chaos Phantom
 function c43378048.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

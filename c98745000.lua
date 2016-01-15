@@ -1,4 +1,5 @@
 --ジャッカルの聖戦士
+--Mystical Knight of Jackal
 function c98745000.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --クリフォート・シェル
+--Qliphort Shell
 function c90885155.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

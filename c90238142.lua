@@ -1,4 +1,5 @@
 --ハーピィ・チャネラー
+--Harpie Channeler
 function c90238142.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --断層地帯
+--Canyon
 function c28120197.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

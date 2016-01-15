@@ -1,4 +1,5 @@
 --E・HERO アナザー・ネオス
+--Elemental HERO Neos Alius
 function c69884162.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--code

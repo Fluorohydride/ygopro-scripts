@@ -1,4 +1,5 @@
 --聖鳥クレイン
+--Sacred Crane
 function c30914564.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

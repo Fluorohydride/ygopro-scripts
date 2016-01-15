@@ -1,4 +1,5 @@
 --砂の魔女
+--Mystical Sand
 function c32751480.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

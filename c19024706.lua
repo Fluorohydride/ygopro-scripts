@@ -1,4 +1,5 @@
 --ヒーロー逆襲
+--Hero Counterattack
 function c19024706.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

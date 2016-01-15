@@ -1,4 +1,5 @@
 --地砕き
+--Smashing Ground
 function c97169186.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

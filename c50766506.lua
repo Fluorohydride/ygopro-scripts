@@ -1,4 +1,5 @@
 --忍法 分身の術
+--Ninjitsu Art of Duplication
 function c50766506.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

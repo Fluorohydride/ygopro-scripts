@@ -1,4 +1,5 @@
 --暗黒竜 コラプサーペント
+--Black Dragon Collapserpent
 function c61901281.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

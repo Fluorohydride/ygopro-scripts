@@ -1,4 +1,5 @@
 --機限爆弾
+--Mektimed Blast
 function c41475424.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

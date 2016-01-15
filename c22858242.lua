@@ -1,4 +1,5 @@
 --猿魔王ゼーマン
+--Zeman the Ape King
 function c22858242.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure2(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_DARK),aux.NonTuner(Card.IsRace,RACE_BEAST))

@@ -1,4 +1,5 @@
 --龍炎剣の使い手
+--Master of the Flaming Dragonswords
 function c34160055.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

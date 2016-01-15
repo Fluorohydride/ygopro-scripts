@@ -1,4 +1,5 @@
 --スピードリバース
+--Speed Recovery
 function c88204302.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

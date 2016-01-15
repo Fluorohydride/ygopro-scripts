@@ -1,4 +1,5 @@
 --ゴーストリック・キョンシー
+--Ghostrick Jiangshi
 function c80885284.initial_effect(c)
 	--summon limit
 	local e1=Effect.CreateEffect(c)

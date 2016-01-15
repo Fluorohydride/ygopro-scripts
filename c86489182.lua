@@ -1,4 +1,5 @@
 --始祖神鳥シムルグ
+--Simorgh, Bird of Ancestry
 function c86489182.initial_effect(c)
 	--normal monster
 	local e1=Effect.CreateEffect(c)

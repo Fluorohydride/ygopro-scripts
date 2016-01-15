@@ -1,4 +1,5 @@
 --エクシーズ・ユニバース
+--Xyz Universe
 function c11109820.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

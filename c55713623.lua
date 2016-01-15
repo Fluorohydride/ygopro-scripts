@@ -1,4 +1,5 @@
 --収縮
+--Shrink
 function c55713623.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

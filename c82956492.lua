@@ -1,4 +1,5 @@
 --DDD神託王ダルク
+--D/D/D Oracle King d'Arc
 function c82956492.initial_effect(c)
 	--fustion material
 	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0xaf),2,true)

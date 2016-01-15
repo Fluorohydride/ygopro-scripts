@@ -1,4 +1,5 @@
 --レアメタル・ナイト
+--Super Roboyarou
 function c1412158.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

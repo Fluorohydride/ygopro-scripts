@@ -1,4 +1,5 @@
 --氷結界の虎王ドゥローレン
+--Dewloren, Tiger King of the Ice Barrier
 function c70583986.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_WATER),1)

@@ -1,4 +1,5 @@
 --スカル・フレイム
+--Skull Flame
 function c99899504.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

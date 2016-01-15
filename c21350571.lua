@@ -1,4 +1,5 @@
 --幻獣の角
+--Horn of the Phantom Beast
 function c21350571.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

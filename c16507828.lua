@@ -1,4 +1,5 @@
 --ブラキオレイドス
+--Bracchio-raidus
 function c16507828.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

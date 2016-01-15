@@ -1,4 +1,5 @@
 --同族感電ウィルス
+--Tribe-Shocking Virus
 function c86361354.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

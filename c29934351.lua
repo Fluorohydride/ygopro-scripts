@@ -1,4 +1,5 @@
 --地縛波
+--Earthbound Wave
 function c29934351.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)

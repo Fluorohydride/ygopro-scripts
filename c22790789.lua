@@ -1,4 +1,5 @@
 --巨大戦艦 クリスタル・コア
+--B.E.S. Crystal Core
 function c22790789.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

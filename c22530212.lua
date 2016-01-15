@@ -1,4 +1,5 @@
 --マジック・ハンド
+--Magic Hand
 function c22530212.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

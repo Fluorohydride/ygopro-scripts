@@ -1,4 +1,5 @@
 --極星宝メギンギョルズ
+--Nordic Relic Megingjord
 function c86827882.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

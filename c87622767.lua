@@ -1,4 +1,5 @@
 --ファイナルサイコオーガ
+--Final Psychic Ogre
 function c87622767.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

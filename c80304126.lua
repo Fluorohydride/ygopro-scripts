@@ -1,4 +1,5 @@
 --マジシャンズ・ヴァルキリア
+--Magician's Valkyria
 function c80304126.initial_effect(c)
 	--cannot be battle target
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --狭き通路
+--Narrow Pass
 function c40172183.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

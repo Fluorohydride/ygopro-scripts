@@ -1,4 +1,5 @@
 --セイクリッドの超新生
+--Constellar Star Cradle
 function c90156158.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

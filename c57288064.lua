@@ -1,4 +1,5 @@
 --刀神－不知火
+--Shiranui Samuraisaga
 function c57288064.initial_effect(c)
 	c:SetSPSummonOnce(57288064)
 	--synchro summon

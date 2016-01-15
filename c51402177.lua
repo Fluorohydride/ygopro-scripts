@@ -1,4 +1,5 @@
 --スフィンクス・テーレイア
+--Sphinx Teleia
 function c51402177.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

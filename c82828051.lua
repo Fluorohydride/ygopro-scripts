@@ -1,4 +1,5 @@
 --アースクエイク
+--Earthquake
 function c82828051.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

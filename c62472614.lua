@@ -1,4 +1,5 @@
 --疫病
+--Pestilence
 function c62472614.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --オリエント・ドラゴン
+--Orient Dragon
 function c68124775.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

@@ -1,4 +1,5 @@
 --能力調整
+--Level Tuning
 function c74741494.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

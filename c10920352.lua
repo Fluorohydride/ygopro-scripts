@@ -1,4 +1,5 @@
 --M・HERO ヴェイパー
+--Masked HERO Vapor
 function c10920352.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

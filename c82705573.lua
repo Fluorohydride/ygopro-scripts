@@ -1,4 +1,5 @@
 --バックファイア
+--Backfire
 function c82705573.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

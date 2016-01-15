@@ -1,4 +1,5 @@
 --トリシューラの影霊衣
+--Nekroz of Trishula
 function c52068432.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

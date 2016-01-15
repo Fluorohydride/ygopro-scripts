@@ -1,4 +1,5 @@
 --ヴェルズ・オ・ウィスプ
+--Evilswarm Obliviwisp
 function c5284653.initial_effect(c)
 	--Disable
 	local e1=Effect.CreateEffect(c)

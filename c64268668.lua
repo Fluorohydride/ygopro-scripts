@@ -1,4 +1,5 @@
 --サイバー・オーガ
+--Cyber Ogre
 function c64268668.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

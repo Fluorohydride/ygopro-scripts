@@ -1,4 +1,5 @@
 --暗黒の瘴気
+--Dark Smog
 function c41930553.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

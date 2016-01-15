@@ -1,4 +1,5 @@
 --マジック・リアクター・AID
+--Spell Reactor・RE
 function c15175429.initial_effect(c)
 	--destroy&damage
 	local e1=Effect.CreateEffect(c)

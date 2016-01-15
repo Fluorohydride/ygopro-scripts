@@ -1,4 +1,5 @@
 --魔装戦士 ドラゴディウス
+--Dragodeus, the Empowered Warrior
 function c65472618.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

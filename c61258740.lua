@@ -1,4 +1,5 @@
 --水神の護符
+--Sea Lord's Amulet
 function c61258740.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --スーパービークロイド－ステルス・ユニオン
+--Super Vehicroid - Stealth Union
 function c3897065.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

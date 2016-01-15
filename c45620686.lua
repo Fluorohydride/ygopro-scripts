@@ -1,4 +1,5 @@
 --騒々虫
+--Noisy Gnat
 function c45620686.initial_effect(c)
 	--lvup
 	local e1=Effect.CreateEffect(c)

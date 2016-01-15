@@ -1,4 +1,5 @@
 --コア濃度圧縮
+--Core Compression
 function c13997673.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

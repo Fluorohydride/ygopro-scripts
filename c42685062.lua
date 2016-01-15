@@ -1,4 +1,5 @@
 --地獄からの使い
+--Emissary from Pandemonium
 function c42685062.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

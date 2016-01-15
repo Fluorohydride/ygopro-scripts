@@ -1,4 +1,5 @@
 --物資調達員
+--Supply
 function c44072894.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

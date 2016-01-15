@@ -1,4 +1,5 @@
 --SR赤目のダイス
+--Speedroid Red-Eyed Dice
 function c16725505.initial_effect(c)
 	--lv change
 	local e1=Effect.CreateEffect(c)

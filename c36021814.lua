@@ -1,4 +1,5 @@
 --ワイトキング
+--King of the Skull Servants
 function c36021814.initial_effect(c)
 	--base attack
 	local e1=Effect.CreateEffect(c)

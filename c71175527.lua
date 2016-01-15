@@ -1,4 +1,5 @@
 --ガスタの神裔 ピリカ
+--Pilica, Descendant of Gusto
 function c71175527.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

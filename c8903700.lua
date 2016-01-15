@@ -1,4 +1,5 @@
 --儀式魔人リリーサー
+--Djinn Releaser of Rituals
 function c8903700.initial_effect(c)
 	--ritual material
 	local e1=Effect.CreateEffect(c)

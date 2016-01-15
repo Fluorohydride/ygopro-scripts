@@ -1,4 +1,5 @@
 --プリン隊
+--Putrid Pudding Body Buddies
 function c85101097.initial_effect(c)
 	--cannot release
 	local e1=Effect.CreateEffect(c)

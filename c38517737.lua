@@ -1,4 +1,5 @@
 --青眼の亜白龍
+--Blue-Eyes Alternative White Dragon
 function c38517737.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

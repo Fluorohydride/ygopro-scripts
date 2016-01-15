@@ -1,4 +1,5 @@
 --デストーイ・シザー・ウルフ
+--Frightfur Wolf
 function c11039171.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --エヴォリューション・バースト
+--Evolution Burst
 function c52875873.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

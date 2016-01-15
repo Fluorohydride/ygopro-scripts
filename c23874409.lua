@@ -1,4 +1,5 @@
 --カラクリ将軍 無零
+--Karakuri Shogun mdl 00 "Burei"
 function c23874409.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_MACHINE),1)

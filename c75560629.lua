@@ -1,4 +1,5 @@
 --フリント
+--Flint
 function c75560629.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

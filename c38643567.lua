@@ -1,4 +1,5 @@
 --甲虫装機の宝珠
+--Inzektor Orb
 function c38643567.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

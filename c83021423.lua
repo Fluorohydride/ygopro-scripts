@@ -1,4 +1,5 @@
 --チャッチャカアーチャー
+--Chachaka Archer
 function c83021423.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --剣闘獣の底力
+--Indomitable Gladiator Beast
 function c55136228.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

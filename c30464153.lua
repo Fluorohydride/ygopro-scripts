@@ -1,4 +1,5 @@
 --ウミノタウルス
+--Uminotaurus
 function c30464153.initial_effect(c)
 	--pierce
 	local e1=Effect.CreateEffect(c)

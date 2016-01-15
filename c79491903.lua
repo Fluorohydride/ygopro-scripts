@@ -1,4 +1,5 @@
 --レプティレス・ナージャ
+--Reptilianne Naga
 function c79491903.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

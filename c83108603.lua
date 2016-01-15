@@ -1,4 +1,5 @@
 --陽炎柱
+--Hazy Pillar
 function c83108603.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

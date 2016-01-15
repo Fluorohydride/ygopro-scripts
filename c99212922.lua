@@ -1,4 +1,5 @@
 --白竜の忍者
+--White Dragon Ninja
 function c99212922.initial_effect(c)
 	--spsummon limit
 	local e1=Effect.CreateEffect(c)

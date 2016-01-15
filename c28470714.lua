@@ -1,4 +1,5 @@
 --ブレードフライ
+--Bladefly
 function c28470714.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

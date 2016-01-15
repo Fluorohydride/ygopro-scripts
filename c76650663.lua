@@ -1,4 +1,5 @@
 --A・O・J ブラインド・サッカー
+--Ally of Justice Nullfier
 function c76650663.initial_effect(c)
 	--Disable
 	local e1=Effect.CreateEffect(c)

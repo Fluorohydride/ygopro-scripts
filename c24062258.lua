@@ -1,4 +1,5 @@
 --暗躍のドルイド・ドリュース
+--Secret Sect Druid Dru
 function c24062258.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

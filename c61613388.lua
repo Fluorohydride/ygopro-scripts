@@ -1,4 +1,5 @@
 --U.A.ターンオーバー・タクティクス
+--U.A. Turnover Tactics
 function c61613388.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

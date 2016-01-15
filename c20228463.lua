@@ -1,4 +1,5 @@
 --セレモニーベル
+--Ceremonial Bell
 function c20228463.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

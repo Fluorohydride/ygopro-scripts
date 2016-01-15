@@ -1,4 +1,5 @@
 --カウンター・ジェム
+--Crystal Counter
 function c11136371.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

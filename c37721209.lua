@@ -1,4 +1,5 @@
 --海竜－ダイダロス
+--Levia-Dragon - Daedalus
 function c37721209.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --遺言の仮面
+--The Mask of Remnants
 function c22610082.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

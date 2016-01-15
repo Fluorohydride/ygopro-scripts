@@ -1,4 +1,5 @@
 --魔草 マンドラゴラ
+--Magical Plant Mandragola
 function c7802006.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

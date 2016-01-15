@@ -1,4 +1,5 @@
 --ガチガチガンテツ
+--Gachi Gachi Gantetsu
 function c10002346.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,2)

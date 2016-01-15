@@ -1,4 +1,5 @@
 --ブレードラビット
+--Blade Rabbit
 function c58268433.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

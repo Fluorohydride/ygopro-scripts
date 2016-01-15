@@ -1,4 +1,5 @@
 --マジック・クロニクル
+--Spell Chronicle
 function c74402414.initial_effect(c)
 	local g=Group.CreateGroup()
 	g:KeepAlive()

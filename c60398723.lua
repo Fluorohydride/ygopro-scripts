@@ -1,4 +1,5 @@
 --森のざわめき
+--Murmur of the Forest
 function c60398723.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

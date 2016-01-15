@@ -1,4 +1,5 @@
 --BF－逆風のガスト
+--Blackwing - Gust the Backblast
 function c52869807.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

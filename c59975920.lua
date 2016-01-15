@@ -1,4 +1,5 @@
 --超量士レッドレイヤー
+--Super Quantum Mecha Pilot Red Layer
 function c59975920.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)

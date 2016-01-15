@@ -1,4 +1,5 @@
 --No.25 重装光学撮影機フォーカス・フォース
+--Number 25: Force Focus
 function c64554883.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,6,2)

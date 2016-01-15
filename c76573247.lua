@@ -1,4 +1,5 @@
 --エーリアン・ベーダー
+--Alien Infiltrator
 function c76573247.initial_effect(c)
 	--counter
 	local e1=Effect.CreateEffect(c)

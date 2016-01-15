@@ -1,4 +1,5 @@
 --宣告者の預言
+--Dawn of the Herald
 function c27383110.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

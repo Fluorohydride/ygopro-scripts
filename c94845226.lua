@@ -1,4 +1,5 @@
 --魔轟神獣ルビィラーダ
+--The Fabled Rubyruda
 function c94845226.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --一角獣のホーン
+--Horn of the Unicorn
 function c64047146.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --魔犬オクトロス
+--Doomdog Octhros
 function c58616392.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ジェムナイト・プリズムオーラ
+--Gem-Knight Prismaura
 function c93379652.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

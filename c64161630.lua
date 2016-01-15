@@ -1,4 +1,5 @@
 --パージ・レイ
+--Purge Ray
 function c64161630.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ガンバラナイト
+--Ganbara Knight
 function c24291651.initial_effect(c)
 	--to defence
 	local e1=Effect.CreateEffect(c)

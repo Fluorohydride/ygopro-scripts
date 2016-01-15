@@ -1,4 +1,5 @@
 --エクスプロード・ウィング・ドラゴン
+--Exploder Dragonwing
 function c40529384.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_DRAGON),1)

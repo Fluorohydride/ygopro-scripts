@@ -1,4 +1,5 @@
 --アマゾネス女王
+--Amazoness Queen
 function c15951532.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --獄炎のカース・オブ・ドラゴン
+--Infernal Curse of Dragon
 function c7241272.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

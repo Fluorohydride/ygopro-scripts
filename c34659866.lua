@@ -1,4 +1,5 @@
 --ダークシー・レスキュー
+--Darksea Rescue
 function c34659866.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

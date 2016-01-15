@@ -1,4 +1,5 @@
 --ネコ耳族
+--Cat's Ear Tribe
 function c95841282.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

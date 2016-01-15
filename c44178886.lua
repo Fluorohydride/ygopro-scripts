@@ -1,4 +1,5 @@
 --ライトロード・モンク エイリン
+--Ehren, Lightsworn Monk
 function c44178886.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

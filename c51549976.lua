@@ -1,4 +1,5 @@
 --ファイナル・インゼクション
+--Final Inzektion
 function c51549976.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

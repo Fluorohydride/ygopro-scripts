@@ -1,4 +1,5 @@
 --霞の谷のファルコン
+--Mist Valley Falcon
 function c82199284.initial_effect(c)
 	--attack cost
 	local e1=Effect.CreateEffect(c)

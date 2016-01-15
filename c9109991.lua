@@ -1,4 +1,5 @@
 --BF－鉄鎖のフェーン
+--Blackwing - Fane the Steel Chain
 function c9109991.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

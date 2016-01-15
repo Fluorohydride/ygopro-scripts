@@ -1,4 +1,5 @@
 --DNA移植手術
+--DNA Transplant
 function c56769674.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --暗黒の扉
+--The Dark Door
 function c30606547.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

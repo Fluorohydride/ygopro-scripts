@@ -1,4 +1,5 @@
 --ダークゼブラ
+--Dark Zebra
 function c59784896.initial_effect(c)
 	--to defence
 	local e1=Effect.CreateEffect(c)

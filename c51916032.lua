@@ -1,4 +1,5 @@
 --人造人間－サイコ・ジャッカー
+--Jinzo - Jector
 function c51916032.initial_effect(c)
 	--change
 	local e1=Effect.CreateEffect(c)

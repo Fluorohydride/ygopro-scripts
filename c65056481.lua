@@ -1,4 +1,5 @@
 --星因士 シャム
+--Satellarknight Alsahm
 function c65056481.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

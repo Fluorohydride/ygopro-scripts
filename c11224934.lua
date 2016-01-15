@@ -1,4 +1,5 @@
 --強化空間
+--Reinforced Space
 function c11224934.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

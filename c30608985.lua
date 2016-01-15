@@ -1,4 +1,5 @@
 --マジカル・アンダーテイカー
+--Magical Undertaker
 function c30608985.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

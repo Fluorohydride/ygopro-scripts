@@ -1,4 +1,5 @@
 --ラージマウス
+--Ooguchi
 function c58861941.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

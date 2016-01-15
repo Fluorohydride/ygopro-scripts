@@ -1,4 +1,5 @@
 --インターセプト・デーモン
+--Archfiend Interceptor
 function c14430063.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

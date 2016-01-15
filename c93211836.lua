@@ -1,4 +1,5 @@
 --アーミー・ジェネクス
+--Genex Army
 function c93211836.initial_effect(c)
 	--summon success
 	local e1=Effect.CreateEffect(c)

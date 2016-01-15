@@ -1,4 +1,5 @@
 --ハイパーサイコガンナー／バスター
+--Hyper Psychic Blaster/Assault Mode
 function c37169670.initial_effect(c)
 	c:EnableReviveLimit()
 	--Cannot special summon

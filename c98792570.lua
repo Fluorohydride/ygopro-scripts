@@ -1,4 +1,5 @@
 --受け継がれる力
+--Gift of the Martyr
 function c98792570.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

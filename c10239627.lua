@@ -1,4 +1,5 @@
 --マジカル・アブダクター
+--Magical Abductor
 function c10239627.initial_effect(c)
 	c:EnableCounterPermit(0x3001,LOCATION_PZONE+LOCATION_MZONE)
 	--pendulum summon

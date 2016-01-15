@@ -1,4 +1,5 @@
 --管魔人メロメロメロディ
+--Melomelody the Brass Djinn
 function c88942504.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

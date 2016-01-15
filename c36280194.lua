@@ -1,4 +1,5 @@
 --補充要員
+--Backup Soldier
 function c36280194.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

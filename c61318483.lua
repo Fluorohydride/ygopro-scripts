@@ -1,4 +1,5 @@
 --ゴーストリック・フロスト
+--Ghostrick Jackfrost
 function c61318483.initial_effect(c)
 	--summon limit
 	local e1=Effect.CreateEffect(c)

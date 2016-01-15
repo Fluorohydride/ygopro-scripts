@@ -1,4 +1,5 @@
 --スカーレッド・ノヴァ・ドラゴン
+--Red Nova Dragon
 function c97489701.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()

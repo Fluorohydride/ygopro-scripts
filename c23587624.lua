@@ -1,4 +1,5 @@
 --青天の霹靂
+--A Wild Monster Appears!
 function c23587624.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

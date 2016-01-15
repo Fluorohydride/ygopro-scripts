@@ -1,4 +1,5 @@
 --刻の封印
+--Time Seal
 function c35316708.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

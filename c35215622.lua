@@ -1,4 +1,5 @@
 --盲信するゴブリン
+--Blindly Loyal Goblin
 function c35215622.initial_effect(c)
 	--control
 	local e1=Effect.CreateEffect(c)

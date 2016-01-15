@@ -1,4 +1,5 @@
 --ダークロン
+--Darklon
 function c76202610.initial_effect(c)
 	--level,attribute
 	local e1=Effect.CreateEffect(c)

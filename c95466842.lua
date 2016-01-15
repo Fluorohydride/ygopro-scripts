@@ -1,4 +1,5 @@
 --水精鱗－アビスラング
+--Mermail Abysslung
 function c95466842.initial_effect(c)
 	--at limit
 	local e1=Effect.CreateEffect(c)

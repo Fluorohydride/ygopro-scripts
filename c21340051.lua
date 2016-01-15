@@ -1,4 +1,5 @@
 --ボアソルジャー
+--Boar Soldier
 function c21340051.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ドドドガッサー
+--Dododo Swordsman
 function c75421661.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

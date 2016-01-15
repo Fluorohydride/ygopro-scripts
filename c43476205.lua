@@ -1,4 +1,5 @@
 --RUM－レヴォリューション・フォース
+--Rank-Up-Magic Revolution Force
 function c43476205.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

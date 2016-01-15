@@ -1,4 +1,5 @@
 --黄泉へ渡る船
+--Yomi Ship
 function c51534754.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

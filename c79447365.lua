@@ -1,4 +1,5 @@
 --トゥーン・マスク
+--Toon Mask
 function c79447365.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

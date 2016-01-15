@@ -1,4 +1,5 @@
 --幻影騎士団サイレントブーツ
+--The Phantom Knights of Silent Boots
 function c36426778.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

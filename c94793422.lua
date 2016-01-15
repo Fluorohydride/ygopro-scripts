@@ -1,4 +1,5 @@
 --心眼の鉾
+--Rod of the Mind's Eye
 function c94793422.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --剣闘獣の闘器ハルバード
+--Gladiator Beast's Battle Halberd
 function c99013397.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

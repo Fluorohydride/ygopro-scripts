@@ -1,4 +1,5 @@
 --極戦機王ヴァルバロイド
+--Barbaroid, the Ultimate Battle Machine
 function c54702678.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

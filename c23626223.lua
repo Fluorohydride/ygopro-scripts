@@ -1,4 +1,5 @@
 --苦紋様の土像
+--Statue of Anguish Pattern
 function c23626223.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

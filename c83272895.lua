@@ -1,4 +1,5 @@
 --バチバチバチ
+--Bachibachibachi
 function c83272895.initial_effect(c)
 	--effect gain
 	local e1=Effect.CreateEffect(c)

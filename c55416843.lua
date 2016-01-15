@@ -1,4 +1,5 @@
 --蛮族の狂宴LV5
+--Feast of the Wild LV5
 function c55416843.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

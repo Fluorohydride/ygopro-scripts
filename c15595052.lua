@@ -1,4 +1,5 @@
 --封魔の伝承者
+--Disciple of the Forbidden Spell
 function c15595052.initial_effect(c)
 	--to defence
 	local e1=Effect.CreateEffect(c)

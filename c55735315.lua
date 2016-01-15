@@ -1,4 +1,5 @@
 --魂食神龍ドレイン・ドラゴン
+--Soul Drain Dragon
 function c55735315.initial_effect(c)
 	c:EnableUnsummonable()
 	--spsummon condition

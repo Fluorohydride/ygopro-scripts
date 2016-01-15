@@ -1,4 +1,5 @@
 --ジャイアント・オーク
+--Giant Orc
 function c73698349.initial_effect(c)
 	--to defence
 	local e1=Effect.CreateEffect(c)

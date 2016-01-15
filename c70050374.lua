@@ -1,4 +1,5 @@
 --ツインバレル・ドラゴン
+--Twin-Barrel Dragon
 function c70050374.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

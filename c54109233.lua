@@ -1,4 +1,5 @@
 --メサイアの蟻地獄
+--Infinite Dismissal
 function c54109233.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

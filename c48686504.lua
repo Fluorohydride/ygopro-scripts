@@ -1,4 +1,5 @@
 --ローンファイア・ブロッサム
+--Lonefire Blossom
 function c48686504.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

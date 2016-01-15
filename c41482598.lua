@@ -1,4 +1,5 @@
 --悪夢の蜃気楼
+--Mirage of Nightmare
 function c41482598.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

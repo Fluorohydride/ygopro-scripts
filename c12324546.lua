@@ -1,4 +1,5 @@
 --漆黒の名馬
+--Legendary Ebon Steed
 function c12324546.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

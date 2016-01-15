@@ -1,4 +1,5 @@
 --ライトロード・ハンター ライコウ
+--Ryko, Lightsworn Hunter
 function c21502796.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --援軍
+--Reinforcements
 function c17814387.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

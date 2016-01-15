@@ -1,4 +1,5 @@
 --ダーク・クリエイター
+--The Dark Creator
 function c92719314.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

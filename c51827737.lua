@@ -1,4 +1,5 @@
 --リサイクル・ジェネクス
+--Genex Recycled
 function c51827737.initial_effect(c)
 	--cos
 	local e1=Effect.CreateEffect(c)

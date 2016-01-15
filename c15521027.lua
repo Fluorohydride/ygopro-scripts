@@ -1,4 +1,5 @@
 --D・スマホン
+--Morphtronic Smartfon
 function c15521027.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

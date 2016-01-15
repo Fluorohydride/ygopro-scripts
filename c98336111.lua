@@ -1,4 +1,5 @@
 --フュージョニストキラー
+--Fusion Devourer
 function c98336111.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

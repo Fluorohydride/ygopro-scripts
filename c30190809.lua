@@ -1,4 +1,5 @@
 --機動砦のギア・ゴーレム
+--Gear Golem the Moving Fortress
 function c30190809.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

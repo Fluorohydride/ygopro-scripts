@@ -1,4 +1,5 @@
 --BF－尖鋭のボーラ
+--Blackwing - Boreas the Sharp
 function c16516630.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

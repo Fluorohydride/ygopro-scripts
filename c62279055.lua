@@ -1,4 +1,5 @@
 --魔法の筒
+--Magic Cylinder
 function c62279055.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

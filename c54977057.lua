@@ -1,4 +1,5 @@
 --天空の宝札
+--Cards from the Sky
 function c54977057.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

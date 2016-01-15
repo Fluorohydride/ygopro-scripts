@@ -1,4 +1,5 @@
 --ネオス・ワイズマン
+--Neos Wiseman
 function c5126490.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

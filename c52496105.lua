@@ -1,4 +1,5 @@
 --剣闘獣の闘器マニカ
+--Gladiator Beast's Battle Manica
 function c52496105.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

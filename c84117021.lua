@@ -1,4 +1,5 @@
 --魔力隔壁
+--Spell Wall
 function c84117021.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --洗脳光線
+--Brainwashing Beam
 function c59258334.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

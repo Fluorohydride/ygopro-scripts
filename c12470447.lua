@@ -1,4 +1,5 @@
 --邪悪な儀式
+--Curse of Fiend
 function c12470447.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

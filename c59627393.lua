@@ -1,4 +1,5 @@
 --No.105 BK 流星のセスタス
+--Number 105: Battlin' Boxer Star Cestus
 function c59627393.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

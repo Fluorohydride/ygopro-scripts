@@ -1,4 +1,5 @@
 --死者蘇生
+--Monster Reborn
 function c83764718.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ギブ&テイク
+--Give and Take
 function c55465441.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

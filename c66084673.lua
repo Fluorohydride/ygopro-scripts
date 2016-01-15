@@ -1,4 +1,5 @@
 --空炎星－サイチョウ
+--Brotherhood of the Fire Fist - Rhino
 function c66084673.initial_effect(c)
 	--attack up
 	local e1=Effect.CreateEffect(c)

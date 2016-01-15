@@ -1,4 +1,5 @@
 --コアキメイルの障壁
+--Koa'ki Meiru Shield
 function c12216615.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

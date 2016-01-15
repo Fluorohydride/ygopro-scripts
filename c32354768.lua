@@ -1,4 +1,5 @@
 --セフィラの神託
+--Oracle of Zefra
 function c32354768.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --流星の弓－シール
+--Shooting Star Bow - Ceal
 function c95638658.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

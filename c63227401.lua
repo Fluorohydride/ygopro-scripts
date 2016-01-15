@@ -1,4 +1,5 @@
 --スキル・プリズナー
+--Skill Prisoner
 function c63227401.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

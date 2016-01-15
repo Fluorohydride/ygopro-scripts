@@ -1,4 +1,5 @@
 --ナチュル・チェリー
+--Naturia Cherries
 function c60668166.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

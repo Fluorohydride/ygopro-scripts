@@ -1,4 +1,5 @@
 --魔導化士 マット
+--Fool of Prophecy
 function c63175639.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)

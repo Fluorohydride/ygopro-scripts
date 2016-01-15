@@ -1,4 +1,5 @@
 --煉獄の消華
+--Void Vanishment
 function c78748366.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

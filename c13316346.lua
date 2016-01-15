@@ -1,4 +1,5 @@
 --起動兵士デッドリボルバー
+--Boot-Up Soldier - Dread Dynamo
 function c13316346.initial_effect(c)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

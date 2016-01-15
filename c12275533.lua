@@ -1,4 +1,5 @@
 --機動要犀 トリケライナー
+--Trifortressops
 function c12275533.initial_effect(c)
 	--summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --スモール・ピース・ゴーレム
+--Small Piece Golem
 function c22754505.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

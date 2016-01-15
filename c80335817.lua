@@ -1,4 +1,5 @@
 --刻剣の魔術師
+--Timebreaker Magician
 function c80335817.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,5 @@
 --救急救命
+--Emergency Assistance
 function c24019261.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --竜騎士ブラック・マジシャン・ガール
+--Dark Magician Girl the Dragon Knight
 function c43892408.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

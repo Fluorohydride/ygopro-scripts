@@ -1,4 +1,5 @@
 --エキセントリック・デーモン
+--Archfiend Eccentrick
 function c57624336.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

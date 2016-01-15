@@ -1,4 +1,5 @@
 --虚構王アンフォームド・ボイド
+--Unformed Void
 function c38180759.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

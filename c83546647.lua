@@ -1,4 +1,5 @@
 --無抵抗の真相
+--Wolf in Sheep's Clothing
 function c83546647.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

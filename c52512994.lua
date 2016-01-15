@@ -1,4 +1,5 @@
 --火車
+--Kasha
 function c52512994.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

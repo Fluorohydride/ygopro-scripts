@@ -1,4 +1,5 @@
 --悪魔払い
+--Exile of the Wicked
 function c26725158.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

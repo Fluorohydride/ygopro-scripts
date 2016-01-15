@@ -1,4 +1,5 @@
 --粘着落とし穴
+--Adhesion Trap Hole
 function c62325062.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --オーバー・コアリミット
+--Core Overclock
 function c36560997.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

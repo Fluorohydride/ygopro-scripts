@@ -1,4 +1,5 @@
 --真魔獣 ガーゼット
+--Legendary Maju Garzett
 function c12338068.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

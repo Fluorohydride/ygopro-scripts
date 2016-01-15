@@ -1,4 +1,5 @@
 --E・HERO ワイルド・ウィングマン
+--Elemental HERO Wild Wingman
 function c55615891.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

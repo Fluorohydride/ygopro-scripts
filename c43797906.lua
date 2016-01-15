@@ -1,4 +1,5 @@
 --アトランティスの戦士
+--Warrior of Atlantis
 function c43797906.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

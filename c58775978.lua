@@ -1,4 +1,5 @@
 --悪夢の鉄檻
+--Nightmare's Steelcage
 function c58775978.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

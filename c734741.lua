@@ -1,4 +1,5 @@
 --彼岸の悪鬼 ラビキャント
+--Rubic, Malebranche of the Burning Abyss
 function c734741.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

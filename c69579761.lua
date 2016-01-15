@@ -1,4 +1,5 @@
 --デス・コアラ
+--Des Koala
 function c69579761.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --砂塵の悪霊
+--Dark Dust Spirit
 function c89111398.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

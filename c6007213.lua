@@ -1,4 +1,5 @@
 --神炎皇ウリア
+--Uria, Lord of Searing Flames
 function c6007213.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

@@ -1,4 +1,5 @@
 --髑髏顔・天道虫
+--Skull-Mark Ladybug
 function c64306248.initial_effect(c)
 	--recover
 	local e1=Effect.CreateEffect(c)

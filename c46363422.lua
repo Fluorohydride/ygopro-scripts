@@ -1,4 +1,5 @@
 --熟練の白魔導師
+--Skilled White Magician
 function c46363422.initial_effect(c)
 	c:EnableCounterPermit(0x3001)
 	c:SetCounterLimit(0x3001,3)

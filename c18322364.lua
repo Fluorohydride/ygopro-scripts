@@ -1,4 +1,5 @@
 --ビッグ・ホエール
+--Big Whale
 function c18322364.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

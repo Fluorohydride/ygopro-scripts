@@ -1,4 +1,5 @@
 --Sin パラレルギア
+--Malefic Parallel Gear
 function c74509280.initial_effect(c)
 	--synchro custom
 	local e1=Effect.CreateEffect(c)

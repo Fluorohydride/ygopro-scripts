@@ -1,4 +1,5 @@
 --ナチュルの神星樹
+--Naturia Sacred Tree
 function c3734202.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

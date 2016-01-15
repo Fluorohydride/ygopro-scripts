@@ -1,4 +1,5 @@
 --重力の斧－グラール
+--Gravity Axe - Grarl
 function c32022366.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --D－フォーメーション
+--D - Formation
 function c74329404.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

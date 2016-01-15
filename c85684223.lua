@@ -1,4 +1,5 @@
 --ナイトメアを駆る死霊
+--Reaper on the Nightmare
 function c85684223.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

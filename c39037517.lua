@@ -1,4 +1,5 @@
 --コアキメイル・ビートル
+--Koa'ki Meiru Beetle
 function c39037517.initial_effect(c)
 	--cost
 	local e1=Effect.CreateEffect(c)

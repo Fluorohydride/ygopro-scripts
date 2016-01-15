@@ -1,4 +1,5 @@
 --ラスト・リゾート
+--Last Resort
 function c97970833.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

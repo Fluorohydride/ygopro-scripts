@@ -1,4 +1,5 @@
 --蜃気楼の筒
+--Mirage Tube
 function c48017809.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

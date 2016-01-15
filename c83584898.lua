@@ -1,4 +1,5 @@
 --魔界の足枷
+--Darkworld Shackles
 function c83584898.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

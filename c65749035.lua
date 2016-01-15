@@ -1,4 +1,5 @@
 --氷結界の龍 グングニール
+--Gungnir, Dragon of the Ice Barrier
 function c65749035.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_WATER),1)

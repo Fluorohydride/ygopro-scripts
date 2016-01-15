@@ -1,4 +1,5 @@
 --サイボーグドクター
+--Cyborg Doctor
 function c51020079.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

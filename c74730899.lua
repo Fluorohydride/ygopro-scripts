@@ -1,4 +1,5 @@
 --燃料電池メン
+--Batteryman Fuel Cell
 function c74730899.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

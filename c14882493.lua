@@ -1,4 +1,5 @@
 --極夜の騎士ガイア
+--Gaia, the Polar Knight
 function c14882493.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

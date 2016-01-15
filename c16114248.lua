@@ -1,4 +1,5 @@
 --ペア・サイクロイド
+--Pair Cycroid
 function c16114248.initial_effect(c)
 	c:EnableReviveLimit()
 	--fusion material

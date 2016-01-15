@@ -1,4 +1,5 @@
 --ブレイン・ジャッカー
+--Brain Jacker
 function c40267580.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --千年竜
+--Thousand Dragon
 function c41462083.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --アルカナフォースEX－THE DARK RULER
+--Arcana Force EX - The Dark Ruler
 function c69831560.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon proc

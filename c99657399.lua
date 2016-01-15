@@ -1,4 +1,5 @@
 --油断大敵
+--Asleep at the Switch
 function c99657399.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

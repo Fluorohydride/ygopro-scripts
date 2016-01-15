@@ -1,4 +1,5 @@
 --暴風小僧
+--Whirlwind Prodigy
 function c15090429.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

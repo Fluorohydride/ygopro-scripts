@@ -1,4 +1,5 @@
 --攻撃の無敵化
+--Impenetrable Attack
 function c86778566.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

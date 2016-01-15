@@ -1,4 +1,5 @@
 --コアキメイル・パワーハンド
+--Koa'ki Meiru Powerhand
 function c19642889.initial_effect(c)
 	--cost
 	local e1=Effect.CreateEffect(c)

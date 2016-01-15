@@ -1,4 +1,5 @@
 --ホルスのしもべ
+--Horus' Servant
 function c9264485.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)

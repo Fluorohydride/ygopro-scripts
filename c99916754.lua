@@ -1,4 +1,5 @@
 --ナチュル・エクストリオ
+--Naturia Exterio
 function c99916754.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

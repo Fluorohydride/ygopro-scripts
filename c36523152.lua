@@ -1,4 +1,5 @@
 --超重武者ビッグワラ－G
+--Superheavy Samurai Big Waraji
 function c36523152.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

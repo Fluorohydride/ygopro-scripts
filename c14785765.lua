@@ -1,4 +1,5 @@
 --BF－精鋭のゼピュロス
+--Blackwing - Zephyros the Elite
 function c14785765.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

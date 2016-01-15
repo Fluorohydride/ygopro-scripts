@@ -1,4 +1,5 @@
 --極星獣タングリスニ
+--Tanngrisnir of the Nordic Beasts
 function c15394083.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

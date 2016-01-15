@@ -1,4 +1,5 @@
 --インフェルニティ・リフレクター
+--Infernity Reflector
 function c15313433.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

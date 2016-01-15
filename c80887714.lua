@@ -1,4 +1,5 @@
 --ギャラクシー・ストーム
+--Galaxy Storm
 function c80887714.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

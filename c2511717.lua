@@ -1,4 +1,5 @@
 --真六武衆－カゲキ
+--Legendary Six Samurai - Kageki
 function c2511717.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ジェイドナイト
+--Jade Knight
 function c44364207.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

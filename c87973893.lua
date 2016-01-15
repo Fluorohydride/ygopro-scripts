@@ -1,4 +1,5 @@
 --甲虫装機の魔斧 ゼクトホーク
+--Inzektor Axe - Zektahawk
 function c87973893.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --フォーチュンレディ・ファイリー
+--Fortune Lady Fire
 function c71870152.initial_effect(c)
 	--atk,def
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --チェーン・マテリアル
+--Chain Material
 function c39980304.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

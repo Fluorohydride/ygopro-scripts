@@ -1,4 +1,5 @@
 --必殺！黒蠍コンビネーション
+--Dark Scorpion Combination
 function c20858318.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

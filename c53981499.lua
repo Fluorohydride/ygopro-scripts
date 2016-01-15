@@ -1,4 +1,5 @@
 --マイティ・ウォリアー
+--Mighty Warrior
 function c53981499.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

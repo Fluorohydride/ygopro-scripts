@@ -1,4 +1,5 @@
 --ゴーストリックの人形
+--Ghostrick Doll
 function c46925518.initial_effect(c)
 	--summon limit
 	local e1=Effect.CreateEffect(c)

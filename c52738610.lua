@@ -1,4 +1,5 @@
 --影霊衣の舞姫
+--Dance Princess of the Nekroz
 function c52738610.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)

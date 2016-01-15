@@ -1,4 +1,5 @@
 --猛獣の歯
+--Beast Fangs
 function c46009906.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

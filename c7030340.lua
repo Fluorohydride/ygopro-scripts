@@ -1,4 +1,5 @@
 --百機夜工
+--Factory of 100 Machines
 function c7030340.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

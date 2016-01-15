@@ -1,4 +1,5 @@
 --下克上の首飾り
+--Amulet of Ambition
 function c5183693.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

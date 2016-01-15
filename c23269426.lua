@@ -1,4 +1,5 @@
 --最期の同調
+--Final Gesture
 function c23269426.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

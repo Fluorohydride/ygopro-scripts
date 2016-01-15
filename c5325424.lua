@@ -1,4 +1,5 @@
 --牙竜転生
+--Dragoncarnation
 function c5325424.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

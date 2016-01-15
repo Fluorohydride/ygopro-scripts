@@ -1,4 +1,5 @@
 --ゴブリン偵察部隊
+--Goblin Recon Squad
 function c82324312.initial_effect(c)
 	--confirm
 	local e1=Effect.CreateEffect(c)

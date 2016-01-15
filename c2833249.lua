@@ -1,4 +1,5 @@
 --竜の血族
+--D. Tribe
 function c2833249.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

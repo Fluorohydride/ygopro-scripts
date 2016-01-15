@@ -1,4 +1,5 @@
 --エクシーズ・リフレクト
+--Xyz Reflect
 function c2371506.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

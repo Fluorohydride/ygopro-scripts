@@ -1,4 +1,5 @@
 --奇跡の光臨
+--Miraculous Descent
 function c80551130.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

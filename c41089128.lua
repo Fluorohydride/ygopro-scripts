@@ -1,4 +1,5 @@
 --炎を支配する者
+--Flame Ruler
 function c41089128.initial_effect(c)
 	--double tribute
 	local e1=Effect.CreateEffect(c)

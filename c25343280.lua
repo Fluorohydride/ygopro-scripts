@@ -1,4 +1,5 @@
 --スピリッツ・オブ・ファラオ
+--Spirit of the Pharaoh
 function c25343280.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

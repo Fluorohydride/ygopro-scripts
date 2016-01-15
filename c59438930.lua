@@ -1,4 +1,5 @@
 --幽鬼うさぎ
+--Ghost Ogre & Snow Rabbit
 function c59438930.initial_effect(c)
 	--double
 	local e1=Effect.CreateEffect(c)

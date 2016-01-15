@@ -1,4 +1,5 @@
 --剣闘獣エセダリ
+--Gladiator Beast Essedarii
 function c73285669.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

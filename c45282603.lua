@@ -1,4 +1,5 @@
 --召喚師セームベル
+--Saambell the Summoner
 function c45282603.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

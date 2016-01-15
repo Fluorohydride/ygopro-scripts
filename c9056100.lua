@@ -1,4 +1,5 @@
 --氷結界の虎将 グルナード
+--General Grunard of the Ice Barrier
 function c9056100.initial_effect(c)
 	--extra summon
 	local e1=Effect.CreateEffect(c)

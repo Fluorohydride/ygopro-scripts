@@ -1,4 +1,5 @@
 --キング・もけもけ
+--Mokey Mokey King
 function c13803864.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

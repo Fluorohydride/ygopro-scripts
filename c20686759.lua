@@ -1,4 +1,5 @@
 --D・レトロエンジン
+--Morphtronic Rusty Engine
 function c20686759.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

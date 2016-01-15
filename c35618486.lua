@@ -1,4 +1,5 @@
 --インヴェルズの先鋭
+--Steelswarm Sting
 function c35618486.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

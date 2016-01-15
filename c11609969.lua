@@ -1,4 +1,5 @@
 --DD魔導賢者ケプラー
+--D/D Savant Kepler
 function c11609969.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

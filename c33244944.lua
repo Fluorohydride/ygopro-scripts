@@ -1,4 +1,5 @@
 --エクゾディアとの契約
+--Contract with Exodia
 function c33244944.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

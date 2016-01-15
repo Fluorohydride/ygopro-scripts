@@ -1,4 +1,5 @@
 --明鏡止水の心
+--Heart of Clear Water
 function c64801562.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

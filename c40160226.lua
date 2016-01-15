@@ -1,4 +1,5 @@
 --機海竜プレシオン
+--Mecha Sea Dragon Plesion
 function c40160226.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)

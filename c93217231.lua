@@ -1,4 +1,5 @@
 --毒蛇の供物
+--Offering to the Snake Deity
 function c93217231.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

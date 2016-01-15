@@ -1,4 +1,5 @@
 --Ms.JUDGE
+--Ms. Judge
 function c86767655.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

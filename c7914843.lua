@@ -1,4 +1,5 @@
 --電磁ミノ虫
+--Electromagnetic Bagworm
 function c7914843.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

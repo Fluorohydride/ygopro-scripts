@@ -1,4 +1,5 @@
 --勇気機関車ブレイブポッポ
+--Lionhearted Locomotive
 function c61692648.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ライフ・ストリーム・ドラゴン
+--Life Stream Dragon
 function c25165047.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure2(c,nil,aux.FilterBoolFunction(Card.IsCode,2403771))

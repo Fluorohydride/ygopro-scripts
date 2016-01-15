@@ -1,4 +1,5 @@
 --超戦士の盾
+--Super Soldier Shield
 function c799183.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

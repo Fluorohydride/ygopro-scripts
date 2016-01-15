@@ -1,4 +1,5 @@
 --融合回収
+--Fusion Recovery
 function c18511384.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

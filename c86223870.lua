@@ -1,4 +1,5 @@
 --レベル・リチューナー
+--Level Retuner
 function c86223870.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

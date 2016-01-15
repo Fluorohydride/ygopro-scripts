@@ -1,4 +1,5 @@
 --V・HERO アドレイション
+--Vision HERO Adoration
 function c45170821.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

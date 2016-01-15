@@ -1,4 +1,5 @@
 --大寒気
+--Cold Feet
 function c40383551.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

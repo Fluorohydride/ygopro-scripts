@@ -1,4 +1,5 @@
 --連鎖炸薬
+--Chain Burst
 function c48276469.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

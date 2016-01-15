@@ -1,4 +1,5 @@
 --チューナー・キャプチャー
+--Tuner Capture
 function c50951359.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

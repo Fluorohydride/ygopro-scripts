@@ -1,4 +1,5 @@
 --エクシーズ・ユニット
+--Xyz Unit
 function c13032689.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --大盤振舞侍
+--Sasuke Samurai 3
 function c77379481.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

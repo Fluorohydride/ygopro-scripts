@@ -1,4 +1,5 @@
 --謙虚な番兵
+--The Humble Sentry
 function c95642274.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

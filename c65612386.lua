@@ -1,4 +1,5 @@
 --魔帝アングマール
+--Demon Emperor Angmar
 function c65612386.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

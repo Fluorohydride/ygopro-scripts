@@ -1,4 +1,5 @@
 --マルチ・ピース・ゴーレム
+--Multiple Piece Golem
 function c71628381.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

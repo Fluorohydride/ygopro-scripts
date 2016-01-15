@@ -1,4 +1,5 @@
 --大噴火
+--Volcanic Eruption
 function c42175079.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

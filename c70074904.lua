@@ -1,4 +1,5 @@
 --D.D.アサイラント
+--D.D. Assailant
 function c70074904.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

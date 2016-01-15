@@ -1,4 +1,5 @@
 --幻奏の音女オペラ
+--Opera the Melodious Diva
 function c43268675.initial_effect(c)
 	--cannot attack
 	local e1=Effect.CreateEffect(c)

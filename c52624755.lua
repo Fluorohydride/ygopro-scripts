@@ -1,4 +1,5 @@
 --闇・道化師のペーテン
+--Peten the Dark Clown
 function c52624755.initial_effect(c)
 	--sp summon
 	local e1=Effect.CreateEffect(c)

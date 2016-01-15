@@ -1,4 +1,5 @@
 --星屑の残光
+--Stardust Flash
 function c27196937.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

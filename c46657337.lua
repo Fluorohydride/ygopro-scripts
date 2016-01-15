@@ -1,4 +1,5 @@
 --ムカムカ
+--Muka Muka
 function c46657337.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

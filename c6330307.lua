@@ -1,4 +1,5 @@
 --DZW－魔装鵺妖衣
+--DZW - Chimera Clad
 function c6330307.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

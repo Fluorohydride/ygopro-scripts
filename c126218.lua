@@ -1,4 +1,5 @@
 --悪魔のサイコロ
+--Skull Dice
 function c126218.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

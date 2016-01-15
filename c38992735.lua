@@ -1,4 +1,5 @@
 --波動キャノン
+--Wave-Motion Cannon
 function c38992735.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

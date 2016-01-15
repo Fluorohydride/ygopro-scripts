@@ -1,4 +1,5 @@
 --幻影騎士団トゥーム・シールド
+--Phantom Knights Tomb Shield
 function c51606429.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

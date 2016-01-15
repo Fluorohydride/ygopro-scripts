@@ -1,4 +1,5 @@
 --ニトロ・ウォリアー
+--Nitro Warrior
 function c18013090.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c18013090.tfilter,aux.NonTuner(nil),1)

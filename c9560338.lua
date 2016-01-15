@@ -1,4 +1,5 @@
 --魔導冥士 ラモール
+--Reaper of Prophecy
 function c9560338.initial_effect(c)
 	--effect
 	local e1=Effect.CreateEffect(c)

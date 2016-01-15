@@ -1,4 +1,5 @@
 --ゼンマイドッグ
+--Wind-Up Dog
 function c12076263.initial_effect(c)
 	--atk/lv up
 	local e1=Effect.CreateEffect(c)

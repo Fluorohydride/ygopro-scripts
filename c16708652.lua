@@ -1,4 +1,5 @@
 --カラクリ粉
+--Karakuri Gold Dust
 function c16708652.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

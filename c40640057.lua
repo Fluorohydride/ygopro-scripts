@@ -1,4 +1,5 @@
 --クリボー
+--Kuriboh
 function c40640057.initial_effect(c)
 	--no damage
 	local e1=Effect.CreateEffect(c)

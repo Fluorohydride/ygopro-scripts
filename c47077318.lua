@@ -1,4 +1,5 @@
 --森羅の蜜柑子 シトラ
+--Sylvan Mikorange
 function c47077318.initial_effect(c)
 	--deck check
 	local e1=Effect.CreateEffect(c)

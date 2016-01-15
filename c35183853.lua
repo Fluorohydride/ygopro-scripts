@@ -1,4 +1,5 @@
 --鏡鳴する武神
+--Bujin Regalia - The Mirror
 function c35183853.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

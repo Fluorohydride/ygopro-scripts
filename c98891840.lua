@@ -1,4 +1,5 @@
 --休息する剣闘獣
+--Gladiator Beast's Respite
 function c98891840.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

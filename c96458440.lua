@@ -1,4 +1,5 @@
 --伝説の黒帯
+--Legendary Black Belt
 function c96458440.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

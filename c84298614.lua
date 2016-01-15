@@ -1,4 +1,5 @@
 --強化蘇生
+--Powerful Rebirth
 function c84298614.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

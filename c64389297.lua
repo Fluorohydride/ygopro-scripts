@@ -1,4 +1,5 @@
 --迷宮変化
+--Magical Labyrinth
 function c64389297.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

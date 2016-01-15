@@ -1,4 +1,5 @@
 --ピューマン
+--Akz, the Pumer
 function c38837163.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

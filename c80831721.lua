@@ -1,4 +1,5 @@
 --賢者の石－サバティエル
+--Sabatiel - The Philosopher's Stone
 function c80831721.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

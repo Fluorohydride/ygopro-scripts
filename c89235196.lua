@@ -1,4 +1,5 @@
 --ビッグ・ワン・ウォリアー
+--Big One Warrior
 function c89235196.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

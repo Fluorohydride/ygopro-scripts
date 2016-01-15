@@ -1,4 +1,5 @@
 --魔轟神獣キャシー
+--The Fabled Catsith
 function c56399890.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

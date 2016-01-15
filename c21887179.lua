@@ -1,4 +1,5 @@
 --月風魔
+--Getsu Fuhma
 function c21887179.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

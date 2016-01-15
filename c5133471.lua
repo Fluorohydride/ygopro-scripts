@@ -1,4 +1,5 @@
 --ギャラクシー・サイクロン
+--Galaxy Cyclone
 function c5133471.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

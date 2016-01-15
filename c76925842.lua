@@ -1,4 +1,5 @@
 --ダーク・パーシアス
+--Darknight Parshath
 function c76925842.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --サラマンドラ
+--Salamandra
 function c32268901.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --闇より出でし絶望
+--Despair from the Dark
 function c71200730.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

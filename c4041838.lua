@@ -1,4 +1,5 @@
 --忍者マスター SASUKE
+--Ninja Grandmaster Sasuke
 function c4041838.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

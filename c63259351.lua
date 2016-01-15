@@ -1,4 +1,5 @@
 --奇跡のジュラシック・エッグ
+--Miracle Jurassic Egg
 function c63259351.initial_effect(c)
 	--cannot remove
 	local e1=Effect.CreateEffect(c)

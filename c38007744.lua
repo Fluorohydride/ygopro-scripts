@@ -1,4 +1,5 @@
 --先史遺産モアイキャリア
+--Chronomaly Moai Carrier
 function c38007744.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

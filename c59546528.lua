@@ -1,4 +1,5 @@
 --氷結界の舞姫
+--Dance Princess of the Ice Barrier
 function c59546528.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --寡黙なるサイコプリースト
+--Hushed Psychic Cleric
 function c25343017.initial_effect(c)
 	--to defence
 	local e1=Effect.CreateEffect(c)

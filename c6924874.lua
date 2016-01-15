@@ -1,4 +1,5 @@
 --ハーピィズペット仔竜
+--Harpie's Pet Baby Dragon
 function c6924874.initial_effect(c)
 	--at limit
 	local e1=Effect.CreateEffect(c)

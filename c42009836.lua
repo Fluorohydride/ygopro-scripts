@@ -1,4 +1,5 @@
 --フォッシル・ダイナ パキケファロ
+--Fossil Dyna Pachycephalo
 function c42009836.initial_effect(c)
 	--disable spsummon
 	local e1=Effect.CreateEffect(c)

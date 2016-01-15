@@ -1,4 +1,5 @@
 --サルガッソの灯台
+--Sargasso Lighthouse
 function c37511832.initial_effect(c)
 	--damage change
 	local e1=Effect.CreateEffect(c)

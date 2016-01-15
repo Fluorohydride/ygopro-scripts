@@ -1,4 +1,5 @@
 --C・ドラゴン
+--Iron Chain Dragon
 function c19974580.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

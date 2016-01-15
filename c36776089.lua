@@ -1,4 +1,5 @@
 --神騎セイントレア
+--Sky Cavalry Centaurea
 function c36776089.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,2)

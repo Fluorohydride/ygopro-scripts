@@ -1,4 +1,5 @@
 --ZW－雷神猛虎剣
+--ZW - Lightning Blade
 function c45082499.initial_effect(c)
 	c:SetUniqueOnField(1,0,45082499)
 	--equip

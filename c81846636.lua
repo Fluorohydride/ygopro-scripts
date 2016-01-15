@@ -1,4 +1,5 @@
 --ジェムナイト・ラズリー
+--Gem-Knight Lazuli
 function c81846636.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

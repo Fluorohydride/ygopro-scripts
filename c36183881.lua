@@ -1,4 +1,5 @@
 --マジェスペクター・トルネード
+--Majespecter Tornado
 function c36183881.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

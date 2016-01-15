@@ -1,4 +1,5 @@
 --最後の進軍
+--March Towards Ragnarok
 function c28643791.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

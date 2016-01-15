@@ -1,4 +1,5 @@
 --トイ・マジシャン
+--Toy Magician
 function c58132856.initial_effect(c)
 	--Set
 	local e1=Effect.CreateEffect(c)

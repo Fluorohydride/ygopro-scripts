@@ -1,4 +1,5 @@
 --グリモの魔導書
+--Spellbook of Secrets
 function c89739383.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

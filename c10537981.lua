@@ -1,4 +1,5 @@
 --リターンソウル
+--Return Soul
 function c10537981.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

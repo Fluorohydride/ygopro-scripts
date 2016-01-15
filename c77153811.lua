@@ -1,4 +1,5 @@
 --儀式魔人カースエンチャンター
+--Djinn Cursenchanter of Rituals
 function c77153811.initial_effect(c)
 	--ritual material
 	local e1=Effect.CreateEffect(c)

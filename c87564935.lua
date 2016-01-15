@@ -1,4 +1,5 @@
 --メタル化寄生生物－ソルタイト
+--Metallizing Parasite - Soltite
 function c87564935.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

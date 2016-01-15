@@ -1,4 +1,5 @@
 --影霊獣使い－セフィラウェンディ
+--Ritual Beast Tamer Zefrawendi
 function c23166823.initial_effect(c)
 	c:SetSPSummonOnce(23166823)
 	--pendulum summon

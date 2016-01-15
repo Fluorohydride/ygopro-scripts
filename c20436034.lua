@@ -1,4 +1,5 @@
 --磁力の指輪
+--Ring of Magnetism
 function c20436034.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

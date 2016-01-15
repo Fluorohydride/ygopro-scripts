@@ -1,4 +1,5 @@
 --No.92 偽骸神龍 Heart－eartH Dragon
+--Number 92: Heart-eartH Dragon
 function c97403510.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,9,3)

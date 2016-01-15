@@ -1,4 +1,5 @@
 --水遁封印式
+--Sealing Ceremony of Suiton
 function c81443745.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

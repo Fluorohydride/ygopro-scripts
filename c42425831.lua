@@ -1,4 +1,5 @@
 --雷遁封印式
+--Sealing Ceremony of Raiton
 function c42425831.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

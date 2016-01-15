@@ -1,4 +1,5 @@
 --異次元の生還者
+--D.D. Survivor
 function c48092532.initial_effect(c)
 	--removed
 	local e1=Effect.CreateEffect(c)

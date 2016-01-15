@@ -1,4 +1,5 @@
 --A・O・J カタストル
+--Ally of Justice Catastor
 function c26593852.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

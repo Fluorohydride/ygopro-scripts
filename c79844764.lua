@@ -1,4 +1,5 @@
 --帝王の烈旋
+--The Monarchs Stormforth
 function c79844764.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

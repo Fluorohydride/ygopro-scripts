@@ -1,4 +1,5 @@
 --巨大ネズミ
+--Giant Rat
 function c97017120.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

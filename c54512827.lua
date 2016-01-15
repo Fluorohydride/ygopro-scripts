@@ -1,4 +1,5 @@
 --ゴーストリック・ランタン
+--Ghostrick Lantern
 function c54512827.initial_effect(c)
 	--summon limit
 	local e1=Effect.CreateEffect(c)

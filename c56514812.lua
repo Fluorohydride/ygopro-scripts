@@ -1,4 +1,5 @@
 --くノ一ウォリアー
+--Kunoichi
 function c56514812.initial_effect(c)
 	--handes
 	local e1=Effect.CreateEffect(c)

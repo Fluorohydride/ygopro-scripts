@@ -1,4 +1,5 @@
 --電撃鞭
+--Electro-Whip
 function c37820550.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

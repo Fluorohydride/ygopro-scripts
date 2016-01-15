@@ -1,4 +1,5 @@
 --思い出のブランコ
+--Swing of Memories
 function c96765646.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

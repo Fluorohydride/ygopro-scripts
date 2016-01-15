@@ -1,4 +1,5 @@
 --創世竜
+--Genesis Dragon
 function c31038159.initial_effect(c)
 	--salvage
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --呪われた棺
+--Dark Coffin
 function c1804528.initial_effect(c)
 	--Destroy
 	local e1=Effect.CreateEffect(c)

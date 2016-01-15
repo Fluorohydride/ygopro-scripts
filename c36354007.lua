@@ -1,4 +1,5 @@
 --ギルフォード・ザ・ライトニング
+--Gilford the Lightning
 function c36354007.initial_effect(c)
 	--summon with 3 tribute
 	local e1=Effect.CreateEffect(c)

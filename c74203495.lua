@@ -1,4 +1,5 @@
 --PSYフレームギア・δ
+--PSY-Framegear Delta
 function c74203495.initial_effect(c)
 	c:EnableUnsummonable()
 	--splimit

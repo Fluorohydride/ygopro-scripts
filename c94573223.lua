@@ -1,4 +1,5 @@
 --甲虫装機 ギガマンティス
+--Inzektor Giga-Mantis
 function c94573223.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

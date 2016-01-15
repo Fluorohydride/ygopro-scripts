@@ -1,4 +1,5 @@
 --堕天使ディザイア
+--Darklord Desire
 function c55690251.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

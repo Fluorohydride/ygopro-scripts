@@ -1,4 +1,5 @@
 --剛地帝グランマーグ
+--Granmarg the Mega Monarch
 function c15545291.initial_effect(c)
 	--summon with 1 tribute
 	local e1=Effect.CreateEffect(c)

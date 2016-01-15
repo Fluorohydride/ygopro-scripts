@@ -1,4 +1,5 @@
 --キューブン
+--Cuben
 function c17530001.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)

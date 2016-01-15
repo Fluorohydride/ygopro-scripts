@@ -1,4 +1,5 @@
 --E・HERO フレイム・ウィングマン
+--Elemental HERO Flame Wingman
 function c35809262.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

@@ -1,4 +1,5 @@
 --隷属の鱗粉
+--Butterflyoke
 function c75987257.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

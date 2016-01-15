@@ -1,4 +1,5 @@
 --デュアル・ランサー
+--Gemini Lancer
 function c26254876.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--pierce

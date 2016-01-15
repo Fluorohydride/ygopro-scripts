@@ -1,4 +1,5 @@
 --星蝕－レベル・クライム－
+--Star Siphon
 function c70391588.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

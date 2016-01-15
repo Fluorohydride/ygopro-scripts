@@ -1,4 +1,5 @@
 --BF－そよ風のブリーズ
+--Blackwing - Breeze the Zephyr
 function c89258906.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

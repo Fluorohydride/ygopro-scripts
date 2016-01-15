@@ -1,4 +1,5 @@
 --儀水鏡の幻影術
+--Aquamirror Illusion
 function c64437633.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

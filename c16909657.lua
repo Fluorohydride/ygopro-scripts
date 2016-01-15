@@ -1,4 +1,5 @@
 --レプティレス・スキュラ
+--Reptilianne Scylla
 function c16909657.initial_effect(c)
 	--special summon
 	local e2=Effect.CreateEffect(c)

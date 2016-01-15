@@ -1,4 +1,5 @@
 --野性解放
+--Wild Nature's Release
 function c61166988.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

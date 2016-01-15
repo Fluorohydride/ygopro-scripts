@@ -1,4 +1,5 @@
 --真六武衆－キザン
+--Legendary Six Samurai - Kizan
 function c49721904.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

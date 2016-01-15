@@ -1,4 +1,5 @@
 --威風堂々
+--Chivalry
 function c56532632.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

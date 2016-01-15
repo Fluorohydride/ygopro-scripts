@@ -1,4 +1,5 @@
 --サウザンド・アイズ・フィッシュ
+--Thousand-Eyes Jellyfish
 function c81434470.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

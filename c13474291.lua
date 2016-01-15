@@ -1,4 +1,5 @@
 --雲魔物－ストーム・ドラゴン
+--Cloudian - Storm Dragon
 function c13474291.initial_effect(c)
 	c:EnableReviveLimit()
 	--battle indestructable

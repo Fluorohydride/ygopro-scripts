@@ -1,4 +1,5 @@
 --深淵の指名者
+--Abyssal Designator
 function c89801755.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

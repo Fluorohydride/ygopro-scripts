@@ -1,4 +1,5 @@
 --炎王神獣 ガルドニクス
+--Fire King High Avatar Garunix
 function c23015896.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

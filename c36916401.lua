@@ -1,4 +1,5 @@
 --バーニングナックル・スピリッツ
+--Battlin' Boxing Spirits
 function c36916401.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --BF－暁のシロッコ
+--Blackwing - Sirocco the Dawn
 function c75498415.initial_effect(c)
 	--summon & set with no tribute
 	local e1=Effect.CreateEffect(c)

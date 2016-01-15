@@ -1,4 +1,5 @@
 --冥界の使者
+--Emissary of the Afterlife
 function c75043725.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --エネミーコントローラー
+--Enemy Controller
 function c98045062.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

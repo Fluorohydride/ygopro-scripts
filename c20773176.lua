@@ -1,4 +1,5 @@
 --炎獣の影霊衣－セフィラエグザ
+--Zefraxa, Flame Beast of the Nekroz
 function c20773176.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

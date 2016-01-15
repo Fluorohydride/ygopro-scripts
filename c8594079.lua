@@ -1,4 +1,5 @@
 --ジュラック・ブラキス
+--Jurrac Brachis
 function c8594079.initial_effect(c)
 	--battle indestructable
 	local e2=Effect.CreateEffect(c)

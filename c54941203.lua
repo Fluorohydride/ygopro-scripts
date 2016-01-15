@@ -1,4 +1,5 @@
 --調律の魔術師
+--Tuning Magician
 function c54941203.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --スフィンクス・アンドロジュネス
+--Theinen the Great Sphinx
 function c87997872.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

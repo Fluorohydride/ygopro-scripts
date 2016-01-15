@@ -1,4 +1,5 @@
 --ポセイドンの力
+--Power of Kaishin
 function c77027445.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

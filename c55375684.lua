@@ -1,4 +1,5 @@
 --召喚雲
+--Summon Cloud
 function c55375684.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

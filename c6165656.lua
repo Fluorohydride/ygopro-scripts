@@ -1,4 +1,5 @@
 --CNo.88 ギミック・パペット－ディザスター・レオ
+--Number C88: Gimmick Puppet Disaster Leo
 function c6165656.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

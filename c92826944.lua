@@ -1,4 +1,5 @@
 --馬頭鬼
+--Mezuki
 function c92826944.initial_effect(c)
 	--revive 
 	local e1=Effect.CreateEffect(c)

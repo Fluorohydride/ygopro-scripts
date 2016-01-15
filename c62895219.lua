@@ -1,4 +1,5 @@
 --幻奏の歌姫ソプラノ
+--Soprano the Melodious Songstress
 function c62895219.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --フォースフィールド
+--Riryoku Field
 function c70344351.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

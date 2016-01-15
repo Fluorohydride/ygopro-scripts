@@ -1,4 +1,5 @@
 --CNo.107 超銀河眼の時空龍
+--Number C107: Neo Galaxy-Eyes Tachyon Dragon
 function c68396121.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,9,3)

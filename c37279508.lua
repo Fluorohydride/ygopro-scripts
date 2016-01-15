@@ -1,4 +1,5 @@
 --No.37 希望織竜スパイダー・シャーク
+--Number 37: Hope Woven Dragon Spider Shark
 function c37279508.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WATER),4,2)

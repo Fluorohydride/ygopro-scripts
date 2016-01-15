@@ -1,4 +1,5 @@
 --ライトロード・サモナー ルミナス
+--Lumina, Lightsworn Summoner
 function c95503687.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

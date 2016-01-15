@@ -1,4 +1,5 @@
 --ライトロード・ビースト ウォルフ
+--Wulf, Lightsworn Beast
 function c58996430.initial_effect(c)
 	c:EnableUnsummonable()
 	--special summon

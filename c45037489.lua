@@ -1,4 +1,5 @@
 --フルール・ド・シュヴァリエ
+--Chevalier de Fleur
 function c45037489.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c45037489.tfilter,aux.NonTuner(nil),1)

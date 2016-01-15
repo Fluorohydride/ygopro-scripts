@@ -1,4 +1,5 @@
 --ゴゴゴゴーレム－GF
+--Gogogo Golem - Golden Form
 function c2948263.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon

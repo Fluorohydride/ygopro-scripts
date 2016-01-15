@@ -1,4 +1,5 @@
 --大成仏
+--Really Eternal Rest
 function c28121403.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

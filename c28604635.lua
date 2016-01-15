@@ -1,4 +1,5 @@
 --ふるい落とし
+--Weed Out
 function c28604635.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

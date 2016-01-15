@@ -1,4 +1,5 @@
 --城壁壊しの大槍
+--Ballista of Rampart Smashing
 function c242146.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

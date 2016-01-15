@@ -1,4 +1,5 @@
 --魔女狩り
+--Last Day of Witch
 function c90330453.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --サイバー・チュチュ
+--Cyber Tutu
 function c49375719.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

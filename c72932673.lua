@@ -1,4 +1,5 @@
 --アビスケイル－ミヅチ
+--Abyss-scale of Mizuchi
 function c72932673.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

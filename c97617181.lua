@@ -1,4 +1,5 @@
 --銀河零式
+--Galaxy Zero
 function c97617181.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

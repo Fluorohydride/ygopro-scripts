@@ -1,4 +1,5 @@
 --陽動作戦
+--A Feint Plan
 function c68170903.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --不知火の宮司
+--Shiranui Spiritmaster
 function c99423156.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

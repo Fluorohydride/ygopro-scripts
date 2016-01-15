@@ -1,4 +1,5 @@
 --X－セイバー ウルズ
+--X-Saber Uruz
 function c26993374.initial_effect(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)

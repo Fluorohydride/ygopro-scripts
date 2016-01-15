@@ -1,4 +1,5 @@
 --運命の分かれ道
+--The Paths of Destiny
 function c50470982.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --重爆撃禽 ボム・フェネクス
+--Blaze Fenix, the Burning Bombardment Bird
 function c6602300.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

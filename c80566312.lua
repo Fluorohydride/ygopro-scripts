@@ -1,4 +1,5 @@
 --祝祷の聖歌
+--Hymn of Light
 function c80566312.initial_effect(c)
 	aux.AddRitualProcGreaterCode(c,56350972)
 	--destroy replace

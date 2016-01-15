@@ -1,4 +1,5 @@
 --剣闘獣ホプロムス
+--Gladiator Beast Hoplomus
 function c4253484.initial_effect(c)
 	--def
 	local e1=Effect.CreateEffect(c)

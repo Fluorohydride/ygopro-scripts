@@ -1,4 +1,5 @@
 --瀑征竜－タイダル
+--Tidal, Dragon Ruler of Waterfalls
 function c26400609.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

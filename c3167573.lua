@@ -1,4 +1,5 @@
 --パペット・キング
+--Puppet King
 function c3167573.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --魔導騎士 ディフェンダー
+--Defender, the Magical Knight
 function c2525268.initial_effect(c)
 	c:EnableCounterPermit(0x3001)
 	c:SetCounterLimit(0x3001,1)

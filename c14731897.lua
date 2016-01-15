@@ -1,4 +1,5 @@
 --結束 UNITY
+--Unity
 function c14731897.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ダーク・ヴァルキリア
+--Dark Valkyria
 function c83269557.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	--counter permit

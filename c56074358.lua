@@ -1,4 +1,5 @@
 --D・フィールド
+--Morphtronic Map
 function c56074358.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --魂を削る死霊
+--Spirit Reaper
 function c23205979.initial_effect(c)
 	--battle indestructable
 	local e1=Effect.CreateEffect(c)

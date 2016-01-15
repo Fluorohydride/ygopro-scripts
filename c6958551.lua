@@ -1,4 +1,5 @@
 --シャドー・トゥーン
+--Shadow Toon
 function c6958551.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --つり天井
+--Needle Ceiling
 function c38411870.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

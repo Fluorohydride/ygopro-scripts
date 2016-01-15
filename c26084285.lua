@@ -1,4 +1,5 @@
 --墓守の監視者
+--Gravekeeper's Watcher
 function c26084285.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --ゴーゴンの眼
+--Gorgon's Eye
 function c52648457.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

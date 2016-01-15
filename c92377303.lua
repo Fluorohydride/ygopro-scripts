@@ -1,4 +1,5 @@
 --黒衣の大賢者
+--Dark Sage
 function c92377303.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

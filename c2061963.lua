@@ -1,4 +1,5 @@
 --No.104 仮面魔踏士シャイニング
+--Number 104: Masquerade
 function c2061963.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)

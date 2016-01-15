@@ -1,4 +1,5 @@
 --白兵戦型お手伝いロボ
+--Helping Robo for Combat
 function c47025270.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --虹クリボー
+--Rainbow Kuriboh
 function c2830693.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

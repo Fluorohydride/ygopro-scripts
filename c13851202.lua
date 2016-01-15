@@ -1,4 +1,5 @@
 --星因士 リゲル
+--Satellarknight Rigel
 function c13851202.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

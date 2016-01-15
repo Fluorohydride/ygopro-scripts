@@ -1,4 +1,5 @@
 --漆黒のズムウォルト
+--Dark Diviner
 function c31919988.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure2(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_DARK),aux.NonTuner(Card.IsRace,RACE_INSECT))

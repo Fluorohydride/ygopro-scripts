@@ -1,4 +1,5 @@
 --旧神の印
+--Seal of the Ancients
 function c97809599.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --強欲な壺の精霊
+--Spirit of the Pot of Greed
 function c4896788.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

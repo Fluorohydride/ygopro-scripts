@@ -1,4 +1,5 @@
 --召魔装着
+--Empowering Armory
 function c54250060.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

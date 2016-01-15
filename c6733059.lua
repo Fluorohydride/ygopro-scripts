@@ -1,4 +1,5 @@
 --死霊の巣
+--Skull Lair
 function c6733059.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

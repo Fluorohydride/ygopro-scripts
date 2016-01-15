@@ -1,4 +1,5 @@
 --ハーフ・カウンター
+--Half Counter
 function c6799227.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

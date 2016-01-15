@@ -1,4 +1,5 @@
 --森羅の賢樹 シャーマン
+--Sylvan Sagequoia
 function c10530913.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

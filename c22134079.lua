@@ -1,4 +1,5 @@
 --墓守の伏兵
+--Gravekeeper's Ambusher
 function c22134079.initial_effect(c)
 	--return to deck
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --リリース・リバース・バースト
+--Release, Reverse, Burst
 function c38777931.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

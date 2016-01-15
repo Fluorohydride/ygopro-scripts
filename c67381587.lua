@@ -1,4 +1,5 @@
 --黒猫の睨み
+--Black Cat-astrophe
 function c67381587.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

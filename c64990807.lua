@@ -1,4 +1,5 @@
 --氷結界の三方陣
+--Magic Triangle of the Ice Barrier
 function c64990807.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

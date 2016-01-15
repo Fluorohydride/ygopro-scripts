@@ -1,4 +1,5 @@
 --彼岸の悪鬼 グラバースニッチ
+--Graff, Malebranche of the Burning Abyss
 function c20758643.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)

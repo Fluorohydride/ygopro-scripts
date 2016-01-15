@@ -1,4 +1,5 @@
 --ウィキッド・リボーン
+--Wicked Rebirth
 function c23440062.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --機皇廠
+--Meklord Factory
 function c77864539.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
