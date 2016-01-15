@@ -11,7 +11,7 @@ function c4259068.initial_effect(c)
 	e2:SetCode(EFFECT_LPCOST_CHANGE)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetTargetRange(1,1)
+	e2:SetTargetRange(1,0)
 	e2:SetValue(c4259068.costchange)
 	c:RegisterEffect(e2)
 end
