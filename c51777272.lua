@@ -50,9 +50,10 @@ function c51777272.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Group.CreateGroup()
 	g:KeepAlive()
 	e1:SetLabelObject(g)
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsRelateToEffect(e) then
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e2:SetCode(EFFECT_ATTACK_ALL)
 		e2:SetValue(2)
 		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)

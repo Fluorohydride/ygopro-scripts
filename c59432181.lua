@@ -23,7 +23,7 @@ function c59432181.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local g=Duel.SelectMatchingCard(tp,c59432181.filter,tp,LOCATION_EXTRA,0,1,1,nil)
 	local tc=Duel.GetFirstTarget()
-	if g:GetCount()>0 and tc:IsRelateToEffect(e) then
+	if g:GetCount()>0 and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_ADD_FUSION_CODE)
