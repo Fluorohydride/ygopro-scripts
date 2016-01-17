@@ -45,7 +45,7 @@ end
 function c34522216.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xe0)
 end
-function c34522216.limcon(e,tp,eg,ep,ev,re,r,rp)
+function c34522216.limcon(e)
 	return Duel.IsExistingMatchingCard(c34522216.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
 end
 function c34522216.limval(e,re,rp)
@@ -65,5 +65,5 @@ function c34522216.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c34522216.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsLocation(LOCATION_EXTRA) and not c:IsSetCard(0xe0)
-	and (e:GetHandler():GetSummonType()==SUMMON_TYPE_PENDULUM or e:GetHandler():GetFlagEffect(34522216)~=0)
+		and (e:GetHandler():GetSummonType()==SUMMON_TYPE_PENDULUM or e:GetHandler():GetFlagEffect(34522216)~=0)
 end

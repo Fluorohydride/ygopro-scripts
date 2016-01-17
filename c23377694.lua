@@ -11,6 +11,7 @@ function c23377694.initial_effect(c)
 	e1:SetTarget(c23377694.atktg)
 	e1:SetOperation(c23377694.atkop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
@@ -38,7 +39,7 @@ end
 function c23377694.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local ct=Duel.GetMatchingGroupCount(c23377694.filter2,tp,LOCATION_MZONE,0,nil)
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if ct>0 and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
@@ -47,24 +48,26 @@ function c23377694.atkop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 	end
 end
-function c23377694.filter3(c,tp)
+function c23377694.cfilter(c,tp)
 	return c:IsSetCard(0x9f) and c:GetPreviousControler()==tp
 end
-function c23377694.filter4(c,e,tp)
+function c23377694.spcon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c23377694.cfilter,1,nil,tp)
+end
+function c23377694.spfilter(c,e,tp)
 	return (c:IsSetCard(0x9f) or c:IsSetCard(0x99)) and (c:GetSequence()==6 or c:GetSequence()==7) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c23377694.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c23377694.filter3,1,nil,tp)
-end
-function c23377694.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingTarget(c23377694.filter4,tp,LOCATION_SZONE,0,1,nil,e,tp) end
+function c23377694.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_SZONE) and c23377694.spfilter(chkc,e,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c23377694.spfilter,tp,LOCATION_SZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectTarget(tp,c23377694.filter4,tp,LOCATION_SZONE,0,1,1,nil,e,tp)
+	local g=Duel.SelectTarget(tp,c23377694.spfilter,tp,LOCATION_SZONE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c23377694.spop(e,tp,eg,ep,ev,re,r,rp)
+	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and e:GetHandler():IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

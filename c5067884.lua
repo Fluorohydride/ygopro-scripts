@@ -26,7 +26,7 @@ function c5067884.xfilter(c,tp)
 		and (c:IsReason(REASON_BATTLE) or (c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()~=tp))
 end
 function c5067884.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return  eg:IsExists(c5067884.xfilter,1,e:GetHandler(),tp) and not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED) end
+	if chk==0 then return eg:IsExists(c5067884.xfilter,1,e:GetHandler(),tp) and not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED) end
 	return Duel.SelectYesNo(tp,aux.Stringid(5067884,0))
 end
 function c5067884.repval(e,c)

@@ -18,7 +18,7 @@ end
 function c11193246.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c11193246.cfilter,1,nil,tp)
 end
-function c11193246.thfilter(c,e,tp)
+function c11193246.thfilter(c)
 	return c:IsSetCard(0xdf) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c11193246.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -26,15 +26,15 @@ function c11193246.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c11193246.operation(e,tp,eg,ep,ev,re,r,rp)
-    local g=Duel.GetMatchingGroup(c11193246.thfilter,tp,LOCATION_DECK,0,nil)
-    if g:GetCount()<=0 then return end
-    Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-    local sg1=g:Select(tp,1,1,nil)
-    if g:GetCount()>=2 and Duel.SelectYesNo(tp,210) then
-        Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-        local sg2=g:Select(tp,1,1,sg1:GetFirst())
-        sg1:Merge(sg2)
-    end
-    Duel.SendtoHand(sg1,nil,REASON_EFFECT)
-    Duel.ConfirmCards(1-tp,sg1)
+	local g=Duel.GetMatchingGroup(c11193246.thfilter,tp,LOCATION_DECK,0,nil)
+	if g:GetCount()<=0 then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+	local sg1=g:Select(tp,1,1,nil)
+	if g:GetCount()>=2 and Duel.SelectYesNo(tp,210) then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+		local sg2=g:Select(tp,1,1,sg1:GetFirst())
+		sg1:Merge(sg2)
+	end
+	Duel.SendtoHand(sg1,nil,REASON_EFFECT)
+	Duel.ConfirmCards(1-tp,sg1)
 end

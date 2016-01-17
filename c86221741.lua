@@ -68,8 +68,8 @@ end
 function c86221741.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if not Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) then
-        Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,1000)
-    end
+		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,1000)
+	end
 end
 function c86221741.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
@@ -85,6 +85,6 @@ function c86221741.atkop(e,tp,eg,ep,ev,re,r,rp)
 			sc=g:GetNext()
 		end
 	else
-        Duel.Damage(1-tp,1000,REASON_EFFECT)
-    end
+		Duel.Damage(1-tp,1000,REASON_EFFECT)
+	end
 end

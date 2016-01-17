@@ -21,11 +21,10 @@ function c23160024.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_DRAW)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e4:SetRange(LOCATION_SZONE)
+	e4:SetRange(LOCATION_FZONE)
 	e4:SetCode(EVENT_RELEASE)
 	e4:SetProperty(EFFECT_FLAG_DELAY)
 	e4:SetCondition(c23160024.drcon)
-	e4:SetTarget(c23160024.drtg)
 	e4:SetOperation(c23160024.drop)
 	c:RegisterEffect(e4)
 	--ritural
@@ -44,20 +43,11 @@ end
 function c23160024.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(23160024)<2 and eg:IsExists(c23160024.cfilter,1,nil,tp)
 end
-function c23160024.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
-	Duel.SetTargetPlayer(tp)
-	Duel.SetTargetParam(1)
-	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
-end
 function c23160024.drop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,e:GetHandler():GetCode())
 	e:GetHandler():RegisterFlagEffect(23160024,RESET_PHASE+PHASE_END,0,1)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Draw(p,d,REASON_EFFECT)
-end
-function c23160024.ritual_filter(c)
-	return c:IsCode()
 end
 function c23160024.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
@@ -70,7 +60,8 @@ end
 function c23160024.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local mg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_HAND+LOCATION_MZONE,0,nil,TYPE_PENDULUM)
-		return Duel.IsExistingMatchingCard(c23160024.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp,mg) end
+		return Duel.IsExistingMatchingCard(c23160024.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp,mg)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c23160024.spop(e,tp,eg,ep,ev,re,r,rp)

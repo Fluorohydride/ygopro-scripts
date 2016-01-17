@@ -58,7 +58,7 @@ function c11317977.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c11317977.scfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
-function c11317977.scop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c11317977.scop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c11317977.scfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
@@ -70,17 +70,18 @@ function c11317977.thcon2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_FUSION
 end
 function c11317977.thfilter2(c)
-	return c:IsSetCard(0xdf) and not c:IsCode(11317977) and c:IsAbleToHand() and ((c:IsFaceup() and c:IsType(TYPE_MONSTER+TYPE_PENDULUM)) or c:IsType(TYPE_MONSTER))
+	return c:IsSetCard(0xdf) and not c:IsCode(11317977) and c:IsAbleToHand()
+		and ((c:IsFaceup() and c:IsLocation(LOCATION_EXTRA) and c:IsType(TYPE_MONSTER) and c:IsType(TYPE_PENDULUM))
+		or (c:IsLocation(LOCATION_EXTRA) and c:IsType(TYPE_MONSTER)))
 end
-function c11317977.thtg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_EXTRA) and chkc:IsControler(tp) and c11317977.thfilter2(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c11317977.thfilter2,tp,LOCATION_GRAVE+LOCATION_EXTRA,0,1,nil) end
+function c11317977.thtg2(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsExistingMatchingCard(c11317977.thfilter2,tp,LOCATION_GRAVE+LOCATION_EXTRA,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,0,0)
 end
 function c11317977.thop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c11317977.thfilter2,tp,LOCATION_GRAVE+LOCATION_EXTRA,0,1,1,nil)
-    if g:GetCount()>0 then
+	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end

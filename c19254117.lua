@@ -27,13 +27,11 @@ end
 function c19254117.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
-function c19254117.deffil(c)
-	return aux.nzdef(c) and c:IsFaceup()
-end
 function c19254117.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c19254117.deffil(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c19254117.deffil,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.SelectTarget(tp,c19254117.deffil,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and aux.nzdef(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(aux.nzdef,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+	Duel.SelectTarget(tp,aux.nzdef,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
 function c19254117.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

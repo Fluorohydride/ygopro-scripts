@@ -10,6 +10,7 @@ function c46589034.initial_effect(c)
 	e1:SetTarget(c46589034.sptg)
 	e1:SetOperation(c46589034.spop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
@@ -21,38 +22,39 @@ function c46589034.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xba) and c:IsLevelAbove(1) and c:GetAttack()~=0 and c:GetDefence()~=0
 end
 function c46589034.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return c:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and c46589034.cfilter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c46589034.cfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c46589034.cfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g=Duel.SelectTarget(tp,c46589034.cfilter,tp,LOCATION_MZONE,0,1,1,nil)
-	local c=g:GetFirst()
-	local atk=c:GetAttack()
-	local def=c:GetDefence()
-	local val=0
-	if atk<=def and atk>0 then val=atk
-	elseif def>0 then val=def end
+	local tc=g:GetFirst()
+	local atk=tc:GetAttack()
+	local def=tc:GetDefence()
+	local val=math.min(atk,def)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,0,tp,val)
 end
 function c46589034.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not (c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0) then return end
+	if not (c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e)) then return end
 	local atk=tc:GetAttack()
 	local def=tc:GetDefence()
-	local val=0
-	if atk<=def and atk>0 then val=atk
-	elseif def>0 then val=def end
+	local val=math.min(atk,def)
 	if Duel.Damage(tp,val,REASON_EFFECT)~=0 then
-		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_CHANGE_LEVEL)
-			e1:SetValue(tc:GetLevel())
-			e1:SetReset(RESET_EVENT+0x1fe0000)
-			c:RegisterEffect(e1)
+		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
+			if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
+				local e1=Effect.CreateEffect(c)
+				e1:SetType(EFFECT_TYPE_SINGLE)
+				e1:SetCode(EFFECT_CHANGE_LEVEL)
+				e1:SetValue(tc:GetLevel())
+				e1:SetReset(RESET_EVENT+0x1fe0000)
+				c:RegisterEffect(e1)
+				Duel.SpecialSummonComplete()
+			end
+		else
+			Duel.SendtoGrave(c,REASON_RULE)
 		end
 	end
 end

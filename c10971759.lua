@@ -17,22 +17,25 @@ function c10971759.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCost(c10971759.cost)
 	e2:SetTarget(c10971759.target)
 	e2:SetOperation(c10971759.operation)
 	c:RegisterEffect(e2)
 end
-function c10971759.spfil(c,e,tp)
+function c10971759.spfilter(c,e,tp)
 	return c:GetLevel()==3 and c:IsRace(RACE_INSECT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c10971759.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c10971759.spfil(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>=2 and Duel.IsExistingTarget(c10971759.spfil,tp,LOCATION_GRAVE,0,2,nil,e,tp) end
-	local g=Duel.SelectTarget(tp,c10971759.spfil,tp,LOCATION_GRAVE,0,2,2,nil,e,tp)
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c10971759.spfilter(chkc,e,tp) end
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+		and Duel.IsExistingTarget(c10971759.spfilter,tp,LOCATION_GRAVE,0,2,nil,e,tp) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local g=Duel.SelectTarget(tp,c10971759.spfilter,tp,LOCATION_GRAVE,0,2,2,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,2,0,0)
 end
 function c10971759.spop(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<g:GetCount() then return end
 	local tc=g:GetFirst()

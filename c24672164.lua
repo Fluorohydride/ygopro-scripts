@@ -34,24 +34,24 @@ function c24672164.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c24672164.fscon(e,g,gc,chkf)
-	if g==nil then 
-		return false 
+	if g==nil then
+		return false
 	end
-	if gc then 
+	if gc then
 		local g1=g:Filter(Card.IsFusionSetCard,nil,0x9b)
 		if not g1:IsContains(gc) then g1:AddCard(gc) end
-		local c1=g1:GetCount()
-		local c2=g1:FilterCount(Card.IsFusionSetCard,nil,0x109b)
-		return gc:IsSetCard(0x9b) and c1>=2 and c2>0
+		local ct1=g1:GetCount()
+		local ct2=g1:FilterCount(Card.IsFusionSetCard,nil,0x109b)
+		return gc:IsSetCard(0x9b) and ct1>=2 and ct2>0
 	end
 	local g1=g:Filter(Card.IsFusionSetCard,nil,0x9b)
-	local c1=g1:GetCount()
-	local c2=g1:FilterCount(Card.IsFusionSetCard,nil,0x109b)
-	if chkf~=PLAYER_NONE and not ag:IsExists(aux.FConditionCheckF,1,nil,chkf) then return false end
-	return c1>=2 and c2>0
+	local ct1=g1:GetCount()
+	local ct2=g1:FilterCount(Card.IsFusionSetCard,nil,0x109b)
+	if chkf~=PLAYER_NONE and not g1:IsExists(aux.FConditionCheckF,1,nil,chkf) then return false end
+	return ct1>=2 and ct2>0
 end
 function c24672164.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
-	if gc then 
+	if gc then
 		local g1=eg:Filter(Card.IsFusionSetCard,nil,0x9b)
 		local mg=Group.CreateGroup()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
@@ -78,16 +78,16 @@ function c24672164.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 end
 function c24672164.matcheck(e,c)
 	local ct=c:GetMaterialCount()
-	local ae=Effect.CreateEffect(c)
-	ae:SetType(EFFECT_TYPE_SINGLE)
-	ae:SetCode(EFFECT_UPDATE_ATTACK)
-	ae:SetValue(ct*300)
-	ae:SetReset(RESET_EVENT+0xff0000)
-	c:RegisterEffect(ae)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_UPDATE_ATTACK)
+	e1:SetValue(ct*300)
+	e1:SetReset(RESET_EVENT+0xff0000)
+	c:RegisterEffect(e1)
 end
 function c24672164.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_MZONE) and bit.band(c:GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION 
+	return c:IsPreviousLocation(LOCATION_MZONE) and bit.band(c:GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
 end
 function c24672164.filter(c)
 	return c:IsSetCard(0x9b) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
