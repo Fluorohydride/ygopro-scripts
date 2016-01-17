@@ -19,22 +19,29 @@ function c88935103.initial_effect(c)
 	c:RegisterEffect(e3)
 	--todeck
 	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e4:SetCode(EFFECT_SEND_REPLACE)
-	e4:SetTarget(c88935103.check)
-	e4:SetValue(aux.FALSE)
+	e4:SetType(EFFECT_TYPE_SINGLE)
+	e4:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
+	e4:SetValue(LOCATION_DECKBOT)
+	e4:SetCondition(c88935103.rdcon)
 	c:RegisterEffect(e4)
-	--spsummon
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(88935103,1))
-	e5:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e5:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e5:SetType(EFFECT_TYPE_IGNITION)
-	e5:SetRange(LOCATION_HAND+LOCATION_GRAVE)
-	e5:SetTarget(c88935103.sptg)
-	e5:SetOperation(c88935103.spop)
+	e5:SetType(EFFECT_TYPE_FIELD)
+	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE)
+	e5:SetRange(LOCATION_MZONE)
+	e5:SetCode(EFFECT_MATERIAL_CHECK)
+	e5:SetValue(c88935103.valcheck)
+	e5:SetLabelObject(e4)
 	c:RegisterEffect(e5)
+	--spsummon
+	local e6=Effect.CreateEffect(c)
+	e6:SetDescription(aux.Stringid(88935103,1))
+	e6:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e6:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e6:SetType(EFFECT_TYPE_IGNITION)
+	e6:SetRange(LOCATION_HAND+LOCATION_GRAVE)
+	e6:SetTarget(c88935103.sptg)
+	e6:SetOperation(c88935103.spop)
+	c:RegisterEffect(e6)
 end
 function c88935103.descon(e)
 	local seq=e:GetHandler():GetSequence()
@@ -45,13 +52,18 @@ function c88935103.synlimit(e,c)
 	if not c then return false end
 	return not c:IsRace(RACE_DRAGON)
 end
+function c88935103.rdcon(e)
+	return e:GetHandler():IsReason(REASON_MATERIAL) and e:GetHandler():IsReason(REASON_SYNCHRO) and e:GetLabel()==1
+end
 function c88935103.sfilter(c)
 	return not c:IsSetCard(0x99)
 end
-function c88935103.check(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return bit.band(r,REASON_SYNCHRO)~=0 and eg:IsExists(c88935103.sfilter,1,e:GetHandler()) end
-	Duel.SendtoDeck(e:GetHandler(),nil,1,r)
-	return true
+function c88935103.valcheck(e,c)
+	if c:GetMaterial():IsExists(c88935103.sfilter,1,e:GetHandler()) then
+		e:GetLabelObject():SetLabel(1)
+	else
+		e:GetLabelObject():SetLabel(0)
+	end
 end
 function c88935103.cfilter(c)
 	return c:IsFaceup() and c:GetLevel()>=7 and c:IsSetCard(0x99)
