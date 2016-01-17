@@ -34,7 +34,7 @@ function c32441317.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)~=0 and sumtype==SUMMON_TYPE_SYNCHRO
 		and ct>0 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
-		and mg:IsExists(c32441317.mgfilter,1,nil,e,tp,tc)==ct
+		and mg:FilterCount(c32441317.mgfilter,nil,e,tp,tc)==ct
 		and Duel.SelectYesNo(tp,aux.Stringid(32441317,0)) then
 		Duel.BreakEffect()
 		Duel.SpecialSummon(mg,0,tp,tp,false,false,POS_FACEUP)
