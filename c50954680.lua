@@ -16,6 +16,7 @@ function c50954680.initial_effect(c)
 	e1:SetTarget(c50954680.target)
 	e1:SetOperation(c50954680.operation)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_ATKCHANGE)
 	e2:SetType(EFFECT_TYPE_TRIGGER_F+EFFECT_TYPE_SINGLE)
@@ -27,7 +28,6 @@ end
 function c50954680.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=re:GetHandler()
-	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
 	return re:IsActiveType(TYPE_MONSTER) and rc~=c and not c:IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev)
 end
 function c50954680.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -40,14 +40,16 @@ function c50954680.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50954680.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateActivation(ev)
+	local c=e:GetHandler()
 	local rc=re:GetHandler()
-	if rc:IsRelateToEffect(re) and Duel.Destroy(rc,REASON_EFFECT)~=0 and rc:GetBaseAttack()>=0 then
-		local e1=Effect.CreateEffect(e:GetHandler())
+	if rc:IsRelateToEffect(re) and Duel.Destroy(rc,REASON_EFFECT)~=0 and rc:GetBaseAttack()>=0
+		and c:IsRelateToEffect(e) and c:IsFaceup() then
+		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END)
 		e1:SetValue(rc:GetBaseAttack())
-		e:GetHandler():RegisterEffect(e1)
+		c:RegisterEffect(e1)
 	end
 end
 function c50954680.atkcon(e,tp,eg,ep,ev,re,r,rp)
@@ -59,11 +61,11 @@ function c50954680.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	if c:IsRelateToBattle() and c:IsFaceup() and bc:IsRelateToBattle() and bc:IsFaceup() then
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_UPDATE_ATTACK)
-	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
-	e1:SetValue(bc:GetAttack())
-	c:RegisterEffect(e1)
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_UPDATE_ATTACK)
+		e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
+		e1:SetValue(bc:GetAttack())
+		c:RegisterEffect(e1)
 	end
 end

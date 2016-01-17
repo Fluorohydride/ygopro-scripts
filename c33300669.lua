@@ -59,5 +59,5 @@ function c33300669.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c33300669.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsLocation(LOCATION_EXTRA) and not c:IsSetCard(0xe0)
-	and (e:GetHandler():GetSummonType()==SUMMON_TYPE_PENDULUM or e:GetHandler():GetFlagEffect(33300669)~=0)
+		and (e:GetHandler():GetSummonType()==SUMMON_TYPE_PENDULUM or e:GetHandler():GetFlagEffect(33300669)~=0)
 end

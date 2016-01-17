@@ -39,8 +39,8 @@ function c58600555.ovfilter(c,tp,xyzc)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and (c:GetRank()==3 or c:GetRank()==4) and c:IsRace(RACE_INSECT) and c:IsCanBeXyzMaterial(xyzc)
 		and c:CheckRemoveOverlayCard(tp,2,REASON_COST)
 end
-function c58600555.ovfilter2(c,tp,xyzc)
-	return c:IsFaceup() and c:IsType(TYPE_MONSTER) and c:GetLevel()==5 and c:IsRace(RACE_INSECT) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsCanBeXyzMaterial(xyzc)
+function c58600555.ovfilter2(c)
+	return c:IsFaceup() and c:GetLevel()==5 and c:IsRace(RACE_INSECT) and c:IsAttribute(ATTRIBUTE_LIGHT)
 end
 function c58600555.xyzcon(e,c,og)
 	if c==nil then return true end
@@ -83,13 +83,14 @@ function c58600555.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
-function c58600555.tdfil(c)
+function c58600555.tdfilter(c)
 	return c:IsPosition(POS_DEFENCE) and c:IsAbleToDeck()
 end
 function c58600555.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c58600555.tdfil(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c58600555.tdfil,tp,0,LOCATION_MZONE,1,nil) end
-	local g=Duel.SelectTarget(tp,c58600555.tdfil,tp,0,LOCATION_MZONE,1,1,nil)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c58600555.tdfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c58600555.tdfilter,tp,0,LOCATION_MZONE,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+	local g=Duel.SelectTarget(tp,c58600555.tdfilter,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,1,0,0)
 end
 function c58600555.tdop(e,tp,eg,ep,ev,re,r,rp)

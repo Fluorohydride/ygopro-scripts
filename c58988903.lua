@@ -60,7 +60,7 @@ function c58988903.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c58988903.cfilter(c,e,tp)
 	return c:IsSetCard(0xba) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
-		and Duel.IsExistingMatchingCard(c58988903.spfilter,tp,LOCATION_GRAVE,0,1,c,e,tp)
+		and Duel.IsExistingTarget(c58988903.spfilter,tp,LOCATION_GRAVE,0,1,c,e,tp)
 end
 function c58988903.spfilter(c,e,tp)
 	return c:IsSetCard(0xba) and c:IsType(TYPE_XYZ) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -75,8 +75,7 @@ function c58988903.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58988903.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c58988903.spfilter(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 
-		and Duel.IsExistingTarget(c58988903.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c58988903.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)

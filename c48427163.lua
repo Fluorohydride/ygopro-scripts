@@ -7,7 +7,7 @@ function c48427163.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE+LOCATION_HAND)
 	e1:SetCost(c48427163.atkcost)
-	e1:SetTarget(c48427163.atktarget)
+	e1:SetTarget(c48427163.atktg)
 	e1:SetOperation(c48427163.atkop)
 	c:RegisterEffect(e1)
 	--special summon
@@ -17,7 +17,7 @@ function c48427163.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,48427163)
 	e2:SetCost(c48427163.spcost)
-	e2:SetTarget(c48427163.sptarget)
+	e2:SetTarget(c48427163.sptg)
 	e2:SetOperation(c48427163.spop)
 	c:RegisterEffect(e2)
 end
@@ -28,7 +28,7 @@ function c48427163.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
-function c48427163.atktarget(e,tp,eg,ep,ev,re,r,rp,chk)
+function c48427163.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c48427163.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c48427163.filter,tp,LOCATION_MZONE,0,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
@@ -52,7 +52,7 @@ function c48427163.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
-function c48427163.sptarget(e,tp,eg,ep,ev,re,r,rp,chk)
+function c48427163.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c48427163.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)

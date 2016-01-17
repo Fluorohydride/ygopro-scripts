@@ -21,16 +21,16 @@ function c5067884.initial_effect(c)
 	e2:SetOperation(c5067884.atkop)
 	c:RegisterEffect(e2)
 end
-function c5067884.xfilter(c,tp)
+function c5067884.repfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD) and c:IsSetCard(0xd8)
 		and (c:IsReason(REASON_BATTLE) or (c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()~=tp))
 end
 function c5067884.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c5067884.xfilter,1,e:GetHandler(),tp) and not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED) end
+	if chk==0 then return eg:IsExists(c5067884.repfilter,1,e:GetHandler(),tp) and not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED) end
 	return Duel.SelectYesNo(tp,aux.Stringid(5067884,0))
 end
 function c5067884.repval(e,c)
-	return c5067884.xfilter(c,e:GetHandlerPlayer())
+	return c5067884.repfilter(c,e:GetHandlerPlayer())
 end
 function c5067884.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)
@@ -47,14 +47,14 @@ end
 function c5067884.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local con1=c:GetFlagEffect(5067884)==0
-	local con2=c:GetFlagEffect(50678841)==0
+	local con2=c:GetFlagEffect(5067885)==0
 	if chk==0 then return con1 or con2 end
-	local op
+	local op=0
 	if con1 and con2 then
 		op=Duel.SelectOption(tp,aux.Stringid(5067884,1),aux.Stringid(5067884,2))
-	elseif con1 and not con2 then
+	elseif con1 then
 		op=Duel.SelectOption(tp,aux.Stringid(5067884,1))
-	elseif not con1 and con2 then
+	else
 		op=Duel.SelectOption(tp,aux.Stringid(5067884,2))+1
 	end
 	e:SetLabel(op)
@@ -65,7 +65,7 @@ function c5067884.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if op==0 then
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
 			c:RegisterFlagEffect(5067884,RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END,0,0)
-			local e1=Effect.CreateEffect(e:GetHandler())
+			local e1=Effect.CreateEffect(c)
 			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_DIRECT_ATTACK)
@@ -74,7 +74,7 @@ function c5067884.atkop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	elseif op==1 then
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
-			c:RegisterFlagEffect(50678841,RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END,0,0)
+			c:RegisterFlagEffect(5067885,RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END,0,0)
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetCode(EFFECT_EXTRA_ATTACK)

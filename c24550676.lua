@@ -31,10 +31,10 @@ function c24550676.initial_effect(c)
 	--Destroy
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(24550676,0))
-	e4:SetCategory(CATEGORY_COUNTER)
-	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e4:SetCategory(CATEGORY_DESTROY)
+	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_DAMAGE_STEP_END)
-	e4:SetRange(LOCATION_MZONE)
+	e4:SetCountLimit(1)
 	e4:SetCondition(c24550676.condition)
 	e4:SetTarget(c24550676.target)
 	e4:SetOperation(c24550676.operation)
@@ -47,11 +47,10 @@ function c24550676.tgvalue(e,re,rp)
 	return rp~=e:GetHandlerPlayer()
 end
 function c24550676.condition(e,tp,eg,ep,ev,re,r,rp)
-	local atg=Duel.GetAttackTarget()
-	return Duel.GetAttacker()==e:GetHandler() and atg
+	return Duel.GetAttacker()==e:GetHandler() and Duel.GetAttackTarget()
 end
 function c24550676.filter(c)
-	return c:IsFaceup() and c:IsDestructable() and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return c:IsDestructable() and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
 end
 function c24550676.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c24550676.filter,tp,0,LOCATION_MZONE,1,nil) end

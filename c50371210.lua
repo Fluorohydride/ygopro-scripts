@@ -32,7 +32,7 @@ function c50371210.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c50371210.spfilter(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsSetCard(0xdd)
+	return c:IsSetCard(0xdd) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c50371210.gvfilter(c)
 	return c:IsSetCard(0xdd)
@@ -43,9 +43,9 @@ end
 function c50371210.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c50371210.spfilter(chkc,e,tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingTarget(c50371210.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) 
-		and Duel.IsExistingTarget(c50371210.gvfilter,tp,LOCATION_GRAVE,0,3,nil) 
-	and not Duel.IsExistingTarget(c50371210.cfilter,tp,LOCATION_ONFIELD,0,1,e:GetHandler()) end
+		and Duel.IsExistingTarget(c50371210.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
+		and Duel.IsExistingMatchingCard(c50371210.gvfilter,tp,LOCATION_GRAVE,0,3,nil)
+		and not Duel.IsExistingMatchingCard(c50371210.cfilter,tp,LOCATION_ONFIELD,0,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c50371210.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
@@ -76,7 +76,6 @@ function c50371210.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c50371210.rmop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
 	local tc=e:GetHandler():GetEquipTarget()
 	if tc then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
