@@ -13,7 +13,7 @@ function c18426196.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY+EFFECT_FLAG_CVAL_CHECK)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_TO_GRAVE)
-	e1:SetCondition(c18426196.thcon)
+	e1:SetCondition(aux.dogcon)
 	e1:SetCost(c18426196.thcost)
 	e1:SetTarget(c18426196.thtg)
 	e1:SetOperation(c18426196.thop)
@@ -24,9 +24,6 @@ function c18426196.condtion(e)
 	local ph=Duel.GetCurrentPhase()
 	return (ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL)
 		and Duel.GetAttacker()==e:GetHandler()
-end
-function c18426196.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetReasonPlayer()==1-tp
 end
 function c18426196.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

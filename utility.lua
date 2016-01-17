@@ -1455,6 +1455,11 @@ function Auxiliary.bdogcon(e,tp,eg,ep,ev,re,r,rp)
 	local bc=c:GetBattleTarget()
 	return c:IsRelateToBattle() and c:IsStatus(STATUS_OPPO_BATTLE) and bc:IsLocation(LOCATION_GRAVE) and bc:IsType(TYPE_MONSTER)
 end
+--condition of EVENT_TO_GRAVE + destroyed_by_opponent_from_field
+function Auxiliary.dogcon(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	return c:GetPreviousControler()==tp and c:IsReason(REASON_DESTROY) and rp~=tp
+end
 --condition of "cannot be negated"
 function Auxiliary.nfbdncon(e)
 	return not e:GetHandler():IsForbidden()

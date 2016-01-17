@@ -7,14 +7,10 @@ function c68535320.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCode(EVENT_TO_GRAVE)
-	e1:SetCondition(c68535320.condition)
+	e1:SetCondition(aux.dogcon)
 	e1:SetTarget(c68535320.target)
 	e1:SetOperation(c68535320.operation)
 	c:RegisterEffect(e1)
-end
-function c68535320.condition(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return c:IsReason(REASON_DESTROY) and rp~=tp
 end
 function c68535320.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsDestructable() end
