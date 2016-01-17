@@ -14,7 +14,7 @@ function c95929069.initial_effect(c)
 end
 function c95929069.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousControler()==tp and c:IsReason(REASON_DESTROY) and rp~=tp
+	return c:IsReason(REASON_DESTROY) and rp~=tp
 end
 function c95929069.dfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
