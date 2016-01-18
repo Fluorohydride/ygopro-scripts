@@ -1,5 +1,5 @@
 --アモルファージ・プレスト
-function c73050602.initial_effect(c)
+function c7305060.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
 	--flip
