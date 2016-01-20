@@ -9,7 +9,6 @@ function c73860462.initial_effect(c)
 	e1:SetOperation(c73860462.xyzop)
 	c:RegisterEffect(e1)
 end
-
 function c73860462.xyzfilter(c)
 	return c:IsXyzSummonable(nil)
 end

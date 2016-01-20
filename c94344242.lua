@@ -30,22 +30,25 @@ function c94344242.xyzlimit(e,c)
 	if not c then return false end
 	return not c:IsRace(RACE_INSECT)
 end
-function c94344242.spfil(c,e,tp)
+function c94344242.spfilter(c,e,tp)
 	return c:GetLevel()==3 and c:IsRace(RACE_INSECT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c94344242.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsPosition(POS_FACEUP_ATTACK) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingTarget(Card.IsPosition,tp,LOCATION_MZONE,0,1,nil,POS_FACEUP_ATTACK) and Duel.IsExistingMatchingCard(c94344242.spfil,tp,LOCATION_HAND,0,1,nil,e,tp) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingTarget(Card.IsPosition,tp,LOCATION_MZONE,0,1,nil,POS_FACEUP_ATTACK)
+		and Duel.IsExistingMatchingCard(c94344242.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUPATTACK)
 	local g=Duel.SelectTarget(tp,Card.IsPosition,tp,LOCATION_MZONE,0,1,1,nil,POS_FACEUP_ATTACK)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c94344242.spop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<1 then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsPosition(POS_FACEUP_ATTACK) and Duel.ChangePosition(tc,POS_FACEUP_DEFENCE)~=0 then
-		local g=Duel.SelectMatchingCard(tp,c94344242.spfil,tp,LOCATION_HAND,0,1,1,nil,e,tp)
+		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local g=Duel.SelectMatchingCard(tp,c94344242.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 		if g:GetCount()==0 then return end
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
 	end
@@ -74,14 +77,12 @@ function c94344242.efop(e,tp,eg,ep,ev,re,r,rp)
 		rc:RegisterEffect(e2,true)
 	end
 end
-function c94344242.deffil(c)
-	return c:IsFaceup() and c:IsDefenceAbove(1)
-end
 function c94344242.defcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
 end
 function c94344242.defop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c94344242.deffil,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
+	Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(e:GetHandler())
@@ -90,7 +91,6 @@ function c94344242.defop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(0)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		tc:RegisterEffect(e1)
-		Duel.ChangePosition(tc,POS_FACEUP_DEFENCE)
 		tc=g:GetNext()
 	end
 end

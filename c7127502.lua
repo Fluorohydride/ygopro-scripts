@@ -20,7 +20,7 @@ function c7127502.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c7127502.distg(e,c)
-	return c:IsFaceup() and c:IsType(TYPE_PENDULUM)
+	return c:IsType(TYPE_PENDULUM)
 end
 function c7127502.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

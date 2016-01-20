@@ -35,24 +35,26 @@ function c72855441.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-function c72855441.gvfilter(c,e,tp)
+function c72855441.gvfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsAbleToGrave()
-		and Duel.IsExistingMatchingCard(c72855441.spfilter2,tp,LOCATION_HAND,0,1,nil,e,tp)
 end
 function c72855441.spfilter2(c,e,tp)
 	return c:IsSetCard(0xdd) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c72855441.gvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c72855441.gvfilter(chkc,e,tp) end
-	if chk==0 then return Duel.IsExistingMatchingCard(c72855441.gvfilter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c72855441.gvfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
-	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,0)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c72855441.gvfilter(chkc) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
+		and Duel.IsExistingTarget(c72855441.gvfilter,tp,LOCATION_MZONE,0,1,nil)
+		and Duel.IsExistingMatchingCard(c72855441.spfilter2,tp,LOCATION_HAND,0,1,nil,e,tp) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local g=Duel.SelectTarget(tp,c72855441.gvfilter,tp,LOCATION_MZONE,0,1,1,nil)
+	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c72855441.gvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
-		if Duel.SendtoGrave(tc,REASON_EFFECT)~=0 
+	if tc:IsRelateToEffect(e) then
+		if Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE)
 			and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 			and Duel.IsExistingMatchingCard(c72855441.spfilter2,tp,LOCATION_HAND,0,1,nil,e,tp) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

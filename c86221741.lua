@@ -14,7 +14,6 @@ function c86221741.initial_effect(c)
 	--act limit
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
-	e2:SetCountLimit(1)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCost(c86221741.cost)
 	e2:SetOperation(c86221741.operation)

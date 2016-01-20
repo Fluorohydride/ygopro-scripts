@@ -55,12 +55,12 @@ function c7305060.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c7305060.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsLocation(LOCATION_EXTRA) and not c:IsSetCard(0xe0)
-	and (e:GetHandler():GetSummonType()==SUMMON_TYPE_PENDULUM or e:GetHandler():GetFlagEffect(7305060)~=0)
+		and (e:GetHandler():GetSummonType()==SUMMON_TYPE_PENDULUM or e:GetHandler():GetFlagEffect(7305060)~=0)
 end
 function c7305060.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xe0)
 end
-function c7305060.limcon(e,tp,eg,ep,ev,re,r,rp)
+function c7305060.limcon(e)
 	return Duel.IsExistingMatchingCard(c7305060.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
 end
 function c7305060.limval(e,re,rp)

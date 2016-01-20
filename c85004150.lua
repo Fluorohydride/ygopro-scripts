@@ -14,17 +14,18 @@ function c85004150.initial_effect(c)
 	e1:SetOperation(c85004150.xyzop)
 	e1:SetValue(SUMMON_TYPE_XYZ)
 	c:RegisterEffect(e1)
-	--atkup
+	--destroy
 	local e2=Effect.CreateEffect(c)
-	e2:SetCategory(CATEGORY_ATKCHANGE)
+	e2:SetCategory(CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1)
-	e2:SetCost(c85004150.atkcost)
-	e2:SetTarget(c85004150.atktg)
-	e2:SetOperation(c85004150.atkop)
+	e2:SetCost(c85004150.descost)
+	e2:SetTarget(c85004150.destg)
+	e2:SetOperation(c85004150.desop)
 	c:RegisterEffect(e2)
+	--
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetCode(EFFECT_PIERCE)
@@ -33,42 +34,39 @@ end
 function c85004150.mfilter(c)
 	return c:IsRace(RACE_INSECT) and c:IsAttribute(ATTRIBUTE_LIGHT)
 end
-function c85004150.mfilter2(c,xyzc)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ) and (c:GetRank()==6 or c:GetRank()==5) and c:IsRace(RACE_INSECT) and c:IsCanBeXyzMaterial(xyzc)
-	and c:CheckRemoveOverlayCard(tp,2,REASON_COST)
+function c85004150.mfilter2(c,tp,xyzc)
+	return c:IsFaceup() and c:IsType(TYPE_XYZ) and (c:GetRank()==5 or c:GetRank()==6) and c:IsRace(RACE_INSECT) and c:IsCanBeXyzMaterial(xyzc)
+		and c:CheckRemoveOverlayCard(tp,2,REASON_EFFECT)
 end
 function c85004150.xyzcon(e,c)
 	if c==nil then return true end
-	return Duel.IsExistingMatchingCard(c85004150.mfilter2,c:GetControler(),LOCATION_MZONE,0,1,nil)
+	local tp=c:GetControler()
+	return Duel.IsExistingMatchingCard(c85004150.mfilter2,tp,LOCATION_MZONE,0,1,nil,tp,c)
 end
 function c85004150.xyzop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectMatchingCard(tp,c85004150.mfilter2,tp,LOCATION_MZONE,0,1,1,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+	local g=Duel.SelectMatchingCard(tp,c85004150.mfilter2,tp,LOCATION_MZONE,0,1,1,nil,tp,c)
 	g:GetFirst():RemoveOverlayCard(tp,2,2,REASON_EFFECT)
 	c:SetMaterial(g)
 	Duel.Overlay(c,g)
 end
-function c85004150.atkfilter(c)
+function c85004150.desfilter(c)
 	return c:IsFaceup() and c:IsDestructable()
 end
-function c85004150.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
+function c85004150.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
-function c85004150.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c85004150.atkfilter,tp,0,LOCATION_MZONE,1,nil) end
-	local g=Duel.GetMatchingGroup(c85004150.atkfilter,tp,0,LOCATION_MZONE,nil)
-	local tg=g:GetMaxGroup(Card.GetDefence)
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tg,1,0,0)
+function c85004150.destg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsExistingMatchingCard(c85004150.desfilter,tp,0,LOCATION_MZONE,1,nil) end
+	local g=Duel.GetMatchingGroup(c85004150.desfilter,tp,0,LOCATION_MZONE,nil)
+	local dg=g:GetMaxGroup(Card.GetDefence)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,dg,dg:GetCount(),0,0)
 end
-function c85004150.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c85004150.atkfilter,tp,0,LOCATION_MZONE,nil)
+function c85004150.desop(e,tp,eg,ep,ev,re,r,rp)
+	local g=Duel.GetMatchingGroup(c85004150.desfilter,tp,0,LOCATION_MZONE,nil)
 	if g:GetCount()>0 then
-		local tg=g:GetMaxGroup(Card.GetDefence)
-		if tg:GetCount()>1 then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-			local sg=tg:Select(tp,1,1,nil)
-			Duel.HintSelection(sg)
-			Duel.Destroy(sg,REASON_EFFECT)
-		else Duel.Destroy(tg,REASON_EFFECT) end
+		local dg=g:GetMaxGroup(Card.GetDefence)
+		Duel.Destroy(dg,REASON_EFFECT)
 	end
 end

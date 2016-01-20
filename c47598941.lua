@@ -73,11 +73,11 @@ function c47598941.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c47598941.atktg(e,c)
-	return c:IsFaceup() and not c:IsSetCard(0xe0)
+	return not c:IsSetCard(0xe0)
 end
 function c47598941.vfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xe0)
 end
-function c47598941.atkval(e)
-	return Duel.GetMatchingGroupCount(c47598941.vfilter,e:GetOwnerPlayer(),LOCATION_ONFIELD,LOCATION_ONFIELD,nil)*-100
+function c47598941.atkval(e,c)
+	return Duel.GetMatchingGroupCount(c47598941.vfilter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)*-100
 end

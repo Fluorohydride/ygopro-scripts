@@ -22,7 +22,7 @@ function c84812868.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c84812868.spfilter(c,e,tp)
-	return c:IsSetCard(0xdf) and c:IsType(TYPE_MONSTER) and not c:IsCode(84812868) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0xdf) and not c:IsCode(84812868) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c84812868.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c84812868.spfilter(chkc,e,tp) end
@@ -49,12 +49,14 @@ function c84812868.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingMatchingCard(c84812868.filter,tp,LOCATION_ONFIELD,0,1,e:GetHandler())
 		and Duel.IsExistingTarget(c84812868.filter2,tp,0,LOCATION_SZONE,1,nil) end
 	local ct=Duel.GetMatchingGroupCount(c84812868.filter,tp,LOCATION_ONFIELD,0,e:GetHandler())
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local g=Duel.SelectTarget(tp,c84812868.filter2,tp,0,LOCATION_SZONE,1,ct,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,g:GetCount(),0,0)
 end
 function c84812868.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	if g:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 	end

@@ -2,7 +2,7 @@
 function c86157908.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
-	--Activate
+	--atk
 	local e2=Effect.CreateEffect(c)
 	e2:SetProperty(EFFECT_FLAG_NO_TURN_RESET+EFFECT_FLAG_CARD_TARGET)
 	e2:SetCategory(CATEGORY_ATKCHANGE)
@@ -14,8 +14,9 @@ function c86157908.initial_effect(c)
 	e2:SetTarget(c86157908.atktg)
 	e2:SetOperation(c86157908.atkop)
 	c:RegisterEffect(e2)
+	--recover
 	local e3=Effect.CreateEffect(c)
-	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e3:SetCategory(CATEGORY_RECOVER)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SUMMON_SUCCESS)
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
@@ -26,8 +27,8 @@ function c86157908.initial_effect(c)
 	e4:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e4)
 end
-function c86157908.filter(c)
-	return c:IsSetCard(0x9f)
+function c86157908.atkfilter(c)
+	return c:IsFaceup() and c:IsSetCard(0x9f)
 end
 function c86157908.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
@@ -35,17 +36,17 @@ function c86157908.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c86157908.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local at=Duel.GetAttacker()
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c86157908.filter(chkc,tp) and chkc~=e:GetHandler() end
-	if chk==0 then return Duel.IsExistingTarget(c86157908.filter,tp,LOCATION_MZONE,0,1,at,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c86157908.filter,tp,LOCATION_MZONE,0,1,1,at,tp)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c86157908.atkfilter(chkc) and chkc~=at end
+	if chk==0 then return Duel.IsExistingTarget(c86157908.atkfilter,tp,LOCATION_MZONE,0,1,at) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+	Duel.SelectTarget(tp,c86157908.atkfilter,tp,LOCATION_MZONE,0,1,1,at)
 end
 function c86157908.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
-	local atk=tc:GetBaseAttack()
 	local at=Duel.GetAttacker()
-	if at:IsFaceup() and at:IsRelateToBattle() then
+	if at:IsFaceup() and at:IsRelateToBattle() and tc:IsFaceup() and at:IsRelateToEffect(e) then
+		local atk=tc:GetBaseAttack()
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
@@ -54,12 +55,16 @@ function c86157908.atkop(e,tp,eg,ep,ev,re,r,rp)
 		at:RegisterEffect(e1)
 	end
 end
+function c86157908.filter(c)
+	return c:IsSetCard(0x9f) and c:GetAttack()>0
+end
 function c86157908.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c86157908.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c86157908.filter,tp,LOCATION_GRAVE,0,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g=Duel.SelectTarget(tp,c86157908.filter,tp,LOCATION_GRAVE,0,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
+	local atk=g:GetFirst():GetAttack()
+	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,atk)
 end
 function c86157908.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

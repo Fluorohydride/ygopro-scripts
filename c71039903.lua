@@ -6,6 +6,7 @@ function c71039903.initial_effect(c)
 	e1:SetCode(EVENT_TO_GRAVE)
 	e1:SetOperation(c71039903.regop)
 	c:RegisterEffect(e1)
+	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(71039903,0))
 	e2:SetCategory(CATEGORY_TOHAND)
@@ -22,7 +23,7 @@ function c71039903.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(71039903,1))
-	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_PHASE+PHASE_END)
 	e1:SetRange(LOCATION_GRAVE)
@@ -36,8 +37,9 @@ function c71039903.spfilter(c,e,tp)
 	return c:IsSetCard(0xdd) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c71039903.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c71039903.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_SPSUMMON,nil,1,tp,LOCATION_DECK)
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c71039903.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c71039903.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
