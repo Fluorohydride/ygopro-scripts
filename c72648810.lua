@@ -13,7 +13,7 @@ function c72648810.initial_effect(c)
 end
 function c72648810.condition(e,tp,eg,ep,ev,re,r,rp)
 	local loc,seq=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_SEQUENCE)
-	return rp~=tp and (re:IsActiveType(TYPE_MONSTER)
+	return rp~=tp and re:IsActiveType(TYPE_PENDULUM) and (re:IsActiveType(TYPE_MONSTER)
 		or (loc==LOCATION_SZONE and (seq==6 or seq==7) and not re:IsHasType(EFFECT_TYPE_ACTIVATE)))
 		and Duel.IsChainNegatable(ev)
 end
