@@ -77,15 +77,23 @@ function c19254117.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c19254117.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
+	local c=e:GetHandler()
 	if tc:IsRelateToEffect(e) then
-		if Duel.GetAttacker() then Duel.ChangeAttackTarget(tc) end
-		local e1=Effect.CreateEffect(e:GetHandler())
+		local a=Duel.GetAttacker()
+		if a and Duel.GetAttackTarget()~=tc then 
+			local e1=Effect.CreateEffect(c)
+			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetCode(EFFECT_CANNOT_ATTACK)
+			e1:SetReset(RESET_CHAIN)
+			a:RegisterEffect(e1)
+		end
+		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
 		e1:SetTargetRange(0,LOCATION_MZONE)
 		e1:SetReset(RESET_PHASE+PHASE_BATTLE)
 		Duel.RegisterEffect(e1,tp)
-		local e2=Effect.CreateEffect(e:GetHandler())
+		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_FIELD)
 		e2:SetCode(EFFECT_CANNOT_BE_BATTLE_TARGET)
 		e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_IMMUNE)
