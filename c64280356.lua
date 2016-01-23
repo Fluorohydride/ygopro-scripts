@@ -4,17 +4,19 @@ function c64280356.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(64280356,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e1:SetHintTiming(0,TIMING_END_PHASE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetRange(LOCATION_MZONE)
+	e1:SetHintTiming(0,TIMING_END_PHASE)
 	e1:SetCountLimit(1,64280356)
 	e1:SetCost(c64280356.spcost)
 	e1:SetTarget(c64280356.sptg)
 	e1:SetOperation(c64280356.spop)
 	c:RegisterEffect(e1)
+	--to hand
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(64280356,1))
+	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_TOGRAVE)
 	e2:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_FIELD)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCode(EVENT_PHASE+PHASE_END)
@@ -44,22 +46,22 @@ function c64280356.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-function c64280356.thfil(c)
-	return c:IsAbleToHand() and c:IsSetCard(0xd2)
+function c64280356.thfilter(c)
+	return c:IsSetCard(0xd2) and c:IsAbleToHand()
 end
 function c64280356.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,500) end
 	Duel.PayLPCost(tp,500)
 end
 function c64280356.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then 
-		local dg=Duel.GetMatchingGroup(c64280356.thfil,tp,LOCATION_DECK,0,nil)
+	if chk==0 then
+		local dg=Duel.GetMatchingGroup(c64280356.thfilter,tp,LOCATION_DECK,0,nil)
 		return dg:GetClassCount(Card.GetCode)>=3
 	end
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,0,LOCATION_DECK)
+	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c64280356.thop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c64280356.thfil,tp,LOCATION_DECK,0,nil)
+	local g=Duel.GetMatchingGroup(c64280356.thfilter,tp,LOCATION_DECK,0,nil)
 	if g:GetClassCount(Card.GetCode)>=3 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 		local sg1=g:Select(tp,1,1,nil)
@@ -75,10 +77,8 @@ function c64280356.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ShuffleDeck(tp)
 		local cg=sg1:Select(1-tp,1,1,nil)
 		local tc=cg:GetFirst()
-		if tc then
-			Duel.SendtoHand(tc,nil,REASON_EFFECT)
-			sg1:RemoveCard(tc)
-		end
+		Duel.SendtoHand(tc,nil,REASON_EFFECT)
+		sg1:RemoveCard(tc)
 		Duel.SendtoGrave(sg1,REASON_EFFECT)
 	end
 end

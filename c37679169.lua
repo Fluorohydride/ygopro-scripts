@@ -1,14 +1,15 @@
 --Kozmo Delta Shuttle
 function c37679169.initial_effect(c)
-	--to grave
+	--atk/def
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_TOGRAVE)
+	e1:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
+	e1:SetRange(LOCATION_MZONE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCountLimit(1)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetTarget(c37679169.sgtg)
-	e1:SetOperation(c37679169.sgop)
+	e1:SetCost(c37679169.adcost)
+	e1:SetTarget(c37679169.adtg)
+	e1:SetOperation(c37679169.adop)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
@@ -22,35 +23,39 @@ function c37679169.initial_effect(c)
 	e2:SetOperation(c37679169.spop)
 	c:RegisterEffect(e2)
 end
-function c37679169.filter(c)
-	return c:IsSetCard(0xd2) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
+function c37679169.cfilter(c)
+	return c:IsSetCard(0xd2) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
 end
-function c37679169.sgtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c37679169.filter,tp,LOCATION_DECK,0,1,nil) end
-	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
-end
-function c37679169.sgop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
+function c37679169.adcost(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsExistingMatchingCard(c37679169.cfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c37679169.filter,tp,LOCATION_DECK,0,1,1,nil)
-	if g:GetCount()>0 then 
-		local lv=g:GetFirst():GetLevel()
-		Duel.SendtoGrave(g,REASON_EFFECT)
-		if not Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) then return end
-		local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectMatchingCard(c37679169.cfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local tc=g:GetFirst()
+	Duel.SendtoGrave(tc,REASON_COST)
+	e:SetLabel(tc:GetLevel())
+end
+function c37679169.adtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsFaceup() and chkc:IsLocation(LOCATION_MZONE) end
+	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+	Duel.SelectTarget(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+end
+function c37679169.adop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local tc=Duel.GetFirstTarget()
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+		local lv=e:GetLabel()
 		--atkdown
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
-		e1:SetRange(LOCATION_MZONE)
 		e1:SetValue(-100*lv)
-		e1:SetReset(RESET_EVENT+0x1ff0000)
-		g:GetFirst():RegisterEffect(e1)
+		e1:SetReset(RESET_EVENT+0x1fe0000)
+		tc:RegisterEffect(e1)
 		--defdown
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_UPDATE_DEFENCE)
-		g:GetFirst():RegisterEffect(e2)
+		tc:RegisterEffect(e2)
 	end
 end
 function c37679169.spcon(e,tp,eg,ep,ev,re,r,rp)
@@ -58,8 +63,9 @@ function c37679169.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsReason(REASON_DESTROY) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function c37679169.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() and e:GetHandler():IsLocation(LOCATION_GRAVE) end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
+	local c=e:GetHandler()
+	if chk==0 then return c:IsAbleToRemoveAsCost() and c:IsLocation(LOCATION_GRAVE) end
+	Duel.Remove(c,POS_FACEUP,REASON_COST)
 end
 function c37679169.spfilter(c,e,tp)
 	return c:IsSetCard(0xd2) and c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
