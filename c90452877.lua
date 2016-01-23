@@ -14,7 +14,8 @@ end
 function c90452877.desfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xd2) and c:IsDestructable()
 end
-function c90452877.destg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c90452877.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c90452877.desfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c90452877.desfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
