@@ -15,7 +15,7 @@ function c13048472.filter(c,tp)
 		and Duel.IsExistingMatchingCard(c13048472.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,c)
 end
 function c13048472.filter2(c,mc)
-	return bit.band(c:GetType(),0x81)==0x81 and c:IsAbleToHand() and not c:IsHasEffect(EFFECT_NECRO_VALLEY) and c13048472.isfit(c,mc)
+	return bit.band(c:GetType(),0x81)==0x81 and c:IsAbleToHand() and c13048472.isfit(c,mc)
 end
 function c13048472.isfit(c,mc)
 	return mc.fit_monster and c:IsCode(table.unpack(mc.fit_monster))
@@ -33,6 +33,7 @@ function c13048472.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local sg=mg:Select(tp,1,1,nil)
 			g:Merge(sg)
+			if g:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,g)
 		end
