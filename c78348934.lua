@@ -62,6 +62,9 @@ function c78348934.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		e1:SetValue(ct*500)
 		tc:RegisterEffect(e1)
+		local e2=e1:Clone()
+		e2:SetCode(EFFECT_UPDATE_DEFENCE)
+		tc:RegisterEffect(e2)
 	end
 end
 function c78348934.cfilter(c)
