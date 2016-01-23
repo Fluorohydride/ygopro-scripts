@@ -25,26 +25,33 @@ function c50554729.initial_effect(c)
 	e4:SetCode(EVENT_RELEASE)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCountLimit(1,50554729)
-	e4:SetCondition(c50554729.thcon)
+	e4:SetCondition(c50554729.thcon1)
 	e4:SetTarget(c50554729.thtg)
 	e4:SetOperation(c50554729.thop)
 	c:RegisterEffect(e4)
 	local e5=e4:Clone()
 	e5:SetCode(EVENT_DESTROYED)
+	e5:SetCondition(c50554729.thcon2)
 	c:RegisterEffect(e5)
 end
 function c50554729.filter(c)
-	return c:IsSetCard(0xe0) and c:IsFaceup()
+	return c:IsFaceup() and c:IsSetCard(0xe0)
 end
 function c50554729.value(e,c)
-	return Duel.GetMatchingGroupCount(c50554729.filter,c:GetControler(),LOCATION_ONFIELD,LOCATION_ONFIELD,nil)*100
+	return Duel.GetMatchingGroupCount(c50554729.filter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)*100
 end
-function c50554729.confilter(c,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsReason(REASON_BATTLE+REASON_EFFECT+REASON_RELEASE)
+function c50554729.cfilter1(c,tp)
+	return c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_MZONE+LOCATION_HAND) and c:GetPreviousControler()==tp
+end
+function c50554729.thcon1(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c50554729.cfilter1,1,nil,tp)
+end
+function c50554729.cfilter2(c,tp)
+	return c:IsType(TYPE_MONSTER) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 		and c:IsPreviousLocation(LOCATION_MZONE+LOCATION_HAND) and c:GetPreviousControler()==tp
 end
-function c50554729.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c50554729.confilter,1,nil,tp)
+function c50554729.thcon2(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c50554729.cfilter2,1,nil,tp)
 end
 function c50554729.thfilter(c)
 	return c:IsSetCard(0xe0) and c:IsAbleToHand()

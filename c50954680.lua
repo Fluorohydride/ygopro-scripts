@@ -32,7 +32,6 @@ function c50954680.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c50954680.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
@@ -55,7 +54,7 @@ end
 function c50954680.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	return bc and bc:IsLevelAbove(5)
+	return bc and bc:IsLevelAbove(5) and bc:IsControler(1-tp)
 end
 function c50954680.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

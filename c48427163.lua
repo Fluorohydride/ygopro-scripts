@@ -22,7 +22,7 @@ function c48427163.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c48427163.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0xdf) and c:IsType(TYPE_MONSTER)
+	return c:IsFaceup() and c:IsSetCard(0xdf)
 end
 function c48427163.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

@@ -1,7 +1,7 @@
 --電子光虫－スカラジエータ
 function c12615446.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,c12615446.matfil,3,2,nil,nil,5)
+	aux.AddXyzProcedure(c,c12615446.matfilter,3,2,nil,nil,5)
 	--Position+Negate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(12615446,0))
@@ -26,10 +26,9 @@ function c12615446.initial_effect(c)
 	e2:SetOperation(c12615446.xyzop)
 	c:RegisterEffect(e2)
 end
-function c12615446.matfil(c)
+function c12615446.matfilter(c)
 	return c:IsRace(RACE_INSECT) and c:IsAttribute(ATTRIBUTE_LIGHT)
 end
-
 function c12615446.poscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,2,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,2,2,REASON_COST)

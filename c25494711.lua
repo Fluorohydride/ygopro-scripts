@@ -49,13 +49,8 @@ end
 function c25494711.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
-		local atk=0
 		local g=Duel.GetMatchingGroup(c25494711.atkfilter,tp,LOCATION_MZONE,0,nil)
-		local bc=g:GetFirst()
-		while bc do
-			atk=atk+bc:GetAttack()
-			bc=g:GetNext()
-		end
+		local atk=g:GetSum(Card.GetAttack)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

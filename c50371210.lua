@@ -72,6 +72,7 @@ function c50371210.operation(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_EQUIP)
 		e2:SetCode(EFFECT_DISABLE)
+		e2:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e2)
 	end
 end
@@ -85,5 +86,6 @@ function c50371210.ftarget(e,c)
 	return e:GetHandler():GetEquipTarget()~=c
 end
 function c50371210.val(e,c)
-	return Duel.GetMatchingGroupCount(Card.IsSetCard,e:GetHandlerPlayer(),LOCATION_GRAVE,0,nil,0xdd)-1
+	local ct=Duel.GetMatchingGroupCount(Card.IsSetCard,e:GetHandlerPlayer(),LOCATION_GRAVE,0,nil,0xdd)
+	return math.max(0,ct-1)
 end

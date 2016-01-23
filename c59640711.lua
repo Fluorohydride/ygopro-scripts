@@ -16,7 +16,7 @@ function c59640711.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c59640711.spfilter(c,e,tp)
-	return c:IsSetCard(0x2016) and c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:GetCode()~=59640711
+	return c:IsSetCard(0x2016) and c:IsType(TYPE_TUNER) and not c:IsCode(59640711) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c59640711.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

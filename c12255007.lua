@@ -27,9 +27,9 @@ function c12255007.aclimit(e,re,tp)
 	return not re:GetHandler():IsImmuneToEffect(e) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c12255007.actcon(e)
-	local c=Duel.GetAttacker()
-	local p=e:GetHandler():GetControler()
-	return c and c:IsControler(p) and (c:IsSetCard(0x9f) or c:IsSetCard(0x99))
+	local tc=Duel.GetAttacker()
+	local tp=e:GetHandlerPlayer()
+	return tc and tc:IsControler(tp) and (tc:IsSetCard(0x9f) or tc:IsSetCard(0x99))
 end
 function c12255007.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp

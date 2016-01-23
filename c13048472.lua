@@ -11,7 +11,8 @@ function c13048472.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c13048472.filter(c,tp)
-	return bit.band(c:GetType(),0x82)==0x82 and c:IsAbleToHand() and Duel.IsExistingMatchingCard(c13048472.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,c)
+	return bit.band(c:GetType(),0x82)==0x82 and c:IsAbleToHand()
+		and Duel.IsExistingMatchingCard(c13048472.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,c)
 end
 function c13048472.filter2(c,mc)
 	return bit.band(c:GetType(),0x81)==0x81 and c:IsAbleToHand() and not c:IsHasEffect(EFFECT_NECRO_VALLEY) and c13048472.isfit(c,mc)

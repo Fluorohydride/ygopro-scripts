@@ -11,30 +11,31 @@ function c62893810.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c62893810.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g1=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
-	local g2=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
-	g1:Merge(g2)
+	local g1=Duel.GetFieldGroup(tp,LOCATION_HAND,LOCATION_HAND)
 	if chk==0 then return g1:GetCount()~=0 end
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,g1,1,0,0)
 end
 function c62893810.operation(e,tp,eg,ep,ev,re,r,rp)
-	local g1=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
-	local g2=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
-	if g1:GetCount()+g2:GetCount()==0 then return end
 	local d=Duel.TossDice(tp,1)
 	if d==1 then
-		Duel.ConfirmCards(tp,g1)
+		local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
+		if g:GetCount()==0 then return end
+		Duel.ConfirmCards(tp,g)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
-		local sg1=g1:Select(tp,1,1,nil)
-		Duel.SendtoGrave(sg1,REASON_EFFECT+REASON_DISCARD)
+		local sg=g:Select(tp,1,1,nil)
+		Duel.SendtoGrave(sg,REASON_EFFECT+REASON_DISCARD)
 		Duel.ShuffleHand(1-tp)
 	elseif d==6 then
-		Duel.SendtoGrave(g2,REASON_EFFECT+REASON_DISCARD)
+		local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
+		if g:GetCount()==0 then return end
+		Duel.SendtoGrave(g,REASON_EFFECT+REASON_DISCARD)
 	else
+		local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
+		if g:GetCount()==0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
-		local sg1=g2:Select(tp,1,1,nil)
-		Duel.SendtoGrave(sg1,REASON_EFFECT+REASON_DISCARD)
+		local sg=g:Select(tp,1,1,nil)
+		Duel.SendtoGrave(sg,REASON_EFFECT+REASON_DISCARD)
 		Duel.ShuffleHand(tp)
 	end
 end

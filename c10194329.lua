@@ -14,7 +14,7 @@ function c10194329.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c10194329.condition(e,tp,eg,ep,ev,re,r,rp)
-	return ep==tp and (bit.band(r,REASON_BATTLE)~=0 or bit.band(r,REASON_EFFECT)~=0)
+	return ep==tp and bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0
 end
 function c10194329.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -59,7 +59,7 @@ function c59762399.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c59762399.atkfilter(c)
-	return c:IsSetCard(0x9f) and c:IsFaceup()
+	return c:IsFaceup() and c:IsSetCard(0x9f)
 end
 function c59762399.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c59762399.atkfilter(chkc) end

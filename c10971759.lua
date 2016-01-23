@@ -68,7 +68,7 @@ function c10971759.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c10971759.filter(c)
-	return c:GetLevel()==3 and c:IsRace(RACE_INSECT) and c:IsFaceup()
+	return c:IsFaceup() and c:GetLevel()==3 and c:IsRace(RACE_INSECT)
 end
 function c10971759.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c10971759.filter,tp,LOCATION_MZONE,0,1,nil) end
