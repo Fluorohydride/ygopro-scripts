@@ -58,7 +58,7 @@ function c50371210.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
-		if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==0 then return end
+		if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)==0 then return end
 		Duel.Equip(tp,c,tc)
 		--Add Equip limit
 		local e1=Effect.CreateEffect(tc)
@@ -70,10 +70,14 @@ function c50371210.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 		--Disable
 		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_EQUIP)
+		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE)
 		e2:SetReset(RESET_EVENT+0x1fe0000)
-		c:RegisterEffect(e2)
+		tc:RegisterEffect(e2)
+		local e3=e2:Clone()
+		e3:SetCode(EFFECT_DISABLE_EFFECT)
+		tc:RegisterEffect(e3)
+		Duel.SpecialSummonComplete()
 	end
 end
 function c50371210.rmop(e,tp,eg,ep,ev,re,r,rp)
