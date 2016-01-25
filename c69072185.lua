@@ -38,7 +38,7 @@ function c69072185.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c69072185.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	Duel.Hint(HINT_CARD,0,c:GetCode())
+	Duel.HintSelection(Group.FromCards(c))
 	if Duel.CheckReleaseGroup(tp,Card.IsReleasableByEffect,1,c) and Duel.SelectYesNo(tp,aux.Stringid(69072185,0)) then
 		local g=Duel.SelectReleaseGroup(tp,Card.IsReleasableByEffect,1,1,c)
 		Duel.Release(g,REASON_RULE)
