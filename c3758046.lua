@@ -52,6 +52,7 @@ function c3758046.spop(e,tp,eg,ep,ev,re,r,rp)
 	if ft<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c3758046.filter,tp,LOCATION_GRAVE,0,ft,ft,nil,e,tp,Duel.GetTurnCount())
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) and g:GetCount()>1 then return end
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		local e1=Effect.CreateEffect(e:GetHandler())
