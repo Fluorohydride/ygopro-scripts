@@ -1030,6 +1030,55 @@ function Auxiliary.FOperationFunRep(f,cc,insf)
 				Duel.SetFusionMaterial(g1)
 			end
 end
+--Fusion monster, condition * minc to maxc
+function Auxiliary.AddFusionProcFunRep2(c,f,minc,maxc,insf)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e1:SetCode(EFFECT_FUSION_MATERIAL)
+	e1:SetCondition(Auxiliary.FConditionFunRep2(f,minc,maxc,insf))
+	e1:SetOperation(Auxiliary.FOperationFunRep2(f,minc,maxc,insf))
+	c:RegisterEffect(e1)
+end
+function Auxiliary.FConditionFunRep2(f,minc,maxc,insf)
+	return	function(e,g,gc,chkf)
+				if g==nil then return insf end
+				local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
+				if gc then
+					if not gc:IsCanBeFusionMaterial(e:GetHandler()) then return false end
+					return f(gc) and mg:IsExists(f,minc-1,gc) end
+				local g1=mg:Filter(f,nil)
+				if chkf~=PLAYER_NONE then
+					return g1:FilterCount(Card.IsOnField,nil)~=0 and g1:GetCount()>=minc
+				else return g1:GetCount()>=minc end
+			end
+end
+function Auxiliary.FOperationFunRep2(f,minc,maxc,insf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
+				local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
+				if gc then
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+					local g1=g:FilterSelect(tp,f,minc-1,maxc-1,gc)
+					Duel.SetFusionMaterial(g1)
+					return
+				end
+				local sg=g:Filter(f,nil)
+				if chkf==PLAYER_NONE or sg:GetCount()==minc then
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+					local g1=sg:Select(tp,minc,maxc,nil)
+					Duel.SetFusionMaterial(g1)
+					return
+				end
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+				local g1=sg:FilterSelect(tp,Auxiliary.FConditionCheckF,1,1,nil,chkf)
+				if minc>1 then
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+					local g2=sg:Select(tp,minc-1,maxc-1,g1:GetFirst())
+					g1:Merge(g2)
+				end
+				Duel.SetFusionMaterial(g1)
+			end
+end
 --Fusion monster, condition1 + condition2 * minc to maxc
 function Auxiliary.AddFusionProcFunFunRep(c,f1,f2,minc,maxc,insf)
 	local e1=Effect.CreateEffect(c)
