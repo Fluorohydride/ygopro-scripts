@@ -5,7 +5,7 @@ function c19462747.initial_effect(c)
 	e1:SetDescription(aux.Stringid(19462747,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCountLimit(1,19462747)
 	e1:SetTarget(c19462747.target)
 	e1:SetOperation(c19462747.operation)
@@ -35,7 +35,7 @@ function c19462747.filter(c)
 	return c:IsFaceup() and c:GetLevel()>0 and c:IsSetCard(0x33)
 end
 function c19462747.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c19462747.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c19462747.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c19462747.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g=Duel.SelectTarget(tp,c19462747.filter,tp,LOCATION_MZONE,0,1,1,nil)

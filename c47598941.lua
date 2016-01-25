@@ -5,17 +5,17 @@ function c47598941.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(TIMING_DESTROY,TIMING_DESTROY)
-	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
+	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetTarget(c47598941.target1)
 	e1:SetOperation(c47598941.operation)
 	c:RegisterEffect(e1)
 	--set p
 	local e2=Effect.CreateEffect(c)
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_DESTROYED)
 	e2:SetRange(LOCATION_SZONE)
+	e2:SetCountLimit(1,47598941)
 	e2:SetCondition(c47598941.condition)
 	e2:SetTarget(c47598941.target2)
 	e2:SetOperation(c47598941.operation)
@@ -33,7 +33,7 @@ function c47598941.initial_effect(c)
 	e4:SetCode(EFFECT_UPDATE_DEFENCE)
 	c:RegisterEffect(e4)
 end
-function c47598941.filter(c,e,tp)
+function c47598941.filter(c)
 	return c:IsSetCard(0xe0) and c:IsType(TYPE_PENDULUM) and not c:IsForbidden()
 end
 function c47598941.cfilter(c,tp)
@@ -44,7 +44,7 @@ function c47598941.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local res,teg,tep,tev,tre,tr,trp=Duel.CheckEvent(EVENT_DESTROYED,true)
 	if res
 		and Duel.GetFlagEffect(tp,47598941)==0
-		and Duel.IsExistingMatchingCard(c47598941.filter,tp,LOCATION_DECK,0,1,nil,e,tp)
+		and Duel.IsExistingMatchingCard(c47598941.filter,tp,LOCATION_DECK,0,1,nil)
 		and (Duel.CheckLocation(tp,LOCATION_SZONE,6) or Duel.CheckLocation(tp,LOCATION_SZONE,7))
 		and teg:IsExists(c47598941.cfilter,1,nil,tp)
 		and Duel.SelectYesNo(tp,94) then
@@ -58,7 +58,7 @@ function c47598941.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e)
 		and Duel.GetFlagEffect(tp,47598941)==0
 		and (Duel.CheckLocation(tp,LOCATION_SZONE,6) or Duel.CheckLocation(tp,LOCATION_SZONE,7))
-		and Duel.IsExistingMatchingCard(c47598941.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
+		and Duel.IsExistingMatchingCard(c47598941.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.RegisterFlagEffect(tp,47598941,RESET_PHASE+PHASE_END,0,1)
 end
 function c47598941.operation(e,tp,eg,ep,ev,re,r,rp)
@@ -66,7 +66,7 @@ function c47598941.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) or Duel.GetFlagEffect(tp,47598941)==0 then return end
 	if not (Duel.CheckLocation(tp,LOCATION_SZONE,6) or Duel.CheckLocation(tp,LOCATION_SZONE,7)) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-	local g=Duel.SelectMatchingCard(tp,c47598941.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+	local g=Duel.SelectMatchingCard(tp,c47598941.filter,tp,LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)

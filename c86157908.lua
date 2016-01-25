@@ -36,7 +36,7 @@ function c86157908.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c86157908.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local at=Duel.GetAttacker()
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c86157908.atkfilter(chkc) and chkc~=at end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c86157908.atkfilter(chkc) and chkc~=at end
 	if chk==0 then return Duel.IsExistingTarget(c86157908.atkfilter,tp,LOCATION_MZONE,0,1,at) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c86157908.atkfilter,tp,LOCATION_MZONE,0,1,1,at)

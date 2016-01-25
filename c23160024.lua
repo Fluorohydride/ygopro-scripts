@@ -19,7 +19,6 @@ function c23160024.initial_effect(c)
 	c:RegisterEffect(e3)
 	--draw
 	local e4=Effect.CreateEffect(c)
-	e4:SetCategory(CATEGORY_DRAW)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e4:SetRange(LOCATION_FZONE)
 	e4:SetCode(EVENT_RELEASE)
@@ -39,7 +38,7 @@ function c23160024.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c23160024.cfilter(c,tp)
-	return c:IsSetCard(0xe0) and c:IsReason(REASON_RELEASE) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+	return c:IsPreviousSetCard(0xe0) and c:IsReason(REASON_RELEASE) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
 end
 function c23160024.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c23160024.cfilter,1,nil,tp)
