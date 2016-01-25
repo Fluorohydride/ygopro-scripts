@@ -58,13 +58,13 @@ function c23160024.spfilter(c,e,tp,mg)
 end
 function c23160024.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local mg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_HAND+LOCATION_MZONE,0,nil,TYPE_PENDULUM)
+		local mg=Duel.GetRitualMaterial(tp):Filter(Card.IsType,nil,TYPE_PENDULUM)
 		return Duel.IsExistingMatchingCard(c23160024.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp,mg)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c23160024.spop(e,tp,eg,ep,ev,re,r,rp)
-	local mg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_HAND+LOCATION_MZONE,0,nil,TYPE_PENDULUM)
+	local mg=Duel.GetRitualMaterial(tp):Filter(Card.IsType,nil,TYPE_PENDULUM)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c23160024.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp,mg)
 	local tc=g:GetFirst()
