@@ -87,6 +87,7 @@ end
 function c42776855.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=c:GetFirstCardTarget()
+	if not tc then return false end
 	local bc=tc:GetBattleTarget()
 	return tc and tc:IsLocation(LOCATION_MZONE) and bc and bc:IsFaceup() and bc:IsLocation(LOCATION_MZONE) and bc:IsLevelAbove(5)
 end
@@ -98,6 +99,7 @@ function c42776855.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local tc=c:GetFirstCardTarget()
+	if not tc then return false end
 	local bc=tc:GetBattleTarget()
 	local atk=bc:GetBaseAttack()
 	if bc:IsRelateToBattle() and Duel.Destroy(bc,REASON_EFFECT)~=0 and bc:IsType(TYPE_MONSTER) then
