@@ -23,7 +23,6 @@ function c23160024.initial_effect(c)
 	e4:SetRange(LOCATION_FZONE)
 	e4:SetCode(EVENT_RELEASE)
 	e4:SetProperty(EFFECT_FLAG_DELAY)
-	e4:SetCountLimit(2)
 	e4:SetCondition(c23160024.drcon)
 	e4:SetOperation(c23160024.drop)
 	c:RegisterEffect(e4)
@@ -41,11 +40,12 @@ function c23160024.cfilter(c,tp)
 	return c:IsPreviousSetCard(0xe0) and c:IsReason(REASON_RELEASE) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
 end
 function c23160024.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c23160024.cfilter,1,nil,tp)
+	return e:GetHandler():GetFlagEffect(23160024)<2 and eg:IsExists(c23160024.cfilter,1,nil,tp)
 end
 function c23160024.drop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,e:GetHandler():GetCode())
 	Duel.Draw(tp,1,REASON_EFFECT)
+	e:GetHandler():RegisterFlagEffect(23160024,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c23160024.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
