@@ -89,7 +89,7 @@ function c42776855.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=c:GetFirstCardTarget()
 	if not tc then return false end
 	local bc=tc:GetBattleTarget()
-	return tc and tc:IsLocation(LOCATION_MZONE) and bc and bc:IsFaceup() and bc:IsLocation(LOCATION_MZONE) and bc:IsLevelAbove(5)
+	return tc:IsLocation(LOCATION_MZONE) and bc and bc:IsFaceup() and bc:IsLocation(LOCATION_MZONE) and bc:IsLevelAbove(5)
 end
 function c42776855.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(42776855)==0 end
