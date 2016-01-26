@@ -677,9 +677,9 @@ GLOBALFLAG_XMAT_COUNT_LIMIT		=0x80		--超量素材数量限制标记（光天使
 GLOBALFLAG_SELF_TOGRAVE			=0x100		--
 GLOBALFLAG_SPSUMMON_ONCE		=0x200		--
 --count_code
-EFFECT_COUNT_CODE_OATH			=0x10000000 --使用次数限制(誓约效果)
+EFFECT_COUNT_CODE_OATH			=0x10000000 --发动次数限制(誓约次数, 发动被无效不计数)
 EFFECT_COUNT_CODE_DUEL			=0x20000000 --决斗中使用次数
-EFFECT_COUNT_CODE_SINGLE		=0x1		--多个效果公共使用次数
+EFFECT_COUNT_CODE_SINGLE		=0x1		--同一张卡的多个效果公共使用次数
 --特殊选项
 DUEL_TEST_MODE			=0x01		--测试模式(目前暫無)
 DUEL_ATTACK_FIRST_TURN	=0x02		--第一回合可以攻击(用于残局)
