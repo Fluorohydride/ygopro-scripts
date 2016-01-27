@@ -32,6 +32,10 @@ end
 function c9284723.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsCanAddCounter(0x9,2) then
+		local atk=tc:GetAttack()
 		tc:AddCounter(0x9,2)
+		if atk>0 and tc:GetAttack()==0 then
+			Duel.RaiseEvent(tc,54306223,e,0,0,0,0)
+		end
 	end
 end

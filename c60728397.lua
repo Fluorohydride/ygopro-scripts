@@ -36,7 +36,11 @@ function c60728397.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoGrave(g,REASON_EFFECT)
 		local tc=Duel.GetFirstTarget()
 		if tc:IsRelateToEffect(e) and tc:IsCanAddCounter(0x9,2) and g:GetFirst():IsLocation(LOCATION_GRAVE) then
+			local atk=tc:GetAttack()
 			tc:AddCounter(0x9,2)
+			if atk>0 and tc:GetAttack()==0 then
+				Duel.RaiseEvent(tc,54306223,e,0,0,0,0)
+			end
 		end
 	end
 end

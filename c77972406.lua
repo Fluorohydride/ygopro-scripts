@@ -25,6 +25,10 @@ function c77972406.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and Duel.NegateAttack() then
 		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE,1)
 		Duel.BreakEffect()
+		local atk=tc:GetAttack()
 		tc:AddCounter(0x9,1)
+		if atk>0 and tc:GetAttack()==0 then
+			Duel.RaiseEvent(tc,54306223,e,0,0,0,0)
+		end
 	end
 end
