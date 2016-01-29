@@ -34,6 +34,7 @@ end
 function c11317977.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST+REASON_DISCARD)
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c11317977.thfilter(c)
 	return c:IsSetCard(0xdf) and c:IsType(TYPE_MONSTER) and not c:IsCode(11317977) and c:IsAbleToHand()
