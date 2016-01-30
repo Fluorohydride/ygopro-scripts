@@ -13,7 +13,7 @@ function c97317530.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c97317530.descon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetOwner():IsRace(RACE_BEAST)
+	return re and re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsRace(RACE_BEAST)
 end
 function c97317530.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsDestructable() end

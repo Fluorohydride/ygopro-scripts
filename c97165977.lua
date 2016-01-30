@@ -44,7 +44,7 @@ function c97165977.tgvalue(e,re,rp)
 	return rp~=e:GetHandlerPlayer()
 end
 function c97165977.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()==PHASE_MAIN1
+	return Duel.IsAbleToEnterBP()
 end
 function c97165977.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
