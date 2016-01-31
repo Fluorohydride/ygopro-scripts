@@ -11,6 +11,16 @@ function c3167573.initial_effect(c)
 	e1:SetTarget(c3167573.sptg)
 	e1:SetOperation(c3167573.spop)
 	c:RegisterEffect(e1)
+	--destroy
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e2:SetCode(EVENT_PHASE+PHASE_END)
+	e2:SetRange(LOCATION_MZONE)
+	e2:SetCountLimit(1)
+	e2:SetCondition(c3167573.descon)
+	e2:SetOperation(c3167573.desop)
+	c:RegisterEffect(e2)
+	e1:SetLabelObject(e2)
 end
 function c3167573.cfilter(c,tp)
 	return c:IsControler(1-tp) and c:IsPreviousLocation(LOCATION_DECK) and not c:IsReason(REASON_DRAW)
@@ -27,21 +37,20 @@ end
 function c3167573.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetRange(LOCATION_MZONE)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN)
-		e1:SetCountLimit(1)
-		e1:SetCondition(c3167573.descon)
-		e1:SetOperation(c3167573.desop)
-		c:RegisterEffect(e1)
+		local e2=e:GetLabelObject()
+		if Duel.GetTurnPlayer()==tp then
+			c:RegisterFlagEffect(3167573,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,2)
+			e2:SetLabel(Duel.GetTurnCount()+2)
+		else
+			c:RegisterFlagEffect(3167573,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,1)
+			e2:SetLabel(Duel.GetTurnCount()+1)
+		end
 	end
 end
 function c3167573.descon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp
+	return e:GetHandler():GetFlagEffect(31829185)>0 and Duel.GetTurnCount()==e:GetLabel()
 end
 function c3167573.desop(e,tp,eg,ep,ev,re,r,rp)
+	e:SetLabel(0)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 end

@@ -10,12 +10,24 @@ function c31829185.initial_effect(c)
 	e1:SetCondition(c31829185.spcon)
 	e1:SetOperation(c31829185.spop)
 	c:RegisterEffect(e1)
-	--destroy
+	--reg
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EVENT_TO_GRAVE)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e2:SetOperation(c31829185.tgop)
 	c:RegisterEffect(e2)
+	--equip
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e3:SetCode(EVENT_PHASE+PHASE_END)
+	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e3:SetRange(LOCATION_GRAVE)
+	e3:SetCountLimit(1)
+	e3:SetCondition(c31829185.eqcon)
+	e3:SetTarget(c31829185.eqtg)
+	e3:SetOperation(c31829185.eqop)
+	c:RegisterEffect(e3)
 end
 function c31829185.spfilter(c)
 	return c:IsRace(RACE_FIEND) and c:IsAbleToRemoveAsCost()
@@ -35,27 +47,17 @@ function c31829185.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
 		and rp~=tp and bit.band(r,REASON_DESTROY)~=0 then
-		--equip action
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-		e1:SetRange(LOCATION_GRAVE)
-		e1:SetCountLimit(1)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
-		e1:SetTarget(c31829185.eqtg)
-		e1:SetOperation(c31829185.eqop)
-		c:RegisterEffect(e1)
+		c:RegisterFlagEffect(31829185,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 	end
 end
-function c31829185.filter(c)
-	return c:IsFaceup() and c:IsControlerCanBeChanged()
+function c31829185.eqcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(31829185)>0
 end
 function c31829185.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c31829185.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsFaceup() end
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
-	local g=Duel.SelectTarget(tp,c31829185.filter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
 end
@@ -73,7 +75,7 @@ function c31829185.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+0x1ff0000)
 		e1:SetValue(c31829185.eqlimit)
 		c:RegisterEffect(e1)
 		local e2=Effect.CreateEffect(c)

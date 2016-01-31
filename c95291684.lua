@@ -23,10 +23,11 @@ function c95291684.initial_effect(c)
 	c:RegisterEffect(e2)
 	--cannot normal summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetCode(EFFECT_SPSUMMON_COST)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetOperation(c95291684.lmop)
+	e3:SetCost(c95291684.spcost)
+	e3:SetOperation(c95291684.spcop)
 	c:RegisterEffect(e3)
 end
 function c95291684.cfilter(c)
@@ -35,8 +36,7 @@ end
 function c95291684.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetActivityCount(tp,ACTIVITY_NORMALSUMMON)==0 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c95291684.cfilter,tp,LOCATION_MZONE,0,1,nil)
+	return Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c95291684.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c95291684.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
@@ -67,7 +67,10 @@ function c95291684.spop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e2,true)
 	end
 end
-function c95291684.lmop(e,tp,eg,ep,ev,re,r,rp)
+function c95291684.spcost(e,c,tp)
+	return Duel.GetActivityCount(tp,ACTIVITY_NORMALSUMMON)==0
+end
+function c95291684.spcop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

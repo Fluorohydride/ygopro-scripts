@@ -19,12 +19,14 @@ function c56585883.initial_effect(c)
 	e2:SetTarget(c56585883.target)
 	e2:SetOperation(c56585883.operation)
 	c:RegisterEffect(e2)
-	--to grave
+	--reg
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e3:SetCode(EVENT_TO_GRAVE)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e3:SetOperation(c56585883.regop)
 	c:RegisterEffect(e3)
+	--search
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(56585883,1))
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
