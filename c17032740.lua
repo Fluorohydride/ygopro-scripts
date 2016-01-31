@@ -55,7 +55,7 @@ function c17032740.spfilter(c,code)
 	return c:IsAbleToDeckOrExtraAsCost() and c:IsFusionCode(code)
 end
 function c17032740.spcon(e,c)
-	if c==nil then return true end 
+	if c==nil then return true end
 	local tp=c:GetControler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<-2 then return false end
@@ -88,7 +88,13 @@ function c17032740.spop(e,tp,eg,ep,ev,re,r,rp,c)
 			tc=g1:Select(tp,1,1,nil):GetFirst()
 		end
 		g:AddCard(tc)
-		g1:Remove(Card.IsCode,nil,tc:GetCode())
+		if tc:IsFusionCode(89943723) then
+			g1:Remove(Card.IsFusionCode,nil,89943723)
+		elseif tc:IsFusionCode(43237273) then
+			g1:Remove(Card.IsFusionCode,nil,43237273)
+		elseif tc:IsFusionCode(17732278) then
+			g1:Remove(Card.IsFusionCode,nil,17732278)
+		end
 		ft=ft+1
 	end
 	local cg=g:Filter(Card.IsFacedown,nil)
@@ -97,10 +103,10 @@ function c17032740.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	end
 	Duel.SendtoDeck(g,nil,2,REASON_COST)
 end
-function c17032740.retcon1(e,tp,eg,ep,ev,re,r,rp,chk)
+function c17032740.retcon1(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsHasEffect(42015635)
 end
-function c17032740.retcon2(e,tp,eg,ep,ev,re,r,rp,chk)
+function c17032740.retcon2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsHasEffect(42015635)
 end
 function c17032740.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
