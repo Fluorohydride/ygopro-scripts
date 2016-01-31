@@ -52,13 +52,14 @@ function c81566151.spfilter(c,code)
 	return c:IsAbleToDeckOrExtraAsCost() and c:IsFusionCode(code)
 end
 function c81566151.spcon(e,c)
-	if c==nil then return true end 
+	if c==nil then return true end
 	local tp=c:GetControler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<-1 then return false end
 	local g1=Duel.GetMatchingGroup(c81566151.spfilter,tp,LOCATION_ONFIELD,0,nil,89943723)
 	local g2=Duel.GetMatchingGroup(c81566151.spfilter,tp,LOCATION_ONFIELD,0,nil,89621922)
 	if g1:GetCount()==0 or g2:GetCount()==0 then return false end
+	if g1:GetCount()==1 and g2:GetCount()==1 and g1:GetFirst()==g2:GetFirst() then return false end
 	if ft>0 then return true end
 	local f1=g1:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)
 	local f2=g2:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)
@@ -76,12 +77,22 @@ function c81566151.spop(e,tp,eg,ep,ev,re,r,rp,c)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		if ft<=0 then
 			tc=g1:FilterSelect(tp,Card.IsLocation,1,1,nil,LOCATION_MZONE):GetFirst()
+			ft=ft+1
 		else
 			tc=g1:Select(tp,1,1,nil):GetFirst()
 		end
 		g:AddCard(tc)
-		g1:Remove(Card.IsCode,nil,tc:GetCode())
-		ft=ft+1
+		if i==1 then
+			g1:Clear()
+			if tc:IsFusionCode(89943723) then
+				local sg=Duel.GetMatchingGroup(c81566151.spfilter,tp,LOCATION_ONFIELD,0,tc,89621922)
+				g1:Merge(sg)
+			end
+			if tc:IsFusionCode(89621922) then
+				local sg=Duel.GetMatchingGroup(c81566151.spfilter,tp,LOCATION_ONFIELD,0,tc,89943723)
+				g1:Merge(sg)
+			end
+		end
 	end
 	local cg=g:Filter(Card.IsFacedown,nil)
 	if cg:GetCount()>0 then
@@ -89,10 +100,10 @@ function c81566151.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	end
 	Duel.SendtoDeck(g,nil,2,REASON_COST)
 end
-function c81566151.retcon1(e,tp,eg,ep,ev,re,r,rp,chk)
+function c81566151.retcon1(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsHasEffect(42015635)
 end
-function c81566151.retcon2(e,tp,eg,ep,ev,re,r,rp,chk)
+function c81566151.retcon2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsHasEffect(42015635)
 end
 function c81566151.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
