@@ -407,17 +407,20 @@ function Auxiliary.FConditionFilter12(c,code,sub)
 	return c:IsFusionCode(code) or (sub and c:IsHasEffect(EFFECT_FUSION_SUBSTITUTE))
 end
 function Auxiliary.FConditionFilter21(c,code1,code2)
-	return c:IsFusionCode(code1) or c:IsFusionCode(code2)
+	return c:IsFusionCode(code1,code2)
 end
 function Auxiliary.FConditionFilter22(c,code1,code2,sub)
-	return c:IsFusionCode(code1) or c:IsFusionCode(code2) or (sub and c:IsHasEffect(EFFECT_FUSION_SUBSTITUTE))
+	return c:IsFusionCode(code1,code2) or (sub and c:IsHasEffect(EFFECT_FUSION_SUBSTITUTE))
 end
 function Auxiliary.FConditionCode2(code1,code2,sub,insf)
 	--g:Material group(nil for Instant Fusion)
 	--gc:Material already used
 	--chkf: check field, default:PLAYER_NONE
-	return	function(e,g,gc,chkf)
+	return	function(e,g,gc,chkfnf)
 				if g==nil then return insf end
+				local chkf=bit.band(chkfnf,0xff)
+				local notfusion=bit.rshift(chkfnf,8)~=0
+				local sub=sub or notfusion
 				local mg=g:Filter(Card.IsCanBeFusionMaterial,gc,e:GetHandler())
 				if gc then
 					if not gc:IsCanBeFusionMaterial(e:GetHandler()) then return false end
@@ -458,7 +461,10 @@ function Auxiliary.FConditionCode2(code1,code2,sub,insf)
 			end
 end
 function Auxiliary.FOperationCode2(code1,code2,sub,insf)
-	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
+				local chkf=bit.band(chkfnf,0xff)
+				local notfusion=bit.rshift(chkfnf,8)~=0
+				local sub=sub or notfusion
 				local g=eg:Filter(Card.IsCanBeFusionMaterial,gc,e:GetHandler())
 				local tc=gc
 				local g1=nil
@@ -510,14 +516,17 @@ function Auxiliary.AddFusionProcCode3(c,code1,code2,code3,sub,insf)
 	c:RegisterEffect(e1)
 end
 function Auxiliary.FConditionFilter31(c,code1,code2,code3)
-	return c:IsFusionCode(code1) or c:IsFusionCode(code2) or c:IsFusionCode(code3)
+	return c:IsFusionCode(code1,code2,code3)
 end
 function Auxiliary.FConditionFilter32(c,code1,code2,code3,sub)
-	return c:IsFusionCode(code1) or c:IsFusionCode(code2) or c:IsFusionCode(code3) or (sub and c:IsHasEffect(EFFECT_FUSION_SUBSTITUTE))
+	return c:IsFusionCode(code1,code2,code3) or (sub and c:IsHasEffect(EFFECT_FUSION_SUBSTITUTE))
 end
 function Auxiliary.FConditionCode3(code1,code2,code3,sub,insf)
-	return	function(e,g,gc,chkf)
+	return	function(e,g,gc,chkfnf)
 				if g==nil then return insf end
+				local chkf=bit.band(chkfnf,0xff)
+				local notfusion=bit.rshift(chkfnf,8)~=0
+				local sub=sub or notfusion
 				local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 				if gc then
 					if not gc:IsCanBeFusionMaterial(e:GetHandler()) then return false end
@@ -556,7 +565,10 @@ function Auxiliary.FConditionCode3(code1,code2,code3,sub,insf)
 			end
 end
 function Auxiliary.FOperationCode3(code1,code2,code3,sub,insf)
-	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
+				local chkf=bit.band(chkfnf,0xff)
+				local notfusion=bit.rshift(chkfnf,8)~=0
+				local sub=sub or notfusion
 				local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 				if gc then
 					local sg=g:Filter(Auxiliary.FConditionFilter31,gc,code1,code2,code3)
@@ -609,14 +621,17 @@ function Auxiliary.AddFusionProcCode4(c,code1,code2,code3,code4,sub,insf)
 	c:RegisterEffect(e1)
 end
 function Auxiliary.FConditionFilter41(c,code1,code2,code3,code4)
-	return c:IsFusionCode(code1) or c:IsFusionCode(code2) or c:IsFusionCode(code3) or c:IsFusionCode(code4)
+	return c:IsFusionCode(code1,code2,code3,code4)
 end
 function Auxiliary.FConditionFilter42(c,code1,code2,code3,code4,sub)
-	return c:IsFusionCode(code1) or c:IsFusionCode(code2) or c:IsFusionCode(code3) or c:IsFusionCode(code4) or (sub and c:IsHasEffect(EFFECT_FUSION_SUBSTITUTE))
+	return c:IsFusionCode(code1,code2,code3,code4) or (sub and c:IsHasEffect(EFFECT_FUSION_SUBSTITUTE))
 end
 function Auxiliary.FConditionCode4(code1,code2,code3,code4,sub,insf)
-	return	function(e,g,gc,chkf)
+	return	function(e,g,gc,chkfnf)
 				if g==nil then return insf end
+				local chkf=bit.band(chkfnf,0xff)
+				local notfusion=bit.rshift(chkfnf,8)~=0
+				local sub=sub or notfusion
 				local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 				if gc then
 					if not gc:IsCanBeFusionMaterial(e:GetHandler()) then return false end
@@ -658,7 +673,10 @@ function Auxiliary.FConditionCode4(code1,code2,code3,code4,sub,insf)
 			end
 end
 function Auxiliary.FOperationCode4(code1,code2,code3,code4,sub,insf)
-	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
+				local chkf=bit.band(chkfnf,0xff)
+				local notfusion=bit.rshift(chkfnf,8)~=0
+				local sub=sub or notfusion
 				local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 				if gc then
 					local sg=g:Filter(Auxiliary.FConditionFilter41,gc,code1,code2,code3,code4)
@@ -724,8 +742,11 @@ function Auxiliary.FConditionFilterCF(c,g2,cc)
 	return g2:IsExists(aux.TRUE,cc,c)
 end
 function Auxiliary.FConditionCodeFun(code,f,cc,sub,insf)
-	return	function(e,g,gc,chkf)
+	return	function(e,g,gc,chkfnf)
 				if g==nil then return insf end
+				local chkf=bit.band(chkfnf,0xff)
+				local notfusion=bit.rshift(chkfnf,8)~=0
+				local sub=sub or notfusion
 				local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 				if gc then
 					if not gc:IsCanBeFusionMaterial(e:GetHandler()) then return false end
@@ -769,7 +790,10 @@ function Auxiliary.FConditionCodeFun(code,f,cc,sub,insf)
 			end
 end
 function Auxiliary.FOperationCodeFun(code,f,cc,sub,insf)
-	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
+				local chkf=bit.band(chkfnf,0xff)
+				local notfusion=bit.rshift(chkfnf,8)~=0
+				local sub=sub or notfusion
 				local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 				if gc then
 					if (gc:IsFusionCode(code) or (sub and gc:IsHasEffect(EFFECT_FUSION_SUBSTITUTE))) and g:IsExists(f,cc,gc) then
@@ -868,8 +892,9 @@ function Auxiliary.FConditionFilterF2r(c,f1,f2)
 	return f1(c) and not f2(c)
 end
 function Auxiliary.FConditionFun2(f1,f2,insf)
-	return	function(e,g,gc,chkf)
+	return	function(e,g,gc,chkfnf)
 				if g==nil then return insf end
+				local chkf=bit.band(chkfnf,0xff)
 				local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 				if gc then
 					if not gc:IsCanBeFusionMaterial(e:GetHandler()) then return false end
@@ -888,7 +913,8 @@ function Auxiliary.FConditionFun2(f1,f2,insf)
 			end
 end
 function Auxiliary.FOperationFun2(f1,f2,insf)
-	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
+				local chkf=bit.band(chkfnf,0xff)
 				local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 				if gc then
 					local sg=Group.CreateGroup()
@@ -937,8 +963,11 @@ function Auxiliary.FConditionFilterCR(c,code,sub)
 	return c:IsFusionCode(code) or (sub and c:IsHasEffect(EFFECT_FUSION_SUBSTITUTE))
 end
 function Auxiliary.FConditionCodeRep(code,cc,sub,insf)
-	return	function(e,g,gc,chkf)
+	return	function(e,g,gc,chkfnf)
 				if g==nil then return insf end
+				local chkf=bit.band(chkfnf,0xff)
+				local notfusion=bit.rshift(chkfnf,8)~=0
+				local sub=sub or notfusion
 				local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 				if gc then
 					if not gc:IsCanBeFusionMaterial(e:GetHandler()) then return false end
@@ -956,7 +985,10 @@ function Auxiliary.FConditionCodeRep(code,cc,sub,insf)
 			end
 end
 function Auxiliary.FOperationCodeRep(code,cc,sub,insf)
-	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
+				local chkf=bit.band(chkfnf,0xff)
+				local notfusion=bit.rshift(chkfnf,8)~=0
+				local sub=sub or notfusion
 				local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 				if gc then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
@@ -992,8 +1024,9 @@ function Auxiliary.AddFusionProcFunRep(c,f,cc,insf)
 	c:RegisterEffect(e1)
 end
 function Auxiliary.FConditionFunRep(f,cc,insf)
-	return	function(e,g,gc,chkf)
+	return	function(e,g,gc,chkfnf)
 				if g==nil then return insf end
+				local chkf=bit.band(chkfnf,0xff)
 				local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 				if gc then
 					if not gc:IsCanBeFusionMaterial(e:GetHandler()) then return false end
@@ -1005,7 +1038,8 @@ function Auxiliary.FConditionFunRep(f,cc,insf)
 			end
 end
 function Auxiliary.FOperationFunRep(f,cc,insf)
-	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
+				local chkf=bit.band(chkfnf,0xff)
 				local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 				if gc then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
@@ -1050,8 +1084,9 @@ function Auxiliary.FConditionFilterFFR(c,f1,f2,mg,minc,chkf)
 	end
 end
 function Auxiliary.FConditionFunFunRep(f1,f2,minc,maxc,insf)
-	return	function(e,g,gc,chkf)
+	return	function(e,g,gc,chkfnf)
 			if g==nil then return insf end
+			local chkf=bit.band(chkfnf,0xff)
 			local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 			if gc then
 				if not gc:IsCanBeFusionMaterial(e:GetHandler()) then return false end
@@ -1067,7 +1102,8 @@ function Auxiliary.FConditionFunFunRep(f1,f2,minc,maxc,insf)
 		end
 end
 function Auxiliary.FOperationFunFunRep(f1,f2,minc,maxc,insf)
-	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
+			local chkf=bit.band(chkfnf,0xff)
 			local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 			local minct=minc
 			local maxct=maxc
