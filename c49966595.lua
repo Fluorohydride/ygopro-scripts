@@ -40,17 +40,18 @@ function c49966595.acttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if c49966595.spcon1(e,tp,eg,ep,ev,re,r,rp)
 			and c49966595.spcost1(e,tp,eg,ep,ev,re,r,rp,0)
 			and c49966595.sptg1(e,tp,eg,ep,ev,re,r,rp,0)
-			and Duel.SelectYesNo(tp,aux.Stringid(49966595,0)) then
+			and Duel.SelectYesNo(tp,94) then
 			e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 			e:SetProperty(0)
 			e:SetOperation(c49966595.spop1)
 			c49966595.spcost1(e,tp,eg,ep,ev,re,r,rp,1)
 			c49966595.sptg1(e,tp,eg,ep,ev,re,r,rp,1)
+			e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,65)
 			return
 		elseif c49966595.spcon2(e,tp,eg,ep,ev,re,r,rp)
 			and c49966595.spcost2(e,tp,eg,ep,ev,re,r,rp,0)
 			and c49966595.sptg2(e,tp,eg,ep,ev,re,r,rp,0,chkc)
-			and Duel.SelectYesNo(tp,aux.Stringid(49966595,0)) then
+			and Duel.SelectYesNo(tp,94) then
 			e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 			e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 			e:SetOperation(c49966595.spop2)
