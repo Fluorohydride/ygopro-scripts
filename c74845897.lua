@@ -19,14 +19,14 @@ function c74845897.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c74845897.op(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local tg=Duel.GetMatchingGroup(tp,c74845897.filter,tp,LOCATION_GRAVE,0,nil,e,tp)
+	local tg=Duel.GetMatchingGroup(c74845897.filter,tp,LOCATION_GRAVE,0,nil,e,tp)
 	if ft<=0 or (Duel.IsPlayerAffectedByEffect(tp,59822133) and tg:GetCount()>1 and ft>1) then return end
 	local g=nil
-	if tg:Getcount()>ft then
+	if tg:GetCount()>ft then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		g=tg:Select(tp,ft,ft,nil)
 	else
-		g=tg:Clone()
+		g=tg
 	end
 	if g:GetCount()>0 then
 		local fid=e:GetHandler():GetFieldID()
