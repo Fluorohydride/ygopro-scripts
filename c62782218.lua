@@ -45,7 +45,8 @@ function c62782218.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		if ft<=0 then return false end
-		if ft==1 then return Duel.IsExistingMatchingCard(c62782218.spfilter,tp,LOCATION_HAND,0,1,e:GetHandler(),e,tp,2000)
+		if ft==1 or Duel.IsPlayerAffectedByEffect(tp,59822133) then
+			return Duel.IsExistingMatchingCard(c62782218.spfilter,tp,LOCATION_HAND,0,1,e:GetHandler(),e,tp,2000)
 		else
 			local g=Duel.GetMatchingGroup(c62782218.spfilter,tp,LOCATION_HAND,0,e:GetHandler(),e,tp)
 			return g:CheckWithSumEqual(Card.GetAttack,2000,1,2)
@@ -56,7 +57,7 @@ end
 function c62782218.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
-	if ft==1 then
+	if ft==1 or Duel.IsPlayerAffectedByEffect(tp,59822133) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c62782218.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp,2000)
 		if g:GetCount()>0 then

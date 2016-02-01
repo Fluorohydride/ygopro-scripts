@@ -29,11 +29,12 @@ function c49080532.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c49080532.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>0 then return end
-	local ct=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ct==0 then return end
-	if ct>2 then ct=2 end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if ft<=0 then return end
+	if ft>2 then ft=2 end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c49080532.filter,tp,LOCATION_DECK,0,1,ct,nil,e,tp)
+	local g=Duel.SelectMatchingCard(tp,c49080532.filter,tp,LOCATION_DECK,0,1,ft,nil,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
