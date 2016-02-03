@@ -81,17 +81,14 @@ function c12215894.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	Duel.Remove(rg,POS_FACEUP,REASON_COST)
 end
-function c12215894.filter2(c)
-	return c:IsAbleToDeck() and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
-end
 function c12215894.target2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c12215894.filter2,tp,0,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,1,nil) end
-	local g=Duel.GetMatchingGroup(c12215894.filter2,tp,0,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,nil)
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToDeck,tp,0,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,1,nil) end
+	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,g:GetCount(),0,0)
 end
 function c12215894.operation2(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
-	local g=Duel.GetMatchingGroup(c12215894.filter2,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE+LOCATION_HAND,nil)
+	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE+LOCATION_HAND,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
 	end

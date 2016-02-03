@@ -67,7 +67,7 @@ function c45644898.spop(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c45644898.spfilter,tp,LOCATION_GRAVE,0,1,1,tc,e,tp)
-		if g:GetCount()>0 then
+		if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end
