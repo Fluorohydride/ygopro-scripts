@@ -66,6 +66,7 @@ function c45803070.setop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
 		Duel.SSet(tp,tc)
 		Duel.ConfirmCards(1-tp,tc)
+		local fid=e:GetHandler():GetFieldID()
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)
@@ -78,10 +79,11 @@ function c45803070.setop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN)
 		end
 		e1:SetLabelObject(tc)
+		e1:SetValue(fid)
 		e1:SetCondition(c45803070.rmcon)
 		e1:SetOperation(c45803070.rmop)
 		Duel.RegisterEffect(e1,tp)
-		tc:RegisterFlagEffect(45803070,RESET_EVENT+0x1fe0000,0,1)
+		tc:RegisterFlagEffect(45803070,RESET_EVENT+0x1fe0000,0,1,fid)
 	end
 end
 function c45803070.rmcon(e,tp,eg,ep,ev,re,r,rp)
@@ -89,7 +91,7 @@ function c45803070.rmcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c45803070.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	if tc:GetFlagEffect(45803070)~=0 then
+	if tc:GetFlagEffectLabel(45803070)==e:GetValue() then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	end
 end
