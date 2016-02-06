@@ -1,6 +1,4 @@
 --巨竜の守護騎士
---Guardian of Felgrand
---Script by mercury233
 function c33460840.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
@@ -15,15 +13,14 @@ function c33460840.initial_effect(c)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e2)
 	--spsummon
-	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(33460840,0))
-	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e4:SetType(EFFECT_TYPE_IGNITION)
-	e4:SetRange(LOCATION_MZONE)
-	e4:SetCost(c33460840.spcost)
-	e4:SetTarget(c33460840.sptg)
-	e4:SetOperation(c33460840.spop)
-	c:RegisterEffect(e4)
+	local e3=Effect.CreateEffect(c)
+	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e3:SetType(EFFECT_TYPE_IGNITION)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetCost(c33460840.spcost)
+	e3:SetTarget(c33460840.sptg)
+	e3:SetOperation(c33460840.spop)
+	c:RegisterEffect(e3)
 end
 function c33460840.filter(c,ec)
 	return c:IsRace(RACE_DRAGON) and (c:GetLevel()==7 or c:GetLevel()==8)
@@ -36,7 +33,7 @@ end
 function c33460840.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or c:IsFacedown() or not c:IsRelateToEffect(e) then return end
-	Duel.Hint(HINT_SELECTMSG,tp,518)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectMatchingCard(tp,c33460840.filter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,c)
 	local tc=g:GetFirst()
 	if not Duel.Equip(tp,tc,c,false) then return end

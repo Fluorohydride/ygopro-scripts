@@ -1,6 +1,4 @@
 --アークブレイブドラゴン
---Arc Brave Dragon
---Script by mercury233
 function c33282498.initial_effect(c)
 	--remove
 	local e1=Effect.CreateEffect(c)

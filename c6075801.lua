@@ -1,21 +1,15 @@
 --巨竜の聖騎士
---Paladin of Felgrand
 function c6075801.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
+	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetTarget(c6075801.eqtg)
 	e1:SetOperation(c6075801.eqop)
 	c:RegisterEffect(e1)
-	local e2=Effect.CreateEffect(c)
-	e2:SetCategory(CATEGORY_EQUIP)
-	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
+	local e2=e1:Clone()
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e2:SetTarget(c6075801.eqtg)
-	e2:SetOperation(c6075801.eqop)
 	c:RegisterEffect(e2)
 	--immune
 	local e3=Effect.CreateEffect(c)
@@ -23,11 +17,10 @@ function c6075801.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCode(EFFECT_IMMUNE_EFFECT)
-	e3:SetCondition(c6075801.eqcon1)
+	e3:SetCondition(c6075801.eqcon)
 	e3:SetValue(c6075801.efilter)
 	c:RegisterEffect(e3)
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(98446407,0))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)
@@ -47,7 +40,7 @@ end
 function c6075801.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or c:IsFacedown() or not c:IsRelateToEffect(e) then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(6075801,0))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectMatchingCard(tp,c6075801.filter,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,c)
 	local tc=g:GetFirst()
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
@@ -67,7 +60,7 @@ end
 function c6075801.eqlimit(e,c)
 	return e:GetOwner()==c
 end
-function c6075801.eqcon1(e)
+function c6075801.eqcon(e)
 	local eg=e:GetHandler():GetEquipGroup()
 	return eg:GetCount()>0
 end

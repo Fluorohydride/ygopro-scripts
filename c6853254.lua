@@ -1,6 +1,4 @@
 --復活の福音
---Gospel of Revival
---Scripted by Eerie Code
 function c6853254.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -39,7 +37,8 @@ function c6853254.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c6853254.repfilter(c,tp)
-	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and c:IsOnField() and c:IsControler(tp) and c:IsReason(REASON_EFFECT+REASON_BATTLE)
+	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and c:IsLocation(LOCATION_MZONE)
+		and c:IsControler(tp) and c:IsReason(REASON_EFFECT+REASON_BATTLE)
 end
 function c6853254.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemove() and eg:IsExists(c6853254.repfilter,1,nil,tp) end

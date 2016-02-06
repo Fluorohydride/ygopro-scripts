@@ -1,5 +1,4 @@
 --巨神竜フェルグラント
---Felgrand, the Great Divine Dragon
 function c60681103.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_REMOVE)
