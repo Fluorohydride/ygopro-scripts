@@ -17,6 +17,7 @@ function c33460840.initial_effect(c)
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
+	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetCost(c33460840.spcost)
 	e3:SetTarget(c33460840.sptg)
 	e3:SetOperation(c33460840.spop)
@@ -36,12 +37,11 @@ function c33460840.eqop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectMatchingCard(tp,c33460840.filter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,c)
 	local tc=g:GetFirst()
-	if not Duel.Equip(tp,tc,c,false) then return end
+	if not Duel.Equip(tp,tc,c,true) then return end
 	local atk=tc:GetTextAttack()/2
 	local def=tc:GetTextDefence()/2
 	if atk<0 then atk=0 end
 	if def<0 then def=0 end
-	Duel.ChangePosition(tc,POS_FACEUP)
 	--Add Equip limit
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -79,14 +79,13 @@ end
 function c33460840.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsReleasable() and Duel.CheckReleaseGroup(tp,nil,1,c) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local rg=Duel.SelectReleaseGroup(tp,nil,1,1,c)
 	rg:AddCard(c)
 	Duel.Release(rg,REASON_COST)
 end
-function c33460840.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c33460840.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c33460840.spfilter(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>=-1
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
 		and Duel.IsExistingTarget(c33460840.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c33460840.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)

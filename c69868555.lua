@@ -20,7 +20,6 @@ function c69868555.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(69868555,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetCountLimit(1)
 	e3:SetRange(LOCATION_SZONE)
@@ -60,42 +59,42 @@ end
 function c69868555.disop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=eg:Filter(c69868555.filter,nil,e)
-	if g:GetCount()>0 then
 	local tc=g:GetFirst()
-		while tc do
-			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_DISABLE)
-			e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
-			tc:RegisterEffect(e1)
-			local e2=Effect.CreateEffect(e:GetHandler())
-			e2:SetType(EFFECT_TYPE_SINGLE)
-			e2:SetCode(EFFECT_DISABLE_EFFECT)
-			e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
-			tc:RegisterEffect(e2)
-			if tc:IsType(TYPE_TRAPMONSTER) then
-				local e3=Effect.CreateEffect(e:GetHandler())
-				e3:SetType(EFFECT_TYPE_SINGLE)
-				e3:SetCode(EFFECT_DISABLE_TRAPMONSTER)
-				e3:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
-				tc:RegisterEffect(e3)
-			end
-			tc=g:GetNext()
+	while tc do
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_DISABLE)
+		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		tc:RegisterEffect(e1)
+		local e2=Effect.CreateEffect(e:GetHandler())
+		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		tc:RegisterEffect(e2)
+		if tc:IsType(TYPE_TRAPMONSTER) then
+			local e3=Effect.CreateEffect(e:GetHandler())
+			e3:SetType(EFFECT_TYPE_SINGLE)
+			e3:SetCode(EFFECT_DISABLE_TRAPMONSTER)
+			e3:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+			tc:RegisterEffect(e3)
 		end
+		tc=g:GetNext()
 	end
 end
 function c69868555.tkcostfilter(c)
-	return c:IsAbleToGraveAsCost() and c:IsFaceup()
+	return c:IsFaceup() and c:IsAbleToGraveAsCost()
 end
 function c69868555.tkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c69868555.tkcostfilter,tp,LOCATION_ONFIELD,0,1,e:GetHandler()) end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local loc=LOCATION_ONFIELD
+	if ft==-1 then loc=LOCATION_MZONE end
+	if chk==0 then return ft>-1 and Duel.IsExistingMatchingCard(c69868555.tkcostfilter,tp,loc,0,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c69868555.tkcostfilter,tp,LOCATION_ONFIELD,0,1,1,e:GetHandler())
+	local g=Duel.SelectMatchingCard(tp,c69868555.tkcostfilter,tp,loc,0,1,1,e:GetHandler())
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c69868555.tktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,69868556,0,0x4011,0,0,1,RACE_DRAGON,ATTRIBUTE_LIGHT) end
+	if chk==0 then return Duel.IsPlayerCanSpecialSummonMonster(tp,69868556,0,0x4011,0,0,1,RACE_DRAGON,ATTRIBUTE_LIGHT) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
@@ -107,6 +106,7 @@ function c69868555.tkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c69868555.thcostfilter(c)
 	return c:IsRace(RACE_DRAGON) and (c:GetLevel()==7 or c:GetLevel()==8)
+		and (c:IsLocation(LOCATION_HAND) or c:IsFaceup())
 end
 function c69868555.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c69868555.thcostfilter,tp,LOCATION_ONFIELD+LOCATION_HAND,0,1,e:GetHandler()) end

@@ -32,7 +32,7 @@ function c33282498.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_GRAVE)
 end
 function c33282498.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToRemove()
 end
 function c33282498.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c33282498.filter,tp,0,LOCATION_ONFIELD,1,nil) end
