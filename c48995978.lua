@@ -16,6 +16,13 @@ function c48995978.initial_effect(c)
 	e1:SetTarget(c48995978.target)
 	e1:SetOperation(c48995978.operation)
 	c:RegisterEffect(e1)
+	--win
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e2:SetCode(48995978)
+	e2:SetOperation(c48995978.winop)
+	c:RegisterEffect(e2)
 end
 c48995978.xyz_number=88
 function c48995978.filter(c)
@@ -44,8 +51,11 @@ function c48995978.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and c:IsFaceup() and c:RemoveOverlayCard(tp,1,1,REASON_EFFECT) then
 		c:AddCounter(0x302b,1)
 		if c:GetCounter(0x302b)==3 then
-			local WIN_REASON_DESTINY_LEO=0x17
-			Duel.Win(c:GetControler(),WIN_REASON_DESTINY_LEO)
+			Duel.RaiseSingleEvent(e:GetHandler(),48995978,e,0,tp,tp,0)
 		end
 	end
+end
+function c48995978.winop(e,tp,eg,ep,ev,re,r,rp)
+	local WIN_REASON_DESTINY_LEO=0x17
+	Duel.Win(c:GetControler(),WIN_REASON_DESTINY_LEO)
 end
