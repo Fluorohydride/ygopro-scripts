@@ -87,7 +87,7 @@ end
 function c69868555.tkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local loc=LOCATION_ONFIELD
-	if ft==-1 then loc=LOCATION_MZONE end
+	if ft==0 then loc=LOCATION_MZONE end
 	if chk==0 then return ft>-1 and Duel.IsExistingMatchingCard(c69868555.tkcostfilter,tp,loc,0,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c69868555.tkcostfilter,tp,loc,0,1,1,e:GetHandler())
