@@ -40,6 +40,13 @@ function c13893596.initial_effect(c)
 	e5:SetCondition(c13893596.recon)
 	e5:SetValue(LOCATION_REMOVED)
 	c:RegisterEffect(e5)
+	--win
+	local e6=Effect.CreateEffect(c)
+	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e6:SetCode(13893596)
+	e6:SetOperation(c13893596.winop)
+	c:RegisterEffect(e6)
 end
 function c13893596.cfilter(c)
 	return not c:IsAbleToDeckOrExtraAsCost()
@@ -66,7 +73,6 @@ function c13893596.filter(c,rc)
 	return c:IsRelateToCard(rc) and c:IsSetCard(0x40) and c:IsType(TYPE_MONSTER)
 end
 function c13893596.tgop(e,tp,eg,ep,ev,re,r,rp)
-	local WIN_REASON_EXODIUS = 0x14
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local c=e:GetHandler()
 	local g=Duel.SelectMatchingCard(tp,c13893596.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil)
@@ -76,7 +82,7 @@ function c13893596.tgop(e,tp,eg,ep,ev,re,r,rp)
 		tc:CreateRelation(c,RESET_EVENT+0x1fe0000) 
 		local g=Duel.GetMatchingGroup(c13893596.filter,tp,LOCATION_GRAVE,0,nil,c)
 		if g:GetClassCount(Card.GetCode)==5 then
-			Duel.Win(tp,WIN_REASON_EXODIUS)
+			Duel.RaiseSingleEvent(e:GetHandler(),13893596,e,0,tp,tp,0)
 		end
 	end
 end
@@ -85,4 +91,8 @@ function c13893596.atkval(e,c)
 end
 function c13893596.recon(e)
 	return e:GetHandler():IsFaceup()
+end
+function c13893596.winop(e,tp,eg,ep,ev,re,r,rp)
+	local WIN_REASON_EXODIUS = 0x14
+	Duel.Win(tp,WIN_REASON_EXODIUS)
 end

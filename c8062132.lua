@@ -38,7 +38,7 @@ function c8062132.initial_effect(c)
 	e5:SetCode(EFFECT_IMMUNE_EFFECT)
 	e5:SetValue(c8062132.efilter)
 	c:RegisterEffect(e5)
-	--win
+	--add counter
 	local e6=Effect.CreateEffect(c)
 	e6:SetDescription(aux.Stringid(8062132,1))
 	e6:SetCategory(CATEGORY_COUNTER)
@@ -47,6 +47,13 @@ function c8062132.initial_effect(c)
 	e6:SetCondition(c8062132.ctcon)
 	e6:SetOperation(c8062132.ctop)
 	c:RegisterEffect(e6)
+	--win
+	local e7=Effect.CreateEffect(c)
+	e7:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e7:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e7:SetCode(8062132)
+	e7:SetOperation(c8062132.winop)
+	c:RegisterEffect(e7)
 end
 function c8062132.efilter(e,te)
 	return te:GetOwner()~=e:GetOwner()
@@ -83,6 +90,10 @@ function c8062132.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	c:AddCounter(0x11+COUNTER_NEED_ENABLE,1)
 	if c:GetCounter(0x11)>=3 then
-		Duel.Win(tp,0x12)
+		Duel.RaiseSingleEvent(e:GetHandler(),8062132,e,0,tp,tp,0)
 	end
+end
+function c8062132.winop(e,tp,eg,ep,ev,re,r,rp)
+	local WIN_REASON_VENNOMINAGA = 0x12
+	Duel.Win(e:GetHandler():GetControler(),WIN_REASON_VENNOMINAGA)
 end
