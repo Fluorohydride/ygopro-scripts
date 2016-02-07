@@ -37,7 +37,7 @@ function c64063868.condition(e,tp,eg,ep,ev,re,r,rp)
 		and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_TRAP) and Duel.IsChainNegatable(ev)
 end
 function c64063868.cfilter(c) 
-	return c:IsSetCard(0xd2) and c:IsAbleToRemoveAsCost()
+	return c:IsSetCard(0xd2) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function c64063868.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c64063868.cfilter,tp,LOCATION_GRAVE,0,1,nil) end
