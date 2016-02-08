@@ -1,6 +1,6 @@
 --地縛神 Chacu Challhua
 function c69931927.initial_effect(c)
-	c:SetUniqueOnField(1,1,10000000)
+	c:SetUniqueOnField(1,1,10000000,LOCATION_MZONE)
 	--
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE)

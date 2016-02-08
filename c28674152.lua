@@ -1,6 +1,6 @@
 --Radian, the Multidimensional Kaiju
 function c28674152.initial_effect(c)
-	c:SetUniqueOnField(1,0,20000000)
+	c:SetUniqueOnField(1,0,20000000,LOCATION_MZONE)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
