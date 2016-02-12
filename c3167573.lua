@@ -48,7 +48,7 @@ function c3167573.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c3167573.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(31829185)>0 and Duel.GetTurnCount()==e:GetLabel()
+	return e:GetHandler():GetFlagEffect(3167573)>0 and Duel.GetTurnCount()==e:GetLabel()
 end
 function c3167573.desop(e,tp,eg,ep,ev,re,r,rp)
 	e:SetLabel(0)
