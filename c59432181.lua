@@ -26,7 +26,7 @@ function c59432181.activate(e,tp,eg,ep,ev,re,r,rp)
 	local cg=Duel.SelectMatchingCard(tp,c59432181.filter,tp,LOCATION_EXTRA,0,1,1,nil)
 	if cg:GetCount()==0 then return end
 	Duel.ConfirmCards(1-tp,cg)
-	local code1,code2=cg:GetFirst():GetCode()
+	local code1,code2=cg:GetFirst():GetOriginalCodeRule()
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetDescription(aux.Stringid(59432181,0))
 	e1:SetType(EFFECT_TYPE_SINGLE)

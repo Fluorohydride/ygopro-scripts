@@ -39,13 +39,13 @@ function c69868555.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c69868555.cfilter(c)
-	return c:IsFaceup() and not c:IsPreviousLocation(LOCATION_GRAVE)
+	return c:GetSummonLocation()~=LOCATION_GRAVE
 end
-function c69868555.dfilter(c)
-	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and (c:GetLevel()==7 or c:GetLevel()==8)
+function c69868555.dfilter(c,eg)
+	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and (c:GetLevel()==7 or c:GetLevel()==8) and not eg:IsContains(c)
 end
 function c69868555.discon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c69868555.cfilter,1,nil) and Duel.IsExistingMatchingCard(c69868555.dfilter,tp,LOCATION_MZONE,0,1,nil)
+	return eg:IsExists(c69868555.cfilter,1,nil) and Duel.IsExistingMatchingCard(c69868555.dfilter,tp,LOCATION_MZONE,0,1,nil,eg)
 end
 function c69868555.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -109,9 +109,9 @@ function c69868555.thcostfilter(c)
 		and (c:IsLocation(LOCATION_HAND) or c:IsFaceup())
 end
 function c69868555.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c69868555.thcostfilter,tp,LOCATION_ONFIELD+LOCATION_HAND,0,1,e:GetHandler()) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c69868555.thcostfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c69868555.thcostfilter,tp,LOCATION_ONFIELD+LOCATION_HAND,0,1,1,e:GetHandler())
+	local g=Duel.SelectMatchingCard(tp,c69868555.thcostfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,1,e:GetHandler())
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c69868555.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
