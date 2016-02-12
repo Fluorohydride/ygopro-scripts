@@ -82,7 +82,7 @@ function c85004150.xyztg(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
 	local b1=ct<minc and Duel.CheckXyzMaterial(c,c85004150.mfilter,7,minc,maxc,og)
 	local b2=ct<1 and (not min or min<=1) and mg:IsExists(c85004150.ovfilter,1,nil,tp,c)
 	local g=nil
-	if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(85004150,2))) then
+	if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(85004150,0))) then
 		e:SetLabel(1)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		g=mg:FilterSelect(tp,c85004150.ovfilter,1,1,nil,tp,c)
