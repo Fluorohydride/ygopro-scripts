@@ -36,7 +36,8 @@ end
 function c73820802.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if e:GetLabel()==0 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
+	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then return end
+	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_CARDTYPE)
 	local op=Duel.SelectOption(1-tp,70,71,72)
 	Duel.ConfirmDecktop(tp,1)
 	local g=Duel.GetDecktopGroup(tp,1)
@@ -44,8 +45,11 @@ function c73820802.operation(e,tp,eg,ep,ev,re,r,rp)
 	if (op==0 and tc:IsType(TYPE_MONSTER)) or (op==1 and tc:IsType(TYPE_SPELL)) or (op==2 and tc:IsType(TYPE_TRAP)) then
 		Duel.Draw(1-tp,1,REASON_EFFECT)
 	else
-		local sg=Duel.GetFieldGroup(1-tp,LOCATION_HAND,0):RandomSelect(1-tp,1)
-		Duel.SendtoGrave(sg,REASON_DISCARD+REASON_EFFECT)
+		local hg=Duel.GetFieldGroup(1-tp,LOCATION_HAND,0)
+		if hg:GetCount()>0 then
+			local sg=hg:RandomSelect(1-tp,1)
+			Duel.SendtoGrave(sg,REASON_DISCARD+REASON_EFFECT)
+		end
 	end
 	Duel.MoveSequence(tc,1)
 end
