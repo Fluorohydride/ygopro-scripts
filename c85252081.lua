@@ -25,6 +25,7 @@ function c85252081.initial_effect(c)
 	local e3=e2:Clone()
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
+	e3:SetHintTiming(0,TIMING_END_PHASE+TIMING_EQUIP)
 	e3:SetCondition(c85252081.descon2)
 	c:RegisterEffect(e3)
 	--material
