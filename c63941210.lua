@@ -56,7 +56,7 @@ function c63941210.discon(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) then return false end
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return false end
 	local tg=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
-	return tg and tg:GetCount()==1 and tg:GetFirst():IsOnField() and Duel.IsChainDisablable(ev)
+	return tg and tg:GetCount()==1 and Duel.IsChainDisablable(ev)
 end
 function c63941210.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0x37,3,REASON_COST) end
