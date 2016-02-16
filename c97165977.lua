@@ -67,13 +67,13 @@ function c97165977.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e2)
 	end
 end
-function c97165977.repfilter(c,tp)
+function c97165977.repfilter(c,e,tp)
 	return c:IsFaceup() and c:IsControler(1-tp) and c:IsLocation(LOCATION_MZONE)
-		and c:IsReason(REASON_BATTLE) and c:GetFlagEffect(97165977)==0
+		and c:IsReason(REASON_BATTLE) and c:GetFlagEffect(97165977)==0 and not c:IsImmuneToEffect(e)
 end
 function c97165977.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c97165977.repfilter,1,nil,tp) end
-	local g=eg:Filter(c97165977.repfilter,nil,tp)
+	if chk==0 then return eg:IsExists(c97165977.repfilter,1,nil,e,tp) end
+	local g=eg:Filter(c97165977.repfilter,nil,e,tp)
 	local tc=g:GetFirst()
 	while tc do
 		tc:RegisterFlagEffect(97165977,RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END,0,1)
