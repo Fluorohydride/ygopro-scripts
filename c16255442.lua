@@ -25,12 +25,12 @@ function c16255442.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c16255442.operation(e,tp,eg,ep,ev,re,r,rp)
 	local sg=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
-	local sct=sg:GetCount()
 	Duel.SendtoGrave(sg,REASON_EFFECT+REASON_DISCARD)
+	local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_GRAVE):GetCount()
 	local tg=Duel.GetMatchingGroup(c16255442.filter,tp,LOCATION_GRAVE,0,nil)
-	if tg:GetCount()>=sct then
+	if og>0 and tg:GetCount()>=og then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local sel=tg:Select(tp,sct,sct,nil)
+		local sel=tg:Select(tp,og,og,nil)
 		Duel.SendtoHand(sel,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,sel)
 	end
