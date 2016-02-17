@@ -22,7 +22,6 @@ function c66835946.initial_effect(c)
 	e3:SetCountLimit(1)
 	e3:SetTarget(c66835946.destg)
 	e3:SetValue(1)
-	e3:SetOperation(c66835946.desop)
 	c:RegisterEffect(e3)
 end
 function c66835946.val(e,c)
@@ -33,8 +32,8 @@ function c66835946.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local tc=eg:GetFirst()
 		return eg:GetCount()==1 and tc:IsLocation(LOCATION_MZONE) and tc:IsControler(tp) and tc:IsFaceup() and tc:IsRace(RACE_ZOMBIE)
 	end
-	return Duel.SelectYesNo(tp,aux.Stringid(66835946,0))
-end
-function c66835946.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
+	if Duel.SelectYesNo(tp,aux.Stringid(66835946,0)) then
+		Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
+		return true
+	else return false end
 end

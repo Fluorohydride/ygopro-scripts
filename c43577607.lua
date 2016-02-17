@@ -24,7 +24,6 @@ function c43577607.initial_effect(c)
 	e3:SetCountLimit(1)
 	e3:SetTarget(c43577607.reptg)
 	e3:SetValue(c43577607.repval)
-	e3:SetOperation(c43577607.repop)
 	e3:SetCondition(c43577607.effcon)
 	e3:SetLabel(3)
 	c:RegisterEffect(e3)
@@ -72,17 +71,17 @@ function c43577607.atktg(e,c)
 	return c:IsSetCard(0x9e)
 end
 function c43577607.repfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x9e) and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
+	return c:IsFaceup() and c:IsSetCard(0x9e) and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and not c:IsReason(REASON_REPLACE)
 end
 function c43577607.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c43577607.repfilter,1,nil,tp) end
-	return Duel.SelectYesNo(tp,aux.Stringid(43577607,1))
+	if Duel.SelectYesNo(tp,aux.Stringid(43577607,1)) then
+		Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
+		return true
+	else return false end
 end
 function c43577607.repval(e,c)
 	return c43577607.repfilter(c,e:GetHandlerPlayer())
-end
-function c43577607.repop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
 end
 function c43577607.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

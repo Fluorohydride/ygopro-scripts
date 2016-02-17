@@ -9,7 +9,6 @@ function c5067884.initial_effect(c)
 	e1:SetRange(LOCATION_PZONE)
 	e1:SetTarget(c5067884.reptg)
 	e1:SetValue(c5067884.repval)
-	e1:SetOperation(c5067884.repop)
 	c:RegisterEffect(e1)
 	--Attack
 	local e2=Effect.CreateEffect(c)
@@ -23,17 +22,17 @@ function c5067884.initial_effect(c)
 end
 function c5067884.repfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD) and c:IsSetCard(0xd8)
-		and (c:IsReason(REASON_BATTLE) or (c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()~=tp))
+		and (c:IsReason(REASON_BATTLE) or (c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()~=tp)) and not c:IsReason(REASON_REPLACE)
 end
 function c5067884.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c5067884.repfilter,1,e:GetHandler(),tp) and not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED) end
-	return Duel.SelectYesNo(tp,aux.Stringid(5067884,0))
+	if Duel.SelectYesNo(tp,aux.Stringid(5067884,0)) then
+		Duel.Destroy(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)
+		return true
+	else return false end
 end
 function c5067884.repval(e,c)
 	return c5067884.repfilter(c,e:GetHandlerPlayer())
-end
-function c5067884.repop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)
 end
 function c5067884.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsAbleToEnterBP()

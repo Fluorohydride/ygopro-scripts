@@ -9,7 +9,6 @@ function c65025250.initial_effect(c)
 	e2:SetRange(LOCATION_PZONE)
 	e2:SetTarget(c65025250.reptg)
 	e2:SetValue(c65025250.repval)
-	e2:SetOperation(c65025250.repop)
 	c:RegisterEffect(e2)
 	--to defence
 	local e3=Effect.CreateEffect(c)
@@ -36,13 +35,13 @@ function c65025250.filter(c,tp)
 end
 function c65025250.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c65025250.filter,1,nil,tp) and not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED) end
-	return Duel.SelectYesNo(tp,aux.Stringid(65025250,1))
+	if Duel.SelectYesNo(tp,aux.Stringid(65025250,1)) then
+		Duel.Destroy(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)
+		return true
+	else return false end
 end
 function c65025250.repval(e,c)
 	return c65025250.filter(c,e:GetHandlerPlayer())
-end
-function c65025250.repop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)
 end
 function c65025250.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAttackPos() end
