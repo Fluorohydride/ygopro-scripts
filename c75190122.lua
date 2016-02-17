@@ -10,6 +10,7 @@ function c75190122.initial_effect(c)
 	e1:SetOperation(c75190122.activate)
 	c:RegisterEffect(e1)
 end
+c75190122.dark_magician_list=true
 function c75190122.cfilter(c,code)
 	local code1,code2=c:GetOriginalCodeRule()
 	return c:IsFaceup() and (code1==code or code2==code)

@@ -10,6 +10,7 @@ function c87210505.initial_effect(c)
 	e1:SetOperation(c87210505.activate)
 	c:RegisterEffect(e1)
 end
+c87210505.dark_magician_list=true
 function c87210505.costfilter(c)
 	return c:IsFaceup() and c:IsCode(46986414)
 end
