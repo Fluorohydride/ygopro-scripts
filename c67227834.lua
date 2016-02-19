@@ -34,6 +34,7 @@ function c67227834.initial_effect(c)
 	e4:SetOperation(c67227834.recop)
 	c:RegisterEffect(e4)
 end
+c67227834.dark_magician_list=true
 function c67227834.eqlimit(e,c)
 	local code=c:GetCode()
 	return code==46986414 or code==38033121
