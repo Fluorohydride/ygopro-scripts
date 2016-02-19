@@ -18,7 +18,7 @@ function c84171830.initial_effect(c)
 	--atk
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
+	e3:SetCode(EVENT_DAMAGE_CALCULATING)
 	e3:SetRange(LOCATION_FZONE)
 	e3:SetCondition(c84171830.atkcon)
 	e3:SetOperation(c84171830.atkop)
