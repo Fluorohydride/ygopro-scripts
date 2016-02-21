@@ -17,8 +17,9 @@ function c78706415.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetFieldGroup(tp,0x1e,0x1e)
 	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
-	Duel.ShuffleDeck(tp)
-	Duel.ShuffleDeck(1-tp)
+	local tg=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_DECK)
+	if tg:IsExists(Card.IsControler,1,nil,tp) then Duel.ShuffleDeck(tp) end
+	if tg:IsExists(Card.IsControler,1,nil,1-tp) then Duel.ShuffleDeck(1-tp) end
 	Duel.BreakEffect()
 	Duel.Draw(tp,5,REASON_EFFECT)
 	Duel.Draw(1-tp,5,REASON_EFFECT)
