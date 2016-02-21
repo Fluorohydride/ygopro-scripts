@@ -50,9 +50,7 @@ function c27564031.operation(e,tp,eg,ep,ev,re,r,rp)
 		local sg=g:Select(tp,3,3,nil)
 		Duel.ConfirmCards(1-tp,sg)
 		Duel.ShuffleDeck(tp)
-		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
-		local tg=sg:Select(1-tp,1,1,nil)
-		local tc=tg:GetFirst()
-		Duel.SendtoHand(tc,nil,REASON_EFFECT)
+		local tg=sg:RandomSelect(1-tp,1)
+		Duel.SendtoHand(tg,nil,REASON_EFFECT)
 	end
 end
