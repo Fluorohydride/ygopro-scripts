@@ -22,9 +22,22 @@ function c84764038.initial_effect(c)
 	--to grave
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e3:SetCode(EVENT_TO_GRAVE)
 	e3:SetOperation(c84764038.regop)
 	c:RegisterEffect(e3)
+	--search
+	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(84764038,1))
+	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e4:SetCode(EVENT_PHASE+PHASE_END)
+	e4:SetCountLimit(1,84764038)
+	e4:SetRange(LOCATION_GRAVE)
+	e4:SetCondition(c84764038.thcon)
+	e4:SetTarget(c84764038.thtg)
+	e4:SetOperation(c84764038.thop)
+	c:RegisterEffect(e4)
 end
 function c84764038.sdfilter(c)
 	return not c:IsFaceup() or not c:IsSetCard(0xb1)
@@ -50,21 +63,14 @@ function c84764038.ssop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c84764038.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(84764038,1))
-	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e1:SetCode(EVENT_PHASE+PHASE_END)
-	e1:SetCountLimit(1,84764038)
-	e1:SetRange(LOCATION_GRAVE)
-	e1:SetTarget(c84764038.thtg)
-	e1:SetOperation(c84764038.thop)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
-	c:RegisterEffect(e1)
+	c:RegisterFlagEffect(84764038,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c84764038.thfilter(c)
 	return c:GetLevel()==3 and c:IsAttribute(ATTRIBUTE_DARK) and c:IsRace(RACE_FIEND)
 		and not c:IsCode(84764038) and c:IsAbleToHand()
+end
+function c84764038.thcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(84764038)>0
 end
 function c84764038.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c84764038.thfilter,tp,LOCATION_DECK,0,1,nil) end
