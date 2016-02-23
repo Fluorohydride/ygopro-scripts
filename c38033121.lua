@@ -10,9 +10,5 @@ function c38033121.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c38033121.val(e,c)
-	return Duel.GetMatchingGroupCount(c38033121.filter,c:GetControler(),LOCATION_GRAVE,LOCATION_GRAVE,nil)*300
-end
-function c38033121.filter(c)
-	local code=c:GetCode()
-	return code==46986414 or code==30208479
+	return Duel.GetMatchingGroupCount(Card.IsCode,c:GetControler(),LOCATION_GRAVE,LOCATION_GRAVE,nil,30208479,46986414)*300
 end
