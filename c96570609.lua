@@ -32,7 +32,6 @@ function c96570609.initial_effect(c)
 	e4:SetRange(LOCATION_HAND)
 	e4:SetCode(EVENT_FREE_CHAIN)
 	e4:SetHintTiming(0,0x1c0+TIMING_MAIN_END)
-	e4:SetCountLimit(1)
 	e4:SetCondition(c96570609.sumcon)
 	e4:SetCost(c96570609.sumcost)
 	e4:SetTarget(c96570609.sumtg)
@@ -110,10 +109,13 @@ function c96570609.cfilter(c)
 	return c:IsSetCard(0xbe) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToRemoveAsCost()
 end
 function c96570609.sumcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c96570609.cfilter,tp,LOCATION_GRAVE,0,1,nil) end
+	local c=e:GetHandler()
+	if chk==0 then return Duel.IsExistingMatchingCard(c96570609.cfilter,tp,LOCATION_GRAVE,0,1,nil)
+		and c:GetFlagEffect(96570609)==0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c96570609.cfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	c:RegisterFlagEffect(96570609,RESET_CHAIN,0,1)
 end
 function c96570609.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsSummonable(true,nil,1) end
