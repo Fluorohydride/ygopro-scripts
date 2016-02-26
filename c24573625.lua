@@ -65,5 +65,5 @@ function c24573625.atkcon2(e)
 	return e:GetHandler():IsDirectAttacked()
 end
 function c24573625.tglimit(e,re,c)
-	return c:IsFaceup() and c:IsSetCard(0xab) and c~=e:GetHandler()
+	return c:IsFaceup() and c:IsSetCard(0xab) and c~=e:GetHandler() and c:IsLocation(LOCATION_ONFIELD) 
 end
