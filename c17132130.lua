@@ -14,7 +14,6 @@ function c17132130.initial_effect(c)
 	e2:SetCode(EFFECT_SPSUMMON_PROC)
 	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
-	e2:SetValue(1)
 	e2:SetCondition(c17132130.spcon)
 	e2:SetOperation(c17132130.spop)
 	c:RegisterEffect(e2)
@@ -45,7 +44,7 @@ function c17132130.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(sg2,REASON_COST)
 end
 function c17132130.lp(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL
 end
 function c17132130.lpop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
