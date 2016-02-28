@@ -45,12 +45,13 @@ function c26268488.initial_effect(c)
 	e4:SetOperation(c26268488.spop)
 	c:RegisterEffect(e4)
 end
-function c26268488.repfilter(c,tp)
-	return c:IsControler(tp) and c:IsOnField() and c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:GetFlagEffect(26268488)==0
+function c26268488.repfilter(c,e,tp)
+	return c:IsControler(tp) and c:IsOnField() and c:IsReason(REASON_BATTLE+REASON_EFFECT)
+		and c:GetFlagEffect(26268488)==0 and not c:IsImmuneToEffect(e)
 end
 function c26268488.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c26268488.repfilter,1,nil,tp) end
-	local g=eg:Filter(c26268488.repfilter,nil,tp)
+	if chk==0 then return eg:IsExists(c26268488.repfilter,1,nil,e,tp) end
+	local g=eg:Filter(c26268488.repfilter,nil,e,tp)
 	local tc=g:GetFirst()
 	while tc do
 		tc:RegisterFlagEffect(26268488,RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(26268488,2))

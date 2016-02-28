@@ -29,13 +29,14 @@ end
 function c79777187.target(e,c)
 	return c:IsSetCard(0xc6) or c:IsSetCard(0x9f)
 end
-function c79777187.repfilter(c,tp)
+function c79777187.repfilter(c,e,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
-		and (c:IsSetCard(0xc6) or c:IsSetCard(0x9f)) and c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:GetFlagEffect(79777187)==0
+		and (c:IsSetCard(0xc6) or c:IsSetCard(0x9f)) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
+		and c:GetFlagEffect(79777187)==0 and not c:IsImmuneToEffect(e)
 end
 function c79777187.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c79777187.repfilter,1,nil,tp) end
-	local g=eg:Filter(c79777187.repfilter,nil,tp)
+	if chk==0 then return eg:IsExists(c79777187.repfilter,1,nil,e,tp) end
+	local g=eg:Filter(c79777187.repfilter,nil,e,tp)
 	local tc=g:GetFirst()
 	while tc do
 		tc:RegisterFlagEffect(79777187,RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(79777187,0))
