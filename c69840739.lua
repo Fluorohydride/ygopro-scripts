@@ -71,17 +71,15 @@ function c69840739.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,PLAYER_ALL,LOCATION_HAND)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,PLAYER_ALL,1)
 end
-function c69840739.drfilter(c,tp)
-	return c:IsLocation(LOCATION_DECK) and c:GetPreviousControler()==tp
-end
 function c69840739.drop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND,LOCATION_HAND)
 	if Duel.SendtoDeck(g,nil,0,REASON_EFFECT)~=0 then
-		Duel.ShuffleDeck(tp)
-		Duel.ShuffleDeck(1-tp)
+		local og=g:Filter(Card.IsLocation,nil,LOCATION_DECK)
+		if og:IsExists(Card.IsControler,1,nil,tp) then Duel.ShuffleDeck(tp) end
+		if og:IsExists(Card.IsControler,1,nil,1-tp) then Duel.ShuffleDeck(1-tp) end
 		Duel.BreakEffect()
-		local ct1=g:FilterCount(c69840739.drfilter,nil,tp)
-		local ct2=g:FilterCount(c69840739.drfilter,nil,1-tp)
+		local ct1=og:FilterCount(aux.FilterEqualFunction(Card.GetPreviousControler,tp),nil)
+		local ct2=og:FilterCount(aux.FilterEqualFunction(Card.GetPreviousControler,1-tp),nil)
 		Duel.Draw(tp,ct1,REASON_EFFECT)
 		Duel.Draw(1-tp,ct2,REASON_EFFECT)
 	end

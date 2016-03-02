@@ -45,8 +45,10 @@ function c96598015.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sg=g:Select(tp,3,3,nil)
 	if sg:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 	Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)
-	Duel.ShuffleDeck(tp)
-	if sg:IsExists(Card.IsLocation,3,nil,LOCATION_DECK+LOCATION_EXTRA) then
+	local og=Duel.GetOperatedGroup()
+	if og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then Duel.ShuffleDeck(tp) end
+	local ct=og:FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_EXTRA)
+	if ct==3 then
 		Duel.BreakEffect()
 		Duel.Draw(tp,2,REASON_EFFECT)
 	end

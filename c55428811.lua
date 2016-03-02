@@ -30,9 +30,9 @@ function c55428811.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not tg or tg:FilterCount(Card.IsRelateToEffect,nil,e)~=5 then return end
 	Duel.SendtoDeck(tg,nil,0,REASON_EFFECT)
 	local g=Duel.GetOperatedGroup()
+	if g:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then Duel.ShuffleDeck(tp) end
 	local ct=g:FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_EXTRA)
 	if ct==5 then
-		Duel.ShuffleDeck(tp)
 		Duel.BreakEffect()
 		Duel.Draw(tp,e:GetLabel(),REASON_EFFECT)
 	end
