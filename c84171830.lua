@@ -49,10 +49,10 @@ function c84171830.discon(e)
 end
 function c84171830.atkcon(e)
 	local d=Duel.GetAttackTarget()
+	local tp=e:GetHandlerPlayer()
 	return Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL and d and d:IsControler(1-tp)
 end
 function c84171830.atktg(e,c)
-	local tp=e:GetHandlerPlayer()
 	return c==Duel.GetAttacker() and bit.band(c:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
 end
 function c84171830.filter(c)
