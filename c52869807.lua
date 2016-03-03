@@ -10,10 +10,13 @@ function c52869807.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk down
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_DAMAGE_CALCULATING)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_UPDATE_ATTACK)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetOperation(c52869807.atkup)
+	e2:SetTargetRange(0,LOCATION_MZONE)
+	e2:SetCondition(c52869807.atkcon)
+	e2:SetTarget(c52869807.atktg)
+	e2:SetValue(-300)
 	c:RegisterEffect(e2)
 end
 function c52869807.spcon(e,c)
@@ -21,14 +24,13 @@ function c52869807.spcon(e,c)
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0 and
 		Duel.GetFieldGroupCount(c:GetControler(),LOCATION_ONFIELD,0)==0
 end
-function c52869807.atkup(e,tp,eg,ep,ev,re,r,rp,chk)
-	local a=Duel.GetAttacker()
+function c52869807.atkcon(e)
+	local ph=Duel.GetCurrentPhase()
 	local d=Duel.GetAttackTarget()
-	if not d or not d:IsSetCard(0x33) or d:IsControler(1-tp) then return end
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_UPDATE_ATTACK)
-	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
-	e1:SetValue(-300)
-	a:RegisterEffect(e1)
+	local tp=e:GetHandlerPlayer()
+	return (ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL)
+		and d and d:IsControler(tp) and d:IsSetCard(0x33)
+end
+function c52869807.atktg(e,c)
+	return c==Duel.GetAttacker()
 end
