@@ -9,10 +9,11 @@ function c7153114.initial_effect(c)
 	--indestructable
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_INDESTRUCTABLE)
+	e2:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetProperty(EFFECT_FLAG_IGNORE_RANGE+EFFECT_FLAG_SET_AVAILABLE)
 	e2:SetTarget(c7153114.infilter)
+	e2:SetValue(1)
 	c:RegisterEffect(e2)
 	--cannot activate
 	local e3=Effect.CreateEffect(c)
