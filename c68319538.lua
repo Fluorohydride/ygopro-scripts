@@ -40,10 +40,10 @@ end
 function c68319538.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local rg=tg:Filter(Card.IsRelateToEffect,nil,e)
-	local ct=Duel.SendtoHand(rg,nil,REASON_EFFECT)
-	if ct==0 then return end
+	Duel.SendtoHand(rg,nil,REASON_EFFECT)
+	local ct=rg:FilterCount(Card.IsLocation,nil,LOCATION_HAND)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	if g:GetCount()==0 then return end
+	if ct==0 or g:GetCount()==0 then return end
 	for i=1,ct do
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(68319538,2))
 		local sg=g:Select(tp,1,1,nil)
