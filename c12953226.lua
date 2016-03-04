@@ -4,6 +4,7 @@ function c12953226.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
+	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetOperation(c12953226.desop)
 	c:RegisterEffect(e1)
 	--atk down
@@ -16,7 +17,7 @@ function c12953226.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c12953226.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+	Duel.Destroy(e:GetHandler(),REASON_RULE)
 end
 function c12953226.val(e,c)
 	local tp=c:GetControler()

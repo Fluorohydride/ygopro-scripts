@@ -50,7 +50,7 @@ function c86943389.atkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c86943389.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_MZONE) and bit.band(c:GetSummonType(),SUMMON_TYPE_SYNCHRO)==SUMMON_TYPE_SYNCHRO
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetSummonType()==SUMMON_TYPE_SYNCHRO
 end
 function c86943389.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
