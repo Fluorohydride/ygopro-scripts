@@ -47,13 +47,13 @@ function c1281505.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetValue(c1281505.eqlimit)
-		e1:SetLabelObject(tc)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
 	end
 end
 function c1281505.eqlimit(e,c)
-	return c==e:GetLabelObject()
+	local tp=e:GetHandlerPlayer()
+	return c:IsControler(tp)
 end
 function c1281505.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
