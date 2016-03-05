@@ -134,8 +134,10 @@ function c74586817.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,2,0,0)
 end
 function c74586817.tdop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	local g=Group.FromCards(c,tc):Filter(Card.IsRelateToEffect,nil,e)
-	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+	local tc=Duel.GetFirstTarget()
+	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+		local g=Group.FromCards(c,tc)
+		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+	end
 end
