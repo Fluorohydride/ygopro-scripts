@@ -33,13 +33,12 @@ function c56111151.initial_effect(c)
 	e4:SetOperation(c56111151.desrepop)
 	c:RegisterEffect(e4)
 end
-function c56111151.cfilter(c)
-	return c:IsPreviousLocation(LOCATION_ONFIELD)
-end
 function c56111151.counter(e,tp,eg,ep,ev,re,r,rp)
-	local ct=eg:FilterCount(c56111151.cfilter,nil)
-	if ct>0 then
-		e:GetHandler():AddCounter(0x37+COUNTER_NEED_ENABLE,ct)
+	local c=e:GetHandler()
+	local ct=eg:FilterCount(Card.IsPreviousLocation,nil,LOCATION_ONFIELD)
+	local cct=math.min(5-c:GetCounter(0x37),ct)
+	if cct>0 then
+		c:AddCounter(0x37+COUNTER_NEED_ENABLE,cct)
 	end
 end
 function c56111151.thfilter(c)

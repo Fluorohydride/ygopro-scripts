@@ -49,9 +49,11 @@ function c40089744.cfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_HAND+LOCATION_ONFIELD)
 end
 function c40089744.acop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	local ct=eg:FilterCount(c40089744.cfilter,nil)
-	if ct>0 then
-		e:GetHandler():AddCounter(0x3001,ct)
+	local cct=math.min(6-c:GetCounter(0x3001),ct)
+	if cct>0 then
+		c:AddCounter(0x3001,cct)
 	end
 end
 function c40089744.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
