@@ -21,7 +21,7 @@ function c59432181.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c59432181.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local cg=Duel.SelectMatchingCard(tp,c59432181.filter,tp,LOCATION_EXTRA,0,1,1,nil)
 	if cg:GetCount()==0 then return end
