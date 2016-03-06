@@ -51,7 +51,7 @@ end
 function c40089744.acop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=eg:FilterCount(c40089744.cfilter,nil)
 	if ct>0 then
-		e:GetHandler():AddCounter(0x3001,ct)
+		e:GetHandler():AddCounter(0x3001,ct,true)
 	end
 end
 function c40089744.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
