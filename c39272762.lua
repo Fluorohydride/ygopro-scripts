@@ -73,19 +73,18 @@ function c39272762.attg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetOverlayCount(tp,0,1)~=0 end
 end
 function c39272762.atop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
 	local g=Duel.GetOverlayGroup(tp,0,1)
-	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
-	if g:GetCount()~=0 then
-		Duel.SendtoGrave(g,REASON_EFFECT)
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_UPDATE_ATTACK)
-		e1:SetValue(g:GetCount()*500)
-		e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END)
-		c:RegisterEffect(e1)
-	end
+	if g:GetCount()==0 then return end
+	Duel.SendtoGrave(g,REASON_EFFECT)
 	Duel.BreakEffect()
+	local c=e:GetHandler()
+	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_UPDATE_ATTACK)
+	e1:SetValue(g:GetCount()*500)
+	e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END)
+	c:RegisterEffect(e1)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
