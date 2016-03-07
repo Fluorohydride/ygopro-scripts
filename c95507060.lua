@@ -19,7 +19,8 @@ function c95507060.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_PLANT)
 end
 function c95507060.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c95507060.filter,tp,LOCATION_MZONE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c95507060.filter,tp,LOCATION_MZONE,0,1,nil)
+		and Duel.IsExistingMatchingCard(Card.IsRace,tp,LOCATION_GRAVE,0,1,nil,RACE_PLANT) end
 end
 function c95507060.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c95507060.filter,tp,LOCATION_MZONE,0,nil)
