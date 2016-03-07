@@ -11,8 +11,8 @@ function c81791932.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c81791932.cfilter(c,tp)
-	return c:IsRace(RACE_REPTILE) and c:GetPreviousControler()==tp
-		and c:IsPreviousLocation(LOCATION_ONFIELD)
+	return c:IsRace(RACE_REPTILE) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c81791932.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c81791932.cfilter,1,nil,tp)
