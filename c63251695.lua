@@ -27,7 +27,7 @@ function c63251695.tfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0xd8) and c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD)
 end
 function c63251695.negcon(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)	
+	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	return e:GetHandler():GetFlagEffect(63251695)==0 and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) 
 		and g and g:IsExists(c63251695.tfilter,1,e:GetHandler(),tp) and Duel.IsChainDisablable(ev)
 end
@@ -40,7 +40,7 @@ function c63251695.negop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c63251695.effcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler()==Duel.GetAttacker()
+	return e:GetHandler()==Duel.GetAttacker() and e:GetHandler():IsRelateToBattle()
 end
 function c63251695.effcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,e:GetHandler(),0xd8) end

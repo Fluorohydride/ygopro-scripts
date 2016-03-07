@@ -38,11 +38,11 @@ end
 function c46589034.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not (c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e)) then return end
+	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
 	local atk=tc:GetAttack()
 	local def=tc:GetDefence()
 	local val=math.min(atk,def)
-	if Duel.Damage(tp,val,REASON_EFFECT)~=0 then
+	if Duel.Damage(tp,val,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 			if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
 				local e1=Effect.CreateEffect(c)
