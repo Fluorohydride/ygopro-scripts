@@ -17,8 +17,8 @@ function c38680149.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	return true
 end
 function c38680149.filter1(c,e,tp)
-	local lv=c:GetLevel()
-	return lv>=2 and Duel.IsExistingTarget(c38680149.filter2,tp,LOCATION_GRAVE,0,1,nil,lv/2)
+	local lv=math.floor(c:GetLevel()/2)
+	return lv>0 and Duel.IsExistingTarget(c38680149.filter2,tp,LOCATION_GRAVE,0,1,nil,lv)
 end
 function c38680149.filter2(c,lv)
 	return c:IsLevelBelow(lv) and c:IsType(TYPE_TUNER) and c:IsAbleToHand()
@@ -31,7 +31,7 @@ function c38680149.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		return Duel.CheckReleaseGroup(tp,c38680149.filter1,1,nil,e,tp)
 	end
 	local rg=Duel.SelectReleaseGroup(tp,c38680149.filter1,1,1,nil,e,tp)
-	local lv=rg:GetFirst():GetLevel()/2
+	local lv=math.floor(rg:GetFirst():GetLevel()/2)
 	e:SetLabel(lv)
 	Duel.Release(rg,REASON_COST)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
