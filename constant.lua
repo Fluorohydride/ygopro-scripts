@@ -1,6 +1,6 @@
 --Card id
 MIN_ID	=1000		--4 digit, by DataManager::GetDesc()
-MAX_ID	=999999999	--9 digit, by field::select_chain()
+MAX_ID	=268435455	--9 digit, by DataManager::GetDesc()
 --Locations 区域
 LOCATION_DECK		=0x01		--卡组
 LOCATION_HAND		=0x02		--手牌
@@ -312,11 +312,11 @@ EFFECT_INDESTRUCTABLE_EFFECT	=41		--不会被效果破坏
 EFFECT_INDESTRUCTABLE_BATTLE	=42		--不会被战斗破坏
 EFFECT_UNRELEASABLE_SUM			=43		--不能做上级召唤的祭品
 EFFECT_UNRELEASABLE_NONSUM		=44		--不能做上级召唤以外的祭品
-EFFECT_DESTROY_SUBSTITUTE		=45		--必選的代替破壞
+EFFECT_DESTROY_SUBSTITUTE		=45		--必選的代替破壞(此卡被破壞時用其他卡代替)
 EFFECT_CANNOT_RELEASE			=46		--不能进行解放行为
 EFFECT_INDESTRUCTABLE_COUNT		=47 	--一回合几次不会被破坏
 EFFECT_UNRELEASABLE_EFFECT		=48		--不能被解放
-EFFECT_DESTROY_REPLACE			=50		--可選的代替破壞
+EFFECT_DESTROY_REPLACE			=50		--可選的代替破壞(將破壞改成其他動作)
 EFFECT_RELEASE_REPLACE			=51		--代替解放
 EFFECT_SEND_REPLACE				=52		--可以不送去XX而送去OO（甜点城堡等）
 EFFECT_CANNOT_DISCARD_HAND		=55		--不能丢弃手牌
