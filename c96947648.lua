@@ -11,8 +11,7 @@ function c96947648.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c96947648.filter(c)
-	local atk=c:GetAttack()
-	return atk>=0 and atk<=1500 and c:IsAttribute(ATTRIBUTE_WATER) and c:IsAbleToHand()
+	return c:IsType(TYPE_MONSTER) and c:IsAttackBelow(1500) and c:IsAttribute(ATTRIBUTE_WATER) and c:IsAbleToHand()
 end
 function c96947648.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:GetControler()==tp and chkc:GetLocation()==LOCATION_GRAVE and c96947648.filter(chkc) end
