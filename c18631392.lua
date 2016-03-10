@@ -46,7 +46,12 @@ function c18631392.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.SendtoGrave(g1,REASON_COST)
 end
 function c18631392.anctg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,3) end
+	if chk==0 then 
+		if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<3 then return false end
+		local g=Duel.GetDecktopGroup(tp,3)
+		local result=g:FilterCount(Card.IsAbleToHand,nil)>0
+		return result and Duel.IsPlayerCanDiscardDeck(tp,3)
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,0)
 	local ac1=Duel.AnnounceCard(tp)
 	Duel.Hint(HINT_SELECTMSG,tp,0)
