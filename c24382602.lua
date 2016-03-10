@@ -67,14 +67,6 @@ function c24382602.atkop(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetCode(EFFECT_UPDATE_DEFENCE)
 			tc:RegisterEffect(e2)
 		end
-	else
-		local cg=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
-		Duel.ConfirmCards(1-tp,cg)
-		Duel.ConfirmCards(tp,cg)
-		Duel.ShuffleDeck(tp)
-		cg=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
-		Duel.ConfirmCards(1-tp,cg)
-		Duel.ShuffleHand(tp)
 	end
 end
 function c24382602.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
