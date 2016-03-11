@@ -18,16 +18,23 @@ function c30488793.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c30488793.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local a1=Duel.GetAttacker():GetAttack()
-	local a2=Duel.GetAttackTarget():GetAttack()
-	local dam=math.abs(a1-a2)
+	local a=Duel.GetAttacker()
+	local t=Duel.GetAttackTarget()
+	local g=Group.FromCards(a,t)
+	local dam=math.abs(a:GetAttack()-t:GetAttack())
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(dam)
+	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,0,1-tp,dam)
 end
 function c30488793.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetAttacker():GetAttack():IsFaceup() and Duel.GetAttackTarget():GetAttack():IsFaceup() then
-		local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
-		Duel.Damage(p,d,REASON_EFFECT)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	if g:GetCount()<2 then return end
+	local c1=g:GetFirst()
+	local c2=g:GetNest()
+	if c1:IsFaceup() and c2:IsFaceup() then
+		local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
+		local dam=math.abs(c1:GetAttack()-c2:GetAttack())
+		Duel.Damage(p,dam,REASON_EFFECT)
 	end
 end
