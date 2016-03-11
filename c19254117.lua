@@ -28,10 +28,10 @@ function c19254117.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c19254117.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and aux.nzdef(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(aux.nzdef,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
+	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,aux.nzdef,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
 function c19254117.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -43,24 +43,32 @@ function c19254117.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(tc:GetDefence()*2)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
+		--def to 0
+		tc:RegisterFlagEffect(19254117,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e2:SetRange(LOCATION_MZONE)
 		e2:SetCode(EVENT_PHASE+PHASE_END)
-		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		e2:SetCountLimit(1)
+		e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+		e2:SetLabelObject(tc)
+		e2:SetCondition(c19254117.ddcon)
 		e2:SetOperation(c19254117.ddop)
-		tc:RegisterEffect(e2)
+		e2:SetReset(RESET_PHASE+PHASE_END)
+		Duel.RegisterEffect(e2,tp)
 	end
+end
+function c19254117.ddcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetLabelObject():GetFlagEffect(19254117)>0
 end
 function c19254117.ddop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	local tc=e:GetLabelObject()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_DEFENCE_FINAL)
 	e1:SetValue(0)
 	e1:SetReset(RESET_EVENT+0x1fe0000)
-	c:RegisterEffect(e1)
+	tc:RegisterEffect(e1)
 end
 function c19254117.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
