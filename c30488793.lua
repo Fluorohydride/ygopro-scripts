@@ -31,7 +31,7 @@ function c30488793.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()<2 then return end
 	local c1=g:GetFirst()
-	local c2=g:GetNest()
+	local c2=g:GetNext()
 	if c1:IsFaceup() and c2:IsFaceup() then
 		local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 		local dam=math.abs(c1:GetAttack()-c2:GetAttack())
