@@ -36,5 +36,6 @@ function c8559793.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
+		Duel.ShuffleDeck(tp)
 	end
 end
