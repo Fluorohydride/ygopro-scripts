@@ -20,13 +20,14 @@ function c30488793.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local a1=Duel.GetAttacker():GetAttack()
 	local a2=Duel.GetAttackTarget():GetAttack()
-	local dam=a1-a2
-	if dam<0 then dam=-dam end
+	local dam=math.abs(a1-a2)
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(dam)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,0,1-tp,dam)
 end
 function c30488793.activate(e,tp,eg,ep,ev,re,r,rp)
-	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
-	Duel.Damage(p,d,REASON_EFFECT)
+	if Duel.GetAttacker():GetAttack():IsFaceup() and Duel.GetAttackTarget():GetAttack():IsFaceup() then
+		local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
+		Duel.Damage(p,d,REASON_EFFECT)
+	end
 end
