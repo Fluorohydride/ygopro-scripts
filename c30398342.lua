@@ -7,7 +7,7 @@ function c30398342.initial_effect(c)
 	e0:SetType(EFFECT_TYPE_ACTIVATE)
 	e0:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e0)
-	--spsummon
+	--Activate(spsummon)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(30398342,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -61,6 +61,7 @@ function c30398342.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c30398342.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c30398342.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e)

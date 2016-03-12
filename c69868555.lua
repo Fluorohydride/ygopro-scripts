@@ -54,7 +54,7 @@ function c69868555.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,g:GetCount(),0,0)
 end
 function c69868555.filter(c,e)
-	return c:IsFaceup() and not c:IsPreviousLocation(LOCATION_GRAVE) and c:IsRelateToEffect(e)
+	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and not c:IsPreviousLocation(LOCATION_GRAVE) and c:IsRelateToEffect(e)
 end
 function c69868555.disop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
