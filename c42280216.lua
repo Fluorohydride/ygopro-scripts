@@ -30,8 +30,7 @@ function c42280216.shcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():IsReason(REASON_DESTROY)
 end
 function c42280216.filter(c)
-	local code=c:GetCode()
-	return (code==78275321 or code==78552773) and c:IsAbleToHand()
+	return c:IsCode(78275321,78552773) and c:IsAbleToHand()
 end
 function c42280216.shtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c42280216.filter,tp,LOCATION_DECK,0,1,nil) end

@@ -93,9 +93,5 @@ function c90960358.atklimit(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c90960358.val(e,c)
-	return Duel.GetMatchingGroupCount(c90960358.filter,c:GetControler(),LOCATION_GRAVE,LOCATION_GRAVE,nil)*300
-end
-function c90960358.filter(c)
-	local code=c:GetCode()
-	return code==46986414 or code==30208479
+	return Duel.GetMatchingGroupCount(Card.IsCode,c:GetControler(),LOCATION_GRAVE,LOCATION_GRAVE,nil,46986414,30208479)*300
 end

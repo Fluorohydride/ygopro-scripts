@@ -14,8 +14,7 @@ function c53569894.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c53569894.filter(c)
-	local code=c:GetCode()
-	return c:IsFaceup() and (code==15013468 or code==51402177) and c:IsDestructable()
+	return c:IsFaceup() and c:IsCode(15013468,51402177) and c:IsDestructable()
 end
 function c53569894.leave(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

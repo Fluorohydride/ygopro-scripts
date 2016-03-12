@@ -17,8 +17,7 @@ function c90219263.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c90219263.cfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 end
 function c90219263.filter(c,e,tp)
-	local code=c:GetCode()
-	return (code==76812113 or code==12206212) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsCode(76812113,12206212) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c90219263.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

@@ -10,8 +10,7 @@ function c82452993.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c82452993.filter(c)
-	local code=c:GetCode()
-	return c:IsFaceup() and (code==8508055 or code==3810071 or code==49814180)
+	return c:IsFaceup() and c:IsCode(8508055,3810071,49814180)
 end
 function c82452993.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

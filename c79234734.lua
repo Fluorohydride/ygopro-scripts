@@ -49,7 +49,7 @@ function c79234734.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c79234734.thfilter(c)
-	return (c:IsCode(6628343) or c:IsCode(32013448)) and c:IsAbleToHand()
+	return c:IsCode(6628343,32013448) and c:IsAbleToHand()
 end
 function c79234734.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c79234734.thfilter,tp,LOCATION_DECK,0,1,nil) end

@@ -10,9 +10,7 @@ function c20065322.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c20065322.filter(c,ft,e,tp)
-	local code=c:GetCode()
-	return (code==40640057 or code==57116033)
-		and (c:IsAbleToHand() or (ft>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)))
+	return c:IsCode(40640057,57116033) and (c:IsAbleToHand() or (ft>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)))
 end
 function c20065322.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

@@ -25,8 +25,7 @@ function c49328340.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c49328340.pietg(e,c)
-	local code=c:GetCode()
-	return code==6368038 or code==16589042 or code==66889139
+	return c:IsCode(6368038,16589042,66889139)
 end
 function c49328340.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()

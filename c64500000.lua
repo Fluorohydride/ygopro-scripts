@@ -57,12 +57,10 @@ function c64500000.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end
 function c64500000.eqlimit(e,c)
-	local code=c:GetCode()
-	return code==62651957 or code==65622692
+	return c:IsCode(62651957,65622692)
 end
 function c64500000.filter(c)
-	local code=c:GetCode()
-	return c:IsFaceup() and (code==62651957 or code==65622692) and c:GetUnionCount()==0
+	return c:IsFaceup() and c:IsCode(62651957,65622692) and c:GetUnionCount()==0
 end
 function c64500000.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c64500000.filter(chkc) end

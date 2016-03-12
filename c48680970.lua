@@ -43,7 +43,7 @@ function c48680970.filter1(c,e,tp)
 	return c:IsCode(46986414) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c48680970.filter2(c)
-	return (c:IsCode(2314238) or c:IsCode(63391643)) and c:IsAbleToHand()
+	return c:IsCode(2314238,63391643) and c:IsAbleToHand()
 end
 function c48680970.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

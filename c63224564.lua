@@ -24,12 +24,10 @@ function c63224564.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c63224564.eqlimit(e,c)
-	local code=c:GetCode()
-	return code==76812113 or code==12206212
+	return c:IsCode(76812113,12206212)
 end
 function c63224564.filter(c)
-	local code=c:GetCode()
-	return c:IsFaceup() and (code==76812113 or code==12206212)
+	return c:IsFaceup() and c:IsCode(76812113,12206212)
 end
 function c63224564.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c63224564.filter(chkc) end

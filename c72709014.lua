@@ -42,12 +42,10 @@ function c72709014.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c72709014.eqlimit(e,c)
-	local code=c:GetCode()
-	return code==81383947 or code==46128076
+	return c:IsCode(81383947,46128076)
 end
 function c72709014.filter(c)
-	local code=c:GetCode()
-	return c:IsFaceup() and (code==81383947 or code==46128076)
+	return c:IsFaceup() and c:IsCode(81383947,46128076)
 end
 function c72709014.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c72709014.filter(chkc) end
