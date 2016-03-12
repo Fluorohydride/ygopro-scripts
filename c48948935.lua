@@ -22,20 +22,16 @@ function c48948935.initial_effect(c)
 	e2:SetOperation(c48948935.eqop)
 	c:RegisterEffect(e2)
 end
-function c48948935.spfilter(c)
-	local code=c:GetCode()
-	return code==13676474 or code==86569121
-end
 function c48948935.spcon(e,c)
 	if c==nil then return true end
 	local g=Duel.GetReleaseGroup(c:GetControler())
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-2
-		and g:GetCount()>1 and g:IsExists(c48948935.spfilter,1,nil)
+		and g:GetCount()>1 and g:IsExists(Card.IsCode,1,nil,13676474,86569121)
 end
 function c48948935.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetReleaseGroup(tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg1=g:FilterSelect(tp,c48948935.spfilter,1,1,nil)
+	local sg1=g:FilterSelect(tp,Card.IsCode,1,1,nil,13676474,86569121)
 	g:RemoveCard(sg1:GetFirst())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local sg2=g:Select(tp,1,1,nil)

@@ -19,8 +19,7 @@ function c49389523.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp~=tp and e:GetHandler():GetPreviousControler()==tp
 end
 function c49389523.filter(c,e,tp)
-	local code=c:GetCode()
-	return (code==77506119 or code==13995824) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(77506119,13995824) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c49389523.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c49389523.filter(chkc,e,tp) end

@@ -9,8 +9,7 @@ function c97570038.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c97570038.filter(c)
-	local code=c:GetCode()
-	return c:IsFaceup() and (code==8508055 or code==3810071 or code==49814180)
+	return c:IsFaceup() and c:IsCode(8508055,3810071,49814180)
 end
 function c97570038.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c97570038.filter,tp,LOCATION_MZONE,0,1,nil)
@@ -25,8 +24,7 @@ function c97570038.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c97570038.cfilter(c)
-	local code=c:GetCode()
-	return code==8508055 or code==3810071 or code==49814180
+	return c:IsCode(8508055,3810071,49814180)
 end
 function c97570038.desop(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()

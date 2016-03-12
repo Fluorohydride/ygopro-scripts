@@ -18,8 +18,7 @@ function c68334074.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RemoveCounter(tp,1,0,0x3001,2,REASON_COST)
 end
 function c68334074.filter(c,e,tp)
-	local code=c:GetCode()
-	return (code==46986414 or code==78193831) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(46986414,78193831) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c68334074.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c68334074.filter(chkc,e,tp) end

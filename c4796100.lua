@@ -15,8 +15,7 @@ function c4796100.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c4796100.spfilter(c,e,tp)
-	local code=c:GetCode()
-	return (code==5818798 or code==77207191) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(5818798,77207191) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c4796100.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c4796100.spfilter(chkc,e,tp) end

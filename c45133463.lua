@@ -18,8 +18,7 @@ function c45133463.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c45133463.cfiltetr,1,nil,tp)
 end
 function c45133463.filter(c,e,tp)
-	local code=c:GetCode()
-	return (code==78552773 or code==78275321) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(78552773,78275321) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c45133463.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c45133463.filter(chkc,e,tp) end

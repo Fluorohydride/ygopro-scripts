@@ -43,8 +43,7 @@ function c75782277.check(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	local tp1=false local tp2=false
 	while tc do
-		local code=tc:GetCode()
-		if tc:IsFaceup() and (code==76812113 or code==12206212) then
+		if tc:IsFaceup() and tc:IsCode(76812113,12206212) then
 			if tc:IsControler(tp) then tp1=true else tp2=true end
 		end
 		tc=eg:GetNext()

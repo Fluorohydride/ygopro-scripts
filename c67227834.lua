@@ -36,12 +36,10 @@ function c67227834.initial_effect(c)
 end
 c67227834.dark_magician_list=true
 function c67227834.eqlimit(e,c)
-	local code=c:GetCode()
-	return code==46986414 or code==38033121
+	return c:IsCode(46986414,38033121)
 end
 function c67227834.filter(c)
-	local code=c:GetCode()
-	return c:IsFaceup() and (code==46986414 or code==38033121)
+	return c:IsFaceup() and c:IsCode(46986414,38033121)
 end
 function c67227834.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c67227834.filter(chkc) end

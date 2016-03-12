@@ -16,8 +16,7 @@ function c45045866.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c45045866.filter(c)
-	local code=c:GetCode()
-	return (code==81434470 or code==18828179) and c:IsAbleToHand()
+	return c:IsCode(81434470,18828179) and c:IsAbleToHand()
 end
 function c45045866.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

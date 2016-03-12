@@ -20,20 +20,15 @@ function c36021814.initial_effect(c)
 	e2:SetOperation(c36021814.operation)
 	c:RegisterEffect(e2)
 end
-function c36021814.filter(c)
-	local code=c:GetCode()
-	return code==32274490 or code==36021814
-end
 function c36021814.atkval(e,c)
-	return Duel.GetMatchingGroupCount(c36021814.filter,c:GetControler(),LOCATION_GRAVE,0,nil)*1000
+	return Duel.GetMatchingGroupCount(Card.IsCode,c:GetControler(),LOCATION_GRAVE,0,nil,32274490,36021814)*1000
 end
 function c36021814.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE)
 		and bit.band(e:GetHandler():GetReason(),REASON_BATTLE)~=0
 end
 function c36021814.costfilter(c)
-	local code=c:GetCode()
-	return (code==32274490 or code==36021814) and c:IsAbleToRemoveAsCost()
+	return c:IsCode(32274490,36021814) and c:IsAbleToRemoveAsCost()
 end
 function c36021814.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c36021814.costfilter,tp,LOCATION_GRAVE,0,1,e:GetHandler()) end

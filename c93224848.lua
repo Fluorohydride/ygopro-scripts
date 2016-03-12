@@ -12,8 +12,7 @@ function c93224848.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c93224848.filter(c)
-	local code=c:GetCode()
-	return c:IsFaceup() and (code==6007213 or code==32491822)
+	return c:IsFaceup() and c:IsCode(6007213,32491822)
 end
 function c93224848.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>=2

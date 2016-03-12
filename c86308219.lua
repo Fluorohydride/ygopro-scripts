@@ -17,7 +17,7 @@ function c86308219.counterfilter(c)
 	return bit.band(c:GetSummonLocation(),LOCATION_DECK+LOCATION_EXTRA)==0
 end
 function c86308219.cfilter(c)
-	return c:IsFaceup() and (c:IsCode(76812113) or c:IsCode(12206212))
+	return c:IsFaceup() and c:IsCode(76812113,12206212)
 end
 function c86308219.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c86308219.cfilter,tp,LOCATION_ONFIELD,0,3,nil)
