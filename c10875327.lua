@@ -43,7 +43,7 @@ end
 function c10875327.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsPreviousPosition(POS_FACEUP) and not c:IsLocation(LOCATION_DECK)
-		and (not re or re:GetHandler()~=c)
+		and (not re or re:GetOwner()~=c)
 end
 function c10875327.desfilter(c)
 	return c:IsFaceup() and c:IsDestructable()
