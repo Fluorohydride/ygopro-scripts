@@ -24,7 +24,7 @@ function c24857466.initial_effect(c)
 	e4:SetCategory(CATEGORY_DAMAGE)
 	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e4:SetCode(24857466)
+	e4:SetCode(EVENT_CARD+24857466)
 	e4:SetCondition(c24857466.damcon)
 	e4:SetTarget(c24857466.damtg)
 	e4:SetOperation(c24857466.damop)
@@ -89,7 +89,7 @@ function c24857466.hspop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local tpe=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
-		Duel.RaiseSingleEvent(c,24857466,e,0,0,tp,tpe)
+		Duel.RaiseSingleEvent(c,EVENT_CARD+24857466,e,0,0,tp,tpe)
 	end
 end
 function c24857466.damcon(e,tp,eg,ep,ev,re,r,rp)

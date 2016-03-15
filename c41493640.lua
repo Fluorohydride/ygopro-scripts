@@ -15,7 +15,7 @@ function c41493640.initial_effect(c)
 	e2:SetDescription(aux.Stringid(41493640,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCode(41493640)
+	e2:SetCode(EVENT_CARD+41493640)
 	e2:SetTarget(c41493640.sptg)
 	e2:SetOperation(c41493640.spop)
 	c:RegisterEffect(e2)
@@ -36,7 +36,7 @@ function c41493640.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmCards(tp,tc)
 	if tc:IsType(TYPE_TRAP) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
-			Duel.RaiseSingleEvent(c,41493640,e,0,tp,tp,0)
+			Duel.RaiseSingleEvent(c,EVENT_CARD+41493640,e,0,tp,tp,0)
 		end
 	end
 end

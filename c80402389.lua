@@ -18,7 +18,7 @@ function c80402389.initial_effect(c)
 	e3:SetDescription(aux.Stringid(80402389,0))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_EVENT_PLAYER)
-	e3:SetCode(80402389)
+	e3:SetCode(EVENT_CARD+80402389)
 	e3:SetTarget(c80402389.target)
 	e3:SetOperation(c80402389.operation)
 	c:RegisterEffect(e3)
@@ -29,7 +29,7 @@ function c80402389.check(e,tp,eg,ep,ev,re,r,rp)
 	while tc do
 		if tc:IsPreviousLocation(LOCATION_MZONE) and tc:IsReason(REASON_DESTROY)
 			and tc:IsRace(RACE_INSECT) and tc:GetLevel()~=0 and tc:IsPreviousPosition(POS_FACEUP) then
-			Duel.RaiseSingleEvent(c,80402389,e,r,rp,tc:GetControler(),tc:GetLevel())
+			Duel.RaiseSingleEvent(c,EVENT_CARD+80402389,e,r,rp,tc:GetControler(),tc:GetLevel())
 		end
 		tc=eg:GetNext()
 	end

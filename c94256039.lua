@@ -25,9 +25,18 @@ function c94256039.initial_effect(c)
 	e4:SetDescription(aux.Stringid(94256039,0))
 	e4:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e4:SetCode(94256039)
+	e4:SetCode(EVENT_CARD+94256039)
 	e4:SetTarget(c94256039.damtg)
 	e4:SetOperation(c94256039.damop)
+	c:RegisterEffect(e4)
+	--
+	local e5=Effect.CreateEffect(c)
+	e4:SetCategory(CATEGORY_DESTROY)
+	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
+	e4:SetCode(EVENT_ADD_COUNTER+0x3001)
+	e4:SetCondition(c94256039.descon)
+	e4:SetTarget(c94256039.destg)
+	e4:SetOperation(c94256039.desop)
 	c:RegisterEffect(e4)
 end
 function c94256039.acop(e,tp,eg,ep,ev,re,r,rp)
@@ -36,7 +45,7 @@ function c94256039.acop(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and c:GetFlagEffect(1)>0 then
 		c:AddCounter(0x3001,1)
 		if c:GetCounter(0x3001)==4 then
-			Duel.RaiseSingleEvent(c,94256039,re,0,0,p,0)
+			Duel.RaiseSingleEvent(c,EVENT_CARD+94256039,re,0,0,p,0)
 		end
 	end
 end
@@ -50,4 +59,15 @@ function c94256039.damop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Destroy(e:GetHandler(),REASON_EFFECT)~=0 then
 		Duel.Damage(ep,3000,REASON_EFFECT)
 	end
+end
+function c94256039.descon(e,tp,eg,ep,ev,re,r,rp)
+	return re:GetHandler()~=e:GetHandler() and e:GetHandler():GetCounter(0x3001)>=4
+end
+function c94256039.destg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
+end
+function c94256039.desop(e,tp,eg,ep,ev,re,r,rp)
+	if not e:GetHandler():IsRelateToEffect(e) then return end
+	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 end

@@ -11,7 +11,7 @@ function c18654201.initial_effect(c)
 	e2:SetDescription(aux.Stringid(18654201,0))
 	e2:SetCategory(CATEGORY_TOGRAVE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e2:SetCode(18654201)
+	e2:SetCode(EVENT_CARD+18654201)
 	e2:SetTarget(c18654201.hdtg)
 	e2:SetOperation(c18654201.hdop)
 	c:RegisterEffect(e2)
@@ -25,11 +25,11 @@ function c18654201.regop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c18654201.filter,1,nil,1) then p2=true end
 	local c=e:GetHandler()
 	if p1 and p2 then
-		Duel.RaiseSingleEvent(c,18654201,re,r,rp,PLAYER_ALL,0)
+		Duel.RaiseSingleEvent(c,EVENT_CARD+18654201,re,r,rp,PLAYER_ALL,0)
 	elseif p1 then
-		Duel.RaiseSingleEvent(c,18654201,re,r,rp,0,0)
+		Duel.RaiseSingleEvent(c,EVENT_CARD+18654201,re,r,rp,0,0)
 	elseif p2 then
-		Duel.RaiseSingleEvent(c,18654201,re,r,rp,1,0)
+		Duel.RaiseSingleEvent(c,EVENT_CARD+18654201,re,r,rp,1,0)
 	end
 end
 function c18654201.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)

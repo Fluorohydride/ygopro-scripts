@@ -28,7 +28,7 @@ function c53039326.initial_effect(c)
 	e4:SetDescription(aux.Stringid(53039326,2))
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_EVENT_PLAYER)
-	e4:SetCode(53039326)
+	e4:SetCode(EVENT_CARD+53039326)
 	e4:SetTarget(c53039326.target)
 	e4:SetOperation(c53039326.operation)
 	c:RegisterEffect(e4)
@@ -69,8 +69,8 @@ function c53039326.check(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc=eg:GetNext()
 	end
-	if b1 then Duel.RaiseSingleEvent(c,53039326,e,r,rp,turnp,0) end
-	if b2 then Duel.RaiseSingleEvent(c,53039326,e,r,rp,1-turnp,0) end
+	if b1 then Duel.RaiseSingleEvent(c,EVENT_CARD+53039326,e,r,rp,turnp,0) end
+	if b2 then Duel.RaiseSingleEvent(c,EVENT_CARD+53039326,e,r,rp,1-turnp,0) end
 end
 function c53039326.filter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x1d) and c:IsAbleToHand()

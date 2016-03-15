@@ -16,7 +16,7 @@ function c77631175.initial_effect(c)
 	e2:SetDescription(aux.Stringid(77631175,1))
 	e2:SetCategory(CATEGORY_DAMAGE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e2:SetCode(77631175)
+	e2:SetCode(EVENT_CARD+77631175)
 	e2:SetTarget(c77631175.target)
 	e2:SetOperation(c77631175.operation)
 	c:RegisterEffect(e2)
@@ -26,7 +26,7 @@ function c77631175.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if Duel.SelectYesNo(tp,aux.Stringid(77631175,0)) then
 		local c=e:GetHandler()
 		c:RemoveOverlayCard(tp,1,1,REASON_EFFECT)
-		Duel.RaiseSingleEvent(c,77631175,e,0,0,0,0)
+		Duel.RaiseSingleEvent(c,EVENT_CARD+77631175,e,0,0,0,0)
 		return true
 	else return false end
 end

@@ -51,7 +51,7 @@ function c49352945.initial_effect(c)
 	e6:SetDescription(aux.Stringid(49352945,2))
 	e6:SetCategory(CATEGORY_TODECK)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e6:SetCode(49352945)
+	e6:SetCode(EVENT_CARD+49352945)
 	e6:SetTarget(c49352945.tdtg)
 	e6:SetOperation(c49352945.tdop)
 	c:RegisterEffect(e6)
@@ -126,7 +126,7 @@ function c49352945.retop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 	Duel.SendtoDeck(c,nil,2,REASON_EFFECT)
 	if c:IsLocation(LOCATION_EXTRA) then
-		Duel.RaiseSingleEvent(c,49352945,e,0,0,0,0)
+		Duel.RaiseSingleEvent(c,EVENT_CARD+49352945,e,0,0,0,0)
 	end
 end
 function c49352945.desfilter(c)

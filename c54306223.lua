@@ -28,7 +28,7 @@ function c54306223.initial_effect(c)
 	e4:SetDescription(aux.Stringid(54306223,1))
 	e4:SetCategory(CATEGORY_DESTROY)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e4:SetCode(54306223)
+	e4:SetCode(EVENT_CARD+54306223)
 	e4:SetRange(LOCATION_FZONE)
 	e4:SetTarget(c54306223.destg)
 	e4:SetOperation(c54306223.desop)
@@ -61,7 +61,7 @@ function c54306223.acop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	if g:GetCount()>0 then
-		Duel.RaiseEvent(g,54306223,e,0,0,0,0)
+		Duel.RaiseEvent(g,EVENT_CARD+54306223,e,0,0,0,0)
 	end
 end
 function c54306223.destg(e,tp,eg,ep,ev,re,r,rp,chk)

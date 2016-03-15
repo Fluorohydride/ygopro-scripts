@@ -83,4 +83,5 @@ end
 function c59258334.rcop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetFirstCardTarget()
 	tc:RemoveCounter(tp,0xe,1,REASON_EFFECT)
+	Duel.RaiseEvent(e:GetHandler(),EVENT_REMOVE_COUNTER+0xe,e,REASON_EFFECT,tp,tp,1)
 end

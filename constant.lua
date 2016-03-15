@@ -551,6 +551,7 @@ EVENT_PHASE						=0x1000	--阶段结束时
 EVENT_PHASE_START				=0x2000	--阶段开始时
 EVENT_ADD_COUNTER				=0x10000--增加指示物时
 EVENT_REMOVE_COUNTER			=0x20000--去除指示物时
+EVENT_CARD						=0x10000000
 --Categorys	效果分类（表示这个效果将要发生什么事，OperationInfo设置了效果分类才能触发针对这一类型发动的卡，如破坏->星尘龙
 CATEGORY_DESTROY			=0x1		--破坏效果
 CATEGORY_RELEASE			=0x2    	--解放效果

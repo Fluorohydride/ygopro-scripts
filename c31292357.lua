@@ -23,7 +23,8 @@ function c31292357.initial_effect(c)
 	--atk
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(31292357)
+	e3:SetCode(EVENT_ADD_COUNTER+0x3036)
+	e3:SetCondition(c31292357.atkcon)
 	e3:SetOperation(c31292357.atkop)
 	c:RegisterEffect(e3)
 end
@@ -39,9 +40,6 @@ end
 function c31292357.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:AddCounter(0x3036,1)~=0 then
-		if c:GetCounter(0x3036)==3 then
-			Duel.RaiseSingleEvent(c,31292357,e,0,0,tp,0)
-		end
 		local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)
@@ -60,6 +58,9 @@ function c31292357.damval(e,re,val,r,rp,rc)
 	local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
 	if cid~=e:GetLabel() then return val end
 	return 0
+end
+function c31292357.atkcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetCounter(0x3036)==3
 end
 function c31292357.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

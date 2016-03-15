@@ -11,7 +11,7 @@ function c67048711.initial_effect(c)
 	e2:SetDescription(aux.Stringid(67048711,0))
 	e2:SetCategory(CATEGORY_DRAW+CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e2:SetCode(67048711)
+	e2:SetCode(EVENT_CARD+67048711)
 	e2:SetTarget(c67048711.drtg)
 	e2:SetOperation(c67048711.drop)
 	c:RegisterEffect(e2)
@@ -33,7 +33,7 @@ end
 function c67048711.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetMatchingGroupCount(c67048711.filter,tp,LOCATION_SZONE,0,nil)==3 then
-		Duel.RaiseSingleEvent(e:GetHandler(),67048711,e,0,0,0,0)
+		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CARD+67048711,e,0,0,0,0)
 	end
 end
 function c67048711.drtg(e,tp,eg,ep,ev,re,r,rp,chk)

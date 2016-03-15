@@ -22,8 +22,13 @@ end
 function c38834303.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sg=Duel.GetMatchingGroup(c38834303.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	local tc=sg:GetFirst()
+	local count=0
 	while tc do
+		count=count+tc:GetCounter(0xe)
 		tc:RemoveCounter(tp,0,0,0)
 		tc=sg:GetNext()
+	end
+	if count>0 then
+		Duel.RaiseEvent(e:GetHandler(),EVENT_REMOVE_COUNTER+0xe,e,REASON_EFFECT,tp,tp,count)
 	end
 end

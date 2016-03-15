@@ -16,7 +16,7 @@ function c33698022.initial_effect(c)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetDescription(aux.Stringid(33698022,1))
-	e2:SetCode(33698022)
+	e2:SetCode(EVENT_CARD+33698022)
 	c:RegisterEffect(e2)
 	--event
 	local e3=Effect.CreateEffect(c)
@@ -34,7 +34,7 @@ function c33698022.evcon(e,tp,eg,ep,ev,re,r,rp)
 	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c33698022.cfilter,1,nil,1-tp)
 end
 function c33698022.evop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.RaiseSingleEvent(e:GetHandler(),33698022,re,r,rp,ep,ev)
+	Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CARD+33698022,re,r,rp,ep,ev)
 end
 function c33698022.filter(c)
 	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL and c:IsAbleToHand()

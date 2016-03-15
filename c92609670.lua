@@ -17,7 +17,7 @@ function c92609670.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(92609670,1))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCode(92609670)
+	e2:SetCode(EVENT_CARD+92609670)
 	e2:SetCost(c92609670.lvcost)
 	e2:SetTarget(c92609670.lvtg)
 	e2:SetOperation(c92609670.lvop)
@@ -46,7 +46,7 @@ function c92609670.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c92609670.filter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,ft,nil,e,tp)
 	if g:GetCount()>0 and not g:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
-		Duel.RaiseSingleEvent(e:GetHandler(),92609670,e,0,tp,tp,0)
+		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CARD+92609670,e,0,tp,tp,0)
 	end
 end
 function c92609670.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
