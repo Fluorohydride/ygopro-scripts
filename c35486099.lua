@@ -11,7 +11,7 @@ function c35486099.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c35486099.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetControler()==tp and chkc:GetLocation()==LOCATION_GRAVE and chkc:IsSetCard(0x1034) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and chkc:IsSetCard(0x1034) end
 	if chk==0 then
 		if not Duel.IsExistingTarget(Card.IsSetCard,tp,LOCATION_GRAVE,0,1,nil,0x1034) then return false end
 		if e:GetHandler():IsLocation(LOCATION_HAND) then
@@ -31,6 +31,7 @@ function c35486099.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
 	if sg:GetCount()>0 then
 		if sg:GetCount()>ft then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 			local rg=sg:Select(tp,ft,ft,nil)
 			sg=rg
 		end
@@ -46,6 +47,6 @@ function c35486099.activate(e,tp,eg,ep,ev,re,r,rp)
 			tc:RegisterEffect(e1)
 			tc=sg:GetNext()
 		end
-		Duel.RaiseEvent(sg,47408488,e,0,tp,0,0)
+		Duel.RaiseEvent(sg,EVENT_CARD+47408488,e,0,tp,0,0)
 	end
 end

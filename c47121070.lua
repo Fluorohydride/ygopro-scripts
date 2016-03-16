@@ -33,7 +33,7 @@ function c47121070.tfop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0x1fc0000)
 		e1:SetValue(TYPE_SPELL+TYPE_CONTINUOUS)
 		tc:RegisterEffect(e1)
-		Duel.RaiseEvent(tc,47408488,e,0,tp,0,0)
+		Duel.RaiseEvent(tc,EVENT_CARD+47408488,e,0,tp,0,0)
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
