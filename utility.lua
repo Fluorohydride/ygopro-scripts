@@ -113,15 +113,16 @@ function Auxiliary.NonTuner(f,a,b,c)
 			end
 end
 --Synchro monster, 1 tuner + n or more monsters
-function Auxiliary.AddSynchroProcedure(c,f1,f2,ct)
+function Auxiliary.AddSynchroProcedure(c,f1,f2,ct,maxc)
+	local mct=maxc or 99
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(Auxiliary.SynCondition(f1,f2,ct,99))
-	e1:SetTarget(Auxiliary.SynTarget(f1,f2,ct,99))
-	e1:SetOperation(Auxiliary.SynOperation(f1,f2,ct,99))
+	e1:SetCondition(Auxiliary.SynCondition(f1,f2,ct,mct))
+	e1:SetTarget(Auxiliary.SynTarget(f1,f2,ct,mct))
+	e1:SetOperation(Auxiliary.SynOperation(f1,f2,ct,mct))
 	e1:SetValue(SUMMON_TYPE_SYNCHRO)
 	c:RegisterEffect(e1)
 end
