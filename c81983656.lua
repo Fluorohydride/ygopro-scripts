@@ -27,7 +27,7 @@ function c81983656.initial_effect(c)
 	c:RegisterEffect(e2)
 	--change effect target
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_QUICK_O)
+	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetCode(EVENT_CHAINING)
 	e3:SetRange(LOCATION_MZONE)

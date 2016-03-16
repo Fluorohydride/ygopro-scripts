@@ -3,7 +3,7 @@ function c50412166.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(50412166,0))
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_QUICK_O)
+	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c50412166.condition)

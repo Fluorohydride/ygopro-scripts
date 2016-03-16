@@ -16,7 +16,7 @@ function c53262004.initial_effect(c)
 	--negate
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_QUICK_O)
+	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e2:SetRange(LOCATION_MZONE)

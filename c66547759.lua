@@ -22,7 +22,7 @@ function c66547759.initial_effect(c)
 	--negate
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_NEGATE)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_QUICK_F)
+	e3:SetType(EFFECT_TYPE_QUICK_F)
 	e3:SetCode(EVENT_CHAINING)
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e3:SetRange(LOCATION_MZONE)

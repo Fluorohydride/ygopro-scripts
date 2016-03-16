@@ -3,7 +3,7 @@ function c58242947.initial_effect(c)
 	--copy trap
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(58242947,0))
-	e1:SetType(EFFECT_TYPE_QUICK_O+EFFECT_TYPE_FIELD)
+	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,0x1e1)

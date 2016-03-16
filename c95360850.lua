@@ -3,7 +3,7 @@ function c95360850.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(95360850,0))
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_QUICK_O)
+	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCondition(c95360850.atkcon)

@@ -56,7 +56,7 @@ function c38643567.operation(e,tp,eg,ep,ev,re,r,rp)
 		--negate
 		local e4=Effect.CreateEffect(c)
 		e4:SetDescription(aux.Stringid(38643567,0))
-		e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_QUICK_O)
+		e4:SetType(EFFECT_TYPE_QUICK_O)
 		e4:SetCategory(CATEGORY_DISABLE)
 		e4:SetCode(EVENT_CHAINING)
 		e4:SetRange(LOCATION_SZONE)
