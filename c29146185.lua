@@ -17,7 +17,7 @@ function c29146185.initial_effect(c)
 	e2:SetDescription(aux.Stringid(29146185,1))
 	e2:SetCategory(CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCode(EVENT_CARD+29146185)
+	e2:SetCode(EVENT_CUSTOM+29146185)
 	e2:SetCost(c29146185.descost)
 	e2:SetTarget(c29146185.destg)
 	e2:SetOperation(c29146185.desop)
@@ -54,7 +54,7 @@ function c29146185.retop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SendtoHand(g,nil,REASON_EFFECT)>0 then
 		Duel.ConfirmCards(1-tp,g)
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
-			Duel.RaiseSingleEvent(c,EVENT_CARD+29146185,re,r,rp,0,0)
+			Duel.RaiseSingleEvent(c,EVENT_CUSTOM+29146185,re,r,rp,0,0)
 		end
 	end
 end

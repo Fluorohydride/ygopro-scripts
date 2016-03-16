@@ -19,7 +19,7 @@ function c32835363.initial_effect(c)
 	e2:SetDescription(aux.Stringid(32835363,0))
 	e2:SetCategory(CATEGORY_DAMAGE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e2:SetCode(EVENT_CARD+32835363)
+	e2:SetCode(EVENT_CUSTOM+32835363)
 	e2:SetTarget(c32835363.damtg)
 	e2:SetOperation(c32835363.damop)
 	c:RegisterEffect(e2)
@@ -43,7 +43,7 @@ function c32835363.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return evt_p~=PLAYER_NONE
 end
 function c32835363.regop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CARD+32835363,e,0,tp,e:GetLabel(),0)
+	Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+32835363,e,0,tp,e:GetLabel(),0)
 end
 function c32835363.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end

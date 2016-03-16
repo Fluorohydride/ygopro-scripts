@@ -47,7 +47,7 @@ function c69954399.initial_effect(c)
 	e6:SetDescription(aux.Stringid(69954399,1))
 	e6:SetCategory(CATEGORY_TOHAND)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e6:SetCode(EVENT_CARD+69954400)
+	e6:SetCode(EVENT_CUSTOM+69954400)
 	e6:SetTarget(c69954399.rettg)
 	e6:SetOperation(c69954399.retop)
 	c:RegisterEffect(e6)
@@ -87,7 +87,7 @@ end
 function c69954399.desop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler():GetEquipTarget()
 	if ec and ec:IsRelateToEffect(e) and Duel.Destroy(ec,REASON_EFFECT)~=0 then
-		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CARD+69954400,e,0,0,0,0)
+		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+69954400,e,0,0,0,0)
 	end
 end
 function c69954399.rettg(e,tp,eg,ep,ev,re,r,rp,chk)

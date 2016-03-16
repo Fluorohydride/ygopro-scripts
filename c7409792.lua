@@ -22,7 +22,7 @@ function c7409792.initial_effect(c)
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_EVENT_PLAYER)
-	e3:SetCode(EVENT_CARD+7409792)
+	e3:SetCode(EVENT_CUSTOM+7409792)
 	e3:SetTarget(c7409792.target)
 	e3:SetOperation(c7409792.operation)
 	c:RegisterEffect(e3)
@@ -34,7 +34,7 @@ function c7409792.spcon(e,c)
 end
 function c7409792.trigop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1 then
-		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CARD+7409792,e,r,rp,1-tp,0)
+		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+7409792,e,r,rp,1-tp,0)
 	end
 end
 function c7409792.filter(c,e,tp)

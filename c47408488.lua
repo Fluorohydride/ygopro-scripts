@@ -11,7 +11,7 @@ function c47408488.initial_effect(c)
 	e2:SetDescription(aux.Stringid(47408488,0))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCode(EVENT_CARD+47408488)
+	e2:SetCode(EVENT_CUSTOM+47408488)
 	e2:SetOperation(c47408488.ctop)
 	c:RegisterEffect(e2)
 	--equip
@@ -72,6 +72,6 @@ function c47408488.plop(e,tp,eg,ep,ev,re,r,rp)
 			tc:RegisterEffect(e1)
 			tc=g:GetNext()
 		end
-		Duel.RaiseEvent(g,EVENT_CARD+47408488,e,0,tp,0,0)
+		Duel.RaiseEvent(g,EVENT_CUSTOM+47408488,e,0,tp,0,0)
 	end
 end

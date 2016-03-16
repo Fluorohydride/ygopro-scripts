@@ -21,7 +21,7 @@ function c75782277.initial_effect(c)
 	e4:SetDescription(aux.Stringid(75782277,0))
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_EVENT_PLAYER)
-	e4:SetCode(EVENT_CARD+75782277)
+	e4:SetCode(EVENT_CUSTOM+75782277)
 	e4:SetTarget(c75782277.target)
 	e4:SetOperation(c75782277.operation)
 	c:RegisterEffect(e4)
@@ -48,8 +48,8 @@ function c75782277.check(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc=eg:GetNext()
 	end
-	if tp1 then Duel.RaiseSingleEvent(c,EVENT_CARD+75782277,e,r,rp,tp,0) end
-	if tp2 then Duel.RaiseSingleEvent(c,EVENT_CARD+75782277,e,r,rp,1-tp,0) end
+	if tp1 then Duel.RaiseSingleEvent(c,EVENT_CUSTOM+75782277,e,r,rp,tp,0) end
+	if tp2 then Duel.RaiseSingleEvent(c,EVENT_CUSTOM+75782277,e,r,rp,1-tp,0) end
 end
 function c75782277.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()

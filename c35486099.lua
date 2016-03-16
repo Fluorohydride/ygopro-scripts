@@ -47,6 +47,6 @@ function c35486099.activate(e,tp,eg,ep,ev,re,r,rp)
 			tc:RegisterEffect(e1)
 			tc=sg:GetNext()
 		end
-		Duel.RaiseEvent(sg,EVENT_CARD+47408488,e,0,tp,0,0)
+		Duel.RaiseEvent(sg,EVENT_CUSTOM+47408488,e,0,tp,0,0)
 	end
 end

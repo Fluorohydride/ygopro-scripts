@@ -9,7 +9,7 @@ function c18114794.initial_effect(c)
 	e2:SetDescription(aux.Stringid(18114794,0))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetRange(LOCATION_FZONE)
-	e2:SetCode(EVENT_CARD+18114794)
+	e2:SetCode(EVENT_CUSTOM+18114794)
 	e2:SetCondition(c18114794.condition)
 	e2:SetOperation(c18114794.operation)
 	c:RegisterEffect(e2)
@@ -50,7 +50,7 @@ function c18114794.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if p1 then
 		c18114794[turnp]=c18114794[turnp]+1
 		if c18114794[turnp]==3 then
-			Duel.RaiseEvent(e:GetHandler(),EVENT_CARD+18114794,e,0,0,0,0)
+			Duel.RaiseEvent(e:GetHandler(),EVENT_CUSTOM+18114794,e,0,0,0,0)
 		end
 	end
 end

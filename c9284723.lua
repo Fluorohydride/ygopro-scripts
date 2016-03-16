@@ -35,7 +35,7 @@ function c9284723.operation(e,tp,eg,ep,ev,re,r,rp)
 		local atk=tc:GetAttack()
 		tc:AddCounter(0x9,2)
 		if atk>0 and tc:GetAttack()==0 then
-			Duel.RaiseEvent(tc,EVENT_CARD+54306223,e,0,0,0,0)
+			Duel.RaiseEvent(tc,EVENT_CUSTOM+54306223,e,0,0,0,0)
 		end
 	end
 end

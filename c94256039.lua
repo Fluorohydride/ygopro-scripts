@@ -25,7 +25,7 @@ function c94256039.initial_effect(c)
 	e4:SetDescription(aux.Stringid(94256039,0))
 	e4:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e4:SetCode(EVENT_CARD+94256039)
+	e4:SetCode(EVENT_CUSTOM+94256039)
 	e4:SetTarget(c94256039.damtg)
 	e4:SetOperation(c94256039.damop)
 	c:RegisterEffect(e4)
@@ -45,7 +45,7 @@ function c94256039.acop(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and c:GetFlagEffect(1)>0 then
 		c:AddCounter(0x3001,1)
 		if c:GetCounter(0x3001)==4 then
-			Duel.RaiseSingleEvent(c,EVENT_CARD+94256039,re,0,0,p,0)
+			Duel.RaiseSingleEvent(c,EVENT_CUSTOM+94256039,re,0,0,p,0)
 		end
 	end
 end
