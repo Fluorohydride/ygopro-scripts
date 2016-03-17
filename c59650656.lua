@@ -26,8 +26,9 @@ function c59650656.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c59650656.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x7b) and c:IsType(TYPE_XYZ)
-		and c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+		and c:IsReason(REASON_DESTROY) and (c:IsReason(REASON_EFFECT) or (c:IsReason(REASON_BATTLE) and Duel.GetAttacker():IsControler(1-tp)))
+		and c:IsSetCard(0x7b) and c:IsType(TYPE_XYZ)
 end
 function c59650656.descon(e,tp,eg,ep,ev,re,r,rp)
 	return rp~=tp and eg:IsExists(c59650656.cfilter,1,nil,tp)
