@@ -6,6 +6,7 @@ function c26202165.initial_effect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_TO_GRAVE)
+	e1:SetCountLimit(1,26202165)
 	e1:SetCondition(c26202165.condition)
 	e1:SetTarget(c26202165.target)
 	e1:SetOperation(c26202165.operation)
@@ -27,5 +28,20 @@ function c26202165.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
+		local tc=g:GetFirst()
+		if tc:IsLocation(LOCATION_HAND) then
+			local e1=Effect.CreateEffect(e:GetHandler())
+			e1:SetType(EFFECT_TYPE_FIELD)
+			e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+			e1:SetCode(EFFECT_CANNOT_ACTIVATE)
+			e1:SetTargetRange(1,0)
+			e1:SetValue(c26202165.aclimit)
+			e1:SetLabel(tc:GetCode())
+			e1:SetReset(RESET_PHASE+PHASE_END)
+			Duel.RegisterEffect(e1,tp)
+		end
 	end
+end
+function c26202165.aclimit(e,re,tp)
+	return re:GetHandler():IsCode(e:GetLabel())
 end
