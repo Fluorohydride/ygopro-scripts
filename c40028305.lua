@@ -76,6 +76,6 @@ function c40028305.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
-		Duel.SendtoGrave(c,REASON_EFFECT)
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end

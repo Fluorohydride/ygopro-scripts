@@ -38,9 +38,6 @@ function c58786132.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58786132.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsRelateToEffect(e) then
-		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
-	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
@@ -49,6 +46,11 @@ function c58786132.spop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTargetRange(1,0)
 	e1:SetTarget(c58786132.splimit)
 	Duel.RegisterEffect(e1,tp)
+	local c=e:GetHandler()
+	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
+		Duel.SendtoGrave(c,REASON_RULE)
+	end
 end
 function c58786132.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsLocation(LOCATION_EXTRA)

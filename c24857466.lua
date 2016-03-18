@@ -87,9 +87,12 @@ function c24857466.hsptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c24857466.hspop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
+	if not c:IsRelateToEffect(e) then return end
+	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local tpe=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 		Duel.RaiseSingleEvent(c,EVENT_CUSTOM+24857466,e,0,0,tp,tpe)
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c24857466.damcon(e,tp,eg,ep,ev,re,r,rp)

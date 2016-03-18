@@ -51,5 +51,7 @@ function c24731453.spop(e,tp,eg,ep,ev,re,r,rp)
 			local ct=Duel.Destroy(g,REASON_EFFECT)
 			Duel.Damage(1-tp,ct*200,REASON_EFFECT)
 		end
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
