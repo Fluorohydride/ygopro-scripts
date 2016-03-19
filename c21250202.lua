@@ -73,7 +73,7 @@ function c21250202.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c21250202.disfilter(c)
-	return c:IsFaceup() and c:GetSummonLocation()==LOCATION_EXTRA and not c:IsDisabled()
+	return aux.disfilter1(c) and c:GetSummonLocation()==LOCATION_EXTRA
 end
 function c21250202.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c21250202.disfilter(chkc) end
