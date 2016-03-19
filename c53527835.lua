@@ -13,13 +13,18 @@ function c53527835.initial_effect(c)
 	e2:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
 	e2:SetCondition(c53527835.atkcon)
 	e2:SetTarget(c53527835.atktg)
-	e2:SetValue(1000)
+	e2:SetValue(c53527835.atkval)
 	c:RegisterEffect(e2)
 end
 function c53527835.atkcon(e)
 	return Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL and Duel.GetAttackTarget()
 end
 function c53527835.atktg(e,c)
+	return c==Duel.GetAttacker() and c:IsSetCard(0xc008)
+end
+function c53527835.atkval(e,c)
 	local d=Duel.GetAttackTarget()
-	return c==Duel.GetAttacker() and c:IsSetCard(0xc008) and c:GetAttack()<d:GetAttack()
+	if c:GetAttack()<d:GetAttack() then
+		return 1000
+	else return 0 end
 end
