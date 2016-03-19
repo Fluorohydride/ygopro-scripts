@@ -43,8 +43,8 @@ end
 function c83303851.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
+	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
@@ -89,9 +89,10 @@ function c83303851.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()>0 and Duel.Destroy(g,REASON_EFFECT)~=0 then
+		local c=e:GetHandler()
 		if not c:IsRelateToEffect(e) then return end
-		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 and c:IsLocation(LOCATION_HAND) then
+		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+			and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 			Duel.SendtoGrave(c,REASON_RULE)
 		end
 	end

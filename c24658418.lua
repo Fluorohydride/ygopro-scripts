@@ -34,8 +34,8 @@ end
 function c24658418.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,1,tp,tp,false,false,POS_FACEUP_DEFENCE)~=0 then
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
+	if Duel.SpecialSummon(c,1,tp,tp,false,false,POS_FACEUP_DEFENCE)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end

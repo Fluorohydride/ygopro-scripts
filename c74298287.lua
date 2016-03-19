@@ -41,8 +41,8 @@ function c74298287.spop1(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsExistingMatchingCard(c74298287.cfilter,tp,LOCATION_MZONE,0,1,nil) then return end
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
+	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end

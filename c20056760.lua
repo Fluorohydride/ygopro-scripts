@@ -54,8 +54,8 @@ function c20056760.spop1(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Destroy(g,REASON_EFFECT)~=0 then
 		local c=e:GetHandler()
 		if not c:IsRelateToEffect(e) then return end
-		if Duel.SpecialSummon(c,1,tp,tp,false,false,POS_FACEUP)~=0 then
-		elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 and c:IsLocation(LOCATION_HAND) then
+		if Duel.SpecialSummon(c,1,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+			and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLocation(LOCATION_HAND) then
 			Duel.SendtoGrave(c,REASON_RULE)
 		end
 	end

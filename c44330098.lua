@@ -53,7 +53,8 @@ function c44330098.sumop(e,tp,eg,ep,ev,re,r,rp)
 	if bit.band(r,REASON_BATTLE)~=0 then sumtype=2 end
 	if Duel.SpecialSummon(c,sumtype,tp,tp,false,false,POS_FACEUP)~=0 then
 		e:SetLabel(ev)
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end

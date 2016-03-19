@@ -58,7 +58,8 @@ function c66752837.spop(e,tp,eg,ep,ev,re,r,rp)
 		if sg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,sg)
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 and c:IsLocation(LOCATION_HAND) then
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLocation(LOCATION_HAND) then
 		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
