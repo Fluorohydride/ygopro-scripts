@@ -183,18 +183,7 @@ function Auxiliary.XyzAlterFilter(c,alterf,xyzc)
 	return alterf(c) and c:IsCanBeXyzMaterial(xyzc)
 end
 --Xyz monster, lv k*n
---set c.xyz_filter, c.xyz_count
 function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,desc,maxct,op)
-	if c.xyz_filter==nil then
-		local code=c:GetOriginalCode()
-		local mt=_G["c" .. code]
-		if f then
-			mt.xyz_filter=function(mc) return f(mc) and mc:IsXyzLevel(c,lv) end
-		else
-			mt.xyz_filter=function(mc) return mc:IsXyzLevel(c,lv) end
-		end
-		mt.xyz_count=ct
-	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)

@@ -30,7 +30,6 @@ function c85004150.initial_effect(c)
 	e3:SetCode(EFFECT_PIERCE)
 	c:RegisterEffect(e3)
 end
-c85004150.xyz_count=2
 function c85004150.ovfilter(c,tp,xyzc)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and (c:GetRank()==5 or c:GetRank()==6) and c:IsRace(RACE_INSECT) and c:IsCanBeXyzMaterial(xyzc)
 		and c:CheckRemoveOverlayCard(tp,2,REASON_COST)

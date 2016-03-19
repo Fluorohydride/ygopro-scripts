@@ -48,14 +48,8 @@ function c52653092.initial_effect(c)
 	e6:SetCost(c52653092.actcost)
 	e6:SetOperation(c52653092.actop)
 	c:RegisterEffect(e6)
-	if not c52653092.xyz_filter then
-		c52653092.xyz_filter=function(mc)
-			return mc:IsType(TYPE_XYZ) and mc:IsSetCard(0x48) and mc:IsCanBeXyzMaterial(c)
-		end
-	end
 end
 c52653092.xyz_number=0
-c52653092.xyz_count=3
 function c52653092.cfilter(c)
 	return c:IsSetCard(0x95) and c:GetType()==TYPE_SPELL and c:IsDiscardable()
 end

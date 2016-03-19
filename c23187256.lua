@@ -33,14 +33,8 @@ function c23187256.initial_effect(c)
 	local e4=e3:Clone()
 	e4:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	c:RegisterEffect(e4)
-	if not c23187256.xyz_filter then
-		c23187256.xyz_filter=function(mc)
-			return mc:IsType(TYPE_XYZ) and mc:IsSetCard(0x48) and mc:GetOverlayCount()>0 and mc:IsCanBeXyzMaterial(c)
-		end
-	end
 end
 c23187256.xyz_number=93
-c23187256.xyz_count=2
 function c23187256.mfilter(c,xyzc)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsSetCard(0x48) and c:GetOverlayCount()>0 and c:IsCanBeXyzMaterial(xyzc)
 end

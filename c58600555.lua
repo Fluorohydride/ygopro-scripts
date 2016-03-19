@@ -36,7 +36,6 @@ function c58600555.initial_effect(c)
 	e3:SetOperation(c58600555.operation)
 	c:RegisterEffect(e3)
 end
-c58600555.xyz_count=2
 function c58600555.ovfilter(c,tp,xyzc)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and (c:GetRank()==3 or c:GetRank()==4) and c:IsRace(RACE_INSECT) and c:IsCanBeXyzMaterial(xyzc)
 		and c:CheckRemoveOverlayCard(tp,2,REASON_COST)
