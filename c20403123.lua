@@ -38,7 +38,7 @@ function c20403123.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
-function c20403123.desfilter(c)
+function c20403123.filter(c)
 	return c:IsFaceup() and c:IsDestructable()
 end
 function c20403123.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

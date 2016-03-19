@@ -24,13 +24,16 @@ function c55553602.initial_effect(c)
 	e3:SetOperation(c55553602.operation)
 	c:RegisterEffect(e3)
 end
+function c55553602.atkfilter(c)
+	return c:IsFaceup() and c:GetRace()~=0
+end
 function c55553602.atkvalue(e,c)
-	local g=Duel.GetMatchingGroup(Card.IsFaceup,c:GetControler(),LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(c55553602.atkfilter,c:GetControler(),LOCATION_MZONE,0,nil)
 	local ct=g:GetClassCount(Card.GetRace)
 	return ct*200
 end
 function c55553602.confilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x9f)
+	return c:IsFaceup() and c:IsSetCard(0x9f) and c:GetRace()~=0
 end
 function c55553602.condition(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c55553602.confilter,tp,LOCATION_MZONE,0,nil)
