@@ -43,21 +43,10 @@ end
 function c92736188.adop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		local atk=tc:GetBaseAttack()
-		local def=tc:GetBaseDefence()
 		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_SET_BASE_ATTACK)
-		e1:SetValue(def)
+		e1:SetCode(EFFECT_SWAP_BASE_AD)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
-		local e2=Effect.CreateEffect(e:GetHandler())
-		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e2:SetType(EFFECT_TYPE_SINGLE)
-		e2:SetCode(EFFECT_SET_BASE_DEFENCE)
-		e2:SetValue(atk)
-		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
-		tc:RegisterEffect(e2)
 	end
 end
