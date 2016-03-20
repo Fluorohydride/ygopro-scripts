@@ -58,6 +58,7 @@ function c10000090.spcon1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c10000090.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
+	Duel.SetChainLimit(aux.FALSE)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c10000090.spop1(e,tp,eg,ep,ev,re,r,rp)
