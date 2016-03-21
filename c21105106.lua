@@ -93,10 +93,10 @@ end
 function c21105106.filter(c,tp)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
 end
-function c21105106.ritual_custom_condition(c,mg)
+function c21105106.ritual_custom_condition(c,mg,ft)
 	local tp=c:GetControler()
 	local g=mg:Filter(c21105106.filter,c,tp)
-	return g:IsExists(c21105106.ritfilter1,1,nil,c:GetLevel(),g)
+	return ft>-3 and g:IsExists(c21105106.ritfilter1,1,nil,c:GetLevel(),g)
 end
 function c21105106.ritfilter1(c,lv,mg)
 	lv=lv-c:GetLevel()

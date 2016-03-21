@@ -25,14 +25,14 @@ function c14735698.filter(c,e,tp,m1,m2,ft)
 		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m1:Filter(Card.IsCanBeRitualMaterial,c,c)
 	mg:Merge(m2)
-	if c:IsCode(21105106) then return c:ritual_custom_condition(mg) end
+	if c:IsCode(21105106) then return c:ritual_custom_condition(mg,ft) end
 	if c.mat_filter then
 		mg=mg:Filter(c.mat_filter,nil)
 	end
 	if ft>0 then
 		return mg:CheckWithSumEqual(Card.GetRitualLevel,c:GetLevel(),1,99,c)
 	else
-		return mg:IsExists(c14735698.mfilterf,1,nil,tp,mg,c)
+		return ft>-1 and mg:IsExists(c14735698.mfilterf,1,nil,tp,mg,c)
 	end
 end
 function c14735698.mfilterf(c,tp,mg,rc)
@@ -49,7 +49,7 @@ function c14735698.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		local mg1=Duel.GetRitualMaterial(tp)
 		local mg2=Duel.GetMatchingGroup(c14735698.mfilter,tp,LOCATION_GRAVE,0,nil)
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-		return ft>-1 and Duel.IsExistingMatchingCard(c14735698.filter,tp,LOCATION_HAND,0,1,nil,e,tp,mg1,mg2,ft)
+		return Duel.IsExistingMatchingCard(c14735698.filter,tp,LOCATION_HAND,0,1,nil,e,tp,mg1,mg2,ft)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
