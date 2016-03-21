@@ -63,7 +63,7 @@ end
 function c23160024.mfilterf(c,tp,mg,rc)
 	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) then
 		Duel.SetSelectedCard(c)
-		return mg:CheckWithSumEqual(Card.GetRitualLevel,8,0,99,c)
+		return mg:CheckWithSumEqual(Card.GetRitualLevel,8,0,99,rc)
 	else return false end
 end
 function c23160024.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

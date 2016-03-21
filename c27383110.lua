@@ -28,13 +28,13 @@ function c27383110.filter(c,e,tp,m,ft)
 	if ft>0 then
 		return mg:CheckWithSumEqual(Card.GetRitualLevel,6,1,99,c)
 	else
-		return mg:IsExists(c27383110.mfilterf,1,nil,tp,mg,rc)
+		return mg:IsExists(c27383110.mfilterf,1,nil,tp,mg,c)
 	end
 end
 function c27383110.mfilterf(c,tp,mg,rc)
 	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) then
 		Duel.SetSelectedCard(c)
-		return mg:CheckWithSumEqual(Card.GetRitualLevel,6,0,99,c)
+		return mg:CheckWithSumEqual(Card.GetRitualLevel,6,0,99,rc)
 	else return false end
 end
 function c27383110.target(e,tp,eg,ep,ev,re,r,rp,chk)
