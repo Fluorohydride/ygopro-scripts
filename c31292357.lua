@@ -39,7 +39,7 @@ function c31292357.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c31292357.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:AddCounter(0x3036,1)~=0 then
+	if c:IsRelateToEffect(e) and c:GetCounter(0x3036)~=3 and c:AddCounter(0x3036,1)~=0 then
 		local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)
