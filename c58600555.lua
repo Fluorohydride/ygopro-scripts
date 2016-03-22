@@ -32,6 +32,7 @@ function c58600555.initial_effect(c)
 	e3:SetCountLimit(1)
 	e3:SetCode(EVENT_CHANGE_POS)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
+	e3:SetCondition(c58600555.condition)
 	e3:SetTarget(c58600555.target)
 	e3:SetOperation(c58600555.operation)
 	c:RegisterEffect(e3)
@@ -139,6 +140,14 @@ function c58600555.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
 	end
+end
+function c58600555.cfilter(c)
+	local np=c:GetPosition()
+	local pp=c:GetPreviousPosition()
+	return ((np<3 and pp>3) or (pp<3 and np>3))
+end
+function c58600555.condition(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c58600555.cfilter,1,nil)
 end
 function c58600555.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsRace,tp,LOCATION_GRAVE,0,1,nil,RACE_INSECT) end
