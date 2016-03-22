@@ -34,6 +34,22 @@ function c84171830.initial_effect(c)
 	e4:SetTarget(c84171830.lvtg)
 	e4:SetOperation(c84171830.lvop)
 	c:RegisterEffect(e4)
+	--prevent be material
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_FIELD)
+	e5:SetCode(EFFECT_CANNOT_BE_FUSION_MATERIAL)
+	e5:SetRange(LOCATION_FZONE)
+	e5:SetTargetRange(0,LOCATION_MZONE)
+	e5:SetCondition(c84171830.matcon)
+	e5:SetTarget(c84171830.mattg)
+	e5:SetValue(1)
+	c:RegisterEffect(e5)
+	local e6=e5:Clone()
+	e6:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
+	c:RegisterEffect(e6)
+	local e7=e6:Clone()
+	e7:SetCode(EFFECT_CANNOT_BE_XYZ_MATERIAL)
+	c:RegisterEffect(e7)
 end
 function c84171830.splimit(e,c)
 	return c:IsLocation(LOCATION_EXTRA)
@@ -76,4 +92,13 @@ function c84171830.lvop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0xfe0000+RESET_PHASE+PHASE_END)
 		g:GetFirst():RegisterEffect(e1)
 	end
+end
+function c84171830.matcon(e)
+	local tp=e:GetHandlerPlayer()
+	return Duel.GetMatchingGroupCount(c84171830.cfilter,tp,0,LOCATION_MZONE,nil)==1
+		and Duel.IsExistingMatchingCard(c84171830.cfilter,tp,LOCATION_MZONE,0,1,nil)
+end
+function c84171830.mattg(e,c)
+	local g=Duel.GetMatchingGroup(c84171830.cfilter,e:GetHandlerPlayer(),0,LOCATION_ONFIELD,nil)
+	return g:GetFirst()
 end
