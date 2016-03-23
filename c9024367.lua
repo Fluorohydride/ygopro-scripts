@@ -41,15 +41,21 @@ function c9024367.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	if bc and bc:IsRace(RACE_DRAGON) then
+		c:CreateRelation(bc,RESET_EVENT+0x1fe0000)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
+		e1:SetCondition(c9024367.discon)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE)
 		bc:RegisterEffect(e1)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetCondition(c9024367.discon)
 		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE)
 		bc:RegisterEffect(e2)
 	end
+end
+function c9024367.discon(e)
+	return e:GetOwner():IsRelateToCard(e:GetHandler())
 end
