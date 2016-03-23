@@ -117,7 +117,7 @@ function Auxiliary.AddSynchroProcedure(c,f1,f2,minc,maxc,dtc)
 	local t={f1,f2,minc,maxc or 99}
 	if not dtc then
 		t[1]=function(c)
-			return c:IsType(TYPE_TUNER) and not f1 or f1(c)
+			return c:IsType(TYPE_TUNER) and (not f1 or f1(c))
 		end
 	end
 	local e1=Effect.CreateEffect(c)
