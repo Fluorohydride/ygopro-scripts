@@ -42,8 +42,10 @@ function c83303851.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c83303851.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
-		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
+	if not c:IsRelateToEffect(e) then return end
+	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c83303851.descon(e,tp,eg,ep,ev,re,r,rp)
@@ -77,10 +79,6 @@ function c83303851.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c83303851.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
-	if g:GetCount()>0 and Duel.Destroy(g,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) then
-		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
-	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
@@ -89,6 +87,15 @@ function c83303851.desop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTarget(c83303851.splimit)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	if g:GetCount()>0 and Duel.Destroy(g,REASON_EFFECT)~=0 then
+		local c=e:GetHandler()
+		if not c:IsRelateToEffect(e) then return end
+		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+			and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+			Duel.SendtoGrave(c,REASON_RULE)
+		end
+	end
 end
 function c83303851.splimit(e,c)
 	return c:GetRace()~=RACE_FIEND

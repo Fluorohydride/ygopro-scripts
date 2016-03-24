@@ -1,4 +1,4 @@
---Alich, Malebranche of the Burning Abyss
+--彼岸の悪鬼 アリキーノ
 function c47728740.initial_effect(c)
 	--self destroy
 	local e1=Effect.CreateEffect(c)
@@ -49,9 +49,11 @@ function c47728740.sstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c47728740.ssop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.IsExistingMatchingCard(c47728740.filter,tp,LOCATION_ONFIELD,0,1,nil) then return end
-	if e:GetHandler():IsRelateToEffect(e) then
-		Duel.SpecialSummon(e:GetHandler(),0,tp,tp,false,false,POS_FACEUP)
+	local c=e:GetHandler()
+	if not c:IsRelateToEffect(e) then return end
+	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c47728740.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

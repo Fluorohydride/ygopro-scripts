@@ -45,7 +45,6 @@ function c53485634.filter(c,e,tp)
 	return c:IsRelateToEffect(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c53485634.spop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c53485634.filter,nil,e,tp)
@@ -63,6 +62,9 @@ function c53485634.spop(e,tp,eg,ep,ev,re,r,rp)
 			tc=g:GetNext()
 		end
 		Duel.SpecialSummonComplete()
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c53485634.sumcon(e,tp,eg,ep,ev,re,r,rp)

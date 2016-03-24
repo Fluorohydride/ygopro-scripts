@@ -49,7 +49,8 @@ function c66752837.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(c66752837.thfilter,tp,LOCATION_GRAVE,0,nil)
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 and e:GetLabel()==1
+	if not c:IsRelateToEffect(e) then return end
+	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 and e:GetLabel()==1
 		and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(66752837,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
@@ -57,5 +58,8 @@ function c66752837.spop(e,tp,eg,ep,ev,re,r,rp)
 		if sg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,sg)
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLocation(LOCATION_HAND) then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end

@@ -24,8 +24,12 @@ function c16947147.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c16947147.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_ATTACK)>0 then
+	if not c:IsRelateToEffect(e) then return end
+	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_ATTACK)~=0 then
 		local g=Duel.GetMatchingGroup(Card.IsPosition,tp,0,LOCATION_MZONE,nil,POS_FACEUP_ATTACK)
 		Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP) then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end

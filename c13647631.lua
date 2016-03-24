@@ -40,9 +40,9 @@ function c13647631.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c13647631.spop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
+	if not c:IsRelateToEffect(e) then return end
+	if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
 		local atk=c:GetBaseAttack()
 		local def=c:GetBaseDefence()
 		local e1=Effect.CreateEffect(c)
@@ -56,6 +56,9 @@ function c13647631.spop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(def/2)
 		c:RegisterEffect(e2)
 		Duel.SpecialSummonComplete()
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c13647631.descon(e,tp,eg,ep,ev,re,r,rp)

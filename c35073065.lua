@@ -28,7 +28,8 @@ end
 function c35073065.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ec=eg:GetFirst()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
+	if not c:IsRelateToEffect(e) then return end
+	if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
 		if ec:IsRelateToEffect(e) and ec:IsFaceup() then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
@@ -58,5 +59,8 @@ function c35073065.spop(e,tp,eg,ep,ev,re,r,rp)
 			c:RegisterEffect(e3)
 		end
 		Duel.SpecialSummonComplete()
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end

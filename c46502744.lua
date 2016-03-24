@@ -46,9 +46,13 @@ function c46502744.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c46502744.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
+	if not c:IsRelateToEffect(e) then return end
+	if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		c:RegisterFlagEffect(46502745,RESET_EVENT+0xfe0000,0,1)
 		Duel.SpecialSummonComplete()
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c46502744.remcon(e)

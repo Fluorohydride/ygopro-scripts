@@ -36,7 +36,8 @@ function c3167573.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c3167573.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if not c:IsRelateToEffect(e) then return end
+	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local e2=e:GetLabelObject()
 		if Duel.GetTurnPlayer()==tp then
 			c:RegisterFlagEffect(3167573,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,2)
@@ -45,6 +46,9 @@ function c3167573.spop(e,tp,eg,ep,ev,re,r,rp)
 			c:RegisterFlagEffect(3167573,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,1)
 			e2:SetLabel(Duel.GetTurnCount()+1)
 		end
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c3167573.descon(e,tp,eg,ep,ev,re,r,rp)

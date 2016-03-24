@@ -40,9 +40,13 @@ function c7563579.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c7563579.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if not c:IsRelateToEffect(e) then return end
+	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		Duel.BreakEffect()
 		Duel.Damage(tp,500,REASON_EFFECT)
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c7563579.spcon2(e,tp,eg,ep,ev,re,r,rp)

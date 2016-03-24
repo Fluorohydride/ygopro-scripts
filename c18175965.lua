@@ -73,8 +73,12 @@ function c18175965.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c18175965.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)>0 then
+	if not c:IsRelateToEffect(e) then return end
+	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)~=0 then
 		c:CompleteProcedure()
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c18175965.filter(c,ec)

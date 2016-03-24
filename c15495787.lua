@@ -38,8 +38,8 @@ function c15495787.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c15495787.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if e:GetHandler():IsRelateToEffect(e) then
-		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
+	if not c:IsRelateToEffect(e) then return end
+	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
@@ -49,5 +49,8 @@ function c15495787.spop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 		c:RegisterEffect(e2)
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end

@@ -55,7 +55,12 @@ end
 function c23296404.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if Duel.Destroy(g,REASON_EFFECT)~=0 then
-		Duel.SpecialSummon(e:GetHandler(),0,tp,tp,false,false,POS_FACEUP)
+		local c=e:GetHandler()
+		if not c:IsRelateToEffect(e) then return end
+		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+			and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+			Duel.SendtoGrave(c,REASON_RULE)
+		end
 	end
 end
 function c23296404.thfilter(c)
