@@ -44,12 +44,8 @@ function c65305468.initial_effect(c)
 	e7:SetRange(LOCATION_MZONE)
 	e7:SetTarget(c65305468.reptg)
 	c:RegisterEffect(e7)
-	if not c65305468.xyz_filter then
-		c65305468.xyz_filter=function(mc) return mc:IsType(TYPE_XYZ) and not mc:IsSetCard(0x48) and mc:IsCanBeXyzMaterial(c) end
-	end
 end
 c65305468.xyz_number=0
-c65305468.xyz_count=2
 function c65305468.mfilter(c,xyzc)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and not c:IsSetCard(0x48) and c:IsCanBeXyzMaterial(xyzc)
 end
