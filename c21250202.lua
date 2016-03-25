@@ -5,16 +5,17 @@ function c21250202.initial_effect(c)
 	--spsummon reg
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e1:SetCode(EVENT_BECOME_TARGET)
+	e1:SetCode(EVENT_CHAINING)
 	e1:SetRange(LOCATION_PZONE)
+	e1:SetCondition(c21250202.regcon)
 	e1:SetOperation(c21250202.regop1)
 	c:RegisterEffect(e1)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e2:SetCode(EVENT_CHAIN_SOLVED)
+	e2:SetCode(EVENT_CHAIN_NEGATED)
 	e2:SetRange(LOCATION_PZONE)
+	e2:SetCondition(c21250202.regcon)
 	e2:SetOperation(c21250202.regop2)
-	e2:SetLabelObject(e1)
 	c:RegisterEffect(e2)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
@@ -41,26 +42,26 @@ function c21250202.initial_effect(c)
 	e4:SetOperation(c21250202.disop)
 	c:RegisterEffect(e4)
 end
-function c21250202.regfilter(c)
-	return c:IsType(TYPE_PENDULUM) and c:IsType(TYPE_MONSTER) and c:IsFaceup() and c:IsSetCard(0x99)
+function c21250202.regfilter(c,tp)
+	return c:IsType(TYPE_PENDULUM) and c:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and c:IsFaceup() and c:IsSetCard(0x99)
+end
+function c21250202.regcon(e,tp,eg,ep,ev,re,r,rp)
+	if rp==tp or not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
+	local tg=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
+	return tg and tg:GetCount()==1 and c21250202.regfilter(tg:GetFirst(),tp)
 end
 function c21250202.regop1(e,tp,eg,ep,ev,re,r,rp)
-	if rp==tp or not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) or eg:GetCount()~=1
-		or not eg:IsExists(c21250202.regfilter,1,nil) then
-		e:SetLabelObject(nil)
-	else e:SetLabelObject(re) end
+	e:GetHandler():RegisterFlagEffect(21250202,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c21250202.regop2(e,tp,eg,ep,ev,re,r,rp)
-	local pe=e:GetLabelObject():GetLabelObject()
-	if pe and pe==re then
-		e:GetHandler():RegisterFlagEffect(21250202,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
-	end
+	e:GetHandler():RegisterFlagEffect(21250203,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c21250202.penfilter(c)
 	return c:IsSetCard(0x99) and c:IsType(TYPE_PENDULUM) and c:IsFaceup() and not c:IsCode(21250202) and not c:IsForbidden()
 end
 function c21250202.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(21250202)~=0
+	local c=e:GetHandler()
+	return c:GetFlagEffect(21250202)>c:GetFlagEffect(21250203)
 end
 function c21250202.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -82,7 +83,7 @@ function c21250202.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c21250202.disfilter(c)
-	return c:IsFaceup() and c:GetSummonLocation()==LOCATION_EXTRA and not c:IsDisabled()
+	return aux.disfilter1(c) and c:GetSummonLocation()==LOCATION_EXTRA
 end
 function c21250202.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c21250202.disfilter(chkc) end
