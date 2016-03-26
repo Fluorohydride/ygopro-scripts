@@ -65,7 +65,6 @@ function c44330098.sumtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
-	Duel.RegisterFlagEffect(tp,EFFECT_SPSUM_EFFECT_ACTIVATED,RESET_PHASE+PHASE_END,EFFECT_FLAG_OATH,1)
 end
 function c44330098.sumop2(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
