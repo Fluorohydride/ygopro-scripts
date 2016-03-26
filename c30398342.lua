@@ -1,6 +1,5 @@
 --竜星の具象化
 function c30398342.initial_effect(c)
-	Duel.EnableGlobalFlag(GLOBALFLAG_DELAYED_QUICKEFFECT)
 	--Activate
 	local e0=Effect.CreateEffect(c)
 	e0:SetDescription(aux.Stringid(30398342,1))

@@ -1,6 +1,5 @@
 --EMリバイバル
 function c5672432.initial_effect(c)
-	Duel.EnableGlobalFlag(GLOBALFLAG_DELAYED_QUICKEFFECT)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

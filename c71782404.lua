@@ -1,6 +1,5 @@
 --レッドアイズ・バーン
 function c71782404.initial_effect(c)
-	Duel.EnableGlobalFlag(GLOBALFLAG_DELAYED_QUICKEFFECT)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DAMAGE)

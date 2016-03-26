@@ -1,6 +1,5 @@
 --渇きの風
 function c28265983.initial_effect(c)
-	Duel.EnableGlobalFlag(GLOBALFLAG_DELAYED_QUICKEFFECT)
 	--activate
 	local e0=Effect.CreateEffect(c)
 	e0:SetDescription(aux.Stringid(28265983,0))

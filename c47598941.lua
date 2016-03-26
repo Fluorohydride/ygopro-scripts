@@ -1,6 +1,5 @@
 --アモルファージ・ライシス
 function c47598941.initial_effect(c)
-	Duel.EnableGlobalFlag(GLOBALFLAG_DELAYED_QUICKEFFECT)
 	--Activate
 	local e0=Effect.CreateEffect(c)
 	e0:SetDescription(aux.Stringid(47598941,0))

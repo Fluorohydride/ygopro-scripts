@@ -1,6 +1,5 @@
 --宝玉の集結
 function c87259933.initial_effect(c)
-	Duel.EnableGlobalFlag(GLOBALFLAG_DELAYED_QUICKEFFECT)
 	--Activate
 	local e0=Effect.CreateEffect(c)
 	e0:SetDescription(aux.Stringid(87259933,0))
