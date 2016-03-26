@@ -200,8 +200,8 @@ CHAININFO_CHAIN_ID				=0x800	--连锁ID
 CHAININFO_TYPE					=0x1000	--连锁类型
 CHAININFO_EXTTYPE				=0x2000	--连锁额外类型
 --========== Reset ==========	--重置条件（注意：重置条件可以多个相加）
-RESET_SELF_TURN		=0x10000000			--自己回合结束重置
-RESET_OPPO_TURN		=0x20000000			--对方回合结束重置
+RESET_SELF_TURN		=0x10000000			--自己回合的階段重置
+RESET_OPPO_TURN		=0x20000000			--对方回合的階段重置
 RESET_PHASE			=0x40000000			--阶段结束重置(一般和上面那些阶段配合使用)
 RESET_CHAIN			=0x80000000			--连锁结束重置
 RESET_EVENT			=0x1000				--指定的條件下重置(一般和下面这些事件配合使用)
