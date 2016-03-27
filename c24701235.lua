@@ -1,7 +1,7 @@
 --和魂
 function c24701235.initial_effect(c)
 	--spirit
-	aux.EnableSpiritReturn(c)
+	aux.EnableSpiritReturn(c,EVENT_SUMMON_SUCCESS,EVENT_FLIP)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)

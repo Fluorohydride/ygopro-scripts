@@ -2,7 +2,7 @@
 function c82841979.initial_effect(c)
 	c:EnableReviveLimit()
 	--spirit return
-	aux.EnableSpiritReturn(c,true)
+	aux.EnableSpiritReturn(c,EVENT_SPSUMMON_SUCCESS)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
