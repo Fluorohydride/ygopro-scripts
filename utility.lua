@@ -1629,7 +1629,7 @@ function Auxiliary.damcon1(e,tp,eg,ep,ev,re,r,rp)
 	ex,cg,ct,cp,cv=Duel.GetOperationInfo(ev,CATEGORY_RECOVER)
 	return ex and (cp==tp or cp==PLAYER_ALL) and rr and not Duel.IsPlayerAffectedByEffect(tp,EFFECT_NO_EFFECT_DAMAGE)
 end
---filter for the immune effetc of qli monsters
+--filter for the immune effect of qli monsters
 function Auxiliary.qlifilter(e,te)
 	if te:IsActiveType(TYPE_MONSTER) and te:IsActivated() then
 		local lv=e:GetHandler():GetLevel()
@@ -1646,4 +1646,56 @@ end
 --filter for necro_valley test
 function Auxiliary.nvfilter(c)
 	return not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+end
+--register effect of return to hand for Spirit monsters
+function Auxiliary.EnableSpiritReturn(c,sponly)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetOperation(Auxiliary.sprtreg)
+	if not sponly then
+		e1:SetCode(EVENT_SUMMON_SUCCESS)
+		c:RegisterEffect(e1)
+		local e2=e1:Clone()
+		e2:SetCode(EVENT_FLIP)
+		c:RegisterEffect(e2)
+	else
+		e1:SetCode(EVENT_SPSUMMON_SUCCESS)
+		c:RegisterEffect(e1)
+	end
+end
+function Auxiliary.sprtreg(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e1:SetDescription(1104)
+	e1:SetCategory(CATEGORY_TOHAND)
+	e1:SetCode(EVENT_PHASE+PHASE_END)
+	e1:SetRange(LOCATION_MZONE)
+	e1:SetCountLimit(1)
+	e1:SetReset(RESET_EVENT+0x1ee0000+RESET_PHASE+PHASE_END)
+	e1:SetCondition(Auxiliary.sprtcon)
+	e1:SetTarget(Auxiliary.sprttg)
+	e1:SetOperation(Auxiliary.sprtop)
+	c:RegisterEffect(e1)
+	local e2=e1:Clone()
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	c:RegisterEffect(e2)
+end
+function Auxiliary.sprtcon(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	if c:IsHasEffect(EFFECT_SPIRIT_DONOT_RETURN) then return false end
+	if e:IsHasType(EFFECT_TYPE_TRIGGER_F) then
+		return not c:IsHasEffect(EFFECT_SPIRIT_MAYNOT_RETURN)
+	else return c:IsHasEffect(EFFECT_SPIRIT_MAYNOT_RETURN) end
+end
+function Auxiliary.sprttg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetHandler(),1,0,0)
+end
+function Auxiliary.sprtop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) and c:IsFaceup() then
+		Duel.SendtoHand(c,nil,REASON_EFFECT)
+	end
 end
