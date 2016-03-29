@@ -42,32 +42,16 @@ function c81167171.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c81167171.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_DAMAGE_CALCULATING)
-	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
-	e1:SetOperation(c81167171.batop)
-	Duel.RegisterEffect(e1,tp)
-end
-function c81167171.batop(e,tp,eg,ep,ev,re,r,rp)
-	local s=Duel.GetAttacker()
-	local o=Duel.GetAttackTarget()
-	if Duel.GetTurnPlayer()~=tp then
-		s=Duel.GetAttackTarget()
-		o=Duel.GetAttacker()
-	end
-	if not o then return end
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_NO_BATTLE_DAMAGE)
+	e1:SetTargetRange(0,LOCATION_MZONE)
 	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
-	o:RegisterEffect(e1)
-	if s then
-		local e2=Effect.CreateEffect(e:GetHandler())
-		e2:SetType(EFFECT_TYPE_SINGLE)
-		e2:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
-		e2:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
-		e2:SetValue(1)
-		s:RegisterEffect(e2)
-	end
-	e:Reset()
+	Duel.RegisterEffect(e1,tp)
+	local e2=Effect.CreateEffect(e:GetHandler())
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
+	e2:SetTargetRange(LOCATION_MZONE,0)
+	e2:SetValue(1)
+	e2:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
+	Duel.RegisterEffect(e2,tp)
 end

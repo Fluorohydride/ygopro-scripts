@@ -20,10 +20,12 @@ function c31053337.initial_effect(c)
 	c:RegisterEffect(e2)
 	--indes
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_DAMAGE_CALCULATING)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetOperation(c31053337.indes)
+	e3:SetTargetRange(0,LOCATION_MZONE)
+	e3:SetTarget(c31053337.indestg)
+	e3:SetValue(1)
 	c:RegisterEffect(e3)
 	--to hand2
 	local e4=Effect.CreateEffect(c)
@@ -59,17 +61,8 @@ function c31053337.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 	end
 end
-function c31053337.indes(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local bc=c:GetBattleTarget()
-	if bc then
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
-		e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
-		e1:SetValue(1)
-		bc:RegisterEffect(e1)
-	end
+function c31053337.indestg(e,c)
+	return c==e:GetHandler():GetBattleTarget()
 end
 function c31053337.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

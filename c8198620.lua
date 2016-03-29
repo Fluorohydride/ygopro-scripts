@@ -21,13 +21,14 @@ function c8198620.initial_effect(c)
 	e2:SetTarget(c8198620.attg)
 	e2:SetOperation(c8198620.atop)
 	c:RegisterEffect(e2)
-	--
+	--indes
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetCode(EVENT_DAMAGE_CALCULATING)
-	e3:SetCondition(c8198620.indescon)
-	e3:SetOperation(c8198620.indesop)
+	e3:SetTargetRange(0,LOCATION_MZONE)
+	e3:SetTarget(c8198620.indestg)
+	e3:SetValue(1)
 	c:RegisterEffect(e3)
 end
 function c8198620.splimit(e,se,sp,st)
@@ -69,15 +70,6 @@ function c8198620.atop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c8198620.indescon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetBattleTarget()~=nil
-end
-function c8198620.indesop(e,tp,eg,ep,ev,re,r,rp)
-	local bc=e:GetHandler():GetBattleTarget()
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
-	e1:SetValue(1)
-	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
-	bc:RegisterEffect(e1,true)
+function c8198620.indestg(e,c)
+	return c==e:GetHandler():GetBattleTarget()
 end

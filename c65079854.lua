@@ -27,14 +27,16 @@ function c65079854.initial_effect(c)
 	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e4:SetValue(c65079854.eqlimit)
 	c:RegisterEffect(e4)
-	--battle
+	--indes
 	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e5:SetType(EFFECT_TYPE_FIELD)
+	e5:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
 	e5:SetRange(LOCATION_SZONE)
-	e5:SetCode(EVENT_DAMAGE_CALCULATING)
-	e5:SetCondition(c65079854.indescon)
-	e5:SetOperation(c65079854.indesop)
+	e5:SetTargetRange(0,LOCATION_MZONE)
+	e5:SetTarget(c65079854.indestg)
+	e5:SetValue(1)
 	c:RegisterEffect(e5)
+	--battle
 	local e6=Effect.CreateEffect(c)
 	e6:SetDescription(aux.Stringid(65079854,0))
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
@@ -64,17 +66,8 @@ function c65079854.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Equip(tp,c,tc)
 	end
 end
-function c65079854.indescon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetEquipTarget():GetBattleTarget()~=nil
-end
-function c65079854.indesop(e,tp,eg,ep,ev,re,r,rp)
-	local bc=e:GetHandler():GetEquipTarget():GetBattleTarget()
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
-	e1:SetValue(1)
-	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
-	bc:RegisterEffect(e1,true)
+function c65079854.indestg(e,c)
+	return c==e:GetHandler():GetEquipTarget():GetBattleTarget()
 end
 function c65079854.adcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker()==e:GetHandler():GetEquipTarget() and Duel.GetAttackTarget()~=nil
