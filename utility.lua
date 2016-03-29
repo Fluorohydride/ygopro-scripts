@@ -88,22 +88,17 @@ function Auxiliary.EnableDualAttribute(c)
 	c:RegisterEffect(e3)
 end
 --register effect of return to hand for Spirit monsters
-function Auxiliary.EnableSpiritReturn(c,event1,event2,event3)
+function Auxiliary.EnableSpiritReturn(c,event1,...)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(event1)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetOperation(Auxiliary.SpiritReturnReg)
-	e1:SetCode(event1)
 	c:RegisterEffect(e1)
-	if event2 then
+	for i,event in ipairs{...} do
 		local e2=e1:Clone()
-		e2:SetCode(event2)
+		e2:SetCode(event)
 		c:RegisterEffect(e2)
-	end
-	if event3 then
-		local e3=e1:Clone()
-		e3:SetCode(event3)
-		c:RegisterEffect(e3)
 	end
 end
 function Auxiliary.SpiritReturnReg(e,tp,eg,ep,ev,re,r,rp)
