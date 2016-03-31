@@ -23,7 +23,7 @@ function c97567736.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c97567736.cfilter(c)
-	return c:IsSetCard(0xc3) and c:IsAbleToGraveAsCost()
+	return c:IsSetCard(0xc3) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
 end
 function c97567736.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c97567736.cfilter,tp,LOCATION_HAND,0,1,nil) end
@@ -40,7 +40,7 @@ function c97567736.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Damage(p,d,REASON_EFFECT)
 end
 function c97567736.tgfilter(c)
-	return c:IsSetCard(0xc3) and not c:IsCode(97567736) and c:IsAbleToGraveAsCost()
+	return c:IsSetCard(0xc3) and not c:IsCode(97567736) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
 end
 function c97567736.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c97567736.tgfilter,tp,LOCATION_DECK,0,1,nil) end

@@ -40,7 +40,7 @@ function c22061412.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(e:GetHandler():GetPreviousLocation(),LOCATION_ONFIELD)>0
 end
 function c22061412.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3008) and c:IsAbleToHand()
+	return c:IsFaceup() and c:IsSetCard(0x3008) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c22061412.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:GetControler()==tp and chkc:IsLocation(LOCATION_REMOVED) and c22061412.filter(chkc) end

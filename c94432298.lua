@@ -51,7 +51,7 @@ function c94432298.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RegisterFlagEffect(94432298,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c94432298.filter(c)
-	return c:IsSetCard(0xbb) and c:IsAbleToGrave()
+	return c:IsSetCard(0xbb) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
 end
 function c94432298.tgtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c94432298.filter,tp,LOCATION_DECK,0,1,nil) end

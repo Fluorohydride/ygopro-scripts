@@ -15,7 +15,7 @@ function c89893715.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)
 end
 function c89893715.filter(c)
-	return c:IsSetCard(0x39) and c:IsAbleToGrave()
+	return c:IsSetCard(0x39) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
 end
 function c89893715.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c89893715.filter,tp,LOCATION_DECK,0,2,nil) end

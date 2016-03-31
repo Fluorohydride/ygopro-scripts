@@ -15,12 +15,15 @@ function c8611007.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c8611007.filter(c)
-	return c:IsSetCard(0x39) and c:IsAbleToHand()
+	return c:IsSetCard(0x39) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c8611007.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c8611007.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_HAND)
+end
+function c8611007.tgfilter(c)
+	return c:IsSetCard(0x39) and c:IsType(TYPE_MONSTER)
 end
 function c8611007.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
@@ -31,6 +34,6 @@ function c8611007.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ShuffleHand(tp)
 	Duel.BreakEffect()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local dg=Duel.SelectMatchingCard(tp,Card.IsSetCard,tp,LOCATION_HAND,0,1,1,nil,0x39)
+	local dg=Duel.SelectMatchingCard(tp,c8611007.tgfilter,tp,LOCATION_HAND,0,1,1,nil)
 	Duel.SendtoGrave(dg,REASON_EFFECT)
 end

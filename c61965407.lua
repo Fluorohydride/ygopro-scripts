@@ -87,7 +87,7 @@ function c61965407.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterFlagEffect(tp,61965407,RESET_PHASE+PHASE_END,0,1)
 end
 function c61965407.thfilter(c)
-	return c:IsSetCard(0xbb) and c:IsAbleToHand()
+	return c:IsSetCard(0xbb) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c61965407.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c61965407.thfilter(chkc) end
@@ -104,7 +104,7 @@ function c61965407.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterFlagEffect(tp,61965408,RESET_PHASE+PHASE_END,0,1)
 end
 function c61965407.tgfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0xbb)
+	return c:IsFaceup() and c:IsSetCard(0xbb) and c:IsType(TYPE_MONSTER)
 end
 function c61965407.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c61965407.tgfilter(chkc) end

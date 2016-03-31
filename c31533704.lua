@@ -80,7 +80,7 @@ function c31533704.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c31533704.filter(c)
-	return c:IsSetCard(0x101b) and c:IsAbleToHand()
+	return c:IsSetCard(0x101b) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c31533704.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c31533704.filter,tp,LOCATION_DECK,0,1,nil) end

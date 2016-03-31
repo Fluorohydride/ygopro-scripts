@@ -25,7 +25,7 @@ function c51916032.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c51916032.filter(c)
-	return c:IsSetCard(0xbc) and not c:IsCode(51916032) and c:IsAbleToHand()
+	return c:IsSetCard(0xbc) and not c:IsCode(51916032) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c51916032.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c51916032.filter,tp,LOCATION_DECK,0,1,nil) end

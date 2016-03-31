@@ -18,7 +18,7 @@ function c91903221.filter1(c)
 	return c:IsRace(RACE_DINOSAUR) and c:IsAbleToDeck()
 end
 function c91903221.filter2(c)
-	return c:IsSetCard(0x304e) and c:IsAbleToHand()
+	return c:IsSetCard(0x304e) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c91903221.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

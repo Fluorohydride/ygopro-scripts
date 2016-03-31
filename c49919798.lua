@@ -33,7 +33,7 @@ function c49919798.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c49919798.thfilter(c)
-	return c:IsSetCard(0x1066) and not c:IsCode(49919798) and c:IsAbleToHand()
+	return c:IsSetCard(0x1066) and not c:IsCode(49919798) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c49919798.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c49919798.thfilter,tp,LOCATION_DECK,0,1,nil) end

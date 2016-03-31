@@ -25,7 +25,7 @@ function c95027497.filter1(c)
 	return c:IsSetCard(0x61) and c:IsAbleToHand()
 end
 function c95027497.filter2(c)
-	return c:IsSetCard(0x2b) and c:GetCode()~=95027497 and c:IsAbleToHand()
+	return c:IsSetCard(0x2b) and c:GetCode()~=95027497 and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c95027497.tg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c95027497.filter1,tp,LOCATION_DECK,0,1,nil) end

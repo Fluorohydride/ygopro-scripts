@@ -60,7 +60,7 @@ function c86943389.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(86943389)>0
 end
 function c86943389.thfilter(c)
-	return c:IsSetCard(0x2016) and not c:IsCode(86943389) and c:IsAbleToHand()
+	return c:IsSetCard(0x2016) and not c:IsCode(86943389) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c86943389.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c86943389.thfilter(chkc) end

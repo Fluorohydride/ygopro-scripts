@@ -49,7 +49,7 @@ function c5399521.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c5399521.thfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x1066) and c:IsAbleToHand()
+	return c:IsFaceup() and c:IsSetCard(0x1066) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c5399521.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_REMOVED) and c5399521.thfilter(chkc) end

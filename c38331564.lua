@@ -22,7 +22,7 @@ function c38331564.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c38331564.filter(c)
-	return c:IsSetCard(0x86) and not c:IsCode(38331564) and c:IsAbleToHand()
+	return c:IsSetCard(0x86) and not c:IsCode(38331564) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c38331564.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c38331564.filter,tp,LOCATION_DECK,0,1,nil) end

@@ -38,7 +38,7 @@ function c90616316.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c90616316.cfilter(c)
-	return c:IsSetCard(0x35) and not c:IsPublic()
+	return c:IsSetCard(0x35) and c:IsType(TYPE_MONSTER) and not c:IsPublic()
 end
 function c90616316.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c90616316.cfilter,tp,LOCATION_HAND,0,1,nil) end
@@ -48,7 +48,7 @@ function c90616316.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.ShuffleHand(tp)
 end
 function c90616316.filter2(c)
-	return c:IsSetCard(0x35) and c:IsAbleToGrave()
+	return c:IsSetCard(0x35) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
 end
 function c90616316.tg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c90616316.filter2,tp,LOCATION_DECK,0,1,nil) end

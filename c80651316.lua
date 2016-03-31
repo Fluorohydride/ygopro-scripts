@@ -35,7 +35,7 @@ function c80651316.atkop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e2)
 end
 function c80651316.sfilter(c)
-	return c:IsSetCard(0x304e) and c:IsAbleToHand()
+	return c:IsSetCard(0x304e) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c80651316.schtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c80651316.sfilter,tp,LOCATION_DECK,0,1,nil) end

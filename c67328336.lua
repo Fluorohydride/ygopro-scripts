@@ -34,7 +34,7 @@ function c67328336.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsReason(REASON_DESTROY) and bit.band(c:GetPreviousLocation(),LOCATION_ONFIELD)~=0
 end
 function c67328336.filter(c)
-	return c:IsSetCard(0x3013) and c:IsAbleToHand()
+	return c:IsSetCard(0x3013) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c67328336.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c67328336.filter,tp,LOCATION_DECK,0,1,nil) end

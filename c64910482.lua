@@ -62,7 +62,7 @@ function c64910482.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c64910482.filter(c)
-	return c:IsSetCard(0x27) and c:GetCode()~=64910482 and c:IsAbleToHand()
+	return c:IsSetCard(0x27) and c:GetCode()~=64910482 and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c64910482.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c64910482.filter,tp,LOCATION_DECK,0,1,nil) end

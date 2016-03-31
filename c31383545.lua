@@ -24,7 +24,7 @@ function c31383545.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c31383545.filter(c)
-	return c:IsSetCard(0x100d) and c:IsAbleToHand()
+	return c:IsSetCard(0x100d) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c31383545.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c31383545.filter,tp,LOCATION_DECK,0,1,nil) end

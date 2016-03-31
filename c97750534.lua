@@ -24,7 +24,7 @@ function c97750534.spcon(e,c)
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c97750534.filter(c)
-	return c:IsSetCard(0x44) and c:IsAbleToGrave()
+	return c:IsSetCard(0x44) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
 end
 function c97750534.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c97750534.filter,tp,LOCATION_DECK,0,1,nil) end

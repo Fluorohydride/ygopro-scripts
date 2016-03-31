@@ -58,7 +58,7 @@ function c12644061.damcon(e,tp,eg,ep,ev,re,r,rp)
 		and ((a:IsControler(tp) and a:IsSetCard(0x1034)) or (at and at:IsControler(tp) and at:IsSetCard(0x1034)))
 end
 function c12644061.dfilter(c)
-	return c:IsSetCard(0x1034) and c:IsAbleToGraveAsCost()
+	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
 end
 function c12644061.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c12644061.dfilter,tp,LOCATION_DECK,0,1,nil) end
