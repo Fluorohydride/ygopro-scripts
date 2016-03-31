@@ -39,8 +39,9 @@ function c99330325.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c99330325.activate(e,tp,eg,ep,ev,re,r,rp)
 	local dg=Duel.GetMatchingGroup(Card.IsDestructable,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	if Duel.Destroy(dg,REASON_EFFECT)==0 then return end
 	local sg=Duel.GetMatchingGroup(c99330325.filter1,tp,LOCATION_DECK,0,nil,e,tp)
-	if Duel.Destroy(dg,REASON_EFFECT)~=0 and sg:GetCount()>0
+	if sg:GetCount()>0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0 then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(99330325,2))
