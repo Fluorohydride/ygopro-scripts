@@ -2,7 +2,7 @@
 function c9012916.initial_effect(c)
 	c:EnableCounterPermit(0x3010)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
 	--damage reduce
 	local e1=Effect.CreateEffect(c)

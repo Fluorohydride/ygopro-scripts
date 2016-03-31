@@ -1,7 +1,7 @@
 --ラヴァルバル・ドラグーン
 function c8611007.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_FIRE),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(Card.IsAttribute,ATTRIBUTE_FIRE),1)
 	c:EnableReviveLimit()
 	--to hand
 	local e1=Effect.CreateEffect(c)

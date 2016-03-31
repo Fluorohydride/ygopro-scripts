@@ -1,7 +1,7 @@
 --ライトエンド・ドラゴン
 function c25132288.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_LIGHT),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(Card.IsAttribute,ATTRIBUTE_LIGHT),1)
 	c:EnableReviveLimit()
 	--addown
 	local e1=Effect.CreateEffect(c)

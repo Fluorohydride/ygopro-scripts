@@ -1,7 +1,7 @@
 --ナチュル・ビースト
 function c33198837.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,c33198837.synfilter,aux.NonTuner(c33198837.synfilter),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(c33198837.synfilter),aux.NonTuner(c33198837.synfilter),1)
 	c:EnableReviveLimit()
 	--negate
 	local e1=Effect.CreateEffect(c)

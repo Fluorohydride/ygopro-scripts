@@ -2,7 +2,7 @@
 function c83519853.initial_effect(c)
 	c:SetUniqueOnField(1,0,83519853)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0x107a),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(Card.IsSetCard,0x107a),1)
 	c:EnableReviveLimit()
 	--equip
 	local e1=Effect.CreateEffect(c)

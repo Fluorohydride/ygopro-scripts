@@ -1,7 +1,7 @@
 --レッド・デーモンズ・ドラゴン・スカーライト
 function c80666118.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
 	--change name
 	local e1=Effect.CreateEffect(c)

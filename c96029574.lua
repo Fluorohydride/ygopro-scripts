@@ -1,7 +1,7 @@
 --ブラック・ブルドラゴ
 function c96029574.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsType,TYPE_DUAL),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(Card.IsType,TYPE_DUAL),1)
 	c:EnableReviveLimit()
 	--destroy
 	local e1=Effect.CreateEffect(c)

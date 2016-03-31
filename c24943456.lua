@@ -1,7 +1,7 @@
 --TG パワー・グラディエイター
 function c24943456.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0x27),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(Card.IsSetCard,0x27),1)
 	c:EnableReviveLimit()
 	--pierce
 	local e1=Effect.CreateEffect(c)

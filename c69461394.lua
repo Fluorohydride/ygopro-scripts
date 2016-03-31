@@ -1,7 +1,7 @@
 --A・O・J フィールド・マーシャル
 function c69461394.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),2)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(nil),2)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

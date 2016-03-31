@@ -1,7 +1,7 @@
 --超重魔獣キュウ－B
 function c85528209.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0x9a),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(Card.IsSetCard,0x9a),1)
 	c:EnableReviveLimit()
 	--add setcode
 	local e1=Effect.CreateEffect(c)

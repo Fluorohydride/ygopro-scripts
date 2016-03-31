@@ -1,7 +1,7 @@
 --レプティレス・ラミア
 function c60634565.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x3c),aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(Card.IsSetCard,0x3c),aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
 	--destroy
 	local e1=Effect.CreateEffect(c)

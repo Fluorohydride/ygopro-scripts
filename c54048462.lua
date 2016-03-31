@@ -1,7 +1,7 @@
 --魔轟神ヴァルキュルス
 function c54048462.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x35),aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(Card.IsSetCard,0x35),aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
 	--draw
 	local e1=Effect.CreateEffect(c)

@@ -1,7 +1,7 @@
 --ジェット・ウォリアー
 function c286392.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,c286392.tfilter,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(c286392.tfilter),aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
 	--tohand
 	local e1=Effect.CreateEffect(c)

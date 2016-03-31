@@ -1,7 +1,7 @@
 --ラヴァル・ステライド
 function c20374351.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_FIRE),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(Card.IsAttribute,ATTRIBUTE_FIRE),1)
 	c:EnableReviveLimit()
 	--to grave
 	local e1=Effect.CreateEffect(c)

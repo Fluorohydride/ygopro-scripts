@@ -1,7 +1,7 @@
 --デーモン・カオス・キング
 function c36407615.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(Card.IsRace,RACE_FIEND),aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
 	--atk/def swap
 	local e1=Effect.CreateEffect(c)

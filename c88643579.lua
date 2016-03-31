@@ -1,7 +1,7 @@
 --ダークエンド・ドラゴン
 function c88643579.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_DARK),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(Card.IsAttribute,ATTRIBUTE_DARK),1)
 	c:EnableReviveLimit()
 	--send to grave
 	local e1=Effect.CreateEffect(c)

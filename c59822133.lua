@@ -1,7 +1,7 @@
 --青眼の精霊龍
 function c59822133.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0xdd),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(Card.IsSetCard,0xdd),1)
 	c:EnableReviveLimit()
 	--special summon limit
 	local e1=Effect.CreateEffect(c)

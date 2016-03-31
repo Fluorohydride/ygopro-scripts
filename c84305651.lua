@@ -1,7 +1,7 @@
 --ゴヨウ・キング
 function c84305651.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsType,TYPE_SYNCHRO),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(Card.IsType,TYPE_SYNCHRO),1)
 	c:EnableReviveLimit()
 	--atk up
 	local e1=Effect.CreateEffect(c)

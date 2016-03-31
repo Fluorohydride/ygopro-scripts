@@ -1,7 +1,7 @@
 --サイコ・デビル
 function c7582066.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_PSYCHO),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(Card.IsRace,RACE_PSYCHO),1)
 	c:EnableReviveLimit()
 	--atk
 	local e1=Effect.CreateEffect(c)

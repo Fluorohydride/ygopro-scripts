@@ -1,7 +1,7 @@
 --玄翼竜 ブラック・フェザー
 function c60992105.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
 	--atk
 	local e1=Effect.CreateEffect(c)

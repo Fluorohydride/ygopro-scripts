@@ -1,7 +1,7 @@
 --スカー・ウォリアー
 function c45298492.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
 	--cannot be battle target
 	local e1=Effect.CreateEffect(c)

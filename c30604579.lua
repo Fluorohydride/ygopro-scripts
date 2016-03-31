@@ -1,7 +1,7 @@
 --極神皇トール
 function c30604579.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,c30604579.tfilter,aux.NonTuner(nil),2)
+	aux.AddSynchroProcedure(c,aux.Tuner(c30604579.tfilter),aux.NonTuner(nil),2)
 	c:EnableReviveLimit()
 	--negate
 	local e1=Effect.CreateEffect(c)
