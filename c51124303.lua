@@ -63,6 +63,7 @@ function c51124303.activate(e,tp,eg,ep,ev,re,r,rp)
 	if ft<0 then return end
 	local mg=Duel.GetRitualMaterial(tp)
 	if ft>0 then
+		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 		local mg2=Duel.GetMatchingGroup(c51124303.mfilter,tp,LOCATION_EXTRA,0,nil)
 		mg:Merge(mg2)
 	else
@@ -73,7 +74,11 @@ function c51124303.activate(e,tp,eg,ep,ev,re,r,rp)
 	local mc=mat:GetFirst()
 	if not mc then return end
 	local sg=Duel.GetMatchingGroup(c51124303.spfilter,tp,LOCATION_HAND,0,mc,e,tp,mc)
-	if mc:IsLocation(LOCATION_MZONE) then ft=ft+1 end
+	if mc:IsLocation(LOCATION_MZONE) then
+		if ft==0 or not Duel.IsPlayerAffectedByEffect(tp,59822133) then
+			ft=ft+1 
+		end
+	end
 	local b1=sg:IsExists(c51124303.rfilter,1,nil,mc)
 	local b2=sg:CheckWithSumEqual(Card.GetLevel,mc:GetLevel(),1,ft)
 	if b1 and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(51124303,0))) then
