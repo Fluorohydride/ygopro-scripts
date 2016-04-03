@@ -8,8 +8,11 @@ function c54094821.initial_effect(c)
 	e1:SetOperation(c54094821.activate)
 	c:RegisterEffect(e1)
 end
+function c54094821.cfilter(c)
+	return bit.band(c:GetSummonType(),SUMMON_TYPE_RITUAL)==SUMMON_TYPE_RITUAL
+end
 function c54094821.condition(e,tp,eg,ep,ev,re,r,rp)
-	return eg:GetCount()==1 and eg:GetFirst():GetSummonType()==SUMMON_TYPE_RITUAL
+	return eg:IsExists(c54094821.cfilter,1,nil)
 end
 function c54094821.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

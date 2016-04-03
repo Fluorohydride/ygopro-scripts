@@ -19,11 +19,14 @@ function c88301833.initial_effect(c)
 	e2:SetOperation(c88301833.thop)
 	c:RegisterEffect(e2)
 end
+function c88301833.cfilter(c)
+	return bit.band(c:GetSummonType(),SUMMON_TYPE_RITUAL)==SUMMON_TYPE_RITUAL
+end
 function c88301833.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:GetCount()==1 and eg:GetFirst():GetSummonType()==SUMMON_TYPE_RITUAL
+	return eg:IsExists(c88301833.cfilter,1,nil)
 end
 function c88301833.thfilter(c,e,tp)
-	return c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp) and c:IsAbleToHand() and c:IsCanBeEffectTarget(e)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_RELEASE) and c:IsControler(tp) and c:IsAbleToHand() and c:IsCanBeEffectTarget(e)
 end
 function c88301833.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tc=eg:GetFirst()
