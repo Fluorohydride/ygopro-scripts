@@ -39,10 +39,13 @@ function c86532744.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,sg,sg:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,sg:GetCount()*300)
 end
+function c86532744.ctfilter(c)
+	return c:IsLocation(LOCATION_REMOVED) and not c:IsReason(REASON_REDIRECT)
+end
 function c86532744.operation(e,tp,eg,ep,ev,re,r,rp)
 	local sg=Duel.GetMatchingGroup(c86532744.filter,tp,0,LOCATION_MZONE,nil)
 	Duel.Destroy(sg,REASON_EFFECT,LOCATION_REMOVED)
-	local ct=Duel.GetOperatedGroup():FilterCount(Card.IsLocation,nil,LOCATION_REMOVED)
+	local ct=Duel.GetOperatedGroup():FilterCount(c86532744.ctfilter,nil)
 	if ct>0 then
 		Duel.BreakEffect()
 		Duel.Damage(1-tp,ct*300,REASON_EFFECT)
