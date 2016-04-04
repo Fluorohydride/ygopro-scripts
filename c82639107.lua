@@ -18,6 +18,7 @@ function c82639107.filter(c)
 end
 function c82639107.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,2)
+		and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=3
 		and Duel.IsExistingMatchingCard(c82639107.filter,tp,LOCATION_HAND,0,1,nil)
 		and Duel.IsExistingMatchingCard(c82639107.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
