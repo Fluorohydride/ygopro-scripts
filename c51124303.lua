@@ -35,6 +35,7 @@ function c51124303.filter(c,e,tp)
 	local sg=Duel.GetMatchingGroup(c51124303.spfilter,tp,LOCATION_HAND,0,c,e,tp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if c:IsLocation(LOCATION_MZONE) then ft=ft+1 end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	return sg:IsExists(c51124303.rfilter,1,nil,c) or sg:CheckWithSumEqual(Card.GetLevel,c:GetLevel(),1,ft)
 end
 function c51124303.mfilter(c)

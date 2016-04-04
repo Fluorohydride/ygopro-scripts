@@ -3,7 +3,7 @@ function c46613515.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(46613515,0))
-	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_NEGATE)
+	e1:SetCategory(CATEGORY_NEGATE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetRange(LOCATION_HAND)
@@ -56,10 +56,10 @@ end
 function c46613515.drop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Draw(tp,1,REASON_EFFECT)==0 then return end
 	local tc=Duel.GetOperatedGroup():GetFirst()
-	Duel.ConfirmCards(1-tp,tc)
 	if tc:IsType(TYPE_MONSTER) then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.SelectYesNo(tp,aux.Stringid(46613515,2)) then
+			Duel.ConfirmCards(1-tp,tc)
 			Duel.BreakEffect()
 			if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 and not Duel.GetAttacker():IsImmuneToEffect(e) then
 				Duel.BreakEffect()
@@ -67,5 +67,4 @@ function c46613515.drop(e,tp,eg,ep,ev,re,r,rp)
 			end
 		end
 	end
-	Duel.ShuffleHand(tp)
 end
