@@ -14,7 +14,7 @@ function c97001138.initial_effect(c)
 end
 function c97001138.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	return ph==PHASE_MAIN1 or ph==PHASE_MAIN2 or ph==PHASE_BATTLE
+	return ph==PHASE_MAIN1 or (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE) or ph==PHASE_MAIN2
 end
 function c97001138.thfilter(c)
 	return c:IsAttackAbove(2400) and c:GetDefence()==1000 and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
