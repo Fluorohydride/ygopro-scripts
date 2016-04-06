@@ -47,7 +47,7 @@ function c35975813.mtop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.CheckLPCost(tp,800) then
 		Duel.PayLPCost(tp,800)
 	else
-		Duel.Destroy(e:GetHandler(),REASON_RULE)
+		Duel.Destroy(e:GetHandler(),REASON_COST)
 	end
 end
 function c35975813.disop(e,tp,eg,ep,ev,re,r,rp)

@@ -33,6 +33,6 @@ function c7180418.ccost(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsCanRemoveCounter(tp,1,0,0x3001,1,REASON_COST) and Duel.SelectYesNo(tp,aux.Stringid(7180418,0)) then
 		Duel.RemoveCounter(tp,1,0,0x3001,1,REASON_COST)
 	else
-		Duel.Destroy(e:GetHandler(),REASON_RULE)
+		Duel.Destroy(e:GetHandler(),REASON_COST)
 	end
 end

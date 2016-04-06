@@ -63,10 +63,10 @@ function c18634367.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c18634367.mtop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLP(tp)>=1000 then
+	if Duel.CheckLPCost(tp,1000) then
 		Duel.PayLPCost(tp,1000)
 	else
-		Duel.Destroy(e:GetHandler(),REASON_RULE)
+		Duel.Destroy(e:GetHandler(),REASON_COST)
 	end
 end
 function c18634367.cfilter(c)

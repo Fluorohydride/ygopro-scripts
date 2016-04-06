@@ -45,6 +45,6 @@ function c99173029.mtop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>0 and Duel.SelectYesNo(tp,aux.Stringid(99173029,0)) then
 		Duel.DiscardHand(tp,nil,1,1,REASON_COST+REASON_DISCARD)
 	else
-		Duel.Destroy(e:GetHandler(),REASON_RULE)
+		Duel.Destroy(e:GetHandler(),REASON_COST)
 	end
 end

@@ -33,9 +33,9 @@ function c36995273.costcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c36995273.costop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLP(tp)>=500 then
+	if Duel.CheckLPCost(tp,500) then
 		Duel.PayLPCost(tp,500)
 	else
-		Duel.Destroy(e:GetHandler(),REASON_RULE)
+		Duel.Destroy(e:GetHandler(),REASON_COST)
 	end
 end

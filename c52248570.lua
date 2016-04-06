@@ -30,7 +30,7 @@ function c52248570.mtop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.CheckLPCost(tp,1000) then
 		Duel.PayLPCost(tp,1000)
 	else
-		Duel.Destroy(e:GetHandler(),REASON_RULE)
+		Duel.Destroy(e:GetHandler(),REASON_COST)
 	end
 end
 function c52248570.atkcon(e,tp,eg,ep,ev,re,r,rp)

@@ -51,6 +51,6 @@ function c24874630.desop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLP(tp)>1000 and Duel.SelectYesNo(tp,aux.Stringid(24874630,0)) then
 		Duel.PayLPCost(tp,1000)
 	else
-		Duel.Destroy(e:GetHandler(),REASON_RULE)
+		Duel.Destroy(e:GetHandler(),REASON_COST)
 	end
 end
