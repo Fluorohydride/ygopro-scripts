@@ -3,7 +3,7 @@ function c19254117.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(19254117,0))
-	e1:SetCategory(CATEGORY_ATKCHANGE)
+	e1:SetCategory(CATEGORY_DEFCHANGE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
@@ -68,7 +68,7 @@ function c19254117.ddop(e,tp,eg,ep,ev,re,r,rp)
 	tc:RegisterEffect(e1,true)
 end
 function c19254117.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp
+	return Duel.GetTurnPlayer()~=tp and (Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE))
 end
 function c19254117.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
@@ -85,7 +85,7 @@ function c19254117.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if tc:IsRelateToEffect(e) then
 		local a=Duel.GetAttacker()
-		if a and Duel.GetAttackTarget()~=tc then 
+		if a and Duel.GetAttackTarget()~=tc and not a:IsImmuneToEffect(e) then 
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_CANNOT_ATTACK)
@@ -96,6 +96,7 @@ function c19254117.tgop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
 		e1:SetTargetRange(0,LOCATION_MZONE)
+		e1:SetTarget(aux.imval1)
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
 		local e2=Effect.CreateEffect(c)
@@ -103,6 +104,7 @@ function c19254117.tgop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_CANNOT_SELECT_BATTLE_TARGET)
 		e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 		e2:SetTargetRange(0,LOCATION_MZONE)
+		e2:SetTarget(aux.imval1)
 		e2:SetValue(c19254117.atlimit)
 		e2:SetLabel(tc:GetRealFieldID())
 		e2:SetReset(RESET_PHASE+PHASE_END)
