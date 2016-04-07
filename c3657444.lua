@@ -61,7 +61,7 @@ function c3657444.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFacedown() or not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
 	local sg=Group.FromCards(c,tc)
-	if not Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)==2 then return end
+	if Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)~=2 then return end
 	Duel.BreakEffect()
 	Duel.Draw(tp,2,REASON_EFFECT)
 end
@@ -80,7 +80,7 @@ function c3657444.operation3(e,tp,eg,ep,ev,re,r,rp)
 	local hg=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,LOCATION_HAND,0,1,1,nil)
 	if hg:GetCount()>0 then
 		hg:AddCard(c)
-		if not Duel.Remove(hg,POS_FACEUP,REASON_EFFECT)==2 then return end
+		if Duel.Remove(hg,POS_FACEUP,REASON_EFFECT)~=2 then return end
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local gg=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_GRAVE,0,1,1,nil)
