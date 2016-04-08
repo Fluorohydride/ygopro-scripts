@@ -27,10 +27,17 @@ function c73578229.initial_effect(c)
 	c:RegisterEffect(e3)
 	--destroy
 	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e4:SetCode(EVENT_LEAVE_FIELD)
-	e4:SetOperation(c73578229.desop)
+	e4:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
+	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e4:SetCode(EVENT_LEAVE_FIELD_P)
+	e4:SetOperation(c73578229.checkop)
 	c:RegisterEffect(e4)
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e5:SetCode(EVENT_LEAVE_FIELD)
+	e5:SetLabelObject(e4)
+	e5:SetOperation(c73578229.desop)
+	c:RegisterEffect(e5)
 end
 function c73578229.etarget(e,c)
 	return e:GetLabelObject():IsContains(c)
@@ -53,8 +60,13 @@ function c73578229.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.AdjustInstantly(e:GetHandler())
 	Duel.Readjust()
 end
+function c73578229.checkop(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetHandler():IsDisabled() then
+		e:SetLabel(1)
+	else e:SetLabel(0) end
+end
 function c73578229.desop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsStatus(STATUS_ACTIVATED) then
+	if e:GetLabelObject():GetLabel()==0 and e:GetHandler():IsStatus(STATUS_ACTIVATED) then
 		local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		if g:GetCount()>0 then
 			local ag=g:GetMaxGroup(Card.GetAttack)

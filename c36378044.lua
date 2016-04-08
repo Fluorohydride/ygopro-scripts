@@ -21,8 +21,9 @@ function c36378044.initial_effect(c)
 	c:RegisterEffect(e2)
 	--life lost
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_DESTROYED)
+	e3:SetCondition(c36378044.descon)
 	e3:SetOperation(c36378044.desop)
 	c:RegisterEffect(e3)
 end
@@ -53,12 +54,13 @@ function c36378044.atkop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 	end
 end
-function c36378044.desop(e,tp,eg,ep,ev,re,r,rp)
+function c36378044.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetPreviousControler()==tp and c:IsStatus(STATUS_ACTIVATED) then
-		local lp=Duel.GetLP(tp)
-		if lp>6000 then lp=lp-6000
-		else lp=0 end
-		Duel.SetLP(tp,lp)
-	end
+	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
+end
+function c36378044.desop(e,tp,eg,ep,ev,re,r,rp)
+	local lp=Duel.GetLP(tp)
+	if lp>6000 then lp=lp-6000
+	else lp=0 end
+	Duel.SetLP(tp,lp)
 end

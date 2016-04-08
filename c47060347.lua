@@ -11,10 +11,17 @@ function c47060347.initial_effect(c)
 	c:RegisterEffect(e1)
 	--leave
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_LEAVE_FIELD)
-	e2:SetOperation(c47060347.leave)
+	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e2:SetCode(EVENT_LEAVE_FIELD_P)
+	e2:SetOperation(c47060347.checkop)
 	c:RegisterEffect(e2)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e3:SetCode(EVENT_LEAVE_FIELD)
+	e3:SetLabelObject(e2)
+	e3:SetOperation(c47060347.leave)
+	c:RegisterEffect(e3)
 end
 function c47060347.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -27,9 +34,14 @@ function c47060347.recop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Recover(p,d,REASON_EFFECT)
 end
+function c47060347.checkop(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetHandler():IsDisabled() then
+		e:SetLabel(1)
+	else e:SetLabel(0) end
+end
 function c47060347.leave(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetPreviousControler()==tp and c:IsStatus(STATUS_ACTIVATED) then
+	if e:GetLabelObject():GetLabel()==0 and c:GetPreviousControler()==tp and c:IsStatus(STATUS_ACTIVATED) then
 		Duel.Damage(tp,3000,REASON_EFFECT)
 	end
 end

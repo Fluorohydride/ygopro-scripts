@@ -100,7 +100,7 @@ function c37209439.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e3,tp)
 end
 function c37209439.distg(e,c)
-	return c:GetFieldID()~=e:GetLabel() and c:IsType(TYPE_TRAP) and c:IsStatus(STATUS_ACTIVATED)
+	return c:GetFieldID()~=e:GetLabel() and c:IsType(TYPE_TRAP)
 end
 function c37209439.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tl=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
