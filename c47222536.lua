@@ -31,7 +31,7 @@ function c47222536.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)>2 end
 end
 function c47222536.filter(c)
-	return c.dark_magician_list and c:IsAbleToHand()
+	return (c.dark_magician_list or c:IsCode(46986414)) and c:IsAbleToHand()
 end
 function c47222536.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
