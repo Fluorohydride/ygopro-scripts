@@ -15,13 +15,14 @@ function c34379489.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e3:SetCondition(c34379489.con)
-	e3:SetOperation(c34379489.op)
+	e3:SetCondition(c34379489.condition)
+	e3:SetOperation(c34379489.operation)
 	c:RegisterEffect(e3)
 end
 function c34379489.filter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
-		and not c:IsType(TYPE_PENDULUM) and c:GetSummonLocation()==LOCATION_EXTRA and not c:IsReason(REASON_REPLACE)
+		and not c:IsType(TYPE_PENDULUM) and c:GetSummonLocation()==LOCATION_EXTRA
+		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c34379489.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c34379489.filter,1,nil,tp) and not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED) end
@@ -33,10 +34,10 @@ end
 function c34379489.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)
 end
-function c34379489.con(e,tp,eg,ep,ev,re,r,rp)
+function c34379489.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_EXTRA)
 end
-function c34379489.op(e,tp,eg,ep,ev,re,r,rp)
+function c34379489.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e2=Effect.CreateEffect(e:GetHandler())
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)

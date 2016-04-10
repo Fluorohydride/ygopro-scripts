@@ -43,6 +43,7 @@ function c71985676.dmop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c71985676.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChangeBattleDamage(tp,0)
+	Duel.ChangeBattleDamage(1-tp,0)
 end
 function c71985676.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil

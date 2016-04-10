@@ -16,7 +16,7 @@ function c73534250.ctfilter(c)
 	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
 end
 function c73534250.spcon(e,tp,eg,ep,ev,re,r,rp)
-    return Duel.IsExistingMatchingCard(c73534250.ctfilter,tp,0,LOCATION_MZONE,1,nil)
+	return Duel.IsExistingMatchingCard(c73534250.ctfilter,tp,0,LOCATION_MZONE,1,nil)
 end
 function c73534250.filter(c,e,tp)
 	return c:IsSetCard(0x33) and c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -43,6 +43,7 @@ function c73534250.spop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		e2:SetReset(RESET_EVENT+0x1fe0000)
 		tc:RegisterEffect(e2)
+		Duel.SpecialSummonComplete()
 	end
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
@@ -52,7 +53,6 @@ function c73534250.spop(e,tp,eg,ep,ev,re,r,rp)
 	e3:SetTarget(c73534250.splimit)
 	e3:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e3,tp)
-	Duel.SpecialSummonComplete()
 end
 function c73534250.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return not c:IsSetCard(0x33) and c:IsLocation(LOCATION_EXTRA)

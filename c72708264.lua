@@ -10,22 +10,9 @@ function c72708264.initial_effect(c)
 	e1:SetCost(c72708264.copycost)
 	e1:SetOperation(c72708264.copyop)
 	c:RegisterEffect(e1)
-	if not c72708264.global_check then
-		c72708264.global_check=true
-		local ge1=Effect.CreateEffect(c)
-		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge1:SetCode(EVENT_SUMMON_SUCCESS)
-		ge1:SetLabel(72708264)
-		ge1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		ge1:SetOperation(aux.sumreg)
-		Duel.RegisterEffect(ge1,0)
-		local ge2=ge1:Clone()
-		ge2:SetCode(EVENT_SPSUMMON_SUCCESS)
-		Duel.RegisterEffect(ge2,0)
-	end
 end
 function c72708264.copycon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(72708264)>0
+	return e:GetHandler():IsStatus(STATUS_SUMMON_TURN+STATUS_SPSUMMON_TURN)
 end
 function c72708264.costfilter(c)
 	return c:IsSetCard(0x99) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()

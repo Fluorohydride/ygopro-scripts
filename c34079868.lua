@@ -41,18 +41,20 @@ function c34079868.initial_effect(c)
 	e3:SetOperation(c34079868.operation)
 	c:RegisterEffect(e3)
 end
+function c34079868.rfilter(c,tp)
+	return c:IsSetCard(0xc7) and Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,c,0xda)
+end
 function c34079868.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0xc7)
-		and Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0xda)
+		and Duel.CheckReleaseGroup(tp,c34079868.rfilter,1,nil,tp)
 end
 function c34079868.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g1=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0xc7)
+	local g1=Duel.SelectReleaseGroup(tp,,c34079868.rfilter,1,1,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g2=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0xda)
+	local g2=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,g1:GetFirst(),0xda)
 	g1:Merge(g2)
 	Duel.Release(g1,REASON_COST)
 end
@@ -77,23 +79,26 @@ end
 function c34079868.condition(e,tp,eg,ep,ev,re,r,rp)
 	return rp~=tp and e:GetHandler():GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
-function c34079868.spfilter(c,e,tp,set)
-	return c:IsSetCard(set) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+function c34079868.spfilter1(c,e,tp)
+	return c:IsSetCard(0xc7) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and Duel.IsExistingMatchingCard(c34079868.spfilter2,tp,LOCATION_DECK,0,1,c,e,tp,0xda)
+end
+function c34079868.spfilter2(c,e,tp)
+	return c:IsSetCard(0xda) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c34079868.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and Duel.IsExistingMatchingCard(c34079868.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,0xc7)
-		and Duel.IsExistingMatchingCard(c34079868.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,0xda) end
+		and Duel.IsExistingMatchingCard(c34079868.spfilter1,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_DECK)
 end
 function c34079868.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2
 		or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g1=Duel.SelectMatchingCard(tp,c34079868.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,0xc7)
+	local g1=Duel.SelectMatchingCard(tp,c34079868.spfilter1,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g2=Duel.SelectMatchingCard(tp,c34079868.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,0xda)
+	local g2=Duel.SelectMatchingCard(tp,c34079868.spfilter2,tp,LOCATION_DECK,0,1,1,g1:GetFirst(),e,tp)
 	g1:Merge(g2)
 	if g1:GetCount()==2 then
 		Duel.SpecialSummon(g1,0,tp,tp,false,false,POS_FACEUP)

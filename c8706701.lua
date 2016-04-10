@@ -17,10 +17,10 @@ function c8706701.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,8706702)
-	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetCondition(c8706701.thcon)
 	e2:SetTarget(c8706701.thtg)
 	e2:SetOperation(c8706701.thop)
@@ -50,9 +50,11 @@ function c8706701.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,tc)
 	end
 end
+function c8706701.cfilter(c,tp)
+	return c:GetSummonType()==SUMMON_TYPE_SYNCHRO and c:GetSummonPlayer()==tp
+end
 function c8706701.thcon(e,tp,eg,ep,ev,re,r,rp)
-	local ec=eg:GetFirst()
-	return ec:GetSummonType()==SUMMON_TYPE_SYNCHRO and ec:GetSummonPlayer()==tp and aux.exccon(e)
+	return eg:IsExists(c8706701.cfilter,1,nil) and aux.exccon(e)
 end
 function c8706701.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToHand() end

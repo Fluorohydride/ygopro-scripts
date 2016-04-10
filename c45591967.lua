@@ -9,7 +9,6 @@ function c45591967.initial_effect(c)
 	e1:SetRange(LOCATION_PZONE)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetCountLimit(1,45591967)
-	e1:SetCondition(c45591967.dmcon)
 	e1:SetCost(c45591967.dmcost)
 	e1:SetTarget(c45591967.dmtg)
 	e1:SetOperation(c45591967.dmop)
@@ -29,10 +28,7 @@ function c45591967.initial_effect(c)
 	Duel.AddCustomActivityCounter(45591967,ACTIVITY_SPSUMMON,c45591967.counterfilter)
 end
 function c45591967.counterfilter(c)
-	return not bit.band(c:GetSummonType(),SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
-end
-function c45591967.dmcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()==PHASE_MAIN1
+	return bit.band(c:GetSummonType(),SUMMON_TYPE_PENDULUM)~=SUMMON_TYPE_PENDULUM
 end
 function c45591967.dmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(45591967,tp,ACTIVITY_SPSUMMON)==0 end
