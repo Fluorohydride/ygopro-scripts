@@ -68,7 +68,6 @@ function c28139785.thop(e,tp,eg,ep,ev,re,r,rp)
 		sg=sg:Select(tp,1,1,nil)
 	end
 	if sg:GetCount()>0 then
-		Duel.HintSelection(sg)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,sg)
 	end

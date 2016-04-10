@@ -20,7 +20,7 @@ function c80896904.initial_effect(c)
 	e2:SetCondition(c80896904.syncon)
 	e2:SetTarget(c80896904.syntg)
 	e2:SetOperation(c80896904.synop)
-	e2:SetValue(SUMMON_TYPE_SYNCHRO+0x10)
+	e2:SetValue(SUMMON_TYPE_SYNCHRO)
 	c:RegisterEffect(e2)
 	--indes
 	local e3=Effect.CreateEffect(c)
@@ -144,6 +144,7 @@ function c80896904.syntg(e,tp,eg,ep,ev,re,r,rp,chk,c,tuner,mg)
 			tuner=pe:GetOwner()
 			Group.FromCards(tuner):Select(tp,1,1,nil)
 		end
+		tuner:RegisterFlagEffect(80896904,RESET_EVENT+0x1fe0000,0,1)
 		g:AddCard(tuner)
 		local lv1=tuner:GetSynchroLevel(c)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
@@ -201,8 +202,7 @@ function c80896904.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c80896904.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return (e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO and e:GetLabel()==1)
-		or e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO+0x10
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO and e:GetLabel()==1
 end
 function c80896904.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and chkc:IsAbleToHand() end
@@ -219,7 +219,8 @@ function c80896904.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c80896904.mfilter(c)
-	return c:IsType(TYPE_TUNER) and c:IsType(TYPE_PENDULUM) and c:GetSummonType()==SUMMON_TYPE_PENDULUM
+	return c:IsType(TYPE_PENDULUM) and c:GetSummonType()==SUMMON_TYPE_PENDULUM
+		and (c:IsType(TYPE_TUNER) or c:GetFlagEffect(80896904)~=0)
 end
 function c80896904.valcheck(e,c)
 	local g=c:GetMaterial()

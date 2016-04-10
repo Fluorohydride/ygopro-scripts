@@ -29,7 +29,7 @@ function c11050415.activate(e,tp,eg,ep,ev,re,r,rp)
 			and Duel.SelectYesNo(tp,aux.Stringid(11050415,0)) then
 			local c=e:GetHandler()
 			for i=1,ft do
-				local token=Duel.CreateToken(tp,18027138+i)
+				local token=Duel.CreateToken(tp,11050415+i)
 				Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 				local e1=Effect.CreateEffect(c)
 				e1:SetType(EFFECT_TYPE_SINGLE)

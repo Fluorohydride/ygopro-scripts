@@ -39,18 +39,15 @@ function c85551711.initial_effect(c)
 	e5:SetOperation(c85551711.spop)
 	c:RegisterEffect(e5)
 end
-function c85551711.handcon(e,tp,eg,ep,ev,re,r,rp)
+function c85551711.handcon(e)
 	return Duel.GetTurnPlayer()~=e:GetHandlerPlayer() and e:GetHandler():GetOverlayCount()~=0
 end
 function c85551711.costtg(e,te,tp)
 	local tc=te:GetHandler()
 	return Duel.GetTurnPlayer()~=e:GetHandlerPlayer()
 		and tc:IsLocation(LOCATION_HAND) and tc:GetEffectCount(85551711)>0
-		and (
-			(tc:GetEffectCount(EFFECT_QP_ACT_IN_NTPHAND)<=tc:GetEffectCount(85551711) and tc:IsType(TYPE_SPELL+TYPE_QUICKPLAY))
-			or 
-			(tc:GetEffectCount(EFFECT_TRAP_ACT_IN_HAND)<=tc:GetEffectCount(85551711) and tc:IsType(TYPE_TRAP))
-		)
+		and ((tc:GetEffectCount(EFFECT_QP_ACT_IN_NTPHAND)<=tc:GetEffectCount(85551711) and tc:IsType(TYPE_QUICKPLAY))
+			or (tc:GetEffectCount(EFFECT_TRAP_ACT_IN_HAND)<=tc:GetEffectCount(85551711) and tc:IsType(TYPE_TRAP)))
 end
 function c85551711.costchk(e,te_or_c,tp)
 	return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT)
@@ -62,7 +59,7 @@ end
 function c85551711.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return ((rp~=tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)) 
-		or c:IsReason(REASON_BATTLE)) and bit.band(c:GetSummonType(),SUMMON_TYPE_XYZ)==SUMMON_TYPE_XYZ
+		or c:IsReason(REASON_BATTLE)) and c:GetSummonType()==SUMMON_TYPE_XYZ
 end
 function c85551711.spfilter(c,e,tp)
 	return c:IsRace(RACE_SPELLCASTER) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -76,14 +73,13 @@ function c85551711.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c85551711.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp)
+	local dg=Duel.GetMatchingGroup(Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0
-		and Duel.IsExistingMatchingCard(Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(85551711,0)) then
+		and dg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(85551711,0)) then
 		Duel.BreakEffect()
-		local dg=Duel.GetMatchingGroup(Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local des=dg:Select(tp,1,1,nil)
-		Duel.HintSelection(des)
-		Duel.Destroy(des,REASON_EFFECT)
+		local sg=dg:Select(tp,1,1,nil)
+		Duel.HintSelection(sg)
+		Duel.Destroy(sg,REASON_EFFECT)
 	end
 end

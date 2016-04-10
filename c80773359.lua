@@ -84,7 +84,7 @@ function c80773359.lvop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_LEVEL)
 		e1:SetValue(tc:GetLevel())
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+0x1ff0000)
 		c:RegisterEffect(e1)
 	end
 end
@@ -95,6 +95,6 @@ function c80773359.condtion(e)
 	local c=e:GetHandler()
 	local mg=c:GetMaterial()
 	local ph=Duel.GetCurrentPhase()
-	return (ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL) and bit.band(c:GetSummonType(),SUMMON_TYPE_SYNCHRO)==SUMMON_TYPE_SYNCHRO
-		and Duel.GetAttacker()==c and mg:GetCount()>0 and not mg:IsExists(c80773359.mfilter,1,nil)
+	return (ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL) and Duel.GetAttacker()==c
+		and c:GetSummonType()==SUMMON_TYPE_SYNCHRO and mg:GetCount()>0 and not mg:IsExists(c80773359.mfilter,1,nil)
 end

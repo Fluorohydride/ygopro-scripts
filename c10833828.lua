@@ -10,9 +10,8 @@ function c10833828.initial_effect(c)
 	e2:SetDescription(aux.Stringid(10833828,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
-	e2:SetCountLimit(1)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCost(c10833828.cost)
+	e2:SetCountLimit(1)
 	e2:SetTarget(c10833828.sptg1)
 	e2:SetOperation(c10833828.spop1)
 	c:RegisterEffect(e2)
@@ -39,10 +38,6 @@ function c10833828.initial_effect(c)
 	e4:SetOperation(c10833828.damop)
 	c:RegisterEffect(e4)
 end
-function c10833828.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
-end
 function c10833828.spfilter1(c,e,tp)
 	return c:IsSetCard(0x10af) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
@@ -50,6 +45,7 @@ function c10833828.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c10833828.spfilter1,tp,LOCATION_HAND,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c10833828.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -102,6 +98,7 @@ function c10833828.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c10833828.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
