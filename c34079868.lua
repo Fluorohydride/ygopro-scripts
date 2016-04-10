@@ -52,7 +52,7 @@ function c34079868.spcon(e,c)
 end
 function c34079868.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g1=Duel.SelectReleaseGroup(tp,,c34079868.rfilter,1,1,nil,tp)
+	local g1=Duel.SelectReleaseGroup(tp,c34079868.rfilter,1,1,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g2=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,g1:GetFirst(),0xda)
 	g1:Merge(g2)
