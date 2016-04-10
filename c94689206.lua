@@ -17,14 +17,14 @@ function c94689206.initial_effect(c)
 	e2:SetOperation(c94689206.spop)
 	c:RegisterEffect(e2)
 	--indes
-    local e3=Effect.CreateEffect(c)
-    e3:SetType(EFFECT_TYPE_FIELD)
-    e3:SetCode(EFFECT_INDESTRUCTABLE)
-    e3:SetRange(LOCATION_MZONE)
-    e3:SetTargetRange(LOCATION_MZONE,0)
-    e3:SetTarget(aux.TargetBoolFunction(Card.IsRace,RACE_ROCK))
-    e3:SetValue(c94689206.indesval)
-    c:RegisterEffect(e3)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_INDESTRUCTABLE)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetTargetRange(LOCATION_MZONE,0)
+	e3:SetTarget(aux.TargetBoolFunction(Card.IsRace,RACE_ROCK))
+	e3:SetValue(c94689206.indesval)
+	c:RegisterEffect(e3)
 	--to hand
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(94689206,0))
@@ -52,7 +52,7 @@ function c94689206.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c94689206.indesval(e,re,r,rp)
-    return bit.band(r,REASON_RULE+REASON_BATTLE)==0
+	return bit.band(r,REASON_RULE+REASON_BATTLE)==0
 end
 function c94689206.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
@@ -67,9 +67,9 @@ function c94689206.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c94689206.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c94689206.thfilter,tp,LOCATION_DECK,0,nil)
-	if g:CheckWithSumEqual(Card.GetLevel,8,1,3) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local sg=g:SelectWithSumEqual(tp,Card.GetLevel,8,1,3)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+	local sg=g:SelectWithSumEqual(tp,Card.GetLevel,8,1,3)
+	if sg:GetCount()>0 then
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,sg)
 	end

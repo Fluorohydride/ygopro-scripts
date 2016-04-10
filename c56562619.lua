@@ -39,19 +39,19 @@ end
 function c56562619.splimit(e,se,sp,st)
 	return (se:IsActiveType(TYPE_MONSTER) and se:GetHandler():IsSetCard(0x2b)) or se:GetHandler():IsSetCard(0x61)
 end
-function c56562619.c1filter(c)
+function c56562619.cfilter1(c)
 	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsType(TYPE_MONSTER) and c:IsSetCard(0x2b) and c:IsAbleToGraveAsCost()
 end
-function c56562619.c2filter(c)
+function c56562619.cfilter2(c)
 	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsSetCard(0x61) and c:IsAbleToGraveAsCost()
 end
 function c56562619.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c56562619.c1filter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,nil)
-		and Duel.IsExistingMatchingCard(c56562619.c2filter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c56562619.cfilter1,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,nil)
+		and Duel.IsExistingMatchingCard(c56562619.cfilter2,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,c56562619.c1filter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,1,nil)
+	local g1=Duel.SelectMatchingCard(tp,c56562619.cfilter1,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectMatchingCard(tp,c56562619.c2filter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,1,nil)
+	local g2=Duel.SelectMatchingCard(tp,c56562619.cfilter2,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,1,nil)
 	g1:Merge(g2)
 	Duel.SendtoGrave(g1,REASON_COST)
 end
@@ -81,7 +81,7 @@ function c56562619.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local act=e:GetLabel()
 	e:SetLabel(0)
 	if act==1 and c:IsPreviousPosition(POS_FACEUP) and c:GetLocation()~=LOCATION_DECK
-		and c:GetFlagEffect(56562619) then return true
+		and c:GetFlagEffect(56562619)~=0 then return true
 	else rg:Clear() return false end
 end
 function c56562619.spfilter(c,e,tp)
@@ -94,9 +94,8 @@ end
 function c56562619.spfilter2(c,e,tp)
 	return c:GetFlagEffect(56562619)~=0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,1-tp) and c:GetOwner()==1-tp
 end
-function c56562619.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c56562619.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=e:GetLabelObject()
-	if chkc then return rg:IsContains(chkc) and c56562619.spfilter(chkc,e,tp) end
 	if chk==0 then
 		if rg:IsExists(c56562619.spfilter,1,nil,e,tp) then return true
 		else rg:Clear() return false end
