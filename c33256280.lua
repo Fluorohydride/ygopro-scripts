@@ -13,8 +13,9 @@ function c33256280.initial_effect(c)
 	e1:SetOperation(c33256280.operation)
 	c:RegisterEffect(e1)
 end
-function c33256280.desfilter(c,tp,ft)
+function c33256280.desfilter(c,tp)
 	if c:IsFacedown() or not c:IsDestructable() then return false end
+	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if ft==0 and c:IsLocation(LOCATION_SZONE) and c:GetSequence()<5 then
 		return Duel.IsExistingMatchingCard(c33256280.filter,tp,LOCATION_DECK,0,1,nil,true)
 	else
@@ -25,11 +26,10 @@ function c33256280.filter(c,ignore)
 	return c:IsSetCard(0xe1) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable(ignore)
 end
 function c33256280.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
-	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c33256280.desfilter(chkc,ft) and chkc~=e:GetHandler() end
-	if chk==0 then return Duel.IsExistingTarget(c33256280.desfilter,tp,LOCATION_ONFIELD,0,1,e:GetHandler(),ft) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c33256280.desfilter(chkc,tp) and chkc~=e:GetHandler() end
+	if chk==0 then return Duel.IsExistingTarget(c33256280.desfilter,tp,LOCATION_ONFIELD,0,1,e:GetHandler(),tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c33256280.desfilter,tp,LOCATION_ONFIELD,0,1,1,e:GetHandler(),ft)
+	local g=Duel.SelectTarget(tp,c33256280.desfilter,tp,LOCATION_ONFIELD,0,1,1,e:GetHandler(),tp)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c33256280.operation(e,tp,eg,ep,ev,re,r,rp)
