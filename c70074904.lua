@@ -12,7 +12,10 @@ function c70074904.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c70074904.condition(e,tp,eg,ep,ev,re,r,rp)
+	local a=Duel.GetAttacker()
+	local t=Duel.GetAttackTarget()
 	return e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
+		and (a:IsControler(1-tp) or (t and t:IsControler(1-tp)))
 end
 function c70074904.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
