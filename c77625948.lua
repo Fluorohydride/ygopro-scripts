@@ -17,10 +17,12 @@ function c77625948.initial_effect(c)
 	c:RegisterEffect(e2)
 	--
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_DAMAGE_CALCULATING)
+	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetCode(EFFECT_SET_ATTACK_FINAL)
+	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e3:SetRange(LOCATION_MZONE)
 	e3:SetCondition(c77625948.atkcon)
-	e3:SetOperation(c77625948.atkop)
+	e3:SetValue(c77625948.atkval)
 	c:RegisterEffect(e3)
 end
 function c77625948.filter(c)
@@ -70,16 +72,10 @@ end
 function c77625948.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end
-function c77625948.atkcon(e,tp,eg,ep,ev,re,r,rp)
+function c77625948.atkcon(e)
 	return Duel.GetAttackTarget()==nil and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)~=0
 		and e:GetHandler():GetEffectCount(EFFECT_DIRECT_ATTACK)==1
 end
-function c77625948.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SET_ATTACK_FINAL)
-	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
-	e1:SetValue(c:GetAttack()/2)
-	c:RegisterEffect(e1)
+function c77625948.atkval(e,c)
+	return c:GetAttack()/2
 end

@@ -28,25 +28,22 @@ function c47737087.initial_effect(c)
 	c:RegisterEffect(e4)
 	--atkdown
 	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e5:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
-	e5:SetCondition(c47737087.rdcon)
-	e5:SetOperation(c47737087.rdop)
+	e5:SetType(EFFECT_TYPE_SINGLE)
+	e5:SetCode(EFFECT_SET_ATTACK_FINAL)
+	e5:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e5:SetRange(LOCATION_MZONE)
+	e5:SetCondition(c47737087.atkcon)
+	e5:SetValue(c47737087.atkval)
 	c:RegisterEffect(e5)
 end
 function c47737087.dacon(e)
 	return e:GetHandler():IsDefencePos()
 end
-function c47737087.rdcon(e,tp,eg,ep,ev,re,r,rp)
+function c47737087.atkcon(e)
+	if Duel.GetCurrentPhase()~=PHASE_DAMAGE_CAL then return false end
 	local c=e:GetHandler()
 	return c:IsDefencePos() and c==Duel.GetAttacker() and Duel.GetAttackTarget()==nil and c:GetEffectCount(EFFECT_DIRECT_ATTACK)==1
 end
-function c47737087.rdop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SET_ATTACK_FINAL)
-	e1:SetValue(c:GetAttack()/2)
-	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
-	c:RegisterEffect(e1)
+function c47737087.atkval(e,c)
+	return c:GetAttack()/2
 end
