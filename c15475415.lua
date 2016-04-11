@@ -46,6 +46,6 @@ function c15475415.ctop(e,tp,eg,ep,ev,re,r,rp)
 	for i=1,2 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 		local sg=g:Select(tp,1,1,nil)
-		sg:GetFirst():AddCounter(0xe,1)
+		sg:GetFirst():AddCounter(0x100e,1)
 	end
 end

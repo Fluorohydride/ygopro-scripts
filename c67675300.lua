@@ -23,11 +23,11 @@ function c67675300.initial_effect(c)
 end
 function c67675300.spcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0 and Duel.IsCanRemoveCounter(c:GetControler(),1,1,0x15,4,REASON_COST)
+	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0 and Duel.IsCanRemoveCounter(c:GetControler(),1,1,0x1015,4,REASON_COST)
 end
 function c67675300.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.RemoveCounter(tp,1,1,0x15,4,REASON_RULE)
+	Duel.RemoveCounter(tp,1,1,0x1015,4,REASON_RULE)
 end
 function c67675300.target(e,c)
-	return c~=e:GetHandler() and c:GetCounter(0x15)~=0
+	return c~=e:GetHandler() and c:GetCounter(0x1015)~=0
 end

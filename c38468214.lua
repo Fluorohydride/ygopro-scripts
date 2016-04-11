@@ -14,7 +14,7 @@ function c38468214.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c38468214.filter(c)
-	return c:GetCounter(0xe)>0 and c:IsControlerCanBeChanged()
+	return c:GetCounter(0x100e)>0 and c:IsControlerCanBeChanged()
 end
 function c38468214.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c38468214.filter(chkc) end
@@ -27,7 +27,7 @@ function c38468214.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:GetCounter(0xe)>0 and tc:IsRelateToEffect(e) then
+	if tc:GetCounter(0x100e)>0 and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
@@ -63,9 +63,9 @@ function c38468214.rmctcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==e:GetLabel()
 end
 function c38468214.rmctop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RemoveCounter(tp,0xe,1,REASON_EFFECT)
-	Duel.RaiseEvent(e:GetHandler(),EVENT_REMOVE_COUNTER+0xe,e,REASON_EFFECT,tp,tp,1)
+	e:GetHandler():RemoveCounter(tp,0x100e,1,REASON_EFFECT)
+	Duel.RaiseEvent(e:GetHandler(),EVENT_REMOVE_COUNTER+0x100e,e,REASON_EFFECT,tp,tp,1)
 end
 function c38468214.descon(e)
-	return e:GetHandler():GetCounter(0xe)==0
+	return e:GetHandler():GetCounter(0x100e)==0
 end

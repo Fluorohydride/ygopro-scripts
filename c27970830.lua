@@ -1,6 +1,6 @@
 --六武の門
 function c27970830.initial_effect(c)
-	c:EnableCounterPermit(0x3003)
+	c:EnableCounterPermit(0x3)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -54,13 +54,13 @@ function c27970830.ctfilter(c)
 end
 function c27970830.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c27970830.ctfilter,1,nil) then
-		e:GetHandler():AddCounter(0x3003,2)
+		e:GetHandler():AddCounter(0x3,2)
 	end
 end
 function c27970830.cost1(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x3003,2,REASON_COST) end
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x3,2,REASON_COST) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
-	Duel.RemoveCounter(tp,1,0,0x3003,2,REASON_COST)
+	Duel.RemoveCounter(tp,1,0,0x3,2,REASON_COST)
 end
 function c27970830.filter1(c)
 	return c:IsFaceup() and (c:IsSetCard(0x3d) or c:IsSetCard(0x20)) and c:IsType(TYPE_EFFECT)
@@ -85,9 +85,9 @@ function c27970830.op1(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c27970830.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x3003,4,REASON_COST) end
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x3,4,REASON_COST) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
-	Duel.RemoveCounter(tp,1,0,0x3003,4,REASON_COST)
+	Duel.RemoveCounter(tp,1,0,0x3,4,REASON_COST)
 end
 function c27970830.filter2(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x3d) and c:IsAbleToHand()
@@ -106,9 +106,9 @@ function c27970830.op2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c27970830.cost3(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x3003,6,REASON_COST) end
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x3,6,REASON_COST) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
-	Duel.RemoveCounter(tp,1,0,0x3003,6,REASON_COST)
+	Duel.RemoveCounter(tp,1,0,0x3,6,REASON_COST)
 end
 function c27970830.filter3(c,e,tp)
 	return c:IsSetCard(0x20) and c:IsType(TYPE_EFFECT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

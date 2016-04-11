@@ -9,13 +9,13 @@ function c7802006.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c7802006.filter(c)
-	return c:IsFaceup() and c:IsCanAddCounter(0x3001,1)
+	return c:IsFaceup() and c:IsCanAddCounter(0x1,1)
 end
 function c7802006.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c7802006.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	local tc=g:GetFirst()
 	while tc do 
-		tc:AddCounter(0x3001,1)
+		tc:AddCounter(0x1,1)
 		tc=g:GetNext()
 	end
 end

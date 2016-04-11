@@ -31,6 +31,6 @@ function c23639291.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		tc:RegisterEffect(e1)
 		Duel.SpecialSummonComplete()
-		tc:AddCounter(0x19,1)
+		tc:AddCounter(0x1019,1)
 	end
 end

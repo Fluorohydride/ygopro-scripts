@@ -12,7 +12,7 @@ function c90557975.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c90557975.filter(c)
-	return c:GetCounter(0x19)>0
+	return c:GetCounter(0x1019)>0
 end
 function c90557975.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c90557975.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
@@ -20,9 +20,9 @@ function c90557975.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=g:GetFirst()
 	local s=0
 	while tc do
-		local ct=tc:GetCounter(0x19)
+		local ct=tc:GetCounter(0x1019)
 		s=s+ct
-		tc:RemoveCounter(tp,0x19,ct,REASON_COST)
+		tc:RemoveCounter(tp,0x1019,ct,REASON_COST)
 		tc=g:GetNext()
 	end
 	e:SetLabel(s*300)

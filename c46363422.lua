@@ -1,7 +1,7 @@
 --熟練の白魔導師
 function c46363422.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
-	c:SetCounterLimit(0x3001,3)
+	c:EnableCounterPermit(0x1)
+	c:SetCounterLimit(0x1,3)
 	--add counter
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
@@ -29,11 +29,11 @@ function c46363422.initial_effect(c)
 end
 function c46363422.acop(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(1)>0 then
-		e:GetHandler():AddCounter(0x3001,1)
+		e:GetHandler():AddCounter(0x1,1)
 	end
 end
 function c46363422.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetCounter(0x3001)==3 and e:GetHandler():IsReleasable() end
+	if chk==0 then return e:GetHandler():GetCounter(0x1)==3 and e:GetHandler():IsReleasable() end
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c46363422.filter(c,e,tp)

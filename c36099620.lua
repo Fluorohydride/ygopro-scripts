@@ -1,5 +1,6 @@
 --ジャスティス・ワールド
 function c36099620.initial_effect(c)
+	c:EnableCounterPermit(0x5)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -39,7 +40,7 @@ function c36099620.cfilter(c,tp)
 end
 function c36099620.acop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c36099620.cfilter,1,nil,tp) then
-		e:GetHandler():AddCounter(0x5+COUNTER_NEED_ENABLE,1)
+		e:GetHandler():AddCounter(0x5,1)
 	end
 end
 function c36099620.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)

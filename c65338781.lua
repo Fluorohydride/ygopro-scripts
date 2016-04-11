@@ -1,7 +1,7 @@
 --熟練の赤魔術士
 function c65338781.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
-	c:SetCounterLimit(0x3001,3)
+	c:EnableCounterPermit(0x1)
+	c:SetCounterLimit(0x1,3)
 	--add counter
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
@@ -39,11 +39,11 @@ function c65338781.initial_effect(c)
 end
 function c65338781.acop(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(1)>0 then
-		e:GetHandler():AddCounter(0x3001,1)
+		e:GetHandler():AddCounter(0x1,1)
 	end
 end
 function c65338781.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetCounter(0x3001)==3 and e:GetHandler():IsReleasable() end
+	if chk==0 then return e:GetHandler():GetCounter(0x1)==3 and e:GetHandler():IsReleasable() end
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c65338781.filter(c,e,tp)
@@ -67,18 +67,18 @@ function c65338781.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c65338781.ctfilter(c)
-	return c:IsFaceup() and c:IsCanAddCounter(0x3001,1)
+	return c:IsFaceup() and c:IsCanAddCounter(0x1,1)
 end
 function c65338781.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c65338781.ctfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c65338781.ctfilter,tp,LOCATION_ONFIELD,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(65338781,2))
 	Duel.SelectTarget(tp,c65338781.ctfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x3001)
+	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x1)
 end
 function c65338781.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
-		tc:AddCounter(0x3001,1)
+		tc:AddCounter(0x1,1)
 	end
 end

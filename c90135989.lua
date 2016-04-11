@@ -24,7 +24,7 @@ function c90135989.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	local tc=g:GetFirst()
 	while tc do
-		tc:AddCounter(0x19,1)
+		tc:AddCounter(0x1019,1)
 		tc=g:GetNext()
 	end
 end

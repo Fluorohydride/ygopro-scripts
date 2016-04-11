@@ -61,6 +61,6 @@ end
 function c13474291.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
-		tc:AddCounter(0x19,1)
+		tc:AddCounter(0x1019,1)
 	end
 end

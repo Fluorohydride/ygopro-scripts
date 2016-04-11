@@ -8,7 +8,7 @@ function c64163367.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCode(EVENT_REMOVE_COUNTER+0xe)
+	e2:SetCode(EVENT_REMOVE_COUNTER+0x100e)
 	e2:SetOperation(c64163367.ctop1)
 	c:RegisterEffect(e2)
 	--counter2
@@ -22,10 +22,10 @@ function c64163367.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c64163367.ctop1(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(COUNTER_NEED_ENABLE+0xe,1)
+	e:GetHandler():AddCounter(COUNTER_NEED_ENABLE+0x100e,1)
 end
 function c64163367.ctcon2(e,tp,eg,ep,ev,re,r,rp)
-	local ct=e:GetHandler():GetCounter(0xe)
+	local ct=e:GetHandler():GetCounter(0x100e)
 	e:SetLabel(ct)
 	return e:GetHandler():IsReason(REASON_DESTROY) and ct>0
 end
@@ -36,6 +36,6 @@ function c64163367.ctop2(e,tp,eg,ep,ev,re,r,rp)
 	for i=1,ct do
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(64163367,1))
 		local sg=g:Select(tp,1,1,nil)
-		sg:GetFirst():AddCounter(0xe,1)
+		sg:GetFirst():AddCounter(0x100e,1)
 	end
 end

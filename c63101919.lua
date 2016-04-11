@@ -1,6 +1,6 @@
 --マジックテンペスター
 function c63101919.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
+	c:EnableCounterPermit(0x1)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_SPELLCASTER),1)
 	c:EnableReviveLimit()
@@ -42,11 +42,11 @@ function c63101919.addcc1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c63101919.addct1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,2,0,0x3001)
+	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,2,0,0x1)
 end
 function c63101919.addc1(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x3001,1)
+		e:GetHandler():AddCounter(0x1,1)
 	end
 end
 function c63101919.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -58,28 +58,28 @@ function c63101919.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c63101919.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,e:GetLabel(),0,0x3001)
+	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,e:GetLabel(),0,0x1)
 end
 function c63101919.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetLabel()
 	for i=1,ct do
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(63101919,3))
-		local g=Duel.SelectMatchingCard(tp,Card.IsCanAddCounter,tp,LOCATION_MZONE,0,1,1,nil,0x3001,1)
+		local g=Duel.SelectMatchingCard(tp,Card.IsCanAddCounter,tp,LOCATION_MZONE,0,1,1,nil,0x1,1)
 		if g:GetCount()==0 then return end
-		g:GetFirst():AddCounter(0x3001,1)
+		g:GetFirst():AddCounter(0x1,1)
 	end
 end
 function c63101919.damfilter(c)
-	return c:GetCounter(0x3001)>0
+	return c:GetCounter(0x1)>0
 end
 function c63101919.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetCounter(tp,1,1,0x3001)>0 end
+	if chk==0 then return Duel.GetCounter(tp,1,1,0x1)>0 end
 	local g=Duel.GetMatchingGroup(c63101919.damfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	local tc=g:GetFirst()
 	local sum=0
 	while tc do
-		local sct=tc:GetCounter(0x3001)
-		tc:RemoveCounter(tp,0x3001,sct,0)
+		local sct=tc:GetCounter(0x1)
+		tc:RemoveCounter(tp,0x1,sct,0)
 		sum=sum+sct
 		tc=g:GetNext()
 	end

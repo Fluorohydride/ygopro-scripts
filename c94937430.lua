@@ -1,7 +1,7 @@
 --臨時収入
 function c94937430.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
-	c:SetCounterLimit(0x3001,3)
+	c:EnableCounterPermit(0x1)
+	c:SetCounterLimit(0x1,3)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -33,11 +33,11 @@ end
 function c94937430.acop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if eg:IsExists(c94937430.cfilter,1,nil,tp) then
-		c:AddCounter(0x3001,1)
+		c:AddCounter(0x1,1)
 	end
 end
 function c94937430.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetCounter(0x3001)==3
+	return e:GetHandler():GetCounter(0x1)==3
 end
 function c94937430.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

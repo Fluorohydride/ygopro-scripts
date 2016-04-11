@@ -1,6 +1,6 @@
 --アーカナイト・マジシャン
 function c31924889.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
+	c:EnableCounterPermit(0x1)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_SPELLCASTER),1)
 	c:EnableReviveLimit()
@@ -33,23 +33,23 @@ function c31924889.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c31924889.attackup(e,c)
-	return c:GetCounter(0x3001)*1000
+	return c:GetCounter(0x1)*1000
 end
 function c31924889.addcc(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
 end
 function c31924889.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,2,0,0x3001)
+	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,2,0,0x1)
 end
 function c31924889.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x3001,2)
+		e:GetHandler():AddCounter(0x1,2)
 	end
 end
 function c31924889.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x3001,1,REASON_COST) end
-	Duel.RemoveCounter(tp,1,0,0x3001,1,REASON_COST)
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x1,1,REASON_COST) end
+	Duel.RemoveCounter(tp,1,0,0x1,1,REASON_COST)
 end
 function c31924889.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and chkc:IsDestructable() end

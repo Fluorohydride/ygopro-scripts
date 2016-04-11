@@ -43,12 +43,12 @@ end
 function c17810268.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
 		local ct=Duel.GetMatchingGroupCount(c17810268.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-		e:GetHandler():AddCounter(0x19,ct)
+		e:GetHandler():AddCounter(0x1019,ct)
 	end
 end
 function c17810268.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x19,2,REASON_COST) end
-	e:GetHandler():RemoveCounter(tp,0x19,2,REASON_COST)
+	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x1019,2,REASON_COST) end
+	e:GetHandler():RemoveCounter(tp,0x1019,2,REASON_COST)
 end
 function c17810268.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()

@@ -1,5 +1,6 @@
 --A・ジェネクス・ベルフレイム
 function c91438994.initial_effect(c)
+	c:EnableCounterPermit(0xa)
 	--add counter
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -44,7 +45,7 @@ function c91438994.filter1(c,tp)
 end
 function c91438994.addc1(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c91438994.filter1,1,nil,tp) then
-		e:GetHandler():AddCounter(0xa+COUNTER_NEED_ENABLE,1)
+		e:GetHandler():AddCounter(0xa,1)
 	end
 end
 function c91438994.filter2(c,tp)
@@ -52,7 +53,7 @@ function c91438994.filter2(c,tp)
 end
 function c91438994.addc2(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c91438994.filter2,1,nil,tp) then
-		e:GetHandler():AddCounter(0xa+COUNTER_NEED_ENABLE,2)
+		e:GetHandler():AddCounter(0xa,2)
 	end
 end
 function c91438994.attackup(e,c)

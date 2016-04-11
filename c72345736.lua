@@ -1,7 +1,7 @@
 --六武衆の結束
 function c72345736.initial_effect(c)
-	c:EnableCounterPermit(0x3003)
-	c:SetCounterLimit(0x3003,2)
+	c:EnableCounterPermit(0x3)
+	c:SetCounterLimit(0x3,2)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -33,18 +33,18 @@ function c72345736.ctfilter(c)
 end
 function c72345736.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c72345736.ctfilter,1,nil) then
-		e:GetHandler():AddCounter(0x3003,1)
+		e:GetHandler():AddCounter(0x3,1)
 	end
 end
 function c72345736.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
-	local ct=e:GetHandler():GetCounter(0x3003)
+	local ct=e:GetHandler():GetCounter(0x3)
 	e:SetLabel(ct)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c72345736.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:GetCounter(0x3003)>0 and Duel.IsPlayerCanDraw(tp,c:GetCounter(0x3003)) end
+	if chk==0 then return c:GetCounter(0x3)>0 and Duel.IsPlayerCanDraw(tp,c:GetCounter(0x3)) end
 	local ct=e:GetLabel()
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(ct)

@@ -1,7 +1,7 @@
 --サイレント・マジシャン LV4
 function c73665146.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
-	c:SetCounterLimit(0x3001,5)
+	c:EnableCounterPermit(0x1)
+	c:SetCounterLimit(0x1,5)
 	--draw
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -32,14 +32,14 @@ c73665146.lvupcount=1
 c73665146.lvup={72443568}
 function c73665146.addc(e,tp,eg,ep,ev,re,r,rp)
 	if ep~=tp then
-		e:GetHandler():AddCounter(0x3001,1)
+		e:GetHandler():AddCounter(0x1,1)
 	end
 end
 function c73665146.attackup(e,c)
-	return c:GetCounter(0x3001)*500
+	return c:GetCounter(0x1)*500
 end
 function c73665146.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetCounter(0x3001)==5 and tp==Duel.GetTurnPlayer()
+	return e:GetHandler():GetCounter(0x1)==5 and tp==Duel.GetTurnPlayer()
 end
 function c73665146.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

@@ -41,8 +41,8 @@ function c799183.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c799183.setcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x3001,1,REASON_COST) end
-	Duel.RemoveCounter(tp,1,0,0x3001,1,REASON_COST)
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x1,1,REASON_COST) end
+	Duel.RemoveCounter(tp,1,0,0x1,1,REASON_COST)
 end
 function c799183.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsSSetable() end

@@ -1,6 +1,6 @@
 --ゲイシャドウ
 function c84055227.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
+	c:EnableCounterPermit(0x1)
 	--add counter
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(84055227,0))
@@ -23,8 +23,8 @@ function c84055227.condition(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsRelateToBattle() and c:GetBattleTarget():IsType(TYPE_MONSTER)
 end
 function c84055227.operation(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x3001,1)
+	e:GetHandler():AddCounter(0x1,1)
 end
 function c84055227.attackup(e,c)
-	return c:GetCounter(0x3001)*200
+	return c:GetCounter(0x1)*200
 end

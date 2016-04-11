@@ -10,5 +10,5 @@ function c99532708.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c99532708.distg(e,c)
-	return c:GetCounter(0xe)>0 and c:GetCode()~=99532708
+	return c:GetCounter(0x100e)>0 and c:GetCode()~=99532708
 end

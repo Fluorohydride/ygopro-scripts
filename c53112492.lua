@@ -15,8 +15,8 @@ function c53112492.condition(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_SPELL) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsChainNegatable(ev)
 end
 function c53112492.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x3001,2,REASON_COST) end
-	Duel.RemoveCounter(tp,1,0,0x3001,2,REASON_COST)
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x1,2,REASON_COST) end
+	Duel.RemoveCounter(tp,1,0,0x1,2,REASON_COST)
 end
 function c53112492.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

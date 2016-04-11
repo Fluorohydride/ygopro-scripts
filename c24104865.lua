@@ -40,7 +40,7 @@ end
 function c24104865.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local t=Duel.GetAttackTarget()
-	if t and t~=c and t:GetCounter(0xe)>0 then
+	if t and t~=c and t:GetCounter(0x100e)>0 then
 		e:SetLabel(1)
 	else e:SetLabel(0) end
 end

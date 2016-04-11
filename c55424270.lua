@@ -1,6 +1,6 @@
 --魔導獣 ケルベロス
 function c55424270.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
+	c:EnableCounterPermit(0x1)
 	--add counter
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
@@ -33,17 +33,17 @@ function c55424270.initial_effect(c)
 end
 function c55424270.acop(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(1)>0 then
-		e:GetHandler():AddCounter(0x3001,1)
+		e:GetHandler():AddCounter(0x1,1)
 	end
 end
 function c55424270.attackup(e,c)
-	return c:GetCounter(0x3001)*500
+	return c:GetCounter(0x1)*500
 end
 function c55424270.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetBattledGroupCount()>0
 end
 function c55424270.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local n=c:GetCounter(0x3001)
-	if n~=0 then c:RemoveCounter(tp,0x3001,n,REASON_EFFECT) end
+	local n=c:GetCounter(0x1)
+	if n~=0 then c:RemoveCounter(tp,0x1,n,REASON_EFFECT) end
 end

@@ -1,6 +1,6 @@
 --黒魔導戦士 ブレイカー
 function c22923081.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
+	c:EnableCounterPermit(0x1)
 	--summon success
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(22923081,0))
@@ -45,22 +45,22 @@ function c22923081.initial_effect(c)
 end
 function c22923081.addtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,e:GetLabel(),0,0x3001)
+	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,e:GetLabel(),0,0x1)
 end
 function c22923081.addop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x3001,e:GetLabel())
+		e:GetHandler():AddCounter(0x1,e:GetLabel())
 	end
 end
 function c22923081.addcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_PENDULUM
 end
 function c22923081.atkval(e,c)
-	return c:GetCounter(0x3001)*400
+	return c:GetCounter(0x1)*400
 end
 function c22923081.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x3001,1,REASON_COST) end
-	e:GetHandler():RemoveCounter(tp,0x3001,1,REASON_COST)
+	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x1,1,REASON_COST) end
+	e:GetHandler():RemoveCounter(tp,0x1,1,REASON_COST)
 end
 function c22923081.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()

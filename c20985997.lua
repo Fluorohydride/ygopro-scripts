@@ -11,7 +11,7 @@ function c20985997.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c20985997.filter(c)
-	return c:GetCounter(0xe)>0 and c:IsDestructable()
+	return c:GetCounter(0x100e)>0 and c:IsDestructable()
 end
 function c20985997.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c20985997.filter(chkc) end
@@ -23,7 +23,7 @@ function c20985997.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c20985997.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:GetCounter(0xe)>0 and tc:IsRelateToEffect(e) then
+	if tc:GetCounter(0x100e)>0 and tc:IsRelateToEffect(e) then
 		if Duel.Destroy(tc,REASON_EFFECT)>0 then
 			Duel.Damage(1-tp,1000,REASON_EFFECT)
 			Duel.Damage(tp,1000,REASON_EFFECT)

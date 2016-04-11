@@ -17,14 +17,14 @@ function c78121572.con(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPosition(POS_FACEUP_ATTACK)
 end
 function c78121572.filter(c)
-	return c:IsFaceup() and c:IsCanAddCounter(0x3001,1)
+	return c:IsFaceup() and c:IsCanAddCounter(0x1,1)
 end
 function c78121572.tg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c78121572.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c78121572.filter,tp,LOCATION_ONFIELD,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(78121572,1))
 	local g=Duel.SelectTarget(tp,c78121572.filter,tp,LOCATION_ONFIELD,0,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x3001)
+	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x1)
 end
 function c78121572.op(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -32,7 +32,7 @@ function c78121572.op(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and c:IsPosition(POS_FACEUP_ATTACK) then
 		Duel.ChangePosition(c,POS_FACEUP_DEFENCE)
 		if tc:IsRelateToEffect(e) then
-			tc:AddCounter(0x3001,1)
+			tc:AddCounter(0x1,1)
 		end
 	end
 end

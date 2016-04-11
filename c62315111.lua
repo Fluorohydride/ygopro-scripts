@@ -13,7 +13,7 @@ function c62315111.atcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	return bc and bc:IsStatus(STATUS_BATTLE_DESTROYED) and c:IsChainAttackable()
-		and bc:GetCounter(0xe)>0
+		and bc:GetCounter(0x100e)>0
 end
 function c62315111.atop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChainAttack()

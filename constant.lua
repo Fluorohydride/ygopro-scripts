@@ -168,8 +168,8 @@ ASSUME_RACE			=6
 ASSUME_ATTACK		=7
 ASSUME_DEFENCE		=8
 --Counter	--指示物
-COUNTER_NEED_PERMIT			=0x1000	--可以放置某指示物
-COUNTER_NEED_ENABLE			=0x2000	--放在自己身上的指示物(卡片守衛)
+COUNTER_WITHOUT_PERMIT		=0x1000	--可以放置在非特定對象的指示物
+COUNTER_NEED_ENABLE			=0x2000	--在卡片本身放置上述指示物的標記(卡片守衛)
 --Phase	--阶段
 PHASE_DRAW			=0x01	--抽卡阶段
 PHASE_STANDBY		=0x02	--准备阶段

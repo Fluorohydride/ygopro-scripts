@@ -1,7 +1,7 @@
 --魔導戦士 ブレイカー
 function c71413901.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
-	c:SetCounterLimit(0x3001,1)
+	c:EnableCounterPermit(0x1)
+	c:SetCounterLimit(0x1,1)
 	--summon success
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(71413901,0))
@@ -33,19 +33,19 @@ function c71413901.initial_effect(c)
 end
 function c71413901.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x3001)
+	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x1)
 end
 function c71413901.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x3001,1)
+		e:GetHandler():AddCounter(0x1,1)
 	end
 end
 function c71413901.attackup(e,c)
-	return c:GetCounter(0x3001)*300
+	return c:GetCounter(0x1)*300
 end
 function c71413901.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x3001,1,REASON_COST) end
-	e:GetHandler():RemoveCounter(tp,0x3001,1,REASON_COST)
+	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x1,1,REASON_COST) end
+	e:GetHandler():RemoveCounter(tp,0x1,1,REASON_COST)
 end
 function c71413901.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()

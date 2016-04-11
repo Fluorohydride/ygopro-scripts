@@ -15,7 +15,7 @@ function c57384901.filter1(c)
 	return c:IsAbleToChangeControler()
 end
 function c57384901.filter2(c)
-	return c:GetCounter(0xe)>0 and c:IsAbleToChangeControler()
+	return c:GetCounter(0x100e)>0 and c:IsAbleToChangeControler()
 end
 function c57384901.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

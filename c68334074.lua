@@ -14,8 +14,8 @@ function c68334074.initial_effect(c)
 end
 c68334074.dark_magician_list=true
 function c68334074.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x3001,2,REASON_COST) end
-	Duel.RemoveCounter(tp,1,0,0x3001,2,REASON_COST)
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x1,2,REASON_COST) end
+	Duel.RemoveCounter(tp,1,0,0x1,2,REASON_COST)
 end
 function c68334074.filter(c,e,tp)
 	return c:IsCode(46986414,78193831) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

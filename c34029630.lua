@@ -3,7 +3,7 @@ function c34029630.initial_effect(c)
 	--counter permit
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_COUNTER_PERMIT+0x3001)
+	e1:SetCode(EFFECT_COUNTER_PERMIT+0x1)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetCondition(c34029630.ctpermit)
 	c:RegisterEffect(e1)
@@ -45,8 +45,8 @@ function c34029630.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c34029630.filter(chkc) end
 	if chk==0 then return true end
 	local c=e:GetHandler()
-	c:AddCounter(0x3001,3)
-	if Duel.GetTurnPlayer()==tp and c:IsCanRemoveCounter(tp,0x3001,1,REASON_EFFECT)
+	c:AddCounter(0x1,3)
+	if Duel.GetTurnPlayer()==tp and c:IsCanRemoveCounter(tp,0x1,1,REASON_EFFECT)
 		and Duel.IsExistingTarget(c34029630.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler())
 		and Duel.SelectYesNo(tp,aux.Stringid(34029630,0)) then
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -61,24 +61,24 @@ function c34029630.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and c:IsCanRemoveCounter(tp,0x3001,1,REASON_EFFECT) and tc:IsCanAddCounter(0x3001,1) then
-		c:RemoveCounter(tp,0x3001,1,REASON_EFFECT)
-		tc:AddCounter(0x3001,1)
+	if tc and tc:IsRelateToEffect(e) and c:IsCanRemoveCounter(tp,0x1,1,REASON_EFFECT) and tc:IsCanAddCounter(0x1,1) then
+		c:RemoveCounter(tp,0x1,1,REASON_EFFECT)
+		tc:AddCounter(0x1,1)
 	end
 end
 function c34029630.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c34029630.filter(c)
-	return c:IsFaceup() and c:IsCanAddCounter(0x3001,1)
+	return c:IsFaceup() and c:IsCanAddCounter(0x1,1)
 end
 function c34029630.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c34029630.filter(chkc) end
-	if chk==0 then return e:GetHandler():GetFlagEffect(34029630)==0 and e:GetHandler():IsCanRemoveCounter(tp,0x3001,1,REASON_EFFECT)
+	if chk==0 then return e:GetHandler():GetFlagEffect(34029630)==0 and e:GetHandler():IsCanRemoveCounter(tp,0x1,1,REASON_EFFECT)
 		and Duel.IsExistingTarget(c34029630.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(34029630,2))
 	Duel.SelectTarget(tp,c34029630.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetHandler())
 end
 function c34029630.descon(e)
-	return e:GetHandler():GetCounter(0x3001)==0
+	return e:GetHandler():GetCounter(0x1)==0
 end

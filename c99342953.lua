@@ -32,11 +32,11 @@ function c99342953.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c99342953.ctfilter,1,nil)
 end
 function c99342953.ctop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(COUNTER_NEED_ENABLE+0xe,1)
+	e:GetHandler():AddCounter(COUNTER_NEED_ENABLE+0x100e,1)
 end
 function c99342953.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0xe,2,REASON_COST) end
-	Duel.RemoveCounter(tp,1,1,0xe,2,REASON_COST)
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0x100e,2,REASON_COST) end
+	Duel.RemoveCounter(tp,1,1,0x100e,2,REASON_COST)
 end
 function c99342953.filter(c,e,tp)
 	return c:IsSetCard(0xc) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

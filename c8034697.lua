@@ -1,6 +1,6 @@
 --魔法の操り人形
 function c8034697.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
+	c:EnableCounterPermit(0x1)
 	--add counter
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
@@ -36,15 +36,15 @@ function c8034697.initial_effect(c)
 end
 function c8034697.acop(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(1)>0 then
-		e:GetHandler():AddCounter(0x3001,1)
+		e:GetHandler():AddCounter(0x1,1)
 	end
 end
 function c8034697.attackup(e,c)
-	return c:GetCounter(0x3001)*200
+	return c:GetCounter(0x1)*200
 end
 function c8034697.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x3001,2,REASON_COST) end
-	e:GetHandler():RemoveCounter(tp,0x3001,2,REASON_COST)
+	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x1,2,REASON_COST) end
+	e:GetHandler():RemoveCounter(tp,0x1,2,REASON_COST)
 end
 function c8034697.destarg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsDestructable() end

@@ -1,7 +1,7 @@
 --アーカナイト・マジシャン／バスター
 function c14553285.initial_effect(c)
 	c:EnableReviveLimit()
-	c:EnableCounterPermit(0x3001)
+	c:EnableCounterPermit(0x1)
 	--Cannot special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
@@ -48,19 +48,19 @@ function c14553285.initial_effect(c)
 end
 function c14553285.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,2,0,0x3001)
+	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,2,0,0x1)
 end
 function c14553285.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x3001,2)
+		e:GetHandler():AddCounter(0x1,2)
 	end
 end
 function c14553285.attackup(e,c)
-	return c:GetCounter(0x3001)*1000
+	return c:GetCounter(0x1)*1000
 end
 function c14553285.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x3001,2,REASON_COST) end
-	e:GetHandler():RemoveCounter(tp,0x3001,2,REASON_COST)
+	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x1,2,REASON_COST) end
+	e:GetHandler():RemoveCounter(tp,0x1,2,REASON_COST)
 end
 function c14553285.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDestructable,tp,0,LOCATION_ONFIELD,1,nil) end

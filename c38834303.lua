@@ -24,11 +24,11 @@ function c38834303.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=sg:GetFirst()
 	local count=0
 	while tc do
-		count=count+tc:GetCounter(0xe)
+		count=count+tc:GetCounter(0x100e)
 		tc:RemoveCounter(tp,0,0,0)
 		tc=sg:GetNext()
 	end
 	if count>0 then
-		Duel.RaiseEvent(e:GetHandler(),EVENT_REMOVE_COUNTER+0xe,e,REASON_EFFECT,tp,tp,count)
+		Duel.RaiseEvent(e:GetHandler(),EVENT_REMOVE_COUNTER+0x100e,e,REASON_EFFECT,tp,tp,count)
 	end
 end

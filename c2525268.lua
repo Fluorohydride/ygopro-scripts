@@ -1,7 +1,7 @@
 --魔導騎士 ディフェンダー
 function c2525268.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
-	c:SetCounterLimit(0x3001,1)
+	c:EnableCounterPermit(0x1)
+	c:SetCounterLimit(0x1,1)
 	--summon success
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(2525268,0))
@@ -24,11 +24,11 @@ function c2525268.initial_effect(c)
 end
 function c2525268.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x3001)
+	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x1)
 end
 function c2525268.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x3001,1)
+		e:GetHandler():AddCounter(0x1,1)
 	end
 end
 function c2525268.dfilter(c)
@@ -38,7 +38,7 @@ function c2525268.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local count=eg:FilterCount(c2525268.dfilter,nil)
 		e:SetLabel(count)
-		return count>0 and Duel.IsCanRemoveCounter(tp,1,0,0x3001,count,REASON_COST)
+		return count>0 and Duel.IsCanRemoveCounter(tp,1,0,0x1,count,REASON_COST)
 	end
 	return Duel.SelectYesNo(tp,aux.Stringid(2525268,1))
 end
@@ -47,5 +47,5 @@ function c2525268.value(e,c)
 end
 function c2525268.desop(e,tp,eg,ep,ev,re,r,rp)
 	local count=e:GetLabel()
-	Duel.RemoveCounter(tp,1,0,0x3001,count,REASON_COST)
+	Duel.RemoveCounter(tp,1,0,0x1,count,REASON_COST)
 end

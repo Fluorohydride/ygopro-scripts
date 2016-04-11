@@ -11,8 +11,8 @@ function c32062913.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c32062913.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x3001,10,REASON_COST) end
-	Duel.RemoveCounter(tp,1,0,0x3001,10,REASON_COST)
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x1,10,REASON_COST) end
+	Duel.RemoveCounter(tp,1,0,0x1,10,REASON_COST)
 end
 function c32062913.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDestructable,tp,0,LOCATION_ONFIELD,1,nil) end

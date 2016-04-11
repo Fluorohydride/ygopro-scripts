@@ -1,5 +1,6 @@
 --D・フィールド
 function c56074358.initial_effect(c)
+	c:EnableCounterPermit(0x8)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -46,7 +47,7 @@ function c56074358.accon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c56074358.cfilter,1,nil)
 end
 function c56074358.acop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x8+COUNTER_NEED_ENABLE,1)
+	e:GetHandler():AddCounter(0x8,1)
 end
 function c56074358.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

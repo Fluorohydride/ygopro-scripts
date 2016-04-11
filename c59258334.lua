@@ -36,7 +36,7 @@ function c59258334.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c59258334.filter(c)
-	return c:GetCounter(0xe)>0 and c:IsControlerCanBeChanged()
+	return c:GetCounter(0x100e)>0 and c:IsControlerCanBeChanged()
 end
 function c59258334.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c59258334.filter(chkc) end
@@ -49,7 +49,7 @@ function c59258334.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:GetCounter(0xe)>0 and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:GetCounter(0x100e)>0 and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_OWNER_RELATE)
@@ -68,7 +68,7 @@ end
 function c59258334.descon(e)
 	local c=e:GetHandler()
 	if c:GetCardTargetCount()==0 then return false end
-	return c:GetFirstCardTarget():GetCounter(0xe)==0
+	return c:GetFirstCardTarget():GetCounter(0x100e)==0
 end
 function c59258334.descon2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetFirstCardTarget()
@@ -82,6 +82,6 @@ function c59258334.rccon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c59258334.rcop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetFirstCardTarget()
-	tc:RemoveCounter(tp,0xe,1,REASON_EFFECT)
-	Duel.RaiseEvent(e:GetHandler(),EVENT_REMOVE_COUNTER+0xe,e,REASON_EFFECT,tp,tp,1)
+	tc:RemoveCounter(tp,0x100e,1,REASON_EFFECT)
+	Duel.RaiseEvent(e:GetHandler(),EVENT_REMOVE_COUNTER+0x100e,e,REASON_EFFECT,tp,tp,1)
 end

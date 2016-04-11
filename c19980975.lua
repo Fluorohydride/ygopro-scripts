@@ -11,7 +11,7 @@ function c19980975.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c19980975.filter(c)
-	return c:GetCounter(0x19)>=4 and c:IsDestructable()
+	return c:GetCounter(0x1019)>=4 and c:IsDestructable()
 end
 function c19980975.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c19980975.filter(chkc) end
@@ -24,7 +24,7 @@ end
 function c19980975.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		local ct=math.floor(tc:GetCounter(0x19)/4)
+		local ct=math.floor(tc:GetCounter(0x1019)/4)
 		if Duel.Destroy(tc,REASON_EFFECT)~=0 and ct~=0 then
 			Duel.Draw(tp,ct,REASON_EFFECT)
 		end

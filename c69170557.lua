@@ -26,7 +26,7 @@ function c69170557.initial_effect(c)
 end
 c69170557.xyz_number=40
 function c69170557.desfilter(c)
-	return c:GetCounter(0x24)~=0 and c:IsDestructable()
+	return c:GetCounter(0x1024)~=0 and c:IsDestructable()
 end
 function c69170557.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -57,7 +57,7 @@ function c69170557.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	local tc=g:GetFirst()
 	while tc do
-		tc:AddCounter(0x24,1)
+		tc:AddCounter(0x1024,1)
 		tc=g:GetNext()
 	end
 end

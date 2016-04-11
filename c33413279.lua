@@ -16,8 +16,8 @@ function c33413279.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c33413279.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x3001,2,REASON_COST) end
-	Duel.RemoveCounter(tp,1,0,0x3001,2,REASON_COST)
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x1,2,REASON_COST) end
+	Duel.RemoveCounter(tp,1,0,0x1,2,REASON_COST)
 end
 function c33413279.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()

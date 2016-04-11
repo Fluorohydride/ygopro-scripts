@@ -30,7 +30,7 @@ function c73262676.operation(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetCount()==0 then return end
 		for i=1,lv do
 			local sg=g:Select(tp,1,1,nil)
-			sg:GetFirst():AddCounter(0xe,1)
+			sg:GetFirst():AddCounter(0x100e,1)
 		end
 	end
 end

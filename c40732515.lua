@@ -38,12 +38,12 @@ end
 function c40732515.spcon(e,c)
 	if c==nil then return true end
 	local fd=Duel.GetFieldCard(c:GetControler(),LOCATION_SZONE,5)
-	return fd and fd:IsCode(39910367) and fd:IsCanRemoveCounter(c:GetControler(),0x3001,6,REASON_COST)
+	return fd and fd:IsCode(39910367) and fd:IsCanRemoveCounter(c:GetControler(),0x1,6,REASON_COST)
 		and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c40732515.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local fd=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
-	fd:RemoveCounter(tp,0x3001,6,REASON_RULE)
+	fd:RemoveCounter(tp,0x1,6,REASON_RULE)
 end
 function c40732515.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1

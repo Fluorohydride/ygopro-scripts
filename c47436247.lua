@@ -1,6 +1,6 @@
 --紫炎の道場
 function c47436247.initial_effect(c)
-	c:EnableCounterPermit(0x3003)
+	c:EnableCounterPermit(0x3)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -32,12 +32,12 @@ function c47436247.ctfilter(c)
 end
 function c47436247.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c47436247.ctfilter,1,nil) then
-		e:GetHandler():AddCounter(0x3003,1)
+		e:GetHandler():AddCounter(0x3,1)
 	end
 end
 function c47436247.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
-	local ct=e:GetHandler():GetCounter(0x3003)
+	local ct=e:GetHandler():GetCounter(0x3)
 	e:SetLabel(ct)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
@@ -47,7 +47,7 @@ function c47436247.filter(c,ct,e,tp)
 end
 function c47436247.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c47436247.filter,tp,LOCATION_DECK,0,1,nil,e:GetHandler():GetCounter(0x3003),e,tp) end
+		and Duel.IsExistingMatchingCard(c47436247.filter,tp,LOCATION_DECK,0,1,nil,e:GetHandler():GetCounter(0x3),e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c47436247.spop(e,tp,eg,ep,ev,re,r,rp)

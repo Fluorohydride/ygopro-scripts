@@ -1,5 +1,6 @@
 --サンダー・ボトル
 function c11741041.initial_effect(c)
+	c:EnableCounterPermit(0xc)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -27,7 +28,7 @@ function c11741041.initial_effect(c)
 end
 function c11741041.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetAttacker():IsControler(tp) then
-		e:GetHandler():AddCounter(0xc+COUNTER_NEED_ENABLE,1)
+		e:GetHandler():AddCounter(0xc,1)
 	end
 end
 function c11741041.descon(e,tp,eg,ep,ev,re,r,rp)

@@ -34,30 +34,30 @@ function c4694209.initial_effect(c)
 end
 function c4694209.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x21)
+	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x1021)
 end
 function c4694209.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x21+COUNTER_NEED_ENABLE,1)
+		e:GetHandler():AddCounter(0x1021+COUNTER_NEED_ENABLE,1)
 	end
 end
 function c4694209.attackup(e,c)
-	return c:GetCounter(0x21)*300
+	return c:GetCounter(0x1021)*300
 end
 function c4694209.addct2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and chkc:IsFaceup() end
-	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x21,1,REASON_EFFECT)
+	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x1021,1,REASON_EFFECT)
 		and Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_ONFIELD,0,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(4694209,1))
 	Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_ONFIELD,0,1,1,e:GetHandler())
 end
 function c4694209.addc2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetCounter(0x21)==0 then return end
-	c:RemoveCounter(tp,0x21,1,REASON_EFFECT)
+	if c:GetCounter(0x1021)==0 then return end
+	c:RemoveCounter(tp,0x1021,1,REASON_EFFECT)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
-		tc:AddCounter(0x21,1)
+		tc:AddCounter(0x1021,1)
 		if tc:GetFlagEffect(4694209)~=0 then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
@@ -70,9 +70,9 @@ function c4694209.addc2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c4694209.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return not e:GetHandler():IsReason(REASON_RULE) and e:GetHandler():GetCounter(0x21)>0 end
+	if chk==0 then return not e:GetHandler():IsReason(REASON_RULE) and e:GetHandler():GetCounter(0x1021)>0 end
 	return true
 end
 function c4694209.repop(e,tp,eg,ep,ev,re,r,rp,chk)
-	e:GetHandler():RemoveCounter(tp,0x21,1,REASON_EFFECT)
+	e:GetHandler():RemoveCounter(tp,0x1021,1,REASON_EFFECT)
 end

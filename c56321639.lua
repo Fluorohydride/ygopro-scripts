@@ -1,6 +1,6 @@
 --魔導書廊エトワール
 function c56321639.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
+	c:EnableCounterPermit(0x1)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -48,14 +48,14 @@ function c56321639.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and c:IsSetCard(0x106e) and e:GetHandler():GetFlagEffect(1)>0
 end
 function c56321639.ctop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x3001,1)
+	e:GetHandler():AddCounter(0x1,1)
 end
 function c56321639.atkval(e,c)
-	return e:GetHandler():GetCounter(0x3001)*100
+	return e:GetHandler():GetCounter(0x1)*100
 end
 function c56321639.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local ct=c:GetCounter(0x3001)
+	local ct=c:GetCounter(0x1)
 	e:SetLabel(ct)
 	return ct>0 and c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_DESTROY)
 end

@@ -1,6 +1,6 @@
 --バベル・タワー
 function c94256039.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
+	c:EnableCounterPermit(0x1)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -33,7 +33,7 @@ function c94256039.initial_effect(c)
 	local e5=Effect.CreateEffect(c)
 	e5:SetCategory(CATEGORY_DESTROY)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e5:SetCode(EVENT_ADD_COUNTER+0x3001)
+	e5:SetCode(EVENT_ADD_COUNTER+0x1)
 	e5:SetCondition(c94256039.descon)
 	e5:SetTarget(c94256039.destg)
 	e5:SetOperation(c94256039.desop)
@@ -43,8 +43,8 @@ function c94256039.acop(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_PLAYER)
 	local c=e:GetHandler()
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and c:GetFlagEffect(1)>0 then
-		c:AddCounter(0x3001,1)
-		if c:GetCounter(0x3001)==4 then
+		c:AddCounter(0x1,1)
+		if c:GetCounter(0x1)==4 then
 			Duel.RaiseSingleEvent(c,EVENT_CUSTOM+94256039,re,0,0,p,0)
 		end
 	end
@@ -61,7 +61,7 @@ function c94256039.damop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c94256039.descon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler()~=e:GetHandler() and e:GetHandler():GetCounter(0x3001)>=4
+	return re:GetHandler()~=e:GetHandler() and e:GetHandler():GetCounter(0x1)>=4
 end
 function c94256039.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

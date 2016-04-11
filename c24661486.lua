@@ -25,18 +25,18 @@ function c24661486.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
 function c24661486.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsCanAddCounter(0x15,1) end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsCanAddCounter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,0x15,1) end
+	if chkc then return chkc:IsCanAddCounter(0x1015,1) end
+	if chk==0 then return Duel.IsExistingTarget(Card.IsCanAddCounter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,0x1015,1) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,Card.IsCanAddCounter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,0x15,1)
+	local g=Duel.SelectTarget(tp,Card.IsCanAddCounter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,0x1015,1)
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0)
 end
 function c24661486.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsCanAddCounter(0x15,1) then
-		tc:AddCounter(0x15,1)
+	if tc and tc:IsRelateToEffect(e) and tc:IsCanAddCounter(0x1015,1) then
+		tc:AddCounter(0x1015,1)
 	end
 end
 function c24661486.atkval(e,c)
-	return Duel.GetCounter(0,1,1,0x15)*300
+	return Duel.GetCounter(0,1,1,0x1015)*300
 end

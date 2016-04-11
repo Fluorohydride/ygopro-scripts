@@ -1,6 +1,6 @@
 --マジカル・アブダクター
 function c10239627.initial_effect(c)
-	c:EnableCounterPermit(0x3001,LOCATION_PZONE+LOCATION_MZONE)
+	c:EnableCounterPermit(0x1,LOCATION_PZONE+LOCATION_MZONE)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
 	--add counter
@@ -43,12 +43,12 @@ function c10239627.initial_effect(c)
 end
 function c10239627.acop(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(1)>0 then
-		e:GetHandler():AddCounter(0x3001,1)
+		e:GetHandler():AddCounter(0x1,1)
 	end
 end
 function c10239627.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x3001,3,REASON_COST) end
-	e:GetHandler():RemoveCounter(tp,0x3001,3,REASON_COST)
+	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x1,3,REASON_COST) end
+	e:GetHandler():RemoveCounter(tp,0x1,3,REASON_COST)
 end
 function c10239627.thfilter1(c)
 	return c:IsType(TYPE_PENDULUM) and c:IsAbleToHand()
@@ -82,5 +82,5 @@ function c10239627.thop2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c10239627.atkval(e,c)
-	return e:GetHandler():GetCounter(0x3001)*100
+	return e:GetHandler():GetCounter(0x1)*100
 end

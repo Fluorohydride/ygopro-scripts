@@ -1,5 +1,6 @@
 --D・クロックン
 function c91607976.initial_effect(c)
+	c:EnableCounterPermit(0x8)
 	--atk
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -43,7 +44,7 @@ function c91607976.cond1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c91607976.opd1(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x8+COUNTER_NEED_ENABLE,1)
+		e:GetHandler():AddCounter(0x8,1)
 	end
 end
 function c91607976.cond2(e,tp,eg,ep,ev,re,r,rp)

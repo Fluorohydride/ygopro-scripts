@@ -1,6 +1,6 @@
 --ブラックフェザー・ドラゴン
 function c9012916.initial_effect(c)
-	c:EnableCounterPermit(0x3010)
+	c:EnableCounterPermit(0x10)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
@@ -38,19 +38,19 @@ function c9012916.initial_effect(c)
 end
 function c9012916.damval(e,re,val,r,rp,rc)
 	if bit.band(r,REASON_EFFECT)~=0 then
-		e:GetHandler():AddCounter(0x3010,1)
+		e:GetHandler():AddCounter(0x10,1)
 		return 0
 	end
 	return val
 end
 function c9012916.atkval(e,c)
-	return c:GetCounter(0x3010)*-700
+	return c:GetCounter(0x10)*-700
 end
 function c9012916.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetCounter(0x3010)>0 end
-	local ct=e:GetHandler():GetCounter(0x3010)
+	if chk==0 then return e:GetHandler():GetCounter(0x10)>0 end
+	local ct=e:GetHandler():GetCounter(0x10)
 	e:SetLabel(ct*700)
-	e:GetHandler():RemoveCounter(tp,0x3010,ct,REASON_COST)
+	e:GetHandler():RemoveCounter(tp,0x10,ct,REASON_COST)
 end
 function c9012916.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsFaceup() end

@@ -5,7 +5,7 @@ function c83269557.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetCode(EFFECT_COUNTER_PERMIT+0x3001)
+	e1:SetCode(EFFECT_COUNTER_PERMIT+0x1)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCondition(aux.IsDualState)
 	c:RegisterEffect(e1)
@@ -44,18 +44,18 @@ function c83269557.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c83269557.atkval(e,c)
-	return c:GetCounter(0x3001)*300
+	return c:GetCounter(0x1)*300
 end
 function c83269557.target1(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsCanAddCounter(0x3001,1) end
+	if chk==0 then return e:GetHandler():IsCanAddCounter(0x1,1) end
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0)
 end
 function c83269557.operation1(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x3001,1)
+	e:GetHandler():AddCounter(0x1,1)
 end
 function c83269557.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x3001,1,REASON_COST) end
-	e:GetHandler():RemoveCounter(tp,0x3001,1,REASON_COST)
+	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x1,1,REASON_COST) end
+	e:GetHandler():RemoveCounter(tp,0x1,1,REASON_COST)
 end
 function c83269557.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsDestructable() end

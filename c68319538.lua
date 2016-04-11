@@ -47,12 +47,12 @@ function c68319538.operation(e,tp,eg,ep,ev,re,r,rp)
 	for i=1,ct do
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(68319538,2))
 		local sg=g:Select(tp,1,1,nil)
-		sg:GetFirst():AddCounter(0xe,1)
+		sg:GetFirst():AddCounter(0x100e,1)
 	end
 end
 function c68319538.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0xe,2,REASON_COST) end
-	Duel.RemoveCounter(tp,1,1,0xe,2,REASON_COST)
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0x100e,2,REASON_COST) end
+	Duel.RemoveCounter(tp,1,1,0x100e,2,REASON_COST)
 end
 function c68319538.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and chkc:IsDestructable() end

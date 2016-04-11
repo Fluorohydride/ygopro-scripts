@@ -32,5 +32,5 @@ function c58012107.poop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c58012107.atktg(e,c)
-	return c:GetCounter(0xe)>0
+	return c:GetCounter(0x100e)>0
 end

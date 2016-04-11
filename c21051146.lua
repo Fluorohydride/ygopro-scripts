@@ -1,6 +1,6 @@
 --ブラッド・マジシャン－煉獄の魔術師－
 function c21051146.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
+	c:EnableCounterPermit(0x1)
 	--add counter
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
@@ -28,13 +28,13 @@ function c21051146.initial_effect(c)
 end
 function c21051146.acop(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(1)>0 then
-		e:GetHandler():AddCounter(0x3001,1)
+		e:GetHandler():AddCounter(0x1,1)
 	end
 end
 function c21051146.filter(c,cc,tp)
 	local ct=math.ceil(c:GetAttack()/700)
 	if ct==0 then ct=1 end
-	return c:IsFaceup() and c:IsDestructable() and cc:IsCanRemoveCounter(tp,0x3001,ct,REASON_COST)
+	return c:IsFaceup() and c:IsDestructable() and cc:IsCanRemoveCounter(tp,0x1,ct,REASON_COST)
 end
 function c21051146.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c21051146.filter(chkc,e:GetHandler(),tp) end
@@ -43,7 +43,7 @@ function c21051146.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c21051146.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,e:GetHandler(),tp)
 	local ct=math.ceil(g:GetFirst():GetAttack()/700)
 	if ct==0 then ct=1 end
-	e:GetHandler():RemoveCounter(tp,0x3001,ct,REASON_COST)
+	e:GetHandler():RemoveCounter(tp,0x1,ct,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c21051146.desop(e,tp,eg,ep,ev,re,r,rp)

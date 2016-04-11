@@ -15,17 +15,17 @@ function c73853830.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c73853830.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsCanAddCounter(0x3001,1) end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsCanAddCounter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil,0x3001,1) end
+	if chkc then return chkc:IsCanAddCounter(0x1,1) end
+	if chk==0 then return Duel.IsExistingTarget(Card.IsCanAddCounter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil,0x1,1) end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(73853830,1))
-	local g=Duel.SelectTarget(tp,Card.IsCanAddCounter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil,0x3001,1)
+	local g=Duel.SelectTarget(tp,Card.IsCanAddCounter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil,0x1,1)
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0)
 end
 function c73853830.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsCanAddCounter(0x3001,1) then
-		tc:AddCounter(0x3001,1)
+	if tc and tc:IsRelateToEffect(e) and tc:IsCanAddCounter(0x1,1) then
+		tc:AddCounter(0x1,1)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

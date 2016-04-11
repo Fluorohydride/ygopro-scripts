@@ -42,12 +42,12 @@ end
 function c79703905.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
 		local ct=Duel.GetMatchingGroupCount(c79703905.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-		e:GetHandler():AddCounter(0x19,ct)
+		e:GetHandler():AddCounter(0x1019,ct)
 	end
 end
 function c79703905.hdcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0x19,3,REASON_COST) end
-	Duel.RemoveCounter(tp,1,1,0x19,3,REASON_COST)
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0x1019,3,REASON_COST) end
+	Duel.RemoveCounter(tp,1,1,0x1019,3,REASON_COST)
 end
 function c79703905.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)~=0 end

@@ -1,6 +1,6 @@
 --覇魔導士アーカナイト・マジシャン
 function c21113684.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
+	c:EnableCounterPermit(0x1)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,c21113684.ffilter,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),true)
@@ -63,24 +63,24 @@ function c21113684.ffilter(c)
 	return c:IsType(TYPE_SYNCHRO) and c:IsRace(RACE_SPELLCASTER)
 end
 function c21113684.attackup(e,c)
-	return c:GetCounter(0x3001)*1000
+	return c:GetCounter(0x1)*1000
 end
 function c21113684.addcc(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_FUSION
 end
 function c21113684.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,2,0,0x3001)
+	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,2,0,0x1)
 end
 function c21113684.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x3001,2)
+		e:GetHandler():AddCounter(0x1,2)
 	end
 end
 function c21113684.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x3001,1,REASON_COST) end
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x1,1,REASON_COST) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
-	Duel.RemoveCounter(tp,1,0,0x3001,1,REASON_COST)
+	Duel.RemoveCounter(tp,1,0,0x1,1,REASON_COST)
 end
 function c21113684.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsDestructable() end

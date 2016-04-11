@@ -1,5 +1,6 @@
 --ライトロードの神域
 function c52665542.initial_effect(c)
+	c:EnableCounterPermit(0x5)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -73,7 +74,7 @@ function c52665542.accon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c52665542.cfilter,1,nil,tp)
 end
 function c52665542.acop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x5+COUNTER_NEED_ENABLE,1)
+	e:GetHandler():AddCounter(0x5,1)
 end
 function c52665542.dfilter(c,tp)
 	return c:IsFaceup() and c:IsLocation(LOCATION_ONFIELD)

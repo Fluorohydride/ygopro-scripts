@@ -1,6 +1,6 @@
 --闇紅の魔導師
 function c45462639.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
+	c:EnableCounterPermit(0x1)
 	--summon success
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(45462639,0))
@@ -46,24 +46,24 @@ function c45462639.initial_effect(c)
 end
 function c45462639.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,2,0,0x3001)
+	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,2,0,0x1)
 end
 function c45462639.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x3001,2)
+		e:GetHandler():AddCounter(0x1,2)
 	end
 end
 function c45462639.acop(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(1)>0 then
-		e:GetHandler():AddCounter(0x3001,1)
+		e:GetHandler():AddCounter(0x1,1)
 	end
 end
 function c45462639.attackup(e,c)
-	return c:GetCounter(0x3001)*300
+	return c:GetCounter(0x1)*300
 end
 function c45462639.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x3001,2,REASON_COST) end
-	e:GetHandler():RemoveCounter(tp,0x3001,2,REASON_COST)
+	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x1,2,REASON_COST) end
+	e:GetHandler():RemoveCounter(tp,0x1,2,REASON_COST)
 end
 function c45462639.destarg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 end

@@ -37,7 +37,7 @@ function c75433814.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
 	local tc=g:GetFirst()
 	while tc do
-		tc:AddCounter(0x24,1)
+		tc:AddCounter(0x1024,1)
 		tc=g:GetNext()
 	end
 	Duel.RegisterFlagEffect(tp,75433814,RESET_PHASE+PHASE_END,0,2)
@@ -46,7 +46,7 @@ function c75433814.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFlagEffect(tp,75433814)~=0 and Duel.GetTurnPlayer()~=tp
 end
 function c75433814.desfilter(c)
-	return c:GetCounter(0x24)~=0 and c:IsDestructable()
+	return c:GetCounter(0x1024)~=0 and c:IsDestructable()
 end
 function c75433814.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c75433814.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end

@@ -21,11 +21,11 @@ function c60728397.tgfilter(c)
 	return c:IsRace(RACE_REPTILE) and c:IsAbleToGrave()
 end
 function c60728397.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsCanAddCounter(0x9,2) end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsCanAddCounter,tp,0,LOCATION_MZONE,1,nil,0x9,2)
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsCanAddCounter(0x1009,2) end
+	if chk==0 then return Duel.IsExistingTarget(Card.IsCanAddCounter,tp,0,LOCATION_MZONE,1,nil,0x1009,2)
 		and Duel.IsExistingMatchingCard(c60728397.tgfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,Card.IsCanAddCounter,tp,0,LOCATION_MZONE,1,1,nil,0x9,2)
+	local g=Duel.SelectTarget(tp,Card.IsCanAddCounter,tp,0,LOCATION_MZONE,1,1,nil,0x1009,2)
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0)
 end
 function c60728397.activate(e,tp,eg,ep,ev,re,r,rp)
@@ -34,9 +34,9 @@ function c60728397.activate(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SendtoGrave(g,REASON_EFFECT)
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) and tc:IsCanAddCounter(0x9,2) and g:GetFirst():IsLocation(LOCATION_GRAVE) then
+		if tc:IsRelateToEffect(e) and tc:IsCanAddCounter(0x1009,2) and g:GetFirst():IsLocation(LOCATION_GRAVE) then
 			local atk=tc:GetAttack()
-			tc:AddCounter(0x9,2)
+			tc:AddCounter(0x1009,2)
 			if atk>0 and tc:GetAttack()==0 then
 				Duel.RaiseEvent(tc,EVENT_CUSTOM+54306223,e,0,0,0,0)
 			end

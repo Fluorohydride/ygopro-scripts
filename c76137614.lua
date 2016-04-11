@@ -14,8 +14,8 @@ function c76137614.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c76137614.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0x3001,1,REASON_COST) end
-	Duel.RemoveCounter(tp,1,1,0x3001,1,REASON_COST)
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0x1,1,REASON_COST) end
+	Duel.RemoveCounter(tp,1,1,0x1,1,REASON_COST)
 end
 function c76137614.filter(c)
 	return c:IsType(TYPE_SPELL) and c:IsFaceup() and c:IsAbleToHand()

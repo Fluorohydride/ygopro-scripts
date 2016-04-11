@@ -1,6 +1,6 @@
 --六武院
 function c53819808.initial_effect(c)
-	c:EnableCounterPermit(0x3003)
+	c:EnableCounterPermit(0x3)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -30,9 +30,9 @@ function c53819808.ctfilter(c)
 end
 function c53819808.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c53819808.ctfilter,1,nil) then
-		e:GetHandler():AddCounter(0x3003,1)
+		e:GetHandler():AddCounter(0x3,1)
 	end
 end
 function c53819808.val(e)
-	return e:GetHandler():GetCounter(0x3003)*-100
+	return e:GetHandler():GetCounter(0x3)*-100
 end

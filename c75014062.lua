@@ -12,21 +12,21 @@ function c75014062.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c75014062.filter(c)
-	return c:IsFaceup() and c:IsCanAddCounter(0x3001,1)
+	return c:IsFaceup() and c:IsCanAddCounter(0x1,1)
 end
 function c75014062.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c75014062.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c75014062.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(75014062,1))
 	Duel.SelectTarget(tp,c75014062.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x3001)
+	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x1)
 end
 function c75014062.tfilter(c)
 	return c:IsCode(75014062) and c:IsAbleToHand()
 end
 function c75014062.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:AddCounter(0x3001,1) then
+	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:AddCounter(0x1,1) then
 		local th=Duel.GetFirstMatchingCard(c75014062.tfilter,tp,LOCATION_DECK,0,nil)
 		if th and Duel.SelectYesNo(tp,aux.Stringid(75014062,0)) then
 			Duel.SendtoHand(th,nil,REASON_EFFECT)

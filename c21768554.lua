@@ -29,7 +29,7 @@ function c21768554.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c21768554.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c21768554.filter(c)
-	return c:GetCounter(0xe)>0 and c:IsControlerCanBeChanged()
+	return c:GetCounter(0x100e)>0 and c:IsControlerCanBeChanged()
 end
 function c21768554.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c21768554.filter(chkc) end
@@ -47,7 +47,7 @@ function c21768554.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>Duel.GetLocationCount(tp,LOCATION_MZONE) then return end
 	local tc=g:GetFirst()
 	while tc do
-		if tc:IsFaceup() and tc:GetCounter(0xe)>0 and tc:IsRelateToEffect(e) then
+		if tc:IsFaceup() and tc:GetCounter(0x100e)>0 and tc:IsRelateToEffect(e) then
 			c:SetCardTarget(tc)
 			local e1=Effect.CreateEffect(c)
 			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
@@ -65,7 +65,7 @@ end
 function c21768554.con(e)
 	local c=e:GetOwner()
 	local h=e:GetHandler()
-	return c:IsHasCardTarget(h) and not c:IsDisabled() and h:GetCounter(0xe)>0
+	return c:IsHasCardTarget(h) and not c:IsDisabled() and h:GetCounter(0x100e)>0
 end
 function c21768554.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(21768554)~=0

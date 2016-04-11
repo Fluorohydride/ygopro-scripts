@@ -1,6 +1,6 @@
 --マジカル・コンダクター
 function c6061630.initial_effect(c)
-	c:EnableCounterPermit(0x3001)
+	c:EnableCounterPermit(0x1)
 	--add counter
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
@@ -28,12 +28,12 @@ function c6061630.initial_effect(c)
 end
 function c6061630.acop(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(1)>0 then
-		e:GetHandler():AddCounter(0x3001,2)
+		e:GetHandler():AddCounter(0x1,2)
 	end
 end
 function c6061630.filter(c,cc,e,tp)
 	return c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and c:GetLevel()>0 and cc:IsCanRemoveCounter(tp,0x3001,c:GetLevel(),REASON_COST)
+		and c:GetLevel()>0 and cc:IsCanRemoveCounter(tp,0x1,c:GetLevel(),REASON_COST)
 end
 function c6061630.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -53,7 +53,7 @@ function c6061630.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	lvt[pc]=nil
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(6061630,1))
 	local lv=Duel.AnnounceNumber(tp,table.unpack(lvt))
-	e:GetHandler():RemoveCounter(tp,0x3001,lv,REASON_COST)
+	e:GetHandler():RemoveCounter(tp,0x1,lv,REASON_COST)
 	e:SetLabel(lv)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 end

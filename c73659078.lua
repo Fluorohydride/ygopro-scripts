@@ -44,12 +44,12 @@ function c73659078.operation(e,tp,eg,ep,ev,re,r,rp)
 	for i=1,ct do
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(73659078,1))
 		local tc=g:Select(tp,1,1,nil):GetFirst()
-		tc:AddCounter(0x15,1)
+		tc:AddCounter(0x1015,1)
 	end
 end
 function c73659078.atktg(e,c)
 	return not c:IsAttribute(ATTRIBUTE_WATER)
 end
 function c73659078.atkval(e,c)
-	return Duel.GetCounter(0,1,1,0x15)*-200
+	return Duel.GetCounter(0,1,1,0x1015)*-200
 end

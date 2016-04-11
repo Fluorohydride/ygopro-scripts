@@ -1,6 +1,6 @@
 --脳開発研究所
 function c85668449.initial_effect(c)
-	c:EnableCounterPermit(0x3004)
+	c:EnableCounterPermit(0x4)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -38,7 +38,7 @@ function c85668449.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c85668449.esop(e,c)
-	e:GetHandler():AddCounter(0x3004,1)
+	e:GetHandler():AddCounter(0x4,1)
 end
 function c85668449.lrcon(e,tp,eg,ep,ev,re,r,rp)
 	if tp~=ep then return false end
@@ -49,11 +49,11 @@ function c85668449.lrcon(e,tp,eg,ep,ev,re,r,rp)
 	return rc:IsLocation(LOCATION_MZONE) and rc:IsRace(RACE_PSYCHO)
 end
 function c85668449.lrop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x3004,1)
+	e:GetHandler():AddCounter(0x4,1)
 end
 function c85668449.damp(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local ct=c:GetCounter(0x3004)
+	local ct=c:GetCounter(0x4)
 	e:SetLabel(ct)
 end
 function c85668449.damop(e,tp,eg,ep,ev,re,r,rp)

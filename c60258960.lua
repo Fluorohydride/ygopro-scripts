@@ -1,7 +1,7 @@
 --伝説の爆炎使い
 function c60258960.initial_effect(c)
 	c:EnableReviveLimit()
-	c:EnableCounterPermit(0x3001)
+	c:EnableCounterPermit(0x1)
 	--add counter
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
@@ -29,12 +29,12 @@ function c60258960.initial_effect(c)
 end
 function c60258960.acop(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(1)>0 then
-		e:GetHandler():AddCounter(0x3001,1)
+		e:GetHandler():AddCounter(0x1,1)
 	end
 end
 function c60258960.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x3001,3,REASON_COST) end
-	e:GetHandler():RemoveCounter(tp,0x3001,3,REASON_COST)
+	if chk==0 then return e:GetHandler():IsCanRemoveCounter(tp,0x1,3,REASON_COST) end
+	e:GetHandler():RemoveCounter(tp,0x1,3,REASON_COST)
 end
 function c60258960.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

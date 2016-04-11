@@ -13,8 +13,8 @@ function c23212990.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c23212990.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x3003,1,REASON_COST) end
-	Duel.RemoveCounter(tp,1,0,0x3003,1,REASON_COST)
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x3,1,REASON_COST) end
+	Duel.RemoveCounter(tp,1,0,0x3,1,REASON_COST)
 end
 function c23212990.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsDestructable() end
