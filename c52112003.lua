@@ -22,5 +22,8 @@ function c52112003.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(0x1)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
+	local e2=e1:Clone()
+	e2:SetCode(EFFECT_EXTRA_SET_COUNT)
+	Duel.RegisterEffect(e2,tp)
 	Duel.RegisterFlagEffect(tp,52112003,RESET_PHASE+PHASE_END,0,1)
 end
