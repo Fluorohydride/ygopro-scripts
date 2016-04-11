@@ -18,10 +18,13 @@ function c20457551.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atk down
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_DAMAGE_CALCULATING)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_UPDATE_ATTACK)
 	e3:SetRange(LOCATION_SZONE)
-	e3:SetOperation(c20457551.atkdown)
+	e3:SetTargetRange(0,LOCATION_MZONE)
+	e3:SetCondition(c20457551.atkcon)
+	e3:SetTarget(c20457551.atktg)
+	e3:SetValue(c20457551.atkval)
 	c:RegisterEffect(e3)
 	--destroy sub
 	local e4=Effect.CreateEffect(c)
@@ -51,18 +54,15 @@ function c20457551.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Equip(tp,c,tc)
 	end
 end
-function c20457551.atkdown(e,tp,eg,ep,ev,re,r,rp)
-	local eqc=e:GetHandler():GetEquipTarget()
-	if Duel.GetAttacker()~=eqc and Duel.GetAttackTarget()~=eqc then return end
-	local tc=eqc:GetBattleTarget()
-	if tc then
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_UPDATE_ATTACK)
-		e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
-		e1:SetValue(-eqc:GetLevel()*100)
-		tc:RegisterEffect(e1)
-	end
+function c20457551.atkcon(e)
+	return Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL
+		and e:GetHandler():GetEquipTarget():GetBattleTarget()
+end
+function c20457551.atktg(e,c)
+	return c==e:GetHandler():GetEquipTarget():GetBattleTarget()
+end
+function c20457551.atkval(e,c)
+	return e:GetHandler():GetEquipTarget():GetLevel()*-100
 end
 function c20457551.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCurrentPhase()==PHASE_END end

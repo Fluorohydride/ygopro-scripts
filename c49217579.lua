@@ -3,10 +3,12 @@ function c49217579.initial_effect(c)
 	c:EnableReviveLimit()
 	--atkup
 	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_DAMAGE_CALCULATING)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_UPDATE_ATTACK)
+	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e1:SetRange(LOCATION_MZONE)
 	e1:SetCondition(c49217579.atkcon)
-	e1:SetOperation(c49217579.atkop)
+	e1:SetValue(c49217579.atkval)
 	c:RegisterEffect(e1)
 	--remove
 	local e2=Effect.CreateEffect(c)
@@ -25,17 +27,11 @@ function c49217579.initial_effect(c)
 	e3:SetValue(aux.FALSE)
 	c:RegisterEffect(e3)
 end
-function c49217579.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetBattleTarget()~=nil
+function c49217579.atkcon(e)
+	return Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL and e:GetHandler():GetBattleTarget()
 end
-function c49217579.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=e:GetHandler():GetBattleTarget()
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_UPDATE_ATTACK)
-	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
-	e1:SetValue(tc:GetBaseAttack())
-	e:GetHandler():RegisterEffect(e1)
+function c49217579.atkval(e,c)
+	return e:GetHandler():GetBattleTarget():GetBaseAttack()
 end
 function c49217579.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetBattledGroupCount()>0

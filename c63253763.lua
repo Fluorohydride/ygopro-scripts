@@ -22,11 +22,17 @@ function c63253763.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atk def
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_DAMAGE_CALCULATING)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_UPDATE_ATTACK)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetOperation(c63253763.adval)
+	e3:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+	e3:SetCondition(c63253763.adcon)
+	e3:SetTarget(c63253763.adtg)
+	e3:SetValue(c63253763.adval)
 	c:RegisterEffect(e3)
+	local e4=e3:Clone()
+	e4:SetCode(EFFECT_UPDATE_DEFENCE)
+	c:RegisterEffect(e4)
 end
 function c63253763.spcon(e,c)
 	if c==nil then return true end
@@ -47,22 +53,13 @@ function c63253763.ctop(e,tp,eg,ep,ev,re,r,rp)
 		tc=g:GetNext()
 	end
 end
-function c63253763.addown(c,e)
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_UPDATE_ATTACK)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
-	e1:SetValue(c:GetCounter(0xe)*-300)
-	c:RegisterEffect(e1)
-	local e2=e1:Clone()
-	e2:SetCode(EFFECT_UPDATE_DEFENCE)
-	c:RegisterEffect(e2)
+function c63253763.adcon(e)
+	return Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL and Duel.GetAttackTarget()
 end
-function c63253763.adval(e,tp,eg,ep,ev,re,r,rp)
-	local a=Duel.GetAttacker()
-	local d=Duel.GetAttackTarget()
-	if not d then return end
-	if a:GetCounter(0xe)>0 and d:IsSetCard(0xc) then c63253763.addown(a,e) end
-	if d:GetCounter(0xe)>0 and a:IsSetCard(0xc) then c63253763.addown(d,e) end
+function c63253763.adtg(e,c)
+	local bc=c:GetBattleTarget()
+	return bc and c:GetCounter(0xe)~=0 and bc:IsSetCard(0xc)
+end
+function c63253763.adval(e,c)
+	return c:GetCounter(0xe)*-300
 end

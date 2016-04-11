@@ -39,13 +39,12 @@ function c6691855.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(500)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
-		--damage cal
+		--def
 		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e2:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
-		e2:SetRange(LOCATION_SZONE)
-		e2:SetCondition(c6691855.damcon)
-		e2:SetOperation(c6691855.damop)
+		e2:SetType(EFFECT_TYPE_EQUIP)
+		e2:SetCode(EFFECT_UPDATE_DEFENCE)
+		e2:SetCondition(c6691855.defcon)
+		e2:SetValue(c6691855.defval)
 		e2:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e2)
 		--Equip limit
@@ -58,17 +57,11 @@ function c6691855.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e3)
 	end
 end
-function c6691855.damcon(e,tp,eg,ep,ev,re,r,rp)
+function c6691855.defcon(e)
+	if Duel.GetCurrentPhase()~=PHASE_DAMAGE_CAL then return false end
 	local eq=e:GetHandler():GetEquipTarget()
-	return eq:IsRelateToBattle() and eq:IsDefencePos()
+	return (eq==Duel.GetAttacker() or eq==Duel.GetAttackTarget()) and eq:IsDefencePos()
 end
-function c6691855.damop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local atk=c:GetEquipTarget():GetAttack()
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_EQUIP)
-	e2:SetCode(EFFECT_UPDATE_DEFENCE)
-	e2:SetValue(atk)
-	e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE_CAL)
-	c:RegisterEffect(e2)
+function c6691855.defval(e,c)
+	return c:GetAttack()
 end

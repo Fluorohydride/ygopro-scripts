@@ -11,10 +11,10 @@ function c5183693.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk up
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_DAMAGE_CALCULATING)
-	e2:SetRange(LOCATION_SZONE)
-	e2:SetOperation(c5183693.atkup)
+	e2:SetType(EFFECT_TYPE_EQUIP)
+	e2:SetCode(EFFECT_UPDATE_ATTACK)
+	e2:SetCondition(c5183693.atkcon)
+	e2:SetValue(c5183693.atkval)
 	c:RegisterEffect(e2)
 	--Equip limit
 	local e3=Effect.CreateEffect(c)
@@ -52,25 +52,15 @@ function c5183693.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
 end
-function c5183693.atkup(e,tp,eg,ep,ev,re,r,rp)
+function c5183693.atkcon(e)
+	if Duel.GetCurrentPhase()~=PHASE_DAMAGE_CAL then return false end
 	local eqc=e:GetHandler():GetEquipTarget()
-	local a=Duel.GetAttacker()
-	local d=Duel.GetAttackTarget()
-	if not d or (a~=eqc and d~=eqc) then return end
-	local la=a:GetLevel()
-	local ld=d:GetLevel()
-	if (a==eqc and ld<=la) or (d==eqc and la<=ld) then return end
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_UPDATE_ATTACK)
-	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
-	if a==eqc then
-		e1:SetValue((ld-la)*500)
-		a:RegisterEffect(e1)
-	else
-		e1:SetValue((la-ld)*500)
-		d:RegisterEffect(e1)
-	end
+	local bc=eqc:GetBattleTarget()
+	return eqc:GetLevel()>0 and bc:GetLevel()>eqc:GetLevel()
+end
+function c5183693.atkval(e,c)
+	local bc=c:GetBattleTarget()
+	return (bc:GetLevel()-c:GetLevel())*500
 end
 function c5183693.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToDeck() end
