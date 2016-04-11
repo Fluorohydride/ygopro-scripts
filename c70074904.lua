@@ -12,7 +12,8 @@ function c70074904.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c70074904.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
+	local c=e:GetHandler()
+	return c:IsStatus(STATUS_BATTLE_DESTROYED) and c:IsStatus(STATUS_OPPO_BATTLE)
 end
 function c70074904.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
