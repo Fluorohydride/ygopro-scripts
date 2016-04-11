@@ -25,7 +25,6 @@ function c32104431.costfilter(c)
 	return c:IsSetCard(0xd6) and c:IsDiscardable()
 end
 function c32104431.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	e:SetLabel(1)
 	if chk==0 then return Duel.IsExistingMatchingCard(c32104431.costfilter,tp,LOCATION_HAND,0,1,nil) end
 	Duel.DiscardHand(tp,c32104431.costfilter,1,1,REASON_COST+REASON_DISCARD)
 end
@@ -33,12 +32,8 @@ function c32104431.spfilter(c,e,tp)
 	return c:IsSetCard(0xd7) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c32104431.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then
-		if e:GetLabel()==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return false end
-		e:SetLabel(0)
-		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c32104431.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp)
-	end
-	e:SetLabel(0)
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c32104431.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c32104431.operation(e,tp,eg,ep,ev,re,r,rp)

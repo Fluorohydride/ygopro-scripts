@@ -37,26 +37,18 @@ function c7922915.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_HAND+LOCATION_DECK)
 end
 function c7922915.activate(e,tp,eg,ep,ev,re,r,rp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<=0 then return end
-	if ft==1 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,c7922915.filter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp)
-		if g:GetCount()>0 then
-			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
-		end
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g1=Duel.SelectMatchingCard(tp,c7922915.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
-		if g1:GetCount()>0 then
-			Duel.SpecialSummon(g1,0,tp,tp,false,false,POS_FACEUP)
-		end
-		Duel.BreakEffect()
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g2=Duel.SelectMatchingCard(tp,c7922915.filter2,tp,LOCATION_DECK,0,1,1,nil,e,tp)
-		if g2:GetCount()>0 then 
-			Duel.SpecialSummon(g2,0,tp,tp,false,false,POS_FACEUP)
-		end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local g=Duel.SelectMatchingCard(tp,c7922915.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
+	if g:GetCount()>0 then
+		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+	end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local g2=Duel.SelectMatchingCard(tp,c7922915.filter2,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+	if g2:GetCount()>0 then
+		Duel.BreakEffect() 
+		Duel.SpecialSummon(g2,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
 function c7922915.cfilter(c,e,tp)

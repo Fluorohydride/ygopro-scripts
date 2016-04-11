@@ -40,7 +40,7 @@ function c72772445.actfilter(c,tp)
 	return c and c:IsFaceup() and c:IsSetCard(0xe2) and c:IsType(TYPE_MONSTER) and c:IsControler(tp)
 end
 function c72772445.aclimit(e,re,tp)
-	return (re:IsHasType(EFFECT_TYPE_ACTIVATE) or re:IsActiveType(TYPE_MONSTER)) and not re:GetHandler():IsImmuneToEffect(e)
+	return not re:GetHandler():IsImmuneToEffect(e)
 end
 function c72772445.actcon(e)
 	local tp=e:GetHandlerPlayer()
@@ -48,7 +48,7 @@ function c72772445.actcon(e)
 end
 function c72772445.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousSequence()==5 and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsPreviousLocation(LOCATION_SZONE) and c:GetPreviousSequence()==5 and c:IsPreviousPosition(POS_FACEUP)
 end
 function c72772445.spfilter(c,e,tp)
 	return c:IsSetCard(0xe2) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

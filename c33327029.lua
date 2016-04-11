@@ -49,7 +49,7 @@ function c33327029.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c33327029.thfilter(c)
-	return c:IsSetCard(0xe1) and c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsAbleToHand()
+	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsSetCard(0xe1) and c:IsAbleToHand()
 end
 function c33327029.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c33327029.thfilter,tp,LOCATION_EXTRA,0,1,nil) end

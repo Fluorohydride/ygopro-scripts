@@ -16,17 +16,15 @@ function c69599136.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c69599136.filter(c,tp)
-	return c:IsFaceup() and c:GetSummonPlayer()~=tp
+	return c:IsFaceup() and c:GetSummonPlayer()~=tp and c:IsCanTurnSet()
 end
 function c69599136.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c69599136.filter,1,nil,tp) end
-	Duel.SetTargetCard(eg)
-end
-function c69599136.filter2(c,e,tp)
-	return c:IsFaceup() and c:GetSummonPlayer()~=tp and c:IsRelateToEffect(e) 
+	local g=eg:Filter(c69599136.filter,1,nil,tp)
+	Duel.SetTargetCard(g)
 end
 function c69599136.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=eg:Filter(c69599136.filter2,nil,e,tp)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if Duel.ChangePosition(g,POS_FACEDOWN_DEFENCE)~=0 then
 		local og=Duel.GetOperatedGroup()
 		local tc=og:GetFirst()

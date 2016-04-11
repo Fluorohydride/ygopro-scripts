@@ -38,7 +38,7 @@ function c9989792.initial_effect(c)
 end
 function c9989792.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousSequence()==5 and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsPreviousLocation(LOCATION_SZONE) and c:GetPreviousSequence()==5 and c:IsPreviousPosition(POS_FACEUP)
 end
 function c9989792.thfilter(c)
 	return c:IsSetCard(0xe2) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
