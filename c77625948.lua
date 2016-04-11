@@ -73,6 +73,7 @@ function c77625948.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end
 function c77625948.atkcon(e)
+	local tp=e:GetHandlerPlayer()
 	return Duel.GetAttackTarget()==nil and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)~=0
 		and e:GetHandler():GetEffectCount(EFFECT_DIRECT_ATTACK)==1
 end

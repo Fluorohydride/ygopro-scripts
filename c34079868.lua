@@ -77,11 +77,12 @@ function c34079868.disop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c34079868.condition(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and e:GetHandler():GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
+	local c=e:GetHandler()
+	return rp~=tp and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c34079868.spfilter1(c,e,tp)
 	return c:IsSetCard(0xc7) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and Duel.IsExistingMatchingCard(c34079868.spfilter2,tp,LOCATION_DECK,0,1,c,e,tp,0xda)
+		and Duel.IsExistingMatchingCard(c34079868.spfilter2,tp,LOCATION_DECK,0,1,c,e,tp)
 end
 function c34079868.spfilter2(c,e,tp)
 	return c:IsSetCard(0xda) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

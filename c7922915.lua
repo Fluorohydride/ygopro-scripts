@@ -51,7 +51,7 @@ function c7922915.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(g2,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-function c7922915.cfilter(c,e,tp)
+function c7922915.cfilter(c)
 	return c:IsCode(46986414) and c:IsFaceup()
 end
 function c7922915.negcon(e,tp,eg,ep,ev,re,r,rp)

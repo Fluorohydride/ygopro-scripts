@@ -32,7 +32,7 @@ function c31472884.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c31472884.cfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsDiscardable() and c:GetAttack()>=0 and c:GetDefence()>=0
-		and Duel.IsExistingTarget(c31472884.tgfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,c)
+		and Duel.IsExistingTarget(c31472884.tgfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,nil,c)
 end
 function c31472884.tgfilter(c,dc)
 	return c:IsFaceup() and (c:GetAttack()~=dc:GetAttack() or c:GetDefence()~=dc:GetDefence())

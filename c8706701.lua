@@ -54,7 +54,7 @@ function c8706701.cfilter(c,tp)
 	return c:GetSummonType()==SUMMON_TYPE_SYNCHRO and c:GetSummonPlayer()==tp
 end
 function c8706701.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c8706701.cfilter,1,nil) and aux.exccon(e)
+	return eg:IsExists(c8706701.cfilter,1,nil,tp) and aux.exccon(e)
 end
 function c8706701.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToHand() end

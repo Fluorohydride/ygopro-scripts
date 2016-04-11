@@ -62,5 +62,5 @@ function c20073910.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c20073910.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,e:GetHandler())
-	Duel.Remove(g,POP_FACEUP,REASON_EFFECT)
+	Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 end

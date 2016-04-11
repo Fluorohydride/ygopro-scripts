@@ -20,7 +20,7 @@ function c69599136.filter(c,tp)
 end
 function c69599136.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c69599136.filter,1,nil,tp) end
-	local g=eg:Filter(c69599136.filter,1,nil,tp)
+	local g=eg:Filter(c69599136.filter,nil,tp)
 	Duel.SetTargetCard(g)
 end
 function c69599136.activate(e,tp,eg,ep,ev,re,r,rp)
