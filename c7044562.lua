@@ -12,7 +12,6 @@ function c7044562.initial_effect(c)
 end
 function c7044562.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0 end
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,0,LOCATION_DECK)
 end
 function c7044562.filter(c,lp)
 	return c:GetAttack()>=0 and c:GetDefence()>=0 and c:GetAttack()+c:GetDefence()==lp and c:IsAbleToHand()

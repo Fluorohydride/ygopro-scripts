@@ -32,4 +32,5 @@ function c43711255.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ac=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	e:SetLabel(ac)
 	e:GetHandler():SetHint(CHINT_CARD,ac)
+	Duel.AdjustInstantly(e:GetHandler())
 end
