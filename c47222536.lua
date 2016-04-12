@@ -28,7 +28,7 @@ function c47222536.initial_effect(c)
 end
 c47222536.dark_magician_list=true
 function c47222536.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)>2 end
+	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>2 end
 end
 function c47222536.filter(c)
 	return (c.dark_magician_list or c:IsCode(46986414)) and c:IsAbleToHand()
