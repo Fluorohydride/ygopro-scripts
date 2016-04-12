@@ -7,7 +7,7 @@ function c44155002.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetCode(EVENT_CHAIN_ACTIVATING)
+	e1:SetCode(EVENT_CHAIN_SOLVING)
 	e1:SetOperation(c44155002.disop)
 	c:RegisterEffect(e1)
 end
