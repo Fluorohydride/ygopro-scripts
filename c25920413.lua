@@ -64,7 +64,7 @@ end
 function c25920413.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		c:AddCounter(0xe,1)
+		c:AddCounter(0x100e,1)
 	end
 end
 function c25920413.adcon(e)
@@ -72,8 +72,8 @@ function c25920413.adcon(e)
 end
 function c25920413.adtg(e,c)
 	local bc=c:GetBattleTarget()
-	return bc and c:GetCounter(0xe)~=0 and bc:IsSetCard(0xc)
+	return bc and c:GetCounter(0x100e)~=0 and bc:IsSetCard(0xc)
 end
 function c25920413.adval(e,c)
-	return c:GetCounter(0xe)*-300
+	return c:GetCounter(0x100e)*-300
 end

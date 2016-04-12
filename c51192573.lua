@@ -55,12 +55,12 @@ function c51192573.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_COUNTER,g,1,0xe,1)
+	Duel.SetOperationInfo(0,CATEGORY_COUNTER,g,1,0x100e,1)
 end
 function c51192573.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
-		tc:AddCounter(0xe,1)
+		tc:AddCounter(0x100e,1)
 	end
 end
 function c51192573.adcon(e)
@@ -68,8 +68,8 @@ function c51192573.adcon(e)
 end
 function c51192573.adtg(e,c)
 	local bc=c:GetBattleTarget()
-	return bc and c:GetCounter(0xe)~=0 and bc:IsSetCard(0xc)
+	return bc and c:GetCounter(0x100e)~=0 and bc:IsSetCard(0xc)
 end
 function c51192573.adval(e,c)
-	return c:GetCounter(0xe)*-300
+	return c:GetCounter(0x100e)*-300
 end

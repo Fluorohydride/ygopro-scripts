@@ -27,8 +27,8 @@ function c91070115.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c91070115.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,0,1,0xe,1,REASON_COST) end
-	Duel.RemoveCounter(tp,0,1,0xe,1,REASON_COST)
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,0,1,0x100e,1,REASON_COST) end
+	Duel.RemoveCounter(tp,0,1,0x100e,1,REASON_COST)
 end
 function c91070115.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
@@ -51,8 +51,8 @@ function c91070115.adcon(e)
 end
 function c91070115.adtg(e,c)
 	local bc=c:GetBattleTarget()
-	return bc and c:GetCounter(0xe)~=0 and bc:IsSetCard(0xc)
+	return bc and c:GetCounter(0x100e)~=0 and bc:IsSetCard(0xc)
 end
 function c91070115.adval(e,c)
-	return c:GetCounter(0xe)*-300
+	return c:GetCounter(0x100e)*-300
 end

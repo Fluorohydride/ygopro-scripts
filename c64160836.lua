@@ -25,7 +25,7 @@ function c64160836.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do
 		if tc:IsFaceup() and tc:IsControler(1-tp) then
-			tc:AddCounter(0xe,1)
+			tc:AddCounter(0x100e,1)
 		end
 		tc=eg:GetNext()
 	end
@@ -35,8 +35,8 @@ function c64160836.adcon(e)
 end
 function c64160836.adtg(e,c)
 	local bc=c:GetBattleTarget()
-	return bc and c:GetCounter(0xe)~=0 and bc:IsSetCard(0xc)
+	return bc and c:GetCounter(0x100e)~=0 and bc:IsSetCard(0xc)
 end
 function c64160836.adval(e,c)
-	return c:GetCounter(0xe)*-300
+	return c:GetCounter(0x100e)*-300
 end

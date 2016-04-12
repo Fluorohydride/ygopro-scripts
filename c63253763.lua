@@ -37,10 +37,10 @@ end
 function c63253763.spcon(e,c)
 	if c==nil then return true end
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
-		and Duel.IsCanRemoveCounter(c:GetControler(),1,1,0xe,2,REASON_COST)
+		and Duel.IsCanRemoveCounter(c:GetControler(),1,1,0x100e,2,REASON_COST)
 end
 function c63253763.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.RemoveCounter(tp,1,1,0xe,2,REASON_COST)
+	Duel.RemoveCounter(tp,1,1,0x100e,2,REASON_COST)
 end
 function c63253763.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
@@ -49,7 +49,7 @@ function c63253763.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	local tc=g:GetFirst()
 	while tc do
-		tc:AddCounter(0xe,1)
+		tc:AddCounter(0x100e,1)
 		tc=g:GetNext()
 	end
 end
@@ -58,8 +58,8 @@ function c63253763.adcon(e)
 end
 function c63253763.adtg(e,c)
 	local bc=c:GetBattleTarget()
-	return bc and c:GetCounter(0xe)~=0 and bc:IsSetCard(0xc)
+	return bc and c:GetCounter(0x100e)~=0 and bc:IsSetCard(0xc)
 end
 function c63253763.adval(e,c)
-	return c:GetCounter(0xe)*-300
+	return c:GetCounter(0x100e)*-300
 end

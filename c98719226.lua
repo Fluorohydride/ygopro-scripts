@@ -29,7 +29,7 @@ end
 function c98719226.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetReasonCard()
 	if tc:IsFaceup() and tc:IsRelateToBattle() then
-		tc:AddCounter(0xe,2)
+		tc:AddCounter(0x100e,2)
 	end
 end
 function c98719226.adcon(e)
@@ -37,8 +37,8 @@ function c98719226.adcon(e)
 end
 function c98719226.adtg(e,c)
 	local bc=c:GetBattleTarget()
-	return bc and c:GetCounter(0xe)~=0 and bc:IsSetCard(0xc)
+	return bc and c:GetCounter(0x100e)~=0 and bc:IsSetCard(0xc)
 end
 function c98719226.adval(e,c)
-	return c:GetCounter(0xe)*-300
+	return c:GetCounter(0x100e)*-300
 end
