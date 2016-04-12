@@ -15,7 +15,7 @@ function c99733359.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c99733359.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and Duel.GetBattleDamage(tp)>0
+	return Duel.GetTurnPlayer()~=tp
 end
 function c99733359.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000) end
