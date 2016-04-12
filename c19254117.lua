@@ -3,7 +3,7 @@ function c19254117.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(19254117,0))
-	e1:SetCategory(CATEGORY_ATKCHANGE)
+	e1:SetCategory(CATEGORY_DEFCHANGE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
@@ -43,18 +43,18 @@ function c19254117.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_DEFENCE_FINAL)
 		e1:SetValue(tc:GetDefence()*2)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DRAW)
+		e1:SetReset(RESET_EVENT+0x1fe0000)
 		tc:RegisterEffect(e1)
 		--def to 0
 		local e2=Effect.CreateEffect(c)
- 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_CANNOT_DISABLE)
- 		e2:SetRange(LOCATION_MZONE)
- 		e2:SetCode(EVENT_TURN_END)
- 		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DRAW)
- 		e2:SetCountLimit(1)
- 		e2:SetOperation(c19254117.ddop)
- 		tc:RegisterEffect(e2)
+		e2:SetRange(LOCATION_MZONE)
+		e2:SetCode(EVENT_TURN_END)
+		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DRAW)
+		e2:SetCountLimit(1)
+		e2:SetOperation(c19254117.ddop)
+		tc:RegisterEffect(e2)
 	end
 end
 function c19254117.ddop(e,tp,eg,ep,ev,re,r,rp)
@@ -69,6 +69,7 @@ function c19254117.ddop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c19254117.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
+		and (Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE))
 end
 function c19254117.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
