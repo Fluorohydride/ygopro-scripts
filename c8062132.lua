@@ -1,5 +1,6 @@
 --毒蛇神ヴェノミナーガ
 function c8062132.initial_effect(c)
+	c:EnableCounterPermit(0x11)
 	c:EnableReviveLimit()
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
@@ -89,7 +90,7 @@ function c8062132.ctcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c8062132.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	c:AddCounter(0x11+COUNTER_NEED_ENABLE,1)
+	c:AddCounter(0x11,1)
 end
 function c8062132.winop(e,tp,eg,ep,ev,re,r,rp)
 	local WIN_REASON_VENNOMINAGA = 0x12

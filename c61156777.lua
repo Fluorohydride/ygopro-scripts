@@ -1,5 +1,6 @@
 --BOXサー
 function c61156777.initial_effect(c)
+	c:EnableCounterPermit(0x34)
 	--Add counter
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(61156777,0))
@@ -31,7 +32,7 @@ end
 function c61156777.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		c:AddCounter(0x34+COUNTER_NEED_ENABLE,1)
+		c:AddCounter(0x34,1)
 	end
 end
 function c61156777.spcost(e,tp,eg,ep,ev,re,r,rp,chk)

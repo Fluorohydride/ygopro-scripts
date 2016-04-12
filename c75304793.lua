@@ -1,5 +1,6 @@
 --アンプリファイヤー
 function c75304793.initial_effect(c)
+	c:EnableCounterPermit(0x35)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -36,7 +37,7 @@ function c75304793.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return re and re:GetHandler():IsSetCard(0x1066) and not re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c75304793.ctop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x35+COUNTER_NEED_ENABLE,1)
+	e:GetHandler():AddCounter(0x35,1)
 end
 function c75304793.atkval(e,c)
 	return e:GetHandler():GetCounter(0x35)*100

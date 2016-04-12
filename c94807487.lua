@@ -1,5 +1,6 @@
 --ホープ剣スラッシュ
 function c94807487.initial_effect(c)
+	c:EnableCounterPermit(0x31)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_EQUIP)
@@ -68,7 +69,7 @@ function c94807487.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c94807487.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x31+COUNTER_NEED_ENABLE,1)
+	e:GetHandler():AddCounter(0x31,1)
 end
 function c94807487.value(e,c)
 	return e:GetHandler():GetCounter(0x31)*500

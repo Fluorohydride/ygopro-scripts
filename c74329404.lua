@@ -1,5 +1,6 @@
 --D－フォーメーション
 function c74329404.initial_effect(c)
+	c:EnableCounterPermit(0x1c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -36,7 +37,7 @@ function c74329404.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c74329404.ctfilter,1,nil,tp)
 end
 function c74329404.ctop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x1c+COUNTER_NEED_ENABLE,1)
+	e:GetHandler():AddCounter(0x1c,1)
 end
 function c74329404.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()

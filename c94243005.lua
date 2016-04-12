@@ -1,5 +1,6 @@
 --混沌空間
 function c94243005.initial_effect(c)
+	c:EnableCounterPermit(0x13)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -41,7 +42,7 @@ end
 function c94243005.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=eg:FilterCount(c94243005.ctfilter,nil)
 	if ct>0 then
-		e:GetHandler():AddCounter(0x13+COUNTER_NEED_ENABLE,ct)
+		e:GetHandler():AddCounter(0x13,ct)
 	end
 end
 function c94243005.spfilter(c,e,tp)

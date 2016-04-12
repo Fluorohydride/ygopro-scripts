@@ -1,5 +1,6 @@
 --倍返し
 function c5914184.initial_effect(c)
+	c:EnableCounterPermit(0x1a)
 	--counter
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -15,7 +16,7 @@ function c5914184.actop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		local ct=math.floor(ev/1000)
-		c:AddCounter(0x1a+COUNTER_NEED_ENABLE,ct)
+		c:AddCounter(0x1a,ct)
 		--damage
 		local e1=Effect.CreateEffect(c)
 		e1:SetDescription(aux.Stringid(5914184,0))

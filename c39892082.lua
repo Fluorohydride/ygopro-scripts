@@ -1,5 +1,6 @@
 --バルーン・リザード
 function c39892082.initial_effect(c)
+	c:EnableCounterPermit(0x29)
 	--counter
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(39892082,0))
@@ -33,7 +34,7 @@ function c39892082.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c39892082.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x29+COUNTER_NEED_ENABLE,1)
+		e:GetHandler():AddCounter(0x29,1)
 	end
 end
 function c39892082.damcon(e,tp,eg,ep,ev,re,r,rp)

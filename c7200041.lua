@@ -1,5 +1,6 @@
 --メタル・シューター
 function c7200041.initial_effect(c)
+	c:EnableCounterPermit(0x26)
 	--summon success
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(7200041,0))
@@ -32,7 +33,7 @@ function c7200041.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c7200041.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x26+COUNTER_NEED_ENABLE,2)
+		e:GetHandler():AddCounter(0x26,2)
 	end
 end
 function c7200041.attackup(e,c)

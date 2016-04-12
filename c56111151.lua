@@ -1,5 +1,6 @@
 --Kyoutou Waterfront
 function c56111151.initial_effect(c)
+	c:EnableCounterPermit(0x37)
 	c:SetCounterLimit(0x37,5)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -39,7 +40,7 @@ end
 function c56111151.counter(e,tp,eg,ep,ev,re,r,rp)
 	local ct=eg:FilterCount(c56111151.cfilter,nil)
 	if ct>0 then
-		e:GetHandler():AddCounter(0x37+COUNTER_NEED_ENABLE,ct,true)
+		e:GetHandler():AddCounter(0x37,ct,true)
 	end
 end
 function c56111151.thfilter(c)

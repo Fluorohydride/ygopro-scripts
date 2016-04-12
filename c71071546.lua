@@ -1,5 +1,6 @@
 --オービタル 7
 function c71071546.initial_effect(c)
+	c:EnableCounterPermit(0x2c)
 	--counter
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(71071546,0))
@@ -32,7 +33,7 @@ end
 function c71071546.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		c:AddCounter(0x2c+COUNTER_NEED_ENABLE,1)
+		c:AddCounter(0x2c,1)
 	end
 end
 function c71071546.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)

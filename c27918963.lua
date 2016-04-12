@@ -1,5 +1,6 @@
 --修験の妖社
 function c27918963.initial_effect(c)
+	c:EnableCounterPermit(0x33)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -34,7 +35,7 @@ function c27918963.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c27918963.cfilter,1,nil)
 end
 function c27918963.ctop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x33+COUNTER_NEED_ENABLE,1)
+	e:GetHandler():AddCounter(0x33,1)
 end
 function c27918963.filter1(c)
 	return c:IsFaceup() and c:IsSetCard(0xb3)

@@ -1,5 +1,6 @@
 --能力吸収石
 function c67234805.initial_effect(c)
+	c:EnableCounterPermit(0x16)
 	c:SetCounterLimit(0x16,2)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -42,7 +43,7 @@ end
 function c67234805.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=re:GetHandler()
 	if c:IsType(TYPE_MONSTER) then
-		e:GetHandler():AddCounter(0x16+COUNTER_NEED_ENABLE,1)
+		e:GetHandler():AddCounter(0x16,1)
 	end
 end
 function c67234805.discon(e)

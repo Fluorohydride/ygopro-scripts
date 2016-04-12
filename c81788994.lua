@@ -1,5 +1,6 @@
 --影牢の呪縛
 function c81788994.initial_effect(c)
+	c:EnableCounterPermit(0x16)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -40,7 +41,7 @@ function c81788994.ctcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c81788994.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=eg:FilterCount(c81788994.cfilter,nil)
-	e:GetHandler():AddCounter(0x16+COUNTER_NEED_ENABLE,ct)
+	e:GetHandler():AddCounter(0x16,ct)
 end
 function c81788994.atkcon(e)
 	return Duel.GetTurnPlayer()~=e:GetHandlerPlayer()

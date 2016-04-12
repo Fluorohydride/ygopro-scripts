@@ -25,7 +25,7 @@ function c23740893.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c23740893.filter(c)
-	return c:IsFaceup() and c:IsCode(27918963) and c:IsCanAddCounter(0x33+COUNTER_NEED_ENABLE,3)
+	return c:IsFaceup() and c:IsCode(27918963) and c:IsCanAddCounter(0x33,3)
 end
 function c23740893.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsOnField() and c23740893.filter(chkc) end
@@ -37,7 +37,7 @@ end
 function c23740893.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
-		tc:AddCounter(0x33+COUNTER_NEED_ENABLE,3)
+		tc:AddCounter(0x33,3)
 	end
 end
 function c23740893.sumcost(e,tp,eg,ep,ev,re,r,rp,chk)

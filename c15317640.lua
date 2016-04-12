@@ -1,5 +1,6 @@
 --巨大戦艦 カバード・コア
 function c15317640.initial_effect(c)
+c:EnableCounterPermit(0x1f)
 	--summon success
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(15317640,0))
@@ -41,7 +42,7 @@ function c15317640.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c15317640.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x1f+COUNTER_NEED_ENABLE,2)
+		e:GetHandler():AddCounter(0x1f,2)
 	end
 end
 function c15317640.rctcon(e,tp,eg,ep,ev,re,r,rp)

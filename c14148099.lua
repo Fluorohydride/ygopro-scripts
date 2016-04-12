@@ -1,5 +1,6 @@
 --巨大戦艦 ビッグ・コア
 function c14148099.initial_effect(c)
+	c:EnableCounterPermit(0x1f)
 	--summon success
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(14148099,0))
@@ -40,7 +41,7 @@ function c14148099.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c14148099.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x1f+COUNTER_NEED_ENABLE,3)
+		e:GetHandler():AddCounter(0x1f,3)
 	end
 end
 function c14148099.rctcon(e,tp,eg,ep,ev,re,r,rp)

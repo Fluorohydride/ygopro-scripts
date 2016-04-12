@@ -1,5 +1,6 @@
 --デス・モスキート
 function c33695750.initial_effect(c)
+	c:EnableCounterPermit(0x27)
 	--summon success
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(33695750,0))
@@ -35,7 +36,7 @@ function c33695750.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c33695750.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x27+COUNTER_NEED_ENABLE,2)
+		e:GetHandler():AddCounter(0x27,2)
 	end
 end
 function c33695750.attackup(e,c)

@@ -1,5 +1,6 @@
 --海底に潜む深海竜
 function c4404099.initial_effect(c)
+	c:EnableCounterPermit(0x23)
 	--add counter
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(4404099,0))
@@ -26,7 +27,7 @@ function c4404099.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c4404099.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x23+COUNTER_NEED_ENABLE,1)
+		e:GetHandler():AddCounter(0x23,1)
 	end
 end
 function c4404099.atkcon(e,tp,eg,ep,ev,re,r,rp)

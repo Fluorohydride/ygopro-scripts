@@ -1,5 +1,6 @@
 --希望郷－オノマトピア－
 function c26493435.initial_effect(c)
+	c:EnableCounterPermit(0x30)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -44,7 +45,7 @@ function c26493435.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c26493435.ctfilter,1,nil,tp)
 end
 function c26493435.ctop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x30+COUNTER_NEED_ENABLE,1)
+	e:GetHandler():AddCounter(0x30,1)
 end
 function c26493435.val(e,c)
 	return e:GetHandler():GetCounter(0x30)*200

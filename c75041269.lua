@@ -1,5 +1,6 @@
 --幽獄の時計塔
 function c75041269.initial_effect(c)
+	c:EnableCounterPermit(0x1b)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -43,7 +44,7 @@ function c75041269.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
 function c75041269.ctop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x1b+COUNTER_NEED_ENABLE,1)
+	e:GetHandler():AddCounter(0x1b,1)
 end
 function c75041269.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -40,7 +40,7 @@ end
 function c20630765.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=re:GetHandler()
 	if re:IsActiveType(TYPE_MONSTER) and c~=e:GetHandler() and e:GetHandler():GetFlagEffect(1)>0 then
-		e:GetHandler():AddCounter(0x16+COUNTER_NEED_ENABLE,1)
+		e:GetHandler():AddCounter(0x16,1)
 	end
 end
 function c20630765.defup(e,c)

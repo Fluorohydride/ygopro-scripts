@@ -1,5 +1,6 @@
 --強欲なカケラ
 function c33904024.initial_effect(c)
+	c:EnableCounterPermit(0xd)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -26,7 +27,7 @@ function c33904024.initial_effect(c)
 end
 function c33904024.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if ep==tp and r==REASON_RULE then
-		e:GetHandler():AddCounter(0xd+COUNTER_NEED_ENABLE,1)
+		e:GetHandler():AddCounter(0xd,1)
 	end
 end
 function c33904024.drcon(e,tp,eg,ep,ev,re,r,rp)

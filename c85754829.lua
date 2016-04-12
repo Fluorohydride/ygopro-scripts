@@ -1,5 +1,6 @@
 --ワーム・グルス
 function c85754829.initial_effect(c)
+	c:EnableCounterPermit(0xf)
 	--add counter
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -27,5 +28,5 @@ function c85754829.accon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c85754829.cfilter,1,e:GetHandler())
 end
 function c85754829.acop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0xf+COUNTER_NEED_ENABLE,1)
+	e:GetHandler():AddCounter(0xf,1)
 end

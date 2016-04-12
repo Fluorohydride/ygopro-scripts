@@ -1,5 +1,6 @@
 --ドラゴニック・ガード
 function c78009994.initial_effect(c)
+	c:EnableCounterPermit(0x22)
 	--add counter
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -23,7 +24,7 @@ function c78009994.initial_effect(c)
 end
 function c78009994.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:GetFirst()~=e:GetHandler() then
-		e:GetHandler():AddCounter(0x22+COUNTER_NEED_ENABLE,1)
+		e:GetHandler():AddCounter(0x22,1)
 	end
 end
 function c78009994.spcost(e,tp,eg,ep,ev,re,r,rp,chk)

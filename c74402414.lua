@@ -1,5 +1,6 @@
 --マジック・クロニクル
 function c74402414.initial_effect(c)
+	c:EnableCounterPermit(0x25)
 	local g=Group.CreateGroup()
 	g:KeepAlive()
 	--Activate
@@ -75,7 +76,7 @@ function c74402414.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c74402414.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if rp~=tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(1)>0 then
-		e:GetHandler():AddCounter(0x25+COUNTER_NEED_ENABLE,1)
+		e:GetHandler():AddCounter(0x25,1)
 	end
 end
 function c74402414.thcost(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -1,5 +1,6 @@
 --ドングリス
 function c13478040.initial_effect(c)
+	c:EnableCounterPermit(0x17)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -24,7 +25,7 @@ function c13478040.cfilter(c,tp)
 end
 function c13478040.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c13478040.cfilter,1,nil,1-tp) then
-		e:GetHandler():AddCounter(0x17+COUNTER_NEED_ENABLE,1)
+		e:GetHandler():AddCounter(0x17,1)
 	end
 end
 function c13478040.descost(e,tp,eg,ep,ev,re,r,rp,chk)
