@@ -36,5 +36,5 @@ function c23516703.limittg(e,c,tp)
 end
 function c23516703.countval(e,tp)
 	local t1,t2,t3=Duel.GetActivityCount(tp,ACTIVITY_SUMMON,ACTIVITY_FLIPSUMMON,ACTIVITY_SPSUMMON)
-	if t1+t2+t2>=2 then return 0 else return 2-t1-t2-t3 end
+	if t1+t2+t3>=2 then return 0 else return 2-t1-t2-t3 end
 end

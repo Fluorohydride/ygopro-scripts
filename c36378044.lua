@@ -7,10 +7,10 @@ function c36378044.initial_effect(c)
 	e1:SetTarget(c36378044.atktg1)
 	e1:SetOperation(c36378044.atkop)
 	c:RegisterEffect(e1)
-	--atk change
+	--coin
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(36378044,0))
-	e2:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_COIN)
+	e2:SetCategory(CATEGORY_DRAW+CATEGORY_DESTROY+CATEGORY_COIN)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e2:SetRange(LOCATION_SZONE)
