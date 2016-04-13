@@ -1600,10 +1600,6 @@ function Auxiliary.dogcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:GetPreviousControler()==tp and c:IsReason(REASON_DESTROY) and rp~=tp
 end
---condition of "cannot be negated"
-function Auxiliary.nfbdncon(e)
-	return not e:GetHandler():IsForbidden()
-end
 --condition of "except the turn this card was sent to the Graveyard"
 function Auxiliary.exccon(e)
 	return Duel.GetTurnCount()~=e:GetHandler():GetTurnID() or e:GetHandler():IsReason(REASON_RETURN)
