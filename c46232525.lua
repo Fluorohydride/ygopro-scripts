@@ -36,7 +36,7 @@ function c46232525.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c46232525.tgfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil,e,tp,chkf)
 	local tc=g:GetFirst()
 	if tc and not tc:IsImmuneToEffect(e) then
-		if tc:IsFacedown() then Duel.ConfirmCards(1-tp,tc) end
+		if tc:IsOnField() and tc:IsFacedown() then Duel.ConfirmCards(1-tp,tc) end
 		local race=tc:GetRace()
 		Duel.SendtoGrave(tc,REASON_EFFECT)
 		if not tc:IsLocation(LOCATION_GRAVE) then return end
