@@ -72,11 +72,14 @@ function c56350972.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local sel=opval[op]
 	e:SetLabel(sel)
 	if sel==1 then
+		e:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES)
 		Duel.SetOperationInfo(0,CATEGORY_DRAW,0,0,tp,2)
 		Duel.SetOperationInfo(0,CATEGORY_HANDES,0,0,tp,1)
 	elseif sel==2 then
+		e:SetCategory(CATEGORY_HANDES)
 		Duel.SetOperationInfo(0,CATEGORY_HANDES,0,0,1-tp,1)
 	else
+		e:SetCategory(CATEGORY_TOHAND)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_GRAVE)
 	end
 end

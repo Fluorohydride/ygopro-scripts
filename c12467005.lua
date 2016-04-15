@@ -29,10 +29,12 @@ function c12467005.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if op==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
 		local g=Duel.SelectTarget(tp,c12467005.filter1,tp,0,LOCATION_MZONE,1,1,nil)
+		e:SetCategory(CATEGORY_POSITION)
 		Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 		local g=Duel.SelectTarget(tp,c12467005.filter2,tp,0,LOCATION_ONFIELD,1,1,nil)
+		e:SetCategory(CATEGORY_TOHAND)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 	end
 end

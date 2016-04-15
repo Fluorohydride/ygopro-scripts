@@ -2,7 +2,6 @@
 function c20032555.initial_effect(c)
 	--effects
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_DAMAGE)
 	e1:SetDescription(aux.Stringid(20032555,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
@@ -25,7 +24,10 @@ function c20032555.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	e:SetLabel(opt)
 	if opt==0 then
+		e:SetCategory(CATEGORY_DAMAGE)
 		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,800)
+	else
+		e:SetCategory(CATEGORY_LVCHANGE)
 	end
 end
 function c20032555.effop(e,tp,eg,ep,ev,re,r,rp)
