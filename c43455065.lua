@@ -34,6 +34,7 @@ function c43455065.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rct=1
 	if Duel.GetTurnPlayer()~=tp then rct=2 end
 	local c=e:GetHandler()
+	--indestructable
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
@@ -47,6 +48,7 @@ function c43455065.activate(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
 	e2:SetTargetRange(0,LOCATION_MZONE)
 	Duel.RegisterEffect(e2,tp)
+	--cannot inactivate/disable
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_CANNOT_INACTIVATE)
@@ -59,9 +61,18 @@ function c43455065.activate(e,tp,eg,ep,ev,re,r,rp)
 	e3:SetValue(c43455065.efilter)
 	e3:SetReset(RESET_PHASE+PHASE_END+RESET_OPPO_TURN,rct)
 	Duel.RegisterEffect(e3,tp)
+	--cannot disable
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_FIELD)
+	e4:SetCode(EFFECT_CANNOT_DISABLE)
+	e4:SetTargetRange(0,LOCATION_ONFIELD)
+	e4:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
+	e4:SetTarget(c43455065.indtg)
+	e4:SetReset(RESET_PHASE+PHASE_END+RESET_OPPO_TURN,rct)
+	Duel.RegisterEffect(e4,tp)
 end
 function c43455065.indtg(e,c)
-	return c:IsLocation(LOCATION_SZONE) or (c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP))
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c43455065.efilter(e,ct)
 	local te,tp=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)

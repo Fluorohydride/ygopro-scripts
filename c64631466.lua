@@ -13,16 +13,45 @@ function c64631466.initial_effect(c)
 	e1:SetTarget(c64631466.eqtg)
 	e1:SetOperation(c64631466.eqop)
 	c:RegisterEffect(e1)
-	--damage
+	--atk/def
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetProperty(EFFECT_FLAG_AVAILABLE_BD)
-	e2:SetCode(EVENT_DAMAGE)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCondition(c64631466.damcon)
-	e2:SetOperation(c64631466.damop)
+	e2:SetCode(EFFECT_SET_ATTACK)
+	e2:SetCondition(c64631466.adcon)
+	e2:SetValue(c64631466.atkval)
 	e2:SetLabelObject(e1)
 	c:RegisterEffect(e2)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetCode(EFFECT_SET_DEFENCE)
+	e3:SetCondition(c64631466.adcon)
+	e3:SetValue(c64631466.defval)
+	e3:SetLabelObject(e1)
+	c:RegisterEffect(e3)
+	--substitute
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_SINGLE)
+	e4:SetCode(EFFECT_DESTROY_SUBSTITUTE)
+	e4:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e4:SetRange(LOCATION_MZONE)
+	e4:SetCondition(c64631466.adcon)
+	e4:SetValue(c64631466.repval)
+	e4:SetLabelObject(e1)
+	c:RegisterEffect(e4)
+	--damage
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e5:SetProperty(EFFECT_FLAG_AVAILABLE_BD)
+	e5:SetCode(EVENT_DAMAGE)
+	e5:SetRange(LOCATION_MZONE)
+	e5:SetCondition(c64631466.damcon)
+	e5:SetOperation(c64631466.damop)
+	e5:SetLabelObject(e1)
+	c:RegisterEffect(e5)
 end
 function c64631466.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -43,48 +72,19 @@ end
 function c64631466.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) then
+	if tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) and tc:IsControler(1-tp) then
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
-			local atk=tc:GetTextAttack()
-			local def=tc:GetTextDefence()
-			if tc:IsFacedown() or atk<0 then atk=0 end
-			if tc:IsFacedown() or def<0 then def=0 end
 			if not Duel.Equip(tp,tc,c,false) then return end
 			--Add Equip limit
 			tc:RegisterFlagEffect(64631466,RESET_EVENT+0x1fe0000,0,0)
 			e:SetLabelObject(tc)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+			e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 			e1:SetCode(EFFECT_EQUIP_LIMIT)
 			e1:SetReset(RESET_EVENT+0x1fe0000)
 			e1:SetValue(c64631466.eqlimit)
 			tc:RegisterEffect(e1)
-			if atk>0 then
-				local e2=Effect.CreateEffect(c)
-				e2:SetType(EFFECT_TYPE_EQUIP)
-				e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_OWNER_RELATE)
-				e2:SetCode(EFFECT_SET_ATTACK)
-				e2:SetReset(RESET_EVENT+0x1fe0000)
-				e2:SetValue(atk)
-				tc:RegisterEffect(e2)
-			end
-			if def>0 then
-				local e3=Effect.CreateEffect(c)
-				e3:SetType(EFFECT_TYPE_EQUIP)
-				e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_OWNER_RELATE)
-				e3:SetCode(EFFECT_SET_DEFENCE)
-				e3:SetReset(RESET_EVENT+0x1fe0000)
-				e3:SetValue(def)
-				tc:RegisterEffect(e3)
-			end
-			local e4=Effect.CreateEffect(c)
-			e4:SetType(EFFECT_TYPE_EQUIP)
-			e4:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-			e4:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
-			e4:SetReset(RESET_EVENT+0x1fe0000)
-			e4:SetValue(c64631466.repval)
-			tc:RegisterEffect(e4)
 		else Duel.SendtoGrave(tc,REASON_EFFECT) end
 	end
 end
@@ -98,4 +98,26 @@ function c64631466.damcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c64631466.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Damage(1-tp,ev,REASON_EFFECT)
+end
+function c64631466.adcon(e,tp,eg,ep,ev,re,r,rp)
+	local ec=e:GetLabelObject():GetLabelObject()
+	return ec and ec:GetFlagEffect(64631466)~=0
+end
+function c64631466.atkval(e,c)
+	local ec=e:GetLabelObject():GetLabelObject()
+	local atk=ec:GetTextAttack()
+	if ec:IsFacedown() or bit.band(ec:GetOriginalType(),TYPE_MONSTER)==0 or atk<0 then
+		return 0
+	else
+		return atk
+	end
+end
+function c64631466.defval(e,c)
+	local ec=e:GetLabelObject():GetLabelObject()
+	local def=ec:GetTextDefence()
+	if ec:IsFacedown() or bit.band(ec:GetOriginalType(),TYPE_MONSTER)==0 or def<0 then
+		return 0
+	else
+		return def
+	end
 end

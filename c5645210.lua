@@ -22,7 +22,9 @@ function c5645210.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetCode(EFFECT_CANNOT_DISABLE)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetTargetRange(LOCATION_SZONE,0)
+	e3:SetTargetRange(LOCATION_ONFIELD,0)
+	e3:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
+	e3:SetTarget(c5645210.distarget)
 	c:RegisterEffect(e3)
 	--inactivatable
 	local e4=Effect.CreateEffect(c)
@@ -46,4 +48,7 @@ function c5645210.effectfilter(e,ct)
 	local te,tp=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
 	local tc=te:GetHandler()
 	return p==tp and tc:IsType(TYPE_SPELL+TYPE_TRAP)
+end
+function c5645210.distarget(e,c)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
