@@ -49,7 +49,7 @@ function c47222536.activate(e,tp,eg,ep,ev,re,r,rp)
 	else Duel.SortDecktop(tp,tp,3) end
 end
 function c47222536.cfilter(c,tp)
-	return c:IsCode(46986414) and c:IsControler(tp)
+	return c:IsFaceup() and c:IsCode(46986414) and c:IsControler(tp)
 end
 function c47222536.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c47222536.cfilter,1,nil,tp)
