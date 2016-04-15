@@ -27,6 +27,7 @@ function c11050415.activate(e,tp,eg,ep,ev,re,r,rp)
 		if ft<=0 or (Duel.IsPlayerAffectedByEffect(tp,59822133) and ft>1) then return end
 		if Duel.IsPlayerCanSpecialSummonMonster(tp,18027139,0,0x4011,0,0,1,RACE_BEAST,ATTRIBUTE_EARTH)
 			and Duel.SelectYesNo(tp,aux.Stringid(11050415,0)) then
+			Duel.BreakEffect()
 			local c=e:GetHandler()
 			for i=1,ft do
 				local token=Duel.CreateToken(tp,11050415+i)
