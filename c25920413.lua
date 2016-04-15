@@ -15,7 +15,7 @@ function c25920413.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(25920413,0))
 	e2:SetCategory(CATEGORY_COUNTER)
-	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
+	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetCondition(c25920413.ctcon)
 	e2:SetOperation(c25920413.ctop)
@@ -64,7 +64,7 @@ end
 function c25920413.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		c:AddCounter(0x100e,1)
+		c:AddCounter(COUNTER_NEED_ENABLE+0x100e,1)
 	end
 end
 function c25920413.adcon(e)
