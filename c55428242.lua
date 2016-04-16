@@ -35,7 +35,6 @@ function c55428242.initial_effect(c)
 	e5:SetCode(EFFECT_CANNOT_DISABLE)
 	e5:SetRange(LOCATION_MZONE)
 	e5:SetTargetRange(LOCATION_ONFIELD,0)
-	e5:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 	e5:SetTarget(c55428242.distarget)
 	c:RegisterEffect(e5)
 end
@@ -47,7 +46,7 @@ function c55428242.etarget(e,c)
 	return c:GetType()==TYPE_TRAP and (c:IsSetCard(0x4c) or c:IsSetCard(0x89))
 end
 function c55428242.distarget(e,c)
-	return c:GetType()==TYPE_TRAP
+	return c:GetType()==TYPE_TRAP or c:GetType()==TYPE_TRAP+TYPE_EQUIP
 end
 function c55428242.chainfilter(e,ct)
 	local p=e:GetHandlerPlayer()
