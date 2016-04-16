@@ -27,13 +27,20 @@ function c38167722.cfilter(c)
 end
 function c38167722.activate(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
-	local g=Duel.GetMatchingGroup(c38167722.cfilter,p,0,LOCATION_HAND,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(1-p,aux.Stringid(38167722,0)) then
-		Duel.Hint(HINT_SELECTMSG,1-p,HINTMSG_CONFIRM)
-		local sg=g:Select(1-p,1,1,nil)
-		Duel.ConfirmCards(p,sg)
-		Duel.ShuffleHand(1-p)
-		if Duel.IsChainDisablable(0) then
+	if Duel.IsChainDisablable(0) then
+		local sel=1
+		local g=Duel.GetMatchingGroup(c38167722.cfilter,p,0,LOCATION_HAND,nil)
+		Duel.Hint(HINT_SELECTMSG,1-p,aux.Stringid(38167722,0))
+		if g:GetCount()>0 then
+			sel=Duel.SelectOption(1-p,1213,1214)
+		else
+			sel=Duel.SelectOption(1-p,1214)+1
+		end
+		if sel==0 then
+			Duel.Hint(HINT_SELECTMSG,1-p,HINTMSG_CONFIRM)
+			local sg=g:Select(1-p,1,1,nil)
+			Duel.ConfirmCards(p,sg)
+			Duel.ShuffleHand(1-p)
 			Duel.NegateEffect(0)
 			return
 		end

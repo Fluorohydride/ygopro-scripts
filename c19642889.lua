@@ -32,6 +32,8 @@ function c19642889.cfilter2(c)
 	return c:GetType()==TYPE_TRAP and not c:IsPublic()
 end
 function c19642889.mtop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	Duel.HintSelection(Group.FromCards(c))
 	local g1=Duel.GetMatchingGroup(c19642889.cfilter1,tp,LOCATION_HAND,0,nil)
 	local g2=Duel.GetMatchingGroup(c19642889.cfilter2,tp,LOCATION_HAND,0,nil)
 	local select=2
@@ -41,8 +43,10 @@ function c19642889.mtop(e,tp,eg,ep,ev,re,r,rp)
 		select=Duel.SelectOption(tp,aux.Stringid(19642889,0),aux.Stringid(19642889,2))
 		if select==1 then select=2 end
 	elseif g2:GetCount()>0 then
-		select=Duel.SelectOption(tp,aux.Stringid(19642889,1),aux.Stringid(19642889,2))
-		select=select+1
+		select=Duel.SelectOption(tp,aux.Stringid(19642889,1),aux.Stringid(19642889,2))+1
+	else
+		select=Duel.SelectOption(tp,aux.Stringid(19642889,2))
+		select=2
 	end
 	if select==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
@@ -54,7 +58,7 @@ function c19642889.mtop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 		Duel.ShuffleHand(tp)
 	else
-		Duel.Destroy(e:GetHandler(),REASON_COST)
+		Duel.Destroy(c,REASON_COST)
 	end
 end
 function c19642889.negop1(e,tp,eg,ep,ev,re,r,rp)
