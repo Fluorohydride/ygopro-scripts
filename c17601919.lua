@@ -1,6 +1,5 @@
 --ゴースト姫－パンプリンセス－
 function c17601919.initial_effect(c)
-	c:EnableCounterPermit(0x2f)
 	--send replace
 	local e1=Effect.CreateEffect(c)
 	e1:SetCode(EFFECT_SEND_REPLACE)
@@ -51,6 +50,12 @@ function c17601919.repop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local e4=e3:Clone()
 	e4:SetCode(EFFECT_UPDATE_DEFENCE)
 	c:RegisterEffect(e4)
+	--counter permit
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_SINGLE)
+	e5:SetCode(EFFECT_COUNTER_PERMIT+0x2f)
+	e5:SetReset(RESET_EVENT+0x1fe0000)
+	c:RegisterEffect(e5)
 end
 function c17601919.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
