@@ -41,6 +41,8 @@ function c72258771.cfilter1(c)
 	return c:IsCode(36623431) and c:IsAbleToGraveAsCost()
 end
 function c72258771.mtop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	Duel.HintSelection(Group.FromCards(c))
 	local g1=Duel.GetMatchingGroup(c72258771.cfilter1,tp,LOCATION_HAND,0,nil)
 	local select=1
 	if g1:GetCount()>0 then
@@ -53,7 +55,7 @@ function c72258771.mtop(e,tp,eg,ep,ev,re,r,rp)
 		local g=g1:Select(tp,1,1,nil)
 		Duel.SendtoGrave(g,REASON_COST)
 	else
-		Duel.Destroy(e:GetHandler(),REASON_COST)
+		Duel.Destroy(c,REASON_COST)
 	end
 end
 function c72258771.otfilter(c,tp)
