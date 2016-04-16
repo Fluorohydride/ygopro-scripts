@@ -46,16 +46,6 @@ function c63519819.initial_effect(c)
 	e5:SetValue(c63519819.defval)
 	e5:SetLabelObject(e1)
 	c:RegisterEffect(e5)
-	--substitute
-	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e6:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e6:SetRange(LOCATION_MZONE)
-	e6:SetCondition(c63519819.adcon)
-	e6:SetValue(c63519819.repval)
-	e6:SetLabelObject(e1)
-	c:RegisterEffect(e6)
 end
 function c63519819.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -89,6 +79,14 @@ function c63519819.eqop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+0x1fe0000)
 			e1:SetValue(c63519819.eqlimit)
 			tc:RegisterEffect(e1)
+			--substitute
+			local e2=Effect.CreateEffect(c)
+ 			e2:SetType(EFFECT_TYPE_EQUIP)
+ 			e2:SetCode(EFFECT_DESTROY_SUBSTITUTE)
+ 			e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
+ 			e2:SetReset(RESET_EVENT+0x1fe0000)
+ 			e2:SetValue(c63519819.repval)
+ 			tc:RegisterEffect(e2)
 		else Duel.SendtoGrave(tc,REASON_EFFECT) end
 	end
 end
