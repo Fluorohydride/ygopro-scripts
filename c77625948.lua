@@ -74,7 +74,8 @@ function c77625948.repval(e,re,r,rp)
 end
 function c77625948.atkcon(e)
 	local tp=e:GetHandlerPlayer()
-	return Duel.GetAttackTarget()==nil and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)~=0
+	return Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL
+		and Duel.GetAttackTarget()==nil and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)~=0
 		and e:GetHandler():GetEffectCount(EFFECT_DIRECT_ATTACK)==1
 end
 function c77625948.atkval(e,c)
