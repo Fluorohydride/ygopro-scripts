@@ -49,15 +49,12 @@ end
 function c97165977.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EFFECT_DESTROY_REPLACE)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_INDESTRUCTABLE_COUNT)
+	e1:SetTargetRange(0,LOCATION_MZONE)
+	e1:SetValue(c97165977.indct)
 	e1:SetReset(RESET_PHASE+PHASE_END)
-	e1:SetTarget(c97165977.reptg)
-	e1:SetValue(c97165977.repval)
 	Duel.RegisterEffect(e1,tp)
-	local g=Group.CreateGroup()
-	g:KeepAlive()
-	e1:SetLabelObject(g)
 	if c:IsRelateToEffect(e) then
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
@@ -67,25 +64,10 @@ function c97165977.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e2)
 	end
 end
-function c97165977.repfilter(c,e,tp)
-	return c:IsFaceup() and c:IsControler(1-tp) and c:IsLocation(LOCATION_MZONE)
-		and c:IsReason(REASON_BATTLE) and c:GetFlagEffect(97165977)==0 and not c:IsImmuneToEffect(e)
-end
-function c97165977.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c97165977.repfilter,1,nil,e,tp) end
-	local g=eg:Filter(c97165977.repfilter,nil,e,tp)
-	local tc=g:GetFirst()
-	while tc do
-		tc:RegisterFlagEffect(97165977,RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END,0,1)
-		tc=g:GetNext()
-	end
-	e:GetLabelObject():Clear()
-	e:GetLabelObject():Merge(g)
-	return true
-end
-function c97165977.repval(e,c)
-	local g=e:GetLabelObject()
-	return g:IsContains(c)
+function c97165977.indct(e,,re,r,rp)
+	if bit.band(r,REASON_BATTLE)~=0 then
+		return 1
+	else return 0 end
 end
 function c97165977.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

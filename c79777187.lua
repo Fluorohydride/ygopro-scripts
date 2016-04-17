@@ -16,37 +16,19 @@ function c79777187.initial_effect(c)
 	c:RegisterEffect(e2)
 	--indes
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EFFECT_DESTROY_REPLACE)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_INDESTRUCTABLE_COUNT)
 	e3:SetRange(LOCATION_SZONE)
-	e3:SetTarget(c79777187.reptg)
-	e3:SetValue(c79777187.repval)
+	e3:SetTargetRange(LOCATION_MZONE,0)
+	e3:SetTarget(c79777187.target)
+	e3:SetValue(c79777187.indct)
 	c:RegisterEffect(e3)
-	local g=Group.CreateGroup()
-	g:KeepAlive()
-	e3:SetLabelObject(g)
 end
 function c79777187.target(e,c)
 	return c:IsSetCard(0xc6) or c:IsSetCard(0x9f)
 end
-function c79777187.repfilter(c,e,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
-		and (c:IsSetCard(0xc6) or c:IsSetCard(0x9f)) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
-		and c:GetFlagEffect(79777187)==0 and not c:IsImmuneToEffect(e)
-end
-function c79777187.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c79777187.repfilter,1,nil,e,tp) end
-	local g=eg:Filter(c79777187.repfilter,nil,e,tp)
-	local tc=g:GetFirst()
-	while tc do
-		tc:RegisterFlagEffect(79777187,RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(79777187,0))
-		tc=g:GetNext()
-	end
-	e:GetLabelObject():Clear()
-	e:GetLabelObject():Merge(g)
-	return true
-end
-function c79777187.repval(e,c)
-	local g=e:GetLabelObject()
-	return g:IsContains(c)
+function c79777187.indct(e,re,r,rp,c)
+	if bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0 then
+		return 1
+	else return 0 end
 end
