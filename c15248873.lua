@@ -14,7 +14,15 @@ function c15248873.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldCard(tp,LOCATION_SZONE,5)==nil and Duel.GetFieldCard(1-tp,LOCATION_SZONE,5)~=nil
 end
 function c15248873.filter(c,tp)
-	return c:IsType(TYPE_FIELD) and c:GetActivateEffect():IsActivatable(tp)
+	if not c:IsType(TYPE_FIELD) or c:IsForbidden() then return false end
+	local te=c:GetActivateEffect()
+	local con=te:GetCondition()
+	if con and not con(te,tp,nil,0,0,nil,0,0) then return false end
+	local cost=te:GetCost()
+	if cost and not cost(te,tp,nil,0,0,nil,0,0) then return false end
+	local tg=te:GetTarget()
+	if tg and not tg(te,tp,nil,0,0,nil,0,0) then return false end
+	return true
 end
 function c15248873.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c15248873.filter,tp,LOCATION_DECK,0,1,nil,tp) end
@@ -33,6 +41,6 @@ function c15248873.operation(e,tp,eg,ep,ev,re,r,rp)
 		local tep=tc:GetControler()
 		local cost=te:GetCost()
 		if cost then cost(te,tep,eg,ep,ev,re,r,rp,1) end
-		Duel.RaiseEvent(tc,EVENT_CHAIN_SOLVED,tc:GetActivateEffect(),0,tp,tp,Duel.GetCurrentChain())
+		Duel.RaiseEvent(tc,EVENT_CHAIN_SOLVED,te,0,tp,tp,Duel.GetCurrentChain())
 	end
 end

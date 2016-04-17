@@ -16,7 +16,15 @@ function c48934760.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c48934760.cfilter,1,nil,tp)
 end
 function c48934760.filter(c,tp)
-	return c:IsType(TYPE_FIELD) and c:GetActivateEffect():IsActivatable(tp)
+	if not c:IsType(TYPE_FIELD) or c:IsForbidden() then return false end
+	local te=c:GetActivateEffect()
+	local con=te:GetCondition()
+	if con and not con(te,tp,nil,0,0,nil,0,0) then return false end
+	local cost=te:GetCost()
+	if cost and not cost(te,tp,nil,0,0,nil,0,0) then return false end
+	local tg=te:GetTarget()
+	if tg and not tg(te,tp,nil,0,0,nil,0,0) then return false end
+	return true
 end
 function c48934760.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c48934760.filter,tp,LOCATION_DECK,0,1,nil,tp) end
@@ -35,6 +43,6 @@ function c48934760.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tep=tc:GetControler()
 		local cost=te:GetCost()
 		if cost then cost(te,tep,eg,ep,ev,re,r,rp,1) end
-		Duel.RaiseEvent(tc,EVENT_CHAIN_SOLVED,tc:GetActivateEffect(),0,tp,tp,Duel.GetCurrentChain())
+		Duel.RaiseEvent(tc,EVENT_CHAIN_SOLVED,te,0,tp,tp,Duel.GetCurrentChain())
 	end
 end
