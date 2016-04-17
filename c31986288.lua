@@ -1,4 +1,4 @@
---スプリット・Ｄ・ローズ
+--スプリット・D・ローズ
 function c31986288.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

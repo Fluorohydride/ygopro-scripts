@@ -1,4 +1,4 @@
---エンジェルＯ７
+--エンジェルO７
 function c56784842.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)

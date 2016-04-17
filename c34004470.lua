@@ -1,4 +1,4 @@
---Ｔｈｅ　ｂｉｇ　ＳＡＴＵＲＮ
+--The big SATURN
 function c34004470.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---アルカナフォースVI－THE LOVERS
+--アルカナフォースⅥ－THE LOVERS
 function c97574404.initial_effect(c)
 	--coin
 	local e1=Effect.CreateEffect(c)

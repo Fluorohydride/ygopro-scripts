@@ -1,4 +1,4 @@
---Ｎｏ.３９ 希望皇ホープ
+--No.39 希望皇ホープ
 function c84013237.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

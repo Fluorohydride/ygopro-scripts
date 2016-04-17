@@ -1,4 +1,4 @@
---ＴＨＥ　Ｓｕｐｒｅｍａｃｙ　Ｓｕｎ
+--The supremacy SUN
 function c51402908.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

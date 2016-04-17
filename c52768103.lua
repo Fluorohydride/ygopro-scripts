@@ -1,4 +1,4 @@
---ＫＡ－２ デス・シザース
+--KA－２ デス・シザース
 function c52768103.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)
