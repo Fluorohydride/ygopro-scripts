@@ -19,9 +19,9 @@ function c15248873.filter(c,tp)
 	local con=te:GetCondition()
 	if con and not con(te,tp,nil,0,0,nil,0,0) then return false end
 	local cost=te:GetCost()
-	if cost and not cost(te,tp,nil,0,0,nil,0,0) then return false end
+	if cost and not cost(te,tp,nil,0,0,nil,0,0,0) then return false end
 	local tg=te:GetTarget()
-	if tg and not tg(te,tp,nil,0,0,nil,0,0) then return false end
+	if tg and not tg(te,tp,nil,0,0,nil,0,0,0) then return false end
 	return true
 end
 function c15248873.target(e,tp,eg,ep,ev,re,r,rp,chk)
