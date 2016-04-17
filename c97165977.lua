@@ -64,7 +64,7 @@ function c97165977.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e2)
 	end
 end
-function c97165977.indct(e,,re,r,rp)
+function c97165977.indct(e,re,r,rp)
 	if bit.band(r,REASON_BATTLE)~=0 then
 		return 1
 	else return 0 end

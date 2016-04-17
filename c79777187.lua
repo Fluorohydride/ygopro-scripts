@@ -27,7 +27,7 @@ end
 function c79777187.target(e,c)
 	return c:IsSetCard(0xc6) or c:IsSetCard(0x9f)
 end
-function c79777187.indct(e,re,r,rp,c)
+function c79777187.indct(e,re,r,rp)
 	if bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0 then
 		return 1
 	else return 0 end
