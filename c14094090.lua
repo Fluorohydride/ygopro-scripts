@@ -14,7 +14,7 @@ function c14094090.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c14094090.ritual_filter(c)
-	return c:IsType(TYPE_RITUAL) and c:IsSetCard(0xcf)
+	return c:IsType(TYPE_RITUAL) and c:IsSetCard(0x10cf)
 end
 function c14094090.cfilter(c,att)
 	return c:IsAttribute(att) and c:IsAbleToRemoveAsCost()
@@ -32,7 +32,7 @@ function c14094090.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(g1,POS_FACEUP,REASON_COST)
 end
 function c14094090.spfilter(c,e,tp)
-	return c:IsSetCard(0xcf) and c:IsType(TYPE_RITUAL) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsSetCard(0x10cf) and c:IsType(TYPE_RITUAL) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c14094090.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

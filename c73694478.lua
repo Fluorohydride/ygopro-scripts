@@ -25,11 +25,11 @@ function c73694478.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c73694478.filter(c,e,tp)
-	return c:IsFaceup() and c:IsSetCard(0xcf)
+	return c:IsFaceup() and c:IsSetCard(0x10cf)
 		and Duel.IsExistingMatchingCard(c73694478.spfilter,tp,LOCATION_HAND,0,1,nil,c:GetCode(),e,tp)
 end
 function c73694478.spfilter(c,code,e,tp)
-	return c:IsSetCard(0xcf) and not c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsSetCard(0x10cf) and not c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c73694478.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c73694478.filter(chkc,e,tp) end
@@ -59,7 +59,7 @@ function c73694478.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c73694478.thfilter(c)
-	return c:IsSetCard(0xcf) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0x10cf) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c73694478.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c73694478.thfilter(chkc) end

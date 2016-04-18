@@ -45,7 +45,7 @@ function c7841921.atkop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 end
 function c7841921.thfilter(c)
-	return c:IsSetCard(0xcf) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0x10cf) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c7841921.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c7841921.thfilter,tp,LOCATION_DECK,0,1,nil) end

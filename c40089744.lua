@@ -30,7 +30,7 @@ function c40089744.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c40089744.filter(c)
-	return ((c:IsSetCard(0xcf) and c:IsType(TYPE_RITUAL)) or c:IsSetCard(0xbd)) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return ((c:IsSetCard(0x10cf) and c:IsType(TYPE_RITUAL)) or c:IsSetCard(0xbd)) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c40089744.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c40089744.filter,tp,LOCATION_DECK,0,1,nil) end
