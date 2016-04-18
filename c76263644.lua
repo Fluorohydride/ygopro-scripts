@@ -17,11 +17,12 @@ function c76263644.initial_effect(c)
 	c:RegisterEffect(e2)
 	--Special Summon
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(76263644,1))
 	e3:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_FIELD)
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetCode(EVENT_PHASE+PHASE_STANDBY)
 	e3:SetRange(LOCATION_GRAVE)
-	e3:SetDescription(aux.Stringid(76263644,1))
+	e3:SetCountLimit(1)
 	e3:SetCondition(c76263644.spcon)
 	e3:SetCost(c76263644.spcost)
 	e3:SetTarget(c76263644.sptg)
@@ -59,8 +60,7 @@ function c76263644.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c76263644.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return Duel.GetTurnPlayer()==tp
 end
 function c76263644.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c76263644.spfilter,tp,LOCATION_GRAVE,0,1,nil) end
@@ -72,7 +72,8 @@ function c76263644.spfilter(c)
 	return c:IsSetCard(0xc008) and c:IsAbleToRemoveAsCost()
 end
 function c76263644.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c76263644.spop(e,tp,eg,ep,ev,re,r,rp)
