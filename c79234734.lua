@@ -21,7 +21,7 @@ function c79234734.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c79234734.cfilter(c)
-	return c:IsSetCard(0xcf) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
+	return c:IsSetCard(0x10cf) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
 end
 function c79234734.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c79234734.cfilter,tp,LOCATION_HAND,0,1,nil) end

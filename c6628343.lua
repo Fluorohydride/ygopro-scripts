@@ -26,7 +26,7 @@ end
 function c6628343.mtop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(tp,6628343)~=0 then return end
 	local c=e:GetHandler()
-	local g=eg:Filter(Card.IsSetCard,nil,0xcf)
+	local g=eg:Filter(Card.IsSetCard,nil,0x10cf)
 	local rc=g:GetFirst()
 	if not rc then return end
 	local e1=Effect.CreateEffect(c)
