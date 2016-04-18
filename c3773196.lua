@@ -28,7 +28,7 @@ end
 function c3773196.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(3773197)==0 end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
-	e:GetHandler():RegisterFlagEffect(3773197,RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(3773197,RESET_EVENT+0x4760000+RESET_PHASE+PHASE_END,0,1)
 end
 function c3773196.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
