@@ -63,7 +63,7 @@ function c29169993.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c29169993.cfilter(c)
-	return c:IsSetCard(0x9f) and c:IsPreviousLocation(LOCATION_HAND)
+	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x9f) and c:IsPreviousLocation(LOCATION_HAND)
 end
 function c29169993.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c29169993.cfilter,1,nil) and not eg:IsContains(e:GetHandler())
