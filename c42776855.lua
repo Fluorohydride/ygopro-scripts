@@ -40,13 +40,6 @@ function c42776855.initial_effect(c)
 	e5:SetCondition(c42776855.atkcon)
 	e5:SetOperation(c42776855.atkop)
 	c:RegisterEffect(e5)
-	--Destroy
-	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
-	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e6:SetCode(EVENT_LEAVE_FIELD_P)
-	e6:SetOperation(c42776855.checkop)
-	c:RegisterEffect(e6)
 	--Destroy2
 	local e7=Effect.CreateEffect(c)
 	e7:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
@@ -104,11 +97,6 @@ function c42776855.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 	end
-end
-function c42776855.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsDisabled() then
-		e:SetLabel(1)
-	else e:SetLabel(0) end
 end
 function c42776855.descon2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetFirstCardTarget()
