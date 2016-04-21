@@ -11,7 +11,7 @@ function c24707869.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c24707869.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_PSYCHO) and c:IsAbleToGrave()
+	return c:IsFaceup() and c:IsRace(RACE_PSYCHO)
 end
 function c24707869.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c24707869.filter(chkc) end

@@ -45,7 +45,7 @@ function c42110604.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c42110604.thfilter(c)
-	return c:IsSetCard(0x2016) and c:IsAbleToHand()
+	return c:IsFaceup() and c:IsSetCard(0x2016) and c:IsAbleToHand()
 end
 function c42110604.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c42110604.thfilter(chkc) end
