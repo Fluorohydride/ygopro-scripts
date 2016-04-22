@@ -57,23 +57,24 @@ end
 function c77462146.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,77462146,0x10db,0x11,4,0,300,RACE_WARRIOR,ATTRIBUTE_DARK) then
-		c:SetStatus(STATUS_NO_LEVEL,false)
+	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,77462146,0x10db,0x11,4,0,300,RACE_WARRIOR,ATTRIBUTE_DARK) then
+		c:AddMonsterAttribute(0,0,0,0,0)
+		Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP_DEFENCE)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_TYPE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetValue(TYPE_NORMAL+TYPE_MONSTER)
-		e1:SetReset(RESET_EVENT+0xc7c0000)
+		e1:SetReset(RESET_EVENT+0x1fc0000)
 		c:RegisterEffect(e1,true)
-		Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_DEFENCE)
-		local e7=Effect.CreateEffect(c)
-		e7:SetType(EFFECT_TYPE_SINGLE)
-		e7:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
-		e7:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e7:SetReset(RESET_EVENT+0x47e0000)
-		e7:SetValue(LOCATION_REMOVED)
-		c:RegisterEffect(e7,true)
+		--redirect
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
+		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e2:SetReset(RESET_EVENT+0x47e0000)
+		e2:SetValue(LOCATION_REMOVED)
+		c:RegisterEffect(e2,true)
+		Duel.SpecialSummonComplete()
 	end
 end

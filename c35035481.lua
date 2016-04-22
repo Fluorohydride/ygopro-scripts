@@ -49,17 +49,16 @@ end
 function c35035481.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,35035481,0xd4,0x11,1200,0,2,RACE_AQUA,ATTRIBUTE_WATER) then
-		c:SetStatus(STATUS_NO_LEVEL,false)
+	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,35035481,0xd4,0x11,1200,0,2,RACE_AQUA,ATTRIBUTE_WATER) then
+		c:AddMonsterAttribute(0,0,0,0,0)
+		Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_TYPE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetValue(TYPE_NORMAL+TYPE_MONSTER)
-		e1:SetReset(RESET_EVENT+0xc7c0000)
+		e1:SetReset(RESET_EVENT+0x1fc0000)
 		c:RegisterEffect(e1,true)
-		Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_IMMUNE_EFFECT)
@@ -75,6 +74,7 @@ function c35035481.spop(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetReset(RESET_EVENT+0x47e0000)
 		e3:SetValue(LOCATION_REMOVED)
 		c:RegisterEffect(e3,true)
+		Duel.SpecialSummonComplete()
 	end
 end
 function c35035481.efilter(e,re)
