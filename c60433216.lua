@@ -34,7 +34,8 @@ function c60433216.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,60433216,0,0x1011,0,0,1,RACE_FIEND,ATTRIBUTE_FIRE) then return end
-	c:AddTrapMonsterAttribute(TYPE_NORMAL+TYPE_TUNER,ATTRIBUTE_FIRE,RACE_FIEND,1,0,0)
-	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
-	c:TrapMonsterBlock()
+	c:AddMonsterAttribute(0,0,0,0,0)
+	Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
+	c:TrapMonsterComplete(TYPE_NORMAL+TYPE_TUNER)
+	Duel.SpecialSummonComplete()
 end

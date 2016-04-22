@@ -25,9 +25,9 @@ function c90440725.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,90440725,0,0x21,-2,-2,4,RACE_MACHINE,ATTRIBUTE_EARTH) then return end
-	c:AddTrapMonsterAttribute(TYPE_EFFECT,ATTRIBUTE_EARTH,RACE_MACHINE,4,-2,-2)
-	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
-	c:TrapMonsterBlock()
+	c:AddMonsterAttribute(0,0,0,0,0)
+	Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
+	c:TrapMonsterComplete(TYPE_EFFECT)
 	--cannot attack
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
@@ -36,7 +36,7 @@ function c90440725.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCondition(c90440725.atkcon)
 	e1:SetOperation(c90440725.atkop)
 	e1:SetReset(RESET_EVENT+0x1fe0000)
-	c:RegisterEffect(e1)
+	c:RegisterEffect(e1,true)
 	--turn set
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(90440725,0))
@@ -48,7 +48,8 @@ function c90440725.activate(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetTarget(c90440725.settg)
 	e2:SetOperation(c90440725.setop)
 	e2:SetReset(RESET_EVENT+0x1fe0000)
-	c:RegisterEffect(e2)
+	c:RegisterEffect(e2,true)
+	Duel.SpecialSummonComplete()
 end
 function c90440725.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==e:GetHandler()

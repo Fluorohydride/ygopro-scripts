@@ -43,9 +43,9 @@ function c70406920.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,70406920,0,0x21,1000,1000,4,RACE_MACHINE,ATTRIBUTE_EARTH) then return end
-	c:AddTrapMonsterAttribute(TYPE_EFFECT,ATTRIBUTE_EARTH,RACE_MACHINE,4,1000,1000)
-	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
-	c:TrapMonsterBlock()
+	c:AddMonsterAttribute(0,0,0,0,0)
+	Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
+	c:TrapMonsterComplete(TYPE_EFFECT)
 	--atkup
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(70406920,0))
@@ -56,7 +56,8 @@ function c70406920.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCost(c70406920.atkcost)
 	e1:SetOperation(c70406920.atkop)
 	e1:SetReset(RESET_EVENT+0x1fe0000)
-	c:RegisterEffect(e1)
+	c:RegisterEffect(e1,true)
+	Duel.SpecialSummonComplete()
 end
 function c70406920.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,e:GetHandler(),RACE_MACHINE) end

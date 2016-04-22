@@ -23,9 +23,9 @@ function c49514333.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,49514333,0,0x21,1000,1800,4,RACE_ROCK,ATTRIBUTE_LIGHT) then return end
-	c:AddTrapMonsterAttribute(TYPE_EFFECT,ATTRIBUTE_LIGHT,RACE_ROCK,4,1000,1800)
-	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
-	c:TrapMonsterBlock()
+	c:AddMonsterAttribute(0,0,0,0,0)
+	Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
+	c:TrapMonsterComplete(TYPE_EFFECT)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetRange(LOCATION_MZONE)
@@ -34,7 +34,8 @@ function c49514333.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(c49514333.repval)
 	e1:SetReset(RESET_EVENT+0x1fe0000)
 	e1:SetLabelObject(e)
-	c:RegisterEffect(e1)
+	c:RegisterEffect(e1,true)
+	Duel.SpecialSummonComplete()
 end
 function c49514333.repfilter(c,tp)
 	return c:IsLocation(LOCATION_MZONE) and c:IsFaceup() and c:GetDestination()==LOCATION_GRAVE and c:IsReason(REASON_DESTROY)

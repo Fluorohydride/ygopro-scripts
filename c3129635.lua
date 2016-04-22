@@ -20,9 +20,9 @@ function c3129635.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,3129635,0,0x21,1800,1000,4,RACE_ROCK,ATTRIBUTE_DARK) then return end
-	c:AddTrapMonsterAttribute(TYPE_EFFECT,ATTRIBUTE_DARK,RACE_ROCK,4,1800,1000)
-	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
-	c:TrapMonsterBlock()
+	c:AddMonsterAttribute(0,0,0,0,0)
+	Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
+	c:TrapMonsterComplete(TYPE_EFFECT)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(3129635,0))
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
@@ -32,7 +32,8 @@ function c3129635.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTarget(c3129635.destg)
 	e1:SetOperation(c3129635.desop)
 	e1:SetReset(RESET_EVENT+0x1fe0000)
-	c:RegisterEffect(e1)
+	c:RegisterEffect(e1,true)
+	Duel.SpecialSummonComplete()
 end
 function c3129635.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local a=Duel.GetAttacker()
