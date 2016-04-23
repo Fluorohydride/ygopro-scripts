@@ -27,6 +27,7 @@ function c26834022.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c26834022.filter,tp,LOCATION_HAND,0,1,1,nil)
 	if g:GetCount()==0 then return end
+	Duel.ConfirmCards(1-tp,g)
 	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
 	Duel.NegateActivation(ev)
 	if re:GetHandler():IsRelateToEffect(re) then
