@@ -31,42 +31,17 @@ function c29843091.activate(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+0x1fe0000)
 			e1:SetValue(1)
 			token:RegisterEffect(e1,true)
+			local e2=Effect.CreateEffect(e:GetHandler())
+			e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+			e2:SetCode(EVENT_DESTROYED)
+			e2:SetOperation(c29843091.damop)
+			token:RegisterEffect(e2,true)
 			g:AddCard(token)
 		end
 	end
-	g:KeepAlive()
-	local e2=Effect.CreateEffect(e:GetHandler())
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_DESTROYED)
-	e2:SetLabelObject(g)
-	e2:SetCondition(c29843091.damcon)
-	e2:SetOperation(c29843091.damop)
-	Duel.RegisterEffect(e2,tp)
 	Duel.SpecialSummonComplete()
 end
-function c29843091.dfilter(c,g)
-	return g:IsContains(c)
-end
-function c29843091.damcon(e,tp,eg,ep,ev,re,r,rp)
-	local g=e:GetLabelObject()
-	if eg:IsExists(c29843091.dfilter,1,nil,g) then
-		return true
-	else
-		if not g:IsExists(Card.IsLocation,1,nil,LOCATION_MZONE) then
-			g:DeleteGroup()
-			e:Reset()
-		end
-		return false
-	end
-end
 function c29843091.damop(e,tp,eg,ep,ev,re,r,rp)
-	local g=e:GetLabelObject()
-	local tc=eg:GetFirst()
-	while tc do
-		if g:IsContains(tc) then
-			Duel.Damage(tc:GetPreviousControler(),300,REASON_EFFECT)
-			g:RemoveCard(tc)
-		end
-		tc=eg:GetNext()
-	end
+	local c=e:GetHandler()
+	Duel.Damage(c:GetPreviousControler(),300,REASON_EFFECT)
 end
