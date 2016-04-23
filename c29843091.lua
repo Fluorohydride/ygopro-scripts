@@ -32,7 +32,7 @@ function c29843091.activate(e,tp,eg,ep,ev,re,r,rp)
 			token:RegisterEffect(e1,true)
 			local e2=Effect.CreateEffect(e:GetHandler())
 			e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-			e2:SetCode(EVENT_DESTROYED)
+			e2:SetCode(EVENT_LEAVE_FIELD)
 			e2:SetOperation(c29843091.damop)
 			token:RegisterEffect(e2,true)
 		end
@@ -41,6 +41,8 @@ function c29843091.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c29843091.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	Duel.Damage(c:GetPreviousControler(),300,REASON_EFFECT)
+	if c:IsReason(REASON_DESTROY) then
+		Duel.Damage(c:GetPreviousControler(),300,REASON_EFFECT)
+	end
 	e:Reset()
 end
