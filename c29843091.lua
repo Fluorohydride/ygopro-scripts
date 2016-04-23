@@ -42,4 +42,5 @@ end
 function c29843091.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.Damage(c:GetPreviousControler(),300,REASON_EFFECT)
+	e:Reset()
 end
