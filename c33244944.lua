@@ -18,11 +18,11 @@ function c33244944.condition(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,1,nil,33396948)
 end
 function c33244944.filter(c,e,tp)
-	return c:IsCode(12600382) and c:IsCanBeSpecialSummoned(e,332449,tp,true,true)
+	return c:IsCode(12600382) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)
 end
 function c33244944.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and
-		Duel.IsExistingMatchingCard(c33244944.filter,tp,LOCATION_HAND,0,1,nil,e,tp) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c33244944.filter,tp,LOCATION_HAND,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c33244944.activate(e,tp,eg,ep,ev,re,r,rp)
@@ -31,7 +31,7 @@ function c33244944.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.SelectMatchingCard(tp,c33244944.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	if tg:GetCount()>0 then
 		local tc=tg:GetFirst()
-		Duel.SpecialSummon(tc,332449,tp,tp,true,true,POS_FACEUP)
+		Duel.SpecialSummon(tc,0,tp,tp,true,true,POS_FACEUP)
 		tc:CompleteProcedure()
 	end
 end
