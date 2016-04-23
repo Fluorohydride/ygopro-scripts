@@ -14,9 +14,9 @@ function c8251996.cfilter(c,code)
 	return c:IsFaceup() and c:IsCode(code)
 end
 function c8251996.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c8251996.cfilter,tp,LOCATION_MZONE,0,1,nil,12482652)
-		and Duel.IsExistingMatchingCard(c8251996.cfilter,tp,LOCATION_MZONE,0,1,nil,42941100)
-		and Duel.IsExistingMatchingCard(c8251996.cfilter,tp,LOCATION_MZONE,0,1,nil,79335209)
+	return Duel.IsExistingMatchingCard(c8251996.cfilter,tp,LOCATION_ONFIELD,0,1,nil,12482652)
+		and Duel.IsExistingMatchingCard(c8251996.cfilter,tp,LOCATION_ONFIELD,0,1,nil,42941100)
+		and Duel.IsExistingMatchingCard(c8251996.cfilter,tp,LOCATION_ONFIELD,0,1,nil,79335209)
 end
 function c8251996.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDestructable,tp,0,LOCATION_ONFIELD,1,nil) end

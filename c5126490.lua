@@ -34,42 +34,26 @@ function c5126490.initial_effect(c)
 	e4:SetValue(1)
 	c:RegisterEffect(e4)
 end
-function c5126490.spfilter(c,code)
-	return c:IsFaceup() and c:IsCode(code) and c:IsAbleToGraveAsCost()
+function c5126490.spfilter1(c,tp)
+	return c:IsFaceup() and c:IsCode(89943723) and c:IsAbleToGraveAsCost()
+		and Duel.IsExistingMatchingCard(c5126490.spfilter2,tp,LOCATION_MZONE,0,1,c)
+end
+function c5126490.spfilter2(c)
+	return c:IsFaceup() and c:IsCode(78371393) and c:IsAbleToGraveAsCost()
 end
 function c5126490.spcon(e,c)
 	if c==nil then return true end 
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<-1 then return false end
-	local g1=Duel.GetMatchingGroup(c5126490.spfilter,tp,LOCATION_ONFIELD,0,nil,89943723)
-	local g2=Duel.GetMatchingGroup(c5126490.spfilter,tp,LOCATION_ONFIELD,0,nil,78371393)
-	if g1:GetCount()==0 or g2:GetCount()==0 then return false end
-	if ft>0 then return true end
-	local f1=g1:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)
-	local f2=g2:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)
-	if ft==-1 then return f1>0 and f2>0
-	else return f1>0 or f2>0 end
+	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
+		and Duel.IsExistingMatchingCard(c5126490.spfilter1,tp,LOCATION_MZONE,0,1,nil,tp)
 end
 function c5126490.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g1=Duel.GetMatchingGroup(c5126490.spfilter,tp,LOCATION_ONFIELD,0,nil,89943723)
-	local g2=Duel.GetMatchingGroup(c5126490.spfilter,tp,LOCATION_ONFIELD,0,nil,78371393)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local g1=Duel.SelectMatchingCard(tp,c5126490.spfilter1,tp,LOCATION_MZONE,0,1,1,nil,tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local g2=Duel.SelectMatchingCard(tp,c5126490.spfilter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst())
 	g1:Merge(g2)
-	local g=Group.CreateGroup()
-	local tc=nil
-	for i=1,2 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		if ft<=0 then
-			tc=g1:FilterSelect(tp,Card.IsLocation,1,1,nil,LOCATION_MZONE):GetFirst()
-		else
-			tc=g1:Select(tp,1,1,nil):GetFirst()
-		end
-		g:AddCard(tc)
-		g1:Remove(Card.IsCode,nil,tc:GetCode())
-		ft=ft+1
-	end
-	Duel.SendtoGrave(g,REASON_COST)
+	Duel.SendtoGrave(g1,REASON_COST)
 end
 function c5126490.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetAttackTarget()~=nil end

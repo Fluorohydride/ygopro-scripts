@@ -20,7 +20,6 @@ function c29843091.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)<3 then return end
 	if not Duel.IsPlayerCanSpecialSummonMonster(tp,29843092,0xf,0x4011,0,1000,2,RACE_BEAST,ATTRIBUTE_LIGHT,POS_FACEUP_DEFENCE,1-tp) then return end
-	local g=Group.CreateGroup()
 	for i=1,3 do
 		local token=Duel.CreateToken(tp,29843091+i)
 		if Duel.SpecialSummonStep(token,0,tp,1-tp,false,false,POS_FACEUP_DEFENCE) then
@@ -36,7 +35,6 @@ function c29843091.activate(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetCode(EVENT_DESTROYED)
 			e2:SetOperation(c29843091.damop)
 			token:RegisterEffect(e2,true)
-			g:AddCard(token)
 		end
 	end
 	Duel.SpecialSummonComplete()
