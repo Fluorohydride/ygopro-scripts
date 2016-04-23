@@ -4,7 +4,7 @@ function c78625592.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetTarget(c78625592.target1)
+	e1:SetTarget(c78625592.target)
 	e1:SetOperation(c78625592.operation)
 	c:RegisterEffect(e1)
 	--disable attack
@@ -15,7 +15,6 @@ function c78625592.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCondition(c78625592.condition)
 	e2:SetCost(c78625592.cost)
-	e2:SetTarget(c78625592.target2)
 	e2:SetOperation(c78625592.operation)
 	c:RegisterEffect(e2)
 	--cannot direct attack
@@ -36,22 +35,20 @@ end
 function c78625592.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000) end
 	Duel.PayLPCost(tp,1000)
+	e:SetLabel(1)
 end
-function c78625592.target1(e,tp,eg,ep,ev,re,r,rp,chk)
+function c78625592.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
+	e:SetLabel(0)
 	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer()
 		and Duel.CheckLPCost(tp,1000) and Duel.SelectYesNo(tp,94) then
 		Duel.PayLPCost(tp,1000)
-		e:GetHandler():RegisterFlagEffect(78625592,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		e:SetLabel(1)
 		e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,65)
 	end
 end
-function c78625592.target2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(78625592)==0 end
-	e:GetHandler():RegisterFlagEffect(78625592,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
-end
 function c78625592.operation(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():GetFlagEffect(78625592)==0 or not e:GetHandler():IsRelateToEffect(e) then return end
+	if e:GetLabel()==0 or not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.NegateAttack()
 end
 function c78625592.grcondition(e,tp,eg,ep,ev,re,r,rp)
