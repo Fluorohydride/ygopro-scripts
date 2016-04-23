@@ -47,6 +47,7 @@ function c86848580.disop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc=g:GetNext()
 	end
+	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 	local atk=Duel.GetMatchingGroupCount(Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,c)*300
 	if atk>0 then
 		local e1=Effect.CreateEffect(c)

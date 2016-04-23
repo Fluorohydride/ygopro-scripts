@@ -86,12 +86,14 @@ function c56051086.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,ev)
 end
 function c56051086.damop(e,tp,eg,ep,ev,re,r,rp)
-	local e1=Effect.CreateEffect(e:GetHandler())
+	local c=e:GetHandler()
+	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)
 	e1:SetValue(ev)
 	e1:SetReset(RESET_EVENT+0x1ff0000)
-	e:GetHandler():RegisterEffect(e1)
+	c:RegisterEffect(e1)
 	Duel.Damage(1-tp,ev,REASON_EFFECT)
 end

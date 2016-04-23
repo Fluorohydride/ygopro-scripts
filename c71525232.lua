@@ -34,14 +34,19 @@ function c71525232.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local mg,atk=g:GetMaxGroup(Card.GetAttack)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,atk)
 end
+function c71525232.filter(c)
+	if c:IsPreviousPosition(POS_FACEUP) then
+		return c:GetPreviousAttackOnField()
+	else return 0 end
+end
 function c71525232.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(Card.IsDestructable,tp,LOCATION_MZONE,LOCATION_MZONE,c)
 	if g:GetCount()>0 and Duel.Destroy(g,REASON_EFFECT)~=0 then
 		local og=Duel.GetOperatedGroup()
-		local mg,atk=g:GetMaxGroup(Card.GetPreviousAttackOnField)
+		local mg,atk=og:GetMaxGroup(c71525232.filter)
 		local dam=Duel.Damage(1-tp,atk,REASON_EFFECT)
-		if dam>0 then
+		if dam>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_SET_ATTACK_FINAL)
