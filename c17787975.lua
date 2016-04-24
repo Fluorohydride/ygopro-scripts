@@ -34,7 +34,6 @@ function c17787975.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCode(EVENT_LEAVE_FIELD)
-	e4:SetProperty(EFFECT_FLAG_DELAY)
 	e4:SetCondition(c17787975.descon)
 	e4:SetOperation(c17787975.desop)
 	c:RegisterEffect(e4)
@@ -59,14 +58,14 @@ function c17787975.tgop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c17787975.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE
+	return Duel.GetCurrentPhase()==PHASE_BATTLE_STEP
 end
 function c17787975.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local tc=c:GetFirstCardTarget()
 	local at=Duel.GetAttacker()
-	if chk==0 then return tc and at and Duel.GetAttackTarget()==tc
-		and at:GetAttack()>tc:GetAttack() end
+	if chk==0 then return tc and Duel.GetAttackTarget()==tc
+		and at and at:IsControler(1-tp) and at:GetAttack()>tc:GetAttack() end
 	local dam=math.abs(at:GetAttack()-tc:GetAttack())
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(dam)

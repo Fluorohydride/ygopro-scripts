@@ -51,10 +51,10 @@ function c56132807.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0
 end
 function c56132807.thfilter(c)
-	return c:IsSetCard(0x20a2) and c:IsAbleToHand()
+	return c:IsSetCard(0x20a2) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c56132807.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return false end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c56132807.thfilter(chkc) end
 	local c=e:GetHandler()
 	if chk==0 then return Duel.IsExistingTarget(c56132807.thfilter,tp,LOCATION_GRAVE,0,1,c) end
 	local g=Duel.GetMatchingGroup(c56132807.thfilter,tp,LOCATION_GRAVE,0,c):Filter(Card.IsCanBeEffectTarget,nil,e)

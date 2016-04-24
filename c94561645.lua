@@ -11,7 +11,7 @@ function c94561645.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c94561645.condition(e,tp,eg,ep,ev,re,r,rp)
-	return eg:GetFirst():IsControler(1-tp) and Duel.GetAttackTarget()==nil
+	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end
 function c94561645.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end

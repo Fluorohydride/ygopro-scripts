@@ -44,7 +44,7 @@ function c82627406.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c82627406.atkfilter,tp,LOCATION_MZONE,0,1,nil) end
 end
 function c82627406.ctfilter(c)
-	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsSetCard(0x20a2)
+	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsType(TYPE_MONSTER) and c:IsSetCard(0x20a2)
 end
 function c82627406.operation(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tg=Duel.GetMatchingGroup(c82627406.atkfilter,tp,LOCATION_MZONE,0,nil)

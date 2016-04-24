@@ -31,7 +31,7 @@ end
 function c56532353.atcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return bit.band(c:GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
-		and Duel.GetAttacker()==c and c:IsChainAttackable(0,false)
+		and Duel.GetAttacker()==c and c:IsChainAttackable(0)
 		and not Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_ONFIELD,0,1,c)
 end
 function c56532353.atcost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -41,8 +41,6 @@ function c56532353.atcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c56532353.atop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if not c:IsRelateToBattle() then return end
 	Duel.ChainAttack()
 end
 function c56532353.filter(c,tp)

@@ -40,14 +40,14 @@ function c81782376.drcon(e,tp,eg,ep,ev,re,r,rp)
 		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c81782376.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroupCount(Card.IsCode,tp,LOCATION_GRAVE,0,nil,81782376)
-	if chk==0 then return true end
+	local ct=Duel.GetMatchingGroupCount(Card.IsCode,tp,LOCATION_GRAVE,0,nil,81782376)
+	if chk==0 then return ct>0 and Duel.IsPlayerCanDraw(tp,ct) end
 	Duel.SetTargetPlayer(tp)
-	Duel.SetTargetParam(g)
-	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,g)
+	Duel.SetTargetParam(ct)
+	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,ct)
 end
 function c81782376.drop(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
-	local g=Duel.GetMatchingGroupCount(Card.IsCode,tp,LOCATION_GRAVE,0,nil,81782376)
-	Duel.Draw(p,g,REASON_EFFECT)
+	local ct=Duel.GetMatchingGroupCount(Card.IsCode,p,LOCATION_GRAVE,0,nil,81782376)
+	Duel.Draw(p,ct,REASON_EFFECT)
 end
