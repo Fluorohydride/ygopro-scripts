@@ -13,6 +13,7 @@ function c54297661.initial_effect(c)
 end
 function c54297661.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToRemoveAsCost,tp,LOCATION_MZONE,0,2,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToRemoveAsCost,tp,LOCATION_MZONE,0,2,2,nil)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
@@ -20,7 +21,8 @@ function c54297661.filter(c,tp)
 	return c:IsFaceup()
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,54297661,0,0x21,c:GetAttack(),c:GetDefence(),4,RACE_SPELLCASTER,ATTRIBUTE_DARK)
 end
-function c54297661.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function c54297661.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c54297661.filter(chkc,tp) end
 	if chk==0 then return Duel.IsExistingTarget(c54297661.filter,tp,0,LOCATION_MZONE,1,nil,tp)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)

@@ -19,7 +19,6 @@ function c80560728.initial_effect(c)
 	--mulit attack
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(80560728,0))
-	e3:SetCategory(CATEGORY_DAMAGE)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_DAMAGE_STEP_END)
 	e3:SetRange(LOCATION_SZONE)

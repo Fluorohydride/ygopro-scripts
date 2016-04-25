@@ -36,6 +36,7 @@ function c78509901.spcon(e,c)
 		and Duel.IsExistingMatchingCard(c78509901.filter,c:GetControler(),LOCATION_MZONE,0,2,nil)
 end
 function c78509901.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c78509901.filter,tp,LOCATION_MZONE,0,2,2,nil)
 	Duel.SendtoGrave(g,REASON_COST)
 	local e1=Effect.CreateEffect(c)

@@ -60,7 +60,7 @@ function c15610297.disop(e,tp,eg,ep,ev,re,r,rp)
 		bc:RegisterEffect(e2)
 	end
 end
-function c15610297.condition(e,tp,eg,ep,ev,re,r,rp)
+function c15610297.condition(e)
 	return e:GetHandler():GetCounter(0x1038)>0
 end
 function c15610297.spcon(e,tp,eg,ep,ev,re,r,rp)

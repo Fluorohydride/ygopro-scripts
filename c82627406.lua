@@ -46,7 +46,7 @@ end
 function c82627406.ctfilter(c)
 	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsType(TYPE_MONSTER) and c:IsSetCard(0x20a2)
 end
-function c82627406.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c82627406.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetMatchingGroup(c82627406.atkfilter,tp,LOCATION_MZONE,0,nil)
 	local g=Duel.GetMatchingGroup(c82627406.ctfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,LOCATION_MZONE+LOCATION_GRAVE,nil)
 	if tg:GetCount()>0 and g:GetCount()>0 then
