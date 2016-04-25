@@ -2,6 +2,7 @@
 function c71442223.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_COUNTER)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -30,44 +31,44 @@ end
 function c71442223.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
-	if tc:IsRelateToEffect(e) and ft>0 then
-		if Duel.IsPlayerAffectedByEffect(1-tp,59822133) then ft=1 end
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local tg=Group.FromCards(tc)
+		local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
 		local g=Duel.GetMatchingGroup(c71442223.spfilter2,1-tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,1-tp,tc)
-		if not g:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then
-			if g:GetCount()<=ft then
-				c71442223.spsummon(g,1-tp)
-				tg:Merge(g)
-			else
+		if g:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
+		if ft>0 and g:GetCount()>0 then
+			if Duel.IsPlayerAffectedByEffect(1-tp,59822133) then ft=1 end
+			local sg=g:Clone()
+			if g:GetCount()>ft then
 				Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SPSUMMON)
-				local fg=g:Select(1-tp,ft,ft,nil)
-				c71442223.spsummon(fg,1-tp)
-				tg:Merge(fg)
+				sg=g:Select(1-tp,ft,ft,nil)
 				g:Remove(Card.IsLocation,nil,LOCATION_MZONE+LOCATION_GRAVE)
 				Duel.SendtoGrave(g,REASON_EFFECT)
 			end
-			local sc=tg:GetFirst()
+			local sc=sg:GetFirst()
 			while sc do
-				c71442223.counter(sc,c)
-				sc=tg:GetNext()
+				Duel.SpecialSummonStep(sc,0,1-tp,1-tp,false,false,POS_FACEUP_ATTACK)
+				sc=sg:GetNext()
 			end
 			Duel.SpecialSummonComplete()
-			Duel.BreakEffect()
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local g2=Duel.SelectMatchingCard(tp,c71442223.spfilter1,tp,LOCATION_HAND,0,1,1,nil,e,tp)
-			if g2:GetCount()>0 then
-				Duel.SpecialSummon(g2,0,tp,tp,true,false,POS_FACEUP)
-			end
+			local og=Duel.GetOperatedGroup()
+			tg:Merge(og)
+		end
+		local tc=tg:GetFirst()
+		while tc do
+			c71442223.counter(tc,c)
+			tc=tg:GetNext()
+		end
+		Duel.BreakEffect()
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local g2=Duel.SelectMatchingCard(tp,c71442223.spfilter1,tp,LOCATION_HAND,0,1,1,nil,e,tp)
+		if g2:GetCount()>0 then
+			Duel.SpecialSummon(g2,0,tp,tp,true,false,POS_FACEUP)
 		end
 	end
 end
-function c71442223.spsummon(g,p)
-	local sc=g:GetFirst()
-	while sc do
-		Duel.SpecialSummonStep(sc,0,p,p,false,false,POS_FACEUP_ATTACK)
-		sc=g:GetNext()
-	end
+function c71442223.disable(e)
+	return e:GetHandler():GetCounter(0x1038)>0
 end
 function c71442223.counter(tc,ec)
 	local e1=Effect.CreateEffect(ec)
@@ -78,14 +79,12 @@ function c71442223.counter(tc,ec)
 	tc:RegisterEffect(e1)
 	--
 	tc:AddCounter(0x1038,1)
-	--
 	local e2=Effect.CreateEffect(ec)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_CANNOT_ATTACK)
-	e2:SetCondition(c15610297.condition)
+	e2:SetCondition(c71442223.disable)
 	e2:SetReset(RESET_EVENT+0x1fe0000)
 	tc:RegisterEffect(e2)
-	--
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_DISABLE)
 	tc:RegisterEffect(e3)

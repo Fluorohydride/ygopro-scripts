@@ -30,7 +30,7 @@ function c3775068.initial_effect(c)
 	--special summon
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(3775068,1))
-	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e4:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
 	e4:SetCode(EVENT_TO_GRAVE)
@@ -40,13 +40,13 @@ function c3775068.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c3775068.spcfilter(c)
-	return c:IsSetCard(0xe3) and c:IsAbleToGraveAsCost()
+	return c:IsFaceup() and c:IsSetCard(0xe3) and c:IsAbleToGraveAsCost()
 end
 function c3775068.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.IsExistingMatchingCard(c3775068.spcfilter,tp,LOCATION_MZONE,0,3,nil)
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)>-3
+	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-3
+		and Duel.IsExistingMatchingCard(c3775068.spcfilter,tp,LOCATION_MZONE,0,3,nil)
 end
 function c3775068.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
@@ -103,15 +103,17 @@ function c3775068.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		g=g:Select(tp,ft,ft,nil)
 	end
-	if Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0
-		and Duel.IsExistingMatchingCard(c3775068.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(3775068,2)) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local sg=Duel.SelectMatchingCard(tp,c3775068.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
-		if sg:GetCount()>0 and not sg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
-			Duel.SendtoHand(sg,nil,REASON_EFFECT)
-			Duel.ConfirmCards(1-tp,sg)
-			Duel.ShuffleDeck(tp)
+	if Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0 then
+		local sg=Duel.GetMatchingGroup(c3775068.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,nil)
+		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(3775068,2)) then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+			sg=sg:Select(tp,1,1,nil)
+			if not sg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
+				Duel.BreakEffect()
+				Duel.SendtoHand(sg,nil,REASON_EFFECT)
+				Duel.ConfirmCards(1-tp,sg)
+				Duel.ShuffleDeck(tp)
+			end
 		end
 	end
 end

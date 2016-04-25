@@ -42,26 +42,37 @@ function c42237854.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,g:GetCount(),0,0)
 end
+function c42237854.tgfilter(c,e)
+	return c:IsFaceup() and c:IsRelateToEffect(e)
+end
 function c42237854.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsFaceup,nil)
-	local tg0=g:Filter(Card.IsRelateToEffect,nil,e)
-	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,42237854,0,0x21,0,0,4,RACE_MACHINE,ATTRIBUTE_EARTH) then return end
 	c:AddMonsterAttribute(0,0,0,0,0)
 	Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_EQUIP)
+	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_OWNER_RELATE)
+	e1:SetCode(EFFECT_UPDATE_ATTACK)
+	e1:SetReset(RESET_EVENT+0x1fe0000)
+	e1:SetValue(c42237854.atkval)
+	c:RegisterEffect(e1)
 	c:TrapMonsterComplete(TYPE_EFFECT)
-	if tg0:GetCount()<=0 or ft<=0 then return end
+	Duel.SpecialSummonComplete()
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c42237854.tgfilter,nil,e)
+	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
+	if g:GetCount()<=0 or ft<=0 then return end
 	local tg=nil
-	if ft<tg0:GetCount() then
+	if ft<g:GetCount() then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		tg=tg0:FilterSelect(tp,c42237854.filter,ft,ft,nil)
+		tg=g:FilterSelect(tp,c42237854.filter,ft,ft,nil)
 	else
-		tg=tg0:Clone()
+		tg=g:Clone()
 	end
 	if tg:GetCount()>0 then
+		Duel.BreakEffect()
 		local tc=tg:GetFirst()
 		while tc do
 			local atk=tc:GetTextAttack()
@@ -70,24 +81,26 @@ function c42237854.activate(e,tp,eg,ep,ev,re,r,rp)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_EQUIP_LIMIT)
-			e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 			e1:SetReset(RESET_EVENT+0x1fe0000)
 			e1:SetValue(c42237854.eqlimit)
 			tc:RegisterEffect(e1,true)
-			if atk>0 then
-				local e2=Effect.CreateEffect(c)
-				e2:SetType(EFFECT_TYPE_EQUIP)
-				e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_OWNER_RELATE)
-				e2:SetCode(EFFECT_UPDATE_ATTACK)
-				e2:SetReset(RESET_EVENT+0x1fe0000)
-				e2:SetValue(atk)
-				tc:RegisterEffect(e2)
-			end
 			tc=tg:GetNext()
 		end
 		Duel.EquipComplete()
 	end
-	Duel.SpecialSummonComplete()
+end
+function c42237854.atkval(e,c)
+	local atk=0
+	local g=c:GetEquipGroup()
+	local tc=g:GetFirst()
+	while tc do
+		if tc:GetFlagEffect(42237854)~=0 and tc:GetAttack()>=0 then
+			atk=atk+tc:GetAttack()
+		end
+		tc=g:GetNext()
+	end
+	return atk
 end
 function c42237854.eqlimit(e,c)
 	return e:GetOwner()==c

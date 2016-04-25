@@ -2,7 +2,7 @@
 function c8837932.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_COUNTER)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -28,17 +28,18 @@ function c8837932.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c8837932.cfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0xe3) and c:IsFaceup()
+	return c:IsFaceup() and c:IsSetCard(0xe3)
 end
 function c8837932.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c8837932.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c8837932.spfilter(c,e,tp,tid)
 	return c:IsReason(REASON_DESTROY) and c:IsType(TYPE_MONSTER) and c:GetTurnID()==tid
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp)
 end
-function c8837932.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function c8837932.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tid=Duel.GetTurnCount()
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(1-tp) and c8837932.spfilter(chkc,e,tp,tid) end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if chk==0 then return ft>0
 		and Duel.IsExistingTarget(c8837932.spfilter,tp,0,LOCATION_GRAVE,1,nil,e,tp,tid) end
@@ -47,46 +48,48 @@ function c8837932.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.SelectTarget(tp,c8837932.spfilter,tp,0,LOCATION_GRAVE,1,ft,nil,e,tp,tid)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,g:GetCount(),0,0)
 end
-function c8837932.sfilter(c,e,tp)
-	return c:IsRelateToEffect(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-end
 function c8837932.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 or not c:IsRelateToEffect(e) then return end
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local sg=g:Filter(c8837932.sfilter,nil,e,tp)
+	local sg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if sg:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if sg:GetCount()>ft then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		sg=sg:Select(tp,ft,ft,nil)
 	end
 	local sc=sg:GetFirst()
-	while sc and Duel.SpecialSummonStep(sc,0,tp,1-tp,false,false,POS_FACEUP) do
-		c:SetCardTarget(sc)
-		--
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
-		e1:SetValue(0)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
-		sc:RegisterEffect(e1)
-		--
-		sc:AddCounter(0x1038,1)
-		--
-		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_SINGLE)
-		e2:SetCode(EFFECT_CANNOT_ATTACK)
-		e2:SetCondition(c15610297.condition)
-		e2:SetReset(RESET_EVENT+0x1fe0000)
-		sc:RegisterEffect(e2)
-		--
-		local e3=e2:Clone()
-		e3:SetCode(EFFECT_DISABLE)
-		sc:RegisterEffect(e3)
+	while sc do
+		if Duel.SpecialSummonStep(sc,0,tp,1-tp,false,false,POS_FACEUP) then
+			c:SetCardTarget(sc)
+			local e1=Effect.CreateEffect(c)
+			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetCode(EFFECT_SET_ATTACK_FINAL)
+			e1:SetValue(0)
+			e1:SetReset(RESET_EVENT+0x1fe0000)
+			sc:RegisterEffect(e1)
+		end
 		sc=sg:GetNext()
 	end
 	Duel.SpecialSummonComplete()
+	local og=Duel.GetOperatedGroup()
+	local oc=og:GetFirst()
+	while oc do
+		oc:AddCounter(0x1038,1)
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetCode(EFFECT_CANNOT_ATTACK)
+		e2:SetCondition(c8837932.disable)
+		e2:SetReset(RESET_EVENT+0x1fe0000)
+		oc:RegisterEffect(e2)
+		local e3=e2:Clone()
+		e3:SetCode(EFFECT_DISABLE)
+		oc:RegisterEffect(e3)
+		oc=og:GetNext()
+	end
+end
+function c8837932.disable(e)
+	return e:GetHandler():GetCounter(0x1038)>0
 end
 function c8837932.dfilter(c,g)
 	return g:IsContains(c)

@@ -33,39 +33,39 @@ function c43959432.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
 	c:TrapMonsterComplete(TYPE_EFFECT)
 	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_POSITION)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_DAMAGE_STEP_END)
 	e1:SetCondition(c43959432.poscon)
 	e1:SetOperation(c43959432.posop)
 	e1:SetReset(RESET_EVENT+0x1fe0000)
 	c:RegisterEffect(e1,true)
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetCode(EFFECT_UPDATE_ATTACK)
+	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e2:SetRange(LOCATION_MZONE)
+	e2:SetValue(c43959432.atkval)
+	e2:SetReset(RESET_EVENT+0x1fe0000)
+	c:RegisterEffect(e2,true)
+	local e3=e2:Clone()
+	e3:SetCode(EFFECT_UPDATE_DEFENCE)
+	c:RegisterEffect(e3,true)
+	Duel.SpecialSummonComplete()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		local atk=tc:GetTextAttack()
-		if atk<0 then atk=0 end
+		Duel.BreakEffect()
 		if not Duel.Equip(tp,tc,c,false) then return end
-		e:SetLabelObject(tc)
-		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_SINGLE)
-		e2:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
-		e2:SetCode(EFFECT_EQUIP_LIMIT)
-		e2:SetReset(RESET_EVENT+0x1fe0000)
-		e2:SetValue(c43959432.eqlimit)
-		tc:RegisterEffect(e2,true)
-		if atk>0 then
-			local e3=Effect.CreateEffect(c)
-			e3:SetType(EFFECT_TYPE_EQUIP)
-			e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_OWNER_RELATE)
-			e3:SetCode(EFFECT_UPDATE_ATTACK)
-			e3:SetReset(RESET_EVENT+0x1fe0000)
-			e3:SetValue(atk)
-			tc:RegisterEffect(e3)
-			local e4=e3:Clone()
-			e4:SetCode(EFFECT_UPDATE_DEFENCE)
-			tc:RegisterEffect(e4)
-		end
+		local e4=Effect.CreateEffect(c)
+		e4:SetType(EFFECT_TYPE_SINGLE)
+		e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e4:SetCode(EFFECT_EQUIP_LIMIT)
+		e4:SetReset(RESET_EVENT+0x1fe0000)
+		e4:SetValue(c43959432.eqlimit)
+		tc:RegisterEffect(e4,true)
+		e2:SetLabelObject(tc)
+		e3:SetLabelObject(tc)
 	end
-	Duel.SpecialSummonComplete()
 end
 function c43959432.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler()==Duel.GetAttacker() and e:GetHandler():IsRelateToBattle()
@@ -75,6 +75,13 @@ function c43959432.posop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsAttackPos() then
 		Duel.ChangePosition(c,POS_FACEUP_DEFENCE)
 	end
+end
+function c43959432.atkval(e,c)
+	local tc=e:GetLabelObject()
+	if not tc or tc:GetEquipTarget()~=c then return 0 end
+	local atk=tc:GetAttack()
+	if atk<0 then atk=0 end
+	return atk
 end
 function c43959432.eqlimit(e,c)
 	return e:GetOwner()==c

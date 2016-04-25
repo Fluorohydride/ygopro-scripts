@@ -11,6 +11,7 @@ function c15610297.initial_effect(c)
 	--battle
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(15610297,0))
+	e2:SetCategory(CATEGORY_COUNTER)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_DAMAGE_STEP_END)
 	e2:SetTarget(c15610297.distg)
