@@ -20,7 +20,7 @@ function c30270176.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetCode(EFFECT_IMMUNE_EFFECT)
-	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_UNCOPYABLE)
+	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetValue(c30270176.immval)
 	c:RegisterEffect(e3)
@@ -29,7 +29,7 @@ function c30270176.initial_effect(c)
 	e4:SetDescription(aux.Stringid(30270176,0))
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_BATTLE_DESTROYING)
-	e4:SetCondition(aux.bdocon)
+	e4:SetCondition(c30270176.atkcon)
 	e4:SetTarget(c30270176.atktg)
 	e4:SetOperation(c30270176.atkop)
 	c:RegisterEffect(e4)
@@ -69,20 +69,17 @@ function c30270176.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.ShuffleHand(tp)
 end
 function c30270176.immval(e,te)
-	return te:IsActiveType(TYPE_MONSTER) and te:IsActivated() and te:GetOwner():GetBaseAttack()<=3000 and te:GetOwner()~=e:GetHandler()
+	return te:GetOwner()~=e:GetHandler() and te:IsActiveType(TYPE_MONSTER) and te:IsActivated()
+		and te:GetOwner():GetBaseAttack()<=3000 and te:GetOwner():GetBaseAttack()>=0
+end
+function c30270176.atkcon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetAttacker()==e:GetHandler() and aux.bdcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c30270176.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToBattle() and not e:GetHandler():IsHasEffect(EFFECT_EXTRA_ATTACK) end
+	if chk==0 then return e:GetHandler():IsChainAttackable() end
 end
 function c30270176.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if not c:IsRelateToBattle() then return end
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_EXTRA_ATTACK)
-	e1:SetValue(1)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE)
-	c:RegisterEffect(e1)
+	Duel.ChainAttack()
 end
 function c30270176.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp

@@ -90,12 +90,12 @@ function c34325937.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c34325937.cfilter(c,tp)
+function c34325937.cfilter(c)
 	return c:IsSetCard(0xe3) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsPreviousPosition(POS_FACEUP)
 end
 function c34325937.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c34325937.cfilter,1,nil,tp)
+	return eg:IsExists(c34325937.cfilter,1,nil)
 end
 function c34325937.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end

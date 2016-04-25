@@ -24,6 +24,7 @@ function c20137754.initial_effect(c)
 	e3:SetHintTiming(TIMING_DAMAGE_STEP)
 	e3:SetCountLimit(1)
 	e3:SetCondition(c20137754.atkcon)
+	e3:SetTarget(c20137754.atktg)
 	e3:SetOperation(c20137754.atkop)
 	c:RegisterEffect(e3)
 	local e4=Effect.CreateEffect(c)
@@ -52,13 +53,15 @@ end
 function c20137754.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(20137754)>0 
 		and (Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
-		and Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_MONSTER):GetCount()>0
+end
+function c20137754.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_MONSTER)>0 end
 end
 function c20137754.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_MONSTER)
 	local val=g:GetClassCount(Card.GetCode)*200
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToEffect(e) and val>0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
