@@ -52,6 +52,7 @@ end
 function c20137754.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(20137754)>0 
 		and (Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
+		and Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_MONSTER):GetCount()>0
 end
 function c20137754.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
