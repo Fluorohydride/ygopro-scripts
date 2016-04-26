@@ -35,7 +35,6 @@ function c35058588.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	e:SetLabelObject(g:GetFirst())
 end
 function c35058588.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local hc=e:GetLabelObject()
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
