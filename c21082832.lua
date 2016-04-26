@@ -9,6 +9,7 @@ function c21082832.initial_effect(c)
 	e1:SetOperation(c21082832.activate)
 	c:RegisterEffect(e1)
 end
+c21082832.dark_magician_list=true
 function c21082832.filter(c,e,tp,m1,m2,ft)
 	if not c:IsSetCard(0xcf) or bit.band(c:GetType(),0x81)~=0x81
 		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
