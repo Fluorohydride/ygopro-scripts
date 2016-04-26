@@ -23,7 +23,7 @@ function c14087893.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c14087893.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToEffect(e) and tc:IsLocation(LOCATION_MZONE) and tc:IsFaceup() then
 		Duel.ChangePosition(tc,POS_FACEDOWN_DEFENCE)
 	end
 end
