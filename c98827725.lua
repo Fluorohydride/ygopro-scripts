@@ -18,7 +18,8 @@ function c98827725.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c98827725.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,98827725,0x10db,0x11,4,0,300,RACE_WARRIOR,ATTRIBUTE_DARK) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
