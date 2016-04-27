@@ -25,26 +25,18 @@ function c82994509.operation(e,tp,eg,ep,ev,re,r,rp)
 	local token=Duel.CreateToken(tp,82994510)
 	if Duel.SpecialSummonStep(token,0,tp,1-tp,false,false,POS_FACEUP_DEFENCE) then
 		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_BATTLE_DESTROYED)
-		e1:SetLabelObject(token)
-		e1:SetCondition(c82994509.handcon)
+		e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_LEAVE_FIELD)
 		e1:SetOperation(c82994509.handop)
-		Duel.RegisterEffect(e1,tp)
+		token:RegisterEffect(e1,true)
 	end
 	Duel.SpecialSummonComplete()
 end
-function c82994509.handcon(e,tp,eg,ep,ev,re,r,rp)
-	local tok=e:GetLabelObject()
-	if eg:IsContains(tok) and tok:GetReasonCard():IsRace(RACE_PLANT) then
-		return true
-	else
-		if not tok:IsLocation(LOCATION_MZONE) then e:Reset() end
-		return false
-	end
-end
 function c82994509.handop(e,tp,eg,ep,ev,re,r,rp)
-	local tok=e:GetLabelObject()
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	Duel.DiscardHand(tok:GetPreviousControler(),nil,1,1,REASON_EFFECT)
+	local c=e:GetHandler()
+	if c:IsReason(REASON_BATTLE) and c:GetBattleTarget():IsRace(RACE_PLANT) then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+		Duel.DiscardHand(c:GetPreviousControler(),nil,1,1,REASON_EFFECT)
+	end
+	e:Reset()
 end
