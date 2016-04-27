@@ -23,7 +23,6 @@ function c17787975.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_SZONE)
-	e3:SetCountLimit(1)
 	e3:SetHintTiming(TIMING_BATTLE_PHASE)
 	e3:SetCondition(c17787975.damcon)
 	e3:SetTarget(c17787975.damtg)
@@ -65,11 +64,13 @@ function c17787975.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=c:GetFirstCardTarget()
 	local at=Duel.GetAttacker()
 	if chk==0 then return tc and Duel.GetAttackTarget()==tc
-		and at and at:IsControler(1-tp) and at:GetAttack()>tc:GetAttack() end
+		and at and at:IsControler(1-tp) and at:GetAttack()>tc:GetAttack()
+		and c:GetFlagEffect(17787975)==0 end
 	local dam=math.abs(at:GetAttack()-tc:GetAttack())
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(dam)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,dam)
+	c:RegisterFlagEffect(17787975,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE,0,1)
 end
 function c17787975.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
