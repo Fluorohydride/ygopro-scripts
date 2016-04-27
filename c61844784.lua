@@ -22,7 +22,7 @@ end
 function c61844784.addc(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
-		tc:AddCounter(0x2a,1)
+		tc:AddCounter(0x102a,1)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EFFECT_DESTROY_REPLACE)
@@ -34,9 +34,9 @@ function c61844784.addc(e,tp,eg,ep,ev,re,r,rp)
 end
 function c61844784.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return bit.band(r,REASON_RULE)==0
-		and e:GetHandler():GetCounter(0x2a)>0 end
+		and e:GetHandler():GetCounter(0x102a)>0 end
 	return true
 end
 function c61844784.repop(e,tp,eg,ep,ev,re,r,rp,chk)
-	e:GetHandler():RemoveCounter(tp,0x2a,1,REASON_EFFECT)
+	e:GetHandler():RemoveCounter(tp,0x102a,1,REASON_EFFECT)
 end
