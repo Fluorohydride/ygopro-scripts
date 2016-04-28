@@ -18,13 +18,13 @@ function c5606466.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c5606466.filter(c,e,tp)
-	return c:IsFacedown() and c:GetReasonPlayer()==tp and c:IsCanBeEffectTarget(e) and c:IsDestructable() and c:IsAbleToRemove()
+	return c:IsPosition(POS_FACEDOWN_DEFENCE) and c:GetReasonPlayer()==tp and c:IsCanBeEffectTarget(e) and c:IsDestructable() and c:IsAbleToRemove()
 end
 function c5606466.filter2(c,e)
 	return c:IsDestructable() and c:IsAbleToRemove() and c:IsCanBeEffectTarget(e)
 end
 function c5606466.filter3(c,e,tp)
-	return c:IsFacedown() and c:GetSummonPlayer()==tp and c:IsCanBeEffectTarget(e) and c:IsDestructable() and c:IsAbleToRemove()
+	return c:IsPosition(POS_FACEDOWN_DEFENCE) and c:GetSummonPlayer()==tp and c:IsCanBeEffectTarget(e) and c:IsDestructable() and c:IsAbleToRemove()
 end
 function c5606466.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
