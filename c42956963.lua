@@ -36,6 +36,7 @@ function c42956963.activate(e,tp,eg,ep,ev,re,r,rp)
 			token:RegisterEffect(e1,true)
 		end
 	end
+	Duel.SpecialSummonComplete()
 end
 function c42956963.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
