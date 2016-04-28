@@ -79,6 +79,7 @@ end
 function c34079868.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return rp~=tp and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
+		and not c:IsReason(REASON_RULE)
 end
 function c34079868.spfilter1(c,e,tp)
 	return c:IsSetCard(0xc7) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
