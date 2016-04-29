@@ -76,10 +76,17 @@ function c30270176.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker()==e:GetHandler() and aux.bdcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c30270176.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsChainAttackable() end
+	if chk==0 then return e:GetHandler():IsRelateToBattle() and not e:GetHandler():IsHasEffect(EFFECT_EXTRA_ATTACK) end
 end
 function c30270176.atkop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChainAttack()
+	local c=e:GetHandler()
+	if not c:IsRelateToBattle() then return end
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_EXTRA_ATTACK)
+	e1:SetValue(1)
+	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE)
+	c:RegisterEffect(e1)
 end
 function c30270176.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp

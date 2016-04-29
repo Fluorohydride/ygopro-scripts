@@ -58,10 +58,17 @@ function c72664875.hvop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SetLP(1-tp,math.ceil(Duel.GetLP(1-tp)/2))
 end
 function c72664875.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsChainAttackable() end
+	if chk==0 then return e:GetHandler():IsRelateToBattle() and not e:GetHandler():IsHasEffect(EFFECT_EXTRA_ATTACK) end
 end
 function c72664875.atkop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChainAttack()
+	local c=e:GetHandler()
+	if not c:IsRelateToBattle() then return end
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_EXTRA_ATTACK)
+	e1:SetValue(1)
+	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE)
+	c:RegisterEffect(e1)
 end
 function c72664875.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT)~=0 and ep==tp
