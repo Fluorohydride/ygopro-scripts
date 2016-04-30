@@ -172,7 +172,10 @@ function c52653092.actop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e1:SetTargetRange(0,1)
-	e1:SetValue(aux.TRUE)
+	e1:SetValue(c52653092.actlimit)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
+end
+function c52653092.actlimit(e,re,tp)
+	return not re:GetHandler():IsImmuneToEffect(e)
 end
