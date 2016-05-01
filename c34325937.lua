@@ -91,7 +91,7 @@ function c34325937.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c34325937.cfilter(c)
-	return c:IsSetCard(0xe3) and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousSetCard(0xe3) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsPreviousPosition(POS_FACEUP)
 end
 function c34325937.spcon(e,tp,eg,ep,ev,re,r,rp)
