@@ -112,10 +112,10 @@ function c12670770.desfilter(c)
 end
 function c12670770.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<=0 then return end
+	local tg=Duel.GetMatchingGroup(c12670770.spfilter,tp,LOCATION_REMOVED,0,nil,e,tp)
+	if ft<=0 or tg:GetCount()==0 or (ft>1 and tg:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c12670770.spfilter,tp,LOCATION_REMOVED,0,ft,ft,nil,e,tp)
-	if g:GetCount()==0 then return end
+	local g=tg:Select(tp,ft,ft,nil)
 	local tc=g:GetFirst()
 	while tc do
 		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)

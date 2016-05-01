@@ -34,9 +34,10 @@ function c13803864.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c13803864.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<=0 then return end
+	local tg=Duel.GetMatchingGroup(c13803864.spfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
+	if ft<=0 or tg:GetCount()==0 or (ft>1 and tg:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c13803864.spfilter,tp,LOCATION_GRAVE,0,ft,ft,nil,e,tp)
+	local g=tg:Select(tp,ft,ft,nil)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end

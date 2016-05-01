@@ -25,6 +25,7 @@ function c30531525.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmDecktop(tp,4)
 	local g=Duel.GetDecktopGroup(tp,4):Filter(c30531525.filter,nil,e,tp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if ft>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	if g:GetCount()>0 then
 		if ft<=0 then
 			Duel.SendtoGrave(g,REASON_EFFECT)

@@ -54,7 +54,7 @@ function c22842214.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
 		local tg=nil
 		if ft<tg0:GetCount() then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 			tg=tg0:FilterSelect(tp,c22842214.filter,ft,ft,nil)
 		else
 			tg=tg0:Clone()

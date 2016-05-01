@@ -34,6 +34,7 @@ function c78610936.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g=mg:Filter(c78610936.spfilter,nil,e,tp)
 		local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
 		if ft>0 and g:GetCount()>0 then
+			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 			if g:GetCount()>ft then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				g=g:Select(tp,ft,ft,nil)
