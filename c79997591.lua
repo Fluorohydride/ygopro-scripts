@@ -6,12 +6,16 @@ function c79997591.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetCondition(c79997591.cbcon)
+	e1:SetTarget(c79997591.cbtg)
 	e1:SetOperation(c79997591.cbop)
 	c:RegisterEffect(e1)
 end
 function c79997591.cbcon(e,tp,eg,ep,ev,re,r,rp)
 	local bt=Duel.GetAttackTarget()
 	return bt and bt:IsPosition(POS_FACEUP_ATTACK) and bt:IsControler(tp)
+end
+function c79997591.cbtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return not Duel.GetAttacker():IsHasEffect(EFFECT_CANNOT_DIRECT_ATTACK) end
 end
 function c79997591.cbop(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()

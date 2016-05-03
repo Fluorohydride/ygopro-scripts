@@ -57,14 +57,15 @@ end
 function c81983656.cbcon(e,tp,eg,ep,ev,re,r,rp)
 	return r~=REASON_REPLACE
 end
-function c81983656.cbfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x33)
+function c81983656.cbfilter(c,at)
+	return c:IsFaceup() and c:IsSetCard(0x33) and at:IsContains(c)
 end
 function c81983656.cbtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c81983656.cbfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c81983656.cbfilter,tp,LOCATION_MZONE,0,1,e:GetHandler()) end
+	local at=Duel.GetAttacker():GetAttackableTarget()
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c81983656.cbfilter(chkc,at) end
+	if chk==0 then return Duel.IsExistingTarget(c81983656.cbfilter,tp,LOCATION_MZONE,0,1,e:GetHandler(),at) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c81983656.cbfilter,tp,LOCATION_MZONE,0,1,1,e:GetHandler())
+	Duel.SelectTarget(tp,c81983656.cbfilter,tp,LOCATION_MZONE,0,1,1,e:GetHandler(),at)
 end
 function c81983656.cbop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

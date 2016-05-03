@@ -20,6 +20,7 @@ function c79473793.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCondition(c79473793.cbcon)
 	e2:SetCost(c79473793.cbcost)
+	e2:SetTarget(c79473793.cbtg)
 	e2:SetOperation(c79473793.cbop)
 	c:RegisterEffect(e2)
 end
@@ -55,6 +56,9 @@ function c79473793.cbcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c79473793.cfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
 	Duel.SendtoGrave(g,REASON_COST)
+end
+function c79473793.cbtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.GetAttacker():GetAttackableTarget():IsContains(e:GetHandler()) end
 end
 function c79473793.cbop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

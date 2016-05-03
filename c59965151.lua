@@ -7,6 +7,7 @@ function c59965151.initial_effect(c)
 	e1:SetCode(EVENT_BE_BATTLE_TARGET)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCondition(c59965151.cbcon)
+	e1:SetTarget(c59965151.cbtg)
 	e1:SetOperation(c59965151.cbop)
 	c:RegisterEffect(e1)
 	--atkdown
@@ -24,6 +25,9 @@ function c59965151.cbcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bt=eg:GetFirst()
 	return c~=bt and bt:IsFaceup() and bt:GetControler()==c:GetControler()
+end
+function c59965151.cbtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.GetAttacker():GetAttackableTarget():IsContains(e:GetHandler()) end
 end
 function c59965151.cbop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

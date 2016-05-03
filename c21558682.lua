@@ -23,28 +23,34 @@ end
 function c21558682.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer() and Duel.GetAttackTarget()~=nil
 end
-function c21558682.filter(c)
-	return c:IsFaceup() and c:IsCode(31709826)
+function c21558682.filter(c,atg)
+	return c:IsFaceup() and c:IsCode(31709826) and atg:IsContains(c)
 end
 function c21558682.atktg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c21558682.filter(chkc) end
+	if chkc then
+		local atg=Duel.GetAttacker():GetAttackableTarget()
+		local at=Duel.GetAttackTarget()
+		return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and chkc~=at and c21558682.filter(chkc,atg)
+	end
 	if chk==0 then return true end
 	e:SetProperty(0)
 	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer() then
 		local at=Duel.GetAttackTarget()
-		if at and Duel.IsExistingTarget(c21558682.filter,tp,LOCATION_MZONE,0,1,at) and Duel.SelectYesNo(tp,aux.Stringid(21558682,1)) then
+		local atg=Duel.GetAttacker():GetAttackableTarget()
+		if at and Duel.IsExistingTarget(c21558682.filter,tp,LOCATION_MZONE,0,1,at,atg) and Duel.SelectYesNo(tp,aux.Stringid(21558682,1)) then
 			e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-			Duel.SelectTarget(tp,c21558682.filter,tp,LOCATION_MZONE,0,1,1,at)
+			Duel.SelectTarget(tp,c21558682.filter,tp,LOCATION_MZONE,0,1,1,at,atg)
 		end
 	end
 end
 function c21558682.atktg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c21558682.filter(chkc) end
+	local atg=Duel.GetAttacker():GetAttackableTarget()
 	local at=Duel.GetAttackTarget()
-	if chk==0 then return Duel.IsExistingTarget(c21558682.filter,tp,LOCATION_MZONE,0,1,at) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and chkc~=at and c21558682.filter(chkc,atg) end
+	if chk==0 then return Duel.IsExistingTarget(c21558682.filter,tp,LOCATION_MZONE,0,1,at,atg) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c21558682.filter,tp,LOCATION_MZONE,0,1,1,at)
+	Duel.SelectTarget(tp,c21558682.filter,tp,LOCATION_MZONE,0,1,1,at,atg)
 end
 function c21558682.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end

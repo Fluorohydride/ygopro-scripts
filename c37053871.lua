@@ -26,12 +26,12 @@ function c37053871.atktg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	e:SetLabel(0)
 	if Duel.CheckEvent(EVENT_BE_BATTLE_TARGET) and Duel.GetAttackTarget():IsControler(tp)
-		and Duel.GetAttackTarget() and Duel.SelectYesNo(tp,aux.Stringid(37053871,0)) then
+		and not Duel.GetAttacker():IsHasEffect(EFFECT_CANNOT_DIRECT_ATTACK) and Duel.SelectYesNo(tp,aux.Stringid(37053871,0)) then
 		e:SetLabel(1)
 	end
 end
 function c37053871.atktg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return not Duel.GetAttacker():IsHasEffect(EFFECT_CANNOT_DIRECT_ATTACK) end
 	e:SetLabel(1)
 end
 function c37053871.atkop(e,tp,eg,ep,ev,re,r,rp)

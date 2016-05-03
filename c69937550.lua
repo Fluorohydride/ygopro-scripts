@@ -14,8 +14,9 @@ function c69937550.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BE_BATTLE_TARGET)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCondition(c69937550.cbcondition)
-	e2:SetOperation(c69937550.cboperation)
+	e2:SetCondition(c69937550.cbcon)
+	e2:SetTarget(c69937550.cbtg)
+	e2:SetOperation(c69937550.cbop)
 	c:RegisterEffect(e2)
 end
 function c69937550.repcon(e)
@@ -33,12 +34,15 @@ function c69937550.repop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 	Duel.RaiseEvent(c,EVENT_CUSTOM+47408488,e,0,tp,0,0)
 end
-function c69937550.cbcondition(e,tp,eg,ep,ev,re,r,rp)
+function c69937550.cbcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bt=eg:GetFirst()
 	return r~=REASON_REPLACE and c~=bt and bt:IsFaceup() and bt:IsSetCard(0x1034) and bt:GetControler()==c:GetControler()
 end
-function c69937550.cboperation(e,tp,eg,ep,ev,re,r,rp)
+function c69937550.cbtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.GetAttacker():GetAttackableTarget():IsContains(e:GetHandler()) end
+end
+function c69937550.cbop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and not Duel.GetAttacker():IsImmuneToEffect(e) then
 		Duel.ChangeAttackTarget(c)

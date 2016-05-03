@@ -33,8 +33,11 @@ function c11508758.ctlop(e,tp,eg,ep,ev,re,r,rp)
 				Duel.Destroy(tc,REASON_EFFECT)
 			end
 		else
-			if tc:IsAttackPos() then
-				Duel.ChangeAttacker(tc)
+			if tc:IsAttackable() and not tc:IsImmuneToEffect(e) then
+				local ats=tc:GetAttackableTarget()
+				Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(11508758,1))
+				local g=ats:Select(tp,1,1,nil)
+				Duel.CalculateDamage(tc,g:GetFirst())
 			end
 		end
 	end

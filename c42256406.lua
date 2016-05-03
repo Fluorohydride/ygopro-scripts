@@ -22,10 +22,13 @@ function c42256406.initial_effect(c)
 	e4:SetCode(EVENT_BE_BATTLE_TARGET)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCondition(c42256406.cbcon)
+	e4:SetTarget(c42256406.cbtg)
 	e4:SetOperation(c42256406.cbop)
 	c:RegisterEffect(e4)
+	--def
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(42256406,2))
+	e5:SetCategory(CATEGORY_DEFCHANGE)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e5:SetCode(EVENT_BE_BATTLE_TARGET)
 	e5:SetCost(c42256406.defcost)
@@ -46,6 +49,9 @@ function c42256406.cbcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bt=eg:GetFirst()
 	return r~=REASON_REPLACE and c~=bt and bt:IsFaceup() and bt:GetControler()==c:GetControler()
+end
+function c42256406.cbtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.GetAttacker():GetAttackableTarget():IsContains(e:GetHandler()) end
 end
 function c42256406.cbop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
