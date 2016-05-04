@@ -27,13 +27,6 @@ function c45531624.initial_effect(c)
 	e3:SetTarget(c45531624.drtg)
 	e3:SetOperation(c45531624.drop)
 	c:RegisterEffect(e3)
-	--add setcode
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e4:SetCode(EFFECT_ADD_SETCODE)
-	e4:SetValue(0xe4)
-	c:RegisterEffect(e4)
 end
 function c45531624.atcon(e)
 	return Duel.GetFieldGroupCount(e:GetHandlerPlayer(),LOCATION_HAND,0)>=1

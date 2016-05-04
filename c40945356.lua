@@ -26,13 +26,6 @@ function c40945356.initial_effect(c)
 	e2:SetTarget(c40945356.target2)
 	e2:SetOperation(c40945356.operation2)
 	c:RegisterEffect(e2)
-	--add setcode
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e3:SetCode(EFFECT_ADD_SETCODE)
-	e3:SetValue(0x2b)
-	c:RegisterEffect(e3)
 end
 function c40945356.cfilter(c)
 	return c:IsSetCard(0x2b) and c:IsType(TYPE_MONSTER) and c:IsDiscardable()
