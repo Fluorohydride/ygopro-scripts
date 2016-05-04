@@ -36,13 +36,6 @@ function c78274190.initial_effect(c)
 	e5:SetTarget(c78274190.target)
 	e5:SetOperation(c78274190.operation)
 	c:RegisterEffect(e5)
-	--add setcode
-	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e6:SetCode(EFFECT_ADD_SETCODE)
-	e6:SetValue(0x9a)
-	c:RegisterEffect(e6)
 end
 function c78274190.sccon(e)
 	local tp=e:GetHandlerPlayer()

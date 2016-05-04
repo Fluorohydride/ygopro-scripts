@@ -31,13 +31,6 @@ function c23204029.initial_effect(c)
 	e3:SetTarget(c23204029.target)
 	e3:SetOperation(c23204029.operation)
 	c:RegisterEffect(e3)
-	--add setcode
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e4:SetCode(EFFECT_ADD_SETCODE)
-	e4:SetValue(0x3008)
-	c:RegisterEffect(e4)
 end
 function c23204029.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and aux.disfilter1(chkc) end

@@ -36,13 +36,6 @@ function c45467446.initial_effect(c)
 	e5:SetTarget(c45467446.sptg)
 	e5:SetOperation(c45467446.spop)
 	c:RegisterEffect(e5)
-	--add setcode
-	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e6:SetCode(EFFECT_ADD_SETCODE)
-	e6:SetValue(0xdd)
-	c:RegisterEffect(e6)
 end
 function c45467446.rmfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToRemove()
