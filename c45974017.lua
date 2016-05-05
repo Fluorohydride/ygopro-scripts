@@ -46,7 +46,8 @@ function c45974017.pctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if op==0 then
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-		Duel.SelectTarget(tp,c45974017.pcfilter,tp,LOCATION_GRAVE,0,1,1,nil)
+		local g=Duel.SelectTarget(tp,c45974017.pcfilter,tp,LOCATION_GRAVE,0,1,1,nil)
+		Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 	else
 		e:SetProperty(0)
 	end
