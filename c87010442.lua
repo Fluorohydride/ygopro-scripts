@@ -18,7 +18,7 @@ function c87010442.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c87010442.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_TODECK,0,0,1-tp,LOCATION_HAND)
+	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,1-tp,LOCATION_HAND)
 end
 function c87010442.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(1-tp,LOCATION_HAND,0,nil)

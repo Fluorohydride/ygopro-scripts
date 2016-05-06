@@ -43,14 +43,14 @@ function c5186893.spcon(e,tp,eg,ep,ev,re,r,rp)
 	if c==tc then tc=Duel.GetAttackTarget() end
 	e:SetLabelObject(tc)
 	if not c:IsRelateToBattle() or c:IsFacedown() then return false end
-	return tc:GetLocation()==LOCATION_GRAVE and tc:IsRace(RACE_ZOMBIE)
+	return tc:IsLocation(LOCATION_GRAVE) and tc:IsRace(RACE_ZOMBIE)
 end
 function c5186893.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetLabelObject()
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	tc:CreateEffectRelation(e)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,tc,1,0,LOCATION_GRAVE)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,tc,1,0,0)
 end
 function c5186893.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

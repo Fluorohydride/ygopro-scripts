@@ -74,6 +74,12 @@ end
 function c47355498.discheck(ev,category,re,im0,im1,targets)
 	local ex,tg,ct,p,v=Duel.GetOperationInfo(ev,category)
 	if not ex then return false end
+	if v==LOCATION_GRAVE then
+		if p==0 then return im0
+		elseif p==1 then return im1
+		elseif p==PLAYER_ALL then return im0 and im1
+		end
+	end
 	if tg and tg:GetCount()>0 then
 		if targets and targets:IsContains(re:GetHandler()) then
 			return tg:IsExists(c47355498.disfilter,1,nil,im0,im1)
@@ -81,11 +87,7 @@ function c47355498.discheck(ev,category,re,im0,im1,targets)
 			return tg:IsExists(c47355498.disfilter,1,re:GetHandler(),im0,im1)
 		end
 	end
-	if v~=LOCATION_GRAVE then return false end
-	if p~=PLAYER_ALL then
-		if p==0 then return im0 else return im1 end
-	end
-	return im0 and im1
+	return false
 end
 function c47355498.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=re:GetHandler()
