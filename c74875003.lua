@@ -58,7 +58,7 @@ function c74875003.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c74875003.sumval(e,c)
-	return not c:IsCode(10000000) and not c:IsCode(10000010) and not c:IsCode(10000020)
+	return not c:IsCode(10000000,10000010,10000020)
 end
 function c74875003.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return not se:GetHandler():IsCode(74875003)

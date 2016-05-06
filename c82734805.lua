@@ -97,7 +97,7 @@ function c82734805.op(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c82734805.fcfilter1(c,code1,code2,g)
-	return (c:IsFusionCode(code1) or c:IsFusionCode(code2)) and g:IsExists(Card.IsFusionSetCard,1,c,0xbb)
+	return c:IsFusionCode(code1,code2) and g:IsExists(Card.IsFusionSetCard,1,c,0xbb)
 end
 function c82734805.fcfilter2(c,code,g)
 	return (c:IsFusionCode(code) or c:IsHasEffect(EFFECT_FUSION_SUBSTITUTE)) and g:IsExists(Card.IsFusionSetCard,1,c,0xbb)

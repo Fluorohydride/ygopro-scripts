@@ -24,7 +24,7 @@ function c15574615.initial_effect(c)
 end
 function c15574615.sprfilter(c)
 	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsAbleToGraveAsCost()
-		and (c:IsCode(80208158) or c:IsCode(16796157) or c:IsCode(43791861) or c:IsCode(79185500))
+		and c:IsCode(80208158,16796157,43791861,79185500)
 end
 function c15574615.spcon(e,c)
 	if c==nil then return true end

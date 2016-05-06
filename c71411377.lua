@@ -11,6 +11,5 @@ function c71411377.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c71411377.atlimit(e,c)
-	local code=c:GetCode()
-	return code==87257460 or code==23756165 or code==50140163
+	return c:IsCode(87257460,23756165,50140163)
 end

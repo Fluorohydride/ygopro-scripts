@@ -12,8 +12,7 @@ function c63120904.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c63120904.rfilter(c)
-	local code=c:GetCode()
-	return code==90337190 or code==95614612
+	return c:IsCode(90337190,95614612)
 end
 function c63120904.dfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()

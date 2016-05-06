@@ -72,8 +72,7 @@ function c31076103.cfilter2(c,code)
 	return c:IsFaceup() and c:IsCode(code) and c:IsAbleToGraveAsCost()
 end
 function c31076103.cfilter3(c)
-	local code=c:GetCode()
-	return c:IsFaceup() and (code==31076103 or code==4081094 or code==78697395) and c:IsAbleToGraveAsCost()
+	return c:IsFaceup() and c:IsCode(31076103,4081094,78697395) and c:IsAbleToGraveAsCost()
 end
 function c31076103.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost()
@@ -98,12 +97,10 @@ function c31076103.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c31076103.cfilter4(c)
-	local code=c:GetCode()
-	return code==31076103 or code==4081094 or code==78697395
+	return c:IsCode(31076103,4081094,78697395)
 end
 function c31076103.cfilter5(c)
-	local code=c:GetCode()
-	return c:IsFaceup() and (code==31076103 or code==4081094 or code==78697395)
+	return c:IsFaceup() and c:IsCode(31076103,4081094,78697395)
 end
 function c31076103.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c31076103.cfilter4,1,nil)
