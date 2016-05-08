@@ -41,13 +41,14 @@ function c12385638.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c12385638.valcon(e,re,r,rp,rc)
-	local tp=e:GetHandlerPlayer()
-	local bc=rc:GetBattleTarget()
-	if bit.band(r,REASON_BATTLE)~=0 and bc and bc:IsSetCard(0xd2) and bc:IsControler(tp)
-		and Duel.GetFlagEffect(tp,12385638)==0 then
-		Duel.RegisterFlagEffect(tp,12385638,RESET_PHASE+PHASE_END,0,1)
-		return true
-	else
-		return false
+	if bit.band(r,REASON_BATTLE)~=0 then
+		local tp=e:GetHandlerPlayer()
+		local bc=rc:GetBattleTarget()
+		if bc and bc:IsSetCard(0xd2) and bc:IsControler(tp)
+			and Duel.GetFlagEffect(tp,12385638)==0 then
+			Duel.RegisterFlagEffect(tp,12385638,RESET_PHASE+PHASE_END,0,1)
+			return true
+		end
 	end
+	return false
 end
