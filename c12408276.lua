@@ -16,8 +16,8 @@ function c12408276.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(12408276,1))
 	e2:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
-	e2:SetCode(EVENT_CHAINING)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
+	e2:SetCode(EVENT_CHAINING)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e2:SetCountLimit(1)
@@ -55,7 +55,7 @@ function c12408276.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000) end
 	Duel.PayLPCost(tp,1000)
 end
-function c12408276.negtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c12408276.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then

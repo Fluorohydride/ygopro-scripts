@@ -49,7 +49,7 @@ end
 function c34318086.spfilter(c,e,tp)
 	return c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c34318086.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c34318086.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c34318086.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
@@ -75,7 +75,6 @@ function c34318086.spop(e,tp,eg,ep,ev,re,r,rp)
 		local at=Duel.GetAttacker()
 		if at and not at:IsImmuneToEffect(e) and Duel.ChangeAttackTarget(tc) then
 			Duel.BreakEffect()
-			Duel.ChangeAttackTarget(tc)
 			local e3=Effect.CreateEffect(c)
 			e3:SetType(EFFECT_TYPE_SINGLE)
 			e3:SetCode(EFFECT_SET_ATTACK_FINAL)

@@ -41,25 +41,27 @@ function c11163040.cfilter(c)
 	return c:IsSetCard(0xd3) and c:IsPreviousLocation(LOCATION_HAND+LOCATION_GRAVE)
 end
 function c11163040.counter(e,tp,eg,ep,ev,re,r,rp)
-	local ct=eg:FilterCount(c11163040.cfilter,nil)
-	if ct>0 then
-		e:GetHandler():AddCounter(0x37,1,true)
+	if eg:IsExists(c11163040.cfilter,1,nil) then
+		e:GetHandler():AddCounter(0x37,1)
 	end
 end
 function c11163040.filter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0xd3) and c:IsDestructable()
-		and Duel.IsExistingMatchingCard(c11163040.chkfilter,tp,LOCATION_DECK,0,1,nil,e,tp,c:GetControler(),c:GetCode())
+		and Duel.IsExistingMatchingCard(c11163040.chkfilter,tp,LOCATION_DECK,0,1,nil,e,tp,c:GetControler(),c:GetOriginalCode())
 end
 function c11163040.chkfilter(c,e,tp,cc,code)
-	return c:IsSetCard(0xd3) and not c:IsCode(code) 
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,c:GetCode(),cc,0x21,c:GetAttack(),c:GetDefence(),c:GetLevel(),c:GetRace(),c:GetAttribute())
+	return c:IsSetCard(0xd3) and c:GetOriginalCode()~=code and
+		not c:IsHasEffect(EFFECT_REVIVE_LIMIT) and Duel.IsPlayerCanSpecialSummon(tp,0,POS_FACEUP,cc,c)
 end
 function c11163040.spfilter(c,e,tp,cc,code)
-	return c:IsSetCard(0xd3) and not c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,cc)
+	return c:IsSetCard(0xd3) and c:GetOriginalCode()~=code and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,cc)
 end
 function c11163040.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c11163040.filter(chkc,e,tp) end
-	if chk==0 then return Duel.IsExistingTarget(c11163040.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,e,tp) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
+		and Duel.IsExistingTarget(c11163040.filter,tp,LOCATION_MZONE,0,1,nil,e,tp)
+		or Duel.GetLocationCount(1-tp,LOCATION_MZONE)>-1
+		and Duel.IsExistingTarget(c11163040.filter,tp,0,LOCATION_MZONE,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c11163040.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
@@ -67,18 +69,18 @@ function c11163040.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c11163040.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
-	if not (tc and tc:IsRelateToEffect(e) and c:IsRelateToEffect(e)) then return end
+	if not tc:IsRelateToEffect(e) then return end
 	local cc=tc:GetControler()
-	local code=tc:GetCode()
-	local g=Duel.GetMatchingGroup(c11163040.chkfilter,tp,LOCATION_DECK,0,nil,e,tp,cc,code)
-	if Duel.Destroy(tc,REASON_EFFECT)~=0 and g:GetCount()>0 then
-		Duel.BreakEffect()
-		g=Duel.GetMatchingGroup(c11163040.spfilter,tp,LOCATION_DECK,0,nil,e,tp,cc,code)
+	local code=tc:GetOriginalCode()
+	if Duel.Destroy(tc,REASON_EFFECT)~=0 then
+		if Duel.GetLocationCount(cc,LOCATION_MZONE)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=g:Select(tp,1,1,nil)
-		if sg:GetCount()>0 then
-			Duel.SpecialSummon(sg,0,tp,cc,false,false,POS_FACEUP)
+		local g=Duel.SelectMatchingCard(tp,c11163040.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,cc,code)
+		if g:GetCount()>0 then
+			Duel.BreakEffect()
+			Duel.SpecialSummon(g,0,tp,cc,false,false,POS_FACEUP)
 		end
 	end
 end

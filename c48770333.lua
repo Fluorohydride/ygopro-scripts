@@ -63,7 +63,7 @@ function c48770333.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c48770333.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local e1=Effect.CreateEffect(e:GetHandler())
+	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetCode(EFFECT_CANNOT_ACTIVATE)
