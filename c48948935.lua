@@ -49,7 +49,7 @@ function c48948935.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,tp,LOCATION_DECK)
 end
 function c48948935.filter(c)
-	return c:IsCode(22610082) and not c:IsHasEffect(EFFECT_FORBIDDEN)
+	return c:IsCode(22610082) and not c:IsForbidden()
 end
 function c48948935.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end

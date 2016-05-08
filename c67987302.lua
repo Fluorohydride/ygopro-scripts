@@ -11,5 +11,5 @@ function c67987302.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c67987302.efilter(e,re,rp,c)
-	return re:GetHandler()==c
+	return re:GetOwner()==c
 end

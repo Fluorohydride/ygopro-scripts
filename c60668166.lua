@@ -26,7 +26,7 @@ function c60668166.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c60668166.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ct==0 then return end
+	if ct<=0 then return end
 	local g=Duel.GetMatchingGroup(c60668166.filter,tp,LOCATION_DECK,0,nil,e,tp)
 	if g:GetCount()>0 then
 		local t1=g:GetFirst()

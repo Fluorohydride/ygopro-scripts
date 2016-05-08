@@ -14,7 +14,7 @@ function c66127916.filter1(c,tp)
 	return c.material and Duel.IsExistingMatchingCard(c66127916.filter2,tp,LOCATION_DECK,0,1,nil,c)
 end
 function c66127916.filter2(c,fc)
-	if c:IsHasEffect(EFFECT_FORBIDDEN) or not c:IsAbleToHand() then return false end
+	if c:IsForbidden() or not c:IsAbleToHand() then return false end
 	return c:IsCode(table.unpack(fc.material))
 end
 function c66127916.target(e,tp,eg,ep,ev,re,r,rp,chk)

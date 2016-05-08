@@ -13,7 +13,7 @@ end
 function c23639291.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	return eg:GetCount()==1 and tc:IsControler(tp) and tc:GetPreviousControler()==tp and tc:IsReason(REASON_DESTROY)
-		and tc:GetReasonEffect() and tc:GetReasonEffect():GetHandler()==tc
+		and tc:GetReasonEffect() and tc:GetReasonEffect():GetOwner()==tc
 end
 function c23639291.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc==eg:GetFirst() end
