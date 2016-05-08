@@ -427,6 +427,7 @@ end
 --material_count: number of different names in material list
 --material: names in material list
 function Auxiliary.AddFusionProcCode2(c,code1,code2,sub,insf)
+	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
 	if c.material_count==nil then
 		local code=c:GetOriginalCode()
 		local mt=_G["c" .. code]
@@ -539,6 +540,7 @@ function Auxiliary.FOperationCode2(code1,code2,sub,insf)
 end
 --Fusion monster, name + name + name
 function Auxiliary.AddFusionProcCode3(c,code1,code2,code3,sub,insf)
+	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
 	if c.material_count==nil then
 		local code=c:GetOriginalCode()
 		local mt=_G["c" .. code]
@@ -644,6 +646,7 @@ function Auxiliary.FOperationCode3(code1,code2,code3,sub,insf)
 end
 --Fusion monster, name + name + name + name
 function Auxiliary.AddFusionProcCode4(c,code1,code2,code3,code4,sub,insf)
+	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
 	if c.material_count==nil then
 		local code=c:GetOriginalCode()
 		local mt=_G["c" .. code]
@@ -762,6 +765,7 @@ function Auxiliary.FOperationCode4(code1,code2,code3,code4,sub,insf)
 end
 --Fusion monster, name + condition
 function Auxiliary.AddFusionProcCodeFun(c,code1,f,cc,sub,insf)
+	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
 	if c.material_count==nil then
 		local code=c:GetOriginalCode()
 		local mt=_G["c" .. code]
@@ -983,6 +987,7 @@ function Auxiliary.FOperationFun2(f1,f2,insf)
 end
 --Fusion monster, name * n
 function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
+	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
 	if c.material_count==nil then
 		local code=c:GetOriginalCode()
 		local mt=_G["c" .. code]
@@ -1249,6 +1254,7 @@ function Auxiliary.FilterBoolFunctionCFR(code,sub)
 end
 --Fusion monster, name + condition * minc to maxc
 function Auxiliary.AddFusionProcCodeFunRep(c,code1,f,minc,maxc,sub,insf)
+	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
 	if c.material_count==nil then
 		local code=c:GetOriginalCode()
 		local mt=_G["c" .. code]
@@ -1328,7 +1334,7 @@ function Auxiliary.RPGOperation(filter)
 			end
 end
 function Auxiliary.AddRitualProcGreaterCode(c,code1)
-	if c.fit_monster==nil then
+	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
 		local code=c:GetOriginalCode()
 		local mt=_G["c" .. code]
 		mt.fit_monster={code1}
@@ -1400,7 +1406,7 @@ function Auxiliary.RPEOperation(filter)
 			end
 end
 function Auxiliary.AddRitualProcEqualCode(c,code1)
-	if c.fit_monster==nil then
+	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
 		local code=c:GetOriginalCode()
 		local mt=_G["c" .. code]
 		mt.fit_monster={code1}
@@ -1472,7 +1478,7 @@ function Auxiliary.RPEOperation2(filter)
 			end
 end
 function Auxiliary.AddRitualProcEqual2Code(c,code1)
-	if c.fit_monster==nil then
+	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
 		local code=c:GetOriginalCode()
 		local mt=_G["c" .. code]
 		mt.fit_monster={code1}
@@ -1480,7 +1486,7 @@ function Auxiliary.AddRitualProcEqual2Code(c,code1)
 	Auxiliary.AddRitualProcEqual2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1))
 end
 function Auxiliary.AddRitualProcEqual2Code2(c,code1,code2)
-	if c.fit_monster==nil then
+	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
 		local code=c:GetOriginalCode()
 		local mt=_G["c" .. code]
 		mt.fit_monster={code1,code2}
