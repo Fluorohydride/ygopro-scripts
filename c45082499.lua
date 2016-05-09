@@ -71,7 +71,7 @@ function c45082499.eqlimit(e,c)
 	return c==e:GetLabelObject()
 end
 function c45082499.indval(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
+	return rp==1-e:GetHandlerPlayer()
 end
 function c45082499.repval(e,re,r,rp)
 	return bit.band(r,REASON_EFFECT)~=0
