@@ -53,6 +53,7 @@ function c71345905.activate(e,tp,eg,ep,ev,re,r,rp)
 		local e2=e1:Clone()
 		e2:SetCode(EVENT_BE_BATTLE_TARGET)
 		sc:RegisterEffect(e2)
+		sc:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(71345905,0))
 	end
 end
 function c71345905.disop(e,tp,eg,ep,ev,re,r,rp)
