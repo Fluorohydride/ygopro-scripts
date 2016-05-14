@@ -26,7 +26,8 @@ function c8687195.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c8687195.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
+	local a=Duel.GetAttacker()
 	if tc and tc:IsRelateToEffect(e) then
-		Duel.ChangeAttackTarget(tc)
+		Duel.CalculateDamage(a,tc)
 	end
 end
