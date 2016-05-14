@@ -36,7 +36,7 @@ function c32588805.setfilter1(c)
 end
 function c32588805.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingMatchingCard(c33103459.setfilter1,tp,LOCATION_DECK,0,1,nil) end
+		and Duel.IsExistingMatchingCard(c32588805.setfilter1,tp,LOCATION_DECK,0,1,nil) end
 end
 function c32588805.setfilter2(c,typ)
 	return c:GetType()==typ and c:IsSSetable()
