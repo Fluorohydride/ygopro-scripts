@@ -82,7 +82,7 @@ function c94212438.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c94212438.cfilter2,1,nil,tp)
 end
 function c94212438.tgop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c94212438.cfilter3,tp,LOCATION_SZONE,0,nil)
+	local g=Duel.GetMatchingGroup(c94212438.cfilter3,tp,LOCATION_ONFIELD,0,nil)
 	Duel.SendtoGrave(g,REASON_EFFECT)
 end
 function c94212438.cfilter1(c,code)
@@ -91,7 +91,7 @@ end
 function c94212438.winop(e,tp,eg,ep,ev,re,r,rp)
 	local WIN_REASON_DESTINY_BOARD=0x15
 	local c=e:GetHandler()
-	local g=Duel.GetFieldGroup(tp,LOCATION_SZONE,0)
+	local g=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,0)
 	if g:IsExists(c94212438.cfilter1,1,nil,94212438) and g:IsExists(c94212438.cfilter1,1,nil,31893528) and g:IsExists(c94212438.cfilter1,1,nil,67287533)
 		 and g:IsExists(c94212438.cfilter1,1,nil,94772232) and g:IsExists(c94212438.cfilter1,1,nil,30170981) then
 		Duel.Win(tp,WIN_REASON_DESTINY_BOARD)
