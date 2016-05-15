@@ -33,5 +33,7 @@ end
 function c72621670.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c72621670.tfilter,nil,e)
 	if g:GetCount()<2 then return end
-	Duel.GetControl(g,tp,PHASE_END+RESET_SELF_TURN,1)
+	local rct=1
+	if Duel.GetTurnPlayer()~=tp then rct=2 end
+	Duel.GetControl(g,tp,PHASE_END,rct)
 end
