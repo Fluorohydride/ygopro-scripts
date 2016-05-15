@@ -21,7 +21,7 @@ function c91148083.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c91148083.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.GetControl(tc,1-tp) then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.GetControl(tc,1-tp)~=0 then
 		tc:RegisterFlagEffect(91148083,RESET_EVENT+0x1fe0000,0,0)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

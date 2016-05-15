@@ -28,7 +28,7 @@ end
 function c96008713.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local a=Duel.GetAttacker()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and Duel.GetControl(tc,tp,PHASE_BATTLE,1) then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and Duel.GetControl(tc,tp,PHASE_BATTLE,1)~=0 then
 		if a:IsAttackable() and not a:IsImmuneToEffect(e) then
 			Duel.CalculateDamage(a,tc)
 		end

@@ -30,32 +30,8 @@ end
 function c72621670.tfilter(c,e)
 	return c:IsRelateToEffect(e) and c:IsFaceup()
 end
-function c72621670.tfilter2(c,e)
-	return not c:IsImmuneToEffect(e) and c:IsAbleToChangeControler()
-end
 function c72621670.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c72621670.tfilter,nil,e)
 	if g:GetCount()<2 then return end
-	local ct=Duel.GetLocationCount(tp,LOCATION_MZONE,1-tp,LOCATION_REASON_CONTROL)
-	local g1=g:Filter(c72621670.tfilter2,nil,e)
-	local sg=nil
-	local dg=g1:Clone()
-	if g1:GetCount()>ct then
-		if ct>0 then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
-			sg=g1:Select(tp,1,1,nil)
-		else
-			sg=Group.CreateGroup()
-		end
-		dg:Sub(sg)
-	else
-		sg=g1:Clone()
-		dg:Clear()
-	end
-	local tc=sg:GetFirst()
-	while tc do
-		Duel.GetControl(tc,tp,PHASE_END+RESET_SELF_TURN,1)
-		tc=sg:GetNext()
-	end
-	if dg:GetCount()>0 then Duel.Destroy(dg,REASON_RULE) end
+	Duel.GetControl(g,tp,PHASE_END+RESET_SELF_TURN,1)
 end

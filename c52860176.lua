@@ -24,13 +24,6 @@ function c52860176.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,nil,1,1-tp,LOCATION_MZONE)
 end
 function c52860176.operation(e,tp,eg,ep,ev,re,r,rp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local c=e:GetHandler()
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
-	local g=Duel.SelectMatchingCard(tp,c52860176.filter,tp,0,LOCATION_MZONE,ft,ft,nil)
-	local tc=g:GetFirst()
-	while tc do
-		Duel.GetControl(tc,tp)
-		tc=g:GetNext()
-	end
+	local g=Duel.GetMatchingGroup(c52860176.filter,tp,0,LOCATION_MZONE,nil)
+	Duel.GetControl(g,tp)
 end

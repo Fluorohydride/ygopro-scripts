@@ -28,7 +28,7 @@ end
 function c11508758.ctlop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		if Duel.GetControl(tc,tp,PHASE_BATTLE,1) then
+		if Duel.GetControl(tc,tp,PHASE_BATTLE,1)~=0 then
 			if tc:IsAttackable() and not tc:IsImmuneToEffect(e) then
 				local ats=tc:GetAttackableTarget()
 				Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(11508758,1))

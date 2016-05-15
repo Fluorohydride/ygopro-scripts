@@ -119,7 +119,7 @@ function c36898537.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(1-tp,Card.IsAbleToChangeControler,1-tp,LOCATION_MZONE,0,1,1,nil)
 	local tc=g:GetFirst()
 	if not tc then return end
-	if Duel.GetControl(tc,tp) then
+	if Duel.GetControl(tc,tp)~=0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CANNOT_ATTACK)
