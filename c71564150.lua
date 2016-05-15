@@ -25,8 +25,11 @@ end
 function c71564150.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local c=e:GetHandler()
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
-	local g=Duel.SelectMatchingCard(tp,c71564150.filter,tp,0,LOCATION_MZONE,ft,ft,nil)
+	local g=Duel.GetMatchingGroup(c71564150.filter,tp,0,LOCATION_MZONE,nil)
+	if ft<g:GetCount() then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
+		g=Duel.SelectMatchingCard(tp,c71564150.filter,tp,0,LOCATION_MZONE,ft,ft,nil)
+	end
 	local tc=g:GetFirst()
 	while tc do
 		if Duel.GetControl(tc,tp,PHASE_END,1) then
