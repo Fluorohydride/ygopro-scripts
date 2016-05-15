@@ -88,21 +88,10 @@ function c19254117.tgop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)
-		e1:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
+		e1:SetCode(EFFECT_RISE_TO_FULL_HEIGHT)
 		e1:SetTargetRange(0,LOCATION_MZONE)
+		e1:SetLabel(tc:GetRealFieldID())
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
-		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_FIELD)
-		e2:SetCode(EFFECT_CANNOT_SELECT_BATTLE_TARGET)
-		e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
-		e2:SetTargetRange(0,LOCATION_MZONE)
-		e2:SetValue(c19254117.atlimit)
-		e2:SetLabel(tc:GetRealFieldID())
-		e2:SetReset(RESET_PHASE+PHASE_END)
-		Duel.RegisterEffect(e2,tp)
 	end
-end
-function c19254117.atlimit(e,c)
-	return c:GetRealFieldID()~=e:GetLabel()
 end
