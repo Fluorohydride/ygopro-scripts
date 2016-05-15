@@ -23,9 +23,7 @@ function c45033006.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c45033006.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFacedown() and tc:IsDefencePos() and not Duel.GetControl(tc,tp,PHASE_END,1) then
-		if not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-			Duel.Destroy(tc,REASON_EFFECT)
-		end
+	if tc:IsRelateToEffect(e) and tc:IsFacedown() and tc:IsDefencePos() then
+		Duel.GetControl(tc,tp,PHASE_END,1)
 	end
 end

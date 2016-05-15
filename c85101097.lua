@@ -68,10 +68,8 @@ function c85101097.ctlop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0
-		and c:IsRelateToEffect(e) and c:IsFaceup() and not Duel.GetControl(c,1-tp) then
-		if not c:IsImmuneToEffect(e) and c:IsAbleToChangeControler() then
-			Duel.Destroy(c,REASON_EFFECT)
-		end
+		and c:IsRelateToEffect(e) and c:IsFaceup() then
+		Duel.GetControl(c,1-tp)
 	end
 end
 function c85101097.damcon(e,tp,eg,ep,ev,re,r,rp)

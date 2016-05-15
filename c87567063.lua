@@ -25,11 +25,7 @@ end
 function c87567063.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		if not Duel.GetControl(tc,tp,PHASE_BATTLE,1) then
-			if not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-				Duel.Destroy(tc,REASON_EFFECT)
-			end
-		end
+		Duel.GetControl(tc,tp,PHASE_BATTLE,1)
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)

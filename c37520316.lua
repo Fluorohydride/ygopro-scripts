@@ -20,13 +20,7 @@ end
 function c37520316.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
-		if not Duel.GetControl(tc,tp,PHASE_END,1) then
-			if not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-				Duel.Destroy(tc,REASON_EFFECT)
-			end
-			return
-		end
+	if tc:IsRelateToEffect(e) and Duel.GetControl(tc,tp,PHASE_END,1) then
 		local e1=Effect.CreateEffect(c)
 		local reset=RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END
 		e1:SetType(EFFECT_TYPE_SINGLE)

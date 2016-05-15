@@ -74,10 +74,8 @@ function c84305651.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
 		local g=Duel.SelectMatchingCard(tp,c84305651.ctfilter,tp,0,LOCATION_MZONE,1,1,nil)
 		local tc=g:GetFirst()
-		if tc and not Duel.GetControl(tc,tp) then
-			if not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-				Duel.Destroy(tc,REASON_EFFECT)
-			end
+		if tc then
+			Duel.GetControl(tc,tp)
 		end
 	end
 end

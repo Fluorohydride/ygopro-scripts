@@ -49,10 +49,6 @@ function c93983867.activate(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 			tc:RegisterEffect(e1)
 		end
-	else
-		if not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-			Duel.Destroy(tc,REASON_EFFECT)
-		end
 	end
 end
 function c93983867.retop(e,tp,eg,ep,ev,re,r,rp)

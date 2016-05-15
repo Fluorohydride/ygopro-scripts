@@ -29,9 +29,7 @@ function c34568403.coinop(e,tp,eg,ep,ev,re,r,rp)
 	else res=Duel.TossCoin(tp,1) end
 	c34568403.arcanareg(c,res)
 	if res==0 then
-		if not Duel.GetControl(c,1-tp) and not c:IsImmuneToEffect(e) and c:IsAbleToChangeControler() then
-			Duel.Destroy(c,REASON_EFFECT)
-		end
+		Duel.GetControl(c,1-tp)
 	end
 end
 function c34568403.arcanareg(c,coin)

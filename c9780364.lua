@@ -52,9 +52,7 @@ function c9780364.activate(e,tp,eg,ep,ev,re,r,rp)
 		if e:GetLabel()==0 then
 			Duel.ChangePosition(tc,POS_FACEUP_DEFENCE,0,POS_FACEUP_ATTACK,0)
 		else
-			if not Duel.GetControl(tc,tp,PHASE_END,1) and not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-				Duel.Destroy(tc,REASON_EFFECT)
-			end
+			Duel.GetControl(tc,tp,PHASE_END,1)
 		end
 	end
 end

@@ -106,10 +106,8 @@ function c65305468.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c65305468.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetBattleTarget()
-	if tc:IsRelateToBattle() and not Duel.GetControl(tc,tp,PHASE_BATTLE,1) then
-		if not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-			Duel.Destroy(tc,REASON_EFFECT)
-		end
+	if tc:IsRelateToBattle() then
+		Duel.GetControl(tc,tp,PHASE_BATTLE,1)
 	end
 end
 function c65305468.reptg(e,tp,eg,ep,ev,re,r,rp,chk)

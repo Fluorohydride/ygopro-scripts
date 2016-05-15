@@ -53,8 +53,6 @@ function c71564150.operation(e,tp,eg,ep,ev,re,r,rp)
 			e4:SetReset(RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END)
 			e4:SetValue(1)
 			tc:RegisterEffect(e4)
-		elseif not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-			Duel.Destroy(tc,REASON_EFFECT)
 		end
 		tc=g:GetNext()
 	end

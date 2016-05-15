@@ -49,9 +49,7 @@ function c93900406.ctltg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c93900406.ctlop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and not Duel.GetControl(c,1-tp) then
-		if not c:IsImmuneToEffect(e) and c:IsAbleToChangeControler() then
-			Duel.Destroy(c,REASON_EFFECT)
-		end
+	if c:IsRelateToEffect(e) and c:IsFaceup() then
+		Duel.GetControl(c,1-tp)
 	end
 end

@@ -29,8 +29,6 @@ end
 function c87514539.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRace(RACE_ZOMBIE+RACE_FIEND) then
-		if not Duel.GetControl(tc,tp,PHASE_END,1) and not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-			Duel.Destroy(tc,REASON_EFFECT)
-		end
+		Duel.GetControl(tc,tp,PHASE_END,1)
 	end
 end

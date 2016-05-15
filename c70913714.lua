@@ -76,9 +76,7 @@ function c70913714.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c70913714.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=Duel.GetFirstTarget()
-	if ec and ec:IsRelateToEffect(e) and not Duel.GetControl(ec,tp) then
-		if not ec:IsImmuneToEffect(e) and ec:IsAbleToChangeControler() then
-			Duel.Destroy(ec,REASON_EFFECT)
-		end
+	if ec and ec:IsRelateToEffect(e) then
+		Duel.GetControl(ec,tp)
 	end
 end

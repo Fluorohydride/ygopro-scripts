@@ -98,10 +98,7 @@ function c59255742.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<g:GetCount() then return end
 	local tc=g:GetFirst()
 	while tc do
-		if Duel.GetControl(tc,tp) then
-		elseif not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-			Duel.Destroy(tc,REASON_EFFECT)
-		end
+		Duel.GetControl(tc,tp)
 		tc=g:GetNext()
 	end
 end

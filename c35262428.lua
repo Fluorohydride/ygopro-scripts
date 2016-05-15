@@ -63,7 +63,7 @@ end
 function c35262428.ctlop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler()
 	local p=e:GetLabel()
-	if tc:GetControler()~=p and not Duel.GetControl(tc,p) and not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-		Duel.Destroy(tc,REASON_EFFECT)
+	if tc:IsControler(1-p) then
+		Duel.GetControl(tc,p)
 	end
 end

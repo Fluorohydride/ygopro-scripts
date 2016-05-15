@@ -44,10 +44,8 @@ function c24413299.operation(e,tp,eg,ep,ev,re,r,rp)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
 				local g=g1:Select(tp,1,1,nil)
 				local tc=g:GetFirst()
-				if tc and not Duel.GetControl(tc,tp) then
-					if not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-						Duel.Destroy(tc,REASON_EFFECT)
-					end
+				if tc then
+					Duel.GetControl(tc,tp)
 				end
 			else
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

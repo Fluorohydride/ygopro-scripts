@@ -43,9 +43,7 @@ function c71652522.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c71652522.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	if tc:GetFlagEffect(71652522)~=0 and not Duel.GetControl(tc,1-tp) then
-		if not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-			Duel.Destroy(tc,REASON_EFFECT)
-		end
+	if tc:GetFlagEffect(71652522)~=0 then
+		Duel.GetControl(tc,1-tp)
 	end
 end

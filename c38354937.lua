@@ -28,9 +28,5 @@ function c38354937.ctop(e,tp,eg,ep,ev,re,r,rp)
 		sg=sg:Select(tp,1,1,nil)
 	end
 	local tc=sg:GetFirst()
-	if not Duel.GetControl(tc,tp) then
-		if not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-			Duel.Destroy(tc,REASON_EFFECT)
-		end
-	end
+	Duel.GetControl(tc,tp)
 end

@@ -41,9 +41,7 @@ function c36757171.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()==0 then return end
 	Duel.SendtoGrave(g,REASON_EFFECT+REASON_DISCARD)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and not Duel.GetControl(tc,tp) then
-		if not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-			Duel.Destroy(tc,REASON_EFFECT)
-		end
+	if tc:IsRelateToEffect(e) then
+		Duel.GetControl(tc,tp)
 	end
 end

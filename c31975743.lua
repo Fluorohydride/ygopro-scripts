@@ -51,8 +51,6 @@ function c31975743.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
 			e1:SetReset(RESET_PHASE+PHASE_END)
 			tc:RegisterEffect(e1)
-		elseif not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-			Duel.Destroy(tc,REASON_EFFECT)
 		end
 	end
 end

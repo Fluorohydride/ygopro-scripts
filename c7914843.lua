@@ -33,10 +33,8 @@ function c7914843.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tct=1
 	if Duel.GetTurnPlayer()~=tp then tct=2
 	elseif Duel.GetCurrentPhase()==PHASE_END then tct=3 end
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsRace(RACE_MACHINE) and not Duel.GetControl(tc,tp,PHASE_END,tct) then
-		if not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-			Duel.Destroy(tc,REASON_RULE)
-		end
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsRace(RACE_MACHINE) then
+		Duel.GetControl(tc,tp,PHASE_END,tct)
 	end
 end
 function c7914843.desop(e,tp,eg,ep,ev,re,r,rp)

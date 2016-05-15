@@ -29,9 +29,7 @@ end
 function c52702748.ctlop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	if not Duel.GetControl(c,1-tp) and not c:IsImmuneToEffect(e) and c:IsAbleToChangeControler() then
-		Duel.Destroy(c,REASON_EFFECT)
-	end
+	Duel.GetControl(c,1-tp)
 end
 function c52702748.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and chkc:IsAbleToRemove(1-tp) end

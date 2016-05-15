@@ -26,11 +26,7 @@ function c32065885.ctlop(e,tp,eg,ep,ev,re,r,rp)
 		sg=sg:Select(tp,1,1,nil)
 	end
 	local tc=sg:GetFirst()
-	if not Duel.GetControl(tc,tp,PHASE_END,2) then
-		if not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
-			Duel.Destroy(tc,REASON_EFFECT)
-		end
-	else
+	if Duel.GetControl(tc,tp,PHASE_END,2) then
 		local c=e:GetHandler()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
