@@ -45,6 +45,7 @@ function c52709508.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c52709508.atkop)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(52709508,2))
 	end
 	if bit.band(att,ATTRIBUTE_FIRE)~=0 then
 		local e1=Effect.CreateEffect(c)
@@ -58,6 +59,7 @@ function c52709508.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c52709508.damop)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(52709508,3))
 	end
 	if bit.band(att,ATTRIBUTE_LIGHT)~=0 then
 		local e1=Effect.CreateEffect(c)
@@ -71,6 +73,7 @@ function c52709508.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c52709508.spop)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(52709508,4))
 	end
 end
 function c52709508.atkop(e,tp,eg,ep,ev,re,r,rp)

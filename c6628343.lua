@@ -56,6 +56,7 @@ function c6628343.mtop(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetReset(RESET_EVENT+0x1fe0000)
 		rc:RegisterEffect(e3,true)
 	end
+	rc:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(6628343,2))
 	Duel.RegisterFlagEffect(tp,6628343,RESET_PHASE+PHASE_END,0,1)
 end
 function c6628343.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

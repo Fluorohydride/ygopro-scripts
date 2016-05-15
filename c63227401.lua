@@ -35,6 +35,7 @@ function c63227401.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		tc:RegisterFlagEffect(63227401,RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END,0,1)
+		tc:RegisterFlagEffect(0,RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(63227401,1))
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_CHAIN_SOLVING)
