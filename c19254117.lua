@@ -93,5 +93,10 @@ function c19254117.tgop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetLabel(tc:GetRealFieldID())
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetCode(EFFECT_ONLY_BE_ATTACKED)
+		e2:SetReset(RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END)
+		tc:RegisterEffect(e2,true)
 	end
 end
