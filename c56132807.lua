@@ -33,10 +33,13 @@ function c56132807.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c56132807.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
-	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	local tc=g:GetFirst()
+	if tc and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local a=Duel.GetAttacker()
-		if a and not a:IsImmuneToEffect(e) and Duel.ChangeAttackTarget(g:GetFirst()) then
+		local ag=a:GetAttackableTarget()
+		if a:IsAttackable() and not a:IsImmuneToEffect(e) and ag:IsContains(tc) then
 			Duel.BreakEffect()
+			Duel.ChangeAttackTarget(tc)
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_SET_ATTACK_FINAL)
