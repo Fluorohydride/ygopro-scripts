@@ -27,8 +27,9 @@ function c35037880.filter(c)
 	return ((c:IsSetCard(0xd) and c:IsType(TYPE_SPELL+TYPE_TRAP)) or c:IsSetCard(0xb0)) and c:IsAbleToHand()
 end
 function c35037880.operation(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Recover(tp,ev,REASON_EFFECT)
-	Duel.Damage(1-tp,ev,REASON_EFFECT)
+	Duel.Recover(tp,ev,REASON_EFFECT,true)
+	Duel.Damage(1-tp,ev,REASON_EFFECT,true)
+	Duel.RDComplete()
 	local g=Duel.GetMatchingGroup(c35037880.filter,tp,LOCATION_DECK,0,nil)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(35037880,0)) then
 		Duel.BreakEffect()

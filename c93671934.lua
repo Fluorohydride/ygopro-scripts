@@ -33,9 +33,10 @@ end
 function c93671934.damop(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c93671934.filter,nil)
 	if g:IsExists(Card.IsControler,1,nil,tp) then
-		Duel.Damage(tp,1000,REASON_EFFECT)
+		Duel.Damage(tp,1000,REASON_EFFECT,true)
 	end
 	if g:IsExists(Card.IsControler,1,nil,1-tp) then
-		Duel.Damage(1-tp,1000,REASON_EFFECT)
+		Duel.Damage(1-tp,1000,REASON_EFFECT,true)
 	end
+	Duel.RDComplete()
 end

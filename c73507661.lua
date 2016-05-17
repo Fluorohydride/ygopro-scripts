@@ -23,6 +23,7 @@ end
 function c73507661.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sg=Duel.GetMatchingGroup(c73507661.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,e:GetHandler())
 	local ct=Duel.Destroy(sg,REASON_EFFECT)
-	Duel.Damage(tp,ct*300,REASON_EFFECT)
-	Duel.Damage(1-tp,ct*300,REASON_EFFECT)
+	Duel.Damage(tp,ct*300,REASON_EFFECT,true)
+	Duel.Damage(1-tp,ct*300,REASON_EFFECT,true)
+	Duel.RDComplete()
 end

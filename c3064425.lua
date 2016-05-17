@@ -85,7 +85,8 @@ function c3064425.negop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		local g=Duel.GetMatchingGroup(Card.IsDestructable,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		if Duel.Destroy(g,REASON_EFFECT)==0 then return end
-		Duel.Damage(tp,1000,REASON_EFFECT)
-		Duel.Damage(1-tp,1000,REASON_EFFECT)
+		Duel.Damage(tp,1000,REASON_EFFECT,true)
+		Duel.Damage(1-tp,1000,REASON_EFFECT,true)
+		Duel.RDComplete()
 	end
 end

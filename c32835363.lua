@@ -15,14 +15,14 @@ function c32835363.initial_effect(c)
 	e2:SetOperation(c32835363.regop)
 	c:RegisterEffect(e2)
 	--
-	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(32835363,0))
-	e2:SetCategory(CATEGORY_DAMAGE)
-	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e2:SetCode(EVENT_CUSTOM+32835363)
-	e2:SetTarget(c32835363.damtg)
-	e2:SetOperation(c32835363.damop)
-	c:RegisterEffect(e2)
+	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(32835363,0))
+	e3:SetCategory(CATEGORY_DAMAGE)
+	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
+	e3:SetCode(EVENT_CUSTOM+32835363)
+	e3:SetTarget(c32835363.damtg)
+	e3:SetOperation(c32835363.damop)
+	c:RegisterEffect(e3)
 end
 function c32835363.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local d1=false
@@ -54,8 +54,9 @@ function c32835363.damop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local d=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	if ep==PLAYER_ALL then
-		Duel.Damage(tp,d,REASON_EFFECT)
-		Duel.Damage(1-tp,d,REASON_EFFECT)
+		Duel.Damage(tp,d,REASON_EFFECT,true)
+		Duel.Damage(1-tp,d,REASON_EFFECT,true)
+		Duel.RDComplete()
 	else
 		Duel.Damage(ep,d,REASON_EFFECT)
 	end

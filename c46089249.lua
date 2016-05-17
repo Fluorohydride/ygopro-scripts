@@ -36,8 +36,9 @@ function c46089249.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		if Duel.Destroy(tc,REASON_EFFECT)>0 then
-			Duel.Damage(1-tp,1000,REASON_EFFECT)
-			Duel.Damage(tp,1000,REASON_EFFECT)
+			Duel.Damage(1-tp,1000,REASON_EFFECT,true)
+			Duel.Damage(tp,1000,REASON_EFFECT,true)
+			Duel.RDComplete()
 		end
 	end
 end

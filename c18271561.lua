@@ -35,7 +35,8 @@ function c18271561.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 	local atk=dg:GetFirst():GetAttack()/2
 	if Duel.Destroy(dg,REASON_EFFECT)>0 then
-		Duel.Damage(tp,atk,REASON_EFFECT)
-		Duel.Damage(1-tp,atk,REASON_EFFECT)
+		Duel.Damage(tp,atk,REASON_EFFECT,true)
+		Duel.Damage(1-tp,atk,REASON_EFFECT,true)
+		Duel.RDComplete()
 	end
 end

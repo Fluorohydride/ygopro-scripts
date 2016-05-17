@@ -61,6 +61,7 @@ function c89405199.damop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	local ct1=c:GetFlagEffectLabel(89405199+tp)
 	local ct2=c:GetFlagEffectLabel(89405199+1-tp)
-	if ct1 then Duel.Damage(tp,ct1*500,REASON_EFFECT) end
-	if ct2 then Duel.Damage(1-tp,ct2*500,REASON_EFFECT) end
+	if ct1 then Duel.Damage(tp,ct1*500,REASON_EFFECT,true) end
+	if ct2 then Duel.Damage(1-tp,ct2*500,REASON_EFFECT,true) end
+	Duel.RDComplete()
 end

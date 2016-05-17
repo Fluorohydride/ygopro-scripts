@@ -22,6 +22,7 @@ end
 function c98139712.operation(e,tp,eg,ep,ev,re,r,rp)
 	local d1=eg:FilterCount(c98139712.filter1,nil,tp)*300
 	local d2=eg:FilterCount(c98139712.filter2,nil,tp)*300
-	Duel.Damage(1-tp,d1,REASON_EFFECT)
-	Duel.Damage(tp,d2,REASON_EFFECT)
+	Duel.Damage(1-tp,d1,REASON_EFFECT,true)
+	Duel.Damage(tp,d2,REASON_EFFECT,true)
+	Duel.RDComplete()
 end

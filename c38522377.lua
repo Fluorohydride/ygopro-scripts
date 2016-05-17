@@ -91,7 +91,8 @@ function c38522377.damop(e,tp,eg,ep,ev,re,r,rp)
 	local ex,g,gc,dp,dv=Duel.GetOperationInfo(0,CATEGORY_DAMAGE)
 	if dp~=PLAYER_ALL then Duel.Damage(dp,1000,REASON_EFFECT)
 	else
-		Duel.Damage(tp,1000,REASON_EFFECT)
-		Duel.Damage(1-tp,1000,REASON_EFFECT)
+		Duel.Damage(tp,1000,REASON_EFFECT,true)
+		Duel.Damage(1-tp,1000,REASON_EFFECT,true)
+		Duel.RDComplete()
 	end
 end

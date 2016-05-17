@@ -58,6 +58,7 @@ function c20686759.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,PLAYER_ALL,dam)
 end
 function c20686759.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Damage(1-tp,e:GetLabel(),REASON_EFFECT)
-	Duel.Damage(tp,e:GetLabel(),REASON_EFFECT)
+	Duel.Damage(1-tp,e:GetLabel(),REASON_EFFECT,true)
+	Duel.Damage(tp,e:GetLabel(),REASON_EFFECT,true)
+	Duel.RDComplete()
 end

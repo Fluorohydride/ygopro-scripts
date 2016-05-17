@@ -26,7 +26,8 @@ end
 function c71782404.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.Damage(1-tp,tc:GetBaseAttack(),REASON_EFFECT)
-		Duel.Damage(tp,tc:GetBaseAttack(),REASON_EFFECT)
+		Duel.Damage(1-tp,tc:GetBaseAttack(),REASON_EFFECT,true)
+		Duel.Damage(tp,tc:GetBaseAttack(),REASON_EFFECT,true)
+		Duel.RDComplete()
 	end
 end

@@ -67,6 +67,7 @@ function c5126490.damop(e,tp,eg,ep,ev,re,r,rp)
 	local def=bc:GetDefence()
 	if atk<0 then atk=0 end
 	if def<0 then def=0 end
-	Duel.Damage(1-tp,atk,REASON_EFFECT)
-	Duel.Recover(tp,def,REASON_EFFECT)
+	Duel.Damage(1-tp,atk,REASON_EFFECT,true)
+	Duel.Recover(tp,def,REASON_EFFECT,true)
+	Duel.RDComplete()
 end
