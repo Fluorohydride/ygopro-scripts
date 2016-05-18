@@ -1575,6 +1575,13 @@ end
 function Auxiliary.IsMaterialListSetCard(c,setcode)
 	return c.material_setcode and c.material_setcode==setcode
 end
+function Auxiliary.IsCodeListed(c,code)
+	if not c.card_code_list then return false end
+	for i,ccode in ipairs(c.card_code_list) do
+		if code==ccode then return true end
+	end
+	return false
+end	
 --card effect disable filter(target)
 function Auxiliary.disfilter1(c)
 	return c:IsFaceup() and not c:IsDisabled() and (not c:IsType(TYPE_NORMAL) or bit.band(c:GetOriginalType(),TYPE_EFFECT)~=0)

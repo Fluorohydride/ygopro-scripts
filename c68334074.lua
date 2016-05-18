@@ -12,7 +12,7 @@ function c68334074.initial_effect(c)
 	e1:SetOperation(c68334074.activate)
 	c:RegisterEffect(e1)
 end
-c68334074.dark_magician_list=true
+c68334074.card_code_list={46986414}
 function c68334074.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x1,2,REASON_COST) end
 	Duel.RemoveCounter(tp,1,0,0x1,2,REASON_COST)

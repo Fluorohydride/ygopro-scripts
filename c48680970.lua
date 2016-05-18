@@ -38,7 +38,7 @@ function c48680970.initial_effect(c)
 	e4:SetOperation(c48680970.desop)
 	c:RegisterEffect(e4)
 end
-c48680970.dark_magician_list=true
+c48680970.card_code_list={46986414}
 function c48680970.filter1(c,e,tp)
 	return c:IsCode(46986414) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end

@@ -10,7 +10,7 @@ function c2314238.initial_effect(c)
 	e1:SetOperation(c2314238.activate)
 	c:RegisterEffect(e1)
 end
-c2314238.dark_magician_list=true
+c2314238.card_code_list={46986414}
 function c2314238.cfilter(c)
 	return c:IsFaceup() and c:IsCode(46986414)
 end

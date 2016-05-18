@@ -11,7 +11,7 @@ function c73616671.initial_effect(c)
 	e1:SetOperation(c73616671.activate)
 	c:RegisterEffect(e1)
 end
-c73616671.dark_magician_list=true
+c73616671.card_code_list={46986414}
 function c73616671.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,nil,RACE_SPELLCASTER) end
 	local g=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,nil,RACE_SPELLCASTER)

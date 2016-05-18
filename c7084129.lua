@@ -34,7 +34,7 @@ function c7084129.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c7084129.thfilter(c)
-	return c.dark_magician_list and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
+	return aux.IsCodeListed(c,46986414) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
 end
 function c7084129.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c7084129.thfilter,tp,LOCATION_DECK,0,1,nil) end
