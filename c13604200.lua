@@ -11,6 +11,7 @@ function c13604200.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 c13604200.dark_magician_list=true
+c13604200.dark_magician_girl_list=true
 function c13604200.cfilter(c)
 	return c:IsFaceup() and c:IsCode(38033121)
 end
