@@ -28,11 +28,14 @@ function c91349449.initial_effect(c)
 	e3:SetOperation(c91349449.rmop)
 	c:RegisterEffect(e3)
 end
+function c91349449.spfilter(c)
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT)
+end
 function c91349449.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(Card.IsAttribute,tp,LOCATION_REMOVED,0,3,nil,ATTRIBUTE_LIGHT)
+		and Duel.IsExistingMatchingCard(c91349449.spfilter,tp,LOCATION_REMOVED,0,3,nil)
 end
 function c91349449.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetAttackAnnouncedCount()==0 end

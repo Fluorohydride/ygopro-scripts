@@ -18,11 +18,14 @@ function c82579942.initial_effect(c)
 	e2:SetValue(c82579942.valcon)
 	c:RegisterEffect(e2)
 end
+function c82579942.spfilter(c)
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT)
+end
 function c82579942.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(Card.IsAttribute,tp,LOCATION_REMOVED,0,3,nil,ATTRIBUTE_LIGHT)
+		and Duel.IsExistingMatchingCard(c82579942.spfilter,tp,LOCATION_REMOVED,0,3,nil)
 end
 function c82579942.valcon(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
