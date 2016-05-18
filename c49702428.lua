@@ -10,6 +10,7 @@ function c49702428.initial_effect(c)
 	e1:SetOperation(c49702428.activate)
 	c:RegisterEffect(e1)
 end
+c49702428.dark_magician_girl_list=true
 function c49702428.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x30a2)
 end

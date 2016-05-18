@@ -35,6 +35,7 @@ function c67227834.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 c67227834.dark_magician_list=true
+c67227834.dark_magician_girl_list=true
 function c67227834.eqlimit(e,c)
 	return c:IsCode(46986414,38033121)
 end
