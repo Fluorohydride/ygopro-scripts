@@ -77,7 +77,7 @@ function c50619462.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c50619462.descon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	if tc:GetFlagEffectLabel(50619462)~=0 then
+	if tc:GetFlagEffect(50619462)~=0 then
 		return true
 	else
 		e:Reset()
