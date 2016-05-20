@@ -48,7 +48,6 @@ function c95442074.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
 	if g:GetCount()>0 then
 		Duel.ChangePosition(g,POS_FACEUP_ATTACK)
-		c:RegisterFlagEffect(69058960,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 		local tc=g:GetFirst()
 		while tc do
 			local e1=Effect.CreateEffect(c)
@@ -59,14 +58,14 @@ function c95442074.operation(e,tp,eg,ep,ev,re,r,rp)
 			local e2=e1:Clone()
 			e2:SetCode(EFFECT_MUST_ATTACK_MONSTER)
 			tc:RegisterEffect(e2)
-			local e3=Effect.CreateEffect(c)
-			e3:SetType(EFFECT_TYPE_SINGLE)
-			e3:SetCode(EFFECT_MUST_BE_ATTACKED)
-			e3:SetValue(1)
-			e3:SetReset(RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END)
-			c:RegisterEffect(e3)
 			tc=g:GetNext()
 		end
+		local e3=Effect.CreateEffect(c)
+		e3:SetType(EFFECT_TYPE_SINGLE)
+		e3:SetCode(EFFECT_MUST_BE_ATTACKED)
+		e3:SetValue(1)
+		e3:SetReset(RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END)
+		c:RegisterEffect(e3)
 	end
 end
 function c95442074.filter(c)
