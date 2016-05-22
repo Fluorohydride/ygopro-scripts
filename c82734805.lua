@@ -192,7 +192,7 @@ function c82734805.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 			ok=true
 		end
 	else
-		local mg2=mg:Filter(aux.FConditionFilter22,nil,14799437,23440231,true)
+		local mg2=mg:Filter(aux.FConditionFilter22,nil,14799437,23440231,true,e:GetHandler())
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 		local sg1=mg2:Select(tp,1,1,nil)
 		local tc1=sg1:GetFirst()
