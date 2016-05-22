@@ -22,6 +22,14 @@ function c10000040.initial_effect(c)
 	e3:SetCode(EFFECT_CANNOT_DISABLE_SPSUMMON)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	c:RegisterEffect(e3)
+	--win
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_DELAY)
+	e4:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e4:SetRange(LOCATION_MZONE)
+	e4:SetOperation(c10000040.winop)
+	c:RegisterEffect(e4)
 end
 function c10000040.spfilter(c,code)
 	local code1,code2=c:GetOriginalCodeRule()
@@ -42,6 +50,9 @@ function c10000040.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	g1:Merge(g2)
 	g1:Merge(g3)
 	Duel.Release(g1,REASON_COST)
-	local WIN_REASON_CREATORGOD = 0x13
-	Duel.Win(tp,WIN_REASON_CREATORGOD)
+end
+function c10000040.winop(e,tp,eg,ep,ev,re,r,rp)
+	local WIN_REASON_CREATORGOD=0x13
+	local p=e:GetHandler():GetSummonPlayer()
+	Duel.Win(p,WIN_REASON_CREATORGOD)
 end
