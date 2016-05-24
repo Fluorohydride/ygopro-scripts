@@ -32,9 +32,9 @@ function c94212438.initial_effect(c)
 	--win
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e5:SetCode(EVENT_CHAIN_SOLVING)
+	e5:SetCode(EVENT_ADJUST)
 	e5:SetRange(LOCATION_SZONE)
-	e5:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_DELAY)
+	e5:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e5:SetOperation(c94212438.winop)
 	c:RegisterEffect(e5)
 end

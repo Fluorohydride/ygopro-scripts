@@ -18,8 +18,9 @@ function c31305911.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c31305911.condition(e,tp,eg,ep,ev,re,r,rp)
-	local pos=e:GetHandler():GetBattlePosition()
-	return e:GetHandler()==Duel.GetAttackTarget() and (pos==POS_FACEDOWN_DEFENCE or pos==POS_FACEDOWN_ATTACK)
+	local c=e:GetHandler()
+	local pos=c:GetBattlePosition()
+	return c==Duel.GetAttackTarget() and (pos==POS_FACEDOWN_DEFENCE or pos==POS_FACEDOWN_ATTACK) and c:IsLocation(LOCATION_MZONE)
 end
 function c31305911.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
