@@ -26,7 +26,7 @@ function c1516510.operation(e,tp,eg,ep,ev,re,r,rp)
 	if bit.band(flag,0x3)~=0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_EXTRA_ATTACK)
+		e1:SetCode(EFFECT_EXTRA_ATTACK_MONSTER)
 		e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
 		if bit.band(flag,0x1)~=0 then
 			e1:SetDescription(aux.Stringid(1516510,0))
@@ -38,16 +38,6 @@ function c1516510.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
 	end
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
-	e2:SetCondition(c1516510.dircon)
-	e2:SetReset(RESET_EVENT+0x1fe0000)
-	c:RegisterEffect(e2)
-	local e3=e2:Clone()
-	e3:SetCode(EFFECT_CANNOT_ATTACK)
-	e3:SetCondition(c1516510.atkcon)
-	c:RegisterEffect(e3)
 	if bit.band(flag,0x4)~=0 then
 		local e4=Effect.CreateEffect(c)
 		e4:SetType(EFFECT_TYPE_SINGLE)
@@ -57,12 +47,6 @@ function c1516510.operation(e,tp,eg,ep,ev,re,r,rp)
 		e4:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e4)
 	end
-end
-function c1516510.dircon(e)
-	return e:GetHandler():GetAttackAnnouncedCount()>0
-end
-function c1516510.atkcon(e)
-	return e:GetHandler():IsDirectAttacked()
 end
 function c1516510.efilter(e,re)
 	return e:GetOwnerPlayer()~=re:GetOwnerPlayer()

@@ -87,26 +87,9 @@ function c58820923.atkop(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetCode(EFFECT_EXTRA_ATTACK)
+		e1:SetCode(EFFECT_EXTRA_ATTACK_MONSTER)
 		e1:SetValue(1)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
-		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_SINGLE)
-		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e2:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
-		e2:SetCondition(c58820923.dircon)
-		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
-		c:RegisterEffect(e2)
-		local e3=e2:Clone()
-		e3:SetCode(EFFECT_CANNOT_ATTACK)
-		e3:SetCondition(c58820923.atkcon2)
-		c:RegisterEffect(e3)
 	end
-end
-function c58820923.dircon(e)
-	return e:GetHandler():GetAttackAnnouncedCount()>0
-end
-function c58820923.atkcon2(e)
-	return e:GetHandler():IsDirectAttacked()
 end
