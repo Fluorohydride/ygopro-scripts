@@ -29,7 +29,7 @@ function c85668449.initial_effect(c)
 	e3:SetRange(LOCATION_FZONE)
 	e3:SetCode(EFFECT_LPCOST_REPLACE)
 	e3:SetCondition(c85668449.lrcon)
-	e3:SetOperation(c85668449.ctop)
+	e3:SetOperation(c85668449.lrop)
 	c:RegisterEffect(e3)
 	--damage
 	local e4=Effect.CreateEffect(c)
@@ -61,6 +61,9 @@ function c85668449.lrcon(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return false end
 	local rc=re:GetHandler()
 	return rc:IsLocation(LOCATION_MZONE) and rc:IsRace(RACE_PSYCHO)
+end
+function c85668449.lrop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():AddCounter(0x4,1)
 end
 function c85668449.damp(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
