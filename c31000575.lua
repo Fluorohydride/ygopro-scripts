@@ -20,9 +20,12 @@ function c31000575.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsSummonableCard() and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 		Duel.DisableShuffleCheck()
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
-	else
+	elseif tc:IsAbleToHand() then
 		Duel.DisableShuffleCheck()
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		Duel.ShuffleHand(1-tp)
+	else
+		Duel.DisableShuffleCheck()
+		Duel.SendtoGrave(tc,REASON_RULE)
 	end
 end
