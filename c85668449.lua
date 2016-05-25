@@ -15,6 +15,14 @@ function c85668449.initial_effect(c)
 	e2:SetTarget(aux.TargetBoolFunction(Card.IsRace,RACE_PSYCHO))
 	e2:SetValue(c85668449.esop)
 	c:RegisterEffect(e2)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e3:SetRange(LOCATION_FZONE)
+	e3:SetCode(EVENT_SUMMON_SUCCESS)
+	e3:SetCondition(c85668449.ctcon)
+	e3:SetOperation(c85668449.ctop)
+	e3:SetLabelObject(e2)
+	c:RegisterEffect(e3)
 	--lpcost replace
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(85668449,0))
@@ -22,7 +30,7 @@ function c85668449.initial_effect(c)
 	e3:SetRange(LOCATION_FZONE)
 	e3:SetCode(EFFECT_LPCOST_REPLACE)
 	e3:SetCondition(c85668449.lrcon)
-	e3:SetOperation(c85668449.lrop)
+	e3:SetOperation(c85668449.ctop)
 	c:RegisterEffect(e3)
 	--damage
 	local e4=Effect.CreateEffect(c)
@@ -38,6 +46,12 @@ function c85668449.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c85668449.esop(e,c)
+	c:RegisterFlagEffect(85668449,RESET_EVENT+0xfe0000+RESET_PHASE+PHASE_END,0,1)
+end
+function c85668449.ctcon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:GetFirst():GetFlagEffect(85668449)~=0
+end
+function c85668449.ctop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x4,1)
 end
 function c85668449.lrcon(e,tp,eg,ep,ev,re,r,rp)
@@ -47,9 +61,6 @@ function c85668449.lrcon(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return false end
 	local rc=re:GetHandler()
 	return rc:IsLocation(LOCATION_MZONE) and rc:IsRace(RACE_PSYCHO)
-end
-function c85668449.lrop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():AddCounter(0x4,1)
 end
 function c85668449.damp(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

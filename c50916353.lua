@@ -12,7 +12,7 @@ function c50916353.initial_effect(c)
 end
 function c50916353.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return ep==tp and c:GetBattleTarget()==eg:GetFirst()
+	return ep==tp and c==Duel.GetAttackTarget()
 end
 function c50916353.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -21,11 +21,15 @@ function c50916353.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCategory(CATEGORY_DAMAGE)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)
+	e1:SetCondition(c50916353.damcon)
 	e1:SetTarget(c50916353.damtg)
 	e1:SetOperation(c50916353.damop)
 	e1:SetLabel(ev)
 	e1:SetReset(RESET_PHASE+PHASE_DAMAGE)
 	c:RegisterEffect(e1)
+end
+function c50916353.damcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsLocation(LOCATION_GRAVE)
 end
 function c50916353.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
