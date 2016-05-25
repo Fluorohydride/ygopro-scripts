@@ -21,7 +21,6 @@ function c85668449.initial_effect(c)
 	e3:SetCode(EVENT_SUMMON_SUCCESS)
 	e3:SetCondition(c85668449.ctcon)
 	e3:SetOperation(c85668449.ctop)
-	e3:SetLabelObject(e2)
 	c:RegisterEffect(e3)
 	--lpcost replace
 	local e3=Effect.CreateEffect(c)
@@ -53,6 +52,7 @@ function c85668449.ctcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c85668449.ctop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x4,1)
+	eg:GetFirst():ResetFlagEffect(85668449)
 end
 function c85668449.lrcon(e,tp,eg,ep,ev,re,r,rp)
 	if tp~=ep then return false end
