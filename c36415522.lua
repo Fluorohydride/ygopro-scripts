@@ -93,7 +93,7 @@ function c36415522.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c36415522.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	if tc:IsRelateToBattle() and tc:IsFaceup() then
+	if tc:IsRelateToBattle() then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_AVOID_BATTLE_DAMAGE)
