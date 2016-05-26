@@ -26,13 +26,8 @@ function c31044787.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c31044787.filter,tp,0,LOCATION_MZONE,nil)
 	local atk=g:GetSum(Card.GetAttack)
 	local lp=Duel.GetLP(tp)
-	local sg=Group.CreateGroup()
-	while atk>lp and g:GetCount()>0 do
-		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TODECK)
-		local tc=g:Select(1-tp,1,1,nil):GetFirst()
-		sg:AddCard(tc)
-		g:RemoveCard(tc)
-		atk=atk-tc:GetAttack()
-	end
+	local diff=atk-lp
+	if diff<=0 then return end
+	local sg=g:SelectWithSumGreater(1-tp,Card.GetAttack,diff)
 	Duel.SendtoDeck(sg,nil,2,REASON_RULE)
 end
