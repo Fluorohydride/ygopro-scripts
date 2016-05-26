@@ -32,7 +32,9 @@ function c79306385.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		return ft>-1 and Duel.IsExistingMatchingCard(c79306385.filter,tp,LOCATION_HAND,0,1,nil,e,tp,mg,ft)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
-	Duel.SetChainLimit(c79306385.chlimit)
+	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then
+		Duel.SetChainLimit(c79306385.chlimit)
+	end
 end
 function c79306385.chlimit(e,ep,tp)
 	return tp==ep

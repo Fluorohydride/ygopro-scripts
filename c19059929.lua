@@ -23,7 +23,9 @@ function c19059929.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(Card.IsFacedown,tp,0,LOCATION_SZONE,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(19059929,0))
 	local g=Duel.SelectTarget(tp,Card.IsFacedown,tp,0,LOCATION_SZONE,1,1,e:GetHandler())
-	Duel.SetChainLimit(c19059929.limit(g:GetFirst()))
+	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then
+		Duel.SetChainLimit(c19059929.limit(g:GetFirst()))
+	end
 end
 function c19059929.limit(c)
 	return	function (e,lp,tp)
