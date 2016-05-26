@@ -36,7 +36,9 @@ function c89792713.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c89792713.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
-	Duel.SetChainLimit(aux.FALSE)
+	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then
+		Duel.SetChainLimit(aux.FALSE)
+	end
 end
 function c89792713.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
