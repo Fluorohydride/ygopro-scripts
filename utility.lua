@@ -136,29 +136,29 @@ function Auxiliary.SpiritReturnOperation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
 end
-function Auxiliary.TargetEqualFunction(f,value,...)
+function Auxiliary.TargetEqualFunction(f,value,a,b,c)
 	return	function(effect,target)
-				return f(target,...)==value
+				return f(target,a,b,c)==value
 			end
 end
-function Auxiliary.TargetBoolFunction(f,...)
+function Auxiliary.TargetBoolFunction(f,a,b,c)
 	return	function(effect,target)
-				return f(target,...)
+				return f(target,a,b,c)
 			end
 end
-function Auxiliary.FilterEqualFunction(f,value,...)
+function Auxiliary.FilterEqualFunction(f,value,a,b,c)
 	return	function(target)
-				return f(target,...)==value
+				return f(target,a,b,c)==value
 			end
 end
-function Auxiliary.FilterBoolFunction(f,...)
+function Auxiliary.FilterBoolFunction(f,a,b,c)
 	return	function(target)
-				return f(target,...)
+				return f(target,a,b,c)
 			end
 end
-function Auxiliary.NonTuner(f,...)
+function Auxiliary.NonTuner(f,a,b,c)
 	return	function(target)
-				return target:IsNotTuner() and (not f or f(target,...))
+				return target:IsNotTuner() and (not f or f(target,a,b,c))
 			end
 end
 --Synchro monster, 1 tuner + n or more monsters
