@@ -39,19 +39,8 @@ function c31245780.activate(e,tp,eg,ep,ev,re,r,rp)
 			tc:RegisterFlagEffect(31245780,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 			tc=sg:GetNext()
 		end
-		local be=Effect.CreateEffect(c)
-		be:SetType(EFFECT_TYPE_FIELD)
-		be:SetCode(EFFECT_CANNOT_EP)
-		be:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		be:SetTargetRange(0,1)
-		be:SetCondition(c31245780.becon)
-		be:SetReset(RESET_PHASE+PHASE_END)
-		Duel.RegisterEffect(be,tp)
 	end
 end
 function c31245780.befilter(c)
 	return c:GetFlagEffect(31245780)~=0 and c:IsAttackable()
-end
-function c31245780.becon(e)
-	return Duel.IsExistingMatchingCard(c31245780.befilter,e:GetHandlerPlayer(),0,LOCATION_MZONE,1,nil)
 end

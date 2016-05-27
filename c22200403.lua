@@ -87,10 +87,6 @@ function c22200403.desop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
-function c22200403.atcon(e)
-	return c22200403.effcon(e)
-		and Duel.IsExistingMatchingCard(Card.IsAttackable,e:GetHandlerPlayer(),0,LOCATION_MZONE,1,nil)
-end
 function c22200403.drcon1(e,tp,eg,ep,ev,re,r,rp)
 	return c22200403.effcon(e)
 		and e:GetHandler():IsRelateToBattle()

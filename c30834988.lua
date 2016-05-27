@@ -15,15 +15,6 @@ function c30834988.initial_effect(c)
 	e2:SetTarget(c30834988.target)
 	e2:SetOperation(c30834988.operation)
 	c:RegisterEffect(e2)
-	--
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD)
-	e3:SetCode(EFFECT_CANNOT_EP)
-	e3:SetRange(LOCATION_SZONE)
-	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e3:SetTargetRange(1,1)
-	e3:SetCondition(c30834988.epcon)
-	c:RegisterEffect(e3)
 end
 function c30834988.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
@@ -54,10 +45,4 @@ function c30834988.operation(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoGrave(c,REASON_RULE)
 		end
 	end
-end
-function c30834988.epfilter(c)
-	return c:IsHasEffect(EFFECT_MUST_ATTACK) and c:IsAttackable()
-end
-function c30834988.epcon(e)
-	return Duel.IsExistingMatchingCard(c30834988.epfilter,Duel.GetTurnPlayer(),LOCATION_MZONE,0,1,nil)
 end

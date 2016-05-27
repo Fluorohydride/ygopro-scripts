@@ -24,15 +24,6 @@ function c22082163.initial_effect(c)
 	e3:SetCondition(c22082163.descon2)
 	e3:SetOperation(c22082163.desop2)
 	c:RegisterEffect(e3)
-	--cannot bp
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_FIELD)
-	e4:SetCode(EFFECT_CANNOT_EP)
-	e4:SetRange(LOCATION_SZONE)
-	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e4:SetTargetRange(1,0)
-	e4:SetCondition(c22082163.becon)
-	c:RegisterEffect(e4)
 end
 function c22082163.filter(c,e,tp)
 	return c:IsSetCard(0x4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -68,10 +59,6 @@ function c22082163.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c22082163.cpcon(e)
 	return e:GetOwner():IsHasCardTarget(e:GetHandler())
-end
-function c22082163.becon(e)
-	local tc=e:GetHandler():GetFirstCardTarget()
-	return tc and tc:IsAttackable()
 end
 function c22082163.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetFirstCardTarget()
