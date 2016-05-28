@@ -51,11 +51,9 @@ function c32710364.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c32710364.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ct<=0 then return end
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 	local g=Duel.GetMatchingGroup(c32710364.filter,tp,LOCATION_SZONE,0,nil,e,tp)
+	if ct<=0 or g:GetCount()==0 or (ct>1 and g:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
 	local gc=g:GetCount()
-	if gc==0 then return end
 	if gc<=ct then
 		Duel.SpecialSummon(g,0,tp,tp,true,false,POS_FACEUP)
 	else

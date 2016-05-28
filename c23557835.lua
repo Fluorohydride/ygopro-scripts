@@ -27,10 +27,14 @@ end
 function c23557835.op(e,tp,eg,ep,ev,re,r,rp)
 	local count=0
 	local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ft2=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
+	local g1=Duel.GetMatchingGroup(c23557835.filter,tp,LOCATION_REMOVED,0,nil,e,tp)
+	local g2=Duel.GetMatchingGroup(c23557835.filter,tp,0,LOCATION_REMOVED,nil,e,1-tp)
+	if ft1<=0 or g1:GetCount()==0 or (ft1>1 and g1:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
+	if ft2<=0 or g2:GetCount()==0 or (ft2>1 and g2:GetCount()>1 and Duel.IsPlayerAffectedByEffect(1-tp,59822133)) then return end
 	if ft1>0 then
-		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft1=1 end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,c23557835.filter,tp,LOCATION_REMOVED,0,ft1,ft1,nil,e,tp)
+		local g=g1:Select(tp,ft1,ft1,nil)
 		if g:GetCount()>0 then
 			local tc=g:GetFirst()
 			while tc do
@@ -40,11 +44,9 @@ function c23557835.op(e,tp,eg,ep,ev,re,r,rp)
 			end
 		end
 	end
-	local ft2=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
 	if ft2>0 then
-		if Duel.IsPlayerAffectedByEffect(1-tp,59822133) then ft2=1 end
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(1-tp,c23557835.filter,tp,0,LOCATION_REMOVED,ft2,ft2,nil,e,1-tp)
+		local g=g2:Select(1-tp,ft2,ft2,nil)
 		if g:GetCount()>0 then
 			local tc=g:GetFirst()
 			while tc do

@@ -112,24 +112,8 @@ function c56562619.spop(e,tp,eg,ep,ev,re,r,rp)
 	local sg2=rg:Filter(c56562619.spfilter2,nil,e,tp)
 	local gc1=sg1:GetCount()
 	local gc2=sg2:GetCount()
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		if ft1<=0 and gc2>0 then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			sg=sg2:Select(tp,1,1,nil)
-		elseif ft2<=0 and gc1>0 then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			sg=sg1:Select(tp,1,1,nil)
-		elseif (gc1>0 and ft1>0) or (gc2>0 and ft2>0) then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			sg=rg:FilterSelect(tp,c56562619.spfilter,1,1,nil,e,tp)
-		end
-		if sg~=nil then
-			Duel.SpecialSummon(sg,0,tp,sg:GetFirst():GetOwner(),false,false,POS_FACEUP)
-		end
-		rg:Clear()
-		return
-	end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and ((gc1>1 and ft1>1) or (gc2>1 and ft2>1) or (gc1+gc2==2 and ft1+ft2==2)) then return end
 	if gc1>0 and ft1>0 then
 		if sg1:GetCount()>ft1 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
