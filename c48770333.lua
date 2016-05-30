@@ -27,7 +27,6 @@ function c48770333.initial_effect(c)
 	e3:SetCountLimit(1)
 	e3:SetCondition(c48770333.atkcon)
 	e3:SetCost(c48770333.atkcost)
-	e3:SetTarget(c48770333.atktg)
 	e3:SetOperation(c48770333.atkop)
 	c:RegisterEffect(e3)
 end
@@ -57,9 +56,6 @@ end
 function c48770333.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0x37,3,REASON_COST) end
 	Duel.RemoveCounter(tp,1,1,0x37,3,REASON_COST)
-end
-function c48770333.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetEffectCount(EFFECT_EXTRA_ATTACK)==0 end
 end
 function c48770333.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
