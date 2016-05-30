@@ -34,7 +34,7 @@ function c94432298.tgtg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_STANDBY
 		and Duel.IsExistingMatchingCard(c94432298.filter,tp,LOCATION_DECK,0,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(94432298,0)) then
+		and Duel.SelectYesNo(tp,94) then
 		e:SetCategory(CATEGORY_TOGRAVE)
 		e:GetHandler():RegisterFlagEffect(94432298,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 		e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(94432298,1))

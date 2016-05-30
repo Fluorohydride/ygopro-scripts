@@ -37,7 +37,8 @@ function c21558682.atktg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer() then
 		local at=Duel.GetAttackTarget()
 		local atg=Duel.GetAttacker():GetAttackableTarget()
-		if at and Duel.IsExistingTarget(c21558682.filter,tp,LOCATION_MZONE,0,1,at,atg) and Duel.SelectYesNo(tp,aux.Stringid(21558682,1)) then
+		if at and Duel.IsExistingTarget(c21558682.filter,tp,LOCATION_MZONE,0,1,at,atg)
+			and Duel.SelectYesNo(tp,94) then
 			e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 			Duel.SelectTarget(tp,c21558682.filter,tp,LOCATION_MZONE,0,1,1,at,atg)

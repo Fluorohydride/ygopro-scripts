@@ -40,7 +40,7 @@ function c36970611.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return c36970611.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc) end
 	if chk==0 then return true end
 	if c36970611.cost2(e,tp,eg,ep,ev,re,r,rp,0) and c36970611.target2(e,tp,eg,ep,ev,re,r,rp,0,chkc)
-		and Duel.SelectYesNo(tp,aux.Stringid(36970611,2)) then
+		and Duel.SelectYesNo(tp,94) then
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		e:SetOperation(c36970611.operation)
 		c36970611.cost2(e,tp,eg,ep,ev,re,r,rp,1)
@@ -52,7 +52,7 @@ function c36970611.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c36970611.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c36970611.cfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil) and e:GetHandler():GetFlagEffect(36970611)==0 end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(36970611,3))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local cg=Duel.SelectMatchingCard(tp,c36970611.cfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil)
 	Duel.Remove(cg,POS_FACEUP,REASON_COST)
 	e:GetHandler():RegisterFlagEffect(36970611,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)

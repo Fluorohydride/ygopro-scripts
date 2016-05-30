@@ -50,7 +50,7 @@ end
 function c63881033.lvtg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if Duel.IsExistingMatchingCard(c63881033.filter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(63881033,4)) then
+		and Duel.SelectYesNo(tp,94) then
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(63881033,1))
 		local lv=Duel.AnnounceNumber(tp,5,6,7,8,9)
 		e:SetLabel(lv)
