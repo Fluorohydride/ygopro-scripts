@@ -60,7 +60,5 @@ function c36378044.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c36378044.desop(e,tp,eg,ep,ev,re,r,rp)
 	local lp=Duel.GetLP(tp)
-	if lp>6000 then lp=lp-6000
-	else lp=0 end
-	Duel.SetLP(tp,lp)
+	Duel.SetLP(tp,lp-6000)
 end

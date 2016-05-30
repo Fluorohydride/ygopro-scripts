@@ -34,7 +34,7 @@ function c84677654.operation(e,tp,eg,ep,ev,re,r,rp)
 			tc=g:GetNext()
 		end
 	elseif coin1==0 and coin2==0 then
-		local lp=Duel.GetLP(tp)-lv*500
-		Duel.SetLP(tp,lp>0 and lp or 0)
+		local lp=Duel.GetLP(tp)
+		Duel.SetLP(tp,lp-lv*500)
 	end
 end

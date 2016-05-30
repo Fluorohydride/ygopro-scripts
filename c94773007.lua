@@ -18,6 +18,6 @@ function c94773007.atop(e,tp,eg,ep,ev,re,r,rp)
 	local opt=Duel.SelectOption(tp,60,61)
 	local coin=Duel.TossCoin(tp,1)
 	if opt==coin then
-		Duel.SetLP(tp,Duel.GetLP(tp)/2)
+		Duel.SetLP(tp,math.ceil(Duel.GetLP(tp)/2))
 	end
 end
