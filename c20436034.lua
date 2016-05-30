@@ -55,5 +55,5 @@ function c20436034.eqlimit(e,c)
 	return e:GetHandlerPlayer()==c:GetControler()
 end
 function c20436034.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetEquipTarget~=nil
+	return e:GetHandler():GetEquipTarget()~=nil
 end
