@@ -45,8 +45,10 @@ function c72881007.activate(e,tp,eg,ep,ev,re,r,rp)
 	g=Duel.GetOperatedGroup()
 	local ct=g:FilterCount(c72881007.ctfilter,nil,1-tp)
 	if ft>ct then ft=ct end
+	local tg=Duel.GetMatchingGroup(c72881007.filter,tp,LOCATION_GRAVE,0,nil,e,tp)
+	if ft<=0 or tg:GetCount()==0 or (ft>1 and tg:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	g=Duel.SelectMatchingCard(tp,c72881007.filter,tp,LOCATION_GRAVE,0,ft,ft,nil,e,tp)
+	g=tg:Select(tp,ft,ft,nil)
 	if g:GetCount()>0 then
 		Duel.BreakEffect()
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)

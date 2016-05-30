@@ -36,8 +36,8 @@ function c71442223.activate(e,tp,eg,ep,ev,re,r,rp)
 		local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
 		local g=Duel.GetMatchingGroup(c71442223.spfilter2,1-tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,1-tp,tc)
 		if g:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
+		if ft>1 and g:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 		if ft>0 and g:GetCount()>0 then
-			if Duel.IsPlayerAffectedByEffect(1-tp,59822133) then ft=1 end
 			local sg=g:Clone()
 			if g:GetCount()>ft then
 				Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SPSUMMON)

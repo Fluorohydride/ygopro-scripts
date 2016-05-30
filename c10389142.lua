@@ -38,8 +38,8 @@ function c10389142.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c10389142.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<=0 or not Duel.IsPlayerCanSpecialSummonMonster(tp,10389143,0,0x4011,2000,0,6,RACE_MACHINE,ATTRIBUTE_WIND) then return end
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
+	if ft<=0 or (Duel.IsPlayerAffectedByEffect(tp,59822133) and ft>1)
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,10389143,0,0x4011,2000,0,6,RACE_MACHINE,ATTRIBUTE_WIND) then return end
 	local fid=e:GetHandler():GetFieldID()
 	local g=Group.CreateGroup()
 	for i=1,ft do

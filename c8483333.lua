@@ -39,10 +39,9 @@ function c8483333.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c8483333.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<=0 then return end
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local c=e:GetHandler()
 	local g=c:GetMaterial():Filter(c8483333.spfilter,nil,e,tp,c)
+	if ft<=0 or (Duel.IsPlayerAffectedByEffect(tp,59822133) and g:GetCount()>1 and ft>1) then return end
 	if g:GetCount()>0 then
 		if g:GetCount()>ft then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

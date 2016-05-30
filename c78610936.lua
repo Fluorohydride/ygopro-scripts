@@ -35,8 +35,8 @@ function c78610936.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)>0 then
 		local g=mg:Filter(c78610936.spfilter,nil,e,tp)
 		local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
+		if ft>1 and g:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 		if ft>0 and g:GetCount()>0 then
-			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 			if g:GetCount()>ft then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				g=g:Select(tp,ft,ft,nil)

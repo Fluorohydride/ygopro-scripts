@@ -53,10 +53,11 @@ function c32542011.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsExistingMatchingCard(c32542011.cfilter2,tp,LOCATION_MZONE,0,1,nil,ATTRIBUTE_FIRE) then opt=opt+2 end
 	if opt==1 or opt==3 then
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+		local tg=Duel.GetMatchingGroup(c32542011.spfilter,tp,LOCATION_GRAVE,0,nil,Duel.GetTurnCount(),e,tp)
+		if ft<=0 or tg:GetCount()==0 or (ft>1 and tg:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
 		if ft>0 then
-			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local g=Duel.SelectMatchingCard(tp,c32542011.spfilter,tp,LOCATION_GRAVE,0,1,ft,nil,Duel.GetTurnCount(),e,tp)
+			local g=tg:Select(tp,ft,ft,nil)
 			if g:GetCount()>0 then
 				Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 				Duel.BreakEffect()
