@@ -46,5 +46,5 @@ function c54447022.spop(e,tp,eg,ep,ev,re,r,rp)
 		sg=sg:Select(tp,ft,ft,nil)
 	end
 	local ct=Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
-	Duel.SetLP(tp,lp-ct*1000)
+	Duel.SetLP(tp,Duel.GetLP(tp)-ct*1000)
 end
