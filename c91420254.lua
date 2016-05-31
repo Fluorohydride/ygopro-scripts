@@ -11,7 +11,7 @@ function c91420254.initial_effect(c)
 	e2:SetCondition(c91420254.sccon)
 	e2:SetOperation(c91420254.scop)
 	c:RegisterEffect(e2)
-	--to defence
+	--to defense
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(91420254,1))
 	e3:SetCategory(CATEGORY_POSITION)

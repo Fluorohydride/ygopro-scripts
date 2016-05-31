@@ -5,7 +5,7 @@ function c24150026.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_MUST_ATTACK)
 	c:RegisterEffect(e1)
-	--to defence
+	--to defense
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(24150026,0))
 	e3:SetCategory(CATEGORY_POSITION)
@@ -14,7 +14,7 @@ function c24150026.initial_effect(c)
 	e3:SetCondition(c24150026.poscon)
 	e3:SetOperation(c24150026.posop)
 	c:RegisterEffect(e3)
-	--to defence
+	--to defense
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e4:SetCode(EVENT_PHASE+PHASE_BATTLE)

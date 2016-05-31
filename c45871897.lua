@@ -1,6 +1,6 @@
 --ロストガーディアン
 function c45871897.initial_effect(c)
-	--base defence
+	--base defense
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_BASE_DEFENSE)

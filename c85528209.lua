@@ -3,7 +3,7 @@ function c85528209.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0x9a),1)
 	c:EnableReviveLimit()
-	--defence attack
+	--defense attack
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_DEFENSE_ATTACK)

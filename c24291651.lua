@@ -1,6 +1,6 @@
 --ガンバラナイト
 function c24291651.initial_effect(c)
-	--to defence
+	--to defense
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(24291651,0))
 	e1:SetCategory(CATEGORY_POSITION)

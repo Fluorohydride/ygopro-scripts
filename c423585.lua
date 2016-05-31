@@ -1,6 +1,6 @@
 --召喚僧サモンプリースト
 function c423585.initial_effect(c)
-	--to defence
+	--to defense
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(423585,0))
 	e1:SetCategory(CATEGORY_POSITION)

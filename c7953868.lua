@@ -1,6 +1,6 @@
 --蒼血鬼
 function c7953868.initial_effect(c)
-	--to defence
+	--to defense
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(7953868,0))
 	e1:SetCategory(CATEGORY_POSITION)

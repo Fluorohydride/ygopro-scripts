@@ -21,7 +21,7 @@ function c13108445.initial_effect(c)
 	e3:SetTarget(c13108445.thtg)
 	e3:SetOperation(c13108445.thop)
 	c:RegisterEffect(e3)
-	--to defence
+	--to defense
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e4:SetCode(EVENT_PHASE+PHASE_BATTLE)

@@ -1,6 +1,6 @@
 --エーリアン・サイコ
 function c58012107.initial_effect(c)
-	--to defence
+	--to defense
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(58012107,0))
 	e1:SetCategory(CATEGORY_POSITION)

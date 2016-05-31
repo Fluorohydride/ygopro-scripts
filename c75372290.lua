@@ -1,6 +1,6 @@
 --絶対防御将軍
 function c75372290.initial_effect(c)
-	--to defence
+	--to defense
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(75372290,0))
 	e1:SetCategory(CATEGORY_POSITION)

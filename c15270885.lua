@@ -26,7 +26,7 @@ function c15270885.initial_effect(c)
 	e5:SetCode(EFFECT_DIRECT_ATTACK)
 	e5:SetCondition(c15270885.dircon)
 	c:RegisterEffect(e5)
-	--to defence
+	--to defense
 	local e6=Effect.CreateEffect(c)
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e6:SetCode(EVENT_PHASE+PHASE_BATTLE)

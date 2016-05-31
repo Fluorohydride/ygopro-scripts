@@ -1,6 +1,6 @@
 --寡黙なるサイコプリースト
 function c25343017.initial_effect(c)
-	--to defence
+	--to defense
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(25343017,0))
 	e1:SetCategory(CATEGORY_POSITION)

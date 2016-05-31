@@ -5,7 +5,7 @@ function c32391631.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
-	--to defence
+	--to defense
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(32391631,0))
 	e2:SetCategory(CATEGORY_RECOVER)
