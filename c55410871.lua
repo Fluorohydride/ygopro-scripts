@@ -41,7 +41,7 @@ function c55410871.indval(e,re,tp)
 end
 function c55410871.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return ep~=tp and c==Duel.GetAttacker() and Duel.GetAttackTarget() and Duel.GetAttackTarget():IsDefencePos()
+	return ep~=tp and c==Duel.GetAttacker() and Duel.GetAttackTarget() and Duel.GetAttackTarget():IsDefensePos()
 end
 function c55410871.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChangeBattleDamage(ep,ev*2)

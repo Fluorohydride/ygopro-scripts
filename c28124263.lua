@@ -53,5 +53,5 @@ function c28124263.opa(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 end
 function c28124263.cond(e)
-	return e:GetHandler():IsDefencePos()
+	return e:GetHandler():IsDefensePos()
 end

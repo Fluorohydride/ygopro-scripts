@@ -37,12 +37,12 @@ function c47737087.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c47737087.dacon(e)
-	return e:GetHandler():IsDefencePos()
+	return e:GetHandler():IsDefensePos()
 end
 function c47737087.atkcon(e)
 	if Duel.GetCurrentPhase()~=PHASE_DAMAGE_CAL then return false end
 	local c=e:GetHandler()
-	return c:IsDefencePos() and c==Duel.GetAttacker() and Duel.GetAttackTarget()==nil and c:GetEffectCount(EFFECT_DIRECT_ATTACK)==1
+	return c:IsDefensePos() and c==Duel.GetAttacker() and Duel.GetAttackTarget()==nil and c:GetEffectCount(EFFECT_DIRECT_ATTACK)==1
 end
 function c47737087.atkval(e,c)
 	return c:GetAttack()/2

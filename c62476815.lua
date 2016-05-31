@@ -9,7 +9,7 @@ function c62476815.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c62476815.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsDefencePos()
+	if chk==0 then return e:GetHandler():IsDefensePos()
 		and e:GetHandler():IsReason(REASON_BATTLE) end
 	return true
 end

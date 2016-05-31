@@ -20,7 +20,7 @@ function c84824601.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c84824601.filter(c)
-	return c:IsDefenceBelow(1000) and c:IsRace(RACE_PLANT) and c:IsAbleToHand()
+	return c:IsDefenseBelow(1000) and c:IsRace(RACE_PLANT) and c:IsAbleToHand()
 end
 function c84824601.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

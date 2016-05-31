@@ -52,5 +52,5 @@ function c10591919.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 end
 function c10591919.cond(e)
-	return e:GetHandler():IsDefencePos()
+	return e:GetHandler():IsDefensePos()
 end

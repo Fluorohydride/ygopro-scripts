@@ -44,7 +44,7 @@ function c20920083.con(e)
 	return Duel.IsExistingMatchingCard(c20920083.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,2,nil)
 end
 function c20920083.tg(e,c)
-	return c:IsDefencePos()
+	return c:IsDefensePos()
 end
 function c20920083.indval(e,re,rp)
 	return rp~=e:GetHandlerPlayer()

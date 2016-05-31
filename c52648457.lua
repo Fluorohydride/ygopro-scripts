@@ -19,5 +19,5 @@ function c52648457.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c52648457.distg(e,c)
-	return c:IsDefencePos()
+	return c:IsDefensePos()
 end

@@ -112,7 +112,7 @@ function c64631466.atkval(e,c)
 end
 function c64631466.defval(e,c)
 	local ec=e:GetLabelObject():GetLabelObject()
-	local def=ec:GetTextDefence()
+	local def=ec:GetTextDefense()
 	if ec:IsFacedown() or bit.band(ec:GetOriginalType(),TYPE_MONSTER)==0 or def<0 then
 		return 0
 	else

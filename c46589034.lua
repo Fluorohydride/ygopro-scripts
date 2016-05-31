@@ -19,7 +19,7 @@ function c46589034.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c46589034.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0xba) and c:IsLevelAbove(1) and c:GetAttack()~=0 and c:GetDefence()~=0
+	return c:IsFaceup() and c:IsSetCard(0xba) and c:IsLevelAbove(1) and c:GetAttack()~=0 and c:GetDefense()~=0
 end
 function c46589034.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c46589034.cfilter(chkc) end
@@ -30,7 +30,7 @@ function c46589034.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c46589034.cfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	local tc=g:GetFirst()
 	local atk=tc:GetAttack()
-	local def=tc:GetDefence()
+	local def=tc:GetDefense()
 	local val=math.min(atk,def)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,0,tp,val)
@@ -40,7 +40,7 @@ function c46589034.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
 	local atk=tc:GetAttack()
-	local def=tc:GetDefence()
+	local def=tc:GetDefense()
 	local val=math.min(atk,def)
 	if Duel.Damage(tp,val,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then

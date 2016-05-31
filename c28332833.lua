@@ -16,7 +16,7 @@ function c28332833.thcon(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():IsReason(REASON_BATTLE)
 end
 function c28332833.filter(c)
-	return c:GetDefence()==200 and c:IsAbleToHand()
+	return c:GetDefense()==200 and c:IsAbleToHand()
 end
 function c28332833.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c28332833.filter,tp,LOCATION_DECK,0,1,nil) end

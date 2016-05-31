@@ -14,7 +14,7 @@ function c22765132.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end
 function c22765132.filter(c,def)
-	return c:IsSetCard(0x9f) and c:IsDefenceBelow(def) and c:IsAbleToHand()
+	return c:IsSetCard(0x9f) and c:IsDefenseBelow(def) and c:IsAbleToHand()
 end
 function c22765132.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local at=Duel.GetAttacker()
@@ -32,7 +32,7 @@ function c22765132.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g1=Duel.SelectMatchingCard(tp,c22765132.filter,tp,LOCATION_DECK,0,1,1,nil,val)
 		local sc=g1:GetFirst()
 		if sc then
-			val=val-sc:GetDefence()
+			val=val-sc:GetDefense()
 			if Duel.IsExistingMatchingCard(c22765132.filter,tp,LOCATION_DECK,0,1,sc,val)
 				and Duel.SelectYesNo(tp,aux.Stringid(22765132,0)) then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

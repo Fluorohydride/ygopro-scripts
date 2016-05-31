@@ -68,7 +68,7 @@ function c27551.desop2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c27551.descon3(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetFirstCardTarget()
-	return tc and eg:IsContains(tc) and tc:IsDefencePos()
+	return tc and eg:IsContains(tc) and tc:IsDefensePos()
 end
 function c27551.desop3(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

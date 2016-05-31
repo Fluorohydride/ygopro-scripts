@@ -49,5 +49,5 @@ function c62180201.atkval(e,c)
 	return c:GetAttack()/2
 end
 function c62180201.defval(e,c)
-	return c:GetDefence()/2
+	return c:GetDefense()/2
 end

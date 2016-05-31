@@ -32,7 +32,7 @@ function c77797992.targeta(e,c)
 	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsRace(RACE_WINDBEAST+RACE_PLANT+RACE_INSECT)
 end
 function c77797992.cond(e)
-	return e:GetHandler():IsDefencePos()
+	return e:GetHandler():IsDefensePos()
 end
 function c77797992.targetd(e,c)
 	return c:IsPosition(POS_FACEUP_DEFENCE) and c:IsRace(RACE_WINDBEAST+RACE_PLANT+RACE_INSECT)

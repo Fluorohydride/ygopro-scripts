@@ -29,7 +29,7 @@ function c13166204.activate(e,tp,eg,ep,ev,re,r,rp)
 	if re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(re:GetHandler(),REASON_EFFECT)~=0 then
 		Duel.BreakEffect()
 		local a=re:GetHandler():GetAttack()
-		local b=re:GetHandler():GetDefence()
+		local b=re:GetHandler():GetDefense()
 		if b>a then a=b end
 		if a<0 then a=0 end
 		if a>0 then Duel.Damage(1-tp,a,REASON_EFFECT) end

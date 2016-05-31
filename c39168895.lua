@@ -15,5 +15,5 @@ function c39168895.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c39168895.descon(e)
-	return e:GetHandler():IsDefencePos()
+	return e:GetHandler():IsDefensePos()
 end

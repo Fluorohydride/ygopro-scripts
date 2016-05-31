@@ -12,7 +12,7 @@ function c23297235.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c23297235.filter(c,e,tp)
-	return c:IsDefenceBelow(200) and c:IsAttribute(ATTRIBUTE_FIRE) and c:GetCode()~=23297235
+	return c:IsDefenseBelow(200) and c:IsAttribute(ATTRIBUTE_FIRE) and c:GetCode()~=23297235
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c23297235.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

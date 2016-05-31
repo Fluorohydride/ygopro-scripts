@@ -38,10 +38,10 @@ function c54773234.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e3,tp)
 	if a:IsRelateToBattle() then
 		local aa=a:GetTextAttack()
-		local ad=a:GetTextDefence()
+		local ad=a:GetTextDefense()
 		if a:IsImmuneToEffect(e) then
 			aa=a:GetBaseAttack()
-			ad=a:GetBaseDefence() end
+			ad=a:GetBaseDefense() end
 		if aa<0 then aa=0 end
 		if ad<0 then ad=0 end
 		local e4=Effect.CreateEffect(c)
@@ -63,10 +63,10 @@ function c54773234.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if d and d:IsRelateToBattle() then
 		local da=d:GetTextAttack()
-		local dd=d:GetTextDefence()
+		local dd=d:GetTextDefense()
 		if d:IsImmuneToEffect(e) then 
 			da=d:GetBaseAttack()
-			dd=d:GetBaseDefence() end
+			dd=d:GetBaseDefense() end
 		if da<0 then da=0 end
 		if dd<0 then dd=0 end
 		local e6=Effect.CreateEffect(c)

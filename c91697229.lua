@@ -55,11 +55,11 @@ function c91697229.poscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c91697229.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local g=Duel.GetMatchingGroup(Card.IsDefencePos,tp,LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(Card.IsDefensePos,tp,LOCATION_MZONE,0,nil)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,g:GetCount(),0,0)
 end
 function c91697229.posop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsDefencePos,tp,LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(Card.IsDefensePos,tp,LOCATION_MZONE,0,nil)
 	if g:GetCount()>0 then
 		Duel.ChangePosition(g,POS_FACEUP_ATTACK)
 	end

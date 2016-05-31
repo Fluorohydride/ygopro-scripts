@@ -39,7 +39,7 @@ function c33460840.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if not Duel.Equip(tp,tc,c,true) then return end
 	local atk=tc:GetTextAttack()/2
-	local def=tc:GetTextDefence()/2
+	local def=tc:GetTextDefense()/2
 	if atk<0 then atk=0 end
 	if def<0 then def=0 end
 	--Add Equip limit

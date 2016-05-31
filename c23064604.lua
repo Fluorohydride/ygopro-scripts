@@ -132,7 +132,7 @@ function c23064604.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,c23064604.cfilter,1,1,REASON_COST+REASON_DISCARD)
 end
 function c23064604.thfilter(c)
-	return c:IsAttackAbove(2400) and c:GetDefence()==1000 and c:IsAbleToHand()
+	return c:IsAttackAbove(2400) and c:GetDefense()==1000 and c:IsAbleToHand()
 end
 function c23064604.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c23064604.thfilter(chkc) end

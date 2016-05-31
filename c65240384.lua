@@ -17,7 +17,7 @@ function c65240384.initial_effect(c)
 end
 function c65240384.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c==Duel.GetAttackTarget() and c:IsDefencePos() and c:IsRelateToBattle() then
+	if c==Duel.GetAttackTarget() and c:IsDefensePos() and c:IsRelateToBattle() then
 		Duel.ChangePosition(c,POS_FACEUP_ATTACK)
 	end
 end

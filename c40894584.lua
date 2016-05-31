@@ -33,7 +33,7 @@ function c40894584.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function c40894584.filter(c,e,tp)
-	return c:GetAttack()==1500 and c:GetDefence()==200 and not c:IsCode(40894584) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:GetAttack()==1500 and c:GetDefense()==200 and not c:IsCode(40894584) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c40894584.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

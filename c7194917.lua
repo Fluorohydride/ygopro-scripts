@@ -65,7 +65,7 @@ function c7194917.poscon2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c7194917.posop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToBattle() and c:IsDefencePos() then
+	if c:IsRelateToBattle() and c:IsDefensePos() then
 		Duel.ChangePosition(c,POS_FACEUP_ATTACK)
 	end
 end

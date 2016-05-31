@@ -53,7 +53,7 @@ function c83283063.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsReason(REASON_DESTROY) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function c83283063.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_ZOMBIE) and c:GetDefence()==0
+	return c:IsFaceup() and c:IsRace(RACE_ZOMBIE) and c:GetDefense()==0
 end
 function c83283063.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_REMOVED) and c83283063.filter(chkc) end

@@ -53,8 +53,8 @@ function c4483989.atkop(e,tp,eg,ep,ev,re,r,rp)
 		local res=Duel.TossCoin(1-tp,1)
 		if coin~=res then
 			Duel.ChangePosition(at,POS_FACEUP_ATTACK)
-		elseif a:GetAttack()>at:GetDefence() then
-			Duel.Damage(tp,a:GetAttack()-at:GetDefence(),REASON_EFFECT)
+		elseif a:GetAttack()>at:GetDefense() then
+			Duel.Damage(tp,a:GetAttack()-at:GetDefense(),REASON_EFFECT)
 		end
 	end
 end

@@ -60,7 +60,7 @@ end
 function c6691855.defcon(e)
 	if Duel.GetCurrentPhase()~=PHASE_DAMAGE_CAL then return false end
 	local eq=e:GetHandler():GetEquipTarget()
-	return (eq==Duel.GetAttacker() or eq==Duel.GetAttackTarget()) and eq:IsDefencePos()
+	return (eq==Duel.GetAttacker() or eq==Duel.GetAttackTarget()) and eq:IsDefensePos()
 end
 function c6691855.defval(e,c)
 	return c:GetAttack()

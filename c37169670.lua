@@ -34,7 +34,7 @@ function c37169670.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local d=Duel.GetAttackTarget()
 	if d==c then d=Duel.GetAttacker() end
-	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,d:GetDefence())
+	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,d:GetDefense())
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,d:GetAttack())
 end
 function c37169670.damop(e,tp,eg,ep,ev,re,r,rp)

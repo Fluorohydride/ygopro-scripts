@@ -31,7 +31,7 @@ function c28016193.initial_effect(c)
 end
 function c28016193.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return ep~=tp and tc:IsSetCard(0xe1) and tc:GetBattleTarget()~=nil and tc:GetBattleTarget():IsDefencePos()
+	return ep~=tp and tc:IsSetCard(0xe1) and tc:GetBattleTarget()~=nil and tc:GetBattleTarget():IsDefensePos()
 end
 function c28016193.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChangeBattleDamage(ep,ev*2)

@@ -16,16 +16,16 @@ function c43661068.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c43661068.tfilter,tp,LOCATION_MZONE,0,1,1,nil,tp)
 end
 function c43661068.filter(c,atk,def)
-	return c:IsFaceup() and c:GetLevel()>0 and (c:GetAttack()==atk or c:GetDefence()==def)
+	return c:IsFaceup() and c:GetLevel()>0 and (c:GetAttack()==atk or c:GetDefense()==def)
 end
 function c43661068.tfilter(c,tp)
 	return c:IsFaceup() and c:GetLevel()>0
-		and Duel.IsExistingMatchingCard(c43661068.filter,tp,LOCATION_MZONE,0,1,c,c:GetAttack(),c:GetDefence())
+		and Duel.IsExistingMatchingCard(c43661068.filter,tp,LOCATION_MZONE,0,1,c,c:GetAttack(),c:GetDefense())
 end
 function c43661068.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
-		local g=Duel.GetMatchingGroup(c43661068.filter,tp,LOCATION_MZONE,0,tc,tc:GetAttack(),tc:GetDefence())
+		local g=Duel.GetMatchingGroup(c43661068.filter,tp,LOCATION_MZONE,0,tc,tc:GetAttack(),tc:GetDefense())
 		local lv=tc:GetLevel()
 		local lc=g:GetFirst()
 		while lc do

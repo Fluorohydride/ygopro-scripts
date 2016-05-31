@@ -14,7 +14,7 @@ function c20522190.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer()
 end
 function c20522190.filter(c)
-	return c:IsDefencePos() and c:IsAbleToRemove()
+	return c:IsDefensePos() and c:IsAbleToRemove()
 end
 function c20522190.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c20522190.filter,tp,0,LOCATION_MZONE,1,nil) end

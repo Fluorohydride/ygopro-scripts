@@ -20,7 +20,7 @@ function c36407615.atop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	while tc do
 		local atk=tc:GetAttack()
-		local def=tc:GetDefence()
+		local def=tc:GetDefense()
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)

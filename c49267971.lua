@@ -35,7 +35,7 @@ function c49267971.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
-		e1:SetValue(tc1:GetDefence())
+		e1:SetValue(tc1:GetDefense())
 		tc2:RegisterEffect(e1)
 	end
 end

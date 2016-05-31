@@ -30,7 +30,7 @@ function c66331855.cona(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsDisabled() and e:GetHandler():IsAttackPos()
 end
 function c66331855.cond(e,tp,eg,ep,ev,re,r,rp)
-	return not e:GetHandler():IsDisabled() and e:GetHandler():IsDefencePos()
+	return not e:GetHandler():IsDisabled() and e:GetHandler():IsDefensePos()
 end
 function c66331855.costa(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,aux.TRUE,1,nil) end

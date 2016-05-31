@@ -11,7 +11,7 @@ function c81380218.initial_effect(c)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
 	e2:SetCode(EFFECT_UPDATE_DEFENCE)
-	e2:SetTarget(aux.TargetBoolFunction(Card.IsDefencePos))
+	e2:SetTarget(aux.TargetBoolFunction(Card.IsDefensePos))
 	e2:SetValue(500)
 	c:RegisterEffect(e2)
 end

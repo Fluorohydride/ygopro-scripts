@@ -18,7 +18,7 @@ function c76075810.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_EFFECT)
 end
 function c76075810.filter(c,atk)
-	return c:IsFaceup() and c:GetDefence()<atk and c:IsDestructable()
+	return c:IsFaceup() and c:GetDefense()<atk and c:IsDestructable()
 end
 function c76075810.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local atk=e:GetHandler():GetAttack()

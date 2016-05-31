@@ -21,5 +21,5 @@ function c55119278.cona(e)
 	return e:GetHandler():IsAttackPos()
 end
 function c55119278.cond(e)
-	return e:GetHandler():IsDefencePos()
+	return e:GetHandler():IsDefensePos()
 end

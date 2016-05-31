@@ -15,7 +15,7 @@ function c48800175.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
 function c48800175.filter(c)
-	return c:IsRace(RACE_DRAGON) and c:IsAttackAbove(3000) and c:IsDefenceBelow(2500) and c:IsAbleToHand()
+	return c:IsRace(RACE_DRAGON) and c:IsAttackAbove(3000) and c:IsDefenseBelow(2500) and c:IsAbleToHand()
 end
 function c48800175.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c48800175.filter,tp,LOCATION_DECK,0,1,nil) end

@@ -11,5 +11,5 @@ function c86952477.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c86952477.lvcon(e)
-	return e:GetHandler():IsDefencePos()
+	return e:GetHandler():IsDefensePos()
 end

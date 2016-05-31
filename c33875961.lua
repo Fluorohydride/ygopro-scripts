@@ -26,7 +26,7 @@ function c33875961.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c33875961.addccon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp and e:GetHandler():IsDefencePos()
+	return Duel.GetTurnPlayer()==tp and e:GetHandler():IsDefensePos()
 end
 function c33875961.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

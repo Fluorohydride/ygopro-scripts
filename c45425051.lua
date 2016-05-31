@@ -15,7 +15,7 @@ function c45425051.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c45425051.con(e)
-	return e:GetHandler():IsDefencePos()
+	return e:GetHandler():IsDefensePos()
 end
 function c45425051.tg(e,c)
 	return c:IsRace(RACE_PLANT)

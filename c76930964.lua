@@ -57,7 +57,7 @@ function c76930964.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c76930964.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsDefencePos() then return end
+	if not c:IsRelateToEffect(e) or c:IsDefensePos() then return end
 	Duel.ChangePosition(c,POS_FACEUP_DEFENCE)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end

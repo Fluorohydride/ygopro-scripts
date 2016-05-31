@@ -59,12 +59,12 @@ function c5126490.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetAttackTarget()~=nil end
 	local bc=e:GetHandler():GetBattleTarget()
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,bc:GetAttack())
-	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,bc:GetDefence())
+	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,bc:GetDefense())
 end
 function c5126490.damop(e,tp,eg,ep,ev,re,r,rp)
 	local bc=e:GetHandler():GetBattleTarget()
 	local atk=bc:GetAttack()
-	local def=bc:GetDefence()
+	local def=bc:GetDefense()
 	if atk<0 then atk=0 end
 	if def<0 then def=0 end
 	Duel.Damage(1-tp,atk,REASON_EFFECT,true)

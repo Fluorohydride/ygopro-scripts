@@ -27,7 +27,7 @@ function c75198893.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) then
 		local code=tc:GetOriginalCode()
 		local ba=tc:GetBaseAttack()
-		local bd=tc:GetBaseDefence()
+		local bd=tc:GetBaseDefense()
 		local at=tc:GetAttribute()
 		local lv=tc:GetLevel()
 		local e1=Effect.CreateEffect(c)

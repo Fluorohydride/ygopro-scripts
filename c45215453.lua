@@ -17,7 +17,7 @@ function c45215453.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c45215453.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp and e:GetHandler():IsDefencePos()
+	return Duel.GetTurnPlayer()==tp and e:GetHandler():IsDefensePos()
 end
 function c45215453.filter(c)
 	return c:IsType(TYPE_EQUIP) and c:IsAbleToHand()

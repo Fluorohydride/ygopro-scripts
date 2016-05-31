@@ -67,7 +67,7 @@ function c23756165.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
 			local atk=tc:GetTextAttack()
-			local def=tc:GetTextDefence()
+			local def=tc:GetTextDefense()
 			if atk<0 then atk=0 end
 			if def<0 then def=0 end
 			if not Duel.Equip(tp,tc,c,false) then return end

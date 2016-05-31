@@ -29,7 +29,7 @@ function c94801854.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(sg,REASON_COST)
 end
 function c94801854.spfilter1(c,e,tp)
-	return c:IsRace(RACE_ZOMBIE) and c:IsType(TYPE_TUNER) and c:GetDefence()==0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_ZOMBIE) and c:IsType(TYPE_TUNER) and c:GetDefense()==0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c94801854.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1

@@ -71,7 +71,7 @@ function c15521027.opa(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ShuffleDeck(tp)
 end
 function c15521027.cond(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsDefencePos()
+	return e:GetHandler():IsDefensePos()
 end
 function c15521027.tgd(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0 end

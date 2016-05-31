@@ -41,7 +41,7 @@ function c55991637.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Damage(p,d,REASON_EFFECT)
 end
 function c55991637.dfilter(c)
-	return c:IsFaceup() and c:IsDefenceBelow(800) and c:IsDestructable()
+	return c:IsFaceup() and c:IsDefenseBelow(800) and c:IsDestructable()
 end
 function c55991637.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c55991637.dfilter(chkc) end

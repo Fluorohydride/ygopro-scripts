@@ -21,9 +21,9 @@ function c94535485.atlimit(e,c)
 	return c~=e:GetHandler()
 end
 function c94535485.deffilter(c)
-	return c:GetBaseDefence()>=0 and c:IsPosition(POS_FACEUP_DEFENCE)
+	return c:GetBaseDefense()>=0 and c:IsPosition(POS_FACEUP_DEFENCE)
 end
 function c94535485.defval(e,c)
 	local g=Duel.GetMatchingGroup(c94535485.deffilter,c:GetControler(),LOCATION_MZONE,0,c)
-	return g:GetSum(Card.GetBaseDefence)
+	return g:GetSum(Card.GetBaseDefense)
 end

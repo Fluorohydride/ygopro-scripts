@@ -61,7 +61,7 @@ function c25935625.spfilter1(c,e,tp)
 		and Duel.IsExistingMatchingCard(c25935625.spfilter2,tp,LOCATION_DECK,0,1,c,e,tp)
 end
 function c25935625.spfilter2(c,e,tp)
-	return c:IsSetCard(0x9e) and c:GetDefence()==0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x9e) and c:GetDefense()==0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c25935625.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)

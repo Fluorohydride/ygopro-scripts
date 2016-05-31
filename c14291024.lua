@@ -76,7 +76,7 @@ function c14291024.atkval(e,c)
 	return c:GetFirstCardTarget():GetAttack()
 end
 function c14291024.defval(e,c)
-	return c:GetFirstCardTarget():GetDefence()
+	return c:GetFirstCardTarget():GetDefense()
 end
 function c14291024.sdcon(e)
 	return e:GetHandler():GetFirstCardTarget()==nil and e:GetHandler():GetFlagEffect(14291024)~=0

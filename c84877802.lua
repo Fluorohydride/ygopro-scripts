@@ -48,7 +48,7 @@ function c84877802.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c84877802.atkval(e,c)
-	if c:IsDefencePos() then return 0 else return c:GetBaseDefence() end
+	if c:IsDefensePos() then return 0 else return c:GetBaseDefense() end
 end
 function c84877802.defval(e,c)
 	if c:IsAttackPos() then return 0 else return c:GetBaseAttack() end

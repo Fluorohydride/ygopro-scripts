@@ -36,7 +36,7 @@ function c22160245.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	local dam=bc:GetAttack()
-	if bc:GetAttack() < bc:GetDefence() then dam=bc:GetDefence() end
+	if bc:GetAttack() < bc:GetDefense() then dam=bc:GetDefense() end
 	if dam<0 then dam=0 end
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(dam)

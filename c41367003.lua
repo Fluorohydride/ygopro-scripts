@@ -12,7 +12,7 @@ function c41367003.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c41367003.filter(c,e,tp)
-	return c:IsPosition(POS_FACEUP_DEFENCE) and c:IsDefenceBelow(1000)
+	return c:IsPosition(POS_FACEUP_DEFENCE) and c:IsDefenseBelow(1000)
 end
 function c41367003.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c41367003.filter(chkc,e,tp) end

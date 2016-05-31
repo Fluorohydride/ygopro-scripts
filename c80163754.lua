@@ -16,18 +16,18 @@ function c80163754.cfilter(c,def)
 	return c:IsRace(RACE_DRAGON) and c:IsAttackAbove(def)
 end
 function c80163754.filter(c,atk)
-	return c:IsFaceup() and c:IsDestructable() and (not atk or c:IsDefenceBelow(atk))
+	return c:IsFaceup() and c:IsDestructable() and (not atk or c:IsDefenseBelow(atk))
 end
 function c80163754.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local g=Duel.GetMatchingGroup(c80163754.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		if g:GetCount()==0 then return false end
-		local mg,mdef=g:GetMinGroup(Card.GetDefence)
+		local mg,mdef=g:GetMinGroup(Card.GetDefense)
 		e:SetLabel(0)
 		return Duel.CheckReleaseGroup(tp,c80163754.cfilter,1,nil,mdef)
 	end
 	local g=Duel.GetMatchingGroup(c80163754.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	local mg,mdef=g:GetMinGroup(Card.GetDefence)
+	local mg,mdef=g:GetMinGroup(Card.GetDefense)
 	local rg=Duel.SelectReleaseGroup(tp,c80163754.cfilter,1,1,nil,mdef)
 	e:SetLabel(rg:GetFirst():GetAttack())
 	Duel.Release(rg,REASON_COST)

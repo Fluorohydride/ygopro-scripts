@@ -36,7 +36,7 @@ function c39343610.atkop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_SET_DEFENCE_FINAL)
-		e2:SetValue(c:GetBaseDefence()*2)
+		e2:SetValue(c:GetBaseDefense()*2)
 		e2:SetReset(RESET_EVENT+0x1ff0000)
 		c:RegisterEffect(e2)
 	end

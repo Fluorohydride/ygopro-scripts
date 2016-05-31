@@ -21,14 +21,14 @@ function c12014404.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c12014404.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	if e:GetHandler():IsDefencePos() then
+	if e:GetHandler():IsDefensePos() then
 		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,800)
 	end
 end
 function c12014404.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if c:IsDefencePos() then
+	if c:IsDefensePos() then
 		Duel.Damage(1-tp,800,REASON_EFFECT)
 	elseif c:IsPosition(POS_FACEUP_ATTACK) then
 		local e1=Effect.CreateEffect(c)

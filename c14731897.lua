@@ -28,7 +28,7 @@ function c14731897.activate(e,tp,eg,ep,ev,re,r,rp)
 		local def=0
 		local sc=g:GetFirst()
 		while sc do
-			local cdef=sc:GetBaseDefence()
+			local cdef=sc:GetBaseDefense()
 			if cdef<0 then cdef=0 end
 			def=def+cdef
 			sc=g:GetNext()

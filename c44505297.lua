@@ -59,7 +59,7 @@ function c44505297.eqop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetReset(RESET_EVENT+0x1fe0000)
 	e2:SetValue(atk)
 	tc:RegisterEffect(e2)
-	local def=tc:GetTextDefence()/2
+	local def=tc:GetTextDefense()/2
 	if def<0 then def=0 end
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)

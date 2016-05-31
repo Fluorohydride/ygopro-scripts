@@ -27,7 +27,7 @@ function c31077447.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sc=g:GetFirst()
 	if sc and Duel.SendtoGrave(sc,REASON_EFFECT)~=0 and sc:IsLocation(LOCATION_GRAVE) then
 		Duel.BreakEffect()
-		local val=math.max(0,sc:GetAttack(),sc:GetDefence())
+		local val=math.max(0,sc:GetAttack(),sc:GetDefense())
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

@@ -59,7 +59,7 @@ function c22382087.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_SUMMON)
 end
 function c22382087.filter(c)
-	return c:GetAttack()==800 and c:GetDefence()==1000 and not c:IsCode(22382087) and c:IsAbleToHand()
+	return c:GetAttack()==800 and c:GetDefense()==1000 and not c:IsCode(22382087) and c:IsAbleToHand()
 end
 function c22382087.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c22382087.filter,tp,LOCATION_DECK,0,1,nil) end

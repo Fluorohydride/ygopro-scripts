@@ -17,7 +17,7 @@ function c97001138.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ph==PHASE_MAIN1 or (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE) or ph==PHASE_MAIN2
 end
 function c97001138.thfilter(c)
-	return c:IsAttackAbove(2400) and c:GetDefence()==1000 and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsAttackAbove(2400) and c:GetDefense()==1000 and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c97001138.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c97001138.thfilter(chkc) end
@@ -27,7 +27,7 @@ function c97001138.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
 function c97001138.sumfilter(c)
-	return c:IsAttackAbove(2400) and c:GetDefence()==1000 and c:IsSummonable(true,nil,1)
+	return c:IsAttackAbove(2400) and c:GetDefense()==1000 and c:IsSummonable(true,nil,1)
 end
 function c97001138.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

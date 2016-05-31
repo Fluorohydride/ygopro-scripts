@@ -128,6 +128,6 @@ function c7394770.atkop(e,tp,eg,ep,ev,re,r,rp)
 	tc:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_UPDATE_DEFENCE)
-	e2:SetValue(tc:GetBaseDefence())
+	e2:SetValue(tc:GetBaseDefense())
 	tc:RegisterEffect(e2)
 end

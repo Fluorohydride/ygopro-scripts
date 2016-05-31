@@ -10,7 +10,7 @@ function c74845897.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c74845897.filter(c,e,tp)
-	return c:GetDefence()==200 and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:GetDefense()==200 and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c74845897.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 

@@ -20,7 +20,7 @@ function c29590905.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Duel.GetMatchingGroup(Card.IsPosition,tp,LOCATION_MZONE,0,nil,POS_FACEUP_DEFENCE)
 	if g1:GetCount()==0 or g2:GetCount()==0 then return end
 	local ga=g1:GetMinGroup(Card.GetAttack)
-	local gd=g2:GetMinGroup(Card.GetDefence)
+	local gd=g2:GetMinGroup(Card.GetDefense)
 	if ga:GetCount()>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(29590905,0))
 		ga=ga:Select(tp,1,1,nil)

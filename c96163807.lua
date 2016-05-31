@@ -20,7 +20,7 @@ function c96163807.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c96163807.thfilter(c)
-	return c:GetDefence()==0 and c:IsRace(RACE_ZOMBIE) and c:IsAbleToHand()
+	return c:GetDefense()==0 and c:IsRace(RACE_ZOMBIE) and c:IsAbleToHand()
 end
 function c96163807.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c96163807.thfilter(chkc) end

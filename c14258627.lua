@@ -58,7 +58,7 @@ function c14258627.atkval(e,c)
 	return c:GetAttack()/2
 end
 function c14258627.defval(e,c)
-	return c:GetDefence()/2
+	return c:GetDefense()/2
 end
 function c14258627.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp

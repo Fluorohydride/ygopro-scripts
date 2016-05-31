@@ -26,7 +26,7 @@ function c71578874.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c71578874.filter(c)
-	return c:IsFaceup() and c:GetAttack()~=c:GetDefence()
+	return c:IsFaceup() and c:GetAttack()~=c:GetDefense()
 		and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
 end
 function c71578874.adtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -39,7 +39,7 @@ function c71578874.adop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
-		local val=math.min(tc:GetAttack(),tc:GetDefence())
+		local val=math.min(tc:GetAttack(),tc:GetDefense())
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)

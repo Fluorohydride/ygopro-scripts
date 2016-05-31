@@ -15,7 +15,7 @@ function c28120197.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c28120197.dcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:GetFirst():IsDefencePos() and eg:GetFirst():IsRace(RACE_ROCK)
+	return eg:GetFirst():IsDefensePos() and eg:GetFirst():IsRace(RACE_ROCK)
 end
 function c28120197.dop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChangeBattleDamage(ep,ev*2)

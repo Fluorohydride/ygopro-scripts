@@ -60,7 +60,7 @@ function c88071625.valcheck(e,c)
 	local def=0
 	while tc do
 		local catk=tc:GetTextAttack()
-		local cdef=tc:GetTextDefence()
+		local cdef=tc:GetTextDefense()
 		atk=atk+(catk>=0 and catk or 0)
 		def=def+(cdef>=0 and cdef or 0)
 		tc=g:GetNext()

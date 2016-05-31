@@ -30,5 +30,5 @@ function c88724332.deftg(e,c)
 		and bit.band(c:GetSummonLocation(),LOCATION_DECK+LOCATION_EXTRA)~=0
 end
 function c88724332.defval(e,c)
-	return -c:GetBaseDefence()
+	return -c:GetBaseDefense()
 end

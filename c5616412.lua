@@ -14,7 +14,7 @@ function c5616412.condition(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	return d and a:IsControler(1-tp) and a:IsRelateToBattle()
-		and d:IsDefencePos() and d:IsRelateToBattle() and d:GetDefence()>a:GetAttack()
+		and d:IsDefensePos() and d:IsRelateToBattle() and d:GetDefense()>a:GetAttack()
 end
 function c5616412.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetAttacker():IsDestructable() end

@@ -12,7 +12,7 @@ function c80555062.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c80555062.con(e)
-	return e:GetHandler():IsDefencePos()
+	return e:GetHandler():IsDefensePos()
 end
 function c80555062.target(e,c)
 	return c~=e:GetHandler() and c:IsSetCard(0x88)

@@ -30,7 +30,7 @@ end
 function c49328340.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	local bc=tc:GetBattleTarget()
-	return tc:IsControler(tp) and bc and bc:IsDefencePos() and tc:IsCode(66889139)
+	return tc:IsControler(tp) and bc and bc:IsDefensePos() and tc:IsCode(66889139)
 end
 function c49328340.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

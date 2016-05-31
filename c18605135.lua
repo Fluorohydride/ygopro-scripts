@@ -36,7 +36,7 @@ function c18605135.actcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c18605135.abdcon(e)
 	local at=Duel.GetAttackTarget()
-	return c18605135.check() and (at==nil or at:IsAttackPos() or Duel.GetAttacker():GetAttack()>at:GetDefence())
+	return c18605135.check() and (at==nil or at:IsAttackPos() or Duel.GetAttacker():GetAttack()>at:GetDefense())
 end
 function c18605135.sdcon(e)
 	return not c18605135.check()

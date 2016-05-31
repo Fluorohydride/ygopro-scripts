@@ -25,7 +25,7 @@ end
 function c93599951.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		if tc:IsDefencePos() then
+		if tc:IsDefensePos() then
 			Duel.ChangePosition(tc,POS_FACEUP_ATTACK)
 		end
 		Duel.ChangeAttacker(tc)

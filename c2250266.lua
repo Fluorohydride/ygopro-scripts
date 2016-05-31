@@ -68,7 +68,7 @@ function c2250266.atlimit(e,c)
 	return c~=e:GetHandler()
 end
 function c2250266.cond(e)
-	return not e:GetHandler():IsDisabled() and e:GetHandler():IsDefencePos()
+	return not e:GetHandler():IsDisabled() and e:GetHandler():IsDefensePos()
 end
 function c2250266.filter(c)
 	return c:IsFaceup() and c:IsAttackPos()

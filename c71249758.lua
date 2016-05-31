@@ -24,7 +24,7 @@ end
 function c71249758.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		local def=tc:GetBaseDefence()
+		local def=tc:GetBaseDefense()
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_DEFENCE_FINAL)

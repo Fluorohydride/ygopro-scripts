@@ -23,7 +23,7 @@ function c96700602.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=eg:GetFirst()
 	if tc:IsLocation(LOCATION_MZONE) then
 		Duel.SetTargetCard(tc)
-		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,tc:GetDefence())
+		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,tc:GetDefense())
 	end
 end
 function c96700602.operation(e,tp,eg,ep,ev,re,r,rp)
@@ -31,7 +31,7 @@ function c96700602.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAttackPos,tp,0,LOCATION_MZONE,nil)
 	if Duel.ChangePosition(g,POS_FACEUP_DEFENCE,POS_FACEDOWN_DEFENCE,0,0)~=0 then
 		if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-			Duel.Damage(1-tp,tc:GetDefence(),REASON_EFFECT)
+			Duel.Damage(1-tp,tc:GetDefense(),REASON_EFFECT)
 		end
 	end
 end

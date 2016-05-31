@@ -21,10 +21,10 @@ end
 function c60930169.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local t=Duel.GetAttackTarget()
-	if a and a:IsDefencePos() and a:GetDefence()>a:GetAttack() and a:IsStatus(STATUS_BATTLE_DESTROYED) then
+	if a and a:IsDefensePos() and a:GetDefense()>a:GetAttack() and a:IsStatus(STATUS_BATTLE_DESTROYED) then
 		a:RegisterFlagEffect(60930169,RESET_PHASE+PHASE_DAMAGE,0,1)
 	end
-	if t and t:IsDefencePos() and t:GetDefence()>t:GetAttack() and t:IsStatus(STATUS_BATTLE_DESTROYED) then
+	if t and t:IsDefensePos() and t:GetDefense()>t:GetAttack() and t:IsStatus(STATUS_BATTLE_DESTROYED) then
 		t:RegisterFlagEffect(60930169,RESET_PHASE+PHASE_DAMAGE,0,1)
 	end
 end

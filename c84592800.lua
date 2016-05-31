@@ -19,7 +19,7 @@ function c84592800.cona(e)
 	return e:GetHandler():IsAttackPos()
 end
 function c84592800.cond(e)
-	return e:GetHandler():IsDefencePos()
+	return e:GetHandler():IsDefensePos()
 end
 function c84592800.val(e,c)
 	return c:GetEquipCount()*800

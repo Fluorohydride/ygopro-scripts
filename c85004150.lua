@@ -123,13 +123,13 @@ end
 function c85004150.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c85004150.desfilter,tp,0,LOCATION_MZONE,1,nil) end
 	local g=Duel.GetMatchingGroup(c85004150.desfilter,tp,0,LOCATION_MZONE,nil)
-	local dg=g:GetMaxGroup(Card.GetDefence)
+	local dg=g:GetMaxGroup(Card.GetDefense)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,dg,dg:GetCount(),0,0)
 end
 function c85004150.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c85004150.desfilter,tp,0,LOCATION_MZONE,nil)
 	if g:GetCount()>0 then
-		local dg=g:GetMaxGroup(Card.GetDefence)
+		local dg=g:GetMaxGroup(Card.GetDefense)
 		Duel.Destroy(dg,REASON_EFFECT)
 	end
 end

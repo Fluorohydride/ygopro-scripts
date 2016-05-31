@@ -116,12 +116,12 @@ function c75180828.atkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c75180828.destg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local d=Duel.GetAttackTarget()
-	if chk ==0 then	return Duel.GetAttacker()==e:GetHandler() and d~=nil and d:IsDefencePos() end
+	if chk ==0 then	return Duel.GetAttacker()==e:GetHandler() and d~=nil and d:IsDefensePos() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,d,1,0,0)
 end
 function c75180828.desop2(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
-	if d~=nil and d:IsRelateToBattle() and d:IsDefencePos() then
+	if d~=nil and d:IsRelateToBattle() and d:IsDefensePos() then
 		Duel.Destroy(d,REASON_EFFECT)
 	end
 end

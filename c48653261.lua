@@ -30,7 +30,7 @@ function c48653261.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c48653261.filter(c,fid)
-	return c:GetRealFieldID()==fid and c:IsDefencePos() and c:IsPreviousPosition(POS_ATTACK)
+	return c:GetRealFieldID()==fid and c:IsDefensePos() and c:IsPreviousPosition(POS_ATTACK)
 end
 function c48653261.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c48653261.filter,1,nil,e:GetLabel())

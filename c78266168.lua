@@ -34,7 +34,7 @@ function c78266168.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c78266168.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttackTarget()==e:GetHandler() and e:GetHandler():GetBattlePosition()==POS_FACEDOWN_DEFENCE
-		and Duel.GetAttacker():GetAttack()<e:GetHandler():GetDefence()
+		and Duel.GetAttacker():GetAttack()<e:GetHandler():GetDefense()
 end
 function c78266168.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
