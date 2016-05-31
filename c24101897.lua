@@ -45,7 +45,7 @@ end
 function c24101897.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		Duel.ChangePosition(c,POS_FACEDOWN_DEFENCE)
+		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end
 function c24101897.condition(e,tp,eg,ep,ev,re,r,rp)
@@ -63,5 +63,5 @@ end
 function c24101897.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsExistingMatchingCard(c24101897.sfilter,tp,LOCATION_MZONE,0,1,e:GetHandler()) then return end
 	local g=eg:Filter(c24101897.filter,nil,e)
-	Duel.ChangePosition(g,POS_FACEDOWN_DEFENCE)
+	Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
 end

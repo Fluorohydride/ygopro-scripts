@@ -35,7 +35,7 @@ function c17810268.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c17810268.sdcon(e)
-	return e:GetHandler():IsPosition(POS_FACEUP_DEFENCE)
+	return e:GetHandler():IsPosition(POS_FACEUP_DEFENSE)
 end
 function c17810268.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x18)

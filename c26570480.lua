@@ -39,14 +39,14 @@ end
 function c26570480.cfilter(c,tp)
 	local np=c:GetPosition()
 	local pp=c:GetPreviousPosition()
-	return ((np==POS_FACEUP_DEFENCE and pp==POS_FACEUP_ATTACK) or (bit.band(pp,POS_DEFENCE)~=0 and np==POS_FACEUP_ATTACK))
+	return ((np==POS_FACEUP_DEFENSE and pp==POS_FACEUP_ATTACK) or (bit.band(pp,POS_DEFENSE)~=0 and np==POS_FACEUP_ATTACK))
 		and c:IsControler(tp) and c:IsSetCard(0x71)
 end
 function c26570480.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c26570480.cfilter,1,nil,tp)
 end
 function c26570480.filter(c)
-	return not c:IsPosition(POS_FACEUP_DEFENCE)
+	return not c:IsPosition(POS_FACEUP_DEFENSE)
 end
 function c26570480.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c26570480.filter(chkc) end
@@ -57,8 +57,8 @@ end
 function c26570480.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and not tc:IsPosition(POS_FACEUP_DEFENCE) then
-		Duel.ChangePosition(tc,POS_FACEUP_DEFENCE)
+	if tc:IsRelateToEffect(e) and not tc:IsPosition(POS_FACEUP_DEFENSE) then
+		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)
 		if not tc:IsSetCard(0x71) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

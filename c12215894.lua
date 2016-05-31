@@ -16,7 +16,7 @@ function c12215894.initial_effect(c)
 	c:RegisterEffect(e2)
 	--defup
 	local e3=e2:Clone()
-	e3:SetCode(EFFECT_UPDATE_DEFENCE)
+	e3:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e3)
 	--draw
 	local e4=Effect.CreateEffect(c)

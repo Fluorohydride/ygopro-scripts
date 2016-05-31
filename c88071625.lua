@@ -78,7 +78,7 @@ function c88071625.valcheck(e,c)
 		c:RegisterEffect(e1)
 		--def continuous effect
 		local e2=e1:Clone()
-		e2:SetCode(EFFECT_UPDATE_DEFENCE)
+		e2:SetCode(EFFECT_UPDATE_DEFENSE)
 		e2:SetValue(def)
 		c:RegisterEffect(e2)
 	end

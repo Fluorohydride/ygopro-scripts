@@ -36,7 +36,7 @@ function c13474291.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c13474291.sdcon(e)
-	return e:GetHandler():IsPosition(POS_FACEUP_DEFENCE)
+	return e:GetHandler():IsPosition(POS_FACEUP_DEFENSE)
 end
 function c13474291.cfilter(c)
 	return c:IsSetCard(0x18) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()

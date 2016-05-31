@@ -56,7 +56,7 @@ function c59463312.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		local tc=Duel.GetFirstTarget()
 		if tc:IsRelateToEffect(e) then
-			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 		end
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())

@@ -48,7 +48,7 @@ function c13857930.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	else
 		if c:IsRelateToEffect(e) and c:IsFaceup() then
-			Duel.ChangePosition(c,POS_FACEUP_DEFENCE)
+			Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 		end
 	end
 	Duel.ShuffleHand(tp)

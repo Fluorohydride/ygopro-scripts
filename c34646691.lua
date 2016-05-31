@@ -33,5 +33,5 @@ end
 function c34646691.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=eg:Filter(c34646691.filter,nil,e)
-	Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
+	Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 end

@@ -16,7 +16,7 @@ function c18372968.cfilter(c)
 end
 function c18372968.descon(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
-	return e:GetHandler()==Duel.GetAttacker() and d and d:IsPosition(POS_FACEDOWN_DEFENCE)
+	return e:GetHandler()==Duel.GetAttacker() and d and d:IsPosition(POS_FACEDOWN_DEFENSE)
 		and Duel.IsExistingMatchingCard(c18372968.cfilter,tp,LOCATION_MZONE,0,1,e:GetHandler())
 end
 function c18372968.destg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -25,7 +25,7 @@ function c18372968.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c18372968.desop(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
-	if d:IsRelateToBattle() and d:IsPosition(POS_FACEDOWN_DEFENCE)
+	if d:IsRelateToBattle() and d:IsPosition(POS_FACEDOWN_DEFENSE)
 		and Duel.IsExistingMatchingCard(c18372968.cfilter,tp,LOCATION_MZONE,0,1,e:GetHandler()) then
 		Duel.Destroy(d,REASON_EFFECT)
 	end

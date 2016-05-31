@@ -34,7 +34,7 @@ function c16708652.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc2=g:GetFirst()
 	if tc1==tc2 then tc2=g:GetNext() end
 	if tc1:IsRelateToEffect(e) and tc1:IsPosition(POS_FACEUP_ATTACK) and tc2:IsRelateToEffect(e) then
-		Duel.ChangePosition(tc1,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(tc1,POS_FACEUP_DEFENSE)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

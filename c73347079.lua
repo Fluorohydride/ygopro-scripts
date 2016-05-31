@@ -12,7 +12,7 @@ function c73347079.initial_effect(c)
 	e1:SetValue(c73347079.adval)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_UPDATE_DEFENCE)
+	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e2)
 	--search
 	local e3=Effect.CreateEffect(c)

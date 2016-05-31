@@ -18,7 +18,7 @@ function c6924874.initial_effect(c)
 	e2:SetValue(2400)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
-	e3:SetCode(EFFECT_SET_BASE_DEFENCE)
+	e3:SetCode(EFFECT_SET_BASE_DEFENSE)
 	e3:SetValue(1200)
 	c:RegisterEffect(e3)
 	--destroy

@@ -29,9 +29,9 @@ function c22567609.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c22567609.filter,tp,LOCATION_DECK,0,nil,e,tp)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(22567609,1)) then
 		Duel.BreakEffect()
-		Duel.SpecialSummonStep(g:GetFirst(),0,tp,tp,false,false,POS_FACEDOWN_DEFENCE)
+		Duel.SpecialSummonStep(g:GetFirst(),0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 		if ft>1 and g:GetCount()>1 and Duel.SelectYesNo(tp,aux.Stringid(22567609,1)) then
-			Duel.SpecialSummonStep(g:GetNext(),0,tp,tp,false,false,POS_FACEDOWN_DEFENCE)
+			Duel.SpecialSummonStep(g:GetNext(),0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 		end
 		Duel.SpecialSummonComplete()
 	end

@@ -26,7 +26,7 @@ function c62868900.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsLocation(LOCATION_SZONE) then return end
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		Duel.ChangePosition(tc,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)
 		Duel.Equip(tp,c,tc)
 		c:CancelToGrave()
 		--Atkup

@@ -16,7 +16,7 @@ function c68625727.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c68625727.posop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsPosition,tp,0,LOCATION_MZONE,nil,POS_FACEUP_ATTACK)
-	if Duel.ChangePosition(g,POS_FACEUP_DEFENCE)~=0 then
+	if Duel.ChangePosition(g,POS_FACEUP_DEFENSE)~=0 then
 		local og=Duel.GetOperatedGroup()
 		local oc=og:GetFirst()
 		while oc do

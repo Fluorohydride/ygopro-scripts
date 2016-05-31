@@ -18,5 +18,5 @@ function c58760121.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58760121.posop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c58760121.filter,tp,LOCATION_MZONE,0,e:GetHandler())
-	Duel.ChangePosition(g,POS_FACEDOWN_DEFENCE,0,POS_FACEDOWN_DEFENCE,0)
+	Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE,0,POS_FACEDOWN_DEFENSE,0)
 end

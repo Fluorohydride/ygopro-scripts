@@ -20,7 +20,7 @@ function c69408987.poscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c69408987.posop(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
-	if Duel.ChangePosition(a,POS_FACEUP_DEFENCE)~=0 then
+	if Duel.ChangePosition(a,POS_FACEUP_DEFENSE)~=0 then
 		e:GetHandler():CreateRelation(a,RESET_EVENT+0x1fe0000)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

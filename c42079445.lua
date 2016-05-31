@@ -24,7 +24,7 @@ end
 function c42079445.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_DEFENCE) then
+	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
@@ -43,7 +43,7 @@ function c42079445.spop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e3,true)
 		local e4=Effect.CreateEffect(c)
 		e4:SetType(EFFECT_TYPE_SINGLE)
-		e4:SetCode(EFFECT_SET_DEFENCE_FINAL)
+		e4:SetCode(EFFECT_SET_DEFENSE_FINAL)
 		e4:SetValue(0)
 		e4:SetReset(RESET_EVENT+0x1fe0000)
 		tc:RegisterEffect(e4,true)

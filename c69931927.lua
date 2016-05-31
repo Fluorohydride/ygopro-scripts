@@ -71,5 +71,5 @@ function c69931927.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Damage(p,d,REASON_EFFECT)
 end
 function c69931927.bpcon(e)
-	return e:GetHandler():IsPosition(POS_FACEUP_DEFENCE)
+	return e:GetHandler():IsPosition(POS_FACEUP_DEFENSE)
 end

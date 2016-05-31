@@ -53,7 +53,7 @@ function c35950025.spop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 		local tc=Duel.GetFirstTarget()
 		if tc and tc:IsRelateToEffect(e) then
-			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 		end
 	end
 end

@@ -11,7 +11,7 @@ function c35686187.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c35686187.cfilter(c,tp)
-	return c:IsControler(tp) and c:IsPreviousPosition(POS_FACEUP_ATTACK) and c:IsPosition(POS_FACEUP_DEFENCE)
+	return c:IsControler(tp) and c:IsPreviousPosition(POS_FACEUP_ATTACK) and c:IsPosition(POS_FACEUP_DEFENSE)
 end
 function c35686187.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c35686187.cfilter,1,nil,1-tp)

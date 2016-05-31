@@ -29,7 +29,7 @@ function c81601517.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c81601517.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.ChangePosition(tc,POS_FACEDOWN_DEFENCE)~=0 then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)~=0 then
 		Duel.BreakEffect()
 		Duel.NegateActivation(ev)
 		if re:GetHandler():IsRelateToEffect(re) then

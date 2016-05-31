@@ -18,7 +18,7 @@ end
 function c95254840.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAttackPos,tp,LOCATION_MZONE,0,nil)
 	if g:GetCount()>0 then
-		Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 	end
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		local e1=Effect.CreateEffect(e:GetHandler())

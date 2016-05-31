@@ -13,7 +13,7 @@ function c22318971.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c22318971.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPosition(POS_FACEUP_DEFENCE)
+	return e:GetHandler():IsPosition(POS_FACEUP_DEFENSE)
 end
 function c22318971.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,LOCATION_MZONE,0,1,e:GetHandler()) end

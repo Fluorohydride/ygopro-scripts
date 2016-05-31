@@ -102,6 +102,6 @@ end
 function c11678191.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		Duel.ChangePosition(c:GetEquipTarget(),POS_FACEUP_DEFENCE,0,POS_FACEUP_ATTACK,0)
+		Duel.ChangePosition(c:GetEquipTarget(),POS_FACEUP_DEFENSE,0,POS_FACEUP_ATTACK,0)
 	end
 end

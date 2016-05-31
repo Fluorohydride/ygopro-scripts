@@ -20,7 +20,7 @@ function c13955608.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,13955608,0,0x21,0,2000,4,RACE_MACHINE,ATTRIBUTE_EARTH) then return end
 	c:AddMonsterAttribute(0,0,0,0,0)
-	Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP_DEFENCE)
+	Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP_DEFENSE)
 	c:TrapMonsterComplete(TYPE_EFFECT)
 	--update attack
 	local e1=Effect.CreateEffect(c)

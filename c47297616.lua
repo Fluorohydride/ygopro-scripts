@@ -68,7 +68,7 @@ function c47297616.opdisable(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e2:SetReset(RESET_EVENT+0x1ff0000)
-		e2:SetCode(EFFECT_UPDATE_DEFENCE)
+		e2:SetCode(EFFECT_UPDATE_DEFENSE)
 		e2:SetValue(-500)
 		c:RegisterEffect(e2)
 	end

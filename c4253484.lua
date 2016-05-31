@@ -3,7 +3,7 @@ function c4253484.initial_effect(c)
 	--def
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SET_BASE_DEFENCE)
+	e1:SetCode(EFFECT_SET_BASE_DEFENSE)
 	e1:SetCondition(c4253484.defcon)
 	e1:SetValue(2400)
 	c:RegisterEffect(e1)

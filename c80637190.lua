@@ -14,7 +14,7 @@ function c80637190.initial_effect(c)
 end
 function c80637190.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetBattleTarget()
-	return bit.band(tc:GetBattlePosition(),POS_DEFENCE)~=0
+	return bit.band(tc:GetBattlePosition(),POS_DEFENSE)~=0
 end
 function c80637190.filter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsRace(RACE_INSECT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

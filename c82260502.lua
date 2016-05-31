@@ -10,5 +10,5 @@ function c82260502.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c82260502.atlimit(e,c)
-	return c:IsPosition(POS_FACEDOWN_DEFENCE)
+	return c:IsPosition(POS_FACEDOWN_DEFENSE)
 end

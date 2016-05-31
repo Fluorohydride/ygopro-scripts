@@ -33,7 +33,7 @@ function c31975743.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c31975743.filter(c)
-	return c:IsPosition(POS_FACEUP_DEFENCE) and c:IsControlerCanBeChanged()
+	return c:IsPosition(POS_FACEUP_DEFENSE) and c:IsControlerCanBeChanged()
 end
 function c31975743.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c31975743.filter(chkc) end

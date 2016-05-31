@@ -39,7 +39,7 @@ function c12923641.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(Card.IsCanTurnSet,tp,0,LOCATION_MZONE,nil)
 	if g:GetCount()>0 then
-		Duel.ChangePosition(g,POS_FACEDOWN_DEFENCE)
+		Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
 	end
 end
 function c12923641.descon(e,tp,eg,ep,ev,re,r,rp)

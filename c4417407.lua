@@ -74,7 +74,7 @@ function c4417407.poscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c4417407.filter(c)
-	return not c:IsPosition(POS_FACEUP_DEFENCE)
+	return not c:IsPosition(POS_FACEUP_DEFENSE)
 end
 function c4417407.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c4417407.filter(chkc) end
@@ -84,7 +84,7 @@ function c4417407.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c4417407.posop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and not tc:IsPosition(POS_FACEUP_DEFENCE) then
-		Duel.ChangePosition(tc,POS_FACEUP_DEFENCE)
+	if tc:IsRelateToEffect(e) and not tc:IsPosition(POS_FACEUP_DEFENSE) then
+		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)
 	end
 end

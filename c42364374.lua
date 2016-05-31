@@ -10,7 +10,7 @@ function c42364374.initial_effect(c)
 	e1:SetCondition(c42364374.con)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_SET_DEFENCE)
+	e2:SetCode(EFFECT_SET_DEFENSE)
 	c:RegisterEffect(e2)
 end
 function c42364374.filter(c)

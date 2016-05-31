@@ -58,7 +58,7 @@ end
 function c49374988.posop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c49374988.pfilter,nil,e)
 	if g:GetCount()>0 then
-		Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 		local tc=g:GetFirst()
 		while tc do
 			local e1=Effect.CreateEffect(e:GetHandler())

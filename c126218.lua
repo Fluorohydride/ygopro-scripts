@@ -31,7 +31,7 @@ function c126218.activate(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetValue(-d)
 			sc:RegisterEffect(e1)
 			local e2=e1:Clone()
-			e2:SetCode(EFFECT_UPDATE_DEFENCE)
+			e2:SetCode(EFFECT_UPDATE_DEFENSE)
 			sc:RegisterEffect(e2)
 			sc=g:GetNext()
 		end

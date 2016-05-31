@@ -42,7 +42,7 @@ function c12467005.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) then return end
 	if e:GetLabel()==0 then
-		Duel.ChangePosition(tc,POS_FACEDOWN_DEFENCE)
+		Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
 	else
 		local code=tc:GetCode()
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)

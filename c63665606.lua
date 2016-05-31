@@ -16,7 +16,7 @@ function c63665606.initial_effect(c)
 	e2:SetValue(400)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
-	e3:SetCode(EFFECT_UPDATE_DEFENCE)
+	e3:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e3)
 	--discard
 	local e4=Effect.CreateEffect(c)

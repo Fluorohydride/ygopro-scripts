@@ -5,7 +5,7 @@ function c16480084.evolreg(c)
 	--defup
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_UPDATE_DEFENCE)
+	e1:SetCode(EFFECT_UPDATE_DEFENSE)
 	e1:SetValue(500)
 	e1:SetReset(RESET_EVENT+0x1ff0000)
 	c:RegisterEffect(e1)

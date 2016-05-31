@@ -35,7 +35,7 @@ end
 function c26533075.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsAttackable() and not tc:IsStatus(STATUS_ATTACK_CANCELED) then
-		Duel.ChangePosition(tc,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)
 	end
 end
 function c26533075.descon(e,tp,eg,ep,ev,re,r,rp)

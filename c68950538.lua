@@ -32,7 +32,7 @@ function c68950538.xyzlimit(e,c)
 end
 function c68950538.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return not c:IsStatus(STATUS_CONTINUOUS_POS) and c:IsPosition(POS_FACEUP_DEFENCE) and c:IsPreviousPosition(POS_FACEUP_ATTACK)
+	return not c:IsStatus(STATUS_CONTINUOUS_POS) and c:IsPosition(POS_FACEUP_DEFENSE) and c:IsPreviousPosition(POS_FACEUP_ATTACK)
 end
 function c68950538.spfilter(c,e,tp)
 	return c:GetLevel()==3 and c:IsRace(RACE_INSECT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -47,7 +47,7 @@ function c68950538.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c68950538.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
-		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end
 function c68950538.efcon(e,tp,eg,ep,ev,re,r,rp)
@@ -74,5 +74,5 @@ function c68950538.efop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c68950538.atkfilter(e,c)
-	return c:IsPosition(POS_DEFENCE)
+	return c:IsPosition(POS_DEFENSE)
 end

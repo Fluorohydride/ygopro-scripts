@@ -95,7 +95,7 @@ function c64038662.efop(e,tp,eg,ep,ev,re,r,rp)
 	else
 		local tc=Duel.GetFirstTarget()
 		if tc and tc:IsRelateToEffect(e) then
-			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 		end
 	end
 end

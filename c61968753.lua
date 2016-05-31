@@ -40,7 +40,7 @@ end
 function c61968753.posop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c61968753.pfilter,nil,e)
 	if g:GetCount()==2 then
-		Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 		local tc=e:GetLabelObject()
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)>-1 and not tc:IsImmuneToEffect(e) and tc:IsReleasable() then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

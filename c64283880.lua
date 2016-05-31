@@ -39,7 +39,7 @@ function c64283880.spop(e,tp,eg,ep,ev,re,r,rp)
 			if ct>2 then ct=2 end
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,ct,nil)
-			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 		end
 	end
 end

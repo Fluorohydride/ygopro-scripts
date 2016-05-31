@@ -32,7 +32,7 @@ function c47658964.activate(e,tp,eg,ep,ev,re,r,rp)
 	if ft<e:GetLabel() or not Duel.IsPlayerCanSpecialSummonMonster(tp,47658965,0x39,0x4011,0,0,1,RACE_PYRO,ATTRIBUTE_FIRE) then return end
 	for i=1,e:GetLabel() do
 		local token=Duel.CreateToken(tp,47658965)
-		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 	Duel.SpecialSummonComplete()
 end

@@ -67,7 +67,7 @@ function c26640671.pfilter(c)
 end
 function c26640671.posop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c26640671.pfilter,tp,0,LOCATION_MZONE,nil)
-	Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
+	Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 	local tc=g:GetFirst()
 	while tc do
 		tc:RegisterFlagEffect(26640672,RESET_EVENT+0x1fe0000,0,1)

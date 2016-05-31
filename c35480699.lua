@@ -18,7 +18,7 @@ end
 function c35480699.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsCanTurnSet,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if g:GetCount()>0 then
-		Duel.ChangePosition(g,POS_FACEDOWN_DEFENCE)
+		Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -34,6 +34,6 @@ function c35480699.flipcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c35480699.flipop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFacedown,tp,0,LOCATION_MZONE,nil)
-	local ct=Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
+	local ct=Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 	Duel.Draw(1-tp,ct,REASON_EFFECT)
 end

@@ -36,7 +36,7 @@ function c75987257.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsLocation(LOCATION_SZONE) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsAttackable() and not tc:IsStatus(STATUS_ATTACK_CANCELED) then
-		Duel.ChangePosition(tc,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)
 		if c:IsRelateToEffect(e) then
 			Duel.Equip(tp,c,tc)
 			c:CancelToGrave()
@@ -64,6 +64,6 @@ function c75987257.posop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	local ec=c:GetEquipTarget()
 	if ec then
-		Duel.ChangePosition(ec,POS_FACEUP_DEFENCE,0,POS_FACEUP_ATTACK,0)
+		Duel.ChangePosition(ec,POS_FACEUP_DEFENSE,0,POS_FACEUP_ATTACK,0)
 	end
 end

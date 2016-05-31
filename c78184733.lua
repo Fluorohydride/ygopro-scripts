@@ -28,7 +28,7 @@ function c78184733.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(c78184733.filter,tp,0,LOCATION_MZONE,nil)
 	if g:GetCount()>0 then
-		Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 		local tc=g:GetFirst()
 		while tc do
 			local e1=Effect.CreateEffect(c)

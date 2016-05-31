@@ -8,7 +8,7 @@ function c64203620.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_SPSUM_PARAM)
 	e1:SetRange(LOCATION_HAND)
-	e1:SetTargetRange(POS_FACEUP_DEFENCE,1)
+	e1:SetTargetRange(POS_FACEUP_DEFENSE,1)
 	e1:SetCondition(c64203620.spcon)
 	c:RegisterEffect(e1)
 	--self destory
@@ -45,7 +45,7 @@ function c64203620.descon(e)
 	return not Duel.IsExistingMatchingCard(c64203620.filter,0,LOCATION_MZONE,LOCATION_MZONE,1,nil)
 end
 function c64203620.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPosition(POS_FACEUP_ATTACK) and e:GetHandler():IsPreviousPosition(POS_FACEUP_DEFENCE)
+	return e:GetHandler():IsPosition(POS_FACEUP_ATTACK) and e:GetHandler():IsPreviousPosition(POS_FACEUP_DEFENSE)
 end
 function c64203620.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

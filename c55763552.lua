@@ -18,7 +18,7 @@ function c55763552.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c55763552.pfilter(c)
-	return c:IsPosition(POS_FACEUP_DEFENCE) and c:IsRace(RACE_DRAGON)
+	return c:IsPosition(POS_FACEUP_DEFENSE) and c:IsRace(RACE_DRAGON)
 end
 function c55763552.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c55763552.filter,tp,LOCATION_SZONE,LOCATION_SZONE,nil)

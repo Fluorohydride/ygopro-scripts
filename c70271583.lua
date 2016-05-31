@@ -34,7 +34,7 @@ end
 function c70271583.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		Duel.ChangePosition(c,POS_FACEUP_DEFENCE,0,POS_FACEUP_ATTACK,0)
+		Duel.ChangePosition(c,POS_FACEUP_DEFENSE,0,POS_FACEUP_ATTACK,0)
 	end
 end
 function c70271583.atkcon(e,tp,eg,ep,ev,re,r,rp)
@@ -56,7 +56,7 @@ function c70271583.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(800)
 		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
-		e2:SetCode(EFFECT_UPDATE_DEFENCE)
+		e2:SetCode(EFFECT_UPDATE_DEFENSE)
 		tc:RegisterEffect(e2)
 		tc=g:GetNext()
 	end

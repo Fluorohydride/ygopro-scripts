@@ -25,7 +25,7 @@ function c23776077.initial_effect(c)
 	e2:SetValue(c23776077.adval)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
-	e3:SetCode(EFFECT_UPDATE_DEFENCE)
+	e3:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e3)
 	--cannot be target
 	local e4=Effect.CreateEffect(c)

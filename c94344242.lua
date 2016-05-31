@@ -45,12 +45,12 @@ function c94344242.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c94344242.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsPosition(POS_FACEUP_ATTACK) and Duel.ChangePosition(tc,POS_FACEUP_DEFENCE)~=0 then
+	if tc:IsRelateToEffect(e) and tc:IsPosition(POS_FACEUP_ATTACK) and Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)~=0 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c94344242.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 		if g:GetCount()==0 then return end
-		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end
 function c94344242.efcon(e,tp,eg,ep,ev,re,r,rp)
@@ -82,12 +82,12 @@ function c94344242.defcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c94344242.defop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
-	Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
+	Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_SET_DEFENCE_FINAL)
+		e1:SetCode(EFFECT_SET_DEFENSE_FINAL)
 		e1:SetValue(0)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		tc:RegisterEffect(e1)

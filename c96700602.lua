@@ -29,7 +29,7 @@ end
 function c96700602.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local g=Duel.GetMatchingGroup(Card.IsAttackPos,tp,0,LOCATION_MZONE,nil)
-	if Duel.ChangePosition(g,POS_FACEUP_DEFENCE,POS_FACEDOWN_DEFENCE,0,0)~=0 then
+	if Duel.ChangePosition(g,POS_FACEUP_DEFENSE,POS_FACEDOWN_DEFENSE,0,0)~=0 then
 		if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 			Duel.Damage(1-tp,tc:GetDefense(),REASON_EFFECT)
 		end

@@ -23,7 +23,7 @@ function c92887027.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c92887027.filter(c)
-	return c:IsPosition(POS_FACEDOWN_DEFENCE) and c:IsDestructable()
+	return c:IsPosition(POS_FACEDOWN_DEFENSE) and c:IsDestructable()
 end
 function c92887027.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c92887027.filter(chkc) end
@@ -34,7 +34,7 @@ function c92887027.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c92887027.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsPosition(POS_FACEDOWN_DEFENCE) and tc:IsRelateToEffect(e) then
+	if tc:IsPosition(POS_FACEDOWN_DEFENSE) and tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

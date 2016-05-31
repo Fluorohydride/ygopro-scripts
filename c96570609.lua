@@ -127,7 +127,7 @@ function c96570609.sumop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	local pos=0
 	if c:IsSummonable(true,nil,1) then pos=pos+POS_FACEUP_ATTACK end
-	if c:IsMSetable(true,nil,1) then pos=pos+POS_FACEDOWN_DEFENCE end
+	if c:IsMSetable(true,nil,1) then pos=pos+POS_FACEDOWN_DEFENSE end
 	if pos==0 then return end
 	if Duel.SelectPosition(tp,c,pos)==POS_FACEUP_ATTACK then
 		Duel.Summon(tp,c,true,nil,1)

@@ -9,7 +9,7 @@ function c50263751.initial_effect(c)
 	e1:SetValue(c50263751.atkval)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_SET_BASE_DEFENCE)
+	e2:SetCode(EFFECT_SET_BASE_DEFENSE)
 	c:RegisterEffect(e2)
 	--lvup
 	local e2=Effect.CreateEffect(c)

@@ -9,6 +9,6 @@ function c77087109.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c77087109.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsPosition(POS_FACEUP_DEFENCE) end
+	if chk==0 then return e:GetHandler():IsPosition(POS_FACEUP_DEFENSE) end
 	return true
 end

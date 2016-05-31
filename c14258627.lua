@@ -20,7 +20,7 @@ function c14258627.initial_effect(c)
 	e2:SetValue(c14258627.atkval)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
-	e3:SetCode(EFFECT_SET_DEFENCE_FINAL)
+	e3:SetCode(EFFECT_SET_DEFENSE_FINAL)
 	e3:SetValue(c14258627.defval)
 	c:RegisterEffect(e3)
 	--maintain

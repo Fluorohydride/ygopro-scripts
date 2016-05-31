@@ -32,7 +32,7 @@ function c34566435.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 		local e2=e1:Clone()
-		e2:SetCode(EFFECT_SET_DEFENCE_FINAL)
+		e2:SetCode(EFFECT_SET_DEFENSE_FINAL)
 		e2:SetValue(tc:GetBaseDefense())
 		c:RegisterEffect(e2)
 	end

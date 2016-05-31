@@ -73,7 +73,7 @@ function c79106360.sp(e,tp,ct)
 	tc=g:GetFirst()
 	while tc do
 		Duel.DisableShuffleCheck()
-		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENCE)
+		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 		tc=g:GetNext()
 	end
 	if conf-g:GetCount()>0 then

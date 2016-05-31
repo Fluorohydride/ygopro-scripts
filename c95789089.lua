@@ -23,6 +23,6 @@ end
 function c95789089.cpop(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject()
 	if g:IsRelateToBattle() and g:IsAttackPos() then
-		Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 	end
 end

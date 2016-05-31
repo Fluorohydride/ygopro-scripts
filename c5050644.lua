@@ -52,7 +52,7 @@ function c5050644.reop1(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_PHASE+PHASE_END+RESET_OPPO_TURN)
 	Duel.RegisterEffect(e1,tp)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_UPDATE_DEFENCE)
+	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	Duel.RegisterEffect(e2,tp)
 end
 function c5050644.cfilter2(c,tp)

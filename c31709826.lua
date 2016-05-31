@@ -36,5 +36,5 @@ end
 function c31709826.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	c:ResetFlagEffect(31709826)
-	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 end

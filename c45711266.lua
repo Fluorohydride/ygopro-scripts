@@ -28,7 +28,7 @@ function c45711266.operation(e,tp,eg,ep,ev,re,r,rp)
 		if not c:IsStatus(STATUS_BATTLE_DESTROYED) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_UPDATE_DEFENCE)
+			e1:SetCode(EFFECT_UPDATE_DEFENSE)
 			e1:SetValue(lv*100)
 			e1:SetReset(RESET_EVENT+0x1ff0000)
 			c:RegisterEffect(e1)

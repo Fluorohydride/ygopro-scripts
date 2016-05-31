@@ -13,7 +13,7 @@ function c64926005.initial_effect(c)
 end
 function c64926005.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousPosition(POS_FACEUP_ATTACK) and c:IsPosition(POS_FACEUP_DEFENCE)
+	return c:IsPreviousPosition(POS_FACEUP_ATTACK) and c:IsPosition(POS_FACEUP_DEFENSE)
 end
 function c64926005.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

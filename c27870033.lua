@@ -14,7 +14,7 @@ function c27870033.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c27870033.cfilter(c)
-	return c:IsPreviousPosition(POS_DEFENCE) and c:IsLocation(LOCATION_GRAVE)
+	return c:IsPreviousPosition(POS_DEFENSE) and c:IsLocation(LOCATION_GRAVE)
 		and c:IsReason(REASON_BATTLE) and c:IsType(TYPE_MONSTER)
 end
 function c27870033.damcon(e,tp,eg,ep,ev,re,r,rp)

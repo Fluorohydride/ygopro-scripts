@@ -29,6 +29,6 @@ function c92890308.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ta=Duel.GetAttacker()
 	local td=Duel.GetAttackTarget()
 	if ta:IsRelateToEffect(e) and Duel.NegateAttack() and td:IsFaceup() and td:IsRelateToEffect(e) then
-		Duel.ChangePosition(td,POS_FACEUP_DEFENCE,0,POS_FACEUP_ATTACK,0)
+		Duel.ChangePosition(td,POS_FACEUP_DEFENSE,0,POS_FACEUP_ATTACK,0)
 	end
 end

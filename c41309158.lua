@@ -31,7 +31,7 @@ end
 function c41309158.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsDefensePos() end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsDefensePos,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DEFENCE)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DEFENSE)
 	Duel.SelectTarget(tp,Card.IsDefensePos,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
 function c41309158.posop(e,tp,eg,ep,ev,re,r,rp)

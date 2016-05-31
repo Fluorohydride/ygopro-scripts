@@ -14,7 +14,7 @@ end
 function c87010442.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	return bc:GetBattlePosition()==POS_FACEDOWN_DEFENCE and c:IsRelateToBattle() and c:IsFaceup()
+	return bc:GetBattlePosition()==POS_FACEDOWN_DEFENSE and c:IsRelateToBattle() and c:IsFaceup()
 end
 function c87010442.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -42,7 +42,7 @@ function c6691855.operation(e,tp,eg,ep,ev,re,r,rp)
 		--def
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_EQUIP)
-		e2:SetCode(EFFECT_UPDATE_DEFENCE)
+		e2:SetCode(EFFECT_UPDATE_DEFENSE)
 		e2:SetCondition(c6691855.defcon)
 		e2:SetValue(c6691855.defval)
 		e2:SetReset(RESET_EVENT+0x1fe0000)

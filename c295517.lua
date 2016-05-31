@@ -22,6 +22,6 @@ function c295517.initial_effect(c)
 	c:RegisterEffect(e3)
 	--Def
 	local e4=e3:Clone()
-	e4:SetCode(EFFECT_UPDATE_DEFENCE)
+	e4:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e4)
 end

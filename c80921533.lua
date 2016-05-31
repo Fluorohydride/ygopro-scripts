@@ -70,7 +70,7 @@ function c80921533.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		local s1=tc:IsSummonable(false,se)
 		local s2=tc:IsMSetable(false,se)
-		if (s1 and s2 and Duel.SelectPosition(tp,tc,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENCE)==POS_FACEUP_ATTACK) or not s2 then
+		if (s1 and s2 and Duel.SelectPosition(tp,tc,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)==POS_FACEUP_ATTACK) or not s2 then
 			Duel.Summon(tp,tc,false,se)
 		else
 			Duel.MSet(tp,tc,false,se)

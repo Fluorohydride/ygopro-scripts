@@ -30,7 +30,7 @@ function c65240384.negcon(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c65240384.negop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.ChangePosition(e:GetHandler(),POS_FACEUP_DEFENCE) then
+	if Duel.ChangePosition(e:GetHandler(),POS_FACEUP_DEFENSE) then
 		Duel.NegateActivation(ev)
 	end
 end

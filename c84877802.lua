@@ -17,7 +17,7 @@ function c84877802.initial_effect(c)
 	c:RegisterEffect(e2)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
-	e3:SetCode(EFFECT_UPDATE_DEFENCE)
+	e3:SetCode(EFFECT_UPDATE_DEFENSE)
 	e3:SetValue(c84877802.defval)
 	c:RegisterEffect(e3)
 	--Equip limit

@@ -18,7 +18,7 @@ function c39897277.initial_effect(c)
 	--def down
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
-	e3:SetCode(EFFECT_UPDATE_DEFENCE)
+	e3:SetCode(EFFECT_UPDATE_DEFENSE)
 	e3:SetValue(-200)
 	c:RegisterEffect(e3)
 	--equip limit

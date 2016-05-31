@@ -59,7 +59,7 @@ function c82052602.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c82052602.filter,tp,LOCATION_GRAVE,0,ft1,ft1,nil,Duel.GetTurnCount(),e,tp)
 	if g:GetCount()>0 then
-		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 		Duel.BreakEffect()
 		Duel.Damage(tp,g:GetCount()*600,REASON_EFFECT)
 	end

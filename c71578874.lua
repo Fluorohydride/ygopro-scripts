@@ -47,7 +47,7 @@ function c71578874.adop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(val)
 		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
-		e2:SetCode(EFFECT_SET_DEFENCE_FINAL)
+		e2:SetCode(EFFECT_SET_DEFENSE_FINAL)
 		tc:RegisterEffect(e2)
 	end
 end

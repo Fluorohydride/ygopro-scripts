@@ -47,7 +47,7 @@ function c22227683.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE_CAL)
 		c:RegisterEffect(e1)
 		local e2=e1:Clone()
-		e2:SetCode(EFFECT_UPDATE_DEFENCE)
+		e2:SetCode(EFFECT_UPDATE_DEFENSE)
 		c:RegisterEffect(e2)
 	end
 	local e3=Effect.CreateEffect(c)
@@ -85,6 +85,6 @@ function c22227683.spop(e,tp,eg,ep,ev,re,r,rp)
 		local g2=Duel.SelectMatchingCard(tp,c22227683.spfilter2,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,1,tc,e,tp,tc:GetLevel())
 		g1:Merge(g2)
 		if g1:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
-		Duel.SpecialSummon(g1,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+		Duel.SpecialSummon(g1,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end

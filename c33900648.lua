@@ -142,7 +142,7 @@ function c33900648.descon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(c33900648[Duel.GetTurnPlayer()],ATTRIBUTE_EARTH)~=0
 end
 function c33900648.desfilter(c)
-	return c:IsPosition(POS_FACEUP_DEFENCE) and c:IsDestructable()
+	return c:IsPosition(POS_FACEUP_DEFENSE) and c:IsDestructable()
 end
 function c33900648.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local turnp=Duel.GetTurnPlayer()
@@ -158,7 +158,7 @@ function c33900648.desop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if bit.band(c33900648[Duel.GetTurnPlayer()],ATTRIBUTE_EARTH)==0 then return end
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsPosition(POS_FACEUP_DEFENCE) then
+	if tc and tc:IsRelateToEffect(e) and tc:IsPosition(POS_FACEUP_DEFENSE) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

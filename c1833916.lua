@@ -52,7 +52,7 @@ function c1833916.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		if c:IsRelateToEffect(e) then
-			Duel.ChangePosition(c,POS_FACEUP_DEFENCE)
+			Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 		end
 	end
 	local e1=Effect.CreateEffect(c)

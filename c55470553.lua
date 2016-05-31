@@ -39,7 +39,7 @@ end
 function c55470553.posop(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
 	if at:IsAttackPos() and at:IsRelateToBattle() then
-		Duel.ChangePosition(at,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(at,POS_FACEUP_DEFENSE)
 	end
 end
 function c55470553.spfilter(c,tp)
@@ -58,7 +58,7 @@ end
 function c55470553.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENCE)~=0
+	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0
 		and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
 		local og=tc:GetOverlayGroup()
 		if og:GetCount()>0 then

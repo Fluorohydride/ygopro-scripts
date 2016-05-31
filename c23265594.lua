@@ -30,7 +30,7 @@ function c23265594.initial_effect(c)
 	--Def up
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_EQUIP)
-	e4:SetCode(EFFECT_UPDATE_DEFENCE)
+	e4:SetCode(EFFECT_UPDATE_DEFENSE)
 	e4:SetValue(500)
 	e4:SetCondition(c23265594.uncon)
 	c:RegisterEffect(e4)

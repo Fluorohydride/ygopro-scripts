@@ -19,7 +19,7 @@ function c18590133.initial_effect(c)
 	e2:SetValue(c18590133.val)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
-	e3:SetCode(EFFECT_SET_DEFENCE)
+	e3:SetCode(EFFECT_SET_DEFENSE)
 	c:RegisterEffect(e3)
 end
 function c18590133.filter(c)

@@ -8,7 +8,7 @@ function c91697229.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_SPSUM_PARAM)
 	e1:SetRange(LOCATION_HAND)
-	e1:SetTargetRange(POS_FACEUP_DEFENCE,1)
+	e1:SetTargetRange(POS_FACEUP_DEFENSE,1)
 	e1:SetCondition(c91697229.spcon)
 	c:RegisterEffect(e1)
 	--self destroy

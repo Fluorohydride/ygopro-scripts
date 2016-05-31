@@ -20,7 +20,7 @@ function c54248491.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c54248491.filter(c)
-	return c:IsPosition(POS_FACEUP_DEFENCE) and c:IsDestructable()
+	return c:IsPosition(POS_FACEUP_DEFENSE) and c:IsDestructable()
 end
 function c54248491.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c54248491.filter,tp,0,LOCATION_MZONE,1,nil) end

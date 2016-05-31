@@ -18,7 +18,7 @@ end
 function c90075978.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFacedown,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if g:GetCount()>0 then
-		Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -42,7 +42,7 @@ end
 function c90075978.setop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c90075978.sfilter,tp,LOCATION_MZONE,0,nil)
 	if g:GetCount()>0 then
-		Duel.ChangePosition(g,POS_FACEDOWN_DEFENCE)
+		Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
 		local dt=Duel.Draw(tp,g:GetCount(),REASON_EFFECT)
 		if dt==0 or Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		local sg=Duel.GetMatchingGroup(c90075978.spfilter,tp,LOCATION_DECK,0,nil,e,tp)

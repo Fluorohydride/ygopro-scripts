@@ -16,7 +16,7 @@ function c81231742.initial_effect(c)
 	c:RegisterEffect(e2)
 	--def
 	local e3=e2:Clone()
-	e3:SetCode(EFFECT_UPDATE_DEFENCE)
+	e3:SetCode(EFFECT_UPDATE_DEFENSE)
 	e3:SetCondition(c81231742.defcon)
 	c:RegisterEffect(e3)
 end

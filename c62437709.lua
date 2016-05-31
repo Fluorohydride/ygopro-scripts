@@ -36,7 +36,7 @@ function c62437709.initial_effect(c)
 	e4:SetValue(c62437709.adval)
 	c:RegisterEffect(e4)
 	local e5=e4:Clone()
-	e5:SetCode(EFFECT_UPDATE_DEFENCE)
+	e5:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e5)
 end
 function c62437709.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

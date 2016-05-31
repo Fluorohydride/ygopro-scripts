@@ -34,7 +34,7 @@ function c12510878.initial_effect(c)
 	e4:SetValue(c12510878.val)
 	c:RegisterEffect(e4)
 	local e5=e4:Clone()
-	e5:SetCode(EFFECT_UPDATE_DEFENCE)
+	e5:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e5)
 end
 function c12510878.spcon(e,c)

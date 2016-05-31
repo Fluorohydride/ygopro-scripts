@@ -41,7 +41,7 @@ function c45170821.valop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(val)
 		o:RegisterEffect(e1)
 		local e2=e1:Clone()
-		e2:SetCode(EFFECT_UPDATE_DEFENCE)
+		e2:SetCode(EFFECT_UPDATE_DEFENSE)
 		o:RegisterEffect(e2)
 	end
 end

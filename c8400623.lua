@@ -51,7 +51,7 @@ function c8400623.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	e1:SetValue(g:GetCount()*600)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_SET_DEFENCE)
+	e2:SetCode(EFFECT_SET_DEFENSE)
 	c:RegisterEffect(e2)
 end
 function c8400623.descon(e,tp,eg,ep,ev,re,r,rp)

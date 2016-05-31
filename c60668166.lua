@@ -31,10 +31,10 @@ function c60668166.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		local t1=g:GetFirst()
 		local t2=g:GetNext()
-		Duel.SpecialSummonStep(t1,0,tp,tp,false,false,POS_FACEDOWN_DEFENCE)
+		Duel.SpecialSummonStep(t1,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 		Duel.ConfirmCards(1-tp,t1)
 		if t2 and ct>1 and Duel.SelectYesNo(tp,aux.Stringid(60668166,1)) then
-			Duel.SpecialSummonStep(t2,0,tp,tp,false,false,POS_FACEDOWN_DEFENCE)
+			Duel.SpecialSummonStep(t2,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 			Duel.ConfirmCards(1-tp,t2)
 		end
 		Duel.SpecialSummonComplete()

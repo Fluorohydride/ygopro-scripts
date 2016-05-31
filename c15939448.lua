@@ -31,7 +31,7 @@ end
 function c15939448.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsPosition(POS_FACEUP_ATTACK) then
-		Duel.ChangePosition(c,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 		local ct=Duel.GetMatchingGroupCount(c15939448.filter,tp,LOCATION_MZONE,0,nil)
 		Duel.DiscardDeck(1-tp,ct,REASON_EFFECT)
 	end

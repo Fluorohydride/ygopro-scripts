@@ -35,7 +35,7 @@ function c75622824.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerCanSpecialSummonMonster(tp,75622825,0,0x4011,2000,1200,5,RACE_SPELLCASTER,ATTRIBUTE_WIND) then return end
 	for i=1,ct do
 		local token=Duel.CreateToken(tp,75622825)
-		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CANNOT_ATTACK_ANNOUNCE)

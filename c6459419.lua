@@ -33,6 +33,6 @@ function c6459419.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local fg=sg:Select(tp,ft,ft,nil)
 		if fg:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
-		Duel.SpecialSummon(fg,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+		Duel.SpecialSummon(fg,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end

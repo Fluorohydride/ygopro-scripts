@@ -20,7 +20,7 @@ function c42562690.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c42562690.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.ChangePosition(c,POS_FACEUP_DEFENCE)~=0 then
+	if c:IsRelateToEffect(e) and Duel.ChangePosition(c,POS_FACEUP_DEFENSE)~=0 then
 		Duel.NegateAttack()
 	end
 end

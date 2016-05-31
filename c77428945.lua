@@ -21,5 +21,5 @@ function c77428945.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c77428945.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c77428945.filter,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
-	Duel.ChangePosition(g,POS_FACEDOWN_DEFENCE)
+	Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
 end

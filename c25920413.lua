@@ -31,7 +31,7 @@ function c25920413.initial_effect(c)
 	e3:SetValue(c25920413.adval)
 	c:RegisterEffect(e3)
 	local e4=e3:Clone()
-	e4:SetCode(EFFECT_UPDATE_DEFENCE)
+	e4:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e4)
 end
 function c25920413.spfilter(c)

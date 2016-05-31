@@ -43,7 +43,7 @@ function c27279764.initial_effect(c)
 	e6:SetValue(-500)
 	c:RegisterEffect(e6)
 	local e7=e6:Clone()
-	e7:SetCode(EFFECT_UPDATE_DEFENCE)
+	e7:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e7)
 	--to grave
 	local e8=Effect.CreateEffect(c)

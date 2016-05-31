@@ -12,7 +12,7 @@ function c3136426.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTarget(c3136426.target)
 	e2:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e2:SetValue(POS_FACEUP_DEFENCE)
+	e2:SetValue(POS_FACEUP_DEFENSE)
 	c:RegisterEffect(e2)
 end
 function c3136426.target(e,c)

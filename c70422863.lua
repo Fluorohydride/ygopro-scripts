@@ -15,7 +15,7 @@ function c70422863.initial_effect(c)
 	e2:SetValue(c70422863.atkval)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
-	e3:SetCode(EFFECT_UPDATE_DEFENCE)
+	e3:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e3)
 	--negate
 	local e4=Effect.CreateEffect(c)

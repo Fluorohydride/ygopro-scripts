@@ -28,7 +28,7 @@ function c77505534.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
 			local sg=tg:Select(tp,1,5,nil)
-			Duel.ChangePosition(sg,POS_FACEUP_DEFENCE)
+			Duel.ChangePosition(sg,POS_FACEUP_DEFENSE)
 		end
 	end
 end

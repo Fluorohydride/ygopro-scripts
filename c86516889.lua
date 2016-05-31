@@ -23,14 +23,14 @@ function c86516889.filter(c,e)
 end
 function c86516889.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c86516889.filter,nil,e)
-	Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
+	Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 	local ct=g:FilterCount(Card.IsSetCard,nil,0x8d)
 	if ct>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
 		local sg=Duel.SelectMatchingCard(tp,Card.IsCanTurnSet,tp,0,LOCATION_MZONE,1,ct,nil)
 		if sg:GetCount()>0 then
 			Duel.HintSelection(sg)
-			Duel.ChangePosition(sg,POS_FACEDOWN_DEFENCE)
+			Duel.ChangePosition(sg,POS_FACEDOWN_DEFENSE)
 		end
 	end
 end

@@ -61,7 +61,7 @@ function c33103459.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and c:IsPosition(POS_FACEUP_ATTACK) and c:IsControler(tp)
 		and tc:IsRelateToEffect(e) and tc:IsPosition(POS_FACEUP_ATTACK) and tc:IsControler(tp)
-		and Duel.ChangePosition(Group.FromCards(c,tc),POS_FACEUP_DEFENCE)==2 then
+		and Duel.ChangePosition(Group.FromCards(c,tc),POS_FACEUP_DEFENSE)==2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,c33103459.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 		if g:GetCount()>0 then

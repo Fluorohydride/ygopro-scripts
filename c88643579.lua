@@ -36,7 +36,7 @@ function c88643579.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(-500)
 		c:RegisterEffect(e1)
 		local e2=e1:Clone()
-		e2:SetCode(EFFECT_UPDATE_DEFENCE)
+		e2:SetCode(EFFECT_UPDATE_DEFENSE)
 		c:RegisterEffect(e2)
 		if tc and tc:IsControler(1-tp) and tc:IsRelateToEffect(e) and not c:IsHasEffect(EFFECT_REVERSE_UPDATE) then
 			Duel.SendtoGrave(tc,REASON_EFFECT)
