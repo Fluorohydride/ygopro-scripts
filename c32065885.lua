@@ -20,7 +20,7 @@ end
 function c32065885.ctlop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	if g:GetCount()==0 then return end
-	local sg=g:GetMaxGroup(Card.GetDefence)
+	local sg=g:GetMaxGroup(Card.GetDefense)
 	if sg:GetCount()>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
 		sg=sg:Select(tp,1,1,nil)

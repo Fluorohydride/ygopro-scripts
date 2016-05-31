@@ -45,7 +45,7 @@ function c44481227.operation(e,tp,eg,ep,ev,re,r,rp)
 	while gc do
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_UPDATE_DEFENCE)
+		e1:SetCode(EFFECT_UPDATE_DEFENSE)
 		e1:SetValue(-800)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		gc:RegisterEffect(e1)

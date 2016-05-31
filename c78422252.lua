@@ -39,7 +39,7 @@ end
 function c78422252.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	return a==Duel.GetAttacker() and bit.band(d:GetBattlePosition(),POS_DEFENCE)~=0
+	return a==Duel.GetAttacker() and bit.band(d:GetBattlePosition(),POS_DEFENSE)~=0
 end
 function c78422252.filter(c,e,tp)
 	return c:IsSetCard(0x100d) and c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

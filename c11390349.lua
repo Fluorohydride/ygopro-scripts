@@ -9,7 +9,7 @@ function c11390349.initial_effect(c)
 	e1:SetValue(c11390349.val)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_UPDATE_DEFENCE)
+	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e2)
 	--control
 	local e3=Effect.CreateEffect(c)
@@ -30,7 +30,7 @@ function c11390349.val(e,c)
 	return Duel.GetMatchingGroupCount(c11390349.vfilter,e:GetOwnerPlayer(),LOCATION_MZONE,0,nil)*-300
 end
 function c11390349.filter(c)
-	return c:IsFaceup() and c:GetDefence()==0 and c:IsControlerCanBeChanged()
+	return c:IsFaceup() and c:GetDefense()==0 and c:IsControlerCanBeChanged()
 end
 function c11390349.ctltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c11390349.filter(chkc) end
@@ -41,7 +41,7 @@ function c11390349.ctltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c11390349.ctlop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetDefence()==0 then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetDefense()==0 then
 		Duel.GetControl(tc,tp,PHASE_END,1)
 	end
 end

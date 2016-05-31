@@ -31,6 +31,6 @@ end
 function c33245030.operation(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
 	if at:IsAttackPos() and at:IsRelateToBattle() then
-		Duel.ChangePosition(at,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(at,POS_FACEUP_DEFENSE)
 	end
 end

@@ -36,5 +36,5 @@ function c73567374.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsCanTurnSet()
 end
 function c73567374.flipop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangePosition(e:GetHandler(),POS_FACEDOWN_DEFENCE)
+	Duel.ChangePosition(e:GetHandler(),POS_FACEDOWN_DEFENSE)
 end

@@ -73,7 +73,7 @@ function c44311445.spop(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		local spos=0
 		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then spos=spos+POS_FACEUP_ATTACK end
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN) then spos=spos+POS_FACEDOWN_DEFENCE end
+		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN) then spos=spos+POS_FACEDOWN_DEFENSE end
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,spos)
 		if tc:IsFacedown() then
 			Duel.ConfirmCards(1-tp,tc)

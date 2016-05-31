@@ -70,5 +70,5 @@ function c39037517.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c39037517.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c39037517.filter,nil,e)
-	Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
+	Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 end

@@ -36,7 +36,7 @@ function c88177324.filter1(c)
 	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and not c:IsDisabled()
 end
 function c88177324.filter2(c)
-	return c:IsFaceup() and (c:GetAttack()~=c:GetBaseAttack() or c:GetDefence()~=c:GetBaseDefence())
+	return c:IsFaceup() and (c:GetAttack()~=c:GetBaseAttack() or c:GetDefense()~=c:GetBaseDefense())
 end
 function c88177324.filter3(c)
 	return c:IsFaceup() and c:IsType(TYPE_EFFECT)
@@ -75,11 +75,11 @@ function c88177324.negop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+0x1fe0000)
 			tc:RegisterEffect(e1)
 		end
-		if tc:GetDefence()~=tc:GetBaseDefence() then
+		if tc:GetDefense()~=tc:GetBaseDefense() then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_SET_DEFENCE_FINAL)
-			e1:SetValue(tc:GetBaseDefence())
+			e1:SetCode(EFFECT_SET_DEFENSE_FINAL)
+			e1:SetValue(tc:GetBaseDefense())
 			e1:SetReset(RESET_EVENT+0x1fe0000)
 			tc:RegisterEffect(e1)
 		end

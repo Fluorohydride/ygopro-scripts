@@ -38,10 +38,10 @@ function c54773234.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e3,tp)
 	if a:IsRelateToBattle() then
 		local aa=a:GetTextAttack()
-		local ad=a:GetTextDefence()
+		local ad=a:GetTextDefense()
 		if a:IsImmuneToEffect(e) then
 			aa=a:GetBaseAttack()
-			ad=a:GetBaseDefence() end
+			ad=a:GetBaseDefense() end
 		if aa<0 then aa=0 end
 		if ad<0 then ad=0 end
 		local e4=Effect.CreateEffect(c)
@@ -56,17 +56,17 @@ function c54773234.activate(e,tp,eg,ep,ev,re,r,rp)
 		e5:SetType(EFFECT_TYPE_SINGLE)
 		e5:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
 		e5:SetRange(LOCATION_MZONE)
-		e5:SetCode(EFFECT_SET_DEFENCE_FINAL)
+		e5:SetCode(EFFECT_SET_DEFENSE_FINAL)
 		e5:SetReset(RESET_PHASE+PHASE_DAMAGE)
 		e5:SetValue(ad)
 		a:RegisterEffect(e5,true)
 	end
 	if d and d:IsRelateToBattle() then
 		local da=d:GetTextAttack()
-		local dd=d:GetTextDefence()
+		local dd=d:GetTextDefense()
 		if d:IsImmuneToEffect(e) then 
 			da=d:GetBaseAttack()
-			dd=d:GetBaseDefence() end
+			dd=d:GetBaseDefense() end
 		if da<0 then da=0 end
 		if dd<0 then dd=0 end
 		local e6=Effect.CreateEffect(c)
@@ -81,7 +81,7 @@ function c54773234.activate(e,tp,eg,ep,ev,re,r,rp)
 		e7:SetType(EFFECT_TYPE_SINGLE)
 		e7:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
 		e7:SetRange(LOCATION_MZONE)
-		e7:SetCode(EFFECT_SET_DEFENCE_FINAL)
+		e7:SetCode(EFFECT_SET_DEFENSE_FINAL)
 		e7:SetValue(dd)
 		e7:SetReset(RESET_PHASE+PHASE_DAMAGE)
 		d:RegisterEffect(e7,true)

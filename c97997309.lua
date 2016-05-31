@@ -89,9 +89,9 @@ function c97997309.activate2(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		Duel.HintSelection(g)
 		if tc:IsPosition(POS_FACEUP_ATTACK) then
-			Duel.ChangePosition(tc,POS_FACEDOWN_DEFENCE)
+			Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
 		else
-			local pos=Duel.SelectPosition(tp,tc,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENCE)
+			local pos=Duel.SelectPosition(tp,tc,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 			Duel.ChangePosition(tc,pos)
 		end
 	end

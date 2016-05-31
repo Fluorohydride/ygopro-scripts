@@ -29,7 +29,7 @@ function c56286179.drcon(e,tp,eg,ep,ev,re,r,rp)
 	if ep==tp then return false end
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	return d and d:IsDefencePos() and a:IsControler(tp) and a:IsRace(RACE_WARRIOR)
+	return d and d:IsDefensePos() and a:IsControler(tp) and a:IsRace(RACE_WARRIOR)
 end
 function c56286179.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end

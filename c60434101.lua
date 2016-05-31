@@ -20,7 +20,7 @@ function c60434101.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,c60434101.costfilter,1,1,REASON_DISCARD+REASON_COST)
 end
 function c60434101.filter(c,atk)
-	return c:IsFaceup() and c:IsDestructable() and c:GetDefence()<=atk
+	return c:IsFaceup() and c:IsDestructable() and c:GetDefense()<=atk
 end
 function c60434101.tg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
@@ -33,7 +33,7 @@ end
 function c60434101.op(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:GetDefence()<=c:GetAttack() then
+	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:GetDefense()<=c:GetAttack() then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

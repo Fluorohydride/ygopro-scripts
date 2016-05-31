@@ -28,5 +28,5 @@ function c99000107.aclimit(e,re,tp)
 	return tc:IsLocation(LOCATION_MZONE) and tc:IsFaceup() and tc:IsAttackPos() and re:IsActiveType(TYPE_MONSTER) and not tc:IsImmuneToEffect(e)
 end
 function c99000107.tgcon(e)
-	return e:GetHandler():IsDefencePos()
+	return e:GetHandler():IsDefensePos()
 end

@@ -14,10 +14,10 @@ function c75988594.initial_effect(c)
 	e2:SetTarget(c75988594.thtg)
 	e2:SetOperation(c75988594.thop)
 	c:RegisterEffect(e2)
-	--defence attack
+	--defense attack
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetCode(EFFECT_DEFENCE_ATTACK)
+	e3:SetCode(EFFECT_DEFENSE_ATTACK)
 	e3:SetValue(1)
 	c:RegisterEffect(e3)
 end

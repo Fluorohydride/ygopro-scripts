@@ -12,7 +12,7 @@ function c19612721.initial_effect(c)
 end
 function c19612721.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local t=Duel.GetAttackTarget()
-	if chk==0 then return Duel.GetAttacker()==e:GetHandler() and t~=nil and t:IsDefencePos() and t:IsDefenceAbove(2000) end
+	if chk==0 then return Duel.GetAttacker()==e:GetHandler() and t~=nil and t:IsDefensePos() and t:IsDefenseAbove(2000) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,t,1,0,0)
 end
 function c19612721.desop(e,tp,eg,ep,ev,re,r,rp)

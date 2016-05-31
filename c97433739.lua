@@ -107,9 +107,5 @@ function c97433739.checkop2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c97433739.lpop(e,tp,eg,ep,ev,re,r,rp)
 	local lp=Duel.GetLP(tp)
-	if lp<=4000 then
-		Duel.SetLP(tp,0)
-	else
-		Duel.SetLP(tp,lp-4000)
-	end
+	Duel.SetLP(tp,lp-4000)
 end

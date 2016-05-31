@@ -12,8 +12,8 @@ function c7852878.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c7852878.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttackTarget()==e:GetHandler() and e:GetHandler():IsDefencePos()
-		and Duel.GetAttacker():GetAttack()<e:GetHandler():GetDefence()
+	return Duel.GetAttackTarget()==e:GetHandler() and e:GetHandler():IsDefensePos()
+		and Duel.GetAttacker():GetAttack()<e:GetHandler():GetDefense()
 end
 function c7852878.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

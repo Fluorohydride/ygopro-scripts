@@ -1,6 +1,6 @@
 --静寂虫
 function c40867519.initial_effect(c)
-	--to defence
+	--to defense
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(40867519,0))
 	e1:SetCategory(CATEGORY_POSITION)
@@ -43,7 +43,7 @@ end
 function c40867519.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() and c:IsAttackPos() and c:IsRelateToEffect(e) then
-		Duel.ChangePosition(c,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end
 function c40867519.distarget(e,c)

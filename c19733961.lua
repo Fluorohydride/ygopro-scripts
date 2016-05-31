@@ -10,7 +10,7 @@ function c19733961.initial_effect(c)
 	e1:SetValue(c19733961.atkval)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_UPDATE_DEFENCE)
+	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	e2:SetValue(c19733961.defval)
 	c:RegisterEffect(e2)
 end
@@ -19,7 +19,7 @@ function c19733961.filter(c)
 end
 function c19733961.atkval(e,c)
 	local g=Duel.GetMatchingGroup(c19733961.filter,c:GetControler(),LOCATION_MZONE,0,nil)
-	if g:IsExists(Card.IsDefencePos,1,nil) then return 0 end
+	if g:IsExists(Card.IsDefensePos,1,nil) then return 0 end
 	return 500
 end
 function c19733961.defval(e,c)

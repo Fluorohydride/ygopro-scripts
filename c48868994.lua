@@ -46,7 +46,7 @@ function c48868994.opa(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Damage(p,d,REASON_EFFECT)
 end
 function c48868994.cond(e,tp,eg,ep,ev,re,r,rp)
-	return not e:GetHandler():IsDisabled() and e:GetHandler():IsDefencePos()
+	return not e:GetHandler():IsDisabled() and e:GetHandler():IsDefensePos()
 		and not e:GetHandler():IsHasEffect(48868994)
 end
 function c48868994.filter(c)

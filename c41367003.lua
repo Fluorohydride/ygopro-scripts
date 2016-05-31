@@ -12,13 +12,13 @@ function c41367003.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c41367003.filter(c,e,tp)
-	return c:IsPosition(POS_FACEUP_DEFENCE) and c:IsDefenceBelow(1000)
+	return c:IsPosition(POS_FACEUP_DEFENSE) and c:IsDefenseBelow(1000)
 end
 function c41367003.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c41367003.filter(chkc,e,tp) end
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
 		and Duel.IsExistingTarget(c41367003.filter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUPDEFENCE)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUPDEFENSE)
 	Duel.SelectTarget(tp,c41367003.filter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end

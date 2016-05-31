@@ -37,6 +37,6 @@ function c99861526.poscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c99861526.posop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		Duel.ChangePosition(e:GetHandler(),POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(e:GetHandler(),POS_FACEUP_DEFENSE)
 	end
 end

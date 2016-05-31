@@ -10,7 +10,7 @@ function c93747864.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c93747864.filter(c)
-	return not c:IsPosition(POS_FACEUP_DEFENCE)
+	return not c:IsPosition(POS_FACEUP_DEFENSE)
 end
 function c93747864.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c93747864.filter,tp,LOCATION_MZONE,0,1,nil) end
@@ -20,6 +20,6 @@ end
 function c93747864.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c93747864.filter,tp,LOCATION_MZONE,0,nil)
 	if g:GetCount()>0 then
-		Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 	end
 end

@@ -13,7 +13,7 @@ function c94535485.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCode(EFFECT_UPDATE_DEFENCE)
+	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	e2:SetValue(c94535485.defval)
 	c:RegisterEffect(e2)
 end
@@ -21,9 +21,9 @@ function c94535485.atlimit(e,c)
 	return c~=e:GetHandler()
 end
 function c94535485.deffilter(c)
-	return c:GetBaseDefence()>=0 and c:IsPosition(POS_FACEUP_DEFENCE)
+	return c:GetBaseDefense()>=0 and c:IsPosition(POS_FACEUP_DEFENSE)
 end
 function c94535485.defval(e,c)
 	local g=Duel.GetMatchingGroup(c94535485.deffilter,c:GetControler(),LOCATION_MZONE,0,c)
-	return g:GetSum(Card.GetBaseDefence)
+	return g:GetSum(Card.GetBaseDefense)
 end

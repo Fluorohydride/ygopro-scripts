@@ -14,7 +14,7 @@ function c7044562.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0 end
 end
 function c7044562.filter(c,lp)
-	return c:GetAttack()>=0 and c:GetDefence()>=0 and c:GetAttack()+c:GetDefence()==lp and c:IsAbleToHand()
+	return c:GetAttack()>=0 and c:GetDefense()>=0 and c:GetAttack()+c:GetDefense()==lp and c:IsAbleToHand()
 end
 function c7044562.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)

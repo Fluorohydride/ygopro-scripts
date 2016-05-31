@@ -27,7 +27,7 @@ function c21208154.initial_effect(c)
 	e4:SetValue(c21208154.adval)
 	c:RegisterEffect(e4)
 	local e5=e4:Clone()
-	e5:SetCode(EFFECT_SET_DEFENCE_FINAL)
+	e5:SetCode(EFFECT_SET_DEFENSE_FINAL)
 	c:RegisterEffect(e5)
 	--aclimit
 	local e6=Effect.CreateEffect(c)

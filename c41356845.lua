@@ -23,13 +23,13 @@ end
 function c41356845.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFacedown() then
-		Duel.ChangePosition(tc,0,POS_FACEUP_ATTACK,0,POS_FACEUP_DEFENCE,false,true)
-		if tc:IsDefenceBelow(2000) then
+		Duel.ChangePosition(tc,0,POS_FACEUP_ATTACK,0,POS_FACEUP_DEFENSE,false,true)
+		if tc:IsDefenseBelow(2000) then
 			Duel.BreakEffect()
 			Duel.Destroy(tc,REASON_EFFECT)
 		else
 			Duel.ConfirmCards(1-tc:GetControler(),tc)
-			Duel.ChangePosition(tc,POS_FACEDOWN_DEFENCE)
+			Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
 		end
 	end
 end

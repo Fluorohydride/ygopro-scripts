@@ -20,7 +20,7 @@ function c4162088.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c4162088.filter(c,atk)
-	return c:IsFaceup() and (c:IsAttackAbove(atk) or c:IsDefenceAbove(atk)) and c:IsDestructable()
+	return c:IsFaceup() and (c:IsAttackAbove(atk) or c:IsDefenseAbove(atk)) and c:IsDestructable()
 end
 function c4162088.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c4162088.filter(chkc,e:GetHandler():GetAttack()) end

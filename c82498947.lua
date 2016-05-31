@@ -17,5 +17,5 @@ function c82498947.con(e)
 	return Duel.IsExistingMatchingCard(c82498947.filter,e:GetHandler():GetControler(),LOCATION_MZONE,0,1,e:GetHandler())
 end
 function c82498947.tg(e,c)
-	return c:GetAttack()>=e:GetHandler():GetDefence()
+	return c:GetAttack()>=e:GetHandler():GetDefense()
 end

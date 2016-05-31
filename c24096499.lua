@@ -35,7 +35,7 @@ function c24096499.spop(e,tp,eg,ep,ev,re,r,rp,chk)
 	if tc:IsRelateToEffect(e) then
 		local spos=0
 		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then spos=spos+POS_FACEUP_ATTACK end
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN) then spos=spos+POS_FACEDOWN_DEFENCE end
+		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN) then spos=spos+POS_FACEDOWN_DEFENSE end
 		if spos~=0 then Duel.SpecialSummon(tc,0,tp,tp,false,false,spos) end
 	end
 end

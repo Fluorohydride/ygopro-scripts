@@ -125,7 +125,7 @@ function c58600555.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c58600555.tdfilter(c)
-	return c:IsPosition(POS_DEFENCE) and c:IsAbleToDeck()
+	return c:IsPosition(POS_DEFENSE) and c:IsAbleToDeck()
 end
 function c58600555.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c58600555.tdfilter(chkc) end

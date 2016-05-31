@@ -36,7 +36,7 @@ function c3912064.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c3912064.posfilter(c)
-	return c:IsDefencePos() or c:IsFacedown()
+	return c:IsDefensePos() or c:IsFacedown()
 end
 function c3912064.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE

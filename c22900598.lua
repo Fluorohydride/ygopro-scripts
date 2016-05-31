@@ -49,7 +49,7 @@ function c22900598.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local g=sg:Select(tp,1,1,nil)
 			if sg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
-			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 		end
 	end
 end

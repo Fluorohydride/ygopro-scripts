@@ -24,7 +24,7 @@ end
 function c71408082.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetAttackTarget()
-	return tc and tc~=c and tc:IsDefencePos()
+	return tc and tc~=c and tc:IsDefensePos()
 end
 function c71408082.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

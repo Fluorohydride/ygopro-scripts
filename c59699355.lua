@@ -11,14 +11,14 @@ function c59699355.initial_effect(c)
 end
 function c59699355.condition(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
-	return d and d:IsDefencePos() and d:IsSetCard(0x24)
+	return d and d:IsDefensePos() and d:IsSetCard(0x24)
 end
 function c59699355.activate(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
 	if d:IsRelateToBattle() then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_UPDATE_DEFENCE)
+		e1:SetCode(EFFECT_UPDATE_DEFENSE)
 		e1:SetValue(2000)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		d:RegisterEffect(e1)

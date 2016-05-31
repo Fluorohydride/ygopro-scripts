@@ -25,9 +25,9 @@ function c95526884.reccon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	if not d then return false end
-	local m=a:GetAttack()-d:GetDefence()
+	local m=a:GetAttack()-d:GetDefense()
 	e:SetLabel(m)
-	return c==a and d:GetDefence()>=0 and m>0 and bit.band(d:GetBattlePosition(),POS_DEFENCE)~=0
+	return c==a and d:GetDefense()>=0 and m>0 and bit.band(d:GetBattlePosition(),POS_DEFENSE)~=0
 end
 function c95526884.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

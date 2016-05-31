@@ -28,7 +28,7 @@ end
 function c4587638.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	return d and eg:GetFirst()==a and a:IsControler(tp) and a:IsRace(RACE_BEAST) and d:IsDefencePos()
+	return d and eg:GetFirst()==a and a:IsControler(tp) and a:IsRace(RACE_BEAST) and d:IsDefensePos()
 end
 function c4587638.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsFaceup() end
@@ -47,7 +47,7 @@ function c4587638.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
-		e2:SetCode(EFFECT_UPDATE_DEFENCE)
+		e2:SetCode(EFFECT_UPDATE_DEFENSE)
 		tc:RegisterEffect(e2)
 	end
 end

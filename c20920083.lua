@@ -38,13 +38,13 @@ function c20920083.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c20920083.cfilter(c)
-	return c:IsFaceup() and c:IsPosition(POS_FACEUP_DEFENCE)
+	return c:IsFaceup() and c:IsPosition(POS_FACEUP_DEFENSE)
 end
 function c20920083.con(e)
 	return Duel.IsExistingMatchingCard(c20920083.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,2,nil)
 end
 function c20920083.tg(e,c)
-	return c:IsDefencePos()
+	return c:IsDefensePos()
 end
 function c20920083.indval(e,re,rp)
 	return rp~=e:GetHandlerPlayer()

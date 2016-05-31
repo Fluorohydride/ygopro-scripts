@@ -21,7 +21,7 @@ function c99517131.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c99517131.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFacedown,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	Duel.ChangePosition(g,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK,POS_FACEUP_DEFENCE,POS_FACEUP_DEFENCE,true)
+	Duel.ChangePosition(g,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK,POS_FACEUP_DEFENSE,POS_FACEUP_DEFENSE,true)
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 	local rec=Duel.GetMatchingGroupCount(c99517131.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)*400
 	Duel.Recover(p,rec,REASON_EFFECT)

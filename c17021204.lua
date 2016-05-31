@@ -11,7 +11,7 @@ function c17021204.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c17021204.spfilter(c)
-	return c:IsPosition(POS_FACEUP_DEFENCE) and c:IsAbleToGraveAsCost()
+	return c:IsPosition(POS_FACEUP_DEFENSE) and c:IsAbleToGraveAsCost()
 end
 function c17021204.cfilter(c)
 	return c:GetRace()~=RACE_INSECT

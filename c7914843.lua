@@ -49,6 +49,6 @@ function c7914843.desop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(-500)
 	bc:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_UPDATE_DEFENCE)
+	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	bc:RegisterEffect(e2)
 end

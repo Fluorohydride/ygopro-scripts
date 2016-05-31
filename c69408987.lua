@@ -5,7 +5,7 @@ function c69408987.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
-	--to defence
+	--to defense
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EVENT_DAMAGE_STEP_END)
@@ -20,7 +20,7 @@ function c69408987.poscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c69408987.posop(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
-	if Duel.ChangePosition(a,POS_FACEUP_DEFENCE)~=0 then
+	if Duel.ChangePosition(a,POS_FACEUP_DEFENSE)~=0 then
 		e:GetHandler():CreateRelation(a,RESET_EVENT+0x1fe0000)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

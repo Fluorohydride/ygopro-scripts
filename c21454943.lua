@@ -31,11 +31,11 @@ end
 function c21454943.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=e:GetLabelObject()
 	if chk==0 then return Duel.CheckLPCost(tp,100) and e:GetHandler():GetFlagEffect(21454943)==0
-						and (bc:IsAttackAbove(100) or bc:IsDefenceAbove(100)) end
+						and (bc:IsAttackAbove(100) or bc:IsDefenseAbove(100)) end
 	local lp=Duel.GetLP(tp)-1
 	local alp=100
 	local maxpay=bc:GetAttack()
-	local def=bc:GetDefence()
+	local def=bc:GetDefense()
 	if maxpay<def then maxpay=def end
 	if maxpay<lp then lp=maxpay end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(21454943,1))
@@ -65,6 +65,6 @@ function c21454943.operation(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetValue(e:GetLabel())
 	tc:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_UPDATE_DEFENCE)
+	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	tc:RegisterEffect(e2)
 end

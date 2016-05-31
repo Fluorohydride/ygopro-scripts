@@ -55,7 +55,7 @@ function c19747827.eqop(e,tp,eg,ep,ev,re,r,rp)
 	e3:SetReset(RESET_EVENT+0x1fe0000)
 	c:RegisterEffect(e3)
 	local e4=e3:Clone()
-	e4:SetCode(EFFECT_UPDATE_DEFENCE)
+	e4:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e4)
 end
 function c19747827.eqlimit(e,c)

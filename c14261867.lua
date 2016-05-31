@@ -28,13 +28,13 @@ end
 function c14261867.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		Duel.ChangePosition(c,POS_FACEDOWN_DEFENCE)
+		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end
 function c14261867.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	return c==Duel.GetAttacker() and bc and bc:GetBattlePosition()==POS_FACEDOWN_DEFENCE
+	return c==Duel.GetAttacker() and bc and bc:GetBattlePosition()==POS_FACEDOWN_DEFENSE
 end
 function c14261867.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

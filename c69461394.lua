@@ -25,7 +25,7 @@ end
 function c69461394.condition(e,tp,eg,ep,ev,re,r,rp)
 	local dg=eg:GetFirst()
 	return eg:GetCount()==1 and dg:IsLocation(LOCATION_GRAVE) and dg:IsReason(REASON_BATTLE)
-		and dg:GetBattlePosition()==POS_FACEDOWN_DEFENCE and dg:GetReasonCard()==e:GetHandler()
+		and dg:GetBattlePosition()==POS_FACEDOWN_DEFENSE and dg:GetReasonCard()==e:GetHandler()
 end
 function c69461394.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end

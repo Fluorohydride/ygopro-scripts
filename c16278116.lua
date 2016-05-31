@@ -36,7 +36,7 @@ function c16278116.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c16278116.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and c:IsAttackBelow(2500) and c:IsDefenceBelow(2500)
+	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and c:IsAttackBelow(2500) and c:IsDefenseBelow(2500)
 end
 function c16278116.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c16278116.filter(chkc) end

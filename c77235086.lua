@@ -25,7 +25,7 @@ function c77235086.initial_effect(c)
 end
 function c77235086.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local dam=e:GetHandler():GetBattleTarget():GetDefence()
+	local dam=e:GetHandler():GetBattleTarget():GetDefense()
 	if dam<0 then dam=0 end
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(dam)

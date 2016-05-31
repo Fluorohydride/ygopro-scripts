@@ -48,7 +48,7 @@ function c57288064.posop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)~=0 then
 		local g=Duel.GetMatchingGroup(c57288064.posfilter,tp,0,LOCATION_MZONE,nil,tc:GetAttack())
-		Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 	end
 end
 function c57288064.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

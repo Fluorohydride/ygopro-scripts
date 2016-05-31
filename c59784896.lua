@@ -1,6 +1,6 @@
 --ダークゼブラ
 function c59784896.initial_effect(c)
-	--to defence
+	--to defense
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(59784896,0))
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
@@ -24,7 +24,7 @@ end
 function c59784896.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsPosition(POS_FACEUP_ATTACK) then
-		Duel.ChangePosition(c,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

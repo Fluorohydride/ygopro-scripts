@@ -17,7 +17,7 @@ function c4941482.condition(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsReason(REASON_EFFECT)
 end
 function c4941482.filter(c)
-	return c:IsDefencePos() and c:IsControlerCanBeChanged()
+	return c:IsDefensePos() and c:IsControlerCanBeChanged()
 end
 function c4941482.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c4941482.filter(chkc) end
@@ -28,7 +28,7 @@ function c4941482.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c4941482.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsDefencePos() and tc:IsRelateToEffect(e) then
+	if tc and tc:IsDefensePos() and tc:IsRelateToEffect(e) then
 		Duel.GetControl(tc,tp)
 	end
 end

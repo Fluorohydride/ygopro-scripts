@@ -22,7 +22,7 @@ function c54912977.initial_effect(c)
 end
 function c54912977.condition(e,tp,eg,ep,ev,re,r,rp)
 	return r~=REASON_REPLACE and Duel.GetAttackTarget()==e:GetHandler() and Duel.GetAttacker():IsControler(1-tp)
-		and e:GetHandler():GetBattlePosition()==POS_FACEDOWN_DEFENCE
+		and e:GetHandler():GetBattlePosition()==POS_FACEDOWN_DEFENSE
 end
 function c54912977.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) end

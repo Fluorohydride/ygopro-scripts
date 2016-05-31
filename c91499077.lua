@@ -59,7 +59,7 @@ function c91499077.cbcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c91499077.cbop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and Duel.ChangePosition(c,POS_FACEUP_DEFENCE)~=0 then
+	if c:IsFaceup() and c:IsRelateToEffect(e) and Duel.ChangePosition(c,POS_FACEUP_DEFENSE)~=0 then
 		local at=Duel.GetAttacker()
 		if at:IsAttackable() and not at:IsImmuneToEffect(e) and not c:IsImmuneToEffect(e) then
 			Duel.CalculateDamage(at,c)

@@ -51,8 +51,8 @@ function c60549248.thop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+0x1ff0000)
 			c:RegisterEffect(e1)
 			local e2=e1:Clone()
-			e2:SetCode(EFFECT_SET_DEFENCE_FINAL)
-			e2:SetValue(c:GetBaseDefence()*2)
+			e2:SetCode(EFFECT_SET_DEFENSE_FINAL)
+			e2:SetValue(c:GetBaseDefense()*2)
 			c:RegisterEffect(e2)
 		end
 	end

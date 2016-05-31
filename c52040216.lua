@@ -9,7 +9,7 @@ function c52040216.initial_effect(c)
 	e1:SetValue(c52040216.val)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_UPDATE_DEFENCE)
+	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e2)
 end
 function c52040216.val(e,c)

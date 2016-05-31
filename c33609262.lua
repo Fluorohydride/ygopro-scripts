@@ -12,7 +12,7 @@ function c33609262.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c33609262.cfilter(c)
-	return (c:GetAttack()==2400 or c:GetAttack()==2800) and c:GetDefence()==1000 and not c:IsPublic()
+	return (c:GetAttack()==2400 or c:GetAttack()==2800) and c:GetDefense()==1000 and not c:IsPublic()
 end
 function c33609262.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c33609262.cfilter,tp,LOCATION_HAND,0,1,nil) end

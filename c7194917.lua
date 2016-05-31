@@ -46,7 +46,7 @@ function c7194917.adop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
-		e2:SetCode(EFFECT_SET_DEFENCE_FINAL)
+		e2:SetCode(EFFECT_SET_DEFENSE_FINAL)
 		e2:SetValue(0)
 		e2:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e2)
@@ -57,7 +57,7 @@ function c7194917.poscon1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c7194917.posop1(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsAttackPos() then
-		Duel.ChangePosition(e:GetHandler(),POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(e:GetHandler(),POS_FACEUP_DEFENSE)
 	end
 end
 function c7194917.poscon2(e,tp,eg,ep,ev,re,r,rp)
@@ -65,7 +65,7 @@ function c7194917.poscon2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c7194917.posop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToBattle() and c:IsDefencePos() then
+	if c:IsRelateToBattle() and c:IsDefensePos() then
 		Duel.ChangePosition(c,POS_FACEUP_ATTACK)
 	end
 end

@@ -37,7 +37,7 @@ function c50282757.splimit(e,se,sp,st)
 	return st==SUMMON_TYPE_FUSION+0x10
 end
 function c50282757.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPosition(POS_FACEUP_DEFENCE) and Duel.GetTurnPlayer()==tp
+	return e:GetHandler():IsPosition(POS_FACEUP_DEFENSE) and Duel.GetTurnPlayer()==tp
 end
 function c50282757.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

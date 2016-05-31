@@ -29,12 +29,12 @@ end
 function c78266168.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		Duel.ChangePosition(c,POS_FACEDOWN_DEFENCE)
+		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end
 function c78266168.descon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttackTarget()==e:GetHandler() and e:GetHandler():GetBattlePosition()==POS_FACEDOWN_DEFENCE
-		and Duel.GetAttacker():GetAttack()<e:GetHandler():GetDefence()
+	return Duel.GetAttackTarget()==e:GetHandler() and e:GetHandler():GetBattlePosition()==POS_FACEDOWN_DEFENSE
+		and Duel.GetAttacker():GetAttack()<e:GetHandler():GetDefense()
 end
 function c78266168.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

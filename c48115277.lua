@@ -57,7 +57,7 @@ function c48115277.spop(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,48115278,0,0x4011,1000,1500,4,RACE_ROCK,ATTRIBUTE_EARTH) then
 		for i=1,ct+1 do
 			local token=Duel.CreateToken(tp,48115278)
-			Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+			Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_CANNOT_ATTACK)

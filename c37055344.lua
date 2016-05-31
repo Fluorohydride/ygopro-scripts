@@ -27,10 +27,10 @@ function c37055344.filter1(c)
 	return c:IsFaceup() and c:IsSetCard(0x8d) and c:IsCanTurnSet()
 end
 function c37055344.filter2(c)
-	return c:IsPosition(POS_FACEDOWN_DEFENCE)
+	return c:IsPosition(POS_FACEDOWN_DEFENSE)
 end
 function c37055344.filter3(c)
-	return c:IsPosition(POS_FACEDOWN_DEFENCE)
+	return c:IsPosition(POS_FACEDOWN_DEFENSE)
 end
 function c37055344.filter4(c)
 	return c:IsFaceup() and c:IsCanTurnSet()
@@ -60,7 +60,7 @@ function c37055344.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 			local g=Duel.SelectTarget(tp,c37055344.filter1,tp,LOCATION_MZONE,0,1,1,nil)
 			Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 		else
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEDOWNDEFENCE)
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEDOWNDEFENSE)
 			local g=Duel.SelectTarget(tp,c37055344.filter3,tp,LOCATION_MZONE,0,1,1,nil)
 			Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 		end
@@ -93,7 +93,7 @@ function c37055344.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		local g=Duel.SelectTarget(tp,c37055344.filter1,tp,LOCATION_MZONE,0,1,1,nil)
 		Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEDOWNDEFENCE)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEDOWNDEFENSE)
 		local g=Duel.SelectTarget(tp,c37055344.filter3,tp,LOCATION_MZONE,0,1,1,nil)
 		Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 	end
@@ -104,8 +104,8 @@ function c37055344.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if e:GetLabel()==0 then
 		if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
-		if Duel.ChangePosition(tc,POS_FACEDOWN_DEFENCE)==0 then return end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEDOWNDEFENCE)
+		if Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)==0 then return end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEDOWNDEFENSE)
 		local g=Duel.SelectMatchingCard(tp,c37055344.filter2,tp,0,LOCATION_MZONE,1,1,nil)
 		if g:GetCount()>0 then
 			Duel.ChangePosition(g,POS_FACEUP_ATTACK)
@@ -116,7 +116,7 @@ function c37055344.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 		local g=Duel.SelectMatchingCard(tp,c37055344.filter4,tp,0,LOCATION_MZONE,1,1,nil)
 		if g:GetCount()>0 then
-			Duel.ChangePosition(g,POS_FACEDOWN_DEFENCE)
+			Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
 		end
 	end
 end

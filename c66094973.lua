@@ -12,7 +12,7 @@ function c66094973.initial_effect(c)
 	e1:SetTarget(c66094973.eqtg)
 	e1:SetOperation(c66094973.eqop)
 	c:RegisterEffect(e1)
-	--to defence
+	--to defense
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EVENT_PHASE+PHASE_BATTLE)
@@ -39,7 +39,7 @@ function c66094973.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsHasEffect(66094973)
 end
 function c66094973.filter(c)
-	return c:IsPosition(POS_FACEUP_DEFENCE) and c:IsAbleToChangeControler()
+	return c:IsPosition(POS_FACEUP_DEFENSE) and c:IsAbleToChangeControler()
 end
 function c66094973.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c66094973.filter(chkc) end
@@ -96,7 +96,7 @@ end
 function c66094973.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsAttackPos() then
-		Duel.ChangePosition(c,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end
 function c66094973.spcon(e,tp,eg,ep,ev,re,r,rp)
@@ -111,7 +111,7 @@ end
 function c66094973.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummon(tp) then
-		if Duel.SpecialSummon(tc,0,tp,1-tp,false,false,POS_FACEUP_DEFENCE)==0 then
+		if Duel.SpecialSummon(tc,0,tp,1-tp,false,false,POS_FACEUP_DEFENSE)==0 then
 			Duel.SendtoGrave(tc,REASON_EFFECT)
 		end
 	end

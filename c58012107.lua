@@ -1,6 +1,6 @@
 --エーリアン・サイコ
 function c58012107.initial_effect(c)
-	--to defence
+	--to defense
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(58012107,0))
 	e1:SetCategory(CATEGORY_POSITION)
@@ -28,7 +28,7 @@ end
 function c58012107.poop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() and c:IsAttackPos() and c:IsRelateToEffect(e) then
-		Duel.ChangePosition(c,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end
 function c58012107.atktg(e,c)

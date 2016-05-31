@@ -17,7 +17,7 @@ function c86327225.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	return c:IsRelateToBattle() and bc:IsLocation(LOCATION_GRAVE) and bc:IsType(TYPE_MONSTER)
-		and bit.band(bc:GetBattlePosition(),POS_DEFENCE)~=0
+		and bit.band(bc:GetBattlePosition(),POS_DEFENSE)~=0
 end
 function c86327225.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

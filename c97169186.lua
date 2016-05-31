@@ -15,13 +15,13 @@ end
 function c97169186.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c97169186.filter,tp,0,LOCATION_MZONE,1,nil) end
 	local g=Duel.GetMatchingGroup(c97169186.filter,tp,0,LOCATION_MZONE,nil)
-	local tg=g:GetMaxGroup(Card.GetDefence)
+	local tg=g:GetMaxGroup(Card.GetDefense)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tg,1,0,0)
 end
 function c97169186.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c97169186.filter,tp,0,LOCATION_MZONE,nil)
 	if g:GetCount()>0 then
-		local tg=g:GetMaxGroup(Card.GetDefence)
+		local tg=g:GetMaxGroup(Card.GetDefense)
 		if tg:GetCount()>1 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 			local sg=tg:Select(tp,1,1,nil)

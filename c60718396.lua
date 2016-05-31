@@ -15,7 +15,7 @@ function c60718396.condition(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsChainNegatable(ev)
 end
 function c60718396.cfilter(c)
-	return c:GetDefence()==200 and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsAbleToRemoveAsCost()
+	return c:GetDefense()==200 and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsAbleToRemoveAsCost()
 end
 function c60718396.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c60718396.cfilter,tp,LOCATION_GRAVE,0,1,nil) end

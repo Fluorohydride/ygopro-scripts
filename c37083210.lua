@@ -14,7 +14,7 @@ function c37083210.condition(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local at=Duel.GetAttackTarget()
 	return Duel.GetCurrentPhase()==PHASE_DAMAGE and not Duel.IsDamageCalculated()
-		and a:IsControler(1-tp) and at and at:IsPosition(POS_FACEUP_DEFENCE) and a:GetAttack()<at:GetDefence()
+		and a:IsControler(1-tp) and at and at:IsPosition(POS_FACEUP_DEFENSE) and a:GetAttack()<at:GetDefense()
 end
 function c37083210.activate(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttackTarget()

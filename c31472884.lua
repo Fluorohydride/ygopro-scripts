@@ -31,11 +31,11 @@ function c31472884.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c31472884.cfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsDiscardable() and c:GetAttack()>=0 and c:GetDefence()>=0
+	return c:IsType(TYPE_MONSTER) and c:IsDiscardable() and c:GetAttack()>=0 and c:GetDefense()>=0
 		and Duel.IsExistingTarget(c31472884.tgfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,nil,c)
 end
 function c31472884.tgfilter(c,dc)
-	return c:IsFaceup() and (c:GetAttack()~=dc:GetAttack() or c:GetDefence()~=dc:GetDefence())
+	return c:IsFaceup() and (c:GetAttack()~=dc:GetAttack() or c:GetDefense()~=dc:GetDefense())
 end
 function c31472884.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
@@ -66,7 +66,7 @@ end
 function c31472884.activate(e,tp,eg,ep,ev,re,r,rp)
 	local cc=e:GetLabelObject()
 	local atk=cc:GetAttack()
-	local def=cc:GetDefence()
+	local def=cc:GetDefense()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())
@@ -77,7 +77,7 @@ function c31472884.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 		local e2=Effect.CreateEffect(e:GetHandler())
 		e2:SetType(EFFECT_TYPE_SINGLE)
-		e2:SetCode(EFFECT_SET_DEFENCE_FINAL)
+		e2:SetCode(EFFECT_SET_DEFENSE_FINAL)
 		e2:SetValue(def)
 		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e2)

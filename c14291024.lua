@@ -34,7 +34,7 @@ function c14291024.initial_effect(c)
 	c:RegisterEffect(e4)
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_SINGLE)
-	e5:SetCode(EFFECT_SET_DEFENCE_FINAL)
+	e5:SetCode(EFFECT_SET_DEFENSE_FINAL)
 	e5:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e5:SetRange(LOCATION_MZONE)
 	e5:SetCondition(c14291024.adcon)
@@ -76,7 +76,7 @@ function c14291024.atkval(e,c)
 	return c:GetFirstCardTarget():GetAttack()
 end
 function c14291024.defval(e,c)
-	return c:GetFirstCardTarget():GetDefence()
+	return c:GetFirstCardTarget():GetDefense()
 end
 function c14291024.sdcon(e)
 	return e:GetHandler():GetFirstCardTarget()==nil and e:GetHandler():GetFlagEffect(14291024)~=0

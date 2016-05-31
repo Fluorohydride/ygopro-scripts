@@ -57,7 +57,7 @@ function c25704359.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c25704359.cfilter,1,nil,tp)
 end
 function c25704359.spfilter(c,e,tp,att)
-	return c:IsRace(RACE_SPELLCASTER) and c:GetDefence()==1500 and c:IsAttribute(att)
+	return c:IsRace(RACE_SPELLCASTER) and c:GetDefense()==1500 and c:IsAttribute(att)
 		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN))
 end
 function c25704359.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -85,7 +85,7 @@ function c25704359.spop(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		local spos=0
 		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then spos=spos+POS_FACEUP_ATTACK end
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN) then spos=spos+POS_FACEDOWN_DEFENCE end
+		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN) then spos=spos+POS_FACEDOWN_DEFENSE end
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,spos)
 		if tc:IsFacedown() then
 			Duel.ConfirmCards(1-tp,tc)

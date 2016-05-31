@@ -39,9 +39,9 @@ function c81210420.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=g:Select(tp,2,2,nil)
 	if tc:IsFaceup() then
-		if tc:IsHasEffect(EFFECT_DEVINE_LIGHT) then Duel.ChangePosition(tc,POS_FACEUP_DEFENCE)
+		if tc:IsHasEffect(EFFECT_DEVINE_LIGHT) then Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)
 		else
-			Duel.ChangePosition(tc,POS_FACEDOWN_DEFENCE)
+			Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
 			tc:ClearEffectRelation()
 		end
 	end
@@ -68,14 +68,14 @@ function c81210420.activate(e,tp,eg,ep,ev,re,r,rp)
 		e4:SetValue(0)
 		tg:RegisterEffect(e4,true)
 		local e5=e1:Clone()
-		e5:SetCode(EFFECT_SET_BASE_DEFENCE)
+		e5:SetCode(EFFECT_SET_BASE_DEFENSE)
 		e5:SetValue(0)
 		tg:RegisterEffect(e5,true)
 		tg:RegisterFlagEffect(81210420,RESET_EVENT+0x47c0000+RESET_PHASE+PHASE_BATTLE,0,1,fid)
 		tg:SetStatus(STATUS_NO_LEVEL,true)
 		tg=sg:GetNext()
 	end
-	Duel.SpecialSummon(sg,0,tp,tp,true,false,POS_FACEDOWN_DEFENCE)
+	Duel.SpecialSummon(sg,0,tp,tp,true,false,POS_FACEDOWN_DEFENSE)
 	Duel.ConfirmCards(1-tp,sg)
 	sg:AddCard(tc)
 	Duel.ShuffleSetCard(sg)

@@ -11,7 +11,7 @@ function c65025250.initial_effect(c)
 	e2:SetValue(c65025250.repval)
 	e2:SetOperation(c65025250.repop)
 	c:RegisterEffect(e2)
-	--to defence
+	--to defense
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(65025250,0))
 	e3:SetCategory(CATEGORY_POSITION)
@@ -51,7 +51,7 @@ end
 function c65025250.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsPosition(POS_FACEUP_ATTACK) and c:IsRelateToEffect(e) then
-		Duel.ChangePosition(c,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end
 function c65025250.tgtg(e,re,c)

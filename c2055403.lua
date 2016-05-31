@@ -29,11 +29,7 @@ function c2055403.activate(e,tp,eg,ep,ev,re,r,rp)
 		local ct=og:FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_EXTRA)
 		if ct>0 then
 			Duel.BreakEffect()
-			if Duel.GetLP(tp)>=ct*1000 then
-				Duel.SetLP(tp,Duel.GetLP(tp)-ct*1000)
-			else
-				Duel.SetLP(tp,0)
-			end
+			Duel.SetLP(tp,Duel.GetLP(tp)-ct*1000)
 		end
 	end
 end

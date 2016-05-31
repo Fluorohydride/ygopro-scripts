@@ -8,7 +8,7 @@ function c42851643.initial_effect(c)
 	e1:SetTarget(c42851643.lvtg)
 	e1:SetOperation(c42851643.lvop)
 	c:RegisterEffect(e1)
-	--to defence
+	--to defense
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EVENT_DAMAGE_STEP_END)
@@ -47,6 +47,6 @@ end
 function c42851643.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsAttackPos() then
-		Duel.ChangePosition(c,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end

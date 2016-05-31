@@ -29,7 +29,7 @@ function c51085303.adcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c51085303.adop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and c:GetDefence()>=200 then
+	if c:IsRelateToEffect(e) and c:IsFaceup() and c:GetDefense()>=200 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
@@ -38,7 +38,7 @@ function c51085303.adop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0x1ff0000)
 		c:RegisterEffect(e1)
 		local e2=e1:Clone()
-		e2:SetCode(EFFECT_UPDATE_DEFENCE)
+		e2:SetCode(EFFECT_UPDATE_DEFENSE)
 		e2:SetValue(-200)
 		c:RegisterEffect(e2)
 	end

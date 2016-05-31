@@ -9,7 +9,7 @@ function c82971335.initial_effect(c)
 	e1:SetValue(c82971335.value)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_SET_DEFENCE)
+	e2:SetCode(EFFECT_SET_DEFENSE)
 	c:RegisterEffect(e2)
 	--level up
 	local e3=Effect.CreateEffect(c)

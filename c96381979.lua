@@ -129,8 +129,8 @@ function c96381979.spop(e,tp,eg,ep,ev,re,r,rp)
 		local tc1=dg:Select(tp,1,1,nil):GetFirst()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc2=dg:FilterSelect(tp,c96381979.afilter2,1,1,tc1,tc1:GetAttack()):GetFirst()
-		Duel.SpecialSummonStep(tc1,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
-		Duel.SpecialSummonStep(tc2,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+		Duel.SpecialSummonStep(tc1,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
+		Duel.SpecialSummonStep(tc2,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 		Duel.SpecialSummonComplete()
 	end
 end

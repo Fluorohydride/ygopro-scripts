@@ -51,7 +51,7 @@ function c43959432.activate(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetReset(RESET_EVENT+0x1fe0000)
 	c:RegisterEffect(e2,true)
 	local e3=e2:Clone()
-	e3:SetCode(EFFECT_UPDATE_DEFENCE)
+	e3:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e3,true)
 	Duel.SpecialSummonComplete()
 	local tc=Duel.GetFirstTarget()
@@ -75,7 +75,7 @@ end
 function c43959432.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsAttackPos() then
-		Duel.ChangePosition(c,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end
 function c43959432.atkval(e,c)

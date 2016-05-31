@@ -50,7 +50,7 @@ function c18013090.cacon(e,tp,eg,ep,ev,re,r,rp)
 	return bc and bc:IsStatus(STATUS_BATTLE_DESTROYED) and c:IsChainAttackable()
 end
 function c18013090.filter(c)
-	return c:IsFaceup() and c:IsDefencePos() and not c:IsStatus(STATUS_BATTLE_DESTROYED)
+	return c:IsFaceup() and c:IsDefensePos() and not c:IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c18013090.catg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c18013090.filter(chkc) end

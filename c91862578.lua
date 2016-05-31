@@ -10,7 +10,7 @@ function c91862578.initial_effect(c)
 	c:RegisterEffect(e1)
 	--defup
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_UPDATE_DEFENCE)
+	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e2)
 end
 function c91862578.val(e,c)

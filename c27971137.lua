@@ -31,7 +31,7 @@ function c27971137.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():IsReason(REASON_DESTROY)
 end
 function c27971137.filter(c,e,tp)
-	return c:GetLevel()==1 and (c:GetAttack()==0 and c:GetDefence()==0) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:GetLevel()==1 and (c:GetAttack()==0 and c:GetDefense()==0) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c27971137.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

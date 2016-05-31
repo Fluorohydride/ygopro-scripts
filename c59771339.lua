@@ -58,7 +58,7 @@ function c59771339.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c59771339.descon(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
-	return e:GetHandler()==Duel.GetAttacker() and d and d:IsDefencePos()
+	return e:GetHandler()==Duel.GetAttacker() and d and d:IsDefensePos()
 end
 function c59771339.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

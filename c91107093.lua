@@ -24,7 +24,7 @@ function c91107093.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c91107093.infilter(e,c)
-	return c:IsDefencePos() and c:IsLevelBelow(3) and c:IsRace(RACE_THUNDER)
+	return c:IsDefensePos() and c:IsLevelBelow(3) and c:IsRace(RACE_THUNDER)
 end
 function c91107093.filter(c)
 	return c:IsFaceup() and c:IsAttackPos()

@@ -7,12 +7,12 @@ function c88724332.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTarget(c88724332.target)
 	e1:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e1:SetValue(POS_FACEUP_DEFENCE)
+	e1:SetValue(POS_FACEUP_DEFENSE)
 	c:RegisterEffect(e1)
 	--def
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_UPDATE_DEFENCE)
+	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
 	e2:SetTarget(c88724332.deftg)
@@ -30,5 +30,5 @@ function c88724332.deftg(e,c)
 		and bit.band(c:GetSummonLocation(),LOCATION_DECK+LOCATION_EXTRA)~=0
 end
 function c88724332.defval(e,c)
-	return -c:GetBaseDefence()
+	return -c:GetBaseDefense()
 end

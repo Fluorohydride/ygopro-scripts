@@ -42,5 +42,5 @@ function c242146.atkcon(e)
 	local eqc=e:GetHandler():GetEquipTarget()
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	return d and a==eqc and d:GetBattlePosition()==POS_FACEDOWN_DEFENCE
+	return d and a==eqc and d:GetBattlePosition()==POS_FACEDOWN_DEFENSE
 end

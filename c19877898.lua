@@ -10,7 +10,7 @@ function c19877898.initial_effect(c)
 	e1:SetValue(-700)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_UPDATE_DEFENCE)
+	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e2)
 end
 c19877898.lvupcount=1

@@ -69,7 +69,7 @@ end
 function c41753322.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		Duel.ChangePosition(c,POS_FACEDOWN_DEFENCE)
+		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end
 function c41753322.postg2(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -79,7 +79,7 @@ function c41753322.postg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c41753322.posop2(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsCanTurnSet,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
-	Duel.ChangePosition(g,POS_FACEDOWN_DEFENCE)
+	Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
 end
 function c41753322.dcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -50,7 +50,7 @@ function c20003527.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 function c20003527.sdcon(e)
-	return e:GetHandler():IsPosition(POS_FACEUP_DEFENCE)
+	return e:GetHandler():IsPosition(POS_FACEUP_DEFENSE)
 end
 function c20003527.cfilter(c,tp)
 	return c:IsAttribute(ATTRIBUTE_WATER) and (c:IsControler(tp) or c:IsFaceup())

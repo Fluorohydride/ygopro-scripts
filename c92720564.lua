@@ -24,7 +24,7 @@ end
 function c92720564.cond(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local d=Duel.GetAttackTarget()
-	return not c:IsDisabled() and c:IsDefencePos() and d:IsFaceup() and d:IsSetCard(0x26)
+	return not c:IsDisabled() and c:IsDefensePos() and d:IsFaceup() and d:IsSetCard(0x26)
 end
 function c92720564.opd(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateAttack()

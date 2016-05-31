@@ -39,7 +39,7 @@ function c63665875.srtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c63665875.filter(c)
-	return c:IsDefenceBelow(1200) and c:IsRace(RACE_ZOMBIE) and c:IsAbleToHand()
+	return c:IsDefenseBelow(1200) and c:IsRace(RACE_ZOMBIE) and c:IsAbleToHand()
 end
 function c63665875.srop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

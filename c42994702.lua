@@ -18,7 +18,7 @@ function c42994702.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c42994702.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and Duel.ChangePosition(c,POS_FACEDOWN_DEFENCE)>0 then
+	if c:IsRelateToEffect(e) and c:IsFaceup() and Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)>0 then
 		local g=Duel.GetMatchingGroup(Card.IsFacedown,tp,LOCATION_MZONE,0,nil)
 		Duel.ShuffleSetCard(g)
 	end

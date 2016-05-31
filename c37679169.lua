@@ -54,7 +54,7 @@ function c37679169.adop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 		--defdown
 		local e2=e1:Clone()
-		e2:SetCode(EFFECT_UPDATE_DEFENCE)
+		e2:SetCode(EFFECT_UPDATE_DEFENSE)
 		tc:RegisterEffect(e2)
 	end
 end

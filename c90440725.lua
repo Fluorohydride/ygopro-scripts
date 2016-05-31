@@ -64,8 +64,8 @@ function c90440725.atkop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SET_DEFENCE_FINAL)
-	e1:SetValue(Duel.GetAttacker():GetDefence())
+	e1:SetCode(EFFECT_SET_DEFENSE_FINAL)
+	e1:SetValue(Duel.GetAttacker():GetDefense())
 	e1:SetReset(RESET_EVENT+0x1fe0000)
 	c:RegisterEffect(e1)
 end
@@ -79,6 +79,6 @@ end
 function c90440725.setop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsLocation(LOCATION_MZONE) then
-		Duel.ChangePosition(c,POS_FACEDOWN_DEFENCE)
+		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end

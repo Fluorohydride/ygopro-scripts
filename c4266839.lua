@@ -11,7 +11,7 @@ function c4266839.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c4266839.eqcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttackTarget()==e:GetHandler() and e:GetHandler():GetBattlePosition()==POS_FACEDOWN_DEFENCE
+	return Duel.GetAttackTarget()==e:GetHandler() and e:GetHandler():GetBattlePosition()==POS_FACEDOWN_DEFENSE
 end
 function c4266839.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -36,7 +36,7 @@ function c42685062.sumop(e,tp,eg,ep,ev,re,r,rp,c)
 	e2:SetValue(1300)
 	c:RegisterEffect(e2)
 	local e3=e1:Clone()
-	e3:SetCode(EFFECT_SET_BASE_DEFENCE)
+	e3:SetCode(EFFECT_SET_BASE_DEFENSE)
 	e3:SetValue(900)
 	c:RegisterEffect(e3)
 end

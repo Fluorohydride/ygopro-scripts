@@ -68,7 +68,7 @@ function c2250266.atlimit(e,c)
 	return c~=e:GetHandler()
 end
 function c2250266.cond(e)
-	return not e:GetHandler():IsDisabled() and e:GetHandler():IsDefencePos()
+	return not e:GetHandler():IsDisabled() and e:GetHandler():IsDefensePos()
 end
 function c2250266.filter(c)
 	return c:IsFaceup() and c:IsAttackPos()
@@ -84,7 +84,7 @@ function c2250266.opd2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
 	if tc and tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsAttackPos()
-		and Duel.ChangePosition(tc,POS_FACEUP_DEFENCE)~=0 and c:IsRelateToBattle() then
+		and Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)~=0 and c:IsRelateToBattle() then
 		Duel.ChangePosition(e:GetHandler(),POS_FACEUP_ATTACK,0,POS_FACEUP_ATTACK,0)
 	end
 end

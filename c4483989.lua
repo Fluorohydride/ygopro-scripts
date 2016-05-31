@@ -22,14 +22,14 @@ function c4483989.initial_effect(c)
 end
 function c4483989.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttackTarget()
-	return tp~=Duel.GetTurnPlayer() and at and at:IsPosition(POS_FACEUP_DEFENCE)
+	return tp~=Duel.GetTurnPlayer() and at and at:IsPosition(POS_FACEUP_DEFENSE)
 end
 function c4483989.atktg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	e:SetLabel(0)
 	local at=Duel.GetAttackTarget()
 	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer()
-		and at and at:IsPosition(POS_FACEUP_DEFENCE) then
+		and at and at:IsPosition(POS_FACEUP_DEFENSE) then
 		e:SetLabel(1)
 		Duel.GetAttacker():CreateEffectRelation(e)
 		at:CreateEffectRelation(e)
@@ -53,8 +53,8 @@ function c4483989.atkop(e,tp,eg,ep,ev,re,r,rp)
 		local res=Duel.TossCoin(1-tp,1)
 		if coin~=res then
 			Duel.ChangePosition(at,POS_FACEUP_ATTACK)
-		elseif a:GetAttack()>at:GetDefence() then
-			Duel.Damage(tp,a:GetAttack()-at:GetDefence(),REASON_EFFECT)
+		elseif a:GetAttack()>at:GetDefense() then
+			Duel.Damage(tp,a:GetAttack()-at:GetDefense(),REASON_EFFECT)
 		end
 	end
 end

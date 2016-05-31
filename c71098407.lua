@@ -22,6 +22,6 @@ end
 function c71098407.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	if Duel.NegateEffect(ev) and rc:IsRelateToEffect(e) then
-		Duel.ChangePosition(rc,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(rc,POS_FACEUP_DEFENSE)
 	end
 end

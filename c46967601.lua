@@ -50,7 +50,7 @@ function c46967601.damcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c46967601.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local dam=e:GetLabelObject():GetTextDefence()
+	local dam=e:GetLabelObject():GetTextDefense()
 	if dam<0 then dam=0 end
 	Duel.SetTargetPlayer(e:GetLabel())
 	Duel.SetTargetParam(dam)
@@ -61,6 +61,6 @@ function c46967601.damop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()>0 then
 		local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
-		Duel.Damage(p,g:GetFirst():GetTextDefence(),REASON_EFFECT)
+		Duel.Damage(p,g:GetFirst():GetTextDefense(),REASON_EFFECT)
 	end
 end

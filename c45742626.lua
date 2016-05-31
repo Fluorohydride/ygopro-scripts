@@ -12,7 +12,7 @@ function c45742626.initial_effect(c)
 	e1:SetValue(c45742626.value)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_UPDATE_DEFENCE)
+	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e2)
 	--deckdes
 	local e3=Effect.CreateEffect(c)

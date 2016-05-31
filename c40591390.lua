@@ -23,7 +23,7 @@ function c40591390.initial_effect(c)
 	e3:SetValue(c40591390.val)
 	c:RegisterEffect(e3)
 	local e4=e3:Clone()
-	e4:SetCode(EFFECT_SET_DEFENCE)
+	e4:SetCode(EFFECT_SET_DEFENSE)
 	c:RegisterEffect(e4)
 end
 function c40591390.spcon(e,tp,eg,ep,ev,re,r,rp)

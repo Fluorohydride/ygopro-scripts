@@ -40,7 +40,7 @@ function c9074847.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g1:GetCount()>0 then
 		local tc=g1:GetFirst()
 		while tc do
-			Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENCE)
+			Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 			tc=g1:GetNext()
 		end
 	end
@@ -49,7 +49,7 @@ function c9074847.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g2:GetCount()>0 then
 		local tc=g2:GetFirst()
 		while tc do
-			Duel.SpecialSummonStep(tc,0,1-tp,1-tp,false,false,POS_FACEDOWN_DEFENCE)
+			Duel.SpecialSummonStep(tc,0,1-tp,1-tp,false,false,POS_FACEDOWN_DEFENSE)
 			tc=g2:GetNext()
 		end
 	end

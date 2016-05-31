@@ -69,7 +69,7 @@ function c27756115.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c27756115.cfilter(c,e,tp)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE)
-		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_DEFENCE)
+		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_DEFENSE)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP)
 end
 function c27756115.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

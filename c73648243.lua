@@ -14,7 +14,7 @@ end
 function c73648243.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return bit.band(c:GetReason(),0x41)==0x41 and c:IsPreviousLocation(LOCATION_MZONE)
-		and c:IsPreviousPosition(POS_FACEDOWN_DEFENCE)
+		and c:IsPreviousPosition(POS_FACEDOWN_DEFENSE)
 end
 function c73648243.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

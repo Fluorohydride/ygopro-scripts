@@ -48,7 +48,7 @@ function c33093439.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	e1:SetValue(g:GetCount()*500)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_SET_DEFENCE)
+	e2:SetCode(EFFECT_SET_DEFENSE)
 	c:RegisterEffect(e2)
 end
 function c33093439.target(e,tp,eg,ep,ev,re,r,rp,chk)

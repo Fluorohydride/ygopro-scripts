@@ -12,7 +12,7 @@ function c55119278.initial_effect(c)
 	c:RegisterEffect(e1)
 	--def
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_UPDATE_DEFENCE)
+	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	e2:SetCondition(c55119278.cond)
 	e2:SetValue(1000)
 	c:RegisterEffect(e2)
@@ -21,5 +21,5 @@ function c55119278.cona(e)
 	return e:GetHandler():IsAttackPos()
 end
 function c55119278.cond(e)
-	return e:GetHandler():IsDefencePos()
+	return e:GetHandler():IsDefensePos()
 end

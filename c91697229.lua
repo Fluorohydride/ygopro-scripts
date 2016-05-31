@@ -8,7 +8,7 @@ function c91697229.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_SPSUM_PARAM)
 	e1:SetRange(LOCATION_HAND)
-	e1:SetTargetRange(POS_FACEUP_DEFENCE,1)
+	e1:SetTargetRange(POS_FACEUP_DEFENSE,1)
 	e1:SetCondition(c91697229.spcon)
 	c:RegisterEffect(e1)
 	--self destroy
@@ -55,11 +55,11 @@ function c91697229.poscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c91697229.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local g=Duel.GetMatchingGroup(Card.IsDefencePos,tp,LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(Card.IsDefensePos,tp,LOCATION_MZONE,0,nil)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,g:GetCount(),0,0)
 end
 function c91697229.posop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsDefencePos,tp,LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(Card.IsDefensePos,tp,LOCATION_MZONE,0,nil)
 	if g:GetCount()>0 then
 		Duel.ChangePosition(g,POS_FACEUP_ATTACK)
 	end

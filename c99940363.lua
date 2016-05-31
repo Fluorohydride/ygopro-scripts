@@ -24,7 +24,7 @@ function c99940363.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c99940363.mfilter(c)
-	return c:IsFaceup() and c:IsAttackAbove(2400) and c:GetDefence()==1000
+	return c:IsFaceup() and c:IsAttackAbove(2400) and c:GetDefense()==1000
 end
 function c99940363.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c99940363.mfilter,tp,LOCATION_MZONE,0,1,nil)

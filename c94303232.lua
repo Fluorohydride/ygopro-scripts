@@ -39,7 +39,7 @@ end
 function c94303232.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do
-		if tc:IsPreviousPosition(POS_FACEUP_ATTACK) and tc:IsPosition(POS_FACEUP_DEFENCE) then
+		if tc:IsPreviousPosition(POS_FACEUP_ATTACK) and tc:IsPosition(POS_FACEUP_DEFENSE) then
 			tc:RegisterFlagEffect(94303232,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 		end
 		tc=eg:GetNext()

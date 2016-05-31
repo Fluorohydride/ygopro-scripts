@@ -12,8 +12,8 @@ function c78613627.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c78613627.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttackTarget()==e:GetHandler() and bit.band(e:GetHandler():GetBattlePosition(),POS_DEFENCE)~=0
-		and Duel.GetAttacker():GetAttack()<e:GetHandler():GetDefence()
+	return Duel.GetAttackTarget()==e:GetHandler() and bit.band(e:GetHandler():GetBattlePosition(),POS_DEFENSE)~=0
+		and Duel.GetAttacker():GetAttack()<e:GetHandler():GetDefense()
 end
 function c78613627.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

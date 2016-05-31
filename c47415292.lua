@@ -28,7 +28,7 @@ function c47415292.initial_effect(c)
 	e3:SetCondition(c47415292.uncon)
 	c:RegisterEffect(e3)
 	local e4=e3:Clone()
-	e4:SetCode(EFFECT_UPDATE_DEFENCE)
+	e4:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e4)
 	--pierce
 	local e5=Effect.CreateEffect(c)

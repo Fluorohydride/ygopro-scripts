@@ -34,7 +34,7 @@ function c52653092.initial_effect(c)
 	e4:SetValue(c52653092.atkval)
 	c:RegisterEffect(e4)
 	local e5=e4:Clone()
-	e5:SetCode(EFFECT_UPDATE_DEFENCE)
+	e5:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e5)
 	--activate limit
 	local e6=Effect.CreateEffect(c)

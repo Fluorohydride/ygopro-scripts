@@ -68,6 +68,6 @@ end
 function c7617062.posop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c7617062.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if e:GetHandler():IsRelateToEffect(e) then
-		Duel.ChangePosition(g,POS_FACEDOWN_DEFENCE)
+		Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
 	end
 end

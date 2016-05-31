@@ -35,7 +35,7 @@ function c29947751.vala(e,c)
 	else return true end
 end
 function c29947751.cond(e)
-	return e:GetHandler():IsDefencePos()
+	return e:GetHandler():IsDefensePos()
 end
 function c29947751.atlimit(e,c)
 	return c~=e:GetHandler()

@@ -19,7 +19,7 @@ function c54297661.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c54297661.filter(c,tp)
 	return c:IsFaceup()
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,54297661,0,0x21,c:GetAttack(),c:GetDefence(),4,RACE_SPELLCASTER,ATTRIBUTE_DARK)
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,54297661,0,0x21,c:GetAttack(),c:GetDefense(),4,RACE_SPELLCASTER,ATTRIBUTE_DARK)
 end
 function c54297661.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c54297661.filter(chkc,tp) end
@@ -34,7 +34,7 @@ function c54297661.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not (c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup()) then return end
 	local atk=tc:GetAttack()
-	local def=tc:GetDefence()
+	local def=tc:GetDefense()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,54297661,0,0x21,atk,def,4,RACE_SPELLCASTER,ATTRIBUTE_DARK) then return end
 	c:AddMonsterAttribute(0,0,0,0,0)
@@ -47,7 +47,7 @@ function c54297661.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
 		local e2=e1:Clone()
-		e2:SetCode(EFFECT_SET_DEFENCE)
+		e2:SetCode(EFFECT_SET_DEFENSE)
 		e2:SetValue(def)
 		c:RegisterEffect(e2)
 		--damage

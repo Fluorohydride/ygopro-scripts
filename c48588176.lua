@@ -15,7 +15,7 @@ function c48588176.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)
 end
 function c48588176.filter(c)
-	return c:IsDefenceBelow(1000) and c:IsRace(RACE_INSECT) and c:IsAbleToHand()
+	return c:IsDefenseBelow(1000) and c:IsRace(RACE_INSECT) and c:IsAbleToHand()
 end
 function c48588176.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c48588176.filter,tp,LOCATION_DECK,0,1,nil) end

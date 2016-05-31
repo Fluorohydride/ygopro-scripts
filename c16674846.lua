@@ -12,7 +12,7 @@ function c16674846.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and Duel.GetBattleDamage(tp)>0
 end
 function c16674846.filter(c)
-	return c:IsDefenceBelow(1500) and c:IsType(TYPE_TUNER) and c:IsRace(RACE_WARRIOR)
+	return c:IsDefenseBelow(1500) and c:IsType(TYPE_TUNER) and c:IsRace(RACE_WARRIOR)
 		and c:IsAbleToHand()
 end
 function c16674846.operation(e,tp,eg,ep,ev,re,r,rp)

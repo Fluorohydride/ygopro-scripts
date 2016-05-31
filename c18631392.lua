@@ -89,7 +89,7 @@ function c18631392.retop(code1,code2,code3)
 				e1:SetReset(RESET_EVENT+0x1ff0000)
 				c:RegisterEffect(e1)
 				local e2=e1:Clone()
-				e2:SetCode(EFFECT_SET_DEFENCE_FINAL)
+				e2:SetCode(EFFECT_SET_DEFENSE_FINAL)
 				c:RegisterEffect(e2)
 			end
 		end

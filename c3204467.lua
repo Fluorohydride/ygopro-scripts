@@ -3,7 +3,7 @@ function c3204467.initial_effect(c)
 	--defup
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_UPDATE_DEFENCE)
+	e1:SetCode(EFFECT_UPDATE_DEFENSE)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetValue(c3204467.defval)
@@ -23,7 +23,7 @@ function c3204467.defval(e,c)
 end
 function c3204467.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsDefencePos() and c==Duel.GetAttackTarget() then
+	if c:IsDefensePos() and c==Duel.GetAttackTarget() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetDescription(aux.Stringid(3204467,0))
 		e1:SetCategory(CATEGORY_DESTROY)

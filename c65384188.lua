@@ -46,7 +46,7 @@ function c65384188.activate(e,tp,eg,ep,ev,re,r,rp)
 			tc2:RegisterEffect(e4)
 			a=a+1
 		end
-		if tc1:IsDefencePos() or tc2:IsDefencePos() or a~=2 then return end
+		if tc1:IsDefensePos() or tc2:IsDefensePos() or a~=2 then return end
 		Duel.BreakEffect()
 		c65384188.reg(c,tc1,tc2)
 		c65384188.reg(c,tc2,tc1)

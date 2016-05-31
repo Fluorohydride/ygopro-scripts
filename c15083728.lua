@@ -16,14 +16,14 @@ end
 function c15083728.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tc=eg:GetFirst()
 	if chkc then return chkc==tc end
-	if chk==0 then return ep~=tp and tc:IsFaceup() and tc:GetDefence()<=500 and tc:IsOnField()
+	if chk==0 then return ep~=tp and tc:IsFaceup() and tc:GetDefense()<=500 and tc:IsOnField()
 		and tc:IsCanBeEffectTarget(e) and tc:IsDestructable() end
 	Duel.SetTargetCard(eg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tc,1,0,0)
 end
 function c15083728.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:GetDefence()<=500 then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:GetDefense()<=500 then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

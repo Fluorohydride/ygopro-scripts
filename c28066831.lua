@@ -34,7 +34,7 @@ function c28066831.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c28066831.filter(c,e,tp)
-	return c:IsDefenceBelow(1500) and c:IsRace(RACE_PSYCHO) and c:IsAttribute(ATTRIBUTE_WIND)
+	return c:IsDefenseBelow(1500) and c:IsRace(RACE_PSYCHO) and c:IsAttribute(ATTRIBUTE_WIND)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c28066831.target(e,tp,eg,ep,ev,re,r,rp,chk)

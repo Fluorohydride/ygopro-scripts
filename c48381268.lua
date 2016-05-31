@@ -24,7 +24,7 @@ function c48381268.cona(e)
 	return e:GetHandler():IsAttackPos()
 end
 function c48381268.cond(e)
-	return e:GetHandler():IsDefencePos()
+	return e:GetHandler():IsDefensePos()
 end
 function c48381268.tgd(e,c)
 	return c:IsSetCard(0x26) and c~=e:GetHandler()

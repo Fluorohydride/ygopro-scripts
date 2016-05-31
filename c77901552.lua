@@ -54,7 +54,7 @@ function c77901552.spop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
-		e2:SetCode(EFFECT_SET_DEFENCE)
+		e2:SetCode(EFFECT_SET_DEFENSE)
 		tc:RegisterEffect(e2)
 		Duel.SpecialSummonComplete()
 	elseif Duel.IsPlayerCanSpecialSummon(tp) then

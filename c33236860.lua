@@ -39,7 +39,7 @@ function c33236860.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c33236860.filter(c,atk)
-	return c:IsFaceup() and c:GetDefence()<atk and c:IsDestructable()
+	return c:IsFaceup() and c:GetDefense()<atk and c:IsDestructable()
 end
 function c33236860.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
@@ -50,7 +50,7 @@ function c33236860.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c33236860.desfilter(c,e,atk)
-	return c:IsFaceup() and c:IsRelateToEffect(e) and c:GetDefence()<atk
+	return c:IsFaceup() and c:IsRelateToEffect(e) and c:GetDefense()<atk
 end
 function c33236860.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

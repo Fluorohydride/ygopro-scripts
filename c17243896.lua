@@ -20,7 +20,7 @@ function c17243896.filter(c,e,tp)
 	return c:IsPosition(POS_FACEUP_ATTACK) and c:GetSummonPlayer()==1-tp and (not e or c:IsRelateToEffect(e))
 end
 function c17243896.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPosition(POS_FACEUP_DEFENCE)
+	return e:GetHandler():IsPosition(POS_FACEUP_DEFENSE)
 end
 function c17243896.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c17243896.filter,1,nil,nil,tp) end
@@ -29,5 +29,5 @@ function c17243896.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c17243896.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c17243896.filter,nil,e,tp)
-	Duel.ChangePosition(g,POS_FACEUP_DEFENCE)
+	Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 end

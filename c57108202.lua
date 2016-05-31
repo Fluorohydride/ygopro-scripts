@@ -55,7 +55,7 @@ function c57108202.opa(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c57108202.cond(e,tp,eg,ep,ev,re,r,rp)
-	return not e:GetHandler():IsDisabled() and e:GetHandler():IsDefencePos()
+	return not e:GetHandler():IsDisabled() and e:GetHandler():IsDefensePos()
 end
 function c57108202.filterd(c,tp)
 	local lv=c:GetLevel()

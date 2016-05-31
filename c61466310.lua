@@ -34,10 +34,10 @@ function c61466310.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and bit.band(eg:GetFirst():GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
 end
 function c61466310.filter(c,code)
-	return (c:GetAttack()==2400 or c:GetAttack()==2800) and c:GetDefence()==1000 and c:GetCode()~=code and c:IsAbleToHand()
+	return (c:GetAttack()==2400 or c:GetAttack()==2800) and c:GetDefense()==1000 and c:GetCode()~=code and c:IsAbleToHand()
 end
 function c61466310.filter2(c,atk,code)
-	return c:GetAttack()==atk and c:GetDefence()==1000 and c:GetCode()~=code and c:IsAbleToHand()
+	return c:GetAttack()==atk and c:GetDefense()==1000 and c:GetCode()~=code and c:IsAbleToHand()
 end
 function c61466310.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e)

@@ -42,7 +42,7 @@ function c77462146.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(300)
 		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
-		e2:SetCode(EFFECT_UPDATE_DEFENCE)
+		e2:SetCode(EFFECT_UPDATE_DEFENSE)
 		tc:RegisterEffect(e2)
 	end
 end
@@ -59,7 +59,7 @@ function c77462146.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,77462146,0x10db,0x11,4,0,300,RACE_WARRIOR,ATTRIBUTE_DARK) then
 		c:AddMonsterAttribute(0,0,0,0,0)
-		Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP_DEFENCE)
+		Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP_DEFENSE)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_TYPE)

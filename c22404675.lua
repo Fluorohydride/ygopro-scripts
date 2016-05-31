@@ -40,7 +40,7 @@ function c22404675.spop(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>0
 			and Duel.IsPlayerCanSpecialSummonMonster(tp,22404676,0,0x4011,800,1000,1,RACE_THUNDER,ATTRIBUTE_LIGHT) then
 			local token=Duel.CreateToken(tp,22404676)
-			Duel.SpecialSummonStep(token,0,tp,1-tp,false,false,POS_FACEUP_DEFENCE)
+			Duel.SpecialSummonStep(token,0,tp,1-tp,false,false,POS_FACEUP_DEFENSE)
 		end
 		Duel.SpecialSummonComplete()
 	end

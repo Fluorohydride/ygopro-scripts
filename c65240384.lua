@@ -17,7 +17,7 @@ function c65240384.initial_effect(c)
 end
 function c65240384.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c==Duel.GetAttackTarget() and c:IsDefencePos() and c:IsRelateToBattle() then
+	if c==Duel.GetAttackTarget() and c:IsDefensePos() and c:IsRelateToBattle() then
 		Duel.ChangePosition(c,POS_FACEUP_ATTACK)
 	end
 end
@@ -30,7 +30,7 @@ function c65240384.negcon(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c65240384.negop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.ChangePosition(e:GetHandler(),POS_FACEUP_DEFENCE) then
+	if Duel.ChangePosition(e:GetHandler(),POS_FACEUP_DEFENSE) then
 		Duel.NegateActivation(ev)
 	end
 end

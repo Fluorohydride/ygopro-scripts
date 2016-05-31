@@ -69,12 +69,12 @@ function c4786063.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST+REASON_DISCARD)
 end
 function c4786063.filter(c)
-	return c:IsPosition(POS_FACEUP_DEFENCE) and c:IsSetCard(0x9a)
+	return c:IsPosition(POS_FACEUP_DEFENSE) and c:IsSetCard(0x9a)
 end
 function c4786063.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c4786063.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c4786063.filter,tp,LOCATION_MZONE,0,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUPDEFENCE)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUPDEFENSE)
 	Duel.SelectTarget(tp,c4786063.filter,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function c4786063.operation(e,tp,eg,ep,ev,re,r,rp)
@@ -82,7 +82,7 @@ function c4786063.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_UPDATE_DEFENCE)
+		e1:SetCode(EFFECT_UPDATE_DEFENSE)
 		e1:SetValue(-800)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)

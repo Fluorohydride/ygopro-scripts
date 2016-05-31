@@ -41,7 +41,7 @@ function c95993388.spop(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local tc=Duel.GetFirstTarget()
 		if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-			Duel.ChangePosition(tc,POS_FACEDOWN_DEFENCE)
+			Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
 		end
 	end
 	local e1=Effect.CreateEffect(c)
@@ -60,7 +60,7 @@ function c95993388.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_SUMMON)
 end
 function c95993388.thfilter(c)
-	return c:GetAttack()==800 and c:GetDefence()==1000 and not c:IsCode(95993388) and c:IsAbleToHand()
+	return c:GetAttack()==800 and c:GetDefense()==1000 and not c:IsCode(95993388) and c:IsAbleToHand()
 end
 function c95993388.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c95993388.thfilter(chkc) end

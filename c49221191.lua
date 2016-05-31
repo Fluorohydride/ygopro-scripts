@@ -37,7 +37,7 @@ function c49221191.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c49221191.filter(c)
-	return c:IsFaceup() and (c:GetAttack()>0 or c:GetDefence()>0)
+	return c:IsFaceup() and (c:GetAttack()>0 or c:GetDefense()>0)
 end
 function c49221191.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c49221191.filter(chkc) end
@@ -60,7 +60,7 @@ function c49221191.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
-		e2:SetCode(EFFECT_SET_DEFENCE_FINAL)
+		e2:SetCode(EFFECT_SET_DEFENSE_FINAL)
 		tc:RegisterEffect(e2)
 	end
 end

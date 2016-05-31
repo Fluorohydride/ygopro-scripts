@@ -57,7 +57,7 @@ function c77679716.eqop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_EQUIP)
-	e2:SetCode(EFFECT_UPDATE_DEFENCE)
+	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	e2:SetValue(-1000)
 	e2:SetReset(RESET_EVENT+0x1fe0000)
 	c:RegisterEffect(e2)
@@ -74,7 +74,7 @@ function c77679716.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c77679716.damfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x9a) and c:GetDefence()<c:GetBaseDefence()
+	return c:IsFaceup() and c:IsSetCard(0x9a) and c:GetDefense()<c:GetBaseDefense()
 end
 function c77679716.damtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c77679716.damfilter(chkc) end
@@ -86,7 +86,7 @@ end
 function c77679716.damop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		local val=math.abs(tc:GetDefence()-tc:GetBaseDefence())
+		local val=math.abs(tc:GetDefense()-tc:GetBaseDefense())
 		Duel.Damage(1-tp,val,REASON_EFFECT)
 	end
 end

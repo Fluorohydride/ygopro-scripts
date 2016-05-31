@@ -41,7 +41,7 @@ function c40005099.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,Card.IsAbleToGraveAsCost,1,1,REASON_COST)
 end
 function c40005099.filter1(c,e,tp)
-	return c:IsRace(RACE_ZOMBIE) and c:GetDefence()==0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_ZOMBIE) and c:GetDefense()==0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c40005099.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c40005099.filter1(chkc,e,tp) end
@@ -59,7 +59,7 @@ function c40005099.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c40005099.filter2(c)
-	return c:IsFaceup() and c:IsRace(RACE_ZOMBIE) and c:GetDefence()==0
+	return c:IsFaceup() and c:IsRace(RACE_ZOMBIE) and c:GetDefense()==0
 end
 function c40005099.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c40005099.filter2(chkc) end

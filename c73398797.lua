@@ -24,7 +24,7 @@ function c73398797.initial_effect(c)
 end
 function c73398797.descon(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
-	return e:GetHandler()==Duel.GetAttacker() and d and d:IsPosition(POS_FACEDOWN_DEFENCE)
+	return e:GetHandler()==Duel.GetAttacker() and d and d:IsPosition(POS_FACEDOWN_DEFENSE)
 end
 function c73398797.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

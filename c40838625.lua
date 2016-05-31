@@ -23,7 +23,7 @@ function c40838625.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c40838625.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c40838625.filter,tp,0,LOCATION_MZONE,nil)
-	if Duel.ChangePosition(g,POS_FACEDOWN_DEFENCE)~=0 then
+	if Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)~=0 then
 		local og=Duel.GetOperatedGroup()
 		local tc=og:GetFirst()
 		while tc do

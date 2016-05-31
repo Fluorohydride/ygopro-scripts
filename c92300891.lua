@@ -5,7 +5,7 @@ function c92300891.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_MUST_ATTACK)
 	c:RegisterEffect(e1)
-	--to defence
+	--to defense
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(92300891,0))
 	e3:SetCategory(CATEGORY_POSITION)
@@ -30,7 +30,7 @@ end
 function c92300891.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		Duel.ChangePosition(c,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end
 function c92300891.valcon(e,re,r,rp)

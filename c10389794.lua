@@ -10,7 +10,7 @@ function c10389794.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c10389794.filter(c)
-	return c:IsFaceup() and c:IsDestructable() and (c:GetBaseAttack()==0 or c:GetBaseDefence()==0)
+	return c:IsFaceup() and c:IsDestructable() and (c:GetBaseAttack()==0 or c:GetBaseDefense()==0)
 end
 function c10389794.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

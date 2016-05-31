@@ -57,7 +57,7 @@ function c88341502.damcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c88341502.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local def=e:GetLabelObject():GetBattleTarget():GetBaseDefence()
+	local def=e:GetLabelObject():GetBattleTarget():GetBaseDefense()
 	if def<0 then def=0 end
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(def)

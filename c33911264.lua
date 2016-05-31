@@ -37,7 +37,7 @@ function c33911264.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	e1:SetReset(RESET_EVENT+0xff0000)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetCode(EFFECT_SET_BASE_DEFENCE)
+	e2:SetCode(EFFECT_SET_BASE_DEFENSE)
 	e2:SetValue(1200)
 	c:RegisterEffect(e2)
 end

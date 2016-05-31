@@ -13,7 +13,7 @@ function c63749102.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c63749102.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0 and e:GetHandler()==Duel.GetAttacker() and Duel.GetAttackTarget() and Duel.GetAttackTarget():IsDefencePos()
+	return Duel.GetCurrentChain()==0 and e:GetHandler()==Duel.GetAttacker() and Duel.GetAttackTarget() and Duel.GetAttackTarget():IsDefensePos()
 end
 function c63749102.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

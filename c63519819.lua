@@ -40,7 +40,7 @@ function c63519819.initial_effect(c)
 	e5:SetType(EFFECT_TYPE_SINGLE)
 	e5:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e5:SetRange(LOCATION_MZONE)
-	e5:SetCode(EFFECT_SET_DEFENCE)
+	e5:SetCode(EFFECT_SET_DEFENSE)
 	e5:SetCondition(c63519819.adcon)
 	e5:SetValue(c63519819.defval)
 	e5:SetLabelObject(e1)
@@ -110,7 +110,7 @@ function c63519819.atkval(e,c)
 end
 function c63519819.defval(e,c)
 	local ec=e:GetLabelObject():GetLabelObject()
-	local def=ec:GetTextDefence()
+	local def=ec:GetTextDefense()
 	if ec:IsFacedown() or bit.band(ec:GetOriginalType(),TYPE_MONSTER)==0 or def<0 then
 		return 0
 	else

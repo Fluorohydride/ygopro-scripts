@@ -43,7 +43,7 @@ function c20073910.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c20073910.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.ChangePosition(e:GetHandler(),POS_FACEUP_DEFENCE)
+	Duel.ChangePosition(e:GetHandler(),POS_FACEUP_DEFENSE)
 end
 function c20073910.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end

@@ -23,7 +23,7 @@ function c91070115.initial_effect(c)
 	e2:SetValue(c91070115.adval)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
-	e3:SetCode(EFFECT_UPDATE_DEFENCE)
+	e3:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e3)
 end
 function c91070115.descost(e,tp,eg,ep,ev,re,r,rp,chk)

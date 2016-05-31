@@ -18,7 +18,7 @@ function c60953949.thcon(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():IsPreviousLocation(LOCATION_DECK+LOCATION_GRAVE)
 end
 function c60953949.filter(c)
-	return (c:GetAttack()==500 or c:GetDefence()==500) and c:GetCode()~=60953949
+	return (c:GetAttack()==500 or c:GetDefense()==500) and c:GetCode()~=60953949
 		and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_EARTH) and c:IsAbleToHand()
 end
 function c60953949.thtg(e,tp,eg,ep,ev,re,r,rp,chk)

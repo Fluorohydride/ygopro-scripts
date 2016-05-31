@@ -27,11 +27,11 @@ end
 function c50615578.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		Duel.ChangePosition(c,POS_FACEUP_DEFENCE,0,POS_FACEUP_ATTACK,0)
+		Duel.ChangePosition(c,POS_FACEUP_DEFENSE,0,POS_FACEUP_ATTACK,0)
 	end
 end
 function c50615578.drfilter(c)
-	return c:IsPosition(POS_FACEUP_DEFENCE) and c:IsSetCard(0x11)
+	return c:IsPosition(POS_FACEUP_DEFENSE) and c:IsSetCard(0x11)
 end
 function c50615578.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=Duel.GetMatchingGroupCount(c50615578.drfilter,tp,LOCATION_MZONE,0,nil)

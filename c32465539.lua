@@ -47,12 +47,12 @@ function c32465539.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c32465539.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsDefencePos() then return end
-	Duel.ChangePosition(c,POS_FACEUP_DEFENCE)
+	if not c:IsRelateToEffect(e) or c:IsDefensePos() then return end
+	Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end
 function c32465539.efcon(e,tp,eg,ep,ev,re,r,rp)
@@ -85,5 +85,5 @@ function c32465539.aclimit(e,re,tp)
 	return not re:GetHandler():IsImmuneToEffect(e)
 end
 function c32465539.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler() and Duel.GetAttackTarget() and Duel.GetAttackTarget():IsPosition(POS_DEFENCE)
+	return Duel.GetAttacker()==e:GetHandler() and Duel.GetAttackTarget() and Duel.GetAttackTarget():IsPosition(POS_DEFENSE)
 end

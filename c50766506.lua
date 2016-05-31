@@ -23,7 +23,7 @@ function c50766506.cfilter(c,e,tp)
 end
 function c50766506.spfilter(c,lv,e,tp)
 	return c:IsLevelBelow(lv) and c:IsSetCard(0x2b) and
-		(c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENCE))
+		(c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE))
 end
 function c50766506.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1 and Duel.CheckReleaseGroup(tp,c50766506.cfilter,1,nil,e,tp) end
@@ -34,7 +34,7 @@ function c50766506.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50766506.spfilter2(c,e,tp)
 	return c:IsSetCard(0x2b) and
-		(c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENCE))
+		(c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE))
 end
 function c50766506.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
@@ -53,7 +53,7 @@ function c50766506.operation(e,tp,eg,ep,ev,re,r,rp)
 		slv=slv-tc:GetLevel()
 		local spos=0
 		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then spos=spos+POS_FACEUP_ATTACK end
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN) then spos=spos+POS_FACEDOWN_DEFENCE end
+		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN) then spos=spos+POS_FACEDOWN_DEFENSE end
 		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,spos)
 		if tc:IsFacedown() then cg:AddCard(tc) end
 		c:SetCardTarget(tc)

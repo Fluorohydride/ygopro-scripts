@@ -1641,7 +1641,7 @@ function Auxiliary.nzatk(c)
 end
 --filter for non-zero DEF
 function Auxiliary.nzdef(c)
-	return c:IsFaceup() and c:GetDefence()>0
+	return c:IsFaceup() and c:GetDefense()>0
 end
 --flag effect for summon/sp_summon turn
 function Auxiliary.sumreg(e,tp,eg,ep,ev,re,r,rp)

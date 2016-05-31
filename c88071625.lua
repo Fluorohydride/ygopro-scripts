@@ -60,7 +60,7 @@ function c88071625.valcheck(e,c)
 	local def=0
 	while tc do
 		local catk=tc:GetTextAttack()
-		local cdef=tc:GetTextDefence()
+		local cdef=tc:GetTextDefense()
 		atk=atk+(catk>=0 and catk or 0)
 		def=def+(cdef>=0 and cdef or 0)
 		tc=g:GetNext()
@@ -78,7 +78,7 @@ function c88071625.valcheck(e,c)
 		c:RegisterEffect(e1)
 		--def continuous effect
 		local e2=e1:Clone()
-		e2:SetCode(EFFECT_UPDATE_DEFENCE)
+		e2:SetCode(EFFECT_UPDATE_DEFENSE)
 		e2:SetValue(def)
 		c:RegisterEffect(e2)
 	end

@@ -21,7 +21,7 @@ function c68280530.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	local rec=bc:GetDefence()
+	local rec=bc:GetDefense()
 	if rec<0 then rec=0 end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(rec)

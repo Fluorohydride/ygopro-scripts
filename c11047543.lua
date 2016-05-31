@@ -46,5 +46,5 @@ function c11047543.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(g,REASON_EFFECT+REASON_RETURN)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local ssg=sg:Select(tp,1,1,nil)
-	Duel.SpecialSummon(ssg,0,tp,tp,false,false,POS_FACEUP_DEFENCE)
+	Duel.SpecialSummon(ssg,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 end

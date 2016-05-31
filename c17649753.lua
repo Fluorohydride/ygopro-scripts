@@ -11,7 +11,7 @@ function c17649753.initial_effect(c)
 	e2:SetCode(EFFECT_CANNOT_ATTACK_ANNOUNCE)
 	e2:SetCondition(c17649753.atkcon)
 	c:RegisterEffect(e2)
-	--to defence
+	--to defense
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e3:SetCode(EVENT_PHASE+PHASE_BATTLE)
@@ -33,6 +33,6 @@ end
 function c17649753.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() then
-		Duel.ChangePosition(c,POS_FACEDOWN_DEFENCE)
+		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end

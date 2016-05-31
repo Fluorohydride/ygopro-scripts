@@ -33,7 +33,7 @@ end
 function c67270095.posop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) and tc:IsAttackPos() then
-		Duel.ChangePosition(tc,POS_FACEUP_DEFENCE)
+		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)
 	end
 end
 function c67270095.spcon(e,tp,eg,ep,ev,re,r,rp)

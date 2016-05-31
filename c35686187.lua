@@ -11,13 +11,13 @@ function c35686187.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c35686187.cfilter(c,tp)
-	return c:IsControler(tp) and c:IsPreviousPosition(POS_FACEUP_ATTACK) and c:IsPosition(POS_FACEUP_DEFENCE)
+	return c:IsControler(tp) and c:IsPreviousPosition(POS_FACEUP_ATTACK) and c:IsPosition(POS_FACEUP_DEFENSE)
 end
 function c35686187.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c35686187.cfilter,1,nil,1-tp)
 end
 function c35686187.filter(c)
-	return c:IsDefencePos() and c:IsDestructable()
+	return c:IsDefensePos() and c:IsDestructable()
 end
 function c35686187.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c35686187.filter,tp,0,LOCATION_MZONE,1,nil) end

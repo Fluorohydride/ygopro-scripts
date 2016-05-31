@@ -82,6 +82,6 @@ end
 function c38250531.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		Duel.SpecialSummon(c,1,tp,tp,false,false,POS_FACEUP_DEFENCE)
+		Duel.SpecialSummon(c,1,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end
