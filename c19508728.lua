@@ -52,23 +52,18 @@ end
 function c19508728.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler():GetEquipTarget()
 	local tc=ec:GetBattleTarget()
-	return ec and tc and tc:IsFaceup()
+	return ec and tc and tc:IsFaceup() and tc:IsControler(1-tp)
 end
 function c19508728.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ec=e:GetHandler():GetEquipTarget()
 	local tc=ec:GetBattleTarget()
 	if ec and tc and ec:IsFaceup() and tc:IsFaceup() then
-		local atk=tc:GetAttack()
-		local def=tc:GetDefense()
+		local val=math.max(tc:GetAttack(),tc:GetDefense())
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
-		if atk>=def then
-			e1:SetValue(atk+100)
-		else
-			e1:SetValue(def+100)
-		end
+		e1:SetValue(val+100)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE_CAL)
 		ec:RegisterEffect(e1)
 		local e2=e1:Clone()
