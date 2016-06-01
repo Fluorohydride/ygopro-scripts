@@ -2,9 +2,8 @@
 function c38988538.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
-	--
+	--disable
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(38988538,0))
 	e2:SetCategory(CATEGORY_DISABLE)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EVENT_CHAIN_SOLVING)
@@ -12,7 +11,7 @@ function c38988538.initial_effect(c)
 	e2:SetCondition(c38988538.negcon)
 	e2:SetOperation(c38988538.negop)
 	c:RegisterEffect(e2)
-	--
+	--decrease atk/def
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetCode(EFFECT_UPDATE_ATTACK)
@@ -20,12 +19,8 @@ function c38988538.initial_effect(c)
 	e3:SetTargetRange(0,LOCATION_MZONE)
 	e3:SetValue(c38988538.atkval)
 	c:RegisterEffect(e3)
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_FIELD)
+	local e4=e3:Clone()
 	e4:SetCode(EFFECT_UPDATE_DEFENSE)
-	e4:SetRange(LOCATION_MZONE)
-	e4:SetTargetRange(0,LOCATION_MZONE)
-	e4:SetValue(c38988538.atkval)
 	c:RegisterEffect(e4)
 end
 function c38988538.tfilter(c,tp)
@@ -37,7 +32,7 @@ function c38988538.negcon(e,tp,eg,ep,ev,re,r,rp)
 		and g and g:IsExists(c38988538.tfilter,1,e:GetHandler(),tp) and Duel.IsChainDisablable(ev)
 end
 function c38988538.negop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.SelectYesNo(tp,aux.Stringid(38988538,1)) then
+	if Duel.SelectYesNo(tp,aux.Stringid(38988538,0)) then
 		e:GetHandler():RegisterFlagEffect(38988538,RESET_EVENT+0x1fe0000,0,1)
 		Duel.NegateEffect(ev)
 		Duel.BreakEffect()

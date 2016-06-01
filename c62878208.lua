@@ -25,7 +25,7 @@ end
 function c62878208.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(c62878208.filter1,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil,e,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(62878208,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(62878208,0))
 	local g1=Duel.SelectTarget(tp,c62878208.filter1,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil,e,tp)
 	e:SetLabelObject(g1:GetFirst())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUPATTACK)

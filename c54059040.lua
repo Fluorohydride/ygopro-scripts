@@ -37,7 +37,7 @@ function c54059040.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	if res and Duel.IsExistingMatchingCard(c54059040.cfilter,tp,LOCATION_MZONE,0,1,nil)
 		and teg:IsExists(c54059040.pfilter,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(54059040,1)) then
+		and Duel.SelectYesNo(tp,94) then
 		e:SetLabel(1)
 		Duel.SetTargetCard(teg)
 		Duel.SetOperationInfo(0,CATEGORY_POSITION,teg,teg:GetCount(),0,0)

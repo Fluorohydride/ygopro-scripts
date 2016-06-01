@@ -7,7 +7,7 @@ function c49838105.initial_effect(c)
 	e1:SetTarget(c49838105.target1)
 	e1:SetOperation(c49838105.operation)
 	c:RegisterEffect(e1)
-	--
+	--attack
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(49838105,0))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
@@ -18,7 +18,7 @@ function c49838105.initial_effect(c)
 	e2:SetOperation(c49838105.operation)
 	e2:SetLabel(1)
 	c:RegisterEffect(e2)
-	--
+	--draw
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(49838105,1))
 	e3:SetCategory(CATEGORY_TOHAND)
@@ -35,8 +35,9 @@ function c49838105.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c49838105.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
-		and Duel.IsPlayerCanDiscardDeck(tp,1) and Duel.SelectYesNo(tp,aux.Stringid(49838105,2)) then
+	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE)
+		and Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
+		and Duel.IsPlayerCanDiscardDeck(tp,1) and Duel.SelectYesNo(tp,94) then
 		e:SetLabel(1)
 	else e:SetLabel(0) end
 end
