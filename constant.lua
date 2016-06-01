@@ -534,7 +534,7 @@ EVENT_BE_BATTLE_TARGET			=1131	--被选为攻击对象时
 EVENT_BATTLE_START				=1132	--伤害步骤开始时（反转前）
 EVENT_BATTLE_CONFIRM			=1133	--伤害计算前（反转後）
 EVENT_PRE_DAMAGE_CALCULATE		=1134	--伤害计算时（羽斬）
-EVENT_DAMAGE_CALCULATING		=1135	--伤害计算（只能使用EFFECT_TYPE_CONTINUOUS）
+EVENT_DAMAGE_CALCULATING		=1135	--N/A
 EVENT_PRE_BATTLE_DAMAGE			=1136	--即将产生战斗伤害(只能使用EFFECT_TYPE_CONTINUOUS)
 EVENT_BATTLE_END				=1137	--N/A
 EVENT_BATTLED					=1138	--伤害计算后（异女、同反转效果时点）
@@ -698,13 +698,13 @@ DUEL_PSEUDO_SHUFFLE		=0x10		--不洗牌
 DUEL_TAG_MODE			=0x20		--双打PP
 DUEL_SIMPLE_AI			=0x40		--AI(用于残局)
 --Activity counter
---global: 1-6 (binary: 5,6)
+--global: 1-6 (binary: 6)
 --custom: 1-5,7 (binary: 1-5)
 ACTIVITY_SUMMON			=1		--
 ACTIVITY_NORMALSUMMON	=2		--
 ACTIVITY_SPSUMMON		=3		--
 ACTIVITY_FLIPSUMMON		=4		--
-ACTIVITY_ATTACK			=5		--
+ACTIVITY_ATTACK			=5		--global: count of attack announce, custom: count of attack (including changing target, damage calculation)
 ACTIVITY_BATTLE_PHASE	=6		-- not available in custom counter
 ACTIVITY_CHAIN			=7		-- only available in custom counter
 --announce type（宣言类型，CATEGORY_ANNOUNCE的OperationInfo的target_param）
