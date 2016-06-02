@@ -48,7 +48,7 @@ function c62878208.eqop(e,tp,eg,ep,ev,re,r,rp)
 			d=eqc
 		end
 		if a:IsAttackable() and not a:IsImmuneToEffect(e) and not d:IsImmuneToEffect(e) then
-			Duel.CalculateDamage(a,d)
+			Duel.CalculateDamage(a,d,true)
 		end
 	end
 end

@@ -698,13 +698,13 @@ DUEL_PSEUDO_SHUFFLE		=0x10		--不洗牌
 DUEL_TAG_MODE			=0x20		--双打PP
 DUEL_SIMPLE_AI			=0x40		--AI(用于残局)
 --Activity counter
---global: 1-6 (binary: 6)
+--global: 1-6 (binary: 5,6)
 --custom: 1-5,7 (binary: 1-5)
 ACTIVITY_SUMMON			=1		--
 ACTIVITY_NORMALSUMMON	=2		--
 ACTIVITY_SPSUMMON		=3		--
 ACTIVITY_FLIPSUMMON		=4		--
-ACTIVITY_ATTACK			=5		--global: count of attack announce, custom: count of attack (including changing target, damage calculation)
+ACTIVITY_ATTACK			=5		--
 ACTIVITY_BATTLE_PHASE	=6		-- not available in custom counter
 ACTIVITY_CHAIN			=7		-- only available in custom counter
 --announce type（宣言类型，CATEGORY_ANNOUNCE的OperationInfo的target_param）

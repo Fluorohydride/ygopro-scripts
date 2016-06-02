@@ -88,7 +88,7 @@ function c88482761.atkop(e,tp,eg,ep,ev,re,r,rp)
 		if c1~=e:GetLabelObject() then c1,c2=c2,c1 end
 		if c1:IsControler(1-tp) and c1:IsPosition(POS_FACEUP_ATTACK) and not c1:IsImmuneToEffect(e)
 			and c2:IsControler(tp) then
-			Duel.CalculateDamage(c1,c2)
+			Duel.CalculateDamage(c1,c2,true)
 		end
 	end
 end
