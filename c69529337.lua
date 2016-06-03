@@ -60,15 +60,7 @@ function c69529337.tdop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c69529337.filter(c,tp,code)
-	if not (c:IsType(TYPE_FIELD) and c:IsSetCard(0xe2) and not c:IsCode(code)) or c:IsForbidden() then return false end
-	local te=c:GetActivateEffect()
-	local con=te:GetCondition()
-	if con and not con(te,tp,nil,0,0,nil,0,0) then return false end
-	local cost=te:GetCost()
-	if cost and not cost(te,tp,nil,0,0,nil,0,0,0) then return false end
-	local tg=te:GetTarget()
-	if tg and not tg(te,tp,nil,0,0,nil,0,0,0) then return false end
-	return true
+	return c:IsType(TYPE_FIELD) and c:IsSetCard(0xe2) and c:GetActivateEffect():IsActivatable(tp) and not c:IsCode(code)
 end
 function c69529337.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp

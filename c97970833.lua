@@ -13,15 +13,7 @@ function c97970833.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer()
 end
 function c97970833.filter(c,tp)
-	if not c:IsCode(34487429) or c:IsForbidden() then return false end
-	local te=c:GetActivateEffect()
-	local con=te:GetCondition()
-	if con and not con(te,tp,nil,0,0,nil,0,0) then return false end
-	local cost=te:GetCost()
-	if cost and not cost(te,tp,nil,0,0,nil,0,0,0) then return false end
-	local tg=te:GetTarget()
-	if tg and not tg(te,tp,nil,0,0,nil,0,0,0) then return false end
-	return true
+	return c:IsCode(34487429) and c:GetActivateEffect():IsActivatable(tp)
 end
 function c97970833.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c97970833.filter,tp,LOCATION_DECK,0,1,nil,tp) end
