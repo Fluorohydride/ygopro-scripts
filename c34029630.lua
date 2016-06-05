@@ -43,7 +43,7 @@ function c34029630.ctpermit(e)
 end
 function c34029630.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c34029630.filter(chkc) end
-	if chk==0 then return true end
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,8102334) end
 	local c=e:GetHandler()
 	c:AddCounter(0x1,3)
 	if Duel.GetTurnPlayer()==tp and c:IsCanRemoveCounter(tp,0x1,1,REASON_EFFECT)
