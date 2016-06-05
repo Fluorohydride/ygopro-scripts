@@ -14,7 +14,6 @@ function c80230510.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SUMMON_PROC)
 	e1:SetTargetRange(LOCATION_HAND,0)
-	e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 	e1:SetCondition(c80230510.otcon)
 	e1:SetTarget(c80230510.ottg)
 	e1:SetOperation(c80230510.otop)
@@ -45,7 +44,7 @@ function c80230510.otcon(e,c)
 end
 function c80230510.ottg(e,c)
 	local mi,ma=c:GetTributeRequirement()
-	return mi==2 or ma==2
+	return mi<=2 and ma>=2
 end
 function c80230510.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
