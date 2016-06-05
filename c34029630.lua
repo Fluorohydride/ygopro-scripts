@@ -43,16 +43,16 @@ function c34029630.ctpermit(e)
 end
 function c34029630.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c34029630.filter(chkc) end
-	if chk==0 then return true end
 	local c=e:GetHandler()
+	if chk==0 then return Duel.IsCanAddCounter(tp,0x1,3,c) end
 	c:AddCounter(0x1,3)
 	if Duel.GetTurnPlayer()==tp and c:IsCanRemoveCounter(tp,0x1,1,REASON_EFFECT)
-		and Duel.IsExistingTarget(c34029630.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler())
+		and Duel.IsExistingTarget(c34029630.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 		and Duel.SelectYesNo(tp,aux.Stringid(34029630,0)) then
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(34029630,2))
-		Duel.SelectTarget(tp,c34029630.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetHandler())
-		e:GetHandler():RegisterFlagEffect(34029630,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		Duel.SelectTarget(tp,c34029630.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,c)
+		c:RegisterFlagEffect(34029630,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 	else
 		e:SetProperty(0)
 	end
