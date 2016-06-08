@@ -68,7 +68,7 @@ function c22359980.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c22359980.mtop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLP(tp)>2000 and Duel.SelectYesNo(tp,aux.Stringid(22359980,0)) then
+	if Duel.CheckLPCost(tp,2000) and Duel.SelectYesNo(tp,aux.Stringid(22359980,0)) then
 		Duel.PayLPCost(tp,2000)
 	else
 		Duel.Destroy(e:GetHandler(),REASON_COST)

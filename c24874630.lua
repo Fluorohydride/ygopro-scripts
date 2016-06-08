@@ -48,7 +48,7 @@ function c24874630.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c24874630.desop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLP(tp)>1000 and Duel.SelectYesNo(tp,aux.Stringid(24874630,0)) then
+	if Duel.CheckLPCost(tp,1000) and Duel.SelectYesNo(tp,aux.Stringid(24874630,0)) then
 		Duel.PayLPCost(tp,1000)
 	else
 		Duel.Destroy(e:GetHandler(),REASON_COST)

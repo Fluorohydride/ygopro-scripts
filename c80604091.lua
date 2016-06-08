@@ -31,7 +31,7 @@ function c80604091.cost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tn=Duel.GetTurnPlayer()
 	local ph=Duel.GetCurrentPhase()
 	if ((tn==tp and (ph==PHASE_MAIN1 or ph==PHASE_MAIN2)) or (tn~=tp and ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE))
-			and Duel.GetLP(tp)>=500
+			and Duel.CheckLPCost(tp,500)
 			and Duel.IsExistingMatchingCard(c80604091.filter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil)
 			and Duel.SelectYesNo(tp,aux.Stringid(80604091,1)) then
 		Duel.PayLPCost(tp,500)
