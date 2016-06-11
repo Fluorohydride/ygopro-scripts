@@ -47,8 +47,13 @@ function c92377303.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c92377303.spop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) and Duel.SpecialSummon(e:GetHandler(),0,tp,tp,true,false,POS_FACEUP)>0 then
-		e:GetHandler():CompleteProcedure()
+	local c=e:GetHandler()
+	if not c:IsRelateToEffect(e) then return end
+	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)~=0 then
+		c:CompleteProcedure()
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and c:IsLocation(LOCATION_HAND) then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c92377303.thcon(e,tp,eg,ep,ev,re,r,rp)
