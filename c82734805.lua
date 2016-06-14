@@ -175,7 +175,7 @@ function c82734805.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 			g1:Merge(sg)
 		elseif gc:IsFusionSetCard(0xbb) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-			local sg=mg:FilterSelect(tp,c82734805.fcfilter3,1,1,nil,14799437,23440231,mg,e:GetHandler())
+			local sg=mg:FilterSelect(tp,c82734805.fcfilter3,1,1,nil,mg,e:GetHandler())
 			g1:Merge(sg)
 			local tc1=sg:GetFirst()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
