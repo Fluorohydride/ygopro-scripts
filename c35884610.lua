@@ -97,6 +97,7 @@ function c35884610.atcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c35884610.atop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	if not c:IsRelateToEffect(e) then return end
 	local tc=e:GetHandler():GetEquipTarget()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
