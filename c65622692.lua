@@ -56,7 +56,7 @@ function c65622692.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0
 end
 function c65622692.eqlimit(e,c)
-	return c:IsCode(62651957)
+	return c:IsCode(62651957) or e:GetHandler():GetEquipTarget()==c
 end
 function c65622692.filter(c)
 	return c:IsFaceup() and c:IsCode(62651957)

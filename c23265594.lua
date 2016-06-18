@@ -53,7 +53,7 @@ function c23265594.uncon(e)
 	return e:GetHandler():IsStatus(STATUS_UNION)
 end
 function c23265594.eqlimit(e,c)
-	return c:IsRace(RACE_MACHINE)
+	return c:IsRace(RACE_MACHINE) or e:GetHandler():GetEquipTarget()==c
 end
 function c23265594.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_MACHINE)
