@@ -25,7 +25,6 @@ function c65622692.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
 	e3:SetCode(EFFECT_UPDATE_ATTACK)
 	e3:SetValue(400)
-	e3:SetCondition(c65622692.uncon)
 	c:RegisterEffect(e3)
 	--Def up
 	local e4=Effect.CreateEffect(c)
@@ -54,13 +53,13 @@ function c65622692.uncon(e)
 	return e:GetHandler():IsStatus(STATUS_UNION)
 end
 function c65622692.repval(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE)~=0
+	return bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0
 end
 function c65622692.eqlimit(e,c)
-	return c:IsCode(62651957)
+	return c:IsCode(62651957) or e:GetHandler():GetEquipTarget()==c
 end
 function c65622692.filter(c)
-	return c:IsFaceup() and c:IsCode(62651957) and c:GetUnionCount()==0
+	return c:IsFaceup() and c:IsCode(62651957)
 end
 function c65622692.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c65622692.filter(chkc) end
@@ -91,7 +90,7 @@ end
 function c65622692.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) then
 		Duel.SendtoGrave(c,REASON_RULE)
 	end
