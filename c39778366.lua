@@ -25,7 +25,7 @@ function c39778366.initial_effect(c)
 end
 function c39778366.filter(c,e,tp)
 	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT)
-	and c:IsType(TYPE_NORMAL+TYPE_UNION) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsType(TYPE_NORMAL+TYPE_UNION) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c39778366.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c39778366.filter(chkc,e,tp) end
@@ -59,7 +59,7 @@ function c39778366.thfilter(c)
 	and c:IsType(TYPE_NORMAL+TYPE_UNION) and c:IsAbleToHand()
 end
 function c39778366.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetControler()==tp and chkc:IsLocation(LOCATION_REMOVED) and c39778366.filter(chkc) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_REMOVED) and c39778366.thfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c39778366.thfilter,tp,LOCATION_REMOVED,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,c39778366.thfilter,tp,LOCATION_REMOVED,0,1,1,nil)

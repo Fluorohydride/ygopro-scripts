@@ -40,19 +40,20 @@ end
 function c66399653.tgfilter(c,e,tp,chk)
 	return c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsType(TYPE_UNION)
 		and c:IsLocation(LOCATION_MZONE) and c:IsFaceup() and c:IsControler(tp) and c:IsCanBeEffectTarget(e)
-		and (chk or Duel.IsExistingTarget(c66399653.cfilter,tp,LOCATION_DECK,0,1,nil,c))
+		and (chk or Duel.IsExistingMatchingCard(c66399653.cfilter,tp,LOCATION_DECK,0,1,nil,c))
 end
 function c66399653.cfilter(c,ec)
 	return c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT)
 		and c:IsType(TYPE_UNION) and c:CheckEquipTarget(ec) and not c:IsCode(ec:GetCode())
 end
 function c66399653.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return c66399653.tgfilter(chkc,e,tp,true) end
+	if chkc then return eg:IsContains(chkc) and c66399653.tgfilter(chkc,e,tp,true) end
 	local g=eg:Filter(c66399653.tgfilter,nil,e,tp,false)
 	if chk==0 then return g:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
 	if g:GetCount()==1 then
 		Duel.SetTargetCard(g:GetFirst())
 	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local tc=g:Select(tp,1,1,nil)
 		Duel.SetTargetCard(tc)
 	end

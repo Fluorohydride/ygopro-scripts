@@ -83,11 +83,11 @@ function c65172015.spop(e,tp,eg,ep,ev,re,r,rp,c)
 		g:AddCard(tc)
 		if i==1 then
 			g1:Clear()
-			if tc:IsFusionCode(1561110) then
+			if tc:GetOriginalCode()==1561110 then
 				local sg=Duel.GetMatchingGroup(c65172015.spfilter,tp,LOCATION_ONFIELD,0,tc,91998119)
 				g1:Merge(sg)
 			end
-			if tc:IsFusionCode(91998119) then
+			if tc:GetOriginalCode()==91998119 then
 				local sg=Duel.GetMatchingGroup(c65172015.spfilter,tp,LOCATION_ONFIELD,0,tc,1561110)
 				g1:Merge(sg)
 			end
@@ -127,7 +127,8 @@ end
 function c65172015.spfilter3(c,e,tp)
 	return c:IsFaceup() and c:IsCode(91998119) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c65172015.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c65172015.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return false end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and Duel.IsExistingTarget(c65172015.spfilter2,tp,LOCATION_REMOVED,0,1,nil,e,tp)
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133) end

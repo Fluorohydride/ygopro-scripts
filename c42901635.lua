@@ -32,7 +32,7 @@ function c42901635.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c42901635.cfilter(c)
-	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and IsAbleToRemoveAsCost()
+	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsAbleToRemoveAsCost()
 end
 function c42901635.sprfilter1(c,mg,ft)
 	local mg2=mg:Clone()

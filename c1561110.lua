@@ -126,9 +126,10 @@ function c1561110.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c1561110.spfilter(c,e,tp)
 	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT)
-		and c:IsType(TYPE_UNION) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsType(TYPE_UNION) and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c1561110.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
+function c1561110.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return false end
 	local g=Duel.GetMatchingGroup(c1561110.spfilter,tp,LOCATION_REMOVED,0,nil,e,tp)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and g:GetClassCount(Card.GetCode)>2
@@ -141,7 +142,7 @@ function c1561110.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 		sg:Merge(g1)
 	end
 	Duel.SetTargetCard(sg)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,3,tp,LOCATION_REMOVED)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,3,0,0)
 end
 function c1561110.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
