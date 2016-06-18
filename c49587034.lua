@@ -19,7 +19,7 @@ function c49587034.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rs=g:RandomSelect(1-tp,1)
 	local card=rs:GetFirst()
 	if card==nil then return end
-	if Duel.Remove(card,POS_FACEDOWN,REASON_EFFECT)>0 then
+	if Duel.Remove(card,POS_FACEDOWN,REASON_EFFECT)>0 and e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		local ph=Duel.GetCurrentPhase()
 		local cp=Duel.GetTurnPlayer()
 		local e1=Effect.CreateEffect(e:GetHandler())
