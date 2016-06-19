@@ -71,6 +71,9 @@ function c27383110.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(tc,SUMMON_TYPE_RITUAL,tp,tp,false,true,POS_FACEUP)
 		tc:CompleteProcedure()
 		e:SetLabelObject(tc)
+		if e:GetHandler():IsLocation(LOCATION_ONFIELD) then
+			Duel.SendtoGrave(e:GetHandler(),REASON_RULE)
+		end
 		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+27383110,e,0,tp,tp,0)
 	end
 end
