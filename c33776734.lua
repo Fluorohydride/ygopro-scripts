@@ -45,13 +45,15 @@ function c33776734.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterFlagEffect(tp,33776734,RESET_CHAIN,0,0)
 end
 function c33776734.spop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
-		Duel.SpecialSummon(e:GetHandler(),0,tp,tp,false,false,POS_FACEUP)
+	local c=e:GetHandler()
+	if not c:IsRelateToEffect(e) then return end
+	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c33776734.rmtarget(e,c)
-	local ty=c:GetOriginalType()
-	return bit.band(ty,TYPE_SPELL)~=0 and c:IsFaceup() and not c:IsStatus(STATUS_ACTIVATE_DISABLED)
+	return c:IsFaceup() and not c:IsType(TYPE_TRAP) and c:IsStatus(STATUS_ACTIVATED)
 end
 function c33776734.val(e,c)
 	return Duel.GetMatchingGroupCount(Card.IsType,c:GetControler(),0,LOCATION_GRAVE,nil,TYPE_SPELL)*500
