@@ -16,6 +16,7 @@ function c27383110.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_CUSTOM+27383110)
 	e2:SetRange(LOCATION_GRAVE)
+	e2:SetCondition(c27383110.thcon)
 	e2:SetCost(c27383110.thcost)
 	e2:SetTarget(c27383110.thtg)
 	e2:SetOperation(c27383110.thop)
@@ -81,6 +82,9 @@ function c27383110.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:CompleteProcedure()
 		e:GetLabelObject():SetLabelObject(tc)
 	end
+end
+function c27383110.thcon(e,tp,eg,ep,ev,re,r,rp)
+	return re:GetHandler()==e:GetHandler()
 end
 function c27383110.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsAbleToRemove() end
