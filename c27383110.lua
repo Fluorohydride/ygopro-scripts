@@ -13,13 +13,22 @@ function c27383110.initial_effect(c)
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetDescription(aux.Stringid(27383110,0))
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_CUSTOM+27383110)
+	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCost(c27383110.thcost)
 	e2:SetTarget(c27383110.thtg)
 	e2:SetOperation(c27383110.thop)
-	e2:SetLabelObject(e1)
 	c:RegisterEffect(e2)
+	--event
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e3:SetCode(EVENT_CHAIN_END)
+	e3:SetRange(LOCATION_GRAVE)
+	e3:SetCondition(c27383110.evcon)
+	e3:SetOperation(c27383110.evop)
+	c:RegisterEffect(e3)
+	e1:SetLabelObject(e3)
 end
 c27383110.fit_monster={44665365}
 function c27383110.filter(c,e,tp,m,ft)
@@ -70,8 +79,7 @@ function c27383110.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		Duel.SpecialSummon(tc,SUMMON_TYPE_RITUAL,tp,tp,false,true,POS_FACEUP)
 		tc:CompleteProcedure()
-		e:SetLabelObject(tc)
-		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+27383110,e,0,tp,tp,0)
+		e:GetLabelObject():SetLabelObject(tc)
 	end
 end
 function c27383110.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -82,7 +90,7 @@ function c27383110.thfilter(c,e,tp)
 	return c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp) and c:IsAbleToHand() and c:IsCanBeEffectTarget(e)
 end
 function c27383110.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local tc=e:GetLabelObject():GetLabelObject()
+	local tc=eg:GetFirst()
 	local mat=tc:GetMaterial()
 	if chkc then return mat:IsContains(chkc) and c27383110.thfilter(chkc,e,tp) end
 	if chk==0 then return mat:IsExists(c27383110.thfilter,1,nil,e,tp) end
@@ -97,4 +105,12 @@ function c27383110.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tc)
 	end
+end
+function c27383110.evcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetLabelObject()~=nil
+end
+function c27383110.evop(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	Duel.RaiseEvent(tc,EVENT_CUSTOM+27383110,e,0,tp,tp,0)
+	e:SetLabelObject(nil)
 end
