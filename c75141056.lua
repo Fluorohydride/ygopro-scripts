@@ -35,10 +35,5 @@ function c75141056.activate(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetValue(gc:GetCode())
 			tc:RegisterEffect(e1)
 		end
-	elseif Duel.IsPlayerCanDiscardDeck(tp,1) then
-		local cg=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
-		Duel.ConfirmCards(1-tp,cg)
-		Duel.ConfirmCards(tp,cg)
-		Duel.ShuffleDeck(tp)
 	end
 end

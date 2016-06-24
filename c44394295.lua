@@ -80,19 +80,5 @@ function c44394295.activate(e,tp,eg,ep,ev,re,r,rp)
 			fop(ce,e,tp,tc,mat2)
 		end
 		tc:CompleteProcedure()
-	else
-		local cg1=Duel.GetFieldGroup(tp,LOCATION_HAND+LOCATION_MZONE,0)
-		local cg2=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
-		local cg3=Duel.GetFieldGroup(tp,LOCATION_EXTRA,0)
-		if cg1:GetCount()>1 and cg3:IsExists(Card.IsFacedown,1,nil) and Duel.IsPlayerCanSpecialSummon(tp) 
-				and not Duel.IsPlayerAffectedByEffect(tp,27581098) then
-			Duel.ConfirmCards(1-tp,cg1)
-			if bit.band(loc,LOCATION_DECK)==LOCATION_DECK and not Duel.IsPlayerAffectedByEffect(tp,EFFECT_CANNOT_DISCARD_DECK) then
-				Duel.ConfirmCards(1-tp,cg2)
-				Duel.ShuffleDeck(tp)
-			end
-			Duel.ConfirmCards(1-tp,cg3)
-			Duel.ShuffleHand(tp)
-		end
 	end
 end

@@ -21,15 +21,11 @@ end
 function c15800838.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ac=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	local g=Duel.GetMatchingGroup(Card.IsCode,tp,0,LOCATION_HAND,nil,ac)
-	local hg=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
-	Duel.ConfirmCards(tp,hg)
 	if g:GetCount()>0 then
 		Duel.SendtoGrave(g,REASON_EFFECT+REASON_DISCARD)
-		Duel.ShuffleHand(1-tp)
 	else
 		local sg=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 		local dg=sg:RandomSelect(tp,1)
 		Duel.SendtoGrave(dg,REASON_EFFECT+REASON_DISCARD)
-		Duel.ShuffleHand(1-tp)
 	end
 end

@@ -52,8 +52,6 @@ function c39238953.activate(e,tp,eg,ep,ev,re,r,rp)
 		elseif sel==2 then
 			Duel.SpecialSummon(sg,0,tp,tp,true,false,POS_FACEUP_ATTACK)
 		end
-	else
-		Duel.ConfirmCards(tp,g)
 	end
 	Duel.ShuffleDeck(1-tp)
 end
