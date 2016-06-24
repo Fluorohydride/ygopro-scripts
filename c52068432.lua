@@ -55,6 +55,9 @@ function c52068432.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c52068432.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateActivation(ev)
+	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
+		Duel.SendtoGrave(eg,REASON_RULE)
+	end
 end
 function c52068432.remcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_RITUAL

@@ -71,6 +71,9 @@ function c41175645.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c41175645.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateActivation(ev)
+	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
+		Duel.SendtoGrave(eg,REASON_RULE)
+	end
 end
 function c41175645.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

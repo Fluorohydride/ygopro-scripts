@@ -27,7 +27,7 @@ function c82744076.initial_effect(c)
 	Duel.AddCustomActivityCounter(82744076,ACTIVITY_ATTACK,c82744076.counterfilter)
 end
 function c82744076.counterfilter(c)
-    return c:IsType(TYPE_SYNCHRO)
+	return c:IsType(TYPE_SYNCHRO)
 end
 function c82744076.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(82744076,tp,ACTIVITY_ATTACK)==0 end
@@ -85,4 +85,7 @@ function c82744076.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c82744076.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateActivation(ev)
+	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
+		Duel.SendtoGrave(eg,REASON_RULE)
+	end
 end

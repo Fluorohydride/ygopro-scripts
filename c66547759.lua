@@ -70,4 +70,7 @@ function c66547759.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c66547759.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateActivation(ev)
+	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
+		Duel.SendtoGrave(eg,REASON_RULE)
+	end
 end
