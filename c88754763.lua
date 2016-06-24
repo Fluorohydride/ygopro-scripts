@@ -9,7 +9,7 @@ function c88754763.initial_effect(c)
 	e1:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetValue(aux.tgval)
+	e1:SetValue(1)
 	c:RegisterEffect(e1)
 	--draw
 	local e2=Effect.CreateEffect(c)

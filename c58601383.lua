@@ -25,7 +25,7 @@ function c58601383.ffilter(c)
 	return c:IsType(TYPE_SYNCHRO) and not c:IsType(TYPE_EFFECT)
 end
 function c58601383.efilter1(e,re,rp)
-	return re:IsActiveType(TYPE_EFFECT) and aux.tgval(e,re,rp)
+	return re:IsActiveType(TYPE_EFFECT)
 end
 function c58601383.efilter2(e,re)
 	return re:IsActiveType(TYPE_EFFECT)

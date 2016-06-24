@@ -27,7 +27,7 @@ function c67328336.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c67328336.effval(e,re,rp)
-	return re:GetHandler():IsType(TYPE_SYNCHRO) and aux.tgval(e,re,rp)
+	return re:GetHandler():IsType(TYPE_SYNCHRO)
 end
 function c67328336.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

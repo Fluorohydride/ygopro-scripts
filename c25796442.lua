@@ -24,7 +24,7 @@ function c25796442.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c25796442.tgval(e,re,rp)
-	return re:IsActiveType(TYPE_EFFECT) and aux.tgval(e,re,rp)
+	return re:IsActiveType(TYPE_EFFECT)
 end
 function c25796442.efilter(e,re)
 	return re:IsActiveType(TYPE_EFFECT)

@@ -1627,13 +1627,9 @@ end
 function Auxiliary.imval1(e,c)
 	return not c:IsImmuneToEffect(e)
 end
---default filter for EFFECT_CANNOT_BE_EFFECT_TARGET
-function Auxiliary.tgval(e,re,rp)
-	return not re:GetHandler():IsImmuneToEffect(e)
-end
 --filter for EFFECT_CANNOT_BE_EFFECT_TARGET + opponent 
 function Auxiliary.tgoval(e,re,rp)
-	return rp~=e:GetHandlerPlayer() and not re:GetHandler():IsImmuneToEffect(e)
+	return rp~=e:GetHandlerPlayer()
 end
 --filter for non-zero ATK 
 function Auxiliary.nzatk(c)
