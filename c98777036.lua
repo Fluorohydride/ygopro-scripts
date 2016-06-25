@@ -84,7 +84,7 @@ function c98777036.ctcos(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(sg,REASON_COST)
 end
 function c98777036.cttar(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c98777036.ctffilter(e,e:GetLabel()) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c98777036.ctffilter(chkc,e:GetLabel()) end
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
 	local g=Duel.SelectTarget(tp,c98777036.ctffilter,tp,0,LOCATION_MZONE,1,1,nil,e:GetLabel())

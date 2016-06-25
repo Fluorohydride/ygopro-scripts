@@ -20,10 +20,12 @@ function c41925941.condition(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
 	if a:IsControler(tp) then 
 		e:SetLabelObject(d)
-		return a:IsFaceup() and a:IsRace(RACE_FIEND) and a:IsRelateToBattle() and d and d:IsFaceup() and d:IsRelateToBattle()
-	else
+		return a:IsFaceup() and a:IsRace(RACE_FIEND) and a:IsRelateToBattle()
+			and d and d:IsFaceup() and d:IsRelateToBattle()
+	elseif d and d:IsControler(tp) then
 		e:SetLabelObject(a)
-		return d:IsFaceup() and d:IsRace(RACE_FIEND) and d:IsRelateToBattle() and a and a:IsFaceup() and a:IsRelateToBattle()
+		return d:IsFaceup() and d:IsRace(RACE_FIEND) and d:IsRelateToBattle()
+			and a and a:IsFaceup() and a:IsRelateToBattle()
 	end
 end
 function c41925941.cost(e,tp,eg,ep,ev,re,r,rp,chk)

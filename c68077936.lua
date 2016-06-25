@@ -43,7 +43,7 @@ function c68077936.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c68077936.descon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c68077936.cfilter,1,nil,tp) and re:IsActiveType(TYPE_SPELL) and aux.exccon(e)
+	return eg:IsExists(c68077936.cfilter,1,nil,tp) and re and re:IsActiveType(TYPE_SPELL) and aux.exccon(e)
 end
 function c68077936.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end

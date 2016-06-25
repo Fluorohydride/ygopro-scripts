@@ -145,11 +145,15 @@ function c57314798.desop(e,tp,eg,ep,ev,re,r,rp)
 		local g2=Duel.SelectMatchingCard(1-tp,c57314798.setfilter,1-tp,LOCATION_GRAVE,0,1,1,nil)
 		local tc1=g1:GetFirst()
 		local tc2=g2:GetFirst()
-		if tc1:IsHasEffect(EFFECT_NECRO_VALLEY) or tc2:IsHasEffect(EFFECT_NECRO_VALLEY) then return end
-		Duel.SSet(tp,tc1)
-		Duel.ConfirmCards(1-tp,tc1)
-		Duel.SSet(1-tp,tc2)
-		Duel.ConfirmCards(tp,tc2)
+		if (tc1 and tc1:IsHasEffect(EFFECT_NECRO_VALLEY)) or (tc2 and tc2:IsHasEffect(EFFECT_NECRO_VALLEY)) then return end
+		if tc1 then
+			Duel.SSet(tp,tc1)
+			Duel.ConfirmCards(1-tp,tc1)
+		end
+		if tc2 then
+			Duel.SSet(1-tp,tc2)
+			Duel.ConfirmCards(tp,tc2)
+		end
 	end
 end
 function c57314798.spfilter(c)

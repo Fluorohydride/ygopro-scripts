@@ -45,6 +45,7 @@ function c27873305.operation(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 			local g=Duel.SelectMatchingCard(tp,c27873305.eqfilter,tp,0,LOCATION_MZONE,1,1,bc)
 			local ec=g:GetFirst()
+			if not ec then return end
 			local atk=ec:GetTextAttack()
 			if atk<0 then atk=0 end
 			if not Duel.Equip(tp,ec,c,false) then return end

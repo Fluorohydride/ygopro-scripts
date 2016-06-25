@@ -64,7 +64,8 @@ function c90673413.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c90673413.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_LOST_TARGET) and c:GetPreviousEquipTarget():IsLocation(LOCATION_OVERLAY)
+	local tc=c:GetPreviousEquipTarget()
+	return c:IsReason(REASON_LOST_TARGET) and tc and tc:IsLocation(LOCATION_OVERLAY)
 end
 function c90673413.atkfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)
