@@ -1,17 +1,15 @@
---Scripted by Eerie Code
---Credit to Michael Lawrence Dee for the multiple attacks script
---Moonlight Cat Dancer
+
 function c51777272.initial_effect(c)
-	--fusion material
+
 	aux.AddFusionProcFunRep(c,c51777272.matfil,2,true)
 	c:EnableReviveLimit()
-	--battle indestructable
+
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
 	e1:SetValue(1)
 	c:RegisterEffect(e1)
-	--Multiple attacks
+
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(51777272,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
@@ -21,7 +19,7 @@ function c51777272.initial_effect(c)
 	e2:SetCost(c51777272.cost)
 	e2:SetOperation(c51777272.operation)
 	c:RegisterEffect(e2)
-	--atk
+
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(51777272,1))
 	e3:SetCategory(CATEGORY_DAMAGE)

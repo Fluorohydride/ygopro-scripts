@@ -1,17 +1,16 @@
---Scripted by Eerie Code
---Moon-Light Panther Dancer
+
 function c97165977.initial_effect(c)
-	--fusion material
+
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeFun(c,51777272,c97165977.mat_filter,1,false,false)
-	--spsummon condition
+
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_SINGLE)
 	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e0:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e0:SetValue(c97165977.splimit)
 	c:RegisterEffect(e0)
-	--Immune
+
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
@@ -19,7 +18,7 @@ function c97165977.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetValue(c97165977.tgvalue)
 	c:RegisterEffect(e1)
-	--Multiple attacks
+
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(97165977,0))
 	e3:SetType(EFFECT_TYPE_IGNITION)
@@ -28,7 +27,7 @@ function c97165977.initial_effect(c)
 	e3:SetCondition(c97165977.condition)
 	e3:SetOperation(c97165977.operation)
 	c:RegisterEffect(e3)
-	--ATK Up
+
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(97165977,1))
 	e4:SetCategory(CATEGORY_ATKCHANGE)
