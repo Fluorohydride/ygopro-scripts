@@ -12,12 +12,12 @@ function c53550467.initial_effect(c)
 	--cannot be effect target
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
+	e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetTargetRange(0,0xff)
-	e2:SetCode(EFFECT_CANNOT_SELECT_EFFECT_TARGET)
-	e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
-	e2:SetCondition(c53550467.con)
-	e2:SetValue(c53550467.tglimit)
+	e2:SetTargetRange(LOCATION_MZONE,0)
+	e2:SetTarget(c53550467.tglimit)
+	e2:SetValue(aux.tgoval)
 	c:RegisterEffect(e2)
 	--destroy
 	local e3=Effect.CreateEffect(c)
@@ -41,8 +41,8 @@ end
 function c53550467.atlimit(e,c)
 	return c~=e:GetHandler() and c:IsFaceup() and c:GetAttack()<1800
 end
-function c53550467.tglimit(e,re,c)
-	return c~=e:GetHandler() and c:IsControler(e:GetHandlerPlayer()) and c:IsLocation(LOCATION_MZONE) and c:IsFaceup() and c:GetAttack()<1800
+function c53550467.tglimit(e,c)
+	return c~=e:GetHandler() and c:GetAttack()<1800
 end
 function c53550467.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(Card.IsSetCard,1,nil,0x207a)

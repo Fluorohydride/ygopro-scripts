@@ -29,14 +29,15 @@ function c24573625.initial_effect(c)
 	e4:SetValue(1)
 	c:RegisterEffect(e4)
 	--cannot be target
-	local e7=Effect.CreateEffect(c)
-	e7:SetType(EFFECT_TYPE_FIELD)
-	e7:SetRange(LOCATION_MZONE)
-	e7:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
-	e7:SetTargetRange(0,0xff)
-	e7:SetCode(EFFECT_CANNOT_SELECT_EFFECT_TARGET)
-	e7:SetValue(c24573625.tglimit)
-	c:RegisterEffect(e7)
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_FIELD)
+	e5:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
+	e5:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+	e5:SetRange(LOCATION_MZONE)
+	e5:SetTargetRange(LOCATION_ONFIELD,LOCATION_ONFIELD)
+	e5:SetTarget(c24573625.tglimit)
+	e5:SetValue(aux.tgoval)
+	c:RegisterEffect(e5)
 end
 function c24573625.splimcon(e)
 	return not e:GetHandler():IsForbidden()
@@ -47,6 +48,6 @@ end
 function c24573625.value(e,c)
 	return Duel.GetMatchingGroupCount(Card.IsSetCard,c:GetControler(),LOCATION_GRAVE,0,nil,0xab)*500
 end
-function c24573625.tglimit(e,re,c)
-	return c:IsFaceup() and c:IsSetCard(0xab) and c~=e:GetHandler() and c:IsLocation(LOCATION_ONFIELD) 
+function c24573625.tglimit(e,c)
+	return c:IsSetCard(0xab) and c~=e:GetHandler()
 end

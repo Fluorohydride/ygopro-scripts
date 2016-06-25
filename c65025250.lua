@@ -23,11 +23,12 @@ function c65025250.initial_effect(c)
 	--cannot be target
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
-	e4:SetCode(EFFECT_CANNOT_SELECT_EFFECT_TARGET)
-	e4:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
+	e4:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
+	e4:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e4:SetRange(LOCATION_MZONE)
-	e4:SetTargetRange(0,0xff)
-	e4:SetValue(c65025250.tgtg)
+	e4:SetTargetRange(LOCATION_MZONE,0)
+	e4:SetTarget(c65025250.tgtg)
+	e4:SetValue(aux.tgoval)
 	c:RegisterEffect(e4)
 end
 function c65025250.filter(c,tp)
@@ -54,6 +55,6 @@ function c65025250.posop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end
-function c65025250.tgtg(e,re,c)
-	return c~=e:GetHandler() and c:IsControler(e:GetHandlerPlayer()) and c:IsLocation(LOCATION_MZONE) and c:IsFaceup() and c:IsSetCard(0xb3)
+function c65025250.tgtg(e,c)
+	return c~=e:GetHandler() and c:IsSetCard(0xb3)
 end
