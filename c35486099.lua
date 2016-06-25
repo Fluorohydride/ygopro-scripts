@@ -10,10 +10,13 @@ function c35486099.initial_effect(c)
 	e1:SetOperation(c35486099.activate)
 	c:RegisterEffect(e1)
 end
+function c35486099.filter(c)
+	return c:IsSetCard(0x1034) and not c:IsForbidden()
+end
 function c35486099.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and chkc:IsSetCard(0x1034) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c35486099.filter(chkc) end
 	if chk==0 then
-		if not Duel.IsExistingTarget(Card.IsSetCard,tp,LOCATION_GRAVE,0,1,nil,0x1034) then return false end
+		if not Duel.IsExistingTarget(c35486099.filter,tp,LOCATION_GRAVE,0,1,nil) then return false end
 		if e:GetHandler():IsLocation(LOCATION_HAND) then
 			return Duel.GetLocationCount(tp,LOCATION_SZONE)>1
 		else return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
@@ -21,7 +24,7 @@ function c35486099.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if ft>2 then ft=2 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-	local g=Duel.SelectTarget(tp,Card.IsSetCard,tp,LOCATION_GRAVE,0,1,ft,nil,0x1034)
+	local g=Duel.SelectTarget(tp,c35486099.filter,tp,LOCATION_GRAVE,0,1,ft,nil)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,g:GetCount(),0,0)
 end
 function c35486099.activate(e,tp,eg,ep,ev,re,r,rp)

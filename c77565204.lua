@@ -27,7 +27,7 @@ function c77565204.filter1(c,e)
 	return c:IsCanBeFusionMaterial() and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
 end
 function c77565204.filter2(c,m)
-	return c:IsType(TYPE_FUSION) and c:CheckFusionMaterial(m)
+	return c:IsType(TYPE_FUSION) and c:CheckFusionMaterial(m) and not c:IsForbidden()
 end
 function c77565204.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

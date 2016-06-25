@@ -15,9 +15,12 @@ end
 function c47121070.tfcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c47121070.filter,1,nil,tp)
 end
+function c47121070.tffilter(c)
+	return c:IsSetCard(0x1034) and not c:IsForbidden()
+end
 function c47121070.tftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_DECK,0,1,nil,0x1034) end
+		and Duel.IsExistingMatchingCard(c47121070.tffilter,tp,LOCATION_DECK,0,1,nil) end
 end
 function c47121070.tfop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -31,7 +34,7 @@ function c47121070.tfop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-	local g=Duel.SelectMatchingCard(tp,Card.IsSetCard,tp,LOCATION_DECK,0,1,1,nil,0x1034)
+	local g=Duel.SelectMatchingCard(tp,c47121070.tffilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		local tc=g:GetFirst()
 		Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
