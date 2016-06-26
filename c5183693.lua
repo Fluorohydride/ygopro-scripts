@@ -56,7 +56,7 @@ function c5183693.atkcon(e)
 	if Duel.GetCurrentPhase()~=PHASE_DAMAGE_CAL then return false end
 	local eqc=e:GetHandler():GetEquipTarget()
 	local bc=eqc:GetBattleTarget()
-	return eqc:GetLevel()>0 and bc:GetLevel()>eqc:GetLevel()
+	return eqc:GetLevel()>0 and bc and bc:GetLevel()>eqc:GetLevel()
 end
 function c5183693.atkval(e,c)
 	local bc=c:GetBattleTarget()
