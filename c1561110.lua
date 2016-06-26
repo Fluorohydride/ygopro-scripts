@@ -145,10 +145,16 @@ function c1561110.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,3,0,0)
 end
 function c1561110.spop2(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
-	local ct=sg:GetCount()
-	if ct>0 and (ct==1 or not Duel.IsPlayerAffectedByEffect(tp,59822133)) then
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	if ft<=0 or g:GetCount()==0 or (g:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
+	if g:GetCount()<=ft then
+		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local sg=g:Select(tp,ft,ft,nil)
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
+		g:Sub(sg)
+		Duel.SendtoGrave(g,REASON_RULE)
 	end
 end

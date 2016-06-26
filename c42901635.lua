@@ -138,6 +138,6 @@ function c42901635.spop2(e,tp,eg,ep,ev,re,r,rp)
 		local sg=g:Select(tp,ft,ft,nil)
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 		g:Sub(sg)
-		Duel.SendtoGrave(g,REASON_EFFECT)
+		Duel.SendtoGrave(g,REASON_RULE)
 	end
 end
