@@ -50,11 +50,10 @@ function c59123194.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c59123194.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
 	local bc=e:GetHandler():GetBattleTarget()
+	local dam=bc:GetTextAttack()
+	if chk==0 then return dam>0 end
 	Duel.SetTargetCard(bc)
-	local dam=bc:GetAttack()
-	if dam<0 then dam=0 end
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(dam)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,dam)
@@ -63,7 +62,7 @@ function c59123194.damop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
-		local dam=tc:GetAttack()
+		local dam=tc:GetTextAttack()
 		if dam<0 then dam=0 end
 		Duel.Damage(p,dam,REASON_EFFECT)
 	end
