@@ -31,18 +31,18 @@ function c94331452.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c94331452.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c94331452.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c94331452.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c94331452.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,562)
-	local rc=Duel.AnnounceAttribute(tp,1,0xffff)
+	local rc=Duel.AnnounceAttribute(tp,1,0xff-g:GetFirst():GetAttribute())
 	e:SetLabel(rc)
 end
 function c94331452.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c94331452.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c94331452.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c94331452.filter,tp,LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,c94331452.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,562)
-	local rc=Duel.AnnounceAttribute(tp,1,0xffff)
+	local rc=Duel.AnnounceAttribute(tp,1,0xff-g:GetFirst():GetAttribute())
 	e:SetLabel(rc)
 end
 function c94331452.operation(e,tp,eg,ep,ev,re,r,rp)
