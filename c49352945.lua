@@ -87,12 +87,11 @@ function c49352945.spcon(e,c)
 	if ft<-2 then return false end
 	local mg=Duel.GetMatchingGroup(c49352945.spfilter,tp,LOCATION_ONFIELD,0,nil,89943723,17955766,54959865)
 	if ft>0 then return mg:IsExists(c49352945.spfilter1,1,nil,mg) end
-	local f1=Duel.GetMatchingGroupCount(c49352945.spfilter,tp,LOCATION_MZONE,0,nil,89943723,0,0)>0 and 1 or 0
-	local f2=Duel.GetMatchingGroupCount(c49352945.spfilter,tp,LOCATION_MZONE,0,nil,17955766,0,0)>0 and 1 or 0
-	local f3=Duel.GetMatchingGroupCount(c49352945.spfilter,tp,LOCATION_MZONE,0,nil,54959865,0,0)>0 and 1 or 0
-	if ft==-2 then return f1+f2+f3==3 and mg:IsExists(c49352945.spfilter1,1,nil,mg)
-	elseif ft==-1 then return f1+f2+f3>=2 and mg:IsExists(c49352945.spfilter1,1,nil,mg)
-	else return f1+f2+f3>=1 and mg:IsExists(c49352945.spfilter1,1,nil,mg) end
+	local mg2=mg:Filter(Card.IsLocation,nil,LOCATION_MZONE)
+	local ct=mg2:GetClassCount(Card.GetFusionCode)
+	if ft==-2 then return ct==3 and mg:IsExists(c49352945.spfilter1,1,nil,mg)
+	elseif ft==-1 then return ct>=2 and mg:IsExists(c49352945.spfilter1,1,nil,mg)
+	else return ct>=1 and mg:IsExists(c49352945.spfilter1,1,nil,mg) end
 end
 function c49352945.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
