@@ -51,8 +51,8 @@ function c87772572.activate(e,tp,eg,ep,ev,re,r,rp)
 	local att=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,87772572,0,0x11,0,2200,4,rac,att) then return end
-	c:AddMonsterAttribute(att,rac,0,0,0)
+	c:AddMonsterAttribute(TYPE_NORMAL+TYPE_TRAP,att,rac,0,0,0)
 	Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
-	c:TrapMonsterComplete(TYPE_NORMAL)
+	c:AddMonsterAttributeComplete()
 	Duel.SpecialSummonComplete()
 end
