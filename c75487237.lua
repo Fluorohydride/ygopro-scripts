@@ -41,7 +41,7 @@ end
 function c75487237.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateActivation(ev)
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
-		Duel.SendtoGrave(eg,REASON_RULE)
+		Duel.SendtoGrave(eg,REASON_EFFECT)
 	end
 	Duel.ChangePosition(e:GetHandler(),POS_FACEUP_DEFENSE)
 end

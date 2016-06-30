@@ -25,7 +25,7 @@ end
 function c73026394.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateActivation(ev)
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
-		Duel.SendtoGrave(eg,REASON_RULE)
+		Duel.SendtoGrave(eg,REASON_EFFECT)
 	end
 	local g=Duel.GetMatchingGroup(c73026394.filter,tp,LOCATION_EXTRA,0,nil):RandomSelect(tp,1)
 	Duel.SendtoGrave(g,REASON_EFFECT)
