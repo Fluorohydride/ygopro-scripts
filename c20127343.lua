@@ -15,9 +15,9 @@ function c20127343.costg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
-	Duel.Hint(HINT_SELECTMSG,tp,0)
-	local att=Duel.AnnounceAttribute(tp,1,0x7f)
+	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,563)
+	local att=Duel.AnnounceAttribute(tp,1,0xff-g:GetFirst():GetAttribute())
 	e:SetLabel(att)
 end
 function c20127343.cosop(e,tp,eg,ep,ev,re,r,rp)
