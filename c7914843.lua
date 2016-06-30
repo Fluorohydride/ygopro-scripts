@@ -30,10 +30,10 @@ function c7914843.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c7914843.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	local tct=1
-	if Duel.GetTurnPlayer()~=tp then tct=2
-	elseif Duel.GetCurrentPhase()==PHASE_END then tct=3 end
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsRace(RACE_MACHINE) then
+	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsRace(RACE_MACHINE) then
+		local tct=1
+		if Duel.GetTurnPlayer()~=tp then tct=2
+		elseif Duel.GetCurrentPhase()==PHASE_END then tct=3 end
 		Duel.GetControl(tc,tp,PHASE_END,tct)
 	end
 end
