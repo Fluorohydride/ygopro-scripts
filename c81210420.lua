@@ -18,8 +18,7 @@ function c81210420.filter(c)
 	return not c:IsType(TYPE_TOKEN)
 end
 function c81210420.spfilter(c,e,tp)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and Duel.IsPlayerCanSpecialSummonMonster(tp,c:GetCode(),nil,0x11,0,0,0,0,0)
-		and c:IsCanBeSpecialSummoned(e,0,tp,true,false,POS_FACEDOWN)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) and Duel.IsPlayerCanSpecialSummonMonster(tp,c:GetCode(),nil,0x11,0,0,0,0,0,POS_FACEDOWN)
 end
 function c81210420.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c81210420.filter,tp,LOCATION_MZONE,0,1,nil)
