@@ -58,6 +58,7 @@ function c16625614.dbop(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.SelectYesNo(tp,aux.Stringid(16625614,0)) then
 		tc:AddMonsterAttribute(TYPE_NORMAL,ATTRIBUTE_DARK,RACE_FIEND,1,0,0)
 		Duel.SpecialSummonStep(tc,181,tp,tp,true,false,POS_FACEUP)
+		tc:AddMonsterAttributeComplete()
 		--immune
 		local e7=Effect.CreateEffect(c)
 		e7:SetType(EFFECT_TYPE_SINGLE)
