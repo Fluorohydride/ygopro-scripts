@@ -59,11 +59,11 @@ function c4740489.atcon(e,tp,eg,ep,ev,re,r,rp)
 	if d:IsControler(tp) then
 		e:SetLabelObject(a)
 		return d:IsRace(RACE_ROCK) and d:IsAttribute(ATTRIBUTE_EARTH)
-			and a:IsRelateToBattle()
+			and a:IsRelateToBattle() and a:IsLocation(LOCATION_ONFIELD)
 	elseif a:IsControler(tp) then
 		e:SetLabelObject(d)
 		return a:IsRace(RACE_ROCK) and a:IsAttribute(ATTRIBUTE_EARTH)
-			and d:IsRelateToBattle()
+			and d:IsRelateToBattle() and d:IsLocation(LOCATION_ONFIELD)
 	end
 	return false
 end
