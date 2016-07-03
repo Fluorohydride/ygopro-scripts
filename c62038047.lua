@@ -25,7 +25,8 @@ function c62038047.filter(c)
 	return c:IsSetCard(0xd9) and not c:IsCode(62038047) and c:IsAbleToHand()
 end
 function c62038047.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_SYNCHRO
+	local c=e:GetHandler()
+	return c:IsLocation(LOCATION_GRAVE) and c:IsPreviousLocation(LOCATION_ONFIELD) and r==REASON_SYNCHRO
 end
 function c62038047.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c62038047.filter,tp,LOCATION_DECK,0,1,nil) end
