@@ -40,6 +40,12 @@ function c16172067.initial_effect(c)
 	e3:SetTarget(c16172067.distg)
 	e3:SetOperation(c16172067.disop)
 	c:RegisterEffect(e3)
+	--double tuner
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_SINGLE)
+	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e4:SetCode(21142671)
+	c:RegisterEffect(e4)
 end
 function c16172067.matfilter1(c,syncard)
 	return c:IsType(TYPE_TUNER) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsCanBeSynchroMaterial(syncard)

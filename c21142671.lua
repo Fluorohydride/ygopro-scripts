@@ -32,8 +32,7 @@ function c21142671.spcon(e,c)
 end
 function c21142671.spdcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local sync=c:GetReasonCard():GetMaterial()
-	return c:IsLocation(LOCATION_GRAVE) and r==REASON_SYNCHRO and sync:IsExists(Card.IsType,2,nil,TYPE_TUNER)
+	return c:IsLocation(LOCATION_GRAVE) and r==REASON_SYNCHRO and c:GetReasonCard():IsHasEffect(21142671)
 end
 function c21142671.filter(c,e,tp)
 	return c:IsAttribute(ATTRIBUTE_FIRE) and c:IsRace(RACE_FIEND)

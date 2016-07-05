@@ -13,6 +13,23 @@ function c52352005.initial_effect(c)
 	e1:SetTarget(c52352005.target)
 	e1:SetOperation(c52352005.operation)
 	c:RegisterEffect(e1)
+	--double tuner check
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetCode(EFFECT_MATERIAL_CHECK)
+	e2:SetValue(c52352005.valcheck)
+	c:RegisterEffect(e2)
+end
+function c52352005.valcheck(e,c)
+	local g=c:GetMaterial()
+	if g:IsExists(Card.IsType,2,nil,TYPE_TUNER) then
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+		e1:SetCode(21142671)
+		e1:SetReset(RESET_EVENT+0xfe0000+RESET_PHASE+PHASE_END)
+		c:RegisterEffect(e1)
+	end
 end
 function c52352005.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x100d) end
