@@ -54,23 +54,23 @@ end
 function c17032740.spfilter(c,code1,code2,code3)
 	return c:IsAbleToDeckOrExtraAsCost() and (c:IsFusionCode(code1) or c:IsFusionCode(code2) or c:IsFusionCode(code3))
 end
-function c17032740.spfilter1(c,mg)
+function c17032740.spfilter1(c,mg,ft)
 	local mg2=mg:Clone()
 	mg2:RemoveCard(c)
-	return c:IsFusionCode(89943723) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial()
-		and mg2:IsExists(c17032740.spfilter2,1,nil,mg2)
+	if c:IsLocation(LOCATION_MZONE) then ft=ft+1 end
+	return ft>=-1 and c:IsFusionCode(89943723) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial()
+		and mg2:IsExists(c17032740.spfilter2,1,nil,mg2,ft)
 end
-function c17032740.spfilter2(c,mg)
+function c17032740.spfilter2(c,mg,ft)
 	local mg2=mg:Clone()
 	mg2:RemoveCard(c)
-	return c:IsFusionCode(43237273) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial()
-		and mg2:IsExists(c17032740.spfilter3,1,nil)
+	if c:IsLocation(LOCATION_MZONE) then ft=ft+1 end
+	return ft>=0 and c:IsFusionCode(43237273) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial()
+		and mg2:IsExists(c17032740.spfilter3,1,nil,ft)
 end
-function c17032740.spfilter3(c)
-	return c:IsFusionCode(17732278) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial()
-end
-function c17032740.rmfilter(c,code)
-	return c:IsFusionCode(code) and c:IsCode(code)
+function c17032740.spfilter3(c,ft)
+	if c:IsLocation(LOCATION_MZONE) then ft=ft+1 end
+	return ft>=1 and c:IsFusionCode(17732278) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial()
 end
 function c17032740.spcon(e,c)
 	if c==nil then return true end
@@ -78,54 +78,27 @@ function c17032740.spcon(e,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<-2 then return false end
 	local mg=Duel.GetMatchingGroup(c17032740.spfilter,tp,LOCATION_ONFIELD,0,nil,89943723,43237273,17732278)
-	if ft>0 then return mg:IsExists(c17032740.spfilter1,1,nil,mg) end
-	local mg2=mg:Filter(Card.IsLocation,nil,LOCATION_MZONE)
-	local ct=mg2:GetClassCount(Card.GetFusionCode)
-	if ft==-2 then return ct==3 and mg:IsExists(c17032740.spfilter1,1,nil,mg)
-	elseif ft==-1 then return ct>=2 and mg:IsExists(c17032740.spfilter1,1,nil,mg)
-	else return ct>=1 and mg:IsExists(c17032740.spfilter1,1,nil,mg) end
+	return mg:IsExists(c17032740.spfilter1,1,nil,mg,ft)
 end
 function c17032740.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local mg1=Duel.GetMatchingGroup(c17032740.spfilter,tp,LOCATION_ONFIELD,0,nil,89943723,43237273,17732278)
-	local mg2=mg1:Filter(Card.IsLocation,nil,LOCATION_MZONE)
+	local mg=Duel.GetMatchingGroup(c17032740.spfilter,tp,LOCATION_ONFIELD,0,nil,89943723,43237273,17732278)
 	local g=Group.CreateGroup()
 	local tc=nil
 	for i=1,3 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		if i==1 then
-			if ft<=0 then
-				tc=mg2:FilterSelect(tp,c17032740.spfilter1,1,1,nil,mg2):GetFirst()
-			else
-				tc=mg1:FilterSelect(tp,c17032740.spfilter1,1,1,nil,mg1):GetFirst()
-			end
+			tc=mg:FilterSelect(tp,c17032740.spfilter1,1,1,nil,mg,ft):GetFirst()
 		end
 		if i==2 then
-			if ft<=0 then
-				tc=mg2:FilterSelect(tp,c17032740.spfilter2,1,1,nil,mg2):GetFirst()
-			else
-				tc=mg1:FilterSelect(tp,c17032740.spfilter2,1,1,nil,mg1):GetFirst()
-			end
+			tc=mg:FilterSelect(tp,c17032740.spfilter2,1,1,nil,mg,ft):GetFirst()
 		end
 		if i==3 then
-			if ft<=0 then
-				tc=mg2:FilterSelect(tp,c17032740.spfilter3,1,1,nil,mg2):GetFirst()
-			else
-				tc=mg1:FilterSelect(tp,c17032740.spfilter3,1,1,nil,mg1):GetFirst()
-			end
+			tc=mg:FilterSelect(tp,c17032740.spfilter3,1,1,nil,ft):GetFirst()
 		end
 		g:AddCard(tc)
-		if tc:IsFusionCode(89943723) then
-			mg1:Remove(c17032740.rmfilter,nil,89943723)
-			mg2:Remove(c17032740.rmfilter,nil,89943723)
-		elseif tc:IsFusionCode(43237273) then
-			mg1:Remove(c17032740.rmfilter,nil,43237273)
-			mg2:Remove(c17032740.rmfilter,nil,43237273)
-		elseif tc:IsFusionCode(17732278) then
-			mg1:Remove(c17032740.rmfilter,nil,17732278)
-			mg2:Remove(c17032740.rmfilter,nil,17732278)
-		end
-		ft=ft+1
+		mg:RemoveCard(tc)
+		if tc:IsLocation(LOCATION_MZONE) then ft=ft+1 end
 	end
 	local cg=g:Filter(Card.IsFacedown,nil)
 	if cg:GetCount()>0 then
