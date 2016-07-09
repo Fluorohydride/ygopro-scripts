@@ -66,19 +66,19 @@ function c49352945.spfilter1(c,mg,ft)
 	local mg2=mg:Clone()
 	mg2:RemoveCard(c)
 	if c:IsLocation(LOCATION_MZONE) then ft=ft+1 end
-	return ft>=-1 and c:IsFusionCode(89943723) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial()
+	return ft>=-1 and c:IsFusionCode(89943723) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(nil,true)
 		and mg2:IsExists(c49352945.spfilter2,1,nil,mg2,ft)
 end
 function c49352945.spfilter2(c,mg,ft)
 	local mg2=mg:Clone()
 	mg2:RemoveCard(c)
 	if c:IsLocation(LOCATION_MZONE) then ft=ft+1 end
-	return ft>=0 and c:IsFusionCode(17955766) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial()
+	return ft>=0 and c:IsFusionCode(17955766) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(nil,true)
 		and mg2:IsExists(c49352945.spfilter3,1,nil,ft)
 end
 function c49352945.spfilter3(c,ft)
 	if c:IsLocation(LOCATION_MZONE) then ft=ft+1 end
-	return ft>=1 and c:IsFusionCode(54959865) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial()
+	return ft>=1 and c:IsFusionCode(54959865) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(nil,true)
 end
 function c49352945.spcon(e,c)
 	if c==nil then return true end
