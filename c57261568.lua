@@ -96,7 +96,7 @@ function c57261568.synop(e,tp,eg,ep,ev,re,r,rp,syncard,f,minc,maxc)
 	local res=g:CheckWithSumEqual(Card.GetSynchroLevel,lv,minc,maxc,syncard)
 	local res2=g:CheckWithSumEqual(c57261568.cardiansynlevel,lv2,minc,maxc)
 	local sg=nil
-	if (res2 and res and Duel.SelectYesNo(tp,aux.Stringid(57261568,2)))
+	if (res2 and res and Duel.SelectYesNo(tp,aux.Stringid(57261568,3)))
 		or (res2 and not res) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 		sg=g:SelectWithSumEqual(tp,c57261568.cardiansynlevel,lv2,minc,maxc)
