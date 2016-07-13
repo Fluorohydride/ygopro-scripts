@@ -31,7 +31,7 @@ function c22011689.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c22011689.atkval(e,c)
-	return Duel.GetCounter(0,1,1,0x1141)*200
+	return Duel.GetCounter(0,1,1,0x1041)*200
 end
 function c22011689.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end

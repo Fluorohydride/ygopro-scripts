@@ -46,7 +46,7 @@ function c69105797.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c69105797.atkfilter(e,c)
-	return c:GetCounter(0x1141)>0
+	return c:GetCounter(0x1041)>0
 end
 function c69105797.ccon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -60,7 +60,7 @@ function c69105797.cop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c69105797.cfilter,tp,0,LOCATION_MZONE,nil)
 	local tc=g:GetFirst()
 	while tc do
-		tc:AddCounter(0x1141,1)
+		tc:AddCounter(0x1041,1)
 		if tc:GetLevel()>1 then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
@@ -74,5 +74,5 @@ function c69105797.cop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c69105797.lvcon(e)
-	return e:GetHandler():GetCounter(0x1141)>0
+	return e:GetHandler():GetCounter(0x1041)>0
 end
