@@ -22,7 +22,7 @@ function c30786387.initial_effect(c)
 	e2:SetOperation(c30786387.thop)
 	c:RegisterEffect(e2)
 end
-function c30786387.filter(c,e,tp)
+function c30786387.filter(c)
 	return c:IsSetCard(0xe6) and c:IsType(TYPE_MONSTER)
 end
 function c30786387.target(e,tp,eg,ep,ev,re,r,rp,chk)

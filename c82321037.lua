@@ -69,6 +69,7 @@ function c82321037.spop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetMatchingGroup(c82321037.rmfilter,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE,nil)
 		if g1:FilterCount(Card.IsAttribute,nil,ATTRIBUTE_WATER)==2 and g:GetCount()>0
 			and Duel.SelectYesNo(tp,aux.Stringid(82321037,1)) then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 			local g=Duel.SelectMatchingCard(tp,c82321037.rmfilter,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE,1,2,nil)
 			Duel.HintSelection(g)
 			Duel.Remove(g,POS_FACEUP,REASON_EFFECT)

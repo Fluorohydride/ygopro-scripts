@@ -26,7 +26,7 @@ end
 function c76471944.descon(e,tp,eg,ep,ev,re,r,rp)
 	return not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_GRAVE,0,1,nil,TYPE_SPELL+TYPE_TRAP)
 end
-function c76471944.desfilter(c,tp)
+function c76471944.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
 end
 function c76471944.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

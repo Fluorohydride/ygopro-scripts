@@ -46,7 +46,7 @@ function c52176579.activate(e,tp,eg,ep,ev,re,r,rp)
 	if sg1:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 	Duel.SpecialSummon(sg1,0,tp,tp,false,false,POS_FACEUP)
 end
-function c52176579.lvfilter(c)
+function c52176579.lvfilter(c,tp)
 	local lv=c:GetLevel()
 	return lv>0 and c:IsFaceup() and c:IsSetCard(0xea) and Duel.IsExistingMatchingCard(c52176579.tgfilter,tp,LOCATION_DECK,0,1,nil,lv)
 end
@@ -58,10 +58,10 @@ function c52176579.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c52176579.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c52176579.lvfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c52176579.lvfilter,tp,LOCATION_MZONE,0,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c52176579.lvfilter(chkc,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c52176579.lvfilter,tp,LOCATION_MZONE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c52176579.lvfilter,tp,LOCATION_MZONE,0,1,1,nil)
+	Duel.SelectTarget(tp,c52176579.lvfilter,tp,LOCATION_MZONE,0,1,1,nil,tp)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
 end
 function c52176579.lvop(e,tp,eg,ep,ev,re,r,rp)

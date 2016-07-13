@@ -42,7 +42,7 @@ function c42921475.chcon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	return rp==1-tp and (rc:GetType()==TYPE_SPELL or rc:GetType()==TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
-function c42921475.costfilter(c)
+function c42921475.cfilter(c)
 	return not c:IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c42921475.chcost(e,tp,eg,ep,ev,re,r,rp,chk)
