@@ -24,7 +24,7 @@ function c67196946.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local maxlv=tg:GetFirst():GetLevel()
 	local t={}
 	local l=1
-	while l<maxlv and l*500<lp do
+	while l<maxlv and l*500<=lp do
 		t[l]=l*500
 		l=l+1
 	end
