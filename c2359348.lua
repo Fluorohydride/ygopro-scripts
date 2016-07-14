@@ -29,11 +29,9 @@ function c2359348.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)
 end
 function c2359348.activate(e,tp,eg,ep,ev,re,r,rp)
-	local tc1=Duel.GetFieldCard(tp,LOCATION_SZONE,6)
-	local tc2=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
-	local g=Group.FromCards(tc1,tc2)
-	if tc1:IsRelateToEffect(e) and tc2:IsRelateToEffect(e)
-		and Duel.Destroy(g,REASON_EFFECT)==2 then
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
+	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
+	if sg:GetCount()==2 and Duel.Destroy(sg,REASON_EFFECT)==2 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
