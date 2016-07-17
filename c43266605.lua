@@ -42,7 +42,7 @@ function c43266605.repval(e,c)
 	return c43266605.repfilter(c,e:GetHandlerPlayer())
 end
 function c43266605.repop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT+REASON_DISCARD)
+	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT+REASON_DISCARD+REASON_REPLACE)
 end
 function c43266605.cfilter(c,tp)
 	return c:IsSetCard(0xc1) and c:IsType(TYPE_TUNER) and c:IsControler(tp)

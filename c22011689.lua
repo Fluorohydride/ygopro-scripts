@@ -59,7 +59,7 @@ function c22011689.eqlimit(e,c)
 	return e:GetOwner()==c
 end
 function c22011689.desfilter(c,ec)
-	return c:IsDestructable() and c:GetFlagEffect(22011689)~=0 and c:GetEquipTarget()==ec
+	return c:IsDestructable() and c:GetFlagEffect(22011689)~=0 and c:GetEquipTarget()==ec and bit.band(c:GetOriginalType(),TYPE_MONSTER)~=0
 end
 function c22011689.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
@@ -69,7 +69,9 @@ function c22011689.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c22011689.desfilter,tp,LOCATION_SZONE,0,1,1,nil,c)
 	local atk=g:GetFirst():GetTextAttack()
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,atk)
+	if atk>0 then
+		Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,atk)
+	end
 end
 function c22011689.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

@@ -25,22 +25,18 @@ function c96622984.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsCanAddCounter(0x1041,1) end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsCanAddCounter,tp,0,LOCATION_MZONE,1,nil,0x1041,1) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,Card.IsCanAddCounter,tp,0,LOCATION_MZONE,1,1,nil,0x1041,1)
-	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0)
+	Duel.SelectTarget(tp,Card.IsCanAddCounter,tp,0,LOCATION_MZONE,1,1,nil,0x1041,1)
 end
 function c96622984.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsCanAddCounter(0x1041,1) then
-		tc:AddCounter(0x1041,1)
-		if tc:GetLevel()>1 then
-			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_CHANGE_LEVEL)
-			e1:SetReset(RESET_EVENT+0x1fe0000)
-			e1:SetCondition(c96622984.lvcon)
-			e1:SetValue(1)
-			tc:RegisterEffect(e1)
-		end
+	if tc:IsRelateToEffect(e) and tc:AddCounter(0x1041,1) and tc:GetLevel()>1 then
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_CHANGE_LEVEL)
+		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetCondition(c96622984.lvcon)
+		e1:SetValue(1)
+		tc:RegisterEffect(e1)
 	end
 end
 function c96622984.lvcon(e)
@@ -57,7 +53,6 @@ function c96622984.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=c:GetBattleTarget()
 	if tc:IsRelateToBattle() and Duel.Destroy(tc,REASON_EFFECT)>0 then
 		Duel.BreakEffect()
-		tc=Duel.GetOperatedGroup():GetFirst()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)

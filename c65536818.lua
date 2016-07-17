@@ -1,9 +1,9 @@
 --源竜星－ボウテンコウ
 function c65536818.initial_effect(c)
+	c:SetSPSummonOnce(65536818)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
-	c:SetSPSummonOnce(65536818)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(65536818,0))

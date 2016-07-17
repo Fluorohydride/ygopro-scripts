@@ -21,19 +21,10 @@ function c83326048.operation(e,tp,eg,ep,ev,re,r,rp)
 	local opt=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	local ct=nil
 	if opt==0 then ct=TYPE_RITUAL end
-	if opt==1 then
-		ct=TYPE_FUSION
-		local e0=Effect.CreateEffect(c)
-		e0:SetType(EFFECT_TYPE_FIELD)
-		e0:SetCode(27581098)
-		e0:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		e0:SetTargetRange(1,1)
-		e0:SetReset(RESET_PHASE+PHASE_END)
-		Duel.RegisterEffect(e0,tp)
-	end
+	if opt==1 then ct=TYPE_FUSION end
 	if opt==2 then ct=TYPE_SYNCHRO end
 	if opt==3 then ct=TYPE_XYZ end
-	if opt==4 then ct=TYPE_PENDULUM end	
+	if opt==4 then ct=TYPE_PENDULUM end 
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
@@ -51,23 +42,10 @@ function c83326048.operation(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetLabel(ct)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_CHAIN_SOLVING)
-	e3:SetOperation(c83326048.disop)
-	e3:SetLabel(ct)
-	e3:SetReset(RESET_PHASE+PHASE_END)
-	Duel.RegisterEffect(e3,tp)
 end
 function c83326048.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 	return c:IsType(e:GetLabel())
 end
 function c83326048.distg(e,c)
 	return c:IsType(e:GetLabel())
-end
-function c83326048.disop(e,tp,eg,ep,ev,re,r,rp)
-	local tl=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
-	if tl==LOCATION_MZONE and re:IsActiveType(e:GetLabel()) then
-		Duel.NegateEffect(ev)
-	end
 end

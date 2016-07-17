@@ -53,7 +53,7 @@ function c77693536.fscon(e,g,gc,chkfnf)
 	local fg=Duel.GetMatchingGroup(Card.IsHasEffect,tp,LOCATION_MZONE,0,nil,77693536)
 	local fc=fg:GetFirst()
 	while fc do
-		g:Merge(fc:GetEquipGroup())
+		g:Merge(fc:GetEquipGroup():Filter(Card.IsControler,nil,tp))
 		fc=fg:GetNext()
 	end
 	local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler(),true)
@@ -79,7 +79,7 @@ function c77693536.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 	local fg=Duel.GetMatchingGroup(Card.IsHasEffect,tp,LOCATION_MZONE,0,nil,77693536)
 	local fc=fg:GetFirst()
 	while fc do
-		eg:Merge(fc:GetEquipGroup())
+		eg:Merge(fc:GetEquipGroup():Filter(Card.IsControler,nil,tp))
 		fc=fg:GetNext()
 	end
 	local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler(),true)
