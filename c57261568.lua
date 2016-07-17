@@ -61,7 +61,7 @@ function c57261568.operation(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SortDecktop(tp,1-tp,3)
 			if opt==1 then
 				for i=1,3 do
-					local mg=Duel.GetDecktopGroup(tp,1)
+					local mg=Duel.GetDecktopGroup(1-tp,1)
 					Duel.MoveSequence(mg:GetFirst(),1)
 				end
 			end
