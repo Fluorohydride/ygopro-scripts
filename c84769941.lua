@@ -44,7 +44,7 @@ function c84769941.eqcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RemoveCounter(tp,1,1,0x37,2,REASON_COST)
 end
 function c84769941.eqfilter(c)
-	return c:IsSetCard(0xd3) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0xd3) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
 end
 function c84769941.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0

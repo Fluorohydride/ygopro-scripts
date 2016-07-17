@@ -30,7 +30,7 @@ function c40418351.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c40418351.filter(c)
-	return c:IsRace(RACE_DRAGON)
+	return c:IsRace(RACE_DRAGON) and not c:IsForbidden()
 end
 function c40418351.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c40418351.filter(chkc) end

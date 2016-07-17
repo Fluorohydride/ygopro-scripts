@@ -24,7 +24,7 @@ function c33460840.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c33460840.filter(c,ec)
-	return c:IsRace(RACE_DRAGON) and (c:GetLevel()==7 or c:GetLevel()==8)
+	return c:IsRace(RACE_DRAGON) and (c:GetLevel()==7 or c:GetLevel()==8) and not c:IsForbidden()
 end
 function c33460840.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0

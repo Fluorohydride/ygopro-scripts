@@ -23,7 +23,7 @@ function c54578613.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c54578613.filter(c)
-	return c:IsSetCard(0x29) and c:IsLevelBelow(3) and c:IsRace(RACE_DRAGON)
+	return c:IsSetCard(0x29) and c:IsLevelBelow(3) and c:IsRace(RACE_DRAGON) and not c:IsForbidden()
 end
 function c54578613.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c54578613.filter(chkc) end

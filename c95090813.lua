@@ -62,7 +62,7 @@ function c95090813.mtop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c95090813.filter(c)
-	return c:IsLevelBelow(3) and c:IsRace(RACE_WARRIOR)
+	return c:IsLevelBelow(3) and c:IsRace(RACE_WARRIOR) and not c:IsForbidden()
 end
 function c95090813.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c95090813.filter(chkc) end

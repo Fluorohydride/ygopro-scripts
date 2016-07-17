@@ -20,7 +20,7 @@ function c31563350.eqcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c31563350.filter(c,tp)
-	return c:IsRace(RACE_WARRIOR) and c:CheckUniqueOnField(tp)
+	return c:IsRace(RACE_WARRIOR) and c:CheckUniqueOnField(tp) and not c:IsForbidden()
 end
 function c31563350.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0

@@ -54,12 +54,15 @@ function c47408488.pltg(e,tp,eg,ep,ev,re,r,rp,chk)
 		return ct>0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>=ct
 	end
 end
+function c47408488.plfilter(c)
+	return c:IsSetCard(0x1034) and not c:IsForbidden()
+end
 function c47408488.plop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if ft<=0 then return end
 	if ft>e:GetLabel() then ft=e:GetLabel() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-	local g=Duel.SelectMatchingCard(tp,Card.IsSetCard,tp,LOCATION_DECK,0,ft,ft,nil,0x1034)
+	local g=Duel.SelectMatchingCard(tp,c47408488.plfilter,tp,LOCATION_DECK,0,ft,ft,nil)
 	if g:GetCount()>0 then
 		local tc=g:GetFirst()
 		while tc do

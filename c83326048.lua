@@ -24,7 +24,7 @@ function c83326048.operation(e,tp,eg,ep,ev,re,r,rp)
 	if opt==1 then ct=TYPE_FUSION end
 	if opt==2 then ct=TYPE_SYNCHRO end
 	if opt==3 then ct=TYPE_XYZ end
-	if opt==4 then ct=TYPE_PENDULUM end 
+	if opt==4 then ct=TYPE_PENDULUM end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)

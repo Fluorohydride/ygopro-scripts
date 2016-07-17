@@ -13,7 +13,7 @@ function c51345461.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c51345461.filter(c,rc,tid)
-	return c:IsReason(REASON_BATTLE) and c:GetReasonCard()==rc and c:GetTurnID()==tid
+	return c:IsReason(REASON_BATTLE) and c:GetReasonCard()==rc and c:GetTurnID()==tid and not c:IsForbidden()
 end
 function c51345461.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0

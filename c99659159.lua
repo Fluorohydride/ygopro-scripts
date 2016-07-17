@@ -30,7 +30,7 @@ function c99659159.atktg(e,c)
 	return c:GetEquipGroup():IsExists(Card.IsSetCard,1,nil,0x29)
 end
 function c99659159.filter(c)
-	return c:IsSetCard(0x29) and c:IsRace(RACE_DRAGON)
+	return c:IsSetCard(0x29) and c:IsRace(RACE_DRAGON) and not c:IsForbidden()
 end
 function c99659159.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end

@@ -23,7 +23,7 @@ function c30312361.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RegisterFlagEffect(30312361,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c30312361.filter(c)
-	return c:IsType(TYPE_EFFECT) and not c:IsForbidden() and c:IsAbleToRemove()
+	return c:IsType(TYPE_EFFECT) and c:IsAbleToRemove()
 end
 function c30312361.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c30312361.filter(chkc) end
