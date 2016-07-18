@@ -9,18 +9,6 @@ function c51053997.initial_effect(c)
 	e1:SetTarget(c51053997.target1)
 	e1:SetOperation(c51053997.operation)
 	c:RegisterEffect(e1)
-	--Activate(special summon)
-	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(51053997,1))
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e2:SetType(EFFECT_TYPE_ACTIVATE)
-	e2:SetProperty(EFFECT_FLAG_DELAY)
-	e2:SetCode(EVENT_LEAVE_FIELD)
-	e2:SetCondition(c51053997.spcon)
-	e2:SetCost(c51053997.spcost)
-	e2:SetTarget(c51053997.sptg1)
-	e2:SetOperation(c51053997.spop)
-	c:RegisterEffect(e2)
 	--remove
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(51053997,2))
@@ -135,12 +123,6 @@ function c51053997.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c51053997.spfilter(c,e,tp)
 	return c:IsSetCard(0xc1) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-end
-function c51053997.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c51053997.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
-	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c51053997.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e)
