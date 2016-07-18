@@ -35,10 +35,10 @@ end
 function c63992027.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
 	local og=tc:GetOverlayGroup()
 	if og:GetCount()==0 then return end
-	if Duel.SendtoGrave(og,REASON_EFFECT)~=0 and tc:IsFaceup() and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
+	if Duel.SendtoGrave(og,REASON_EFFECT)~=0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c63992027.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc)
 		if g:GetCount()>0 then
