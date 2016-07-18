@@ -21,7 +21,7 @@ function c82321037.initial_effect(c)
 	e2:SetOperation(c82321037.spop2)
 	c:RegisterEffect(e2)
 end
-function c96746083.desfilter(c)
+function c82321037.desfilter(c)
 	return c:IsType(TYPE_MONSTER) and ((c:IsLocation(LOCATION_MZONE) and c:IsFaceup()) or c:IsLocation(LOCATION_HAND)) and c:IsDestructable()
 end
 function c82321037.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -29,7 +29,7 @@ function c82321037.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local loc=LOCATION_MZONE+LOCATION_HAND
 	if ft<0 then loc=LOCATION_MZONE end
-	local g=Duel.GetMatchingGroup(c96746083.desfilter,tp,loc,0,c)
+	local g=Duel.GetMatchingGroup(c82321037.desfilter,tp,loc,0,c)
 	if chk==0 then return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and g:GetCount()>=2 and g:IsExists(Card.IsAttribute,1,nil,ATTRIBUTE_WATER)
 		and (ft>0 or g:IsExists(Card.IsLocation,-ft+1,nil,LOCATION_MZONE)) end
@@ -44,7 +44,7 @@ function c82321037.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local loc=LOCATION_MZONE+LOCATION_HAND
 	if ft<0 then loc=LOCATION_MZONE end
-	local g=Duel.GetMatchingGroup(c96746083.desfilter,tp,loc,0,c)
+	local g=Duel.GetMatchingGroup(c82321037.desfilter,tp,loc,0,c)
 	if g:GetCount()<2 or not g:IsExists(Card.IsAttribute,1,nil,ATTRIBUTE_WATER) then return end
 	local g1=nil local g2=nil
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
@@ -69,8 +69,8 @@ function c82321037.spop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoGrave(c,REASON_RULE)
 			return
 		end
-		local rg=Duel.GetMatchingGroup(c96746083.rmfilter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,nil,tp)
-		if rm and rg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(96746083,0)) then
+		local rg=Duel.GetMatchingGroup(c82321037.rmfilter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,nil,tp)
+		if rm and rg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(82321037,0)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 			local tg=rg:Select(tp,1,2,nil)
 			Duel.HintSelection(tg)
