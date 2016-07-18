@@ -11,17 +11,20 @@ function c43237273.initial_effect(c)
 	e1:SetOperation(c43237273.operation)
 	c:RegisterEffect(e1)
 end
+function c43237273.copyfilter(c)
+	return c:IsFaceup() and not c:IsType(TYPE_TOKEN)
+end
 function c43237273.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c43237273.copyfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c43237273.copyfilter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
+	Duel.SelectTarget(tp,c43237273.copyfilter,tp,0,LOCATION_MZONE,1,1,nil)
 end
 function c43237273.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsType(TYPE_TOKEN) then
-		local code=tc:GetOriginalCode()
+	if tc and c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsType(TYPE_TOKEN) then
+		local code=tc:GetOriginalCodeRule()
 		local cid=0
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
