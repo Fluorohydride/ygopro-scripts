@@ -1511,6 +1511,7 @@ function Auxiliary.EnablePendulumAttribute(c,reg)
 		e2:SetDescription(1160)
 		e2:SetType(EFFECT_TYPE_ACTIVATE)
 		e2:SetCode(EVENT_FREE_CHAIN)
+		e2:SetRange(LOCATION_HAND)
 		c:RegisterEffect(e2)
 	end
 end
