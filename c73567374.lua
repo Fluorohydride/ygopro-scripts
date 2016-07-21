@@ -17,13 +17,14 @@ function c73567374.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c73567374.filter,tp,LOCATION_MZONE,0,nil)
 	Duel.SetTargetCard(g)
 end
-function c73567374.filter2(c)
+function c73567374.filter2(c,e)
 	return c:IsFaceup() and c:IsType(TYPE_DUAL) and not c:IsDualState() and c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
 end
 function c73567374.operation(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c73567374.filter2,tp,LOCATION_MZONE,0,nil)
+	local c=e:GetHandler()
+	local g=Duel.GetMatchingGroup(c73567374.filter2,tp,LOCATION_MZONE,0,nil,e)
 	local tc=g:GetFirst()
-	local fid=e:GetHandler():GetFieldID()
+	local fid=c:GetFieldID()
 	while tc do
 		tc:EnableDualState()
 		tc:RegisterFlagEffect(73567374,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1,fid)
