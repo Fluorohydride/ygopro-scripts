@@ -46,7 +46,7 @@ function c30757127.ctfilter(c)
 	return c:IsSetCard(0xc008) and c:IsType(TYPE_MONSTER)
 end
 function c30757127.atkop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMct,tp,HINTMct_TOGRAVE)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c30757127.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)~=0 and g:GetFirst():IsLocation(LOCATION_GRAVE) then
 		local tg=Duel.GetMatchingGroup(c30757127.atkfilter,tp,LOCATION_MZONE,0,nil)
