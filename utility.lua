@@ -1559,7 +1559,7 @@ function Auxiliary.PendOperation()
 				else
 					tg=Duel.GetMatchingGroup(Auxiliary.PConditionFilter,tp,LOCATION_HAND+LOCATION_EXTRA,0,nil,e,tp,lscale,rscale)
 				end
-				local ect=c29724053 and c29724053[tp]
+				local ect=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
 				if ect and (ect<=0 or ect>ft) then ect=nil end
 				if ect==nil or tg:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)<=ect then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
