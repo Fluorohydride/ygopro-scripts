@@ -22,15 +22,12 @@ function c57270476.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:ReverseInDeck()
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		e1:SetCode(EVENT_TO_HAND)
+		e1:SetCode(EVENT_DRAW)
 		e1:SetOperation(c57270476.tgop)
 		e1:SetReset(RESET_EVENT+0x1de0000)
 		tc:RegisterEffect(e1)
 	end
 end
 function c57270476.tgop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsReason(REASON_DRAW) then
-		Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
-	end
+	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
 end

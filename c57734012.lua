@@ -3,7 +3,7 @@ function c57734012.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_TO_HAND)
+	e1:SetCode(EVENT_DRAW)
 	e1:SetCondition(c57734012.regcon)
 	e1:SetOperation(c57734012.regop)
 	c:RegisterEffect(e1)
@@ -19,8 +19,7 @@ function c57734012.initial_effect(c)
 end
 function c57734012.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return Duel.GetFlagEffect(tp,57734012)==0 and Duel.GetCurrentPhase()==PHASE_DRAW
-		and c:IsReason(REASON_DRAW) and c:IsReason(REASON_RULE)
+	return Duel.GetFlagEffect(tp,57734012)==0 and Duel.GetCurrentPhase()==PHASE_DRAW and c:IsReason(REASON_RULE)
 end
 function c57734012.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
