@@ -25,15 +25,15 @@ end
 function c30757127.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
-function c30757127.cfilter(c)
+function c30757127.cfilter(c,tp)
 	return c:IsDiscardable() and Duel.IsExistingMatchingCard(c30757127.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,c)
 end
 function c30757127.tgfilter(c)
 	return c:IsSetCard(0xc008) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
 end
 function c30757127.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c30757127.cfilter,tp,LOCATION_HAND,0,1,nil) end
-	Duel.DiscardHand(tp,c30757127.cfilter,1,1,REASON_COST+REASON_DISCARD)
+	if chk==0 then return Duel.IsExistingMatchingCard(c30757127.cfilter,tp,LOCATION_HAND,0,1,nil,tp) end
+	Duel.DiscardHand(tp,c30757127.cfilter,1,1,REASON_COST+REASON_DISCARD,nil,tp)
 end
 function c30757127.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
