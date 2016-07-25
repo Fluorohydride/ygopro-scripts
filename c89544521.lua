@@ -41,7 +41,7 @@ function c89544521.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0xab)
 end
 function c89544521.val(e,c)
-	return Duel.GetMatchingGroupCount(c89544521.filter,c:GetControler(),LOCATION_ONFIELD,0,nil)*500
+	return Duel.GetMatchingGroupCount(c89544521.filter,c:GetControler(),LOCATION_ONFIELD,LOCATION_ONFIELD,nil)*500
 end
 function c89544521.desfilter1(c)
 	return c:IsFaceup() and c:IsSetCard(0xab) and c:IsDestructable()
