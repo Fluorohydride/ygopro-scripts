@@ -17,11 +17,21 @@ function c60866277.desfilter(c,att)
 	return c:IsFaceup() and c:IsDestructable() and c:IsAttribute(att)
 end
 function c60866277.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c60866277.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	local g=Duel.GetMatchingGroup(c60866277.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	if chk==0 then return g:GetClassCount(Card.GetAttribute)>=2 end
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c60866277.operation(e,tp,eg,ep,ev,re,r,rp)
+	local sg=Duel.GetMatchingGroup(c60866277.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	if sg:GetClassCount(Card.GetAttribute)<2 then return end
+	local tc=sg:GetFirst()
+	local att=0
+	while tc do
+		att=bit.bor(att,tc:GetAttribute())
+		tc=sg:GetNext()
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,562)
-	local att1=Duel.AnnounceAttribute(tp,2,0xff)
+	local att1=Duel.AnnounceAttribute(tp,2,att)
 	Duel.Hint(HINT_SELECTMSG,1-tp,562)
 	local att2=Duel.AnnounceAttribute(1-tp,1,att1)
 	local g=Duel.GetMatchingGroup(c60866277.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,att2)
