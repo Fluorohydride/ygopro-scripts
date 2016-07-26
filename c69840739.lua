@@ -48,7 +48,7 @@ function c69840739.chop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChangeChainOperation(ev,c69840739.repop)
 end
 function c69840739.filter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c69840739.repop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

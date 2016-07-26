@@ -11,7 +11,7 @@ function c69584564.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c69584564.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_PLANT) and c:IsDestructable()
+	return c:IsFaceup() and c:IsRace(RACE_PLANT)
 end
 function c69584564.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c69584564.filter(chkc) end

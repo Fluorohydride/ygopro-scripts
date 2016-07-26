@@ -16,7 +16,7 @@ function c80163754.cfilter(c,def)
 	return c:IsRace(RACE_DRAGON) and c:IsAttackAbove(def)
 end
 function c80163754.filter(c,atk)
-	return c:IsFaceup() and c:IsDestructable() and (not atk or c:IsDefenseBelow(atk))
+	return c:IsFaceup() and (not atk or c:IsDefenseBelow(atk))
 end
 function c80163754.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

@@ -14,7 +14,7 @@ function c55758589.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c55758589.filter(c)
-	return c:IsFacedown() and c:IsDestructable()
+	return c:IsFacedown()
 end
 function c55758589.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

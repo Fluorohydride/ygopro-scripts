@@ -35,7 +35,7 @@ function c75285069.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE+1
 end
 function c75285069.filter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c75285069.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

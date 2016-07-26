@@ -54,7 +54,7 @@ function c69304426.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
 function c69304426.filter(c)
-	return c:GetSequence()<5 and c:IsDestructable()
+	return c:GetSequence()<5
 end
 function c69304426.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

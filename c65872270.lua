@@ -43,7 +43,7 @@ function c65872270.descon(e,tp,eg,ep,ev,re,r,rp)
 		and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 end
 function c65872270.desfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0xc8) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0xc8)
 end
 function c65872270.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c65872270.desfilter,tp,LOCATION_ONFIELD,0,1,e:GetHandler())

@@ -12,7 +12,7 @@ function c80887714.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c80887714.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:GetOverlayCount()==0 and c:IsDestructable()
+	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:GetOverlayCount()==0
 end
 function c80887714.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c80887714.filter(chkc) end

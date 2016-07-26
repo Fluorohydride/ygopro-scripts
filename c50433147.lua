@@ -32,7 +32,7 @@ function c50433147.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c50433147.desfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x42) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0x42)
 end
 function c50433147.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

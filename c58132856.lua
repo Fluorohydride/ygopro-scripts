@@ -52,7 +52,7 @@ function c58132856.cfilter(c)
 	return c:IsFaceup() and c:IsCode(58132856)
 end
 function c58132856.filter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c58132856.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

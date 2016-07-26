@@ -9,7 +9,7 @@ function c50074522.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c50074522.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsDestructable()
+	return c:IsFaceup() and c:IsRace(RACE_MACHINE)
 end
 function c50074522.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

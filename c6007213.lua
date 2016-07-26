@@ -70,7 +70,7 @@ function c6007213.atkval(e,c)
 	return Duel.GetMatchingGroupCount(c6007213.atkfilter,c:GetControler(),LOCATION_GRAVE,0,nil)*1000
 end
 function c6007213.desfilter(c)
-	return c:IsFacedown() and c:IsDestructable()
+	return c:IsFacedown()
 end
 function c6007213.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(1-tp) and c6007213.desfilter(chkc) end

@@ -40,7 +40,7 @@ function c30562585.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,dg,dg:GetCount(),0,0)
 end
 function c30562585.dfilter(c,atk)
-	return c:IsFaceup() and c:IsDestructable() and c:GetAttack()<atk
+	return c:IsFaceup() and c:GetAttack()<atk
 end
 function c30562585.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

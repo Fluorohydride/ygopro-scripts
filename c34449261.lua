@@ -20,7 +20,7 @@ function c34449261.filter2(c,tp,tc)
 		and Duel.IsExistingMatchingCard(c34449261.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,tg)
 end
 function c34449261.desfilter(c,tg)
-	return not tg:IsContains(c) and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL and c:IsDestructable()
+	return not tg:IsContains(c) and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
 end
 function c34449261.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

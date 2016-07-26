@@ -12,7 +12,7 @@ function c38848158.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c38848158.desfilter1(c)
-	return c:IsFaceup() and c:IsSetCard(0xc8) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0xc8)
 end
 function c38848158.spfilter(c,e,tp)
 	return c:IsSetCard(0xc8) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

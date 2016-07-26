@@ -15,7 +15,7 @@ function c44792253.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsFaceup() and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c44792253.filter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c44792253.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c44792253.filter(chkc) end

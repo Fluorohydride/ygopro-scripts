@@ -31,7 +31,7 @@ function c10097168.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE and e:GetLabel()==1
 end
 function c10097168.filter(c)
-	return c:IsFacedown() and c:GetSequence()~=5 and c:IsDestructable()
+	return c:IsFacedown() and c:GetSequence()~=5
 end
 function c10097168.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(1-tp) and chkc:IsDestructable() end

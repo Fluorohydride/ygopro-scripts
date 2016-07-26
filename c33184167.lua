@@ -16,7 +16,7 @@ function c33184167.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
 function c33184167.filter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c33184167.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c33184167.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
@@ -34,7 +34,7 @@ function c33184167.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,dg,dg:GetCount(),0,0)
 end
 function c33184167.filter2(c,rc)
-	return c:IsFaceup() and c:IsRace(rc) and c:IsDestructable()
+	return c:IsFaceup() and c:IsRace(rc)
 end
 function c33184167.operation(e,tp,eg,ep,ev,re,r,rp)
 	local arc=e:GetLabel()

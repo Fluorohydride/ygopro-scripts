@@ -43,7 +43,7 @@ function c11609969.sccon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c11609969.filter(c,lv)
-	return c:IsFaceup() and not c:IsSetCard(0xaf) and c:IsLevelAbove(lv) and c:IsDestructable()
+	return c:IsFaceup() and not c:IsSetCard(0xaf) and c:IsLevelAbove(lv)
 end
 function c11609969.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -22,7 +22,7 @@ function c55326322.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c55326322.desfilter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c55326322.spfilter(c,e,tp)
 	return c:IsSetCard(0xea) and c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

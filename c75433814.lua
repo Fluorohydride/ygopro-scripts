@@ -46,7 +46,7 @@ function c75433814.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFlagEffect(tp,75433814)~=0 and Duel.GetTurnPlayer()~=tp
 end
 function c75433814.desfilter(c)
-	return c:GetCounter(0x1024)~=0 and c:IsDestructable()
+	return c:GetCounter(0x1024)~=0
 end
 function c75433814.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c75433814.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end

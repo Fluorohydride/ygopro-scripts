@@ -28,7 +28,7 @@ function c29590752.descon(e,tp,eg,ep,ev,re,r,rp)
 	return st>=(SUMMON_TYPE_SPECIAL+100) and st<(SUMMON_TYPE_SPECIAL+150)
 end
 function c29590752.desfilter(c)
-	return c:IsFacedown() and c:GetSequence()~=5 and c:IsDestructable()
+	return c:IsFacedown() and c:GetSequence()~=5
 end
 function c29590752.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c29590752.desfilter(chkc) end

@@ -17,7 +17,7 @@ function c16272453.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c16272453.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
 end
 function c16272453.dfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x61) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0x61)
 end
 function c16272453.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,2) end

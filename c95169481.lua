@@ -21,7 +21,7 @@ function c95169481.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c95169481.desfilter(c)
-	return c:IsFaceup() and c:IsRace(RACE_BEAST+RACE_WINDBEAST+RACE_BEASTWARRIOR) and c:IsDestructable()
+	return c:IsFaceup() and c:IsRace(RACE_BEAST+RACE_WINDBEAST+RACE_BEASTWARRIOR)
 		and Duel.IsExistingTarget(Card.IsDestructable,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 end
 function c95169481.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

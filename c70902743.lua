@@ -59,7 +59,7 @@ function c70902743.condition1(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker()==e:GetHandler() and Duel.GetAttackTarget() and not Duel.GetAttackTarget():IsAttackPos()
 end
 function c70902743.filter1(c)
-	return not c:IsAttackPos() and c:IsDestructable()
+	return not c:IsAttackPos()
 end
 function c70902743.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -72,7 +72,7 @@ function c70902743.operation1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c70902743.filter2(c)
 	local ct=c:GetFlagEffectLabel(70902743)
-	return (not ct or ct==0) and c:IsDestructable()
+	return (not ct or ct==0)
 end
 function c70902743.condition2(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer()

@@ -76,7 +76,7 @@ function c32391631.recop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c32391631.desfilter(c)
 	local ct=c:GetFlagEffectLabel(32391631)
-	return c:IsPosition(POS_FACEUP_ATTACK) and (not ct or ct==0) and c:IsDestructable()
+	return c:IsPosition(POS_FACEUP_ATTACK) and (not ct or ct==0)
 end
 function c32391631.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

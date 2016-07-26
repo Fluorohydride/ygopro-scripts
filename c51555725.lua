@@ -30,7 +30,7 @@ function c51555725.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
 end
 function c51555725.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x24) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0x24)
 end
 function c51555725.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c51555725.filter(chkc) end

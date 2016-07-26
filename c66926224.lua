@@ -17,7 +17,7 @@ function c66926224.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c66926224.cfilter,tp,LOCATION_MZONE,0,5,nil)
 end
 function c66926224.dfilter(c)
-	return not (c:IsFaceup() and c:IsType(TYPE_NORMAL) and c:IsLevelBelow(2)) and c:IsDestructable()
+	return not (c:IsFaceup() and c:IsType(TYPE_NORMAL) and c:IsLevelBelow(2))
 end
 function c66926224.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

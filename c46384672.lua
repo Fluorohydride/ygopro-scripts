@@ -44,7 +44,7 @@ function c46384672.cfilter(c,tp)
 		and Duel.IsExistingTarget(c46384672.dfilter,tp,0,LOCATION_MZONE,1,nil,atk)
 end
 function c46384672.dfilter(c,atk)
-	return c:IsFaceup() and c:GetAttack()<=atk and c:IsDestructable()
+	return c:IsFaceup() and c:GetAttack()<=atk
 end
 function c46384672.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c46384672.cfilter,tp,LOCATION_HAND,0,1,nil,tp) end

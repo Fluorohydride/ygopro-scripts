@@ -26,7 +26,7 @@ function c75421661.atkop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c75421661.filter(c,e)
-	return c:IsFaceup() and c:IsDestructable() and (not e or c:IsRelateToEffect(e))
+	return c:IsFaceup() and (not e or c:IsRelateToEffect(e))
 end
 function c75421661.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c75421661.filter(chkc) end

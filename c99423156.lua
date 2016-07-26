@@ -44,7 +44,7 @@ function c99423156.sumop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c99423156.filter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c99423156.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c99423156.filter(chkc) end

@@ -58,10 +58,10 @@ function c14756848.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c14756848.desfilter1(c)
-	return c:GetSequence()<5 and c:IsDestructable()
+	return c:GetSequence()<5
 end
 function c14756848.desfilter2(c)
-	return (c:GetSequence()==6 or c:GetSequence()==7) and c:IsDestructable()
+	return (c:GetSequence()==6 or c:GetSequence()==7)
 end
 function c14756848.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

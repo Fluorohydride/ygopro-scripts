@@ -14,7 +14,7 @@ function c89041555.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer() and bit.band(eg:GetFirst():GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
 end
 function c89041555.filter(c)
-	return c:IsAttackPos() and c:IsDestructable()
+	return c:IsAttackPos()
 end
 function c89041555.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c89041555.filter,tp,0,LOCATION_MZONE,1,nil) end

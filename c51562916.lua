@@ -10,7 +10,7 @@ function c51562916.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c51562916.dfilter(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER) and c:IsDestructable()
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER)
 end
 function c51562916.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c51562916.dfilter,tp,LOCATION_MZONE,0,1,nil) end

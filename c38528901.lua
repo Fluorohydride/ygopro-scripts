@@ -17,7 +17,7 @@ function c38528901.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c38528901.desfilter(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER) and c:IsDestructable()
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER)
 end
 function c38528901.sfilter(c)
 	return c:IsSetCard(0x2f) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

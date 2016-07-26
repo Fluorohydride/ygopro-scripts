@@ -12,10 +12,10 @@ function c45178472.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c45178472.up(c)
-	return c:IsFaceup() and c:IsDestructable() and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c45178472.down(c)
-	return c:IsFacedown() and c:IsDestructable() and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return c:IsFacedown() and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c45178472.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

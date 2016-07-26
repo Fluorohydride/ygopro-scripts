@@ -21,7 +21,7 @@ function c16437822.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c16437822.filter(c)
-	return c:GetEquipCount()~=0 and c:GetEquipGroup():IsExists(Card.IsCode,1,nil,75560629) and c:IsDestructable()
+	return c:GetEquipCount()~=0 and c:GetEquipGroup():IsExists(Card.IsCode,1,nil,75560629)
 end
 function c16437822.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c16437822.filter(chkc) end

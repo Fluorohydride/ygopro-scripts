@@ -14,7 +14,7 @@ function c1224927.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
 function c1224927.filter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c1224927.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

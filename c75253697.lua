@@ -22,7 +22,7 @@ function c75253697.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,2,2,REASON_COST)
 end
 function c75253697.dfilter(c,pos)
-	return c:IsPosition(pos) and c:IsDestructable()
+	return c:IsPosition(pos)
 end
 function c75253697.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

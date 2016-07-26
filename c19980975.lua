@@ -11,7 +11,7 @@ function c19980975.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c19980975.filter(c)
-	return c:GetCounter(0x1019)>=4 and c:IsDestructable()
+	return c:GetCounter(0x1019)>=4
 end
 function c19980975.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c19980975.filter(chkc) end

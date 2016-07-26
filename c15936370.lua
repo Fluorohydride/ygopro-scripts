@@ -28,7 +28,7 @@ function c15936370.pencon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_EXTRA,0)==0
 end
 function c15936370.desfilter(c)
-	return (c:GetSequence()==6 or c:GetSequence()==7) and c:IsDestructable()
+	return (c:GetSequence()==6 or c:GetSequence()==7)
 end
 function c15936370.pentg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(1-tp) and c15936370.desfilter(chkc) end

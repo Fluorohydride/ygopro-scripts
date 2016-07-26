@@ -12,7 +12,7 @@ function c41475424.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c41475424.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x13) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0x13)
 end
 function c41475424.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

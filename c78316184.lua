@@ -31,7 +31,7 @@ function c78316184.descon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_RITUAL)==SUMMON_TYPE_RITUAL
 end
 function c78316184.desfilter(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA and c:IsDestructable()
+	return c:GetSummonLocation()==LOCATION_EXTRA
 end
 function c78316184.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c78316184.desfilter,tp,0,LOCATION_MZONE,1,nil) end

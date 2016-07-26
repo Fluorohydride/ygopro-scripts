@@ -41,7 +41,7 @@ function c57554544.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c57554544.filter1(c)
-	return c:IsType(TYPE_MONSTER) and c:IsDestructable()
+	return c:IsType(TYPE_MONSTER)
 end
 function c57554544.filter2(c)
 	return c:IsSetCard(0x81) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

@@ -21,7 +21,7 @@ function c23296404.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c23296404.desfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0xc8) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0xc8)
 end
 function c23296404.desfilter2(c,e)
 	return c23296404.desfilter(c) and c:IsCanBeEffectTarget(e)

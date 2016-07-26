@@ -27,7 +27,7 @@ function c59839761.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c59839761.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c59839761.filter(c)
-	return c:IsFacedown() and c:IsDestructable()
+	return c:IsFacedown()
 end
 function c59839761.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c59839761.filter,tp,0,LOCATION_SZONE,1,nil) end

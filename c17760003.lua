@@ -94,7 +94,7 @@ function c17760003.operation1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(sg,REASON_EFFECT)
 end
 function c17760003.filter2(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c17760003.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c17760003.filter2(chkc) end
@@ -110,7 +110,7 @@ function c17760003.operation2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c17760003.filter3(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsDestructable()
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT)
 end
 function c17760003.target3(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c17760003.filter2(chkc) end

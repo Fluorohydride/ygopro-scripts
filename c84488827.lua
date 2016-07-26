@@ -30,7 +30,7 @@ function c84488827.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE and e:GetLabel()==1
 end
 function c84488827.sfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c84488827.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

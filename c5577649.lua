@@ -18,7 +18,7 @@ function c5577649.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c5577649.cfilter,1,nil,tp)
 end
 function c5577649.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c5577649.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c5577649.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler()) end

@@ -28,7 +28,7 @@ function c37104630.descon(e,tp,eg,ep,ev,re,r,rp)
 		and re:GetHandler():IsAttribute(ATTRIBUTE_WATER)
 end
 function c37104630.desfilter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c37104630.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c37104630.desfilter(chkc) end

@@ -41,7 +41,7 @@ function c66547759.descon(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp
 end
 function c66547759.filter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c66547759.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c66547759.filter(chkc) end

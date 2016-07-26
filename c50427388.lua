@@ -18,7 +18,7 @@ function c50427388.cfilter(c)
 	return c:IsType(TYPE_SPELL) and c:IsAbleToRemove()
 end
 function c50427388.filter(c,def)
-	return c:IsFaceup() and c:IsDefenseBelow(def) and c:IsDestructable()
+	return c:IsFaceup() and c:IsDefenseBelow(def)
 end
 function c50427388.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

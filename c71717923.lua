@@ -16,7 +16,7 @@ function c71717923.costfilter(c)
 		and Duel.IsExistingMatchingCard(c71717923.filter,0,LOCATION_MZONE,LOCATION_MZONE,1,c,c:GetAttack())
 end
 function c71717923.filter(c,atk)
-	return c:IsFaceup() and c:IsDestructable() and c:GetDefense()<=atk
+	return c:IsFaceup() and c:GetDefense()<=atk
 end
 function c71717923.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c71717923.costfilter,1,nil) end

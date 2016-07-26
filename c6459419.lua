@@ -10,7 +10,7 @@ function c6459419.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c6459419.dfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x4) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0x4)
 end
 function c6459419.spfilter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsSetCard(0x4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

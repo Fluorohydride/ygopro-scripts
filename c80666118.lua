@@ -23,7 +23,7 @@ function c80666118.initial_effect(c)
 end
 function c80666118.filter(c,atk)
 	return c:IsFaceup() and c:IsAttackBelow(atk) and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
-		and c:IsType(TYPE_EFFECT) and c:IsDestructable()
+		and c:IsType(TYPE_EFFECT)
 end
 function c80666118.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

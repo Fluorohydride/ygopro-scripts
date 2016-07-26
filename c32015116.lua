@@ -28,9 +28,9 @@ function c32015116.rdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c32015116.rdfilter(c,lv)
 	if lv<6 then
-		return c:IsFaceup() and c:IsDestructable() and c:GetLevel()==lv
+		return c:IsFaceup() and c:GetLevel()==lv
 	else
-		return c:IsFaceup() and c:IsDestructable() and c:GetLevel()>=6 end
+		return c:IsFaceup() and c:GetLevel()>=6 end
 end
 function c32015116.rdop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end

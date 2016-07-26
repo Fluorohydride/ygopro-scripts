@@ -19,7 +19,7 @@ function c11264180.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x27)
 end
 function c11264180.dfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c11264180.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c11264180.filter(chkc) end

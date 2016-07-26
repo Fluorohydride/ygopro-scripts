@@ -11,7 +11,7 @@ function c73262676.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c73262676.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0xc) and c:GetLevel()>0 and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0xc) and c:GetLevel()>0
 end
 function c73262676.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c73262676.filter(chkc) end 

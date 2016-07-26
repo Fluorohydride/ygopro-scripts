@@ -28,7 +28,7 @@ function c2759860.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c2759860.desfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0xd1) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0xd1)
 end
 function c2759860.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

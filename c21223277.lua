@@ -77,7 +77,7 @@ function c21223277.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x207a)
 end
 function c21223277.desfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c21223277.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c21223277.cfilter,tp,LOCATION_SZONE,0,1,nil)

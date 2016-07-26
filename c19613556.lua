@@ -10,7 +10,7 @@ function c19613556.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c19613556.filter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c19613556.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

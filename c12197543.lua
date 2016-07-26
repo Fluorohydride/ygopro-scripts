@@ -13,7 +13,7 @@ function c12197543.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and r==REASON_RULE
 end
 function c12197543.dfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c12197543.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()

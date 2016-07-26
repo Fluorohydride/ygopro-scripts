@@ -16,7 +16,7 @@ function c28966434.filter1(c)
 	return c:IsFaceup() and c:IsSetCard(0x31) and c:GetLevel()>3
 end
 function c28966434.filter2(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c28966434.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

@@ -25,7 +25,7 @@ function c57831349.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c57831349.desfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x9e) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0x9e)
 end
 function c57831349.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ec=re:GetHandler()

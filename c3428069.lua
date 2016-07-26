@@ -71,7 +71,7 @@ function c3428069.tgfilter(c,tp)
 		and Duel.IsExistingMatchingCard(c3428069.desfilter,tp,0,LOCATION_MZONE,1,nil,c:GetRace())
 end
 function c3428069.desfilter(c,rc)
-	return c:IsFaceup() and c:IsRace(rc) and c:IsDestructable()
+	return c:IsFaceup() and c:IsRace(rc)
 end
 function c3428069.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetEquipGroup():IsExists(c3428069.tgfilter,1,nil,tp) end

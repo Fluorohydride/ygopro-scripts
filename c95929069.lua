@@ -13,7 +13,7 @@ function c95929069.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c95929069.dfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c95929069.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c95929069.dfilter(chkc) end

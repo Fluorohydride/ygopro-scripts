@@ -11,7 +11,7 @@ function c98643358.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c98643358.filter(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER) and c:IsDestructable()
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER)
 end
 function c98643358.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c98643358.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end

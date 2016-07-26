@@ -35,7 +35,7 @@ function c39765958.ftarget(e,c)
 	return e:GetLabel()~=c:GetFieldID()
 end
 function c39765958.dfilter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsDestructable()
+	return c:IsPosition(POS_FACEUP_ATTACK)
 end
 function c39765958.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c39765958.dfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler()) end

@@ -12,7 +12,7 @@ function c32854013.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c32854013.dfilter(c)
-	return c:IsFaceup() and c:IsRace(RACE_BEAST) and c:IsDestructable()
+	return c:IsFaceup() and c:IsRace(RACE_BEAST)
 end
 function c32854013.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

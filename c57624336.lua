@@ -25,7 +25,7 @@ function c57624336.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c57624336.filter1(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c57624336.destg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c57624336.filter1(chkc) and chkc~=e:GetHandler() end

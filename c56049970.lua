@@ -24,7 +24,7 @@ function c56049970.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c56049970.desfilter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c56049970.spfilter1(c,e,tp)
 	return c:IsSetCard(0xea) and c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

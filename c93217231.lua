@@ -12,7 +12,7 @@ function c93217231.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c93217231.filter1(c)
-	return c:IsFaceup() and c:IsRace(RACE_REPTILE) and c:IsDestructable()
+	return c:IsFaceup() and c:IsRace(RACE_REPTILE)
 end
 function c93217231.filter2(c)
 	return c:IsDestructable()

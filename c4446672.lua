@@ -11,7 +11,7 @@ function c4446672.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c4446672.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x7) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0x7)
 end
 function c4446672.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c4446672.filter(chkc) end

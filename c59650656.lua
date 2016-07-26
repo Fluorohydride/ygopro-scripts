@@ -34,7 +34,7 @@ function c59650656.descon(e,tp,eg,ep,ev,re,r,rp)
 	return rp~=tp and eg:IsExists(c59650656.cfilter,1,nil,tp)
 end
 function c59650656.filter(c)
-	return c:IsFaceup() and c:IsDestructable() and c:IsAbleToRemove()
+	return c:IsFaceup() and c:IsAbleToRemove()
 end
 function c59650656.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c59650656.filter,tp,0,LOCATION_ONFIELD,1,nil) end

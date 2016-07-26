@@ -11,7 +11,7 @@ function c17449108.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c17449108.filter(c)
-	return c:IsFacedown() and c:IsDestructable() and c:IsAbleToRemove()
+	return c:IsFacedown() and c:IsAbleToRemove()
 end
 function c17449108.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:GetLocation()==LOCATION_SZONE and c17449108.filter(chkc) end

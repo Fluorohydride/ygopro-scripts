@@ -64,7 +64,7 @@ function c50260683.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c50260683.filter2(c)
-	return c:IsFaceup() and c:GetAttack()~=c:GetBaseAttack() and c:IsDestructable()
+	return c:IsFaceup() and c:GetAttack()~=c:GetBaseAttack()
 end
 function c50260683.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c50260683.filter2(chkc) end

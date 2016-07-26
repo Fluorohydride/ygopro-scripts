@@ -25,7 +25,7 @@ function c67038874.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN2
 end
 function c67038874.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x24) and c:GetCode()~=67038874 and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0x24) and c:GetCode()~=67038874
 end
 function c67038874.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingTarget(c67038874.filter,tp,LOCATION_MZONE,0,1,nil)

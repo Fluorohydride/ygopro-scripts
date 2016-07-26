@@ -73,7 +73,7 @@ function c84401683.negop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c84401683.desfilter(c)
-	return c:IsFaceup() and c:GetAttack()==0 and c:IsDestructable()
+	return c:IsFaceup() and c:GetAttack()==0
 end
 function c84401683.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c84401683.desfilter(chkc) end

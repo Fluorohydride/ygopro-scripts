@@ -30,7 +30,7 @@ function c58990631.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58990631.filter(c,tp,ep)
 	return c:IsFaceup() and c:IsAttackAbove(1000)
-		and ep~=tp and c:IsDestructable()
+		and ep~=tp
 end
 function c58990631.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=eg:GetFirst()
@@ -56,7 +56,7 @@ function c58990631.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58990631.filter3(c,e,tp)
 	return c:IsFaceup() and c:IsAttackAbove(1000) and c:GetSummonPlayer()~=tp
-		and c:IsRelateToEffect(e) and c:IsDestructable()
+		and c:IsRelateToEffect(e)
 end
 function c58990631.activate2(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c58990631.filter3,nil,e,tp)

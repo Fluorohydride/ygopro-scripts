@@ -11,7 +11,7 @@ function c89086566.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c89086566.cfilter(c)
-	return c:IsFaceup() and c:IsCode(40640057,40703223) and c:IsDestructable()
+	return c:IsFaceup() and c:IsCode(40640057,40703223)
 end
 function c89086566.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c89086566.cfilter,tp,LOCATION_ONFIELD,0,1,nil) end

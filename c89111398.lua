@@ -23,7 +23,7 @@ function c89111398.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c89111398.filter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c89111398.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

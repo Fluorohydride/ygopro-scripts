@@ -11,10 +11,10 @@ function c98847704.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c98847704.filter1(c)
-	return c:IsFaceup() and c:IsType(TYPE_EQUIP) and c:IsDestructable()
+	return c:IsFaceup() and c:IsType(TYPE_EQUIP)
 end
 function c98847704.filter2(c)
-	return c:IsFacedown() and c:IsDestructable()
+	return c:IsFacedown()
 end
 function c98847704.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c98847704.filter1(chkc) end

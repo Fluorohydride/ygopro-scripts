@@ -18,7 +18,7 @@ function c5010422.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c5010422.desfilter(c)
-	return c:IsDefensePos() and c:IsDestructable()
+	return c:IsDefensePos()
 end
 function c5010422.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c5010422.desfilter,tp,0,LOCATION_MZONE,nil)

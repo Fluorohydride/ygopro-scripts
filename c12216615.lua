@@ -14,7 +14,7 @@ function c12216615.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer() and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,2,nil,36623431)
 end
 function c12216615.filter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsDestructable()
+	return c:IsPosition(POS_FACEUP_ATTACK)
 end
 function c12216615.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c12216615.filter,tp,0,LOCATION_MZONE,1,nil) end

@@ -51,7 +51,7 @@ function c20281581.rdop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChangeBattleDamage(tp,ev/2)
 end
 function c20281581.filter(c)
-	return c:IsFacedown() and c:IsDestructable()
+	return c:IsFacedown()
 end
 function c20281581.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c20281581.filter(chkc) end

@@ -26,7 +26,7 @@ function c27827272.filter(c,tp)
 		and Duel.IsExistingMatchingCard(c27827272.filter2,tp,0,LOCATION_MZONE,1,nil,c:GetAttack())
 end
 function c27827272.filter2(c,atk)
-	return c:IsFaceup() and c:IsDefenseBelow(atk) and c:IsDestructable()
+	return c:IsFaceup() and c:IsDefenseBelow(atk)
 end
 function c27827272.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c27827272.filter(chkc,tp) end

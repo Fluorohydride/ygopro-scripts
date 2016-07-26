@@ -15,7 +15,7 @@ function c28604635.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,500)
 end
 function c28604635.filter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:GetLevel()==3 and c:IsDestructable()
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:GetLevel()==3
 end
 function c28604635.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c28604635.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end

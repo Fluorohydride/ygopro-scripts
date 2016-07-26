@@ -46,7 +46,7 @@ function c12697630.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
 function c12697630.filter(c)
-	return c:IsFacedown() and c:IsDestructable()
+	return c:IsFacedown()
 end
 function c12697630.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -13,7 +13,7 @@ function c83021423.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c83021423.filter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c83021423.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c83021423.filter(chkc) end

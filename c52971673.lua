@@ -10,10 +10,10 @@ function c52971673.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c52971673.cfilter(c)
-	return c:IsType(TYPE_TOKEN) and c:IsDestructable()
+	return c:IsType(TYPE_TOKEN)
 end
 function c52971673.dfilter(c)
-	return not c:IsType(TYPE_TOKEN) and c:IsDestructable()
+	return not c:IsType(TYPE_TOKEN)
 end
 function c52971673.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c52971673.cfilter,tp,LOCATION_MZONE,0,1,nil)

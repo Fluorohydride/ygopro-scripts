@@ -62,7 +62,7 @@ function c45627618.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ and e:GetLabel()==1
 end
 function c45627618.desfilter(c)
-	return c:IsFaceup() and c:IsLevelBelow(7) and c:IsDestructable()
+	return c:IsFaceup() and c:IsLevelBelow(7)
 end
 function c45627618.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

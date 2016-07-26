@@ -11,7 +11,7 @@ function c51482758.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c51482758.filter(c)
-	return c:IsFaceup() and c:IsDestructable() and c:IsType(TYPE_TRAP)
+	return c:IsFaceup() and c:IsType(TYPE_TRAP)
 end
 function c51482758.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c51482758.filter(chkc) end

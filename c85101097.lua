@@ -53,7 +53,7 @@ function c85101097.ctlcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c85101097.filter(c)
-	return (c:GetSequence()==6 or c:GetSequence()==7) and c:IsDestructable()
+	return (c:GetSequence()==6 or c:GetSequence()==7)
 end
 function c85101097.ctltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c85101097.filter(chkc) end

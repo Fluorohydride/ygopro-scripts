@@ -20,7 +20,7 @@ function c40044918.schfilter(c)
 	return c:IsSetCard(0x8) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c40044918.desfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c40044918.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

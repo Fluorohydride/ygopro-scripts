@@ -52,7 +52,7 @@ function c75782277.check(e,tp,eg,ep,ev,re,r,rp)
 	if tp2 then Duel.RaiseSingleEvent(c,EVENT_CUSTOM+75782277,e,r,rp,1-tp,0) end
 end
 function c75782277.filter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c75782277.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c75782277.filter(chkc) end

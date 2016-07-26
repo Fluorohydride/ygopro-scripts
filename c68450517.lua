@@ -23,7 +23,7 @@ function c68450517.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c68450517.filter(c,att)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsAttribute(att) and c:IsDestructable()
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsAttribute(att)
 end
 function c68450517.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp)

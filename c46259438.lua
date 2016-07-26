@@ -10,7 +10,7 @@ function c46259438.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c46259438.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0xae) and c:GetSequence()<5 and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0xae) and c:GetSequence()<5
 end
 function c46259438.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp)

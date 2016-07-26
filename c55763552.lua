@@ -10,7 +10,7 @@ function c55763552.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c55763552.filter(c)
-	return c:IsFaceup() and c:IsCode(50045299) and c:IsDestructable()
+	return c:IsFaceup() and c:IsCode(50045299)
 end
 function c55763552.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

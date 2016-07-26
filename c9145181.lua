@@ -12,7 +12,7 @@ function c9145181.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c9145181.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_RITUAL) and c:IsDestructable()
+	return c:IsFaceup() and c:IsType(TYPE_RITUAL)
 end
 function c9145181.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c9145181.filter(chkc) end

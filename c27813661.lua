@@ -31,7 +31,7 @@ function c27813661.tgtg(e,c)
 		and (c:GetSequence()==6 or c:GetSequence()==7)
 end
 function c27813661.desfilter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c27813661.thfilter(c)
 	return c:IsSetCard(0x99) and c:IsAbleToHand()

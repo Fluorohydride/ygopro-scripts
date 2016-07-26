@@ -10,7 +10,7 @@ function c20101223.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c20101223.filter(c)
-	return c:IsRace(RACE_ROCK) and c:IsFaceup() and c:IsDestructable()
+	return c:IsRace(RACE_ROCK) and c:IsFaceup()
 end
 function c20101223.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c20101223.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end

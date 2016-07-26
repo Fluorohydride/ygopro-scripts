@@ -58,7 +58,7 @@ function c44186624.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(44186624)~=0
 end
 function c44186624.filter(c)
-	return c:GetSequence()<5 and c:IsDestructable()
+	return c:GetSequence()<5
 end
 function c44186624.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c44186624.filter(chkc) end

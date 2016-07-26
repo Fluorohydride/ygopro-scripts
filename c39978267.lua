@@ -18,7 +18,7 @@ function c39978267.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c39978267.desfilter(c)
-	return c:IsType(TYPE_EQUIP) and c:IsDestructable()
+	return c:IsType(TYPE_EQUIP)
 end
 function c39978267.eqfilter(c,ec)
 	return c:IsType(TYPE_EQUIP) and c:CheckEquipTarget(ec)

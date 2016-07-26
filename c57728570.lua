@@ -20,7 +20,7 @@ function c57728570.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c57728570.filter(c)
-	return c:IsAttackAbove(1500) and c:IsDestructable()
+	return c:IsAttackAbove(1500)
 end
 function c57728570.hgfilter(c)
 	return not c:IsPublic() or c57728570.filter(c)

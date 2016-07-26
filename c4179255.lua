@@ -52,7 +52,7 @@ function c4179255.descon(e,tp,eg,ep,ev,re,r,rp)
 	return c4179255.check()
 end
 function c4179255.desfilter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsDestructable()
+	return c:IsPosition(POS_FACEUP_ATTACK)
 end
 function c4179255.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c4179255.desfilter(chkc) end

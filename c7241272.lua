@@ -25,7 +25,7 @@ function c7241272.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c7241272.desfilter(c)
-	return c:GetSequence()==5 and c:IsDestructable()
+	return c:GetSequence()==5
 end
 function c7241272.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c7241272.desfilter(chkc) end

@@ -11,7 +11,7 @@ function c1571945.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c1571945.filter(c)
-	return c:IsDefensePos() and c:IsDestructable()
+	return c:IsDefensePos()
 end
 function c1571945.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c1571945.filter(chkc) end

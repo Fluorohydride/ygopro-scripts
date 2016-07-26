@@ -70,7 +70,7 @@ function c88240999.adop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c88240999.desfilter(c)
-	return c:IsFacedown() and c:IsDestructable() and c:IsAbleToRemove()
+	return c:IsFacedown() and c:IsAbleToRemove()
 end
 function c88240999.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c88240999.desfilter(chkc) end

@@ -15,7 +15,7 @@ function c63120904.rfilter(c)
 	return c:IsCode(90337190,95614612)
 end
 function c63120904.dfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c63120904.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then

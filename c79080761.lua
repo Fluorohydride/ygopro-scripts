@@ -41,7 +41,7 @@ function c79080761.condition(e,tp,eg,ep,ev,re,r,rp)
 		and bit.band(c:GetPreviousPosition(),POS_FACEUP)~=0 and bit.band(c:GetPreviousLocation(),LOCATION_ONFIELD)~=0
 end
 function c79080761.filter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c79080761.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

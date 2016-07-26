@@ -89,7 +89,7 @@ function c71645242.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummonComplete()
 end
 function c71645242.desfilter(c)
-	return c:IsFaceup() and c:IsRace(RACE_PLANT) and c:IsDestructable()
+	return c:IsFaceup() and c:IsRace(RACE_PLANT)
 end
 function c71645242.filter2(c,atk,e,tp)
 	return c:GetAttack()==atk and c:IsCanBeSpecialSummoned(e,0x20,tp,false,false)
@@ -111,7 +111,7 @@ function c71645242.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c71645242.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not (c:IsRelateToEffect(e) and c:IsDestructable() and c:IsDestructable(e)) then return end
+	if not (c:IsRelateToEffect(e) and c:IsDestructable(e)) then return end
 	local dg=Duel.GetMatchingGroup(c71645242.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	dg:AddCard(c)
 	Duel.Destroy(dg,REASON_EFFECT)

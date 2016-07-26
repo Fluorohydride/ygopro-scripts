@@ -37,7 +37,7 @@ function c23649496.cfilter(c)
 	return c:IsFaceup() and Duel.IsExistingMatchingCard(c23649496.filter,0,LOCATION_MZONE,LOCATION_MZONE,1,c,c:GetCode())
 end
 function c23649496.filter(c,code)
-	return c:IsFaceup() and c:IsCode(code) and c:IsDestructable()
+	return c:IsFaceup() and c:IsCode(code)
 end
 function c23649496.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c23649496.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end

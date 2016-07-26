@@ -99,7 +99,7 @@ function c85359414.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsStatus(STATUS_UNION) and ep~=tp and eg:GetFirst()==e:GetHandler():GetEquipTarget()
 end
 function c85359414.desfilter(c)
-	return c:IsFacedown() and c:IsDestructable()
+	return c:IsFacedown()
 end
 function c85359414.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c85359414.desfilter(chkc) end

@@ -59,7 +59,7 @@ function c61441708.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
 end
 function c61441708.desfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c61441708.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

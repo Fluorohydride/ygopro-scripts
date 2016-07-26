@@ -32,7 +32,7 @@ function c98585345.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c98585345.dfilter(c)
-	return c:IsAttackPos() and c:IsDestructable()
+	return c:IsAttackPos()
 end
 function c98585345.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c98585345.dfilter,tp,0,LOCATION_MZONE,1,nil) end

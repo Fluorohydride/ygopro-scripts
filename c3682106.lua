@@ -19,7 +19,7 @@ c3682106.collection={
 	[74593218]=true;
 }
 function c3682106.filter(c)
-	return c:IsFaceup() and c3682106.collection[c:GetCode()] and c:IsDestructable()
+	return c:IsFaceup() and c3682106.collection[c:GetCode()]
 end
 function c3682106.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c3682106.filter(chkc) end
