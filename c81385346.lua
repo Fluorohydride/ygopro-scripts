@@ -18,7 +18,7 @@ function c81385346.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c81385346.filter1,tp,LOCATION_MZONE,0,1,nil)
 end
 function c81385346.filter2(c)
-	return c:IsDestructable() and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c81385346.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c81385346.filter2(chkc) and chkc~=e:GetHandler() end

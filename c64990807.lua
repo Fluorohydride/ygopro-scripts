@@ -33,7 +33,7 @@ function c64990807.spfilter(c,e,tp)
 	return c:IsSetCard(0x2f) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c64990807.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and chkc:IsDestructable() end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsDestructable,tp,0,LOCATION_ONFIELD,1,nil)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c64990807.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end

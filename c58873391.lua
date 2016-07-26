@@ -30,10 +30,10 @@ function c58873391.costfilter(c,e,dg)
 	return dg:GetCount()-a>=1
 end
 function c58873391.tgfilter(c,e)
-	return c:IsDestructable() and c:IsCanBeEffectTarget(e)
+	return c:IsCanBeEffectTarget(e)
 end
 function c58873391.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsDestructable() and chkc~=e:GetHandler() end
+	if chkc then return chkc:IsOnField() and chkc~=e:GetHandler() end
 	if chk==0 then
 		if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then return false end
 		if e:GetLabel()==1 then

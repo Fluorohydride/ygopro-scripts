@@ -11,7 +11,7 @@ function c93554166.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c93554166.filter(c)
-	return c:IsDestructable() and c:IsFacedown()
+	return c:IsFacedown()
 end
 function c93554166.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c93554166.filter(chkc) end

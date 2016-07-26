@@ -34,7 +34,7 @@ function c10097168.filter(c)
 	return c:IsFacedown() and c:GetSequence()~=5
 end
 function c10097168.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(1-tp) and chkc:IsDestructable() end
+	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(1-tp) end
 	if chk==0 then return Duel.IsExistingTarget(c10097168.filter,tp,0,LOCATION_SZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c10097168.filter,tp,0,LOCATION_SZONE,1,2,nil)

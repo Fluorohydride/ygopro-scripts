@@ -48,7 +48,7 @@ function c47075569.thfilter(c)
 	return c:IsSetCard(0x9f) and c:IsType(TYPE_MONSTER) and not c:IsCode(47075569) and c:IsAbleToHand()
 end
 function c47075569.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsOnField() and chkc:IsDestructable() end
+	if chkc then return chkc:IsControler(tp) and chkc:IsOnField() end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsDestructable,tp,LOCATION_ONFIELD,0,1,nil)
 		and Duel.IsExistingMatchingCard(c47075569.thfilter,tp,LOCATION_DECK,0,1,nil) end
 	local g=Duel.GetMatchingGroup(c47075569.thfilter,tp,LOCATION_DECK,0,nil)

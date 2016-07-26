@@ -27,7 +27,7 @@ function c14154221.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c14154221.cfilter,1,nil)
 end
 function c14154221.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsDestructable() end
+	if chkc then return chkc:IsOnField() end
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and not e:GetHandler():IsStatus(STATUS_CHAINING)
 		and Duel.IsExistingTarget(Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

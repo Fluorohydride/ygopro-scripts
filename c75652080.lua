@@ -12,7 +12,7 @@ function c75652080.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c75652080.filter(c)
-	return c:IsDestructable() and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c75652080.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

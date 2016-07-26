@@ -16,7 +16,7 @@ function c63516460.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentChain()>1 and Duel.CheckChainUniqueness()
 end
 function c63516460.filter(c)
-	return c:IsDestructable() and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c63516460.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c63516460.filter(chkc) and chkc~=e:GetHandler() end

@@ -47,7 +47,7 @@ function c65959844.rmfilter(c)
 	return c:IsDualState() and c:IsAbleToRemove()
 end
 function c65959844.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and chkc:IsDestructable() end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end
 	if chk==0 then return Duel.IsExistingMatchingCard(c65959844.rmfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingTarget(Card.IsDestructable,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

@@ -11,7 +11,7 @@ function c21502796.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c21502796.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsDestructable() end
+	if chkc then return chkc:IsOnField() end
 	if chk==0 then return true end
 	if Duel.IsExistingTarget(Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(21502796,1)) then

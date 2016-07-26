@@ -19,7 +19,7 @@ function c73079365.condition(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and eg:IsExists(c73079365.filter,1,nil,tp)
 end
 function c73079365.desfilter(c)
-	return c:IsDestructable() and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c73079365.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c73079365.desfilter(chkc) and chkc~=e:GetHandler() end

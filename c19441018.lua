@@ -54,7 +54,7 @@ function c19441018.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c19441018.filter1(c)
-	return c:IsDestructable() and Duel.IsExistingTarget(c19441018.filter2,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
+	return Duel.IsExistingTarget(c19441018.filter2,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 end
 function c19441018.filter2(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

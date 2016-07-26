@@ -34,7 +34,7 @@ function c38737148.spcon(e,c)
 		and Duel.IsExistingMatchingCard(Card.IsAttribute,tp,LOCATION_GRAVE,0,4,nil,ATTRIBUTE_LIGHT)
 end
 function c38737148.desfilter(c)
-	return c:IsDestructable() and c:GetSequence()==5
+	return c:GetSequence()==5
 		and Duel.IsExistingTarget(Card.IsDestructable,0,LOCATION_ONFIELD,LOCATION_ONFIELD,2,c)
 end
 function c38737148.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

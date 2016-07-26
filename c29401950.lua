@@ -42,7 +42,7 @@ function c29401950.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c29401950.filter2(c,tp)
 	return c:IsLocation(LOCATION_MZONE) and c:IsFaceup() and c:GetAttack()>=1500 and c:GetSummonPlayer()~=tp
-		and c:IsDestructable() and c:IsAbleToRemove()
+		and c:IsAbleToRemove()
 end
 function c29401950.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c29401950.filter2,1,nil,tp) end

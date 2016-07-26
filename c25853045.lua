@@ -46,7 +46,7 @@ function c25853045.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	else return false end
 end
 function c25853045.filter(c)
-	return c:IsDestructable() and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c25853045.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c25853045.filter(chkc) end

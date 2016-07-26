@@ -39,14 +39,14 @@ function c36006208.costfilter2(c,a,dg)
 	return dg:GetCount()-a>=1
 end
 function c36006208.tgfilter(c,e)
-	return c:IsDestructable() and c:IsCanBeEffectTarget(e)
+	return c:IsCanBeEffectTarget(e)
 end
 function c36006208.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	return true
 end
 function c36006208.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsDestructable() end
+	if chkc then return chkc:IsOnField() end
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)

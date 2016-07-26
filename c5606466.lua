@@ -21,7 +21,7 @@ function c5606466.filter(c,e,tp)
 	return c:IsPosition(POS_FACEDOWN_DEFENSE) and c:GetReasonPlayer()==tp and c:IsCanBeEffectTarget(e) and c:IsAbleToRemove()
 end
 function c5606466.filter2(c,e)
-	return c:IsDestructable() and c:IsAbleToRemove() and c:IsCanBeEffectTarget(e)
+	return c:IsAbleToRemove() and c:IsCanBeEffectTarget(e)
 end
 function c5606466.filter3(c,e,tp)
 	return c:IsPosition(POS_FACEDOWN_DEFENSE) and c:GetSummonPlayer()==tp and c:IsCanBeEffectTarget(e) and c:IsAbleToRemove()

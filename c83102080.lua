@@ -16,7 +16,7 @@ function c83102080.filter(c,ec)
 		and Duel.IsExistingTarget(c83102080.tgfilter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,ec,c)
 end
 function c83102080.tgfilter(c,tc)
-	return c:IsDestructable() and c~=tc
+	return c~=tc
 end
 function c83102080.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
@@ -24,7 +24,7 @@ function c83102080.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c83102080.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsOnField() and chkc:IsDestructable() and chkc~=c end
+	if chkc then return chkc:IsOnField() and chkc~=c end
 	if chk==0 then
 		if e:GetLabel()~=0 then
 			e:SetLabel(0)

@@ -19,7 +19,7 @@ function c15609017.costfilter(c)
 	return c:IsSetCard(0x2016) and c:IsAbleToRemoveAsCost()
 end
 function c15609017.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsDestructable() end
+	if chkc then return chkc:IsOnField() end
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)

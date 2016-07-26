@@ -11,7 +11,7 @@ function c65236257.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c65236257.filter(c)
-	return c:IsDestructable() and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c65236257.cfilter(c)
 	return c:IsSetCard(0x9c) and c:IsFaceup()

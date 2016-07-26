@@ -18,7 +18,7 @@ function c22205600.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c22205600.cfilter,1,nil)
 end
 function c22205600.filter(c)
-	return c:IsDestructable() and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c22205600.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c22205600.filter(chkc) and chkc~=e:GetHandler() end

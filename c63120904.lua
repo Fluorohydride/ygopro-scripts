@@ -19,7 +19,7 @@ function c63120904.dfilter(c)
 end
 function c63120904.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then
-		if e:GetLabel()==90337190 then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsDestructable()
+		if e:GetLabel()==90337190 then return chkc:IsLocation(LOCATION_MZONE)
 		else return chkc:IsOnField() and c63120904.dfilter(chkc) end
 	end
 	local b1=Duel.CheckReleaseGroup(tp,Card.IsCode,1,nil,90337190) and Duel.IsExistingTarget(Card.IsDestructable,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)

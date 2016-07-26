@@ -53,7 +53,7 @@ function c16051717.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x33)
 end
 function c16051717.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and chkc:IsDestructable() end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end
 	if chk==0 then return Duel.IsExistingMatchingCard(c16051717.filter,tp,LOCATION_MZONE,0,1,e:GetHandler())
 		and Duel.IsExistingTarget(Card.IsDestructable,tp,0,LOCATION_ONFIELD,1,nil) end
 	local ct=Duel.GetMatchingGroupCount(c16051717.filter,tp,LOCATION_MZONE,0,e:GetHandler())
