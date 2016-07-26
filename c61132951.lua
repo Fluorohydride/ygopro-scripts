@@ -13,7 +13,7 @@ end
 function c61132951.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local d=Duel.GetAttackTarget()
 	if chk==0 then return Duel.GetAttacker()==e:GetHandler()
-		and d and d:IsDefensePos() and d:IsDestructable() end
+		and d and d:IsDefensePos() and d:IsRelateToBattle() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,d,1,0,0)
 end
 function c61132951.desop(e,tp,eg,ep,ev,re,r,rp)

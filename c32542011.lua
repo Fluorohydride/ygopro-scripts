@@ -25,25 +25,22 @@ function c32542011.spfilter(c,tid,e,tp)
 	return c:GetTurnID()==tid and c:IsReason(REASON_COST) and re and re:IsHasType(0x7e0) and re:IsActiveType(TYPE_MONSTER)
 		and c:IsAttribute(ATTRIBUTE_WATER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c32542011.desfilter(c)
-	return c:IsDestructable()
-end
 function c32542011.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local b1=Duel.IsExistingMatchingCard(c32542011.cfilter2,tp,LOCATION_MZONE,0,1,nil,ATTRIBUTE_FIRE)
-		and Duel.IsExistingMatchingCard(c32542011.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
+		and Duel.IsExistingMatchingCard(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
 	local b2=Duel.IsExistingMatchingCard(c32542011.cfilter2,tp,LOCATION_MZONE,0,1,nil,ATTRIBUTE_WATER)
 		and ft>0 and Duel.IsExistingMatchingCard(c32542011.spfilter,tp,LOCATION_GRAVE,0,1,nil,Duel.GetTurnCount(),e,tp)
 	if chk==0 then return b1 or b2 end
 	if b1 then
-		local g=Duel.GetMatchingGroup(c32542011.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+		local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	end
 	if b2 then
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 		local g=Duel.GetMatchingGroup(c32542011.spfilter,tp,LOCATION_GRAVE,0,nil,Duel.GetTurnCount(),e,tp)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,ft,0,0)
-		local dg=Duel.GetMatchingGroup(c32542011.desfilter,tp,LOCATION_MZONE,0,nil)
+		local dg=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,0,nil)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,dg,1,0,0)
 	end
 end
@@ -61,7 +58,7 @@ function c32542011.activate(e,tp,eg,ep,ev,re,r,rp)
 				Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 				Duel.BreakEffect()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-				local dg=Duel.SelectMatchingCard(tp,c32542011.desfilter,tp,LOCATION_MZONE,0,1,1,nil)
+				local dg=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_MZONE,0,1,1,nil)
 				Duel.Destroy(dg,REASON_EFFECT)
 			end
 		end
@@ -69,7 +66,7 @@ function c32542011.activate(e,tp,eg,ep,ev,re,r,rp)
 	if opt==2 or opt==3 then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local g=Duel.SelectMatchingCard(tp,c32542011.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 		if g:GetCount()>0 then
 			Duel.HintSelection(g)
 			Duel.Destroy(g,REASON_EFFECT)

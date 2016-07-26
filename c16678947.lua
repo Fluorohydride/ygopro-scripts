@@ -22,7 +22,7 @@ function c16678947.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local tc=eg:GetFirst()
 	local bc=Duel.GetAttacker()
-	if chk==0 then return bc:IsCanBeEffectTarget(e) and bc:IsDestructable() end
+	if chk==0 then return bc:IsCanBeEffectTarget(e) end
 	local lv=tc:GetLevel()
 	e:SetLabel(lv)
 	Duel.SetTargetCard(bc)

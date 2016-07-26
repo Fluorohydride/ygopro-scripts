@@ -48,7 +48,7 @@ function c89113320.lvop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c89113320.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=e:GetHandler():GetBattleTarget()
-	if chk==0 then return bc:IsRelateToBattle() and bc:IsDestructable() end
+	if chk==0 then return bc:IsRelateToBattle() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,bc,1,0,0)
 end
 function c89113320.operation(e,tp,eg,ep,ev,re,r,rp)

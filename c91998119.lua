@@ -86,14 +86,11 @@ function c91998119.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
-function c91998119.filter(c)
-	return c:IsDestructable()
-end
 function c91998119.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c91998119.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c91998119.filter,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end
+	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c91998119.filter,tp,0,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c91998119.desop(e,tp,eg,ep,ev,re,r,rp)

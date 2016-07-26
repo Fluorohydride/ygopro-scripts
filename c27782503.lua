@@ -29,7 +29,7 @@ function c27782503.descon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c27782503.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c27782503.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetAttackTarget():IsDestructable() end
+	if chk==0 then return Duel.GetAttackTarget():IsRelateToBattle() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,Duel.GetAttackTarget(),1,0,0)
 end
 function c27782503.desop(e,tp,eg,ep,ev,re,r,rp)

@@ -21,7 +21,7 @@ function c51254980.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c51254980.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return ep~=tp and eg:GetFirst():IsDestructable() end
+	if chk==0 then return ep~=tp and eg:GetFirst():IsLocation(LOCATION_MZONE) end
 	eg:GetFirst():CreateEffectRelation(e)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 end

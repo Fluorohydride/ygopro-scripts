@@ -38,14 +38,11 @@ function c35842855.spcon(e,c)
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0 and
 		Duel.GetMatchingGroupCount(Card.IsAttribute,c:GetControler(),LOCATION_GRAVE,0,nil,ATTRIBUTE_FIRE)==5
 end
-function c35842855.filter(c)
-	return c:IsDestructable()
-end
 function c35842855.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c35842855.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c35842855.filter,tp,0,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) end
+	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c35842855.filter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,PLAYER_ALL,0)
 end

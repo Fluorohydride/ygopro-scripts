@@ -22,8 +22,7 @@ function c2359348.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tc1=Duel.GetFieldCard(tp,LOCATION_SZONE,6)
 	local tc2=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
 	if chk==0 then return tc1 and tc2
-		and tc1:IsCanBeEffectTarget(e) and tc2:IsCanBeEffectTarget(e)
-		and tc1:IsDestructable() and tc2:IsDestructable() end
+		and tc1:IsCanBeEffectTarget(e) and tc2:IsCanBeEffectTarget(e) end
 	local g=Group.FromCards(tc1,tc2)
 	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)

@@ -21,7 +21,7 @@ end
 function c23323812.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local at=Duel.GetAttacker()
 	if chkc then return chkc==at end
-	if chk==0 then return at:IsControler(1-tp) and at:IsRelateToBattle() and at:IsCanBeEffectTarget(e) and at:IsDestructable() end
+	if chk==0 then return at:IsControler(1-tp) and at:IsRelateToBattle() and at:IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(at)
 	local atk=at:GetAttack()
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,at,1,0,0)

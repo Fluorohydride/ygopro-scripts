@@ -45,7 +45,7 @@ end
 function c96622984.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local tc=c:GetBattleTarget()
-	if chk==0 then return tc and tc:IsFaceup() and tc:IsLevelBelow(c:GetLevel()) and tc:IsDestructable() end
+	if chk==0 then return tc and tc:IsFaceup() and tc:IsLevelBelow(c:GetLevel()) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tc,1,0,0)
 end
 function c96622984.desop(e,tp,eg,ep,ev,re,r,rp)

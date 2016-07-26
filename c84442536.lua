@@ -24,12 +24,12 @@ function c84442536.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c84442536.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetLabelObject()
-	if chk==0 then return tc and (Duel.IsChainNegatable(ev) or tc:IsDestructable()) end
+	if chk==0 then return tc and (Duel.IsChainNegatable(ev) or tc:IsLocation(LOCATION_MZONE)) end
 	local sel=0
-	if Duel.IsChainNegatable(ev) and tc:IsDestructable() then
+	if Duel.IsChainNegatable(ev) and tc:IsLocation(LOCATION_MZONE) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
 		sel=Duel.SelectOption(tp,aux.Stringid(84442536,0),aux.Stringid(84442536,1))
-	elseif tc:IsDestructable() then
+	elseif tc:IsLocation(LOCATION_MZONE) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
 		sel=Duel.SelectOption(tp,aux.Stringid(84442536,0))
 	else

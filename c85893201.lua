@@ -25,15 +25,12 @@ end
 function c85893201.descon(e,tp,eg,ep,ev,re,r,rp)
 	return rp~=tp and eg:IsExists(c85893201.cfilter,1,nil,1-tp)
 end
-function c85893201.filter(c)
-	return c:IsDestructable()
-end
 function c85893201.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and c85893201.filter(chkc) end
+	if chkc then return chkc:IsOnField() end
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e)
-		and Duel.IsExistingTarget(c85893201.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
+		and Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c85893201.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c85893201.desop(e,tp,eg,ep,ev,re,r,rp)

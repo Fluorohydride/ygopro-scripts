@@ -34,15 +34,12 @@ end
 function c36354007.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE+1
 end
-function c36354007.filter(c)
-	return c:IsDestructable()
-end
 function c36354007.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local g=Duel.GetMatchingGroup(c36354007.filter,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0,nil)
 end
 function c36354007.desop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c36354007.filter,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
 	Duel.Destroy(g,REASON_EFFECT)
 end

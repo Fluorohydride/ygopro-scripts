@@ -46,7 +46,6 @@ function c58990631.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c58990631.filter2(c,tp)
 	return c:IsFaceup() and c:IsAttackAbove(1000) and c:GetSummonPlayer()~=tp
-		and c:IsDestructable()
 end
 function c58990631.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c58990631.filter2,1,nil,tp) end

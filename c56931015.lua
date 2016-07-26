@@ -37,18 +37,18 @@ end
 function c56931015.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c1=Duel.GetFieldCard(0,LOCATION_SZONE,5)
 	local c2=Duel.GetFieldCard(1,LOCATION_SZONE,5)
-	if chk==0 then return (c1 and c1:IsDestructable()) or (c2 and c2:IsDestructable()) end
+	if chk==0 then return c1 or c2 end
 	local g=Group.CreateGroup()
-	if c1 and c1:IsDestructable() then g:AddCard(c1) end
-	if c2 and c2:IsDestructable() then g:AddCard(c2) end
+	if c1 then g:AddCard(c1) end
+	if c2 then g:AddCard(c2) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c56931015.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c1=Duel.GetFieldCard(0,LOCATION_SZONE,5)
 	local c2=Duel.GetFieldCard(1,LOCATION_SZONE,5)
 	local g=Group.CreateGroup()
-	if c1 and c1:IsDestructable() then g:AddCard(c1) end
-	if c2 and c2:IsDestructable() then g:AddCard(c2) end
+	if c1 then g:AddCard(c1) end
+	if c2 then g:AddCard(c2) end
 	if g:GetCount()>0 then
 		Duel.Destroy(g,REASON_EFFECT)
 	end

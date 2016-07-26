@@ -23,7 +23,7 @@ end
 function c4923662.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.GetAttacker()
 	if chkc then return chkc==tg end
-	if chk==0 then return tg:IsOnField() and tg:IsDestructable() and tg:IsCanBeEffectTarget(e) end
+	if chk==0 then return tg:IsOnField() and tg:IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(tg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tg,1,0,0)
 end

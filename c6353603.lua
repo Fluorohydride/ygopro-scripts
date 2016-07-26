@@ -42,19 +42,16 @@ function c6353603.setop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c6353603.filter1(c)
 	return c:IsFaceup() and c:IsSetCard(0x7c) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToGraveAsCost()
-		and Duel.IsExistingTarget(c6353603.filter2,0,LOCATION_MZONE,LOCATION_MZONE,1,c)
-end
-function c6353603.filter2(c)
-	return c:IsDestructable()
+		and Duel.IsExistingTarget(aux.TRUE,0,LOCATION_MZONE,LOCATION_MZONE,1,c)
 end
 function c6353603.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c6353603.filter2(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) end
 	if chk==0 then return Duel.IsExistingMatchingCard(c6353603.filter1,tp,LOCATION_ONFIELD,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g1=Duel.SelectMatchingCard(tp,c6353603.filter1,tp,LOCATION_ONFIELD,0,1,1,nil)
 	Duel.SendtoGrave(g1,REASON_COST)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g2=Duel.SelectTarget(tp,c6353603.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	local g2=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g2,1,0,0)
 end
 function c6353603.desop(e,tp,eg,ep,ev,re,r,rp)

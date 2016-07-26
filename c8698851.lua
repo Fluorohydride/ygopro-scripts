@@ -16,7 +16,7 @@ function c8698851.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c8698851.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local a=Duel.GetAttacker()
-	if chk==0 then return a:IsOnField() and a:IsDestructable() end
+	if chk==0 then return a:IsOnField() end
 	Duel.SetTargetCard(a)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,a,1,0,0)
 end

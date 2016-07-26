@@ -17,16 +17,13 @@ function c89040386.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer() and Duel.GetAttackTarget()==nil
 		and Duel.IsExistingMatchingCard(c89040386.cfilter,tp,LOCATION_GRAVE,0,5,nil)
 end
-function c89040386.filter(c)
-	return c:IsDestructable()
-end
 function c89040386.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c89040386.filter,tp,0,LOCATION_MZONE,1,nil) end
-	local g=Duel.GetMatchingGroup(c89040386.filter,tp,0,LOCATION_MZONE,nil)
+	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_MZONE,1,nil) end
+	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c89040386.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c89040386.filter,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
 	if g:GetCount()>0 then
 		Duel.Destroy(g,REASON_EFFECT)
 	end

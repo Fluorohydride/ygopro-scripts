@@ -22,7 +22,7 @@ function c32548609.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler()==Duel.GetAttacker() and d and d:IsFacedown() and d:IsDefensePos()
 end
 function c32548609.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetAttackTarget():IsDestructable() end
+	if chk==0 then return Duel.GetAttackTarget():IsRelateToBattle() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,Duel.GetAttackTarget(),1,0,0)
 end
 function c32548609.desop(e,tp,eg,ep,ev,re,r,rp)

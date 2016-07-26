@@ -15,10 +15,10 @@ function c57281778.descon(e,tp,eg,ep,ev,re,r,rp)
 	local t=Duel.GetAttackTarget()
 	if ev==1 then t=Duel.GetAttacker() end
 	e:SetLabelObject(t)
-	return t and t:IsRace(RACE_SPELLCASTER+RACE_WARRIOR) and t:IsRelateToBattle()
+	return t and t:IsRace(RACE_SPELLCASTER+RACE_WARRIOR)
 end
 function c57281778.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetLabelObject():IsDestructable() end
+	if chk==0 then return e:GetLabelObject():IsRelateToBattle() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetLabelObject(),1,0,0)
 end
 function c57281778.desop(e,tp,eg,ep,ev,re,r,rp)

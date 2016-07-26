@@ -24,12 +24,11 @@ function c95519486.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x3d) and c:GetCode()~=95519486
 end
 function c95519486.descon(e,tp,eg,ep,ev,re,r,rp)
-	local d=Duel.GetAttackTarget()
-	return e:GetHandler()==Duel.GetAttacker() and d and d:IsRelateToBattle()
+	return e:GetHandler()==Duel.GetAttacker() and Duel.GetAttackTarget()
 		and Duel.IsExistingMatchingCard(c95519486.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c95519486.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetAttackTarget():IsDestructable() end
+	if chk==0 then return Duel.GetAttackTarget():IsRelateToBattle()() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,Duel.GetAttackTarget(),1,0,0)
 end
 function c95519486.desop(e,tp,eg,ep,ev,re,r,rp)

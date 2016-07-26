@@ -40,14 +40,11 @@ function c10755153.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.SelectMatchingCard(tp,c10755153.costfilter,tp,LOCATION_SZONE,0,1,1,nil,e:GetHandler())
 	Duel.SendtoGrave(g,REASON_COST)
 end
-function c10755153.desfilter(c)
-	return c:IsDestructable()
-end
 function c10755153.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c10755153.desfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c10755153.desfilter,tp,0,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) end
+	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c10755153.desfilter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c10755153.desop(e,tp,eg,ep,ev,re,r,rp)

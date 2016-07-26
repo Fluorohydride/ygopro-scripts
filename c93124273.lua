@@ -15,7 +15,7 @@ end
 function c93124273.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local d=Duel.GetAttackTarget()
 	if chk ==0 then	return Duel.GetAttacker()==e:GetHandler()
-		and d and d:IsFaceup() and not d:IsType(TYPE_PENDULUM) and d:IsDestructable() end
+		and d and d:IsFaceup() and not d:IsType(TYPE_PENDULUM) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,d,1,0,0)
 end
 function c93124273.operation(e,tp,eg,ep,ev,re,r,rp)
