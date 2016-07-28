@@ -9,10 +9,11 @@ function c69599136.initial_effect(c)
 	e1:SetOperation(c69599136.activate)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetCode(EVENT_FLIP_SUMMON_SUCCESS)
+	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e2)
 	local e3=e1:Clone()
-	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e3:SetCode(EVENT_FLIP_SUMMON_SUCCESS)
+	e3:SetTarget(c69599136.target2)
 	c:RegisterEffect(e3)
 end
 function c69599136.filter(c,tp)
@@ -22,6 +23,11 @@ function c69599136.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c69599136.filter,1,nil,tp) end
 	local g=eg:Filter(c69599136.filter,nil,tp)
 	Duel.SetTargetCard(g)
+end
+function c69599136.target2(e,tp,eg,ep,ev,re,r,rp,chk)
+	local tc=eg:GetFirst()
+	if chk==0 then return rp==1-tp and tc:IsFaceup() and tc:IsCanTurnSet() end
+	Duel.SetTargetCard(tc)
 end
 function c69599136.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
