@@ -22,7 +22,7 @@ function c63120904.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if e:GetLabel()==90337190 then return chkc:IsLocation(LOCATION_MZONE)
 		else return chkc:IsOnField() and c63120904.dfilter(chkc) end
 	end
-	local b1=Duel.CheckReleaseGroup(tp,Card.IsCode,1,nil,90337190) and Duel.IsExistingTarget(Card.IsDestructable,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
+	local b1=Duel.CheckReleaseGroup(tp,Card.IsCode,1,nil,90337190) and Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
 	local b2=Duel.CheckReleaseGroup(tp,Card.IsCode,1,nil,95614612) and Duel.IsExistingTarget(c63120904.dfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 	if chk==0 then return b1 or b2 end
 	local code=0
@@ -42,7 +42,7 @@ function c63120904.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	e:SetLabel(code)
 	if code==90337190 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local g=Duel.SelectTarget(tp,Card.IsDestructable,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+		local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

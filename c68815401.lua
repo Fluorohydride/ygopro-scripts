@@ -27,10 +27,10 @@ function c68815401.filter1(c)
 end
 function c68815401.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c68815401.filter1,tp,LOCATION_SZONE,0,1,nil)
-		and Duel.IsExistingMatchingCard(Card.IsDestructable,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
+		and Duel.IsExistingMatchingCard(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,68815402,0,0x4011,1000,1000,3,RACE_PYRO,ATTRIBUTE_FIRE) end
 	local dg1=Duel.GetMatchingGroup(c68815401.filter1,tp,LOCATION_SZONE,0,nil)
-	local dg2=Duel.GetMatchingGroup(Card.IsDestructable,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local dg2=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	dg1:Merge(dg2)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,dg1,dg1:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
@@ -39,7 +39,7 @@ end
 function c68815401.activate(e,tp,eg,ep,ev,re,r,rp)
 	local dg1=Duel.GetMatchingGroup(c68815401.filter1,tp,LOCATION_SZONE,0,nil)
 	if Duel.Destroy(dg1,REASON_EFFECT)>0 then
-		local dg2=Duel.GetMatchingGroup(Card.IsDestructable,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+		local dg2=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		if Duel.Destroy(dg2,REASON_EFFECT)>0
 			and Duel.IsPlayerCanSpecialSummonMonster(tp,68815402,0,0x4011,1000,1000,3,RACE_PYRO,ATTRIBUTE_FIRE) then
 			Duel.BreakEffect()

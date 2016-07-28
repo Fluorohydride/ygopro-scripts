@@ -133,7 +133,7 @@ end
 function c17032740.coinop(e,tp,eg,ep,ev,re,r,rp)
 	local c1,c2,c3=Duel.TossCoin(tp,3)
 	if c1+c2+c3==3 then
-		local g=Duel.GetMatchingGroup(Card.IsDestructable,tp,0,LOCATION_MZONE,nil)
+		local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
 		Duel.Destroy(g,REASON_EFFECT)
 	elseif c1+c2+c3==2 then
 		local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)

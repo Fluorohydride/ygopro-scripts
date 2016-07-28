@@ -27,7 +27,7 @@ function c45653036.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local atk=tc:GetAttack()
 		local g1=Duel.GetMatchingGroup(c45653036.filter1,tp,0,LOCATION_ONFIELD,nil)
-		local g2=Duel.GetMatchingGroup(Card.IsDestructable,tp,0,LOCATION_ONFIELD,nil)
+		local g2=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_ONFIELD,nil)
 		local opt=0
 		local b1=atk>=1000 and g1:GetCount()>0
 		local b2=atk>=2000 and g2:GetCount()>1

@@ -44,7 +44,7 @@ function c94388754.operation(e,tp,eg,ep,ev,re,r,rp)
 		local tc=Duel.GetOperatedGroup():GetFirst()
 		Duel.ConfirmCards(1-tp,tc)
 		if tc:IsType(TYPE_MONSTER) and tc:IsSetCard(0xe6) then
-			local g=Duel.GetMatchingGroup(Card.IsDestructable,tp,0,LOCATION_MZONE,nil)
+			local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
 			if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(94388754,1)) then
 				Duel.BreakEffect()
 				local sg=g:Select(tp,1,1,nil)

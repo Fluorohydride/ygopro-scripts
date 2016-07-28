@@ -42,20 +42,20 @@ end
 function c96592102.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_COST) end
-	local rt=math.min(Duel.GetMatchingGroupCount(Card.IsDestructable,tp,0,LOCATION_MZONE,nil),c:GetOverlayCount())
+	local rt=math.min(Duel.GetMatchingGroupCount(aux.TRUE,tp,0,LOCATION_MZONE,nil),c:GetOverlayCount())
 	c:RemoveOverlayCard(tp,1,rt,REASON_COST)
 	local ct=Duel.GetOperatedGroup():GetCount()
 	e:SetLabel(ct)
 end
 function c96592102.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDestructable,tp,0,LOCATION_MZONE,1,nil) end
-	local g=Duel.GetMatchingGroup(Card.IsDestructable,tp,0,LOCATION_MZONE,nil)
+	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_MZONE,1,nil) end
+	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,e:GetLabel(),0,0)
 end
 function c96592102.desop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetLabel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectMatchingCard(tp,Card.IsDestructable,tp,0,LOCATION_MZONE,ct,ct,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,0,LOCATION_MZONE,ct,ct,nil)
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)
 		Duel.Destroy(g,REASON_EFFECT)

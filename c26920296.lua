@@ -99,8 +99,7 @@ function c26920296.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if g:GetCount()==0 then return end
 	local mg,lv=g:GetMaxGroup(Card.GetLevel)
 	if lv==0 then return end
-	local dg=mg:Filter(Card.IsDestructable,nil)
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,dg,dg:GetCount(),0,0)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,mg,mg:GetCount(),0,0)
 end
 function c26920296.desop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
@@ -108,8 +107,7 @@ function c26920296.desop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()==0 then return end
 	local mg,lv=g:GetMaxGroup(Card.GetLevel)
 	if lv==0 then return end
-	local dg=mg:Filter(Card.IsDestructable,nil)
-	if dg:GetCount()>0 then
-		Duel.Destroy(dg,REASON_EFFECT)
+	if mg:GetCount()>0 then
+		Duel.Destroy(mg,REASON_EFFECT)
 	end
 end

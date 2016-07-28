@@ -66,7 +66,7 @@ function c57793869.erascon(e)
 end
 function c57793869.erastg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local dg=Duel.GetMatchingGroup(Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
+	local dg=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,dg,dg:GetCount(),0,0)
 end
 function c57793869.erasop(e,tp,eg,ep,ev,re,r,rp)

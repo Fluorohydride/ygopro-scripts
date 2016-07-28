@@ -54,7 +54,7 @@ function c36006208.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 			local dg=Duel.GetMatchingGroup(c36006208.tgfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,e:GetHandler(),e)
 			return rg:IsExists(c36006208.costfilter,1,nil,rg,dg)
 		else
-			return Duel.IsExistingTarget(Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler())
+			return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler())
 		end
 	end
 	if e:GetLabel()==1 then
@@ -80,7 +80,7 @@ function c36006208.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.SendtoGrave(sg1,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,3,e:GetHandler())
+	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,3,e:GetHandler())
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end 
 function c36006208.activate(e,tp,eg,ep,ev,re,r,rp)

@@ -61,7 +61,7 @@ function c42421606.efop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	elseif dc==5 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local g=Duel.SelectMatchingCard(tp,Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 		if g:GetCount()>0 then
 			Duel.HintSelection(g)
 			Duel.Destroy(g,REASON_EFFECT)

@@ -15,7 +15,7 @@ end
 function c91501248.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.IsPlayerCanDraw(tp,2)
 	local b2=Duel.IsExistingMatchingCard(c91501248.thfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-	local b3=Duel.IsExistingMatchingCard(Card.IsDestructable,tp,0,LOCATION_MZONE,1,nil)
+	local b3=Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_MZONE,1,nil)
 	local b4=Duel.IsExistingMatchingCard(Card.IsAbleToDeck,tp,0,LOCATION_HAND,1,nil)
 	if chk==0 then return b1 or b2 or b3 or b4 end
 	local off=1
@@ -55,7 +55,7 @@ function c91501248.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,g:GetCount(),0,0)
 	elseif sel==3 then
 		e:SetCategory(CATEGORY_DESTROY)
-		local g=Duel.GetMatchingGroup(Card.IsDestructable,tp,0,LOCATION_MZONE,nil)
+		local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 	else
 		e:SetCategory(CATEGORY_TODECK)
@@ -72,7 +72,7 @@ function c91501248.operation(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetMatchingGroup(c91501248.thfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 	elseif sel==3 then
-		local g=Duel.GetMatchingGroup(Card.IsDestructable,tp,0,LOCATION_MZONE,nil)
+		local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
 		Duel.Destroy(g,REASON_EFFECT)
 	else
 		local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
