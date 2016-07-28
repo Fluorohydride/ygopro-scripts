@@ -55,7 +55,6 @@ function c78358521.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,tc)
 	end
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
 		c:RegisterFlagEffect(78358521,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
