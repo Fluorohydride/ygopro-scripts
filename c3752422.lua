@@ -23,7 +23,7 @@ function c3752422.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c3752422.lvfilter(c)
-	return c:IsFaceup() and bit.band(c:GetSummonType(),SUMMON_TYPE_PENDULUM)~=0 and c:GetLevel()>0
+	return c:IsFaceup() and bit.band(c:GetSummonType(),SUMMON_TYPE_PENDULUM)~=SUMMON_TYPE_PENDULUM and c:GetLevel()>0
 end
 function c3752422.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c3752422.lvfilter,tp,LOCATION_MZONE,0,1,nil) end
@@ -47,24 +47,16 @@ end
 function c3752422.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc~=c and chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c3752422.filter(chkc) end
-	if chk==0 then return c:GetLevel()>1
-		and Duel.IsExistingTarget(c3752422.filter,tp,LOCATION_MZONE,0,1,c) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g=Duel.SelectTarget(tp,c3752422.filter,tp,LOCATION_MZONE,0,1,1,c)
-	local t={}
-	local i=1
-	local p=c:GetLevel()-1
-	p=math.min(p,5)
-	for i=1,p do
-		t[i]=i
-	end
+	if chk==0 then return Duel.IsExistingTarget(c3752422.filter,tp,LOCATION_MZONE,0,1,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,567)
-	e:SetLabel(Duel.AnnounceNumber(tp,table.unpack(t)))
+	e:SetLabel(Duel.AnnounceNumber(tp,1,2,3,4,5))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+	Duel.SelectTarget(tp,c3752422.filter,tp,LOCATION_MZONE,0,1,1,c)
 end
 function c3752422.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local lv=e:GetLabel()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and c:GetLevel()>1 then
+	if c:IsFaceup() and c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_LEVEL)
