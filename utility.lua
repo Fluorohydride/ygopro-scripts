@@ -1577,6 +1577,7 @@ function Auxiliary.PendOperation()
 					until ft==0 or ect==0 or not Duel.SelectYesNo(tp,210)
 					local hg=tg:Filter(Card.IsLocation,nil,LOCATION_HAND)
 					if ft>0 and ect==0 and hg:GetCount()>0 and Duel.SelectYesNo(tp,210) then
+						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 						local g=hg:Select(tp,1,ft,nil)
 						sg:Merge(g)
 					end

@@ -14,8 +14,9 @@ function c80549379.filter(c)
 end
 function c80549379.repcon(e)
 	local c=e:GetHandler()
+	local tp=c:GetControler()
 	return c:IsFaceup() and c:IsReason(REASON_DESTROY)
-		and Duel.IsExistingMatchingCard(c80549379.filter,tp,LOCATION_MZONE,0,1,e:GetHandler())
+		and Duel.IsExistingMatchingCard(c80549379.filter,tp,LOCATION_MZONE,0,1,c)
 end
 function c80549379.repop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

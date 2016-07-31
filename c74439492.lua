@@ -18,13 +18,13 @@ function c74439492.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c74439492.filter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(c74439492.filter,tp,LOCATION_MZONE,0,2,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c74439492.filter,tp,LOCATION_MZONE,0,1,1,nil,false)
+	local g=Duel.SelectTarget(tp,c74439492.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c74439492.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
-		local g=Duel.GetMatchingGroup(c74439492.filter,tp,LOCATION_MZONE,0,nil,true)
+		local g=Duel.GetMatchingGroup(c74439492.filter,tp,LOCATION_MZONE,0,nil)
 		local ac=g:GetFirst()
 		while ac do
 			local e1=Effect.CreateEffect(e:GetHandler())

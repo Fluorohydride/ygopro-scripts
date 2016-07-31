@@ -64,7 +64,7 @@ function c93016201.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local te=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT)
 	local tc=te:GetHandler()
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,tc,1,0,0)
-	if ttc:IsRelateToEffect(te) then
+	if tc:IsRelateToEffect(te) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,tc,1,0,0)
 	end
 end

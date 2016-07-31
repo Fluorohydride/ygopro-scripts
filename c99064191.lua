@@ -34,7 +34,7 @@ function c99064191.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsChainDisablable(ct-1) and Duel.SelectYesNo(tp,aux.Stringid(99064191,1)) then
 		Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 		Duel.SetOperationInfo(0,CATEGORY_DISABLE,tc,1,0,0)
-		if ttc:IsRelateToEffect(pe) then
+		if tc:IsRelateToEffect(pe) then
 			Duel.SetOperationInfo(0,CATEGORY_DESTROY,tc,1,0,0)
 		end
 		e:SetLabel(1)

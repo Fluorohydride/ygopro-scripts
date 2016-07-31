@@ -67,7 +67,7 @@ function c57707471.xyztg(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
 		mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 	end
 	local b1=Duel.CheckXyzMaterial(c,nil,6,2,2,og)
-	local b2=ct<1 and (not min or min<=1) and mg:IsExists(c57707471.ovfilter,1,nil)
+	local b2=ct<1 and (not min or min<=1) and mg:IsExists(c57707471.ovfilter,1,nil,tp,c)
 	local g=nil
 	if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(57707471,0))) then
 		e:SetLabel(1)
