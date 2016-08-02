@@ -19,9 +19,5 @@ function c95214051.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ShuffleDeck(1-tp)
 		Duel.MoveSequence(tc,0)
 		Duel.ConfirmDecktop(1-tp,1)
-	else
-		local g=Duel.GetFieldGroup(tp,0,LOCATION_DECK)
-		Duel.ConfirmCards(tp,g)
-		Duel.ShuffleDeck(1-tp)
 	end
 end

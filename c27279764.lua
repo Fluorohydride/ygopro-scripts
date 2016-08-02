@@ -89,9 +89,5 @@ function c27279764.tgop(e,tp,eg,ep,ev,re,r,rp)
 		local sg=g:Select(1-tp,1,1,nil)
 		Duel.HintSelection(sg)
 		Duel.SendtoGrave(sg,REASON_RULE)
-	else
-		local hg=Duel.GetFieldGroup(1-tp,LOCATION_HAND,0)
-		Duel.ConfirmCards(tp,hg)
-		Duel.ShuffleHand(1-tp)
 	end
 end

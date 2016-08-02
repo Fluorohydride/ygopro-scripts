@@ -23,11 +23,7 @@ end
 function c98891840.activate(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 	local g=Duel.GetMatchingGroup(c98891840.filter,p,LOCATION_HAND,0,nil)
-	if g:GetCount()<2 then
-		local hg=Duel.GetFieldGroup(p,LOCATION_HAND,0)
-		Duel.ConfirmCards(1-p,hg)
-		Duel.ShuffleHand(p)
-	else
+	if g:GetCount()>=2 then
 		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 		local sg=g:Select(p,2,2,nil)
 		Duel.ConfirmCards(1-p,sg)

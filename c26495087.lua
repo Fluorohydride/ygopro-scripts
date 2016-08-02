@@ -32,9 +32,5 @@ function c26495087.tgop(e,tp,eg,ep,ev,re,r,rp)
 	else g=Duel.SelectMatchingCard(1-tp,c26495087.tgfilter,1-tp,LOCATION_DECK,0,1,1,nil,TYPE_TRAP) end
 	if g:GetCount()~=0 then
 		Duel.SendtoGrave(g,REASON_EFFECT)
-	else
-		local cg=Duel.GetFieldGroup(tp,0,LOCATION_DECK)
-		Duel.ConfirmCards(tp,cg)
-		Duel.ShuffleDeck(1-tp)
 	end
 end
