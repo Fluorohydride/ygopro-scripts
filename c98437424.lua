@@ -16,7 +16,7 @@ function c98437424.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c98437424.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp
+	return ep~=tp
 end
 function c98437424.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
