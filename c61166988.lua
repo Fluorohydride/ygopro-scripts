@@ -11,7 +11,7 @@ function c61166988.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c61166988.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_BEAST+RACE_BEASTWARRIOR)
+	return aux.nzdef(c) and c:IsRace(RACE_BEAST+RACE_BEASTWARRIOR)
 end
 function c61166988.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c61166988.filter(chkc) end
