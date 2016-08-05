@@ -20,6 +20,7 @@ function c17092736.cfop(e,tp,eg,ep,ev,re,r,rp)
 	for i=1,ct do
 		t[i]=i
 	end
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(17092736,0))
 	local ac=Duel.AnnounceNumber(p,table.unpack(t))
 	local g=Duel.GetDecktopGroup(1-p,ac)
 	if g:GetCount()>0 then

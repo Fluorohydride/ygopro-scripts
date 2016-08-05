@@ -17,7 +17,7 @@ function c1804528.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c1804528.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g1=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
-	local g2=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
+	local g2=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
 	local opt=0
 	if g1:GetCount()>0 and g2:GetCount()>0 then
 		opt=Duel.SelectOption(1-tp,aux.Stringid(1804528,1),aux.Stringid(1804528,2))
