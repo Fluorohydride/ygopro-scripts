@@ -38,20 +38,21 @@ function c16719140.costfilter(c,e,tp,mg,rlv)
 end
 function c16719140.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	local mg=Duel.GetMatchingGroup(Card.IsReleasableByEffect,tp,LOCATION_MZONE,0,c)
+	local mg=Duel.GetReleaseGroup(tp)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return c:IsReleasableByEffect()
-			and Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
+		if not mg:IsContains(c) then return false end
+		mg:RemoveCard(c)
+		return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
 			and Duel.IsExistingMatchingCard(c16719140.costfilter,tp,LOCATION_DECK,0,1,nil,e,tp,mg,c:GetOriginalLevel())
 	end
 	e:SetLabel(0)
+	mg:RemoveCard(c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c16719140.costfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,mg,c:GetOriginalLevel())
-	local tc=g:GetFirst()
-	Duel.SendtoGrave(tc,REASON_COST)
-	Duel.SetTargetCard(tc)
+	Duel.SendtoGrave(g,REASON_COST)
+	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
 end
 function c16719140.spop1(e,tp,eg,ep,ev,re,r,rp)
@@ -59,14 +60,18 @@ function c16719140.spop1(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<-1 then return end
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) then return end
-	local mg=Duel.GetMatchingGroup(Card.IsReleasableByEffect,tp,LOCATION_MZONE,0,c)
-	local g=mg:SelectWithSumGreater(tp,Card.GetOriginalLevel,tc:GetLevel()-c:GetOriginalLevel())
-	g:AddCard(c)
-	if g:GetCount()>=2 and Duel.Release(g,REASON_EFFECT)~=0 then
-		local spos=0
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then spos=spos+POS_FACEUP_DEFENSE end
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN) then spos=spos+POS_FACEDOWN_DEFENSE end
-		if spos~=0 then Duel.SpecialSummon(tc,0,tp,tp,false,false,spos) end
+	local mg=Duel.GetReleaseGroup(tp)
+	if not mg:IsContains(c) then return end
+	mg:RemoveCard(c)
+	local spos=0
+	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then spos=spos+POS_FACEUP_DEFENSE end
+	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN) then spos=spos+POS_FACEDOWN_DEFENSE end
+	if spos~=0 then
+		local g=mg:SelectWithSumGreater(tp,Card.GetOriginalLevel,tc:GetLevel()-c:GetOriginalLevel())
+		g:AddCard(c)
+		if g:GetCount()>=2 and Duel.Release(g,REASON_EFFECT)~=0 then
+			Duel.SpecialSummon(tc,0,tp,tp,false,false,spos)
+		end
 	end
 end
 function c16719140.spcon(e,tp,eg,ep,ev,re,r,rp)

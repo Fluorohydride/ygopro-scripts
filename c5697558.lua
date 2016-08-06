@@ -20,8 +20,8 @@ function c5697558.initial_effect(c)
 	c:RegisterEffect(e2)
 	--negate attack
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCategory(CATEGORY_POSITION)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e3:SetRange(LOCATION_FZONE)
 	e3:SetCountLimit(1)
@@ -52,16 +52,12 @@ function c5697558.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c5697558.posop(e,tp,eg,ep,ev,re,r,rp,chk)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
-	local g=Duel.GetMatchingGroup(c5697558.filter,tp,LOCATION_MZONE,0,nil)
-	if g:GetCount()>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
-		local sg=g:Select(tp,1,1,nil)
-		local opt=Duel.SelectOption(tp,1156,1155)
-		if opt==0 then
-			Duel.ChangePosition(sg,POS_FACEUP_ATTACK)
-		else
-			Duel.ChangePosition(sg,POS_FACEUP_DEFENSE)
-		end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
+	local g=Duel.SelectMatchingCard(tp,c5697558.filter,tp,LOCATION_MZONE,0,1,1,nil)
+	local tc=g:GetFirst()
+	if tc then
+		local pos=Duel.SelectPosition(tp,tc,POS_FACEUP_ATTACK+POS_FACEUP_DEFENSE)
+		Duel.ChangePosition(tc,pos)
 	end
 end
 function c5697558.condition(e,tp,eg,ep,ev,re,r,rp)
@@ -73,16 +69,12 @@ function c5697558.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c5697558.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
-	local g=Duel.GetMatchingGroup(c5697558.filter,tp,LOCATION_MZONE,0,nil)
-	if g:GetCount()>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
-		local sg=g:Select(tp,1,1,nil)
-		local opt=Duel.SelectOption(tp,1156,1155)
-		local pos=POS_FACEUP_ATTACK
-		if opt==1 then
-			pos=POS_FACEUP_DEFENSE
-		end
-		if Duel.ChangePosition(sg,pos)~=0 and Duel.SelectYesNo(tp,aux.Stringid(5697558,2)) then
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
+	local g=Duel.SelectMatchingCard(tp,c5697558.filter,tp,LOCATION_MZONE,0,1,1,nil)
+	local tc=g:GetFirst()
+	if tc then
+		local pos=Duel.SelectPosition(tp,tc,POS_FACEUP_ATTACK+POS_FACEUP_DEFENSE)
+		if Duel.ChangePosition(tc,pos)~=0 and Duel.SelectYesNo(tp,aux.Stringid(5697558,2)) then
 			Duel.BreakEffect()
 			Duel.NegateAttack()
 		end
