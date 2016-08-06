@@ -21,8 +21,9 @@ function c66926224.dfilter(c)
 end
 function c66926224.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.IsExistingMatchingCard(nil,tp,LOCATION_HAND,LOCATION_HAND,1,c)
-		or Duel.IsExistingMatchingCard(c66926224.dfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c) end
+	if chk==0 then return Duel.IsExistingMatchingCard(nil,tp,LOCATION_HAND,0,1,c)
+		and Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0
+		and Duel.IsExistingMatchingCard(c66926224.dfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c) end
 	local g=Duel.GetMatchingGroup(c66926224.dfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,c)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,PLAYER_ALL,1)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
