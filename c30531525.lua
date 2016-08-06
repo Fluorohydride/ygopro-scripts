@@ -19,6 +19,7 @@ function c30531525.filter(c,e,tp)
 end
 function c30531525.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>3
 		and Duel.IsExistingMatchingCard(c30531525.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 end
 function c30531525.activate(e,tp,eg,ep,ev,re,r,rp)
