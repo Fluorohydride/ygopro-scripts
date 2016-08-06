@@ -50,7 +50,6 @@ function c25629622.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,tc)
 	end
 end
 function c25629622.limop(e,tp,eg,ep,ev,re,r,rp)
@@ -59,17 +58,15 @@ end
 function c25629622.chlimit(e,rp,tp)
 	return tp==rp or e:IsActiveType(TYPE_MONSTER)
 end
-function c25629622.cfilter(c)
+function c25629622.setfilter(c)
 	return c:IsSetCard(0x20ec) and c:IsType(TYPE_SPELL) and c:IsSSetable()
 end
 function c25629622.settg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>-1
-		and Duel.IsExistingMatchingCard(c25629622.cfilter,tp,LOCATION_DECK,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c25629622.setfilter,tp,LOCATION_DECK,0,1,nil) end
 end
 function c25629622.setop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-	local g=Duel.SelectMatchingCard(tp,c25629622.cfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c25629622.setfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		local c=e:GetHandler()
 		local tc=g:GetFirst()

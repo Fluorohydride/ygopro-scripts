@@ -11,7 +11,7 @@ function c52240819.initial_effect(c)
 	e1:SetRange(LOCATION_PZONE)
 	e1:SetCountLimit(1)
 	e1:SetCost(c52240819.atkcost1)
-	e1:SetTarget(c52240819.atktg)
+	e1:SetTarget(c52240819.atktg1)
 	e1:SetOperation(c52240819.atkop1)
 	c:RegisterEffect(e1)
 	--atk down (summon)
@@ -20,8 +20,7 @@ function c52240819.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)
-	e2:SetCondition(c52240819.atkcon2)
-	e2:SetTarget(c52240819.atktg)
+	e2:SetTarget(c52240819.atktg2)
 	e2:SetOperation(c52240819.atkop2)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
@@ -43,11 +42,11 @@ function c52240819.atkcost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(g:GetFirst():GetBaseAttack())
 	Duel.Release(g,REASON_COST)
 end
-function c52240819.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c52240819.atktg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsFaceup() end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
+	Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
 end
 function c52240819.atkop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -64,8 +63,12 @@ end
 function c52240819.atkfilter(c)
 	return c:IsSetCard(0x10ec) and c:IsFaceup()
 end
-function c52240819.atkcon2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetMatchingGroupCount(c52240819.atkfilter,tp,LOCATION_MZONE,0,nil)>0
+function c52240819.atktg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsFaceup() end
+	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil)
+		and Duel.IsExistingMatchingCard(c52240819.atkfilter,tp,LOCATION_MZONE,0,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+	Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
 end
 function c52240819.atkop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -85,8 +88,7 @@ function c52240819.cfilter(c)
 end
 function c52240819.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c52240819.cfilter(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingMatchingCard(c52240819.cfilter,tp,LOCATION_GRAVE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c52240819.cfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local g=Duel.SelectTarget(tp,c52240819.cfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)

@@ -18,7 +18,7 @@ function c51391183.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1)
-	e2:SetCondition(c51391183.atkcon)
+	e2:SetTarget(c51391183.atktg)
 	e2:SetOperation(c51391183.atkop)
 	c:RegisterEffect(e2)
 	--to hand
@@ -70,13 +70,14 @@ end
 function c51391183.atkfilter(c)
 	return c:IsSetCard(0x10ec) and c:IsFaceup()
 end
-function c51391183.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetMatchingGroupCount(c51391183.atkfilter,tp,LOCATION_ONFIELD,0,nil)>0
+function c51391183.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsExistingMatchingCard(c51391183.atkfilter,tp,LOCATION_MZONE,0,1,nil) end
 end
 function c51391183.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	local g=Duel.GetMatchingGroup(c51391183.atkfilter,tp,LOCATION_MZONE,0,nil)
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		local atkval=Duel.GetMatchingGroupCount(c51391183.atkfilter,tp,LOCATION_MZONE,0,nil)*100
+		local atkval=g:GetClassCount(Card.GetCode)*100
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

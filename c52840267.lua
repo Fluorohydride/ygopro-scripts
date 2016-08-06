@@ -74,6 +74,7 @@ function c52840267.cptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	te:SetLabelObject(e:GetLabelObject())
 	e:SetLabelObject(te)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,nil,0,0,0)
 end
 function c52840267.cpop(e,tp,eg,ep,ev,re,r,rp)
 	local te=e:GetLabelObject()

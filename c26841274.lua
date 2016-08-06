@@ -28,7 +28,7 @@ function c26841274.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			local ce=Duel.GetChainMaterial(tp)
 			if ce~=nil then
 				local fgroup=ce:GetTarget()
-				local mg2=fgroup(ce,e,tp)
+				local mg2=fgroup(ce,e,tp):Filter(c26841274.filter3,nil)
 				local mf=ce:GetValue()
 				res=Duel.IsExistingMatchingCard(c26841274.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
 			end

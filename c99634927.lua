@@ -20,7 +20,7 @@ function c99634927.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)
-	e2:SetCondition(c99634927.atkcon2)
+	e2:SetTarget(c99634927.atktg2)
 	e2:SetOperation(c99634927.atkop2)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
@@ -54,7 +54,7 @@ function c99634927.atktg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c99634927.atkfilter2(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c99634927.atkfilter2,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,c99634927.atkfilter2,tp,LOCATION_MZONE,0,1,1,nil)
+	Duel.SelectTarget(tp,c99634927.atkfilter2,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function c99634927.atkop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -68,8 +68,8 @@ function c99634927.atkop1(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 	end
 end
-function c99634927.atkcon2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetMatchingGroupCount(c99634927.atkfilter2,tp,LOCATION_MZONE,0,nil)>0
+function c99634927.atktg2(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsExistingMatchingCard(c99634927.atkfilter2,tp,LOCATION_MZONE,0,1,nil) end
 end
 function c99634927.atkop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -79,7 +79,7 @@ function c99634927.atkop2(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(atkval)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 	end
 end

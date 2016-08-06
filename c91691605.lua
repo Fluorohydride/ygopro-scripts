@@ -24,9 +24,8 @@ function c91691605.filter(c,e,tp,atk)
 	return c:IsSetCard(0xc008) and c:IsAttackBelow(atk) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c91691605.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local atk=e:GetHandler():GetAttack()
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c91691605.filter,tp,LOCATION_HAND,0,1,nil,e,tp,atk) end
+		and Duel.IsExistingMatchingCard(c91691605.filter,tp,LOCATION_HAND,0,1,nil,e,tp,e:GetHandler():GetAttack()) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c91691605.operation(e,tp,eg,ep,ev,re,r,rp)

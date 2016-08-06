@@ -83,8 +83,8 @@ end
 function c26964762.filter(c)
 	return c:GetType()==TYPE_SPELL
 end
-function c26964762.decktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>1
+function c26964762.decktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)>0
 		and Duel.IsExistingMatchingCard(c26964762.filter,tp,LOCATION_DECK,0,1,nil) end
 end
 function c26964762.deckop(e,tp,eg,ep,ev,re,r,rp)

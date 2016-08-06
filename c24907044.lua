@@ -11,6 +11,7 @@ function c24907044.initial_effect(c)
 	e1:SetRange(LOCATION_PZONE)
 	e1:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)
 	e1:SetCondition(c24907044.atkcon1)
+	e1:SetTarget(c24907044.atktg1)
 	e1:SetOperation(c24907044.atkop1)
 	c:RegisterEffect(e1)
 	--to hand
@@ -46,6 +47,10 @@ function c24907044.atkcon1(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	return ep==tp and a:IsControler(1-tp) and a:IsFaceup() and a:IsRelateToBattle()
 end
+function c24907044.atktg1(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
+end
 function c24907044.atkop1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
 	if tc:IsFaceup() and tc:IsControler(1-tp) and tc:IsRelateToBattle() then
@@ -63,6 +68,7 @@ end
 function c24907044.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c24907044.thfilter,tp,LOCATION_EXTRA,0,1,nil,ev) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_EXTRA)
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c24907044.thop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
@@ -99,14 +105,12 @@ function c24907044.cfilter(c)
 	return c:IsSetCard(0x20ec) and c:IsType(TYPE_SPELL) and c:IsSSetable()
 end
 function c24907044.settg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingMatchingCard(c24907044.cfilter,tp,LOCATION_DECK,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c24907044.cfilter,tp,LOCATION_DECK,0,1,nil) end
 end
 function c24907044.setop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local g=Duel.SelectMatchingCard(tp,c24907044.cfilter,tp,LOCATION_DECK,0,1,1,nil)
-	if g:GetCount()>0 and g:GetFirst():IsSSetable() then
+	if g:GetCount()>0 then
 		Duel.SSet(tp,g)
 		Duel.ConfirmCards(1-tp,g)
 	end
