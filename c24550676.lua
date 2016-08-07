@@ -8,7 +8,7 @@ function c24550676.initial_effect(c)
 	e0:SetType(EFFECT_TYPE_SINGLE)
 	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e0:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e0:SetValue(c24550676.splimit)
+	e0:SetValue(aux.fuslimit)
 	c:RegisterEffect(e0)
 	--Immune
 	local e1=Effect.CreateEffect(c)
@@ -39,9 +39,6 @@ function c24550676.initial_effect(c)
 	e4:SetTarget(c24550676.target)
 	e4:SetOperation(c24550676.operation)
 	c:RegisterEffect(e4)
-end
-function c24550676.splimit(e,se,sp,st)
-	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
 end
 function c24550676.tgvalue(e,re,rp)
 	return rp~=e:GetHandlerPlayer()
