@@ -20,6 +20,7 @@ function c19048328.initial_effect(c)
 	c:RegisterEffect(e2)
 	--search
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(19048328,0))
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
@@ -30,6 +31,7 @@ function c19048328.initial_effect(c)
 	c:RegisterEffect(e3)
 	--spsummon
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(19048328,1))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_DESTROYED)
@@ -66,6 +68,28 @@ function c19048328.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(c19048328.aclimit)
 	e1:SetLabelObject(e:GetLabelObject())
 	c:RegisterEffect(e1)
+	local att=e:GetLabelObject():GetLabel()
+	if bit.band(att,ATTRIBUTE_EARTH)~=0 then
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(19048328,2))
+	end
+	if bit.band(att,ATTRIBUTE_WATER)~=0 then
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(19048328,3))
+	end
+	if bit.band(att,ATTRIBUTE_FIRE)~=0 then
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(19048328,4))
+	end
+	if bit.band(att,ATTRIBUTE_WIND)~=0 then
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(19048328,5))
+	end
+	if bit.band(att,ATTRIBUTE_LIGHT)~=0 then
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(19048328,6))
+	end
+	if bit.band(att,ATTRIBUTE_DARK)~=0 then
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(19048328,7))
+	end
+	if bit.band(att,ATTRIBUTE_DEVINE)~=0 then
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(19048328,8))
+	end
 end
 function c19048328.aclimit(e,re,tp)
 	local att=e:GetLabelObject():GetLabel()

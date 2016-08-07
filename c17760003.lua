@@ -49,6 +49,7 @@ function c17760003.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c17760003.operation1)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(17760003,3))
 	end
 	if bit.band(att,ATTRIBUTE_WATER)~=0 then
 		local e1=Effect.CreateEffect(c)
@@ -63,6 +64,7 @@ function c17760003.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c17760003.operation2)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(17760003,4))
 	end
 	if bit.band(att,ATTRIBUTE_DARK)~=0 then
 		local e1=Effect.CreateEffect(c)
@@ -77,6 +79,7 @@ function c17760003.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c17760003.operation3)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(17760003,5))
 	end
 end
 function c17760003.cost(e,tp,eg,ep,ev,re,r,rp,chk)
