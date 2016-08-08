@@ -50,11 +50,11 @@ function c50179591.rmcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsContains(tc) and tc:GetFlagEffect(50179591)~=0
 end
 function c50179591.rmop1(e,tp,eg,ep,ev,re,r,rp)
-	local ct=Duel.GetFieldGroupCount(tp,0,LOCATION_EXTRA)
-	if ct<3 then return end
+	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_EXTRA,nil)
+	if g:GetCount()<3 then return end
 	Duel.Hint(HINT_CARD,0,50179591)
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_REMOVE)
-	local mg=g:FilterSelect(1-tp,Card.IsAbleToRemove,ct,ct,nil)
+	local mg=g:Select(1-tp,3,3,nil)
 	if mg:GetCount()>0 then
 		Duel.Remove(mg,POS_FACEUP,REASON_EFFECT)
 	end

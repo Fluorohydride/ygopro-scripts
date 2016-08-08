@@ -14,7 +14,7 @@ end
 function c50501121.costfilter(c)
 	return c:IsSetCard(0xef)
 		and c:IsType(TYPE_MONSTER) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsAbleToGraveAsCost()
-		and Duel.IsExistingMatchingCard(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
+		and Duel.IsExistingMatchingCard(nil,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 end
 function c50501121.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c50501121.costfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil) end
