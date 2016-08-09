@@ -21,7 +21,7 @@ function c21558682.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c21558682.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer() and Duel.GetAttackTarget()~=nil
+	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()~=nil
 end
 function c21558682.filter(c,atg)
 	return c:IsFaceup() and c:IsCode(31709826) and atg:IsContains(c)
@@ -34,7 +34,7 @@ function c21558682.atktg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	if chk==0 then return true end
 	e:SetProperty(0)
-	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer() then
+	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and Duel.GetAttacker():IsControler(1-tp) then
 		local at=Duel.GetAttackTarget()
 		local atg=Duel.GetAttacker():GetAttackableTarget()
 		if at and Duel.IsExistingTarget(c21558682.filter,tp,LOCATION_MZONE,0,1,at,atg)

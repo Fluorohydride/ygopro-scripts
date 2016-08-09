@@ -24,7 +24,7 @@ function c88482761.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c88482761.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c88482761.rmfilter1(c,e,tp)
 	return c:IsSetCard(0x2016) and c:IsAbleToRemove()

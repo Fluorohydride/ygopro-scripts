@@ -12,7 +12,7 @@ function c37507488.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c37507488.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==1-tp
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c37507488.filter(c)
 	return c:IsAbleToHand()

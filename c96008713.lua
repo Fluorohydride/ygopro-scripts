@@ -12,7 +12,7 @@ function c96008713.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c96008713.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer() and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)>0
+	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)>0
 end
 function c96008713.filter(c)
 	return c:IsFaceup() and c:IsControlerCanBeChanged()

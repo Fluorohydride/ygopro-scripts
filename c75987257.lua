@@ -23,7 +23,7 @@ function c75987257.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c75987257.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c75987257.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.GetAttacker()

@@ -11,7 +11,7 @@ function c56051648.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c56051648.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer() and Duel.GetAttackTarget()==nil
+	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
 		and Duel.IsExistingMatchingCard(Card.IsRace,tp,LOCATION_GRAVE,0,3,nil,RACE_INSECT)
 end
 function c56051648.target(e,tp,eg,ep,ev,re,r,rp,chk)

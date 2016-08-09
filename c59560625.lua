@@ -21,7 +21,7 @@ function c59560625.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c59560625.condition1(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer()
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c59560625.filter1(c,e)
 	return c:IsCanBeEffectTarget(e)

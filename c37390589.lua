@@ -23,7 +23,7 @@ function c37390589.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 			return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup()
 		else return false end
 	end
-	local b1=Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and Duel.GetTurnPlayer()~=tp
+	local b1=Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and Duel.GetAttacker():IsControler(1-tp)
 		and Duel.GetAttacker():IsLocation(LOCATION_MZONE) and Duel.GetAttacker():IsCanBeEffectTarget(e)
 	local b2=Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil)
 	if chk==0 then return b1 or b2 end

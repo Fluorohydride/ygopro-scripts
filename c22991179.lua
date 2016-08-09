@@ -19,7 +19,7 @@ function c22991179.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c22991179.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer()
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c22991179.cfilter(c)
 	return c:IsRace(RACE_INSECT) and c:IsAbleToRemoveAsCost()
