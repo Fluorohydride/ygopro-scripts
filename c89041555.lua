@@ -11,7 +11,8 @@ function c89041555.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c89041555.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer() and bit.band(eg:GetFirst():GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+	local tc=eg:GetFirst()
+	return tc:IsControler(1-tp) and bit.band(tc:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
 end
 function c89041555.filter(c)
 	return c:IsAttackPos()

@@ -10,7 +10,7 @@ function c97970833.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c97970833.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer()
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c97970833.filter(c,tp)
 	return c:IsCode(34487429) and c:GetActivateEffect():IsActivatable(tp)

@@ -22,13 +22,13 @@ function c4483989.initial_effect(c)
 end
 function c4483989.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttackTarget()
-	return tp~=Duel.GetTurnPlayer() and at and at:IsPosition(POS_FACEUP_DEFENSE)
+	return at and Duel.GetAttacker():IsControler(1-tp) and at:IsPosition(POS_FACEUP_DEFENSE)
 end
 function c4483989.atktg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	e:SetLabel(0)
 	local at=Duel.GetAttackTarget()
-	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer()
+	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and Duel.GetAttacker():IsControler(1-tp)
 		and at and at:IsPosition(POS_FACEUP_DEFENSE) then
 		e:SetLabel(1)
 		Duel.GetAttacker():CreateEffectRelation(e)

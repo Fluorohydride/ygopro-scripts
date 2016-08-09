@@ -10,7 +10,7 @@ function c9201964.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c9201964.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer() and Duel.GetAttackTarget()==nil
+	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end
 function c9201964.cfilter(c)
 	return c:IsSetCard(0xc008) and c:IsAbleToRemoveAsCost()

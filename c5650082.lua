@@ -11,10 +11,10 @@ function c5650082.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c5650082.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c5650082.filter(c)
-	return c:IsAttackPos() and c:IsAbleToHand()
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsAbleToHand()
 end
 function c5650082.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c5650082.filter,tp,0,LOCATION_MZONE,1,nil) end

@@ -46,7 +46,7 @@ function c44046281.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c44046281.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and Duel.GetAttackTarget()==nil
+	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end
 function c44046281.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

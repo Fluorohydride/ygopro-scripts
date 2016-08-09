@@ -17,7 +17,7 @@ function c96427353.cfilter(c)
 	return c:IsSetCard(0x2b) and c:IsType(TYPE_MONSTER)
 end
 function c96427353.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and Duel.GetAttackTarget()==nil
+	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
 		and Duel.IsExistingMatchingCard(c96427353.cfilter,tp,LOCATION_GRAVE,0,1,e:GetHandler())
 end
 function c96427353.cost(e,tp,eg,ep,ev,re,r,rp,chk)

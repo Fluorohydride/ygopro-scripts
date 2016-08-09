@@ -15,7 +15,7 @@ function c97705809.cfilter(c)
 	return c:IsFacedown() or not c:IsSetCard(0x16) or not c:IsRace(RACE_MACHINE)
 end
 function c97705809.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)~=0
+	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)~=0
 		and not Duel.IsExistingMatchingCard(c97705809.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c97705809.target(e,tp,eg,ep,ev,re,r,rp,chk)

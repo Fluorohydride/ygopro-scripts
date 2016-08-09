@@ -28,7 +28,7 @@ function c7864030.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c7864030.condition1(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_GRAVE,0,1,nil,TYPE_SPELL+TYPE_TRAP)
+	return Duel.GetAttacker():IsControler(1-tp) and not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_GRAVE,0,1,nil,TYPE_SPELL+TYPE_TRAP)
 end
 function c7864030.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
@@ -53,7 +53,7 @@ function c7864030.operation1(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c7864030.condition2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and Duel.GetAttackTarget()~=e:GetHandler()
+	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()~=e:GetHandler()
 end
 function c7864030.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
