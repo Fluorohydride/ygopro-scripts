@@ -38,7 +38,7 @@ function c60417395.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c60417395.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c60417395.cfilter1(c)
 	return c:IsFaceup() and c:IsRace(RACE_FIEND) and c:IsAbleToGraveAsCost()
@@ -62,13 +62,9 @@ function c60417395.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c60417395.spop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)~=0 then
-		c:CompleteProcedure()
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	if e:GetHandler():IsRelateToEffect(e) and Duel.SpecialSummon(e:GetHandler(),0,tp,tp,true,false,POS_FACEUP)~=0 then
+		e:GetHandler():CompleteProcedure()
 	end
 end
 function c60417395.filter(c)

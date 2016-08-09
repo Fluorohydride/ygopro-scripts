@@ -13,7 +13,7 @@ function c7617253.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c7617253.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer()
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c7617253.costfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x1034) and c:IsAbleToGraveAsCost()

@@ -31,12 +31,12 @@ function c21598948.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c21598948.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer()
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c21598948.atktg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	e:SetLabel(0)
-	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer() then
+	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and Duel.GetAttacker():IsControler(1-tp) then
 		e:SetLabel(1)
 		Duel.SetTargetCard(Duel.GetAttacker())
 		Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)
@@ -68,9 +68,9 @@ function c21598948.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c21598948.mtop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.CheckLPCost(tp,500) and Duel.SelectYesNo(tp,aux.Stringid(21598948,1)) then
+	if Duel.GetLP(tp)>500 and Duel.SelectYesNo(tp,aux.Stringid(21598948,1)) then
 		Duel.PayLPCost(tp,500)
 	else
-		Duel.Destroy(e:GetHandler(),REASON_COST)
+		Duel.Destroy(e:GetHandler(),REASON_RULE)
 	end
 end

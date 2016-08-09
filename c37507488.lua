@@ -12,7 +12,7 @@ function c37507488.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c37507488.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==1-tp
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c37507488.filter(c)
 	return c:IsAbleToHand()
@@ -33,7 +33,7 @@ end
 function c37507488.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0
-		and tc:IsLocation(LOCATION_HAND) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c37507488.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)

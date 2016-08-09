@@ -11,7 +11,7 @@ function c96700602.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c96700602.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c96700602.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsType,1,nil,TYPE_SYNCHRO) end
@@ -23,15 +23,15 @@ function c96700602.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=eg:GetFirst()
 	if tc:IsLocation(LOCATION_MZONE) then
 		Duel.SetTargetCard(tc)
-		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,tc:GetDefense())
+		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,tc:GetDefence())
 	end
 end
 function c96700602.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local g=Duel.GetMatchingGroup(Card.IsAttackPos,tp,0,LOCATION_MZONE,nil)
-	if Duel.ChangePosition(g,POS_FACEUP_DEFENSE,POS_FACEDOWN_DEFENSE,0,0)~=0 then
+	if Duel.ChangePosition(g,POS_FACEUP_DEFENCE,POS_FACEDOWN_DEFENCE,0,0)~=0 then
 		if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-			Duel.Damage(1-tp,tc:GetDefense(),REASON_EFFECT)
+			Duel.Damage(1-tp,tc:GetDefence(),REASON_EFFECT)
 		end
 	end
 end

@@ -7,10 +7,10 @@ function c36378044.initial_effect(c)
 	e1:SetTarget(c36378044.atktg1)
 	e1:SetOperation(c36378044.atkop)
 	c:RegisterEffect(e1)
-	--coin
+	--atk change
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(36378044,0))
-	e2:SetCategory(CATEGORY_DRAW+CATEGORY_DESTROY+CATEGORY_COIN)
+	e2:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_COIN)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e2:SetRange(LOCATION_SZONE)
@@ -21,19 +21,18 @@ function c36378044.initial_effect(c)
 	c:RegisterEffect(e2)
 	--life lost
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
+	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e3:SetCode(EVENT_DESTROYED)
-	e3:SetCondition(c36378044.descon)
 	e3:SetOperation(c36378044.desop)
 	c:RegisterEffect(e3)
 end
 function c36378044.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer()
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c36378044.atktg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	e:SetLabel(0)
-	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer()
+	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and Duel.GetAttacker():IsControler(1-tp)
 		and Duel.SelectYesNo(tp,aux.Stringid(36378044,1)) then
 		e:SetLabel(1)
 		Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,3)
@@ -54,11 +53,12 @@ function c36378044.atkop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 	end
 end
-function c36378044.descon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
-end
 function c36378044.desop(e,tp,eg,ep,ev,re,r,rp)
-	local lp=Duel.GetLP(tp)
-	Duel.SetLP(tp,lp-6000)
+	local c=e:GetHandler()
+	if c:GetPreviousControler()==tp and c:IsStatus(STATUS_ACTIVATED) then
+		local lp=Duel.GetLP(tp)
+		if lp>6000 then lp=lp-6000
+		else lp=0 end
+		Duel.SetLP(tp,lp)
+	end
 end

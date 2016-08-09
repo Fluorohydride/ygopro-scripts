@@ -14,7 +14,7 @@ function c14430063.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c14430063.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPosition(POS_FACEUP_ATTACK) and Duel.GetTurnPlayer()~=tp
+	return e:GetHandler():IsPosition(POS_FACEUP_ATTACK) and Duel.GetAttacker():IsControler(1-tp)
 end
 function c14430063.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end

@@ -12,7 +12,7 @@ function c70342110.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c70342110.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer()
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c70342110.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.GetAttacker()

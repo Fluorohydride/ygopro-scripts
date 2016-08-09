@@ -23,10 +23,10 @@ end
 function c56339050.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc==Duel.GetAttacker() end
 	if chk==0 then return true end
-	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and Duel.GetTurnPlayer()~=tp then
+	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) then
 		local tc=Duel.GetAttacker()
-		if Duel.IsExistingMatchingCard(c56339050.cfilter,tp,LOCATION_MZONE,0,1,nil,tc:GetAttack())
-			and tc:IsOnField() and tc:IsCanBeEffectTarget(e) then
+		if tc:IsControler(1-tp) and Duel.IsExistingMatchingCard(c56339050.cfilter,tp,LOCATION_MZONE,0,1,nil,tc:GetAttack())
+			and tc:IsOnField() and tc:IsCanBeEffectTarget(e) and tc:IsDestructable() then
 			e:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 			e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 			Duel.SetTargetCard(tc)
@@ -55,12 +55,13 @@ function c56339050.cfilter(c,atk)
 end
 function c56339050.condition2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
-	return Duel.GetTurnPlayer()~=tp and Duel.IsExistingMatchingCard(c56339050.cfilter,tp,LOCATION_MZONE,0,1,nil,tc:GetAttack())
+	return tc:IsControler(1-tp) and Duel.IsExistingMatchingCard(c56339050.cfilter,tp,LOCATION_MZONE,0,1,nil,tc:GetAttack())
 end
 function c56339050.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tc=Duel.GetAttacker()
 	if chkc then return chkc==tc end
-	if chk==0 then return e:GetHandler():GetFlagEffect(56339050)==0	and tc:IsOnField() and tc:IsCanBeEffectTarget(e) end
+	if chk==0 then return e:GetHandler():GetFlagEffect(56339050)==0
+		and tc:IsOnField() and tc:IsCanBeEffectTarget(e) and tc:IsDestructable() end
 	Duel.SetTargetCard(tc)
 	local dam=tc:GetAttack()/2
 	Duel.SetTargetParam(dam)

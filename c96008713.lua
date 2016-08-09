@@ -12,7 +12,7 @@ function c96008713.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c96008713.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer() and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)>0
+	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)>0
 end
 function c96008713.filter(c)
 	return c:IsFaceup() and c:IsControlerCanBeChanged()
@@ -28,8 +28,12 @@ end
 function c96008713.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local a=Duel.GetAttacker()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and Duel.GetControl(tc,tp,PHASE_BATTLE,1)~=0 then
-		if a:IsAttackable() and not a:IsImmuneToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		if not Duel.GetControl(tc,tp,PHASE_BATTLE,1) then
+			if not tc:IsImmuneToEffect(e) and tc:IsAbleToChangeControler() then
+				Duel.Destroy(tc,REASON_EFFECT)
+			end
+		elseif a:IsAttackable() and not a:IsImmuneToEffect(e) then
 			Duel.CalculateDamage(a,tc)
 		end
 	end

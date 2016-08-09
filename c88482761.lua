@@ -24,7 +24,7 @@ function c88482761.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c88482761.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c88482761.rmfilter1(c,e,tp)
 	return c:IsSetCard(0x2016) and c:IsAbleToRemove()
@@ -61,7 +61,8 @@ function c88482761.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c88482761.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and Duel.GetCurrentPhase()==PHASE_BATTLE_STEP
+	return Duel.GetTurnPlayer()~=tp and Duel.GetCurrentPhase()==PHASE_BATTLE
+		and not Duel.CheckTiming(TIMING_BATTLE_START+TIMING_BATTLE_END)
 end
 function c88482761.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
@@ -88,7 +89,7 @@ function c88482761.atkop(e,tp,eg,ep,ev,re,r,rp)
 		if c1~=e:GetLabelObject() then c1,c2=c2,c1 end
 		if c1:IsControler(1-tp) and c1:IsPosition(POS_FACEUP_ATTACK) and not c1:IsImmuneToEffect(e)
 			and c2:IsControler(tp) then
-			Duel.CalculateDamage(c1,c2,true)
+			Duel.CalculateDamage(c1,c2)
 		end
 	end
 end

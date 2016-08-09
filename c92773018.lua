@@ -22,7 +22,7 @@ function c92773018.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c92773018.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer()
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c92773018.cfilter(c)
 	return c:IsFaceup() and (c:IsCode(70095154) or aux.IsMaterialListCode(c,70095154)) and c:IsAbleToGraveAsCost()
@@ -37,9 +37,9 @@ function c92773018.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc==Duel.GetAttacker() end
 	if chk==0 then return true end
 	local tg=Duel.GetAttacker()
-	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer()
+	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and Duel.GetAttacker():IsControler(1-tp)
 		and Duel.IsExistingMatchingCard(c92773018.cfilter,tp,LOCATION_MZONE,0,1,nil)
-		and tg:IsOnField() and tg:IsCanBeEffectTarget(e)
+		and tg:IsOnField() and tg:IsDestructable() and tg:IsCanBeEffectTarget(e)
 		and Duel.SelectYesNo(tp,aux.Stringid(92773018,1)) then
 		e:SetCategory(CATEGORY_DESTROY)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -57,7 +57,7 @@ function c92773018.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.GetAttacker()
 	if chkc then return chkc==tg end
 	if chk==0 then return not e:GetHandler():IsStatus(STATUS_CHAINING)
-		and tg:IsOnField() and tg:IsCanBeEffectTarget(e) end
+		and tg:IsOnField() and tg:IsDestructable() and tg:IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(tg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tg,1,0,0)
 end

@@ -21,7 +21,7 @@ function c59560625.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c59560625.condition1(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer()
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c59560625.filter1(c,e)
 	return c:IsCanBeEffectTarget(e)
@@ -37,7 +37,7 @@ function c59560625.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c59560625.activate1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and not Duel.GetAttacker():IsImmuneToEffect(e) then
+	if tc:IsRelateToEffect(e) then
 		Duel.ChangeAttackTarget(tc)
 	end
 end

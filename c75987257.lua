@@ -23,12 +23,12 @@ function c75987257.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c75987257.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c75987257.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.GetAttacker()
 	if chkc then return chkc==tg end
-	if chk==0 then return tg:IsOnField() and tg:IsCanBeEffectTarget(e) end
+	if chk==0 then return tg:IsOnField() and tg:IsDestructable() and tg:IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(tg)
 end
 function c75987257.operation(e,tp,eg,ep,ev,re,r,rp)
@@ -36,7 +36,7 @@ function c75987257.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsLocation(LOCATION_SZONE) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsAttackable() and not tc:IsStatus(STATUS_ATTACK_CANCELED) then
-		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)
+		Duel.ChangePosition(tc,POS_FACEUP_DEFENCE)
 		if c:IsRelateToEffect(e) then
 			Duel.Equip(tp,c,tc)
 			c:CancelToGrave()
@@ -57,13 +57,13 @@ function c75987257.eqlimit(e,c)
 end
 function c75987257.poscon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	return ph>=PHASE_MAIN1 and ph<=PHASE_MAIN2 and e:GetHandler():GetEquipTarget()
+	return (ph==PHASE_MAIN1 or ph==PHASE_BATTLE or ph==PHASE_MAIN2) and e:GetHandler():GetEquipTarget()
 end
 function c75987257.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local ec=c:GetEquipTarget()
 	if ec then
-		Duel.ChangePosition(ec,POS_FACEUP_DEFENSE,0,POS_FACEUP_ATTACK,0)
+		Duel.ChangePosition(ec,POS_FACEUP_DEFENCE,0,POS_FACEUP_ATTACK,0)
 	end
 end

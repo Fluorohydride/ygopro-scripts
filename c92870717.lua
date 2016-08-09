@@ -25,10 +25,10 @@ function c92870717.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c92870717.descon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c92870717.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return e:GetHandler():IsDestructable() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 end
 function c92870717.desop(e,tp,eg,ep,ev,re,r,rp)
@@ -43,7 +43,7 @@ function c92870717.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c92870717.spfilter(c,e,tp)
 	return c:IsAttackBelow(2000) and c:IsRace(RACE_WARRIOR+RACE_SPELLCASTER)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENCE)
 end
 function c92870717.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c92870717.spfilter(chkc,e,tp) end
@@ -56,7 +56,7 @@ end
 function c92870717.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
+		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENCE)
 		Duel.ConfirmCards(1-tp,tc)
 	end
 end
