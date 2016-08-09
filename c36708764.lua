@@ -11,7 +11,7 @@ function c36708764.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c36708764.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttacker():IsControler(1-tp)
+	return ep~=tp
 end
 function c36708764.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

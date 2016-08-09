@@ -11,35 +11,41 @@ function c22047978.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c22047978.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttacker():IsControler(1-tp)
+	return tp~=Duel.GetTurnPlayer()
 end
 function c22047978.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tg=Duel.GetAttacker()
-	if chk==0 then return tg:IsOnField() and tg:IsDestructable() end
+	if chk==0 then return tg:IsOnField() end
 	Duel.SetTargetCard(tg)
 	if Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)==0 then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,tg,1,0,0)
 	end
 end
 function c22047978.cfilter(c)
-	return c:IsType(TYPE_MONSTER) and not c:IsPublic()
+	return not c:IsPublic() and c:IsType(TYPE_MONSTER)
 end
 function c22047978.activate(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsAttackable() and not tc:IsStatus(STATUS_ATTACK_CANCELED) then
+	if Duel.IsChainDisablable(0) then
+		local sel=1
 		local g=Duel.GetMatchingGroup(c22047978.cfilter,1-tp,LOCATION_HAND,0,nil)
-		if g:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(22047978,0)) then
+		Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(22047978,0))
+		if g:GetCount()>0 then
+			sel=Duel.SelectOption(1-tp,1213,1214)
+		else
+			sel=Duel.SelectOption(1-tp,1214)+1
+		end
+		if sel==0 then
 			Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_CONFIRM)
 			local cg=g:Select(1-tp,1,1,nil)
 			Duel.ConfirmCards(tp,cg)
 			Duel.ShuffleHand(1-tp)
-			if Duel.IsChainDisablable(0) then
-				Duel.NegateEffect(0)
-				return
-			end
+			Duel.NegateEffect(0)
+			return
 		end
-		if Duel.Destroy(tc,REASON_EFFECT)>0 then
-			Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE,1)
-		end
+	end
+	local tc=Duel.GetFirstTarget()
+	if tc:IsRelateToEffect(e) and tc:IsAttackable() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
+		and Duel.Destroy(tc,REASON_EFFECT)>0 then
+		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE,1)
 	end
 end

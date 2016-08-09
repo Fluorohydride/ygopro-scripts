@@ -11,7 +11,7 @@ function c92854392.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c92854392.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttacker():IsControler(1-tp)
+	return Duel.GetTurnPlayer()~=tp
 end
 function c92854392.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local at=Duel.GetAttackTarget()
@@ -22,29 +22,22 @@ function c92854392.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c92854392.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		Duel.ChangeAttackTarget(tc)
+	if tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
-		e1:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
+		e1:SetCode(EFFECT_MUST_ATTACK)
 		e1:SetTargetRange(0,LOCATION_MZONE)
 		e1:SetReset(RESET_PHASE+PHASE_BATTLE)
 		Duel.RegisterEffect(e1,tp)
 		local e2=e1:Clone()
-		e2:SetCode(EFFECT_MUST_ATTACK)
+		e2:SetCode(EFFECT_MUST_ATTACK_MONSTER)
 		Duel.RegisterEffect(e2,tp)
 		local e3=Effect.CreateEffect(e:GetHandler())
-		e3:SetType(EFFECT_TYPE_FIELD)
-		e3:SetCode(EFFECT_CANNOT_BE_BATTLE_TARGET)
-		e3:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_IMMUNE)
-		e3:SetTargetRange(LOCATION_MZONE,0)
-		e3:SetTarget(c92854392.attg)
+		e3:SetType(EFFECT_TYPE_SINGLE)
+		e3:SetCode(EFFECT_MUST_BE_ATTACKED)
 		e3:SetValue(1)
-		e3:SetLabel(tc:GetRealFieldID())
-		e3:SetReset(RESET_PHASE+PHASE_BATTLE)
-		Duel.RegisterEffect(e3,tp)
+		e3:SetReset(RESET_PHASE+PHASE_BATTLE+RESET_EVENT+0x1fc0000)
+		tc:RegisterEffect(e3,true)
+		Duel.ChangeAttackTarget(tc)
 	end
-end
-function c92854392.attg(e,c)
-	return c:GetRealFieldID()~=e:GetLabel()
 end
