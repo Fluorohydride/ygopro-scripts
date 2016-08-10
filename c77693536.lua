@@ -112,15 +112,16 @@ end
 function c77693536.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
-function c77693536.eqfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsAbleToChangeControler()
+function c77693536.eqfilter(c,tp)
+	return c:IsFaceup() and c:IsType(TYPE_EFFECT)
+		and (c:IsControler(tp) or c:IsAbleToChangeControler())
 end
 function c77693536.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c77693536.eqfilter(chkc) and chkc~=e:GetHandler() end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c77693536.eqfilter(chkc,tp) and chkc~=e:GetHandler() end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingTarget(c77693536.eqfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler()) end
+		and Duel.IsExistingTarget(c77693536.eqfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler(),tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectTarget(tp,c77693536.eqfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,e:GetHandler())
+	local g=Duel.SelectTarget(tp,c77693536.eqfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,e:GetHandler(),tp)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c77693536.eqop(e,tp,eg,ep,ev,re,r,rp)
