@@ -44,7 +44,7 @@ function c77608643.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp and e:GetHandler():GetFlagEffect(77608643)~=0
 end
 function c77608643.spfilter(c,e,tp)
-	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsCanBeEffectTarget(e)
 end
 function c77608643.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return e:GetLabelObject():IsContains(chkc) and c77608643.spfilter(chkc,e,tp) end
