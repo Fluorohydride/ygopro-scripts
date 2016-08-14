@@ -5,6 +5,7 @@ function c94212438.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_END_PHASE)
+	e1:SetTarget(c94212438.target)
 	c:RegisterEffect(e1)
 	--place card
 	local e2=Effect.CreateEffect(c)
@@ -38,6 +39,15 @@ function c94212438.initial_effect(c)
 	e5:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e5:SetOperation(c94212438.winop)
 	c:RegisterEffect(e5)
+end
+function c94212438.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	if c94212438.condition(e,tp,eg,ep,ev,re,r,rp) and Duel.SelectYesNo(tp,94) then
+		e:SetOperation(c94212438.operation)
+		e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,65)
+	else
+		e:SetOperation(nil)
+	end
 end
 function c94212438.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and e:GetHandler():GetFlagEffect(94212438)<4
