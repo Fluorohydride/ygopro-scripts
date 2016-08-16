@@ -114,7 +114,7 @@ function c85004150.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 	end
 end
 function c85004150.desfilter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c85004150.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

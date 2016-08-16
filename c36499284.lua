@@ -18,7 +18,7 @@ function c36499284.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c36499284.filter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c36499284.filter2(c)
 	return c:IsRace(RACE_BEASTWARRIOR) and c:IsDiscardable()

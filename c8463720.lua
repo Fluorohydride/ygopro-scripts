@@ -28,7 +28,7 @@ function c8463720.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c8463720.filter(c)
-	return c:GetSequence()<5 and c:IsDestructable()
+	return c:GetSequence()<5
 end
 function c8463720.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c8463720.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil) end

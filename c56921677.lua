@@ -14,9 +14,6 @@ end
 function c56921677.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetBattleTarget()~=nil
 end
-function c56921677.filter(c)
-	return c:IsDestructable()
-end
 function c56921677.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local tc=e:GetHandler():GetBattleTarget()

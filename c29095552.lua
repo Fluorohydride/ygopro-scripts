@@ -19,7 +19,7 @@ function c29095552.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c29095552.filter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c29095552.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -11,7 +11,7 @@ function c73507661.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c73507661.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c73507661.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

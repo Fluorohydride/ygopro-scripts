@@ -22,7 +22,7 @@ function c98049038.descon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c98049038.cfilter,tp,LOCATION_MZONE,0,1,e:GetHandler())
 end
 function c98049038.desfilter(c)
-	return c:IsDestructable() and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c98049038.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c98049038.desfilter(chkc) end

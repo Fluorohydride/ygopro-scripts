@@ -39,7 +39,7 @@ function c92901944.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c92901944.desfilter(c)
-	return c:IsFaceup() and not c:IsSetCard(0x24) and c:IsDestructable()
+	return c:IsFaceup() and not c:IsSetCard(0x24)
 end
 function c92901944.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

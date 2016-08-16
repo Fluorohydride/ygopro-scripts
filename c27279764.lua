@@ -14,6 +14,7 @@ function c27279764.initial_effect(c)
 	c:RegisterEffect(e2)
 	--summon with 3 tribute
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(27279764,0))
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e3:SetCode(EFFECT_LIMIT_SUMMON_PROC)
@@ -88,9 +89,5 @@ function c27279764.tgop(e,tp,eg,ep,ev,re,r,rp)
 		local sg=g:Select(1-tp,1,1,nil)
 		Duel.HintSelection(sg)
 		Duel.SendtoGrave(sg,REASON_RULE)
-	else
-		local hg=Duel.GetFieldGroup(1-tp,LOCATION_HAND,0)
-		Duel.ConfirmCards(tp,hg)
-		Duel.ShuffleHand(1-tp)
 	end
 end

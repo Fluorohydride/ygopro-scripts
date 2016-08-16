@@ -17,7 +17,7 @@ function c5616412.condition(e,tp,eg,ep,ev,re,r,rp)
 		and d:IsDefensePos() and d:IsRelateToBattle() and d:GetDefense()>a:GetAttack()
 end
 function c5616412.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetAttacker():IsDestructable() end
+	if chk==0 then return true end
 	Duel.SetTargetCard(Duel.GetAttacker())
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,Duel.GetAttacker(),1,0,0)
 end

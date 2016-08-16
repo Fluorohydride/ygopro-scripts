@@ -45,7 +45,7 @@ function c64550682.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
 end
 function c64550682.desfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x24) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0x24)
 end
 function c64550682.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c64550682.desfilter(chkc) end

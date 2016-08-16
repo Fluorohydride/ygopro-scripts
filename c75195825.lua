@@ -15,7 +15,7 @@ function c75195825.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c75195825.filter(c)
-	return (c:GetSequence()==6 or c:GetSequence()==7) and c:IsDestructable()
+	return (c:GetSequence()==6 or c:GetSequence()==7)
 end
 function c75195825.sctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c75195825.filter(chkc) end

@@ -48,7 +48,7 @@ function c91812341.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c91812341.desfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c91812341.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and c91812341.desfilter(chkc) end

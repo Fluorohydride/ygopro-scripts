@@ -18,7 +18,7 @@ function c86361354.cfilter(c)
 		and Duel.IsExistingMatchingCard(c86361354.dfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,nil,rc)
 end
 function c86361354.dfilter(c,rc)
-	return c:IsFaceup() and c:IsRace(rc) and c:IsDestructable()
+	return c:IsFaceup() and c:IsRace(rc)
 end
 function c86361354.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c86361354.cfilter,tp,LOCATION_HAND,0,1,nil) end

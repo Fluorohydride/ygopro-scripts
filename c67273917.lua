@@ -23,8 +23,7 @@ end
 function c67273917.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local pc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-c:GetSequence())
-	if chk==0 then return c:IsDestructable() and pc:IsDestructable()
-		and Duel.IsExistingMatchingCard(c67273917.filter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c67273917.filter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end
 	local g=Group.FromCards(c,pc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK+LOCATION_GRAVE)

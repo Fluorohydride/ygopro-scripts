@@ -33,7 +33,7 @@ function c32224143.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x8d)
 end
 function c32224143.filter(c,atk)
-	return c:IsFaceup() and c:IsAttackBelow(atk) and c:IsDestructable()
+	return c:IsFaceup() and c:IsAttackBelow(atk)
 end
 function c32224143.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local cg=Duel.GetMatchingGroup(c32224143.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)

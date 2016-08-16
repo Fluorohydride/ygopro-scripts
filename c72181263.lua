@@ -33,11 +33,11 @@ function c72181263.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c72181263.desfilter1(c,tp,ec)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 		and Duel.IsExistingTarget(c72181263.desfilter2,tp,LOCATION_ONFIELD,0,1,c,ec)
 end
 function c72181263.desfilter2(c,ec)
-	return c~=ec and c:IsFaceup() and (c:IsSetCard(0xaf) or c:IsSetCard(0xae)) and c:IsDestructable()
+	return c~=ec and c:IsFaceup() and (c:IsSetCard(0xaf) or c:IsSetCard(0xae))
 end
 function c72181263.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

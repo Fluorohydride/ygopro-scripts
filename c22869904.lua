@@ -19,7 +19,7 @@ function c22869904.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c22869904.cfilter,1,nil,tp)
 end
 function c22869904.filter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c22869904.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c22869904.filter(chkc) end

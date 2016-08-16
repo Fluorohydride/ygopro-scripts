@@ -10,7 +10,7 @@ function c37318031.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c37318031.filter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c37318031.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x3008)

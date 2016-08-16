@@ -77,7 +77,7 @@ end
 function c92408984.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
-	if eg:GetFirst():IsDestructable() then
+	if eg:GetFirst():IsLocation(LOCATION_ONFIELD) then
 		eg:GetFirst():CreateEffectRelation(e)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end

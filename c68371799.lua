@@ -55,7 +55,7 @@ function c68371799.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
 end
 function c68371799.desfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x45) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0x45)
 end
 function c68371799.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsOnField() and c68371799.desfilter(chkc) end

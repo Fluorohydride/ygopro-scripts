@@ -16,7 +16,7 @@ function c30646525.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_RITUAL
 end
 function c30646525.filter(c,atk)
-	return c:IsFaceup() and c:GetDefense()<=atk and c:IsDestructable()
+	return c:IsFaceup() and c:GetDefense()<=atk
 end
 function c30646525.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

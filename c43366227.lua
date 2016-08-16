@@ -69,7 +69,7 @@ function c43366227.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c43366227.cfilter,1,nil,e:GetHandler(),tp)
 end
 function c43366227.desfilter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c43366227.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and  c43366227.desfilter(chkc) end

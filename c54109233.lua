@@ -38,7 +38,7 @@ function c54109233.checkop(e,tp,eg,ep,ev,re,r,rp)
 	eg:GetFirst():RegisterFlagEffect(54109233,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c54109233.filter(c)
-	return c:IsLevelBelow(3) and c:GetFlagEffect(54109233)~=0 and c:IsDestructable()
+	return c:IsLevelBelow(3) and c:GetFlagEffect(54109233)~=0
 end
 function c54109233.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

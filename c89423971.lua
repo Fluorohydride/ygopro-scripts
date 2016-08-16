@@ -85,7 +85,7 @@ function c89423971.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c89423971.filter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c89423971.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

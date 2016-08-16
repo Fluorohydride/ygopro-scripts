@@ -39,7 +39,7 @@ function c64398890.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c64398890.desfilter(c)
-	return c:IsDestructable() and c:IsFacedown()
+	return c:IsFacedown()
 end
 function c64398890.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c64398890.desfilter(chkc) end

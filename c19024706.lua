@@ -27,7 +27,7 @@ function c19024706.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,tc)
 		if tc:IsSetCard(0x3008) and tc:IsType(TYPE_MONSTER) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-			local dg=Duel.SelectMatchingCard(tp,Card.IsDestructable,tp,0,LOCATION_MZONE,1,1,nil)
+			local dg=Duel.SelectMatchingCard(tp,aux.TRUE,tp,0,LOCATION_MZONE,1,1,nil)
 			Duel.Destroy(dg,REASON_EFFECT)
 			if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==0 then
 				Duel.ShuffleHand(tp)

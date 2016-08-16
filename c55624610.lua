@@ -13,7 +13,7 @@ function c55624610.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c55624610.desfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x24) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0x24)
 end
 function c55624610.sfilter(c)
 	return c:IsType(TYPE_TUNER) and c:IsAbleToGrave()

@@ -29,7 +29,7 @@ function c86532744.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,Duel.GetLP(tp)-10)
 end
 function c86532744.filter(c)
-	return c:IsDestructable() and c:IsAbleToRemove()
+	return c:IsAbleToRemove()
 		and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
 end
 function c86532744.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

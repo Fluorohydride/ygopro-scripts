@@ -23,7 +23,7 @@ function c57036718.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(57036718)~=0
 end
 function c57036718.filter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c57036718.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -28,7 +28,7 @@ function c11958188.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c11958188.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetLabelObject():GetReasonCard()
-	if chk==0 then return tc:IsRelateToBattle() and tc:IsDestructable() end
+	if chk==0 then return tc:IsRelateToBattle() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tc,1,0,0)
 end
 function c11958188.desop(e,tp,eg,ep,ev,re,r,rp)

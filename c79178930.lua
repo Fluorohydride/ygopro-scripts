@@ -15,7 +15,7 @@ function c79178930.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tc:IsFaceup() and tc:IsDefensePos() and tc:IsSetCard(0x11)
 end
 function c79178930.filter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c79178930.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c79178930.filter,tp,0,LOCATION_MZONE,1,nil) end

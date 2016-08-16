@@ -22,7 +22,7 @@ function c96746083.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c96746083.desfilter(c)
-	return c:IsType(TYPE_MONSTER) and ((c:IsLocation(LOCATION_MZONE) and c:IsFaceup()) or c:IsLocation(LOCATION_HAND)) and c:IsDestructable()
+	return c:IsType(TYPE_MONSTER) and ((c:IsLocation(LOCATION_MZONE) and c:IsFaceup()) or c:IsLocation(LOCATION_HAND))
 end
 function c96746083.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

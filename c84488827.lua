@@ -30,12 +30,12 @@ function c84488827.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE and e:GetLabel()==1
 end
 function c84488827.sfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c84488827.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local op=0
-	local g1=Duel.GetMatchingGroup(Card.IsDestructable,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
+	local g1=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
 	local g2=Duel.GetMatchingGroup(c84488827.sfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(84488827,0))
 	if g1:GetCount()>0 and g2:GetCount()>0 then
@@ -54,7 +54,7 @@ function c84488827.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c84488827.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==1 then
-		local g=Duel.GetMatchingGroup(Card.IsDestructable,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
+		local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
 		Duel.Destroy(g,REASON_EFFECT)
 	elseif e:GetLabel()==2 then
 		local g=Duel.GetMatchingGroup(c84488827.sfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)

@@ -22,7 +22,7 @@ function c20056760.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c20056760.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0xd1) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0xd1)
 end
 function c20056760.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c20056760.filter(chkc) end

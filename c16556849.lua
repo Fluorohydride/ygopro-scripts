@@ -22,7 +22,7 @@ function c16556849.costfilter(co)
 	return co:IsAttribute(ATTRIBUTE_LIGHT) and co:IsAbleToRemoveAsCost()
 end
 function c16556849.filter(c,atk)
-	return c:IsFaceup() and c:GetAttack()>atk and c:IsDestructable()
+	return c:IsFaceup() and c:GetAttack()>atk
 end
 function c16556849.tg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c16556849.filter(chkc,e:GetHandler():GetAttack()) end

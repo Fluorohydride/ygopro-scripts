@@ -13,7 +13,7 @@ function c90452877.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c90452877.desfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0xd2) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0xd2)
 end
 function c90452877.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c90452877.desfilter(chkc) end

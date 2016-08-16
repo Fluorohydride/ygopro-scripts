@@ -18,7 +18,7 @@ function c47731128.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47731128.filter(c)
 	local tpe=c:GetType()
-	return c:IsFaceup() and (tpe==0x20002 or tpe==0x20004) and c:IsDestructable()
+	return c:IsFaceup() and (tpe==0x20002 or tpe==0x20004)
 end
 function c47731128.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c47731128.filter(chkc) end

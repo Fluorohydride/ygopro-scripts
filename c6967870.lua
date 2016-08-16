@@ -14,7 +14,7 @@ function c6967870.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp
 end
 function c6967870.filter(c)
-	return c:IsType(TYPE_TRAP+TYPE_SPELL) and c:IsDestructable()
+	return c:IsType(TYPE_TRAP+TYPE_SPELL)
 end
 function c6967870.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c6967870.filter(chkc) end

@@ -33,7 +33,7 @@ function c18239909.tgfilter(c)
 	end
 end
 function c18239909.desfilter(c)
-	return c18239909.tgfilter(c) and c:IsDestructable()
+	return c18239909.tgfilter(c)
 		and Duel.IsExistingMatchingCard(Card.IsAbleToDeck,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 end
 function c18239909.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

@@ -11,7 +11,7 @@ function c81510157.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c81510157.filter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c81510157.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c81510157.filter(chkc) end

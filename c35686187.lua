@@ -17,7 +17,7 @@ function c35686187.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c35686187.cfilter,1,nil,1-tp)
 end
 function c35686187.filter(c)
-	return c:IsDefensePos() and c:IsDestructable()
+	return c:IsDefensePos()
 end
 function c35686187.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c35686187.filter,tp,0,LOCATION_MZONE,1,nil) end

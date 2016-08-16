@@ -26,7 +26,7 @@ function c76547525.descon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c76547525.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,e:GetHandler():GetAttack())
 end
 function c76547525.desfilter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c76547525.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c76547525.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end

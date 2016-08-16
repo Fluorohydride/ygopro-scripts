@@ -38,7 +38,7 @@ function c53027855.spcon(e,c)
 		Duel.GetMatchingGroupCount(Card.IsAttribute,c:GetControler(),LOCATION_GRAVE,0,nil,ATTRIBUTE_WIND)==5
 end
 function c53027855.desfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c53027855.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

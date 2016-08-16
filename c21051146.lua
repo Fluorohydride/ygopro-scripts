@@ -34,7 +34,7 @@ end
 function c21051146.filter(c,cc,tp)
 	local ct=math.ceil(c:GetAttack()/700)
 	if ct==0 then ct=1 end
-	return c:IsFaceup() and c:IsDestructable() and cc:IsCanRemoveCounter(tp,0x1,ct,REASON_COST)
+	return c:IsFaceup() and cc:IsCanRemoveCounter(tp,0x1,ct,REASON_COST)
 end
 function c21051146.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c21051146.filter(chkc,e:GetHandler(),tp) end

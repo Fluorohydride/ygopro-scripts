@@ -24,7 +24,7 @@ function c6733059.cfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function c6733059.tfilter(c,lv)
-	return c:IsFaceup() and c:IsLevelBelow(lv) and c:IsDestructable()
+	return c:IsFaceup() and c:IsLevelBelow(lv)
 end
 function c6733059.cost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -83,7 +83,7 @@ function c6733059.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetParam(lv)
 end
 function c6733059.dfilter(c,lv)
-	return c:IsFaceup() and c:GetLevel()==lv and c:IsDestructable()
+	return c:IsFaceup() and c:GetLevel()==lv
 end
 function c6733059.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end

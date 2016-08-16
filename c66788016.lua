@@ -10,7 +10,7 @@ function c66788016.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c66788016.filter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c66788016.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c66788016.filter,tp,0,LOCATION_MZONE,1,nil) end

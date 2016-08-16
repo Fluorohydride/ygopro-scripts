@@ -36,8 +36,7 @@ function c60187739.initial_effect(c)
 	end
 end
 function c60187739.checkop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=eg:GetFirst()
-	c60187739[tc:GetControler()]=true
+	c60187739[ep]=true
 end
 function c60187739.clear(e,tp,eg,ep,ev,re,r,rp)
 	c60187739[0]=false

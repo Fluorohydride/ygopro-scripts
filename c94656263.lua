@@ -22,7 +22,7 @@ function c94656263.initial_effect(c)
 end
 function c94656263.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=eg:GetFirst()
-	return ec:IsControler(tp) and ec:GetLevel()==4
+	return ep==tp and ec:GetLevel()==4
 end
 function c94656263.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

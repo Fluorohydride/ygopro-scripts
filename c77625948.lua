@@ -26,7 +26,7 @@ function c77625948.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c77625948.filter(c)
-	return c:IsLevelBelow(3) and c:IsRace(RACE_DRAGON)
+	return c:IsLevelBelow(3) and c:IsRace(RACE_DRAGON) and not c:IsForbidden()
 end
 function c77625948.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c77625948.filter(chkc) end

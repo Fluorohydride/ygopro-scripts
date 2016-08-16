@@ -17,7 +17,7 @@ function c96907086.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c96907086.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c96907086.filter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c96907086.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c96907086.filter,tp,0,LOCATION_ONFIELD,1,nil) end

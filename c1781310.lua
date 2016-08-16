@@ -14,11 +14,8 @@ end
 function c1781310.cfilter(c,att)
 	return c:IsFaceup() and c:IsAttribute(att)
 end
-function c1781310.dfilter1(c)
-	return c:IsDestructable()
-end
 function c1781310.dfilter2(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c1781310.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c1781310.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,ATTRIBUTE_WIND)
@@ -27,7 +24,7 @@ function c1781310.condition(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c1781310.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,ATTRIBUTE_EARTH)
 end
 function c1781310.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c1781310.dfilter1,tp,0,LOCATION_MZONE,1,nil)
+	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_MZONE,1,nil)
 		or Duel.IsExistingMatchingCard(c1781310.dfilter2,tp,0,LOCATION_ONFIELD,1,nil)
 		or Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>=2
 		or Duel.IsPlayerCanDraw(tp,2) end
@@ -36,7 +33,7 @@ function c1781310.activate(e,tp,eg,ep,ev,re,r,rp)
 	local off=1
 	local ops={}
 	local opval={}
-	if Duel.IsExistingMatchingCard(c1781310.dfilter1,tp,0,LOCATION_MZONE,1,nil) then
+	if Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_MZONE,1,nil) then
 		ops[off]=aux.Stringid(1781310,0)
 		opval[off-1]=1
 		off=off+1
@@ -59,7 +56,7 @@ function c1781310.activate(e,tp,eg,ep,ev,re,r,rp)
 	if off==1 then return end
 	local op=Duel.SelectOption(tp,table.unpack(ops))
 	if opval[op]==1 then
-		local g=Duel.GetMatchingGroup(c1781310.dfilter1,tp,0,LOCATION_MZONE,nil)
+		local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
 		Duel.Destroy(g,REASON_EFFECT)
 	elseif opval[op]==2 then
 		local g=Duel.GetMatchingGroup(c1781310.dfilter2,tp,0,LOCATION_ONFIELD,nil)

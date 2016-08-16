@@ -20,7 +20,7 @@ function c35027493.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c35027493.tgfilter(c)
-	return c:IsFaceup() and c:IsAttackBelow(1500) and c:IsDestructable()
+	return c:IsFaceup() and c:IsAttackBelow(1500)
 end
 function c35027493.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -62,7 +62,7 @@ function c45627618.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ and e:GetLabel()==1
 end
 function c45627618.desfilter(c)
-	return c:IsFaceup() and c:IsLevelBelow(7) and c:IsDestructable()
+	return c:IsFaceup() and c:IsLevelBelow(7)
 end
 function c45627618.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -97,7 +97,7 @@ end
 function c45627618.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lsc=Duel.GetFieldCard(tp,LOCATION_SZONE,6)
 	local rsc=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
-	local g=Group.FromCards(lsc,rsc):Filter(Card.IsDestructable,nil)
+	local g=Group.FromCards(lsc,rsc):Filter(aux.TRUE,nil)
 	if chk==0 then return g:GetCount()>0 end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end

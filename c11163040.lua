@@ -46,7 +46,7 @@ function c11163040.counter(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c11163040.filter(c,e,tp)
-	return c:IsFaceup() and c:IsSetCard(0xd3) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0xd3)
 		and Duel.IsExistingMatchingCard(c11163040.chkfilter,tp,LOCATION_DECK,0,1,nil,e,tp,c:GetControler(),c:GetOriginalCode())
 end
 function c11163040.chkfilter(c,e,tp,cc,code)

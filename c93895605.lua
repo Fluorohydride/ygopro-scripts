@@ -19,8 +19,8 @@ function c93895605.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	if chk==0 then return a:IsOnField() and a:IsDestructable() and a:IsCanBeEffectTarget(e)
-		and d:IsOnField() and d:IsDestructable() and d:IsCanBeEffectTarget(e) end
+	if chk==0 then return a:IsOnField() and a:IsCanBeEffectTarget(e)
+		and d:IsOnField() and d:IsCanBeEffectTarget(e) end
 	local g=Group.FromCards(a,d)
 	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)

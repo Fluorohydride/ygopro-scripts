@@ -7,6 +7,7 @@ function c97466438.initial_effect(c)
 	e1:SetDescription(1160)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetRange(LOCATION_HAND)
 	e1:SetCost(c97466438.reg)
 	c:RegisterEffect(e1)
 	--

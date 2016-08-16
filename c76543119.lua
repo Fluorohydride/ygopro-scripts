@@ -24,7 +24,7 @@ function c76543119.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c76543119.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x83) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0x83)
 end
 function c76543119.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c76543119.filter(chkc) end

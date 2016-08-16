@@ -118,7 +118,7 @@ function c37115575.decon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsRelateToBattle() and c:GetBattleTarget():IsType(TYPE_MONSTER)
 end
 function c37115575.defilter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c37115575.detg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

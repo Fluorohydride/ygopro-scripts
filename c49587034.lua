@@ -15,7 +15,7 @@ function c49587034.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,LOCATION_HAND)
 end
 function c49587034.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetFieldGroup(1-tp,LOCATION_HAND,0,nil)
+	local g=Duel.GetFieldGroup(1-tp,LOCATION_HAND,0)
 	local rs=g:RandomSelect(1-tp,1)
 	local card=rs:GetFirst()
 	if card==nil then return end

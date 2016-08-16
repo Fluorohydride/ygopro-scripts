@@ -28,7 +28,7 @@ function c61204971.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
 function c61204971.filter(c,atk)
-	return c:IsFaceup() and c:GetBaseAttack()<atk and c:IsDestructable()
+	return c:IsFaceup() and c:GetBaseAttack()<atk
 end
 function c61204971.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c61204971.filter(chkc,e:GetHandler():GetAttack()) end

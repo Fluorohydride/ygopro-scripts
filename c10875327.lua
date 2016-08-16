@@ -46,7 +46,7 @@ function c10875327.descon(e,tp,eg,ep,ev,re,r,rp)
 		and (not re or re:GetOwner()~=c)
 end
 function c10875327.desfilter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c10875327.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

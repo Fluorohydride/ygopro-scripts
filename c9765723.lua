@@ -52,12 +52,12 @@ function c9765723.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c9765723.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsDestructable() end
+	if chkc then return chkc:IsOnField() end
 	if chk==0 then return true end
 	local ph=Duel.GetCurrentPhase()
 	local b1=Duel.GetFlagEffect(tp,9765723)==0
 		and Duel.IsExistingMatchingCard(c9765723.cfilter,tp,LOCATION_HAND,0,1,nil)
-		and Duel.IsExistingTarget(Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
+		and Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 	local b2=Duel.GetTurnPlayer()==tp and ph==PHASE_STANDBY
 	if (b1 or b2) and ph~=PHASE_DAMAGE and Duel.SelectYesNo(tp,94) then
 		local op=0
@@ -70,7 +70,7 @@ function c9765723.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 			Duel.DiscardHand(tp,c9765723.cfilter,1,1,REASON_COST)
 			Duel.RegisterFlagEffect(tp,9765723,RESET_PHASE+PHASE_END,0,1)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-			local g=Duel.SelectTarget(tp,Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+			local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 			Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 		else
 			e:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
@@ -107,10 +107,10 @@ function c9765723.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterFlagEffect(tp,9765723,RESET_PHASE+PHASE_END,0,1)
 end
 function c9765723.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsDestructable() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
+	if chkc then return chkc:IsOnField() end
+	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c9765723.desop(e,tp,eg,ep,ev,re,r,rp)

@@ -20,7 +20,7 @@ function c20193924.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c20193924.filter(c)
-	return c:IsFacedown() and c:IsDestructable()
+	return c:IsFacedown()
 end
 function c20193924.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c20193924.filter(chkc) end

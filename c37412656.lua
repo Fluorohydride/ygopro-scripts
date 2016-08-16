@@ -15,7 +15,7 @@ function c37412656.filter(c)
 	return c:IsSetCard(0x3008) and c:IsType(TYPE_NORMAL) and c:IsAbleToHand()
 end
 function c37412656.dfilter(c,atk)
-	return c:IsFaceup() and c:IsDestructable() and c:IsAttackBelow(atk)
+	return c:IsFaceup() and c:IsAttackBelow(atk)
 end
 function c37412656.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:GetLocation()==LOCATION_GRAVE and chkc:GetControler()==tp and c37412656.filter(chkc) end

@@ -49,6 +49,7 @@ function c17760003.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c17760003.operation1)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(17760003,3))
 	end
 	if bit.band(att,ATTRIBUTE_WATER)~=0 then
 		local e1=Effect.CreateEffect(c)
@@ -63,6 +64,7 @@ function c17760003.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c17760003.operation2)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(17760003,4))
 	end
 	if bit.band(att,ATTRIBUTE_DARK)~=0 then
 		local e1=Effect.CreateEffect(c)
@@ -77,6 +79,7 @@ function c17760003.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c17760003.operation3)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(17760003,5))
 	end
 end
 function c17760003.cost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -94,7 +97,7 @@ function c17760003.operation1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(sg,REASON_EFFECT)
 end
 function c17760003.filter2(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c17760003.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c17760003.filter2(chkc) end
@@ -110,7 +113,7 @@ function c17760003.operation2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c17760003.filter3(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsDestructable()
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT)
 end
 function c17760003.target3(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c17760003.filter2(chkc) end

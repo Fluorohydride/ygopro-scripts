@@ -10,7 +10,7 @@ function c11052544.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c11052544.filter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c11052544.cfilter(c)
 	return c:IsFaceup() and c:IsAttackPos() and c:IsSetCard(0x100d)

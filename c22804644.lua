@@ -18,7 +18,7 @@ function c22804644.initial_effect(c)
 end
 c22804644.material_trap=57728570
 function c22804644.tgfilter(c)
-	return c:IsFaceup() and c:GetAttack()>=1500 and c:IsDestructable()
+	return c:IsFaceup() and c:GetAttack()>=1500
 end
 function c22804644.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

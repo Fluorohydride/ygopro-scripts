@@ -15,7 +15,7 @@ function c46253216.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp
 end
 function c46253216.filter(c,rc)
-	return c~=rc and c:IsDestructable()
+	return c~=rc
 end
 function c46253216.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c46253216.filter(chkc,re:GetHandler()) and chkc~=e:GetHandler() end

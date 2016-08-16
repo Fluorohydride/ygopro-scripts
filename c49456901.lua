@@ -30,7 +30,7 @@ function c49456901.initial_effect(c)
 end
 c49456901.xyz_number=104
 function c49456901.desfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c49456901.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c49456901.desfilter(chkc) end

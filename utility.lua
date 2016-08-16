@@ -1511,6 +1511,7 @@ function Auxiliary.EnablePendulumAttribute(c,reg)
 		e2:SetDescription(1160)
 		e2:SetType(EFFECT_TYPE_ACTIVATE)
 		e2:SetCode(EVENT_FREE_CHAIN)
+		e2:SetRange(LOCATION_HAND)
 		c:RegisterEffect(e2)
 	end
 end
@@ -1552,14 +1553,34 @@ function Auxiliary.PendOperation()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
 				local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 				if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
+				local tg=nil
 				if og then
+					tg=og:Filter(tp,Auxiliary.PConditionFilter,nil,e,tp,lscale,rscale)
+				else
+					tg=Duel.GetMatchingGroup(Auxiliary.PConditionFilter,tp,LOCATION_HAND+LOCATION_EXTRA,0,nil,e,tp,lscale,rscale)
+				end
+				local ect=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
+				if ect and (ect<=0 or ect>ft) then ect=nil end
+				if ect==nil or tg:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)<=ect then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-					local g=og:FilterSelect(tp,Auxiliary.PConditionFilter,1,ft,nil,e,tp,lscale,rscale)
+					local g=tg:Select(tp,1,ft,nil)
 					sg:Merge(g)
 				else
-					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-					local g=Duel.SelectMatchingCard(tp,Auxiliary.PConditionFilter,tp,LOCATION_HAND+LOCATION_EXTRA,0,1,ft,nil,e,tp,lscale,rscale)
-					sg:Merge(g)
+					repeat
+						local ct=math.min(ft,ect)
+						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+						local g=tg:Select(tp,1,ct,nil)
+						tg:Sub(g)
+						sg:Merge(g)
+						ft=ft-g:GetCount()
+						ect=ect-g:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)
+					until ft==0 or ect==0 or not Duel.SelectYesNo(tp,210)
+					local hg=tg:Filter(Card.IsLocation,nil,LOCATION_HAND)
+					if ft>0 and ect==0 and hg:GetCount()>0 and Duel.SelectYesNo(tp,210) then
+						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+						local g=hg:Select(tp,1,ft,nil)
+						sg:Merge(g)
+					end
 				end
 				Duel.HintSelection(Group.FromCards(c))
 				Duel.HintSelection(Group.FromCards(rpz))

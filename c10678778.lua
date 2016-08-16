@@ -61,7 +61,7 @@ function c10678778.filter(c,tp)
 		and Duel.IsExistingMatchingCard(c10678778.filter2,tp,0,LOCATION_MZONE,1,nil,ctype)
 end
 function c10678778.filter2(c,ctype)
-	return c:IsFaceup() and c:IsType(ctype) and c:IsDestructable()
+	return c:IsFaceup() and c:IsType(ctype)
 end
 function c10678778.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(1-tp) and c10678778.filter(chkc,tp) end

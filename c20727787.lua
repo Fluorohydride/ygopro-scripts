@@ -11,7 +11,7 @@ function c20727787.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c20727787.filter(c)
-	return c:IsType(TYPE_EQUIP) and c:IsDestructable()
+	return c:IsType(TYPE_EQUIP)
 end
 function c20727787.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

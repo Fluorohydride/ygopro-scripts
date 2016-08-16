@@ -6,6 +6,7 @@ function c98827725.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,98827725+EFFECT_COUNT_CODE_OATH)
+	e1:SetCost(c98827725.cost)
 	e1:SetTarget(c98827725.target)
 	e1:SetOperation(c98827725.activate)
 	c:RegisterEffect(e1)
@@ -17,10 +18,17 @@ function c98827725.initial_effect(c)
 	e2:SetCondition(c98827725.actcon)
 	c:RegisterEffect(e2)
 end
+function c98827725.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	e:SetLabel(1)
+	return true
+end
 function c98827725.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,98827725,0x10db,0x11,4,0,300,RACE_WARRIOR,ATTRIBUTE_DARK) end
+	if chk==0 then
+		if e:GetLabel()==0 then return false end
+		e:SetLabel(0)
+		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+			and Duel.IsPlayerCanSpecialSummonMonster(tp,98827725,0x10db,0x11,4,0,300,RACE_WARRIOR,ATTRIBUTE_DARK) end
+	e:SetLabel(0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c98827725.activate(e,tp,eg,ep,ev,re,r,rp)

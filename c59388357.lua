@@ -12,7 +12,7 @@ function c59388357.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c59388357.desfilter(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsDestructable()
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_FIRE)
 end
 function c59388357.spfilter(c,e,tp)
 	return c:IsAttribute(ATTRIBUTE_FIRE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

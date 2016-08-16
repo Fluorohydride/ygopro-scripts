@@ -28,7 +28,7 @@ function c83715234.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c83715234.cfilter,1,nil,tp)
 end
 function c83715234.desfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c83715234.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and c83715234.desfilter(chkc) end

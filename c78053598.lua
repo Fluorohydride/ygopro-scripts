@@ -26,9 +26,5 @@ function c78053598.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		Duel.ConfirmCards(tp,tc)
-	else
-		local dg=Duel.GetFieldGroup(tp,0,LOCATION_DECK)
-		Duel.ConfirmCards(tp,dg)
-		Duel.ShuffleDeck(1-tp)
 	end
 end

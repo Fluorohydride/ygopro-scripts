@@ -18,7 +18,7 @@ function c60634565.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
 end
 function c60634565.desfilter(c)
-	return c:IsFaceup() and c:GetAttack()==0 and c:IsDestructable()
+	return c:IsFaceup() and c:GetAttack()==0
 end
 function c60634565.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

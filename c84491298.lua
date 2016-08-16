@@ -15,7 +15,7 @@ function c84491298.condition(e,tp,eg,ep,ev,re,r,rp)
 	return a:IsControler(1-tp) and a:GetCounter(0x100e)>0
 end
 function c84491298.filter(c)
-	return c:IsAttackPos() and c:IsDestructable()
+	return c:IsAttackPos()
 end
 function c84491298.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c84491298.filter,tp,0,LOCATION_MZONE,1,nil) end

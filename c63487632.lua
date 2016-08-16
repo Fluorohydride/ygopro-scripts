@@ -56,7 +56,7 @@ function c63487632.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c63487632.filter(c)
-	return c:GetCode()~=63487632 and c:IsRace(RACE_DRAGON)
+	return c:GetCode()~=63487632 and c:IsRace(RACE_DRAGON) and not c:IsForbidden()
 end
 function c63487632.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c63487632.filter(chkc) end

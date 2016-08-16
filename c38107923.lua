@@ -72,7 +72,7 @@ function c38107923.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c38107923.desfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c38107923.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c38107923.desfilter(chkc) end

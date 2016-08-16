@@ -67,10 +67,10 @@ function c16898077.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c16898077.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and chkc:IsDestructable() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsDestructable,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end
+	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,Card.IsDestructable,tp,0,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c16898077.desop(e,tp,eg,ep,ev,re,r,rp)
@@ -83,7 +83,7 @@ function c16898077.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
 function c16898077.dfilter(c,e,sp)
-	return c:GetSummonPlayer()==sp and c:IsDestructable() and (not e or c:IsRelateToEffect(e))
+	return c:GetSummonPlayer()==sp and (not e or c:IsRelateToEffect(e))
 end
 function c16898077.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c16898077.dfilter,1,nil,nil,1-tp) end
@@ -117,7 +117,7 @@ function c16898077.damcon3(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and rp~=tp
 end
 function c16898077.sfilter(c,e)
-	return c:IsFacedown() and c:IsDestructable() and (not e or c:IsRelateToEffect(e))
+	return c:IsFacedown() and (not e or c:IsRelateToEffect(e))
 end
 function c16898077.damtg3(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c16898077.sfilter,1,nil) end

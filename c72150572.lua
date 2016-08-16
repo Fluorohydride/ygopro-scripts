@@ -12,7 +12,7 @@ function c72150572.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c72150572.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_FUSION) and c:IsDestructable()
+	return c:IsFaceup() and c:IsType(TYPE_FUSION)
 end
 function c72150572.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c72150572.filter(chkc) end

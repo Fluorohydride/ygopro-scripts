@@ -37,7 +37,7 @@ function c5640330.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveCounter(tp,0x1,1,REASON_COST)
 end
 function c5640330.filter(c)
-	return c:IsType(TYPE_TRAP) and c:IsFaceup() and c:IsDestructable()
+	return c:IsType(TYPE_TRAP) and c:IsFaceup()
 end
 function c5640330.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c5640330.filter(chkc) end

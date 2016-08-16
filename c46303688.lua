@@ -16,7 +16,7 @@ function c46303688.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,2)
 end
 function c46303688.dfilter(c,lv)
-	return c:IsFaceup() and c:GetLevel()==lv and c:IsDestructable()
+	return c:IsFaceup() and c:GetLevel()==lv
 end
 function c46303688.activate(e,tp,eg,ep,ev,re,r,rp)
 	local d1,d2=Duel.TossDice(tp,2)

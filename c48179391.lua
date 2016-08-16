@@ -50,7 +50,7 @@ function c48179391.actcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterFlagEffect(tp,48179391,0,0,0)
 end
 function c48179391.desfilter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)~=0 and c:IsDestructable()
+	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)~=0
 end
 function c48179391.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

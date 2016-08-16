@@ -66,17 +66,17 @@ function c83755611.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if ft<0 then
 			return false
 		elseif ft>0 then
-			return Duel.IsExistingTarget(Card.IsDestructable,tp,LOCATION_ONFIELD,0,1,nil)
+			return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,0,1,nil)
 		else
-			return Duel.IsExistingTarget(Card.IsDestructable,tp,LOCATION_MZONE,0,1,nil)
+			return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_MZONE,0,1,nil)
 		end
 	end
 	local g1=nil
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	if ft>0 then
-		g1=Duel.SelectTarget(tp,Card.IsDestructable,tp,LOCATION_ONFIELD,0,1,1,nil)
+		g1=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,0,1,1,nil)
 	else
-		g1=Duel.SelectTarget(tp,Card.IsDestructable,tp,LOCATION_MZONE,0,1,1,nil)
+		g1=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_MZONE,0,1,1,nil)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g2=Duel.SelectTarget(tp,c83755611.filter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)

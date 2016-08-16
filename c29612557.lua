@@ -58,7 +58,7 @@ function c29612557.descon(e,tp,eg,ep,ev,re,r,rp)
 		and bit.band(ec:GetReason(),0x41)==0x41
 end
 function c29612557.dfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c29612557.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

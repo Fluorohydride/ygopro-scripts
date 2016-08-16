@@ -41,7 +41,7 @@ function c41546.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c41546.desfilter(c)
-	return (c:GetSequence()==6 or c:GetSequence()==7) and c:IsSetCard(0xaf) and c:IsDestructable()
+	return (c:GetSequence()==6 or c:GetSequence()==7) and c:IsSetCard(0xaf)
 end
 function c41546.spfilter(c,e,tp)
 	return c:IsSetCard(0x10af) and c:GetLevel()==8 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

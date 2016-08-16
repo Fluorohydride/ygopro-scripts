@@ -49,7 +49,7 @@ function c31764700.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=e:GetLabelObject():GetLabelObject()
 	if chk==0 then return bc end
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,e:GetLabelObject():GetLabel())
-	if bc:IsDestructable() then
+	if bc:IsRelateToBattle() then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,bc,1,0,0)
 	end
 end

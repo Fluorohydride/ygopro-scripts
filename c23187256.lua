@@ -112,6 +112,9 @@ function c23187256.gfilter(c,rank)
 end
 function c23187256.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
+	local ect=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
+	if ect~=nil then ft=math.min(ft,ect) end
 	local c=e:GetHandler()
 	local g1=Duel.GetMatchingGroup(c23187256.filter,tp,LOCATION_EXTRA,0,nil,e,tp)
 	local ct=c:GetOverlayGroup():GetClassCount(Card.GetCode)

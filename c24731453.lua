@@ -32,7 +32,7 @@ function c24731453.spcon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c24731453.cfilter,tp,LOCATION_SZONE,0,1,nil)
 end
 function c24731453.filter(c)
-	return c:GetSequence()<5 and c:IsDestructable()
+	return c:GetSequence()<5
 end
 function c24731453.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

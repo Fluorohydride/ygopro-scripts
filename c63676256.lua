@@ -101,7 +101,7 @@ function c63676256.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsStatus(STATUS_UNION) and eg:GetCount()==1 and eg:GetFirst()==e:GetHandler():GetEquipTarget()
 end
 function c63676256.dfilter(c,rac)
-	return c:IsFaceup() and c:IsRace(rac) and c:IsDestructable()
+	return c:IsFaceup() and c:IsRace(rac)
 end
 function c63676256.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

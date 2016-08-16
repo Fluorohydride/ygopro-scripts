@@ -12,7 +12,7 @@ function c64815084.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c64815084.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_REPTILE) and c:IsDestructable()
+	return c:IsFaceup() and c:IsRace(RACE_REPTILE)
 end
 function c64815084.spfilter(c,e,tp)
 	return c:IsSetCard(0x304e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN)

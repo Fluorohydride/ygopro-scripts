@@ -29,7 +29,7 @@ function c5975022.descon(e,tp,eg,ep,ev,re,r,rp)
 	return st>=(SUMMON_TYPE_SPECIAL+100) and st<(SUMMON_TYPE_SPECIAL+150)
 end
 function c5975022.desfilter(c)
-	return c:IsFaceup() and c:IsDestructable() 
+	return c:IsFaceup() 
 end
 function c5975022.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:GetLocation()==LOCATION_MZONE and c5975022.desfilter(chkc) end

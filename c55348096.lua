@@ -21,9 +21,5 @@ function c55348096.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(1-tp,c55348096.tgfilter,1-tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoGrave(g,REASON_EFFECT)
-	else
-		local cg=Duel.GetFieldGroup(1-tp,LOCATION_DECK,0)
-		Duel.ConfirmCards(tp,cg)
-		Duel.ShuffleDeck(1-tp)
 	end
 end

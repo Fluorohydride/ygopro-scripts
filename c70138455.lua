@@ -21,7 +21,7 @@ function c70138455.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c70138455.filter(c)
-	return c:IsFaceup() and c:IsDestructable() and c:IsAttackBelow(1000)
+	return c:IsFaceup() and c:IsAttackBelow(1000)
 end
 function c70138455.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c70138455.filter(chkc) end
@@ -31,7 +31,7 @@ function c70138455.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)
 end
 function c70138455.desfilter(c,e)
-	return c:IsRelateToEffect(e) and c:IsFaceup() and c:IsDestructable() and c:IsAttackBelow(1000)
+	return c:IsRelateToEffect(e) and c:IsFaceup() and c:IsAttackBelow(1000)
 end
 function c70138455.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)

@@ -29,7 +29,7 @@ function c11373345.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c11373345.filter(c)
-	return c:IsFaceup() and c:IsLevelBelow(5) and c:IsDestructable()
+	return c:IsFaceup() and c:IsLevelBelow(5)
 end
 function c11373345.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c11373345.filter,tp,0,LOCATION_MZONE,1,nil) end

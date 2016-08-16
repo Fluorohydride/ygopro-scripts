@@ -12,20 +12,17 @@ function c93217231.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c93217231.filter1(c)
-	return c:IsFaceup() and c:IsRace(RACE_REPTILE) and c:IsDestructable()
-end
-function c93217231.filter2(c)
-	return c:IsDestructable()
+	return c:IsFaceup() and c:IsRace(RACE_REPTILE)
 end
 function c93217231.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(c93217231.filter1,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingTarget(c93217231.filter2,tp,0,LOCATION_ONFIELD,2,nil) end
+		and Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_ONFIELD,2,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g1=Duel.SelectTarget(tp,c93217231.filter1,tp,LOCATION_MZONE,0,1,1,nil)
 	e:SetLabelObject(g1:GetFirst())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g2=Duel.SelectTarget(tp,c93217231.filter2,tp,0,LOCATION_ONFIELD,2,2,nil)
+	local g2=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,2,2,nil)
 	g1:Merge(g2)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g1,g1:GetCount(),0,0)
 end

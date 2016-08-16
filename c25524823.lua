@@ -80,7 +80,7 @@ function c25524823.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
 end
 function c25524823.filter(c)
-	return c:IsFacedown() and c:IsDestructable()
+	return c:IsFacedown()
 end
 function c25524823.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=e:GetLabel()

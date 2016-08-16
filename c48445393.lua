@@ -11,7 +11,7 @@ function c48445393.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c48445393.desfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x24) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0x24)
 end
 function c48445393.sfilter(c)
 	return c:IsSetCard(0x24) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()

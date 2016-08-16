@@ -95,7 +95,7 @@ function c67159705.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c67159705.desfilter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c67159705.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c67159705.desfilter(chkc) end

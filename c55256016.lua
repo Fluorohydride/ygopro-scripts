@@ -33,7 +33,7 @@ function c55256016.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c55256016.desfilter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c55256016.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateActivation(ev)

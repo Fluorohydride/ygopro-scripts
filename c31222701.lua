@@ -10,7 +10,7 @@ function c31222701.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c31222701.filter(c)
-	return (c:GetSequence()==6 or c:GetSequence()==7) and c:IsDestructable()
+	return (c:GetSequence()==6 or c:GetSequence()==7)
 end
 function c31222701.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c31222701.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil) end

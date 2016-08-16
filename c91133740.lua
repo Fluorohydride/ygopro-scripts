@@ -12,7 +12,7 @@ function c91133740.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c91133740.filter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c91133740.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c91133740.filter(chkc) end

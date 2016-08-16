@@ -62,7 +62,7 @@ function c83438826.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c83438826.desfilter(c)
-	return c:IsFacedown() and c:IsDestructable()
+	return c:IsFacedown()
 end
 function c83438826.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and c83438826.desfilter(chkc) end

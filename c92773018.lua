@@ -39,7 +39,7 @@ function c92773018.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.GetAttacker()
 	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer()
 		and Duel.IsExistingMatchingCard(c92773018.cfilter,tp,LOCATION_MZONE,0,1,nil)
-		and tg:IsOnField() and tg:IsDestructable() and tg:IsCanBeEffectTarget(e)
+		and tg:IsOnField() and tg:IsCanBeEffectTarget(e)
 		and Duel.SelectYesNo(tp,aux.Stringid(92773018,1)) then
 		e:SetCategory(CATEGORY_DESTROY)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -57,7 +57,7 @@ function c92773018.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.GetAttacker()
 	if chkc then return chkc==tg end
 	if chk==0 then return not e:GetHandler():IsStatus(STATUS_CHAINING)
-		and tg:IsOnField() and tg:IsDestructable() and tg:IsCanBeEffectTarget(e) end
+		and tg:IsOnField() and tg:IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(tg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tg,1,0,0)
 end

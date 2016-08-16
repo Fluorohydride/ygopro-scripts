@@ -25,7 +25,7 @@ function c29401950.initial_effect(c)
 end
 function c29401950.filter(c,tp,ep)
 	return c:IsLocation(LOCATION_MZONE) and c:IsFaceup() and c:GetAttack()>=1500
-		and ep~=tp and c:IsDestructable() and c:IsAbleToRemove()
+		and ep~=tp and c:IsAbleToRemove()
 end
 function c29401950.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=eg:GetFirst()
@@ -42,7 +42,7 @@ function c29401950.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c29401950.filter2(c,tp)
 	return c:IsLocation(LOCATION_MZONE) and c:IsFaceup() and c:GetAttack()>=1500 and c:GetSummonPlayer()~=tp
-		and c:IsDestructable() and c:IsAbleToRemove()
+		and c:IsAbleToRemove()
 end
 function c29401950.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c29401950.filter2,1,nil,tp) end
@@ -53,7 +53,7 @@ function c29401950.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c29401950.filter3(c,e,tp)
 	return c:IsFaceup() and c:GetAttack()>=1500 and c:GetSummonPlayer()~=tp
-		and c:IsRelateToEffect(e) and c:IsLocation(LOCATION_MZONE) and c:IsDestructable()
+		and c:IsRelateToEffect(e) and c:IsLocation(LOCATION_MZONE)
 end
 function c29401950.activate2(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c29401950.filter3,nil,e,tp)

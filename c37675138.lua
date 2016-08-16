@@ -24,7 +24,7 @@ function c37675138.descon(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():GetPreviousControler()==tp
 end
 function c37675138.desfilter(c)
-	return c:IsDestructable() and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c37675138.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and c37675138.desfilter(chkc) end

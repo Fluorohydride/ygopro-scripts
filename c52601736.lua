@@ -27,7 +27,7 @@ function c52601736.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c52601736.filter(c)
-	return c:IsSetCard(0x56) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0x56) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
 end
 function c52601736.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0

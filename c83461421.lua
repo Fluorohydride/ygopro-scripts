@@ -10,10 +10,10 @@ function c83461421.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c83461421.filter(c)
-	return (c:GetSequence()==6 or c:GetSequence()==7) and c:IsDestructable()
+	return (c:GetSequence()==6 or c:GetSequence()==7)
 end
 function c83461421.filter2(c)
-	return c:IsDestructable() and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c83461421.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c83461421.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil) end

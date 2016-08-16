@@ -30,7 +30,7 @@ function c99940363.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c99940363.mfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c99940363.filter(c)
-	return c:IsFacedown() and c:IsDestructable()
+	return c:IsFacedown()
 end
 function c99940363.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c99940363.filter(chkc) and chkc~=e:GetHandler() end

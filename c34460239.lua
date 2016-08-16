@@ -11,7 +11,7 @@ function c34460239.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c34460239.filter(c,tp)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 		and Duel.IsExistingMatchingCard(c34460239.nfilter1,tp,LOCATION_DECK,0,1,nil,c)
 end
 function c34460239.nfilter1(c,tc)

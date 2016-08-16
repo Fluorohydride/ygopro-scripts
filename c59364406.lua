@@ -99,7 +99,7 @@ function c59364406.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsStatus(STATUS_UNION) and ep~=tp and eg:GetFirst()==e:GetHandler():GetEquipTarget()
 end
 function c59364406.desfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c59364406.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c59364406.desfilter(chkc) end

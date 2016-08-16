@@ -41,10 +41,10 @@ function c89544521.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0xab)
 end
 function c89544521.val(e,c)
-	return Duel.GetMatchingGroupCount(c89544521.filter,c:GetControler(),LOCATION_ONFIELD,0,nil)*500
+	return Duel.GetMatchingGroupCount(c89544521.filter,c:GetControler(),LOCATION_ONFIELD,LOCATION_ONFIELD,nil)*500
 end
 function c89544521.desfilter1(c)
-	return c:IsFaceup() and c:IsSetCard(0xab) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0xab)
 end
 function c89544521.spfilter(c,e,tp)
 	return c:IsSetCard(0xab) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -77,11 +77,11 @@ function c89544521.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c89544521.desfilter2(c)
-	return c:IsFaceup() and c:IsSetCard(0xab) and c:IsDestructable()
+	return c:IsFaceup() and c:IsSetCard(0xab)
 		and Duel.IsExistingTarget(c89544521.desfilter3,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 end
 function c89544521.desfilter3(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c89544521.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

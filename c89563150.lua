@@ -19,7 +19,7 @@ function c89563150.discon(e,tp,eg,ep,ev,re,r,rp)
 		(cp==PLAYER_ALL and (Duel.IsPlayerAffectedByEffect(0,EFFECT_REVERSE_RECOVER) or Duel.IsPlayerAffectedByEffect(1,EFFECT_REVERSE_RECOVER))))
 end
 function c89563150.dfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c89563150.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

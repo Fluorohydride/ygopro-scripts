@@ -64,7 +64,7 @@ function c68299524.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c68299524.desfilter(c,atk)
-	return c:IsFaceup() and c:IsDestructable() and c:IsAttackBelow(atk)
+	return c:IsFaceup() and c:IsAttackBelow(atk)
 end
 function c68299524.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()

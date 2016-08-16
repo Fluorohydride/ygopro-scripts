@@ -22,7 +22,7 @@ function c47766694.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c47766694.filter(c)
-	return c:IsFaceup() and c:GetSequence()<5 and c:IsDestructable()
+	return c:IsFaceup() and c:GetSequence()<5
 end
 function c47766694.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c47766694.filter(chkc) and chkc~=e:GetHandler() end
@@ -50,7 +50,7 @@ function c47766694.descon(e,tp,eg,ep,ev,re,r,rp)
 		and bit.band(e:GetHandler():GetPreviousPosition(),POS_FACEDOWN)~=0
 end
 function c47766694.desfilter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c47766694.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c47766694.desfilter(chkc) end

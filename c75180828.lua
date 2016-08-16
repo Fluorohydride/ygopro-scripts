@@ -58,16 +58,13 @@ end
 function c75180828.descount(c)
 	return c:IsSetCard(0x74) and c:IsType(TYPE_MONSTER)
 end
-function c75180828.desfilter(c)
-	return c:IsDestructable()
-end
 function c75180828.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and c75180828.desfilter(chkc) end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() end
 	if chk==0 then return true end
 	local ct=Duel.GetMatchingGroupCount(c75180828.descount,tp,LOCATION_GRAVE,0,nil)
 	if ct>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local g=Duel.SelectTarget(tp,c75180828.desfilter,tp,0,LOCATION_ONFIELD,1,ct,nil)
+		local g=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,ct,nil)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 	end
 end

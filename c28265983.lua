@@ -43,7 +43,7 @@ function c28265983.descon1(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp
 end
 function c28265983.desfilter1(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c28265983.destg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c28265983.desfilter1(chkc) end
@@ -73,7 +73,7 @@ function c28265983.descost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterFlagEffect(tp,28265984,RESET_PHASE+PHASE_END,0,1)
 end
 function c28265983.desfilter2(c,num)
-	return c:IsFaceup() and c:IsAttackBelow(num) and c:IsDestructable()
+	return c:IsFaceup() and c:IsAttackBelow(num)
 end
 function c28265983.destg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lp=Duel.GetLP(tp)-Duel.GetLP(1-tp)

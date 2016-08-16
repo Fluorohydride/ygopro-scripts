@@ -37,7 +37,7 @@ function c50078320.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChangeTargetParam(ev,ac)
 end
 function c50078320.desfilter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c50078320.regtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c50078320.desfilter(chkc) end

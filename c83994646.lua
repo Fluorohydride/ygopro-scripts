@@ -10,7 +10,7 @@ function c83994646.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c83994646.filter(c)
-	return c:IsFaceup() and c:GetLevel()==4 and c:IsDestructable()
+	return c:IsFaceup() and c:GetLevel()==4
 end
 function c83994646.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end

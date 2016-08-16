@@ -17,7 +17,7 @@ function c59482302.condition(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():GetReasonCard():IsAttribute(ATTRIBUTE_LIGHT)
 end
 function c59482302.filter(c,e)
-	return c:IsDestructable() and c:IsCanBeEffectTarget(e)
+	return c:IsCanBeEffectTarget(e)
 end
 function c59482302.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c59482302.filter(chkc,e) end

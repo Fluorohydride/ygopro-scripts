@@ -19,10 +19,13 @@ end
 function c5288597.cfilter(c,e,tp)
 	local lv=c:GetOriginalLevel()
 	local rc=nil
+	local att=nil
 	if Duel.IsEnvironment(4064256) then rc=RACE_ZOMBIE
 	else rc=c:GetOriginalRace() end
+	if Duel.IsEnvironment(12644061) and c:IsSetCard(0x1034) then att=ATTRIBUTE_DARK
+	else att=c:GetOriginalAttribute() end
 	return bit.band(c:GetOriginalType(),TYPE_MONSTER)~=0 and lv>0 and c:IsFaceup() and c:IsAbleToGraveAsCost()
-		and Duel.IsExistingMatchingCard(c5288597.spfilter,tp,LOCATION_DECK,0,1,nil,lv+1,rc,c:GetOriginalAttribute(),e,tp)
+		and Duel.IsExistingMatchingCard(c5288597.spfilter,tp,LOCATION_DECK,0,1,nil,lv+1,rc,att,e,tp)
 end
 function c5288597.spfilter(c,lv,rc,att,e,tp)
 	return c:GetLevel()==lv and c:IsRace(rc) and c:IsAttribute(att) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

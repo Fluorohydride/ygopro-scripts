@@ -18,7 +18,7 @@ function c3536537.descon(e,tp,eg,ep,ev,re,r,rp)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c3536537.filter(c)
-	return c:IsFaceup() and c:IsLevelAbove(5) and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)~=0 and c:IsDestructable()
+	return c:IsFaceup() and c:IsLevelAbove(5) and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)~=0
 end
 function c3536537.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c3536537.filter(chkc) end

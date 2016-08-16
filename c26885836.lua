@@ -14,7 +14,7 @@ end
 function c26885836.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetBattleTarget()
 	e:SetLabelObject(tc)
-	return aux.bdogcon(e,tp,eg,ep,ev,re,r,rp)
+	return aux.bdogcon(e,tp,eg,ep,ev,re,r,rp) and not tc:IsForbidden()
 end
 function c26885836.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsHasEffect(26885836)

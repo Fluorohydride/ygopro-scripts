@@ -16,7 +16,7 @@ function c75902998.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c75902998.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local at=Duel.GetAttacker()
-	if chk==0 then return at:IsRelateToBattle() and at:IsDestructable() end
+	if chk==0 then return at:IsRelateToBattle() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,at,1,0,0)
 end
 function c75902998.activate(e,tp,eg,ep,ev,re,r,rp)

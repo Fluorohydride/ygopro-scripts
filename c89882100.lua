@@ -11,7 +11,7 @@ function c89882100.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c89882100.filter(c)
-	return c:IsFacedown() and c:IsDestructable()
+	return c:IsFacedown()
 end
 function c89882100.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(1-tp) and c89882100.filter(chkc) end

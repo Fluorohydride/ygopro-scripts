@@ -11,7 +11,7 @@ function c19230407.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c19230407.filter(c)
-	return c:IsFaceup() and c:IsDestructable()
+	return c:IsFaceup()
 end
 function c19230407.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c19230407.filter(chkc) end

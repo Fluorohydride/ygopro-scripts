@@ -19,8 +19,8 @@ function c22479888.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local a=Duel.GetAttacker()
 	local at=Duel.GetAttackTarget()
 	if chkc then return false end
-	if chk==0 then return a:IsOnField() and a:IsDestructable() and a:IsCanBeEffectTarget(e)
-		and at:IsOnField() and at:IsDestructable() and at:IsCanBeEffectTarget(e) end
+	if chk==0 then return a:IsOnField() and a:IsCanBeEffectTarget(e)
+		and at:IsOnField() and at:IsCanBeEffectTarget(e) end
 	if at:IsFacedown() then
 		Duel.ConfirmCards(1-tp,at)
 	end

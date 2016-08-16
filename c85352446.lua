@@ -17,7 +17,7 @@ function c85352446.filter(c)
 end
 function c85352446.filter2(c,lv)
 	local clv=c:GetLevel()
-	return c:IsFaceup() and clv>0 and lv~=clv and c:IsDestructable()
+	return c:IsFaceup() and clv>0 and lv~=clv
 end
 function c85352446.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c85352446.filter(chkc) end

@@ -142,7 +142,7 @@ function c33900648.descon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(c33900648[Duel.GetTurnPlayer()],ATTRIBUTE_EARTH)~=0
 end
 function c33900648.desfilter(c)
-	return c:IsPosition(POS_FACEUP_DEFENSE) and c:IsDestructable()
+	return c:IsPosition(POS_FACEUP_DEFENSE)
 end
 function c33900648.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local turnp=Duel.GetTurnPlayer()

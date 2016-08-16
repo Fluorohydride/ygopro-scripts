@@ -16,7 +16,7 @@ function c83102080.filter(c,ec)
 		and Duel.IsExistingTarget(c83102080.tgfilter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,ec,c)
 end
 function c83102080.tgfilter(c,tc)
-	return c:IsDestructable() and c~=tc
+	return c~=tc
 end
 function c83102080.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
@@ -24,13 +24,13 @@ function c83102080.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c83102080.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsOnField() and chkc:IsDestructable() and chkc~=c end
+	if chkc then return chkc:IsOnField() and chkc~=c end
 	if chk==0 then
 		if e:GetLabel()~=0 then
 			e:SetLabel(0)
 			return Duel.IsExistingMatchingCard(c83102080.filter,tp,LOCATION_ONFIELD,0,1,c,c)
 		else
-			return Duel.IsExistingTarget(Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
+			return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 		end
 	end
 	if e:GetLabel()~=0 then
@@ -40,7 +40,7 @@ function c83102080.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.SendtoGrave(g,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,c)
+	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,c)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c83102080.activate(e,tp,eg,ep,ev,re,r,rp)

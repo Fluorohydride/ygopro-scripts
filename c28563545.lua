@@ -15,7 +15,7 @@ function c28563545.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c28563545.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and c:IsDestructable()
+	return c:IsFaceup() and c:IsRace(RACE_DRAGON)
 end
 function c28563545.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c28563545.filter(chkc) end

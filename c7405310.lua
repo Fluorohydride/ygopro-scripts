@@ -30,8 +30,6 @@ function c7405310.operation(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ConfirmCards(tp,cg)
 		end
 	else
-		local cg=Duel.GetFieldGroup(1-tp,LOCATION_EXTRA,0)
-		Duel.ConfirmCards(tp,cg)
-		Duel.DiscardHand(tp,aux.TRUE,1,1,REASON_EFFECT+REASON_DISCARD)
+		Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT+REASON_DISCARD)
 	end
 end

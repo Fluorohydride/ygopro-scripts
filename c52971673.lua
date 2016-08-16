@@ -10,10 +10,10 @@ function c52971673.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c52971673.cfilter(c)
-	return c:IsType(TYPE_TOKEN) and c:IsDestructable()
+	return c:IsType(TYPE_TOKEN)
 end
 function c52971673.dfilter(c)
-	return not c:IsType(TYPE_TOKEN) and c:IsDestructable()
+	return not c:IsType(TYPE_TOKEN)
 end
 function c52971673.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c52971673.cfilter,tp,LOCATION_MZONE,0,1,nil)
@@ -25,7 +25,7 @@ function c52971673.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c52971673.cfilter,tp,LOCATION_MZONE,0,nil)
 	local dt=Duel.Destroy(g,REASON_EFFECT)
 	if dt==0 then return end
-	local dg=Duel.GetMatchingGroup(Card.IsDestructable,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,e:GetHandler())
+	local dg=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,e:GetHandler())
 	if dg:GetCount()>0 then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

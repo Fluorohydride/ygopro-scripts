@@ -39,7 +39,7 @@ function c33236860.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c33236860.filter(c,atk)
-	return c:IsFaceup() and c:GetDefense()<atk and c:IsDestructable()
+	return c:IsFaceup() and c:GetDefense()<atk
 end
 function c33236860.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()

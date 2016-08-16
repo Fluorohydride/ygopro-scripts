@@ -23,7 +23,7 @@ function c92918648.cfilter(c)
 	return c:IsSetCard(0x106e) and c:IsType(TYPE_SPELL)
 end
 function c92918648.filter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c92918648.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c92918648.cfilter,tp,LOCATION_GRAVE,0,1,nil)

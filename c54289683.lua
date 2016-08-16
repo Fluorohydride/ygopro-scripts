@@ -12,7 +12,7 @@ function c54289683.filter(c)
 	return c:IsFaceup() and c:IsCode(93130021)
 end
 function c54289683.desfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsDestructable()
+	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c54289683.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

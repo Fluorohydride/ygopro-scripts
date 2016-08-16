@@ -20,7 +20,7 @@ function c34449261.filter2(c,tp,tc)
 		and Duel.IsExistingMatchingCard(c34449261.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,tg)
 end
 function c34449261.desfilter(c,tg)
-	return not tg:IsContains(c) and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL and c:IsDestructable()
+	return not tg:IsContains(c) and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
 end
 function c34449261.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
@@ -43,8 +43,9 @@ function c34449261.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	local dam=tg:Filter(Card.IsFaceup,nil):GetSum(Card.GetAttack)
 	local g=Duel.GetMatchingGroup(c34449261.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tg)
-	if g:GetCount()>0 and Duel.Destroy(g,REASON_EFFECT)~=0 then
+	if g:GetCount()>0 and Duel.Destroy(g,REASON_EFFECT)~=0 and dam>0 then
 		local dg=Duel.GetOperatedGroup()
+		Duel.BreakEffect()
 		if dg:IsExists(aux.FilterEqualFunction(Card.GetPreviousControler,tp),1,nil) then Duel.Damage(tp,dam,REASON_EFFECT,true) end
 		if dg:IsExists(aux.FilterEqualFunction(Card.GetPreviousControler,1-tp),1,nil) then Duel.Damage(1-tp,dam,REASON_EFFECT,true) end
 		Duel.RDComplete()
