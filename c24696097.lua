@@ -95,11 +95,10 @@ function c24696097.datg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c24696097.daop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
-		Duel.Remove(c,POS_FACEUP,REASON_EFFECT)
+	if c:IsRelateToEffect(e) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0 then
+		Duel.NegateAttack()
+		c:RegisterFlagEffect(24696097,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,0)
 	end
-	Duel.NegateAttack()
-	c:RegisterFlagEffect(24696097,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,0)
 end
 function c24696097.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
