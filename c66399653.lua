@@ -61,7 +61,7 @@ end
 function c66399653.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsControler(tp) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local sg=Duel.SelectMatchingCard(tp,c66399653.cfilter,tp,LOCATION_DECK,0,1,1,nil,tc)
 		local ec=sg:GetFirst()
