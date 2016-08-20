@@ -26,7 +26,7 @@ function c24311595.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c24311595.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
