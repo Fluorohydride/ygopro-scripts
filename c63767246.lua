@@ -73,7 +73,7 @@ function c63767246.cbop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c63767246.atkfilter1(c,tp)
-	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsType(TYPE_XYZ)
+	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsType(TYPE_XYZ) and c:GetBaseAttack()>0
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
 end
 function c63767246.atkcon(e,tp,eg,ep,ev,re,r,rp)
