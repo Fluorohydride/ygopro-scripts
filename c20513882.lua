@@ -32,12 +32,12 @@ function c20513882.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		return Duel.CheckReleaseGroup(tp,c20513882.cfilter,1,nil,tp)
 	end
 	local g=Duel.SelectReleaseGroup(tp,c20513882.cfilter,1,1,nil,tp)
-	Duel.SetTargetCard(g)
+	e:SetLabelObject(g:GetFirst())
 	Duel.Release(g,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK+LOCATION_GRAVE)
 end
 function c20513882.activate(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetFirstTarget()
+	local tc=e:GetLabelObject()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c20513882.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,tc)
 	if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
