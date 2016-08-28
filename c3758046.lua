@@ -50,7 +50,8 @@ end
 function c3758046.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local tg=Duel.GetMatchingGroup(c3758046.filter,tp,LOCATION_GRAVE,0,nil,e,tp,Duel.GetTurnCount())
-	if ft<=0 or (Duel.IsPlayerAffectedByEffect(tp,59822133) and tg:GetCount()>1 and ft>1) then return end
+	if ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local g=nil
 	if tg:GetCount()>ft then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
