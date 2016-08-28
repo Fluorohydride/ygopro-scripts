@@ -65,7 +65,7 @@ end
 function c56562619.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED) and c:IsRelateToEffect(e) then
 		tc:RegisterFlagEffect(56562619,RESET_EVENT+0x1fe0000,0,0)
 		e:GetLabelObject():SetLabel(1)
 		if c:GetFlagEffect(56562619)==0 then
