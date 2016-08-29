@@ -31,7 +31,7 @@ function c93775296.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()==0 then return end
-	if g:GetCount()>ft then return end
+	if g:GetCount()>ft or (g:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
 	local tc=g:GetFirst()
 	while tc do
 		local spos=0

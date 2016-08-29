@@ -29,9 +29,8 @@ function c96383838.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local sg=g:Filter(c96383838.rfilter,nil,e,tp)
-	if sg:GetCount()==0 then return end
+	if sg:GetCount()==0 or (sg:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	if sg:GetCount()>ft then sg=sg:Select(tp,ft,ft,nil) end
 	Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)

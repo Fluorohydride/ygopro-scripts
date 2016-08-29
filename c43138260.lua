@@ -46,10 +46,9 @@ function c43138260.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,2,0,0)
 end
 function c43138260.spop2(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()==0 then return end
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<g:GetCount() then return end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<g:GetCount() or (g:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
 	local c=e:GetHandler()
 	local tc=g:GetFirst()
 	while tc do
