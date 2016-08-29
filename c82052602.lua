@@ -54,10 +54,11 @@ function c82052602.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterFlagEffect(tp,82052602,RESET_PHASE+PHASE_END,0,1)
 end
 function c82052602.activate(e,tp,eg,ep,ev,re,r,rp)
-	local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft1==0 then return end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c82052602.filter,tp,LOCATION_GRAVE,0,ft1,ft1,nil,Duel.GetTurnCount(),e,tp)
+	local g=Duel.SelectMatchingCard(tp,c82052602.filter,tp,LOCATION_GRAVE,0,ft,ft,nil,Duel.GetTurnCount(),e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 		Duel.BreakEffect()
