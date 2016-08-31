@@ -28,10 +28,10 @@ function c86174055.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,2,0,0)
 end
 function c86174055.operation(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	local ct=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if g:GetCount()<=ct then
+		if g:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 		local tc=g:GetFirst()
 		while tc do
 			Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)

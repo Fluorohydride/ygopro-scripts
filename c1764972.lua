@@ -49,9 +49,8 @@ end
 function c1764972.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c1764972.sfilter,nil,e,tp)
-	if g:GetCount()==0 or g:GetCount()>ft then return false end
+	if g:GetCount()==0 or g:GetCount()>ft or (g:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return false end
 	local c=e:GetHandler()
 	local fid=c:GetFieldID()
 	local tc=g:GetFirst()

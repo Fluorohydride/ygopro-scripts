@@ -51,8 +51,7 @@ function c61840587.operation(e,tp,eg,ep,ev,re,r,rp)
 	local sg=g:Filter(c61840587.sfilter,nil,e,tp)
 	local sct=sg:GetCount()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if sct==0 or ft<=0 then return end
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
+	if sct==0 or ft<=0 or (sct>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
 	if sct>ft then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		sg=sg:Select(tp,ft,ft,nil)
