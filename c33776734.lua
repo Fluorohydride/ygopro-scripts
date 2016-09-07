@@ -41,29 +41,21 @@ function c33776734.initial_effect(c)
 		ge1:SetOperation(c33776734.checkop1)
 		Duel.RegisterEffect(ge1,0)
 		local ge2=ge1:Clone()
-		e2:SetCode(EVENT_CHAIN_NEGATED)
-		e2:SetOperation(c33776734.checkop2)
+		ge2:SetCode(EVENT_CHAIN_NEGATED)
+		ge2:SetOperation(c33776734.checkop2)
 		Duel.RegisterEffect(ge2,0)
 	end
 end
 c33776734.lvupcount=1
 c33776734.lvup={33776734}
 function c33776734.checkop1(e,tp,eg,ep,ev,re,r,rp)
-	local tc=eg:GetFirst()
-	while tc do
-		if re and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and tc==re:GetHandler() then
-			tc:RegisterFlagEffect(33776734,RESET_EVENT+0x1fe0000,0,1) 
-		end
-		tc=eg:GetNext()
+	if re and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) then
+		re:GetHandler():RegisterFlagEffect(33776734,RESET_EVENT+0x1fe0000,0,1)
 	end
 end
 function c33776734.checkop2(e,tp,eg,ep,ev,re,r,rp)
-	local tc=eg:GetFirst()
-	while tc do
-		if re and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and tc==re:GetHandler() then
-			tc:ResetFlagEffect(33776734)
-		end
-		tc=eg:GetNext()
+	if re and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) then
+		re:GetHandler():ResetFlagEffect(33776734)
 	end
 end
 function c33776734.spcon(e,tp,eg,ep,ev,re,r,rp)
