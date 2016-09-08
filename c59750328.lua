@@ -22,7 +22,7 @@ function c59750328.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c59750328.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ct=3-Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)
+	local ct=3-Duel.GetMatchingGroupCount(nil,tp,LOCATION_HAND,0,e:GetHandler())
 	if chk==0 then return ct>0 and Duel.IsPlayerCanDraw(tp,ct) end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,ct)
