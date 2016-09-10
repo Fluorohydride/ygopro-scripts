@@ -39,25 +39,30 @@ end
 function c56562619.splimit(e,se,sp,st)
 	return (se:IsActiveType(TYPE_MONSTER) and se:GetHandler():IsSetCard(0x2b)) or se:GetHandler():IsSetCard(0x61)
 end
-function c56562619.cfilter1(c)
+function c56562619.cfilter1(c,tp)
 	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsType(TYPE_MONSTER) and c:IsSetCard(0x2b) and c:IsAbleToGraveAsCost()
+		and Duel.IsExistingMatchingCard(c56562619.cfilter2,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,c,c)
 end
-function c56562619.cfilter2(c)
+function c56562619.cfilter2(c,cc)
 	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsSetCard(0x61) and c:IsAbleToGraveAsCost()
+		and Duel.IsExistingTarget(c56562619.rmfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,c,cc)
+end
+function c56562619.rmfilter(c,cc)
+	return c~=cc and c:IsAbleToRemove()
 end
 function c56562619.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c56562619.cfilter1,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,nil)
-		and Duel.IsExistingMatchingCard(c56562619.cfilter2,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c56562619.cfilter1,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,c56562619.cfilter1,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,1,nil)
+	local g1=Duel.SelectMatchingCard(tp,c56562619.cfilter1,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil,tp)
+	local cc=g1:GetFirst()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectMatchingCard(tp,c56562619.cfilter2,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,1,nil)
+	local g2=Duel.SelectMatchingCard(tp,c56562619.cfilter2,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,1,cc,cc)
 	g1:Merge(g2)
 	Duel.SendtoGrave(g1,REASON_COST)
 end
 function c56562619.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsAbleToRemove() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsAbleToRemove,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,Card.IsAbleToRemove,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
