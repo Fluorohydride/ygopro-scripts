@@ -1,4 +1,4 @@
---U.A. Perfect Ace
+--U.A.パーフェクトエース
 function c82419869.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
