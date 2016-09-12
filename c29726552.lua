@@ -1,4 +1,4 @@
---Kumongous, the Sticky String Kaiju
+--粘糸壊獣クモグス
 function c29726552.initial_effect(c)
 	c:SetUniqueOnField(1,0,20000000,LOCATION_MZONE)
 	--special summon rule
@@ -54,7 +54,7 @@ function c29726552.spcon2(e,c)
 		and Duel.IsExistingMatchingCard(c29726552.cfilter,tp,0,LOCATION_MZONE,1,nil)
 end
 function c29726552.filter(c,tp)
-	return c:GetSummonPlayer()==tp
+	return c:GetSummonPlayer()==tp and c:IsFaceup()
 end
 function c29726552.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0x37,2,REASON_COST) end
