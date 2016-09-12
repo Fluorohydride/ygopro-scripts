@@ -1,4 +1,4 @@
---Kaiju Capture Mission
+--壊獣捕獲大作戦
 function c81057455.initial_effect(c)
 	c:EnableCounterPermit(0x37)
 	c:SetCounterLimit(0x37,3)
@@ -72,7 +72,7 @@ function c81057455.posop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c81057455.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousControler()==tp and rp~=tp and c:IsReason(REASON_DESTROY)
+	return c:GetPreviousControler()==tp and rp==1-tp and c:IsReason(REASON_DESTROY+REASON_EFFECT)
 end
 function c81057455.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,2) end

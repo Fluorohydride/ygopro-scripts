@@ -1,4 +1,4 @@
---Super Anti-Kaiju War Machine Mecha-Dogoran
+--対壊獣用決戦兵器スーパーメカドゴラン
 function c84769941.initial_effect(c)
 	c:EnableReviveLimit()
 	c:SetUniqueOnField(1,0,20000000,LOCATION_MZONE)

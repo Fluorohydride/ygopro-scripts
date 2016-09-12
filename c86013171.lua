@@ -1,4 +1,4 @@
---Kozmo Scaredy Lion
+--Kozmo－パーヴィッド
 function c86013171.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

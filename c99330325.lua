@@ -1,4 +1,4 @@
---Interrupted Kaiju Slumber
+--妨げられた壊獣の眠り
 function c99330325.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -41,14 +41,14 @@ function c99330325.filter2(c,e,tp,cd)
 end
 function c99330325.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and Duel.IsExistingMatchingCard(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
+		and Duel.GetMatchingGroupCount(tp,LOCATION_MZONE,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c99330325.chkfilter1,tp,LOCATION_DECK,0,1,nil,e,tp) end
-	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,LOCATION_MZONE)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_DECK)
 end
 function c99330325.activate(e,tp,eg,ep,ev,re,r,rp)
-	local dg=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local dg=Duel.GetFieldGroup(tp,LOCATION_MZONE,LOCATION_MZONE)
 	if Duel.Destroy(dg,REASON_EFFECT)==0 then return end
 	local sg=Duel.GetMatchingGroup(c99330325.filter1,tp,LOCATION_DECK,0,nil,e,tp)
 	if sg:GetCount()>0 and not Duel.IsPlayerAffectedByEffect(tp,59822133)

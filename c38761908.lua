@@ -1,4 +1,4 @@
---버제스토마 디노미스쿠스
+--バージェストマ・ディノミスクス
 function c38761908.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

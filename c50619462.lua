@@ -1,4 +1,4 @@
---Cattle Call
+--烏合無象
 function c50619462.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

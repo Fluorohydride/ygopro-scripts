@@ -1,4 +1,4 @@
---Painful Escape
+--苦渋の黙札
 function c20513882.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

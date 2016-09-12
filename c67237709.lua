@@ -1,4 +1,4 @@
---Kozmotown
+--Kozmo－エメラルドポリス
 function c67237709.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

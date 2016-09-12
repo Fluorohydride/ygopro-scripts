@@ -1,4 +1,4 @@
---Gadarla, the Mystery Dust Kaiju
+--怪粉壊獣ガダーラ
 function c36956512.initial_effect(c)
 	c:SetUniqueOnField(1,0,20000000,LOCATION_MZONE)
 	--special summon rule

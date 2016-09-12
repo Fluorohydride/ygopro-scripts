@@ -1,4 +1,4 @@
---Extinction on Schedule
+--絶滅の定め
 function c95676943.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

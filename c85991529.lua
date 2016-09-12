@@ -1,4 +1,4 @@
---Kozmo Dark Planet
+--Kozmo－ダークプラネット
 function c85991529.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition

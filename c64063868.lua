@@ -1,4 +1,4 @@
---Kozmo Dark Eclipser
+--Kozmo－ダークエクリプサー
 function c64063868.initial_effect(c)
 	--cannot be targeted
 	local e1=Effect.CreateEffect(c)

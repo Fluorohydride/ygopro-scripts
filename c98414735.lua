@@ -1,4 +1,4 @@
---버제스토마 카나디아
+--バージェストマ・カナディア
 function c98414735.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

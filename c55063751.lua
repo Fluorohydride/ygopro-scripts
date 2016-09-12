@@ -1,4 +1,4 @@
---Gameciel, the Sea Turtle Kaiju
+--海亀壊獣ガメシエル
 function c55063751.initial_effect(c)
 	c:SetUniqueOnField(1,0,20000000,LOCATION_MZONE)
 	--special summon rule

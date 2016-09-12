@@ -1,4 +1,4 @@
---버제스토마 엘도니아
+--バージェストマ・エルドニア
 function c2376209.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

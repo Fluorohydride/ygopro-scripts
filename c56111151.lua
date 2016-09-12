@@ -1,4 +1,4 @@
---Kyoutou Waterfront
+--KYOUTOUウォーターフロント
 function c56111151.initial_effect(c)
 	c:EnableCounterPermit(0x37)
 	c:SetCounterLimit(0x37,5)

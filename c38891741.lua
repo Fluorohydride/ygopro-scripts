@@ -1,4 +1,4 @@
---Ultimate Providence
+--神の摂理
 function c38891741.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

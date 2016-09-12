@@ -1,4 +1,4 @@
---Kozmo Farmgirl
+--Kozmo－ドロッセル
 function c31061682.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

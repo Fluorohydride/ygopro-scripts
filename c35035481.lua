@@ -1,4 +1,4 @@
---버제스토마 올레노이데스
+--バージェストマ・オレノイデス
 function c35035481.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
