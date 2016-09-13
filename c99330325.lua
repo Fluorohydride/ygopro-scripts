@@ -41,7 +41,7 @@ function c99330325.filter2(c,e,tp,cd)
 end
 function c99330325.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and Duel.GetMatchingGroupCount(tp,LOCATION_MZONE,LOCATION_MZONE)>0
+		and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c99330325.chkfilter1,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,LOCATION_MZONE)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
