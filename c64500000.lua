@@ -53,7 +53,7 @@ function c64500000.eqlimit(e,c)
 	return c:IsCode(62651957,65622692) or e:GetHandler():GetEquipTarget()==c
 end
 function c64500000.filter(c)
-	return c:IsFaceup() and c:IsCode(62651957,65622692)
+	return c:IsFaceup() and c:IsCode(62651957,65622692) and not c:IsHasEffect(EFFECT_OLD_UNION)
 end
 function c64500000.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c64500000.filter(chkc) end

@@ -16,7 +16,7 @@ function c42940404.initial_effect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCondition(c42940404.uncon)
+	e2:SetCondition(aux.uncon)
 	e2:SetTarget(c42940404.sptg)
 	e2:SetOperation(c42940404.spop)
 	c:RegisterEffect(e2)
@@ -25,7 +25,7 @@ function c42940404.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
 	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e3:SetCondition(c42940404.uncon)
+	e3:SetCondition(aux.uncon)
 	e3:SetValue(1)
 	c:RegisterEffect(e3)
 	--eqlimit
@@ -44,12 +44,15 @@ function c42940404.initial_effect(c)
 	e5:SetTarget(c42940404.stg)
 	e5:SetOperation(c42940404.sop)
 	c:RegisterEffect(e5)
-end
-function c42940404.uncon(e)
-	return e:GetHandler():IsStatus(STATUS_UNION)
+	--old union check
+	local e6=Effect.CreateEffect(c)
+	e6:SetType(EFFECT_TYPE_EQUIP)
+	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_IGNORE_IMMUNE)
+	e6:SetCode(EFFECT_OLD_UNION)
+	c:RegisterEffect(e6)
 end
 function c42940404.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:GetUnionCount()==0
+	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and not c:IsHasEffect(EFFECT_OLD_UNION)
 end
 function c42940404.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c42940404.filter(chkc) and chkc~=e:GetHandler() end

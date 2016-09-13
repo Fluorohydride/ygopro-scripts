@@ -51,7 +51,7 @@ function c3405259.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 function c3405259.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT)
+	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT) and not c:IsHasEffect(EFFECT_OLD_UNION)
 end
 function c3405259.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()

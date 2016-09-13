@@ -16,7 +16,7 @@ function c31768112.initial_effect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCondition(c31768112.uncon)
+	e2:SetCondition(aux.uncon)
 	e2:SetTarget(c31768112.sptg)
 	e2:SetOperation(c31768112.spop)
 	c:RegisterEffect(e2)
@@ -25,7 +25,7 @@ function c31768112.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
 	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e3:SetCondition(c31768112.uncon)
+	e3:SetCondition(aux.uncon)
 	e3:SetValue(1)
 	c:RegisterEffect(e3)
 	--draw
@@ -47,15 +47,18 @@ function c31768112.initial_effect(c)
 	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e5:SetValue(c31768112.eqlimit)
 	c:RegisterEffect(e5)
-end
-function c31768112.uncon(e)
-	return e:GetHandler():IsStatus(STATUS_UNION)
+	--old union check
+	local e6=Effect.CreateEffect(c)
+	e6:SetType(EFFECT_TYPE_EQUIP)
+	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_IGNORE_IMMUNE)
+	e6:SetCode(EFFECT_OLD_UNION)
+	c:RegisterEffect(e6)
 end
 function c31768112.eqlimit(e,c)
 	return c:IsRace(RACE_MACHINE)
 end
 function c31768112.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:GetUnionCount()==0
+	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and not c:IsHasEffect(EFFECT_OLD_UNION)
 end
 function c31768112.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c31768112.filter(chkc) end
@@ -92,7 +95,7 @@ function c31768112.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c31768112.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsStatus(STATUS_UNION) and e:GetHandler():GetEquipTarget()==eg:GetFirst()
+	return aux.uncon(e) and e:GetHandler():GetEquipTarget()==eg:GetFirst()
 end
 function c31768112.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -490,6 +490,7 @@ EFFECT_ONLY_ATTACK_MONSTER		=343	--只能攻擊X
 EFFECT_MUST_ATTACK_MONSTER		=344	--若攻擊則必須攻擊X
 EFFECT_PATRICIAN_OF_DARKNESS	=345	--由對手選擇攻擊對象(黑暗貴族)
 EFFECT_EXTRA_ATTACK_MONSTER		=346	--對怪獸攻擊X次
+EFFECT_OLD_UNION		=347	--
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
 EVENT_STARTUP					=1000	--游戏开始时
