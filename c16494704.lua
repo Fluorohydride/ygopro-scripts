@@ -54,7 +54,7 @@ function c16494704.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tg=Duel.SelectMatchingCard(tp,c16494704.filter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp,mg,ft)
 	local tc=tg:GetFirst()
-	if tc then
+	if tc and not tc:IsHasEffect(EFFECT_NECRO_VALLEY) then
 		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
 		if tc.mat_filter then
 			mg=mg:Filter(tc.mat_filter,nil)

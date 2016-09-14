@@ -23,7 +23,7 @@ function c89801755.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(att)
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(rc)
-	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,1-tp,LOCATION_HAND+LOCATION_GRAVE)
+	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,1-tp,LOCATION_HAND+LOCATION_DECK)
 end
 function c89801755.filter(c,rc,att)
 	return c:IsRace(rc) and c:IsAttribute(att) and c:IsAbleToGrave()
