@@ -46,13 +46,13 @@ function c33622465.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c33622465.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,33622465,0,0x11,3,1200,400,RACE_WARRIOR,ATTRIBUTE_EARTH) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,33622465,0,0x11,1200,400,3,RACE_WARRIOR,ATTRIBUTE_EARTH) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c33622465.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,33622465,0,0x11,3,1200,400,RACE_WARRIOR,ATTRIBUTE_EARTH) then
+	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,33622465,0,0x11,1200,400,3,RACE_WARRIOR,ATTRIBUTE_EARTH) then
 		c:AddMonsterAttribute(TYPE_NORMAL)
 		Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP_DEFENSE)
 		c:AddMonsterAttributeComplete()

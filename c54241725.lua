@@ -87,13 +87,13 @@ function c54241725.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c54241725.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,54241725,0,0x11,5,1000,2400,RACE_FAIRY,ATTRIBUTE_LIGHT) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,54241725,0,0x11,1000,2400,5,RACE_FAIRY,ATTRIBUTE_LIGHT) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c54241725.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,54241725,0,0x11,5,1000,2400,RACE_FAIRY,ATTRIBUTE_LIGHT) then
+	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,54241725,0,0x11,1000,2400,5,RACE_FAIRY,ATTRIBUTE_LIGHT) then
 		c:AddMonsterAttribute(TYPE_NORMAL)
 		Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP_DEFENSE)
 		c:AddMonsterAttributeComplete()

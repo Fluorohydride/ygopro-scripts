@@ -32,14 +32,14 @@ function c51606429.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		if e:GetLabel()==0 then return false end
 		e:SetLabel(0)
 		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.IsPlayerCanSpecialSummonMonster(tp,51606429,0x10db,0x11,3,0,0,RACE_WARRIOR,ATTRIBUTE_DARK) end
+			and Duel.IsPlayerCanSpecialSummonMonster(tp,51606429,0x10db,0x11,0,0,3,RACE_WARRIOR,ATTRIBUTE_DARK) end
 	e:SetLabel(0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c51606429.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,51606429,0x10db,0x11,3,0,0,RACE_WARRIOR,ATTRIBUTE_DARK) then
+	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,51606429,0x10db,0x11,0,0,3,RACE_WARRIOR,ATTRIBUTE_DARK) then
 		c:AddMonsterAttribute(TYPE_NORMAL)
 		Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)
 		c:AddMonsterAttributeComplete()
