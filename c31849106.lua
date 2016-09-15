@@ -10,7 +10,7 @@ end
 function c31849106.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE)
+	e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetCode(EFFECT_TO_GRAVE_REDIRECT)
 	e1:SetTarget(c31849106.rmtarget)
 	e1:SetTargetRange(0xff, 0xff)

@@ -8,7 +8,7 @@ function c36995273.initial_effect(c)
 	--remove
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
+	e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EFFECT_TO_HAND_REDIRECT)
 	e2:SetTargetRange(LOCATION_ONFIELD,LOCATION_ONFIELD)

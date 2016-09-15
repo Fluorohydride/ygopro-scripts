@@ -10,7 +10,7 @@ function c30241314.initial_effect(c)
 	--remove
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE)
+	e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EFFECT_TO_GRAVE_REDIRECT)
 	e2:SetTargetRange(0xff,0xff)
