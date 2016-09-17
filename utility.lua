@@ -1640,6 +1640,10 @@ end
 function Auxiliary.exccon(e)
 	return Duel.GetTurnCount()~=e:GetHandler():GetTurnID() or e:GetHandler():IsReason(REASON_RETURN)
 end
+--condition of Union Monster
+function Auxiliary.uncon(e)
+	return e:GetHandler():IsStatus(STATUS_UNION)
+end
 --flag effect for spell counter
 function Auxiliary.chainreg(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():GetFlagEffect(1)==0 then

@@ -16,7 +16,7 @@ function c69456283.initial_effect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCondition(c69456283.uncon)
+	e2:SetCondition(aux.uncon)
 	e2:SetTarget(c69456283.sptg)
 	e2:SetOperation(c69456283.spop)
 	c:RegisterEffect(e2)
@@ -25,20 +25,20 @@ function c69456283.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
 	e3:SetCode(EFFECT_UPDATE_ATTACK)
 	e3:SetValue(3000)
-	e3:SetCondition(c69456283.uncon)
+	e3:SetCondition(aux.uncon)
 	c:RegisterEffect(e3)
 	--pierce
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_EQUIP)
 	e4:SetCode(EFFECT_PIERCE)
-	e4:SetCondition(c69456283.uncon)
+	e4:SetCondition(aux.uncon)
 	c:RegisterEffect(e4)
 	--destroy sub
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_EQUIP)
 	e5:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e5:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e5:SetCondition(c69456283.uncon)
+	e5:SetCondition(aux.uncon)
 	e5:SetValue(c69456283.repval)
 	c:RegisterEffect(e5)
 	--eqlimit
@@ -48,9 +48,12 @@ function c69456283.initial_effect(c)
 	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e6:SetValue(c69456283.eqlimit)
 	c:RegisterEffect(e6)
-end
-function c69456283.uncon(e)
-	return e:GetHandler():IsStatus(STATUS_UNION)
+	--old union check
+	local e7=Effect.CreateEffect(c)
+	e7:SetType(EFFECT_TYPE_EQUIP)
+	e7:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_IGNORE_IMMUNE)
+	e7:SetCode(EFFECT_OLD_UNION)
+	c:RegisterEffect(e7)
 end
 function c69456283.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
@@ -59,7 +62,7 @@ function c69456283.eqlimit(e,c)
 	return c:IsCode(48202661)
 end
 function c69456283.filter(c)
-	return c:IsFaceup() and c:IsCode(48202661) and c:GetUnionCount()==0
+	return c:IsFaceup() and c:IsCode(48202661) and not c:IsHasEffect(EFFECT_OLD_UNION)
 end
 function c69456283.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c69456283.filter(chkc) end

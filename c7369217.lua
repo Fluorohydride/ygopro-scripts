@@ -16,7 +16,7 @@ function c7369217.initial_effect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCondition(c7369217.uncon)
+	e2:SetCondition(aux.uncon)
 	e2:SetTarget(c7369217.sptg)
 	e2:SetOperation(c7369217.spop)
 	c:RegisterEffect(e2)
@@ -24,7 +24,7 @@ function c7369217.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
 	e3:SetCode(EFFECT_IMMUNE_EFFECT)
-	e3:SetCondition(c7369217.uncon)
+	e3:SetCondition(aux.uncon)
 	e3:SetValue(c7369217.efilter)
 	c:RegisterEffect(e3)
 	--destroy sub
@@ -42,6 +42,12 @@ function c7369217.initial_effect(c)
 	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e6:SetValue(1)
 	c:RegisterEffect(e6)
+	--old union check
+	local e7=Effect.CreateEffect(c)
+	e7:SetType(EFFECT_TYPE_EQUIP)
+	e7:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_IGNORE_IMMUNE)
+	e7:SetCode(EFFECT_OLD_UNION)
+	c:RegisterEffect(e7)
 end
 function c7369217.uncon(e)
 	return e:GetHandler():IsStatus(STATUS_UNION)
@@ -50,7 +56,7 @@ function c7369217.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end
 function c7369217.filter(c)
-	return c:IsFaceup() and c:GetUnionCount()==0
+	return c:IsFaceup() and not c:IsHasEffect(EFFECT_OLD_UNION)
 end
 function c7369217.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c7369217.filter(chkc) end

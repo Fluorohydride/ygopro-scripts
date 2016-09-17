@@ -16,7 +16,7 @@ function c65685470.initial_effect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCondition(c65685470.uncon)
+	e2:SetCondition(aux.uncon)
 	e2:SetTarget(c65685470.sptg)
 	e2:SetOperation(c65685470.spop)
 	c:RegisterEffect(e2)
@@ -25,21 +25,21 @@ function c65685470.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
 	e3:SetCode(EFFECT_UPDATE_ATTACK)
 	e3:SetValue(500)
-	e3:SetCondition(c65685470.uncon)
+	e3:SetCondition(aux.uncon)
 	c:RegisterEffect(e3)
 	--Def up
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_EQUIP)
 	e4:SetCode(EFFECT_UPDATE_DEFENSE)
 	e4:SetValue(500)
-	e4:SetCondition(c65685470.uncon)
+	e4:SetCondition(aux.uncon)
 	c:RegisterEffect(e4)
 	--destroy sub
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_EQUIP)
 	e5:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e5:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e5:SetCondition(c65685470.uncon)
+	e5:SetCondition(aux.uncon)
 	e5:SetValue(1)
 	c:RegisterEffect(e5)
 	--draw
@@ -61,15 +61,18 @@ function c65685470.initial_effect(c)
 	e7:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e7:SetValue(c65685470.eqlimit)
 	c:RegisterEffect(e7)
-end
-function c65685470.uncon(e)
-	return e:GetHandler():IsStatus(STATUS_UNION)
+	--old union check
+	local e8=Effect.CreateEffect(c)
+	e8:SetType(EFFECT_TYPE_EQUIP)
+	e8:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_IGNORE_IMMUNE)
+	e8:SetCode(EFFECT_OLD_UNION)
+	c:RegisterEffect(e8)
 end
 function c65685470.eqlimit(e,c)
 	return c:IsSetCard(0x3d)
 end
 function c65685470.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and c:GetUnionCount()==0
+	return c:IsFaceup() and c:IsSetCard(0x3d) and not c:IsHasEffect(EFFECT_OLD_UNION)
 end
 function c65685470.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c65685470.filter(chkc) end
@@ -106,7 +109,7 @@ function c65685470.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c65685470.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsStatus(STATUS_UNION) and e:GetHandler():GetEquipTarget()==eg:GetFirst()
+	return aux.uncon(e) and e:GetHandler():GetEquipTarget()==eg:GetFirst()
 end
 function c65685470.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

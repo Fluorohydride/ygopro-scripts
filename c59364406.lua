@@ -16,7 +16,7 @@ function c59364406.initial_effect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCondition(c59364406.uncon)
+	e2:SetCondition(aux.uncon)
 	e2:SetTarget(c59364406.sptg)
 	e2:SetOperation(c59364406.spop)
 	c:RegisterEffect(e2)
@@ -37,7 +37,7 @@ function c59364406.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_EQUIP)
 	e4:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e4:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e4:SetCondition(c59364406.uncon)
+	e4:SetCondition(aux.uncon)
 	e4:SetValue(c59364406.repval)
 	c:RegisterEffect(e4)
 	--eqlimit
@@ -47,9 +47,12 @@ function c59364406.initial_effect(c)
 	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e5:SetValue(c59364406.eqlimit)
 	c:RegisterEffect(e5)
-end
-function c59364406.uncon(e)
-	return e:GetHandler():IsStatus(STATUS_UNION)
+	--old union check
+	local e6=Effect.CreateEffect(c)
+	e6:SetType(EFFECT_TYPE_EQUIP)
+	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_IGNORE_IMMUNE)
+	e6:SetCode(EFFECT_OLD_UNION)
+	c:RegisterEffect(e6)
 end
 function c59364406.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
@@ -58,7 +61,7 @@ function c59364406.eqlimit(e,c)
 	return c:IsCode(85359414)
 end
 function c59364406.filter(c)
-	return c:IsFaceup() and c:IsCode(85359414) and c:GetUnionCount()==0
+	return c:IsFaceup() and c:IsCode(85359414) and not c:IsHasEffect(EFFECT_OLD_UNION)
 end
 function c59364406.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c59364406.filter(chkc) end
@@ -96,7 +99,7 @@ function c59364406.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c59364406.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsStatus(STATUS_UNION) and ep~=tp and eg:GetFirst()==e:GetHandler():GetEquipTarget()
+	return aux.uncon(e) and ep~=tp and eg:GetFirst()==e:GetHandler():GetEquipTarget()
 end
 function c59364406.desfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP)

@@ -16,7 +16,7 @@ function c84313685.initial_effect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCondition(c84313685.uncon)
+	e2:SetCondition(aux.uncon)
 	e2:SetTarget(c84313685.sptg)
 	e2:SetOperation(c84313685.spop)
 	c:RegisterEffect(e2)
@@ -25,7 +25,7 @@ function c84313685.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
 	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e3:SetCondition(c84313685.uncon)
+	e3:SetCondition(aux.uncon)
 	e3:SetValue(1)
 	c:RegisterEffect(e3)
 	--special summon
@@ -47,15 +47,18 @@ function c84313685.initial_effect(c)
 	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e5:SetValue(c84313685.eqlimit)
 	c:RegisterEffect(e5)
-end
-function c84313685.uncon(e)
-	return e:GetHandler():IsStatus(STATUS_UNION)
+	--old union check
+	local e6=Effect.CreateEffect(c)
+	e6:SetType(EFFECT_TYPE_EQUIP)
+	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_IGNORE_IMMUNE)
+	e6:SetCode(EFFECT_OLD_UNION)
+	c:RegisterEffect(e6)
 end
 function c84313685.eqlimit(e,c)
 	return c:IsSetCard(0x30)
 end
 function c84313685.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x30) and c:GetUnionCount()==0
+	return c:IsFaceup() and c:IsSetCard(0x30) and not c:IsHasEffect(EFFECT_OLD_UNION)
 end
 function c84313685.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c84313685.filter(chkc) end
@@ -92,7 +95,7 @@ function c84313685.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c84313685.gspcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsStatus(STATUS_UNION) and e:GetHandler():GetEquipTarget()==eg:GetFirst()
+	return aux.uncon(e) and e:GetHandler():GetEquipTarget()==eg:GetFirst()
 end
 function c84313685.gfilter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsSetCard(0x30) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
