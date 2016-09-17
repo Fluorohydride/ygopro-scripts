@@ -138,6 +138,28 @@ function Auxiliary.SpiritReturnOperation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
 end
+function Auxiliary.IsUnionState(effect)
+	local c=effect:GetHandler()
+	return c:IsHasEffect(EFFECT_UNION_STATUS)
+end
+function Auxiliary.SetUnionState(c)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_UNION_STATUS)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetReset(RESET_EVENT+0x1fe0000)
+	c:RegisterEffect(e1)
+	if c.old_union then
+		local e2=e1:Clone()
+		e2:SetCode(EFFECT_OLDUNION_STATUS)
+		c:RegisterEffect(e2)
+	end
+end
+function Auxiliary.CheckUnionEquip(uc,tc)
+	ct1,ct2=tc:GetUnionCount()
+	if uc.old_union then return ct1==0
+	else return ct2==0 end
+end
 function Auxiliary.TargetEqualFunction(f,value,a,b,c)
 	return	function(effect,target)
 				return f(target,a,b,c)==value

@@ -16,7 +16,7 @@ function c47693640.initial_effect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCondition(c47693640.uncon)
+	e2:SetCondition(aux.IsUnionState)
 	e2:SetTarget(c47693640.sptg)
 	e2:SetOperation(c47693640.spop)
 	c:RegisterEffect(e2)
@@ -25,14 +25,14 @@ function c47693640.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
 	e3:SetCode(EFFECT_UPDATE_ATTACK)
 	e3:SetValue(500)
-	e3:SetCondition(c47693640.uncon)
+	e3:SetCondition(aux.IsUnionState)
 	c:RegisterEffect(e3)
 	--Def up
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_EQUIP)
 	e4:SetCode(EFFECT_UPDATE_DEFENSE)
 	e4:SetValue(500)
-	e4:SetCondition(c47693640.uncon)
+	e4:SetCondition(aux.IsUnionState)
 	c:RegisterEffect(e4)
 	--handes
 	local e5=Effect.CreateEffect(c)
@@ -50,7 +50,7 @@ function c47693640.initial_effect(c)
 	e6:SetType(EFFECT_TYPE_EQUIP)
 	e6:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e6:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e6:SetCondition(c47693640.uncon)
+	e6:SetCondition(aux.IsUnionState)
 	e6:SetValue(c47693640.repval)
 	c:RegisterEffect(e6)
 	--eqlimit
@@ -61,9 +61,7 @@ function c47693640.initial_effect(c)
 	e7:SetValue(c47693640.eqlimit)
 	c:RegisterEffect(e7)
 end
-function c47693640.uncon(e)
-	return e:GetHandler():IsStatus(STATUS_UNION)
-end
+c47693640.old_union=true
 function c47693640.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end
@@ -91,7 +89,7 @@ function c47693640.eqop(e,tp,eg,ep,ev,re,r,rp)
 		return
 	end
 	if not Duel.Equip(tp,c,tc,false) then return end
-	c:SetStatus(STATUS_UNION,true)
+	aux.SetUnionState(c)
 end
 function c47693640.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(47693640)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -109,7 +107,7 @@ function c47693640.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c47693640.hdcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsStatus(STATUS_UNION) and eg:GetFirst()==e:GetHandler():GetEquipTarget()
+	return aux.IsUnionState(e) and eg:GetFirst()==e:GetHandler():GetEquipTarget()
 end
 function c47693640.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

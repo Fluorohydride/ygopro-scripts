@@ -16,7 +16,7 @@ function c63676256.initial_effect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCondition(c63676256.uncon)
+	e2:SetCondition(aux.IsUnionState)
 	e2:SetTarget(c63676256.sptg)
 	e2:SetOperation(c63676256.spop)
 	c:RegisterEffect(e2)
@@ -25,7 +25,7 @@ function c63676256.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
 	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e3:SetCondition(c63676256.uncon)
+	e3:SetCondition(aux.IsUnionState)
 	e3:SetValue(1)
 	c:RegisterEffect(e3)
 	--eqlimit
@@ -39,7 +39,7 @@ function c63676256.initial_effect(c)
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_EQUIP)
 	e5:SetCode(EFFECT_UPDATE_ATTACK)
-	e5:SetCondition(c63676256.uncon)
+	e5:SetCondition(aux.IsUnionState)
 	e5:SetValue(-500)
 	c:RegisterEffect(e5)
 	local e6=e5:Clone()
@@ -57,9 +57,7 @@ function c63676256.initial_effect(c)
 	e7:SetOperation(c63676256.desop)
 	c:RegisterEffect(e7)
 end
-function c63676256.uncon(e)
-	return e:GetHandler():IsStatus(STATUS_UNION)
-end
+c63676256.old_union=true
 function c63676256.filter(c)
 	return c:IsFaceup() and c:GetUnionCount()==0
 end
@@ -81,7 +79,7 @@ function c63676256.eqop(e,tp,eg,ep,ev,re,r,rp)
 		return
 	end
 	if not Duel.Equip(tp,c,tc,false) then return end
-	c:SetStatus(STATUS_UNION,true)
+	aux.SetUnionState(c)
 end
 function c63676256.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(63676256)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -98,7 +96,7 @@ function c63676256.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c63676256.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsStatus(STATUS_UNION) and eg:GetCount()==1 and eg:GetFirst()==e:GetHandler():GetEquipTarget()
+	return aux.IsUnionState(e) and eg:GetCount()==1 and eg:GetFirst()==e:GetHandler():GetEquipTarget()
 end
 function c63676256.dfilter(c,rac)
 	return c:IsFaceup() and c:IsRace(rac)

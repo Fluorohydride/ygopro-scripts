@@ -14,10 +14,10 @@ function c26931058.filter1(c,tp)
 		and Duel.IsExistingTarget(c26931058.filter2,tp,LOCATION_MZONE,0,1,c,c)
 end
 function c26931058.filter2(c,ec)
-	return c:IsFaceup() and ec:CheckEquipTarget(c)
+	return c:IsFaceup() and ec:CheckEquipTarget(c) and aux.CheckUnionEquip(ec,c)
 end
 function c26931058.filter3(c,e,tp)
-	return c:IsFaceup() and c:IsStatus(STATUS_UNION) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsFaceup() and c:IsHasEffect(EFFECT_UNION_STATUS) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c26931058.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
@@ -51,8 +51,9 @@ function c26931058.efop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 		local tc2=g:GetFirst()
 		if tc1==tc2 then tc2=g:GetNext() end
-		if tc1:IsFaceup() and tc2:IsFaceup() and tc1:IsRelateToEffect(e) and tc2:IsRelateToEffect(e) and Duel.Equip(tp,tc1,tc2,false) then
-			tc1:SetStatus(STATUS_UNION,true)
+		if tc1:IsFaceup() and tc2:IsFaceup() and tc1:IsRelateToEffect(e) and tc2:IsRelateToEffect(e)
+			and aux.CheckUnionEquip(tc1,tc2) and Duel.Equip(tp,tc1,tc2,false) then
+			aux.SetUnionState(tc1)
 		end
 	else
 		local tc=Duel.GetFirstTarget()

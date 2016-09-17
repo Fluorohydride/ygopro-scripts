@@ -12,7 +12,7 @@ function c12079734.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c12079734.filter1(c,ec)
-	return c:IsType(TYPE_UNION) and c:CheckEquipTarget(ec)
+	return c:IsType(TYPE_UNION) and c:CheckEquipTarget(ec) and aux.CheckUnionEquip(c,ec)
 end
 function c12079734.filter2(c)
 	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsAbleToDeck()
@@ -23,7 +23,7 @@ function c12079734.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if e:GetLabel()==0 then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c12079734.filter1(chkc,c)
 		else return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c12079734.filter2(chkc) end
 	end
-	local b1=Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and c:GetUnionCount()==0
+	local b1=Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingTarget(c12079734.filter1,tp,LOCATION_GRAVE,0,1,nil,c)
 	local b2=Duel.IsExistingTarget(c12079734.filter2,tp,LOCATION_MZONE,0,1,nil) and Duel.IsPlayerCanDraw(tp,1)
 	if chk==0 then return b1 or b2 end
@@ -51,10 +51,10 @@ function c12079734.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if e:GetLabel()==0 then
 		local c=e:GetHandler()
-		if c:IsRelateToEffect(e) and c:IsFaceup() and c:GetUnionCount()==0
-			and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and tc:IsRelateToEffect(e) then
-			Duel.Equip(tp,tc,c,false)
-			tc:SetStatus(STATUS_UNION,true)
+		if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e)
+			and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+			and aux.CheckUnionEquip(tc,c) and Duel.Equip(tp,tc,c,false) then
+			aux.SetUnionState(tc)
 		end
 	else
 		if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
