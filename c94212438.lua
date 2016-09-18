@@ -49,6 +49,7 @@ function c94212438.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,65)
 		e:GetHandler():RegisterFlagEffect(94212439,RESET_PHASE+PHASE_END,0,1)
 	else
+		e:SetLabel(0)
 		e:SetOperation(nil)
 	end
 end
