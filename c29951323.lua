@@ -57,7 +57,7 @@ end
 function c29951323.countcon2(e)
 	return Duel.GetTurnPlayer()~=e:GetHandlerPlayer()
 end
-function c29951323.countval(e,tp)
+function c29951323.countval(e,re,tp)
 	local t1=Duel.GetActivityCount(tp,ACTIVITY_SPSUMMON)
 	local t2=Duel.GetBattledCount(tp)
 	if t1>=t2 then return 0 else return t2-t1 end
