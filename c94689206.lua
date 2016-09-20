@@ -70,7 +70,7 @@ function c94689206.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c94689206.thfilter,tp,LOCATION_DECK,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local sg=g:SelectWithSumEqual(tp,Card.GetLevel,8,1,3)
-	if sg:GetCount()>0 then
+	if sg and sg:GetCount()>0 then
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,sg)
 	end

@@ -85,9 +85,7 @@ function c67547370.efilter(e,te)
 	return te:GetOwner()~=e:GetOwner()
 end
 function c67547370.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local bc=c:GetBattleTarget()
-	return bc and bc:IsControler(1-tp)
+	return e:GetHandler():GetBattleTarget()
 end
 function c67547370.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
