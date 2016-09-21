@@ -92,7 +92,11 @@ end
 function c78371393.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c78371393.filter,tp,0x13,0,1,1,nil,e,tp)
-	if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
+	if g:GetCount()>0 then
+		if g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
+			Duel.NegateEffect(0)
+			return
+		end
 		Duel.SpecialSummon(g,0,tp,tp,true,true,POS_FACEUP)
 		Duel.ShuffleDeck(tp)
 	end

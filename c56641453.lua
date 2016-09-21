@@ -56,7 +56,11 @@ function c56641453.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tcode=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c56641453.filter2,tp,0x13,0,1,1,nil,tcode,e,tp)
-	if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
+	if g:GetCount()>0 then
+		if g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
+			Duel.NegateEffect(0)
+			return
+		end
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
