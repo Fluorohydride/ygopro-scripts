@@ -40,5 +40,5 @@ function c41741922.spop(e,tp,eg,ep,ev,re,r,rp)
 		return
 	end
 	sg1:Merge(sg2)
-	Duel.SpecialSummonStep(sg1,0,tp,tp,false,false,POS_FACEUP)
+	Duel.SpecialSummon(sg1,0,tp,tp,false,false,POS_FACEUP)
 end
