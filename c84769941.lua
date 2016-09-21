@@ -58,7 +58,11 @@ function c84769941.eqop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectMatchingCard(tp,c84769941.eqfilter,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,1,nil)
 	local tc=g:GetFirst()
-	if tc and not tc:IsHasEffect(EFFECT_NECRO_VALLEY) then
+	if tc then
+		if tc:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
+			Duel.NegateEffect(0)
+			return
+		end
 		if not Duel.Equip(tp,tc,c,true) then return end
 		tc:RegisterFlagEffect(84769941,RESET_EVENT+0x1fe0000,0,0)
 		local e1=Effect.CreateEffect(c)

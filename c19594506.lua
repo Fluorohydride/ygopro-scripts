@@ -19,15 +19,19 @@ end
 function c19594506.filter(c)
 	return c:IsCode(42015635) and c:IsAbleToHand()
 end
-function c19594506.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c19594506.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c19594506.filter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK+LOCATION_GRAVE)
 end
-function c19594506.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c19594506.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local tc=Duel.SelectMatchingCard(tp,c19594506.filter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
-	if tc and not tc:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
-		Duel.SendtoHand(tc,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,tc)
+	local g=Duel.SelectMatchingCard(tp,c19594506.filter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
+	if g:GetCount()>0 then
+		if g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
+			Duel.NegateEffect(0)
+			return
+		end
+		Duel.SendtoHand(g,nil,REASON_EFFECT)
+		Duel.ConfirmCards(1-tp,g)
 	end
 end

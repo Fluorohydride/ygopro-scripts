@@ -54,7 +54,11 @@ function c16494704.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tg=Duel.SelectMatchingCard(tp,c16494704.filter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp,mg,ft)
 	local tc=tg:GetFirst()
-	if tc and not tc:IsHasEffect(EFFECT_NECRO_VALLEY) then
+	if tc then
+		if tc:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
+			Duel.NegateEffect(0)
+			return
+		end
 		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
 		if tc.mat_filter then
 			mg=mg:Filter(tc.mat_filter,nil)

@@ -33,7 +33,11 @@ function c94944637.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c94944637.filter,tp,LOCATION_GRAVE+LOCATION_HAND,LOCATION_GRAVE,1,1,nil,e,tp)
 	local c=e:GetHandler()
 	local tc=g:GetFirst()
-	if tc and not tc:IsHasEffect(EFFECT_NECRO_VALLEY) then
+	if tc then
+		if tc:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
+			Duel.NegateEffect(0)
+			return
+		end
 		if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==0 then return end
 		if c:IsFaceup() and c:IsRelateToEffect(e) then c:SetCardTarget(tc) end
 	end

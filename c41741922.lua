@@ -37,7 +37,11 @@ function c41741922.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	g=Duel.SelectMatchingCard(tp,c41741922.filter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	tc=g:GetFirst()
-	if tc and not tc:IsHasEffect(EFFECT_NECRO_VALLEY) then
+	if tc then
+		if tc:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
+			Duel.NegateEffect(0)
+			return
+		end
 		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 	Duel.SpecialSummonComplete()
