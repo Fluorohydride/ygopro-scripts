@@ -19,13 +19,19 @@ function c11834972.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c11834972.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeckAsCost(tp,1) end
-	local ct=Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)
-	if ct>5 then ct=5 end
-	local t={}
-	for i=1,ct do t[i]=i end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(11834972,1))
-	local ac=Duel.AnnounceNumber(tp,table.unpack(t))
-	Duel.DiscardDeck(tp,ac,REASON_COST)
+	local ct={}
+	for i=5,1,-1 do
+		if Duel.IsPlayerCanDiscardDeckAsCost(tp,i) then
+			table.insert(ct,i)
+		end
+	end
+	if #ct==1 then 
+		Duel.DiscardDeck(tp,ct[1],REASON_COST)
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(11834972,1))
+		local ac=Duel.AnnounceNumber(tp,table.unpack(ct))
+		Duel.DiscardDeck(tp,ac,REASON_COST)
+	end
 	local g=Duel.GetOperatedGroup()
 	e:SetLabel(g:FilterCount(Card.IsSetCard,nil,0x39)*200)
 end
