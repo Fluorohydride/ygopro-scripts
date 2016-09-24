@@ -25,11 +25,11 @@ end
 function c18486927.dectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
-	Duel.SetTargetParam(Duel.SelectOption(tp,70,71,72))
+	e:SetLabel(Duel.SelectOption(tp,70,71,72))
 end
 function c18486927.decop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local opt=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
+	local opt=e:GetLabel()
 	local ct=nil
 	if opt==0 then
 		ct=TYPE_MONSTER
@@ -52,8 +52,8 @@ function c18486927.decop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c18486927.actlimit(e,re,tp)
 	local ct=e:GetLabel()
-	return re:IsActiveType(ct) and not re:GetHandler():IsImmuneToEffect(e)
-		and (re:IsHasType(EFFECT_TYPE_ACTIVATE) or re:IsActiveType(TYPE_MONSTER))
+	return re:IsActiveType(ct) and (ct==TYPE_MONSTER or re:IsHasType(EFFECT_TYPE_ACTIVATE))
+		and not re:GetHandler():IsImmuneToEffect(e)
 end
 function c18486927.actcon(e)
 	local tc=Duel.GetAttacker()
@@ -75,7 +75,7 @@ end
 function c18486927.nameop(e,tp,eg,ep,ev,re,r,rp)
 	local ac=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToEffect(e) and c:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

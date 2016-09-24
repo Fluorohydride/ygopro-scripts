@@ -64,12 +64,11 @@ function c81269231.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c81269231.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToBattle() then return false end
 	local t=nil
 	if ev==0 then t=Duel.GetAttackTarget()
 	else t=Duel.GetAttacker() end
 	e:SetLabelObject(t)
-	return t and t:IsRelateToBattle()
+	return t and t:IsRelateToBattle() and e:GetHandler():IsStatus(STATUS_OPPO_BATTLE)
 end
 function c81269231.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetLabelObject():IsAbleToRemove() end
@@ -82,7 +81,7 @@ function c81269231.rmop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c81269231.aclimit(e,re,tp)
-	return re:IsHasType(EFFECT_TYPE_ACTIVATE) or (re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e))
+	return (re:IsHasType(EFFECT_TYPE_ACTIVATE) or re:IsActiveType(TYPE_MONSTER)) and not re:GetHandler():IsImmuneToEffect(e)
 end
 function c81269231.actcon(e)
 	local tp=e:GetHandlerPlayer()

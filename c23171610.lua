@@ -20,14 +20,9 @@ function c23171610.filter(c)
 end
 function c23171610.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c23171610.filter,tp,LOCATION_MZONE,0,1,nil) end
-	local g=Duel.GetMatchingGroup(c23171610.filter,tp,LOCATION_MZONE,0,nil)
-	Duel.SetTargetCard(g)
-end
-function c23171610.filter2(c,e)
-	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
 end
 function c23171610.activate(e,tp,eg,ep,ev,re,r,rp)
-	local sg=Duel.GetMatchingGroup(c23171610.filter2,tp,LOCATION_MZONE,0,nil,e)
+	local sg=Duel.GetMatchingGroup(c23171610.filter,tp,LOCATION_MZONE,0,nil)
 	local c=e:GetHandler()
 	local fid=c:GetFieldID()
 	local tc=sg:GetFirst()
