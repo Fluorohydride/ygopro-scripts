@@ -11,7 +11,7 @@ function c18486927.initial_effect(c)
 	local e2=e1:Clone()
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e2)
-	--name change (temp)
+	--name change
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(18486927,0))
 	e3:SetType(EFFECT_TYPE_IGNITION)
@@ -61,9 +61,12 @@ function c18486927.actcon(e)
 end
 function c18486927.nametg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local ac=Duel.AnnounceCardFilter(tp,0x51,OPCODE_ISSETCARD,18486927,OPCODE_ISCODE,OPCODE_NOT,OPCODE_AND)
+	local code=e:GetHandler():GetCode()
+	--c:IsSetCard(0x51) and not c:IsCode(code)
+	c18486927.announce_filter={0x51,OPCODE_ISSETCARD,code,OPCODE_ISCODE,OPCODE_NOT,OPCODE_AND}
+	local ac=Duel.AnnounceCardFilter(tp,table.unpack(c18486927.announce_filter))
 	Duel.SetTargetParam(ac)
-	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,ANNOUNCE_CARD)
+	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,ANNOUNCE_CARD_FILTER)
 end
 function c18486927.nameop(e,tp,eg,ep,ev,re,r,rp)
 	local ac=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)

@@ -24,7 +24,7 @@ function c50078320.initial_effect(c)
 end
 function c50078320.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ex,cg,ct,cp,cv=Duel.GetOperationInfo(ev,CATEGORY_ANNOUNCE)
-	return rp~=tp and ex and bit.band(cv,ANNOUNCE_CARD)~=0
+	return rp~=tp and ex and bit.band(cv,ANNOUNCE_CARD+ANNOUNCE_CARD_FILTER)~=0
 end
 function c50078320.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
@@ -32,8 +32,13 @@ function c50078320.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50078320.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ex,cg,ct,cp,cv=Duel.GetOperationInfo(ev,CATEGORY_ANNOUNCE)
+	local ac=0
 	Duel.Hint(HINT_SELECTMSG,tp,564)
-	local ac=Duel.AnnounceCard(tp,cv)
+	if bit.band(cv,ANNOUNCE_CARD)~=0 then
+		ac=Duel.AnnounceCard(tp,cv)
+	else
+		ac=Duel.AnnounceCardFilter(tp,table.unpack(re:GetHandler().announce_filter))
+	end
 	Duel.ChangeTargetParam(ev,ac)
 end
 function c50078320.desfilter(c)
