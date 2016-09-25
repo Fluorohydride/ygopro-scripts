@@ -16,9 +16,13 @@ function c44874522.initial_effect(c)
 	e2:SetLabelObject(e1)
 	--actlimit
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_ATTACK_ANNOUNCE)
-	e3:SetOperation(c44874522.atkop)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e3:SetCode(EFFECT_CANNOT_ACTIVATE)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetTargetRange(0,1)
+	e3:SetValue(c44874522.aclimit)
+	e3:SetCondition(c44874522.actcon)
 	c:RegisterEffect(e3)
 	--Destroy
 	local e4=Effect.CreateEffect(c)
@@ -64,18 +68,11 @@ function c44874522.regop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e2)
 	end
 end
-function c44874522.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e1:SetCode(EFFECT_CANNOT_ACTIVATE)
-	e1:SetTargetRange(0,1)
-	e1:SetValue(c44874522.aclimit)
-	e1:SetReset(RESET_PHASE+PHASE_DAMAGE)
-	Duel.RegisterEffect(e1,tp)
-end
 function c44874522.aclimit(e,re,tp)
 	return (re:IsHasType(EFFECT_TYPE_ACTIVATE) or re:IsActiveType(TYPE_MONSTER)) and not re:GetHandler():IsImmuneToEffect(e)
+end
+function c44874522.actcon(e)
+	return Duel.GetAttacker()==e:GetHandler()
 end
 function c44874522.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker()==e:GetHandler() and e:GetHandler():IsRelateToBattle()
