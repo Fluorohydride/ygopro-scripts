@@ -57,7 +57,7 @@ function c81269231.regop(e,tp,eg,ep,ev,re,r,rp)
 	if bit.band(flag,0x2)~=0 then
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
-		e2:SetCode(EFFECT_EXTRA_ATTACK)
+		e2:SetCode(EFFECT_ATTACK_ALL)
 		e2:SetValue(1)
 		e2:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e2)
