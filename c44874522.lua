@@ -75,7 +75,7 @@ function c44874522.actcon(e)
 	return Duel.GetAttacker()==e:GetHandler()
 end
 function c44874522.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttacker()==e:GetHandler() and e:GetHandler():IsRelateToBattle()
+	return Duel.GetAttacker()==e:GetHandler()
 end
 function c44874522.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
