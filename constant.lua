@@ -1,6 +1,7 @@
---Card id
-MIN_ID	=1000		--4 digit, by DataManager::GetDesc()
-MAX_ID	=268435455	--9 digit, by DataManager::GetDesc()
+--min/max value
+MIN_ID		=1000		--4 digit, by DataManager::GetDesc()
+MAX_ID		=268435455	--9 digit, by DataManager::GetDesc()
+MAX_COUNTER	=65535		--max number for adding/removing counters, by card::add_counter(), field::remove_counter()
 --Locations 区域
 LOCATION_DECK		=0x01		--卡组
 LOCATION_HAND		=0x02		--手牌
@@ -559,8 +560,8 @@ EVENT_RETURN_TO_GRAVE			=1203	--回到墓地时
 EVENT_TURN_END					=1210	--回合结束时
 EVENT_PHASE						=0x1000	--阶段结束时
 EVENT_PHASE_START				=0x2000	--阶段开始时
-EVENT_ADD_COUNTER				=0x10000--增加指示物时
-EVENT_REMOVE_COUNTER			=0x20000--去除指示物时
+EVENT_ADD_COUNTER				=0x10000	--增加指示物时
+EVENT_REMOVE_COUNTER			=0x20000	--去除指示物时(A指示物)，Card.RemoveCounter()必須手動觸發此事件
 EVENT_CUSTOM					=0x10000000	--自訂事件
 --Categorys	效果分类（表示这个效果将要发生什么事，OperationInfo设置了效果分类才能触发针对这一类型发动的卡，如破坏->星尘龙
 CATEGORY_DESTROY			=0x1		--破坏效果
