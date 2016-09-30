@@ -9,6 +9,7 @@ function c50933533.initial_effect(c)
 	--summon success
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)
 	e2:SetCondition(c50933533.regcon)
 	e2:SetOperation(c50933533.regop)
@@ -55,7 +56,7 @@ function c50933533.regop(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_PIERCE)
-		e1:SetReset(RESET_EVENT+0x1ff0000)
+		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
 	end
 	if bit.band(flag,0x2)~=0 then
@@ -68,7 +69,7 @@ function c50933533.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c50933533.damcon1)
 		e1:SetTarget(c50933533.damtg1)
 		e1:SetOperation(c50933533.damop)
-		e1:SetReset(RESET_EVENT+0x1ff0000)
+		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
 	end
 	if bit.band(flag,0x4)~=0 then
@@ -80,7 +81,7 @@ function c50933533.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EVENT_BATTLE_DESTROYING)
 		e1:SetTarget(c50933533.damtg2)
 		e1:SetOperation(c50933533.damop)
-		e1:SetReset(RESET_EVENT+0x1ff0000)
+		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
 	end
 end
