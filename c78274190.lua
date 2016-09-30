@@ -46,8 +46,7 @@ function c78274190.cacon(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
 	if not d then return false end
 	if a:IsStatus(STATUS_OPPO_BATTLE) and d:IsControler(tp) then a,d=d,a end
-	if a:IsSetCard(0x9a) and a:IsChainAttackable()
-		and not a:IsStatus(STATUS_BATTLE_DESTROYED) and d:IsStatus(STATUS_BATTLE_DESTROYED) then
+	if a:IsSetCard(0x9a) and a:IsChainAttackable() then
 		e:SetLabelObject(a)
 		return true
 	else return false end
