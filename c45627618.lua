@@ -92,7 +92,8 @@ function c45627618.valcheck(e,c)
 	end
 end
 function c45627618.pencon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0 and e:GetHandler():IsPreviousLocation(LOCATION_MZONE)
+	local c=e:GetHandler()
+	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0 and c:IsPreviousLocation(LOCATION_MZONE) and c:IsFaceup()
 end
 function c45627618.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lsc=Duel.GetFieldCard(tp,LOCATION_SZONE,6)
