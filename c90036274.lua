@@ -41,17 +41,17 @@ function c90036274.initial_effect(c)
 	e3:SetOperation(c90036274.penop)
 	c:RegisterEffect(e3)
 end
-function c90036274.cfilter1(c)
-	return c:IsSetCard(0x2016) and c:IsType(TYPE_TUNER) and c:IsAbleToGraveAsCost() and c:IsLevelBelow(7)
+function c90036274.cfilter1(c,tp)
+	return c:IsFaceup() and c:IsSetCard(0x2016) and c:IsType(TYPE_TUNER) and c:IsAbleToGraveAsCost() and c:IsLevelBelow(7)
 		and Duel.IsExistingMatchingCard(c90036274.cfilter2,tp,LOCATION_MZONE,0,1,c,c:GetLevel())
 end
 function c90036274.cfilter2(c,lv)
-	return c:IsNotTuner() and c:GetLevel()==7-lv and c:IsAbleToGraveAsCost()
+	return c:IsFaceup() and c:IsNotTuner() and c:GetLevel()==7-lv and c:IsAbleToGraveAsCost()
 end
 function c90036274.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c90036274.cfilter1,tp,LOCATION_MZONE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c90036274.cfilter1,tp,LOCATION_MZONE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,c90036274.cfilter1,tp,LOCATION_MZONE,0,1,1,nil)
+	local g1=Duel.SelectMatchingCard(tp,c90036274.cfilter1,tp,LOCATION_MZONE,0,1,1,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g2=Duel.SelectMatchingCard(tp,c90036274.cfilter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst(),g1:GetFirst():GetLevel())
 	g1:Merge(g2)

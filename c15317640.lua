@@ -1,6 +1,6 @@
 --巨大戦艦 カバード・コア
 function c15317640.initial_effect(c)
-c:EnableCounterPermit(0x1f)
+	c:EnableCounterPermit(0x1f)
 	--summon success
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(15317640,0))
