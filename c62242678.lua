@@ -71,6 +71,7 @@ function c62242678.synfilter2(c,syncard,lv,g2,f1,tuner1)
 	local f2=c.tuner_filter
 	if f1 and not f1(c) then return false end
 	if f2 and not f2(tuner1) then return false end
+	g2:RemoveCard(c)
 	return g2:IsExists(c62242678.synfilter3,1,nil,syncard,lv-tlv,f1,f2)
 end
 function c62242678.synfilter3(c,syncard,lv,f1,f2)
