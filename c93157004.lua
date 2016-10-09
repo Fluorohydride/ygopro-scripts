@@ -58,32 +58,29 @@ function c93157004.matfilter2(c,syncard)
 	return c:IsNotTuner() and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsSetCard(0x30) and c:IsCanBeSynchroMaterial(syncard)
 end
 function c93157004.synfilter1(c,syncard,lv,g1,g2,g3,g4)
-	local tlv=c:GetSynchroLevel(syncard)
-	if lv-tlv<=0 then return false end
 	local f1=c.tuner_filter
 	if c:IsHasEffect(EFFECT_HAND_SYNCHRO) then
-		return g3:IsExists(c93157004.synfilter2,1,c,syncard,lv-tlv,g2,g4,f1,c)
+		return g3:IsExists(c93157004.synfilter2,1,c,syncard,lv,g2,g4,f1,c)
 	else
-		return g1:IsExists(c93157004.synfilter2,1,c,syncard,lv-tlv,g2,g4,f1,c)
+		return g1:IsExists(c93157004.synfilter2,1,c,syncard,lv,g2,g4,f1,c)
 	end
 end
 function c93157004.synfilter2(c,syncard,lv,g2,g4,f1,tuner1)
-	local tlv=c:GetSynchroLevel(syncard)
-	if lv-tlv<=0 then return false end
+	if c==tuner1 then return false end
 	local f2=c.tuner_filter
 	if f1 and not f1(c) then return false end
 	if f2 and not f2(tuner1) then return false end
+	Duel.SetSelectedCard(Group.FromCards(c,tuner1))
 	if (tuner1:IsHasEffect(EFFECT_HAND_SYNCHRO) and not c:IsLocation(LOCATION_HAND)) or c:IsHasEffect(EFFECT_HAND_SYNCHRO) then
-		return g4:IsExists(c93157004.synfilter3,1,nil,syncard,lv-tlv,f1,f2)
+		local mg=g4:Filter(c93157004.synfilter3,nil,f1,f2)
+		return mg:CheckWithSumEqual(Card.GetSynchroLevel,lv,1,1,syncard)
 	else
-		return g2:IsExists(c93157004.synfilter3,1,nil,syncard,lv-tlv,f1,f2)
+		local mg=g2:Filter(c93157004.synfilter3,nil,f1,f2)
+		return mg:CheckWithSumEqual(Card.GetSynchroLevel,lv,1,1,syncard)
 	end
 end
-function c93157004.synfilter3(c,syncard,lv,f1,f2)
-	local mlv=c:GetSynchroLevel(syncard)
-	local lv1=bit.band(mlv,0xffff)
-	local lv2=bit.rshift(mlv,16)
-	return (lv1==lv or lv2==lv) and (not f1 or f1(c)) and (not f2 or f2(c))
+function c93157004.synfilter3(c,f1,f2)
+	return (not f1 or f1(c)) and (not f2 or f2(c))
 end
 function c93157004.syncon(e,c,tuner,mg)
 	if c==nil then return true end
@@ -96,8 +93,8 @@ function c93157004.syncon(e,c,tuner,mg)
 	if mg then
 		g1=mg:Filter(c93157004.matfilter1,nil,c)
 		g2=mg:Filter(c93157004.matfilter2,nil,c)
-		g3=mg:Filter(c93157004.matfilter1,nil,c)
-		g4=mg:Filter(c93157004.matfilter2,nil,c)
+		g3=g1:Clone()
+		g4=g2:Clone()
 	else
 		g1=Duel.GetMatchingGroup(c93157004.matfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
 		g2=Duel.GetMatchingGroup(c93157004.matfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
@@ -107,13 +104,11 @@ function c93157004.syncon(e,c,tuner,mg)
 	local pe=Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_SMATERIAL)
 	local lv=c:GetLevel()
 	if tuner then
-		local tlv=tuner:GetSynchroLevel(c)
-		if lv-tlv<=0 then return false end
 		local f1=tuner.tuner_filter
 		if not pe then
-			return g1:IsExists(c93157004.synfilter2,1,tuner,c,lv-tlv,g2,g4,f1,tuner)
+			return g1:IsExists(c93157004.synfilter2,1,tuner,c,lv,g2,g4,f1,tuner)
 		else
-			return c93157004.synfilter2(pe:GetOwner(),c,lv-tlv,g2,nil,f1,tuner)
+			return c93157004.synfilter2(pe:GetOwner(),c,lv,g2,nil,f1,tuner)
 		end
 	end
 	if not pe then
@@ -131,8 +126,8 @@ function c93157004.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 	if mg then
 		g1=mg:Filter(c93157004.matfilter1,nil,c)
 		g2=mg:Filter(c93157004.matfilter2,nil,c)
-		g3=mg:Filter(c93157004.matfilter1,nil,c)
-		g4=mg:Filter(c93157004.matfilter2,nil,c)
+		g3=g1:Clone()
+		g4=g2:Clone()
 	else
 		g1=Duel.GetMatchingGroup(c93157004.matfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
 		g2=Duel.GetMatchingGroup(c93157004.matfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
@@ -143,32 +138,32 @@ function c93157004.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 	local lv=c:GetLevel()
 	if tuner then
 		g:AddCard(tuner)
-		local lv1=tuner:GetSynchroLevel(c)
 		local f1=tuner.tuner_filter
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 		local tuner2=nil
 		if not pe then
-			local t2=g1:FilterSelect(tp,c93157004.synfilter2,1,1,tuner,c,lv-lv1,g2,g4,f1,tuner)
+			local t2=g1:FilterSelect(tp,c93157004.synfilter2,1,1,tuner,c,lv,g2,g4,f1,tuner)
 			tuner2=t2:GetFirst()
 		else
 			tuner2=pe:GetOwner()
 			Group.FromCards(tuner2):Select(tp,1,1,nil)
 		end
 		g:AddCard(tuner2)
-		local lv2=tuner2:GetSynchroLevel(c)
 		local f2=tuner2.tuner_filter
 		local m3=nil
+		Duel.SetSelectedCard(g)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 		if tuner2:IsHasEffect(EFFECT_HAND_SYNCHRO) then
-			m3=g4:FilterSelect(tp,c93157004.synfilter3,1,1,nil,c,lv-lv1-lv2,f1,f2)
+			local mg4=g4:Filter(c93157004.synfilter3,nil,f1,f2)
+			m3=mg4:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,1,1,c)
 		else
-			m3=g2:FilterSelect(tp,c93157004.synfilter3,1,1,nil,c,lv-lv1-lv2,f1,f2)
+			local mg2=g2:Filter(c93157004.synfilter3,nil,f1,f2)
+			m3=mg2:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,1,1,c)
 		end
 		g:Merge(m3)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 		local tuner1=nil
-		local hand=nil
 		if not pe then
 			local t1=g1:FilterSelect(tp,c93157004.synfilter1,1,1,nil,c,lv,g1,g2,g3,g4)
 			tuner1=t1:GetFirst()
@@ -177,27 +172,27 @@ function c93157004.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 			Group.FromCards(tuner1):Select(tp,1,1,nil)
 		end
 		g:AddCard(tuner1)
-		local lv1=tuner1:GetSynchroLevel(c)
 		local f1=tuner1.tuner_filter
 		local tuner2=nil
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 		if tuner1:IsHasEffect(EFFECT_HAND_SYNCHRO) then
-			local t2=g3:FilterSelect(tp,c93157004.synfilter2,1,1,tuner1,c,lv-lv1,g2,g4,f1,tuner1)
+			local t2=g3:FilterSelect(tp,c93157004.synfilter2,1,1,tuner1,c,lv,g2,g4,f1,tuner1)
 			tuner2=t2:GetFirst()
 		else
-			local t2=g1:FilterSelect(tp,c93157004.synfilter2,1,1,tuner1,c,lv-lv1,g2,g4,f1,tuner1)
+			local t2=g1:FilterSelect(tp,c93157004.synfilter2,1,1,tuner1,c,lv,g2,g4,f1,tuner1)
 			tuner2=t2:GetFirst()
 		end
 		g:AddCard(tuner2)
-		local lv2=tuner2:GetSynchroLevel(c)
 		local f2=tuner2.tuner_filter
 		local m3=nil
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 		if (tuner1:IsHasEffect(EFFECT_HAND_SYNCHRO) and not tuner2:IsLocation(LOCATION_HAND))
 			or tuner2:IsHasEffect(EFFECT_HAND_SYNCHRO) then
-			m3=g4:FilterSelect(tp,c93157004.synfilter3,1,1,nil,c,lv-lv1-lv2,f1,f2)
+			local mg4=g4:Filter(c93157004.synfilter3,nil,f1,f2)
+			m3=mg4:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,1,1,c)
 		else
-			m3=g2:FilterSelect(tp,c93157004.synfilter3,1,1,nil,c,lv-lv1-lv2,f1,f2)
+			local mg2=g2:Filter(c93157004.synfilter3,nil,f1,f2)
+			m3=mg2:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,1,1,c)
 		end
 		g:Merge(m3)
 	end
