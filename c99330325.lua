@@ -40,10 +40,12 @@ function c99330325.filter2(c,e,tp,cd)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK,1-tp)
 end
 function c99330325.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,LOCATION_MZONE)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c99330325.chkfilter1,tp,LOCATION_DECK,0,1,nil,e,tp) end
-	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,LOCATION_MZONE)
+		and Duel.IsExistingMatchingCard(c99330325.chkfilter1,tp,LOCATION_DECK,0,1,nil,e,tp)
+		and (g:FilterCount(Card.IsControler,nil,tp)>0 or Duel.GetLocationCount(tp,LOCATION_MZONE)>0)
+		and (g:FilterCount(Card.IsControler,nil,1-tp)>0 or Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_DECK)
 end
