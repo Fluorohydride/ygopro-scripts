@@ -43,7 +43,7 @@ end
 function c48605591.condition(e,tp,eg,ep,ev,re,r,rp)
 	return not Duel.IsExistingMatchingCard(nil,tp,LOCATION_ONFIELD,0,1,e:GetHandler())
 		and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)<=3
-		and Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_ONFIELD,nil,TYPE_SPEL+TYPE_TRAP)<=3
+		and Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_ONFIELD,nil,TYPE_SPELL+TYPE_TRAP)<=3
 end
 function c48605591.svalue(e,fp,rp,r)
 	local ct=3
