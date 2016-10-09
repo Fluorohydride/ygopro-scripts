@@ -49,7 +49,7 @@ function c17540705.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(17540705)~=0
 end
 function c17540705.thfilter(c)
-	return c:IsSetCard(0x9f) and c:IsAbleToHand()
+	return c:IsSetCard(0x9f) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c17540705.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:GetControler()==tp and chkc:GetLocation()==LOCATION_GRAVE and c17540705.thfilter(chkc) end
@@ -74,7 +74,7 @@ function c17540705.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(17540706)~=0
 end
 function c17540705.cfilter(c)
-	return c:IsSetCard(0x9f) and c:IsAbleToGraveAsCost()
+	return c:IsSetCard(0x9f) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
 end
 function c17540705.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c17540705.cfilter,tp,LOCATION_HAND,0,1,nil) end
