@@ -1,7 +1,7 @@
 --ナチュル・ランドオルス
 function c43932460.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,c43932460.synfilter,aux.NonTuner(c43932460.synfilter),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(c43932460.synfilter),aux.NonTuner(c43932460.synfilter),1)
 	c:EnableReviveLimit()
 	--negate
 	local e1=Effect.CreateEffect(c)

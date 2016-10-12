@@ -1,7 +1,7 @@
 --神海竜ギシルノドン
 function c76891401.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure2(c,nil,aux.NonTuner(c76891401.synfilter))
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(c76891401.synfilter),1,1)
 	c:EnableReviveLimit()
 	--atk change
 	local e1=Effect.CreateEffect(c)

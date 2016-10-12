@@ -1,7 +1,7 @@
 --ナチュル・パルキオン
 function c2956282.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,c2956282.synfilter,aux.NonTuner(c2956282.synfilter),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(c2956282.synfilter),aux.NonTuner(c2956282.synfilter),1)
 	c:EnableReviveLimit()
 	--negate
 	local e1=Effect.CreateEffect(c)

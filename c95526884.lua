@@ -1,7 +1,7 @@
 --ハイパーサイコガンナー
 function c95526884.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_PSYCHO),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(Card.IsRace,RACE_PSYCHO),1)
 	c:EnableReviveLimit()
 	--pierce
 	local e1=Effect.CreateEffect(c)

@@ -1,7 +1,7 @@
 --超重剣聖ムサ－C
 function c75988594.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
 	--salvage
 	local e2=Effect.CreateEffect(c)

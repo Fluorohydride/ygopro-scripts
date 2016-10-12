@@ -1,7 +1,7 @@
 --ジュラック・ギガノト
 function c80032567.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_DINOSAUR),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(Card.IsRace,RACE_DINOSAUR),1)
 	c:EnableReviveLimit()
 	--Atk
 	local e1=Effect.CreateEffect(c)

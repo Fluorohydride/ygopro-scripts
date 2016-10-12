@@ -185,16 +185,22 @@ function Auxiliary.NonTuner(f,a,b,c)
 				return target:IsNotTuner() and (not f or f(target,a,b,c))
 			end
 end
---Synchro monster, 1 tuner + n or more monsters
-function Auxiliary.AddSynchroProcedure(c,f1,f2,ct)
+function Auxiliary.Tuner(f,a,b,c)
+	return	function(target)
+				return target:IsType(TYPE_TUNER) and (not f or f(target,a,b,c))
+			end
+end
+--Synchro monster, 1 monster fits f1 + minc to maxc monsters fit f2 (maxc is 99 by default)
+function Auxiliary.AddSynchroProcedure(c,f1,f2,minc,maxc)
+	local maxc=maxc or 99
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(Auxiliary.SynCondition(f1,f2,ct,99))
-	e1:SetTarget(Auxiliary.SynTarget(f1,f2,ct,99))
-	e1:SetOperation(Auxiliary.SynOperation(f1,f2,ct,99))
+	e1:SetCondition(Auxiliary.SynCondition(f1,f2,minc,maxc))
+	e1:SetTarget(Auxiliary.SynTarget(f1,f2,minc,maxc))
+	e1:SetOperation(Auxiliary.SynOperation(f1,f2,minc,maxc))
 	e1:SetValue(SUMMON_TYPE_SYNCHRO)
 	c:RegisterEffect(e1)
 end
@@ -207,7 +213,7 @@ function Auxiliary.SynCondition(f1,f2,minct,maxc)
 				local minc=minct
 				if minc<ct then minc=ct end
 				if maxc<minc then return false end
-				if smat and smat:IsType(TYPE_TUNER) and (not f1 or f1(smat)) then
+				if smat and (not f1 or f1(smat)) then
 					return Duel.CheckTunerMaterial(c,smat,f1,f2,minc,maxc,mg) end
 				return Duel.CheckSynchroMaterial(c,f1,f2,minc,maxc,smat,mg)
 			end
@@ -219,7 +225,7 @@ function Auxiliary.SynTarget(f1,f2,minct,maxc)
 				local ct=-ft
 				local minc=minct
 				if minc<ct then minc=ct end
-				if smat and smat:IsType(TYPE_TUNER) and (not f1 or f1(smat)) then
+				if smat and (not f1 or f1(smat)) then
 					g=Duel.SelectTunerMaterial(c:GetControler(),c,smat,f1,f2,minc,maxc,mg)
 				else
 					g=Duel.SelectSynchroMaterial(c:GetControler(),c,f1,f2,minc,maxc,smat,mg)
@@ -239,18 +245,9 @@ function Auxiliary.SynOperation(f1,f2,minct,maxc)
 				g:DeleteGroup()
 			end
 end
---Synchro monster, 1 tuner + 1 monster
+--Synchro monster, 1 tuner + 1 monster (avoid but reporting for scripts of old version)
 function Auxiliary.AddSynchroProcedure2(c,f1,f2)
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_SPSUMMON_PROC)
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
-	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(Auxiliary.SynCondition(f1,f2,1,1))
-	e1:SetTarget(Auxiliary.SynTarget(f1,f2,1,1))
-	e1:SetOperation(Auxiliary.SynOperation(f1,f2,1,1))
-	e1:SetValue(SUMMON_TYPE_SYNCHRO)
-	c:RegisterEffect(e1)
+	aux.AddSynchroProcedure(c,f1,f2,1,1)
 end
 function Auxiliary.XyzAlterFilter(c,alterf,xyzc)
 	return alterf(c) and c:IsCanBeXyzMaterial(xyzc)

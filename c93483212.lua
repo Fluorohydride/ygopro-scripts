@@ -1,7 +1,7 @@
 --極神聖帝オーディン
 function c93483212.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,c93483212.tfilter,aux.NonTuner(nil),2)
+	aux.AddSynchroProcedure(c,aux.Tuner(c93483212.tfilter),aux.NonTuner(nil),2)
 	c:EnableReviveLimit()
 	--disable
 	local e1=Effect.CreateEffect(c)

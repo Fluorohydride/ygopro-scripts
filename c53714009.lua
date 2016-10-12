@@ -1,7 +1,7 @@
 --フレムベル・ウルキサス
 function c53714009.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(nil),aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
 	--pierce
 	local e1=Effect.CreateEffect(c)

@@ -1,7 +1,7 @@
 --幻獣機ヤクルスラーン
 function c26949946.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x101b),aux.NonTuner(Card.IsSetCard,0x101b),1)
+	aux.AddSynchroProcedure(c,aux.Tuner(Card.IsSetCard,0x101b),aux.NonTuner(Card.IsSetCard,0x101b),1)
 	c:EnableReviveLimit()
 	--handes
 	local e1=Effect.CreateEffect(c)
