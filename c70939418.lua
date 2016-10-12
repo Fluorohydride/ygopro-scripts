@@ -27,6 +27,7 @@ function c70939418.initial_effect(c)
 	--deckdes
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(70939418,2))
+	e3:SetCategory(CATEGORY_ATKCHANGE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_BE_MATERIAL)
 	e3:SetCondition(c70939418.ddcon)
@@ -73,7 +74,7 @@ function c70939418.scop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,1,1,nil)
-		Duel.SynchroSummon(tp,sg:GetFirst(),c)
+		Duel.SynchroSummon(tp,sg:GetFirst(),c,mg)
 	end
 end
 function c70939418.ddcon(e,tp,eg,ep,ev,re,r,rp)
@@ -84,8 +85,7 @@ function c70939418.ddtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DECKDES,nil,0,tp,1)
 end
 function c70939418.ddop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then return end
-	Duel.DiscardDeck(tp,1,REASON_EFFECT)
+	if Duel.DiscardDeck(tp,1,REASON_EFFECT)==0 then return end
 	local tc=Duel.GetOperatedGroup():GetFirst()
 	local c=e:GetHandler()
 	local sync=c:GetReasonCard()

@@ -25,7 +25,7 @@ function c81055000.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c81055000.thfilter(c)
-	return c:IsSetCard(0x9f) and c:IsAbleToHand()
+	return c:IsFaceup() and c:IsSetCard(0x9f) and c:IsAbleToHand()
 end
 function c81055000.thtg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c81055000.thfilter(chkc) end

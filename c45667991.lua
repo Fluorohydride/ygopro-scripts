@@ -36,7 +36,7 @@ function c45667991.rctg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c45667991.rcfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c45667991.rcfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,c45667991.rcfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	Duel.SelectTarget(tp,c45667991.rcfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
 function c45667991.rcop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

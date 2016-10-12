@@ -31,6 +31,9 @@ end
 function c43722862.counterfilter(c)
 	return c:GetSummonLocation()~=LOCATION_EXTRA or (c:IsLevelAbove(5) and c:IsAttribute(ATTRIBUTE_WIND))
 end
+function c43722862.spcon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
+end
 function c43722862.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(43722862,tp,ACTIVITY_SPSUMMON)==0 end
 	local e1=Effect.CreateEffect(e:GetHandler())
@@ -44,9 +47,6 @@ function c43722862.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c43722862.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return not (c:IsLevelAbove(5) and c:IsAttribute(ATTRIBUTE_WIND)) and c:IsLocation(LOCATION_EXTRA)
-end
-function c43722862.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
 end
 function c43722862.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

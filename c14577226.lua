@@ -29,7 +29,7 @@ function c14577226.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c14577226.damfilter(c)
-	return c:IsSetCard(0xf0) and c:GetAttack()>0
+	return c:IsSetCard(0xf0) and c:GetLevel()>0
 end
 function c14577226.damtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c14577226.damfilter(chkc) end

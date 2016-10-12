@@ -91,7 +91,7 @@ function c38572779.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	rg1:AddCard(c)
 	Duel.Remove(rg1,POS_FACEUP,REASON_COST)
-	Duel.SetTargetParam(lv)
+	e:SetLabel(lv)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c38572779.sfilter(c,e,tp,lv)
@@ -99,7 +99,7 @@ function c38572779.sfilter(c,e,tp,lv)
 end
 function c38572779.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	local lv=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
+	local lv=e:GetLabel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c38572779.sfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,lv)
 	local tc=g:GetFirst()

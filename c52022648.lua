@@ -26,7 +26,7 @@ function c52022648.tglimit(e,c)
 	return c~=e:GetHandler()
 end
 function c52022648.tgval(e,re,rp)
-	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
+	return re:IsActiveType(TYPE_SPELL)
 end
 function c52022648.costfilter(c)
 	return c:IsType(TYPE_SPELL) and c:IsDiscardable()

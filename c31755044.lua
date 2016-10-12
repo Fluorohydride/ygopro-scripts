@@ -62,7 +62,7 @@ function c31755044.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local bc=c:GetBattleTarget()
 	e:SetLabelObject(bc)
 	return c:GetOverlayGroup():IsExists(Card.IsCode,1,nil,31755044)
-		and bc and bc:IsRelateToBattle()
+		and bc and bc:IsStatus(STATUS_OPPO_BATTLE) and bc:IsRelateToBattle()
 end
 function c31755044.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetLabelObject():IsAbleToRemove() end
@@ -71,7 +71,7 @@ function c31755044.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c31755044.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local bc=e:GetLabelObject()
-	if bc:IsRelateToBattle() then
+	if bc:IsRelateToBattle() and bc:IsControler(1-tp) then
 		Duel.Remove(bc,POS_FACEUP,REASON_EFFECT)
 	end
 end

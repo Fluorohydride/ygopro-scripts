@@ -31,25 +31,23 @@ function c276357.initial_effect(c)
 	e3:SetOperation(c276357.desop)
 	c:RegisterEffect(e3)
 end
+function c276357.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	local res,teg,tep,tev,tre,tr,trp=Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE,true)
+	if res and c276357.condition(e,tp,teg,tep,tev,tre,tr,trp)
+		and c276357.cost(e,tp,teg,tep,tev,tre,tr,trp,0)
+		and Duel.SelectYesNo(tp,94) then
+		c276357.cost(e,tp,teg,tep,tev,tre,tr,trp,1)
+		e:SetOperation(c276357.activate)
+	else
+		e:SetOperation(nil)
+	end
+end
 function c276357.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer()
 end
 function c276357.cfilter(c)
 	return c:IsType(TYPE_SPIRIT) and c:IsAbleToRemoveAsCost()
-end
-function c276357.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	local g=Duel.GetMatchingGroup(c276357.cfilter,tp,LOCATION_GRAVE,0,nil)
-	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer() and Duel.GetFlagEffect(tp,276357)==0
-		and g:GetCount()>0 and Duel.SelectYesNo(tp,94) then
-		Duel.RegisterFlagEffect(tp,276357,RESET_PHASE+PHASE_END,0,1)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local tg=g:Select(tp,1,1,nil)
-		Duel.Remove(tg,POS_FACEUP,REASON_COST)
-		e:SetOperation(c276357.activate)
-	else
-		e:SetOperation(nil)
-	end
 end
 function c276357.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c276357.cfilter,tp,LOCATION_GRAVE,0,1,nil)
@@ -73,9 +71,9 @@ function c276357.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c276357.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end
-	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(nil,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,nil,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c276357.desop(e,tp,eg,ep,ev,re,r,rp)

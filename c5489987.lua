@@ -14,6 +14,7 @@ function c5489987.initial_effect(c)
 	--atk up
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(5489987,1))
+	e2:SetCategory(CATEGORY_ATKCHANGE)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_HAND)
@@ -59,10 +60,11 @@ end
 function c5489987.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local phase=Duel.GetCurrentPhase()
 	if phase~=PHASE_DAMAGE or Duel.IsDamageCalculated() then return false end
-	local tc=Duel.GetAttacker()
-	if tc:IsControler(1-tp) then tc=Duel.GetAttackTarget() end
+	local tc=Duel.GetAttackTarget()
+	if not tc then return false end
+	if tc:IsControler(1-tp) then tc=Duel.GetAttacker() end
 	e:SetLabelObject(tc)
-	return tc and tc:IsSetCard(0xe6) and tc:IsRelateToBattle() and Duel.GetAttackTarget()~=nil
+	return tc:IsFaceup() and tc:IsSetCard(0xe6) and tc:IsRelateToBattle()
 end
 function c5489987.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end

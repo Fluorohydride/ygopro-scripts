@@ -71,17 +71,15 @@ function c30539496.spop(e,tp,eg,ep,ev,re,r,rp)
 		local rg=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_EXTRA,nil)
 		if rm and rg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(30539496,2)) then
 			Duel.ConfirmCards(tp,rg)
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-			local sg=rg:Select(tp,1,1,nil)
-			local tg=sg:Clone()
-			rg:Sub(rg:Filter(Card.IsCode,nil,sg:GetFirst():GetCode()))
-			local i=2
-			while i>0 and rg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(30539496,3)) do
-				sg=rg:Select(tp,1,1,nil)
-				tg:Merge(sg)
-				rg:Sub(rg:Filter(Card.IsCode,nil,sg:GetFirst():GetCode()))
+			local tg=Group.CreateGroup()
+			local i=3
+			repeat
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+				local tc=rg:Select(tp,1,1,nil):GetFirst()
+				rg:Remove(Card.IsCode,nil,tc:GetCode())
+				tg:AddCard(tc)
 				i=i-1
-			end
+			until i<1 or rg:GetCount()==0 or not Duel.SelectYesNo(tp,aux.Stringid(30539496,3))
 			Duel.Remove(tg,POS_FACEUP,REASON_EFFECT)
 		end
 	end

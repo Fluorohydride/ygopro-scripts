@@ -73,7 +73,7 @@ function c25793414.rstop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c25793414.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_DESTROY) and rp~=tp
+	return c:IsReason(REASON_DESTROY) and rp==1-tp
 end
 function c25793414.spfilter1(c,e,tp)
 	return c:IsCode(14577226) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

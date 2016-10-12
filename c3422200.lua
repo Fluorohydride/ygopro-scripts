@@ -3,7 +3,7 @@ function c3422200.initial_effect(c)
 	--special summon (hand/grave)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(3422200,0))
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e1:SetCountLimit(1,3422200)
@@ -19,13 +19,13 @@ function c3422200.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_DESTROYED)
 	e2:SetCountLimit(1,3422201)
-	e2:SetCondition(c3422200.spcon)
+	e2:SetCondition(c3422200.spcon2)
 	e2:SetTarget(c3422200.sptg2)
 	e2:SetOperation(c3422200.spop2)
 	c:RegisterEffect(e2)
 end
 function c3422200.cfilter(c)
-	return c:IsSetCard(0xea) and c:IsDiscardable()
+	return c:IsSetCard(0xea) and not c:IsCode(3422200) and c:IsDiscardable()
 end
 function c3422200.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c3422200.cfilter,tp,LOCATION_HAND,0,1,e:GetHandler()) end
@@ -41,7 +41,7 @@ function c3422200.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0 then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_ONFIELD,0,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,nil,tp,LOCATION_ONFIELD,0,1,1,nil)
 		if g:GetCount()>0 then
 			Duel.Destroy(g,REASON_EFFECT)
 		end
@@ -50,7 +50,7 @@ function c3422200.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
-function c3422200.spcon(e,tp,eg,ep,ev,re,r,rp)
+function c3422200.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0 and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c3422200.spfilter(c,e,tp)

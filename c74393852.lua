@@ -57,8 +57,7 @@ function c74393852.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c74393852.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND+LOCATION_ONFIELD)
-	local sg=g:Filter(Card.IsAbleToGrave,nil)
-	if chk==0 then return sg:GetCount()>0 end
+	if chk==0 then return g:GetCount()>0 end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,g:GetCount(),0,0)
 end

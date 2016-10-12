@@ -85,7 +85,7 @@ function c88305705.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c88305705.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local bc=e:GetLabelObject()
-	if bc:IsRelateToBattle() then
+	if bc:IsRelateToBattle() and bc:IsControler(1-tp) then
 		Duel.Remove(bc,POS_FACEUP,REASON_EFFECT)
 	end
 end
