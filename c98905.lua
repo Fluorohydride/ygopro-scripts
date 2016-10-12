@@ -15,7 +15,7 @@ function c98905.initial_effect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_TO_GRAVE)
 		ge1:SetOperation(c98905.checkop)
-		Duel.RegisterEffect(ge1,tp)
+		Duel.RegisterEffect(ge1,0)
 	end
 end
 function c98905.cfilter(c,tp)
@@ -26,7 +26,7 @@ function c98905.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local sg=eg:Filter(c98905.cfilter,nil,tp)
 	local tc=sg:GetFirst()
 	while tc do
-		tc:RegisterFlagEffect(98905,RESET_EVENT+0x1fe0000-EVENT_TO_GRAVE,0,1)
+		tc:RegisterFlagEffect(98905,RESET_EVENT+0x1fe0000-RESET_TOGRAVE,0,1)
 		tc=sg:GetNext()
 	end
 end
@@ -41,21 +41,24 @@ function c98905.spfilter(c,e,tp,cd)
 end
 function c98905.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c98905.filter(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1 and eg:IsExists(c98905.filter,1,nil,e,tp) end
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+		and eg:IsExists(c98905.filter,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=eg:FilterSelect(tp,c98905.filter,1,1,nil,e,tp)
 	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c98905.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	if tc:IsRelateToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g2=Duel.SelectMatchingCard(tp,c98905.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetCode())
-		if g2:GetCount()>0 then
-			Duel.SpecialSummon(g2,0,tp,tp,false,false,POS_FACEUP)
+		local g=Duel.SelectMatchingCard(tp,c98905.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetCode())
+		if g:GetCount()>0 then
+			g:AddCard(tc)
+			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end
 end

@@ -58,7 +58,7 @@ end
 function c11510448.filter2(c)
 	return c:IsSetCard(0xf1) and c:IsType(TYPE_MONSTER)
 end
-function c11510448.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function c11510448.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(c11510448.filter1,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingTarget(c11510448.filter2,tp,LOCATION_GRAVE,0,1,nil) end

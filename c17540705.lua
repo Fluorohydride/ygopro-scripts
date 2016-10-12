@@ -15,6 +15,7 @@ function c17540705.initial_effect(c)
 	e2:SetDescription(aux.Stringid(17540705,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_PZONE)
+	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCountLimit(1,17540705)
 	e2:SetCondition(c17540705.thcon)
 	e2:SetTarget(c17540705.thtg)
@@ -52,7 +53,7 @@ function c17540705.thfilter(c)
 	return c:IsSetCard(0x9f) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c17540705.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetControler()==tp and chkc:GetLocation()==LOCATION_GRAVE and c17540705.thfilter(chkc) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c17540705.thfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c17540705.thfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,c17540705.thfilter,tp,LOCATION_GRAVE,0,1,1,nil)

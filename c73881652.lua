@@ -29,7 +29,7 @@ function c73881652.matfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0xf1)
 end
 function c73881652.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c73881652.filter(chkc) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c73881652.tgfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c73881652.tgfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(c73881652.matfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)

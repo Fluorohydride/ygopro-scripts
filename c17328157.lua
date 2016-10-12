@@ -46,7 +46,7 @@ function c17328157.tgfilter(c)
 	return c:IsAttribute(ATTRIBUTE_WIND) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
 end
 function c17328157.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c17328157.thfilter,tp,LOCATION_DECK,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c17328157.tgfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
 end
 function c17328157.tgop(e,tp,eg,ep,ev,re,r,rp)

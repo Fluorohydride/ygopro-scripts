@@ -24,7 +24,7 @@ end
 function c73271204.filter(c)
 	return c:IsSetCard(0xe6) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
-function c73271204.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function c73271204.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c73271204.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c73271204.filter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

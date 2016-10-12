@@ -35,11 +35,12 @@ function c39817919.cfilter(c)
 end
 function c39817919.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c39817919.cfilter,tp,LOCATION_HAND,0,1,nil) end
-	local g=Duel.SelectMatchingCard(tp,c39817919.cfilter,tp,LOCATION_HAND,0,1,1,nil,tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
+	local g=Duel.SelectMatchingCard(tp,c39817919.cfilter,tp,LOCATION_HAND,0,1,1,nil)
 	e:SetLabelObject(g:GetFirst())
 	Duel.SendtoGrave(g,REASON_COST+REASON_DISCARD)
 end
-function c39817919.atkop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c39817919.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=e:GetLabelObject()
 	local atk=math.max(tc:GetAttack(),0)

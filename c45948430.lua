@@ -47,9 +47,9 @@ function c45948430.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.NegateEffect(0)
 			return
 		end
-		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
+		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc1,tc1)
 		if tc1.mat_filter then
-			mg=mg:Filter(tc.mat_filter,nil)
+			mg=mg:Filter(tc1.mat_filter,nil)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local mat=Duel.SelectMatchingCard(tp,c45948430.matfilter1,tp,LOCATION_HAND,0,1,1,nil,tp)

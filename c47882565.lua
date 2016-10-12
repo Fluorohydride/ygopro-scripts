@@ -33,6 +33,7 @@ function c47882565.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c47882565.activate(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<0 then return end
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) then return end
@@ -47,7 +48,7 @@ function c47882565.activate(e,tp,eg,ep,ev,re,r,rp)
 		sc:SetMaterial(Group.FromCards(tc))
 		Duel.Overlay(sc,Group.FromCards(tc))
 		Duel.SpecialSummon(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)
-		local e1=Effect.CreateEffect(sc)
+		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
