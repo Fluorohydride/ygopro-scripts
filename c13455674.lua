@@ -1,5 +1,4 @@
 --水晶機巧－グリオンガンド
---Effect is not fully implemented
 function c13455674.initial_effect(c)
 	c:EnableReviveLimit()
 	--synchro summon
@@ -9,7 +8,6 @@ function c13455674.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetRange(LOCATION_EXTRA)
 	e1:SetCondition(c13455674.syncon)
-	e1:SetTarget(c13455674.syntg)
 	e1:SetOperation(c13455674.synop)
 	e1:SetValue(SUMMON_TYPE_SYNCHRO)
 	c:RegisterEffect(e1)
@@ -48,17 +46,11 @@ end
 function c13455674.matfilter2(c,syncard)
 	return c:IsNotTuner() and c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard)
 end
-function c13455674.synfilter(c,syncard,lv,g2)
-	local tlv=c:GetSynchroLevel(syncard)
-	if lv-tlv<=0 then return false end
-	g2:RemoveCard(c)
-	return g2:CheckWithSumEqual(Card.GetSynchroLevel,lv-tlv,2,63,syncard)
-end
-function c13455674.synfilter2(c,syncard,lv,g2)
-	local tlv=c:GetSynchroLevel(syncard)
-	if lv-tlv<=0 then return false end
-	g2:RemoveCard(c)
-	return g2:CheckWithSumEqual(Card.GetSynchroLevel,lv-tlv,1,63,syncard)
+function c13455674.synfilter(c,syncard,lv,g1,pg,ct)
+	local g=Group.FromCards(c)
+	g:Merge(pg)
+	Duel.SetSelectedCard(g)
+	return g1:CheckWithSumEqual(Card.GetSynchroLevel,lv,ct,63,syncard)
 end
 function c13455674.syncon(e,c,tuner,mg)
 	if c==nil then return true end
@@ -67,78 +59,60 @@ function c13455674.syncon(e,c,tuner,mg)
 	local g1=nil
 	local g2=nil
 	if mg then
-		g1=mg:Filter(c13455674.matfilter2,nil,c)
-		g2=mg:Filter(c13455674.matfilter1,nil,c)
+		g1=mg:Filter(c13455674.matfilter1,nil,c)
+		g2=mg:Filter(c13455674.matfilter2,nil,c)
 	else
-		g1=Duel.GetMatchingGroup(c13455674.matfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
-		g2=Duel.GetMatchingGroup(c13455674.matfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
+		g1=Duel.GetMatchingGroup(c13455674.matfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
+		g2=Duel.GetMatchingGroup(c13455674.matfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
 	end
 	local pe=Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_SMATERIAL)
 	local lv=c:GetLevel()
+	local pg=Group.CreateGroup()
+	local ct=2
 	if tuner then
-		local tlv=tuner:GetSynchroLevel(c)
-		if lv-tlv<=0 then return false end
-		if not pe then
-			return g1:IsExists(c13455674.synfilter2,1,nil,c,lv-tlv,g2)
-		else
-			return c13455674.synfilter2(pe:GetOwner(),c,lv-tlv,g2)
-		end
+		pg:AddCard(tuner)
+		ct=ct-1
 	end
-	if not pe then
-		return g1:IsExists(c13455674.synfilter,1,nil,c,lv,g2)
-	else
-		return c13455674.synfilter(pe:GetOwner(),c,lv,g2)
+	if pe then
+		pg:AddCard(pe:GetOwner())
+		ct=ct-1
 	end
+	return g2:IsExists(c13455674.synfilter,1,nil,c,lv,g1,pg,ct)
 end
-function c13455674.syntg(e,tp,eg,ep,ev,re,r,rp,chk,c,tuner,mg)
+function c13455674.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 	local g=Group.CreateGroup()
 	local g1=nil
 	local g2=nil
 	if mg then
-		g1=mg:Filter(c13455674.matfilter2,nil,c)
-		g2=mg:Filter(c13455674.matfilter1,nil,c)
+		g1=mg:Filter(c13455674.matfilter1,nil,c)
+		g2=mg:Filter(c13455674.matfilter2,nil,c)
 	else
-		g1=Duel.GetMatchingGroup(c13455674.matfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
-		g2=Duel.GetMatchingGroup(c13455674.matfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
+		g1=Duel.GetMatchingGroup(c13455674.matfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
+		g2=Duel.GetMatchingGroup(c13455674.matfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
 	end
 	local pe=Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_SMATERIAL)
 	local lv=c:GetLevel()
+	local ct=2
 	if tuner then
 		g:AddCard(tuner)
-		local lv1=tuner:GetSynchroLevel(c)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		local m1=g1:FilterSelect(tp,c13455674.synfilter2,1,1,nil,c,lv-lv1,g2)
-		local lv2=m1:GetFirst():GetSynchroLevel(c)
-		local m2=g2:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv-lv1-lv2,1,63,c)
-		g:Merge(m1)
-		g:Merge(m2)
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		local tuner=nil
-		if not pe then
-			local t1=g1:FilterSelect(tp,c13455674.synfilter,1,1,nil,c,lv,g2)
-			tuner=t1:GetFirst()
-		else
-			tuner=pe:GetOwner()
-			Group.FromCards(tuner):Select(tp,1,1,nil)
-		end
-		g:AddCard(tuner)
-		local lv1=tuner:GetSynchroLevel(c)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		local m2=g2:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv-lv1,2,63,c)
-		g:Merge(m2)
+		ct=ct-1
 	end
-	if g then
-		g:KeepAlive()
-		e:SetLabelObject(g)
-		return true
-	else return false end
-end
-function c13455674.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
-	local g=e:GetLabelObject()
+	if pe then
+		local pc=pe:GetOwner()
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
+		Group.FromCards(pc):Select(tp,1,1,nil)
+		g:AddCard(pc)
+		ct=ct-1
+	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
+	local m2=g2:FilterSelect(tp,c13455674.synfilter,1,1,nil,c,lv,g1,g,ct)
+	g:Merge(m2)
+	Duel.SetSelectedCard(g)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
+	local m1=g1:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,ct,63,c)
+	g:Merge(m1)
 	c:SetMaterial(g)
 	Duel.SendtoGrave(g,REASON_MATERIAL+REASON_SYNCHRO)
-	g:DeleteGroup()
 end
 function c13455674.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
