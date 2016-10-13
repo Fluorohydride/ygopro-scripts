@@ -13,7 +13,7 @@ function c48605591.initial_effect(c)
 	e2:SetCode(EFFECT_MAX_MZONE)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(1,1)
-	e2:SetValue(3)
+	e2:SetValue(c48605591.mvalue)
 	c:RegisterEffect(e2)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
@@ -45,7 +45,12 @@ function c48605591.condition(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)<=3
 		and Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_ONFIELD,nil,TYPE_SPELL+TYPE_TRAP)<=3
 end
+function c48605591.mvalue(e,fp,rp,r)
+	if r~=LOCATION_REASON_TOFIELD then return 5 end
+	return 3
+end
 function c48605591.svalue(e,fp,rp,r)
+	if r~=LOCATION_REASON_TOFIELD then return 5 end
 	local ct=3
 	for i=5,7 do
 		if Duel.GetFieldCard(fp,LOCATION_SZONE,i) then ct=ct-1 end

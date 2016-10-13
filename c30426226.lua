@@ -10,17 +10,19 @@ function c30426226.initial_effect(c)
 	e1:SetOperation(c30426226.activate)
 	c:RegisterEffect(e1)
 end
+function c30426226.filter(c)
+	return not c:IsAbleToChangeControler()
+end
 function c30426226.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroup(Card.IsAbleToChangeControler,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,LOCATION_MZONE)
 	local g1=g:Filter(Card.IsControler,nil,tp)
 	local g2=g:Filter(Card.IsControler,nil,1-tp)
-	if chk==0 then return g1:GetCount()==g2:GetCount() end
+	if chk==0 then return g1:GetCount()==g2:GetCount()
+		and g:FilterCount(c30426226.filter,nil)==0 end
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,g:GetCount(),0,0)
 end
 function c30426226.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsAbleToChangeControler,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	local g1=g:Filter(Card.IsControler,nil,tp)
-	local g2=g:Filter(Card.IsControler,nil,1-tp)
-	if g1:GetCount()~=g2:GetCount() then return end
+	local g1=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
+	local g2=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
 	Duel.SwapControl(g1,g2)
 end
