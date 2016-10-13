@@ -99,7 +99,7 @@ function c86238081.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c86238081.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local sg=Duel.Duel.GetFieldGroup(tp,0,LOCATION_ONFIELD)
+	local sg=Duel.GetFieldGroup(tp,0,LOCATION_ONFIELD)
 	local ct=Duel.Destroy(sg,REASON_EFFECT)
 	if ct>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)

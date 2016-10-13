@@ -33,7 +33,7 @@ function c78942513.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c78942513.tgfilter,tp,LOCATION_HAND,0,1,1,nil)
-	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)>0 and g:IsExists(Card.IsLocation,1,LOCATION_GRAVE) then
+	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)>0 and g:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE) then
 		local tc=Duel.GetFirstTarget()
 		if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 			local e1=Effect.CreateEffect(c)
