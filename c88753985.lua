@@ -3,6 +3,7 @@ function c88753985.initial_effect(c)
 	--register
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)
 	e1:SetOperation(c88753985.regop)
 	c:RegisterEffect(e1)
