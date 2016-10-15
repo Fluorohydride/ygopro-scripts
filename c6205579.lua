@@ -21,6 +21,7 @@ function c6205579.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e3:SetCondition(c6205579.spcon)
 	e3:SetTarget(c6205579.sptg)
 	e3:SetOperation(c6205579.spop)
 	c:RegisterEffect(e3)
@@ -31,6 +32,10 @@ function c6205579.splimit(e,c)
 end
 function c6205579.subcon(e)
 	return e:GetHandler():IsLocation(LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE)
+end
+function c6205579.spcon(e,tp,eg,ep,ev,re,r,rp)
+	local ph=Duel.GetCurrentPhase()
+	return ph~=PHASE_DAMAGE and ph~=PHASE_DAMAGE_CAL
 end
 function c6205579.spfilter1(c,e)
 	return c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
