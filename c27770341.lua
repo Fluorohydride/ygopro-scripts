@@ -40,7 +40,7 @@ function c27770341.addcount(e,tp,eg,ep,ev,re,r,rp)
 		if pl==LOCATION_MZONE and tc:GetPreviousRaceOnField()==RACE_DRAGON then
 			local p=tc:GetReasonPlayer()
 			c27770341[p]=c27770341[p]+1
-		elseif pl==LOCATION_HAND and tc:GetOriginalRace()==RACE_DRAGON then
+		elseif pl==LOCATION_HAND and tc:IsType(TYPE_MONSTER) and tc:GetOriginalRace()==RACE_DRAGON then
 			local p=tc:GetPreviousControler()
 			c27770341[p]=c27770341[p]+1
 		end
