@@ -71,9 +71,9 @@ function c11510448.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c11510448.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
-	local g1=g:Filter(Card.IsLocation,nil,LOCATION_MZONE)
+	local tc1=g:Filter(Card.IsLocation,nil,LOCATION_MZONE):GetFirst()
 	local g2=g:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
-	if g1:GetCount()>0 and g2:GetCount()>0 then
-		Duel.Overlay(g1:GetFirst(),g2)
+	if tc1 and not tc1:IsImmuneToEffect(e) and g2:GetCount()>0 then
+		Duel.Overlay(tc1,g2)
 	end
 end
