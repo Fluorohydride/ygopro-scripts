@@ -3,7 +3,7 @@ function c52840267.initial_effect(c)
 	c:SetSPSummonOnce(52840267)
 	--cannot spsummon
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(52840267,1))
+	e1:SetDescription(aux.Stringid(52840267,0))
 	e1:SetCategory(CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)

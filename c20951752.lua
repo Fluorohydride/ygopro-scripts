@@ -30,7 +30,7 @@ function c20951752.initial_effect(c)
 	e2:SetLabelObject(e3)
 	--destroy
 	local e4=Effect.CreateEffect(c)
-	e4:SetDescription(aux.Stringid(20951752,0))
+	e4:SetDescription(aux.Stringid(20951752,1))
 	e4:SetCategory(CATEGORY_DESTROY)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_SPSUMMON_SUCCESS)

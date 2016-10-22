@@ -26,7 +26,7 @@ function c1992816.initial_effect(c)
 	c:RegisterEffect(e2)
 	--direct attack
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(1992816,0))
+	e3:SetDescription(aux.Stringid(1992816,2))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1)

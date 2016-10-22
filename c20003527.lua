@@ -32,7 +32,7 @@ function c20003527.initial_effect(c)
 	c:RegisterEffect(e4)
 	--add counter
 	local e5=Effect.CreateEffect(c)
-	e5:SetDescription(aux.Stringid(20003527,0))
+	e5:SetDescription(aux.Stringid(20003527,1))
 	e5:SetCategory(CATEGORY_COUNTER)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e5:SetCode(EVENT_SUMMON_SUCCESS)

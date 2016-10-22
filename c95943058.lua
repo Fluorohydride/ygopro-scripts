@@ -43,7 +43,7 @@ function c95943058.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 	--sp summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(95943058,0))
+	e2:SetDescription(aux.Stringid(95943058,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetRange(LOCATION_REMOVED)
