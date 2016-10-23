@@ -2,6 +2,7 @@
 function c96142517.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(96142517,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -67,7 +68,7 @@ function c96142517.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	g1:Merge(g2)
 	local g=Duel.GetMatchingGroup(c96142517.filter2,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,e,rk)
 	g:Sub(g1)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(96142517,0)) then
+	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(96142517,1)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 		local sg=g:Select(tp,1,99,nil)
 		Duel.SetTargetCard(sg)
