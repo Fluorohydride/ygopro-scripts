@@ -12,11 +12,13 @@ function c56514812.initial_effect(c)
 end
 function c56514812.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsStatus(STATUS_CHAINING) end
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,0,0,ep,1)
+	Duel.SetTargetPlayer(tp)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES,0,0,tp,1)
 end
 function c56514812.operation(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetFieldGroup(ep,LOCATION_HAND,0)
+	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
+	local g=Duel.GetFieldGroup(p,LOCATION_HAND,0)
 	if g:GetCount()==0 then return end
-	local sg=g:RandomSelect(ep,1)
+	local sg=g:RandomSelect(p,1)
 	Duel.SendtoGrave(sg,REASON_DISCARD+REASON_EFFECT)
 end
