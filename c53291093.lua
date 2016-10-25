@@ -34,17 +34,10 @@ function c53291093.activate(e,tp,eg,ep,ev,re,r,rp)
 			local sg=g:Select(tp,1,1,nil)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
-			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-			e1:SetRange(LOCATION_MZONE)
-			e1:SetCode(EVENT_PHASE+PHASE_END)
-			e1:SetOperation(c53291093.desop)
-			e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
-			e1:SetCountLimit(1)
-			sg:GetFirst():RegisterEffect(e1)
+			aux.epreg(sg:GetFirst(),tp,e:GetHandler(),53291093,c53291093.desop)
 		end
 	end
 end
 function c53291093.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+	Duel.Destroy(e:GetLabelObject(),REASON_EFFECT)
 end

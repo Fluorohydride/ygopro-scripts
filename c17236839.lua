@@ -66,17 +66,9 @@ function c17236839.activate(e,tp,eg,ep,ev,re,r,rp)
 			fop(ce,e,tp,tc,mat2)
 		end
 		tc:CompleteProcedure()
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetCountLimit(1)
-		e1:SetRange(LOCATION_MZONE)
-		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
-		e1:SetOperation(c17236839.desop)
-		tc:RegisterEffect(e1,true)
+		aux.epreg(tc,tp,e:GetHandler(),17236839,c17236839.desop)
 	end
 end
 function c17236839.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+	Duel.Destroy(e:GetLabelObject(),REASON_EFFECT)
 end

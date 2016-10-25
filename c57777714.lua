@@ -46,19 +46,10 @@ function c57777714.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c57777714.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-		e1:SetRange(LOCATION_MZONE)
-		e1:SetCountLimit(1)
-		e1:SetOperation(c57777714.desop)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
-		tc:RegisterEffect(e1)
+	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
+		aux.epreg(tc,tp,e:GetHandler(),57777714,c57777714.desop)
 	end
 end
 function c57777714.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+	Duel.Destroy(e:GetLabelObject(),REASON_EFFECT)
 end

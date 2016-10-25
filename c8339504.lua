@@ -48,23 +48,14 @@ function c8339504.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c8339504.spfilter2,tp,LOCATION_EXTRA,0,1,1,nil,tc,e,tp)
 	local sc=g:GetFirst()
-	if sc then
-		Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
+	if sc and Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		if c:IsRelateToEffect(e) then
 			c:CancelToGrave()
 			Duel.Overlay(sc,Group.FromCards(c))
 		end
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-		e1:SetRange(LOCATION_MZONE)
-		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetCountLimit(1)
-		e1:SetOperation(c8339504.tgop)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
-		sc:RegisterEffect(e1)
+		aux.epreg(sc,tp,c,8339504,c8339504.tgop)
 	end
 end
 function c8339504.tgop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
+	Duel.SendtoGrave(e:GetLabelObject(),REASON_EFFECT)
 end

@@ -40,28 +40,13 @@ function c7573135.hspop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c7573135.hspfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
-	if tc then
-		Duel.SpecialSummon(tc,113,tp,tp,false,false,POS_FACEUP_DEFENSE)
-		tc:RegisterFlagEffect(7573135,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	if tc and Duel.SpecialSummon(tc,113,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0 then
 		tc:RegisterFlagEffect(tc:GetOriginalCode(),RESET_EVENT+0x1ff0000,0,0)
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetCountLimit(1)
-		e1:SetLabelObject(tc)
-		e1:SetCondition(c7573135.retcon)
-		e1:SetOperation(c7573135.retop)
-		e1:SetReset(RESET_PHASE+PHASE_END)
-		Duel.RegisterEffect(e1,tp)
+		aux.epreg(tc,tp,e:GetHandler(),7573135,c7573135.retop)
 	end
 end
-function c7573135.retcon(e,tp,eg,ep,ev,re,r,rp)
-	local tc=e:GetLabelObject()
-	return tc:GetFlagEffect(7573135)>0
-end
 function c7573135.retop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=e:GetLabelObject()
-	Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(e:GetLabelObject(),nil,2,REASON_EFFECT)
 end
 function c7573135.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetBattledGroupCount()>0

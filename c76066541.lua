@@ -33,19 +33,10 @@ function c76066541.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c76066541.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
-	if tc then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-		e1:SetRange(LOCATION_MZONE)
-		e1:SetCountLimit(1)
-		e1:SetOperation(c76066541.desop)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
-		tc:RegisterEffect(e1)
+	if tc and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0 then
+		aux.epreg(tc,tp,e:GetHandler(),76066541,c76066541.desop)
 	end
 end
 function c76066541.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+	Duel.Destroy(e:GetLabelObject(),REASON_EFFECT)
 end
