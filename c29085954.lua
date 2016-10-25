@@ -50,19 +50,8 @@ function c29085954.spop(e,tp,eg,ep,ev,re,r,rp)
 			tc:SetMaterial(Group.FromCards(c))
 			Duel.Overlay(tc,Group.FromCards(c))
 			Duel.SpecialSummon(tc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)
-			local fid=c:GetFieldID()
-			tc:RegisterFlagEffect(29085954,RESET_EVENT+0x1fe0000,0,1,fid)
 			tc:CompleteProcedure()
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-			e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-			e1:SetCode(EVENT_PHASE+PHASE_END)
-			e1:SetCountLimit(1)
-			e1:SetLabel(fid)
-			e1:SetLabelObject(tc)
-			e1:SetCondition(c29085954.rmcon)
-			e1:SetOperation(c29085954.rmop)
-			Duel.RegisterEffect(e1,tp)
+			aux.epreg(tc,tp,c,29085954,c29085954.rmop)
 		end
 	end
 	local e2=Effect.CreateEffect(c)
@@ -72,12 +61,6 @@ function c29085954.spop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	e2:SetTargetRange(1,0)
 	Duel.RegisterEffect(e2,tp)
-end
-function c29085954.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetLabelObject():GetFlagEffectLabel(29085954)~=e:GetLabel() then
-		e:Reset()
-		return false
-	else return true end
 end
 function c29085954.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

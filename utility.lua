@@ -1695,6 +1695,32 @@ function Auxiliary.sumreg(e,tp,eg,ep,ev,re,r,rp)
 		tc=eg:GetNext()
 	end
 end
+--register effect for do op to tc summoned by c during the end phase
+function Auxiliary.epreg(tc,tp,c,id,op)
+	local fid=c:GetFieldID()
+	tc:RegisterFlagEffect(id,RESET_EVENT+0x1fe0000,0,1,fid)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+	e1:SetCode(EVENT_PHASE+PHASE_END)
+	e1:SetCountLimit(1)
+	e1:SetLabel(fid)
+	e1:SetLabelObject(tc)
+	e1:SetCondition(Auxiliary.epcon(id))
+	e1:SetOperation(op)
+	Duel.RegisterEffect(e1,tp)
+end
+function Auxiliary.epcon(id)
+	return	function(e,tp,eg,ep,ev,re,r,rp)
+				local tc=e:GetLabelObject()
+				if tc:GetFlagEffectLabel(id)==e:GetLabel() then
+					return true
+				else
+					e:Reset()
+					return false
+				end
+			end
+end
 --sp_summon condition for fusion monster
 function Auxiliary.fuslimit(e,se,sp,st)
 	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
