@@ -43,6 +43,7 @@ function c30786387.activate(e,tp,eg,ep,ev,re,r,rp)
 			g:Remove(Card.IsCode,nil,tc:GetCode())
 		end
 		Duel.ConfirmCards(1-tp,rg)
+		Duel.ShuffleDeck(tp)
 		local tg=rg:GetFirst()
 		while tg do
 			Duel.MoveSequence(tg,0)

@@ -67,6 +67,7 @@ function c62312469.stop(e,tp,eg,ep,ev,re,r,rp)
 		g1:Merge(g3)
 		g1:Merge(g4)
 		Duel.ConfirmCards(1-tp,g1)
+		Duel.ShuffleDeck(tp)
 		local tc=g1:GetFirst()
 		while tc do
 			Duel.MoveSequence(tc,0)
