@@ -42,22 +42,27 @@ function c7573135.hspop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.SpecialSummon(tc,113,tp,tp,false,false,POS_FACEUP_DEFENSE)
-		tc:RegisterFlagEffect(7573135,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		local fid=e:GetHandler():GetFieldID()
+		tc:RegisterFlagEffect(7573135,RESET_EVENT+0x1fe0000,0,1,fid)
 		tc:RegisterFlagEffect(tc:GetOriginalCode(),RESET_EVENT+0x1ff0000,0,0)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)
+		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 		e1:SetCountLimit(1)
+		e1:SetLabel(fid)
 		e1:SetLabelObject(tc)
 		e1:SetCondition(c7573135.retcon)
 		e1:SetOperation(c7573135.retop)
-		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
 	end
 end
 function c7573135.retcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	return tc:GetFlagEffect(7573135)>0
+	if tc:GetFlagEffectLabel(7573135)~=e:GetLabel() then
+		e:Reset()
+		return false
+	else return true end
 end
 function c7573135.retop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
