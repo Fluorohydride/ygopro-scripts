@@ -185,6 +185,7 @@ function c93157004.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 		g:AddCard(tuner2)
 		local f2=tuner2.tuner_filter
 		local m3=nil
+		Duel.SetSelectedCard(g)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 		if (tuner1:IsHasEffect(EFFECT_HAND_SYNCHRO) and not tuner2:IsLocation(LOCATION_HAND))
 			or tuner2:IsHasEffect(EFFECT_HAND_SYNCHRO) then
