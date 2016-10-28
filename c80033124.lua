@@ -10,10 +10,10 @@ function c80033124.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c80033124.ffilter0(c)
-	return c:IsCode(41230939,77625948,3019642) and c:IsAbleToDeck()
+	return c:IsCode(41230939,77625948,3019642) and c:IsCanBeFusionMaterial(nil,true) and c:IsAbleToDeck()
 end
 function c80033124.ffilter(c,e)
-	return c:IsCode(41230939,77625948,3019642) and c:IsAbleToDeck()
+	return c:IsCode(41230939,77625948,3019642) and c:IsCanBeFusionMaterial(nil,true) and c:IsAbleToDeck()
 		and not c:IsImmuneToEffect(e)
 end
 function c80033124.spfilter(c,e,tp)
