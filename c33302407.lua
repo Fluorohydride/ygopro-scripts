@@ -26,7 +26,7 @@ function c33302407.filter(c)
 end
 function c33302407.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=Duel.GetMatchingGroupCount(c33302407.filter,tp,LOCATION_MZONE,0,nil)
-	if chk==0 then return ct>0 and Duel.IsPlayerCanDiscardDeck(1-tp,0) end
+	if chk==0 then return ct>0 and Duel.IsPlayerCanDiscardDeck(1-tp,ct) end
 	Duel.SetOperationInfo(0,CATEGORY_DECKDES,nil,0,1-tp,ct)
 end
 function c33302407.disop(e,tp,eg,ep,ev,re,r,rp)
