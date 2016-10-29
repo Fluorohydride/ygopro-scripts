@@ -30,7 +30,7 @@ function c2295831.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_PUBLIC)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_MAIN1)
 		c:RegisterEffect(e1)
-		c:RegisterFlagEffect(2295831,RESET_PHASE+PHASE_MAIN1,0,1)
+		c:RegisterFlagEffect(2295831,RESET_PHASE+PHASE_MAIN1,EFFECT_FLAG_CLIENT_HINT,1,0,66)
 	end
 end
 function c2295831.condition(e,tp,eg,ep,ev,re,r,rp)
