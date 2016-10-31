@@ -31,7 +31,7 @@ function c44877690.retreg(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_EVENT+0x1ee0000+RESET_PHASE+PHASE_END)
 	e1:SetCondition(c44877690.retcon)
 	e1:SetTarget(c44877690.rettg)
-	e1:SetOperation(c44877690.retop)
+	e1:SetOperation(aux.SpiritReturnOperation)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
@@ -54,12 +54,8 @@ function c44877690.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x2f)
 end
 function c44877690.retcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if Duel.IsExistingMatchingCard(c44877690.cfilter,tp,LOCATION_MZONE,0,1,c) then return false end
-	if c:IsHasEffect(EFFECT_SPIRIT_DONOT_RETURN) then return false end
-	if e:IsHasType(EFFECT_TYPE_TRIGGER_F) then
-		return not c:IsHasEffect(EFFECT_SPIRIT_MAYNOT_RETURN)
-	else return c:IsHasEffect(EFFECT_SPIRIT_MAYNOT_RETURN) end
+	if Duel.IsExistingMatchingCard(c44877690.cfilter,tp,LOCATION_MZONE,0,1,e:GetHandler()) then return false end
+	return aux.SpiritReturnCondition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c44877690.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(44877690)==0 end
@@ -73,9 +69,7 @@ function c44877690.retop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c44877690.retcon2(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return Duel.IsExistingMatchingCard(c44877690.cfilter,tp,LOCATION_MZONE,0,1,c)
-		and not c:IsHasEffect(EFFECT_SPIRIT_DONOT_RETURN)
+	return Duel.IsExistingMatchingCard(c44877690.cfilter,tp,LOCATION_MZONE,0,1,e:GetHandler())
 end
 function c44877690.rettg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsAbleToHand() end
