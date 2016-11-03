@@ -15,7 +15,7 @@ function c93224848.filter(c)
 	return c:IsFaceup() and c:IsCode(6007213,32491822)
 end
 function c93224848.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>=2
+	return Duel.IsExistingMatchingCard(nil,tp,LOCATION_HAND,0,2,e:GetHandler())
 		and Duel.IsExistingMatchingCard(c93224848.filter,tp,LOCATION_ONFIELD,0,1,nil)
 end
 function c93224848.cfilter(c)
