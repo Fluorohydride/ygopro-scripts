@@ -15,6 +15,7 @@ function c91422370.costfilter(c)
 	return c:IsSetCard(0x58) and c:IsAttackAbove(1500)
 end
 function c91422370.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	e:SetLabel(1)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c91422370.costfilter,1,nil) end
 	local sg=Duel.SelectReleaseGroup(tp,c91422370.costfilter,1,1,nil)
 	Duel.Release(sg,REASON_COST)
@@ -26,8 +27,17 @@ function c91422370.filter2(c,atk,e,tp)
 	return c:IsSetCard(0x58) and c:GetAttack()==atk and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c91422370.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(c91422370.filter,tp,LOCATION_HAND,0,1,nil,e,tp) end
+	if chk==0 then
+		if e:GetLabel()==1 then
+			e:SetLabel(0)
+			return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
+				and Duel.IsExistingMatchingCard(c91422370.filter,tp,LOCATION_HAND,0,1,nil,e,tp)
+		else
+			return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+				and Duel.IsExistingMatchingCard(c91422370.filter,tp,LOCATION_HAND,0,1,nil,e,tp)
+		end
+	end
+	e:SetLabel(0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c91422370.activate(e,tp,eg,ep,ev,re,r,rp)
