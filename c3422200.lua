@@ -32,7 +32,8 @@ function c3422200.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,c3422200.cfilter,1,1,REASON_COST+REASON_DISCARD,e:GetHandler())
 end
 function c3422200.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c3422200.spop(e,tp,eg,ep,ev,re,r,rp)
@@ -45,8 +46,8 @@ function c3422200.spop(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetCount()>0 then
 			Duel.Destroy(g,REASON_EFFECT)
 		end
-	elseif Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsLocation(LOCATION_HAND) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 and c:IsLocation(LOCATION_HAND)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
