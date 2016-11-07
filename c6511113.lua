@@ -27,6 +27,7 @@ function c6511113.initial_effect(c)
 	--cannot be target
 	local e4=e3:Clone()
 	e4:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
+	e4:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e4:SetValue(aux.tgoval)
 	c:RegisterEffect(e4)
 	--copy trap
