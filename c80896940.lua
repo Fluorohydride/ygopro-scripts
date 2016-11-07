@@ -186,7 +186,7 @@ function c80896940.indop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_AVOID_BATTLE_DAMAGE)
 	e2:SetValue(1)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE)
+	e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE)
 	tc:RegisterEffect(e2)
 end
 function c80896940.atkcon(e,tp,eg,ep,ev,re,r,rp)
