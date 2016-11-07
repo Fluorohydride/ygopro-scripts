@@ -28,7 +28,8 @@ function c66698383.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c66698383.cfilter(c,tp)
-	return c:IsType(TYPE_TUNER) and c:IsAbleToRemoveAsCost()
+	return (c:IsLocation(LOCATION_HAND+LOCATION_GRAVE) or c:IsFaceup())
+		and c:IsType(TYPE_TUNER) and c:IsAbleToRemoveAsCost()
 		and Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 end
 function c66698383.descost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -46,7 +47,7 @@ function c66698383.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c66698383.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
