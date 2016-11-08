@@ -29,7 +29,6 @@ function c75675029.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c75675029.filter,tp,0,LOCATION_GRAVE,nil)
 	local ct=Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 	if ct~=0 then
-		Duel.BreakEffect()
 		Duel.Damage(1-tp,ct*1000,REASON_EFFECT)
 	end
 end
