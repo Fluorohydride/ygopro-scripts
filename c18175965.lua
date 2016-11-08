@@ -61,7 +61,7 @@ function c18175965.initial_effect(c)
 end
 function c18175965.cfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:GetPreviousControler()==tp
-		and c:IsReason(REASON_DESTROY) and c:IsCode(34022290)
+		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsReason(REASON_DESTROY) and c:IsCode(34022290)
 end
 function c18175965.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c18175965.cfilter,1,nil,tp)
