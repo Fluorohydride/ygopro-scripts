@@ -31,10 +31,22 @@ function c56562619.initial_effect(c)
 	e3:SetTarget(c56562619.sptg)
 	e3:SetOperation(c56562619.spop)
 	c:RegisterEffect(e3)
+	--clear
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e4:SetCode(EVENT_SUMMON_SUCCESS)
+	e4:SetOperation(c56562619.clearop)
+	c:RegisterEffect(e4)
+	local e5=e4:Clone()
+	e5:SetCode(EVENT_SPSUMMON_SUCCESS)
+	c:RegisterEffect(e5)
 	local ng=Group.CreateGroup()
 	ng:KeepAlive()
+	e2:SetLabelObject(ng)
 	e3:SetLabelObject(ng)
-	e2:SetLabelObject(e3)
+	e4:SetLabelObject(ng)
+	e5:SetLabelObject(ng)
 end
 function c56562619.splimit(e,se,sp,st)
 	return (se:IsActiveType(TYPE_MONSTER) and se:GetHandler():IsSetCard(0x2b)) or se:GetHandler():IsSetCard(0x61)
@@ -69,28 +81,17 @@ function c56562619.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c56562619.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	local c=e:GetHandler()
-	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED) and c:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED) then
 		tc:RegisterFlagEffect(56562619,RESET_EVENT+0x1fe0000,0,0)
-		e:GetLabelObject():SetLabel(1)
-		if c:GetFlagEffect(56562619)==0 then
-			c:RegisterFlagEffect(56562619,RESET_EVENT+0x1680000,0,0)
-			e:GetLabelObject():GetLabelObject():Clear()
-		end
-		e:GetLabelObject():GetLabelObject():AddCard(tc)
+		e:GetLabelObject():AddCard(tc)
 	end
 end
 function c56562619.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local rg=e:GetLabelObject()
-	local act=e:GetLabel()
-	e:SetLabel(0)
-	if act==1 and c:IsPreviousPosition(POS_FACEUP) and c:GetLocation()~=LOCATION_DECK
-		and c:GetFlagEffect(56562619)~=0 then return true
-	else rg:Clear() return false end
+	return c:IsPreviousPosition(POS_FACEUP) and not c:IsLocation(LOCATION_DECK)
 end
 function c56562619.spfilter(c,e,tp)
-	return c:GetFlagEffect(56562619)~=0 
+	return c:GetFlagEffect(56562619)~=0
 		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,1-tp))
 end
 function c56562619.spfilter1(c,e,tp)
@@ -100,12 +101,9 @@ function c56562619.spfilter2(c,e,tp)
 	return c:GetFlagEffect(56562619)~=0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,1-tp) and c:GetOwner()==1-tp
 end
 function c56562619.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local rg=e:GetLabelObject()
-	if chk==0 then
-		if rg:IsExists(c56562619.spfilter,1,nil,e,tp) then return true
-		else rg:Clear() return false end
-	end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,rg,rg:GetCount(),0,0)
+	if chk==0 then return true end
+	local g=e:GetLabelObject():Filter(c56562619.spfilter,nil,e,tp)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,g:GetCount(),0,0)
 end
 function c56562619.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
@@ -140,10 +138,10 @@ function c56562619.spop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			sg1=sg1:Select(tp,ft1,ft1,nil)
 		end
-		local sg=sg1:GetFirst()
-		while sg do
-			Duel.SpecialSummonStep(sg,0,tp,tp,false,false,POS_FACEUP)
-			sg=sg1:GetNext()
+		local sc=sg1:GetFirst()
+		while sc do
+			Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEUP)
+			sc=sg1:GetNext()
 		end
 	end
 	if gc2>0 and ft2>0 then
@@ -151,12 +149,15 @@ function c56562619.spop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			sg2=sg2:Select(tp,ft2,ft2,nil)
 		end
-		local sg=sg2:GetFirst()
-		while sg do
-			Duel.SpecialSummonStep(sg,0,tp,1-tp,false,false,POS_FACEUP)
-			sg=sg2:GetNext()
+		local sc=sg2:GetFirst()
+		while sc do
+			Duel.SpecialSummonStep(sc,0,tp,1-tp,false,false,POS_FACEUP)
+			sc=sg2:GetNext()
 		end
 	end
 	Duel.SpecialSummonComplete()
 	rg:Clear()
+end
+function c56562619.clearop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetLabelObject():Clear()
 end
