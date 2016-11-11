@@ -27,7 +27,7 @@ function c72989439.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(72989439,2))
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e3:SetCode(EVENT_BATTLED)
+	e3:SetCode(EVENT_BATTLE_DESTROYING)
 	e3:SetCondition(c72989439.atcon)
 	e3:SetOperation(c72989439.atop)
 	c:RegisterEffect(e3)
@@ -76,9 +76,8 @@ function c72989439.rmop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c72989439.atcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local bc=c:GetBattleTarget()
-	return bc and bc:IsStatus(STATUS_BATTLE_DESTROYED) and c:GetFlagEffect(72989439)==0
-		and c:IsChainAttackable() and c:IsStatus(STATUS_OPPO_BATTLE) 
+	return Duel.GetAttacker()==c and aux.bdocon(e,tp,eg,ep,ev,re,r,rp) and c:GetFlagEffect(72989439)==0
+		and c:IsChainAttackable()
 end
 function c72989439.atop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChainAttack()
