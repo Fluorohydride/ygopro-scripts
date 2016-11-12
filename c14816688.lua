@@ -53,20 +53,30 @@ function c14816688.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		e2:SetReset(RESET_EVENT+0x1fe0000)
 		tc:RegisterEffect(e2)
+		local fid=c:GetFieldID()
+		tc:RegisterFlagEffect(14816688,RESET_EVENT+0x1fe0000,0,1,fid)
 		local e3=Effect.CreateEffect(c)
 		e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e3:SetRange(LOCATION_MZONE)
 		e3:SetCode(EVENT_PHASE+PHASE_END)
 		e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 		e3:SetCountLimit(1)
+		e3:SetLabel(fid)
+		e3:SetLabelObject(tc)
+		e3:SetCondition(c14816688.rmcon1)
 		e3:SetOperation(c14816688.rmop1)
-		e3:SetReset(RESET_EVENT+0x1fe0000)
-		tc:RegisterEffect(e3,true)
+		Duel.RegisterEffect(e3,tp)
 		Duel.SpecialSummonComplete()
 	end
 end
+function c14816688.rmcon1(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	if tc:GetFlagEffectLabel(14816688)~=e:GetLabel() then
+		e:Reset()
+		return false
+	else return true end
+end
 function c14816688.rmop1(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
+	Duel.Remove(e:GetLabelObject(),POS_FACEUP,REASON_EFFECT)
 end
 function c14816688.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
