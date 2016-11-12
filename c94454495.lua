@@ -2,6 +2,7 @@
 function c94454495.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(94454495,0))
 	e1:SetCategory(CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
@@ -14,6 +15,7 @@ function c94454495.initial_effect(c)
 	c:RegisterEffect(e2)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(94454495,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_TO_GRAVE)
