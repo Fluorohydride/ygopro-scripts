@@ -73,7 +73,7 @@ function c11510448.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	local tc1=g:Filter(Card.IsLocation,nil,LOCATION_MZONE):GetFirst()
 	local g2=g:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
-	if tc1 and not tc1:IsImmuneToEffect(e) and g2:GetCount()>0 then
+	if tc1 and tc1:IsFaceup() and not tc1:IsImmuneToEffect(e) and g2:GetCount()>0 then
 		Duel.Overlay(tc1,g2)
 	end
 end
