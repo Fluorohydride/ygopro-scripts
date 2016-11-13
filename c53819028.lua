@@ -62,7 +62,7 @@ end
 function c53819028.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
 	if tc==e:GetHandler() then tc=Duel.GetAttackTarget() end
-	if tc:IsRelateToBattle() then
+	if tc:IsRelateToBattle() and tc:IsControler(1-tp) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
