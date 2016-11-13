@@ -11,7 +11,7 @@ function c32104431.initial_effect(c)
 	c:RegisterEffect(e1)
 	--fusion summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(0,0x1c0)

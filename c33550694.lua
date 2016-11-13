@@ -8,7 +8,7 @@ function c33550694.initial_effect(c)
 	--fusion
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(33550694,0))
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetProperty(EFFECT_FLAG_BOTH_SIDE)

@@ -19,7 +19,7 @@ function c11493868.initial_effect(c)
 	--fusion
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(11493868,1))
-	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetHintTiming(0,0x1e0)
