@@ -38,7 +38,7 @@ function c41209827.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c41209827.ffilter(c)
-	return c:IsAttribute(ATTRIBUTE_DARK) and c:IsLocation(LOCATION_MZONE) and not c:IsType(TYPE_TOKEN)
+	return c:IsFusionAttribute(ATTRIBUTE_DARK) and c:IsLocation(LOCATION_MZONE) and not c:IsType(TYPE_TOKEN)
 end
 function c41209827.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION

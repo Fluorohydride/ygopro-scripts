@@ -33,7 +33,7 @@ function c51570882.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c51570882.ffilter2(c)
-	return c:GetOriginalLevel()>=8 and c:IsAttribute(ATTRIBUTE_DARK)
+	return c:GetOriginalLevel()>=8 and c:IsFusionAttribute(ATTRIBUTE_DARK)
 end
 function c51570882.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA) or aux.fuslimit(e,se,sp,st)

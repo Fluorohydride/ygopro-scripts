@@ -41,7 +41,7 @@ function c19261966.ffilter1(c)
 	return c:IsFusionSetCard(0x9d)
 end
 function c19261966.ffilter2(c)
-	return c:IsAttribute(ATTRIBUTE_WATER) or c:IsHasEffect(4904633)
+	return c:IsFusionAttribute(ATTRIBUTE_WATER) or c:IsHasEffect(4904633)
 end
 function c19261966.exfilter(c,g)
 	return c:IsFaceup() and c:IsCanBeFusionMaterial() and not g:IsContains(c)

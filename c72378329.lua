@@ -37,7 +37,7 @@ function c72378329.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c72378329.ffilter(c)
-	return c:IsRace(RACE_DRAGON) and c:IsAttribute(ATTRIBUTE_DARK)
+	return c:IsRace(RACE_DRAGON) and c:IsFusionAttribute(ATTRIBUTE_DARK)
 end
 function c72378329.splimit(e,se,sp,st)
 	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION

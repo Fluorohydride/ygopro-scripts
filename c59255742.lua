@@ -43,7 +43,7 @@ function c59255742.initial_effect(c)
 end
 c59255742.miracle_synchro_fusion=true
 function c59255742.ffilter(c)
-	return c:IsAttribute(ATTRIBUTE_EARTH) and c:IsRace(RACE_WARRIOR) and c:IsType(TYPE_SYNCHRO)
+	return c:IsFusionAttribute(ATTRIBUTE_EARTH) and c:IsRace(RACE_WARRIOR) and c:IsType(TYPE_SYNCHRO)
 end
 function c59255742.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
