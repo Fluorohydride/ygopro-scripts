@@ -1,5 +1,4 @@
 --十二獣ヴァイパー
---The "get effect" effect is temporary
 function c31755044.initial_effect(c)
 	--material
 	local e1=Effect.CreateEffect(c)
@@ -12,14 +11,15 @@ function c31755044.initial_effect(c)
 	e1:SetOperation(c31755044.matop)
 	c:RegisterEffect(e1)
 	--get effect
-	if not c31755044.global_check then
-		c31755044.global_check=true
-		local ge1=Effect.CreateEffect(c)
-		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge1:SetCode(EVENT_SPSUMMON_SUCCESS)
-		ge1:SetOperation(c31755044.checkop)
-		Duel.RegisterEffect(ge1,0)
-	end
+	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(31755044,1))
+	e2:SetCategory(CATEGORY_REMOVE)
+	e2:SetType(EFFECT_TYPE_XMATERIAL+EFFECT_TYPE_TRIGGER_F)
+	e2:SetCode(EVENT_BATTLED)
+	e2:SetCondition(c31755044.rmcon)
+	e2:SetTarget(c31755044.rmtg)
+	e2:SetOperation(c31755044.rmop)
+	c:RegisterEffect(e2)
 end
 function c31755044.matfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_BEASTWARRIOR) and c:IsType(TYPE_XYZ)
@@ -38,30 +38,11 @@ function c31755044.matop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Overlay(tc,Group.FromCards(c))
 	end
 end
-function c31755044.checkop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=eg:GetFirst()
-	while tc do
-		if tc:IsType(TYPE_XYZ) and tc:GetOriginalRace()==RACE_BEASTWARRIOR
-			and tc:GetFlagEffect(31755044)==0 then
-			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetDescription(aux.Stringid(31755044,1))
-			e1:SetCategory(CATEGORY_REMOVE)
-			e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-			e1:SetCode(EVENT_BATTLED)
-			e1:SetCondition(c31755044.rmcon)
-			e1:SetTarget(c31755044.rmtg)
-			e1:SetOperation(c31755044.rmop)
-			tc:RegisterEffect(e1,true)
-			tc:RegisterFlagEffect(31755044,0,0,1)
-		end
-		tc=eg:GetNext()
-	end
-end
 function c31755044.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	e:SetLabelObject(bc)
-	return c:GetOverlayGroup():IsExists(Card.IsCode,1,nil,31755044)
+	return c:GetOriginalRace()==RACE_BEASTWARRIOR
 		and bc and bc:IsStatus(STATUS_OPPO_BATTLE) and bc:IsRelateToBattle()
 end
 function c31755044.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
