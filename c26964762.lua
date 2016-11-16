@@ -88,9 +88,9 @@ function c26964762.decktg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(c26964762.filter,tp,LOCATION_DECK,0,1,nil) end
 end
 function c26964762.deckop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26964762,3))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26964762,2))
 	local g1=Duel.SelectMatchingCard(tp,c26964762.filter,tp,LOCATION_DECK,0,1,1,nil)
-	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(26964762,3))
+	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(26964762,2))
 	local g2=Duel.SelectMatchingCard(1-tp,c26964762.filter,1-tp,LOCATION_DECK,0,1,1,nil)
 	local tc1=g1:GetFirst()
 	local tc2=g2:GetFirst()
