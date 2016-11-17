@@ -23,7 +23,7 @@ function c17412721.initial_effect(c)
 end
 c17412721.miracle_synchro_fusion=true
 function c17412721.ffilter(c)
-	return c:IsType(TYPE_XYZ+TYPE_SYNCHRO)
+	return c:IsFusionType(TYPE_XYZ+TYPE_SYNCHRO)
 end
 function c17412721.filter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -2,7 +2,7 @@
 function c72959823.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsRace,RACE_MACHINE),aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),true)
+	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionRace,RACE_MACHINE),aux.FilterBoolFunction(Card.IsFusionRace,RACE_DRAGON),true)
 	--destroy
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(72959823,0))

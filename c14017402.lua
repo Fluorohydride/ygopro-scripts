@@ -2,7 +2,7 @@
 function c14017402.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcFun2(c,c14017402.ffilter,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),true)
+	aux.AddFusionProcFun2(c,c14017402.ffilter,aux.FilterBoolFunction(Card.IsFusionRace,RACE_WARRIOR),true)
 	--copy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(14017402,0))
@@ -42,7 +42,7 @@ function c14017402.refcon(e,re,val,r,rp,rc)
 	return bit.band(r,REASON_EFFECT)~=0 and rp~=e:GetHandler():GetControler()  and e:GetHandler():IsAttackPos()
 end
 function c14017402.ffilter(c)
-	return c:IsRace(RACE_DRAGON) and c:IsType(TYPE_SYNCHRO)
+	return c:IsFusionRace(RACE_DRAGON) and c:IsFusionType(TYPE_SYNCHRO)
 end
 function c14017402.cpfilter(c)
 	return c:IsRace(RACE_DRAGON) and c:IsType(TYPE_SYNCHRO) and c:IsAbleToRemove()

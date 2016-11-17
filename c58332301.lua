@@ -2,7 +2,7 @@
 function c58332301.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),aux.FilterBoolFunction(Card.IsRace,RACE_ROCK),true)
+	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionRace,RACE_FIEND),aux.FilterBoolFunction(Card.IsFusionRace,RACE_ROCK),true)
 	--spsummon condition
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)

@@ -3,7 +3,7 @@ function c80532587.initial_effect(c)
 	c:SetSPSummonOnce(80532587)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsType,TYPE_SYNCHRO),aux.FilterBoolFunction(Card.IsType,TYPE_XYZ),false)
+	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionType,TYPE_SYNCHRO),aux.FilterBoolFunction(Card.IsFusionType,TYPE_XYZ),false)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -41,11 +41,11 @@ function c80532587.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c80532587.sprfilter1(c,tp,fc)
-	return c:IsType(TYPE_SYNCHRO) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc)
+	return c:IsFusionType(TYPE_SYNCHRO) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc)
 		and Duel.IsExistingMatchingCard(c80532587.sprfilter2,tp,LOCATION_MZONE,0,1,c,fc)
 end
 function c80532587.sprfilter2(c,fc)
-	return c:IsType(TYPE_XYZ) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc)
+	return c:IsFusionType(TYPE_XYZ) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc)
 end
 function c80532587.sprcon(e,c)
 	if c==nil then return true end
