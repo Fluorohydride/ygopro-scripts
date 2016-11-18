@@ -113,9 +113,6 @@ function c73360025.spop(e,tp,eg,ep,ev,re,r,rp)
 		tc:CompleteProcedure()
 	end
 end
-function c73360025.ctfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0xaf)
-end
 function c73360025.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end

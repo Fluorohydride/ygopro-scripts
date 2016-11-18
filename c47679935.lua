@@ -46,7 +46,6 @@ end
 function c47679935.efilter(e,ct)
 	local p=e:GetHandlerPlayer()
 	local te,tp=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
-	local tc=te:GetHandler()
 	return p==tp and te:IsHasCategory(CATEGORY_FUSION_SUMMON)
 end
 function c47679935.limfilter(c,tp)

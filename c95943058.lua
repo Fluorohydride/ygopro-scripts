@@ -59,8 +59,11 @@ end
 function c95943058.spcon(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetTurnPlayer()~=tp then return end
 	local ct=e:GetLabel()
-	e:SetLabel(ct+1)
-	return ct==1
+	if ct==0 then
+		e:SetLabel(Duel.GetTurnCount())
+		return false
+	end
+	return ct~=Duel.GetTurnCount()
 end
 function c95943058.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

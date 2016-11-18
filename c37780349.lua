@@ -7,6 +7,7 @@ function c37780349.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
 	e1:SetRange(LOCATION_HAND)
+	e1:SetCondition(c37780349.dmcon)
 	e1:SetCost(c37780349.dmcost)
 	e1:SetTarget(c37780349.dmtg)
 	e1:SetOperation(c37780349.dmop)
@@ -22,6 +23,9 @@ function c37780349.initial_effect(c)
 	e2:SetTarget(c37780349.atktg)
 	e2:SetOperation(c37780349.atkop)
 	c:RegisterEffect(e2)
+end
+function c37780349.dmcon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetBattleDamage(tp)>0
 end
 function c37780349.dmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end
