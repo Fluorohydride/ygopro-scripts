@@ -26,7 +26,7 @@ function c75286621.cfilter(c,rtype)
 	return c:IsType(rtype) and c:IsAbleToGraveAsCost()
 end
 function c75286621.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local rtype=re:GetActiveType()
+	local rtype=bit.band(re:GetActiveType(),0x7)
 	if chk==0 then return Duel.IsExistingMatchingCard(c75286621.cfilter,tp,LOCATION_HAND,0,1,nil,rtype) end
 	Duel.DiscardHand(tp,c75286621.cfilter,1,1,REASON_COST,nil,rtype)
 end
