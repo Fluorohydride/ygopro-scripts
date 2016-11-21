@@ -19,7 +19,7 @@ function c38891741.cfilter(c,type)
 end
 function c38891741.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if Duel.IsPlayerAffectedByEffect(tp,EFFECT_DISCARD_COST_CHANGE) then return true end
-	local type=re:GetActiveType()
+	local type=bit.band(re:GetActiveType(),0x7)
 	if chk==0 then return Duel.IsExistingMatchingCard(c38891741.cfilter,tp,LOCATION_HAND,0,1,nil,type) end
 	Duel.DiscardHand(tp,c38891741.cfilter,1,1,REASON_COST+REASON_DISCARD,nil,type)
 end
