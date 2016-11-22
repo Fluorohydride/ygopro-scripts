@@ -35,7 +35,7 @@ function c5489987.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetParam(1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
-function c5489987.drop(e,tp,eg,ep,ev,re,r,rp,c)
+function c5489987.drop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	if Duel.Draw(p,d,REASON_EFFECT)~=0 then
 		local c=e:GetHandler()
@@ -44,14 +44,18 @@ function c5489987.drop(e,tp,eg,ep,ev,re,r,rp,c)
 		Duel.ConfirmCards(1-tp,tc)
 		Duel.BreakEffect()
 		if tc:IsType(TYPE_MONSTER) and tc:IsSetCard(0xe6) then
-			if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)~=0 then
-				c:CompleteProcedure()
-			elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-				and c:IsCanBeSpecialSummoned(e,0,tp,true,false) then
-				Duel.SendtoGrave(c,REASON_RULE)
+			if c:IsRelateToEffect(e) then
+				if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)~=0 then
+					c:CompleteProcedure()
+				elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+					and c:IsCanBeSpecialSummoned(e,0,tp,true,false) then
+					Duel.SendtoGrave(c,REASON_RULE)
+				end
 			end
 		else
-			g:AddCard(c)
+			if c:IsRelateToEffect(e) then
+				g:AddCard(c)
+			end
 			Duel.SendtoGrave(g,REASON_EFFECT)
 		end
 		Duel.ShuffleHand(tp)
@@ -70,7 +74,7 @@ function c5489987.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST+REASON_DISCARD)
 end
-function c5489987.atkop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c5489987.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	if tc:IsRelateToBattle() and tc:IsFaceup() and tc:IsControler(tp) then
 		local e1=Effect.CreateEffect(e:GetHandler())

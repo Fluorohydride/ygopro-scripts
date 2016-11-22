@@ -53,17 +53,11 @@ function c95943058.operation(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetCondition(c95943058.spcon)
 	e2:SetTarget(c95943058.sptg)
 	e2:SetOperation(c95943058.spop)
-	e2:SetLabel(0)
+	e2:SetLabel(Duel.GetTurnCount(tp)+2)
 	c:RegisterEffect(e2)
 end
 function c95943058.spcon(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetTurnPlayer()~=tp then return end
-	local ct=e:GetLabel()
-	if ct==0 then
-		e:SetLabel(Duel.GetTurnCount())
-		return false
-	end
-	return ct~=Duel.GetTurnCount()
+	return Duel.GetTurnPlayer()==tp and e:GetLabel()==Duel.GetTurnCount(tp)
 end
 function c95943058.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
