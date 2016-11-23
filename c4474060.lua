@@ -57,7 +57,8 @@ function c4474060.atkfilter(c)
 end
 function c4474060.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c4474060.atkfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c4474060.atkfilter,tp,LOCATION_MZONE,0,1,e:GetHandler()) end
+	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_ONFIELD)>0 and
+		Duel.IsExistingTarget(c4474060.atkfilter,tp,LOCATION_MZONE,0,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c4474060.atkfilter,tp,LOCATION_MZONE,0,1,1,nil)
 end
