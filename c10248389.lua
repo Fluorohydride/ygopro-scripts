@@ -19,14 +19,6 @@ function c10248389.initial_effect(c)
 	e2:SetCondition(c10248389.atkcon)
 	e2:SetValue(c10248389.atkval)
 	c:RegisterEffect(e2)
-	--disable
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD)
-	e3:SetCode(EFFECT_DISABLE)
-	e3:SetRange(LOCATION_MZONE)
-	e3:SetTargetRange(0,LOCATION_ONFIELD)
-	e3:SetCondition(c10248389.discon)
-	c:RegisterEffect(e3)
 	--disable effect
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -49,8 +41,7 @@ function c10248389.atkval(e,c)
 	return c:GetAttack()*2
 end
 function c10248389.disop(e,tp,eg,ep,ev,re,r,rp)
-	local tl=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
-	if rp~=tp and (tl==LOCATION_MZONE or tl==LOCATION_SZONE) then
+	if rp~=tp then
 		Duel.NegateEffect(ev)
 	end
 end
