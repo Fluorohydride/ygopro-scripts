@@ -1,5 +1,4 @@
 --十二獣サラブレード
---The "get effect" effect is temporary
 function c77150143.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)
@@ -15,14 +14,11 @@ function c77150143.initial_effect(c)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e2)
 	--get effect
-	if not c77150143.global_check then
-		c77150143.global_check=true
-		local ge1=Effect.CreateEffect(c)
-		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge1:SetCode(EVENT_SPSUMMON_SUCCESS)
-		ge1:SetOperation(c77150143.checkop)
-		Duel.RegisterEffect(ge1,0)
-	end
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_XMATERIAL)
+	e3:SetCode(EFFECT_PIERCE)
+	e3:SetCondition(c77150143.condition)
+	c:RegisterEffect(e3)
 end
 function c77150143.filter(c)
 	return c:IsSetCard(0xf1) and c:IsDiscardable(REASON_EFFECT)
@@ -37,22 +33,6 @@ function c77150143.drop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end
 end
-function c77150143.checkop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=eg:GetFirst()
-	while tc do
-		if tc:IsType(TYPE_XYZ) and tc:GetOriginalRace()==RACE_BEASTWARRIOR
-			and tc:GetFlagEffect(77150143)==0 then
-			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetDescription(aux.Stringid(77150143,1))
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_PIERCE)
-			e1:SetCondition(c77150143.condition)
-			tc:RegisterEffect(e1,true)
-			tc:RegisterFlagEffect(77150143,0,0,1)
-		end
-		tc=eg:GetNext()
-	end
-end
-function c77150143.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetOverlayGroup():IsExists(Card.IsCode,1,nil,77150143)
+function c77150143.condition(e)
+	return e:GetHandler():GetOriginalRace()==RACE_BEASTWARRIOR
 end
