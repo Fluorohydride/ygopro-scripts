@@ -25,11 +25,5 @@ function c19230407.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e1:SetCode(EFFECT_SKIP_DP)
-	e1:SetTargetRange(1,0)
-	e1:SetReset(RESET_PHASE+PHASE_END,3)
-	Duel.RegisterEffect(e1,tp)
+	Duel.SkipPhase(tp,PHASE_DRAW,RESET_PHASE+PHASE_END,3)
 end
