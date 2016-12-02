@@ -77,5 +77,5 @@ function c7279373.ftarget(e,c)
 	return e:GetLabel()~=c:GetFieldID()
 end
 function c7279373.indcon(e)
-	return Duel.GetTurnPlayer()==e:GetHandler():GetControler()
+	return Duel.GetTurnPlayer()==e:GetHandlerPlayer()
 end

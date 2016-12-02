@@ -34,7 +34,7 @@ function c9336190.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c9336190.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tc)
 	end
@@ -55,7 +55,7 @@ function c9336190.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c9336190.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	g:AddCard(e:GetHandler())
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,2,0,0)
 end
 function c9336190.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

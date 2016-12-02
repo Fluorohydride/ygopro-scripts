@@ -45,7 +45,7 @@ function c34496660.thcon(e,tp,eg,ep,ev,re,r,rp)
 		and not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_GRAVE,0,1,nil,TYPE_SPELL+TYPE_TRAP)
 end
 function c34496660.thfilter(c)
-	return (c:IsSetCard(0x109a) or c:IsCode(3064425,4786063,14624296,27756115,31181711,35800511,40028305,77679716,90361010,95500396)) and c:IsAbleToHand()
+	return c:IsSetCard(0x109a) and c:IsAbleToHand()
 end
 function c34496660.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c34496660.thfilter,tp,LOCATION_DECK,0,1,nil) end
@@ -53,8 +53,7 @@ function c34496660.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c34496660.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsPosition(POS_FACEUP_ATTACK) then return end
-	Duel.ChangePosition(c,POS_FACEUP_ATTACK)
+	if not c:IsRelateToEffect(e) or Duel.ChangePosition(c,POS_FACEUP_ATTACK)==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c34496660.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then

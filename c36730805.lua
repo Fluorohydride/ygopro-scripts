@@ -11,7 +11,7 @@ function c36730805.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c36730805.condition(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(nil,tp,LOCATION_MZONE,0,nil)
+	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 	if g:GetCount()~=1 then return false end
 	local c=g:GetFirst()
 	return c:IsFaceup() and c:IsType(TYPE_TUNER)

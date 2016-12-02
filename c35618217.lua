@@ -52,7 +52,7 @@ function c35618217.operation(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 end
 function c35618217.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_RETURN)==0 and bit.band(r,REASON_EFFECT)~=0
+	return bit.band(r,REASON_EFFECT)~=0
 end
 function c35618217.thfilter(c)
 	return c:IsCode(24094653) and c:IsAbleToHand()
@@ -66,7 +66,7 @@ function c35618217.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c35618217.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
