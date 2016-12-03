@@ -16,7 +16,7 @@ function c65475294.costcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c65475294.costop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.CheckReleaseGroup(tp,nil,1,c) and Duel.SelectYesNo(tp,aux.Stringid(65475294,0)) then
+	if Duel.CheckReleaseGroup(tp,nil,1,c) then
 		local g=Duel.SelectReleaseGroup(tp,nil,1,1,c)
 		Duel.Release(g,REASON_COST)
 	else
