@@ -121,11 +121,13 @@ function c34487429.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c34487429.spop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	if not Duel.IsExistingMatchingCard(c34487429.filter1,tp,LOCATION_SZONE,0,5,nil) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
+		if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+			and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+			Duel.SendtoGrave(tc,REASON_RULE)
+		end
 	end
 end
 function c34487429.rdcon(e,tp,eg,ep,ev,re,r,rp)

@@ -40,7 +40,10 @@ function c80696379.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
+		if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+			and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+			Duel.SendtoGrave(tc,REASON_RULE)
+		end
 	end
 	if c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)

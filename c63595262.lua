@@ -31,6 +31,9 @@ function c63595262.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK)
+		if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+			and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+			Duel.SendtoGrave(tc,REASON_RULE)
+		end
 	end
 end

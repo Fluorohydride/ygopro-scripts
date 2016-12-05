@@ -40,8 +40,13 @@ function c39531794.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
-		if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==0 then return end
-		c:SetCardTarget(tc)
+		if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
+			c:SetCardTarget(tc)
+			Duel.SpecialSummonComplete()
+		elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+			and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+			Duel.SendtoGrave(tc,REASON_RULE)
+		end
 	end
 end
 function c39531794.desop(e,tp,eg,ep,ev,re,r,rp)

@@ -40,16 +40,20 @@ function c9622164.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
-		if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK)==0 then return end
-		Duel.Equip(tp,c,tc)
-		--Add Equip limit
-		local e1=Effect.CreateEffect(tc)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_EQUIP_LIMIT)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
-		e1:SetValue(c9622164.eqlimit)
-		c:RegisterEffect(e1)
+		if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK)~=0 then
+			Duel.Equip(tp,c,tc)
+			--Add Equip limit
+			local e1=Effect.CreateEffect(tc)
+			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetCode(EFFECT_EQUIP_LIMIT)
+			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+			e1:SetReset(RESET_EVENT+0x1fe0000)
+			e1:SetValue(c9622164.eqlimit)
+			c:RegisterEffect(e1)
+		elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+			and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+			Duel.SendtoGrave(tc,REASON_RULE)
+		end
 	end
 end
 function c9622164.desop(e,tp,eg,ep,ev,re,r,rp)

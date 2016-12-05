@@ -78,7 +78,12 @@ function c25669282.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c25669282.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		tc:EnableDualState()
+	if tc:IsRelateToEffect(e) then
+		if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
+			tc:EnableDualState()
+		elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+			and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+			Duel.SendtoGrave(tc,REASON_RULE)
+		end
 	end
 end
