@@ -11,11 +11,12 @@ function c76218313.initial_effect(c)
 	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_EQUIP+EFFECT_TYPE_FIELD)
+	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetTargetRange(0,1)
+	e2:SetCondition(c76218313.effcon)
 	e2:SetTarget(c76218313.splimit)
 	c:RegisterEffect(e2)
 	--special summon
@@ -24,6 +25,7 @@ function c76218313.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetCountLimit(1,76218313)
 	e3:SetRange(LOCATION_SZONE)
+	e3:SetCondition(c76218313.spcon)
 	e3:SetTarget(c76218313.sptg)
 	e3:SetOperation(c76218313.spop)
 	c:RegisterEffect(e3)
@@ -59,6 +61,9 @@ end
 function c76218313.eqlimit(e,c)
 	return c==e:GetLabelObject()
 end
+function c76218313.spcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetEquipTarget()
+end
 function c76218313.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
@@ -71,6 +76,9 @@ function c76218313.spop(e,tp,eg,ep,ev,re,r,rp)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 		Duel.SendtoGrave(c,REASON_RULE)
 	end
+end
+function c76218313.effcon(e)
+	return e:GetHandler():GetEquipTarget()
 end
 function c76218313.splimit(e,c)
 	return c:IsLocation(LOCATION_EXTRA)
