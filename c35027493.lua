@@ -59,6 +59,7 @@ function c35027493.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c35027493.desop(e,tp,eg,ep,ev,re,r,rp)
 	if ep==e:GetOwnerPlayer() then return end
+	if not eg then return end
 	local hg=eg:Filter(Card.IsLocation,nil,LOCATION_HAND)
 	if hg:GetCount()==0 then return end
 	Duel.ConfirmCards(1-ep,hg)
