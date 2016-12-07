@@ -27,7 +27,7 @@ function c68077936.cfilter(c,tp)
 	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp and c:IsReason(REASON_EFFECT)
 end
 function c68077936.condition(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c68077936.cfilter,1,nil,tp) and re:IsActiveType(TYPE_SPELL)
+	return eg:IsExists(c68077936.cfilter,1,nil,tp) and re and re:IsActiveType(TYPE_SPELL)
 end
 function c68077936.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() end
