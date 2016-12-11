@@ -1,4 +1,4 @@
---Jizukiru, the Star Destroying Kaiju
+--壊星壊獣ジズキエル
 function c63941210.initial_effect(c)
 	c:SetUniqueOnField(1,0,20000000,LOCATION_MZONE)
 	--special summon rule
@@ -67,9 +67,8 @@ function c63941210.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
 end
 function c63941210.disop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateEffect(ev)
-	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(63941210,1)) then
+	local g=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)
+	if Duel.NegateEffect(ev) and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(63941210,1)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local tg=g:Select(tp,1,1,nil)
 		Duel.HintSelection(tg)

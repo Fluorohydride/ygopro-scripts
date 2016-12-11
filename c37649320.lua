@@ -1,4 +1,4 @@
---버제스토마 오파비니아
+--バージェストマ・オパビニア
 function c37649320.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,2)

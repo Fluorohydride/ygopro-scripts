@@ -51,6 +51,5 @@ end
 function c55428242.chainfilter(e,ct)
 	local p=e:GetHandlerPlayer()
 	local te,tp=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
-	local tc=te:GetHandler()
-	return p==tp and tc:GetType()==TYPE_TRAP
+	return p==tp and te:GetActiveType()==TYPE_TRAP
 end

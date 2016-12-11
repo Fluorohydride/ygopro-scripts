@@ -58,7 +58,8 @@ function c22804410.spop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetMatchingGroup(Card.IsRace,tp,LOCATION_GRAVE,0,nil,RACE_DRAGON)
 		local dam=g:GetClassCount(Card.GetCode)*600
 		Duel.Damage(1-tp,dam,REASON_EFFECT)
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end

@@ -52,16 +52,27 @@ function c24696097.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsAbleToEnterBP() and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=5
 end
 function c24696097.mtop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	Duel.ConfirmDecktop(tp,5)
 	local g=Duel.GetDecktopGroup(tp,5)
 	local ct=g:FilterCount(Card.IsType,nil,TYPE_TUNER)
 	Duel.ShuffleDeck(tp)
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_EXTRA_ATTACK)
-	e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END)
-	e1:SetValue(ct-1)
-	e:GetHandler():RegisterEffect(e1)
+	if ct>1 then
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_EXTRA_ATTACK)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e1:SetValue(ct-1)
+		c:RegisterEffect(e1)
+	elseif ct==0 then
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetCode(EFFECT_CANNOT_ATTACK)
+		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		c:RegisterEffect(e2)
+	end
 end
 function c24696097.discon(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) or not Duel.IsChainNegatable(ev) then return false end
@@ -95,11 +106,10 @@ function c24696097.datg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c24696097.daop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
-		Duel.Remove(c,POS_FACEUP,REASON_EFFECT)
+	if c:IsRelateToEffect(e) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0 then
+		Duel.NegateAttack()
+		c:RegisterFlagEffect(24696097,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,0)
 	end
-	Duel.NegateAttack()
-	c:RegisterFlagEffect(24696097,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,0)
 end
 function c24696097.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

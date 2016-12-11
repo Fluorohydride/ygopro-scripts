@@ -5,6 +5,7 @@ function c20447641.initial_effect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetHintTiming(0,TIMING_END_PHASE)
 	e1:SetCost(c20447641.cost)
 	e1:SetTarget(c20447641.target)
 	e1:SetOperation(c20447641.activate)
@@ -34,14 +35,14 @@ function c20447641.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		if e:GetLabel()==0 then return false end
 		e:SetLabel(0)
 		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.IsPlayerCanSpecialSummonMonster(tp,20447641,0xaa,0x21,4,1800,1000,RACE_MACHINE,ATTRIBUTE_EARTH) end
+			and Duel.IsPlayerCanSpecialSummonMonster(tp,20447641,0xaa,0x21,1800,1000,4,RACE_MACHINE,ATTRIBUTE_EARTH) end
 	e:SetLabel(0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c20447641.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,20447641,0xaa,0x21,4,1800,1000,RACE_MACHINE,ATTRIBUTE_EARTH) then
+	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,20447641,0xaa,0x21,1800,1000,4,RACE_MACHINE,ATTRIBUTE_EARTH) then
 		c:AddMonsterAttribute(TYPE_EFFECT)
 		Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
 		c:AddMonsterAttributeComplete()

@@ -39,7 +39,7 @@ function c51549976.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c51549976.actcon(e)
 	local ph=Duel.GetCurrentPhase()
-	return ph>=PHASE_BATTLE and ph<=PHASE_DAMAGE_CAL
+	return ph>PHASE_MAIN1 and ph<PHASE_MAIN2
 end
 function c51549976.aclimit(e,re,tp)
 	return re:GetHandler():IsType(TYPE_MONSTER) and re:GetHandler():IsLocation(LOCATION_HAND+LOCATION_GRAVE)

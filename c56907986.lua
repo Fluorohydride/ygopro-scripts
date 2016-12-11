@@ -1,4 +1,4 @@
---Kozmo Strawman
+--Kozmo－フォルミート
 function c56907986.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

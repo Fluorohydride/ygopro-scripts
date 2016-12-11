@@ -85,7 +85,11 @@ function c27918963.operation(e,tp,eg,ep,ev,re,r,rp)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,c27918963.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
-		if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
+		if g:GetCount()>0 then
+			if g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
+				Duel.NegateEffect(0)
+				return
+			end
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,g)
 		end

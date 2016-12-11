@@ -12,7 +12,7 @@ function c40908371.initial_effect(c)
 	c:RegisterEffect(e1)
 	--spsumon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(40908371,0))
+	e2:SetDescription(aux.Stringid(40908371,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)

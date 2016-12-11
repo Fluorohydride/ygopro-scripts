@@ -59,27 +59,14 @@ function c7841112.matfilter(c,syncard)
 	return c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard)
 end
 function c7841112.synfilter1(c,syncard,lv,g)
-	if not c:IsCode(21159309) then return false end
-	local tlv=c:GetSynchroLevel(syncard)
-	if lv-tlv<=0 then return false end
-	local t=false
-	if c:IsType(TYPE_TUNER) then t=true end
-	local wg=g:Clone()
-	wg:RemoveCard(c)
-	return wg:IsExists(c7841112.synfilter2,1,nil,syncard,lv-tlv,wg,t)
+	return c:IsCode(21159309) and g:IsExists(c7841112.synfilter2,1,c,syncard,lv,g,c)
 end
-function c7841112.synfilter2(c,syncard,lv,g,tuner)
+function c7841112.synfilter2(c,syncard,lv,g,mc)
 	if not c:IsCode(44508094) then return false end
-	local tlv=c:GetSynchroLevel(syncard)
-	if lv-tlv<=0 then return false end
-	if not tuner and not c:IsType(TYPE_TUNER) then return false end
-	return g:IsExists(c7841112.synfilter3,1,c,syncard,lv-tlv)
-end
-function c7841112.synfilter3(c,syncard,lv)
-	local mlv=c:GetSynchroLevel(syncard)
-	local lv1=bit.band(mlv,0xffff)
-	local lv2=bit.rshift(mlv,16)
-	return c:IsNotTuner() and (lv1==lv or lv2==lv)
+	if c:IsType(TYPE_TUNER)==mc:IsType(TYPE_TUNER) then return false end
+	local mg=g:Filter(Card.IsNotTuner,nil)
+	Duel.SetSelectedCard(Group.FromCards(c,mc))
+	return mg:CheckWithSumEqual(Card.GetSynchroLevel,lv,1,1,syncard)
 end
 function c7841112.syncon(e,c,tuner)
 	if c==nil then return true end
@@ -100,18 +87,13 @@ function c7841112.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner)
 		m1=t1:GetFirst()
 		g:AddCard(m1)
 	end
-	lv=lv-m1:GetSynchroLevel(c)
-	local t=false
-	if m1:IsType(TYPE_TUNER) then t=true end
-	mg:RemoveCard(m1)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-	local t2=mg:FilterSelect(tp,c7841112.synfilter2,1,1,nil,c,lv,mg,t)
-	local m2=t2:GetFirst()
-	g:AddCard(m2)
-	lv=lv-m2:GetSynchroLevel(c)
-	mg:RemoveCard(m2)
+	local t2=mg:FilterSelect(tp,c7841112.synfilter2,1,1,m1,c,lv,mg,m1)
+	g:Merge(t2)
+	local mg2=mg:Filter(Card.IsNotTuner,nil)
+	Duel.SetSelectedCard(g)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-	local t3=mg:FilterSelect(tp,c7841112.synfilter3,1,1,nil,c,lv)
+	local t3=mg2:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,1,1,c)
 	g:Merge(t3)
 	c:SetMaterial(g)
 	Duel.SendtoGrave(g,REASON_MATERIAL+REASON_SYNCHRO)

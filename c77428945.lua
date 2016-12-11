@@ -12,7 +12,7 @@ function c77428945.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c77428945.filter(c)
-	return c:IsFaceup() and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)~=0
+	return c:IsFaceup() and c:IsCanTurnSet() and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)~=0
 end
 function c77428945.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

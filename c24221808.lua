@@ -42,8 +42,7 @@ end
 function c24221808.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
-		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
+	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED) then
 		if c:IsRelateToEffect(e) then
 			local sg=e:GetLabelObject()
 			if c:GetFlagEffect(24221808)==0 then
@@ -69,7 +68,8 @@ function c24221808.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local tg=g:Filter(c24221808.spfilter,nil,e:GetHandler(),e,tp)
-	if ft<=0 or tg:GetCount()==0 or (ft>1 and tg:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
+	if ft<=0 or tg:GetCount()==0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=tg:Select(tp,ft,ft,nil)
 	Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)

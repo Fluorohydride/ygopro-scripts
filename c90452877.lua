@@ -1,4 +1,4 @@
---Kozmojo
+--Kozmo－エナジーアーツ
 function c90452877.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

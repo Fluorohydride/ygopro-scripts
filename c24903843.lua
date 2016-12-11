@@ -1,4 +1,4 @@
---버제스토마 피카이아
+--バージェストマ・ピカイア
 function c24903843.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -39,17 +39,28 @@ function c6430659.atop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_DIRECT_ATTACK)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
+		tc:RegisterFlagEffect(6430659,RESET_EVENT+0x1fe0000,0,1)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e2:SetCode(EVENT_PHASE+PHASE_BATTLE)
-		e2:SetRange(LOCATION_MZONE)
-		e2:SetCountLimit(1)
 		e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e2:SetCountLimit(1)
+		e2:SetLabelObject(tc)
+		e2:SetCondition(c6430659.tgcon)
 		e2:SetOperation(c6430659.tgop)
-		tc:RegisterEffect(e2)
+		Duel.RegisterEffect(e2,tp)
+	end
+end
+function c6430659.tgcon(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	if tc:GetFlagEffect(6430659)~=0 then
+		return true
+	else
+		e:Reset()
+		return false
 	end
 end
 function c6430659.tgop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
+	local tc=e:GetLabelObject()
+	Duel.SendtoGrave(tc,REASON_EFFECT)
 end

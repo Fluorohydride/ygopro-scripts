@@ -61,15 +61,18 @@ function c42256406.cbop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c42256406.defcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeckAsCost(tp,1) end
-	local ct=Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)
-	if ct==1 then 
-		Duel.DiscardDeck(tp,1,REASON_COST)
+	local ct={}
+	for i=3,1,-1 do
+		if Duel.IsPlayerCanDiscardDeckAsCost(tp,i) then
+			table.insert(ct,i)
+		end
+	end
+	if #ct==1 then 
+		Duel.DiscardDeck(tp,ct[1],REASON_COST)
 		e:SetLabel(1)
 	else
-		local ac=0
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(42256406,3))
-		if ct==2 then ac=Duel.AnnounceNumber(tp,1,2)
-		else ac=Duel.AnnounceNumber(tp,1,2,3) end
+		local ac=Duel.AnnounceNumber(tp,table.unpack(ct))
 		Duel.DiscardDeck(tp,ac,REASON_COST)
 		e:SetLabel(ac)
 	end

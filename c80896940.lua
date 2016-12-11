@@ -68,7 +68,6 @@ function c80896940.initial_effect(c)
 	--pendulum
 	local e7=Effect.CreateEffect(c)
 	e7:SetDescription(aux.Stringid(80896940,5))
-	e7:SetCategory(CATEGORY_DESTROY)
 	e7:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e7:SetCode(EVENT_DESTROYED)
 	e7:SetProperty(EFFECT_FLAG_DELAY)
@@ -187,7 +186,7 @@ function c80896940.indop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_AVOID_BATTLE_DAMAGE)
 	e2:SetValue(1)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE)
+	e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE)
 	tc:RegisterEffect(e2)
 end
 function c80896940.atkcon(e,tp,eg,ep,ev,re,r,rp)
@@ -241,7 +240,8 @@ function c80896940.lpop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SetLP(1-tp,math.ceil(Duel.GetLP(1-tp)/2))
 end
 function c80896940.pencon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0 and e:GetHandler():IsPreviousLocation(LOCATION_MZONE)
+	local c=e:GetHandler()
+	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0 and c:IsPreviousLocation(LOCATION_MZONE) and c:IsFaceup()
 end
 function c80896940.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLocation(tp,LOCATION_SZONE,6) or Duel.CheckLocation(tp,LOCATION_SZONE,7) end

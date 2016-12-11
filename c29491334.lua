@@ -1,4 +1,4 @@
---Kozmo DOG Fighter
+--Kozmo－ドッグファイター
 function c29491334.initial_effect(c)
 	--token
 	local e1=Effect.CreateEffect(c)

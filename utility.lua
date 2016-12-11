@@ -1,5 +1,7 @@
 Auxiliary={}
 aux=Auxiliary
+POS_FACEUP_DEFENCE=POS_FACEUP_DEFENSE
+POS_FACEDOWN_DEFENCE=POS_FACEDOWN_DEFENSE
 
 function Auxiliary.Stringid(code,id)
 	return code*16+id
@@ -135,6 +137,28 @@ function Auxiliary.SpiritReturnOperation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
+end
+function Auxiliary.IsUnionState(effect)
+	local c=effect:GetHandler()
+	return c:IsHasEffect(EFFECT_UNION_STATUS)
+end
+function Auxiliary.SetUnionState(c)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_UNION_STATUS)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetReset(RESET_EVENT+0x1fe0000)
+	c:RegisterEffect(e1)
+	if c.old_union then
+		local e2=e1:Clone()
+		e2:SetCode(EFFECT_OLDUNION_STATUS)
+		c:RegisterEffect(e2)
+	end
+end
+function Auxiliary.CheckUnionEquip(uc,tc)
+	ct1,ct2=tc:GetUnionCount()
+	if uc.old_union then return ct1==0
+	else return ct2==0 end
 end
 function Auxiliary.TargetEqualFunction(f,value,a,b,c)
 	return	function(effect,target)
@@ -1017,12 +1041,12 @@ function Auxiliary.FConditionCodeRep(code,cc,sub,insf)
 					return (gc:IsFusionCode(code) or gc:CheckFusionSubstitute(e:GetHandler())) and mg:IsExists(Card.IsFusionCode,cc-1,gc,code) end
 				local g1=mg:Filter(Card.IsFusionCode,nil,code)
 				if not sub then
-					if chkf~=PLAYER_NONE then return g1:GetCount()>=cc and g1:FilterCount(Card.IsOnField,nil)~=0
+					if chkf~=PLAYER_NONE then return g1:GetCount()>=cc and g1:FilterCount(Auxiliary.FConditionCheckF,nil,chkf)~=0
 					else return g1:GetCount()>=cc end
 				end
 				local g2=mg:Filter(Card.CheckFusionSubstitute,nil,e:GetHandler())
 				if chkf~=PLAYER_NONE then
-					return (g1:FilterCount(Card.IsOnField,nil)~=0 or g2:FilterCount(Card.IsOnField,nil)~=0)
+					return (g1:FilterCount(Auxiliary.FConditionCheckF,nil,chkf)~=0 or g2:FilterCount(Auxiliary.FConditionCheckF,nil,chkf)~=0)
 						and g1:GetCount()>=cc-1 and g1:GetCount()+g2:GetCount()>=cc
 				else return g1:GetCount()>=cc-1 and g1:GetCount()+g2:GetCount()>=cc end
 			end
@@ -1076,7 +1100,7 @@ function Auxiliary.FConditionFunRep(f,cc,insf)
 					return f(gc) and mg:IsExists(f,cc-1,gc) end
 				local g1=mg:Filter(f,nil)
 				if chkf~=PLAYER_NONE then
-					return g1:FilterCount(Card.IsOnField,nil)~=0 and g1:GetCount()>=cc
+					return g1:FilterCount(Auxiliary.FConditionCheckF,nil,chkf)~=0 and g1:GetCount()>=cc
 				else return g1:GetCount()>=cc end
 			end
 end

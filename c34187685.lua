@@ -21,7 +21,7 @@ function c34187685.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c34187685.filter1(c,tp)
 	local lv=c:GetOriginalLevel()
-	return lv>1 and c:IsDiscardable() and c:IsAbleToGraveAsCost()
+	return lv>1 and c:IsType(TYPE_MONSTER) and c:IsDiscardable() and c:IsAbleToGraveAsCost()
 		and Duel.IsExistingTarget(c34187685.filter2,tp,LOCATION_MZONE,0,1,nil,lv)
 end
 function c34187685.filter2(c,lv)

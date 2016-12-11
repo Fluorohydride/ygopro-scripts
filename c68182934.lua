@@ -1,4 +1,4 @@
---Sky Dragoons of Draconia
+--ドラコニアの翼竜騎兵
 function c68182934.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

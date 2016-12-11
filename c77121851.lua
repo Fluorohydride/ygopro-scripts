@@ -3,6 +3,7 @@ function c77121851.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetCode(EVENT_TO_GRAVE)
 	e1:SetOperation(c77121851.tgop)
 	c:RegisterEffect(e1)
@@ -31,14 +32,16 @@ function c77121851.costfilter(c)
 	return c:IsRace(RACE_BEAST+RACE_BEASTWARRIOR+RACE_WINDBEAST) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsAbleToGraveAsCost()
 end
 function c77121851.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c77121851.costfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil) end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local loc=LOCATION_HAND+LOCATION_MZONE
+	if ft<1 then loc=LOCATION_MZONE end
+	if chk==0 then return ft>-1 and Duel.IsExistingMatchingCard(c77121851.costfilter,tp,loc,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c77121851.costfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c77121851.costfilter,tp,loc,0,1,1,nil)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c77121851.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c77121851.spop(e,tp,eg,ep,ev,re,r,rp)

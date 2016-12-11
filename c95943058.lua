@@ -43,7 +43,7 @@ function c95943058.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 	--sp summon
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(95943058,0))
+	e2:SetDescription(aux.Stringid(95943058,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetRange(LOCATION_REMOVED)
@@ -53,14 +53,11 @@ function c95943058.operation(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetCondition(c95943058.spcon)
 	e2:SetTarget(c95943058.sptg)
 	e2:SetOperation(c95943058.spop)
-	e2:SetLabel(0)
+	e2:SetLabel(Duel.GetTurnCount(tp)+2)
 	c:RegisterEffect(e2)
 end
 function c95943058.spcon(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetTurnPlayer()~=tp then return end
-	local ct=e:GetLabel()
-	e:SetLabel(ct+1)
-	return ct==1
+	return Duel.GetTurnPlayer()==tp and e:GetLabel()==Duel.GetTurnCount(tp)
 end
 function c95943058.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

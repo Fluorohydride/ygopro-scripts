@@ -28,17 +28,17 @@ end
 function c41741922.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
+	local g1=Duel.GetMatchingGroup(c41741922.filter,tp,LOCATION_HAND,0,nil,e,tp)
+	local g2=Duel.GetMatchingGroup(c41741922.filter,tp,LOCATION_GRAVE,0,nil,e,tp)
+	if g1:GetCount()==0 or g2:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c41741922.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
-	local tc=g:GetFirst()
-	if tc then
-		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
-	end
+	local sg1=g1:Select(tp,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	g=Duel.SelectMatchingCard(tp,c41741922.filter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
-	tc=g:GetFirst()
-	if tc and not tc:IsHasEffect(EFFECT_NECRO_VALLEY) then
-		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
+	local sg2=g2:Select(tp,1,1,nil)
+	if sg2:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
+		Duel.NegateEffect(0)
+		return
 	end
-	Duel.SpecialSummonComplete()
+	sg1:Merge(sg2)
+	Duel.SpecialSummon(sg1,0,tp,tp,false,false,POS_FACEUP)
 end

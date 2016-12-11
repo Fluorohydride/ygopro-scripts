@@ -1,4 +1,4 @@
---Samurai Calvary of Reptier
+--レプティアの武者騎兵
 function c93124273.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
@@ -14,7 +14,7 @@ function c93124273.initial_effect(c)
 end
 function c93124273.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local d=Duel.GetAttackTarget()
-	if chk ==0 then	return Duel.GetAttacker()==e:GetHandler()
+	if chk ==0 then return Duel.GetAttacker()==e:GetHandler()
 		and d and d:IsFaceup() and not d:IsType(TYPE_PENDULUM) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,d,1,0,0)
 end

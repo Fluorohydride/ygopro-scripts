@@ -25,9 +25,14 @@ function c30915572.spoperation(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetOperatedGroup()
 	local tc=g:GetFirst()
 	if tc then
+		Duel.BreakEffect()
 		if tc:IsType(TYPE_MONSTER) then
 			Duel.Damage(1-tp,tc:GetLevel()*200,REASON_EFFECT)
-			if c:IsRelateToEffect(e) then Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP) end
+			if not c:IsRelateToEffect(e) then return end
+			if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+				and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+				Duel.SendtoGrave(c,REASON_RULE)
+			end
 		else
 			if c:IsRelateToEffect(e) then Duel.Destroy(c,REASON_EFFECT) end
 		end

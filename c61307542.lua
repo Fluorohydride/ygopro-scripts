@@ -1,4 +1,4 @@
---버제스토마 아노말로카리스
+--バージェストマ・アノマロカリス
 function c61307542.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,2,3,nil,nil,5)
@@ -49,7 +49,8 @@ function c61307542.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c61307542.cfilter,1,nil,tp)
 end
 function c61307542.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,1) end
+	local tc=Duel.GetDecktopGroup(tp,1):GetFirst()
+	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,1) and tc:IsAbleToHand() end
 end
 function c61307542.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerCanDiscardDeck(tp,1) then return end
@@ -74,9 +75,9 @@ function c61307542.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c61307542.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end
-	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c61307542.desop(e,tp,eg,ep,ev,re,r,rp)

@@ -1,4 +1,4 @@
---Kozmoll Dark Lady
+--Kozmo－ダーク・エルファイバー
 function c12408276.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

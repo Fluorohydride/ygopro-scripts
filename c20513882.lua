@@ -1,4 +1,4 @@
---Painful Escape
+--苦渋の黙札
 function c20513882.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -15,36 +15,37 @@ function c20513882.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)
 	if chk==0 then return true end
 end
-function c20513882.cfilter(c,e,tp)
-	local lv=c:GetLevel()
-	return lv>0 and Duel.IsExistingMatchingCard(c20513882.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,c:GetLevel(),c:GetRace(),c:GetAttribute(),c:GetCode())
+function c20513882.cfilter(c,tp)
+	return c:GetOriginalLevel()>0
+		and Duel.IsExistingMatchingCard(c20513882.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,c)
 end
-function c20513882.thfilter(c,lv,race,att,code)
-	return c:GetLevel()==lv and c:IsRace(race) and c:IsAttribute(att) and not c:IsCode(code) and c:IsAbleToHand()
+function c20513882.thfilter(c,tc)
+	return c:IsType(TYPE_MONSTER)
+		and c:GetOriginalLevel()==tc:GetOriginalLevel()
+		and c:GetOriginalRace()==tc:GetOriginalRace()
+		and c:GetOriginalAttribute()==tc:GetOriginalAttribute()
+		and c:GetOriginalCode()~=tc:GetOriginalCode() and c:IsAbleToHand()
 end
 function c20513882.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.CheckReleaseGroup(tp,c20513882.cfilter,1,nil,e,tp)
+		return Duel.CheckReleaseGroup(tp,c20513882.cfilter,1,nil,tp)
 	end
-	local g=Duel.SelectReleaseGroup(tp,c20513882.cfilter,1,1,nil,e,tp)
-	local rc=g:GetFirst()
-	local label=bit.lshift(rc:GetRace(),16)
-	label=label+bit.lshift(rc:GetLevel(),8)
-	label=label+rc:GetAttribute()
-	e:SetLabel(label)
-	e:SetValue(rc:GetCode())
-	Duel.Release(rc,REASON_COST)
+	local g=Duel.SelectReleaseGroup(tp,c20513882.cfilter,1,1,nil,tp)
+	e:SetLabelObject(g:GetFirst())
+	Duel.Release(g,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK+LOCATION_GRAVE)
 end
 function c20513882.activate(e,tp,eg,ep,ev,re,r,rp)
-	local att=bit.band(e:GetLabel(),0xff)
-	local lv=bit.band(bit.rshift(e:GetLabel(),8),0xff)
-	local race=bit.rshift(e:GetLabel(),16)
+	local tc=e:GetLabelObject()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c20513882.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,lv,race,att,e:GetValue())
-	if g:GetCount()>0 and not g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
+	local g=Duel.SelectMatchingCard(tp,c20513882.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,tc)
+	if g:GetCount()>0 then
+		if g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
+			Duel.NegateEffect(0)
+			return
+		end
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end

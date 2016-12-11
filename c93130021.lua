@@ -16,11 +16,10 @@ end
 function c93130021.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
-function c93130021.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and c93130021.filter(chkc) end
+function c93130021.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local c=e:GetHandler()
-	local t1=Duel.IsExistingTarget(c93130021.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
+	local t1=Duel.IsExistingMatchingCard(c93130021.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 	local t2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,0x4011,c:GetAttack(),c:GetDefense(),c:GetLevel(),c:GetRace(),c:GetAttribute())
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(93130021,0))
@@ -34,27 +33,25 @@ function c93130021.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	else op=Duel.SelectOption(tp,aux.Stringid(93130021,1)) end
 	e:SetLabel(op)
 	if op==1 then
-		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		e:SetCategory(CATEGORY_DESTROY)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local g=Duel.SelectTarget(tp,c93130021.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+		local g=Duel.GetMatchingGroup(c93130021.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	elseif op==2 then
-		e:SetProperty(0)
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 		Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	else
-		e:SetProperty(0)
 		e:SetCategory(CATEGORY_ATKCHANGE)
 	end
 end
 function c93130021.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if e:GetLabel()==1 then
-		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) then
-			Duel.Destroy(tc,REASON_EFFECT)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+		local g=Duel.SelectMatchingCard(tp,c93130021.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+		if g:GetCount()>0 then
+			Duel.HintSelection(g)
+			Duel.Destroy(g,REASON_EFFECT)
 		end
 	elseif e:GetLabel()==2 then
 		local atk=c:GetAttack()

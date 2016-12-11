@@ -19,6 +19,7 @@ function c37534148.initial_effect(c)
 	--special summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e3:SetCode(EVENT_TO_GRAVE)
 	e3:SetCondition(c37534148.regcon)
 	e3:SetOperation(c37534148.regop)

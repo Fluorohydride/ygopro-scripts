@@ -14,17 +14,16 @@ function c60080151.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer()
 end
 function c60080151.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local tg=Duel.GetAttacker()
-	if chk==0 then return tg:IsOnField() and tg:IsAbleToRemove() end
-	local dam=tg:GetAttack()
-	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,tp,dam)
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,tg,1,0,0)
+	local tc=Duel.GetAttacker()
+	if chk==0 then return tc:IsOnField() and tc:IsAbleToRemove() end
+	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,tp,tc:GetAttack())
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,tc,1,0,0)
 end
 function c60080151.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
-	if tc and tc:IsAttackable() and not tc:IsStatus(STATUS_ATTACK_CANCELED) then
+	if tc and tc:IsAttackable() and tc:IsRelateToBattle() and not tc:IsStatus(STATUS_ATTACK_CANCELED) then
 		local dam=tc:GetAttack()
-		if Duel.Damage(tp,dam,REASON_EFFECT)>0 and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)>0 then
+		if Duel.Damage(tp,dam,REASON_EFFECT)>0 and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_REMOVED) then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 			e1:SetCountLimit(1)
@@ -45,5 +44,6 @@ function c60080151.spcon(e,tp,eg,ep,ev,re,r,rp)
 		and tc:GetFlagEffect(60080151)~=0 and tc:GetReasonEffect():GetHandler()==e:GetHandler()
 end
 function c60080151.spop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,0,60080151)
 	Duel.SpecialSummon(e:GetLabelObject(),0,tp,tp,false,false,POS_FACEUP)
 end

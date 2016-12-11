@@ -29,7 +29,7 @@ function c74839123.cfilter(c)
 	return c:IsSetCard(0xad) and c:IsType(TYPE_FUSION) and c:IsAbleToGraveAsCost()
 end
 function c74839123.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil)
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,e:GetHandler())
 		and Duel.IsExistingMatchingCard(c74839123.cfilter,tp,LOCATION_EXTRA,0,2,nil) end
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)

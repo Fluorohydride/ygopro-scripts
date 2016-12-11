@@ -44,18 +44,27 @@ function c39980304.chain_operation(e,te,tp,tc,mat,sumtype)
 	Duel.Remove(mat,POS_FACEUP,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 	Duel.BreakEffect()
 	Duel.SpecialSummon(tc,sumtype,tp,tp,false,false,POS_FACEUP)
-	tc:RegisterFlagEffect(39980304,RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END,0,1)
+	tc:RegisterFlagEffect(39980304,RESET_EVENT+0x1fc0000,0,1)
 	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetOwnerPlayer(tp)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e1:SetRange(LOCATION_MZONE)
 	e1:SetCode(EVENT_PHASE+PHASE_END)
+	e1:SetLabelObject(tc)
+	e1:SetCondition(c39980304.descon)
 	e1:SetOperation(c39980304.desop)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 	e1:SetCountLimit(1)
-	tc:RegisterEffect(e1)
+	Duel.RegisterEffect(e1,tp)
+end
+function c39980304.descon(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	if tc:GetFlagEffect(39980304)~=0 then
+		return true
+	else
+		e:Reset()
+		return false
+	end
 end
 function c39980304.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+	local tc=e:GetLabelObject()
+	Duel.Destroy(tc,REASON_EFFECT)
 end

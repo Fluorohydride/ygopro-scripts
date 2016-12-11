@@ -43,7 +43,7 @@ function c74009824.ffilter1(c)
 	return c:IsFusionSetCard(0x9d)
 end
 function c74009824.ffilter2(c)
-	return c:IsAttribute(ATTRIBUTE_WIND) or c:IsHasEffect(4904633)
+	return c:IsFusionAttribute(ATTRIBUTE_WIND) or c:IsHasEffect(4904633)
 end
 function c74009824.exfilter(c,g)
 	return c:IsFaceup() and c:IsCanBeFusionMaterial() and not g:IsContains(c)

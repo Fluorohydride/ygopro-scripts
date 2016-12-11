@@ -1,4 +1,4 @@
---Magical Cavalry of Cxulub
+--シュルブの魔導騎兵
 function c23220863.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

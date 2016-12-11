@@ -16,6 +16,7 @@ function c19462747.initial_effect(c)
 	--to grave
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e3:SetCode(EVENT_TO_GRAVE)
 	e3:SetOperation(c19462747.regop)
 	c:RegisterEffect(e3)

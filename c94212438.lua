@@ -44,10 +44,12 @@ end
 function c94212438.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if Duel.GetCurrentPhase()==PHASE_END and c94212438.plcon(e,tp,eg,ep,ev,re,r,rp) and Duel.SelectYesNo(tp,94) then
+		e:SetLabel(94212438)
 		e:SetOperation(c94212438.plop)
 		e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,65)
 		e:GetHandler():RegisterFlagEffect(94212439,RESET_PHASE+PHASE_END,0,1)
 	else
+		e:SetLabel(0)
 		e:SetOperation(nil)
 	end
 end

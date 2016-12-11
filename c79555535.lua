@@ -29,7 +29,7 @@ function c79555535.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c79555535.desfilter(c)
-	return c:IsSetCard(0xc8)
+	return c:IsFaceup() and c:IsSetCard(0xc8)
 end
 function c79555535.thfilter(c)
 	return c:IsSetCard(0xc8) and c:IsAbleToHand()

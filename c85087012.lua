@@ -23,15 +23,18 @@ function c85087012.initial_effect(c)
 end
 function c85087012.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeckAsCost(tp,1) end
-	local ct=Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)
-	if ct==1 then 
-		Duel.DiscardDeck(tp,1,REASON_COST)
+	local ct={}
+	for i=3,1,-1 do
+		if Duel.IsPlayerCanDiscardDeckAsCost(tp,i) then
+			table.insert(ct,i)
+		end
+	end
+	if #ct==1 then 
+		Duel.DiscardDeck(tp,ct[1],REASON_COST)
 		e:SetLabel(1)
 	else
-		local ac=0
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(85087012,2))
-		if ct==2 then ac=Duel.AnnounceNumber(tp,2,1)
-		else ac=Duel.AnnounceNumber(tp,3,2,1) end
+		local ac=Duel.AnnounceNumber(tp,table.unpack(ct))
 		Duel.DiscardDeck(tp,ac,REASON_COST)
 		e:SetLabel(ac)
 	end

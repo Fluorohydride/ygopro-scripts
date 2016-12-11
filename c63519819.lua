@@ -25,6 +25,7 @@ function c63519819.initial_effect(c)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
+	e3:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 	c:RegisterEffect(e3)
 	--atk/def
 	local e4=Effect.CreateEffect(c)

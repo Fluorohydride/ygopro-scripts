@@ -1,4 +1,4 @@
---Steel Cavalry of Dinon
+--ディノンの鋼鉄騎兵
 function c2396042.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--atk/def

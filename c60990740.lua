@@ -51,7 +51,7 @@ function c60990740.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c60990740.sdtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)>2 end
+	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>2 end
 end
 function c60990740.sdop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SortDecktop(tp,tp,3)

@@ -19,6 +19,7 @@ end
 function c81863068.operation(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	if Duel.Draw(p,d,REASON_EFFECT)==0 then return end
+	Duel.BreakEffect()
 	local g=Duel.GetOperatedGroup()
 	Duel.ConfirmCards(1-p,g)
 	local dg=g:Filter(Card.IsType,nil,TYPE_SPELL)

@@ -62,7 +62,7 @@ function c61405855.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local bc=e:GetHandler():GetEquipTarget():GetBattleTarget()
 	Duel.SetTargetCard(bc)
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,bc,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,bc,1,0,0)
 end
 function c61405855.desop(e,tp,eg,ep,ev,re,r,rp)
 	local bc=Duel.GetFirstTarget()

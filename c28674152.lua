@@ -1,4 +1,4 @@
---Radian, the Multidimensional Kaiju
+--多次元壊獣ラディアン
 function c28674152.initial_effect(c)
 	c:SetUniqueOnField(1,0,20000000,LOCATION_MZONE)
 	--special summon rule

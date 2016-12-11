@@ -18,7 +18,7 @@ function c78274190.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(78274190,0))
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e4:SetCode(EVENT_BATTLED)
+	e4:SetCode(EVENT_BATTLE_DESTROYING)
 	e4:SetRange(LOCATION_PZONE)
 	e4:SetCountLimit(1)
 	e4:SetCondition(c78274190.cacon)
@@ -46,8 +46,7 @@ function c78274190.cacon(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
 	if not d then return false end
 	if a:IsStatus(STATUS_OPPO_BATTLE) and d:IsControler(tp) then a,d=d,a end
-	if a:IsSetCard(0x9a) and a:IsChainAttackable()
-		and not a:IsStatus(STATUS_BATTLE_DESTROYED) and d:IsStatus(STATUS_BATTLE_DESTROYED) then
+	if a:IsSetCard(0x9a) and a:IsChainAttackable() then
 		e:SetLabelObject(a)
 		return true
 	else return false end

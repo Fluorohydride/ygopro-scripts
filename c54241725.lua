@@ -15,6 +15,7 @@ function c54241725.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_SZONE)
+	e2:SetHintTiming(0,TIMING_END_PHASE)
 	e2:SetCost(c54241725.drcost)
 	e2:SetTarget(c54241725.drtg)
 	e2:SetOperation(c54241725.drop)
@@ -27,6 +28,7 @@ function c54241725.initial_effect(c)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetCountLimit(1,54241725)
+	e3:SetHintTiming(0,TIMING_MAIN_END+TIMING_END_PHASE)
 	e3:SetCost(c54241725.spcost)
 	e3:SetTarget(c54241725.sptg)
 	e3:SetOperation(c54241725.spop)
@@ -85,13 +87,13 @@ function c54241725.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c54241725.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,54241725,0,0x11,5,1000,2400,RACE_FAIRY,ATTRIBUTE_LIGHT) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,54241725,0,0x11,1000,2400,5,RACE_FAIRY,ATTRIBUTE_LIGHT) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c54241725.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,54241725,0,0x11,5,1000,2400,RACE_FAIRY,ATTRIBUTE_LIGHT) then
+	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,54241725,0,0x11,1000,2400,5,RACE_FAIRY,ATTRIBUTE_LIGHT) then
 		c:AddMonsterAttribute(TYPE_NORMAL)
 		Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP_DEFENSE)
 		c:AddMonsterAttributeComplete()

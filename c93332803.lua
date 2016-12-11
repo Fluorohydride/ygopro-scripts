@@ -1,4 +1,4 @@
---Dogoran, the Mad Flame Kaiju
+--怒炎壊獣ドゴラン
 function c93332803.initial_effect(c)
 	c:SetUniqueOnField(1,0,20000000,LOCATION_MZONE)
 	--special summon rule
@@ -62,11 +62,11 @@ function c93332803.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c93332803.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_MZONE,1,nil) end
-	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
+	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0 end
+	local g=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c93332803.desop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
 	Duel.Destroy(g,REASON_EFFECT)
 end

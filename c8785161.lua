@@ -54,5 +54,6 @@ function c8785161.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g2=Duel.SelectMatchingCard(tp,c8785161.spfilter2,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,tc1,e,tp,6-tc1:GetLevel())
 	g1:Merge(g2)
+	if g1:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 	Duel.SpecialSummon(g1,0,tp,tp,false,false,POS_FACEUP)
 end

@@ -12,7 +12,7 @@ function c56532632.initial_effect(c)
 end
 function c56532632.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	return ep~=tp and ph>=PHASE_BATTLE and ph<=PHASE_DAMAGE_CAL
+	return ep~=tp and ph>PHASE_MAIN1 and ph<PHASE_MAIN2
 		and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
 end
 function c56532632.target(e,tp,eg,ep,ev,re,r,rp,chk)

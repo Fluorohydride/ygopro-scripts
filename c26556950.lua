@@ -53,7 +53,7 @@ function c26556950.regop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c26556950.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetOverlayCount()>0 and ep~=tp and c:GetFlagEffect(26556950)~=0
+	return c:GetOverlayCount()>0 and ep~=tp and c:GetFlagEffect(26556950)~=0 and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c26556950.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,26556950)

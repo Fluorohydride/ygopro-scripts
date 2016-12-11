@@ -1,4 +1,4 @@
---버제스토마 할루키게니아
+--バージェストマ・ハルキゲニア
 function c61420130.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

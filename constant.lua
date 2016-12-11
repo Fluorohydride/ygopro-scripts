@@ -1,6 +1,7 @@
---Card id
-MIN_ID	=1000		--4 digit, by DataManager::GetDesc()
-MAX_ID	=268435455	--9 digit, by DataManager::GetDesc()
+--min/max value
+MIN_ID		=1000		--4 digit, by DataManager::GetDesc()
+MAX_ID		=268435455	--9 digit, by DataManager::GetDesc()
+MAX_COUNTER	=65535		--max number for adding/removing counters, by card::add_counter(), field::remove_counter()
 --Locations 区域
 LOCATION_DECK		=0x01		--卡组
 LOCATION_HAND		=0x02		--手牌
@@ -147,7 +148,7 @@ STATUS_CHAINING				=0x10000	--正在連鎖串中
 STATUS_SUMMON_DISABLED		=0x20000	--召唤无效後尚未移動
 STATUS_ACTIVATE_DISABLED	=0x40000	--发动无效後尚未移動
 STATUS_EFFECT_REPLACED		=0x80000	--效果被替代(红莲霸权)
-STATUS_UNION				=0x100000	--同盟
+STATUS_UNION				=0x100000	--N/A
 STATUS_ATTACK_CANCELED		=0x200000	--若其為攻擊者，則攻擊中止
 STATUS_INITIALIZING			=0x400000	--初始化..
 STATUS_ACTIVATED			=0x800000	--魔法陷阱卡发动過
@@ -233,6 +234,7 @@ EFFECT_TYPE_QUICK_O			=0x0100		--诱发即时效果
 EFFECT_TYPE_TRIGGER_F		=0x0200		--诱发必发效果
 EFFECT_TYPE_QUICK_F			=0x0400		--诱发即时必发效果（熊猫龙等）
 EFFECT_TYPE_CONTINUOUS		=0x0800		--由事件觸發的輔助用效果/永續效果
+EFFECT_TYPE_XMATERIAL		=0x1000		--
 --========== Flags ==========	--效果的特殊性质
 EFFECT_FLAG_INITIAL			=0x0001		--可以发动的
 EFFECT_FLAG_FUNC_VALUE		=0x0002		--此效果的Value属性是函数
@@ -421,7 +423,7 @@ EFFECT_ATTACK_ALL				=193	--可以攻击所有怪兽
 EFFECT_EXTRA_ATTACK				=194	--增加攻击次数
 EFFECT_MUST_BE_ATTACKED			=195	--必须攻击此卡
 EFFECT_ONLY_BE_ATTACKED			=196	--只能攻击此卡
-EFFECT_ATTACK_DISABLED			=197	--攻击無效(Duel.NegateAttack())
+EFFECT_ATTACK_DISABLED			=197	--攻击無效(Duel.NegateAttack()專用)
 EFFECT_NO_BATTLE_DAMAGE			=200	--不会给对方造成战斗伤害
 EFFECT_AVOID_BATTLE_DAMAGE		=201	--不会对自己造成战斗伤害
 EFFECT_REFLECT_BATTLE_DAMAGE	=202	--反弹战斗伤害
@@ -446,7 +448,7 @@ EFFECT_EXTRA_RITUAL_MATERIAL		=243--在墓地当做仪式祭品
 EFFECT_NONTUNER						=244--同时当作调整以外的怪兽（幻影王 幽骑）
 EFFECT_OVERLAY_REMOVE_REPLACE		=245--代替去除超量素材
 EFFECT_SCRAP_CHIMERA				=246--废铁奇美拉
-EFFECT_PRE_MONSTER				=250	--可存取怪獸的各項數值
+EFFECT_PRE_MONSTER				=250	--可存取怪獸的各項數值(Card.AddMonsterAttribute()專用)
 EFFECT_MATERIAL_CHECK			=251	--检查素材
 EFFECT_DISABLE_FIELD			=260	--无效区域（扰乱王等）
 EFFECT_USE_EXTRA_MZONE			=261	--怪兽区域封锁
@@ -464,7 +466,7 @@ EFFECT_NECRO_VALLEY_IM			=293	--不受「王家长眠之谷」的影响
 EFFECT_REVERSE_DECK				=294	--翻转卡组
 EFFECT_REMOVE_BRAINWASHING		=295	--洗脑解除
 EFFECT_BP_TWICE					=296	--2次战斗阶段
-EFFECT_UNIQUE_CHECK				=297	--場上只能存在1張(Card.SetUniqueOnField())
+EFFECT_UNIQUE_CHECK				=297	--場上只能存在1張(Card.SetUniqueOnField()專用)
 EFFECT_MATCH_KILL				=300	--Match胜利(胜利龙)
 EFFECT_SYNCHRO_CHECK			=310	--基因组斗士
 EFFECT_QP_ACT_IN_NTPHAND		=311	--对方回合从自己手卡发动（失乐的圣女）
@@ -480,7 +482,7 @@ EFFECT_CANNOT_SELECT_EFFECT_TARGET	=333	--對手不能選擇為效果對象
 EFFECT_ADD_SETCODE				=334	--规则上视为「XX」字段
 EFFECT_NO_EFFECT_DAMAGE			=335	--玩家已受到"效果傷害變成0"的效果影響
 EFFECT_UNSUMMONABLE_CARD		=336	--不能通常召唤的怪獸
-EFFECT_DISABLE_CHAIN_FIELD		=337	--連鎖串中場上發動的效果無效(Duel.NegateRelatedChain())
+EFFECT_DISABLE_CHAIN_FIELD		=337	--N/A
 EFFECT_DISCARD_COST_CHANGE		=338	--反制陷阱捨棄手牌的代價改變(解放之阿里阿德涅)
 EFFECT_HAND_SYNCHRO				=339	--用手牌的怪獸當作同步素材
 EFFECT_ADD_FUSION_CODE			=340	--作为融合素材时可以当作某一卡名(融合识别)
@@ -490,6 +492,11 @@ EFFECT_ONLY_ATTACK_MONSTER		=343	--只能攻擊X
 EFFECT_MUST_ATTACK_MONSTER		=344	--若攻擊則必須攻擊X
 EFFECT_PATRICIAN_OF_DARKNESS	=345	--由對手選擇攻擊對象(黑暗貴族)
 EFFECT_EXTRA_ATTACK_MONSTER		=346	--對怪獸攻擊X次
+EFFECT_UNION_STATUS				=347	--同盟状态
+EFFECT_OLDUNION_STATUS			=348	--旧同盟状态
+EFFECT_ADD_FUSION_ATTRIBUTE		=349	--reserve
+EFFECT_REMOVE_FUSION_ATTRIBUTE	=350	--reserve
+EFFECT_CHANGE_FUSION_ATTRIBUTE	=351	--用作融合素材时的属性
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
 EVENT_STARTUP					=1000	--游戏开始时
@@ -557,8 +564,8 @@ EVENT_RETURN_TO_GRAVE			=1203	--回到墓地时
 EVENT_TURN_END					=1210	--回合结束时
 EVENT_PHASE						=0x1000	--阶段结束时
 EVENT_PHASE_START				=0x2000	--阶段开始时
-EVENT_ADD_COUNTER				=0x10000--增加指示物时
-EVENT_REMOVE_COUNTER			=0x20000--去除指示物时
+EVENT_ADD_COUNTER				=0x10000	--增加指示物时
+EVENT_REMOVE_COUNTER			=0x20000	--去除指示物时(A指示物)，Card.RemoveCounter()必須手動觸發此事件
 EVENT_CUSTOM					=0x10000000	--自訂事件
 --Categorys	效果分类（表示这个效果将要发生什么事，OperationInfo设置了效果分类才能触发针对这一类型发动的卡，如破坏->星尘龙
 CATEGORY_DESTROY			=0x1		--破坏效果
@@ -591,6 +598,7 @@ CATEGORY_LEAVE_GRAVE		=0x4000000	--离开墓地效果
 CATEGORY_LVCHANGE			=0x8000000	--改变等级效果
 CATEGORY_NEGATE				=0x10000000	--使发动无效效果
 CATEGORY_ANNOUNCE			=0x20000000	--發動時宣言卡名的效果
+CATEGORY_FUSION_SUMMON			=0x40000000
 --Hint
 HINT_EVENT				=1
 HINT_MESSAGE			=2
@@ -609,6 +617,20 @@ CHINT_RACE				=3
 CHINT_ATTRIBUTE			=4
 CHINT_NUMBER			=5
 CHINT_DESC				=6
+--Opcode
+OPCODE_ADD				=0x40000000
+OPCODE_SUB				=0x40000001
+OPCODE_MUL				=0x40000002
+OPCODE_DIV				=0x40000003
+OPCODE_AND				=0x40000004
+OPCODE_OR				=0x40000005
+OPCODE_NEG				=0x40000006
+OPCODE_NOT				=0x40000007
+OPCODE_ISCODE			=0x40000100
+OPCODE_ISSETCARD		=0x40000101
+OPCODE_ISTYPE			=0x40000102
+OPCODE_ISRACE			=0x40000103
+OPCODE_ISATTRIBUTE		=0x40000104
 --Hint Message	--提示消息，显示在窗口的上面
 HINTMSG_RELEASE			=500	--请选择要解放的卡
 HINTMSG_DISCARD			=501	--请选择要丢弃的手牌
@@ -712,6 +734,7 @@ ACTIVITY_BATTLE_PHASE	=6		-- not available in custom counter
 ACTIVITY_CHAIN			=7		-- only available in custom counter
 --announce type（宣言类型，CATEGORY_ANNOUNCE的OperationInfo的target_param）
 ANNOUNCE_CARD			=0x7	--宣言卡片
+ANNOUNCE_CARD_FILTER		=0x8	--
 --cards with double names
 CARD_MARINE_DOLPHIN		=78734254	--海洋海豚
 CARD_TWINKLE_MOSS		=13857930	--光輝苔蘚

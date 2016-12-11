@@ -19,7 +19,7 @@ function c8964854.filter(c,e,tp)
 end
 function c8964854.eqfilter(c,e,tp,ec)
 	local op=c:GetOwner()
-	return c:IsStatus(STATUS_UNION) and c:GetEquipTarget()==ec
+	return c:IsHasEffect(EFFECT_UNION_STATUS) and c:GetEquipTarget()==ec
 		and Duel.GetLocationCount(op,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,op)
 end
 function c8964854.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
