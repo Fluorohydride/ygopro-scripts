@@ -18,7 +18,10 @@ function c95701283.initial_effect(c)
 end
 function c95701283.otcon(e,c)
 	if c==nil then return true end
-	return c:GetLevel()>6 and Duel.GetTributeCount(c)>0
+	local oppo=0
+	if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0 then oppo=LOCATION_MZONE end
+	local mg=Duel.GetMatchingGroup(nil,c:GetControler(),LOCATION_MZONE,oppo,nil)
+	return c:GetLevel()>6 and Duel.GetTributeCount(c,mg)>0
 end
 function c95701283.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectTribute(tp,c,1,1)
