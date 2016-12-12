@@ -1,5 +1,6 @@
 --磁力の指輪
 function c20436034.initial_effect(c)
+	aux.AddEquipProcedure(c,0,nil,c20436034.eqlimit)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_EQUIP)

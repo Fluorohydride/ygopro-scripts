@@ -8,7 +8,6 @@ function c88190790.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCondition(c88190790.condition)
 	e1:SetTarget(c88190790.target)
-	e1:SetOperation(c88190790.operation)
 	c:RegisterEffect(e1)
 	--Atk up
 	local e2=Effect.CreateEffect(c)
@@ -51,12 +50,24 @@ function c88190790.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return tc and tc:IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(tc)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
+	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(EVENT_CHAIN_SOLVING)
+	e1:SetReset(RESET_CHAIN)
+	e1:SetLabel(Duel.GetCurrentChain())
+	e1:SetLabelObject(e)
+	e1:SetOperation(c88190790.operation)
+	Duel.RegisterEffect(e1,tp)
 end
 function c88190790.operation(e,tp,eg,ep,ev,re,r,rp)
-	local ct=Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)
-	local tc=Duel.GetFirstTarget()
-	if ct==1 and e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		Duel.Equip(tp,e:GetHandler(),tc)
+	if re~=e:GetLabelObject() then return end
+	local c=e:GetHandler()
+	if c:IsType(TYPE_EQUIP) and c:IsLocation(LOCATION_SZONE) and c:IsFaceup() then
+		local ct=Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)
+		local tc=Duel.GetChainInfo(Duel.GetCurrentChain(),CHAININFO_TARGET_CARDS):GetFirst()
+		if if ct==1 and tc and c:IsRelateToEffect(re) and tc:IsRelateToEffect(re) and tc:IsFaceup() then
+			Duel.Equip(tp,c,tc)
+		end
 	end
 end
 function c88190790.macon(e,tp,eg,ep,ev,re,r,rp)

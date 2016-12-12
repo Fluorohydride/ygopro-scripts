@@ -1,6 +1,7 @@
 --聖剣カリバーン
 function c23562407.initial_effect(c)
 	c:SetUniqueOnField(1,0,23562407)
+	aux.AddEquipProcedure(c,0,c23562407.eqfilter1)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_EQUIP)
@@ -46,18 +47,8 @@ function c23562407.initial_effect(c)
 	e5:SetOperation(c23562407.operation)
 	c:RegisterEffect(e5)
 end
-function c23562407.eqlimit(e,c)
-	return c:IsRace(RACE_WARRIOR)
-end
 function c23562407.eqfilter1(c)
-	return c:IsFaceup() and c:IsRace(RACE_WARRIOR)
-end
-function c23562407.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c23562407.eqfilter1(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c23562407.eqfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	Duel.SelectTarget(tp,c23562407.eqfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
+	return c:IsRace(RACE_WARRIOR)
 end
 function c23562407.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -1,14 +1,6 @@
 --甲虫装機の魔剣 ゼクトキャリバー
 function c16550875.initial_effect(c)
-	--Activate
-	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_EQUIP)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e1:SetTarget(c16550875.target)
-	e1:SetOperation(c16550875.operation)
-	c:RegisterEffect(e1)
+	aux.AddEquipProcedure(c,nil,c16550875.filter)
 	--Atk
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_EQUIP)
@@ -17,13 +9,6 @@ function c16550875.initial_effect(c)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_UPDATE_DEFENSE)
-	c:RegisterEffect(e3)
-	--Equip limit
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetCode(EFFECT_EQUIP_LIMIT)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetValue(c16550875.eqlimit)
 	c:RegisterEffect(e3)
 	--Search
 	local e4=Effect.CreateEffect(c)
@@ -37,25 +22,8 @@ function c16550875.initial_effect(c)
 	e4:SetOperation(c16550875.thop)
 	c:RegisterEffect(e4)
 end
-function c16550875.eqlimit(e,c)
-	return c:IsSetCard(0x56)
-end
 function c16550875.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x56)
-end
-function c16550875.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c16550875.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c16550875.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	Duel.SelectTarget(tp,c16550875.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
-end
-function c16550875.operation(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		Duel.Equip(tp,c,tc)
-	end
+	return c:IsSetCard(0x56)
 end
 function c16550875.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousPosition(POS_FACEUP)

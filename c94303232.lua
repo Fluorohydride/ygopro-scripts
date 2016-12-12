@@ -60,6 +60,23 @@ function c94303232.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPPO)
 	local g=Duel.SelectTarget(tp,nil,tp,0,LOCATION_MZONE,1,1,nil)
 	e:SetLabelObject(g:GetFirst())
+	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(EVENT_CHAIN_SOLVING)
+	e1:SetReset(RESET_CHAIN)
+	e1:SetLabel(Duel.GetCurrentChain())
+	e1:SetLabelObject(e)
+	e1:SetOperation(c94303232.eqop)
+	Duel.RegisterEffect(e1,tp)
+end
+function c94303232.eqop(e,tp,eg,ep,ev,re,r,rp)
+	if re~=e:GetLabelObject() then return end
+	local c=e:GetHandler()
+	local tc=re:GetLabelObject()
+		if tc and c:IsRelateToEffect(re) and tc:IsRelateToEffect(re) and tc:IsFaceup() then
+			Duel.Equip(tp,c,tc)
+		end
+	end
 end
 function c94303232.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -68,7 +85,7 @@ function c94303232.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if dc==tc then tc=g:GetNext() end
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		if Duel.Equip(tp,c,tc) and dc:IsRelateToEffect(e) then
+		if dc:IsRelateToEffect(e) then
 			tc:RegisterFlagEffect(94303233,RESET_EVENT+0x1fe0000,0,1)
 			c:SetCardTarget(dc)
 			local e1=Effect.CreateEffect(c)

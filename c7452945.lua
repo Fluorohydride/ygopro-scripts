@@ -1,15 +1,7 @@
 --天命の聖剣
 function c7452945.initial_effect(c)
 	c:SetUniqueOnField(1,0,7452945)
-	--Activate
-	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_EQUIP)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e1:SetTarget(c7452945.target)
-	e1:SetOperation(c7452945.operation)
-	c:RegisterEffect(e1)
+	aux.AddEquipProcedure(c,nil,c7452945.eqfilter1)
 	--cannot be destroyed
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_EQUIP)
@@ -17,13 +9,6 @@ function c7452945.initial_effect(c)
 	e2:SetValue(c7452945.valcon)
 	e2:SetCountLimit(1)
 	c:RegisterEffect(e2)
-	--Equip limit
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetCode(EFFECT_EQUIP_LIMIT)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetValue(c7452945.eqlimit)
-	c:RegisterEffect(e3)
 	--equip
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(7452945,0))
@@ -37,18 +22,8 @@ function c7452945.initial_effect(c)
 	e4:SetOperation(c7452945.operation)
 	c:RegisterEffect(e4)
 end
-function c7452945.eqlimit(e,c)
-	return c:IsRace(RACE_WARRIOR)
-end
 function c7452945.eqfilter1(c)
-	return c:IsFaceup() and c:IsRace(RACE_WARRIOR)
-end
-function c7452945.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c7452945.eqfilter1(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c7452945.eqfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	Duel.SelectTarget(tp,c7452945.eqfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
+	return c:IsRace(RACE_WARRIOR)
 end
 function c7452945.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

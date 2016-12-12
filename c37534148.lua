@@ -1,5 +1,6 @@
 --リボーンリボン
 function c37534148.initial_effect(c)
+	aux.AddEquipProcedure(c,nil,c37534148.filter)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_EQUIP)
@@ -19,31 +20,13 @@ function c37534148.initial_effect(c)
 	--special summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e3:SetCode(EVENT_TO_GRAVE)
 	e3:SetCondition(c37534148.regcon)
 	e3:SetOperation(c37534148.regop)
 	c:RegisterEffect(e3)
 end
-function c37534148.eqlimit(e,c)
-	return not c:IsHasEffect(EFFECT_CANNOT_SPECIAL_SUMMON)
-end
 function c37534148.filter(c)
-	return c:IsFaceup() and not c:IsHasEffect(EFFECT_CANNOT_SPECIAL_SUMMON)
-end
-function c37534148.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c37534148.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c37534148.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	Duel.SelectTarget(tp,c37534148.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
-end
-function c37534148.operation(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		Duel.Equip(tp,c,tc)
-	end
+	return not c:IsHasEffect(EFFECT_CANNOT_SPECIAL_SUMMON)
 end
 function c37534148.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

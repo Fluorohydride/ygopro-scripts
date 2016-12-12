@@ -7,7 +7,6 @@ function c303660.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetTarget(c303660.target)
-	e1:SetOperation(c303660.operation)
 	c:RegisterEffect(e1)
 	--Equip limit
 	local e2=Effect.CreateEffect(c)
@@ -49,12 +48,22 @@ function c303660.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c303660.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c303660.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(EVENT_CHAIN_SOLVING)
+	e1:SetReset(RESET_CHAIN)
+	e1:SetLabel(Duel.GetCurrentChain())
+	e1:SetLabelObject(e)
+	e1:SetOperation(c303660.operation)
+	Duel.RegisterEffect(e1,tp)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
 end
 function c303660.operation(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetFirstTarget()
-	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		Duel.Equip(tp,e:GetHandler(),tc)
+	if re~=e:GetLabelObject() then return end
+	local c=e:GetHandler()
+	local tc=Duel.GetChainInfo(Duel.GetCurrentChain(),CHAININFO_TARGET_CARDS):GetFirst()
+	if tc and c:IsRelateToEffect(re) and tc:IsRelateToEffect(re) and tc:IsFaceup() then
+		Duel.Equip(tp,c,tc)
 	end
 end
 function c303660.etarget(e,c)

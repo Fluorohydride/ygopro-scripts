@@ -1,14 +1,6 @@
 --剣闘獣の闘器デーモンズシールド
 function c8730435.initial_effect(c)
-	--Activate
-	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_EQUIP)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e1:SetTarget(c8730435.target)
-	e1:SetOperation(c8730435.operation)
-	c:RegisterEffect(e1)
+	aux.AddEquipProcedure(c,nil,c8730435.filter)
 	--destroy sub
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_EQUIP)
@@ -16,13 +8,6 @@ function c8730435.initial_effect(c)
 	e2:SetCode(EFFECT_DESTROY_SUBSTITUTE)
 	e2:SetValue(1)
 	c:RegisterEffect(e2)
-	--Equip limit
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetCode(EFFECT_EQUIP_LIMIT)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetValue(c8730435.eqlimit)
-	c:RegisterEffect(e3)
 	--tohand
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
@@ -34,25 +19,8 @@ function c8730435.initial_effect(c)
 	e4:SetOperation(c8730435.retop)
 	c:RegisterEffect(e4)
 end
-function c8730435.eqlimit(e,c)
-	return c:IsSetCard(0x19)
-end
 function c8730435.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x19)
-end
-function c8730435.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetLocation()==LOCATION_MZONE and c8730435.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c8730435.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	Duel.SelectTarget(tp,c8730435.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
-end
-function c8730435.operation(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		Duel.Equip(tp,c,tc)
-	end
+	return c:IsSetCard(0x19)
 end
 function c8730435.retcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -1,21 +1,6 @@
 --与奪の首飾り
 function c48576971.initial_effect(c)
-	--Activate
-	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_EQUIP)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e1:SetTarget(c48576971.target)
-	e1:SetOperation(c48576971.operation)
-	c:RegisterEffect(e1)
-	--Equip limit
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetCode(EFFECT_EQUIP_LIMIT)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetValue(1)
-	c:RegisterEffect(e2)
+	aux.AddEquipProcedure(c)
 	--effect
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(48576971,0))
@@ -25,20 +10,6 @@ function c48576971.initial_effect(c)
 	e3:SetTarget(c48576971.efftg)
 	e3:SetOperation(c48576971.effop)
 	c:RegisterEffect(e3)
-end
-function c48576971.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
-end
-function c48576971.operation(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		Duel.Equip(tp,c,tc)
-	end
 end
 function c48576971.effcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

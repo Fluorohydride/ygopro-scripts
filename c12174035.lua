@@ -1,21 +1,6 @@
 --ハイドロプレッシャーカノン
 function c12174035.initial_effect(c)
-	--Activate
-	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_EQUIP)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e1:SetTarget(c12174035.target)
-	e1:SetOperation(c12174035.operation)
-	c:RegisterEffect(e1)
-	--Equip limit
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetCode(EFFECT_EQUIP_LIMIT)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetValue(c12174035.eqlimit)
-	c:RegisterEffect(e2)
+	aux.AddEquipProcedure(c,nil,c12174035.filter)
 	--handes
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(12174035,0))
@@ -28,25 +13,8 @@ function c12174035.initial_effect(c)
 	e3:SetOperation(c12174035.hdop)
 	c:RegisterEffect(e3)
 end
-function c12174035.eqlimit(e,c)
-	return c:IsLevelBelow(3) and c:IsAttribute(ATTRIBUTE_WATER)
-end
 function c12174035.filter(c)
-	return c:IsFaceup() and c:IsLevelBelow(3) and c:IsAttribute(ATTRIBUTE_WATER)
-end
-function c12174035.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c12174035.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c12174035.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	Duel.SelectTarget(tp,c12174035.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
-end
-function c12174035.operation(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		Duel.Equip(tp,c,tc)
-	end
+	return c:IsLevelBelow(3) and c:IsAttribute(ATTRIBUTE_WATER)
 end
 function c12174035.hdcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:GetFirst()==e:GetHandler():GetEquipTarget() and eg:GetFirst():IsStatus(STATUS_OPPO_BATTLE)
