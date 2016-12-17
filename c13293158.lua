@@ -31,6 +31,7 @@ function c13293158.initial_effect(c)
 	e3:SetOperation(c13293158.activate)
 	c:RegisterEffect(e3)
 end
+c13293158.material_setcode=0x8
 c13293158.dark_calling=true
 function c13293158.splimit(e,se,sp,st)
 	return st==SUMMON_TYPE_FUSION+0x10

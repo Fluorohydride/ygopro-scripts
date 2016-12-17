@@ -35,6 +35,7 @@ function c40854197.initial_effect(c)
 	e5:SetValue(c40854197.atkup)
 	c:RegisterEffect(e5)
 end
+c40854197.material_setcode=0x8
 function c40854197.atkfilter(c)
 	return c:IsFaceup() and c:GetCode()~=40854197 and c:IsAttribute(ATTRIBUTE_WATER)
 end

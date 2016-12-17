@@ -30,6 +30,7 @@ function c22061412.initial_effect(c)
 	e4:SetValue(aux.fuslimit)
 	c:RegisterEffect(e4)
 end
+c22061412.material_setcode=0x8
 function c22061412.atkfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x3008)
 end

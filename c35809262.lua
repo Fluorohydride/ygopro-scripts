@@ -22,6 +22,7 @@ function c35809262.initial_effect(c)
 	e2:SetOperation(c35809262.damop)
 	c:RegisterEffect(e2)
 end
+c35809262.material_setcode=0x8
 function c35809262.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()

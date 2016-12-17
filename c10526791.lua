@@ -17,3 +17,4 @@ function c10526791.initial_effect(c)
 	e2:SetValue(1)
 	c:RegisterEffect(e2)
 end
+c10526791.material_setcode=0x8

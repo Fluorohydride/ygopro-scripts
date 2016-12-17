@@ -49,6 +49,7 @@ function c85507811.initial_effect(c)
 	e5:SetOperation(c85507811.desop)
 	c:RegisterEffect(e5)
 end
+c85507811.material_setcode=0x8
 function c85507811.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end

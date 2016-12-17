@@ -20,6 +20,7 @@ function c68745629.initial_effect(c)
 	e2:SetValue(1000)
 	c:RegisterEffect(e2)
 end
+c68745629.material_setcode=0x8
 function c68745629.atkcon(e)
 	local ph=Duel.GetCurrentPhase()
 	if ph~=PHASE_DAMAGE and ph~=PHASE_DAMAGE_CAL then return false end

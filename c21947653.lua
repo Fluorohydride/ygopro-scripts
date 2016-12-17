@@ -22,6 +22,7 @@ function c21947653.initial_effect(c)
 	e2:SetOperation(c21947653.operation)
 	c:RegisterEffect(e2)
 end
+c21947653.material_setcode=0x8
 c21947653.dark_calling=true
 function c21947653.splimit(e,se,sp,st)
 	return st==SUMMON_TYPE_FUSION+0x10

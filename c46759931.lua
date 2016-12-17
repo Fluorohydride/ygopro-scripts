@@ -23,6 +23,7 @@ function c46759931.initial_effect(c)
 	e3:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
 	c:RegisterEffect(e3)
 end
+c46759931.material_setcode=0x8
 function c46759931.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_FUSION
 end

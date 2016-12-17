@@ -27,6 +27,7 @@ function c31111109.initial_effect(c)
 	e3:SetValue(aux.fuslimit)
 	c:RegisterEffect(e3)
 end
+c31111109.material_setcode=0x8
 function c31111109.fuscon(e,g,gc,chkf)
 	if g==nil then return false end
 	if gc then return false end

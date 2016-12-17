@@ -42,6 +42,7 @@ function c86346643.initial_effect(c)
 	e4:SetOperation(c86346643.tdop3)
 	c:RegisterEffect(e4)
 end
+c86346643.material_setcode=0x8
 function c86346643.cfilter1(c)
 	return c:IsAbleToGraveAsCost()
 end
