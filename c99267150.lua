@@ -2,7 +2,7 @@
 function c99267150.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),5,true)
+	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionRace,RACE_DRAGON),5,true)
 	--battle indestructable
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
@@ -21,7 +21,7 @@ function c99267150.batfilter(e,c)
 	return c:IsAttribute(0x2f)
 end
 function c99267150.check_fusion_material_48144509(m,chkf)
-	local g1=m:Filter(Card.IsRace,nil,RACE_DRAGON)
+	local g1=m:Filter(Card.IsFusionRace,nil,RACE_DRAGON)
 	if chkf~=PLAYER_NONE and not g1:IsExists(Card.IsOnField,1,nil) then return false end
 	local ct1=g1:GetCount()
 	local ct2=g1:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)
@@ -29,7 +29,7 @@ function c99267150.check_fusion_material_48144509(m,chkf)
 end
 function c99267150.select_fusion_material_48144509(tp,m,chkf)
 	local cc=5
-	local mg1=m:Filter(Card.IsRace,nil,RACE_DRAGON)
+	local mg1=m:Filter(Card.IsFusionRace,nil,RACE_DRAGON)
 	local mg2=mg1:Filter(Card.IsLocation,nil,LOCATION_EXTRA)
 	local sg=Group.CreateGroup()
 	if mg2:GetCount()>2 then

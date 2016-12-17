@@ -10,15 +10,12 @@ function c81612598.initial_effect(c)
 	e1:SetOperation(c81612598.fsop)
 	c:RegisterEffect(e1)
 end
-function c81612598.filter1(c)
-	return c:IsFusionSetCard(0xe1)
-end
 function c81612598.filter2(c)
-	return c:IsAttackBelow(2500)
+	return c:IsAttackBelow(2500) and not c:IsHasEffect(EFFECT_MUST_BE_FUSION_SUBSTITUTE)
 end
 function c81612598.fscon(e,g,gc,chkfnf)
 	if g==nil then return true end
-	local f1=c81612598.filter1
+	local f1=aux.FilterBoolFunction(Card.IsFusionSetCard,0xe1)
 	local f2=c81612598.filter2
 	local chkf=bit.band(chkfnf,0xff)
 	local tp=e:GetHandlerPlayer()
@@ -45,7 +42,7 @@ function c81612598.fscon(e,g,gc,chkfnf)
 	else return g1:IsExists(aux.FConditionFilterF2,1,nil,g2) end
 end
 function c81612598.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
-	local f1=c81612598.filter1
+	local f1=aux.FilterBoolFunction(Card.IsFusionSetCard,0xe1)
 	local f2=c81612598.filter2
 	local chkf=bit.band(chkfnf,0xff)
 	local fg=Duel.GetMatchingGroup(Card.IsHasEffect,tp,LOCATION_MZONE,0,nil,77693536)

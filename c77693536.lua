@@ -38,20 +38,17 @@ function c77693536.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	c:RegisterEffect(e3)
 end
-function c77693536.filter1(c)
-	return c:IsFusionSetCard(0xe1)
-end
 --additional condition for 77693536 effect
 function c77693536.filter2(c)
 	if c:IsLocation(LOCATION_MZONE) then
-		return c:IsType(TYPE_NORMAL)
+		return c:IsFusionType(TYPE_NORMAL)
 	else
 		return bit.band(c:GetOriginalType(),TYPE_NORMAL)~=0
 	end
 end
 function c77693536.fscon(e,g,gc,chkfnf)
 	if g==nil then return true end
-	local f1=c77693536.filter1
+	local f1=aux.FilterBoolFunction(Card.IsFusionSetCard,0xe1)
 	local f2=c77693536.filter2
 	local chkf=bit.band(chkfnf,0xff)
 	local tp=e:GetHandlerPlayer()
@@ -78,7 +75,7 @@ function c77693536.fscon(e,g,gc,chkfnf)
 	else return g1:IsExists(aux.FConditionFilterF2,1,nil,g2) end
 end
 function c77693536.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
-	local f1=c77693536.filter1
+	local f1=aux.FilterBoolFunction(Card.IsFusionSetCard,0xe1)
 	local f2=c77693536.filter2
 	local chkf=bit.band(chkfnf,0xff)
 	local fg=Duel.GetMatchingGroup(Card.IsHasEffect,tp,LOCATION_MZONE,0,nil,77693536)

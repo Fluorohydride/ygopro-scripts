@@ -31,7 +31,7 @@ function c30086349.mfilter1(c)
 	return c:IsFusionSetCard(0x3b) and c:GetLevel()==7
 end
 function c30086349.mfilter2(c)
-	return c:IsRace(RACE_DRAGON) and c:GetLevel()==6
+	return c:IsFusionRace(RACE_DRAGON) and c:GetLevel()==6
 end
 function c30086349.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION

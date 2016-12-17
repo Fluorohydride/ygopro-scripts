@@ -2,7 +2,7 @@
 function c79229522.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcCodeFun(c,70095154,aux.FilterBoolFunction(Card.IsRace,RACE_MACHINE),1,true,true)
+	aux.AddFusionProcCodeFun(c,70095154,aux.FilterBoolFunction(Card.IsFusionRace,RACE_MACHINE),1,true,true)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -40,7 +40,7 @@ function c79229522.spfilter1(c,tp,ft)
 	else return false end
 end
 function c79229522.spfilter2(c,tp)
-	return c:IsRace(RACE_MACHINE) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial() and (c:IsControler(tp) or c:IsFaceup())
+	return c:IsFusionRace(RACE_MACHINE) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial() and (c:IsControler(tp) or c:IsFaceup())
 end
 function c79229522.sprcon(e,c)
 	if c==nil then return true end
