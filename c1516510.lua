@@ -51,8 +51,8 @@ end
 function c1516510.efilter(e,re)
 	return e:GetOwnerPlayer()~=re:GetOwnerPlayer()
 end
-function c1516510.lvfilter(c)
-	return c:IsCode(16178681) or c:IsHasEffect(EFFECT_FUSION_SUBSTITUTE)
+function c1516510.lvfilter(c,fc)
+	return c:IsCode(16178681) or c:CheckFusionSubstitute(fc)
 end
 function c1516510.imfilter(c)
 	return c:IsLocation(LOCATION_MZONE) and c:GetSummonType()==SUMMON_TYPE_PENDULUM
@@ -62,7 +62,7 @@ function c1516510.valcheck(e,c)
 	local flag=0
 	if g:GetCount()==2 then
 		local lv=0
-		local lg1=g:Filter(c1516510.lvfilter,nil)
+		local lg1=g:Filter(c1516510.lvfilter,nil,c)
 		local lg2=g:Filter(Card.IsRace,nil,RACE_SPELLCASTER)
 		if lg1:GetCount()==2 then
 			lv=lg2:GetFirst():GetOriginalLevel()

@@ -1,18 +1,14 @@
 --パラサイト・フュージョナー
---Effect is not fully implemented
 function c6205579.initial_effect(c)
-	--cannot be material
+	--fusion substitute
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetCode(EFFECT_CANNOT_BE_FUSION_MATERIAL)
-	e1:SetValue(c6205579.splimit)
+	e1:SetCode(EFFECT_FUSION_SUBSTITUTE)
+	e1:SetCondition(c6205579.subcon)
 	c:RegisterEffect(e1)
-	--fusion substitute
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetCode(EFFECT_FUSION_SUBSTITUTE)
-	e2:SetCondition(c6205579.subcon)
+	local e2=e1:Clone()
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e2:SetCode(6205579)
 	c:RegisterEffect(e2)
 	--special summon
 	local e3=Effect.CreateEffect(c)
@@ -25,10 +21,6 @@ function c6205579.initial_effect(c)
 	e3:SetTarget(c6205579.sptg)
 	e3:SetOperation(c6205579.spop)
 	c:RegisterEffect(e3)
-end
-function c6205579.splimit(e,c)
-	if not c then return false end
-	return not c.material
 end
 function c6205579.subcon(e)
 	return e:GetHandler():IsLocation(LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE)

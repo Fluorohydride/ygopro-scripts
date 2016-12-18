@@ -796,6 +796,7 @@ function Auxiliary.AddFusionProcCodeFun(c,code1,f,cc,sub,insf)
 		mt.material_count=1
 		mt.material={code1}
 	end
+	local f=function(c) return f(c) and not c:IsHasEffect(6205579) end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
@@ -940,6 +941,8 @@ function Auxiliary.FOperationCodeFun(code,f,cc,sub,insf)
 end
 --Fusion monster, condition + condition
 function Auxiliary.AddFusionProcFun2(c,f1,f2,insf)
+	local f1=function(c) return f1(c) and not c:IsHasEffect(6205579) end
+	local f2=function(c) return f2(c) and not c:IsHasEffect(6205579) end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
@@ -1018,6 +1021,7 @@ function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
 		mt.material_count=1
 		mt.material={code1}
 	end
+	local f=function(c) return f(c) and not c:IsHasEffect(6205579) end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
@@ -1082,6 +1086,7 @@ function Auxiliary.FOperationCodeRep(code,cc,sub,insf)
 end
 --Fusion monster, condition * n
 function Auxiliary.AddFusionProcFunRep(c,f,cc,insf)
+	local f=function(c) return f(c) and not c:IsHasEffect(6205579) end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
@@ -1133,6 +1138,8 @@ function Auxiliary.FOperationFunRep(f,cc,insf)
 end
 --Fusion monster, condition1 + condition2 * minc to maxc
 function Auxiliary.AddFusionProcFunFunRep(c,f1,f2,minc,maxc,insf)
+	local f1=function(c) return f1(c) and not c:IsHasEffect(6205579) end
+	local f2=function(c) return f2(c) and not c:IsHasEffect(6205579) end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
@@ -1285,6 +1292,7 @@ function Auxiliary.AddFusionProcCodeFunRep(c,code1,f,minc,maxc,sub,insf)
 		mt.material_count=1
 		mt.material={code1}
 	end
+	local f=function(c) return f(c) and not c:IsHasEffect(6205579) end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)

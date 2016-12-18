@@ -39,7 +39,7 @@ function c72926163.valcheck(e,c)
 	local g=c:GetMaterial()
 	local atk=0
 	local tc=g:GetFirst()
-	if tc:IsCode(89943723) or tc:IsHasEffect(EFFECT_FUSION_SUBSTITUTE) then tc=g:GetNext() end
+	if tc:IsCode(89943723) or tc:CheckFusionSubstitute(c) then tc=g:GetNext() end
 	if not tc:IsCode(89943723) then
 		atk=tc:GetTextAttack()/2
 	end
