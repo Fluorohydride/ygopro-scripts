@@ -68,7 +68,7 @@ function c10000080.initial_effect(c)
 end
 function c10000080.ttcon1(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-3 and Duel.GetTributeCount(c)>=3
+	return Duel.CheckTribute(c,3)
 end
 function c10000080.ttop1(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectTribute(tp,c,3,3)
@@ -78,8 +78,7 @@ end
 function c10000080.ttcon2(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local mg=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
-	return Duel.GetLocationCount(1-tp,LOCATION_MZONE)>-3 and Duel.GetTributeCount(c,mg,true)>=3
+	return Duel.CheckTribute(c,3,3,nil,1-tp)
 end
 function c10000080.ttop2(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
