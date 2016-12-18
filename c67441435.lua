@@ -19,9 +19,11 @@ function c67441435.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end
 function c67441435.operation(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then return end
-	Duel.DiscardDeck(tp,1,REASON_EFFECT)
-	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
-	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
+	if Duel.DiscardDeck(tp,1,REASON_EFFECT)~=0 then
+		local oc=Duel.GetOperatedGroup():GetFirst()
+		local c=e:GetHandler()
+		if oc:IsLocation(LOCATION_GRAVE) and c:IsRelateToEffect(e) then
+			Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
+		end
+	end
 end
