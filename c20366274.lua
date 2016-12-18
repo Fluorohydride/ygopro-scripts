@@ -49,10 +49,10 @@ function c20366274.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c20366274.ffilter1(c)
-	return c:IsFusionSetCard(0x9d)
+	return c:IsFusionSetCard(0x9d) and not c:IsHasEffect(6205579)
 end
 function c20366274.ffilter2(c)
-	return c:IsFusionAttribute(ATTRIBUTE_LIGHT) or c:IsHasEffect(4904633)
+	return (c:IsFusionAttribute(ATTRIBUTE_LIGHT) or c:IsHasEffect(4904633)) and not c:IsHasEffect(6205579)
 end
 function c20366274.exfilter(c,g)
 	return c:IsFaceup() and c:IsCanBeFusionMaterial() and not g:IsContains(c)

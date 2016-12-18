@@ -27,14 +27,17 @@ function c31111109.initial_effect(c)
 	e3:SetValue(aux.fuslimit)
 	c:RegisterEffect(e3)
 end
+function c31111109.ffilter(c,cat)
+	return c:IsFusionSetCard(cat) and not c:IsHasEffect(6205579)
+end
 function c31111109.fuscon(e,g,gc,chkf)
 	if g==nil then return false end
 	if gc then return false end
-	local g1=g:Filter(Card.IsFusionSetCard,nil,0x9)
+	local g1=g:Filter(c31111109.ffilter,nil,0x9)
 	local c1=g1:GetCount()
-	local g2=g:Filter(Card.IsFusionSetCard,nil,0x1f)
+	local g2=g:Filter(c31111109.ffilter,nil,0x1f)
 	local c2=g2:GetCount()
-	local g3=g:Filter(Card.IsFusionSetCard,nil,0x8)
+	local g3=g:Filter(c31111109.ffilter,nil,0x8)
 	local c3=g3:GetCount()
 	local ag=g1:Clone()
 	ag:Merge(g2)
@@ -44,9 +47,9 @@ function c31111109.fuscon(e,g,gc,chkf)
 end
 function c31111109.fusop(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 	if gc then return end
-	local g1=eg:Filter(Card.IsFusionSetCard,nil,0x9)
-	local g2=eg:Filter(Card.IsFusionSetCard,nil,0x1f)
-	local g3=eg:Filter(Card.IsFusionSetCard,nil,0x8)
+	local g1=eg:Filter(c31111109.ffilter,nil,0x9)
+	local g2=eg:Filter(c31111109.ffilter,nil,0x1f)
+	local g3=eg:Filter(c31111109.ffilter,nil,0x8)
 	local ag=g1:Clone()
 	ag:Merge(g2)
 	ag:Merge(g3)

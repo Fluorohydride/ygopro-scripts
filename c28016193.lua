@@ -36,7 +36,7 @@ function c28016193.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c28016193.filter(c)
-	return c:IsFusionSetCard(0xe1)
+	return c:IsFusionSetCard(0xe1) and not c:IsHasEffect(6205579)
 end
 function c28016193.fscon(e,g,gc,chkfnf)
 	if g==nil then return true end

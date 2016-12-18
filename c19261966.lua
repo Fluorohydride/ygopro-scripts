@@ -38,10 +38,10 @@ function c19261966.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c19261966.ffilter1(c)
-	return c:IsFusionSetCard(0x9d)
+	return c:IsFusionSetCard(0x9d) and not c:IsHasEffect(6205579)
 end
 function c19261966.ffilter2(c)
-	return c:IsFusionAttribute(ATTRIBUTE_WATER) or c:IsHasEffect(4904633)
+	return (c:IsFusionAttribute(ATTRIBUTE_WATER) or c:IsHasEffect(4904633)) and not c:IsHasEffect(6205579)
 end
 function c19261966.exfilter(c,g)
 	return c:IsFaceup() and c:IsCanBeFusionMaterial() and not g:IsContains(c)

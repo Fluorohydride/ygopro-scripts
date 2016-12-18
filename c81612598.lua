@@ -11,10 +11,10 @@ function c81612598.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c81612598.filter1(c)
-	return c:IsFusionSetCard(0xe1)
+	return c:IsFusionSetCard(0xe1) and not c:IsHasEffect(6205579)
 end
 function c81612598.filter2(c)
-	return c:IsAttackBelow(2500)
+	return c:IsAttackBelow(2500) and not c:IsHasEffect(6205579)
 end
 function c81612598.fscon(e,g,gc,chkfnf)
 	if g==nil then return true end

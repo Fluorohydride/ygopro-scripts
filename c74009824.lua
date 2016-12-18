@@ -40,10 +40,10 @@ function c74009824.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c74009824.ffilter1(c)
-	return c:IsFusionSetCard(0x9d)
+	return c:IsFusionSetCard(0x9d) and not c:IsHasEffect(6205579)
 end
 function c74009824.ffilter2(c)
-	return c:IsFusionAttribute(ATTRIBUTE_WIND) or c:IsHasEffect(4904633)
+	return (c:IsFusionAttribute(ATTRIBUTE_WIND) or c:IsHasEffect(4904633)) and not c:IsHasEffect(6205579)
 end
 function c74009824.exfilter(c,g)
 	return c:IsFaceup() and c:IsCanBeFusionMaterial() and not g:IsContains(c)
