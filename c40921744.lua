@@ -1,6 +1,6 @@
 --堕天使ゼラート
 function c40921744.initial_effect(c)
-	--special summon
+	--normal summon with 1 tribute
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(40921744,0))
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
@@ -38,18 +38,15 @@ end
 function c40921744.sumcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c40921744.mfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
+	local oppo=0
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then oppo=LOCATION_MZONE end
+	local mg=Duel.GetMatchingGroup(c40921744.mfilter,tp,LOCATION_MZONE,oppo,nil,tp)
 	local ag=Duel.GetMatchingGroup(Card.IsAttribute,tp,LOCATION_GRAVE,0,nil,ATTRIBUTE_DARK)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<=0 then mg=mg:Filter(Card.IsControler,nil,tp) end
-	return c:GetLevel()>6 and ft>-1 and Duel.GetTributeCount(c,mg)>0
+	return c:IsLevelAbove(7) and Duel.GetTributeCount(c,mg)>0
 		and ag:GetClassCount(Card.GetCode)>=4
 end
 function c40921744.sumop(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetMatchingGroup(c40921744.mfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
-		mg=mg:Filter(Card.IsControler,nil,tp)
-	end
 	local sg=Duel.SelectTribute(tp,c,1,1,mg)
 	c:SetMaterial(sg)
 	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)

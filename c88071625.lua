@@ -46,18 +46,13 @@ function c88071625.initial_effect(c)
 end
 function c88071625.otcon(e,c)
 	if c==nil then return true end
-	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local mg=nil
-	if ft<=0 then mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0) end
-	return c:GetLevel()>6 and ft>-1 and Duel.GetTributeCount(c,mg)>0
+	local oppo=0
+	if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0 then oppo=LOCATION_MZONE end
+	local mg=Duel.GetMatchingGroup(nil,c:GetControler(),LOCATION_MZONE,oppo,nil)
+	return c:GetLevel()>6 and Duel.GetTributeCount(c)>0
 end
 function c88071625.otop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=nil
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
-		mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
-	end
-	local sg=Duel.SelectTribute(tp,c,1,1,mg)
+	local sg=Duel.SelectTribute(tp,c,1,1)
 	c:SetMaterial(sg)
 	Duel.Release(sg, REASON_SUMMON+REASON_MATERIAL)
 end
