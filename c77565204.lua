@@ -2,26 +2,46 @@
 function c77565204.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetCost(c77565204.reg)
 	e1:SetTarget(c77565204.target)
-	e1:SetOperation(c77565204.activate)
 	c:RegisterEffect(e1)
-	--Destroy
+	--Turn 1
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
-	e2:SetCode(EVENT_LEAVE_FIELD)
-	e2:SetOperation(c77565204.desop)
+	e2:SetCategory(CATEGORY_TOGRAVE)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e2:SetRange(LOCATION_SZONE)
+	e2:SetCode(EVENT_PHASE+PHASE_STANDBY)
+	e2:SetCountLimit(1)
+	e2:SetCondition(c77565204.tgcon)
+	e2:SetOperation(c77565204.tgop)
 	c:RegisterEffect(e2)
-	--Destroy2
+	--Turn 2
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetRange(LOCATION_SZONE)
-	e3:SetCode(EVENT_LEAVE_FIELD)
-	e3:SetCondition(c77565204.descon2)
-	e3:SetOperation(c77565204.desop2)
+	e3:SetCode(EVENT_PHASE+PHASE_STANDBY)
+	e3:SetCountLimit(1)
+	e3:SetCondition(c77565204.proccon)
+	e3:SetOperation(c77565204.procop)
+	e3:SetLabelObject(e2)
 	c:RegisterEffect(e3)
+	--Destroy
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
+	e4:SetCode(EVENT_LEAVE_FIELD)
+	e4:SetOperation(c77565204.desop)
+	c:RegisterEffect(e4)
+	--Destroy2
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e5:SetRange(LOCATION_SZONE)
+	e5:SetCode(EVENT_LEAVE_FIELD)
+	e5:SetCondition(c77565204.descon2)
+	e5:SetOperation(c77565204.desop2)
+	c:RegisterEffect(e5)
 end
 function c77565204.filter1(c,e)
 	return c:IsCanBeFusionMaterial() and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
@@ -34,15 +54,41 @@ function c77565204.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		local mg=Duel.GetMatchingGroup(c77565204.filter1,tp,LOCATION_DECK,0,nil,e)
 		return Duel.IsExistingMatchingCard(c77565204.filter2,tp,LOCATION_EXTRA,0,1,nil,mg)
 	end
-	e:GetHandler():SetTurnCounter(0)
 end
-function c77565204.activate(e,tp,eg,ep,ev,re,r,rp)
+function c77565204.reg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	local c=e:GetHandler()
+	c:SetTurnCounter(0)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(EVENT_PHASE_START+PHASE_STANDBY)
+	e1:SetCountLimit(1)
+	e1:SetOperation(c77565204.ctop)
+	Duel.RegisterEffect(e1,tp)
+	c:CreateEffectRelation(e1)
+end
+function c77565204.ctop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local ct=c:GetTurnCounter()
+	if not c:IsRelateToEffect(e) or ct>=2 then
+		c:SetTurnCounter(0)
+		e:Reset()
+		return
+	end
+	if Duel.GetTurnPlayer()~=tp then return end
+	ct=ct+1
+	c:SetTurnCounter(ct)
+end
+function c77565204.tgcon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetTurnPlayer()==tp and e:GetHandler():GetTurnCounter()==1
+end
+function c77565204.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local mg=Duel.GetMatchingGroup(c77565204.filter1,tp,LOCATION_DECK,0,nil,e)
 	local sg=Duel.GetMatchingGroup(c77565204.filter2,tp,LOCATION_EXTRA,0,nil,mg)
 	if sg:GetCount()>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
 		Duel.ConfirmCards(1-tp,tc)
@@ -55,43 +101,30 @@ function c77565204.activate(e,tp,eg,ep,ev,re,r,rp)
 			tc=fg:GetNext()
 		end
 		Duel.SendtoGrave(mat,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
-		--special summon
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
-		e1:SetCountLimit(1)
-		e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,2)
-		e1:SetRange(LOCATION_SZONE)
-		e1:SetCondition(c77565204.proccon)
-		e1:SetOperation(c77565204.procop)
-		e1:SetLabel(code)
-		e1:SetLabelObject(e)
-		c:RegisterEffect(e1)
+		e:SetLabel(code)
 	end
+end
+function c77565204.proccon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetTurnPlayer()==tp and e:GetHandler():GetTurnCounter()==2
 end
 function c77565204.procfilter(c,code,e,tp)
 	return c:IsCode(code) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)
 end
-function c77565204.proccon(e,tp,eg,ep,ev,re,r,rp)
-	return tp==Duel.GetTurnPlayer()
-end
 function c77565204.procop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local ct=c:GetTurnCounter()
-	ct=ct+1
-	c:SetTurnCounter(ct)
-	if ct==2 then
-		local code=e:GetLabel()
-		local tc=Duel.GetFirstMatchingCard(c77565204.procfilter,tp,LOCATION_EXTRA,0,nil,code,e,tp)
-		if not tc then return end
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
-			Duel.SendtoGrave(tc,REASON_EFFECT)
-			tc:CompleteProcedure()
-		else
-			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-			tc:CompleteProcedure()
-			c:SetCardTarget(tc)
-		end
+	if not c:IsRelateToEffect(e) then return end
+	local code=e:GetLabelObject():GetLabel()
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local g=Duel.SelectMatchingCard(tp,c77565204.procfilter,tp,LOCATION_EXTRA,0,1,1,nil,code,e,tp)
+	local tc=g:GetFirst()
+	if not tc then return end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
+		Duel.SendtoGrave(tc,REASON_EFFECT)
+		tc:CompleteProcedure()
+	else
+		Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
+		tc:CompleteProcedure()
+		c:SetCardTarget(tc)
 	end
 end
 function c77565204.desop(e,tp,eg,ep,ev,re,r,rp)
