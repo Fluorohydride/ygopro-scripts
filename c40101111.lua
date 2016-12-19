@@ -42,7 +42,7 @@ function c40101111.splimit(e,se,sp,st)
 	return true
 end
 function c40101111.ffilter(c)
-	return c:IsType(TYPE_SYNCHRO) and c:IsRace(RACE_PSYCHO)
+	return c:IsFusionType(TYPE_SYNCHRO) and c:IsRace(RACE_PSYCHO)
 end
 function c40101111.recon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

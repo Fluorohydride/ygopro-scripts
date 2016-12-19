@@ -42,7 +42,7 @@ function c14017402.refcon(e,re,val,r,rp,rc)
 	return bit.band(r,REASON_EFFECT)~=0 and rp~=e:GetHandler():GetControler()  and e:GetHandler():IsAttackPos()
 end
 function c14017402.ffilter(c)
-	return c:IsRace(RACE_DRAGON) and c:IsType(TYPE_SYNCHRO)
+	return c:IsRace(RACE_DRAGON) and c:IsFusionType(TYPE_SYNCHRO)
 end
 function c14017402.cpfilter(c)
 	return c:IsRace(RACE_DRAGON) and c:IsType(TYPE_SYNCHRO) and c:IsAbleToRemove()

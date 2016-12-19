@@ -33,13 +33,8 @@ end
 function c4688231.filter1(c)
 	return c:IsFusionSetCard(0xe1) and not c:IsHasEffect(6205579)
 end
---additional condition for 77693536 effect
 function c4688231.filter2(c)
-	if c:IsLocation(LOCATION_MZONE) then
-		return c:IsType(TYPE_PENDULUM) and not c:IsHasEffect(6205579)
-	else
-		return bit.band(c:GetOriginalType(),TYPE_PENDULUM)~=0 and not c:IsHasEffect(6205579)
-	end
+	return c:IsFusionType(TYPE_PENDULUM) and not c:IsHasEffect(6205579)
 end
 function c4688231.fscon(e,g,gc,chkfnf)
 	if g==nil then return true end
