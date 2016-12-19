@@ -29,9 +29,9 @@ function c54401832.fscon(e,g,gc,chkfnf)
 		g:Merge(fc:GetEquipGroup():Filter(Card.IsControler,nil,tp))
 		fc=fg:GetNext()
 	end
-	local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler(),true)
+	local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 	if gc then
-		if not gc:IsCanBeFusionMaterial(e:GetHandler(),true) then return false end
+		if not gc:IsCanBeFusionMaterial(e:GetHandler()) then return false end
 		if aux.FConditionFilterFFR(gc,f1,f2,mg,minc,chkf) then
 			return true
 		elseif f2(gc) then
@@ -52,7 +52,7 @@ function c54401832.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 		eg:Merge(fc:GetEquipGroup():Filter(Card.IsControler,nil,tp))
 		fc=fg:GetNext()
 	end
-	local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler(),true)
+	local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 	local minct=2
 	local maxct=2
 	if gc then

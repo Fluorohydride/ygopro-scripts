@@ -61,9 +61,9 @@ function c77693536.fscon(e,g,gc,chkfnf)
 		g:Merge(fc:GetEquipGroup():Filter(Card.IsControler,nil,tp))
 		fc=fg:GetNext()
 	end
-	local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler(),true)
+	local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 	if gc then
-		if not gc:IsCanBeFusionMaterial(e:GetHandler(),true) then return false end
+		if not gc:IsCanBeFusionMaterial(e:GetHandler()) then return false end
 		return (f1(gc) and mg:IsExists(f2,1,gc))
 			or (f2(gc) and mg:IsExists(f1,1,gc)) end
 	local g1=Group.CreateGroup() local g2=Group.CreateGroup() local fs=false
@@ -87,7 +87,7 @@ function c77693536.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 		eg:Merge(fc:GetEquipGroup():Filter(Card.IsControler,nil,tp))
 		fc=fg:GetNext()
 	end
-	local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler(),true)
+	local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 	if gc then
 		local sg=Group.CreateGroup()
 		if f1(gc) then sg:Merge(g:Filter(f2,gc)) end

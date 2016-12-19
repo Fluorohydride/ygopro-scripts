@@ -50,9 +50,9 @@ function c28016193.fscon(e,g,gc,chkfnf)
 		g:Merge(fc:GetEquipGroup():Filter(Card.IsControler,nil,tp))
 		fc=fg:GetNext()
 	end
-	local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler(),true)
+	local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 		if gc then
-			if not gc:IsCanBeFusionMaterial(e:GetHandler(),true) then return false end
+			if not gc:IsCanBeFusionMaterial(e:GetHandler()) then return false end
 			return f(gc) and mg:IsExists(f,cc-1,gc) end
 		local g1=mg:Filter(f,nil)
 		if chkf~=PLAYER_NONE then
@@ -69,7 +69,7 @@ function c28016193.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 		eg:Merge(fc:GetEquipGroup():Filter(Card.IsControler,nil,tp))
 		fc=fg:GetNext()
 	end
-	local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler(),true)
+	local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 	if gc then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 		local g1=g:FilterSelect(tp,f,cc-1,cc-1,gc)
