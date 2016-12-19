@@ -70,7 +70,7 @@ function c10833828.spop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummonComplete()
 end
 function c10833828.spfilter2(c,e)
-	return c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
+	return not c:IsImmuneToEffect(e)
 end
 function c10833828.spfilter3(c,e,tp,m,g,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsRace(RACE_FIEND) and (not f or f(c))
@@ -84,7 +84,7 @@ function c10833828.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 		local g=e:GetHandler():GetCardTarget():Filter(Card.IsControler,nil,tp)
 		if g:GetCount()==0 then return false end
 		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
-		local mg1=Duel.GetMatchingGroup(Card.IsCanBeFusionMaterial,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
+		local mg1=Duel.GetFusionMaterial(tp)
 		local res=Duel.IsExistingMatchingCard(c10833828.spfilter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,g,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -107,7 +107,7 @@ function c10833828.spop2(e,tp,eg,ep,ev,re,r,rp)
 	g:Remove(Card.IsImmuneToEffect,nil,e)
 	if g:GetCount()==0 then return false end
 	local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
-	local mg1=Duel.GetMatchingGroup(c10833828.spfilter2,tp,LOCATION_HAND+LOCATION_MZONE,0,nil,e)
+	local mg1=Duel.GetFusionMaterial(tp):Filter(c10833828.spfilter2,nil,e)
 	local sg1=Duel.GetMatchingGroup(c10833828.spfilter3,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,g,nil,chkf)
 	local mg2=nil
 	local sg2=nil
