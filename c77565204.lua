@@ -112,20 +112,15 @@ function c77565204.procfilter(c,code,e,tp)
 end
 function c77565204.procop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToEffect(e) or Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local code=e:GetLabelObject():GetLabel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c77565204.procfilter,tp,LOCATION_EXTRA,0,1,1,nil,code,e,tp)
 	local tc=g:GetFirst()
 	if not tc then return end
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
-		Duel.SendtoGrave(tc,REASON_EFFECT)
-		tc:CompleteProcedure()
-	else
-		Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-		tc:CompleteProcedure()
-		c:SetCardTarget(tc)
-	end
+	Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
+	tc:CompleteProcedure()
+	c:SetCardTarget(tc)
 end
 function c77565204.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetFirstCardTarget()
