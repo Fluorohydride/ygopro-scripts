@@ -31,7 +31,7 @@ function c49306994.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCode(EVENT_ATTACK_ANNOUNCE)
-	e4:SetCondition(c49306994.actcon)
+	e4:SetCondition(c49306994.discon)
 	e4:SetOperation(c49306994.disop)
 	c:RegisterEffect(e4)
 	--destroy
@@ -77,9 +77,11 @@ function c49306994.aclimit(e,re,tp)
 end
 function c49306994.actcon(e)
 	local tc=e:GetHandler():GetEquipTarget()
-	local a=Duel.GetAttacker()
-	local d=Duel.GetAttackTarget()
-	return (a and a==tc) or (d and d==tc)
+	return Duel.GetAttacker()==tc or Duel.GetAttackTarget()==tc
+end
+function c49306994.discon(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetHandler():GetEquipTarget()
+	return Duel.GetAttacker()==tc or Duel.GetAttackTarget()==tc
 end
 function c49306994.disfilter(c)
 	return aux.disfilter1(c) and c:IsType(TYPE_SPELL+TYPE_TRAP)

@@ -9,29 +9,10 @@ function c65646587.initial_effect(c)
 	e1:SetTarget(c65646587.target)
 	e1:SetOperation(c65646587.activate)
 	c:RegisterEffect(e1)
-	if not c65646587.global_check then
-		c65646587.global_check=true
-		local f=Card.IsCanBeFusionMaterial
-		Card.IsCanBeFusionMaterial=function(c,fc,ismon)
-			if (c:GetSequence()==6 or c:GetSequence()==7) and c:IsLocation(LOCATION_SZONE) then
-				return f(c,fc,true)
-			end
-			if c:IsCode(80604091) then return f(c,fc,true) end
-			return f(c,fc,ismon)
-		end
-		local f2=Card.IsType
-		Card.IsType=function(c,tp)
-			if (c:GetSequence()==6 or c:GetSequence()==7) and c:IsLocation(LOCATION_SZONE) then
-				local opt=bit.bor(c:GetOriginalType(),TYPE_SPELL)
-				return bit.band(tp,opt)~=0
-			end
-			return f2(c,tp)
-		end
-	end
 end
 function c65646587.filter0(c,e)
 	local seq=c:GetSequence()
-	return (seq==6 or seq==7) and c:IsCanBeFusionMaterial(nil,true) and not c:IsImmuneToEffect(e)
+	return (seq==6 or seq==7) and c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
 end
 function c65646587.filter1(c,e)
 	return c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
