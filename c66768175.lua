@@ -21,7 +21,7 @@ function c66768175.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCondition(c66768175.atkcon2)
 	e2:SetTarget(c66768175.atktg2)
-	e2:SetOperation(c66768175.atkop2)	
+	e2:SetOperation(c66768175.atkop2)
 	c:RegisterEffect(e2)
 end
 function c66768175.atkcon1(e,tp,eg,ep,ev,re,r,rp)
@@ -30,7 +30,7 @@ function c66768175.atkcon1(e,tp,eg,ep,ev,re,r,rp)
 	if not bc then return false end
 	if tc:IsControler(1-tp) then bc,tc=tc,bc end
 	e:SetLabelObject(bc)
-	return bc:IsFaceup() and tc:IsSetCard(0x9f)
+	return bc:IsFaceup() and tc:IsFaceup() and tc:IsSetCard(0x9f)
 end
 function c66768175.atkop1(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end

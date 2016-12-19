@@ -64,7 +64,6 @@ function c28151978.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,tc)
 	end
 end
 function c28151978.synlimit(e,c)
@@ -73,6 +72,6 @@ function c28151978.synlimit(e,c)
 end
 function c28151978.rmcon(e)
 	local c=e:GetHandler()
-	return bit.band(c:GetSummonLocation(),LOCATION_EXTRA)~=0
+	return c:GetSummonLocation()==LOCATION_EXTRA
 		and bit.band(c:GetReason(),REASON_MATERIAL+REASON_SYNCHRO)==REASON_MATERIAL+REASON_SYNCHRO
 end

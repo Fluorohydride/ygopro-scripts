@@ -7,8 +7,8 @@ function c58330108.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetRange(LOCATION_HAND)
-	e1:SetCondition(c58330108.hspcon)
-	e1:SetOperation(c58330108.hspop)
+	e1:SetCondition(c58330108.spcon)
+	e1:SetOperation(c58330108.spop)
 	c:RegisterEffect(e1)
 	--atk gain
 	local e2=Effect.CreateEffect(c)
@@ -29,33 +29,34 @@ function c58330108.initial_effect(c)
 	e3:SetOperation(c58330108.operation)
 	c:RegisterEffect(e3)
 end
-function c58330108.hspfilter(c)
+function c58330108.cfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
 end
-function c58330108.hspcon(e,c)
+function c58330108.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.GetMatchingGroup(c58330108.hspfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,c)
-	return g:GetCount()>=2 and ft>=0 and (ft>0 or g:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)>0)
+	local g=Duel.GetMatchingGroup(c58330108.cfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,c)
+	return g:GetCount()>=2 and ft>-2 and g:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)>-ft
 end
-function c58330108.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local tp=c:GetControler()
+function c58330108.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<0 then return end
-	local hc=2
-	local g=Duel.GetMatchingGroup(c58330108.hspfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,c)
-	local sg=Group.CreateGroup()
-	if ft==0 then
+	local ct=-ft+1
+	local g=Duel.GetMatchingGroup(c58330108.cfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,c)
+	local sg=nil
+	if ft<=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local sg1=g:FilterSelect(tp,Card.IsLocation,1,1,nil,LOCATION_MZONE)
-		sg:Merge(sg1)
-		g:RemoveCard(sg1:GetFirst())
-		hc=hc-1
+		sg=g:FilterSelect(tp,Card.IsLocation,ct,ct,nil,LOCATION_MZONE)
+		if ct<2 then
+			g:Sub(sg)
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+			local sg1=g:Select(tp,2-ct,2-ct,nil)
+			sg:Merge(sg1)
+		end
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+		sg=g:Select(tp,2,2,nil)
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local sg2=g:Select(tp,hc,hc,nil)
-	sg:Merge(sg2)
 	Duel.SendtoGrave(sg,REASON_COST)
 end
 function c58330108.value(e,c)
@@ -77,17 +78,17 @@ function c58330108.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		local b3=Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,LOCATION_ONFIELD+LOCATION_GRAVE,LOCATION_ONFIELD+LOCATION_GRAVE,1,c)
 		return (gc==1 and b1) or (gc==2 and b2) or (gc>2 and b3)
 	end
-	local cat=CATEGORY_DESTROY
-	local rec=nil
-	local loc=LOCATION_ONFIELD
-	if gc>1 then
-		cat=CATEGORY_REMOVE
-		rec=Card.IsAbleToRemove
+	if gc==1 then
+		e:SetCategory(CATEGORY_DESTROY)
+		local g=Duel.GetMatchingGroup(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,c)
+		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
+	else
+		e:SetCategory(CATEGORY_REMOVE)
+		local loc=LOCATION_ONFIELD
 		if gc>2 then loc=LOCATION_ONFIELD+LOCATION_GRAVE end
+		local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,loc,loc,c)
+		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)
 	end
-	e:SetCategory(cat)
-	local g=Duel.GetMatchingGroup(rec,tp,loc,loc,c)
-	Duel.SetOperationInfo(0,cat,g,g:GetCount(),0,0)
 end
 function c58330108.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

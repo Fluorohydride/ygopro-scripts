@@ -60,7 +60,7 @@ function c88851326.initial_effect(c)
 	end
 end
 function c88851326.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if eg and eg:IsExists(Card.IsPreviousLocation,1,nil,LOCATION_HAND) then
+	if eg:IsExists(Card.IsPreviousLocation,1,nil,LOCATION_HAND) then
 		Duel.RegisterFlagEffect(rp,88851326,RESET_PHASE+PHASE_END,0,1)
 	end
 end
@@ -126,7 +126,7 @@ function c88851326.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c88851326.thfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	if g:GetCount()>0 then
+		Duel.HintSelection(g)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,g)
 	end
 end

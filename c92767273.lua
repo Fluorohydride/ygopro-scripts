@@ -1,18 +1,19 @@
 --EMバラクーダ
 function c92767273.initial_effect(c)
+	--pendulum summon
 	aux.EnablePendulumAttribute(c)
-	--reduce atk
+	--atk up
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(92767273,0))
 	e1:SetCategory(CATEGORY_ATKCHANGE)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e1:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
+	e1:SetCode(EVENT_BATTLE_CONFIRM)
 	e1:SetRange(LOCATION_PZONE)
 	e1:SetCountLimit(1)
 	e1:SetCondition(c92767273.atkcon1)
 	e1:SetOperation(c92767273.atkop1)
 	c:RegisterEffect(e1)
-	--increase atk
+	--atk down
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(92767273,1))
 	e2:SetCategory(CATEGORY_ATKCHANGE)

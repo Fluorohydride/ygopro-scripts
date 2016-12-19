@@ -1,6 +1,6 @@
 --ディアバウンド・カーネル
 function c51644030.initial_effect(c)
-	--Increase ATK
+	--atk up
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(51644030,0))
 	e1:SetCategory(CATEGORY_ATKCHANGE)
@@ -8,7 +8,7 @@ function c51644030.initial_effect(c)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetOperation(c51644030.atkop1)
 	c:RegisterEffect(e1)
-	--Decrease ATK
+	--atk down
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(51644030,1))
 	e2:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_REMOVE)
@@ -28,7 +28,7 @@ function c51644030.atkop1(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)
 	e1:SetValue(600)
-	e1:SetReset(RESET_EVENT+0x1fe0000)
+	e1:SetReset(RESET_EVENT+0x1ff0000)
 	c:RegisterEffect(e1)
 end
 function c51644030.atkcon(e,tp,eg,ep,ev,re,r,rp)
@@ -45,7 +45,7 @@ end
 function c51644030.atkop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and c:IsFaceup() then
 		local atk=c:GetAttack()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -53,7 +53,7 @@ function c51644030.atkop2(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(-atk)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
-		if c:IsRelateToEffect(e) and c:IsFaceup() and not tc:IsHasEffect(EFFECT_REVERSE_UPDATE) then
+		if c:IsRelateToEffect(e) and not tc:IsHasEffect(EFFECT_REVERSE_UPDATE) then
 			Duel.BreakEffect()
 			if Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 				local e2=Effect.CreateEffect(c)
