@@ -20,6 +20,7 @@ function c74711057.initial_effect(c)
 	e2:SetValue(aux.fuslimit)
 	c:RegisterEffect(e2)
 end
+c74711057.material_setcode=0x8
 function c74711057.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,e:GetHandler(),0x3008) end
 	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,e:GetHandler(),0x3008)

@@ -27,6 +27,7 @@ function c31111109.initial_effect(c)
 	e3:SetValue(aux.fuslimit)
 	c:RegisterEffect(e3)
 end
+c31111109.material_setcode=0x8
 function c31111109.ffilter(c,cat)
 	return c:IsFusionSetCard(cat) and not c:IsHasEffect(6205579)
 end
@@ -97,7 +98,7 @@ function c31111109.copyop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) then
-		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=1 then	return end
+		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=1 then return end
 		local code=tc:GetOriginalCode()
 		local cid=c:CopyEffect(code,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,1)
 		local e1=Effect.CreateEffect(c)

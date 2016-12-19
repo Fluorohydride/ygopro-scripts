@@ -22,6 +22,7 @@ function c81197327.initial_effect(c)
 	e2:SetOperation(c81197327.recop)
 	c:RegisterEffect(e2)
 end
+c81197327.material_setcode=0x8
 function c81197327.reccon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()

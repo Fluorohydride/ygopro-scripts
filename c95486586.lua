@@ -42,6 +42,7 @@ function c95486586.initial_effect(c)
 	e4:SetOperation(c95486586.spop)
 	c:RegisterEffect(e4)
 end
+c95486586.material_setcode=0x8
 function c95486586.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then

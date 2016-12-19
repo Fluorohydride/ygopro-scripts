@@ -22,6 +22,7 @@ function c81003500.initial_effect(c)
 	e2:SetOperation(c81003500.operation)
 	c:RegisterEffect(e2)
 end
+c81003500.material_setcode=0x8
 function c81003500.condition(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
 end

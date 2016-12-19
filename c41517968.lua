@@ -33,6 +33,7 @@ function c41517968.initial_effect(c)
 	e4:SetOperation(c41517968.desop)
 	c:RegisterEffect(e4)
 end
+c41517968.material_setcode=0x8
 function c41517968.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler()==Duel.GetAttacker() and e:GetHandler():IsRelateToBattle()
 end

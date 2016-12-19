@@ -19,6 +19,7 @@ function c30757127.initial_effect(c)
 	e1:SetOperation(c30757127.atkop)
 	c:RegisterEffect(e1)
 end
+c30757127.material_setcode=0x8
 function c30757127.ffilter(c)
 	return c:IsFusionAttribute(ATTRIBUTE_DARK) and c:IsType(TYPE_EFFECT)
 end

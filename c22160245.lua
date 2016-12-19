@@ -27,6 +27,7 @@ function c22160245.initial_effect(c)
 	e3:SetCode(EFFECT_PIERCE)
 	c:RegisterEffect(e3)
 end
+c22160245.material_setcode=0x8
 c22160245.dark_calling=true
 function c22160245.splimit(e,se,sp,st)
 	return st==SUMMON_TYPE_FUSION+0x10
