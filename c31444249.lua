@@ -46,8 +46,11 @@ function c31444249.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
+function c31444249.filter0(c)
+	return c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
+end
 function c31444249.filter1(c,e)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
+	return not c:IsImmuneToEffect(e)
 end
 function c31444249.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsSetCard(0xbb) and (not f or f(c))
@@ -60,9 +63,9 @@ end
 function c31444249.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
-		local mg1=Duel.GetMatchingGroup(c31444249.filter1,tp,LOCATION_HAND+LOCATION_MZONE,0,nil,e)
+		local mg1=Duel.GetFusionMaterial(tp)
 		if c31444249.dmcon(e,tp,eg,ep,ev,re,r,rp) then
-			local sg=Duel.GetMatchingGroup(c31444249.filter1,tp,LOCATION_DECK,0,nil,e)
+			local sg=Duel.GetMatchingGroup(c31444249.filter0,tp,LOCATION_DECK,0,nil)
 			mg1:Merge(sg)
 		end
 		local res=Duel.IsExistingMatchingCard(c31444249.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
@@ -81,9 +84,9 @@ function c31444249.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c31444249.spop(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
-	local mg1=Duel.GetMatchingGroup(c31444249.filter1,tp,LOCATION_HAND+LOCATION_MZONE,0,nil,e)
+	local mg1=Duel.GetFusionMaterial(tp):Filter(c31444249.filter1,nil,e)
 	if c31444249.dmcon(e,tp,eg,ep,ev,re,r,rp) then
-		local dmg=Duel.GetMatchingGroup(c31444249.filter1,tp,LOCATION_DECK,0,nil,e)
+		local dmg=Duel.GetMatchingGroup(c31444249.filter0,tp,LOCATION_DECK,0,nil)
 		mg1:Merge(dmg)
 	end
 	local sg1=Duel.GetMatchingGroup(c31444249.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
@@ -104,7 +107,7 @@ function c31444249.spop(e,tp,eg,ep,ev,re,r,rp)
 		local tc=tg:GetFirst()
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			if c31444249.dmcon(e,tp,eg,ep,ev,re,r,rp) then
-				local mgd=Duel.GetMatchingGroup(c31444249.filter1,tp,LOCATION_DECK,0,nil,e)
+				local mgd=Duel.GetMatchingGroup(c31444249.filter0,tp,LOCATION_DECK,0,nil)
 				mg1:Merge(mgd)
 				tc:RegisterFlagEffect(31444249,RESET_CHAIN,0,1)
 			end
