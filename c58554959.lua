@@ -18,7 +18,7 @@ function c58554959.initial_effect(c)
 end
 function c58554959.otcon(e,c)
 	if c==nil then return true end
-	return c:GetLevel()>6 and Duel.GetFieldGroupCount(c:GetControler(),0,LOCATION_MZONE)~=0 and Duel.GetTributeCount(c)>0
+	return c:GetLevel()>6 and Duel.CheckTribute(c,1)
 end
 function c58554959.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	local sg=Duel.SelectTribute(tp,c,1,1)

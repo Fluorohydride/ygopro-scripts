@@ -19,7 +19,7 @@ function c42685062.initial_effect(c)
 end
 function c42685062.sumcon(e,c)
 	if c==nil then return true end
-	return Duel.GetTributeCount(c)~=0
+	return Duel.CheckTribute(c,1)
 end
 function c42685062.sumop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectTribute(tp,c,1,1)

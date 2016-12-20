@@ -44,7 +44,7 @@ end
 function c96570609.otcon(e,c)
 	if c==nil then return true end
 	local mg=Duel.GetMatchingGroup(c96570609.otfilter,0,LOCATION_MZONE,LOCATION_MZONE,nil)
-	return c:GetLevel()>6 and Duel.CheckTribute(c,1,mg)
+	return c:GetLevel()>6 and Duel.CheckTribute(c,1,1,mg)
 end
 function c96570609.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetMatchingGroup(c96570609.otfilter,0,LOCATION_MZONE,LOCATION_MZONE,nil)

@@ -51,7 +51,7 @@ function c3912064.posop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c3912064.ttcon(e,c)
 	if c==nil then return true end
-	return Duel.GetTributeCount(c)>=3
+	return Duel.CheckTribute(c,3)
 end
 function c3912064.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)

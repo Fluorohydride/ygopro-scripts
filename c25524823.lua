@@ -40,7 +40,7 @@ function c25524823.initial_effect(c)
 end
 function c25524823.ttcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-3 and Duel.GetTributeCount(c)>=3
+	return Duel.CheckTribute(c,3)
 end
 function c25524823.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
@@ -55,8 +55,7 @@ function c25524823.otcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local mg=Duel.GetMatchingGroup(c25524823.otfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
-	return c:GetLevel()>6 and Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.GetTributeCount(c,mg)>0
+	return c:GetLevel()>6 and Duel.CheckTribute(c,1,1,mg)
 end
 function c25524823.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetMatchingGroup(c25524823.otfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)

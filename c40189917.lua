@@ -36,7 +36,7 @@ function c40189917.sumcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local mg=Duel.GetMatchingGroup(c40189917.mfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1 and Duel.GetTributeCount(c,mg)>0
+	return Duel.CheckTribute(c,1,1,mg)
 end
 function c40189917.sumop(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetMatchingGroup(c40189917.mfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)

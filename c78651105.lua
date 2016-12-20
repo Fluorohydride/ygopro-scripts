@@ -50,7 +50,7 @@ function c78651105.ntop(e,tp,eg,ep,ev,re,r,rp,c)
 end
 function c78651105.ttcon(e,c)
 	if c==nil then return true end
-	return Duel.GetTributeCount(c)>=3
+	return Duel.CheckTribute(c,3)
 end
 function c78651105.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)

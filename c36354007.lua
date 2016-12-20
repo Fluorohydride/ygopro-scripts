@@ -23,7 +23,7 @@ function c36354007.initial_effect(c)
 end
 function c36354007.ttcon(e,c)
 	if c==nil then return true end
-	return Duel.GetTributeCount(c)>=3
+	return Duel.CheckTribute(c,3)
 end
 function c36354007.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
