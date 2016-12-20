@@ -1333,7 +1333,12 @@ function Auxiliary.FConditionFilterMulti(c,mg,funs,n,tbt)
 	return false
 end
 function Auxiliary.CloneTable(g)
-	return {table.unpack(g)}
+	local ng={}
+	for i=1,#g do
+		local sg=g[i]:Clone()
+		table.insert(ng,sg)
+	end
+	return ng
 end
 function Auxiliary.FConditionFilterMulti2(c,gr)
 	local gr2=Auxiliary.CloneTable(gr)
