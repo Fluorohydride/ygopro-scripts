@@ -76,7 +76,7 @@ function c16172067.synfilter2(c,syncard,lv,g2,g4,f1,tuner1)
 end
 function c16172067.synfilter3(c,syncard,lv,f1,f2,g2,tuner1,tuner2)
 	if c==tuner1 or c==tuner2 then return false end
-	if not (not f1 or f1(c)) and not (not f2 or f2(c)) then return false end
+	if (f1 and not f1(c)) or (f2 and not f2(c)) then return false end
 	local mg=g2:Filter(c16172067.synfilter4,nil,f1,f2)
 	Duel.SetSelectedCard(Group.FromCards(c,tuner1,tuner2))
 	return mg:CheckWithSumEqual(Card.GetSynchroLevel,lv,0,61,syncard)
