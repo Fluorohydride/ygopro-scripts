@@ -33,9 +33,9 @@ function c62180201.initial_effect(c)
 	e5:SetValue(c62180201.defval)
 	c:RegisterEffect(e5)
 end
-function c62180201.ttcon(e,c)
+function c62180201.ttcon(e,c,minc)
 	if c==nil then return true end
-	return Duel.CheckTribute(c,3)
+	return minc<=3 and Duel.CheckTribute(c,3)
 end
 function c62180201.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectTribute(tp,c,3,3)

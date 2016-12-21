@@ -44,9 +44,9 @@ function c88071625.initial_effect(c)
 	e6:SetOperation(c88071625.copyop)
 	c:RegisterEffect(e6)
 end
-function c88071625.otcon(e,c)
+function c88071625.otcon(e,c,minc)
 	if c==nil then return true end
-	return c:GetLevel()>6 and Duel.CheckTribute(c,1)
+	return c:GetLevel()>6 and minc<=1 and Duel.CheckTribute(c,1)
 end
 function c88071625.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	local sg=Duel.SelectTribute(tp,c,1,1)

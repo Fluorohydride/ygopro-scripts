@@ -20,11 +20,11 @@ end
 function c28348537.otfilter(c,tp)
 	return c:IsRace(RACE_SPELLCASTER) and (c:IsControler(tp) or c:IsFaceup())
 end
-function c28348537.otcon(e,c)
+function c28348537.otcon(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local mg=Duel.GetMatchingGroup(c28348537.otfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
-	return c:GetLevel()>6 and Duel.CheckTribute(c,1,1,mg)
+	return c:GetLevel()>6 and minc<=1 and Duel.CheckTribute(c,1,1,mg)
 end
 function c28348537.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetMatchingGroup(c28348537.otfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)

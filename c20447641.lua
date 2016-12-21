@@ -64,10 +64,10 @@ end
 function c20447641.ttfilter(c)
 	return c:GetOriginalCode()==20447641 and c:IsReleasable() and c:GetFlagEffect(20447641)~=0
 end
-function c20447641.ttcon(e,c)
+function c20447641.ttcon(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
+	return minc<=3 and Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
 		and Duel.IsExistingMatchingCard(c20447641.ttfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c20447641.tttg(e,c)
