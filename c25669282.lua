@@ -27,6 +27,7 @@ function c25669282.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xeb) and c:IsAbleToRemoveAsCost()
 end
 function c25669282.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	e:SetLabel(1)
 	if chk==0 then return Duel.IsExistingMatchingCard(c25669282.cfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c25669282.cfilter,tp,LOCATION_MZONE,0,1,1,nil)
@@ -40,9 +41,19 @@ function c25669282.spfilter2(c,e,tp,code)
 	return c:IsSetCard(0xeb) and not c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c25669282.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c25669282.spfilter1,tp,LOCATION_DECK,0,1,nil,e,tp) end
+	if chk==0 then
+		if e:GetLabel()==1 then
+			e:SetLabel(0)
+			return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+				and not Duel.IsPlayerAffectedByEffect(tp,59822133)
+				and Duel.IsExistingMatchingCard(c25669282.spfilter1,tp,LOCATION_DECK,0,1,nil,e,tp)
+		else
+			return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+				and not Duel.IsPlayerAffectedByEffect(tp,59822133)
+				and Duel.IsExistingMatchingCard(c25669282.spfilter1,tp,LOCATION_DECK,0,1,nil,e,tp)
+		end
+	end
+	e:SetLabel(0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_DECK)
 end
 function c25669282.activate(e,tp,eg,ep,ev,re,r,rp)

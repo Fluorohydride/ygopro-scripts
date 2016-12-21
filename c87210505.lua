@@ -15,6 +15,7 @@ function c87210505.costfilter(c)
 	return c:IsFaceup() and c:IsCode(46986414)
 end
 function c87210505.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	e:SetLabel(1)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c87210505.costfilter,1,nil) end
 	local g=Duel.SelectReleaseGroup(tp,c87210505.costfilter,1,1,nil)
 	Duel.Release(g,REASON_COST)
@@ -23,8 +24,17 @@ function c87210505.spfilter(c,e,tp)
 	return c:IsCode(50725996) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)
 end
 function c87210505.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(c87210505.spfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,nil,e,tp) end
+	if chk==0 then
+		if e:GetLabel()==1 then
+			e:SetLabel(0)
+			return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
+				and Duel.IsExistingMatchingCard(c87210505.spfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,nil,e,tp)
+		else
+			return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+				and Duel.IsExistingMatchingCard(c87210505.spfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,nil,e,tp)
+		end
+	end
+	e:SetLabel(0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE)
 end
 function c87210505.activate(e,tp,eg,ep,ev,re,r,rp)

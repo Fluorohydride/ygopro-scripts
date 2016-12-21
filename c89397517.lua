@@ -12,6 +12,7 @@ function c89397517.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c89397517.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	e:SetLabel(1)
 	if chk==0 then return Duel.CheckLPCost(tp,2000) and Duel.CheckReleaseGroup(tp,Card.IsRace,1,nil,RACE_WARRIOR) end
 	Duel.PayLPCost(tp,2000)
 	local sg=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,nil,RACE_WARRIOR)
@@ -24,9 +25,19 @@ function c89397517.spfilter(c,e,tp)
 	return c:IsSetCard(0xa0) and c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)
 end
 function c89397517.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c89397517.rmfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil)
-		and Duel.IsExistingMatchingCard(c89397517.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,1,nil,e,tp) end
+	if chk==0 then
+		if e:GetLabel()==1 then
+			e:SetLabel(0)
+			return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
+				and Duel.IsExistingMatchingCard(c89397517.rmfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil)
+				and Duel.IsExistingMatchingCard(c89397517.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,1,nil,e,tp)
+		else
+			return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+				and Duel.IsExistingMatchingCard(c89397517.rmfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil)
+				and Duel.IsExistingMatchingCard(c89397517.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,1,nil,e,tp)
+		end
+	end
+	e:SetLabel(0)
 	local g=Duel.GetMatchingGroup(c89397517.rmfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK)
@@ -40,6 +51,7 @@ function c89397517.activate(e,tp,eg,ep,ev,re,r,rp)
 	local spct=spg:GetClassCount(Card.GetCode)
 	local ct=math.min(3,ft,spct,rmct)
 	if ct==0 then return end
+	if ct>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 	local g=Group.CreateGroup()
 	repeat
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
