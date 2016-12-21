@@ -33,17 +33,18 @@ function c5556499.spfilter(c)
 end
 function c5556499.spcon(e,c)
 	if c==nil then return true end
+	if c:IsHasEffect(EFFECT_NECRO_VALLEY) then return false end
 	local tp=c:GetControler()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return false end
 	local g=Duel.GetMatchingGroup(c5556499.spfilter,tp,LOCATION_HAND,0,nil)
-	if not c:IsAbleToGraveAsCost() then
+	if not c:IsAbleToGraveAsCost() or Duel.IsPlayerAffectedByEffect(tp,EFFECT_NECRO_VALLEY) then
 		g:RemoveCard(c)
 	end
 	return g:CheckWithSumGreater(Card.GetLevel,8)
 end
 function c5556499.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c5556499.spfilter,c:GetControler(),LOCATION_HAND,0,nil)
-	if not c:IsAbleToGraveAsCost() then
+	if not c:IsAbleToGraveAsCost() or Duel.IsPlayerAffectedByEffect(tp,EFFECT_NECRO_VALLEY) then
 		g:RemoveCard(c)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
