@@ -78,7 +78,8 @@ end
 function c10000080.ttcon2(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return minc<=3 and Duel.CheckTribute(c,3,3,nil,1-tp)
+	local mg=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
+	return minc<=3 and Duel.CheckTribute(c,3,3,mg,1-tp)
 end
 function c10000080.ttop2(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
