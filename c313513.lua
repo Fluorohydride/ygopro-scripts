@@ -17,8 +17,11 @@ function c313513.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=-ft+1
 	local tg=Duel.GetMatchingGroup(c313513.cfilter,tp,LOCATION_ONFIELD,0,nil)
-	if chk==0 then return ct<=3 and tg:GetCount()>=3
-		and (ct<=0 or tg:IsExists(Card.IsLocation,ct,nil,LOCATION_MZONE)) end
+	if chk==0 then
+		e:SetLabel(1)
+		return ct<=3 and tg:GetCount()>=3
+			and (ct<=0 or tg:IsExists(Card.IsLocation,ct,nil,LOCATION_MZONE))
+	end
 	local g=nil
 	if ct>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
@@ -50,7 +53,11 @@ function c313513.filter(c,e,tp)
 	return c:IsCode(83104731) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c313513.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c313513.filter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp) end
+	if chk==0 then
+		if e:GetLabel()==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return false end
+		e:SetLabel(0)
+		return Duel.IsExistingMatchingCard(c313513.filter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)
 end
 function c313513.dfilter(c)
