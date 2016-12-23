@@ -22,7 +22,7 @@ function c18013090.initial_effect(c)
 	e3:SetOperation(c18013090.caop)
 	c:RegisterEffect(e3)
 end
-c18013090.material_setcode=0x17
+c18013090.material_setcode=0x1017
 function c18013090.tfilter(c)
 	return c:IsCode(96182448) or c:IsHasEffect(20932152)
 end

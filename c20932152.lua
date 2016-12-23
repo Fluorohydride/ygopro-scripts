@@ -25,7 +25,7 @@ function c20932152.initial_effect(c)
 end
 function c20932152.synlimit(e,c)
 	if not c then return false end
-	return not aux.IsMaterialListSetCard(c,0x17)
+	return not aux.IsMaterialListSetCard(c,0x1017)
 end
 function c20932152.spfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()

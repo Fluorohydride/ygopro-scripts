@@ -10,7 +10,7 @@ function c96363153.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c96363153.filter(c)
-	return c:IsSetCard(0x17) and c:IsType(TYPE_TUNER) and c:IsAbleToHand()
+	return c:IsSetCard(0x1017) and c:IsType(TYPE_TUNER) and c:IsAbleToHand()
 end
 function c96363153.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,1)
