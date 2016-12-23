@@ -28,17 +28,17 @@ function c31111109.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 c31111109.material_setcode=0x8
-function c31111109.ffilter(c,cat)
-	return c:IsFusionSetCard(cat) and not c:IsHasEffect(6205579)
+function c31111109.ffilter(c,cat,fc)
+	return c:IsFusionSetCard(cat) and not c:IsHasEffect(6205579) and c:IsCanBeFusionMaterial(fc)
 end
 function c31111109.fuscon(e,g,gc,chkf)
 	if g==nil then return false end
 	if gc then return false end
-	local g1=g:Filter(c31111109.ffilter,nil,0x9)
+	local g1=g:Filter(c31111109.ffilter,nil,0x9,e:GetHandler())
 	local c1=g1:GetCount()
-	local g2=g:Filter(c31111109.ffilter,nil,0x1f)
+	local g2=g:Filter(c31111109.ffilter,nil,0x1f,e:GetHandler())
 	local c2=g2:GetCount()
-	local g3=g:Filter(c31111109.ffilter,nil,0x8)
+	local g3=g:Filter(c31111109.ffilter,nil,0x8,e:GetHandler())
 	local c3=g3:GetCount()
 	local ag=g1:Clone()
 	ag:Merge(g2)
@@ -48,9 +48,9 @@ function c31111109.fuscon(e,g,gc,chkf)
 end
 function c31111109.fusop(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 	if gc then return end
-	local g1=eg:Filter(c31111109.ffilter,nil,0x9)
-	local g2=eg:Filter(c31111109.ffilter,nil,0x1f)
-	local g3=eg:Filter(c31111109.ffilter,nil,0x8)
+	local g1=eg:Filter(c31111109.ffilter,nil,0x9,e:GetHandler())
+	local g2=eg:Filter(c31111109.ffilter,nil,0x1f,e:GetHandler())
+	local g3=eg:Filter(c31111109.ffilter,nil,0x8,e:GetHandler())
 	local ag=g1:Clone()
 	ag:Merge(g2)
 	ag:Merge(g3)
