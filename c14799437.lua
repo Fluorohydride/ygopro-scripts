@@ -45,7 +45,6 @@ function c14799437.spfilter(c)
 end
 function c14799437.spcon(e,c)
 	if c==nil then return true end
-	if c:IsHasEffect(EFFECT_NECRO_VALLEY) then return false end
 	local tp=c:GetControler()
 	local sum=0
 	for i=0,4 do
