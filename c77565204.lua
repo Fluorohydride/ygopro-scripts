@@ -5,7 +5,6 @@ function c77565204.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCost(c77565204.reg)
-	e1:SetTarget(c77565204.target)
 	c:RegisterEffect(e1)
 	--Turn 1
 	local e2=Effect.CreateEffect(c)
@@ -43,18 +42,6 @@ function c77565204.initial_effect(c)
 	e5:SetOperation(c77565204.desop2)
 	c:RegisterEffect(e5)
 end
-function c77565204.filter1(c,e)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
-end
-function c77565204.filter2(c,m)
-	return c:IsType(TYPE_FUSION) and c:CheckFusionMaterial(m) and not c:IsForbidden()
-end
-function c77565204.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then
-		local mg=Duel.GetMatchingGroup(c77565204.filter1,tp,LOCATION_DECK,0,nil,e)
-		return Duel.IsExistingMatchingCard(c77565204.filter2,tp,LOCATION_EXTRA,0,1,nil,mg)
-	end
-end
 function c77565204.reg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local c=e:GetHandler()
@@ -81,6 +68,12 @@ function c77565204.ctop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c77565204.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp and e:GetHandler():GetTurnCounter()==1
+end
+function c77565204.filter1(c,e)
+	return c:IsCanBeFusionMaterial() and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
+end
+function c77565204.filter2(c,m)
+	return c:IsType(TYPE_FUSION) and c:CheckFusionMaterial(m)
 end
 function c77565204.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
