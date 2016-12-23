@@ -35,7 +35,7 @@ function c3429238.initial_effect(c)
 	e3:SetOperation(c3429238.spop)
 	c:RegisterEffect(e3)
 end
-c3429238.material_setcode=0x17
+c3429238.material_setcode=0x1017
 function c3429238.tfilter(c)
 	return c:IsCode(56286179) or c:IsHasEffect(20932152)
 end

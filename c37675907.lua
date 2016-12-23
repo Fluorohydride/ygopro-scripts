@@ -51,7 +51,7 @@ function c37675907.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsCode(37675907) and bit.band(sumtype,SUMMON_TYPE_SYNCHRO)==SUMMON_TYPE_SYNCHRO
 end
 function c37675907.filter(c)
-	return c:GetLevel()>0 and c:IsSetCard(0x17) and c:IsAbleToGraveAsCost()
+	return c:GetLevel()>0 and c:IsSetCard(0x1017) and c:IsAbleToGraveAsCost()
 end
 function c37675907.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c37675907.filter,tp,LOCATION_DECK,0,1,nil) end
