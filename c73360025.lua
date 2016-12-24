@@ -28,13 +28,13 @@ function c73360025.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c73360025.mfilter0(c)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
+	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
 end
 function c73360025.mfilter1(c,e)
 	return not c:IsImmuneToEffect(e)
 end
 function c73360025.mfilter2(c,e)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
+	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
 end
 function c73360025.spfilter1(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsRace(RACE_FIEND) and (not f or f(c))

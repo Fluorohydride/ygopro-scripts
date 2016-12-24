@@ -20,7 +20,7 @@ function c45906428.filter2(c,e,tp,m,f,chkf)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
 function c45906428.filter3(c)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
+	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
 end
 function c45906428.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

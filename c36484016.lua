@@ -34,7 +34,7 @@ function c36484016.filter3(c,fusc,m,chkf)
 	return c:IsType(TYPE_SYNCHRO) and fusc:CheckFusionMaterial(m,c,chkf)
 end
 function c36484016.filter4(c)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
+	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
 end
 function c36484016.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

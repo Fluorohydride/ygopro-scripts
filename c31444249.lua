@@ -47,7 +47,7 @@ function c31444249.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c31444249.filter0(c)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
+	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
 end
 function c31444249.filter1(c,e)
 	return not c:IsImmuneToEffect(e)

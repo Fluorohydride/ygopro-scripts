@@ -30,7 +30,7 @@ function c6172122.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return se~=e:GetLabelObject()
 end
 function c6172122.filter0(c)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
+	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
 end
 function c6172122.filter1(c,e)
 	return not c:IsImmuneToEffect(e)

@@ -11,7 +11,7 @@ function c44394295.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c44394295.filter0(c)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
+	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
 end
 function c44394295.filter1(c,e)
 	return not c:IsImmuneToEffect(e)

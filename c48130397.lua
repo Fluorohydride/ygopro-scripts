@@ -11,10 +11,10 @@ function c48130397.initial_effect(c)
 	e1:SetOperation(c48130397.activate)
 	c:RegisterEffect(e1)
 end
-function c48130397.filter0(c,tp)
+function c48130397.filter0(c)
 	return c:IsFaceup() and c:IsCanBeFusionMaterial()
 end
-function c48130397.filter1(c,e,tp)
+function c48130397.filter1(c,e)
 	return c:IsFaceup() and c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
 end
 function c48130397.filter2(c,e,tp,m,f,chkf)
@@ -22,7 +22,7 @@ function c48130397.filter2(c,e,tp,m,f,chkf)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
 function c48130397.filter3(c,e)
-	return not c:IsImmuneToEffect(e)
+	return c:IsOnField() and not c:IsImmuneToEffect(e)
 end
 function c48130397.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,e:GetHandler()) end
@@ -31,7 +31,7 @@ end
 function c48130397.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
-		local mg1=Duel.GetFusionMaterial(tp)
+		local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)
 		local mg2=Duel.GetMatchingGroup(c48130397.filter0,tp,0,LOCATION_MZONE,nil)
 		mg1:Merge(mg2)
 		local res=Duel.IsExistingMatchingCard(c48130397.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
