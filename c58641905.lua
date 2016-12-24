@@ -3,7 +3,6 @@ function c58641905.initial_effect(c)
 	--reflect
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetCondition(c58641905.condition)
 	e1:SetOperation(c58641905.operation)
@@ -11,10 +10,7 @@ function c58641905.initial_effect(c)
 end
 function c58641905.condition(e,tp,eg,ep,ev,re,r,rp)
 	if not re:IsActiveType(TYPE_TRAP) then return false end
-	local ex,cg,ct,cp,cv=Duel.GetOperationInfo(ev,CATEGORY_DAMAGE)
-	if ex then return true end
-	ex,cg,ct,cp,cv=Duel.GetOperationInfo(ev,CATEGORY_RECOVER)
-	return ex
+	return aux.damcon1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c58641905.operation(e,tp,eg,ep,ev,re,r,rp)
 	local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
