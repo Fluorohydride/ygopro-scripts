@@ -81,11 +81,7 @@ function c47355498.discheck(ev,category,re,im0,im1,targets)
 		end
 	end
 	if tg and tg:GetCount()>0 then
-		if targets and targets:IsContains(re:GetHandler()) then
-			return tg:IsExists(c47355498.disfilter,1,nil,im0,im1)
-		else
-			return tg:IsExists(c47355498.disfilter,1,re:GetHandler(),im0,im1)
-		end
+		return tg:IsExists(c47355498.disfilter,1,nil,im0,im1)
 	end
 	return false
 end

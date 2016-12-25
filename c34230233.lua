@@ -25,6 +25,7 @@ function c34230233.spfilter(c)
 end
 function c34230233.spcon(e,c)
 	if c==nil then return true end
+	if c:IsHasEffect(EFFECT_NECRO_VALLEY) then return false end
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-1
 		and Duel.IsExistingMatchingCard(c34230233.spfilter,c:GetControler(),LOCATION_MZONE,0,1,nil)
 end
