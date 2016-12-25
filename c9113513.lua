@@ -14,12 +14,12 @@ function c9113513.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
 end
 function c9113513.filter1(c,e,tp,mg,f,chkf)
-	return c:IsCanBeFusionMaterial()
+	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial()
 		and mg:IsExists(c9113513.filter2,1,c,e,tp,c,f,chkf)
 end
 function c9113513.filter2(c,e,tp,mc,f,chkf)
 	local mg=Group.FromCards(c,mc)
-	return c:IsCanBeFusionMaterial()
+	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial()
 		and Duel.IsExistingMatchingCard(c9113513.ffilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,f,chkf)
 end
 function c9113513.ffilter(c,e,tp,m,f,chkf)
