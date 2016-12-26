@@ -33,11 +33,10 @@ function c78161960.activate(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.SelectYesNo(tp,aux.Stringid(78161960,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g1=Duel.SelectMatchingCard(tp,c78161960.filter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+		local g1=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c78161960.filter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g2=Duel.SelectMatchingCard(tp,c78161960.filter2,tp,LOCATION_GRAVE,0,1,1,g1:GetFirst(),e,tp)
+		local g2=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c78161960.filter2),tp,LOCATION_GRAVE,0,1,1,g1:GetFirst(),e,tp)
 		g1:Merge(g2)
-		if g1:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 		Duel.SpecialSummon(g1,0,tp,tp,false,false,POS_FACEUP)
 		local tc=g1:GetFirst()
 		while tc do

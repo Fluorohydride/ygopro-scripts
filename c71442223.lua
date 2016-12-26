@@ -34,8 +34,7 @@ function c71442223.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local tg=Group.FromCards(tc)
 		local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
-		local g=Duel.GetMatchingGroup(c71442223.spfilter2,1-tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,1-tp,tc)
-		if g:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
+		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c71442223.spfilter2),1-tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,1-tp,tc)
 		if ft>0 and g:GetCount()>0 then
 			if Duel.IsPlayerAffectedByEffect(1-tp,59822133) then ft=1 end
 			local sg=g:Clone()

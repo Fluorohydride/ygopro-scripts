@@ -1751,6 +1751,8 @@ function Auxiliary.qlifilter(e,te)
 	end
 end
 --filter for necro_valley test
-function Auxiliary.nvfilter(c)
-	return not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+function Auxiliary.NecroValleyFilter(f)
+	return	function(target,...)
+				return f(target,...) and not target:IsHasEffect(EFFECT_NECRO_VALLEY)
+			end
 end

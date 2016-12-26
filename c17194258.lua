@@ -27,13 +27,9 @@ function c17194258.activate(e,tp,eg,ep,ev,re,r,rp)
 	if cg:GetCount()==0 then return end
 	Duel.ConfirmCards(1-tp,cg)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c17194258.filter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,cg:GetFirst())
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c17194258.filter2),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,cg:GetFirst())
 	local tc=g:GetFirst()
 	if not tc then return end
-	if tc:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
-		Duel.NegateEffect(0)
-		return
-	end
 	if Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
 		Duel.ConfirmCards(1-tp,tc)
 		if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end

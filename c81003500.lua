@@ -42,8 +42,8 @@ function c81003500.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		if Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local sg=Duel.SelectMatchingCard(tp,c81003500.spfilter,tp,0,LOCATION_GRAVE,1,1,nil,e,tp)
-			if sg:GetCount()>0 and not sg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
+			local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c81003500.spfilter),tp,0,LOCATION_GRAVE,1,1,nil,e,tp)
+			if sg:GetCount()>0 then
 				Duel.SpecialSummon(sg,0,tp,1-tp,false,false,POS_FACEUP)
 			end
 		end

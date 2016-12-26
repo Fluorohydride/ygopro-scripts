@@ -30,7 +30,7 @@ function c12940613.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,1,0,0)
 end
 function c12940613.tdfilter2(c)
-	return c:IsType(TYPE_MONSTER) and c:IsAbleToDeck() and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToDeck()
 end
 function c12940613.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
@@ -52,7 +52,7 @@ function c12940613.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e2)
 		tc=g:GetNext()
 	end
-	local dg=Duel.GetMatchingGroup(c12940613.tdfilter2,tp,LOCATION_GRAVE,0,nil)
+	local dg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c12940613.tdfilter2),tp,LOCATION_GRAVE,0,nil)
 	if dg:GetCount()~=0 and Duel.SelectYesNo(tp,aux.Stringid(12940613,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)

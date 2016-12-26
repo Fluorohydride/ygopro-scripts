@@ -67,7 +67,6 @@ function c37910722.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=mg:Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()<mg:GetCount() then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<g:GetCount() then return end
-	if g:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 	local tc=g:GetFirst()
 	while tc do
 		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)

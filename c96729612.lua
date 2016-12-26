@@ -25,12 +25,11 @@ function c96729612.activate(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
-		local mg=Duel.GetMatchingGroup(c96729612.filter2,tp,LOCATION_GRAVE,0,nil)
+		local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c96729612.filter2),tp,LOCATION_GRAVE,0,nil)
 		if mg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(96729612,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local sg=mg:Select(tp,1,1,nil)
-			if sg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 			Duel.SendtoHand(sg,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,sg)
 		end

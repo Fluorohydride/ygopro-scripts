@@ -40,12 +40,12 @@ function c62742651.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,tp,dam)
 end
 function c62742651.spfilter(c,e,tp,atk)
-	return c:IsAttackBelow(atk) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsAttackBelow(atk) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c62742651.damop(e,tp,eg,ep,ev,re,r,rp)
 	local dam=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	if Duel.Damage(tp,dam,REASON_EFFECT)~=0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
-		local g=Duel.GetMatchingGroup(c62742651.spfilter,tp,LOCATION_GRAVE,0,nil,e,tp,dam)
+		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c62742651.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp,dam)
 		if g:GetCount()~=0 and Duel.SelectYesNo(tp,aux.Stringid(62742651,2)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,1,nil)

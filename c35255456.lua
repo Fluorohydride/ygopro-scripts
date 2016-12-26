@@ -29,14 +29,13 @@ function c35255456.cffilter(c)
 end
 function c35255456.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
-	local mg=Duel.GetMatchingGroup(c35255456.filter1,tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_MZONE,0,nil,e)
+	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c35255456.filter1),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_MZONE,0,nil,e)
 	local sg=Duel.GetMatchingGroup(c35255456.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg,chkf)
 	if sg:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
 		local mat=Duel.SelectFusionMaterial(tp,tc,mg,nil,chkf)
-		if mat:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 		local cf=mat:Filter(c35255456.cffilter,nil)
 		if cf:GetCount()>0 then
 			Duel.ConfirmCards(1-tp,cf)
