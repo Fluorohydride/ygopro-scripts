@@ -1,10 +1,20 @@
 --霧の王
 function c6614221.initial_effect(c)
-	--decrease tribute
+	--summon with 1 tribute
+	local e0=Effect.CreateEffect(c)
+	e0:SetDescription(aux.Stringid(6614221,0))
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetCode(EFFECT_SUMMON_PROC)
+	e0:SetCondition(c6614221.ttcon)
+	e0:SetOperation(c6614221.ttop)
+	e0:SetValue(SUMMON_TYPE_ADVANCE)
+	c:RegisterEffect(e0)
+	--summon with no tribute
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(6614221,1))
 	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_DECREASE_TRIBUTE)
-	e1:SetValue(0x2)
+	e1:SetCode(EFFECT_SUMMON_PROC)
+	e1:SetCondition(c6614221.ntcon)
 	c:RegisterEffect(e1)
 	--tribute check
 	local e2=Effect.CreateEffect(c)
@@ -12,7 +22,7 @@ function c6614221.initial_effect(c)
 	e2:SetCode(EFFECT_MATERIAL_CHECK)
 	e2:SetValue(c6614221.valcheck)
 	c:RegisterEffect(e2)
-	--give atk effect only when  summon
+	--give atk effect only when summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetCode(EFFECT_SUMMON_COST)
@@ -27,6 +37,20 @@ function c6614221.initial_effect(c)
 	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e4:SetTargetRange(1,1)
 	c:RegisterEffect(e4)
+end
+function c6614221.ntcon(e,c,minc)
+	if c==nil then return true end
+	return minc==0 and c:GetLevel()>4 and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
+end
+function c6614221.ttcon(e,c,minc)
+	if c==nil then return true end
+	return minc<=1 and Duel.CheckTribute(c,1)
+end
+function c6614221.ttop(e,tp,eg,ep,ev,re,r,rp,c)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local g=Duel.SelectTribute(tp,c,1,1)
+	c:SetMaterial(g)
+	Duel.Release(g, REASON_SUMMON+REASON_MATERIAL)
 end
 function c6614221.valcheck(e,c)
 	local g=c:GetMaterial()
