@@ -44,7 +44,7 @@ function c65646587.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c65646587.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
-	local mg1=GetFusionMaterial(tp):Filter(c65646587.filter1,nil,e)
+	local mg1=Duel.GetFusionMaterial(tp):Filter(c65646587.filter1,nil,e)
 	if Duel.GetFieldCard(tp,LOCATION_SZONE,6) and Duel.GetFieldCard(tp,LOCATION_SZONE,7) then
 		mg1:Merge(Duel.GetMatchingGroup(c65646587.filter0,tp,LOCATION_SZONE,0,nil,e))
 	end
