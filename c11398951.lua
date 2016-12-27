@@ -27,7 +27,7 @@ function c11398951.mfilterf(c,tp,mg,rc)
 	else return false end
 end
 function c11398951.mfilter(c)
-	return c:IsRace(RACE_WARRIOR+RACE_FAIRY) and c:IsAbleToDeck()
+	return c:GetLevel()>0 and c:IsRace(RACE_WARRIOR+RACE_FAIRY) and c:IsAbleToDeck()
 end
 function c11398951.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

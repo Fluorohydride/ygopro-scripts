@@ -32,12 +32,13 @@ function c45894482.spcon(e,c)
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c45894482.trigop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	local c=e:GetHandler()
+	if c:GetSummonType()==SUMMON_TYPE_SPECIAL+1
 		and e:GetLabelObject():IsActivatable(tp)
 		and Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c45894482.filter,1-tp,LOCATION_GRAVE,0,1,nil,e,1-tp)
-		and Duel.SelectYesNo(1-tp,aux.Stringid(45894482,1)) then
-		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+45894482,e,r,rp,tp,0)
+		and Duel.SelectEffectYesNo(1-tp,c) then
+		Duel.RaiseSingleEvent(c,EVENT_CUSTOM+45894482,e,r,rp,tp,0)
 	end
 end
 function c45894482.filter(c,e,tp)
