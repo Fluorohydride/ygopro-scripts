@@ -19,7 +19,7 @@ function c1621413.initial_effect(c)
 	--disable
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(1621413,1))
-	e2:SetCategory(CATEGORY_DESTROY+CATEGORY_DISABLE+CATEGORY_SPECIAL_SUMMON)
+	e2:SetCategory(CATEGORY_DESTROY+CATEGORY_NEGATE+CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
@@ -66,7 +66,7 @@ function c1621413.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c1621413.discon(e,tp,eg,ep,ev,re,r,rp)
-	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and rp~=tp and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainDisablable(ev)
+	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and rp~=tp and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
 		and e:GetHandler():GetOverlayGroup():IsExists(Card.IsCode,1,nil,16195942)
 end
 function c1621413.distg(e,tp,eg,ep,ev,re,r,rp,chk)
