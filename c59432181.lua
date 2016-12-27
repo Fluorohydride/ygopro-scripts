@@ -9,17 +9,17 @@ function c59432181.initial_effect(c)
 	e1:SetOperation(c59432181.activate)
 	c:RegisterEffect(e1)
 end
-function c59432181.filter(c)
+function c59432181.filter(c,tp)
 	return c:IsFaceup() and Duel.IsExistingMatchingCard(c59432181.cfilter,tp,LOCATION_EXTRA,0,1,nil,c)
 end
 function c59432181.cfilter(c,tc)
 	return c:IsType(TYPE_FUSION) and not c:IsCode(tc:GetFusionCode())
 end
 function c59432181.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and chkc:IsFaceup() end
-	if chk==0 then return Duel.IsExistingTarget(c59432181.filter,tp,LOCATION_MZONE,0,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c59432181.filter(chkc,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c59432181.filter,tp,LOCATION_MZONE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,0,1,1,nil)
+	Duel.SelectTarget(tp,c59432181.filter,tp,LOCATION_MZONE,0,1,1,nil,tp)
 end
 function c59432181.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
