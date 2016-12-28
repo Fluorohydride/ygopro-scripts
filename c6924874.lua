@@ -15,11 +15,11 @@ function c6924874.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCode(EFFECT_SET_BASE_ATTACK)
 	e2:SetCondition(c6924874.adcon)
-	e2:SetValue(2400)
+	e2:SetValue(c6924874.atkval)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_SET_BASE_DEFENSE)
-	e3:SetValue(1200)
+	e3:SetValue(c6924874.defval)
 	c:RegisterEffect(e3)
 	--destroy
 	local e4=Effect.CreateEffect(c)
@@ -42,6 +42,12 @@ function c6924874.atlimit(e,c)
 end
 function c6924874.adcon(e)
 	return Duel.IsExistingMatchingCard(c6924874.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,2,nil)
+end
+function c6924874.atkval(e,c)
+	return c:GetBaseAttack()*2
+end
+function c6924874.defval(e,c)
+	return c:GetBaseDefense()*2
 end
 function c6924874.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c6924874.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,3,nil)
