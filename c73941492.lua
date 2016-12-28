@@ -1,5 +1,4 @@
 --調弦の魔術師
---Tune Magician
 --fusion limit not implemented
 --xyz limit by edo9300
 function c73941492.initial_effect(c)
@@ -22,15 +21,15 @@ function c73941492.initial_effect(c)
 		end
 		local og2=og:Filter(c73941492.xyzfil3,nil)
 		if og:IsExists(Card.IsCode,1,nil,73941492) then
-			if og:IsExists(c73941492.xyzfil,minc,nil,c,lv) and og2:GetCount()>=minc then
+			if og:IsExists(c73941492.xyzfil,minc,nil,c,lv) and xmck(c,f,lv,minc,maxc,og2) then
 				if Duel.SelectYesNo(tp,aux.Stringid(73941492,1)) then
 					og=og:Filter(c73941492.xyzfil,nil,c,lv)
 				else 
 					og=og2
 				end
-			elseif og:IsExists(c73941492.xyzfil,minc,nil,c,lv) and og2:GetCount()<minc then
+			elseif og:IsExists(c73941492.xyzfil,minc,nil,c,lv) and not xmck(c,f,lv,minc,maxc,og2) then
 				og=og:Filter(c73941492.xyzfil,nil,c,lv)
-			elseif not og:IsExists(c73941492.xyzfil,minc,nil,c,lv) and og2:GetCount()>=minc then
+			elseif not og:IsExists(c73941492.xyzfil,minc,nil,c,lv) and xmck(c,f,lv,minc,maxc,og2) then
 				og=og2
 			end
 		end
