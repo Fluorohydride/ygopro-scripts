@@ -47,8 +47,7 @@ function c44508094.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c44508094.operation(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateActivation(ev)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 	e:GetHandler():RegisterFlagEffect(44508094,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,0)

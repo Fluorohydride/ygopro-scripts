@@ -59,8 +59,7 @@ function c61257789.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c61257789.negop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateActivation(ev)
-	if re:GetHandler():IsRelateToEffect(re)then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re)then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 	e:GetHandler():RegisterFlagEffect(61257789,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,0)

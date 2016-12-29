@@ -68,8 +68,7 @@ function c74203495.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCondition(c74203495.rmcon)
 	e1:SetOperation(c74203495.rmop)
 	Duel.RegisterEffect(e1,tp)
-	Duel.NegateActivation(ev)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

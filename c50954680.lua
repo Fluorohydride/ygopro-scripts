@@ -38,10 +38,9 @@ function c50954680.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c50954680.operation(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateActivation(ev)
 	local c=e:GetHandler()
 	local rc=re:GetHandler()
-	if rc:IsRelateToEffect(re) and Duel.Destroy(rc,REASON_EFFECT)~=0 and rc:GetBaseAttack()>=0
+	if Duel.NegateActivation(ev) and rc:IsRelateToEffect(re) and Duel.Destroy(rc,REASON_EFFECT)~=0 and rc:GetBaseAttack()>=0
 		and c:IsRelateToEffect(e) and c:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

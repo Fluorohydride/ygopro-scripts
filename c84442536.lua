@@ -49,8 +49,7 @@ function c84442536.activate(e,tp,eg,ep,ev,re,r,rp)
 	if sel==0 then
 		Duel.ChangeChainOperation(ev,c84442536.repop)
 	else
-		Duel.NegateActivation(ev)
-		if re:GetHandler():IsRelateToEffect(re) then
+		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 			Duel.Destroy(eg,REASON_EFFECT)
 		end
 	end

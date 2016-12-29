@@ -25,10 +25,13 @@ function c89563150.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 	local g=Duel.GetMatchingGroup(c89563150.dfilter,tp,0,LOCATION_ONFIELD,nil)
+	g:Merge(eg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c89563150.disop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateActivation(ev)
-	local g=Duel.GetMatchingGroup(c89563150.dfilter,tp,0,LOCATION_ONFIELD,nil)
-	Duel.Destroy(g,REASON_EFFECT)
+	if Duel.NegateActivation(ev) then
+		local g=Duel.GetMatchingGroup(c89563150.dfilter,tp,0,LOCATION_ONFIELD,nil)
+		g:Merge(eg)
+		Duel.Destroy(g,REASON_EFFECT)
+	end
 end

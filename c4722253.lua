@@ -66,8 +66,7 @@ end
 function c4722253.negop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsExistingMatchingCard(c4722253.cfilter,tp,LOCATION_MZONE,0,1,nil)
 		or not Duel.IsExistingMatchingCard(c4722253.cfilter3,tp,LOCATION_MZONE,0,1,nil) then return end
-	Duel.NegateActivation(ev)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

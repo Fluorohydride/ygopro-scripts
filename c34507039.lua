@@ -22,8 +22,7 @@ function c34507039.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c34507039.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ec=re:GetHandler()
-	Duel.NegateActivation(ev)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		ec:CancelToGrave()
 		Duel.SendtoDeck(ec,nil,2,REASON_EFFECT)
 	end

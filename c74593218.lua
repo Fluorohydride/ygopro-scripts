@@ -35,8 +35,7 @@ function c74593218.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c74593218.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	Duel.NegateActivation(ev)
-	if re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)>0 then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)>0 then
 		Duel.BreakEffect()
 		if c:IsRelateToEffect(e) and c:IsFaceup() then
 			local e1=Effect.CreateEffect(c)

@@ -61,8 +61,7 @@ function c53262004.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c53262004.disfilter,tp,LOCATION_EXTRA,0,1,1,nil)
 	if Duel.SendtoDeck(g,nil,2,REASON_EFFECT)~=0 then
-		Duel.NegateActivation(ev)
-		if re:GetHandler():IsRelateToEffect(re) then
+		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 			Duel.Destroy(eg,REASON_EFFECT)
 		end
 	end

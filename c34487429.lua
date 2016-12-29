@@ -87,8 +87,7 @@ function c34487429.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c34487429.disop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsExistingMatchingCard(c34487429.filter1,tp,LOCATION_SZONE,0,3,nil) then return end
-	Duel.NegateActivation(ev)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end
