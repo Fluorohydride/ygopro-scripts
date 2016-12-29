@@ -6,7 +6,7 @@ function c73941492.initial_effect(c)
 	Duel.CheckXyzMaterial=function(c,f,lv,minc,maxc,og)
 		local og2=Group.CreateGroup()
 		if not og then
-			og=Duel.GetFieldGroup(tp,LOCATION_MZONE,LOCATION_MZONE)
+			og=Duel.GetMatchingGroup(c73941492.xyzfil2,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c:GetControler())
 		end
 		if og:IsExists(Card.IsCode,1,nil,73941492) then
 			og2=og:Filter(c73941492.xyzfil3,nil)
@@ -17,19 +17,19 @@ function c73941492.initial_effect(c)
 	local xsel=Duel.SelectXyzMaterial
 	Duel.SelectXyzMaterial=function(tp,c,f,lv,minc,maxc,og)
 		if not og then
-			og=Duel.GetFieldGroup(tp,LOCATION_MZONE,LOCATION_MZONE):Filter(c73941492.xyzfil2,nil,c,lv,tp)
+			og=Duel.GetMatchingGroup(c73941492.xyzfil2,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
 		end
 		local og2=og:Filter(c73941492.xyzfil3,nil)
 		if og:IsExists(Card.IsCode,1,nil,73941492) then
-			if og:IsExists(c73941492.xyzfil,minc,nil,c,lv) and xmck(c,f,lv,minc,maxc,og2) then
+			if xmck(c,f,lv,minc,maxc,og:Filter(c73941492.xyzfil,nil,c,lv)) and xmck(c,f,lv,minc,maxc,og2) then
 				if Duel.SelectYesNo(tp,aux.Stringid(73941492,1)) then
 					og=og:Filter(c73941492.xyzfil,nil,c,lv)
 				else 
 					og=og2
 				end
-			elseif og:IsExists(c73941492.xyzfil,minc,nil,c,lv) and not xmck(c,f,lv,minc,maxc,og2) then
+			elseif xmck(c,f,lv,minc,maxc,og:Filter(c73941492.xyzfil,nil,c,lv)) and not xmck(c,f,lv,minc,maxc,og2) then
 				og=og:Filter(c73941492.xyzfil,nil,c,lv)
-			elseif not og:IsExists(c73941492.xyzfil,minc,nil,c,lv) and xmck(c,f,lv,minc,maxc,og2) then
+			elseif not xmck(c,f,lv,minc,maxc,og:Filter(c73941492.xyzfil,nil,c,lv)) and xmck(c,f,lv,minc,maxc,og2) then
 				og=og2
 			end
 		end
@@ -83,8 +83,8 @@ end
 function c73941492.xyzfil(c,xyzc,lv)
 	return c:IsSetCard(0x98) and c:IsXyzLevel(xyzc,lv) and c:IsType(TYPE_PENDULUM)
 end
-function c73941492.xyzfil2(c,xyzc,lv,tp)
-	return c:IsXyzLevel(xyzc,lv) and c:GetControler()==tp or (c:IsHasEffect(EFFECT_XYZ_MATERIAL) and c:GetControler()~=tp)
+function c73941492.xyzfil2(c,tp)
+	return c:IsFaceup() and c:GetControler()==tp or (c:IsHasEffect(EFFECT_XYZ_MATERIAL) and c:GetControler()~=tp)
 end
 function c73941492.xyzfil3(c)
 	return not c:IsCode(73941492)
