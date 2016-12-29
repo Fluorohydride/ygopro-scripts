@@ -55,6 +55,7 @@ function c8719957.negcon(e,tp,eg,ep,ev,re,r,rp)
 		and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainDisablable(ev) 
 end
 function c8719957.negop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateEffect(ev)
-	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
+	if Duel.NegateEffect(ev) then
+		Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
+	end
 end

@@ -14,8 +14,7 @@ end
 function c44155002.disop(e,tp,eg,ep,ev,re,r,rp)
 	if ep==tp or Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)~=Duel.GetFieldGroupCount(tp,0,LOCATION_HAND) then return end
 	local rc=re:GetHandler()
-	Duel.NegateEffect(ev)
-	if rc:IsRelateToEffect(re) then
+	if Duel.NegateEffect(ev) and rc:IsRelateToEffect(re) then
 		Duel.Destroy(rc,REASON_EFFECT)
 	end
 end

@@ -29,9 +29,10 @@ end
 function c11067666.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SelectYesNo(tp,aux.Stringid(11067666,0)) then
 		e:GetHandler():RegisterFlagEffect(11067666,RESET_EVENT+0x1fe0000,0,1)
-		Duel.NegateEffect(ev)
-		Duel.BreakEffect()
-		Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+		if Duel.NegateEffect(ev) then
+			Duel.BreakEffect()
+			Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+		end
 	end
 end
 function c11067666.rmcon(e,tp,eg,ep,ev,re,r,rp)
