@@ -1,6 +1,40 @@
 --調弦の魔術師
---fusion and xyz limit not implemented
+--fusion limit not implemented
+--xyz limit by edo9300
 function c73941492.initial_effect(c)
+	local xmck=Duel.CheckXyzMaterial
+	Duel.CheckXyzMaterial=function(c,f,lv,minc,maxc,og)
+		local og2=Group.CreateGroup()
+		if not og then
+			og=Duel.GetMatchingGroup(c73941492.xyzfil2,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c:GetControler())
+		end
+		if og:IsExists(Card.IsCode,1,nil,73941492) then
+			og2=og:Filter(c73941492.xyzfil3,nil)
+			og=og:Filter(c73941492.xyzfil,nil,c,lv)
+		end		
+		return xmck(c,f,lv,minc,maxc,og) or xmck(c,f,lv,minc,maxc,og2)
+	end
+	local xsel=Duel.SelectXyzMaterial
+	Duel.SelectXyzMaterial=function(tp,c,f,lv,minc,maxc,og)
+		if not og then
+			og=Duel.GetMatchingGroup(c73941492.xyzfil2,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
+		end
+		local og2=og:Filter(c73941492.xyzfil3,nil)
+		if og:IsExists(Card.IsCode,1,nil,73941492) then
+			if xmck(c,f,lv,minc,maxc,og:Filter(c73941492.xyzfil,nil,c,lv)) and xmck(c,f,lv,minc,maxc,og2) then
+				if Duel.SelectYesNo(tp,aux.Stringid(73941492,1)) then
+					og=og:Filter(c73941492.xyzfil,nil,c,lv)
+				else 
+					og=og2
+				end
+			elseif xmck(c,f,lv,minc,maxc,og:Filter(c73941492.xyzfil,nil,c,lv)) and not xmck(c,f,lv,minc,maxc,og2) then
+				og=og:Filter(c73941492.xyzfil,nil,c,lv)
+			elseif not xmck(c,f,lv,minc,maxc,og:Filter(c73941492.xyzfil,nil,c,lv)) and xmck(c,f,lv,minc,maxc,og2) then
+				og=og2
+			end
+		end
+		return xsel(tp,c,f,lv,minc,maxc,og)
+	end
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
 	--atk&def
@@ -45,6 +79,15 @@ function c73941492.initial_effect(c)
 	e7:SetTarget(c73941492.sptg)
 	e7:SetOperation(c73941492.spop)
 	c:RegisterEffect(e7)
+end
+function c73941492.xyzfil(c,xyzc,lv)
+	return c:IsSetCard(0x98) and c:IsXyzLevel(xyzc,lv) and c:IsType(TYPE_PENDULUM)
+end
+function c73941492.xyzfil2(c,tp)
+	return c:IsFaceup() and c:GetControler()==tp or (c:IsHasEffect(EFFECT_XYZ_MATERIAL) and c:GetControler()~=tp)
+end
+function c73941492.xyzfil3(c)
+	return not c:IsCode(73941492)
 end
 function c73941492.tuner_filter(c)
 	return c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM)
