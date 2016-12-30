@@ -26,6 +26,7 @@ function c46008667.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
 	e3:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
+	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e3:SetValue(aux.tgoval)
 	c:RegisterEffect(e3)
 	--Equip limit

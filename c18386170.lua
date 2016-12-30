@@ -48,7 +48,7 @@ function c18386170.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c18386170.tgval(e,re,rp)
-	return rp~=e:GetHandlerPlayer() and not re:GetHandler():IsImmuneToEffect(e)
+	return rp~=e:GetHandlerPlayer()
 end
 function c18386170.cfilter(c)
 	return c:IsSetCard(0xb1) and c:IsAbleToGraveAsCost()
