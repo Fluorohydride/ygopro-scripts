@@ -31,26 +31,14 @@ function c11221418.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetMatchingGroup(Card.IsAbleToHand,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		if g:GetCount()==0 then return end
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
-		--count
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PHASE_START+PHASE_END)
-		e1:SetOperation(c11221418.countop)
-		if Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_END then
-			e1:SetLabel(1)
-		else
-			e1:SetLabel(0)
-		end
-		e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
-		e1:SetLabelObject(tc)
-		Duel.RegisterEffect(e1,tp)
+		local rct=Duel.GetTurnCount(tp)+1
+		if Duel.GetTurnPlayer()~=tp then rct=rct+1 end
 		--cannot summon/flip summon/sp summon
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_FIELD)
 		e2:SetCode(EFFECT_CANNOT_SUMMON)
 		e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		e2:SetTargetRange(1,1)
-		e2:SetLabelObject(e1)
 		e2:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
 		Duel.RegisterEffect(e2,tp)
 		local e3=e2:Clone()
@@ -84,6 +72,7 @@ function c11221418.activate(e,tp,eg,ep,ev,re,r,rp)
 		e7:SetCountLimit(1)
 		e7:SetCondition(c11221418.resetcon)
 		e7:SetOperation(c11221418.resetop)
+		e7:SetLabel(rct)
 		e7:SetLabelObject(e6)
 		e7:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
 		Duel.RegisterEffect(e7,tp)
@@ -98,24 +87,14 @@ function c11221418.activate(e,tp,eg,ep,ev,re,r,rp)
 		e8:SetCondition(c11221418.spcon)
 		e8:SetTarget(c11221418.sptg)
 		e8:SetOperation(c11221418.spop)
-		e8:SetLabelObject(e1)
+		e8:SetLabel(rct)
+		e8:SetLabelObject(tc)
 		e8:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
 		Duel.RegisterEffect(e8,tp)
 	end
 end
-function c11221418.countop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetTurnPlayer()~=tp then return end
-	local ct=e:GetLabel()
-	e:SetLabel(ct+1)
-end
 function c11221418.resetcon(e,tp,eg,ep,ev,re,r,rp)
-	local e6=e:GetLabelObject()
-	local e5=e6:GetLabelObject()
-	local e4=e5:GetLabelObject()
-	local e3=e4:GetLabelObject()
-	local e2=e3:GetLabelObject()
-	local e1=e2:GetLabelObject()
-	return Duel.GetTurnPlayer()==tp and e1:GetLabel()==2
+	return Duel.GetTurnPlayer()==tp and e:GetLabel()==Duel.GetTurnCount(tp)
 end
 function c11221418.resetop(e,tp,eg,ep,ev,re,r,rp)
 	local e6=e:GetLabelObject()
@@ -131,7 +110,7 @@ function c11221418.resetop(e,tp,eg,ep,ev,re,r,rp)
 	e:Reset()
 end
 function c11221418.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp and e:GetLabelObject():GetLabel()==2
+	return Duel.GetTurnPlayer()==tp and e:GetLabel()==Duel.GetTurnCount(tp)
 end
 function c11221418.mfilter(c)
 	return c:IsSetCard(0x88) and c:IsType(TYPE_MONSTER)
@@ -139,14 +118,14 @@ end
 function c11221418.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c11221418.mfilter(chkc) end
 	if chk==0 then return true end
-	local tc=e:GetLabelObject():GetLabelObject()
+	local tc=e:GetLabelObject()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local g=Duel.SelectTarget(tp,c11221418.mfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,g:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,tc,1,0,0)
 end
 function c11221418.spop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=e:GetLabelObject():GetLabelObject()
+	local tc=e:GetLabelObject()
 	local mc=Duel.GetFirstTarget()
 	if mc and tc:GetFlagEffect(11221418)~=0 and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		if mc:IsRelateToEffect(e) then
