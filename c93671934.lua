@@ -41,8 +41,9 @@ function c93671934.filter(c)
 	return c:GetEquipTarget()~=nil or c:IsReason(REASON_LOST_TARGET)
 end
 function c93671934.damcon(e,tp,eg,ep,ev,re,r,rp)
-	local flag=0
 	local g=eg:Filter(c93671934.filter,nil)
+	if g:GetCount()==0 then return false end
+	local flag=0
 	if g:IsExists(Card.IsControler,1,nil,0) then flag=flag+1 end
 	if g:IsExists(Card.IsControler,1,nil,1) then flag=flag+2 end
 	e:SetLabel(({0,1,PLAYER_ALL})[flag])

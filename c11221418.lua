@@ -114,7 +114,7 @@ function c11221418.resetcon(e,tp,eg,ep,ev,re,r,rp)
 	local e4=e5:GetLabelObject()
 	local e3=e4:GetLabelObject()
 	local e2=e3:GetLabelObject()
-	local e1:e2:GetLabelObject()
+	local e1=e2:GetLabelObject()
 	return Duel.GetTurnPlayer()==tp and e1:GetLabel()==2
 end
 function c11221418.resetop(e,tp,eg,ep,ev,re,r,rp)
