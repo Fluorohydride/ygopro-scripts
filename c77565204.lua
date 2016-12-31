@@ -73,7 +73,7 @@ function c77565204.filter1(c,e)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
 end
 function c77565204.filter2(c,m)
-	return c:IsType(TYPE_FUSION) and c:CheckFusionMaterial(m)
+	return c:IsFusionSummonableCard() and c:CheckFusionMaterial(m)
 end
 function c77565204.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
