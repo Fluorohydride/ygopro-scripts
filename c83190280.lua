@@ -40,6 +40,7 @@ function c83190280.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
+		local fid=c:GetFieldID()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
@@ -58,12 +59,13 @@ function c83190280.spop(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 		e3:SetReset(RESET_EVENT+0x1fe0000)
 		tc:RegisterEffect(e3)
-		tc:RegisterFlagEffect(83190280,RESET_EVENT+0x1fe0000,0,1)
+		tc:RegisterFlagEffect(83190280,RESET_EVENT+0x1fe0000,0,1,fid)
 		local e4=Effect.CreateEffect(c)
 		e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e4:SetCode(EVENT_PHASE+PHASE_END)
 		e4:SetCountLimit(1)
 		e4:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+		e4:SetLabel(fid)
 		e4:SetLabelObject(tc)
 		e4:SetCondition(c83190280.descon)
 		e4:SetOperation(c83190280.desop)
@@ -73,7 +75,7 @@ function c83190280.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c83190280.descon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	if tc:GetFlagEffect(83190280)~=0 then
+	if tc:GetFlagEffectLabel(83190280)==e:GetLabel() then
 		return true
 	else
 		e:Reset()
