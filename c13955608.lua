@@ -37,7 +37,7 @@ end
 function c13955608.atkcon(e)
 	local con=0
 	for i=0,4 do
-		local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_MZONE,i)
+		local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_ONFIELD,i)
 		if tc and tc:IsFaceup() then
 			local code=tc:GetCode()
 			if code==13839120 then con=bit.bor(con,1)
