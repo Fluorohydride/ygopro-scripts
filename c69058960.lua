@@ -72,10 +72,10 @@ function c69058960.filter(c)
 	return c:IsFaceup() and c:IsCode(95442074)
 end
 function c69058960.indcon(e)
-	return Duel.IsExistingMatchingCard(c69058960.filter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
+	return Duel.IsExistingMatchingCard(c69058960.filter,e:GetHandlerPlayer(),LOCATION_ONFIELD,0,1,nil)
 		and e:GetHandler():GetOverlayCount()~=0
 end
 function c69058960.refcon(e)
-	return Duel.IsExistingMatchingCard(c69058960.filter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
+	return Duel.IsExistingMatchingCard(c69058960.filter,e:GetHandlerPlayer(),LOCATION_ONFIELD,0,1,nil)
 		and Duel.GetAttackTarget()==e:GetHandler()
 end
