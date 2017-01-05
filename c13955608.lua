@@ -10,8 +10,8 @@ function c13955608.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c13955608.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and 
-		Duel.IsPlayerCanSpecialSummonMonster(tp,13955608,0,0x21,0,2000,4,RACE_MACHINE,ATTRIBUTE_EARTH) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,13955608,0,0x21,0,2000,4,RACE_MACHINE,ATTRIBUTE_EARTH) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c13955608.activate(e,tp,eg,ep,ev,re,r,rp)
@@ -34,18 +34,12 @@ function c13955608.activate(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1,true)
 	Duel.SpecialSummonComplete()
 end
+function c13955608.cfilter(c,code)
+	return c:IsFaceup() and c:IsCode(code)
+end
 function c13955608.atkcon(e)
-	local con=0
-	for i=0,4 do
-		local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_MZONE,i)
-		if tc and tc:IsFaceup() then
-			local code=tc:GetCode()
-			if code==13839120 then con=bit.bor(con,1)
-			elseif code==86445415 then con=bit.bor(con,2)
-			elseif code==41172955 then con=bit.bor(con,4)
-			end
-			if con==7 then return true end
-		end
-	end
-	return false
+	local tp=e:GetHandlerPlayer()
+	return Duel.IsExistingMatchingCard(c13955608.cfilter,tp,LOCATION_ONFIELD,0,1,nil,41172955)
+		and Duel.IsExistingMatchingCard(c13955608.cfilter,tp,LOCATION_ONFIELD,0,1,nil,86445415)
+		and Duel.IsExistingMatchingCard(c13955608.cfilter,tp,LOCATION_ONFIELD,0,1,nil,13839120)
 end
