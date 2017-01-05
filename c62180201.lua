@@ -46,8 +46,8 @@ function c62180201.atktg(e,c)
 	return c~=e:GetHandler()
 end
 function c62180201.atkval(e,c)
-	return c:GetAttack()/2
+	return math.ceil(c:GetAttack()/2)
 end
 function c62180201.defval(e,c)
-	return c:GetDefense()/2
+	return math.ceil(c:GetDefense()/2)
 end
