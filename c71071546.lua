@@ -16,6 +16,7 @@ function c71071546.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCost(c71071546.atkcost)
+	e2:SetTarget(c71071546.atktg)
 	e2:SetOperation(c71071546.atkop)
 	c:RegisterEffect(e2)
 	--salvage
@@ -40,6 +41,9 @@ function c71071546.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=e:GetHandler():GetCounter(0x2c)
 	if chk==0 then return ct>0 and e:GetHandler():IsCanRemoveCounter(tp,0x2c,ct,REASON_COST) end
 	e:GetHandler():RemoveCounter(tp,0x2c,ct,REASON_COST)
+end
+function c71071546.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return e:GetHandler():GetAttack()~=2000 end
 end
 function c71071546.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
