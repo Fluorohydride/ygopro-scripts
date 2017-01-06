@@ -13,7 +13,7 @@ function c69711728.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_ACTIVATE)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
-	e2:SetCost(c69711728.cost)
+	e2:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)
 	e2:SetTarget(c69711728.target)
 	e2:SetOperation(c69711728.activate)
 	c:RegisterEffect(e2)
@@ -40,10 +40,6 @@ end
 function c69711728.filter(c,lv,e,tp)
 	return c:GetLevel()>0 and c:GetLevel()<lv and c:IsSetCard(0xe1)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-end
-function c69711728.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(69711728)==0 end
-	e:GetHandler():RegisterFlagEffect(69711728,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c69711728.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c69711728.filter(chkc,eg:GetFirst():GetLevel(),e,tp) end
