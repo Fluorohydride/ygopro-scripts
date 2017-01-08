@@ -13,7 +13,7 @@ function c35255456.filter1(c,e)
 	return c:IsAbleToDeck() and c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
 end
 function c35255456.filter2(c,e,tp,m,chkf)
-	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x3008) and c:IsSetCard(0x9) and c:GetCode()~=31111109 
+	return c:IsSetCard(0x3008) and aux.IsMaterialListCode(c,89943723)
 		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
 function c35255456.target(e,tp,eg,ep,ev,re,r,rp,chk)
