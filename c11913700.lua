@@ -34,10 +34,10 @@ function c11913700.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c11913700.eqlimit(e,c)
-	return c:IsSetCard(0x9) and c:IsType(TYPE_FUSION) and not c:IsCode(31111109)
+	return aux.IsMaterialListCode(c,89943723)
 end
 function c11913700.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x9) and c:IsType(TYPE_FUSION) and not c:IsCode(31111109)
+	return c:IsFaceup() and aux.IsMaterialListCode(c,89943723)
 end
 function c11913700.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c11913700.filter(chkc) end
