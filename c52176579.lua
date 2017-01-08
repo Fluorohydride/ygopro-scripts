@@ -66,7 +66,7 @@ end
 function c52176579.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c52176579.tgfilter,tp,LOCATION_DECK,0,1,1,nil,tc)
+	local g=Duel.SelectMatchingCard(tp,c52176579.tgfilter,tp,LOCATION_DECK,0,1,1,nil,tc:GetLevel())
 	if g:GetCount()>0 then
 		local gc=g:GetFirst()
 		if Duel.SendtoGrave(gc,REASON_EFFECT)~=0 and gc:IsLocation(LOCATION_GRAVE) and tc:IsRelateToEffect(e) and tc:IsFaceup() then

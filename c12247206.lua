@@ -34,9 +34,6 @@ end
 function c12247206.selfilter(c,e,tp)
 	return c:IsFaceup() and Duel.IsExistingMatchingCard(c12247206.filter,tp,0x13,0,1,nil,c,e,tp)
 end
-function c12247206.rmfilter(c)
-	return c:IsLocation(LOCATION_MZONE+LOCATION_GRAVE)
-end
 function c12247206.sp(g,tp,pos)
 	local sc=g:GetFirst()
 	while sc do
@@ -56,7 +53,7 @@ function c12247206.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local fg=g:Select(tp,ft1,ft1,nil)
 			c12247206.sp(fg,tp,POS_FACEUP_ATTACK)
-			g:Remove(c12247206.rmfilter,nil)
+			g:Sub(fg)
 			gg:Merge(g)
 		end
 	end
@@ -73,7 +70,7 @@ function c12247206.activate(e,tp,eg,ep,ev,re,r,rp)
 				Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SPSUMMON)
 				local fg=g2:Select(1-tp,ft2,ft2,nil)
 				c12247206.sp(fg,1-tp,POS_FACEUP)
-				g2:Remove(c12247206.rmfilter,nil)
+				g2:Sub(fg)
 				gg:Merge(g2)
 			end
 		end
