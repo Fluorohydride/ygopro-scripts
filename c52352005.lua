@@ -1,7 +1,7 @@
 --XX－セイバー ガトムズ
 function c52352005.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_EARTH),1)
+	aux.AddSynchroProcedure(c,nil,c52352005.matfilter,1)
 	c:EnableReviveLimit()
 	--handes
 	local e1=Effect.CreateEffect(c)
@@ -30,6 +30,9 @@ function c52352005.valcheck(e,c)
 		e1:SetReset(RESET_EVENT+0xfe0000+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 	end
+end
+function c52352005.matfilter(c)
+	return not c:IsHasEffect(EFFECT_SYNCHRO_MATERIAL_CUSTOM) and c:IsAttribute(ATTRIBUTE_EARTH)
 end
 function c52352005.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0x100d) end
