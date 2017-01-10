@@ -20,7 +20,7 @@ function c87246309.initial_effect(c)
 	e3:SetCategory(CATEGORY_TOGRAVE)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
-	e3:SetCode(EVENT_BE_MATERIAL)
+	e3:SetCode(EVENT_TO_GRAVE)
 	e3:SetCountLimit(1,87246310)
 	e3:SetCondition(c87246309.tgcon)
 	e3:SetTarget(c87246309.tgtg)
@@ -45,7 +45,8 @@ function c87246309.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c87246309.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsLocation(LOCATION_GRAVE) and r==REASON_FUSION and c:GetReasonCard():IsSetCard(0xad)
+	return bit.band(r,REASON_MATERIAL+REASON_FUSION)==REASON_MATERIAL+REASON_FUSION
+		and c:GetReasonCard():IsSetCard(0xad)
 end
 function c87246309.tgfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_MONSTER)

@@ -6,7 +6,7 @@ function c38124994.initial_effect(c)
 	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
-	e1:SetCode(EVENT_BE_MATERIAL)
+	e1:SetCode(EVENT_TO_GRAVE)
 	e1:SetCountLimit(1,38124994)
 	e1:SetCondition(c38124994.condition)
 	e1:SetTarget(c38124994.target)
@@ -14,7 +14,7 @@ function c38124994.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c38124994.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_FUSION
+	return bit.band(r,REASON_MATERIAL+REASON_FUSION)==REASON_MATERIAL+REASON_FUSION
 end
 function c38124994.filter(c)
 	return (c:IsCode(30068120) or (c:IsSetCard(0xa9) and c:IsType(TYPE_MONSTER) and not c:IsCode(38124994)))

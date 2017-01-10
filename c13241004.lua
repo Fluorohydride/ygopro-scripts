@@ -17,7 +17,7 @@ function c13241004.initial_effect(c)
 	e2:SetCategory(CATEGORY_DRAW+CATEGORY_HANDES)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_PLAYER_TARGET)
-	e2:SetCode(EVENT_BE_MATERIAL)
+	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetCountLimit(1,13241004)
 	e2:SetCondition(c13241004.drcon)
 	e2:SetTarget(c13241004.drtg)
@@ -42,7 +42,8 @@ function c13241004.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c13241004.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsLocation(LOCATION_GRAVE) and r==REASON_FUSION and c:GetReasonCard():IsSetCard(0xad)
+	return bit.band(r,REASON_MATERIAL+REASON_FUSION)==REASON_MATERIAL+REASON_FUSION
+		and c:GetReasonCard():IsSetCard(0xad)
 end
 function c13241004.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,2) end
