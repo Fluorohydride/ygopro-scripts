@@ -51,6 +51,7 @@ function c21772453.operation(e,tp,eg,ep,ev,re,r,rp)
 			if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(21772453,1)) then
 				Duel.BreakEffect()
 				local sg=g:Select(tp,1,1,nil)
+				Duel.HintSelection(sg)
 				Duel.Destroy(sg,REASON_EFFECT)
 			end
 		else
