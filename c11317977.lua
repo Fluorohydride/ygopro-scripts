@@ -25,7 +25,7 @@ function c11317977.initial_effect(c)
 	e3:SetCategory(CATEGORY_TOHAND)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
-	e3:SetCode(EVENT_TO_GRAVE)
+	e3:SetCode(EVENT_BE_MATERIAL)
 	e3:SetCondition(c11317977.thcon2)
 	e3:SetTarget(c11317977.thtg2)
 	e3:SetOperation(c11317977.thop2)
@@ -67,7 +67,7 @@ function c11317977.scop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c11317977.thcon2(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_MATERIAL+REASON_FUSION)==REASON_MATERIAL+REASON_FUSION
+	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_FUSION
 end
 function c11317977.thfilter2(c)
 	return c:IsSetCard(0xdf) and c:IsType(TYPE_MONSTER) and not c:IsCode(11317977) and c:IsAbleToHand()

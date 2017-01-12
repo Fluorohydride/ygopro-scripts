@@ -12,7 +12,7 @@ function c43268675.initial_effect(c)
 	--indes
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e3:SetCode(EVENT_TO_GRAVE)
+	e3:SetCode(EVENT_BE_MATERIAL)
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e3:SetCondition(c43268675.indcon)
 	e3:SetOperation(c43268675.indop)
@@ -26,7 +26,7 @@ function c43268675.atklimit(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c43268675.indcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_MATERIAL+REASON_FUSION)==REASON_MATERIAL+REASON_FUSION
+	return r==REASON_FUSION and e:GetHandler():IsLocation(LOCATION_GRAVE)
 end
 function c43268675.indop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

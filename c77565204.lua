@@ -70,7 +70,7 @@ function c77565204.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp and e:GetHandler():GetTurnCounter()==1
 end
 function c77565204.filter1(c,e)
-	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
 end
 function c77565204.filter2(c,m)
 	return c:IsFusionSummonableCard() and c:CheckFusionMaterial(m)
@@ -87,13 +87,7 @@ function c77565204.tgop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,tc)
 		local code=tc:GetCode()
 		local mat=Duel.SelectFusionMaterial(tp,tc,mg)
-		local fg=Duel.GetMatchingGroup(Card.IsCode,tp,LOCATION_EXTRA,0,nil,code)
-		local tc=fg:GetFirst()
-		while tc do
-			tc:SetMaterial(mat)
-			tc=fg:GetNext()
-		end
-		Duel.SendtoGrave(mat,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
+		Duel.SendtoGrave(mat,REASON_EFFECT)
 		e:SetLabel(code)
 	end
 end

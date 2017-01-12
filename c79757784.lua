@@ -14,7 +14,7 @@ function c79757784.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_DAMAGE+CATEGORY_ATKCHANGE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCode(EVENT_TO_GRAVE)
+	e2:SetCode(EVENT_BE_MATERIAL)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e2:SetCondition(c79757784.damcon)
 	e2:SetTarget(c79757784.damtg)
@@ -43,7 +43,7 @@ function c79757784.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c79757784.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_MATERIAL+REASON_FUSION)==REASON_MATERIAL+REASON_FUSION
+	return r==REASON_FUSION and e:GetHandler():IsLocation(LOCATION_GRAVE)
 end
 function c79757784.damtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c79757784.cfilter(chkc) end
