@@ -80,8 +80,7 @@ function c3064425.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,PLAYER_ALL,1000)
 end
 function c3064425.negop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateActivation(ev)
-	if re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)~=0 then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)~=0 then
 		Duel.BreakEffect()
 		local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		if Duel.Destroy(g,REASON_EFFECT)==0 then return end

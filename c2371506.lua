@@ -28,8 +28,7 @@ function c2371506.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,800)
 end
 function c2371506.activate(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateActivation(ev)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 	Duel.BreakEffect()

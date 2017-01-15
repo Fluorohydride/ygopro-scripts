@@ -17,6 +17,7 @@ function c14225239.initial_effect(c)
 	e2:SetCondition(c14225239.dacon)
 	c:RegisterEffect(e2)
 end
+c14225239.material_setcode=0x8
 function c14225239.filter(c)
 	return c:IsFacedown() and c:GetSequence()~=5
 end

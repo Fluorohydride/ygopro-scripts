@@ -13,7 +13,7 @@ function c19700943.initial_effect(c)
 	e2:SetOperation(c19700943.atkop)
 	c:RegisterEffect(e2)
 end
-function c19700943.sumcon(e,c)
+function c19700943.sumcon(e,c,minc)
 	if not c then return true end
 	return false
 end

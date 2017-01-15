@@ -23,7 +23,8 @@ function c55608151.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c55608151.activate(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateEffect(ev)
-	local g=Duel.GetMatchingGroup(c55608151.filter,tp,0,LOCATION_ONFIELD,nil)
-	Duel.Destroy(g,REASON_EFFECT)
+	if Duel.NegateEffect(ev) then
+		local g=Duel.GetMatchingGroup(c55608151.filter,tp,0,LOCATION_ONFIELD,nil)
+		Duel.Destroy(g,REASON_EFFECT)
+	end
 end

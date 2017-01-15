@@ -32,6 +32,7 @@ function c3790062.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,500)
 end
 function c3790062.operation(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateActivation(ev)
-	Duel.Damage(1-tp,500,REASON_EFFECT)
+	if Duel.NegateActivation(ev) then
+		Duel.Damage(1-tp,500,REASON_EFFECT)
+	end
 end

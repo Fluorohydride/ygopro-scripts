@@ -43,8 +43,8 @@ function c92609670.spop(e,tp,eg,ep,ev,re,r,rp)
 	if ft<1 then return end
 	if ft>2 then ft=2 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c92609670.filter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,ft,nil,e,tp)
-	if g:GetCount()>0 and not g:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c92609670.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,ft,nil,e,tp)
+	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+92609670,e,0,tp,tp,0)
 	end

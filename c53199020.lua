@@ -31,22 +31,17 @@ end
 function c53199020.otfilter(c,tp)
 	return c:IsSetCard(0x35) and (c:IsControler(tp) or c:IsFaceup())
 end
-function c53199020.otcon(e,c)
+function c53199020.otcon(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local mg=Duel.GetMatchingGroup(c53199020.otfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<=0 then mg=mg:Filter(Card.IsControler,nil,tp) end
-	return c:GetLevel()>6 and ft>-1 and Duel.GetTributeCount(c,mg)>0
+	return c:GetLevel()>6 and minc<=1 and Duel.CheckTribute(c,1,1,mg)
 end
 function c53199020.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetMatchingGroup(c53199020.otfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
-		mg=mg:Filter(Card.IsControler,nil,tp)
-	end
 	local sg=Duel.SelectTribute(tp,c,1,1,mg)
 	c:SetMaterial(sg)
-	Duel.Release(sg, REASON_SUMMON+REASON_MATERIAL)
+	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end
 function c53199020.chcon1(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and re:GetHandler():GetType()==TYPE_SPELL and re:IsHasType(EFFECT_TYPE_ACTIVATE)

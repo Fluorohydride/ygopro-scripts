@@ -59,9 +59,9 @@ end
 function c27279764.tlimit(e,c)
 	return not c:IsSetCard(0xaa)
 end
-function c27279764.ttcon(e,c)
+function c27279764.ttcon(e,c,minc)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-3 and Duel.GetTributeCount(c)>=3
+	return minc<=3 and Duel.CheckTribute(c,3)
 end
 function c27279764.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectTribute(tp,c,3,3)

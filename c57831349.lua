@@ -29,8 +29,7 @@ function c57831349.desfilter(c)
 end
 function c57831349.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ec=re:GetHandler()
-	Duel.NegateActivation(ev)
-	if ec:IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and ec:IsRelateToEffect(re) then
 		ec:CancelToGrave()
 		if Duel.SendtoDeck(ec,nil,2,REASON_EFFECT)~=0 and ec:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 			local g=Duel.GetMatchingGroup(c57831349.desfilter,tp,LOCATION_ONFIELD,0,e:GetHandler())

@@ -59,8 +59,7 @@ end
 function c26964762.disop(e,tp,eg,ep,ev,re,r,rp)
 	if rp==tp and re:IsActiveType(TYPE_SPELL) then
 		local rc=re:GetHandler()
-		Duel.NegateEffect(ev)
-		if rc:IsRelateToEffect(re) then
+		if Duel.NegateEffect(ev) and rc:IsRelateToEffect(re) then
 			Duel.Destroy(rc,REASON_EFFECT)
 		end
 	end

@@ -55,7 +55,7 @@ function c11493868.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c11493868.filter1(c,e)
-	return c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
+	return c:IsOnField() and not c:IsImmuneToEffect(e)
 end
 function c11493868.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x9b) and (not f or f(c))
@@ -64,7 +64,7 @@ end
 function c11493868.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
-		local mg1=Duel.GetMatchingGroup(Card.IsCanBeFusionMaterial,tp,LOCATION_MZONE,0,nil)
+		local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)
 		local res=Duel.IsExistingMatchingCard(c11493868.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -81,7 +81,7 @@ function c11493868.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c11493868.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
-	local mg1=Duel.GetMatchingGroup(c11493868.filter1,tp,LOCATION_MZONE,0,nil,e)
+	local mg1=Duel.GetFusionMaterial(tp):Filter(c11493868.filter1,nil,e)
 	local sg1=Duel.GetMatchingGroup(c11493868.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil
 	local sg2=nil

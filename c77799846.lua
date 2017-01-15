@@ -73,12 +73,11 @@ end
 function c77799846.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
-		local g=Duel.GetMatchingGroup(c77799846.mfilter,tp,LOCATION_GRAVE,0,nil)
+		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c77799846.mfilter),tp,LOCATION_GRAVE,0,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(77799846,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 			local mg=g:Select(tp,1,1,nil)
-			if mg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 			Duel.Overlay(c,mg)
 		end
 	end

@@ -30,9 +30,8 @@ function c6137095.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c6137095.activate(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateActivation(ev)
 	local rc=re:GetHandler()
-	if rc:IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and rc:IsRelateToEffect(re) then
 		if rc:IsStatus(STATUS_ACT_FROM_HAND) then
 			rc:CancelToGrave()
 			Duel.SendtoHand(rc,nil,REASON_EFFECT)

@@ -35,13 +35,12 @@ function c64726269.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c64726269.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
-		local sg=Duel.GetMatchingGroup(c64726269.tdfilter,tp,LOCATION_GRAVE,0,nil)
+		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c64726269.tdfilter),tp,LOCATION_GRAVE,0,nil)
 		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(64726269,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 			local tg=sg:Select(tp,1,1,nil)
 			Duel.HintSelection(tg)
-			if tg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 			Duel.SendtoDeck(tg,nil,0,REASON_EFFECT)
 		end
 	end

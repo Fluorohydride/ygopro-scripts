@@ -20,6 +20,7 @@ function c69711728.initial_effect(c)
 	local e3=e2:Clone()
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetRange(LOCATION_SZONE)
+	e3:SetCountLimit(1)
 	c:RegisterEffect(e3)
 	--search
 	local e4=Effect.CreateEffect(c)

@@ -36,6 +36,7 @@ function c86676862.initial_effect(c)
 	e6:SetValue(1)
 	c:RegisterEffect(e6)
 end
+c86676862.material_setcode=0x8
 c86676862.dark_calling=true
 function c86676862.splimit(e,se,sp,st)
 	return st==SUMMON_TYPE_FUSION+0x10

@@ -32,12 +32,13 @@ end
 function c35059553.sumlimit(e,c)
 	local tp=e:GetHandlerPlayer()
 	if c:IsControler(1-tp) then
-		local mi,ma=c:GetTributeRequirement()
+		local mint,maxt=c:GetTributeRequirement()
 		local x=Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)
 		local y=Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)
-		if ma==2 then return x<y+1 
-		elseif ma==3 then return x<y 
-		else return false end
+		local ex=Duel.GetMatchingGroupCount(Card.IsHasEffect,tp,LOCATION_MZONE,0,nil,EFFECT_EXTRA_RELEASE)
+		local exs=Duel.GetMatchingGroupCount(Card.IsHasEffect,tp,LOCATION_MZONE,0,nil,EFFECT_EXTRA_RELEASE_SUM)
+		if ex==0 and exs>0 then ex=1 end
+		return y-maxt+ex+1 > x-ex
 	else
 		return false
 	end

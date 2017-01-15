@@ -20,12 +20,13 @@ function c7409792.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(7409792,0))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e3:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_EVENT_PLAYER)
+	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
+	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetCode(EVENT_CUSTOM+7409792)
 	e3:SetTarget(c7409792.target)
 	e3:SetOperation(c7409792.operation)
 	c:RegisterEffect(e3)
+	e2:SetLabelObject(e3)
 end
 function c7409792.spcon(e,c)
 	if c==nil then return true end
@@ -33,24 +34,28 @@ function c7409792.spcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 end
 function c7409792.trigop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1 then
-		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+7409792,e,r,rp,1-tp,0)
+	local c=e:GetHandler()
+	if c:GetSummonType()==SUMMON_TYPE_SPECIAL+1
+		and e:GetLabelObject():IsActivatable(tp)
+		and Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
+		and Duel.IsExistingTarget(c7409792.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,e,tp)
+		and Duel.SelectEffectYesNo(1-tp,c) then
+		Duel.RaiseSingleEvent(c,EVENT_CUSTOM+7409792,e,r,rp,tp,0)
 	end
 end
 function c7409792.filter(c,e,tp)
 	return c:GetLevel()==4 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c7409792.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c7409792.filter(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingTarget(c7409792.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,e,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectTarget(tp,c7409792.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil,e,tp)
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c7409792.filter(chkc,e,1-tp) end
+	if chk==0 then return true end
+	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SPSUMMON)
+	local g=Duel.SelectTarget(1-tp,c7409792.filter,1-tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil,e,1-tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c7409792.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
+		Duel.SpecialSummon(tc,0,1-tp,1-tp,false,false,POS_FACEUP)
 	end
 end

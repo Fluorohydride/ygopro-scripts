@@ -40,12 +40,19 @@ function c25415052.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c25415052.tdfilter,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,0,0)
 end
+function c25415052.cfilter(c,p)
+	return c:IsLocation(LOCATION_DECK) and c:IsControler(p)
+end
 function c25415052.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c25415052.tdfilter,tp,0,LOCATION_ONFIELD,nil)
 	if g:GetCount()<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=g:Select(tp,1,3,nil)
-	if Duel.SendtoDeck(sg,nil,2,REASON_EFFECT)~=0 then
+	if Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)~=0 then
+		local sg2=Duel.GetOperatedGroup()
+		if sg2:IsExists(c25415052.cfilter,1,nil,tp) then Duel.ShuffleDeck(tp) end
+		if sg2:IsExists(c25415052.cfilter,1,nil,1-tp) then Duel.ShuffleDeck(1-tp) end
+		if not sg2:IsExists(Card.IsLocation,1,nil,LOCATION_DECK+LOCATION_EXTRA) then return end
 		local tg=Duel.GetMatchingGroup(c25415052.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 		if tg:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 			and Duel.SelectYesNo(tp,aux.Stringid(25415052,1)) then

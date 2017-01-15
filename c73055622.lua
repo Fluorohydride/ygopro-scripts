@@ -28,7 +28,7 @@ function c73055622.mfilterf(c,tp,mg,rc)
 	else return false end
 end
 function c73055622.mfilter(c)
-	return c:IsType(TYPE_SPIRIT) and c:IsAbleToRemove()
+	return c:GetLevel()>0 and c:IsType(TYPE_SPIRIT) and c:IsAbleToRemove()
 end
 function c73055622.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

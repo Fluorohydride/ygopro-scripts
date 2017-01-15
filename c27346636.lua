@@ -38,7 +38,7 @@ function c27346636.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
 function c27346636.spfilter1(c,tp)
-	return c:IsFusionCode(78868776) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(nil,true)
+	return c:IsFusionCode(78868776) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial()
 		and Duel.IsExistingMatchingCard(c27346636.spfilter2,tp,LOCATION_MZONE,0,2,c)
 end
 function c27346636.spfilter2(c)
@@ -81,8 +81,7 @@ end
 function c27346636.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsFaceup() or not c:IsRelateToEffect(e) then return end
-	Duel.NegateActivation(ev)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

@@ -36,12 +36,12 @@ function c19302550.splimit(e,c,sump,sumtype,sumpos,targetp)
 	return not c:IsSetCard(0xaf) and bit.band(sumtype,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
 end
 function c19302550.discon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsChainNegatable(ev) and re:IsActiveType(TYPE_TRAP) and aux.damcon1(e,tp,eg,ep,ev,re,r,rp) and e:GetHandler():GetFlagEffect(19302550)==0
+	return Duel.IsChainDisablable(ev) and re:IsActiveType(TYPE_TRAP) and aux.damcon1(e,tp,eg,ep,ev,re,r,rp) and e:GetHandler():GetFlagEffect(19302550)==0
 end
 function c19302550.disop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.SelectYesNo(tp,aux.Stringid(19302550,1)) then return end
 	e:GetHandler():RegisterFlagEffect(19302550,RESET_EVENT+0x1fe0000,0,1)
-	Duel.NegateEffect(ev)
+	if not Duel.NegateEffect(ev) then return end
 	Duel.BreakEffect()
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 end

@@ -21,6 +21,7 @@ function c83121692.initial_effect(c)
 	e1:SetOperation(c83121692.operation)
 	c:RegisterEffect(e1)
 end
+c83121692.material_setcode=0x8
 function c83121692.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToGraveAsCost,tp,LOCATION_ONFIELD,0,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)

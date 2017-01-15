@@ -22,7 +22,7 @@ function c91584698.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c91584698.filter1(c,e)
-	return c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
+	return c:IsOnField() and not c:IsImmuneToEffect(e)
 end
 function c91584698.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and (not f or f(c))
@@ -31,7 +31,7 @@ end
 function c91584698.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
-		local mg1=Duel.GetMatchingGroup(Card.IsCanBeFusionMaterial,tp,LOCATION_MZONE,0,nil)
+		local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)
 		local res=Duel.IsExistingMatchingCard(c91584698.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -49,7 +49,7 @@ end
 function c91584698.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
-	local mg1=Duel.GetMatchingGroup(c91584698.filter1,tp,LOCATION_MZONE,0,nil,e)
+	local mg1=Duel.GetFusionMaterial(tp):Filter(c91584698.filter1,nil,e)
 	local sg1=Duel.GetMatchingGroup(c91584698.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil
 	local sg2=nil
@@ -93,12 +93,8 @@ function c91584698.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c91584698.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c91584698.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c91584698.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
 	if g:GetCount()>0 then
-		if g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
-			Duel.NegateEffect(0)
-			return
-		end
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end

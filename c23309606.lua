@@ -25,14 +25,13 @@ end
 function c23309606.otfilter(c,tp)
 	return c:IsAttackAbove(2000) and (c:IsControler(tp) or c:IsFaceup())
 end
-function c23309606.otcon(e,c)
+function c23309606.otcon(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local hg=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 	hg:RemoveCard(c)
 	local mg=Duel.GetMatchingGroup(c23309606.otfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
-	return hg:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.GetTributeCount(c,mg)>0
+	return hg:GetCount()>0 and minc<=1 and Duel.CheckTribute(c,1,1,mg)
 		and hg:FilterCount(Card.IsAbleToGraveAsCost,nil)==hg:GetCount()
 end
 function c23309606.otop(e,tp,eg,ep,ev,re,r,rp,c)

@@ -31,7 +31,7 @@ function c80889750.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c80889750.mfilter1(c)
-	return c:IsFusionSetCard(0xad) and c:IsType(TYPE_FUSION)
+	return c:IsFusionSetCard(0xad) and c:IsFusionType(TYPE_FUSION)
 end
 function c80889750.mfilter2(c)
 	return c:IsFusionSetCard(0xa9) or c:IsFusionSetCard(0xc3)

@@ -71,7 +71,7 @@ function c47355498.disfilter(c,im0,im1)
 	if c:IsControler(0) then return im0 and c:IsHasEffect(EFFECT_NECRO_VALLEY)
 	else return im1 and c:IsHasEffect(EFFECT_NECRO_VALLEY) end
 end
-function c47355498.discheck(ev,category,re,im0,im1,targets)
+function c47355498.discheck(ev,category,re,im0,im1)
 	local ex,tg,ct,p,v=Duel.GetOperationInfo(ev,category)
 	if not ex then return false end
 	if v==LOCATION_GRAVE then
@@ -81,11 +81,7 @@ function c47355498.discheck(ev,category,re,im0,im1,targets)
 		end
 	end
 	if tg and tg:GetCount()>0 then
-		if targets and targets:IsContains(re:GetHandler()) then
-			return tg:IsExists(c47355498.disfilter,1,nil,im0,im1)
-		else
-			return tg:IsExists(c47355498.disfilter,1,re:GetHandler(),im0,im1)
-		end
+		return tg:IsExists(c47355498.disfilter,1,nil,im0,im1)
 	end
 	return false
 end
@@ -93,16 +89,12 @@ function c47355498.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=re:GetHandler()
 	if not Duel.IsChainDisablable(ev) or tc:IsHasEffect(EFFECT_NECRO_VALLEY_IM) then return end
 	local res=false
-	local targets=nil
-	if re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then
-		targets=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
-	end
 	local im0=not Duel.IsPlayerAffectedByEffect(0,EFFECT_NECRO_VALLEY_IM)
 	local im1=not Duel.IsPlayerAffectedByEffect(1,EFFECT_NECRO_VALLEY_IM)
-	if not res and c47355498.discheck(ev,CATEGORY_SPECIAL_SUMMON,re,im0,im1,targets) then res=true end
-	if not res and c47355498.discheck(ev,CATEGORY_REMOVE,re,im0,im1,targets) then res=true end
-	if not res and c47355498.discheck(ev,CATEGORY_TOHAND,re,im0,im1,targets) then res=true end
-	if not res and c47355498.discheck(ev,CATEGORY_TODECK,re,im0,im1,targets) then res=true end
-	if not res and c47355498.discheck(ev,CATEGORY_LEAVE_GRAVE,re,im0,im1,targets) then res=true end
-	if res then	Duel.NegateEffect(ev) end
+	if not res and c47355498.discheck(ev,CATEGORY_SPECIAL_SUMMON,re,im0,im1) then res=true end
+	if not res and c47355498.discheck(ev,CATEGORY_REMOVE,re,im0,im1) then res=true end
+	if not res and c47355498.discheck(ev,CATEGORY_TOHAND,re,im0,im1) then res=true end
+	if not res and c47355498.discheck(ev,CATEGORY_TODECK,re,im0,im1) then res=true end
+	if not res and c47355498.discheck(ev,CATEGORY_LEAVE_GRAVE,re,im0,im1) then res=true end
+	if res then Duel.NegateEffect(ev) end
 end

@@ -28,8 +28,11 @@ function c7394770.initial_effect(c)
 	e3:SetOperation(c7394770.atkop)
 	c:RegisterEffect(e3)
 end
+function c7394770.filter0(c)
+	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
+end
 function c7394770.filter1(c,e)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
+	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
 end
 function c7394770.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x1047) and (not f or f(c))
@@ -38,7 +41,7 @@ end
 function c7394770.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
-		local mg1=Duel.GetMatchingGroup(Card.IsCanBeFusionMaterial,tp,LOCATION_DECK,0,nil)
+		local mg1=Duel.GetMatchingGroup(c7394770.filter0,tp,LOCATION_DECK,0,nil)
 		local res=Duel.IsExistingMatchingCard(c7394770.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)

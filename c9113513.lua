@@ -14,12 +14,12 @@ function c9113513.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
 end
 function c9113513.filter1(c,e,tp,mg,f,chkf)
-	return c:IsCanBeFusionMaterial()
+	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial()
 		and mg:IsExists(c9113513.filter2,1,c,e,tp,c,f,chkf)
 end
 function c9113513.filter2(c,e,tp,mc,f,chkf)
 	local mg=Group.FromCards(c,mc)
-	return c:IsCanBeFusionMaterial()
+	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial()
 		and Duel.IsExistingMatchingCard(c9113513.ffilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,f,chkf)
 end
 function c9113513.ffilter(c,e,tp,m,f,chkf)
@@ -114,7 +114,7 @@ end
 function c9113513.mgfilter(c,e,tp,fusc,mg)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE)
 		and bit.band(c:GetReason(),0x40008)==0x40008 and c:GetReasonCard()==fusc
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and fusc:CheckFusionMaterial(mg,c)
 end
 function c9113513.desop(e,tp,eg,ep,ev,re,r,rp)
@@ -124,7 +124,7 @@ function c9113513.desop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Destroy(tc,REASON_EFFECT)~=0
 		and bit.band(sumtype,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION and mg:GetCount()>0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>=mg:GetCount()
-		and mg:IsExists(c9113513.mgfilter,mg:GetCount(),nil,e,tp,tc,mg)
+		and mg:IsExists(aux.NecroValleyFilter(c9113513.mgfilter),mg:GetCount(),nil,e,tp,tc,mg)
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.SelectYesNo(tp,aux.Stringid(9113513,0)) then
 		Duel.SpecialSummon(mg,0,tp,tp,false,false,POS_FACEUP)

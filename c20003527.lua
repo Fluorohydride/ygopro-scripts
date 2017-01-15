@@ -55,15 +55,19 @@ end
 function c20003527.cfilter(c,tp)
 	return c:IsAttribute(ATTRIBUTE_WATER) and (c:IsControler(tp) or c:IsFaceup())
 end
-function c20003527.sumcon(e,c)
+function c20003527.sumcon(e,c,minc)
 	if c==nil then return true end
+	local min=1
+	if minc>=1 then min=minc end
 	local tp=c:GetControler()
 	local mg=Duel.GetMatchingGroup(c20003527.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
-	return c:GetLevel()>4 and Duel.GetTributeCount(c,mg)>0
+	return c:GetLevel()>4 and Duel.CheckTribute(c,min,10,mg)
 end
-function c20003527.sumop(e,tp,eg,ep,ev,re,r,rp,c)
+function c20003527.sumop(e,tp,eg,ep,ev,re,r,rp,c,minc)
+	local min=1
+	if minc>=1 then min=minc end
 	local mg=Duel.GetMatchingGroup(c20003527.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
-	local sg=Duel.SelectTribute(tp,c,1,10,mg)
+	local sg=Duel.SelectTribute(tp,c,min,10,mg)
 	c:SetMaterial(sg)
 	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end

@@ -34,13 +34,9 @@ end
 function c45948430.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local rg=Duel.SelectMatchingCard(tp,c45948430.filter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
+	local rg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c45948430.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
 	local rc=rg:GetFirst()
 	if rc then
-		if rc:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
-			Duel.NegateEffect(0)
-			return
-		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local mat=Duel.SelectMatchingCard(tp,c45948430.matfilter1,tp,LOCATION_HAND,0,1,1,rc,tp,rc)
 		local mc=mat:GetFirst()

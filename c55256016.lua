@@ -36,8 +36,7 @@ function c55256016.desfilter(c)
 	return c:IsFaceup()
 end
 function c55256016.operation(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateActivation(ev)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 	local dg=Duel.GetMatchingGroup(c55256016.desfilter,tp,0,LOCATION_MZONE,nil)

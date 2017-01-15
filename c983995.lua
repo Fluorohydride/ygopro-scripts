@@ -34,7 +34,7 @@ function c983995.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,1-tp,LOCATION_ONFIELD+LOCATION_HAND)
 end
 function c983995.operation(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateEffect(ev)
+	if not Duel.NegateEffect(ev) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,nil,tp,0,LOCATION_ONFIELD+LOCATION_HAND,1,1,nil)
 	if g:GetCount()~=0 then

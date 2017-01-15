@@ -29,8 +29,7 @@ function c26834022.activate(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()==0 then return end
 	Duel.ConfirmCards(1-tp,g)
 	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
-	Duel.NegateActivation(ev)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

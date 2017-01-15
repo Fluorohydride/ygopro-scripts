@@ -61,6 +61,7 @@ function c8809344.operation(e,tp,eg,ep,ev,re,r,rp)
 		if og:GetCount()==0 then return end
 		Duel.SendtoGrave(og,REASON_EFFECT)
 		Duel.Overlay(c,Group.FromCards(tc))
+		if c:IsFacedown() then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)

@@ -30,6 +30,7 @@ function c39890958.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_EQUIP)
 	e4:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
+	e4:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e4:SetValue(aux.tgoval)
 	c:RegisterEffect(e4)
 	--spsummon

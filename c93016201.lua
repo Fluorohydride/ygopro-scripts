@@ -75,8 +75,7 @@ function c93016201.activate1(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetChainInfo(0,CHAININFO_CHAIN_COUNT)
 	local te=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT)
 	local tc=te:GetHandler()
-	Duel.NegateEffect(ct-1)
-	if tc:IsRelateToEffect(te) then
+	if Duel.NegateEffect(ct-1) and tc:IsRelateToEffect(te) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -113,8 +112,7 @@ function c93016201.target3(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c93016201.activate3(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
-	Duel.NegateEffect(ev)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

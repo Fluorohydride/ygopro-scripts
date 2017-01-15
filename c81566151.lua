@@ -45,6 +45,7 @@ function c81566151.initial_effect(c)
 	e5:SetValue(c81566151.atkval)
 	c:RegisterEffect(e5)
 end
+c81566151.material_setcode=0x8
 function c81566151.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end

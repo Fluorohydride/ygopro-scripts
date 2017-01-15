@@ -32,6 +32,7 @@ function c23204029.initial_effect(c)
 	e3:SetOperation(c23204029.operation)
 	c:RegisterEffect(e3)
 end
+c23204029.material_setcode=0x8
 function c23204029.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and aux.disfilter1(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end

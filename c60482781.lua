@@ -37,7 +37,7 @@ function c60482781.desop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c60482781.sumcon(e,c)
+function c60482781.sumcon(e,c,minc)
 	if not c then return true end
 	return false
 end

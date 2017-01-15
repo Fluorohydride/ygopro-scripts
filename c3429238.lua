@@ -35,7 +35,7 @@ function c3429238.initial_effect(c)
 	e3:SetOperation(c3429238.spop)
 	c:RegisterEffect(e3)
 end
-c3429238.material_setcode=0x17
+c3429238.material_setcode=0x1017
 function c3429238.tfilter(c)
 	return c:IsCode(56286179) or c:IsHasEffect(20932152)
 end
@@ -95,12 +95,8 @@ function c3429238.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g=Duel.SelectMatchingCard(tp,c3429238.filter,tp,LOCATION_GRAVE,0,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c3429238.filter),tp,LOCATION_GRAVE,0,1,1,nil)
 		if g:GetCount()>0 then
-			if g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
-				Duel.NegateEffect(0)
-				return
-			end
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,g)
 		end

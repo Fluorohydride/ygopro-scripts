@@ -37,6 +37,7 @@ function c29343734.initial_effect(c)
 	e5:SetValue(c29343734.val)
 	c:RegisterEffect(e5)
 end
+c29343734.material_setcode=0x8
 function c29343734.retcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
 end

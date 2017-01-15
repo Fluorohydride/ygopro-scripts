@@ -39,11 +39,10 @@ function c96598015.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
 end
 function c96598015.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c96598015.filter,tp,LOCATION_EXTRA+LOCATION_GRAVE,0,nil)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c96598015.filter),tp,LOCATION_EXTRA+LOCATION_GRAVE,0,nil)
 	if g:GetCount()<3 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=g:Select(tp,3,3,nil)
-	if sg:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 	Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)
 	local og=Duel.GetOperatedGroup()
 	if og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then Duel.ShuffleDeck(tp) end

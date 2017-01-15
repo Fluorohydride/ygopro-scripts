@@ -29,7 +29,7 @@ function c25148255.mfilter(c,e,tp,mc)
 		and Duel.IsExistingMatchingCard(c25148255.scfilter,tp,LOCATION_EXTRA,0,1,nil,mg)
 end
 function c25148255.scfilter(c,mg)
-	return aux.IsMaterialListSetCard(c,0x17) and c:IsSynchroSummonable(nil,mg)
+	return aux.IsMaterialListSetCard(c,0x1017) and c:IsSynchroSummonable(nil,mg)
 end
 function c25148255.sctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c25148255.mfilter(chkc,e,tp,e:GetHandler()) end

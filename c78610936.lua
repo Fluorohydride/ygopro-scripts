@@ -25,7 +25,7 @@ function c78610936.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c78610936.spfilter(c,e,tp)
-	return c:IsLocation(LOCATION_GRAVE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp) and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp)
 end
 function c78610936.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
@@ -33,7 +33,7 @@ function c78610936.activate(e,tp,eg,ep,ev,re,r,rp)
 	local mg=tc:GetOverlayGroup()
 	Duel.SendtoGrave(mg,REASON_EFFECT)
 	if Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)>0 then
-		local g=mg:Filter(c78610936.spfilter,nil,e,tp)
+		local g=mg:Filter(aux.NecroValleyFilter(c78610936.spfilter),nil,e,tp)
 		local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
 		if ft>0 and g:GetCount()>0 then
 			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end

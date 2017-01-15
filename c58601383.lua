@@ -22,7 +22,7 @@ function c58601383.initial_effect(c)
 end
 c58601383.miracle_synchro_fusion=true
 function c58601383.ffilter(c)
-	return c:IsType(TYPE_SYNCHRO) and not c:IsType(TYPE_EFFECT)
+	return c:IsFusionType(TYPE_SYNCHRO) and not c:IsFusionType(TYPE_EFFECT)
 end
 function c58601383.efilter1(e,re,rp)
 	return re:IsActiveType(TYPE_EFFECT)

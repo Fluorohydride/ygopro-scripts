@@ -140,12 +140,11 @@ function c57314798.desop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Destroy(g,REASON_EFFECT)~=0 then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-		local g1=Duel.SelectMatchingCard(tp,c57314798.setfilter,tp,LOCATION_GRAVE,0,1,1,nil)
+		local g1=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c57314798.setfilter),tp,LOCATION_GRAVE,0,1,1,nil)
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SET)
-		local g2=Duel.SelectMatchingCard(1-tp,c57314798.setfilter,1-tp,LOCATION_GRAVE,0,1,1,nil)
+		local g2=Duel.SelectMatchingCard(1-tp,aux.NecroValleyFilter(c57314798.setfilter),1-tp,LOCATION_GRAVE,0,1,1,nil)
 		local tc1=g1:GetFirst()
 		local tc2=g2:GetFirst()
-		if (tc1 and tc1:IsHasEffect(EFFECT_NECRO_VALLEY)) or (tc2 and tc2:IsHasEffect(EFFECT_NECRO_VALLEY)) then return end
 		if tc1 then
 			Duel.SSet(tp,tc1)
 			Duel.ConfirmCards(1-tp,tc1)

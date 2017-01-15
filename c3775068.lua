@@ -104,16 +104,14 @@ function c3775068.spop(e,tp,eg,ep,ev,re,r,rp)
 		g=g:Select(tp,ft,ft,nil)
 	end
 	if Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		local sg=Duel.GetMatchingGroup(c3775068.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,nil)
+		local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c3775068.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,nil)
 		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(3775068,2)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			sg=sg:Select(tp,1,1,nil)
-			if not sg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then
-				Duel.BreakEffect()
-				Duel.SendtoHand(sg,nil,REASON_EFFECT)
-				Duel.ConfirmCards(1-tp,sg)
-				Duel.ShuffleDeck(tp)
-			end
+			Duel.BreakEffect()
+			Duel.SendtoHand(sg,nil,REASON_EFFECT)
+			Duel.ConfirmCards(1-tp,sg)
+			Duel.ShuffleDeck(tp)
 		end
 	end
 end

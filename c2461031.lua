@@ -50,13 +50,9 @@ function c2461031.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectMatchingCard(tp,c2461031.filter,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c2461031.filter),tp,LOCATION_GRAVE+LOCATION_HAND,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
-		if tc:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
-			Duel.NegateEffect(0)
-			return
-		end
 		if not Duel.Equip(tp,tc,c,true) then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)

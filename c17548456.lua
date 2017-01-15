@@ -30,12 +30,11 @@ function c17548456.desop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.Destroy(g,REASON_EFFECT)
 	end
-	local sg=Duel.GetMatchingGroup(c17548456.spfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
+	local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c17548456.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
 	if sg:GetCount()~=0 and Duel.SelectYesNo(tp,aux.Stringid(17548456,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sp=sg:Select(tp,1,1,nil)
-		if sp:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 		Duel.SpecialSummon(sp,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

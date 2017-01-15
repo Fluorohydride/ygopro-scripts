@@ -21,9 +21,9 @@ function c36354007.initial_effect(c)
 	e2:SetOperation(c36354007.desop)
 	c:RegisterEffect(e2)
 end
-function c36354007.ttcon(e,c)
+function c36354007.ttcon(e,c,minc)
 	if c==nil then return true end
-	return Duel.GetTributeCount(c)>=3
+	return minc<=3 and Duel.CheckTribute(c,3)
 end
 function c36354007.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)

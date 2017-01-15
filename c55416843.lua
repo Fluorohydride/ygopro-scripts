@@ -23,8 +23,8 @@ function c55416843.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if ft>2 then ft=2 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c55416843.filter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,ft,nil,e,tp)
-	if g:GetCount()>0 and not g:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c55416843.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,ft,nil,e,tp)
+	if g:GetCount()>0 then
 		local tc=g:GetFirst()
 		while tc do
 			Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)

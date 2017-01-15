@@ -81,7 +81,7 @@ function c74591968.spop(e,tp,eg,ep,ev,re,r,rp)
 		tc:CompleteProcedure()
 	end
 end
-function c74591968.sumcon(e,c)
+function c74591968.sumcon(e,c,minc)
 	if not c then return true end
 	return false
 end

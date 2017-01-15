@@ -44,8 +44,7 @@ function c73219648.disop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	local dc=Duel.TossDice(tp,1)
 	if dc~=3 then return end
-	Duel.NegateEffect(ev)
-	if rc:IsRelateToEffect(re) then
+	if Duel.NegateEffect(ev) and rc:IsRelateToEffect(re) then
 		Duel.Destroy(rc,REASON_EFFECT)
 	end
 end

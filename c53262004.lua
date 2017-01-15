@@ -2,7 +2,7 @@
 function c53262004.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x99),aux.FilterBoolFunction(Card.IsType,TYPE_PENDULUM),false)
+	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x99),aux.FilterBoolFunction(Card.IsFusionType,TYPE_PENDULUM),false)
 	--tohand
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND)
@@ -61,8 +61,7 @@ function c53262004.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c53262004.disfilter,tp,LOCATION_EXTRA,0,1,1,nil)
 	if Duel.SendtoDeck(g,nil,2,REASON_EFFECT)~=0 then
-		Duel.NegateActivation(ev)
-		if re:GetHandler():IsRelateToEffect(re) then
+		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 			Duel.Destroy(eg,REASON_EFFECT)
 		end
 	end

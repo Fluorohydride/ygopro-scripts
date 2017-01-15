@@ -26,22 +26,21 @@ function c62560742.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,1,0,0)
 end
 function c62560742.mgfilter(c,e,tp,sync)
-	return not c:IsControler(tp) or not c:IsLocation(LOCATION_GRAVE) or not c:IsType(TYPE_SYNCHRO)
-		or bit.band(c:GetReason(),0x80008)~=0x80008 or c:GetReasonCard()~=sync
-		or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsHasEffect(EFFECT_NECRO_VALLEY)
+	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE)
+		and bit.band(c:GetReason(),0x80008)==0x80008 and c:GetReasonCard()==sync
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c62560742.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) then return end
 	local mg=tc:GetMaterial()
-	local sumable=true
+	local ct=mg:GetCount()
 	local sumtype=tc:GetSummonType()
-	if Duel.SendtoGrave(tc,REASON_EFFECT)==0 or tc:GetSummonType()~=SUMMON_TYPE_SYNCHRO or mg:GetCount()==0
-		or mg:GetCount()>Duel.GetLocationCount(tp,LOCATION_MZONE)
-		or mg:IsExists(c62560742.mgfilter,1,nil,e,tp,tc) then
-		sumable=false
-	end
-	if sumable and Duel.SelectYesNo(tp,aux.Stringid(62560742,1)) then
+	if Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and sumtype==SUMMON_TYPE_SYNCHRO
+		and ct>0 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
+		and mg:FilterCount(aux.NecroValleyFilter(c62560742.mgfilter),nil,e,tp,tc)==ct
+		and Duel.SelectYesNo(tp,aux.Stringid(62560742,1)) then
 		Duel.BreakEffect()
 		Duel.SpecialSummon(mg,0,tp,tp,false,false,POS_FACEUP)
 	end

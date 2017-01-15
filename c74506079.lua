@@ -16,17 +16,18 @@ function c74506079.initial_effect(c)
 	e2:SetValue(c74506079.matcheck)
 	c:RegisterEffect(e2)
 end
-function c74506079.ffilter(c)
-	return c:IsFusionSetCard(0x3e) and c:IsRace(RACE_REPTILE)
+function c74506079.ffilter(c,fc)
+	return c:IsFusionSetCard(0x3e) and c:IsRace(RACE_REPTILE) and not c:IsHasEffect(6205579) and c:IsCanBeFusionMaterial(fc)
 end
 function c74506079.fscondition(e,g,gc)
 	if g==nil then return true end
 	if gc then return false end
-	return g:IsExists(c74506079.ffilter,2,nil)
+	return g:IsExists(c74506079.ffilter,2,nil,e:GetHandler())
 end
 function c74506079.fsoperation(e,tp,eg,ep,ev,re,r,rp,gc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	Duel.SetFusionMaterial(eg:FilterSelect(tp,c74506079.ffilter,2,63,nil))
+	local g=eg:FilterSelect(tp,c74506079.ffilter,2,63,nil,e:GetHandler())
+	Duel.SetFusionMaterial(g)
 end
 function c74506079.matcheck(e,c)
 	local ct=c:GetMaterial():GetClassCount(Card.GetCode)

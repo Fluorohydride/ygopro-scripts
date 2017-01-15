@@ -58,8 +58,7 @@ function c92408984.operation1(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	local ct=Duel.GetChainInfo(0,CHAININFO_CHAIN_COUNT)
 	local tc=Duel.GetFirstTarget()
-	Duel.NegateEffect(ct-1)
-	if tc and tc:IsRelateToEffect(e) then
+	if Duel.NegateEffect(ct-1) and tc and tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -85,8 +84,7 @@ end
 function c92408984.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	Duel.NegateEffect(ev)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

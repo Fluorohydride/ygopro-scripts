@@ -31,6 +31,7 @@ function c99913726.rfilter(c)
 end
 function c99913726.hspcon(e,c)
 	if c==nil then return true end
+	if c:IsHasEffect(EFFECT_NECRO_VALLEY) then return false end
 	local tp=c:GetControler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local m=0

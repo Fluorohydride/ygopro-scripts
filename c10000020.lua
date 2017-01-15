@@ -64,16 +64,16 @@ function c10000020.initial_effect(c)
 	e9:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e9)
 end
-function c10000020.ttcon(e,c)
+function c10000020.ttcon(e,c,minc)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-3 and Duel.GetTributeCount(c)>=3
+	return minc<=3 and Duel.CheckTribute(c,3)
 end
 function c10000020.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectTribute(tp,c,3,3)
 	c:SetMaterial(g)
 	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)
 end
-function c10000020.setcon(e,c)
+function c10000020.setcon(e,c,minc)
 	if not c then return true end
 	return false
 end

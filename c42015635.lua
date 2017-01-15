@@ -23,5 +23,5 @@ function c42015635.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c42015635.atktg(e,c)
-	return c:IsCode(89943723) or (c:IsSetCard(0x9) and c:IsType(TYPE_FUSION) and not c:IsCode(31111109))
+	return c:IsCode(89943723) or aux.IsMaterialListCode(c,89943723)
 end

@@ -61,7 +61,9 @@ function c19502505.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 end
 function c19502505.negop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateActivation(ev)
+	if Duel.NegateActivation(ev) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
+		Duel.SendtoGrave(eg,REASON_EFFECT)
+	end
 end
 function c19502505.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

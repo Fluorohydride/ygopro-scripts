@@ -42,10 +42,10 @@ function c51570882.disfilter(c)
 	return c:IsFaceup() and not (c:GetAttack()==0 and c:IsDisabled())
 end
 function c51570882.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c51570882.disfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c51570882.disfilter,tp,0,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c51570882.disfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c51570882.disfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,c51570882.disfilter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c51570882.disfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end
 function c51570882.disop(e,tp,eg,ep,ev,re,r,rp)

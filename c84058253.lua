@@ -29,25 +29,25 @@ function c84058253.initial_effect(c)
 	e3:SetOperation(c84058253.tgop)
 	c:RegisterEffect(e3)
 end
-function c84058253.ffilter(c)
-	return c:IsFusionSetCard(0x1093)
+function c84058253.ffilter(c,fc)
+	return c:IsFusionSetCard(0x1093) and not c:IsHasEffect(6205579) and c:IsCanBeFusionMaterial(fc)
 end
 function c84058253.fscondition(e,g,gc,chkf)
 	if g==nil then return false end
-	if gc then return c84058253.ffilter(gc) and g:IsExists(c84058253.ffilter,1,gc) end
-	local g1=g:Filter(c84058253.ffilter,nil)
+	if gc then return c84058253.ffilter(gc,e:GetHandler()) and g:IsExists(c84058253.ffilter,1,gc,e:GetHandler()) end
+	local g1=g:Filter(c84058253.ffilter,nil,e:GetHandler())
 	if chkf~=PLAYER_NONE then
-		return g1:FilterCount(Card.IsOnField,nil)~=0 and g1:GetCount()>=2
+		return g1:IsExists(aux.FConditionCheckF,1,nil,chkf) and g1:GetCount()>=2
 	else return g1:GetCount()>=2 end
 end
 function c84058253.fsoperation(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 	if gc then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local g1=eg:FilterSelect(tp,c84058253.ffilter,1,63,gc)
+		local g1=eg:FilterSelect(tp,c84058253.ffilter,1,63,gc,e:GetHandler())
 		Duel.SetFusionMaterial(g1)
 		return
 	end
-	local sg=eg:Filter(c84058253.ffilter,nil)
+	local sg=eg:Filter(c84058253.ffilter,nil,e:GetHandler())
 	if chkf==PLAYER_NONE or sg:GetCount()==2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 		local g1=sg:Select(tp,2,63,nil)

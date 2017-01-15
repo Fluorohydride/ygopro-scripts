@@ -56,12 +56,8 @@ end
 function c64184058.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,64184058)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=Duel.SelectMatchingCard(tp,c64184058.thfilter,tp,LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c64184058.thfilter),tp,LOCATION_GRAVE,0,1,1,nil)
 	if g:GetCount()>0 then
-		if g:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
-			Duel.NegateEffect(0)
-			return
-		end
 		Duel.HintSelection(g)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 	end

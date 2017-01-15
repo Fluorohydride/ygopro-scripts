@@ -10,6 +10,7 @@ function c54631665.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
 	e2:SetRange(LOCATION_FZONE)
+	e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e2:SetTargetRange(LOCATION_ONFIELD,0)
 	e2:SetTarget(c54631665.tgtg)
 	e2:SetValue(aux.tgoval)
@@ -58,7 +59,7 @@ function c54631665.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c54631665.cfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsAbleToDeckAsCost()
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToDeckOrExtraAsCost()
 end
 function c54631665.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -12,11 +12,11 @@ function c87910978.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c87910978.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckLPCost(tp,800)
-	else Duel.PayLPCost(tp,800)	end
+	if chk==0 then return Duel.CheckLPCost(tp,800) end
+	Duel.PayLPCost(tp,800)
 end
 function c87910978.filter(c)
-	return c:IsControlerCanBeChanged() and c:IsFaceup()
+	return c:IsControlerCanBeChanged() and c:IsFaceup() and c:IsSummonableCard()
 end
 function c87910978.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c87910978.filter(chkc) end

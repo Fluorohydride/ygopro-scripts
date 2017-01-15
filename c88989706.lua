@@ -8,10 +8,13 @@ function c88989706.initial_effect(c)
 	c:RegisterEffect(e1)
 	--negate
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetCategory(CATEGORY_DESTROY+CATEGORY_NEGATE)
+	e2:SetType(EFFECT_TYPE_QUICK_F)
+	e2:SetCode(EVENT_CHAINING)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCode(EVENT_CHAIN_ACTIVATING)
+	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e2:SetCondition(c88989706.discon)
+	e2:SetTarget(c88989706.distg)
 	e2:SetOperation(c88989706.disop)
 	c:RegisterEffect(e2)
 	--special summon
@@ -37,12 +40,19 @@ function c88989706.discon(e,tp,eg,ep,ev,re,r,rp)
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return false end
 	local tg=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	if not tg or not tg:IsContains(e:GetHandler()) then return false end
-	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsChainNegatable(ev)
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
+end
+function c88989706.distg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
+	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
+		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
+	end
 end
 function c88989706.disop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateActivation(ev)
-	if re:GetHandler():IsRelateToEffect(re) then
-		Duel.Destroy(re:GetHandler(),REASON_EFFECT)
+	if Duel.GetCurrentChain()~=ev+1 then return end
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
+		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end
 function c88989706.spcon(e,tp,eg,ep,ev,re,r,rp)

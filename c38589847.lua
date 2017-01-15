@@ -24,13 +24,11 @@ end
 function c38589847.otfilter(c,tp)
 	return c:IsLevelAbove(5) and (c:IsControler(tp) or c:IsFaceup())
 end
-function c38589847.otcon(e,c)
+function c38589847.otcon(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local mg=Duel.GetMatchingGroup(c38589847.otfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<=0 then mg=mg:Filter(Card.IsControler,nil,tp) end
-	return ft>-1 and Duel.GetTributeCount(c,mg)>0
+	return minc<=1 and Duel.CheckTribute(c,1,1,mg)
 end
 function c38589847.ottg(e,c)
 	return c:IsLevelAbove(7)

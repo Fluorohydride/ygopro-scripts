@@ -3,7 +3,6 @@ function c22996376.initial_effect(c)
 	--summon/set with 1 tribute
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(22996376,0))
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)
 	e1:SetCondition(c22996376.otcon)
@@ -25,9 +24,9 @@ function c22996376.initial_effect(c)
 	e3:SetOperation(c22996376.thop)
 	c:RegisterEffect(e3)
 end
-function c22996376.otcon(e,c)
+function c22996376.otcon(e,c,minc)
 	if c==nil then return true end
-	return c:GetLevel()>6 and Duel.GetTributeCount(c)>0
+	return c:GetLevel()>6 and minc<=1 and Duel.CheckTribute(c,1)
 end
 function c22996376.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectTribute(tp,c,1,1)

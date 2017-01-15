@@ -49,9 +49,9 @@ function c3912064.posop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()==0 then return end
 	Duel.ChangePosition(g,POS_FACEUP_ATTACK)
 end
-function c3912064.ttcon(e,c)
+function c3912064.ttcon(e,c,minc)
 	if c==nil then return true end
-	return Duel.GetTributeCount(c)>=3
+	return minc<=3 and Duel.CheckTribute(c,3)
 end
 function c3912064.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)

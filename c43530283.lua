@@ -18,13 +18,12 @@ function c43530283.adop(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_BASE_ATTACK)
-		e1:SetValue(c43530283.val)
-		e1:SetLabel(1100)
+		e1:SetValue(c43530283.atkval)
 		e1:SetReset(RESET_EVENT+0x1ff0000)
 		c:RegisterEffect(e1)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_SET_BASE_DEFENSE)
-		e2:SetLabel(1200)
+		e2:SetValue(c43530283.defval)
 		c:RegisterEffect(e2)
 		if Duel.GetTurnPlayer()==tp then
 			c:RegisterFlagEffect(43530283,RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,2)
@@ -33,10 +32,17 @@ function c43530283.adop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c43530283.val(e,c)
+function c43530283.atkval(e,c)
 	if c:GetFlagEffect(43530283)==0 then
-		return e:GetLabel()*2
+		return c:GetBaseAttack()*2
 	else
-		return e:GetLabel()/2
+		return c:GetBaseAttack()/2
+	end
+end
+function c43530283.defval(e,c)
+	if c:GetFlagEffect(43530283)==0 then
+		return c:GetBaseDefense()*2
+	else
+		return c:GetBaseDefense()/2
 	end
 end

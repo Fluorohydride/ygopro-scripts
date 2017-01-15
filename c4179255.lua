@@ -4,6 +4,13 @@ function c4179255.initial_effect(c)
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
 	--draw
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_CHAINING)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e0:SetRange(LOCATION_MZONE)
+	e0:SetOperation(aux.chainreg)
+	c:RegisterEffect(e0)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DRAW)
 	e1:SetDescription(aux.Stringid(4179255,0))
@@ -31,6 +38,7 @@ function c4179255.initial_effect(c)
 end
 function c4179255.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp and re and re:IsActiveType(TYPE_FIELD) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
+		and e:GetHandler():GetFlagEffect(1)>0
 end
 function c4179255.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and e:GetHandler():IsFaceup() end

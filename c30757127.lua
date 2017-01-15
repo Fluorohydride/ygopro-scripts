@@ -19,8 +19,9 @@ function c30757127.initial_effect(c)
 	e1:SetOperation(c30757127.atkop)
 	c:RegisterEffect(e1)
 end
+c30757127.material_setcode=0x8
 function c30757127.ffilter(c)
-	return c:IsFusionAttribute(ATTRIBUTE_DARK) and c:IsType(TYPE_EFFECT)
+	return c:IsFusionAttribute(ATTRIBUTE_DARK) and c:IsFusionType(TYPE_EFFECT)
 end
 function c30757127.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()

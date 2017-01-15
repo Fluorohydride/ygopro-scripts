@@ -31,9 +31,10 @@ end
 function c368382.negop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SelectYesNo(tp,aux.Stringid(368382,0)) then
 		e:GetHandler():RegisterFlagEffect(368382,RESET_EVENT+0x1fe0000,0,1)
-		Duel.NegateEffect(ev)
-		Duel.BreakEffect()
-		Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+		if Duel.NegateEffect(ev) then
+			Duel.BreakEffect()
+			Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+		end
 	end
 end
 function c368382.cfilter(c)

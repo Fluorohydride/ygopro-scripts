@@ -46,8 +46,8 @@ function c38814750.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 or not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c38814750.spfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp)
-	if g:FilterCount(aux.nvfilter,nil)==0 then return end
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c38814750.spfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp)
+	if g:GetCount()==0 then return end
 	local tc=g:GetFirst()
 	local c=e:GetHandler()
 	local fid=c:GetFieldID()
@@ -67,8 +67,7 @@ function c38814750.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCondition(c38814750.rmcon)
 	e1:SetOperation(c38814750.rmop)
 	Duel.RegisterEffect(e1,tp)
-	Duel.NegateActivation(ev)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

@@ -3,7 +3,6 @@ function c78651105.initial_effect(c)
 	--summon & set with no tribute
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(78651105,0))
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)
 	e1:SetCondition(c78651105.ntcon)
@@ -15,7 +14,6 @@ function c78651105.initial_effect(c)
 	--summon with 3 tribute
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(78651105,1))
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetCode(EFFECT_SUMMON_PROC)
 	e3:SetCondition(c78651105.ttcon)
@@ -48,9 +46,9 @@ function c78651105.ntop(e,tp,eg,ep,ev,re,r,rp,c)
 	e1:SetValue(1900)
 	c:RegisterEffect(e1)
 end
-function c78651105.ttcon(e,c)
+function c78651105.ttcon(e,c,minc)
 	if c==nil then return true end
-	return Duel.GetTributeCount(c)>=3
+	return minc<=3 and Duel.CheckTribute(c,3)
 end
 function c78651105.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)

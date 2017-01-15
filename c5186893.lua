@@ -24,22 +24,17 @@ end
 function c5186893.otfilter(c,tp)
 	return c:IsRace(RACE_ZOMBIE) and (c:IsControler(tp) or c:IsFaceup())
 end
-function c5186893.otcon(e,c)
+function c5186893.otcon(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local mg=Duel.GetMatchingGroup(c5186893.otfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<=0 then mg=mg:Filter(Card.IsControler,nil,tp) end
-	return c:GetLevel()>6 and ft>-1 and Duel.GetTributeCount(c,mg)>0
+	return c:GetLevel()>6 and minc<=1 and Duel.CheckTribute(c,1,1,mg)
 end
 function c5186893.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetMatchingGroup(c5186893.otfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
-		mg=mg:Filter(Card.IsControler,nil,tp)
-	end
 	local sg=Duel.SelectTribute(tp,c,1,1,mg)
 	c:SetMaterial(sg)
-	Duel.Release(sg, REASON_SUMMON+REASON_MATERIAL)
+	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end
 function c5186893.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

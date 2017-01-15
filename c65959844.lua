@@ -36,9 +36,9 @@ function c65959844.initial_effect(c)
 	e4:SetOperation(c65959844.desop)
 	c:RegisterEffect(e4)
 end
-function c65959844.ntcon(e,c)
+function c65959844.ntcon(e,c,minc)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
+	return minc==0 and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c65959844.nttg(e,c)
 	return c:IsLevelAbove(5) and c:IsType(TYPE_DUAL)

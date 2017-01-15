@@ -35,7 +35,7 @@ function c1003840.cfilter(c,e,tp)
 		and Duel.IsExistingMatchingCard(c1003840.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,lv)
 end
 function c1003840.spfilter(c,e,tp,lv)
-	return c:IsSetCard(0x17) and c:GetLevel()~=lv and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x1017) and c:GetLevel()~=lv and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c1003840.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c1003840.cfilter,1,nil,e,tp) end

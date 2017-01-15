@@ -16,7 +16,7 @@ function c16114248.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c16114248.filter(c,fc)
-	return c:IsRace(RACE_MACHINE) and c:IsCanBeFusionMaterial(fc)
+	return c:IsRace(RACE_MACHINE) and not c:IsHasEffect(6205579) and c:IsCanBeFusionMaterial(fc)
 end
 function c16114248.spfilter(c,mg)
 	return mg:IsExists(c16114248.spfilter2,1,c,c)

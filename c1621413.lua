@@ -19,7 +19,7 @@ function c1621413.initial_effect(c)
 	--disable
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(1621413,1))
-	e2:SetCategory(CATEGORY_DESTROY+CATEGORY_DISABLE+CATEGORY_SPECIAL_SUMMON)
+	e2:SetCategory(CATEGORY_DESTROY+CATEGORY_NEGATE+CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
@@ -66,12 +66,12 @@ function c1621413.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c1621413.discon(e,tp,eg,ep,ev,re,r,rp)
-	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and rp~=tp and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainDisablable(ev)
+	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and rp~=tp and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
 		and e:GetHandler():GetOverlayGroup():IsExists(Card.IsCode,1,nil,16195942)
 end
 function c1621413.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
@@ -80,15 +80,13 @@ function c1621413.spfilter(c,e,tp)
 	return c:IsType(TYPE_XYZ) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c1621413.disop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateEffect(ev)
-	if re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)>0 then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)>0 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-		local g=Duel.GetMatchingGroup(c1621413.spfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
+		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c1621413.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(1621413,2)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,1,nil)
-			if sg:GetFirst():IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

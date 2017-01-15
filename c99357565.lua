@@ -66,8 +66,8 @@ function c99357565.spop(e,tp,eg,ep,ev,re,r,rp,chk)
 	if ft>=ct then
 		if ft>1 and ct>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,c99357565.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,ct,ct,nil,e,tp)
-		if g:GetCount()>0 and not g:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c99357565.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,ct,ct,nil,e,tp)
+		if g:GetCount()>0 then
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

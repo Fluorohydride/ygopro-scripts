@@ -32,9 +32,8 @@ function c62437430.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local tc=Duel.SelectMatchingCard(tp,c62437430.filter,tp,0x16,0,1,1,nil):GetFirst()
-	if tc and not tc:IsHasEffect(EFFECT_NECRO_VALLEY)
-		and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED) then
+	local tc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c62437430.filter),tp,0x16,0,1,1,nil):GetFirst()
+	if tc and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED) then
 		tc:RegisterFlagEffect(62437430,RESET_EVENT+0x1fe0000,0,0)
 		e:GetLabelObject():SetLabelObject(tc)
 	end

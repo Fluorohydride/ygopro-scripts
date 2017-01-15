@@ -27,12 +27,13 @@ function c28297833.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetFieldGroup(tp,LOCATION_REMOVED,LOCATION_REMOVED)
 	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+	local ct=g:FilterCount(Card.IsLocation,nil,LOCATION_DECK)
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetReset(RESET_EVENT+0x1ff0000)
-		e1:SetValue(g:GetCount()*100)
+		e1:SetValue(ct*100)
 		c:RegisterEffect(e1)
 	end
 end

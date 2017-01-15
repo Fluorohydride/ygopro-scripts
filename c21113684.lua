@@ -60,7 +60,7 @@ function c21113684.splimit(e,se,sp,st)
 	return true
 end
 function c21113684.ffilter(c)
-	return c:IsType(TYPE_SYNCHRO) and c:IsRace(RACE_SPELLCASTER)
+	return c:IsFusionType(TYPE_SYNCHRO) and c:IsRace(RACE_SPELLCASTER)
 end
 function c21113684.attackup(e,c)
 	return c:GetCounter(0x1)*1000

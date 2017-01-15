@@ -10,11 +10,8 @@ function c48144509.initial_effect(c)
 	e1:SetOperation(c48144509.activate)
 	c:RegisterEffect(e1)
 end
-function c48144509.filter0(c)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
-end
 function c48144509.filter1(c,e)
-	return c:IsCanBeFusionMaterial() and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
+	return c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
 end
 function c48144509.exfilter0(c)
 	return c:IsSetCard(0x99) and c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
@@ -40,7 +37,7 @@ end
 function c48144509.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
-		local mg1=Duel.GetMatchingGroup(c48144509.filter0,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
+		local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsAbleToGrave,nil)
 		if Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>1 then
 			local sg=Duel.GetMatchingGroup(c48144509.exfilter0,tp,LOCATION_EXTRA,0,nil)
 			mg1:Merge(sg)
@@ -61,7 +58,7 @@ function c48144509.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c48144509.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
-	local mg1=Duel.GetMatchingGroup(c48144509.filter1,tp,LOCATION_HAND+LOCATION_MZONE,0,nil,e)
+	local mg1=Duel.GetFusionMaterial(tp):Filter(c48144509.filter1,nil,e)
 	if Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>1 then
 		local sg=Duel.GetMatchingGroup(c48144509.exfilter1,tp,LOCATION_EXTRA,0,nil,e)
 		mg1:Merge(sg)

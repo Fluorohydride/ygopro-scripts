@@ -19,7 +19,7 @@ function c90555947.initial_effect(c)
 end
 c90555947.miracle_synchro_fusion=true
 function c90555947.ffilter(c)
-	return c:IsFusionAttribute(ATTRIBUTE_EARTH) and c:IsType(TYPE_SYNCHRO)
+	return c:IsFusionAttribute(ATTRIBUTE_EARTH) and c:IsFusionType(TYPE_SYNCHRO)
 end
 function c90555947.discon(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) then return false end
@@ -39,8 +39,7 @@ function c90555947.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c90555947.disop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateActivation(ev)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

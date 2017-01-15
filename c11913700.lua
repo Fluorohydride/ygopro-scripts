@@ -18,8 +18,9 @@ function c11913700.initial_effect(c)
 	e4:SetOperation(c11913700.spop)
 	c:RegisterEffect(e4)
 end
+
 function c11913700.filter(c)
-	return c:IsSetCard(0x9) and c:IsType(TYPE_FUSION) and not c:IsCode(31111109)
+	return c:IsFaceup() and aux.IsMaterialListCode(c,89943723)
 end
 function c11913700.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler():GetPreviousEquipTarget()

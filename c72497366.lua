@@ -25,9 +25,9 @@ function c72497366.initial_effect(c)
 	e3:SetValue(1)
 	c:RegisterEffect(e3)
 end
-function c72497366.ntcon(e,c)
+function c72497366.ntcon(e,c,minc)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
+	return minc==0 and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c72497366.nttg(e,c)
 	return c:IsLevelAbove(5) and c:IsRace(RACE_FIEND)

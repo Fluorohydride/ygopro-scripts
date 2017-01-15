@@ -40,10 +40,10 @@ end
 function c80230510.rmfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
-function c80230510.otcon(e,c)
+function c80230510.otcon(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	return minc<=2 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c80230510.rmfilter,tp,LOCATION_GRAVE,0,1,nil)
 		and Duel.IsExistingMatchingCard(c80230510.rmfilter,tp,0,LOCATION_GRAVE,1,nil)
 end

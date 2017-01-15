@@ -27,12 +27,11 @@ function c6459419.activate(e,tp,eg,ep,ev,re,r,rp)
 	if ft>ct then ft=ct end
 	if ft<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-	local sg=Duel.GetMatchingGroup(c6459419.spfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
+	local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c6459419.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
 	if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(6459419,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local fg=sg:Select(tp,ft,ft,nil)
-		if fg:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 		Duel.SpecialSummon(fg,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end

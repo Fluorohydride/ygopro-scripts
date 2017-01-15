@@ -21,13 +21,9 @@ function c24425055.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c24425055.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-	local g=Duel.SelectMatchingCard(tp,c24425055.filter2,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c24425055.filter2),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
-		if tc:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then
-			Duel.NegateEffect(0)
-			return
-		end
 		Duel.SSet(tp,tc)
 		Duel.ConfirmCards(1-tp,tc)
 		local e1=Effect.CreateEffect(e:GetHandler())

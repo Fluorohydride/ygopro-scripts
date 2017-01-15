@@ -36,9 +36,9 @@ function c21208154.initial_effect(c)
 	e6:SetOperation(c21208154.regop)
 	c:RegisterEffect(e6)
 end
-function c21208154.ttcon(e,c)
+function c21208154.ttcon(e,c,minc)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-3 and Duel.GetTributeCount(c)>=3
+	return minc<=3 and Duel.CheckTribute(c,3)
 end
 function c21208154.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectTribute(tp,c,3,3)

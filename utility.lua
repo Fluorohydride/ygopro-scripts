@@ -1753,7 +1753,7 @@ end
 --filter for necro_valley test
 function Auxiliary.NecroValleyFilter(f)
 	return	function(target,...)
-				return f(target,...) and not target:IsHasEffect(EFFECT_NECRO_VALLEY)
+        return f(target,...) and not (target:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0))
 			end
 end
 --add procedure to equip spells equipping by rule

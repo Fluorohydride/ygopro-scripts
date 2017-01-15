@@ -34,9 +34,9 @@ end
 function c89397517.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
-	local rmg=Duel.GetMatchingGroup(c89397517.rmfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,nil)
+	local rmg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c89397517.rmfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil)
 	local rmct=rmg:GetClassCount(Card.GetCode)
-	local spg=Duel.GetMatchingGroup(c89397517.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,nil,e,tp)
+	local spg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c89397517.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,nil,e,tp)
 	local spct=spg:GetClassCount(Card.GetCode)
 	local ct=math.min(3,ft,spct,rmct)
 	if ct==0 then return end
@@ -48,14 +48,12 @@ function c89397517.activate(e,tp,eg,ep,ev,re,r,rp)
 		g:AddCard(tc)
 		ct=ct-1
 	until ct<1 or not Duel.SelectYesNo(tp,aux.Stringid(89397517,0))
-	if g:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then return end
 	Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 	ct=g:FilterCount(Card.IsLocation,nil,LOCATION_REMOVED)
 	while ct>0 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=spg:Select(tp,1,1,nil):GetFirst()
 		spg:Remove(Card.IsCode,nil,tc:GetCode())
-		if tc:IsHasEffect(EFFECT_NECRO_VALLEY) then return end
 		Duel.SpecialSummonStep(tc,0,tp,tp,true,true,POS_FACEUP)
 		tc:CompleteProcedure()
 		ct=ct-1

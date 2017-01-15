@@ -2,13 +2,7 @@
 function c77693536.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	local e0=Effect.CreateEffect(c)
-	e0:SetType(EFFECT_TYPE_SINGLE)
-	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e0:SetCode(EFFECT_FUSION_MATERIAL)
-	e0:SetCondition(c77693536.fscon)
-	e0:SetOperation(c77693536.fsop)
-	c:RegisterEffect(e0)
+	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0xe1),aux.FilterBoolFunction(Card.IsFusionType,TYPE_NORMAL),true)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -32,87 +26,13 @@ function c77693536.initial_effect(c)
 	c:RegisterEffect(e2)
 	--equip fusion material
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetCode(77693536)
-	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_EXTRA_FUSION_MATERIAL)
 	e3:SetRange(LOCATION_MZONE)
+	e3:SetTargetRange(LOCATION_SZONE,0)
+	e3:SetTarget(c77693536.mttg)
+	e3:SetValue(c77693536.mtval)
 	c:RegisterEffect(e3)
-end
-function c77693536.filter1(c)
-	return c:IsFusionSetCard(0xe1)
-end
---additional condition for 77693536 effect
-function c77693536.filter2(c)
-	if c:IsLocation(LOCATION_MZONE) then
-		return c:IsType(TYPE_NORMAL)
-	else
-		return bit.band(c:GetOriginalType(),TYPE_NORMAL)~=0
-	end
-end
-function c77693536.fscon(e,g,gc,chkfnf)
-	if g==nil then return true end
-	local f1=c77693536.filter1
-	local f2=c77693536.filter2
-	local chkf=bit.band(chkfnf,0xff)
-	local tp=e:GetHandlerPlayer()
-	local fg=Duel.GetMatchingGroup(Card.IsHasEffect,tp,LOCATION_MZONE,0,nil,77693536)
-	local fc=fg:GetFirst()
-	while fc do
-		g:Merge(fc:GetEquipGroup():Filter(Card.IsControler,nil,tp))
-		fc=fg:GetNext()
-	end
-	local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler(),true)
-	if gc then
-		if not gc:IsCanBeFusionMaterial(e:GetHandler(),true) then return false end
-		return (f1(gc) and mg:IsExists(f2,1,gc))
-			or (f2(gc) and mg:IsExists(f1,1,gc)) end
-	local g1=Group.CreateGroup() local g2=Group.CreateGroup() local fs=false
-	local tc=mg:GetFirst()
-	while tc do
-		if f1(tc) then g1:AddCard(tc) if aux.FConditionCheckF(tc,chkf) then fs=true end end
-		if f2(tc) then g2:AddCard(tc) if aux.FConditionCheckF(tc,chkf) then fs=true end end
-		tc=mg:GetNext()
-	end
-	if chkf~=PLAYER_NONE then
-		return fs and g1:IsExists(aux.FConditionFilterF2,1,nil,g2)
-	else return g1:IsExists(aux.FConditionFilterF2,1,nil,g2) end
-end
-function c77693536.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
-	local f1=c77693536.filter1
-	local f2=c77693536.filter2
-	local chkf=bit.band(chkfnf,0xff)
-	local fg=Duel.GetMatchingGroup(Card.IsHasEffect,tp,LOCATION_MZONE,0,nil,77693536)
-	local fc=fg:GetFirst()
-	while fc do
-		eg:Merge(fc:GetEquipGroup():Filter(Card.IsControler,nil,tp))
-		fc=fg:GetNext()
-	end
-	local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler(),true)
-	if gc then
-		local sg=Group.CreateGroup()
-		if f1(gc) then sg:Merge(g:Filter(f2,gc)) end
-		if f2(gc) then sg:Merge(g:Filter(f1,gc)) end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local g1=sg:Select(tp,1,1,nil)
-		Duel.SetFusionMaterial(g1)
-		return
-	end
-	local sg=g:Filter(aux.FConditionFilterF2c,nil,f1,f2)
-	local g1=nil
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	if chkf~=PLAYER_NONE then
-		g1=sg:FilterSelect(tp,aux.FConditionCheckF,1,1,nil,chkf)
-	else g1=sg:Select(tp,1,1,nil) end
-	local tc1=g1:GetFirst()
-	sg:RemoveCard(tc1)
-	local b1=f1(tc1)
-	local b2=f2(tc1)
-	if b1 and not b2 then sg:Remove(aux.FConditionFilterF2r,nil,f1,f2) end
-	if b2 and not b1 then sg:Remove(aux.FConditionFilterF2r,nil,f2,f1) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g2=sg:Select(tp,1,1,nil)
-	g1:Merge(g2)
-	Duel.SetFusionMaterial(g1)
 end
 function c77693536.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
@@ -156,4 +76,11 @@ function c77693536.eqop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c77693536.eqlimit(e,c)
 	return e:GetOwner()==c
+end
+function c77693536.mttg(e,c)
+	return c:GetEquipTarget()==e:GetHandler()
+end
+function c77693536.mtval(e,c)
+	if not c then return false end
+	return c:IsSetCard(0xe1)
 end

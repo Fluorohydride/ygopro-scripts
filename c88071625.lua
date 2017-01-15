@@ -44,22 +44,14 @@ function c88071625.initial_effect(c)
 	e6:SetOperation(c88071625.copyop)
 	c:RegisterEffect(e6)
 end
-function c88071625.otcon(e,c)
+function c88071625.otcon(e,c,minc)
 	if c==nil then return true end
-	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local mg=nil
-	if ft<=0 then mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0) end
-	return c:GetLevel()>6 and ft>-1 and Duel.GetTributeCount(c,mg)>0
+	return c:GetLevel()>6 and minc<=1 and Duel.CheckTribute(c,1)
 end
 function c88071625.otop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=nil
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
-		mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
-	end
-	local sg=Duel.SelectTribute(tp,c,1,1,mg)
+	local sg=Duel.SelectTribute(tp,c,1,1)
 	c:SetMaterial(sg)
-	Duel.Release(sg, REASON_SUMMON+REASON_MATERIAL)
+	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end
 function c88071625.valcheck(e,c)
 	local g=c:GetMaterial()

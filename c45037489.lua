@@ -17,7 +17,7 @@ function c45037489.initial_effect(c)
 	e1:SetOperation(c45037489.disop)
 	c:RegisterEffect(e1)
 end
-c45037489.material_setcode=0x17
+c45037489.material_setcode=0x1017
 function c45037489.tfilter(c)
 	return c:IsCode(19642774) or c:IsHasEffect(20932152)
 end
@@ -35,8 +35,7 @@ end
 function c45037489.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsFaceup() or not c:IsRelateToEffect(e) then return end
-	Duel.NegateActivation(ev)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

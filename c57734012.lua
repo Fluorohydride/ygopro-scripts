@@ -64,9 +64,9 @@ function c57734012.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(tp,57734012,0,0,0)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g1=Duel.SelectMatchingCard(tp,c57734012.filter1,tp,LOCATION_GRAVE+LOCATION_EXTRA,0,1,1,nil,e,tp)
+	local g1=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c57734012.filter1),tp,LOCATION_GRAVE+LOCATION_EXTRA,0,1,1,nil,e,tp)
 	local tc1=g1:GetFirst()
-	if tc1 and not tc1:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.SpecialSummon(tc1,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if tc1 and Duel.SpecialSummon(tc1,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local m=_G["c"..tc1:GetCode()]
 		if not m then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
