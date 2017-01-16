@@ -58,6 +58,7 @@ function c69327790.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if e:GetLabel()==1
 		and Duel.IsExistingTarget(Card.IsAbleToHand,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,g1:GetFirst())
 		and Duel.SelectYesNo(tp,aux.Stringid(69327790,2)) then
+		e:SetCategory(CATEGORY_TODECK+CATEGORY_TOHAND)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 		local g3=Duel.SelectTarget(tp,Card.IsAbleToHand,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,g1:GetFirst())
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,g3,1,0,0)
