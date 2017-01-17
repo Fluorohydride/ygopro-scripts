@@ -51,7 +51,7 @@ function c18175965.initial_effect(c)
 	--special summon 2
 	local e8=Effect.CreateEffect(c)
 	e8:SetDescription(aux.Stringid(18175965,2))
-	e8:SetCategory(CATEGORY_TOGRAVE+CATEGORY_SPECIAL_SUMMON)
+	e8:SetCategory(CATEGORY_HANDES+CATEGORY_SPECIAL_SUMMON)
 	e8:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e8:SetCode(EVENT_TO_GRAVE)
 	e8:SetCondition(c18175965.spcon2)
