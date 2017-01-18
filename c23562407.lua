@@ -1,29 +1,13 @@
 --聖剣カリバーン
 function c23562407.initial_effect(c)
 	c:SetUniqueOnField(1,0,23562407)
-	aux.AddEquipProcedure(c,0,c23562407.eqfilter1)
-	--Activate
-	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_EQUIP)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e1:SetTarget(c23562407.target)
-	e1:SetOperation(c23562407.operation)
-	c:RegisterEffect(e1)
+	aux.AddEquipProcedure(c,0,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR))
 	--Atk up
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_EQUIP)
 	e2:SetCode(EFFECT_UPDATE_ATTACK)
 	e2:SetValue(500)
 	c:RegisterEffect(e2)
-	--Equip limit
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetCode(EFFECT_EQUIP_LIMIT)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetValue(c23562407.eqlimit)
-	c:RegisterEffect(e3)
 	--lp
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(23562407,0))
@@ -46,9 +30,6 @@ function c23562407.initial_effect(c)
 	e5:SetTarget(c23562407.eqtg)
 	e5:SetOperation(c23562407.operation)
 	c:RegisterEffect(e5)
-end
-function c23562407.eqfilter1(c)
-	return c:IsRace(RACE_WARRIOR)
 end
 function c23562407.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
