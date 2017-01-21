@@ -7,7 +7,7 @@ function c51497409.initial_effect(c)
 	e1:SetDescription(aux.Stringid(51497409,0))
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_PLAYER_TARGET)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
 	e1:SetCost(c51497409.cost)
@@ -37,16 +37,13 @@ function c51497409.ddtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.IsExistingTarget(c51497409.ddfilter,tp,LOCATION_ONFIELD,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c51497409.ddfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
-	Duel.SetTargetPlayer(tp)
-	Duel.SetTargetParam(1)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c51497409.ddop(e,tp,eg,ep,ev,re,r,rp)
-	local g,p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
-	g=g:Filter(Card.IsRelateToEffect,nil,e)
-	if g:GetCount()>0 and Duel.Destroy(g,REASON_EFFECT)>0 then
-		Duel.Draw(p,d,REASON_EFFECT)
+	local tc=Duel.GetFirstTarget()
+	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)>0 then
+		Duel.Draw(tp,1,REASON_EFFECT)
 	end
 end
 function c51497409.incon(e,tp,eg,ep,ev,re,r,rp)

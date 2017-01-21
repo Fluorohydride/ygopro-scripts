@@ -66,11 +66,12 @@ end
 function c122520.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local t=Duel.GetAttackTarget()
 	if chk==0 then return Duel.GetAttacker()==e:GetHandler() and t~=nil end
+	Duel.SetTargetCard(t)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,t,1,0,0)
 end
 function c122520.desop(e,tp,eg,ep,ev,re,r,rp)
-	local t=Duel.GetAttackTarget()
-	if t~=nil and t:IsRelateToBattle() then
+	local t=Duel.GetFirstTarget()
+	if t:IsRelateToBattle() then
 		Duel.Destroy(t,REASON_EFFECT)
 	end
 end

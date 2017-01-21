@@ -6,7 +6,7 @@ function c60832978.initial_effect(c)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
 	e1:SetTarget(c60832978.target1)
-	e1:SetOperation(c60832978.operation)
+	e1:SetOperation(c60832978.operation1)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
@@ -19,7 +19,7 @@ function c60832978.initial_effect(c)
 	e3:SetCountLimit(1,60832978)
 	e3:SetCost(c60832978.cost)
 	e3:SetTarget(c60832978.target2)
-	e3:SetOperation(c60832978.operation)
+	e3:SetOperation(c60832978.operation2)
 	c:RegisterEffect(e3)
 end
 function c60832978.filter1(c)
@@ -31,7 +31,7 @@ function c60832978.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c60832978.filter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
-function c60832978.operation(e,tp,eg,ep,ev,re,r,rp)
+function c60832978.operation1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
@@ -55,4 +55,16 @@ function c60832978.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c60832978.filter2,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c60832978.filter2,tp,LOCATION_MZONE,0,1,1,nil)
+end
+function c60832978.operation2(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local tc=Duel.GetFirstTarget()
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRace(RACE_FIEND) then
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_ADD_TYPE)
+		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e1:SetValue(TYPE_TUNER)
+		tc:RegisterEffect(e1)
+	end
 end

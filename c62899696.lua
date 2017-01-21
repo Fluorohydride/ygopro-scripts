@@ -32,12 +32,14 @@ function c62899696.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c62899696.filter(tc,c,tp)
 	if not tc:IsFaceup() or not tc:IsCanBeSynchroMaterial() then return false end
+	c:RegisterFlagEffect(62899696,0,0,1)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SYNCHRO_MATERIAL)
 	tc:RegisterEffect(e1)
 	local mg=Group.FromCards(c,tc)
 	local res=Duel.IsExistingMatchingCard(c62899696.synfilter,tp,LOCATION_EXTRA,0,1,nil,mg)
+	c:ResetFlagEffect(62899696)
 	e1:Reset()
 	return res
 end
@@ -45,22 +47,11 @@ function c62899696.synfilter(c,mg)
 	return c:IsAttribute(ATTRIBUTE_WIND) and c:IsSynchroSummonable(nil,mg)
 end
 function c62899696.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local c=e:GetHandler()
-	c:RegisterFlagEffect(62899696,0,0,1)
-	if chkc then
-		local res=chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c62899696.filter(chkc,c,tp)
-		c:ResetFlagEffect(62899696)
-		return res
-	end
-	if chk==0 then
-		local res=Duel.IsExistingTarget(c62899696.filter,tp,0,LOCATION_MZONE,1,nil,c,tp)
-		c:ResetFlagEffect(62899696)
-		return res
-	end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c62899696.filter(chkc,e:GetHandler(),tp) end
+	if chk==0 then return Duel.IsExistingTarget(c62899696.filter,tp,0,LOCATION_MZONE,1,nil,e:GetHandler(),tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c62899696.filter,tp,0,LOCATION_MZONE,1,1,nil,c,tp)
+	Duel.SelectTarget(tp,c62899696.filter,tp,0,LOCATION_MZONE,1,1,nil,e:GetHandler(),tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
-	c:ResetFlagEffect(62899696)
 end
 function c62899696.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -21,6 +21,7 @@ function c76647978.initial_effect(c)
 	e2:SetTarget(c76647978.sptg)
 	e2:SetOperation(c76647978.spop)
 	c:RegisterEffect(e2)
+	e1:SetLabelObject(e2)
 end
 function c76647978.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,2000) end
@@ -71,22 +72,23 @@ function c76647978.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 	tc:RegisterFlagEffect(76647978,RESET_EVENT+0x1fe0000,0,1)
 	tc:CompleteProcedure()
+	e:GetLabelObject():SetLabelObject(tc)
 end
 function c76647978.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c76647978.mgfilter(c,e,tp,fusc,mg)
-	return not c:IsControler(tp) or not c:IsLocation(LOCATION_GRAVE)
-		or bit.band(c:GetReason(),0x40008)~=0x40008 or c:GetReasonCard()~=fusc
-		or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsHasEffect(EFFECT_NECRO_VALLEY)
-		or not fusc:CheckFusionMaterial(mg,c)
+	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE)
+		and bit.band(c:GetReason(),0x40008)==0x40008 and c:GetReasonCard()==fusc
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and fusc:CheckFusionMaterial(mg,c)
 end
 function c76647978.spfilter(c,e,tp,lc)
-	if c:IsFaceup() and c:GetFlagEffect(76647978)~=0 then
+	if c:IsFaceup() and c:GetFlagEffect(76647978)~=0 and c==e:GetLabelObject() then
 		local mg=c:GetMaterial()
 		return mg:GetCount()>0 and mg:GetCount()<=lc
-			and not mg:IsExists(c76647978.mgfilter,1,nil,e,tp,c,mg)
+			and mg:IsExists(c76647978.mgfilter,1,nil,e,tp,c,mg)
 			and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 	else return false end
 end
@@ -104,7 +106,7 @@ function c76647978.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not tc:IsRelateToEffect(e) then return end
 	local mg=tc:GetMaterial()
 	if mg:GetCount()>0 and mg:GetCount()<=Duel.GetLocationCount(tp,LOCATION_MZONE)
-		and not mg:IsExists(c76647978.mgfilter,1,nil,e,tp,tc) and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
+		and mg:IsExists(c76647978.mgfilter,1,nil,e,tp,tc) and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
 		local sc=mg:GetFirst()
 		while sc do
 			if Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEUP) then

@@ -50,6 +50,7 @@ function c69610326.pctg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c69610326.pcop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	if not c:IsRelateToEffect(e) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
@@ -58,7 +59,6 @@ function c69610326.pcop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTarget(c69610326.splimit)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	if not c:IsRelateToEffect(e) then return end
 	local seq=c:GetSequence()
 	if not Duel.CheckLocation(tp,LOCATION_SZONE,13-seq) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)

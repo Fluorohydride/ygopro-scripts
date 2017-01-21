@@ -8,6 +8,7 @@ function c9000988.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_PZONE)
+	e1:SetCountLimit(1)
 	e1:SetCondition(c9000988.condition)
 	e1:SetTarget(c9000988.target)
 	e1:SetOperation(c9000988.operation)
@@ -37,7 +38,7 @@ function c9000988.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c9000988.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c9000988.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g=Duel.SelectTarget(tp,c9000988.filter,tp,LOCATION_MZONE,0,1,1,nil)
+	Duel.SelectTarget(tp,c9000988.filter,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function c9000988.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
