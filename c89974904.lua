@@ -10,9 +10,13 @@ function c89974904.initial_effect(c)
 	e1:SetOperation(c89974904.activate)
 	c:RegisterEffect(e1)
 end
+function c89974904.cfilter(c,tc)
+	return c:IsRace(RACE_DRAGON+RACE_FIEND) and c:IsAttribute(ATTRIBUTE_DARK)
+		and c:IsSynchroSummonable(tc)
+end
 function c89974904.spfilter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,182,tp,false,false)
-		and Duel.IsExistingMatchingCard(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,nil,c)
+		and Duel.IsExistingMatchingCard(c89974904.cfilter,tp,LOCATION_EXTRA,0,1,nil,c)
 end
 function c89974904.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c89974904.spfilter(chkc,e,tp) end
@@ -36,7 +40,7 @@ function c89974904.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		tc:RegisterEffect(e2)
 		Duel.SpecialSummonComplete()
-		local g=Duel.GetMatchingGroup(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,nil,tc)
+		local g=Duel.GetMatchingGroup(c89974904.cfilter,tp,LOCATION_EXTRA,0,nil,tc)
 		if g:GetCount()>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,1,nil)
