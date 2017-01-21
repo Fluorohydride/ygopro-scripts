@@ -33,6 +33,25 @@ function c76794549.initial_effect(c)
 	e3:SetTarget(c76794549.hntg)
 	e3:SetOperation(c76794549.hnop)
 	c:RegisterEffect(e3)
+	if not c76794549.global_check then
+		c76794549.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_DESTROYED)
+		ge1:SetOperation(c76794549.checkop)
+		Duel.RegisterEffect(ge1,0)
+	end
+end
+function c76794549.checkop(e,tp,eg,ep,ev,re,r,rp)
+	local tc=eg:GetFirst()
+	while tc do
+		if tc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) then
+			tc:RegisterFlagEffect(76794549,RESET_EVENT+0x1f20000+RESET_PHASE+PHASE_END,0,1)
+		elseif tc:IsLocation(LOCATION_EXTRA) then
+			tc:RegisterFlagEffect(76794549,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		end
+		tc=eg:GetNext()
+	end
 end
 function c76794549.rpfilter(c,e,tp)
 	return c:IsCode(94415058) and (not c:IsForbidden()
@@ -75,7 +94,7 @@ function c76794549.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end
 function c76794549.thfilter1(c,tp,id)
-	return c:IsType(TYPE_MONSTER) and c:IsReason(REASON_DESTROY) and c:GetTurnID()==id
+	return c:IsType(TYPE_MONSTER) and c:GetFlagEffect(76794549)~=0
 		and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())
 		and Duel.IsExistingMatchingCard(c76794549.thfilter2,tp,LOCATION_DECK,0,1,nil,c:GetCode())
 end
