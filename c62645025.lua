@@ -20,7 +20,7 @@ function c62645025.initial_effect(c)
 	e2:SetCost(c62645025.drcost)
 	e2:SetTarget(c62645025.drtg)
 	e2:SetOperation(c62645025.drop)
-	c:RegisterEffect(e1)
+	c:RegisterEffect(e2)
 end
 function c62645025.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp)

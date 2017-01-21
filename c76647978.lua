@@ -106,7 +106,7 @@ function c76647978.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not tc:IsRelateToEffect(e) then return end
 	local mg=tc:GetMaterial()
 	if mg:GetCount()>0 and mg:GetCount()<=Duel.GetLocationCount(tp,LOCATION_MZONE)
-		and mg:IsExists(c76647978.mgfilter,1,nil,e,tp,tc) and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
+		and mg:IsExists(c76647978.mgfilter,1,nil,e,tp,tc,mg) and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
 		local sc=mg:GetFirst()
 		while sc do
 			if Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEUP) then

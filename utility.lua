@@ -1587,7 +1587,7 @@ function Auxiliary.PendOperation()
 				if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 				local tg=nil
 				if og then
-					tg=og:Filter(tp,Auxiliary.PConditionFilter,nil,e,tp,lscale,rscale)
+					tg=og:Filter(Auxiliary.PConditionFilter,nil,e,tp,lscale,rscale)
 				else
 					tg=Duel.GetMatchingGroup(Auxiliary.PConditionFilter,tp,LOCATION_HAND+LOCATION_EXTRA,0,nil,e,tp,lscale,rscale)
 				end
