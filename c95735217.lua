@@ -35,6 +35,7 @@ function c95735217.initial_effect(c)
 end
 function c95735217.atcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker()==e:GetHandler() and aux.bdcon(e,tp,eg,ep,ev,re,r,rp)
+		and e:GetHandler():IsChainAttackable(0)
 end
 function c95735217.costfilter(c)
 	return c:IsRace(RACE_MACHINE) and c:IsDiscardable()
@@ -57,8 +58,9 @@ function c95735217.thfilter2(c)
 end
 function c95735217.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c95735217.thfilter1,tp,LOCATION_DECK,0,1,nil)
-	 	and Duel.IsExistingMatchingCard(c95735217.thfilter2,tp,LOCATION_GRAVE,0,1,e:GetHandler()) end
+		and Duel.IsExistingMatchingCard(c95735217.thfilter2,tp,LOCATION_GRAVE,0,1,e:GetHandler()) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,2,tp,LOCATION_DECK+LOCATION_GRAVE)
+	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,nil,1,tp,LOCATION_GRAVE)
 end
 function c95735217.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
@@ -67,8 +69,9 @@ function c95735217.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(g1,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g1)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g2=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c95735217.thfilter2),tp,LOCATION_GRAVE,0,1,1,e:GetHandler())
+		local g2=Duel.SelectMatchingCard(tp,c95735217.thfilter2,tp,LOCATION_GRAVE,0,1,1,e:GetHandler())
 		if g2:GetCount()>0 then
+			Duel.HintSelection(g2)
 			Duel.SendtoHand(g2,nil,REASON_EFFECT)
 		end
 	end
