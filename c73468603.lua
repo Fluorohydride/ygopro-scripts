@@ -23,17 +23,7 @@ function c73468603.operation(e,tp,eg,ep,ev,re,r,rp)
 	g:Remove(Card.IsCode,nil,tg1:GetFirst():GetCode())
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(73468603,1))
 	local tg2=g:Select(tp,1,1,nil)
-	local fc1=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
-	if fc1 then
-		Duel.SendtoGrave(fc1,REASON_RULE)
-		Duel.BreakEffect()
-	end
 	Duel.SSet(tp,tg1)
-	local fc2=Duel.GetFieldCard(1-tp,LOCATION_SZONE,5)
-	if fc2 then
-		Duel.SendtoGrave(fc2,REASON_RULE)
-		Duel.BreakEffect()
-	end
 	Duel.SSet(1-tp,tg2)
 	tg1:GetFirst():RegisterFlagEffect(73468603,RESET_EVENT+0x1fe0000,0,1)
 	tg2:GetFirst():RegisterFlagEffect(73468603,RESET_EVENT+0x1fe0000,0,1)

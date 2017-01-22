@@ -1,6 +1,6 @@
 --真竜剣皇マスターP
 function c21377582.initial_effect(c)
-	--summon with s & t
+	--summon with s/t
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(21377582,0))
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -47,34 +47,28 @@ end
 function c21377582.otcon(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c21377582.otfilter,tp,LOCATION_ONFIELD,0,nil)
-	return (Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and mg:GetCount()>=2)
-		or (Duel.CheckTribute(c,1) and mg:GetCount()>=1)
+	local mg=Duel.GetMatchingGroup(c21377582.otfilter,tp,LOCATION_SZONE,0,nil)
+	return c:GetLevel()>6 and minc<=2
+		and (Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and mg:GetCount()>=2
+			or Duel.CheckTribute(c,1) and mg:GetCount()>=1)
+		or c:GetLevel()>4 and c:GetLevel()<=6 and minc<=1
+			and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and mg:GetCount()>=1
 end
 function c21377582.otop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c21377582.otfilter,tp,LOCATION_ONFIELD,0,nil)
-	local ct=2
-	local g=Group.CreateGroup()
-	if Duel.GetTributeCount(c)<ct then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local g2=mg:Select(tp,ct-Duel.GetTributeCount(c),ct-Duel.GetTributeCount(c),nil)
+	local mg=Duel.GetMatchingGroup(c21377582.otfilter,tp,LOCATION_SZONE,0,nil)
+	local b1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and mg:GetCount()>=2
+	local b2=Duel.CheckTribute(c,1)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local g=mg:Select(tp,1,1,nil)
+	if c:GetLevel()>6 then
+		local g2=nil
+		if b1 and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(21377582,1))) then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+			g2=mg:Select(tp,1,1,g:GetFirst())
+		else
+			g2=Duel.SelectTribute(tp,c,1,1)
+		end
 		g:Merge(g2)
-		mg:Sub(g2)
-		ct=ct-g2:GetCount()
-	end
-	if ct>0 and Duel.GetTributeCount(c)>=ct and mg:GetCount()>0
-		and (g:GetCount()==0 or Duel.SelectYesNo(tp,aux.Stringid(21377582,1))) then
-		local ect=ct
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then ect=ect-1 end
-		ect=math.min(mg:GetCount(),ect)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local g3=mg:Select(tp,1,ect,nil)
-		g:Merge(g3)
-		ct=ct-g3:GetCount()
-	end
-	if ct>0 then
-		local g4=Duel.SelectTribute(tp,c,ct,ct)
-		g:Merge(g4)
 	end
 	c:SetMaterial(g)
 	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)

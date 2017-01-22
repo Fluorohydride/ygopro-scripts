@@ -1,6 +1,6 @@
 --真竜導士マジェスティM
 function c95004025.initial_effect(c)
-	--summon with 1 tribute
+	--summon with s/t
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(95004025,0))
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -29,12 +29,12 @@ end
 function c95004025.otcon(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return c:GetLevel()>4 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c95004025.otfilter,tp,LOCATION_ONFIELD,0,1,nil)
+	return c:GetLevel()>4 and minc<=1 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c95004025.otfilter,tp,LOCATION_SZONE,0,1,nil)
 end
 function c95004025.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=Duel.SelectMatchingCard(tp,c95004025.otfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
+	local sg=Duel.SelectMatchingCard(tp,c95004025.otfilter,tp,LOCATION_SZONE,0,1,1,nil)
 	c:SetMaterial(sg)
 	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end

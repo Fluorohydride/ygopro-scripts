@@ -1,6 +1,6 @@
 --真竜戦士イグニスH
 function c22499034.initial_effect(c)
-	--summon with 1 tribute
+	--summon with s/t
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(22499034,0))
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -29,12 +29,12 @@ end
 function c22499034.otcon(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return c:GetLevel()>4 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c22499034.otfilter,tp,LOCATION_ONFIELD,0,1,nil)
+	return c:GetLevel()>4 and minc<=1 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c22499034.otfilter,tp,LOCATION_SZONE,0,1,nil)
 end
 function c22499034.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=Duel.SelectMatchingCard(tp,c22499034.otfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
+	local sg=Duel.SelectMatchingCard(tp,c22499034.otfilter,tp,LOCATION_SZONE,0,1,1,nil)
 	c:SetMaterial(sg)
 	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end
@@ -43,7 +43,7 @@ function c22499034.thcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c22499034.thfilter(c,tp)
 	return c:IsSetCard(0xf9) and c:GetType()==0x20002
-		and (c:IsAbleToHand() or (c:GetActivateEffect():IsActivatable(tp) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0))
+		and (c:IsAbleToHand() or c:GetActivateEffect():IsActivatable(tp))
 end
 function c22499034.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c22499034.thfilter,tp,LOCATION_DECK,0,1,nil,tp) end
@@ -55,7 +55,7 @@ function c22499034.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		local b1=tc:IsAbleToHand()
-		local b2=tc:GetActivateEffect():IsActivatable(tp) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+		local b2=tc:GetActivateEffect():IsActivatable(tp)
 		if b1 and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(22499034,2))) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tc)

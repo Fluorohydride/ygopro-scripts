@@ -99,7 +99,7 @@ function c975299.ctfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0x15) and c:IsControler(tp)
 end
 function c975299.ctcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg and eg:IsExists(c975299.ctfilter,1,nil,tp)
+	return eg:IsExists(c975299.ctfilter,1,nil,tp)
 end
 function c975299.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

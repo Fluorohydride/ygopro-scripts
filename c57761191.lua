@@ -42,41 +42,33 @@ function c57761191.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c57761191.otfilter(c)
-	return c:IsType(TYPE_CONTINUOUS) and not c:IsType(TYPE_MONSTER) and c:IsReleasable()
+	return c:IsType(TYPE_CONTINUOUS) and c:IsReleasable()
 end
 function c57761191.ttcon(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c57761191.otfilter,tp,LOCATION_ONFIELD,0,nil)
-	return (Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and mg:GetCount()>=3)
-		or (Duel.CheckTribute(c,1) and mg:GetCount()>=2)
-		or (Duel.CheckTribute(c,2) and mg:GetCount()>=1)
-		or (Duel.CheckTribute(c,3))
+	local mg=Duel.GetMatchingGroup(c57761191.otfilter,tp,LOCATION_SZONE,0,nil)
+	return minc<=3 and (Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and mg:GetCount()>=3
+		or Duel.CheckTribute(c,1) and mg:GetCount()>=2
+		or Duel.CheckTribute(c,2) and mg:GetCount()>=1
+		or Duel.CheckTribute(c,3))
 end
 function c57761191.ttop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c57761191.otfilter,tp,LOCATION_ONFIELD,0,nil)
-	local ct=3
+	local mg=Duel.GetMatchingGroup(c57761191.otfilter,tp,LOCATION_SZONE,0,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local g=Group.CreateGroup()
-	if Duel.GetTributeCount(c)<ct then
+	local ct=3
+	while mg:GetCount()>0 and (ct>1 and Duel.CheckTribute(c,ct-1) or ct>0 and ft>0)
+		and (not Duel.CheckTribute(c,ct) or Duel.SelectYesNo(tp,aux.Stringid(57761191,0))) do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local g2=mg:Select(tp,ct-Duel.GetTributeCount(c),ct-Duel.GetTributeCount(c),nil)
+		local g1=mg:Select(tp,1,1,nil)
+		g:Merge(g1)
+		mg:Sub(g1)
+		ct=ct-1
+	end
+	if g:GetCount()<3 then
+		local g2=Duel.SelectTribute(tp,c,3-g:GetCount(),3-g:GetCount())
 		g:Merge(g2)
-		mg:Sub(g2)
-		ct=ct-g2:GetCount()
-	end
-	if ct>0 and Duel.GetTributeCount(c)>=ct and mg:GetCount()>0
-		and Duel.SelectYesNo(tp,aux.Stringid(57761191,0)) then
-		local ect=ct
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then ect=ect-1 end
-		ect=math.min(mg:GetCount(),ect)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local g3=mg:Select(tp,1,ect,nil)
-		g:Merge(g3)
-		ct=ct-g3:GetCount()
-	end
-	if ct>0 then
-		local g4=Duel.SelectTribute(tp,c,ct,ct)
-		g:Merge(g4)
 	end
 	c:SetMaterial(g)
 	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)

@@ -57,15 +57,8 @@ function c86937530.thop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if Duel.IsChainDisablable(0) then
-		local sel=1
 		local g=Duel.GetMatchingGroup(c86937530.cfilter,tp,0,LOCATION_DECK+LOCATION_EXTRA,nil,tc:GetCode())
-		Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(86937530,2))
-		if g:GetCount()>0 then
-			sel=Duel.SelectOption(1-tp,1213,1214)
-		else
-			sel=Duel.SelectOption(1-tp,1214)+1
-		end
-		if sel==0 then
+		if g:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(86937530,2)) then
 			Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
 			local sg=g:Select(1-tp,1,1,nil)
 			Duel.SendtoGrave(sg,REASON_EFFECT)

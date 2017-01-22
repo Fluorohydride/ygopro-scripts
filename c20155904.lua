@@ -46,7 +46,7 @@ function c20155904.discon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:GetOriginalRace()==RACE_BEASTWARRIOR
 		and not c:IsStatus(STATUS_BATTLE_DESTROYED) and ep==1-tp
-		and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainDisablable(ev)
+		and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
 		and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET)
 		and Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS):IsContains(c)
 end
@@ -60,5 +60,5 @@ function c20155904.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
 end
 function c20155904.disop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.NegateEffect(ev)
+	Duel.NegateActivation(ev)
 end

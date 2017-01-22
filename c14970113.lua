@@ -70,7 +70,5 @@ function c14970113.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c14970113.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetOverlayCount()>0 then
-		c:RemoveOverlayCard(tp,1,1,REASON_EFFECT)
-	end
+	c:RemoveOverlayCard(tp,1,1,REASON_EFFECT)
 end

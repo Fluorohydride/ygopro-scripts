@@ -66,7 +66,7 @@ function c82821760.ctop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c82821760.rcttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	if e:GetHandler():IsCanRemoveCounter(tp,0x1f,1,REASON_EFFECT) then
+	if not e:GetHandler():IsCanRemoveCounter(tp,0x1f,1,REASON_EFFECT) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 	end
 end

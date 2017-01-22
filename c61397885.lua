@@ -86,29 +86,25 @@ function c61397885.eqcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
-function c61397885.efilter(c,e)
-	return c:IsFaceup() and c:IsType(TYPE_NORMAL) and c:IsCanBeEffectTarget(e)
+function c61397885.efilter(c,tp)
+	return c:IsFaceup() and c:IsType(TYPE_NORMAL)
+		and Duel.IsExistingMatchingCard(c61397885.eqfilter,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,nil,c)
 end
-function c61397885.eqfilter(c,g)
-	return c:IsType(TYPE_EQUIP) and c:IsSetCard(0xfa) and g:IsExists(c61397885.eqcheck,1,nil,c)
-end
-function c61397885.eqcheck(c,ec)
-	return ec:CheckEquipTarget(c)
+function c61397885.eqfilter(c,tc)
+	return c:IsType(TYPE_EQUIP) and c:IsSetCard(0xfa) and c:CheckEquipTarget(tc)
 end
 function c61397885.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local g=Duel.GetMatchingGroup(c61397885.efilter,tp,LOCATION_MZONE,0,nil,e)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c61397885.efilter(chkc,e) end
-	if chk==0 then return g:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingMatchingCard(c61397885.eqfilter,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,nil,g) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c61397885.efilter(chkc,tp) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+		and Duel.IsExistingTarget(c61397885.efilter,tp,LOCATION_MZONE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c61397885.efilter,tp,LOCATION_MZONE,0,1,1,nil,e)
+	Duel.SelectTarget(tp,c61397885.efilter,tp,LOCATION_MZONE,0,1,1,nil,tp)
 end
 function c61397885.eqop(e,tp,eg,ep,ev,re,r,rp)
-	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tc=tg:GetFirst()
+	local tc=Duel.GetFirstTarget()
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectMatchingCard(tp,c61397885.eqfilter,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,1,nil,tg)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c61397885.eqfilter),tp,LOCATION_GRAVE+LOCATION_HAND,0,1,1,nil,tc)
 	local eq=g:GetFirst()
 	if eq then
 		Duel.Equip(tp,eq,tc,true)

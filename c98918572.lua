@@ -64,5 +64,7 @@ function c98918572.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	local xc=g:GetNext()
 	if xc==e:GetLabelObject() then tc,xc=xc,tc end
-	Duel.Overlay(tc,Group.FromCards(xc))
+	if not tc:IsImmuneToEffect(e) then
+		Duel.Overlay(tc,Group.FromCards(xc))
+	end
 end

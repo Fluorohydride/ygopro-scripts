@@ -346,9 +346,8 @@ function c13331639.ddfilter(c,tp)
 	return c:IsControler(1-tp) and c:IsPreviousLocation(LOCATION_DECK)
 end
 function c13331639.ddtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=nil
-	if eg then g=eg:Filter(c13331639.ddfilter,nil,tp) end
-	if chk==0 then return g and g:GetCount()>0 end
+	local g=eg:Filter(c13331639.ddfilter,nil,tp)
+	if chk==0 then return g:GetCount()>0 end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c13331639.ddop(e,tp,eg,ep,ev,re,r,rp)
@@ -376,9 +375,9 @@ function c13331639.spfilter(c,e,tp)
 	return c:IsSetCard(0x20f8) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c13331639.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroup(c13331639.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil,e,tp)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and g:GetCount()>0 end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c13331639.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,nil,e,tp) end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK+LOCATION_EXTRA)
 end
 function c13331639.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<1 then return end
