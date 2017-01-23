@@ -65,7 +65,7 @@ function c88190790.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsType(TYPE_EQUIP) and c:IsLocation(LOCATION_SZONE) and c:IsFaceup() then
 		local ct=Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)
 		local tc=Duel.GetChainInfo(Duel.GetCurrentChain(),CHAININFO_TARGET_CARDS):GetFirst()
-		if if ct==1 and tc and c:IsRelateToEffect(re) and tc:IsRelateToEffect(re) and tc:IsFaceup() then
+		if ct==1 and tc and c:IsRelateToEffect(re) and tc:IsRelateToEffect(re) and tc:IsFaceup() then
 			Duel.Equip(tp,c,tc)
 		end
 	end

@@ -1,15 +1,6 @@
 --灼熱の槍
 function c18937875.initial_effect(c)
-	aux.AddEquipProcedure(c,PLAYER_ALL.c18937875.filter)
-	--Activate
-	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_EQUIP)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e1:SetTarget(c18937875.target)
-	e1:SetOperation(c18937875.operation)
-	c:RegisterEffect(e1)
+	aux.AddEquipProcedure(c,nil,c18937875.filter)
 	--atk up
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_EQUIP)

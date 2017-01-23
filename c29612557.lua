@@ -1,6 +1,6 @@
 --サイクロン・ブーメラン
 function c29612557.initial_effect(c)
-	aux.AddFusionProcedure(c,nil,aux.FilterBoolFunction(Card.IsCode,86188410))
+	aux.AddEquipProcedure(c,nil,aux.FilterBoolFunction(Card.IsCode,86188410))
 	--equip effect
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)

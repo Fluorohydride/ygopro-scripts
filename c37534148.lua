@@ -1,15 +1,6 @@
 --リボーンリボン
 function c37534148.initial_effect(c)
 	aux.AddEquipProcedure(c,nil,c37534148.filter)
-	--Activate
-	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_EQUIP)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e1:SetTarget(c37534148.target)
-	e1:SetOperation(c37534148.operation)
-	c:RegisterEffect(e1)
 	--Equip limit
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)

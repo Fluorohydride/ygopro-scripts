@@ -1,15 +1,6 @@
 --反目の従者
 function c21702241.initial_effect(c)
 	aux.AddEquipProcedure(c)
-	--Activate
-	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_EQUIP)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e1:SetTarget(c21702241.target)
-	e1:SetOperation(c21702241.operation)
-	c:RegisterEffect(e1)
 	--Equip limit
 	local e2=Effect.CreateEffect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

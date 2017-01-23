@@ -1,15 +1,6 @@
 --呪いのお札
 function c46967601.initial_effect(c)
 	aux.AddEquipProcedure(c)
-	--Activate
-	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_EQUIP)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e1:SetTarget(c46967601.target)
-	e1:SetOperation(c46967601.operation)
-	c:RegisterEffect(e1)
 	--damage
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(46967601,0))
