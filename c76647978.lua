@@ -84,20 +84,20 @@ function c76647978.mgfilter(c,e,tp,fusc,mg)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and fusc:CheckFusionMaterial(mg,c)
 end
-function c76647978.spfilter(c,e,tp,lc)
+function c76647978.spfilter(c,e,tp)
 	if c:IsFaceup() and c:GetFlagEffect(76647978)~=0 and c==e:GetLabelObject() then
 		local mg=c:GetMaterial()
-		return mg:GetCount()>0 and mg:GetCount()<=lc
-			and mg:IsExists(c76647978.mgfilter,1,nil,e,tp,c,mg)
+		local ct=mg:GetCount()
+		return ct>0 and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
+			and mg:FilterCount(c76647978.mgfilter,nil,e,tp,c,mg)==ct
 			and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 	else return false end
 end
 function c76647978.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local lc=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c76647978.spfilter(chkc,e,tp,lc) end
-	if chk==0 then return Duel.IsExistingTarget(c76647978.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,e,tp,lc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c76647978.spfilter(chkc,e,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c76647978.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c76647978.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,e,tp,lc)
+	Duel.SelectTarget(tp,c76647978.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_GRAVE)
 end
 function c76647978.spop(e,tp,eg,ep,ev,re,r,rp)
@@ -105,8 +105,10 @@ function c76647978.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) then return end
 	local mg=tc:GetMaterial()
-	if mg:GetCount()>0 and mg:GetCount()<=Duel.GetLocationCount(tp,LOCATION_MZONE)
-		and mg:IsExists(c76647978.mgfilter,1,nil,e,tp,tc,mg) and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
+	local ct=mg:GetCount()
+	if ct>0 and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
+		and mg:FilterCount(c76647978.mgfilter,nil,e,tp,tc,mg)==ct
+		and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
 		local sc=mg:GetFirst()
 		while sc do
 			if Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEUP) then
