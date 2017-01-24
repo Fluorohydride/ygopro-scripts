@@ -21,7 +21,7 @@ function c78274190.initial_effect(c)
 	e4:SetCode(EVENT_BATTLE_DESTROYING)
 	e4:SetRange(LOCATION_PZONE)
 	e4:SetCountLimit(1)
-	e4:SetCondition(c78274190.cacon)
+	e4:SetTarget(c78274190.catg)
 	e4:SetOperation(c78274190.caop)
 	c:RegisterEffect(e4)
 	--draw
@@ -41,19 +41,17 @@ function c78274190.sccon(e)
 	local tp=e:GetHandlerPlayer()
 	return Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_GRAVE,0,1,nil,TYPE_SPELL+TYPE_TRAP)
 end
-function c78274190.cacon(e,tp,eg,ep,ev,re,r,rp)
-	local a=Duel.GetAttacker()
-	local d=Duel.GetAttackTarget()
-	if not d then return false end
-	if a:IsStatus(STATUS_OPPO_BATTLE) and d:IsControler(tp) then a,d=d,a end
-	if a:IsSetCard(0x9a) and a:IsChainAttackable() then
-		e:SetLabelObject(a)
-		return true
-	else return false end
+function c78274190.afilter(c,tp)
+	return c:IsControler(tp) and c:IsSetCard(0x9a) and c:IsChainAttackable()
+end
+function c78274190.catg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return eg:IsExists(c78274190.afilter,1,nil,tp) end
+	local a=eg:Filter(c78274190.afilter,nil,tp):GetFirst()
+	Duel.SetTargetCard(a)
 end
 function c78274190.caop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
-	local tc=e:GetLabelObject()
+	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsControler(tp) and tc:IsRelateToBattle() then
 		Duel.ChainAttack()
 	end
