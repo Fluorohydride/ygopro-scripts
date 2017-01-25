@@ -60,7 +60,7 @@ function c98918572.xyztg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c98918572.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
-	if g:GetCount()~=2 or not e:GetHandler():IsRelateToEffect(e) then return end
+	if g:GetCount()~=2 then return end
 	local tc=g:GetFirst()
 	local xc=g:GetNext()
 	if xc==e:GetLabelObject() then tc,xc=xc,tc end
