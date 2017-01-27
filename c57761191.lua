@@ -58,7 +58,7 @@ function c57761191.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local g=Group.CreateGroup()
 	local ct=3
-	while mg:GetCount()>0 and (ct>1 and Duel.CheckTribute(c,ct-1) or ct>0 and ft>0)
+	while mg:GetCount()>0 and (ct>2 and Duel.CheckTribute(c,ct-2) or ct>1 and Duel.CheckTribute(c,ct-1) or ct>0 and ft>0)
 		and (not Duel.CheckTribute(c,ct) or Duel.SelectYesNo(tp,aux.Stringid(57761191,0))) do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		local g1=mg:Select(tp,1,1,nil)
