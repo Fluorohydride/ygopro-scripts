@@ -52,6 +52,7 @@ end
 function c96100333.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(96100333)==0
 		and Duel.IsExistingMatchingCard(c96100333.cfilter,tp,LOCATION_GRAVE,0,2,nil) end
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(96100333,1))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c96100333.cfilter,tp,LOCATION_GRAVE,0,2,2,nil)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
@@ -92,6 +93,7 @@ function c96100333.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return e:GetHandler():GetFlagEffect(96100333)==0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and cg:IsExists(c96100333.spcfilter1,1,nil,cg,sg) end
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(96100333,2))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g1=cg:FilterSelect(tp,c96100333.spcfilter1,1,1,nil,cg,sg)
 	sg:RemoveCard(g1:GetFirst())
@@ -131,6 +133,7 @@ function c96100333.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return e:GetHandler():GetFlagEffect(96100333)==0
 		and Duel.IsPlayerCanDraw(tp,1)
 		and cg:IsExists(c96100333.tdcfilter1,1,nil,cg,sg) end
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(96100333,3))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g1=cg:FilterSelect(tp,c96100333.tdcfilter1,1,1,nil,cg,sg)
 	sg:RemoveCard(g1:GetFirst())

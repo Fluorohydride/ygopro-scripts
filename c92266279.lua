@@ -9,7 +9,7 @@ function c92266279.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(92266279,1))
+	e2:SetDescription(aux.Stringid(92266279,0))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -22,7 +22,7 @@ function c92266279.initial_effect(c)
 	c:RegisterEffect(e2)
 	--recover
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(92266279,2))
+	e3:SetDescription(aux.Stringid(92266279,1))
 	e3:SetCategory(CATEGORY_RECOVER)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
@@ -42,11 +42,11 @@ function c92266279.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if (b1 or b2) and Duel.SelectYesNo(tp,94) then
 		local opt=0
 		if b1 and b2 then
-			opt=Duel.SelectOption(tp,aux.Stringid(92266279,1),aux.Stringid(92266279,2))
+			opt=Duel.SelectOption(tp,aux.Stringid(92266279,0),aux.Stringid(92266279,1))
 		elseif b1 then
 			opt=Duel.SelectOption(tp,aux.Stringid(92266279,1))
 		else
-			opt=Duel.SelectOption(tp,aux.Stringid(92266279,2))+1
+			opt=Duel.SelectOption(tp,aux.Stringid(92266279,1))+1
 		end
 		if opt==0 then
 			e:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
@@ -68,6 +68,7 @@ function c92266279.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c92266279.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000) and Duel.GetFlagEffect(tp,92266279)==0 end
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(92266279,0))
 	Duel.PayLPCost(tp,1000)
 	Duel.RegisterFlagEffect(tp,92266279,RESET_PHASE+PHASE_END,0,1)
 end
@@ -92,6 +93,7 @@ function c92266279.reccon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c92266279.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFlagEffect(tp,92266280)==0 end
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(92266279,1))
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(500)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,500)
