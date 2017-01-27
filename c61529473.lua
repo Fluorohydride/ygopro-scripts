@@ -92,7 +92,6 @@ function c61529473.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil)
 		and Duel.GetFlagEffect(tp,61529473)==0 end
 	Duel.RegisterFlagEffect(tp,61529473,RESET_PHASE+PHASE_END,0,1)
-	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c61529473.tgfilter,tp,LOCATION_ONFIELD,0,1,1,c)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
@@ -130,7 +129,6 @@ function c61529473.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c61529473.sumfilter,tp,LOCATION_HAND,0,1,nil)
 		and Duel.GetFlagEffect(tp,61529474)==0 end
 	Duel.RegisterFlagEffect(tp,61529474,RESET_PHASE+PHASE_END,0,1)
-	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.SetOperationInfo(0,CATEGORY_SUMMON,nil,1,0,0)
 end
 function c61529473.sumop(e,tp,eg,ep,ev,re,r,rp)
