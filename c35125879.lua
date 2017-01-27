@@ -87,7 +87,7 @@ function c35125879.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.IsExistingTarget(c35125879.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 		and Duel.GetFlagEffect(tp,35125879)==0 end
 	Duel.RegisterFlagEffect(tp,35125879,RESET_PHASE+PHASE_END,0,1)
-	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(35125879,0))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c35125879.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
@@ -117,7 +117,7 @@ function c35125879.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c35125879.sumfilter,tp,LOCATION_HAND,0,1,nil)
 		and Duel.GetFlagEffect(tp,35125880)==0 end
 	Duel.RegisterFlagEffect(tp,35125880,RESET_PHASE+PHASE_END,0,1)
-	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(35125879,1))
 	Duel.SetOperationInfo(0,CATEGORY_SUMMON,nil,1,0,0)
 end
 function c35125879.sumop(e,tp,eg,ep,ev,re,r,rp)

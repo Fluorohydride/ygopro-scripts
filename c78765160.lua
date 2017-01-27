@@ -74,6 +74,7 @@ function c78765160.cfilter(c)
 end
 function c78765160.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c78765160.cfilter,tp,LOCATION_MZONE,0,1,nil) end
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(78765160,0))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c78765160.cfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
@@ -105,6 +106,7 @@ function c78765160.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return e:GetHandler():GetFlagEffect(78765160)==0
 		and Duel.IsPlayerCanDraw(tp,1)
 		and Duel.IsExistingTarget(c78765160.tdfilter,tp,LOCATION_REMOVED,0,2,nil) end
+	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(78765160,1))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectTarget(tp,c78765160.tdfilter,tp,LOCATION_REMOVED,0,2,2,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,2,0,0)
