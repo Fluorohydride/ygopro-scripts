@@ -216,7 +216,8 @@ function c82734805.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 	end
 	ok=false
 	local dmg=mg:Filter(Card.IsLocation,nil,LOCATION_DECK)
-	if dmg:GetCount()>0 and e:GetHandler():GetFlagEffect(31444249)~=0 and Duel.SelectYesNo(tp,aux.Stringid(31444249,0)) then
+	local dmg2=mg:Filter(function(c)return not c:IsLocation(LOCATION_DECK)end,nil)
+	if dmg2:GetCount()==0 or (dmg:GetCount()>0 and e:GetHandler():GetFlagEffect(31444249)~=0 and Duel.SelectYesNo(tp,aux.Stringid(31444249,0))) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 		local sg=dmg:Select(tp,1,6-g1:FilterCount(Card.IsLocation,nil,LOCATION_DECK),nil)
 		g1:Merge(sg)
