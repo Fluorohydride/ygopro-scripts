@@ -221,6 +221,9 @@ RESET_TOFIELD		=0x01000000			--到场上重置(move_to_field())
 RESET_CONTROL		=0x02000000			--控制者变更重置
 RESET_OVERLAY		=0x04000000			--超量叠放重置
 RESET_MSCHANGE		=0x08000000			--从怪兽区到魔法区，或者从魔法区到怪兽区(move_to_field()、寶玉獸)
+----组合时点
+RESETS_STANDARD				=0x1fe0000	--RESET_TOFIELD+RESET_LEAVE+RESET_TODECK+RESET_TOHAND+RESET_TEMP_REMOVE+RESET_REMOVE+RESET_TOGRAVE+RESET_TURN_SET
+RESETS_STANDARD_DISABLED	=0x1ff0000	--0x1fe0000+RESET_DISABLE
 --========== Types ==========	--效果类型（定义效果触发类型，和codes一起使用）
 EFFECT_TYPE_SINGLE			=0x0001		--自己状态变化时触发
 EFFECT_TYPE_FIELD			=0x0002		--场上所有卡状态变化时触发
@@ -679,6 +682,9 @@ HINTMSG_RACE			=563	--请选择要宣言的种族
 HINTMSG_CODE			=564	--请宣言一个卡名
 HINGMSG_NUMBER			=565	--请选择一个数字
 HINGMSG_LVRANK			=567	--请宣言一个等级
+--Select	--请选择
+SELECT_HEADS				=60	--正面
+SELECT_TAILS				=61	--反面
 --Timing	--提示时点，可以给freechain卡片增加自动提示时点
 TIMING_DRAW_PHASE			=0x1			--抽卡阶段时点
 TIMING_STANDBY_PHASE		=0x2        	--准备阶段时点
