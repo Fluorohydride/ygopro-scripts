@@ -16,7 +16,6 @@ function c6853254.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetTarget(c6853254.reptg)
 	e2:SetValue(c6853254.repval)
-	e2:SetOperation(c6853254.repop)
 	c:RegisterEffect(e2)
 end
 function c6853254.filter(c,e,tp)
@@ -38,15 +37,15 @@ function c6853254.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c6853254.repfilter(c,tp)
 	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and c:IsLocation(LOCATION_MZONE)
-		and c:IsControler(tp) and c:IsReason(REASON_EFFECT+REASON_BATTLE)
+		and c:IsControler(tp) and c:IsReason(REASON_EFFECT+REASON_BATTLE) and not c:IsReason(REASON_REPLACE)
 end
 function c6853254.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemove() and eg:IsExists(c6853254.repfilter,1,nil,tp) end
-	return Duel.SelectYesNo(tp,aux.Stringid(6853254,0))
+	if Duel.SelectYesNo(tp,aux.Stringid(6853254,0)) then
+		Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_EFFECT)
+		return true
+	else return false end
 end
 function c6853254.repval(e,c)
 	return c6853254.repfilter(c,e:GetHandlerPlayer())
-end
-function c6853254.repop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_EFFECT)
 end

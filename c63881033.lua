@@ -33,7 +33,6 @@ function c63881033.initial_effect(c)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetTarget(c63881033.reptg)
 	e4:SetValue(c63881033.repval)
-	e4:SetOperation(c63881033.repop)
 	c:RegisterEffect(e4)
 	--tohand
 	local e5=Effect.CreateEffect(c)
@@ -95,13 +94,13 @@ function c63881033.repfilter(c,tp)
 end
 function c63881033.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c63881033.repfilter,1,nil,tp) end
-	return Duel.SelectYesNo(tp,aux.Stringid(63881033,2))
+	if Duel.SelectYesNo(tp,aux.Stringid(63881033,2)) then
+		Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
+		return true
+	else return false end
 end
 function c63881033.repval(e,c)
 	return c63881033.repfilter(c,e:GetHandlerPlayer())
-end
-function c63881033.repop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
 end
 function c63881033.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
