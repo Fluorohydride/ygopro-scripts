@@ -117,16 +117,17 @@ function c82734805.fcfilter7(c,chkf,fc)
 end
 function c82734805.fscon(e,g,gc,chkf)
 	if g==nil then return true end
-	local mg=g:Filter(Card.IsCanBeFusionMaterial,gc,e:GetHandler())
+	local c=e:GetHandler()
+	local mg=g:Filter(Card.IsCanBeFusionMaterial,gc,c)
 	if gc then
-		if gc:CheckFusionSubstitute(e:GetHandler()) then
+		if gc:CheckFusionSubstitute(c) then
 			return mg:IsExists(c82734805.fcfilter1,1,nil,14799437,23440231,mg)
 		elseif gc:IsFusionCode(14799437) then
-			return mg:IsExists(c82734805.fcfilter2,1,nil,23440231,mg,e:GetHandler())
+			return mg:IsExists(c82734805.fcfilter2,1,nil,23440231,mg,c)
 		elseif gc:IsFusionCode(23440231) then
-			return mg:IsExists(c82734805.fcfilter2,1,nil,14799437,mg,e:GetHandler())
+			return mg:IsExists(c82734805.fcfilter2,1,nil,14799437,mg,c)
 		elseif c82734805.filter(gc) then
-			return mg:IsExists(c82734805.fcfilter3,1,nil,mg,e:GetHandler())
+			return mg:IsExists(c82734805.fcfilter3,1,nil,mg,c)
 		else
 			return false
 		end
@@ -135,7 +136,7 @@ function c82734805.fscon(e,g,gc,chkf)
 	local fs=false
 	local tc=mg:GetFirst()
 	while tc do
-		if tc:CheckFusionSubstitute(e:GetHandler()) then
+		if tc:CheckFusionSubstitute(c) then
 			bs=1 if aux.FConditionCheckF(tc,chkf) then fs=true end
 		elseif tc:IsFusionCode(14799437) then
 			if b1==0 then b1=1 else b3=1 end if aux.FConditionCheckF(tc,chkf) then fs=true end
@@ -153,38 +154,39 @@ function c82734805.fscon(e,g,gc,chkf)
 	end
 end
 function c82734805.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
-	local mg=eg:Filter(Card.IsCanBeFusionMaterial,gc,e:GetHandler())
+	local c=e:GetHandler()
+	local mg=eg:Filter(Card.IsCanBeFusionMaterial,gc,c)
 	local g1=Group.CreateGroup()
 	if not gc and chkf~=PLAYER_NONE then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		gc=mg:FilterSelect(tp,c82734805.fcfilter7,1,1,nil,chkf,e:GetHandler()):GetFirst()
+		gc=mg:FilterSelect(tp,c82734805.fcfilter7,1,1,nil,chkf,c):GetFirst()
 		g1:AddCard(gc)
 	end
 	local ok=false
 	if gc then
-		if gc:CheckFusionSubstitute(e:GetHandler()) then
+		if gc:CheckFusionSubstitute(c) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 			local sg=mg:FilterSelect(tp,c82734805.fcfilter1,1,1,nil,14799437,23440231,mg)
 			g1:Merge(sg)
 		elseif gc:IsFusionCode(14799437) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-			local sg=mg:FilterSelect(tp,c82734805.fcfilter2,1,1,nil,23440231,mg,e:GetHandler())
+			local sg=mg:FilterSelect(tp,c82734805.fcfilter2,1,1,nil,23440231,mg,c)
 			g1:Merge(sg)
 		elseif gc:IsFusionCode(23440231) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-			local sg=mg:FilterSelect(tp,c82734805.fcfilter2,1,1,nil,14799437,mg,e:GetHandler())
+			local sg=mg:FilterSelect(tp,c82734805.fcfilter2,1,1,nil,14799437,mg,c)
 			g1:Merge(sg)
 		elseif c82734805.filter(gc) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-			local sg=mg:FilterSelect(tp,c82734805.fcfilter3,1,1,nil,mg,e:GetHandler())
+			local sg=mg:FilterSelect(tp,c82734805.fcfilter3,1,1,nil,mg,c)
 			g1:Merge(sg)
 			local tc1=sg:GetFirst()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 			if tc1:IsFusionCode(14799437) then
-				local sg=mg:FilterSelect(tp,c82734805.fcfilter4,1,1,nil,23440231,e:GetHandler())
+				local sg=mg:FilterSelect(tp,c82734805.fcfilter4,1,1,nil,23440231,c)
 				g1:Merge(sg)
 			elseif tc1:IsFusionCode(23440231) then
-				local sg=mg:FilterSelect(tp,c82734805.fcfilter4,1,1,nil,14799437,e:GetHandler())
+				local sg=mg:FilterSelect(tp,c82734805.fcfilter4,1,1,nil,14799437,c)
 				g1:Merge(sg)
 			else
 				local sg=mg:FilterSelect(tp,aux.FConditionFilter21,1,1,nil,14799437,23440231)
@@ -193,15 +195,15 @@ function c82734805.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 			ok=true
 		end
 	else
-		local mg2=mg:Filter(aux.FConditionFilter22,nil,14799437,23440231,true,e:GetHandler())
+		local mg2=mg:Filter(aux.FConditionFilter22,nil,14799437,23440231,true,c)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 		local sg1=mg2:Select(tp,1,1,nil)
 		local tc1=sg1:GetFirst()
 		if not mg:IsExists(c82734805.filter,2,tc1) then
 			mg2:Remove(c82734805.filter,nil)
 		end
-		if tc1:CheckFusionSubstitute(e:GetHandler()) then
-			mg2:Remove(Card.CheckFusionSubstitute,nil,e:GetHandler())
+		if tc1:CheckFusionSubstitute(c) then
+			mg2:Remove(Card.CheckFusionSubstitute,nil,c)
 		else mg2:Remove(Card.IsFusionCode,nil,tc1:GetCode()) end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 		local sg2=mg2:Select(tp,1,1,nil)
@@ -210,24 +212,22 @@ function c82734805.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 	end
 	mg:Sub(g1)
 	mg=mg:Filter(c82734805.filter,nil)
-	if mg:GetCount()==0 or (ok and not Duel.SelectYesNo(tp,93)) then
+	if ok and (mg:GetCount()==0 or not Duel.SelectYesNo(tp,93)) then
 		Duel.SetFusionMaterial(g1)
 		return
 	end
-	ok=false
-	local dmg=mg:Filter(Card.IsLocation,nil,LOCATION_DECK)
-	if dmg:GetCount()>0 and e:GetHandler():GetFlagEffect(31444249)~=0 and Duel.SelectYesNo(tp,aux.Stringid(31444249,0)) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local sg=dmg:Select(tp,1,6-g1:FilterCount(Card.IsLocation,nil,LOCATION_DECK),nil)
-		g1:Merge(sg)
-		ok=true
-	end
-	if e:GetHandler():GetFlagEffect(31444249)~=0 then
+	if c:GetFlagEffect(31444249)~=0 then
+		local dmg=mg:Filter(Card.IsLocation,nil,LOCATION_DECK)
 		mg:Remove(Card.IsLocation,nil,LOCATION_DECK)
-	end
-	if mg:GetCount()==0 or (ok and not Duel.SelectYesNo(tp,93)) then
-		Duel.SetFusionMaterial(g1)
-		return
+		if mg:GetCount()==0 or (dmg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(31444249,0))) then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+			local sg=dmg:Select(tp,1,6-g1:FilterCount(Card.IsLocation,nil,LOCATION_DECK),nil)
+			g1:Merge(sg)
+			if mg:GetCount()==0 or not Duel.SelectYesNo(tp,93) then
+				Duel.SetFusionMaterial(g1)
+				return
+			end
+		end
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 	local sg=mg:Select(tp,1,99,nil)
