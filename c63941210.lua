@@ -1,6 +1,6 @@
 --壊星壊獣ジズキエル
 function c63941210.initial_effect(c)
-	c:SetUniqueOnField(1,0,20000000,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,aux.FilterBoolFunction(Card.IsSetCard,0xd3),LOCATION_MZONE)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
