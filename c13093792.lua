@@ -3,6 +3,7 @@ function c13093792.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(13093792,0))
+	e1:SetCategory(CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetCountLimit(1)
 	e1:SetRange(LOCATION_MZONE)

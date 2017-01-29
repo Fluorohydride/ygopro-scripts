@@ -20,7 +20,7 @@ function c18631392.initial_effect(c)
 	--announce 3 cards
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(18631392,0))
-	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_TOGRAVE+CATEGORY_ATKCHANGE)
+	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_DECKDES+CATEGORY_ATKCHANGE)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1)

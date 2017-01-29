@@ -2,7 +2,7 @@
 function c40933924.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(40933924,0))
-	e1:SetCategory(CATEGORY_TOGRAVE)
+	e1:SetCategory(CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_BATTLE_DAMAGE)
 	e1:SetCondition(c40933924.condition)
