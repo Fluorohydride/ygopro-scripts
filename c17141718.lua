@@ -11,6 +11,7 @@ function c17141718.initial_effect(c)
 	c:RegisterEffect(e1)
 	--shuffle
 	local e2=Effect.CreateEffect(c)
+	e2:SetCategory(CATEGORY_DRAW)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_SUMMON_SUCCESS)

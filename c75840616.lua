@@ -6,6 +6,7 @@ function c75840616.initial_effect(c)
 	c:EnableReviveLimit()
 	--search
 	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_DECKDES)
 	e1:SetDescription(aux.Stringid(75840616,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetCountLimit(1)

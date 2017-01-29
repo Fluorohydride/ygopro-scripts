@@ -15,7 +15,7 @@ function c95239444.initial_effect(c)
 	--tograve
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(95239444,1))
-	e2:SetCategory(CATEGORY_TOGRAVE)
+	e2:SetCategory(CATEGORY_DECKDES)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetCountLimit(1)
 	e2:SetRange(LOCATION_MZONE)

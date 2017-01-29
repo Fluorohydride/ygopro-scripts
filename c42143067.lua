@@ -35,7 +35,7 @@ function c42143067.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.SelectMatchingCard(tp,c42143067.cfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	e:SetLabelObject(g:GetFirst())
 	Duel.SendtoGrave(g,REASON_COST+REASON_DISCARD)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,LOCATION_DECK)
 end
 function c42143067.spop(e,tp,eg,ep,ev,re,r,rp)
 	local gc=e:GetLabelObject()

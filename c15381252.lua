@@ -2,6 +2,7 @@
 function c15381252.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_BATTLE_DAMAGE)
 	e1:SetCountLimit(1,15381252+EFFECT_COUNT_CODE_OATH)
