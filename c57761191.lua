@@ -20,13 +20,13 @@ function c57761191.initial_effect(c)
 	e3:SetCode(EFFECT_MATERIAL_CHECK)
 	e3:SetValue(c57761191.valcheck)
 	c:RegisterEffect(e3)
-	--immune
+	--immune reg
 	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e4:SetCode(EFFECT_IMMUNE_EFFECT)
-	e4:SetRange(LOCATION_MZONE)
-	e4:SetValue(c57761191.efilter)
+	e4:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
+	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e4:SetCode(EVENT_SUMMON_SUCCESS)
+	e4:SetCondition(c57761191.regcon)
+	e4:SetOperation(c57761191.regop)
 	e4:SetLabelObject(e3)
 	c:RegisterEffect(e4)
 	--special summon
@@ -86,19 +86,34 @@ function c57761191.valcheck(e,c)
 		tc=g:GetNext()
 	end
 	e:SetLabel(typ)
+end
+function c57761191.regcon(e,tp,eg,ep,ev,re,r,rp)
+	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+end
+function c57761191.regop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e1:SetCode(EFFECT_IMMUNE_EFFECT)
+	e1:SetRange(LOCATION_MZONE)
+	e1:SetReset(RESET_EVENT+0x1fe0000)
+	e1:SetValue(c57761191.efilter)
+	e1:SetLabelObject(e:GetLabelObject())
+	c:RegisterEffect(e1)
+	local typ=e:GetLabelObject():GetLabel()
 	if bit.band(typ,TYPE_MONSTER)~=0 then
-		c:RegisterFlagEffect(0,RESET_EVENT+0xfe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(57761191,2))
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(57761191,2))
 	end
 	if bit.band(typ,TYPE_SPELL)~=0 then
-		c:RegisterFlagEffect(0,RESET_EVENT+0xfe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(57761191,3))
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(57761191,3))
 	end
 	if bit.band(typ,TYPE_TRAP)~=0 then
-		c:RegisterFlagEffect(0,RESET_EVENT+0xfe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(57761191,4))
+		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(57761191,4))
 	end
 end
 function c57761191.efilter(e,te)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
-		and te:IsActiveType(e:GetLabelObject():GetLabel()) and te:GetOwner()~=e:GetOwner()
+	return te:IsActiveType(e:GetLabelObject():GetLabel()) and te:GetOwner()~=e:GetOwner()
 end
 function c57761191.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
