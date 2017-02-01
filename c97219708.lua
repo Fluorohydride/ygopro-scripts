@@ -89,7 +89,6 @@ function c97219708.spop(e,tp,eg,ep,ev,re,r,rp)
 			e3:SetLabelObject(tc)
 			e3:SetCondition(c97219708.tdcon)
 			e3:SetOperation(c97219708.tdop)
-			e3:SetReset(RESET_PHASE+PHASE_END)
 			Duel.RegisterEffect(e3,tp)
 			Duel.SpecialSummonComplete()
 		end
