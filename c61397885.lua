@@ -1,4 +1,4 @@
---幻煌龍の浸禍
+--幻煌龍の浸渦
 function c61397885.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
