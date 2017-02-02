@@ -18,6 +18,7 @@ end
 function c95178994.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,500)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c95178994.filter(c,e,tp)
 	return c:IsCode(95178994) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
