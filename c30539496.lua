@@ -74,10 +74,8 @@ function c30539496.spop(e,tp,eg,ep,ev,re,r,rp)
 			if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 				and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 				Duel.SendtoGrave(c,REASON_RULE)
-				return
-			else
-				return
 			end
+			return
 		end
 		local rg=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_EXTRA,nil)
 		if rm and rg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(30539496,2)) then

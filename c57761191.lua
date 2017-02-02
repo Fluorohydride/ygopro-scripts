@@ -92,6 +92,7 @@ function c57761191.regcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c57761191.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	local typ=e:GetLabelObject():GetLabel()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
@@ -99,9 +100,8 @@ function c57761191.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetReset(RESET_EVENT+0x1fe0000)
 	e1:SetValue(c57761191.efilter)
-	e1:SetLabelObject(e:GetLabelObject())
+	e1:SetLabel(typ)
 	c:RegisterEffect(e1)
-	local typ=e:GetLabelObject():GetLabel()
 	if bit.band(typ,TYPE_MONSTER)~=0 then
 		c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(57761191,2))
 	end
@@ -113,7 +113,7 @@ function c57761191.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c57761191.efilter(e,te)
-	return te:IsActiveType(e:GetLabelObject():GetLabel()) and te:GetOwner()~=e:GetOwner()
+	return te:IsActiveType(e:GetLabel()) and te:GetOwner()~=e:GetOwner()
 end
 function c57761191.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

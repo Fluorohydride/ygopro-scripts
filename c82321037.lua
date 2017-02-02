@@ -75,10 +75,8 @@ function c82321037.spop(e,tp,eg,ep,ev,re,r,rp)
 			if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 				and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 				Duel.SendtoGrave(c,REASON_RULE)
-				return
-			else
-				return
 			end
+			return
 		end
 		local rg=Duel.GetMatchingGroup(c82321037.rmfilter,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE,nil)
 		if rm and rg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(82321037,0)) then

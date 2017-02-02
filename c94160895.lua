@@ -74,10 +74,8 @@ function c94160895.spop(e,tp,eg,ep,ev,re,r,rp)
 			if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 				and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 				Duel.SendtoGrave(c,REASON_RULE)
-				return
-			else
-				return
 			end
+			return
 		end
 		local rg=Duel.GetDecktopGroup(1-tp,4)
 		if rm and rg:GetCount()>0 and rg:FilterCount(Card.IsAbleToRemove,nil)==4
