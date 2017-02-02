@@ -22,18 +22,20 @@ function c40390147.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b2=Duel.IsExistingMatchingCard(c40390147.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) and e:GetHandler():CheckRemoveOverlayCard(tp,2,REASON_COST)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and (b1 or b2) end
+	local opt=0
 	if b1 and b2 then
-		local opt=Duel.SelectOption(tp,aux.Stringid(40390147,1),aux.Stringid(40390147,2))
-		e:SetLabel(opt)
-		e:GetHandler():RemoveOverlayCard(tp,opt+1,opt+1,REASON_COST)
+		opt=Duel.SelectOption(tp,aux.Stringid(40390147,1),aux.Stringid(40390147,2))
 	elseif b1 then
-		Duel.SelectOption(tp,aux.Stringid(40390147,1))
-		e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
-		e:SetLabel(0)
+		opt=Duel.SelectOption(tp,aux.Stringid(40390147,1))
 	else
-		Duel.SelectOption(tp,aux.Stringid(40390147,2))
-		e:GetHandler():RemoveOverlayCard(tp,2,2,REASON_COST)
-		e:SetLabel(1)
+		opt=Duel.SelectOption(tp,aux.Stringid(40390147,2))+1
+	end
+	e:SetLabel(opt)
+	e:GetHandler():RemoveOverlayCard(tp,opt+1,opt+1,REASON_COST)
+	if opt==0 then
+		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
+	else
+		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 	end
 end
 function c40390147.spop(e,tp,eg,ep,ev,re,r,rp)

@@ -10,6 +10,7 @@ function c49838105.initial_effect(c)
 	--attack
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(49838105,0))
+	e2:SetCategory(CATEGORY_DECKDES)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e2:SetRange(LOCATION_SZONE)
@@ -39,7 +40,11 @@ function c49838105.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
 		and Duel.IsPlayerCanDiscardDeck(tp,1) and Duel.SelectYesNo(tp,94) then
 		e:SetLabel(1)
-	else e:SetLabel(0) end
+		e:SetCategory(CATEGORY_DECKDES)
+	else
+		e:SetLabel(0)
+		e:SetCategory(0)
+	end
 end
 function c49838105.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,1) end
