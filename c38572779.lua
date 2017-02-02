@@ -115,7 +115,6 @@ function c38572779.spop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetLabelObject(tc)
 		e1:SetCondition(c38572779.descon)
 		e1:SetOperation(c38572779.desop)
-		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
 	end
 end
