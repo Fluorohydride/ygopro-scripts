@@ -1,4 +1,4 @@
---幻煌龍の戦禍
+--幻煌龍の戦渦
 function c34302287.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
