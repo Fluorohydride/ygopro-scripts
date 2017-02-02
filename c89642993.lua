@@ -23,6 +23,11 @@ function c89642993.eftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local op=Duel.SelectOption(tp,aux.Stringid(89642993,1),aux.Stringid(89642993,2))
 	e:SetLabel(op)
+	if op==0 then
+		e:SetCategory(CATEGORY_DRAW)
+	else
+		e:SetCategory(CATEGORY_RECOVER)
+	end
 end
 function c89642993.efop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 then
