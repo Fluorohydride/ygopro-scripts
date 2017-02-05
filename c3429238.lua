@@ -100,8 +100,5 @@ function c3429238.spop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,g)
 		end
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end

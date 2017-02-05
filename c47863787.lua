@@ -40,10 +40,7 @@ end
 function c47863787.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLocation(LOCATION_HAND) then
-		Duel.SendtoGrave(c,REASON_RULE)
-	end
+	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c47863787.cfilter(c,tp)
 	return c:IsControler(tp) and c:IsSetCard(0x97) and c:IsReason(REASON_DESTROY)

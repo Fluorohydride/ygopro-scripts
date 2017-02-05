@@ -72,10 +72,6 @@ function c96746083.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Destroy(g1,REASON_EFFECT)==2 then
 		if not c:IsRelateToEffect(e) then return end
 		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 then
-			if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-				and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-				Duel.SendtoGrave(c,REASON_RULE)
-			end
 			return
 		end
 		local rg=Duel.GetMatchingGroup(c96746083.rmfilter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,nil,tp)

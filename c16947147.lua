@@ -28,8 +28,5 @@ function c16947147.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_ATTACK)~=0 then
 		local g=Duel.GetMatchingGroup(Card.IsPosition,tp,0,LOCATION_MZONE,nil,POS_FACEUP_ATTACK)
 		Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP) then
-		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end

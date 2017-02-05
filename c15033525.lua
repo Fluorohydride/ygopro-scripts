@@ -40,10 +40,8 @@ function c15033525.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c15033525.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 and c:IsLocation(LOCATION_HAND) then
-		Duel.SendtoGrave(c,REASON_RULE)
+	if c:IsRelateToEffect(e) then
+		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

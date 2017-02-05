@@ -85,10 +85,7 @@ end
 function c3405259.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
-	end
+	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
 end
 function c3405259.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0 or bit.band(r,REASON_EFFECT)~=0

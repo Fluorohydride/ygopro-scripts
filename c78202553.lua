@@ -60,11 +60,7 @@ end
 function c78202553.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)==0
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
-	end
+	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c78202553.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

@@ -101,10 +101,7 @@ end
 function c47693640.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
-	end
+	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)
 end
 function c47693640.hdcon(e,tp,eg,ep,ev,re,r,rp)
 	return aux.IsUnionState(e) and eg:GetFirst()==e:GetHandler():GetEquipTarget()

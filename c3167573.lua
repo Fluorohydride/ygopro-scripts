@@ -46,9 +46,6 @@ function c3167573.spop(e,tp,eg,ep,ev,re,r,rp)
 			c:RegisterFlagEffect(3167573,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,1)
 			e2:SetLabel(Duel.GetTurnCount()+1)
 		end
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c3167573.descon(e,tp,eg,ep,ev,re,r,rp)

@@ -52,9 +52,6 @@ function c27911549.spop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetValue(RACE_INSECT)
 			e1:SetReset(RESET_EVENT+0x1fe0000)
 			c:RegisterEffect(e1)
-		elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-			and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-			Duel.SendtoGrave(c,REASON_RULE)
 		end
 	end
 end

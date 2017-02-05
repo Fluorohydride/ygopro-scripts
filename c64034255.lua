@@ -26,22 +26,18 @@ function c64034255.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
-function c64034255.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c64034255.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
-		Duel.SendtoGrave(c,REASON_RULE)
-		return
-	end
-	if e:GetLabel()==1 then
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_UPDATE_ATTACK)
-		e1:SetReset(RESET_EVENT+0xff0000)
-		e1:SetValue(500)
-		c:RegisterEffect(e1)
-	end
+	if not c:IsRelateToEffect(e) then return end
 	if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
+		if e:GetLabel()==1 then
+			local e1=Effect.CreateEffect(c)
+			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetCode(EFFECT_UPDATE_ATTACK)
+			e1:SetValue(500)
+			e1:SetReset(RESET_EVENT+0x1ff0000)
+			c:RegisterEffect(e1)
+		end
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
@@ -49,6 +45,6 @@ function c64034255.spop(e,tp,eg,ep,ev,re,r,rp,c)
 		e2:SetReset(RESET_EVENT+0x47e0000)
 		e2:SetValue(LOCATION_REMOVED)
 		c:RegisterEffect(e2,true)
+		Duel.SpecialSummonComplete()
 	end
-	Duel.SpecialSummonComplete()
 end

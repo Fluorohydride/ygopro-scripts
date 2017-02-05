@@ -31,10 +31,7 @@ function c10194329.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
-	end
+	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c10194329.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return not c:IsSetCard(0xba) and c:IsLocation(LOCATION_EXTRA)

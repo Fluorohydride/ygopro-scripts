@@ -40,8 +40,5 @@ function c19580308.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0x47e0000)
 		e1:SetValue(LOCATION_REMOVED)
 		c:RegisterEffect(e1,true)
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLocation(LOCATION_HAND) then
-		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end

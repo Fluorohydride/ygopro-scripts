@@ -52,9 +52,8 @@ function c35191415.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c35191415.operation1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
-		Duel.SendtoGrave(c,REASON_RULE)
+	if c:IsRelateToEffect(e) then
+		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
 function c35191415.condition2(e,tp,eg,ep,ev,re,r,rp)

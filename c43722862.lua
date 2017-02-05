@@ -84,9 +84,6 @@ function c43722862.spop(e,tp,eg,ep,ev,re,r,rp)
 				tc:RegisterEffect(e2)
 			end
 		end
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c43722862.damtg(e,tp,eg,ep,ev,re,r,rp,chk)

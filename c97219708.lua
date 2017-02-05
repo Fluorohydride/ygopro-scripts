@@ -45,8 +45,6 @@ function c97219708.recop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.Recover(tp,ct*100,REASON_EFFECT)
 		end
-	elseif c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
-		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c97219708.spfilter(c,e,tp)
