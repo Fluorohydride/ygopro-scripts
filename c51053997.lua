@@ -105,11 +105,7 @@ function c51053997.retcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c51053997.retop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	if tc:IsForbidden() then
-		Duel.SendtoGrave(tc,REASON_RULE)
-	else
-		Duel.ReturnToField(tc)
-	end
+	Duel.ReturnToField(tc)
 end
 function c51053997.cfilter(c,tp)
 	return c:IsPreviousSetCard(0xc1) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
