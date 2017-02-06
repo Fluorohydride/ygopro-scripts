@@ -67,7 +67,10 @@ function c15092394.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 and c:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
-		Duel.Overlay(tc,Group.FromCards(c))
+	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
+		if c:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+			Duel.Overlay(tc,Group.FromCards(c))
+		end
+		Duel.SpecialSummonComplete()
 	end
 end
