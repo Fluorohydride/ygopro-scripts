@@ -6,6 +6,7 @@ function c54719828.initial_effect(c)
 	--act limit
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(54719828,0))
+	e1:SetProperty(0,EFFECT_FLAG2_XMDETACH)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetCountLimit(1)
 	e1:SetRange(LOCATION_MZONE)

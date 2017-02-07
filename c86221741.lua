@@ -13,6 +13,7 @@ function c86221741.initial_effect(c)
 	c:RegisterEffect(e1)
 	--act limit
 	local e2=Effect.CreateEffect(c)
+	e2:SetProperty(0,EFFECT_FLAG2_XMDETACH)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCost(c86221741.cost)

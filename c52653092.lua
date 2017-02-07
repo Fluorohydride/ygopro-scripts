@@ -39,6 +39,7 @@ function c52653092.initial_effect(c)
 	--activate limit
 	local e6=Effect.CreateEffect(c)
 	e6:SetDescription(aux.Stringid(52653092,1))
+	e6:SetProperty(EFFECT_FLAG2_XMDETACH)
 	e6:SetType(EFFECT_TYPE_QUICK_O)
 	e6:SetCode(EVENT_FREE_CHAIN)
 	e6:SetRange(LOCATION_MZONE)

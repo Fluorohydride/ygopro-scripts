@@ -6,6 +6,7 @@ function c47579719.initial_effect(c)
 	--pos change
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_POSITION)
+	e1:SetProperty(0,EFFECT_FLAG2_XMDETACH)
 	e1:SetDescription(aux.Stringid(47579719,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetCountLimit(1)
