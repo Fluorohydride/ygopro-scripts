@@ -3,12 +3,12 @@ function c88120966.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)
 	c:EnableReviveLimit()
-	--attack up
+	--destroy and damage
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 	e1:SetDescription(aux.Stringid(88120966,0))
 	e1:SetType(EFFECT_TYPE_IGNITION)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET,EFFECT_FLAG2_XMDETACH)
 	e1:SetCountLimit(2)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCondition(c88120966.condition)

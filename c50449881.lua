@@ -3,10 +3,10 @@ function c50449881.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2)
 	c:EnableReviveLimit()
-	--spsummon
+	--second attack
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(50449881,0))
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET,EFFECT_FLAG2_XMDETACH)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetCountLimit(1)
 	e1:SetRange(LOCATION_MZONE)

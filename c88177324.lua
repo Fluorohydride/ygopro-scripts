@@ -6,6 +6,7 @@ function c88177324.initial_effect(c)
 	--negate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(88177324,0))
+	e1:SetProperty(0,EFFECT_FLAG2_XMDETACH)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_PHASE+PHASE_BATTLE_START)
 	e1:SetRange(LOCATION_MZONE)

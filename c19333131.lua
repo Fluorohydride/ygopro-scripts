@@ -3,11 +3,12 @@ function c19333131.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,2)
 	c:EnableReviveLimit()
-	--attack up
+	--Negate destruction
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(19333131,0))
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetProperty(0,EFFECT_FLAG2_XMDETACH)
 	e1:SetCountLimit(1)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCost(c19333131.cost)

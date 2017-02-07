@@ -25,6 +25,7 @@ function c54366836.initial_effect(c)
 	--damage
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(54366836,1))
+	e3:SetProperty(0,EFFECT_FLAG2_XMDETACH)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
 	e3:SetRange(LOCATION_MZONE)

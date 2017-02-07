@@ -7,12 +7,12 @@ function c74294676.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(74294676,0))
 	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
-	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
+	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL,EFFECT_FLAG2_XMDETACH)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetCondition(c74294676.condition1)
-	e1:SetCost(c74294676.cost1)
+	e1:SetCost(c74294676.cost)
 	e1:SetTarget(c74294676.target1)
 	e1:SetOperation(c74294676.operation1)
 	c:RegisterEffect(e1)
@@ -20,11 +20,12 @@ function c74294676.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(74294676,1))
 	e2:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_DESTROY)
+	e2:SetProperty(0,EFFECT_FLAG2_XMDETACH)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCode(EVENT_SUMMON)
 	e2:SetCondition(c74294676.condition2)
-	e2:SetCost(c74294676.cost2)
+	e2:SetCost(c74294676.cost)
 	e2:SetTarget(c74294676.target2)
 	e2:SetOperation(c74294676.operation2)
 	c:RegisterEffect(e2)
@@ -37,7 +38,7 @@ function c74294676.condition1(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
 		and re:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsChainNegatable(ev)
 end
-function c74294676.cost1(e,tp,eg,ep,ev,re,r,rp,chk)
+function c74294676.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,2,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,2,2,REASON_COST)
 end
@@ -55,10 +56,6 @@ function c74294676.operation1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c74294676.condition2(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentChain()==0
-end
-function c74294676.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,2,REASON_COST) end
-	e:GetHandler():RemoveOverlayCard(tp,2,2,REASON_COST)
 end
 function c74294676.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

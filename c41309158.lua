@@ -16,6 +16,7 @@ function c41309158.initial_effect(c)
 	--damage
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(41309158,1))
+	e2:SetProperty(0,EFFECT_FLAG2_XMDETACH)
 	e2:SetCategory(CATEGORY_DAMAGE)
 	e2:SetCode(EVENT_BATTLE_DAMAGE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)

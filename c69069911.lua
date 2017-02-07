@@ -6,6 +6,7 @@ function c69069911.initial_effect(c)
 	--chain attack
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(69069911,0))
+	e1:SetProperty(0,EFFECT_FLAG2_XMDETACH)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BATTLE_DESTROYING)
 	e1:SetCountLimit(1)

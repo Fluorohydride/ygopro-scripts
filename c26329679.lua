@@ -6,6 +6,7 @@ function c26329679.initial_effect(c)
 	--immune
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(26329679,0))
+	e1:SetProperty(0,EFFECT_FLAG2_XMDETACH)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1)

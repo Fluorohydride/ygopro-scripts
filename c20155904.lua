@@ -11,10 +11,11 @@ function c20155904.initial_effect(c)
 	e1:SetTarget(c20155904.tdtg)
 	e1:SetOperation(c20155904.tdop)
 	c:RegisterEffect(e1)
-	--get effect
+	--negate effect
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(20155904,1))
 	e2:SetCategory(CATEGORY_DISABLE)
+	e2:SetProperty(0,EFFECT_FLAG2_XMDETACH)
 	e2:SetType(EFFECT_TYPE_XMATERIAL+EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetCondition(c20155904.discon)
