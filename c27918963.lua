@@ -62,7 +62,7 @@ function c27918963.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetCategory(CATEGORY_ATKCHANGE)
 		e:GetHandler():RemoveCounter(tp,0x33,1,REASON_COST)
 	else
-		e:SetCategory(CATEGORY_TOHAND)
+		e:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 		e:GetHandler():RemoveCounter(tp,0x33,3,REASON_COST)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK+LOCATION_GRAVE)
 	end
