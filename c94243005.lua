@@ -26,7 +26,7 @@ function c94243005.initial_effect(c)
 	c:RegisterEffect(e3)
 	--search
 	local e4=Effect.CreateEffect(c)
-	e4:SetCategory(CATEGORY_TOHAND)
+	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetDescription(aux.Stringid(94243005,1))
 	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e4:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_SINGLE)
