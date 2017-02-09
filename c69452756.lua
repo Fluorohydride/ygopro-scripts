@@ -40,9 +40,9 @@ function c69452756.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c69452756.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckLPCost(tp,1000) and e:GetHandler():GetFlagEffect(69452756)==0 end
+	if chk==0 then return Duel.CheckLPCost(tp,1000) and Duel.GetFlagEffect(tp,69452756)==0 end
 	Duel.PayLPCost(tp,1000)
-	e:GetHandler():RegisterFlagEffect(69452756,RESET_CHAIN,0,1)
+	Duel.RegisterFlagEffect(tp,69452756,RESET_CHAIN,0,1)
 end
 function c69452756.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c69452756.filter(chkc) end
