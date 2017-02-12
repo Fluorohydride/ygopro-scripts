@@ -34,7 +34,6 @@ function c94096018.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(Duel.SelectOption(tp,70,71,72))
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1)
-	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c94096018.drop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)==0 then return end
