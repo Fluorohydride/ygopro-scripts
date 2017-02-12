@@ -1,4 +1,4 @@
---真竜機士ダイナマイトK
+--真竜拳士ダイナマイトK
 function c58984738.initial_effect(c)
 	--summon with s/t
 	local e1=Effect.CreateEffect(c)
