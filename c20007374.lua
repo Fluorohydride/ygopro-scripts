@@ -38,30 +38,29 @@ function c20007374.filter(c,e,tp)
 	return c:IsCode(44508094) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false)
 end
 function c20007374.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then
-		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.IsExistingMatchingCard(c20007374.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp)
-	end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c20007374.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c20007374.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsLocation(LOCATION_SZONE) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c20007374.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
-	if c:IsRelateToEffect(e) and tc and Duel.SpecialSummonStep(tc,SUMMON_TYPE_SYNCHRO,tp,tp,false,false,POS_FACEUP) then
-		Duel.Equip(tp,c,tc)
-		c:CancelToGrave()
-		--Add Equip limit
-		local e1=Effect.CreateEffect(tc)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_EQUIP_LIMIT)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
-		e1:SetValue(c20007374.eqlimit)
-		c:RegisterEffect(e1)
+	if tc and Duel.SpecialSummonStep(tc,SUMMON_TYPE_SYNCHRO,tp,tp,false,false,POS_FACEUP) then
+		if c:IsRelateToEffect(e) then
+			Duel.Equip(tp,c,tc)
+			c:CancelToGrave()
+			--Add Equip limit
+			local e1=Effect.CreateEffect(tc)
+			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetCode(EFFECT_EQUIP_LIMIT)
+			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+			e1:SetReset(RESET_EVENT+0x1fe0000)
+			e1:SetValue(c20007374.eqlimit)
+			c:RegisterEffect(e1)
+		end
 		tc:RegisterFlagEffect(20007374,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1,fid)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -74,6 +73,7 @@ function c20007374.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetOperation(c20007374.rmop)
 		Duel.RegisterEffect(e2,tp)
 		Duel.SpecialSummonComplete()
+		tc:CompleteProcedure()
 	end
 end
 function c20007374.eqlimit(e,c)

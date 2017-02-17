@@ -68,7 +68,6 @@ function c56673480.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c56673480.drop(e,tp,eg,ep,ev,re,r,rp)
-	if not eg then return end
 	local c=e:GetHandler()
 	local pg=e:GetLabelObject()
 	if c:GetFlagEffect(56673480)==0 then

@@ -15,7 +15,7 @@ function c82768499.thfilter(c)
 	return c:IsSetCard(0x99) and c:GetLevel()==7 and (c:IsFaceup() or not c:IsLocation(LOCATION_EXTRA)) and c:IsAbleToHand()
 end
 function c82768499.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) end
+	if chkc then return chkc:IsOnField() end
 	local b1=Duel.IsExistingMatchingCard(c82768499.desfilter,tp,LOCATION_ONFIELD,0,1,nil)
 		and Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler())
 	local b2=Duel.IsExistingMatchingCard(c82768499.thfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,nil)
@@ -36,11 +36,11 @@ function c82768499.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		e:SetOperation(c82768499.desop)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	else
-		e:SetCategory(CATEGORY_TOHAND)
+		e:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 		e:SetProperty(0)
 		local g=Duel.GetMatchingGroup(c82768499.thfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil)
 		e:SetOperation(c82768499.thop)
-		Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
+		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK+LOCATION_EXTRA)
 	end
 end
 function c82768499.desop(e,tp,eg,ep,ev,re,r,rp)
