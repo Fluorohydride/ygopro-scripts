@@ -86,7 +86,8 @@ RACE_PSYCHO			=0x100000	--念动力
 RACE_DEVINE			=0x200000	--幻神兽
 RACE_CREATORGOD		=0x400000	--创造神
 RACE_WYRM			=0x800000	--幻龙
---Reason 卡片到当前位置的原因 
+RACE_CYBERS			=0x1000000	--
+--Reason 卡片到当前位置的原因
 REASON_DESTROY		=0x1		--破坏
 REASON_RELEASE		=0x2		--解放
 REASON_TEMPORARY	=0x4		--暂时
