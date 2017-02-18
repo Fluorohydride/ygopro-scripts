@@ -41,7 +41,7 @@ end
 function c42155488.dectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,563)
-	local rc=Duel.AnnounceRace(tp,1,0xffffff)
+	local rc=Duel.AnnounceRace(tp,1,RACE_ALL)
 	e:SetLabel(rc)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
