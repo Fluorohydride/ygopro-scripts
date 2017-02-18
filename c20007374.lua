@@ -61,6 +61,7 @@ function c20007374.activate(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetValue(c20007374.eqlimit)
 			c:RegisterEffect(e1)
 		end
+		local fid=c:GetFieldID()
 		tc:RegisterFlagEffect(20007374,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1,fid)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
