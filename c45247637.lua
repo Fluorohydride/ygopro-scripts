@@ -28,15 +28,15 @@ function c45247637.costfilter(c)
 end
 function c45247637.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		e:SetCategory(CATEGORY_CONTROL+CATEGORY_EQUIP)
 		return Duel.IsExistingMatchingCard(c45247637.costfilter,tp,LOCATION_GRAVE,0,1,nil)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c45247637.costfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
-function c45247637.target(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SetOperationInfo(0,CATEGORY_CONTROL,Duel.GetFirstTarget(),1,0,0)
+function c45247637.target(e,tp,eg,ep,ev,re,r,rp,tc)
+	e:SetCategory(CATEGORY_CONTROL+CATEGORY_EQUIP)
+	Duel.SetOperationInfo(0,CATEGORY_CONTROL,tc,1,0,0)
 end
 function c45247637.eqlimit(e,c)
 	return e:GetHandlerPlayer()~=c:GetControler() or e:GetHandler():GetEquipTarget()==c

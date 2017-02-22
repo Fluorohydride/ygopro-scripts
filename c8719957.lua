@@ -25,6 +25,6 @@ function c8719957.negcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c8719957.negop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateEffect(ev) then
-		Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
-	end
+	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
+end
 end

@@ -1,6 +1,6 @@
 --ダグラの剣
 function c28106077.initial_effect(c)
-	aux.AddFusionProcedure(c,nil,aux.FilterBoolFunction(Card.IsRace,RACE_FAIRY))
+	aux.AddEquipProcedure(c,nil,aux.FilterBoolFunction(Card.IsRace,RACE_FAIRY))
 	--recover
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)

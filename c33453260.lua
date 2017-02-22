@@ -1,6 +1,6 @@
 --コミックハンド
 function c33453260.initial_effect(c)
-	aux.AddEquipProcedure(c,1,Card.IsControlerCanBeChanged,c33453260.eqlimit,c33453260.condition,c33453260.target)
+	aux.AddEquipProcedure(c,1,Card.IsControlerCanBeChanged,c33453260.eqlimit,nil,c33453260.target,nil,c33453260.condition)
 	--control
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
@@ -34,8 +34,8 @@ end
 function c33453260.condition(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c33453260.cfilter,tp,LOCATION_ONFIELD,0,1,nil) end
 end
-function c33453260.target(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SetOperationInfo(0,CATEGORY_CONTROL,Duel.GetFirstTarget(),1,0,0)
+function c33453260.target(e,tp,eg,ep,ev,re,r,rp,tc)
+	Duel.SetOperationInfo(0,CATEGORY_CONTROL,tc,1,0,0)
 end
 function c33453260.eqlimit(e,c)
 	return e:GetHandlerPlayer()~=c:GetControler() or e:GetHandler():GetEquipTarget()==c

@@ -19,6 +19,9 @@ function c65612454.initial_effect(c)
 	e4:SetOperation(c65612454.atkop)
 	c:RegisterEffect(e4)
 end
+function c65612454.filter(c)
+	return c:IsFaceup() and c:IsRace(RACE_THUNDER)
+end
 function c65612454.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)

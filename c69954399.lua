@@ -1,6 +1,6 @@
 --疫病ウィルス ブラックダスト
 function c69954399.initial_effect(c)
-	aux.AddEquipProcedure(c,nil,aux.FilterBoolFunction(Card.IsRace,RACE_MACHINE))
+	aux.AddEquipProcedure(c)
 	--Cannot attack
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_EQUIP)

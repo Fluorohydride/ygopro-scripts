@@ -1,6 +1,6 @@
 --強奪
 function c45986603.initial_effect(c)
-	aux.AddEquipProcedure(c,nil,Card.IsControlerCanBeChanged,c45986603.eqlimit,nil,c45986603.target)
+	aux.AddEquipProcedure(c,1,Card.IsControlerCanBeChanged,c45986603.eqlimit,nil,c45986603.target)
 	--recover
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(45986603,0))
@@ -20,15 +20,12 @@ function c45986603.initial_effect(c)
 	e4:SetValue(c45986603.ctval)
 	c:RegisterEffect(e4)
 end
-function c45986603.filter(c)
-	return c:IsFaceup() and c:IsControlerCanBeChanged()
-end
 function c45986603.eqlimit(e,c)
 	return e:GetHandlerPlayer()~=c:GetControler() or e:GetHandler():GetEquipTarget()==c
 end
-function c45986603.target(e,tp,eg,ep,ev,re,r,rp)
+function c45986603.target(e,tp,eg,ep,ev,re,r,rp,tc)
 	e:SetCategory(CATEGORY_CONTROL+CATEGORY_EQUIP)
-	Duel.SetOperationInfo(0,CATEGORY_CONTROL,Duel.GetFirstTarget(),1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_CONTROL,tc,1,0,0)
 end
 function c45986603.reccon(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer()

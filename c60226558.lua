@@ -11,12 +11,6 @@ function c60226558.initial_effect(c)
 	e3:SetOperation(c60226558.spop)
 	c:RegisterEffect(e3)
 end
-function c60226558.eqlimit(e,c)
-	return c:IsSetCard(0x9d)
-end
-function c60226558.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x9d)
-end
 function c60226558.target(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,562)
 	local att=Duel.AnnounceAttribute(tp,1,0xff-Duel.GetFirstTarget():GetAttribute())
@@ -25,7 +19,7 @@ end
 function c60226558.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if c:IsRelateToEffect(e) and tc and tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local att=e:GetLabel()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_EQUIP)
