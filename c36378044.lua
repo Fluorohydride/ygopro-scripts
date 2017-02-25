@@ -28,12 +28,12 @@ function c36378044.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c36378044.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer()
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c36378044.atktg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	e:SetLabel(0)
-	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer()
+	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and Duel.GetAttacker():IsControler(1-tp)
 		and Duel.SelectYesNo(tp,aux.Stringid(36378044,1)) then
 		e:SetLabel(1)
 		Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,3)

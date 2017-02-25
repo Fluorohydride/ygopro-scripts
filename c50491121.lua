@@ -15,7 +15,7 @@ function c50491121.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c50491121.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c50491121.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x6f)

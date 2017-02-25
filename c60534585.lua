@@ -10,7 +10,7 @@ function c60534585.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c60534585.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and Duel.GetAttackTarget()==nil
+	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
 		and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
 end
 function c60534585.spfilter(c,e,tp)

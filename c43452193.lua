@@ -12,7 +12,7 @@ function c43452193.initial_effect(c)
 end
 function c43452193.condition(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttackTarget()
-	return Duel.GetTurnPlayer()~=tp and at and at:IsFaceup() and at:IsSetCard(0x3008)
+	return at and Duel.GetAttacker():IsControler(1-tp) and at:IsFaceup() and at:IsSetCard(0x3008)
 end
 function c43452193.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local a=Duel.GetAttacker()

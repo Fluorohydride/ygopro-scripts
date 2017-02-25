@@ -38,7 +38,7 @@ function c60417395.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c60417395.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp
+	return eg:GetFirst():IsControler(1-tp)
 end
 function c60417395.cfilter1(c)
 	return c:IsFaceup() and c:IsRace(RACE_FIEND) and c:IsAbleToGraveAsCost()

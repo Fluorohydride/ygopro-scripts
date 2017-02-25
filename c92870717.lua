@@ -25,7 +25,7 @@ function c92870717.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c92870717.descon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c92870717.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
