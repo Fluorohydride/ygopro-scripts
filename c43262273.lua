@@ -38,7 +38,7 @@ function c43262273.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)
 		e1:SetCountLimit(1)
-		if Duel.GetTurnPlayer()==1-tp and Duel.GetCurrentPhase()==PHASE_END then
+		if Duel.GetTurnPlayer()==1-tp then
 			e1:SetLabel(Duel.GetTurnCount())
 			e1:SetReset(RESET_PHASE+PHASE_END+RESET_OPPO_TURN,2)
 		else
