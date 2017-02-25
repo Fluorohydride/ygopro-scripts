@@ -44,6 +44,7 @@ end
 function c38517737.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local g=Duel.SelectMatchingCard(tp,c38517737.spcfilter,tp,LOCATION_HAND,0,1,1,nil)
+	g:AddCard(e:GetHandler())
 	Duel.ConfirmCards(1-tp,g)
 	Duel.ShuffleHand(tp)
 end
