@@ -32,7 +32,7 @@ function c52575195.tgcon1(e,tp,eg,ep,ev,re,r,rp)
 		and tc:IsAttribute(ATTRIBUTE_LIGHT) and tc:IsRace(RACE_BEASTWARRIOR)
 end
 function c52575195.tgcon2(e,tp,eg,ep,ev,re,r,rp)
-	if tp==Duel.GetTurnPlayer() then return false end
+	if Duel.GetAttacker():IsControler(tp) then return false end
 	local tc=Duel.GetAttackTarget()
 	e:SetLabelObject(tc)
 	return tc and tc:IsFaceup() and tc:IsAttribute(ATTRIBUTE_LIGHT) and tc:IsRace(RACE_BEASTWARRIOR)

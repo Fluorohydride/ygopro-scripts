@@ -11,7 +11,7 @@ function c82340056.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c82340056.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetLP(tp)<=3000 and Duel.GetTurnPlayer()~=tp and Duel.GetAttackTarget()==nil
+	return Duel.GetLP(tp)<=3000 and Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end
 function c82340056.filter(c)
 	return c:IsSetCard(0x21) and c:IsAbleToHand()

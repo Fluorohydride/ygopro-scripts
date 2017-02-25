@@ -22,7 +22,7 @@ function c39537362.initial_effect(c)
 end
 function c39537362.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer()
+	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and Duel.GetAttacker():IsControler(1-tp)
 		and Duel.SelectYesNo(tp,aux.Stringid(39537362,1)) then 
 		e:SetLabel(1)
 		Duel.SetTargetCard(Duel.GetAttacker())
@@ -30,7 +30,7 @@ function c39537362.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	else e:SetLabel(0) end
 end
 function c39537362.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer()
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c39537362.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsStatus(STATUS_CHAINING) end

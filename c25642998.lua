@@ -12,7 +12,7 @@ function c25642998.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c25642998.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer()
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c25642998.dfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_FISH+RACE_SEASERPENT+RACE_AQUA)

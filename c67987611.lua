@@ -14,7 +14,7 @@ function c67987611.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x4)
 end
 function c67987611.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer() and Duel.IsExistingMatchingCard(c67987611.cfilter,tp,LOCATION_MZONE,0,1,nil)
+	return Duel.GetAttacker():IsControler(1-tp) and Duel.IsExistingMatchingCard(c67987611.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c67987611.filter(c)
 	return not c:IsPosition(POS_FACEUP_ATTACK)
