@@ -23,7 +23,6 @@ function c12923641.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	c:SetTurnCounter(0)
 	local g=Duel.GetMatchingGroup(Card.IsCanTurnSet,tp,0,LOCATION_MZONE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,g:GetCount(),0,0)
-	Duel.SetTargetCard(g)
 	--destroy
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -39,9 +38,8 @@ end
 function c12923641.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(Card.IsCanTurnSet,tp,0,LOCATION_MZONE,nil)
-	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
-	if sg:GetCount()>0 then
-		Duel.ChangePosition(sg,POS_FACEDOWN_DEFENSE)
+	if g:GetCount()>0 then
+		Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
 	end
 end
 function c12923641.descon(e,tp,eg,ep,ev,re,r,rp)
