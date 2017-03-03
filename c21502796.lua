@@ -11,7 +11,8 @@ function c21502796.initial_effect(c)
 end
 function c21502796.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,nil,1,0,LOCATION_ONFIELD)
+	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DECKDES,nil,0,tp,3)
 end
 function c21502796.operation(e,tp,eg,ep,ev,re,r,rp)
@@ -22,6 +23,7 @@ function c21502796.operation(e,tp,eg,ep,ev,re,r,rp)
 			Duel.HintSelection(g)
 			Duel.Destroy(g,REASON_EFFECT)
 			Duel.BreakEffect()
+		end
 	end
 	Duel.DiscardDeck(tp,3,REASON_EFFECT)
 end
