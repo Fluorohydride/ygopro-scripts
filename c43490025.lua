@@ -58,10 +58,10 @@ function c43490025.xyzcon(e,c,og,min,max)
 	if 2<=ct then return false end
 	if min and (min>2 or max<2) then return false end
 	local mg=nil
-	local altmg = nil
+	local altmg=nil
 	if og then
 		mg=og:Filter(c43490025.mfilter,nil,c)
-		altmg = og
+		altmg=og
 	else
 		mg=Duel.GetMatchingGroup(c43490025.mfilter,tp,LOCATION_MZONE,0,nil,c)
 		altmg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)

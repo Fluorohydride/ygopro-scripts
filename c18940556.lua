@@ -78,7 +78,7 @@ function c18940556.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c18940556.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local d=Duel.GetAttackTarget()
-	if chk ==0 then return Duel.GetAttacker()==e:GetHandler() and d and d:IsDefensePos() end
+	if chk==0 then return Duel.GetAttacker()==e:GetHandler() and d and d:IsDefensePos() end
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,1000)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,d,1,0,0)
 end

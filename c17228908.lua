@@ -86,7 +86,7 @@ end
 function c17228908.tglimit(e,c)
 	return not c:IsType(TYPE_TOKEN)
 end
-function c17228908.repfilter(c,tp,e)
+function c17228908.repfilter(c,tp)
 	return c:IsFaceup() and c:IsType(TYPE_NORMAL) and c:IsLocation(LOCATION_MZONE)
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:GetFlagEffect(17228908)==0
 end
@@ -94,31 +94,29 @@ function c17228908.desfilter(c,tp)
 	return c:IsRace(RACE_DINOSAUR) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
 end
 function c17228908.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ct=eg:FilterCount(c17228908.repfilter,nil,tp,e)
+	local ct=eg:FilterCount(c17228908.repfilter,nil,tp)
 	if chk==0 then return ct>0
 		and Duel.IsExistingMatchingCard(c17228908.desfilter,tp,LOCATION_HAND+LOCATION_DECK,0,ct,nil,tp) end
 	if Duel.SelectYesNo(tp,aux.Stringid(17228908,1)) then
-		local g=eg:Filter(c17228908.repfilter,nil,tp,e)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
-		local tg=Duel.SelectMatchingCard(tp,c17228908.desfilter,tp,LOCATION_HAND+LOCATION_DECK,0,g:GetCount(),g:GetCount(),nil,tp)
-		Duel.SetTargetCard(tg)
+		local tg=Duel.SelectMatchingCard(tp,c17228908.desfilter,tp,LOCATION_HAND+LOCATION_DECK,0,ct,ct,nil,tp)
+		local g=e:GetLabelObject()
+		g:Clear()
 		local tc=tg:GetFirst()
 		while tc do
 			tc:RegisterFlagEffect(17228908,RESET_EVENT+0x1fc0000+RESET_CHAIN,0,1)
 			tc:SetStatus(STATUS_DESTROY_CONFIRMED,true)
+			g:AddCard(tc)
 			tc=tg:GetNext()
 		end
-		e:GetLabelObject():Clear()
-		e:GetLabelObject():Merge(g)
 		return true
 	else return false end
 end
 function c17228908.repval(e,c)
-	local g=e:GetLabelObject()
-	return g:IsContains(c)
+	return c17228908.repfilter(c,e:GetHandlerPlayer())
 end
 function c17228908.repop(e,tp,eg,ep,ev,re,r,rp)
-	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
+	local tg=e:GetLabelObject()
 	local tc=tg:GetFirst()
 	while tc do
 		tc:SetStatus(STATUS_DESTROY_CONFIRMED,false)
