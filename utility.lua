@@ -1619,6 +1619,44 @@ function Auxiliary.PendOperation()
 				Duel.HintSelection(Group.FromCards(rpz))
 			end
 end
+--Link Summon
+function Auxiliary.AddLinkProcedure(c,f,ct)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_SPSUMMON_PROC)
+	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
+	e1:SetRange(LOCATION_EXTRA)
+	e1:SetTargetRange(POS_FACEUP_ATTACK,0)
+	e1:SetCondition(Auxiliary.LinkCondition(f,ct,99))
+	e1:SetOperation(Auxiliary.LinkOperation(f,ct,99))
+	e1:SetValue(SUMMON_TYPE_LINK)
+	c:RegisterEffect(e1)
+end
+function Auxiliary.LConditionFilter(c,f)
+	return c:IsFaceup() and (not f or f(c))
+end
+function Auxiliary.GetLinkCount(c)
+	if c:IsType(TYPE_LINK) and c:GetLink()>1 then
+		return 1+0x10000*c:GetLink()
+	else return 1 end
+end
+function Auxiliary.LinkCondition(f,minc,maxc)
+	return	function(e,c)
+				if c==nil then return true end
+				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
+				local tp=c:GetControler()
+				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f)
+				return mg:CheckWithSumEqual(Auxiliary.GetLinkCount,c:GetLink(),minc,maxc)
+			end
+end
+function Auxiliary.LinkOperation(f,minc,maxc)
+	return	function(e,tp,eg,ep,ev,re,r,rp,c)
+				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f)
+				local g=mg:SelectWithSumEqual(tp,Auxiliary.GetLinkCount,c:GetLink(),minc,maxc)
+				c:SetMaterial(g)
+				Duel.SendtoGrave(g,REASON_MATERIAL+REASON_LINK)
+end
+			end
 function Auxiliary.IsMaterialListCode(c,code)
 	if not c.material then return false end
 	for i,mcode in ipairs(c.material) do
