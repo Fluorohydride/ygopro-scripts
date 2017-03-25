@@ -23,7 +23,7 @@ function c1861692.initial_effect(c)
 	e2:SetOperation(c1861692.disop)
 	c:RegisterEffect(e2)
 end
-function c1861692.adval(e,c)
+function c1861692.atkval(e,c)
 	return c:GetLinkedGroupCount()*500
 end
 function c1861692.discon(e,tp,eg,ep,ev,re,r,rp)
