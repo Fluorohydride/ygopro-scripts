@@ -1620,15 +1620,16 @@ function Auxiliary.PendOperation()
 			end
 end
 --Link Summon
-function Auxiliary.AddLinkProcedure(c,f,ct)
+function Auxiliary.AddLinkProcedure(c,f,min,max)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetRange(LOCATION_EXTRA)
 	e1:SetTargetRange(POS_FACEUP_ATTACK,0)
-	e1:SetCondition(Auxiliary.LinkCondition(f,ct,99))
-	e1:SetOperation(Auxiliary.LinkOperation(f,ct,99))
+	if max==nil then max=99 end
+	e1:SetCondition(Auxiliary.LinkCondition(f,min,max))
+	e1:SetOperation(Auxiliary.LinkOperation(f,min,max))
 	e1:SetValue(SUMMON_TYPE_LINK)
 	c:RegisterEffect(e1)
 end
@@ -1673,7 +1674,7 @@ function Auxiliary.IsCodeListed(c,code)
 		if code==ccode then return true end
 	end
 	return false
-end	
+end
 --card effect disable filter(target)
 function Auxiliary.disfilter1(c)
 	return c:IsFaceup() and not c:IsDisabled() and (not c:IsType(TYPE_NORMAL) or bit.band(c:GetOriginalType(),TYPE_EFFECT)~=0)
@@ -1719,11 +1720,11 @@ end
 function Auxiliary.imval1(e,c)
 	return not c:IsImmuneToEffect(e)
 end
---filter for EFFECT_CANNOT_BE_EFFECT_TARGET + opponent 
+--filter for EFFECT_CANNOT_BE_EFFECT_TARGET + opponent
 function Auxiliary.tgoval(e,re,rp)
 	return rp~=e:GetHandlerPlayer()
 end
---filter for non-zero ATK 
+--filter for non-zero ATK
 function Auxiliary.nzatk(c)
 	return c:IsFaceup() and c:GetAttack()>0
 end
@@ -1736,8 +1737,8 @@ function Auxiliary.sumreg(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	local code=e:GetLabel()
 	while tc do
-		if tc:GetOriginalCode()==code then 
-			tc:RegisterFlagEffect(code,RESET_EVENT+0x1ec0000+RESET_PHASE+PHASE_END,0,1) 
+		if tc:GetOriginalCode()==code then
+			tc:RegisterFlagEffect(code,RESET_EVENT+0x1ec0000+RESET_PHASE+PHASE_END,0,1)
 		end
 		tc=eg:GetNext()
 	end
@@ -1769,8 +1770,8 @@ function Auxiliary.damcon1(e,tp,eg,ep,ev,re,r,rp)
 	local rd=e1 and not e2
 	local rr=not e1 and e2
 	local ex,cg,ct,cp,cv=Duel.GetOperationInfo(ev,CATEGORY_DAMAGE)
-	if ex and (cp==tp or cp==PLAYER_ALL) and not rd and not Duel.IsPlayerAffectedByEffect(tp,EFFECT_NO_EFFECT_DAMAGE) then 
-		return true 
+	if ex and (cp==tp or cp==PLAYER_ALL) and not rd and not Duel.IsPlayerAffectedByEffect(tp,EFFECT_NO_EFFECT_DAMAGE) then
+		return true
 	end
 	ex,cg,ct,cp,cv=Duel.GetOperationInfo(ev,CATEGORY_RECOVER)
 	return ex and (cp==tp or cp==PLAYER_ALL) and rr and not Duel.IsPlayerAffectedByEffect(tp,EFFECT_NO_EFFECT_DAMAGE)
