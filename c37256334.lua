@@ -31,7 +31,7 @@ function c37256334.deftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c37256334.deffilter(chkc,def) end
 	if chk==0 then return Duel.IsExistingTarget(c37256334.deffilter,tp,LOCATION_MZONE,0,1,nil,def) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,c37256334.deffilter,tp,LOCATION_MZONE,0,1,1,nil,def)
+	Duel.SelectTarget(tp,c37256334.deffilter,tp,LOCATION_MZONE,0,1,1,nil,def)
 end
 function c37256334.defop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -49,7 +49,7 @@ function c37256334.defop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c37256334.deffilter(c)
-	return c:GetBaseDefense()>=0 and c:IsSetCard(0x9f) and c:IsFaceup()
+	return c:IsFaceup() and c:IsSetCard(0x9f)
 end
 function c37256334.defval(e,c)
 	local g=Duel.GetMatchingGroup(c37256334.deffilter,c:GetControler(),LOCATION_MZONE,0,c)
