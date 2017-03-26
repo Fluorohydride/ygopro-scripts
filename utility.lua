@@ -1656,8 +1656,8 @@ function Auxiliary.LinkOperation(f,minc,maxc)
 				local g=mg:SelectWithSumEqual(tp,Auxiliary.GetLinkCount,c:GetLink(),minc,maxc)
 				c:SetMaterial(g)
 				Duel.SendtoGrave(g,REASON_MATERIAL+REASON_LINK)
-end
 			end
+end
 function Auxiliary.IsMaterialListCode(c,code)
 	if not c.material then return false end
 	for i,mcode in ipairs(c.material) do

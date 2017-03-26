@@ -28,11 +28,14 @@ end
 function c1861629.atkval(e,c)
 	return c:GetLinkedGroupCount()*500
 end
+function c1861629.tfilter(c,tp)
+	return c:IsOnField() and c:IsControler(tp)
+end
 function c1861629.discon(e,tp,eg,ep,ev,re,r,rp)
 	if rp==tp or e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) then return false end
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return false end
 	local tg=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
-	return tg and tg:IsExists(Card.IsOnField,1,nil) and Duel.IsChainNegatable(ev)
+	return tg and tg:IsExists(c1861629.tfilter,1,nil,tp) and Duel.IsChainNegatable(ev)
 end
 function c1861629.cfilter(c,g)
 	return g:IsContains(c) and not c:IsStatus(STATUS_BATTLE_DESTROYED)
