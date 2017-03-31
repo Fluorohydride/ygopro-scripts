@@ -1,11 +1,24 @@
 --真竜の黙示録
 function c61529473.initial_effect(c)
 	--Activate
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_ACTIVATE)
+	e0:SetCode(EVENT_FREE_CHAIN)
+	e0:SetHintTiming(0,TIMING_END_PHASE)
+	e0:SetTarget(c61529473.target)
+	c:RegisterEffect(e0)
+	--Activate(damage phase)
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(61529473,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
+	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetHintTiming(0,TIMING_END_PHASE)
-	e1:SetTarget(c61529473.target)
+	e1:SetHintTiming(TIMING_DAMAGE_STEP)
+	e1:SetCountLimit(1,61529473)
+	e1:SetCondition(c61529473.atkcon1)
+	e1:SetCost(c61529473.cost)
+	e1:SetTarget(c61529473.atktg)
+	e1:SetOperation(c61529473.atkop)
 	c:RegisterEffect(e1)
 	--destory and atk & def down
 	local e2=Effect.CreateEffect(c)
@@ -81,6 +94,9 @@ function c61529473.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		e:SetProperty(0)
 		e:SetOperation(nil)
 	end
+end
+function c61529473.atkcon1(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetCurrentPhase()==PHASE_DAMAGE and not Duel.IsDamageCalculated()
 end
 function c61529473.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
