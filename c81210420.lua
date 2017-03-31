@@ -15,7 +15,7 @@ function c81210420.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c81210420.filter(c)
-	return c:GetSequence()<5 and not c:IsType(TYPE_TOKEN)
+	return c:GetSequence()<5 and not c:IsType(TYPE_TOKEN+TYPE_LINK)
 end
 function c81210420.spfilter(c,e,tp)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and Duel.IsPlayerCanSpecialSummonMonster(tp,c:GetCode(),nil,0x11,0,0,0,0,0,POS_FACEDOWN)
