@@ -116,7 +116,7 @@ function c74063034.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c74063034.thfilter(c)
-	return c:IsFaceup() and c:IsCode(86120751) and c:IsAbleToDeck()
+	return c:IsFaceup() and c:IsCode(86120751) and c:IsAbleToHand()
 end
 function c74063034.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c74063034.thfilter(chkc) end
