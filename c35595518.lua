@@ -30,7 +30,7 @@ function c35595518.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
 	local rt=Duel.GetTargetCount(Card.IsType,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,TYPE_SPELL+TYPE_TRAP)
 	if rt>2 then rt=2 end
-	local ct=Duel.DiscardHand(tp,aux.TRUE,1,rt,REASON_DISCARD+REASON_COST)
+	local ct=Duel.DiscardHand(tp,nil,1,rt,REASON_DISCARD+REASON_COST)
 	e:SetLabel(ct)
 end
 function c35595518.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -38,8 +38,8 @@ function c35595518.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(Card.IsType,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil,TYPE_SPELL+TYPE_TRAP) end
 	local ct=e:GetLabel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local eg=Duel.SelectTarget(tp,Card.IsType,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,ct,ct,nil,TYPE_SPELL+TYPE_TRAP)
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,ct,0,0)
+	local g=Duel.SelectTarget(tp,Card.IsType,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,ct,ct,nil,TYPE_SPELL+TYPE_TRAP)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,ct,0,0)
 end
 function c35595518.operation(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
