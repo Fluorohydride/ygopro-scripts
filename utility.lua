@@ -1669,14 +1669,27 @@ function Group.GetSumEqualGroups(g,f,n,min,max)
 		local c=g:GetFirst()
 		if not c then break end
 		g:RemoveCard(c)
-		if f(c)<n and max>0 then
-			local R=g:Clone():GetSumEqualGroups(f,n-f(c),min-1,max-1)
+		local A=bit.band(15,f(c))
+		if A<n and max>0 then
+			local R=g:Clone():GetSumEqualGroups(f,n-A,min-1,max-1)
 			for _,v in ipairs(R)do
 				v:AddCard(c)
 				r[#r+1]=v
 			end
-		elseif f(c)==n then
+		elseif A==n then
 			r[#r+1]=Group.FromCards(c)
+		end
+		local B=bit.rshift(f(c),4)
+		if B>0 and B~=A then
+			if B<n and max>0 then
+				local R=g:Clone():GetSumEqualGroups(f,n-B,min-1,max-1)
+				for _,v in ipairs(R)do
+					v:AddCard(c)
+					r[#r+1]=v
+				end
+			elseif B==n then
+				r[#r+1]=Group.FromCards(c)
+			end
 		end
 	end
 	return r
@@ -1701,10 +1714,13 @@ function Auxiliary.SelectGroup(tp,g)
 	end
 	return I
 end
+function Auxiliary.GetExtraLocationFilter(c,tp)
+	return c:IsControler(tp)and c:GetSequence()>5
+end
 function Auxiliary.GetExtraLocation(tp,G)
 	local g=Duel.GetFieldGroup(0,LOCATION_MZONE,LOCATION_MZONE)
 	g:Sub(G)
-	local p=(Duel.GetFieldCard(tp,LOCATION_MZONE,6)or Duel.GetFieldCard(tp,LOCATION_MZONE,7))and 0 or bit.lshift(0x60,tp*16)
+	local p=g:IsExists(Auxiliary.GetExtraLocationFilter,1,nil,tp)and 0 or bit.lshift(0x60,tp*16)
 	local q=0
 	local c=g:GetFirst()
 	while c do
