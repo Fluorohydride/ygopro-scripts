@@ -1637,30 +1637,28 @@ function Auxiliary.LConditionFilter(c,f)
 	return c:IsFaceup() and (not f or f(c))
 end
 function Auxiliary.GetLinkCount(c)
-	if c:IsType(TYPE_LINK) and c:GetLink()>1 then
-		return 1+0x10000*c:GetLink()
-	else return 1 end
-end
-function Auxiliary.GetLinkCount(c)
-	if c:IsType(TYPE_LINK)return c:GetLink()else return 1 end
+	if c:IsType(TYPE_LINK)then return c:GetLink()else return 1 end
 end
 function Auxiliary.LinkCondition(f,minc,maxc)
 	return	function(e,c)
 				if not c then return true end
 				local tp=c:GetControler()
-				for _,v in ipairs(Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f):GetSumEqualGroups(aux.GetLinkCount,c:GetLink(),minc,maxc))do
-					if aux.GetExtraLocation(tp,g)>0 then return true end
+				local g=Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f):GetSumEqualGroups(aux.GetLinkCount,c:GetLink(),minc,maxc)
+				for _,v in ipairs(g)do					
+					if aux.GetExtraLocation(tp,v)>0 then return true end
 				end
 			end
 end
 function Auxiliary.LinkOperation(f,minc,maxc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c)
-				local tp=e:GetHandler()
+				local tp=e:GetHandlerPlayer()
 				local g=Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f):GetSumEqualGroups(aux.GetLinkCount,c:GetLink(),minc,maxc)
 				for i=#g,1,-1 do
-					if aux.GetExtraLocation(tp,g)<1 then g:remove(i)
+					if aux.GetExtraLocation(tp,g[i])<1 then g:remove(i)end
 				end
-				g=g[aux.SelectGroup(tp,g)]
+				local G={}
+				for i,v in ipairs(g)do G[i]=g[i]:Clone()end			
+				g=G[aux.SelectGroup(tp,g)]
 				c:SetMaterial(g)
 				Duel.SendtoGrave(g,REASON_MATERIAL+REASON_LINK)
 			end
@@ -1671,8 +1669,8 @@ function Group.GetSumEqualGroups(g,f,n,min,max)
 		local c=g:GetFirst()
 		if not c then break end
 		g:RemoveCard(c)
-		if f(c)>n and max>0 then
-			local R=g:GetSumEqualGroups(f,n-f(c),min-1,max-1)
+		if f(c)<n and max>0 then
+			local R=g:Clone():GetSumEqualGroups(f,n-f(c),min-1,max-1)
 			for _,v in ipairs(R)do
 				v:AddCard(c)
 				r[#r+1]=v
@@ -1684,38 +1682,38 @@ function Group.GetSumEqualGroups(g,f,n,min,max)
 	return r
 end
 function Auxiliary.SelectGroup(tp,g)
-	local G=Group.CreateGroup()
 	local n=#g
+	local G=Group.CreateGroup()
+	local I
 	while n>1 do
 		for _,v in ipairs(g)do G:Merge(v)end
 		local c=G:Select(tp,1,1,nil):GetFirst()
 		for i in pairs(g)do
 			if g[i]:IsContains(c)then
-				if g[i]:GetCount()<2 then n=n-1 end
+				if g[i]:GetCount()<2 then if Duel.SelectYesNo(tp,0)then I=i n=n-1 else return i end end
 				g[i]:RemoveCard(c)
 			else
 				if g[i]:GetCount()>0 then n=n-1 end
-				g[i]:Reset()
+				g[i]:Clear()
 			end
-		end
-		G:Reset()
+			G:Clear()
+		end	
 	end
-	for i,v in ipairs(g)do if v:GetCount()>0 then return i end
+	return I
 end
 function Auxiliary.GetExtraLocation(tp,G)
 	local g=Duel.GetFieldGroup(0,LOCATION_MZONE,LOCATION_MZONE)
 	g:Sub(G)
-	local p=(Duel.GetFieldCard(tp,LOCATION_MZONE,6)or Duel.GetFieldCard(tp,LOCATION_MZONE,7))and 0 or bit.lshift(0x60,tp*32)
+	local p=(Duel.GetFieldCard(tp,LOCATION_MZONE,6)or Duel.GetFieldCard(tp,LOCATION_MZONE,7))and 0 or bit.lshift(0x60,tp*16)
 	local q=0
 	local c=g:GetFirst()
 	while c do
 		p=bit.bor(p,c:GetLinkedZone())
-		q=bit.bor(q,bit.lshift(1,c:GetSequence()+c:GetControler()*32))
+		q=bit.bor(q,bit.lshift(1,c:GetSequence()+c:GetControler()*16))
 		c=g:GetNext()
 	end
-	return bit.band(bit.band(p,0xFFFFFFFFFFFFFFFF-q),bit.lshift(0xFFFFFFFF,tp*32))
+	return bit.band(bit.band(p,0xFFFFFFFF-q),bit.lshift(0xFF,tp*16))
 end
-
 function Auxiliary.IsMaterialListCode(c,code)
 	if not c.material then return false end
 	for i,mcode in ipairs(c.material) do
