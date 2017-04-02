@@ -87,7 +87,7 @@ function c56350972.operation(e,tp,eg,ep,ev,re,r,rp)
 	local sel=e:GetLabel()
 	if sel==1 then
 		Duel.Draw(tp,2,REASON_EFFECT)
-		Duel.ShuffleHand(p)
+		Duel.ShuffleHand(tp)
 		Duel.BreakEffect()
 		Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT+REASON_DISCARD)
 	elseif sel==2 then
