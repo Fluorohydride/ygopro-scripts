@@ -16,7 +16,7 @@ function c91663373.filter(c)
 	return c:IsLocation(LOCATION_HAND) and not c:IsPublic()
 end
 function c91663373.cfop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) and e:GetHandler():IsPosition(POS_FACEUP_ATTACK) then
+	if eg and e:GetHandler():IsRelateToEffect(e) and e:GetHandler():IsPosition(POS_FACEUP_ATTACK) then
 		local cg=eg:Filter(c91663373.filter,nil)
 		Duel.ConfirmCards(tp,cg)
 		Duel.ShuffleHand(1-tp)
