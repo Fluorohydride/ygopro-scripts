@@ -14,7 +14,9 @@ function c2926176.cfilter(c)
 	return c:IsOnField() and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c2926176.condition(e,tp,eg,ep,ev,re,r,rp)
-	if not re:IsHasType(EFFECT_TYPE_ACTIVATE) or not Duel.IsChainNegatable(ev) then return false end
+	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) or not re:IsHasType(EFFECT_TYPE_ACTIVATE) or not Duel.IsChainNegatable(ev) then return false end
+	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
+	if not g or g:GetCount()~=1 then return false end
 	local ex,tg,tc=Duel.GetOperationInfo(ev,CATEGORY_DESTROY)
 	return ex and tg~=nil and tc==1 and tg:FilterCount(c2926176.cfilter,nil)==tg:GetCount()
 end
