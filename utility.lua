@@ -1671,23 +1671,23 @@ function Auxiliary.GetSumEqualGroups(g,f,n,min,max)
 		local c = g:GetFirst()
 		if not c then break end
 		g:RemoveCard(c)
-		local n1 = bit.band(15,f(c))
-		if n1<n and max>1 then
-			for _,v in ipairs(aux.GetSumEqualGroups(g:Clone(),f,n-n1,min-1,max-1)) do
+		local N = bit.band(15,f(c))
+		if N<n and max>1 then
+			for _,v in ipairs(aux.GetSumEqualGroups(g:Clone(),f,n-N,min-1,max-1)) do
 				v:AddCard(c)
 				result[#result+1] = v
 			end
-		elseif n1==n and min<1 then
+		elseif N==n and min<2 then
 			result[#result+1] = Group.FromCards(c)
 		end
-		local n2 = bit.rshift(f(c),4)
-		if n2>0 and n2~=n1 then
-			if n2<n and max>0 then
-				for _,v in ipairs(aux.GetSumEqualGroups(g:Clone(),GetSumEqualGroups(f,n-n2,min-1,max-1))) do
+		N = bit.rshift(f(c),4)
+		if N>0 then
+			if N<n and max>1 then
+				for _,v in ipairs(aux.GetSumEqualGroups(g:Clone(),f,n-N,min-1,max-1)) do
 					v:AddCard(c)
 					result[#result+1] = v
 				end
-			elseif n2==n and min<1 then
+			elseif N==n and min<2 then
 				result[#result+1] = Group.FromCards(c)
 			end
 		end
