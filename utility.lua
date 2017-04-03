@@ -202,7 +202,7 @@ function Auxiliary.SynCondition(f1,f2,minct,maxc)
 	return	function(e,c,smat,mg)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local ft=aux.CountOne(aux.GetUsableExtraField(c:GetControler())
+				local ft=aux.CountOne(aux.GetUsableExtraField(c:GetControler()))
 				local ct=-ft
 				local minc=minct
 				if minc<ct then minc=ct end
@@ -1672,7 +1672,7 @@ function Auxiliary.GetSumEqualGroups(g,f,n,min,max)
 		g:RemoveCard(c)
 		local n1 = bit.band(15,f(c))
 		if n1<n and max>1 then
-			for _,v in ipairs(g:Clone():GetSumEqualGroups(f,n-n1,min-1,max-1)) do
+			for _,v in ipairs(aux.GetSumEqualGroups(g:Clone(),f,n-n1,min-1,max-1)) do
 				v:AddCard(c)
 				result[#result+1] = v
 			end
@@ -1682,7 +1682,7 @@ function Auxiliary.GetSumEqualGroups(g,f,n,min,max)
 		local n2 = bit.rshift(f(c),4)
 		if n2>0 and n2~=n1 then
 			if n2<n and max>0 then
-				for _,v in ipairs(g:Clone():GetSumEqualGroups(f,n-n2,min-1,max-1)) do
+				for _,v in ipairs(aux.GetSumEqualGroups(g:Clone(),GetSumEqualGroups(f,n-n2,min-1,max-1))) do
 					v:AddCard(c)
 					result[#result+1] = v
 				end
@@ -1734,7 +1734,7 @@ function Auxiliary.GetUsableExtraFieldFilter(c,tp)
 end
 function Auxiliary.GetUsableExtraField(tp,G)
 	local g      = Duel.GetFieldGroup(0,LOCATION_MZONE,LOCATION_MZONE)
-	if G then eg:Sub(G) end
+	if G then g:Sub(G) end
 	local allow  = g:IsExists(aux.GetUsableExtraFieldFilter,1,nil,tp) and 0 or bit.lshift(0x60,tp*16)
 	local forbid = 0
 	local c      = g:GetFirst()
