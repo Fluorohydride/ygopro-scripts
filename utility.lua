@@ -1548,7 +1548,7 @@ function Auxiliary.EnablePendulumAttribute(c,reg)
 		c:RegisterEffect(e2)
 	end
 end
-function Auxiliary.PConditionFilter(c,e,tp,lscale,rscale)
+function Auxiliary.PConditionFilter(c,e,tp,lscale,rscale,ex)
 	local lv=0
 	if c.pendulum_level then
 		lv=c.pendulum_level
@@ -1557,7 +1557,7 @@ function Auxiliary.PConditionFilter(c,e,tp,lscale,rscale)
 	end
 	return (c:IsLocation(LOCATION_HAND) or (c:IsFaceup() and c:IsType(TYPE_PENDULUM)))
 		and lv>lscale and lv<rscale and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_PENDULUM,tp,false,false)
-		and not c:IsForbidden()
+		and not c:IsForbidden() and (ex or not c:IsLocation(LOCATION_EXTRA))
 end
 function Auxiliary.PendCondition()
 	return	function(e,c,og)
@@ -1569,12 +1569,12 @@ function Auxiliary.PendCondition()
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
-				local ft=aux.CountOne(aux.GetUsableExtraField(tp))
+				local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 				if ft<=0 then return false end
 				if og then
-					return og:IsExists(Auxiliary.PConditionFilter,1,nil,e,tp,lscale,rscale)
+					return og:IsExists(Auxiliary.PConditionFilter,1,nil,e,tp,lscale,rscale,aux.GetUsableExtraField(tp)>0)
 				else
-					return Duel.IsExistingMatchingCard(Auxiliary.PConditionFilter,tp,LOCATION_HAND+LOCATION_EXTRA,0,1,nil,e,tp,lscale,rscale)
+					return Duel.IsExistingMatchingCard(Auxiliary.PConditionFilter,tp,LOCATION_HAND+LOCATION_EXTRA,0,1,nil,e,tp,lscale,rscale,aux.GetUsableExtraField(tp)>0)
 				end
 			end
 end
@@ -1584,16 +1584,17 @@ function Auxiliary.PendOperation()
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
-				local ft=aux.CountOne(aux.GetUsableExtraField(tp))
+				local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 				if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 				local tg=nil
 				if og then
-					tg=og:Filter(Auxiliary.PConditionFilter,nil,e,tp,lscale,rscale)
+					tg=og:Filter(Auxiliary.PConditionFilter,nil,e,tp,lscale,rscale,true)
 				else
-					tg=Duel.GetMatchingGroup(Auxiliary.PConditionFilter,tp,LOCATION_HAND+LOCATION_EXTRA,0,nil,e,tp,lscale,rscale)
+					tg=Duel.GetMatchingGroup(Auxiliary.PConditionFilter,tp,LOCATION_HAND+LOCATION_EXTRA,0,nil,e,tp,lscale,rscale,true)
 				end
 				local ect=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
 				if ect and (ect<=0 or ect>ft) then ect=nil end
+				if ect then ect=math.min(ect,aux.CountOne(aux.GetUsableExtraField(tp))) end
 				if ect==nil or tg:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)<=ect then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 					local g=tg:Select(tp,1,ft,nil)
