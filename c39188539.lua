@@ -55,7 +55,7 @@ function c39188539.seqop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c39188539.filter(c,s1)
-	if not c:IsAbleToDeck() then return false end
+	if not c:IsAbleToHand() then return false end
 	local s2=c:GetSequence()
 	if c:IsLocation(LOCATION_SZONE) then
 		if s2>=5 then return false end
