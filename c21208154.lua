@@ -36,12 +36,12 @@ function c21208154.initial_effect(c)
 	e6:SetOperation(c21208154.regop)
 	c:RegisterEffect(e6)
 	--for checking for copying effect
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetCode(21208154)
-	e4:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e4:SetRange(LOCATION_MZONE)
-	c:RegisterEffect(e4)
+	local e7=Effect.CreateEffect(c)
+	e7:SetType(EFFECT_TYPE_SINGLE)
+	e7:SetCode(21208154)
+	e7:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e7:SetRange(LOCATION_MZONE)
+	c:RegisterEffect(e7)
 end
 function c21208154.ttcon(e,c,minc)
 	if c==nil then return true end
