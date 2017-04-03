@@ -202,7 +202,7 @@ function Auxiliary.SynCondition(f1,f2,minct,maxc)
 	return	function(e,c,smat,mg)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local fp=aux.GetExtraField()
+				local fp=aux.GetUsableExtraField(tp)
 				local ft=aux.CountOne(fp)
 				local ct=-ft
 				local minc=minct
@@ -216,7 +216,7 @@ end
 function Auxiliary.SynTarget(f1,f2,minct,maxc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,smat,mg)
 				local g=nil
-				local fp=aux.GetExtraField()
+				local fp=aux.GetUsableExtraField(tp)
 				local ft=aux.CountOne(fp)
 				local ct=-ft
 				local minc=minct
@@ -283,7 +283,7 @@ function Auxiliary.XyzCondition(f,lv,minc,maxc)
 	return	function(e,c,og,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local fp=aux.GetExtraField()
+				local fp=aux.GetUsableExtraField(tp)
 				local ft=aux.CountOne(fp)
 				local ct=-ft
 				local minc=minc
@@ -350,7 +350,7 @@ function Auxiliary.XyzCondition2(lf,lv,minc,maxc,alterf,desc,op)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp=c:GetControler()
-				local fp=aux.GetExtraField()
+				local fp=aux.GetUsableExtraField(tp)
 				local ft=aux.CountOne(fp)
 				local ct=-ft
 				local mg=nil
@@ -378,7 +378,7 @@ function Auxiliary.XyzTarget2(f,lv,minc,maxc,alterf,desc,op)
 				if og and not min then
 					return true
 				end
-				local fp=aux.GetExtraField()
+				local fp=aux.GetUsableExtraField(tp)
 				local ft=aux.CountOne(fp)
 				local ct=-ft
 				local minc=minc
@@ -1574,7 +1574,7 @@ function Auxiliary.PendCondition()
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
-				local fp=aux.GetExtraField()
+				local fp=aux.GetUsableExtraField(tp)
 				local ft=aux.CountOne(fp)
 				if ft<=0 then return false end
 				if og then
@@ -1590,7 +1590,7 @@ function Auxiliary.PendOperation()
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
-				local fp=aux.GetExtraField()
+				local fp=aux.GetUsableExtraField(tp)
 				local ft=aux.CountOne(fp)
 				if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 				local tg=nil
@@ -1723,9 +1723,6 @@ function Auxiliary.SelectGroup(tp,g)
 	end
 	return rg
 end
-function Auxiliary.GetUsableExtraFieldFilter(c,tp)
-	return c:IsControler(tp) and c:GetSequence()>5
-end
 function Auxiliary.GetExtraField()
 	local z = 0x6060
 	local g = Duel.GetFieldGroup(0,LOCATION_MZONE,LOCATION_MZONE)
@@ -1735,6 +1732,9 @@ function Auxiliary.GetExtraField()
 		c = g:GetNext()
 	end
 	return z
+end
+function Auxiliary.GetUsableExtraFieldFilter(c,tp)
+	return c:IsControler(tp) and c:GetSequence()>5
 end
 function Auxiliary.GetUsableExtraField(tp,G)
 	local g      = Duel.GetFieldGroup(0,LOCATION_MZONE,LOCATION_MZONE)
