@@ -202,12 +202,8 @@ function Auxiliary.SynCondition(f1,f2,minct,maxc)
 	return	function(e,c,smat,mg)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local fp=aux.GetExtraLocation(c:GetControler())
-				local ft=0
-				while fp~=0 do
-					if bit.band(fp,1)>0 then ft=ft+1 end
-					bit.rshift(fp,1)
-				end
+				local fp=aux.GetExtraField()
+				local ft=aux.CountOne(fp)
 				local ct=-ft
 				local minc=minct
 				if minc<ct then minc=ct end
@@ -220,12 +216,8 @@ end
 function Auxiliary.SynTarget(f1,f2,minct,maxc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,smat,mg)
 				local g=nil
-				local fp=aux.GetExtraLocation(c:GetControler())
-				local ft=0
-				while fp~=0 do
-					if bit.band(fp,1)>0 then ft=ft+1 end
-					bit.rshift(fp,1)
-				end
+				local fp=aux.GetExtraField()
+				local ft=aux.CountOne(fp)
 				local ct=-ft
 				local minc=minct
 				if minc<ct then minc=ct end
@@ -291,12 +283,8 @@ function Auxiliary.XyzCondition(f,lv,minc,maxc)
 	return	function(e,c,og,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local fp=aux.GetExtraLocation(c:GetControler())
-				local ft=0
-				while fp~=0 do
-					if bit.band(fp,1)>0 then ft=ft+1 end
-					bit.rshift(fp,1)
-				end
+				local fp=aux.GetExtraField()
+				local ft=aux.CountOne(fp)
 				local ct=-ft
 				local minc=minc
 				local maxc=maxc
@@ -357,17 +345,13 @@ function Auxiliary.XyzOperation(f,lv,minc,maxc)
 			end
 end
 --Xyz summon(alterf)
-function Auxiliary.XyzCondition2(f,lv,minc,maxc,alterf,desc,op)
+function Auxiliary.XyzCondition2(lf,lv,minc,maxc,alterf,desc,op)
 	return	function(e,c,og,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp=c:GetControler()
-				local fp=aux.GetExtraLocation(c:GetControler())
-				local ft=0
-				while fp~=0 do
-					if bit.band(fp,1)>0 then ft=ft+1 end
-					bit.rshift(fp,1)
-				end
+				local fp=aux.GetExtraField()
+				local ft=aux.CountOne(fp)
 				local ct=-ft
 				local mg=nil
 				if og then
@@ -394,12 +378,8 @@ function Auxiliary.XyzTarget2(f,lv,minc,maxc,alterf,desc,op)
 				if og and not min then
 					return true
 				end
-				local fp=aux.GetExtraLocation(c:GetControler())
-				local ft=0
-				while fp~=0 do
-					if bit.band(fp,1)>0 then ft=ft+1 end
-					bit.rshift(fp,1)
-				end
+				local fp=aux.GetExtraField()
+				local ft=aux.CountOne(fp)
 				local ct=-ft
 				local minc=minc
 				local maxc=maxc
@@ -1594,12 +1574,8 @@ function Auxiliary.PendCondition()
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
-				local fp=aux.GetExtraLocation(c:GetControler())
-				local ft=0
-				while fp~=0 do
-					if bit.band(fp,1)>0 then ft=ft+1 end
-					bit.rshift(fp,1)
-				end
+				local fp=aux.GetExtraField()
+				local ft=aux.CountOne(fp)
 				if ft<=0 then return false end
 				if og then
 					return og:IsExists(Auxiliary.PConditionFilter,1,nil,e,tp,lscale,rscale)
@@ -1614,12 +1590,8 @@ function Auxiliary.PendOperation()
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
-				local fp=aux.GetExtraLocation(c:GetControler())
-				local ft=0
-				while fp~=0 do
-					if bit.band(fp,1)>0 then ft=ft+1 end
-					bit.rshift(fp,1)
-				end
+				local fp=aux.GetExtraField()
+				local ft=aux.CountOne(fp)
 				if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 				local tg=nil
 				if og then
@@ -1678,8 +1650,8 @@ function Auxiliary.LinkCondition(f,minc,maxc)
 	return	function(e,c)
 				if not c then return true end
 				local tp = c:GetControler()
-				for _,v in ipairs(aux.GetSumEqualGroups(Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)) do					
-					if aux.GetExtraLocation(tp,v)>0 then return true end
+				for _,v in ipairs(aux.GetSumEqualGroups(Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)) do
+					if aux.GetUsableExtraField(tp,v)>0 then return true end
 				end
 				return false
 			end
@@ -1689,7 +1661,7 @@ function Auxiliary.LinkOperation(f,minc,maxc)
 				local tp = e:GetHandlerPlayer()
 				local g = aux.GetSumEqualGroups(Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)
 				for i=#g,1,-1 do
-					if aux.GetExtraLocation(tp,g[i])<1 then g:remove(i) end
+					if aux.GetUsableExtraField(tp,g[i])<1 then g:remove(i) end
 				end
 				g = aux.SelectGroup(tp,g)
 				c:SetMaterial(g)
@@ -1697,8 +1669,6 @@ function Auxiliary.LinkOperation(f,minc,maxc)
 			end
 end
 function Auxiliary.GetSumEqualGroups(g,f,n,min,max)
---[[pre:	same as selectwithsumequal, but all elements must be >0 
-	post:	array of all possible sum equal group.]]
 	local result = {}
 	while g:GetCount()>=min do
 		local c = g:GetFirst()
@@ -1728,10 +1698,7 @@ function Auxiliary.GetSumEqualGroups(g,f,n,min,max)
 	return result
 end
 function Auxiliary.SelectGroup(tp,g)
---[[pre:	tp:	select player
-			g:	array of groups
-	post:	rg:	one group in g selected by player]]							
-	local ct = #g 
+	local ct = #g
 	local sg = Group.CreateGroup()
 	local rg = Group.CreateGroup()
 	local finishSelection = false
@@ -1739,41 +1706,59 @@ function Auxiliary.SelectGroup(tp,g)
 		for _,v in ipairs(g) do sg:Merge(v) end
 		local c = sg:Select(tp,1,1,nil):GetFirst()
 		rg:AddCard(c)
-		for i in pairs(g) do
-			if g[i]:IsContains(c)then
-				g[i]:RemoveCard(c)
-				if g[i]:GetCount()<1 then
+		for _,v in ipairs(g) do
+			if v:IsContains(c) then
+				v:RemoveCard(c)
+				if v:GetCount()<1 then
 					ct = ct-1
 					finishSelection = true
 				end
 			else
-				if g[i]:GetCount()>0 then ct = ct-1 end
-				g[i]:Clear()
+				if v:GetCount()>0 then ct = ct-1 end
+				v:Clear()
 			end
 			sg:Clear()
 		end
-		if finishSelection and ct>1 and not Duel.SelectYesNo(tp,0) then break else finishSelection=false end -- do you want to continue selection 
+		if finishSelection and ct>1 and not Duel.SelectYesNo(tp,0) then break else finishSelection=false end -- do you want to continue selection
 	end
 	return rg
 end
-function Auxiliary.GetExtraLocationFilter(c,tp)
+function Auxiliary.GetUsableExtraFieldFilter(c,tp)
 	return c:IsControler(tp) and c:GetSequence()>5
 end
-function Auxiliary.GetExtraLocation(tp,G)
---[[pre:	tp:	the extra location for player tp
-			G:	the cards that are to be sent to grave as material
-	post:	?:	all locations that allows tp to summon ex monster]]	
+function Auxiliary.GetExtraField()
+	local z = 0x6060
+	local g = Duel.GetFieldGroup(0,LOCATION_MZONE,LOCATION_MZONE)
+	local c = g:GetFirst()
+	while c do
+		z = bit.bor(z,c:GetLinkedZone())
+		c = g:GetNext()
+	end
+	return z
+end
+function Auxiliary.GetUsableExtraField(tp,G)
 	local g      = Duel.GetFieldGroup(0,LOCATION_MZONE,LOCATION_MZONE)
-	if G then eg:Sub(G)end
-	local allow  = g:IsExists(Auxiliary.GetExtraLocationFilter,1,nil,tp)and 0 or bit.lshift(0x60,tp*16)
+	if G then eg:Sub(G) end
+	local allow  = g:IsExists(aux.GetUsableExtraFieldFilter,1,nil,tp) and 0 or bit.lshift(0x60,tp*16)
 	local forbid = 0
 	local c      = g:GetFirst()
 	while c do
 		allow  = bit.bor(allow,c:GetLinkedZone())
 		forbid = bit.bor(forbid,bit.lshift(1,c:GetSequence()+c:GetControler()*16))
-		c=g:GetNext()
+		c      = g:GetNext()
 	end
 	return bit.band(bit.band(allow,0xFFFFFFFF-forbid),bit.lshift(0xFF,tp*16))
+end
+function Auxiliary.CountOne(n)
+	local c = 0
+	while n>0 do
+		if bit.band(1,n)>0 then c=c+1 end
+		n=bit.rshift(n,1)
+	end
+	return c
+end
+function Auxiliary.IsField(c,f)
+	return bit.band(bit.lshift(1,c:GetSequence()+(c:IsLocation(LOCATION_MZONE)and 0 or 8)+c:GetControler()*16),f)>0
 end
 function Auxiliary.IsMaterialListCode(c,code)
 	if not c.material then return false end
