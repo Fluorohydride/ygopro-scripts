@@ -1699,6 +1699,7 @@ function Auxiliary.SelectGroup(tp,g)
 	local sg = Group.CreateGroup()
 	local I
 	while ct>1 do
+		I = 0
 		for _,v in ipairs(g) do sg:Merge(v) end
 		local c = sg:Select(tp,1,1,nil):GetFirst()
 		for i in pairs(g) do
@@ -1713,14 +1714,15 @@ function Auxiliary.SelectGroup(tp,g)
 				g[i]:Clear()
 			end
 			sg:Clear()
-		end	
+		end
+		if I>0 and ct>1 and not Duel.SelectYesNo(tp,0) then return I end
 	end
 	return I
 end
 function Auxiliary.GetExtraLocationFilter(c,tp)
 	return c:IsControler(tp) and c:GetSequence()>5
 end
-function Auxiliary.GetExtraLocation(tp,G)
+function Auxiliary.GetExtraLocation(tp,G)	
 	local g      = Duel.GetFieldGroup(0,LOCATION_MZONE,LOCATION_MZONE)
 	g:Sub(G)
 	local allow  = g:IsExists(Auxiliary.GetExtraLocationFilter,1,nil,tp)and 0 or bit.lshift(0x60,tp*16)
