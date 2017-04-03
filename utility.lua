@@ -1661,7 +1661,7 @@ function Auxiliary.LinkOperation(f,minc,maxc)
 				Duel.SendtoGrave(g,REASON_MATERIAL+REASON_LINK)
 			end
 end
-function Group.GetSumEqualGroups(g,f,n,min,max)
+function Auxiliary.GetSumEqualGroups(g,f,n,min,max)
 --[[pre:	same as selectwithsumequal, but all elements must be >0 
 	post:	array of all possible sum equal group.]]
 	local result = {}
