@@ -202,7 +202,7 @@ function Auxiliary.SynCondition(f1,f2,minct,maxc)
 	return	function(e,c,smat,mg)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local ft=aux.CountOne(aux.GetUsableExtraField(tp))
+				local ft=aux.CountOne(aux.GetUsableExtraField(c:GetControler())
 				local ct=-ft
 				local minc=minct
 				if minc<ct then minc=ct end
@@ -215,7 +215,7 @@ end
 function Auxiliary.SynTarget(f1,f2,minct,maxc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,smat,mg)
 				local g=nil
-				local ft=aux.CountOne(aux.GetUsableExtraField(tp))
+				local ft=aux.CountOne(aux.GetUsableExtraField(c:GetControler()))
 				local ct=-ft
 				local minc=minct
 				if minc<ct then minc=ct end
@@ -281,7 +281,7 @@ function Auxiliary.XyzCondition(f,lv,minc,maxc)
 	return	function(e,c,og,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local ft=aux.CountOne(aux.GetUsableExtraField(tp))
+				local ft=aux.CountOne(aux.GetUsableExtraField(c:GetControler()))
 				local ct=-ft
 				local minc=minc
 				local maxc=maxc
@@ -1637,11 +1637,14 @@ function Auxiliary.LConditionFilter(c,f)
 	return c:IsFaceup() and (not f or f(c))
 end
 function Auxiliary.GetLinkCount(c)
-	if c:IsType(TYPE_LINK) then return 0x10000+c:GetLink() else return 1 end
+	if c:IsType(TYPE_LINK) and c:GetLink()>1 then
+		return 1+0x10000*c:GetLink()
+	else return 1 end
 end
 function Auxiliary.LinkCondition(f,minc,maxc)
 	return	function(e,c)
-				if not c then return true end
+				if c==nil then return true end
+				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp = c:GetControler()
 				for _,v in ipairs(aux.GetSumEqualGroups(Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)) do
 					if aux.GetUsableExtraField(tp,v)>0 then return true end
