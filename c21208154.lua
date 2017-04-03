@@ -35,6 +35,13 @@ function c21208154.initial_effect(c)
 	e6:SetCode(EVENT_SUMMON_SUCCESS)
 	e6:SetOperation(c21208154.regop)
 	c:RegisterEffect(e6)
+	--for checking for copying effect
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_SINGLE)
+	e4:SetCode(21208154)
+	e4:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e4:SetRange(LOCATION_MZONE)
+	c:RegisterEffect(e4)
 end
 function c21208154.ttcon(e,c,minc)
 	if c==nil then return true end
@@ -46,7 +53,7 @@ function c21208154.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)
 end
 function c21208154.filter(c)
-	return c:IsFaceup() and c:GetCode()~=21208154
+	return c:IsFaceup() and c:GetCode()~=21208154 and not c:IsHasEffect(21208154)
 end
 function c21208154.adval(e,c)
 	local g=Duel.GetMatchingGroup(c21208154.filter,0,LOCATION_MZONE,LOCATION_MZONE,nil)
