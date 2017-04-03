@@ -1659,6 +1659,7 @@ function Auxiliary.LinkOperation(f,minc,maxc)
 				for i=#g,1,-1 do
 					if aux.GetUsableExtraField(tp,g[i])<1 then g:remove(i) end
 				end
+				Debug.Message(#g)
 				g = aux.SelectGroup(tp,g)
 				c:SetMaterial(g)
 				Duel.SendtoGrave(g,REASON_MATERIAL+REASON_LINK)
@@ -1698,7 +1699,7 @@ function Auxiliary.SelectGroup(tp,g)
 	local sg = Group.CreateGroup()
 	local rg = Group.CreateGroup()
 	local finishSelection = false
-	while ct>1 do
+	while ct>0 do
 		for _,v in ipairs(g) do sg:Merge(v) end
 		local c = sg:Select(tp,1,1,nil):GetFirst()
 		rg:AddCard(c)
@@ -1715,7 +1716,7 @@ function Auxiliary.SelectGroup(tp,g)
 			end
 			sg:Clear()
 		end
-		if finishSelection and ct>1 and not Duel.SelectYesNo(tp,0) then break else finishSelection=false end -- do you want to continue selection
+		if finishSelection and ct>0 and not Duel.SelectYesNo(tp,0) then break else finishSelection=false end -- do you want to continue selection
 	end
 	return rg
 end
