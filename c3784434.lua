@@ -48,7 +48,7 @@ function c3784434.seqop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c3784434.atkcon(e)
 	local ph=Duel.GetCurrentPhase()
-	if ph=~PHASE_DAMAGE and ph~=PHASE_DAMAGE_CAL then return false end
+	if ph~=PHASE_DAMAGE and ph~=PHASE_DAMAGE_CAL then return false end
 	if Duel.GetAttacker()~=e:GetHandler() then return false end
 	local tc=Duel.GetAttackTarget()
 	if not tc then return false end
