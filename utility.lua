@@ -1642,8 +1642,8 @@ end
 function Auxiliary.LinkCondition(f,minc,maxc)
 	return	function(e,c)
 				if not c then return true end
-				local tp=c:GetControler()
-				for _,v in ipairs(Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f):GetSumEqualGroups(aux.GetLinkCount,c:GetLink(),minc,maxc)) do					
+				local tp = c:GetControler()
+				for _,v in ipairs(aux.GetSumEqualGroups(Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)) do					
 					if aux.GetExtraLocation(tp,v)>0 then return true end
 				end
 				return false
@@ -1651,21 +1651,19 @@ function Auxiliary.LinkCondition(f,minc,maxc)
 end
 function Auxiliary.LinkOperation(f,minc,maxc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c)
-				local tp=e:GetHandlerPlayer()
-				local g=Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f):GetSumEqualGroups(aux.GetLinkCount,c:GetLink(),minc,maxc)
+				local tp = e:GetHandlerPlayer()
+				local g = aux.GetSumEqualGroups(Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)
 				for i=#g,1,-1 do
 					if aux.GetExtraLocation(tp,g[i])<1 then g:remove(i) end
 				end
-				local clone = {}
-				for i,v in ipairs(g) do
-					clone[i] = g[i]:Clone()
-				end
-				g = clone[aux.SelectGroup(tp,g)]
+				g = aux.SelectGroup(tp,g)
 				c:SetMaterial(g)
 				Duel.SendtoGrave(g,REASON_MATERIAL+REASON_LINK)
 			end
 end
 function Group.GetSumEqualGroups(g,f,n,min,max)
+--[[pre:	same as selectwithsumequal, but all elements must be >0 
+	post:	array of all possible sum equal group.]]
 	local result = {}
 	while g:GetCount()>=min do
 		local c = g:GetFirst()
@@ -1695,34 +1693,41 @@ function Group.GetSumEqualGroups(g,f,n,min,max)
 	return result
 end
 function Auxiliary.SelectGroup(tp,g)
+--[[pre:	tp:	select player
+			g:	array of groups
+	post:	rg:	one group in g selected by player]]							
 	local ct = #g 
 	local sg = Group.CreateGroup()
-	local I
+	local rg = Group.CreateGroup()
+	local finishSelection = false
 	while ct>1 do
-		I = 0
 		for _,v in ipairs(g) do sg:Merge(v) end
 		local c = sg:Select(tp,1,1,nil):GetFirst()
+		rg:AddCard(c)
 		for i in pairs(g) do
 			if g[i]:IsContains(c)then
-				if g[i]:GetCount()<2 then
-					I  = i
-					ct = ct-1
-				end
 				g[i]:RemoveCard(c)
+				if g[i]:GetCount()<1 then
+					ct = ct-1
+					finishSelection = true
+				end
 			else
 				if g[i]:GetCount()>0 then ct = ct-1 end
 				g[i]:Clear()
 			end
 			sg:Clear()
 		end
-		if I>0 and ct>1 and not Duel.SelectYesNo(tp,0) then return I end
+		if chk and ct>1 and not Duel.SelectYesNo(tp,0) then break end 		-- do you want to continue selection 
 	end
-	return I
+	return rg
 end
 function Auxiliary.GetExtraLocationFilter(c,tp)
 	return c:IsControler(tp) and c:GetSequence()>5
 end
-function Auxiliary.GetExtraLocation(tp,G)	
+function Auxiliary.GetExtraLocation(tp,G)
+--[[pre:	tp:	the extra location for player tp
+			G:	the cards that are to be sent to grave as material
+	post:	?:	all locations that allows tp to summon ex monster]]	
 	local g      = Duel.GetFieldGroup(0,LOCATION_MZONE,LOCATION_MZONE)
 	g:Sub(G)
 	local allow  = g:IsExists(Auxiliary.GetExtraLocationFilter,1,nil,tp)and 0 or bit.lshift(0x60,tp*16)
