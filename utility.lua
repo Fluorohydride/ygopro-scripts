@@ -1659,7 +1659,6 @@ function Auxiliary.LinkOperation(f,minc,maxc)
 				for i=#g,1,-1 do
 					if aux.GetUsableExtraField(tp,g[i])<1 then g:remove(i) end
 				end
-				Debug.Message(#g)
 				g = aux.SelectGroup(tp,g)
 				c:SetMaterial(g)
 				Duel.SendtoGrave(g,REASON_MATERIAL+REASON_LINK)
@@ -1680,7 +1679,7 @@ function Auxiliary.GetSumEqualGroups(g,f,n,min,max)
 		elseif N==n and min<2 then
 			result[#result+1] = Group.FromCards(c)
 		end
-		N = bit.rshift(f(c),4)
+		N = bit.rshift(f(c),16)
 		if N>0 then
 			if N<n and max>1 then
 				for _,v in ipairs(aux.GetSumEqualGroups(g:Clone(),f,n-N,min-1,max-1)) do
