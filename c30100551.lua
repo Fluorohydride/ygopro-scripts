@@ -62,6 +62,7 @@ function c30100551.desop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local sdg=dg:Select(tp,1,ct,nil)
+		Duel.HintSelection(sdg)
 		Duel.Destroy(sdg,REASON_EFFECT)
 	end
 end

@@ -65,6 +65,7 @@ function c65872270.desop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 		local rg=g:Select(tp,ct2,ct2,nil)
+		Duel.HintSelection(rg)
 		Duel.SendtoHand(rg,nil,REASON_EFFECT)
 	end
 end

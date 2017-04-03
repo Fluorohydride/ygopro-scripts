@@ -45,5 +45,6 @@ function c81278754.retop(e,tp,eg,ep,ev,re,r,rp)
 	if ct==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToHand,tp,0,LOCATION_MZONE,1,ct,nil)
+	Duel.HintSelection(g)
 	Duel.SendtoHand(g,nil,REASON_EFFECT)
 end
