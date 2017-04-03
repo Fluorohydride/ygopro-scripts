@@ -23,7 +23,8 @@ function c34475451.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c34475451.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if not c:IsRelateToEffect(e) then return end
+	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local a=Duel.GetAttacker()
 		if a:IsAttackable() and not a:IsImmuneToEffect(e) then
 			local e1=Effect.CreateEffect(c)
@@ -35,5 +36,8 @@ function c34475451.operation(e,tp,eg,ep,ev,re,r,rp)
 			c:RegisterEffect(e1)
 			Duel.CalculateDamage(a,c)
 		end
+	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end

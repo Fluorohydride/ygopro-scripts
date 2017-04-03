@@ -39,13 +39,17 @@ end
 function c31550470.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e)
-		and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
-		c:SetCardTarget(tc)
-		e:SetLabelObject(tc)
-		c:CreateRelation(tc,RESET_EVENT+0x1fe0000)
-		tc:CreateRelation(c,RESET_EVENT+0x1fe0000)
-		Duel.SpecialSummonComplete()
+	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+		if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
+			c:SetCardTarget(tc)
+			e:SetLabelObject(tc)
+			c:CreateRelation(tc,RESET_EVENT+0x1fe0000)
+			tc:CreateRelation(c,RESET_EVENT+0x1fe0000)
+			Duel.SpecialSummonComplete()
+		elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+			and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+			Duel.SendtoGrave(tc,REASON_RULE)
+		end
 	end
 end
 function c31550470.desop(e,tp,eg,ep,ev,re,r,rp)

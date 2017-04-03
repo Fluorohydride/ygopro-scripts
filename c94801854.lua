@@ -65,9 +65,13 @@ function c94801854.spop(e,tp,eg,ep,ev,re,r,rp)
 	if ft<=0 then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
-	if g:GetCount()>ft then
+	if g:GetCount()<=ft then
+		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		g=g:Select(tp,ft,ft,nil)
+		local sg=g:Select(tp,ft,ft,nil)
+		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
+		g:Sub(sg)
+		Duel.SendtoGrave(g,REASON_RULE)
 	end
-	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 end
