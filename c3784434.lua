@@ -21,6 +21,7 @@ function c3784434.initial_effect(c)
 end
 function c3784434.seqcon(e,tp,eg,ep,ev,re,r,rp)
 	local seq=e:GetHandler():GetSequence()
+	if seq>4 then return false end
 	return (seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1))
 		or (seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1))
 end
@@ -28,6 +29,7 @@ function c3784434.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsControler(1-tp) then return end
 	local seq=c:GetSequence()
+	if seq>4 then return end
 	if (seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1))
 		or (seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1)) then
 		local flag=0
@@ -44,14 +46,25 @@ function c3784434.seqop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.MoveSequence(c,nseq)
 	end
 end
-function c3784434.dircon(e,tp)
-	local seq=4-e:GetHandler():GetSequence()
-	return Duel.GetFieldCard(e:GetOwnerPlayer(),LOCATION_MZONE,seq)==nil
-		and Duel.GetFieldCard(e:GetOwnerPlayer(),LOCATION_SZONE,seq)==nil
-end
 function c3784434.atkcon(e)
 	local ph=Duel.GetCurrentPhase()
-	return (ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL)
-		and Duel.GetAttacker()==e:GetHandler() and Duel.GetAttackTarget()~=nil
-		and e:GetHandler():GetSequence()+Duel.GetAttackTarget():GetSequence()==4
+	if ph=~PHASE_DAMAGE and ph~=PHASE_DAMAGE_CAL then return false end
+	if Duel.GetAttacker()~=e:GetHandler() then return false end
+	local tc=Duel.GetAttackTarget()
+	if not tc then return false end
+	local s1=e:GetHandler():GetSequence()
+	local s2=tc:GetSequence()
+	if s1<5 then
+ +		if s2<5 then
+ +			return s1+s2==4
+ +		else
+ +			return (s2==5 and s1==3) or (s2==6 and s1==1)
+ +		end
+ +	else
+ +		if s2<5 then
+ +			return (s1==5 and s2==3) or (s1==6 and s2==1)
+ +		else
+ +			return false
+ +        	end
+ +	end
 end
