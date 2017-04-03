@@ -12,11 +12,11 @@ function c57815601.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c57815601.filter1(c,e,tp)
-	return c:IsSetCard(0x10b5) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x10b5) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 		and Duel.IsExistingTarget(c57815601.filter2,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,c,e,tp)
 end
 function c57815601.filter2(c,e,tp)
-	return c:IsSetCard(0x20b5) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x20b5) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c57815601.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

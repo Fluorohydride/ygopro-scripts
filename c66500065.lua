@@ -38,7 +38,7 @@ function c66500065.condition(e,tp,eg,ep,ev,re,r,rp)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp
 end
 function c66500065.filter(c,e,tp)
-	return c:IsSetCard(0x9e) and not c:IsCode(66500065) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x9e) and not c:IsCode(66500065) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c66500065.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

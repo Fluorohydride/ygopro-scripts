@@ -12,7 +12,7 @@ function c63977008.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c63977008.filter(c,e,tp)
-	return c:IsLevelBelow(2) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevelBelow(2) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c63977008.sumtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c63977008.filter(chkc,e,tp) end

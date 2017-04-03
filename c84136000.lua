@@ -18,7 +18,7 @@ function c84136000.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c84136000.cfilter,1,nil,tp)
 end
 function c84136000.spfilter(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c84136000.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

@@ -34,7 +34,7 @@ function c12927849.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c12927849.filter(c,e,tp)
-	return c:IsFaceup() and c:IsSetCard(0x7e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsFaceup() and c:IsSetCard(0x7e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c12927849.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c12927849.filter(chkc,e,tp) end

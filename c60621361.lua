@@ -56,7 +56,7 @@ function c60621361.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFlagEffect(1-tp,60621361)~=0
 end
 function c60621361.filter(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c60621361.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(1-tp) and c60621361.filter(chkc,e,tp) end

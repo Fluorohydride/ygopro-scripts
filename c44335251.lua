@@ -51,7 +51,7 @@ function c44335251.desfilter(c)
 	return c:IsFaceup() and c:IsLevelBelow(4) and c:IsRace(RACE_DINOSAUR)
 end
 function c44335251.spfilter(c,e,tp)
-	return c:IsRace(RACE_DINOSAUR) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_DINOSAUR) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c44335251.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()

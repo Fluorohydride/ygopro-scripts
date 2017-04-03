@@ -35,7 +35,7 @@ end
 function c53485634.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 		and eg:IsExists(c53485634.spfilter,1,nil,e,tp) end
 	local g=eg:Filter(c53485634.spfilter,nil,e,tp)
 	Duel.SetTargetCard(g)

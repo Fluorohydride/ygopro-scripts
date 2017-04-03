@@ -33,7 +33,7 @@ end
 function c64319467.filter(c,e,tp)
 	local lv=c:GetLevel()
 	return (lv==3 or lv==4) and c:IsRace(RACE_FISH) and c:IsAttribute(ATTRIBUTE_WATER)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c64319467.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c64319467.filter(chkc,e,tp) end

@@ -28,7 +28,7 @@ function c7573135.hspcon(e,tp,eg,ep,ev,re,r,rp)
 	return st>=(SUMMON_TYPE_SPECIAL+100) and st<(SUMMON_TYPE_SPECIAL+150)
 end
 function c7573135.hspfilter(c,e,tp)
-	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,113,tp,false,false)
+	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,113,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c7573135.hsptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

@@ -56,11 +56,11 @@ function c36857073.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp
 end
 function c36857073.spfilter2(c,e,tp)
-	return c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 		and Duel.IsExistingMatchingCard(c36857073.spfilter3,tp,LOCATION_GRAVE,0,1,nil,e,tp,c:GetLevel())
 end
 function c36857073.spfilter3(c,e,tp,lv)
-	return c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 		and c:GetLevel()==lv
 end
 function c36857073.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
