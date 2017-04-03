@@ -1637,7 +1637,7 @@ function Auxiliary.LConditionFilter(c,f)
 	return c:IsFaceup() and (not f or f(c))
 end
 function Auxiliary.GetLinkCount(c)
-	if c:IsType(TYPE_LINK)then return c:GetLink()else return 1 end
+	if c:IsType(TYPE_LINK) then return 0x10000+c:GetLink() else return 1 end
 end
 function Auxiliary.LinkCondition(f,minc,maxc)
 	return	function(e,c)
