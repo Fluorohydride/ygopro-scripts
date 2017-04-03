@@ -45,6 +45,14 @@ function c76573247.seqop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c76573247.dircon(e)
 	local p=1-e:GetHandlerPlayer()
-	local seq=4-e:GetHandler():GetSequence()
-	return Duel.GetFieldCard(p,LOCATION_MZONE,seq)==nil and Duel.GetFieldCard(p,LOCATION_SZONE,seq)==nil
+	local seq=e:GetHandler():GetSequence()
+	if seq<5 then
+		if seq==1 and Duel.GetFieldCard(p,LOCATION_MZONE,6)=~nil then return false end
+		if seq==3 and Duel.GetFieldCard(p,LOCATION_MZONE,5)=~nil then return false end
+		return Duel.GetFieldCard(p,LOCATION_MZONE,4-seq)==nil and Duel.GetFieldCard(p,LOCATION_SZONE,4-seq)==nil
+	elseif seq==5 then
+		return Duel.GetFieldCard(p,LOCATION_MZONE,3)==nil and Duel.GetFieldCard(p,LOCATION_SZONE,3)==nil
+	else
+		return Duel.GetFieldCard(p,LOCATION_MZONE,1)==nil and Duel.GetFieldCard(p,LOCATION_SZONE,1)==nil
+	end
 end
