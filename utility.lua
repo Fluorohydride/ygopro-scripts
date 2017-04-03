@@ -1717,7 +1717,7 @@ function Auxiliary.SelectGroup(tp,g)
 			end
 			sg:Clear()
 		end
-		if chk and ct>1 and not Duel.SelectYesNo(tp,0) then break end 		-- do you want to continue selection 
+		if finishSelection and ct>1 and not Duel.SelectYesNo(tp,0) then break else finishSelection=false end -- do you want to continue selection 
 	end
 	return rg
 end
