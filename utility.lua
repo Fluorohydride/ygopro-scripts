@@ -1658,7 +1658,7 @@ function Auxiliary.LinkOperation(f,minc,maxc)
 				local tp = e:GetHandlerPlayer()
 				local g = aux.GetSumEqualGroups(Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)
 				for i=#g,1,-1 do
-					if aux.GetUsableExtraField(tp,g[i])<1 then g:remove(i) end
+					if aux.GetUsableExtraField(tp,g[i])<1 then table.remove(g,i) end
 				end
 				g = aux.SelectGroup(tp,g)
 				c:SetMaterial(g)
