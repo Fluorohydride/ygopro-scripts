@@ -38,6 +38,7 @@ function c15893860.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local dg=Duel.SelectMatchingCard(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)
+		Duel.HintSelection(dg)
 		Duel.Destroy(dg,REASON_EFFECT)
 	end
 end

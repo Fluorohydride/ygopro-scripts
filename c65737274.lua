@@ -24,7 +24,7 @@ function c65737274.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c65737274.spfilter(c,e,tp)
-	return c:IsAttackBelow(1000) and c:IsType(TYPE_NORMAL) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsAttackBelow(1000) and c:IsType(TYPE_NORMAL) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c65737274.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c65737274.spfilter(chkc,e,tp) end

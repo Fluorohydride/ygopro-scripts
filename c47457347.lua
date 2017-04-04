@@ -12,7 +12,7 @@ function c47457347.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c47457347.filter(c,e,tp)
-	return c:IsFaceup() and c:IsSetCard(0xf4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsFaceup() and c:IsSetCard(0xf4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c47457347.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c47457347.filter(chkc,e,tp) end

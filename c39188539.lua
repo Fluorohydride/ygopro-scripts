@@ -25,6 +25,7 @@ function c39188539.initial_effect(c)
 end
 function c39188539.seqcon(e,tp,eg,ep,ev,re,r,rp)
 	local seq=e:GetHandler():GetSequence()
+	if seq>4 then return false end
 	return (seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1))
 		or (seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1))
 end
@@ -36,6 +37,7 @@ function c39188539.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsControler(1-tp) then return end
 	local seq=c:GetSequence()
+	if seq>4 then return end
 	if (seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1))
 		or (seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1)) then
 		local flag=0
@@ -52,14 +54,36 @@ function c39188539.seqop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.MoveSequence(c,nseq)
 	end
 end
-function c39188539.filter(c,seq)
-	return c:GetSequence()==seq and c:IsAbleToHand()
+function c39188539.filter(c,s1)
+	if not c:IsAbleToHand() then return false end
+	local s2=c:GetSequence()
+	if c:IsLocation(LOCATION_SZONE) then
+		if s2>=5 then return false end
+		if s1<5 then
+			return s1+s2==4
+		else
+			return (s1==5 and s2==3) or (s1==6 and s2==1)
+		end
+	end
+	if s1<5 then
+		if s2<5 then
+			return s1+s2==4
+		else
+			return (s2==5 and s1==3) or (s2==6 and s1==1)
+		end
+	else
+		if s2<5 then
+			return (s1==5 and s2==3) or (s1==6 and s2==1)
+		else
+			return false
+        	end
+	end
 end
 function c39188539.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c39188539.filter(chkc,4-e:GetHandler():GetSequence()) end
-	if chk==0 then return Duel.IsExistingTarget(c39188539.filter,tp,0,LOCATION_ONFIELD,1,nil,4-e:GetHandler():GetSequence()) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c39188539.filter(chkc,e:GetHandler():GetSequence()) end
+	if chk==0 then return Duel.IsExistingTarget(c39188539.filter,tp,0,LOCATION_ONFIELD,1,nil,e:GetHandler():GetSequence()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=Duel.SelectTarget(tp,c39188539.filter,tp,0,LOCATION_ONFIELD,1,1,nil,4-e:GetHandler():GetSequence())
+	local g=Duel.SelectTarget(tp,c39188539.filter,tp,0,LOCATION_ONFIELD,1,1,nil,e:GetHandler():GetSequence())
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
 function c39188539.thop(e,tp,eg,ep,ev,re,r,rp)

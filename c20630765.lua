@@ -24,7 +24,7 @@ function c20630765.initial_effect(c)
 	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	e2:SetValue(c20630765.defup)
 	c:RegisterEffect(e2)
-	--destroy
+	--remove
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(20630765,0))
 	e3:SetCategory(CATEGORY_REMOVE)

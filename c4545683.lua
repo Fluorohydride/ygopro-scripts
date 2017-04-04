@@ -119,7 +119,7 @@ function c4545683.eqop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c4545683.spfilter(c,e,tp,ec)
-	return c:GetFlagEffect(4545683)~=0 and c:GetEquipTarget()==ec and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:GetFlagEffect(4545683)~=0 and c:GetEquipTarget()==ec and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c4545683.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c4545683.spfilter(chkc,e,tp,e:GetHandler()) end

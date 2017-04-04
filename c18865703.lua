@@ -67,7 +67,7 @@ function c18865703.eqlimit(e,c)
 	return c==e:GetLabelObject()
 end
 function c18865703.spfilter(c,e,tp)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c18865703.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c18865703.spfilter(chkc,e,tp) end

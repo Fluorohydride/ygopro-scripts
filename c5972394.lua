@@ -20,7 +20,7 @@ function c5972394.filter(c,e,tp)
 		and Duel.IsExistingMatchingCard(c5972394.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,c:GetCode())
 end
 function c5972394.spfilter(c,e,tp,code)
-	return c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c5972394.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c5972394.filter(chkc,e,tp) end

@@ -36,7 +36,7 @@ function c21142671.spdcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c21142671.filter(c,e,tp)
 	return c:IsAttribute(ATTRIBUTE_FIRE) and c:IsRace(RACE_FIEND)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c21142671.spdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

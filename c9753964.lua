@@ -71,7 +71,7 @@ function c9753964.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp
 end
 function c9753964.spfilter(c,e,tp)
-	return c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c9753964.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c9753964.spfilter(chkc,e,tp) end

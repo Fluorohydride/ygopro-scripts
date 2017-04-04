@@ -61,12 +61,12 @@ function c22227683.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c22227683.spfilter1(c,e,tp)
 	return c:IsSetCard(0xab) and c:IsType(TYPE_MONSTER)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 		and Duel.IsExistingMatchingCard(c22227683.spfilter2,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,c,e,tp,c:GetLevel())
 end
 function c22227683.spfilter2(c,e,tp,lv)
 	return c:IsSetCard(0xab) and c:IsType(TYPE_MONSTER) and c:GetLevel()~=lv
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c22227683.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)

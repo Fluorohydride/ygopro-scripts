@@ -42,7 +42,7 @@ function c59463312.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c59463312.filter(c,e,tp)
-	return c:GetAttack()==800 and c:GetDefense()==1000 and not c:IsCode(59463312) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:GetAttack()==800 and c:GetDefense()==1000 and not c:IsCode(59463312) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c59463312.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c59463312.filter(chkc,e,tp) end

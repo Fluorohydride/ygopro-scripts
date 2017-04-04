@@ -23,7 +23,7 @@ function c64038662.filter1(c)
 	return c:IsFaceup() and c:IsSetCard(0x56)
 end
 function c64038662.filter2(c,e,tp)
-	return c:IsFaceup() and c:IsSetCard(0x56) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsFaceup() and c:IsSetCard(0x56) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c64038662.select(e,tp,b1,b2)
 	local op=0

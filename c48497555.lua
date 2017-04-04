@@ -42,7 +42,7 @@ function c48497555.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c48497555.spfilter(c,e,tp)
-	return c:IsSetCard(0x43) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x43) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c48497555.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c48497555.spfilter(chkc,e,tp) end

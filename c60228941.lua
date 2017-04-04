@@ -34,7 +34,7 @@ function c60228941.filter1(c)
 	return c:IsSetCard(0x6) and c:IsAbleToHand()
 end
 function c60228941.filter2(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c60228941.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

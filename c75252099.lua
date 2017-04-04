@@ -17,7 +17,7 @@ function c75252099.spcon(e,tp,eg,ep,ev,re,r,rp)
 		and c:GetPreviousControler()==tp and c:GetBattlePosition()==POS_FACEUP_ATTACK
 end
 function c75252099.filter(c,e,tp)
-	return c:IsRace(RACE_PLANT) and c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_PLANT) and c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c75252099.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)

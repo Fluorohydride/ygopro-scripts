@@ -19,6 +19,7 @@ function c15317640.initial_effect(c)
 	--remove counter
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(15317640,1))
+	e3:SetCategory(CATEGORY_COIN)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_DAMAGE_STEP_END)
 	e3:SetCondition(c15317640.rctcon)

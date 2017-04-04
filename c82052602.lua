@@ -42,7 +42,7 @@ function c82052602.clear(e,tp,eg,ep,ev,re,r,rp)
 	c82052602[1]=false
 end
 function c82052602.filter(c,id,e,tp)
-	return c:IsReason(REASON_BATTLE) and c:GetTurnID()==id and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsReason(REASON_BATTLE) and c:GetTurnID()==id and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c82052602.condition(e,tp,eg,ep,ev,re,r,rp)
 	return c82052602[tp] and Duel.GetFlagEffect(tp,82052602)==0

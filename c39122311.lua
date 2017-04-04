@@ -33,7 +33,7 @@ function c39122311.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c39122311.filter(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c39122311.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c39122311.filter(chkc,e,tp) end

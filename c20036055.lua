@@ -13,7 +13,7 @@ function c20036055.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c20036055.filter(c,e,tp,id)
-	return c:IsSetCard(0xb1) and c:GetTurnID()==id and not c:IsReason(REASON_RETURN) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0xb1) and c:GetTurnID()==id and not c:IsReason(REASON_RETURN) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c20036055.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c20036055.filter(chkc,e,tp,Duel.GetTurnCount()) end
