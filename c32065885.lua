@@ -13,17 +13,24 @@ end
 function c32065885.ctlcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and Duel.GetAttackTarget()==nil and Duel.GetAttacker():IsControler(1-tp)
 end
+function c32065885.filter(c)
+	return c:IsFaceup() and c:IsControlerCanBeChanged() and not c:IsType(TYPE_LINK)
+end
 function c32065885.ctltg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsControlerCanBeChanged,tp,0,LOCATION_MZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c32065885.filter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,nil,1,1-tp,LOCATION_MZONE)
 end
+function c32065885.filter1(c)
+	return c:IsFaceup() and not c:IsType(TYPE_LINK)
+end
 function c32065885.ctlop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(c32065885.filter1,tp,0,LOCATION_MZONE,nil)
 	if g:GetCount()==0 then return end
 	local sg=g:GetMaxGroup(Card.GetDefense)
 	if sg:GetCount()>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
 		sg=sg:Select(tp,1,1,nil)
+		Duel.HintSelection(sg)
 	end
 	local tc=sg:GetFirst()
 	if Duel.GetControl(tc,tp,PHASE_END,2)~=0 then
