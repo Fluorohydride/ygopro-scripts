@@ -24,7 +24,7 @@ end
 function Auxiliary.AND(f1,f2)
 	return	function(a,b,c)
 				return f1(a,b,c) and f2(a,b,c)
-end
+			end
 end
 function Auxiliary.OR(f1,f2)
 	return	function(a,b,c)
@@ -103,7 +103,7 @@ function Auxiliary.EnableSpiritReturn(c,event1,...)
 		c:RegisterEffect(e2)
 	end
 end
-function Auxiliary.SpiritReturnReg(e,tp,eg,ep,ev,re,e,rp)
+function Auxiliary.SpiritReturnReg(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
@@ -121,18 +121,18 @@ function Auxiliary.SpiritReturnReg(e,tp,eg,ep,ev,re,e,rp)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	c:RegisterEffect(e2)
 end
-function Auxiliary.SpiritReturnCondition(e,tp,eg,ep,ev,re,e,rp)
+function Auxiliary.SpiritReturnCondition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsHasEffect(EFFECT_SPIRIT_DONOT_RETURN) then return false end
 	if e:IsHasType(EFFECT_TYPE_TRIGGER_F) then
 		return not c:IsHasEffect(EFFECT_SPIRIT_MAYNOT_RETURN)
 	else return c:IsHasEffect(EFFECT_SPIRIT_MAYNOT_RETURN) end
 end
-function Auxiliary.SpiritReturnTarget(e,tp,eg,ep,ev,re,e,rp,chk)
+function Auxiliary.SpiritReturnTarget(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetHandler(),1,0,0)
 end
-function Auxiliary.SpiritReturnOperation(e,tp,eg,ep,ev,re,e,rp)
+function Auxiliary.SpiritReturnOperation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
@@ -213,7 +213,7 @@ function Auxiliary.SynCondition(f1,f2,minct,maxc)
 			end
 end
 function Auxiliary.SynTarget(f1,f2,minct,maxc)
-	return	function(e,tp,eg,ep,ev,re,e,rp,chk,c,smat,mg)
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,smat,mg)
 				local g=nil
 				local ft=Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)
 				local ct=-ft
@@ -232,7 +232,7 @@ function Auxiliary.SynTarget(f1,f2,minct,maxc)
 			end
 end
 function Auxiliary.SynOperation(f1,f2,minct,maxc)
-	return	function(e,tp,eg,ep,ev,re,e,rp,c,smat,mg)
+	return	function(e,tp,eg,ep,ev,re,r,rp,c,smat,mg)
 				local g=e:GetLabelObject()
 				c:SetMaterial(g)
 				Duel.SendtoGrave(g,REASON_MATERIAL+REASON_SYNCHRO)
@@ -294,7 +294,7 @@ function Auxiliary.XyzCondition(f,lv,minc,maxc)
 			end
 end
 function Auxiliary.XyzTarget(f,lv,minc,maxc)
-	return	function(e,tp,eg,ep,ev,re,e,rp,chk,c,og,min,max)
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
 				if og and not min then
 					return true
 				end
@@ -313,7 +313,7 @@ function Auxiliary.XyzTarget(f,lv,minc,maxc)
 			end
 end
 function Auxiliary.XyzOperation(f,lv,minc,maxc)
-	return	function(e,tp,eg,ep,ev,re,e,rp,c,og,min,max)
+	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 				if og and not min then
 					local sg=Group.CreateGroup()
 					local tc=og:GetFirst()
@@ -370,7 +370,7 @@ function Auxiliary.XyzCondition2(f,lv,minc,maxc,alterf,desc,op)
 			end
 end
 function Auxiliary.XyzTarget2(f,lv,minc,maxc,alterf,desc,op)
-	return	function(e,tp,eg,ep,ev,re,e,rp,chk,c,og,min,max)
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
 				if og and not min then
 					return true
 				end
@@ -409,7 +409,7 @@ function Auxiliary.XyzTarget2(f,lv,minc,maxc,alterf,desc,op)
 			end
 end
 function Auxiliary.XyzOperation2(f,lv,minc,maxc,alterf,desc,op)
-	return	function(e,tp,eg,ep,ev,re,e,rp,c,og,min,max)
+	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 				if og and not min then
 					local sg=Group.CreateGroup()
 					local tc=og:GetFirst()
@@ -524,7 +524,7 @@ function Auxiliary.FConditionCode2(code1,code2,sub,insf)
 			end
 end
 function Auxiliary.FOperationCode2(code1,code2,sub,insf)
-	return	function(e,tp,eg,ep,ev,re,e,rp,gc,chkfnf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 				local chkf=bit.band(chkfnf,0xff)
 				local notfusion=bit.rshift(chkfnf,8)~=0
 				local sub=sub or notfusion
@@ -629,7 +629,7 @@ function Auxiliary.FConditionCode3(code1,code2,code3,sub,insf)
 			end
 end
 function Auxiliary.FOperationCode3(code1,code2,code3,sub,insf)
-	return	function(e,tp,eg,ep,ev,re,e,rp,gc,chkfnf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 				local chkf=bit.band(chkfnf,0xff)
 				local notfusion=bit.rshift(chkfnf,8)~=0
 				local sub=sub or notfusion
@@ -738,7 +738,7 @@ function Auxiliary.FConditionCode4(code1,code2,code3,code4,sub,insf)
 			end
 end
 function Auxiliary.FOperationCode4(code1,code2,code3,code4,sub,insf)
-	return	function(e,tp,eg,ep,ev,re,e,rp,gc,chkfnf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 				local chkf=bit.band(chkfnf,0xff)
 				local notfusion=bit.rshift(chkfnf,8)~=0
 				local sub=sub or notfusion
@@ -857,7 +857,7 @@ function Auxiliary.FConditionCodeFun(code,f,cc,sub,insf)
 			end
 end
 function Auxiliary.FOperationCodeFun(code,f,cc,sub,insf)
-	return	function(e,tp,eg,ep,ev,re,e,rp,gc,chkfnf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 				local chkf=bit.band(chkfnf,0xff)
 				local notfusion=bit.rshift(chkfnf,8)~=0
 				local sub=sub or notfusion
@@ -982,7 +982,7 @@ function Auxiliary.FConditionFun2(f1,f2,insf)
 			end
 end
 function Auxiliary.FOperationFun2(f1,f2,insf)
-	return	function(e,tp,eg,ep,ev,re,e,rp,gc,chkfnf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 				local chkf=bit.band(chkfnf,0xff)
 				local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 				if gc then
@@ -1056,7 +1056,7 @@ function Auxiliary.FConditionCodeRep(code,cc,sub,insf)
 			end
 end
 function Auxiliary.FOperationCodeRep(code,cc,sub,insf)
-	return	function(e,tp,eg,ep,ev,re,e,rp,gc,chkfnf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 				local chkf=bit.band(chkfnf,0xff)
 				local notfusion=bit.rshift(chkfnf,8)~=0
 				local sub=sub or notfusion
@@ -1110,7 +1110,7 @@ function Auxiliary.FConditionFunRep(f,cc,insf)
 			end
 end
 function Auxiliary.FOperationFunRep(f,cc,insf)
-	return	function(e,tp,eg,ep,ev,re,e,rp,gc,chkfnf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 				local chkf=bit.band(chkfnf,0xff)
 				local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 				if gc then
@@ -1176,7 +1176,7 @@ function Auxiliary.FConditionFunFunRep(f1,f2,minc,maxc,insf)
 		end
 end
 function Auxiliary.FOperationFunFunRep(f1,f2,minc,maxc,insf)
-	return	function(e,tp,eg,ep,ev,re,e,rp,gc,chkfnf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 			local chkf=bit.band(chkfnf,0xff)
 			local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
 			local minct=minc
@@ -1327,7 +1327,7 @@ function Auxiliary.RPGFilterF(c,tp,mg,rc)
 	else return false end
 end
 function Auxiliary.RPGTarget(filter)
-	return	function(e,tp,eg,ep,ev,re,e,rp,chk)
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk)
 				if chk==0 then
 					local mg=Duel.GetRitualMaterial(tp)
 					local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
@@ -1337,7 +1337,7 @@ function Auxiliary.RPGTarget(filter)
 			end
 end
 function Auxiliary.RPGOperation(filter)
-	return	function(e,tp,eg,ep,ev,re,e,rp)
+	return	function(e,tp,eg,ep,ev,re,r,rp)
 				local mg=Duel.GetRitualMaterial(tp)
 				local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -1399,7 +1399,7 @@ function Auxiliary.RPEFilterF(c,tp,mg,rc)
 	else return false end
 end
 function Auxiliary.RPETarget(filter)
-	return	function(e,tp,eg,ep,ev,re,e,rp,chk)
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk)
 				if chk==0 then
 					local mg=Duel.GetRitualMaterial(tp)
 					local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
@@ -1409,7 +1409,7 @@ function Auxiliary.RPETarget(filter)
 			end
 end
 function Auxiliary.RPEOperation(filter)
-	return	function(e,tp,eg,ep,ev,re,e,rp)
+	return	function(e,tp,eg,ep,ev,re,r,rp)
 				local mg=Duel.GetRitualMaterial(tp)
 				local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -1471,7 +1471,7 @@ function Auxiliary.RPEFilter2F(c,tp,mg,rc)
 	else return false end
 end
 function Auxiliary.RPETarget2(filter)
-	return	function(e,tp,eg,ep,ev,re,e,rp,chk)
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk)
 				if chk==0 then
 					local mg=Duel.GetRitualMaterial(tp)
 					local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
@@ -1481,7 +1481,7 @@ function Auxiliary.RPETarget2(filter)
 			end
 end
 function Auxiliary.RPEOperation2(filter)
-	return	function(e,tp,eg,ep,ev,re,e,rp)
+	return	function(e,tp,eg,ep,ev,re,r,rp)
 				local mg=Duel.GetRitualMaterial(tp)
 				local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -1584,7 +1584,7 @@ function Auxiliary.PendCondition()
 			end
 end
 function Auxiliary.PendOperation()
-	return	function(e,tp,eg,ep,ev,re,e,rp,c,sg,og)
+	return	function(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 				local rpz=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
@@ -1671,7 +1671,7 @@ function Auxiliary.LinkCondition(f,minc,maxc)
 			end
 end
 function Auxiliary.LinkOperation(f,minc,maxc)
-	return	function(e,tp,eg,ep,ev,re,e,rp,c)
+	return	function(e,tp,eg,ep,ev,re,r,rp,c)
 				local tp = e:GetHandlerPlayer()
 				local g = aux.GetSumEqualGroups(Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)
 				for i=#g,1,-1 do
@@ -1747,12 +1747,6 @@ function Auxiliary.GetExtraField()
 	end
 	return z
 end
-function Auxiliary.GetUsableExtraFieldFilter(c,tp,s)
-	return c:IsControler(tp) and c:GetSequence()==s
-end
-function Card.IsSequence(c,s)
-	return c:GetSequence()==s
-end
 function Auxiliary.GetUsableExtraField(tp,G,m)
 	local g=Duel.GetFieldGroup(0,LOCATION_MZONE,LOCATION_MZONE)
 	if G then g:Sub(Gs) end
@@ -1797,7 +1791,7 @@ function Auxiliary.GetUsableExtraField(tp,G,m)
     else
         allow=t[5]or t[6]and 0 or 0x6060
     end
-	local forbid = Duel.GetDisabledField
+	local forbid = Duel.GetDisabledField()
 	local c      = g:GetFirst()
 	while c do
 		allow  = bit.bor(allow,c:GetLinkedZone())
@@ -1839,29 +1833,29 @@ function Auxiliary.disfilter1(c)
 	return c:IsFaceup() and not c:IsDisabled() and (not c:IsType(TYPE_NORMAL) or bit.band(c:GetOriginalType(),TYPE_EFFECT)~=0)
 end
 --condition of EVENT_BATTLE_DESTROYING
-function Auxiliary.bdcon(e,tp,eg,ep,ev,re,e,rp)
+function Auxiliary.bdcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsRelateToBattle()
 end
 --condition of EVENT_BATTLE_DESTROYING + opponent monster
-function Auxiliary.bdocon(e,tp,eg,ep,ev,re,e,rp)
+function Auxiliary.bdocon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsRelateToBattle() and c:IsStatus(STATUS_OPPO_BATTLE)
 end
 --condition of EVENT_BATTLE_DESTROYING + to_grave
-function Auxiliary.bdgcon(e,tp,eg,ep,ev,re,e,rp)
+function Auxiliary.bdgcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	return c:IsRelateToBattle() and bc:IsLocation(LOCATION_GRAVE) and bc:IsType(TYPE_MONSTER)
 end
 --condition of EVENT_BATTLE_DESTROYING + opponent monster + to_grave
-function Auxiliary.bdogcon(e,tp,eg,ep,ev,re,e,rp)
+function Auxiliary.bdogcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	return c:IsRelateToBattle() and c:IsStatus(STATUS_OPPO_BATTLE) and bc:IsLocation(LOCATION_GRAVE) and bc:IsType(TYPE_MONSTER)
 end
 --condition of EVENT_TO_GRAVE + destroyed_by_opponent_from_field
-function Auxiliary.dogcon(e,tp,eg,ep,ev,re,e,rp)
+function Auxiliary.dogcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:GetPreviousControler()==tp and c:IsReason(REASON_DESTROY) and rp~=tp
 end
@@ -1870,7 +1864,7 @@ function Auxiliary.exccon(e)
 	return Duel.GetTurnCount()~=e:GetHandler():GetTurnID() or e:GetHandler():IsReason(REASON_RETURN)
 end
 --flag effect for spell counter
-function Auxiliary.chainreg(e,tp,eg,ep,ev,re,e,rp)
+function Auxiliary.chainreg(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():GetFlagEffect(1)==0 then
 		e:GetHandler():RegisterFlagEffect(1,RESET_EVENT+0x1fc0000+RESET_CHAIN,0,1)
 	end
@@ -1892,7 +1886,7 @@ function Auxiliary.nzdef(c)
 	return c:IsFaceup() and c:GetDefense()>0
 end
 --flag effect for summon/sp_summon turn
-function Auxiliary.sumreg(e,tp,eg,ep,ev,re,e,rp)
+function Auxiliary.sumreg(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	local code=e:GetLabel()
 	while tc do
@@ -1923,7 +1917,7 @@ function Auxiliary.penlimit(e,se,sp,st)
 	return bit.band(st,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
 end
 --effects inflicting damage to tp
-function Auxiliary.damcon1(e,tp,eg,ep,ev,re,e,rp)
+function Auxiliary.damcon1(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Duel.IsPlayerAffectedByEffect(tp,EFFECT_REVERSE_DAMAGE)
 	local e2=Duel.IsPlayerAffectedByEffect(tp,EFFECT_REVERSE_RECOVER)
 	local rd=e1 and not e2
