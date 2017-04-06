@@ -1569,7 +1569,7 @@ function Auxiliary.PendCondition()
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
-				local ft1,ft2=Duel.GetLocationCount(tp,LOCATION_MZONE),aux.CountOne(aux.GetUsableExtraField(tp))
+				local ft1,ft2=Duel.GetLocationCount(tp,LOCATION_MZONE),aux.CountOne(aux.GetExtraFieldFor(tp))
 				local loc=0
 				if ft1>0 then loc=loc+LOCATION_HAND end
 				if ft2>0 then loc=loc+LOCATION_EXTRA end
@@ -1589,8 +1589,8 @@ function Auxiliary.PendOperation()
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
-				local ft1,ft2=Duel.GetLocationCount(tp,LOCATION_MZONE),aux.CountOne(aux.GetUsableExtraField(tp))
-				local ft=ft1+ft2 -- ft isn't really meaningful beside it can be set to 1 or 0. As long as it's bigger than ft1 and ft2 it will be fine. 
+				local ft1,ft2=Duel.GetLocationCount(tp,LOCATION_MZONE),aux.CountOne(aux.GetExtraFieldFor(tp))
+				local ft=ft1+ft2 -- ft isn't really meaningful beside it can be set to 1 or 0. As long as it's bigger than ft1 and ft2 it will be fine.
 				if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 				local loc=0
 				if ft1>0 then loc=loc+LOCATION_HAND end
@@ -1665,7 +1665,7 @@ function Auxiliary.LinkCondition(f,minc,maxc)
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp = c:GetControler()
 				for _,v in ipairs(aux.GetSumEqualGroups(Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)) do
-					if aux.GetUsableExtraField(tp,v)>0 then return true end
+					if aux.GetExtraFieldFor(tp,v)>0 then return true end
 				end
 				return false
 			end
@@ -1675,7 +1675,7 @@ function Auxiliary.LinkOperation(f,minc,maxc)
 				local tp = e:GetHandlerPlayer()
 				local g = aux.GetSumEqualGroups(Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)
 				for i=#g,1,-1 do
-					if aux.GetUsableExtraField(tp,g[i])<1 then table.remove(g,i) end
+					if aux.GetExtraFieldFor(tp,g[i])<1 then table.remove(g,i) end
 				end
 				g = aux.SelectGroup(tp,g)
 				c:SetMaterial(g)
@@ -1747,21 +1747,25 @@ function Auxiliary.GetExtraField()
 	end
 	return z
 end
-function Auxiliary.GetUsableExtraField(tp,G,m)
-	local g=Duel.GetFieldGroup(0,LOCATION_MZONE,LOCATION_MZONE)
-	if G then g:Sub(Gs) end
-	local t={}
-	local c=g:GetFirst()
+function Auxiliary.GetExtraFieldFor(tp,G,m)
+	local g      = Duel.GetFieldGroup(0,LOCATION_MZONE,LOCATION_MZONE)
+	if G then g:Sub(G) end
+    local allow  = 0x6060
+	local forbid = Duel.GetDisabledField()
+	local t      = {}
+	local c      = g:GetFirst()
 	while c do
-		if c:IsControler(tp)then t[c:GetSequence()]=c:GetLinkMarker()end
-		c=g:GetNext()
+		if c:IsControler(tp) then t[c:GetSequence()] = c:GetLinkMarker() end
+		allow  = bit.bor(allow,c:GetLinkedZone())
+		forbid = bit.bor(forbid,bit.lshift(1,c:GetSequence()+c:GetControler()*16))
+		c      = g:GetNext()
 	end
-	t[7]=m
-    local allow
-    if m or(t[5]or t[6])then
-        local f=function(a,b)return bit.band(t[a],b)==b end
-        local q,w,e,a,d,z,x,c=LINK_MARKER_TOP_LEFT,LINK_MARKER_TOP,LINK_MARKER_TOP_RIGHT,LINK_MARKER_LEFT,LINK_MARKER_RIGHT,LINK_MARKER_BOTTOM_LEFT,LINK_MARKER_BOTTOM,LINK_MARKER_BOTTOM_RIGHT
-        allow=(    t[5]
+	t[7]  = m
+	if m or (t[5] or t[6]) then
+        local f = function(a,b)return bit.band(t[a],b)==b end
+        local q,w,e,a,d,z,x,c = LINK_MARKER_TOP_LEFT,LINK_MARKER_TOP,LINK_MARKER_TOP_RIGHT,LINK_MARKER_LEFT,LINK_MARKER_RIGHT,LINK_MARKER_BOTTOM_LEFT,LINK_MARKER_BOTTOM,LINK_MARKER_BOTTOM_RIGHT
+        forbid = bit.bor(forbid,
+        	    (    t[5]
                  and(  (   (  (f(5,z)and t[0]and f(0,e+d)and t[1]and f(1,a+d))
                             or(f(5,x)and t[1]and f(1,w+d)))
                         and t[2]
@@ -1773,7 +1777,7 @@ function Auxiliary.GetUsableExtraField(tp,G,m)
                        or(    f(2,d)
                           and t[3]
                           and(  (f(7,x)and f(3,a+w))
-                              or(f(7,c)and f(3,a+d) and t[4]and f(4,a+q))))))
+                              or(f(7,c)and f(3,a+d)and t[4]and f(4,a+q))))))
               or(    t[6]
                  and(  (   (  (f(6,c)and t[4]and f(4,q+a)and t[3]and f(3,d+a))
                             or(f(6,x)and t[3]and f(3,w+a)))
@@ -1786,19 +1790,12 @@ function Auxiliary.GetUsableExtraField(tp,G,m)
                        or(    f(2,a)
                           and t[1]
                           and(  (f(7,x)and f(1,d+w))
-                              or(f(7,z)and f(1,d+a) and t[4]and f(0,d+e))))))
-              and 0x6060 or 0
+                              or(f(7,z)and f(1,d+a)and t[4]and f(0,d+e))))))           
+              and 0 or 0x6060)
     else
-        allow=t[5]or t[6]and 0 or 0x6060
+        forbid = bit.bor(forbid,t[5] or t[6] and 0x6060 or 0)
     end
-	local forbid = Duel.GetDisabledField()
-	local c      = g:GetFirst()
-	while c do
-		allow  = bit.bor(allow,c:GetLinkedZone())
-		forbid = bit.bor(forbid,bit.lshift(1,c:GetSequence()+c:GetControler()*16))
-		c      = g:GetNext()
-	end
-	return bit.band(bit.band(allow,0xFFFFFFFF-forbid),bit.lshift(0xFF,tp*16))
+	return bit.band(bit.band(allow,0xFFFFFFFF-forbid),bit.lshift(0x6F,tp*16))
 end
 function Auxiliary.CountOne(n)
 	local c = 0
