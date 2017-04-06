@@ -14,14 +14,14 @@ function c32065885.ctlcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and Duel.GetAttackTarget()==nil and Duel.GetAttacker():IsControler(1-tp)
 end
 function c32065885.filter(c)
-	return c:IsFaceup() and c:IsControlerCanBeChanged() and not c:IsType(TYPE_LINK)
+	return c:IsFaceup() and c:IsControlerCanBeChanged() and c:IsDefenseAbove(0)
 end
 function c32065885.ctltg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c32065885.filter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,nil,1,1-tp,LOCATION_MZONE)
 end
 function c32065885.filter1(c)
-	return c:IsFaceup() and not c:IsType(TYPE_LINK)
+	return c:IsFaceup() and c:IsDefenseAbove(0)
 end
 function c32065885.ctlop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c32065885.filter1,tp,0,LOCATION_MZONE,nil)

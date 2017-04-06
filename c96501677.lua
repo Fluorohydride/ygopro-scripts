@@ -28,7 +28,7 @@ function c96501677.ccon(e)
 	return Duel.IsExistingMatchingCard(c96501677.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,e:GetHandler())
 end
 function c96501677.filter(c)
-	return c:IsFaceup() and not c:IsType(TYPE_LINK)
+	return c:IsFaceup() and c:IsDefenseAbove(0)
 end
 function c96501677.deftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return c96501677.filter(chkc) and chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) end

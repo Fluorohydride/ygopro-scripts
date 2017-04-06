@@ -18,7 +18,7 @@ function c96631852.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c96631852.filter(c)
-	return c:IsFaceup() and not c:IsType(TYPE_LINK)
+	return c:IsFaceup() and c:IsDefenseAbove(0)
 end
 function c96631852.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c96631852.filter(chkc) end

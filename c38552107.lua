@@ -36,7 +36,7 @@ function c38552107.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c38552107.filter(c)
-	return c:IsFaceup() and not c:IsType(TYPE_LINK)
+	return c:IsFaceup() and c:IsDefenseAbove(0)
 end
 function c38552107.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c38552107.filter(chkc) end
