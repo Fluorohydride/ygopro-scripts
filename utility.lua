@@ -1569,13 +1569,18 @@ function Auxiliary.PendCondition()
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
-				local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-				if ft<=0 then return false end
+				local ft1,ft2=Duel.GetLocationCount(tp,LOCATION_MZONE)
+				local loc=0
+				if ft1>0 then loc=loc+LOCATION_HAND end
+				if ft2>0 then loc=loc+LOCATION_EXTRA end
+				if loc==0 then return false end
+				local g=nil
 				if og then
-					return og:IsExists(Auxiliary.PConditionFilter,1,nil,e,tp,lscale,rscale)
+					g=og:Filter(Card.IsLocation,nil,loc)
 				else
-					return Duel.IsExistingMatchingCard(Auxiliary.PConditionFilter,tp,LOCATION_HAND+LOCATION_EXTRA,0,1,nil,e,tp,lscale,rscale)
+					g=Duel.GetFieldGroup(tp,loc,0)
 				end
+				return g:IsExists(Auxiliary.PConditionFilter,1,nil,e,tp,lscale,rscale)
 			end
 end
 function Auxiliary.PendOperation()
@@ -1584,34 +1589,46 @@ function Auxiliary.PendOperation()
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
-				local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+				local ft1,ft2,ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 				if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
+				local loc=0
+				if ft1>0 then loc=loc+LOCATION_HAND end
+				if ft2>0 then loc=loc+LOCATION_EXTRA end
 				local tg=nil
 				if og then
-					tg=og:Filter(Auxiliary.PConditionFilter,nil,e,tp,lscale,rscale)
+					tg=og:Filter(Card.IsLocation,nil,loc):Filter(Auxiliary.PConditionFilter,nil,e,tp,lscale,rscale)
 				else
-					tg=Duel.GetMatchingGroup(Auxiliary.PConditionFilter,tp,LOCATION_HAND+LOCATION_EXTRA,0,nil,e,tp,lscale,rscale)
+					tg=Duel.GetMatchingGroup(Auxiliary.PConditionFilter,tp,loc,0,nil,e,tp,lscale,rscale)
 				end
+				ft1=math.min(ft1,tg:FilterCount(Card.IsLocation,nil,LOCATION_HAND))
+				ft2=math.min(ft2,tg:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA))
 				local ect=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
-				if ect and (ect<=0 or ect>ft) then ect=nil end
-				if ect==nil or tg:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)<=ect then
+				if ect and ect<ft2 then ft2=ect end
+				while true do
+					local ct=math.min(ft1,ft2,ft)
+					if ct<=0 then break end
+					if sg:GetCount()>0 and not Duel.SelectYesNo(tp,210) then ft=0 break end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-					local g=tg:Select(tp,1,ft,nil)
+					local g=tg:Select(tp,1,ct,nil)
+					tg:Sub(g)
 					sg:Merge(g)
-				else
-					repeat
-						local ct=math.min(ft,ect)
+					ft=ft-g:GetCount()
+					ft1=ft1-g:FilterCount(Card.IsLocation,nil,LOCATION_HAND)
+					ft2=ft2-g:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)
+				end
+				if ft>0 then
+					local tg1=tg:Filter(Card.IsLocation,nil,LOCATION_HAND)
+					local tg2=tg:Filter(Card.IsLocation,nil,LOCATION_EXTRA)
+					if ft1>0 and ft2==0 and tg1:GetCount()>0 and (sg:GetCount()==0 or Duel.SelectYesNo(tp,210)) then
+						local ct=math.min(ft1,ft)
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-						local g=tg:Select(tp,1,ct,nil)
-						tg:Sub(g)
+						local g=tg1:Select(tp,1,ct,nil)
 						sg:Merge(g)
-						ft=ft-g:GetCount()
-						ect=ect-g:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)
-					until ft==0 or ect==0 or not Duel.SelectYesNo(tp,210)
-					local hg=tg:Filter(Card.IsLocation,nil,LOCATION_HAND)
-					if ft>0 and ect==0 and hg:GetCount()>0 and Duel.SelectYesNo(tp,210) then
+					end
+					if ft1==0 and ft2>0 and tg2:GetCount()>0 and (sg:GetCount()==0 or Duel.SelectYesNo(tp,210)) then
+						local ct=math.min(ft2,ft)
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-						local g=hg:Select(tp,1,ft,nil)
+						local g=tg2:Select(tp,1,ct,nil)
 						sg:Merge(g)
 					end
 				end
