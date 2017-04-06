@@ -202,7 +202,7 @@ function Auxiliary.SynCondition(f1,f2,minct,maxc)
 	return	function(e,c,smat,mg)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local ft=aux.CountOne(aux.GetUsableExtraField(c:GetControler()))
+				local ft=Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)
 				local ct=-ft
 				local minc=minct
 				if minc<ct then minc=ct end
@@ -215,7 +215,7 @@ end
 function Auxiliary.SynTarget(f1,f2,minct,maxc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,smat,mg)
 				local g=nil
-				local ft=aux.CountOne(aux.GetUsableExtraField(c:GetControler()))
+				local ft=Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)
 				local ct=-ft
 				local minc=minct
 				if minc<ct then minc=ct end
@@ -281,7 +281,7 @@ function Auxiliary.XyzCondition(f,lv,minc,maxc)
 	return	function(e,c,og,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local ft=aux.CountOne(aux.GetUsableExtraField(c:GetControler()))
+				local ft=Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)
 				local ct=-ft
 				local minc=minc
 				local maxc=maxc
@@ -347,7 +347,7 @@ function Auxiliary.XyzCondition2(f,lv,minc,maxc,alterf,desc,op)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp=c:GetControler()
-				local ft=aux.CountOne(aux.GetUsableExtraField(tp))
+				local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 				local ct=-ft
 				local mg=nil
 				if og then
@@ -374,7 +374,7 @@ function Auxiliary.XyzTarget2(f,lv,minc,maxc,alterf,desc,op)
 				if og and not min then
 					return true
 				end
-				local ft=aux.CountOne(aux.GetUsableExtraField(tp))
+				local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 				local ct=-ft
 				local minc=minc
 				local maxc=maxc
@@ -1548,7 +1548,7 @@ function Auxiliary.EnablePendulumAttribute(c,reg)
 		c:RegisterEffect(e2)
 	end
 end
-function Auxiliary.PConditionFilter(c,e,tp,lscale,rscale,ex)
+function Auxiliary.PConditionFilter(c,e,tp,lscale,rscale)
 	local lv=0
 	if c.pendulum_level then
 		lv=c.pendulum_level
@@ -1557,7 +1557,7 @@ function Auxiliary.PConditionFilter(c,e,tp,lscale,rscale,ex)
 	end
 	return (c:IsLocation(LOCATION_HAND) or (c:IsFaceup() and c:IsType(TYPE_PENDULUM)))
 		and lv>lscale and lv<rscale and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_PENDULUM,tp,false,false)
-		and not c:IsForbidden() and (ex or not c:IsLocation(LOCATION_EXTRA))
+		and not c:IsForbidden()
 end
 function Auxiliary.PendCondition()
 	return	function(e,c,og)
