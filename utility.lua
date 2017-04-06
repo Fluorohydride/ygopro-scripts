@@ -1761,7 +1761,7 @@ function Auxiliary.GetExtraFieldFor(tp,ignoreGroup,linkMarker)
 		c      = g:GetNext()
 	end
 	t[7] = linkMarker
-	if t[7] or (t[5] or t[6]) then
+	if t[7] and (t[5] or t[6]) then
         local f = function(a,b)return bit.band(t[a],b)==b end
         local q,w,e,a,d,z,x,c = LINK_MARKER_TOP_LEFT,LINK_MARKER_TOP,LINK_MARKER_TOP_RIGHT,LINK_MARKER_LEFT,LINK_MARKER_RIGHT,LINK_MARKER_BOTTOM_LEFT,LINK_MARKER_BOTTOM,LINK_MARKER_BOTTOM_RIGHT
         forbid = bit.bor(forbid,
