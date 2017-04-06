@@ -1665,7 +1665,7 @@ function Auxiliary.LinkCondition(f,minc,maxc)
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp = c:GetControler()
 				for _,v in ipairs(aux.GetSumEqualGroups(Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)) do
-					if aux.GetExtraFieldFor(tp,v)>0 then return true end
+					if aux.GetExtraFieldFor(tp,v,c)>0 then return true end
 				end
 				return false
 			end
@@ -1675,7 +1675,7 @@ function Auxiliary.LinkOperation(f,minc,maxc)
 				local tp = e:GetHandlerPlayer()
 				local g = aux.GetSumEqualGroups(Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)
 				for i=#g,1,-1 do
-					if aux.GetExtraFieldFor(tp,g[i])<1 then table.remove(g,i) end
+					if aux.GetExtraFieldFor(tp,g[i],c)<1 then table.remove(g,i) end
 				end
 				g = aux.SelectGroup(tp,g)
 				c:SetMaterial(g)
@@ -1747,9 +1747,9 @@ function Auxiliary.GetExtraField()
 	end
 	return z
 end
-function Auxiliary.GetExtraFieldFor(tp,G,m)
+function Auxiliary.GetExtraFieldFor(tp,ignoreGroup,linkMarker)
 	local g      = Duel.GetFieldGroup(0,LOCATION_MZONE,LOCATION_MZONE)
-	if G then g:Sub(G) end
+	if G then g:Sub(ignoreGroup) end
     local allow  = 0x6060
 	local forbid = Duel.GetDisabledField()
 	local t      = {}
@@ -1760,8 +1760,8 @@ function Auxiliary.GetExtraFieldFor(tp,G,m)
 		forbid = bit.bor(forbid,bit.lshift(1,c:GetSequence()+c:GetControler()*16))
 		c      = g:GetNext()
 	end
-	t[7]  = m
-	if m or (t[5] or t[6]) then
+	t[7] = linkMarker
+	if t[7] or (t[5] or t[6]) then
         local f = function(a,b)return bit.band(t[a],b)==b end
         local q,w,e,a,d,z,x,c = LINK_MARKER_TOP_LEFT,LINK_MARKER_TOP,LINK_MARKER_TOP_RIGHT,LINK_MARKER_LEFT,LINK_MARKER_RIGHT,LINK_MARKER_BOTTOM_LEFT,LINK_MARKER_BOTTOM,LINK_MARKER_BOTTOM_RIGHT
         forbid = bit.bor(forbid,
