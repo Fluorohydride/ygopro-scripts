@@ -1651,7 +1651,7 @@ function Auxiliary.AddLinkProcedure(c,f,min,max)
 	e1:SetValue(SUMMON_TYPE_LINK)
 	c:RegisterEffect(e1)
 end
-function Auxiliary.AddLinkProcedureGeneral(c,f,min,max)		-- f is a general constraint function returning a group is valid or not, instead of a
+function Auxiliary.AddLinkProcedureGeneral(c,f,min,max)		-- f is a general constraint function returning a group is valid or not, instead of a filter
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
@@ -1711,7 +1711,7 @@ function Auxiliary.LinkOperationGeneral(f,minc,maxc)
 				local tp = e:GetHandlerPlayer()
 				local g = aux.GetSumEqualGroups(Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)
 				for i=#g,1,-1 do
-					if not f(bv) or aux.GetExtraFieldFor(tp,g[i],c)<1 then table.remove(g,i) end
+					if not f(v) or aux.GetExtraFieldFor(tp,g[i],c)<1 then table.remove(g,i) end
 				end
 				g = aux.SelectGroup(tp,g)
 				c:SetMaterial(g)
