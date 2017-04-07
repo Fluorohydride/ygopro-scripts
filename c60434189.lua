@@ -12,8 +12,7 @@ function c60434189.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-	e1:SetTargetRange(LOCATION_SZONE,LOCATION_SZONE)
-	e1:SetTarget(c60434189.indtg)
+	e1:SetTargetRange(LOCATION_PZONE,LOCATION_PZONE)
 	e1:SetValue(c60434189.indval)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
@@ -25,14 +24,11 @@ function c60434189.activate(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
 end
-function c60434189.indtg(e,c)
-	return c:GetSequence()>5
-end
 function c60434189.indval(e,re,tp)
 	return tp~=e:GetHandlerPlayer()
 end
 function c60434189.indfilter(c)
-	return c:IsLocation(LOCATION_SZONE) and c:GetSequence()>5
+	return c:IsLocation(LOCATION_PZONE)
 end
 function c60434189.discon(e,tp,eg,ep,ev,re,r,rp)
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return false end

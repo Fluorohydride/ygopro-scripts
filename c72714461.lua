@@ -23,8 +23,7 @@ function c72714461.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c72714461.pencon(e,tp,eg,ep,ev,re,r,rp)
-	local seq=e:GetHandler():GetSequence()
-	local sc=Duel.GetFieldCard(tp,LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
+	local sc=Duel.GetMatchingGroup(nil,tp,LOCATION_PZONE,0,e:GetHandler()):GetFirst()
 	return sc and (sc:IsSetCard(0x98) or sc:IsSetCard(0x9f))
 end
 function c72714461.penfilter(c)

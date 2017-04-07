@@ -15,9 +15,9 @@ function c53208660.initial_effect(c)
 end
 function c53208660.chainfilter(re,tp,cid)
 	local rc=re:GetHandler()
-	local loc,seq=Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_SEQUENCE)
-	return not (re:IsActiveType(TYPE_SPELL) and not re:IsHasType(EFFECT_TYPE_ACTIVATE)
-		and loc==LOCATION_SZONE and (seq==6 or seq==7) and rc:IsSetCard(0x98))
+	local loc=Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_LOCATION)
+	return not (re:GetActiveType()==TYPE_PENDULUM+TYPE_SPELL and not re:IsHasType(EFFECT_TYPE_ACTIVATE)
+		and loc==LOCATION_SZONE and rc:IsSetCard(0x98))
 end
 function c53208660.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCustomActivityCount(53208660,tp,ACTIVITY_CHAIN)==0

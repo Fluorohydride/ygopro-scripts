@@ -65,8 +65,7 @@ function c20409757.aclimit(e,re,tp)
 	return re:IsActiveType(TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c20409757.slcon(e)
-	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
+	local tc=Duel.GetMatchingGroup(nil,e:GetHandlerPlayer(),LOCATION_PZONE,0,e:GetHandler()):GetFirst()
 	return not tc or (not tc:IsSetCard(0x98) and not tc:IsSetCard(0x99))
 end
 function c20409757.filter(c,tp)

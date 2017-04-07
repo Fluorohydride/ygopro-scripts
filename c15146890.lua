@@ -17,8 +17,7 @@ function c15146890.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c15146890.condition(e,tp,eg,ep,ev,re,r,rp)
-	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(tp,LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
+	local tc=Duel.GetMatchingGroup(nil,tp,LOCATION_PZONE,0,e:GetHandler()):GetFirst()
 	return tc and tc:IsSetCard(0x98)
 end
 function c15146890.cfilter(c)

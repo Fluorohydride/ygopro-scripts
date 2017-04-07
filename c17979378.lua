@@ -57,8 +57,7 @@ function c17979378.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c17979378.sccon(e)
-	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
+	local tc=Duel.GetMatchingGroup(nil,e:GetHandlerPlayer(),LOCATION_PZONE,0,e:GetHandler()):GetFirst()
 	return not tc or not tc:IsSetCard(0xaf)
 end
 function c17979378.filter(c)

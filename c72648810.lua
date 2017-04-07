@@ -12,9 +12,10 @@ function c72648810.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c72648810.condition(e,tp,eg,ep,ev,re,r,rp)
-	local loc,seq=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_SEQUENCE)
-	return rp~=tp and re:IsActiveType(TYPE_PENDULUM) and (re:IsActiveType(TYPE_MONSTER)
-		or (loc==LOCATION_SZONE and (seq==6 or seq==7) and not re:IsHasType(EFFECT_TYPE_ACTIVATE)))
+	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
+	local atype=re:GetActiveType()
+	return rp~=tp and (bit.band(atype,TYPE_PENDULUM+TYPE_MONSTER)==TYPE_PENDULUM+TYPE_MONSTER
+		or (atype==TYPE_PENDULUM+TYPE_SPELL and loc==LOCATION_SZONE and not re:IsHasType(EFFECT_TYPE_ACTIVATE)))
 		and Duel.IsChainNegatable(ev)
 end
 function c72648810.target(e,tp,eg,ep,ev,re,r,rp,chk)

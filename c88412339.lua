@@ -77,7 +77,6 @@ function c88412339.splimit(e,c)
 	return not c:IsSetCard(0x10ec)
 end
 function c88412339.aclimit(e,re,tp)
-	local c=re:GetHandler()
-	return c:IsCode(88412339) and re:GetActivateLocation()==LOCATION_SZONE
-		and	(c:GetSequence()==6 or c:GetSequence()==7)
+	local rc=re:GetHandler()
+	return rc:IsCode(88412339) and re:GetActiveType()==TYPE_PENDULUM+TYPE_SPELL
 end

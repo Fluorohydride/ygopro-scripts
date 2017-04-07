@@ -40,8 +40,7 @@ function c20281581.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c20281581.descon(e)
-	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
+	local tc=Duel.GetMatchingGroup(nil,e:GetHandlerPlayer(),LOCATION_PZONE,0,e:GetHandler()):GetFirst()
 	return not tc
 end
 function c20281581.rdcon(e,tp,eg,ep,ev,re,r,rp)

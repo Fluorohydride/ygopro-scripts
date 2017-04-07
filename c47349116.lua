@@ -57,9 +57,7 @@ function c47349116.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmCards(1-tp,tc)
 end
 function c47349116.repfilter(c,tp)
-	local seq=c:GetSequence()
-	return c:IsFaceup() and c:IsControler(tp)
-		and c:IsLocation(LOCATION_MZONE+LOCATION_PZONE)
+	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE+LOCATION_PZONE)
 		and c:IsType(TYPE_PENDULUM) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function c47349116.tgfilter(c)

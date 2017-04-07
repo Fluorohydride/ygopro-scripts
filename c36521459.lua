@@ -32,8 +32,7 @@ function c36521459.initial_effect(c)
 	e9:SetType(EFFECT_TYPE_FIELD)
 	e9:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e9:SetRange(LOCATION_MZONE)
-	e9:SetTargetRange(LOCATION_SZONE,LOCATION_SZONE)
-	e9:SetTarget(c36521459.indes)
+	e9:SetTargetRange(LOCATION_FZONE,LOCATION_FZONE)
 	e9:SetValue(1)
 	c:RegisterEffect(e9)
 	--spson
@@ -43,9 +42,6 @@ function c36521459.initial_effect(c)
 	ea:SetCode(EFFECT_SPSUMMON_CONDITION)
 	ea:SetValue(aux.FALSE)
 	c:RegisterEffect(ea)
-end
-function c36521459.indes(e,c)
-	return c:IsFaceup() and c:GetSequence()==5
 end
 function c36521459.spfilter(c)
 	return c:IsCode(44508094) and c:IsAbleToRemoveAsCost()

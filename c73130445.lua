@@ -25,8 +25,7 @@ function c73130445.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c73130445.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(tp,LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
+	local tc=Duel.GetMatchingGroup(nil,tp,LOCATION_PZONE,0,e:GetHandler()):GetFirst()
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
 		and tc and tc:IsSetCard(0x9f) and not tc:IsCode(73130445) and e:GetHandler():IsDestructable() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
