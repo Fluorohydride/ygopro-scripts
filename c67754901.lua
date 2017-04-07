@@ -31,9 +31,7 @@ function c67754901.indfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x99)
 end
 function c67754901.indcon(e,tp,eg,ep,ev,re,r,rp)
-	local tc1=Duel.GetFieldCard(tp,LOCATION_PZONE,0)
-	local tc2=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
-	return (tc1 and tc1:IsSetCard(0x99)) or (tc2 and tc2:IsSetCard(0x99))
+	return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_PZONE,0,1,nil,0x99)
 end
 function c67754901.indtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c67754901.indfilter(chkc) end

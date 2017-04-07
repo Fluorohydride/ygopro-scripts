@@ -11,10 +11,8 @@ function c31531170.initial_effect(c)
 end
 function c31531170.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	local tc1=Duel.GetFieldCard(1-tp,LOCATION_PZONE,0)
-	local tc2=Duel.GetFieldCard(1-tp,LOCATION_PZONE,1)
-	if chk==0 then return tc1 and tc2 and tc1:IsCanBeEffectTarget(e) and tc2:IsCanBeEffectTarget(e) end
-	local g=Group.FromCards(tc1,tc2)
+	if chk==0 then return Duel.IsExistingTarget(nil,tp,0,LOCATION_PZONE,2,nil) end
+	local g=Duel.GetFieldGroup(tp,0,LOCATION_PZONE)
 	Duel.SetTargetCard(g)
 end
 function c31531170.activate(e,tp,eg,ep,ev,re,r,rp)

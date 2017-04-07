@@ -24,14 +24,11 @@ function c7241272.initial_effect(c)
 	e3:SetOperation(c7241272.spop)
 	c:RegisterEffect(e3)
 end
-function c7241272.desfilter(c)
-	return c:GetSequence()==5
-end
 function c7241272.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c7241272.desfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c7241272.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_FZONE) end
+	if chk==0 then return Duel.IsExistingTarget(nil,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c7241272.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,nil,tp,LOCATION_FZONE,LOCATION_FZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c7241272.desop(e,tp,eg,ep,ev,re,r,rp)

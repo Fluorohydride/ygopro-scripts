@@ -11,9 +11,7 @@ function c59057953.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c59057953.condition(e,tp,eg,ep,ev,re,r,rp)
-	local tc1=Duel.GetFieldCard(tp,LOCATION_PZONE,0)
-	local tc2=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
-	return tc1 and tc1:IsSetCard(0x10ec) and tc2 and tc2:IsSetCard(0x10ec)
+	return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_PZONE,0,2,nil,0x10ec)
 end
 function c59057953.filter(c)
 	return c:IsType(TYPE_PENDULUM) and c:IsSetCard(0x10ec) and not c:IsForbidden()

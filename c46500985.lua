@@ -29,10 +29,7 @@ function c46500985.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c46500985.immcon(e)
-	local tp=e:GetHandlerPlayer()
-	local c1=Duel.GetFieldCard(tp,LOCATION_PZONE,0)
-	local c2=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
-	return (c1 and c1:IsSetCard(0xe1)) or (c2 and c2:IsSetCard(0xe1))
+	return Duel.IsExistingMatchingCard(Card.IsSetCard,e:GetHandlerPlayer(),LOCATION_PZONE,0,1,nil,0xe1)
 end
 function c46500985.etarget(e,c)
 	return c:IsSetCard(0xe1) and not c:IsType(TYPE_EFFECT)

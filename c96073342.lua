@@ -40,8 +40,5 @@ function c96073342.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c96073342.handcon(e)
-	local tp=e:GetHandlerPlayer()
-	local tc1=Duel.GetFieldCard(tp,LOCATION_PZONE,0)
-	local tc2=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
-	return tc1 and tc1:IsSetCard(0xc4) and tc2 and tc2:IsSetCard(0xc4)
+	return Duel.IsExistingMatchingCard(Card.IsSetCard,e:GetHandlerPlayer(),LOCATION_PZONE,0,2,nil,0xc4)
 end

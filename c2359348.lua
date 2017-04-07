@@ -19,11 +19,8 @@ function c2359348.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c2359348.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	local tc1=Duel.GetFieldCard(tp,LOCATION_PZONE,0)
-	local tc2=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
-	if chk==0 then return tc1 and tc2
-		and tc1:IsCanBeEffectTarget(e) and tc2:IsCanBeEffectTarget(e) end
-	local g=Group.FromCards(tc1,tc2)
+	if chk==0 then return Duel.IsExistingTarget(nil,tp,LOCATION_PZONE,0,2,nil) end
+	local g=Duel.GetFieldGroup(tp,LOCATION_PZONE,0)
 	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)
 end
