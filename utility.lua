@@ -1651,6 +1651,19 @@ function Auxiliary.AddLinkProcedure(c,f,min,max)
 	e1:SetValue(SUMMON_TYPE_LINK)
 	c:RegisterEffect(e1)
 end
+function Auxiliary.AddLinkProcedureGeneral(c,f,min,max)		-- f is a general constraint function returning a group is valid or not, instead of a filter
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_SPSUMMON_PROC)
+	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
+	e1:SetRange(LOCATION_EXTRA)
+	e1:SetTargetRange(POS_FACEUP_ATTACK,0)
+	if max==nil then max=99 end
+	e1:SetCondition(Auxiliary.LinkConditionGeneral(f,min,max))
+	e1:SetOperation(Auxiliary.LinkOperationGeneral(f,min,max))
+	e1:SetValue(SUMMON_TYPE_LINK)
+	c:RegisterEffect(e1)
+end
 function Auxiliary.LConditionFilter(c,f)
 	return c:IsFaceup() and (not f or f(c))
 end
@@ -1670,12 +1683,23 @@ function Auxiliary.LinkCondition(f,minc,maxc)
 				return false
 			end
 end
-function Auxiliary.LinkOperation(f,minc,maxc)
+function Auxiliary.LinkConditionGeneral(f,minc,maxc)
+	return	function(e,c)
+				if c==nil then return true end
+				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
+				local tp = c:GetControler()
+				for _,v in ipairs(aux.GetSumEqualGroups(Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil),aux.GetLinkCount,c:GetLink(),minc,maxc)) do
+					if f(v) and aux.GetExtraFieldFor(tp,v,c)>0 then return true end
+				end
+				return false
+			end
+end
+function Auxiliary.LinkOperationGeneral(f,minc,maxc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c)
 				local tp = e:GetHandlerPlayer()
-				local g = aux.GetSumEqualGroups(Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)
+				local g = aux.GetSumEqualGroups(Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil),aux.GetLinkCount,c:GetLink(),minc,maxc)
 				for i=#g,1,-1 do
-					if aux.GetExtraFieldFor(tp,g[i],c)<1 then table.remove(g,i) end
+					if not f(v) or aux.GetExtraFieldFor(tp,g[i],c)<1 then table.remove(g,i) end
 				end
 				g = aux.SelectGroup(tp,g)
 				c:SetMaterial(g)
@@ -1747,22 +1771,22 @@ function Auxiliary.GetExtraField()
 	end
 	return z
 end
-function Auxiliary.GetExtraFieldFor(tp,ignoreGroup,linkMarker)
+function Auxiliary.GetExtraFieldFor(tp,ignoreGroup,linkMonster)
 	local g      = Duel.GetFieldGroup(0,LOCATION_MZONE,LOCATION_MZONE)
-	if G then g:Sub(ignoreGroup) end
+	if ignoreGroup then g:Sub(ignoreGroup) end
     local allow  = 0x6060
-	local forbid = Duel.GetDisabledField()
+	local forbid = Duel.GetDisabledField and Duel.GetDisabledField()or 0
 	local t      = {}
 	local c      = g:GetFirst()
 	while c do
-		if c:IsControler(tp) then t[c:GetSequence()] = c:GetLinkMarker() end
+		if c:IsControler(tp) then t[c:GetSequence()] = c end
 		allow  = bit.bor(allow,c:GetLinkedZone())
 		forbid = bit.bor(forbid,bit.lshift(1,c:GetSequence()+c:GetControler()*16))
 		c      = g:GetNext()
 	end
-	t[7] = linkMarker
+	t[7] = linkMonster
 	if t[7] and (t[5] or t[6]) then
-        local f = function(a,b)return bit.band(t[a],b)==b end
+        local f = function(a,b)return t[a]:IsLinkMarker(b)end
         local q,w,e,a,d,z,x,c = LINK_MARKER_TOP_LEFT,LINK_MARKER_TOP,LINK_MARKER_TOP_RIGHT,LINK_MARKER_LEFT,LINK_MARKER_RIGHT,LINK_MARKER_BOTTOM_LEFT,LINK_MARKER_BOTTOM,LINK_MARKER_BOTTOM_RIGHT
         forbid = bit.bor(forbid,
         	    (    t[5]
@@ -1771,26 +1795,26 @@ function Auxiliary.GetExtraFieldFor(tp,ignoreGroup,linkMarker)
                         and t[2]
                         and f(2,a))
                      or(    f(5,c)
-                          and t[2]
-                          and f(2,q)))
+                        and t[2]
+                        and f(2,q)))
                  and(  (f(7,z)and f(2,e))
-                       or(    f(2,d)
-                          and t[3]
-                          and(  (f(7,x)and f(3,a+w))
-                              or(f(7,c)and f(3,a+d)and t[4]and f(4,a+q))))))
+                     or(    f(2,d)
+                        and t[3]
+                        and(  (f(7,x)and f(3,a+w))
+                            or(f(7,c)and f(3,a+d)and t[4]and f(4,a+q))))))
               or(    t[6]
                  and(  (   (  (f(6,c)and t[4]and f(4,q+a)and t[3]and f(3,d+a))
                             or(f(6,x)and t[3]and f(3,w+a)))
                         and t[2]
                         and f(2,d))
                      or(    f(6,z)
-                          and t[2]
-                          and f(2,e)))
+                        and t[2]
+                        and f(2,e)))
                  and(  (f(7,c)and f(2,q))
-                       or(    f(2,a)
-                          and t[1]
-                          and(  (f(7,x)and f(1,d+w))
-                              or(f(7,z)and f(1,d+a)and t[4]and f(0,d+e))))))           
+                     or(    f(2,a)
+                        and t[1]
+                        and(  (f(7,x)and f(1,d+w))
+                            or(f(7,z)and f(1,d+a)and t[4]and f(0,d+e))))))           
               and 0 or 0x6060)
     else
         forbid = bit.bor(forbid,t[5] or t[6] and 0x6060 or 0)
@@ -1799,14 +1823,14 @@ function Auxiliary.GetExtraFieldFor(tp,ignoreGroup,linkMarker)
 end
 function Auxiliary.CountOne(n)
 	local c = 0
-	while n>0 do
-		if bit.band(1,n)>0 then c=c+1 end
-		n=bit.rshift(n,1)
+	while n > 0 do
+		if bit.band(1,n) > 0 then c = c+1 end
+		n = bit.rshift(n,1)
 	end
 	return c
 end
-function Auxiliary.IsField(c,f)
-	return bit.band(bit.lshift(1,c:GetSequence()+(c:IsLocation(LOCATION_MZONE)and 0 or 8)+c:GetControler()*16),f)>0
+function Auxiliary.IsField(c,field)
+	return bit.band(bit.lshift(1,c:GetSequence()+(c:IsLocation(LOCATION_MZONE)and 0 or 8)+c:GetControler()*16),field)>0
 end
 function Auxiliary.IsMaterialListCode(c,code)
 	if not c.material then return false end
