@@ -1563,9 +1563,8 @@ function Auxiliary.PendCondition()
 	return	function(e,c,og)
 				if c==nil then return true end
 				local tp=c:GetControler()
-				if c:GetSequence()~=6 then return false end
-				local rpz=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
-				if rpz==nil then return false end
+				local rpz=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
+				if rpz==nil or c==rpz then return false end
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
@@ -1585,7 +1584,7 @@ function Auxiliary.PendCondition()
 end
 function Auxiliary.PendOperation()
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
-				local rpz=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
+				local rpz=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
