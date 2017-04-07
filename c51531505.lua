@@ -17,8 +17,7 @@ function c51531505.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c51531505.condition(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetMatchingGroup(nil,tp,LOCATION_PZONE,0,e:GetHandler()):GetFirst()
-	return tc and tc:IsSetCard(0x98)
+	return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_PZONE,0,1,e:GetHandler(),0x98)
 end
 function c51531505.cfilter(c)
 	return c:IsType(TYPE_PENDULUM) and c:IsDiscardable()

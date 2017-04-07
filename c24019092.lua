@@ -13,8 +13,7 @@ function c24019092.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c24019092.thcon(e,tp,eg,ep,ev,re,r,rp)
-	local pc=Duel.GetMatchingGroup(nil,tp,LOCATION_PZONE,0,e:GetHandler()):GetFirst()
-	return pc and pc:IsSetCard(0xc8)
+	return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_PZONE,0,1,e:GetHandler(),0xc8)
 end
 function c24019092.filter(c)
 	return c:IsRace(RACE_WARRIOR) and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsAbleToHand()

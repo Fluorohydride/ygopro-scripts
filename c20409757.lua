@@ -64,9 +64,11 @@ end
 function c20409757.aclimit(e,re,tp)
 	return re:IsActiveType(TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
+function c20409757.slfilter(c)
+	return c:IsSetCard(0x98) or c:IsSetCard(0x99)
+end
 function c20409757.slcon(e)
-	local tc=Duel.GetMatchingGroup(nil,e:GetHandlerPlayer(),LOCATION_PZONE,0,e:GetHandler()):GetFirst()
-	return not tc or (not tc:IsSetCard(0x98) and not tc:IsSetCard(0x99))
+	return not Duel.IsExistingMatchingCard(c20409757.slfilter,e:GetHandlerPlayer(),LOCATION_PZONE,0,1,e:GetHandler())
 end
 function c20409757.filter(c,tp)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_PZONE)

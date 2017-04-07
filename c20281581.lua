@@ -40,8 +40,7 @@ function c20281581.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c20281581.descon(e)
-	local tc=Duel.GetMatchingGroup(nil,e:GetHandlerPlayer(),LOCATION_PZONE,0,e:GetHandler()):GetFirst()
-	return not tc
+	return not Duel.IsExistingMatchingCard(nil,e:GetHandlerPlayer(),LOCATION_PZONE,0,1,e:GetHandler())
 end
 function c20281581.rdcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp

@@ -45,8 +45,7 @@ function c88935103.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 function c88935103.descon(e)
-	local tc=Duel.GetMatchingGroup(nil,e:GetHandlerPlayer(),LOCATION_PZONE,0,e:GetHandler()):GetFirst()
-	return not tc or not tc:IsSetCard(0x98)
+	return not Duel.IsExistingMatchingCard(Card.IsSetCard,e:GetHandlerPlayer(),LOCATION_PZONE,0,1,e:GetHandler(),0x98)
 end
 function c88935103.synlimit(e,c)
 	if not c then return false end

@@ -21,9 +21,11 @@ function c56675280.initial_effect(c)
 	e2:SetOperation(c56675280.spop)
 	c:RegisterEffect(e2)
 end
+function c56675280.scfilter(c)
+	return (c:IsSetCard(0x98) or c:IsSetCard(0x99) or c:IsSetCard(0x9f)) and not c:IsCode(56675280)
+end
 function c56675280.sccon(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetMatchingGroup(nil,tp,LOCATION_PZONE,0,e:GetHandler()):GetFirst()
-	return tc and (tc:IsSetCard(0x98) or tc:IsSetCard(0x99) or tc:IsSetCard(0x9f)) and not tc:IsCode(56675280)
+	return Duel.IsExistingMatchingCard(c56675280.scfilter,tp,LOCATION_PZONE,0,1,e:GetHandler())
 end
 function c56675280.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetLeftScale()~=7 end

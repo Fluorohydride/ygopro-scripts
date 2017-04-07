@@ -61,8 +61,7 @@ function c81571633.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c81571633.sccon(e)
-	local tc=Duel.GetMatchingGroup(nil,e:GetHandlerPlayer(),LOCATION_PZONE,0,e:GetHandler()):GetFirst()
-	return not tc or not tc:IsSetCard(0xaf)
+	return not Duel.IsExistingMatchingCard(Card.IsSetCard,e:GetHandlerPlayer(),LOCATION_PZONE,0,1,e:GetHandler(),0xaf)
 end
 function c81571633.filter(c,e,tp)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsAttribute(ATTRIBUTE_DARK)

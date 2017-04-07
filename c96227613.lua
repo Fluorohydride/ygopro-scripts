@@ -54,8 +54,7 @@ function c96227613.ndcon(e)
 	return Duel.IsExistingMatchingCard(c96227613.ndcfilter,e:GetHandlerPlayer(),LOCATION_ONFIELD,0,1,nil)
 end
 function c96227613.thcon(e,tp,eg,ep,ev,re,r,rp)
-	local pc=Duel.GetMatchingGroup(nil,tp,LOCATION_PZONE,0,e:GetHandler()):GetFirst()
-	return pc and pc:IsCode(22211622)
+	return Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_PZONE,0,1,e:GetHandler(),22211622)
 end
 function c96227613.thfilter(c)
 	return c:IsType(TYPE_SPELL) and c:IsSetCard(0x46) and c:IsAbleToHand()

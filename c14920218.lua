@@ -29,8 +29,7 @@ function c14920218.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c14920218.pcon(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetMatchingGroup(nil,tp,LOCATION_PZONE,0,e:GetHandler()):GetFirst()
-	return tc and tc:IsSetCard(0x98)
+	return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_PZONE,0,1,e:GetHandler(),0x98)
 end
 function c14920218.pfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and (c:IsSetCard(0x98) or c:IsSetCard(0x99)) and not c:IsCode(14920218) and c:IsAbleToHand()

@@ -27,8 +27,7 @@ function c93149655.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c93149655.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetMatchingGroup(nil,tp,LOCATION_PZONE,0,e:GetHandler()):GetFirst()
-	if not tc or not tc:IsSetCard(0x99) then return end
+	if not Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_PZONE,0,1,e:GetHandler(),0x99) then return end
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	if d and a:GetControler()~=d:GetControler() then
