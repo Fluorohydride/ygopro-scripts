@@ -68,7 +68,7 @@ function c5399521.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c5399521.slcon(e)
 	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_SZONE,13-seq)
+	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
 	return not tc or not tc:IsSetCard(0x1066)
 end
 function c5399521.spcon(e,c)

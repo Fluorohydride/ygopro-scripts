@@ -49,8 +49,8 @@ function c9030160.initial_effect(c)
 end
 function c9030160.condition(e)
 	local tp=e:GetHandlerPlayer()
-	local pc1=Duel.GetFieldCard(tp,LOCATION_SZONE,6)
-	local pc2=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
+	local pc1=Duel.GetFieldCard(tp,LOCATION_PZONE,0)
+	local pc2=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 	return pc1 and pc2 and pc1:IsSetCard(0xaf) and pc2:IsSetCard(0xaf)
 end
 function c9030160.sumlimit(e,c)

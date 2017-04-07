@@ -69,12 +69,7 @@ function c22200403.initial_effect(c)
 	c:RegisterEffect(e8)
 end
 function c22200403.effcon(e)
-	local ct=0
-	if Duel.GetFieldCard(0,LOCATION_SZONE,6) then ct=ct+1 end
-	if Duel.GetFieldCard(0,LOCATION_SZONE,7) then ct=ct+1 end
-	if Duel.GetFieldCard(1,LOCATION_SZONE,6) then ct=ct+1 end
-	if Duel.GetFieldCard(1,LOCATION_SZONE,7) then ct=ct+1 end
-	return ct>=e:GetLabel()
+	return Duel.GetFieldGroup(0,LOCATION_PZONE,LOCATION_PZONE)>=e:GetLabel()
 end
 function c22200403.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetHandler():GetBattleTarget()

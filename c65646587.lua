@@ -11,8 +11,7 @@ function c65646587.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c65646587.filter0(c,e)
-	local seq=c:GetSequence()
-	return (seq==6 or seq==7) and c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
+	return c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
 end
 function c65646587.filter1(c,e)
 	return c:IsOnField() and not c:IsImmuneToEffect(e)
@@ -25,8 +24,8 @@ function c65646587.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
 		local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)
-		if Duel.GetFieldCard(tp,LOCATION_SZONE,6) and Duel.GetFieldCard(tp,LOCATION_SZONE,7) then
-			mg1:Merge(Duel.GetMatchingGroup(c65646587.filter0,tp,LOCATION_SZONE,0,nil,e))
+		if Duel.GetFieldCard(tp,LOCATION_PZONE,0) and Duel.GetFieldCard(tp,LOCATION_PZONE,1) then
+			mg1:Merge(Duel.GetMatchingGroup(c65646587.filter0,tp,LOCATION_PZONE,0,nil,e))
 		end
 		local res=Duel.IsExistingMatchingCard(c65646587.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
@@ -45,8 +44,8 @@ end
 function c65646587.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c65646587.filter1,nil,e)
-	if Duel.GetFieldCard(tp,LOCATION_SZONE,6) and Duel.GetFieldCard(tp,LOCATION_SZONE,7) then
-		mg1:Merge(Duel.GetMatchingGroup(c65646587.filter0,tp,LOCATION_SZONE,0,nil,e))
+	if Duel.GetFieldCard(tp,LOCATION_PZONE,0) and Duel.GetFieldCard(tp,LOCATION_PZONE,1) then
+		mg1:Merge(Duel.GetMatchingGroup(c65646587.filter0,tp,LOCATION_PZONE,0,nil,e))
 	end
 	local sg1=Duel.GetMatchingGroup(c65646587.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil

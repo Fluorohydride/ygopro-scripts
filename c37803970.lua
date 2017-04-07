@@ -11,7 +11,7 @@ function c37803970.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c37803970.condition(e,tp,eg,ep,ev,re,r,rp)
-	return not Duel.GetFieldCard(tp,LOCATION_SZONE,6) and not Duel.GetFieldCard(tp,LOCATION_SZONE,7)
+	return not Duel.GetFieldCard(tp,LOCATION_PZONE,0) and not Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 end
 function c37803970.thfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM) and c:IsAbleToHand()

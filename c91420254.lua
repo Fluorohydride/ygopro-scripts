@@ -31,7 +31,7 @@ function c91420254.initial_effect(c)
 end
 function c91420254.sccon(e,tp,eg,ep,ev,re,r,rp)
 	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_SZONE,13-seq)
+	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
 	return tc and tc:IsSetCard(0xb3)
 end
 function c91420254.scop(e,tp,eg,ep,ev,re,r,rp)

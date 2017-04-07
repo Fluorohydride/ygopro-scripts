@@ -24,7 +24,7 @@ function c72714461.initial_effect(c)
 end
 function c72714461.pencon(e,tp,eg,ep,ev,re,r,rp)
 	local seq=e:GetHandler():GetSequence()
-	local sc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-seq)
+	local sc=Duel.GetFieldCard(tp,LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
 	return sc and (sc:IsSetCard(0x98) or sc:IsSetCard(0x9f))
 end
 function c72714461.penfilter(c)
@@ -51,14 +51,13 @@ function c72714461.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_DISCARD+REASON_COST)
 end
 function c72714461.scfilter(c)
-	return (c:GetSequence()==6 and c:GetLeftScale()~=c:GetOriginalLeftScale())
-		or (c:GetSequence()==7 and c:GetRightScale()~=c:GetOriginalRightScale())
+	return c:GetLeftScale()~=c:GetOriginalLeftScale()
 end
 function c72714461.sctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c72714461.scfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c72714461.scfilter,tp,LOCATION_SZONE,0,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_PZONE) and chkc:IsControler(tp) and c72714461.scfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c72714461.scfilter,tp,LOCATION_PZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c72714461.scfilter,tp,LOCATION_SZONE,0,1,1,nil)
+	Duel.SelectTarget(tp,c72714461.scfilter,tp,LOCATION_PZONE,0,1,1,nil)
 end
 function c72714461.scop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

@@ -52,13 +52,10 @@ function c53208660.activate(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-		e1:SetTargetRange(LOCATION_SZONE,0)
-		e1:SetTarget(c53208660.indtg)
+		e1:SetTargetRange(LOCATION_PZONE,0)
+		e1:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x98))
 		e1:SetValue(1)
 		e1:SetReset(RESET_PHASE+PHASE_END+RESET_OPPO_TURN)
 		Duel.RegisterEffect(e1,tp)
 	end
-end
-function c53208660.indtg(e,c)
-	return (c:GetSequence()==6 or c:GetSequence()==7) and c:IsSetCard(0x98)
 end

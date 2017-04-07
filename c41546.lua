@@ -41,18 +41,18 @@ function c41546.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c41546.desfilter(c)
-	return (c:GetSequence()==6 or c:GetSequence()==7) and c:IsSetCard(0xaf)
+	return c:IsSetCard(0xaf)
 end
 function c41546.spfilter(c,e,tp)
 	return c:IsSetCard(0x10af) and c:GetLevel()==8 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c41546.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c41546.desfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c41546.desfilter,tp,LOCATION_SZONE,0,1,nil)
+	if chkc then return chkc:IsLocation(LOCATION_PZONE) and chkc:IsControler(tp) and c41546.desfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c41546.desfilter,tp,LOCATION_PZONE,0,1,nil)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c41546.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c41546.desfilter,tp,LOCATION_SZONE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,c41546.desfilter,tp,LOCATION_PZONE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end

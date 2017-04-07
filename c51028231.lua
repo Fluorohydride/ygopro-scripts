@@ -81,7 +81,7 @@ function c51028231.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c51028231.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_EFFECT) and c:IsPreviousLocation(LOCATION_SZONE) and (c:GetPreviousSequence()==6 or c:GetPreviousSequence()==7)
+	return c:IsReason(REASON_EFFECT) and c:IsPreviousLocation(LOCATION_PZONE)
 end
 function c51028231.desfilter(c)
 	return c:IsFaceup() and c:IsLevelBelow(4)

@@ -35,7 +35,7 @@ function c45974017.pctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b1=Duel.IsExistingTarget(c45974017.pcfilter,tp,LOCATION_GRAVE,0,1,nil)
 	local b2=Duel.IsExistingMatchingCard(c45974017.pcfilter,tp,LOCATION_EXTRA,0,1,nil)
 	if chk==0 then
-		if not Duel.CheckLocation(tp,LOCATION_SZONE,6) and not Duel.CheckLocation(tp,LOCATION_SZONE,7) then return false end
+		if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return false end
 		return b1 or b2
 	end
 	local op=0
@@ -54,7 +54,7 @@ function c45974017.pctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c45974017.pcop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
-	if not Duel.CheckLocation(tp,LOCATION_SZONE,6) and not Duel.CheckLocation(tp,LOCATION_SZONE,7) then return false end
+	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return false end
 	if e:GetLabel()==0 then
 		local tc=Duel.GetFirstTarget()
 		if tc:IsRelateToEffect(e) then

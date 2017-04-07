@@ -60,14 +60,11 @@ end
 function c14756848.desfilter1(c)
 	return c:GetSequence()<5
 end
-function c14756848.desfilter2(c)
-	return (c:GetSequence()==6 or c:GetSequence()==7)
-end
 function c14756848.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local sel=0
 		if Duel.IsExistingMatchingCard(c14756848.desfilter1,tp,0,LOCATION_SZONE,1,nil) then sel=sel+1 end
-		if Duel.IsExistingMatchingCard(c14756848.desfilter2,tp,0,LOCATION_SZONE,1,nil) then sel=sel+2 end
+		if Duel.GetFieldGroupCount(tp,0,LOCATION_PZONE)>0 then sel=sel+2 end
 		e:SetLabel(sel)
 		return sel~=0
 	end
@@ -84,7 +81,7 @@ function c14756848.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local g=Duel.GetMatchingGroup(c14756848.desfilter1,tp,0,LOCATION_SZONE,nil)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	else
-		local g=Duel.GetMatchingGroup(c14756848.desfilter2,tp,0,LOCATION_SZONE,nil)
+		local g=Duel.GetFieldGroup(tp,0,LOCATION_PZONE)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	end
 end
@@ -106,12 +103,12 @@ function c14756848.desop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local g=Duel.SelectMatchingCard(tp,c14756848.desfilter2,tp,0,LOCATION_SZONE,1,1,nil)
+		local g=Duel.GetFieldGroup(tp,0,LOCATION_PZONE):Select(tp,1,1,nil)
 		local tc=g:GetFirst()
 		if not tc then return end
 		Duel.HintSelection(g)
 		if Duel.Destroy(g,REASON_EFFECT)~=0
-			and (Duel.CheckLocation(tp,LOCATION_SZONE,6) or Duel.CheckLocation(tp,LOCATION_SZONE,7))
+			and (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))
 			and not tc:IsLocation(LOCATION_HAND+LOCATION_DECK) and not tc:IsForbidden()
 			and Duel.SelectYesNo(tp,aux.Stringid(14756848,4)) then
 			Duel.BreakEffect()

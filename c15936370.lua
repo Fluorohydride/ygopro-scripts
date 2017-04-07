@@ -27,14 +27,11 @@ end
 function c15936370.pencon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_EXTRA,0)==0
 end
-function c15936370.desfilter(c)
-	return (c:GetSequence()==6 or c:GetSequence()==7)
-end
 function c15936370.pentg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(1-tp) and c15936370.desfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c15936370.desfilter,tp,0,LOCATION_SZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_PZONE) and chkc:IsControler(1-tp) end
+	if chk==0 then return Duel.IsExistingTarget(nil,tp,0,LOCATION_PZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c15936370.desfilter,tp,0,LOCATION_SZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,nil,tp,0,LOCATION_PZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c15936370.penop(e,tp,eg,ep,ev,re,r,rp)

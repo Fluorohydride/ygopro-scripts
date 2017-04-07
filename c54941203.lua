@@ -25,8 +25,8 @@ function c54941203.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c54941203.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local tc1=Duel.GetFieldCard(tp,LOCATION_SZONE,6)
-	local tc2=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
+	local tc1=Duel.GetFieldCard(tp,LOCATION_PZONE,0)
+	local tc2=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 	return tc1 and tc1:IsSetCard(0x98) and tc2 and tc2:IsSetCard(0x98)
 end
 function c54941203.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

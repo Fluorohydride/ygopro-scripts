@@ -22,20 +22,17 @@ function c15582767.initial_effect(c)
 	e2:SetLabel(1)
 	c:RegisterEffect(e2)
 end
-function c15582767.filter(c)
-	return (c:GetSequence()==6 or c:GetSequence()==7)
-end
 function c15582767.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c15582767.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_PZONE) and chkc:IsControler(tp) end
 	if chk==0 then return true end
 	if Duel.GetFlagEffect(tp,15582767)==0 and Duel.IsPlayerCanDraw(tp,1)
-		and Duel.IsExistingTarget(c15582767.filter,tp,LOCATION_SZONE,0,1,nil)
+		and Duel.IsExistingTarget(nil,tp,LOCATION_PZONE,0,1,nil)
 		and Duel.SelectYesNo(tp,94) then
 		e:SetCategory(CATEGORY_DESTROY+CATEGORY_DRAW)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		Duel.RegisterFlagEffect(tp,15582767,RESET_PHASE+PHASE_END,0,1)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local g=Duel.SelectTarget(tp,c15582767.filter,tp,LOCATION_SZONE,0,1,1,nil)
+		local g=Duel.SelectTarget(tp,nil,tp,LOCATION_PZONE,0,1,1,nil)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 		Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 		e:SetLabel(1)
@@ -50,11 +47,11 @@ function c15582767.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterFlagEffect(tp,15582767,RESET_PHASE+PHASE_END,0,1)
 end
 function c15582767.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c15582767.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_PZONE) and chkc:IsControler(tp) end
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
-		and Duel.IsExistingTarget(c15582767.filter,tp,LOCATION_SZONE,0,1,nil) end
+		and Duel.IsExistingTarget(nil,tp,LOCATION_PZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c15582767.filter,tp,LOCATION_SZONE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,nil,tp,LOCATION_PZONE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end

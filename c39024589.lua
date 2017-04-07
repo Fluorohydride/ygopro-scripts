@@ -50,8 +50,8 @@ function c39024589.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c39024589.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local tc1=Duel.GetFieldCard(tp,LOCATION_SZONE,6)
-	local tc2=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
+	local tc1=Duel.GetFieldCard(tp,LOCATION_PZONE,0)
+	local tc2=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 	return tc1 and tc1:IsSetCard(0x10ec) and tc2 and tc2:IsSetCard(0x10ec)
 end
 function c39024589.spcost(e,tp,eg,ep,ev,re,r,rp,chk)

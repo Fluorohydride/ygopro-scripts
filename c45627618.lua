@@ -45,13 +45,13 @@ function c45627618.pcfilter(c)
 end
 function c45627618.pctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local seq=e:GetHandler():GetSequence()
-	if chk==0 then return Duel.CheckLocation(tp,LOCATION_SZONE,13-seq)
+	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
 		and Duel.IsExistingMatchingCard(c45627618.pcfilter,tp,LOCATION_DECK,0,1,nil) end
 end
 function c45627618.pcop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local seq=e:GetHandler():GetSequence()
-	if not Duel.CheckLocation(tp,LOCATION_SZONE,13-seq) then return end
+	if not Duel.CheckLocation(tp,LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1]) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 	local g=Duel.SelectMatchingCard(tp,c45627618.pcfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
@@ -96,16 +96,12 @@ function c45627618.pencon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0 and c:IsPreviousLocation(LOCATION_MZONE) and c:IsFaceup()
 end
 function c45627618.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local lsc=Duel.GetFieldCard(tp,LOCATION_SZONE,6)
-	local rsc=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
-	local g=Group.FromCards(lsc,rsc):Filter(aux.TRUE,nil)
-	if chk==0 then return g:GetCount()>0 end
+	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_PZONE,0)>0 end
+	local g=Duel.GetFieldGroup(tp,LOCATION_PZONE,0)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c45627618.penop(e,tp,eg,ep,ev,re,r,rp)
-	local lsc=Duel.GetFieldCard(tp,LOCATION_SZONE,6)
-	local rsc=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
-	local g=Group.FromCards(lsc,rsc)
+	local g=Duel.GetFieldGroup(tp,LOCATION_PZONE,0)
 	if Duel.Destroy(g,REASON_EFFECT)~=0 and e:GetHandler():IsRelateToEffect(e) then
 		Duel.MoveToField(e:GetHandler(),tp,tp,LOCATION_SZONE,POS_FACEUP,true)
 	end

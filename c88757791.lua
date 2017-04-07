@@ -31,15 +31,13 @@ function c88757791.initial_effect(c)
 end
 function c88757791.cfilter(c,tp)
 	return c:IsType(TYPE_PENDULUM) and not c:IsPublic()
-		and Duel.IsExistingTarget(c88757791.scfilter,tp,LOCATION_SZONE,0,1,nil,c)
+		and Duel.IsExistingTarget(c88757791.scfilter,tp,LOCATION_PZONE,0,1,nil,c)
 end
 function c88757791.scfilter(c,pc)
-	return c:IsSetCard(0x98)
-		and ((c:GetSequence()==6 and c:GetLeftScale()~=pc:GetLeftScale())
-		or (c:GetSequence()==7 and c:GetRightScale()~=pc:GetRightScale()))
+	return c:IsSetCard(0x98) and c:GetLeftScale()~=pc:GetLeftScale()
 end
 function c88757791.sctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_SZONE) and c88757791.scfilter(chkc,e:GetLabelObject()) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_PZONE) and c88757791.scfilter(chkc,e:GetLabelObject()) end
 	if chk==0 then return Duel.IsExistingMatchingCard(c88757791.cfilter,tp,LOCATION_HAND,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local cg=Duel.SelectMatchingCard(tp,c88757791.cfilter,tp,LOCATION_HAND,0,1,1,nil,tp)
@@ -47,7 +45,7 @@ function c88757791.sctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.ShuffleHand(tp)
 	e:SetLabelObject(cg:GetFirst())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c88757791.scfilter,tp,LOCATION_SZONE,0,1,1,nil,cg:GetFirst())
+	Duel.SelectTarget(tp,c88757791.scfilter,tp,LOCATION_PZONE,0,1,1,nil,cg:GetFirst())
 end
 function c88757791.scop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end

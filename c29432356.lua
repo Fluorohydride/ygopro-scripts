@@ -46,8 +46,7 @@ function c29432356.initial_effect(c)
 end
 function c29432356.scfilter(c,pc)
 	return c:IsType(TYPE_PENDULUM) and c:IsSetCard(0xc4) and not c:IsForbidden()
-		and ((pc:GetSequence()==6 and c:GetLeftScale()~=pc:GetLeftScale())
-		or (pc:GetSequence()==7 and c:GetRightScale()~=pc:GetRightScale()))
+		and c:GetLeftScale()~=pc:GetLeftScale()
 end
 function c29432356.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c29432356.scfilter,tp,LOCATION_DECK,0,1,nil,e:GetHandler()) end
@@ -92,8 +91,8 @@ function c29432356.penop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 	c29432356.checkop(e,tp)
-	local olpz=Duel.GetFieldCard(1-tp,LOCATION_SZONE,6)
-	local orpz=Duel.GetFieldCard(1-tp,LOCATION_SZONE,7)
+	local olpz=Duel.GetFieldCard(1-tp,LOCATION_PZONE,0)
+	local orpz=Duel.GetFieldCard(1-tp,LOCATION_PZONE,1)
 	if olpz~=nil and orpz~=nil and olpz:GetFlagEffectLabel(31531170)==orpz:GetFieldID()
 		and orpz:GetFlagEffectLabel(31531170)==olpz:GetFieldID() then
 		local e2=Effect.CreateEffect(e:GetHandler())
@@ -112,7 +111,7 @@ function c29432356.penop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c29432356.checkop(e,tp)
-	local lpz=Duel.GetFieldCard(tp,LOCATION_SZONE,6)
+	local lpz=Duel.GetFieldCard(tp,LOCATION_PZONE,0)
 	if lpz==nil or lpz:GetFlagEffect(29432356)>0 then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetDescription(aux.Stringid(29432356,2))
@@ -143,7 +142,7 @@ function c29432356.pencon1(e,c,og)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	if c:GetSequence()~=6 then return false end
-	local rpz=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
+	local rpz=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 	if rpz==nil then return false end
 	local lscale=c:GetLeftScale()
 	local rscale=rpz:GetRightScale()
@@ -158,7 +157,7 @@ function c29432356.pencon1(e,c,og)
 end
 function c29432356.penop1(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 	Duel.Hint(HINT_CARD,0,29432356)
-	local rpz=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
+	local rpz=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 	local lscale=c:GetLeftScale()
 	local rscale=rpz:GetRightScale()
 	if lscale>rscale then lscale,rscale=rscale,lscale end
@@ -199,7 +198,7 @@ end
 function c29432356.pencon2(e,c,og)
 	if c==nil then return true end
 	local tp=e:GetOwnerPlayer()
-	local rpz=Duel.GetFieldCard(1-tp,LOCATION_SZONE,7)
+	local rpz=Duel.GetFieldCard(1-tp,LOCATION_PZONE,1)
 	if rpz==nil or rpz:GetFieldID()~=c:GetFlagEffectLabel(31531170) then return false end
 	local lscale=c:GetLeftScale()
 	local rscale=rpz:GetRightScale()
@@ -216,7 +215,7 @@ function c29432356.penop2(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 	Duel.Hint(HINT_CARD,0,31531170)
 	Duel.Hint(HINT_CARD,0,29432356)
 	local tp=e:GetOwnerPlayer()
-	local rpz=Duel.GetFieldCard(1-tp,LOCATION_SZONE,7)
+	local rpz=Duel.GetFieldCard(1-tp,LOCATION_PZONE,1)
 	local lscale=c:GetLeftScale()
 	local rscale=rpz:GetRightScale()
 	if lscale>rscale then lscale,rscale=rscale,lscale end

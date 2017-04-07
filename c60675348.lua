@@ -30,8 +30,8 @@ function c60675348.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c60675348.filter,tp,LOCATION_DECK,0,nil)
 	local ct=0
-	if Duel.CheckLocation(tp,LOCATION_SZONE,6) then ct=ct+1 end
-	if Duel.CheckLocation(tp,LOCATION_SZONE,7) then ct=ct+1 end
+	if Duel.CheckLocation(tp,LOCATION_PZONE,0) then ct=ct+1 end
+	if Duel.CheckLocation(tp,LOCATION_PZONE,1) then ct=ct+1 end
 	if ct>0 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(60675348,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 		local sg=g:Select(tp,1,ct,nil)

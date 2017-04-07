@@ -31,12 +31,12 @@ end
 function c59762399.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
 	local seq=e:GetHandler():GetSequence()
-	return at:GetControler()~=tp and Duel.GetAttackTarget()==nil and Duel.GetFieldCard(tp,LOCATION_SZONE,13-seq)
+	return at:GetControler()~=tp and Duel.GetAttackTarget()==nil and Duel.GetFieldCard(tp,LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
 end
 function c59762399.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local seq=c:GetSequence()
-	local tc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-seq)
+	local tc=Duel.GetFieldCard(tp,LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tc,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
@@ -45,7 +45,7 @@ function c59762399.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local seq=c:GetSequence()
-	local tc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-seq)
+	local tc=Duel.GetFieldCard(tp,LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
 	if tc and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end

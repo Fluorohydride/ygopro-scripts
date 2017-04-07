@@ -14,7 +14,7 @@ function c61639289.initial_effect(c)
 end
 function c61639289.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local seq=e:GetHandler():GetSequence()
-	local pc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-seq)
+	local pc=Duel.GetFieldCard(tp,LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
 	return pc and pc:IsSetCard(0xc8)
 end
 function c61639289.filter(c)
@@ -22,7 +22,7 @@ function c61639289.filter(c)
 end
 function c61639289.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	local pc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-c:GetSequence())
+	local pc=Duel.GetFieldCard(tp,LOCATION_PZONE,({1,0,0,0,0,0,1,0})[c:GetSequence()+1])
 	if chk==0 then return Duel.IsExistingMatchingCard(c61639289.filter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end
 	local g=Group.FromCards(c,pc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)
@@ -31,7 +31,7 @@ end
 function c61639289.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	local pc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-c:GetSequence())
+	local pc=Duel.GetFieldCard(tp,LOCATION_PZONE,({1,0,0,0,0,0,1,0})[c:GetSequence()+1])
 	if not pc then return end
 	local dg=Group.FromCards(c,pc)
 	if Duel.Destroy(dg,REASON_EFFECT)~=2 then return end

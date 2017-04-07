@@ -55,7 +55,7 @@ function c96227613.ndcon(e)
 end
 function c96227613.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local seq=e:GetHandler():GetSequence()
-	local pc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-seq)
+	local pc=Duel.GetFieldCard(tp,LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
 	return pc and pc:IsCode(22211622)
 end
 function c96227613.thfilter(c)
@@ -64,7 +64,7 @@ end
 function c96227613.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c96227613.thfilter,tp,LOCATION_DECK,0,1,nil) end
 	local c=e:GetHandler()
-	local pc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-c:GetSequence())
+	local pc=Duel.GetFieldCard(tp,LOCATION_PZONE,({1,0,0,0,0,0,1,0})[c:GetSequence()+1])
 	local g=Group.FromCards(c,pc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
@@ -72,7 +72,7 @@ end
 function c96227613.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	local pc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-c:GetSequence())
+	local pc=Duel.GetFieldCard(tp,LOCATION_PZONE,({1,0,0,0,0,0,1,0})[c:GetSequence()+1])
 	if not pc then return end
 	local g=Group.FromCards(c,pc)
 	if Duel.Destroy(g,REASON_EFFECT)==2 then
@@ -149,10 +149,10 @@ function c96227613.pencon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsFaceup()
 end
 function c96227613.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckLocation(tp,LOCATION_SZONE,6) or Duel.CheckLocation(tp,LOCATION_SZONE,7) end
+	if chk==0 then return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1) end
 end
 function c96227613.penop(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.CheckLocation(tp,LOCATION_SZONE,6) and not Duel.CheckLocation(tp,LOCATION_SZONE,7) then return end
+	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		Duel.MoveToField(c,tp,tp,LOCATION_SZONE,POS_FACEUP,true)

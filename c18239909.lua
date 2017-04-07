@@ -29,7 +29,7 @@ function c18239909.tgfilter(c)
 	if c:IsLocation(LOCATION_MZONE) then
 		return c:IsFaceup() and c:IsType(TYPE_PENDULUM)
 	else
-		return c:GetSequence()==6 or c:GetSequence()==7
+		return c:IsLocation(LOCATION_PZONE)
 	end
 end
 function c18239909.desfilter(c)

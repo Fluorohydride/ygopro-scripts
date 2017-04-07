@@ -36,7 +36,7 @@ end
 function c51391183.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-seq)
+	local tc=Duel.GetFieldCard(tp,LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
 	if chk==0 then return tc and tc:IsSetCard(0x10ec) and tc:IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(tc)
 end

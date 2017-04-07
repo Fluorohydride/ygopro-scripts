@@ -70,7 +70,7 @@ function c20409757.slcon(e)
 	return not tc or (not tc:IsSetCard(0x98) and not tc:IsSetCard(0x99))
 end
 function c20409757.filter(c,tp)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_SZONE) and (c:GetSequence()==6 or c:GetSequence()==7)
+	return c:IsControler(tp) and c:IsLocation(LOCATION_PZONE)
 		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
 end
 function c20409757.indtg(e,tp,eg,ep,ev,re,r,rp,chk)

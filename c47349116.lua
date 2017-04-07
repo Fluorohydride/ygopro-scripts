@@ -59,7 +59,7 @@ end
 function c47349116.repfilter(c,tp)
 	local seq=c:GetSequence()
 	return c:IsFaceup() and c:IsControler(tp)
-		and (c:IsLocation(LOCATION_MZONE) or (c:IsLocation(LOCATION_SZONE) and (seq==6 or seq==7)))
+		and c:IsLocation(LOCATION_MZONE+LOCATION_PZONE)
 		and c:IsType(TYPE_PENDULUM) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function c47349116.tgfilter(c)

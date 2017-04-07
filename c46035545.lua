@@ -71,7 +71,7 @@ function c46035545.atkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c46035545.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_SZONE) and (c:GetPreviousSequence()==6 or c:GetPreviousSequence()==7)
+	return c:IsPreviousLocation(LOCATION_PZONE)
 end
 function c46035545.thfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x10af) and c:IsAbleToHand()
@@ -82,7 +82,7 @@ end
 function c46035545.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c46035545.thfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c46035545.thfilter,tp,LOCATION_MZONE,0,1,nil) 
-		and (Duel.CheckLocation(tp,LOCATION_SZONE,6) or Duel.CheckLocation(tp,LOCATION_SZONE,7))
+		and (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))
 		and Duel.IsExistingMatchingCard(c46035545.pfilter,tp,LOCATION_EXTRA,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,c46035545.thfilter,tp,LOCATION_MZONE,0,1,1,nil)
@@ -93,8 +93,8 @@ function c46035545.thop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0
 		and tc:IsLocation(LOCATION_HAND) then
 		local ct=0
-		if Duel.CheckLocation(tp,LOCATION_SZONE,6) then ct=ct+1 end
-		if Duel.CheckLocation(tp,LOCATION_SZONE,7) then ct=ct+1 end
+		if Duel.CheckLocation(tp,LOCATION_PZONE,0) then ct=ct+1 end
+		if Duel.CheckLocation(tp,LOCATION_PZONE,1) then ct=ct+1 end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 		local g=Duel.SelectMatchingCard(tp,c46035545.pfilter,tp,LOCATION_EXTRA,0,1,ct,nil)
 		local pc=g:GetFirst()

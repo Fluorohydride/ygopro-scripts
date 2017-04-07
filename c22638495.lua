@@ -92,5 +92,5 @@ function c22638495.spop2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c22638495.indtg(e,c)
-	return c:IsType(TYPE_PENDULUM) and (c:IsLocation(LOCATION_MZONE) or (c:GetSequence()==6 or c:GetSequence()==7))
+	return c:IsType(TYPE_PENDULUM) and c:IsLocation(LOCATION_MZONE+LOCATION_PZONE)
 end
