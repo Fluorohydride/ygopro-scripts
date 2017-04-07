@@ -1651,7 +1651,7 @@ function Auxiliary.AddLinkProcedure(c,f,min,max)
 	e1:SetValue(SUMMON_TYPE_LINK)
 	c:RegisterEffect(e1)
 end
-function Auxiliary.AddLinkProcedureGeneral(c,f,min,max)		-- f is a general constraint function returning a group is valid or not, instead of a filter
+function Auxiliary.AddLinkProcedureGeneral(c,f,min,max)		-- f is a general constraint function returning a group is valid or not, instead of a
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
@@ -1683,12 +1683,24 @@ function Auxiliary.LinkCondition(f,minc,maxc)
 				return false
 			end
 end
+function Auxiliary.LinkOperation(f,minc,maxc)
+	return	function(e,tp,eg,ep,ev,re,r,rp,c)
+				local tp = e:GetHandlerPlayer()
+				local g = aux.GetSumEqualGroups(Duel.GetMatchingGroup(aux.LConditionFilter,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)
+				for i=#g,1,-1 do
+					if aux.GetExtraFieldFor(tp,g[i],c)<1 then table.remove(g,i) end
+				end
+				g = aux.SelectGroup(tp,g)
+				c:SetMaterial(g)
+				Duel.SendtoGrave(g,REASON_MATERIAL+REASON_LINK)
+			end
+end
 function Auxiliary.LinkConditionGeneral(f,minc,maxc)
 	return	function(e,c)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp = c:GetControler()
-				for _,v in ipairs(aux.GetSumEqualGroups(Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil),aux.GetLinkCount,c:GetLink(),minc,maxc)) do
+				for _,v in ipairs(aux.GetSumEqualGroups(Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)) do
 					if f(v) and aux.GetExtraFieldFor(tp,v,c)>0 then return true end
 				end
 				return false
@@ -1697,9 +1709,9 @@ end
 function Auxiliary.LinkOperationGeneral(f,minc,maxc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c)
 				local tp = e:GetHandlerPlayer()
-				local g = aux.GetSumEqualGroups(Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil),aux.GetLinkCount,c:GetLink(),minc,maxc)
+				local g = aux.GetSumEqualGroups(Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil,f),aux.GetLinkCount,c:GetLink(),minc,maxc)
 				for i=#g,1,-1 do
-					if not f(v) or aux.GetExtraFieldFor(tp,g[i],c)<1 then table.remove(g,i) end
+					if not f(bv) or aux.GetExtraFieldFor(tp,g[i],c)<1 then table.remove(g,i) end
 				end
 				g = aux.SelectGroup(tp,g)
 				c:SetMaterial(g)
