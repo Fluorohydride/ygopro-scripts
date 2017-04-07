@@ -66,7 +66,7 @@ function c20409757.aclimit(e,re,tp)
 end
 function c20409757.slcon(e)
 	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_SZONE,13-seq)
+	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_PZONE,({1,0,0,0,0,0,1,0})[seq+1])
 	return not tc or (not tc:IsSetCard(0x98) and not tc:IsSetCard(0x99))
 end
 function c20409757.filter(c,tp)
