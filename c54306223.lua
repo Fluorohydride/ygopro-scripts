@@ -40,7 +40,7 @@ end
 function c54306223.acop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Group.CreateGroup()
-	for i=0,4 do
+	for i=0,6 do
 		local tc=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
 		if tc and tc:IsCanAddCounter(0x1009,1) and not tc:IsSetCard(0x50) then
 			local atk=tc:GetAttack()
@@ -50,7 +50,7 @@ function c54306223.acop(e,tp,eg,ep,ev,re,r,rp)
 			end
 		end
 	end
-	for i=0,4 do
+	for i=0,6 do
 		local tc=Duel.GetFieldCard(1-tp,LOCATION_MZONE,i)
 		if tc and tc:IsCanAddCounter(0x1009,1) and not tc:IsSetCard(0x50) then
 			local atk=tc:GetAttack()

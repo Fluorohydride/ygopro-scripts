@@ -21,7 +21,7 @@ function c94662235.initial_effect(c)
 end
 function c94662235.check(tp)
 	local ret=false
-	for i=0,4 do
+	for i=0,6 do
 		local c=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
 		if c and c:IsFaceup() then
 			if c:IsSetCard(0x31) then ret=true else return false end
