@@ -71,7 +71,7 @@ function c49823708.cfilter(c)
 	return c:IsFaceup() and c:IsCode(78193831)
 end
 function c49823708.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c49823708.cfilter,tp,LOCATION_MZONE,0,1,nil)
+	return Duel.IsExistingMatchingCard(c49823708.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
 end
 function c49823708.costfilter(c)
 	return c:IsSetCard(0xd6) and c:IsAbleToGraveAsCost()
