@@ -22,7 +22,7 @@ function c61884774.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.IsExistingMatchingCard(c61884774.thfilter,tp,LOCATION_DECK,0,1,nil)
 	local b2=(Duel.IsExistingMatchingCard(c61884774.pzfilter,tp,LOCATION_DECK,0,1,nil,65025250)
 		and Duel.IsExistingMatchingCard(c61884774.pzfilter,tp,LOCATION_DECK,0,1,nil,91420254)
-		and Duel.CheckLocation(tp,LOCATION_SZONE,6) and Duel.CheckLocation(tp,LOCATION_SZONE,7))
+		and Duel.CheckLocation(tp,LOCATION_PZONE,0) and Duel.CheckLocation(tp,LOCATION_PZONE,1))
 	if chk==0 then return b1 or b2 end
 	local op=0
 	if b1 and b2 then
@@ -61,7 +61,7 @@ function c61884774.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ConfirmCards(1-tp,g)
 		end
 	else
-		if not Duel.CheckLocation(tp,LOCATION_SZONE,6) or not Duel.CheckLocation(tp,LOCATION_SZONE,7) then return end
+		if not Duel.CheckLocation(tp,LOCATION_PZONE,0) or not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 		local tc1=Duel.GetFirstMatchingCard(c61884774.pzfilter,tp,LOCATION_DECK,0,nil,65025250)
 		local tc2=Duel.GetFirstMatchingCard(c61884774.pzfilter,tp,LOCATION_DECK,0,nil,91420254)
 		if not (tc1 and tc2) then return end

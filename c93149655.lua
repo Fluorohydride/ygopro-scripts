@@ -27,9 +27,7 @@ function c93149655.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c93149655.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-seq)
-	if not tc or not tc:IsSetCard(0x99) then return end
+	if not Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_PZONE,0,1,e:GetHandler(),0x99) then return end
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	if d and a:GetControler()~=d:GetControler() then
@@ -61,15 +59,15 @@ function c93149655.damcon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetAttacker()==e:GetHandler()
 end
 function c93149655.damfilter(c)
-	return c:IsFaceup() and (c:GetSequence()==6 or c:GetSequence()==7) and c:IsSetCard(0x99)
+	return c:IsFaceup() and c:IsSetCard(0x99)
 end
 function c93149655.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ct=Duel.GetMatchingGroupCount(c93149655.damfilter,tp,LOCATION_SZONE,0,nil)
+	local ct=Duel.GetMatchingGroupCount(c93149655.damfilter,tp,LOCATION_PZONE,0,nil)
 	if chk==0 then return ct>0 end
 	Duel.SetTargetParam(ct*1200)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,ct*1200)
 end
 function c93149655.damop(e,tp,eg,ep,ev,re,r,rp)
-	local ct=Duel.GetMatchingGroupCount(c93149655.damfilter,tp,LOCATION_SZONE,0,nil)
+	local ct=Duel.GetMatchingGroupCount(c93149655.damfilter,tp,LOCATION_PZONE,0,nil)
 	Duel.Damage(1-tp,ct*1200,REASON_EFFECT)
 end

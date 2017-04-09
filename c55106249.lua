@@ -67,7 +67,7 @@ function c55106249.atkval(e,c)
 end
 function c55106249.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_SZONE) and (c:GetPreviousSequence()==6 or c:GetPreviousSequence()==7)
+	return c:IsPreviousLocation(LOCATION_PZONE)
 end
 function c55106249.thfilter(c)
 	return c:IsSetCard(0xab) and c:IsAbleToHand()

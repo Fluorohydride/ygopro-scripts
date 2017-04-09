@@ -78,10 +78,7 @@ function c78949372.drop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c78949372.tgcon(e)
-	local tp=e:GetHandlerPlayer()
-	local tc1=Duel.GetFieldCard(tp,LOCATION_SZONE,6)
-	local tc2=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
-	return (tc1 and tc1:IsSetCard(0xd0)) or (tc2 and tc2:IsSetCard(0xd0))
+	return Duel.IsExistingMatchingCard(Card.IsSetCard,e:GetHandlerPlayer(),LOCATION_PZONE,0,1,nil,0xd0)
 end
 function c78949372.effectfilter(e,ct)
 	local p=e:GetHandlerPlayer()

@@ -11,11 +11,8 @@ function c37469904.initial_effect(c)
 	e1:SetOperation(c37469904.activate)
 	c:RegisterEffect(e1)
 end
-function c37469904.cfilter(c)
-	return c:GetSequence()==6 or c:GetSequence()==7
-end
 function c37469904.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c37469904.cfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil)
+	return Duel.GetFieldGroupCount(tp,LOCATION_PZONE,LOCATION_PZONE)>0
 end
 function c37469904.filter(c)
 	return c:IsSetCard(0xf2) and c:IsType(TYPE_PENDULUM+TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()

@@ -36,8 +36,8 @@ function c5255013.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c5255013.condition(e,tp,eg,ep,ev,re,r,rp)
-	local tc1=Duel.GetFieldCard(tp,LOCATION_SZONE,6)
-	local tc2=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
+	local tc1=Duel.GetFieldCard(tp,LOCATION_PZONE,0)
+	local tc2=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 	if not tc1 or not tc2 or not tc1:IsSetCard(0xc4) or not tc2:IsSetCard(0xc4) then return false end
 	local scl1=tc1:GetLeftScale()
 	local scl2=tc2:GetRightScale()
@@ -59,10 +59,10 @@ function c5255013.splimit(e,c,sump,sumtype,sumpos,targetp)
 end
 function c5255013.tgcon(e)
 	local tp=e:GetHandlerPlayer()
-	return Duel.GetFieldCard(tp,LOCATION_SZONE,6) or Duel.GetFieldCard(tp,LOCATION_SZONE,7)
+	return Duel.GetFieldCard(tp,LOCATION_PZONE,0) or Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 end
 function c5255013.desfilter(c,tp)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_SZONE) and (c:GetSequence()==6 or c:GetSequence()==7)
+	return c:IsControler(tp) and c:IsLocation(LOCATION_PZONE)
 end
 function c5255013.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c5255013.desfilter,1,nil,tp)

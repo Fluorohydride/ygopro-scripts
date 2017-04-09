@@ -22,10 +22,11 @@ function c72714461.initial_effect(c)
 	e3:SetOperation(c72714461.scop)
 	c:RegisterEffect(e3)
 end
+function c72714461.cfilter(c)
+	return c:IsSetCard(0x98) or c:IsSetCard(0x9f)
+end
 function c72714461.pencon(e,tp,eg,ep,ev,re,r,rp)
-	local seq=e:GetHandler():GetSequence()
-	local sc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-seq)
-	return sc and (sc:IsSetCard(0x98) or sc:IsSetCard(0x9f))
+	return Duel.IsExistingMatchingCard(c72714461.cfilter,tp,LOCATION_PZONE,0,1,e:GetHandler())
 end
 function c72714461.penfilter(c)
 	return c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM) and not c:IsCode(72714461) and not c:IsForbidden()
@@ -51,14 +52,13 @@ function c72714461.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_DISCARD+REASON_COST)
 end
 function c72714461.scfilter(c)
-	return (c:GetSequence()==6 and c:GetLeftScale()~=c:GetOriginalLeftScale())
-		or (c:GetSequence()==7 and c:GetRightScale()~=c:GetOriginalRightScale())
+	return c:GetLeftScale()~=c:GetOriginalLeftScale()
 end
 function c72714461.sctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c72714461.scfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c72714461.scfilter,tp,LOCATION_SZONE,0,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_PZONE) and chkc:IsControler(tp) and c72714461.scfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c72714461.scfilter,tp,LOCATION_PZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c72714461.scfilter,tp,LOCATION_SZONE,0,1,1,nil)
+	Duel.SelectTarget(tp,c72714461.scfilter,tp,LOCATION_PZONE,0,1,1,nil)
 end
 function c72714461.scop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

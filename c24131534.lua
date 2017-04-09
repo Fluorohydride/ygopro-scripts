@@ -13,27 +13,22 @@ function c24131534.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c24131534.thcon(e,tp,eg,ep,ev,re,r,rp)
-	local seq=e:GetHandler():GetSequence()
-	local pc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-seq)
-	return pc and pc:IsSetCard(0xc8)
+	return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_PZONE,0,1,e:GetHandler(),0xc8)
 end
 function c24131534.filter(c)
 	return c:IsRace(RACE_WARRIOR) and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsAbleToHand()
 end
 function c24131534.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	local pc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-c:GetSequence())
 	if chk==0 then return Duel.IsExistingMatchingCard(c24131534.filter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end
-	local g=Group.FromCards(c,pc)
+	local g=Duel.GetFieldGroup(tp,LOCATION_PZONE,0)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK+LOCATION_GRAVE)
 end
 function c24131534.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	local pc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-c:GetSequence())
-	if not pc then return end
-	local dg=Group.FromCards(c,pc)
+	local dg=Duel.GetFieldGroup(tp,LOCATION_PZONE,0)
+	if dg:GetCount()<2 then return end
 	if Duel.Destroy(dg,REASON_EFFECT)~=2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c24131534.filter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)

@@ -69,8 +69,7 @@ function c10117149.atkval(e,c)
 	return Duel.GetMatchingGroupCount(c10117149.cfilter,c:GetControler(),LOCATION_EXTRA,0,nil)*500
 end
 function c10117149.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_SZONE) and (c:GetPreviousSequence()==6 or c:GetPreviousSequence()==7)
+	return e:GetHandler():IsPreviousLocation(LOCATION_PZONE)
 end
 function c10117149.spfilter(c,e,tp)
 	return c:IsSetCard(0xab) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

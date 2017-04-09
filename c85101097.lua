@@ -52,15 +52,12 @@ end
 function c85101097.ctlcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
-function c85101097.filter(c)
-	return (c:GetSequence()==6 or c:GetSequence()==7)
-end
 function c85101097.ctltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c85101097.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_PZONE) and chkc:IsControler(tp) end
 	if chk==0 then return e:GetHandler():IsControlerCanBeChanged()
-		and Duel.IsExistingTarget(c85101097.filter,tp,LOCATION_SZONE,0,1,nil) end
+		and Duel.IsExistingTarget(nil,tp,LOCATION_PZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c85101097.filter,tp,LOCATION_SZONE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,nil,tp,LOCATION_PZONE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,e:GetHandler(),1,0,0)
 end

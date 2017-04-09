@@ -55,16 +55,14 @@ function c1344018.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterFlagEffect(tp,1344018,RESET_PHASE+PHASE_END,0,1)
 end
 function c1344018.desfilter(c)
-	local seq=c:GetSequence()
 	return c:IsFaceup() and c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM)
-		and (c:IsLocation(LOCATION_MZONE) or (seq==6 or seq==7))
 end
 function c1344018.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.IsExistingTarget(c1344018.desfilter,tp,LOCATION_ONFIELD,0,1,nil)
+	if chk==0 then return Duel.IsExistingTarget(c1344018.desfilter,tp,LOCATION_MZONE+LOCATION_PZONE,0,1,nil)
 		and Duel.IsExistingTarget(nil,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g1=Duel.SelectTarget(tp,c1344018.desfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
+	local g1=Duel.SelectTarget(tp,c1344018.desfilter,tp,LOCATION_MZONE+LOCATION_PZONE,0,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g2=Duel.SelectTarget(tp,nil,tp,0,LOCATION_ONFIELD,1,1,nil)
 	g1:Merge(g2)

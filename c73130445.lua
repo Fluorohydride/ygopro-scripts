@@ -24,11 +24,13 @@ function c73130445.initial_effect(c)
 	e3:SetOperation(c73130445.drop)
 	c:RegisterEffect(e3)
 end
+function c73130445.desfilter(c)
+	return c:IsSetCard(0x9f) and not c:IsCode(73130445)
+end
 function c73130445.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-seq)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
-		and tc and tc:IsSetCard(0x9f) and not tc:IsCode(73130445) and e:GetHandler():IsDestructable() end
+		and Duel.IsExistingMatchingCard(c73130445.desfilter,tp,LOCATION_PZONE,0,1,e:GetHandler())
+		and e:GetHandler():IsDestructable() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 end
 function c73130445.desop(e,tp,eg,ep,ev,re,r,rp)

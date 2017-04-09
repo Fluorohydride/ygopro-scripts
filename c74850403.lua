@@ -31,11 +31,9 @@ function c74850403.evalue(e,re,rp)
 	return re:IsActiveType(TYPE_SPELL) and rp~=e:GetHandlerPlayer()
 end
 function c74850403.thcfilter(c,tp)
-	local pl=c:GetPreviousLocation()
-	local ps=c:GetPreviousSequence()
 	return c:IsType(TYPE_PENDULUM) and c:IsPreviousSetCard(0x98)
 		and c:GetPreviousControler()==tp and c:IsPreviousPosition(POS_FACEUP)
-		and (pl==LOCATION_MZONE or (pl==LOCATION_SZONE and (ps==6 or ps==7)))
+		and c:IsPreviousLocation(LOCATION_MZONE+LOCATION_PZONE)
 end
 function c74850403.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c74850403.thcfilter,1,nil,tp)

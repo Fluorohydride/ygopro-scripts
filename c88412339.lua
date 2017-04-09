@@ -46,7 +46,7 @@ function c88412339.penfilter(c)
 end
 function c88412339.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c88412339.penfilter,tp,LOCATION_DECK,0,1,nil)
-		and (Duel.CheckLocation(tp,LOCATION_SZONE,6) or Duel.CheckLocation(tp,LOCATION_SZONE,7)) end
+		and (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)) end
 end
 function c88412339.penop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
@@ -77,7 +77,6 @@ function c88412339.splimit(e,c)
 	return not c:IsSetCard(0x10ec)
 end
 function c88412339.aclimit(e,re,tp)
-	local c=re:GetHandler()
-	return c:IsCode(88412339) and re:GetActivateLocation()==LOCATION_SZONE
-		and	(c:GetSequence()==6 or c:GetSequence()==7)
+	local rc=re:GetHandler()
+	return rc:IsCode(88412339) and re:GetActiveType()==TYPE_PENDULUM+TYPE_SPELL
 end

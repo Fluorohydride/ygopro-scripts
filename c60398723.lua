@@ -21,13 +21,13 @@ function c60398723.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 end
 function c60398723.rfilter(c)
-	return c:GetSequence()==5 and c:IsAbleToHand()
+	return c:IsAbleToHand()
 end
 function c60398723.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsControler(1-tp) and tc:IsFaceup() then
 		Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
-		local rg=Duel.GetMatchingGroup(c60398723.rfilter,tp,LOCATION_SZONE,LOCATION_SZONE,nil)
+		local rg=Duel.GetMatchingGroup(c60398723.rfilter,tp,LOCATION_FZONE,LOCATION_FZONE,nil)
 		if rg:GetCount()~=0 and Duel.SelectYesNo(tp,aux.Stringid(60398723,0)) then
 			Duel.BreakEffect()
 			Duel.SendtoHand(rg,nil,REASON_EFFECT)

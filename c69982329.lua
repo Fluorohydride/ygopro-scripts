@@ -9,14 +9,11 @@ function c69982329.initial_effect(c)
 	e1:SetOperation(c69982329.activate)
 	c:RegisterEffect(e1)
 end
-function c69982329.filter(c)
-	return c:IsFaceup() and (c:GetSequence()==6 or c:GetSequence()==7)
-end
 function c69982329.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c69982329.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c69982329.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_PZONE) end
+	if chk==0 then return Duel.IsExistingTarget(nil,tp,LOCATION_PZONE,LOCATION_PZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g=Duel.SelectTarget(tp,c69982329.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,nil,tp,LOCATION_PZONE,LOCATION_PZONE,1,1,nil)
 	local tc=g:GetFirst()
 	local t={}
 	local p=1

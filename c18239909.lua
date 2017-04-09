@@ -25,23 +25,16 @@ function c18239909.initial_effect(c)
 	e2:SetOperation(c18239909.spop)
 	c:RegisterEffect(e2)
 end
-function c18239909.tgfilter(c)
-	if c:IsLocation(LOCATION_MZONE) then
-		return c:IsFaceup() and c:IsType(TYPE_PENDULUM)
-	else
-		return c:GetSequence()==6 or c:GetSequence()==7
-	end
-end
 function c18239909.desfilter(c)
-	return c18239909.tgfilter(c)
+	return c:IsFaceup() and c:IsType(TYPE_PENDULUM)
 		and Duel.IsExistingMatchingCard(Card.IsAbleToDeck,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 end
 function c18239909.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and c18239909.desfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c18239909.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE+LOCATION_PZONE) and c18239909.desfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c18239909.desfilter,tp,LOCATION_MZONE+LOCATION_PZONE,LOCATION_MZONE+LOCATION_PZONE,1,nil) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c18239909.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,c18239909.desfilter,tp,LOCATION_MZONE+LOCATION_PZONE,LOCATION_MZONE+LOCATION_PZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,0,LOCATION_ONFIELD)
 end

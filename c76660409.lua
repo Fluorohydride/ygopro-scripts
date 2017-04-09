@@ -12,15 +12,15 @@ function c76660409.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c76660409.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFieldCard(tp,LOCATION_SZONE,6) and Duel.GetFieldCard(tp,LOCATION_SZONE,7)
+	return Duel.GetFieldCard(tp,LOCATION_PZONE,0) and Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 end
 function c76660409.filter(c,lsc,rsc)
 	local lv=c:GetLevel()
 	return lv>lsc and lv<rsc and c:IsAbleToHand()
 end
 function c76660409.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local lsc=Duel.GetFieldCard(tp,LOCATION_SZONE,6):GetLeftScale()
-	local rsc=Duel.GetFieldCard(tp,LOCATION_SZONE,7):GetRightScale()
+	local lsc=Duel.GetFieldCard(tp,LOCATION_PZONE,0):GetLeftScale()
+	local rsc=Duel.GetFieldCard(tp,LOCATION_PZONE,1):GetRightScale()
 	if lsc>rsc then lsc,rsc=rsc,lsc end
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c76660409.filter(chkc,lsc,rsc) end
 	if chk==0 then return Duel.IsExistingTarget(c76660409.filter,tp,LOCATION_GRAVE,0,2,nil,lsc,rsc) end

@@ -35,9 +35,8 @@ function c51391183.initial_effect(c)
 end
 function c51391183.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-seq)
-	if chk==0 then return tc and tc:IsSetCard(0x10ec) and tc:IsCanBeEffectTarget(e) end
+	if chk==0 then return Duel.IsExistingTarget(Card.IsSetCard,tp,LOCATION_PZONE,0,1,e:GetHandler(),0x10ec) end
+	local tc=Duel.GetFirstMatchingCard(Card.IsSetCard,tp,LOCATION_PZONE,0,e:GetHandler(),0x10ec)
 	Duel.SetTargetCard(tc)
 end
 function c51391183.operation(e,tp,eg,ep,ev,re,r,rp)

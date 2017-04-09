@@ -35,21 +35,21 @@ function c58016954.condition1(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_PENDULUM
 end
 function c58016954.cfilter(c)
-	return (c:GetSequence()==6 or c:GetSequence()==7) and c:IsSetCard(0xc4)
+	return c:IsSetCard(0xc4)
 end
 function c58016954.filter(c)
-	return (c:GetSequence()==6 or c:GetSequence()==7) and c:IsAbleToHand()
+	return c:IsAbleToHand()
 end
 function c58016954.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c58016954.filter(chkc) end
-	if chk==0 then return Duel.IsExistingMatchingCard(c58016954.cfilter,tp,LOCATION_SZONE,0,1,nil)
-		and Duel.IsExistingTarget(c58016954.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_PZONE) and c58016954.filter(chkc) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c58016954.cfilter,tp,LOCATION_PZONE,0,1,nil)
+		and Duel.IsExistingTarget(c58016954.filter,tp,LOCATION_PZONE,LOCATION_PZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=Duel.SelectTarget(tp,c58016954.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c58016954.filter,tp,LOCATION_PZONE,LOCATION_PZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
 function c58016954.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.IsExistingMatchingCard(c58016954.cfilter,tp,LOCATION_SZONE,0,1,nil) then return end
+	if not Duel.IsExistingMatchingCard(c58016954.cfilter,tp,LOCATION_PZONE,0,1,nil) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)

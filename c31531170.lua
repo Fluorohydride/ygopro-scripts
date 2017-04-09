@@ -11,15 +11,13 @@ function c31531170.initial_effect(c)
 end
 function c31531170.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	local tc1=Duel.GetFieldCard(1-tp,LOCATION_SZONE,6)
-	local tc2=Duel.GetFieldCard(1-tp,LOCATION_SZONE,7)
-	if chk==0 then return tc1 and tc2 and tc1:IsCanBeEffectTarget(e) and tc2:IsCanBeEffectTarget(e) end
-	local g=Group.FromCards(tc1,tc2)
+	if chk==0 then return Duel.IsExistingTarget(nil,tp,0,LOCATION_PZONE,2,nil) end
+	local g=Duel.GetFieldGroup(tp,0,LOCATION_PZONE)
 	Duel.SetTargetCard(g)
 end
 function c31531170.activate(e,tp,eg,ep,ev,re,r,rp)
-	local tc1=Duel.GetFieldCard(1-tp,LOCATION_SZONE,6)
-	local tc2=Duel.GetFieldCard(1-tp,LOCATION_SZONE,7)
+	local tc1=Duel.GetFieldCard(1-tp,LOCATION_PZONE,0)
+	local tc2=Duel.GetFieldCard(1-tp,LOCATION_PZONE,1)
 	if not tc1:IsRelateToEffect(e) or not tc2:IsRelateToEffect(e) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetDescription(1163)
@@ -39,7 +37,7 @@ end
 function c31531170.pendcon(e,c,og)
 	if c==nil then return true end
 	local tp=e:GetOwnerPlayer()
-	local rpz=Duel.GetFieldCard(1-tp,LOCATION_SZONE,7)
+	local rpz=Duel.GetFieldCard(1-tp,LOCATION_PZONE,1)
 	if rpz==nil or rpz:GetFieldID()~=c:GetFlagEffectLabel(31531170) then return false end
 	local lscale=c:GetLeftScale()
 	local rscale=rpz:GetRightScale()
@@ -55,7 +53,7 @@ end
 function c31531170.pendop(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 	Duel.Hint(HINT_CARD,0,31531170)
 	local tp=e:GetOwnerPlayer()
-	local rpz=Duel.GetFieldCard(1-tp,LOCATION_SZONE,7)
+	local rpz=Duel.GetFieldCard(1-tp,LOCATION_PZONE,1)
 	local lscale=c:GetLeftScale()
 	local rscale=rpz:GetRightScale()
 	if lscale>rscale then lscale,rscale=rscale,lscale end

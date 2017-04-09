@@ -89,7 +89,7 @@ function c57554544.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c57554544.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_SZONE) and c:GetPreviousSequence()==5 and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsPreviousLocation(LOCATION_FZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c57554544.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

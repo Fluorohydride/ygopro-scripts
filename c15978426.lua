@@ -20,13 +20,13 @@ function c15978426.filter(c,tohand)
 end
 function c15978426.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local tohand=Duel.GetFieldCard(tp,LOCATION_SZONE,6) and Duel.GetFieldCard(tp,LOCATION_SZONE,7)
+		local tohand=Duel.GetFieldCard(tp,LOCATION_PZONE,0) and Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 		return Duel.IsExistingMatchingCard(c15978426.filter,tp,LOCATION_DECK,0,1,nil,tohand)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
 end
 function c15978426.tgop(e,tp,eg,ep,ev,re,r,rp)
-	local tohand=Duel.GetFieldCard(tp,LOCATION_SZONE,6) and Duel.GetFieldCard(tp,LOCATION_SZONE,7)
+	local tohand=Duel.GetFieldCard(tp,LOCATION_PZONE,0) and Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c15978426.filter,tp,LOCATION_DECK,0,1,1,nil,tohand)
 	local tc=g:GetFirst()

@@ -42,14 +42,14 @@ function c26638543.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c26638543.scfilter(c,pc)
-	return (c:GetSequence()==6 or c:GetSequence()==7) and c:GetLeftScale()~=pc:GetLeftScale()
+	return c:GetLeftScale()~=pc:GetLeftScale()
 end
 function c26638543.sctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c26638543.scfilter(chkc,c) and chkc~=c end
-	if chk==0 then return Duel.IsExistingTarget(c26638543.scfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,c,c) end
+	if chkc then return chkc:IsLocation(LOCATION_PZONE) and c26638543.scfilter(chkc,c) and chkc~=c end
+	if chk==0 then return Duel.IsExistingTarget(c26638543.scfilter,tp,LOCATION_PZONE,LOCATION_PZONE,1,c,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c26638543.scfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,c,c)
+	Duel.SelectTarget(tp,c26638543.scfilter,tp,LOCATION_PZONE,LOCATION_PZONE,1,1,c,c)
 end
 function c26638543.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -70,28 +70,25 @@ function c26638543.scop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c26638543.con(e)
 	local tp=e:GetHandler():GetControler()
-	local tc1=Duel.GetFieldCard(tp,LOCATION_SZONE,6)
-	local tc2=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
+	local tc1=Duel.GetFieldCard(tp,LOCATION_PZONE,0)
+	local tc2=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 	if not tc1 or not tc2 then return false end
 	return tc1:GetLeftScale()==tc2:GetRightScale()
 end
 function c26638543.val(e,c)
-	local tc=Duel.GetFieldCard(c:GetControler(),LOCATION_SZONE,6)
+	local tc=Duel.GetFieldCard(c:GetControler(),LOCATION_PZONE,0)
 	return tc:GetLeftScale()*100
 end
 function c26638543.descon(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and Duel.GetAttackTarget()==nil
 end
-function c26638543.desfilter(c)
-	return c:GetSequence()==6 or c:GetSequence()==7
-end
 function c26638543.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local g=Duel.GetMatchingGroup(c26638543.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,nil)
+	local g=Duel.GetFieldGroup(tp,LOCATION_PZONE,LOCATION_PZONE)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c26638543.desop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c26638543.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,nil)
+	local g=Duel.GetFieldGroup(tp,LOCATION_PZONE,LOCATION_PZONE)
 	if g:GetCount()>0 then
 		Duel.Destroy(g,REASON_EFFECT)
 	end

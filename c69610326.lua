@@ -44,8 +44,7 @@ function c69610326.pcfilter(c)
 	return c:IsSetCard(0x10f8) and c:IsType(TYPE_PENDULUM) and not c:IsForbidden()
 end
 function c69610326.pctg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local seq=e:GetHandler():GetSequence()
-	if chk==0 then return Duel.CheckLocation(tp,LOCATION_SZONE,13-seq)
+	if chk==0 then return (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))
 		and Duel.IsExistingMatchingCard(c69610326.pcfilter,tp,LOCATION_DECK,0,1,nil) end
 end
 function c69610326.pcop(e,tp,eg,ep,ev,re,r,rp)
@@ -59,8 +58,7 @@ function c69610326.pcop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTarget(c69610326.splimit)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	local seq=c:GetSequence()
-	if not Duel.CheckLocation(tp,LOCATION_SZONE,13-seq) then return end
+	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 	local g=Duel.SelectMatchingCard(tp,c69610326.pcfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then

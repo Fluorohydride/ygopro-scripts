@@ -9,12 +9,9 @@ function c31222701.initial_effect(c)
 	e1:SetOperation(c31222701.activate)
 	c:RegisterEffect(e1)
 end
-function c31222701.filter(c)
-	return (c:GetSequence()==6 or c:GetSequence()==7)
-end
 function c31222701.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c31222701.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil) end
-	local g=Duel.GetMatchingGroup(c31222701.filter,tp,LOCATION_SZONE,LOCATION_SZONE,nil)
+	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_PZONE,LOCATION_PZONE)>0 end
+	local g=Duel.GetFieldGroup(tp,LOCATION_PZONE,LOCATION_PZONE)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,500)
 end
@@ -25,7 +22,7 @@ function c31222701.thfilter2(c)
 	return c:IsCode(31222701) and c:IsAbleToHand()
 end
 function c31222701.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c31222701.filter,tp,LOCATION_SZONE,LOCATION_SZONE,nil)
+	local g=Duel.GetFieldGroup(tp,LOCATION_PZONE,LOCATION_PZONE)
 	local ct=Duel.Destroy(g,REASON_EFFECT)
 	if ct>=1 then
 		Duel.BreakEffect()

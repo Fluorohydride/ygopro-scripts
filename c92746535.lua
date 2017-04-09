@@ -27,15 +27,13 @@ function c92746535.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c92746535.thcon(e,tp,eg,ep,ev,re,r,rp)
-	local seq=e:GetHandler():GetSequence()
-	return Duel.GetFieldCard(tp,LOCATION_SZONE,13-seq)
+	return Duel.IsExistingMatchingCard(nil,tp,LOCATION_PZONE,0,1,e:GetHandler())
 end
 function c92746535.thfilter(c,code)
 	return c:IsCode(code) and c:IsAbleToHand()
 end
 function c92746535.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local seq=e:GetHandler():GetSequence()
-	local sc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-seq)
+	local sc=Duel.GetFirstMatchingCard(nil,tp,LOCATION_PZONE,0,e:GetHandler())
 	if chk==0 then return Duel.IsExistingMatchingCard(c92746535.thfilter,tp,LOCATION_DECK,0,1,nil,sc:GetOriginalCode()) end
 	Duel.SetTargetCard(sc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,sc,1,0,0)
