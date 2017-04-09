@@ -47,7 +47,7 @@ end
 function c31533704.lvval(e,c)
 	local tp=c:GetControler()
 	local lv=0
-	for i=0,4 do
+	for i=0,6 do
 		local tc=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
 		if tc and tc:IsCode(31533705) then lv=lv+tc:GetLevel() end
 	end

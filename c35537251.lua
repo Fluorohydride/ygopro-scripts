@@ -14,7 +14,7 @@ end
 function c35537251.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local g=Group.CreateGroup()
-		for i=0,4 do
+		for i=0,6 do
 			local tc=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
 			if tc and tc:IsFaceup() and tc:IsSetCard(0x84) and tc:IsType(TYPE_XYZ) then
 				g:Merge(tc:GetOverlayGroup())
@@ -28,7 +28,7 @@ function c35537251.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c35537251.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Group.CreateGroup()
-	for i=0,4 do
+	for i=0,6 do
 		local tc=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
 		if tc and tc:IsFaceup() and tc:IsSetCard(0x84) and tc:IsType(TYPE_XYZ) then
 			g:Merge(tc:GetOverlayGroup())

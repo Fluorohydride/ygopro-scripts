@@ -28,7 +28,7 @@ end
 function c88513608.check(tp)
 	local at1=0
 	local ct=0
-	for i=0,4 do
+	for i=0,6 do
 		local tc=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
 		if tc and tc:IsPosition(POS_FACEUP_ATTACK) then
 			at1=at1+tc:GetAttack()
@@ -37,7 +37,7 @@ function c88513608.check(tp)
 	end
 	if ct<2 then return false end
 	local at2=-1
-	for i=0,4 do
+	for i=0,6 do
 		local tc=Duel.GetFieldCard(1-tp,LOCATION_MZONE,i)
 		if tc and tc:IsFaceup() then
 			local atk=tc:GetAttack()

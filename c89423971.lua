@@ -50,7 +50,7 @@ function c89423971.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local sum=0
-	for i=0,4 do
+	for i=0,6 do
 		local tc=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
 		if tc and tc:IsFaceup() and tc:IsType(TYPE_EFFECT) then
 			if tc:IsType(TYPE_XYZ) then sum=sum+tc:GetRank()
