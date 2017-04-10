@@ -3,17 +3,13 @@ function c14943837.initial_effect(c)
 	--synchro custom
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SYNCHRO_MATERIAL_CUSTOM)
+	e1:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetTarget(c14943837.syntg)
-	e1:SetValue(1)
-	e1:SetOperation(c14943837.synop)
+	e1:SetValue(c14943837.synlimit)
 	c:RegisterEffect(e1)
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e2:SetValue(c14943837.synlimit)
+	local e2=e1:Clone()
+	e2:SetCode(EFFECT_TUNER_MATERIAL_LIMIT)
+	e2:SetTarget(c14943837.synlimit2)
 	c:RegisterEffect(e2)
 	--summon success
 	local e3=Effect.CreateEffect(c)
@@ -33,23 +29,8 @@ end
 function c14943837.tuner_filter(c)
 	return c:GetLevel()~=4
 end
-function c14943837.synfilter(c,syncard,tuner,f)
-	return c:IsFaceup() and c:IsNotTuner() and c:IsCanBeSynchroMaterial(syncard,tuner) and c:GetLevel()~=4 and (f==nil or f(c))
-end
-function c14943837.syntg(e,syncard,f,minc,maxc)
-	local c=e:GetHandler()
-	local lv=syncard:GetLevel()-c:GetLevel()
-	if lv<=0 then return false end
-	local g=Duel.GetMatchingGroup(c14943837.synfilter,syncard:GetControler(),LOCATION_MZONE,LOCATION_MZONE,c,syncard,c,f)
-	return g:CheckWithSumEqual(Card.GetSynchroLevel,lv,minc,maxc,syncard)
-end
-function c14943837.synop(e,tp,eg,ep,ev,re,r,rp,syncard,f,minc,maxc)
-	local c=e:GetHandler()
-	local lv=syncard:GetLevel()-c:GetLevel()
-	local g=Duel.GetMatchingGroup(c14943837.synfilter,syncard:GetControler(),LOCATION_MZONE,LOCATION_MZONE,c,syncard,c,f)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-	local sg=g:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,minc,maxc,syncard)
-	Duel.SetSynchroMaterial(sg)
+function c14943837.synlimit2(e,c)
+	return c:GetLevel()~=4
 end
 function c14943837.filter2(c,e,sp)
 	return c:IsAttackBelow(500) and c:IsCanBeSpecialSummoned(e,0,sp,false,false)
