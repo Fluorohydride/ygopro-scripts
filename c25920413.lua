@@ -63,7 +63,7 @@ function c25920413.ctcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c25920413.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() then
 		c:AddCounter(COUNTER_NEED_ENABLE+0x100e,1)
 	end
 end
