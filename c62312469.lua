@@ -33,9 +33,11 @@ end
 function c62312469.value(e,c)
 	local tp=e:GetHandlerPlayer()
 	local att=0
-	for i=0,4 do
-		local tc=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
-		if tc and tc:IsFaceup() then att=bit.bor(att,tc:GetAttribute()) end
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
+	local tc=g:GetFirst()
+	while tc do
+		att=bit.bor(att,tc:GetAttribute())
+		tc=g:GetNext()
 	end
 	local ct=0
 	while att~=0 do

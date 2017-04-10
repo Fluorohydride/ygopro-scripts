@@ -26,24 +26,12 @@ function c88513608.poscheck(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c88513608.check(tp)
-	local at1=0
-	local ct=0
-	for i=0,4 do
-		local tc=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
-		if tc and tc:IsPosition(POS_FACEUP_ATTACK) then
-			at1=at1+tc:GetAttack()
-			ct=ct+1
-		end
-	end
-	if ct<2 then return false end
-	local at2=-1
-	for i=0,4 do
-		local tc=Duel.GetFieldCard(1-tp,LOCATION_MZONE,i)
-		if tc and tc:IsFaceup() then
-			local atk=tc:GetAttack()
-			if at2<0 or atk<at2 then at2=atk end
-		end
-	end
+	local sg=Duel.GetMatchingGroup(Card.IsPosition,tp,LOCATION_MZONE,0,nil,POS_FACEUP_ATTACK)
+	if sg:GetCount()<2 then return false end
+	local og=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
+	if og:GetCount()==0 then return false end
+	local at1=sg:GetSum(Card.GetAttack)
+	local tg,at2=og:GetMinGroup(Card.GetAttack)
 	return at1<at2
 end
 function c88513608.condition(e,tp,eg,ep,ev,re,r,rp)

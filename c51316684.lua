@@ -45,17 +45,17 @@ end
 function c51316684.spfilter(c)
 	return c:IsSetCard(0xbb) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
+function c51316684.sumfilter(c)
+	return c:IsFaceup() and c:IsType(TYPE_EFFECT)
+end
+function c51316684.lv_or_rk(c)
+	if c:IsType(TYPE_XYZ) then return c:GetRank()
+	else return c:GetLevel() end
+end
 function c51316684.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local sum=0
-	for i=0,4 do
-		local tc=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
-		if tc and tc:IsFaceup() and tc:IsType(TYPE_EFFECT) then
-			if tc:IsType(TYPE_XYZ) then sum=sum+tc:GetRank()
-			else sum=sum+tc:GetLevel() end
-		end
-	end
+	local sum=Duel.GetMatchingGroup(c51316684.sumfilter,tp,LOCATION_MZONE,0,nil):GetSum(c51316684.lv_or_rk)
 	if sum>8 then return false end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<-1 then return false end
