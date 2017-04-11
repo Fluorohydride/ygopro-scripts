@@ -47,8 +47,8 @@ function c14799437.sumfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_EFFECT)
 end
 function c14799437.lv_or_rk(c)
-	if c:IsType(TYPE_XYZ) then Debug.Message(c:GetRank()) return c:GetRank()
-	else Debug.Message(c:GetLevel()) return c:GetLevel() end
+	if c:IsType(TYPE_XYZ) then return c:GetRank()
+	else return c:GetLevel() end
 end
 function c14799437.spcon(e,c)
 	if c==nil then return true end

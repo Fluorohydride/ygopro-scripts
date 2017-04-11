@@ -1642,7 +1642,6 @@ function Auxiliary.AddLinkProcedure(c,f,min,max)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetRange(LOCATION_EXTRA)
-	e1:SetTargetRange(POS_FACEUP_ATTACK,0)
 	if max==nil then max=99 end
 	e1:SetCondition(Auxiliary.LinkCondition(f,min,max))
 	e1:SetOperation(Auxiliary.LinkOperation(f,min,max))
