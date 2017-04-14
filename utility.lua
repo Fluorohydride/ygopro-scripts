@@ -1559,10 +1559,9 @@ function Auxiliary.PendCondition()
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
-				local ft1,ft2=Duel.GetLocationCount(tp,LOCATION_MZONE)
 				local loc=0
-				if ft1>0 then loc=loc+LOCATION_HAND end
-				if ft2>0 then loc=loc+LOCATION_EXTRA end
+				if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_HAND end
+				if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
 				if loc==0 then return false end
 				local g=nil
 				if og then
@@ -1579,7 +1578,9 @@ function Auxiliary.PendOperation()
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
-				local ft1,ft2,ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+				local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
+				local ft2=Duel.GetLocationCountFromEx(tp)
+				local ft=Duel.GetUsableMZoneCount(tp)
 				if Duel.IsPlayerAffectedByEffect(tp,59822133) then
 					if ft1>0 then ft1=1 end
 					if ft2>0 then ft2=1 end
