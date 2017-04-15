@@ -20,17 +20,12 @@ function c98045062.filter1(c)
 	return c:IsFaceup() and not c:IsType(TYPE_LINK)
 end
 function c98045062.filter2(c)
-	return c:IsFaceup() and c:IsControlerCanBeChanged()
-end
-function c98045062.filter3(c)
-	return c:IsFaceup() and c:IsAbleToChangeControler()
+	return c:IsFaceup() and c:IsControlerCanBeChanged(true)
 end
 function c98045062.cfilter(c,tp)
-	if c:IsControler(tp) then
-		return Duel.IsExistingTarget(c98045062.filter3,tp,0,LOCATION_MZONE,1,nil)
-	else
-		return Duel.IsExistingTarget(c98045062.filter2,tp,0,LOCATION_MZONE,1,c)
-	end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_CONTROL)
+	if c:IsControler(tp) and c:GetSequence()<5 then ft=ft+1 end
+	return ft>0 and Duel.IsExistingTarget(c98045062.filter2,tp,0,LOCATION_MZONE,1,c)
 end
 function c98045062.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then
@@ -65,23 +60,13 @@ function c98045062.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		local g=Duel.SelectTarget(tp,c98045062.filter1,tp,0,LOCATION_MZONE,1,1,nil)
 		Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 	else
-		if e:GetLabel()==0 then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
-			local g=Duel.SelectTarget(tp,c98045062.filter2,tp,0,LOCATION_MZONE,1,1,nil)
-			Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,1,0,0)
-		else
+		if e:GetLabel()==1 then
 			local rg=Duel.SelectReleaseGroup(tp,c98045062.cfilter,1,1,nil,tp)
 			Duel.Release(rg,REASON_COST)
-			if rg:GetFirst():IsControler(tp) then
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
-				local g=Duel.SelectTarget(tp,c98045062.filter3,tp,0,LOCATION_MZONE,1,1,nil)
-				Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,1,0,0)
-			else
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
-				local g=Duel.SelectTarget(tp,c98045062.filter2,tp,0,LOCATION_MZONE,1,1,rg:GetFirst())
-				Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,1,0,0)
-			end
 		end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
+		local g=Duel.SelectTarget(tp,c98045062.filter2,tp,0,LOCATION_MZONE,1,1,nil)
+		Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,1,0,0)
 	end
 	e:SetLabel(sel)
 end
