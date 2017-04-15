@@ -108,7 +108,7 @@ end
 function c84243274.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local bc=Duel.GetAttackTarget()
-	if chk==0 then return bc and bc:IsCanBeEffectTarget(e) end
+	if chk==0 then return bc and not bc:IsType(TYPE_LINK) and bc:IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(bc)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,bc,1,0,0)
 end

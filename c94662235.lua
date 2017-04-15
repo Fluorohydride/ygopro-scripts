@@ -19,15 +19,13 @@ function c94662235.initial_effect(c)
 	e2:SetOperation(c94662235.activate2)
 	c:RegisterEffect(e2)
 end
+function c94662235.cfilter(c)
+	return c:IsFaceup() and c:IsSetCard(0x31)
+end
 function c94662235.check(tp)
-	local ret=false
-	for i=0,4 do
-		local c=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
-		if c and c:IsFaceup() then
-			if c:IsSetCard(0x31) then ret=true else return false end
-		end
-	end
-	return ret
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
+	return g:IsExists(c94662235.cfilter,1,nil)
+		and not g:IsExists(aux.NOT(c94662235.cfilter),1,nil)
 end
 function c94662235.condition1(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentChain()==0 and c94662235.check(tp)

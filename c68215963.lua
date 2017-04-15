@@ -36,7 +36,7 @@ function c68215963.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RaiseEvent(c,EVENT_CUSTOM+47408488,e,0,tp,0,0)
 end
 function c68215963.filter(c)
-	return c:IsAttackPos() and c:GetAttackedCount()>0
+	return c:IsAttackPos() and c:GetAttackedCount()>0 and not c:IsType(TYPE_LINK)
 end
 function c68215963.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c68215963.filter(chkc) end

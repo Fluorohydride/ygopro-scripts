@@ -198,27 +198,18 @@ function Auxiliary.AddSynchroProcedure(c,f1,f2,ct)
 	e1:SetValue(SUMMON_TYPE_SYNCHRO)
 	c:RegisterEffect(e1)
 end
-function Auxiliary.SynCondition(f1,f2,minct,maxc)
+function Auxiliary.SynCondition(f1,f2,minc,maxc)
 	return	function(e,c,smat,mg)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local ft=Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)
-				local ct=-ft
-				local minc=minct
-				if minc<ct then minc=ct end
-				if maxc<minc then return false end
 				if smat and smat:IsType(TYPE_TUNER) and (not f1 or f1(smat)) then
 					return Duel.CheckTunerMaterial(c,smat,f1,f2,minc,maxc,mg) end
 				return Duel.CheckSynchroMaterial(c,f1,f2,minc,maxc,smat,mg)
 			end
 end
-function Auxiliary.SynTarget(f1,f2,minct,maxc)
+function Auxiliary.SynTarget(f1,f2,minc,maxc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,smat,mg)
 				local g=nil
-				local ft=Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)
-				local ct=-ft
-				local minc=minct
-				if minc<ct then minc=ct end
 				if smat and smat:IsType(TYPE_TUNER) and (not f1 or f1(smat)) then
 					g=Duel.SelectTunerMaterial(c:GetControler(),c,smat,f1,f2,minc,maxc,mg)
 				else
@@ -1568,10 +1559,9 @@ function Auxiliary.PendCondition()
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
-				local ft1,ft2=Duel.GetLocationCount(tp,LOCATION_MZONE),aux.CountOne(aux.GetExtraFieldFor(tp))
 				local loc=0
-				if ft1>0 then loc=loc+LOCATION_HAND end
-				if ft2>0 then loc=loc+LOCATION_EXTRA end
+				if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_HAND end
+				if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
 				if loc==0 then return false end
 				local g=nil
 				if og then
@@ -1588,9 +1578,14 @@ function Auxiliary.PendOperation()
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
-				local ft1,ft2=Duel.GetLocationCount(tp,LOCATION_MZONE),aux.CountOne(aux.GetExtraFieldFor(tp))
-				local ft=ft1+ft2 -- ft isn't really meaningful beside it can be set to 1 or 0. As long as it's bigger than ft1 and ft2 it will be fine.
-				if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
+				local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
+				local ft2=Duel.GetLocationCountFromEx(tp)
+				local ft=Duel.GetUsableMZoneCount(tp)
+				if Duel.IsPlayerAffectedByEffect(tp,59822133) then
+					if ft1>0 then ft1=1 end
+					if ft2>0 then ft2=1 end
+					ft=1
+				end
 				local loc=0
 				if ft1>0 then loc=loc+LOCATION_HAND end
 				if ft2>0 then loc=loc+LOCATION_EXTRA end
@@ -1605,13 +1600,18 @@ function Auxiliary.PendOperation()
 				local ect=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
 				if ect and ect<ft2 then ft2=ect end
 				while true do
-					local ct=math.min(ft1,ft2,ft)
+					local ct1=tg:FilterCount(Card.IsLocation,nil,LOCATION_HAND)
+					local ct2=tg:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)
+					local ct=ft
+					if ct1>ft1 then ct=math.min(ct,ft1) end
+					if ct2>ft2 then ct=math.min(ct,ft2) end
 					if ct<=0 then break end
 					if sg:GetCount()>0 and not Duel.SelectYesNo(tp,210) then ft=0 break end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 					local g=tg:Select(tp,1,ct,nil)
 					tg:Sub(g)
 					sg:Merge(g)
+					if g:GetCount()<ct then ft=0 break end
 					ft=ft-g:GetCount()
 					ft1=ft1-g:FilterCount(Card.IsLocation,nil,LOCATION_HAND)
 					ft2=ft2-g:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)
@@ -1643,7 +1643,6 @@ function Auxiliary.AddLinkProcedure(c,f,min,max)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetRange(LOCATION_EXTRA)
-	e1:SetTargetRange(POS_FACEUP_ATTACK,0)
 	if max==nil then max=99 end
 	e1:SetCondition(Auxiliary.LinkCondition(f,min,max))
 	e1:SetOperation(Auxiliary.LinkOperation(f,min,max))
@@ -1966,7 +1965,9 @@ function Auxiliary.qlifilter(e,te)
 	if te:IsActiveType(TYPE_MONSTER) and te:IsActivated() then
 		local lv=e:GetHandler():GetLevel()
 		local ec=te:GetOwner()
-		if ec:IsType(TYPE_XYZ) then
+		if ec:IsType(TYPE_LINK) then
+			return false
+		elseif ec:IsType(TYPE_XYZ) then
 			return ec:GetOriginalRank()<lv
 		else
 			return ec:GetOriginalLevel()<lv

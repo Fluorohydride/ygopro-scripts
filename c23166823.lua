@@ -14,7 +14,7 @@ function c23166823.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to hand
 	local e3=Effect.CreateEffect(c)
-	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e3:SetCategory(CATEGORY_TOHAND)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_SUMMON_SUCCESS)
 	e3:SetTarget(c23166823.thtg)

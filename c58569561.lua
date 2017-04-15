@@ -48,11 +48,14 @@ end
 function c58569561.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp
 end
+function c58569561.filter(c)
+	return c:IsFaceup() and not c:IsType(TYPE_LINK)
+end
 function c58569561.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c58569561.filter(chkc) end
 	if chk==0 then return ep==tp and e:GetHandler():IsRelateToEffect(e) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
-	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c58569561.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,g:GetCount(),0,0)
 end
 function c58569561.posop(e,tp,eg,ep,ev,re,r,rp)

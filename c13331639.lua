@@ -376,19 +376,17 @@ function c13331639.spfilter(c,e,tp)
 end
 function c13331639.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local ft1,ft2=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		local loc=0
-		if ft1>0 then loc=loc+LOCATION_DECK end
-		if ft2>0 then loc=loc+LOCATION_EXTRA end
+		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_DECK end
+		if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
 		return loc~=0 and Duel.IsExistingMatchingCard(c13331639.spfilter,tp,loc,0,1,nil,e,tp)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK+LOCATION_EXTRA)
 end
 function c13331639.spop(e,tp,eg,ep,ev,re,r,rp)
-	local ft1,ft2=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local loc=0
-	if ft1>0 then loc=loc+LOCATION_DECK end
-	if ft2>0 then loc=loc+LOCATION_EXTRA end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_DECK end
+	if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
 	if loc==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c13331639.spfilter,tp,loc,0,1,1,nil,e,tp)

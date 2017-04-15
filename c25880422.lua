@@ -11,7 +11,7 @@ function c25880422.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c25880422.filter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK)
+	return c:IsPosition(POS_FACEUP_ATTACK) and not c:IsType(TYPE_LINK)
 end
 function c25880422.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c25880422.filter(chkc) end

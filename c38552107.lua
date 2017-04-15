@@ -9,7 +9,7 @@ function c38552107.initial_effect(c)
 	e1:SetTarget(c38552107.target)
 	e1:SetOperation(c38552107.operation)
 	c:RegisterEffect(e1)
-	--Atk up
+	--Def up
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_EQUIP)
 	e2:SetCode(EFFECT_UPDATE_DEFENSE)
@@ -36,7 +36,7 @@ function c38552107.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c38552107.filter(c)
-	return c:IsFaceup() and c:IsDefenseAbove(0)
+	return c:IsFaceup()
 end
 function c38552107.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c38552107.filter(chkc) end

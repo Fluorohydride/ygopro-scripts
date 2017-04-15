@@ -37,11 +37,14 @@ function c66625883.posop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end
+function c66625883.filter(c)
+	return not c:IsType(TYPE_LINK)
+end
 function c66625883.tg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c66625883.filter(chkc) end
 	if chk==0 then return true end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
+	local g=Duel.SelectTarget(tp,c66625883.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 end
 function c66625883.op(e,tp,eg,ep,ev,re,r,rp)

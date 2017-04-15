@@ -10,11 +10,14 @@ function c50122883.initial_effect(c)
 	e1:SetOperation(c50122883.operation)
 	c:RegisterEffect(e1)
 end
+function c50122883.filter(c)
+	return c:IsFaceup() and not c:IsType(TYPE_LINK)
+end
 function c50122883.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c50122883.filter(chkc) end
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
-	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c50122883.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 end
 function c50122883.operation(e,tp,eg,ep,ev,re,r,rp)
