@@ -34,7 +34,10 @@ function c55470553.poscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c55470553.postg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetAttacker():IsAttackPos() end
+	if chk==0 then
+		local at=Duel.GetAttacker()
+		return at:IsAttackPos() and not at:IsType(TYPE_LINK)
+	end
 end
 function c55470553.posop(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()

@@ -69,7 +69,7 @@ function c4417407.poscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c4417407.filter(c)
-	return not c:IsPosition(POS_FACEUP_DEFENSE)
+	return not c:IsPosition(POS_FACEUP_DEFENSE) and not c:IsType(TYPE_LINK)
 end
 function c4417407.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c4417407.filter(chkc) end

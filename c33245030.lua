@@ -26,7 +26,10 @@ function c33245030.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c33245030.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetAttacker():IsAttackPos() end
+	if chk==0 then
+		local at=Duel.GetAttacker()
+		return at:IsAttackPos() and not at:IsType(TYPE_LINK)
+	end
 end
 function c33245030.operation(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()

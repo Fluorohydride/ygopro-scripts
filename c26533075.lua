@@ -28,7 +28,7 @@ end
 function c26533075.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.GetAttacker()
 	if chkc then return chkc==tg end
-	if chk==0 then return tg:IsOnField() and tg:IsCanBeEffectTarget(e) end
+	if chk==0 then return tg:IsOnField() and not tg:IsType(TYPE_LINK) and tg:IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(tg)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,tg,1,0,0)
 end
