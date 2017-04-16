@@ -13,7 +13,7 @@ function c98045062.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c98045062.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	e:SetLabel(1)
+	e:SetLabel(9)
 	return true
 end
 function c98045062.filter1(c)
@@ -37,10 +37,11 @@ function c98045062.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	local b1=Duel.IsExistingTarget(c98045062.filter1,tp,0,LOCATION_MZONE,1,nil)
 	local b2=nil
-	if e:GetLabel()==0 then
-		b2=Duel.IsExistingTarget(c98045062.filter2,tp,0,LOCATION_MZONE,1,nil)
-	else
+	if e:GetLabel()==9 then
 		b2=Duel.CheckReleaseGroup(tp,c98045062.cfilter,1,nil,tp)
+	else
+		b2=Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_CONTROL)>0
+			and Duel.IsExistingTarget(c98045062.filter2,tp,0,LOCATION_MZONE,1,nil)
 	end
 	if chk==0 then
 		e:SetLabel(0)
@@ -60,7 +61,7 @@ function c98045062.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		local g=Duel.SelectTarget(tp,c98045062.filter1,tp,0,LOCATION_MZONE,1,1,nil)
 		Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 	else
-		if e:GetLabel()==1 then
+		if e:GetLabel()==9 then
 			local rg=Duel.SelectReleaseGroup(tp,c98045062.cfilter,1,1,nil,tp)
 			Duel.Release(rg,REASON_COST)
 		end

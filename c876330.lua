@@ -24,18 +24,19 @@ function c876330.initial_effect(c)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e3)
 end
-function c876330.spfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x29) and c:IsAbleToGraveAsCost()
+function c876330.spfilter(c,ft)
+	return c:IsFaceup() and c:IsSetCard(0x29) and c:IsAbleToGraveAsCost() and (ft>0 or c:GetSequence()<5)
 end
 function c876330.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(c876330.spfilter,tp,LOCATION_MZONE,0,1,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	return ft>-1 and Duel.IsExistingMatchingCard(c876330.spfilter,tp,LOCATION_MZONE,0,1,nil,ft)
 end
 function c876330.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c876330.spfilter,tp,LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c876330.spfilter,tp,LOCATION_MZONE,0,1,1,nil,ft)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c876330.eqcon(e,tp,eg,ep,ev,re,r,rp)

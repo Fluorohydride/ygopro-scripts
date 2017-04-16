@@ -253,17 +253,20 @@ function c29432356.penop2(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 	Duel.HintSelection(Group.FromCards(c))
 	Duel.HintSelection(Group.FromCards(rpz))
 end
+function c29432356.spcfilter(c,ft,tp)
+	return ft>0 or (c:IsControler(tp) and c:GetSequence()<5)
+end
 function c29432356.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,nil) end
-	local sg=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c29432356.spcfilter,1,nil,ft,tp) end
+	local sg=Duel.SelectReleaseGroup(tp,c29432356.spcfilter,1,1,nil,ft,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c29432356.spfilter(c,e,tp)
 	return c:IsSetCard(0xc4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c29432356.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(c29432356.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c29432356.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c29432356.spop(e,tp,eg,ep,ev,re,r,rp)

@@ -24,19 +24,19 @@ function c73694478.initial_effect(c)
 	e2:SetOperation(c73694478.thop)
 	c:RegisterEffect(e2)
 end
-function c73694478.filter(c,e,tp)
-	return c:IsFaceup() and c:IsSetCard(0x10cf)
+function c73694478.filter(c,e,tp,ft)
+	return c:IsFaceup() and c:IsSetCard(0x10cf) and (ft>0 or c:GetSequence()<5)
 		and Duel.IsExistingMatchingCard(c73694478.spfilter,tp,LOCATION_HAND,0,1,nil,c:GetCode(),e,tp)
 end
 function c73694478.spfilter(c,code,e,tp)
 	return c:IsSetCard(0x10cf) and not c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c73694478.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c73694478.filter(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingTarget(c73694478.filter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c73694478.filter(chkc,e,tp,ft) end
+	if chk==0 then return ft>-1 and Duel.IsExistingTarget(c73694478.filter,tp,LOCATION_MZONE,0,1,nil,e,tp,ft) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectTarget(tp,c73694478.filter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
+	local g=Duel.SelectTarget(tp,c73694478.filter,tp,LOCATION_MZONE,0,1,1,nil,e,tp,ft)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end

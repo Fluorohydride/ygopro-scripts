@@ -53,15 +53,19 @@ end
 function c90960358.cfilter(c)
 	return c:IsFaceup() and c:IsCode(15259703)
 end
+function c90960358.spcfilter(c,ft,tp)
+	return ft>0 or (c:IsControler(tp) and c:GetSequence()<5)
+end
 function c90960358.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	return Duel.IsExistingMatchingCard(c90960358.cfilter,tp,LOCATION_ONFIELD,0,1,nil) 
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)>-1 and Duel.CheckReleaseGroup(tp,nil,1,nil)
+		and ft>-1 and Duel.CheckReleaseGroup(tp,c90960358.spcfilter,1,nil,ft,tp)
 end
 function c90960358.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local tp=c:GetControler()
-	local g=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local g=Duel.SelectReleaseGroup(tp,c90960358.spcfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c90960358.sfilter(c)

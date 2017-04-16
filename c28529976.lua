@@ -23,18 +23,19 @@ function c28529976.initial_effect(c)
 	e3:SetOperation(c28529976.desop2)
 	c:RegisterEffect(e3)
 end
-function c28529976.cfilter(c,e,tp)
+function c28529976.cfilter(c,e,tp,ft)
 	local lv=c:GetLevel()
 	return lv>0 and lv<=2 and c:IsRace(RACE_PLANT)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
 		and Duel.IsExistingMatchingCard(c28529976.filter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,lv+3,e,tp)
 end
 function c28529976.filter(c,lv,e,tp)
-	return c:GetLevel()<=lv and c:IsRace(RACE_PLANT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevelBelow(lv) and c:IsRace(RACE_PLANT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c28529976.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.CheckReleaseGroup(tp,c28529976.cfilter,1,nil,e,tp) end
-	local rg=Duel.SelectReleaseGroup(tp,c28529976.cfilter,1,1,nil,e,tp)
+function c28529976.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c28529976.cfilter,1,nil,e,tp,ft) end
+	local rg=Duel.SelectReleaseGroup(tp,c28529976.cfilter,1,1,nil,e,tp,ft)
 	e:SetLabel(rg:GetFirst():GetLevel()+3)
 	Duel.Release(rg,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)

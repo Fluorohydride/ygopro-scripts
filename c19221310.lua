@@ -21,18 +21,23 @@ function c19221310.initial_effect(c)
 	e2:SetOperation(c19221310.desop)
 	c:RegisterEffect(e2)
 end
+function c19221310.cfilter(c,ft,tp)
+	return c:IsAttribute(ATTRIBUTE_LIGHT)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
+		and Duel.IsExistingMatchingCard(c19221310.filter,tp,LOCATION_ONFIELD+LOCATION_HAND+LOCATION_DECK,0,1,c)
+end
 function c19221310.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsAttribute,1,nil,ATTRIBUTE_LIGHT) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsAttribute,1,1,nil,ATTRIBUTE_LIGHT)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c19221310.cfilter,1,nil,ft,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c19221310.cfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c19221310.filter(c)
 	return c:IsCode(53025096) and c:IsAbleToGrave()
+		and (c:IsLocation(LOCATION_HAND+LOCATION_DECK) or c:IsFaceup())
 end
 function c19221310.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c19221310.filter,tp,LOCATION_ONFIELD+LOCATION_HAND+LOCATION_DECK,0,1,nil)
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_ONFIELD+LOCATION_HAND+LOCATION_DECK)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end

@@ -70,17 +70,21 @@ function c20368763.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
+function c20368763.spcfilter(c,ft,tp)
+	return c:IsType(TYPE_TOKEN)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5))
+end
 function c20368763.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsType,1,nil,TYPE_TOKEN) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsType,1,1,nil,TYPE_TOKEN)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c20368763.spcfilter,1,nil,ft,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c20368763.spcfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c20368763.spfilter(c,e,tp)
 	return c:IsSetCard(0x101b) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c20368763.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(c20368763.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c20368763.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c20368763.spop2(e,tp,eg,ep,ev,re,r,rp)

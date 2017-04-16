@@ -23,17 +23,21 @@ function c94801854.initial_effect(c)
 	e2:SetOperation(c94801854.spop)
 	c:RegisterEffect(e2)
 end
+function c94801854.spcfilter(c,ft,tp)
+	return c:IsRace(RACE_ZOMBIE)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
+end
 function c94801854.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,nil,RACE_ZOMBIE) end
-	local sg=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,nil,RACE_ZOMBIE)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c94801854.spcfilter,1,nil,ft,tp) end
+	local sg=Duel.SelectReleaseGroup(tp,c94801854.spcfilter,1,1,nil,ft,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c94801854.spfilter1(c,e,tp)
 	return c:IsRace(RACE_ZOMBIE) and c:IsType(TYPE_TUNER) and c:GetDefense()==0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c94801854.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(c94801854.spfilter1,tp,LOCATION_DECK,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c94801854.spfilter1,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c94801854.operation(e,tp,eg,ep,ev,re,r,rp)

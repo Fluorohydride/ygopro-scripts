@@ -12,20 +12,21 @@ function c48686504.initial_effect(c)
 	e1:SetOperation(c48686504.operation)
 	c:RegisterEffect(e1)
 end
-function c48686504.costfilter(c)
+function c48686504.costfilter(c,ft,tp)
 	return c:IsFaceup() and c:IsRace(RACE_PLANT)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5))
 end
 function c48686504.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c48686504.costfilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,c48686504.costfilter,1,1,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c48686504.costfilter,1,nil,ft,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c48686504.costfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c48686504.filter(c,e,tp)
 	return c:IsRace(RACE_PLANT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c48686504.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(c48686504.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c48686504.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,LOCATION_DECK)
 end
 function c48686504.operation(e,tp,eg,ep,ev,re,r,rp)

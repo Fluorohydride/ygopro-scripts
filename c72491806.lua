@@ -36,19 +36,19 @@ function c72491806.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectMatchingCard(tp,c72491806.spfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.SendtoHand(g,nil,REASON_COST)
 end
-function c72491806.thfilter(c,e,tp)
-	return c:IsFaceup() and c:IsSetCard(0xb2) and c:IsAbleToHand()
+function c72491806.thfilter(c,e,tp,ft)
+	return c:IsFaceup() and c:IsSetCard(0xb2) and c:IsAbleToHand() and (ft>0 or c:GetSequence()<5)
 		and Duel.IsExistingMatchingCard(c72491806.spfilter2,tp,LOCATION_HAND,0,1,nil,e,tp,c:GetCode())
 end
 function c72491806.spfilter2(c,e,tp,code)
 	return c:IsSetCard(0xb2) and not c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c72491806.tstg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c72491806.thfilter(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingTarget(c72491806.thfilter,tp,LOCATION_MZONE,0,1,e:GetHandler(),e,tp) end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c72491806.thfilter(chkc,e,tp,ft) end
+	if chk==0 then return ft>-1 and Duel.IsExistingTarget(c72491806.thfilter,tp,LOCATION_MZONE,0,1,e:GetHandler(),e,tp,ft) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=Duel.SelectTarget(tp,c72491806.thfilter,tp,LOCATION_MZONE,0,1,1,e:GetHandler(),e,tp)
+	local g=Duel.SelectTarget(tp,c72491806.thfilter,tp,LOCATION_MZONE,0,1,1,e:GetHandler(),e,tp,ft)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end

@@ -10,17 +10,20 @@ function c2903036.initial_effect(c)
 	e1:SetOperation(c2903036.activate)
 	c:RegisterEffect(e1)
 end
+function c2903036.cfilter(c,ft,tp)
+	return ft>0 or (c:IsControler(tp) and c:GetSequence()<5)
+end
 function c2903036.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c2903036.cfilter,1,nil,ft,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c2903036.cfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c2903036.filter(c,e,tp)
 	return c:GetLevel()==7 and c:IsSummonableCard() and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c2903036.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(c2903036.filter,tp,LOCATION_HAND,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c2903036.filter,tp,LOCATION_HAND,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c2903036.activate(e,tp,eg,ep,ev,re,r,rp)

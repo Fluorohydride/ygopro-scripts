@@ -40,25 +40,25 @@ end
 function c60417395.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp
 end
-function c60417395.cfilter1(c)
-	return c:IsFaceup() and c:IsRace(RACE_FIEND) and c:IsAbleToGraveAsCost()
+function c60417395.cfilter1(c,ft)
+	return c:IsFaceup() and c:IsRace(RACE_FIEND) and c:IsAbleToGraveAsCost() and (ft>0 or c:GetSequence()<5)
 end
 function c60417395.cfilter2(c)
 	return c:IsRace(RACE_FIEND) and c:IsAbleToGraveAsCost()
 end
 function c60417395.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c60417395.cfilter1,tp,LOCATION_MZONE,0,1,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.IsExistingMatchingCard(c60417395.cfilter1,tp,LOCATION_MZONE,0,1,nil,ft)
 		and Duel.IsExistingMatchingCard(c60417395.cfilter2,tp,LOCATION_HAND,0,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,c60417395.cfilter1,tp,LOCATION_MZONE,0,1,1,nil)
+	local g1=Duel.SelectMatchingCard(tp,c60417395.cfilter1,tp,LOCATION_MZONE,0,1,1,nil,ft)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g2=Duel.SelectMatchingCard(tp,c60417395.cfilter2,tp,LOCATION_HAND,0,1,1,e:GetHandler())
 	g1:Merge(g2)
 	Duel.SendtoGrave(g1,REASON_COST)
 end
 function c60417395.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,true,false) end
+	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,true,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c60417395.spop(e,tp,eg,ep,ev,re,r,rp)
