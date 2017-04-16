@@ -38,7 +38,8 @@ function c81254059.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end
 function c81254059.costfilter(c,e,tp,ft)
-	return c:IsSetCard(0x3e) and c:IsRace(RACE_REPTILE) and (ft>0 or c:GetSequence()<5)
+	return c:IsSetCard(0x3e) and c:IsRace(RACE_REPTILE)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
 		and Duel.IsExistingMatchingCard(c81254059.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,c:GetLevel())
 end
 function c81254059.spfilter(c,e,tp,lv)

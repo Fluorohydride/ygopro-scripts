@@ -32,7 +32,7 @@ end
 function c96474800.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tl=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
 	local tpe=re:GetActiveType()
-	if tl==LOCATION_SZONE and bit.band(tpe,TYPE_SPELL)~=0 and bit.band(tpe,TYPE_EQUIP+TYPE_FIELD+TYPE_CONTINUOUS+TYPE_QUICKPLAY)~=0 then
+	if bit.band(tl,LOCATION_SZONE)~=0 and bit.band(tpe,TYPE_SPELL)~=0 and bit.band(tpe,TYPE_EQUIP+TYPE_FIELD+TYPE_CONTINUOUS+TYPE_QUICKPLAY)~=0 then
 		Duel.NegateEffect(ev)
 	end
 end

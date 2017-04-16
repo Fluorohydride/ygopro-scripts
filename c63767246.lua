@@ -40,7 +40,8 @@ function c63767246.initial_effect(c)
 end
 c63767246.xyz_number=38
 function c63767246.discon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_SZONE
+	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
+	return bit.band(loc,LOCATION_SZONE)~=0
 		and re:IsActiveType(TYPE_SPELL) and Duel.IsChainDisablable(ev) and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c63767246.distg(e,tp,eg,ep,ev,re,r,rp,chk)
