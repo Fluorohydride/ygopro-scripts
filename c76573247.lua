@@ -26,6 +26,7 @@ function c76573247.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsControler(1-tp) then return end
 	local seq=c:GetSequence()
+	if seq>4 then return end
 	if (seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1))
 		or (seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1)) then
 		local flag=0
@@ -51,5 +52,5 @@ function c76573247.filter(c,s1)
 end
 function c76573247.dircon(e)
 	local tp=e:GetHandlerPlayer()
-	return not Duel.IsExistingTarget(c76573247.filter,tp,0,LOCATION_ONFIELD,1,nil,e:GetHandler():GetSequence())
+	return not Duel.IsExistingMatchingCard(c76573247.filter,tp,0,LOCATION_ONFIELD,1,nil,e:GetHandler():GetSequence())
 end
