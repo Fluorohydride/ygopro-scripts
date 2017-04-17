@@ -41,8 +41,8 @@ function c39188539.seqop(e,tp,eg,ep,ev,re,r,rp)
 	if (seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1))
 		or (seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1)) then
 		local flag=0
-		if seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1) then flag=bit.bor(flag,bit.lshift(0x1,seq-1)) end
-		if seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1) then flag=bit.bor(flag,bit.lshift(0x1,seq+1)) end
+		if seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1) then flag=bit.replace(flag,0x1,seq-1) end
+		if seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1) then flag=bit.replace(flag,0x1,seq+1) end
 		flag=bit.bxor(flag,0xff)
 		local s=Duel.SelectDisableField(tp,1,LOCATION_MZONE,0,flag)
 		local nseq=0
@@ -57,27 +57,10 @@ end
 function c39188539.filter(c,s1)
 	if not c:IsAbleToHand() then return false end
 	local s2=c:GetSequence()
-	if c:IsLocation(LOCATION_SZONE) then
-		if s2>=5 then return false end
-		if s1<5 then
-			return s1+s2==4
-		else
-			return (s1==5 and s2==3) or (s1==6 and s2==1)
-		end
-	end
-	if s1<5 then
-		if s2<5 then
-			return s1+s2==4
-		else
-			return (s2==5 and s1==3) or (s2==6 and s1==1)
-		end
-	else
-		if s2<5 then
-			return (s1==5 and s2==3) or (s1==6 and s2==1)
-		else
-			return false
-        	end
-	end
+	if c:IsLocation(LOCATION_SZONE) and s2>=5 then return false end
+	if s1==5 then s1=1 elseif s1==6 then s1=3 end
+	if s2==5 then s2=1 elseif s2==6 then s2=3 end
+	return s1+s2==4
 end
 function c39188539.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c39188539.filter(chkc,e:GetHandler():GetSequence()) end
