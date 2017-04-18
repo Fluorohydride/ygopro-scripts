@@ -1,7 +1,7 @@
 --バージェストマ・アノマロカリス
 function c61307542.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,2,3,nil,nil,5)
+	aux.AddXyzProcedure(c,nil,2,3,nil,nil,99)
 	c:EnableReviveLimit()
 	--immune
 	local e1=Effect.CreateEffect(c)

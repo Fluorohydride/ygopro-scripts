@@ -1,7 +1,7 @@
 --LL－アセンブリー・ナイチンゲール
 function c48608796.initial_effect(c)
 	c:EnableReviveLimit()
-	aux.AddXyzProcedure(c,nil,1,2,nil,nil,5)
+	aux.AddXyzProcedure(c,nil,1,2,nil,nil,99)
 	--ATK Up
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

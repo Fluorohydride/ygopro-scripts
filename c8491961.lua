@@ -1,7 +1,7 @@
 --LL－リサイト・スターリング
 function c8491961.initial_effect(c)
 	c:EnableReviveLimit()
-	aux.AddXyzProcedure(c,nil,1,2,nil,nil,5)
+	aux.AddXyzProcedure(c,nil,1,2,nil,nil,99)
 	--ATK Up
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(8491961,0))
