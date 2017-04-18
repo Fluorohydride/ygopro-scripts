@@ -41,34 +41,32 @@ function c1686814.initial_effect(c)
 	e5:SetValue(1)
 	c:RegisterEffect(e5)
 end
-function c1686814.sprfilter(c,ft)
+function c1686814.sprfilter(c)
 	return c:IsFaceup() and c:GetLevel()>4 and c:IsAbleToGraveAsCost()
 end
-function c1686814.sprfilter1(c,ft,g)
+function c1686814.sprfilter1(c,ft,tp,g)
 	local lv=c:GetLevel()
-	local chk=false
-	if ft>0 or c:CheckMZoneFromEX() then chk=true end
-	return c:IsType(TYPE_TUNER) and g:IsExists(c1686814.sprfilter2,1,c,lv,ft,chk)
+	if c:CheckMZoneFromEx(tp) then ft=ft+1 end
+	return c:IsType(TYPE_TUNER) and g:IsExists(c1686814.sprfilter2,1,c,lv,ft,tp)
 end
-function c1686814.sprfilter2(c,lv,ft,chk)
-	return (chk or ft>0 or c:CheckMZoneFromEX()) and c:GetLevel()==lv and not c:IsType(TYPE_TUNER)
+function c1686814.sprfilter2(c,lv,ft,tp)
+	return (ft>0 or c:CheckMZoneFromEx(tp)) and c:GetLevel()==lv and not c:IsType(TYPE_TUNER)
 end
 function c1686814.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCountFromEx(tp)
-	local g=Duel.GetMatchingGroup(c1686814.sprfilter,tp,LOCATION_MZONE,0,nil,ft)
-	return ft>-2 and g:IsExists(c1686814.sprfilter1,1,nil,ft,g)
+	local ft=Duel.GetLocationCountFromEx(tp,PLAYER_NONE)
+	local g=Duel.GetMatchingGroup(c1686814.sprfilter,tp,LOCATION_MZONE,0,nil)
+	return Duel.GetLocationCountFromEx(tp)>-2 and g:IsExists(c1686814.sprfilter1,1,nil,ft,tp,g)
 end
 function c1686814.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCountFromEx(tp)
-	local g=Duel.GetMatchingGroup(c1686814.sprfilter,tp,LOCATION_MZONE,0,nil,ft)
+	local ft=Duel.GetLocationCountFromEx(tp,PLAYER_NONE)
+	local g=Duel.GetMatchingGroup(c1686814.sprfilter,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=g:FilterSelect(tp,c1686814.sprfilter1,1,1,nil,ft,g)
-	local chk=false
-	if ft>0 or g1:GetFirst():CheckMZoneFromEX() then chk=true end
+	local g1=g:FilterSelect(tp,c1686814.sprfilter1,1,1,nil,ft,tp,g)
+	if g1:GetFirst():CheckMZoneFromEx(tp) then ft=ft+1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=g:FilterSelect(tp,c1686814.sprfilter2,1,1,g1:GetFirst(),g1:GetFirst():GetLevel(),ft,chk)
+	local g2=g:FilterSelect(tp,c1686814.sprfilter2,1,1,g1:GetFirst(),g1:GetFirst():GetLevel(),ft,tp)
 	g1:Merge(g2)
 	Duel.SendtoGrave(g1,REASON_COST)
 end
