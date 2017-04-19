@@ -1657,21 +1657,41 @@ function Auxiliary.GetLinkCount(c)
 		return 1+0x10000*c:GetLink()
 	else return 1 end
 end
+function Auxiliary.LCheckRecursive(c,tp,sg,mg,lk,ct,minc,maxc)
+	sg:AddCard(c)
+	ct=ct+1
+	local res=(ct<maxc and mg:IsExists(Auxiliary.LCheckRecursive,1,sg,tp,sg,mg,lk,ct,minc,maxc))
+		or (ct>=minc and Auxiliary.LCheckGoal(tp,sg,lk,ct))
+	sg:RemoveCard(c)
+	ct=ct-1
+	return res
+end
+function Auxiliary.LCheckGoal(tp,sg,lk,ct)
+	return sg:CheckWithSumEqual(Auxiliary.GetLinkCount,lk,ct,ct) and Duel.GetLocationCountFromEx(tp,tp,sg)>0
+end
 function Auxiliary.LinkCondition(f,minc,maxc)
 	return	function(e,c)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp=c:GetControler()
 				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f)
-				return mg:CheckWithSumEqual(Auxiliary.GetLinkCount,c:GetLink(),minc,maxc)
+				local sg=Group.CreateGroup()
+				return mg:IsExists(Auxiliary.LCheckRecursive,1,nil,tp,sg,mg,c:GetLink(),0,minc,maxc)
 			end
 end
 function Auxiliary.LinkOperation(f,minc,maxc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c)
 				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f)
-				local g=mg:SelectWithSumEqual(tp,Auxiliary.GetLinkCount,c:GetLink(),minc,maxc)
-				c:SetMaterial(g)
-				Duel.SendtoGrave(g,REASON_MATERIAL+REASON_LINK)
+				local sg=Group.CreateGroup()
+				for i=1,maxc do
+					local g=mg:FilterSelect(tp,Auxiliary.LCheckRecursive,1,1,sg,tp,sg,mg,c:GetLink(),i-1,minc,maxc)
+					sg:Merge(g)
+					if i>=minc and i<maxc and Auxiliary.LCheckGoal(tp,sg,c:GetLink(),i)
+						and (not mg:IsExists(Auxiliary.LCheckRecursive,1,sg,tp,sg,mg,c:GetLink(),i,minc,maxc)
+						or not Duel.SelectYesNo(tp,210)) then break end
+				end
+				c:SetMaterial(sg)
+				Duel.SendtoGrave(sg,REASON_MATERIAL+REASON_LINK)
 			end
 end
 function Auxiliary.IsMaterialListCode(c,code)
