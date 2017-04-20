@@ -49,29 +49,28 @@ end
 function c90884403.sprfilter(c)
 	return c:IsFaceup() and c:GetLevel()>7 and c:IsAbleToGraveAsCost()
 end
-function c90884403.sprfilter1(c,ft,tp,g)
+function c90884403.sprfilter1(c,tp,g,sc)
 	local lv=c:GetLevel()
-	if c:CheckMZoneFromEx(tp) then ft=ft+1 end
-	return c:IsType(TYPE_TUNER) and g:IsExists(c90884403.sprfilter2,1,c,lv,ft,tp)
+	return c:IsType(TYPE_TUNER) and g:IsExists(c90884403.sprfilter2,1,c,tp,c,sc,lv)
 end
-function c90884403.sprfilter2(c,lv,ft,tp)
-	return (ft>0 or c:CheckMZoneFromEx(tp)) and c:GetLevel()==lv and not c:IsType(TYPE_TUNER)
+function c90884403.sprfilter2(c,tp,mc,sc,lv)
+	local sg=Group.FromCards(c,mc)
+	return c:GetLevel()==lv and not c:IsType(TYPE_TUNER)
+		and Duel.GetLocationCountFromEx(tp,tp,sg,sc)>0
 end
 function c90884403.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCountFromEx(tp,PLAYER_NONE)
 	local g=Duel.GetMatchingGroup(c90884403.sprfilter,tp,LOCATION_MZONE,0,nil)
-	return Duel.GetLocationCountFromEx(tp)>-2 and g:IsExists(c90884403.sprfilter1,1,nil,ft,tp,g)
+	return g:IsExists(c90884403.sprfilter1,1,nil,tp,g,c)
 end
 function c90884403.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCountFromEx(tp,PLAYER_NONE)
 	local g=Duel.GetMatchingGroup(c90884403.sprfilter,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=g:FilterSelect(tp,c90884403.sprfilter1,1,1,nil,ft,tp,g)
-	if g1:GetFirst():CheckMZoneFromEx(tp) then ft=ft+1 end
+	local g1=g:FilterSelect(tp,c90884403.sprfilter1,1,1,nil,tp,g,c)
+	local mc=g1:GetFirst()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=g:FilterSelect(tp,c90884403.sprfilter2,1,1,g1:GetFirst(),g1:GetFirst():GetLevel(),ft,tp)
+	local g2=g:FilterSelect(tp,c90884403.sprfilter2,1,1,mc,tp,mc,c,mc:GetLevel())
 	g1:Merge(g2)
 	Duel.SendtoGrave(g1,REASON_COST)
 end
