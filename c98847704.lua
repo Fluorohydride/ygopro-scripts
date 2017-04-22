@@ -11,7 +11,7 @@ function c98847704.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c98847704.filter1(c)
-	return c:IsFaceup() and c:IsType(TYPE_EQUIP)
+	return c:IsFaceup() and c:IsType(TYPE_EQUIP) and c:IsType(TYPE_SPELL)
 end
 function c98847704.filter2(c)
 	return c:IsFacedown()
