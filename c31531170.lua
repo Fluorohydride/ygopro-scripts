@@ -42,7 +42,7 @@ function c31531170.pendcon(e,c,og)
 	local lscale=c:GetLeftScale()
 	local rscale=rpz:GetRightScale()
 	if lscale>rscale then lscale,rscale=rscale,lscale end
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ft=Duel.GetLocationCountFromEx(tp)
 	if ft<=0 then return false end
 	if og then
 		return og:IsExists(aux.PConditionFilter,1,nil,e,tp,lscale,rscale)
@@ -57,7 +57,7 @@ function c31531170.pendop(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 	local lscale=c:GetLeftScale()
 	local rscale=rpz:GetRightScale()
 	if lscale>rscale then lscale,rscale=rscale,lscale end
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ft=Duel.GetLocationCountFromEx(tp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local ect=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
 	if ect~=nil then ft=math.min(ft,ect) end
