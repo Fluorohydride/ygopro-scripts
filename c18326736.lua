@@ -1,7 +1,7 @@
 --星守の騎士 プトレマイオス
 function c18326736.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,4,2,nil,nil,5)
+	aux.AddXyzProcedure(c,nil,4,2,nil,nil,99)
 	c:EnableReviveLimit()
 	--spsummon
 	local e1=Effect.CreateEffect(c)

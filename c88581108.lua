@@ -1,7 +1,7 @@
 --真竜皇V.F.D
 function c88581108.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,9,2,nil,nil,5)
+	aux.AddXyzProcedure(c,nil,9,2,nil,nil,99)
 	c:EnableReviveLimit()
 	--attribute change
 	local e1=Effect.CreateEffect(c)
