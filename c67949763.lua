@@ -42,6 +42,7 @@ function c67949763.activate(e,tp,eg,ep,ev,re,r,rp)
 			de:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 			de:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 			de:SetCode(EVENT_LEAVE_FIELD)
+			de:SetCondition(c67949763.descon)
 			de:SetOperation(c67949763.desop)
 			de:SetLabel(rfid)
 			tc:RegisterEffect(de,true)
@@ -77,6 +78,10 @@ function c67949763.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c67949763.desfilter(c,rfid)
 	return c:GetFlagEffectLabel(67949764)==rfid
+end
+function c67949763.descon(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	return c:IsPreviousPosition(POS_FACEUP)
 end
 function c67949763.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c67949763.desfilter,tp,LOCATION_MZONE,0,nil,e:GetLabel())
