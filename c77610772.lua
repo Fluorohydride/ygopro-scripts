@@ -25,7 +25,7 @@ function c77610772.initial_effect(c)
 	c:RegisterEffect(e2)
 	local e3=e1:Clone()
 	e3:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
-	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+	e3:SetValue(aux.tgoval)
 	c:RegisterEffect(e3)
 	--destroy replace
 	local e4=Effect.CreateEffect(c)
