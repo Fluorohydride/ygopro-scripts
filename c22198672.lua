@@ -50,9 +50,11 @@ function c22198672.seqop(e,tp,eg,ep,ev,re,r,rp)
 		local s=0
 		if tc:IsControler(tp) then
 			flag=bit.bxor(zone,0xff)
+			Duel.Hint(HINT_SELECTMSG,tp,571)
 			s=Duel.SelectDisableField(tp,1,LOCATION_MZONE,0,flag)
 		else
 			flag=bit.bxor(zone,0xff0000)
+			Duel.Hint(HINT_SELECTMSG,tp,571)
 			s=Duel.SelectDisableField(tp,1,0,LOCATION_MZONE,flag)
 		end
 		local nseq=0
