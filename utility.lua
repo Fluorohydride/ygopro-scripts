@@ -541,6 +541,21 @@ end
 function Auxiliary.AddFusionProcCode4(c,code1,code2,code3,code4,sub,insf)
 	Auxiliary.AddFusionProcCode(c,sub,insf,code1,code2,code3,code4)
 end
+--Fusion monster, name * n
+function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
+	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
+	local code={}
+	for i=1,cc do
+		code[i]=code1
+	end
+	if c.material_count==nil then
+		local code=c:GetOriginalCode()
+		local mt=_G["c" .. code]
+		mt.material_count=1
+		mt.material={code1}
+	end
+	Auxiliary.AddFusionProcCode(c,sub,insf,table.unpack(code))
+end
 --Fusion monster, name + condition
 function Auxiliary.AddFusionProcCodeFun(c,code1,f,cc,sub,insf)
 	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
@@ -693,145 +708,102 @@ function Auxiliary.FOperationCodeFun(code,f,cc,sub,insf)
 				end
 			end
 end
---Fusion monster, condition + condition
-function Auxiliary.AddFusionProcFun2(c,f1,f2,insf)
-	local f1=function(c) return f1(c) and not c:IsHasEffect(6205579) end
-	local f2=function(c) return f2(c) and not c:IsHasEffect(6205579) end
+--Fusion monster, condition1 + condition2 + ... + conditionN
+function Auxiliary.AddFusionProcFun(c,insf,...)
+	local funs={...}
+	for i=1,#funs do
+		local f=funs[i]
+		funs[i]=function(c) return f(c) and not c:IsHasEffect(6205579) end
+	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_FUSION_MATERIAL)
-	e1:SetCondition(Auxiliary.FConditionFun2(f1,f2,insf))
-	e1:SetOperation(Auxiliary.FOperationFun2(f1,f2,insf))
+	e1:SetCondition(Auxiliary.FConditionFun(insf,table.unpack(funs)))
+	e1:SetOperation(Auxiliary.FOperationFun(insf,table.unpack(funs)))
 	c:RegisterEffect(e1)
 end
-function Auxiliary.FConditionFilterF2(c,g2)
-	return g2:IsExists(aux.TRUE,1,c)
-end
-function Auxiliary.FConditionFilterF2c(c,f1,f2)
-	return f1(c) or f2(c)
-end
-function Auxiliary.FConditionFilterF2r(c,f1,f2)
-	return f1(c) and not f2(c)
-end
-function Auxiliary.FConditionFun2(f1,f2,insf)
+function Auxiliary.FConditionFun(insf,...)
+	local funs = {...}
 	return	function(e,g,gc,chkfnf)
 				if g==nil then return insf end
 				local chkf=bit.band(chkfnf,0xff)
-				local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
+				local notfusion=bit.rshift(chkfnf,8)~=0
+				local sub=sub or notfusion
+				local c=e:GetHandler()
+				local tp=c:GetControler()
+				local mg=g:Filter(Auxiliary.FConditionFilterCon,gc,c,table.unpack(funs))
 				if gc then
-					if not gc:IsCanBeFusionMaterial(e:GetHandler()) then return false end
-					return (f1(gc) and mg:IsExists(f2,1,gc))
-						or (f2(gc) and mg:IsExists(f1,1,gc)) end
-				local g1=Group.CreateGroup() local g2=Group.CreateGroup() local fs=false
-				local tc=mg:GetFirst()
-				while tc do
-					if f1(tc) then g1:AddCard(tc) if Auxiliary.FConditionCheckF(tc,chkf) then fs=true end end
-					if f2(tc) then g2:AddCard(tc) if Auxiliary.FConditionCheckF(tc,chkf) then fs=true end end
-					tc=mg:GetNext()
+					if not gc:IsCanBeFusionMaterial(c) then return false end
+					local sg=Group.CreateGroup()
+					return Auxiliary.FSelectCon(gc,tp,mg,sg,c,table.unpack(funs))
 				end
-				if chkf~=PLAYER_NONE then
-					return fs and g1:IsExists(Auxiliary.FConditionFilterF2,1,nil,g2)
-				else return g1:IsExists(Auxiliary.FConditionFilterF2,1,nil,g2) end
+				local sg=Group.CreateGroup()
+				return mg:IsExists(Auxiliary.FSelectCon,1,nil,tp,mg,sg,c,table.unpack(funs))
 			end
 end
-function Auxiliary.FOperationFun2(f1,f2,insf)
+function Auxiliary.FOperationFun(insf,...)
+	local funs = {...}
 	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 				local chkf=bit.band(chkfnf,0xff)
-				local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
-				if gc then
-					local sg=Group.CreateGroup()
-					if f1(gc) then sg:Merge(g:Filter(f2,gc)) end
-					if f2(gc) then sg:Merge(g:Filter(f1,gc)) end
+				local notfusion=bit.rshift(chkfnf,8)~=0
+				local c=e:GetHandler()
+				local tp=c:GetControler()
+				local mg=eg:Filter(Auxiliary.FConditionFilterCon,gc,c,table.unpack(funs))
+				local sg=Group.CreateGroup()
+				if gc then sg:AddCard(gc) end
+				while sg:GetCount()<#funs do
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-					local g1=sg:Select(tp,1,1,nil)
-					Duel.SetFusionMaterial(g1)
-					return
+					local g=mg:FilterSelect(tp,Auxiliary.FSelectCon,1,1,sg,tp,mg,sg,c,table.unpack(funs))
+					sg:Merge(g)
 				end
-				local sg=g:Filter(Auxiliary.FConditionFilterF2c,nil,f1,f2)
-				local g1=nil
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-				if chkf~=PLAYER_NONE then
-					g1=sg:FilterSelect(tp,Auxiliary.FConditionCheckF,1,1,nil,chkf)
-				else g1=sg:Select(tp,1,1,nil) end
-				local tc1=g1:GetFirst()
-				sg:RemoveCard(tc1)
-				local b1=f1(tc1)
-				local b2=f2(tc1)
-				if b1 and not b2 then sg:Remove(Auxiliary.FConditionFilterF2r,nil,f1,f2) end
-				if b2 and not b1 then sg:Remove(Auxiliary.FConditionFilterF2r,nil,f2,f1) end
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-				local g2=sg:Select(tp,1,1,nil)
-				g1:Merge(g2)
-				Duel.SetFusionMaterial(g1)
+				Duel.SetFusionMaterial(sg)
 			end
 end
---Fusion monster, name * n
-function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
-	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
-	local code={}
-	for i=1,cc do
-		code[i]=code1
+function Auxiliary.FConditionFilterCon(c,fc,...)
+	local funs={...}
+	for i=1,#funs do
+		if funs[i](c) then return true end
 	end
-	if c.material_count==nil then
-		local code=c:GetOriginalCode()
-		local mt=_G["c" .. code]
-		mt.material_count=1
-		mt.material={code1}
+	return false
+end
+function Auxiliary.FCheckCon(c,mg,sg,fc,fun1,fun2,...)
+	sg:AddCard(c)
+	local res
+	if fun2 then
+		res=(fun1(c) and mg:IsExists(Auxiliary.FCheckCon,1,sg,mg,sg,fc,fun2,...))
+	else
+		res=fun1(c)
 	end
-	Auxiliary.AddFusionProcCode(c,sub,insf,table.unpack(code))
+	sg:RemoveCard(c)
+	return res
+end
+function Auxiliary.FCheckConGoal(tp,sg,fc,...)
+	local g=Group.CreateGroup()
+	return sg:IsExists(Auxiliary.FCheckCon,1,nil,sg,g,fc,...) and Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0
+end
+function Auxiliary.FSelectCon(c,tp,mg,sg,fc,...)
+	sg:AddCard(c)
+	local res
+	if sg:GetCount()<#{...} then
+		res=mg:IsExists(Auxiliary.FSelectCon,1,sg,tp,mg,sg,fc,...)
+	else
+		res=Auxiliary.FCheckConGoal(tp,sg,fc,...)
+	end
+	sg:RemoveCard(c)
+	return res
+end
+--Fusion monster, condition + condition
+function Auxiliary.AddFusionProcFun2(c,f1,f2,insf)
+	Auxiliary.AddFusionProcFunMulti(c,insf,f1,f2)
 end
 --Fusion monster, condition * n
 function Auxiliary.AddFusionProcFunRep(c,f,cc,insf)
-	local f=function(c) return f(c) and not c:IsHasEffect(6205579) end
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetCode(EFFECT_FUSION_MATERIAL)
-	e1:SetCondition(Auxiliary.FConditionFunRep(f,cc,insf))
-	e1:SetOperation(Auxiliary.FOperationFunRep(f,cc,insf))
-	c:RegisterEffect(e1)
-end
-function Auxiliary.FConditionFunRep(f,cc,insf)
-	return	function(e,g,gc,chkfnf)
-				if g==nil then return insf end
-				local chkf=bit.band(chkfnf,0xff)
-				local mg=g:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
-				if gc then
-					if not gc:IsCanBeFusionMaterial(e:GetHandler()) then return false end
-					return f(gc) and mg:IsExists(f,cc-1,gc) end
-				local g1=mg:Filter(f,nil)
-				if chkf~=PLAYER_NONE then
-					return g1:FilterCount(Auxiliary.FConditionCheckF,nil,chkf)~=0 and g1:GetCount()>=cc
-				else return g1:GetCount()>=cc end
-			end
-end
-function Auxiliary.FOperationFunRep(f,cc,insf)
-	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
-				local chkf=bit.band(chkfnf,0xff)
-				local g=eg:Filter(Card.IsCanBeFusionMaterial,nil,e:GetHandler())
-				if gc then
-					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-					local g1=g:FilterSelect(tp,f,cc-1,cc-1,gc)
-					Duel.SetFusionMaterial(g1)
-					return
-				end
-				local sg=g:Filter(f,nil)
-				if chkf==PLAYER_NONE or sg:GetCount()==cc then
-					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-					local g1=sg:Select(tp,cc,cc,nil)
-					Duel.SetFusionMaterial(g1)
-					return
-				end
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-				local g1=sg:FilterSelect(tp,Auxiliary.FConditionCheckF,1,1,nil,chkf)
-				if cc>1 then
-					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-					local g2=sg:Select(tp,cc-1,cc-1,g1:GetFirst())
-					g1:Merge(g2)
-				end
-				Duel.SetFusionMaterial(g1)
-			end
+	local fun={}
+	for i=1,cc do
+		fun[i]=f
+	end
+	Auxiliary.AddFusionProcFunMulti(c,insf,table.unpack(fun))
 end
 --Fusion monster, condition1 + condition2 * minc to maxc
 function Auxiliary.AddFusionProcFunFunRep(c,f1,f2,minc,maxc,insf)
