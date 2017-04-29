@@ -458,6 +458,9 @@ function Auxiliary.AddFusionProcCode(c,sub,insf,...)
 	c:RegisterEffect(e1)
 end
 function Auxiliary.FConditionCode(sub,insf,...)
+	--g:Material group(nil for Instant Fusion)
+ 	--gc:Material already used
+ 	--chkf: check field, default:PLAYER_NONE
 	local code = {...}
 	return	function(e,g,gc,chkfnf)
 				if g==nil then return insf end
