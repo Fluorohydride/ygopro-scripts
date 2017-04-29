@@ -772,6 +772,12 @@ function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
 	for i=1,cc do
 		code[i]=code1
 	end
+	if c.material_count==nil then
+		local code=c:GetOriginalCode()
+		local mt=_G["c" .. code]
+		mt.material_count=1
+		mt.material=code1
+	end
 	Auxiliary.AddFusionProcCode(c,sub,insf,table.unpack(code))
 end
 --Fusion monster, condition * n
