@@ -776,7 +776,7 @@ function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
 		local code=c:GetOriginalCode()
 		local mt=_G["c" .. code]
 		mt.material_count=1
-		mt.material=code1
+		mt.material={code1}
 	end
 	Auxiliary.AddFusionProcCode(c,sub,insf,table.unpack(code))
 end
