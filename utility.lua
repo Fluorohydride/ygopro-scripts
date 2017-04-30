@@ -520,7 +520,8 @@ function Auxiliary.FCheckMix(c,mg,sg,fc,sub,fun1,fun2,...)
 	sg:AddCard(c)
 	local res
 	if fun2 then
-		res=(fun1(c,fc,sub) and mg:IsExists(Auxiliary.FCheckMix,1,sg,mg,sg,fc,sub,fun2,...))
+		res=(fun1(c,fc,false) and mg:IsExists(Auxiliary.FCheckMix,1,sg,mg,sg,fc,sub,fun2,...)
+		or fun1(c,fc,sub) and mg:IsExists(Auxiliary.FCheckMix,1,sg,mg,sg,fc,false,fun2,...))
 	else
 		res=fun1(c,fc,sub)
 	end
