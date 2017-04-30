@@ -729,7 +729,6 @@ function Auxiliary.FConditionFun(insf,...)
 				if g==nil then return insf end
 				local chkf=bit.band(chkfnf,0xff)
 				local notfusion=bit.rshift(chkfnf,8)~=0
-				local sub=sub or notfusion
 				local c=e:GetHandler()
 				local tp=c:GetControler()
 				local mg=g:Filter(Auxiliary.FConditionFilterCon,gc,c,table.unpack(funs))
