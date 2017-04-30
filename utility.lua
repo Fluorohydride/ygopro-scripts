@@ -450,7 +450,11 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 		if type(val[i])=='function' then
 			fun[i]=function(c) return val[i](c) and not c:IsHasEffect(6205579) end
 		else
-			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
+			if sub then
+				fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
+			else
+				fun[i]=function(c) return c:IsFusionCode(val[i]) end
+			end
 			table.insert(mat,val[i])
 		end
 	end
@@ -469,10 +473,10 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 	c:RegisterEffect(e1)
 end
 function Auxiliary.FConditionMix(insf,sub,...)
- 	--g:Material group(nil for Instant Fusion)
-  	--gc:Material already used
-  	--chkf: check field, default:PLAYER_NONE
-	local funs = {...}
+	--g:Material group(nil for Instant Fusion)
+	--gc:Material already used
+	--chkf: check field, default:PLAYER_NONE
+	local funs={...}
 	return	function(e,g,gc,chkfnf)
 				if g==nil then return insf end
 				local chkf=bit.band(chkfnf,0xff)
@@ -491,7 +495,7 @@ function Auxiliary.FConditionMix(insf,sub,...)
 			end
 end
 function Auxiliary.FOperationMix(insf,sub,...)
-	local funs = {...}
+	local funs={...}
 	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
 				local chkf=bit.band(chkfnf,0xff)
 				local c=e:GetHandler()
@@ -510,27 +514,28 @@ function Auxiliary.FOperationMix(insf,sub,...)
 			end
 end
 function Auxiliary.FConditionFilterMix(c,fc,sub,...)
-	local funs={...}
-	for i=1,#funs do
-		if funs[i](c,fc,sub) then return true end
+	if not c:IsCanBeFusionMaterial(fc) then return false end
+	for i,f in ipairs({...}) do
+		if f(c,fc,sub) then return true end
 	end
 	return false
 end
 function Auxiliary.FCheckMix(c,mg,sg,fc,sub,fun1,fun2,...)
-	sg:AddCard(c)
-	local res
 	if fun2 then
-		res=(fun1(c,fc,false) and mg:IsExists(Auxiliary.FCheckMix,1,sg,mg,sg,fc,sub,fun2,...)
-		or fun1(c,fc,sub) and mg:IsExists(Auxiliary.FCheckMix,1,sg,mg,sg,fc,false,fun2,...))
+		sg:AddCard(c)
+		local res=fun1(c,fc,false) and mg:IsExists(Auxiliary.FCheckMix,1,sg,mg,sg,fc,sub,fun2,...)
+			or sub and c:CheckFusionSubstitute(fc) and mg:IsExists(Auxiliary.FCheckMix,1,sg,mg,sg,fc,false,fun2,...)
+		sg:RemoveCard(c)
+		return res
 	else
-		res=fun1(c,fc,sub)
+		return fun1(c,fc,sub)
 	end
-	sg:RemoveCard(c)
-	return res
 end
+Auxiliary.FCheckAdditional=nil
 function Auxiliary.FCheckMixGoal(tp,sg,fc,sub,...)
 	local g=Group.CreateGroup()
 	return sg:IsExists(Auxiliary.FCheckMix,1,nil,sg,g,fc,sub,...) and Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0
+		and (not Auxiliary.FCheckAdditional or Auxiliary.FCheckAdditional(tp,sg,fc))
 end
 function Auxiliary.FSelectMix(c,tp,mg,sg,fc,sub,...)
 	sg:AddCard(c)
@@ -570,14 +575,13 @@ function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
 	end
 	Auxiliary.AddFusionProcMix(c,sub,insf,table.unpack(code))
 end
---Fusion monster, name + condition
+--Fusion monster, name + condition * n
 function Auxiliary.AddFusionProcCodeFun(c,code1,f,cc,sub,insf)
 	local fun={}
-	fun[1]=code1
-	for i=2,cc+1 do
+	for i=1,cc do
 		fun[i]=f
 	end
-	Auxiliary.AddFusionProcMix(c,sub,insf,table.unpack(fun))
+	Auxiliary.AddFusionProcMix(c,sub,insf,code1,table.unpack(fun))
 end
 --Fusion monster, condition + condition
 function Auxiliary.AddFusionProcFun2(c,f1,f2,insf)
@@ -590,6 +594,14 @@ function Auxiliary.AddFusionProcFunRep(c,f,cc,insf)
 		fun[i]=f
 	end
 	Auxiliary.AddFusionProcMix(c,false,insf,table.unpack(fun))
+end
+--Fusion monster, condition1 + condition2 * n
+function Auxiliary.AddFusionProcFunFun(c,f1,f2,cc,sub,insf)
+	local fun={}
+	for i=1,cc do
+		fun[i]=f2
+	end
+	Auxiliary.AddFusionProcMix(c,sub,insf,f1,table.unpack(fun))
 end
 --Fusion monster, condition1 + condition2 * minc to maxc
 function Auxiliary.AddFusionProcFunFunRep(c,f1,f2,minc,maxc,insf)
