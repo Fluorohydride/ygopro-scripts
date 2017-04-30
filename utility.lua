@@ -596,12 +596,12 @@ function Auxiliary.AddFusionProcFunRep(c,f,cc,insf)
 	Auxiliary.AddFusionProcMix(c,false,insf,table.unpack(fun))
 end
 --Fusion monster, condition1 + condition2 * n
-function Auxiliary.AddFusionProcFunFun(c,f1,f2,cc,sub,insf)
+function Auxiliary.AddFusionProcFunFun(c,f1,f2,cc,insf)
 	local fun={}
 	for i=1,cc do
 		fun[i]=f2
 	end
-	Auxiliary.AddFusionProcMix(c,sub,insf,f1,table.unpack(fun))
+	Auxiliary.AddFusionProcMix(c,false,insf,f1,table.unpack(fun))
 end
 --Fusion monster, condition1 + condition2 * minc to maxc
 function Auxiliary.AddFusionProcFunFunRep(c,f1,f2,minc,maxc,insf)
