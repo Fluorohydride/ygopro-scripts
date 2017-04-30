@@ -792,7 +792,7 @@ function Auxiliary.FSelectCon(c,tp,mg,sg,fc,...)
 end
 --Fusion monster, condition + condition
 function Auxiliary.AddFusionProcFun2(c,f1,f2,insf)
-	Auxiliary.AddFusionProcFunMulti(c,insf,f1,f2)
+	Auxiliary.AddFusionProcFun(c,insf,f1,f2)
 end
 --Fusion monster, condition * n
 function Auxiliary.AddFusionProcFunRep(c,f,cc,insf)
@@ -800,7 +800,7 @@ function Auxiliary.AddFusionProcFunRep(c,f,cc,insf)
 	for i=1,cc do
 		fun[i]=f
 	end
-	Auxiliary.AddFusionProcFunMulti(c,insf,table.unpack(fun))
+	Auxiliary.AddFusionProcFun(c,insf,table.unpack(fun))
 end
 --Fusion monster, condition1 + condition2 * minc to maxc
 function Auxiliary.AddFusionProcFunFunRep(c,f1,f2,minc,maxc,insf)
