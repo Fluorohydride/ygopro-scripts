@@ -442,6 +442,7 @@ end
 --material: names in material list
 --Fusion monster, mixed materials
 function Auxiliary.AddFusionProcMix(c,sub,insf,...)
+	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
 	local val={...}
 	local fun={}
 	local mat={}
