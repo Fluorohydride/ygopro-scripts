@@ -435,6 +435,12 @@ function Auxiliary.XyzOperation2(f,lv,minc,maxc,alterf,desc,op)
 				end
 			end
 end
+function Auxiliary.FConditionFilterF2(c,g2)
+	return g2:IsExists(aux.TRUE,1,c)
+end
+function Auxiliary.FConditionFilterF2c(c,f1,f2)
+	return f1(c) or f2(c)
+end
 function Auxiliary.FConditionCheckF(c,chkf)
 	return c:IsLocation(LOCATION_MZONE) and c:IsControler(chkf)
 end
