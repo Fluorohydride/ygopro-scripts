@@ -110,6 +110,9 @@ end
 function c82734805.fcfilter2(c,code,g,fc)
 	return (c:IsFusionCode(code) or c:CheckFusionSubstitute(fc)) and g:IsExists(c82734805.filter,1,c)
 end
+function c82734805.fcfilter22(c,fc)
+	return c:IsFusionCode(14799437,23440231) or c:CheckFusionSubstitute(fc)
+end
 function c82734805.fcfilter3(c,g,fc)
 	return ((c:IsFusionCode(14799437) or c:CheckFusionSubstitute(fc)) and g:IsExists(Card.IsFusionCode,1,c,23440231))
 		or ((c:IsFusionCode(23440231) or c:CheckFusionSubstitute(fc)) and g:IsExists(Card.IsFusionCode,1,c,14799437))
@@ -200,7 +203,7 @@ function c82734805.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 			ok=true
 		end
 	else
-		local mg2=mg:Filter(aux.FConditionFilter22,nil,14799437,23440231,true,c)
+		local mg2=mg:Filter(c82734805.fcfilter22,nil,c)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 		local sg1=mg2:Select(tp,1,1,nil)
 		local tc1=sg1:GetFirst()
