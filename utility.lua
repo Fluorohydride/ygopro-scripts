@@ -458,7 +458,7 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 			table.insert(mat,val[i])
 		end
 	end
-	if c.material_count==nil then
+	if #mat>0 and c.material_count==nil then
 		local code=c:GetOriginalCode()
 		local mt=_G["c" .. code]
 		mt.material_count=#mat
