@@ -49,20 +49,22 @@ end
 function c84569886.atkcon1(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=a:GetBattleTarget()
-	return a:IsFaceup() and a:IsRelateToBattle() and a:IsSetCard(0x10af) and a:IsType(TYPE_FUSION)
-		and d and d:IsFaceup() and d:IsRelateToBattle() and d:GetAttack()>0 and a:GetControler()~=d:GetControler()
+	if a:IsControler(1-tp) then a,d=d,a end
+	return a and d and a:IsFaceup() and a:IsRelateToBattle() and a:IsSetCard(0x10af) and a:IsType(TYPE_FUSION)
+		and d:IsFaceup() and d:IsRelateToBattle() and d:GetAttack()>0 and a:GetControler()~=d:GetControler()
 end
 function c84569886.atkop1(e,tp,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=a:GetBattleTarget()
+	if a:IsControler(1-tp) then a,d=d,a end
 	if e:GetHandler():IsRelateToEffect(e)
-		and bc:IsFaceup() and bc:IsRelateToBattle() then
+		and d:IsFaceup() and d:IsRelateToBattle() then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(-1000)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
-		a:RegisterEffect(e1)
+		d:RegisterEffect(e1)
 	end
 end
 function c84569886.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
