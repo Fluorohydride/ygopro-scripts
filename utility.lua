@@ -641,13 +641,10 @@ function Auxiliary.FCheckMixRep(c,sg,g,fc,sub,cc,fun1,fun2,...)
 		elseif sub and fun2(c,fc,true) then
 			res=sg:IsExists(Auxiliary.FCheckMixRep,1,g,sg,g,fc,false,cc,fun1,...)
 		end
-	elseif sub then
-		local ct1=sg:FilterCount(fun1,g,fc,false)
-		local ct2=sg:FilterCount(fun1,g,fc,true)
-		res=ct2<=cc and ct2==sg:GetCount()-g:GetCount() and ct2-ct1<=1
-	else
-		local ct=sg:FilterCount(fun1,g,fc,false)
-		res=ct<=cc and ct==sg:GetCount()-g:GetCount()
+	elseif fun1(c,fc,sub) then
+		local ct1=sg:FilterCount(fun1,g,fc,sub)
+		local ct2=sg:FilterCount(fun1,g,fc,false)
+		res=ct1<=cc and ct1==sg:GetCount()-g:GetCount() and (not sub or ct1-ct2<=1)
 	end
 	g:RemoveCard(c)
 	return res
@@ -667,7 +664,7 @@ function Auxiliary.FCheckSelectMixRep(c,tp,mg,sg,g,fc,sub,cc,fun1,fun2,...)
 		elseif sub and fun2(c,fc,true) then
 			res=mg:IsExists(Auxiliary.FCheckSelectMixRep,1,g,tp,mg,sg,g,fc,false,cc,fun1,...)
 		end
-	else
+	elseif fun1(c,fc,sub) then
 		local ct1=sg:FilterCount(fun1,g,fc,sub)
 		local ct2=sg:FilterCount(fun1,g,fc,false)
 		if ct1<=cc and ct1==sg:FilterCount(aux.TRUE,g) and (not sub or ct1-ct2<=1) then
@@ -677,15 +674,18 @@ function Auxiliary.FCheckSelectMixRep(c,tp,mg,sg,g,fc,sub,cc,fun1,fun2,...)
 				res=not Auxiliary.FCheckAdditional or Auxiliary.FCheckAdditional(tp,g2,fc)
 			elseif cc>0 then
 				if fun1(c,fc,false) then
-					res=mg:IsExists(Auxiliary.FCheckSelectMixRep,1,g,tp,mg,sg,g,fc,sub,cc-1,fun1)
-				elseif sub and fun1(c,fc,true) then
-					res=mg:IsExists(Auxiliary.FCheckSelectMixRep,1,g,tp,mg,sg,g,fc,false,cc-1,fun1)
+					res=mg:IsExists(Auxiliary.FCheckSelectMixRepM,1,g,tp,mg,sg,g,fc,sub,cc-1,fun1)
+				elseif sub then
+					res=mg:IsExists(Auxiliary.FCheckSelectMixRepM,1,g,tp,mg,sg,g,fc,false,cc-1,fun1)
 				end
 			end
 		end
 	end
 	g:RemoveCard(c)
 	return res
+end
+function Auxiliary.FCheckSelectMixRepM(c,tp,...)
+	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and Auxiliary.FCheckSelectMixRep(c,tp,...)
 end
 function Auxiliary.FSelectMixRep(c,tp,mg,sg,fc,sub,cc,...)
 	sg:AddCard(c)
