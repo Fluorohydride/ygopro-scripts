@@ -24,16 +24,18 @@ function c48144509.filter2(c,e,tp,m,f,chkf)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
 function c48144509.fcheck(tp,sg,fc)
-	return not sg:IsContains(fc) and sg:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)<=2
+	return sg:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)<=2
 end
 function c48144509.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
 		local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsAbleToGrave,nil)
 		if Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>1 then
-			Auxiliary.FCheckAdditional=c48144509.fcheck
 			local sg=Duel.GetMatchingGroup(c48144509.exfilter0,tp,LOCATION_EXTRA,0,nil)
-			mg1:Merge(sg)
+			if sg:GetCount()>0 then
+				mg1:Merge(sg)
+				Auxiliary.FCheckAdditional=c48144509.fcheck
+			end
 		end
 		local res=Duel.IsExistingMatchingCard(c48144509.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		Auxiliary.FCheckAdditional=nil
@@ -55,9 +57,11 @@ function c48144509.activate(e,tp,eg,ep,ev,re,r,rp)
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c48144509.filter1,nil,e)
 	local exmat=false
 	if Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>1 then
-		exmat=true
 		local sg=Duel.GetMatchingGroup(c48144509.exfilter1,tp,LOCATION_EXTRA,0,nil,e)
-		mg1:Merge(sg)
+		if sg:GetCount()>0 then
+			mg1:Merge(sg)
+			exmat=true
+		end
 	end
 	if exmat then Auxiliary.FCheckAdditional=c48144509.fcheck end
 	local sg1=Duel.GetMatchingGroup(c48144509.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
