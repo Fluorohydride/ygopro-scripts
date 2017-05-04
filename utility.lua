@@ -243,8 +243,8 @@ function Auxiliary.AddSynchroProcedure2(c,f1,f2)
 	e1:SetValue(SUMMON_TYPE_SYNCHRO)
 	c:RegisterEffect(e1)
 end
-function Auxiliary.XyzAlterFilter(c,alterf,xyzc)
-	return alterf(c) and c:IsCanBeXyzMaterial(xyzc)
+function Auxiliary.XyzAlterFilter(c,alterf,xyzc,tp)
+	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c),xyzc)>0
 end
 --Xyz monster, lv k*n
 function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,desc,maxct,op)
@@ -272,7 +272,8 @@ function Auxiliary.XyzCondition(f,lv,minc,maxc)
 	return	function(e,c,og,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-				local ft=Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)
+				local tp=c:GetControler()
+				local ft=Duel.GetLocationCountFromEx(tp)
 				local ct=-ft
 				local minc=minc
 				local maxc=maxc
@@ -338,7 +339,7 @@ function Auxiliary.XyzCondition2(f,lv,minc,maxc,alterf,desc,op)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp=c:GetControler()
-				local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+				local ft=Duel.GetLocationCountFromEx(tp)
 				local ct=-ft
 				local mg=nil
 				if og then
@@ -346,7 +347,7 @@ function Auxiliary.XyzCondition2(f,lv,minc,maxc,alterf,desc,op)
 				else
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
-				if ct<1 and (not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c)
+				if (not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,tp)
 					and (not op or op(e,tp,0)) then
 					return true
 				end
@@ -380,14 +381,14 @@ function Auxiliary.XyzTarget2(f,lv,minc,maxc,alterf,desc,op)
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
 				local b1=ct<minc and Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
-				local b2=ct<1 and (not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c)
+				local b2=(not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,tp)
 					and (not op or op(e,tp,0))
 				local g=nil
 				if b2 and (not b1 or Duel.SelectYesNo(tp,desc)) then
 					e:SetLabel(1)
 					if op then op(e,tp,1) end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-					g=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c)
+					g=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c,tp)
 				else
 					e:SetLabel(0)
 					g=Duel.SelectXyzMaterial(tp,c,f,lv,minc,maxc,og)
