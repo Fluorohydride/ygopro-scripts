@@ -51,6 +51,7 @@ end
 function c58074177.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=a:GetBattleTarget()
+	if a:IsControler(1-tp) then a,d=d,a end
 	return a:IsFaceup() and a:IsRelateToBattle()
 		and d and d:IsFaceup() and d:IsRelateToBattle()
 		and d:GetAttack()>0 and a:GetControler()~=d:GetControler()
@@ -58,6 +59,7 @@ end
 function c58074177.atkop(e,tp,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=a:GetBattleTarget()
+	if a:IsControler(1-tp) then a,d=d,a end
 	if e:GetHandler():IsRelateToEffect(e)
 		and a:IsFaceup() and a:IsRelateToBattle()
 		and d:IsFaceup() and d:IsRelateToBattle() then
@@ -104,7 +106,8 @@ function c58074177.disop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c58074177.descon(e,tp,eg,ep,ev,re,r,rp)
-	return (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+		and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c58074177.desfilter(c)
 	return c:IsFaceup() and c:IsLevelAbove(5)
