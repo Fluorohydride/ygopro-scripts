@@ -457,12 +457,18 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 		if type(val[i])=='function' then
 			fun[i]=function(c) return val[i](c) and not c:IsHasEffect(6205579) end
 		else
+			local addmat=true
 			if sub then
 				fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
 			else
 				fun[i]=function(c) return c:IsFusionCode(val[i]) end
 			end
-			table.insert(mat,val[i])
+			for index, value in ipairs(mat) do
+				if value==val[i] then
+					addmat=false
+				end
+			end
+			if addmat then table.insert(mat,val[i]) end
 		end
 	end
 	if #mat>0 and c.material_count==nil then
@@ -570,12 +576,18 @@ function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
 		if type(val[i])=='function' then
 			fun[i]=function(c) return val[i](c) and not c:IsHasEffect(6205579) end
 		else
+			local addmat=true
 			if sub then
 				fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
 			else
 				fun[i]=function(c) return c:IsFusionCode(val[i]) end
 			end
-			table.insert(mat,val[i])
+			for index, value in ipairs(mat) do
+				if value==val[i] then
+					addmat=false
+				end
+			end
+			if addmat then table.insert(mat,val[i]) end
 		end
 	end
 	if #mat>0 and c.material_count==nil then
@@ -748,16 +760,9 @@ function Auxiliary.AddFusionProcCode4(c,code1,code2,code3,code4,sub,insf)
 end
 --Fusion monster, name * n
 function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
-	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
 	local code={}
 	for i=1,cc do
 		code[i]=code1
-	end
-	if c.material_count==nil then
-		local code=c:GetOriginalCode()
-		local mt=_G["c" .. code]
-		mt.material_count=1
-		mt.material={code1}
 	end
 	Auxiliary.AddFusionProcMix(c,sub,insf,table.unpack(code))
 end
