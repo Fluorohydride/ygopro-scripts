@@ -42,7 +42,7 @@ function c51124303.mfilter(c)
 	return c:GetLevel()>0 and c:IsAbleToGrave()
 end
 function c51124303.mzfilter(c,tp)
-	return c:IsLocation(LOCATION_MZONE) and c:IsControler(tp)
+	return c:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and c:GetSequence()<5
 end
 function c51124303.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
