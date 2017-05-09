@@ -69,7 +69,7 @@ function c30012506.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 	if not tc:IsRelateToEffect(e) or not c30012506.filter(tc) then
-		Duel.SendtoGrave(c,REASON_EFFECT)
+		Duel.SendtoGrave(c,REASON_RULE)
 		return
 	end
 	if not Duel.Equip(tp,c,tc,false) then return end
