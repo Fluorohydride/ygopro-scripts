@@ -13,16 +13,17 @@ function c14644902.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
-function c14644902.rfilter(c,e)
+function c14644902.rfilter(c,e,tp)
 	return c:IsReleasableByEffect() and not c:IsImmuneToEffect(e)
+		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
 function c14644902.filter(c,e,tp)
 	return c:IsType(TYPE_FUSION) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c14644902.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local rg=Duel.SelectReleaseGroup(tp,c14644902.rfilter,1,1,e:GetHandler(),e)
-	if Duel.Release(rg,REASON_EFFECT)>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
+	local rg=Duel.SelectReleaseGroup(tp,c14644902.rfilter,1,1,c,e,tp)
+	if Duel.Release(rg,REASON_EFFECT)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,c14644902.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 		if sg:GetCount()>0 then
