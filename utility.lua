@@ -542,9 +542,16 @@ function Auxiliary.FCheckMix(c,mg,sg,fc,sub,fun1,fun2,...)
 		return fun1(c,fc,sub)
 	end
 end
+function Auxiliary.FCheckTuneMagicianX(c,sg)
+	return c:IsHasEffect(EFFECT_TUNE_MAGICIAN_X) and sg:IsExists(Auxiliary.FCounterTuneMagicianX,1,c)
+end
+function Auxiliary.FCounterTuneMagicianX(c)
+    return not (c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM))
+end
 --if sg1 is subset of sg2 then not Auxiliary.FCheckAdditional(tp,sg1,fc) -> not Auxiliary.FCheckAdditional(tp,sg2,fc)
 Auxiliary.FCheckAdditional=nil
 function Auxiliary.FCheckMixGoal(tp,sg,fc,sub,...)
+	if sg:IsExists(Auxiliary.FCheckTuneMagicianX,1,nil,sg) then return false end
 	local g=Group.CreateGroup()
 	return sg:IsExists(Auxiliary.FCheckMix,1,nil,sg,g,fc,sub,...) and Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0
 		and (not Auxiliary.FCheckAdditional or Auxiliary.FCheckAdditional(tp,sg,fc))
@@ -652,6 +659,7 @@ function Auxiliary.FCheckMixRep(c,sg,g,fc,sub,fun1,minc,maxc,fun2,...)
 	return res
 end
 function Auxiliary.FCheckMixRepGoal(tp,sg,fc,sub,fun1,minc,maxc,...)
+	if sg:IsExists(Auxiliary.FCheckTuneMagicianX,1,nil,sg) then return false end
 	if sg:GetCount()<minc+#{...} or sg:GetCount()>maxc+#{...} then return false end
 	local g=Group.CreateGroup()
 	return sg:IsExists(Auxiliary.FCheckMixRep,1,nil,sg,g,fc,sub,fun1,minc,maxc,...) and Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0
