@@ -56,7 +56,7 @@ function c11109820.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc1=g:GetFirst()
 	local tc2=g:GetNext()
-	if not (tc1 and tc2 and tc1:IsRelateToEffect(e) and tc2:IsRelateToEffect(e)) then return end
+	if not tc1:IsRelateToEffect(e) or not tc2:IsRelateToEffect(e) then return end
 	Duel.SendtoGrave(g,REASON_EFFECT)
 	local og=Duel.GetOperatedGroup()
 	if og:FilterCount(Card.IsLocation,nil,LOCATION_GRAVE)<2 then return end

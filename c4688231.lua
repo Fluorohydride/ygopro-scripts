@@ -61,14 +61,14 @@ end
 function c4688231.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local loc=0
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_GRAVE end
-	if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_GRAVE end
+	if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
 	if chk==0 then return loc~=0 and Duel.IsExistingMatchingCard(c4688231.spfilter,tp,loc,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,loc)
 end
 function c4688231.spop(e,tp,eg,ep,ev,re,r,rp)
 	local loc=0
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_GRAVE end
-	if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_GRAVE end
+	if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
 	if loc==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c4688231.spfilter),tp,loc,0,1,1,nil,e,tp)
