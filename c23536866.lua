@@ -53,7 +53,7 @@ function c23536866.filter2(c,e,tp)
 end
 function c23536866.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 or Duel.GetLocationCountFromEx(tp)<=0 then return end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c23536866.filter2,nil,e,tp)
 	if g:GetCount()<2 then return end
 	local tc1=g:GetFirst()
@@ -75,6 +75,7 @@ function c23536866.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e4=e3:Clone()
 	tc2:RegisterEffect(e4)
 	Duel.SpecialSummonComplete()
+	if Duel.GetLocationCountFromEx(tp,tp,g)<=0 then return end
 	Duel.BreakEffect()
 	local xyzg=Duel.GetMatchingGroup(c23536866.xyzfilter,tp,LOCATION_EXTRA,0,nil,g)
 	if xyzg:GetCount()>0 then

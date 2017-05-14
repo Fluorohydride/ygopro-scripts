@@ -14,6 +14,7 @@ function c64161630.cfilter(c,e,tp)
 	local rk=c:GetRank()
 	return rk>1 and c:IsType(TYPE_XYZ)
 		and Duel.IsExistingMatchingCard(c64161630.filter,tp,LOCATION_EXTRA,0,1,nil,rk-1,c:GetRace(),e,tp)
+		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
 function c64161630.filter(c,rk,rc,e,tp)
 	return c:IsType(TYPE_XYZ) and c:IsSetCard(0x48)
@@ -35,7 +36,7 @@ function c64161630.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
+		return true
 	end
 end
 function c64161630.activate(e,tp,eg,ep,ev,re,r,rp)
@@ -51,7 +52,7 @@ function c64161630.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c64161630.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,64161630)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	if Duel.GetLocationCountFromEx(tp)<=0 then return end
 	local rk=e:GetLabel()
 	local rc=e:GetLabelObject():GetLabel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

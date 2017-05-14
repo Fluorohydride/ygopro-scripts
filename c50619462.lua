@@ -13,9 +13,10 @@ function c50619462.initial_effect(c)
 end
 function c50619462.cfilter(c,e,tp)
 	local race=c:GetOriginalRace()
-	return c:IsFaceup() and (race==RACE_WINDBEAST or race==RACE_BEAST 
+	return c:IsFaceup() and (race==RACE_WINDBEAST or race==RACE_BEAST
 		or race==RACE_BEASTWARRIOR) and c:IsAbleToGraveAsCost()
 		and Duel.IsExistingMatchingCard(c50619462.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,race)
+		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
 function c50619462.spfilter(c,e,tp,race)
 	return c:GetOriginalRace()==race and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -39,7 +40,7 @@ function c50619462.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50619462.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
+	if Duel.GetLocationCountFromEx(tp)>0 then
 		local race=e:GetLabelObject():GetOriginalRace()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c50619462.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,race)

@@ -33,35 +33,30 @@ end
 function c76647978.filter1(c,e,tp,mc)
 	local mg=Group.FromCards(c,mc)
 	return Duel.IsExistingMatchingCard(c76647978.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg)
+		and Duel.GetLocationCountFromEx(tp,tp,mg)>0
 end
 function c76647978.filter2(c,e,tp,mg)
 	return c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(mg,nil)
 end
 function c76647978.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local mg=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and mg:IsExists(c76647978.filter0,1,nil,e,tp,mg) end
+	if chk==0 then return mg:IsExists(c76647978.filter0,1,nil,e,tp,mg) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		Duel.SetChainLimit(aux.FALSE)
 	end
 end
-function c76647978.filter3(c,e,tp,mg)
-	return not c:IsImmuneToEffect(e) and mg:IsExists(c76647978.filter4,1,c,e,tp,c)
-end
-function c76647978.filter4(c,e,tp,mc)
-	local mg=Group.FromCards(c,mc)
-	return not c:IsImmuneToEffect(e) and Duel.IsExistingMatchingCard(c76647978.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg)
+function c76647978.filter3(c,e)
+	return c:IsOnField() and not c:IsImmuneToEffect(e)
 end
 function c76647978.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<-1 then return end
-	local mg=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)
+	local mg=Duel.GetFusionMaterial(tp):Filter(c76647978.filter3,nil,e)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g1=mg:FilterSelect(tp,c76647978.filter3,1,1,nil,e,tp,mg)
+	local g1=mg:FilterSelect(tp,c76647978.filter0,1,1,nil,e,tp,mg)
 	if g1:GetCount()==0 then return end
 	local tc1=g1:GetFirst()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g2=mg:FilterSelect(tp,c76647978.filter4,1,1,tc1,e,tp,tc1)
+	local g2=mg:FilterSelect(tp,c76647978.filter1,1,1,tc1,e,tp,tc1)
 	g1:Merge(g2)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=Duel.SelectMatchingCard(tp,c76647978.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,g1)

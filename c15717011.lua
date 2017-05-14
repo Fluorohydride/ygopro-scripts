@@ -34,11 +34,11 @@ function c15717011.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()==0 then return false end
 		e:SetLabel(0)
-		local mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
+		local mg=Duel.GetMatchingGroup(Card.IsCanBeFusionMaterial,tp,LOCATION_MZONE,0,nil)
 		return Duel.IsExistingMatchingCard(c15717011.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,c)
 	end
 	e:SetLabel(0)
-	local mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
+	local mg=Duel.GetMatchingGroup(Card.IsCanBeFusionMaterial,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c15717011.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,mg,c)
 	local mat=Duel.SelectFusionMaterial(tp,g:GetFirst(),mg,c,PLAYER_NONE+0x100)

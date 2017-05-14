@@ -47,7 +47,7 @@ end
 function c7241272.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then
-		local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,c)
+		local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)
 		local res=Duel.IsExistingMatchingCard(c7241272.spfilter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,c)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -65,7 +65,7 @@ end
 function c7241272.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFacedown() or not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) then return end
-	local mg1=Duel.GetFusionMaterial(tp):Filter(c7241272.spfilter1,c,e)
+	local mg1=Duel.GetFusionMaterial(tp):Filter(c7241272.spfilter1,nil,e)
 	local sg1=Duel.GetMatchingGroup(c7241272.spfilter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,c)
 	local mg2=nil
 	local sg2=nil

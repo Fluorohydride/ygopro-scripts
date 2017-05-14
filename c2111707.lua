@@ -59,10 +59,6 @@ function c2111707.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g2=g:FilterSelect(tp,c2111707.spfilter2,1,1,mc,tp,mc)
 	g1:Merge(g2)
-	local cg=g1:Filter(Card.IsFacedown,nil)
-	if cg:GetCount()>0 then
-		Duel.ConfirmCards(1-tp,cg)
-	end
 	Duel.Remove(g1,POS_FACEUP,REASON_COST)
 end
 function c2111707.descost(e,tp,eg,ep,ev,re,r,rp,chk)

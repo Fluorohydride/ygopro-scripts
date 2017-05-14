@@ -27,23 +27,23 @@ end
 function c56611470.xyzfilter(c,mg)
 	return c:IsXyzSummonable(mg,2,2)
 end
-function c56611470.mfilter1(c,mg,exg)
-	return mg:IsExists(c56611470.mfilter2,1,c,c,exg)
+function c56611470.mfilter1(c,mg,exg,tp)
+	return mg:IsExists(c56611470.mfilter2,1,c,c,exg,tp)
 end
-function c56611470.mfilter2(c,mc,exg)
-	return exg:IsExists(Card.IsXyzSummonable,1,nil,Group.FromCards(c,mc))
+function c56611470.mfilter2(c,mc,exg,tp)
+	local g=Group.FromCards(c,mc)
+	return exg:IsExists(Card.IsXyzSummonable,1,nil,g) and Duel.GetLocationCountFromEx(tp,tp,g)>0
 end
 function c56611470.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local mg=Duel.GetMatchingGroup(c56611470.filter,tp,LOCATION_MZONE,0,nil,e)
 	local exg=Duel.GetMatchingGroup(c56611470.xyzfilter,tp,LOCATION_EXTRA,0,nil,mg)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and exg:GetCount()>0 end
+	if chk==0 then return mg:IsExists(c56611470.mfilter1,1,nil,mg,exg,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-	local sg1=mg:FilterSelect(tp,c56611470.mfilter1,1,1,nil,mg,exg)
+	local sg1=mg:FilterSelect(tp,c56611470.mfilter1,1,1,nil,mg,exg,tp)
 	local tc1=sg1:GetFirst()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-	local sg2=mg:FilterSelect(tp,c56611470.mfilter2,1,1,tc1,tc1,exg)
+	local sg2=mg:FilterSelect(tp,c56611470.mfilter2,1,1,tc1,tc1,exg,tp)
 	sg1:Merge(sg2)
 	Duel.SetTargetCard(sg1)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -59,9 +59,9 @@ function c56611470.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTarget(c56611470.attg)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<-1 then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c56611470.tfilter,nil,e)
 	if g:GetCount()<2 then return end
+	if Duel.GetLocationCountFromEx(tp,tp,g)<=0 then return end
 	local xyzg=Duel.GetMatchingGroup(c56611470.xyzfilter,tp,LOCATION_EXTRA,0,nil,g)
 	if xyzg:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

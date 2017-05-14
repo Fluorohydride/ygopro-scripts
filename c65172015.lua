@@ -48,52 +48,32 @@ end
 function c65172015.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
-function c65172015.spfilter(c,code)
-	return c:GetOriginalCode()==code and c:IsAbleToRemoveAsCost()
+function c65172015.matfilter(c)
+	return (c:GetOriginalCode()==1561110 or c:GetOriginalCode()==91998119) and c:IsAbleToRemoveAsCost()
+end
+function c65172015.cfilter1(c,tp,g)
+	return g:IsExists(c65172015.cfilter2,1,c,tp,c)
+end
+function c65172015.cfilter2(c,tp,mc)
+	return (c:GetOriginalCode()==1561110 and mc:GetOriginalCode()==91998119
+		or c:GetOriginalCode()==91998119 and mc:GetOriginalCode()==1561110)
+		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
 end
 function c65172015.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<-1 then return false end
-	local g1=Duel.GetMatchingGroup(c65172015.spfilter,tp,LOCATION_ONFIELD,0,nil,1561110)
-	local g2=Duel.GetMatchingGroup(c65172015.spfilter,tp,LOCATION_ONFIELD,0,nil,91998119)
-	if g1:GetCount()==0 or g2:GetCount()==0 then return false end
-	if ft>0 then return true end
-	local f1=g1:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)
-	local f2=g2:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)
-	if ft==-1 then return f1>0 and f2>0
-	else return f1>0 or f2>0 end
+	local g=Duel.GetMatchingGroup(c65172015.matfilter,tp,LOCATION_ONFIELD,0,nil)
+	return g:IsExists(c65172015.cfilter1,1,nil,tp,g)
 end
 function c65172015.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g1=Duel.GetMatchingGroup(c65172015.spfilter,tp,LOCATION_ONFIELD,0,nil,1561110)
-	local g2=Duel.GetMatchingGroup(c65172015.spfilter,tp,LOCATION_ONFIELD,0,nil,91998119)
+	local g=Duel.GetMatchingGroup(c65172015.matfilter,tp,LOCATION_ONFIELD,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local g1=g:FilterSelect(tp,c65172015.cfilter1,1,1,nil,tp,g)
+	local mc=g1:GetFirst()
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local g2=g:FilterSelect(tp,c65172015.cfilter2,1,1,mc,tp,mc)
 	g1:Merge(g2)
-	local g=Group.CreateGroup()
-	local tc=nil
-	for i=1,2 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		if ft<=0 then
-			tc=g1:FilterSelect(tp,Card.IsLocation,1,1,nil,LOCATION_MZONE):GetFirst()
-			ft=ft+1
-		else
-			tc=g1:Select(tp,1,1,nil):GetFirst()
-		end
-		g:AddCard(tc)
-		if i==1 then
-			g1:Clear()
-			if tc:GetOriginalCode()==1561110 then
-				local sg=Duel.GetMatchingGroup(c65172015.spfilter,tp,LOCATION_ONFIELD,0,tc,91998119)
-				g1:Merge(sg)
-			end
-			if tc:GetOriginalCode()==91998119 then
-				local sg=Duel.GetMatchingGroup(c65172015.spfilter,tp,LOCATION_ONFIELD,0,tc,1561110)
-				g1:Merge(sg)
-			end
-		end
-	end
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	Duel.Remove(g1,POS_FACEUP,REASON_COST)
 end
 function c65172015.discon(e,tp,eg,ep,ev,re,r,rp)
 	return re:GetHandler()~=e:GetHandler() and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
