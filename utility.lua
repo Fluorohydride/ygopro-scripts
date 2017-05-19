@@ -634,27 +634,29 @@ function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
 				Duel.SetFusionMaterial(sg)
 			end
 end
-function Auxiliary.FCheckMixRep(c,sg,g,fc,sub,fun1,minc,maxc,fun2,...)
-	g:AddCard(c)
-	local res=false
+function Auxiliary.FCheckMixRep(sg,g,fc,sub,fun1,minc,maxc,fun2,...)
 	if fun2 then
-		if fun2(c,fc,sub) then
-			local sub=sub and fun2(c,fc,false)
-			res=sg:IsExists(Auxiliary.FCheckMixRep,1,g,sg,g,fc,sub,fun1,minc,maxc,...)
-		end
-	elseif fun1(c,fc,sub) then
-		local sub=sub and fun1(c,fc,false)
+		return sg:IsExists(Auxiliary.FCheckMixRepFilter,1,g,sg,g,fc,sub,fun1,minc,maxc,fun2,...)
+	else
 		local ct1=sg:FilterCount(fun1,g,fc,sub)
 		local ct2=sg:FilterCount(fun1,g,fc,false)
-		res=ct1==sg:GetCount()-g:GetCount() and (not sub or ct1-ct2<=1)
+		return ct1==sg:GetCount()-g:GetCount() and ct1-ct2<=1
 	end
-	g:RemoveCard(c)
-	return res
+end
+function Auxiliary.FCheckMixRepFilter(c,sg,g,fc,sub,fun1,minc,maxc,fun2,...)
+	if fun2(c,fc,sub) then
+		g:AddCard(c)
+		local sub=sub and fun2(c,fc,false)
+		local res=Auxiliary.FCheckMixRep(sg,g,fc,sub,fun1,minc,maxc,...)
+		g:RemoveCard(c)
+		return res
+	end
+	return false
 end
 function Auxiliary.FCheckMixRepGoal(tp,sg,fc,sub,fun1,minc,maxc,...)
 	if sg:GetCount()<minc+#{...} or sg:GetCount()>maxc+#{...} then return false end
 	local g=Group.CreateGroup()
-	return sg:IsExists(Auxiliary.FCheckMixRep,1,nil,sg,g,fc,sub,fun1,minc,maxc,...) and Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0
+	return Auxiliary.FCheckMixRep(sg,g,fc,sub,fun1,minc,maxc,...) and Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0
 		and (not Auxiliary.FCheckAdditional or Auxiliary.FCheckAdditional(tp,sg,fc))
 end
 function Auxiliary.FCheckMixRepTemplate(c,cond,tp,mg,sg,g,fc,sub,fun1,minc,maxc,...)
@@ -708,13 +710,14 @@ function Auxiliary.FCheckSelectMixRepAll(c,tp,mg,sg,g,fc,sub,fun1,minc,maxc,fun2
 			g:RemoveCard(c)
 			return res
 		end
-	elseif fun1(c,fc,sub) then
+	elseif maxc>0 and fun1(c,fc,sub) then
 		g:AddCard(c)
 		local sub=sub and fun1(c,fc,false)
 		local res=Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,sub,fun1,minc-1,maxc-1)
 		g:RemoveCard(c)
 		return res
 	end
+	return false
 end
 function Auxiliary.FCheckSelectMixRepM(c,tp,...)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
