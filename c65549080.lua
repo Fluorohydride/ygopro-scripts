@@ -10,17 +10,19 @@ function c65549080.initial_effect(c)
 	e1:SetOperation(c65549080.spop)
 	c:RegisterEffect(e1)
 end
-function c65549080.spfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x37) and c:IsAbleToHandAsCost()
+function c65549080.spfilter(c,ft)
+	return c:IsFaceup() and c:IsSetCard(0x37) and c:IsAbleToHandAsCost() and (ft>0 or c:GetSequence()<5)
 end
 function c65549080.spcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(c65549080.spfilter,c:GetControler(),LOCATION_MZONE,0,1,nil)
+	local tp=c:GetControler()
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	return ft>-1 and Duel.IsExistingMatchingCard(c65549080.spfilter,tp,LOCATION_MZONE,0,1,nil,ft)
 end
 function c65549080.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=Duel.SelectMatchingCard(tp,c65549080.spfilter,tp,LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c65549080.spfilter,tp,LOCATION_MZONE,0,1,1,nil,ft)
 	Duel.SendtoHand(g,nil,REASON_COST)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

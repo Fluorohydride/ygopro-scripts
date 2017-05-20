@@ -14,15 +14,18 @@ end
 function c48579379.eqfilter(c)
 	return c:IsCode(40240595) and c:GetTurnCounter()>=6
 end
-function c48579379.rfilter(c)
+function c48579379.rfilter(c,ft,tp)
 	return c:IsCode(58192742) and c:GetEquipGroup():FilterCount(c48579379.eqfilter,nil)>0
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c48579379.spcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-1
-		and Duel.CheckReleaseGroup(c:GetControler(),c48579379.rfilter,1,nil)
+	local tp=c:GetControler()
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	return ft>-1 and Duel.CheckReleaseGroup(tp,c48579379.rfilter,1,nil,ft,tp)
 end
 function c48579379.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(c:GetControler(),c48579379.rfilter,1,1,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local g=Duel.SelectReleaseGroup(tp,c48579379.rfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end

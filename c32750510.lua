@@ -31,20 +31,44 @@ function c32750510.initial_effect(c)
 	e3:SetOperation(c32750510.desop)
 	c:RegisterEffect(e3)
 end
+function c32750510.rfilter(c,tp)
+	return c:IsAttribute(ATTRIBUTE_WATER) and (c:IsControler(tp) or c:IsFaceup())
+end
+function c32750510.mzfilter(c,tp)
+	return c:IsControler(tp) and c:GetSequence()<5
+end
 function c32750510.spcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-2
-		and Duel.CheckReleaseGroup(c:GetControler(),Card.IsAttribute,2,nil,ATTRIBUTE_WATER)
+	local tp=c:GetControler()
+	local rg=Duel.GetReleaseGroup(tp):Filter(c32750510.rfilter,nil,tp)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ct=-ft+1
+	return ft>-2 and rg:GetCount()>1 and (ft>0 or rg:IsExists(c32750510.mzfilter,ct,nil,tp))
 end
 function c32750510.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(c:GetControler(),Card.IsAttribute,2,2,nil,ATTRIBUTE_WATER)
+	local rg=Duel.GetReleaseGroup(tp):Filter(c32750510.rfilter,nil,tp)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local g=nil
+	if ft>0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:Select(tp,2,2,nil)
+	elseif ft==0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:FilterSelect(tp,c32750510.mzfilter,1,1,nil,tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		local g2=rg:Select(tp,1,1,g:GetFirst())
+		g:Merge(g2)
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:FilterSelect(tp,c32750510.mzfilter,2,2,nil,tp)
+	end
 	Duel.Release(g,REASON_COST)
 end
 function c32750510.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsCanAddCounter(0x1015,1) end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsCanAddCounter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,0x1015,1) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,Card.IsCanAddCounter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,0x1015,1)
+	Duel.SelectTarget(tp,Card.IsCanAddCounter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,0x1015,1)
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0)
 end
 function c32750510.operation(e,tp,eg,ep,ev,re,r,rp)

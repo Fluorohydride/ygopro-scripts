@@ -33,14 +33,34 @@ function c102380.initial_effect(c)
 	e3:SetOperation(c102380.spcop)
 	c:RegisterEffect(e3)
 end
+function c102380.mzfilter(c)
+	return c:GetSequence()<5
+end
 function c102380.spcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-2
-		and Duel.IsExistingMatchingCard(Card.IsReleasable,c:GetControler(),0,LOCATION_MZONE,2,nil)
+	local tp=c:GetControler()
+	local rg=Duel.GetMatchingGroup(Card.IsReleasable,tp,0,LOCATION_MZONE,nil)
+	local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
+	local ct=-ft+1
+	return ft>-2 and rg:GetCount()>1 and (ft>0 or rg:IsExists(c102380.mzfilter,ct,nil))
 end
 function c102380.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectMatchingCard(tp,Card.IsReleasable,tp,0,LOCATION_MZONE,2,2,nil)
+	local rg=Duel.GetMatchingGroup(Card.IsReleasable,tp,0,LOCATION_MZONE,nil)
+	local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
+	local g=nil
+	if ft>0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:Select(tp,2,2,nil)
+	elseif ft==0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:FilterSelect(tp,c102380.mzfilter,1,1,nil)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		local g2=rg:Select(tp,1,1,g:GetFirst())
+		g:Merge(g2)
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:FilterSelect(tp,c102380.mzfilter,2,2,nil)
+	end
 	Duel.Release(g,REASON_COST)
 end
 function c102380.damcon(e,tp,eg,ep,ev,re,r,rp)

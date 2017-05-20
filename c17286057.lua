@@ -40,20 +40,26 @@ function c17286057.initial_effect(c)
 	e5:SetCondition(c17286057.atcon)
 	c:RegisterEffect(e5)
 end
+function c17286057.hspfilter(c,ft,tp)
+	return c:IsCode(80887952)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
+end
 function c17286057.hspcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-1
-		and Duel.CheckReleaseGroup(c:GetControler(),Card.IsCode,1,nil,80887952)
+	local tp=c:GetControler()
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	return ft>-1 and Duel.CheckReleaseGroup(tp,c17286057.hspfilter,1,nil,ft,tp)
 end
 function c17286057.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(tp,Card.IsCode,1,1,nil,80887952)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local g=Duel.SelectReleaseGroup(tp,c17286057.hspfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c17286057.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_MONSTER)
 end
 function c17286057.value(e,c)
-	return Duel.GetMatchingGroupCount(c17286057.filter,c:GetControler(),LOCATION_REMOVED,LOCATION_REMOVED,nil)*300
+	return Duel.GetMatchingGroupCount(c17286057.filter,0,LOCATION_REMOVED,LOCATION_REMOVED,nil)*300
 end
 function c17286057.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_BATTLE) and e:GetHandler():GetTurnID()==Duel.GetTurnCount()

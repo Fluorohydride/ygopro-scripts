@@ -31,13 +31,19 @@ function c31516413.initial_effect(c)
 	e3:SetOperation(c31516413.spop)
 	c:RegisterEffect(e3)
 end
+function c31516413.hspfilter(c,ft,tp)
+	return c:IsSetCard(0x69)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
+end
 function c31516413.hspcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-1
-		and Duel.CheckReleaseGroup(c:GetControler(),Card.IsSetCard,1,nil,0x69)
+	local tp=c:GetControler()
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	return ft>-1 and Duel.CheckReleaseGroup(tp,c31516413.hspfilter,1,nil,ft,tp)
 end
 function c31516413.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(c:GetControler(),Card.IsSetCard,1,1,nil,0x69)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local g=Duel.SelectReleaseGroup(tp,c31516413.hspfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 	c:RegisterFlagEffect(0,RESET_EVENT+0x4fc0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(31516413,2))
 end

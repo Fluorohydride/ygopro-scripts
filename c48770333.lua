@@ -30,19 +30,23 @@ function c48770333.initial_effect(c)
 	e3:SetOperation(c48770333.atkop)
 	c:RegisterEffect(e3)
 end
-function c48770333.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0xd3)
+function c48770333.spfilter(c,ft)
+	return c:IsReleasable() and (ft>0 or c:GetSequence()<5)
 end
 function c48770333.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(1-tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(Card.IsReleasable,tp,0,LOCATION_MZONE,1,nil)
+	local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
+	return ft>-1 and Duel.IsExistingMatchingCard(c48770333.spfilter,tp,0,LOCATION_MZONE,1,nil,ft)
 end
 function c48770333.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectMatchingCard(tp,Card.IsReleasable,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c48770333.spfilter,tp,0,LOCATION_MZONE,1,1,nil,ft)
 	Duel.Release(g,REASON_COST)
+end
+function c48770333.cfilter(c)
+	return c:IsFaceup() and c:IsSetCard(0xd3)
 end
 function c48770333.spcon2(e,c)
 	if c==nil then return true end

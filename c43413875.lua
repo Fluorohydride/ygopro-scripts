@@ -30,16 +30,19 @@ function c43413875.initial_effect(c)
 	e3:SetOperation(c43413875.drop)
 	c:RegisterEffect(e3)
 end
-function c43413875.hspfilter(c)
+function c43413875.hspfilter(c,ft,tp)
 	return c:IsSetCard(0xe6) and c:GetLevel()==8 and not c:IsCode(43413875)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c43413875.hspcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-1
-		and Duel.CheckReleaseGroup(c:GetControler(),c43413875.hspfilter,1,nil)
+	local tp=c:GetControler()
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	return ft>-1 and Duel.CheckReleaseGroup(tp,c43413875.hspfilter,1,nil,ft,tp)
 end
 function c43413875.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(c:GetControler(),c43413875.hspfilter,1,1,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local g=Duel.SelectReleaseGroup(tp,c43413875.hspfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c43413875.target(e,tp,eg,ep,ev,re,r,rp,chk)
