@@ -31,7 +31,7 @@ end
 function c4068622.spfilter1(c,ft,tp)
 	if c:GetSequence()<5 then ft=ft+1 end
 	return c:IsFaceup() and c:IsSetCard(0x33) and c:IsType(TYPE_TUNER) and c:IsAbleToRemove()
-		and ft>-1 and Duel.IsExistingMatchingCard(c4068622.spfilter2,tp,LOCATION_MZONE,0,1,c,ft)
+		and ft>-1 and Duel.IsExistingMatchingCard(c4068622.spfilter2,tp,LOCATION_MZONE,0,1,nil,ft)
 end
 function c4068622.spfilter2(c,ft)
 	return c:IsFaceup() and not c:IsType(TYPE_TUNER) and c:IsAbleToRemove() and (ft>0 or c:GetSequence()<5)
@@ -46,8 +46,10 @@ function c4068622.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g1=Duel.SelectMatchingCard(tp,c4068622.spfilter1,tp,LOCATION_MZONE,0,1,1,nil,ft,tp)
+	local tc=g1:GetFirst()
+	if tc:GetSequence()<5 then ft=ft+1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=Duel.SelectMatchingCard(tp,c4068622.spfilter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst(),ft)
+	local g2=Duel.SelectMatchingCard(tp,c4068622.spfilter2,tp,LOCATION_MZONE,0,1,1,nil,ft)
 	g1:Merge(g2)
 	Duel.Remove(g1,POS_FACEUP,REASON_COST)
 end

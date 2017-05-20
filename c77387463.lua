@@ -51,7 +51,7 @@ function c77387463.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	if ft>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		g=mg:Select(tp,2,2,nil)
-	elseif ft>-2 then
+	elseif ft==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		g=mg:FilterSelect(tp,c77387463.mzfilter,1,1,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
