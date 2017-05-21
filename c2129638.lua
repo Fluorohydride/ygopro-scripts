@@ -52,17 +52,28 @@ end
 function c2129638.spfilter(c,fc)
 	return c:IsFusionCode(89631139) and c:IsCanBeFusionMaterial(fc) and c:IsAbleToGraveAsCost()
 end
+function c2129638.spfilter1(c,tp,g)
+	return g:IsExists(c2129638.spfilter2,1,c,tp,c)
+end
+function c2129638.spfilter2(c,tp,mc)
+	return Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
+end
 function c2129638.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and Duel.IsExistingMatchingCard(c2129638.spfilter,tp,LOCATION_MZONE,0,2,nil,c)
+	local g=Duel.GetMatchingGroup(c2129638.spfilter,tp,LOCATION_MZONE,0,nil,c)
+	return g:IsExists(c2129638.spfilter1,1,nil,tp,g)
 end
 function c2129638.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=Duel.GetMatchingGroup(c2129638.spfilter,tp,LOCATION_MZONE,0,nil,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c2129638.spfilter,tp,LOCATION_MZONE,0,2,2,nil,c)
-	c:SetMaterial(g)
-	Duel.SendtoGrave(g,REASON_COST)
+	local g1=g:FilterSelect(tp,c2129638.spfilter1,1,1,nil,tp,g)
+	local mc=g1:GetFirst()
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local g2=g:FilterSelect(tp,c2129638.spfilter2,1,1,mc,tp,mc)
+	g1:Merge(g2)
+	c:SetMaterial(g1)
+	Duel.SendtoGrave(g1,REASON_COST)
 end
 function c2129638.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

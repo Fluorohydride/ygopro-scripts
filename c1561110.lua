@@ -51,54 +51,46 @@ end
 function c1561110.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
-function c1561110.rmfilter(c)
-	return c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial()
+function c1561110.cfilter(c)
+	return c:IsFusionCode(30012506,77411244,3405259) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial()
 end
-function c1561110.rmfilter1(c,mg,ft)
-	local mg2=mg:Clone()
-	mg2:RemoveCard(c)
-	local ct=ft
-	if c:IsLocation(LOCATION_MZONE) then ct=ct+1 end
-	return c:IsFusionCode(30012506) and mg2:IsExists(c1561110.rmfilter2,1,nil,mg2,ct)
+function c1561110.fcheck(c,sg,g,code,...)
+	if not c:IsFusionCode(code) then return false end
+	if ... then
+		g:AddCard(c)
+		local res=sg:IsExists(c1561110.fcheck,1,g,sg,g,...)
+		g:RemoveCard(c)
+		return res
+	else return true end
 end
-function c1561110.rmfilter2(c,mg,ft)
-	local mg2=mg:Clone()
-	mg2:RemoveCard(c)
-	local ct=ft
-	if c:IsLocation(LOCATION_MZONE) then ct=ct+1 end
-	return c:IsFusionCode(77411244) and mg2:IsExists(c1561110.rmfilter3,1,nil,ct)
-end
-function c1561110.rmfilter3(c,ft)
-	local ct=ft
-	if c:IsLocation(LOCATION_MZONE) then ct=ct+1 end
-	return c:IsFusionCode(3405259) and ct>0
+function c1561110.fselect(c,tp,mg,sg,...)
+	sg:AddCard(c)
+	local res=false
+	if sg:GetCount()<3 then
+		res=mg:IsExists(c1561110.fselect,1,sg,tp,mg,sg,...)
+	elseif Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
+		local g=Group.CreateGroup()
+		res=sg:IsExists(c1561110.fcheck,1,nil,sg,g,...)
+	end
+	sg:RemoveCard(c)
+	return res
 end
 function c1561110.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<-2 then return false end
-	local mg=Duel.GetMatchingGroup(c1561110.rmfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	return mg:IsExists(c1561110.rmfilter1,1,nil,mg,ft)
+	local mg=Duel.GetMatchingGroup(c1561110.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
+	local sg=Group.CreateGroup()
+	return mg:IsExists(c1561110.fselect,1,nil,tp,mg,sg,30012506,77411244,3405259)
 end
 function c1561110.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local mg=Duel.GetMatchingGroup(c1561110.rmfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=mg:FilterSelect(tp,c1561110.rmfilter1,1,1,nil,mg,ft)
-	local tc1=g1:GetFirst()
-	mg:RemoveCard(tc1)
-	if tc1:IsLocation(LOCATION_MZONE) then ft=ft+1 end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=mg:FilterSelect(tp,c1561110.rmfilter2,1,1,nil,mg,ft)
-	local tc2=g2:GetFirst()
-	if tc2:IsLocation(LOCATION_MZONE) then ft=ft+1 end
-	mg:RemoveCard(tc2)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g3=mg:FilterSelect(tp,c1561110.rmfilter3,1,1,nil,ft)
-	g1:Merge(g2)
-	g1:Merge(g3)
-	Duel.Remove(g1,POS_FACEUP,REASON_COST)
+	local mg=Duel.GetMatchingGroup(c1561110.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
+	local sg=Group.CreateGroup()
+	while sg:GetCount()<3 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+		local g=mg:FilterSelect(tp,c1561110.fselect,1,1,sg,tp,mg,sg,30012506,77411244,3405259)
+		sg:Merge(g)
+	end
+	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c1561110.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,e:GetHandler()) end

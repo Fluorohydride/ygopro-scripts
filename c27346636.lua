@@ -37,31 +37,47 @@ end
 function c27346636.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
-function c27346636.spfilter1(c,tp)
-	return c:IsFusionCode(78868776) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial()
-		and Duel.IsExistingMatchingCard(c27346636.spfilter2,tp,LOCATION_MZONE,0,2,c)
+function c27346636.cfilter(c)
+	return (c:IsFusionCode(78868776) or c:IsFusionSetCard(0x19) and c:IsType(TYPE_MONSTER))
+		and c:IsCanBeFusionMaterial() and c:IsAbleToDeckOrExtraAsCost()
 end
-function c27346636.spfilter2(c)
-	return c:IsFusionSetCard(0x19) and c:IsCanBeFusionMaterial() and c:IsAbleToDeckOrExtraAsCost()
+function c27346636.fcheck(c,sg)
+	return c:IsFusionCode(78868776) and sg:IsExists(c27346636.fcheck2,2,c)
+end
+function c27346636.fcheck2(c)
+	return c:IsFusionSetCard(0x19) and c:IsType(TYPE_MONSTER)
+end
+function c27346636.fselect(c,tp,mg,sg)
+	sg:AddCard(c)
+	local res=false
+	if sg:GetCount()<3 then
+		res=mg:IsExists(c27346636.fselect,1,sg,tp,mg,sg)
+	elseif Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
+		res=sg:IsExists(c27346636.fcheck,1,nil,sg)
+	end
+	sg:RemoveCard(c)
+	return res
 end
 function c27346636.sprcon(e,c)
-	if c==nil then return true end 
+	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-3
-		and Duel.IsExistingMatchingCard(c27346636.spfilter1,tp,LOCATION_ONFIELD,0,1,nil,tp)
+	local mg=Duel.GetMatchingGroup(c27346636.cfilter,tp,LOCATION_ONFIELD,0,nil)
+	local sg=Group.CreateGroup()
+	return mg:IsExists(c27346636.fselect,1,nil,tp,mg,sg)
 end
 function c27346636.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(27346636,2))
-	local g1=Duel.SelectMatchingCard(tp,c27346636.spfilter1,tp,LOCATION_ONFIELD,0,1,1,nil,tp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(27346636,3))
-	local g2=Duel.SelectMatchingCard(tp,c27346636.spfilter2,tp,LOCATION_MZONE,0,2,2,g1:GetFirst())
-	g1:Merge(g2)
-	local tc=g1:GetFirst()
-	while tc do
-		if not tc:IsFaceup() then Duel.ConfirmCards(1-tp,tc) end
-		tc=g1:GetNext()
+	local mg=Duel.GetMatchingGroup(c27346636.cfilter,tp,LOCATION_ONFIELD,0,nil)
+	local sg=Group.CreateGroup()
+	while sg:GetCount()<3 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+		local g=mg:FilterSelect(tp,c27346636.fselect,1,1,sg,tp,mg,sg)
+		sg:Merge(g)
 	end
-	Duel.SendtoDeck(g1,nil,2,REASON_COST)
+	local cg=sg:Filter(Card.IsFacedown,nil)
+	if cg:GetCount()>0 then
+		Duel.ConfirmCards(1-tp,cg)
+	end
+	Duel.SendtoDeck(sg,nil,2,REASON_COST)
 end
 function c27346636.discon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
