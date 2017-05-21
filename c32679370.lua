@@ -26,10 +26,13 @@ function c32679370.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
+		ft=ft-1
 	end
 	tc=g:GetNext()
-	if ft>1 and tc and Duel.SelectYesNo(tp,aux.Stringid(32679370,1)) then
+	while ft>1 and tc and not Duel.IsPlayerAffectedByEffect(tp,59822133) and Duel.SelectYesNo(tp,aux.Stringid(32679370,1)) do
 		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
+		ft=ft-1
+		tc=g:GetNext()
 	end
 	Duel.SpecialSummonComplete()
 end

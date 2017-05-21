@@ -27,11 +27,14 @@ function c72714226.operation(e,tp,eg,ep,ev,re,r,rp)
 	if ct<=0 then return end
 	local g=Duel.GetMatchingGroup(c72714226.filter,tp,LOCATION_DECK,0,nil,e,tp)
 	if g:GetCount()>0 then
-		local tc1=g:GetFirst()
+        	local tc1=g:GetFirst()
 		local tc2=g:GetNext()
 		Duel.SpecialSummonStep(tc1,0,tp,tp,false,false,POS_FACEUP)
-		if tc2 and ct>1 and Duel.SelectYesNo(tp,aux.Stringid(72714226,1)) then
+		ct=ct-1
+		while tc2 and ct>0 and not Duel.IsPlayerAffectedByEffect(tp,59822133) and Duel.SelectYesNo(tp,aux.Stringid(72714226,1)) do
 			Duel.SpecialSummonStep(tc2,0,tp,tp,false,false,POS_FACEUP)
+			ct=ct-1
+			tc2=g:GetNext()
 		end
 		Duel.SpecialSummonComplete()
 	end

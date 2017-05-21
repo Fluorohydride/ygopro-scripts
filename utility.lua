@@ -1049,14 +1049,21 @@ function Auxiliary.EnablePendulumAttribute(c,reg)
 	e1:SetOperation(Auxiliary.PendOperation())
 	e1:SetValue(SUMMON_TYPE_PENDULUM)
 	c:RegisterEffect(e1)
+	--Can't be facedown in PZone
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
+	e2:SetRange(LOCATION_PZONE)
+	e2:SetCode(EFFECT_CANNOT_TURN_SET)
+	c:RegisterEffect(e2)
 	--register by default
 	if reg==nil or reg then
-		local e2=Effect.CreateEffect(c)
-		e2:SetDescription(1160)
-		e2:SetType(EFFECT_TYPE_ACTIVATE)
-		e2:SetCode(EVENT_FREE_CHAIN)
-		e2:SetRange(LOCATION_HAND)
-		c:RegisterEffect(e2)
+		local e3=Effect.CreateEffect(c)
+		e3:SetDescription(1160)
+		e3:SetType(EFFECT_TYPE_ACTIVATE)
+		e3:SetCode(EVENT_FREE_CHAIN)
+		e3:SetRange(LOCATION_HAND)
+		c:RegisterEffect(e3)
 	end
 end
 function Auxiliary.PConditionFilter(c,e,tp,lscale,rscale)

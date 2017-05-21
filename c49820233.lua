@@ -23,7 +23,7 @@ function c49820233.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c49820233.ffilter(c)
-	return c:IsFusionAttribute(ATTRIBUTE_DARK) and c:IsLevelAbove(5)
+		return c:IsFusionAttribute(ATTRIBUTE_DARK) and c:IsLevelAbove(5)
 end
 function c49820233.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
@@ -47,8 +47,8 @@ function c49820233.damop(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetCount()>0 then
 			Duel.BreakEffect()
 			Duel.HintSelection(g)
+			local dam=g:GetFirst():GetBaseAttack()
 			if Duel.Destroy(g,REASON_EFFECT)~=0 then
-				local dam=g:GetFirst():GetBaseAttack()
 				Duel.Damage(p,dam,REASON_EFFECT)
 			end
 		end
