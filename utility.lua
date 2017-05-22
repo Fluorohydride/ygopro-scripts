@@ -832,7 +832,7 @@ function Auxiliary.RPGFilter(c,filter,e,tp,m,ft)
 	end
 end
 function Auxiliary.RPGFilterF(c,tp,mg,rc)
-	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) then
+	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5 then
 		Duel.SetSelectedCard(c)
 		return mg:CheckWithSumGreater(Card.GetRitualLevel,rc:GetOriginalLevel(),rc)
 	else return false end
@@ -904,7 +904,7 @@ function Auxiliary.RPEFilter(c,filter,e,tp,m,ft)
 	end
 end
 function Auxiliary.RPEFilterF(c,tp,mg,rc)
-	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) then
+	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5 then
 		Duel.SetSelectedCard(c)
 		return mg:CheckWithSumEqual(Card.GetRitualLevel,rc:GetOriginalLevel(),0,99,rc)
 	else return false end
@@ -976,7 +976,7 @@ function Auxiliary.RPEFilter2(c,filter,e,tp,m,ft)
 	end
 end
 function Auxiliary.RPEFilter2F(c,tp,mg,rc)
-	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) then
+	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5 then
 		Duel.SetSelectedCard(c)
 		return mg:CheckWithSumEqual(Card.GetRitualLevel,rc:GetLevel(),0,99,rc)
 	else return false end
