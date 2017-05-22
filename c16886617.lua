@@ -33,13 +33,16 @@ end
 function c16886617.rfilter(c)
 	return c:IsFaceup() and c:GetAttack()==0 and c:IsReleasable()
 end
+function c16886617.mzfilter(c)
+	return c:IsFaceup() and c:GetAttack()==0 and c:IsReleasable() and c:GetSequence()<5
+end
 function c16886617.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=-ft+1
 	if ct>2 then return false end
-	if ct>0 and not Duel.IsExistingMatchingCard(c16886617.rfilter,tp,LOCATION_MZONE,0,ct,nil) then return false end
+	if ct>0 and not Duel.IsExistingMatchingCard(c16886617.mzfilter,tp,LOCATION_MZONE,0,ct,nil) then return false end
 	return Duel.IsExistingMatchingCard(c16886617.rfilter,tp,LOCATION_MZONE,LOCATION_MZONE,2,nil)
 end
 function c16886617.spop(e,tp,eg,ep,ev,re,r,rp,c)
@@ -49,7 +52,7 @@ function c16886617.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Group.CreateGroup()
 	if ct>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local sg=Duel.SelectMatchingCard(tp,c16886617.rfilter,tp,LOCATION_MZONE,0,ct,ct,nil)
+		local sg=Duel.SelectMatchingCard(tp,c16886617.mzfilter,tp,LOCATION_MZONE,0,ct,ct,nil)
 		g:Merge(sg)
 	end
 	if ct<2 then
