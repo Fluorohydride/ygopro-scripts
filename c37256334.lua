@@ -22,16 +22,16 @@ function c37256334.initial_effect(c)
 	e2:SetValue(c37256334.defval)
 	c:RegisterEffect(e2)
 end
-function c37256334.deffilter(c,def)
+function c37256334.deffilter1(c,def)
 	return c:IsPosition(POS_FACEUP_DEFENSE) and c:GetDefense()~=def
 end
 function c37256334.deftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(Card.IsPosition,tp,LOCATION_MZONE,0,nil,POS_FACEUP_DEFENSE)
 	local def=g:GetSum(Card.GetBaseDefense)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c37256334.deffilter(chkc,def) end
-	if chk==0 then return Duel.IsExistingTarget(c37256334.deffilter,tp,LOCATION_MZONE,0,1,nil,def) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c37256334.deffilter1(chkc,def) end
+	if chk==0 then return Duel.IsExistingTarget(c37256334.deffilter1,tp,LOCATION_MZONE,0,1,nil,def) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c37256334.deffilter,tp,LOCATION_MZONE,0,1,1,nil,def)
+	Duel.SelectTarget(tp,c37256334.deffilter1,tp,LOCATION_MZONE,0,1,1,nil,def)
 end
 function c37256334.defop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -48,10 +48,10 @@ function c37256334.defop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 	end
 end
-function c37256334.deffilter(c)
+function c37256334.deffilter2(c)
 	return c:IsFaceup() and c:IsSetCard(0x9f)
 end
 function c37256334.defval(e,c)
-	local g=Duel.GetMatchingGroup(c37256334.deffilter,c:GetControler(),LOCATION_MZONE,0,c)
+	local g=Duel.GetMatchingGroup(c37256334.deffilter2,c:GetControler(),LOCATION_MZONE,0,c)
 	return g:GetSum(Card.GetBaseDefense)
 end
