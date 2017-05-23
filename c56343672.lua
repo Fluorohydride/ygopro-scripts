@@ -15,60 +15,31 @@ function c56343672.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToDeckAsCost() end
 	Duel.SendtoDeck(e:GetHandler(),nil,2,REASON_COST)
 end
-function c56343672.ctfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_LINK)
-end
 function c56343672.spfilter(c,e,tp,zone)
 	return c:GetLevel()>0 and not c:IsCode(56343672) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone)
 end
-function c56343672.spfilter0(c,e,tp)
-	return c:GetLevel()>0 and not c:IsCode(56343672) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp)
-end
 function c56343672.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local zone=bit.band(Duel.GetLinkedZone(tp),0x1f)
-		if zone==0 then return false end
-		local tempfix=false
-		local ct=0
-		for i=0,4 do
-			local z=bit.lshift(1,i)
-			local c=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
-			if bit.band(zone,z)>0 then
-				if not c then
-					ct=ct+1
-				elseif c==e:GetHandler() then
-					tempfix=true
-					ct=ct+1
-				end
-			end
-		end
-		if ct==0 then return false end
+		local zone=Duel.GetLinkedZone(tp)
+		local ct=Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)
+		local seq=e:GetHandler():GetSequence()
+		if seq<5 and bit.extract(zone,seq)~=0 then ct=ct+1 end
+		if ct<=0 then return false end
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
-		if not tempfix then
-			local g=Duel.GetMatchingGroup(c56343672.spfilter,tp,LOCATION_DECK,0,nil,e,tp,zone)
-			return g:CheckWithSumEqual(Card.GetLevel,6,1,ct)
-		else
-			local g=Duel.GetMatchingGroup(c56343672.spfilter0,tp,LOCATION_DECK,0,nil,e,tp)
-			return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1 and g:CheckWithSumEqual(Card.GetLevel,6,1,ct)
-		end
+		local g=Duel.GetMatchingGroup(c56343672.spfilter,tp,LOCATION_DECK,0,nil,e,tp,zone)
+		return g:CheckWithSumEqual(Card.GetLevel,6,1,ct)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c56343672.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local zone=bit.band(Duel.GetLinkedZone(tp),0x1f)
-	if zone==0 then return end
-	local ct=0
-	for i=0,4 do
-		local z=bit.lshift(1,i)
-		if bit.band(zone,z)>0 and Duel.CheckLocation(tp,LOCATION_MZONE,i) then
-			ct=ct+1
-		end
-	end
-	if ct==0 then return end
+	local zone=Duel.GetLinkedZone(tp)
+	local ct=Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)
+	if ct<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 	local g=Duel.GetMatchingGroup(c56343672.spfilter,tp,LOCATION_DECK,0,nil,e,tp,zone)
-	if ct>0 and g:CheckWithSumEqual(Card.GetLevel,6,1,ct) then
+	if g:CheckWithSumEqual(Card.GetLevel,6,1,ct) then
+		local fid=c:GetFieldID()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:SelectWithSumEqual(tp,Card.GetLevel,6,1,ct)
 		local tc=sg:GetFirst()

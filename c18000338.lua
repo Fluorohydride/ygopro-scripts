@@ -11,7 +11,7 @@ function c18000338.initial_effect(c)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_UPDATE_DEFENSE)
-	c:RegisterEffect(e1)
+	c:RegisterEffect(e2)
 end
 function c18000338.condition(e)
 	local c=e:GetHandler()

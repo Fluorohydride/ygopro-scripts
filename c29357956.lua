@@ -72,7 +72,7 @@ function c29357956.sprcon(e,c)
 	local sg=Group.CreateGroup()
 	return mg:IsExists(c29357956.fselect,1,nil,tp,mg,sg)
 end
-function c29357956.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c29357956.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetMatchingGroup(c29357956.spfilter,tp,LOCATION_MZONE,0,nil)
 	local sg=Group.CreateGroup()
 	while sg:GetCount()<3 do

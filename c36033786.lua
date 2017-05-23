@@ -17,9 +17,9 @@ function c36033786.posfilter(c)
 end
 function c36033786.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c36033786.posfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c36033786.posfilter,tp,0,LOCATION_MZONE,1,nil,POS_FACEUP_ATTACK) end
+	if chk==0 then return Duel.IsExistingTarget(c36033786.posfilter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
-	local g=Duel.SelectTarget(tp,c36033786.posfilter,tp,0,LOCATION_MZONE,1,1,nil,POS_FACEUP_ATTACK)
+	local g=Duel.SelectTarget(tp,c36033786.posfilter,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 end
 function c36033786.posop(e,tp,eg,ep,ev,re,r,rp)
