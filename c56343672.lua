@@ -15,8 +15,8 @@ function c56343672.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToDeckAsCost() end
 	Duel.SendtoDeck(e:GetHandler(),nil,2,REASON_COST)
 end
-function c56343672.spfilter(c,e,tp,zone)
-	return c:GetLevel()>0 and not c:IsCode(56343672) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone)
+function c56343672.spfilter(c,e,tp)
+	return c:GetLevel()>0 and not c:IsCode(56343672) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c56343672.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -26,7 +26,7 @@ function c56343672.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		if seq<5 and bit.extract(zone,seq)~=0 then ct=ct+1 end
 		if ct<=0 then return false end
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
-		local g=Duel.GetMatchingGroup(c56343672.spfilter,tp,LOCATION_DECK,0,nil,e,tp,zone)
+		local g=Duel.GetMatchingGroup(c56343672.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 		return g:CheckWithSumEqual(Card.GetLevel,6,1,ct)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
@@ -37,7 +37,7 @@ function c56343672.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)
 	if ct<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
-	local g=Duel.GetMatchingGroup(c56343672.spfilter,tp,LOCATION_DECK,0,nil,e,tp,zone)
+	local g=Duel.GetMatchingGroup(c56343672.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 	if g:CheckWithSumEqual(Card.GetLevel,6,1,ct) then
 		local fid=c:GetFieldID()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

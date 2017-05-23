@@ -29,6 +29,9 @@ end
 function c84869738.desfilter(c)
 	return not c84869738.cfilter(c)
 end
+function c84869738.mzfilter(c)
+	return c:GetSequence()<5
+end
 function c84869738.spfilter(c,e,tp)
 	return c:IsSetCard(0x20f8) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
@@ -36,8 +39,8 @@ function c84869738.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c84869738.desfilter,tp,LOCATION_MZONE,0,nil)
 	if chk==0 then
 		local loc=0
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)>-1 then loc=loc+LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE end
-		if Duel.GetLocationCountFromEx(tp)>-1 then loc=loc+LOCATION_EXTRA end
+		if Duel.GetLocationCount(tp,LOCATION_MZONE)>-g:FilterCount(c84869738.mzfilter,nil) then loc=loc+LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE end
+		if Duel.GetLocationCountFromEx(tp,tp,g)>0 then loc=loc+LOCATION_EXTRA end
 		return g:GetCount()>0 and loc~=0
 			and Duel.IsExistingMatchingCard(c84869738.spfilter,tp,loc,0,1,nil,e,tp)
 	end
@@ -67,10 +70,10 @@ function c84869738.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rg=Group.CreateGroup()
 	repeat
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local tg=sg:Select(tp,1,1,nil):GetFirst()
-		rg:AddCard(tg)
-		sg:Remove(Card.IsCode,nil,tg:GetCode())
-		if tg:IsLocation(LOCATION_EXTRA) then ft2=ft2-1
+		local tc=sg:Select(tp,1,1,nil):GetFirst()
+		rg:AddCard(tc)
+		sg:Remove(Card.IsCode,nil,tc:GetCode())
+		if tc:IsLocation(LOCATION_EXTRA) then ft2=ft2-1
 		else ft1=ft1-1 end
 		if ft1<=0 then sg:Remove(Card.IsLocation,nil,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE) end
 		if ft2<=0 then sg:Remove(Card.IsLocation,nil,LOCATION_EXTRA) end
