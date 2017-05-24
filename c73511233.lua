@@ -71,8 +71,10 @@ function c73511233.spfilter1(c,e)
 	return c73511233.spfilter0(c) and not c:IsImmuneToEffect(e)
 end
 function c73511233.spfilter2(c,e,tp,m,f,gc)
+	local mg=m:Clone()
+	mg:AddCard(gc)
 	return c:IsType(TYPE_FUSION) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,gc)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(mg,gc)
 end
 function c73511233.spfilter3(c)
 	return c:IsCanBeFusionMaterial() and c:IsRace(RACE_DRAGON)
