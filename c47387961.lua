@@ -16,14 +16,14 @@ function c47387961.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 c47387961.xyz_number=8
-function c47387961.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ)
+function c47387961.filter(c,code)
+	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:GetCode()~=code
 end
 function c47387961.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c47387961.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c47387961.filter,tp,0,LOCATION_MZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c47387961.filter,tp,0,LOCATION_MZONE,1,nil,e:GetHandler():GetCode()) and e:GetHandler():GetFlagEffect(43237273)==0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c47387961.filter,tp,0,LOCATION_MZONE,1,1,nil)
+	Duel.SelectTarget(tp,c47387961.filter,tp,0,LOCATION_MZONE,1,1,nil,e:GetHandler():GetCode())
 end
 function c47387961.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -34,7 +34,7 @@ function c47387961.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetCode(EFFECT_CHANGE_CODE)
-		e1:SetValue(code)
+		e1:SetValue(tc:GetCode())
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 		local e2=e1:Clone()
@@ -43,6 +43,7 @@ function c47387961.operation(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetLabelObject(e1)
 		c:RegisterEffect(e2)
 		local cid=c:CopyEffect(code,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,1)
+		e:GetHandler():RegisterFlagEffect(47387961,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 		local e4=Effect.CreateEffect(c)
 		e4:SetType(EFFECT_TYPE_SINGLE)
 		e4:SetCode(EFFECT_SET_ATTACK_FINAL)

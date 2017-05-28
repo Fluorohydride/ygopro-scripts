@@ -26,7 +26,6 @@ function c43387895.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetCountLimit(1)
-	e3:SetCost(c43387895.copycost)
 	e3:SetTarget(c43387895.copytg)
 	e3:SetOperation(c43387895.copyop)
 	c:RegisterEffect(e3)
@@ -69,19 +68,15 @@ function c43387895.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	c:SetMaterial(sg)
 	Duel.Release(sg,REASON_COST+REASON_FUSION+REASON_MATERIAL)
 end
-function c43387895.copycost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(41209827)==0 end
-	e:GetHandler():RegisterFlagEffect(41209827,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
-end
-function c43387895.copyfilter(c)
-	return c:IsType(TYPE_MONSTER) and not c:IsType(TYPE_TOKEN) and (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE))
+function c43387895.copyfilter(c,code)
+	return c:IsType(TYPE_MONSTER) and not c:IsType(TYPE_TOKEN) and c:GetOriginalCode()~=code and (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE))
 end
 function c43387895.copytg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_MZONE+LOCATION_GRAVE) and c43387895.copyfilter(chkc) and chkc~=c end
-	if chk==0 then return Duel.IsExistingTarget(c43387895.copyfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,LOCATION_MZONE+LOCATION_GRAVE,1,c) end
+	if chk==0 then return Duel.IsExistingTarget(c43387895.copyfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,LOCATION_MZONE+LOCATION_GRAVE,1,c,e:GetHandler():GetCode()) and e:GetHandler():GetFlagEffect(41209827)==0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c43387895.copyfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,LOCATION_MZONE+LOCATION_GRAVE,1,1,c)
+	Duel.SelectTarget(tp,c43387895.copyfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,LOCATION_MZONE+LOCATION_GRAVE,1,1,c,e:GetHandler():GetCode())
 end
 function c43387895.copyop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -97,6 +92,7 @@ function c43387895.copyop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 		if not tc:IsType(TYPE_TRAPMONSTER) then
 			local cid=c:CopyEffect(code,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,1)
+			e:GetHandler():RegisterFlagEffect(41209827,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 			local e3=Effect.CreateEffect(c)
 			e3:SetDescription(aux.Stringid(43387895,1))
 			e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

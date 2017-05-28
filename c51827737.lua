@@ -11,11 +11,14 @@ function c51827737.initial_effect(c)
 	e1:SetOperation(c51827737.operation)
 	c:RegisterEffect(e1)
 end
+function c51827737.copyfilter(c,code)
+	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x2) and c:GetCode()~=code
+end
 function c51827737.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and chkc:IsSetCard(0x2) end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsSetCard,tp,LOCATION_GRAVE,0,1,nil,0x2) end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c51827737.copyfilter(chkc) end
+	if chk==0 then return (c51827737.copyfilter,tp,LOCATION_GRAVE,0,1,nil,e:GetHandler():GetCode())  end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(51827737,1))
-	Duel.SelectTarget(tp,Card.IsSetCard,tp,LOCATION_GRAVE,0,1,1,nil,0x2)
+	Duel.SelectTarget(tp,c51827737.copyfilter,tp,LOCATION_GRAVE,0,1,1,nil,e:GetHandler():GetCode())
 end
 function c51827737.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

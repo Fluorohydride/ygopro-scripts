@@ -10,15 +10,15 @@ function c89312388.initial_effect(c)
 	e1:SetOperation(c89312388.cosoperation)
 	c:RegisterEffect(e1)
 end
-function c89312388.filter2(c,fc)
-	if not c:IsAbleToGraveAsCost() then return false end
-	return c:IsCode(table.unpack(fc.material))
+function c89312388.filter2(c,fc,code)
+	if not c:GetCode()~=code or not c:IsAbleToGraveAsCost() then return false end
+	return c:IsCode(table.unpack(fc.material)) and 
 end
-function c89312388.filter1(c,tp)
-	return c.material and Duel.IsExistingMatchingCard(c89312388.filter2,tp,LOCATION_DECK,0,1,nil,c)
+function c89312388.filter1(c,tp,code)
+	return c.material and Duel.IsExistingMatchingCard(c89312388.filter2,tp,LOCATION_DECK,0,1,nil,c,code)
 end
 function c89312388.coscost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c89312388.filter1,tp,LOCATION_EXTRA,0,1,nil,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c89312388.filter1,tp,LOCATION_EXTRA,0,1,nil,tp,e:GetHandler():GetCode() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local g=Duel.SelectMatchingCard(tp,c89312388.filter1,tp,LOCATION_EXTRA,0,1,1,nil,tp)
 	Duel.ConfirmCards(1-tp,g)

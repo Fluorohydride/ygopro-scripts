@@ -28,14 +28,14 @@ function c2067935.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local st=e:GetHandler():GetSummonType()
 	return st>=(SUMMON_TYPE_SPECIAL+100) and st<(SUMMON_TYPE_SPECIAL+150)
 end
-function c2067935.rmfilter(c)
-	return c:IsSetCard(0x19) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
+function c2067935.rmfilter(c,code)
+	return c:IsSetCard(0x19) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemove() and c:GetOriginalCode()~=code
 end
 function c2067935.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c2067935.rmfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c2067935.rmfilter,tp,LOCATION_GRAVE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c2067935.rmfilter,tp,LOCATION_GRAVE,0,1,nil,e:GetHandler():GetCode()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectTarget(tp,c2067935.rmfilter,tp,LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,c2067935.rmfilter,tp,LOCATION_GRAVE,0,1,1,nil,e:GetHandler():GetCode())
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
 end
 function c2067935.rmop(e,tp,eg,ep,ev,re,r,rp)
