@@ -50,10 +50,11 @@ function c70117860.efop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_CLIENT_HINT)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e1:SetRange(LOCATION_MZONE)
+	e1:SetLabel(ep)
 	e1:SetValue(c70117860.tgval)
 	e1:SetReset(RESET_EVENT+0x1fe0000)
 	rc:RegisterEffect(e1)
 end
 function c70117860.tgval(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
+	return rp==1-e:GetLabel()
 end
