@@ -71,10 +71,8 @@ function c73511233.spfilter1(c,e)
 	return c73511233.spfilter0(c) and not c:IsImmuneToEffect(e)
 end
 function c73511233.spfilter2(c,e,tp,m,f,gc)
-	local mg=m:Clone()
-	mg:AddCard(gc)
 	return c:IsType(TYPE_FUSION) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(mg,gc)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,gc)
 end
 function c73511233.spfilter3(c)
 	return c:IsCanBeFusionMaterial() and c:IsRace(RACE_DRAGON)
@@ -83,12 +81,14 @@ function c73511233.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then
 		local mg1=Duel.GetFusionMaterial(tp):Filter(c73511233.spfilter0,nil)
+		mg1:AddCard(c)
 		local res=Duel.IsExistingMatchingCard(c73511233.spfilter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,c)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
 			if ce~=nil then
 				local fgroup=ce:GetTarget()
 				local mg2=fgroup(ce,e,tp):Filter(c73511233.spfilter3,nil)
+				mg2:AddCard(c)
 				local mf=ce:GetValue()
 				res=Duel.IsExistingMatchingCard(c73511233.spfilter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,c)
 			end
@@ -101,6 +101,7 @@ function c73511233.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFacedown() or not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) or c:IsControler(1-tp) then return end
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c73511233.spfilter1,nil,e)
+	mg1:AddCard(c)
 	local sg1=Duel.GetMatchingGroup(c73511233.spfilter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,c)
 	local mg2=nil
 	local sg2=nil
@@ -108,6 +109,7 @@ function c73511233.spop(e,tp,eg,ep,ev,re,r,rp)
 	if ce~=nil then
 		local fgroup=ce:GetTarget()
 		mg2=fgroup(ce,e,tp):Filter(c73511233.spfilter3,nil)
+		mg2:AddCard(c)
 		local mf=ce:GetValue()
 		sg2=Duel.GetMatchingGroup(c73511233.spfilter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,c)
 	end

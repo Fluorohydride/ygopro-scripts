@@ -14,11 +14,11 @@ function c33252803.filter1(c,e,tp)
 	local m=_G["c"..c:GetCode()]
 	return c:IsFaceup() and c:IsSetCard(0x48) and not c:IsSetCard(0x1048) and m
 		and Duel.IsExistingMatchingCard(c33252803.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,c:GetRank()+1,m.xyz_number)
+		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
 function c33252803.filter2(c,e,tp,mc,rk,no)
 	return c:GetRank()==rk and c:IsSetCard(0x1048) and c.xyz_number==no and mc:IsCanBeXyzMaterial(c)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
-		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
 function c33252803.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c33252803.filter1(chkc,e,tp) end

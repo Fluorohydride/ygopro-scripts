@@ -28,18 +28,18 @@ function c88482761.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c88482761.rmfilter1(c,e,tp)
 	return c:IsSetCard(0x2016) and c:IsAbleToRemove()
-		and Duel.IsExistingMatchingCard(c88482761.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetOriginalLevel())
+		and Duel.IsExistingMatchingCard(c88482761.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp,c:GetOriginalLevel())
 end
-function c88482761.rmfilter2(c,lv)
-	return c:IsSetCard(0x2016) and c:IsType(TYPE_TUNER) and c:IsAbleToRemove() and c:GetOriginalLevel()==lv
+function c88482761.rmfilter2(c,e,tp,lv)
+	return c:IsSetCard(0x2016) and c:IsType(TYPE_TUNER) and c:IsAbleToRemove()
+		and Duel.IsExistingMatchingCard(c88482761.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetOriginalLevel()+lv)
 end
 function c88482761.spfilter(c,e,tp,lv)
-	return c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and Duel.IsExistingMatchingCard(c88482761.rmfilter2,tp,LOCATION_HAND,0,1,nil,c:GetLevel()-lv)
+	return c:GetLevel()==lv and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c88482761.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c88482761.rmfilter1(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
 		and Duel.IsExistingTarget(c88482761.rmfilter1,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,c88482761.rmfilter1,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
@@ -49,14 +49,17 @@ end
 function c88482761.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) then return end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c88482761.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetOriginalLevel())
+	local lv=tc:GetOriginalLevel()
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local g=Duel.SelectMatchingCard(tp,c88482761.rmfilter2,tp,LOCATION_HAND,0,1,1,nil,e,tp,lv)
 	if g:GetCount()>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local rg=Duel.SelectMatchingCard(tp,c88482761.rmfilter2,tp,LOCATION_HAND,0,1,1,nil,g:GetFirst():GetLevel()-tc:GetOriginalLevel())
-		rg:AddCard(tc)
-		if Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)==2 then
-			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+		lv=lv+g:GetFirst():GetOriginalLevel()
+		g:AddCard(tc)
+		if Duel.Remove(g,POS_FACEUP,REASON_EFFECT)==2 then
+			if Duel.GetLocationCountFromEx(tp)<=0 then return end
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+			local sg=Duel.SelectMatchingCard(tp,c88482761.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,lv)
+			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end
 end
