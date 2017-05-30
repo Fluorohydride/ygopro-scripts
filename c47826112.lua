@@ -22,11 +22,30 @@ function c47826112.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c47826112.cfilter(c)
-	return c:IsLevelBelow(3) and c:IsAttribute(ATTRIBUTE_WATER)
+	return c:IsLevelBelow(3) and c:IsAttribute(ATTRIBUTE_WATER) and (c:IsControler(tp) or c:IsFaceup())
+end
+function c47826112.mzfilter(c,tp)
+	return c:IsControler(tp) and c:GetSequence()<5
 end
 function c47826112.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c47826112.cfilter,3,nil) end
-	local g=Duel.SelectReleaseGroup(tp,c47826112.cfilter,3,3,nil)
+	local rg=Duel.GetReleaseGroup(tp):Filter(c47826112.cfilter,nil,tp)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ct=-ft+1
+	if chk==0 then return ft>-3 and rg:GetCount()>2 and (ft>0 or rg:IsExists(c47826112.mzfilter,ct,nil,tp)) end
+	local g=nil
+	if ft>0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:Select(tp,3,3,nil)
+	elseif ft>-2 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:FilterSelect(tp,c47826112.mzfilter,ct,ct,nil,tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		local g2=rg:Select(tp,3-ct,3-ct,g)
+		g:Merge(g2)
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:FilterSelect(tp,c47826112.mzfilter,3,3,nil,tp)
+	end
 	Duel.Release(g,REASON_COST)
 end
 function c47826112.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
