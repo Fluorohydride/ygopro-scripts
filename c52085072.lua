@@ -48,7 +48,7 @@ function c52085072.spcon(e,c)
 	local sg=Duel.GetMatchingGroup(c52085072.spcfilter,tp,LOCATION_MZONE,0,nil)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=-ft+1
-	return ft>-4 and sg:GetCount()>3 and (ft>0 or sg:IsExists(c93717133.mzfilter,ct,nil,tp))
+	return ft>-4 and sg:GetCount()>3 and (ft>0 or sg:IsExists(c52085072.mzfilter,ct,nil,tp))
 end
 function c52085072.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local sg=Duel.GetMatchingGroup(c52085072.spcfilter,tp,LOCATION_MZONE,0,nil)
@@ -58,16 +58,17 @@ function c52085072.spop(e,tp,eg,ep,ev,re,r,rp,c)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		g=sg:Select(tp,4,4,nil)
 	elseif ft>-3 then
+		local ct=-ft+1
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		g=rg:FilterSelect(tp,c52085072.mzfilter,ct,ct,nil,tp)
+		g=sg:FilterSelect(tp,c52085072.mzfilter,ct,ct,nil,tp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local g2=rg:Select(tp,4-ct,4-ct,g)
+		local g2=sg:Select(tp,4-ct,4-ct,g)
 		g:Merge(g2)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		g=sg:FilterSelect(tp,c52085072.mzfilter,4,4,nil,tp)
 	end
-	Duel.Release(g,REASON_COST)
+	Duel.SendtoGrave(g,REASON_COST)
 end
 function c52085072.antarget(e,c)
 	return c~=e:GetHandler()

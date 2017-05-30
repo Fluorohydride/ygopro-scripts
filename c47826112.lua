@@ -21,7 +21,7 @@ function c47826112.initial_effect(c)
 	e2:SetOperation(c47826112.thop)
 	c:RegisterEffect(e2)
 end
-function c47826112.cfilter(c)
+function c47826112.cfilter(c,tp)
 	return c:IsLevelBelow(3) and c:IsAttribute(ATTRIBUTE_WATER) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c47826112.mzfilter(c,tp)

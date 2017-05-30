@@ -61,7 +61,7 @@ function c53183600.spcon(e,c)
 	local rg=Duel.GetReleaseGroup(tp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=-ft+1
-	return Duel.IsExistingMatchingCard(c38369349.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
+	return Duel.IsExistingMatchingCard(c53183600.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
 		and ft>-2 and rg:GetCount()>1 and (ft>0 or rg:IsExists(c53183600.mzfilter,ct,nil,tp))
 end
 function c53183600.spop(e,tp,eg,ep,ev,re,r,rp,c)

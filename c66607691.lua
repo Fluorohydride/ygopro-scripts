@@ -17,7 +17,7 @@ function c66607691.mzfilter(c,tp)
 	return c:IsControler(tp) and c:GetSequence()<5
 end
 function c66607691.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local rg=Duel.GetReleaseGroup(tp):Filter(c66607691.costfilter,nil,tp)
+	local rg=Duel.GetReleaseGroup(tp):Filter(c66607691.rfilter,nil,tp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=-ft+1
 	if chk==0 then return ft>-2 and rg:GetCount()>1 and (ft>0 or rg:IsExists(c66607691.mzfilter,ct,nil,tp)) end

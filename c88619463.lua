@@ -74,7 +74,7 @@ function c88619463.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
 end
-function c88619463.disop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c88619463.disop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsFacedown() or not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)

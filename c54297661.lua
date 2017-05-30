@@ -33,7 +33,7 @@ function c54297661.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		g=rg:FilterSelect(tp,c54297661.mzfilter,2,2,nil,tp)
 	end
-	Duel.Release(g,REASON_COST)
+	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c54297661.filter(c,tp)
 	return c:IsFaceup()
