@@ -79,21 +79,19 @@ function c96227613.thop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c96227613.desfilter(c,ft)
-	if ft<-1 then return false end
-	return c:IsFaceup() and (ft>=0 or c:IsLocation(LOCATION_MZONE))
+function c96227613.desfilter(c,ec,tp)
+	return c:IsFaceup() and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,ec))>0
 end
 function c96227613.spfilter(c,e,tp)
 	return c:IsType(TYPE_FUSION+TYPE_SYNCHRO) and c:IsRace(RACE_DRAGON) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c96227613.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c96227613.desfilter(chkc,ft) and chkc~=c end
-	if chk==0 then return Duel.IsExistingTarget(c96227613.desfilter,tp,LOCATION_ONFIELD,0,1,c,ft)
+	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c96227613.desfilter(chkc,c,tp) and chkc~=c end
+	if chk==0 then return Duel.IsExistingTarget(c96227613.desfilter,tp,LOCATION_ONFIELD,0,1,c,c,tp)
 		and Duel.IsExistingMatchingCard(c96227613.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c96227613.desfilter,tp,LOCATION_ONFIELD,0,1,1,c,ft)
+	local g=Duel.SelectTarget(tp,c96227613.desfilter,tp,LOCATION_ONFIELD,0,1,1,c,c,tp)
 	g:AddCard(c)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -104,6 +102,7 @@ function c96227613.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
 	local dg=Group.FromCards(c,tc)
 	if Duel.Destroy(dg,REASON_EFFECT)==2 then
+		if Duel.GetLocationCountFromEx(tp)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c96227613.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 		if g:GetCount()==0 then return end

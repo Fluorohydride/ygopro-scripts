@@ -24,49 +24,58 @@ function c94160895.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c94160895.desfilter(c)
-	return c:IsType(TYPE_MONSTER) and ((c:IsLocation(LOCATION_MZONE) and c:IsFaceup()) or c:IsLocation(LOCATION_HAND))
+	return c:IsType(TYPE_MONSTER) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup())
+end
+function c94160895.desfilter2(c)
+	return c:IsFaceup() and c:GetSequence()<5
+end
+function c94160895.mzfilter(c,tp)
+	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5
 end
 function c94160895.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local loc=LOCATION_MZONE+LOCATION_HAND
-	if ft<0 then loc=LOCATION_MZONE end
-	local loc2=0
-	if Duel.IsPlayerAffectedByEffect(tp,88581108) then loc2=LOCATION_MZONE end
-	local g=Duel.GetMatchingGroup(c94160895.desfilter,tp,loc,loc2,c)
-	if chk==0 then return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	local g=nil
+	if ft>-1 then
+		local loc=0
+		if Duel.IsPlayerAffectedByEffect(tp,88581108) then loc=LOCATION_MZONE end
+		g=Duel.GetMatchingGroup(c94160895.desfilter,tp,LOCATION_MZONE+LOCATION_HAND,loc,c)
+	else
+		g=Duel.GetMatchingGroup(c94160895.desfilter2,tp,LOCATION_MZONE,0,c)
+	end
+	if chk==0 then return ft>-2 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and g:GetCount()>=2 and g:IsExists(Card.IsAttribute,1,nil,ATTRIBUTE_WIND)
-		and (ft>0 or g:IsExists(Card.IsLocation,-ft+1,nil,LOCATION_MZONE)) end
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,nil,2,tp,loc)
+		and (ft~=0 or g:IsExists(c94160895.mzfilter,1,nil,tp)) end
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,nil,2,tp,LOCATION_MZONE)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
-end
-function c94160895.rmfilter(c,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove(tp)
 end
 function c94160895.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local loc=LOCATION_MZONE+LOCATION_HAND
-	if ft<0 then loc=LOCATION_MZONE end
-	local loc2=0
-	if Duel.IsPlayerAffectedByEffect(tp,88581108) then loc2=LOCATION_MZONE end
-	local g=Duel.GetMatchingGroup(c94160895.desfilter,tp,loc,loc2,c)
+	local g=nil
+	if ft>-1 then
+		local loc=0
+		if Duel.IsPlayerAffectedByEffect(tp,88581108) then loc=LOCATION_MZONE end
+		g=Duel.GetMatchingGroup(c94160895.desfilter,tp,LOCATION_MZONE+LOCATION_HAND,loc,c)
+	else
+		g=Duel.GetMatchingGroup(c94160895.desfilter2,tp,LOCATION_MZONE,0,c)
+	end
 	if g:GetCount()<2 or not g:IsExists(Card.IsAttribute,1,nil,ATTRIBUTE_WIND) then return end
-	local g1=nil local g2=nil
+	local g1=nil
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	if ft<1 then
-		g1=g:FilterSelect(tp,Card.IsLocation,1,1,nil,LOCATION_MZONE)
+	if ft==0 then
+		g1=g:FilterSelect(tp,c94160895.mzfilter,1,1,nil,tp)
 	else
 		g1=g:Select(tp,1,1,nil)
 	end
-	g:RemoveCard(g1:GetFirst())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	if g1:GetFirst():IsAttribute(ATTRIBUTE_WIND) then
-		g2=g:Select(tp,1,1,nil)
+		local g2=g:Select(tp,1,1,g1:GetFirst())
+		g1:Merge(g2)
 	else
-		g2=g:FilterSelect(tp,Card.IsAttribute,1,1,nil,ATTRIBUTE_WIND)
+		local g2=g:FilterSelect(tp,Card.IsAttribute,1,1,g1:GetFirst(),ATTRIBUTE_WIND)
+		g1:Merge(g2)
 	end
-	g1:Merge(g2)
 	local rm=g1:IsExists(Card.IsAttribute,2,nil,ATTRIBUTE_WIND)
 	if Duel.Destroy(g1,REASON_EFFECT)==2 then
 		if not c:IsRelateToEffect(e) then return end

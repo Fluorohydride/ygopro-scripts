@@ -11,11 +11,22 @@ function c98446407.initial_effect(c)
 	e1:SetOperation(c98446407.spop)
 	c:RegisterEffect(e1)
 end
+function c98446407.mzfilter(c,tp)
+	return c:IsControler(tp) and c:GetSequence()<5
+end
 function c98446407.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsReleasable() and Duel.CheckReleaseGroup(tp,nil,1,c) end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if c:GetSequence()<5 then ft=ft+1 end
+	if chk==0 then return ft>-1 and c:IsReleasable() and Duel.CheckReleaseGroup(tp,nil,1,c)
+		and (ft>0 or Duel.CheckReleaseGroup(tp,c98446407.mzfilter,1,c,tp)) end
+	local rg=nil
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local rg=Duel.SelectReleaseGroup(tp,nil,1,1,c)
+	if ft>0 then
+		rg=Duel.SelectReleaseGroup(tp,nil,1,1,c)
+	else
+		rg=Duel.SelectReleaseGroup(tp,c98446407.mzfilter,1,1,c,tp)
+	end
 	rg:AddCard(c)
 	Duel.Release(rg,REASON_COST)
 end
@@ -23,8 +34,7 @@ function c98446407.filter(c,e,tp)
 	return c:IsCode(61441708) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c98446407.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and Duel.IsExistingMatchingCard(c98446407.filter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c98446407.filter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK+LOCATION_HAND)
 end
 function c98446407.spop(e,tp,eg,ep,ev,re,r,rp)
