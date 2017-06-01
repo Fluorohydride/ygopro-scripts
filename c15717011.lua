@@ -21,9 +21,9 @@ end
 function c15717011.subcon(e)
 	return e:GetHandler():IsLocation(0x1e)
 end
-function c15717011.filter(c,e,tp,m,gc)
+function c15717011.filter(c,e,tp,m,gc,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsAttribute(ATTRIBUTE_LIGHT)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:CheckFusionMaterial(m,gc,PLAYER_NONE+0x100)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:CheckFusionMaterial(m,gc,chkf)
 end
 function c15717011.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
@@ -31,19 +31,19 @@ function c15717011.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c15717011.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
+	local chkf=tp+0x100
 	if chk==0 then
-		if e:GetLabel()==0 then return false end
+		if e:GetLabel()~=1 then return false end
 		e:SetLabel(0)
 		local mg=Duel.GetMatchingGroup(Card.IsCanBeFusionMaterial,tp,LOCATION_MZONE,0,nil)
-		return Duel.IsExistingMatchingCard(c15717011.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,c)
+		return Duel.IsExistingMatchingCard(c15717011.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,c,chkf)
 	end
-	e:SetLabel(0)
 	local mg=Duel.GetMatchingGroup(Card.IsCanBeFusionMaterial,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c15717011.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,mg,c)
-	local mat=Duel.SelectFusionMaterial(tp,g:GetFirst(),mg,c,PLAYER_NONE+0x100)
+	local g=Duel.SelectMatchingCard(tp,c15717011.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,mg,c,chkf)
+	local mat=Duel.SelectFusionMaterial(tp,g:GetFirst(),mg,c,chkf)
 	Duel.Release(mat,REASON_COST)
-	e:SetLabelObject(g:GetFirst())
+	e:SetLabel(g:GetFirst():GetCode())
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c15717011.filter2(c,e,tp,code)
@@ -51,7 +51,7 @@ function c15717011.filter2(c,e,tp,code)
 end
 function c15717011.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCountFromEx(tp)<=0 then return end
-	local code=e:GetLabelObject():GetCode()
+	local code=e:GetLabel()
 	local tc=Duel.GetFirstMatchingCard(c15717011.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,code)
 	if tc then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)

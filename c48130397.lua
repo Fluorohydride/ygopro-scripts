@@ -30,7 +30,7 @@ function c48130397.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c48130397.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
+		local chkf=tp
 		local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)
 		local mg2=Duel.GetMatchingGroup(c48130397.filter0,tp,0,LOCATION_MZONE,nil)
 		mg1:Merge(mg2)
@@ -52,7 +52,7 @@ function c48130397.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c48130397.activate(e,tp,eg,ep,ev,re,r,rp)
-	local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
+	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c48130397.filter3,nil,e)
 	local mg2=Duel.GetMatchingGroup(c48130397.filter1,tp,0,LOCATION_MZONE,nil,e)
 	mg1:Merge(mg2)

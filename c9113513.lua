@@ -28,7 +28,7 @@ function c9113513.ffilter(c,e,tp,m,f,chkf)
 end
 function c9113513.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
+		local chkf=tp
 		local mg1=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND+LOCATION_DECK,0,nil)
 		local res=mg1:IsExists(c9113513.filter1,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
@@ -48,7 +48,7 @@ function c9113513.filter0(c,e)
 	return c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
 end
 function c9113513.activate(e,tp,eg,ep,ev,re,r,rp)
-	local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
+	local chkf=tp
 	local mg1=Duel.GetMatchingGroup(c9113513.filter0,tp,LOCATION_HAND+LOCATION_DECK,0,nil,e)
 	local g1=mg1:Filter(c9113513.filter1,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil

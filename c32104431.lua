@@ -60,7 +60,7 @@ function c32104431.filter2(c,e,tp,m,f,chkf)
 end
 function c32104431.fusiontg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
+		local chkf=tp
 		local mg1=Duel.GetMatchingGroup(c32104431.filter0,tp,LOCATION_GRAVE,0,nil)
 		local res=Duel.IsExistingMatchingCard(c32104431.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
@@ -77,7 +77,7 @@ function c32104431.fusiontg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c32104431.fusionop(e,tp,eg,ep,ev,re,r,rp)
-	local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
+	local chkf=tp
 	local mg1=Duel.GetMatchingGroup(c32104431.filter1,tp,LOCATION_GRAVE,0,nil,e)
 	local sg1=Duel.GetMatchingGroup(c32104431.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil
