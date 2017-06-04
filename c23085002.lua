@@ -1,4 +1,4 @@
---No.68 摩天牢サンダルフォン
+--No.68 魔天牢サンダルフォン
 function c23085002.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)

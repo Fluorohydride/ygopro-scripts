@@ -94,7 +94,7 @@ function c3779662.espcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c3779662.espfilter(c,e,tp)
 	return c:IsSetCard(0x19) and c:IsType(TYPE_FUSION) and c:IsLevelBelow(7)
-		and c:IsCanBeSpecialSummoned(e,122,tp,true,false)
+		and c:IsCanBeSpecialSummoned(e,123,tp,true,false)
 end
 function c3779662.esptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
@@ -106,7 +106,7 @@ function c3779662.espop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c3779662.espfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
-		Duel.SpecialSummon(g,122,tp,tp,true,false,POS_FACEUP)
+		Duel.SpecialSummon(g,123,tp,tp,true,false,POS_FACEUP)
 	end
 end
 function c3779662.spcon(e,tp,eg,ep,ev,re,r,rp)
@@ -118,12 +118,15 @@ function c3779662.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,0,REASON_COST)
 end
 function c3779662.spfilter(c,e,tp)
-	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,122,tp,false,false)
+	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,123,tp,false,false)
 end
 function c3779662.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c3779662.spfilter,tp,LOCATION_DECK,0,2,nil,e,tp) end
+	if chk==0 then
+		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+		if e:GetHandler():GetSequence()<5 then ft=ft+1 end
+		return ft>1 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
+			and Duel.IsExistingMatchingCard(c3779662.spfilter,tp,LOCATION_DECK,0,2,nil,e,tp)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_DECK)
 end
 function c3779662.spop(e,tp,eg,ep,ev,re,r,rp)
@@ -134,10 +137,10 @@ function c3779662.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,2,2,nil)
 		local tc=sg:GetFirst()
-		Duel.SpecialSummonStep(tc,122,tp,tp,false,false,POS_FACEUP)
+		Duel.SpecialSummonStep(tc,123,tp,tp,false,false,POS_FACEUP)
 		tc:RegisterFlagEffect(tc:GetOriginalCode(),RESET_EVENT+0x1ff0000,0,0)
 		tc=sg:GetNext()
-		Duel.SpecialSummonStep(tc,122,tp,tp,false,false,POS_FACEUP)
+		Duel.SpecialSummonStep(tc,123,tp,tp,false,false,POS_FACEUP)
 		tc:RegisterFlagEffect(tc:GetOriginalCode(),RESET_EVENT+0x1ff0000,0,0)
 		Duel.SpecialSummonComplete()
 	end
