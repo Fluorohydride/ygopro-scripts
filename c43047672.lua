@@ -66,7 +66,7 @@ function c43047672.atcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker()==c and aux.bdocon(e,tp,eg,ep,ev,re,r,rp) and c:IsChainAttackable(0)
 end
 function c43047672.atfilter(c)
-	return c:IsSetCard(0xba) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
+	return c:IsSetCard(0xba) and c:IsType(TYPE_XYZ) and c:IsAbleToRemoveAsCost()
 end
 function c43047672.atcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c43047672.atfilter,tp,LOCATION_GRAVE,0,1,nil) end
