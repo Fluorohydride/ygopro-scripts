@@ -32,7 +32,7 @@ function c92736188.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c92736188.filter(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_EARTH)
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_EARTH) and c:IsDefenseAbove(0)
 end
 function c92736188.adtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c92736188.filter(chkc) end

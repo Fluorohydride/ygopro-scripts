@@ -27,7 +27,7 @@ function c10035717.adcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,700)
 end
 function c10035717.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_MACHINE+RACE_WARRIOR)
+	return c:IsFaceup() and c:IsRace(RACE_MACHINE+RACE_WARRIOR) and c:IsDefenseAbove(0)
 end
 function c10035717.adtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c10035717.filter(chkc) end

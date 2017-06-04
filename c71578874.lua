@@ -26,7 +26,7 @@ function c71578874.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c71578874.filter(c)
-	return c:IsFaceup() and c:GetAttack()~=c:GetDefense()
+	return c:IsFaceup() and c:GetAttack()~=c:GetDefense() and c:IsDefenseAbove(0)
 		and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
 end
 function c71578874.adtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -54,11 +54,14 @@ end
 function c71578874.swcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
+function c71578874.swfilter(c)
+	return c:IsFaceup() and c:IsDefenseAbove(0)
+end
 function c71578874.swtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c71578874.swfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c71578874.swfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	Duel.SelectTarget(tp,c71578874.swfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,0,tp,500)
 end
 function c71578874.swop(e,tp,eg,ep,ev,re,r,rp)

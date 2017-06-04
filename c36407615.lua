@@ -12,11 +12,14 @@ function c36407615.initial_effect(c)
 	e1:SetOperation(c36407615.atop)
 	c:RegisterEffect(e1)
 end
+function c36407615.filter(c)
+	return c:IsFaceup() and c:IsDefenseAbove(0)
+end
 function c36407615.attg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c36407615.filter,tp,0,LOCATION_MZONE,1,nil) end
 end
 function c36407615.atop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(c36407615.filter,tp,0,LOCATION_MZONE,nil)
 	local tc=g:GetFirst()
 	while tc do
 		local atk=tc:GetAttack()
