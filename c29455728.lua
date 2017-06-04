@@ -26,11 +26,14 @@ function c29455728.mgfilter(c,e,tp,fusc,mg)
 end
 function c29455728.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=e:GetHandler():GetMaterial()
-	local ct=g:GetCount()
-	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and ct>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)+1>=ct
-		and bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
-		and g:FilterCount(c29455728.mgfilter,nil,e,tp,e:GetHandler(),g)==ct end
+	if chk==0 then
+		local ct=g:GetCount()
+		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+		if e:GetHandler():GetSequence()<5 then ft=ft+1 end
+		return ct>0 and ft>=ct and not Duel.IsPlayerAffectedByEffect(tp,59822133)
+			and bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+			and g:FilterCount(c29455728.mgfilter,nil,e,tp,e:GetHandler(),g)==ct
+	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,g:GetCount(),0,0)
 end
 function c29455728.operation(e,tp,eg,ep,ev,re,r,rp)

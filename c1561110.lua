@@ -123,9 +123,12 @@ end
 function c1561110.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local g=Duel.GetMatchingGroup(c1561110.spfilter,tp,LOCATION_REMOVED,0,nil,e,tp)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
-		and g:GetClassCount(Card.GetCode)>2
-		and not Duel.IsPlayerAffectedByEffect(tp,59822133) end
+	if chk==0 then
+		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+		if e:GetHandler():GetSequence()<5 then ft=ft+1 end
+		return ft>2 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
+			and g:GetClassCount(Card.GetCode)>2
+	end
 	local sg=Group.CreateGroup()
 	for i=1,3 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

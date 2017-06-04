@@ -63,8 +63,10 @@ function c39024589.filter(c,e,tp)
 end
 function c39024589.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local loc=0
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_HAND end
-	if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if e:GetHandler():GetSequence()<5 then ft=ft+1 end
+	if ft>0 then loc=loc+LOCATION_HAND end
+	if Duel.GetLocationCountFromEx(tp,tp,e:GetHandler())>0 then loc=loc+LOCATION_EXTRA end
 	if chk==0 then return loc~=0 and Duel.IsExistingMatchingCard(c39024589.filter,tp,loc,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,loc)
 end
