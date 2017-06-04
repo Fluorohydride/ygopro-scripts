@@ -19,21 +19,22 @@ function c82003859.initial_effect(c)
 	--accumulate
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
-	e3:SetCode(0x10000000+82003859)
+	e3:SetCode(82003859)
 	e3:SetRange(LOCATION_SZONE)
-	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e3:SetTargetRange(1,1)
+	e3:SetTargetRange(LOCATION_SZONE,LOCATION_SZONE)
 	c:RegisterEffect(e3)
 end
+function c82003859.filter(c,fid)
+	return c:IsHasEffect(82003859) and c:GetFieldID()<fid
+end
 function c82003859.atcon(e)
-	c82003859[0]=false
-	return true
+	return not Duel.IsExistingMatchingCard(c82003859.filter,0,LOCATION_SZONE,LOCATION_SZONE,1,nil,e:GetHandler():GetFieldID())
 end
 function c82003859.atcost(e,c,tp)
-	return Duel.CheckLPCost(tp,500)
+	local ct=Duel.GetMatchingGroupCount(Card.IsHasEffect,0,LOCATION_SZONE,LOCATION_SZONE,nil,82003859)
+	return Duel.CheckLPCost(tp,ct*500)
 end
 function c82003859.atop(e,tp,eg,ep,ev,re,r,rp)
-	if c82003859[0] then return end
-	Duel.PayLPCost(tp,Duel.GetFlagEffect(tp,82003859)*500)
-	c82003859[0]=true
+	local ct=Duel.GetMatchingGroupCount(Card.IsHasEffect,0,LOCATION_SZONE,LOCATION_SZONE,nil,82003859)
+	Duel.PayLPCost(tp,ct*500)
 end
