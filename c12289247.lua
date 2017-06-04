@@ -62,7 +62,8 @@ function c12289247.rpop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c12289247.spcfilter(c,tp)
-	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:GetPreviousControler()==tp
+	return c:IsReason(REASON_BATTLE+REASON_EFFECT)
+		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c12289247.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c12289247.spcfilter,1,nil,tp)
