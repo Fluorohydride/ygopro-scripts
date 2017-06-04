@@ -28,14 +28,14 @@ function c11067666.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c11067666.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SelectYesNo(tp,aux.Stringid(11067666,0)) then
-		e:GetHandler():RegisterFlagEffect(11067666,RESET_EVENT+0x1fe0000,0,1)
+		e:GetHandler():RegisterFlagEffect(11067666,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 		if Duel.NegateEffect(ev) then
 			Duel.BreakEffect()
 			Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 		end
 	end
 end
-function c11067666.rmcon(e,tp,eg,ep,ev,re,r,rp)
+function c11067666.rmcon(e)
 	local c=e:GetHandler()
 	return bit.band(c:GetSummonType(),SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM and c:IsReason(REASON_MATERIAL) and c:IsReason(REASON_SYNCHRO)
 end

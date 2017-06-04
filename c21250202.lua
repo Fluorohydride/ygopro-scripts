@@ -79,9 +79,6 @@ function c21250202.spop(e,tp,eg,ep,ev,re,r,rp)
 		if tc then
 			Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
 		end
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c21250202.disfilter(c)

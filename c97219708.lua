@@ -45,25 +45,23 @@ function c97219708.recop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.Recover(tp,ct*100,REASON_EFFECT)
 		end
-	elseif c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
-		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c97219708.spfilter(c,e,tp)
-	return c:IsType(TYPE_XYZ) and c:IsSetCard(0xba) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsType(TYPE_XYZ) and c:IsSetCard(0xba) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c97219708.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c97219708.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
+	if chk==0 then return Duel.GetLocationCountFromEx(tp,tp,e:GetHandler())>0
 		and Duel.IsExistingMatchingCard(c97219708.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c97219708.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
+	if Duel.GetLocationCountFromEx(tp)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c97219708.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 		local tc=g:GetFirst()
@@ -78,15 +76,18 @@ function c97219708.spop(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetCode(EFFECT_DISABLE_EFFECT)
 			e2:SetReset(RESET_EVENT+0x1fe0000)
 			tc:RegisterEffect(e2)
+			local fid=c:GetFieldID()
+			tc:RegisterFlagEffect(97219708,RESET_EVENT+0x1fe0000,0,1,fid)
 			local e3=Effect.CreateEffect(c)
 			e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-			e3:SetCode(EVENT_PHASE+PHASE_END)
 			e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-			e3:SetRange(LOCATION_MZONE)
+			e3:SetCode(EVENT_PHASE+PHASE_END)
 			e3:SetCountLimit(1)
+			e3:SetLabel(fid)
+			e3:SetLabelObject(tc)
+			e3:SetCondition(c97219708.tdcon)
 			e3:SetOperation(c97219708.tdop)
-			e3:SetReset(RESET_EVENT+0x1fe0000)
-			tc:RegisterEffect(e3)
+			Duel.RegisterEffect(e3,tp)
 			Duel.SpecialSummonComplete()
 		end
 	end
@@ -99,6 +100,16 @@ function c97219708.spop(e,tp,eg,ep,ev,re,r,rp)
 	e4:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e4,tp)
 end
+function c97219708.tdcon(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	if tc:GetFlagEffectLabel(97219708)==e:GetLabel() then
+		return true
+	else
+		e:Reset()
+		return false
+	end
+end
 function c97219708.tdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SendtoDeck(e:GetHandler(),nil,2,REASON_EFFECT)
+	local tc=e:GetLabelObject()
+	Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
 end

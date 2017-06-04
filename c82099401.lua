@@ -3,7 +3,7 @@ function c82099401.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(82099401,0))
-	e1:SetCategory(CATEGORY_TOHAND)
+	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_FLIP)
 	e1:SetOperation(c82099401.operation)
 	c:RegisterEffect(e1)

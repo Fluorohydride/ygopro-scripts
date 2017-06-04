@@ -36,5 +36,6 @@ function c92918648.operation(e,tp,eg,ep,ev,re,r,rp)
 	if ct==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectMatchingCard(tp,c92918648.filter,tp,0,LOCATION_ONFIELD,1,ct,nil)
+	Duel.HintSelection(g)
 	Duel.Destroy(g,REASON_EFFECT)
 end

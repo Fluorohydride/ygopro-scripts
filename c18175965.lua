@@ -51,7 +51,7 @@ function c18175965.initial_effect(c)
 	--special summon 2
 	local e8=Effect.CreateEffect(c)
 	e8:SetDescription(aux.Stringid(18175965,2))
-	e8:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e8:SetCategory(CATEGORY_HANDES+CATEGORY_SPECIAL_SUMMON)
 	e8:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e8:SetCode(EVENT_TO_GRAVE)
 	e8:SetCondition(c18175965.spcon2)
@@ -76,9 +76,6 @@ function c18175965.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)~=0 then
 		c:CompleteProcedure()
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c18175965.filter(c,ec)

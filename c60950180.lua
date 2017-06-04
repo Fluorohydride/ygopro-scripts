@@ -42,11 +42,14 @@ end
 function c60950180.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(60950180)>0
 end
+function c60950180.filter(c)
+	return c:IsPosition(POS_FACEUP_ATTACK) and not c:IsType(TYPE_LINK)
+end
 function c60950180.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsPosition(POS_FACEUP_ATTACK) end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsPosition,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,POS_FACEUP_ATTACK) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c60950180.filter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c60950180.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
-	local g=Duel.SelectTarget(tp,Card.IsPosition,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,POS_FACEUP_ATTACK)
+	local g=Duel.SelectTarget(tp,c60950180.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 end
 function c60950180.posop(e,tp,eg,ep,ev,re,r,rp)

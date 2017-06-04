@@ -1,9 +1,9 @@
 --リチュア・ノエリア
 function c63942761.initial_effect(c)
-	--to hand
+	--to grave
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(63942761,0))
-	e1:SetCategory(CATEGORY_TOGRAVE)
+	e1:SetCategory(CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetTarget(c63942761.target)

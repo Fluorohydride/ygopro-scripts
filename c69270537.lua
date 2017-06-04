@@ -21,16 +21,16 @@ function c69270537.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,1,0,0)
 end
 function c69270537.spfilter(c,e,tp,fc)
-	return c:IsCode(table.unpack(fc.material)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return fc.material and c:IsCode(table.unpack(fc.material)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c69270537.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)~=0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1 and tc:IsLocation(LOCATION_EXTRA) then
 		local sg=Duel.GetMatchingGroup(c69270537.spfilter,tp,LOCATION_DECK,0,nil,e,tp,tc)
-		if tc:CheckFusionMaterial(sg,nil,PLAYER_NONE) and Duel.SelectYesNo(tp,aux.Stringid(69270537,0)) then
+		if tc:CheckFusionMaterial(sg) and Duel.SelectYesNo(tp,aux.Stringid(69270537,0)) then
 			Duel.BreakEffect()
-			local mats=Duel.SelectFusionMaterial(tp,tc,sg,nil,PLAYER_NONE)
+			local mats=Duel.SelectFusionMaterial(tp,tc,sg)
 			Duel.SpecialSummon(mats,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

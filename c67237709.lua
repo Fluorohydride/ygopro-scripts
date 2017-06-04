@@ -83,8 +83,7 @@ function c67237709.drop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c67237709.thcon2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_EFFECT)
-		and c:IsPreviousLocation(LOCATION_SZONE) and c:GetPreviousSequence()==5
+	return c:IsReason(REASON_EFFECT) and c:IsPreviousLocation(LOCATION_FZONE)
 end
 function c67237709.thfilter2(c)
 	return c:IsSetCard(0xd2) and c:IsAbleToHand()

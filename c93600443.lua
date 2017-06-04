@@ -21,6 +21,7 @@ function c93600443.filter(c,e,tp)
 	local att=c:GetAttribute()
 	return lv>0 and c:IsFaceup()
 		and Duel.IsExistingMatchingCard(c93600443.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,lv,att)
+		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
 function c93600443.spfilter(c,e,tp,lv,att)
 	return c:IsSetCard(0xa008) and c:GetLevel()>lv and c:IsAttribute(att) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
@@ -32,8 +33,7 @@ function c93600443.chkfilter(c,tc)
 end
 function c93600443.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c93600443.chkfilter(chkc,e:GetLabelObject()) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingTarget(c93600443.filter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c93600443.filter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectTarget(tp,c93600443.filter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,1,0,0)
@@ -41,8 +41,8 @@ function c93600443.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	e:SetLabelObject(g:GetFirst())
 end
 function c93600443.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<0 then return end
 	local tc=Duel.GetFirstTarget()
+	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 then return end
 	if not tc:IsRelateToEffect(e) then return end
 	local att=tc:GetAttribute()
 	local lv=tc:GetLevel()

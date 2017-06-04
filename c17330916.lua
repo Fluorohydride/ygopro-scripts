@@ -34,6 +34,7 @@ function c17330916.initial_effect(c)
 	c:RegisterEffect(e4)
 	--to hand
 	local e5=Effect.CreateEffect(c)
+	e5:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_PZONE)
 	e5:SetCountLimit(1,17330916)
@@ -43,9 +44,7 @@ function c17330916.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c17330916.sccon(e)
-	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_SZONE,13-seq)
-	return not tc or not tc:IsSetCard(0x9f)
+	return not Duel.IsExistingMatchingCard(Card.IsSetCard,e:GetHandlerPlayer(),LOCATION_PZONE,0,1,e:GetHandler(),0x9f)
 end
 function c17330916.reg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

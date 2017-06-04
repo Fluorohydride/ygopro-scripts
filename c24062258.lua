@@ -14,7 +14,7 @@ function c24062258.initial_effect(c)
 end
 function c24062258.filter(c,e,tp)
 	return c:GetCode()~=24062258 and c:GetLevel()==4 and c:IsAttribute(ATTRIBUTE_DARK) and (c:GetAttack()==0 or c:GetDefense()==0)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c24062258.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c24062258.filter(chkc,e,tp) end

@@ -41,18 +41,20 @@ function c63487632.initial_effect(c)
 	e5:SetLabelObject(e4)
 	c:RegisterEffect(e5)
 end
-function c63487632.spfilter(c)
+function c63487632.spfilter(c,ft)
 	return c:GetEquipGroup():IsExists(Card.IsSetCard,1,nil,0x29) and c:IsAbleToRemoveAsCost()
+		and (ft>0 or c:GetSequence()<5)
 end
 function c63487632.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(c63487632.spfilter,tp,LOCATION_MZONE,0,1,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	return ft>-1 and Duel.IsExistingMatchingCard(c63487632.spfilter,tp,LOCATION_MZONE,0,1,nil,ft)
 end
 function c63487632.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c63487632.spfilter,tp,LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c63487632.spfilter,tp,LOCATION_MZONE,0,1,1,nil,ft)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c63487632.filter(c)

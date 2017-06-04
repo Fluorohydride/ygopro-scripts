@@ -13,7 +13,7 @@ function c73271204.initial_effect(c)
 	--mill
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(73271204,1))
-	e2:SetCategory(CATEGORY_TOHAND)
+	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_TO_GRAVE)

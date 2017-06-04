@@ -84,41 +84,36 @@ end
 function c18386170.ffilter(c,fc)
 	return c:IsFusionSetCard(0xb1) and not c:IsHasEffect(6205579) and c:IsCanBeFusionMaterial(fc)
 end
+function c18386170.fselect(c,mg,sg,tp,fc)
+	if sg:IsExists(Card.IsCode,1,nil,c:GetCode()) then return false end
+	sg:AddCard(c)
+	local res=false
+	if sg:GetCount()==3 then
+		res=Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0
+	else
+		res=mg:IsExists(c18386170.fselect,1,sg,mg,sg,tp,fc)
+	end
+	sg:RemoveCard(c)
+	return res
+end
 function c18386170.fscon(e,g,gc,chkf)
 	if g==nil then return true end
-	local mg=g:Filter(c18386170.ffilter,nil,e:GetHandler())
-	if gc then
-		mg:AddCard(gc)
-		return c18386170.ffilter(gc,e:GetHandler()) and mg:GetClassCount(Card.GetCode)>=3
-	end
-	local fs=false
-	if mg:IsExists(aux.FConditionCheckF,1,nil,chkf) then fs=true end
-	return mg:GetClassCount(Card.GetCode)>=3 and (fs or chkf==PLAYER_NONE)
+	local c=e:GetHandler()
+	local tp=c:GetControler()
+	local mg=g:Filter(c18386170.ffilter,nil,c)
+	local sg=Group.CreateGroup()
+	if gc then return c18386170.ffilter(gc,c) and c18386170.fselect(gc,mg,sg,tp,c) end
+	return mg:IsExists(c18386170.fselect,1,sg,mg,sg,tp,c)
 end
 function c18386170.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
-	local sg=eg:Filter(c18386170.ffilter,gc,e:GetHandler())
-	if gc then
-		sg:Remove(Card.IsCode,nil,gc:GetCode())
+	local c=e:GetHandler()
+	local mg=eg:Filter(c18386170.ffilter,nil,c)
+	local sg=Group.CreateGroup()
+	if gc then sg:AddCard(gc) end
+	repeat
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local g1=sg:Select(tp,1,1,nil)
-		sg:Remove(Card.IsCode,nil,g1:GetFirst():GetCode())
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local g2=sg:Select(tp,1,1,nil)
-		g1:Merge(g2)
-		Duel.SetFusionMaterial(g1)
-		return
-	end
-	local g1=nil
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	if chkf~=PLAYER_NONE then g1=sg:FilterSelect(tp,aux.FConditionCheckF,1,1,nil,chkf)
-	else g1=sg:Select(tp,1,1,nil) end
-	sg:Remove(Card.IsCode,nil,g1:GetFirst():GetCode())
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g2=sg:Select(tp,1,1,nil)
-	sg:Remove(Card.IsCode,nil,g2:GetFirst():GetCode())
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g3=sg:Select(tp,1,1,nil)
-	g1:Merge(g2)
-	g1:Merge(g3)
-	Duel.SetFusionMaterial(g1)
+		local g=mg:FilterSelect(tp,c18386170.fselect,1,1,sg,mg,sg,tp,c)
+		sg:Merge(g)
+	until sg:GetCount()==3
+	Duel.SetFusionMaterial(sg)
 end

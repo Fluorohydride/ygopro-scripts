@@ -34,7 +34,10 @@ function c55470553.poscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c55470553.postg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetAttacker():IsAttackPos() end
+	if chk==0 then
+		local at=Duel.GetAttacker()
+		return at:IsAttackPos() and not at:IsType(TYPE_LINK)
+	end
 end
 function c55470553.posop(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
@@ -48,7 +51,7 @@ function c55470553.spfilter(c,tp)
 end
 function c55470553.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c55470553.spfilter(chkc,tp) end
-	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
+	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c55470553.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)

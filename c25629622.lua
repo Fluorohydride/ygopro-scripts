@@ -22,6 +22,12 @@ function c25629622.initial_effect(c)
 	local e3=e2:Clone()
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e3)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetRange(LOCATION_MZONE)
+	e0:SetCode(EVENT_CHAIN_END)
+	e0:SetOperation(c25629622.limop2)
+	c:RegisterEffect(e0)
 	--set
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_IGNITION)
@@ -53,10 +59,20 @@ function c25629622.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c25629622.limop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SetChainLimitTillChainEnd(c25629622.chlimit)
+	if Duel.GetCurrentChain()==0 then
+		Duel.SetChainLimitTillChainEnd(c25629622.chlimit)
+	elseif Duel.GetCurrentChain()==1 then
+		e:GetHandler():RegisterFlagEffect(25629622,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	end
 end
 function c25629622.chlimit(e,rp,tp)
 	return tp==rp or e:IsActiveType(TYPE_MONSTER)
+end
+function c25629622.limop2(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetHandler():GetFlagEffect(25629622)~=0 then
+		Duel.SetChainLimitTillChainEnd(c25629622.chlimit)
+	end
+	e:GetHandler():ResetFlagEffect(25629622)
 end
 function c25629622.setfilter(c)
 	return c:IsSetCard(0x20ec) and c:IsType(TYPE_SPELL) and c:IsSSetable()

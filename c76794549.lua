@@ -14,7 +14,7 @@ function c76794549.initial_effect(c)
 	--Special Summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(76794549,3))
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_DESTROYED)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
@@ -33,6 +33,25 @@ function c76794549.initial_effect(c)
 	e3:SetTarget(c76794549.hntg)
 	e3:SetOperation(c76794549.hnop)
 	c:RegisterEffect(e3)
+	if not c76794549.global_check then
+		c76794549.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_DESTROYED)
+		ge1:SetOperation(c76794549.checkop)
+		Duel.RegisterEffect(ge1,0)
+	end
+end
+function c76794549.checkop(e,tp,eg,ep,ev,re,r,rp)
+	local tc=eg:GetFirst()
+	while tc do
+		if tc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) then
+			tc:RegisterFlagEffect(76794549,RESET_EVENT+0x1f20000+RESET_PHASE+PHASE_END,0,1)
+		elseif tc:IsLocation(LOCATION_EXTRA) then
+			tc:RegisterFlagEffect(76794549,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		end
+		tc=eg:GetNext()
+	end
 end
 function c76794549.rpfilter(c,e,tp)
 	return c:IsCode(94415058) and (not c:IsForbidden()
@@ -75,7 +94,7 @@ function c76794549.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end
 function c76794549.thfilter1(c,tp,id)
-	return c:IsType(TYPE_MONSTER) and c:IsReason(REASON_DESTROY) and c:GetTurnID()==id
+	return c:IsType(TYPE_MONSTER) and c:GetFlagEffect(76794549)~=0
 		and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())
 		and Duel.IsExistingMatchingCard(c76794549.thfilter2,tp,LOCATION_DECK,0,1,nil,c:GetCode())
 end
@@ -97,73 +116,56 @@ function c76794549.spop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoHand(sg,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,sg)
 		end
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c76794549.cfilter(c)
 	return (c:IsSetCard(0x10f2) or c:IsSetCard(0x2073) or c:IsSetCard(0x2017) or c:IsSetCard(0x1046))
 		and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
+		and (not c:IsLocation(LOCATION_MZONE) or c:IsFaceup())
 end
-function c76794549.cfilter1(c,g,ft)
-	local mg=g:Clone()
-	mg:RemoveCard(c)
-	if c:IsLocation(LOCATION_MZONE) then ft=ft+1 end
-	return c:IsSetCard(0x10f2) and mg:IsExists(c76794549.cfilter2,1,nil,mg,ft)
+function c76794549.fcheck(c,sg,g,code,...)
+	if not c:IsSetCard(code) then return false end
+	if ... then
+		g:AddCard(c)
+		local res=sg:IsExists(c76794549.fcheck,1,g,sg,g,...)
+		g:RemoveCard(c)
+		return res
+	else return true end
 end
-function c76794549.cfilter2(c,g,ft)
-	local mg=g:Clone()
-	mg:RemoveCard(c)
-	if c:IsLocation(LOCATION_MZONE) then ft=ft+1 end
-	return c:IsSetCard(0x2073) and mg:IsExists(c76794549.cfilter3,1,nil,mg,ft)
+function c76794549.fselect(c,tp,mg,sg,mc,...)
+	sg:AddCard(c)
+	local res=false
+	if sg:GetCount()<5 then
+		res=mg:IsExists(c76794549.fselect,1,sg,tp,mg,sg,mc,...)
+	elseif Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
+		local g=Group.FromCards(mc)
+		res=sg:IsExists(c76794549.fcheck,1,g,sg,g,...)
+	end
+	sg:RemoveCard(c)
+	return res
 end
-function c76794549.cfilter3(c,g,ft)
-	local mg=g:Clone()
-	mg:RemoveCard(c)
-	if c:IsLocation(LOCATION_MZONE) then ft=ft+1 end
-	return c:IsSetCard(0x2017) and mg:IsExists(c76794549.cfilter4,1,nil,ft)
-end
-function c76794549.cfilter4(c,ft)
-	if c:IsLocation(LOCATION_MZONE) then ft=ft+1 end
-	return c:IsSetCard(0x1046) and ft>0
+function c76794549.hnfilter(c,e,tp)
+	return c:IsCode(13331639) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)
 end
 function c76794549.hncost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local mg=Duel.GetMatchingGroup(c76794549.cfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local sg=Group.FromCards(c)
 	if chk==0 then return c:IsAbleToRemoveAsCost()
-		and mg:IsExists(c76794549.cfilter1,1,nil,mg,ft+1) end
-	local g=Group.FromCards(c)
-	ft=ft+1
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local rc1=mg:FilterSelect(tp,c76794549.cfilter1,1,1,nil,mg,ft):GetFirst()
-	g:AddCard(rc1)
-	mg:RemoveCard(rc1)
-	if rc1:IsLocation(LOCATION_MZONE) then ft=ft+1 end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local rc2=mg:FilterSelect(tp,c76794549.cfilter2,1,1,nil,mg,ft):GetFirst()
-	g:AddCard(rc2)
-	mg:RemoveCard(rc2)
-	if rc2:IsLocation(LOCATION_MZONE) then ft=ft+1 end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local rc3=mg:FilterSelect(tp,c76794549.cfilter3,1,1,nil,mg,ft):GetFirst()
-	g:AddCard(rc3)
-	mg:RemoveCard(rc3)
-	if rc3:IsLocation(LOCATION_MZONE) then ft=ft+1 end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local rc4=mg:FilterSelect(tp,c76794549.cfilter4,1,1,nil,ft):GetFirst()
-	g:AddCard(rc4)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
-end
-function c76794549.hnfilter(c,e,tp)
-	return c:IsCode(100912039) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)
+		and mg:IsExists(c76794549.fselect,1,sg,tp,mg,sg,c,0x10f2,0x2073,0x2017,0x1046) end
+	while sg:GetCount()<5 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+		local g=mg:FilterSelect(tp,c76794549.fselect,1,1,sg,tp,mg,sg,c,0x10f2,0x2073,0x2017,0x1046)
+		sg:Merge(g)
+	end
+	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c76794549.hntg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c76794549.hnfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c76794549.hnop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	if Duel.GetLocationCountFromEx(tp)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c76794549.hnfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then

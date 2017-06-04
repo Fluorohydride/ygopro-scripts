@@ -12,20 +12,21 @@ function c44928016.initial_effect(c)
 	e1:SetOperation(c44928016.operation)
 	c:RegisterEffect(e1)
 end
-function c44928016.cfilter(c)
+function c44928016.cfilter(c,ft)
 	return c:IsRace(RACE_PLANT) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and not c:IsCode(44928016) and c:IsAbleToGraveAsCost()
+		and (ft>0 or c:GetSequence()<5)
 end
 function c44928016.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local loc=LOCATION_MZONE+LOCATION_HAND
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)==0 then loc=LOCATION_MZONE end
-	if chk==0 then return Duel.IsExistingMatchingCard(c44928016.cfilter,tp,loc,0,1,nil) end
+	if ft==0 then loc=LOCATION_MZONE end
+	if chk==0 then return ft>-1 and Duel.IsExistingMatchingCard(c44928016.cfilter,tp,loc,0,1,nil,ft) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c44928016.cfilter,tp,loc,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c44928016.cfilter,tp,loc,0,1,1,nil,ft)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c44928016.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c44928016.operation(e,tp,eg,ep,ev,re,r,rp)

@@ -12,11 +12,11 @@ function c57815601.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c57815601.filter1(c,e,tp)
-	return c:IsSetCard(0x10b5) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x10b5) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 		and Duel.IsExistingTarget(c57815601.filter2,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,c,e,tp)
 end
 function c57815601.filter2(c,e,tp)
-	return c:IsSetCard(0x20b5) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x20b5) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c57815601.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
@@ -33,7 +33,7 @@ end
 function c57815601.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
-	if ft>0 and g:GetCount()>0 then
+	if g:GetCount()>0 then
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 		if g:GetCount()<=ft then
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENSE)

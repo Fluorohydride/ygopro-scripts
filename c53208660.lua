@@ -15,9 +15,9 @@ function c53208660.initial_effect(c)
 end
 function c53208660.chainfilter(re,tp,cid)
 	local rc=re:GetHandler()
-	local loc,seq=Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_SEQUENCE)
-	return not (re:IsActiveType(TYPE_SPELL) and not re:IsHasType(EFFECT_TYPE_ACTIVATE)
-		and loc==LOCATION_SZONE and (seq==6 or seq==7) and rc:IsSetCard(0x98))
+	local loc=Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_LOCATION)
+	return not (re:GetActiveType()==TYPE_PENDULUM+TYPE_SPELL and not re:IsHasType(EFFECT_TYPE_ACTIVATE)
+		and bit.band(loc,LOCATION_PZONE)==LOCATION_PZONE and rc:IsSetCard(0x98))
 end
 function c53208660.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCustomActivityCount(53208660,tp,ACTIVITY_CHAIN)==0
@@ -52,13 +52,10 @@ function c53208660.activate(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-		e1:SetTargetRange(LOCATION_SZONE,0)
-		e1:SetTarget(c53208660.indtg)
+		e1:SetTargetRange(LOCATION_PZONE,0)
+		e1:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x98))
 		e1:SetValue(1)
 		e1:SetReset(RESET_PHASE+PHASE_END+RESET_OPPO_TURN)
 		Duel.RegisterEffect(e1,tp)
 	end
-end
-function c53208660.indtg(e,c)
-	return (c:GetSequence()==6 or c:GetSequence()==7) and c:IsSetCard(0x98)
 end

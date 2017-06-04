@@ -14,13 +14,13 @@ function c86871614.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c86871614.condition(e,tp,eg,ep,ev,re,r,rp)
-	local ec=eg:GetFirst()
 	return ep~=tp
 end
 function c86871614.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ec=eg:GetFirst()
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and 
-		Duel.IsPlayerCanSpecialSummonMonster(tp,86871615,0,0x4011,ec:GetBaseAttack(),ec:GetBaseDefense(),
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and ec:GetOriginalLevel()>0
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,86871615,0,0x4011,ec:GetBaseAttack(),ec:GetBaseDefense(),
 			ec:GetOriginalLevel(),ec:GetOriginalRace(),ec:GetOriginalAttribute()) end
 	ec:CreateEffectRelation(e)
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)

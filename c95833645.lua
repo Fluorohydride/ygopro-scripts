@@ -31,7 +31,7 @@ function c95833645.splimit(e,c)
 	return c:GetRace()~=RACE_WYRM
 end
 function c95833645.filter(c,e,tp)
-	return c:IsRace(RACE_WYRM) and not c:IsCode(95833645) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_WYRM) and not c:IsCode(95833645) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c95833645.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c95833645.filter(chkc,e,tp) end

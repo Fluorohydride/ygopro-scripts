@@ -1,7 +1,7 @@
 --蒼眼の銀龍
 function c40908371.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsType,TYPE_NORMAL),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSynchroType,TYPE_NORMAL),1)
 	c:EnableReviveLimit()
 	--negate
 	local e1=Effect.CreateEffect(c)

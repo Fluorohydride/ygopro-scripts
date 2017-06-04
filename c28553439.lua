@@ -21,15 +21,16 @@ end
 function c28553439.filter(c,e,tp)
 	return c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c28553439.rfilter(c,e)
+function c28553439.rfilter(c,e,tp,ft)
 	return c:IsReleasableByEffect() and c:IsCanBeEffectTarget(e)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5))
 end
 function c28553439.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c28553439.rfilter(chkc,e) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.CheckReleaseGroup(tp,c28553439.rfilter,1,nil,e)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c28553439.rfilter(chkc,e,tp,ft) end
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c28553439.rfilter,1,nil,e,tp,ft)
 		and Duel.IsExistingMatchingCard(c28553439.filter,tp,LOCATION_HAND,0,1,nil,e,tp) end
-	local g=Duel.SelectReleaseGroup(tp,c28553439.rfilter,1,1,nil,e)
+	local g=Duel.SelectReleaseGroup(tp,c28553439.rfilter,1,1,nil,e,tp,ft)
 	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end

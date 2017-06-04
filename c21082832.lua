@@ -22,7 +22,7 @@ function c21082832.filter(c,e,tp,m1,m2,ft)
 	end
 end
 function c21082832.mfilterf(c,tp,mg,rc)
-	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) then
+	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5 then
 		Duel.SetSelectedCard(c)
 		return mg:CheckWithSumEqual(Card.GetRitualLevel,rc:GetLevel(),0,99,rc)
 	else return false end

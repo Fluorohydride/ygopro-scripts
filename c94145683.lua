@@ -15,22 +15,23 @@ function c94145683.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)
 	return true
 end
-function c94145683.filter1(c,e,tp)
+function c94145683.filter1(c,e,tp,ft)
 	local lv=c:GetLevel()
 	return lv>0 and c:IsFaceup() and c:IsRace(RACE_WINDBEAST)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
 		and Duel.IsExistingMatchingCard(c94145683.filter2,tp,LOCATION_DECK,0,1,nil,lv,e,tp)
 end
 function c94145683.filter2(c,lv,e,tp)
 	return c:IsRace(RACE_WINDBEAST) and c:GetLevel()==lv and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c94145683.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-			and Duel.CheckReleaseGroup(tp,c94145683.filter1,1,nil,e,tp)
+		return ft>-1 and Duel.CheckReleaseGroup(tp,c94145683.filter1,1,nil,e,tp,ft)
 	end
-	local rg=Duel.SelectReleaseGroup(tp,c94145683.filter1,1,1,nil,e,tp)
+	local rg=Duel.SelectReleaseGroup(tp,c94145683.filter1,1,1,nil,e,tp,ft)
 	e:SetLabel(rg:GetFirst():GetLevel())
 	Duel.Release(rg,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)

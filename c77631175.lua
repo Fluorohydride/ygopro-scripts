@@ -14,7 +14,7 @@ function c77631175.initial_effect(c)
 	--damage
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(77631175,1))
-	e2:SetCategory(CATEGORY_DAMAGE)
+	e2:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DAMAGE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_CUSTOM+77631175)
 	e2:SetTarget(c77631175.target)

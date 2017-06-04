@@ -2,12 +2,17 @@
 function c46448938.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,46448938+EFFECT_COUNT_CODE_OATH)
+	e1:SetTarget(c46448938.target)
 	e1:SetOperation(c46448938.activate)
 	c:RegisterEffect(e1)
+end
+function c46448938.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c46448938.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

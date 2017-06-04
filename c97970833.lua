@@ -2,6 +2,7 @@
 function c97970833.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetCondition(c97970833.condition)
@@ -31,6 +32,6 @@ function c97970833.activate(e,tp,eg,ep,ev,re,r,rp)
 		if fc and fc:IsFaceup() and Duel.IsPlayerCanDraw(1-tp,1) and Duel.SelectYesNo(tp,aux.Stringid(97970833,0)) then
 			Duel.Draw(1-tp,1,REASON_EFFECT)
 		end
-		Duel.RaiseEvent(tc,EVENT_CHAIN_SOLVED,tc:GetActivateEffect(),0,tp,tp,Duel.GetCurrentChain())
+		Duel.RaiseEvent(tc,4179255,tc:GetActivateEffect(),0,tp,tp,Duel.GetCurrentChain())
 	end
 end

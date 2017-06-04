@@ -40,7 +40,7 @@ function c41940225.spfilter(c)
 end
 function c41940225.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
+		local chkf=tp
 		local mg1=Duel.GetFusionMaterial(tp)
 		local mg2=Duel.GetMatchingGroup(c41940225.filter0,tp,0,LOCATION_MZONE,nil)
 		mg1:Merge(mg2)
@@ -59,7 +59,7 @@ function c41940225.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c41940225.activate(e,tp,eg,ep,ev,re,r,rp)
-	local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
+	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c41940225.filter3,nil,e)
 	local mg2=Duel.GetMatchingGroup(c41940225.filter1,tp,0,LOCATION_MZONE,nil,e)
 	mg1:Merge(mg2)

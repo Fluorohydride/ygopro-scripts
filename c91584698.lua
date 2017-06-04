@@ -30,7 +30,7 @@ function c91584698.filter2(c,e,tp,m,f,chkf)
 end
 function c91584698.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
+		local chkf=tp
 		local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)
 		local res=Duel.IsExistingMatchingCard(c91584698.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
@@ -48,7 +48,7 @@ function c91584698.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c91584698.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
-	local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
+	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c91584698.filter1,nil,e)
 	local sg1=Duel.GetMatchingGroup(c91584698.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil

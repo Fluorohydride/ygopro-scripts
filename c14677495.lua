@@ -38,16 +38,13 @@ end
 function c14677495.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
-	end
+	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c14677495.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetPosition()==POS_FACEUP_ATTACK and e:GetHandler():GetPreviousPosition()>0x3
 end
 function c14677495.filter(c,e,tp)
-	return c:IsSetCard(0x6042) and c:GetCode()~=14677495 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x6042) and c:GetCode()~=14677495 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c14677495.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

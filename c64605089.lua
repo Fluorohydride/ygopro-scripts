@@ -38,9 +38,6 @@ function c64605089.operation(e,tp,eg,ep,ev,re,r,rp)
 		and at:IsFaceup() and at:IsRelateToBattle() and at:GetAttack()<c:GetDefense() then
 		Duel.BreakEffect()
 		Duel.Destroy(at,REASON_EFFECT)
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c64605089.efcon(e,tp,eg,ep,ev,re,r,rp)

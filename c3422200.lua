@@ -33,8 +33,12 @@ function c3422200.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c3422200.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
+	local g=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,0)
+	if g:GetCount()>0 then
+		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
+	end
 end
 function c3422200.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -46,16 +50,13 @@ function c3422200.spop(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetCount()>0 then
 			Duel.Destroy(g,REASON_EFFECT)
 		end
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 and c:IsLocation(LOCATION_HAND)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c3422200.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0 and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c3422200.spfilter(c,e,tp)
-	return c:IsSetCard(0xea) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0xea) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c3422200.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

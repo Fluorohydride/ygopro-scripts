@@ -43,18 +43,14 @@ function c46589034.spop(e,tp,eg,ep,ev,re,r,rp)
 	local def=tc:GetDefense()
 	local val=math.min(atk,def)
 	if Duel.Damage(tp,val,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) then
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
-			if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
-				local e1=Effect.CreateEffect(c)
-				e1:SetType(EFFECT_TYPE_SINGLE)
-				e1:SetCode(EFFECT_CHANGE_LEVEL)
-				e1:SetValue(tc:GetLevel())
-				e1:SetReset(RESET_EVENT+0x1ff0000)
-				c:RegisterEffect(e1)
-				Duel.SpecialSummonComplete()
-			end
-		elseif c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-			Duel.SendtoGrave(c,REASON_RULE)
+		if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
+			local e1=Effect.CreateEffect(c)
+			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetCode(EFFECT_CHANGE_LEVEL)
+			e1:SetValue(tc:GetLevel())
+			e1:SetReset(RESET_EVENT+0x1ff0000)
+			c:RegisterEffect(e1)
+			Duel.SpecialSummonComplete()
 		end
 	end
 end

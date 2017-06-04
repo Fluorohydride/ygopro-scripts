@@ -38,14 +38,17 @@ function c9047460.tkop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
+function c9047460.cfilter(c,ft,tp)
+	return ft>0 or (c:IsControler(tp) and c:GetSequence()<5)
+end
 function c9047460.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,nil) end
-	local sg=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c9047460.cfilter,1,nil,ft,tp) end
+	local sg=Duel.SelectReleaseGroup(tp,c9047460.cfilter,1,1,nil,ft,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c9047460.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c9047460.spop(e,tp,eg,ep,ev,re,r,rp)
@@ -54,32 +57,14 @@ function c9047460.spop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_SYNCHRO_MATERIAL_CUSTOM)
+		e1:SetCode(EFFECT_TUNER_MATERIAL_LIMIT)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-		e1:SetTarget(c9047460.syntg)
-		e1:SetValue(1)
-		e1:SetOperation(c9047460.synop)
+		e1:SetTarget(c9047460.synlimit)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e1)
 	end
 end
 c9047460.tuner_filter=aux.FilterBoolFunction(Card.IsSetCard,0x33)
-function c9047460.synfilter(c,syncard,tuner,f)
-	return c:IsFaceup() and c:IsNotTuner() and c:IsCanBeSynchroMaterial(syncard,tuner) and c:IsSetCard(0x33) and (f==nil or f(c))
-end
-function c9047460.syntg(e,syncard,f,minc,maxc)
-	local c=e:GetHandler()
-	local lv=syncard:GetLevel()-c:GetLevel()
-	if lv<=0 then return false end
-	local g=Duel.GetMatchingGroup(c9047460.synfilter,syncard:GetControler(),LOCATION_MZONE,LOCATION_MZONE,c,syncard,c,f)
-	local res=g:CheckWithSumEqual(Card.GetSynchroLevel,lv,minc,maxc,syncard)
-	return res
-end
-function c9047460.synop(e,tp,eg,ep,ev,re,r,rp,syncard,f,minc,maxc)
-	local c=e:GetHandler()
-	local lv=syncard:GetLevel()-c:GetLevel()
-	local g=Duel.GetMatchingGroup(c9047460.synfilter,syncard:GetControler(),LOCATION_MZONE,LOCATION_MZONE,c,syncard,c,f)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-	local sg=g:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,minc,maxc,syncard)
-	Duel.SetSynchroMaterial(sg)
+function c9047460.synlimit(e,c)
+	return c:IsSetCard(0x33)
 end

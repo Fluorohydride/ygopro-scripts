@@ -46,11 +46,14 @@ end
 function c55106249.splimit(e,c,tp,sumtp,sumpos)
 	return not c:IsSetCard(0xab) and bit.band(sumtp,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
 end
+function c55106249.filter(c)
+	return not c:IsType(TYPE_LINK)
+end
 function c55106249.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) end
-	if chk==0 then return Duel.IsExistingTarget(nil,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c55106249.filter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c55106249.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
-	local g=Duel.SelectTarget(tp,nil,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c55106249.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 end
 function c55106249.posop(e,tp,eg,ep,ev,re,r,rp)
@@ -67,7 +70,7 @@ function c55106249.atkval(e,c)
 end
 function c55106249.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_SZONE) and (c:GetPreviousSequence()==6 or c:GetPreviousSequence()==7)
+	return c:IsPreviousLocation(LOCATION_PZONE)
 end
 function c55106249.thfilter(c)
 	return c:IsSetCard(0xab) and c:IsAbleToHand()

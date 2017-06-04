@@ -6,10 +6,18 @@ function c18013090.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetOperation(c18013090.atop1)
+	e1:SetCondition(c18013090.atcon)
+	e1:SetOperation(aux.chainreg)
 	c:RegisterEffect(e1)
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetCode(EVENT_CHAIN_SOLVED)
+	e2:SetRange(LOCATION_MZONE)
+	e2:SetOperation(c18013090.atop)
+	c:RegisterEffect(e2)
 	--chain attack
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(18013090,0))
@@ -26,10 +34,13 @@ c18013090.material_setcode=0x1017
 function c18013090.tfilter(c)
 	return c:IsCode(96182448) or c:IsHasEffect(20932152)
 end
-function c18013090.atop1(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetTurnPlayer()~=tp or ep~=tp then return end
-	if not re:IsHasType(EFFECT_TYPE_ACTIVATE) or not re:IsActiveType(TYPE_SPELL) then return end
+function c18013090.atcon(e,tp,eg,ep,ev,re,r,rp)
+	return ep==tp and Duel.GetTurnPlayer()==tp
+		and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL)
+end
+function c18013090.atop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	if c:GetFlagEffect(1)==0 then return end
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_UPDATE_ATTACK)

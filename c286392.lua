@@ -45,14 +45,18 @@ function c286392.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
+function c286392.cfilter(c,ft,tp)
+	return c:IsLevelBelow(2)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
+end
 function c286392.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsLevelBelow,1,nil,2) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsLevelBelow,1,1,nil,2)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c286392.cfilter,1,nil,ft,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c286392.cfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c286392.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c286392.spop(e,tp,eg,ep,ev,re,r,rp)

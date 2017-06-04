@@ -27,7 +27,7 @@ function c94484482.condition2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c94484482.cfilter,1,nil,tp)
 end
 function c94484482.spfilter(c,e,tp)
-	return c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c94484482.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

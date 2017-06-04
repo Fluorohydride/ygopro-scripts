@@ -11,14 +11,17 @@ function c35537251.initial_effect(c)
 	e1:SetOperation(c35537251.spop)
 	c:RegisterEffect(e1)
 end
+function c35537251.cfilter(c)
+	return c:IsFaceup() and c:IsSetCard(0x84) and c:IsType(TYPE_XYZ)
+end
 function c35537251.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local g=Group.CreateGroup()
-		for i=0,4 do
-			local tc=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
-			if tc and tc:IsFaceup() and tc:IsSetCard(0x84) and tc:IsType(TYPE_XYZ) then
-				g:Merge(tc:GetOverlayGroup())
-			end
+		local mg=Duel.GetMatchingGroup(c35537251.cfilter,tp,LOCATION_MZONE,0,nil)
+		local tc=mg:GetFirst()
+		while tc do
+			g:Merge(tc:GetOverlayGroup())
+			tc=mg:GetNext()
 		end
 		if g:GetCount()==0 then return false end
 		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -28,11 +31,11 @@ function c35537251.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c35537251.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Group.CreateGroup()
-	for i=0,4 do
-		local tc=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
-		if tc and tc:IsFaceup() and tc:IsSetCard(0x84) and tc:IsType(TYPE_XYZ) then
-			g:Merge(tc:GetOverlayGroup())
-		end
+	local mg=Duel.GetMatchingGroup(c35537251.cfilter,tp,LOCATION_MZONE,0,nil)
+	local tc=mg:GetFirst()
+	while tc do
+		g:Merge(tc:GetOverlayGroup())
+		tc=mg:GetNext()
 	end
 	if g:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVEXYZ)
@@ -40,8 +43,5 @@ function c35537251.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(sg,REASON_EFFECT)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
-	end
+	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end

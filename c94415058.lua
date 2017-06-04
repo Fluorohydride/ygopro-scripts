@@ -56,10 +56,11 @@ end
 function c94415058.aclimit(e,re,tp)
 	return re:IsActiveType(TYPE_SPELL) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
+function c94415058.scfilter(c)
+	return c:IsSetCard(0x98) or c:IsSetCard(0x99)
+end
 function c94415058.sccon(e)
-	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_SZONE,13-seq)
-	return not tc or (not tc:IsSetCard(0x98) and not tc:IsSetCard(0x99))
+	return not Duel.IsExistingMatchingCard(c94415058.scfilter,e:GetHandlerPlayer(),LOCATION_PZONE,0,1,e:GetHandler())
 end
 function c94415058.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()

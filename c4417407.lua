@@ -46,12 +46,7 @@ function c4417407.initial_effect(c)
 end
 function c4417407.lvval(e,c)
 	local tp=c:GetControler()
-	local lv=0
-	for i=0,4 do
-		local tc=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
-		if tc and tc:IsCode(31533705) then lv=lv+tc:GetLevel() end
-	end
-	return lv
+	return Duel.GetMatchingGroup(Card.IsCode,tp,LOCATION_MZONE,0,nil,31533705):GetSum(Card.GetLevel)
 end
 function c4417407.indcon(e)
 	return Duel.IsExistingMatchingCard(Card.IsType,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil,TYPE_TOKEN)
@@ -74,7 +69,7 @@ function c4417407.poscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c4417407.filter(c)
-	return not c:IsPosition(POS_FACEUP_DEFENSE)
+	return not c:IsPosition(POS_FACEUP_DEFENSE) and not c:IsType(TYPE_LINK)
 end
 function c4417407.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c4417407.filter(chkc) end

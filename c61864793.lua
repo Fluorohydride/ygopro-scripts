@@ -17,11 +17,14 @@ function c61864793.poscon(e,tp,eg,ep,ev,re,r,rp)
 	local pp=c:GetPreviousPosition()
 	return not c:IsStatus(STATUS_CONTINUOUS_POS) and ((np<3 and pp>3) or (pp<3 and np>3))
 end
+function c61864793.filter(c)
+	return not c:IsType(TYPE_LINK)
+end
 function c61864793.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) end
-	if chk==0 then return Duel.IsExistingTarget(nil,tp,0,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,nil,tp,0,LOCATION_MZONE,1,1,nil)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c61864793.filter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c61864793.filter,tp,0,LOCATION_MZONE,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
+	Duel.SelectTarget(tp,c61864793.filter,tp,0,LOCATION_MZONE,1,1,nil)
 end
 function c61864793.posop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

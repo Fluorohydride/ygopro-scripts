@@ -51,17 +51,21 @@ end
 function c68812773.spfilter(c,e,tp)
 	return (c:IsSetCard(0x7b) or c:IsSetCard(0x55)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
+function c68812773.cfilter(c,ft,tp)
+	return c:IsRace(RACE_MACHINE)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
+end
 function c68812773.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,nil,RACE_MACHINE) end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c68812773.cfilter,1,nil,ft,tp) end
 	local ct=Duel.GetMatchingGroupCount(c68812773.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
-	local rg=Duel.SelectReleaseGroup(tp,Card.IsRace,1,ct,nil,RACE_MACHINE)
+	local rg=Duel.SelectReleaseGroup(tp,c68812773.cfilter,1,ct,nil,ft,tp)
 	ct=Duel.Release(rg,REASON_COST)
 	e:SetLabel(ct)
 end
 function c68812773.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(c68812773.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c68812773.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
 	local ct=e:GetLabel()
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,ct,0,0)
 end

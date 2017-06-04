@@ -19,7 +19,7 @@ function c59297550.spcon(e,tp,eg,ep,ev,re,r,rp)
 		and re:GetHandler():IsSetCard(0x58) and re:GetHandler():GetCode()~=59297550
 end
 function c59297550.filter(c,e,tp)
-	return c:IsSetCard(0x58) and c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x58) and c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c59297550.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

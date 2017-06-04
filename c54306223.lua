@@ -40,25 +40,17 @@ end
 function c54306223.acop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Group.CreateGroup()
-	for i=0,4 do
-		local tc=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
-		if tc and tc:IsCanAddCounter(0x1009,1) and not tc:IsSetCard(0x50) then
+	local tg=Duel.GetFieldGroup(tp,LOCATION_MZONE,LOCATION_MZONE)
+	local tc=tg:GetFirst()
+	while tc do
+		if tc:IsCanAddCounter(0x1009,1) and not tc:IsSetCard(0x50) then
 			local atk=tc:GetAttack()
 			tc:AddCounter(0x1009,1)
 			if atk>0 and tc:GetAttack()==0 then
 				g:AddCard(tc)
 			end
 		end
-	end
-	for i=0,4 do
-		local tc=Duel.GetFieldCard(1-tp,LOCATION_MZONE,i)
-		if tc and tc:IsCanAddCounter(0x1009,1) and not tc:IsSetCard(0x50) then
-			local atk=tc:GetAttack()
-			tc:AddCounter(0x1009,1)
-			if atk>0 and tc:GetAttack()==0 then
-				g:AddCard(tc)
-			end
-		end
+		tc=tg:GetNext()
 	end
 	if g:GetCount()>0 then
 		Duel.RaiseEvent(g,EVENT_CUSTOM+54306223,e,0,0,0,0)

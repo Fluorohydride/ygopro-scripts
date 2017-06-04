@@ -70,9 +70,6 @@ function c4545683.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)~=0 then
 		c:CompleteProcedure()
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c4545683.val(e,c)
@@ -122,7 +119,7 @@ function c4545683.eqop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c4545683.spfilter(c,e,tp,ec)
-	return c:GetFlagEffect(4545683)~=0 and c:GetEquipTarget()==ec and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:GetFlagEffect(4545683)~=0 and c:GetEquipTarget()==ec and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c4545683.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c4545683.spfilter(chkc,e,tp,e:GetHandler()) end
@@ -132,7 +129,7 @@ function c4545683.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c4545683.spfilter,tp,LOCATION_SZONE,0,1,1,nil,e,tp,e:GetHandler())
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
-function c4545683.spop2(e,tp,eg,ep,ev,re,r,rp,chk)
+function c4545683.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)

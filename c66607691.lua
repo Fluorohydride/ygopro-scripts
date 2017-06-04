@@ -10,9 +10,31 @@ function c66607691.initial_effect(c)
 	e1:SetOperation(c66607691.activate)
 	c:RegisterEffect(e1)
 end
+function c66607691.rfilter(c,tp)
+	return c:IsCode(70095154) and (c:IsControler(tp) or c:IsFaceup())
+end
+function c66607691.mzfilter(c,tp)
+	return c:IsControler(tp) and c:GetSequence()<5
+end
 function c66607691.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsCode,2,nil,70095154) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsCode,2,2,nil,70095154)
+	local rg=Duel.GetReleaseGroup(tp):Filter(c66607691.rfilter,nil,tp)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ct=-ft+1
+	if chk==0 then return ft>-2 and rg:GetCount()>1 and (ft>0 or rg:IsExists(c66607691.mzfilter,ct,nil,tp)) end
+	local g=nil
+	if ft>0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:Select(tp,2,2,nil)
+	elseif ft==0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:FilterSelect(tp,c66607691.mzfilter,1,1,nil,tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		local g2=rg:Select(tp,1,1,g:GetFirst())
+		g:Merge(g2)
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:FilterSelect(tp,c66607691.mzfilter,2,2,nil,tp)
+	end
 	Duel.Release(g,REASON_COST)
 end
 function c66607691.spfilter(c,e,tp)

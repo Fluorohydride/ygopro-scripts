@@ -11,15 +11,15 @@ function c35149085.initial_effect(c)
 	e1:SetOperation(c35149085.activate)
 	c:RegisterEffect(e1)
 end
-function c35149085.filter(c)
-	return c:IsFaceup() and c:GetLevel()>0 and c:IsRace(RACE_BEAST) and c:IsAbleToHand()
+function c35149085.filter(c,ft)
+	return c:IsFaceup() and c:GetLevel()>0 and c:IsRace(RACE_BEAST) and c:IsAbleToHand() and (ft>0 or c:GetSequence()<5)
 end
 function c35149085.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c35149085.filter(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingTarget(c35149085.filter,tp,LOCATION_MZONE,0,1,nil) end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c35149085.filter(chkc,ft) end
+	if chk==0 then return ft>-1 and Duel.IsExistingTarget(c35149085.filter,tp,LOCATION_MZONE,0,1,nil,ft) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=Duel.SelectTarget(tp,c35149085.filter,tp,LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,c35149085.filter,tp,LOCATION_MZONE,0,1,1,nil,ft)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
 function c35149085.spfilter(c,e,tp,lv)

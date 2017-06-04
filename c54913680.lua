@@ -13,9 +13,28 @@ end
 function c54913680.costfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x3d)
 end
+function c54913680.mzfilter(c,tp)
+	return c:GetSequence()<5
+end
 function c54913680.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c54913680.costfilter,2,nil) end
-	local g=Duel.SelectReleaseGroup(tp,c54913680.costfilter,2,2,nil)
+	local rg=Duel.GetReleaseGroup(tp):Filter(c54913680.costfilter,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ct=-ft+1
+	if chk==0 then return ft>-2 and rg:GetCount()>1 and (ft>0 or rg:IsExists(c54913680.mzfilter,ct,nil,tp)) end
+	local g=nil
+	if ft>0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:Select(tp,2,2,nil)
+	elseif ft==0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:FilterSelect(tp,c54913680.mzfilter,1,1,nil,tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		local g2=rg:Select(tp,1,1,g:GetFirst())
+		g:Merge(g2)
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:FilterSelect(tp,c54913680.mzfilter,2,2,nil,tp)
+	end
 	Duel.Release(g,REASON_COST)
 end
 function c54913680.filter(c,e,tp)

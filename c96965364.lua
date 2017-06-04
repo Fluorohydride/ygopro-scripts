@@ -15,20 +15,22 @@ function c96965364.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)
 	return true
 end
-function c96965364.cfilter(c,e,tp)
+function c96965364.cfilter(c,e,tp,ft)
 	local lv=c:GetLevel()
 	return lv>0 and Duel.IsExistingMatchingCard(c96965364.spfilter,tp,LOCATION_DECK,0,1,nil,lv+1,e,tp)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c96965364.spfilter(c,lv,e,tp)
 	return c:GetLevel()==lv and c:IsRace(RACE_INSECT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c96965364.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1 and Duel.CheckReleaseGroup(tp,c96965364.cfilter,1,nil,e,tp)
+		return ft>-1 and Duel.CheckReleaseGroup(tp,c96965364.cfilter,1,nil,e,tp,ft)
 	end
-	local rg=Duel.SelectReleaseGroup(tp,c96965364.cfilter,1,1,nil,e,tp)
+	local rg=Duel.SelectReleaseGroup(tp,c96965364.cfilter,1,1,nil,e,tp,ft)
 	e:SetLabel(rg:GetFirst():GetLevel())
 	Duel.Release(rg,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)

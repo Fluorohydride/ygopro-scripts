@@ -111,11 +111,11 @@ c33900648[0]=0
 c33900648[1]=0
 function c33900648.raccheck(p)
 	local rac=0
-	for i=0,4 do
-		local tc=Duel.GetFieldCard(p,LOCATION_MZONE,i)
-		if tc and tc:IsFaceup() then
-			rac=bit.bor(rac,tc:GetAttribute())
-		end
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,p,LOCATION_MZONE,0,nil)
+	local tc=g:GetFirst()
+	while tc do
+		rac=bit.bor(rac,tc:GetAttribute())
+		tc=g:GetNext()
 	end
 	c33900648[p]=rac
 end

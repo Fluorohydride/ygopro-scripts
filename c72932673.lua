@@ -17,7 +17,8 @@ function c72932673.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c72932673.negcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_SZONE
+	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
+	return rp~=tp and bit.band(loc,LOCATION_SZONE)~=0
 		and re:IsActiveType(TYPE_SPELL) and Duel.IsChainDisablable(ev) 
 end
 function c72932673.negop(e,tp,eg,ep,ev,re,r,rp)

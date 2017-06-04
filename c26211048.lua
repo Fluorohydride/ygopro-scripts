@@ -21,10 +21,10 @@ function c26211048.eqcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c26211048.eqfilter(c)
-	return c:IsLocation(LOCATION_MZONE) or c:IsLocation(LOCATION_GRAVE) and not c:IsForbidden()
+	return c:IsLocation(LOCATION_MZONE) or c:IsType(TYPE_MONSTER) and not c:IsForbidden()
 end
 function c26211048.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return c26211048.eqfilter(chkc) and chkc:IsControler(1-tp) and chkc:IsType(TYPE_MONSTER) end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_MZONE) and chkc:IsControler(1-tp) and c26211048.eqfilter(chkc) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingTarget(c26211048.eqfilter,tp,0,LOCATION_GRAVE+LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)

@@ -42,22 +42,31 @@ end
 function c72378329.splimit(e,se,sp,st)
 	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
 end
-function c72378329.spfilter1(c,tp,fc)
-	return c:IsRace(RACE_DRAGON) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsCanBeFusionMaterial(fc)
-		and Duel.CheckReleaseGroup(tp,c72378329.spfilter2,1,c,fc)
+function c72378329.rfilter(c,fc)
+	return (c:IsRace(RACE_DRAGON) and c:IsAttribute(ATTRIBUTE_DARK) or c:IsRace(RACE_BEAST))
+		and c:IsCanBeFusionMaterial(fc)
 end
-function c72378329.spfilter2(c,fc)
-	return c:IsRace(RACE_BEAST) and c:IsCanBeFusionMaterial(fc)
+function c72378329.spfilter1(c,tp,g)
+	return g:IsExists(c72378329.spfilter2,1,c,tp,c)
+end
+function c72378329.spfilter2(c,tp,mc)
+	return (c:IsRace(RACE_DRAGON) and c:IsAttribute(ATTRIBUTE_DARK) and mc:IsRace(RACE_BEAST)
+		or c:IsRace(RACE_BEAST) and mc:IsRace(RACE_DRAGON) and mc:IsAttribute(ATTRIBUTE_DARK))
+		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
 end
 function c72378329.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and Duel.CheckReleaseGroup(tp,c72378329.spfilter1,1,nil,tp,c)
+	local rg=Duel.GetReleaseGroup(tp):Filter(c72378329.rfilter,nil,c)
+	return rg:IsExists(c72378329.spfilter1,1,nil,tp,rg)
 end
 function c72378329.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g1=Duel.SelectReleaseGroup(tp,c72378329.spfilter1,1,1,nil,tp,c)
-	local g2=Duel.SelectReleaseGroup(tp,c72378329.spfilter2,1,1,g1:GetFirst(),c)
+	local rg=Duel.GetReleaseGroup(tp):Filter(c72378329.rfilter,nil,c)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local g1=rg:FilterSelect(tp,c72378329.spfilter1,1,1,nil,tp,rg)
+	local mc=g1:GetFirst()
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local g2=rg:FilterSelect(tp,c72378329.spfilter2,1,1,mc,tp,mc)
 	g1:Merge(g2)
 	c:SetMaterial(g1)
 	Duel.Release(g1,REASON_COST+REASON_FUSION+REASON_MATERIAL)

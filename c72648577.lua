@@ -2,7 +2,7 @@
 function c72648577.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_TODECK+CATEGORY_TOHAND)
+	e1:SetCategory(CATEGORY_TODECK+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(c72648577.target)
@@ -11,20 +11,17 @@ function c72648577.initial_effect(c)
 end
 function c72648577.filter(c)
 	if c:IsLocation(LOCATION_MZONE) and c:IsFacedown() then return false end
-	if c:IsLocation(LOCATION_SZONE) then
-		if c:GetSequence()<6 then return false end
-	elseif not c:IsType(TYPE_MONSTER) then return false end
 	return c:IsSetCard(0xaf) and c:IsAbleToDeck()
 end
 function c72648577.thfilter(c)
 	return c:IsSetCard(0xaf) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c72648577.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c72648577.filter,tp,LOCATION_ONFIELD+LOCATION_GRAVE+LOCATION_HAND,0,3,nil) end
-	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,3,tp,LOCATION_ONFIELD+LOCATION_GRAVE+LOCATION_HAND)
+	if chk==0 then return Duel.IsExistingMatchingCard(c72648577.filter,tp,LOCATION_MZONE+LOCATION_PZONE+LOCATION_GRAVE+LOCATION_HAND,0,3,nil) end
+	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,3,tp,LOCATION_MZONE+LOCATION_PZONE+LOCATION_GRAVE+LOCATION_HAND)
 end
 function c72648577.operation(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c72648577.filter),tp,LOCATION_ONFIELD+LOCATION_GRAVE+LOCATION_HAND,0,nil)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c72648577.filter),tp,LOCATION_MZONE+LOCATION_PZONE+LOCATION_GRAVE+LOCATION_HAND,0,nil)
 	if g:GetCount()<3 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=g:Select(tp,3,3,nil)

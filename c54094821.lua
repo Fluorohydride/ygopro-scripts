@@ -21,10 +21,10 @@ function c54094821.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e1:SetTargetRange(0,1)
 	e1:SetValue(c54094821.aclimit)
-	if Duel.GetTurnPlayer()==tp then
-		e1:SetReset(RESET_PHASE+PHASE_STANDBY,2)
+	if Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()<=PHASE_STANDBY then
+		e1:SetReset(RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,2)
 	else
-		e1:SetReset(RESET_PHASE+PHASE_STANDBY,1)
+		e1:SetReset(RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN)
 	end
 	Duel.RegisterEffect(e1,tp)
 end

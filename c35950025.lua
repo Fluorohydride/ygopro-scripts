@@ -33,7 +33,7 @@ function c35950025.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_NORMAL+1
 end
 function c35950025.spfilter(c,e,tp)
-	return c:IsCode(93717133) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(93717133) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c35950025.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c35950025.spfilter(chkc,e,tp) end

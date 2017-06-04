@@ -11,15 +11,14 @@ function c11109820.initial_effect(c)
 	e1:SetOperation(c11109820.operation)
 	c:RegisterEffect(e1)
 end
-function c11109820.filter1(c,e,tp,ft)
-	if c:IsControler(tp) then ft=ft+1 end
+function c11109820.filter1(c,e,tp)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)
-		and Duel.IsExistingTarget(c11109820.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,c,e,tp,c:GetRank(),ft)
+		and Duel.IsExistingTarget(c11109820.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,c,e,tp,c,c:GetRank())
 end
-function c11109820.filter2(c,e,tp,rk,ft)
-	if c:IsControler(tp) then ft=ft+1 end
+function c11109820.filter2(c,e,tp,mc,rk)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)
-		and ft>0 and Duel.IsExistingMatchingCard(c11109820.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,rk+c:GetRank())
+		and Duel.IsExistingMatchingCard(c11109820.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,rk+c:GetRank())
+		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
 end
 function c11109820.spfilter(c,e,tp,rk)
 	local crk=c:GetRank()
@@ -27,15 +26,13 @@ function c11109820.spfilter(c,e,tp,rk)
 end
 function c11109820.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
-		and Duel.IsExistingTarget(c11109820.filter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,e,tp,ft) end
+		and Duel.IsExistingTarget(c11109820.filter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectTarget(tp,c11109820.filter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,e,tp,ft)
+	local g1=Duel.SelectTarget(tp,c11109820.filter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,e,tp)
 	local tc=g1:GetFirst()
-	if tc:IsControler(tp) then ft=ft+1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectTarget(tp,c11109820.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,tc,e,tp,tc:GetRank(),ft)
+	local g2=Duel.SelectTarget(tp,c11109820.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,tc,e,tp,tc,tc:GetRank())
 	g1:Merge(g2)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g1,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -62,7 +59,7 @@ function c11109820.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not tc1:IsRelateToEffect(e) or not tc2:IsRelateToEffect(e) then return end
 	Duel.SendtoGrave(g,REASON_EFFECT)
 	local og=Duel.GetOperatedGroup()
-	if og:FilterCount(Card.IsLocation,nil,LOCATION_GRAVE)<2 or Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	if og:FilterCount(Card.IsLocation,nil,LOCATION_GRAVE)<2 then return end
 	local sg=Duel.GetMatchingGroup(c11109820.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp,tc1:GetRank()+tc2:GetRank())
 	if sg:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

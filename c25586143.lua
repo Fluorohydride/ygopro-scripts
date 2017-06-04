@@ -92,11 +92,15 @@ function c25586143.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c25586143.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(25586143,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,2)
+	if Duel.GetCurrentPhase()==PHASE_STANDBY then
+		e:GetHandler():RegisterFlagEffect(25586143,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY,0,2,Duel.GetTurnCount())
+	else
+		e:GetHandler():RegisterFlagEffect(25586143,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY,0,1,0)
+	end
 end
 function c25586143.thcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return c:GetTurnID()~=Duel.GetTurnCount() and c:GetFlagEffect(25586143)>0
+	local tid=e:GetHandler():GetFlagEffectLabel(25586143)
+	return tid and tid~=Duel.GetTurnCount()
 end
 function c25586143.thfilter(c)
 	return c:IsSetCard(0x46) and c:IsType(TYPE_SPELL) and c:IsAbleToHand()

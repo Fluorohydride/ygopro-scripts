@@ -17,6 +17,7 @@ end
 function c36737092.filter1(c,e,tp)
 	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsAbleToRemoveAsCost()
 		and Duel.IsExistingMatchingCard(c36737092.filter2,tp,LOCATION_EXTRA,0,1,nil,c:GetLevel(),e,tp)
+		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
 function c36737092.filter2(c,lv,e,tp)
 	return c:IsType(TYPE_SYNCHRO) and c:GetLevel()==lv and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -34,7 +35,8 @@ function c36737092.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c36737092.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	local tc=Duel.GetFirstTarget()
+	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 then return end
 	local lv=e:GetLabel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c36737092.filter2,tp,LOCATION_EXTRA,0,1,1,nil,lv,e,tp)

@@ -19,7 +19,7 @@ function c30915572.sptarget(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_DECKDES,nil,0,tp,1)
 end
-function c30915572.spoperation(e,tp,eg,ep,ev,re,r,rp,c)
+function c30915572.spoperation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.DiscardDeck(tp,1,REASON_EFFECT)
 	local g=Duel.GetOperatedGroup()
@@ -29,10 +29,7 @@ function c30915572.spoperation(e,tp,eg,ep,ev,re,r,rp,c)
 		if tc:IsType(TYPE_MONSTER) then
 			Duel.Damage(1-tp,tc:GetLevel()*200,REASON_EFFECT)
 			if not c:IsRelateToEffect(e) then return end
-			if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-				and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-				Duel.SendtoGrave(c,REASON_RULE)
-			end
+			Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 		else
 			if c:IsRelateToEffect(e) then Duel.Destroy(c,REASON_EFFECT) end
 		end

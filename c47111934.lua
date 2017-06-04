@@ -21,19 +21,12 @@ function c47111934.initial_effect(c)
 	e2:SetOperation(c47111934.thop)
 	c:RegisterEffect(e2)
 end
-function c47111934.check(tp)
-	local ret=false
-	for i=0,4 do
-		local tc=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
-		if tc then
-			if not ret and tc:IsFaceup() and tc:IsCode(11722335) then ret=true
-			else return false end
-		end
-	end
-	return ret
+function c47111934.cfilter(c)
+	return c:IsFaceup() and c:IsCode(11722335)
 end
 function c47111934.spcon(e,tp,eg,ep,ev,re,r,rp,chk)
-	return c47111934.check(tp)
+	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==1
+		and Duel.IsExistingMatchingCard(c47111934.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c47111934.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -42,7 +35,7 @@ function c47111934.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47111934.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or not c47111934.check(tp) then return end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or not c47111934.spcon(e,tp,eg,ep,ev,re,r,rp,0) then return end
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)>0 then
 		Duel.ConfirmCards(1-tp,c)
 		local e1=Effect.CreateEffect(c)

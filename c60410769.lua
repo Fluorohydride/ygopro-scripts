@@ -12,11 +12,14 @@ function c60410769.initial_effect(c)
 	e1:SetOperation(c60410769.posop)
 	c:RegisterEffect(e1)
 end
+function c60410769.filter(c)
+	return c:IsPosition(POS_FACEUP_ATTACK) and not c:IsType(TYPE_LINK)
+end
 function c60410769.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsPosition(POS_FACEUP_ATTACK) end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsPosition,tp,0,LOCATION_MZONE,1,nil,POS_FACEUP_ATTACK) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c60410769.filter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c60410769.filter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUPATTACK)
-	local g=Duel.SelectTarget(tp,Card.IsPosition,tp,0,LOCATION_MZONE,1,1,nil,POS_FACEUP_ATTACK)
+	local g=Duel.SelectTarget(tp,c60410769.filter,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 end
 function c60410769.posop(e,tp,eg,ep,ev,re,r,rp)

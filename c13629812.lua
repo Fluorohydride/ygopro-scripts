@@ -73,6 +73,7 @@ function c13629812.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=e:GetLabelObject()
 	if tc:IsRelateToEffect(e) then
-		Duel.ReturnToField(tc)
+		local zone=bit.lshift(0x1,tc:GetPreviousSequence())
+		Duel.ReturnToField(tc,tc:GetPreviousPosition(),zone)
 	end
 end

@@ -35,7 +35,7 @@ function c45286019.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return not c:IsSetCard(0x72)
 end
 function c45286019.filter(c,e,tp)
-	return c:IsSetCard(0x72) and not c:IsCode(45286019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x72) and not c:IsCode(45286019) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c45286019.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

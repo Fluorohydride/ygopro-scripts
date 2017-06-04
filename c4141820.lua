@@ -22,12 +22,15 @@ function c4141820.operation(e,tp,eg,ep,ev,re,r,rp)
 	local rc=eg:GetFirst()
 	while rc do
 		if rc:GetFlagEffect(4141820)==0 then
-			--draw
+			--discard
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetDescription(aux.Stringid(4141820,0))
 			e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
-			e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 			e1:SetCode(EVENT_BATTLE_DAMAGE)
+			e1:SetRange(LOCATION_MZONE)
+			e1:SetLabel(ep)
+			e1:SetCondition(c4141820.hdcon)
 			e1:SetOperation(c4141820.hdop)
 			e1:SetReset(RESET_EVENT+0x1fe0000)
 			rc:RegisterEffect(e1,true)
@@ -36,6 +39,10 @@ function c4141820.operation(e,tp,eg,ep,ev,re,r,rp)
 		rc=eg:GetNext()
 	end
 end
+function c4141820.hdcon(e,tp,eg,ep,ev,re,r,rp)
+	return ep==1-e:GetLabel()
+end
 function c4141820.hdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.DiscardHand(1-tp,nil,1,1,REASON_EFFECT+REASON_DISCARD)
+	Duel.Hint(HINT_CARD,0,4141820)
+	Duel.DiscardHand(1-e:GetLabel(),nil,1,1,REASON_EFFECT+REASON_DISCARD)
 end

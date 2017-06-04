@@ -33,13 +33,13 @@ function c43241495.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c43241495.cfilter,1,nil,tp)
 end
 function c43241495.filter(c)
-	return (c:GetSequence()==6 or c:GetSequence()==7) and c:IsAbleToHand()
+	return c:IsAbleToHand()
 end
 function c43241495.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c43241495.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c43241495.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_PZONE) and c43241495.filter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c43241495.filter,tp,LOCATION_PZONE,LOCATION_PZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=Duel.SelectTarget(tp,c43241495.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c43241495.filter,tp,LOCATION_PZONE,LOCATION_PZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
 function c43241495.thop1(e,tp,eg,ep,ev,re,r,rp)

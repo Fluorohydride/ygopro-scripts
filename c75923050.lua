@@ -38,7 +38,7 @@ function c75923050.spfilter(c,e,tp)
 	return c:IsCode(1412158) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c75923050.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
+	if chk==0 then return Duel.GetLocationCountFromEx(tp,tp,e:GetHandler())>0
 		and e:GetHandler():IsAbleToExtra()
 		and Duel.IsExistingMatchingCard(c75923050.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,e:GetHandler(),1,0,0)
@@ -46,7 +46,7 @@ function c75923050.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c75923050.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<0 then return end
+	if Duel.GetLocationCountFromEx(tp,tp,c)<=0 then return end
 	if c:IsRelateToEffect(e) and c:IsFaceup() and Duel.SendtoDeck(c,nil,2,REASON_EFFECT)~=0 then
 		local tc=Duel.GetFirstMatchingCard(c75923050.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp)
 		if tc then

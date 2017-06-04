@@ -37,6 +37,7 @@ function c23536866.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+		and Duel.GetLocationCountFromEx(tp)>0
 		and exg:GetCount()>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg1=mg:FilterSelect(tp,c23536866.mfilter1,1,1,nil,mg,exg)
@@ -74,6 +75,7 @@ function c23536866.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e4=e3:Clone()
 	tc2:RegisterEffect(e4)
 	Duel.SpecialSummonComplete()
+	if Duel.GetLocationCountFromEx(tp,tp,g)<=0 then return end
 	Duel.BreakEffect()
 	local xyzg=Duel.GetMatchingGroup(c23536866.xyzfilter,tp,LOCATION_EXTRA,0,nil,g)
 	if xyzg:GetCount()>0 then

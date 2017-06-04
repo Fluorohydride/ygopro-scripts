@@ -11,10 +11,15 @@ function c5037726.initial_effect(c)
 	e1:SetOperation(c5037726.operation)
 	c:RegisterEffect(e1)
 end
+function c5037726.rfilter(c,ft,tp)
+	return c:IsAttribute(ATTRIBUTE_LIGHT)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
+end
 function c5037726.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsAttribute,1,nil,ATTRIBUTE_LIGHT) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsAttribute,1,1,nil,ATTRIBUTE_LIGHT)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c5037726.rfilter,1,nil,ft,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c5037726.rfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c5037726.filter(c,e,tp)
@@ -25,8 +30,7 @@ function c5037726.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-				and Duel.IsExistingTarget(c5037726.filter,tp,LOCATION_REMOVED,LOCATION_REMOVED,1,nil,e,tp)
+			return Duel.IsExistingTarget(c5037726.filter,tp,LOCATION_REMOVED,LOCATION_REMOVED,1,nil,e,tp)
 		else
 			return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 				and Duel.IsExistingTarget(c5037726.filter,tp,LOCATION_REMOVED,LOCATION_REMOVED,1,nil,e,tp)

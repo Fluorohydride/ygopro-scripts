@@ -2,7 +2,7 @@
 function c20590784.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_DRAW+CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetCountLimit(1,20590784+EFFECT_COUNT_CODE_OATH)
@@ -26,8 +26,11 @@ function c20590784.filter(c,e,tp)
 end
 function c20590784.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateAttack() and Duel.Draw(tp,1,REASON_EFFECT)~=0 then
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c20590784.filter),tp,LOCATION_EXTRA+LOCATION_GRAVE,0,nil,e,tp)
+		local loc=0
+		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_GRAVE end
+		if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
+		if loc==0 then return end
+		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c20590784.filter),tp,loc,0,nil,e,tp)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(20590784,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

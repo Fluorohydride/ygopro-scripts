@@ -22,21 +22,37 @@ function c48948935.initial_effect(c)
 	e2:SetOperation(c48948935.eqop)
 	c:RegisterEffect(e2)
 end
+function c48948935.spfilter(c,g,ft,tp)
+	if c:IsControler(tp) and c:GetSequence()<5 then ft=ft+1 end
+	return c:IsCode(13676474,86569121) and (c:IsControler(tp) or c:IsFaceup())
+		and (ft>0 or g:IsExists(c48948935.mzfilter,1,c,tp))
+end
+function c48948935.mzfilter(c,tp)
+	return c:IsControler(tp) and c:GetSequence()<5
+end
 function c48948935.spcon(e,c)
 	if c==nil then return true end
-	local g=Duel.GetReleaseGroup(c:GetControler())
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-2
-		and g:GetCount()>1 and g:IsExists(Card.IsCode,1,nil,13676474,86569121)
+	local tp=c:GetControler()
+	local rg=Duel.GetReleaseGroup(tp)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	return ft>-2 and rg:GetCount()>1 and rg:IsExists(c48948935.spfilter,1,nil,rg,ft,tp)
 end
 function c48948935.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.GetReleaseGroup(tp)
+	local rg=Duel.GetReleaseGroup(tp)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg1=g:FilterSelect(tp,Card.IsCode,1,1,nil,13676474,86569121)
-	g:RemoveCard(sg1:GetFirst())
+	local g=rg:FilterSelect(tp,c48948935.spfilter,1,1,nil,rg,ft,tp)
+	local tc=g:GetFirst()
+	if tc:IsControler(tp) and tc:GetSequence()<5 then ft=ft+1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg2=g:Select(tp,1,1,nil)
-	sg1:Merge(sg2)
-	Duel.Release(sg1,REASON_COST)
+	if ft>0 then
+		local g2=g:Select(tp,1,1,tc)
+		g:Merge(g2)
+	else
+		local g2=g:FilterSelect(tp,c48948935.mzfilter,1,1,tc,tp)
+		g:Merge(g2)
+	end
+	Duel.Release(g,REASON_COST)
 end
 function c48948935.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)

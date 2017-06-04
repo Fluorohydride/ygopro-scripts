@@ -2,13 +2,7 @@
 function c74506079.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetCode(EFFECT_FUSION_MATERIAL)
-	e1:SetCondition(c74506079.fscondition)
-	e1:SetOperation(c74506079.fsoperation)
-	c:RegisterEffect(e1)
+	aux.AddFusionProcFunRep2(c,c74506079.ffilter,2,63,true)
 	--summon success
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
@@ -17,17 +11,7 @@ function c74506079.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c74506079.ffilter(c,fc)
-	return c:IsFusionSetCard(0x3e) and c:IsRace(RACE_REPTILE) and not c:IsHasEffect(6205579) and c:IsCanBeFusionMaterial(fc)
-end
-function c74506079.fscondition(e,g,gc)
-	if g==nil then return true end
-	if gc then return false end
-	return g:IsExists(c74506079.ffilter,2,nil,e:GetHandler())
-end
-function c74506079.fsoperation(e,tp,eg,ep,ev,re,r,rp,gc)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g=eg:FilterSelect(tp,c74506079.ffilter,2,63,nil,e:GetHandler())
-	Duel.SetFusionMaterial(g)
+	return c:IsFusionSetCard(0x3e) and c:IsRace(RACE_REPTILE)
 end
 function c74506079.matcheck(e,c)
 	local ct=c:GetMaterial():GetClassCount(Card.GetCode)

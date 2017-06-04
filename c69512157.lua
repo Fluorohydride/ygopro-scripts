@@ -7,8 +7,7 @@ function c69512157.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_DISABLE)
 	e2:SetRange(LOCATION_PZONE)
-	e2:SetTargetRange(0,LOCATION_SZONE)
-	e2:SetTarget(c69512157.distg)
+	e2:SetTargetRange(0,LOCATION_PZONE)
 	c:RegisterEffect(e2)
 	--disable effect
 	local e3=Effect.CreateEffect(c)
@@ -18,12 +17,9 @@ function c69512157.initial_effect(c)
 	e3:SetOperation(c69512157.disop)
 	c:RegisterEffect(e3)
 end
-function c69512157.distg(e,c)
-	return c:IsType(TYPE_SPELL) and (c:GetSequence()==6 or c:GetSequence()==7)
-end
 function c69512157.disop(e,tp,eg,ep,ev,re,r,rp)
-	local p,loc,seq=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_CONTROLER,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_SEQUENCE)
-	if re:IsActiveType(TYPE_SPELL) and p~=tp and loc==LOCATION_SZONE and (seq==6 or seq==7) then
+	local p,loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_CONTROLER,CHAININFO_TRIGGERING_LOCATION)
+	if re:GetActiveType()==TYPE_PENDULUM+TYPE_SPELL and p~=tp and bit.band(loc,LOCATION_PZONE)~=0 then
 		Duel.NegateEffect(ev)
 	end
 end

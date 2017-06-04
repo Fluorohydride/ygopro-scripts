@@ -10,8 +10,11 @@ function c39956951.initial_effect(c)
 	e1:SetOperation(c39956951.activate)
 	c:RegisterEffect(e1)
 end
+function c39956951.cfilter(c)
+	return c:GetSequence()<5
+end
 function c39956951.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>=5
+	return Duel.GetMatchingGroupCount(c39956951.cfilter,tp,0,LOCATION_MZONE,nil)>=5
 end
 function c39956951.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_MZONE,1,nil) end

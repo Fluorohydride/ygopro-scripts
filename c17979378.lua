@@ -57,9 +57,7 @@ function c17979378.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c17979378.sccon(e)
-	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_SZONE,13-seq)
-	return not tc or not tc:IsSetCard(0xaf)
+	return not Duel.IsExistingMatchingCard(Card.IsSetCard,e:GetHandlerPlayer(),LOCATION_PZONE,0,1,e:GetHandler(),0xaf)
 end
 function c17979378.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsAbleToHand()

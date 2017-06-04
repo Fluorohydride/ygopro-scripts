@@ -3,7 +3,7 @@ function c72403299.initial_effect(c)
 	--announce
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(72403299,0))
-	e1:SetCategory(CATEGORY_TOHAND)
+	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)

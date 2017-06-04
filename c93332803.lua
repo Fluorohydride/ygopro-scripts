@@ -1,6 +1,6 @@
 --怒炎壊獣ドゴラン
 function c93332803.initial_effect(c)
-	c:SetUniqueOnField(1,0,20000000,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,aux.FilterBoolFunction(Card.IsSetCard,0xd3),LOCATION_MZONE)
 	--special summon rule
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -30,19 +30,23 @@ function c93332803.initial_effect(c)
 	e3:SetOperation(c93332803.desop)
 	c:RegisterEffect(e3)
 end
-function c93332803.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0xd3)
+function c93332803.spfilter(c,ft)
+	return c:IsReleasable() and (ft>0 or c:GetSequence()<5)
 end
 function c93332803.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(1-tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(Card.IsReleasable,tp,0,LOCATION_MZONE,1,nil)
+	local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
+	return ft>-1 and Duel.IsExistingMatchingCard(c93332803.spfilter,tp,0,LOCATION_MZONE,1,nil,ft)
 end
 function c93332803.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectMatchingCard(tp,Card.IsReleasable,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c93332803.spfilter,tp,0,LOCATION_MZONE,1,1,nil,ft)
 	Duel.Release(g,REASON_COST)
+end
+function c93332803.cfilter(c)
+	return c:IsFaceup() and c:IsSetCard(0xd3)
 end
 function c93332803.spcon2(e,c)
 	if c==nil then return true end

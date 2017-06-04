@@ -1,7 +1,7 @@
 --クリスタルウィング・シンクロ・ドラゴン
 function c50954680.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsType,TYPE_SYNCHRO),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSynchroType,TYPE_SYNCHRO),1)
 	c:EnableReviveLimit()
 	--negate
 	local e1=Effect.CreateEffect(c)

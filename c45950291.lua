@@ -30,6 +30,7 @@ function c45950291.filter1(c,e,tp)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)
 		and not Duel.IsExistingMatchingCard(c45950291.cfilter,tp,LOCATION_MZONE,0,1,nil,rk)
 		and Duel.IsExistingMatchingCard(c45950291.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,rk+2,c:GetRace(),c:GetAttribute(),c:GetCode())
+		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
 function c45950291.filter2(c,e,tp,mc,rk,rc,att,code)
 	if c:GetOriginalCode()==6165656 and code~=48995978 then return false end
@@ -38,15 +39,14 @@ function c45950291.filter2(c,e,tp,mc,rk,rc,att,code)
 end
 function c45950291.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c45950291.filter1(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingTarget(c45950291.filter1,tp,LOCATION_MZONE,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c45950291.filter1,tp,LOCATION_MZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c45950291.filter1,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c45950291.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<0 then return end
 	local tc=Duel.GetFirstTarget()
+	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 then return end
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c45950291.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc,tc:GetRank()+2,tc:GetRace(),tc:GetAttribute(),tc:GetCode())

@@ -30,14 +30,14 @@ function c29085954.filter(c,e,tp,mc)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
 end
 function c29085954.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
+	if chk==0 then return Duel.GetLocationCountFromEx(tp,tp,e:GetHandler())>0
 		and Duel.GetFieldGroupCount(tp,LOCATION_EXTRA,0)>0 end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c29085954.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(nil,tp,LOCATION_EXTRA,0,nil)
-	if g:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
+	local g=Duel.GetFieldGroup(tp,LOCATION_EXTRA,0)
+	if g:GetCount()>0 and Duel.GetLocationCountFromEx(tp,tp,c)>0
 		and c:IsFaceup() and c:IsRelateToEffect(e) and c:IsControler(tp) and not c:IsImmuneToEffect(e) then
 		local tg=g:RandomSelect(1-tp,1)
 		Duel.ConfirmCards(1-tp,tg)

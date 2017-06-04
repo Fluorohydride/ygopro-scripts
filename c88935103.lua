@@ -45,9 +45,7 @@ function c88935103.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 function c88935103.descon(e)
-	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_SZONE,13-seq)
-	return not tc or not tc:IsSetCard(0x98)
+	return not Duel.IsExistingMatchingCard(Card.IsSetCard,e:GetHandlerPlayer(),LOCATION_PZONE,0,1,e:GetHandler(),0x98)
 end
 function c88935103.synlimit(e,c)
 	if not c then return false end
@@ -89,8 +87,5 @@ function c88935103.spop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(-3)
 	tc:RegisterEffect(e1)
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLocation(LOCATION_HAND) then
-		Duel.SendtoGrave(c,REASON_RULE)
-	end
+	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end

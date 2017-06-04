@@ -35,14 +35,11 @@ function c53724621.drop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Draw(tp,1,REASON_EFFECT)
 end
-function c53724621.filter(c)
-	return c:GetSequence()==6 or c:GetSequence()==7
-end
 function c53724621.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c53724621.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c53724621.filter,tp,LOCATION_SZONE,0,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_PZONE) and chkc:IsControler(tp) end
+	if chk==0 then return Duel.IsExistingTarget(nil,tp,LOCATION_PZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c53724621.filter,tp,LOCATION_SZONE,0,1,1,nil)
+	Duel.SelectTarget(tp,nil,tp,LOCATION_PZONE,0,1,1,nil)
 end
 function c53724621.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

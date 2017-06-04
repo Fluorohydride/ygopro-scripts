@@ -58,57 +58,50 @@ c78512663.material_setcode=0x8
 function c78512663.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
-function c78512663.spfilter(c,code)
-	return c:IsAbleToDeckOrExtraAsCost() and c:IsFusionCode(code)
+function c78512663.cfilter(c)
+	return c:IsFusionCode(89943723,89621922,80344569) and c:IsAbleToDeckOrExtraAsCost()
+end
+function c78512663.fcheck(c,sg,g,code,...)
+	if not c:IsFusionCode(code) then return false end
+	if ... then
+		g:AddCard(c)
+		local res=sg:IsExists(c78512663.fcheck,1,g,sg,g,...)
+		g:RemoveCard(c)
+		return res
+	else return true end
+end
+function c78512663.fselect(c,tp,mg,sg,...)
+	sg:AddCard(c)
+	local res=false
+	if sg:GetCount()<3 then
+		res=mg:IsExists(c78512663.fselect,1,sg,tp,mg,sg,...)
+	elseif Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
+		local g=Group.CreateGroup()
+		res=sg:IsExists(c78512663.fcheck,1,nil,sg,g,...)
+	end
+	sg:RemoveCard(c)
+	return res
 end
 function c78512663.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<-2 then return false end
-	local g1=Duel.GetMatchingGroup(c78512663.spfilter,tp,LOCATION_ONFIELD,0,nil,89943723)
-	local g2=Duel.GetMatchingGroup(c78512663.spfilter,tp,LOCATION_ONFIELD,0,nil,89621922)
-	local g3=Duel.GetMatchingGroup(c78512663.spfilter,tp,LOCATION_ONFIELD,0,nil,80344569)
-	if g1:GetCount()==0 or g2:GetCount()==0 or g3:GetCount()==0 then return false end
-	if ft>0 then return true end
-	local f1=g1:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)>0 and 1 or 0
-	local f2=g2:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)>0 and 1 or 0
-	local f3=g3:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)>0 and 1 or 0
-	if ft==-2 then return f1+f2+f3==3
-	elseif ft==-1 then return f1+f2+f3>=2
-	else return f1+f2+f3>=1 end
+	local mg=Duel.GetMatchingGroup(c78512663.cfilter,tp,LOCATION_ONFIELD,0,nil)
+	local sg=Group.CreateGroup()
+	return mg:IsExists(c78512663.fselect,1,nil,tp,mg,sg,89943723,89621922,80344569)
 end
 function c78512663.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g1=Duel.GetMatchingGroup(c78512663.spfilter,tp,LOCATION_ONFIELD,0,nil,89943723)
-	local g2=Duel.GetMatchingGroup(c78512663.spfilter,tp,LOCATION_ONFIELD,0,nil,89621922)
-	local g3=Duel.GetMatchingGroup(c78512663.spfilter,tp,LOCATION_ONFIELD,0,nil,80344569)
-	g1:Merge(g2)
-	g1:Merge(g3)
-	local g=Group.CreateGroup()
-	local tc=nil
-	for i=1,3 do
+	local mg=Duel.GetMatchingGroup(c78512663.cfilter,tp,LOCATION_ONFIELD,0,nil)
+	local sg=Group.CreateGroup()
+	while sg:GetCount()<3 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-		if ft<=0 then
-			tc=g1:FilterSelect(tp,Card.IsLocation,1,1,nil,LOCATION_MZONE):GetFirst()
-		else
-			tc=g1:Select(tp,1,1,nil):GetFirst()
-		end
-		g:AddCard(tc)
-		if tc:IsFusionCode(89943723) then
-			g1:Remove(Card.IsFusionCode,nil,89943723)
-		elseif tc:IsFusionCode(89621922) then
-			g1:Remove(Card.IsFusionCode,nil,89621922)
-		elseif tc:IsFusionCode(80344569) then
-			g1:Remove(Card.IsFusionCode,nil,80344569)
-		end
-		ft=ft+1
+		local g=mg:FilterSelect(tp,c78512663.fselect,1,1,sg,tp,mg,sg,89943723,89621922,80344569)
+		sg:Merge(g)
 	end
-	local cg=g:Filter(Card.IsFacedown,nil)
+	local cg=sg:Filter(Card.IsFacedown,nil)
 	if cg:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,cg)
 	end
-	Duel.SendtoDeck(g,nil,2,REASON_COST)
+	Duel.SendtoDeck(sg,nil,2,REASON_COST)
 end
 function c78512663.atkval(e,c)
 	return Duel.GetFieldGroupCount(0,LOCATION_ONFIELD,LOCATION_ONFIELD)*400

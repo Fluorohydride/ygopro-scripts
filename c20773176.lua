@@ -33,7 +33,7 @@ function c20773176.filter(c,tp)
 		and (c:IsSetCard(0xb4) or c:IsSetCard(0xc4)) and not c:IsCode(20773176)
 		and c:GetPreviousControler()==tp
 		and ((c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP))
-		or (c:IsPreviousLocation(LOCATION_SZONE) and (c:GetPreviousSequence()==6 or c:GetPreviousSequence()==7)))
+		or c:IsPreviousLocation(LOCATION_PZONE))
 end
 function c20773176.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c20773176.filter,1,nil,tp)
@@ -46,8 +46,5 @@ end
 function c20773176.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLocation(LOCATION_HAND) then
-		Duel.SendtoGrave(c,REASON_RULE)
-	end
+	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end

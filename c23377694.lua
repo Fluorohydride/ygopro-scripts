@@ -55,13 +55,13 @@ function c23377694.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c23377694.cfilter,1,nil,tp)
 end
 function c23377694.spfilter(c,e,tp)
-	return (c:IsSetCard(0x9f) or c:IsSetCard(0x99)) and (c:GetSequence()==6 or c:GetSequence()==7) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return (c:IsSetCard(0x9f) or c:IsSetCard(0x99)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c23377694.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_SZONE) and c23377694.spfilter(chkc,e,tp) end
-	if chk==0 then return Duel.IsExistingTarget(c23377694.spfilter,tp,LOCATION_SZONE,0,1,nil,e,tp) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_PZONE) and c23377694.spfilter(chkc,e,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c23377694.spfilter,tp,LOCATION_PZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectTarget(tp,c23377694.spfilter,tp,LOCATION_SZONE,0,1,1,nil,e,tp)
+	local g=Duel.SelectTarget(tp,c23377694.spfilter,tp,LOCATION_PZONE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c23377694.spop(e,tp,eg,ep,ev,re,r,rp)

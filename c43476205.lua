@@ -15,6 +15,7 @@ function c43476205.filter1(c,e,tp)
 	local rk=c:GetRank()
 	return rk>0 and c:IsFaceup() and c:IsSetCard(0xba)
 		and Duel.IsExistingMatchingCard(c43476205.filter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,rk+1)
+		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
 function c43476205.filter2(c,e,tp)
 	local rk=c:GetRank()
@@ -28,14 +29,14 @@ end
 function c43476205.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if Duel.GetTurnPlayer()==tp then
 		if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c43476205.filter1(chkc,e,tp) end
-		if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-			and Duel.IsExistingTarget(c43476205.filter1,tp,LOCATION_MZONE,0,1,nil,e,tp) end
+		if chk==0 then return Duel.IsExistingTarget(c43476205.filter1,tp,LOCATION_MZONE,0,1,nil,e,tp) end
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 		Duel.SelectTarget(tp,c43476205.filter1,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
 	else
 		if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c43476205.filter2(chkc,e,tp) end
-		if chk==0 then return Duel.IsExistingTarget(c43476205.filter2,tp,0,LOCATION_MZONE,1,nil,e,tp) end
+		if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
+			and Duel.IsExistingTarget(c43476205.filter2,tp,0,LOCATION_MZONE,1,nil,e,tp) end
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_CONTROL)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 		local g=Duel.SelectTarget(tp,c43476205.filter2,tp,0,LOCATION_MZONE,1,1,nil,e,tp)
@@ -50,7 +51,7 @@ function c43476205.activate(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.GetControl(tc,tp)==0 then return end
 		Duel.BreakEffect()
 	end
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<0 then return end
+	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 then return end
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c43476205.filter3,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc,tc:GetRank()+1)

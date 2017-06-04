@@ -23,12 +23,37 @@ function c93717133.initial_effect(c)
 	e2:SetOperation(c93717133.rmop)
 	c:RegisterEffect(e2)
 end
+function c93717133.rfilter(c,tp)
+	return c:IsAttackAbove(2000) and (c:IsControler(tp) or c:IsFaceup())
+end
+function c93717133.mzfilter(c,tp)
+	return c:IsControler(tp) and c:GetSequence()<5
+end
 function c93717133.spcon(e,c)
 	if c==nil then return true end
-	return Duel.CheckReleaseGroup(c:GetControler(),Card.IsAttackAbove,2,nil,2000)
+	local tp=c:GetControler()
+	local rg=Duel.GetReleaseGroup(tp):Filter(c93717133.rfilter,nil,tp)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ct=-ft+1
+	return ft>-2 and rg:GetCount()>1 and (ft>0 or rg:IsExists(c93717133.mzfilter,ct,nil,tp))
 end
 function c93717133.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(c:GetControler(),Card.IsAttackAbove,2,2,nil,2000)
+	local rg=Duel.GetReleaseGroup(tp):Filter(c93717133.rfilter,nil,tp)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local g=nil
+	if ft>0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:Select(tp,2,2,nil)
+	elseif ft==0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:FilterSelect(tp,c93717133.mzfilter,1,1,nil,tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		local g2=rg:Select(tp,1,1,g:GetFirst())
+		g:Merge(g2)
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:FilterSelect(tp,c93717133.mzfilter,2,2,nil,tp)
+	end
 	Duel.Release(g,REASON_COST)
 	c:RegisterFlagEffect(0,RESET_EVENT+0x4fc0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(93717133,1))
 end

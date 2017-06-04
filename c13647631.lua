@@ -56,9 +56,6 @@ function c13647631.spop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(def/2)
 		c:RegisterEffect(e2)
 		Duel.SpecialSummonComplete()
-	elseif Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c13647631.descon(e,tp,eg,ep,ev,re,r,rp)

@@ -40,24 +40,30 @@ function c80532587.initial_effect(c)
 	e4:SetOperation(c80532587.desop)
 	c:RegisterEffect(e4)
 end
-function c80532587.sprfilter1(c,tp,fc)
-	return c:IsType(TYPE_SYNCHRO) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc)
-		and Duel.IsExistingMatchingCard(c80532587.sprfilter2,tp,LOCATION_MZONE,0,1,c,fc)
+function c80532587.cfilter(c,fc)
+	return c:IsFusionType(TYPE_SYNCHRO+TYPE_XYZ) and c:IsCanBeFusionMaterial(fc) and c:IsAbleToGraveAsCost()
 end
-function c80532587.sprfilter2(c,fc)
-	return c:IsType(TYPE_XYZ) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc)
+function c80532587.spfilter1(c,tp,g)
+	return g:IsExists(c80532587.spfilter2,1,c,tp,c)
+end
+function c80532587.spfilter2(c,tp,mc)
+	return (c:IsFusionType(TYPE_SYNCHRO) and mc:IsFusionType(TYPE_XYZ)
+		or c:IsFusionType(TYPE_XYZ) and mc:IsFusionType(TYPE_SYNCHRO))
+		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
 end
 function c80532587.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and Duel.IsExistingMatchingCard(c80532587.sprfilter1,tp,LOCATION_MZONE,0,1,nil,tp,c)
+	local mg=Duel.GetMatchingGroup(c80532587.cfilter,tp,LOCATION_MZONE,0,nil,c)
+	return mg:IsExists(c80532587.spfilter1,1,nil,tp,mg)
 end
 function c80532587.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+	local mg=Duel.GetMatchingGroup(c80532587.cfilter,tp,LOCATION_MZONE,0,nil,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,c80532587.sprfilter1,tp,LOCATION_MZONE,0,1,1,nil,tp,c)
+	local g1=mg:FilterSelect(tp,c80532587.spfilter1,1,1,nil,tp,mg)
+	local mc=g1:GetFirst()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectMatchingCard(tp,c80532587.sprfilter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst(),c)
+	local g2=mg:FilterSelect(tp,c80532587.spfilter2,1,1,mc,tp,mc)
 	g1:Merge(g2)
 	c:SetMaterial(g1)
 	Duel.SendtoGrave(g1,REASON_COST)

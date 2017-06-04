@@ -1,14 +1,8 @@
 --キメラテック・ランページ・ドラゴン
 function c84058253.initial_effect(c)
-	c:EnableReviveLimit()
 	--fusion material
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetCode(EFFECT_FUSION_MATERIAL)
-	e1:SetCondition(c84058253.fscondition)
-	e1:SetOperation(c84058253.fsoperation)
-	c:RegisterEffect(e1)
+	c:EnableReviveLimit()
+	aux.AddFusionProcFunRep2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x1093),2,63,false)
 	--destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_DESTROY)
@@ -28,38 +22,6 @@ function c84058253.initial_effect(c)
 	e3:SetTarget(c84058253.tgtg)
 	e3:SetOperation(c84058253.tgop)
 	c:RegisterEffect(e3)
-end
-function c84058253.ffilter(c,fc)
-	return c:IsFusionSetCard(0x1093) and not c:IsHasEffect(6205579) and c:IsCanBeFusionMaterial(fc)
-end
-function c84058253.fscondition(e,g,gc,chkf)
-	if g==nil then return false end
-	if gc then return c84058253.ffilter(gc,e:GetHandler()) and g:IsExists(c84058253.ffilter,1,gc,e:GetHandler()) end
-	local g1=g:Filter(c84058253.ffilter,nil,e:GetHandler())
-	if chkf~=PLAYER_NONE then
-		return g1:IsExists(aux.FConditionCheckF,1,nil,chkf) and g1:GetCount()>=2
-	else return g1:GetCount()>=2 end
-end
-function c84058253.fsoperation(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
-	if gc then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local g1=eg:FilterSelect(tp,c84058253.ffilter,1,63,gc,e:GetHandler())
-		Duel.SetFusionMaterial(g1)
-		return
-	end
-	local sg=eg:Filter(c84058253.ffilter,nil,e:GetHandler())
-	if chkf==PLAYER_NONE or sg:GetCount()==2 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local g1=sg:Select(tp,2,63,nil)
-		Duel.SetFusionMaterial(g1)
-		return
-	end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g1=sg:FilterSelect(tp,aux.FConditionCheckF,1,1,nil,chkf)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g2=sg:Select(tp,1,63,g1:GetFirst())
-	g1:Merge(g2)
-	Duel.SetFusionMaterial(g1)
 end
 function c84058253.descon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION

@@ -13,24 +13,22 @@ function c67757079.initial_effect(c)
 	e1:SetOperation(c67757079.spop)
 	c:RegisterEffect(e1)
 end
-function c67757079.cfilter(c)
+function c67757079.cfilter(c,ft,tp)
 	return c:IsFaceup() and c:IsCode(94878265)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5))
 end
 function c67757079.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c67757079.cfilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,c67757079.cfilter,1,1,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c67757079.cfilter,1,nil,ft,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c67757079.cfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c67757079.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c67757079.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLocation(LOCATION_HAND) then
-		Duel.SendtoGrave(c,REASON_RULE)
-	end
+	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end

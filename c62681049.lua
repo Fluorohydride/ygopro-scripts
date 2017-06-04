@@ -28,8 +28,5 @@ function c62681049.tdtg(e,c)
 	return (c:IsFacedown() or not c:IsSetCard(0xb3)) and c:IsReason(REASON_EFFECT)
 end
 function c62681049.tdcon(e)
-	local tp=e:GetHandlerPlayer()
-	local tc1=Duel.GetFieldCard(tp,LOCATION_SZONE,6)
-	local tc2=Duel.GetFieldCard(tp,LOCATION_SZONE,7)
-	return (tc1 and tc1:IsSetCard(0xb3)) or (tc2 and tc2:IsSetCard(0xb3))
+	return Duel.IsExistingMatchingCard(Card.IsSetCard,e:GetHandlerPlayer(),LOCATION_PZONE,0,1,nil,0xb3)
 end

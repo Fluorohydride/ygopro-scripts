@@ -1,7 +1,7 @@
 --光の角
 function c38552107.initial_effect(c)
 	aux.AddEquipProcedure(c)
-	--Atk up
+	--Def up
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_EQUIP)
 	e2:SetCode(EFFECT_UPDATE_DEFENSE)

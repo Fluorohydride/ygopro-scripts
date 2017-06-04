@@ -3,7 +3,7 @@ function c99641328.initial_effect(c)
 	--deck
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(99641328,0))
-	e1:SetCategory(CATEGORY_TOGRAVE)
+	e1:SetCategory(CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCode(EVENT_FLIP)

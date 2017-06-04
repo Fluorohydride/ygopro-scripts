@@ -40,9 +40,7 @@ function c20281581.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c20281581.descon(e)
-	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_SZONE,13-seq)
-	return not tc
+	return not Duel.IsExistingMatchingCard(nil,e:GetHandlerPlayer(),LOCATION_PZONE,0,1,e:GetHandler())
 end
 function c20281581.rdcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp

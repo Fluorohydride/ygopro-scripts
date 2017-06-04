@@ -127,6 +127,7 @@ end
 function c32354768.drop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.Draw(tp,1,REASON_EFFECT)~=0 then
+		Duel.ShuffleHand(tp)
 		Duel.BreakEffect()
 		Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT+REASON_DISCARD)
 	end

@@ -23,17 +23,20 @@ end
 function c20663556.indes(e,c)
 	return c:IsSetCard(0x12)
 end
+function c20663556.cfilter(c,ft,tp)
+	return ft>0 or (c:IsControler(tp) and c:GetSequence()<5)
+end
 function c20663556.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c20663556.cfilter,1,nil,ft,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c20663556.cfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c20663556.filter(c,e,tp)
 	return c:IsSetCard(0x12) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c20663556.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(c20663556.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c20663556.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c20663556.operation(e,tp,eg,ep,ev,re,r,rp)

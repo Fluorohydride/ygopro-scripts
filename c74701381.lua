@@ -19,7 +19,7 @@ end
 function c74701381.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,563)
-	local rc=Duel.AnnounceRace(tp,1,0xffffff)
+	local rc=Duel.AnnounceRace(tp,1,RACE_ALL)
 	e:GetLabelObject():SetLabel(rc)
 	e:GetHandler():SetHint(CHINT_RACE,rc)
 end

@@ -34,14 +34,13 @@ function c38737148.spcon(e,c)
 		and Duel.IsExistingMatchingCard(Card.IsAttribute,tp,LOCATION_GRAVE,0,4,nil,ATTRIBUTE_LIGHT)
 end
 function c38737148.desfilter(c)
-	return c:GetSequence()==5
-		and Duel.IsExistingTarget(aux.TRUE,0,LOCATION_ONFIELD,LOCATION_ONFIELD,2,c)
+	return Duel.IsExistingTarget(nil,0,LOCATION_ONFIELD,LOCATION_ONFIELD,2,c)
 end
 function c38737148.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.IsExistingTarget(c38737148.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c38737148.desfilter,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g1=Duel.SelectTarget(tp,c38737148.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil)
+	local g1=Duel.SelectTarget(tp,c38737148.desfilter,tp,LOCATION_FZONE,LOCATION_FZONE,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g2=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,2,2,g1:GetFirst())
 	g1:Merge(g2)

@@ -42,15 +42,35 @@ end
 function c3775068.spcfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xe3) and c:IsAbleToGraveAsCost()
 end
+function c3775068.mzfilter(c)
+	return c:GetSequence()<5
+end
 function c3775068.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-3
-		and Duel.IsExistingMatchingCard(c3775068.spcfilter,tp,LOCATION_MZONE,0,3,nil)
+	local mg=Duel.GetMatchingGroup(c3775068.spcfilter,tp,LOCATION_MZONE,0,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ct=-ft+1
+	return ft>-3 and mg:GetCount()>2 and (ft>0 or mg:IsExists(c3775068.mzfilter,ct,nil))
 end
 function c3775068.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c3775068.spcfilter,tp,LOCATION_MZONE,0,3,3,nil)
+	local mg=Duel.GetMatchingGroup(c3775068.spcfilter,tp,LOCATION_MZONE,0,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local g=nil
+	if ft>0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+		g=mg:Select(tp,3,3,nil)
+	elseif ft>-2 then
+		local ct=-ft+1
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+		g=mg:FilterSelect(tp,c3775068.mzfilter,ct,ct,nil)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+		local g2=mg:Select(tp,3-ct,3-ct,g)
+		g:Merge(g2)
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+		g=mg:FilterSelect(tp,c3775068.mzfilter,3,3,nil)
+	end
 	Duel.SendtoGrave(g,REASON_COST)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

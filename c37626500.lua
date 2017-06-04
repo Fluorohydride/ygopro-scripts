@@ -9,7 +9,7 @@ function c37626500.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c37626500.ritual_filter(c)
-	return c:IsType(TYPE_RITUAL) and c:IsAttribute(ATTRIBUTE_LIGHT) 
+	return c:IsType(TYPE_RITUAL) and c:IsAttribute(ATTRIBUTE_LIGHT)
 end
 function c37626500.filter(c,e,tp,m,ft)
 	if not c37626500.ritual_filter(c) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
@@ -22,7 +22,7 @@ function c37626500.filter(c,e,tp,m,ft)
 	end
 end
 function c37626500.mfilterf(c,tp,mg,rc)
-	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) then
+	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5 then
 		Duel.SetSelectedCard(c)
 		return mg:CheckWithSumEqual(Card.GetRitualLevel,rc:GetLevel(),0,99,rc)
 	else return false end

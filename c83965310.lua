@@ -38,17 +38,38 @@ function c83965310.initial_effect(c)
 	e4:SetCode(EFFECT_DISABLE)
 	c:RegisterEffect(e4)
 end
+function c83965310.mzfilter(c,tp)
+	return c:IsControler(tp) and c:GetSequence()<5
+end
 function c83965310.spcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-3
-		and Duel.CheckReleaseGroup(c:GetControler(),nil,3,nil)
+	local tp=c:GetControler()
+	local rg=Duel.GetReleaseGroup(tp)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ct=-ft+1
+	return ft>-3 and rg:GetCount()>2 and (ft>0 or rg:IsExists(c83965310.mzfilter,ct,nil,tp))
 end
 function c83965310.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(c:GetControler(),nil,3,3,nil)
+	local rg=Duel.GetReleaseGroup(tp)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local g=nil
+	if ft>0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:Select(tp,3,3,nil)
+	elseif ft>-2 then
+		local ct=-ft+1
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:FilterSelect(tp,c83965310.mzfilter,ct,ct,nil,tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		local g2=rg:Select(tp,3-ct,3-ct,g)
+		g:Merge(g2)
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:FilterSelect(tp,c83965310.mzfilter,3,3,nil,tp)
+	end
 	Duel.Release(g,REASON_COST)
 end
 function c83965310.eqcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
 	local ec=e:GetLabelObject()
 	return ec==nil or ec:GetFlagEffect(83965310)==0
 end

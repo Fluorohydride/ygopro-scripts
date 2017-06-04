@@ -15,7 +15,7 @@ end
 function c30334522.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)~=0 end
 	Duel.Hint(HINT_SELECTMSG,tp,563)
-	local rc=Duel.AnnounceRace(tp,1,0xffffff)
+	local rc=Duel.AnnounceRace(tp,1,RACE_ALL)
 	e:SetLabel(rc)
 	Duel.Hint(HINT_SELECTMSG,tp,562)
 	local at=Duel.AnnounceAttribute(tp,1,0xffff)

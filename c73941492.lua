@@ -26,11 +26,9 @@ function c73941492.initial_effect(c)
 	--synchro custom
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetCode(EFFECT_SYNCHRO_MATERIAL_CUSTOM)
+	e4:SetCode(EFFECT_TUNER_MATERIAL_LIMIT)
 	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e4:SetTarget(c73941492.syntg)
-	e4:SetValue(1)
-	e4:SetOperation(c73941492.synop)
+	e4:SetTarget(c73941492.synlimit)
 	c:RegisterEffect(e4)
 	--fusion and xyz custom not implemented
 	--local e5=Effect.CreateEffect(c)
@@ -56,6 +54,9 @@ end
 function c73941492.tuner_filter(c)
 	return c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM)
 end
+function c73941492.synlimit(e,c)
+	return c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM)
+end
 function c73941492.atkfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM)
 end
@@ -63,32 +64,13 @@ function c73941492.atkval(e,c)
 	local g=Duel.GetMatchingGroup(c73941492.atkfilter,c:GetControler(),LOCATION_EXTRA,0,nil)
 	return g:GetClassCount(Card.GetCode)*100
 end
-function c73941492.synfilter(c,syncard,tuner,f)
-	return c:IsFaceup() and c:IsNotTuner() and c:IsCanBeSynchroMaterial(syncard,tuner) and c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM) and (f==nil or f(c))
-end
-function c73941492.syntg(e,syncard,f,minc,maxc)
-	local c=e:GetHandler()
-	local lv=syncard:GetLevel()-c:GetLevel()
-	if lv<=0 then return false end
-	local g=Duel.GetMatchingGroup(c73941492.synfilter,syncard:GetControler(),LOCATION_MZONE,LOCATION_MZONE,c,syncard,c,f)
-	local res=g:CheckWithSumEqual(Card.GetSynchroLevel,lv,minc,maxc,syncard)
-	return res
-end
-function c73941492.synop(e,tp,eg,ep,ev,re,r,rp,syncard,f,minc,maxc)
-	local c=e:GetHandler()
-	local lv=syncard:GetLevel()-c:GetLevel()
-	local g=Duel.GetMatchingGroup(c73941492.synfilter,syncard:GetControler(),LOCATION_MZONE,LOCATION_MZONE,c,syncard,c,f)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-	local sg=g:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,minc,maxc,syncard)
-	Duel.SetSynchroMaterial(sg)
-end
 function c73941492.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:GetSummonType()==SUMMON_TYPE_PENDULUM and c:IsPreviousLocation(LOCATION_HAND)
 end
 function c73941492.spfilter(c,e,tp)
 	return c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM) and not c:IsCode(73941492)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c73941492.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

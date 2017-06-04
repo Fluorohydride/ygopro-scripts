@@ -19,6 +19,7 @@ function c46925518.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_FLIP)
+	e2:SetTarget(c46925518.fdtg)
 	e3:SetOperation(c46925518.fdop)
 	c:RegisterEffect(e3)
 end
@@ -39,6 +40,10 @@ function c46925518.posop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
 		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
+end
+function c46925518.fdtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c46925518.fdop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

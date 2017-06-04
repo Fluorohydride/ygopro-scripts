@@ -38,23 +38,41 @@ end
 function c41329458.indcon(e)
 	return Duel.IsExistingMatchingCard(Card.IsType,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil,TYPE_TOKEN)
 end
+function c41329458.rfilter(c,tp)
+	return c:IsSetCard(0x101b) and (c:IsControler(tp) or c:IsFaceup())
+end
+function c41329458.mzfilter(c,tp)
+	return c:IsControler(tp) and c:GetSequence()<5
+end
 function c41329458.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,2,nil,0x101b) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,2,2,nil,0x101b)
+	local rg=Duel.GetReleaseGroup(tp):Filter(c41329458.rfilter,nil,tp)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ct=-ft+1
+	if chk==0 then return ft>-2 and rg:GetCount()>1 and (ft>0 or rg:IsExists(c41329458.mzfilter,ct,nil,tp)) end
+	local g=nil
+	if ft>0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:Select(tp,2,2,nil)
+	elseif ft==0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:FilterSelect(tp,c41329458.mzfilter,1,1,nil,tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		local g2=rg:Select(tp,1,1,g:GetFirst())
+		g:Merge(g2)
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		g=rg:FilterSelect(tp,c41329458.mzfilter,2,2,nil,tp)
+	end
 	Duel.Release(g,REASON_COST)
 end
 function c41329458.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c41329458.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-		Duel.SendtoGrave(c,REASON_RULE)
-	end
+	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c41329458.cfilter(c)
 	return c:IsSetCard(0x101b) and c:IsType(TYPE_MONSTER) and c:IsDiscardable()

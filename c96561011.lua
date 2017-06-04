@@ -28,15 +28,18 @@ end
 function c96561011.val(e,c)
 	return Duel.GetMatchingGroupCount(Card.IsRace,c:GetControler(),LOCATION_GRAVE,0,nil,RACE_DRAGON)*300
 end
-function c96561011.rfilter(c)
+function c96561011.rfilter(c,ft,tp)
 	return c:IsCode(74677422)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c96561011.spcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-1
-		and Duel.CheckReleaseGroup(c:GetControler(),c96561011.rfilter,1,nil)
+	local tp=c:GetControler()
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	return ft>-1 and Duel.CheckReleaseGroup(tp,c96561011.rfilter,1,nil,ft,tp)
 end
 function c96561011.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(c:GetControler(),c96561011.rfilter,1,1,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local g=Duel.SelectReleaseGroup(tp,c96561011.rfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end

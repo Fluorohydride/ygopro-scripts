@@ -11,10 +11,15 @@ function c70156997.initial_effect(c)
 	e1:SetOperation(c70156997.activate)
 	c:RegisterEffect(e1)
 end
+function c70156997.cfilter(c,ft,tp)
+	return c:IsAttribute(ATTRIBUTE_EARTH)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
+end
 function c70156997.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsAttribute,1,nil,ATTRIBUTE_EARTH) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsAttribute,1,1,nil,ATTRIBUTE_EARTH)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c70156997.cfilter,1,nil,ft,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c70156997.cfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 	e:SetLabelObject(g:GetFirst())
 end
@@ -23,11 +28,10 @@ function c70156997.filter(c,e,tp)
 end
 function c70156997.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c70156997.filter(chkc,e,tp) end
-	if chk==0 then		
+	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-				and Duel.IsExistingTarget(c70156997.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
+			return Duel.IsExistingTarget(c70156997.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 		else
 			return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 				and Duel.IsExistingTarget(c70156997.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp)

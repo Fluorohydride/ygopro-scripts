@@ -49,7 +49,7 @@ function c52575195.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsControler(tp) and Duel.Remove(tc,tc:GetPosition(),REASON_EFFECT+REASON_TEMPORARY)~=0 then
-		local e1=Effect.CreateEffect(e:GetHandler())
+		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
 		e1:SetRange(LOCATION_REMOVED)
@@ -67,12 +67,8 @@ function c52575195.tgop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c52575195.retcon)
 		e1:SetOperation(c52575195.retop)
 		tc:RegisterEffect(e1)
-		local c=e:GetHandler()
 		if not c:IsRelateToEffect(e) then return end
-		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-			and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-			Duel.SendtoGrave(c,REASON_RULE)
-		end
+		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
 function c52575195.retcon(e,tp,eg,ep,ev,re,r,rp)

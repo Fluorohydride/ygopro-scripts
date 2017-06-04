@@ -1,7 +1,7 @@
 --スターダスト・ウォリアー
 function c74892653.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsType,TYPE_SYNCHRO),aux.NonTuner(Card.IsType,TYPE_SYNCHRO),1)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSynchroType,TYPE_SYNCHRO),aux.NonTuner(Card.IsSynchroType,TYPE_SYNCHRO),1)
 	c:EnableReviveLimit()
 	--disable spsummon
 	local e1=Effect.CreateEffect(c)
@@ -41,9 +41,19 @@ end
 function c74892653.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=ep and Duel.GetCurrentChain()==0
 end
+function c74892653.cfcost(c)
+	return c:IsCode(84012625) and c:IsAbleToRemoveAsCost()
+end
 function c74892653.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsReleasable() end
-	Duel.Release(e:GetHandler(),REASON_COST)
+	local b1=e:GetHandler():IsReleasable()
+	local b2=Duel.IsExistingMatchingCard(c74892653.cfcost,tp,LOCATION_GRAVE,0,1,nil)
+	if chk==0 then return b1 or b2 end
+	if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(84012625,0))) then
+		local tg=Duel.GetFirstMatchingCard(c74892653.cfcost,tp,LOCATION_GRAVE,0,nil)
+		Duel.Remove(tg,POS_FACEUP,REASON_COST)
+	else
+		Duel.Release(e:GetHandler(),REASON_COST)
+	end
 end
 function c74892653.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -76,12 +86,12 @@ function c74892653.filter(c,e,tp)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false)
 end
 function c74892653.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
 		and Duel.IsExistingMatchingCard(c74892653.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c74892653.scop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	if Duel.GetLocationCountFromEx(tp)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c74892653.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()

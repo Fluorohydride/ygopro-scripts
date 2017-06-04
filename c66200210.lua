@@ -44,12 +44,7 @@ function c66200210.initial_effect(c)
 end
 function c66200210.lvval(e,c)
 	local tp=c:GetControler()
-	local lv=0
-	for i=0,4 do
-		local tc=Duel.GetFieldCard(tp,LOCATION_MZONE,i)
-		if tc and tc:IsCode(31533705) then lv=lv+tc:GetLevel() end
-	end
-	return lv
+	return Duel.GetMatchingGroup(Card.IsCode,tp,LOCATION_MZONE,0,nil,31533705):GetSum(Card.GetLevel)
 end
 function c66200210.indcon(e)
 	return Duel.IsExistingMatchingCard(Card.IsType,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil,TYPE_TOKEN)
@@ -70,9 +65,14 @@ function c66200210.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummonComplete()
 	end
 end
+function c66200210.cfilter(c,ft,tp)
+	return c:IsType(TYPE_TOKEN)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5))
+end
 function c66200210.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsType,1,nil,TYPE_TOKEN) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsType,1,1,nil,TYPE_TOKEN)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c66200210.cfilter,1,nil,ft,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c66200210.cfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c66200210.filter(c,e,tp)
@@ -80,8 +80,7 @@ function c66200210.filter(c,e,tp)
 end
 function c66200210.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c66200210.filter(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingTarget(c66200210.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c66200210.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c66200210.filter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)

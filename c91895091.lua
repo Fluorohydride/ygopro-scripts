@@ -62,7 +62,7 @@ function c91895091.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsRelateToBattle() and c:GetOverlayCount()>0
 end
 function c91895091.spfilter(c,e,tp)
-	return c:IsAttribute(ATTRIBUTE_EARTH) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsAttribute(ATTRIBUTE_EARTH) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c91895091.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c91895091.spfilter(chkc,e,tp) end

@@ -18,6 +18,7 @@ function c76573247.initial_effect(c)
 end
 function c76573247.seqcon(e,tp,eg,ep,ev,re,r,rp)
 	local seq=e:GetHandler():GetSequence()
+	if seq>4 then return false end
 	return (seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1))
 		or (seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1))
 end
@@ -25,12 +26,14 @@ function c76573247.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsControler(1-tp) then return end
 	local seq=c:GetSequence()
+	if seq>4 then return end
 	if (seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1))
 		or (seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1)) then
 		local flag=0
-		if seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1) then flag=bit.bor(flag,bit.lshift(0x1,seq-1)) end
-		if seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1) then flag=bit.bor(flag,bit.lshift(0x1,seq+1)) end
+		if seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1) then flag=bit.replace(flag,0x1,seq-1) end
+		if seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1) then flag=bit.replace(flag,0x1,seq+1) end
 		flag=bit.bxor(flag,0xff)
+		Duel.Hint(HINT_SELECTMSG,tp,571)
 		local s=Duel.SelectDisableField(tp,1,LOCATION_MZONE,0,flag)
 		local nseq=0
 		if s==1 then nseq=0
@@ -41,8 +44,14 @@ function c76573247.seqop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.MoveSequence(c,nseq)
 	end
 end
+function c76573247.filter(c,s1)
+	local s2=c:GetSequence()
+	if c:IsLocation(LOCATION_SZONE) and s2>=5 then return false end
+	if s1==5 then s1=1 elseif s1==6 then s1=3 end
+	if s2==5 then s2=1 elseif s2==6 then s2=3 end
+	return s1+s2==4
+end
 function c76573247.dircon(e)
-	local p=1-e:GetHandlerPlayer()
-	local seq=4-e:GetHandler():GetSequence()
-	return Duel.GetFieldCard(p,LOCATION_MZONE,seq)==nil and Duel.GetFieldCard(p,LOCATION_SZONE,seq)==nil
+	local tp=e:GetHandlerPlayer()
+	return not Duel.IsExistingMatchingCard(c76573247.filter,tp,0,LOCATION_ONFIELD,1,nil,e:GetHandler():GetSequence())
 end

@@ -15,20 +15,22 @@ end
 function c92572371.cfilter(c)
 	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and (c:IsSetCard(0x79) or c:IsSetCard(0x7c)) and c:IsAbleToGraveAsCost()
 end
+function c92572371.mzfilter(c)
+	return c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5
+end
 function c92572371.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=-ft+1
 	local sg=Duel.GetMatchingGroup(c92572371.cfilter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,nil)
 	if chk==0 then return sg:GetCount()>=2
-		and (ft>0 or (ct<3 and sg:IsExists(Card.IsLocation,ct,nil,LOCATION_MZONE))) end
+		and (ft>0 or (ct<3 and sg:IsExists(c92572371.mzfilter,ct,nil))) end
 	local g=nil
 	if ft<=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		g=sg:FilterSelect(tp,Card.IsLocation,ct,ct,nil,LOCATION_MZONE)
+		g=sg:FilterSelect(tp,c92572371.mzfilter,ct,ct,nil)
 		if ct<2 then
-			sg:Sub(g)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-			local g1=sg:Select(tp,2-ct,2-ct,nil)
+			local g1=sg:Select(tp,2-ct,2-ct,g)
 			g:Merge(g1)
 		end
 	else

@@ -46,29 +46,35 @@ end
 function c90957527.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
-function c90957527.spfilter1(c,tp)
-	return c:IsFusionCode(79580323) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial()
-		and Duel.IsExistingMatchingCard(c90957527.spfilter2,tp,LOCATION_MZONE,0,1,c)
+function c90957527.cfilter(c)
+	return (c:IsFusionCode(79580323) or c:IsFusionSetCard(0x19) and c:IsType(TYPE_MONSTER))
+		and c:IsCanBeFusionMaterial() and c:IsAbleToDeckOrExtraAsCost()
 end
-function c90957527.spfilter2(c)
-	return c:IsFusionSetCard(0x19) and c:IsCanBeFusionMaterial() and c:IsAbleToDeckOrExtraAsCost()
+function c90957527.spfilter1(c,tp,g)
+	return g:IsExists(c90957527.spfilter2,1,c,tp,c)
+end
+function c90957527.spfilter2(c,tp,mc)
+	return (c:IsFusionCode(79580323) and mc:IsFusionSetCard(0x19) and mc:IsType(TYPE_MONSTER)
+		or c:IsFusionSetCard(0x19) and c:IsType(TYPE_MONSTER) and mc:IsFusionCode(79580323))
+		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
 end
 function c90957527.sprcon(e,c)
-	if c==nil then return true end 
+	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and Duel.IsExistingMatchingCard(c90957527.spfilter1,tp,LOCATION_ONFIELD,0,1,nil,tp)
+	local g=Duel.GetMatchingGroup(c90957527.cfilter,tp,LOCATION_ONFIELD,0,nil)
+	return g:IsExists(c90957527.spfilter1,1,nil,tp,g)
 end
 function c90957527.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(90957527,2))
-	local g1=Duel.SelectMatchingCard(tp,c90957527.spfilter1,tp,LOCATION_ONFIELD,0,1,1,nil,tp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(90957527,3))
-	local g2=Duel.SelectMatchingCard(tp,c90957527.spfilter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst())
+	local g=Duel.GetMatchingGroup(c90957527.cfilter,tp,LOCATION_ONFIELD,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+	local g1=g:FilterSelect(tp,c90957527.spfilter1,1,1,nil,tp,g)
+	local mc=g1:GetFirst()
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+	local g2=g:FilterSelect(tp,c90957527.spfilter2,1,1,mc,tp,mc)
 	g1:Merge(g2)
-	local tc=g1:GetFirst()
-	while tc do
-		if not tc:IsFaceup() then Duel.ConfirmCards(1-tp,tc) end
-		tc=g1:GetNext()
+	local cg=g1:Filter(Card.IsFacedown,nil)
+	if cg:GetCount()>0 then
+		Duel.ConfirmCards(1-tp,cg)
 	end
 	Duel.SendtoDeck(g1,nil,2,REASON_COST)
 end

@@ -19,7 +19,7 @@ end
 c55888045.xyz_number=106
 function c55888045.negcon(e,tp,eg,ep,ev,re,r,rp)
 	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
-	return (loc==LOCATION_SZONE or loc==LOCATION_MZONE) and not e:GetHandler():IsStatus(STATUS_CHAINING)
+	return bit.band(loc,LOCATION_ONFIELD)~=0 and not e:GetHandler():IsStatus(STATUS_CHAINING)
 		and e:GetHandler():GetOverlayGroup():IsExists(Card.IsSetCard,1,nil,0x48)
 end
 function c55888045.filter(c)

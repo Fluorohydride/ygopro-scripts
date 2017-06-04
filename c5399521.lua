@@ -67,9 +67,7 @@ function c5399521.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c5399521.slcon(e)
-	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_SZONE,13-seq)
-	return not tc or not tc:IsSetCard(0x1066)
+	return not Duel.IsExistingMatchingCard(Card.IsSetCard,e:GetHandlerPlayer(),LOCATION_PZONE,0,1,e:GetHandler(),0x1066)
 end
 function c5399521.spcon(e,c)
 	if c==nil then return true end

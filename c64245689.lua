@@ -47,7 +47,7 @@ function c64245689.tgop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c64245689.spfilter(c,e,tp)
-	return c:IsRace(RACE_PLANT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_PLANT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c64245689.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c64245689.spfilter(chkc,e,tp) end

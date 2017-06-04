@@ -3,7 +3,7 @@ function c73136204.initial_effect(c)
 	--deck
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(73136204,0))
-	e1:SetCategory(CATEGORY_TOGRAVE)
+	e1:SetCategory(CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)

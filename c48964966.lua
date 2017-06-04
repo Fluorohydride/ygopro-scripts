@@ -44,22 +44,23 @@ function c48964966.initial_effect(c)
 	e4:SetOperation(c48964966.operation2)
 	c:RegisterEffect(e4)
 end
-function c48964966.filter1(c)
+function c48964966.filter1(c,ft)
 	return c:IsFaceup() and c:IsRace(RACE_FAIRY) and c:GetCode()~=48964966 and c:IsAbleToGraveAsCost()
+		and (ft>0 or c:GetSequence()<5)
 end
 function c48964966.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c48964966.filter1,tp,LOCATION_MZONE,0,1,nil) end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.IsExistingMatchingCard(c48964966.filter1,tp,LOCATION_MZONE,0,1,nil,ft) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local cc=Duel.SelectMatchingCard(tp,c48964966.filter1,tp,LOCATION_MZONE,0,1,1,nil);
-	Duel.SendtoGrave(cc,REASON_COST)
+	local g=Duel.SelectMatchingCard(tp,c48964966.filter1,tp,LOCATION_MZONE,0,1,1,nil,ft)
+	Duel.SendtoGrave(g,REASON_COST)
 end
 function c48964966.filter2(c,e,sp)
 	return c:IsRace(RACE_FAIRY) and c:GetCode()~=48964966 and c:IsCanBeSpecialSummoned(e,0,sp,false,false)
 end
 function c48964966.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c48964966.filter2(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingTarget(c48964966.filter2,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c48964966.filter2,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c48964966.filter2,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)

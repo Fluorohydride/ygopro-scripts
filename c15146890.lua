@@ -17,9 +17,7 @@ function c15146890.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c15146890.condition(e,tp,eg,ep,ev,re,r,rp)
-	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(tp,LOCATION_SZONE,13-seq)
-	return tc and tc:IsSetCard(0x98)
+	return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_PZONE,0,1,e:GetHandler(),0x98)
 end
 function c15146890.cfilter(c)
 	return c:IsType(TYPE_PENDULUM) and c:IsDiscardable()

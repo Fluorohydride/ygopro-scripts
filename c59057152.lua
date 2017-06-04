@@ -50,7 +50,7 @@ function c59057152.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return c59057152.eqcon2(e) and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==1
 end
 function c59057152.spfilter(c,e,tp)
-	return c:IsSetCard(0x107a) and c:GetCode()~=59057152 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x107a) and c:GetCode()~=59057152 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c59057152.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

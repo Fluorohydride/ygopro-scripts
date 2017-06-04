@@ -11,13 +11,14 @@ function c1896112.initial_effect(c)
 	e1:SetOperation(c1896112.operation)
 	c:RegisterEffect(e1)
 end
-function c1896112.cfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_FUSION) and c:IsAbleToExtraAsCost()
+function c1896112.cfilter(c,ft)
+	return c:IsFaceup() and c:IsType(TYPE_FUSION) and c:IsAbleToExtraAsCost() and (ft>0 or c:GetSequence()<5)
 end
 function c1896112.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c1896112.cfilter,tp,LOCATION_MZONE,0,1,nil) end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.IsExistingMatchingCard(c1896112.cfilter,tp,LOCATION_MZONE,0,1,nil,ft) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g=Duel.SelectMatchingCard(tp,c1896112.cfilter,tp,LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c1896112.cfilter,tp,LOCATION_MZONE,0,1,1,nil,ft)
 	Duel.SendtoDeck(g,nil,0,REASON_COST)
 end
 function c1896112.filter(c,e,tp)
@@ -25,7 +26,7 @@ function c1896112.filter(c,e,tp)
 end
 function c1896112.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1 and Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
+	if chk==0 then return Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c1896112.filter,tp,LOCATION_REMOVED,0,1,nil,e,tp)
 		and Duel.IsExistingTarget(c1896112.filter,1-tp,LOCATION_REMOVED,0,1,nil,e,1-tp) end
 	local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)

@@ -29,10 +29,9 @@ function c69840739.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c69840739.chcon(e,tp,eg,ep,ev,re,r,rp)
-	local rc=re:GetHandler()
 	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
 	return (re:IsActiveType(TYPE_MONSTER) and loc==LOCATION_MZONE)
-		or ((rc:GetType()==TYPE_SPELL or rc:GetType()==TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE))
+		or ((re:GetActiveType()==TYPE_SPELL or re:GetActiveType()==TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE))
 end
 function c69840739.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

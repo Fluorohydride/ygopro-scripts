@@ -38,27 +38,46 @@ end
 function c43378048.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
-function c43378048.spfilter(c,code)
-	return c:IsFaceup() and c:IsFusionCode(code) and c:IsAbleToRemoveAsCost() 
+function c43378048.cfilter(c)
+	return c:IsFaceup() and c:IsFusionCode(6007213,32491822,69890967) and c:IsAbleToRemoveAsCost()
+end
+function c43378048.fcheck(c,sg,g,code,...)
+	if not c:IsFusionCode(code) then return false end
+	if ... then
+		g:AddCard(c)
+		local res=sg:IsExists(c43378048.fcheck,1,g,sg,g,...)
+		g:RemoveCard(c)
+		return res
+	else return true end
+end
+function c43378048.fselect(c,tp,mg,sg,...)
+	sg:AddCard(c)
+	local res=false
+	if sg:GetCount()<3 then
+		res=mg:IsExists(c43378048.fselect,1,sg,tp,mg,sg,...)
+	elseif Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
+		local g=Group.CreateGroup()
+		res=sg:IsExists(c43378048.fcheck,1,nil,sg,g,...)
+	end
+	sg:RemoveCard(c)
+	return res
 end
 function c43378048.spcon(e,c)
-	if c==nil then return true end 
+	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-3
-		and Duel.IsExistingMatchingCard(c43378048.spfilter,tp,LOCATION_ONFIELD,0,1,nil,6007213)
-		and Duel.IsExistingMatchingCard(c43378048.spfilter,tp,LOCATION_ONFIELD,0,1,nil,32491822)
-		and Duel.IsExistingMatchingCard(c43378048.spfilter,tp,LOCATION_ONFIELD,0,1,nil,69890967)
+	local mg=Duel.GetMatchingGroup(c43378048.cfilter,tp,LOCATION_ONFIELD,0,nil)
+	local sg=Group.CreateGroup()
+	return mg:IsExists(c43378048.fselect,1,nil,tp,mg,sg,6007213,32491822,69890967)
 end
 function c43378048.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectMatchingCard(tp,c43378048.spfilter,tp,LOCATION_ONFIELD,0,1,1,nil,6007213)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=Duel.SelectMatchingCard(tp,c43378048.spfilter,tp,LOCATION_ONFIELD,0,1,1,nil,32491822)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g3=Duel.SelectMatchingCard(tp,c43378048.spfilter,tp,LOCATION_ONFIELD,0,1,1,nil,69890967)
-	g1:Merge(g2)
-	g1:Merge(g3)
-	Duel.Remove(g1,POS_FACEUP,REASON_COST)
+	local mg=Duel.GetMatchingGroup(c43378048.cfilter,tp,LOCATION_ONFIELD,0,nil)
+	local sg=Group.CreateGroup()
+	while sg:GetCount()<3 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+		local g=mg:FilterSelect(tp,c43378048.fselect,1,1,sg,tp,mg,sg,6007213,32491822,69890967)
+		sg:Merge(g)
+	end
+	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c43378048.atkcon(e)
 	return Duel.GetTurnPlayer()==e:GetHandlerPlayer()

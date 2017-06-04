@@ -54,19 +54,26 @@ function c57734012.filter2(c,e,tp,mc,no)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
 end
 function c57734012.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	local loc=0
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_GRAVE end
+	if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
-		and Duel.GetFlagEffect(tp,57734012)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c57734012.filter1,tp,LOCATION_GRAVE+LOCATION_EXTRA,0,1,nil,e,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE+LOCATION_EXTRA)
+		and Duel.GetFlagEffect(tp,57734012)==0 and loc~=0 and Duel.GetLocationCountFromEx(tp)>0
+		and Duel.IsExistingMatchingCard(c57734012.filter1,tp,loc,0,1,nil,e,tp) end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,loc)
 end
 function c57734012.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(tp,57734012)~=0 then return end
 	Duel.RegisterFlagEffect(tp,57734012,0,0,0)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	local loc=0
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_GRAVE end
+	if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
+	if loc==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g1=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c57734012.filter1),tp,LOCATION_GRAVE+LOCATION_EXTRA,0,1,1,nil,e,tp)
+	local g1=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c57734012.filter1),tp,loc,0,1,1,nil,e,tp)
 	local tc1=g1:GetFirst()
 	if tc1 and Duel.SpecialSummon(tc1,0,tp,tp,false,false,POS_FACEUP)~=0 then
+		if Duel.GetLocationCountFromEx(tp,tp,tc1)<=0 then return end
 		local m=_G["c"..tc1:GetCode()]
 		if not m then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

@@ -6,7 +6,6 @@ function c1525329.initial_effect(c)
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
-	e1:SetRange(LOCATION_MZONE)
 	e1:SetTarget(c1525329.armtg)
 	e1:SetOperation(c1525329.armop)
 	c:RegisterEffect(e1)
@@ -14,7 +13,7 @@ end
 function c1525329.armtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,563)
-	local rc=Duel.AnnounceRace(tp,1,0xffffff)
+	local rc=Duel.AnnounceRace(tp,1,RACE_ALL)
 	e:SetLabel(rc)
 end
 function c1525329.armop(e,tp,eg,ep,ev,re,r,rp)

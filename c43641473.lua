@@ -18,7 +18,7 @@ function c43641473.ecfilter(c)
 	return c:IsType(TYPE_EQUIP) and c:GetEquipTarget()~=nil and Duel.IsExistingTarget(c43641473.tcfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,c:GetEquipTarget(),c)
 end
 function c43641473.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c43641473.ecfilter(chkc) end
+	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(c43641473.ecfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(43641473,0))
 	local g=Duel.SelectTarget(tp,c43641473.ecfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil)

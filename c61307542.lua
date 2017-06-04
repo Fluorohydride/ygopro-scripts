@@ -1,7 +1,7 @@
 --バージェストマ・アノマロカリス
 function c61307542.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,2,3,nil,nil,5)
+	aux.AddXyzProcedure(c,nil,2,3,nil,nil,99)
 	c:EnableReviveLimit()
 	--immune
 	local e1=Effect.CreateEffect(c)
@@ -14,7 +14,7 @@ function c61307542.initial_effect(c)
 	--reveal
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(61307542,0))
-	e2:SetCategory(CATEGORY_TOHAND)
+	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_DECKDES)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetRange(LOCATION_MZONE)

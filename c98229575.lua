@@ -20,17 +20,20 @@ function c98229575.initial_effect(c)
 	e2:SetOperation(c98229575.atkop)
 	c:RegisterEffect(e2)
 end
-function c98229575.spfilter(c)
+function c98229575.spfilter(c,ft)
 	return c:IsFaceup() and c:IsSetCard(0xb2) and not c:IsCode(98229575) and c:IsAbleToHandAsCost()
+		and (ft>0 or c:GetSequence()<5)
 end
 function c98229575.spcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(c98229575.spfilter,c:GetControler(),LOCATION_MZONE,0,1,nil)
+	local tp=c:GetControler()
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	return ft>-1 and Duel.IsExistingMatchingCard(c98229575.spfilter,c:GetControler(),LOCATION_MZONE,0,1,nil,ft)
 end
 function c98229575.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=Duel.SelectMatchingCard(tp,c98229575.spfilter,tp,LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c98229575.spfilter,tp,LOCATION_MZONE,0,1,1,nil,ft)
 	Duel.SendtoHand(g,nil,REASON_COST)
 end
 function c98229575.atkcon(e,tp,eg,ep,ev,re,r,rp)

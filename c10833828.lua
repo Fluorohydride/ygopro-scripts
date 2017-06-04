@@ -39,7 +39,7 @@ function c10833828.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c10833828.spfilter1(c,e,tp)
-	return c:IsSetCard(0x10af) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x10af) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c10833828.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -83,7 +83,7 @@ function c10833828.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local g=e:GetHandler():GetCardTarget():Filter(Card.IsControler,nil,tp)
 		if g:GetCount()==0 then return false end
-		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
+		local chkf=tp
 		local mg1=Duel.GetFusionMaterial(tp)
 		local res=Duel.IsExistingMatchingCard(c10833828.spfilter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,g,nil,chkf)
 		if not res then
@@ -106,7 +106,7 @@ function c10833828.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local g=c:GetCardTarget():Filter(Card.IsControler,nil,tp)
 	g:Remove(Card.IsImmuneToEffect,nil,e)
 	if g:GetCount()==0 then return false end
-	local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
+	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c10833828.spfilter2,nil,e)
 	local sg1=Duel.GetMatchingGroup(c10833828.spfilter3,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,g,nil,chkf)
 	local mg2=nil

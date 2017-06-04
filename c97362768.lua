@@ -48,11 +48,14 @@ function c97362768.operation(e,tp,eg,ep,ev,re,r,rp)
 		e:GetLabelObject():SetLabel(0)
 	end
 end
+function c97362768.posfilter(c)
+	return c:IsFaceup() and not c:IsType(TYPE_LINK)
+end
 function c97362768.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c97362768.posfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c97362768.posfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
-	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c97362768.posfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 end
 function c97362768.posop(e,tp,eg,ep,ev,re,r,rp)

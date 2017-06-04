@@ -17,14 +17,14 @@ end
 function c21143940.filter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x8)
 		and Duel.IsExistingMatchingCard(c21143940.tfilter,tp,LOCATION_EXTRA,0,1,nil,c:GetAttribute(),e,tp)
+		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
 function c21143940.chkfilter(c,att)
 	return c:IsFaceup() and c:IsSetCard(0x8) and c:IsAttribute(att)
 end
 function c21143940.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c21143940.chkfilter(chkc,e:GetLabel()) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingTarget(c21143940.filter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c21143940.filter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectTarget(tp,c21143940.filter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -35,6 +35,7 @@ function c21143940.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not tc:IsRelateToEffect(e) then return end
 	local att=tc:GetAttribute()
 	if Duel.SendtoGrave(tc,REASON_EFFECT)==0 then return end
+	if Duel.GetLocationCountFromEx(tp)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=Duel.SelectMatchingCard(tp,c21143940.tfilter,tp,LOCATION_EXTRA,0,1,1,nil,att,e,tp)
 	if sg:GetCount()>0 then

@@ -54,20 +54,37 @@ end
 function c29357956.spfilter(c)
 	return c:IsFusionSetCard(0x19) and c:IsCanBeFusionMaterial() and c:IsAbleToDeckOrExtraAsCost()
 end
+function c29357956.fselect(c,tp,mg,sg)
+	sg:AddCard(c)
+	local res=false
+	if sg:GetCount()<3 then
+		res=mg:IsExists(c29357956.fselect,1,sg,tp,mg,sg)
+	else
+		res=Duel.GetLocationCountFromEx(tp,tp,sg)>0
+	end
+	sg:RemoveCard(c)
+	return res
+end
 function c29357956.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-3
-		and Duel.IsExistingMatchingCard(c29357956.spfilter,tp,LOCATION_MZONE,0,3,nil)
+	local mg=Duel.GetMatchingGroup(c29357956.spfilter,tp,LOCATION_MZONE,0,nil)
+	local sg=Group.CreateGroup()
+	return mg:IsExists(c29357956.fselect,1,nil,tp,mg,sg)
 end
 function c29357956.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g=Duel.SelectMatchingCard(tp,c29357956.spfilter,tp,LOCATION_MZONE,0,3,3,nil)
-	local cg=g:Filter(Card.IsFacedown,nil)
+	local mg=Duel.GetMatchingGroup(c29357956.spfilter,tp,LOCATION_MZONE,0,nil)
+	local sg=Group.CreateGroup()
+	while sg:GetCount()<3 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+		local g=mg:FilterSelect(tp,c29357956.fselect,1,1,sg,tp,mg,sg)
+		sg:Merge(g)
+	end
+	local cg=sg:Filter(Card.IsFacedown,nil)
 	if cg:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,cg)
 	end
-	Duel.SendtoDeck(g,nil,2,REASON_COST)
+	Duel.SendtoDeck(sg,nil,2,REASON_COST)
 end
 function c29357956.actcon(e)
 	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()

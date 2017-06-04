@@ -13,12 +13,14 @@ function c13361027.initial_effect(c)
 	e1:SetOperation(c13361027.operation)
 	c:RegisterEffect(e1)
 end
-function c13361027.cfilter(c)
+function c13361027.cfilter(c,ft,tp)
 	return c:IsSetCard(0x29) and c:IsRace(RACE_DRAGON)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c13361027.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c13361027.cfilter,1,nil) end
-	local rg=Duel.SelectReleaseGroup(tp,c13361027.cfilter,1,1,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c13361027.cfilter,1,nil,ft,tp) end
+	local rg=Duel.SelectReleaseGroup(tp,c13361027.cfilter,1,1,nil,ft,tp)
 	Duel.Release(rg,REASON_COST)
 end
 function c13361027.filter(c,e,sp)
@@ -26,8 +28,7 @@ function c13361027.filter(c,e,sp)
 end
 function c13361027.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c13361027.filter(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingTarget(c13361027.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c13361027.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c13361027.filter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)

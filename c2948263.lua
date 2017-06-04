@@ -37,13 +37,19 @@ function c2948263.initial_effect(c)
 	e4:SetOperation(c2948263.disop)
 	c:RegisterEffect(e4)
 end
+function c2948263.spfilter(c,ft,tp)
+	return c:IsSetCard(0x59)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
+end
 function c2948263.spcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-1
-		and Duel.CheckReleaseGroup(c:GetControler(),Card.IsSetCard,1,nil,0x59)
+	local tp=c:GetControler()
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	return ft>-1 and Duel.CheckReleaseGroup(tp,c2948263.spfilter,1,nil,ft,tp)
 end
 function c2948263.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(c:GetControler(),Card.IsSetCard,1,1,nil,0x59)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local g=Duel.SelectReleaseGroup(tp,c2948263.spfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 	local atk=g:GetFirst():GetBaseAttack()
 	if atk<0 then return end

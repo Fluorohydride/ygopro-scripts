@@ -49,7 +49,7 @@ function c71422989.activate(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
-		local chkf=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and PLAYER_NONE or tp
+		local chkf=tp
 		local mg1=Duel.GetFusionMaterial(tp):Filter(c71422989.filter1,nil,e)
 		local sg1=Duel.GetMatchingGroup(c71422989.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 		local mg2=nil

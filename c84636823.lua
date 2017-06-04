@@ -33,7 +33,7 @@ function c84636823.distg(e,c)
 end
 function c84636823.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tl=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
-	if tl==LOCATION_SZONE and re:IsActiveType(TYPE_SPELL) then
+	if bit.band(tl,LOCATION_SZONE)~=0 and re:IsActiveType(TYPE_SPELL) then
 		Duel.NegateEffect(ev)
 	end
 end

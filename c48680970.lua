@@ -10,7 +10,6 @@ function c48680970.initial_effect(c)
 	c:RegisterEffect(e1)
 	--instant
 	local e2=Effect.CreateEffect(c)
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_FREE_CHAIN)
@@ -108,8 +107,10 @@ function c48680970.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	e:SetLabel(op)
 	if op==0 then
+		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 	else
+		e:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 	end
 end

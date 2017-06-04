@@ -30,9 +30,7 @@ function c91420254.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c91420254.sccon(e,tp,eg,ep,ev,re,r,rp)
-	local seq=e:GetHandler():GetSequence()
-	local tc=Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_SZONE,13-seq)
-	return tc and tc:IsSetCard(0xb3)
+	return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_PZONE,0,1,e:GetHandler(),0xb3)
 end
 function c91420254.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

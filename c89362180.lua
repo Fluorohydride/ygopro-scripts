@@ -39,7 +39,7 @@ end
 function c89362180.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=e:GetHandler():GetBattleTarget()
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and bc:IsCanBeSpecialSummoned(e,0,tp,false,false) end
+		and bc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE) end
 	Duel.SetTargetCard(bc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,bc,1,0,0)
 end

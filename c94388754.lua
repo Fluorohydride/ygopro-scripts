@@ -20,16 +20,19 @@ function c94388754.initial_effect(c)
 	e2:SetOperation(c94388754.operation)
 	c:RegisterEffect(e2)
 end
-function c94388754.hspfilter(c)
+function c94388754.hspfilter(c,ft,tp)
 	return c:IsSetCard(0xe6) and not c:IsCode(94388754)
+		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c94388754.hspcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>-1
-		and Duel.CheckReleaseGroup(c:GetControler(),c94388754.hspfilter,1,nil)
+	local tp=c:GetControler()
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	return ft>-1 and Duel.CheckReleaseGroup(tp,c94388754.hspfilter,1,nil,ft,tp)
 end
 function c94388754.hspop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.SelectReleaseGroup(c:GetControler(),c94388754.hspfilter,1,1,nil)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local g=Duel.SelectReleaseGroup(tp,c94388754.hspfilter,1,1,nil,ft,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c94388754.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -48,6 +51,7 @@ function c94388754.operation(e,tp,eg,ep,ev,re,r,rp)
 			if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(94388754,1)) then
 				Duel.BreakEffect()
 				local sg=g:Select(tp,1,1,nil)
+				Duel.HintSelection(sg)
 				Duel.Destroy(sg,REASON_EFFECT)
 			end
 		else
