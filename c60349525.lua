@@ -25,7 +25,7 @@ function c60349525.indval(e,c)
 	return c:IsLevelBelow(e:GetHandler():GetLevel())
 end
 function c60349525.condition(e,tp,eg,ep,ev,re,r,rp)
-	if tp==ep or eg:GetCount()~=1 then return false end
+	if tp==rp or eg:GetCount()~=1 then return false end
 	local c=eg:GetFirst()
 	return c:GetLevel()>0 and c:IsAttackAbove(c:GetLevel()*200)
 end
