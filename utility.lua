@@ -455,7 +455,7 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 	local mat={}
 	for i=1,#val do
 		if type(val[i])=='function' then
-			fun[i]=function(c) return val[i](c) and not c:IsHasEffect(6205579) end
+			fun[i]=function(c,fc,sub,mg,sg) return val[i](c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) end
 		else
 			if sub then
 				fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
@@ -531,15 +531,15 @@ function Auxiliary.FCheckMix(c,mg,sg,fc,sub,fun1,fun2,...)
 	if fun2 then
 		sg:AddCard(c)
 		local res=false
-		if fun1(c,fc,false) then
+		if fun1(c,fc,false,mg,sg) then
 			res=mg:IsExists(Auxiliary.FCheckMix,1,sg,mg,sg,fc,sub,fun2,...)
-		elseif sub and fun1(c,fc,true) then
+		elseif sub and fun1(c,fc,true,mg,sg) then
 			res=mg:IsExists(Auxiliary.FCheckMix,1,sg,mg,sg,fc,false,fun2,...)
 		end
 		sg:RemoveCard(c)
 		return res
 	else
-		return fun1(c,fc,sub)
+		return fun1(c,fc,sub,mg,sg)
 	end
 end
 --if sg1 is subset of sg2 then not Auxiliary.FCheckAdditional(tp,sg1,fc) -> not Auxiliary.FCheckAdditional(tp,sg2,fc)
@@ -568,7 +568,7 @@ function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
 	local mat={}
 	for i=1,#val do
 		if type(val[i])=='function' then
-			fun[i]=function(c) return val[i](c) and not c:IsHasEffect(6205579) end
+			fun[i]=function(c,fc,sub,mg,sg) return val[i](c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) end
 		else
 			if sub then
 				fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
@@ -661,9 +661,9 @@ function Auxiliary.FCheckMixRepGoal(tp,sg,fc,sub,chkf,fun1,minc,maxc,...)
 end
 function Auxiliary.FCheckMixRepTemplate(c,cond,tp,mg,sg,g,fc,sub,chkf,fun1,minc,maxc,...)
 	for i,f in ipairs({...}) do
-		if f(c,fc,sub) then
+		if f(c,fc,sub,mg,sg) then
 			g:AddCard(c)
-			local sub=sub and f(c,fc,false)
+			local sub=sub and f(c,fc,false,mg,sg)
 			local t={...}
 			table.remove(t,i)
 			local res=cond(tp,mg,sg,g,fc,sub,chkf,fun1,minc,maxc,table.unpack(t))
@@ -672,9 +672,9 @@ function Auxiliary.FCheckMixRepTemplate(c,cond,tp,mg,sg,g,fc,sub,chkf,fun1,minc,
 		end
 	end
 	if maxc>0 then
-		if fun1(c,fc,sub) then
+		if fun1(c,fc,sub,mg,sg) then
 			g:AddCard(c)
-			local sub=sub and fun1(c,fc,false)
+			local sub=sub and fun1(c,fc,false,mg,sg)
 			local res=cond(tp,mg,sg,g,fc,sub,chkf,fun1,minc-1,maxc-1,...)
 			g:RemoveCard(c)
 			if res then return true end
