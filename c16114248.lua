@@ -1,7 +1,7 @@
 --ペア・サイクロイド
 function c16114248.initial_effect(c)
 	c:EnableReviveLimit()
-	aux.AddFusionProcMixN(c,false,true,c16114248.ffilter,2)
+	aux.AddFusionProcFunRep(c,c16114248.ffilter,2,true)
 	--direct attack
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

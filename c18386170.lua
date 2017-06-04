@@ -1,7 +1,7 @@
 --彼岸の巡礼者 ダンテ
 function c18386170.initial_effect(c)
 	c:EnableReviveLimit()
-	aux.AddFusionProcMixN(c,false,true,c18386170.ffilter,3)
+	aux.AddFusionProcFunRep(c,c18386170.ffilter,3,true)
 	--special summon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
