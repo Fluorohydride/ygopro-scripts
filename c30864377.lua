@@ -38,7 +38,7 @@ function c30864377.initial_effect(c)
 	c:RegisterEffect(e4)
 	--special summon
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(3779662,4))
+	e6:SetDescription(aux.Stringid(30864377,4))
 	e6:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e6:SetCode(EVENT_PHASE+PHASE_BATTLE)
@@ -117,7 +117,8 @@ function c30864377.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c30864377.spop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<1 then return end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c30864377.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc then

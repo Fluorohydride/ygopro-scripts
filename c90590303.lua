@@ -56,13 +56,13 @@ function c90590303.mtop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(e:GetHandler(),REASON_COST)
 	end
 end
-function c90590303.tgcon(e,tp,eg,ep,ev,re,r,rp)
+function c90590303.tgcon(e)
 	return e:GetHandler():IsAttackPos()
 end
 function c90590303.indval(e,re,tp)
 	return tp~=e:GetHandlerPlayer()
 end
-function c90590303.poscon(e,tp,eg,ep,ev,re,r,rp)
+function c90590303.poscon(e)
 	return e:GetHandler():IsDefensePos()
 end
 function c90590303.postg(e,c)

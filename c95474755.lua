@@ -92,7 +92,7 @@ function c95474755.dktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tg=Duel.GetDecktopGroup(1-tp,ct)
 	if chk==0 then return ct>0
 		and tg:FilterCount(Card.IsAbleToRemove,nil)==ct end
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,n,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,ct,1-tp,LOCATION_DECK)
 end
 function c95474755.dkop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetMatchingGroupCount(c95474755.dkfilter,tp,0,LOCATION_REMOVED,nil)

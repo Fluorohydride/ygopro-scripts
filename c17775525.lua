@@ -34,20 +34,20 @@ function c17775525.initial_effect(c)
 end
 function c17775525.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
-	local rt=Duel.GetTargetCount(aux.TRUE,tp,0,LOCATION_ONFIELD,nil)
+	local rt=Duel.GetTargetCount(nil,tp,0,LOCATION_ONFIELD,nil)
 	if rt>2 then rt=2 end
 	local cg=Duel.DiscardHand(tp,Card.IsDiscardable,1,rt,REASON_COST+REASON_DISCARD,nil)
 	e:SetLabel(cg)
 end
 function c17775525.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end
-	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(nil,tp,0,LOCATION_ONFIELD,1,nil) end
 	local ct=e:GetLabel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local eg=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,ct,ct,nil)
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,ct,0,0)
+	local g=Duel.SelectTarget(tp,nil,tp,0,LOCATION_ONFIELD,ct,ct,nil)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,ct,0,0)
 end
-function c17775525.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c17775525.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local rg=tg:Filter(Card.IsRelateToEffect,nil,e)
 	if rg:GetCount()>0 then

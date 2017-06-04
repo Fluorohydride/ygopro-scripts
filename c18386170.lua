@@ -102,7 +102,7 @@ function c18386170.fscon(e,g,gc,chkf)
 	local tp=c:GetControler()
 	local mg=g:Filter(c18386170.ffilter,nil,c)
 	local sg=Group.CreateGroup()
-	if gc then return c18386170.ffilter(gc,c) and c18386170.fselect(gc,mg,sg,tp,fc) end
+	if gc then return c18386170.ffilter(gc,c) and c18386170.fselect(gc,mg,sg,tp,c) end
 	return mg:IsExists(c18386170.fselect,1,sg,mg,sg,tp,c)
 end
 function c18386170.fsop(e,tp,eg,ep,ev,re,r,rp,gc,chkf)

@@ -32,7 +32,7 @@ function c68507541.initial_effect(c)
 	e3:SetValue(c68507541.atktg)
 	c:RegisterEffect(e3)
 end
-function c68507541.atkcon1(e)
+function c68507541.atkcon1(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler()==Duel.GetAttacker()
 end
 function c68507541.atkop1(e,tp,eg,ep,ev,re,r,rp)
