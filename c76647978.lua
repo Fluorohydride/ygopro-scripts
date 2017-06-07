@@ -35,8 +35,20 @@ function c76647978.filter1(c,e,tp,mc)
 	return Duel.IsExistingMatchingCard(c76647978.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg)
 		and Duel.GetLocationCountFromEx(tp,tp,mg)>0
 end
+function c76647978.fcheckfilter(c,g)
+	return not g:IsContains(c)
+end
+function c76647978.fcheck(mg)
+	return  function(tp,sg,fc)
+				return not sg:IsExists(c76647978.fcheckfilter,1,nil,mg) and not mg:IsExists(c76647978.fcheckfilter,1,nil,sg)
+			end
+end
 function c76647978.filter2(c,e,tp,mg)
-	return c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(mg,nil)
+	if not c:IsType(TYPE_FUSION) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) then return false end
+	Auxiliary.FCheckAdditional=c76647978.fcheck(mg)
+	local res=c:CheckFusionMaterial(mg,nil)
+	Auxiliary.FCheckAdditional=nil
+	return res
 end
 function c76647978.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local mg=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)
