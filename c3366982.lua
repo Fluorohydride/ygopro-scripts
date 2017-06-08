@@ -1,4 +1,5 @@
 --ドラゴンに乗るワイバーン
+--fixed by senpaizuri
 function c3366982.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
@@ -13,6 +14,11 @@ end
 function c3366982.filter(c)
 	return c:IsFaceup() and c:IsAttribute(0xf8)
 end
-function c3366982.dircon(e)
-	return not Duel.IsExistingMatchingCard(c3366982.filter,e:GetHandlerPlayer(),0,LOCATION_MZONE,1,nil)
+function c3366982.dircon(e,tp)
+	local g=Duel.GetMatchingGroup(Card.IsFacedown,tp,0,LOCATION_MZONE,nil)
+	if g:GetCount()==Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE) then
+		return false
+	else
+		return not Duel.IsExistingMatchingCard(c3366982.filter,tp,0,LOCATION_MZONE,1,nil)
+	end
 end
