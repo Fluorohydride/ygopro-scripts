@@ -17,23 +17,20 @@ function c46232525.initial_effect(c)
 	e2:SetValue(10000070)
 	c:RegisterEffect(e2)
 end
-function c46232525.tgfilter(c,e,tp,chkf)
-	if chkf~=PLAYER_NONE and c:IsLocation(LOCATION_HAND) then return false end
+function c46232525.tgfilter(c,e,tp)
 	return c:IsType(TYPE_MONSTER) and Duel.IsExistingMatchingCard(c46232525.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetRace())
+		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
 function c46232525.spfilter(c,e,tp,race)
 	return c:IsType(TYPE_FUSION) and c.material_race and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and race==c.material_race
 end
 function c46232525.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then
-		local chkf=tp
-		return Duel.IsExistingMatchingCard(c46232525.tgfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil,e,tp,chkf) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c46232525.tgfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c46232525.activate(e,tp,eg,ep,ev,re,r,rp)
-	local chkf=tp
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g=Duel.SelectMatchingCard(tp,c46232525.tgfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil,e,tp,chkf)
+	local g=Duel.SelectMatchingCard(tp,c46232525.tgfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc and not tc:IsImmuneToEffect(e) then
 		if tc:IsOnField() and tc:IsFacedown() then Duel.ConfirmCards(1-tp,tc) end
