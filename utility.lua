@@ -703,16 +703,16 @@ function Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,sub,chkf,fun1,minc,maxc,...)
 end
 function Auxiliary.FCheckSelectMixRepAll(c,tp,mg,sg,g,fc,sub,chkf,fun1,minc,maxc,fun2,...)
 	if fun2 then
-		if fun2(c,fc,sub) then
+		if fun2(c,fc,sub,mg,sg) then
 			g:AddCard(c)
-			local sub=sub and fun2(c,fc,false)
+			local sub=sub and fun2(c,fc,false,mg,sg)
 			local res=Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,sub,chkf,fun1,minc,maxc,...)
 			g:RemoveCard(c)
 			return res
 		end
-	elseif maxc>0 and fun1(c,fc,sub) then
+	elseif maxc>0 and fun1(c,fc,sub,mg,sg) then
 		g:AddCard(c)
-		local sub=sub and fun1(c,fc,false)
+		local sub=sub and fun1(c,fc,false,mg,sg)
 		local res=Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,sub,chkf,fun1,minc-1,maxc-1)
 		g:RemoveCard(c)
 		return res
