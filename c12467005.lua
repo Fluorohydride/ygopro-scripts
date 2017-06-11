@@ -58,5 +58,5 @@ function c12467005.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c12467005.aclimit(e,re,tp)
-	return re:GetHandler():IsCode(e:GetLabel())
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsCode(e:GetLabel())
 end
