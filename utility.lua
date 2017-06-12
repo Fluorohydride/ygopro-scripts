@@ -1348,6 +1348,16 @@ function Auxiliary.qlifilter(e,te)
 		return false
 	end
 end
+--sp_summon condition for gladiator beast monsters
+function Auxiliary.gbspcon(e,tp,eg,ep,ev,re,r,rp)
+	local st=e:GetHandler():GetSummonType()
+	return st>=(SUMMON_TYPE_SPECIAL+100) and st<(SUMMON_TYPE_SPECIAL+150)
+end
+--sp_summon condition for evolsaur monsters
+function Auxiliary.evospcon(e,tp,eg,ep,ev,re,r,rp)
+	local st=e:GetHandler():GetSummonType()
+	return st>=(SUMMON_TYPE_SPECIAL+150) and st<(SUMMON_TYPE_SPECIAL+180)
+end
 --filter for necro_valley test
 function Auxiliary.NecroValleyFilter(f)
 	return	function(target,...)

@@ -18,7 +18,7 @@ function c67385964.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e2:SetCondition(c67385964.tgcon)
+	e2:SetCondition(aux.gbspcon)
 	e2:SetTarget(c67385964.tgtg)
 	e2:SetOperation(c67385964.tgop)
 	c:RegisterEffect(e2)
@@ -60,10 +60,6 @@ function c67385964.hspop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.CalculateDamage(a,c)
 		end
 	end
-end
-function c67385964.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	local st=e:GetHandler():GetSummonType()
-	return st>=(SUMMON_TYPE_SPECIAL+100) and st<(SUMMON_TYPE_SPECIAL+150)
 end
 function c67385964.tgfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x19) and c:IsAbleToGrave()
