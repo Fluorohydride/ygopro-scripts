@@ -23,7 +23,7 @@ function c49820233.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c49820233.ffilter(c)
-		return c:IsFusionAttribute(ATTRIBUTE_DARK) and c:IsLevelAbove(5)
+	return c:IsFusionAttribute(ATTRIBUTE_DARK) and c:IsLevelAbove(5)
 end
 function c49820233.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
