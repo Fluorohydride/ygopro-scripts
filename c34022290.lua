@@ -25,10 +25,13 @@ function c34022290.spcon(e,c)
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 		and not Duel.IsExistingMatchingCard(Card.IsType,c:GetControler(),LOCATION_GRAVE,0,1,nil,TYPE_MONSTER)
 end
+function c34022290.cfilter(c)
+	return c:IsType(TYPE_SPELL) and c:IsAbleToGraveAsCost()
+end
 function c34022290.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetEquipGroup():IsExists(Card.IsAbleToGraveAsCost,1,nil) end
+	if chk==0 then return e:GetHandler():GetEquipGroup():IsExists(c34022290.cfilter,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=e:GetHandler():GetEquipGroup():FilterSelect(tp,Card.IsAbleToGraveAsCost,1,1,nil)
+	local g=e:GetHandler():GetEquipGroup():FilterSelect(tp,c34022290.cfilter,1,1,nil)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c34022290.rmfilter(c)
