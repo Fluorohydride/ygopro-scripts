@@ -33,7 +33,7 @@ function c25165047.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c25165047.lpcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c25165047.lpop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SetLP(tp,4000)

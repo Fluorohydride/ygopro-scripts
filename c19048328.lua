@@ -54,7 +54,7 @@ function c19048328.matcheck(e,c)
 	e:SetLabel(att)
 end
 function c19048328.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c19048328.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -99,7 +99,7 @@ end
 function c19048328.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsReason(REASON_DESTROY) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
-		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetSummonType()==SUMMON_TYPE_SYNCHRO
+		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c19048328.thfilter(c)
 	return c:IsType(TYPE_TUNER) and c:IsAbleToHand()

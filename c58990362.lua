@@ -32,7 +32,7 @@ function c58990362.splimit(e,c,sump,sumtype,sumpos,targetp)
 	return bit.band(sumtype,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
 end
 function c58990362.condition1(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_PENDULUM
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c58990362.condition2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

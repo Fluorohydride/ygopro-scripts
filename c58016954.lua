@@ -32,7 +32,7 @@ function c58016954.splimit(e,c,sump,sumtype,sumpos,targetp)
 	return bit.band(sumtype,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
 end
 function c58016954.condition1(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_PENDULUM
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c58016954.cfilter(c)
 	return c:IsSetCard(0xc4)

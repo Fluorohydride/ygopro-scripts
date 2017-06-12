@@ -36,7 +36,7 @@ function c31924889.attackup(e,c)
 	return c:GetCounter(0x1)*1000
 end
 function c31924889.addcc(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c31924889.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

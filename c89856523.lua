@@ -22,7 +22,7 @@ function c89856523.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c89856523.setcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c89856523.filter(c)
 	return c:IsSetCard(0x7c) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable()

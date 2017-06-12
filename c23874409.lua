@@ -26,7 +26,7 @@ function c23874409.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c23874409.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c23874409.spfilter(c,e,tp)
 	return c:IsSetCard(0x11) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

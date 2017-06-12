@@ -17,7 +17,7 @@ function c90953320.initial_effect(c)
 end
 function c90953320.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local tg=eg:GetFirst()
-	return eg:GetCount()==1 and tg~=e:GetHandler() and tg:GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return eg:GetCount()==1 and tg~=e:GetHandler() and tg:IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c90953320.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end

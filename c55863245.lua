@@ -41,7 +41,7 @@ function c55863245.synfilter2(c,syncard,tuner,f,g,lv,minc,maxc)
 	else return false end
 end
 function c55863245.syncon(e)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c55863245.syntg(e,syncard,f,minc,maxc)
 	local c=e:GetHandler()

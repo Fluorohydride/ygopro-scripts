@@ -24,7 +24,7 @@ function c1855932.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c1855932.discon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c1855932.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

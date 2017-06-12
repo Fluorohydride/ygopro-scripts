@@ -22,7 +22,7 @@ function c97792247.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c97792247.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 		and not Duel.IsExistingMatchingCard(nil,tp,LOCATION_MZONE,0,1,e:GetHandler())
 end
 function c97792247.spfilter(c,e,tp)

@@ -24,7 +24,7 @@ function c88722973.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c88722973.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c88722973.regtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_DECK,0,1,nil,TYPE_PENDULUM) end

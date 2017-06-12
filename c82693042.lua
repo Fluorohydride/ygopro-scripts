@@ -32,7 +32,7 @@ function c82693042.valcon(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end
 function c82693042.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c82693042.filter(c)
 	return c:GetLevel()==3 and c:IsAbleToHand()

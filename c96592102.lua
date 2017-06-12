@@ -26,7 +26,7 @@ function c96592102.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c96592102.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetLP(tp)<=Duel.GetLP(1-tp)-3000 and e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return Duel.GetLP(tp)<=Duel.GetLP(1-tp)-3000 and e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c96592102.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

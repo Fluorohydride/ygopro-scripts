@@ -68,7 +68,7 @@ function c17540705.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c17540705.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_PENDULUM
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c17540705.drreg(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterFlagEffect(17540706,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)

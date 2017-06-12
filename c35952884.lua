@@ -63,7 +63,7 @@ function c35952884.valcheck(e,c)
 	e:GetLabelObject():SetLabel(ct)
 end
 function c35952884.mtcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO and e:GetLabel()>0
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO) and e:GetLabel()>0
 end
 function c35952884.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -11,7 +11,7 @@ end
 function c26722601.sumop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=eg:GetFirst()
 	local c=e:GetHandler()
-	if ec~=e:GetHandler() and ec:IsSetCard(0x100a) and ec:GetSummonType()==SUMMON_TYPE_ADVANCE then
+	if ec~=e:GetHandler() and ec:IsSetCard(0x100a) and ec:IsSummonType(SUMMON_TYPE_ADVANCE) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetRange(LOCATION_MZONE)

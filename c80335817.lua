@@ -45,7 +45,7 @@ end
 function c80335817.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return eg:GetCount()==1 and eg:GetFirst()==c
-		and c:GetSummonType()==SUMMON_TYPE_PENDULUM and c:IsPreviousLocation(LOCATION_HAND)
+		and c:IsSummonType(SUMMON_TYPE_PENDULUM) and c:IsPreviousLocation(LOCATION_HAND)
 end
 function c80335817.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

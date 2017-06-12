@@ -9,7 +9,7 @@ function c8483333.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c8483333.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c8483333.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -13,7 +13,7 @@ function c50951359.initial_effect(c)
 end
 function c50951359.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return tc:GetSummonType()==SUMMON_TYPE_SYNCHRO and ep~=tp
+	return tc:IsSummonType(SUMMON_TYPE_SYNCHRO) and ep~=tp
 end
 function c50951359.filter(c,e,tp,mg)
 	return mg:IsContains(c) and c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

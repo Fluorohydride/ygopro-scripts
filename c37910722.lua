@@ -25,7 +25,7 @@ function c37910722.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c37910722.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c37910722.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -53,7 +53,7 @@ function c37910722.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local mg=c:GetMaterial()
 	local ct=mg:GetCount()
-	if chk==0 then return c:GetSummonType()==SUMMON_TYPE_SYNCHRO
+	if chk==0 then return c:IsSummonType(SUMMON_TYPE_SYNCHRO)
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and ct>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>=ct
 		and mg:FilterCount(c37910722.spfilter,nil,e,tp,c)==ct end

@@ -73,7 +73,7 @@ function c22200403.effcon(e)
 end
 function c22200403.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetHandler():GetBattleTarget()
-	if chk==0 then return tc and tc:IsFaceup() and tc:GetSummonType()==SUMMON_TYPE_PENDULUM end
+	if chk==0 then return tc and tc:IsFaceup() and tc:IsSummonType(SUMMON_TYPE_PENDULUM) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tc,1,0,0)
 end
 function c22200403.desop(e,tp,eg,ep,ev,re,r,rp)

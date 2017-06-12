@@ -16,7 +16,7 @@ function c2203790.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c2203790.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c2203790.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

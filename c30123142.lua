@@ -16,7 +16,7 @@ function c30123142.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c30123142.filter(c)
-	return c:IsFaceup() and c:GetSummonType()==SUMMON_TYPE_SYNCHRO and c:GetMaterialCount()~=0
+	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_SYNCHRO) and c:GetMaterialCount()~=0
 end
 function c30123142.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c30123142.filter(chkc) end

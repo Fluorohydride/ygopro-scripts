@@ -55,7 +55,7 @@ function c93149655.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c93149655.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and e:GetHandler():GetSummonType()==SUMMON_TYPE_PENDULUM
+	return ep~=tp and e:GetHandler():IsSummonType(SUMMON_TYPE_PENDULUM)
 		and Duel.GetAttacker()==e:GetHandler()
 end
 function c93149655.damfilter(c)

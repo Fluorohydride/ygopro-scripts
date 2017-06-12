@@ -22,7 +22,7 @@ function c47075569.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c47075569.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x9f) and c:IsControler(tp) and c:GetSummonType()==SUMMON_TYPE_PENDULUM
+	return c:IsFaceup() and c:IsSetCard(0x9f) and c:IsControler(tp) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c47075569.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c47075569.cfilter,1,nil,tp)

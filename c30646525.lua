@@ -13,7 +13,7 @@ function c30646525.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c30646525.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_RITUAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL)
 end
 function c30646525.filter(c,atk)
 	return c:IsFaceup() and c:IsDefenseBelow(atk)

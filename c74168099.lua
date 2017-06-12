@@ -22,7 +22,7 @@ function c74168099.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c74168099.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c74168099.spfilter(c,e,tp)
 	return c:IsAttribute(ATTRIBUTE_FIRE) and c:GetLevel()==3 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

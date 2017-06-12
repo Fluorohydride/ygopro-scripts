@@ -13,7 +13,7 @@ function c97433739.initial_effect(c)
 	Duel.AddCustomActivityCounter(97433739,ACTIVITY_SPSUMMON,c97433739.counterfilter)
 end
 function c97433739.counterfilter(c)
-	return c:GetSummonType()==SUMMON_TYPE_XYZ
+	return c:IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c97433739.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(97433739,tp,ACTIVITY_SPSUMMON)==0 end
@@ -100,7 +100,7 @@ function c97433739.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetLabelObject(e2)
 end
 function c97433739.checkop2(e,tp,eg,ep,ev,re,r,rp)
-	if eg:GetFirst():GetSummonType()==SUMMON_TYPE_XYZ then
+	if eg:GetFirst():IsSummonType(SUMMON_TYPE_XYZ) then
 		e:GetLabelObject():Reset()
 		e:Reset()
 	end

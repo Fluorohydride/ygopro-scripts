@@ -69,7 +69,7 @@ function c88757791.sumsuc(e,tp,eg,ep,ev,re,r,rp)
 end
 function c88757791.indcon(e)
 	local c=e:GetHandler()
-	return c:GetFlagEffect(88757791)~=0 and c:GetSummonType()==SUMMON_TYPE_PENDULUM
+	return c:GetFlagEffect(88757791)~=0 and c:IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c88757791.indtg(e,c)
 	return c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM)

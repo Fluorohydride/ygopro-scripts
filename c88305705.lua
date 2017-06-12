@@ -33,7 +33,7 @@ function c88305705.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c88305705.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_FUSION
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c88305705.atkfilter(c)
 	return c:IsFaceup() and c:GetAttack()>0

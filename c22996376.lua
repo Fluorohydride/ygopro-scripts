@@ -43,7 +43,7 @@ function c22996376.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	c:RegisterEffect(e1)
 end
 function c22996376.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c22996376.filter(c)
 	return c:IsRace(RACE_BEAST) and c:IsAbleToHand()

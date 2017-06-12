@@ -28,7 +28,7 @@ function c44505297.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c44505297.eqcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c44505297.eqfilter(c)
 	return c:IsType(TYPE_MONSTER) and not c:IsForbidden()

@@ -34,7 +34,7 @@ function c29552709.reftg(e,c)
 	return c:IsSetCard(0x10)
 end
 function c29552709.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c29552709.filter(c)
 	return c:IsSetCard(0x10) and c:IsAbleToHand()

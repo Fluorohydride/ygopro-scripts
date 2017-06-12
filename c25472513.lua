@@ -16,7 +16,7 @@ function c25472513.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c25472513.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c25472513.spfilter(c,e,tp)
 	return c:GetLevel()==2 and not c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

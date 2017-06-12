@@ -53,7 +53,7 @@ function c22923081.addop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c22923081.addcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_PENDULUM
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c22923081.atkval(e,c)
 	return c:GetCounter(0x1)*400

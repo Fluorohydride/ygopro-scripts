@@ -18,7 +18,7 @@ function c61032879.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c61032879.condition(e,tp,eg,ep,ev,re,r,rp)
-	return eg:GetFirst():GetSummonType()==SUMMON_TYPE_SYNCHRO and eg:GetFirst():IsControler(tp)
+	return eg:GetFirst():IsSummonType(SUMMON_TYPE_SYNCHRO) and eg:GetFirst():IsControler(tp)
 end
 function c61032879.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

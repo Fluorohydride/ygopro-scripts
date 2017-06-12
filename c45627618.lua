@@ -57,7 +57,7 @@ function c45627618.pcop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c45627618.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ and e:GetLabel()==1
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ) and e:GetLabel()==1
 end
 function c45627618.desfilter(c)
 	return c:IsFaceup() and c:IsLevelBelow(7)

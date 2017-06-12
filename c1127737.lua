@@ -26,7 +26,7 @@ function c1127737.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c1127737.damcon1(e,tp,eg,ep,ev,re,r,rp)
-	return eg:GetFirst():GetSummonType()==SUMMON_TYPE_XYZ
+	return eg:GetFirst():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c1127737.damtg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

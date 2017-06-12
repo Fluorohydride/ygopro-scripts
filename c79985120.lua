@@ -37,7 +37,7 @@ function c79985120.xyzop(e,tp,chk)
 	Duel.DiscardHand(tp,c79985120.cfilter,1,1,REASON_COST+REASON_DISCARD,nil)
 end
 function c79985120.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c79985120.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) end

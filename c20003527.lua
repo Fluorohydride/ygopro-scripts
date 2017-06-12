@@ -76,7 +76,7 @@ function c20003527.valcheck(e,c)
 	e:SetLabel(g:FilterCount(Card.IsAttribute,nil,ATTRIBUTE_WATER))
 end
 function c20003527.addcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c20003527.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then

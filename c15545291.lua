@@ -46,7 +46,7 @@ function c15545291.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end
 function c15545291.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c15545291.desfilter(c)
 	return c:IsFacedown()

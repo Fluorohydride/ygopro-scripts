@@ -66,7 +66,7 @@ function c73941492.atkval(e,c)
 end
 function c73941492.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetSummonType()==SUMMON_TYPE_PENDULUM and c:IsPreviousLocation(LOCATION_HAND)
+	return c:IsSummonType(SUMMON_TYPE_PENDULUM) and c:IsPreviousLocation(LOCATION_HAND)
 end
 function c73941492.spfilter(c,e,tp)
 	return c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM) and not c:IsCode(73941492)

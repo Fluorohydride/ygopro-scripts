@@ -39,7 +39,7 @@ function c10613952.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c10613952.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c10613952.filter(c,e,tp,ec)
 	return c:IsSetCard(0x207a) and c:IsCanBeEffectTarget(e) and c:CheckUniqueOnField(tp) and c:CheckEquipTarget(ec)

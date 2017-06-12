@@ -42,7 +42,7 @@ function c45349196.aclimit(e,re,tp)
 end
 function c45349196.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetSummonType()==SUMMON_TYPE_FUSION and c:GetBattledGroupCount()>0
+	return c:IsSummonType(SUMMON_TYPE_FUSION) and c:GetBattledGroupCount()>0
 end
 function c45349196.filter(c)
 	return c:IsSetCard(0x3b) and c:IsType(TYPE_NORMAL) and c:IsAbleToDeck()

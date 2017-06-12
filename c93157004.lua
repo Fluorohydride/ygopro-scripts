@@ -201,7 +201,7 @@ function c93157004.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 	Duel.SendtoGrave(g,REASON_MATERIAL+REASON_SYNCHRO)
 end
 function c93157004.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c93157004.desfilter(c)
 	return c:IsFaceup() and bit.band(c:GetSummonType(),SUMMON_TYPE_NORMAL)~=0

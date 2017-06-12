@@ -71,7 +71,7 @@ function c3606728.efop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c3606728.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c3606728.atkfilter(c)
 	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_SPECIAL)

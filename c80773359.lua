@@ -55,7 +55,7 @@ function c80773359.valcheck(e,c)
 	end
 end
 function c80773359.tncon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO and e:GetLabel()==1
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO) and e:GetLabel()==1
 end
 function c80773359.tnop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -96,5 +96,5 @@ function c80773359.condtion(e)
 	local mg=c:GetMaterial()
 	local ph=Duel.GetCurrentPhase()
 	return (ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL) and Duel.GetAttacker()==c
-		and c:GetSummonType()==SUMMON_TYPE_SYNCHRO and mg:GetCount()>0 and not mg:IsExists(c80773359.mfilter,1,nil)
+		and c:IsSummonType(SUMMON_TYPE_SYNCHRO) and mg:GetCount()>0 and not mg:IsExists(c80773359.mfilter,1,nil)
 end

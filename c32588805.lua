@@ -28,7 +28,7 @@ function c32588805.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c32588805.setcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 		and not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_ONFIELD,0,1,nil,TYPE_SPELL+TYPE_TRAP)
 end
 function c32588805.setfilter1(c)

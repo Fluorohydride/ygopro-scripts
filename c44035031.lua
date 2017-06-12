@@ -27,7 +27,7 @@ function c44035031.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c44035031.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c44035031.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

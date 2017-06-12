@@ -12,7 +12,7 @@ function c41705642.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c41705642.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c41705642.filter(c,e,tp)
 	return c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

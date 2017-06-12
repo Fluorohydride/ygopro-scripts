@@ -79,7 +79,7 @@ function c26420373.hspcon(e,c)
 		and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c26420373.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c26420373.spfilter(c,e,tp)
 	return c:IsSetCard(0x2016) and c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

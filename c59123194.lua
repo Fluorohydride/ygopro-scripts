@@ -27,7 +27,7 @@ function c59123194.initial_effect(c)
 end
 function c59123194.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetSummonType()==SUMMON_TYPE_SYNCHRO and c:GetMaterial():IsExists(c59123194.pmfilter,1,nil)
+	return c:IsSummonType(SUMMON_TYPE_SYNCHRO) and c:GetMaterial():IsExists(c59123194.pmfilter,1,nil)
 end
 function c59123194.thfilter(c)
 	return c:IsType(TYPE_SPELL) and c:IsAbleToHand()

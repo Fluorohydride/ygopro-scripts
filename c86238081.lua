@@ -76,7 +76,7 @@ function c86238081.pcop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c86238081.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ and e:GetLabel()==1
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ) and e:GetLabel()==1
 end
 function c86238081.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

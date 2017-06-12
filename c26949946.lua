@@ -38,7 +38,7 @@ function c26949946.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c26949946.hdcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c26949946.hdcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsCode,1,nil,31533705)

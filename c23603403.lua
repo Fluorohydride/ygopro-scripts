@@ -35,7 +35,7 @@ function c23603403.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c23603403.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ and e:GetLabel()==1
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ) and e:GetLabel()==1
 end
 function c23603403.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

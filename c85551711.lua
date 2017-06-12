@@ -59,7 +59,7 @@ end
 function c85551711.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return ((rp~=tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)) 
-		or c:IsReason(REASON_BATTLE)) and c:GetSummonType()==SUMMON_TYPE_XYZ
+		or c:IsReason(REASON_BATTLE)) and c:IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c85551711.spfilter(c,e,tp)
 	return c:IsRace(RACE_SPELLCASTER) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

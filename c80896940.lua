@@ -77,7 +77,7 @@ function c80896940.initial_effect(c)
 	c:RegisterEffect(e7)
 end
 function c80896940.matfilter1(c,syncard)
-	return c:IsType(TYPE_PENDULUM) and c:GetSummonType()==SUMMON_TYPE_PENDULUM and c:IsNotTuner() and c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard)
+	return c:IsType(TYPE_PENDULUM) and c:IsSummonType(SUMMON_TYPE_PENDULUM) and c:IsNotTuner() and c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard)
 		and Duel.IsExistingMatchingCard(c80896940.matfilter2,0,LOCATION_MZONE,LOCATION_MZONE,1,c,syncard)
 end
 function c80896940.matfilter2(c,syncard)
@@ -209,7 +209,7 @@ function c80896940.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c80896940.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO and e:GetLabel()==1
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO) and e:GetLabel()==1
 end
 function c80896940.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and chkc:IsAbleToHand() end
@@ -225,7 +225,7 @@ function c80896940.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c80896940.mfilter(c)
-	return c:IsType(TYPE_PENDULUM) and c:GetSummonType()==SUMMON_TYPE_PENDULUM
+	return c:IsType(TYPE_PENDULUM) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
 		and (c:IsType(TYPE_TUNER) or c:GetFlagEffect(80896940)~=0)
 end
 function c80896940.valcheck(e,c)

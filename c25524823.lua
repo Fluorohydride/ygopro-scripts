@@ -76,7 +76,7 @@ function c25524823.valcheck(e,c)
 	e:GetLabelObject():SetLabel(ct)
 end
 function c25524823.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c25524823.filter(c)
 	return c:IsFacedown()

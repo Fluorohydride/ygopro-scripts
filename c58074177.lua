@@ -106,7 +106,7 @@ function c58074177.disop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c58074177.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 		and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c58074177.desfilter(c)

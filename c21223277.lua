@@ -27,7 +27,7 @@ function c21223277.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c21223277.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c21223277.filter(c,e,tp,ec)
 	return c:IsSetCard(0x207a) and c:IsCanBeEffectTarget(e) and c:CheckUniqueOnField(tp) and c:CheckEquipTarget(ec)

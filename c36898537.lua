@@ -57,7 +57,7 @@ function c36898537.valcheck(e,c)
 	e:SetLabel(tpe)
 end
 function c36898537.immcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 		and bit.band(e:GetLabelObject():GetLabel(),TYPE_NORMAL)~=0
 end
 function c36898537.immop(e,tp,eg,ep,ev,re,r,rp)
@@ -77,7 +77,7 @@ function c36898537.efilter(e,te)
 	return te:GetOwner()~=e:GetOwner()
 end
 function c36898537.negcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 		and bit.band(e:GetLabelObject():GetLabel(),TYPE_EFFECT)~=0
 end
 function c36898537.negfilter(c)
@@ -107,7 +107,7 @@ function c36898537.negop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c36898537.ctcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 		and bit.band(e:GetLabelObject():GetLabel(),TYPE_PENDULUM)~=0
 end
 function c36898537.cttg(e,tp,eg,ep,ev,re,r,rp,chk)

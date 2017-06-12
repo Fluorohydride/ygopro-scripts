@@ -119,7 +119,7 @@ function c64496451.immcon(e)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_NORMAL)
 end
 function c64496451.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE and e:GetLabel()==1
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE) and e:GetLabel()==1
 end
 function c64496451.spfilter(c,e,tp)
 	return c:IsSetCard(0xaa) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

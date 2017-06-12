@@ -23,7 +23,7 @@ function c17377751.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c17377751.spcon(e,tp,eg,ep,ev,re,r,rp,chk)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c17377751.filter(c,e,tp)
 	return not c:IsType(TYPE_TUNER) and c:IsLevelBelow(4) and c:IsSetCard(0x33) and c:IsCanBeSpecialSummoned(e,0,tp,false,true)

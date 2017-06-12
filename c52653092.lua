@@ -145,10 +145,10 @@ function c52653092.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 	end
 end
 function c52653092.effcon(e)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c52653092.effcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c52653092.spsumsuc(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SetChainLimitTillChainEnd(c52653092.chlimit)

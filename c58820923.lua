@@ -34,7 +34,7 @@ function c58820923.ovfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x107b) and c:IsType(TYPE_XYZ)
 end
 function c58820923.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c58820923.cfilter(c)
 	return c:IsRace(RACE_DRAGON) and c:IsAbleToGraveAsCost()

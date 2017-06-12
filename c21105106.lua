@@ -62,7 +62,7 @@ function c21105106.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsLocation(LOCATION_EXTRA)
 end
 function c21105106.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_RITUAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL)
 end
 function c21105106.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetActivityCount(tp,ACTIVITY_NORMALSUMMON)==0

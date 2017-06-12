@@ -76,7 +76,7 @@ function c42589641.xyzfilter(c)
 	return Duel.GetFlagEffect(c:GetControler(),42589641)==0 and c:IsSetCard(0x9c)
 end
 function c42589641.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c42589641.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
@@ -95,7 +95,7 @@ function c42589641.splimit(e,se,sp,st,spos,tgp)
 	return bit.band(st,SUMMON_TYPE_XYZ)~=SUMMON_TYPE_XYZ or Duel.GetFlagEffect(tgp,42589641)==0
 end
 function c42589641.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c42589641.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

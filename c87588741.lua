@@ -119,7 +119,7 @@ function c87588741.immcon(e)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_NORMAL)
 end
 function c87588741.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE and e:GetLabel()==1
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE) and e:GetLabel()==1
 end
 function c87588741.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct1=Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_MONSTER)

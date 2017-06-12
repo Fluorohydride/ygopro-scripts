@@ -15,7 +15,7 @@ function c26304459.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c26304459.remcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c26304459.remtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

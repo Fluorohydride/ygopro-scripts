@@ -15,7 +15,7 @@ function c83810690.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c83810690.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c83810690.filter(c,e,tp)
 	return c:IsRace(RACE_WARRIOR) and c:GetLevel()<=4 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

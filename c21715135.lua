@@ -14,7 +14,7 @@ function c21715135.initial_effect(c)
 	Duel.AddCustomActivityCounter(21715135,ACTIVITY_SPSUMMON,c21715135.counterfilter)
 end
 function c21715135.counterfilter(c)
-	return c:GetSummonType()==SUMMON_TYPE_XYZ
+	return c:IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c21715135.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0 and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0

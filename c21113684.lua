@@ -66,7 +66,7 @@ function c21113684.attackup(e,c)
 	return c:GetCounter(0x1)*1000
 end
 function c21113684.addcc(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_FUSION
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c21113684.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

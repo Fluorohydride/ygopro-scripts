@@ -13,7 +13,7 @@ function c46132282.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c46132282.effcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c46132282.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

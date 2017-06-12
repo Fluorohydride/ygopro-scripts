@@ -12,7 +12,7 @@ function c2158562.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c2158562.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c2158562.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_SPELL)

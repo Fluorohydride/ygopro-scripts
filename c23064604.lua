@@ -54,7 +54,7 @@ function c23064604.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end
 function c23064604.tdcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c23064604.tgfilter(c)
 	return c:IsSetCard(0xbe) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToGrave()

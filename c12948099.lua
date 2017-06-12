@@ -34,7 +34,7 @@ function c12948099.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c12948099.tdcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c12948099.filter(c)
 	return c:IsType(TYPE_XYZ) and c:GetRank()==4 and c:IsAbleToExtra()
@@ -90,5 +90,5 @@ function c12948099.efop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c12948099.drcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end

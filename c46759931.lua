@@ -25,7 +25,7 @@ function c46759931.initial_effect(c)
 end
 c46759931.material_setcode=0x8
 function c46759931.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_FUSION
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c46759931.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -37,5 +37,5 @@ function c46759931.regop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 end
 function c46759931.atkcon(e)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_FUSION
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end

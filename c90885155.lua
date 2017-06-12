@@ -117,7 +117,7 @@ function c90885155.immcon(e)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_NORMAL)
 end
 function c90885155.effcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE and e:GetLabel()==1
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE) and e:GetLabel()==1
 end
 function c90885155.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

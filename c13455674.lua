@@ -115,7 +115,7 @@ function c13455674.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 	Duel.SendtoGrave(g,REASON_MATERIAL+REASON_SYNCHRO)
 end
 function c13455674.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c13455674.rmfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
@@ -136,7 +136,7 @@ function c13455674.rmop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c13455674.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetSummonType()==SUMMON_TYPE_SYNCHRO and bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_SYNCHRO) and bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0
 end
 function c13455674.spfilter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)

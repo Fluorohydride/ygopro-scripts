@@ -18,7 +18,7 @@ function c1516510.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c1516510.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_FUSION
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c1516510.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -55,7 +55,7 @@ function c1516510.lvfilter(c,fc)
 	return c:IsCode(16178681) or c:CheckFusionSubstitute(fc)
 end
 function c1516510.imfilter(c)
-	return c:IsLocation(LOCATION_MZONE) and c:GetSummonType()==SUMMON_TYPE_PENDULUM
+	return c:IsLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c1516510.valcheck(e,c)
 	local g=c:GetMaterial()

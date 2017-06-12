@@ -27,7 +27,7 @@ function c84488827.valcheck(e,c)
 	end
 end
 function c84488827.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE and e:GetLabel()==1
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE) and e:GetLabel()==1
 end
 function c84488827.sfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

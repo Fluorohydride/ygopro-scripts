@@ -14,7 +14,7 @@ function c39765115.initial_effect(c)
 end
 function c39765115.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return tc:GetSummonType()==SUMMON_TYPE_XYZ and tc:IsControler(1-tp)
+	return tc:IsSummonType(SUMMON_TYPE_XYZ) and tc:IsControler(1-tp)
 end
 function c39765115.cfilter(c)
 	return c:IsRace(RACE_FISH) and c:IsAbleToRemoveAsCost()

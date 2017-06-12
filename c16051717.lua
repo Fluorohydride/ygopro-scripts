@@ -37,7 +37,7 @@ function c16051717.valcheck(e,c)
 	end
 end
 function c16051717.tncon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO and e:GetLabel()==1
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO) and e:GetLabel()==1
 end
 function c16051717.tnop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

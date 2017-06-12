@@ -12,7 +12,7 @@ function c84451804.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c84451804.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c84451804.filter(c,e,tp)
 	return c:IsCode(84451804) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

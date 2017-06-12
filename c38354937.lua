@@ -14,7 +14,7 @@ function c38354937.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c38354937.ctcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c38354937.filter(c)
 	return c:IsFaceup() and c:GetLevel()>0

@@ -55,7 +55,7 @@ function c79794767.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c79794767.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsLocation(LOCATION_EXTRA) and not c:IsSetCard(0xe0)
-	and (e:GetHandler():GetSummonType()==SUMMON_TYPE_PENDULUM or e:GetHandler():GetFlagEffect(79794767)~=0)
+	and (e:GetHandler():IsSummonType(SUMMON_TYPE_PENDULUM) or e:GetHandler():GetFlagEffect(79794767)~=0)
 end
 function c79794767.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0xe0)

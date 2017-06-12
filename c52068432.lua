@@ -59,7 +59,7 @@ function c52068432.negop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c52068432.remcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_RITUAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL)
 end
 function c52068432.remtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_HAND,1,nil)

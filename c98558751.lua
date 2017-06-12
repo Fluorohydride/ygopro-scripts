@@ -39,7 +39,7 @@ function c98558751.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c98558751.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c98558751.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

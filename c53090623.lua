@@ -25,7 +25,7 @@ function c53090623.initial_effect(c)
 end
 function c53090623.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=eg:GetFirst()
-	return eg:GetCount()==1 and c:IsControler(tp) and c:GetSummonType()==SUMMON_TYPE_XYZ
+	return eg:GetCount()==1 and c:IsControler(tp) and c:IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c53090623.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

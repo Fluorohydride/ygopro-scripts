@@ -12,7 +12,7 @@ function c58628539.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c58628539.condition(e,tp,eg,ep,ev,re,r,rp)
-	return eg:GetCount()==1 and eg:GetFirst():GetSummonType()==SUMMON_TYPE_XYZ and eg:GetFirst():IsControler(tp)
+	return eg:GetCount()==1 and eg:GetFirst():IsSummonType(SUMMON_TYPE_XYZ) and eg:GetFirst():IsControler(tp)
 end
 function c58628539.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc~=e:GetHandler() end

@@ -20,7 +20,7 @@ function c95637655.initial_effect(c)
 	Duel.AddCustomActivityCounter(95637655,ACTIVITY_SPSUMMON,c95637655.counterfilter)
 end
 function c95637655.counterfilter(c)
-	return c:GetSummonType()~=SUMMON_TYPE_SYNCHRO
+	return not c:IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c95637655.spcon(e,c)
 	if c==nil then return true end

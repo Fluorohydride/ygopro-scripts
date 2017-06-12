@@ -87,7 +87,7 @@ function c88071625.facechk(e,tp,eg,ep,ev,re,r,rp)
 	e:GetLabelObject():SetLabel(1)
 end
 function c88071625.copycon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c88071625.filter(c,e)
 	return c:IsType(TYPE_EFFECT) and c:IsLocation(LOCATION_GRAVE) and c:IsCanBeEffectTarget(e)

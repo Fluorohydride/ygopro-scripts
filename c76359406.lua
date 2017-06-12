@@ -27,7 +27,7 @@ function c76359406.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c76359406.poscon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c76359406.posfilter(c)
 	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_SPECIAL)
@@ -45,7 +45,7 @@ function c76359406.posop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c76359406.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetSummonType()==SUMMON_TYPE_SYNCHRO and bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_SYNCHRO) and bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0
 end
 function c76359406.spfilter(c,e,tp)
 	return c:IsSetCard(0xea) and not c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -31,7 +31,7 @@ function c20529766.valcheck(e,c)
 end
 function c20529766.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetSummonType()==SUMMON_TYPE_ADVANCE and e:GetLabel()~=0
+	return c:IsSummonType(SUMMON_TYPE_ADVANCE) and e:GetLabel()~=0
 end
 function c20529766.operation(e,tp,eg,ep,ev,re,r,rp)
 	local flag=e:GetLabel()

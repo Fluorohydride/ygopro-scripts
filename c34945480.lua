@@ -33,7 +33,7 @@ function c34945480.ovfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xb6) and c:IsType(TYPE_XYZ)
 end
 function c34945480.sumcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c34945480.sumsuc(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

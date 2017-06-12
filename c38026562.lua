@@ -48,7 +48,7 @@ function c38026562.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c38026562.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c38026562.spfilter(c,e,tp)
 	return c:IsType(TYPE_DUAL) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

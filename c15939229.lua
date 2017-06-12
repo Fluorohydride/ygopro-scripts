@@ -34,7 +34,7 @@ function c15939229.initial_effect(c)
 end
 function c15939229.sumsuc(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetSummonType()~=SUMMON_TYPE_XYZ then return end
+	if not c:IsSummonType(SUMMON_TYPE_XYZ) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_ACTIVATE)

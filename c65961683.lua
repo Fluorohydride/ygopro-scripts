@@ -22,7 +22,7 @@ function c65961683.initial_effect(c)
 end
 function c65961683.valop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetSummonType()~=SUMMON_TYPE_SYNCHRO then return end
+	if not c:IsSummonType(SUMMON_TYPE_SYNCHRO) then return end
 	local g=c:GetMaterial()
 	local tc=g:GetFirst()
 	local atk=0

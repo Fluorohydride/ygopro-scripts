@@ -59,7 +59,7 @@ function c39153655.cfilter(c)
 end
 function c39153655.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetSummonType()==SUMMON_TYPE_PENDULUM and c:IsPreviousLocation(LOCATION_HAND)
+	return c:IsSummonType(SUMMON_TYPE_PENDULUM) and c:IsPreviousLocation(LOCATION_HAND)
 		and Duel.IsExistingMatchingCard(c39153655.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c39153655.thfilter(c)
