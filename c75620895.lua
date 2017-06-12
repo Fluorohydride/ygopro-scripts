@@ -20,14 +20,14 @@ function c75620895.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
-function c75620895.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ)
+function c75620895.filter(c,code)
+	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:GetCode()~=code
 end
 function c75620895.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c75620895.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c75620895.filter,tp,0,LOCATION_MZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c75620895.filter,tp,0,LOCATION_MZONE,1,nil,e:GetHandler():GetCode()) and e:GetHandler():GetFlagEffect(75620895)==0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c75620895.filter,tp,0,LOCATION_MZONE,1,1,nil)
+	Duel.SelectTarget(tp,c75620895.filter,tp,0,LOCATION_MZONE,1,1,nil,e:GetHandler():GetCode())
 end
 function c75620895.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -39,8 +39,9 @@ function c75620895.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		e1:SetCode(EFFECT_CHANGE_CODE)
-		e1:SetValue(code)
+		e1:SetValue(tc:GetCode())
 		c:RegisterEffect(e1)
-		c:CopyEffect(code,RESET_EVENT+0x1fe0000,1)
+		c:ReplaceEffect(code,RESET_EVENT+0x1fe0000,1)
+		e:GetHandler():RegisterFlagEffect(75620895,RESET_EVENT+0x1fe0000,0,1)
 	end
 end

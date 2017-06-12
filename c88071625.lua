@@ -90,7 +90,7 @@ function c88071625.copycon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
 end
 function c88071625.filter(c,e)
-	return c:IsType(TYPE_EFFECT) and c:IsLocation(LOCATION_GRAVE) and c:IsCanBeEffectTarget(e)
+	return c:IsType(TYPE_EFFECT) and c:IsLocation(LOCATION_GRAVE) and c:IsCanBeEffectTarget(e) and c:GetOriginalCode()~=e:GetHandler():GetCode()
 end
 function c88071625.copytg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return e:GetHandler():GetMaterial():IsContains(chkc) and c88071625.filter(chkc,e) end

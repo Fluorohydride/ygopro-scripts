@@ -32,14 +32,14 @@ end
 function c67926903.atkval(e,c)
 	return c:GetOverlayCount()*1000
 end
-function c67926903.filter(c)
-	return c:IsSetCard(0x48) and c:IsType(TYPE_EFFECT)
+function c67926903.filter(c,code)
+	return c:IsSetCard(0x48) and c:IsType(TYPE_EFFECT) and c:GetOriginalCode()~=code
 end
 function c67926903.copytg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c67926903.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c67926903.filter,tp,LOCATION_GRAVE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c67926903.filter,tp,LOCATION_GRAVE,0,1,nil,e:GetHandler():GetCode()) and e:GetHandler():GetFlagEffect(67926903)==0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c67926903.filter,tp,LOCATION_GRAVE,0,1,1,nil)
+	Duel.SelectTarget(tp,c67926903.filter,tp,LOCATION_GRAVE,0,1,1,nil,e:GetHandler():GetCode())
 end
 function c67926903.copyop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -55,6 +55,7 @@ function c67926903.copyop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_OPPO_TURN)
 		c:RegisterEffect(e1)
 		local cid=c:CopyEffect(code,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_OPPO_TURN)
+		e:GetHandler():RegisterFlagEffect(67926903,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_OPPO_TURN,0,1)
 		local e2=Effect.CreateEffect(c)
 		e2:SetDescription(aux.Stringid(67926903,2))
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

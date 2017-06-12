@@ -16,17 +16,16 @@ function c77584012.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c77584012.filter(c)
-	return c:IsType(TYPE_FIELD) and c:IsAbleToRemoveAsCost()
+	return c:IsType(TYPE_FIELD) and c:IsAbleToRemoveAsCost() and c:GetOriginalCode()~=code
 end
 function c77584012.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(77584012)==0
-		and Duel.IsExistingMatchingCard(c77584012.filter,tp,LOCATION_GRAVE,0,1,nil) end
+		and Duel.IsExistingMatchingCard(c77584012.filter,tp,LOCATION_GRAVE,0,1,nil,e:GetHandler():GetCode()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c77584012.filter,tp,LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c77584012.filter,tp,LOCATION_GRAVE,0,1,1,nil,e:GetHandler():GetCode())
 	local code=g:GetFirst():GetOriginalCode()
 	e:SetLabel(code)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
-	e:GetHandler():RegisterFlagEffect(77584012,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c77584012.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -40,6 +39,7 @@ function c77584012.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(code)
 	c:RegisterEffect(e1)
 	local cid=c:CopyEffect(code,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,1)
+	e:GetHandler():RegisterFlagEffect(77584012,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(77584012,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

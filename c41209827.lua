@@ -21,7 +21,6 @@ function c41209827.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1)
-	e2:SetCost(c41209827.copycost)
 	e2:SetTarget(c41209827.copytg)
 	e2:SetOperation(c41209827.copyop)
 	c:RegisterEffect(e2)
@@ -64,18 +63,14 @@ function c41209827.atkop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 	end
 end
-function c41209827.copycost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(41209827)==0 end
-	e:GetHandler():RegisterFlagEffect(41209827,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
-end
-function c41209827.copyfilter(c)
-	return c:IsFaceup() and c:IsLevelAbove(5)
+function c41209827.copyfilter(c,code)
+	return c:IsFaceup() and c:IsLevelAbove(5) and c:GetOriginalCode()~=code
 end
 function c41209827.copytg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c41209827.copyfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c41209827.copyfilter,tp,0,LOCATION_MZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c41209827.copyfilter,tp,0,LOCATION_MZONE,1,nil,e:GetHandler():GetCode()) and e:GetHandler():GetFlagEffect(41209827)==0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c41209827.copyfilter,tp,0,LOCATION_MZONE,1,1,nil)
+	Duel.SelectTarget(tp,c41209827.copyfilter,tp,0,LOCATION_MZONE,1,1,nil,e:GetHandler():GetCode())
 end
 function c41209827.copyop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -91,6 +86,7 @@ function c41209827.copyop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 		if not tc:IsType(TYPE_TRAPMONSTER) then
 			c:CopyEffect(code,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,1)
+			e:GetHandler():RegisterFlagEffect(41209827,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 		end
 	end
 end

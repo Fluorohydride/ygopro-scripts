@@ -11,11 +11,14 @@ function c43237273.initial_effect(c)
 	e1:SetOperation(c43237273.operation)
 	c:RegisterEffect(e1)
 end
+function c43237273.filter(c,code)
+	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:GetCode()~=code
+end
 function c43237273.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c43237273.filter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c43237273.filter,tp,0,LOCATION_MZONE,1,nil,e:GetHandler():GetCode()) and e:GetHandler():GetFlagEffect(43237273)==0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
+	Duel.SelectTarget(tp,c43237273.filter,tp,0,LOCATION_MZONE,1,1,nil,e:GetHandler():GetCode())
 end
 function c43237273.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -31,7 +34,8 @@ function c43237273.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(code)
 		c:RegisterEffect(e1)
 		if not tc:IsType(TYPE_TRAPMONSTER) then
-			cid=c:CopyEffect(code, RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END, 1)
+			cid=c:CopyEffect(code,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,1)
+			e:GetHandler():RegisterFlagEffect(43237273,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 		end
 		local e2=Effect.CreateEffect(c)
 		e2:SetDescription(aux.Stringid(43237273,1))

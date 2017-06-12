@@ -13,13 +13,13 @@ function c75198893.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c75198893.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_MONSTER) and not c:IsType(TYPE_XYZ) and not c:IsForbidden()
+	return c:IsFaceup() and c:IsType(TYPE_MONSTER) and not c:IsType(TYPE_XYZ) and not c:IsForbidden() and c:GetCode()~=code
 end
 function c75198893.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(1-tp) and c75198893.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c75198893.filter,tp,0,LOCATION_REMOVED,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c75198893.filter,tp,0,LOCATION_REMOVED,1,nil,e:GetHandler():GetCode() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c75198893.filter,tp,0,LOCATION_REMOVED,1,1,nil)
+	Duel.SelectTarget(tp,c75198893.filter,tp,0,LOCATION_REMOVED,1,1,nil,e:GetHandler():GetCode()
 end
 function c75198893.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

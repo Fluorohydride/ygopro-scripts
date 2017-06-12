@@ -43,14 +43,14 @@ function c2407234.negop(e,tp,eg,ep,ev,re,r,rp)
 		tc=g:GetNext()
 	end
 end
-function c2407234.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ)
+function c2407234.filter(c,code)
+	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:GetCode()~=code
 end
 function c2407234.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c2407234.filter(chkc) and chkc~=e:GetHandler() end
-	if chk==0 then return Duel.IsExistingTarget(c2407234.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler()) end
+	if chk==0 then return Duel.IsExistingTarget(c2407234.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler(),e:GetHandler():GetCode())  end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c2407234.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,e:GetHandler())
+	Duel.SelectTarget(tp,c2407234.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,e:GetHandler(),e:GetHandler():GetCode()) 
 end
 function c2407234.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -64,6 +64,6 @@ function c2407234.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(code)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
-		c:CopyEffect(code,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,1)
+		c:ReplaceEffect(code,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,1)
 	end
 end

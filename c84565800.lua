@@ -44,14 +44,14 @@ function c84565800.rmop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	end
 end
-function c84565800.cpfilter(c)
-	return c:IsType(TYPE_EFFECT)
+function c84565800.cpfilter(c,code)
+	return c:IsType(TYPE_EFFECT) and c:GetOriginalCode()~=code
 end
 function c84565800.cptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c84565800.cpfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c84565800.cpfilter,tp,LOCATION_GRAVE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c84565800.cpfilter,tp,LOCATION_GRAVE,0,1,nil,e:GetHandler():GetCode()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c84565800.cpfilter,tp,LOCATION_GRAVE,0,1,1,nil)
+	Duel.SelectTarget(tp,c84565800.cpfilter,tp,LOCATION_GRAVE,0,1,1,nil,e:GetHandler():GetCode())
 end
 function c84565800.cpop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

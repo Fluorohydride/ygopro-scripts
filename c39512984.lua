@@ -37,13 +37,13 @@ end
 function c39512984.atkup(e,c)
 	return Duel.GetMatchingGroupCount(c39512984.atkfilter,c:GetControler(),LOCATION_GRAVE,0,nil)*100
 end
-function c39512984.filter(c)
-	return c:IsLevelBelow(7) and c:IsSetCard(0x1047) and c:IsType(TYPE_FUSION) and c:IsAbleToRemoveAsCost()
+function c39512984.filter(c,code)
+	return c:IsLevelBelow(7) and c:IsSetCard(0x1047) and c:IsType(TYPE_FUSION) and c:IsAbleToRemoveAsCost() and c:GetOriginalCode()~=code
 end
 function c39512984.cost(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chk==0 then return Duel.IsExistingMatchingCard(c39512984.filter,tp,LOCATION_GRAVE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c39512984.filter,tp,LOCATION_GRAVE,0,1,nil,e:GetHandler():GetCode()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c39512984.filter,tp,LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c39512984.filter,tp,LOCATION_GRAVE,0,1,1,nil,e:GetHandler():GetCode())
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 	e:SetLabel(g:GetFirst():GetOriginalCode())
 end

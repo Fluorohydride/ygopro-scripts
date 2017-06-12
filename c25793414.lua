@@ -26,11 +26,14 @@ function c25793414.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 c25793414.miracle_synchro_fusion=true
+function c25793414.copyfilter(c,code)
+	return c:IsType(TYPE_MONSTER) and c:GetOriginalCode()~=code
+end
 function c25793414.cptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsType(TYPE_MONSTER) end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsType,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,TYPE_MONSTER) end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c25793414.copyfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c25793414.copyfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,e:GetHandler():GetCode()) and e:GetHandler():GetFlagEffect(25793414)==0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,Card.IsType,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil,TYPE_MONSTER)
+	Duel.SelectTarget(tp,c25793414.copyfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil,e:GetHandler():GetCode())
 end
 function c25793414.cpop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -47,6 +50,7 @@ function c25793414.cpop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 		if not tc:IsType(TYPE_TRAPMONSTER) then
 			cid=c:CopyEffect(code,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,1)
+			e:GetHandler():RegisterFlagEffect(25793414,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 		end
 		local e2=Effect.CreateEffect(c)
 		e2:SetDescription(aux.Stringid(25793414,2))
