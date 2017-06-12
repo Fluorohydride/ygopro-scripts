@@ -25,15 +25,11 @@ function c27911549.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetDescription(aux.Stringid(27911549,1))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e1:SetCode(EVENT_TO_HAND)
-	e1:SetCondition(c27911549.spcon)
+	e1:SetCode(EVENT_DRAW)
 	e1:SetTarget(c27911549.sptg)
 	e1:SetOperation(c27911549.spop)
 	e1:SetReset(RESET_EVENT+0x1de0000)
 	c:RegisterEffect(e1)
-end
-function c27911549.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsReason(REASON_DRAW)
 end
 function c27911549.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end

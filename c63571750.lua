@@ -25,15 +25,11 @@ function c63571750.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetDescription(aux.Stringid(63571750,0))
 	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e1:SetCode(EVENT_TO_HAND)
-	e1:SetCondition(c63571750.thcon)
+	e1:SetCode(EVENT_DRAW)
 	e1:SetTarget(c63571750.thtg)
 	e1:SetOperation(c63571750.thop)
 	e1:SetReset(RESET_EVENT+0x1de0000)
 	c:RegisterEffect(e1)
-end
-function c63571750.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsReason(REASON_DRAW)
 end
 function c63571750.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end

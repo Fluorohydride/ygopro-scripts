@@ -3,7 +3,7 @@ function c2295831.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_TO_HAND)
+	e1:SetCode(EVENT_DRAW)
 	e1:SetCondition(c2295831.regcon)
 	e1:SetOperation(c2295831.regop)
 	c:RegisterEffect(e1)
@@ -20,7 +20,7 @@ end
 function c2295831.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return Duel.GetFieldGroupCount(tp,LOCATION_ONFIELD,0)==0 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>=3
-		and Duel.GetCurrentPhase()==PHASE_DRAW and c:IsReason(REASON_DRAW) and c:IsReason(REASON_RULE)
+		and Duel.GetCurrentPhase()==PHASE_DRAW and c:IsReason(REASON_RULE)
 end
 function c2295831.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
