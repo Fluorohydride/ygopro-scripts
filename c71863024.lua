@@ -62,7 +62,7 @@ function c71863024.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c71863024.filter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c71863024.hspcon(e,c)
 	if c==nil then return true end

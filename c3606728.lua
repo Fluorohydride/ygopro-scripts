@@ -74,7 +74,7 @@ function c3606728.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
 end
 function c3606728.atkfilter(c)
-	return c:IsFaceup() and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c3606728.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c3606728.atkfilter(chkc) end

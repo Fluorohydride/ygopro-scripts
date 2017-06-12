@@ -39,7 +39,7 @@ function c96570609.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c96570609.otfilter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+	return c:IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c96570609.otcon(e,c,minc)
 	if c==nil then return true end

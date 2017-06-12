@@ -33,7 +33,7 @@ function c73511233.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c73511233.thcfilter(c,tp)
-	return c:IsControler(tp) and bit.band(c:GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return c:IsControler(tp) and c:IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c73511233.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg and eg:IsExists(c73511233.thcfilter,1,nil,tp)
@@ -56,7 +56,7 @@ function c73511233.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c73511233.effcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c73511233.regop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterFlagEffect(73511233,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)

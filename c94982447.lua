@@ -53,7 +53,7 @@ end
 function c94982447.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsPreviousPosition(POS_FACEUP) and
-		bit.band(c:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+		c:IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c94982447.spfilter(c,e,tp)
 	return c:IsSetCard(0xf9) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

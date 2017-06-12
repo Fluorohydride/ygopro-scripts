@@ -23,7 +23,7 @@ function c22382087.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c22382087.cfilter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE and c:IsAbleToHandAsCost()
+	return c:IsSummonType(SUMMON_TYPE_ADVANCE) and c:IsAbleToHandAsCost()
 end
 function c22382087.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c22382087.cfilter,tp,LOCATION_MZONE,0,1,nil) end

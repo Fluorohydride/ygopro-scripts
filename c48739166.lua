@@ -30,7 +30,7 @@ function c48739166.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c48739166.filter(c)
 	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsAbleToChangeControler()
-		and not c:IsType(TYPE_TOKEN) and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+		and not c:IsType(TYPE_TOKEN) and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c48739166.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c48739166.filter(chkc) end

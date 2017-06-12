@@ -14,7 +14,7 @@ function c43845801.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsAbleToEnterBP()
 end
 function c43845801.filter(c)
-	return c:IsFaceup() and bit.band(c:GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_FUSION)
 		and c:IsCode(23995346) and not c:IsHasEffect(EFFECT_EXTRA_ATTACK)
 end
 function c43845801.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

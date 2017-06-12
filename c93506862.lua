@@ -45,7 +45,7 @@ function c93506862.chainlm(e,rp,tp)
 	return tp==rp
 end
 function c93506862.sucfilter(c)
-	return c:IsSetCard(0x3a) and c:IsType(TYPE_RITUAL) and bit.band(c:GetSummonType(),SUMMON_TYPE_RITUAL)==SUMMON_TYPE_RITUAL
+	return c:IsSetCard(0x3a) and c:IsType(TYPE_RITUAL) and c:IsSummonType(SUMMON_TYPE_RITUAL)
 end
 function c93506862.sucop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c93506862.sucfilter,1,nil) then

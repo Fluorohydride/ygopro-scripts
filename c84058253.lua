@@ -24,7 +24,7 @@ function c84058253.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c84058253.descon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c84058253.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

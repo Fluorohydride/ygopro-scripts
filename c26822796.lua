@@ -14,7 +14,7 @@ function c26822796.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_EXTRA,0)==0
 end
 function c26822796.filter(c)
-	return c:IsFaceup() and bit.band(c:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c26822796.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c26822796.filter(chkc) end

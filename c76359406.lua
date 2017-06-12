@@ -30,7 +30,7 @@ function c76359406.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
 end
 function c76359406.posfilter(c)
-	return c:IsFaceup() and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c76359406.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c76359406.posfilter,tp,0,LOCATION_MZONE,1,nil) end

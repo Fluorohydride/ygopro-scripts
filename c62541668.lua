@@ -37,7 +37,7 @@ function c62541668.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,2,2,REASON_COST)
 end
 function c62541668.rmfilter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL and c:IsAbleToRemove()
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL) and c:IsAbleToRemove()
 end
 function c62541668.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(62541668)==0

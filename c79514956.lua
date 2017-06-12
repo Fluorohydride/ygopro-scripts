@@ -21,8 +21,8 @@ function c79514956.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c79514956.indtg(e,c)
-	return c:IsSetCard(0x9b) and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return c:IsSetCard(0x9b) and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c79514956.tgcon(e)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SPECIAL)
 end

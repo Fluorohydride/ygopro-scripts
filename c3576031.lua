@@ -49,7 +49,7 @@ end
 function c3576031.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do
-		if tc:IsSetCard(0xea) and bit.band(tc:GetSummonType(),SUMMON_TYPE_SYNCHRO)==SUMMON_TYPE_SYNCHRO then
+		if tc:IsSetCard(0xea) and tc:IsSummonType(SUMMON_TYPE_SYNCHRO) then
 			local p=tc:GetSummonPlayer()
 			c3576031[p]=c3576031[p]+1
 		end

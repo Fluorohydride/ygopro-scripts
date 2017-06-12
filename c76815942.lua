@@ -57,7 +57,7 @@ function c76815942.valcheck(e,c)
 	e:GetLabelObject():SetLabel(val)
 end
 function c76815942.lvcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION and e:GetLabel()>0
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION) and e:GetLabel()>0
 end
 function c76815942.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

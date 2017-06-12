@@ -41,10 +41,10 @@ function c41209827.ffilter(c)
 	return c:IsFusionAttribute(ATTRIBUTE_DARK) and c:IsOnField() and not c:IsType(TYPE_TOKEN)
 end
 function c41209827.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c41209827.atkfilter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL and c:IsFaceup()
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL) and c:IsFaceup()
 end
 function c41209827.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c41209827.atkfilter,tp,0,LOCATION_MZONE,1,nil) end
@@ -96,10 +96,10 @@ function c41209827.copyop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c41209827.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_MZONE) and bit.band(c:GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c41209827.desfilter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c41209827.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c41209827.desfilter,tp,0,LOCATION_MZONE,1,nil) end

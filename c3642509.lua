@@ -22,7 +22,7 @@ function c3642509.initial_effect(c)
 end
 c3642509.material_setcode=0x8
 function c3642509.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c3642509.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

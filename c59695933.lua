@@ -13,7 +13,7 @@ function c59695933.initial_effect(c)
 end
 function c59695933.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return bit.band(tc:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+	return tc:IsSummonType(SUMMON_TYPE_ADVANCE)
 		and tc:GetMaterialCount()==1
 end
 function c59695933.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

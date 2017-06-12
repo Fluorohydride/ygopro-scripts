@@ -21,12 +21,12 @@ function c88724332.initial_effect(c)
 end
 function c88724332.target(e,c)
 	return c:IsFaceup() and not c:IsRace(RACE_WYRM)
-		and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+		and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 		and bit.band(c:GetSummonLocation(),LOCATION_DECK+LOCATION_EXTRA)~=0
 end
 function c88724332.deftg(e,c)
 	return c:IsFaceup() and not c:IsRace(RACE_WYRM)
-		and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+		and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 		and bit.band(c:GetSummonLocation(),LOCATION_DECK+LOCATION_EXTRA)~=0
 end
 function c88724332.defval(e,c)

@@ -29,7 +29,7 @@ function c37192109.initial_effect(c)
 end
 function c37192109.rmfilter(c)
 	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsAbleToRemove()
-		and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+		and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c37192109.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c37192109.rmfilter(chkc) end

@@ -30,7 +30,7 @@ function c86532744.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c86532744.filter(c)
 	return c:IsAbleToRemove()
-		and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+		and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c86532744.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c86532744.filter(chkc) end

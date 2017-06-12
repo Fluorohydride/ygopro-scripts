@@ -21,7 +21,7 @@ function c52323874.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c52323874.filter(c)
 	return c:IsFaceup() and c:GetBaseAttack()>0
-		and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+		and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c52323874.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c52323874.filter(chkc) end

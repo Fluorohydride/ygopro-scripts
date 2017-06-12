@@ -16,7 +16,7 @@ function c41902352.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c41902352.synlimit(e)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c41902352.spcost(e,c,tp,sumtype)
 	return sumtype~=SUMMON_TYPE_SPECIAL+182

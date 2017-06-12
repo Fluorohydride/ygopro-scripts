@@ -18,7 +18,7 @@ function c21672573.initial_effect(c)
 end
 function c21672573.tdcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:GetFirst()~=e:GetHandler() and ep==tp
-		and bit.band(eg:GetFirst():GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+		and eg:GetFirst():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c21672573.tdcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:GetFirst():GetMaterialCount()~=0 and ep==tp

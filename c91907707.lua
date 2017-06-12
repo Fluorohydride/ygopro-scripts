@@ -109,7 +109,7 @@ function c91907707.lvop2(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e2)
 end
 function c91907707.immcon(e)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_NORMAL)==SUMMON_TYPE_NORMAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_NORMAL)
 end
 function c91907707.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsAbleToHand() end

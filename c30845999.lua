@@ -16,7 +16,7 @@ function c30845999.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c30845999.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0xaa) and bit.band(c:GetSummonType(),SUMMON_TYPE_NORMAL)==SUMMON_TYPE_NORMAL
+	return c:IsFaceup() and c:IsSetCard(0xaa) and c:IsSummonType(SUMMON_TYPE_NORMAL)
 end
 function c30845999.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c30845999.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end

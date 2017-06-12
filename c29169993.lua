@@ -37,7 +37,7 @@ function c29169993.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c29169993.valcon(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE)~=0 and bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return r,REASON_BATTLE)~=0 and bit.band(e:GetHandler():IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c29169993.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp

@@ -38,7 +38,7 @@ function c13035077.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c13035077.indtg(e,c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE and c:IsSetCard(0xf9)
+	return c:IsSummonType(SUMMON_TYPE_ADVANCE) and c:IsSetCard(0xf9)
 end
 function c13035077.indct(e,re,r,rp)
 	if bit.band(r,REASON_BATTLE)~=0 then

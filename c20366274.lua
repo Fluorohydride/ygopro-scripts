@@ -133,7 +133,7 @@ end
 function c20366274.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	return bc and bit.band(bc:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return bc and bc:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c20366274.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

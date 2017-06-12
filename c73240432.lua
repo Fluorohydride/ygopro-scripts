@@ -38,7 +38,7 @@ function c73240432.initial_effect(c)
 end
 function c73240432.cfilter(c,tp)
 	return c:IsControler(tp) and c:IsSetCard(0xad) and c:IsType(TYPE_FUSION)
-		and bit.band(c:GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+		and c:IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c73240432.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c73240432.cfilter,1,nil,tp)

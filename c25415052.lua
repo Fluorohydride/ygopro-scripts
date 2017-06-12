@@ -28,7 +28,7 @@ function c25415052.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c25415052.tdcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_RITUAL)==SUMMON_TYPE_RITUAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL)
 end
 function c25415052.tdfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToDeck()

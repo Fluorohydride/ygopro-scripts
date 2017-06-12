@@ -23,7 +23,7 @@ function c20174189.valcheck(e,c)
 	e:SetLabel(flag)
 end
 function c20174189.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 		and e:GetLabelObject():GetLabel()~=0
 end
 function c20174189.regop(e,tp,eg,ep,ev,re,r,rp)

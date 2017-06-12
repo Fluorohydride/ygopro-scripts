@@ -47,5 +47,5 @@ function c78835747.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c78835747.atkfilter(e,c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end

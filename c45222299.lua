@@ -13,7 +13,7 @@ function c45222299.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c45222299.condition(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_RITUAL)==SUMMON_TYPE_RITUAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL)
 end
 function c45222299.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end

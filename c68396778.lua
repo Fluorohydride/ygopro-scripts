@@ -11,7 +11,7 @@ function c68396778.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c68396778.filter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c68396778.spfilter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsType(TYPE_NORMAL) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

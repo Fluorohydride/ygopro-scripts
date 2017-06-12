@@ -16,5 +16,5 @@ function c40502912.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c40502912.tgcon(e)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SPECIAL)
 end

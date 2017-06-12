@@ -88,7 +88,7 @@ function c57761191.valcheck(e,c)
 	e:SetLabel(typ)
 end
 function c57761191.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c57761191.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -118,7 +118,7 @@ end
 function c57761191.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return rp==1-tp and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
-		and bit.band(c:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+		and c:IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c57761191.spfilter(c,e,tp)
 	return c:IsAttribute(0xf) and c:IsType(0x802040) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

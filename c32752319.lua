@@ -12,7 +12,7 @@ function c32752319.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c32752319.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c32752319.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

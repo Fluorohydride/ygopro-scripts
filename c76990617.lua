@@ -31,5 +31,5 @@ function c76990617.spcon(e,c)
 		and Duel.IsExistingMatchingCard(c76990617.filter,c:GetControler(),LOCATION_MZONE,0,1,nil)
 end
 function c76990617.tgcon(e)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SPECIAL)
 end

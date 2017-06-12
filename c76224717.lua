@@ -39,7 +39,7 @@ function c76224717.initial_effect(c)
 end
 function c76224717.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	if bit.band(tc:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE then
+	if tc:IsSummonType(SUMMON_TYPE_ADVANCE) then
 		c76224717[ep]=c76224717[ep]+tc:GetMaterialCount()
 	end
 end

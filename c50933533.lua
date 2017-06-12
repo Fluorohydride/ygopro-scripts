@@ -47,7 +47,7 @@ function c50933533.valcheck(e,c)
 	e:SetLabel(flag)
 end
 function c50933533.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c50933533.regop(e,tp,eg,ep,ev,re,r,rp)
 	local flag=e:GetLabelObject():GetLabel()

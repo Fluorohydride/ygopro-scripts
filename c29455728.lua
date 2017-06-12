@@ -31,7 +31,7 @@ function c29455728.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		if e:GetHandler():GetSequence()<5 then ft=ft+1 end
 		return ct>0 and ft>=ct and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-			and bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+			and e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 			and g:FilterCount(c29455728.mgfilter,nil,e,tp,e:GetHandler(),g)==ct
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,g:GetCount(),0,0)

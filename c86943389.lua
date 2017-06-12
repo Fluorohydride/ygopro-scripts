@@ -35,7 +35,7 @@ end
 function c86943389.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	return bc and bit.band(bc:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return bc and bc:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c86943389.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

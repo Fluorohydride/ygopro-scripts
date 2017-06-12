@@ -39,7 +39,7 @@ function c4591250.indtg(e,c)
 end
 function c4591250.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return c:IsSummonType(SUMMON_TYPE_FUSION)
 		and (c:IsReason(REASON_BATTLE) or (c:GetReasonPlayer()~=tp and c:IsReason(REASON_EFFECT)))
 		and c:IsPreviousPosition(POS_FACEUP)
 end

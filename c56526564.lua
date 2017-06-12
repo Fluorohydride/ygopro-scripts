@@ -26,7 +26,7 @@ function c56526564.initial_effect(c)
 	end
 end
 function c56526564.cfilter(c)
-	return c:IsType(TYPE_LINK) and bit.band(c:GetSummonType(),SUMMON_TYPE_LINK)==SUMMON_TYPE_LINK
+	return c:IsType(TYPE_LINK) and c:IsSummonType(SUMMON_TYPE_LINK)
 end
 function c56526564.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c56526564.cfilter,1,nil)

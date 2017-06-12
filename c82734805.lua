@@ -25,7 +25,7 @@ function c82734805.valcheck(e,c)
 	e:GetLabelObject():SetLabel(ct)
 end
 function c82734805.con(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c82734805.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=e:GetLabel()

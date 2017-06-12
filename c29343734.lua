@@ -39,7 +39,7 @@ function c29343734.initial_effect(c)
 end
 c29343734.material_setcode=0x8
 function c29343734.retcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c29343734.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

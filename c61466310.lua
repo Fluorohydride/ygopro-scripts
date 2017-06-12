@@ -31,7 +31,7 @@ function c61466310.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 	return c:IsLocation(LOCATION_EXTRA)
 end
 function c61466310.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep==tp and bit.band(eg:GetFirst():GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+	return ep==tp and eg:GetFirst():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c61466310.filter(c,code)
 	return (c:GetAttack()==2400 or c:GetAttack()==2800) and c:GetDefense()==1000 and c:GetCode()~=code and c:IsAbleToHand()

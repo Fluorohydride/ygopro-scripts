@@ -68,7 +68,7 @@ function c90411554.hspop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c90411554.retcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
-		and bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+		and e:GetHandler():IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c90411554.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

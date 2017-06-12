@@ -19,7 +19,7 @@ function c20590784.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local at=Duel.GetAttacker()
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
 		and at:IsOnField() and at:GetAttack()>=Duel.GetLP(tp)
-		and bit.band(at:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL end
+		and at:IsSummonType(SUMMON_TYPE_SPECIAL) end
 end
 function c20590784.filter(c,e,tp)
 	return c:IsSetCard(0xa3) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

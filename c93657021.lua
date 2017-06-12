@@ -29,7 +29,7 @@ function c93657021.matfilter(c)
 	return c:IsFusionType(TYPE_FUSION) and c:IsFusionSetCard(0xc008)
 end
 function c93657021.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c93657021.spfilter1(c,e)
 	return not c:IsImmuneToEffect(e)

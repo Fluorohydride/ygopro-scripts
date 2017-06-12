@@ -13,7 +13,7 @@ function c65612386.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c65612386.condition(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c65612386.cfilter(c,tp)
 	return c:IsType(TYPE_SPELL) and c:IsAbleToRemoveAsCost()

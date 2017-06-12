@@ -20,7 +20,7 @@ function c88301833.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c88301833.cfilter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_RITUAL)==SUMMON_TYPE_RITUAL
+	return c:IsSummonType(SUMMON_TYPE_RITUAL)
 end
 function c88301833.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c88301833.cfilter,1,nil)

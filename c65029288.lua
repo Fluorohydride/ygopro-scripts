@@ -28,7 +28,7 @@ function c65029288.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c65029288.immcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsCode(24094653) and bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return re and re:GetHandler():IsCode(24094653) and e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c65029288.immop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

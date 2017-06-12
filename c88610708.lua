@@ -30,10 +30,10 @@ function c88610708.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c88610708.eqlimit(e,c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_NORMAL)==SUMMON_TYPE_NORMAL
+	return c:IsSummonType(SUMMON_TYPE_NORMAL)
 end
 function c88610708.filter(c)
-	return c:IsFaceup() and bit.band(c:GetSummonType(),SUMMON_TYPE_NORMAL)==SUMMON_TYPE_NORMAL
+	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_NORMAL)
 end
 function c88610708.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c88610708.filter(chkc) end

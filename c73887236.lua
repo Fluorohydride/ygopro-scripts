@@ -22,7 +22,7 @@ function c73887236.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c73887236.atkfilter(e,c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c73887236.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
@@ -30,7 +30,7 @@ function c73887236.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c73887236.filter(c)
 	return c:IsFaceup() and c:GetAttack()>0
-		and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+		and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c73887236.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c73887236.filter(chkc) end

@@ -27,7 +27,7 @@ function c71578874.initial_effect(c)
 end
 function c71578874.filter(c)
 	return c:IsFaceup() and c:GetAttack()~=c:GetDefense() and c:IsDefenseAbove(0)
-		and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+		and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c71578874.adtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c71578874.filter(chkc) end

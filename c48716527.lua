@@ -25,7 +25,7 @@ function c48716527.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c48716527.cfilter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+	return c:IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c48716527.actcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_EXTRA,0)==0

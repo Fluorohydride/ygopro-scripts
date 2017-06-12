@@ -37,7 +37,7 @@ function c33698022.evop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+33698022,re,r,rp,ep,ev)
 end
 function c33698022.filter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL and c:IsAbleToHand()
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL) and c:IsAbleToHand()
 end
 function c33698022.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c33698022.filter(chkc) end

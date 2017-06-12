@@ -49,7 +49,7 @@ function c47679935.efilter(e,ct)
 	return p==tp and te:IsHasCategory(CATEGORY_FUSION_SUMMON)
 end
 function c47679935.limfilter(c,tp)
-	return c:GetSummonPlayer()==tp and bit.band(c:GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return c:GetSummonPlayer()==tp and c:IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c47679935.limcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c47679935.limfilter,1,nil,tp)

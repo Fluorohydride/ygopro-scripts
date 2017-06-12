@@ -29,7 +29,7 @@ function c24348804.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c24348804.cfilter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c24348804.condition(e,tp,eg,ep,ev,re,r,rp)
 	return not Duel.IsExistingMatchingCard(c24348804.cfilter,tp,LOCATION_MZONE,0,1,nil)
@@ -65,5 +65,5 @@ function c24348804.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c24348804.distg(e,c)
-	return c:IsStatus(STATUS_SPSUMMON_TURN) and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return c:IsStatus(STATUS_SPSUMMON_TURN) and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end

@@ -24,7 +24,7 @@ function c3629090.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c3629090.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_RITUAL)==SUMMON_TYPE_RITUAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL)
 end
 function c3629090.thfilter(c)
 	return c:GetType()==0x82 and c:IsAbleToHand()

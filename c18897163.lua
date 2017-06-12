@@ -77,7 +77,7 @@ function c18897163.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c18897163.xyzcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_XYZ)==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c18897163.xyzfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsSetCard(0xaf)

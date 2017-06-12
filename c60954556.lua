@@ -74,7 +74,7 @@ function c60954556.efop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c60954556.xyzcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_XYZ)==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c60954556.xyzfilter(c)
 	return c:IsSetCard(0xf7) and c:IsType(TYPE_MONSTER)

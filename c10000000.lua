@@ -74,7 +74,7 @@ function c10000000.sumsuc(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SetChainLimitTillChainEnd(aux.FALSE)
 end
 function c10000000.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c10000000.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

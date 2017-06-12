@@ -37,5 +37,5 @@ function c11067666.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c11067666.rmcon(e)
 	local c=e:GetHandler()
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM and c:IsReason(REASON_MATERIAL) and c:IsReason(REASON_SYNCHRO)
+	return c:IsSummonType(SUMMON_TYPE_PENDULUM) and c:IsReason(REASON_MATERIAL) and c:IsReason(REASON_SYNCHRO)
 end

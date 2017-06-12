@@ -20,7 +20,7 @@ function c30548775.initial_effect(c)
 end
 function c30548775.filter(c)
 	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsReason(REASON_DESTROY) and c:IsType(TYPE_FUSION)
-		and bit.band(c:GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+		and c:IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c30548775.condition(e,tp,eg,ep,ev,re,r,rp,chk)
 	return eg:IsExists(c30548775.filter,1,nil)

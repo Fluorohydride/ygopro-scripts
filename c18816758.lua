@@ -13,7 +13,7 @@ function c18816758.initial_effect(c)
 end
 function c18816758.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x100a)
-		and bit.band(c:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE and c:IsAbleToHandAsCost()
+		and c:IsSummonType(SUMMON_TYPE_ADVANCE) and c:IsAbleToHandAsCost()
 end
 function c18816758.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c18816758.cfilter,tp,LOCATION_MZONE,0,1,nil) end

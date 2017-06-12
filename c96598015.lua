@@ -13,7 +13,7 @@ function c96598015.initial_effect(c)
 	Duel.AddCustomActivityCounter(96598015,ACTIVITY_SPSUMMON,c96598015.counterfilter)
 end
 function c96598015.counterfilter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
+	return c:IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c96598015.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(96598015,tp,ACTIVITY_SPSUMMON)==0 end

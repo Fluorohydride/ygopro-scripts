@@ -14,7 +14,7 @@ function c72287557.initial_effect(c)
 end
 function c72287557.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return eg:GetCount()==1 and tc:IsControler(1-tp) and bit.band(tc:GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return eg:GetCount()==1 and tc:IsControler(1-tp) and tc:IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c72287557.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,nil) end

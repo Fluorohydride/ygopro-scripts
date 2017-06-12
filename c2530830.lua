@@ -58,7 +58,7 @@ function c2530830.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return rp==1-tp and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsReason(REASON_DESTROY) and (c:IsReason(REASON_EFFECT) or (c:IsReason(REASON_BATTLE) and Duel.GetAttacker():IsControler(1-tp)))
-		and bit.band(c:GetSummonType(),SUMMON_TYPE_XYZ)==SUMMON_TYPE_XYZ
+		and c:IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c2530830.filter(c,e,tp)
 	return c:IsCode(18963306) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

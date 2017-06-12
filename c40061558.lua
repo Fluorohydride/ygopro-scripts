@@ -58,7 +58,7 @@ function c40061558.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)
 end
 function c40061558.immcon(e)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_NORMAL)==SUMMON_TYPE_NORMAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_NORMAL)
 end
 function c40061558.efilter(e,te)
 	if te:IsActiveType(TYPE_SPELL+TYPE_TRAP) then return true

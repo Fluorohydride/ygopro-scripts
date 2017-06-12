@@ -35,7 +35,7 @@ function c69711728.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c69711728.cfilter(c,e,tp)
-	return c:IsFaceup() and c:IsType(TYPE_FUSION) and bit.band(c:GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return c:IsFaceup() and c:IsType(TYPE_FUSION) and c:IsSummonType(SUMMON_TYPE_FUSION)
 		and Duel.IsExistingTarget(c69711728.filter,tp,LOCATION_GRAVE,0,1,nil,c:GetLevel(),e,tp)
 end
 function c69711728.filter(c,lv,e,tp)

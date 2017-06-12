@@ -14,7 +14,7 @@ function c36352429.initial_effect(c)
 end
 function c36352429.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
-		and bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+		and e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c36352429.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c36352429.filter,tp,LOCATION_DECK,0,1,nil) end

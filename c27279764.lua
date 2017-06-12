@@ -69,14 +69,14 @@ function c27279764.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)
 end
 function c27279764.immcon(e)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_NORMAL)==SUMMON_TYPE_NORMAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_NORMAL)
 end
 function c27279764.efilter(e,te)
 	if te:IsActiveType(TYPE_SPELL+TYPE_TRAP) then return true
 	else return aux.qlifilter(e,te) end
 end
 function c27279764.adtg(e,c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c27279764.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE+LOCATION_HAND)>0 end

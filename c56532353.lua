@@ -30,7 +30,7 @@ function c56532353.costfilter(c)
 end
 function c56532353.atcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return c:IsSummonType(SUMMON_TYPE_FUSION)
 		and Duel.GetAttacker()==c and c:IsChainAttackable(0)
 		and not Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_ONFIELD,0,1,c)
 end

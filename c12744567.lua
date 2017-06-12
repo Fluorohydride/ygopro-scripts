@@ -28,7 +28,7 @@ end
 c12744567.xyz_number=101
 function c12744567.filter(c)
 	return not c:IsType(TYPE_TOKEN) and c:IsAbleToChangeControler()
-		and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+		and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c12744567.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c12744567.filter(chkc) end

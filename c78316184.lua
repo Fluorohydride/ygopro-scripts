@@ -28,7 +28,7 @@ function c78316184.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c78316184.descon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_RITUAL)==SUMMON_TYPE_RITUAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL)
 end
 function c78316184.desfilter(c)
 	return c:GetSummonLocation()==LOCATION_EXTRA

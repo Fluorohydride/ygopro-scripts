@@ -53,7 +53,7 @@ function c69105797.ccon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsPreviousPosition(POS_FACEUP) and not c:IsLocation(LOCATION_DECK)
 end
 function c69105797.cfilter(c)
-	return c:IsFaceup() and bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c69105797.cop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

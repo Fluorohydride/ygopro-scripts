@@ -56,7 +56,7 @@ function c51194046.splimit(e,c)
 end
 function c51194046.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	if bit.band(tc:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE then
+	if tc:IsSummonType(SUMMON_TYPE_ADVANCE) then
 		local p=tc:GetSummonPlayer()
 		c51194046[p]=c51194046[p]+e:GetLabelObject():GetLabel()
 	end

@@ -39,7 +39,7 @@ function c84171830.splimit(e,c)
 	return c:IsLocation(LOCATION_EXTRA)
 end
 function c84171830.cfilter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+	return c:IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c84171830.discon(e)
 	local tp=e:GetHandlerPlayer()
@@ -53,7 +53,7 @@ function c84171830.atkcon(e)
 	return Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL and d and d:IsControler(1-tp)
 end
 function c84171830.atktg(e,c)
-	return c==Duel.GetAttacker() and bit.band(c:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+	return c==Duel.GetAttacker() and c:IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c84171830.filter(c)
 	return c:GetAttack()==2800 and c:GetDefense()==1000

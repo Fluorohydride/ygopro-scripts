@@ -126,7 +126,7 @@ function c74009824.indop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c74009824.indval(e,c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c74009824.thfilter(c)
 	return c:IsSetCard(0x9d) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()

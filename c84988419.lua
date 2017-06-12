@@ -31,7 +31,7 @@ end
 function c84988419.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	return bc and bit.band(bc:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL and c:GetBaseAttack()~=bc:GetBaseAttack()
+	return bc and bc:IsSummonType(SUMMON_TYPE_SPECIAL) and c:GetBaseAttack()~=bc:GetBaseAttack()
 end
 function c84988419.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=e:GetHandler():GetBattleTarget()

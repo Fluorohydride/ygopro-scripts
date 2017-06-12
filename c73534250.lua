@@ -13,7 +13,7 @@ function c73534250.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c73534250.ctfilter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c73534250.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c73534250.ctfilter,tp,0,LOCATION_MZONE,1,nil)

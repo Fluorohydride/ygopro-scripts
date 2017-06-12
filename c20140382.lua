@@ -11,7 +11,7 @@ function c20140382.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c20140382.cfilter(c)
-	return c:IsFaceup() and c:IsLevelAbove(7) and bit.band(c:GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+	return c:IsFaceup() and c:IsLevelAbove(7) and c:IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c20140382.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c20140382.cfilter,tp,LOCATION_MZONE,0,1,nil)

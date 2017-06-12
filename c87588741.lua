@@ -116,7 +116,7 @@ function c87588741.lvop2(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e2)
 end
 function c87588741.immcon(e)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_NORMAL)==SUMMON_TYPE_NORMAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_NORMAL)
 end
 function c87588741.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE and e:GetLabel()==1

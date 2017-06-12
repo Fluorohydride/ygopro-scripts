@@ -113,7 +113,7 @@ function c74822425.discon(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) then return false end
 	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
 	return loc==LOCATION_MZONE and re:IsActiveType(TYPE_MONSTER)
-		and bit.band(re:GetHandler():GetSummonType(),SUMMON_TYPE_SPECIAL)==SUMMON_TYPE_SPECIAL
+		and re:GetHandler():IsSummonType(SUMMON_TYPE_SPECIAL)
 		and Duel.IsChainNegatable(ev)
 end
 function c74822425.filter(c)

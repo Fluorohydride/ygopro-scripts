@@ -84,7 +84,7 @@ function c21377582.valcheck(e,c)
 	e:SetLabel(typ)
 end
 function c21377582.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c21377582.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -112,7 +112,7 @@ function c21377582.efilter(e,te)
 	return te:IsActiveType(e:GetLabel()) and te:GetOwner()~=e:GetOwner()
 end
 function c21377582.descon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c21377582.costfilter(c)
 	return c:IsType(TYPE_CONTINUOUS) and c:IsAbleToRemoveAsCost()

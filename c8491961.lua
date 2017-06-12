@@ -34,7 +34,7 @@ function c8491961.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c8491961.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_XYZ)==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 		and e:GetHandler():GetOverlayCount()>0
 end
 function c8491961.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -63,7 +63,7 @@ end
 function c8491961.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return ep==tp and c:IsRelateToBattle() and eg:GetFirst()==c:GetBattleTarget()
-		and bit.band(c:GetSummonType(),SUMMON_TYPE_XYZ)==SUMMON_TYPE_XYZ
+		and c:IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c8491961.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChangeBattleDamage(1-ep,ev,false)

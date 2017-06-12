@@ -108,7 +108,7 @@ function c37991342.lvop2(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e2)
 end
 function c37991342.immcon(e)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_NORMAL)==SUMMON_TYPE_NORMAL
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_NORMAL)
 end
 function c37991342.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
