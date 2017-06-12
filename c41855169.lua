@@ -29,7 +29,7 @@ function c41855169.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(sg,REASON_COST+REASON_DISCARD)
 end
 function c41855169.filter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)~=0
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c41855169.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c41855169.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end

@@ -11,7 +11,7 @@ function c68477598.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c68477598.cfilter(c)
-	return c:GetSummonType()==SUMMON_TYPE_PENDULUM
+	return c:IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c68477598.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentChain()==0 and eg:IsExists(c68477598.cfilter,1,nil)

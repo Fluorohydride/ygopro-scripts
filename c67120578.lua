@@ -115,7 +115,7 @@ function c67120578.efop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c67120578.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c67120578.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -38,7 +38,7 @@ function c63101919.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c63101919.addcc1(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c63101919.addct1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

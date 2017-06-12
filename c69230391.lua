@@ -45,7 +45,7 @@ function c69230391.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end
 function c69230391.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c69230391.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

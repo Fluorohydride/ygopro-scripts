@@ -26,7 +26,7 @@ function c5795980.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	return true
 end
 function c5795980.cfilter(c,e,dg)
-	if c:IsFacedown() or not c:IsLevelAbove(5) or bit.band(c:GetSummonType(),SUMMON_TYPE_NORMAL)==0 then return false end
+	if c:IsFacedown() or not c:IsLevelAbove(5) or not c:IsSummonType(SUMMON_TYPE_NORMAL) then return false end
 	local a=0
 	if dg:IsContains(c) then a=1 end
 	if c:GetEquipCount()==0 then return dg:GetCount()-a>=1 end

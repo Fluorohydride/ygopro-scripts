@@ -23,7 +23,7 @@ function c82293134.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c82293134.descon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_NORMAL)~=0
+	return c:IsSummonType(SUMMON_TYPE_NORMAL)
 		and e:GetHandler():GetTurnID()==Duel.GetTurnCount()
 end
 function c82293134.destg(e,tp,eg,ep,ev,re,r,rp,chk)

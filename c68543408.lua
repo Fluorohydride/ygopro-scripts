@@ -23,7 +23,7 @@ function c68543408.initial_effect(c)
 end
 function c68543408.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return tc:IsControler(tp) and tc:IsCode(44508094) and tc:GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return tc:IsControler(tp) and tc:IsCode(44508094) and tc:IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c68543408.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

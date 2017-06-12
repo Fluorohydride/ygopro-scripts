@@ -48,7 +48,7 @@ function c63821877.efop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(p,63821877,RESET_PHASE+PHASE_END,0,1)
 end
 function c63821877.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_XYZ
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c63821877.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

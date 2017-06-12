@@ -32,7 +32,7 @@ function c52709508.valcheck(e,c)
 	e:SetLabel(att)
 end
 function c52709508.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 		and e:GetLabelObject():GetLabel()~=0
 end
 function c52709508.regop(e,tp,eg,ep,ev,re,r,rp)

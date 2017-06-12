@@ -25,7 +25,7 @@ function c56768355.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c56768355.eqcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c56768355.filter(c,ec)
 	return c:IsType(TYPE_EQUIP) and c:CheckEquipTarget(ec)

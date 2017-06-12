@@ -71,7 +71,7 @@ function c68371799.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c68371799.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c68371799.spfilter(c,e,tp)
 	return c:GetLevel()==6 and c:IsSetCard(0x45) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

@@ -24,7 +24,7 @@ function c50155385.valcon(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end
 function c50155385.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_PENDULUM
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c50155385.filter(c)
 	return c:IsType(TYPE_RITUAL) and c:IsAbleToHand()

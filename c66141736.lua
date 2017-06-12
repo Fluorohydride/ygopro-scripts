@@ -33,7 +33,7 @@ function c66141736.counterfilter(c)
 	return c:GetSummonLocation()~=LOCATION_EXTRA or (c:IsType(TYPE_SYNCHRO) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsRace(RACE_DRAGON))
 end
 function c66141736.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c66141736.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(66141736,tp,ACTIVITY_SPSUMMON)==0 end

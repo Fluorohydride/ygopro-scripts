@@ -32,7 +32,7 @@ function c78637313.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c78637313.filter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)~=0 and c:GetReasonEffect()
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL) and c:GetReasonEffect()
 		and c:GetReasonEffect():GetHandler():IsCode(83764718)
 end
 function c78637313.adjustop(e,tp,eg,ep,ev,re,r,rp)

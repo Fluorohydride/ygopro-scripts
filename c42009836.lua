@@ -19,7 +19,7 @@ function c42009836.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c42009836.filter(c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_SPECIAL)~=0
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c42009836.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

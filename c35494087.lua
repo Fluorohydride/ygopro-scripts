@@ -47,7 +47,7 @@ function c35494087.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c35494087.indval(e,c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_NORMAL)~=0
+	return c:IsSummonType(SUMMON_TYPE_NORMAL)
 end
 function c35494087.sdfilter(c)
 	return c:IsFaceup() and not c:IsSetCard(0x2016)

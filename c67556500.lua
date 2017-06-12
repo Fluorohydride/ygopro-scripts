@@ -16,7 +16,7 @@ function c67556500.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c67556500.lvcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c67556500.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

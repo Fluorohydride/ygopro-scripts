@@ -173,7 +173,7 @@ function c62242678.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 	Duel.SendtoGrave(g,REASON_MATERIAL+REASON_SYNCHRO)
 end
 function c62242678.limcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c62242678.limtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -18,7 +18,7 @@ function c60800381.tfilter(c)
 	return c:IsCode(63977008) or c:IsHasEffect(20932152)
 end
 function c60800381.con(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SYNCHRO
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c60800381.filter(c)
 	return c:IsFaceup() and c:IsLevelBelow(2)

@@ -54,7 +54,7 @@ end
 function c66698383.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsReason(REASON_DESTROY) and c:IsReason(REASON_EFFECT)
-		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetSummonType()==SUMMON_TYPE_SYNCHRO
+		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c66698383.thfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_TUNER) and c:IsAbleToHand()

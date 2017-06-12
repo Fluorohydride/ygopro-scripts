@@ -32,7 +32,7 @@ function c48716527.actcon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c48716527.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c48716527.distg(e,c)
-	return bit.band(c:GetSummonType(),SUMMON_TYPE_ADVANCE)~=SUMMON_TYPE_ADVANCE
+	return not c:IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c48716527.tgcon(e)
 	local tp=e:GetHandlerPlayer()

@@ -35,7 +35,7 @@ end
 function c72497366.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=eg:GetFirst()
 	if chk==0 then return eg:GetCount()==1 and tc:IsFaceup() and tc:IsLocation(LOCATION_MZONE)
-		and tc:IsRace(RACE_FIEND) and tc:IsLevelAbove(5) and bit.band(tc:GetSummonType(),SUMMON_TYPE_NORMAL)~=0 end
+		and tc:IsRace(RACE_FIEND) and tc:IsLevelAbove(5) and tc:IsSummonType(SUMMON_TYPE_NORMAL) end
 	if Duel.SelectYesNo(tp,aux.Stringid(72497366,1)) then
 		Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
 		return true
