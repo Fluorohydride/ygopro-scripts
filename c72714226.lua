@@ -25,17 +25,10 @@ end
 function c72714226.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ct<=0 then return end
-	local g=Duel.GetMatchingGroup(c72714226.filter,tp,LOCATION_DECK,0,nil,e,tp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local g=Duel.SelectMatchingCard(tp,c72714226.filter,tp,LOCATION_DECK,0,1,ct,nil,e,tp)
 	if g:GetCount()>0 then
-        	local tc1=g:GetFirst()
-		local tc2=g:GetNext()
-		Duel.SpecialSummonStep(tc1,0,tp,tp,false,false,POS_FACEUP)
-		ct=ct-1
-		while tc2 and ct>0 and not Duel.IsPlayerAffectedByEffect(tp,59822133) and Duel.SelectYesNo(tp,aux.Stringid(72714226,1)) do
-			Duel.SpecialSummonStep(tc2,0,tp,tp,false,false,POS_FACEUP)
-			ct=ct-1
-			tc2=g:GetNext()
-		end
-		Duel.SpecialSummonComplete()
+		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
