@@ -143,9 +143,8 @@ end
 function c29432356.pencon1(e,c,og)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	if c:GetSequence()~=0 then return false end
 	local rpz=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
-	if rpz==nil then return false end
+	if rpz==nil or c==rpz then return false end
 	local lscale=c:GetLeftScale()
 	local rscale=rpz:GetRightScale()
 	if lscale>rscale then lscale,rscale=rscale,lscale end
