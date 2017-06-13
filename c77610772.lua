@@ -47,21 +47,6 @@ function c77610772.initial_effect(c)
 	e5:SetTarget(c77610772.sptg2)
 	e5:SetOperation(c77610772.spop2)
 	c:RegisterEffect(e5)
-	--
-	if not Card.IsLinkState then
-		function Card.IsLinkState(c)
-			if not c then return false end
-			if c:IsType(TYPE_LINK) and c:GetLinkedGroupCount()>0 then return true end
-			local g=Duel.GetMatchingGroup(Card.IsType,0,LOCATION_MZONE,LOCATION_MZONE,nil,TYPE_LINK)
-			local lc=g:GetFirst()
-			while lc do
-				local lg=lc:GetLinkedGroup()
-				if lg and lg:IsContains(c) then return true end
-				lc=g:GetNext()
-			end
-			return false
-		end
-	end
 end
 function c77610772.linkfilter1(c,lc,tp)
 	return c:IsFaceup() and Duel.IsExistingMatchingCard(c77610772.linkfilter2,tp,LOCATION_MZONE,0,1,c,lc,c,tp)
