@@ -18,7 +18,7 @@ function c84650463.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,84650463)
 	e2:SetCondition(c84650463.spcon)
-	e2:SetCost(c84650463.spcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c84650463.sptg)
 	e2:SetOperation(c84650463.spop)
 	c:RegisterEffect(e2)
@@ -42,10 +42,6 @@ function c84650463.cfilter(c)
 end
 function c84650463.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetMatchingGroupCount(c84650463.cfilter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,nil)==3
-end
-function c84650463.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c84650463.filter(c,e,tp)
 	return c:IsLevelAbove(5) and c:IsRace(RACE_SEASERPENT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

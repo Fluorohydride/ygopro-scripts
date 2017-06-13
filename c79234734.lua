@@ -15,7 +15,7 @@ function c79234734.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,79234735)
-	e2:SetCost(c79234734.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c79234734.thtg)
 	e2:SetOperation(c79234734.thop)
 	c:RegisterEffect(e2)
@@ -43,10 +43,6 @@ function c79234734.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END+RESET_OPPO_TURN)
 		c:RegisterEffect(e2)
 	end
-end
-function c79234734.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c79234734.thfilter(c)
 	return c:IsCode(6628343,32013448) and c:IsAbleToHand()

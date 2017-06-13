@@ -22,7 +22,7 @@ function c44891812.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCondition(c44891812.spcon)
-	e2:SetCost(c44891812.spcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c44891812.sptg)
 	e2:SetOperation(c44891812.spop)
 	c:RegisterEffect(e2)
@@ -65,10 +65,6 @@ end
 function c44891812.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
 	return at:GetControler()~=tp and Duel.GetAttackTarget()==nil
-end
-function c44891812.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c44891812.spfilter(c,e,tp)
 	return c:IsSetCard(0x9a) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

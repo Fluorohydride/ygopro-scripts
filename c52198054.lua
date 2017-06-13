@@ -39,7 +39,7 @@ function c52198054.initial_effect(c)
 	e4:SetCode(EVENT_FREE_CHAIN)
 	e4:SetRange(LOCATION_GRAVE)
 	e4:SetCondition(c52198054.condition)
-	e4:SetCost(c52198054.tgcost)
+	e4:SetCost(aux.bfgcost)
 	e4:SetTarget(c52198054.tgtg)
 	e4:SetOperation(c52198054.tgop)
 	e4:SetHintTiming(0,TIMING_MAIN_END)
@@ -85,10 +85,6 @@ function c52198054.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)~=0 and g:GetFirst():IsLocation(LOCATION_GRAVE) then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end
-end
-function c52198054.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c52198054.tgfilter(c)
 	return c:IsSetCard(0x32) and c:IsAbleToGrave()

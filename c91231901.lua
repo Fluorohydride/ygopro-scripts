@@ -16,7 +16,7 @@ function c91231901.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCondition(aux.exccon)
-	e2:SetCost(c91231901.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c91231901.thtg)
 	e2:SetOperation(c91231901.thop)
 	c:RegisterEffect(e2)
@@ -45,10 +45,6 @@ function c91231901.activate(e,tp,eg,ep,ev,re,r,rp)
 			end
 		end
 	end
-end
-function c91231901.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c91231901.thfilter(c)
 	return c:IsSetCard(0xc) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

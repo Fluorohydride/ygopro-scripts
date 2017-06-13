@@ -6,14 +6,10 @@ function c9411399.initial_effect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_GRAVE)
-	e1:SetCost(c9411399.cost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetTarget(c9411399.target)
 	e1:SetOperation(c9411399.operation)
 	c:RegisterEffect(e1)
-end
-function c9411399.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c9411399.filter(c,e,sp)
 	return c:IsCode(9411399) and c:IsCanBeSpecialSummoned(e,0,sp,false,false)

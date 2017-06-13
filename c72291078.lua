@@ -18,7 +18,7 @@ function c72291078.initial_effect(c)
 	e3:SetCategory(CATEGORY_SUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_GRAVE)
-	e3:SetCost(c72291078.cost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c72291078.target)
 	e3:SetOperation(c72291078.operation)
 	c:RegisterEffect(e3)
@@ -36,10 +36,6 @@ function c72291078.initial_effect(c)
 end
 function c72291078.indcon(e)
 	return Duel.IsExistingMatchingCard(Card.IsType,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil,TYPE_TOKEN)
-end
-function c72291078.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c72291078.filter(c)
 	return c:IsSetCard(0x101b) and c:IsSummonable(true,nil)

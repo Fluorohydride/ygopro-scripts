@@ -31,7 +31,7 @@ function c64753157.initial_effect(c)
 	e3:SetCode(EVENT_BATTLE_DESTROYED)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetCondition(c64753157.thcon)
-	e3:SetCost(c64753157.thcost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c64753157.thtg)
 	e3:SetOperation(c64753157.thop)
 	c:RegisterEffect(e3)
@@ -87,10 +87,6 @@ function c64753157.cfilter(c,tp)
 end
 function c64753157.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c64753157.cfilter,1,nil,tp)
-end
-function c64753157.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c64753157.thfilter(c)
 	return c:IsCode(41091257) and c:IsAbleToHand()

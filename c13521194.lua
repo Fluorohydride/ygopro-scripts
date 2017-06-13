@@ -16,7 +16,7 @@ function c13521194.initial_effect(c)
 	e2:SetDescription(aux.Stringid(13521194,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c13521194.spcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c13521194.sptarget)
 	e2:SetOperation(c13521194.spoperation)
 	c:RegisterEffect(e2)
@@ -35,10 +35,6 @@ end
 function c13521194.damoperation(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Damage(p,d,REASON_EFFECT)
-end
-function c13521194.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c13521194.filter(c,e,tp)
 	local atk=c:GetAttack()

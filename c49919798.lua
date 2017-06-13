@@ -27,7 +27,7 @@ function c49919798.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e3:SetCost(c49919798.spcost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c49919798.sptg)
 	e3:SetOperation(c49919798.spop)
 	c:RegisterEffect(e3)
@@ -74,10 +74,6 @@ function c49919798.cpop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 		c:CopyEffect(code,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,1)
 	end
-end
-function c49919798.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c49919798.spfilter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x1066) and not c:IsCode(49919798) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

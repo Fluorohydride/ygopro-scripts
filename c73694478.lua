@@ -19,7 +19,7 @@ function c73694478.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetCondition(c73694478.thcon)
-	e2:SetCost(c73694478.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c73694478.thtg)
 	e2:SetOperation(c73694478.thop)
 	c:RegisterEffect(e2)
@@ -53,10 +53,6 @@ function c73694478.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c73694478.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return aux.exccon(e) and Duel.GetTurnPlayer()==tp and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
-end
-function c73694478.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c73694478.thfilter(c)
 	return c:IsSetCard(0x10cf) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

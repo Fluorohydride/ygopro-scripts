@@ -19,7 +19,7 @@ function c30500113.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCountLimit(1,30500113)
 	e2:SetCondition(c30500113.thcon)
-	e2:SetCost(c30500113.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c30500113.thtg)
 	e2:SetOperation(c30500113.thop)
 	c:RegisterEffect(e2)
@@ -53,10 +53,6 @@ end
 function c30500113.thcon(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsContains(e:GetHandler()) then return false end
 	return eg:IsExists(c30500113.cfilter2,1,nil,tp)
-end
-function c30500113.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c30500113.thfilter(c)
 	return c:IsSetCard(0xba) and c:IsAbleToHand()

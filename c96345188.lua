@@ -16,7 +16,7 @@ function c96345188.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,96345188)
 	e2:SetCondition(c96345188.thcon)
-	e2:SetCost(c96345188.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c96345188.thtg)
 	e2:SetOperation(c96345188.thop)
 	c:RegisterEffect(e2)
@@ -60,10 +60,6 @@ function c96345188.lvop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c96345188.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetTurnID()==Duel.GetTurnCount() and not e:GetHandler():IsReason(REASON_RETURN)
-end
-function c96345188.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c96345188.thfilter(c)
 	return c:IsSetCard(0xba) and not c:IsCode(96345188) and c:IsAbleToHand()

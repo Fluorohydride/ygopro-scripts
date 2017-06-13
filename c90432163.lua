@@ -19,7 +19,7 @@ function c90432163.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,90432164)
-	e2:SetCost(c90432163.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c90432163.thtg)
 	e2:SetOperation(c90432163.thop)
 	c:RegisterEffect(e2)
@@ -51,10 +51,6 @@ function c90432163.operation(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_UPDATE_DEFENSE)
 		tc:RegisterEffect(e2)
 	end
-end
-function c90432163.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c90432163.thfilter(c)
 	return c:IsSetCard(0x10db) and not c:IsCode(90432163) and c:IsAbleToHand()

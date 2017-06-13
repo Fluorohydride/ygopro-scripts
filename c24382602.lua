@@ -27,7 +27,7 @@ function c24382602.initial_effect(c)
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_GRAVE)
-	e4:SetCost(c24382602.thcost)
+	e4:SetCost(aux.bfgcost)
 	e4:SetTarget(c24382602.thtg)
 	e4:SetOperation(c24382602.thop)
 	c:RegisterEffect(e4)
@@ -68,10 +68,6 @@ function c24382602.atkop(e,tp,eg,ep,ev,re,r,rp)
 			tc:RegisterEffect(e2)
 		end
 	end
-end
-function c24382602.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c24382602.thfilter(c)
 	return c:IsCode(17655904) and c:IsAbleToHand()

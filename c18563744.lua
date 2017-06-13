@@ -18,7 +18,7 @@ function c18563744.initial_effect(c)
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c18563744.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c18563744.thtg)
 	e2:SetOperation(c18563744.thop)
 	c:RegisterEffect(e2)
@@ -61,10 +61,6 @@ function c18563744.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c18563744.efilter(e,re)
 	return e:GetOwnerPlayer()~=re:GetOwnerPlayer()
-end
-function c18563744.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c18563744.thfilter(c)
 	return c:IsSetCard(0xe7) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

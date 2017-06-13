@@ -17,7 +17,7 @@ function c17328157.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,17328157)
 	e2:SetCondition(aux.exccon)
-	e2:SetCost(c17328157.tgcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c17328157.tgtg)
 	e2:SetOperation(c17328157.tgop)
 	c:RegisterEffect(e2)
@@ -37,10 +37,6 @@ function c17328157.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
-end
-function c17328157.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c17328157.tgfilter(c)
 	return c:IsAttribute(ATTRIBUTE_WIND) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()

@@ -25,7 +25,7 @@ function c51858200.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_GRAVE)
-	e3:SetCost(c51858200.spcost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c51858200.sptg)
 	e3:SetOperation(c51858200.spop)
 	c:RegisterEffect(e3)
@@ -51,10 +51,6 @@ function c51858200.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end
-end
-function c51858200.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c51858200.spfilter1(c,e)
 	return c:IsSetCard(0x10f3) and not c:IsImmuneToEffect(e)

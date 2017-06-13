@@ -18,7 +18,7 @@ function c28039390.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCondition(aux.exccon)
-	e2:SetCost(c28039390.tgcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c28039390.tgtg)
 	e2:SetOperation(c28039390.tgop)
 	c:RegisterEffect(e2)
@@ -39,10 +39,6 @@ function c28039390.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
-end
-function c28039390.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c28039390.tgfilter(c)
 	return c:IsFaceup() and (c:IsSetCard(0xa9) or c:IsSetCard(0xad)) and c:IsType(TYPE_MONSTER)

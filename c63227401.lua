@@ -19,7 +19,7 @@ function c63227401.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetCondition(aux.exccon)
-	e2:SetCost(c63227401.cost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c63227401.target)
 	e2:SetOperation(c63227401.activate)
 	c:RegisterEffect(e2)
@@ -54,8 +54,4 @@ function c63227401.discon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c63227401.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
-end
-function c63227401.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end

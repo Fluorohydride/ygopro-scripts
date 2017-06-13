@@ -32,7 +32,7 @@ function c23160024.initial_effect(c)
 	e5:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_GRAVE)
-	e5:SetCost(c23160024.spcost)
+	e5:SetCost(aux.bfgcost)
 	e5:SetTarget(c23160024.sptg)
 	e5:SetOperation(c23160024.spop)
 	c:RegisterEffect(e5)
@@ -46,10 +46,6 @@ end
 function c23160024.drop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,e:GetHandler():GetCode())
 	Duel.Draw(tp,1,REASON_EFFECT)
-end
-function c23160024.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c23160024.spfilter(c,e,tp,m,ft)
 	if not c:IsCode(98287529) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end

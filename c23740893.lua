@@ -15,7 +15,7 @@ function c23740893.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c23740893.sumcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c23740893.sumtg)
 	e2:SetOperation(c23740893.sumop)
 	c:RegisterEffect(e2)
@@ -39,10 +39,6 @@ function c23740893.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		tc:AddCounter(0x33,3)
 	end
-end
-function c23740893.sumcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c23740893.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanSummon(tp) end

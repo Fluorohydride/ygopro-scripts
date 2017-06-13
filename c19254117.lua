@@ -21,7 +21,7 @@ function c19254117.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCondition(c19254117.tgcon)
-	e2:SetCost(c19254117.tgcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c19254117.tgtg)
 	e2:SetOperation(c19254117.tgop)
 	c:RegisterEffect(e2)
@@ -71,10 +71,6 @@ end
 function c19254117.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 		and (Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE))
-end
-function c19254117.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c19254117.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) end

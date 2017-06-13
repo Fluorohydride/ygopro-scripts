@@ -18,7 +18,7 @@ function c22842126.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,22842126)
-	e2:SetCost(c22842126.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c22842126.thtg)
 	e2:SetOperation(c22842126.thop)
 	c:RegisterEffect(e2)
@@ -39,10 +39,6 @@ end
 function c22842126.activate(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Draw(p,d,REASON_EFFECT)
-end
-function c22842126.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c22842126.thfilter(c)
 	return c:IsSetCard(0xbe) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()

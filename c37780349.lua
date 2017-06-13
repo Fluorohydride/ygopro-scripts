@@ -19,7 +19,7 @@ function c37780349.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e2:SetCost(c37780349.atkcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c37780349.atktg)
 	e2:SetOperation(c37780349.atkop)
 	c:RegisterEffect(e2)
@@ -48,10 +48,6 @@ function c37780349.dmop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c37780349.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChangeBattleDamage(tp,0)
-end
-function c37780349.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c37780349.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0xc008)

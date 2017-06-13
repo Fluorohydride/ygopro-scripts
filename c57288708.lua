@@ -33,7 +33,7 @@ function c57288708.initial_effect(c)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetCountLimit(1,57288709)
 	e3:SetCondition(aux.exccon)
-	e3:SetCost(c57288708.thcost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c57288708.thtg)
 	e3:SetOperation(c57288708.thop)
 	c:RegisterEffect(e3)
@@ -79,10 +79,6 @@ function c57288708.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()==2 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
-end
-function c57288708.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c57288708.thfilter(c)
 	return c:IsSetCard(0xfe) and c:IsAbleToHand()

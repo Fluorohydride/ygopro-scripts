@@ -14,7 +14,7 @@ function c67381587.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e2:SetCost(c67381587.poscost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c67381587.postg)
 	e2:SetOperation(c67381587.posop)
 	c:RegisterEffect(e2)
@@ -25,10 +25,6 @@ function c67381587.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c67381587.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE,1)
-end
-function c67381587.poscost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c67381587.posfilter1(c)
 	return c:IsFaceup() and c:IsSetCard(0xcc) and c:IsCanTurnSet()

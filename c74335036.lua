@@ -16,7 +16,7 @@ function c74335036.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c74335036.tdcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c74335036.tdtg)
 	e2:SetOperation(c74335036.tdop)
 	c:RegisterEffect(e2)
@@ -81,10 +81,6 @@ function c74335036.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c74335036.tdfilter(c)
 	return c:IsType(TYPE_FUSION) and c:IsAbleToExtra()
-end
-function c74335036.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c74335036.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c74335036.tdfilter(chkc) end

@@ -62,8 +62,8 @@ function c64063868.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsReason(REASON_DESTROY) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function c64063868.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() and e:GetHandler():IsLocation(LOCATION_GRAVE) end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
+	if chk==0 then return aux.bfgcost(e,tp,eg,ep,ev,re,r,rp,0) and e:GetHandler():IsLocation(LOCATION_GRAVE) end
+	aux.bfgcost(e,tp,eg,ep,ev,re,r,rp,1)
 end
 function c64063868.thfilter(c)
 	return c:IsSetCard(0xd2) and c:IsLevelBelow(8) and c:IsAbleToHand()

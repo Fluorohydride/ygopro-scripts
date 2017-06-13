@@ -55,7 +55,7 @@ function c61936647.initial_effect(c)
 	e6:SetCode(EVENT_FREE_CHAIN)
 	e6:SetRange(LOCATION_GRAVE)
 	e6:SetCountLimit(1,61936647)
-	e6:SetCost(c61936647.spcost)
+	e6:SetCost(aux.bfgcost)
 	e6:SetTarget(c61936647.sptg)
 	e6:SetOperation(c61936647.spop)
 	c:RegisterEffect(e6)
@@ -104,10 +104,6 @@ function c61936647.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c61936647.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
-end
-function c61936647.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c61936647.spfilter(c,e,tp)
 	return c:IsSetCard(0x10db) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

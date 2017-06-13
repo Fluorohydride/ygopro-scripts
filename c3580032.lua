@@ -19,7 +19,7 @@ function c3580032.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetHintTiming(0,TIMING_END_PHASE+0x1c0)
 	e2:SetCountLimit(1,3580033)
-	e2:SetCost(c3580032.cost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c3580032.sctg)
 	e2:SetOperation(c3580032.scop)
 	c:RegisterEffect(e2)
@@ -32,7 +32,7 @@ function c3580032.initial_effect(c)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetHintTiming(0,TIMING_END_PHASE+0x1c0)
 	e3:SetCountLimit(1,3580034)
-	e3:SetCost(c3580032.cost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c3580032.xyztg)
 	e3:SetOperation(c3580032.xyzop)
 	c:RegisterEffect(e3)
@@ -72,10 +72,6 @@ function c3580032.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
-end 
-function c3580032.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c3580032.scfilter(c)
 	return c:IsSetCard(0x107a) and c:IsSynchroSummonable(nil)

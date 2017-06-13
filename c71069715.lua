@@ -22,7 +22,7 @@ function c71069715.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetCode(EVENT_FREE_CHAIN)
-	e3:SetCost(c71069715.tdcost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c71069715.tdtg)
 	e3:SetOperation(c71069715.tdop)
 	c:RegisterEffect(e3)
@@ -32,10 +32,6 @@ function c71069715.indtg(e,c)
 end
 function c71069715.indval(e,re,rp)
 	return rp~=e:GetHandlerPlayer()
-end
-function c71069715.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c71069715.tdfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xaf) and c:IsAbleToDeck()

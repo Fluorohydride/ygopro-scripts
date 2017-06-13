@@ -19,7 +19,7 @@ function c78474168.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetCondition(c78474168.negcon)
-	e2:SetCost(c78474168.negcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c78474168.target)
 	e2:SetOperation(c78474168.activate2)
 	c:RegisterEffect(e2)
@@ -53,10 +53,6 @@ function c78474168.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c78474168.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return aux.exccon(e) and Duel.GetTurnPlayer()==tp
-end
-function c78474168.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c78474168.activate2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

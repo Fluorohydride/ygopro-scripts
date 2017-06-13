@@ -29,7 +29,7 @@ function c68819554.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetCountLimit(1,68819554)
-	e3:SetCost(c68819554.thcost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c68819554.thtg)
 	e3:SetOperation(c68819554.thop)
 	c:RegisterEffect(e3)
@@ -73,10 +73,6 @@ function c68819554.damval(e,re,val,r,rp,rc)
 	if Duel.GetFlagEffect(tp,68819554)==0 or bit.band(r,REASON_BATTLE)==0 then return val end
 	Duel.ResetFlagEffect(tp,68819554)
 	return 0
-end
-function c68819554.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c68819554.thfilter(c)
 	return c:IsSetCard(0xc6) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand() and not c:IsCode(68819554)

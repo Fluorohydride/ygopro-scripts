@@ -17,7 +17,7 @@ function c75214390.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCondition(aux.exccon)
-	e2:SetCost(c75214390.atkcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c75214390.atktg)
 	e2:SetOperation(c75214390.atkop)
 	c:RegisterEffect(e2)
@@ -30,10 +30,6 @@ function c75214390.spcon(e,c)
 	local tp=c:GetControler()
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c75214390.cfilter,tp,LOCATION_MZONE,0,1,nil)
-end
-function c75214390.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c75214390.filter(c)
 	return c:IsFaceup() and c:GetOverlayCount()>0

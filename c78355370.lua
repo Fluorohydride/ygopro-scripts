@@ -21,7 +21,7 @@ function c78355370.initial_effect(c)
 	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCondition(c78355370.spcon2)
-	e2:SetCost(c78355370.spcost2)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c78355370.sptg2)
 	e2:SetOperation(c78355370.spop2)
 	c:RegisterEffect(e2)
@@ -50,10 +50,6 @@ function c78355370.spop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c78355370.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():GetControler()~=tp
-end
-function c78355370.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c78355370.spfilter2(c,e,tp)
 	return c:IsSetCard(0xa4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsType(TYPE_MONSTER)

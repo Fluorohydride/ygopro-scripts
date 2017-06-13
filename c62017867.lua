@@ -16,7 +16,7 @@ function c62017867.initial_effect(c)
 	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCondition(c62017867.atkcon)
-	e2:SetCost(c62017867.atkcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c62017867.atktg)
 	e2:SetOperation(c62017867.atkop)
 	c:RegisterEffect(e2)
@@ -33,10 +33,6 @@ function c62017867.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c62017867.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
-end
-function c62017867.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c62017867.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,1) end

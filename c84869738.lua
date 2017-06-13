@@ -15,7 +15,7 @@ function c84869738.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c84869738.matcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c84869738.mattg)
 	e2:SetOperation(c84869738.matop)
 	c:RegisterEffect(e2)
@@ -86,10 +86,6 @@ function c84869738.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc=rg:GetNext()
 	end
 	Duel.SpecialSummonComplete()
-end
-function c84869738.matcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c84869738.xyzfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x20f8) and c:IsType(TYPE_XYZ)

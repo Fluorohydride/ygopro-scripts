@@ -18,7 +18,7 @@ function c88482761.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetCondition(c88482761.atkcon)
-	e2:SetCost(c88482761.atkcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c88482761.atktg)
 	e2:SetOperation(c88482761.atkop)
 	c:RegisterEffect(e2)
@@ -65,10 +65,6 @@ function c88482761.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c88482761.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and Duel.GetCurrentPhase()==PHASE_BATTLE_STEP
-end
-function c88482761.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c88482761.atkfilter(c)
 	return c:IsType(TYPE_SYNCHRO) and c:IsPosition(POS_FACEUP_ATTACK)

@@ -7,7 +7,7 @@ function c95360850.initial_effect(c)
 	e1:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCondition(c95360850.atkcon)
-	e1:SetCost(c95360850.atkcost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetOperation(c95360850.atkop)
 	c:RegisterEffect(e1)
 end
@@ -16,10 +16,6 @@ function c95360850.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsControler(1-tp) then tc=Duel.GetAttackTarget() end
 	e:SetLabelObject(tc)
 	return tc and tc:IsControler(tp)
-end
-function c95360850.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c95360850.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

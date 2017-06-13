@@ -19,7 +19,7 @@ function c5133471.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCountLimit(1,5133471)
 	e2:SetCondition(aux.exccon)
-	e2:SetCost(c5133471.descost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c5133471.destg)
 	e2:SetOperation(c5133471.activate)
 	c:RegisterEffect(e2)
@@ -39,10 +39,6 @@ function c5133471.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
-end
-function c5133471.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c5133471.filter2(c)
 	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP)

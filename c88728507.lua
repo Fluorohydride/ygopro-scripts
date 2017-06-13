@@ -16,7 +16,7 @@ function c88728507.initial_effect(c)
 	e2:SetDescription(aux.Stringid(88728507,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c88728507.sumcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetOperation(c88728507.sumop)
 	c:RegisterEffect(e2)
 end
@@ -37,10 +37,6 @@ function c88728507.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end
-end
-function c88728507.sumcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c88728507.sumop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(tp,88728507)==0 then

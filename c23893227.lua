@@ -18,7 +18,7 @@ function c23893227.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,23893227)
 	e2:SetCondition(c23893227.spcon)
-	e2:SetCost(c23893227.spcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c23893227.sptg)
 	e2:SetOperation(c23893227.spop)
 	c:RegisterEffect(e2)
@@ -48,10 +48,6 @@ function c23893227.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c23893227.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0 and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
-end
-function c23893227.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c23893227.spfilter(c,e,tp)
 	return c:IsSetCard(0x1093) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

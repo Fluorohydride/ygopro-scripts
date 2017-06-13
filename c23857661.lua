@@ -14,9 +14,9 @@ function c23857661.cfilter(c)
 	return c:IsSetCard(0x88) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
 end
 function c23857661.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost()
+	if chk==0 then return aux.bfgcost(e,tp,eg,ep,ev,re,r,rp,0)
 		and Duel.IsExistingMatchingCard(c23857661.cfilter,tp,LOCATION_HAND,0,1,nil) end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
+	aux.bfgcost(e,tp,eg,ep,ev,re,r,rp,1)
 	Duel.DiscardHand(tp,c23857661.cfilter,1,1,REASON_COST)
 end
 function c23857661.operation(e,tp,eg,ep,ev,re,r,rp)

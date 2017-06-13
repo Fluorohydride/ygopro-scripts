@@ -8,7 +8,7 @@ function c72413000.initial_effect(c)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCountLimit(1,72413000)
 	e1:SetCondition(c72413000.condition)
-	e1:SetCost(c72413000.cost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetTarget(c72413000.target)
 	e1:SetOperation(c72413000.operation)
 	c:RegisterEffect(e1)
@@ -18,10 +18,6 @@ function c72413000.cfilter(c)
 end
 function c72413000.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c72413000.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
-end
-function c72413000.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c72413000.filter(c)
 	return c:IsSetCard(0xa9) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()

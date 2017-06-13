@@ -16,7 +16,7 @@ function c5795980.initial_effect(c)
 	e2:SetDescription(aux.Stringid(5795980,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c5795980.atcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c5795980.attg)
 	e2:SetOperation(c5795980.atop)
 	c:RegisterEffect(e2)
@@ -93,10 +93,6 @@ function c5795980.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end
-end
-function c5795980.atcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c5795980.attg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end

@@ -18,7 +18,7 @@ function c7922915.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(0,0x1c0)
 	e2:SetCondition(c7922915.negcon)
-	e2:SetCost(c7922915.negcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c7922915.negtg)
 	e2:SetOperation(c7922915.negop)
 	c:RegisterEffect(e2)
@@ -56,10 +56,6 @@ function c7922915.cfilter(c)
 end
 function c7922915.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return aux.exccon(e) and Duel.IsExistingMatchingCard(c7922915.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
-end
-function c7922915.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c7922915.negfilter(c)
 	return aux.disfilter1(c) and c:IsType(TYPE_SPELL+TYPE_TRAP)

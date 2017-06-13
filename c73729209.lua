@@ -22,7 +22,7 @@ function c73729209.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(TIMING_DAMAGE_STEP)
 	e2:SetCondition(c73729209.atkcon)
-	e2:SetCost(c73729209.atkcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c73729209.target)
 	e2:SetOperation(c73729209.activate)
 	e2:SetLabel(800)
@@ -50,8 +50,4 @@ function c73729209.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c73729209.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return aux.exccon(e) and Duel.GetTurnPlayer()==tp and (Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
-end
-function c73729209.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end

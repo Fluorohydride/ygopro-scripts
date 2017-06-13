@@ -17,7 +17,7 @@ function c99274184.initial_effect(c)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCondition(c99274184.discon)
-	e2:SetCost(c99274184.discost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c99274184.distg)
 	e2:SetOperation(c99274184.disop)
 	c:RegisterEffect(e2)
@@ -59,10 +59,6 @@ function c99274184.discon(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	return tg and tg:IsExists(c99274184.tgfilter,1,nil,tp) and Duel.IsChainDisablable(ev)
 		and aux.exccon(e,tp,eg,ep,ev,re,r,rp)
-end
-function c99274184.discost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c99274184.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

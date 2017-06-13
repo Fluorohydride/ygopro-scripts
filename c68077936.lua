@@ -18,7 +18,7 @@ function c68077936.initial_effect(c)
 	e2:SetCode(EVENT_DESTROYED)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCondition(c68077936.descon)
-	e2:SetCost(c68077936.cost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c68077936.target)
 	e2:SetOperation(c68077936.activate)
 	c:RegisterEffect(e2)
@@ -44,8 +44,4 @@ function c68077936.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c68077936.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c68077936.cfilter,1,nil,tp) and re and re:IsActiveType(TYPE_SPELL) and aux.exccon(e)
-end
-function c68077936.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end

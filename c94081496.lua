@@ -8,14 +8,10 @@ function c94081496.initial_effect(c)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_GRAVE)
-	e1:SetCost(c94081496.cost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetTarget(c94081496.target)
 	e1:SetOperation(c94081496.operation)
 	c:RegisterEffect(e1)
-end
-function c94081496.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c94081496.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tc=eg:GetFirst()

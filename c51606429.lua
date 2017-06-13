@@ -18,7 +18,7 @@ function c51606429.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCondition(c51606429.negcon)
-	e2:SetCost(c51606429.negcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c51606429.negtg)
 	e2:SetOperation(c51606429.negop)
 	c:RegisterEffect(e2)
@@ -48,10 +48,6 @@ function c51606429.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c51606429.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return aux.exccon(e) and Duel.GetTurnPlayer()==tp
-end
-function c51606429.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c51606429.negfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_TRAP) and not c:IsDisabled()

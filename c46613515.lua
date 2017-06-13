@@ -22,7 +22,7 @@ function c46613515.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,46613515)
 	e2:SetCondition(c46613515.drcon)
-	e2:SetCost(c46613515.drcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c46613515.drtg)
 	e2:SetOperation(c46613515.drop)
 	c:RegisterEffect(e2)
@@ -44,10 +44,6 @@ function c46613515.negop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c46613515.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
-end
-function c46613515.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c46613515.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end

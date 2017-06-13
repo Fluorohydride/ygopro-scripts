@@ -18,7 +18,7 @@ function c83443619.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,83443619)
-	e2:SetCost(c83443619.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c83443619.thtg)
 	e2:SetOperation(c83443619.thop)
 	c:RegisterEffect(e2)
@@ -66,10 +66,6 @@ function c83443619.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c83443619.splimit(e,c)
 	return not (c:IsRace(RACE_MACHINE) and c:IsType(TYPE_SYNCHRO)) and c:IsLocation(LOCATION_EXTRA)
-end
-function c83443619.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c83443619.thfilter(c)
 	return c:IsSetCard(0xea) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()

@@ -15,7 +15,7 @@ function c45206713.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,45206714)
-	e2:SetCost(c45206713.spcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c45206713.sptg)
 	e2:SetOperation(c45206713.spop)
 	c:RegisterEffect(e2)
@@ -81,10 +81,6 @@ function c45206713.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:CompleteProcedure()
 	end
-end
-function c45206713.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c45206713.spfilter(c,e,tp)
 	return c:IsSetCard(0xaf) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

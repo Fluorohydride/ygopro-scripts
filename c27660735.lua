@@ -8,16 +8,12 @@ function c27660735.initial_effect(c)
 	e1:SetHintTiming(0,TIMING_ATTACK)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCondition(c27660735.condition)
-	e1:SetCost(c27660735.cost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetOperation(c27660735.operation)
 	c:RegisterEffect(e1)
 end
 function c27660735.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and (Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE))
-end
-function c27660735.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c27660735.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetAttacker() then Duel.NegateAttack()

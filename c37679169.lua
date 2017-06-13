@@ -63,9 +63,8 @@ function c37679169.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsReason(REASON_DESTROY) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function c37679169.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	if chk==0 then return c:IsAbleToRemoveAsCost() and c:IsLocation(LOCATION_GRAVE) end
-	Duel.Remove(c,POS_FACEUP,REASON_COST)
+	if chk==0 then return aux.bfgcost(e,tp,eg,ep,ev,re,r,rp,0) and e:GetHandler():IsLocation(LOCATION_GRAVE) end
+	aux.bfgcost(e,tp,eg,ep,ev,re,r,rp,1)
 end
 function c37679169.spfilter(c,e,tp)
 	return c:IsSetCard(0xd2) and c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

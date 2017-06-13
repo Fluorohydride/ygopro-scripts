@@ -16,7 +16,7 @@ function c55326322.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,55326322)
-	e2:SetCost(c55326322.tkcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c55326322.tktg)
 	e2:SetOperation(c55326322.tkop)
 	c:RegisterEffect(e2)
@@ -64,10 +64,6 @@ function c55326322.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c55326322.splimit(e,c)
 	return not (c:IsRace(RACE_MACHINE) and c:IsType(TYPE_SYNCHRO)) and c:IsLocation(LOCATION_EXTRA)
-end
-function c55326322.tkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c55326322.tktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
