@@ -41,18 +41,18 @@ function c48948935.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local rg=Duel.GetReleaseGroup(tp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=rg:FilterSelect(tp,c48948935.spfilter,1,1,nil,rg,ft,tp)
-	local tc=g:GetFirst()
+	local g1=rg:FilterSelect(tp,c48948935.spfilter,1,1,nil,rg,ft,tp)
+	local tc=g1:GetFirst()
 	if tc:IsControler(tp) and tc:GetSequence()<5 then ft=ft+1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	if ft>0 then
-		local g2=g:Select(tp,1,1,tc)
-		g:Merge(g2)
+		local g2=rg:Select(tp,1,1,tc)
+		g1:Merge(g2)
 	else
-		local g2=g:FilterSelect(tp,c48948935.mzfilter,1,1,tc,tp)
-		g:Merge(g2)
+		local g2=rg:FilterSelect(tp,c48948935.mzfilter,1,1,tc,tp)
+		g1:Merge(g2)
 	end
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g1,REASON_COST)
 end
 function c48948935.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
