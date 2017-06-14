@@ -59,7 +59,7 @@ function c17745969.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c17745969.mvfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x16) and c:IsAbleToHand() and c:GetSequence()<4
+	return c:IsFaceup() and c:IsSetCard(0x16) and c:IsAbleToHand() and c:GetSequence()<5
 end
 function c17745969.mvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c17745969.mvfilter(chkc) end
