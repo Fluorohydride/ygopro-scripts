@@ -11,7 +11,7 @@ function c80352158.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c80352158.filter(c,e,tp)
-	return c:IsRace(RACE_MACHINE+RACE_ROCK) and not c:IsSummonableCard()
+	return c:IsFaceup() and c:IsRace(RACE_MACHINE+RACE_ROCK) and not c:IsSummonableCard()
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c80352158.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
