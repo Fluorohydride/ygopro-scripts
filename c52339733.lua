@@ -13,6 +13,7 @@ function c52339733.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	return d and a:GetControler()~=d:GetControler()
+		and a:IsDefenseAbove(0) and d:IsDefenseAbove(0)
 end
 function c52339733.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
