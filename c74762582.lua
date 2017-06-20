@@ -46,10 +46,15 @@ function c74762582.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 end
 function c74762582.disop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetFirstTarget()
-	if Duel.NegateActivation(ev) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
-		Duel.BreakEffect()
-		Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
+	if Duel.NegateActivation(ev) then
+		if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
+			Duel.SendtoGrave(eg,REASON_EFFECT)
+		end
+		local tc=Duel.GetFirstTarget()
+		if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+			Duel.BreakEffect()
+			Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
+		end
 	end
 end
 function c74762582.posfilter(c)
