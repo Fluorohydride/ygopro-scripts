@@ -20,7 +20,7 @@ function c62473983.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c62473983.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return c:IsSummonType(SUMMON_TYPE_ADVANCE)
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c62473983.filter(c,e,tp)
 	return c:IsSetCard(0x2e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
