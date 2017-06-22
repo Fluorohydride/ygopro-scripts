@@ -23,8 +23,8 @@ function c82293134.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c82293134.descon(e,tp,eg,ep,ev,re,r,rp)
-	return c:IsSummonType(SUMMON_TYPE_NORMAL)
-		and e:GetHandler():GetTurnID()==Duel.GetTurnCount()
+	local c=e:GetHandler()
+	return c:IsSummonType(SUMMON_TYPE_NORMAL) and c:GetTurnID()==Duel.GetTurnCount()
 end
 function c82293134.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
