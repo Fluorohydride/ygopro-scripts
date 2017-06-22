@@ -66,21 +66,24 @@ end
 function c19619755.splimit(e,c,tp,sumtp,sumpos)
 	return bit.band(sumtp,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM and not c:IsLocation(LOCATION_EXTRA)
 end
+function c19619755.countfilter(c)
+	return c:IsFacedown() and c:GetSequence()<5
+end
 function c19619755.atktg(e,c)
 	local tp=c:GetControler()
-	return Duel.GetMatchingGroupCount(Card.IsFacedown,tp,LOCATION_SZONE,0,nil)==0
+	return Duel.GetMatchingGroupCount(c19619755.countfilter,tp,LOCATION_SZONE,0,nil)==0
 end
 function c19619755.limval(e,re,rp)
 	local rc=re:GetHandler()
 	local tp=rc:GetControler()
 	return rc:IsLocation(LOCATION_MZONE) and re:IsActiveType(TYPE_MONSTER) and not rc:IsImmuneToEffect(e)
-		and Duel.GetMatchingGroupCount(Card.IsFacedown,tp,LOCATION_SZONE,0,nil)==0
+		and Duel.GetMatchingGroupCount(c19619755.countfilter,tp,LOCATION_SZONE,0,nil)==0
 end
 function c19619755.atkcon0(e)
-	return Duel.GetMatchingGroupCount(Card.IsFacedown,e:GetHandlerPlayer(),LOCATION_SZONE,0,nil)>=4
+	return Duel.GetMatchingGroupCount(c19619755.countfilter,e:GetHandlerPlayer(),LOCATION_SZONE,0,nil)>=4
 end
 function c19619755.atkcon1(e)
-	return Duel.GetMatchingGroupCount(Card.IsFacedown,e:GetHandlerPlayer(),0,LOCATION_SZONE,nil)>=4
+	return Duel.GetMatchingGroupCount(c19619755.countfilter,e:GetHandlerPlayer(),0,LOCATION_SZONE,nil)>=4
 end
 function c19619755.atkval(e,c)
 	return c:GetBaseAttack()*2
