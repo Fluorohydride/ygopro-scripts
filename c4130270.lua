@@ -14,5 +14,5 @@ function c4130270.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c4130270.etarget(e,c)
-	return bit.band(c:GetOriginalType(),TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)~=0
+	return bit.band(c:GetOriginalType(),TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK)~=0
 end
