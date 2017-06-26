@@ -1,7 +1,7 @@
 --デコード・トーカー
 function c1861629.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsType,TYPE_EFFECT),2)
+	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),2)
 	c:EnableReviveLimit()
 	--atk
 	local e1=Effect.CreateEffect(c)
