@@ -47,7 +47,7 @@ function c65305468.initial_effect(c)
 end
 c65305468.xyz_number=0
 function c65305468.mfilter(c,xyzc)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ) and not c:IsSetCard(0x48) and c:IsCanBeXyzMaterial(xyzc)
+	return c:IsFaceup() and c:IsXyzType(TYPE_XYZ) and not c:IsSetCard(0x48) and c:IsCanBeXyzMaterial(xyzc)
 end
 function c65305468.xyzfilter1(c,g)
 	return g:IsExists(c65305468.xyzfilter2,1,c,c:GetRank())

@@ -57,7 +57,7 @@ function c52653092.ovfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x107f)
 end
 function c52653092.mfilter(c,xyzc)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsSetCard(0x48) and c:IsCanBeXyzMaterial(xyzc)
+	return c:IsFaceup() and c:IsXyzType(TYPE_XYZ) and c:IsSetCard(0x48) and c:IsCanBeXyzMaterial(xyzc)
 end
 function c52653092.xyzfilter1(c,g)
 	return g:IsExists(c52653092.xyzfilter2,2,c,c:GetRank())

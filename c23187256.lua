@@ -36,7 +36,7 @@ function c23187256.initial_effect(c)
 end
 c23187256.xyz_number=93
 function c23187256.mfilter(c,xyzc)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsSetCard(0x48) and c:GetOverlayCount()>0 and c:IsCanBeXyzMaterial(xyzc)
+	return c:IsFaceup() and c:IsXyzType(TYPE_XYZ) and c:IsSetCard(0x48) and c:GetOverlayCount()>0 and c:IsCanBeXyzMaterial(xyzc)
 end
 function c23187256.xyzfilter1(c,g,ct)
 	return g:IsExists(c23187256.xyzfilter2,ct,c,c:GetRank())

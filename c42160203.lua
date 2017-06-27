@@ -28,7 +28,7 @@ function c42160203.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c42160203.matfilter(c)
-	return c:IsType(TYPE_PENDULUM) and c:IsAttribute(ATTRIBUTE_DARK)
+	return c:IsXyzType(TYPE_PENDULUM) and c:IsAttribute(ATTRIBUTE_DARK)
 end
 function c42160203.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
