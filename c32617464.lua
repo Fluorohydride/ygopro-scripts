@@ -55,7 +55,7 @@ function c32617464.initial_effect(c)
 	end
 end
 function c32617464.matfilter(c)
-	return not c:IsType(TYPE_TOKEN)
+	return not c:IsLinkType(TYPE_TOKEN)
 end
 function c32617464.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local lg=e:GetHandler():GetMutualLinkedGroup()

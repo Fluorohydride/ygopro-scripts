@@ -46,7 +46,7 @@ function c79016563.initial_effect(c)
 	end
 end
 function c79016563.matfilter(c)
-	return not c:IsType(TYPE_TOKEN)
+	return not c:IsLinkType(TYPE_TOKEN)
 end
 function c79016563.reccon(e,tp,eg,ep,ev,re,r,rp)
 	local lg=e:GetHandler():GetMutualLinkedGroup()
