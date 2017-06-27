@@ -49,11 +49,11 @@ function c77610772.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c77610772.linkfilter1(c,lc,tp)
-	return c:IsFaceup() and Duel.IsExistingMatchingCard(c77610772.linkfilter2,tp,LOCATION_MZONE,0,1,c,lc,c,tp)
+	return c:IsFaceup() and c:IsCanBeLinkMaterial(lc) and Duel.IsExistingMatchingCard(c77610772.linkfilter2,tp,LOCATION_MZONE,0,1,c,lc,c,tp)
 end
 function c77610772.linkfilter2(c,lc,mc,tp)
 	local mg=Group.FromCards(c,mc)
-	return c:IsFaceup() and not c:IsRace(mc:GetRace()) and not c:IsAttribute(mc:GetAttribute()) and Duel.GetLocationCountFromEx(tp,tp,mg,lc)>0
+	return c:IsFaceup() and c:IsCanBeLinkMaterial(lc) and not c:IsRace(mc:GetRace()) and not c:IsAttribute(mc:GetAttribute()) and Duel.GetLocationCountFromEx(tp,tp,mg,lc)>0
 end
 function c77610772.linkcon(e,c)
 	if c==nil then return true end

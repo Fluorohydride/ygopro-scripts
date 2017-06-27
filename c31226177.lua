@@ -33,7 +33,7 @@ function c31226177.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c31226177.matfilter(c)
-	return c:IsType(TYPE_NORMAL) and not c:IsType(TYPE_TOKEN)
+	return c:IsLinkType(TYPE_NORMAL) and not c:IsLinkType(TYPE_TOKEN)
 end
 function c31226177.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
