@@ -31,7 +31,7 @@ function c47349116.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c47349116.matfilter(c)
-	return c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM)
+	return c:IsSetCard(0x98) and c:IsXyzType(TYPE_PENDULUM)
 end
 function c47349116.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA) or (bit.band(st,SUMMON_TYPE_XYZ)==SUMMON_TYPE_XYZ and not se)

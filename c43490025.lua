@@ -42,7 +42,7 @@ function c43490025.ovfilter(c,xyzc)
 	return c:IsFaceup() and (c:IsSetCard(0x107f) or c:IsCode(65305468)) and c:IsCanBeXyzMaterial(xyzc)
 end
 function c43490025.mfilter(c,xyzc)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ) and not c:IsSetCard(0x48) and c:IsCanBeXyzMaterial(xyzc)
+	return c:IsFaceup() and c:IsXyzType(TYPE_XYZ) and not c:IsSetCard(0x48) and c:IsCanBeXyzMaterial(xyzc)
 end
 function c43490025.xyzfilter1(c,g)
 	return g:IsExists(c43490025.xyzfilter2,1,c,c:GetRank())
