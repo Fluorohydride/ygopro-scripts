@@ -39,8 +39,9 @@ function c48444114.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c48444114.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.bfgcost(e,tp,eg,ep,ev,re,r,rp,0) and Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
-	aux.bfgcost(e,tp,eg,ep,ev,re,r,rp,1)
+	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost()
+		and Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
+	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
 function c48444114.filter2(c)

@@ -65,8 +65,8 @@ function c27107590.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c27107590.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.GetActivityCount(tp,ACTIVITY_SPSUMMON)==0 and aux.bfgcost(e,tp,eg,ep,ev,re,r,rp,0) end
-	aux.bfgcost(e,tp,eg,ep,ev,re,r,rp,1)
+	if chk==0 then return Duel.GetActivityCount(tp,ACTIVITY_SPSUMMON)==0 and c:IsAbleToRemoveAsCost() end
+	Duel.Remove(c,POS_FACEUP,REASON_COST)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
