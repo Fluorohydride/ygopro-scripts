@@ -17,7 +17,7 @@ function c60832978.initial_effect(c)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetCountLimit(1,60832978)
-	e3:SetCost(c60832978.cost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c60832978.target2)
 	e3:SetOperation(c60832978.operation2)
 	c:RegisterEffect(e3)
@@ -42,10 +42,6 @@ function c60832978.operation1(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(TYPE_TUNER)
 		tc:RegisterEffect(e1)
 	end
-end
-function c60832978.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c60832978.filter2(c)
 	return c60832978.filter1(c) and c:IsRace(RACE_FIEND)

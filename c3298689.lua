@@ -16,7 +16,7 @@ function c3298689.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c3298689.matcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c3298689.mattg)
 	e2:SetOperation(c3298689.matop)
 	c:RegisterEffect(e2)
@@ -64,10 +64,6 @@ function c3298689.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Overlay(sc,Group.FromCards(c))
 		end
 	end
-end
-function c3298689.matcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c3298689.xyzfilter(c)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_DARK) and c:IsType(TYPE_XYZ)

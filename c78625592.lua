@@ -26,7 +26,7 @@ function c78625592.initial_effect(c)
 	e3:SetHintTiming(0,TIMING_ATTACK)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetCondition(c78625592.grcondition)
-	e3:SetCost(c78625592.grcost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetOperation(c78625592.groperation)
 	c:RegisterEffect(e3)
 end
@@ -54,10 +54,6 @@ function c78625592.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c78625592.grcondition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and (Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE))
-end
-function c78625592.grcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c78625592.groperation(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

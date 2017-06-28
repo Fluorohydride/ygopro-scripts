@@ -17,7 +17,7 @@ function c99330325.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCondition(aux.exccon)
-	e2:SetCost(c99330325.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c99330325.thtg)
 	e2:SetOperation(c99330325.thop)
 	c:RegisterEffect(e2)
@@ -78,10 +78,6 @@ function c99330325.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc2:RegisterEffect(e4)
 		Duel.SpecialSummonComplete()
 	end
-end
-function c99330325.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c99330325.thfilter(c)
 	return c:IsSetCard(0xd3) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

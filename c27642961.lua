@@ -25,7 +25,7 @@ function c27642961.initial_effect(c)
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_GRAVE)
-	e3:SetCost(c27642961.spcost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c27642961.sptg)
 	e3:SetOperation(c27642961.spop)
 	c:RegisterEffect(e3)
@@ -82,10 +82,6 @@ end
 function c27642961.drop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Draw(p,d,REASON_EFFECT)
-end
-function c27642961.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c27642961.spfilter(c,e,tp)
 	return c:IsSetCard(0xee) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

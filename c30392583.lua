@@ -7,14 +7,10 @@ function c30392583.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCondition(aux.exccon)
-	e1:SetCost(c30392583.thcost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetTarget(c30392583.thtg)
 	e1:SetOperation(c30392583.thop)
 	c:RegisterEffect(e1)
-end
-function c30392583.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c30392583.thfilter(c)
 	return c:IsSetCard(0xcc) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

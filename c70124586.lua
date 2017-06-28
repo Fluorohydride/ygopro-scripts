@@ -22,7 +22,7 @@ function c70124586.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_GRAVE)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e4:SetCost(c70124586.cost)
+	e4:SetCost(aux.bfgcost)
 	e4:SetTarget(c70124586.target)
 	e4:SetOperation(c70124586.operation)
 	c:RegisterEffect(e4)
@@ -35,10 +35,6 @@ end
 function c70124586.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFacedown,tp,LOCATION_SZONE,LOCATION_SZONE,nil)
 	Duel.SendtoHand(g,nil,REASON_EFFECT)
-end
-function c70124586.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c70124586.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_SZONE) and chkc:IsFacedown() end

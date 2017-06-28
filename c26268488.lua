@@ -38,7 +38,7 @@ function c26268488.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_GRAVE)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e4:SetCost(c26268488.spcost)
+	e4:SetCost(aux.bfgcost)
 	e4:SetTarget(c26268488.sptg)
 	e4:SetOperation(c26268488.spop)
 	c:RegisterEffect(e4)
@@ -65,10 +65,6 @@ function c26268488.disop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.HintSelection(g)
 		Duel.Destroy(g,REASON_EFFECT)
 	end
-end
-function c26268488.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c26268488.spfilter(c,e,tp)
 	return c:IsSetCard(0xa3) and c:IsLevelBelow(8) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

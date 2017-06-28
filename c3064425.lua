@@ -19,7 +19,7 @@ function c3064425.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCondition(c3064425.negcon)
-	e2:SetCost(c3064425.negcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c3064425.negtg)
 	e2:SetOperation(c3064425.negop)
 	c:RegisterEffect(e2)
@@ -67,10 +67,6 @@ function c3064425.negcon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
 	return ep~=tp and Duel.IsChainNegatable(ev) and ph>PHASE_MAIN1 and ph<PHASE_MAIN2
 		and Duel.IsExistingMatchingCard(c3064425.cfilter,tp,LOCATION_MZONE,0,1,nil)
-end
-function c3064425.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c3064425.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

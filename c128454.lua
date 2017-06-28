@@ -8,14 +8,10 @@ function c128454.initial_effect(c)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCountLimit(1,128454)
-	e1:SetCost(c128454.thcost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetTarget(c128454.thtg)
 	e1:SetOperation(c128454.thop)
 	c:RegisterEffect(e1)
-end
-function c128454.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c128454.thfilter(c)
 	return ((c:IsLocation(LOCATION_PZONE) and (c:IsSetCard(0x9f) or c:IsSetCard(0x98)))

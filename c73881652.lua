@@ -17,7 +17,7 @@ function c73881652.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetCondition(aux.exccon)
-	e2:SetCost(c73881652.drcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c73881652.drtg)
 	e2:SetOperation(c73881652.drop)
 	c:RegisterEffect(e2)
@@ -44,10 +44,6 @@ function c73881652.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Overlay(tc,g)
 		end
 	end
-end
-function c73881652.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c73881652.drfilter(c,e)
 	return c:IsSetCard(0xf1) and c:IsAbleToDeck() and c:IsCanBeEffectTarget(e)

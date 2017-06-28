@@ -8,7 +8,7 @@ function c96427353.initial_effect(c)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCondition(c96427353.condition)
-	e1:SetCost(c96427353.cost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetTarget(c96427353.target)
 	e1:SetOperation(c96427353.operation)
 	c:RegisterEffect(e1)
@@ -19,10 +19,6 @@ end
 function c96427353.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and Duel.GetAttackTarget()==nil
 		and Duel.IsExistingMatchingCard(c96427353.cfilter,tp,LOCATION_GRAVE,0,1,e:GetHandler())
-end
-function c96427353.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c96427353.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.GetAttacker()

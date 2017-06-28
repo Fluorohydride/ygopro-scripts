@@ -17,7 +17,7 @@ function c44968459.initial_effect(c)
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c44968459.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c44968459.thtg)
 	e2:SetOperation(c44968459.thop)
 	c:RegisterEffect(e2)
@@ -49,10 +49,6 @@ function c44968459.activate(e,tp,eg,ep,ev,re,r,rp)
 	if ct2>0 then
 		Duel.Draw(1-tp,ct2,REASON_EFFECT)
 	end
-end
-function c44968459.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c44968459.thfilter(c)
 	return c:IsSetCard(0xe8) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

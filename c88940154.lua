@@ -9,7 +9,7 @@ function c88940154.initial_effect(c)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCountLimit(1,88940154)
 	e1:SetCondition(c88940154.descon)
-	e1:SetCost(c88940154.descost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetTarget(c88940154.destg)
 	e1:SetOperation(c88940154.desop)
 	c:RegisterEffect(e1)
@@ -19,10 +19,6 @@ function c88940154.cfilter(c)
 end
 function c88940154.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c88940154.cfilter,tp,LOCATION_MZONE,0,1,nil)
-end
-function c88940154.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c88940154.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

@@ -17,7 +17,7 @@ function c30786387.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,30786387)
 	e2:SetCondition(aux.exccon)
-	e2:SetCost(c30786387.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c30786387.thtg)
 	e2:SetOperation(c30786387.thop)
 	c:RegisterEffect(e2)
@@ -51,10 +51,6 @@ function c30786387.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		Duel.SortDecktop(tp,tp,3)
 	end
-end
-function c30786387.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c30786387.thfilter(c)
 	return c:IsSetCard(0xe6) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

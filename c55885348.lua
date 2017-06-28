@@ -29,7 +29,7 @@ function c55885348.initial_effect(c)
 	e4:SetCode(EVENT_TO_GRAVE)
 	e4:SetProperty(EFFECT_FLAG_DELAY)
 	e4:SetCondition(c55885348.spcon)
-	e4:SetCost(c55885348.spcost)
+	e4:SetCost(aux.bfgcost)
 	e4:SetTarget(c55885348.sptg)
 	e4:SetOperation(c55885348.spop)
 	c:RegisterEffect(e4)
@@ -50,10 +50,6 @@ end
 function c55885348.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsReason(REASON_DESTROY) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
-end
-function c55885348.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() and e:GetHandler():IsLocation(LOCATION_GRAVE) end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c55885348.spfilter(c,e,tp)
 	return c:IsSetCard(0xd2) and c:IsLevelBelow(7) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

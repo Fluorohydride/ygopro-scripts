@@ -20,7 +20,7 @@ function c82744076.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e2:SetCondition(c82744076.negcon)
-	e2:SetCost(c82744076.negcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c82744076.negtg)
 	e2:SetOperation(c82744076.negop)
 	c:RegisterEffect(e2)
@@ -74,10 +74,6 @@ function c82744076.negcon(e,tp,eg,ep,ev,re,r,rp)
 	if not g or g:GetCount()~=1 then return false end
 	local tc=g:GetFirst()
 	return c82744076.cfilter(tc,tp) and Duel.IsChainNegatable(ev)
-end
-function c82744076.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c82744076.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

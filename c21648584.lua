@@ -12,7 +12,7 @@ function c21648584.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetCondition(c21648584.damcon)
-	e2:SetCost(c21648584.damcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetOperation(c21648584.damop)
 	c:RegisterEffect(e2)
 end
@@ -34,10 +34,6 @@ function c21648584.cfilter(c)
 end
 function c21648584.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c21648584.cfilter,tp,LOCATION_GRAVE,0,1,nil)
-end
-function c21648584.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c21648584.damop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

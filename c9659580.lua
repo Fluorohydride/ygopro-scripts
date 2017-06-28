@@ -21,7 +21,7 @@ function c9659580.initial_effect(c)
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_GRAVE)
-	e3:SetCost(c9659580.thcost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c9659580.thtg)
 	e3:SetOperation(c9659580.thop)
 	c:RegisterEffect(e3)
@@ -78,10 +78,6 @@ function c9659580.lpop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and Duel.SendtoGrave(c,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_GRAVE) then
 		Duel.SetLP(1-tp,math.ceil(Duel.GetLP(1-tp)/2))
 	end
-end
-function c9659580.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c9659580.thfilter(c)
 	return c:IsSetCard(0xe3) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

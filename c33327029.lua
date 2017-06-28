@@ -17,7 +17,7 @@ function c33327029.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetCondition(aux.exccon)
-	e2:SetCost(c33327029.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c33327029.thtg)
 	e2:SetOperation(c33327029.thop)
 	c:RegisterEffect(e2)
@@ -63,10 +63,6 @@ function c33327029.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
-end
-function c33327029.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c33327029.thfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsSetCard(0xe1) and c:IsAbleToHand()

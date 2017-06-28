@@ -11,7 +11,7 @@ function c56574543.initial_effect(c)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCountLimit(1,56574543)
 	e1:SetCondition(c56574543.atkcon)
-	e1:SetCost(c56574543.atkcost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetOperation(c56574543.atkop)
 	c:RegisterEffect(e1)
 end
@@ -22,10 +22,6 @@ function c56574543.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	if not c then return false end
 	if c:IsControler(1-tp) then c=Duel.GetAttacker() end
 	return c and c:IsSetCard(0x88) and c:IsRace(RACE_BEASTWARRIOR) and c:IsRelateToBattle()
-end
-function c56574543.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c56574543.atkop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local a=Duel.GetAttacker()

@@ -19,16 +19,12 @@ function c12385638.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_GRAVE)
-	e3:SetCost(c12385638.cost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetOperation(c12385638.operation)
 	c:RegisterEffect(e3)
 end
 function c12385638.tdtg(e,c)
 	return c:IsSetCard(0xd2)
-end
-function c12385638.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c12385638.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

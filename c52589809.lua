@@ -15,7 +15,7 @@ function c52589809.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCondition(aux.exccon)
-	e2:SetCost(c52589809.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c52589809.thtg)
 	e2:SetOperation(c52589809.thop)
 	c:RegisterEffect(e2)
@@ -41,10 +41,6 @@ function c52589809.spop(e,tp,eg,ep,ev,re,r,rp,c)
 end
 function c52589809.splimit(e,c)
 	return not c:IsType(TYPE_SYNCHRO) and c:IsLocation(LOCATION_EXTRA)
-end
-function c52589809.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c52589809.thfilter(c)
 	return c:IsAttackBelow(1500) and c:IsRace(RACE_FIEND) and c:IsType(TYPE_TUNER) and c:IsAbleToHand()

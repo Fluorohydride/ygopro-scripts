@@ -19,7 +19,7 @@ function c36736723.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCountLimit(1,36736724)
-	e2:SetCost(c36736723.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c36736723.thtg)
 	e2:SetOperation(c36736723.thop)
 	c:RegisterEffect(e2)
@@ -45,10 +45,6 @@ function c36736723.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(tc:GetAttack()*2)
 		tc:RegisterEffect(e1)
 	end
-end
-function c36736723.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c36736723.filter(c)
 	return c:IsSetCard(0x1017) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

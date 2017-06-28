@@ -16,7 +16,7 @@ function c32104431.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(0,0x1c0)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c32104431.fusioncost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c32104431.fusiontg)
 	e2:SetOperation(c32104431.fusionop)
 	c:RegisterEffect(e2)
@@ -43,10 +43,6 @@ function c32104431.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
-end
-function c32104431.fusioncost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c32104431.filter0(c)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()

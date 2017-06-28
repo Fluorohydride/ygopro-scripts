@@ -16,7 +16,7 @@ function c15155568.initial_effect(c)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCondition(c15155568.discon)
-	e2:SetCost(c15155568.discost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c15155568.distg)
 	e2:SetOperation(c15155568.disop)
 	c:RegisterEffect(e2)
@@ -43,10 +43,6 @@ function c15155568.discon(e,tp,eg,ep,ev,re,r,rp)
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return false end
 	local tg=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	return tg and tg:IsExists(c15155568.tgfilter,1,nil,tp) and Duel.IsChainDisablable(ev)
-end
-function c15155568.discost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c15155568.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

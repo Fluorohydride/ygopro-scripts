@@ -16,7 +16,7 @@ function c33280639.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c33280639.immcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetOperation(c33280639.immop)
 	c:RegisterEffect(e2)
 end
@@ -76,10 +76,6 @@ end
 function c33280639.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	Duel.Destroy(tc,REASON_EFFECT)
-end
-function c33280639.immcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c33280639.immop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

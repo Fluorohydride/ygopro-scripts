@@ -16,7 +16,7 @@ function c15981690.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,15981690)
-	e2:SetCost(c15981690.spcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c15981690.sptg)
 	e2:SetOperation(c15981690.spop)
 	c:RegisterEffect(e2)
@@ -36,10 +36,6 @@ function c15981690.upop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(1000)
 		c:RegisterEffect(e1)
 	end
-end
-function c15981690.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c15981690.spfilter(c,e,tp)
 	return c:IsType(TYPE_NORMAL) and c:IsLevelBelow(7) and c:IsRace(RACE_DRAGON) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

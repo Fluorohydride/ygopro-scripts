@@ -21,7 +21,7 @@ function c27978707.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,27978708)
 	e2:SetCondition(c27978707.negcon)
-	e2:SetCost(c27978707.negcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c27978707.negtg)
 	e2:SetOperation(c27978707.negop)
 	c:RegisterEffect(e2)
@@ -53,10 +53,6 @@ function c27978707.negcon(e,tp,eg,ep,ev,re,r,rp)
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return false end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	return g and g:IsExists(c27978707.negfilter,1,nil,tp) and Duel.IsChainNegatable(ev)
-end
-function c27978707.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c27978707.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

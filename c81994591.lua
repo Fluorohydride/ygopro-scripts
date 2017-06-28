@@ -14,7 +14,7 @@ function c81994591.initial_effect(c)
 	e2:SetDescription(aux.Stringid(81994591,1))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c81994591.indcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetOperation(c81994591.indop)
 	c:RegisterEffect(e2)
 end
@@ -32,10 +32,6 @@ function c81994591.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end
-end
-function c81994591.indcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c81994591.indop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

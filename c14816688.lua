@@ -19,7 +19,7 @@ function c14816688.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,14816688)
-	e2:SetCost(c14816688.tdcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c14816688.tdtg)
 	e2:SetOperation(c14816688.tdop)
 	c:RegisterEffect(e2)
@@ -77,10 +77,6 @@ function c14816688.rmcon1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c14816688.rmop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Remove(e:GetLabelObject(),POS_FACEUP,REASON_EFFECT)
-end
-function c14816688.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c14816688.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and chkc:IsAbleToHand() end

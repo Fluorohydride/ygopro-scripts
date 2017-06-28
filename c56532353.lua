@@ -20,7 +20,7 @@ function c56532353.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e2:SetCondition(c56532353.condition)
-	e2:SetCost(c56532353.cost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c56532353.target)
 	e2:SetOperation(c56532353.operation)
 	c:RegisterEffect(e2)
@@ -51,10 +51,6 @@ function c56532353.condition(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	return g and g:IsExists(c56532353.filter,1,nil,tp)
 		and Duel.IsChainNegatable(ev)
-end
-function c56532353.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c56532353.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

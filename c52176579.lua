@@ -17,7 +17,7 @@ function c52176579.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,52176579)
 	e2:SetCondition(aux.exccon)
-	e2:SetCost(c52176579.lvcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c52176579.lvtg)
 	e2:SetOperation(c52176579.lvop)
 	c:RegisterEffect(e2)
@@ -51,10 +51,6 @@ function c52176579.lvfilter(c,tp)
 end
 function c52176579.tgfilter(c,lv)
 	return c:IsSetCard(0xea) and c:GetLevel()~=lv and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
-end
-function c52176579.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c52176579.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c52176579.lvfilter(chkc,tp) end

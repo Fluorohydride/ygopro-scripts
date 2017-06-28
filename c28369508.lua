@@ -26,7 +26,7 @@ function c28369508.initial_effect(c)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetHintTiming(TIMING_BATTLE_PHASE,0x1e0+TIMING_BATTLE_PHASE)
-	e3:SetCost(c28369508.poscost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c28369508.postg)
 	e3:SetOperation(c28369508.posop)
 	c:RegisterEffect(e3)
@@ -77,10 +77,6 @@ function c28369508.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end
-end
-function c28369508.poscost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c28369508.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0xed) and c:IsCanTurnSet()

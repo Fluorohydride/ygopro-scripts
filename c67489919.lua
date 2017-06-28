@@ -19,7 +19,7 @@ function c67489919.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetCondition(c67489919.spcon)
-	e3:SetCost(c67489919.spcost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c67489919.sptg)
 	e3:SetOperation(c67489919.spop)
 	c:RegisterEffect(e3)
@@ -44,10 +44,6 @@ end
 function c67489919.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
 		and	Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0
-end
-function c67489919.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_EFFECT)
 end
 function c67489919.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

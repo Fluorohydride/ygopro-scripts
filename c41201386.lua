@@ -61,7 +61,7 @@ function c41201386.cfilter(c)
 	return c:IsSetCard(0xba) and c:IsAbleToRemoveAsCost()
 end
 function c41201386.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost()
+	if chk==0 then return aux.bfgcost(e,tp,eg,ep,ev,re,r,rp,0)
 		and Duel.IsExistingMatchingCard(c41201386.cfilter,tp,LOCATION_HAND,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c41201386.cfilter,tp,LOCATION_HAND,0,1,1,nil)

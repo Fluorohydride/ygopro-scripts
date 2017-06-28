@@ -11,7 +11,7 @@ function c95448692.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c95448692.cost2)
+	e2:SetCost(aux.bfgcost)
 	e2:SetOperation(c95448692.activate2)
 	c:RegisterEffect(e2)
 end
@@ -29,10 +29,6 @@ function c95448692.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_PHASE+PHASE_END,1)
 	Duel.RegisterEffect(e1,tp)
 	Duel.RegisterFlagEffect(tp,95448692,RESET_PHASE+PHASE_END,0,1)
-end
-function c95448692.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_EFFECT)
 end
 function c95448692.activate2(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(tp,95448692)~=0 then return end

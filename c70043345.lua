@@ -25,7 +25,7 @@ function c70043345.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_GRAVE)
-	e3:SetCost(c70043345.thcost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c70043345.thtg)
 	e3:SetOperation(c70043345.thop)
 	c:RegisterEffect(e3)
@@ -87,10 +87,6 @@ function c70043345.retop(e,tp,eg,ep,ev,re,r,rp)
 	if ct==2 then
 		Duel.ReturnToField(tc)
 	end
-end
-function c70043345.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_EFFECT)
 end
 function c70043345.thfilter(c)
 	return c:IsSetCard(0xb2) and c:IsType(TYPE_SPELL) and c:IsAbleToHand()

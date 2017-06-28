@@ -15,7 +15,7 @@ function c37984162.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e2:SetCost(c37984162.discost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c37984162.distg)
 	e2:SetOperation(c37984162.disop)
 	c:RegisterEffect(e2)
@@ -34,10 +34,6 @@ function c37984162.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		rc:RegisterEffect(e1)
 	end
-end
-function c37984162.discost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c37984162.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_SZONE) and chkc:IsFacedown() end

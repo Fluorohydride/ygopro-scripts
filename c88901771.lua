@@ -32,7 +32,7 @@ function c88901771.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e3:SetCost(c88901771.ctcost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c88901771.cttg)
 	e3:SetOperation(c88901771.ctop)
 	c:RegisterEffect(e3)
@@ -61,10 +61,6 @@ function c88901771.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
-end
-function c88901771.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c88901771.ctfilter(c)
 	return c:IsFaceup() and c:IsCanAddCounter(0x1,1)

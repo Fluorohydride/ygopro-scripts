@@ -18,7 +18,7 @@ function c34325937.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetCondition(c34325937.spcon)
-	e2:SetCost(c34325937.spcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c34325937.sptg)
 	e2:SetOperation(c34325937.spop)
 	c:RegisterEffect(e2)
@@ -87,10 +87,6 @@ function c34325937.cfilter(c)
 end
 function c34325937.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c34325937.cfilter,1,nil)
-end
-function c34325937.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c34325937.spfilter(c,e,tp)
 	return c:IsSetCard(0xe3) and c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)

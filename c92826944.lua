@@ -7,14 +7,10 @@ function c92826944.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_GRAVE)
-	e1:SetCost(c92826944.cost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetTarget(c92826944.target)
 	e1:SetOperation(c92826944.operation)
 	c:RegisterEffect(e1)
-end
-function c92826944.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c92826944.filter(c,e,tp)
 	return c:IsRace(RACE_ZOMBIE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

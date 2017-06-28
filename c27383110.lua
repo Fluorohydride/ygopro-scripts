@@ -87,8 +87,8 @@ function c27383110.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return re:GetHandler()==e:GetHandler()
 end
 function c27383110.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsAbleToRemove() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
+	if chk==0 then return e:GetHandler():IsLocation(LOCATION_GRAVE) and aux.bfgcost(e,tp,eg,ep,ev,re,r,rp,0) end
+	aux.bfgcost(e,tp,eg,ep,ev,re,r,rp,1)
 end
 function c27383110.thfilter(c,e,tp)
 	return c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp) and c:IsAbleToHand() and c:IsCanBeEffectTarget(e)

@@ -18,7 +18,7 @@ function c56049970.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,56049970)
-	e2:SetCost(c56049970.spcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c56049970.sptg2)
 	e2:SetOperation(c56049970.spop2)
 	c:RegisterEffect(e2)
@@ -66,10 +66,6 @@ function c56049970.spop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c56049970.splimit(e,c)
 	return not (c:IsRace(RACE_MACHINE) and c:IsType(TYPE_SYNCHRO)) and c:IsLocation(LOCATION_EXTRA)
-end
-function c56049970.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c56049970.spfilter2(c,e,tp)
 	return c:IsSetCard(0xea) and c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

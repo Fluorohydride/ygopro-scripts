@@ -19,7 +19,7 @@ function c39778366.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCondition(aux.exccon)
-	e2:SetCost(c39778366.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c39778366.thtg)
 	e2:SetOperation(c39778366.thop)
 	c:RegisterEffect(e2)
@@ -52,10 +52,6 @@ function c39778366.operation(e,tp,eg,ep,ev,re,r,rp)
 		g:Sub(sg)
 		Duel.SendtoGrave(g,REASON_RULE)
 	end
-end
-function c39778366.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c39778366.thfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT)

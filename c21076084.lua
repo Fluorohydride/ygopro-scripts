@@ -16,7 +16,7 @@ function c21076084.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c21076084.spcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c21076084.sptg)
 	e2:SetOperation(c21076084.spop)
 	c:RegisterEffect(e2)
@@ -37,10 +37,6 @@ function c21076084.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Draw(1-tp,oc,REASON_EFFECT)
 		end
 	end
-end
-function c21076084.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c21076084.spfilter(c,e,tp)
 	return c:IsSetCard(0xfb) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

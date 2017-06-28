@@ -18,7 +18,7 @@ function c46008667.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,46008667)
 	e2:SetCondition(aux.exccon)
-	e2:SetCost(c46008667.spcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c46008667.sptg)
 	e2:SetOperation(c46008667.spop)
 	c:RegisterEffect(e2)
@@ -56,10 +56,6 @@ function c46008667.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Equip(tp,c,tc)
 	end
-end
-function c46008667.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c46008667.filter1(c,e,tp)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsSetCard(0x107a)

@@ -25,7 +25,7 @@ function c34302287.initial_effect(c)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetRange(LOCATION_GRAVE)
-	e3:SetCost(c34302287.eqcost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c34302287.eqtg)
 	e3:SetOperation(c34302287.eqop)
 	c:RegisterEffect(e3)
@@ -56,10 +56,6 @@ end
 function c34302287.handcon(e)
 	return Duel.IsExistingMatchingCard(c34302287.filter,e:GetHandlerPlayer(),LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 		or Duel.IsEnvironment(22702055)
-end
-function c34302287.eqcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c34302287.efilter(c,tp)
 	return c:IsFaceup() and c:IsType(TYPE_NORMAL)

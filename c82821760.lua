@@ -43,7 +43,7 @@ function c82821760.initial_effect(c)
 	e6:SetCategory(CATEGORY_TODECK)
 	e6:SetType(EFFECT_TYPE_IGNITION)
 	e6:SetRange(LOCATION_GRAVE)
-	e6:SetCost(c82821760.tdcost)
+	e6:SetCost(aux.bfgcost)
 	e6:SetTarget(c82821760.tdtg)
 	e6:SetOperation(c82821760.tdop)
 	c:RegisterEffect(e6)
@@ -79,10 +79,6 @@ function c82821760.rctop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Destroy(c,REASON_EFFECT)
 		end
 	end
-end
-function c82821760.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c82821760.tdfilter(c)
 	return c:IsSetCard(0x15) and c:IsAbleToDeck()

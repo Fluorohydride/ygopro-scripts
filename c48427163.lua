@@ -16,7 +16,7 @@ function c48427163.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,48427163)
-	e2:SetCost(c48427163.spcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c48427163.sptg)
 	e2:SetOperation(c48427163.spop)
 	c:RegisterEffect(e2)
@@ -47,10 +47,6 @@ function c48427163.atkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c48427163.spfilter(c,e,tp)
 	return c:IsSetCard(0xdf) and c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-end
-function c48427163.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c48427163.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

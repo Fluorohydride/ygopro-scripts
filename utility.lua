@@ -1364,3 +1364,8 @@ function Auxiliary.NecroValleyFilter(f)
 				return f(target,...) and not (target:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0))
 			end
 end
+--shortcut for self-banish costs
+function Auxiliary.bfgcost(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
+	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
+end

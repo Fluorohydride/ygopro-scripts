@@ -7,16 +7,12 @@ function c19113101.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCondition(c19113101.condition)
-	e1:SetCost(c19113101.cost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetOperation(c19113101.operation)
 	c:RegisterEffect(e1)
 end
 function c19113101.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
-end
-function c19113101.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c19113101.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

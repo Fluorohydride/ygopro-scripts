@@ -20,7 +20,7 @@ function c98431356.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,98431356)
-	e2:SetCost(c98431356.spcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c98431356.sptg)
 	e2:SetOperation(c98431356.spop)
 	c:RegisterEffect(e2)
@@ -57,10 +57,6 @@ function c98431356.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c98431356.valcon(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0
-end
-function c98431356.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c98431356.spfilter(c,e,tp)
 	return c:IsSetCard(0x10db) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

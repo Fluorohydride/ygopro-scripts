@@ -9,17 +9,13 @@ function c7161742.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCondition(c7161742.spcon)
-	e1:SetCost(c7161742.spcost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetTarget(c7161742.sptg)
 	e1:SetOperation(c7161742.spop)
 	c:RegisterEffect(e1)
 end
 function c7161742.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
-end
-function c7161742.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c7161742.filter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsSetCard(0x10f3) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

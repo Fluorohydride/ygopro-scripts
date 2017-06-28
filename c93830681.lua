@@ -9,7 +9,7 @@ function c93830681.initial_effect(c)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCountLimit(1,93830681)
 	e1:SetCondition(c93830681.condition)
-	e1:SetCost(c93830681.cost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetTarget(c93830681.target)
 	e1:SetOperation(c93830681.operation)
 	c:RegisterEffect(e1)
@@ -17,10 +17,6 @@ end
 function c93830681.condition(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttackTarget()
 	return at and at:IsControler(tp) and at:IsFaceup() and at:IsRace(RACE_FISH+RACE_SEASERPENT+RACE_AQUA)
-end
-function c93830681.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c93830681.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.GetAttacker()

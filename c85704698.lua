@@ -16,7 +16,7 @@ function c85704698.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(0,0x1c0)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c85704698.syncost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c85704698.syntg)
 	e2:SetOperation(c85704698.synop)
 	c:RegisterEffect(e2)
@@ -56,10 +56,6 @@ function c85704698.spop(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e3)
 	end
-end
-function c85704698.syncost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c85704698.mfilter(c)
 	return c:IsSetCard(0x2016) and c:IsType(TYPE_TUNER)

@@ -6,13 +6,9 @@ function c18988391.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCountLimit(1,18988391)
-	e1:SetCost(c18988391.cost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetOperation(c18988391.operation)
 	c:RegisterEffect(e1)
-end
-function c18988391.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c18988391.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

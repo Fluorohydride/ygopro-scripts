@@ -18,7 +18,7 @@ function c99315585.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,99315586)
-	e2:SetCost(c99315585.regcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetOperation(c99315585.regop)
 	c:RegisterEffect(e2)
 end
@@ -39,10 +39,6 @@ function c99315585.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0x1ff0000)
 		c:RegisterEffect(e1)
 	end
-end
-function c99315585.regcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c99315585.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

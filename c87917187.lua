@@ -17,7 +17,7 @@ function c87917187.initial_effect(c)
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c87917187.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c87917187.thtg)
 	e2:SetOperation(c87917187.thop)
 	c:RegisterEffect(e2)
@@ -47,10 +47,6 @@ function c87917187.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,true,false,POS_FACEUP)
 	end
-end
-function c87917187.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c87917187.thfilter(c)
 	return c:IsCode(6007213,32491822,69890967) and c:IsAbleToHand()

@@ -15,7 +15,7 @@ function c71039903.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,71039903)
-	e2:SetCost(c71039903.cost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c71039903.target)
 	e2:SetOperation(c71039903.operation)
 	c:RegisterEffect(e2)
@@ -49,10 +49,6 @@ function c71039903.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
-end
-function c71039903.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c71039903.filter(c)
 	return c:IsSetCard(0xdd) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
