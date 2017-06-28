@@ -44,14 +44,7 @@ function c76573247.seqop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.MoveSequence(c,nseq)
 	end
 end
-function c76573247.filter(c,s1)
-	local s2=c:GetSequence()
-	if c:IsLocation(LOCATION_SZONE) and s2>=5 then return false end
-	if s1==5 then s1=1 elseif s1==6 then s1=3 end
-	if s2==5 then s2=1 elseif s2==6 then s2=3 end
-	return s1+s2==4
-end
 function c76573247.dircon(e)
 	local tp=e:GetHandlerPlayer()
-	return not Duel.IsExistingMatchingCard(c76573247.filter,tp,0,LOCATION_ONFIELD,1,nil,e:GetHandler():GetSequence())
+	return not Duel.IsExistingMatchingCard(Card.IsOnSameColumn,tp,0,LOCATION_ONFIELD,1,nil,e:GetHandler())
 end
