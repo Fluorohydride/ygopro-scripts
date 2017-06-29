@@ -52,10 +52,6 @@ function c3784434.atkcon(e)
 	local c=e:GetHandler()
 	local at=Duel.GetAttackTarget()
 	if (ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL) and Duel.GetAttacker()==c and at then
-		local s1=c:GetSequence()
-		local s2=at:GetSequence()
-		if s1==5 then s1=1 elseif s1==6 then s1=3 end
-		if s2==5 then s2=1 elseif s2==6 then s2=3 end
-		return s1+s2==4
+		return aux.checksamecolumn(c,at)
 	else return false end
 end
