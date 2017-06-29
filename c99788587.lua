@@ -18,12 +18,12 @@ function c99788587.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end
 	local c=e:GetHandler()
 	local g=Duel.GetFieldGroup(Card.IsOnSameColumn,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,c,true)
-	g:AddCard(c)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c99788587.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetFieldGroup(Card.IsOnSameColumn,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,c,true)
-	if c then g:AddCard(c) end	
-	Duel.Destroy(g,REASON_EFFECT)
+	if g:GetCount()>0 then
+		Duel.Destroy(g,REASON_EFFECT)
+	end
 end
