@@ -56,7 +56,7 @@ function c39188539.seqop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c39188539.filter(c,sc)
-	return c:IsOnSameColumn(sc) and c:IsAbleToHand()
+	return aux.checksamecolumn(c,sc) and c:IsAbleToHand()
 end
 function c39188539.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c39188539.filter(chkc,e:GetHandler()) end

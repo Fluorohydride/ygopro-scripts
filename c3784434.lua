@@ -52,6 +52,6 @@ function c3784434.atkcon(e)
 	local c=e:GetHandler()
 	local at=Duel.GetAttackTarget()
 	if (ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL) and Duel.GetAttacker()==c and at then
-		return c:IsOnSameColumn(at)
+		return aux.checksamecolumn(c,at)
 	else return false end
 end

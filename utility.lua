@@ -1371,7 +1371,7 @@ function Auxiliary.bfgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 --Checks whether 2 cards are on the same column
 --skip_ex is optional, indicates whether the Extra Monster Zone should be ignored (used in Blasting Fuse)
-function Card.IsOnSameColumn(c1,c2,skip_ex)
+function Auxiliary.checksamecolumn(c1,c2,skip_ex)
 	if not c1 or not c1:IsOnField() or not c2 or not c2:IsOnField() then return false end
 	if c1==c2 then return false end
 	local s1=c1:GetSequence()
@@ -1383,7 +1383,7 @@ function Card.IsOnSameColumn(c1,c2,skip_ex)
 			return s2==s1
 		else
 			return s2==s1 or (s1==1 and s2==5) or (s1==3 and s2==6)
-		else
+		end
 	else
 		if skip_ex then
 			return s2==4-s1
