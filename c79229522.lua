@@ -32,7 +32,7 @@ function c79229522.splimit(e,se,sp,st)
 end
 function c79229522.cfilter(c,tp)
 	return (c:IsFusionCode(70095154) or c:IsRace(RACE_MACHINE) and c:IsType(TYPE_MONSTER))
-		and c:IsCanBeFusionMaterial() and c:IsAbleToDeckOrExtraAsCost() and (c:IsControler(tp) or c:IsFaceup())
+		and c:IsCanBeFusionMaterial() and c:IsAbleToGraveAsCost() and (c:IsControler(tp) or c:IsFaceup())
 end
 function c79229522.fcheck(c,sg)
 	return c:IsFusionCode(70095154) and sg:FilterCount(c79229522.fcheck2,c)+1==sg:GetCount()
