@@ -29,8 +29,7 @@ function c19089195.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c19089195.filter(c,tp)
-	return c:IsCode(22702055) and c:GetActivateEffect()
-		and (c:GetActivateEffect():IsActivatable(tp) or Duel.GetTurnPlayer()~=tp)
+	return c:IsCode(22702055) and c:GetActivateEffect() and c:GetActivateEffect():IsActivatable(tp,true)
 end
 function c19089195.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
