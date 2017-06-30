@@ -1,4 +1,5 @@
 --トリックスター・ライトステージ
+--not fully implemented
 function c35371948.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -105,6 +106,7 @@ function c35371948.agop(e,tp,eg,ep,ev,re,r,rp)
 		target=te:GetTarget()
 		operation=te:GetOperation()
 		act=te:GetCode()==EVENT_FREE_CHAIN and te:IsActivatable(tep)
+			and not (bit.band(tc:GetType(),TYPE_SPELL)~=0 and bit.band(tc:GetType(),TYPE_QUICKPLAY)==0)
 			and (not condition or condition(te,tep,eg,ep,ev,re,r,rp))
 			and (not cost or cost(te,tep,eg,ep,ev,re,r,rp,0))
 			and (not target or target(te,tep,eg,ep,ev,re,r,rp,0))
