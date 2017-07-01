@@ -79,7 +79,7 @@ function c7445307.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToRemoveAsCost,tp,LOCATION_HAND,0,1,1,nil)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
-function c7445307.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c7445307.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c7445307.rmfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,e:GetHandler():GetAttack()) end
 	local g=Duel.GetMatchingGroup(c7445307.rmfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,e:GetHandler():GetAttack())
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)

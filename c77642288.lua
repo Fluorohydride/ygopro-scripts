@@ -14,8 +14,7 @@ function c77642288.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c77642288.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local st=e:GetHandler():GetSummonType()
-	return st>=(SUMMON_TYPE_SPECIAL+100) and st<(SUMMON_TYPE_SPECIAL+150)
+	return aux.gbspcon(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():GetBattledGroupCount()>0
 end
 function c77642288.filter(c,e,tp)

@@ -18,7 +18,7 @@ function c82562802.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCountLimit(1,82562802+100)
+	e2:SetCountLimit(1,82562803)
 	e2:SetCondition(c82562802.gycon)
 	e2:SetTarget(c82562802.gytg)
 	e2:SetOperation(c82562802.gyop)
@@ -43,11 +43,12 @@ end
 function c82562802.filter2(c)
 	return c:IsSetCard(0x4093) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
 end
-function c82562802.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c82562802.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c82562802.filter2,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
-function c82562802.operation(e,tp,eg,ep,ev,re,r,rp,chk)
+function c82562802.operation(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local tg=Duel.SelectMatchingCard(tp,c82562802.filter2,tp,LOCATION_DECK,0,1,1,nil)
 	if tg:GetCount()>0 then
 		Duel.SendtoHand(tg,nil,REASON_EFFECT)
@@ -86,7 +87,7 @@ function c82562802.tg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c82562802.filter1,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
-function c82562802.op(e,tp,eg,ep,ev,re,r,rp,chk)
+function c82562802.op(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)

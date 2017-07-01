@@ -25,7 +25,7 @@ function c73828446.initial_effect(c)
 	--banish
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(73828446,0))
-	e4:SetCategory(CATEGORY_DAMAGE)
+	e4:SetCategory(CATEGORY_REMOVE)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_BATTLE_DESTROYING)
 	e4:SetRange(LOCATION_SZONE)
@@ -87,14 +87,6 @@ function c73828446.rmop(e,tp,eg,ep,ev,re,r,rp)
 		sg:AddCard(bc)
 		Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)
 	end
-end
-function c73828446.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_TODECK,e:GetHandler(),1,0,0)
-end
-function c73828446.retop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
-	Duel.SendtoDeck(e:GetHandler(),nil,2,REASON_EFFECT)
 end
 function c73828446.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -45,7 +45,6 @@ function c83407038.initial_effect(c)
 end
 function c83407038.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local tn=Duel.GetTurnPlayer()
 	local ph=Duel.GetCurrentPhase()
 	if ((ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE))
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0

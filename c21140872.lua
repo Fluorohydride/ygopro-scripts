@@ -95,7 +95,7 @@ function c21140872.ngcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	return g and g:IsExists(c21140872.ngcfilter,1,nil,tp) and Duel.IsChainNegatable(ev)
 end
-function c21140872.ngfilter(c,e,tp)
+function c21140872.ngfilter(c)
 	return c:IsType(TYPE_EQUIP) and c:IsAbleToGraveAsCost()
 end
 function c21140872.ngcost(e,tp,eg,ep,ev,re,r,rp,chk)
