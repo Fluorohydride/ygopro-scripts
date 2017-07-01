@@ -52,7 +52,7 @@ function c13035077.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(nil,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,e:GetHandler())
 		and Duel.IsExistingMatchingCard(c13035077.thfilter,tp,LOCATION_DECK,0,1,nil) end
 	local g=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND+LOCATION_ONFIELD,0,e:GetHandler())
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,tp,LOCATION_HAND+LOCATION_ONFIELD)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c13035077.desop(e,tp,eg,ep,ev,re,r,rp)

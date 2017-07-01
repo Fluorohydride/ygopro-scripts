@@ -29,8 +29,8 @@ function c53701457.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 c53701457.xyz_number=28
-function c53701457.dircon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)<=1
+function c53701457.dircon(e)
+	return Duel.GetFieldGroupCount(e:GetHandlerPlayer(),LOCATION_MZONE,0)<=1
 end
 function c53701457.rdcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

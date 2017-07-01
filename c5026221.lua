@@ -23,9 +23,7 @@ function c5026221.initial_effect(c)
 end
 function c5026221.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local tn=Duel.GetTurnPlayer()
-	local ph=Duel.GetCurrentPhase()
-	if ((tn==tp and (ph==PHASE_MAIN1 or ph==PHASE_MAIN2)) or (tn~=tp and (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE)))
+	if c5026221.condition(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c5026221.filter,tp,LOCATION_HAND,0,1,nil,e,tp)
 		and Duel.SelectYesNo(tp,94) then
@@ -39,14 +37,14 @@ function c5026221.condition(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetTurnPlayer()==tp then
 		return ph==PHASE_MAIN1 or ph==PHASE_MAIN2
 	else
-		return ph==PHASE_BATTLE
+		return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE
 	end
 end
 function c5026221.filter(c,e,tp)
 	return c:IsSetCard(0x9c) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c5026221.target2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(5026221)==0 
+	if chk==0 then return e:GetHandler():GetFlagEffect(5026221)==0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c5026221.filter,tp,LOCATION_HAND,0,1,nil,e,tp) end
 	e:GetHandler():RegisterFlagEffect(5026221,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)

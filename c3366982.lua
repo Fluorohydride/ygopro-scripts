@@ -14,5 +14,7 @@ function c3366982.filter(c)
 	return c:IsFaceup() and c:IsAttribute(0xf8)
 end
 function c3366982.dircon(e)
-	return not Duel.IsExistingMatchingCard(c3366982.filter,e:GetHandlerPlayer(),0,LOCATION_MZONE,1,nil)
+	local tp=e:GetHandlerPlayer()
+	return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil)
+		and not Duel.IsExistingMatchingCard(c3366982.filter,tp,0,LOCATION_MZONE,1,nil)
 end

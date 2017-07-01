@@ -624,11 +624,14 @@ function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
 				if gc then sg:AddCard(gc) end
 				while sg:GetCount()<maxc+#funs do
 					local cg=mg:Filter(Auxiliary.FSelectMixRep,sg,tp,mg,sg,c,sub,chkf,fun1,minc,maxc,table.unpack(funs))
-					if cg:GetCount()==0
-						or (Auxiliary.FCheckMixRepGoal(tp,sg,c,sub,chkf,fun1,minc,maxc,table.unpack(funs))
-						and not Duel.SelectYesNo(tp,210)) then break end
+					if cg:GetCount()==0 then break end
+					local minct=1
+					if Auxiliary.FCheckMixRepGoal(tp,sg,c,sub,chkf,fun1,minc,maxc,table.unpack(funs)) then
+						minct=0
+					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-					local g=cg:Select(tp,1,1,nil)
+					local g=cg:Select(tp,minct,1,nil)
+					if g:GetCount()==0 then break end
 					sg:Merge(g)
 				end
 				Duel.SetFusionMaterial(sg)
@@ -1205,9 +1208,13 @@ function Auxiliary.LinkOperation(f,minc,maxc)
 				local sg=Group.CreateGroup()
 				for i=0,maxc-1 do
 					local cg=mg:Filter(Auxiliary.LCheckRecursive,sg,tp,sg,mg,c,i,minc,maxc)
-					if cg:GetCount()==0
-						or (Auxiliary.LCheckGoal(tp,sg,c,minc,i) and not Duel.SelectYesNo(tp,210)) then break end
-					local g=cg:Select(tp,1,1,nil)
+					if cg:GetCount()==0 then break end
+					local minct=1
+					if Auxiliary.LCheckGoal(tp,sg,c,minc,i) then
+						minct=0
+					end
+					local g=cg:Select(tp,minct,1,nil)
+					if g:GetCount()==0 then break end
 					sg:Merge(g)
 				end
 				c:SetMaterial(sg)

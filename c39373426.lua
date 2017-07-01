@@ -101,6 +101,7 @@ function c39373426.cntg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,1,0,0)
 end
 function c39373426.cnop(e,tp,eg,ep,ev,re,r,rp)
+	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.GetControl(tc,tp,PHASE_END,1) then
 		local e1=Effect.CreateEffect(e:GetHandler())

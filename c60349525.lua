@@ -25,9 +25,9 @@ function c60349525.indval(e,c)
 	return c:IsLevelBelow(e:GetHandler():GetLevel())
 end
 function c60349525.condition(e,tp,eg,ep,ev,re,r,rp)
-	if tp==rp or eg:GetCount()~=1 then return false end
-	local c=eg:GetFirst()
-	return c:GetLevel()>0 and c:IsAttackAbove(c:GetLevel()*200)
+	if eg:GetCount()~=1 then return false end
+	local tc=eg:GetFirst()
+	return tc~=e:GetHandler() and tc:IsFaceup() and tc:GetLevel()>0 and tc:GetSummonPlayer()==1-tp
 end
 function c60349525.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
