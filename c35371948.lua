@@ -71,7 +71,7 @@ function c35371948.operation(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 		--Activate or send
 		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e2:SetRange(LOCATION_FZONE)
 		e2:SetCode(EVENT_PHASE+PHASE_END)
 		e2:SetCountLimit(1)
@@ -93,62 +93,18 @@ function c35371948.agop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	if not tc or tc:IsFaceup() or not tc:IsLocation(LOCATION_SZONE) then return end
 	tc:ResetFlagEffect(35371948)
-	local act=false
 	local te=tc:GetActivateEffect()
 	local tep=tc:GetControler()
-	local condition=nil
-	local cost=nil
-	local target=nil
-	local operation=nil
-	if te then
-		condition=te:GetCondition()
-		cost=te:GetCost()
-		target=te:GetTarget()
-		operation=te:GetOperation()
-		act=te:GetCode()==EVENT_FREE_CHAIN and te:IsActivatable(tep)
-			and not (bit.band(tc:GetType(),TYPE_SPELL)~=0 and bit.band(tc:GetType(),TYPE_QUICKPLAY)==0)
-			and (not condition or condition(te,tep,eg,ep,ev,re,r,rp))
-			and (not cost or cost(te,tep,eg,ep,ev,re,r,rp,0))
-			and (not target or target(te,tep,eg,ep,ev,re,r,rp,0))
-	end
 	local op=0
-	if act then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPTION)
+	if te and te:GetCode()==EVENT_FREE_CHAIN and te:IsActivatable(tep) then
+		Duel.Hint(HINT_SELECTMSG,tep,HINTMSG_OPTION)
 		op=Duel.SelectOption(tep,aux.Stringid(35371948,3),aux.Stringid(35371948,4))
 	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPTION)
+		Duel.Hint(HINT_SELECTMSG,tep,HINTMSG_OPTION)
 		op=Duel.SelectOption(tep,aux.Stringid(35371948,4))+1
 	end
 	if op==0 then
-		Duel.ClearTargetCard()
-		e:SetProperty(te:GetProperty())
-		Duel.ChangePosition(tc,POS_FACEUP)
-		Duel.Hint(HINT_CARD,0,tc:GetOriginalCode())
-		tc:CreateEffectRelation(te)
-		if cost then cost(te,tep,eg,ep,ev,re,r,rp,1) end
-		if target then target(te,tep,eg,ep,ev,re,r,rp,1) end
-		local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-		local tg=nil
-		if g then
-			tg=g:GetFirst()
-			while tg do
-				tg:CreateEffectRelation(te)
-				tg=g:GetNext()
-			end
-		end
-		tc:SetStatus(STATUS_ACTIVATED,true)
-		if operation then operation(te,tep,eg,ep,ev,re,r,rp) end
-		tc:ReleaseEffectRelation(te)
-		if g then
-			tg=g:GetFirst()
-			while tg do
-				tg:ReleaseEffectRelation(te)
-				tg=g:GetNext()
-			end
-		end
-		if bit.band(tc:GetType(),TYPE_CONTINUOUS)==0 then
-			Duel.SendtoGrave(tc,REASON_RULE)
-		end
+		Duel.Activate(te)
 	else
 		Duel.SendtoGrave(tc,REASON_EFFECT)
 	end
