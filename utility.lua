@@ -1399,3 +1399,30 @@ function Auxiliary.checksamecolumn(c1,c2,skip_ex)
 		end
 	end
 end
+--get neighbouring cards of target card
+function Auxiliary.GetNeighbouringGroup(c)
+	local g=Group.CreateGroup()
+	if not c or not c:IsOnField() then return g end
+	local seq=c:GetSequence()
+	if seq<0 or seq>4 then return g end
+	local tp=c:GetControler()
+	local loc=c:GetLocation()
+	if seq-1>=0 then
+		local c1=Duel.GetFieldCard(tp,loc,seq-1)
+		if c1 then g:AddCard(c1) end
+	end
+	if seq+1<=4 then
+		local c2=Duel.GetFieldCard(tp,loc,seq+1)
+		if c2 then g:AddCard(c2) end
+	end
+	return g
+end
+--check if c1 and c2 are neighbouring
+function Auxiliary.IsNeighbouringTo(c1,c2)
+	if not c1 or not c1:IsOnField() or not c2 or not c2:IsOnField() then return false end
+	if c1:GetLocation()~=c2:GetLocation() then return false end
+	local seq_c1=c1:GetSequence()
+	local seq_c2=c2:GetSequence()
+	if seq_c1<=0 or seq_c1>=4 or seq_c2<=0 or seq_c2>=4 then return false end
+	return math.abs(seq_c1-seq_c2)==1
+end
