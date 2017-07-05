@@ -1423,6 +1423,6 @@ function Auxiliary.IsNeighbouringTo(c1,c2)
 	if c1:GetLocation()~=c2:GetLocation() then return false end
 	local seq_c1=c1:GetSequence()
 	local seq_c2=c2:GetSequence()
-	if seq_c1<=0 or seq_c1>=4 or seq_c2<=0 or seq_c2>=4 then return false end
+	if seq_c1<0 or seq_c1>4 or seq_c2<0 or seq_c2>4 then return false end
 	return math.abs(seq_c1-seq_c2)==1
 end
