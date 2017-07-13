@@ -70,5 +70,5 @@ function c68507541.atkop2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c68507541.atktg(e,c)
-	return c~=e:GetHandler()
+	return c:IsFaceup() and c:IsSetCard(0x4) and c~=e:GetHandler()
 end
