@@ -39,7 +39,7 @@ function c23068051.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c23068051.filter2(c)
-	return c:IsRace(RACE_WYRM) and c:IsAbleToGraveAsCost()
+	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsRace(RACE_WYRM) and c:IsAbleToGraveAsCost()
 end
 function c23068051.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c23068051.filter2,tp,LOCATION_MZONE+LOCATION_HAND,0,1,nil) end
