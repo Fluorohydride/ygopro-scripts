@@ -55,31 +55,22 @@ function c83755611.tdop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
 	end
 end
-function c83755611.filter(c,e,tp)
+function c83755611.desfilter(c,ft)
+	return ft>0 or (c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5)
+end
+function c83755611.spfilter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c83755611.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if chk==0 then
-		if not Duel.IsExistingTarget(c83755611.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp) then return false end
-		if ft<0 then
-			return false
-		elseif ft>0 then
-			return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,0,1,nil)
-		else
-			return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_MZONE,0,1,nil)
-		end
-	end
-	local g1=nil
+	if chk==0 then return ft>-1
+		and Duel.IsExistingTarget(c83755611.desfilter,tp,LOCATION_ONFIELD,0,1,nil,ft)
+		and Duel.IsExistingTarget(c83755611.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	if ft>0 then
-		g1=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,0,1,1,nil)
-	else
-		g1=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_MZONE,0,1,1,nil)
-	end
+	local g1=Duel.SelectTarget(tp,c83755611.desfilter,tp,LOCATION_ONFIELD,0,1,1,nil,ft)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g2=Duel.SelectTarget(tp,c83755611.filter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+	local g2=Duel.SelectTarget(tp,c83755611.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g1,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g2,1,0,0)
 end
