@@ -70,11 +70,8 @@ function c5043010.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c5043010.cfilter(c,tp,zone)
 	local seq=c:GetPreviousSequence()
-	if c:GetPreviousControler()==tp then
-		return bit.band(zone,bit.lshift(1,seq))~=0
-	else
-		return bit.band(bit.rshift(zone,16),bit.lshift(1,seq))~=0
-	end
+	if c:GetPreviousControler()~=tp then seq=seq+16 end
+	return c:IsPreviousLocation(LOCATION_MZONE) and bit.extract(zone,seq)~=0
 end
 function c5043010.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c5043010.cfilter,1,nil,tp,e:GetHandler():GetLinkedZone())
