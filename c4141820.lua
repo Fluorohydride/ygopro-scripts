@@ -40,7 +40,7 @@ function c4141820.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c4141820.hdcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep==1-e:GetLabel()
+	return ep==1-e:GetLabel() and eg:GetFirst()==e:GetHandler()
 end
 function c4141820.hdop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,4141820)
