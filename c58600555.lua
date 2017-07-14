@@ -2,16 +2,7 @@
 function c58600555.initial_effect(c)
 	c:EnableReviveLimit()
 	--xyz summon
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_SPSUMMON_PROC)
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
-	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(c58600555.xyzcon)
-	e1:SetTarget(c58600555.xyztg)
-	e1:SetOperation(c58600555.xyzop)
-	e1:SetValue(SUMMON_TYPE_XYZ)
-	c:RegisterEffect(e1)
+	aux.AddXyzProcedure(c,c58600555.mfilter,5,2,c58600555.ovfilter,aux.Stringid(58600555,2),99,c58600555.xyzop)
 	--Back to Deck
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(58600555,0))
@@ -37,88 +28,15 @@ function c58600555.initial_effect(c)
 	e3:SetOperation(c58600555.operation)
 	c:RegisterEffect(e3)
 end
-function c58600555.ovfilter(c,tp,xyzc)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ) and (c:GetRank()==3 or c:GetRank()==4) and c:IsRace(RACE_INSECT) and c:IsCanBeXyzMaterial(xyzc)
-		and c:CheckRemoveOverlayCard(tp,2,REASON_COST)
+function c58600555.ovfilter(c)
+	return c:IsFaceup() and c:IsXyzType(TYPE_XYZ) and (c:GetRank()==3 or c:GetRank()==4) and c:IsRace(RACE_INSECT)
 end
 function c58600555.mfilter(c)
 	return c:IsRace(RACE_INSECT) and c:IsAttribute(ATTRIBUTE_LIGHT)
 end
-function c58600555.xyzcon(e,c,og,min,max)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft
-	local mg=nil
-	if og then
-		mg=og
-	else
-		mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
-	end
-	if ct<1 and (not min or min<=1) and mg:IsExists(c58600555.ovfilter,1,nil,tp,c) then
-		return true
-	end
-	local minc=2
-	local maxc=5
-	if min then
-		if min>minc then minc=min end
-		if max<maxc then maxc=max end
-		if minc>maxc then return false end
-	end
-	return ct<minc and Duel.CheckXyzMaterial(c,c58600555.mfilter,5,minc,maxc,og)
-end
-function c58600555.xyztg(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
-	if og and not min then
-		return true
-	end
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft
-	local minc=2
-	local maxc=5
-	if min then
-		if min>minc then minc=min end
-		if max<maxc then maxc=max end
-	end
-	local mg=nil
-	if og then
-		mg=og
-	else
-		mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
-	end
-	local b1=ct<minc and Duel.CheckXyzMaterial(c,c58600555.mfilter,5,minc,maxc,og)
-	local b2=ct<1 and (not min or min<=1) and mg:IsExists(c58600555.ovfilter,1,nil,tp,c)
-	local g=nil
-	if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(58600555,2))) then
-		e:SetLabel(1)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		g=mg:FilterSelect(tp,c58600555.ovfilter,1,1,nil,tp,c)
-		g:GetFirst():RemoveOverlayCard(tp,2,2,REASON_COST)
-	else
-		e:SetLabel(0)
-		g=Duel.SelectXyzMaterial(tp,c,c58600555.mfilter,5,minc,maxc,og)
-	end
-	if g then
-		g:KeepAlive()
-		e:SetLabelObject(g)
-		return true
-	else return false end
-end
-function c58600555.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
-	if og and not min then
-		c:SetMaterial(og)
-		Duel.Overlay(c,og)
-	else
-		local mg=e:GetLabelObject()
-		if e:GetLabel()==1 then
-			local mg2=mg:GetFirst():GetOverlayGroup()
-			if mg2:GetCount()~=0 then
-				Duel.Overlay(c,mg2)
-			end
-		end
-		c:SetMaterial(mg)
-		Duel.Overlay(c,mg)
-		mg:DeleteGroup()
-	end
+function c58600555.xyzop(e,tp,chk,mc)
+	if chk==0 then return mc:CheckRemoveOverlayCard(tp,2,REASON_COST) end
+	mc:RemoveOverlayCard(tp,2,2,REASON_COST)
 end
 function c58600555.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
