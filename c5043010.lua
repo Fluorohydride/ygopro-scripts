@@ -17,24 +17,18 @@ function c5043010.initial_effect(c)
 	e1:SetOperation(c5043010.thop)
 	c:RegisterEffect(e1)
 	--special summon
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetRange(LOCATION_MZONE)
-	e2:SetCode(EVENT_LEAVE_FIELD_P)
-	e2:SetOperation(c5043010.regop)
-	c:RegisterEffect(e2)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(5043010,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
+	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CVAL_CHECK)
 	e3:SetCode(EVENT_BATTLE_DESTROYED)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetLabelObject(e2)
 	e3:SetCondition(c5043010.spcon)
 	e3:SetTarget(c5043010.sptg)
 	e3:SetOperation(c5043010.spop)
+	e3:SetCost(c5043010.spcost)
+	e3:SetValue(c5043010.valcheck)
 	c:RegisterEffect(e3)
 	local e4=e3:Clone()
 	e4:SetCode(EVENT_TO_GRAVE)
@@ -74,20 +68,16 @@ function c5043010.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	Duel.SendtoHand(g,nil,REASON_EFFECT)
 end
-function c5043010.regop(e,tp,eg,ep,ev,re,r,rp)
-	local g=e:GetHandler():GetLinkedGroup()
-	if not g then return end
-	local lg=g:Clone()
-	lg:KeepAlive()
-	e:SetLabelObject(lg)
-end
-function c5043010.cfilter(c,g)
-	return g:IsContains(c)
+function c5043010.cfilter(c,tp,zone)
+	local seq=c:GetPreviousSequence()
+	if c:IsControler(tp) then
+		return bit.band(zone,bit.lshift(1,seq))~=0
+	else
+		return bit.band(bit.rshift(zone,16),bit.lshift(1,seq))~=0
+	end
 end
 function c5043010.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local lg=e:GetLabelObject():GetLabelObject()
-	if not lg then return false end
-	return eg:IsExists(c5043010.cfilter,1,nil,lg)
+	return eg:IsExists(c5043010.cfilter,1,nil,tp,e:GetHandler():GetLinkedZone())
 end
 function c5043010.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -101,4 +91,17 @@ function c5043010.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
+end
+function c5043010.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
+	local c=e:GetHandler()
+	if chk==0 then
+		if c:GetFlagEffect(5043010)==0 then
+			c:RegisterFlagEffect(5043010,RESET_CHAIN,0,1)
+			c5043010[c]=true
+		end
+		return c5043010[c]
+	end
+end
+function c5043010.valcheck(e)
+	c5043010[e:GetHandler()]=false
 end
