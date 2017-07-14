@@ -39,6 +39,11 @@ function c5043010.initial_effect(c)
 	local e4=e3:Clone()
 	e4:SetCode(EVENT_TO_GRAVE)
 	c:RegisterEffect(e4)
+	local e5=e2:Clone()
+	e5:SetCode(EVENT_BE_PRE_MATERIAL)
+	e5:SetOperation(c5043010.regop2)
+	e5:SetLabelObject(e2)
+	c:RegisterEffect(e5)
 	--
 	if not Card.GetMutualLinkedGroup then
 		function aux.mutuallinkfilter(c,mc)
@@ -80,6 +85,13 @@ function c5043010.regop(e,tp,eg,ep,ev,re,r,rp)
 	local lg=g:Clone()
 	lg:KeepAlive()
 	e:SetLabelObject(lg)
+end
+function c5043010.regop2(e,tp,eg,ep,ev,re,r,rp)
+	local g=e:GetHandler():GetLinkedGroup()
+	if not g then return end
+	local lg=g:Clone()
+	lg:KeepAlive()
+	e:GetLabelObject():SetLabelObject(lg)
 end
 function c5043010.cfilter(c,g)
 	return g:IsContains(c)
