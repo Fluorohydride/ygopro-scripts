@@ -70,7 +70,7 @@ function c5043010.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c5043010.cfilter(c,tp,zone)
 	local seq=c:GetPreviousSequence()
-	if c:IsControler(tp) then
+	if c:GetPreviousControler()==tp then
 		return bit.band(zone,bit.lshift(1,seq))~=0
 	else
 		return bit.band(bit.rshift(zone,16),bit.lshift(1,seq))~=0
