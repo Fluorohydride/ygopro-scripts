@@ -84,7 +84,8 @@ function c72402069.disfilter(c,tp)
 		and Duel.IsExistingMatchingCard(aux.disfilter1,tp,0,LOCATION_MZONE,1,c)
 end
 function c72402069.distg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c72402069.disfilter,tp,0,LOCATION_MZONE,1,nil,tp) end
+	if chk==0 then return not eg:IsContains(e:GetHandler())
+		and Duel.IsExistingMatchingCard(c72402069.disfilter,tp,0,LOCATION_MZONE,1,nil,tp) end
 end
 function c72402069.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(72402069,2))
