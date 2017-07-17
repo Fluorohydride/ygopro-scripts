@@ -467,6 +467,7 @@ EFFECT_NONTUNER						=244--同时当作调整以外的怪兽（幻影王 幽骑�
 EFFECT_OVERLAY_REMOVE_REPLACE		=245--代替去除超量素材
 EFFECT_SCRAP_CHIMERA				=246--废铁奇美拉
 EFFECT_TUNE_MAGICIAN_X				=247--调弦之魔术师超量素材限制
+EFFECT_TUNE_MAGICIAN_F				=248--调弦之魔术师融合素材限制
 EFFECT_PRE_MONSTER				=250	--可存取怪獸的各項數值(Card.AddMonsterAttribute()專用)
 EFFECT_MATERIAL_CHECK			=251	--检查素材
 EFFECT_DISABLE_FIELD			=260	--无效区域（扰乱王等）

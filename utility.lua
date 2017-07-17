@@ -542,9 +542,13 @@ function Auxiliary.FCheckMix(c,mg,sg,fc,sub,fun1,fun2,...)
 		return fun1(c,fc,sub,mg,sg)
 	end
 end
+function Auxiliary.FCheckTuneMagicianX(c,sg)
+	return c:IsHasEffect(EFFECT_TUNE_MAGICIAN_F) and sg:IsExists(c.fuslimit,1,c)
+end
 --if sg1 is subset of sg2 then not Auxiliary.FCheckAdditional(tp,sg1,fc) -> not Auxiliary.FCheckAdditional(tp,sg2,fc)
 Auxiliary.FCheckAdditional=nil
 function Auxiliary.FCheckMixGoal(tp,sg,fc,sub,chkf,...)
+	if sg:IsExists(Auxiliary.FCheckTuneMagicianX,1,nil,sg) then return false end
 	local g=Group.CreateGroup()
 	return sg:IsExists(Auxiliary.FCheckMix,1,nil,sg,g,fc,sub,...) and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
 		and (not Auxiliary.FCheckAdditional or Auxiliary.FCheckAdditional(tp,sg,fc))
@@ -657,6 +661,7 @@ function Auxiliary.FCheckMixRepFilter(c,sg,g,fc,sub,chkf,fun1,minc,maxc,fun2,...
 	return false
 end
 function Auxiliary.FCheckMixRepGoal(tp,sg,fc,sub,chkf,fun1,minc,maxc,...)
+	if sg:IsExists(Auxiliary.FCheckTuneMagicianX,1,nil,sg) then return false end
 	if sg:GetCount()<minc+#{...} or sg:GetCount()>maxc+#{...} then return false end
 	local g=Group.CreateGroup()
 	return Auxiliary.FCheckMixRep(sg,g,fc,sub,chkf,fun1,minc,maxc,...) and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
