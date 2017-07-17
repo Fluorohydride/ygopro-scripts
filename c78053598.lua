@@ -12,7 +12,8 @@ end
 function c78053598.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToHand,tp,0,LOCATION_DECK,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,564)
-	local code=Duel.AnnounceCard(tp,TYPE_MONSTER)
+	c78053598.announce_filter={TYPE_MONSTER,OPCODE_ISTYPE,TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK,OPCODE_ISTYPE,OPCODE_NOT,OPCODE_AND}
+	local code=Duel.AnnounceCardFilter(tp,table.unpack(c78053598.announce_filter))
 	Duel.SetTargetParam(code)
 	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,TYPE_MONSTER)
 end
