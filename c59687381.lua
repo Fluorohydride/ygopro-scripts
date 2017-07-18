@@ -31,7 +31,7 @@ function c59687381.tgfilter(c,tp)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
 end
 function c59687381.tgtg(e,c)
-	return c:GetSequence()<5 and c:GetColumnGroup(false):FilterCount(c59687381.tgfilter,nil,c:GetControler())>0
+	return c:GetSequence()<5 and c:GetColumnGroup(0,0,false):FilterCount(c59687381.tgfilter,nil,c:GetControler())>0
 end
 function c59687381.tgvalue(e,re,rp)
 	return rp~=e:GetHandlerPlayer()
