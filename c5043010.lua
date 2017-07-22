@@ -22,17 +22,17 @@ function c5043010.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCode(EVENT_BATTLE_DESTROYED)
-	e2:SetCondition(c5043010.spcon)
+	e2:SetCondition(c5043010.regcon)
 	e2:SetOperation(c5043010.regop)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EVENT_TO_GRAVE)
-	e3:SetCondition(c5043010.spcon2)
+	e3:SetCondition(c5043010.regcon2)
 	c:RegisterEffect(e3)
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(5043010,1))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
 	e4:SetCode(EVENT_CUSTOM+5043010)
 	e4:SetRange(LOCATION_MZONE)
@@ -79,21 +79,20 @@ function c5043010.cfilter(c,tp,zone)
 	if c:GetPreviousControler()~=tp then seq=seq+16 end
 	return c:IsPreviousLocation(LOCATION_MZONE) and bit.extract(zone,seq)~=0
 end
-function c5043010.spcon(e,tp,eg,ep,ev,re,r,rp)
+function c5043010.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c5043010.cfilter,1,nil,tp,e:GetHandler():GetLinkedZone())
 end
 function c5043010.cfilter2(c,tp,zone)
 	return not c:IsReason(REASON_BATTLE) and c5043010.cfilter(c,tp,zone)
 end
-function c5043010.spcon2(e,tp,eg,ep,ev,re,r,rp)
+function c5043010.regcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c5043010.cfilter2,1,nil,tp,e:GetHandler():GetLinkedZone())
 end
 function c5043010.regop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.RaiseEvent(e:GetHandler(),EVENT_CUSTOM+5043010,e,0,tp,0,0)
+	Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+5043010,e,0,tp,0,0)
 end
 function c5043010.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler()==eg:GetFirst()
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(Card.IsCanBeSpecialSummoned,tp,LOCATION_HAND,0,1,nil,e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
