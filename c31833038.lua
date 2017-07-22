@@ -1,5 +1,4 @@
 --ヴァレルロード・ドラゴン
---Effect is not fully implemented
 function c31833038.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),3)
@@ -82,11 +81,6 @@ function c31833038.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		local zone=bit.band(c:GetLinkedZone(),0x1f)
 		if Duel.GetControl(tc,tp,0,0,zone)~=0 then
-			local token=Duel.CreateToken(tp,73915052)
-			Duel.MoveToField(token,tp,1-tp,LOCATION_MZONE,POS_FACEUP_DEFENSE,true)
-			Duel.CalculateDamage(c,token)
-			Duel.SendtoGrave(token,REASON_RULE)
-			--Duel.NegateAttack()
 			tc:RegisterFlagEffect(31833038,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,2)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
