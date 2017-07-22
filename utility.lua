@@ -631,6 +631,7 @@ function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
 					if cg:GetCount()==0 then break end
 					local minct=1
 					if Auxiliary.FCheckMixRepGoal(tp,sg,c,sub,chkf,fun1,minc,maxc,table.unpack(funs)) then
+						if not Duel.SelectYesNo(tp,210) then break end
 						minct=0
 					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
@@ -1216,6 +1217,7 @@ function Auxiliary.LinkOperation(f,minc,maxc)
 					if cg:GetCount()==0 then break end
 					local minct=1
 					if Auxiliary.LCheckGoal(tp,sg,c,minc,i) then
+						if not Duel.SelectYesNo(tp,210) then break end
 						minct=0
 					end
 					local g=cg:Select(tp,minct,1,nil)
