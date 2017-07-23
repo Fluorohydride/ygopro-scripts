@@ -26,7 +26,7 @@ function c22862454.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=c:GetLinkedGroup()
 	if chk==0 then return eg:IsExists(c22862454.repfilter,1,nil,tp)
 		and g:IsExists(c22862454.desfilter,1,nil,tp) end
-	if Duel.SelectYesNo(tp,aux.Stringid(22862454,0)) then
+	if Duel.SelectEffectYesNo(tp,c,96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
 		local sg=g:FilterSelect(tp,c22862454.desfilter,1,1,nil,tp)
 		e:SetLabelObject(sg:GetFirst())
