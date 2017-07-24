@@ -12,8 +12,7 @@ function c88086137.initial_effect(c)
 end
 function c88086137.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local rc=re:GetHandler()
-	return aux.checksamecolumn(c,rc) and (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE)) and Duel.IsChainNegatable(ev)
+	return c:GetColumnGroup():IsContains(re:GetHandler()) and (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE)) and Duel.IsChainNegatable(ev)
 end
 function c88086137.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
