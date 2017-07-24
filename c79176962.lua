@@ -28,18 +28,20 @@ function c79176962.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
-function c79176962.thfilter(c,hc)
-	return c:IsAbleToHand() and aux.checksamecolumn(c,hc)
+function c79176962.thfilter(c,g)
+	return c:IsAbleToHand() and g:IsContains(c)
 end
 function c79176962.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroup(c79176962.thfilter,tp,0,LOCATION_ONFIELD,nil,e:GetHandler())
-	if chk==0 then return g:GetCount()>0 end
+	local cg=e:GetHandler():GetColumnGroup()
+	if chk==0 then return Duel.IsExistingMatchingCard(c79176962.thfilter,tp,0,LOCATION_ONFIELD,1,nil,cg) end
+	local g=Duel.GetMatchingGroup(c79176962.thfilter,tp,0,LOCATION_ONFIELD,nil,cg)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,g:GetCount(),0,0)
 end
 function c79176962.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	local cg=c:GetColumnGroup()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		local g=Duel.GetMatchingGroup(c79176962.thfilter,tp,0,LOCATION_ONFIELD,nil,c)
+		local g=Duel.GetMatchingGroup(c79176962.thfilter,tp,0,LOCATION_ONFIELD,nil,cg)
 		if g:GetCount()>0 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 		end

@@ -14,13 +14,15 @@ end
 function c51091138.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_SZONE)
 end
+function c51091138.filter(c,g)
+	return g:IsContains(c)
+end
 function c51091138.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local c=e:GetHandler()
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and aux.checksamecolumn(chkc,c) end
-	if chk==0 then return Duel.IsExistingTarget(aux.checksamecolumn,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,c) end
+	local cg=e:GetHandler():GetColumnGroup()
+	if chkc then return chkc:IsOnField() and c51091138.filter(chkc,cg) end
+	if chk==0 then return Duel.IsExistingTarget(c51091138.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil,cg) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,aux.checksamecolumn,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,c,c)
-	e:SetLabel(seq)
+	local g=Duel.SelectTarget(tp,c51091138.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil,cg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c51091138.activate(e,tp,eg,ep,ev,re,r,rp)
