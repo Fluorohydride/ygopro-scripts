@@ -26,12 +26,8 @@ end
 function c13536606.matfilter(c)
 	return not c:IsLinkType(TYPE_TOKEN)
 end
-function c13536606.cfilter(c,mc)
-	local lg=c:GetLinkedGroup()
-	return lg and lg:IsContains(mc)
-end
 function c13536606.atkval(e,c)
-	return c:GetLinkedGroup():FilterCount(c13536606.cfilter,nil,c)*300
+	return c:GetMutualLinkedGroupCount()*300
 end
 function c13536606.rfilter(c,tp,g)
 	local lk=c:GetLink()
@@ -41,7 +37,7 @@ function c13536606.rfilter(c,tp,g)
 end
 function c13536606.tktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	local lg=c:GetLinkedGroup():Filter(c13536606.cfilter,nil,c)
+	local lg=c:GetMutualLinkedGroup()
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c13536606.rfilter(chkc,tp,lg) end
 	if chk==0 then return Duel.IsExistingTarget(c13536606.rfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,tp,lg)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,13536607,0,0x4011,0,0,1,RACE_CYBERS,ATTRIBUTE_LIGHT) end

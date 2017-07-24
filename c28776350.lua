@@ -88,14 +88,10 @@ function c28776350.thop(e,tp,eg,ep,ev,re,r,rp)
 	local lg=e:GetHandler():GetLinkedGroup():Filter(Card.IsAbleToHand,nil)
 	Duel.SendtoHand(lg,nil,REASON_EFFECT)
 end
-function c28776350.cfilter(c,mc)
-	local lg=c:GetLinkedGroup()
-	return lg and lg:IsContains(mc)
-end
 function c28776350.actg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local c=e:GetHandler()
-		local lg=c:GetLinkedGroup():Filter(c28776350.cfilter,nil,c)
+		local lg=c:GetMutualLinkedGroup()
 		local ct=lg:GetSum(Card.GetLink)
 		if ct<=0 or not Duel.IsPlayerCanDiscardDeck(tp,ct) then return false end
 		local g=Duel.GetDecktopGroup(tp,ct)
@@ -112,7 +108,7 @@ function c28776350.thfilter(c,code)
 end
 function c28776350.acop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local lg=c:GetLinkedGroup():Filter(c28776350.cfilter,nil,c)
+	local lg=c:GetMutualLinkedGroup()
 	local ct=lg:GetSum(Card.GetLink)
 	if ct<=0 or not Duel.IsPlayerCanDiscardDeck(tp,ct) then return end
 	Duel.ConfirmDecktop(tp,ct)
