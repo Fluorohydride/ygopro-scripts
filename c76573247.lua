@@ -45,6 +45,5 @@ function c76573247.seqop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c76573247.dircon(e)
-	local tp=e:GetHandlerPlayer()
-	return not Duel.IsExistingMatchingCard(aux.checksamecolumn,tp,0,LOCATION_ONFIELD,1,nil,e:GetHandler())
+	return e:GetHandler():GetColumnGroup():FilterCount(Card.IsControler,nil,1-e:GetHandlerPlayer())==0
 end

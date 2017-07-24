@@ -12,7 +12,7 @@ function c59687381.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_SET_AVAILABLE)
 	e1:SetRange(LOCATION_FZONE)
 	e1:SetTargetRange(LOCATION_SZONE,0)
-	e1:SetTarget(c59687381.filter)
+	e1:SetTarget(c59687381.tgtg)
 	e1:SetValue(aux.tgoval)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
@@ -27,8 +27,11 @@ function c59687381.initial_effect(c)
 	e4:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	c:RegisterEffect(e4)
 end
-function c59687381.filter(e,c)
-	return c:GetSequence()<5 and Duel.GetFieldCard(c:GetControler(),LOCATION_MZONE,c:GetSequence())
+function c59687381.tgfilter(c,tp)
+	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5
+end
+function c59687381.tgtg(e,c)
+	return c:GetSequence()<5 and c:GetColumnGroup():FilterCount(c59687381.tgfilter,nil,c:GetControler())>0
 end
 function c59687381.tgvalue(e,re,rp)
 	return rp~=e:GetHandlerPlayer()

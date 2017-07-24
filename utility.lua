@@ -1383,26 +1383,3 @@ function Auxiliary.bfgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
---Checks whether 2 cards are on the same column
---skip_ex is optional, indicates whether the Extra Monster Zone should be ignored (used in Blasting Fuse)
-function Auxiliary.checksamecolumn(c1,c2,skip_ex)
-	if not c1 or not c1:IsOnField() or not c2 or not c2:IsOnField() then return false end
-	if c1==c2 then return false end
-	local s1=c1:GetSequence()
-	local s2=c2:GetSequence()
-	if (c1:IsLocation(LOCATION_SZONE) and s1>=5)
-		or (c2:IsLocation(LOCATION_SZONE) and s2>=5) then return false end
-	if c1:GetControler()==c2:GetControler() then
-		if skip_ex then
-			return s2==s1
-		else
-			return s2==s1 or (s1==1 and s2==5) or (s1==3 and s2==6)
-		end
-	else
-		if skip_ex then
-			return s2==4-s1
-		else
-			return s2==4-s1 or (s1==1 and s2==6) or (s1==3 and s2==5)
-		end
-	end
-end
