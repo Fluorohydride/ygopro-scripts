@@ -39,30 +39,13 @@ function c5043010.initial_effect(c)
 	e4:SetTarget(c5043010.sptg)
 	e4:SetOperation(c5043010.spop)
 	c:RegisterEffect(e4)
-	--
-	if not Card.GetMutualLinkedGroup then
-		function aux.mutuallinkfilter(c,mc)
-			local lg=c:GetLinkedGroup()
-			return lg and lg:IsContains(mc)
-		end
-		function Card.GetMutualLinkedGroup(c)
-			local lg=c:GetLinkedGroup()
-			if not lg then return nil end
-			return lg:Filter(aux.mutuallinkfilter,nil,c)
-		end
-		function Card.GetMutualLinkedCount(c)
-			local lg=c:GetLinkedGroup()
-			if not lg then return 0 end
-			return lg:FilterCount(aux.mutuallinkfilter,nil,c)
-		end
-	end
 end
 function c5043010.thfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c5043010.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	local ct=c:GetMutualLinkedCount()
+	local ct=c:GetMutualLinkedGroupCount()
 	if chkc then return chkc:IsLocation(LOCATION_MZONE+LOCATION_GRAVE) and c5043010.thfilter(chkc) end
 	if chk==0 then return ct>0 and Duel.IsExistingTarget(c5043010.thfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,LOCATION_MZONE+LOCATION_GRAVE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
