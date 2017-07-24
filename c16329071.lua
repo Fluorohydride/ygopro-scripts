@@ -23,7 +23,7 @@ function c16329071.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c16329071.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c16329071.filter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_ONFIELD+LOCATION_REMOVED,0,nil)
-	if g:GetClassCount(Card.GetCode)<=5 then return end
+	if g:GetClassCount(Card.GetCode)<5 then return end
 	local sg=Group.CreateGroup()
 	for i=1,5 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
