@@ -49,7 +49,7 @@ function c2414168.defcon(e,tp,eg,ep,ev,re,r,rp)
 	e:SetLabelObject(d)
 	return a:IsControler(1-tp) and d and d:IsDefensePos() and d:IsControler(tp) and d~=e:GetHandler()
 end
-function c44891812.defop(e,tp,eg,ep,ev,re,r,rp)
+function c2414168.defop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=e:GetLabelObject()
 	if tc:IsRelateToBattle() and tc:IsFaceup() and c:IsRelateToEffect(e) and c:IsFaceup() then

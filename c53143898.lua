@@ -34,10 +34,10 @@ function c53143898.setop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
-function c53143898.thfilter1(c,e,tp)
+function c53143898.thfilter1(c)
 	return c:IsFaceup() and c:IsSetCard(0x103) and c:IsAbleToGrave()
 end
-function c53143898.thfilter2(c,e,tp)
+function c53143898.thfilter2(c)
 	return c:IsFaceup() and c:IsSetCard(0x103) and c:IsAbleToGrave() and c:GetSequence()<5
 end
 function c53143898.spfilter(c,e,tp)

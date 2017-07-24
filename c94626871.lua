@@ -29,7 +29,7 @@ function c94626871.cfilter(c,tp,zone)
 	return c:IsPreviousLocation(LOCATION_MZONE) and bit.extract(zone,seq)~=0
 end
 function c94626871.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c94626871.cfilter,1,nil,e:GetHandler():GetLinkedZone())
+	return eg:IsExists(c94626871.cfilter,1,nil,tp,e:GetHandler():GetLinkedZone())
 end
 function c94626871.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,94626871)

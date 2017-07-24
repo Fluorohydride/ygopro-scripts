@@ -17,7 +17,7 @@ function c5560911.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.PayLPCost(tp,math.floor(Duel.GetLP(tp)/2))
 end
-function c5560911.filter(c,ft)
+function c5560911.filter(c)
 	return c:IsFaceup() and c:IsLevelBelow(6)
 end
 function c5560911.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

@@ -26,7 +26,7 @@ function c28593329.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(at,REASON_COST)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
-function c28593329.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function c28593329.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local at=Duel.GetAttackTarget()
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and chkc:IsFaceup() and chkc~=at end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,0,1,at) end
