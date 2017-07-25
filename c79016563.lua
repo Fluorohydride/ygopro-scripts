@@ -62,7 +62,7 @@ function c79016563.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc2=g:GetNext()
 	if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and tc2:IsFaceup() and tc2:IsRelateToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(79016563,2))
-		local sg=g:Select(1-tp,1,1,nil)
+		local sg=g:Select(tp,1,1,nil)
 		local atk=sg:GetFirst():GetAttack()
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

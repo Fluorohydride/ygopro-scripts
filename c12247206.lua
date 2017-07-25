@@ -11,7 +11,8 @@ function c12247206.initial_effect(c)
 end
 function c12247206.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return eg:GetCount()==1 and tc:IsLocation(LOCATION_MZONE) and tc:IsControler(tp) and tc:IsAttackBelow(1500)
+	return eg:GetCount()==1 and tc:IsLocation(LOCATION_MZONE) and tc:IsControler(tp)
+		and tc:IsFaceup() and tc:IsAttackBelow(1500)
 		and Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil)
 end
 function c12247206.nfilter(c,tc)
