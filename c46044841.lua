@@ -17,7 +17,7 @@ function c46044841.condition(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():IsPreviousPosition(POS_FACEUP)
 end
 function c46044841.filter(c,e,tp)
-	return c:IsSetCard(0x10) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN)
+	return c:IsSetCard(0x10) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
 end
 function c46044841.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

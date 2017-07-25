@@ -15,7 +15,7 @@ function c64815084.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_REPTILE)
 end
 function c64815084.spfilter(c,e,tp)
-	return c:IsSetCard(0x304e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN)
+	return c:IsSetCard(0x304e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
 end
 function c64815084.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c64815084.filter(chkc) end

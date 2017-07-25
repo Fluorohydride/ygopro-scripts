@@ -15,7 +15,7 @@ function c73702909.condition(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsLocation(LOCATION_DECK)
 end
 function c73702909.spfilter(c,e,tp)
-	return c:IsLevelBelow(2) and c:IsRace(RACE_WARRIOR) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN)
+	return c:IsLevelBelow(2) and c:IsRace(RACE_WARRIOR) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
 end
 function c73702909.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
