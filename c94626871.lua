@@ -23,7 +23,8 @@ function c94626871.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c94626871.cfilter(c,tp,zone)
-	if not c:IsReason(REASON_DESTROY) or not c:IsReason(REASON_BATTLE+REASON_EFFECT) then return false end
+	if not c:IsReason(REASON_DESTROY) or not c:IsReason(REASON_BATTLE+REASON_EFFECT)
+		or not zone then return false end
 	local seq=c:GetPreviousSequence()
 	if c:GetPreviousControler()~=tp then seq=seq+16 end
 	return c:IsPreviousLocation(LOCATION_MZONE) and bit.extract(zone,seq)~=0
