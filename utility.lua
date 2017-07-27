@@ -457,11 +457,7 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 		if type(val[i])=='function' then
 			fun[i]=function(c,fc,sub,mg,sg) return val[i](c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) end
 		else
-			if sub then
-				fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
-			else
-				fun[i]=function(c) return c:IsFusionCode(val[i]) end
-			end
+			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
 			table.insert(mat,val[i])
 		end
 	end
@@ -574,11 +570,7 @@ function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
 		if type(val[i])=='function' then
 			fun[i]=function(c,fc,sub,mg,sg) return val[i](c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) end
 		else
-			if sub then
-				fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
-			else
-				fun[i]=function(c) return c:IsFusionCode(val[i]) end
-			end
+			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
 			table.insert(mat,val[i])
 		end
 	end
