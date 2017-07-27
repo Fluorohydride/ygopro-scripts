@@ -96,7 +96,8 @@ function c35371948.agop(e,tp,eg,ep,ev,re,r,rp)
 	local te=tc:GetActivateEffect()
 	local tep=tc:GetControler()
 	local op=0
-	if te and te:GetCode()==EVENT_FREE_CHAIN and te:IsActivatable(tep) then
+	if te and te:GetCode()==EVENT_FREE_CHAIN and te:IsActivatable(tep)
+		and (not tc:IsType(TYPE_SPELL) or tc:IsType(TYPE_QUICKPLAY)) then
 		Duel.Hint(HINT_SELECTMSG,tep,HINTMSG_OPTION)
 		op=Duel.SelectOption(tep,aux.Stringid(35371948,3),aux.Stringid(35371948,4))
 	else
