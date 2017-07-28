@@ -42,7 +42,7 @@ function c4709881.atkval(e,c)
 	return Duel.GetMatchingGroup(c4709881.atkfilter,c:GetControler(),LOCATION_GRAVE,0,nil):GetClassCount(Card.GetCode)*300
 end
 function c4709881.cfilter(c,g)
-	return c:IsSetCard(0xfd) and g:IsContains(c)
+	return c:IsSetCard(0xfd) and g:IsContains(c) and (g:GetCount()<2 or Duel.CheckLocation(c:GetControler(),LOCATION_MZONE,c:GetSequence(),true))
 end
 function c4709881.spcost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lg=e:GetHandler():GetLinkedGroup()
@@ -52,10 +52,22 @@ function c4709881.spcost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabelObject(g:GetFirst())
 end
 function c4709881.spfilter1(c,e,tp,zone)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone)
-end
-function c4709881.spfilter0(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	if not c:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
+	if not zone then return true end
+	local i=0
+	while zone>0 do
+		if bit.band(zone,bit.lshift(1,i))>0 then
+			if Duel.GetFieldCard(tp,LOCATION_MZONE,i) then
+				if Duel.CheckLocation(tp,LOCATION_MZONE,i,true) then return true end
+			else
+				if Duel.CheckLocation(tp,LOCATION_MZONE,i) then return true end
+			end
+		end
+		i=i+1
+		zone=bit.rshift(zone,i)
+		zone=bit.lshift(zone,i)
+	end
+	return false
 end
 function c4709881.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local zone=e:GetHandler():GetLinkedZone()
@@ -65,7 +77,7 @@ function c4709881.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return zone~=0
 		and (Duel.IsExistingTarget(c4709881.spfilter1,tp,LOCATION_GRAVE,0,1,cc,e,tp,zone)
 		or (e:GetHandler():GetLinkedGroupCount()>=2 and Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-			and Duel.IsExistingTarget(c4709881.spfilter0,tp,LOCATION_GRAVE,0,1,cc,e,tp))) end
+			and Duel.IsExistingTarget(c4709881.spfilter1,tp,LOCATION_GRAVE,0,1,cc,e,tp))) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c4709881.spfilter1,tp,LOCATION_GRAVE,0,1,1,cc,e,tp,zone)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
