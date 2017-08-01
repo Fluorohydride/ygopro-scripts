@@ -15,7 +15,7 @@ function c78053598.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	c78053598.announce_filter={TYPE_MONSTER,OPCODE_ISTYPE,TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK,OPCODE_ISTYPE,OPCODE_NOT,OPCODE_AND}
 	local code=Duel.AnnounceCardFilter(tp,table.unpack(c78053598.announce_filter))
 	Duel.SetTargetParam(code)
-	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,TYPE_MONSTER)
+	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,ANNOUNCE_CARD_FILTER)
 end
 function c78053598.filter(c,code)
 	return c:IsType(TYPE_MONSTER) and c:IsCode(code) and c:IsAbleToHand()
