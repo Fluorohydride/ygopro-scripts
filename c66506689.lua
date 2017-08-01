@@ -23,7 +23,7 @@ function c66506689.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c66506689.filter(c)
-	return not c:IsType(TYPE_LINK)
+	return c:IsCanChangePosition()
 end
 function c66506689.tg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c66506689.filter(chkc) end

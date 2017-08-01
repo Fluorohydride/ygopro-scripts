@@ -26,7 +26,7 @@ end
 function c67270095.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local d=Duel.GetAttackTarget()
 	if chkc then return chkc==d end
-	if chk==0 then return d and d:IsAttackPos() and not d:IsType(TYPE_LINK) and d:IsCanBeEffectTarget(e) end
+	if chk==0 then return d and d:IsAttackPos() and d:IsCanChangePosition() and d:IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(d)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,d,1,0,0)
 end

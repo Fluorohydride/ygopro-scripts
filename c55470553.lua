@@ -36,7 +36,7 @@ end
 function c55470553.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local at=Duel.GetAttacker()
-		return at:IsAttackPos() and not at:IsType(TYPE_LINK)
+		return at:IsAttackPos() and at:IsCanChangePosition()
 	end
 end
 function c55470553.posop(e,tp,eg,ep,ev,re,r,rp)

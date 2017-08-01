@@ -49,7 +49,7 @@ function c58569561.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp
 end
 function c58569561.filter(c)
-	return c:IsFaceup() and not c:IsType(TYPE_LINK)
+	return c:IsFaceup() and c:IsCanChangePosition()
 end
 function c58569561.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c58569561.filter(chkc) end

@@ -48,7 +48,7 @@ function c2519690.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c2519690.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local d=Duel.GetAttackTarget()
-	if chk==0 then return d and d:IsControler(1-tp) and not d:IsType(TYPE_LINK) end
+	if chk==0 then return d and d:IsControler(1-tp) and d:IsCanChangePosition() end
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,d,1,0,0)
 end
 function c2519690.posop(e,tp,eg,ep,ev,re,r,rp)

@@ -21,7 +21,7 @@ function c9109991.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and Duel.GetAttackTarget()==nil
 end
 function c9109991.filter(c)
-	return c:IsAttackPos() and not c:IsType(TYPE_LINK)
+	return c:IsAttackPos() and c:IsCanChangePosition()
 end
 function c9109991.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c9109991.filter(chkc) end

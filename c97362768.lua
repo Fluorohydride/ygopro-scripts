@@ -49,7 +49,7 @@ function c97362768.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c97362768.posfilter(c)
-	return c:IsFaceup() and not c:IsType(TYPE_LINK)
+	return c:IsFaceup() and c:IsCanChangePosition()
 end
 function c97362768.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c97362768.posfilter(chkc) end

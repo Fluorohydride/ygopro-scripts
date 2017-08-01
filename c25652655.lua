@@ -16,7 +16,7 @@ function c25652655.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_SYNCHRO
 end
 function c25652655.filter(c)
-	return not c:IsType(TYPE_LINK)
+	return c:IsCanChangePosition()
 end
 function c25652655.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c25652655.filter(chkc) end

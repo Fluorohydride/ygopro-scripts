@@ -17,7 +17,7 @@ function c98045062.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	return true
 end
 function c98045062.filter1(c)
-	return c:IsFaceup() and not c:IsType(TYPE_LINK)
+	return c:IsFaceup() and c:IsCanChangePosition()
 end
 function c98045062.filter2(c)
 	return c:IsFaceup() and c:IsControlerCanBeChanged(true)

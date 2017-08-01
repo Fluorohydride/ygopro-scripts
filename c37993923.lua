@@ -42,7 +42,7 @@ function c37993923.condition2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c37993923.filter(c)
-	return not c:IsType(TYPE_LINK)
+	return c:IsCanChangePosition()
 end
 function c37993923.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c37993923.filter(chkc) end

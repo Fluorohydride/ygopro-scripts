@@ -33,7 +33,7 @@ function c73652465.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_SYNCHRO
 end
 function c73652465.posfilter(c)
-	return not c:IsType(TYPE_LINK)
+	return c:IsCanChangePosition()
 end
 function c73652465.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c73652465.posfilter(chkc) end

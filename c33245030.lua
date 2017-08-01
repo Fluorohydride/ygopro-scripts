@@ -28,7 +28,7 @@ end
 function c33245030.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local at=Duel.GetAttacker()
-		return at:IsAttackPos() and not at:IsType(TYPE_LINK)
+		return at:IsAttackPos() and at:IsCanChangePosition()
 	end
 end
 function c33245030.operation(e,tp,eg,ep,ev,re,r,rp)
