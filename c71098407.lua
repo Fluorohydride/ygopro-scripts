@@ -13,6 +13,7 @@ end
 function c71098407.condition(e,tp,eg,ep,ev,re,r,rp)
 	return rp~=tp and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainDisablable(ev)
 		and re:GetHandler():IsLocation(LOCATION_MZONE) and re:GetHandler():IsPosition(POS_FACEUP_ATTACK)
+		and re:GetHandler():IsCanChangePosition()
 end
 function c71098407.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

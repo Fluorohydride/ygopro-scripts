@@ -31,7 +31,7 @@ function c16021142.spcon(e,c)
 		and Duel.IsExistingMatchingCard(c16021142.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c16021142.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x9b)
+	return c:IsFaceup() and c:IsSetCard(0x9b) and c:IsCanChangePosition()
 end
 function c16021142.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c16021142.filter(chkc) end

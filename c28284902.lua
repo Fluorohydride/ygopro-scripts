@@ -23,7 +23,7 @@ function c28284902.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c28284902.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x26) and c:IsAttackPos()
+	return c:IsFaceup() and c:IsSetCard(0x26) and c:IsAttackPos() and c:IsCanChangePosition()
 end
 function c28284902.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c28284902.cfilter,1,nil) end
