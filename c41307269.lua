@@ -18,7 +18,7 @@ function c41307269.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c41307269.cfilter,1,nil,tp)
 end
 function c41307269.filter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsSetCard(0x9a)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsSetCard(0x9a) and c:IsCanChangePosition()
 end
 function c41307269.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c41307269.filter,tp,LOCATION_MZONE,0,1,nil) end

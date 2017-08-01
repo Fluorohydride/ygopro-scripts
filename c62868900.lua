@@ -13,7 +13,7 @@ function c62868900.initial_effect(c)
 end
 function c62868900.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return tc:IsControler(tp) and tc:IsPosition(POS_FACEUP_ATTACK) and tc:IsSetCard(0xc008)
+	return tc:IsControler(tp) and tc:IsPosition(POS_FACEUP_ATTACK) and tc:IsCanChangePosition() and tc:IsSetCard(0xc008)
 end
 function c62868900.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc==eg:GetFirst() end

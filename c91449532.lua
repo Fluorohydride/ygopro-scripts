@@ -48,13 +48,16 @@ function c91449532.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummonComplete()
 	end
 end
+function c91449532.filter(c)
+	return c:IsAttackPos() and c:IsCanChangePosition()
+end
 function c91449532.postg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAttackPos,tp,LOCATION_MZONE,0,1,nil) end
-	local g=Duel.GetMatchingGroup(Card.IsAttackPos,tp,LOCATION_MZONE,0,nil)
+	if chk==0 then return Duel.IsExistingMatchingCard(c91449532.filter,tp,LOCATION_MZONE,0,1,nil) end
+	local g=Duel.GetMatchingGroup(c91449532.filter,tp,LOCATION_MZONE,0,nil)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,g:GetCount(),0,0)
 end
 function c91449532.posop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsAttackPos,tp,LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(c91449532.filter,tp,LOCATION_MZONE,0,nil)
 	if g:GetCount()>0 then
 		Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 	end

@@ -12,11 +12,14 @@ end
 function c95254840.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp)
 end
+function c95254840.filter(c)
+	return c:IsAttackPos() and c:IsCanChangePosition()
+end
 function c95254840.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAttackPos,tp,LOCATION_MZONE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c95254840.filter,tp,LOCATION_MZONE,0,1,nil) end
 end
 function c95254840.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsAttackPos,tp,LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(c95254840.filter,tp,LOCATION_MZONE,0,nil)
 	if g:GetCount()>0 then
 		Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 	end

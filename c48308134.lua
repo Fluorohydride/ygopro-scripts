@@ -65,6 +65,9 @@ function c48308134.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(c48308134.spfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE)
 end
+function c48308134.posfilter(c)
+	return c:IsAttackPos() and c:IsCanChangePosition()
+end
 function c48308134.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
@@ -76,7 +79,7 @@ function c48308134.spop(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 			Duel.Equip(tp,c,tc)
 			Duel.SpecialSummonComplete()
-			local g=Duel.GetMatchingGroup(Card.IsPosition,tp,0,LOCATION_MZONE,nil,POS_ATTACK)
+			local g=Duel.GetMatchingGroup(c48308134.posfilter,tp,0,LOCATION_MZONE,nil)
 			if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(48308134,1)) then
 				Duel.BreakEffect()
 				local sg=g:Select(tp,1,1,nil)

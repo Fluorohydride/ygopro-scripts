@@ -71,7 +71,7 @@ function c2250266.cond(e)
 	return not e:GetHandler():IsDisabled() and e:GetHandler():IsDefensePos()
 end
 function c2250266.filter(c)
-	return c:IsFaceup() and c:IsAttackPos()
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition()
 end
 function c2250266.tgd2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c2250266.filter(chkc) end

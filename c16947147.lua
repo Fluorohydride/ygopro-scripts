@@ -15,10 +15,13 @@ end
 function c16947147.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():GetControler()~=tp and Duel.GetAttackTarget()==nil
 end
+function c16947147.filter(c)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition()
+end
 function c16947147.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsPosition,tp,0,LOCATION_MZONE,1,nil,POS_FACEUP_ATTACK)
+	if chk==0 then return Duel.IsExistingMatchingCard(c16947147.filter,tp,0,LOCATION_MZONE,1,nil)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP) end
-	local g=Duel.GetMatchingGroup(Card.IsPosition,tp,0,LOCATION_MZONE,nil,POS_FACEUP_ATTACK)
+	local g=Duel.GetMatchingGroup(c16947147.filter,tp,0,LOCATION_MZONE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,g:GetCount(),0,0)
 end
@@ -26,7 +29,7 @@ function c16947147.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_ATTACK)~=0 then
-		local g=Duel.GetMatchingGroup(Card.IsPosition,tp,0,LOCATION_MZONE,nil,POS_FACEUP_ATTACK)
+		local g=Duel.GetMatchingGroup(c16947147.filter,tp,0,LOCATION_MZONE,nil)
 		Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 	end
 end

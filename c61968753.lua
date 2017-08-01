@@ -11,10 +11,10 @@ function c61968753.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c61968753.filter1(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCode(79979666)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition() and c:IsCode(79979666)
 end
 function c61968753.filter2(c)
-	return c:IsPosition(POS_FACEUP_ATTACK)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition()
 end
 function c61968753.spfilter(c,e,tp)
 	return c:IsSetCard(0x3008) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
