@@ -52,7 +52,7 @@ function c75775867.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return not c:IsReason(REASON_REPLACE) and c:IsOnField() and c:IsFaceup() and c:IsDefensePos()
 		and Duel.IsExistingMatchingCard(c75775867.repfilter,tp,LOCATION_MZONE,0,1,c) end
-	if Duel.SelectYesNo(tp,aux.Stringid(75775867,1)) then
+	if Duel.SelectEffectYesNo(tp,c,96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
 		local g=Duel.SelectMatchingCard(tp,c75775867.repfilter,tp,LOCATION_MZONE,0,1,1,c)
 		Duel.SetTargetCard(g)

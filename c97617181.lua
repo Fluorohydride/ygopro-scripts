@@ -92,7 +92,7 @@ function c97617181.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ec=c:GetEquipTarget()
 	local ph=Duel.GetCurrentPhase()
 	if chk==0 then return (ph>PHASE_MAIN1 and ph<PHASE_MAIN2) and not c:IsStatus(STATUS_DESTROY_CONFIRMED) end
-	return Duel.SelectYesNo(tp,aux.Stringid(97617181,1))
+	return Duel.SelectEffectYesNo(tp,c,96)
 end
 function c97617181.desrepop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)

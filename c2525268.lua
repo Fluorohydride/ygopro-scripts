@@ -40,7 +40,7 @@ function c2525268.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetLabel(count)
 		return count>0 and Duel.IsCanRemoveCounter(tp,1,0,0x1,count,REASON_COST)
 	end
-	return Duel.SelectYesNo(tp,aux.Stringid(2525268,1))
+	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c2525268.value(e,c)
 	return c:IsFaceup() and c:GetLocation()==LOCATION_MZONE and c:IsRace(RACE_SPELLCASTER)

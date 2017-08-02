@@ -46,7 +46,7 @@ end
 function c30794966.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c30794966.repfilter,1,c) end
-	if Duel.SelectYesNo(tp,aux.Stringid(30794966,0)) then
+	if Duel.SelectEffectYesNo(tp,c,96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
 		local g=Duel.SelectReleaseGroup(tp,c30794966.repfilter,1,1,c)
 		e:SetLabelObject(g:GetFirst())

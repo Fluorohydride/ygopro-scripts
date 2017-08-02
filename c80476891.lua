@@ -54,7 +54,7 @@ end
 function c80476891.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c80476891.desfilter,tp,LOCATION_ONFIELD,0,1,nil,tp)
 		and eg:IsExists(c80476891.repfilter,1,nil,tp,e) end
-	if Duel.SelectYesNo(tp,aux.Stringid(80476891,1)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		local g=eg:Filter(c80476891.repfilter,nil,tp,e)
 		if g:GetCount()==1 then
 			e:SetLabelObject(g:GetFirst())

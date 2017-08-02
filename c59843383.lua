@@ -53,7 +53,7 @@ end
 function c59843383.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c59843383.repfilter,1,nil,tp)
 		and Duel.IsExistingMatchingCard(c59843383.rmfilter,tp,LOCATION_GRAVE,0,1,nil) end
-	if Duel.SelectYesNo(tp,aux.Stringid(59843383,2)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local g=Duel.SelectMatchingCard(tp,c59843383.rmfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 		Duel.Remove(g,POS_FACEUP,REASON_EFFECT+REASON_REPLACE)

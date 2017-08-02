@@ -57,7 +57,7 @@ end
 function c25231813.reptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetEquipTarget():IsReason(REASON_EFFECT)
 		and not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED) end
-	if Duel.SelectYesNo(tp,aux.Stringid(25231813,0)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		e:GetHandler():SetStatus(STATUS_DESTROY_CONFIRMED,true)
 		return true
 	else return false end

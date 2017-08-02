@@ -37,7 +37,7 @@ function c65025250.filter(c,tp)
 end
 function c65025250.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c65025250.filter,1,nil,tp) and not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED) end
-	return Duel.SelectYesNo(tp,aux.Stringid(65025250,1))
+	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c65025250.repval(e,c)
 	return c65025250.filter(c,e:GetHandlerPlayer())

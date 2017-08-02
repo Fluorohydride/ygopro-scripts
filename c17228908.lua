@@ -97,7 +97,7 @@ function c17228908.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=eg:FilterCount(c17228908.repfilter,nil,tp)
 	if chk==0 then return ct>0
 		and Duel.IsExistingMatchingCard(c17228908.desfilter,tp,LOCATION_HAND+LOCATION_DECK,0,ct,nil,tp) end
-	if Duel.SelectYesNo(tp,aux.Stringid(17228908,1)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
 		local tg=Duel.SelectMatchingCard(tp,c17228908.desfilter,tp,LOCATION_HAND+LOCATION_DECK,0,ct,ct,nil,tp)
 		local g=e:GetLabelObject()

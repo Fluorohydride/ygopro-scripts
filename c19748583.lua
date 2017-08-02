@@ -69,7 +69,7 @@ function c19748583.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return bit.band(r,REASON_EFFECT)~=0 and c:GetEquipTarget():IsAttribute(ATTRIBUTE_LIGHT)
 		and not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED) end
-	return Duel.SelectYesNo(e:GetOwnerPlayer(),aux.Stringid(19748583,1))
+	return Duel.SelectEffectYesNo(e:GetOwnerPlayer(),e:GetHandler(),96)
 end
 function c19748583.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)

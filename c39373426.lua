@@ -118,7 +118,7 @@ function c39373426.repfilter(c,tp)
 end
 function c39373426.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemove() and eg:IsExists(c39373426.repfilter,1,nil,tp) end
-	if Duel.SelectYesNo(tp,aux.Stringid(39373426,2)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		local g=eg:Filter(c39373426.repfilter,nil,tp)
 		if g:GetCount()==1 then
 			e:SetLabelObject(g:GetFirst())

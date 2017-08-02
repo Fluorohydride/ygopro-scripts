@@ -28,7 +28,7 @@ end
 function c38981606.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not eg:IsContains(e:GetHandler())
 		and eg:IsExists(c38981606.dfilter,1,nil,tp) end
-	if Duel.SelectYesNo(tp,aux.Stringid(38981606,0)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		return true
 	else return false end
 end

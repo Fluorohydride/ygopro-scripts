@@ -23,7 +23,7 @@ function c77631175.initial_effect(c)
 end
 function c77631175.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReason(REASON_BATTLE) and e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) end
-	if Duel.SelectYesNo(tp,aux.Stringid(77631175,0)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		local c=e:GetHandler()
 		c:RemoveOverlayCard(tp,1,1,REASON_EFFECT)
 		Duel.RaiseSingleEvent(c,EVENT_CUSTOM+77631175,e,0,0,0,0)

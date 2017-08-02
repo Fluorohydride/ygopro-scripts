@@ -33,7 +33,7 @@ function c66835946.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local tc=eg:GetFirst()
 		return eg:GetCount()==1 and tc:IsLocation(LOCATION_MZONE) and tc:IsControler(tp) and tc:IsFaceup() and tc:IsRace(RACE_ZOMBIE)
 	end
-	return Duel.SelectYesNo(tp,aux.Stringid(66835946,0))
+	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c66835946.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)

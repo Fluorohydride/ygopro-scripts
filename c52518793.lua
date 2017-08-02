@@ -52,7 +52,7 @@ end
 function c52518793.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsReason(REASON_RULE)
 		and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_HAND,0,1,nil,52518793) end
-	return Duel.SelectYesNo(tp,aux.Stringid(52518793,1))
+	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c52518793.desrepop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.DiscardHand(tp,Card.IsCode,1,1,REASON_EFFECT+REASON_DISCARD,nil,52518793)

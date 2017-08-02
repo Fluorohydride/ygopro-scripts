@@ -27,7 +27,7 @@ function c23232295.repfilter(c,tp)
 end
 function c23232295.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c23232295.repfilter,1,nil,tp) end
-	if e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) and Duel.SelectYesNo(tp,aux.Stringid(23232295,1)) then
+	if e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) and Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_EFFECT)
 		local g=eg:Filter(c23232295.repfilter,nil,tp)
 		if g:GetCount()==1 then

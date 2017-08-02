@@ -17,7 +17,7 @@ function c19505896.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return not c:IsReason(REASON_REPLACE)
 		and Duel.IsExistingMatchingCard(c19505896.repfilter,tp,LOCATION_MZONE,0,1,c) end
-	if Duel.SelectYesNo(tp,aux.Stringid(19505896,0)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
 		local g=Duel.SelectMatchingCard(tp,c19505896.repfilter,tp,LOCATION_MZONE,0,1,1,c)
 		e:SetLabelObject(g:GetFirst())

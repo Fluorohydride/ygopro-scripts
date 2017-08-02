@@ -63,7 +63,7 @@ function c76067258.repfilter(c,tp)
 end
 function c76067258.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetCardTarget():IsExists(c76067258.repfilter,1,nil,tp) end
-	if Duel.SelectYesNo(tp,aux.Stringid(76067258,1)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=e:GetHandler():GetCardTarget():FilterSelect(tp,c76067258.repfilter,1,1,nil,tp)
 		Duel.SendtoGrave(g,REASON_EFFECT)

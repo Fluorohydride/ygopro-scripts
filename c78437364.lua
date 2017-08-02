@@ -34,7 +34,7 @@ function c78437364.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local g=c:GetLinkedGroup()
 		return not c:IsReason(REASON_REPLACE) and g:IsExists(c78437364.repfilter,1,nil,tp)
 	end
-	if Duel.SelectYesNo(tp,aux.Stringid(78437364,0)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		local g=c:GetLinkedGroup()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
 		local sg=g:FilterSelect(tp,c78437364.repfilter,1,1,nil,tp)

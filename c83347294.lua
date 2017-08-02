@@ -77,7 +77,7 @@ end
 function c83347294.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c83347294.repfilter,1,nil,tp)
 		and Duel.IsExistingMatchingCard(c83347294.desfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_PZONE,0,1,nil,tp) end
-	if Duel.SelectYesNo(tp,aux.Stringid(83347294,1)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
 		local g=Duel.SelectMatchingCard(tp,c83347294.desfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_PZONE,0,1,1,nil,tp)
 		e:SetLabelObject(g:GetFirst())

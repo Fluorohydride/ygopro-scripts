@@ -31,7 +31,7 @@ end
 function c54320860.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0
 		and eg:IsExists(c54320860.filter,1,nil,tp) and e:GetHandler():IsAbleToRemove() end
-	return Duel.SelectYesNo(tp,aux.Stringid(54320860,0))
+	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c54320860.repval(e,c)
 	return c54320860.filter(c,e:GetHandlerPlayer())

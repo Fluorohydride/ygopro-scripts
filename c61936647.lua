@@ -88,7 +88,7 @@ function c61936647.repfilter(c,e)
 end
 function c61936647.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDestructable() and eg:IsExists(c61936647.repfilter,1,nil,e) end
-	return Duel.SelectYesNo(tp,aux.Stringid(61936647,0))
+	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c61936647.repval(e,c)
 	return c61936647.repfilter(c,e)

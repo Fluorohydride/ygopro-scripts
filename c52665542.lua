@@ -85,7 +85,7 @@ function c52665542.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetLabel(count)
 		return count>0 and Duel.IsCanRemoveCounter(tp,1,0,0x5,count*2,REASON_EFFECT)
 	end
-	return Duel.SelectYesNo(tp,aux.Stringid(52665542,1))
+	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c52665542.value(e,c)
 	return c:IsFaceup() and c:IsLocation(LOCATION_ONFIELD)
