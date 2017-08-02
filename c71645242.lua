@@ -99,7 +99,7 @@ function c71645242.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(c71645242.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	local atk=g:GetSum(Card.GetAttack)
 	local sc=g:FilterCount(Card.IsControler,nil,tp)
-	if chk==0 then return e:GetHandler():IsDestructable() and e:GetHandler():IsDestructable(e) and g:GetCount()>0
+	if chk==0 then return g:GetCount()>0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>-sc
 		and Duel.IsExistingTarget(c71645242.filter2,tp,LOCATION_GRAVE,0,1,nil,atk,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -111,7 +111,7 @@ function c71645242.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c71645242.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not (c:IsRelateToEffect(e) and c:IsDestructable(e)) then return end
+	if not c:IsRelateToEffect(e) then return end
 	local dg=Duel.GetMatchingGroup(c71645242.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	dg:AddCard(c)
 	Duel.Destroy(dg,REASON_EFFECT)
