@@ -2,11 +2,12 @@
 function c80335817.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
-	--
+	--indes
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EFFECT_DESTROY_REPLACE)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_INDESTRUCTABLE_COUNT)
 	e2:SetRange(LOCATION_PZONE)
+	e2:SetTargetRange(LOCATION_MZONE,0)
 	e2:SetCountLimit(1)
 	e2:SetTarget(c80335817.indtg)
 	e2:SetValue(c80335817.indval)
@@ -31,16 +32,11 @@ function c80335817.initial_effect(c)
 	e4:SetOperation(c80335817.rmop)
 	c:RegisterEffect(e4)
 end
-function c80335817.filter(c,tp)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:IsType(TYPE_PENDULUM)
-		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
+function c80335817.indtg(e,c)
+	return c:IsType(TYPE_PENDULUM)
 end
-function c80335817.indtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c80335817.filter,1,nil,tp) end
-	return true
-end
-function c80335817.indval(e,c)
-	return c80335817.filter(c,e:GetHandlerPlayer())
+function c80335817.indval(e,re,r,rp)
+	return bit.band(r,REASON_EFFECT)~=0 and rp==1-e:GetHandlerPlayer()
 end
 function c80335817.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

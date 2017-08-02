@@ -33,13 +33,14 @@ function c20409757.initial_effect(c)
 	local e5=e4:Clone()
 	e5:SetCode(EFFECT_CHANGE_RSCALE)
 	c:RegisterEffect(e5)
-	--
+	--indes
 	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e6:SetCode(EFFECT_DESTROY_REPLACE)
+	e6:SetType(EFFECT_TYPE_FIELD)
+	e6:SetCode(EFFECT_INDESTRUCTABLE_COUNT)
 	e6:SetRange(LOCATION_MZONE)
+	e6:SetTargetRange(LOCATION_PZONE,0)
 	e6:SetCountLimit(1)
-	e6:SetTarget(c20409757.indtg)
+	e6:SetTarget(aux.TRUE)
 	e6:SetValue(c20409757.indval)
 	c:RegisterEffect(e6)
 end
@@ -70,14 +71,6 @@ end
 function c20409757.slcon(e)
 	return not Duel.IsExistingMatchingCard(c20409757.slfilter,e:GetHandlerPlayer(),LOCATION_PZONE,0,1,e:GetHandler())
 end
-function c20409757.filter(c,tp)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_PZONE)
-		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
-end
-function c20409757.indtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c20409757.filter,1,nil,tp) end
-	return true
-end
-function c20409757.indval(e,c)
-	return c20409757.filter(c,e:GetHandlerPlayer())
+function c20409757.indval(e,re,r,rp)
+	return bit.band(r,REASON_EFFECT)~=0 and rp==1-e:GetHandlerPlayer()
 end
