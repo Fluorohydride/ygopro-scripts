@@ -39,7 +39,7 @@ function c99469936.atkval(e,c)
 end
 function c99469936.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) end
-	if Duel.SelectYesNo(tp,aux.Stringid(99469936,1)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_EFFECT)
 		return true
 	else return false end
