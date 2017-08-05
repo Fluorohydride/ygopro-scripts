@@ -66,7 +66,7 @@ end
 function c95395761.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local tc=c:GetEquipTarget()
-	if chk==0 then return not c:IsStatus(STATUS_DESTROY_CONFIRMED) end
+	if chk==0 then return c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED) end
 	return Duel.SelectEffectYesNo(tp,c,96)
 end
 function c95395761.repop(e,tp,eg,ep,ev,re,r,rp)

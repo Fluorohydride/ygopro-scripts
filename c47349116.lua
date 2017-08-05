@@ -69,6 +69,7 @@ function c47349116.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local sg=Duel.SelectMatchingCard(tp,c47349116.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
+		Duel.Hint(HINT_CARD,0,47349116)
 		Duel.SendtoGrave(sg,REASON_EFFECT)
 		return true
 	else return false end

@@ -42,18 +42,18 @@ function c29981921.disop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end
-function c29981921.repfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
+function c29981921.repfilter(c,e)
+	return c:IsFaceup() and c:IsSetCard(0x3d)
+		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
 end
 function c29981921.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return not c:IsReason(REASON_REPLACE) and c:IsOnField() and c:IsFaceup()
-		and Duel.IsExistingMatchingCard(c29981921.repfilter,tp,LOCATION_MZONE,0,1,c) end
+		and Duel.IsExistingMatchingCard(c29981921.repfilter,tp,LOCATION_MZONE,0,1,c,e) end
 	if Duel.SelectEffectYesNo(tp,c,96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
-		local g=Duel.SelectMatchingCard(tp,c29981921.repfilter,tp,LOCATION_MZONE,0,1,1,c)
+		local g=Duel.SelectMatchingCard(tp,c29981921.repfilter,tp,LOCATION_MZONE,0,1,1,c,e)
 		e:SetLabelObject(g:GetFirst())
-		Duel.HintSelection(g)
 		g:GetFirst():SetStatus(STATUS_DESTROY_CONFIRMED,true)
 		return true
 	else return false end

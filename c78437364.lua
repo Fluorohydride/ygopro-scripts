@@ -25,26 +25,27 @@ function c78437364.atkval(e,c)
 	local val=math.max(c:GetBaseDefense(),0)
 	return val*-1
 end
-function c78437364.repfilter(c,tp)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and not c:IsStatus(STATUS_DESTROY_CONFIRMED)
+function c78437364.repfilter(c,e,tp)
+	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
+		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED)
 end
 function c78437364.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then
 		local g=c:GetLinkedGroup()
-		return not c:IsReason(REASON_REPLACE) and g:IsExists(c78437364.repfilter,1,nil,tp)
+		return not c:IsReason(REASON_REPLACE) and g:IsExists(c78437364.repfilter,1,nil,e,tp)
 	end
-	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
+	if Duel.SelectEffectYesNo(tp,c,96) then
 		local g=c:GetLinkedGroup()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
-		local sg=g:FilterSelect(tp,c78437364.repfilter,1,1,nil,tp)
-		Duel.SetTargetCard(sg)
+		local sg=g:FilterSelect(tp,c78437364.repfilter,1,1,nil,e,tp)
+		e:SetLabelObject(sg:GetFirst())
 		sg:GetFirst():SetStatus(STATUS_DESTROY_CONFIRMED,true)
 		return true
 	else return false end
 end
 function c78437364.desrepop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	g:GetFirst():SetStatus(STATUS_DESTROY_CONFIRMED,false)
-	Duel.Destroy(g,REASON_EFFECT+REASON_REPLACE)
+	local tc=e:GetLabelObject()
+	tc:SetStatus(STATUS_DESTROY_CONFIRMED,false)
+	Duel.Destroy(tc,REASON_EFFECT+REASON_REPLACE)
 end

@@ -43,19 +43,19 @@ function c80476891.operation(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e2)
 	end
 end
-function c80476891.repfilter(c,tp,e)
+function c80476891.repfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
 		and c:IsType(TYPE_DUAL) and c:IsReason(REASON_EFFECT) and c:GetFlagEffect(80476891)==0
 end
-function c80476891.desfilter(c,tp)
+function c80476891.desfilter(c,e,tp)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD)
-		and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
+		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
 end
 function c80476891.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c80476891.desfilter,tp,LOCATION_ONFIELD,0,1,nil,tp)
-		and eg:IsExists(c80476891.repfilter,1,nil,tp,e) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c80476891.desfilter,tp,LOCATION_ONFIELD,0,1,nil,e,tp)
+		and eg:IsExists(c80476891.repfilter,1,nil,tp) end
 	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
-		local g=eg:Filter(c80476891.repfilter,nil,tp,e)
+		local g=eg:Filter(c80476891.repfilter,nil,tp)
 		if g:GetCount()==1 then
 			e:SetLabelObject(g:GetFirst())
 		else
@@ -64,8 +64,7 @@ function c80476891.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 			e:SetLabelObject(cg:GetFirst())
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
-		local tg=Duel.SelectMatchingCard(tp,c80476891.desfilter,tp,LOCATION_ONFIELD,0,1,1,nil,tp)
-		Duel.HintSelection(tg)
+		local tg=Duel.SelectMatchingCard(tp,c80476891.desfilter,tp,LOCATION_ONFIELD,0,1,1,nil,e,tp)
 		Duel.SetTargetCard(tg)
 		tg:GetFirst():RegisterFlagEffect(80476891,RESET_EVENT+0x1fc0000+RESET_CHAIN,0,1)
 		tg:GetFirst():SetStatus(STATUS_DESTROY_CONFIRMED,true)
@@ -76,6 +75,7 @@ function c80476891.repval(e,c)
 	return c==e:GetLabelObject()
 end
 function c80476891.repop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,1-tp,80476891)
 	local tc=Duel.GetFirstTarget()
 	tc:SetStatus(STATUS_DESTROY_CONFIRMED,false)
 	Duel.Destroy(tc,REASON_EFFECT+REASON_REPLACE)

@@ -55,10 +55,11 @@ function c25231813.indval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end
 function c25231813.reptg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetEquipTarget():IsReason(REASON_EFFECT)
-		and not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED) end
-	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
-		e:GetHandler():SetStatus(STATUS_DESTROY_CONFIRMED,true)
+	local c=e:GetHandler()
+	if chk==0 then return c:GetEquipTarget():IsReason(REASON_EFFECT)
+		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED) end
+	if Duel.SelectEffectYesNo(tp,c,96) then
+		c:SetStatus(STATUS_DESTROY_CONFIRMED,true)
 		return true
 	else return false end
 end
