@@ -82,7 +82,7 @@ function c35371948.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e2)
 		--Activate or send
 		local e3=Effect.CreateEffect(c)
-		e3:SetDescription(aux.Stringid(35371948,4))
+		e3:SetDescription(aux.Stringid(35371948,6))
 		e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e3:SetProperty(EFFECT_FLAG_OWNER_RELATE+EFFECT_FLAG_BOTH_SIDE)
 		e3:SetRange(LOCATION_FZONE)
@@ -107,7 +107,7 @@ function c35371948.rstop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c35371948.agcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	return tc and tc:GetFlagEffect(35371948)~=0 and tc:GetControler() == tp
+	return tc and tc:GetFlagEffect(35371948)~=0 and tc:GetControler()==tp
 end
 function c35371948.agop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
