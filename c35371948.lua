@@ -104,7 +104,7 @@ function c35371948.rstcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject():GetLabelObject()
 	if tc:GetFlagEffectLabel(35371948)==e:GetLabel()
 		and c:GetFlagEffectLabel(35371948)==e:GetLabel() then
-		return true
+		return not c:IsDisabled()
 	else
 		e:Reset()
 		return false
@@ -120,18 +120,13 @@ function c35371948.agcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	if tc:GetFlagEffectLabel(35371948)==e:GetLabel()
 		and c:GetFlagEffectLabel(35371948)==e:GetLabel() then
-		return true
+		return not c:IsDisabled()
 	else
 		e:Reset()
 		return false
 	end
 end
 function c35371948.agop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:IsDisabled() then
-		Duel.HintSelection(Group.FromCards(e:GetHandler()))
-		return
-	end
 	local tc=e:GetLabelObject()
 	Duel.SendtoGrave(tc,REASON_RULE)
 end
