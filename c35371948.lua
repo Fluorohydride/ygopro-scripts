@@ -1,5 +1,4 @@
 --トリックスター・ライトステージ
---not fully implemented
 function c35371948.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -69,30 +68,50 @@ function c35371948.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c35371948.rcon)
 		e1:SetValue(1)
 		tc:RegisterEffect(e1)
-		--Activate or send
+		--End of e1
 		local e2=Effect.CreateEffect(c)
+		e2:SetDescription(aux.Stringid(35371948,5))
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e2:SetRange(LOCATION_FZONE)
 		e2:SetCode(EVENT_PHASE+PHASE_END)
+		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 		e2:SetCountLimit(1)
+		e2:SetRange(LOCATION_FZONE)
 		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DRAW)
-		e2:SetLabelObject(tc)
-		e2:SetCondition(c35371948.agcon)
-		e2:SetOperation(c35371948.agop)
+		e2:SetLabelObject(e1)
+		e2:SetOperation(c35371948.rstop)
 		c:RegisterEffect(e2)
+		--Activate or send
+		local e3=Effect.CreateEffect(c)
+		e3:SetDescription(aux.Stringid(35371948,6))
+		e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e3:SetProperty(EFFECT_FLAG_OWNER_RELATE+EFFECT_FLAG_BOTH_SIDE)
+		e3:SetRange(LOCATION_FZONE)
+		e3:SetCode(EVENT_PHASE+PHASE_END)
+		e3:SetCountLimit(1)
+		e3:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DRAW)
+		e3:SetLabelObject(tc)
+		e3:SetCondition(c35371948.agcon)
+		e3:SetOperation(c35371948.agop)
+		c:RegisterEffect(e3)
 	end
 end
 function c35371948.rcon(e)
 	return e:GetOwner():IsHasCardTarget(e:GetHandler()) and e:GetHandler():GetFlagEffect(35371948)~=0
 end
+function c35371948.rstop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local e1=e:GetLabelObject()
+	e1:Reset()
+	Duel.HintSelection(Group.FromCards(c))
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
+end
 function c35371948.agcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	return tc and tc:GetFlagEffect(35371948)~=0
+	return tc and tc:GetFlagEffect(35371948)~=0 and tc:GetControler()==tp
 end
 function c35371948.agop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	if not tc or tc:IsFaceup() or not tc:IsLocation(LOCATION_SZONE) then return end
-	tc:ResetFlagEffect(35371948)
 	local te=tc:GetActivateEffect()
 	local tep=tc:GetControler()
 	local op=0
@@ -107,7 +126,7 @@ function c35371948.agop(e,tp,eg,ep,ev,re,r,rp)
 	if op==0 then
 		Duel.Activate(te)
 	else
-		Duel.SendtoGrave(tc,REASON_EFFECT)
+		Duel.SendtoGrave(tc,REASON_RULE)
 	end
 end
 function c35371948.damcon1(e,tp,eg,ep,ev,re,r,rp)
