@@ -60,6 +60,7 @@ function c35371948.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:SetCardTarget(tc)
 		e:SetLabelObject(tc)
 		local fid=c:GetFieldID()
+		c:RegisterFlagEffect(35371948,RESET_EVENT+0x1fe0000,0,1,fid)
 		tc:RegisterFlagEffect(35371948,RESET_EVENT+0x1fe0000,0,1,fid)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -99,8 +100,10 @@ function c35371948.rcon(e)
 	return e:GetOwner():IsHasCardTarget(e:GetHandler()) and e:GetHandler():GetFlagEffect(35371948)~=0
 end
 function c35371948.rstcon(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	local tc=e:GetLabelObject():GetLabelObject()
-	if tc:GetFlagEffectLabel(35371948)==e:GetLabel() then
+	if tc:GetFlagEffectLabel(35371948)==e:GetLabel()
+		and c:GetFlagEffectLabel(35371948)==e:GetLabel() then
 		return true
 	else
 		e:Reset()
@@ -113,8 +116,10 @@ function c35371948.rstop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.HintSelection(Group.FromCards(e:GetHandler()))
 end
 function c35371948.agcon(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	local tc=e:GetLabelObject()
-	if tc:GetFlagEffectLabel(35371948)==e:GetLabel() then
+	if tc:GetFlagEffectLabel(35371948)==e:GetLabel()
+		and c:GetFlagEffectLabel(35371948)==e:GetLabel() then
 		return true
 	else
 		e:Reset()
@@ -122,6 +127,11 @@ function c35371948.agcon(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c35371948.agop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	if c:IsDisabled() then
+		Duel.HintSelection(Group.FromCards(e:GetHandler()))
+		return
+	end
 	local tc=e:GetLabelObject()
 	Duel.SendtoGrave(tc,REASON_RULE)
 end
