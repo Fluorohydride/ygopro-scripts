@@ -1,5 +1,4 @@
 --トリックスター・ライトステージ
---not fully implemented
 function c35371948.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -60,55 +59,76 @@ function c35371948.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and tc:IsFacedown() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
 		e:SetLabelObject(tc)
-		tc:RegisterFlagEffect(35371948,RESET_EVENT+0x1fe0000,0,1)
+		local fid=c:GetFieldID()
+		c:RegisterFlagEffect(35371948,RESET_EVENT+0x1fe0000,0,1,fid)
+		tc:RegisterFlagEffect(35371948,RESET_EVENT+0x1fe0000,0,1,fid)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetCode(EFFECT_CANNOT_TRIGGER)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DRAW)
+		e1:SetLabelObject(tc)
 		e1:SetCondition(c35371948.rcon)
 		e1:SetValue(1)
 		tc:RegisterEffect(e1)
-		--Activate or send
+		--End of e1
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e2:SetRange(LOCATION_FZONE)
 		e2:SetCode(EVENT_PHASE+PHASE_END)
 		e2:SetCountLimit(1)
 		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DRAW)
-		e2:SetLabelObject(tc)
-		e2:SetCondition(c35371948.agcon)
-		e2:SetOperation(c35371948.agop)
-		c:RegisterEffect(e2)
+		e2:SetLabel(fid)
+		e2:SetLabelObject(e1)
+		e2:SetCondition(c35371948.rstcon)
+		e2:SetOperation(c35371948.rstop)
+		Duel.RegisterEffect(e2,tp)
+		--send to grave
+		local e3=Effect.CreateEffect(c)
+		e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+		e3:SetCode(EVENT_PHASE+PHASE_END)
+		e3:SetCountLimit(1)
+		e3:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DRAW)
+		e3:SetLabel(fid)
+		e3:SetLabelObject(tc)
+		e3:SetCondition(c35371948.agcon)
+		e3:SetOperation(c35371948.agop)
+		Duel.RegisterEffect(e3,1-tp)
 	end
 end
 function c35371948.rcon(e)
 	return e:GetOwner():IsHasCardTarget(e:GetHandler()) and e:GetHandler():GetFlagEffect(35371948)~=0
 end
+function c35371948.rstcon(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local tc=e:GetLabelObject():GetLabelObject()
+	if tc:GetFlagEffectLabel(35371948)==e:GetLabel()
+		and c:GetFlagEffectLabel(35371948)==e:GetLabel() then
+		return not c:IsDisabled()
+	else
+		e:Reset()
+		return false
+	end
+end
+function c35371948.rstop(e,tp,eg,ep,ev,re,r,rp)
+	local te=e:GetLabelObject()
+	te:Reset()
+	Duel.HintSelection(Group.FromCards(e:GetHandler()))
+end
 function c35371948.agcon(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	local tc=e:GetLabelObject()
-	return tc and tc:GetFlagEffect(35371948)~=0
+	if tc:GetFlagEffectLabel(35371948)==e:GetLabel()
+		and c:GetFlagEffectLabel(35371948)==e:GetLabel() then
+		return not c:IsDisabled()
+	else
+		e:Reset()
+		return false
+	end
 end
 function c35371948.agop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	if not tc or tc:IsFaceup() or not tc:IsLocation(LOCATION_SZONE) then return end
-	tc:ResetFlagEffect(35371948)
-	local te=tc:GetActivateEffect()
-	local tep=tc:GetControler()
-	local op=0
-	if te and te:GetCode()==EVENT_FREE_CHAIN and te:IsActivatable(tep)
-		and (not tc:IsType(TYPE_SPELL) or tc:IsType(TYPE_QUICKPLAY)) then
-		Duel.Hint(HINT_SELECTMSG,tep,HINTMSG_OPTION)
-		op=Duel.SelectOption(tep,aux.Stringid(35371948,3),aux.Stringid(35371948,4))
-	else
-		Duel.Hint(HINT_SELECTMSG,tep,HINTMSG_OPTION)
-		op=Duel.SelectOption(tep,aux.Stringid(35371948,4))+1
-	end
-	if op==0 then
-		Duel.Activate(te)
-	else
-		Duel.SendtoGrave(tc,REASON_EFFECT)
-	end
+	Duel.SendtoGrave(tc,REASON_RULE)
 end
 function c35371948.damcon1(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and eg:GetFirst():IsSetCard(0xfb)
