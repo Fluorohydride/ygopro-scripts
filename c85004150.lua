@@ -52,7 +52,7 @@ function c85004150.xyzcon(e,c,og,min,max)
 		return true
 	end
 	local minc=2
-	local maxc=5
+	local maxc=99
 	if min then
 		if min>minc then minc=min end
 		if max<maxc then maxc=max end
@@ -67,7 +67,7 @@ function c85004150.xyztg(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=-ft
 	local minc=2
-	local maxc=5
+	local maxc=99
 	if min then
 		if min>minc then minc=min end
 		if max<maxc then maxc=max end

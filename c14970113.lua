@@ -1,7 +1,7 @@
 --十二獣ハマーコング
 function c14970113.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,nil,4,3,c14970113.ovfilter,aux.Stringid(14970113,0),5,c14970113.xyzop)
+	aux.AddXyzProcedure(c,nil,4,3,c14970113.ovfilter,aux.Stringid(14970113,0),99,c14970113.xyzop)
 	c:EnableReviveLimit()
 	--atk
 	local e1=Effect.CreateEffect(c)
