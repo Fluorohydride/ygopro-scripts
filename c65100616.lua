@@ -18,5 +18,5 @@ function c65100616.spcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)>0
 end
 function c65100616.spval(e,c)
-	return bit.lshift(Duel.GetLinkedZone(c:GetControler()),16)
+	return 0,Duel.GetLinkedZone(c:GetControler())
 end

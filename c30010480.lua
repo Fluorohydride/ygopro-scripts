@@ -32,7 +32,15 @@ function c30010480.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c30010480.sumval(e,c)
-	return e:GetHandler():GetLinkedZone()*0x10000
+	if c:IsControler(e:GetHandlerPlayer()) then
+		local sumzone=e:GetHandler():GetLinkedZone()
+		local relzone=-bit.lshift(1,e:GetHandler():GetSequence())
+		return 0,sumzone,relzone
+	else
+		local sumzone=bit.rshift(e:GetHandler():GetLinkedZone(),16)
+		local relzone=-bit.lshift(1,e:GetHandler():GetSequence()+16)
+		return 0,sumzone,relzone
+	end
 end
 function c30010480.regop(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetHandler():GetLinkedGroup()
