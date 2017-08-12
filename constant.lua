@@ -214,6 +214,7 @@ CHAININFO_DISABLE_PLAYER		=0x400	--无效的玩家
 CHAININFO_CHAIN_ID				=0x800	--连锁ID
 CHAININFO_TYPE					=0x1000	--连锁类型
 CHAININFO_EXTTYPE				=0x2000	--连锁额外类型
+CHAININFO_TRIGGERING_POSITION			=0x4000	--连锁的表示形式
 --========== Reset ==========	--重置条件（注意：重置条件可以多个相加）
 RESET_SELF_TURN		=0x10000000			--自己回合的階段重置
 RESET_OPPO_TURN		=0x20000000			--对方回合的階段重置

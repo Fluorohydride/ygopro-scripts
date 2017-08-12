@@ -44,16 +44,6 @@ function c90590303.initial_effect(c)
 	e5:SetCondition(c90590303.discon)
 	e5:SetOperation(c90590303.disop)
 	c:RegisterEffect(e5)
-	--global check for getting activate position
-	if not c90590303.global_check then
-		c90590303.global_check=true
-		local ge1=Effect.GlobalEffect()
-		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge1:SetCode(EVENT_CHAINING)
-		ge1:SetCondition(c90590303.regcon)
-		ge1:SetOperation(c90590303.regop)
-		Duel.RegisterEffect(ge1,0)
-	end
 end
 c90590303.xyz_number=41
 function c90590303.mtcon(e,tp,eg,ep,ev,re,r,rp)
@@ -79,24 +69,10 @@ function c90590303.postg(e,c)
 	return c:IsFaceup()
 end
 function c90590303.discon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
-	return not c:IsStatus(STATUS_BATTLE_DESTROYED) and c:IsDefensePos() and c90590303[cid]
+	local loc,pos=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_POSITION)
+	return e:GetHandler():IsDefensePos()
+		and re:IsActiveType(TYPE_MONSTER) and loc==LOCATION_MZONE and bit.band(pos,POS_DEFENSE)~=0
 end
 function c90590303.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
-end
-function c90590303.regcon(e,tp,eg,ep,ev,re,r,rp)
-	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
-	if not re:IsActiveType(TYPE_MONSTER) or loc~=LOCATION_MZONE then return false end
-	local rc=re:GetHandler()
-	if rc:IsRelateToEffect(re) then
-		return rc:IsDefensePos()
-	else
-		return rc:IsPreviousPosition(POS_DEFENSE)
-	end
-end
-function c90590303.regop(e,tp,eg,ep,ev,re,r,rp)
-	local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
-	c90590303[cid]=true
 end
