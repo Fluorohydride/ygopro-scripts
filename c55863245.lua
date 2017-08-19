@@ -50,16 +50,16 @@ end
 function c55863245.syntg(e,syncard,f,minc,maxc)
 	local c=e:GetHandler()
 	local tp=syncard:GetControler()
-	local lv=syncard:GetLevel()
+	local lv=syncard:GetLevel()-c:GetLevel()
 	if lv<=0 then return false end
-	local g=Group.FromCards(e:GetHandler())
+	local g=Group.CreateGroup()
 	local mg=Duel.GetMatchingGroup(c55863245.synfilter1,tp,LOCATION_MZONE+LOCATION_HAND,LOCATION_MZONE,c,syncard,c,f)
 	return mg:IsExists(c55863245.syncheck,1,g,g,mg,tp,lv,syncard,minc,maxc)
 end
 function c55863245.synop(e,tp,eg,ep,ev,re,r,rp,syncard,f,minc,maxc)
 	local c=e:GetHandler()
-	local lv=syncard:GetLevel()
-	local g=Group.FromCards(e:GetHandler())
+	local lv=syncard:GetLevel()-c:GetLevel()
+	local g=Group.CreateGroup()
 	local mg=Duel.GetMatchingGroup(c55863245.synfilter1,tp,LOCATION_MZONE+LOCATION_HAND,LOCATION_MZONE,c,syncard,c,f)
 	for i=1,maxc do
 		local cg=mg:Filter(c55863245.syncheck,g,g,mg,tp,lv,syncard,minc,maxc)
