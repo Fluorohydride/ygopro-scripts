@@ -23,7 +23,7 @@ function c29716911.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c29716911.atkfilter(c)
-	return c:IsFaceup() and c:IsRace(RACE_CYBERS)
+	return c:IsFaceup() and c:IsRace(RACE_CYBERSE)
 end
 function c29716911.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()

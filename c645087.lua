@@ -56,13 +56,13 @@ function c645087.tkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c645087.tktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,645088,0x51,0x4011,0,0,2,RACE_CYBERS,ATTRIBUTE_LIGHT) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,645088,0x51,0x4011,0,0,2,RACE_CYBERSE,ATTRIBUTE_LIGHT) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 end
 function c645087.tkop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,645088,0x51,0x4011,0,0,2,RACE_CYBERS,ATTRIBUTE_LIGHT) then return end
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,645088,0x51,0x4011,0,0,2,RACE_CYBERSE,ATTRIBUTE_LIGHT) then return end
 	local token=Duel.CreateToken(tp,645088)
 	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 end

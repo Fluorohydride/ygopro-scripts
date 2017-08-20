@@ -2,7 +2,7 @@
 function c67231737.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()
-	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_CYBERS),2,2)
+	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_CYBERSE),2,2)
 	--extra attack
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(67231737,0))

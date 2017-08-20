@@ -28,7 +28,7 @@ function c62306203.initial_effect(c)
 end
 function c62306203.cfilter(c,tp)
 	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
-		and bit.band(c:GetPreviousTypeOnField(),TYPE_LINK)~=0 and bit.band(c:GetPreviousRaceOnField(),RACE_CYBERS)~=0
+		and bit.band(c:GetPreviousTypeOnField(),TYPE_LINK)~=0 and bit.band(c:GetPreviousRaceOnField(),RACE_CYBERSE)~=0
 end
 function c62306203.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and eg:IsExists(c62306203.cfilter,1,e:GetHandler(),tp)
@@ -52,7 +52,7 @@ function c62306203.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,c62306203.costfilter,1,1,REASON_COST+REASON_DISCARD)
 end
 function c62306203.spfilter(c,e,tp)
-	return c:IsRace(RACE_CYBERS) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_CYBERSE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c62306203.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c62306203.spfilter(chkc,e,tp) end

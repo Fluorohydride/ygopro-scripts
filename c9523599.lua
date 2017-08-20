@@ -17,7 +17,7 @@ function c9523599.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return r==REASON_LINK
 end
 function c9523599.spfilter(c,e,tp)
-	return c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp) and c:IsLevelBelow(4) and c:IsRace(RACE_CYBERS)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp) and c:IsLevelBelow(4) and c:IsRace(RACE_CYBERSE)
 		and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c9523599.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

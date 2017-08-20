@@ -10,7 +10,7 @@ function c91665064.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c91665064.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_CYBERS)
+	return c:IsFaceup() and c:IsRace(RACE_CYBERSE)
 end
 function c91665064.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c91665064.filter(chkc) end

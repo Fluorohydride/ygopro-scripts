@@ -2,6 +2,7 @@ Auxiliary={}
 aux=Auxiliary
 POS_FACEUP_DEFENCE=POS_FACEUP_DEFENSE
 POS_FACEDOWN_DEFENCE=POS_FACEDOWN_DEFENSE
+RACE_CYBERS=RACE_CYBERSE
 
 function Auxiliary.Stringid(code,id)
 	return code*16+id

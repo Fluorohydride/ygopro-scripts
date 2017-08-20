@@ -43,7 +43,7 @@ function c89238128.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c89238128.atkfilter(c,lg)
-	return c:IsFaceup() and c:IsRace(RACE_CYBERS) and lg and lg:IsContains(c)
+	return c:IsFaceup() and c:IsRace(RACE_CYBERSE) and lg and lg:IsContains(c)
 end
 function c89238128.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local lg=e:GetHandler():GetLinkedGroup()
@@ -68,7 +68,7 @@ function c89238128.excon(e,tp,eg,ep,ev,re,r,rp)
 	return (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c89238128.exfilter(c,lg)
-	return c:IsFaceup() and c:IsRace(RACE_CYBERS) and c:GetEffectCount(EFFECT_EXTRA_ATTACK_MONSTER)==0 and lg and lg:IsContains(c)
+	return c:IsFaceup() and c:IsRace(RACE_CYBERSE) and c:GetEffectCount(EFFECT_EXTRA_ATTACK_MONSTER)==0 and lg and lg:IsContains(c)
 end
 function c89238128.extg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local lg=e:GetHandler():GetLinkedGroup()

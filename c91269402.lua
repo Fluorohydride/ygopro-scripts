@@ -29,7 +29,7 @@ function c91269402.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFlagEffect(tp,91269402)~=0
 end
 function c91269402.filter(c)
-	return c:IsAbleToHand() and c:IsRace(RACE_CYBERS) and c:IsLevelBelow(4)
+	return c:IsAbleToHand() and c:IsRace(RACE_CYBERSE) and c:IsLevelBelow(4)
 end
 function c91269402.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c91269402.filter,tp,LOCATION_DECK,0,1,nil) end

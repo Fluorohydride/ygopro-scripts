@@ -24,7 +24,7 @@ function c7445307.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c7445307.cfilter(c)
-	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsRace(RACE_CYBERS) and c:IsAbleToRemoveAsCost()
+	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsRace(RACE_CYBERSE) and c:IsAbleToRemoveAsCost()
 end
 function c7445307.mzfilter(c,tp)
 	return c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5

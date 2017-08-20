@@ -12,7 +12,7 @@ function c63528891.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c63528891.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_CYBERS)
+	return c:IsFaceup() and c:IsRace(RACE_CYBERSE)
 end
 function c63528891.spcon(e,c)
 	if c==nil then return true end

@@ -47,7 +47,7 @@ function c92327802.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RemoveCounter(tp,1,0,0x43,1,REASON_COST)
 end
 function c92327802.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_CYBERS)
+	return c:IsFaceup() and c:IsRace(RACE_CYBERSE)
 end
 function c92327802.tg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c92327802.filter(chkc) end
