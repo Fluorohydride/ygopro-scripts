@@ -40,34 +40,28 @@ end
 function c43387895.spfilter(c,fc)
 	return c43387895.ffilter(c) and c:IsCanBeFusionMaterial(fc)
 end
+function c43387895.spfilter1(c,tp,g)
+	return g:IsExists(c43387895.spfilter2,1,c,tp,c)
+end
+function c43387895.spfilter2(c,tp,mc)
+	return Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
+end
 function c43387895.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCountFromEx(tp,PLAYER_NONE)
-	local ct=-ft+1
 	local g=Duel.GetReleaseGroup(tp):Filter(c43387895.spfilter,nil,c)
-	return g:GetCount()>1 and (Duel.GetLocationCountFromEx(tp)>0 or g:IsExists(Card.CheckMZoneFromEx,ct,nil,tp))
+	return g:IsExists(c43387895.spfilter1,1,nil,tp,g)
 end
 function c43387895.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCountFromEx(tp,PLAYER_NONE)
-	local ct=-ft+1
 	local g=Duel.GetReleaseGroup(tp):Filter(c43387895.spfilter,nil,c)
-	local sg=nil
-	if Duel.GetLocationCountFromEx(tp)<=0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		sg=g:FilterSelect(tp,Card.CheckMZoneFromEx,ct,ct,nil,tp)
-		if ct<2 then
-			g:Sub(sg)
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-			local g1=g:Select(tp,2-ct,2-ct,nil)
-			sg:Merge(g1)
-		end
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		sg=g:Select(tp,2,2,nil)
-	end
-	c:SetMaterial(sg)
-	Duel.Release(sg,REASON_COST+REASON_FUSION+REASON_MATERIAL)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local g1=g:FilterSelect(tp,c43387895.spfilter1,1,1,nil,tp,g)
+	local mc=g1:GetFirst()
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local g2=g:FilterSelect(tp,c43387895.spfilter2,1,1,mc,tp,mc)
+	g1:Merge(g2)
+	c:SetMaterial(g1)
+	Duel.Release(g1,REASON_COST+REASON_FUSION+REASON_MATERIAL)
 end
 function c43387895.copycost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(41209827)==0 end
