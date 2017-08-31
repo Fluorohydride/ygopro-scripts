@@ -26,7 +26,6 @@ function c87257460.initial_effect(c)
 	e2:SetLabelObject(e1)
 	c:RegisterEffect(e2)
 end
-c87257460.lvupcount=1
 c87257460.lvup={23756165}
 function c87257460.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetLabelObject()

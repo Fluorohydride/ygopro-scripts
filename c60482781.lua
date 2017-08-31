@@ -17,7 +17,6 @@ function c60482781.initial_effect(c)
 	e2:SetCondition(c60482781.sumcon)
 	c:RegisterEffect(e2) 
 end
-c60482781.lvdncount=2
 c60482781.lvdn={47507260,74591968}
 function c60482781.descon(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()

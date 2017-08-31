@@ -19,15 +19,12 @@ function c90500169.filter(c,e,tp)
 	if op~=cp and locct<=0 then return false end
 	local code=c:GetCode()
 	local class=_G["c"..code]
-	return class and class.lvdncount~=nil and Duel.IsExistingMatchingCard(c90500169.spfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,class,e,tp,op)
+	return class and class.lvdn~=nil and Duel.IsExistingMatchingCard(c90500169.spfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,class,e,tp,op)
 end
 function c90500169.spfilter(c,class,e,tp,op)
 	if not c:IsControler(op) then return false end
 	local code=c:GetCode()
-	for i=1,class.lvdncount do
-		if code==class.lvdn[i] then return c:IsCanBeSpecialSummoned(e,0,tp,true,false,POS_FACEUP,op) end
-	end
-	return false
+	return c:IsCode(table.unpack(class.lvdn)) and c:IsCanBeSpecialSummoned(e,0,tp,true,false,POS_FACEUP,op)
 end
 function c90500169.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c90500169.filter(chkc,e,tp) end
@@ -45,7 +42,7 @@ function c90500169.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)==0 then return end
 	if Duel.GetLocationCount(op,LOCATION_MZONE)<=0 then return end
 	local class=_G["c"..code]
-	if class==nil or class.lvdncount==nil then return end
+	if class==nil or class.lvdn==nil then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c90500169.spfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil,class,e,tp,op)
 	if g:GetCount()>0 then

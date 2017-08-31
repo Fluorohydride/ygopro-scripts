@@ -19,9 +19,7 @@ function c73879377.initial_effect(c)
 	e2:SetOperation(c73879377.desop)
 	c:RegisterEffect(e2)
 end
-c73879377.lvupcount=1
 c73879377.lvup={46384672}
-c73879377.lvdncount=2
 c73879377.lvdn={46384672,980973}
 function c73879377.cfilter(c,tp)
 	local atk=c:GetAttack()

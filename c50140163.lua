@@ -7,9 +7,7 @@ function c50140163.initial_effect(c)
 	e1:SetOperation(c50140163.regop)
 	c:RegisterEffect(e1)
 end
-c50140163.lvupcount=1
 c50140163.lvup={23756165}
-c50140163.lvdncount=2
 c50140163.lvdn={23756165,87257460}
 function c50140163.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

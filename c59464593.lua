@@ -28,9 +28,7 @@ function c59464593.initial_effect(c)
 	e3:SetOperation(c59464593.desop)
 	c:RegisterEffect(e3)
 end
-c59464593.lvupcount=1
 c59464593.lvup={73879377}
-c59464593.lvdncount=3
 c59464593.lvdn={73879377,46384672,980973}
 function c59464593.spfilter(c,ft,tp)
 	return c:IsCode(73879377)
