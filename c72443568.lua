@@ -17,9 +17,7 @@ function c72443568.initial_effect(c)
 	e2:SetValue(c72443568.efilter)
 	c:RegisterEffect(e2)
 end
-c72443568.lvupcount=1
 c72443568.lvup={73665146}
-c72443568.lvdncount=1
 c72443568.lvdn={73665146}
 function c72443568.efilter(e,te)
 	return te:IsActiveType(TYPE_SPELL) and te:GetOwnerPlayer()~=e:GetHandlerPlayer()

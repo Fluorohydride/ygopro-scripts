@@ -34,9 +34,7 @@ function c34088136.initial_effect(c)
 	e5:SetCode(EVENT_FLIP)
 	c:RegisterEffect(e5)
 end
-c34088136.lvupcount=2
 c34088136.lvup={49441499,34830502}
-c34088136.lvdncount=1
 c34088136.lvdn={49441499}
 function c34088136.con(e)
 	return e:GetHandler():GetFlagEffect(34088136)~=0

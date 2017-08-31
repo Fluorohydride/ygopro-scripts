@@ -30,7 +30,6 @@ function c47507260.initial_effect(c)
 	e3:SetOperation(c47507260.spop)
 	c:RegisterEffect(e3)
 end
-c47507260.lvupcount=1
 c47507260.lvup={74591968}
 function c47507260.bdop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterFlagEffect(47507260,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)

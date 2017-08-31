@@ -13,7 +13,6 @@ function c980973.initial_effect(c)
 	e1:SetOperation(c980973.spop)
 	c:RegisterEffect(e1)
 end
-c980973.lvupcount=1
 c980973.lvup={46384672}
 function c980973.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer()

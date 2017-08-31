@@ -26,7 +26,6 @@ function c85313220.initial_effect(c)
 	e3:SetOperation(c85313220.spop)
 	c:RegisterEffect(e3)
 end
-c85313220.lvupcount=1
 c85313220.lvup={12817939}
 function c85313220.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

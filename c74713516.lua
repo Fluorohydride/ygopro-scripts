@@ -21,7 +21,6 @@ function c74713516.initial_effect(c)
 	e2:SetOperation(c74713516.spop)
 	c:RegisterEffect(e2)
 end
-c74713516.lvupcount=1
 c74713516.lvup={1102515}
 function c74713516.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

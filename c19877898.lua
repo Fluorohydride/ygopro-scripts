@@ -13,9 +13,7 @@ function c19877898.initial_effect(c)
 	e2:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e2)
 end
-c19877898.lvupcount=1
 c19877898.lvup={34830502}
-c19877898.lvdncount=3
 c19877898.lvdn={49441499,34088136,34830502}
 function c19877898.con(e)
 	return e:GetHandler():GetFlagEffect(19877898)~=0

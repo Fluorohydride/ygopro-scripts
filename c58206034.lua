@@ -16,9 +16,7 @@ function c58206034.initial_effect(c)
 	e2:SetValue(LOCATION_REMOVED)
 	c:RegisterEffect(e2)
 end
-c58206034.lvupcount=1
 c58206034.lvup={12817939}
-c58206034.lvdncount=2
 c58206034.lvdn={85313220,12817939}
 function c58206034.discon(e)
 	return e:GetHandler():GetFlagEffect(12817939)~=0

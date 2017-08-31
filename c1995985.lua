@@ -32,7 +32,6 @@ function c1995985.initial_effect(c)
 	e5:SetCode(EVENT_FLIP)
 	c:RegisterEffect(e5)
 end
-c1995985.lvupcount=1
 c1995985.lvup={74388798}
 function c1995985.disop(e,tp,eg,ep,ev,re,r,rp)
 	if not re:GetHandler():IsType(TYPE_SPELL) or rp==tp then return end
