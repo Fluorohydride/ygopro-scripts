@@ -17,13 +17,11 @@ function c90500169.filter(c,e,tp)
 	local cp=c:GetControler()
 	if op==cp and locct<=-1 then return false end
 	if op~=cp and locct<=0 then return false end
-	local code=c:GetCode()
-	local class=_G["c"..code]
+	local class=_G["c"..c:GetOriginalCode()]
 	return class and class.lvdn~=nil and Duel.IsExistingMatchingCard(c90500169.spfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,class,e,tp,op)
 end
 function c90500169.spfilter(c,class,e,tp,op)
 	if not c:IsControler(op) then return false end
-	local code=c:GetCode()
 	return c:IsCode(table.unpack(class.lvdn)) and c:IsCanBeSpecialSummoned(e,0,tp,true,false,POS_FACEUP,op)
 end
 function c90500169.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -36,7 +34,7 @@ function c90500169.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c90500169.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	local code=tc:GetCode()
+	local code=tc:GetOriginalCode()
 	local op=tc:GetOwner()
 	if not tc:IsRelateToEffect(e) or not tc:IsFaceup() then return end
 	if Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)==0 then return end
