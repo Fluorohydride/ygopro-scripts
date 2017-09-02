@@ -2,15 +2,7 @@
 function c57314798.initial_effect(c)
 	c:EnableReviveLimit()
 	--xyz summon
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_SPSUMMON_PROC)
-	e1:SetRange(LOCATION_EXTRA)
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
-	e1:SetCondition(c57314798.xyzcon)
-	e1:SetOperation(c57314798.xyzop)
-	e1:SetValue(SUMMON_TYPE_XYZ)
-	c:RegisterEffect(e1)
+	aux.AddXyzProcedureLevelFree(c,c57314798.mfilter,c57314798.xyzcheck,2,2)
 	--atk up
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(57314798,0))
@@ -46,57 +38,10 @@ function c57314798.initial_effect(c)
 end
 c57314798.xyz_number=100
 function c57314798.mfilter(c,xyzc)
-	return c:IsFaceup() and c:IsXyzType(TYPE_XYZ) and c:IsSetCard(0x48) and c:IsCanBeXyzMaterial(xyzc)
+	return c:IsSetCard(0x48) and c:IsXyzType(TYPE_XYZ)
 end
-function c57314798.xyzfilter1(c,g)
-	return g:IsExists(c57314798.xyzfilter2,1,c,c:GetRank(),c:GetCode())
-end
-function c57314798.xyzfilter2(c,rk,code)
-	return c:GetRank()==rk and c:IsCode(code)
-end
-function c57314798.xyzcon(e,c,og,min,max)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local mg=nil
-	if og then
-		mg=og:Filter(c57314798.mfilter,nil,c)
-	else
-		mg=Duel.GetMatchingGroup(c57314798.mfilter,tp,LOCATION_MZONE,0,nil,c)
-	end
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and (not min or min<=2 and max>=2)
-		and mg:IsExists(c57314798.xyzfilter1,1,nil,mg)
-end
-function c57314798.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
-	local g=nil
-	local sg=Group.CreateGroup()
-	if og and not min then
-		g=og
-		local tc=og:GetFirst()
-		while tc do
-			sg:Merge(tc:GetOverlayGroup())
-			tc=og:GetNext()
-		end
-	else
-		local mg=nil
-		if og then
-			mg=og:Filter(c57314798.mfilter,nil,c)
-		else
-			mg=Duel.GetMatchingGroup(c57314798.mfilter,tp,LOCATION_MZONE,0,nil,c)
-		end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		g=mg:FilterSelect(tp,c57314798.xyzfilter1,1,1,nil,mg)
-		local tc1=g:GetFirst()
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local g2=mg:FilterSelect(tp,c57314798.xyzfilter2,1,1,tc1,tc1:GetRank(),tc1:GetCode())
-		local tc2=g2:GetFirst()
-		g:Merge(g2)
-		sg:Merge(tc1:GetOverlayGroup())
-		sg:Merge(tc2:GetOverlayGroup())
-	end
-	Duel.SendtoGrave(sg,REASON_RULE)
-	c:SetMaterial(g)
-	Duel.Overlay(c,g)
+function c57314798.xyzcheck(g,xyzc)
+	return g:GetClassCount(Card.GetCode)==1 and g:GetClassCount(Card.GetRank)==1
 end
 function c57314798.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
