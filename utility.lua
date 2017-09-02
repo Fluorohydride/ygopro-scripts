@@ -475,7 +475,7 @@ function Auxiliary.XyzProcedureLevelFreeCondition(func,gf,minct,maxct)
 		end
 		local mg=nil
 		if og then
-			mg=og:Filter(Auxiliary.XyzProcedureLevelFreeFilter,nil,c,func,ext_params)
+			mg=og:Filter(Auxiliary.XyzProcedureLevelFreeFilter,nil,c,func)
 		else
 			mg=Duel.GetMatchingGroup(Auxiliary.XyzProcedureLevelFreeFilter,tp,LOCATION_MZONE,0,nil,c,func)
 		end
@@ -506,7 +506,7 @@ function Auxiliary.XyzProcedureLevelFreeOperation(func,gf,minct,maxct)
 			local ct=g:GetCount()
 			while ct<maxc and ag:GetCount()>0 do
 				local minsct=1
-				local finish=(ct>=minc and f(g,tp,c,gf))
+				local finish=(ct>=minc and Auxiliary.XyzProcedureLevelFreeGoal(g,tp,c,gf))
 				if finish then
 					minsct=0
 					if not Duel.SelectYesNo(tp,210) then break end
