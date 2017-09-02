@@ -504,9 +504,9 @@ function Auxiliary.XyzProcedureLevelFreeOperation(func,gf,minct,maxct)
 			end
 			local ag=mg:Filter(Auxiliary.XyzProcedureLevelFreeCheck,g,tp,c,mg,g,gf,minc,maxc)
 			local ct=g:GetCount()
-			while ct<max and ag:GetCount()>0 do
+			while ct<maxc and ag:GetCount()>0 do
 				local minsct=1
-				local finish=(ct>=min and f(g,tp,c,gf))
+				local finish=(ct>=minc and f(g,tp,c,gf))
 				if finish then
 					minsct=0
 					if not Duel.SelectYesNo(tp,210) then break end
