@@ -519,11 +519,18 @@ function Auxiliary.XyzProcedureLevelFreeOperation(func,gf,minct,maxct)
 				ag=mg:Filter(Auxiliary.XyzProcedureLevelFreeCheck,g,tp,c,mg,g,gf,minc,maxc)
 			end
 		end
-		local sg=Group.CreateGroup()
-		for tc in aux.Next(g) do
-			sg:Merge(tc:GetOverlayGroup())
+		if g:GetCount()>1 then
+			local sg=Group.CreateGroup()
+			for tc in aux.Next(g) do
+				sg:Merge(tc:GetOverlayGroup())
+			end
+			Duel.SendtoGrave(sg,REASON_RULE)
+		else
+			local sg=g:GetFirst():GetOverlayGroup()
+			if sg:GetCount()~=0 then
+				Duel.Overlay(c,sg)
+			end
 		end
-		Duel.SendtoGrave(sg,REASON_RULE)
 		c:SetMaterial(g)
 		Duel.Overlay(c,g)
 	end
