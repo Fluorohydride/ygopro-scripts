@@ -2,15 +2,7 @@
 function c43490025.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()
-	local e1=Effect.CreateEffect(c)
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_SPSUMMON_PROC)
-	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(c43490025.xyzcon)
-	e1:SetOperation(c43490025.xyzop)
-	e1:SetValue(SUMMON_TYPE_XYZ)
-	c:RegisterEffect(e1)
+	aux.AddXyzProcedureLevelFree(c,c43490025.mfilter,c43490025.xyzcheck,1,2)
 	--atkup
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
@@ -38,89 +30,18 @@ function c43490025.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 c43490025.xyz_number=0
-function c43490025.ovfilter(c,xyzc)
-	return c:IsFaceup() and (c:IsSetCard(0x107f) or c:IsCode(65305468)) and c:IsCanBeXyzMaterial(xyzc)
-end
 function c43490025.mfilter(c,xyzc)
-	return c:IsFaceup() and c:IsXyzType(TYPE_XYZ) and not c:IsSetCard(0x48) and c:IsCanBeXyzMaterial(xyzc)
+	return (not c:IsSetCard(0x48) and c:IsXyzType(TYPE_XYZ)) or (c:IsSetCard(0x107f) or c:IsCode(65305468))
 end
-function c43490025.xyzfilter1(c,g)
-	return g:IsExists(c43490025.xyzfilter2,1,c,c:GetRank())
+function c43490025.gfilter(c)
+	return c:IsSetCard(0x48) or not c:IsXyzType(TYPE_XYZ)
 end
-function c43490025.xyzfilter2(c,rk)
-	return c:GetRank()==rk
-end
-function c43490025.xyzcon(e,c,og,min,max)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft
-	if 2<=ct then return false end
-	if min and (min>2 or max<2) then return false end
-	local mg=nil
-	local altmg=nil
-	if og then
-		mg=og:Filter(c43490025.mfilter,nil,c)
-		altmg=og
+function c43490025.xyzcheck(g,xyzc)
+	if g:GetCount()==1 then
+		local tc=g:GetFirst()
+		return tc:IsSetCard(0x107f) or tc:IsCode(65305468)
 	else
-		mg=Duel.GetMatchingGroup(c43490025.mfilter,tp,LOCATION_MZONE,0,nil,c)
-		altmg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
-	end
-	if ct<1 and (not min or min<=1) and altmg:IsExists(c43490025.ovfilter,1,nil,c) then
-		return true
-	end
-	return mg:IsExists(c43490025.xyzfilter1,1,nil,mg)
-end
-function c43490025.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
-	local g=nil
-	local sg=Group.CreateGroup()
-	if og and not min then
-		g=og
-		local tc=og:GetFirst()
-		while tc do
-			sg:Merge(tc:GetOverlayGroup())
-			tc=og:GetNext()
-		end
-		Duel.SendtoGrave(sg,REASON_RULE)
-		c:SetMaterial(g)
-		Duel.Overlay(c,g)
-	else
-		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-		local ct=-ft
-		local mg=nil
-		local altmg=nil
-		if og then
-			mg=og:Filter(c43490025.mfilter,nil,c)
-			altmg=og
-		else
-			mg=Duel.GetMatchingGroup(c43490025.mfilter,tp,LOCATION_MZONE,0,nil,c)
-			altmg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
-		end
-		local b1=mg:IsExists(c43490025.xyzfilter1,1,nil,mg)
-		local b2=ct<1 and (not min or min<=1) and altmg:IsExists(c43490025.ovfilter,1,nil,c)
-		local g=nil
-		if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(43490025,1))) then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-			g=altmg:FilterSelect(tp,c43490025.ovfilter,1,1,nil,c)
-			local g2=g:GetFirst():GetOverlayGroup()
-			if g2:GetCount()~=0 then
-				Duel.Overlay(c,g2)
-			end
-			c:SetMaterial(g)
-			Duel.Overlay(c,g)
-		else
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-			g=mg:FilterSelect(tp,c43490025.xyzfilter1,1,1,nil,mg)
-			local tc1=g:GetFirst()
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-			local g2=mg:FilterSelect(tp,c43490025.xyzfilter2,1,1,tc1,tc1:GetRank())
-			local tc2=g2:GetFirst()
-			g:Merge(g2)
-			sg:Merge(tc1:GetOverlayGroup())
-			sg:Merge(tc2:GetOverlayGroup())
-			Duel.SendtoGrave(sg,REASON_RULE)
-			Duel.Overlay(c,g)
-		end
+		return g:GetClassCount(Card.GetRank)==1 and not g:IsExists(c43490025.gfilter,1,nil)
 	end
 end
 function c43490025.atkfilter(c)

@@ -2,15 +2,7 @@
 function c65305468.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()
-	local e1=Effect.CreateEffect(c)
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_SPSUMMON_PROC)
-	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(c65305468.xyzcon)
-	e1:SetOperation(c65305468.xyzop)
-	e1:SetValue(SUMMON_TYPE_XYZ)
-	c:RegisterEffect(e1)
+	aux.AddXyzProcedureLevelFree(c,c65305468.mfilter,c65305468.xyzcheck,2,2)
 	--indes
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
@@ -47,57 +39,10 @@ function c65305468.initial_effect(c)
 end
 c65305468.xyz_number=0
 function c65305468.mfilter(c,xyzc)
-	return c:IsFaceup() and c:IsXyzType(TYPE_XYZ) and not c:IsSetCard(0x48) and c:IsCanBeXyzMaterial(xyzc)
+	return c:IsXyzType(TYPE_XYZ) and not c:IsSetCard(0x48)
 end
-function c65305468.xyzfilter1(c,g)
-	return g:IsExists(c65305468.xyzfilter2,1,c,c:GetRank())
-end
-function c65305468.xyzfilter2(c,rk)
-	return c:GetRank()==rk
-end
-function c65305468.xyzcon(e,c,og,min,max)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local mg=nil
-	if og then
-		mg=og:Filter(c65305468.mfilter,nil,c)
-	else
-		mg=Duel.GetMatchingGroup(c65305468.mfilter,tp,LOCATION_MZONE,0,nil,c)
-	end
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and (not min or min<=2 and max>=2)
-		and mg:IsExists(c65305468.xyzfilter1,1,nil,mg)
-end
-function c65305468.xyzop(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
-	local g=nil
-	local sg=Group.CreateGroup()
-	if og and not min then
-		g=og
-		local tc=og:GetFirst()
-		while tc do
-			sg:Merge(tc:GetOverlayGroup())
-			tc=og:GetNext()
-		end
-	else
-		local mg=nil
-		if og then
-			mg=og:Filter(c65305468.mfilter,nil,c)
-		else
-			mg=Duel.GetMatchingGroup(c65305468.mfilter,tp,LOCATION_MZONE,0,nil,c)
-		end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		g=mg:FilterSelect(tp,c65305468.xyzfilter1,1,1,nil,mg)
-		local tc1=g:GetFirst()
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local g2=mg:FilterSelect(tp,c65305468.xyzfilter2,1,1,tc1,tc1:GetRank())
-		local tc2=g2:GetFirst()
-		g:Merge(g2)
-		sg:Merge(tc1:GetOverlayGroup())
-		sg:Merge(tc2:GetOverlayGroup())
-	end
-	Duel.SendtoGrave(sg,REASON_RULE)
-	c:SetMaterial(g)
-	Duel.Overlay(c,g)
+function c65305468.xyzcheck(g,xyzc)
+	return g:GetClassCount(Card.GetRank)==1
 end
 function c65305468.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetHandler():GetBattleTarget()

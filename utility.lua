@@ -435,6 +435,104 @@ function Auxiliary.XyzOperation2(f,lv,minc,maxc,alterf,desc,op)
 				end
 			end
 end
+function Auxiliary.AddXyzProcedureLevelFree(c,func,gf,minc,maxc)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_SPSUMMON_PROC)
+	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
+	e1:SetRange(LOCATION_EXTRA)
+	e1:SetCondition(Auxiliary.XyzProcedureLevelFreeCondition(func,gf,minc,maxc))
+	e1:SetOperation(Auxiliary.XyzProcedureLevelFreeOperation(func,gf,minc,maxc))
+	e1:SetValue(SUMMON_TYPE_XYZ)
+	c:RegisterEffect(e1)
+end
+function Auxiliary.XyzProcedureLevelFreeFilter(c,xyzcard,func)
+	return c:IsFaceup() and c:IsCanBeXyzMaterial(xyzcard) and (not func or func(c,xyzcard))
+end
+function Auxiliary.XyzProcedureLevelFreeCheck(c,tp,xyzcard,mg,sg,gf,minc,maxc)
+	sg:AddCard(c)
+	local ct=sg:GetCount()
+	local res=(ct>=minc and Auxiliary.XyzProcedureLevelFreeGoal(sg,tp,xyzcard,gf))
+		or (ct<maxc and mg:IsExists(Auxiliary.XyzProcedureLevelFreeCheck,1,sg,tp,xyzcard,mg,sg,gf,minc,maxc))
+	sg:RemoveCard(c)
+	return res
+end
+function Auxiliary.XyzProcedureLevelFreeGoal(g,tp,xyzcard,gf)
+	return (not gf or gf(g,xyzc)) and Duel.GetLocationCountFromEx(tp,tp,g,xyzcard)>0
+end
+function Auxiliary.XyzProcedureLevelFreeCondition(func,gf,minct,maxct)
+	return function(e,c,og,min,max)
+		if c==nil then return true end
+		if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
+		local tp=c:GetControler()
+		local minc=minct
+		local maxc=maxct
+		if min then
+			minc=math.max(minc,min)
+			maxc=math.min(maxc,max)
+		end
+		local mg=nil
+		if og then
+			mg=og:Filter(Auxiliary.XyzProcedureLevelFreeFilter,nil,c,func)
+		else
+			mg=Duel.GetMatchingGroup(Auxiliary.XyzProcedureLevelFreeFilter,tp,LOCATION_MZONE,0,nil,c,func)
+		end
+		local sg=Group.CreateGroup()
+		return maxc>=minc and mg:IsExists(Auxiliary.XyzProcedureLevelFreeCheck,1,sg,tp,c,mg,sg,gf,minc,maxc)
+	end
+end
+function Auxiliary.XyzProcedureLevelFreeOperation(func,gf,minct,maxct)
+	return function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
+		local g=nil
+		if og and not min then
+			g=og
+		else
+			g=Group.CreateGroup()
+			local mg=nil
+			if og then
+				mg=og:Filter(Auxiliary.XyzProcedureLevelFreeFilter,nil,c,func)
+			else
+				mg=Duel.GetMatchingGroup(Auxiliary.XyzProcedureLevelFreeFilter,tp,LOCATION_MZONE,0,nil,c,func)
+			end
+			local minc=minct
+			local maxc=maxct
+			if min then
+				minc=math.max(minc,min)
+				maxc=math.min(maxc,max)
+			end
+			local ag=mg:Filter(Auxiliary.XyzProcedureLevelFreeCheck,g,tp,c,mg,g,gf,minc,maxc)
+			local ct=g:GetCount()
+			while ct<maxc and ag:GetCount()>0 do
+				local minsct=1
+				local finish=(ct>=minc and Auxiliary.XyzProcedureLevelFreeGoal(g,tp,c,gf))
+				if finish then
+					minsct=0
+					if not Duel.SelectYesNo(tp,210) then break end
+				end
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+				local tg=ag:Select(tp,minsct,1,nil)
+				if tg:GetCount()==0 then break end
+				g:Merge(tg)
+				ct=g:GetCount()
+				ag=mg:Filter(Auxiliary.XyzProcedureLevelFreeCheck,g,tp,c,mg,g,gf,minc,maxc)
+			end
+		end
+		if g:GetCount()>1 then
+			local sg=Group.CreateGroup()
+			for tc in aux.Next(g) do
+				sg:Merge(tc:GetOverlayGroup())
+			end
+			Duel.SendtoGrave(sg,REASON_RULE)
+		else
+			local sg=g:GetFirst():GetOverlayGroup()
+			if sg:GetCount()~=0 then
+				Duel.Overlay(c,sg)
+			end
+		end
+		c:SetMaterial(g)
+		Duel.Overlay(c,g)
+	end
+end
 function Auxiliary.FConditionFilterF2(c,g2)
 	return g2:IsExists(aux.TRUE,1,c)
 end
