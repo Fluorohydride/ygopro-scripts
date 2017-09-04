@@ -71,33 +71,51 @@ function c89818984.cardiansynlevel(c)
 	return 2
 end
 function c89818984.synfilter(c,syncard,tuner,f)
-	return c:IsFaceup() and c:IsNotTuner() and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c))
+	return c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c))
 end
-function c89818984.syntg(e,syncard,f,minc,maxc)
-	local c=e:GetHandler()
-	local lv=syncard:GetLevel()-c:GetLevel()
-	local lv2=syncard:GetLevel()-c89818984.cardiansynlevel(c)
-	if lv<=0 and lv2<=0 then return false end
-	local g=Duel.GetMatchingGroup(c89818984.synfilter,syncard:GetControler(),LOCATION_MZONE,LOCATION_MZONE,c,syncard,c,f)
-	local res=g:CheckWithSumEqual(Card.GetSynchroLevel,lv,minc,maxc,syncard)
-	local res2=g:CheckWithSumEqual(c89818984.cardiansynlevel,lv2,minc,maxc)
-	return res or res2
+function c89818984.syncheck(c,g,mg,tp,lv,syncard,minc,maxc)
+	g:AddCard(c)
+	local ct=g:GetCount()
+	local res=c89818984.syngoal(g,tp,lv,syncard,minc,ct)
+		or (ct<maxc and mg:IsExists(c89818984.syncheck,1,g,g,mg,tp,lv,syncard,minc,maxc))
+	g:RemoveCard(c)
+	return res
 end
-function c89818984.synop(e,tp,eg,ep,ev,re,r,rp,syncard,f,minc,maxc)
+function c89818984.syngoal(g,tp,lv,syncard,minc,ct)
+	return ct>=minc and Duel.GetLocationCountFromEx(tp,tp,g,syncard)>0
+		and (g:CheckWithSumEqual(Card.GetSynchroLevel,lv,ct,ct,syncard)
+			or g:CheckWithSumEqual(c89818984.cardiansynlevel,lv,ct,ct,syncard))
+end
+function c89818984.syntg(e,syncard,f,min,max)
+	local minc=min+1
+	local maxc=max+1
 	local c=e:GetHandler()
-	local lv=syncard:GetLevel()-c:GetLevel()
-	local lv2=syncard:GetLevel()-c89818984.cardiansynlevel(c)
-	local g=Duel.GetMatchingGroup(c89818984.synfilter,syncard:GetControler(),LOCATION_MZONE,LOCATION_MZONE,c,syncard,c,f)
-	local res=g:CheckWithSumEqual(Card.GetSynchroLevel,lv,minc,maxc,syncard)
-	local res2=g:CheckWithSumEqual(c89818984.cardiansynlevel,lv2,minc,maxc)
-	local sg=nil
-	if (res2 and res and Duel.SelectYesNo(tp,aux.Stringid(89818984,2)))
-		or (res2 and not res) then
+	local tp=syncard:GetControler()
+	local lv=syncard:GetLevel()
+	if lv<=c:GetLevel() and lv<=c89818984.cardiansynlevel(c) then return false end
+	local g=Group.FromCards(c)
+	local mg=Duel.GetMatchingGroup(c89818984.synfilter,tp,LOCATION_MZONE,LOCATION_MZONE,c,syncard,c,f)
+	return mg:IsExists(c89818984.syncheck,1,g,g,mg,tp,lv,syncard,minc,maxc)
+end
+function c89818984.synop(e,tp,eg,ep,ev,re,r,rp,syncard,f,min,max)
+	local minc=min+1
+	local maxc=max+1
+	local c=e:GetHandler()
+	local lv=syncard:GetLevel()
+	local g=Group.FromCards(c)
+	local mg=Duel.GetMatchingGroup(c89818984.synfilter,tp,LOCATION_MZONE,LOCATION_MZONE,c,syncard,c,f)
+	for i=1,maxc do
+		local cg=mg:Filter(c89818984.syncheck,g,g,mg,tp,lv,syncard,minc,maxc)
+		if cg:GetCount()==0 then break end
+		local minct=1
+		if c89818984.syngoal(g,tp,lv,syncard,minc,i) then
+			if not Duel.SelectYesNo(tp,210) then break end
+			minct=0
+		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		sg=g:SelectWithSumEqual(tp,c89818984.cardiansynlevel,lv2,minc,maxc)
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		sg=g:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,minc,maxc,syncard)
+		local sg=cg:Select(tp,minct,1,nil)
+		if sg:GetCount()==0 then break end
+		g:Merge(sg)
 	end
-	Duel.SetSynchroMaterial(sg)
+	Duel.SetSynchroMaterial(g)
 end
