@@ -19,5 +19,7 @@ function c56897896.synlimit(e,c)
 	return c:IsLevelBelow(4) and c:IsRace(RACE_WARRIOR+RACE_MACHINE)
 end
 function c56897896.syncheck(e,c)
-	c:AssumeProperty(ASSUME_LEVEL,1)
+	if c~=e:GetHandler() then
+		c:AssumeProperty(ASSUME_LEVEL,1)
+	end
 end
