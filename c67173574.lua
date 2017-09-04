@@ -38,7 +38,7 @@ end
 c67173574.xyz_number=102
 function c67173574.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,2,REASON_EFFECT) end
-	if Duel.SelectYesNo(tp,aux.Stringid(67173574,0)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		e:GetHandler():RemoveOverlayCard(tp,2,2,REASON_EFFECT)
 		return true
 	else return false end

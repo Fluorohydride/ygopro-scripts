@@ -43,7 +43,7 @@ function c60950180.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(60950180)>0
 end
 function c60950180.filter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and not c:IsType(TYPE_LINK)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition()
 end
 function c60950180.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c60950180.filter(chkc) end

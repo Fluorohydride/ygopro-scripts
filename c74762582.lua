@@ -74,8 +74,8 @@ function c74762582.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c74762582.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)>0 then
+	local tc1=Duel.GetFirstTarget()
+	if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and Duel.ChangePosition(tc1,POS_FACEDOWN_DEFENSE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c74762582.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
 		local tc=g:GetFirst()
@@ -85,6 +85,9 @@ function c74762582.spop(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE) then spos=spos+POS_FACEDOWN_DEFENSE end
 		if spos~=0 then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,spos)
+			if tc:IsFacedown() then
+				Duel.ConfirmCards(1-tp,tc)
+			end
 		end
 	end
 end

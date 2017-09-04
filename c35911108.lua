@@ -26,11 +26,11 @@ function c35911108.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c35911108.atktg(e,c)
-	return c:IsRace(RACE_CYBERS) and c~=e:GetHandler()
+	return c:IsRace(RACE_CYBERSE) and c~=e:GetHandler()
 end
 function c35911108.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,nil,RACE_CYBERS) end
-	local sg=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,nil,RACE_CYBERS)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,nil,RACE_CYBERSE) end
+	local sg=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,nil,RACE_CYBERSE)
 	Duel.Release(sg,REASON_COST)
 end
 function c35911108.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

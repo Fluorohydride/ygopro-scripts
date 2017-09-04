@@ -38,7 +38,7 @@ function c66625883.posop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c66625883.filter(c)
-	return not c:IsType(TYPE_LINK)
+	return c:IsCanChangePosition()
 end
 function c66625883.tg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c66625883.filter(chkc) end

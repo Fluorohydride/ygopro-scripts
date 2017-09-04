@@ -21,7 +21,7 @@ function c22567609.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c22567609.filter(c,e,tp)
-	return c:IsCode(22567609) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN)
+	return c:IsCode(22567609) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
 end
 function c22567609.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
@@ -35,5 +35,6 @@ function c22567609.operation(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummonStep(g:GetNext(),0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 		end
 		Duel.SpecialSummonComplete()
+		Duel.ConfirmCards(1-tp,Duel.GetOperatedGroup())
 	end
 end

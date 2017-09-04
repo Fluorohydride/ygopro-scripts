@@ -63,7 +63,8 @@ function c50418970.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c50418970.postg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetEquipTarget():IsAttackPos() end
+	local ec=e:GetHandler():GetEquipTarget()
+	if chk==0 then return ec and ec:IsAttackPos() and ec:IsCanChangePosition() end
 end
 function c50418970.posop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end

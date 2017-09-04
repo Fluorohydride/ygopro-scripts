@@ -26,10 +26,11 @@ function c75987257.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
 function c75987257.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local tg=Duel.GetAttacker()
-	if chkc then return chkc==tg end
-	if chk==0 then return tg:IsOnField() and tg:IsCanBeEffectTarget(e) end
-	Duel.SetTargetCard(tg)
+	local tc=Duel.GetAttacker()
+	if chkc then return chkc==tc end
+	if chk==0 then return tc:IsLocation(LOCATION_MZONE) and tc:IsAttackPos()
+		and tc:IsCanChangePosition() and tc:IsCanBeEffectTarget(e) end
+	Duel.SetTargetCard(tc)
 end
 function c75987257.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

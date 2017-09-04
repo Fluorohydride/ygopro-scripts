@@ -14,7 +14,7 @@ function c7541475.initial_effect(c)
 end
 function c7541475.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local d=Duel.GetAttackTarget()
-	if chk==0 then return d and d:GetControler()~=Duel.GetAttacker():GetControler() and not d:IsType(TYPE_LINK) end
+	if chk==0 then return d and d:GetControler()~=Duel.GetAttacker():GetControler() and d:IsCanChangePosition() end
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,d,1,0,0)
 end
 function c7541475.posop(e,tp,eg,ep,ev,re,r,rp)

@@ -36,23 +36,6 @@ function c32617464.initial_effect(c)
 	e3:SetTarget(c32617464.negtg)
 	e3:SetOperation(c32617464.negop)
 	c:RegisterEffect(e3)
-	--
-	if not Card.GetMutualLinkedGroup then
-		function aux.mutuallinkfilter(c,mc)
-			local lg=c:GetLinkedGroup()
-			return lg and lg:IsContains(mc)
-		end
-		function Card.GetMutualLinkedGroup(c)
-			local lg=c:GetLinkedGroup()
-			if not lg then return nil end
-			return lg:Filter(aux.mutuallinkfilter,nil,c)
-		end
-		function Card.GetMutualLinkedCount(c)
-			local lg=c:GetLinkedGroup()
-			if not lg then return 0 end
-			return lg:FilterCount(aux.mutuallinkfilter,nil,c)
-		end
-	end
 end
 function c32617464.matfilter(c)
 	return not c:IsLinkType(TYPE_TOKEN)
@@ -66,7 +49,7 @@ function c32617464.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChangeBattleDamage(ep,ev*2)
 end
 function c32617464.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetMutualLinkedCount()>=2
+	return e:GetHandler():GetMutualLinkedGroupCount()>=2
 end
 function c32617464.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsAbleToRemove() end
@@ -83,7 +66,7 @@ function c32617464.rmop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c32617464.negcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return not c:IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev) and c:GetMutualLinkedCount()>=3
+	return not c:IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev) and c:GetMutualLinkedGroupCount()>=3
 end
 function c32617464.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return re:GetHandler():IsAbleToRemove() end

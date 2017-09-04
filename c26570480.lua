@@ -46,7 +46,7 @@ function c26570480.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c26570480.cfilter,1,nil,tp)
 end
 function c26570480.filter(c)
-	return not c:IsPosition(POS_FACEUP_DEFENSE)
+	return not c:IsPosition(POS_FACEUP_DEFENSE) and c:IsCanChangePosition()
 end
 function c26570480.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c26570480.filter(chkc) end

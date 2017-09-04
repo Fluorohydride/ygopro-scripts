@@ -50,7 +50,7 @@ function c2403771.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local g=c:GetEquipGroup()
 		return not c:IsReason(REASON_REPLACE) and g:IsExists(c2403771.repfilter,1,nil)
 	end
-	if Duel.SelectYesNo(tp,aux.Stringid(2403771,1)) then
+	if Duel.SelectEffectYesNo(tp,c,96) then
 		local g=c:GetEquipGroup()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local sg=g:FilterSelect(tp,c2403771.repfilter,1,1,nil)

@@ -81,21 +81,21 @@ function c95474755.grop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Remove(tc,POS_FACEDOWN,REASON_EFFECT)
 	end
 end
-function c95474755.dkfilter(c)
-	return not c:IsType(TYPE_TOKEN) and c:IsFacedown()
+function c95474755.dkfilter(c,p)
+	return c:IsFacedown() and c:IsControler(p)
 end
 function c95474755.dkcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c95474755.dkfilter,1,nil)
+	return eg:IsExists(c95474755.dkfilter,1,nil,1-tp)
 end
 function c95474755.dktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ct=Duel.GetMatchingGroupCount(c95474755.dkfilter,tp,0,LOCATION_REMOVED,nil)
+	local ct=Duel.GetMatchingGroupCount(c95474755.dkfilter,tp,0,LOCATION_REMOVED,nil,1-tp)
 	local tg=Duel.GetDecktopGroup(1-tp,ct)
 	if chk==0 then return ct>0
 		and tg:FilterCount(Card.IsAbleToRemove,nil)==ct end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,ct,1-tp,LOCATION_DECK)
 end
 function c95474755.dkop(e,tp,eg,ep,ev,re,r,rp)
-	local ct=Duel.GetMatchingGroupCount(c95474755.dkfilter,tp,0,LOCATION_REMOVED,nil)
+	local ct=Duel.GetMatchingGroupCount(c95474755.dkfilter,tp,0,LOCATION_REMOVED,nil,1-tp)
 	if ct==0 then return end
 	local tg=Duel.GetDecktopGroup(1-tp,ct)
 	Duel.DisableShuffleCheck()

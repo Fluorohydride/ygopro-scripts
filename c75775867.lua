@@ -45,23 +45,24 @@ function c75775867.desop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
-function c75775867.repfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x26) and not c:IsStatus(STATUS_DESTROY_CONFIRMED)
+function c75775867.repfilter(c,e)
+	return c:IsFaceup() and c:IsSetCard(0x26)
+		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED)
 end
 function c75775867.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return not c:IsReason(REASON_REPLACE) and c:IsOnField() and c:IsFaceup() and c:IsDefensePos()
-		and Duel.IsExistingMatchingCard(c75775867.repfilter,tp,LOCATION_MZONE,0,1,c) end
-	if Duel.SelectYesNo(tp,aux.Stringid(75775867,1)) then
+		and Duel.IsExistingMatchingCard(c75775867.repfilter,tp,LOCATION_MZONE,0,1,c,e) end
+	if Duel.SelectEffectYesNo(tp,c,96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
-		local g=Duel.SelectMatchingCard(tp,c75775867.repfilter,tp,LOCATION_MZONE,0,1,1,c)
-		Duel.SetTargetCard(g)
+		local g=Duel.SelectMatchingCard(tp,c75775867.repfilter,tp,LOCATION_MZONE,0,1,1,c,e)
+		e:SetLabelObject(g:GetFirst())
 		g:GetFirst():SetStatus(STATUS_DESTROY_CONFIRMED,true)
 		return true
 	else return false end
 end
 function c75775867.repop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	g:GetFirst():SetStatus(STATUS_DESTROY_CONFIRMED,false)
-	Duel.Destroy(g,REASON_EFFECT+REASON_REPLACE)
+	local tc=e:GetLabelObject()
+	tc:SetStatus(STATUS_DESTROY_CONFIRMED,false)
+	Duel.Destroy(tc,REASON_EFFECT+REASON_REPLACE)
 end

@@ -32,7 +32,7 @@ function c63251695.negcon(e,tp,eg,ep,ev,re,r,rp)
 		and g and g:IsExists(c63251695.tfilter,1,e:GetHandler(),tp) and Duel.IsChainDisablable(ev)
 end
 function c63251695.negop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.SelectYesNo(tp,aux.Stringid(63251695,1)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler()) then
 		e:GetHandler():RegisterFlagEffect(63251695,RESET_EVENT+0x1fe0000,0,1)
 		if Duel.NegateEffect(ev) then
 			Duel.BreakEffect()

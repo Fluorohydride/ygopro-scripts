@@ -14,7 +14,7 @@ function c76520646.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c76520646.filter(c)
-	return c:IsFaceup() and not c:IsType(TYPE_LINK)
+	return c:IsFaceup() and c:IsCanChangePosition()
 end
 function c76520646.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c76520646.filter(chkc) end

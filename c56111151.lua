@@ -65,7 +65,7 @@ end
 function c56111151.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsReason(REASON_RULE)
 		and e:GetHandler():IsCanRemoveCounter(tp,0x37,1,REASON_EFFECT) end
-	return Duel.SelectYesNo(tp,aux.Stringid(56111151,0))
+	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c56111151.desrepop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RemoveCounter(tp,0x37,1,REASON_EFFECT)

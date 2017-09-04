@@ -36,10 +36,10 @@ function c49374988.retop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c49374988.filter1(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsSetCard(0x71)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition() and c:IsSetCard(0x71)
 end
 function c49374988.filter2(c)
-	return c:IsPosition(POS_FACEUP_ATTACK)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition()
 end
 function c49374988.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

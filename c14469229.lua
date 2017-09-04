@@ -4,9 +4,10 @@ function c14469229.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--replace
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EFFECT_DESTROY_REPLACE)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_INDESTRUCTABLE_COUNT)
 	e2:SetRange(LOCATION_PZONE)
+	e2:SetTargetRange(LOCATION_MZONE,0)
 	e2:SetCountLimit(1)
 	e2:SetTarget(c14469229.indtg)
 	e2:SetValue(c14469229.indval)
@@ -22,16 +23,11 @@ function c14469229.initial_effect(c)
 	e3:SetOperation(c14469229.operation)
 	c:RegisterEffect(e3)
 end
-function c14469229.indfilter(c,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsOnField() and c:IsReason(REASON_EFFECT)
-		and (c:IsSetCard(0x1034) or (c:IsLocation(LOCATION_MZONE) and c:IsSetCard(0x2034)))
+function c14469229.indtg(e,c)
+	return c:IsSetCard(0x1034) or (c:IsLocation(LOCATION_MZONE) and c:IsSetCard(0x2034))
 end
-function c14469229.indtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c14469229.indfilter,1,nil,tp) end
-	return true
-end
-function c14469229.indval(e,c)
-	return c14469229.indfilter(c,e:GetHandlerPlayer())
+function c14469229.indval(e,re,r,rp)
+	return bit.band(r,REASON_EFFECT)~=0
 end
 function c14469229.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end

@@ -10,7 +10,7 @@ function c39900763.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c39900763.filter(c,e,tp)
-	return c:IsFaceup() and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN)
+	return c:IsFaceup() and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
 end
 function c39900763.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

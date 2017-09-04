@@ -43,7 +43,8 @@ function c33103459.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(33103459)~=0
 end
 function c33103459.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x9f) and c:IsPosition(POS_FACEUP_ATTACK) and c:IsAttackBelow(1000)
+	return c:IsFaceup() and c:IsSetCard(0x9f) and c:IsAttackBelow(1000)
+		and c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition()
 end
 function c33103459.thfilter(c)
 	return c:IsSetCard(0x99) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

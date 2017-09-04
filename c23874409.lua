@@ -45,7 +45,7 @@ function c23874409.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c23874409.filter(c)
-	return not c:IsType(TYPE_LINK)
+	return c:IsCanChangePosition()
 end
 function c23874409.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c23874409.filter(chkc) end

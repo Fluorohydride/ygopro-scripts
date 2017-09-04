@@ -38,8 +38,9 @@ function c47594939.splimit(e,c,sump,sumtype,sumpos,targetp)
 	local rk=c:GetRank()
 	if lv>0 then
 		return e:GetLabelObject():IsExists(c47594939.lvfilter,1,nil,lv,sump)
-	end
-	return e:GetLabelObject():IsExists(c47594939.rkfilter,1,nil,rk,sump)
+	elseif rk>0 then
+		return e:GetLabelObject():IsExists(c47594939.rkfilter,1,nil,rk,sump)
+	else return false end
 end
 function c47594939.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	local phase=Duel.GetCurrentPhase()

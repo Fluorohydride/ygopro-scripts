@@ -16,13 +16,14 @@ function c25231813.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e2:SetValue(c25231813.eqlimit)
 	c:RegisterEffect(e2)
-	--
+	--indes
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_EQUIP)
-	e3:SetCode(EFFECT_DESTROY_REPLACE)
+	e3:SetType(EFFECT_TYPE_EQUIP)
+	e3:SetCode(EFFECT_INDESTRUCTABLE_COUNT)
 	e3:SetCountLimit(2)
-	e3:SetTarget(c25231813.reptg1)
+	e3:SetValue(c25231813.indval)
 	c:RegisterEffect(e3)
+	--replace
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_EQUIP)
 	e4:SetCode(EFFECT_DESTROY_REPLACE)
@@ -50,15 +51,15 @@ function c25231813.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Equip(tp,c,tc)
 	end
 end
-function c25231813.reptg1(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetEquipTarget():IsReason(REASON_BATTLE) end
-	return true
+function c25231813.indval(e,re,r,rp)
+	return bit.band(r,REASON_BATTLE)~=0
 end
 function c25231813.reptg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetEquipTarget():IsReason(REASON_EFFECT)
-		and not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED) end
-	if Duel.SelectYesNo(tp,aux.Stringid(25231813,0)) then
-		e:GetHandler():SetStatus(STATUS_DESTROY_CONFIRMED,true)
+	local c=e:GetHandler()
+	if chk==0 then return c:GetEquipTarget():IsReason(REASON_EFFECT)
+		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED) end
+	if Duel.SelectEffectYesNo(tp,c,96) then
+		c:SetStatus(STATUS_DESTROY_CONFIRMED,true)
 		return true
 	else return false end
 end

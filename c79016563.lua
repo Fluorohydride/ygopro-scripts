@@ -27,23 +27,6 @@ function c79016563.initial_effect(c)
 	e2:SetTarget(c79016563.atktg)
 	e2:SetOperation(c79016563.atkop)
 	c:RegisterEffect(e2)
-	--
-	if not Card.GetMutualLinkedGroup then
-		function aux.mutuallinkfilter(c,mc)
-			local lg=c:GetLinkedGroup()
-			return lg and lg:IsContains(mc)
-		end
-		function Card.GetMutualLinkedGroup(c)
-			local lg=c:GetLinkedGroup()
-			if not lg then return nil end
-			return lg:Filter(aux.mutuallinkfilter,nil,c)
-		end
-		function Card.GetMutualLinkedCount(c)
-			local lg=c:GetLinkedGroup()
-			if not lg then return 0 end
-			return lg:FilterCount(aux.mutuallinkfilter,nil,c)
-		end
-	end
 end
 function c79016563.matfilter(c)
 	return not c:IsLinkType(TYPE_TOKEN)
@@ -65,7 +48,7 @@ function c79016563.recop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c79016563.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return (Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
-		and e:GetHandler():GetMutualLinkedCount()>=2
+		and e:GetHandler():GetMutualLinkedGroupCount()>=2
 end
 function c79016563.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and chkc:IsFaceup() end
@@ -79,7 +62,7 @@ function c79016563.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc2=g:GetNext()
 	if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and tc2:IsFaceup() and tc2:IsRelateToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(79016563,2))
-		local sg=g:Select(1-tp,1,1,nil)
+		local sg=g:Select(tp,1,1,nil)
 		local atk=sg:GetFirst():GetAttack()
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

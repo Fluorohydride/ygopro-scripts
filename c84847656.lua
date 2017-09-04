@@ -16,7 +16,7 @@ end
 function c84847656.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not eg:IsContains(e:GetHandler())
 		and Duel.CheckLPCost(tp,500) and eg:IsExists(c84847656.dfilter,1,nil) end
-	if Duel.SelectYesNo(tp,aux.Stringid(84847656,0)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		Duel.PayLPCost(tp,500)
 		return true
 	else return false end

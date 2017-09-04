@@ -57,7 +57,7 @@ function c1281505.eqlimit(e,c)
 end
 function c1281505.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	return Duel.SelectYesNo(tp,aux.Stringid(1281505,1))
+	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c1281505.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)

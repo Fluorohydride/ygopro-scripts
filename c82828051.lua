@@ -10,7 +10,7 @@ function c82828051.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c82828051.filter(c)
-	return c:IsFaceup() and c:IsAttackPos()
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition()
 end
 function c82828051.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c82828051.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end

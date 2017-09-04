@@ -1,5 +1,4 @@
 --調弦の魔術師
---fusion and xyz limit not implemented
 function c73941492.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_TUNE_MAGICIAN)
 	--pendulum summon
@@ -23,17 +22,21 @@ function c73941492.initial_effect(c)
 	e3:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e3:SetValue(aux.FALSE)
 	c:RegisterEffect(e3)
-	--synchro custom
+	--synchro limit
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE)
 	e4:SetCode(EFFECT_TUNER_MATERIAL_LIMIT)
 	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e4:SetTarget(c73941492.synlimit)
 	c:RegisterEffect(e4)
-	--fusion and xyz custom not implemented
-	--local e5=Effect.CreateEffect(c)
+	--fusion limit
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_SINGLE)
+	e5:SetCode(EFFECT_TUNE_MAGICIAN_F)
+	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	c:RegisterEffect(e5)
+	--xyz limit
 	local e6=Effect.CreateEffect(c)
-	e6:SetDescription(aux.Stringid(73941492,1))
 	e6:SetType(EFFECT_TYPE_SINGLE)
 	e6:SetCode(EFFECT_TUNE_MAGICIAN_X)
 	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
@@ -103,6 +106,9 @@ function c73941492.spop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e3,true)
 		Duel.SpecialSummonComplete()
 	end
+end
+function c73941492.fuslimit(c)
+	return not (c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM))
 end
 function c73941492.xyzlimit(e,c)
 	return not (c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM))

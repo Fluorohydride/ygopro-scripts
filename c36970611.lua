@@ -32,9 +32,12 @@ function c36970611.initial_effect(c)
 	e3:SetOperation(c36970611.thop)
 	c:RegisterEffect(e3)
 end
+function c36970611.rmfilter(c)
+	return c:IsAbleToRemove() and not c:IsType(TYPE_TOKEN)
+end
 function c36970611.cfilter(c)
 	return c:IsSetCard(0xc1) and c:IsType(TYPE_MONSTER) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsAbleToRemoveAsCost()
-		and Duel.IsExistingTarget(Card.IsAbleToRemove,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
+		and Duel.IsExistingTarget(c36970611.rmfilter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 end
 function c36970611.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return c36970611.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc) end
@@ -61,7 +64,7 @@ function c36970611.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsAbleToRemove() end
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectTarget(tp,Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,c36970611.rmfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
 end
 function c36970611.operation(e,tp,eg,ep,ev,re,r,rp)

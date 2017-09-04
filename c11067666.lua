@@ -27,7 +27,7 @@ function c11067666.condition(e,tp,eg,ep,ev,re,r,rp)
 		and g and g:IsExists(c11067666.cfilter,1,nil,tp) and Duel.IsChainDisablable(ev)
 end
 function c11067666.operation(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.SelectYesNo(tp,aux.Stringid(11067666,0)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler()) then
 		e:GetHandler():RegisterFlagEffect(11067666,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 		if Duel.NegateEffect(ev) then
 			Duel.BreakEffect()

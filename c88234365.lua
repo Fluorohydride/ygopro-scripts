@@ -29,7 +29,7 @@ function c88234365.repfilter(c,tp)
 end
 function c88234365.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() and eg:IsExists(c88234365.repfilter,1,nil,tp) end
-	return Duel.SelectYesNo(tp,aux.Stringid(88234365,0))
+	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c88234365.repval(e,c)
 	return c88234365.repfilter(c,e:GetHandlerPlayer())

@@ -1,7 +1,7 @@
 --ハニーボット
 function c34472920.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_CYBERS),2,2)
+	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_CYBERSE),2,2)
 	c:EnableReviveLimit()
 	--cannot be target/battle indestructable
 	local e1=Effect.CreateEffect(c)

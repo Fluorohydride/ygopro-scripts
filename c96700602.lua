@@ -18,8 +18,11 @@ function c96700602.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.SelectReleaseGroup(tp,Card.IsType,1,1,nil,TYPE_SYNCHRO)
 	Duel.Release(g,REASON_COST)
 end
+function c96700602.filter(c)
+	return c:IsAttackPos() and c:IsCanChangePosition()
+end
 function c96700602.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAttackPos,tp,0,LOCATION_MZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c96700602.filter,tp,0,LOCATION_MZONE,1,nil) end
 	local tc=eg:GetFirst()
 	if tc:IsLocation(LOCATION_MZONE) then
 		Duel.SetTargetCard(tc)
@@ -28,7 +31,7 @@ function c96700602.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c96700602.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	local g=Duel.GetMatchingGroup(Card.IsAttackPos,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(c96700602.filter,tp,0,LOCATION_MZONE,nil)
 	if Duel.ChangePosition(g,POS_FACEUP_DEFENSE,POS_FACEDOWN_DEFENSE,0,0)~=0 then
 		if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 			Duel.Damage(1-tp,tc:GetDefense(),REASON_EFFECT)

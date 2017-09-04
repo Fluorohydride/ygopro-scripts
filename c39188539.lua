@@ -55,14 +55,15 @@ function c39188539.seqop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.MoveSequence(c,nseq)
 	end
 end
-function c39188539.filter(c,sc)
-	return aux.checksamecolumn(c,sc) and c:IsAbleToHand()
+function c39188539.filter(c,g)
+	return g:IsContains(c) and c:IsAbleToHand()
 end
 function c39188539.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c39188539.filter(chkc,e:GetHandler()) end
-	if chk==0 then return Duel.IsExistingTarget(c39188539.filter,tp,0,LOCATION_ONFIELD,1,nil,e:GetHandler()) end
+	local cg=e:GetHandler():GetColumnGroup()
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c39188539.filter(chkc,cg) end
+	if chk==0 then return Duel.IsExistingTarget(c39188539.filter,tp,0,LOCATION_ONFIELD,1,nil,cg) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=Duel.SelectTarget(tp,c39188539.filter,tp,0,LOCATION_ONFIELD,1,1,nil,e:GetHandler())
+	local g=Duel.SelectTarget(tp,c39188539.filter,tp,0,LOCATION_ONFIELD,1,1,nil,cg)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
 function c39188539.thop(e,tp,eg,ep,ev,re,r,rp)

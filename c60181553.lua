@@ -27,7 +27,7 @@ function c60181553.indtg(e,c)
 end
 function c60181553.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) end
-	return Duel.SelectYesNo(tp,aux.Stringid(60181553,0))
+	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c60181553.repop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_EFFECT)

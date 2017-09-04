@@ -42,7 +42,7 @@ function c79106360.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c79106360.spfilter(c,e,tp)
 	local lv=c:GetLevel()
-	return lv>0 and lv<=4 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN)
+	return lv>0 and lv<=4 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
 end
 function c79106360.sp(e,tp,ct)
 	local g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)

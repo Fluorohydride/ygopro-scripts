@@ -12,7 +12,7 @@ function c40619741.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c40619741.filter(c)
-	return not c:IsType(TYPE_LINK)
+	return c:IsCanChangePosition()
 end
 function c40619741.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c40619741.filter(chkc) end

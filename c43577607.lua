@@ -76,7 +76,7 @@ function c43577607.repfilter(c,tp)
 end
 function c43577607.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c43577607.repfilter,1,nil,tp) end
-	return Duel.SelectYesNo(tp,aux.Stringid(43577607,1))
+	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c43577607.repval(e,c)
 	return c43577607.repfilter(c,e:GetHandlerPlayer())

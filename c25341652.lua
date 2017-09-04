@@ -50,7 +50,7 @@ function c25341652.repfilter(c,tp)
 end
 function c25341652.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c25341652.repfilter,1,nil,tp) end
-	if Duel.SelectYesNo(tp,aux.Stringid(25341652,1)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		local g=eg:Filter(c25341652.repfilter,nil,tp)
 		Duel.SetTargetCard(g)
 		return true

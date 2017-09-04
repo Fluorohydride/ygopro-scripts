@@ -58,18 +58,21 @@ function c63845230.initial_effect(c)
 	ea:SetOperation(c63845230.rmop)
 	c:RegisterEffect(ea)
 end
+function c63845230.cfilter(c)
+	return c:IsAbleToRemoveAsCost() and not c:IsType(TYPE_TOKEN)
+end
 function c63845230.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=-ft+1
-	local g=Duel.GetMatchingGroup(Card.IsAbleToRemoveAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_EXTRA,0,c)
+	local g=Duel.GetMatchingGroup(c63845230.cfilter,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_EXTRA,0,c)
 	return g:GetCount()>=5 and (ft>0 or g:IsExists(Card.IsLocation,ct,nil,LOCATION_MZONE))
 end
 function c63845230.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=-ft+1
-	local g=Duel.GetMatchingGroup(Card.IsAbleToRemoveAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_EXTRA,0,c)
+	local g=Duel.GetMatchingGroup(c63845230.cfilter,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_EXTRA,0,c)
 	local rg=nil
 	if ft<=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)

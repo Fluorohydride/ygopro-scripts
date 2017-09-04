@@ -66,7 +66,7 @@ function c20457551.atkval(e,c)
 end
 function c20457551.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCurrentPhase()==PHASE_END end
-	if Duel.SelectYesNo(tp,aux.Stringid(20457551,0)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
 		return true
 	else return false end

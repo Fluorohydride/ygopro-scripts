@@ -13,7 +13,7 @@ function c60410769.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c60410769.filter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and not c:IsType(TYPE_LINK)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition()
 end
 function c60410769.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c60410769.filter(chkc) end

@@ -69,10 +69,9 @@ function c90590303.postg(e,c)
 	return c:IsFaceup()
 end
 function c90590303.discon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
-	if c:IsStatus(STATUS_BATTLE_DESTROYED) or c:IsAttackPos() then return false end
-	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsDefensePos() and loc==LOCATION_MZONE
+	local loc,pos=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_POSITION)
+	return e:GetHandler():IsDefensePos()
+		and re:IsActiveType(TYPE_MONSTER) and loc==LOCATION_MZONE and bit.band(pos,POS_DEFENSE)~=0
 end
 function c90590303.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)

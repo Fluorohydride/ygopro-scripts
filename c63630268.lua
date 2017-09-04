@@ -10,11 +10,14 @@ function c63630268.initial_effect(c)
 	e1:SetOperation(c63630268.operation)
 	c:RegisterEffect(e1)
 end
+function c63630268.filter(c)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition()
+end
 function c63630268.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsPosition(POS_FACEUP_ATTACK) end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsPosition,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,POS_FACEUP_ATTACK) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c63630268.filter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c63630268.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
-	Duel.SelectTarget(tp,Card.IsPosition,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,POS_FACEUP_ATTACK)
+	Duel.SelectTarget(tp,c63630268.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
 function c63630268.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

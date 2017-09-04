@@ -34,8 +34,9 @@ function c22751868.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return a:IsControler(tp) and a:IsSetCard(0x11) and d:IsFaceup()
 end
 function c22751868.postg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.GetAttackTarget():CreateEffectRelation(e)
+	local d=Duel.GetAttackTarget()
+	if chk==0 then return d:IsCanChangePosition() end
+	d:CreateEffectRelation(e)
 end
 function c22751868.posop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttackTarget()

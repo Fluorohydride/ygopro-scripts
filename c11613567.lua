@@ -28,7 +28,7 @@ function c11613567.ntcon(e,c,minc)
 		and Duel.IsExistingMatchingCard(c11613567.ntfilter,c:GetControler(),LOCATION_MZONE,0,1,nil)
 end
 function c11613567.filter(c)
-	return not c:IsType(TYPE_LINK)
+	return c:IsCanChangePosition()
 end
 function c11613567.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c11613567.filter(chkc) end

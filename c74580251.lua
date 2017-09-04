@@ -40,7 +40,7 @@ function c74580251.repfilter(c,tp)
 end
 function c74580251.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemove() and aux.exccon(e) and eg:IsExists(c74580251.repfilter,1,nil,tp) end
-	return Duel.SelectYesNo(tp,aux.Stringid(74580251,0))
+	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c74580251.repval(e,c)
 	return c74580251.repfilter(c,e:GetHandlerPlayer())

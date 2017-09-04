@@ -11,7 +11,7 @@ function c66742250.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c66742250.filter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsType(TYPE_EFFECT)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsType(TYPE_EFFECT) and c:IsCanChangePosition()
 end
 function c66742250.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c66742250.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end

@@ -13,7 +13,7 @@ function c36033786.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c36033786.posfilter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and not c:IsType(TYPE_LINK)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition()
 end
 function c36033786.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c36033786.posfilter(chkc) end
@@ -46,7 +46,7 @@ function c36033786.posop(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetType(EFFECT_TYPE_FIELD)
 		e3:SetCode(EFFECT_PIERCE)
 		e3:SetTargetRange(LOCATION_MZONE,0)
-		e3:SetTarget(aux.TargetBoolFunction(Card.IsRace,RACE_CYBERS))
+		e3:SetTarget(aux.TargetBoolFunction(Card.IsRace,RACE_CYBERSE))
 		e3:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e3,tp)
 	end

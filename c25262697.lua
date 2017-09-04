@@ -16,7 +16,7 @@ function c25262697.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsEnvironment(47355498)
 end
 function c25262697.filter(c)
-	return c:IsFaceup() and not c:IsType(TYPE_LINK)
+	return c:IsFaceup() and c:IsCanChangePosition()
 end
 function c25262697.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c25262697.filter(chkc) end

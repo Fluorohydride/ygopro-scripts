@@ -78,7 +78,7 @@ function c22790789.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c22790789.filter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and not c:IsType(TYPE_LINK)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition()
 end
 function c22790789.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c22790789.filter(chkc) end

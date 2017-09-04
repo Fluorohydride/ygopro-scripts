@@ -75,7 +75,7 @@ function c39996157.repfilter(c,tp)
 end
 function c39996157.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemove() and eg:IsExists(c39996157.repfilter,1,nil,tp) end
-	return Duel.SelectYesNo(tp,aux.Stringid(39996157,0))
+	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c39996157.repval(e,c)
 	return c39996157.repfilter(c,e:GetHandlerPlayer())

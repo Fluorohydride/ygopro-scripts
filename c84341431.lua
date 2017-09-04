@@ -23,7 +23,7 @@ function c84341431.initial_effect(c)
 end
 function c84341431.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReason(REASON_EFFECT) and Duel.CheckLPCost(tp,500) end
-	if Duel.SelectYesNo(tp,aux.Stringid(84341431,0)) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		Duel.PayLPCost(tp,500)
 		return true
 	else return false end

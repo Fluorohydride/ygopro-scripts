@@ -39,17 +39,17 @@ function c20470500.operation(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetReset(RESET_EVENT+0x57a0000)
 	bc:RegisterEffect(e2)
 end
-function c20470500.repfilter(c)
-	return c:IsFaceup() and c:IsLevelBelow(3) and c:IsAttribute(ATTRIBUTE_WATER)
+function c20470500.repfilter(c,e)
+	return c:IsFaceup() and c:IsLevelBelow(3) and c:IsAttribute(ATTRIBUTE_WATER) and c:IsDestructable(e)
 		and not c:IsStatus(STATUS_DESTROY_CONFIRMED)
 end
 function c20470500.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return not c:IsReason(REASON_REPLACE)
-		and Duel.IsExistingMatchingCard(c20470500.repfilter,tp,LOCATION_MZONE,0,1,c) end
-	if Duel.SelectYesNo(tp,aux.Stringid(20470500,1)) then
+		and Duel.IsExistingMatchingCard(c20470500.repfilter,tp,LOCATION_MZONE,0,1,c,e) end
+	if Duel.SelectEffectYesNo(tp,c,96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
-		local g=Duel.SelectMatchingCard(tp,c20470500.repfilter,tp,LOCATION_MZONE,0,1,1,c)
+		local g=Duel.SelectMatchingCard(tp,c20470500.repfilter,tp,LOCATION_MZONE,0,1,1,c,e)
 		e:SetLabelObject(g:GetFirst())
 		g:GetFirst():SetStatus(STATUS_DESTROY_CONFIRMED,true)
 		return true

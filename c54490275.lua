@@ -49,8 +49,8 @@ function c54490275.poscon2(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():GetReasonCard():IsRelateToBattle()
 end
 function c54490275.postg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
 	local rc=e:GetHandler():GetReasonCard()
+	if chk==0 then return rc:IsCanTurnSet() end
 	Duel.SetTargetCard(rc)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,rc,1,0,0)
 end

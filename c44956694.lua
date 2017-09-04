@@ -23,7 +23,7 @@ function c44956694.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c44956694.thfilter(c)
-	return c:IsRace(RACE_CYBERS) and c:IsAbleToHand() and not c:IsCode(44956694)
+	return c:IsRace(RACE_CYBERSE) and c:IsAbleToHand() and not c:IsCode(44956694)
 end
 function c44956694.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c44956694.thfilter(chkc) end
@@ -42,7 +42,7 @@ function c44956694.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0
 end
 function c44956694.spfilter(c,e,tp)
-	return c:IsLevelBelow(4) and c:IsRace(RACE_CYBERS) and not c:IsCode(44956694) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevelBelow(4) and c:IsRace(RACE_CYBERSE) and not c:IsCode(44956694) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c44956694.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

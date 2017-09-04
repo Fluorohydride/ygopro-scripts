@@ -35,7 +35,7 @@ function c57288064.filter(c,tp)
 		and Duel.IsExistingMatchingCard(c57288064.posfilter,tp,0,LOCATION_MZONE,1,nil,atk)
 end
 function c57288064.posfilter(c,atk)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsAttackBelow(atk)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition() and c:IsAttackBelow(atk)
 end
 function c57288064.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_REMOVED) and c57288064.filter(chkc,tp) end

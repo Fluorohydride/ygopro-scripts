@@ -27,8 +27,10 @@ function c1580833.filter(c,tp)
 		and (c:IsReason(REASON_BATTLE) or (c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()~=tp))
 end
 function c1580833.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c1580833.filter,1,e:GetHandler(),tp) and not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED) end
-	return Duel.SelectYesNo(tp,aux.Stringid(1580833,0))
+	local c=e:GetHandler()
+	if chk==0 then return eg:IsExists(c1580833.filter,1,c,tp)
+		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED) end
+	return Duel.SelectEffectYesNo(tp,c,96)
 end
 function c1580833.repval(e,c)
 	return c1580833.filter(c,e:GetHandlerPlayer())

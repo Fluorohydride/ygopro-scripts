@@ -25,7 +25,7 @@ end
 function c14289852.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c14289852.dfilter,1,nil,tp)
 		and Duel.IsExistingMatchingCard(c14289852.repfilter,tp,LOCATION_DECK,0,1,nil) end
-	return Duel.SelectYesNo(tp,aux.Stringid(14289852,0))
+	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c14289852.value(e,c)
 	return c:IsControler(e:GetHandlerPlayer()) and c:IsReason(REASON_BATTLE)

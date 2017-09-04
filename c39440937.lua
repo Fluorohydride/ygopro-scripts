@@ -10,7 +10,7 @@ function c39440937.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c39440937.filter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsType(TYPE_SYNCHRO)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsType(TYPE_SYNCHRO) and c:IsCanChangePosition()
 end
 function c39440937.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c39440937.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end

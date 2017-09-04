@@ -17,7 +17,7 @@ function c58464739.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c58464739.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c58464739.filter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and not c:IsType(TYPE_LINK)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition()
 end
 function c58464739.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

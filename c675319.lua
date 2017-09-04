@@ -42,19 +42,19 @@ end
 function c675319.atlimit(e,c)
 	return c:IsFaceup() and c:IsRace(RACE_BEASTWARRIOR) and Duel.IsExistingMatchingCard(c675319.atfilter,c:GetControler(),LOCATION_MZONE,0,1,nil,c:GetAttack())
 end
-function c675319.repfilter(c,tp,e)
+function c675319.repfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
 		and c:IsSetCard(0xf1) and c:IsReason(REASON_EFFECT) and c:GetFlagEffect(675319)==0
 end
-function c675319.desfilter(c,tp)
+function c675319.desfilter(c,e,tp)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE+LOCATION_HAND) and c:IsType(TYPE_MONSTER)
-		and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
+		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED+STATUS_BATTLE_DESTROYED)
 end
 function c675319.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c675319.desfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,nil,tp)
-		and eg:IsExists(c675319.repfilter,1,nil,tp,e) end
-	if Duel.SelectYesNo(tp,aux.Stringid(675319,0)) then
-		local g=eg:Filter(c675319.repfilter,nil,tp,e)
+	if chk==0 then return Duel.IsExistingMatchingCard(c675319.desfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,nil,e,tp)
+		and eg:IsExists(c675319.repfilter,1,nil,tp) end
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
+		local g=eg:Filter(c675319.repfilter,nil,tp)
 		if g:GetCount()==1 then
 			e:SetLabelObject(g:GetFirst())
 		else
@@ -63,8 +63,7 @@ function c675319.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 			e:SetLabelObject(cg:GetFirst())
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
-		local tg=Duel.SelectMatchingCard(tp,c675319.desfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,1,nil,tp)
-		Duel.HintSelection(tg)
+		local tg=Duel.SelectMatchingCard(tp,c675319.desfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,1,nil,e,tp)
 		Duel.SetTargetCard(tg)
 		tg:GetFirst():RegisterFlagEffect(675319,RESET_EVENT+0x1fc0000+RESET_CHAIN,0,1)
 		tg:GetFirst():SetStatus(STATUS_DESTROY_CONFIRMED,true)
@@ -75,6 +74,7 @@ function c675319.repval(e,c)
 	return c==e:GetLabelObject()
 end
 function c675319.repop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,1-tp,675319)
 	local tc=Duel.GetFirstTarget()
 	tc:SetStatus(STATUS_DESTROY_CONFIRMED,false)
 	Duel.Destroy(tc,REASON_EFFECT+REASON_REPLACE)

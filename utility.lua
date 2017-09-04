@@ -2,6 +2,7 @@ Auxiliary={}
 aux=Auxiliary
 POS_FACEUP_DEFENCE=POS_FACEUP_DEFENSE
 POS_FACEDOWN_DEFENCE=POS_FACEDOWN_DEFENSE
+RACE_CYBERS=RACE_CYBERSE
 
 function Auxiliary.Stringid(code,id)
 	return code*16+id
@@ -455,11 +456,7 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 		if type(val[i])=='function' then
 			fun[i]=function(c,fc,sub,mg,sg) return val[i](c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) end
 		else
-			if sub then
-				fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
-			else
-				fun[i]=function(c) return c:IsFusionCode(val[i]) end
-			end
+			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
 			table.insert(mat,val[i])
 		end
 	end
@@ -540,9 +537,13 @@ function Auxiliary.FCheckMix(c,mg,sg,fc,sub,fun1,fun2,...)
 		return fun1(c,fc,sub,mg,sg)
 	end
 end
+function Auxiliary.FCheckTuneMagicianX(c,sg)
+	return c:IsHasEffect(EFFECT_TUNE_MAGICIAN_F) and sg:IsExists(c.fuslimit,1,c)
+end
 --if sg1 is subset of sg2 then not Auxiliary.FCheckAdditional(tp,sg1,fc) -> not Auxiliary.FCheckAdditional(tp,sg2,fc)
 Auxiliary.FCheckAdditional=nil
 function Auxiliary.FCheckMixGoal(tp,sg,fc,sub,chkf,...)
+	if sg:IsExists(Auxiliary.FCheckTuneMagicianX,1,nil,sg) then return false end
 	local g=Group.CreateGroup()
 	return sg:IsExists(Auxiliary.FCheckMix,1,nil,sg,g,fc,sub,...) and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
 		and (not Auxiliary.FCheckAdditional or Auxiliary.FCheckAdditional(tp,sg,fc))
@@ -568,11 +569,7 @@ function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
 		if type(val[i])=='function' then
 			fun[i]=function(c,fc,sub,mg,sg) return val[i](c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) end
 		else
-			if sub then
-				fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
-			else
-				fun[i]=function(c) return c:IsFusionCode(val[i]) end
-			end
+			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
 			table.insert(mat,val[i])
 		end
 	end
@@ -625,6 +622,7 @@ function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
 					if cg:GetCount()==0 then break end
 					local minct=1
 					if Auxiliary.FCheckMixRepGoal(tp,sg,c,sub,chkf,fun1,minc,maxc,table.unpack(funs)) then
+						if not Duel.SelectYesNo(tp,210) then break end
 						minct=0
 					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
@@ -655,6 +653,7 @@ function Auxiliary.FCheckMixRepFilter(c,sg,g,fc,sub,chkf,fun1,minc,maxc,fun2,...
 	return false
 end
 function Auxiliary.FCheckMixRepGoal(tp,sg,fc,sub,chkf,fun1,minc,maxc,...)
+	if sg:IsExists(Auxiliary.FCheckTuneMagicianX,1,nil,sg) then return false end
 	if sg:GetCount()<minc+#{...} or sg:GetCount()>maxc+#{...} then return false end
 	local g=Group.CreateGroup()
 	return Auxiliary.FCheckMixRep(sg,g,fc,sub,chkf,fun1,minc,maxc,...) and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
@@ -1209,6 +1208,7 @@ function Auxiliary.LinkOperation(f,minc,maxc)
 					if cg:GetCount()==0 then break end
 					local minct=1
 					if Auxiliary.LCheckGoal(tp,sg,c,minc,i) then
+						if not Duel.SelectYesNo(tp,210) then break end
 						minct=0
 					end
 					local g=cg:Select(tp,minct,1,nil)
@@ -1373,27 +1373,4 @@ end
 function Auxiliary.bfgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
-end
---Checks whether 2 cards are on the same column
---skip_ex is optional, indicates whether the Extra Monster Zone should be ignored (used in Blasting Fuse)
-function Auxiliary.checksamecolumn(c1,c2,skip_ex)
-	if not c1 or not c1:IsOnField() or not c2 or not c2:IsOnField() then return false end
-	if c1==c2 then return false end
-	local s1=c1:GetSequence()
-	local s2=c2:GetSequence()
-	if (c1:IsLocation(LOCATION_SZONE) and s1>=5)
-		or (c2:IsLocation(LOCATION_SZONE) and s2>=5) then return false end
-	if c1:GetControler()==c2:GetControler() then
-		if skip_ex then
-			return s2==s1
-		else
-			return s2==s1 or (s1==1 and s2==5) or (s1==3 and s2==6)
-		end
-	else
-		if skip_ex then
-			return s2==4-s1
-		else
-			return s2==4-s1 or (s1==1 and s2==6) or (s1==3 and s2==5)
-		end
-	end
 end

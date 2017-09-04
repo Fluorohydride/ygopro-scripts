@@ -46,17 +46,18 @@ function c18631392.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.SendtoGrave(g1,REASON_COST)
 end
 function c18631392.anctg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then 
+	if chk==0 then
 		if not Duel.IsPlayerCanDiscardDeck(tp,3) then return false end
 		local g=Duel.GetDecktopGroup(tp,3)
 		return g:FilterCount(Card.IsAbleToHand,nil)>0
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,0)
-	local ac1=Duel.AnnounceCard(tp)
-	Duel.Hint(HINT_SELECTMSG,tp,0)
-	local ac2=Duel.AnnounceCard(tp)
-	Duel.Hint(HINT_SELECTMSG,tp,0)
-	local ac3=Duel.AnnounceCard(tp)
+	c18631392.announce_filter={TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK,OPCODE_ISTYPE,OPCODE_NOT}
+	Duel.Hint(HINT_SELECTMSG,tp,564)
+	local ac1=Duel.AnnounceCardFilter(tp,table.unpack(c18631392.announce_filter))
+	Duel.Hint(HINT_SELECTMSG,tp,564)
+	local ac2=Duel.AnnounceCardFilter(tp,table.unpack(c18631392.announce_filter))
+	Duel.Hint(HINT_SELECTMSG,tp,564)
+	local ac3=Duel.AnnounceCardFilter(tp,table.unpack(c18631392.announce_filter))
 	e:SetOperation(c18631392.retop(ac1,ac2,ac3))
 end
 function c18631392.hfilter(c,code1,code2,code3)

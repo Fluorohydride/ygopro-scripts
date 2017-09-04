@@ -17,7 +17,7 @@ function c16708652.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and (ph~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
 end
 function c16708652.filter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsSetCard(0x11)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition() and c:IsSetCard(0x11)
 end
 function c16708652.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

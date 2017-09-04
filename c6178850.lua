@@ -49,9 +49,9 @@ end
 function c6178850.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local tg=c:GetEquipTarget()
-	if chk==0 then return c and not c:IsStatus(STATUS_DESTROY_CONFIRMED)
+	if chk==0 then return c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED)
 		and tg and tg:IsReason(REASON_BATTLE) end
-	return Duel.SelectYesNo(tp,aux.Stringid(6178850,0))
+	return Duel.SelectEffectYesNo(tp,c,96)
 end
 function c6178850.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT+REASON_REPLACE)

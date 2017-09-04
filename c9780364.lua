@@ -18,7 +18,7 @@ function c9780364.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c9780364.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
 end
 function c9780364.filter(c,e)
-	return c:IsFaceup() and c:IsCanBeEffectTarget(e)
+	return c:IsFaceup() and c:IsCanBeEffectTarget(e) and c:IsCanChangePosition()
 end
 function c9780364.filter2(c)
 	return c:IsFaceup() and c:IsSetCard(0x19) and c:IsAbleToChangeControler()
@@ -27,7 +27,7 @@ function c9780364.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsFaceup() end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
 	local g=Duel.GetMatchingGroup(c9780364.filter,tp,0,LOCATION_MZONE,nil,e)
-	local cg=g:Filter(c9780364.filter2,nil)
+	local cg=Duel.GetMatchingGroup(c9780364.filter2,tp,0,LOCATION_MZONE,nil)
 	local sel=0
 	Duel.Hint(HINT_SELECTMSG,tp,550)
 	if cg:GetCount()==0 then

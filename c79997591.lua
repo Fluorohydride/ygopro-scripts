@@ -12,7 +12,7 @@ function c79997591.initial_effect(c)
 end
 function c79997591.cbcon(e,tp,eg,ep,ev,re,r,rp)
 	local bt=Duel.GetAttackTarget()
-	return bt and bt:IsPosition(POS_FACEUP_ATTACK) and bt:IsControler(tp)
+	return bt and bt:IsLocation(LOCATION_MZONE) and bt:IsPosition(POS_FACEUP_ATTACK) and bt:IsControler(tp)
 end
 function c79997591.cbtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.GetAttacker():IsHasEffect(EFFECT_CANNOT_DIRECT_ATTACK) end
