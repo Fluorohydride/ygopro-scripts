@@ -32,7 +32,7 @@ end
 function c13536606.rfilter(c,tp,g)
 	local lk=c:GetLink()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	return c:IsFaceup() and c:IsType(TYPE_LINK) and lk<4 and c:IsReleasableByEffect() and g:IsContains(c)
+	return c:IsFaceup() and c:IsType(TYPE_LINK) and c:IsLinkBelow(3) and c:IsReleasableByEffect() and g:IsContains(c)
 		and ft>=lk and (ft==1 or not Duel.IsPlayerAffectedByEffect(tp,59822133))
 end
 function c13536606.tktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
