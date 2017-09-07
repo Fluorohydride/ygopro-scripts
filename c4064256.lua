@@ -25,6 +25,14 @@ function c4064256.initial_effect(c)
 	local e4=e3:Clone()
 	e4:SetCode(EFFECT_CANNOT_MSET)
 	c:RegisterEffect(e4)
+	--4064256 chk
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_FIELD)
+	e5:SetCode(4064256)
+	e5:SetRange(LOCATION_FZONE)
+	e5:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e5:SetTargetRange(1,1)
+	c:RegisterEffect(e5)
 end
 function c4064256.sumlimit(e,c,tp,sumtp)
 	return bit.band(sumtp,SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE and c:GetRace()~=RACE_ZOMBIE
