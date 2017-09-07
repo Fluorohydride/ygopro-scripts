@@ -48,12 +48,8 @@ function c58139128.disop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.NegateEffect(ev)
 	end
 end
-function c58139128.actfilter(c)
-	return c:IsFaceup() and c:IsCode(47355498)
-end
 function c58139128.econ(e)
-	return Duel.IsExistingMatchingCard(c58139128.actfilter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-		or Duel.IsEnvironment(47355498)
+	return Duel.IsEnvironment(47355498)
 end
 function c58139128.efilter1(e,re,tp)
 	return re:GetHandler():IsType(TYPE_FIELD) and re:IsHasType(EFFECT_TYPE_ACTIVATE)

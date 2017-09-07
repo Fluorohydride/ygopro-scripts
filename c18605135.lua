@@ -24,12 +24,8 @@ function c18605135.initial_effect(c)
 	e3:SetCondition(c18605135.sdcon)
 	c:RegisterEffect(e3)
 end
-function c18605135.filter(c)
-	return c:IsFaceup() and c:IsCode(22702055)
-end
 function c18605135.check()
-	return Duel.IsExistingMatchingCard(c18605135.filter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-		or Duel.IsEnvironment(22702055)
+	return Duel.IsEnvironment(22702055)
 end
 function c18605135.actcon(e,tp,eg,ep,ev,re,r,rp)
 	return c18605135.check()

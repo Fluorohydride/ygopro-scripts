@@ -63,12 +63,8 @@ function c97795930.winop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Win(tp,WIN_REASON_CELESTIAL_WHIRLPOOL)
 	end
 end
-function c97795930.cfilter(c)
-	return c:IsFaceup() and c:IsCode(22702055)
-end
 function c97795930.handcon(e)
-	return Duel.IsExistingMatchingCard(c97795930.cfilter,e:GetHandlerPlayer(),LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-		or Duel.IsEnvironment(22702055)
+	return Duel.IsEnvironment(22702055)
 end
 function c97795930.repfilter(c,tp)
 	return c:IsFaceup() and c:IsType(TYPE_NORMAL) and c:IsLocation(LOCATION_MZONE)

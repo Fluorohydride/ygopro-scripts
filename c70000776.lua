@@ -27,19 +27,14 @@ end
 function c70000776.cfilter1(c)
 	return c:IsFaceup() and c:IsSetCard(0x2e)
 end
-function c70000776.cfilter2(c)
-	return c:IsFaceup() and c:IsCode(47355498)
-end
 function c70000776.actcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c70000776.cfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
-		and (Duel.IsExistingMatchingCard(c70000776.cfilter2,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-		or Duel.IsEnvironment(47355498))
+		and Duel.IsEnvironment(47355498)
 end
 function c70000776.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 	return not c:IsSetCard(0x2e)
 end
 function c70000776.sdcon(e)
 	return not Duel.IsExistingMatchingCard(c70000776.cfilter1,0,LOCATION_MZONE,LOCATION_MZONE,1,nil)
-		or (not Duel.IsExistingMatchingCard(c70000776.cfilter2,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-		and not Duel.IsEnvironment(47355498))
+		or not Duel.IsEnvironment(47355498)
 end

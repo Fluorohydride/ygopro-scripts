@@ -13,12 +13,8 @@ function c82685480.initial_effect(c)
 	e1:SetOperation(c82685480.activate)
 	c:RegisterEffect(e1)
 end
-function c82685480.cfilter(c)
-	return c:IsFaceup() and c:IsCode(22702055)
-end
 function c82685480.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c82685480.cfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-		or Duel.IsEnvironment(22702055)
+	return Duel.IsEnvironment(22702055)
 end
 function c82685480.filter(c)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER) and c:GetOriginalLevel()>=5

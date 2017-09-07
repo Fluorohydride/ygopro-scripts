@@ -52,12 +52,8 @@ function c19089195.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c19089195.efilter(c)
-	return c:IsFaceup() and c:IsCode(22702055)
-end
 function c19089195.econ(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c19089195.efilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-		or Duel.IsEnvironment(22702055)
+	return Duel.IsEnvironment(22702055)
 end
 function c19089195.costfilter(c)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER) and c:IsAbleToRemoveAsCost()

@@ -10,12 +10,8 @@ function c24128274.initial_effect(c)
 	e1:SetValue(c24128274.efilter)
 	c:RegisterEffect(e1)
 end
-function c24128274.filter(c)
-	return c:IsFaceup() and c:IsCode(22702055)
-end
 function c24128274.econ(e)
-	return Duel.IsExistingMatchingCard(c24128274.filter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-		or Duel.IsEnvironment(22702055)
+	return Duel.IsEnvironment(22702055)
 end
 function c24128274.efilter(e,te)
 	return te:IsActiveType(TYPE_SPELL)

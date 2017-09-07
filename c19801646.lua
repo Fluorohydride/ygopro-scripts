@@ -32,12 +32,8 @@ end
 function c19801646.efilter(e,te)
 	return te:IsActiveType(TYPE_MONSTER) and te:GetOwner()~=e:GetOwner()
 end
-function c19801646.filter(c)
-	return c:IsFaceup() and c:IsCode(22702055)
-end
 function c19801646.econ(e)
-	return Duel.IsExistingMatchingCard(c19801646.filter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-		or Duel.IsEnvironment(22702055)
+	return Duel.IsEnvironment(22702055)
 end
 function c19801646.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

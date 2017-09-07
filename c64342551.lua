@@ -6,10 +6,6 @@ function c64342551.initial_effect(c)
 	e1:SetCondition(c64342551.dircon)
 	c:RegisterEffect(e1)
 end
-function c64342551.filter(c)
-	return c:IsFaceup() and c:IsCode(22702055)
-end
 function c64342551.dircon(e)
-	return Duel.IsExistingMatchingCard(c64342551.filter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-		or Duel.IsEnvironment(22702055)
+	return Duel.IsEnvironment(22702055)
 end

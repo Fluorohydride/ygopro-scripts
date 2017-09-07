@@ -18,12 +18,8 @@ function c3643300.initial_effect(c)
 	e2:SetCondition(c3643300.econ)
 	c:RegisterEffect(e2)
 end
-function c3643300.filter(c)
-	return c:IsFaceup() and c:IsCode(22702055)
-end
 function c3643300.econ(e)
-	return Duel.IsExistingMatchingCard(c3643300.filter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-		or Duel.IsEnvironment(22702055)
+	return Duel.IsEnvironment(22702055)
 end
 function c3643300.efilter(e,te)
 	return te:IsActiveType(TYPE_SPELL)

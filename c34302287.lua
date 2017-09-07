@@ -50,12 +50,8 @@ function c34302287.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
-function c34302287.filter(c)
-	return c:IsFaceup() and c:IsCode(22702055)
-end
 function c34302287.handcon(e)
-	return Duel.IsExistingMatchingCard(c34302287.filter,e:GetHandlerPlayer(),LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-		or Duel.IsEnvironment(22702055)
+	return Duel.IsEnvironment(22702055)
 end
 function c34302287.efilter(c,tp)
 	return c:IsFaceup() and c:IsType(TYPE_NORMAL)

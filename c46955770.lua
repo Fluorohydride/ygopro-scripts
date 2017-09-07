@@ -9,12 +9,8 @@ function c46955770.initial_effect(c)
 	e1:SetValue(c46955770.efilter)
 	c:RegisterEffect(e1)
 end
-function c46955770.filter(c)
-	return c:IsFaceup() and c:IsCode(47355498)
-end
 function c46955770.con(e)
-	return Duel.IsExistingMatchingCard(c46955770.filter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-		or Duel.IsEnvironment(47355498)
+	return Duel.IsEnvironment(47355498)
 end
 function c46955770.efilter(e,te)
 	return te:GetOwner()~=e:GetOwner()
