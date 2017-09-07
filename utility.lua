@@ -611,7 +611,7 @@ function Auxiliary.XyzLevelFreeTarget2(f,gf,minct,maxct,alterf,desc,op)
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
 				local g=Group.CreateGroup()
-				local ag=mg:Filter(Auxiliary.XyzLevelFreeCheck,g,tp,c,mg,g,gf,minc,maxc)
+				local ag=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f):Filter(Auxiliary.XyzLevelFreeCheck,g,tp,c,mg,g,gf,minc,maxc)
 				local b1=ag:GetCount()>0
 				local b2=(not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,op)
 				if b2 and (not b1 or Duel.SelectYesNo(tp,desc)) then
@@ -635,7 +635,7 @@ function Auxiliary.XyzLevelFreeTarget2(f,gf,minct,maxct,alterf,desc,op)
 						if tg:GetCount()==0 then break end
 						g:Merge(tg)
 						ct=g:GetCount()
-						ag=mg:Filter(Auxiliary.XyzLevelFreeCheck,g,tp,c,mg,g,gf,minc,maxc)
+						ag=ag:Filter(Auxiliary.XyzLevelFreeCheck,g,tp,c,mg,g,gf,minc,maxc)
 					end
 				end
 				if g:GetCount()>0 then
