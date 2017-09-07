@@ -458,7 +458,7 @@ function Auxiliary.XyzProcedureLevelFreeCheck(c,tp,xyzcard,mg,sg,gf,minc,maxc)
 	return res
 end
 function Auxiliary.XyzProcedureLevelFreeGoal(g,tp,xyzcard,gf)
-	return (not gf or gf(g,xyzc)) and Duel.GetLocationCountFromEx(tp,tp,g,xyzcard)>0
+	return (not gf or gf(g,xyzcard)) and Duel.GetLocationCountFromEx(tp,tp,g,xyzcard)>0
 end
 function Auxiliary.XyzProcedureLevelFreeCondition(func,gf,minct,maxct)
 	return function(e,c,og,min,max)
