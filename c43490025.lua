@@ -2,7 +2,7 @@
 function c43490025.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()
-	aux.AddXyzProcedureLevelFree(c,c43490025.mfilter,c43490025.xyzcheck,1,2)
+	aux.AddXyzProcedureLevelFree(c,c43490025.mfilter,c43490025.xyzcheck,2,2,c43490025.ovfilter,aux.Stringid(43490025,1))
 	--atkup
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
@@ -31,18 +31,13 @@ function c43490025.initial_effect(c)
 end
 c43490025.xyz_number=0
 function c43490025.mfilter(c,xyzc)
-	return (not c:IsSetCard(0x48) and c:IsXyzType(TYPE_XYZ)) or (c:IsSetCard(0x107f) or c:IsCode(65305468))
-end
-function c43490025.gfilter(c)
-	return c:IsSetCard(0x48) or not c:IsXyzType(TYPE_XYZ)
+	return c:IsXyzType(TYPE_XYZ) and not c:IsSetCard(0x48)
 end
 function c43490025.xyzcheck(g,xyzc)
-	if g:GetCount()==1 then
-		local tc=g:GetFirst()
-		return tc:IsSetCard(0x107f) or tc:IsCode(65305468)
-	else
-		return g:GetClassCount(Card.GetRank)==1 and not g:IsExists(c43490025.gfilter,1,nil)
-	end
+	return g:GetClassCount(Card.GetRank)==1
+end
+function c43490025.ovfilter(c)
+	return c:IsFaceup() and (c:IsSetCard(0x107f) or c:IsCode(65305468))
 end
 function c43490025.atkfilter(c)
 	return c:IsType(TYPE_XYZ) and c:IsSetCard(0x48)
