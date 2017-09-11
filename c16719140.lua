@@ -1,4 +1,4 @@
---Subterror Nemesis Warrior
+--サブテラーの戦士
 function c16719140.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -30,18 +30,15 @@ function c16719140.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)
 	if chk==0 then return true end
 end
-function c16719140.rfilter(c)
-	return c:GetOriginalLevel()>0
-end
 function c16719140.costfilter(c,e,tp,mg,rlv)
+	if not (c:IsLevelAbove(0) and c:IsSetCard(0xed) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
+		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN))) then return false end
 	local lv=c:GetLevel()-rlv
-	return lv>0 and c:IsSetCard(0xed) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
-		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE))
-		and mg:CheckWithSumGreater(Card.GetOriginalLevel,lv)
+	return mg:GetCount()>0 and (lv<=0 or mg:CheckWithSumGreater(Card.GetOriginalLevel,lv))
 end
 function c16719140.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	local mg=Duel.GetReleaseGroup(tp):Filter(c16719140.rfilter,nil)
+	local mg=Duel.GetReleaseGroup(tp):Filter(Card.IsLevelAbove,nil,1)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
@@ -63,20 +60,26 @@ function c16719140.spop1(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<-1 then return end
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) then return end
-	local mg=Duel.GetReleaseGroup(tp):Filter(c16719140.rfilter,nil)
+	local mg=Duel.GetReleaseGroup(tp):Filter(Card.IsLevelAbove,nil,1)
 	if not mg:IsContains(c) then return end
 	mg:RemoveCard(c)
+	if mg:GetCount()==0 then return end
 	local spos=0
-	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE) then spos=spos+POS_FACEUP_DEFENSE end
-	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE) then spos=spos+POS_FACEDOWN_DEFENSE end
+	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then spos=spos+POS_FACEUP_DEFENSE end
+	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN) then spos=spos+POS_FACEDOWN_DEFENSE end
 	if spos~=0 then
-		local g=mg:SelectWithSumGreater(tp,Card.GetOriginalLevel,tc:GetLevel()-c:GetOriginalLevel())
+		local lv=tc:GetLevel()-c:GetOriginalLevel()
+		local g=Group.CreateGroup()
+		if lv<=0 then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+			g=mg:Select(tp,1,1,nil)
+		else
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+			g=mg:SelectWithSumGreater(tp,Card.GetOriginalLevel,lv)
+		end
 		g:AddCard(c)
 		if g:GetCount()>=2 and Duel.Release(g,REASON_EFFECT)~=0 then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,spos)
-			if tc:IsFacedown() then
-				Duel.ConfirmCards(1-tp,tc)
-			end
 		end
 	end
 end
