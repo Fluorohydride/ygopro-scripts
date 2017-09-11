@@ -83,8 +83,11 @@ function c16719140.spop1(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
+function c16719140.cfilter(c,tp)
+	return c:IsSetCard(0x10ed) and c:IsControler(tp)
+end
 function c16719140.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(Card.IsSetCard,1,nil,0x10ed)
+	return eg:IsExists(c16719140.cfilter,1,nil,tp)
 end
 function c16719140.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
