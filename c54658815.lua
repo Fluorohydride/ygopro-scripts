@@ -20,7 +20,7 @@ function c54658815.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local zone=0
 	local lg=Duel.GetMatchingGroup(c54658815.lkfilter,tp,LOCATION_MZONE,0,nil)
 	for tc in aux.Next(lg) do
-		zone=bit.bor(zone,tc:GetLinkedZone())
+		zone=bit.bor(zone,bit.rshift(tc:GetLinkedZone(),16))
 	end
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(1-tp) and c54658815.filter(chkc,e,tp,zone) end
 	if chk==0 then return zone~=0 and Duel.IsExistingTarget(c54658815.filter,tp,0,LOCATION_GRAVE,1,nil,e,tp,zone) end
@@ -34,7 +34,7 @@ function c54658815.activate(e,tp,eg,ep,ev,re,r,rp)
 		local zone=0
 		local lg=Duel.GetMatchingGroup(c54658815.lkfilter,tp,LOCATION_MZONE,0,nil)
 		for tc in aux.Next(lg) do
-			zone=bit.bor(zone,tc:GetLinkedZone())
+			zone=bit.bor(zone,bit.rshift(tc:GetLinkedZone(),16))
 		end
 		Duel.SpecialSummon(tc,0,tp,1-tp,false,false,POS_FACEUP,zone)
 	end
