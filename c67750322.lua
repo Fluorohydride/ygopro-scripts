@@ -15,14 +15,14 @@ function c67750322.initial_effect(c)
 end
 function c67750322.discon(e,tp,eg,ep,ev,re,r,rp)
 	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
-	return ep~=tp and Duel.IsChainNegatable(ev) and loc==LOCATION_GRAVE
+	return ep~=tp and Duel.IsChainDisablable(ev) and loc==LOCATION_GRAVE
 end
 function c67750322.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c67750322.distg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return not re:GetHandler():IsStatus(STATUS_DISABLED) end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
 end
 function c67750322.disop(e,tp,eg,ep,ev,re,r,rp)
