@@ -1,4 +1,4 @@
---Subterror Final Battle
+--サブテラーの決戦
 function c74640994.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -24,10 +24,10 @@ function c74640994.fdfilter(c)
 	return c74640994.filter(c) and c:IsCanTurnSet()
 end
 function c74640994.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local b1=Duel.IsExistingMatchingCard(c74640994.fufilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
-	local b2=Duel.IsExistingMatchingCard(c74640994.fdfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
+	local b1=Duel.GetCurrentPhase()~=PHASE_DAMAGE and Duel.IsExistingMatchingCard(c74640994.fufilter,tp,LOCATION_MZONE,0,1,nil)
+	local b2=Duel.GetCurrentPhase()~=PHASE_DAMAGE and Duel.IsExistingMatchingCard(c74640994.fdfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
 	local b3=Duel.IsExistingMatchingCard(c74640994.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
-	local b4=Duel.GetFlagEffect(tp,74640994)==0
+	local b4=Duel.GetCurrentPhase()~=PHASE_DAMAGE and Duel.GetFlagEffect(tp,74640994)==0
 	if chk==0 then return b1 or b2 or b3 or b4 end
 	local off=1
 	local ops={}
@@ -67,7 +67,7 @@ function c74640994.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sel=e:GetLabel()
 	if sel==1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
-		local g=Duel.SelectMatchingCard(tp,c74640994.fufilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,c74640994.fufilter,tp,LOCATION_MZONE,0,1,1,nil)
 		if g:GetCount()>0 then
 			Duel.HintSelection(g)
 			local tc=g:GetFirst()
