@@ -31,12 +31,10 @@ function c16719140.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 end
 function c16719140.costfilter(c,e,tp,mg,rlv)
-	if c:GetLevel()==0 then return false end
+	if not (c:IsLevelAbove(0) and c:IsSetCard(0xed) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
+		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN))) then return false end
 	local lv=c:GetLevel()-rlv
-	if c:IsSetCard(0xed) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
-		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN)) then
-		return (lv<0 and mg:GetCount()>0) or mg:CheckWithSumGreater(Card.GetOriginalLevel,lv)
-	else return false end
+	return mg:GetCount()>0 and (lv<=0 or mg:CheckWithSumGreater(Card.GetOriginalLevel,lv))
 end
 function c16719140.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -72,9 +70,11 @@ function c16719140.spop1(e,tp,eg,ep,ev,re,r,rp)
 	if spos~=0 then
 		local lv=tc:GetLevel()-c:GetOriginalLevel()
 		local g=Group.CreateGroup()
-		if lv<0 then
+		if lv<=0 then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 			g=mg:Select(tp,1,1,nil)
 		else
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 			g=mg:SelectWithSumGreater(tp,Card.GetOriginalLevel,lv)
 		end
 		g:AddCard(c)
