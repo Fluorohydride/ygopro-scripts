@@ -59,7 +59,7 @@ function c54631665.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c54631665.cfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsAbleToDeckOrExtraAsCost()
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToDeckAsCost()
 end
 function c54631665.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
