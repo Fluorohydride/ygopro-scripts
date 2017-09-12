@@ -17,15 +17,11 @@ function c81003500.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e2:SetCondition(c81003500.condition)
 	e2:SetTarget(c81003500.target)
 	e2:SetOperation(c81003500.operation)
 	c:RegisterEffect(e2)
 end
 c81003500.material_setcode=0x8
-function c81003500.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
-end
 function c81003500.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) end
 	if chk==0 then return true end
