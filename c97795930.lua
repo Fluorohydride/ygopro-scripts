@@ -35,6 +35,8 @@ function c97795930.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c97795930.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
+	if tc:GetFlagEffect(97795931)>0 then return end
+	tc:RegisterFlagEffect(97795931,RESET_EVENT+0x1fe0000,0,0)
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
