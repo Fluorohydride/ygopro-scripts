@@ -102,7 +102,7 @@ function c35371948.operation(e,tp,eg,ep,ev,re,r,rp)
 		e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e4:SetCode(EVENT_CHAINING)
 		e4:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DRAW)
-		e4:SetLabel(fid)
+		e4:SetLabel(tc:GetFieldID())
 		e4:SetLabelObject(e3)
 		e4:SetOperation(c35371948.rstop2)
 		Duel.RegisterEffect(e4,tp)
@@ -144,12 +144,12 @@ function c35371948.agop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c35371948.rstop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	if tc:GetFlagEffectLabel(35371948)==0 then return end
+	if tc:GetFlagEffectLabel(35371948)~=e:GetLabel() then return end
 	local c=e:GetHandler()
 	c:CancelCardTarget(tc)
 	local te=e:GetLabelObject()
 	tc:ResetFlagEffect(35371948)
-	te:Reset()
+	if te then te:Reset() end
 end
 function c35371948.damcon1(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and eg:GetFirst():IsSetCard(0xfb)
