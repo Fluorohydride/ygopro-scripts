@@ -62,9 +62,11 @@ function c94977269.spfilter1(c,tp,mg,exg)
 	return mg:IsExists(c94977269.spfilter2,1,c,tp,c) or (exg and exg:IsExists(c94977269.spfilter2,1,c,tp,c))
 end
 function c94977269.spfilter2(c,tp,mc)
+	local sg=Group.FromCards(c,mc)
+	if sg:IsExists(aux.FCheckTuneMagicianX,1,nil,sg) then return false end
 	return (c94977269.ffilter1(c) and c94977269.ffilter2(mc)
 		or c94977269.ffilter2(c) and c94977269.ffilter1(mc))
-		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
+		and Duel.GetLocationCountFromEx(tp,tp,sg)>0
 end
 function c94977269.fuscon(e,g,gc,chkf)
 	if g==nil then return true end
