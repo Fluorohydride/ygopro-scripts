@@ -31,6 +31,7 @@ function c16625614.initial_effect(c)
 	e4:SetOperation(c16625614.operation)
 	c:RegisterEffect(e4)
 end
+c16625614.toss_coin=true
 function c16625614.chcon1(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	return rc:IsControler(tp) and rc:IsCode(94212438) and re:GetLabel()==94212438

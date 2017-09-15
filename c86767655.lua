@@ -17,6 +17,7 @@ function c86767655.initial_effect(c)
 	e1:SetOperation(c86767655.disop)
 	c:RegisterEffect(e1)
 end
+c86767655.toss_coin=true
 function c86767655.discon(e,tp,eg,ep,ev,re,r,rp)
 	return rp~=tp and Duel.IsChainDisablable(ev) and e:GetHandler():GetFlagEffect(1)>0
 end
