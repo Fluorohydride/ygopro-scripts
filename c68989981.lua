@@ -1,4 +1,4 @@
---Samurai Skull
+--堕ち武者
 function c68989981.initial_effect(c)
 	--send to grave
 	local e1=Effect.CreateEffect(c)
@@ -15,7 +15,7 @@ function c68989981.initial_effect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_LEAVE_FIELD)
-	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
+	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e2:SetCondition(c68989981.spcon)
 	e2:SetTarget(c68989981.sptg)
 	e2:SetOperation(c68989981.spop)

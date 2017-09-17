@@ -1,4 +1,4 @@
---F.A. Downforce
+--F.A.ダウンフォース
 function c66322203.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -14,7 +14,7 @@ function c66322203.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCountLimit(1,66322203+100)
+	e2:SetCountLimit(1,66322204)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCondition(aux.exccon)
 	e2:SetCost(aux.bfgcost)
