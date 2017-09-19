@@ -63,7 +63,7 @@ function c94977269.spfilter1(c,tp,mg,exg)
 end
 function c94977269.spfilter2(c,tp,mc)
 	local sg=Group.FromCards(c,mc)
-	if sg:IsExists(aux.FCheckTuneMagicianX,1,nil,sg) then return false end
+	if sg:IsExists(aux.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
 	return (c94977269.ffilter1(c) and c94977269.ffilter2(mc)
 		or c94977269.ffilter2(c) and c94977269.ffilter1(mc))
 		and Duel.GetLocationCountFromEx(tp,tp,sg)>0
