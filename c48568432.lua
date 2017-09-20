@@ -84,7 +84,8 @@ function c48568432.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)
 end
 function c48568432.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return aux.IsUnionState(e) and eg:GetFirst()==e:GetHandler():GetEquipTarget()
+	local ec=eg:GetFirst()
+	return aux.IsUnionState(e) and e:GetHandler():GetEquipTarget()==ec and ec:IsControler(tp)
 end
 function c48568432.spfilter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT)

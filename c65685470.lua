@@ -101,7 +101,8 @@ function c65685470.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)
 end
 function c65685470.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return aux.IsUnionState(e) and e:GetHandler():GetEquipTarget()==eg:GetFirst()
+	local ec=eg:GetFirst()
+	return aux.IsUnionState(e) and e:GetHandler():GetEquipTarget()==ec and ec:IsControler(tp)
 end
 function c65685470.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

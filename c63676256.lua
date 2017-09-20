@@ -93,7 +93,8 @@ function c63676256.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)
 end
 function c63676256.descon(e,tp,eg,ep,ev,re,r,rp)
-	return aux.IsUnionState(e) and eg:GetCount()==1 and eg:GetFirst()==e:GetHandler():GetEquipTarget()
+	local ec=eg:GetFirst()
+	return aux.IsUnionState(e) and e:GetHandler():GetEquipTarget()==ec and ec:IsControler(tp)
 end
 function c63676256.dfilter(c,rac)
 	return c:IsFaceup() and c:IsRace(rac)
