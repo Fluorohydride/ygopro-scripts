@@ -113,7 +113,8 @@ function c49306994.disop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c49306994.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetEquipTarget()==eg:GetFirst()
+	local ec=eg:GetFirst()
+	return e:GetHandler():GetEquipTarget()==ec and ec:IsControler(tp)
 end
 function c49306994.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

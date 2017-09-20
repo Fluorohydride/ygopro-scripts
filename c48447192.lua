@@ -61,7 +61,7 @@ function c48447192.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c48447192.descon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler():GetEquipTarget()
-	return ec and eg:IsContains(ec)
+	return ec and eg:IsContains(ec) and ec:IsControler(tp)
 end
 function c48447192.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end

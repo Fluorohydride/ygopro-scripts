@@ -65,11 +65,12 @@ end
 function c21350571.eqlimit(e,c)
 	return c:IsRace(RACE_BEAST+RACE_BEASTWARRIOR)
 end
-function c21350571.drfilter(c,rc)
-	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:GetReasonCard()==rc
+function c21350571.drfilter(c,rc,tp)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE)
+		and c:GetReasonCard()==rc and rc:IsControler(tp)
 end
 function c21350571.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c21350571.drfilter,1,nil,e:GetHandler():GetEquipTarget())
+	return eg:IsExists(c21350571.drfilter,1,nil,e:GetHandler():GetEquipTarget(),tp)
 end
 function c21350571.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

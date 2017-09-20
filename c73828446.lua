@@ -66,7 +66,8 @@ function c73828446.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c73828446.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:GetFirst()==e:GetHandler():GetEquipTarget()
+	local ec=eg:GetFirst()
+	return ec==e:GetHandler():GetEquipTarget() and ec:IsControler(tp)
 end
 function c73828446.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=eg:GetFirst():GetBattleTarget()

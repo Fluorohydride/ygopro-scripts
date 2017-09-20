@@ -49,7 +49,8 @@ function c12174035.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c12174035.hdcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:GetFirst()==e:GetHandler():GetEquipTarget() and eg:GetFirst():IsStatus(STATUS_OPPO_BATTLE)
+	local ec=eg:GetFirst()
+	return ec==e:GetHandler():GetEquipTarget() and ec:IsStatus(STATUS_OPPO_BATTLE) and ec:IsControler(tp)
 end
 function c12174035.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
