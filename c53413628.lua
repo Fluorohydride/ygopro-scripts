@@ -17,20 +17,20 @@ function c53413628.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
-	e2:SetCondition(c53413628.incon)
+	e2:SetCondition(c53413628.indcon)
 	e2:SetValue(1)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-	e3:SetValue(c53413628.inval)
+	e3:SetValue(c53413628.indval)
 	c:RegisterEffect(e3)
 end
 function c53413628.atkval(e,c)
 	return c:GetLinkedGroupCount()*500
 end
-function c53413628.incon(e)
+function c53413628.indcon(e)
 	return e:GetHandler():GetLinkedGroupCount()>0
 end
-function c53413628.inval(e,re,r,rp)
+function c53413628.indval(e,re,rp)
 	return rp~=e:GetHandlerPlayer()
 end
