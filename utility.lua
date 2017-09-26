@@ -244,6 +244,61 @@ function Auxiliary.AddSynchroProcedure2(c,f1,f2)
 	e1:SetValue(SUMMON_TYPE_SYNCHRO)
 	c:RegisterEffect(e1)
 end
+--check material group for Double Tuning Synchro monsters
+function Auxiliary.SynGroupCheckRecursive(c,tp,sg,mg,lv,ct,minc,maxc,syncard,sg1)
+	sg:AddCard(c)
+	ct=ct+1
+	local res=Auxiliary.SynGroupCheckGoal(tp,sg,lv,minc,ct,syncard,sg1)
+		or (ct<maxc and mg:IsExists(Auxiliary.SynGroupCheckRecursive,1,sg,tp,sg,mg,lv,ct,minc,maxc,syncard,sg1))
+	sg:RemoveCard(c)
+	ct=ct-1
+	return res
+end
+function Auxiliary.SynGroupCheckGoal(tp,sg,lv,minc,ct,syncard,sg1)
+	if not (ct>=minc and sg:CheckWithSumEqual(Card.GetSynchroLevel,lv,ct,ct,syncard)) then return false end
+	local g=sg:Clone()
+	g:Merge(sg1)
+	return Duel.GetLocationCountFromEx(tp,tp,g,syncard)>0
+end
+function Auxiliary.SynGroupCheck(mg1,sg1,lv1,minc,maxc,syncard)
+	local tp=syncard:GetControler()
+	local mg=mg1:Clone()
+	local lv2=0
+	for c in aux.Next(sg1) do
+		mg:RemoveCard(c)
+		lv2=lv2+c:GetSynchroLevel(syncard)
+	end
+	local lv=lv1-lv2
+	if lv<0 then return false end
+	if lv==0 and minc==0 then return true end
+	local sg=Group.CreateGroup()
+	return mg:IsExists(Auxiliary.SynGroupCheckRecursive,1,nil,tp,sg,mg,lv,0,minc,maxc,syncard,sg1)
+end
+function Auxiliary.SynGroupSelect(tp,mg1,sg1,lv1,minc,maxc,syncard)
+	local mg=mg1:Clone()
+	local lv2=0
+	for c in aux.Next(sg1) do
+		mg:RemoveCard(c)
+		lv2=lv2+c:GetSynchroLevel(syncard)
+	end
+	local lv=lv1-lv2
+	local sg=Group.CreateGroup()
+	if lv<=0 then return sg end
+	for i=0,maxc-1 do
+		local cg=mg:Filter(Auxiliary.SynGroupCheckRecursive,sg,tp,sg,mg,lv,i,minc,maxc,syncard,sg1)
+		if cg:GetCount()==0 then break end
+		local minct=1
+		if Auxiliary.SynGroupCheckGoal(tp,sg,lv,minc,i,syncard,sg1) then
+			if not Duel.SelectYesNo(tp,210) then break end
+			minct=0
+		end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
+		local g=cg:Select(tp,minct,1,nil)
+		if g:GetCount()==0 then break end
+		sg:Merge(g)
+	end
+	return sg
+end
 function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,op)
 	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c),xyzc)>0 and (not op or op(e,tp,0,c))
 end

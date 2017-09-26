@@ -65,8 +65,7 @@ function c7841112.synfilter2(c,syncard,lv,g,mc)
 	if not c:IsCode(44508094) then return false end
 	if c:IsType(TYPE_TUNER)==mc:IsType(TYPE_TUNER) then return false end
 	local mg=g:Filter(Card.IsNotTuner,nil)
-	Duel.SetSelectedCard(Group.FromCards(c,mc))
-	return mg:CheckWithSumEqual(Card.GetSynchroLevel,lv,1,1,syncard)
+	return aux.SynGroupCheck(mg,Group.FromCards(c,mc),lv,1,1,syncard)
 end
 function c7841112.syncon(e,c,tuner)
 	if c==nil then return true end
@@ -91,9 +90,7 @@ function c7841112.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner)
 	local t2=mg:FilterSelect(tp,c7841112.synfilter2,1,1,m1,c,lv,mg,m1)
 	g:Merge(t2)
 	local mg2=mg:Filter(Card.IsNotTuner,nil)
-	Duel.SetSelectedCard(g)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-	local t3=mg2:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,1,1,c)
+	local t3=aux.SynGroupSelect(tp,mg2,g,lv,1,1,c)
 	g:Merge(t3)
 	c:SetMaterial(g)
 	Duel.SendtoGrave(g,REASON_MATERIAL+REASON_SYNCHRO)

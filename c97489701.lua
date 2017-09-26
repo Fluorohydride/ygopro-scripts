@@ -69,8 +69,7 @@ function c97489701.synfilter1(c,syncard,lv,g1,g2,g3,mc)
 	if mc then
 		if f1 and not f1(mc) then return false end
 		local mg=g1:Filter(c97489701.synfilter4,nil,f1,mc)
-		Duel.SetSelectedCard(Group.FromCards(c,mc))
-		return mg:CheckWithSumEqual(Card.GetSynchroLevel,lv,1,1,syncard)
+		return aux.SynGroupCheck(mg,Group.FromCards(c,mc),lv,1,1,syncard)
 	end
 	if c:IsHasEffect(EFFECT_HAND_SYNCHRO) then
 		return g3:IsExists(c97489701.synfilter2,1,c,syncard,lv,g2,f1,c)
@@ -83,8 +82,7 @@ function c97489701.synfilter2(c,syncard,lv,g2,f1,tuner1)
 	if f1 and not f1(c) then return false end
 	if f2 and not f2(tuner1) then return false end
 	local mg=g2:Filter(c97489701.synfilter3,nil,f1,f2)
-	Duel.SetSelectedCard(Group.FromCards(c,tuner1))
-	return mg:CheckWithSumEqual(Card.GetSynchroLevel,lv,1,1,syncard)
+	return aux.SynGroupCheck(mg,Group.FromCards(c,tuner1),lv,1,1,syncard)
 end
 function c97489701.synfilter3(c,f1,f2)
 	return (not f1 or f1(c)) and (not f2 or f2(c))
@@ -160,9 +158,7 @@ function c97489701.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 		g:AddCard(tuner2)
 		local f2=tuner2.tuner_filter
 		local mg2=g2:Filter(c97489701.synfilter3,nil,f1,f2)
-		Duel.SetSelectedCard(g)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		local m3=mg2:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,1,1,c)
+		local m3=aux.SynGroupSelect(tp,mg2,g,lv,1,1,c)
 		g:Merge(m3)
 	else
 		if tuner then g:AddCard(tuner) end
@@ -179,9 +175,7 @@ function c97489701.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 		local f1=tuner1.tuner_filter
 		if tuner then
 			local mg2=g1:Filter(c97489701.synfilter4,nil,f1,tuner)
-			Duel.SetSelectedCard(g)
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-			local m3=mg2:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,1,1,c)
+			local m3=aux.SynGroupSelect(tp,mg2,g,lv,1,1,c)
 			g:Merge(m3)
 		else
 			local t2=nil
@@ -195,9 +189,7 @@ function c97489701.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 			g:AddCard(tuner2)
 			local f2=tuner2.tuner_filter
 			local mg2=g2:Filter(c97489701.synfilter3,nil,f1,f2)
-			Duel.SetSelectedCard(g)
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-			local m3=mg2:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,1,1,c)
+			local m3=aux.SynGroupSelect(tp,mg2,g,lv,1,1,c)
 			g:Merge(m3)
 		end
 	end

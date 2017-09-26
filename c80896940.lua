@@ -84,11 +84,7 @@ function c80896940.matfilter2(c,syncard)
 	return c:IsNotTuner() and c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSynchroMaterial(syncard)
 end
 function c80896940.synfilter(c,syncard,lv,g2,minc)
-	local tlv=c:GetSynchroLevel(syncard)
-	if lv-tlv<=0 then return false end
-	local g=g2:Clone()
-	g:RemoveCard(c)
-	return g:CheckWithSumEqual(Card.GetSynchroLevel,lv-tlv,minc-1,63,syncard)
+	return aux.SynGroupCheck(g2,Group.FromCards(c),lv,minc-1,99,syncard)
 end
 function c80896940.syncon(e,c,tuner,mg)
 	if c==nil then return true end
@@ -135,10 +131,7 @@ function c80896940.syntg(e,tp,eg,ep,ev,re,r,rp,chk,c,tuner,mg)
 	local lv=c:GetLevel()
 	if tuner then
 		g:AddCard(tuner)
-		g2:RemoveCard(tuner)
-		local lv1=tuner:GetSynchroLevel(c)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		local m2=g2:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv-lv1,minc-1,63,c)
+		local m2=aux.SynGroupSelect(tp,g2,g,lv,minc-1,99,c)
 		g:Merge(m2)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
@@ -152,10 +145,8 @@ function c80896940.syntg(e,tp,eg,ep,ev,re,r,rp,chk,c,tuner,mg)
 		end
 		tuner:RegisterFlagEffect(80896940,RESET_EVENT+0x1fe0000,0,1)
 		g:AddCard(tuner)
-		g2:RemoveCard(tuner)
-		local lv1=tuner:GetSynchroLevel(c)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		local m2=g2:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv-lv1,minc-1,63,c)
+
+		local m2=aux.SynGroupSelect(tp,g2,g,lv,minc-1,99,c)
 		g:Merge(m2)
 	end
 	if g then

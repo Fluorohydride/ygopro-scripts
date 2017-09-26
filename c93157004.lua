@@ -70,13 +70,12 @@ function c93157004.synfilter2(c,syncard,lv,g2,g4,f1,tuner1)
 	local f2=c.tuner_filter
 	if f1 and not f1(c) then return false end
 	if f2 and not f2(tuner1) then return false end
-	Duel.SetSelectedCard(Group.FromCards(c,tuner1))
 	if (tuner1:IsHasEffect(EFFECT_HAND_SYNCHRO) and not c:IsLocation(LOCATION_HAND)) or c:IsHasEffect(EFFECT_HAND_SYNCHRO) then
 		local mg=g4:Filter(c93157004.synfilter3,nil,f1,f2)
-		return mg:CheckWithSumEqual(Card.GetSynchroLevel,lv,1,1,syncard)
+		return aux.SynGroupCheck(mg,Group.FromCards(c,tuner1),lv,1,1,syncard)
 	else
 		local mg=g2:Filter(c93157004.synfilter3,nil,f1,f2)
-		return mg:CheckWithSumEqual(Card.GetSynchroLevel,lv,1,1,syncard)
+		return aux.SynGroupCheck(mg,Group.FromCards(c,tuner1),lv,1,1,syncard)
 	end
 end
 function c93157004.synfilter3(c,f1,f2)
@@ -151,14 +150,12 @@ function c93157004.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 		g:AddCard(tuner2)
 		local f2=tuner2.tuner_filter
 		local m3=nil
-		Duel.SetSelectedCard(g)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 		if tuner2:IsHasEffect(EFFECT_HAND_SYNCHRO) then
 			local mg4=g4:Filter(c93157004.synfilter3,nil,f1,f2)
-			m3=mg4:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,1,1,c)
+			m3=aux.SynGroupSelect(tp,mg4,g,lv,1,1,c)
 		else
 			local mg2=g2:Filter(c93157004.synfilter3,nil,f1,f2)
-			m3=mg2:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,1,1,c)
+			m3=aux.SynGroupSelect(tp,mg2,g,lv,1,1,c)
 		end
 		g:Merge(m3)
 	else
@@ -185,15 +182,13 @@ function c93157004.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
 		g:AddCard(tuner2)
 		local f2=tuner2.tuner_filter
 		local m3=nil
-		Duel.SetSelectedCard(g)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 		if (tuner1:IsHasEffect(EFFECT_HAND_SYNCHRO) and not tuner2:IsLocation(LOCATION_HAND))
 			or tuner2:IsHasEffect(EFFECT_HAND_SYNCHRO) then
 			local mg4=g4:Filter(c93157004.synfilter3,nil,f1,f2)
-			m3=mg4:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,1,1,c)
+			m3=aux.SynGroupSelect(tp,mg4,g,lv,1,1,c)
 		else
 			local mg2=g2:Filter(c93157004.synfilter3,nil,f1,f2)
-			m3=mg2:SelectWithSumEqual(tp,Card.GetSynchroLevel,lv,1,1,c)
+			m3=aux.SynGroupSelect(tp,mg2,g,lv,1,1,c)
 		end
 		g:Merge(m3)
 	end
