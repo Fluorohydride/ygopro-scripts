@@ -1,7 +1,7 @@
 --TG レシプロ・ドラゴン・フライ
 function c62560742.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure2(c,nil,aux.NonTuner(nil))
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1,1)
 	c:EnableReviveLimit()
 	--special summon
 	local e1=Effect.CreateEffect(c)

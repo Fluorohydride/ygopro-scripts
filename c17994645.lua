@@ -1,7 +1,7 @@
 --A BF－雨隠れのサヨ
 function c17994645.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure2(c,nil,aux.NonTuner(nil))
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1,1)
 	c:EnableReviveLimit()
 	--add type
 	local e1=Effect.CreateEffect(c)
