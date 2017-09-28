@@ -261,6 +261,9 @@ end
 function Auxiliary.SynLimitFilter(c,f,e)
 	return f and not f(e,c)
 end
+function Auxiliary.GetSynchroLevelFlowerCardian(c)
+	return 2
+end
 function Auxiliary.GetSynMaterials(tp,syncard)
 	local mg=Duel.GetMatchingGroup(Auxiliary.SynMaterialFilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,syncard)
 	if mg:IsExists(Card.GetHandSynchro,1,nil) then
@@ -399,7 +402,10 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat)
 	local pe=Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_SMATERIAL)
 	if pe and not g:IsContains(pe:GetOwner()) then return false end
 	if not g:IsExists(Card.IsType,1,nil,TYPE_TUNER) and not syncard:IsHasEffect(80896940) then return false end
-	if not g:CheckWithSumEqual(Card.GetSynchroLevel,syncard:GetLevel(),g:GetCount(),g:GetCount(),syncard) then return false end
+	if not g:CheckWithSumEqual(Card.GetSynchroLevel,syncard:GetLevel(),g:GetCount(),g:GetCount(),syncard)
+		and (not g:IsExists(Card.IsHasEffect,1,nil,89818984)
+		or not g:CheckWithSumEqual(Auxiliary.GetSynchroLevelFlowerCardian,syncard:GetLevel(),g:GetCount(),g:GetCount(),syncard))
+		then return false end
 	local hg=g:Filter(Card.IsLocation,nil,LOCATION_HAND)
 	local hct=hg:GetCount()
 	if hct>0 then

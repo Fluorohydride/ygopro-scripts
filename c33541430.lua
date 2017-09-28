@@ -23,6 +23,12 @@ function c33541430.initial_effect(c)
 	e3:SetValue(1)
 	e3:SetOperation(c33541430.synop)
 	c:RegisterEffect(e3)
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_SINGLE)
+	e4:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e4:SetCode(89818984)
+	e4:SetRange(LOCATION_MZONE)
+	c:RegisterEffect(e4)
 end
 function c33541430.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
