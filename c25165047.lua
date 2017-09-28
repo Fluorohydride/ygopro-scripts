@@ -31,6 +31,12 @@ function c25165047.initial_effect(c)
 	e4:SetCode(EFFECT_DESTROY_REPLACE)
 	e4:SetTarget(c25165047.desreptg)
 	c:RegisterEffect(e4)
+	--double tuner check
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_SINGLE)
+	e5:SetCode(EFFECT_MATERIAL_CHECK)
+	e5:SetValue(c25165047.valcheck)
+	c:RegisterEffect(e5)
 end
 function c25165047.lpcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
@@ -55,4 +61,15 @@ function c25165047.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		Duel.Remove(g,POS_FACEUP,REASON_COST)
 		return true
 	else return false end
+end
+function c25165047.valcheck(e,c)
+	local g=c:GetMaterial()
+	if g:IsExists(Card.IsType,2,nil,TYPE_TUNER) then
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+		e1:SetCode(21142671)
+		e1:SetReset(RESET_EVENT+0xfe0000+RESET_PHASE+PHASE_END)
+		c:RegisterEffect(e1)
+	end
 end
