@@ -1,16 +1,8 @@
 --セイヴァー・スター・ドラゴン
 function c7841112.initial_effect(c)
 	--synchro summon
+	aux.AddSynchroMixProcedure(c,c7841112.mfilter1,c7841112.mfilter2,nil,aux.NonTuner(nil),1,1)
 	c:EnableReviveLimit()
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_SPSUMMON_PROC)
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
-	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(c7841112.syncon)
-	e1:SetOperation(c7841112.synop)
-	e1:SetValue(SUMMON_TYPE_SYNCHRO)
-	c:RegisterEffect(e1)
 	--Negate
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(7841112,0))
@@ -55,45 +47,11 @@ function c7841112.initial_effect(c)
 	e5:SetOperation(c7841112.spop)
 	c:RegisterEffect(e5)
 end
-function c7841112.matfilter(c,syncard)
-	return c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard)
+function c7841112.mfilter1(c)
+	return c:IsCode(21159309)
 end
-function c7841112.synfilter1(c,syncard,lv,g)
-	return c:IsCode(21159309) and g:IsExists(c7841112.synfilter2,1,c,syncard,lv,g,c)
-end
-function c7841112.synfilter2(c,syncard,lv,g,mc)
-	if not c:IsCode(44508094) then return false end
-	if c:IsType(TYPE_TUNER)==mc:IsType(TYPE_TUNER) then return false end
-	local mg=g:Filter(Card.IsNotTuner,nil)
-	return aux.SynGroupCheck(mg,Group.FromCards(c,mc),lv,1,1,syncard)
-end
-function c7841112.syncon(e,c,tuner)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c7841112.matfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
-	local lv=c:GetLevel()
-	if tuner then return c7841112.synfilter1(tuner,c,lv,mg) end
-	return mg:IsExists(c7841112.synfilter1,1,nil,c,lv,mg)
-end
-function c7841112.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner)
-	local g=Group.CreateGroup()
-	local mg=Duel.GetMatchingGroup(c7841112.matfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
-	local lv=c:GetLevel()
-	local m1=tuner
-	if not tuner then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		local t1=mg:FilterSelect(tp,c7841112.synfilter1,1,1,nil,c,lv,mg)
-		m1=t1:GetFirst()
-		g:AddCard(m1)
-	end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-	local t2=mg:FilterSelect(tp,c7841112.synfilter2,1,1,m1,c,lv,mg,m1)
-	g:Merge(t2)
-	local mg2=mg:Filter(Card.IsNotTuner,nil)
-	local t3=aux.SynGroupSelect(tp,mg2,g,lv,1,1,c)
-	g:Merge(t3)
-	c:SetMaterial(g)
-	Duel.SendtoGrave(g,REASON_MATERIAL+REASON_SYNCHRO)
+function c7841112.mfilter2(c)
+	return c:IsCode(44508094)
 end
 function c7841112.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and ep~=tp and Duel.IsChainNegatable(ev)

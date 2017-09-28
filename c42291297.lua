@@ -1,17 +1,8 @@
 --花札衛－雨四光－
 function c42291297.initial_effect(c)
-	c:EnableReviveLimit()
 	--synchro summon
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_SPSUMMON_PROC)
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
-	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(aux.SynCondition(nil,aux.NonTuner(nil),3,3))
-	e1:SetTarget(aux.SynTarget(nil,aux.NonTuner(nil),3,3))
-	e1:SetOperation(aux.SynOperation(nil,aux.NonTuner(nil),3,3))
-	e1:SetValue(SUMMON_TYPE_SYNCHRO)
-	c:RegisterEffect(e1)
+	aux.AddSynchroProcedure3(c,nil,aux.NonTuner(nil),3)
+	c:EnableReviveLimit()
 	--indes
 	local e2=Effect.CreateEffect(c)
 	e2:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)

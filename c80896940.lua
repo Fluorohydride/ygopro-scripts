@@ -4,24 +4,13 @@ function c80896940.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c,false)
 	--synchro summon
+	aux.AddSynchroMixProcedure(c,c80896940.matfilter1,nil,nil,aux.NonTuner(Card.IsType,TYPE_SYNCHRO),1,99)
+	--no tuner check
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(80896940,0))
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_SPSUMMON_PROC)
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
-	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(aux.SynCondition(nil,aux.NonTuner(Card.IsType,TYPE_SYNCHRO),1,99))
-	e1:SetTarget(aux.SynTarget(nil,aux.NonTuner(Card.IsType,TYPE_SYNCHRO),1,99))
-	e1:SetOperation(aux.SynOperation(nil,aux.NonTuner(Card.IsType,TYPE_SYNCHRO),1,99))
-	e1:SetValue(SUMMON_TYPE_SYNCHRO)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e1:SetCode(80896940)
 	c:RegisterEffect(e1)
-	local e2=e1:Clone()
-	e2:SetDescription(aux.Stringid(80896940,1))
-	e2:SetCondition(c80896940.syncon)
-	e2:SetTarget(c80896940.syntg)
-	e2:SetOperation(c80896940.synop)
-	e2:SetValue(SUMMON_TYPE_SYNCHRO)
-	c:RegisterEffect(e2)
 	--indes
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -76,90 +65,9 @@ function c80896940.initial_effect(c)
 	e7:SetOperation(c80896940.penop)
 	c:RegisterEffect(e7)
 end
-function c80896940.matfilter1(c,syncard)
-	return c:IsType(TYPE_PENDULUM) and c:IsSummonType(SUMMON_TYPE_PENDULUM) and c:IsNotTuner() and c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard)
-		and Duel.IsExistingMatchingCard(c80896940.matfilter2,0,LOCATION_MZONE,LOCATION_MZONE,1,c,syncard)
-end
-function c80896940.matfilter2(c,syncard)
-	return c:IsNotTuner() and c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSynchroMaterial(syncard)
-end
-function c80896940.synfilter(c,syncard,lv,g2,minc)
-	return aux.SynGroupCheck(g2,Group.FromCards(c),lv,minc-1,99,syncard)
-end
-function c80896940.syncon(e,c,tuner,mg)
-	if c==nil then return true end
-	if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-	local tp=c:GetControler()
-	local ct=-Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local minc=2
-	if minc<ct then minc=ct end
-	local g1=nil
-	local g2=nil
-	if mg then
-		g1=mg:Filter(c80896940.matfilter1,nil,c)
-		g2=mg:Filter(c80896940.matfilter2,nil,c)
-	else
-		g1=Duel.GetMatchingGroup(c80896940.matfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
-		g2=Duel.GetMatchingGroup(c80896940.matfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
-	end
-	local pe=Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_SMATERIAL)
-	local lv=c:GetLevel()
-	if tuner then
-		return c80896940.synfilter(tuner,c,lv,g2,minc)
-	end
-	if not pe then
-		return g1:IsExists(c80896940.synfilter,1,nil,c,lv,g2,minc)
-	else
-		return c80896940.synfilter(pe:GetOwner(),c,lv,g2,minc)
-	end
-end
-function c80896940.syntg(e,tp,eg,ep,ev,re,r,rp,chk,c,tuner,mg)
-	local g=Group.CreateGroup()
-	local g1=nil
-	local g2=nil
-	if mg then
-		g1=mg:Filter(c80896940.matfilter1,nil,c)
-		g2=mg:Filter(c80896940.matfilter2,nil,c)
-	else
-		g1=Duel.GetMatchingGroup(c80896940.matfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
-		g2=Duel.GetMatchingGroup(c80896940.matfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,nil,c)
-	end
-	local ct=-Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local minc=2
-	if minc<ct then minc=ct end
-	local pe=Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_SMATERIAL)
-	local lv=c:GetLevel()
-	if tuner then
-		g:AddCard(tuner)
-		local m2=aux.SynGroupSelect(tp,g2,g,lv,minc-1,99,c)
-		g:Merge(m2)
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-		local tuner=nil
-		if not pe then
-			local t1=g1:FilterSelect(tp,c80896940.synfilter,1,1,nil,c,lv,g2,minc)
-			tuner=t1:GetFirst()
-		else
-			tuner=pe:GetOwner()
-			Group.FromCards(tuner):Select(tp,1,1,nil)
-		end
-		tuner:RegisterFlagEffect(80896940,RESET_EVENT+0x1fe0000,0,1)
-		g:AddCard(tuner)
-
-		local m2=aux.SynGroupSelect(tp,g2,g,lv,minc-1,99,c)
-		g:Merge(m2)
-	end
-	if g then
-		g:KeepAlive()
-		e:SetLabelObject(g)
-		return true
-	else return false end
-end
-function c80896940.synop(e,tp,eg,ep,ev,re,r,rp,c,tuner,mg)
-	local g=e:GetLabelObject()
-	c:SetMaterial(g)
-	Duel.SendtoGrave(g,REASON_MATERIAL+REASON_SYNCHRO)
-	g:DeleteGroup()
+function c80896940.matfilter1(c)
+	return c:IsType(TYPE_TUNER)
+		or (c:IsType(TYPE_PENDULUM) and c:IsSummonType(SUMMON_TYPE_PENDULUM) and c:IsNotTuner())
 end
 function c80896940.indcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
@@ -216,12 +124,11 @@ function c80896940.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c80896940.mfilter(c)
-	return c:IsType(TYPE_PENDULUM) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
-		and (c:IsType(TYPE_TUNER) or c:GetFlagEffect(80896940)~=0)
+	return c:IsType(TYPE_PENDULUM) and c:IsSummonType(SUMMON_TYPE_PENDULUM) and c:IsType(TYPE_TUNER)
 end
 function c80896940.valcheck(e,c)
 	local g=c:GetMaterial()
-	if g:IsExists(c80896940.mfilter,1,nil) then
+	if c:GetFlagEffect(80896940)~=0 or g:IsExists(c80896940.mfilter,1,nil) then
 		e:GetLabelObject():SetLabel(1)
 	else
 		e:GetLabelObject():SetLabel(0)

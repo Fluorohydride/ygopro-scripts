@@ -1,17 +1,8 @@
 --花札衛－五光－
 function c87460579.initial_effect(c)
-	c:EnableReviveLimit()
 	--synchro summon
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_SPSUMMON_PROC)
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
-	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(aux.SynCondition(nil,aux.NonTuner(nil),4,4))
-	e1:SetTarget(aux.SynTarget(nil,aux.NonTuner(nil),4,4))
-	e1:SetOperation(aux.SynOperation(nil,aux.NonTuner(nil),4,4))
-	e1:SetValue(SUMMON_TYPE_SYNCHRO)
-	c:RegisterEffect(e1)
+	aux.AddSynchroProcedure3(c,nil,aux.NonTuner(nil),4)
+	c:EnableReviveLimit()
 	--negate
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(87460579,0))
