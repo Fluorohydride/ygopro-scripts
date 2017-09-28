@@ -191,16 +191,17 @@ function Auxiliary.NonTuner(f,a,b,c)
 				return target:IsNotTuner() and (not f or f(target,a,b,c))
 			end
 end
---Synchro monster, 1 tuner + n or more monsters
-function Auxiliary.AddSynchroProcedure(c,f1,f2,ct)
+--Synchro monster, 1 tuner + min to max monsters
+function Auxiliary.AddSynchroProcedure(c,f1,f2,minc,maxc)
+	if maxc==nil then maxc=99 end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(Auxiliary.SynCondition(f1,f2,ct,99))
-	e1:SetTarget(Auxiliary.SynTarget(f1,f2,ct,99))
-	e1:SetOperation(Auxiliary.SynOperation(f1,f2,ct,99))
+	e1:SetCondition(Auxiliary.SynCondition(f1,f2,minc,maxc))
+	e1:SetTarget(Auxiliary.SynTarget(f1,f2,minc,maxc))
+	e1:SetOperation(Auxiliary.SynOperation(f1,f2,minc,maxc))
 	e1:SetValue(SUMMON_TYPE_SYNCHRO)
 	c:RegisterEffect(e1)
 end
@@ -237,32 +238,11 @@ function Auxiliary.SynOperation(f1,f2,minct,maxc)
 			end
 end
 --Synchro monster, 1 tuner + 1 monster
+--backward compatibility
 function Auxiliary.AddSynchroProcedure2(c,f1,f2)
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_SPSUMMON_PROC)
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
-	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(Auxiliary.SynCondition(f1,f2,1,1))
-	e1:SetTarget(Auxiliary.SynTarget(f1,f2,1,1))
-	e1:SetOperation(Auxiliary.SynOperation(f1,f2,1,1))
-	e1:SetValue(SUMMON_TYPE_SYNCHRO)
-	c:RegisterEffect(e1)
+	Auxiliary.AddSynchroProcedure(c,f1,f2,1,1)
 end
---Synchro monster, 1 tuner + n monster
-function Auxiliary.AddSynchroProcedure3(c,f1,f2,ct)
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_SPSUMMON_PROC)
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
-	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(Auxiliary.SynCondition(f1,f2,ct,ct))
-	e1:SetTarget(Auxiliary.SynTarget(f1,f2,ct,ct))
-	e1:SetOperation(Auxiliary.SynOperation(f1,f2,ct,ct))
-	e1:SetValue(SUMMON_TYPE_SYNCHRO)
-	c:RegisterEffect(e1)
-end
---Synchro monster, f1~f3 each 1 MONSTER + f4 n monster
+--Synchro monster, f1~f3 each 1 MONSTER + f4 min to max monsters
 function Auxiliary.AddSynchroMixProcedure(c,f1,f2,f3,f4,minc,maxc)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

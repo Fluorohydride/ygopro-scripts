@@ -1,7 +1,7 @@
 --ライフ・ストリーム・ドラゴン
 function c25165047.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure2(c,nil,aux.FilterBoolFunction(Card.IsCode,2403771))
+	aux.AddSynchroProcedure(c,nil,aux.FilterBoolFunction(Card.IsCode,2403771),1,1)
 	c:EnableReviveLimit()
 	--change lp
 	local e1=Effect.CreateEffect(c)

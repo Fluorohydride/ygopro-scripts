@@ -1,7 +1,7 @@
 --ワンショット・キャノン
 function c13574687.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure2(c,aux.FilterBoolFunction(Card.IsCode,6142213),aux.NonTuner(nil))
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,6142213),aux.NonTuner(nil),1,1)
 	c:EnableReviveLimit()
 	--destroy & damage
 	local e1=Effect.CreateEffect(c)

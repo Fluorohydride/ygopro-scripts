@@ -1,7 +1,7 @@
 --花札衛－雨四光－
 function c42291297.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure3(c,nil,aux.NonTuner(nil),3)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),3,3)
 	c:EnableReviveLimit()
 	--indes
 	local e2=Effect.CreateEffect(c)
