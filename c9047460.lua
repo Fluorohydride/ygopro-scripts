@@ -64,7 +64,6 @@ function c9047460.spop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 	end
 end
-c9047460.tuner_filter=aux.FilterBoolFunction(Card.IsSetCard,0x33)
 function c9047460.synlimit(e,c)
 	return c:IsSetCard(0x33)
 end

@@ -8,7 +8,6 @@ function c37953640.initial_effect(c)
 	e1:SetTarget(c37953640.synlimit)
 	c:RegisterEffect(e1)
 end
-c37953640.tuner_filter=aux.FilterBoolFunction(Card.IsRace,RACE_FISH)
 function c37953640.synlimit(e,c)
 	return c:IsRace(RACE_FISH)
 end
