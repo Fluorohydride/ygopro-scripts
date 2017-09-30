@@ -54,9 +54,6 @@ function c73941492.initial_effect(c)
 	e7:SetOperation(c73941492.spop)
 	c:RegisterEffect(e7)
 end
-function c73941492.tuner_filter(c)
-	return c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM)
-end
 function c73941492.synlimit(e,c)
 	return c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM)
 end

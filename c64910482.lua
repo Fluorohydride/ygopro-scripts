@@ -16,6 +16,13 @@ function c64910482.initial_effect(c)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetOperation(c64910482.regop)
 	c:RegisterEffect(e2)
+	--hand synchro
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e3:SetCode(EFFECT_HAND_SYNCHRO)
+	e3:SetTarget(c64910482.hsyntg)
+	c:RegisterEffect(e3)
 end
 function c64910482.synfilter1(c,syncard,tuner,f)
 	return c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c))
@@ -107,4 +114,7 @@ function c64910482.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end
+end
+function c64910482.hsyntg(e,c)
+	return c:IsSetCard(0x27) and c:IsNotTuner()
 end

@@ -40,7 +40,6 @@ function c93369354.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
-c93369354.tuner_filter=aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WATER)
 function c93369354.synlimit(e,c)
 	return c:IsAttribute(ATTRIBUTE_WATER)
 end

@@ -14,7 +14,6 @@ function c56897896.initial_effect(c)
 	e2:SetValue(c56897896.syncheck)
 	c:RegisterEffect(e2)
 end
-c56897896.tuner_filter=aux.FALSE
 function c56897896.synlimit(e,c)
 	return c:IsLevelBelow(4) and c:IsRace(RACE_WARRIOR+RACE_MACHINE)
 end

@@ -10,7 +10,6 @@ function c73417207.initial_effect(c)
 	e1:SetValue(LOCATION_HAND)
 	c:RegisterEffect(e1)
 end
-c73417207.tuner_filter=aux.FALSE
 function c73417207.synlimit(e,c)
 	return c:IsSetCard(0x42)
 end

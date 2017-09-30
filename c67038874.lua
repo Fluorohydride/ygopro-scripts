@@ -47,9 +47,6 @@ function c67038874.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1,true)
 	end
 end
-function c67038874.tuner_filter(c)
-	return c:IsSetCard(0x24)
-end
 function c67038874.synlimit(e,c)
 	return c:IsSetCard(0x24)
 end

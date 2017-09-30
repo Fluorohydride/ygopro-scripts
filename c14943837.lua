@@ -28,9 +28,6 @@ function c14943837.synlimit(e,c)
 	if not c then return false end
 	return not c:IsRace(RACE_DRAGON)
 end
-function c14943837.tuner_filter(c)
-	return c:GetLevel()~=4
-end
 function c14943837.synlimit2(e,c)
 	return c:GetLevel()~=4
 end

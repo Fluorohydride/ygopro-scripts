@@ -17,9 +17,6 @@ function c61777313.initial_effect(c)
 	e2:SetOperation(c61777313.operation)
 	c:RegisterEffect(e2)
 end
-function c61777313.tuner_filter(c)
-	return c:IsSetCard(0x42)
-end
 function c61777313.synlimit(e,c)
 	return c:IsSetCard(0x42)
 end

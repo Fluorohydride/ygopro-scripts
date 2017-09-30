@@ -23,7 +23,6 @@ function c16825874.initial_effect(c)
 	e3:SetCode(EFFECT_HAND_SYNCHRO)
 	c:RegisterEffect(e3)
 end
-c16825874.tuner_filter=aux.FALSE
 function c16825874.ccon(e,tp,eg,ep,ev,re,r,rp)
 	return r==REASON_SYNCHRO
 end
