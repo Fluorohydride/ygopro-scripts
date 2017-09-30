@@ -12,7 +12,7 @@ function c67468948.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_FAIRY) and c:IsAbleToHand()
 end
 function c67468948.drop(e,tp,eg,ep,ev,re,r,rp)
-	if not re:GetHandler():IsType(TYPE_COUNTER) then return end
+	if not re:IsHasType(EFFECT_TYPE_ACTIVATE) or not re:IsActiveType(TYPE_COUNTER) then return end
 	Duel.BreakEffect()
 	local g=Duel.GetMatchingGroup(c67468948.filter,tp,LOCATION_REMOVED,0,nil)
 	if g:GetCount()<2 then return end
