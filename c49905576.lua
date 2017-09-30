@@ -10,7 +10,7 @@ function c49905576.initial_effect(c)
 end
 function c49905576.drop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not re:GetHandler():IsType(TYPE_COUNTER) or not c:IsLocation(LOCATION_MZONE) or not c:IsFaceup() then return end
+	if not re:IsHasType(EFFECT_TYPE_ACTIVATE) or not re:IsActiveType(TYPE_COUNTER) or not c:IsLocation(LOCATION_MZONE) or not c:IsFaceup() then return end
 	Duel.Recover(tp,1000,REASON_EFFECT)
 	if not Duel.IsEnvironment(56433456) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

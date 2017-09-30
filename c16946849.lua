@@ -15,7 +15,7 @@ function c16946849.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c16946849.tokencon(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_COUNTER) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_COUNTER) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,16946850,0,0x4011,300,300,1,RACE_FAIRY,ATTRIBUTE_LIGHT)
 end
 function c16946849.tokenop(e,tp,eg,ep,ev,re,r,rp)
