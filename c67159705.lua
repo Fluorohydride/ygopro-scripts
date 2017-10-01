@@ -16,7 +16,6 @@ function c67159705.initial_effect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCondition(aux.IsUnionState)
 	e2:SetTarget(c67159705.sptg)
 	e2:SetOperation(c67159705.spop)
 	c:RegisterEffect(e2)
@@ -25,7 +24,6 @@ function c67159705.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
 	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e3:SetCondition(aux.IsUnionState)
 	e3:SetValue(1)
 	c:RegisterEffect(e3)
 	--eqlimit
@@ -43,20 +41,19 @@ function c67159705.initial_effect(c)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetRange(LOCATION_SZONE)
 	e5:SetCountLimit(1)
-	e5:SetCondition(aux.IsUnionState)
 	e5:SetTarget(c67159705.destg)
 	e5:SetOperation(c67159705.desop)
 	c:RegisterEffect(e5)
 end
-c67159705.old_union=true
 function c67159705.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end
 function c67159705.eqlimit(e,c)
-	return c:IsCode(70095154) or aux.IsMaterialListCode(c,70095154)
+	return c:IsCode(70095154) or aux.IsMaterialListCode(c,70095154) or e:GetHandler():GetEquipTarget()==c
 end
 function c67159705.filter(c)
-	return c:IsFaceup() and (c:IsCode(70095154) or aux.IsMaterialListCode(c,70095154)) and c:GetUnionCount()==0
+	local ct1,ct2=c:GetUnionCount()
+	return c:IsFaceup() and (c:IsCode(70095154) or aux.IsMaterialListCode(c,70095154)) and ct2==0
 end
 function c67159705.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c67159705.filter(chkc) end
@@ -103,15 +100,16 @@ end
 function c67159705.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if c:GetEquipTarget():GetAttack()<1000 then return end
+	local ec=c:GetEquipTarget()
+	if ec:GetAttack()<1000 then return end
 	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_EQUIP)
+	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)
 	e1:SetValue(-1000)
 	e1:SetReset(RESET_EVENT+0x1fe0000)
-	c:RegisterEffect(e1)
+	ec:RegisterEffect(e1)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not ec:IsHasEffect(EFFECT_REVERSE_UPDATE) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
