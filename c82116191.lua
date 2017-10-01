@@ -13,7 +13,7 @@ function c82116191.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c82116191.filter(c)
-	return c:IsRace(RACE_PLANT) and c:IsPreviousLocation(LOCATION_ONFIELD)
+	return c:IsPreviousPosition(POS_FACEUP) and bit.band(c:GetPreviousRaceOnField(),RACE_PLANT)~=0 and c:IsRace(RACE_PLANT) and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c82116191.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c82116191.filter,1,nil)
@@ -28,7 +28,7 @@ function c82116191.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(200)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+0x1ff0000)
 		c:RegisterEffect(e1)
 	end
 end
