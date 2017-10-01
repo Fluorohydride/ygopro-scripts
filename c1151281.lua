@@ -1,4 +1,4 @@
---Subterror Behemoth Phospheroglacier
+--サブテラーマリス・グライオース
 function c1151281.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Subterror Behemoth Dragossuary
+--サブテラーマリス・アルラボーン
 function c95218695.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

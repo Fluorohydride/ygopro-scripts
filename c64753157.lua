@@ -1,4 +1,4 @@
---Charming Resort Staff
+--「RESORT」 STAFF－チャーミング
 function c64753157.initial_effect(c)
 	--atkdown
 	local e1=Effect.CreateEffect(c)

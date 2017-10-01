@@ -1,4 +1,4 @@
---Vermillion Dragon Mech
+--灼銀の機竜
 function c66698383.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

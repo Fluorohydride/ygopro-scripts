@@ -1,4 +1,4 @@
---Magical Something
+--マジックアブソーバー
 function c43930492.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--add counter

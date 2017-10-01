@@ -1,4 +1,4 @@
---Subterror Behemoth Umastryx
+--サブテラーマリス・リグリアード
 function c42713844.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

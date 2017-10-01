@@ -1,4 +1,4 @@
---SPYGAL Misty
+--SPYGAL－ミスティ
 function c94096018.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

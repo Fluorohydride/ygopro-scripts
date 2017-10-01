@@ -1,4 +1,4 @@
---Subterror Nemesis Defender
+--サブテラーの刀匠
 function c68823957.initial_effect(c)
 	--replace
 	local e1=Effect.CreateEffect(c)

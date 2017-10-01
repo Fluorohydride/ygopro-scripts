@@ -1,4 +1,4 @@
---Revendread Slayer
+--リヴェンデット・スレイヤー
 function c4388680.initial_effect(c)
 	c:EnableReviveLimit()
 	--atk & def

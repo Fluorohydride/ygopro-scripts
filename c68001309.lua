@@ -1,4 +1,4 @@
---Subterror Cave Clash
+--サブテラーの激闘
 function c68001309.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Subterror Behemoth Stalagmo
+--サブテラーマリス・ジブラタール
 function c78202553.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Tornado Dragon
+--竜巻竜
 function c6983839.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,4,2)

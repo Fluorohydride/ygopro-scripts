@@ -1,4 +1,4 @@
---Vendread Reorigin
+--ヴェンデット・リボーン
 function c30650147.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

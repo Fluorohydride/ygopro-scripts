@@ -1,4 +1,4 @@
---SPYRAL Tough
+--SPYRAL－タフネス
 function c20584712.initial_effect(c)
 	--change name
 	local e1=Effect.CreateEffect(c)

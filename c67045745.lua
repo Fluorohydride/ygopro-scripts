@@ -1,4 +1,4 @@
---F.A. Sonic Meister
+--F.A.ソニックマイスター
 function c67045745.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

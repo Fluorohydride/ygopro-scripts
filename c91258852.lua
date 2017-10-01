@@ -1,4 +1,4 @@
---SPYRAL Master Plan
+--SPYRAL－グレース
 function c91258852.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)
