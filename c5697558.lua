@@ -1,4 +1,4 @@
---The Hidden City
+--地中界シャンバラ
 function c5697558.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

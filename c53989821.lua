@@ -1,4 +1,4 @@
---SPYRAL GEAR - Utility Wire
+--SPYRAL GEAR－マルチワイヤー
 function c53989821.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

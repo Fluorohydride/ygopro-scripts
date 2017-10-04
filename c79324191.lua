@@ -1,4 +1,4 @@
---Ninjitsu Art Notebook
+--隠密忍法帖
 function c79324191.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

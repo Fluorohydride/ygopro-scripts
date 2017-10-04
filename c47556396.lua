@@ -1,4 +1,4 @@
---Subterror Behemoth Speleogeist
+--サブテラーマリス・エルガウスト
 function c47556396.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Vendread Houndhorde
+--ヴェンデット・ヘルハウンド
 function c67267333.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

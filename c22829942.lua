@@ -1,4 +1,4 @@
---Fusion Recycling Plant
+--融合再生機構
 function c22829942.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

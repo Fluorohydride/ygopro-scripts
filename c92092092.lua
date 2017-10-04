@@ -1,4 +1,4 @@
---Space Dragster
+--調星のドラッグスター
 function c92092092.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

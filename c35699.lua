@@ -1,4 +1,4 @@
---SPYRAL Sleeper
+--SPYRAL－ボルテックス
 function c35699.initial_effect(c)
 	c:EnableReviveLimit()
 	--splimit

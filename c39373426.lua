@@ -1,4 +1,4 @@
---SPYRAL MISSION - Recapture
+--SPYRAL MISSION－奪還
 function c39373426.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)

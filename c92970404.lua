@@ -1,4 +1,4 @@
---Subterror Behemoth Ultramafus
+--サブテラーマリス・バレスアッシュ
 function c92970404.initial_effect(c)
 	--flip
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---SPYRAL GEAR - Last Resort
+--SPYRAL GEAR－ラスト・リゾート
 function c37433748.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

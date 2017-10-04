@@ -1,4 +1,4 @@
---SPYRAL GEAR - Big Red
+--SPYRAL GEAR－ビッグ・レッド
 function c30979619.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

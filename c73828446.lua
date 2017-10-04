@@ -1,4 +1,4 @@
---SPYRAL GEAR - Fully Armed
+--SPYRAL GEAR－エクストラアームズ
 function c73828446.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

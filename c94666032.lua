@@ -1,4 +1,4 @@
---Revendread Origin
+--リヴェンデット・ボーン
 function c94666032.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

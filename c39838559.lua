@@ -1,4 +1,4 @@
---F.A. Circuit Grand Prix
+--F.A.サーキットGP
 function c39838559.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
