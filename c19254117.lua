@@ -72,11 +72,14 @@ function c19254117.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 		and (Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE))
 end
+function c19254117.tgfilter(c)
+	return c:GetFlagEffect(19254117)==0
+end
 function c19254117.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) end
-	if chk==0 then return Duel.IsExistingTarget(nil,tp,LOCATION_MZONE,0,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c19254117.tgfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c19254117.tgfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,nil,tp,LOCATION_MZONE,0,1,1,nil)
+	Duel.SelectTarget(tp,c19254117.tgfilter,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function c19254117.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
@@ -94,5 +97,6 @@ function c19254117.tgop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_ONLY_BE_ATTACKED)
 		e2:SetReset(RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e2,true)
+		tc:RegisterFlagEffect(19254117,RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END,0,0)
 	end
 end
