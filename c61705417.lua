@@ -36,12 +36,6 @@ function c61705417.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetLabelObject(tc)
 		e1:SetReset(RESET_EVENT+0x5c0000+RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
-		local e2=Effect.CreateEffect(e:GetHandler())
-		e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-		e2:SetCode(EFFECT_SEND_REPLACE)
-		e2:SetTarget(c61705417.reptg)
-		e2:SetReset(RESET_EVENT+0x5c0000+RESET_PHASE+PHASE_END)
-		tc:RegisterEffect(e2)
 		local e3=Effect.CreateEffect(e:GetHandler())
 		e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e3:SetCode(EVENT_CHAINING)
@@ -67,13 +61,6 @@ end
 function c61705417.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	Duel.SendtoGrave(tc,REASON_EFFECT)
-end
-function c61705417.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	if chk==0 then return c:IsReason(REASON_COST) and c:GetControler()~=c:GetOwner() end
-	c:ResetFlagEffect(61705418)
-	Duel.Damage(c:GetControler(),2000,REASON_EFFECT)
-	return false
 end
 function c61705417.actcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==tp and re:GetHandler()==e:GetLabelObject() and re:GetHandler():GetFlagEffect(61705417)~=0
