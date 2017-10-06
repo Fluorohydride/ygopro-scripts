@@ -1,6 +1,6 @@
 --虹天気アルシエル
---Prototype, might require a core update for full functionality
 function c54178659.initial_effect(c)
+	--link summon
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x109),3,3)
 	--disable special summon
@@ -33,14 +33,25 @@ function c54178659.initial_effect(c)
 	e3:SetOperation(c54178659.spop)
 	e3:SetLabelObject(e2)
 	c:RegisterEffect(e3)
-	--adjust
+	--effect gain
 	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CANNOT_NEGATE)
-	e4:SetCode(EVENT_ADJUST)
+	e4:SetDescription(aux.Stringid(54178659,2))
+	e4:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
+	e4:SetType(EFFECT_TYPE_QUICK_O)
+	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
+	e4:SetCode(EVENT_CHAINING)
 	e4:SetRange(LOCATION_MZONE)
-	e4:SetOperation(c54178659.effop)
-	c:RegisterEffect(e4)
+	e4:SetCondition(c54178659.discon2)
+	e4:SetCost(aux.bfgcost)
+	e4:SetTarget(c54178659.distg2)
+	e4:SetOperation(c54178659.disop2)
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_GRANT)
+	e5:SetRange(LOCATION_MZONE)
+	e5:SetTargetRange(LOCATION_MZONE,0)
+	e5:SetTarget(c54178659.eftg)
+	e5:SetLabelObject(e4)
+	c:RegisterEffect(e5)
 end
 function c54178659.discon(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=ep and Duel.GetCurrentChain()==0 and e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
@@ -82,41 +93,12 @@ function c54178659.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-function c54178659.efffilter(c,lg,ignore_flag)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsSetCard(0x109)
-		and c:GetSequence()<5 and lg and lg:IsContains(c)
-		and (ignore_flag or c:GetFlagEffect(54178659)==0)
-end
-function c54178659.effop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local lg=c:GetLinkedGroup()
-	local g=Duel.GetMatchingGroup(c54178659.efffilter,tp,LOCATION_MZONE,0,nil,lg)
-	if c:IsDisabled() then return end
-	for tc in aux.Next(g) do
-		tc:RegisterFlagEffect(54178659,RESET_EVENT+0x1fe0000,0,1)
-		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(54178659,0))
-		e1:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
-		e1:SetType(EFFECT_TYPE_QUICK_O)
-		e1:SetCode(EVENT_CHAINING)
-		e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
-		e1:SetRange(LOCATION_MZONE)
-		e1:SetLabelObject(c)
-		e1:SetCondition(c54178659.discon2)
-		e1:SetCost(aux.bfgcost)
-		e1:SetTarget(c54178659.distg2)
-		e1:SetOperation(c54178659.disop2)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
-		tc:RegisterEffect(e1)
-	end
+function c54178659.eftg(e,c)
+	local lg=e:GetHandler():GetLinkedGroup()
+	return c:IsType(TYPE_EFFECT) and c:IsSetCard(0x109) and lg:IsContains(c)
 end
 function c54178659.discon2(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:IsStatus(STATUS_BATTLE_DESTROYED) then return false end
-	local gc=e:GetLabelObject()
-	return Duel.IsChainNegatable(ev) and gc
-		and gc:IsFaceup() and gc:IsLocation(LOCATION_MZONE)
-		and c54178659.efffilter(c,gc:GetLinkedGroup(),true)
+	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev)
 end
 function c54178659.distg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
