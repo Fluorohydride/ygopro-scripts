@@ -253,6 +253,7 @@ EFFECT_TYPE_TRIGGER_F		=0x0200		--诱发必发效果
 EFFECT_TYPE_QUICK_F			=0x0400		--诱发即时必发效果（熊猫龙等）
 EFFECT_TYPE_CONTINUOUS		=0x0800		--由事件觸發的輔助用效果/永續效果
 EFFECT_TYPE_XMATERIAL		=0x1000		--作为超量素材时超量怪兽获得的效果（十二兽）
+EFFECT_TYPE_GRANT			=0x2000		--使其他卡片获得效果（天气模样）
 --========== Flags ==========	--效果的特殊性质
 EFFECT_FLAG_INITIAL			=0x0001		--可以发动的
 EFFECT_FLAG_FUNC_VALUE		=0x0002		--此效果的Value属性是函数
