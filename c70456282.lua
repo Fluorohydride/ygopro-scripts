@@ -57,7 +57,7 @@ function c70456282.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if lv~=i then t[p]=i p=p+1 end
 	end
 	t[p]=nil
-	Duel.Hint(HINT_SELECTMSG,tp,567)
+	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
 	e:SetLabel(Duel.AnnounceNumber(tp,table.unpack(t)))
 end
 function c70456282.lvop(e,tp,eg,ep,ev,re,r,rp)

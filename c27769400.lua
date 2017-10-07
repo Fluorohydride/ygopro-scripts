@@ -73,7 +73,7 @@ function c27769400.desfilter(c,att)
 end
 function c27769400.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.Hint(HINT_SELECTMSG,tp,563)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RACE)
 	local rc=Duel.AnnounceAttribute(tp,1,0xff)
 	Duel.SetTargetParam(rc)
 	e:GetHandler():SetHint(CHINT_ATTRIBUTE,rc)

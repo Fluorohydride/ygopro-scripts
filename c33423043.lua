@@ -12,7 +12,7 @@ end
 function c33423043.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0
 		and Duel.IsExistingMatchingCard(nil,tp,LOCATION_HAND,0,1,e:GetHandler()) end
-	Duel.Hint(HINT_SELECTMSG,tp,564)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
 	c33423043.announce_filter={TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK,OPCODE_ISTYPE,OPCODE_NOT}
 	local ac=Duel.AnnounceCardFilter(tp,table.unpack(c33423043.announce_filter))
 	Duel.SetTargetParam(ac)

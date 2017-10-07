@@ -43,7 +43,7 @@ function c32588805.setfilter2(c,typ)
 end
 function c32588805.setop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
-	Duel.Hint(HINT_SELECTMSG,1-tp,555)
+	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_OPTION)
 	local op=Duel.SelectOption(1-tp,71,72)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local g=nil

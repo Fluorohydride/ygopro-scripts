@@ -35,7 +35,7 @@ function c65743242.activate(e,tp,eg,ep,ev,re,r,rp)
 			return
 		end
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,549)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTACKTARGET)
 	local g=ag:Select(tp,1,1,at)
 	local tc=g:GetFirst()
 	if tc then

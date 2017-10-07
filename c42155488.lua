@@ -40,7 +40,7 @@ function c42155488.ntop(e,tp,eg,ep,ev,re,r,rp,c)
 end
 function c42155488.dectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.Hint(HINT_SELECTMSG,tp,563)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RACE)
 	local rc=Duel.AnnounceRace(tp,1,RACE_ALL)
 	e:SetLabel(rc)
 	local e1=Effect.CreateEffect(e:GetHandler())

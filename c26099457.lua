@@ -18,7 +18,7 @@ function c26099457.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c26099457.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c26099457.filter,tp,LOCATION_MZONE,0,1,1,nil)
-	Duel.Hint(HINT_SELECTMSG,tp,567)
+	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
 	local lv=Duel.AnnounceNumber(tp,1,2,3)
 	e:SetLabel(lv)
 end

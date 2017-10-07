@@ -19,7 +19,7 @@ function c59644958.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckRemoveOverlayCard(tp,1,1,1,REASON_EFFECT) end
 end
 function c59644958.operation(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,532)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DEATTACHFROM)
 	local sg=Duel.SelectMatchingCard(tp,Card.CheckRemoveOverlayCard,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,tp,1,REASON_EFFECT)
 	if sg:GetCount()==0 then return end
 	Duel.HintSelection(sg)

@@ -20,7 +20,7 @@ function c67556500.lvcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c67556500.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.Hint(HINT_SELECTMSG,tp,567)
+	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
 	local lv=Duel.AnnounceNumber(tp,1,2,3)
 	e:SetLabel(lv)
 end

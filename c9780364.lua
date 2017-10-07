@@ -29,7 +29,7 @@ function c9780364.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(c9780364.filter,tp,0,LOCATION_MZONE,nil,e)
 	local cg=Duel.GetMatchingGroup(c9780364.filter2,tp,0,LOCATION_MZONE,nil)
 	local sel=0
-	Duel.Hint(HINT_SELECTMSG,tp,550)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
 	if cg:GetCount()==0 then
 		sel=Duel.SelectOption(tp,aux.Stringid(9780364,0))
 	else sel=Duel.SelectOption(tp,aux.Stringid(9780364,0),aux.Stringid(9780364,1)) end

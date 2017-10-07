@@ -14,10 +14,10 @@ function c30334522.initial_effect(c)
 end
 function c30334522.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)~=0 end
-	Duel.Hint(HINT_SELECTMSG,tp,563)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RACE)
 	local rc=Duel.AnnounceRace(tp,1,RACE_ALL)
 	e:SetLabel(rc)
-	Duel.Hint(HINT_SELECTMSG,tp,562)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 	local at=Duel.AnnounceAttribute(tp,1,0xffff)
 	Duel.SetTargetParam(at)
 end

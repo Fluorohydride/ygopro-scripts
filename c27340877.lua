@@ -18,7 +18,7 @@ function c27340877.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c27340877.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEDOWN)
 	Duel.SelectTarget(tp,c27340877.filter,tp,LOCATION_MZONE,0,1,1,nil)
-	Duel.Hint(HINT_SELECTMSG,1-tp,562)
+	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATTRIBUTE)
 	local rc=Duel.AnnounceAttribute(1-tp,2,0xffffff)
 	e:SetLabel(rc)
 end

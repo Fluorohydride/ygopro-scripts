@@ -37,9 +37,9 @@ function c60866277.operation(e,tp,eg,ep,ev,re,r,rp)
 		tc=sg:GetNext()
 	end
 	if bit.band(att,att-1)==0 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,562)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 	local att1=Duel.AnnounceAttribute(tp,2,att)
-	Duel.Hint(HINT_SELECTMSG,1-tp,562)
+	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATTRIBUTE)
 	local att2=Duel.AnnounceAttribute(1-tp,1,att1)
 	local g=Duel.GetMatchingGroup(c60866277.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,att2)
 	Duel.Destroy(g,REASON_EFFECT)

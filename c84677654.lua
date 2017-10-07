@@ -13,7 +13,7 @@ function c84677654.cfilter(c)
 end
 function c84677654.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c84677654.cfilter,tp,LOCATION_MZONE,0,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,567)
+	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
 	local lv=Duel.AnnounceNumber(tp,1,2,3,4,5,6,7,8,9,10,11,12)
 	Duel.SetTargetParam(lv)
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,PLAYER_ALL,2)

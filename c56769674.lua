@@ -19,7 +19,7 @@ function c56769674.initial_effect(c)
 end
 function c56769674.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.Hint(HINT_SELECTMSG,tp,562)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 	local rc=Duel.AnnounceAttribute(tp,1,0xffff)
 	e:GetLabelObject():SetLabel(rc)
 	e:GetHandler():SetHint(CHINT_ATTRIBUTE,rc)

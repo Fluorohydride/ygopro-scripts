@@ -38,7 +38,7 @@ function c47766694.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetMatchingGroup(Card.IsSSetable,dp,LOCATION_HAND,0,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(dp,aux.Stringid(47766694,0)) then
 			Duel.BreakEffect()
-			Duel.Hint(HINT_SELECTMSG,tp,510)
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 			local sg=g:Select(dp,1,1,nil)
 			Duel.SSet(dp,sg:GetFirst())
 		end

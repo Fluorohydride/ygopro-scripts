@@ -42,7 +42,7 @@ function c25484449.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c25484449.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.Hint(HINT_SELECTMSG,tp,550)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
 	local op=Duel.SelectOption(tp,aux.Stringid(25484449,2),aux.Stringid(25484449,3))
 	e:SetLabel(op)
 end

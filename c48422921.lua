@@ -21,7 +21,7 @@ function c48422921.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local val=0xff
 	local reg=g:GetFirst():GetFlagEffectLabel(48422921)
 	if reg then val=val-reg end
-	Duel.Hint(HINT_SELECTMSG,tp,562)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 	local att=Duel.AnnounceAttribute(tp,1,val)
 	e:SetLabel(att)
 end

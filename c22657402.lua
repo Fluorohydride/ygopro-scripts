@@ -50,7 +50,7 @@ function c22657402.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	for i=5,8 do
 		if lv1~=i and lv2~=i then t[p]=i p=p+1 end
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,567)
+	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
 	local lv=Duel.AnnounceNumber(tp,table.unpack(t))
 	e:SetLabel(lv)
 end

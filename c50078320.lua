@@ -33,7 +33,7 @@ end
 function c50078320.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ex,cg,ct,cp,cv=Duel.GetOperationInfo(ev,CATEGORY_ANNOUNCE)
 	local ac=0
-	Duel.Hint(HINT_SELECTMSG,tp,564)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
 	if bit.band(cv,ANNOUNCE_CARD)~=0 then
 		ac=Duel.AnnounceCard(tp,cv)
 	else

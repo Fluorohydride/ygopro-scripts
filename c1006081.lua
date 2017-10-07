@@ -23,7 +23,7 @@ function c1006081.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g=Duel.SelectTarget(tp,c1006081.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	local op=0
-	Duel.Hint(HINT_SELECTMSG,tp,550)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
 	if g:GetFirst():GetLevel()==1 then
 		op=Duel.SelectOption(tp,aux.Stringid(1006081,1))
 	else

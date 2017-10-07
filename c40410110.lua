@@ -12,7 +12,7 @@ end
 function c40410110.attop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		Duel.Hint(HINT_SELECTMSG,tp,562)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 		local catt=c:GetAttribute()
 		local att=Duel.AnnounceAttribute(tp,1,0xffff - catt)
 		local e1=Effect.CreateEffect(c)

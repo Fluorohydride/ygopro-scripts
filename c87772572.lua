@@ -28,7 +28,7 @@ function c87772572.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetLabel(rac)
 		return rac~=0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,563)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RACE)
 	local crac=Duel.AnnounceRace(tp,1,e:GetLabel())
 	local att=0
 	local catt=1
@@ -38,7 +38,7 @@ function c87772572.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		end
 		catt=catt*2
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,562)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 	catt=Duel.AnnounceAttribute(tp,1,att)
 	e:SetLabel(crac)
 	Duel.SetTargetParam(catt)

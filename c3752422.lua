@@ -55,7 +55,7 @@ function c3752422.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	for i=1,p do
 		t[i]=i
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,567)
+	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
 	e:SetLabel(Duel.AnnounceNumber(tp,table.unpack(t)))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c3752422.filter,tp,LOCATION_MZONE,0,1,1,c)

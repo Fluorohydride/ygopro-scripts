@@ -10,7 +10,7 @@ end
 function c8323633.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	Duel.Hint(HINT_SELECTMSG,tp,564)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
 	local ac=Duel.AnnounceCard(tp,TYPE_MONSTER)
 	c:SetHint(CHINT_CARD,ac)
 	--remove

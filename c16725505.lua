@@ -29,7 +29,7 @@ function c16725505.tg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if lv~=i then t[p]=i p=p+1 end
 	end
 	t[p]=nil
-	Duel.Hint(HINT_SELECTMSG,tp,567)
+	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
 	e:SetLabel(Duel.AnnounceNumber(tp,table.unpack(t)))
 end
 function c16725505.op(e,tp,eg,ep,ev,re,r,rp)
