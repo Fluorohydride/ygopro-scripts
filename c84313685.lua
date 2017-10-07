@@ -87,7 +87,8 @@ function c84313685.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)
 end
 function c84313685.gspcon(e,tp,eg,ep,ev,re,r,rp)
-	return aux.IsUnionState(e) and e:GetHandler():GetEquipTarget()==eg:GetFirst()
+	local ec=eg:GetFirst()
+	return aux.IsUnionState(e) and e:GetHandler():GetEquipTarget()==ec and ec:IsControler(tp)
 end
 function c84313685.gfilter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsSetCard(0x30) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

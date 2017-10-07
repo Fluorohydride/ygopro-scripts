@@ -100,7 +100,7 @@ function c20007374.atkval(e,c)
 end
 function c20007374.cacon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler():GetEquipTarget()
-	return ec and eg:IsContains(ec)
+	return ec and eg:IsContains(ec) and ec:IsControler(tp)
 end
 function c20007374.cafilter(c)
 	return c20007374.cfilter(c) and c:IsAbleToRemoveAsCost()

@@ -13,7 +13,8 @@ function c99594764.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c99594764.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:GetCount()==1 and eg:GetFirst()==e:GetHandler():GetEquipTarget()
+	local ec=e:GetHandler():GetEquipTarget()
+	return ec and eg:IsContains(ec) and ec:IsControler(tp)
 end
 function c99594764.filter(c,race,att)
 	return c:IsRace(race) and c:IsAttribute(att) and c:GetLevel()<=4 and c:IsAbleToHand()

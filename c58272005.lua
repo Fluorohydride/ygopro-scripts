@@ -64,7 +64,7 @@ function c58272005.eqlimit(e,c)
 end
 function c58272005.atcon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler():GetEquipTarget()
-	if not eg:IsContains(ec) then return false end
+	if not eg:IsContains(ec) or not ec:IsControler(tp) then return false end
 	local bc=ec:GetBattleTarget()
 	return bc:IsLocation(LOCATION_GRAVE) and bc:IsType(TYPE_MONSTER) and ec:IsChainAttackable(2,true) and ec:IsStatus(STATUS_OPPO_BATTLE)
 end

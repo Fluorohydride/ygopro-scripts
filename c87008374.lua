@@ -62,7 +62,7 @@ function c87008374.eqop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c87008374.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler():GetEquipTarget()
-	return ec and eg:IsContains(ec)
+	return ec and eg:IsContains(ec) and ec:IsControler(tp)
 end
 function c87008374.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

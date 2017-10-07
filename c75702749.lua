@@ -57,7 +57,7 @@ function c75702749.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c75702749.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler():GetEquipTarget()
-	return ec and eg:IsContains(ec)
+	return ec and eg:IsContains(ec) and ec:IsControler(tp)
 end
 function c75702749.spfilter(c,e,tp)
 	return c:IsCode(56649609) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
