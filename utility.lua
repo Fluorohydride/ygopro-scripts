@@ -411,7 +411,7 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat)
 	if hct>0 then
 		local found=false
 		for c in aux.Next(g) do
-			local he,hf,min,max=c:GetHandSynchro()
+			local he,hf,hmin,hmax=c:GetHandSynchro()
 			if he then
 				found=true
 				if hf and hg:IsExists(Auxiliary.SynLimitFilter,1,c,hf,he) then return false end
@@ -428,7 +428,7 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat)
 				local lg=g:Filter(Card.IsLocation,c,lloc)
 				if lg:GetCount()~=ct then return false end
 			end
-			if lf and g:IsExists(Auxiliary.SynLimitFilter,1,c,lf,lf) then return false end
+			if lf and g:IsExists(Auxiliary.SynLimitFilter,1,c,lf,le) then return false end
 			if (lmin and ct<lmin) or (lmax and ct>lmax) then return false end
 		end
 	end
