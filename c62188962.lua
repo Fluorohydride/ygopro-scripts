@@ -7,7 +7,6 @@ function c62188962.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk
 	local e2=Effect.CreateEffect(c)
-	e2:SetCategory(CATEGORY_ATKCHANGE)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetCode(EFFECT_UPDATE_ATTACK)
