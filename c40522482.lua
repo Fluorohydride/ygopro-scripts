@@ -39,7 +39,7 @@ function c40522482.ffilter(c)
 end
 function c40522482.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
 	local g=Duel.GetMatchingGroup(c40522482.desfilter,tp,0,LOCATION_MZONE,nil,tc:GetAttack())
 	if g:GetCount()>0 and Duel.Destroy(g,REASON_EFFECT)>0 then
 		local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_GRAVE)
