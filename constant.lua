@@ -377,6 +377,7 @@ EFFECT_FLIPSUMMON_COST			=93		--翻转召唤代价
 EFFECT_MSET_COST				=94		--怪兽放置代价
 EFFECT_SSET_COST				=95		--魔陷放置代价
 EFFECT_ATTACK_COST				=96		--攻击代价（霞之谷猎鹰）
+EFFECT_CANNOT_TO_GRAVE_AS_COST	=97		--
 
 EFFECT_UPDATE_ATTACK			=100	--改变攻击力（攻击力增加/减少）
 EFFECT_SET_ATTACK				=101	--设置攻击力(永續型效果、攻擊力變成X特殊召喚)
