@@ -47,8 +47,8 @@ function c96746083.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,nil,2,tp,LOCATION_MZONE)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end
-function c96746083.rmfilter(c,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove(tp)
+function c96746083.rmfilter(c)
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
 end
 function c96746083.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -83,7 +83,7 @@ function c96746083.spop(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 then
 			return
 		end
-		local rg=Duel.GetMatchingGroup(c96746083.rmfilter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,nil,tp)
+		local rg=Duel.GetMatchingGroup(c96746083.rmfilter,tp,0,LOCATION_MZONE+LOCATION_GRAVE,nil)
 		if rm and rg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(96746083,0)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 			local tg=rg:Select(tp,1,1,nil)
