@@ -13,7 +13,8 @@ function c12470447.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c12470447.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_STANDBY and e:GetHandler():IsLocation(LOCATION_SZONE)
+	return Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_STANDBY
+		and e:GetHandler():IsLocation(LOCATION_SZONE) and Duel.GetCurrentChain()==0
 end
 function c12470447.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,LOCATION_MZONE)>0 end
