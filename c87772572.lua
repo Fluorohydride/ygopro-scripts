@@ -14,7 +14,7 @@ function c87772572.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local rac=0
 		local crac=1
-		for irac=0,23 do
+		while bit.band(RACE_ALL,crac)~=0 do
 			local catt=1
 			for iatt=0,7 do
 				if Duel.IsPlayerCanSpecialSummonMonster(tp,87772572,0,0x11,0,2200,4,crac,catt) then
