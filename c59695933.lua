@@ -10,11 +10,26 @@ function c59695933.initial_effect(c)
 	e1:SetTarget(c59695933.target)
 	e1:SetOperation(c59695933.activate)
 	c:RegisterEffect(e1)
+	if not c59695933.global_check then
+		c59695933.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD)
+		ge1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE)
+		ge1:SetCode(EFFECT_MATERIAL_CHECK)
+		ge1:SetValue(c59695933.valcheck)
+		Duel.RegisterEffect(ge1,0)
+	end
+end
+function c59695933.valcheck(e,c)
+	if c:GetMaterialCount()==1 and c:GetMaterial():GetFirst():IsType(TYPE_MONSTER) then
+		c:RegisterFlagEffect(59695933,0,0,0)
+	end
 end
 function c59695933.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return tc:IsSummonType(SUMMON_TYPE_ADVANCE)
-		and tc:GetMaterialCount()==1
+	local res=tc:IsSummonType(SUMMON_TYPE_ADVANCE) and tc:GetFlagEffect(59695933)~=0
+	tc:ResetFlagEffect(59695933)
+	return res
 end
 function c59695933.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
