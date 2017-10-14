@@ -83,7 +83,7 @@ function c10000080.ttcon2(e,c,minc)
 end
 function c10000080.ttop2(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
-	local g=Duel.SelectTribute(tp,c,3,3,mg,true)
+	local g=Duel.SelectTribute(tp,c,3,3,mg,1-tp)
 	c:SetMaterial(g)
 	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)
 end
