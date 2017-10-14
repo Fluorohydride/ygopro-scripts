@@ -70,6 +70,7 @@ function c15449853.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if tg:GetCount()==0 then return end
-	local ct=Duel.SendtoDeck(tg,nil,0,REASON_EFFECT)
+	if Duel.SendtoDeck(tg,nil,0,REASON_EFFECT)==0 then return end
+	local ct=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_DECK):GetCount()
 	if ct>0 then Duel.SortDecktop(tp,tp,ct) end
 end
