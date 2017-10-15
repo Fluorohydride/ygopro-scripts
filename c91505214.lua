@@ -30,7 +30,7 @@ function c91505214.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c91505214.sumcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_EFFECT)>0 and ep~=tp
+	return bit.band(r,REASON_EFFECT)~=0 and ep~=tp
 end
 function c91505214.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

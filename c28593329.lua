@@ -8,15 +8,10 @@ function c28593329.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCode(EVENT_BE_BATTLE_TARGET)
 	e1:SetRange(LOCATION_HAND)
-	e1:SetCondition(c28593329.condition)
 	e1:SetCost(c28593329.cost)
 	e1:SetTarget(c28593329.target)
 	e1:SetOperation(c28593329.activate)
 	c:RegisterEffect(e1)
-end
-function c28593329.condition(e,tp,eg,ep,ev,re,r,rp)
-	local at=Duel.GetAttackTarget()
-	return at:IsControler(tp) and at:IsRace(RACE_FAIRY)
 end
 function c28593329.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local at=Duel.GetAttackTarget()
@@ -36,7 +31,7 @@ end
 function c28593329.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) then
 		Duel.ChangeAttackTarget(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
