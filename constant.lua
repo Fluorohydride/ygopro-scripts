@@ -689,6 +689,7 @@ HINTMSG_SELF			=529	--请选择自己的卡
 HINTMSG_OPPO			=530	--请选择对方的卡
 HINTMSG_TRIBUTE			=531	--请选择上级召唤用需要解放的怪兽
 HINTMSG_DEATTACHFROM	=532	--请选择要取除超量素材的怪兽
+HINTMSG_LMATERIAL   	=533	--请选择连接召唤的素材
 HINTMSG_ATTACKTARGET	=549	--请选择攻击的对象
 HINTMSG_EFFECT			=550	--请选择要发动的效果
 HINTMSG_TARGET			=551	--请选择效果的对象

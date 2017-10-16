@@ -1647,6 +1647,7 @@ function Auxiliary.LinkOperation(f,minc,maxc,gf)
 						if not Duel.SelectYesNo(tp,210) then break end
 						minct=0
 					end
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LMATERIAL)
 					local g=cg:Select(tp,minct,1,nil)
 					if g:GetCount()==0 then break end
 					sg:Merge(g)
