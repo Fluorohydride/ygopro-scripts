@@ -2,9 +2,10 @@
 function c76029419.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
-	--defdown
+	--def
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(76029419,0))
+	e1:SetCategory(CATEGORY_DEFCHANGE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_PZONE)
@@ -12,9 +13,10 @@ function c76029419.initial_effect(c)
 	e1:SetTarget(c76029419.deftg)
 	e1:SetOperation(c76029419.defop)
 	c:RegisterEffect(e1)
-	--defdown
+	--def
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(76029419,1))
+	e2:SetCategory(CATEGORY_DEFCHANGE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BATTLE_CONFIRM)
 	e2:SetCondition(c76029419.defcon2)

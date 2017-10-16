@@ -26,12 +26,12 @@ function c40177746.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local rg=Duel.SelectMatchingCard(tp,c40177746.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,ct,e:GetHandler())
 	local rc=Duel.Remove(rg,POS_FACEUP,REASON_COST)
-	Duel.SetTargetParam(rc)
+	e:SetLabel(rc)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,rc,tp,LOCATION_DECK)
 end
 function c40177746.thop(e,tp,eg,ep,ev,re,r,rp)
 	local dg=Duel.GetMatchingGroup(c40177746.filter,tp,LOCATION_DECK,0,nil)
-	local ct=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
+	local ct=e:GetLabel()
 	if dg:GetClassCount(Card.GetCode)==0 or dg:GetClassCount(Card.GetCode)<ct then return end
 	local g=Group.CreateGroup()
 	for i=1,ct do

@@ -37,6 +37,7 @@ function c15449853.initial_effect(c)
 	c:RegisterEffect(e5)
 	local e6=e5:Clone()
 	e6:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
+	e6:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 	c:RegisterEffect(e6)
 	--to deck
 	local e7=Effect.CreateEffect(c)
