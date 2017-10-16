@@ -56,7 +56,7 @@ function c4709881.spfilter1(c,e,tp,zone)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone,true)
 end
 function c4709881.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local zone=e:GetHandler():GetLinkedZone()
+	local zone=e:GetHandler():GetLinkedZone(tp)
 	local cc=e:GetLabelObject()
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp)
 		and chkc~=cc and c4709881.spfilter1(chkc,e,tp,zone) end
@@ -67,7 +67,7 @@ function c4709881.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c4709881.spop1(e,tp,eg,ep,ev,re,r,rp)
-	local zone=e:GetHandler():GetLinkedZone()
+	local zone=e:GetHandler():GetLinkedZone(tp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and zone~=0 then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP,zone)

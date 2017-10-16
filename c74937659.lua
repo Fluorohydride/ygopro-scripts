@@ -52,7 +52,7 @@ function c74937659.spfilter(c,e,tp,zone)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE,tp,zone)
 end
 function c74937659.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local zone=e:GetHandler():GetLinkedZone()
+	local zone=e:GetHandler():GetLinkedZone(tp)
 	if chk==0 then return Duel.IsExistingMatchingCard(c74937659.tgfilter,tp,LOCATION_DECK,0,1,nil)
 		and Duel.IsExistingMatchingCard(c74937659.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp,zone) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
@@ -63,7 +63,7 @@ function c74937659.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c74937659.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)~=0
 		and g:GetFirst():IsLocation(LOCATION_GRAVE) then
-		local zone=e:GetHandler():GetLinkedZone()
+		local zone=e:GetHandler():GetLinkedZone(tp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,c74937659.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp,zone)
 		if zone~=0 and sg:GetCount()>0 then

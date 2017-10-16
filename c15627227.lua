@@ -27,7 +27,7 @@ function c15627227.initial_effect(c)
 end
 function c15627227.spfilter1(c,e,tp)
 	if c:IsFaceup() and c:IsType(TYPE_LINK) then
-		local zone=c:GetLinkedZone()
+		local zone=c:GetLinkedZone(tp)
 		return zone~=0 and Duel.IsExistingMatchingCard(c15627227.spfilter2,tp,LOCATION_HAND,0,1,nil,e,tp,zone)
 	else return false end
 end
@@ -46,7 +46,7 @@ function c15627227.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local lc=Duel.GetFirstTarget()
 	if lc:IsRelateToEffect(e) and lc:IsFaceup() then
-		local zone=lc:GetLinkedZone()
+		local zone=lc:GetLinkedZone(tp)
 		if zone==0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=Duel.SelectMatchingCard(tp,c15627227.spfilter2,tp,LOCATION_HAND,0,1,1,nil,e,tp,zone):GetFirst()

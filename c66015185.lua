@@ -30,7 +30,7 @@ function c66015185.filter(c,e,tp,zone)
 	return c:IsLevelAbove(5) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone)
 end
 function c66015185.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local zone=e:GetHandler():GetLinkedZone()
+	local zone=e:GetHandler():GetLinkedZone(tp)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c66015185.filter(chkc,e,tp,zone) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and zone~=0
 		and Duel.IsExistingTarget(c66015185.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp,zone) end
@@ -40,7 +40,7 @@ function c66015185.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c66015185.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local zone=c:GetLinkedZone()
+	local zone=c:GetLinkedZone(tp)
 	if zone==0 then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()

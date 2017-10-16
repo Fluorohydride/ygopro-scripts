@@ -37,7 +37,7 @@ end
 function c93503294.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local lg=c:GetLinkedGroup()
-	local zone=c:GetLinkedZone()
+	local zone=c:GetLinkedZone(tp)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c93503294.spcfilter,1,c,lg,zone) end
 	local tc=Duel.SelectReleaseGroup(tp,c93503294.spcfilter,1,1,c,lg,zone):GetFirst()
 	if lg:IsContains(tc) then
@@ -53,7 +53,7 @@ function c93503294.spfilter1(c,e,tp,zone)
 end
 function c93503294.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local zone=e:GetHandler():GetLinkedZone()
+		local zone=e:GetHandler():GetLinkedZone(tp)
 		if zone~=0 then
 			return Duel.IsExistingMatchingCard(c93503294.spfilter1,tp,LOCATION_DECK,0,1,nil,e,tp,zone)
 		else
@@ -63,7 +63,7 @@ function c93503294.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c93503294.spop(e,tp,eg,ep,ev,re,r,rp)
-	local zone=e:GetHandler():GetLinkedZone()
+	local zone=e:GetHandler():GetLinkedZone(tp)
 	if zone==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c93503294.spfilter1,tp,LOCATION_DECK,0,1,1,nil,e,tp,zone)

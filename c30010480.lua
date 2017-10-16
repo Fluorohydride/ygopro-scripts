@@ -5,6 +5,7 @@ function c30010480.initial_effect(c)
 	c:EnableReviveLimit()
 	--extra summon
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(30010480,0))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_EXTRA_SUMMON_COUNT)
 	e1:SetRange(LOCATION_MZONE)
@@ -37,7 +38,7 @@ function c30010480.sumval(e,c)
 		local relzone=-bit.lshift(1,e:GetHandler():GetSequence())
 		return 0,sumzone,relzone
 	else
-		local sumzone=bit.rshift(e:GetHandler():GetLinkedZone(),16)
+		local sumzone=e:GetHandler():GetLinkedZone(1-e:GetHandlerPlayer())
 		local relzone=-bit.lshift(1,e:GetHandler():GetSequence()+16)
 		return 0,sumzone,relzone
 	end

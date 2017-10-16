@@ -56,9 +56,9 @@ function c88406570.spop(e,tp,eg,ep,ev,re,r,rp)
 		local g1=Duel.SelectMatchingCard(1-tp,aux.NecroValleyFilter(c88406570.spfilter1),1-tp,LOCATION_GRAVE,0,1,ft,nil,e,1-tp)
 		if g1:GetCount()>0 then
 			local ct=Duel.SpecialSummon(g1,0,1-tp,1-tp,false,false,POS_FACEUP)
-			local zone=c:GetLinkedZone()
+			local zone=c:GetLinkedZone(tp)
 			ct=math.min(Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone),ct)
-			if ct>0 and c:IsRelateToEffect(e) then
+			if zone~=0 and ct>0 and c:IsRelateToEffect(e) then
 				if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				local g2=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c88406570.spfilter2),tp,LOCATION_GRAVE,0,1,ct,nil,e,tp,zone)
