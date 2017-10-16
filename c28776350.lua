@@ -1,7 +1,7 @@
 --アカシック・マジシャン
 function c28776350.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,aux.NOT(aux.FilterBoolFunction(Card.IsLinkType,TYPE_TOKEN)),2,2,c28776350.lkfilter)
+	aux.AddLinkProcedure(c,aux.NOT(aux.FilterBoolFunction(Card.IsLinkType,TYPE_TOKEN)),2,2,c28776350.lcheck)
 	c:EnableReviveLimit()
 	--splimit
 	local e1=Effect.CreateEffect(c)
@@ -48,8 +48,8 @@ end
 function c28776350.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsCode(28776350) and bit.band(sumtype,SUMMON_TYPE_LINK)==SUMMON_TYPE_LINK
 end
-function c28776350.lkfilter(sg)
-	return sg:GetClassCount(Card.GetRace)==1
+function c28776350.lcheck(g,lc)
+	return g:GetClassCount(Card.GetRace)==1
 end
 function c28776350.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)

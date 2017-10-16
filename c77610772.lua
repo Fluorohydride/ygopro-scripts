@@ -1,7 +1,7 @@
 --星杯神楽イヴ
 function c77610772.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,nil,2,2,c77610772.linkfilter)
+	aux.AddLinkProcedure(c,nil,2,2,c77610772.lcheck)
 	c:EnableReviveLimit()
 	--indes
 	local e1=Effect.CreateEffect(c)
@@ -40,8 +40,8 @@ function c77610772.initial_effect(c)
 	e5:SetOperation(c77610772.spop2)
 	c:RegisterEffect(e5)
 end
-function c77610772.linkfilter(sg)
-	return sg:GetClassCount(Card.GetRace)==sg:GetCount() and sg:GetClassCount(Card.GetAttribute)==sg:GetCount()
+function c77610772.lcheck(g,lc)
+	return g:GetClassCount(Card.GetRace)==g:GetCount() and g:GetClassCount(Card.GetAttribute)==g:GetCount()
 end
 function c77610772.incon(e)
 	return e:GetHandler():IsLinkState()
