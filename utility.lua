@@ -656,7 +656,7 @@ function Auxiliary.XyzLevelFreeCheck(c,tp,xyzc,mg,sg,gf,minc,maxc)
 	return res
 end
 function Auxiliary.XyzLevelFreeGoal(g,tp,xyzc,gf)
-	return (not gf or gf(g,xyzc)) and Duel.GetLocationCountFromEx(tp,tp,g,xyzc)>0
+	return (not gf or gf(g)) and Duel.GetLocationCountFromEx(tp,tp,g,xyzc)>0
 end
 function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct)
 	return	function(e,c,og,min,max)
@@ -1623,7 +1623,7 @@ function Auxiliary.LCheckRecursive(c,tp,sg,mg,lc,ct,minc,maxc,gf)
 	return res
 end
 function Auxiliary.LCheckGoal(tp,sg,lc,minc,ct,gf)
-	return ct>=minc and sg:CheckWithSumEqual(Auxiliary.GetLinkCount,lc:GetLink(),ct,ct) and Duel.GetLocationCountFromEx(tp,tp,sg,lc)>0 and (not gf or gf(sg,lc))
+	return ct>=minc and sg:CheckWithSumEqual(Auxiliary.GetLinkCount,lc:GetLink(),ct,ct) and Duel.GetLocationCountFromEx(tp,tp,sg,lc)>0 and (not gf or gf(sg))
 end
 function Auxiliary.LinkCondition(f,minc,maxc,gf)
 	return	function(e,c)

@@ -41,7 +41,7 @@ c65305468.xyz_number=0
 function c65305468.mfilter(c,xyzc)
 	return c:IsXyzType(TYPE_XYZ) and not c:IsSetCard(0x48)
 end
-function c65305468.xyzcheck(g,xyzc)
+function c65305468.xyzcheck(g)
 	return g:GetClassCount(Card.GetRank)==1
 end
 function c65305468.cttg(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -45,7 +45,7 @@ c52653092.xyz_number=0
 function c52653092.mfilter(c,xyzc)
 	return c:IsFaceup() and c:IsXyzType(TYPE_XYZ) and c:IsSetCard(0x48)
 end
-function c52653092.xyzcheck(g,xyzc)
+function c52653092.xyzcheck(g)
 	return g:GetClassCount(Card.GetRank)==1
 end
 function c52653092.cfilter(c)

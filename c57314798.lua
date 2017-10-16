@@ -40,7 +40,7 @@ c57314798.xyz_number=100
 function c57314798.mfilter(c,xyzc)
 	return c:IsSetCard(0x48) and c:IsXyzType(TYPE_XYZ)
 end
-function c57314798.xyzcheck(g,xyzc)
+function c57314798.xyzcheck(g)
 	return g:GetClassCount(Card.GetCode)==1 and g:GetClassCount(Card.GetRank)==1
 end
 function c57314798.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)

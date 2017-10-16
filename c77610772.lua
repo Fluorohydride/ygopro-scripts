@@ -40,7 +40,7 @@ function c77610772.initial_effect(c)
 	e5:SetOperation(c77610772.spop2)
 	c:RegisterEffect(e5)
 end
-function c77610772.lcheck(g,lc)
+function c77610772.lcheck(g)
 	return g:GetClassCount(Card.GetRace)==g:GetCount() and g:GetClassCount(Card.GetAttribute)==g:GetCount()
 end
 function c77610772.incon(e)

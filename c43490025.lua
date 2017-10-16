@@ -33,7 +33,7 @@ c43490025.xyz_number=0
 function c43490025.mfilter(c,xyzc)
 	return c:IsXyzType(TYPE_XYZ) and not c:IsSetCard(0x48)
 end
-function c43490025.xyzcheck(g,xyzc)
+function c43490025.xyzcheck(g)
 	return g:GetClassCount(Card.GetRank)==1
 end
 function c43490025.ovfilter(c)

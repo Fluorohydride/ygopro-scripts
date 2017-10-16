@@ -30,7 +30,7 @@ c23187256.xyz_number=93
 function c23187256.mfilter(c,xyzc)
 	return c:IsXyzType(TYPE_XYZ) and c:IsSetCard(0x48) and c:GetOverlayCount()>0
 end
-function c23187256.xyzcheck(g,xyzc)
+function c23187256.xyzcheck(g)
 	return g:GetClassCount(Card.GetRank)==1
 end
 function c23187256.filter(c,e,tp)
