@@ -1,16 +1,8 @@
 --アカシック・マジシャン
 function c28776350.initial_effect(c)
-	c:EnableReviveLimit()
 	--link summon
-	local e0=Effect.CreateEffect(c)
-	e0:SetType(EFFECT_TYPE_FIELD)
-	e0:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
-	e0:SetCode(EFFECT_SPSUMMON_PROC)
-	e0:SetRange(LOCATION_EXTRA)
-	e0:SetCondition(c28776350.lkcon)
-	e0:SetOperation(c28776350.lkop)
-	e0:SetValue(SUMMON_TYPE_LINK)
-	c:RegisterEffect(e0)
+	aux.AddLinkProcedure(c,aux.NOT(aux.FilterBoolFunction(Card.IsLinkType,TYPE_TOKEN)),2,2,c28776350.lcheck)
+	c:EnableReviveLimit()
 	--splimit
 	local e1=Effect.CreateEffect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
@@ -56,25 +48,8 @@ end
 function c28776350.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsCode(28776350) and bit.band(sumtype,SUMMON_TYPE_LINK)==SUMMON_TYPE_LINK
 end
-function c28776350.lkfilter1(c,lc,tp)
-	return c:IsFaceup() and c:IsCanBeLinkMaterial(lc) and not c:IsLinkType(TYPE_TOKEN) and Duel.IsExistingMatchingCard(c28776350.lkfilter2,tp,LOCATION_MZONE,0,1,c,lc,c,tp)
-end
-function c28776350.lkfilter2(c,lc,mc,tp)
-	local mg=Group.FromCards(c,mc)
-	return c:IsFaceup() and c:IsCanBeLinkMaterial(lc) and c:IsRace(mc:GetRace()) and not c:IsLinkType(TYPE_TOKEN) and Duel.GetLocationCountFromEx(tp,tp,mg,lc)>0
-end
-function c28776350.lkcon(e,c)
-	if c==nil then return true end
-	if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-	local tp=c:GetControler()
-	return Duel.IsExistingMatchingCard(c28776350.lkfilter1,tp,LOCATION_MZONE,0,1,nil,c,tp)
-end
-function c28776350.lkop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g1=Duel.SelectMatchingCard(tp,c28776350.lkfilter1,tp,LOCATION_MZONE,0,1,1,nil,c,tp)
-	local g2=Duel.SelectMatchingCard(tp,c28776350.lkfilter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst(),c,g1:GetFirst(),tp)
-	g1:Merge(g2)
-	c:SetMaterial(g1)
-	Duel.SendtoGrave(g1,REASON_MATERIAL+REASON_LINK)
+function c28776350.lcheck(g,lc)
+	return g:GetClassCount(Card.GetRace)==1
 end
 function c28776350.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)

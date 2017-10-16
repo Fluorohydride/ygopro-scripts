@@ -1,15 +1,7 @@
 --星杯神楽イヴ
 function c77610772.initial_effect(c)
 	--link summon
-	local e0=Effect.CreateEffect(c)
-	e0:SetType(EFFECT_TYPE_FIELD)
-	e0:SetCode(EFFECT_SPSUMMON_PROC)
-	e0:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
-	e0:SetRange(LOCATION_EXTRA)
-	e0:SetCondition(c77610772.linkcon)
-	e0:SetOperation(c77610772.linkop)
-	e0:SetValue(SUMMON_TYPE_LINK)
-	c:RegisterEffect(e0)
+	aux.AddLinkProcedure(c,nil,2,2,c77610772.lcheck)
 	c:EnableReviveLimit()
 	--indes
 	local e1=Effect.CreateEffect(c)
@@ -48,29 +40,11 @@ function c77610772.initial_effect(c)
 	e5:SetOperation(c77610772.spop2)
 	c:RegisterEffect(e5)
 end
-function c77610772.linkfilter1(c,lc,tp)
-	return c:IsFaceup() and c:IsCanBeLinkMaterial(lc) and Duel.IsExistingMatchingCard(c77610772.linkfilter2,tp,LOCATION_MZONE,0,1,c,lc,c,tp)
-end
-function c77610772.linkfilter2(c,lc,mc,tp)
-	local mg=Group.FromCards(c,mc)
-	return c:IsFaceup() and c:IsCanBeLinkMaterial(lc) and not c:IsRace(mc:GetRace()) and not c:IsAttribute(mc:GetAttribute()) and Duel.GetLocationCountFromEx(tp,tp,mg,lc)>0
-end
-function c77610772.linkcon(e,c)
-	if c==nil then return true end
-	if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
-	local tp=c:GetControler()
-	return Duel.IsExistingMatchingCard(c77610772.linkfilter1,tp,LOCATION_MZONE,0,1,nil,c,tp)
-end
-function c77610772.linkop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g1=Duel.SelectMatchingCard(tp,c77610772.linkfilter1,tp,LOCATION_MZONE,0,1,1,nil,c,tp)
-	local g2=Duel.SelectMatchingCard(tp,c77610772.linkfilter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst(),c,g1:GetFirst(),tp)
-	g1:Merge(g2)
-	c:SetMaterial(g1)
-	Duel.SendtoGrave(g1,REASON_MATERIAL+REASON_LINK)
+function c77610772.lcheck(g,lc)
+	return g:GetClassCount(Card.GetRace)==g:GetCount() and g:GetClassCount(Card.GetAttribute)==g:GetCount()
 end
 function c77610772.incon(e)
-	local c=e:GetHandler()
-	return c:IsLinkState()
+	return e:GetHandler():IsLinkState()
 end
 function c77610772.repfilter(c,tp,hc)
 	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE)

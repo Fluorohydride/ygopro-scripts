@@ -1593,15 +1593,15 @@ function Auxiliary.PendOperation()
 			end
 end
 --Link Summon
-function Auxiliary.AddLinkProcedure(c,f,min,max)
+function Auxiliary.AddLinkProcedure(c,f,min,max,gf)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetRange(LOCATION_EXTRA)
 	if max==nil then max=99 end
-	e1:SetCondition(Auxiliary.LinkCondition(f,min,max))
-	e1:SetOperation(Auxiliary.LinkOperation(f,min,max))
+	e1:SetCondition(Auxiliary.LinkCondition(f,min,max,gf))
+	e1:SetOperation(Auxiliary.LinkOperation(f,min,max,gf))
 	e1:SetValue(SUMMON_TYPE_LINK)
 	c:RegisterEffect(e1)
 end
@@ -1613,37 +1613,37 @@ function Auxiliary.GetLinkCount(c)
 		return 1+0x10000*c:GetLink()
 	else return 1 end
 end
-function Auxiliary.LCheckRecursive(c,tp,sg,mg,lc,ct,minc,maxc)
+function Auxiliary.LCheckRecursive(c,tp,sg,mg,lc,ct,minc,maxc,gf)
 	sg:AddCard(c)
 	ct=ct+1
-	local res=Auxiliary.LCheckGoal(tp,sg,lc,minc,ct)
-		or (ct<maxc and mg:IsExists(Auxiliary.LCheckRecursive,1,sg,tp,sg,mg,lc,ct,minc,maxc))
+	local res=Auxiliary.LCheckGoal(tp,sg,lc,minc,ct,gf)
+		or (ct<maxc and mg:IsExists(Auxiliary.LCheckRecursive,1,sg,tp,sg,mg,lc,ct,minc,maxc,gf))
 	sg:RemoveCard(c)
 	ct=ct-1
 	return res
 end
-function Auxiliary.LCheckGoal(tp,sg,lc,minc,ct)
-	return ct>=minc and sg:CheckWithSumEqual(Auxiliary.GetLinkCount,lc:GetLink(),ct,ct) and Duel.GetLocationCountFromEx(tp,tp,sg,lc)>0
+function Auxiliary.LCheckGoal(tp,sg,lc,minc,ct,gf)
+	return ct>=minc and sg:CheckWithSumEqual(Auxiliary.GetLinkCount,lc:GetLink(),ct,ct) and Duel.GetLocationCountFromEx(tp,tp,sg,lc)>0 and (not gf or gf(sg,lc))
 end
-function Auxiliary.LinkCondition(f,minc,maxc)
+function Auxiliary.LinkCondition(f,minc,maxc,gf)
 	return	function(e,c)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp=c:GetControler()
 				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f,c)
 				local sg=Group.CreateGroup()
-				return mg:IsExists(Auxiliary.LCheckRecursive,1,nil,tp,sg,mg,c,0,minc,maxc)
+				return mg:IsExists(Auxiliary.LCheckRecursive,1,nil,tp,sg,mg,c,0,minc,maxc,gf)
 			end
 end
-function Auxiliary.LinkOperation(f,minc,maxc)
+function Auxiliary.LinkOperation(f,minc,maxc,gf)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c)
 				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f,c)
 				local sg=Group.CreateGroup()
 				for i=0,maxc-1 do
-					local cg=mg:Filter(Auxiliary.LCheckRecursive,sg,tp,sg,mg,c,i,minc,maxc)
+					local cg=mg:Filter(Auxiliary.LCheckRecursive,sg,tp,sg,mg,c,i,minc,maxc,gf)
 					if cg:GetCount()==0 then break end
 					local minct=1
-					if Auxiliary.LCheckGoal(tp,sg,c,minc,i) then
+					if Auxiliary.LCheckGoal(tp,sg,c,minc,i,gf) then
 						if not Duel.SelectYesNo(tp,210) then break end
 						minct=0
 					end
