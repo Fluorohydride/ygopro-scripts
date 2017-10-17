@@ -19,16 +19,14 @@ function c71650854.initial_effect(c)
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e3:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
-	e3:SetValue(c71650854.tgvalue)
 	c:RegisterEffect(e3)
-	local e4=e3:Clone()
+	local e4=e2:Clone()
 	e4:SetTargetRange(0,LOCATION_MZONE)
-	e4:SetValue(c71650854.tgoval)
+	e4:SetValue(aux.tgsval)
 	c:RegisterEffect(e4)
-	local e5=e3:Clone()
+	local e5=e4:Clone()
 	e5:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-	e5:SetTargetRange(0,LOCATION_MZONE)
-	e5:SetValue(c71650854.tgovalue)
+	e5:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 	c:RegisterEffect(e5)
 	--cannot set/activate
 	local e6=Effect.CreateEffect(c)
@@ -54,15 +52,6 @@ function c71650854.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c71650854.indcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1
-end
-function c71650854.tgvalue(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
-end
-function c71650854.tgoval(e,re,rp)
-	return rp~=1-e:GetHandlerPlayer() and not re:GetHandler():IsImmuneToEffect(e)
-end
-function c71650854.tgovalue(e,re,rp)
-	return rp~=1-e:GetHandlerPlayer()
 end
 function c71650854.setlimit(e,c,tp)
 	return c:IsType(TYPE_FIELD)

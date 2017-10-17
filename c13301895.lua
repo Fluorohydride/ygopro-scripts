@@ -18,7 +18,6 @@ function c13301895.initial_effect(c)
 	--Indes
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-	e3:SetValue(c13301895.tgvalue)
 	c:RegisterEffect(e3)
 	--Draw
 	local e4=Effect.CreateEffect(c)
@@ -34,9 +33,6 @@ function c13301895.initial_effect(c)
 end
 function c13301895.immtg(e,c)
 	return c:IsCode(6007213,32491822,69890967,43378048)
-end
-function c13301895.tgvalue(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end
 function c13301895.drcfilter(c)
 	return c:IsFaceup() and c:IsCode(6007213,32491822,69890967,43378048)

@@ -24,7 +24,7 @@ function c94977269.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetValue(c94977269.indval)
+	e3:SetValue(aux.tgoval)
 	c:RegisterEffect(e3)
 	--spsummon count limit
 	local e4=Effect.CreateEffect(c)
@@ -115,9 +115,6 @@ function c94977269.fusop(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 end
 function c94977269.splimit(e,se,sp,st)
 	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
-end
-function c94977269.indval(e,re,tp)
-	return tp~=e:GetHandlerPlayer()
 end
 function c94977269.thfilter(c)
 	return c:IsSetCard(0x9d) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()

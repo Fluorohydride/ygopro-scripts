@@ -19,7 +19,7 @@ function c45082499.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_ONFIELD,0)
 	e2:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x7e))
-	e2:SetValue(c45082499.indval)
+	e2:SetValue(aux.tgoval)
 	c:RegisterEffect(e2)
 	--destroy sub
 	local e3=Effect.CreateEffect(c)
@@ -69,9 +69,6 @@ function c45082499.eqop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c45082499.eqlimit(e,c)
 	return c==e:GetLabelObject()
-end
-function c45082499.indval(e,re,rp)
-	return rp==1-e:GetHandlerPlayer()
 end
 function c45082499.repval(e,re,r,rp)
 	return bit.band(r,REASON_EFFECT)~=0

@@ -26,7 +26,7 @@ function c88757791.initial_effect(c)
 	e4:SetTargetRange(LOCATION_MZONE,0)
 	e4:SetCondition(c88757791.indcon)
 	e4:SetTarget(c88757791.indtg)
-	e4:SetValue(c88757791.indval)
+	e4:SetValue(aux.tgoval)
 	c:RegisterEffect(e4)
 end
 function c88757791.cfilter(c,tp)
@@ -73,7 +73,4 @@ function c88757791.indcon(e)
 end
 function c88757791.indtg(e,c)
 	return c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM)
-end
-function c88757791.indval(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end

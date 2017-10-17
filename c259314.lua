@@ -51,13 +51,10 @@ function c259314.operation(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetType(EFFECT_TYPE_EQUIP)
 		e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 		e3:SetReset(RESET_EVENT+0x1fe0000)
-		e3:SetValue(c259314.efilter)
+		e3:SetValue(aux.tgoval)
 		c:RegisterEffect(e3,true)
 	end
 end
 function c259314.eqlimit(e,c)
 	return c:IsSetCard(0x56)
-end
-function c259314.efilter(e,re,rp)
-	return e:GetHandlerPlayer()~=rp
 end

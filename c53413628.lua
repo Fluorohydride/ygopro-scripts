@@ -22,7 +22,7 @@ function c53413628.initial_effect(c)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-	e3:SetValue(c53413628.indval)
+	e3:SetValue(aux.tgoval)
 	c:RegisterEffect(e3)
 end
 function c53413628.atkval(e,c)
@@ -30,7 +30,4 @@ function c53413628.atkval(e,c)
 end
 function c53413628.indcon(e)
 	return e:GetHandler():GetLinkedGroupCount()>0
-end
-function c53413628.indval(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end

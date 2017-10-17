@@ -14,7 +14,7 @@ function c20920083.initial_effect(c)
 	e2:SetTargetRange(LOCATION_MZONE,0)
 	e2:SetCondition(c20920083.con)
 	e2:SetTarget(c20920083.tg)
-	e2:SetValue(c20920083.indval)
+	e2:SetValue(aux.tgoval)
 	c:RegisterEffect(e2)
 	--cannot be target
 	local e3=Effect.CreateEffect(c)
@@ -45,9 +45,6 @@ function c20920083.con(e)
 end
 function c20920083.tg(e,c)
 	return c:IsDefensePos()
-end
-function c20920083.indval(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end
 function c20920083.repfilter(c,e)
 	return c:GetSequence()<5 and c:IsDestructable(e)

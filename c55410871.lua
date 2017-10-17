@@ -22,7 +22,7 @@ function c55410871.initial_effect(c)
 	e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetValue(c55410871.indval)
+	e3:SetValue(aux.tgoval)
 	c:RegisterEffect(e3)
 	--pierce
 	local e4=Effect.CreateEffect(c)
@@ -35,9 +35,6 @@ function c55410871.initial_effect(c)
 	e5:SetCondition(c55410871.damcon)
 	e5:SetOperation(c55410871.damop)
 	c:RegisterEffect(e5)
-end
-function c55410871.indval(e,re,tp)
-	return tp~=e:GetHandlerPlayer()
 end
 function c55410871.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

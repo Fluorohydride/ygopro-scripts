@@ -35,12 +35,9 @@ function c95218695.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e1:SetTargetRange(LOCATION_ONFIELD,0)
 	e1:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0xed))
-	e1:SetValue(c95218695.indval)
+	e1:SetValue(aux.tgoval)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-end
-function c95218695.indval(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end
 function c95218695.cfilter(c,tp)
 	return c:IsPreviousPosition(POS_FACEUP) and c:IsFacedown() and c:IsControler(tp)

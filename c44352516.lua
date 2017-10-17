@@ -12,12 +12,11 @@ function c44352516.initial_effect(c)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetTargetRange(LOCATION_MZONE,0)
 	e2:SetTarget(c44352516.indestg)
-	e2:SetValue(c44352516.indesval)
+	e2:SetValue(aux.tgoval)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
 	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e3:SetValue(aux.tgoval)
 	c:RegisterEffect(e3)
 	--return to hand
 	local e4=Effect.CreateEffect(c)
@@ -42,9 +41,6 @@ function c44352516.initial_effect(c)
 end
 function c44352516.indestg(e,c)
 	return c:IsSetCard(0x4093) and c:IsType(TYPE_EFFECT) and c:GetEquipCount()>0
-end
-function c44352516.indesval(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end
 function c44352516.filter(c)
 	return c:IsSetCard(0x4093) and c:IsFaceup() and c:IsAbleToHand()

@@ -27,7 +27,7 @@ function c645794.initial_effect(c)
 	e5:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e5:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e5:SetRange(LOCATION_MZONE)
-	e5:SetValue(c645794.indval)
+	e5:SetValue(aux.tgoval)
 	c:RegisterEffect(e5)
 end
 function c645794.filter(c)
@@ -51,7 +51,4 @@ function c645794.setop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+0x17a0000+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 	end
-end
-function c645794.indval(e,re,tp)
-	return tp~=e:GetHandlerPlayer()
 end

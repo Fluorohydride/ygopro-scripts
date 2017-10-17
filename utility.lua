@@ -1718,9 +1718,13 @@ end
 function Auxiliary.imval1(e,c)
 	return not c:IsImmuneToEffect(e)
 end
---filter for EFFECT_CANNOT_BE_EFFECT_TARGET + opponent
+--filter for EFFECT_CANNOT_BE_EFFECT_TARGET/EFFECT_INDESTRUCTABLE_EFFECT + self
+function Auxiliary.tgsval(e,re,rp)
+	return rp==e:GetHandlerPlayer()
+end
+--filter for EFFECT_CANNOT_BE_EFFECT_TARGET/EFFECT_INDESTRUCTABLE_EFFECT + opponent
 function Auxiliary.tgoval(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
+	return rp==1-e:GetHandlerPlayer()
 end
 --filter for non-zero ATK
 function Auxiliary.nzatk(c)

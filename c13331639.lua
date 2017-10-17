@@ -50,7 +50,6 @@ function c13331639.initial_effect(c)
 	c:RegisterEffect(e5)
 	local e6=e5:Clone()
 	e6:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-	e6:SetValue(c13331639.tgvalue)
 	c:RegisterEffect(e6)
 	--special summon
 	local e7=Effect.CreateEffect(c)
@@ -119,9 +118,6 @@ function c13331639.desop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.Destroy(g,REASON_EFFECT)
 	end
-end
-function c13331639.tgvalue(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end
 function c13331639.spfilter(c,e,tp)
 	return c:IsSetCard(0x20f8) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -15,7 +15,7 @@ function c18386170.initial_effect(c)
 	e2:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
 	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetValue(c18386170.tgval)
+	e2:SetValue(aux.tgoval)
 	c:RegisterEffect(e2)
 	--draw
 	local e3=Effect.CreateEffect(c)
@@ -42,9 +42,6 @@ function c18386170.initial_effect(c)
 end
 function c18386170.ffilter(c,fc,sub,mg,sg)
 	return c:IsFusionSetCard(0xb1) and (not sg or not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode()))
-end
-function c18386170.tgval(e,re,rp)
-	return rp~=e:GetHandlerPlayer() and not re:GetHandler():IsImmuneToEffect(e)
 end
 function c18386170.cfilter(c)
 	return c:IsSetCard(0xb1) and c:IsAbleToGraveAsCost()

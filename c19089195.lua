@@ -84,12 +84,9 @@ function c19089195.remop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e1:SetTargetRange(LOCATION_ONFIELD,0)
 	e1:SetTarget(aux.TargetBoolFunction(Card.IsType,TYPE_SPELL+TYPE_TRAP))
-	e1:SetValue(c19089195.indval)
+	e1:SetValue(aux.tgoval)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-end
-function c19089195.indval(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end
 function c19089195.descon(e,tp,eg,ep,ev,re,r,rp)
 	if not c19089195.econ(e,tp,eg,ep,ev,re,r,rp) then return false end

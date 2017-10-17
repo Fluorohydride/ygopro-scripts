@@ -31,7 +31,7 @@ function c54358015.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(LOCATION_ONFIELD,0)
 	e3:SetTarget(c54358015.tgtg)
-	e3:SetValue(c54358015.indval)
+	e3:SetValue(aux.tgoval)
 	c:RegisterEffect(e3)
 end
 function c54358015.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -56,7 +56,4 @@ function c54358015.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c54358015.tgtg(e,c)
 	return c:IsSetCard(0x7b) and c~=e:GetHandler()
-end
-function c54358015.indval(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end
