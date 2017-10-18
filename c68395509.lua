@@ -29,7 +29,7 @@ function c68395509.initial_effect(c)
 	e5:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e5:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e5:SetRange(LOCATION_MZONE)
-	e5:SetValue(aux.tgoval)
+	e5:SetValue(aux.indoval)
 	c:RegisterEffect(e5)
 end
 function c68395509.thfilter(c)

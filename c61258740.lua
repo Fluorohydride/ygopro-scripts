@@ -13,7 +13,7 @@ function c61258740.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_MZONE,0)
 	e2:SetTarget(aux.TargetBoolFunction(Card.IsAttribute,ATTRIBUTE_WATER))
-	e2:SetValue(aux.tgoval)
+	e2:SetValue(aux.indoval)
 	c:RegisterEffect(e2)
 end
 function c61258740.target(e,tp,eg,ep,ev,re,r,rp,chk)

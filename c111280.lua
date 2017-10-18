@@ -60,7 +60,7 @@ function c111280.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 		e3:SetTargetRange(LOCATION_ONFIELD,0)
 		e3:SetTarget(c111280.indtg)
-		e3:SetValue(aux.tgoval)
+		e3:SetValue(aux.indoval)
 		e3:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e3,tp)
 	end

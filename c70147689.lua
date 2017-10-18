@@ -12,7 +12,7 @@ function c70147689.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_MZONE,0)
 	e2:SetTarget(c70147689.target)
-	e2:SetValue(aux.tgoval)
+	e2:SetValue(aux.indoval)
 	c:RegisterEffect(e2)
 	--cannot be target
 	local e3=Effect.CreateEffect(c)

@@ -20,6 +20,7 @@ function c24550676.initial_effect(c)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
+	e2:SetValue(aux.indoval)
 	c:RegisterEffect(e2)
 	--Double attack
 	local e3=Effect.CreateEffect(c)

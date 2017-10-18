@@ -22,7 +22,7 @@ function c55410871.initial_effect(c)
 	e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetValue(aux.tgoval)
+	e3:SetValue(aux.indoval)
 	c:RegisterEffect(e3)
 	--pierce
 	local e4=Effect.CreateEffect(c)

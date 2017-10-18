@@ -26,7 +26,7 @@ function c72318602.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 	e1:SetTargetRange(LOCATION_MZONE,0)
-	e1:SetValue(aux.tgoval)
+	e1:SetValue(aux.indoval)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 end

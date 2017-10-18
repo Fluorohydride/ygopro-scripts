@@ -24,6 +24,7 @@ function c90590303.initial_effect(c)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
+	e3:SetValue(aux.indoval)
 	c:RegisterEffect(e3)
 	--pos
 	local e4=Effect.CreateEffect(c)

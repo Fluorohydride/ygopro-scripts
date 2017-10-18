@@ -22,7 +22,7 @@ function c53413628.initial_effect(c)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-	e3:SetValue(aux.tgoval)
+	e3:SetValue(aux.indoval)
 	c:RegisterEffect(e3)
 end
 function c53413628.atkval(e,c)

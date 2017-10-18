@@ -26,7 +26,7 @@ function c98076754.initial_effect(c)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetTargetRange(LOCATION_MZONE,0)
 	e3:SetCondition(c98076754.effcon)
-	e3:SetValue(aux.tgoval)
+	e3:SetValue(aux.indoval)
 	e3:SetLabel(5)
 	c:RegisterEffect(e3)
 	--cannot be target

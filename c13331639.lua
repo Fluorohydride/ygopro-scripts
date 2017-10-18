@@ -50,6 +50,7 @@ function c13331639.initial_effect(c)
 	c:RegisterEffect(e5)
 	local e6=e5:Clone()
 	e6:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
+	e6:SetValue(aux.indoval)
 	c:RegisterEffect(e6)
 	--special summon
 	local e7=Effect.CreateEffect(c)

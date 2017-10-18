@@ -17,7 +17,7 @@ function c85908279.initial_effect(c)
 	e2:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetValue(aux.tgoval)
+	e2:SetValue(aux.indoval)
 	c:RegisterEffect(e2)
 	--defense attack
 	local e3=Effect.CreateEffect(c)

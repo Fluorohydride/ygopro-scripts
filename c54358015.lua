@@ -31,7 +31,7 @@ function c54358015.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(LOCATION_ONFIELD,0)
 	e3:SetTarget(c54358015.tgtg)
-	e3:SetValue(aux.tgoval)
+	e3:SetValue(aux.indoval)
 	c:RegisterEffect(e3)
 end
 function c54358015.spcost(e,tp,eg,ep,ev,re,r,rp,chk)

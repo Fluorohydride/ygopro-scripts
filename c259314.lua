@@ -51,7 +51,7 @@ function c259314.operation(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetType(EFFECT_TYPE_EQUIP)
 		e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 		e3:SetReset(RESET_EVENT+0x1fe0000)
-		e3:SetValue(aux.tgoval)
+		e3:SetValue(aux.indoval)
 		c:RegisterEffect(e3,true)
 	end
 end

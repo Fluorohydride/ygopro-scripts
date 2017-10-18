@@ -18,6 +18,7 @@ function c13301895.initial_effect(c)
 	--Indes
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
+	e3:SetValue(aux.indoval)
 	c:RegisterEffect(e3)
 	--Draw
 	local e4=Effect.CreateEffect(c)

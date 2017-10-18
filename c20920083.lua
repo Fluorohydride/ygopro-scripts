@@ -14,7 +14,7 @@ function c20920083.initial_effect(c)
 	e2:SetTargetRange(LOCATION_MZONE,0)
 	e2:SetCondition(c20920083.con)
 	e2:SetTarget(c20920083.tg)
-	e2:SetValue(aux.tgoval)
+	e2:SetValue(aux.indoval)
 	c:RegisterEffect(e2)
 	--cannot be target
 	local e3=Effect.CreateEffect(c)
