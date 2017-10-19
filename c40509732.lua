@@ -41,7 +41,7 @@ function c40509732.aclimit(e,re,tp)
 end
 function c40509732.con(e)
 	local c=e:GetHandler()
-	return (Duel.GetAttacker()==c and Duel.GetBattleTarget()) or Duel.GetAttackTarget()==c
+	return (Duel.GetAttacker()==c and c:GetBattleTarget()) or Duel.GetAttackTarget()==c
 end
 function c40509732.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
