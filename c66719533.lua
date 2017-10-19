@@ -60,7 +60,7 @@ function c66719533.effilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0x105) and c:IsControler(tp)
 end
 function c66719533.effcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg and eg:IsExists(c66719533.effilter,1,nil,tp)
+	return eg:IsExists(c66719533.effilter,1,nil,tp)
 end
 function c66719533.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return c66719533.effcon(e,tp,eg,ep,ev,re,r,rp) and Duel.GetTurnPlayer()==tp

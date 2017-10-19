@@ -10,11 +10,11 @@ function c31044787.initial_effect(c)
 	e1:SetOperation(c31044787.activate)
 	c:RegisterEffect(e1)
 end
-function c31044787.filter(c)
-	return c:IsFaceup() and c:GetAttack()>0
+function c31044787.filter(c,tp)
+	return c:IsFaceup() and c:GetAttack()>0 and Duel.IsPlayerCanSendtoDeck(tp,c)
 end
 function c31044787.condition(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c31044787.filter,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(c31044787.filter,tp,0,LOCATION_MZONE,nil,1-tp)
 	local atk=g:GetSum(Card.GetAttack)
 	return atk>Duel.GetLP(tp)
 end
@@ -23,7 +23,7 @@ function c31044787.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,1-tp,LOCATION_MZONE)
 end
 function c31044787.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c31044787.filter,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(c31044787.filter,tp,0,LOCATION_MZONE,nil,1-tp)
 	local atk=g:GetSum(Card.GetAttack)
 	local lp=Duel.GetLP(tp)
 	local diff=atk-lp

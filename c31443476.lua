@@ -28,18 +28,29 @@ function c31443476.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_CANNOT_ATTACK)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		tc:RegisterEffect(e1,true)
+		tc:RegisterFlagEffect(31443476,RESET_EVENT+0x1fe0000,0,1)
 		local e2=Effect.CreateEffect(e:GetHandler())
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e2:SetRange(LOCATION_MZONE)
 		e2:SetCode(EVENT_PHASE+PHASE_END)
 		e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+		e2:SetLabelObject(tc)
+		e2:SetCondition(c31443476.descon)
 		e2:SetOperation(c31443476.desop)
 		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		e2:SetCountLimit(1)
-		tc:RegisterEffect(e2,true)
+		Duel.RegisterEffect(e2,tp)
 		Duel.SpecialSummonComplete()
 	end
 end
+function c31443476.descon(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	if tc:GetFlagEffect(31443476)~=0 then
+		return true
+	else
+		e:Reset()
+		return false
+	end
+end
 function c31443476.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+	Duel.Destroy(e:GetLabelObject(),REASON_EFFECT)
 end
