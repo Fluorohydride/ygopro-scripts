@@ -64,6 +64,6 @@ function c52927340.disop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1,true)
 	end
 end
-function c52927340.rcon(e,c)
-	return e:GetHandler():IsHasCardTarget(c)
+function c52927340.rcon(e)
+	return e:GetOwner():IsHasCardTarget(e:GetHandler())
 end
