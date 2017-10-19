@@ -1,5 +1,6 @@
 --魔石術師 クルード
 function c20630765.initial_effect(c)
+	c:EnableCounterPermit(0x16)
 	c:SetCounterLimit(0x16,1)
 	--Add counter
 	local e0=Effect.CreateEffect(c)
