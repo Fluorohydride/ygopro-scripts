@@ -35,7 +35,7 @@ end
 function c2266498.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-		if ft<=0 then return false end
+		if ft<=0 or not Duel.IsPlayerCanSpecialSummonCount(tp,2) then return false end
 		if ft>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 		local mg=Duel.GetMatchingGroup(c2266498.filter,tp,LOCATION_REMOVED,0,nil,e,tp)
 		return Duel.IsExistingMatchingCard(c2266498.cfilter,tp,LOCATION_HAND,0,1,nil,e,tp,mg,ft)
@@ -44,7 +44,7 @@ function c2266498.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c2266498.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<=0 then return end
+	if ft<=0 or not Duel.IsPlayerCanSpecialSummonCount(tp,2) then return end
 	if ft>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local mg=Duel.GetMatchingGroup(c2266498.filter,tp,LOCATION_REMOVED,0,nil,e,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
