@@ -69,7 +69,6 @@ function c31833038.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local tc=Duel.GetAttackTarget()
 	if chk==0 then
-		if not c:IsType(TYPE_LINK) then return false end
 		local zone=bit.band(c:GetLinkedZone(),0x1f)
 		return Duel.GetAttacker()==c and tc and tc:IsControlerCanBeChanged(false,zone)
 	end

@@ -34,26 +34,18 @@ function c71133680.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST+REASON_DISCARD)
 end
-function c71133680.atkfilter1(c,mg)
+function c71133680.atkfilter(c,e,tp)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER)
-		and c:IsLocation(LOCATION_MZONE)
-		and mg:IsExists(aux.TRUE,1,c)
-end
-function c71133680.atkfilter2(c,tp)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER)
-		and Duel.IsExistingMatchingCard(c71133680.desfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,c)
+		and Duel.IsExistingMatchingCard(c71133680.desfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,Group.FromCards(c,e:GetHandler()))
 end
 function c71133680.desfilter(c)
 	return c:IsAttribute(ATTRIBUTE_WATER) and (c:GetBaseAttack()>0 or c:GetBaseDefense()>0)
 end
 function c71133680.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c71133680.atkfilter2(chkc,tp) end
-	if chk==0 then
-		local mg=Duel.GetMatchingGroup(c71133680.desfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,e:GetHandler())
-		return Duel.IsExistingTarget(c71133680.atkfilter1,tp,LOCATION_MZONE,0,1,nil,mg)
-	end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c71133680.atkfilter(chkc,e,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c71133680.atkfilter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c71133680.atkfilter2,tp,LOCATION_MZONE,0,1,1,nil,tp)
+	Duel.SelectTarget(tp,c71133680.atkfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,nil,1,tp,LOCATION_MZONE+LOCATION_HAND)
 end
 function c71133680.atkop(e,tp,eg,ep,ev,re,r,rp)

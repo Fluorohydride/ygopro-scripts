@@ -55,8 +55,8 @@ function c28776350.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
 end
 function c28776350.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local lg=e:GetHandler():GetLinkedGroup():Filter(Card.IsAbleToHand,nil)
 	if chk==0 then return true end
+	local lg=e:GetHandler():GetLinkedGroup():Filter(Card.IsAbleToHand,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,lg,lg:GetCount(),0,0)
 end
 function c28776350.thop(e,tp,eg,ep,ev,re,r,rp)

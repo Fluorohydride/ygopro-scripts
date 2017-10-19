@@ -23,11 +23,10 @@ function c94626871.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c94626871.cfilter(c,tp,zone)
-	if not c:IsReason(REASON_DESTROY) or not c:IsReason(REASON_BATTLE+REASON_EFFECT)
-		or not zone then return false end
 	local seq=c:GetPreviousSequence()
 	if c:GetPreviousControler()~=tp then seq=seq+16 end
-	return c:IsPreviousLocation(LOCATION_MZONE) and bit.extract(zone,seq)~=0
+	return c:IsReason(REASON_DESTROY) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
+		and c:IsPreviousLocation(LOCATION_MZONE) and bit.extract(zone,seq)~=0
 end
 function c94626871.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c94626871.cfilter,1,nil,tp,e:GetHandler():GetLinkedZone())

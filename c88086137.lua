@@ -14,8 +14,7 @@ function c88086137.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local seq,p=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_SEQUENCE,CHAININFO_TRIGGERING_CONTROLER)
 	if p==1-tp then seq=seq+16 end
-	local zone=bit.lshift(1,seq)
-	return (bit.band(c:GetColumnZone(LOCATION_MZONE),zone)~=0 or bit.band(c:GetColumnZone(LOCATION_SZONE),zone)~=0)
+	return (bit.extract(c:GetColumnZone(LOCATION_MZONE),seq)~=0 or bit.extract(c:GetColumnZone(LOCATION_SZONE),seq)~=0)
 		and (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE)) and Duel.IsChainNegatable(ev)
 end
 function c88086137.target(e,tp,eg,ep,ev,re,r,rp,chk)
