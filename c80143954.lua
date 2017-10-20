@@ -64,9 +64,8 @@ function c80143954.eqlimit(e,c)
 end
 function c80143954.negcon(e,tp,eg,ep,ev,re,r,rp)
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return false end
-	local g,loc=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS,CHAININFO_TRIGGERING_LOCATION)
-	return rp~=tp and loc==LOCATION_MZONE and re:IsActiveType(TYPE_MONSTER)
-		and g and g:IsContains(e:GetLabelObject()) and Duel.IsChainDisablable(ev)
+	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
+	return rp~=tp and re:IsActiveType(TYPE_MONSTER) and g and g:IsContains(e:GetLabelObject())
 end
 function c80143954.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
