@@ -18,16 +18,9 @@ function c19808608.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c19808608.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g=Duel.SelectTarget(tp,c19808608.filter,tp,LOCATION_MZONE,0,1,1,nil)
-	local t={}
-	local i=1
-	local p=1
 	local lv=g:GetFirst():GetLevel()
-	for i=1,8 do
-		if lv~=i then t[p]=i p=p+1 end
-	end
-	t[p]=nil
 	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
-	e:SetLabel(Duel.AnnounceNumber(tp,table.unpack(t)))
+	e:SetLabel(Duel.AnnounceLevel(tp,1,8,lv))
 end
 function c19808608.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
