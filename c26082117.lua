@@ -20,16 +20,8 @@ function c26082117.initial_effect(c)
 end
 function c26082117.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local t={}
-	local i=1
-	local p=1
-	local lv=e:GetHandler():GetLevel()
-	for i=1,8 do 
-		if lv~=i then t[p]=i p=p+1 end
-	end
-	t[p]=nil
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26082117,1))
-	e:SetLabel(Duel.AnnounceNumber(tp,table.unpack(t)))
+	e:SetLabel(Duel.AnnounceLevel(tp,1,8,e:GetHandler():GetLevel()))
 end
 function c26082117.op(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
