@@ -41,7 +41,7 @@ function c54757758.tglimit(e,c)
 end
 function c54757758.atttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.Hint(HINT_SELECTMSG,tp,563)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 	local aat=Duel.AnnounceAttribute(tp,1,0xff-e:GetHandler():GetAttribute())
 	e:SetLabel(aat)
 end

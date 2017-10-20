@@ -54,7 +54,7 @@ function c8522996.chcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c8522996.chtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.Hint(HINT_SELECTMSG,tp,0)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 	local aat=Duel.AnnounceAttribute(tp,1,0x7f)
 	e:SetLabel(aat)
 end
