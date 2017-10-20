@@ -12,7 +12,7 @@ function c90140980.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c90140980.disop(e,tp)
-	local c=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
+	local c=Duel.GetLocationCount(1-tp,LOCATION_MZONE,PLAYER_NONE,0)
 	if c==0 then return end
 	local dis1=Duel.SelectDisableField(tp,1,0,LOCATION_MZONE,0)
 	if c>1 and Duel.SelectYesNo(tp,aux.Stringid(90140980,0)) then

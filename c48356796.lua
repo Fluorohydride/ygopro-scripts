@@ -26,7 +26,7 @@ function c48356796.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c48356796.accon(e,tp,eg,ep,ev,re,r,rp)
-	local c=Duel.GetLocationCount(tp,LOCATION_SZONE)
+	local c=Duel.GetLocationCount(tp,LOCATION_SZONE,PLAYER_NONE,0)
 	if e:GetHandler():IsFacedown() then return c>0 end
 	return c>1
 end

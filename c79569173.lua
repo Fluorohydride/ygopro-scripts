@@ -27,7 +27,7 @@ function c79569173.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c79569173.cfilter,1,nil,tp)
 end
 function c79569173.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(1-tp,LOCATION_SZONE)>2 end
+	if chk==0 then return Duel.GetLocationCount(1-tp,LOCATION_SZONE,PLAYER_NONE,0)>2 end
 	local c=e:GetHandler()
 	c:SetTurnCounter(0)
 	local e1=Effect.CreateEffect(c)
@@ -44,7 +44,7 @@ function c79569173.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(dis)
 end
 function c79569173.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(1-tp,LOCATION_SZONE)<3 then return end
+	if Duel.GetLocationCount(1-tp,LOCATION_SZONE,PLAYER_NONE,0)<3 then return end
 	--disable field
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
