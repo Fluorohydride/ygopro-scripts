@@ -12,7 +12,7 @@ function c7405310.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)~=0
 		and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_EXTRA,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
-	local lv=Duel.AnnounceNumber(tp,1,2,3,4,5,6,7,8,9,10,11,12)
+	local lv=Duel.AnnounceLevel(tp)
 	e:SetLabel(lv)
 end
 function c7405310.filter(c,lv)
