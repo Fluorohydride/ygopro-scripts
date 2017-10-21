@@ -32,42 +32,28 @@ end
 function c93503294.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2
 end
-function c93503294.spcfilter(c,g,zone)
-	return c:IsSetCard(0x103) and (zone~=0 or g:IsContains(c))
+function c93503294.spcfilter(c,tp,zone)
+	return c:IsSetCard(0x103) and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_TOFIELD,zone)>0
 end
 function c93503294.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	local lg=c:GetLinkedGroup()
 	local zone=c:GetLinkedZone(tp)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c93503294.spcfilter,1,c,lg,zone) end
-	local tc=Duel.SelectReleaseGroup(tp,c93503294.spcfilter,1,1,c,lg,zone):GetFirst()
-	if lg:IsContains(tc) then
-		e:SetLabel(tc:GetSequence())
-	end
-	Duel.Release(tc,REASON_COST)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c93503294.spcfilter,1,c,tp,zone) end
+	local g=Duel.SelectReleaseGroup(tp,c93503294.spcfilter,1,1,c,tp,zone)
+	Duel.Release(g,REASON_COST)
 end
-function c93503294.spfilter0(c,e,tp)
+function c93503294.spfilter(c,e,tp)
 	return c:IsSetCard(0x103) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c93503294.spfilter1(c,e,tp,zone)
-	return c:IsSetCard(0x103) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone)
-end
 function c93503294.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then
-		local zone=e:GetHandler():GetLinkedZone(tp)
-		if zone~=0 then
-			return Duel.IsExistingMatchingCard(c93503294.spfilter1,tp,LOCATION_DECK,0,1,nil,e,tp,zone)
-		else
-			return Duel.IsExistingMatchingCard(c93503294.spfilter0,tp,LOCATION_DECK,0,1,nil,e,tp)
-		end
-	end
+	if chk==0 then return Duel.IsExistingMatchingCard(c93503294.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c93503294.spop(e,tp,eg,ep,ev,re,r,rp)
 	local zone=e:GetHandler():GetLinkedZone(tp)
-	if zone==0 then return end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c93503294.spfilter1,tp,LOCATION_DECK,0,1,1,nil,e,tp,zone)
+	local g=Duel.SelectMatchingCard(tp,c93503294.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP,zone)
 	end

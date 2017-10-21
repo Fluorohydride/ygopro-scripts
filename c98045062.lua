@@ -23,9 +23,8 @@ function c98045062.filter2(c)
 	return c:IsFaceup() and c:IsControlerCanBeChanged(true)
 end
 function c98045062.cfilter(c,tp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_CONTROL)
-	if c:IsControler(tp) and c:GetSequence()<5 then ft=ft+1 end
-	return ft>0 and Duel.IsExistingTarget(c98045062.filter2,tp,0,LOCATION_MZONE,1,c)
+	return Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
+		and Duel.IsExistingTarget(c98045062.filter2,tp,0,LOCATION_MZONE,1,c)
 end
 function c98045062.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then
