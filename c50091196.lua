@@ -45,8 +45,9 @@ function c50091196.sccon(e,tp,eg,ep,ev,re,r,rp)
 		and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 end
 function c50091196.sctarg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,nil,e:GetHandler()) end
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,1,nil,e:GetHandler()) and e:GetHandler():GetFlagEffect(50091196)==0 end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
+	e:GetHandler():RegisterFlagEffect(50091196,RESET_CHAIN,0,1)
 end
 function c50091196.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
