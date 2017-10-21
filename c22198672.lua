@@ -44,22 +44,10 @@ function c22198672.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local p=tc:GetControler()
 	local zone=bit.band(tc:GetLinkedZone(),0x1f)
 	if Duel.GetLocationCount(p,LOCATION_MZONE,p,LOCATION_REASON_CONTROL,zone)>0 then
-		local s=0
-		if tc:IsControler(tp) then
-			local flag=bit.bxor(zone,0xff)
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
-			s=Duel.SelectDisableField(tp,1,LOCATION_MZONE,0,flag)
-		else
-			local flag=bit.bxor(zone,0xff)*0x10000
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
-			s=Duel.SelectDisableField(tp,1,0,LOCATION_MZONE,flag)/0x10000
-		end
-		local nseq=0
-		if s==1 then nseq=0
-		elseif s==2 then nseq=1
-		elseif s==4 then nseq=2
-		elseif s==8 then nseq=3
-		else nseq=4 end
+		local i=0
+		if not tc:IsControler(tp) then i=16 end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
+		local nseq=math.log(Duel.SelectDisableField(tp,1,LOCATION_MZONE,LOCATION_MZONE,bit.bnot(bit.lshift(zone,i))),2) - i
 		Duel.MoveSequence(tc,nseq)
 	end
 end
