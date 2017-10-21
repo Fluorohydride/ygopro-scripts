@@ -12,7 +12,7 @@ function c30650147.initial_effect(c)
 end
 function c30650147.filter(c,tp)
 	return c:IsFaceup() and c:GetOriginalLevel()>0 and c:IsReleasableByEffect()
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,30650148,0x106,0x4011,0,0,c:GetLevel(),RACE_ZOMBIE,ATTRIBUTE_DARK)
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,30650148,0x106,0x4011,0,0,c:GetOriginalLevel(),RACE_ZOMBIE,ATTRIBUTE_DARK)
 end
 function c30650147.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c30650147.filter(chkc,tp) end
