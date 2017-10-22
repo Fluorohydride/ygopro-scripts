@@ -17,22 +17,23 @@ function c80280737.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	return true
 end
-function c80280737.filter1(c,e,tp)
+function c80280737.filter1(c,e,tp,ft)
 	local code=c:GetCode()
 	local tcode=c80280737.list[code]
-	return tcode and c:IsType(TYPE_SYNCHRO) and Duel.IsExistingMatchingCard(c80280737.filter2,tp,LOCATION_DECK,0,1,nil,tcode,e,tp)
+	return tcode and c:IsType(TYPE_SYNCHRO) and (ft>0 or c:GetSequence()<5)
+		and Duel.IsExistingMatchingCard(c80280737.filter2,tp,LOCATION_DECK,0,1,nil,tcode,e,tp)
 end
 function c80280737.filter2(c,tcode,e,tp)
 	return c:IsCode(tcode) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c80280737.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if chk==0 then
 		if e:GetLabel()~=1 then return false end
 		e:SetLabel(0)
-		return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-			and Duel.CheckReleaseGroup(tp,c80280737.filter1,1,nil,e,tp)
+		return ft>-1 and Duel.CheckReleaseGroup(tp,c80280737.filter1,1,nil,e,tp,ft)
 	end
-	local rg=Duel.SelectReleaseGroup(tp,c80280737.filter1,1,1,nil,e,tp)
+	local rg=Duel.SelectReleaseGroup(tp,c80280737.filter1,1,1,nil,e,tp,ft)
 	e:SetLabel(rg:GetFirst():GetCode())
 	Duel.Release(rg,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
