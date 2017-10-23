@@ -78,7 +78,7 @@ function c49477180.mtop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(tp,49477180,RESET_PHASE+PHASE_END,0,1)
 end
 function c49477180.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
+	if chk==0 then return Duel.GetAttackTarget()~=nil and Duel.IsPlayerCanDraw(tp,1) end
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
