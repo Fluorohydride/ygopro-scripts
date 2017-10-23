@@ -283,6 +283,7 @@ function Auxiliary.SynMixCondition(f1,f2,f3,f4,minc,maxc)
 				else
 					mg=Auxiliary.GetSynMaterials(tp,c)
 				end
+				if smat~=nil then mg:AddCard(smat) end
 				return mg:IsExists(Auxiliary.SynMixFilter1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat)
 			end
 end
@@ -295,6 +296,7 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc)
 				else
 					mg=Auxiliary.GetSynMaterials(tp,c)
 				end
+				if smat~=nil then mg:AddCard(smat) end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 				local c1=mg:FilterSelect(tp,Auxiliary.SynMixFilter1,1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat):GetFirst()
 				g:AddCard(c1)
@@ -415,7 +417,7 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat)
 			if he then
 				found=true
 				if hf and hg:IsExists(Auxiliary.SynLimitFilter,1,c,hf,he) then return false end
-				if (hmin and ct<hmin) or (hmax and ct>hmax) then return false end
+				if (hmin and hct<hmin) or (hmax and hct>hmax) then return false end
 			end
 		end
 		if not found then return false end
@@ -423,13 +425,13 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat)
 	for c in aux.Next(g) do
 		local le,lf,lloc,lmin,lmax=c:GetTunerLimit()
 		if le then
-			local ct=g:GetCount()-1
+			local lct=g:GetCount()-1
 			if lloc then
 				local lg=g:Filter(Card.IsLocation,c,lloc)
-				if lg:GetCount()~=ct then return false end
+				if lg:GetCount()~=lct then return false end
 			end
 			if lf and g:IsExists(Auxiliary.SynLimitFilter,1,c,lf,le) then return false end
-			if (lmin and ct<lmin) or (lmax and ct>lmax) then return false end
+			if (lmin and lct<lmin) or (lmax and lct>lmax) then return false end
 		end
 	end
 	return true
