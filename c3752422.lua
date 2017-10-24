@@ -49,14 +49,10 @@ function c3752422.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc~=c and chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c3752422.filter(chkc) end
 	if chk==0 then return c:GetLevel()>1
 		and Duel.IsExistingTarget(c3752422.filter,tp,LOCATION_MZONE,0,1,c) end
-	local t={}
 	local p=c:GetLevel()-1
 	p=math.min(p,5)
-	for i=1,p do
-		t[i]=i
-	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
-	e:SetLabel(Duel.AnnounceNumber(tp,table.unpack(t)))
+	e:SetLabel(Duel.AnnounceLevel(tp,1,p))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c3752422.filter,tp,LOCATION_MZONE,0,1,1,c)
 end

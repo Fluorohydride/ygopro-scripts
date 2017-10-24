@@ -52,7 +52,7 @@ function c63881033.lvtg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if Duel.IsExistingMatchingCard(c63881033.filter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.SelectYesNo(tp,94) then
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(63881033,1))
-		local lv=Duel.AnnounceNumber(tp,5,6,7,8,9)
+		local lv=Duel.AnnounceLevel(tp,5,9)
 		e:SetLabel(lv)
 		e:GetHandler():RegisterFlagEffect(63881033,RESET_PHASE+PHASE_END,0,1)
 	else
@@ -69,7 +69,7 @@ function c63881033.lvtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(63881033)==0
 		and Duel.IsExistingMatchingCard(c63881033.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(63881033,1))
-	local lv=Duel.AnnounceNumber(tp,5,6,7,8,9)
+	local lv=Duel.AnnounceLevel(tp,5,9)
 	e:SetLabel(lv)
 	e:GetHandler():RegisterFlagEffect(63881033,RESET_PHASE+PHASE_END,0,1)
 end

@@ -16,7 +16,7 @@ end
 function c58577036.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerCanSpecialSummon(tp) or not Duel.IsPlayerCanDiscardDeck(tp,1) then return end
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINGMSG_LVRANK)
-	local lv=Duel.AnnounceNumber(1-tp,1,2,3,4,5,6,7,8,9,10,11,12)
+	local lv=Duel.AnnounceLevel(1-tp)
 	local g=Duel.GetMatchingGroup(Card.IsSummonableCard,tp,LOCATION_DECK,0,nil)
 	local dcount=Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)
 	local seq=-1

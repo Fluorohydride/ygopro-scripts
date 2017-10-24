@@ -21,7 +21,7 @@ end
 function c67556500.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
-	local lv=Duel.AnnounceNumber(tp,1,2,3)
+	local lv=Duel.AnnounceLevel(tp,1,3)
 	e:SetLabel(lv)
 end
 function c67556500.lvop(e,tp,eg,ep,ev,re,r,rp)

@@ -41,17 +41,12 @@ function c22657402.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c22657402.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g=Duel.SelectTarget(tp,c22657402.filter,tp,LOCATION_MZONE,0,1,2,nil)
-	local t={}
-	local p=1
 	local lv1=g:GetFirst():GetLevel()
 	local lv2=0
 	local tc2=g:GetNext()
 	if tc2 then lv2=tc2:GetLevel() end
-	for i=5,8 do
-		if lv1~=i and lv2~=i then t[p]=i p=p+1 end
-	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINGMSG_LVRANK)
-	local lv=Duel.AnnounceNumber(tp,table.unpack(t))
+	local lv=Duel.AnnounceLevel(tp,5,8,lv1,lv2)
 	e:SetLabel(lv)
 end
 function c22657402.lvfilter(c,e)
