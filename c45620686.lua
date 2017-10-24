@@ -16,7 +16,7 @@ function c45620686.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c45620686.lvfilter(c)
-	return c:IsFaceup() and not c:IsType(TYPE_XYZ)
+	return c:IsFaceup() and c:IsLevelAbove(0)
 end
 function c45620686.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c45620686.lvfilter(chkc) end

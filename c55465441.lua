@@ -14,7 +14,7 @@ function c55465441.filter(c,e,tp)
 	return c:GetLevel()>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE,1-tp)
 end
 function c55465441.filter2(c)
-	return c:IsFaceup() and not c:IsType(TYPE_XYZ)
+	return c:IsFaceup() and c:IsLevelAbove(0)
 end
 function c55465441.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

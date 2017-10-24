@@ -11,7 +11,7 @@ function c21767650.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c21767650.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x74) and not c:IsType(TYPE_XYZ)
+	return c:IsFaceup() and c:IsSetCard(0x74) and c:IsLevelAbove(0)
 end
 function c21767650.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c21767650.filter,tp,LOCATION_MZONE,0,1,nil) end

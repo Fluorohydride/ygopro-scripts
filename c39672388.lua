@@ -12,7 +12,7 @@ function c39672388.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c39672388.filter(c)
-	return c:IsFaceup() and not c:IsType(TYPE_XYZ)
+	return c:IsFaceup() and c:IsLevelAbove(0)
 end
 function c39672388.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c39672388.filter(chkc) end

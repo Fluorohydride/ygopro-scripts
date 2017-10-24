@@ -54,7 +54,7 @@ function c4022819.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c4022819.lvfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
 function c4022819.lvfilter2(c)
-	return c:IsFaceup() and c:IsSetCard(0x69) and not c:IsType(TYPE_XYZ)
+	return c:IsFaceup() and c:IsSetCard(0x69) and c:IsLevelAbove(0)
 end
 function c4022819.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

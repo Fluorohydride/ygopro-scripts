@@ -15,7 +15,7 @@ function c30494314.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_GRAVE) and re:GetHandler():IsRace(RACE_ZOMBIE)
 end
 function c30494314.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_ZOMBIE) and not c:IsType(TYPE_XYZ)
+	return c:IsFaceup() and c:IsRace(RACE_ZOMBIE) and c:IsLevelAbove(0)
 end
 function c30494314.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c30494314.filter(chkc) end
