@@ -20,7 +20,7 @@ function c24550676.initial_effect(c)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-	e2:SetValue(c24550676.tgvalue)
+	e2:SetValue(aux.indoval)
 	c:RegisterEffect(e2)
 	--Double attack
 	local e3=Effect.CreateEffect(c)
@@ -39,9 +39,6 @@ function c24550676.initial_effect(c)
 	e4:SetTarget(c24550676.target)
 	e4:SetOperation(c24550676.operation)
 	c:RegisterEffect(e4)
-end
-function c24550676.tgvalue(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end
 function c24550676.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker()==e:GetHandler() and Duel.GetAttackTarget()

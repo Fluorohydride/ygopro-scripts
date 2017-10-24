@@ -20,7 +20,7 @@ function c27784944.initial_effect(c)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-	e3:SetValue(c27784944.tgval)
+	e3:SetValue(aux.indoval)
 	c:RegisterEffect(e3)
 	--special summon
 	local e4=Effect.CreateEffect(c)
@@ -58,9 +58,6 @@ function c27784944.tfop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c27784944.immtg(e,c)
 	return c:IsSetCard(0x109) and c:IsType(TYPE_SPELL+TYPE_TRAP)
-end
-function c27784944.tgval(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end
 function c27784944.spreg(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return end

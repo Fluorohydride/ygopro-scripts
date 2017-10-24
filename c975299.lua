@@ -26,7 +26,7 @@ function c975299.initial_effect(c)
 	e4:SetRange(LOCATION_FZONE)
 	e4:SetTargetRange(LOCATION_MZONE,0)
 	e4:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x15))
-	e4:SetValue(c975299.indval)
+	e4:SetValue(aux.indoval)
 	c:RegisterEffect(e4)
 	--cannot be target
 	local e5=Effect.CreateEffect(c)
@@ -75,9 +75,6 @@ function c975299.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,sg)
 	end
-end
-function c975299.indval(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end
 function c975299.spfilter(c,e,tp)
 	return c:IsSetCard(0x15) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

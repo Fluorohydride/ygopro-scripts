@@ -28,7 +28,7 @@ function c31178212.initial_effect(c)
 	e4:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e4:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e4:SetRange(LOCATION_MZONE)
-	e4:SetValue(c31178212.indval)
+	e4:SetValue(aux.indoval)
 	c:RegisterEffect(e4)
 end
 function c31178212.filter(c)
@@ -50,7 +50,4 @@ function c31178212.thop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 	end
-end
-function c31178212.indval(e,re,tp)
-	return tp~=e:GetHandlerPlayer()
 end

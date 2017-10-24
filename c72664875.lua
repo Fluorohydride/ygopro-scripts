@@ -20,7 +20,7 @@ function c72664875.initial_effect(c)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-	e2:SetValue(c72664875.tgvalue)
+	e2:SetValue(aux.indoval)
 	c:RegisterEffect(e2)
 	--Halve LP
 	local e3=Effect.CreateEffect(c)
@@ -47,9 +47,6 @@ function c72664875.initial_effect(c)
 	e5:SetTarget(c72664875.damtg)
 	e5:SetOperation(c72664875.damop)
 	c:RegisterEffect(e5)
-end
-function c72664875.tgvalue(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end
 function c72664875.hvop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SetLP(1-tp,math.ceil(Duel.GetLP(1-tp)/2))

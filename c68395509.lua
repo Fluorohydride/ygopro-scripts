@@ -29,7 +29,7 @@ function c68395509.initial_effect(c)
 	e5:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e5:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e5:SetRange(LOCATION_MZONE)
-	e5:SetValue(c68395509.indval)
+	e5:SetValue(aux.indoval)
 	c:RegisterEffect(e5)
 end
 function c68395509.thfilter(c)
@@ -46,7 +46,4 @@ function c68395509.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end
-end
-function c68395509.indval(e,re,tp)
-	return tp~=e:GetHandlerPlayer()
 end

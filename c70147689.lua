@@ -12,7 +12,7 @@ function c70147689.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_MZONE,0)
 	e2:SetTarget(c70147689.target)
-	e2:SetValue(c70147689.indval)
+	e2:SetValue(aux.indoval)
 	c:RegisterEffect(e2)
 	--cannot be target
 	local e3=Effect.CreateEffect(c)
@@ -45,9 +45,6 @@ function c70147689.initial_effect(c)
 end
 function c70147689.target(e,c)
 	return c:IsSetCard(0x7) and c:IsStatus(STATUS_SUMMON_TURN+STATUS_SPSUMMON_TURN)
-end
-function c70147689.indval(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end
 function c70147689.chainop(e,tp,eg,ep,ev,re,r,rp)
 	if re:GetHandler():IsSetCard(0x7) then

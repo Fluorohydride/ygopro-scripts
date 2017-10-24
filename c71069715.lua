@@ -12,7 +12,7 @@ function c71069715.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_ONFIELD,0)
 	e2:SetTarget(c71069715.indtg)
-	e2:SetValue(c71069715.indval)
+	e2:SetValue(aux.indoval)
 	c:RegisterEffect(e2)
 	--to deck
 	local e3=Effect.CreateEffect(c)
@@ -29,9 +29,6 @@ function c71069715.initial_effect(c)
 end
 function c71069715.indtg(e,c)
 	return c:IsSetCard(0xae)
-end
-function c71069715.indval(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end
 function c71069715.tdfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xaf) and c:IsAbleToDeck()

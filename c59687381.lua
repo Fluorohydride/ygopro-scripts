@@ -17,14 +17,15 @@ function c59687381.initial_effect(c)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-	e2:SetValue(c59687381.tgvalue)
+	e2:SetValue(aux.indoval)
 	c:RegisterEffect(e2)
 	local e3=e1:Clone()
 	e3:SetTargetRange(0,LOCATION_SZONE)
-	e3:SetValue(c59687381.tgoval)
+	e3:SetValue(aux.tgsval)
 	c:RegisterEffect(e3)
 	local e4=e3:Clone()
 	e4:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
+	e4:SetValue(aux.indsval)
 	c:RegisterEffect(e4)
 end
 function c59687381.tgfilter(c,tp)
@@ -32,10 +33,4 @@ function c59687381.tgfilter(c,tp)
 end
 function c59687381.tgtg(e,c)
 	return c:GetSequence()<5 and c:GetColumnGroup():FilterCount(c59687381.tgfilter,nil,c:GetControler())>0
-end
-function c59687381.tgvalue(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
-end
-function c59687381.tgoval(e,re,rp)
-	return rp~=1-e:GetHandlerPlayer()
 end

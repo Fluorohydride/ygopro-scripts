@@ -27,12 +27,13 @@ function c94982447.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
 	e3:SetTarget(c94982447.tgtg)
-	e3:SetValue(c94982447.indval)
+	e3:SetValue(aux.indoval)
 	c:RegisterEffect(e3)
 	--indes
 	local e4=e3:Clone()
 	e4:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
 	e4:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+	e4:SetValue(aux.tgoval)
 	c:RegisterEffect(e4)
 end
 function c94982447.otfilter(c)
@@ -73,7 +74,4 @@ function c94982447.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c94982447.tgtg(e,c)
 	return c:IsSetCard(0xf9) and c~=e:GetHandler()
-end
-function c94982447.indval(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end

@@ -16,7 +16,7 @@ function c97165977.initial_effect(c)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetValue(c97165977.tgvalue)
+	e1:SetValue(aux.indoval)
 	c:RegisterEffect(e1)
 	--Multiple attacks
 	local e3=Effect.CreateEffect(c)
@@ -39,9 +39,6 @@ function c97165977.initial_effect(c)
 end
 function c97165977.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA) or bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
-end
-function c97165977.tgvalue(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end
 function c97165977.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsAbleToEnterBP()

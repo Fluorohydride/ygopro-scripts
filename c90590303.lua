@@ -24,7 +24,7 @@ function c90590303.initial_effect(c)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
-	e3:SetValue(c90590303.indval)
+	e3:SetValue(aux.indoval)
 	c:RegisterEffect(e3)
 	--pos
 	local e4=Effect.CreateEffect(c)
@@ -58,9 +58,6 @@ function c90590303.mtop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c90590303.tgcon(e)
 	return e:GetHandler():IsAttackPos()
-end
-function c90590303.indval(e,re,tp)
-	return tp~=e:GetHandlerPlayer()
 end
 function c90590303.poscon(e)
 	return e:GetHandler():IsDefensePos()

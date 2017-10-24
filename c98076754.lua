@@ -26,7 +26,7 @@ function c98076754.initial_effect(c)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetTargetRange(LOCATION_MZONE,0)
 	e3:SetCondition(c98076754.effcon)
-	e3:SetValue(c98076754.indval)
+	e3:SetValue(aux.indoval)
 	e3:SetLabel(5)
 	c:RegisterEffect(e3)
 	--cannot be target
@@ -63,9 +63,6 @@ function c98076754.effcon(e)
 end
 function c98076754.atkval(e,c)
 	return Duel.GetMatchingGroupCount(Card.IsFaceup,0,LOCATION_EXTRA,LOCATION_EXTRA,nil)*100
-end
-function c98076754.indval(e,re,rp)
-	return rp~=e:GetHandlerPlayer()
 end
 function c98076754.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetMatchingGroup(c98076754.cfilter,tp,LOCATION_EXTRA,0,nil):GetClassCount(Card.GetCode)==10
