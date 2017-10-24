@@ -1,7 +1,7 @@
 --スカーレッド・ノヴァ・ドラゴン
 function c97489701.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroMixProcedure(c,aux.Tuner(nil),aux.Tuner(nil),nil,aux.FilterBoolFunction(Card.IsCode,44508094),1,1)
+	aux.AddSynchroMixProcedure(c,aux.Tuner(nil),aux.Tuner(nil),nil,aux.FilterBoolFunction(Card.IsCode,70902743),1,1)
 	c:EnableReviveLimit()
 	--atk
 	local e2=Effect.CreateEffect(c)
