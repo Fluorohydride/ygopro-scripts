@@ -27,7 +27,7 @@ function c33184167.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		race=bit.bor(race,tc:GetRace())
 		tc=g:GetNext()
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,0)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RACE)
 	local arc=Duel.AnnounceRace(tp,1,race)
 	e:SetLabel(arc)
 	local dg=g:Filter(Card.IsRace,nil,arc)

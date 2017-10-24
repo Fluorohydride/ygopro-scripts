@@ -18,7 +18,7 @@ function c98126725.atcon(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c98126725.attg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.Hint(HINT_SELECTMSG,tp,0)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RACE)
 	local ac=Duel.AnnounceRace(tp,1,RACE_ALL)
 	e:SetLabel(ac)
 end

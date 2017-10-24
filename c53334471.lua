@@ -77,7 +77,7 @@ function c53334471.adjustop(e,tp,eg,ep,ev,re,r,rp)
 		local att=c53334471.getattribute(g1)
 		if bit.band(att,att-1)~=0 then
 			if c53334471[tp]==0 or bit.band(c53334471[tp],att)==0 then
-				Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(53334471,0))
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 				att=Duel.AnnounceAttribute(tp,1,att)
 			else att=c53334471[tp] end
 		end
@@ -89,7 +89,7 @@ function c53334471.adjustop(e,tp,eg,ep,ev,re,r,rp)
 		local att=c53334471.getattribute(g2)
 		if bit.band(att,att-1)~=0 then
 			if c53334471[1-tp]==0 or bit.band(c53334471[1-tp],att)==0 then
-				Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(53334471,0))
+				Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATTRIBUTE)
 				att=Duel.AnnounceAttribute(1-tp,1,att)
 			else att=c53334471[1-tp] end
 		end

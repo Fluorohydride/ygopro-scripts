@@ -30,6 +30,7 @@ function c49600724.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		att=bit.bor(att,tc:GetAttribute())
 		tc=rg:GetNext()
 	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 	local ac=Duel.AnnounceAttribute(tp,1,att)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local sg=rg:FilterSelect(tp,Card.IsAttribute,2,2,nil,ac)
