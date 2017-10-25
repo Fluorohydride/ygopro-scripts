@@ -52,7 +52,7 @@ function c71650854.condition(e,tp,eg,ep,ev,re,r,rp)
 	return (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 		and not Duel.CheckPhaseActivity()
 end
-function c71650854.indcon(e,tp,eg,ep,ev,re,r,rp)
+function c71650854.indcon(e)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1
 end
 function c71650854.setlimit(e,c,tp)

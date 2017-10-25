@@ -18,13 +18,13 @@ function c2266498.cfilter(c,e,tp,m,ft)
 	local sg=Group.CreateGroup()
 	return m:IsExists(c2266498.spselect,1,nil,c,0,ft,m,sg)
 end
-function c2266498.spgoal(c,mc,ct,sg)
+function c2266498.spgoal(mc,ct,sg)
 	return sg:CheckWithSumEqual(Card.GetRitualLevel,mc:GetLevel(),ct,ct,mc) and sg:GetClassCount(Card.GetCode)==ct
 end
 function c2266498.spselect(c,mc,ct,ft,m,sg)
 	sg:AddCard(c)
 	ct=ct+1
-	local res=(ft>=ct and c2266498.spgoal(c,mc,ct,sg)) or m:IsExists(c2266498.spselect,1,sg,mc,ct,ft,m,sg)
+	local res=(ft>=ct and c2266498.spgoal(mc,ct,sg)) or m:IsExists(c2266498.spselect,1,sg,mc,ct,ft,m,sg)
 	sg:RemoveCard(c)
 	return res
 end
@@ -60,7 +60,7 @@ function c2266498.activate(e,tp,eg,ep,ev,re,r,rp)
 			local cg=mg:Filter(c2266498.spselect,sg,tc,i,ft,mg,sg)
 			if cg:GetCount()==0 then break end
 			local min=1
-			if c2266498.spgoal(c,tc,ct,sg) then
+			if c2266498.spgoal(tc,i,sg) then
 				if not Duel.SelectYesNo(tp,210) then break end
 				min=0
 			end
