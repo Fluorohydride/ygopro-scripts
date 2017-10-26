@@ -14,7 +14,7 @@ function c50696588.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50696588.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(1-tp,LOCATION_MZONE,PLAYER_NONE,0)>0 end
-	local flag=Duel.SelectDisableField(1-tp,1,LOCATION_MZONE,0,bit.bnot(bit.rshift(Duel.SelectDisableField(tp,1,0,LOCATION_MZONE,0))))
+	local flag=Duel.SelectDisableField(1-tp,1,LOCATION_MZONE,0,bit.bnot(bit.rshift(Duel.SelectDisableField(tp,1,0,LOCATION_MZONE,0),16)))
 	e:SetLabel(flag)
 end
 function c50696588.activate(e,tp,eg,ep,ev,re,r,rp)
