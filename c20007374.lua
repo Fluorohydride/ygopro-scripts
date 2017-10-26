@@ -6,6 +6,7 @@ function c20007374.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCondition(c20007374.condition)
+	e1:SetCost(c20007374.cost)
 	e1:SetTarget(c20007374.target)
 	e1:SetOperation(c20007374.activate)
 	c:RegisterEffect(e1)
@@ -34,6 +35,29 @@ function c20007374.condition(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c20007374.cfilter,tp,LOCATION_GRAVE,0,nil)
 	return g:GetClassCount(Card.GetCode)>=5
 end
+function c20007374.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	local c=e:GetHandler()
+	local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_REMAIN_FIELD)
+	e1:SetProperty(EFFECT_FLAG_OATH)
+	e1:SetReset(RESET_CHAIN)
+	c:RegisterEffect(e1)
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetCode(EVENT_CHAIN_DISABLED)
+	e2:SetOperation(c20007374.tgop)
+	e2:SetLabel(cid)
+	e2:SetReset(RESET_CHAIN)
+	Duel.RegisterEffect(e2,tp)
+end
+function c20007374.tgop(e,tp,eg,ep,ev,re,r,rp)
+	local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
+	if cid~=e:GetLabel() then return end
+	e:GetOwner():CancelToGrave(false)
+end
 function c20007374.filter(c,e,tp)
 	return c:IsCode(44508094) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false)
 end
@@ -49,9 +73,8 @@ function c20007374.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c20007374.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc and Duel.SpecialSummonStep(tc,SUMMON_TYPE_SYNCHRO,tp,tp,false,false,POS_FACEUP) then
-		if c:IsRelateToEffect(e) then
+		if c:IsRelateToEffect(e) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
 			Duel.Equip(tp,c,tc)
-			c:CancelToGrave()
 			--Add Equip limit
 			local e1=Effect.CreateEffect(tc)
 			e1:SetType(EFFECT_TYPE_SINGLE)
@@ -75,6 +98,8 @@ function c20007374.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterEffect(e2,tp)
 		Duel.SpecialSummonComplete()
 		tc:CompleteProcedure()
+	else
+		c:CancelToGrave(false)
 	end
 end
 function c20007374.eqlimit(e,c)

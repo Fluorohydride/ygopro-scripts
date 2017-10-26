@@ -8,12 +8,17 @@ function c37390589.initial_effect(c)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCondition(c37390589.condition)
+	e1:SetCost(c37390589.cost)
 	e1:SetTarget(c37390589.target)
 	e1:SetOperation(c37390589.operation)
 	c:RegisterEffect(e1)
 end
 function c37390589.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
+end
+function c37390589.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	e:SetLabel(9)
 end
 function c37390589.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then
@@ -26,7 +31,8 @@ function c37390589.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b1=Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and Duel.GetTurnPlayer()~=tp
 		and Duel.GetAttacker():IsLocation(LOCATION_MZONE) and Duel.GetAttacker():IsAttackPos()
 		and Duel.GetAttacker():IsCanChangePosition() and Duel.GetAttacker():IsCanBeEffectTarget(e)
-	local b2=Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil)
+	local b2=e:IsHasType(EFFECT_TYPE_ACTIVATE)
+		and Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil)
 	if chk==0 then return b1 or b2 end
 	local opt=0
 	if b1 and b2 then
@@ -36,16 +42,37 @@ function c37390589.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	else
 		opt=Duel.SelectOption(tp,aux.Stringid(37390589,1))+1
 	end
-	e:SetLabel(opt)
 	if opt==0 or opt==2 then
 		Duel.SetTargetCard(Duel.GetAttacker())
 	end
 	if opt==1 or opt==2 then
+		if e:GetCount()==9 then
+			local c=e:GetHandler()
+			local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
+			local e1=Effect.CreateEffect(c)
+			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetCode(EFFECT_REMAIN_FIELD)
+			e1:SetProperty(EFFECT_FLAG_OATH)
+			e1:SetReset(RESET_CHAIN)
+			c:RegisterEffect(e1)
+			local e2=Effect.CreateEffect(c)
+			e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+			e2:SetCode(EVENT_CHAIN_DISABLED)
+			e2:SetOperation(c37390589.tgop)
+			e2:SetLabel(cid)
+			e2:SetReset(RESET_CHAIN)
+			Duel.RegisterEffect(e2,tp)
+		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,0,1,1,nil)
-		e:SetLabelObject(g:GetFirst())
+		Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,0,1,1,nil)
 		Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
 	end
+	e:SetLabel(opt)
+end
+function c37390589.tgop(e,tp,eg,ep,ev,re,r,rp)
+	local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
+	if cid~=e:GetLabel() then return end
+	e:GetOwner():CancelToGrave(false)
 end
 function c37390589.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -57,10 +84,11 @@ function c37390589.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	if opt==1 or opt==2 then
-		local tc=e:GetLabelObject()
-		if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		if not c:IsLocation(LOCATION_SZONE) then return end
+		if not c:IsRelateToEffect(e) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
+		local tc=Duel.GetFirstTarget()
+		if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 			Duel.Equip(tp,c,tc)
-			c:CancelToGrave()
 			--Atkup
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_EQUIP)
@@ -76,6 +104,8 @@ function c37390589.operation(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetValue(c37390589.eqlimit)
 			e2:SetReset(RESET_EVENT+0x1fe0000)
 			c:RegisterEffect(e2)
+		else
+			c:CancelToGrave(false)
 		end
 	end
 end

@@ -7,6 +7,7 @@ function c75987257.initial_effect(c)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCondition(c75987257.condition)
+	e1:SetCost(c75987257.cost)
 	e1:SetTarget(c75987257.target)
 	e1:SetOperation(c75987257.operation)
 	c:RegisterEffect(e1)
@@ -25,6 +26,29 @@ end
 function c75987257.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
+function c75987257.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	local c=e:GetHandler()
+	local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_REMAIN_FIELD)
+	e1:SetProperty(EFFECT_FLAG_OATH)
+	e1:SetReset(RESET_CHAIN)
+	c:RegisterEffect(e1)
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetCode(EVENT_CHAIN_DISABLED)
+	e2:SetOperation(c75987257.tgop)
+	e2:SetLabel(cid)
+	e2:SetReset(RESET_CHAIN)
+	Duel.RegisterEffect(e2,tp)
+end
+function c75987257.tgop(e,tp,eg,ep,ev,re,r,rp)
+	local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
+	if cid~=e:GetLabel() then return end
+	e:GetOwner():CancelToGrave(false)
+end
 function c75987257.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tc=Duel.GetAttacker()
 	if chkc then return chkc==tc end
@@ -38,9 +62,8 @@ function c75987257.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsAttackable() and not tc:IsStatus(STATUS_ATTACK_CANCELED) then
 		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)
-		if c:IsRelateToEffect(e) then
+		if c:IsRelateToEffect(e) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
 			Duel.Equip(tp,c,tc)
-			c:CancelToGrave()
 			--Equip limit
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
@@ -51,6 +74,8 @@ function c75987257.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+0x1fe0000)
 			c:RegisterEffect(e1)
 		end
+	else
+		c:CancelToGrave(false)
 	end
 end
 function c75987257.eqlimit(e,c)

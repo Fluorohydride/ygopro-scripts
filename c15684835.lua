@@ -6,16 +6,41 @@ function c15684835.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e1:SetCost(c15684835.cost)
 	e1:SetTarget(c15684835.target)
 	e1:SetOperation(c15684835.operation)
 	c:RegisterEffect(e1)
+end
+function c15684835.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	local c=e:GetHandler()
+	local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_REMAIN_FIELD)
+	e1:SetProperty(EFFECT_FLAG_OATH)
+	e1:SetReset(RESET_CHAIN)
+	c:RegisterEffect(e1)
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetCode(EVENT_CHAIN_DISABLED)
+	e2:SetOperation(c15684835.tgop)
+	e2:SetLabel(cid)
+	e2:SetReset(RESET_CHAIN)
+	Duel.RegisterEffect(e2,tp)
+end
+function c15684835.tgop(e,tp,eg,ep,ev,re,r,rp)
+	local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
+	if cid~=e:GetLabel() then return end
+	e:GetOwner():CancelToGrave(false)
 end
 function c15684835.filter(c,e,tp)
 	return c:IsFaceup() and c:IsControler(1-tp) and c:IsCanBeEffectTarget(e)
 end
 function c15684835.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c15684835.filter(chkc,e,tp) end
-	if chk==0 then return eg:IsExists(c15684835.filter,1,nil,e,tp) end
+	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+		and eg:IsExists(c15684835.filter,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=eg:FilterSelect(tp,c15684835.filter,1,1,nil,e,tp)
 	Duel.SetTargetCard(g)
@@ -24,13 +49,14 @@ end
 function c15684835.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsLocation(LOCATION_SZONE) then return end
+	if not c:IsRelateToEffect(e) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Equip(tp,c,tc)
-		c:CancelToGrave()
 		--damage
 		local e1=Effect.CreateEffect(c)
 		e1:SetDescription(aux.Stringid(15684835,0))
+		e1:SetCategory(CATEGORY_DAMAGE)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
@@ -57,6 +83,8 @@ function c15684835.operation(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetLabelObject(tc)
 		e3:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e3)
+	else
+		c:CancelToGrave(false)
 	end
 end
 function c15684835.eqlimit(e,c)
