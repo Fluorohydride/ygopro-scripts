@@ -14,12 +14,12 @@ function c50696588.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50696588.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(1-tp,LOCATION_MZONE,PLAYER_NONE,0)>0 end
-	local flag=Duel.SelectDisableField(tp,1,0,LOCATION_MZONE,0)
+	local flag=Duel.SelectDisableField(1-tp,1,LOCATION_MZONE,0,bit.bnot(bit.lshift(Duel.SelectDisableField(tp,1,0,LOCATION_MZONE,0))))
 	e:SetLabel(flag)
 end
 function c50696588.activate(e,tp,eg,ep,ev,re,r,rp)
 	local flag=e:GetLabel()
-	local seq=math.log(bit.rshift(flag,16),2)
+	local seq=math.log(flag,2)
 	if not Duel.CheckLocation(1-tp,LOCATION_MZONE,seq) then return end
 	Duel.RegisterFlagEffect(tp,50696588,0,0,0)
 	local e1=Effect.CreateEffect(e:GetHandler())
