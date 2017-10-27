@@ -1597,7 +1597,7 @@ end
 function Auxiliary.LinkOperation(f,minc,maxc,gf)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c)
 				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f,c)
-				local sg=Auxiliary.SelectGroup(tp,533,mg,Auxiliary.LCheckGoal,nil,minc,maxc,tp,c,gf)
+				local sg=Auxiliary.SelectGroup(tp,HINTMSG_LMATERIAL,mg,Auxiliary.LCheckGoal,nil,minc,maxc,tp,c,gf)
 				c:SetMaterial(sg)
 				Duel.SendtoGrave(sg,REASON_MATERIAL+REASON_LINK)
 			end
