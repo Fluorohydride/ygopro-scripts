@@ -191,6 +191,14 @@ function Auxiliary.NonTuner(f,a,b,c)
 				return target:IsNotTuner() and (not f or f(target,a,b,c))
 			end
 end
+function cm.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
+	sg:AddCard(c)
+	local ct=sg:GetCount()
+	local res=(ct>=min and f(sg,table.unpack(ext_params)))
+		or (ct<max and g:IsExists(cm.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params))
+	sg:RemoveCard(c)
+	return res
+end
 function cm.CheckGroup(g,f,cg,min,max,...)
 	local min=min or 1
 	local max=max or g:GetCount()
