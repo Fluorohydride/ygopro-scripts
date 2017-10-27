@@ -1622,17 +1622,10 @@ function Auxiliary.GetLinkCount(c)
 		return 1+0x10000*c:GetLink()
 	else return 1 end
 end
-function Auxiliary.LCheckRecursive(c,tp,sg,mg,lc,ct,minc,maxc,gf)
-	sg:AddCard(c)
-	ct=ct+1
-	local res=Auxiliary.LCheckGoal(tp,sg,lc,minc,ct,gf)
-		or (ct<maxc and mg:IsExists(Auxiliary.LCheckRecursive,1,sg,tp,sg,mg,lc,ct,minc,maxc,gf))
-	sg:RemoveCard(c)
-	ct=ct-1
-	return res
-end
-function Auxiliary.LCheckGoal(tp,sg,lc,minc,ct,gf)
-	return ct>=minc and sg:CheckWithSumEqual(Auxiliary.GetLinkCount,lc:GetLink(),ct,ct) and Duel.GetLocationCountFromEx(tp,tp,sg,lc)>0 and (not gf or gf(sg))
+
+function Auxiliary.LCheckGoal(sg,tp,lc,gf)
+	local ct=sg:GetCount()
+	return sg:CheckWithSumEqual(Auxiliary.GetLinkCount,lc:GetLink(),ct,ct) and Duel.GetLocationCountFromEx(tp,tp,sg,lc)>0 and (not gf or gf(sg))
 end
 function Auxiliary.LinkCondition(f,minc,maxc,gf)
 	return	function(e,c)
@@ -1640,27 +1633,13 @@ function Auxiliary.LinkCondition(f,minc,maxc,gf)
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp=c:GetControler()
 				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f,c)
-				local sg=Group.CreateGroup()
-				return mg:IsExists(Auxiliary.LCheckRecursive,1,nil,tp,sg,mg,c,0,minc,maxc,gf)
+				return Auxiliary.CheckGroup(mg,Auxiliary.LCheckGoal,nil,minc,maxc,tp,c,gf)
 			end
 end
 function Auxiliary.LinkOperation(f,minc,maxc,gf)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c)
 				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f,c)
-				local sg=Group.CreateGroup()
-				for i=0,maxc-1 do
-					local cg=mg:Filter(Auxiliary.LCheckRecursive,sg,tp,sg,mg,c,i,minc,maxc,gf)
-					if cg:GetCount()==0 then break end
-					local minct=1
-					if Auxiliary.LCheckGoal(tp,sg,c,minc,i,gf) then
-						if not Duel.SelectYesNo(tp,210) then break end
-						minct=0
-					end
-					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LMATERIAL)
-					local g=cg:Select(tp,minct,1,nil)
-					if g:GetCount()==0 then break end
-					sg:Merge(g)
-				end
+				local sg=Auxiliary.SelectGroup(tp,533,mg,Auxiliary.LCheckGoal,nil,minc,maxc,tp,c,gf)
 				c:SetMaterial(sg)
 				Duel.SendtoGrave(sg,REASON_MATERIAL+REASON_LINK)
 			end
