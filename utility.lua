@@ -732,9 +732,9 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
 				end
 				local mg=nil
 				if og then
-					mg=og
+					mg=og:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
 				else
-					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
+					mg=Duel.GetMatchingGroup(Auxiliary.XyzLevelFreeFilter,tp,LOCATION_MZONE,0,nil,c,f)
 				end
 				local g=Auxiliary.SelectGroup(tp,HINTMSG_XMATERIAL,mg,Auxiliary.XyzLevelFreeGoal,nil,minc,maxc,tp,c,gf)
 				if g:GetCount()>0 then
