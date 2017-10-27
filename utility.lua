@@ -191,15 +191,15 @@ function Auxiliary.NonTuner(f,a,b,c)
 				return target:IsNotTuner() and (not f or f(target,a,b,c))
 			end
 end
-function cm.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
+function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 	sg:AddCard(c)
 	local ct=sg:GetCount()
 	local res=(ct>=min and f(sg,table.unpack(ext_params)))
-		or (ct<max and g:IsExists(cm.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params))
+		or (ct<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params))
 	sg:RemoveCard(c)
 	return res
 end
-function cm.CheckGroup(g,f,cg,min,max,...)
+function Auxiliary.CheckGroup(g,f,cg,min,max,...)
 	local min=min or 1
 	local max=max or g:GetCount()
 	if min>max then return false end
@@ -208,9 +208,9 @@ function cm.CheckGroup(g,f,cg,min,max,...)
 	if cg then sg:Merge(cg) end
 	local ct=sg:GetCount()
 	if ct>=min and ct<max and f(sg,...) then return true end
-	return g:IsExists(cm.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params)
+	return g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params)
 end
-function cm.SelectGroup(tp,desc,g,f,cg,min,max,...)
+function Auxiliary.SelectGroup(tp,desc,g,f,cg,min,max,...)
 	local min=min or 1
 	local max=max or g:GetCount()
 	local ext_params={...}
@@ -218,7 +218,7 @@ function cm.SelectGroup(tp,desc,g,f,cg,min,max,...)
 	local cg=cg or Group.CreateGroup()
 	sg:Merge(cg)
 	local ct=sg:GetCount()
-	local ag=g:Filter(cm.CheckGroupRecursive,sg,sg,g,f,min,max,ext_params)	
+	local ag=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,f,min,max,ext_params)	
 	while ct<max and ag:GetCount()>0 do
 		local finish=(ct>=min and f(sg,...))
 		local seg=sg:Clone()
@@ -234,7 +234,7 @@ function cm.SelectGroup(tp,desc,g,f,cg,min,max,...)
 			sg:AddCard(tc)
 		end
 		ct=sg:GetCount()
-		ag=g:Filter(cm.CheckGroupRecursive,sg,sg,g,f,min,max,ext_params)
+		ag=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,f,min,max,ext_params)
 	end
 	return sg
 end
