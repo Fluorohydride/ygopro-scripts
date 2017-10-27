@@ -191,6 +191,45 @@ function Auxiliary.NonTuner(f,a,b,c)
 				return target:IsNotTuner() and (not f or f(target,a,b,c))
 			end
 end
+function cm.CheckGroup(g,f,cg,min,max,...)
+	local min=min or 1
+	local max=max or g:GetCount()
+	if min>max then return false end
+	local ext_params={...}
+	local sg=Group.CreateGroup()
+	if cg then sg:Merge(cg) end
+	local ct=sg:GetCount()
+	if ct>=min and ct<max and f(sg,...) then return true end
+	return g:IsExists(cm.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params)
+end
+function cm.SelectGroup(tp,desc,g,f,cg,min,max,...)
+	local min=min or 1
+	local max=max or g:GetCount()
+	local ext_params={...}
+	local sg=Group.CreateGroup()
+	local cg=cg or Group.CreateGroup()
+	sg:Merge(cg)
+	local ct=sg:GetCount()
+	local ag=g:Filter(cm.CheckGroupRecursive,sg,sg,g,f,min,max,ext_params)	
+	while ct<max and ag:GetCount()>0 do
+		local finish=(ct>=min and f(sg,...))
+		local seg=sg:Clone()
+		local dmin=min-cg:GetCount()
+		local dmax=math.min(max-cg:GetCount(),g:GetCount())
+		seg:Sub(cg)
+		Duel.Hint(HINT_SELECTMSG,tp,desc)
+		local tc=ag:SelectUnselect(seg,tp,finish,finish,dmin,dmax)
+		if not tc then break end
+		if sg:IsContains(tc) then
+			sg:RemoveCard(tc)
+		else
+			sg:AddCard(tc)
+		end
+		ct=sg:GetCount()
+		ag=g:Filter(cm.CheckGroupRecursive,sg,sg,g,f,min,max,ext_params)
+	end
+	return sg
+end
 --Synchro monster, 1 tuner + min to max monsters
 function Auxiliary.AddSynchroProcedure(c,f1,f2,minc,maxc)
 	if maxc==nil then maxc=99 end
