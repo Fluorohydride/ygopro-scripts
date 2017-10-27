@@ -215,24 +215,22 @@ function Auxiliary.SelectGroup(tp,desc,g,f,cg,min,max,...)
 	local max=max or g:GetCount()
 	local ext_params={...}
 	local sg=Group.CreateGroup()
-	local cg=cg or Group.CreateGroup()
-	sg:Merge(cg)
+	if cg then
+		sg:Merge(cg)
+	end
 	local ct=sg:GetCount()
 	local ag=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,f,min,max,ext_params)	
 	while ct<max and ag:GetCount()>0 do
+		local minc=1
 		local finish=(ct>=min and f(sg,...))
-		local seg=sg:Clone()
-		local dmin=min-cg:GetCount()
-		local dmax=math.min(max-cg:GetCount(),g:GetCount())
-		seg:Sub(cg)
-		Duel.Hint(HINT_SELECTMSG,tp,desc)
-		local tc=ag:SelectUnselect(seg,tp,finish,finish,dmin,dmax)
-		if not tc then break end
-		if sg:IsContains(tc) then
-			sg:RemoveCard(tc)
-		else
-			sg:AddCard(tc)
+		if finish then
+			minc=0
+			if not Duel.SelectYesNo(tp,210) then break end
 		end
+		Duel.Hint(HINT_SELECTMSG,tp,desc)
+		local tg=ag:Select(tp,minc,1,nil)
+		if tg:GetCount()==0 then break end
+		sg:Merge(tg)
 		ct=sg:GetCount()
 		ag=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,f,min,max,ext_params)
 	end
