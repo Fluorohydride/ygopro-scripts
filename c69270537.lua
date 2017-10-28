@@ -30,7 +30,7 @@ end
 function c69270537.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)~=0
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1 and tc:IsLocation(LOCATION_EXTRA) then
+		and tc:IsLocation(LOCATION_EXTRA) then
 		aux.FCheckAdditional=c69270537.fcheck
 		local sg=Duel.GetMatchingGroup(c69270537.spfilter,tp,LOCATION_DECK,0,nil,e,tp,tc)
 		if tc:CheckFusionMaterial(sg) and Duel.SelectYesNo(tp,aux.Stringid(69270537,0)) then
