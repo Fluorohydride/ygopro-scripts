@@ -38,6 +38,7 @@ function c80764541.desop(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.SelectYesNo(1-tp,aux.Stringid(80764541,1)) then
 		Duel.PayLPCost(1-tp,1000)
 		Duel.NegateEffect(0)
+		return
 	end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then

@@ -26,6 +26,7 @@ function c69402394.activate(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.SelectYesNo(1-tp,aux.Stringid(69402394,0)) then
 		Duel.DiscardHand(1-tp,aux.TRUE,1,1,REASON_EFFECT+REASON_DISCARD,nil)
 		Duel.NegateEffect(0)
+		return
 	end
 	if Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)<2 or Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)<2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
