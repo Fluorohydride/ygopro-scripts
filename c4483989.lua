@@ -1,4 +1,4 @@
---モンスターBOX
+--反撃準備
 function c4483989.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
