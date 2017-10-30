@@ -427,8 +427,8 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat)
 		if le then
 			local lct=g:GetCount()-1
 			if lloc then
-				local lg=g:Filter(Card.IsLocation,c,lloc)
-				if lg:GetCount()~=lct then return false end
+				local llct=g:FilterCount(Card.IsLocation,c,lloc)
+				if llct~=lct then return false end
 			end
 			if lf and g:IsExists(Auxiliary.SynLimitFilter,1,c,lf,le) then return false end
 			if (lmin and lct<lmin) or (lmax and lct>lmax) then return false end
@@ -437,7 +437,7 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat)
 	return true
 end
 function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,op)
-	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c),xyzc)>0 and (not op or op(e,tp,0,c))
+	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0 and (not op or op(e,tp,0,c))
 end
 --Xyz monster, lv k*n
 function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,desc,maxct,op)

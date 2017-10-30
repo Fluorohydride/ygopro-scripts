@@ -9,23 +9,23 @@ function c26285788.initial_effect(c)
 	e1:SetTarget(c26285788.target)
 	e1:SetOperation(c26285788.activate)
 	c:RegisterEffect(e1)
-	if c26285788.global_effect==nil then
-		c26285788.global_effect=true
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-		e1:SetCode(EVENT_RELEASE)
-		e1:SetOperation(c26285788.addcount)
-		Duel.RegisterEffect(e1,0)
+	if not c26285788.global_check then
+		c26285788.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+		ge1:SetCode(EVENT_RELEASE)
+		ge1:SetOperation(c26285788.addcount)
+		Duel.RegisterEffect(ge1,0)
 	end
 end
 function c26285788.addcount(e,tp,eg,ep,ev,re,r,rp)
-	local c=eg:GetFirst()
-	while c~=nil do
-		if not c:IsType(TYPE_TOKEN) then
-			local p=c:GetReasonPlayer()
+	local tc=eg:GetFirst()
+	while tc do
+		if tc:IsType(TYPE_MONSTER) and not tc:IsType(TYPE_TOKEN) then
+			local p=tc:GetReasonPlayer()
 			Duel.RegisterFlagEffect(p,26285789,RESET_PHASE+PHASE_END,0,1)
 		end
-		c=eg:GetNext()
+		tc=eg:GetNext()
 	end
 end
 function c26285788.target(e,tp,eg,ep,ev,re,r,rp,chk)

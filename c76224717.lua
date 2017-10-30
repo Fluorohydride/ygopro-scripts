@@ -40,7 +40,7 @@ end
 function c76224717.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	if tc:IsSummonType(SUMMON_TYPE_ADVANCE) then
-		c76224717[ep]=c76224717[ep]+tc:GetMaterialCount()
+		c76224717[ep]=c76224717[ep]+tc:GetMaterial():FilterCount(Card.IsType,nil,TYPE_MONSTER)
 	end
 end
 function c76224717.clear(e,tp,eg,ep,ev,re,r,rp)

@@ -29,7 +29,7 @@ function c43839002.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c43839002.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_TEMPORARY)>0 then
+	if tc:IsRelateToEffect(e) and Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)>0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
@@ -39,6 +39,7 @@ function c43839002.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c43839002.retcon)
 		e1:SetOperation(c43839002.retop)
 		Duel.RegisterEffect(e1,tp)
+		if tc:IsFacedown() then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,c43839002.thfilter,tp,LOCATION_DECK,0,1,1,nil,tc)
 		if g:GetCount()>0 then
