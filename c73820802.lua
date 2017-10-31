@@ -38,7 +38,7 @@ function c73820802.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 then return end
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then return end
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_CARDTYPE)
-	local op=Duel.SelectOption(1-tp,70,71,72)
+	local op=Duel.AnnounceType(1-tp)
 	Duel.ConfirmDecktop(tp,1)
 	local g=Duel.GetDecktopGroup(tp,1)
 	local tc=g:GetFirst()

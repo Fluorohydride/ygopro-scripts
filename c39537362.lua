@@ -23,7 +23,7 @@ end
 function c39537362.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer()
-		and Duel.SelectYesNo(tp,aux.Stringid(39537362,1)) then 
+		and Duel.SelectYesNo(tp,aux.Stringid(39537362,1)) then
 		e:SetLabel(1)
 		Duel.SetTargetCard(Duel.GetAttacker())
 		e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(39537362,2))
@@ -41,8 +41,8 @@ function c39537362.activate(e,tp,eg,ep,ev,re,r,rp)
 		or not e:GetHandler():IsRelateToEffect(e) or not Duel.GetAttacker():IsRelateToEffect(e)	then return end
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0):RandomSelect(1-tp,1,nil)
 	local tc=g:GetFirst()
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
-	local op=Duel.SelectOption(1-tp,70,71,72)
+	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_CARDTYPE)
+	local op=Duel.AnnounceType(1-tp)
 	Duel.ConfirmCards(1-tp,tc)
 	Duel.ShuffleHand(tp)
 	if (op~=0 and tc:IsType(TYPE_MONSTER)) or (op~=1 and tc:IsType(TYPE_SPELL)) or (op~=2 and tc:IsType(TYPE_TRAP)) then

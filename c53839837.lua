@@ -61,8 +61,8 @@ function c53839837.tgcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c53839837.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(53839837,5))
-	local op=Duel.SelectOption(tp,aux.Stringid(53839837,1),aux.Stringid(53839837,2),aux.Stringid(53839837,3))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
+	local op=Duel.AnnounceType(tp)
 	e:SetLabel(op)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,1-tp,LOCATION_DECK)
 end
