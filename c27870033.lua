@@ -21,7 +21,7 @@ function c27870033.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c27870033.cfilter,1,nil)
 end
 function c27870033.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and e:GetHandler():IsFaceup() end
+	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(500)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,500)

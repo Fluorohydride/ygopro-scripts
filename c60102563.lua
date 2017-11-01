@@ -19,7 +19,7 @@ function c60102563.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c60102563.cfilter,1,nil)
 end
 function c60102563.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and e:GetHandler():IsFaceup() end
+	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
 end
 function c60102563.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

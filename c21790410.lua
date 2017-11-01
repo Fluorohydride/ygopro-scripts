@@ -68,7 +68,7 @@ function c21790410.tgfilter(c)
 	return c:IsSetCard(0x56) and c:IsAbleToHand()
 end
 function c21790410.shtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and e:GetHandler():IsFaceup()
+	if chk==0 then return e:GetHandler():IsRelateToEffect(e)
 		and Duel.IsExistingMatchingCard(c21790410.tgfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

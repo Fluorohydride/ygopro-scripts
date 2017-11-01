@@ -27,7 +27,7 @@ function c95714077.filter(c)
 end
 function c95714077.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsFaceup() and c:IsRelateToEffect(e) and not c:IsStatus(STATUS_CHAINING)
+	if chk==0 then return c:IsRelateToEffect(e) and not c:IsStatus(STATUS_CHAINING)
 		and Duel.IsExistingMatchingCard(c95714077.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

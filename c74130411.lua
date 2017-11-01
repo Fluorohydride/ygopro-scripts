@@ -23,7 +23,7 @@ function c74130411.filter(c)
 	return c:IsAttackBelow(1000) and c:IsRace(RACE_MACHINE) and c:IsAbleToHand()
 end
 function c74130411.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and e:GetHandler():IsFaceup()
+	if chk==0 then return e:GetHandler():IsRelateToEffect(e)
 		and Duel.IsExistingMatchingCard(c74130411.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
