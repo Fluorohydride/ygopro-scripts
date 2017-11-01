@@ -45,7 +45,7 @@ function c25407643.condition(e,tp,eg,ep,ev,re,r,rp)
 		and eg:IsExists(c25407643.cfilter2,1,nil,1-tp)
 end
 function c25407643.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return true end
 	Duel.SetTargetCard(eg)
 end
 function c25407643.operation(e,tp,eg,ep,ev,re,r,rp)

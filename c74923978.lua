@@ -25,7 +25,7 @@ function c74923978.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c74923978.cfilter,1,nil,tp)
 end
 function c74923978.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return true end
 	local ct=eg:FilterCount(c74923978.cfilter,nil,tp)
 	e:SetLabel(ct)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,ct)

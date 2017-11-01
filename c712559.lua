@@ -45,7 +45,7 @@ function c712559.spfilter(c,e,tp,lv)
 	return c:IsLevelBelow(lv) and c:IsSetCard(0x4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c712559.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and not e:GetHandler():IsStatus(STATUS_CHAINING)
+	if chk==0 then return not e:GetHandler():IsStatus(STATUS_CHAINING)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c712559.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,e:GetLabel()) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)

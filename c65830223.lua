@@ -24,7 +24,7 @@ function c65830223.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c65830223.filter,1,nil,tp)
 end
 function c65830223.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return true end
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(300)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,0,1-tp,300)

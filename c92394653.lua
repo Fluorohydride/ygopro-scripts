@@ -36,7 +36,7 @@ function c92394653.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c92394653.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsAbleToHand() end 
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_RTOHAND)
 	local g=Duel.SelectTarget(1-tp,Card.IsAbleToHand,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,g:GetCount(),0,0)

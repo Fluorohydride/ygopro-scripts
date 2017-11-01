@@ -23,7 +23,7 @@ function c59297550.filter(c,e,tp)
 end
 function c59297550.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsRelateToEffect(e) and not c:IsStatus(STATUS_CHAINING)
+	if chk==0 then return not c:IsStatus(STATUS_CHAINING)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c59297550.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)

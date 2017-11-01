@@ -49,7 +49,7 @@ function c55737443.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return tc~=e:GetHandler() and tc:IsAttribute(ATTRIBUTE_EARTH)
 end
 function c55737443.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return true end
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(1000)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,1000)

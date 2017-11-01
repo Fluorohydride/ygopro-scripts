@@ -22,7 +22,7 @@ function c85562745.con(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and bit.band(r,REASON_BATTLE)==0 and re and re:GetHandler():GetCode()~=85562745
 end
 function c85562745.tg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return true end
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(300)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,300)

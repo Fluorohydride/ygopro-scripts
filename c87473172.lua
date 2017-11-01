@@ -8,7 +8,6 @@ function c87473172.initial_effect(c)
 	e1:SetCode(EVENT_DESTROYED)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCondition(c87473172.atkcon)
-	e1:SetTarget(c87473172.atktg)
 	e1:SetOperation(c87473172.atkop)
 	c:RegisterEffect(e1)
 end
@@ -18,9 +17,6 @@ function c87473172.cfilter(c,tp)
 end
 function c87473172.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c87473172.cfilter,1,nil,tp)
-end
-function c87473172.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
 end
 function c87473172.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

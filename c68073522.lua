@@ -24,7 +24,7 @@ function c68073522.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c68073522.filter,1,nil)
 end
 function c68073522.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return true end
 	local ct=eg:FilterCount(c68073522.filter,nil)
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(ct*500)

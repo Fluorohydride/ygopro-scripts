@@ -103,7 +103,7 @@ function c10000020.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c10000020.atkfilter,1,nil,nil,1-tp)
 end
 function c10000020.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return true end
 	Duel.SetTargetCard(eg)
 end
 function c10000020.atkop(e,tp,eg,ep,ev,re,r,rp)

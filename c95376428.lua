@@ -21,7 +21,7 @@ function c95376428.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(Card.IsPreviousLocation,1,nil,LOCATION_EXTRA)
 end
 function c95376428.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return true end
 end
 function c95376428.filter(c,tp)
 	return c:GetSummonPlayer()==tp

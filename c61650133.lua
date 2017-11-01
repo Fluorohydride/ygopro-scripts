@@ -37,7 +37,7 @@ function c61650133.mtop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c61650133.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return true end
 end
 function c61650133.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
