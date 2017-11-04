@@ -42,7 +42,7 @@ end
 function c38522377.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c38522377.spfilter,tp,LOCATION_MZONE,0,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectTarget(tp,c38522377.spfilter,tp,LOCATION_MZONE,0,1,5,e:GetHandler())
+	local g=Duel.SelectTarget(tp,c38522377.spfilter,tp,LOCATION_MZONE,0,1,7,e:GetHandler())
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,g:GetCount(),0,0)
 end
 function c38522377.atkfilter(c,e)

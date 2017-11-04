@@ -28,7 +28,7 @@ function c77505534.activate(e,tp,eg,ep,ev,re,r,rp)
 		if tg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(77505534,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
-			local sg=tg:Select(tp,1,5,nil)
+			local sg=tg:Select(tp,1,7,nil)
 			Duel.ChangePosition(sg,POS_FACEUP_DEFENSE)
 		end
 	end

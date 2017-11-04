@@ -36,7 +36,7 @@ function c64631466.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e4:SetProperty(EFFECT_FLAG_AVAILABLE_BD)
-	e4:SetCode(EVENT_DAMAGE)
+	e4:SetCode(EVENT_BATTLE_DAMAGE)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCondition(c64631466.damcon)
 	e4:SetOperation(c64631466.damop)
@@ -44,7 +44,6 @@ function c64631466.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c64631466.eqcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
 	local ec=e:GetLabelObject()
 	return ec==nil or ec:GetFlagEffect(64631466)==0
 end
@@ -91,13 +90,13 @@ function c64631466.repval(e,re,r,rp)
 end
 function c64631466.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetLabelObject():GetLabelObject()
-	return ec and ec:GetFlagEffect(64631466)~=0 and ep==tp and bit.band(r,REASON_BATTLE)~=0
+	return ec and ec:GetFlagEffect(64631466)~=0 and ep==tp
 		and (Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler())
 end
 function c64631466.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Damage(1-tp,ev,REASON_EFFECT)
 end
-function c64631466.adcon(e,tp,eg,ep,ev,re,r,rp)
+function c64631466.adcon(e)
 	local ec=e:GetLabelObject():GetLabelObject()
 	return ec and ec:GetFlagEffect(64631466)~=0
 end

@@ -44,26 +44,19 @@ function c58383100.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST+REASON_DISCARD)
 end
-function c58383100.filter(c,ft)
-	return c:IsAbleToGrave() and (ft>0 or c:GetSequence()<5)
+function c58383100.filter(c,tp)
+	return c:IsAbleToGrave() and Duel.GetMZoneCount(tp,c)>0
 end
 function c58383100.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local loc=LOCATION_HAND+LOCATION_ONFIELD
-	if ft==0 then loc=LOCATION_MZONE end
-	if chk==0 then return ft>-1 and Duel.IsExistingMatchingCard(c58383100.filter,tp,loc,0,1,e:GetHandler(),ft) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c58383100.filter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,e:GetHandler(),tp) end
 	local ec=eg:GetFirst()
 	Duel.SetTargetCard(ec)
-	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,loc)
+	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_HAND+LOCATION_ONFIELD)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,ec,1,0,0)
 end
 function c58383100.spop(e,tp,eg,ep,ev,re,r,rp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<0 then return end
-	local loc=LOCATION_HAND+LOCATION_ONFIELD
-	if ft==0 then loc=LOCATION_MZONE end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local tg=Duel.SelectMatchingCard(tp,c58383100.filter,tp,loc,0,1,1,nil,ft)
+	local tg=Duel.SelectMatchingCard(tp,c58383100.filter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,1,nil,tp)
 	local tc=tg:GetFirst()
 	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
 		local ec=Duel.GetFirstTarget()

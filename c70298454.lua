@@ -87,7 +87,7 @@ function c70298454.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c70298454.repval(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE)~=0 or bit.band(r,REASON_EFFECT)~=0
+	return bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0
 end
 function c70298454.eqlimit(e,c)
 	return e:GetHandler():GetEquipTarget()==c
