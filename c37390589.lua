@@ -46,7 +46,7 @@ function c37390589.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.SetTargetCard(Duel.GetAttacker())
 	end
 	if opt==1 or opt==2 then
-		if e:GetCount()==9 then
+		if e:GetLabel()==9 then
 			local c=e:GetHandler()
 			local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
 			local e1=Effect.CreateEffect(c)
