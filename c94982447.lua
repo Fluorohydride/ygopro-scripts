@@ -2,13 +2,12 @@
 function c94982447.initial_effect(c)
 	--summon with s/t
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(94982447,0))
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetCode(EFFECT_SUMMON_PROC)
-	e1:SetCondition(c94982447.otcon)
-	e1:SetOperation(c94982447.otop)
-	e1:SetValue(SUMMON_TYPE_ADVANCE)
+	e1:SetCode(EFFECT_ADD_EXTRA_TRIBUTE)
+	e1:SetTargetRange(LOCATION_SZONE,0)
+	e1:SetTarget(aux.TargetBoolFunction(Card.IsType,TYPE_CONTINUOUS))
+	e1:SetValue(POS_FACEUP_ATTACK)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
@@ -35,21 +34,6 @@ function c94982447.initial_effect(c)
 	e4:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e4:SetValue(aux.tgoval)
 	c:RegisterEffect(e4)
-end
-function c94982447.otfilter(c)
-	return c:IsType(TYPE_CONTINUOUS) and c:IsReleasable()
-end
-function c94982447.otcon(e,c,minc)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	return c:GetLevel()>4 and minc<=1 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c94982447.otfilter,tp,LOCATION_SZONE,0,1,nil)
-end
-function c94982447.otop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=Duel.SelectMatchingCard(tp,c94982447.otfilter,tp,LOCATION_SZONE,0,1,1,nil)
-	c:SetMaterial(sg)
-	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end
 function c94982447.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
