@@ -77,6 +77,7 @@ function c29432356.hspcon(e,c)
 	local rg=Duel.GetReleaseGroup(tp)
 	return (g:GetCount()>0 or rg:GetCount()>0) and g:FilterCount(Card.IsReleasable,nil)==g:GetCount()
 		and g:FilterCount(Card.IsSetCard,nil,0xc4)>=3
+		and Duel.GetLocationCountFromEx(tp,tp,g,c)>0
 end
 function c29432356.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetReleaseGroup(tp)
