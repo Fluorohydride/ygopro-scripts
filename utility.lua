@@ -401,8 +401,9 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat)
 	g:Merge(sg1)
 	if Duel.GetLocationCountFromEx(tp,tp,g,syncard)<=0 then return false end
 	if smat and not g:IsContains(smat) then return false end
-	local pe=Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_SMATERIAL)
-	if pe and not g:IsContains(pe:GetOwner()) then return false end
+	for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_SMATERIAL)}) do
+		if not g:IsContains(pe:GetHandler()) then return false end
+	end
 	if not g:IsExists(Card.IsType,1,nil,TYPE_TUNER) and not syncard:IsHasEffect(80896940) then return false end
 	if not g:CheckWithSumEqual(Card.GetSynchroLevel,syncard:GetLevel(),g:GetCount(),g:GetCount(),syncard)
 		and (not g:IsExists(Card.IsHasEffect,1,nil,89818984)
@@ -671,6 +672,7 @@ function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct)
 					minc=math.max(minc,min)
 					maxc=math.min(maxc,max)
 				end
+				if maxc<minc then return false end
 				local mg=nil
 				if og then
 					mg=og:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
@@ -678,7 +680,15 @@ function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct)
 					mg=Duel.GetMatchingGroup(Auxiliary.XyzLevelFreeFilter,tp,LOCATION_MZONE,0,nil,c,f)
 				end
 				local sg=Group.CreateGroup()
-				return maxc>=minc and mg:IsExists(Auxiliary.XyzLevelFreeCheck,1,sg,tp,c,mg,sg,gf,minc,maxc)
+				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_XMATERIAL)}) do
+					local pc=pe:GetHandler()
+					if not mg:IsContains(pc) then return false end
+					sg:AddCard(pc)
+				end
+				local ct=sg:GetCount()
+				if ct>maxc then return false end
+				return (ct>=minc and Auxiliary.XyzLevelFreeGoal(sg,tp,c,gf))
+					or mg:IsExists(Auxiliary.XyzLevelFreeCheck,1,sg,tp,c,mg,sg,gf,minc,maxc)
 			end
 end
 function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
@@ -699,8 +709,13 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
 				local g=Group.CreateGroup()
-				local ag=mg:Filter(Auxiliary.XyzLevelFreeCheck,g,tp,c,mg,g,gf,minc,maxc)
+				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_XMATERIAL)}) do
+					sg:AddCard(pe:GetHandler())
+				end
 				local ct=g:GetCount()
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+				g:Select(tp,ct,ct,nil)
+				local ag=mg:Filter(Auxiliary.XyzLevelFreeCheck,g,tp,c,mg,g,gf,minc,maxc)
 				while ct<maxc and ag:GetCount()>0 do
 					local minsct=1
 					local finish=(ct>=minc and Auxiliary.XyzLevelFreeGoal(g,tp,c,gf))
@@ -770,8 +785,16 @@ function Auxiliary.XyzLevelFreeCondition2(f,gf,minct,maxct,alterf,desc,op)
 				else
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
-				if (not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,op) then
-					return true
+				local altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,op)
+				if (not min or min<=1) and altg:GetCount()>0 then
+					local ct=0
+					local res=false
+					for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_XMATERIAL)}) do
+						ct=ct+1
+						if ct>1 then return false end
+						if altg:IsContains(pe:GetHandler()) then res=true end
+					end
+					return ct==0 or res
 				end
 				local minc=minct
 				local maxc=maxct
@@ -782,7 +805,15 @@ function Auxiliary.XyzLevelFreeCondition2(f,gf,minct,maxct,alterf,desc,op)
 				end
 				mg=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
 				local sg=Group.CreateGroup()
-				return maxc>=minc and mg:IsExists(Auxiliary.XyzLevelFreeCheck,1,sg,tp,c,mg,sg,gf,minc,maxc)
+				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_XMATERIAL)}) do
+					local pc=pe:GetHandler()
+					if not mg:IsContains(pc) then return false end
+					sg:AddCard(pc)
+				end
+				local ct=sg:GetCount()
+				if ct>maxc then return false end
+				return (ct>=minc and Auxiliary.XyzLevelFreeGoal(sg,tp,c,gf))
+					or mg:IsExists(Auxiliary.XyzLevelFreeCheck,1,sg,tp,c,mg,sg,gf,minc,maxc)
 			end
 end
 function Auxiliary.XyzLevelFreeTarget2(f,gf,minct,maxct,alterf,desc,op)
@@ -803,15 +834,23 @@ function Auxiliary.XyzLevelFreeTarget2(f,gf,minct,maxct,alterf,desc,op)
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
 				local g=Group.CreateGroup()
+				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_XMATERIAL)}) do
+					g:AddCard(pe:GetHandler())
+				end
+				local ct=g:GetCount()
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+				g:Select(tp,ct,ct,nil)
 				local ag=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f):Filter(Auxiliary.XyzLevelFreeCheck,g,tp,c,mg,g,gf,minc,maxc)
 				local b1=ag:GetCount()>0
 				local b2=(not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,op)
 				if b2 and (not b1 or Duel.SelectYesNo(tp,desc)) then
 					e:SetLabel(1)
-					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-					local sg=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c,e,tp,op)
-					if op then op(e,tp,1,sg:GetFirst()) end
-					g:Merge(sg)
+					if g:GetCount()==0 then
+						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+						local sg=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c,e,tp,op)
+						g:Merge(sg)
+					end
+					if op then op(e,tp,1,g:GetFirst()) end
 				else
 					e:SetLabel(0)
 					local ct=g:GetCount()
@@ -1724,7 +1763,7 @@ function Auxiliary.LinkCondition(f,minc,maxc,gf)
 				local ct=sg:GetCount()
 				if ct>maxc then return false end
 				return Auxiliary.LCheckGoal(tp,sg,c,minc,ct,gf)
-					or mg:IsExists(Auxiliary.LCheckRecursive,1,nil,tp,sg,mg,c,ct,minc,maxc,gf)
+					or mg:IsExists(Auxiliary.LCheckRecursive,1,sg,tp,sg,mg,c,ct,minc,maxc,gf)
 			end
 end
 function Auxiliary.LinkOperation(f,minc,maxc,gf)
