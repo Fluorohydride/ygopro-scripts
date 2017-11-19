@@ -1634,14 +1634,28 @@ function Auxiliary.LinkCondition(f,minc,maxc,gf)
 				local tp=c:GetControler()
 				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f,c)
 				local sg=Group.CreateGroup()
-				return mg:IsExists(Auxiliary.LCheckRecursive,1,nil,tp,sg,mg,c,0,minc,maxc,gf)
+				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_LMATERIAL)}) do
+					local pc=pe:GetHandler()
+					if not mg:IsContains(pc) then return false end
+					sg:AddCard(pc)
+				end
+				local ct=sg:GetCount()
+				if ct>maxc then return false end
+				return Auxiliary.LCheckGoal(tp,sg,c,minc,ct,gf)
+					or mg:IsExists(Auxiliary.LCheckRecursive,1,nil,tp,sg,mg,c,ct,minc,maxc,gf)
 			end
 end
 function Auxiliary.LinkOperation(f,minc,maxc,gf)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c)
 				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f,c)
 				local sg=Group.CreateGroup()
-				for i=0,maxc-1 do
+				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_LMATERIAL)}) do
+					sg:AddCard(pe:GetHandler())
+				end
+				local ct=sg:GetCount()
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LMATERIAL)
+				sg:Select(tp,ct,ct,nil)
+				for i=ct,maxc-1 do
 					local cg=mg:Filter(Auxiliary.LCheckRecursive,sg,tp,sg,mg,c,i,minc,maxc,gf)
 					if cg:GetCount()==0 then break end
 					local minct=1
