@@ -1250,6 +1250,88 @@ end
 function Auxiliary.AddFusionProcCode2FunRep(c,code1,code2,f,minc,maxc,sub,insf)
 	Auxiliary.AddFusionProcMixRep(c,sub,insf,f,minc,maxc,code1,code2)
 end
+--Fusion monster, Shaddoll materials
+function Auxiliary.AddFusionProcShaddoll(c,attr)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e1:SetCode(EFFECT_FUSION_MATERIAL)
+	e1:SetCondition(Auxiliary.FShaddollCondition(attr))
+	e1:SetOperation(Auxiliary.FShaddollOperation(attr))
+	c:RegisterEffect(e1)
+end
+function Auxiliary.FShaddollFilter(c,fc,attr)
+	return (Auxiliary.FShaddollFilter1(c) or Auxiliary.FShaddollFilter2(c,attr)) and c:IsCanBeFusionMaterial(fc) and not c:IsHasEffect(6205579)
+end
+function Auxiliary.FShaddollExFilter(c,fc,attr)
+	return c:IsFaceup() and Auxiliary.FShaddollFilter(c,fc,attr)
+end
+function Auxiliary.FShaddollFilter1(c)
+	return c:IsFusionSetCard(0x9d)
+end
+function Auxiliary.FShaddollFilter2(c,attr)
+	return c:IsFusionAttribute(attr) or c:IsHasEffect(4904633)
+end
+function Auxiliary.FShaddollSpFilter1(c,tp,mg,exg,attr)
+	return mg:IsExists(Auxiliary.FShaddollSpFilter2,1,c,tp,c,attr) or (exg and exg:IsExists(Auxiliary.FShaddollSpFilter2,1,c,tp,c,attr))
+end
+function Auxiliary.FShaddollSpFilter2(c,tp,mc,attr)
+	local sg=Group.FromCards(c,mc)
+	if sg:IsExists(Auxiliary.FCheckTuneMagicianX,1,nil,sg) then return false end
+	return ((Auxiliary.FShaddollFilter1(c) and Auxiliary.FShaddollFilter2(mc,attr))
+		or (Auxiliary.FShaddollFilter2(c,attr) and Auxiliary.FShaddollFilter1(mc)))
+		and Duel.GetLocationCountFromEx(tp,tp,sg)>0
+end
+function Auxiliary.FShaddollCondition(attr)
+	return 	function(e,g,gc,chkf)
+				if g==nil then return true end
+				local c=e:GetHandler()
+				local mg=g:Filter(Auxiliary.FShaddollFilter,nil,c,attr)
+				local tp=e:GetHandlerPlayer()
+				local fc=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
+				local exg=nil
+				if fc and fc:IsHasEffect(81788994) and fc:IsCanRemoveCounter(tp,0x16,3,REASON_EFFECT) then
+					exg=Duel.GetMatchingGroup(Auxiliary.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,attr)
+				end
+				if gc then
+					if not mg:IsContains(gc) then return false end
+					return Auxiliary.FShaddollSpFilter1(gc,tp,mg,exg,attr)
+				end
+				return mg:IsExists(Auxiliary.FShaddollSpFilter1,1,nil,tp,mg,exg,attr)
+			end
+end
+function Auxiliary.FShaddollOperation(attr)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
+				local c=e:GetHandler()
+				local mg=eg:Filter(Auxiliary.FShaddollFilter,nil,c,attr)
+				local fc=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
+				local exg=nil
+				if fc and fc:IsHasEffect(81788994) and fc:IsCanRemoveCounter(tp,0x16,3,REASON_EFFECT) then
+					exg=Duel.GetMatchingGroup(Auxiliary.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,attr)
+				end
+				local g=nil
+				if gc then
+					g=Group.FromCards(gc)
+					mg:RemoveCard(gc)
+				else
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+					g=mg:FilterSelect(tp,Auxiliary.FShaddollSpFilter1,1,1,nil,tp,mg,exg,attr)
+					mg:Sub(g)
+				end
+				if exg and exg:IsExists(Auxiliary.FShaddollSpFilter2,1,nil,tp,g:GetFirst(),attr)
+					and (mg:GetCount()==0 or (exg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(81788994,0)))) then
+					fc:RemoveCounter(tp,0x16,3,REASON_EFFECT)
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+					local sg=exg:FilterSelect(tp,Auxiliary.FShaddollSpFilter2,1,1,nil,tp,g:GetFirst(),attr)
+					g:Merge(sg)
+				else
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+					local sg=mg:FilterSelect(tp,Auxiliary.FShaddollSpFilter2,1,1,nil,tp,g:GetFirst(),attr)
+					g:Merge(sg)
+				end
+				Duel.SetFusionMaterial(g)
+			end
+end
 --Ritual Summon, geq fixed lv
 function Auxiliary.AddRitualProcGreater(c,filter)
 	local e1=Effect.CreateEffect(c)
