@@ -28,7 +28,7 @@ function c56995655.op(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if not tc then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
-	local op=Duel.SelectOption(tp,70,71,72)
+	local op=Duel.AnnounceType(tp)
 	Duel.ConfirmCards(tp,tc)
 	Duel.ShuffleHand(1-tp)
 	if (op==0 and tc:IsType(TYPE_MONSTER)) or (op==1 and tc:IsType(TYPE_SPELL)) or (op==2 and tc:IsType(TYPE_TRAP)) then

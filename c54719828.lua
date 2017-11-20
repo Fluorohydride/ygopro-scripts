@@ -21,8 +21,8 @@ function c54719828.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c54719828.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(54719828,1))
-	e:SetLabel(Duel.SelectOption(tp,70,71,72))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
+	e:SetLabel(Duel.AnnounceType(tp))
 end
 function c54719828.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

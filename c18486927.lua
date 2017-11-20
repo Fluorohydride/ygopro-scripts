@@ -24,7 +24,7 @@ end
 function c18486927.dectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
-	e:SetLabel(Duel.SelectOption(tp,70,71,72))
+	e:SetLabel(Duel.AnnounceType(tp))
 end
 function c18486927.decop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

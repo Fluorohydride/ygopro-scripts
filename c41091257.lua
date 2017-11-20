@@ -28,7 +28,7 @@ function c41091257.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
-	e:SetLabel(Duel.SelectOption(tp,70,71,72))
+	e:SetLabel(Duel.AnnounceType(tp))
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c41091257.spop(e,tp,eg,ep,ev,re,r,rp)

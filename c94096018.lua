@@ -31,7 +31,7 @@ function c94096018.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
 		and Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
-	e:SetLabel(Duel.SelectOption(tp,70,71,72))
+	e:SetLabel(Duel.AnnounceType(tp))
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1)
 end
