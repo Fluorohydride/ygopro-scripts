@@ -14,8 +14,6 @@ function c90925163.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer() and e:GetHandler():IsDefensePos()
 end
 function c90925163.operation(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsPosition(POS_FACEUP_DEFENSE) then
-		Duel.Recover(tp,1000,REASON_EFFECT)
-	end
+	Duel.Hint(HINT_CARD,0,90925163)
+	Duel.Recover(tp,1000,REASON_EFFECT)
 end
