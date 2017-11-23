@@ -18,17 +18,14 @@ function c98905.initial_effect(c)
 		Duel.RegisterEffect(ge1,0)
 	end
 end
-function c98905.cfilter(c)
+function c98905.callback(c)
 	local tp=c:GetPreviousControler()
-	return c:IsSetCard(0xe5) and c:IsType(TYPE_XYZ) and c:IsControler(tp) and c:GetOverlayCount()>0
+	if c:IsSetCard(0xe5) and c:IsType(TYPE_XYZ) and c:IsControler(tp) and c:GetOverlayCount()>0 then
+		c:RegisterFlagEffect(98905,RESET_EVENT+0x1fe0000,0,1)
+	end
 end
 function c98905.checkop(e,tp,eg,ep,ev,re,r,rp)
-	local sg=eg:Filter(c98905.cfilter,nil)
-	local tc=sg:GetFirst()
-	while tc do
-		tc:RegisterFlagEffect(98905,RESET_EVENT+0x1fe0000,0,1)
-		tc=sg:GetNext()
-	end
+	eg:ForEach(c98905.callback)
 end
 function c98905.filter(c,e,tp)
 	return c:GetFlagEffect(98905)~=0 and c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp)
