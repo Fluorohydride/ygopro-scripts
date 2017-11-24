@@ -1,4 +1,5 @@
 --GUYダンス
+--not fully implemented (require other cards to be updated)
 function c50696588.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

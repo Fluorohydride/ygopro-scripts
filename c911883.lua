@@ -1,5 +1,4 @@
 --予想GUY
---not fully implemented (require other cards to be updated)
 function c911883.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
