@@ -19,9 +19,6 @@ function c53620899.initial_effect(c)
 	e2:SetOperation(c53620899.posop)
 	c:RegisterEffect(e2)
 end
-function c53620899.tgfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0xed) and c:IsDiscardable()
-end
 function c53620899.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)

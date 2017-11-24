@@ -51,8 +51,8 @@ function c27354732.spfilter(c,e,tp)
 		and not c:IsCode(27354732) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c27354732.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsDestructable()	and Duel.GetLocationCountFromEx(tp)>0
-		and Duel.IsExistingTarget(c27354732.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
+	if chk==0 then return e:GetHandler():IsDestructable() and Duel.GetLocationCountFromEx(tp)>0
+		and Duel.IsExistingMatchingCard(c27354732.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
@@ -74,11 +74,9 @@ function c27354732.acop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c27354732.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local rc=re:GetHandler()
 	return rp~=tp and re:IsActiveType(TYPE_MONSTER) and not c:IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev)
 end
 function c27354732.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x1,2,REASON_COST) end
 	Duel.RemoveCounter(tp,1,0,0x1,2,REASON_COST)
 end

@@ -109,10 +109,10 @@ function c879958.atkfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_LINK) and not c:IsHasEffect(EFFECT_EXTRA_ATTACK)
 end
 function c879958.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c879958.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c879958.filter,tp,LOCATION_MZONE,0,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c879958.atkfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c879958.atkfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c879958.filter,tp,LOCATION_MZONE,0,1,1,nil)
+	Duel.SelectTarget(tp,c879958.atkfilter,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function c879958.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

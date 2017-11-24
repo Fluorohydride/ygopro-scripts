@@ -58,7 +58,7 @@ function c89785779.eqop(e,tp,eg,ep,ev,re,r,rp)
 		m.equip_monster(tc2,tp,tc1)
 	end
 end
-function c89785779.thfilter(c,e)
+function c89785779.thfilter(c)
 	return c:IsFaceup() and ((c:IsSetCard(0x110) and c:IsType(TYPE_FUSION)) or c:IsCode(64631466))
 end
 function c89785779.thcon(e,tp,eg,ep,ev,re,r,rp)

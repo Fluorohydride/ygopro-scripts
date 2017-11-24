@@ -27,9 +27,6 @@ function c32472237.descon(e,tp,eg,ep,ev,re,r,rp)
 	if not g or not g:IsContains(c) then return false end
 	return re:IsActiveType(TYPE_LINK)
 end
-function c32472237.desfilter(c,g)
-	return g:IsContains(c)
-end
 function c32472237.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local cg=c:GetColumnGroup():Filter(Card.IsControler,nil,1-tp)
