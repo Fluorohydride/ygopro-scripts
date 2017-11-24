@@ -1,4 +1,5 @@
 --古代の機械融合
+--not fully implemented
 function c64061284.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

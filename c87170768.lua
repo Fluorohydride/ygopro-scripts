@@ -1,4 +1,5 @@
 --接触するG
+--not fully implemented
 function c87170768.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
