@@ -50,7 +50,7 @@ function c26931058.efop(e,tp,eg,ep,ev,re,r,rp)
 		local tc=Duel.GetFirstTarget()
 		if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		local g=Duel.SelectTarget(tp,c26931058.filter2,tp,LOCATION_MZONE,0,1,1,tc,tc)
+		local g=Duel.SelectMatchingCard(tp,c26931058.filter2,tp,LOCATION_MZONE,0,1,1,tc,tc)
 		local ec=g:GetFirst()
 		if ec and Duel.Equip(tp,tc,ec,false) then
 			aux.SetUnionState(tc1)
