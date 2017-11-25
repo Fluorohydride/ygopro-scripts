@@ -4,7 +4,6 @@ function c78765160.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetTarget(c78765160.target)
 	c:RegisterEffect(e1)
 	--change code
 	local e2=Effect.CreateEffect(c)
@@ -20,8 +19,8 @@ function c78765160.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_SZONE)
+	e3:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)
 	e3:SetCost(c78765160.damcost)
-	e3:SetTarget(c78765160.damtg)
 	e3:SetOperation(c78765160.damop)
 	c:RegisterEffect(e3)
 	--to deck
@@ -32,42 +31,10 @@ function c78765160.initial_effect(c)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e4:SetCode(EVENT_FREE_CHAIN)
 	e4:SetRange(LOCATION_SZONE)
+	e4:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)
 	e4:SetTarget(c78765160.tdtg)
 	e4:SetOperation(c78765160.tdop)
 	c:RegisterEffect(e4)
-end
-function c78765160.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return c78765160.tdtg(e,tp,eg,ep,ev,re,r,rp,0,chkc) end
-	if chk==0 then return true end
-	local b1=c78765160.damcost(e,tp,eg,ep,ev,re,r,rp,0)
-		and c78765160.damtg(e,tp,eg,ep,ev,re,r,rp,0)
-	local b2=c78765160.tdtg(e,tp,eg,ep,ev,re,r,rp,0)
-	if (b1 or b2) and Duel.SelectYesNo(tp,94) then
-		local op=0
-		if b1 and b2 then
-			op=Duel.SelectOption(tp,aux.Stringid(78765160,0),aux.Stringid(78765160,1))
-		elseif b1 then
-			op=Duel.SelectOption(tp,aux.Stringid(78765160,0))
-		else
-			op=Duel.SelectOption(tp,aux.Stringid(78765160,1))+1
-		end
-		if op==0 then
-			c78765160.damcost(e,tp,eg,ep,ev,re,r,rp,1)
-			c78765160.damtg(e,tp,eg,ep,ev,re,r,rp,1)
-			e:SetCategory(0)
-			e:SetProperty(0)
-			e:SetOperation(c78765160.damop)
-		else
-			c78765160.tdtg(e,tp,eg,ep,ev,re,r,rp,1)
-			e:SetCategory(CATEGORY_TODECK+CATEGORY_DRAW)
-			e:SetProperty(EFFECT_FLAG_CARD_TARGET)
-			e:SetOperation(c78765160.tdop)
-		end
-	else
-		e:SetCategory(0)
-		e:SetProperty(0)
-		e:SetOperation(nil)
-	end
 end
 function c78765160.cfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_ZOMBIE) and c:IsAbleToRemoveAsCost()
@@ -77,10 +44,6 @@ function c78765160.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c78765160.cfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
-end
-function c78765160.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(78765160)==0 end
-	e:GetHandler():RegisterFlagEffect(78765160,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c78765160.damop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
@@ -102,14 +65,12 @@ function c78765160.tdfilter(c)
 end
 function c78765160.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c78765160.tdfilter(chkc) end
-	if chk==0 then return e:GetHandler():GetFlagEffect(78765160)==0
-		and Duel.IsPlayerCanDraw(tp,1)
+	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
 		and Duel.IsExistingTarget(c78765160.tdfilter,tp,LOCATION_REMOVED,0,2,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectTarget(tp,c78765160.tdfilter,tp,LOCATION_REMOVED,0,2,2,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
-	e:GetHandler():RegisterFlagEffect(78765160,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c78765160.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)

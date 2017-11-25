@@ -5,7 +5,6 @@ function c42378577.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_END_PHASE)
-	e1:SetTarget(c42378577.target)
 	c:RegisterEffect(e1)
 	--special summon
 	local e2=Effect.CreateEffect(c)
@@ -17,7 +16,6 @@ function c42378577.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetHintTiming(0,TIMING_END_PHASE)
 	e2:SetCountLimit(1,42378577)
-	e2:SetCost(c42378577.cost)
 	e2:SetTarget(c42378577.sptg)
 	e2:SetOperation(c42378577.spop)
 	c:RegisterEffect(e2)
@@ -30,46 +28,9 @@ function c42378577.initial_effect(c)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetHintTiming(0,TIMING_END_PHASE)
 	e3:SetCountLimit(1,42378577)
-	e3:SetCost(c42378577.cost)
 	e3:SetTarget(c42378577.pentg)
 	e3:SetOperation(c42378577.penop)
 	c:RegisterEffect(e3)
-end
-function c42378577.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return c42378577.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-		or c42378577.pentg(e,tp,eg,ep,ev,re,r,rp,chk,chkc) end
-	if chk==0 then return true end
-	local b1=c42378577.cost(e,tp,eg,ep,ev,re,r,rp,0)
-		and c42378577.sptg(e,tp,eg,ep,ev,re,r,rp,0)
-	local b2=c42378577.cost(e,tp,eg,ep,ev,re,r,rp,0)
-		and c42378577.pentg(e,tp,eg,ep,ev,re,r,rp,0)
-	if (b1 or b2) and Duel.SelectYesNo(tp,94) then
-		local op=0
-		if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(42378577,0),aux.Stringid(42378577,1))
-		elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(42378577,0))
-		else op=Duel.SelectOption(tp,aux.Stringid(42378577,1))+1 end
-		if op==0 then
-			e:SetCategory(CATEGORY_SPECIAL_SUMMON)
-			e:SetProperty(EFFECT_FLAG_CARD_TARGET)
-			e:SetOperation(c42378577.spop)
-			c42378577.cost(e,tp,eg,ep,ev,re,r,rp,1)
-			c42378577.sptg(e,tp,eg,ep,ev,re,r,rp,1)
-		else
-			e:SetCategory(0)
-			e:SetProperty(EFFECT_FLAG_CARD_TARGET)
-			e:SetOperation(c42378577.penop)
-			c42378577.cost(e,tp,eg,ep,ev,re,r,rp,1)
-			c42378577.pentg(e,tp,eg,ep,ev,re,r,rp,1)
-		end
-	else
-		e:SetCategory(0)
-		e:SetProperty(0)
-		e:SetOperation(nil)
-	end
-end
-function c42378577.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFlagEffect(tp,42378577)==0 end
-	Duel.RegisterFlagEffect(tp,42378577,RESET_PHASE+PHASE_END,0,1)
 end
 function c42378577.spfilter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)

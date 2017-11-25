@@ -6,8 +6,6 @@ function c51053997.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_END_PHASE)
-	e1:SetTarget(c51053997.target1)
-	e1:SetOperation(c51053997.operation)
 	c:RegisterEffect(e1)
 	--remove
 	local e3=Effect.CreateEffect(c)
@@ -20,7 +18,7 @@ function c51053997.initial_effect(c)
 	e3:SetHintTiming(0,TIMING_END_PHASE)
 	e3:SetCountLimit(1)
 	e3:SetCost(c51053997.cost)
-	e3:SetTarget(c51053997.target2)
+	e3:SetTarget(c51053997.target)
 	e3:SetOperation(c51053997.operation)
 	c:RegisterEffect(e3)
 	--special summon
@@ -33,39 +31,18 @@ function c51053997.initial_effect(c)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCountLimit(1)
 	e4:SetCondition(c51053997.spcon)
-	e4:SetCost(c51053997.spcost)
-	e4:SetTarget(c51053997.sptg2)
+	e4:SetTarget(c51053997.sptg)
 	e4:SetOperation(c51053997.spop)
 	c:RegisterEffect(e4)
 end
 function c51053997.rmfilter(c)
 	return c:IsSetCard(0xc1) and c:IsAbleToRemove()
 end
-function c51053997.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c51053997.rmfilter(chkc) end
-	if chk==0 then return true end
-	if e:GetHandler():GetFlagEffect(51053997)==0 and Duel.CheckLPCost(tp,500)
-		and Duel.IsExistingTarget(c51053997.rmfilter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.SelectYesNo(tp,94) then
-		e:SetCategory(CATEGORY_REMOVE)
-		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
-		e:GetHandler():RegisterFlagEffect(51053997,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
-		Duel.PayLPCost(tp,500)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g=Duel.SelectTarget(tp,c51053997.rmfilter,tp,LOCATION_MZONE,0,1,1,nil)
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
-	else
-		e:SetCategory(0)
-		e:SetProperty(0)
-	end
-end
 function c51053997.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckLPCost(tp,500)
-		and e:GetHandler():GetFlagEffect(51053997)==0 end
+	if chk==0 then return Duel.CheckLPCost(tp,500) end
 	Duel.PayLPCost(tp,500)
-	e:GetHandler():RegisterFlagEffect(51053997,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
-function c51053997.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c51053997.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c51053997.rmfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c51053997.rmfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
@@ -74,7 +51,7 @@ function c51053997.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c51053997.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetFlagEffect(51053997)==0 or not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 		local ct=1
@@ -113,14 +90,10 @@ end
 function c51053997.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c51053997.cfilter,1,e:GetHandler(),tp)
 end
-function c51053997.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(51053999)==0 end
-	e:GetHandler():RegisterFlagEffect(51053999,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
-end
 function c51053997.spfilter(c,e,tp)
 	return c:IsSetCard(0xc1) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c51053997.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
+function c51053997.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c51053997.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
