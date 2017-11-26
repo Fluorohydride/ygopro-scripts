@@ -15,7 +15,7 @@ function c64061284.fcheck(tp,sg,fc,mg)
 	if sg:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then
 		return sg:IsExists(c64061284.filterchk,1,nil) end
 	return true
- end
+end
 function c64061284.filterchk(c)
 	return c:IsFaceup() and c:IsCode(83104731,95735217) and c:IsOnField()
 end
@@ -34,7 +34,7 @@ function c64061284.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		local chkf=tp
 		local mg=Duel.GetFusionMaterial(tp)
 		local mg2=Duel.GetMatchingGroup(c64061284.filter0,tp,LOCATION_DECK,0,nil)
-		if mg2:GetCount()>0 then
+		if mg:IsExists(c64061284.filterchk,1,nil) and mg2:GetCount()>0 then
 			mg:Merge(mg2)
 			aux.FCheckAdditional=c64061284.fcheck
 		end
@@ -56,7 +56,7 @@ function c64061284.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c64061284.filter1,nil,e)
 	local mg2=Duel.GetMatchingGroup(c64061284.filter0,tp,LOCATION_DECK,0,nil)
-	if mg2:GetCount()>0 then
+	if mg1:IsExists(c64061284.filterchk,1,nil) and mg2:GetCount()>0 then
 		mg1:Merge(mg2)
 		aux.FCheckAdditional=c64061284.fcheck
 	end
