@@ -1,11 +1,17 @@
 --インヴェルズ・オリジン
---not fully implemented
 function c61888819.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0xa),2,2)
 	c:EnableReviveLimit()
 	--force mzone
-
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e1:SetCode(EFFECT_LIMIT_MZONE_EXTRA)
+	e1:SetRange(LOCATION_MZONE)
+	e1:SetTargetRange(1,1)
+	e1:SetValue(c61888819.limval)
+	c:RegisterEffect(e1)
 	--cannot be target/indestructable
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
@@ -34,6 +40,9 @@ function c61888819.initial_effect(c)
 	e6:SetTarget(c61888819.sptg)
 	e6:SetOperation(c61888819.spop)
 	c:RegisterEffect(e6)
+end
+function c61888819.limval(e,c)
+	return e:GetHandler():GetLinkedZone()
 end
 function c61888819.indcon(e)
 	return e:GetHandler():GetLinkedGroupCount()>0
