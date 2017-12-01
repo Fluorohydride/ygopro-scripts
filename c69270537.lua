@@ -26,7 +26,7 @@ end
 function c69270537.fcheck(sp)
 	return function(tp,g,c)
 		local ct=g:GetCount()
-		return Duel.GetMZoneCount(sp)>=g:GetCount() and not (ct>1 and Duel.IsPlayerAffectedByEffect(tp,59822133))
+		return Duel.GetMZoneCount(sp)>=ct and not (ct>1 and Duel.IsPlayerAffectedByEffect(tp,59822133))
 	end
 end
 function c69270537.activate(e,tp,eg,ep,ev,re,r,rp)

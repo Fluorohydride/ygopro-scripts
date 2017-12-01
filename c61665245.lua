@@ -89,7 +89,7 @@ function c61665245.spop2(e,tp,eg,ep,ev,re,r,rp)
 			and (not tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE,tp,zone[tp]) or Duel.SelectYesNo(tp,aux.Stringid(61665245,2))) then
 			sump=1-tp
 		end
-		if Duel.SpecialSummon(tc,0,tp,sump,false,false,POS_FACEUP_DEFENSE,zone[sump])~=0 then
+		if Duel.SpecialSummonStep(tc,0,tp,sump,false,false,POS_FACEUP_DEFENSE,zone[sump]) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_DISABLE)
@@ -100,6 +100,7 @@ function c61665245.spop2(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetCode(EFFECT_DISABLE_EFFECT)
 			e2:SetReset(RESET_EVENT+0x1fe0000)
 			tc:RegisterEffect(e2)
+			Duel.SpecialSummonComplete()
 		end
 	end
 end

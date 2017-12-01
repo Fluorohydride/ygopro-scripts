@@ -15,7 +15,7 @@ function c15397015.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e3:SetCode(EVENT_CHAINING)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetOperation(c15397015.counterop1)
+	e3:SetOperation(c15397015.counterop)
 	c:RegisterEffect(e3)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
@@ -23,44 +23,37 @@ function c15397015.initial_effect(c)
 	e4:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetTargetRange(1,0)
-	e4:SetCondition(c15397015.econ1)
+	e4:SetCondition(c15397015.econ)
 	e4:SetValue(c15397015.elimit)
+	e4:SetLabel(0)
 	c:RegisterEffect(e4)
-	--
-	local e5=e3:Clone()
-	e5:SetOperation(c15397015.counterop2)
-	c:RegisterEffect(e5)
 	local e6=e4:Clone()
-	e6:SetCondition(c15397015.econ2)
 	e6:SetTargetRange(0,1)
+	e6:SetLabel(1)
 	c:RegisterEffect(e6)
 end
 function c15397015.sumcon(e)
 	return Duel.GetFieldGroupCount(e:GetHandler():GetControler(),LOCATION_MZONE,0)>0
 end
-function c15397015.cfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_FUSION+TYPE_RITUAL+TYPE_SYNCHRO+TYPE_XYZ+TYPE_PENDULUM+TYPE_LINK)
+function c15397015.counterop(e,tp,eg,ep,ev,re,r,rp)
+	if not re:IsActiveType(TYPE_MONSTER) then return end
+	if ep==tp then
+		e:GetHandler():RegisterFlagEffect(15397015,RESET_EVENT+0x3ff0000+RESET_PHASE+PHASE_END,0,1)
+	else
+		e:GetHandler():RegisterFlagEffect(15397016,RESET_EVENT+0x3ff0000+RESET_PHASE+PHASE_END,0,1)
+	end
 end
-function c15397015.typecount(c)
-	return bit.band(c:GetType(),TYPE_FUSION+TYPE_RITUAL+TYPE_SYNCHRO+TYPE_XYZ+TYPE_PENDULUM+TYPE_LINK)
+function c15397015.cfilter(c,type)
+	return c:IsFaceup() and c:IsType(type)
 end
-function c15397015.counterop1(e,tp,eg,ep,ev,re,r,rp)
-	if ep~=tp or not re:IsActiveType(TYPE_MONSTER) then return end
-	e:GetHandler():RegisterFlagEffect(15397015,RESET_EVENT+0x3ff0000+RESET_PHASE+PHASE_END,0,1)
-end
-function c15397015.econ1(e)
-	local g=Duel.GetMatchingGroup(c15397015.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,LOCATION_MZONE,nil)
-	local ct=g:GetClassCount(c15397015.typecount)
-	return e:GetHandler():GetFlagEffect(15397015)>=ct
-end
-function c15397015.counterop2(e,tp,eg,ep,ev,re,r,rp)
-	if ep==tp or not re:IsActiveType(TYPE_MONSTER) then return end
-	e:GetHandler():RegisterFlagEffect(15397016,RESET_EVENT+0x3ff0000+RESET_PHASE+PHASE_END,0,1)
-end
-function c15397015.econ2(e)
-	local g=Duel.GetMatchingGroup(c15397015.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,LOCATION_MZONE,nil)
-	local ct=g:GetClassCount(c15397015.typecount)
-	return e:GetHandler():GetFlagEffect(15397016)>=ct
+function c15397015.econ(e)
+	local ct=0
+	for type in {TYPE_FUSION,TYPE_RITUAL,TYPE_SYNCHRO,TYPE_XYZ,TYPE_PENDULUM,TYPE_LINK} do
+		if Duel.IsExistingMatchingCard(c15397015.cfilter,0,LOCATION_MZONE,LOCATION_MZONE,nil,type) then
+			ct=ct+1
+		end
+	end
+	return e:GetHandler():GetFlagEffect(15397015+e:GetLabel())>=ct
 end
 function c15397015.elimit(e,re,tp)
 	return re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)
