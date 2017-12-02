@@ -48,7 +48,7 @@ function c15397015.cfilter(c,type)
 end
 function c15397015.econ(e)
 	local ct=0
-	for type in {TYPE_FUSION,TYPE_RITUAL,TYPE_SYNCHRO,TYPE_XYZ,TYPE_PENDULUM,TYPE_LINK} do
+	for i,type in ipairs({TYPE_FUSION,TYPE_RITUAL,TYPE_SYNCHRO,TYPE_XYZ,TYPE_PENDULUM,TYPE_LINK}) do
 		if Duel.IsExistingMatchingCard(c15397015.cfilter,0,LOCATION_MZONE,LOCATION_MZONE,nil,type) then
 			ct=ct+1
 		end
