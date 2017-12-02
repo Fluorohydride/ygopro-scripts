@@ -73,7 +73,7 @@ function c82224646.rmcon(e)
 	return c:GetSummonLocation()==LOCATION_EXTRA and c:IsReason(REASON_MATERIAL) and c:IsReason(REASON_SYNCHRO)
 end
 function c82224646.spfilter(c,e,tp)
-	return c:IsLevelBelow(3) and (c:IsSetCard(0x9f) or c:IsSetCard(0x99)) and c:IsCanBeSpecialSummoned(e,182,tp,false,false)
+	return c:IsLevelBelow(3) and (c:IsSetCard(0x9f) or c:IsSetCard(0x99)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c82224646.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c82224646.spfilter(chkc,e,tp) end
@@ -86,7 +86,7 @@ end
 function c82224646.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,182,tp,tp,false,false,POS_FACEUP) then
+	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
@@ -102,7 +102,7 @@ function c82224646.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c82224646.scfilter1(c,e,tp,mc)
 	local mg=Group.FromCards(c,mc)
-	return c:IsCanBeSynchroMaterial() and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCanBeSynchroMaterial() and c:IsCanBeSpecialSummoned(e,182,tp,false,false)
 		and Duel.IsExistingMatchingCard(c82224646.scfilter2,tp,LOCATION_EXTRA,0,1,nil,mg)
 end
 function c82224646.scfilter2(c,mg)
@@ -123,7 +123,7 @@ function c82224646.scop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or not Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then return end
+	if not tc:IsRelateToEffect(e) or not Duel.SpecialSummonStep(tc,182,tp,tp,false,false,POS_FACEUP) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_DISABLE)

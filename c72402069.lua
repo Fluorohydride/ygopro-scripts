@@ -54,7 +54,7 @@ function c72402069.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():GetControler()~=tp
 end
 function c72402069.desfilter1(c,tp)
-	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsSetCard(0x10af) and c:GetAttack()>0
+	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsSetCard(0x10af)
 		and Duel.IsExistingMatchingCard(c72402069.desfilter2,tp,0,LOCATION_MZONE,1,nil,c:GetAttack())
 end
 function c72402069.desfilter2(c,atk)
@@ -81,7 +81,10 @@ function c72402069.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c72402069.disfilter(c,tp)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM)
-		and Duel.IsExistingMatchingCard(aux.disfilter1,tp,0,LOCATION_MZONE,1,c)
+		and Duel.IsExistingMatchingCard(c72402069.disfilter1,tp,0,LOCATION_MZONE,1,c)
+end
+function c72402069.disfilter1(c)
+	return c:IsFaceup() and not c:IsDisabled()
 end
 function c72402069.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not eg:IsContains(e:GetHandler())
@@ -91,7 +94,7 @@ function c72402069.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(72402069,2))
 	local pc=Duel.SelectMatchingCard(1-tp,c72402069.disfilter,tp,0,LOCATION_MZONE,1,1,nil,tp):GetFirst()
 	if not pc then return end
-	local g=Duel.GetMatchingGroup(aux.disfilter1,tp,0,LOCATION_MZONE,pc)
+	local g=Duel.GetMatchingGroup(c72402069.disfilter1,tp,0,LOCATION_MZONE,pc)
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(e:GetHandler())
@@ -104,13 +107,6 @@ function c72402069.disop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		e2:SetReset(RESET_EVENT+0x1fe0000)
 		tc:RegisterEffect(e2)
-		if tc:IsType(TYPE_TRAPMONSTER) then
-			local e3=Effect.CreateEffect(e:GetHandler())
-			e3:SetType(EFFECT_TYPE_SINGLE)
-			e3:SetCode(EFFECT_DISABLE_TRAPMONSTER)
-			e3:SetReset(RESET_EVENT+0x1fe0000)
-			tc:RegisterEffect(e3)
-		end
 		tc=g:GetNext()
 	end
 end
