@@ -36,7 +36,7 @@ function c78625592.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,1000)
 end
 function c78625592.operation(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then return end
+	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.NegateAttack()
 end
 function c78625592.grcondition(e,tp,eg,ep,ev,re,r,rp)
