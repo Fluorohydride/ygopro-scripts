@@ -64,7 +64,8 @@ function c37390589.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 			Duel.RegisterEffect(e2,tp)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,0,1,1,nil)
+		local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,0,1,1,nil)
+		e:SetLabelObject(g:GetFirst())
 		Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
 	end
 	e:SetLabel(opt)
@@ -86,8 +87,8 @@ function c37390589.operation(e,tp,eg,ep,ev,re,r,rp)
 	if opt==1 or opt==2 then
 		if not c:IsLocation(LOCATION_SZONE) then return end
 		if not c:IsRelateToEffect(e) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
-		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		local tc=e:GetLabelObject()
+		if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsControler(tp) then
 			Duel.Equip(tp,c,tc)
 			--Atkup
 			local e1=Effect.CreateEffect(c)
