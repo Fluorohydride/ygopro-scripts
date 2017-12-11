@@ -1,7 +1,7 @@
 --トリックスター・ブラッディマリー
 function c51011872.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0xfb),2,2)
+	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0xfb),2,2)
 	c:EnableReviveLimit()
 	--recover
 	local e1=Effect.CreateEffect(c)

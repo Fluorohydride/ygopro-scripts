@@ -1,7 +1,7 @@
 --聖騎士の追想 イゾルデ
 function c59934749.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_WARRIOR),2,2)
+	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_WARRIOR),2,2)
 	c:EnableReviveLimit()
 	--search
 	local e1=Effect.CreateEffect(c)

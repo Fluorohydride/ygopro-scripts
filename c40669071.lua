@@ -1,7 +1,7 @@
 --エクスコード・トーカー
 function c40669071.initial_effect(c)
 	c:EnableReviveLimit()
-	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_CYBERSE),2)
+	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_CYBERSE),2)
 	--lock zones
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(40669071,0))

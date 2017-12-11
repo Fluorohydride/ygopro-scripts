@@ -1,7 +1,7 @@
 --聖霊獣騎 キムンファルコス
 function c58811192.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0xb5),2,2)
+	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0xb5),2,2)
 	c:EnableReviveLimit()
 	--atk & def up
 	local e1=Effect.CreateEffect(c)
