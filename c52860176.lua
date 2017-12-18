@@ -16,12 +16,12 @@ function c52860176.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c52860176.filter(c)
-	return c:IsFaceup() and c:IsLevelBelow(3) and c:IsControlerCanBeChanged()
+	return c:IsFaceup() and c:IsLevelBelow(3) and c:IsControlerCanBeChanged(true)
 end
 function c52860176.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(c52860176.filter,tp,0,LOCATION_MZONE,1,nil) end
-	Duel.SetOperationInfo(0,CATEGORY_CONTROL,nil,1,1-tp,LOCATION_MZONE)
+	local g=Duel.GetMatchingGroup(c52860176.filter,tp,0,LOCATION_MZONE,nil)
+	if chk==0 then return g:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE,1-tp,LOCATION_REASON_CONTROL)>=-1+g:GetCount() end
+	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,g:GetCount(),0,0)
 end
 function c52860176.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c52860176.filter,tp,0,LOCATION_MZONE,nil)

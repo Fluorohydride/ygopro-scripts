@@ -32,12 +32,20 @@ function c50078320.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50078320.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ex,cg,ct,cp,cv=Duel.GetOperationInfo(ev,CATEGORY_ANNOUNCE)
+	local code=Duel.GetChainInfo(ev,CHAININFO_TARGET_PARAM)
 	local ac=0
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
 	if bit.band(cv,ANNOUNCE_CARD)~=0 then
-		ac=Duel.AnnounceCard(tp,cv)
+		--c:IsType(cv) and not c:IsCode(code)
+		ac=Duel.AnnounceCardFilter(tp,cv,OPCODE_ISTYPE,code,OPCODE_ISCODE,OPCODE_NOT,OPCODE_AND)
 	else
-		ac=Duel.AnnounceCardFilter(tp,table.unpack(re:GetHandler().announce_filter))
+		local afilter={table.unpack(re:GetHandler().announce_filter)}
+		--and not c:IsCode(code)
+		table.insert(afilter,code)
+		table.insert(afilter,OPCODE_ISCODE)
+		table.insert(afilter,OPCODE_NOT)
+		table.insert(afilter,OPCODE_AND)
+		ac=Duel.AnnounceCardFilter(tp,table.unpack(afilter))
 	end
 	Duel.ChangeTargetParam(ev,ac)
 end
