@@ -42,7 +42,8 @@ function c42461852.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and ev>=2000
 end
 function c42461852.spfilter(c,e,tp)
-	return c:IsFacedown() and c:IsType(TYPE_LINK) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsFacedown() and c:IsType(TYPE_LINK) and c:IsRace(RACE_CYBERSE)
+		and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c42461852.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c42461852.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
