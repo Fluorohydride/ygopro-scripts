@@ -8,6 +8,8 @@ function c31924889.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)
+	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e1:SetRange(LOCATION_MZONE)
 	e1:SetValue(c31924889.attackup)
 	c:RegisterEffect(e1)
 	--synchro success
