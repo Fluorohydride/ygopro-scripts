@@ -20,7 +20,7 @@ function c99004583.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c99004583.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsAbleToEnterBP()
+	return Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c99004583.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFlagEffect(tp,99004583)==0 or Duel.GetFlagEffect(1-tp,99004583)==0 end

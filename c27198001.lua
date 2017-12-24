@@ -49,8 +49,8 @@ function c27198001.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c27198001.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-  if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
-  Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
+	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c27198001.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -73,8 +73,9 @@ function c27198001.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,0,0)
 end
 function c27198001.operation(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=1 or Duel.IsPlayerAffectedByEffect(tp,59822133) end
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,27198002,0,0x4011,500,500,2,RACE_ZOMBIE,ATTRIBUTE_FIRE) then return end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=1
+		or Duel.IsPlayerAffectedByEffect(tp,59822133)
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,27198002,0,0x4011,500,500,2,RACE_ZOMBIE,ATTRIBUTE_FIRE) then return end
 	for i=1,2 do
 		local token=Duel.CreateToken(tp,27198002)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
