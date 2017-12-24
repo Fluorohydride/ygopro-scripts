@@ -1,5 +1,4 @@
 --サイバネット・ストーム
---not fully implemented
 function c42461852.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -50,14 +49,13 @@ function c42461852.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c42461852.spop(e,tp,eg,ep,ev,re,r,rp)
-	--prototype, to be replaced with the appropriate core functions
-	local g=Duel.GetMatchingGroup(Card.IsFacedown,tp,LOCATION_EXTRA,0,nil)
-	if not Duel.IsPlayerCanSpecialSummon(tp) or g:GetCount()==0 or Duel.GetLocationCountFromEx(tp)<=0 then return end
-	local tc=g:RandomSelect(tp,1):GetFirst()
-	if tc then
-		Duel.ConfirmCards(PLAYER_ALL,tc)
-		if tc:IsType(TYPE_LINK) and Duel.GetLocationCountFromEx(tp,tp,nil,tc)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
-		end
+	if not Duel.IsPlayerCanSpecialSummon(tp) or Duel.GetLocationCountFromEx(tp)<=0
+		or Duel.GetMatchingGroupCount(Card.IsFacedown,tp,LOCATION_EXTRA,0,nil)==0 then return end
+	Duel.ShuffleExtra(tp)
+	Duel.ConfirmExtratop(tp,1)
+	local tc=Duel.GetExtraTopGroup(tp,1):GetFirst()
+	if tc:IsType(TYPE_LINK) and tc:IsRace(RACE_CYBERSE)
+		and Duel.GetLocationCountFromEx(tp,tp,nil,tc)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
