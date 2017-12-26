@@ -83,6 +83,7 @@ function c85216896.rmop(e,tp,eg,ep,ev,re,r,rp)
 			tc:RegisterFlagEffect(85216896,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 		end
 	end
+	g:KeepAlive()
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_PHASE+PHASE_END)
