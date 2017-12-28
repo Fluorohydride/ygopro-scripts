@@ -29,6 +29,7 @@ function c13959634.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e4:SetCode(EVENT_LEAVE_FIELD_P)
+	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e4:SetOperation(c13959634.leaveop)
 	c:RegisterEffect(e4)
 end
