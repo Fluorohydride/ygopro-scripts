@@ -51,7 +51,7 @@ function c35371948.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_SZONE) and c35371948.cfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c35371948.cfilter,tp,0,LOCATION_SZONE,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(35371948,2))
-	local g=Duel.SelectTarget(tp,c35371948.cfilter,tp,0,LOCATION_SZONE,1,1,e:GetHandler())
+	Duel.SelectTarget(tp,c35371948.cfilter,tp,0,LOCATION_SZONE,1,1,e:GetHandler())
 end
 function c35371948.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -102,7 +102,7 @@ function c35371948.operation(e,tp,eg,ep,ev,re,r,rp)
 		e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e4:SetCode(EVENT_CHAINING)
 		e4:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DRAW)
-		e4:SetLabel(tc:GetFieldID())
+		e4:SetLabel(fid)
 		e4:SetLabelObject(e3)
 		e4:SetOperation(c35371948.rstop2)
 		Duel.RegisterEffect(e4,tp)
