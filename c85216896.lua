@@ -102,5 +102,7 @@ function c85216896.retcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c85216896.retop(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject():Filter(c85216896.retfilter,nil)
-	Duel.ReturnToField(g)
+	for tc in aux.Next(g) do
+		Duel.ReturnToField(tc)
+	end
 end
