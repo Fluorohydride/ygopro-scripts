@@ -19,11 +19,14 @@ function c59237154.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,300) end
 	Duel.PayLPCost(tp,300)
 end
+function c59237154.filter(c)
+	return c:IsFacedown() and c:GetSequence()<5
+end
 function c59237154.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFacedown,tp,LOCATION_MZONE,0,2,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c59237154.filter,tp,LOCATION_MZONE,0,2,nil) end
 end
 function c59237154.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
-	local g=Duel.GetMatchingGroup(Card.IsFacedown,tp,LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(c59237154.filter,tp,LOCATION_MZONE,0,nil)
 	Duel.ShuffleSetCard(g)
 end

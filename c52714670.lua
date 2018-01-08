@@ -36,8 +36,11 @@ function c52714670.initial_effect(c)
 	e4:SetOperation(c52714670.rmop)
 	c:RegisterEffect(e4)
 end
+function c52714670.cfilter(c,tp)
+	return c:GetSummonPlayer()==tp
+end
 function c52714670.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(Card.IsControler,1,nil,1-tp)
+	return eg:IsExists(c52714670.cfilter,1,nil,1-tp)
 end
 function c52714670.spfilter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x105) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
