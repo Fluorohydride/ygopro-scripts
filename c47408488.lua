@@ -27,7 +27,6 @@ function c47408488.initial_effect(c)
 	c:RegisterEffect(e3)
 	--place
 	local e4=Effect.CreateEffect(c)
-	e4:SetCategory(CATEGORY_COUNTER)
 	e4:SetDescription(aux.Stringid(47408488,1))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_SZONE)
@@ -51,7 +50,7 @@ end
 function c47408488.pltg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local ct=e:GetHandler():GetCounter(0x6)
-		return ct>0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>=ct
+		return ct>0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>=-1+ct
 	end
 end
 function c47408488.plfilter(c)
