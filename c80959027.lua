@@ -41,7 +41,7 @@ function c80959027.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c80959027.tdcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)
+	return not Duel.IsExistingMatchingCard(nil,tp,LOCATION_PZONE,0,1,e:GetHandler())
 end
 function c80959027.tdfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_SPELLCASTER) and not c:IsCode(80959027) and c:IsType(TYPE_PENDULUM) and c:IsAbleToDeck()
