@@ -26,6 +26,5 @@ function c89571015.atlimit(e,c)
 	return c:GetSequence()>4
 end
 function c89571015.immval(e,te)
-	local tc=te:GetHandler()
-	return te:IsActiveType(TYPE_MONSTER) and te:IsActivated() and tc:GetSequence()>4
+	return te:IsActivated() and te:GetActivateLocation()==LOCATION_MZONE and te:GetActivateSequence()>4
 end
