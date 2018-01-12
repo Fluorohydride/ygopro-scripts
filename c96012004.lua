@@ -17,7 +17,7 @@ function c96012004.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCondition(c96012004.coincon)
 	e2:SetOperation(c96012004.coinop)
-	e2:SetLabel(1)
+	e2:SetLabel(2)
 	c:RegisterEffect(e2)
 end
 function c96012004.coincon(e,tp,eg,ep,ev,re,r,rp)
@@ -34,14 +34,15 @@ function c96012004.cointg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if cc==1 then return end
 	local te=Duel.GetChainInfo(cc-1,CHAININFO_TRIGGERING_EFFECT)
 	local ex,eg,et,cp,ct=Duel.GetOperationInfo(cc-1,CATEGORY_COIN)
-	if ex and ct==1 and te:IsActiveType(TYPE_MONSTER) then
+	if ex and ct==1 and te:IsActiveType(TYPE_MONSTER) and Duel.SelectYesNo(tp,94) then
 		e:SetLabel(1)
 		e:SetLabelObject(te)
 	end
 end
 function c96012004.coinop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if e:GetLabel()==0 or not c:IsRelateToEffect(e) then return end
+	if e:GetLabel()==0 then return end
+	if e:GetLabel()==2 and Duel.GetCurrentChain()~=ev+1 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COIN)
 	local res=1-Duel.SelectOption(tp,60,61)
 	local e1=Effect.CreateEffect(c)

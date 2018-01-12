@@ -48,13 +48,12 @@ function c42461852.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c42461852.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.IsPlayerCanSpecialSummon(tp) or Duel.GetLocationCountFromEx(tp)<=0
+	if not Duel.IsPlayerCanSpecialSummon(tp)
 		or Duel.GetMatchingGroupCount(Card.IsFacedown,tp,LOCATION_EXTRA,0,nil)==0 then return end
 	Duel.ShuffleExtra(tp)
 	Duel.ConfirmExtratop(tp,1)
 	local tc=Duel.GetExtraTopGroup(tp,1):GetFirst()
-	if tc:IsType(TYPE_LINK) and tc:IsRace(RACE_CYBERSE)
-		and Duel.GetLocationCountFromEx(tp,tp,nil,tc)>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+	if tc:IsType(TYPE_LINK) and tc:IsRace(RACE_CYBERSE) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
