@@ -12,14 +12,13 @@ function c48686504.initial_effect(c)
 	e1:SetOperation(c48686504.operation)
 	c:RegisterEffect(e1)
 end
-function c48686504.costfilter(c,ft,tp)
+function c48686504.costfilter(c,tp)
 	return c:IsFaceup() and c:IsRace(RACE_PLANT)
-		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5))
+		and Duel.GetMZoneCount(tp,c,tp)>0
 end
 function c48686504.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c48686504.costfilter,1,nil,ft,tp) end
-	local g=Duel.SelectReleaseGroup(tp,c48686504.costfilter,1,1,nil,ft,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c48686504.costfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c48686504.costfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c48686504.filter(c,e,tp)
