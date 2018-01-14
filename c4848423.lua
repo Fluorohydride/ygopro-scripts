@@ -11,5 +11,7 @@ function c4848423.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c4848423.rev(e,re,r,rp,rc)
-	return bit.band(r,REASON_BATTLE)~=0 and e:GetHandler():GetBattleTarget()
+	local c=e:GetHandler()
+	return bit.band(r,REASON_BATTLE)~=0
+		and (c==Duel.GetAttacker() or c==Duel.GetAttackTarget())
 end

@@ -24,7 +24,7 @@ function c50588353.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(0,TIMING_MAIN_END+TIMING_BATTLE_START+TIMING_BATTLE_END)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCountLimit(1,50588353+100)
+	e2:SetCountLimit(1,50588354)
 	e2:SetCondition(c50588353.spcon)
 	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c50588353.sptg)
@@ -61,7 +61,7 @@ function c50588353.hspop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c50588353.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	return not e:GetHandler():IsStatus(STATUS_CHAINING) and Duel.GetTurnPlayer()~=tp
+	return Duel.GetTurnPlayer()~=tp
 		and (ph==PHASE_MAIN1 or (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE) or ph==PHASE_MAIN2)
 end
 function c50588353.spfilter(c,e,tp)
