@@ -38,7 +38,7 @@ function c64184058.atlimit(e,c)
 	return c:IsControler(1-tp) and c:IsLevelAbove(6) and not c:IsImmuneToEffect(e)
 end
 function c64184058.thfilter(c)
-	return c:IsSetCard(0x8) and c:IsAbleToHand()
+	return c:IsSetCard(0x8) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c64184058.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

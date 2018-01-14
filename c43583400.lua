@@ -12,6 +12,13 @@ function c43583400.initial_effect(c)
 	e1:SetTarget(c43583400.sumtg)
 	e1:SetOperation(c43583400.sumop)
 	c:RegisterEffect(e1)
+	--
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e0:SetCode(EVENT_BATTLED)
+	e0:SetOperation(c43583400.regop)
+	c:RegisterEffect(e0)
 	--draw
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(43583400,1))
@@ -23,8 +30,13 @@ function c43583400.initial_effect(c)
 	e2:SetOperation(c43583400.drop)
 	c:RegisterEffect(e2)
 end
+function c43583400.regop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	if not c:GetBattleTarget() then return end
+	c:RegisterFlagEffect(43583400,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE,0,1)
+end
 function c43583400.sumcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE and e:GetHandler():GetBattledGroupCount()>0
+	return Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE and e:GetHandler():GetFlagEffect(43583400)>0
 end
 function c43583400.sumfilter(c)
 	return c:IsRace(RACE_CYBERSE) and c:IsSummonable(true,nil)
