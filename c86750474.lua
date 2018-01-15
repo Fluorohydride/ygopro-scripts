@@ -30,7 +30,8 @@ end
 function c86750474.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_ONFIELD)>0 end
 	Duel.SetTargetPlayer(1-tp)
-	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,200)
+	local d=Duel.GetFieldGroupCount(1-tp,LOCATION_ONFIELD,0)*200
+	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,d)
 end
 function c86750474.damop(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
@@ -47,7 +48,8 @@ function c86750474.damtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
 		and Duel.IsExistingMatchingCard(c86750474.damfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
-	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,200)
+	local d=Duel.GetFieldGroupCount(1-tp,LOCATION_ONFIELD,0)*200
+	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,d)
 end
 function c86750474.damop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -56,7 +58,7 @@ function c86750474.damop2(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c86750474.damfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		Duel.BreakEffect()
-		local d=Duel.GetFieldGroupCount(p,LOCATION_ONFIELD,0)*200
+		local d=Duel.GetFieldGroupCount(1-tp,LOCATION_ONFIELD,0)*200
 		Duel.Damage(1-tp,d,REASON_EFFECT)
 	end
 end
