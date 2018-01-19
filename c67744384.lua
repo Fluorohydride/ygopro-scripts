@@ -23,7 +23,8 @@ function c67744384.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,Card.IsFacedown,tp,LOCATION_MZONE,0,1,3,nil)
 	if g:GetCount()>0 then
 		local ct=Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
-		if ct==g:GetCount() and g:IsExists(Card.IsSetCard,ct,nil,0x10b) then
+		local og=Duel.GetOperatedGroup()
+		if og:IsExists(Card.IsSetCard,ct,nil,0x10b) then
 			local sg=Duel.GetMatchingGroup(c67744384.thfilter,tp,LOCATION_DECK,0,nil)
 			if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(67744384,1)) then
 				Duel.BreakEffect()

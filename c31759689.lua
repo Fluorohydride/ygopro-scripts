@@ -49,6 +49,7 @@ function c31759689.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(atk)
 		e1:SetReset(RESET_EVENT+0x1ff0000)
 		c:RegisterEffect(e1)
+		Duel.BreakEffect()
 		Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
 	end
 end

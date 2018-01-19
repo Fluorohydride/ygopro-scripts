@@ -25,7 +25,6 @@ function c94142993.initial_effect(c)
 	e3:SetDescription(aux.Stringid(94142993,2))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e3:SetProperty(EFFECT_FLAG_DELAY)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetCountLimit(1,94142995)
@@ -70,7 +69,7 @@ function c94142993.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c94142993.cfilter,1,nil,tp)
 end
 function c94142993.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c94142993.spop(e,tp,eg,ep,ev,re,r,rp)
