@@ -6,7 +6,7 @@ function c71628381.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(71628381,0))
-	e1:SetCategory(CATEGORY_TODECK+CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_TOEXTRA+CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_PHASE+PHASE_BATTLE)
 	e1:SetRange(LOCATION_MZONE)
@@ -21,7 +21,7 @@ function c71628381.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c71628381.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToDeck() end
-	Duel.SetOperationInfo(0,CATEGORY_TODECK,e:GetHandler(),1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,e:GetHandler(),1,0,0)
 end
 function c71628381.mgfilter(c,e,tp,fusc)
 	return not c:IsControler(tp) or not c:IsLocation(LOCATION_GRAVE)

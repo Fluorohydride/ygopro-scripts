@@ -5,6 +5,7 @@ function c29432356.initial_effect(c)
 	--change scale
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(29432356,0))
+	e1:SetCategory(CATEGORY_TOEXTRA)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_PZONE)
 	e1:SetCountLimit(1,29432357)
@@ -50,6 +51,7 @@ function c29432356.scfilter(c,pc)
 end
 function c29432356.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c29432356.scfilter,tp,LOCATION_DECK,0,1,nil,e:GetHandler()) end
+	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,nil,1,tp,LOCATION_DECK)
 end
 function c29432356.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -2,7 +2,7 @@
 function c31554054.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOEXTRA)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_BE_BATTLE_TARGET)
@@ -26,7 +26,7 @@ function c31554054.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c31554054.filter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	Duel.GetAttackTarget():CreateEffectRelation(e)
-	Duel.SetOperationInfo(0,CATEGORY_TODECK,Duel.GetAttackTarget(),1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,Duel.GetAttackTarget(),1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c31554054.activate(e,tp,eg,ep,ev,re,r,rp)
