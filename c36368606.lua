@@ -90,6 +90,6 @@ function c36368606.immop(e,tp,eg,ep,ev,re,r,rp)
 		tc=g:GetNext()
 	end
 end
-function c36368606.efilter(e,te)
-	return te:GetOwner()~=e:GetHandler()
+function c36368606.efilter(e,te,c)
+	return te:GetOwner()~=c
 end

@@ -19,8 +19,8 @@ function c77058170.atkfilter(c,g)
 	return c:IsFaceup() and c:GetAttack()>0 and g:IsContains(c)
 end
 function c77058170.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local lg=e:GetHandler():GetLinkedGroup()
 	if chkc then return false end
+	local lg=e:GetHandler():GetLinkedGroup()
 	if chk==0 then return Duel.IsExistingTarget(c77058170.atkfilter,tp,LOCATION_MZONE,0,1,nil,lg)
 		and Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELF)

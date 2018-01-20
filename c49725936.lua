@@ -22,12 +22,6 @@ function c49725936.initial_effect(c)
 	e2:SetCode(EFFECT_PIERCE)
 	c:RegisterEffect(e2)
 	--special summon
-	local e0=Effect.CreateEffect(c)
-	e0:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e0:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e0:SetOperation(c49725936.regop)
-	c:RegisterEffect(e0)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(49725936,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -53,11 +47,8 @@ end
 function c49725936.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateActivation(ev)
 end
-function c49725936.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(49725936,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
-end
 function c49725936.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(49725936)==0
+	return not e:GetHandler():IsStatus(STATUS_SPSUMMON_TURN)
 end
 function c49725936.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end

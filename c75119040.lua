@@ -46,7 +46,7 @@ function c75119040.atkval(e,c)
 	return c:GetLinkedGroup():FilterCount(c75119040.atkfilter,nil)*500
 end
 function c75119040.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetAttackedCount()>0
+	return e:GetHandler():GetAttackAnnouncedCount()>0
 end
 function c75119040.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
