@@ -57,13 +57,8 @@ function c51670553.skipop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetTargetRange(0,1)
 	e1:SetCode(EFFECT_SKIP_DP)
-	e1:SetCondition(c51670553.skipdp)
 	e1:SetReset(RESET_PHASE+PHASE_DRAW+RESET_OPPO_TURN)
 	Duel.RegisterEffect(e1,tp)
-end
-function c51670553.skipdp(e)
-	local tc=e:GetHandler():GetFirstCardTarget()
-	return tc and c51670553.filter(tc)
 end
 function c51670553.descon(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer()
