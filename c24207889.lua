@@ -30,6 +30,9 @@ function c24207889.initial_effect(c)
 	e6:SetCode(EFFECT_CANNOT_FLIP_SUMMON)
 	c:RegisterEffect(e6)
 end
+function c24207889.rmfilter(c,rc)
+	return c:IsFaceup() and c:IsRace(rc)
+end
 function c24207889.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 	if sumpos and bit.band(sumpos,POS_FACEDOWN)>0 then return false end
 	local tp=sump
