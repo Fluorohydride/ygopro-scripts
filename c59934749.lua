@@ -76,7 +76,7 @@ function c59934749.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	return true
 end
 function c59934749.cfilter(c)
-	return c:IsType(TYPE_SPELL) and c:IsType(TYPE_EQUIP) and c:IsAbleToGrave()
+	return c:IsType(TYPE_SPELL) and c:IsType(TYPE_EQUIP) and c:IsAbleToGraveAsCost()
 end
 function c59934749.spfilter(c,e,tp,lv)
 	return c:IsRace(RACE_WARRIOR) and c:IsLevelBelow(lv) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -87,7 +87,7 @@ function c59934749.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
 		local cg=Duel.GetMatchingGroup(c59934749.cfilter,tp,LOCATION_DECK,0,nil)
-		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and cg:GetCount()>0
 			and Duel.IsExistingMatchingCard(c59934749.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,cg:GetClassCount(Card.GetCode))
 	end
 	local cg=Duel.GetMatchingGroup(c59934749.cfilter,tp,LOCATION_DECK,0,nil)
