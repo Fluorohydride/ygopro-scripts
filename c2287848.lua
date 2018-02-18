@@ -50,7 +50,7 @@ function c2287848.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc1,tc2=Duel.GetFirstTarget()
 	if tc1~=e:GetLabelObject() then tc1,tc2=tc2,tc1 end
 	if tc1:IsRelateToEffect(e) and Duel.SpecialSummon(tc1,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0 and tc2:IsRelateToEffect(e) then
-		Duel.SendtoHand(tc2,REASON_EFFECT)
+		Duel.SendtoHand(tc2,nil,REASON_EFFECT)
 	end
 end
 function c2287848.drfilter(c)
