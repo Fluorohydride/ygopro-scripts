@@ -26,6 +26,7 @@ end
 function c15693423.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_ONFIELD)
 	local ct=g:GetCount()-Duel.GetFieldGroupCount(tp,LOCATION_ONFIELD,0)
+	if e:GetHandler():IsLocation(LOCATION_HAND) then ct=ct-1 end
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(1-tp,30459350)
 		and ct>0 and g:IsExists(c15693423.rmfilter,1,nil,1-tp) end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,ct,0,0)
