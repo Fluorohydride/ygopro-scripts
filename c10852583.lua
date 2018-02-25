@@ -34,7 +34,7 @@ function c10852583.initial_effect(c)
 	e5:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e5)
 end
-function c10852583.descon(e)
+function c10852583.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSequence()~=2
 end
 function c10852583.desop(e,tp,eg,ep,ev,re,r,rp)
@@ -76,9 +76,6 @@ function c10852583.mvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=eg:GetFirst()
 	tc:CreateEffectRelation(e)
 end
-function c10852583.desfilter(c,g)
-	return g:IsContains(c)
-end
 function c10852583.mvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=eg:GetFirst()
@@ -96,8 +93,7 @@ function c10852583.mvop(e,tp,eg,ep,ev,re,r,rp)
 		if seq1>seq2 and Duel.CheckLocation(tp,LOCATION_MZONE,seq1-1) then nseq=seq1-1
 		else nseq=seq1+1 end
 		Duel.MoveSequence(c,nseq)
-		local cg=c:GetColumnGroup()
-		local g=Duel.GetMatchingGroup(c10852583.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,cg)
+		local g=c:GetColumnGroup()
 		if g:GetCount()>0 then
 			Duel.BreakEffect()
 			Duel.Destroy(g,REASON_EFFECT)

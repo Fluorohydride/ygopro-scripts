@@ -40,7 +40,7 @@ function c63492244.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local mg=eg:GetFirst():GetMaterial()
 	if chkc then return mg:IsContains(chkc) and c63492244.spfilter(chkc,e,tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and mg:IsExists(c63492244.spfilter,1,c,e,tp) end
+		and mg:IsExists(c63492244.spfilter,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=mg:FilterSelect(tp,c63492244.spfilter,1,1,nil,e,tp)
 	Duel.SetTargetCard(g)

@@ -12,7 +12,7 @@ function c83828288.initial_effect(c)
 end
 function c83828288.filter(c,tp)
 	local lv=c:GetLevel()
-	return lv>0 and c:IsFaceup() and c:IsAbleToDeck() and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>=lv and Duel.IsPlayerCanDraw(tp,lv)
+	return lv>0 and c:IsFaceup() and c:IsAbleToHand() and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>=lv and Duel.IsPlayerCanDraw(tp,lv)
 end
 function c83828288.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c83828288.filter(chkc,tp) end

@@ -6,7 +6,7 @@ function c10158145.initial_effect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
-	e1:SetProperty(EFFECT_FLAG_DELAY)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
 	e1:SetTarget(c10158145.sptg)
 	e1:SetOperation(c10158145.spop)
 	c:RegisterEffect(e1)
@@ -34,8 +34,8 @@ function c10158145.initial_effect(c)
 end
 function c10158145.get_zone(c,seq)
 	local zone=0
-	if seq<4 and c:IsLinkMarker(LINK_MARKER_LEFT) then zone=bit.bor(zone,math.pow(2,seq+1)) end
-	if seq>0 and seq<5 and c:IsLinkMarker(LINK_MARKER_RIGHT) then zone=bit.bor(zone,math.pow(2,seq-1)) end
+	if seq<4 and c:IsLinkMarker(LINK_MARKER_LEFT) then zone=bit.replace(zone,0x1,seq+1) end
+	if seq>0 and seq<5 and c:IsLinkMarker(LINK_MARKER_RIGHT) then zone=bit.replace(zone,0x1,seq-1) end
 	return zone
 end
 function c10158145.spfilter(c,e,tp,seq)

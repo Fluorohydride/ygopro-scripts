@@ -53,19 +53,16 @@ end
 function c22219822.lkfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_LINK)
 end
-function c22219822.desfilter(c,g)
-	return g:IsContains(c)
-end
 function c22219822.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Group.CreateGroup()
 	local lg=Duel.GetMatchingGroup(c22219822.lkfilter,tp,0,LOCATION_MZONE,nil)
 	for tc in aux.Next(lg) do
 		tg:Merge(tc:GetLinkedGroup())
 	end
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c22219822.desfilter(chkc,tg) end
-	if chk==0 then return Duel.IsExistingTarget(c22219822.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,tg) end
+	if chkc then return tg:IsContains(chkc) and chkc:IsCanBeEffectTarget(e) end
+	if chk==0 then return tg:IsExists(Card.IsCanBeEffectTarget,1,nil,e) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c22219822.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,tg)
+	local g=tg:FilterSelect(tp,Card.IsCanBeEffectTarget,1,1,nil,e)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c22219822.desop(e,tp,eg,ep,ev,re,r,rp)

@@ -32,7 +32,7 @@ end
 function c59604521.filter(c,e,tp)
 	return c:IsSetCard(0xfb) and c:IsType(TYPE_LINK) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c59604521.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c59604521.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c59604521.filter(chkc,e,tp) end
 	if chk==0 then return Duel.IsExistingTarget(c59604521.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 end

@@ -21,6 +21,6 @@ function c68937720.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,1000)
 end
 function c68937720.aclimit(e,re,tp)
-	local loc=re:GetActivateLocation()
-	return loc==LOCATION_HAND and re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)
+	local rc=re:GetHandler()
+	return rc:IsLocation(LOCATION_HAND) and rc:IsType(TYPE_MONSTER) and not rc:IsImmuneToEffect(e)
 end
