@@ -12,8 +12,8 @@ function c42664989.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c42664989.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToRemoveAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,e:GetHandler()) end
-	local g=Duel.GetMatchingGroup(Card.IsAbleToRemoveAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD,0,e:GetHandler())
+	local g=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND+LOCATION_ONFIELD,0,e:GetHandler())
+	if chk==0 then return g:GetCount()>0 and g:GetCount()==g:FilterCount(Card.IsAbleToRemoveAsCost,nil) end
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c42664989.target(e,tp,eg,ep,ev,re,r,rp,chk)
