@@ -88,7 +88,7 @@ function c24094258.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c24094258.drcfilter,1,nil,tp)
 end
 function c24094258.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return ep==tp end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
