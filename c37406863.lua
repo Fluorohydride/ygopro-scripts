@@ -11,7 +11,7 @@ function c37406863.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c37406863.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 end
 	Duel.SetTargetPlayer(tp)
 end
 function c37406863.activate(e,tp,eg,ep,ev,re,r,rp)
