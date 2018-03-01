@@ -25,7 +25,6 @@ end
 function c46656406.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c46656406.filter2,nil,e,tp)
 	if Duel.Destroy(g,REASON_EFFECT)~=0 then
-		Duel.BreakEffect()
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end
 end
