@@ -1,9 +1,8 @@
 --ドロール＆ロックバード
 function c94145021.initial_effect(c)
-	--disable
+	--search limit
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(94145021,0))
-	e1:SetCategory(CATEGORY_DISABLE)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_CUSTOM+94145021)
