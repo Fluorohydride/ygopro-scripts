@@ -70,6 +70,7 @@ function c37310367.disop(e,tp,eg,ep,ev,re,r,rp)
 	local sc=g:GetFirst()
 	if sc==rc then sc=g:GetNext() end
 	if sc:IsControler(tp) and sc:IsRace(RACE_CYBERSE) and rc:IsControler(1-tp) then
+		sc=g:GetFirst()
 		while sc do
 			Duel.NegateRelatedChain(sc,RESET_TURN_SET)
 			local e1=Effect.CreateEffect(c)
