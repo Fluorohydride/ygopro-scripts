@@ -35,7 +35,7 @@ function c35498188.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_BATTLE_DESTROYING)
 		e1:SetCondition(c35498188.atkcon)
 		e1:SetOperation(c35498188.atkop)
@@ -48,7 +48,9 @@ function c35498188.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return aux.bdocon(e,tp,eg,ep,ev,re,r,rp) and e:GetHandler():IsChainAttackable()
 end
 function c35498188.atkop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChainAttack()
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(35498188,1)) then
+		Duel.ChainAttack()
+	end
 end
 function c35498188.costfilter(c)
 	return c:IsType(TYPE_SPELL) and c:IsDiscardable()

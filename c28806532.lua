@@ -32,7 +32,7 @@ function c28806532.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c28806532.tfcfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousSetCard(0x109) and c:IsPreviousLocation(LOCATION_ONFIELD)
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousSetCard(0x109) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp
 end
 function c28806532.tfcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c28806532.tfcfilter,1,e:GetHandler(),tp)

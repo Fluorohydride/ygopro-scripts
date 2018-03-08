@@ -19,11 +19,10 @@ function c58421530.spfilter(c,e,tp,code)
 	return c:IsSetCard(0x102) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:GetOriginalCode()~=code
 end
 function c58421530.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local c=e:GetHandler()
-	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and chkc~=c and c58421530.desfilter1(chkc,e,tp) end
-	if chk==0 then return Duel.IsExistingTarget(c58421530.desfilter1,tp,LOCATION_ONFIELD,0,1,c,e,tp) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c58421530.desfilter1(chkc,e,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c58421530.desfilter1,tp,LOCATION_MZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c58421530.desfilter1,tp,LOCATION_ONFIELD,0,1,1,c,e,tp)
+	local g=Duel.SelectTarget(tp,c58421530.desfilter1,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK+LOCATION_GRAVE)
 end
