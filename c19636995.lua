@@ -31,30 +31,31 @@ function c19636995.initial_effect(c)
 	e3:SetOperation(c19636995.datop)
 	c:RegisterEffect(e3)
 end
+function c19636995.hspzone(tp)
+	local zone=0
+	local lg=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)
+	for tc in aux.Next(lg) do
+		zone=bit.bor(zone,tc:GetColumnZone(LOCATION_MZONE,0,0,tp))
+	end
+	return bit.bnot(zone)
+end
 function c19636995.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local zone=0x1f
-	local lg=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)
-	for tc in aux.Next(lg) do
-		zone=bit.band(zone,bit.bnot(tc:GetColumnZone(LOCATION_MZONE,0,0,tp)))
-	end
+	local zone=c19636995.hspzone(tp)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)>0
 end
 function c19636995.hspval(e,c)
 	local tp=c:GetControler()
-	local zone=0x1f
-	local lg=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)
-	for tc in aux.Next(lg) do
-		zone=bit.band(zone,bit.bnot(tc:GetColumnZone(LOCATION_MZONE,0,0,tp)))
-	end
+	local zone=c19636995.hspzone(tp)
 	return 0,zone
 end
-function c19636995.desfilter(c,g)
-	return not c:IsStatus(STATUS_SUMMONING+STATUS_SUMMON_DISABLED) and g:IsContains(c)
+function c19636995.desfilter(c,col)
+	return col==aux.GetColumn(c)
 end
 function c19636995.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetColumnGroup():IsExists(c19636995.desfilter,1,nil,eg)
+	local col=aux.GetColumn(e:GetHandler())
+	return col and eg:IsExists(c19636995.desfilter,1,nil,col)
 end
 function c19636995.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

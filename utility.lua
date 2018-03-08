@@ -1819,6 +1819,15 @@ function Auxiliary.IsCodeListed(c,code)
 	end
 	return false
 end
+function Auxiliary.GetColumn(c,p)
+	local seq=c:GetSequence()
+	if c:IsLocation(LOCATION_MZONE) then
+		if seq==5 then seq=1 elseif seq==6 then seq=3 end
+	elseif c:IsLocation(LOCATION_SZONE) then
+		if seq>4 then return nil end
+	else return nil end
+	if c:IsControler(p or 0) then return seq else return 4-seq end
+end
 --card effect disable filter(target)
 function Auxiliary.disfilter1(c)
 	return c:IsFaceup() and not c:IsDisabled() and (not c:IsType(TYPE_NORMAL) or bit.band(c:GetOriginalType(),TYPE_EFFECT)~=0)
