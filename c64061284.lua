@@ -1,5 +1,4 @@
 --古代の機械融合
---not fully implemented
 function c64061284.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -17,7 +16,7 @@ function c64061284.fcheck(tp,sg,fc,mg)
 	return true
 end
 function c64061284.filterchk(c)
-	return c:IsFaceup() and c:IsCode(83104731,95735217) and c:IsOnField()
+	return c:IsCode(83104731,95735217) and c:IsOnField()
 end
 function c64061284.filter0(c)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToGrave()
