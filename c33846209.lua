@@ -23,9 +23,6 @@ function c33846209.costfilter(c)
 	if c:IsFacedown() or c:GetLevel()~=4 or not c:IsType(TYPE_DUAL) then return false end
 	return Duel.IsExistingTarget(c33846209.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,c)
 end
-function c33846209.tgfilter(c,e)
-	return c:IsCanBeEffectTarget(e)
-end
 function c33846209.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc~=e:GetHandler() end
 	if chk==0 then
