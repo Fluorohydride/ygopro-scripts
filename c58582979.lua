@@ -34,20 +34,20 @@ function c58582979.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectMatchingCard(tp,c58582979.hspcfilter,tp,LOCATION_HAND,0,1,1,c)
 	Duel.SendtoGrave(g,REASON_COST)
 end
-function c58582979.spcfilter1(c,tp)
+function c58582979.spcfilter1(c,tp,ec)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
-		and Duel.IsExistingMatchingCard(c58582979.spcfilter2,tp,LOCATION_GRAVE,0,2,c,c:GetCode())
+		and Duel.IsExistingMatchingCard(c58582979.spcfilter2,tp,LOCATION_GRAVE,0,2,Group.FromCards(ec,c),c:GetCode())
 end
 function c58582979.spcfilter2(c,code)
 	return c:IsCode(code) and c:IsAbleToRemoveAsCost()
 end
 function c58582979.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.IsExistingMatchingCard(c58582979.spcfilter1,tp,LOCATION_GRAVE,0,1,c,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c58582979.spcfilter1,tp,LOCATION_GRAVE,0,1,c,tp,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c58582979.spcfilter1,tp,LOCATION_GRAVE,0,1,1,c,tp)
+	local g=Duel.SelectMatchingCard(tp,c58582979.spcfilter1,tp,LOCATION_GRAVE,0,1,1,c,tp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=Duel.SelectMatchingCard(tp,c58582979.spcfilter2,tp,LOCATION_GRAVE,0,2,2,g:GetFirst(),g:GetFirst():GetCode())
+	local g2=Duel.SelectMatchingCard(tp,c58582979.spcfilter2,tp,LOCATION_GRAVE,0,2,2,Group.FromCards(c,g:GetFirst()),g:GetFirst():GetCode())
 	g:Merge(g2)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end

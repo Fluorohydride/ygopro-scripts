@@ -53,8 +53,11 @@ function c31759689.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
 	end
 end
+function c31759689.atkfilter(c,ec)
+	return (c:GetLinkedGroup() and c:GetLinkedGroup():IsContains(ec)) or (ec:GetLinkedGroup() and ec:GetLinkedGroup():IsContains(c))
+end
 function c31759689.val(e,c)
-	return c:GetLinkedGroupCount()*-1000
+	return Duel.GetMatchingGroupCount(c31759689.atkfilter,0,LOCATION_MZONE,LOCATION_MZONE,c,c)*-1000
 end
 function c31759689.poscon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
