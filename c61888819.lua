@@ -5,7 +5,14 @@ function c61888819.initial_effect(c)
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0xa),2,2)
 	c:EnableReviveLimit()
 	--force mzone
-
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_MUST_USE_MZONE)
+	e1:SetRange(LOCATION_MZONE)
+	e1:SetTargetRange(LOCATION_EXTRA,LOCATION_EXTRA)
+	e1:SetCondition(c54813225.frccon)
+	e1:SetValue(c54813225.frcval)
+	c:RegisterEffect(e1)
 	--cannot be target/indestructable
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
@@ -34,6 +41,12 @@ function c61888819.initial_effect(c)
 	e6:SetTarget(c61888819.sptg)
 	e6:SetOperation(c61888819.spop)
 	c:RegisterEffect(e6)
+end
+function c61888819.frccon(e)
+	return e:GetHandler():GetSequence()>4
+end
+function c61888819.frcval(e,c,fp,rp,r)
+	return e:GetHandler():GetLinkedZone()
 end
 function c61888819.indcon(e)
 	return e:GetHandler():GetLinkedGroupCount()>0
