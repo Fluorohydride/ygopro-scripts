@@ -69,7 +69,7 @@ function c44586426.tkop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,44586427,0,0x4011,0,0,1,RACE_THUNDER,ATTRIBUTE_LIGHT) then return end
 	local token=Duel.CreateToken(tp,44586427)
-	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP_ATTACK)
+	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 end
 function c44586426.nmfilter(c,cd)
 	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsType(TYPE_EFFECT)

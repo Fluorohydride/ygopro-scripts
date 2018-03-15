@@ -91,6 +91,7 @@ function c24104865.spop(e,tp,eg,ep,ev,re,r,rp)
 		c:CreateRelation(tc,RESET_EVENT+0x1020000)
 		tc=sg:GetNext()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c24104865.desfilter(c,rc)
 	return c:GetFlagEffect(24104865)~=0 and rc:IsRelateToCard(c)
