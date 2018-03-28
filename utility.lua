@@ -4,6 +4,42 @@ POS_FACEUP_DEFENCE=POS_FACEUP_DEFENSE
 POS_FACEDOWN_DEFENCE=POS_FACEDOWN_DEFENSE
 RACE_CYBERS=RACE_CYBERSE
 
+--the lua version of the bit32 lib, which is deprecated in lua 5.3
+bit={}
+function bit.band(a,b)
+	return a&b
+end
+function bit.bor(a,b)
+	return a|b
+end
+function bit.bxor(a,b)
+	return a~b
+end
+function bit.lshift(a,b)
+	return a<<b
+end
+function bit.rshift(a,b)
+	return a>>b
+end
+function bit.bnot(a)
+	return ~a
+end
+local function fieldargs(f,width)
+	w=width or 1
+	assert(f>=0,"field cannot be negative")
+	assert(w>0,"width must be positive")
+	assert(f+w<=32,"trying to access non-existent bits")
+	return f,~(-1<<w)
+end
+function bit.extract(r,field,width)
+	local f,m=fieldargs(field,width)
+	return (r>>f)&m
+end
+function bit.replace(r,v,field,width)
+	local f,m=fieldargs(field,width)
+	return (r&~(m<<f))|((v&m)<< f)
+end
+
 function Auxiliary.Stringid(code,id)
 	return code*16+id
 end
@@ -958,10 +994,10 @@ function Auxiliary.FConditionMix(insf,sub,...)
 	local funs={...}
 	return	function(e,g,gc,chkfnf)
 				if g==nil then return insf end
-				local chkf=bit.band(chkfnf,0xff)
+				local chkf=chkfnf&0xff
 				local c=e:GetHandler()
 				local tp=c:GetControler()
-				local notfusion=bit.rshift(chkfnf,8)~=0
+				local notfusion=chkfnf>>8~=0
 				local sub=sub or notfusion
 				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub,table.unpack(funs))
 				if gc then
@@ -976,10 +1012,10 @@ end
 function Auxiliary.FOperationMix(insf,sub,...)
 	local funs={...}
 	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
-				local chkf=bit.band(chkfnf,0xff)
+				local chkf=chkfnf&0xff
 				local c=e:GetHandler()
 				local tp=c:GetControler()
-				local notfusion=bit.rshift(chkfnf,8)~=0
+				local notfusion=chkfnf>>8~=0
 				local sub=sub or notfusion
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,table.unpack(funs))
 				local sg=Group.CreateGroup()
@@ -1071,10 +1107,10 @@ function Auxiliary.FConditionMixRep(insf,sub,fun1,minc,maxc,...)
 	local funs={...}
 	return	function(e,g,gc,chkfnf)
 				if g==nil then return insf end
-				local chkf=bit.band(chkfnf,0xff)
+				local chkf=chkfnf&0xff
 				local c=e:GetHandler()
 				local tp=c:GetControler()
-				local notfusion=bit.rshift(chkfnf,8)~=0
+				local notfusion=chkfnf>>8~=0
 				local sub=sub or notfusion
 				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub,fun1,table.unpack(funs))
 				if gc then
@@ -1089,10 +1125,10 @@ end
 function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
 	local funs={...}
 	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
-				local chkf=bit.band(chkfnf,0xff)
+				local chkf=chkfnf&0xff
 				local c=e:GetHandler()
 				local tp=c:GetControler()
-				local notfusion=bit.rshift(chkfnf,8)~=0
+				local notfusion=chkfnf>>8~=0
 				local sub=sub or notfusion
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,fun1,table.unpack(funs))
 				local sg=Group.CreateGroup()
@@ -1830,7 +1866,7 @@ function Auxiliary.GetColumn(c,p)
 end
 --card effect disable filter(target)
 function Auxiliary.disfilter1(c)
-	return c:IsFaceup() and not c:IsDisabled() and (not c:IsType(TYPE_NORMAL) or bit.band(c:GetOriginalType(),TYPE_EFFECT)~=0)
+	return c:IsFaceup() and not c:IsDisabled() and (not c:IsType(TYPE_NORMAL) or c:GetOriginalType()&TYPE_EFFECT~=0)
 end
 --condition of EVENT_BATTLE_DESTROYING
 function Auxiliary.bdcon(e,tp,eg,ep,ev,re,r,rp)
@@ -1910,23 +1946,23 @@ function Auxiliary.sumreg(e,tp,eg,ep,ev,re,r,rp)
 end
 --sp_summon condition for fusion monster
 function Auxiliary.fuslimit(e,se,sp,st)
-	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
 end
 --sp_summon condition for ritual monster
 function Auxiliary.ritlimit(e,se,sp,st)
-	return bit.band(st,SUMMON_TYPE_RITUAL)==SUMMON_TYPE_RITUAL
+	return st&SUMMON_TYPE_RITUAL==SUMMON_TYPE_RITUAL
 end
 --sp_summon condition for synchro monster
 function Auxiliary.synlimit(e,se,sp,st)
-	return bit.band(st,SUMMON_TYPE_SYNCHRO)==SUMMON_TYPE_SYNCHRO
+	return st&SUMMON_TYPE_SYNCHRO==SUMMON_TYPE_SYNCHRO
 end
 --sp_summon condition for xyz monster
 function Auxiliary.xyzlimit(e,se,sp,st)
-	return bit.band(st,SUMMON_TYPE_XYZ)==SUMMON_TYPE_XYZ
+	return st&SUMMON_TYPE_XYZ==SUMMON_TYPE_XYZ
 end
 --sp_summon condition for pendulum monster
 function Auxiliary.penlimit(e,se,sp,st)
-	return bit.band(st,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
+	return st&SUMMON_TYPE_PENDULUM==SUMMON_TYPE_PENDULUM
 end
 --effects inflicting damage to tp
 function Auxiliary.damcon1(e,tp,eg,ep,ev,re,r,rp)
