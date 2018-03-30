@@ -99,14 +99,12 @@ function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c24010609.setfilter),tp,LOCATION_GRAVE,0,nil)
-	if g:GetCount()==0 then return end
+	if #g==0 then return end
 	local field=false
 	if g:IsExists(Card.IsType,1,nil,TYPE_FIELD) then field=true end
 	local ct=e:GetHandler():GetFlagEffectLabel(24010609)
-	if not ct or ct<=0 then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
-	if ct>ft then ct=ft end
-	if ct<=0 and not field then return end
+	if not ct or ct<=0 or (ft<=0 and not field) then return end
 	local tg=Group.CreateGroup()
 	repeat
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
@@ -116,9 +114,10 @@ function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 		if sg:GetFirst():IsType(TYPE_FIELD) then
 			field=false
 		else
-			ct=ct-1
+			ft=ft-1
 		end
-	until (ct==0 and not field) or g:GetCount()==0 or not Duel.SelectYesNo(tp,aux.Stringid(24010609,2))
+		ct=ct-1
+	until ct==0 or (ft==0 and not field) or #g==0 or not Duel.SelectYesNo(tp,aux.Stringid(24010609,2))
 	local tc=tg:GetFirst()
 	while tc do
 		Duel.SSet(tp,tc)
