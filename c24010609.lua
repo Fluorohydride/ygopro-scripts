@@ -31,17 +31,12 @@ function c24010609.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e4:SetCode(EVENT_CHAINING)
 	e4:SetRange(LOCATION_SZONE)
-	e4:SetLabelObject(e3)
 	e4:SetOperation(c24010609.regop)
 	c:RegisterEffect(e4)
 	local e5=e4:Clone()
 	e5:SetCode(EVENT_CHAIN_NEGATED)
 	e5:SetOperation(c24010609.regop2)
 	c:RegisterEffect(e5)
-	local e6=e4:Clone()
-	e6:SetCode(EVENT_PHASE_START+PHASE_DRAW)
-	e6:SetOperation(c24010609.clearop)
-	c:RegisterEffect(e6)
 end
 function c24010609.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
@@ -73,27 +68,31 @@ function c24010609.chainlm(e,rp,tp)
 	return tp==rp
 end
 function c24010609.regop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	if re:GetHandler():IsSetCard(0x115) and re:IsActiveType(TYPE_SPELL) and rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) then
-		local val=e:GetLabelObject():GetLabel()
-		e:GetLabelObject():SetLabel(val+1)
+		local flag=c:GetFlagEffectLabel(24010609)
+		if flag then
+			c:SetFlagEffectLabel(24010609,flag+1)
+		else
+			c:RegisterFlagEffect(24010609,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1,1)
+		end
 	end
 end
 function c24010609.regop2(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	if re:GetHandler():IsSetCard(0x115) and re:IsActiveType(TYPE_SPELL) and rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) then
-		local val=e:GetLabelObject():GetLabel()
-		if val==0 then val=1 end
-		e:GetLabelObject():SetLabel(val-1)
+		local flag=c:GetFlagEffectLabel(24010609)
+		if flag and flag>0 then
+			c:SetFlagEffectLabel(24010609,flag-1)
+		end
 	end
-end
-function c24010609.clearop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetLabelObject():SetLabel(0)
 end
 function c24010609.setfilter(c)
 	return c:IsSetCard(0x115) and c:IsType(TYPE_SPELL) and c:IsSSetable()
 end
 function c24010609.settg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ct=e:GetLabel()
-	if chk==0 then return ct>0 and Duel.IsExistingMatchingCard(c24010609.setfilter,tp,LOCATION_GRAVE,0,1,nil) end
+	local ct=e:GetHandler():GetFlagEffectLabel(24010609)
+	if chk==0 then return ct and ct>0 and Duel.IsExistingMatchingCard(c24010609.setfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,nil,1,tp,0)
 end
 function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
@@ -101,27 +100,37 @@ function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c24010609.setfilter),tp,LOCATION_GRAVE,0,nil)
 	if g:GetCount()==0 then return end
-	local field=false
-	if g:IsExists(Card.IsType,1,nil,TYPE_FIELD) then field=true end
-	local ct=e:GetLabel()
+	local ct=e:GetHandler():GetFlagEffectLabel(24010609) or 0
+	if ct<=0 then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
-	if ct>ft then ct=ft end
-	if ct<=0 and not field then return end
+	local fg=g:Filter(Card.IsType,nil,TYPE_FIELD)
 	local tg=Group.CreateGroup()
-	repeat
+	local field=1
+	if fg:GetCount()>0 and (ft<=0 or Duel.SelectYesNo(tp,aux.Stringid(24010609,2))) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-		local sg=g:Select(tp,1,1,nil)
-		tg:Merge(sg)
-		g:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
-		if sg:GetFirst():IsType(TYPE_FIELD) then
-			field=false
-		else
+		tg=fg:Select(tp,1,1,nil)
+		ct=ct-1
+		field=0
+	end
+	g:Remove(Card.IsType,nil,TYPE_FIELD)
+	if ct>ft then ct=ft end
+	local tg1=Group.CreateGroup()
+	while ct>0 and g:GetCount()>0 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
+		local sg=g:Select(tp,field,1,nil)
+		if sg:GetCount()>0 then
+			tg1:Merge(sg)
+			g:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
 			ct=ct-1
+			field=0
+		else
+			break
 		end
-	until (ct==0 and not field) or g:GetCount()==0 or not Duel.SelectYesNo(tp,aux.Stringid(24010609,2))
-	local tc=tg:GetFirst()
+	end
+	tg:Merge(tg1)
+	Duel.SSet(tp,tg)
+	tc=tg:GetFirst()
 	while tc do
-		Duel.SSet(tp,tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
@@ -132,4 +141,5 @@ function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 		tc=tg:GetNext()
 	end
 	Duel.ConfirmCards(1-tp,tg)
+	Duel.ShuffleSetCard(tg1)
 end
