@@ -1767,8 +1767,9 @@ function Auxiliary.AddLinkProcedure(c,f,min,max,gf)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetRange(LOCATION_EXTRA)
-	if max==nil then max=99 end
+	if max==nil then max=c:GetLink() end
 	e1:SetCondition(Auxiliary.LinkCondition(f,min,max,gf))
+	e1:SetTarget(Auxiliary.LinkTarget(f,min,max,gf))
 	e1:SetOperation(Auxiliary.LinkOperation(f,min,max,gf))
 	e1:SetValue(SUMMON_TYPE_LINK)
 	c:RegisterEffect(e1)
@@ -1811,31 +1812,56 @@ function Auxiliary.LinkCondition(f,minc,maxc,gf)
 					or mg:IsExists(Auxiliary.LCheckRecursive,1,sg,tp,sg,mg,c,ct,minc,maxc,gf)
 			end
 end
-function Auxiliary.LinkOperation(f,minc,maxc,gf)
-	return	function(e,tp,eg,ep,ev,re,r,rp,c)
+function Auxiliary.LinkTarget(f,minc,maxc,gf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c)
 				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f,c)
-				local sg=Group.CreateGroup()
+				local bg=Group.CreateGroup()
 				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_LMATERIAL)}) do
-					sg:AddCard(pe:GetHandler())
+					bg:AddCard(pe:GetHandler())
 				end
-				local ct=sg:GetCount()
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LMATERIAL)
-				sg:Select(tp,ct,ct,nil)
-				for i=ct,maxc-1 do
-					local cg=mg:Filter(Auxiliary.LCheckRecursive,sg,tp,sg,mg,c,i,minc,maxc,gf)
-					if cg:GetCount()==0 then break end
-					local minct=1
-					if Auxiliary.LCheckGoal(tp,sg,c,minc,i,gf) then
+				if #bg>0 then
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LMATERIAL)
+					bg:Select(tp,#bg,#bg,nil)
+				end
+				local sg=Group.CreateGroup()
+				local res=false
+				sg:Merge(bg)
+				while #sg<maxc do
+					local cg=mg:Filter(Auxiliary.LCheckRecursive,sg,tp,sg,mg,c,#sg,minc,maxc,gf)
+					if #cg==0 then break end
+					if #cg<=maxc and Auxiliary.LCheckGoal(tp,sg,c,minc,#sg,gf)
+						and mg:IsExists(Auxiliary.LCheckRecursive,1,sg,tp,sg,mg,c,#sg,minc,maxc,gf) then
+						res=true
 						if not Duel.SelectYesNo(tp,210) then break end
-						minct=0
+					else
+						res=false
 					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LMATERIAL)
-					local g=cg:Select(tp,minct,1,nil)
-					if g:GetCount()==0 then break end
-					sg:Merge(g)
+					local tc=Group.SelectUnselect(cg,sg,tp,res,#sg==0 or res,minc,maxc)
+					if not tc then break end
+					if not bg:IsContains(tc) then
+						if not sg:IsContains(tc) then
+							sg:AddCard(tc)
+						else
+							sg:RemoveCard(tc)
+						end
+					elseif #bg>0 and #sg<=#bg then
+						return false
+					end
 				end
-				c:SetMaterial(sg)
-				Duel.SendtoGrave(sg,REASON_MATERIAL+REASON_LINK)
+				if #sg>0 then
+					sg:KeepAlive()
+					e:SetLabelObject(sg)
+					return true
+				else return false end
+			end
+end
+function Auxiliary.LinkOperation(f,min,max,gf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,c,smat,mg)
+				local g=e:GetLabelObject()
+				c:SetMaterial(g)
+				Duel.SendtoGrave(g,REASON_MATERIAL+REASON_LINK)
+				g:DeleteGroup()
 			end
 end
 function Auxiliary.IsMaterialListCode(c,code)
