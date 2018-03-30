@@ -69,7 +69,7 @@ function c24010609.chainlm(e,rp,tp)
 end
 function c24010609.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if re:GetHandler():IsSetCard(0x115) and re:IsActiveType(TYPE_SPELL) and rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) then
+	if re:GetHandler():IsSetCard(0x115) and re:IsActiveType(TYPE_SPELL) and rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler()~=c then
 		local flag=c:GetFlagEffectLabel(24010609)
 		if flag then
 			c:SetFlagEffectLabel(24010609,flag+1)
@@ -80,7 +80,7 @@ function c24010609.regop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c24010609.regop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if re:GetHandler():IsSetCard(0x115) and re:IsActiveType(TYPE_SPELL) and rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) then
+	if re:GetHandler():IsSetCard(0x115) and re:IsActiveType(TYPE_SPELL) and rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler()~=c then
 		local flag=c:GetFlagEffectLabel(24010609)
 		if flag and flag>0 then
 			c:SetFlagEffectLabel(24010609,flag-1)
