@@ -31,17 +31,12 @@ function c24010609.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e4:SetCode(EVENT_CHAINING)
 	e4:SetRange(LOCATION_SZONE)
-	e4:SetLabelObject(e3)
 	e4:SetOperation(c24010609.regop)
 	c:RegisterEffect(e4)
 	local e5=e4:Clone()
 	e5:SetCode(EVENT_CHAIN_NEGATED)
 	e5:SetOperation(c24010609.regop2)
 	c:RegisterEffect(e5)
-	local e6=e4:Clone()
-	e6:SetCode(EVENT_PHASE_START+PHASE_DRAW)
-	e6:SetOperation(c24010609.clearop)
-	c:RegisterEffect(e6)
 end
 function c24010609.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
@@ -73,27 +68,31 @@ function c24010609.chainlm(e,rp,tp)
 	return tp==rp
 end
 function c24010609.regop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	if re:GetHandler():IsSetCard(0x115) and re:IsActiveType(TYPE_SPELL) and rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) then
-		local val=e:GetLabelObject():GetLabel()
-		e:GetLabelObject():SetLabel(val+1)
+		local flag=c:GetFlagEffectLabel(24010609)
+		if flag then
+			c:SetFlagEffectLabel(24010609,flag+1)
+		else
+			c:RegisterFlagEffect(24010609,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1,1)
+		end
 	end
 end
 function c24010609.regop2(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	if re:GetHandler():IsSetCard(0x115) and re:IsActiveType(TYPE_SPELL) and rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) then
-		local val=e:GetLabelObject():GetLabel()
-		if val==0 then val=1 end
-		e:GetLabelObject():SetLabel(val-1)
+		local flag=c:GetFlagEffectLabel(24010609)
+		if flag and flag>0 then
+			c:SetFlagEffectLabel(24010609,flag-1)
+		end
 	end
-end
-function c24010609.clearop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetLabelObject():SetLabel(0)
 end
 function c24010609.setfilter(c)
 	return c:IsSetCard(0x115) and c:IsType(TYPE_SPELL) and c:IsSSetable()
 end
 function c24010609.settg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ct=e:GetLabel()
-	if chk==0 then return ct>0 and Duel.IsExistingMatchingCard(c24010609.setfilter,tp,LOCATION_GRAVE,0,1,nil) end
+	local ct=e:GetHandler():GetFlagEffectLabel(24010609)
+	if chk==0 then return ct and ct>0 and Duel.IsExistingMatchingCard(c24010609.setfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,nil,1,tp,0)
 end
 function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
@@ -103,7 +102,8 @@ function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()==0 then return end
 	local field=false
 	if g:IsExists(Card.IsType,1,nil,TYPE_FIELD) then field=true end
-	local ct=e:GetLabel()
+	local ct=e:GetHandler():GetFlagEffectLabel(24010609)
+	if not ct or ct<=0 then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if ct>ft then ct=ft end
 	if ct<=0 and not field then return end
