@@ -99,37 +99,35 @@ function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c24010609.setfilter),tp,LOCATION_GRAVE,0,nil)
-	if g:GetCount()==0 then return end
 	local ct=e:GetHandler():GetFlagEffectLabel(24010609) or 0
-	if ct<=0 then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
-	local fg=g:Filter(Card.IsType,nil,TYPE_FIELD)
 	local tg=Group.CreateGroup()
-	local field=1
-	if fg:GetCount()>0 and (ft<=0 or Duel.SelectYesNo(tp,aux.Stringid(24010609,2))) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-		tg=fg:Select(tp,1,1,nil)
-		ct=ct-1
-		field=0
-	end
-	g:Remove(Card.IsType,nil,TYPE_FIELD)
-	if ct>ft then ct=ft end
 	local tg1=Group.CreateGroup()
-	while ct>0 and g:GetCount()>0 do
+	local field=false
+	local init=1
+	if g:IsExists(Card.IsType,1,nil,TYPE_FIELD) then field=true end
+	while ct>0 and (ft>0 or field) and g:GetCount()>0 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-		local sg=g:Select(tp,field,1,nil)
+		local sg=g:Select(tp,init,1,nil)
 		if sg:GetCount()>0 then
-			tg1:Merge(sg)
-			g:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
+			if sg:GetFirst():IsType(TYPE_FIELD) then
+				tg:Merge(sg)
+				g:Remove(Card.IsType,nil,TYPE_FIELD)
+				field=false
+			else
+				tg1:Merge(sg)
+				g:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
+				ft=ft-1
+			end
+			init=0
 			ct=ct-1
-			field=0
 		else
 			break
 		end
 	end
 	tg:Merge(tg1)
 	Duel.SSet(tp,tg)
-	tc=tg:GetFirst()
+	local tc=tg:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
