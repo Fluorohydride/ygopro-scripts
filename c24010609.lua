@@ -119,9 +119,9 @@ function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		ct=ct-1
 	until ct==0 or (ft==0 and not field) or #g==0 or not Duel.SelectYesNo(tp,aux.Stringid(24010609,2))
+	Duel.SSet(tp,tg)
 	local tc=tg:GetFirst()
 	while tc do
-		Duel.SSet(tp,tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
