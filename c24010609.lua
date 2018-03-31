@@ -69,7 +69,7 @@ function c24010609.chainlm(e,rp,tp)
 end
 function c24010609.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if re:GetHandler():IsSetCard(0x115) and re:IsActiveType(TYPE_SPELL) and rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler()~=c then
+	if re:GetHandler():IsSetCard(0x115) and re:IsActiveType(TYPE_SPELL) and rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		local flag=c:GetFlagEffectLabel(24010609)
 		if flag then
 			c:SetFlagEffectLabel(24010609,flag+1)
@@ -80,7 +80,7 @@ function c24010609.regop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c24010609.regop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if re:GetHandler():IsSetCard(0x115) and re:IsActiveType(TYPE_SPELL) and rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler()~=c then
+	if re:GetHandler():IsSetCard(0x115) and re:IsActiveType(TYPE_SPELL) and rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		local flag=c:GetFlagEffectLabel(24010609)
 		if flag and flag>0 then
 			c:SetFlagEffectLabel(24010609,flag-1)
@@ -102,9 +102,9 @@ function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 	if #g==0 then return end
 	local field=false
 	if g:IsExists(Card.IsType,1,nil,TYPE_FIELD) then field=true end
-	local ct=e:GetHandler():GetFlagEffectLabel(24010609)
+	local ct=e:GetHandler():GetFlagEffectLabel(24010609) or 0
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
-	if not ct or ct<=0 or (ft<=0 and not field) then return end
+	if ct<=0 or (ft<=0 and not field) then return end
 	local tg=Group.CreateGroup()
 	repeat
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
@@ -112,6 +112,7 @@ function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 		tg:Merge(sg)
 		g:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
 		if sg:GetFirst():IsType(TYPE_FIELD) then
+			g:Remove(Card.IsType,nil,TYPE_FIELD)
 			field=false
 		else
 			ft=ft-1
