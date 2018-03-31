@@ -130,5 +130,4 @@ function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 		tc=tg:GetNext()
 	end
-	Duel.ShuffleSetCard(tg)
 end
