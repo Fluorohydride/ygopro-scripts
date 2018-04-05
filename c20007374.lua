@@ -98,7 +98,7 @@ function c20007374.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterEffect(e2,tp)
 		Duel.SpecialSummonComplete()
 		tc:CompleteProcedure()
-	else
+	elseif c:IsRelateToEffect(e) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
 		c:CancelToGrave(false)
 	end
 end

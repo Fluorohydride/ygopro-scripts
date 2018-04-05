@@ -25,7 +25,7 @@ function c20584712.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(nil,tp,0,LOCATION_ONFIELD,1,nil)
 		and Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
-	e:SetLabel(Duel.SelectOption(tp,70,71,72))
+	e:SetLabel(Duel.AnnounceType(tp))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	Duel.SelectTarget(tp,nil,tp,0,LOCATION_ONFIELD,1,1,nil)
 end

@@ -2,7 +2,7 @@
 function c41097056.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_TODECK+CATEGORY_DESTROY)
+	e1:SetCategory(CATEGORY_TOEXTRA+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -23,7 +23,7 @@ function c41097056.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g1=Duel.SelectTarget(tp,c41097056.filter,tp,LOCATION_MZONE,0,1,1,nil,tp)
 	local g2=Duel.GetMatchingGroup(c41097056.desfilter,tp,0,LOCATION_MZONE,nil,math.max(0,g1:GetFirst():GetTextAttack()))
-	Duel.SetOperationInfo(0,CATEGORY_TODECK,g1,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,g1,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g2,g2:GetCount(),0,0)
 end
 function c41097056.activate(e,tp,eg,ep,ev,re,r,rp)

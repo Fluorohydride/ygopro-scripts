@@ -67,7 +67,8 @@ function c58600555.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c58600555.cfilter,1,nil)
 end
 function c58600555.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsRace,tp,LOCATION_GRAVE,0,1,nil,RACE_INSECT) end
+	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ)
+		and Duel.IsExistingMatchingCard(Card.IsRace,tp,LOCATION_GRAVE,0,1,nil,RACE_INSECT) end
 end
 function c58600555.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

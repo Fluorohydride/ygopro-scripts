@@ -32,7 +32,7 @@ function c83715234.desfilter(c)
 end
 function c83715234.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and c83715234.desfilter(chkc) end
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and not e:GetHandler():IsStatus(STATUS_CHAINING)
+	if chk==0 then return not e:GetHandler():IsStatus(STATUS_CHAINING)
 		and Duel.IsExistingTarget(c83715234.desfilter,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c83715234.desfilter,tp,0,LOCATION_ONFIELD,1,1,nil)

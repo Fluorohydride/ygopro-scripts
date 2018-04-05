@@ -50,7 +50,7 @@ function c89907227.tkop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	if Duel.IsPlayerCanSpecialSummonMonster(tp,89907228,0,0x4011,3300,3000,10,RACE_FISH,ATTRIBUTE_WATER) then
 		local token=Duel.CreateToken(tp,89907228)
-		Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
+		Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end
 function c89907227.tkcon2(e,tp,eg,ep,ev,re,r,rp)

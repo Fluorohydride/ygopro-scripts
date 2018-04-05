@@ -35,7 +35,7 @@ function c16259549.initial_effect(c)
 	--todeck
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(16259549,1))
-	e4:SetCategory(CATEGORY_TODECK)
+	e4:SetCategory(CATEGORY_TODECK+CATEGORY_TOEXTRA)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_TO_GRAVE)
 	e4:SetCountLimit(1,16259549)
@@ -81,6 +81,7 @@ function c16259549.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		local sg=g:Select(tp,2,2,nil)
 		Duel.SetTargetCard(sg)
 		Duel.SetOperationInfo(0,CATEGORY_TODECK,sg,2,0,0)
+		Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,e:GetHandler(),1,0,0)
 	end
 end
 function c16259549.tdop(e,tp,eg,ep,ev,re,r,rp)

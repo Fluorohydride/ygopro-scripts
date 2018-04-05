@@ -29,7 +29,7 @@ function c85967160.adcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp
 end
 function c85967160.adtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return ep==tp and e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return ep==tp end
 end
 function c85967160.adop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

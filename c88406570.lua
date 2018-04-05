@@ -1,7 +1,7 @@
 --剛鬼デストロイ・オーガ
 function c88406570.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0xfc),2)
+	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0xfc),2)
 	c:EnableReviveLimit()
 	--indes
 	local e1=Effect.CreateEffect(c)

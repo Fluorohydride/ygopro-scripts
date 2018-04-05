@@ -8,6 +8,7 @@ function c71133680.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetRange(LOCATION_HAND)
+	e1:SetHintTiming(TIMING_DAMAGE_STEP)
 	e1:SetCountLimit(1,71133680)
 	e1:SetCondition(c71133680.atkcon)
 	e1:SetCost(c71133680.atkcost)
@@ -54,15 +55,19 @@ function c71133680.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local dc=Duel.SelectMatchingCard(tp,c71133680.desfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,1,tc):GetFirst()
 	if dc and Duel.Destroy(dc,REASON_EFFECT)~=0 then
 		if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
+		local atk=dc:GetBaseAttack()
+		local def=dc:GetBaseDefense()
+		if atk<0 then atk=0 end
+		if def<0 then def=0 end
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
-		e1:SetValue(dc:GetBaseAttack())
+		e1:SetValue(atk)
 		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_UPDATE_DEFENSE)
-		e2:SetValue(dc:GetBaseDefense())
+		e2:SetValue(def)
 		tc:RegisterEffect(e2)
 	end
 end

@@ -5,7 +5,6 @@ function c39387565.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_END_PHASE)
-	e1:SetTarget(c39387565.target)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
@@ -31,20 +30,6 @@ function c39387565.initial_effect(c)
 	e3:SetOperation(c39387565.spop2)
 	c:RegisterEffect(e3)
 end
-function c39387565.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return c39387565.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc) end
-	if chk==0 then return true end
-	if c39387565.spcon1(e,tp,eg,ep,ev,re,r,rp) and c39387565.sptg1(e,tp,eg,ep,ev,re,r,rp,0) and Duel.SelectYesNo(tp,aux.Stringid(39387565,0)) then
-		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
-		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
-		e:SetOperation(c39387565.spop1)
-		c39387565.sptg1(e,tp,eg,ep,ev,re,r,rp,1)
-	else
-		e:SetCategory(0)
-		e:SetProperty(0)
-		e:SetOperation(nil)
-	end
-end
 function c39387565.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x3b)
 end
@@ -57,9 +42,7 @@ end
 function c39387565.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c39387565.spfilter1(chkc,e,tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingTarget(c39387565.spfilter1,tp,LOCATION_GRAVE,0,1,nil,e,tp)
-		and Duel.GetFlagEffect(tp,39387565)==0 end
-	Duel.RegisterFlagEffect(tp,39387565,RESET_PHASE+PHASE_END,0,1)
+		and Duel.IsExistingTarget(c39387565.spfilter1,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c39387565.spfilter1,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)

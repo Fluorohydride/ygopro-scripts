@@ -46,7 +46,7 @@ function c32835363.regop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+32835363,e,0,tp,e:GetLabel(),0)
 end
 function c32835363.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return true end
 	Duel.SetTargetParam(800)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,0,ep,800)
 end

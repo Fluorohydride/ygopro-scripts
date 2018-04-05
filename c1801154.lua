@@ -25,7 +25,7 @@ function c1801154.filter2(c,code)
 end
 function c1801154.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c1801154.filter1(chkc,e,tp,eg) end
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c1801154.filter1,tp,LOCATION_GRAVE,0,1,nil,e,tp,eg) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c1801154.filter1,tp,LOCATION_GRAVE,0,1,1,nil,e,tp,eg)

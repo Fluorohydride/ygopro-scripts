@@ -44,7 +44,7 @@ function c4179255.drcon(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():GetFlagEffect(1)>0
 end
 function c4179255.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and e:GetHandler():IsFaceup() end
+	if chk==0 then return true end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)

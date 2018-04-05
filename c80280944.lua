@@ -28,14 +28,12 @@ end
 function c80280944.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
-		local g=Duel.GetMatchingGroup(c80280944.filter,tp,LOCATION_REMOVED,0,nil)
-		if g:GetCount()>0 then
+		local ct=Duel.GetMatchingGroupCount(c80280944.filter,tp,LOCATION_REMOVED,0,nil)
+		if ct>0 then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-			e1:SetRange(LOCATION_MZONE)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)
-			e1:SetValue(g:GetCount()*200)
+			e1:SetValue(ct*200)
 			e1:SetReset(RESET_EVENT+0x1ff0000)
 			c:RegisterEffect(e1)
 		end

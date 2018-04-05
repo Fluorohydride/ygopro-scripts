@@ -87,7 +87,7 @@ function c18897163.xyztg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c18897163.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c18897163.xyzfilter,tp,LOCATION_EXTRA,0,nil)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)

@@ -55,7 +55,6 @@ function c62868900.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Equip(tp,c,tc)
-		c:CancelToGrave()
 		--Atkup
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_EQUIP)
@@ -73,7 +72,7 @@ function c62868900.operation(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+0x1fe0000)
 		c:RegisterEffect(e2)
 	else
-		c:CancelToGrave(true)
+		c:CancelToGrave(false)
 	end
 end
 function c62868900.eqlimit(e,c)

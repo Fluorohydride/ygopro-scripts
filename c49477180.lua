@@ -65,6 +65,7 @@ function c49477180.mtop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EVENT_BATTLED)
 	e1:SetTarget(c49477180.drtg)
 	e1:SetOperation(c49477180.drop)
+	e1:SetReset(RESET_EVENT+0x1fe0000)
 	rc:RegisterEffect(e1,true)
 	if not rc:IsType(TYPE_EFFECT) then
 		local e3=Effect.CreateEffect(c)

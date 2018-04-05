@@ -94,7 +94,7 @@ function c63845230.val(e,c)
 end
 function c63845230.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetHandler():GetBattleTarget()
-	if chk==0 then return tc and tc:IsControler(1-tp) and tc:IsAbleToRemove() end
+	if chk==0 then return tc and tc:IsControler(1-tp) and tc:IsAbleToRemove() and not tc:IsType(TYPE_TOKEN) end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,tc,1,0,0)
 end
 function c63845230.rmop(e,tp,eg,ep,ev,re,r,rp)

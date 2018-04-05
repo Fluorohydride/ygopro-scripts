@@ -22,14 +22,13 @@ function c69402394.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,PLAYER_ALL,2)
 end
 function c69402394.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)<2 or Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)<2 then return end
-	if Duel.SelectYesNo(1-tp,aux.Stringid(69402394,0)) then
+	if Duel.IsChainDisablable(0) and Duel.GetFieldGroupCount(1-tp,LOCATION_HAND,0)>0
+		and Duel.SelectYesNo(1-tp,aux.Stringid(69402394,0)) then
 		Duel.DiscardHand(1-tp,aux.TRUE,1,1,REASON_EFFECT+REASON_DISCARD,nil)
-		if Duel.IsChainDisablable(0) then
-			Duel.NegateEffect(0)
-			return
-		end
+		Duel.NegateEffect(0)
+		return
 	end
+	if Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)<2 or Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)<2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
 	local g1=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_HAND,0,2,2,nil)
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_DISCARD)

@@ -16,10 +16,13 @@ function c42994702.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	c:RegisterFlagEffect(42994702,RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END,0,1)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,c,1,0,0)
 end
+function c42994702.filter(c)
+	return c:IsFacedown() and c:GetSequence()<5
+end
 function c42994702.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() and Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)>0 then
-		local g=Duel.GetMatchingGroup(Card.IsFacedown,tp,LOCATION_MZONE,0,nil)
+		local g=Duel.GetMatchingGroup(c42994702.filter,tp,LOCATION_MZONE,0,nil)
 		Duel.ShuffleSetCard(g)
 	end
 end

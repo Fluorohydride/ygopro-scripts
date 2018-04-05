@@ -26,7 +26,7 @@ end
 function c16255442.operation(e,tp,eg,ep,ev,re,r,rp)
 	local sg=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 	Duel.SendtoGrave(sg,REASON_EFFECT+REASON_DISCARD)
-	local ct=sg:Filter(Card.IsLocation,nil,LOCATION_GRAVE):GetCount()
+	local ct=sg:FilterCount(Card.IsLocation,nil,LOCATION_GRAVE)
 	local tg=Duel.GetMatchingGroup(c16255442.filter,tp,LOCATION_GRAVE,0,nil)
 	if ct>0 and tg:GetCount()>=ct then
 		Duel.BreakEffect()

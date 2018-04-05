@@ -6,7 +6,6 @@ function c81057455.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetTarget(c81057455.target)
 	c:RegisterEffect(e1)
 	--pos
 	local e2=Effect.CreateEffect(c)
@@ -16,6 +15,7 @@ function c81057455.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_FREE_CHAIN)
+	e2:SetCountLimit(1)
 	e2:SetCondition(c81057455.poscon)
 	e2:SetTarget(c81057455.postg)
 	e2:SetOperation(c81057455.posop)
@@ -33,21 +33,6 @@ function c81057455.initial_effect(c)
 	e3:SetOperation(c81057455.drop)
 	c:RegisterEffect(e3)
 end
-function c81057455.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return c81057455.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc) end
-	if chk==0 then return true end
-	if c81057455.poscon(e,tp,eg,ep,ev,re,r,rp)
-		and c81057455.postg(e,tp,eg,ep,ev,re,r,rp,0)
-		and Duel.SelectYesNo(tp,94) then
-		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
-		e:SetOperation(c81057455.posop)
-		c81057455.postg(e,tp,eg,ep,ev,re,r,rp,1)
-		e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,65)
-	else
-		e:SetProperty(0)
-		e:SetOperation(nil)
-	end
-end
 function c81057455.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetCounter(0x37)<3
 end
@@ -56,12 +41,10 @@ function c81057455.filter(c)
 end
 function c81057455.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c81057455.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c81057455.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
-		and e:GetHandler():GetFlagEffect(81057455)==0 end
+	if chk==0 then return Duel.IsExistingTarget(c81057455.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g=Duel.SelectTarget(tp,c81057455.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
-	e:GetHandler():RegisterFlagEffect(81057455,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c81057455.posop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end

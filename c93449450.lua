@@ -50,7 +50,7 @@ function c93449450.atkval(e,c)
 	return c:GetLevel()*300
 end
 function c93449450.immval(e,te)
-	if te:GetOwner()~=e:GetHandler() and te:IsActiveType(TYPE_MONSTER) and te:IsActivated() then
+	if te:GetOwnerPlayer()~=e:GetHandlerPlayer() and te:IsActiveType(TYPE_MONSTER) and te:IsActivated() then
 		local lv=e:GetHandler():GetLevel()
 		local tc=te:GetHandler()
 		if tc:GetRank()>0 then

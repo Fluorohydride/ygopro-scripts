@@ -23,6 +23,7 @@ function c82099401.operation(e,tp,eg,ep,ev,re,r,rp)
 		else
 			Duel.SendtoGrave(add,REASON_EFFECT)
 		end
+		Duel.BreakEffect()
 		local back=Duel.GetDecktopGroup(tp,1)
 		Duel.MoveSequence(back:GetFirst(),1)
 	end

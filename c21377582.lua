@@ -2,13 +2,12 @@
 function c21377582.initial_effect(c)
 	--summon with s/t
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(21377582,0))
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetCode(EFFECT_SUMMON_PROC)
-	e1:SetCondition(c21377582.otcon)
-	e1:SetOperation(c21377582.otop)
-	e1:SetValue(SUMMON_TYPE_ADVANCE)
+	e1:SetCode(EFFECT_ADD_EXTRA_TRIBUTE)
+	e1:SetTargetRange(LOCATION_SZONE,0)
+	e1:SetTarget(aux.TargetBoolFunction(Card.IsType,TYPE_CONTINUOUS))
+	e1:SetValue(POS_FACEUP_ATTACK)
 	c:RegisterEffect(e1)
 	--tribute check
 	local e2=Effect.CreateEffect(c)
@@ -40,38 +39,6 @@ function c21377582.initial_effect(c)
 	e4:SetTarget(c21377582.destg)
 	e4:SetOperation(c21377582.desop)
 	c:RegisterEffect(e4)
-end
-function c21377582.otfilter(c)
-	return c:IsType(TYPE_CONTINUOUS) and c:IsReleasable()
-end
-function c21377582.otcon(e,c,minc)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c21377582.otfilter,tp,LOCATION_SZONE,0,nil)
-	return c:GetLevel()>6 and minc<=2
-		and (Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and mg:GetCount()>=2
-			or Duel.CheckTribute(c,1) and mg:GetCount()>=1)
-		or c:GetLevel()>4 and c:GetLevel()<=6 and minc<=1
-			and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and mg:GetCount()>=1
-end
-function c21377582.otop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c21377582.otfilter,tp,LOCATION_SZONE,0,nil)
-	local b1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and mg:GetCount()>=2
-	local b2=Duel.CheckTribute(c,1)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=mg:Select(tp,1,1,nil)
-	if c:GetLevel()>6 then
-		local g2=nil
-		if b1 and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(21377582,1))) then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-			g2=mg:Select(tp,1,1,g:GetFirst())
-		else
-			g2=Duel.SelectTribute(tp,c,1,1)
-		end
-		g:Merge(g2)
-	end
-	c:SetMaterial(g)
-	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)
 end
 function c21377582.valcheck(e,c)
 	local g=c:GetMaterial()

@@ -1,7 +1,7 @@
 --星杯剣士アウラム
 function c4709881.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0xfd),2,2)
+	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0xfd),2,2)
 	c:EnableReviveLimit()
 	--atkup
 	local e1=Effect.CreateEffect(c)

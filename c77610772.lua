@@ -41,7 +41,7 @@ function c77610772.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c77610772.lcheck(g)
-	return g:GetClassCount(Card.GetRace)==g:GetCount() and g:GetClassCount(Card.GetAttribute)==g:GetCount()
+	return g:GetClassCount(Card.GetLinkRace)==g:GetCount() and g:GetClassCount(Card.GetLinkAttribute)==g:GetCount()
 end
 function c77610772.incon(e)
 	return e:GetHandler():IsLinkState()

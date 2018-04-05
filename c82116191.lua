@@ -8,7 +8,6 @@ function c82116191.initial_effect(c)
 	e1:SetCode(EVENT_TO_GRAVE)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCondition(c82116191.atkcon)
-	e1:SetTarget(c82116191.atktg)
 	e1:SetOperation(c82116191.atkop)
 	c:RegisterEffect(e1)
 end
@@ -17,9 +16,6 @@ function c82116191.filter(c)
 end
 function c82116191.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c82116191.filter,1,nil)
-end
-function c82116191.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and e:GetHandler():IsFaceup() end
 end
 function c82116191.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

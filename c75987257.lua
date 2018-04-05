@@ -74,7 +74,7 @@ function c75987257.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+0x1fe0000)
 			c:RegisterEffect(e1)
 		end
-	else
+	elseif c:IsRelateToEffect(e) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
 		c:CancelToGrave(false)
 	end
 end

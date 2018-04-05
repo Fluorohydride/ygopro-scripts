@@ -54,7 +54,7 @@ function c26920296.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c26920296.drcfilter,1,nil,tp)
 end
 function c26920296.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) and e:GetHandler():IsRelateToEffect(e)
+	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
 		and Duel.IsExistingMatchingCard(c26920296.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,TYPE_FUSION) end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1)

@@ -14,12 +14,13 @@ function c31102447.initial_effect(c)
 	--to hand
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(31102447,1))
-	e2:SetCategory(CATEGORY_TOHAND)
+	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_TODECK)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_BATTLE_DESTROYED)
-	e2:SetTarget(c31102447.thtg2)
-	e2:SetOperation(c31102447.thop2)
+	e2:SetCondition(c31102447.thcon)
+	e2:SetTarget(c31102447.thtg)
+	e2:SetOperation(c31102447.thop)
 	c:RegisterEffect(e2)
 end
 function c31102447.cfilter(c)
@@ -43,17 +44,24 @@ function c31102447.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
+function c31102447.thcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsLocation(LOCATION_GRAVE)
+end
 function c31102447.thfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x4) and not c:IsCode(31102447) and (c:IsAbleToHand() or c:IsAbleToDeck())
 end
-function c31102447.thtg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c31102447.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c31102447.thfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c31102447.thfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local g=Duel.SelectTarget(tp,c31102447.thfilter,tp,LOCATION_GRAVE,0,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
+	if not g:GetFirst():IsAbleToHand() then
+		Duel.SetOperationInfo(0,CATEGORY_TODECK,g,1,0,0)
+	elseif not g:GetFirst():IsAbleToDeck() then
+		Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
+	end
 end
-function c31102447.thop2(e,tp,eg,ep,ev,re,r,rp)
+function c31102447.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsAbleToHand() and (not tc:IsAbleToDeck() or Duel.SelectYesNo(tp,aux.Stringid(31102447,2))) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)

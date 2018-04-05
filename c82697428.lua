@@ -2,13 +2,12 @@
 function c82697428.initial_effect(c)
 	--summon with s/t
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(82697428,0))
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetCode(EFFECT_SUMMON_PROC)
-	e1:SetCondition(c82697428.otcon)
-	e1:SetOperation(c82697428.otop)
-	e1:SetValue(SUMMON_TYPE_ADVANCE)
+	e1:SetCode(EFFECT_ADD_EXTRA_TRIBUTE)
+	e1:SetTargetRange(LOCATION_SZONE,0)
+	e1:SetTarget(aux.TargetBoolFunction(Card.IsType,TYPE_TRAP))
+	e1:SetValue(POS_FACEUP_ATTACK)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
@@ -24,38 +23,6 @@ function c82697428.initial_effect(c)
 end
 function c82697428.counterfilter(c)
 	return c:IsSetCard(0x8)
-end
-function c82697428.otfilter(c)
-	return c:IsType(TYPE_TRAP) and c:IsReleasable()
-end
-function c82697428.otcon(e,c,minc)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c82697428.otfilter,tp,LOCATION_SZONE,0,nil)
-	return c:GetLevel()>6 and minc<=2
-		and (Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and mg:GetCount()>=2
-			or Duel.CheckTribute(c,1) and mg:GetCount()>=1)
-		or c:GetLevel()>4 and c:GetLevel()<=6 and minc<=1
-			and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and mg:GetCount()>=1
-end
-function c82697428.otop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c82697428.otfilter,tp,LOCATION_SZONE,0,nil)
-	local b1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and mg:GetCount()>=2
-	local b2=Duel.CheckTribute(c,1)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=mg:Select(tp,1,1,nil)
-	if c:GetLevel()>6 then
-		local g2=nil
-		if b1 and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(82697428,2))) then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-			g2=mg:Select(tp,1,1,g:GetFirst())
-		else
-			g2=Duel.SelectTribute(tp,c,1,1)
-		end
-		g:Merge(g2)
-	end
-	c:SetMaterial(g)
-	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)
 end
 function c82697428.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(82697428,tp,ACTIVITY_SPSUMMON)==0 end

@@ -12,8 +12,6 @@ function c51838385.initial_effect(c)
 end
 function c51838385.atkcon(e)
 	local tp=e:GetHandlerPlayer()
-	for i=0,4 do
-		if Duel.GetFieldCard(tp,LOCATION_SZONE,i) then return false end
-	end
-	return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0
+	return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)
+		+Duel.GetFieldGroupCount(tp,LOCATION_SZONE,0)==0
 end

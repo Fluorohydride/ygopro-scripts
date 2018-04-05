@@ -4,7 +4,6 @@ function c276357.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetTarget(c276357.target)
 	c:RegisterEffect(e1)
 	--negate
 	local e2=Effect.CreateEffect(c)
@@ -31,18 +30,6 @@ function c276357.initial_effect(c)
 	e3:SetOperation(c276357.desop)
 	c:RegisterEffect(e3)
 end
-function c276357.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	local res,teg,tep,tev,tre,tr,trp=Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE,true)
-	if res and c276357.condition(e,tp,teg,tep,tev,tre,tr,trp)
-		and c276357.cost(e,tp,teg,tep,tev,tre,tr,trp,0)
-		and Duel.SelectYesNo(tp,94) then
-		c276357.cost(e,tp,teg,tep,tev,tre,tr,trp,1)
-		e:SetOperation(c276357.activate)
-	else
-		e:SetOperation(nil)
-	end
-end
 function c276357.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer()
 end
@@ -50,9 +37,7 @@ function c276357.cfilter(c)
 	return c:IsType(TYPE_SPIRIT) and c:IsAbleToRemoveAsCost()
 end
 function c276357.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c276357.cfilter,tp,LOCATION_GRAVE,0,1,nil)
-		and Duel.GetFlagEffect(tp,276357)==0 end
-	Duel.RegisterFlagEffect(tp,276357,RESET_PHASE+PHASE_END,0,1)
+	if chk==0 then return Duel.IsExistingMatchingCard(c276357.cfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c276357.cfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
@@ -67,7 +52,7 @@ function c276357.filter(c,tp)
 		and c:IsControler(tp) and c:IsType(TYPE_SPIRIT)
 end
 function c276357.descon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c276357.filter,1,nil,tp)
+	return eg:IsExists(c276357.filter,1,nil,tp) and e:GetHandler():IsStatus(STATUS_ACTIVATED)
 end
 function c276357.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end

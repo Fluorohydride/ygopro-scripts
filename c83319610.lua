@@ -4,8 +4,6 @@ function c83319610.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetTarget(c83319610.mttg1)
-	e1:SetOperation(c83319610.mtop)
 	c:RegisterEffect(e1)
 	--material
 	local e2=Effect.CreateEffect(c)
@@ -14,10 +12,9 @@ function c83319610.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_FREE_CHAIN)
-	e2:SetCost(c83319610.mtcost)
-	e2:SetTarget(c83319610.mttg2)
+	e2:SetCountLimit(1)
+	e2:SetTarget(c83319610.mttg)
 	e2:SetOperation(c83319610.mtop)
-	e2:SetLabel(1)
 	c:RegisterEffect(e2)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
@@ -39,33 +36,14 @@ end
 function c83319610.filter2(c,e)
 	return c:IsSetCard(0x58) and c:IsType(TYPE_MONSTER) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and not c:IsImmuneToEffect(e)
 end
-function c83319610.mttg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c83319610.filter1(chkc,e,tp) end
-	if chk==0 then return true end
-	if Duel.IsExistingTarget(c83319610.filter1,tp,LOCATION_MZONE,0,1,nil,e,tp)
-		and Duel.SelectYesNo(tp,aux.Stringid(83319610,2)) then
-		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
-		e:GetHandler():RegisterFlagEffect(83319610,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-		Duel.SelectTarget(tp,c83319610.filter1,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
-		e:SetLabel(1)
-	else
-		e:SetProperty(0)
-		e:SetLabel(0)
-	end
-end
-function c83319610.mtcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(83319610)==0 end
-	e:GetHandler():RegisterFlagEffect(83319610,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
-end
-function c83319610.mttg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c83319610.mttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c83319610.filter1(chkc,e,tp) end
 	if chk==0 then return Duel.IsExistingTarget(c83319610.filter1,tp,LOCATION_MZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c83319610.filter1,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
 end
 function c83319610.mtop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetLabel()==0 or not e:GetHandler():IsRelateToEffect(e) then return end
+	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)

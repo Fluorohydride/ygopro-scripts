@@ -80,12 +80,7 @@ function c84869738.activate(e,tp,eg,ep,ev,re,r,rp)
 		ft=ft-1
 		ct=ct-1
 	until ct==0 or sg:GetCount()==0 or ft==0 or not Duel.SelectYesNo(tp,aux.Stringid(84869738,0))
-	local tc=rg:GetFirst()
-	while tc do
-		Duel.SpecialSummonStep(tc,0,tp,tp,true,false,POS_FACEUP)
-		tc=rg:GetNext()
-	end
-	Duel.SpecialSummonComplete()
+	Duel.SpecialSummon(rg,0,tp,tp,true,false,POS_FACEUP)
 end
 function c84869738.xyzfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x20f8) and c:IsType(TYPE_XYZ)

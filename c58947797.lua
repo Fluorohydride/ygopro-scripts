@@ -49,7 +49,7 @@ end
 function c58947797.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
-	local op=Duel.SelectOption(tp,70,71,72)
+	local op=Duel.AnnounceType(tp)
 	e:SetLabel(bit.lshift(1,op))
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,1-tp,LOCATION_DECK)
 end

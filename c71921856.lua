@@ -36,7 +36,8 @@ function c71921856.filter(c)
 	return c:IsSetCard(0x84) and c:IsType(TYPE_MONSTER)
 end
 function c71921856.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c71921856.filter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil) end
+	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ)
+		and Duel.IsExistingMatchingCard(c71921856.filter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil) end
 end
 function c71921856.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

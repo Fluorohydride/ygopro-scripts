@@ -39,7 +39,7 @@ function c8323633.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c8323633.filter,1,nil,e:GetLabel()) and rp~=tp
 end
 function c8323633.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return true end
 	Duel.SetTargetCard(eg)
 	local g=eg:Filter(c8323633.filter,nil,e:GetLabel())
 	g:AddCard(e:GetHandler())

@@ -17,7 +17,7 @@ function c66015185.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c66015185.mfilter(c)
-	return c:IsLevelBelow(4) and c:IsRace(RACE_DRAGON) and not c:IsLinkType(TYPE_TOKEN)
+	return c:IsLevelBelow(4) and c:IsLinkRace(RACE_DRAGON) and not c:IsLinkType(TYPE_TOKEN)
 end
 function c66015185.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)

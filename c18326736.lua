@@ -93,7 +93,8 @@ function c18326736.mtfilter(c)
 	return c:IsSetCard(0x109c)
 end
 function c18326736.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c18326736.mtfilter,tp,LOCATION_EXTRA,0,1,nil) end
+	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ)
+		and Duel.IsExistingMatchingCard(c18326736.mtfilter,tp,LOCATION_EXTRA,0,1,nil) end
 end
 function c18326736.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

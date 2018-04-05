@@ -25,46 +25,32 @@ function c5795980.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	return true
 end
-function c5795980.cfilter(c,e,dg)
+function c5795980.cfilter(c)
 	if c:IsFacedown() or not c:IsLevelAbove(5) or not c:IsSummonType(SUMMON_TYPE_NORMAL) then return false end
-	local a=0
-	if dg:IsContains(c) then a=1 end
-	if c:GetEquipCount()==0 then return dg:GetCount()-a>=1 end
-	local eg=c:GetEquipGroup()
-	local tc=eg:GetFirst()
-	while tc do
-		if dg:IsContains(tc) then a=a+1 end
-		tc=eg:GetNext()
-	end
-	return dg:GetCount()-a>=1
+	return Duel.IsExistingTarget(c5795980.tgfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,c)
 end
-function c5795980.tgfilter(c,e)
-	return aux.disfilter1(c) and c:IsCanBeEffectTarget(e)
+function c5795980.tgfilter(c,tc)
+	return aux.disfilter1(c) and c:GetEquipTarget()~=tc
 end
 function c5795980.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and c5795980.tgfilter(chkc,e) and chkc~=e:GetHandler() end
+	if chkc then return chkc:IsOnField() and aux.disfilter1(chkc) and chkc~=e:GetHandler() end
 	if chk==0 then
 		if not Duel.IsPlayerCanDraw(tp,1) then return false end
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			local rg=Duel.GetReleaseGroup(tp)
-			local dg=Duel.GetMatchingGroup(c5795980.tgfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,e:GetHandler(),e)
-			return rg:IsExists(c5795980.cfilter,1,e:GetHandler(),e,dg)
+			return Duel.CheckReleaseGroup(tp,c5795980.cfilter,1,e:GetHandler())
 		else
-			return Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler())
+			return Duel.IsExistingTarget(aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler())
 		end
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local rg=Duel.GetReleaseGroup(tp)
-		local dg=Duel.GetMatchingGroup(c5795980.tgfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,e:GetHandler(),e)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local sg=rg:FilterSelect(tp,c5795980.cfilter,1,1,e:GetHandler(),e,dg)
+		local sg=Duel.SelectReleaseGroup(tp,c5795980.cfilter,1,1,e:GetHandler())
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetHandler())
-	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,g:GetCount(),0,0)
+	local g=Duel.SelectTarget(tp,aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetHandler())
+	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c5795980.activate(e,tp,eg,ep,ev,re,r,rp)

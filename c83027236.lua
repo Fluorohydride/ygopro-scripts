@@ -25,7 +25,7 @@ function c83027236.condtion(e,tp,eg,ep,ev,re,r,rp)
 	return rp~=tp and bit.band(r,REASON_EFFECT)~=0 and eg:IsExists(c83027236.cfilter,1,nil,1-tp)
 end
 function c83027236.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_DECKDES,nil,0,1-tp,3)
 end
 function c83027236.operation(e,tp,eg,ep,ev,re,r,rp)

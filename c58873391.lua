@@ -16,47 +16,32 @@ function c58873391.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	return true
 end
-function c58873391.costfilter(c,e,dg)
-	if not c:IsRace(RACE_FISH) then return false end
-	local a=0
-	if dg:IsContains(c) then a=1 end
-	if c:GetEquipCount()==0 then return dg:GetCount()-a>=1 end
-	local eg=c:GetEquipGroup()
-	local tc=eg:GetFirst()
-	while tc do
-		if dg:IsContains(tc) then a=a+1 end
-		tc=eg:GetNext()
-	end
-	return dg:GetCount()-a>=1
+function c58873391.desfilter(c,tc)
+	return c:GetEquipTarget()~=tc
 end
-function c58873391.tgfilter(c,e)
-	return c:IsCanBeEffectTarget(e)
+function c58873391.costfilter(c)
+	if not c:IsRace(RACE_FISH) then return false end
+	return Duel.IsExistingTarget(c58873391.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,c)
 end
 function c58873391.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc~=e:GetHandler() end
 	if chk==0 then
-		if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then return false end
+		if not Duel.IsPlayerCanDraw(tp,1) then return false end
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			local rg=Duel.GetReleaseGroup(tp)
-			local dg=Duel.GetMatchingGroup(c58873391.tgfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,e:GetHandler(),e)
-			local res=rg:IsExists(c58873391.costfilter,1,e:GetHandler(),e,dg)
-			return res
+			return Duel.CheckReleaseGroup(tp,c58873391.costfilter,1,e:GetHandler())
 		else
-			return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler())
+			return Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler())
 		end
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local rg=Duel.GetReleaseGroup(tp)
-		local dg=Duel.GetMatchingGroup(c58873391.tgfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,e:GetHandler(),e)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local sg=rg:FilterSelect(tp,c58873391.costfilter,1,1,e:GetHandler(),e,dg)
+		local sg=Duel.SelectReleaseGroup(tp,c58873391.costfilter,1,1,e:GetHandler())
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetHandler())
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
+	local g=Duel.SelectTarget(tp,nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetHandler())
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c58873391.activate(e,tp,eg,ep,ev,re,r,rp)

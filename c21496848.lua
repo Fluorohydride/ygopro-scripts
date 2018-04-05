@@ -14,8 +14,8 @@ function c21496848.initial_effect(c)
 end
 function c21496848.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0 and Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)>0 end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(21496848,5))
-	local ac=Duel.SelectOption(tp,aux.Stringid(21496848,1),aux.Stringid(21496848,2),aux.Stringid(21496848,3))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
+	local ac=Duel.AnnounceType(tp)
 	e:SetLabel(ac)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,PLAYER_ALL,LOCATION_DECK)
 end
@@ -23,6 +23,7 @@ function c21496848.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 and Duel.IsChainDisablable(0)
 		and Duel.SelectYesNo(1-tp,aux.Stringid(21496848,4)) then
 		Duel.DiscardHand(1-tp,aux.TRUE,1,1,REASON_EFFECT+REASON_DISCARD)
+		Duel.NegateEffect(0)
 		return
 	end
 	local ty=TYPE_MONSTER

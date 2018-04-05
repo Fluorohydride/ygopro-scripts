@@ -5,8 +5,6 @@ function c78625592.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_ATTACK)
-	e1:SetTarget(c78625592.target)
-	e1:SetOperation(c78625592.operation)
 	c:RegisterEffect(e1)
 	--disable attack
 	local e2=Effect.CreateEffect(c)
@@ -36,20 +34,9 @@ end
 function c78625592.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000) end
 	Duel.PayLPCost(tp,1000)
-	e:SetLabel(1)
-end
-function c78625592.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	e:SetLabel(0)
-	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer()
-		and Duel.CheckLPCost(tp,1000) and Duel.SelectYesNo(tp,94) then
-		Duel.PayLPCost(tp,1000)
-		e:SetLabel(1)
-		e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,65)
-	end
 end
 function c78625592.operation(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetLabel()==0 or not e:GetHandler():IsRelateToEffect(e) then return end
+	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.NegateAttack()
 end
 function c78625592.grcondition(e,tp,eg,ep,ev,re,r,rp)

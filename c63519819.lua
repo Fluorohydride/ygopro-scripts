@@ -35,7 +35,6 @@ function c63519819.initial_effect(c)
 	e4:SetCode(EFFECT_SET_ATTACK)
 	e4:SetCondition(c63519819.adcon)
 	e4:SetValue(c63519819.atkval)
-	e4:SetLabelObject(e1)
 	c:RegisterEffect(e4)
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_SINGLE)
@@ -43,14 +42,19 @@ function c63519819.initial_effect(c)
 	e5:SetRange(LOCATION_MZONE)
 	e5:SetCode(EFFECT_SET_DEFENSE)
 	e5:SetCondition(c63519819.adcon)
-	e5:SetValue(c63519819.defval)
-	e5:SetLabelObject(e1)
+	e5:SetValue(c63519819.defval)	
 	c:RegisterEffect(e5)
 end
 function c63519819.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local ec=e:GetLabelObject()
-	return ec==nil or ec:GetFlagEffect(63519819)==0
+	return c63519819.can_equip_monster(c)
+end
+function c63519819.eqfilter(c)
+	return c:GetFlagEffect(63519819)~=0 
+end
+function c63519819.can_equip_monster(c)
+	local g=c:GetEquipGroup():Filter(c63519819.eqfilter,nil)
+	return g:GetCount()==0
 end
 function c63519819.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsAbleToChangeControler() end
@@ -63,30 +67,32 @@ end
 function c63519819.eqlimit(e,c)
 	return e:GetOwner()==c
 end
+function c63519819.equip_monster(c,tp,tc)
+	if not Duel.Equip(tp,tc,c,false) then return end
+	--Add Equip limit
+	tc:RegisterFlagEffect(63519819,RESET_EVENT+0x1fe0000,0,0)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
+	e1:SetCode(EFFECT_EQUIP_LIMIT)
+	e1:SetReset(RESET_EVENT+0x1fe0000)
+	e1:SetValue(c63519819.eqlimit)
+	tc:RegisterEffect(e1)
+	--substitute
+	local e2=Effect.CreateEffect(c)
+ 	e2:SetType(EFFECT_TYPE_EQUIP)
+ 	e2:SetCode(EFFECT_DESTROY_SUBSTITUTE)
+ 	e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
+ 	e2:SetReset(RESET_EVENT+0x1fe0000)
+ 	e2:SetValue(c63519819.repval)
+ 	tc:RegisterEffect(e2)		
+end
 function c63519819.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) and tc:IsControler(1-tp) then
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
-			if not Duel.Equip(tp,tc,c,false) then return end
-			--Add Equip limit
-			tc:RegisterFlagEffect(63519819,RESET_EVENT+0x1fe0000,0,0)
-			e:SetLabelObject(tc)
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
-			e1:SetCode(EFFECT_EQUIP_LIMIT)
-			e1:SetReset(RESET_EVENT+0x1fe0000)
-			e1:SetValue(c63519819.eqlimit)
-			tc:RegisterEffect(e1)
-			--substitute
-			local e2=Effect.CreateEffect(c)
- 			e2:SetType(EFFECT_TYPE_EQUIP)
- 			e2:SetCode(EFFECT_DESTROY_SUBSTITUTE)
- 			e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
- 			e2:SetReset(RESET_EVENT+0x1fe0000)
- 			e2:SetValue(c63519819.repval)
- 			tc:RegisterEffect(e2)
+			c63519819.equip_monster(c,tp,tc)
 		else Duel.SendtoGrave(tc,REASON_EFFECT) end
 	end
 end
@@ -97,22 +103,25 @@ function c63519819.antarget(e,c)
 	return c~=e:GetHandler()
 end
 function c63519819.adcon(e,tp,eg,ep,ev,re,r,rp)
-	local ec=e:GetLabelObject():GetLabelObject()
-	return ec and ec:GetFlagEffect(63519819)~=0
+	local c=e:GetHandler()
+	local g=c:GetEquipGroup():Filter(c63519819.eqfilter,nil)
+	return g:GetCount()>0
 end
 function c63519819.atkval(e,c)
-	local ec=e:GetLabelObject():GetLabelObject()
-	local atk=ec:GetTextAttack()
-	if ec:IsFacedown() or bit.band(ec:GetOriginalType(),TYPE_MONSTER)==0 or atk<0 then
+	local c=e:GetHandler()
+	local g=c:GetEquipGroup():Filter(c63519819.eqfilter,nil)
+	local atk=g:GetFirst():GetTextAttack()
+	if g:GetFirst():IsFacedown() or bit.band(g:GetFirst():GetOriginalType(),TYPE_MONSTER)==0 or atk<0 then
 		return 0
 	else
 		return atk
 	end
 end
 function c63519819.defval(e,c)
-	local ec=e:GetLabelObject():GetLabelObject()
-	local def=ec:GetTextDefense()
-	if ec:IsFacedown() or bit.band(ec:GetOriginalType(),TYPE_MONSTER)==0 or def<0 then
+	local c=e:GetHandler()
+	local g=c:GetEquipGroup():Filter(c63519819.eqfilter,nil)
+	local def=g:GetFirst():GetTextDefense()
+	if g:GetFirst():IsFacedown() or bit.band(g:GetFirst():GetOriginalType(),TYPE_MONSTER)==0 or def<0 then
 		return 0
 	else
 		return def

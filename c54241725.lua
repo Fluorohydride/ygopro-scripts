@@ -5,7 +5,6 @@ function c54241725.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_ATTACK+TIMING_END_PHASE)
-	e1:SetTarget(c54241725.acttg)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
@@ -16,7 +15,7 @@ function c54241725.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetHintTiming(0,TIMING_END_PHASE)
-	e2:SetCost(c54241725.drcost)
+	e2:SetCountLimit(1)
 	e2:SetTarget(c54241725.drtg)
 	e2:SetOperation(c54241725.drop)
 	c:RegisterEffect(e2)
@@ -33,25 +32,6 @@ function c54241725.initial_effect(c)
 	e3:SetTarget(c54241725.sptg)
 	e3:SetOperation(c54241725.spop)
 	c:RegisterEffect(e3)
-end
-function c54241725.acttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chk==0 then return true end
-	if c54241725.drcost(e,tp,eg,ep,ev,re,r,rp,0) and c54241725.drtg(e,tp,eg,ep,ev,re,r,rp,0,chkc) and Duel.SelectYesNo(tp,94) then
-		e:SetCategory(CATEGORY_TODECK+CATEGORY_DRAW)
-		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
-		e:SetOperation(c54241725.drop)
-		c54241725.drcost(e,tp,eg,ep,ev,re,r,rp,1)
-		c54241725.drtg(e,tp,eg,ep,ev,re,r,rp,1,chkc)
-		e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,65)
-	else
-		e:SetCategory(0)
-		e:SetProperty(0)
-		e:SetOperation(nil)
-	end
-end
-function c54241725.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(54241725)==0 end
-	e:GetHandler():RegisterFlagEffect(54241725,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c54241725.tdfilter(c)
 	return c:IsSetCard(0xbe) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToDeck()

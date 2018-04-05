@@ -23,14 +23,13 @@ function c12152769.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c12152769.operation(e,tp,eg,ep,ev,re,r,rp)
 	local hg=Duel.GetFieldGroup(1-tp,LOCATION_HAND,0)
-	if hg:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(12152769,1)) then
+	if Duel.IsChainDisablable(0) and hg:GetCount()>0
+		and Duel.SelectYesNo(1-tp,aux.Stringid(12152769,1)) then
 		Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(12152769,2))
 		local sg=hg:Select(1-tp,1,1,nil)
 		Duel.SendtoHand(sg,tp,REASON_EFFECT)
-		if Duel.IsChainDisablable(0) then
-			Duel.NegateEffect(0)
-			return
-		end
+		Duel.NegateEffect(0)
+		return
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c12152769.filter,tp,LOCATION_DECK,0,1,1,nil)

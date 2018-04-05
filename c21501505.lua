@@ -32,12 +32,24 @@ function c21501505.filter(c,re,rp,tf,ceg,cep,cev,cre,cr,crp)
 	return tf(re,rp,ceg,cep,cev,cre,cr,crp,0,c)
 end
 function c21501505.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local tf=re:GetTarget()
-	local res,ceg,cep,cev,cre,cr,crp=Duel.CheckEvent(re:GetCode(),true)
-	if chkc then return chkc:IsOnField() and c21501505.filter(chkc,re,rp,tf,ceg,cep,cev,cre,cr,crp) end
-	if chk==0 then return Duel.IsExistingTarget(c21501505.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetLabelObject(),re,rp,tf,ceg,cep,cev,cre,cr,crp) end
+	local ct=ev
+	local label=Duel.GetFlagEffectLabel(0,21501505)
+	if label then
+		if ev==bit.rshift(label,16) then ct=bit.band(label,0xffff) end
+	end
+	local ce,cp=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_EFFECT,CHAININFO_TRIGGERING_PLAYER)
+	local tf=ce:GetTarget()
+	local ceg,cep,cev,cre,cr,crp=Duel.GetChainEvent(ct)
+	if chkc then return chkc:IsOnField() and c21501505.filter(chkc,ce,cp,tf,ceg,cep,cev,cre,cr,crp) end
+	if chk==0 then return Duel.IsExistingTarget(c21501505.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetLabelObject(),ce,cp,tf,ceg,cep,cev,cre,cr,crp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c21501505.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetLabelObject(),re,rp,tf,ceg,cep,cev,cre,cr,crp)
+	Duel.SelectTarget(tp,c21501505.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetLabelObject(),ce,cp,tf,ceg,cep,cev,cre,cr,crp)
+	local val=ct+bit.lshift(ev+1,16)
+	if label then
+		Duel.SetFlagEffectLabel(0,21501505,val)
+	else
+		Duel.RegisterFlagEffect(0,21501505,RESET_CHAIN,0,1,val)
+	end
 end
 function c21501505.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

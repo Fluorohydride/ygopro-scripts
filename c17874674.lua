@@ -5,8 +5,6 @@ function c17874674.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_DRAW_PHASE)
-	e1:SetTarget(c17874674.target1)
-	e1:SetOperation(c17874674.operation)
 	c:RegisterEffect(e1)
 	--confirm
 	local e2=Effect.CreateEffect(c)
@@ -15,8 +13,9 @@ function c17874674.initial_effect(c)
 	e2:SetCode(EVENT_PHASE+PHASE_STANDBY)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e2:SetCountLimit(1)
 	e2:SetCondition(c17874674.condition)
-	e2:SetTarget(c17874674.target2)
+	e2:SetTarget(c17874674.target)
 	e2:SetOperation(c17874674.operation)
 	c:RegisterEffect(e2)
 	--cancel target
@@ -39,33 +38,18 @@ function c17874674.initial_effect(c)
 	e4:SetOperation(c17874674.costop)
 	c:RegisterEffect(e4)
 end
-function c17874674.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and aux.disfilter1(chkc) end
-	if chk==0 then return true end
-	if Duel.GetTurnPlayer()~=tp and Duel.GetCurrentPhase()==PHASE_STANDBY
-		and Duel.IsExistingTarget(aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
-		and Duel.SelectYesNo(tp,94) then
-		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-		Duel.SelectTarget(tp,aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
-		e:GetHandler():RegisterFlagEffect(17874674,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
-	else
-		e:SetProperty(0)
-	end
-end
 function c17874674.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
-function c17874674.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c17874674.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and aux.disfilter1(chkc) end
-	if chk==0 then return e:GetHandler():GetFlagEffect(17874674)==0 end
+	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
-	e:GetHandler():RegisterFlagEffect(17874674,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c17874674.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetFlagEffect(17874674)==0 or not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc and ((tc:IsFaceup() and not tc:IsDisabled()) or tc:IsType(TYPE_TRAPMONSTER)) and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)

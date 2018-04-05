@@ -42,7 +42,7 @@ function c47126872.rmop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c47126872.setcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject():GetLabelObject()
-	return tc and tc:GetFlagEffect(47126872)~=0
+	return tc and tc:GetFlagEffect(47126872)~=0 and not e:GetHandler():IsLocation(LOCATION_DECK)
 end
 function c47126872.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -22,7 +22,7 @@ function c78512663.initial_effect(c)
 	--return
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(78512663,0))
-	e3:SetCategory(CATEGORY_TODECK)
+	e3:SetCategory(CATEGORY_TOEXTRA)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetCode(EVENT_PHASE+PHASE_END)
 	e3:SetRange(LOCATION_MZONE)
@@ -114,7 +114,7 @@ function c78512663.retcon2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c78512663.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToExtra() end
-	Duel.SetOperationInfo(0,CATEGORY_TODECK,e:GetHandler(),1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,e:GetHandler(),1,0,0)
 end
 function c78512663.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

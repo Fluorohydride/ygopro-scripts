@@ -42,6 +42,7 @@ end
 function c31571902.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() and Duel.SendtoGrave(c,REASON_EFFECT)~=0 then
+		Duel.BreakEffect()
 		Duel.Damage(tp,2400,REASON_EFFECT)
 	end
 end

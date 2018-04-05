@@ -88,7 +88,7 @@ function c77411244.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
 end
 function c77411244.repval(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE)~=0 or bit.band(r,REASON_EFFECT)~=0
+	return bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0
 end
 function c77411244.efilter(e,te)
 	return te:GetOwnerPlayer()~=e:GetHandlerPlayer() and te:GetOwner()~=e:GetOwner()

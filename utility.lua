@@ -4,6 +4,42 @@ POS_FACEUP_DEFENCE=POS_FACEUP_DEFENSE
 POS_FACEDOWN_DEFENCE=POS_FACEDOWN_DEFENSE
 RACE_CYBERS=RACE_CYBERSE
 
+--the lua version of the bit32 lib, which is deprecated in lua 5.3
+bit={}
+function bit.band(a,b)
+	return a&b
+end
+function bit.bor(a,b)
+	return a|b
+end
+function bit.bxor(a,b)
+	return a~b
+end
+function bit.lshift(a,b)
+	return a<<b
+end
+function bit.rshift(a,b)
+	return a>>b
+end
+function bit.bnot(a)
+	return ~a
+end
+local function fieldargs(f,width)
+	w=width or 1
+	assert(f>=0,"field cannot be negative")
+	assert(w>0,"width must be positive")
+	assert(f+w<=32,"trying to access non-existent bits")
+	return f,~(-1<<w)
+end
+function bit.extract(r,field,width)
+	local f,m=fieldargs(field,width)
+	return (r>>f)&m
+end
+function bit.replace(r,v,field,width)
+	local f,m=fieldargs(field,width)
+	return (r&~(m<<f))|((v&m)<< f)
+end
+
 function Auxiliary.Stringid(code,id)
 	return code*16+id
 end
@@ -448,8 +484,9 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat)
 	g:Merge(sg1)
 	if Duel.GetLocationCountFromEx(tp,tp,g,syncard)<=0 then return false end
 	if smat and not g:IsContains(smat) then return false end
-	local pe=Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_SMATERIAL)
-	if pe and not g:IsContains(pe:GetOwner()) then return false end
+	for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_SMATERIAL)}) do
+		if not g:IsContains(pe:GetHandler()) then return false end
+	end
 	if not g:IsExists(Card.IsType,1,nil,TYPE_TUNER) and not syncard:IsHasEffect(80896940) then return false end
 	if not g:CheckWithSumEqual(Card.GetSynchroLevel,syncard:GetLevel(),g:GetCount(),g:GetCount(),syncard)
 		and (not g:IsExists(Card.IsHasEffect,1,nil,89818984)
@@ -474,8 +511,8 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat)
 		if le then
 			local lct=g:GetCount()-1
 			if lloc then
-				local lg=g:Filter(Card.IsLocation,c,lloc)
-				if lg:GetCount()~=lct then return false end
+				local llct=g:FilterCount(Card.IsLocation,c,lloc)
+				if llct~=lct then return false end
 			end
 			if lf and g:IsExists(Auxiliary.SynLimitFilter,1,c,lf,le) then return false end
 			if (lmin and lct<lmin) or (lmax and lct>lmax) then return false end
@@ -483,8 +520,8 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat)
 	end
 	return true
 end
-function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,op)
-	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c),xyzc)>0 and (not op or op(e,tp,0,c))
+function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,op,sg)
+	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0 and (not op or op(e,tp,0,c)) and (not sg or #sg<=1 and (#sg==0 or sg:IsContains(c)))
 end
 --Xyz monster, lv k*n
 function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,desc,maxct,op)
@@ -587,7 +624,12 @@ function Auxiliary.XyzCondition2(f,lv,minc,maxc,alterf,desc,op)
 				else
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
-				if (not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,op) then
+				local sg=Group.CreateGroup()
+				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_XMATERIAL)}) do
+					local pc=pe:GetHandler()
+					sg:AddCard(pc)
+				end
+				if (not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,op,sg) then
 					return true
 				end
 				local minc=minc
@@ -619,13 +661,18 @@ function Auxiliary.XyzTarget2(f,lv,minc,maxc,alterf,desc,op)
 				else
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
+				local sg=Group.CreateGroup()
+				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_XMATERIAL)}) do
+					local pc=pe:GetHandler()
+					sg:AddCard(pc)
+				end
 				local b1=ct<minc and Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
-				local b2=(not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,op)
+				local b2=(not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,op,sg)
 				local g=nil
 				if b2 and (not b1 or Duel.SelectYesNo(tp,desc)) then
 					e:SetLabel(1)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-					g=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c,e,tp,op)
+					g=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c,e,tp,op,sg)
 					if op then op(e,tp,1,g:GetFirst()) end
 				else
 					e:SetLabel(0)
@@ -710,13 +757,20 @@ function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct)
 					minc=math.max(minc,min)
 					maxc=math.min(maxc,max)
 				end
+				if maxc<minc then return false end
 				local mg=nil
 				if og then
 					mg=og:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
 				else
 					mg=Duel.GetMatchingGroup(Auxiliary.XyzLevelFreeFilter,tp,LOCATION_MZONE,0,nil,c,f)
 				end
-				return maxc>=minc and Auxiliary.CheckGroup(mg,Auxiliary.XyzLevelFreeGoal,nil,minc,maxc,tp,c,gf)
+				local sg=Group.CreateGroup()
+				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_XMATERIAL)}) do
+					local pc=pe:GetHandler()
+					if not mg:IsContains(pc) then return false end
+					sg:AddCard(pc)
+				end
+				return maxc>=minc and Auxiliary.CheckGroup(mg,Auxiliary.XyzLevelFreeGoal,sg,minc,maxc,tp,c,gf)
 			end
 end
 function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
@@ -736,7 +790,12 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
 				else
 					mg=Duel.GetMatchingGroup(Auxiliary.XyzLevelFreeFilter,tp,LOCATION_MZONE,0,nil,c,f)
 				end
-				local g=Auxiliary.SelectGroup(tp,HINTMSG_XMATERIAL,mg,Auxiliary.XyzLevelFreeGoal,nil,minc,maxc,tp,c,gf)
+				local sg=Group.CreateGroup()
+				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_XMATERIAL)}) do
+					local pc=pe:GetHandler()
+					sg:AddCard(pc)
+				end
+				local g=Auxiliary.SelectGroup(tp,HINTMSG_XMATERIAL,mg,Auxiliary.XyzLevelFreeGoal,sg,minc,maxc,tp,c,gf)
 				if g:GetCount()>0 then
 					g:KeepAlive()
 					e:SetLabelObject(g)
@@ -792,7 +851,14 @@ function Auxiliary.XyzLevelFreeCondition2(f,gf,minct,maxct,alterf,desc,op)
 				else
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
-				if (not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,op) then
+				local sg=Group.CreateGroup()
+				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_XMATERIAL)}) do
+					local pc=pe:GetHandler()
+					if not mg:IsContains(pc) then return false end
+					sg:AddCard(pc)
+				end
+				local altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,op,sg)
+				if (not min or min<=1) and altg:GetCount()>0 then
 					return true
 				end
 				local minc=minct
@@ -803,8 +869,7 @@ function Auxiliary.XyzLevelFreeCondition2(f,gf,minct,maxct,alterf,desc,op)
 					if minc>maxc then return false end
 				end
 				mg=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
-				local sg=Group.CreateGroup()
-				return maxc>=minc and Auxiliary.CheckGroup(mg,Auxiliary.XyzLevelFreeGoal,nil,minc,maxc,tp,c,gf)
+				return maxc>=minc and Auxiliary.CheckGroup(mg,Auxiliary.XyzLevelFreeGoal,sg,minc,maxc,tp,c,gf)
 			end
 end
 function Auxiliary.XyzLevelFreeTarget2(f,gf,minct,maxct,alterf,desc,op)
@@ -824,18 +889,25 @@ function Auxiliary.XyzLevelFreeTarget2(f,gf,minct,maxct,alterf,desc,op)
 				else
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
-				local g=nil
+				local sg=Group.CreateGroup()
+				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_XMATERIAL)}) do
+					local pc=pe:GetHandler()
+					sg:AddCard(pc)
+				end
 				local ag=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
-				local b1=Auxiliary.CheckGroup(ag,Auxiliary.XyzLevelFreeGoal,nil,minc,maxc,tp,c,gf)
-				local b2=(not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,op)
+				local b1=Auxiliary.CheckGroup(ag,Auxiliary.XyzLevelFreeGoal,sg,minc,maxc,tp,c,gf)
+				local b2=(not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,op,sg)
 				if b2 and (not b1 or Duel.SelectYesNo(tp,desc)) then
 					e:SetLabel(1)
-					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-					g=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c,e,tp,op)
-					if op then op(e,tp,1,sg:GetFirst()) end
+					if g:GetCount()==0 then
+						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+						local sg=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c,e,tp,op,sg)
+						g:Merge(sg)
+					end
+					if op then op(e,tp,1,g:GetFirst()) end
 				else
 					e:SetLabel(0)
-					g=Auxiliary.SelectGroup(tp,HINTMSG_XMATERIAL,ag,Auxiliary.XyzLevelFreeGoal,nil,minc,maxc,tp,c,gf)
+					g=Auxiliary.SelectGroup(tp,HINTMSG_XMATERIAL,ag,Auxiliary.XyzLevelFreeGoal,sg,minc,maxc,tp,c,gf)
 				end
 				if g:GetCount()>0 then
 					g:KeepAlive()
@@ -926,10 +998,10 @@ function Auxiliary.FConditionMix(insf,sub,...)
 	local funs={...}
 	return	function(e,g,gc,chkfnf)
 				if g==nil then return insf end
-				local chkf=bit.band(chkfnf,0xff)
+				local chkf=chkfnf&0xff
 				local c=e:GetHandler()
 				local tp=c:GetControler()
-				local notfusion=bit.rshift(chkfnf,8)~=0
+				local notfusion=chkfnf>>8~=0
 				local sub=sub or notfusion
 				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub,table.unpack(funs))
 				local cg=Group.CreateGroup()
@@ -943,10 +1015,10 @@ end
 function Auxiliary.FOperationMix(insf,sub,...)
 	local funs={...}
 	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
-				local chkf=bit.band(chkfnf,0xff)
+				local chkf=chkfnf&0xff
 				local c=e:GetHandler()
 				local tp=c:GetControler()
-				local notfusion=bit.rshift(chkfnf,8)~=0
+				local notfusion=chkfnf>>8~=0
 				local sub=sub or notfusion
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,table.unpack(funs))
 				local cg=Group.CreateGroup()
@@ -984,6 +1056,9 @@ end
 Auxiliary.FCheckAdditional=nil
 function Auxiliary.FCheckMixGoal(sg,tp,fc,sub,chkf,...)
 	if sg:IsExists(Auxiliary.FCheckTuneMagicianX,1,nil,sg) then return false end
+	for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_FMATERIAL)}) do
+		if not sg:IsContains(pe:GetHandler()) then return false end
+	end
 	local g=Group.CreateGroup()
 	return sg:IsExists(Auxiliary.FCheckMix,1,nil,sg,g,fc,sub,...) and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
 		and (not Auxiliary.FCheckAdditional or Auxiliary.FCheckAdditional(tp,sg,fc))
@@ -1020,10 +1095,10 @@ function Auxiliary.FConditionMixRep(insf,sub,fun1,minc,maxc,...)
 	local funs={...}
 	return	function(e,g,gc,chkfnf)
 				if g==nil then return insf end
-				local chkf=bit.band(chkfnf,0xff)
+				local chkf=chkfnf&0xff
 				local c=e:GetHandler()
 				local tp=c:GetControler()
-				local notfusion=bit.rshift(chkfnf,8)~=0
+				local notfusion=chkfnf>>8~=0
 				local sub=sub or notfusion
 				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub,fun1,table.unpack(funs))
 				if gc then
@@ -1038,10 +1113,10 @@ end
 function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
 	local funs={...}
 	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkfnf)
-				local chkf=bit.band(chkfnf,0xff)
+				local chkf=chkfnf&0xff
 				local c=e:GetHandler()
 				local tp=c:GetControler()
-				local notfusion=bit.rshift(chkfnf,8)~=0
+				local notfusion=chkfnf>>8~=0
 				local sub=sub or notfusion
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,fun1,table.unpack(funs))
 				local sg=Group.CreateGroup()
@@ -1083,6 +1158,9 @@ function Auxiliary.FCheckMixRepFilter(c,sg,g,fc,sub,chkf,fun1,minc,maxc,fun2,...
 end
 function Auxiliary.FCheckMixRepGoal(tp,sg,fc,sub,chkf,fun1,minc,maxc,...)
 	if sg:IsExists(Auxiliary.FCheckTuneMagicianX,1,nil,sg) then return false end
+	for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_FMATERIAL)}) do
+		if not sg:IsContains(pe:GetHandler()) then return false end
+	end
 	if sg:GetCount()<minc+#{...} or sg:GetCount()>maxc+#{...} then return false end
 	local g=Group.CreateGroup()
 	return Auxiliary.FCheckMixRep(sg,g,fc,sub,chkf,fun1,minc,maxc,...) and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
@@ -1240,6 +1318,91 @@ end
 --Fusion monster, name + name + condition * minc to maxc
 function Auxiliary.AddFusionProcCode2FunRep(c,code1,code2,f,minc,maxc,sub,insf)
 	Auxiliary.AddFusionProcMixRep(c,sub,insf,f,minc,maxc,code1,code2)
+end
+--Fusion monster, Shaddoll materials
+function Auxiliary.AddFusionProcShaddoll(c,attr)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e1:SetCode(EFFECT_FUSION_MATERIAL)
+	e1:SetCondition(Auxiliary.FShaddollCondition(attr))
+	e1:SetOperation(Auxiliary.FShaddollOperation(attr))
+	c:RegisterEffect(e1)
+end
+function Auxiliary.FShaddollFilter(c,fc,attr)
+	return (Auxiliary.FShaddollFilter1(c) or Auxiliary.FShaddollFilter2(c,attr)) and c:IsCanBeFusionMaterial(fc) and not c:IsHasEffect(6205579)
+end
+function Auxiliary.FShaddollExFilter(c,fc,attr)
+	return c:IsFaceup() and Auxiliary.FShaddollFilter(c,fc,attr)
+end
+function Auxiliary.FShaddollFilter1(c)
+	return c:IsFusionSetCard(0x9d)
+end
+function Auxiliary.FShaddollFilter2(c,attr)
+	return c:IsFusionAttribute(attr) or c:IsHasEffect(4904633)
+end
+function Auxiliary.FShaddollSpFilter1(c,tp,mg,exg,attr)
+	return mg:IsExists(Auxiliary.FShaddollSpFilter2,1,c,tp,c,attr) or (exg and exg:IsExists(Auxiliary.FShaddollSpFilter2,1,c,tp,c,attr))
+end
+function Auxiliary.FShaddollSpFilter2(c,tp,mc,attr)
+	local sg=Group.FromCards(c,mc)
+	if sg:IsExists(Auxiliary.FCheckTuneMagicianX,1,nil,sg) then return false end
+	for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_FMATERIAL)}) do
+		if not sg:IsContains(pe:GetHandler()) then return false end
+	end
+	return ((Auxiliary.FShaddollFilter1(c) and Auxiliary.FShaddollFilter2(mc,attr))
+		or (Auxiliary.FShaddollFilter2(c,attr) and Auxiliary.FShaddollFilter1(mc)))
+		and Duel.GetLocationCountFromEx(tp,tp,sg)>0
+end
+function Auxiliary.FShaddollCondition(attr)
+	return 	function(e,g,gc,chkf)
+				if g==nil then return true end
+				local c=e:GetHandler()
+				local mg=g:Filter(Auxiliary.FShaddollFilter,nil,c,attr)
+				local tp=e:GetHandlerPlayer()
+				local fc=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
+				local exg=nil
+				if fc and fc:IsHasEffect(81788994) and fc:IsCanRemoveCounter(tp,0x16,3,REASON_EFFECT) then
+					exg=Duel.GetMatchingGroup(Auxiliary.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,attr)
+				end
+				if gc then
+					if not mg:IsContains(gc) then return false end
+					return Auxiliary.FShaddollSpFilter1(gc,tp,mg,exg,attr)
+				end
+				return mg:IsExists(Auxiliary.FShaddollSpFilter1,1,nil,tp,mg,exg,attr)
+			end
+end
+function Auxiliary.FShaddollOperation(attr)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
+				local c=e:GetHandler()
+				local mg=eg:Filter(Auxiliary.FShaddollFilter,nil,c,attr)
+				local fc=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
+				local exg=nil
+				if fc and fc:IsHasEffect(81788994) and fc:IsCanRemoveCounter(tp,0x16,3,REASON_EFFECT) then
+					exg=Duel.GetMatchingGroup(Auxiliary.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,attr)
+				end
+				local g=nil
+				if gc then
+					g=Group.FromCards(gc)
+					mg:RemoveCard(gc)
+				else
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+					g=mg:FilterSelect(tp,Auxiliary.FShaddollSpFilter1,1,1,nil,tp,mg,exg,attr)
+					mg:Sub(g)
+				end
+				if exg and exg:IsExists(Auxiliary.FShaddollSpFilter2,1,nil,tp,g:GetFirst(),attr)
+					and (mg:GetCount()==0 or (exg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(81788994,0)))) then
+					fc:RemoveCounter(tp,0x16,3,REASON_EFFECT)
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+					local sg=exg:FilterSelect(tp,Auxiliary.FShaddollSpFilter2,1,1,nil,tp,g:GetFirst(),attr)
+					g:Merge(sg)
+				else
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+					local sg=mg:FilterSelect(tp,Auxiliary.FShaddollSpFilter2,1,1,nil,tp,g:GetFirst(),attr)
+					g:Merge(sg)
+				end
+				Duel.SetFusionMaterial(g)
+			end
 end
 --Ritual Summon, geq fixed lv
 function Auxiliary.AddRitualProcGreater(c,filter)
@@ -1566,8 +1729,9 @@ function Auxiliary.AddLinkProcedure(c,f,min,max,gf)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetRange(LOCATION_EXTRA)
-	if max==nil then max=99 end
+	if max==nil then max=c:GetLink() end
 	e1:SetCondition(Auxiliary.LinkCondition(f,min,max,gf))
+	e1:SetTarget(Auxiliary.LinkTarget(f,min,max,gf))
 	e1:SetOperation(Auxiliary.LinkOperation(f,min,max,gf))
 	e1:SetValue(SUMMON_TYPE_LINK)
 	c:RegisterEffect(e1)
@@ -1591,15 +1755,65 @@ function Auxiliary.LinkCondition(f,minc,maxc,gf)
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp=c:GetControler()
 				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f,c)
-				return Auxiliary.CheckGroup(mg,Auxiliary.LCheckGoal,nil,minc,maxc,tp,c,gf)
+				local sg=Group.CreateGroup()
+				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_LMATERIAL)}) do
+					local pc=pe:GetHandler()
+					if not mg:IsContains(pc) then return false end
+					sg:AddCard(pc)
+				end
+				return Auxiliary.CheckGroup(mg,Auxiliary.LCheckGoal,sg,minc,maxc,tp,c,gf)
 			end
 end
-function Auxiliary.LinkOperation(f,minc,maxc,gf)
-	return	function(e,tp,eg,ep,ev,re,r,rp,c)
+function Auxiliary.LinkTarget(f,minc,maxc,gf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c)
 				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f,c)
-				local sg=Auxiliary.SelectGroup(tp,HINTMSG_LMATERIAL,mg,Auxiliary.LCheckGoal,nil,minc,maxc,tp,c,gf)
-				c:SetMaterial(sg)
-				Duel.SendtoGrave(sg,REASON_MATERIAL+REASON_LINK)
+				local bg=Group.CreateGroup()
+				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_LMATERIAL)}) do
+					bg:AddCard(pe:GetHandler())
+				end
+				if #bg>0 then
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LMATERIAL)
+					bg:Select(tp,#bg,#bg,nil)
+				end
+				local sg=Group.CreateGroup()
+				local res=false
+				sg:Merge(bg)
+				while #sg<maxc do
+					local cg=mg:Filter(Auxiliary.LCheckRecursive,sg,tp,sg,mg,c,#sg,minc,maxc,gf)
+					if #cg==0 then break end
+					if #cg<=maxc and Auxiliary.LCheckGoal(tp,sg,c,minc,#sg,gf)
+						and mg:IsExists(Auxiliary.LCheckRecursive,1,sg,tp,sg,mg,c,#sg,minc,maxc,gf) then
+						res=true
+						if not Duel.SelectYesNo(tp,210) then break end
+					else
+						res=false
+					end
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LMATERIAL)
+					local tc=Group.SelectUnselect(cg,sg,tp,res,#sg==0 or res,minc,maxc)
+					if not tc then break end
+					if not bg:IsContains(tc) then
+						if not sg:IsContains(tc) then
+							sg:AddCard(tc)
+						else
+							sg:RemoveCard(tc)
+						end
+					elseif #bg>0 and #sg<=#bg then
+						return false
+					end
+				end
+				if #sg>0 then
+					sg:KeepAlive()
+					e:SetLabelObject(sg)
+					return true
+				else return false end
+			end
+end
+function Auxiliary.LinkOperation(f,min,max,gf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,c,smat,mg)
+				local g=e:GetLabelObject()
+				c:SetMaterial(g)
+				Duel.SendtoGrave(g,REASON_MATERIAL+REASON_LINK)
+				g:DeleteGroup()
 			end
 end
 function Auxiliary.IsMaterialListCode(c,code)
@@ -1619,9 +1833,18 @@ function Auxiliary.IsCodeListed(c,code)
 	end
 	return false
 end
+function Auxiliary.GetColumn(c,p)
+	local seq=c:GetSequence()
+	if c:IsLocation(LOCATION_MZONE) then
+		if seq==5 then seq=1 elseif seq==6 then seq=3 end
+	elseif c:IsLocation(LOCATION_SZONE) then
+		if seq>4 then return nil end
+	else return nil end
+	if c:IsControler(p or 0) then return seq else return 4-seq end
+end
 --card effect disable filter(target)
 function Auxiliary.disfilter1(c)
-	return c:IsFaceup() and not c:IsDisabled() and (not c:IsType(TYPE_NORMAL) or bit.band(c:GetOriginalType(),TYPE_EFFECT)~=0)
+	return c:IsFaceup() and not c:IsDisabled() and (not c:IsType(TYPE_NORMAL) or c:GetOriginalType()&TYPE_EFFECT~=0)
 end
 --condition of EVENT_BATTLE_DESTROYING
 function Auxiliary.bdcon(e,tp,eg,ep,ev,re,r,rp)
@@ -1701,23 +1924,23 @@ function Auxiliary.sumreg(e,tp,eg,ep,ev,re,r,rp)
 end
 --sp_summon condition for fusion monster
 function Auxiliary.fuslimit(e,se,sp,st)
-	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+	return st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
 end
 --sp_summon condition for ritual monster
 function Auxiliary.ritlimit(e,se,sp,st)
-	return bit.band(st,SUMMON_TYPE_RITUAL)==SUMMON_TYPE_RITUAL
+	return st&SUMMON_TYPE_RITUAL==SUMMON_TYPE_RITUAL
 end
 --sp_summon condition for synchro monster
 function Auxiliary.synlimit(e,se,sp,st)
-	return bit.band(st,SUMMON_TYPE_SYNCHRO)==SUMMON_TYPE_SYNCHRO
+	return st&SUMMON_TYPE_SYNCHRO==SUMMON_TYPE_SYNCHRO
 end
 --sp_summon condition for xyz monster
 function Auxiliary.xyzlimit(e,se,sp,st)
-	return bit.band(st,SUMMON_TYPE_XYZ)==SUMMON_TYPE_XYZ
+	return st&SUMMON_TYPE_XYZ==SUMMON_TYPE_XYZ
 end
 --sp_summon condition for pendulum monster
 function Auxiliary.penlimit(e,se,sp,st)
-	return bit.band(st,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
+	return st&SUMMON_TYPE_PENDULUM==SUMMON_TYPE_PENDULUM
 end
 --effects inflicting damage to tp
 function Auxiliary.damcon1(e,tp,eg,ep,ev,re,r,rp)

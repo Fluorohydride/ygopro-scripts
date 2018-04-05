@@ -2,7 +2,7 @@
 function c54178659.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()
-	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x109),3,3)
+	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x109),3,3)
 	--disable special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(54178659,0))

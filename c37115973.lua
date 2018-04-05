@@ -3,7 +3,7 @@ function c37115973.initial_effect(c)
 	--todeck
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(37115973,0))
-	e1:SetCategory(CATEGORY_TODECK)
+	e1:SetCategory(CATEGORY_TOEXTRA)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetTarget(c37115973.target)
@@ -45,7 +45,7 @@ end
 function c37115973.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local g=Duel.GetMatchingGroup(c37115973.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,g:GetCount(),0,0)
+	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,g,g:GetCount(),0,0)
 end
 function c37115973.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c37115973.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)

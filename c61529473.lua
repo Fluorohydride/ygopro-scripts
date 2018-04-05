@@ -1,24 +1,10 @@
 --真竜の黙示録
 function c61529473.initial_effect(c)
 	--Activate
-	local e0=Effect.CreateEffect(c)
-	e0:SetType(EFFECT_TYPE_ACTIVATE)
-	e0:SetCode(EVENT_FREE_CHAIN)
-	e0:SetHintTiming(0,TIMING_END_PHASE)
-	e0:SetTarget(c61529473.target)
-	c:RegisterEffect(e0)
-	--Activate(damage phase)
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(61529473,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetHintTiming(TIMING_DAMAGE_STEP)
-	e1:SetCountLimit(1,61529473)
-	e1:SetCondition(c61529473.atkcon1)
-	e1:SetCost(c61529473.cost)
-	e1:SetTarget(c61529473.atktg)
-	e1:SetOperation(c61529473.atkop)
+	e1:SetHintTiming(0,TIMING_END_PHASE)
 	c:RegisterEffect(e1)
 	--destory and atk & def down
 	local e2=Effect.CreateEffect(c)
@@ -62,42 +48,6 @@ function c61529473.initial_effect(c)
 	e4:SetOperation(c61529473.desop)
 	c:RegisterEffect(e4)
 end
-function c61529473.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return c61529473.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc) end
-	if chk==0 then return true end
-	local b1=c61529473.atkcon(e,tp,eg,ep,ev,re,r,rp)
-		and c61529473.cost(e,tp,eg,ep,ev,re,r,rp,0)
-		and c61529473.atktg(e,tp,eg,ep,ev,re,r,rp,0)
-	local b2=c61529473.sumcon(e,tp,eg,ep,ev,re,r,rp)
-		and c61529473.cost(e,tp,eg,ep,ev,re,r,rp,0)
-		and c61529473.sumtg(e,tp,eg,ep,ev,re,r,rp,0)
-	if (b1 or b2) and Duel.SelectYesNo(tp,94) then
-		local op=0
-		if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(61529473,0),aux.Stringid(61529473,1))
-		elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(61529473,0))
-		else op=Duel.SelectOption(tp,aux.Stringid(61529473,1))+1 end
-		if op==0 then
-			e:SetCategory(CATEGORY_DESTROY+CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE)
-			e:SetProperty(EFFECT_FLAG_CARD_TARGET)
-			e:SetOperation(c61529473.atkop)
-			c61529473.cost(e,tp,eg,ep,ev,re,r,rp,1)
-			c61529473.atktg(e,tp,eg,ep,ev,re,r,rp,1)
-		else
-			e:SetCategory(CATEGORY_SUMMON)
-			e:SetProperty(0)
-			e:SetOperation(c61529473.sumop)
-			c61529473.cost(e,tp,eg,ep,ev,re,r,rp,1)
-			c61529473.sumtg(e,tp,eg,ep,ev,re,r,rp,1)
-		end
-	else
-		e:SetCategory(0)
-		e:SetProperty(0)
-		e:SetOperation(nil)
-	end
-end
-function c61529473.atkcon1(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()==PHASE_DAMAGE and not Duel.IsDamageCalculated()
-end
 function c61529473.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
@@ -112,9 +62,7 @@ function c61529473.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(tp) and c61529473.tgfilter(chkc) and chkc~=c end
 	if chk==0 then return Duel.IsExistingTarget(c61529473.tgfilter,tp,LOCATION_ONFIELD,0,1,c)
-		and Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil)
-		and Duel.GetFlagEffect(tp,61529474)==0 end
-	Duel.RegisterFlagEffect(tp,61529474,RESET_PHASE+PHASE_END,0,1)
+		and Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c61529473.tgfilter,tp,LOCATION_ONFIELD,0,1,1,c)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
@@ -140,7 +88,7 @@ function c61529473.atkop(e,tp,eg,ep,ev,re,r,rp)
 			tc2=g:GetNext()
 		end
 	end
- end
+end
 function c61529473.sumcon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
 	return Duel.GetTurnPlayer()~=tp and (ph==PHASE_MAIN1 or ph==PHASE_MAIN2)
@@ -149,9 +97,7 @@ function c61529473.sumfilter(c)
 	return c:IsSetCard(0xf9) and c:IsSummonable(true,nil,1)
 end
 function c61529473.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c61529473.sumfilter,tp,LOCATION_HAND,0,1,nil)
-		and Duel.GetFlagEffect(tp,61529475)==0 end
-	Duel.RegisterFlagEffect(tp,61529475,RESET_PHASE+PHASE_END,0,1)
+	if chk==0 then return Duel.IsExistingMatchingCard(c61529473.sumfilter,tp,LOCATION_HAND,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_SUMMON,nil,1,0,0)
 end
 function c61529473.sumop(e,tp,eg,ep,ev,re,r,rp)

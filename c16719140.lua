@@ -36,9 +36,12 @@ function c16719140.costfilter(c,e,tp,mg,rlv)
 	local lv=c:GetLevel()-rlv
 	return mg:GetCount()>0 and (lv<=0 or mg:CheckWithSumGreater(Card.GetOriginalLevel,lv))
 end
+function c16719140.relfilter(c)
+	return c:IsLevelAbove(1) and c:IsReleasableByEffect()
+end
 function c16719140.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	local mg=Duel.GetReleaseGroup(tp):Filter(Card.IsLevelAbove,nil,1)
+	local mg=Duel.GetReleaseGroup(tp):Filter(c16719140.relfilter,nil)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
@@ -60,7 +63,7 @@ function c16719140.spop1(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<-1 then return end
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) then return end
-	local mg=Duel.GetReleaseGroup(tp):Filter(Card.IsLevelAbove,nil,1)
+	local mg=Duel.GetReleaseGroup(tp):Filter(c16719140.relfilter,nil)
 	if not mg:IsContains(c) then return end
 	mg:RemoveCard(c)
 	if mg:GetCount()==0 then return end
