@@ -257,8 +257,8 @@ function Auxiliary.SelectGroup(tp,desc,cancelable,g,f,cg,min,max,...)
 		seg:Sub(cg)
 		local finish=(#sg>=min and #sg<=max and f(sg,...))
 		local cancel=finish or (cancelable and #seg==0)
-		local dmin=#seg
-		local dmax=math.min(max-#cg,#g)
+		local dmin=#sg
+		local dmax=math.min(max,#g)
 		local tc=nil
 		repeat
 			Duel.Hint(HINT_SELECTMSG,tp,desc)
