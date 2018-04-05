@@ -259,11 +259,11 @@ function Auxiliary.SelectGroup(tp,desc,cancelable,g,f,cg,min,max,...)
 		local cancel=finish or (cancelable and #seg==0)
 		local dmin=#seg
 		local dmax=math.min(max-#cg,#g)
-		Duel.Hint(HINT_SELECTMSG,tp,desc)
 		local tc=nil
 		repeat
+			Duel.Hint(HINT_SELECTMSG,tp,desc)
 			tc=ag:SelectUnselect(sg,tp,finish,cancel,dmin,dmax)
-		until not tc or seg:IsContains(tc)
+		until not tc or ag:IsContains(tc) or seg:IsContains(tc)
 		if not tc then
 			if not finish then return end
 			break
@@ -1012,7 +1012,7 @@ function Auxiliary.FConditionMix(insf,sub,...)
 					if not mg:IsContains(gc) then return false end
 					cg:AddCard(gc)
 				end
-				return Auxiliary.CheckGroup(mg,Auxiliary.FCheckMixGoal,cg,#funs,#funs,tp,c,sub,chkf,...)
+				return Auxiliary.CheckGroup(mg,Auxiliary.FCheckMixGoal,cg,#funs,#funs,tp,c,sub,chkf,table.unpack(funs))
 			end
 end
 function Auxiliary.FOperationMix(insf,sub,...)
@@ -1026,7 +1026,7 @@ function Auxiliary.FOperationMix(insf,sub,...)
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,table.unpack(funs))
 				local cg=Group.CreateGroup()
 				if gc then cg:AddCard(gc) end
-				local sg=Auxiliary.SelectGroup(tp,HINTMSG_FMATERIAL,false,mg,Auxiliary.FCheckMixGoal,cg,#funs,#funs,tp,c,sub,chkf,...)
+				local sg=Auxiliary.SelectGroup(tp,HINTMSG_FMATERIAL,false,mg,Auxiliary.FCheckMixGoal,cg,#funs,#funs,tp,c,sub,chkf,table.unpack(funs))
 				Duel.SetFusionMaterial(sg)
 			end
 end
@@ -1774,7 +1774,7 @@ function Auxiliary.LinkTarget(f,minc,maxc,gf)
 				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_LMATERIAL)}) do
 					bg:AddCard(pe:GetHandler())
 				end
-				local sg=Auxiliary.CheckGroup(tp,HINTMSG_LMATERIAL,true,mg,Auxiliary.LCheckGoal,bg,minc,maxc,tp,c,gf)
+				local sg=Auxiliary.SelectGroup(tp,HINTMSG_LMATERIAL,true,mg,Auxiliary.LCheckGoal,bg,minc,maxc,tp,c,gf)
 				if sg and #sg>0 then
 					sg:KeepAlive()
 					e:SetLabelObject(sg)
