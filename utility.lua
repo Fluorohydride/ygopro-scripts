@@ -356,7 +356,6 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc)
 					if cg:GetCount()==0 then break end
 					local minct=1
 					if Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat) then
-						if not Duel.SelectYesNo(tp,210) then break end
 						minct=0
 					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
@@ -757,7 +756,6 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
 					local finish=(ct>=minc and Auxiliary.XyzLevelFreeGoal(g,tp,c,gf))
 					if finish then
 						minsct=0
-						if not Duel.SelectYesNo(tp,210) then break end
 					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 					local tg=ag:Select(tp,minsct,1,nil)
@@ -895,7 +893,6 @@ function Auxiliary.XyzLevelFreeTarget2(f,gf,minct,maxct,alterf,desc,op)
 						local finish=(ct>=minc and Auxiliary.XyzLevelFreeGoal(g,tp,c,gf))
 						if finish then
 							minsct=0
-							if not Duel.SelectYesNo(tp,210) then break end
 						end
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 						local tg=ag:Select(tp,minsct,1,nil)
@@ -1138,7 +1135,6 @@ function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
 					if cg:GetCount()==0 then break end
 					local minct=1
 					if Auxiliary.FCheckMixRepGoal(tp,sg,c,sub,chkf,fun1,minc,maxc,table.unpack(funs)) then
-						if not Duel.SelectYesNo(tp,210) then break end
 						minct=0
 					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
@@ -1824,20 +1820,14 @@ function Auxiliary.LinkTarget(f,minc,maxc,gf)
 					bg:Select(tp,#bg,#bg,nil)
 				end
 				local sg=Group.CreateGroup()
-				local res=false
 				sg:Merge(bg)
 				while #sg<maxc do
 					local cg=mg:Filter(Auxiliary.LCheckRecursive,sg,tp,sg,mg,c,#sg,minc,maxc,gf)
 					if #cg==0 then break end
-					if #cg<=maxc and Auxiliary.LCheckGoal(tp,sg,c,minc,#sg,gf)
-						and mg:IsExists(Auxiliary.LCheckRecursive,1,sg,tp,sg,mg,c,#sg,minc,maxc,gf) then
-						res=true
-						if not Duel.SelectYesNo(tp,210) then break end
-					else
-						res=false
-					end
+					local finish=Auxiliary.LCheckGoal(tp,sg,c,minc,#sg,gf)
+					local cancel=(#sg==0 or finish)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LMATERIAL)
-					local tc=Group.SelectUnselect(cg,sg,tp,res,#sg==0 or res,minc,maxc)
+					local tc=cg:SelectUnselect(sg,tp,finish,cancel,minc,maxc)
 					if not tc then break end
 					if not bg:IsContains(tc) then
 						if not sg:IsContains(tc) then
