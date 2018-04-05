@@ -229,47 +229,50 @@ function Auxiliary.NonTuner(f,a,b,c)
 end
 function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 	sg:AddCard(c)
-	local ct=sg:GetCount()
-	local res=(ct>=min and f(sg,table.unpack(ext_params)))
-		or (ct<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params))
+	local res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params)))
+		or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params))
 	sg:RemoveCard(c)
 	return res
 end
 function Auxiliary.CheckGroup(g,f,cg,min,max,...)
 	local min=min or 1
-	local max=max or g:GetCount()
+	local max=max or #g
 	if min>max then return false end
 	local ext_params={...}
 	local sg=Group.CreateGroup()
 	if cg then sg:Merge(cg) end
-	local ct=sg:GetCount()
-	if ct>=min and ct<max and f(sg,...) then return true end
+	if #sg>=min and #sg<=max and f(sg,...) then return true end
 	return g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params)
 end
-function Auxiliary.SelectGroup(tp,desc,g,f,cg,min,max,...)
+function Auxiliary.SelectGroup(tp,desc,cancelable,g,f,cg,min,max,...)
 	local min=min or 1
-	local max=max or g:GetCount()
+	local max=max or #g
 	local ext_params={...}
 	local sg=Group.CreateGroup()
 	local cg=cg or Group.CreateGroup()
 	sg:Merge(cg)
-	local ct=sg:GetCount()
 	local ag=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,f,min,max,ext_params)	
-	while ct<max and ag:GetCount()>0 do
-		local finish=(ct>=min and f(sg,...))
+	while #sg<max and #ag>0 do
 		local seg=sg:Clone()
-		local dmin=min-cg:GetCount()
-		local dmax=math.min(max-cg:GetCount(),g:GetCount())
 		seg:Sub(cg)
+		local finish=(#sg>=min and #sg<=max and f(sg,...))
+		local cancel=finish or (cancelable and #seg==0)
+		local dmin=#seg
+		local dmax=math.min(max-#cg,#g)
 		Duel.Hint(HINT_SELECTMSG,tp,desc)
-		local tc=ag:SelectUnselect(seg,tp,finish,finish,dmin,dmax)
-		if not tc then break end
+		local tc=nil
+		repeat
+			tc=ag:SelectUnselect(sg,tp,finish,cancel,dmin,dmax)
+		until not tc or seg:IsContains(tc)
+		if not tc then
+			if not finish then return end
+			break
+		end
 		if sg:IsContains(tc) then
 			sg:RemoveCard(tc)
 		else
 			sg:AddCard(tc)
 		end
-		ct=sg:GetCount()
 		ag=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,f,min,max,ext_params)
 	end
 	return sg
@@ -795,8 +798,8 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
 					local pc=pe:GetHandler()
 					sg:AddCard(pc)
 				end
-				local g=Auxiliary.SelectGroup(tp,HINTMSG_XMATERIAL,mg,Auxiliary.XyzLevelFreeGoal,sg,minc,maxc,tp,c,gf)
-				if g:GetCount()>0 then
+				local g=Auxiliary.SelectGroup(tp,HINTMSG_XMATERIAL,true,mg,Auxiliary.XyzLevelFreeGoal,sg,minc,maxc,tp,c,gf)
+				if g and g:GetCount()>0 then
 					g:KeepAlive()
 					e:SetLabelObject(g)
 					return true
@@ -907,9 +910,9 @@ function Auxiliary.XyzLevelFreeTarget2(f,gf,minct,maxct,alterf,desc,op)
 					if op then op(e,tp,1,g:GetFirst()) end
 				else
 					e:SetLabel(0)
-					g=Auxiliary.SelectGroup(tp,HINTMSG_XMATERIAL,ag,Auxiliary.XyzLevelFreeGoal,sg,minc,maxc,tp,c,gf)
+					g=Auxiliary.SelectGroup(tp,HINTMSG_XMATERIAL,true,ag,Auxiliary.XyzLevelFreeGoal,sg,minc,maxc,tp,c,gf)
 				end
-				if g:GetCount()>0 then
+				if g and g:GetCount()>0 then
 					g:KeepAlive()
 					e:SetLabelObject(g)
 					return true
@@ -1023,7 +1026,7 @@ function Auxiliary.FOperationMix(insf,sub,...)
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,table.unpack(funs))
 				local cg=Group.CreateGroup()
 				if gc then cg:AddCard(gc) end
-				local sg=Auxiliary.SelectGroup(tp,HINTMSG_FMATERIAL,mg,Auxiliary.FCheckMixGoal,cg,#funs,#funs,tp,c,sub,chkf,...)
+				local sg=Auxiliary.SelectGroup(tp,HINTMSG_FMATERIAL,false,mg,Auxiliary.FCheckMixGoal,cg,#funs,#funs,tp,c,sub,chkf,...)
 				Duel.SetFusionMaterial(sg)
 			end
 end
@@ -1518,7 +1521,7 @@ function Auxiliary.RPEOperation(filter)
 					if tc.mat_filter then
 						mg=mg:Filter(tc.mat_filter,nil)
 					end
-					local mat=Auxiliary.SelectGroup(tp,HINTMSG_RELEASE,mg,Auxiliary.RPECheck,nil,1,99,tp,tc)
+					local mat=Auxiliary.SelectGroup(tp,HINTMSG_RELEASE,false,mg,Auxiliary.RPECheck,nil,1,99,tp,tc)
 					tc:SetMaterial(mat)
 					Duel.ReleaseRitualMaterial(mat)
 					Duel.BreakEffect()
@@ -1577,7 +1580,7 @@ function Auxiliary.RPEOperation2(filter)
 					if tc.mat_filter then
 						mg=mg:Filter(tc.mat_filter,nil)
 					end
-					local mat=Auxiliary.SelectGroup(tp,HINTMSG_RELEASE,mg,Auxiliary.RPECheck2,nil,1,99,tp,tc)
+					local mat=Auxiliary.SelectGroup(tp,HINTMSG_RELEASE,false,mg,Auxiliary.RPECheck2,nil,1,99,tp,tc)
 					tc:SetMaterial(mat)
 					Duel.ReleaseRitualMaterial(mat)
 					Duel.BreakEffect()
@@ -1755,13 +1758,13 @@ function Auxiliary.LinkCondition(f,minc,maxc,gf)
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp=c:GetControler()
 				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f,c)
-				local sg=Group.CreateGroup()
+				local bg=Group.CreateGroup()
 				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_LMATERIAL)}) do
 					local pc=pe:GetHandler()
 					if not mg:IsContains(pc) then return false end
-					sg:AddCard(pc)
+					bg:AddCard(pc)
 				end
-				return Auxiliary.CheckGroup(mg,Auxiliary.LCheckGoal,sg,minc,maxc,tp,c,gf)
+				return Auxiliary.CheckGroup(mg,Auxiliary.LCheckGoal,bg,minc,maxc,tp,c,gf)
 			end
 end
 function Auxiliary.LinkTarget(f,minc,maxc,gf)
@@ -1771,37 +1774,8 @@ function Auxiliary.LinkTarget(f,minc,maxc,gf)
 				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_LMATERIAL)}) do
 					bg:AddCard(pe:GetHandler())
 				end
-				if #bg>0 then
-					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LMATERIAL)
-					bg:Select(tp,#bg,#bg,nil)
-				end
-				local sg=Group.CreateGroup()
-				local res=false
-				sg:Merge(bg)
-				while #sg<maxc do
-					local cg=mg:Filter(Auxiliary.LCheckRecursive,sg,tp,sg,mg,c,#sg,minc,maxc,gf)
-					if #cg==0 then break end
-					if #cg<=maxc and Auxiliary.LCheckGoal(tp,sg,c,minc,#sg,gf)
-						and mg:IsExists(Auxiliary.LCheckRecursive,1,sg,tp,sg,mg,c,#sg,minc,maxc,gf) then
-						res=true
-						if not Duel.SelectYesNo(tp,210) then break end
-					else
-						res=false
-					end
-					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LMATERIAL)
-					local tc=Group.SelectUnselect(cg,sg,tp,res,#sg==0 or res,minc,maxc)
-					if not tc then break end
-					if not bg:IsContains(tc) then
-						if not sg:IsContains(tc) then
-							sg:AddCard(tc)
-						else
-							sg:RemoveCard(tc)
-						end
-					elseif #bg>0 and #sg<=#bg then
-						return false
-					end
-				end
-				if #sg>0 then
+				local sg=Auxiliary.CheckGroup(tp,HINTMSG_LMATERIAL,true,mg,Auxiliary.LCheckGoal,bg,minc,maxc,tp,c,gf)
+				if sg and #sg>0 then
 					sg:KeepAlive()
 					e:SetLabelObject(sg)
 					return true
