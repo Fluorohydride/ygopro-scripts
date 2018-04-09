@@ -16,10 +16,11 @@ function c43476205.filter1(c,e,tp)
 	return rk>0 and c:IsFaceup() and c:IsSetCard(0xba)
 		and Duel.IsExistingMatchingCard(c43476205.filter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,rk+1)
 		and Duel.GetLocationCountFromEx(tp,tp,c)>0
+		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 end
 function c43476205.filter2(c,e,tp)
 	local rk=c:GetRank()
-	return rk>0 and c:IsFaceup() and c:GetOverlayCount()==0 and c:IsControlerCanBeChanged()
+	return rk>0 and c:IsFaceup() and c:GetOverlayCount()==0 and c:IsControlerCanBeChanged() and aux.MustMaterialCheck(c,1-tp,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingMatchingCard(c43476205.filter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,rk+1)
 end
 function c43476205.filter3(c,e,tp,mc,rk)
@@ -51,7 +52,7 @@ function c43476205.activate(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.GetControl(tc,tp)==0 then return end
 		Duel.BreakEffect()
 	end
-	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 then return end
+	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 or not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL) then return end
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c43476205.filter3,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc,tc:GetRank()+1)

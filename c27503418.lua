@@ -24,7 +24,7 @@ function c27503418.filter2(c,tp,lv)
 end
 function c27503418.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttackTarget()
-	if Duel.NegateAttack() and Duel.GetLocationCountFromEx(tp,tp,tc)>0
+	if Duel.NegateAttack() and Duel.GetLocationCountFromEx(tp,tp,tc)>0 and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
 		and Duel.IsExistingMatchingCard(c27503418.filter1,tp,LOCATION_EXTRA,0,1,nil,e,tp,tc:GetLevel())
 		and tc:IsAbleToRemove() and Duel.SelectYesNo(tp,aux.Stringid(27503418,0)) then
 		Duel.BreakEffect()
