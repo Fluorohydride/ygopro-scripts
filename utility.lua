@@ -551,7 +551,7 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat)
 	return true
 end
 function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,op)
-	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0 and Auxiliary.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
+	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0 and (not op or op(e,tp,0,c)) and Auxiliary.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 end
 --Xyz monster, lv k*n
 function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,desc,maxct,op)
@@ -654,12 +654,7 @@ function Auxiliary.XyzCondition2(f,lv,minc,maxc,alterf,desc,op)
 				else
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
-				local sg=Group.CreateGroup()
-				for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,EFFECT_MUST_BE_XMATERIAL)}) do
-					local pc=pe:GetHandler()
-					sg:AddCard(pc)
-				end
-				if (not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,op,sg) then
+				if (not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,op) then
 					return true
 				end
 				local minc=minc
@@ -692,7 +687,7 @@ function Auxiliary.XyzTarget2(f,lv,minc,maxc,alterf,desc,op)
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
 				local b1=ct<minc and Duel.CheckXyzMaterial(c,f,lv,minc,maxc,og)
-				local b2=(not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,op,sg)
+				local b2=(not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,op)
 				local g=nil
 				if b2 and (not b1 or Duel.SelectYesNo(tp,desc)) then
 					e:SetLabel(1)
@@ -790,6 +785,7 @@ function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct)
 					mg=Duel.GetMatchingGroup(Auxiliary.XyzLevelFreeFilter,tp,LOCATION_MZONE,0,nil,c,f)
 				end
 				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
+				if sg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				return maxc>=minc and Auxiliary.CheckGroup(mg,Auxiliary.XyzLevelFreeGoal,sg,minc,maxc,tp,c,gf)
 			end
 end
@@ -810,7 +806,7 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
 				else
 					mg=Duel.GetMatchingGroup(Auxiliary.XyzLevelFreeFilter,tp,LOCATION_MZONE,0,nil,c,f)
 				end
-				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL
+				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
 				local g=Auxiliary.SelectGroup(tp,HINTMSG_XMATERIAL,true,mg,Auxiliary.XyzLevelFreeGoal,sg,minc,maxc,tp,c,gf)
 				if g and g:GetCount()>0 then
 					g:KeepAlive()
@@ -880,6 +876,7 @@ function Auxiliary.XyzLevelFreeCondition2(f,gf,minct,maxct,alterf,desc,op)
 				end
 				mg=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
 				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
+				if sg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				return maxc>=minc and Auxiliary.CheckGroup(mg,Auxiliary.XyzLevelFreeGoal,sg,minc,maxc,tp,c,gf)
 			end
 end
@@ -1754,6 +1751,7 @@ function Auxiliary.LinkCondition(f,minc,maxc,gf)
 				local tp=c:GetControler()
 				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f,c)
 				local bg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_LMATERIAL)
+				if bg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				return Auxiliary.CheckGroup(mg,Auxiliary.LCheckGoal,bg,minc,maxc,tp,c,gf)
 			end
 end
