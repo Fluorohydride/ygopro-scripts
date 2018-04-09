@@ -256,7 +256,7 @@ function Auxiliary.MustMaterialCheck(v,tp,code)
 	return true
 end
 function Auxiliary.MustMaterialCounterFilter(c,g)
-	return not sg:IsContains(c)
+	return not g:IsContains(c)
 end
 --Synchro monster, 1 tuner + min to max monsters
 function Auxiliary.AddSynchroProcedure(c,f1,f2,minc,maxc)
