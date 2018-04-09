@@ -31,13 +31,14 @@ function c29085954.filter(c,e,tp,mc)
 end
 function c29085954.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCountFromEx(tp,tp,e:GetHandler())>0
+		and aux.MustMaterialCheck(e:GetHandler(),tp,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.GetFieldGroupCount(tp,LOCATION_EXTRA,0)>0 end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c29085954.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetFieldGroup(tp,LOCATION_EXTRA,0)
-	if g:GetCount()>0 and Duel.GetLocationCountFromEx(tp,tp,c)>0
+	if g:GetCount()>0 and Duel.GetLocationCountFromEx(tp,tp,c)>0 and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 		and c:IsFaceup() and c:IsRelateToEffect(e) and c:IsControler(tp) and not c:IsImmuneToEffect(e) then
 		local tg=g:RandomSelect(1-tp,1)
 		Duel.ConfirmCards(1-tp,tg)
