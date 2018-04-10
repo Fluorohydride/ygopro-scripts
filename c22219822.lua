@@ -63,6 +63,7 @@ function c22219822.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return tg:IsExists(Card.IsCanBeEffectTarget,1,nil,e) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=tg:FilterSelect(tp,Card.IsCanBeEffectTarget,1,1,nil,e)
+	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c22219822.desop(e,tp,eg,ep,ev,re,r,rp)
