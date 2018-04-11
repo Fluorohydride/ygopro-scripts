@@ -139,5 +139,4 @@ function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 		tc=tg:GetNext()
 	end
 	Duel.ConfirmCards(1-tp,tg)
-	Duel.ShuffleSetCard(tg1)
 end
