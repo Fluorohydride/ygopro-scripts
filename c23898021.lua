@@ -45,6 +45,5 @@ function c23898021.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SET)
 		local tg=sg:RandomSelect(1-tp,1)
 		Duel.SSet(tp,tg:GetFirst())
-		Duel.ConfirmCards(1-tp,tg)
 	end
 end
