@@ -42,7 +42,7 @@ function c59160188.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c59160188.relval(e,re,r,rp)
-	return bit.band(r,REASON_COST)~=0
+	return re:IsActivated() and bit.band(r,REASON_COST)~=0
 end
 function c59160188.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
