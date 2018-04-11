@@ -7,8 +7,12 @@ function c15397015.initial_effect(c)
 	e1:SetCode(EFFECT_CANNOT_SUMMON)
 	e1:SetCondition(c15397015.sumcon)
 	c:RegisterEffect(e1)
-	local e2=e1:Clone()
+	--spsummon limit
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetCode(EFFECT_SPSUMMON_CONDITION)
+	e2:SetValue(c15397015.sumlimit)
 	c:RegisterEffect(e2)
 	--activate limit
 	local e3=Effect.CreateEffect(c)
@@ -34,6 +38,9 @@ function c15397015.initial_effect(c)
 end
 function c15397015.sumcon(e)
 	return Duel.GetFieldGroupCount(e:GetHandler():GetControler(),LOCATION_MZONE,0)>0
+end
+function c15397015.sumlimit(e,se,sp,st,pos,tp)
+	return Duel.GetFieldGroupCount(sp,LOCATION_MZONE,0)==0
 end
 function c15397015.counterop(e,tp,eg,ep,ev,re,r,rp)
 	if not re:IsActiveType(TYPE_MONSTER) then return end
