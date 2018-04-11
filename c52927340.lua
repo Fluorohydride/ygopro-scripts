@@ -11,7 +11,7 @@ function c52927340.initial_effect(c)
 	e1:SetTarget(c52927340.target)
 	e1:SetOperation(c52927340.operation)
 	c:RegisterEffect(e1)
-	--negate
+	--disable
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(52927340,1))
 	e2:SetCategory(CATEGORY_DISABLE)
@@ -21,6 +21,14 @@ function c52927340.initial_effect(c)
 	e2:SetTarget(c52927340.distg)
 	e2:SetOperation(c52927340.disop)
 	c:RegisterEffect(e2)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_DISABLE)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e3:SetTarget(c52927340.distg2)
+	c:RegisterEffect(e3)
 end
 function c52927340.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x103)
@@ -43,10 +51,10 @@ function c52927340.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c52927340.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and chkc:IsFaceup() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and aux.disfilter1(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(aux.disfilter1,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,aux.disfilter1,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end
 function c52927340.disop(e,tp,eg,ep,ev,re,r,rp)
@@ -54,16 +62,8 @@ function c52927340.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_OWNER_RELATE+EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetRange(LOCATION_ONFIELD)
-		e1:SetCode(EFFECT_DISABLE)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
-		e1:SetCondition(c52927340.rcon)
-		tc:RegisterEffect(e1,true)
 	end
 end
-function c52927340.rcon(e)
-	return e:GetOwner():IsHasCardTarget(e:GetHandler())
+function c52927340.distg2(e,c)
+	return e:GetHandler():IsHasCardTarget(c)
 end
