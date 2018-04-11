@@ -79,8 +79,8 @@ function c93238626.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c93238626.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.NegateAttack() then return end
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<0 then return end
 	local tc=Duel.GetAttackTarget()
+	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 or not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL) then return end
 	local m=_G["c"..tc:GetCode()]
 	if tc:IsFacedown() or not tc:IsRelateToBattle() or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) or not m then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

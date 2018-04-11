@@ -35,6 +35,7 @@ end
 function c10424147.spfilter1(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x10dc)
 		and Duel.IsExistingMatchingCard(c10424147.spfilter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,c:GetAttribute())
+		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 end
 function c10424147.spfilter2(c,e,tp,mc,att)
 	return c:IsType(TYPE_XYZ) and c:IsSetCard(0x20dc) and c:IsAttribute(att) and mc:IsCanBeXyzMaterial(c)
@@ -79,6 +80,7 @@ function c10424147.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local g=Duel.GetMatchingGroup(c10424147.spfilter3,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil,e)
 	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
+		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_XMATERIAL)
 		and g:GetClassCount(Card.GetCode)>2
 		and Duel.IsExistingMatchingCard(c10424147.spfilter4,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
@@ -98,7 +100,7 @@ function c10424147.mtfilter(c,e)
 	return c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
 end
 function c10424147.spop2(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCountFromEx(tp)<=0 then return end
+	if Duel.GetLocationCountFromEx(tp)<=0 or not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_XMATERIAL) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=Duel.SelectMatchingCard(tp,c10424147.spfilter4,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	local sc=sg:GetFirst()

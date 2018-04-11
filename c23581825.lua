@@ -29,6 +29,7 @@ function c23581825.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.GetLocationCountFromEx(tp)>0
+		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingTarget(c23581825.filter1,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c23581825.filter1,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
@@ -39,7 +40,7 @@ function c23581825.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) then return end
 	if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==0 then return end
-	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 then return end
+	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 or not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c23581825.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc,tc:GetRank()+2)
 	local sc=g:GetFirst()

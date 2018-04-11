@@ -55,6 +55,7 @@ function c61818176.filter1(c,e,tp)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsSetCard(0x8d)
 		and Duel.IsExistingMatchingCard(c61818176.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,c:GetCode())
 		and Duel.GetLocationCountFromEx(tp,tp,c)>0
+		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 end
 function c61818176.filter2(c,e,tp,mc,code)
 	return c:IsType(TYPE_XYZ) and c:IsSetCard(0x8d) and not c:IsCode(code) and mc:IsCanBeXyzMaterial(c)
@@ -69,7 +70,7 @@ function c61818176.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c61818176.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 then return end
+	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 or not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL) then return end
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c61818176.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc,tc:GetCode())
