@@ -81,9 +81,9 @@ function Auxiliary.OR(...)
 			end
 end
 function Auxiliary.NOT(f)
-	return function(...)
-		return not f(...)
-	end
+	return	function(...)
+				return not f(...)
+			end
 end
 function Auxiliary.BeginPuzzle(effect)
 	local e1=Effect.GlobalEffect()
