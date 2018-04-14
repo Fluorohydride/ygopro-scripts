@@ -44,7 +44,7 @@ function c31111109.fselect(c,tp,mg,sg)
 	return res
 end
 function c31111109.fgoal(tp,sg)
-	if sg:IsExists(aux.FCheckTuneMagicianX,1,nil,sg) then return false end
+	if sg:IsExists(aux.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
 	if not (sg:GetCount()==5 and Duel.GetLocationCountFromEx(tp,tp,sg)>0) then return false end
 	local g1=sg:Filter(Card.IsFusionSetCard,nil,0x9)
 	local c1=g1:GetCount()

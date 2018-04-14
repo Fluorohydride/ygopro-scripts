@@ -501,6 +501,18 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat)
 	end
 	return true
 end
+--Checking Tune Magician
+function Auxiliary.TuneMagicianFilter(c,e)
+	local f=e:GetValue()
+	return f(e,c)
+end
+function Auxiliary.TuneMagicianCheckX(c,sg,ecode)
+	local eset={c:IsHasEffect(ecode)}
+	for _,te in pairs(eset) do
+		if sg:IsExists(Auxiliary.TuneMagicianFilter,1,c,te) then return true end
+	end
+	return false
+end
 function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,op)
 	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0 and (not op or op(e,tp,0,c))
 end
@@ -723,6 +735,7 @@ function Auxiliary.XyzLevelFreeCheck(c,tp,xyzc,mg,sg,gf,minc,maxc)
 	return res
 end
 function Auxiliary.XyzLevelFreeGoal(g,tp,xyzc,gf)
+	if g:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,g,EFFECT_TUNE_MAGICIAN_X) then return false end
 	return (not gf or gf(g)) and Duel.GetLocationCountFromEx(tp,tp,g,xyzc)>0
 end
 function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct)
@@ -1055,13 +1068,10 @@ function Auxiliary.FCheckMix(c,mg,sg,fc,sub,fun1,fun2,...)
 		return fun1(c,fc,sub,mg,sg)
 	end
 end
-function Auxiliary.FCheckTuneMagicianX(c,sg)
-	return c:IsHasEffect(EFFECT_TUNE_MAGICIAN_F) and sg:IsExists(c.fuslimit,1,c)
-end
 --if sg1 is subset of sg2 then not Auxiliary.FCheckAdditional(tp,sg1,fc) -> not Auxiliary.FCheckAdditional(tp,sg2,fc)
 Auxiliary.FCheckAdditional=nil
 function Auxiliary.FCheckMixGoal(tp,sg,fc,sub,chkf,...)
-	if sg:IsExists(Auxiliary.FCheckTuneMagicianX,1,nil,sg) then return false end
+	if sg:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
 	if not Auxiliary.MustMaterialCheck(sg,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
 	local g=Group.CreateGroup()
 	return sg:IsExists(Auxiliary.FCheckMix,1,nil,sg,g,fc,sub,...) and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
@@ -1171,7 +1181,7 @@ function Auxiliary.FCheckMixRepFilter(c,sg,g,fc,sub,chkf,fun1,minc,maxc,fun2,...
 	return false
 end
 function Auxiliary.FCheckMixRepGoal(tp,sg,fc,sub,chkf,fun1,minc,maxc,...)
-	if sg:IsExists(Auxiliary.FCheckTuneMagicianX,1,nil,sg) then return false end
+	if sg:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
 	if not Auxiliary.MustMaterialCheck(sg,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
 	if sg:GetCount()<minc+#{...} or sg:GetCount()>maxc+#{...} then return false end
 	local g=Group.CreateGroup()
@@ -1358,7 +1368,7 @@ function Auxiliary.FShaddollSpFilter1(c,tp,mg,exg,attr)
 end
 function Auxiliary.FShaddollSpFilter2(c,tp,mc,attr)
 	local sg=Group.FromCards(c,mc)
-	if sg:IsExists(Auxiliary.FCheckTuneMagicianX,1,nil,sg) then return false end
+	if sg:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
 	if not Auxiliary.MustMaterialCheck(sg,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
 	return ((Auxiliary.FShaddollFilter1(c) and Auxiliary.FShaddollFilter2(mc,attr))
 		or (Auxiliary.FShaddollFilter2(c,attr) and Auxiliary.FShaddollFilter1(mc)))
