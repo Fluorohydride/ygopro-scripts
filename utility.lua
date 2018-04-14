@@ -500,6 +500,7 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat)
 		end
 	end
 	return true
+end
 --Checking Tune Magician
 function Auxiliary.TuneMagicianFilter(c,e)
 	local f=e:GetValue()
