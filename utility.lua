@@ -58,20 +58,32 @@ end
 function Auxiliary.FALSE()
 	return false
 end
-function Auxiliary.AND(f1,f2)
-	return	function(a,b,c)
-				return f1(a,b,c) and f2(a,b,c)
-			end
+function Auxiliary.AND(...)
+	local function_list={...}
+	return function(...)
+		local res=false
+		for i,f in ipairs(function_list) do
+			res=f(...)
+			if not res then return res end
+		end
+		return res
+	end
 end
-function Auxiliary.OR(f1,f2)
-	return	function(a,b,c)
-				return f1(a,b,c) or f2(a,b,c)
-			end
+function Auxiliary.OR(...)
+	local function_list={...}
+	return function(...)
+		local res=false
+		for i,f in ipairs(function_list) do
+			res=f(...)
+			if res then return res end
+		end
+		return res
+	end
 end
 function Auxiliary.NOT(f)
-	return	function(a,b,c)
-				return not f(a,b,c)
-			end
+	return function(...)
+		return not f(...)
+	end
 end
 function Auxiliary.BeginPuzzle(effect)
 	local e1=Effect.GlobalEffect()
@@ -101,7 +113,7 @@ function Auxiliary.IsDualState(effect)
 	return not c:IsDisabled() and c:IsDualState()
 end
 function Auxiliary.IsNotDualState(effect)
-	local c=effect:GetHandle()
+	local c=effect:GetHandler()
 	return c:IsDisabled() or not c:IsDualState()
 end
 function Auxiliary.DualNormalCondition(effect)
@@ -197,34 +209,40 @@ function Auxiliary.CheckUnionEquip(uc,tc)
 	if uc.old_union then return ct1==0
 	else return ct2==0 end
 end
-function Auxiliary.TargetEqualFunction(f,value,a,b,c)
+function Auxiliary.TargetEqualFunction(f,value,...)
+	local ext_params={...}
 	return	function(effect,target)
-				return f(target,a,b,c)==value
+				return f(target,table.unpack(ext_params))==value
 			end
 end
-function Auxiliary.TargetBoolFunction(f,a,b,c)
+function Auxiliary.TargetBoolFunction(f,...)
+	local ext_params={...}
 	return	function(effect,target)
-				return f(target,a,b,c)
+				return f(target,table.unpack(ext_params))
 			end
 end
-function Auxiliary.FilterEqualFunction(f,value,a,b,c)
+function Auxiliary.FilterEqualFunction(f,value,...)
+	local ext_params={...}
 	return	function(target)
-				return f(target,a,b,c)==value
+				return f(target,table.unpack(ext_params))==value
 			end
 end
-function Auxiliary.FilterBoolFunction(f,a,b,c)
+function Auxiliary.FilterBoolFunction(f,...)
+	local ext_params={...}
 	return	function(target)
-				return f(target,a,b,c)
+				return f(target,table.unpack(ext_params))
 			end
 end
-function Auxiliary.Tuner(f,a,b,c)
+function Auxiliary.Tuner(f,...)
+	local ext_params={...}
 	return	function(target)
-				return target:IsType(TYPE_TUNER) and (not f or f(target,a,b,c))
+				return target:IsType(TYPE_TUNER) and (not f or f(target,table.unpack(ext_params)))
 			end
 end
-function Auxiliary.NonTuner(f,a,b,c)
+function Auxiliary.NonTuner(f,...)
+	local ext_params={...}
 	return	function(target)
-				return target:IsNotTuner() and (not f or f(target,a,b,c))
+				return target:IsNotTuner() and (not f or f(target,table.unpack(ext_params)))
 			end
 end
 function Auxiliary.GetValueType(v)
