@@ -60,25 +60,25 @@ function Auxiliary.FALSE()
 end
 function Auxiliary.AND(...)
 	local function_list={...}
-	return function(...)
-		local res=false
-		for i,f in ipairs(function_list) do
-			res=f(...)
-			if not res then return res end
-		end
-		return res
-	end
+	return	function(...)
+				local res=false
+				for i,f in ipairs(function_list) do
+					res=f(...)
+					if not res then return res end
+				end
+				return res
+			end
 end
 function Auxiliary.OR(...)
 	local function_list={...}
-	return function(...)
-		local res=false
-		for i,f in ipairs(function_list) do
-			res=f(...)
-			if res then return res end
-		end
-		return res
-	end
+	return	function(...)
+				local res=false
+				for i,f in ipairs(function_list) do
+					res=f(...)
+					if res then return res end
+				end
+				return res
+			end
 end
 function Auxiliary.NOT(f)
 	return function(...)
