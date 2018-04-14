@@ -34,6 +34,7 @@ function c73941492.initial_effect(c)
 	e5:SetType(EFFECT_TYPE_SINGLE)
 	e5:SetCode(EFFECT_TUNE_MAGICIAN_F)
 	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e5:SetValue(c73941492.fuslimit)
 	c:RegisterEffect(e5)
 	--xyz limit
 	local e6=Effect.CreateEffect(c)
@@ -56,6 +57,12 @@ function c73941492.initial_effect(c)
 end
 function c73941492.synlimit(e,c)
 	return c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM)
+end
+function c73941492.fuslimit(e,c)
+	return not (c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM))
+end
+function c73941492.xyzlimit(e,c)
+	return not (c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM))
 end
 function c73941492.atkfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM)
@@ -103,10 +110,4 @@ function c73941492.spop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e3,true)
 		Duel.SpecialSummonComplete()
 	end
-end
-function c73941492.fuslimit(c)
-	return not (c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM))
-end
-function c73941492.xyzlimit(e,c)
-	return not (c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM))
 end
