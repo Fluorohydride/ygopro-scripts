@@ -1903,6 +1903,11 @@ function Auxiliary.GetColumn(c,p)
 	else return nil end
 	if c:IsControler(p or 0) then return seq else return 4-seq end
 end
+function Auxiliary.MZoneSequence(seq)
+	if seq==5 then return 1 end
+	if seq==6 then return 3 end
+	return seq
+end
 --card effect disable filter(target)
 function Auxiliary.disfilter1(c)
 	return c:IsFaceup() and not c:IsDisabled() and (not c:IsType(TYPE_NORMAL) or c:GetOriginalType()&TYPE_EFFECT~=0)

@@ -43,15 +43,16 @@ function c2930675.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c2930675.cfilter(c,seq2)
-	local seq1=c:GetSequence()
-	return c:IsFaceup() and c:IsSetCard(0x10c)
-		and (seq1==4-seq2 or (seq2==5 and seq1==3) or (seq2==6 and seq1==1))
+	local seq1=aux.MZoneSequence(c:GetSequence())
+	return c:IsFaceup() and c:IsSetCard(0x10c) and seq1==4-seq2
 end
 function c2930675.discon(e,tp,eg,ep,ev,re,r,rp)
 	local loc,seq=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_SEQUENCE)
+	seq=aux.MZoneSequence(seq)
 	return rp~=tp and re:IsActiveType(TYPE_TRAP) and loc==LOCATION_SZONE
 		and Duel.IsExistingMatchingCard(c2930675.cfilter,tp,LOCATION_MZONE,0,1,nil,seq)
 end
 function c2930675.disop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,0,2930675)
 	Duel.NegateEffect(ev)
 end
