@@ -20,32 +20,33 @@ function c4333086.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	return true
 end
-function c4333086.desfilter(c,tc)
-	return c:GetEquipTarget()~=tc
+function c4333086.desfilter(c,tc,ec)
+	return c:GetEquipTarget()~=tc and c~=ec
 end
-function c4333086.costfilter(c)
+function c4333086.costfilter(c,ec)
 	if not c:IsRace(RACE_ZOMBIE) then return false end
-	return Duel.IsExistingTarget(c4333086.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,2,c,c)
+	return Duel.IsExistingTarget(c4333086.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,2,c,c,ec)
 end
 function c4333086.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc~=e:GetHandler() end
+	local c=e:GetHandler()
+	if chkc then return chkc:IsOnField() and chkc~=c end
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(tp,c4333086.costfilter,1,e:GetHandler())
+			return Duel.CheckReleaseGroup(tp,c4333086.costfilter,1,c,c)
 				and Duel.IsExistingMatchingCard(c4333086.filter,tp,LOCATION_DECK,0,1,nil)
 		else
-			return Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,2,e:GetHandler())
+			return Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,2,c)
 				and Duel.IsExistingMatchingCard(c4333086.filter,tp,LOCATION_DECK,0,1,nil)
 		end
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local sg=Duel.SelectReleaseGroup(tp,c4333086.costfilter,1,1,e:GetHandler())
+		local sg=Duel.SelectReleaseGroup(tp,c4333086.costfilter,1,1,c,c)
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,2,2,e:GetHandler())
+	local g=Duel.SelectTarget(tp,nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,2,2,c)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_DECK)
 end

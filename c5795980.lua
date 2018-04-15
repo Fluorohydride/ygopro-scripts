@@ -25,31 +25,32 @@ function c5795980.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	return true
 end
-function c5795980.cfilter(c)
+function c5795980.cfilter(c,ec)
 	if c:IsFacedown() or not c:IsLevelAbove(5) or not c:IsSummonType(SUMMON_TYPE_NORMAL) then return false end
-	return Duel.IsExistingTarget(c5795980.tgfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,c)
+	return Duel.IsExistingTarget(c5795980.tgfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,c,ec)
 end
-function c5795980.tgfilter(c,tc)
-	return aux.disfilter1(c) and c:GetEquipTarget()~=tc
+function c5795980.tgfilter(c,tc,ec)
+	return aux.disfilter1(c) and c:GetEquipTarget()~=tc and c~=ec
 end
 function c5795980.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and aux.disfilter1(chkc) and chkc~=e:GetHandler() end
+	local c=e:GetHandler()
+	if chkc then return chkc:IsOnField() and aux.disfilter1(chkc) and chkc~=c end
 	if chk==0 then
 		if not Duel.IsPlayerCanDraw(tp,1) then return false end
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(tp,c5795980.cfilter,1,e:GetHandler())
+			return Duel.CheckReleaseGroup(tp,c5795980.cfilter,1,c,c)
 		else
-			return Duel.IsExistingTarget(aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler())
+			return Duel.IsExistingTarget(aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 		end
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local sg=Duel.SelectReleaseGroup(tp,c5795980.cfilter,1,1,e:GetHandler())
+		local sg=Duel.SelectReleaseGroup(tp,c5795980.cfilter,1,1,c,c)
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetHandler())
+	local g=Duel.SelectTarget(tp,aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,c)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
