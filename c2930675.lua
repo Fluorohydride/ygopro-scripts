@@ -48,7 +48,6 @@ function c2930675.cfilter(c,seq2)
 end
 function c2930675.discon(e,tp,eg,ep,ev,re,r,rp)
 	local loc,seq=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_SEQUENCE)
-	seq=aux.MZoneSequence(seq)
 	return rp~=tp and re:IsActiveType(TYPE_TRAP) and loc==LOCATION_SZONE
 		and Duel.IsExistingMatchingCard(c2930675.cfilter,tp,LOCATION_MZONE,0,1,nil,seq)
 end
