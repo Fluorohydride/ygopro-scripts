@@ -1844,17 +1844,19 @@ function Auxiliary.LinkTarget(f,minc,maxc,gf)
 				end
 				local sg=Group.CreateGroup()
 				sg:Merge(bg)
+				local finish=false
 				while #sg<maxc do
+					finish=Auxiliary.LCheckGoal(tp,sg,c,minc,#sg,gf)
 					local cg=mg:Filter(Auxiliary.LCheckRecursive,sg,tp,sg,mg,c,#sg,minc,maxc,gf)
 					if #cg==0 then break end
-					local finish=Auxiliary.LCheckGoal(tp,sg,c,minc,#sg,gf)
-					local cancel=(#sg==0 or finish)
+					local cancel=not finish
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LMATERIAL)
 					local tc=cg:SelectUnselect(sg,tp,finish,cancel,minc,maxc)
 					if not tc then break end
 					if not bg:IsContains(tc) then
 						if not sg:IsContains(tc) then
 							sg:AddCard(tc)
+							if #sg==maxc then finish=true end
 						else
 							sg:RemoveCard(tc)
 						end
@@ -1862,7 +1864,7 @@ function Auxiliary.LinkTarget(f,minc,maxc,gf)
 						return false
 					end
 				end
-				if #sg>0 then
+				if finish then
 					sg:KeepAlive()
 					e:SetLabelObject(sg)
 					return true
