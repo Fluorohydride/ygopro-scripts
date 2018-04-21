@@ -93,7 +93,7 @@ function c48063985.thop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SendtoGrave(g,REASON_EFFECT+REASON_RETURN)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local sg=Duel.SelectMatchingCard(tp,c48063985.thfilter,tp,LOCATION_DECK,0,1,1,nil)
+		local sg=aux.SelectMatchingCardCrossField(tp,c48063985.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 		if sg:GetCount()>0 then
 			Duel.SendtoHand(sg,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,sg)

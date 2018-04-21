@@ -35,7 +35,7 @@ function c58984738.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58984738.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(58984738,3))
-	local g=Duel.SelectMatchingCard(tp,c58984738.thfilter,tp,LOCATION_DECK,0,1,1,nil,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c58984738.thfilter,tp,LOCATION_DECK,0,1,1,nil,tp)
 	local tc=g:GetFirst()
 	if tc then
 		local b1=tc:IsAbleToHand()

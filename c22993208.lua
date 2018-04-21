@@ -26,7 +26,7 @@ end
 function c22993208.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c22993208.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c22993208.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	local c=e:GetHandler()
 	if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then

@@ -61,7 +61,7 @@ function c47408488.plop(e,tp,eg,ep,ev,re,r,rp)
 	if ft<=0 then return end
 	if ft>e:GetLabel() then ft=e:GetLabel() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-	local g=Duel.SelectMatchingCard(tp,c47408488.plfilter,tp,LOCATION_DECK,0,ft,ft,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c47408488.plfilter,tp,LOCATION_DECK,0,ft,ft,nil)
 	if g:GetCount()>0 then
 		local tc=g:GetFirst()
 		while tc do

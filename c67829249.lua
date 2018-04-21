@@ -28,7 +28,7 @@ function c67829249.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c67829249.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-	local g=Duel.SelectMatchingCard(tp,c67829249.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c67829249.filter,tp,LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.SSet(tp,tc)

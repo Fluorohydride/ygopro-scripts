@@ -33,7 +33,7 @@ function c63995093.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=Duel.SelectMatchingCard(tp,c63995093.filter2,tp,LOCATION_DECK,0,1,ft,nil,tc:GetCode(),e,tp)
+		local sg=aux.SelectMatchingCardCrossField(tp,c63995093.filter2,tp,LOCATION_DECK,0,1,ft,nil,tc:GetCode(),e,tp)
 		if sg:GetCount()>0 then
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 		end

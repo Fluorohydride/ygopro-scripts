@@ -50,7 +50,7 @@ function c40164421.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c40164421.cfilter,tp,LOCATION_GRAVE,0,nil)
 	local ct=g:GetClassCount(Card.GetCode)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local sg=Duel.SelectMatchingCard(tp,c40164421.thfilter,tp,LOCATION_DECK,0,1,1,nil,ct)
+	local sg=aux.SelectMatchingCardCrossField(tp,c40164421.thfilter,tp,LOCATION_DECK,0,1,1,nil,ct)
 	if sg:GetCount()>0 then
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,sg)

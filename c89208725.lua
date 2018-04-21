@@ -18,7 +18,7 @@ function c89208725.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c89208725.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(89208725,0))
-	local g=Duel.SelectMatchingCard(tp,c89208725.filter,tp,LOCATION_DECK,0,1,1,nil,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c89208725.filter,tp,LOCATION_DECK,0,1,1,nil,tp)
 	local tc=g:GetFirst()
 	if tc then
 		local te=tc:GetActivateEffect()

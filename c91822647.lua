@@ -37,7 +37,7 @@ function c91822647.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoDeck(tg,nil,2,REASON_EFFECT)
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=Duel.SelectMatchingCard(tp,c91822647.filter2,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+		local sg=aux.SelectMatchingCardCrossField(tp,c91822647.filter2,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 		if sg:GetCount()>0 then
 			Duel.BreakEffect()
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)

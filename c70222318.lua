@@ -42,7 +42,7 @@ end
 function c70222318.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(70222318,0))
-	local g=Duel.SelectMatchingCard(tp,Card.IsSetCard,tp,LOCATION_DECK,0,1,1,nil,0x90)
+	local g=aux.SelectMatchingCardCrossField(tp,Card.IsSetCard,tp,LOCATION_DECK,0,1,1,nil,0x90)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.ShuffleDeck(tp)

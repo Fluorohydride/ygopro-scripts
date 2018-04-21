@@ -56,7 +56,7 @@ function c75425043.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 or not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c75425043.spfilter2),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,aux.NecroValleyFilter(c75425043.spfilter2),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp)
 	if g:GetCount()==0 then return end
 	local tc=g:GetFirst()
 	local c=e:GetHandler()
@@ -78,7 +78,7 @@ function c75425043.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetOperation(c75425043.rmop)
 	Duel.RegisterEffect(e1,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g2=Duel.SelectMatchingCard(tp,c75425043.thfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g2=aux.SelectMatchingCardCrossField(tp,c75425043.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g2:GetCount()>0 then
 		Duel.SendtoHand(g2,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g2)

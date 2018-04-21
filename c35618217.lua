@@ -37,7 +37,7 @@ function c35618217.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.IsExistingMatchingCard(c35618217.costfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,nil,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local cg=Duel.SelectMatchingCard(tp,c35618217.costfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,1,nil,c)
+	local cg=aux.SelectMatchingCardCrossField(tp,c35618217.costfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,1,nil,c)
 	Duel.SendtoGrave(cg,REASON_COST)
 	e:SetLabel(cg:GetFirst():GetCode())
 end

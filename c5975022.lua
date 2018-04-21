@@ -59,7 +59,7 @@ end
 function c5975022.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c5975022.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c5975022.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.SpecialSummon(tc,105,tp,tp,false,false,POS_FACEUP)

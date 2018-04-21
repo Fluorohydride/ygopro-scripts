@@ -76,7 +76,7 @@ function c36857073.spop2(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g1=Duel.SelectMatchingCard(tp,c36857073.spfilter2,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+	local g1=aux.SelectMatchingCardCrossField(tp,c36857073.spfilter2,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	if g1:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g2=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c36857073.spfilter3),tp,LOCATION_GRAVE,0,1,1,nil,e,tp,g1:GetFirst():GetLevel())

@@ -16,7 +16,7 @@ function c89529919.filter(c)
 end
 function c89529919.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(89529919,1))
-	local g=Duel.SelectMatchingCard(tp,c89529919.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c89529919.filter,tp,LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.ShuffleDeck(tp)

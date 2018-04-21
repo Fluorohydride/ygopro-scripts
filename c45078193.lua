@@ -49,7 +49,7 @@ function c45078193.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c45078193.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local tg=Duel.SelectMatchingCard(tp,c45078193.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local tg=aux.SelectMatchingCardCrossField(tp,c45078193.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if tg:GetCount()>0 then
 		Duel.SendtoHand(tg,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tg)
@@ -68,7 +68,7 @@ function c45078193.gytg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c45078193.gyop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c45078193.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c45078193.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	end

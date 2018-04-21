@@ -28,7 +28,7 @@ end
 function c15978426.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tohand=Duel.GetFieldCard(tp,LOCATION_PZONE,0) and Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c15978426.filter,tp,LOCATION_DECK,0,1,1,nil,tohand)
+	local g=aux.SelectMatchingCardCrossField(tp,c15978426.filter,tp,LOCATION_DECK,0,1,1,nil,tohand)
 	local tc=g:GetFirst()
 	if not tc then return end
 	if tohand and tc:IsAbleToHand() and (not tc:IsAbleToGrave() or Duel.SelectYesNo(tp,aux.Stringid(15978426,1))) then

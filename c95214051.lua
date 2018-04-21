@@ -13,7 +13,7 @@ function c95214051.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c95214051.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(95214051,0))
-	local g=Duel.SelectMatchingCard(1-tp,Card.IsRace,1-tp,LOCATION_DECK,0,1,1,nil,RACE_INSECT)
+	local g=aux.SelectMatchingCardCrossField(1-tp,Card.IsRace,1-tp,LOCATION_DECK,0,1,1,nil,RACE_INSECT)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.ShuffleDeck(1-tp)

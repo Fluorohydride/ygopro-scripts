@@ -50,7 +50,7 @@ function c18716735.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-		local g=Duel.SelectMatchingCard(tp,c18716735.filter,tp,LOCATION_DECK,0,1,1,nil,false)
+		local g=aux.SelectMatchingCardCrossField(tp,c18716735.filter,tp,LOCATION_DECK,0,1,1,nil,false)
 		if g:GetCount()>0 then
 			Duel.SSet(tp,g:GetFirst())
 			Duel.ConfirmCards(1-tp,g)
@@ -85,7 +85,7 @@ end
 function c18716735.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,18716735)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c18716735.thfilter2,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c18716735.thfilter2,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

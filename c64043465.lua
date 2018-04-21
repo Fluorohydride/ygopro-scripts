@@ -46,7 +46,7 @@ end
 function c64043465.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c64043465.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c64043465.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)~=0 and g:GetFirst():IsLocation(LOCATION_GRAVE) then
 		local tc=Duel.GetFirstTarget()
 		if tc:IsRelateToEffect(e) then

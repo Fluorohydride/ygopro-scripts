@@ -45,7 +45,7 @@ end
 function c93751476.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c93751476.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c93751476.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
@@ -63,7 +63,7 @@ function c93751476.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c93751476.setop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-	local g=Duel.SelectMatchingCard(tp,c93751476.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c93751476.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SSet(tp,g:GetFirst())
 		Duel.ConfirmCards(1-tp,g)

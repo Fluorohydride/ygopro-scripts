@@ -30,7 +30,7 @@ function c81599449.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c81599449.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c81599449.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c81599449.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)~=0
 		and g:GetFirst():IsLocation(LOCATION_GRAVE) then
 		local sg=Duel.GetMatchingGroup(c81599449.thfilter,tp,LOCATION_DECK,0,nil)

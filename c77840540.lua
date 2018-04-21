@@ -44,7 +44,7 @@ function c77840540.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c77840540.cfilter,tp,LOCATION_MZONE,loc,1,1,nil)
 	if g:GetCount()>0 and Duel.Release(g,REASON_EFFECT)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=Duel.SelectMatchingCard(tp,c77840540.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+		local sg=aux.SelectMatchingCardCrossField(tp,c77840540.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 		if sg:GetCount()>0 then
 			Duel.SpecialSummon(sg,0,tp,tp,true,false,POS_FACEUP)
 		end

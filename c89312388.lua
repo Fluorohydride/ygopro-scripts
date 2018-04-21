@@ -23,7 +23,7 @@ function c89312388.coscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.SelectMatchingCard(tp,c89312388.filter1,tp,LOCATION_EXTRA,0,1,1,nil,tp)
 	Duel.ConfirmCards(1-tp,g)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local cg=Duel.SelectMatchingCard(tp,c89312388.filter2,tp,LOCATION_DECK,0,1,1,nil,g:GetFirst())
+	local cg=aux.SelectMatchingCardCrossField(tp,c89312388.filter2,tp,LOCATION_DECK,0,1,1,nil,g:GetFirst())
 	Duel.SendtoGrave(cg,REASON_COST)
 	e:SetLabel(cg:GetFirst():GetCode())
 end

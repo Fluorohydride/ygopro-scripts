@@ -23,7 +23,7 @@ function c48934760.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c48934760.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(48934760,0))
-	local tc=Duel.SelectMatchingCard(tp,c48934760.filter,tp,LOCATION_DECK,0,1,1,nil,tp):GetFirst()
+	local tc=aux.SelectMatchingCardCrossField(tp,c48934760.filter,tp,LOCATION_DECK,0,1,1,nil,tp):GetFirst()
 	if tc then
 		local fc=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
 		if fc then

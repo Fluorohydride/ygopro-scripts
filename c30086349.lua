@@ -45,7 +45,7 @@ function c30086349.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c30086349.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c30086349.damfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c30086349.damfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
 	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
 		Duel.Damage(1-tp,math.ceil(g:GetFirst():GetBaseAttack()/2),REASON_EFFECT)

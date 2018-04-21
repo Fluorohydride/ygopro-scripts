@@ -41,7 +41,7 @@ function c42143067.spop(e,tp,eg,ep,ev,re,r,rp)
 	local gc=e:GetLabelObject()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c42143067.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,gc:GetOriginalAttribute(),gc:GetOriginalLevel())
+	local g=aux.SelectMatchingCardCrossField(tp,c42143067.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,gc:GetOriginalAttribute(),gc:GetOriginalLevel())
 	local tc=g:GetFirst()
 	if tc then
 		local spos=0

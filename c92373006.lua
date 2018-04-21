@@ -56,7 +56,7 @@ function c92373006.spop(e,tp,eg,ep,ev,re,r,rp)
 	local rt=Duel.SendtoDeck(rc,nil,2,REASON_EFFECT)
 	if rt==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c92373006.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c92373006.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.SpecialSummon(tc,130,tp,tp,false,false,POS_FACEUP)

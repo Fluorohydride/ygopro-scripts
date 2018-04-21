@@ -35,7 +35,7 @@ function c5972394.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c5972394.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,tc:GetCode())
+	local g=aux.SelectMatchingCardCrossField(tp,c5972394.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,tc:GetCode())
 	if Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

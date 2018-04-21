@@ -62,7 +62,7 @@ function c3160805.operation(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.SendtoGrave(g,REASON_EFFECT)~=0 then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-			local tg=Duel.SelectMatchingCard(tp,c3160805.thfilter1,tp,LOCATION_DECK,0,1,1,nil,g:GetFirst():GetLevel())
+			local tg=aux.SelectMatchingCardCrossField(tp,c3160805.thfilter1,tp,LOCATION_DECK,0,1,1,nil,g:GetFirst():GetLevel())
 			Duel.SendtoHand(tg,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tg)
 		end
@@ -72,7 +72,7 @@ function c3160805.operation(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.SendtoGrave(g,REASON_EFFECT)~=0 then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-			local tg=Duel.SelectMatchingCard(tp,c3160805.thfilter2,tp,LOCATION_DECK,0,1,1,nil,g:GetFirst():GetLevel())
+			local tg=aux.SelectMatchingCardCrossField(tp,c3160805.thfilter2,tp,LOCATION_DECK,0,1,1,nil,g:GetFirst():GetLevel())
 			Duel.SendtoHand(tg,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tg)
 		end

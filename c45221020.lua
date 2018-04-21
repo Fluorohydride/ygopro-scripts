@@ -46,7 +46,7 @@ function c45221020.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local lv=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c45221020.sfilter,tp,LOCATION_DECK,0,1,1,nil,lv,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c45221020.sfilter,tp,LOCATION_DECK,0,1,1,nil,lv,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end

@@ -49,7 +49,7 @@ function c94212438.plop(e,tp,eg,ep,ev,re,r,rp)
 	local ids={31893528,67287533,94772232,30170981}
 	local id=ids[c:GetFlagEffect(94212438)+1]
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(94212438,1))
-	local g=Duel.SelectMatchingCard(tp,Card.IsCode,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,id)
+	local g=aux.SelectMatchingCardCrossField(tp,Card.IsCode,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,id)
 	if g:GetCount()>0 and Duel.MoveToField(g:GetFirst(),tp,tp,LOCATION_SZONE,POS_FACEUP,true) then
 		c:RegisterFlagEffect(94212438,RESET_EVENT+0x1fe0000,0,0)
 	end

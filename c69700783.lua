@@ -62,7 +62,7 @@ function c69700783.activate(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 then
 		local tc=Duel.GetFirstTarget()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local g=Duel.SelectMatchingCard(tp,c69700783.tgfilter2,tp,LOCATION_DECK,0,1,1,nil,tc:GetLevel())
+		local g=aux.SelectMatchingCardCrossField(tp,c69700783.tgfilter2,tp,LOCATION_DECK,0,1,1,nil,tc:GetLevel())
 		if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)~=0 and g:GetFirst():IsLocation(LOCATION_GRAVE)
 			and tc:IsRelateToEffect(e) and tc:IsFaceup() then
 			local lv=g:GetFirst():GetLevel()

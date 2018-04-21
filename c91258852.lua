@@ -32,7 +32,7 @@ function c91258852.thtg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c91258852.thop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c91258852.thfilter1,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c91258852.thfilter1,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
@@ -54,10 +54,10 @@ function c91258852.thtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c91258852.thop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g1=Duel.SelectMatchingCard(tp,c91258852.thfilter2,tp,LOCATION_DECK,0,1,1,nil,tp)
+	local g1=aux.SelectMatchingCardCrossField(tp,c91258852.thfilter2,tp,LOCATION_DECK,0,1,1,nil,tp)
 	if g1:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g2=Duel.SelectMatchingCard(tp,c91258852.thfilter3,tp,LOCATION_DECK,0,1,1,g1:GetFirst())
+		local g2=aux.SelectMatchingCardCrossField(tp,c91258852.thfilter3,tp,LOCATION_DECK,0,1,1,g1:GetFirst())
 		g1:Merge(g2)
 		Duel.SendtoHand(g1,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g1)

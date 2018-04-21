@@ -75,7 +75,7 @@ end
 function c57288708.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c57288708.spfilter,tp,LOCATION_DECK,0,2,2,nil,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c57288708.spfilter,tp,LOCATION_DECK,0,2,2,nil,e,tp)
 	if g:GetCount()==2 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
@@ -89,7 +89,7 @@ function c57288708.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c57288708.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c57288708.thfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c57288708.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

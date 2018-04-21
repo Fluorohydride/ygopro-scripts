@@ -41,7 +41,7 @@ end
 function c25935625.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c25935625.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c25935625.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_ATTACK)
 	end
@@ -73,9 +73,9 @@ function c25935625.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g1=Duel.SelectMatchingCard(tp,c25935625.spfilter1,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+	local g1=aux.SelectMatchingCardCrossField(tp,c25935625.spfilter1,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g2=Duel.SelectMatchingCard(tp,c25935625.spfilter2,tp,LOCATION_DECK,0,1,1,g1:GetFirst(),e,tp)
+	local g2=aux.SelectMatchingCardCrossField(tp,c25935625.spfilter2,tp,LOCATION_DECK,0,1,1,g1:GetFirst(),e,tp)
 	g1:Merge(g2)
 	if g1:GetCount()>0 then
 		local fid=e:GetHandler():GetFieldID()

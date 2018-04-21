@@ -37,7 +37,7 @@ function c51701885.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c51701885.rmop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c51701885.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c51701885.filter,tp,LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
 	local c=e:GetHandler()
 	if tc then

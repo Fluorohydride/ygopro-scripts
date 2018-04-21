@@ -53,7 +53,7 @@ function c20862918.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc2=tg:GetNext()
 	tg:DeleteGroup()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c20862918.thfilter,tp,LOCATION_DECK,0,1,1,nil,tc1,tc2)
+	local g=aux.SelectMatchingCardCrossField(tp,c20862918.thfilter,tp,LOCATION_DECK,0,1,1,nil,tc1,tc2)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

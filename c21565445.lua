@@ -31,7 +31,7 @@ end
 function c21565445.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c21565445.cfilter,tp,LOCATION_DECK,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c21565445.cfilter,tp,LOCATION_DECK,0,1,1,nil,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c21565445.cfilter,tp,LOCATION_DECK,0,1,1,nil,tp)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c21565445.filter(c)
@@ -43,7 +43,7 @@ function c21565445.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c21565445.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c21565445.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c21565445.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

@@ -25,7 +25,7 @@ function c99075257.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c99075257.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c99075257.filter,tp,LOCATION_DECK,0,1,1,nil,e:GetLabel())
+	local g=aux.SelectMatchingCardCrossField(tp,c99075257.filter,tp,LOCATION_DECK,0,1,1,nil,e:GetLabel())
 	if g:GetCount()~=0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

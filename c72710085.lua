@@ -33,7 +33,7 @@ end
 function c72710085.tgop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c72710085.filter,tp,LOCATION_DECK,0,1,1,nil,e:GetLabel())
+	local g=aux.SelectMatchingCardCrossField(tp,c72710085.filter,tp,LOCATION_DECK,0,1,1,nil,e:GetLabel())
 	if g:GetCount()>0 then
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	end

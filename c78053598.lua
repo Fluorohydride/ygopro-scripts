@@ -23,7 +23,7 @@ end
 function c78053598.activate(e,tp,eg,ep,ev,re,r,rp)
 	local code=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(1-tp,c78053598.filter,1-tp,LOCATION_DECK,0,1,1,nil,code)
+	local g=aux.SelectMatchingCardCrossField(1-tp,c78053598.filter,1-tp,LOCATION_DECK,0,1,1,nil,code)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)

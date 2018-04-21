@@ -29,7 +29,7 @@ function c77642288.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
 	if not Duel.IsExistingMatchingCard(c77642288.filter,tp,LOCATION_DECK,0,2,nil,e,tp) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c77642288.filter,tp,LOCATION_DECK,0,2,2,nil,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c77642288.filter,tp,LOCATION_DECK,0,2,2,nil,e,tp)
 	local tc=g:GetFirst()
 	while tc do
 		Duel.SpecialSummonStep(tc,106,tp,tp,false,false,POS_FACEUP)

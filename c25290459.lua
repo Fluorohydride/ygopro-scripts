@@ -41,7 +41,7 @@ function c25290459.activate(e,tp,eg,ep,ev,re,r,rp)
 	local class=_G["c"..code]
 	if class==nil or class.lvupcount==nil then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c25290459.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,class,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c25290459.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,class,e,tp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.SpecialSummon(tc,0,tp,tp,true,true,POS_FACEUP)

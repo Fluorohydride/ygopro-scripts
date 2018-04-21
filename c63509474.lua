@@ -59,7 +59,7 @@ function c63509474.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c63509474.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(63509474,1))
-	local g=Duel.SelectMatchingCard(tp,c63509474.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c63509474.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
 		local sc=g:GetFirst()
 		if sc then

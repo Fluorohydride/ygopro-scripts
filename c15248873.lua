@@ -21,7 +21,7 @@ function c15248873.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c15248873.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(15248873,0))
-	local tc=Duel.SelectMatchingCard(tp,c15248873.filter,tp,LOCATION_DECK,0,1,1,nil,tp):GetFirst()
+	local tc=aux.SelectMatchingCardCrossField(tp,c15248873.filter,tp,LOCATION_DECK,0,1,1,nil,tp):GetFirst()
 	if tc then
 		local fc=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
 		if fc then

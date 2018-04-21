@@ -37,7 +37,7 @@ function c85555787.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local atk=e:GetLabel()
 	local ct=math.floor(atk/500)
-	local g=Duel.SelectMatchingCard(1-tp,nil,1-tp,LOCATION_DECK+LOCATION_HAND,0,ct,ct,nil)
+	local g=aux.SelectMatchingCardCrossField(1-tp,nil,1-tp,LOCATION_DECK+LOCATION_HAND,0,ct,ct,nil)
 	if g:GetCount()~=0 and Duel.Destroy(g,REASON_EFFECT)~=0 then
 		local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_GRAVE)
 		for oc in aux.Next(og) do

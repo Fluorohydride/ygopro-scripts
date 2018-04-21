@@ -41,7 +41,7 @@ function c43839002.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterEffect(e1,tp)
 		if tc:IsFacedown() then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g=Duel.SelectMatchingCard(tp,c43839002.thfilter,tp,LOCATION_DECK,0,1,1,nil,tc)
+		local g=aux.SelectMatchingCardCrossField(tp,c43839002.thfilter,tp,LOCATION_DECK,0,1,1,nil,tc)
 		if g:GetCount()>0 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,g)

@@ -49,10 +49,10 @@ function c25669282.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g1=Duel.SelectMatchingCard(tp,c25669282.spfilter1,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+		local g1=aux.SelectMatchingCardCrossField(tp,c25669282.spfilter1,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 		if g1:GetCount()<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g2=Duel.SelectMatchingCard(tp,c25669282.spfilter2,tp,LOCATION_DECK,0,1,1,nil,e,tp,g1:GetFirst():GetCode())
+		local g2=aux.SelectMatchingCardCrossField(tp,c25669282.spfilter2,tp,LOCATION_DECK,0,1,1,nil,e,tp,g1:GetFirst():GetCode())
 		g1:Merge(g2)
 		Duel.SpecialSummon(g1,0,tp,tp,false,false,POS_FACEUP)
 	end

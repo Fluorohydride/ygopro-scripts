@@ -40,7 +40,7 @@ function c72714461.penop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.Destroy(e:GetHandler(),REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-		local g=Duel.SelectMatchingCard(tp,c72714461.penfilter,tp,LOCATION_DECK,0,1,1,nil)
+		local g=aux.SelectMatchingCardCrossField(tp,c72714461.penfilter,tp,LOCATION_DECK,0,1,1,nil)
 		local tc=g:GetFirst()
 		if tc then
 			Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)

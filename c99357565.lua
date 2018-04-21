@@ -66,7 +66,7 @@ function c99357565.spop(e,tp,eg,ep,ev,re,r,rp,chk)
 	if ft>=ct then
 		if ft>1 and ct>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c99357565.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,ct,ct,nil,e,tp)
+		local g=aux.SelectMatchingCardCrossField(tp,aux.NecroValleyFilter(c99357565.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,ct,ct,nil,e,tp)
 		if g:GetCount()>0 then
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		end
@@ -98,7 +98,7 @@ function c99357565.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c99357565.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c99357565.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c99357565.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	end

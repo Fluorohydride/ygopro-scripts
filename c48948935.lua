@@ -72,7 +72,7 @@ function c48948935.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		local g=Duel.SelectMatchingCard(tp,c48948935.filter,tp,LOCATION_DECK,0,1,1,nil)
+		local g=aux.SelectMatchingCardCrossField(tp,c48948935.filter,tp,LOCATION_DECK,0,1,1,nil)
 		local eqc=g:GetFirst()
 		if not eqc or not Duel.Equip(tp,eqc,tc,true) then return end
 		local e1=Effect.CreateEffect(e:GetHandler())

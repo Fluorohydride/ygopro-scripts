@@ -50,7 +50,7 @@ end
 function c48252330.shop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsExistingMatchingCard(c48252330.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler()) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c48252330.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c48252330.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

@@ -80,7 +80,7 @@ function c25704359.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c25704359.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,e:GetLabel())
+	local g=aux.SelectMatchingCardCrossField(tp,c25704359.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,e:GetLabel())
 	local tc=g:GetFirst()
 	if tc then
 		local spos=0

@@ -50,7 +50,7 @@ function c65536818.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c65536818.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c65536818.thfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c65536818.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
@@ -64,7 +64,7 @@ function c65536818.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lv=e:GetHandler():GetLevel()
 	if chk==0 then return Duel.IsExistingMatchingCard(c65536818.costfilter,tp,LOCATION_DECK,0,1,nil,lv) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c65536818.costfilter,tp,LOCATION_DECK,0,1,1,nil,lv)
+	local g=aux.SelectMatchingCardCrossField(tp,c65536818.costfilter,tp,LOCATION_DECK,0,1,1,nil,lv)
 	Duel.SendtoGrave(g,REASON_COST)
 	e:SetLabel(g:GetFirst():GetLevel())
 end
@@ -95,7 +95,7 @@ end
 function c65536818.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c65536818.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c65536818.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)

@@ -63,7 +63,7 @@ function c66399653.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsControler(tp) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		local sg=Duel.SelectMatchingCard(tp,c66399653.cfilter,tp,LOCATION_DECK,0,1,1,nil,tc)
+		local sg=aux.SelectMatchingCardCrossField(tp,c66399653.cfilter,tp,LOCATION_DECK,0,1,1,nil,tc)
 		local ec=sg:GetFirst()
 		if ec and aux.CheckUnionEquip(ec,tc) and Duel.Equip(tp,ec,tc) then
 			aux.SetUnionState(ec)

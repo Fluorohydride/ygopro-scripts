@@ -27,7 +27,7 @@ end
 function c2843014.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c2843014.filter1,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c2843014.filter1,tp,LOCATION_DECK,0,1,1,nil)
 	if Duel.SendtoGrave(g,REASON_EFFECT)~=0 then
 		if ft<=0 then return end
 		local tc=Duel.GetFirstMatchingCard(c2843014.filter2,tp,LOCATION_DECK,0,nil,e,tp)

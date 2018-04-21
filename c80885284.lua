@@ -58,7 +58,7 @@ end
 function c80885284.thop(e,tp,eg,ep,ev,re,r,rp)
 	local count=Duel.GetMatchingGroupCount(c80885284.sfilter,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c80885284.thfilter,tp,LOCATION_DECK,0,1,1,nil,count)
+	local g=aux.SelectMatchingCardCrossField(tp,c80885284.thfilter,tp,LOCATION_DECK,0,1,1,nil,count)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

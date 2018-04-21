@@ -60,7 +60,7 @@ function c38325384.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c38325384.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local tc=Duel.SelectMatchingCard(tp,c38325384.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp):GetFirst()
+	local tc=aux.SelectMatchingCardCrossField(tp,c38325384.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp):GetFirst()
 	if tc and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		if tc:IsCanAddCounter(0x1,2) and Duel.SelectYesNo(tp,aux.Stringid(38325384,0)) then
 			tc:AddCounter(0x1,2)

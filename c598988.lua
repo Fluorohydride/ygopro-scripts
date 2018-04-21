@@ -45,7 +45,7 @@ function c598988.spcon(e,c)
 end
 function c598988.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local tg=Duel.SelectMatchingCard(tp,c598988.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil)
+	local tg=aux.SelectMatchingCardCrossField(tp,c598988.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil)
 	Duel.Remove(tg,POS_FACEUP,REASON_COST)
 end
 function c598988.descon(e)

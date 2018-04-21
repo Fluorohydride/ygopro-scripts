@@ -34,7 +34,7 @@ function c71207871.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c71207871.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	local tg=Duel.SelectMatchingCard(tp,c71207871.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp):GetFirst()
+	local tg=aux.SelectMatchingCardCrossField(tp,c71207871.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp):GetFirst()
 	if tg then
 		Duel.SpecialSummon(tg,0,tp,tp,false,false,POS_FACEUP)
 	end

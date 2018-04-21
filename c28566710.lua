@@ -29,7 +29,7 @@ function c28566710.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc then hg:RemoveCard(tc) end
 	Duel.SendtoGrave(hg,REASON_EFFECT)
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(1-tp,c28566710.spfilter,1-tp,LOCATION_DECK,0,1,1,nil,e,tp)
+	local g=aux.SelectMatchingCardCrossField(1-tp,c28566710.spfilter,1-tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	local sc=g:GetFirst()
 	if sc then
 		Duel.BreakEffect()

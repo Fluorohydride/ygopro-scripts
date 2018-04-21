@@ -115,11 +115,11 @@ function c75361204.spop(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1 then
 		local fid=e:GetHandler():GetFieldID()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g1=Duel.SelectMatchingCard(tp,c75361204.spfilter1,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+		local g1=aux.SelectMatchingCardCrossField(tp,c75361204.spfilter1,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 		local tc1=g1:GetFirst()
 		if not tc1 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g2=Duel.SelectMatchingCard(tp,c75361204.spfilter2,tp,LOCATION_DECK,0,1,1,nil,e,tp,tc1:GetCode())
+		local g2=aux.SelectMatchingCardCrossField(tp,c75361204.spfilter2,tp,LOCATION_DECK,0,1,1,nil,e,tp,tc1:GetCode())
 		local tc2=g2:GetFirst()
 		Duel.SpecialSummonStep(tc1,0,tp,tp,false,false,POS_FACEUP)
 		Duel.SpecialSummonStep(tc2,0,tp,tp,false,false,POS_FACEUP)

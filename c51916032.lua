@@ -39,7 +39,7 @@ function c51916032.spfilter(c,e,tp)
 end
 function c51916032.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c51916032.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c51916032.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()==0 or Duel.SendtoHand(g,nil,REASON_EFFECT)==0 then return end
 	Duel.ConfirmCards(1-tp,g)
 	Duel.ShuffleHand(tp)

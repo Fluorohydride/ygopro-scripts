@@ -44,7 +44,7 @@ function c6075801.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or c:IsFacedown() or not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectMatchingCard(tp,c6075801.filter,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,c)
+	local g=aux.SelectMatchingCardCrossField(tp,c6075801.filter,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,c)
 	local tc=g:GetFirst()
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
 		if not Duel.Equip(tp,tc,c,true) then return end

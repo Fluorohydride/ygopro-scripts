@@ -52,7 +52,7 @@ end
 function c9659580.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c9659580.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,99,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c9659580.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,99,nil)
 	if Duel.SendtoGrave(g,REASON_EFFECT)~=0 then
 		local og=Duel.GetOperatedGroup()
 		local n=og:FilterCount(Card.IsLocation,nil,LOCATION_GRAVE)
@@ -88,7 +88,7 @@ function c9659580.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c9659580.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c9659580.thfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c9659580.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

@@ -57,7 +57,7 @@ function c29223325.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-		local g=Duel.SelectMatchingCard(tp,c29223325.filter,tp,LOCATION_DECK,0,1,1,nil)
+		local g=aux.SelectMatchingCardCrossField(tp,c29223325.filter,tp,LOCATION_DECK,0,1,1,nil)
 		if g:GetCount()>0 then
 			Duel.SSet(tp,g:GetFirst())
 			Duel.ConfirmCards(1-tp,g)

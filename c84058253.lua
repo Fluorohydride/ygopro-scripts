@@ -50,7 +50,7 @@ function c84058253.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c84058253.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c84058253.tgfilter,tp,LOCATION_DECK,0,1,2,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c84058253.tgfilter,tp,LOCATION_DECK,0,1,2,nil)
 	if g:GetCount()==0 then return end
 	Duel.SendtoGrave(g,REASON_EFFECT)
 	local c=e:GetHandler()

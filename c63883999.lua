@@ -55,7 +55,7 @@ function c63883999.operation(e,tp,eg,ep,ev,re,r,rp,chk)
 		local rg=Duel.SelectMatchingCard(tp,c63883999.rfilter,tp,LOCATION_MZONE,0,1,1,tc)
 		if rg:GetCount()>0 and Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c63883999.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,1,1,nil,tc:GetLevel(),e,tp)
+			local sg=aux.SelectMatchingCardCrossField(tp,aux.NecroValleyFilter(c63883999.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,1,1,nil,tc:GetLevel(),e,tp)
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

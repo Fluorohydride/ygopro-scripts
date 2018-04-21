@@ -73,7 +73,7 @@ function c70564929.spop(e,tp,eg,ep,ev,re,r,rp)
 	if ft<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c70564929.spfilter,tp,LOCATION_DECK,0,1,ft,nil,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c70564929.spfilter,tp,LOCATION_DECK,0,1,ft,nil,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end

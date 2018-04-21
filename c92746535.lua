@@ -44,7 +44,7 @@ function c92746535.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g=Duel.SelectMatchingCard(tp,c92746535.thfilter,tp,LOCATION_DECK,0,1,1,nil,tc:GetOriginalCode())
+		local g=aux.SelectMatchingCardCrossField(tp,c92746535.thfilter,tp,LOCATION_DECK,0,1,1,nil,tc:GetOriginalCode())
 		if g:GetCount()>0 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,g)

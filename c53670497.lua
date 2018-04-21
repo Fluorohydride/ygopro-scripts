@@ -71,7 +71,7 @@ function c53670497.activate(e,tp,eg,ep,ev,re,r,rp)
 	local turnp=Duel.GetTurnPlayer()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	if turnp~=tp then
-		local g=Duel.SelectMatchingCard(tp,c53670497.filter1,tp,LOCATION_DECK,0,1,1,nil)
+		local g=aux.SelectMatchingCardCrossField(tp,c53670497.filter1,tp,LOCATION_DECK,0,1,1,nil)
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	else
 		local g=Duel.SelectMatchingCard(tp,c53670497.filter2,tp,LOCATION_REMOVED,0,1,1,nil)

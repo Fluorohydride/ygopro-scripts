@@ -40,7 +40,7 @@ function c47611119.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47611119.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c47611119.filter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c47611119.filter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoGrave(g,REASON_EFFECT)
 		local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
