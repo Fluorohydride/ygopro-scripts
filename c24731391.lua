@@ -32,10 +32,10 @@ function c24731391.initial_effect(c)
 	c:RegisterEffect(e3)
 	--atk up
 	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e4:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
+	e4:SetType(EFFECT_TYPE_SINGLE)
+	e4:SetCode(EFFECT_UPDATE_ATTACK)
 	e4:SetCondition(c24731391.atkcon)
-	e4:SetOperation(c24731391.atkop)
+	e4:SetValue(1000)
 	c:RegisterEffect(e4)
 	--to hand
 	local e5=Effect.CreateEffect(c)
@@ -68,21 +68,10 @@ end
 function c24731391.tglimit(e,c)
 	return c~=e:GetHandler()
 end
-function c24731391.atkcon(e,tp,eg,ep,ev,re,r,rp)
+function c24731391.atkcon(e)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	return bc and bc:IsType(TYPE_LINK)
-end
-function c24731391.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_UPDATE_ATTACK)
-		e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_DAMAGE_CAL)
-		e1:SetValue(1000)
-		c:RegisterEffect(e1)
-	end
+	return Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL and bc and bc:IsType(TYPE_LINK)
 end
 function c24731391.thfilter(c)
 	return c:IsRace(RACE_CYBERSE) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
