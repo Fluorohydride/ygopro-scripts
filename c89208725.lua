@@ -10,7 +10,7 @@ function c89208725.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c89208725.filter(c,tp)
-	return c:IsType(TYPE_FIELD) and (c:IsAbleToHand() or c:GetActivateEffect():IsActivatable(tp))
+	return c:IsType(TYPE_FIELD) and (c:IsAbleToHand() or c:GetActivateEffect():IsActivatable(tp,true,true))
 end
 function c89208725.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c89208725.filter,tp,LOCATION_DECK,0,1,nil,tp) end

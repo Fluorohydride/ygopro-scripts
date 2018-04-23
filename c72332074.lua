@@ -63,7 +63,7 @@ function c72332074.actcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c72332074.actfilter(c,tp)
-	return c:IsCode(10424147) and c:GetActivateEffect():IsActivatable(tp)
+	return c:IsCode(10424147) and c:GetActivateEffect():IsActivatable(tp,true,true)
 end
 function c72332074.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c72332074.actfilter,tp,LOCATION_DECK,0,1,nil,tp) end

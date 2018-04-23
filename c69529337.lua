@@ -60,7 +60,7 @@ function c69529337.tdop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c69529337.filter(c,tp,code)
-	return c:IsType(TYPE_FIELD) and c:IsSetCard(0xe2) and c:GetActivateEffect():IsActivatable(tp) and not c:IsCode(code)
+	return c:IsType(TYPE_FIELD) and c:IsSetCard(0xe2) and c:GetActivateEffect():IsActivatable(tp,true,true) and not c:IsCode(code)
 end
 function c69529337.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
