@@ -29,9 +29,11 @@ function c97970833.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
 		fc=Duel.GetFieldCard(1-tp,LOCATION_SZONE,5)
+		local te=tc:GetActivateEffect()
+		te:UseCountLimit(tp,1,true)
 		if fc and fc:IsFaceup() and Duel.IsPlayerCanDraw(1-tp,1) and Duel.SelectYesNo(tp,aux.Stringid(97970833,0)) then
 			Duel.Draw(1-tp,1,REASON_EFFECT)
 		end
-		Duel.RaiseEvent(tc,4179255,tc:GetActivateEffect(),0,tp,tp,Duel.GetCurrentChain())
+		Duel.RaiseEvent(tc,4179255,te,0,tp,tp,Duel.GetCurrentChain())
 	end
 end
