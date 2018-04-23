@@ -14,7 +14,7 @@ function c97970833.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer()
 end
 function c97970833.filter(c,tp)
-	return c:IsCode(34487429) and c:GetActivateEffect():IsActivatable(tp)
+	return c:IsCode(34487429) and c:GetActivateEffect():IsActivatable(tp,true,true)
 end
 function c97970833.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c97970833.filter,tp,LOCATION_DECK,0,1,nil,tp) end

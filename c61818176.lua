@@ -31,7 +31,7 @@ function c61818176.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,tc,1,0,0)
 end
 function c61818176.actfilter(c,tp)
-	return c:IsType(TYPE_FIELD) and c:GetActivateEffect():IsActivatable(tp)
+	return c:IsType(TYPE_FIELD) and c:GetActivateEffect():IsActivatable(tp,true,true)
 end
 function c61818176.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
@@ -44,6 +44,7 @@ function c61818176.activate(e,tp,eg,ep,ev,re,r,rp)
 			local sc=sg:GetFirst()
 			Duel.MoveToField(sc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
 			local te=sc:GetActivateEffect()
+			te:UseCountLimit(tp,1,true)
 			local tep=sc:GetControler()
 			local cost=te:GetCost()
 			if cost then cost(te,tep,eg,ep,ev,re,r,rp,1) end

@@ -16,7 +16,7 @@ function c48934760.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c48934760.cfilter,1,nil,tp)
 end
 function c48934760.filter(c,tp)
-	return c:IsType(TYPE_FIELD) and c:GetActivateEffect():IsActivatable(tp)
+	return c:IsType(TYPE_FIELD) and c:GetActivateEffect():IsActivatable(tp,true,true)
 end
 function c48934760.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c48934760.filter,tp,LOCATION_DECK,0,1,nil,tp) end
