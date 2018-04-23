@@ -34,6 +34,7 @@ function c89208725.activate(e,tp,eg,ep,ev,re,r,rp)
 				Duel.BreakEffect()
 			end
 			Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+			te:UseCountLimit(tp,1,true)
 			local tep=tc:GetControler()
 			local cost=te:GetCost()
 			if cost then cost(te,tep,eg,ep,ev,re,r,rp,1) end

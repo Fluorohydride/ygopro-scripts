@@ -45,6 +45,7 @@ function c19089195.activate(e,tp,eg,ep,ev,re,r,rp)
 			end
 			Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
 			local te=tc:GetActivateEffect()
+			te:UseCountLimit(tp,1,true)
 			local tep=tc:GetControler()
 			local cost=te:GetCost()
 			if cost then cost(te,tep,eg,ep,ev,re,r,rp,1) end
