@@ -2,13 +2,7 @@
 function c31111109.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetCode(EFFECT_FUSION_MATERIAL)
-	e1:SetCondition(c31111109.fuscon)
-	e1:SetOperation(c31111109.fusop)
-	c:RegisterEffect(e1)
+	aux.AddFusionProcMixRep(c,true,true,c31111109.ffilter,2,2,c31111109.ffilter1,c31111109.ffilter2,c31111109.ffilter3)
 	--copy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(31111109,0))
@@ -29,56 +23,16 @@ function c31111109.initial_effect(c)
 end
 c31111109.material_setcode=0x8
 function c31111109.ffilter(c,fc)
-	return (c:IsFusionSetCard(0x9) or c:IsFusionSetCard(0x1f) or c:IsFusionSetCard(0x8))
-		and not c:IsHasEffect(6205579) and c:IsCanBeFusionMaterial(fc)
+	return c:IsFusionSetCard(0x9) or c:IsFusionSetCard(0x1f) or c:IsFusionSetCard(0x8)
 end
-function c31111109.fselect(c,tp,mg,sg)
-	sg:AddCard(c)
-	local res
-	if sg:GetCount()<5 then
-		res=mg:IsExists(c31111109.fselect,1,sg,tp,mg,sg)
-	else
-		res=c31111109.fgoal(tp,sg)
-	end
-	sg:RemoveCard(c)
-	return res
+function c31111109.ffilter1(c,fc)
+	return c:IsFusionSetCard(0x9)
 end
-function c31111109.fgoal(tp,sg)
-	if sg:IsExists(aux.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
-	if not (sg:GetCount()==5 and Duel.GetLocationCountFromEx(tp,tp,sg)>0) then return false end
-	local g1=sg:Filter(Card.IsFusionSetCard,nil,0x9)
-	local c1=g1:GetCount()
-	local g2=sg:Filter(Card.IsFusionSetCard,nil,0x1f)
-	local c2=g2:GetCount()
-	local g3=sg:Filter(Card.IsFusionSetCard,nil,0x8)
-	local c3=g3:GetCount()
-	return c1>0 and c2>0 and c3>0 and (c1>1 or c3>1 or g1:GetFirst()~=g3:GetFirst())
+function c31111109.ffilter2(c,fc)
+	return c:IsFusionSetCard(0x1f)
 end
-function c31111109.fuscon(e,g,gc,chkf)
-	if g==nil then return true end
-	local c=e:GetHandler()
-	local tp=c:GetControler()
-	local mg=g:Filter(c31111109.ffilter,nil,c)
-	if gc then
-		if not mg:IsContains(gc) then return false end
-		local sg=Group.CreateGroup()
-		return c31111109.fselect(gc,tp,mg,sg)
-	end
-	local sg=Group.CreateGroup()
-	return mg:IsExists(c31111109.fselect,1,nil,tp,mg,sg)
-end
-function c31111109.fusop(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
-	local c=e:GetHandler()
-	local tp=c:GetControler()
-	local mg=eg:Filter(c31111109.ffilter,nil,c)
-	local sg=Group.CreateGroup()
-	if gc then sg:AddCard(gc) end
-	while sg:GetCount()<5 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-		local g=mg:FilterSelect(tp,c31111109.fselect,1,1,sg,tp,mg,sg)
-		sg:Merge(g)
-	end
-	Duel.SetFusionMaterial(sg)
+function c31111109.ffilter3(c,fc)
+	return c:IsFusionSetCard(0x8)
 end
 function c31111109.filter(c)
 	return (c:IsSetCard(0x9) or c:IsSetCard(0x1f) or c:IsSetCard(0x8)) and c:IsType(TYPE_MONSTER)
