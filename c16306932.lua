@@ -27,7 +27,7 @@ function c16306932.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e3:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e3:SetValue(c16306932.splimit)
+	e3:SetValue(aux.FALSE)
 	c:RegisterEffect(e3)
 	--special summon rule
 	local e4=Effect.CreateEffect(c)
@@ -90,9 +90,6 @@ function c16306932.spop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and Duel.Destroy(c,REASON_EFFECT)~=0 and tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
-end
-function c16306932.splimit(e,se,sp,st)
-	return bit.band(st,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM and e:GetHandler():IsLocation(LOCATION_HAND)
 end
 function c16306932.hspfilter1(c,g,ft)
 	local rg=Group.FromCards(c)
