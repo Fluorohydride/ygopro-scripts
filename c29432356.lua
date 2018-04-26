@@ -134,15 +134,7 @@ function c29432356.eftg2(e,c)
 		and rpz:GetFlagEffectLabel(31531170)==c:GetFieldID()
 end
 function c29432356.penfilter(c,e,tp,lscale,rscale)
-	local lv=0
-	if c.pendulum_level then
-		lv=c.pendulum_level
-	else
-		lv=c:GetLevel()
-	end
-	return (c:IsLocation(LOCATION_HAND) or (c:IsFaceup() and c:IsType(TYPE_PENDULUM)))
-		and lv>lscale and lv<rscale and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_PENDULUM,tp,false,false)
-		and not c:IsForbidden() and c:IsSetCard(0xc4)
+	return c:IsSetCard(0xc4) and aux.PConditionFilter(c,e,tp,lscale,rscale)
 end
 function c29432356.pencon1(e,c,og)
 	if c==nil then return true end
