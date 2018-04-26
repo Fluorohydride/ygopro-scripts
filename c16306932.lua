@@ -2,7 +2,6 @@
 function c16306932.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--revive limit
-	c:EnableUnsummonable()
 	aux.EnableReviveLimitPendulumSummonable(c, LOCATION_HAND)
 	--splimit
 	local e1=Effect.CreateEffect(c)
