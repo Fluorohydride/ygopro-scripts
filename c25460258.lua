@@ -49,7 +49,7 @@ function c25460258.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g1=Duel.SelectMatchingCard(tp,c25460258.cfilter,tp,LOCATION_HAND,0,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectMatchingCard(tp,c25460258.cfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g2=aux.SelectMatchingCardCrossField(tp,c25460258.cfilter,tp,LOCATION_DECK,0,1,1,nil)
 	g1:Merge(g2)
 	Duel.SendtoGrave(g1,REASON_COST)
 end

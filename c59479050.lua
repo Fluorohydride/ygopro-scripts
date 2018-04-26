@@ -60,7 +60,7 @@ function c59479050.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c59479050.tdop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(59479050,3))
-	local g=Duel.SelectMatchingCard(tp,c59479050.tdfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c59479050.tdfilter,tp,LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.ShuffleDeck(tp)

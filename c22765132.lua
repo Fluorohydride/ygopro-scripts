@@ -30,14 +30,14 @@ function c22765132.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateAttack() then
 		local val=tc:GetAttack()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g1=Duel.SelectMatchingCard(tp,c22765132.filter,tp,LOCATION_DECK,0,1,1,nil,val)
+		local g1=aux.SelectMatchingCardCrossField(tp,c22765132.filter,tp,LOCATION_DECK,0,1,1,nil,val)
 		local sc=g1:GetFirst()
 		if sc then
 			val=val-sc:GetDefense()
 			if Duel.IsExistingMatchingCard(c22765132.filter,tp,LOCATION_DECK,0,1,sc,val)
 				and Duel.SelectYesNo(tp,aux.Stringid(22765132,0)) then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-				local g2=Duel.SelectMatchingCard(tp,c22765132.filter,tp,LOCATION_DECK,0,1,1,sc,val)
+				local g2=aux.SelectMatchingCardCrossField(tp,c22765132.filter,tp,LOCATION_DECK,0,1,1,sc,val)
 				g1:Merge(g2)
 			end
 			Duel.SendtoHand(g1,nil,REASON_EFFECT)

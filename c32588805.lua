@@ -47,8 +47,8 @@ function c32588805.setop(e,tp,eg,ep,ev,re,r,rp)
 	local op=Duel.SelectOption(1-tp,71,72)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local g=nil
-	if op==0 then g=Duel.SelectMatchingCard(tp,c32588805.setfilter2,tp,LOCATION_DECK,0,1,1,nil,TYPE_SPELL+TYPE_CONTINUOUS)
-	else g=Duel.SelectMatchingCard(tp,c32588805.setfilter2,tp,LOCATION_DECK,0,1,1,nil,TYPE_TRAP+TYPE_CONTINUOUS) end
+	if op==0 then g=aux.SelectMatchingCardCrossField(tp,c32588805.setfilter2,tp,LOCATION_DECK,0,1,1,nil,TYPE_SPELL+TYPE_CONTINUOUS)
+	else g=aux.SelectMatchingCardCrossField(tp,c32588805.setfilter2,tp,LOCATION_DECK,0,1,1,nil,TYPE_TRAP+TYPE_CONTINUOUS) end
 	if g:GetCount()>0 then
 		Duel.SSet(tp,g:GetFirst())
 		Duel.ConfirmCards(1-tp,g)

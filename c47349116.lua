@@ -50,7 +50,7 @@ function c47349116.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47349116.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c47349116.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE+LOCATION_EXTRA,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,aux.NecroValleyFilter(c47349116.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE+LOCATION_EXTRA,0,1,1,nil)
 	local tc=g:GetFirst()
 	if not tc then return end
 	Duel.SendtoHand(tc,nil,REASON_EFFECT)
@@ -68,7 +68,7 @@ function c47349116.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(c47349116.tgfilter,tp,LOCATION_DECK,0,1,nil) end
 	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local sg=Duel.SelectMatchingCard(tp,c47349116.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
+		local sg=aux.SelectMatchingCardCrossField(tp,c47349116.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
 		Duel.Hint(HINT_CARD,0,47349116)
 		Duel.SendtoGrave(sg,REASON_EFFECT)
 		return true

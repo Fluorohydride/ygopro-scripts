@@ -2060,3 +2060,33 @@ function Auxiliary.bfgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
+--select matching card from deck and other locations in a round
+function Auxiliary.SelectMatchingCardCrossField(tp, filter, viewer, field_self, field_oppo, min, max, exception, ...)
+	local g=Duel.GetMatchingGroup(filter, viewer, field_self, field_oppo, exception, ...)
+	local can_search_1=field_self & LOCATION_DECK > 0
+	local can_search_2=field_oppo & LOCATION_DECK > 0
+	local has_searched_1=false
+	local has_searched_2=false
+	local g1=g:Filter(function(c) return c:IsLocation(LOCATION_DECK) and c:IsControler(tp) end, nil)
+	local g2=g:Filter(function(c) return c:IsLocation(LOCATION_DECK) and c:IsControler(1-tp) end, nil)
+	g:Sub(g1)
+	g:Sub(g2)
+	if can_search_1
+		and ((g:GetCount()+g2:GetCount())<min
+		or (g1:GetCount()>0 and Duel.SelectYesNo(tp,600))
+		or (g1:GetCount()==0 and Duel.SelectYesNo(tp,601))) then
+		has_searched_1=true
+		g:Merge(g1)
+	end
+	if can_search_2
+		and (g:GetCount()<min
+		or (g2:GetCount()>0 and Duel.SelectYesNo(tp,602))
+		or (g2:GetCount()==0 and Duel.SelectYesNo(tp,603))) then
+		has_searched_2=true
+		g:Merge(g2)
+	end
+	g=g:Select(tp,min,max,exception)
+	if has_searched_1 and g:FilterCount(function(c) return c:IsLocation(LOCATION_DECK) and c:IsControler(tp) end, nil)==0 then Duel.ShuffleDeck(tp) end
+	if has_searched_2 and g:FilterCount(function(c) return c:IsLocation(LOCATION_DECK) and c:IsControler(1-tp) end, nil)==0 then Duel.ShuffleDeck(1-tp) end
+	return g
+end

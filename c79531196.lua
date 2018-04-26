@@ -30,7 +30,7 @@ end
 function c79531196.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c79531196.filter,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c79531196.filter,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE)
 		and c:IsRelateToEffect(e) and c:IsFaceup() then

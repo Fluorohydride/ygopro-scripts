@@ -30,7 +30,7 @@ function c82340056.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,82340057,0,0x4011,0,0,1,RACE_ROCK,ATTRIBUTE_EARTH) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c82340056.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c82340056.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()==0 then return end
 	Duel.BreakEffect()
 	Duel.SendtoHand(g,nil,REASON_EFFECT)

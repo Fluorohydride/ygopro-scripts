@@ -24,6 +24,6 @@ function c10456559.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c10456559.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c10456559.filter,tp,LOCATION_DECK,0,1,3,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c10456559.filter,tp,LOCATION_DECK,0,1,3,nil)
 	Duel.SendtoHand(g,nil,REASON_EFFECT)
 end

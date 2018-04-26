@@ -43,7 +43,7 @@ function c96540.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c96540.spfilter,tp,LOCATION_DECK,0,1,1,nil,tc,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c96540.spfilter,tp,LOCATION_DECK,0,1,1,nil,tc,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end

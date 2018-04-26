@@ -20,7 +20,7 @@ function c49885567.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c49885567.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c49885567.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c49885567.filter,tp,LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)

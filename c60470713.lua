@@ -49,14 +49,14 @@ function c60470713.operation(e,tp,eg,ep,ev,re,r,rp)
 	local b=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c60470713.mfilter,tp,LOCATION_MZONE,0,1,nil)
 	if not b then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g=Duel.SelectMatchingCard(tp,c60470713.filter1,tp,LOCATION_DECK,0,1,1,nil)
+		local g=aux.SelectMatchingCardCrossField(tp,c60470713.filter1,tp,LOCATION_DECK,0,1,1,nil)
 		if g:GetCount()>0 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,g)
 		end
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g=Duel.SelectMatchingCard(tp,c60470713.filter2,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+		local g=aux.SelectMatchingCardCrossField(tp,c60470713.filter2,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 		local tc=g:GetFirst()
 		if tc then
 			if not tc:IsAbleToHand() or (tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK)

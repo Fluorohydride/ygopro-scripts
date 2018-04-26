@@ -37,7 +37,7 @@ function c87765315.activate(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.SelectYesNo(tp,aux.Stringid(87765315,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,c87765315.filter3,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+		local g=aux.SelectMatchingCardCrossField(tp,c87765315.filter3,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 		local tc=g:GetFirst()
 		if tc then
 			Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)

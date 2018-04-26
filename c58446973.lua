@@ -22,7 +22,7 @@ function c58446973.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58446973.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c58446973.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c58446973.filter,tp,LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
 	local c=e:GetHandler()
 	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE)

@@ -15,7 +15,7 @@ function c74191942.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c74191942.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(74191942,0))
-	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToHand,tp,LOCATION_DECK,0,5,5,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,Card.IsAbleToHand,tp,LOCATION_DECK,0,5,5,nil)
 	if g:GetCount()<5 then return end
 	Duel.ConfirmCards(1-tp,g)
 	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(74191942,1))

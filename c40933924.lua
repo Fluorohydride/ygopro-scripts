@@ -14,6 +14,6 @@ function c40933924.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c40933924.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(1-tp,Card.IsType,1-tp,LOCATION_DECK,0,1,1,nil,TYPE_SPELL)
+	local g=aux.SelectMatchingCardCrossField(1-tp,Card.IsType,1-tp,LOCATION_DECK,0,1,1,nil,TYPE_SPELL)
 	Duel.SendtoGrave(g,REASON_EFFECT)
 end

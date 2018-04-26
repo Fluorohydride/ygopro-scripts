@@ -38,9 +38,9 @@ function c48783998.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=nil
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	if not Duel.IsEnvironment(56433456) then
-		g=Duel.SelectMatchingCard(tp,c48783998.filter1,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+		g=aux.SelectMatchingCardCrossField(tp,c48783998.filter1,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	else
-		g=Duel.SelectMatchingCard(tp,c48783998.filter2,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+		g=aux.SelectMatchingCardCrossField(tp,c48783998.filter2,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	end
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)

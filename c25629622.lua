@@ -82,7 +82,7 @@ function c25629622.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c25629622.setop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-	local g=Duel.SelectMatchingCard(tp,c25629622.setfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c25629622.setfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		local c=e:GetHandler()
 		local tc=g:GetFirst()

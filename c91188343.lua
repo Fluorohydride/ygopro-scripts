@@ -28,8 +28,8 @@ function c91188343.op(e,tp,eg,ep,ev,re,r,rp)
 	local g=nil
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	if not Duel.IsEnvironment(56433456) then
-		g=Duel.SelectMatchingCard(tp,c91188343.filter1,tp,LOCATION_DECK,0,1,1,nil)
-	else g=Duel.SelectMatchingCard(tp,c91188343.filter2,tp,LOCATION_DECK,0,1,1,nil) end
+		g=aux.SelectMatchingCardCrossField(tp,c91188343.filter1,tp,LOCATION_DECK,0,1,1,nil)
+	else g=aux.SelectMatchingCardCrossField(tp,c91188343.filter2,tp,LOCATION_DECK,0,1,1,nil) end
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

@@ -32,7 +32,7 @@ function c75719089.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsControler(tp) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		local g=Duel.SelectMatchingCard(tp,c75719089.eqfilter,tp,LOCATION_DECK,0,1,1,nil,tc,tp)
+		local g=aux.SelectMatchingCardCrossField(tp,c75719089.eqfilter,tp,LOCATION_DECK,0,1,1,nil,tc,tp)
 		if g:GetCount()>0 then
 			Duel.Equip(tp,g:GetFirst(),tc)
 		end

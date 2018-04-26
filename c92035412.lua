@@ -41,7 +41,7 @@ function c92035412.spop(e,tp,eg,ep,ev,re,r,rp)
 	if ft<=0 then return end
 	if ft>e:GetLabel() then ft=e:GetLabel() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c92035412.spfilter,tp,LOCATION_DECK,0,1,ft,nil,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c92035412.spfilter,tp,LOCATION_DECK,0,1,ft,nil,e,tp)
 	local tc=g:GetFirst()
 	while tc do
 		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)

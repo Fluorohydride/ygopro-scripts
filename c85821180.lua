@@ -42,7 +42,7 @@ function c85821180.activate(e,tp,eg,ep,ev,re,r,rp)
 	local att=e:GetValue()
 	local lv=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c85821180.filter,tp,LOCATION_DECK,0,1,1,nil,race,att,lv,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c85821180.filter,tp,LOCATION_DECK,0,1,1,nil,race,att,lv,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end

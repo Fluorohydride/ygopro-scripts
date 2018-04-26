@@ -58,7 +58,7 @@ function c9126351.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c9126351.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c9126351.tgfilter,tp,LOCATION_DECK+LOCATION_MZONE,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c9126351.tgfilter,tp,LOCATION_DECK+LOCATION_MZONE,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	end

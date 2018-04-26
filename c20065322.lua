@@ -21,7 +21,7 @@ end
 function c20065322.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	Duel.Hint(HINT_SELECTMSG,tp,0)
-	local g=Duel.SelectMatchingCard(tp,c20065322.filter,tp,LOCATION_DECK,0,1,1,nil,ft,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c20065322.filter,tp,LOCATION_DECK,0,1,1,nil,ft,e,tp)
 	if g:GetCount()>0 then
 		local th=g:GetFirst():IsAbleToHand()
 		local sp=ft>0 and g:GetFirst():IsCanBeSpecialSummoned(e,0,tp,false,false)

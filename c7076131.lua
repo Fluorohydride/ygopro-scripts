@@ -26,7 +26,7 @@ function c7076131.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local g=Duel.SelectMatchingCard(tp,c7076131.filter,tp,LOCATION_DECK,0,1,1,nil,tc:GetCode())
+		local g=aux.SelectMatchingCardCrossField(tp,c7076131.filter,tp,LOCATION_DECK,0,1,1,nil,tc:GetCode())
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	end
 end

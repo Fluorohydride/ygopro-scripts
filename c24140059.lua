@@ -9,7 +9,7 @@ function c24140059.initial_effect(c)
 end
 function c24140059.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(24140059,1))
-	local g=Duel.SelectMatchingCard(tp,Card.IsType,tp,LOCATION_DECK,0,1,1,nil,TYPE_TRAP)
+	local g=aux.SelectMatchingCardCrossField(tp,Card.IsType,tp,LOCATION_DECK,0,1,1,nil,TYPE_TRAP)
 	local tc=g:GetFirst()
 	if tc then
 		if Duel.IsEnvironment(47355498) and tc:IsAbleToHand() and Duel.SelectYesNo(tp,aux.Stringid(24140059,0)) then

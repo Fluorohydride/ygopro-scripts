@@ -47,7 +47,7 @@ end
 function c28201945.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c28201945.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp,ft)
+	local g=aux.SelectMatchingCardCrossField(tp,c28201945.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp,ft)
 	local tc=g:GetFirst()
 	if tc then
 		if ft>0 and tc:IsCanBeSpecialSummoned(e,0,tp,false,false)

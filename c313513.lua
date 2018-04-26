@@ -70,14 +70,14 @@ function c313513.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ct=0
 	if ft==1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,c313513.filter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp)
+		local g=aux.SelectMatchingCardCrossField(tp,c313513.filter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp)
 		ct=Duel.SpecialSummon(g,0,tp,tp,true,false,POS_FACEUP)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g1=Duel.SelectMatchingCard(tp,c313513.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 		if g1:GetCount()>0 and Duel.SpecialSummonStep(g1:GetFirst(),0,tp,tp,true,false,POS_FACEUP) then ct=ct+1 end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g2=Duel.SelectMatchingCard(tp,c313513.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+		local g2=aux.SelectMatchingCardCrossField(tp,c313513.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 		if g2:GetCount()>0 and Duel.SpecialSummonStep(g2:GetFirst(),0,tp,tp,true,false,POS_FACEUP) then ct=ct+1 end
 		Duel.SpecialSummonComplete()
 	end

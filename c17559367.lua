@@ -24,7 +24,7 @@ function c17559367.regop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c17559367.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(17559367,1))
-	local g=Duel.SelectMatchingCard(tp,Card.IsType,tp,LOCATION_DECK,0,1,1,nil,TYPE_MONSTER)
+	local g=aux.SelectMatchingCardCrossField(tp,Card.IsType,tp,LOCATION_DECK,0,1,1,nil,TYPE_MONSTER)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.ShuffleDeck(tp)

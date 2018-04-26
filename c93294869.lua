@@ -36,7 +36,7 @@ function c93294869.setop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if ft<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-	local g=Duel.SelectMatchingCard(tp,c93294869.filter1,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c93294869.filter1,tp,LOCATION_DECK,0,1,1,nil)
 	local sg=Duel.GetMatchingGroup(c93294869.filter2,tp,LOCATION_DECK,0,nil)
 	if e:GetLabel()==1 and sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(93294869,1)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)

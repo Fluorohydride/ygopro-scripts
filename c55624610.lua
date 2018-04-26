@@ -31,7 +31,7 @@ function c55624610.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local sg=Duel.SelectMatchingCard(tp,c55624610.sfilter,tp,LOCATION_DECK,0,1,1,nil)
+		local sg=aux.SelectMatchingCardCrossField(tp,c55624610.sfilter,tp,LOCATION_DECK,0,1,1,nil)
 		Duel.SendtoGrave(sg,REASON_EFFECT)
 	end
 end

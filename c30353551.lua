@@ -57,7 +57,7 @@ function c30353551.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ct=c30353551[tp]
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c30353551.filter,tp,LOCATION_DECK,0,ct,ct,nil,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c30353551.filter,tp,LOCATION_DECK,0,ct,ct,nil,e,tp)
 	if g:GetCount()==0 then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end

@@ -30,9 +30,9 @@ function c21496848.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==1 then ty=TYPE_SPELL
 	elseif e:GetLabel()==2 then ty=TYPE_TRAP end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,Card.IsType,tp,LOCATION_DECK,0,1,1,nil,ty)
+	local g1=aux.SelectMatchingCardCrossField(tp,Card.IsType,tp,LOCATION_DECK,0,1,1,nil,ty)
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectMatchingCard(1-tp,Card.IsType,1-tp,LOCATION_DECK,0,1,1,nil,ty)
+	local g2=aux.SelectMatchingCardCrossField(1-tp,Card.IsType,1-tp,LOCATION_DECK,0,1,1,nil,ty)
 	g1:Merge(g2)
 	Duel.SendtoGrave(g1,REASON_EFFECT)
 end

@@ -30,9 +30,9 @@ end
 function c33280639.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c33280639.cfilter1,tp,LOCATION_DECK,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,c33280639.cfilter1,tp,LOCATION_DECK,0,1,1,nil,tp)
+	local g1=aux.SelectMatchingCardCrossField(tp,c33280639.cfilter1,tp,LOCATION_DECK,0,1,1,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectMatchingCard(tp,c33280639.cfilter2,tp,LOCATION_DECK,0,1,1,g1:GetFirst())
+	local g2=aux.SelectMatchingCardCrossField(tp,c33280639.cfilter2,tp,LOCATION_DECK,0,1,1,g1:GetFirst())
 	g1:Merge(g2)
 	Duel.SendtoGrave(g1,REASON_COST)
 end

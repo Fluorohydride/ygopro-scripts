@@ -24,11 +24,11 @@ function c1033312.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c1033312.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c1033312.tgfilter,tp,LOCATION_DECK,0,1,1,nil,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c1033312.tgfilter,tp,LOCATION_DECK,0,1,1,nil,tp)
 	local tc=g:GetFirst()
 	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local sg=Duel.SelectMatchingCard(tp,c1033312.thfilter,tp,LOCATION_DECK,0,1,1,nil,tc:GetCode())
+		local sg=aux.SelectMatchingCardCrossField(tp,c1033312.thfilter,tp,LOCATION_DECK,0,1,1,nil,tc:GetCode())
 		if sg:GetCount()>0 then
 			Duel.SendtoHand(sg,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,sg)

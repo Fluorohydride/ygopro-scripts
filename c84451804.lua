@@ -29,6 +29,6 @@ function c84451804.operation(e,tp,eg,ep,ev,re,r,rp)
 	if ft<ct then ct=ft end
 	if ct<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c84451804.filter,tp,LOCATION_DECK+LOCATION_HAND,0,1,ct,nil,e,tp)
+	local g=aux.SelectMatchingCardCrossField(tp,c84451804.filter,tp,LOCATION_DECK+LOCATION_HAND,0,1,ct,nil,e,tp)
 	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 end

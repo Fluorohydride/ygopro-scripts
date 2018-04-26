@@ -35,7 +35,7 @@ function c91231901.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c91231901.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c91231901.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c91231901.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		local sg=g:GetFirst()
 		if Duel.SendtoGrave(g,REASON_EFFECT)~=0 and sg:IsLocation(LOCATION_GRAVE) then
@@ -55,7 +55,7 @@ function c91231901.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c91231901.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c91231901.thfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c91231901.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

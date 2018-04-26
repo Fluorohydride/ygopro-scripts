@@ -26,6 +26,6 @@ function c14550855.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.DiscardHand(tp,aux.TRUE,1,ac,REASON_DISCARD+REASON_EFFECT)
 	Duel.BreakEffect()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c14550855.filter,tp,LOCATION_DECK,0,1,ct,nil)
+	local g=aux.SelectMatchingCardCrossField(tp,c14550855.filter,tp,LOCATION_DECK,0,1,ct,nil)
 	Duel.SendtoGrave(g,REASON_EFFECT)
 end

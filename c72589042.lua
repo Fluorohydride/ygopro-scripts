@@ -37,7 +37,7 @@ function c72589042.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Destroy(sg,REASON_EFFECT)~=0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c72589042.filter,tp,LOCATION_DECK,0,1,nil,e,tp)
 		and Duel.SelectYesNo(tp,aux.Stringid(72589042,1)) then
 		Duel.BreakEffect()
-		local tc=Duel.SelectMatchingCard(tp,c72589042.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
+		local tc=aux.SelectMatchingCardCrossField(tp,c72589042.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
