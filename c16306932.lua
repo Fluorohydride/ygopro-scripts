@@ -2,7 +2,7 @@
 function c16306932.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--revive limit
-	aux.EnableReviveLimitPendulumSummonable(c, LOCATION_HAND)
+	aux.EnableReviveLimitPendulumSummonable(c,LOCATION_HAND)
 	--splimit
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
