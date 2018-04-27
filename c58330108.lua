@@ -91,15 +91,16 @@ function c58330108.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c58330108.operation(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
+	local exc=e:GetHandler()
+	if not exc:IsRelateToEffect(e) then exc=nil end
 	local gc=Duel.GetMatchingGroup(c58330108.filter,tp,LOCATION_GRAVE,0,nil):GetClassCount(Card.GetCode)
 	if gc==1 then
-		local g=Duel.GetMatchingGroup(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,c)
+		local g=Duel.GetMatchingGroup(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,exc)
 		Duel.Destroy(g,REASON_EFFECT)
 	else
 		local loc=LOCATION_ONFIELD
 		if gc>2 then loc=LOCATION_ONFIELD+LOCATION_GRAVE end
-		local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,loc,loc,c)
+		local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,loc,loc,exc)
 		Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 	end
 end
