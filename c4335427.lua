@@ -31,30 +31,41 @@ function c4335427.initial_effect(c)
 	e4:SetOperation(c4335427.rmop)
 	c:RegisterEffect(e4)
 end
-function c4335427.spfilter(c,tpe)
-	return c:IsFaceup() and c:IsType(tpe) and c:IsAbleToRemoveAsCost()
+function c4335427.spcostfilter(c)
+	return c:IsFaceup() and c:IsAbleToRemoveAsCost() and c:IsType(TYPE_RITUAL+TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)
+end
+c4335427.spcost_table={TYPE_RITUAL,TYPE_FUSION,TYPE_SYNCHRO,TYPE_XYZ}
+function c4335427.spcost_selector(c,tp,g,sg,i)
+	if not c:IsType(c4335427.spcost_table[i]) then return false end
+	sg:AddCard(c)
+	g:RemoveCard(c)
+	local flag=false
+	if i<4 then
+		flag=g:IsExists(c4335427.spcost_selector,1,nil,tp,g,sg,i+1)
+	else
+		flag=Duel.GetMZoneCount(tp,sg,tp)>0
+	end
+	sg:RemoveCard(c)
+	g:AddCard(c)
+	return flag
 end
 function c4335427.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.IsExistingMatchingCard(c4335427.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,TYPE_RITUAL)
-		and Duel.IsExistingMatchingCard(c4335427.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,TYPE_FUSION)
-		and Duel.IsExistingMatchingCard(c4335427.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,TYPE_SYNCHRO)
-		and Duel.IsExistingMatchingCard(c4335427.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,TYPE_XYZ)
+	local g=Duel.GetMatchingGroup(c4335427.spcostfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local sg=Group.CreateGroup()
+	return g:IsExists(c4335427.spcost_selector,1,nil,tp,g,sg,1)
 end
 function c4335427.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectMatchingCard(tp,c4335427.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,TYPE_RITUAL)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=Duel.SelectMatchingCard(tp,c4335427.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,TYPE_FUSION)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g3=Duel.SelectMatchingCard(tp,c4335427.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,TYPE_SYNCHRO)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g4=Duel.SelectMatchingCard(tp,c4335427.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,TYPE_XYZ)
-	g1:Merge(g2)
-	g1:Merge(g3)
-	g1:Merge(g4)
-	Duel.Remove(g1,POS_FACEUP,REASON_COST)
+	local g=Duel.GetMatchingGroup(c4335427.spcostfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local sg=Group.CreateGroup()
+	for i=1,4 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+		local g1=g:FilterSelect(tp,c4335427.spcost_selector,1,1,nil,tp,g,sg,i)
+		sg:Merge(g1)
+		g:Sub(g1)
+	end
+	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c4335427.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
