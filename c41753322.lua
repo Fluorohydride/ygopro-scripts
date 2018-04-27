@@ -77,7 +77,9 @@ function c41753322.postg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,g:GetCount(),0,0)
 end
 function c41753322.posop2(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsCanTurnSet,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
+	local exc=e:GetHandler()
+	if not exc:IsRelateToEffect(e) then exc=nil end
+	local g=Duel.GetMatchingGroup(Card.IsCanTurnSet,tp,LOCATION_MZONE,LOCATION_MZONE,exc)
 	Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
 end
 function c41753322.dcon(e,tp,eg,ep,ev,re,r,rp)
