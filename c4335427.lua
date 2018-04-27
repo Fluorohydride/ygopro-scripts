@@ -36,7 +36,6 @@ function c4335427.spcostfilter(c)
 end
 c4335427.spcost_table={TYPE_RITUAL,TYPE_FUSION,TYPE_SYNCHRO,TYPE_XYZ}
 function c4335427.spcost_selector(c,tp,g,sg,i)
-	if not i then i=1 end
 	if not c:IsType(c4335427.spcost_table[i]) then return false end
 	local sg2=sg:Clone()
 	local g2=g:Clone()
