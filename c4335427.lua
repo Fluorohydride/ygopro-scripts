@@ -44,7 +44,7 @@ function c4335427.spcost_selector(c,tp,g,sg,i)
 	if i<4 then
 		return g2:IsExists(c4335427.spcost_selector,1,nil,tp,g2,sg2,i+1)
 	else
-		return (Duel.GetLocationCount(tp,LOCATION_MZONE)+sg2:FilterCount(Card.IsControler,nil,tp))>0
+		return Duel.GetMZoneCount(tp,sg2,tp)>0
 	end
 end
 function c4335427.spcon(e,c)
