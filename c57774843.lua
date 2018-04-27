@@ -60,7 +60,9 @@ function c57774843.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,sg,sg:GetCount(),0,0)
 end
 function c57774843.operation(e,tp,eg,ep,ev,re,r,rp)
-	local sg=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,e:GetHandler())
+	local exc=e:GetHandler()
+	if not exc:IsRelateToEffect(e) then exc=nil end
+	local sg=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,exc)
 	Duel.Destroy(sg,REASON_EFFECT)
 end
 function c57774843.condition2(e,tp,eg,ep,ev,re,r,rp)
