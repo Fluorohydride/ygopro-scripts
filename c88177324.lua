@@ -49,7 +49,9 @@ function c88177324.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c88177324.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(c88177324.filter3,tp,LOCATION_MZONE,LOCATION_MZONE,c)
+	local exc=c
+	if not exc:IsRelateToEffect(e) then exc=nil end
+	local g=Duel.GetMatchingGroup(c88177324.filter3,tp,LOCATION_MZONE,LOCATION_MZONE,exc)
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(c)
@@ -64,7 +66,7 @@ function c88177324.negop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e2)
 		tc=g:GetNext()
 	end
-	g=Duel.GetMatchingGroup(c88177324.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,c)
+	g=Duel.GetMatchingGroup(c88177324.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,exc)
 	tc=g:GetFirst()
 	while tc do
 		if tc:GetAttack()~=tc:GetBaseAttack() then
