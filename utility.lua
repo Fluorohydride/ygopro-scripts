@@ -2010,6 +2010,10 @@ end
 function Auxiliary.penlimit(e,se,sp,st)
 	return st&SUMMON_TYPE_PENDULUM==SUMMON_TYPE_PENDULUM
 end
+--sp_summon condition for link monster
+function Auxiliary.linklimit(e,se,sp,st)
+	return st&SUMMON_TYPE_LINK==SUMMON_TYPE_LINK
+end
 --effects inflicting damage to tp
 function Auxiliary.damcon1(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Duel.IsPlayerAffectedByEffect(tp,EFFECT_REVERSE_DAMAGE)
