@@ -42,7 +42,9 @@ function c39272762.negcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c39272762.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,c)
+	local exc=c
+	if not exc:IsRelateToEffect(e) then exc=nil end
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,exc)
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(c)
