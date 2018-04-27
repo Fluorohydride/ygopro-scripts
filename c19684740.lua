@@ -29,6 +29,8 @@ function c19684740.chlimit(e,ep,tp)
 	return tp==ep
 end
 function c19684740.thop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsAbleToHand,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,e:GetHandler())
+	local exc=e:GetHandler()
+	if not exc:IsRelateToEffect(e) then exc=nil end
+	local g=Duel.GetMatchingGroup(Card.IsAbleToHand,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,exc)
 	Duel.SendtoHand(g,nil,REASON_EFFECT)
 end

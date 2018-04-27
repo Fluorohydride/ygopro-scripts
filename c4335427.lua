@@ -63,6 +63,8 @@ function c4335427.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetChainLimit(aux.FALSE)
 end
 function c4335427.rmop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0x1e,0x1e,e:GetHandler())
+	local exc=e:GetHandler()
+	if not exc:IsRelateToEffect(e) then exc=nil end
+	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0x1e,0x1e,exc)
 	Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 end

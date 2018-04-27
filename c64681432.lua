@@ -52,9 +52,11 @@ function c64681432.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c64681432.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local sg=Duel.GetMatchingGroup(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,c)
+	local exc=c
+	if not exc:IsRelateToEffect(e) then exc=nil end
+	local sg=Duel.GetMatchingGroup(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,exc)
 	local ct=Duel.Destroy(sg,REASON_EFFECT,LOCATION_REMOVED)
-	if ct>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if ct>0 and c:IsFaceup() and exc~=nil then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

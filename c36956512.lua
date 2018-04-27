@@ -71,7 +71,9 @@ function c36956512.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c36956512.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local tg=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,c)
+	local exc=c
+	if not exc:IsRelateToEffect(e) then exc=nil end
+	local tg=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,exc)
 	local tc=tg:GetFirst()
 	while tc do
 		local atk=tc:GetAttack()

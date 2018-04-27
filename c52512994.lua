@@ -43,9 +43,11 @@ function c52512994.rfilter(c)
 	return c:IsLocation(LOCATION_DECK+LOCATION_EXTRA) and c:IsRace(RACE_ZOMBIE) and bit.band(c:GetPreviousPosition(),POS_FACEUP)~=0
 end
 function c52512994.tdop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
-	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
 	local c=e:GetHandler()
+	local exc=c
+	if not exc:IsRelateToEffect(e) then exc=nil end
+	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,LOCATION_MZONE,LOCATION_MZONE,exc)
+	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
 	local rt=Duel.GetOperatedGroup():FilterCount(c52512994.rfilter,nil)
 	if rt>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)

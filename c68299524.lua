@@ -50,11 +50,14 @@ function c68299524.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(cost)
 end
 function c68299524.operation(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c68299524.filter,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
+	local c=e:GetHandler()
+	local exc=c
+	if not exc:IsRelateToEffect(e) then exc=nil end
+	local g=Duel.GetMatchingGroup(c68299524.filter,tp,LOCATION_MZONE,LOCATION_MZONE,exc)
 	local tc=g:GetFirst()
 	local val=e:GetLabel()
 	while tc do
-		local e1=Effect.CreateEffect(e:GetHandler())
+		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(-val)

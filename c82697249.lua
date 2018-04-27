@@ -46,7 +46,9 @@ function c82697249.ctfilter(c)
 end
 function c82697249.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,0,c)
+	local exc=e:GetHandler()
+	if not exc:IsRelateToEffect(e) then exc=nil end
+	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,0,exc)
 	if Duel.Destroy(g,REASON_EFFECT)~=0 then
 		local ct=Duel.GetOperatedGroup():FilterCount(c82697249.ctfilter,nil)
 		if ct>0 and c:IsFaceup() and c:IsRelateToEffect(e) then

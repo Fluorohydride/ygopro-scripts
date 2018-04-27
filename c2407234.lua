@@ -27,7 +27,9 @@ function c2407234.negfilter(c)
 end
 function c2407234.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(c2407234.negfilter,tp,LOCATION_MZONE,LOCATION_MZONE,c)
+	local exc=c
+	if not exc:IsRelateToEffect(e) then exc=nil end
+	local g=Duel.GetMatchingGroup(c2407234.negfilter,tp,LOCATION_MZONE,LOCATION_MZONE,exc)
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(c)
