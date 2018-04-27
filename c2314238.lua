@@ -27,6 +27,6 @@ function c2314238.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,sg,sg:GetCount(),0,0)
 end
 function c2314238.activate(e,tp,eg,ep,ev,re,r,rp)
-	local sg=Duel.GetMatchingGroup(c2314238.filter,tp,0,LOCATION_ONFIELD,e:GetHandler())
+	local sg=Duel.GetMatchingGroup(c2314238.filter,tp,0,LOCATION_ONFIELD,aux.ExceptThisCard(e))
 	Duel.Destroy(sg,REASON_EFFECT)
 end

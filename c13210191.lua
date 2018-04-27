@@ -23,7 +23,7 @@ function c13210191.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g1,ct1+((ct1>ct2) and ct2 or ct1),0,0)
 end
 function c13210191.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g1=Duel.GetMatchingGroup(c13210191.filter,tp,LOCATION_ONFIELD,0,e:GetHandler())
+	local g1=Duel.GetMatchingGroup(c13210191.filter,tp,LOCATION_ONFIELD,0,aux.ExceptThisCard(e))
 	local ct1=Duel.Destroy(g1,REASON_EFFECT)
 	if ct1==0 then return end
 	local g2=Duel.GetMatchingGroup(c13210191.filter,tp,0,LOCATION_ONFIELD,nil)

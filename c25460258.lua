@@ -22,23 +22,41 @@ function c25460258.initial_effect(c)
 	e2:SetOperation(c25460258.rmop)
 	c:RegisterEffect(e2)
 end
-function c25460258.spfilter(c,att)
-	return c:IsAttribute(att) and c:IsAbleToRemoveAsCost()
+function c25460258.spcostfilter(c)
+	return c:IsAbleToRemoveAsCost() and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
+end
+function c25460258.spcost_selector(c,tp,g,sg,i)
+	sg:AddCard(c)
+	g:RemoveCard(c)
+	local flag=false
+	if i<2 then
+		flag=g:IsExists(c25460258.spcost_selector,1,nil,tp,g,sg,i+1)
+	else
+		flag=sg:FilterCount(Card.IsAttribute,nil,ATTRIBUTE_LIGHT)>0
+			and sg:FilterCount(Card.IsAttribute,nil,ATTRIBUTE_DARK)>0
+	end
+	sg:RemoveCard(c)
+	g:AddCard(c)
+	return flag
 end
 function c25460258.spcon(e,c)
 	if c==nil then return true end
+	if Duel.GetMZoneCount(tp)<=0 then return false end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c25460258.spfilter,tp,LOCATION_GRAVE,0,1,nil,ATTRIBUTE_LIGHT)
-		and Duel.IsExistingMatchingCard(c25460258.spfilter,tp,LOCATION_GRAVE,0,1,nil,ATTRIBUTE_DARK)
+	local g=Duel.GetMatchingGroup(c25460258.spcostfilter,tp,LOCATION_GRAVE,0,nil)
+	local sg=Group.CreateGroup()
+	return g:IsExists(c25460258.spcost_selector,1,nil,tp,g,sg,1)
 end
 function c25460258.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectMatchingCard(tp,c25460258.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,ATTRIBUTE_LIGHT)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=Duel.SelectMatchingCard(tp,c25460258.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,ATTRIBUTE_DARK)
-	g1:Merge(g2)
-	Duel.Remove(g1,POS_FACEUP,REASON_COST)
+	local g=Duel.GetMatchingGroup(c25460258.spcostfilter,tp,LOCATION_GRAVE,0,nil)
+	local sg=Group.CreateGroup()
+	for i=1,2 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+		local g1=g:FilterSelect(tp,c25460258.spcost_selector,1,1,nil,tp,g,sg,i)
+		sg:Merge(g1)
+		g:Sub(g1)
+	end
+	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c25460258.cfilter(c)
 	return c:IsRace(RACE_DRAGON) and c:IsAbleToGraveAsCost()

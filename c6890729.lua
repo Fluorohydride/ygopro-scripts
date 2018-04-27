@@ -20,23 +20,37 @@ function c6890729.initial_effect(c)
 	e2:SetOperation(c6890729.thop)
 	c:RegisterEffect(e2)
 end
-function c6890729.cfilter(c,code)
-	return c:IsCode(code) and c:IsAbleToDeckAsCost()
+function c6890729.spcostfilter(c)
+	return c:IsAbleToDeckAsCost() and c:IsCode(43017476,22587018,58071123)
+end
+c6890729.spcost_list={43017476,22587018,58071123}
+function c6890729.spcost_selector(c,tp,g,sg,i)
+	if not c:IsCode(c6890729.spcost_list[i]) then return false end
+	if i<3 then
+		sg:AddCard(c)
+		g:RemoveCard(c)
+		local flag=g:IsExists(c6890729.spcost_selector,1,nil,tp,g,sg,i+1)
+		sg:RemoveCard(c)
+		g:AddCard(c)
+		return flag
+	else
+		return true
+	end
 end
 function c6890729.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c6890729.cfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,43017476)
-		and Duel.IsExistingMatchingCard(c6890729.cfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,22587018)
-		and Duel.IsExistingMatchingCard(c6890729.cfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,58071123) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g1=Duel.SelectMatchingCard(tp,c6890729.cfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,43017476)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g2=Duel.SelectMatchingCard(tp,c6890729.cfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,22587018)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g3=Duel.SelectMatchingCard(tp,c6890729.cfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,58071123)
-	g1:Merge(g2)
-	g1:Merge(g3)
-	Duel.ConfirmCards(1-tp,g1)
-	Duel.SendtoDeck(g1,nil,2,REASON_COST)
+	local g=Duel.GetMatchingGroup(c6890729.spcostfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,nil)
+	local sg=Group.CreateGroup()
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and g:IsExists(c6890729.spcost_selector,1,nil,tp,g,sg,1)
+	end
+	for i=1,3 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+		local g1=g:FilterSelect(tp,c6890729.spcost_selector,1,1,nil,tp,g,sg,i)
+		sg:Merge(g1)
+		g:Sub(g1)
+	end
+	Duel.ConfirmCards(1-tp,sg)
+	Duel.SendtoDeck(sg,nil,2,REASON_COST)
 end
 function c6890729.filter(c,e,tp)
 	return c:IsCode(6022371) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)

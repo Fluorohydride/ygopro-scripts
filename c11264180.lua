@@ -46,6 +46,6 @@ function c11264180.activate(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetValue(tc:GetDefense()/2)
 	tc:RegisterEffect(e2)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local dg=Duel.SelectMatchingCard(tp,c11264180.dfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetHandler())
+	local dg=Duel.SelectMatchingCard(tp,c11264180.dfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,aux.ExceptThisCard(e))
 	Duel.Destroy(dg,REASON_EFFECT)
 end

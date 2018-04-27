@@ -29,7 +29,7 @@ function c79337169.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c79337169.filter,tp,LOCATION_MZONE,0,1,e:GetHandler()) end
 end
 function c79337169.operation(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c79337169.filter,tp,LOCATION_MZONE,0,e:GetHandler())
+	local g=Duel.GetMatchingGroup(c79337169.filter,tp,LOCATION_MZONE,0,aux.ExceptThisCard(e))
 	local tc=g:GetFirst()
 	local c=e:GetHandler()
 	while tc do

@@ -54,9 +54,7 @@ function c84488827.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c84488827.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==1 then
-		local exc=e:GetHandler()
-		if not exc:IsRelateToEffect(e) then exc=nil end
-		local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,exc)
+		local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,aux.ExceptThisCard(e))
 		Duel.Destroy(g,REASON_EFFECT)
 	elseif e:GetLabel()==2 then
 		local g=Duel.GetMatchingGroup(c84488827.sfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)

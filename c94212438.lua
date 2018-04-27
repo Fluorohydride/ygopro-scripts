@@ -72,7 +72,7 @@ function c94212438.cfilter3(c)
 end
 function c94212438.winop(e,tp,eg,ep,ev,re,r,rp)
 	local WIN_REASON_DESTINY_BOARD=0x15
-	local g=Duel.GetMatchingGroup(c94212438.cfilter3,tp,LOCATION_ONFIELD,0,e:GetHandler())
+	local g=Duel.GetMatchingGroup(c94212438.cfilter3,tp,LOCATION_ONFIELD,0,aux.ExceptThisCard(e))
 	if g:GetClassCount(Card.GetCode)==4 then
 		Duel.Win(tp,WIN_REASON_DESTINY_BOARD)
 	end

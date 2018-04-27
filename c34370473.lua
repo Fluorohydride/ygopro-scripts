@@ -20,7 +20,7 @@ function c34370473.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,g:GetCount()*500)
 end
 function c34370473.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c34370473.filter,tp,LOCATION_ONFIELD,0,e:GetHandler())
+	local g=Duel.GetMatchingGroup(c34370473.filter,tp,LOCATION_ONFIELD,0,aux.ExceptThisCard(e))
 	local ct=Duel.Destroy(g,REASON_EFFECT)
 	Duel.Recover(tp,ct*500,REASON_EFFECT)
 end

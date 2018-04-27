@@ -34,6 +34,6 @@ function c38049934.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c38049934.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetLabel(),e:GetHandler())
+	local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetLabel(),aux.ExceptThisCard(e))
 	Duel.Destroy(g,REASON_EFFECT)
 end

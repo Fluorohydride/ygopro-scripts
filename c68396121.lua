@@ -33,9 +33,7 @@ function c68396121.filter(c)
 end
 function c68396121.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local exc=c
-	if not exc:IsRelateToEffect(e) then exc=nil end
-	local g=Duel.GetMatchingGroup(c68396121.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,exc)
+	local g=Duel.GetMatchingGroup(c68396121.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e))
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(c)
