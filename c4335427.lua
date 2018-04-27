@@ -37,15 +37,17 @@ end
 c4335427.spcost_table={TYPE_RITUAL,TYPE_FUSION,TYPE_SYNCHRO,TYPE_XYZ}
 function c4335427.spcost_selector(c,tp,g,sg,i)
 	if not c:IsType(c4335427.spcost_table[i]) then return false end
-	local sg2=sg:Clone()
-	local g2=g:Clone()
-	sg2:AddCard(c)
-	g2:RemoveCard(c)
+	sg:AddCard(c)
+	g:RemoveCard(c)
+	local flag=false
 	if i<4 then
-		return g2:IsExists(c4335427.spcost_selector,1,nil,tp,g2,sg2,i+1)
+		flag=g:IsExists(c4335427.spcost_selector,1,nil,tp,g,sg,i+1)
 	else
-		return Duel.GetMZoneCount(tp,sg2,tp)>0
+		flag=Duel.GetMZoneCount(tp,sg,tp)>0
 	end
+	sg:RemoveCard(c)
+	g:AddCard(c)
+	return flag
 end
 function c4335427.spcon(e,c)
 	if c==nil then return true end
