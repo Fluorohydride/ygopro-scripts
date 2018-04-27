@@ -34,7 +34,9 @@ function c75433814.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler()) end
 end
 function c75433814.ctop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
+	local exc=e:GetHandler()
+	if not exc:IsRelateToEffect(e) then exc=nil end
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,exc)
 	local tc=g:GetFirst()
 	while tc do
 		tc:AddCounter(0x1024,1)
