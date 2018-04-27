@@ -1696,8 +1696,9 @@ function Auxiliary.PConditionFilter(c,e,tp,lscale,rscale)
 	else
 		lv=c:GetLevel()
 	end
+	local bool=Auxiliary.PendulumSummonableBool(c)
 	return (c:IsLocation(LOCATION_HAND) or (c:IsFaceup() and c:IsType(TYPE_PENDULUM)))
-		and lv>lscale and lv<rscale and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_PENDULUM,tp,false,false)
+		and lv>lscale and lv<rscale and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_PENDULUM,tp,bool,bool)
 		and not c:IsForbidden()
 end
 function Auxiliary.PendCondition()
@@ -1785,6 +1786,31 @@ function Auxiliary.PendOperation()
 				Duel.HintSelection(Group.FromCards(c))
 				Duel.HintSelection(Group.FromCards(rpz))
 			end
+end
+--enable revive limit for monsters that are also pendulum sumonable from certain locations (Odd-Eyes Revolution Dragon)
+function Auxiliary.EnableReviveLimitPendulumSummonable(c, loc)
+	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
+	c:EnableReviveLimit()
+	local code=c:GetOriginalCode()
+	local mt=_G["c" .. code]
+	if loc==nil then loc=0xff end
+	mt.psummonable_location=loc
+	--complete procedure on pendulum summon success
+	local e1=Effect.CreateEffect(c)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e1:SetOperation(Auxiliary.PSSCompleteProcedure)
+	c:RegisterEffect(e1)
+end
+function Auxiliary.PendulumSummonableBool(c)
+	return c.psummonable_location~=nil and c:GetLocation() & c.psummonable_location > 0
+end
+function Auxiliary.PSSCompleteProcedure(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	if c:IsSummonType(SUMMON_TYPE_PENDULUM) then
+		c:CompleteProcedure()
+	end
 end
 --Link Summon
 function Auxiliary.AddLinkProcedure(c,f,min,max,gf)
