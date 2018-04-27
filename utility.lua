@@ -2090,3 +2090,8 @@ function Auxiliary.bfgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
+--used for "except this card"
+function Auxiliary.ExceptThisCard(e)
+	local c=e:GetHandler()
+	if c:IsRelateToEffect(e) then return c else return nil end
+end
