@@ -41,7 +41,9 @@ function c71525232.filter(c)
 end
 function c71525232.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,c)
+	local exc=c
+	if not exc:IsRelateToEffect(e) then exc=nil end
+	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,exc)
 	if g:GetCount()>0 and Duel.Destroy(g,REASON_EFFECT)~=0 then
 		local og=Duel.GetOperatedGroup()
 		local mg,atk=og:GetMaxGroup(c71525232.filter)
