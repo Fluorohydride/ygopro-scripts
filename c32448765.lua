@@ -44,7 +44,10 @@ function c32448765.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return lg and eg:IsExists(c32448765.cfilter,1,nil,lg)
 end
 function c32448765.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,0,32448765)
+	if Duel.GetFlagEffect(1-tp,32448765)==0 then
+		Duel.RegisterFlagEffect(1-tp,32448765,RESET_PHASE+PHASE_END,0,0)
+		Duel.Hint(HINT_CARD,0,32448765)
+	end
 	Duel.Damage(1-tp,200,REASON_EFFECT)
 end
 function c32448765.indtg(e,c)
