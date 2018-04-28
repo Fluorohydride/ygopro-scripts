@@ -54,7 +54,7 @@ end
 function c35984222.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,1,tp,tp,false,false,POS_FACEUP)~=0 then
-		local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,0,c)
+		local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,0,aux.ExceptThisCard(e))
 		Duel.Destroy(g,REASON_EFFECT)
 	end
 end

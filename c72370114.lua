@@ -45,7 +45,7 @@ function c72370114.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c72370114.desop(e,tp,eg,ep,ev,re,r,rp)
-	local ct=Duel.GetMatchingGroupCount(c72370114.cfilter,tp,LOCATION_MZONE,0,e:GetHandler())
+	local ct=Duel.GetMatchingGroupCount(c72370114.cfilter,tp,LOCATION_MZONE,0,aux.ExceptThisCard(e))
 	local g=Duel.GetMatchingGroup(c72370114.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	if ct>0 and g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

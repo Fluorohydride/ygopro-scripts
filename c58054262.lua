@@ -39,23 +39,38 @@ end
 function c58054262.filter(c,code,e,tp)
 	return c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
+function c58054262.sptargetfilter(c,e,tp)
+	return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsCode(60999392,23782705,96384007)
+end
+c58054262.sptarget_list={60999392,23782705,96384007}
+function c58054262.sptarget_selector(c,tp,g,sg,i)
+	if not c:IsCode(c58054262.sptarget_list[i]) then return false end
+	if i<3 then
+		sg:AddCard(c)
+		g:RemoveCard(c)
+		local flag=g:IsExists(c58054262.sptarget_selector,1,nil,tp,g,sg,i+1)
+		sg:RemoveCard(c)
+		g:AddCard(c)
+		return flag
+	else
+		return true
+	end
+end
 function c58054262.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
+	local g=Duel.GetMatchingGroup(c22666164.sptargetfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
+	local sg=Group.CreateGroup()
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>=2
-		and Duel.IsExistingTarget(c58054262.filter,tp,LOCATION_GRAVE,0,1,nil,60999392,e,tp)
-		and Duel.IsExistingTarget(c58054262.filter,tp,LOCATION_GRAVE,0,1,nil,23782705,e,tp)
-		and Duel.IsExistingTarget(c58054262.filter,tp,LOCATION_GRAVE,0,1,nil,96384007,e,tp)
+		and g:IsExists(c22666164.sptarget_selector,1,nil,tp,g,sg,1)
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g1=Duel.SelectTarget(tp,c58054262.filter,tp,LOCATION_GRAVE,0,1,1,nil,60999392,e,tp)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g2=Duel.SelectTarget(tp,c58054262.filter,tp,LOCATION_GRAVE,0,1,1,nil,23782705,e,tp)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g3=Duel.SelectTarget(tp,c58054262.filter,tp,LOCATION_GRAVE,0,1,1,nil,96384007,e,tp)
-	g1:Merge(g2)
-	g1:Merge(g3)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g1,3,0,0)
+	for i=1,3 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local g1=g:FilterSelect(tp,c58054262.sptarget_selector,1,1,nil,tp,g,sg,i)
+		sg:Merge(g1)
+		g:Sub(g1)
+	end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,3,0,0)
 end
 function c58054262.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end

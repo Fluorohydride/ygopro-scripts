@@ -36,7 +36,7 @@ function c31222701.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(shg1,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,shg1)
 	end
-	local rg=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,e:GetHandler())
+	local rg=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e))
 	if ct>=3 and rg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(31222701,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)

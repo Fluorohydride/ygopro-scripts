@@ -11,22 +11,35 @@ function c22666164.initial_effect(c)
 	e1:SetOperation(c22666164.operation)
 	c:RegisterEffect(e1)
 end
-function c22666164.cfilter(c,code)
-	return c:IsFaceup() and c:IsCode(code) and c:IsAbleToGraveAsCost()
+function c22666164.spcostfilter(c)
+	return c:IsFaceup() and c:IsAbleToGraveAsCost() and c:IsCode(60999392,23782705,96384007)
+end
+c22666164.spcost_list={60999392,23782705,96384007}
+function c22666164.spcost_selector(c,tp,g,sg,i)
+	if not c:IsCode(c22666164.spcost_list[i]) then return false end
+	sg:AddCard(c)
+	g:RemoveCard(c)
+	local flag=false
+	if i<3 then
+		flag=g:IsExists(c22666164.spcost_selector,1,nil,tp,g,sg,i+1)
+	else
+		flag=Duel.GetMZoneCount(tp,sg,tp)>0
+	end
+	sg:RemoveCard(c)
+	g:AddCard(c)
+	return flag
 end
 function c22666164.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c22666164.cfilter,tp,LOCATION_ONFIELD,0,1,nil,60999392)
-		and Duel.IsExistingMatchingCard(c22666164.cfilter,tp,LOCATION_ONFIELD,0,1,nil,23782705)
-		and Duel.IsExistingMatchingCard(c22666164.cfilter,tp,LOCATION_ONFIELD,0,1,nil,96384007) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,c22666164.cfilter,tp,LOCATION_ONFIELD,0,1,1,nil,60999392)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectMatchingCard(tp,c22666164.cfilter,tp,LOCATION_ONFIELD,0,1,1,nil,23782705)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g3=Duel.SelectMatchingCard(tp,c22666164.cfilter,tp,LOCATION_ONFIELD,0,1,1,nil,96384007)
-	g1:Merge(g2)
-	g1:Merge(g3)
-	Duel.SendtoGrave(g1,REASON_COST)
+	local g=Duel.GetMatchingGroup(c22666164.spcostfilter,tp,LOCATION_ONFIELD,0,nil)
+	local sg=Group.CreateGroup()
+	if chk==0 then return g:IsExists(c22666164.spcost_selector,1,nil,tp,g,sg,1) end
+	for i=1,3 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+		local g1=g:FilterSelect(tp,c22666164.spcost_selector,1,1,nil,tp,g,sg,i)
+		sg:Merge(g1)
+		g:Sub(g1)
+	end
+	Duel.SendtoGrave(sg,REASON_COST)
 end
 function c22666164.filter(c,e,tp)
 	return c:IsCode(58054262) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)

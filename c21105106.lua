@@ -87,9 +87,7 @@ function c21105106.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)
 end
 function c21105106.rmop(e,tp,eg,ep,ev,re,r,rp)
-	local exc=e:GetHandler()
-	if not exc:IsRelateToEffect(e) then exc=nil end
-	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,LOCATION_ONFIELD+LOCATION_GRAVE,LOCATION_ONFIELD+LOCATION_GRAVE,exc)
+	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,LOCATION_ONFIELD+LOCATION_GRAVE,LOCATION_ONFIELD+LOCATION_GRAVE,aux.ExceptThisCard(e))
 	Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 end
 function c21105106.filter(c,tp)

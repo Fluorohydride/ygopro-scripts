@@ -13,25 +13,32 @@ function c34898052.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c34898052.rfilter(c,att)
-	return c:IsAttribute(att) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
+	return (not att or c:IsAttribute(att)) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
+end
+c34898052.cost_table={ATTRIBUTE_EARTH,ATTRIBUTE_WATER,ATTRIBUTE_FIRE,ATTRIBUTE_WIND}
+function c34898052.rcostselector(c,g,sg,i)
+	if not c:IsAttribute(c34898052.cost_table[i]) then return false end
+	if i<4 then
+		g:RemoveCard(c)
+		sg:AddCard(c)
+		local flag=g:IsExists(c34898052.rcostselector,1,nil,g,sg,i+1)
+		g:AddCard(c)
+		sg:RemoveCard(c)
+		return flag
+	else
+		return true
+	end
 end
 function c34898052.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c34898052.rfilter,tp,LOCATION_GRAVE,0,1,nil,ATTRIBUTE_EARTH)
-		and Duel.IsExistingMatchingCard(c34898052.rfilter,tp,LOCATION_GRAVE,0,1,nil,ATTRIBUTE_WATER)
-		and Duel.IsExistingMatchingCard(c34898052.rfilter,tp,LOCATION_GRAVE,0,1,nil,ATTRIBUTE_FIRE)
-		and Duel.IsExistingMatchingCard(c34898052.rfilter,tp,LOCATION_GRAVE,0,1,nil,ATTRIBUTE_WIND)
+	local g=Duel.GetMatchingGroup(c34898052.rfilter,tp,LOCATION_GRAVE,0,nil)
+	local sg=Group.CreateGroup()
+	if chk==0 then return g:IsExists(c34898052.rcostselector,1,nil,g,sg,1) end
+	for i=1,4 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+		local g1=g:FilterSelect(tp,c34898052.rcostselector,1,1,nil,g,sg,i)
+		g:Sub(g1)
+		sg:Merge(g1)
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c34898052.rfilter,tp,LOCATION_GRAVE,0,1,1,nil,ATTRIBUTE_EARTH)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectMatchingCard(tp,c34898052.rfilter,tp,LOCATION_GRAVE,0,1,1,nil,ATTRIBUTE_WATER)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=Duel.SelectMatchingCard(tp,c34898052.rfilter,tp,LOCATION_GRAVE,0,1,1,nil,ATTRIBUTE_FIRE)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g3=Duel.SelectMatchingCard(tp,c34898052.rfilter,tp,LOCATION_GRAVE,0,1,1,nil,ATTRIBUTE_WIND)
-	g:Merge(g1)
-	g:Merge(g2)
-	g:Merge(g3)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c34898052.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -41,7 +48,7 @@ function c34898052.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c34898052.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetHandler())
+	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,aux.ExceptThisCard(e))
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)
 		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)

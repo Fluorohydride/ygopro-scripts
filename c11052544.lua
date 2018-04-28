@@ -28,7 +28,7 @@ function c11052544.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c11052544.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetMatchingGroupCount(c11052544.cfilter,tp,LOCATION_MZONE,0,nil)
-	local g=Duel.GetMatchingGroup(c11052544.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,e:GetHandler())
+	local g=Duel.GetMatchingGroup(c11052544.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e))
 	if g:GetCount()>=ct then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local sg=g:Select(tp,ct,ct,nil)

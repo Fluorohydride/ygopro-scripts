@@ -39,8 +39,6 @@ function c64599569.sucop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e3)
 end
 function c64599569.tgop(e,tp,eg,ep,ev,re,r,rp)
-	local exc=e:GetHandler()
-	if not exc:IsRelateToEffect(e) then exc=nil end
-	local g=Duel.GetMatchingGroup(nil,tp,LOCATION_ONFIELD,0,exc)
+	local g=Duel.GetMatchingGroup(nil,tp,LOCATION_ONFIELD,0,aux.ExceptThisCard(e))
 	Duel.SendtoGrave(g,REASON_EFFECT)
 end

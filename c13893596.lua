@@ -92,7 +92,7 @@ end
 function c13893596.winop(e,tp,eg,ep,ev,re,r,rp)
 	local WIN_REASON_EXODIUS = 0x14
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(c13893596.filter,tp,LOCATION_GRAVE,0,nil,c)
+	local g=Duel.GetMatchingGroup(c13893596.filter,tp,LOCATION_GRAVE,0,nil,aux.ExceptThisCard(e))
 	if g:GetClassCount(Card.GetCode)==5 then
 		Duel.Win(tp,WIN_REASON_EXODIUS)
 	end

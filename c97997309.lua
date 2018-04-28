@@ -68,7 +68,7 @@ function c97997309.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c97997309.activate1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=Duel.SelectMatchingCard(tp,c97997309.filter1,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,e:GetHandler())
+	local g=Duel.SelectMatchingCard(tp,c97997309.filter1,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,aux.ExceptThisCard(e))
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)

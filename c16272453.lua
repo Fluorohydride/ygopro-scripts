@@ -26,7 +26,7 @@ function c16272453.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
 end
 function c16272453.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c16272453.dfilter,tp,LOCATION_ONFIELD,0,e:GetHandler())
+	local g=Duel.GetMatchingGroup(c16272453.dfilter,tp,LOCATION_ONFIELD,0,aux.ExceptThisCard(e))
 	local ct=Duel.Destroy(g,REASON_EFFECT)
 	if ct>0 then
 		Duel.BreakEffect()

@@ -55,6 +55,6 @@ function c32391631.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c32391631.desop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
-	local g=Duel.GetMatchingGroup(c32391631.desfilter,Duel.GetTurnPlayer(),LOCATION_MZONE,0,e:GetHandler())
+	local g=Duel.GetMatchingGroup(c32391631.desfilter,Duel.GetTurnPlayer(),LOCATION_MZONE,0,aux.ExceptThisCard(e))
 	Duel.Destroy(g,REASON_EFFECT)
 end

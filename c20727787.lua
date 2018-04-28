@@ -20,6 +20,6 @@ function c20727787.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c20727787.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c20727787.filter,tp,LOCATION_SZONE,LOCATION_SZONE,e:GetHandler())
+	local g=Duel.GetMatchingGroup(c20727787.filter,tp,LOCATION_SZONE,LOCATION_SZONE,aux.ExceptThisCard(e))
 	Duel.Destroy(g,REASON_EFFECT)
 end

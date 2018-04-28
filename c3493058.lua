@@ -22,14 +22,14 @@ function c3493058.activate(e,tp,eg,ep,ev,re,r,rp)
 	if dc==1 or dc==6 then
 		Duel.Damage(tp,1000,REASON_EFFECT)
 	elseif dc==5 then
-		local g=Duel.GetMatchingGroup(c3493058.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,e:GetHandler())
+		local g=Duel.GetMatchingGroup(c3493058.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e))
 		if g:GetCount()<2 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local dg=g:Select(tp,2,2,nil)
 		Duel.Destroy(dg,REASON_EFFECT)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local g=Duel.SelectMatchingCard(tp,c3493058.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetHandler())
+		local g=Duel.SelectMatchingCard(tp,c3493058.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,aux.ExceptThisCard(e))
 		Duel.Destroy(g,REASON_EFFECT)
 	end
 end

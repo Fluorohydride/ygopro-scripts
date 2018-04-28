@@ -48,7 +48,7 @@ function c67231737.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c67231737.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local gc=Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_MZONE,0,c,TYPE_LINK)
+	local gc=Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_MZONE,0,aux.ExceptThisCard(e),TYPE_LINK)
 	if gc==0 then return end
 	local a=Duel.GetAttacker()
 	if a:IsRelateToBattle() and a:IsFaceup() then

@@ -51,9 +51,7 @@ function c68299524.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c68299524.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local exc=c
-	if not exc:IsRelateToEffect(e) then exc=nil end
-	local g=Duel.GetMatchingGroup(c68299524.filter,tp,LOCATION_MZONE,LOCATION_MZONE,exc)
+	local g=Duel.GetMatchingGroup(c68299524.filter,tp,LOCATION_MZONE,LOCATION_MZONE,aux.ExceptThisCard(e))
 	local tc=g:GetFirst()
 	local val=e:GetLabel()
 	while tc do

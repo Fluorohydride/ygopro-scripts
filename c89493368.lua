@@ -69,20 +69,37 @@ function c89493368.naop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.NegateAttack()
 	end
 end
-function c89493368.spcfilter(c,code)
-	return c:IsCode(code) and c:IsAbleToGraveAsCost()
+function c89493368.spcostfilter(c)
+	return c:IsAbleToGraveAsCost() and c:IsCode(15175429,52286175)
+end
+function c89493368.spcost_selector(c,tp,g,sg,i)
+	sg:AddCard(c)
+	g:RemoveCard(c)
+	local flag=false
+	if i<2 then
+		flag=g:IsExists(c89493368.spcost_selector,1,nil,tp,g,sg,i+1)
+	else
+		flag=Duel.GetMZoneCount(tp,sg,tp)>-1
+			and sg:FilterCount(Card.IsCode,nil,15175429)>0
+			and sg:FilterCount(Card.IsCode,nil,52286175)>0
+	end
+	sg:RemoveCard(c)
+	g:AddCard(c)
+	return flag
 end
 function c89493368.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-3 and e:GetHandler():IsAbleToGraveAsCost()
-		and Duel.IsExistingMatchingCard(c89493368.spcfilter,tp,LOCATION_ONFIELD,0,1,nil,15175429)
-		and Duel.IsExistingMatchingCard(c89493368.spcfilter,tp,LOCATION_ONFIELD,0,1,nil,52286175) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,c89493368.spcfilter,tp,LOCATION_ONFIELD,0,1,1,nil,15175429)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectMatchingCard(tp,c89493368.spcfilter,tp,LOCATION_ONFIELD,0,1,1,nil,52286175)
-	g1:Merge(g2)
-	g1:AddCard(e:GetHandler())
-	Duel.SendtoGrave(g1,REASON_COST)
+	local c=e:GetHandler()
+	local g=Duel.GetMatchingGroup(c89493368.spcostfilter,tp,LOCATION_ONFIELD,0,c)
+	local sg=Group.CreateGroup()
+	if chk==0 then return c:IsAbleToGraveAsCost() and g:IsExists(c89493368.spcost_selector,1,nil,tp,g,sg,1) end
+	for i=1,2 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+		local g1=g:FilterSelect(tp,c89493368.spcost_selector,1,1,nil,tp,g,sg,i)
+		sg:Merge(g1)
+		g:Sub(g1)
+	end
+	sg:AddCard(c)
+	Duel.SendtoGrave(sg,REASON_COST)
 end
 function c89493368.spfilter(c,e,tp)
 	return c:IsCode(16898077) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)

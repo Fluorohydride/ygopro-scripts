@@ -29,42 +29,63 @@ function c99365553.initial_effect(c)
 	e3:SetOperation(c99365553.spop3)
 	c:RegisterEffect(e3)
 end
-function c99365553.spfilter1(c,att)
-	return c:IsAttribute(att) and c:IsAbleToRemoveAsCost()
+function c99365553.spcostfilter1(c)
+	return c:IsAbleToRemoveAsCost() and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
+end
+function c99365553.spcostfilter2(c)
+	return c:IsAbleToGraveAsCost() and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
+end
+function c99365553.spcost_selector(c,tp,g,sg,i)
+	sg:AddCard(c)
+	g:RemoveCard(c)
+	local flag=false
+	if i<2 then
+		flag=g:IsExists(c99365553.spcost_selector,1,nil,tp,g,sg,i+1)
+	else
+		flag=sg:FilterCount(Card.IsAttribute,nil,ATTRIBUTE_LIGHT)>0
+			and sg:FilterCount(Card.IsAttribute,nil,ATTRIBUTE_DARK)>0
+	end
+	sg:RemoveCard(c)
+	g:AddCard(c)
+	return flag
 end
 function c99365553.spcon1(e,c)
 	if c==nil then return true end
+	if Duel.GetMZoneCount(tp)<=0 then return false end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c99365553.spfilter1,tp,LOCATION_GRAVE,0,1,nil,ATTRIBUTE_LIGHT)
-		and Duel.IsExistingMatchingCard(c99365553.spfilter1,tp,LOCATION_GRAVE,0,1,nil,ATTRIBUTE_DARK)
+	local g=Duel.GetMatchingGroup(c99365553.spcostfilter1,tp,LOCATION_GRAVE,0,nil)
+	local sg=Group.CreateGroup()
+	return g:IsExists(c99365553.spcost_selector,1,nil,tp,g,sg,1)
 end
 function c99365553.spop1(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectMatchingCard(tp,c99365553.spfilter1,tp,LOCATION_GRAVE,0,1,1,nil,ATTRIBUTE_LIGHT)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=Duel.SelectMatchingCard(tp,c99365553.spfilter1,tp,LOCATION_GRAVE,0,1,1,nil,ATTRIBUTE_DARK)
-	g1:Merge(g2)
-	Duel.Remove(g1,POS_FACEUP,REASON_COST)
-end
-function c99365553.spfilter2(c,att)
-	return c:IsAttribute(att) and c:IsAbleToGraveAsCost()
+	local g=Duel.GetMatchingGroup(c99365553.spcostfilter1,tp,LOCATION_GRAVE,0,nil)
+	local sg=Group.CreateGroup()
+	for i=1,2 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+		local g1=g:FilterSelect(tp,c99365553.spcost_selector,1,1,nil,tp,g,sg,i)
+		sg:Merge(g1)
+		g:Sub(g1)
+	end
+	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c99365553.spcon2(e,c)
 	if c==nil then return true end
-	if c:IsHasEffect(EFFECT_NECRO_VALLEY) then return false end
+	if c:IsHasEffect(EFFECT_NECRO_VALLEY) or Duel.GetMZoneCount(tp)<=0 then return false end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c99365553.spfilter2,tp,LOCATION_HAND,0,1,nil,ATTRIBUTE_LIGHT)
-		and Duel.IsExistingMatchingCard(c99365553.spfilter2,tp,LOCATION_HAND,0,1,nil,ATTRIBUTE_DARK)
+	local g=Duel.GetMatchingGroup(c99365553.spcostfilter2,tp,LOCATION_HAND,0,nil)
+	local sg=Group.CreateGroup()
+	return g:IsExists(c99365553.spcost_selector,1,nil,tp,g,sg,1)
 end
 function c99365553.spop2(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,c99365553.spfilter2,tp,LOCATION_HAND,0,1,1,nil,ATTRIBUTE_LIGHT)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectMatchingCard(tp,c99365553.spfilter2,tp,LOCATION_HAND,0,1,1,nil,ATTRIBUTE_DARK)
-	g1:Merge(g2)
-	Duel.SendtoGrave(g1,REASON_COST)
+	local g=Duel.GetMatchingGroup(c99365553.spcostfilter2,tp,LOCATION_HAND,0,nil)
+	local sg=Group.CreateGroup()
+	for i=1,2 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+		local g1=g:FilterSelect(tp,c99365553.spcost_selector,1,1,nil,tp,g,sg,i)
+		sg:Merge(g1)
+		g:Sub(g1)
+	end
+	Duel.SendtoGrave(sg,REASON_COST)
 end
 function c99365553.spcon3(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)

@@ -59,8 +59,6 @@ function c94092230.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c94092230.desop(e,tp,eg,ep,ev,re,r,rp)
-	local exc=e:GetHandler()
-	if not exc:IsRelateToEffect(e) then exc=nil end
-	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,exc)
+	local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e))
 	Duel.Destroy(g,REASON_EFFECT)
 end

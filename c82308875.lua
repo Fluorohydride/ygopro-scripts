@@ -51,9 +51,7 @@ function c82308875.operation(e,tp,eg,ep,ev,re,r,rp)
 		elseif not b1 and b2 and b3 then op=Duel.SelectOption(tp,aux.Stringid(82308875,2),aux.Stringid(82308875,3))+1
 		else op=Duel.SelectOption(tp,aux.Stringid(82308875,1),aux.Stringid(82308875,2),aux.Stringid(82308875,3)) end
 		if op==0 then
-			local exc=c
-			if not exc:IsRelateToEffect(e) then exc=nil end
-			local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,exc)
+			local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e))
 			Duel.SendtoGrave(g,REASON_EFFECT)
 		elseif op==1 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

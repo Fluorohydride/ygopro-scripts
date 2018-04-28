@@ -37,9 +37,7 @@ function c92970404.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,g:GetCount(),0,0)
 end
 function c92970404.operation(e,tp,eg,ep,ev,re,r,rp)
-	local exc=e:GetHandler()
-	if not exc:IsRelateToEffect(e) then exc=nil end
-	local g=Duel.GetMatchingGroup(Card.IsCanTurnSet,tp,LOCATION_MZONE,LOCATION_MZONE,exc)
+	local g=Duel.GetMatchingGroup(Card.IsCanTurnSet,tp,LOCATION_MZONE,LOCATION_MZONE,aux.ExceptThisCard(e))
 	Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
 end
 function c92970404.cfilter(c,tp)

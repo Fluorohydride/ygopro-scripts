@@ -49,8 +49,7 @@ function c88177324.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c88177324.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local exc=c
-	if not exc:IsRelateToEffect(e) then exc=nil end
+	local exc=aux.ExceptThisCard(e)
 	local g=Duel.GetMatchingGroup(c88177324.filter3,tp,LOCATION_MZONE,LOCATION_MZONE,exc)
 	local tc=g:GetFirst()
 	while tc do

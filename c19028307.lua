@@ -15,38 +15,39 @@ function c19028307.initial_effect(c)
 	e2:SetCode(EFFECT_NO_BATTLE_DAMAGE)
 	c:RegisterEffect(e2)
 end
-function c19028307.spfilter(c,rac)
-	return c:IsRace(rac) and c:IsAbleToRemoveAsCost() and (not c:IsLocation(LOCATION_MZONE) or c:IsFaceup())
+function c19028307.spcostfilter(c)
+	return c:IsAbleToRemoveAsCost() and c:IsRace(RACE_BEASTWARRIOR+RACE_MACHINE) and (not c:IsLocation(LOCATION_MZONE) or c:IsFaceup())
+end
+function c19028307.spcost_selector(c,tp,g,sg,i)
+	sg:AddCard(c)
+	g:RemoveCard(c)
+	local flag=false
+	if i<2 then
+		flag=g:IsExists(c19028307.spcost_selector,1,nil,tp,g,sg,i+1)
+	else
+		flag=Duel.GetMZoneCount(tp,sg,tp)>0
+			and sg:FilterCount(Card.IsRace,nil,RACE_BEASTWARRIOR)>0
+			and sg:FilterCount(Card.IsRace,nil,RACE_MACHINE)>0
+	end
+	sg:RemoveCard(c)
+	g:AddCard(c)
+	return flag
 end
 function c19028307.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local n=0
-	if Duel.IsExistingMatchingCard(c19028307.spfilter,tp,LOCATION_MZONE,0,1,c,RACE_BEASTWARRIOR) then n=n-1 end
-	if Duel.IsExistingMatchingCard(c19028307.spfilter,tp,LOCATION_MZONE,0,1,c,RACE_MACHINE) then n=n-1 end
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>n
-		and Duel.IsExistingMatchingCard(c19028307.spfilter,tp,0x16,0,1,c,RACE_BEASTWARRIOR)
-		and Duel.IsExistingMatchingCard(c19028307.spfilter,tp,0x16,0,1,c,RACE_MACHINE)
+	local g=Duel.GetMatchingGroup(c19028307.spcostfilter,tp,LOCATION_MZONE+LOCATION_HAND+LOCATION_GRAVE,0,nil)
+	local sg=Group.CreateGroup()
+	return g:IsExists(c19028307.spcost_selector,1,nil,tp,g,sg,1)
 end
 function c19028307.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g1=nil
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft~=0 then
-		local loc=0x16
-		if ft<0 then loc=LOCATION_MZONE end
+	local g=Duel.GetMatchingGroup(c19028307.spcostfilter,tp,LOCATION_MZONE+LOCATION_HAND+LOCATION_GRAVE,0,nil)
+	local sg=Group.CreateGroup()
+	for i=1,2 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		g1=Duel.SelectMatchingCard(tp,c19028307.spfilter,tp,loc,0,1,1,c,RACE_BEASTWARRIOR)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g2=Duel.SelectMatchingCard(tp,c19028307.spfilter,tp,loc,0,1,1,c,RACE_MACHINE)
-		g1:Merge(g2)
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		g1=Duel.SelectMatchingCard(tp,c19028307.spfilter,tp,LOCATION_MZONE,0,1,1,c,RACE_BEASTWARRIOR+RACE_MACHINE)
-		local rc=RACE_BEASTWARRIOR
-		if g1:GetFirst():IsRace(RACE_BEASTWARRIOR) then rc=RACE_MACHINE end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g2=Duel.SelectMatchingCard(tp,c19028307.spfilter,tp,0x16,0,1,1,c,rc)
-		g1:Merge(g2)
+		local g1=g:FilterSelect(tp,c19028307.spcost_selector,1,1,nil,tp,g,sg,i)
+		sg:Merge(g1)
+		g:Sub(g1)
 	end
-	Duel.Remove(g1,POS_FACEUP,REASON_COST)
+	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
