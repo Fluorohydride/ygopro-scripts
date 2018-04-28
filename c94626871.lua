@@ -32,7 +32,10 @@ function c94626871.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c94626871.cfilter,1,nil,tp,e:GetHandler():GetLinkedZone())
 end
 function c94626871.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,0,94626871)
+	if Duel.GetFlagEffect(1-tp,94626871)==0 then
+		Duel.RegisterFlagEffect(1-tp,94626871,RESET_PHASE+PHASE_END,0,0)
+		Duel.Hint(HINT_CARD,0,94626871)
+	end
 	Duel.Damage(1-tp,200,REASON_EFFECT)
 end
 function c94626871.atkcon(e,tp,eg,ep,ev,re,r,rp)
