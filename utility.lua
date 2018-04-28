@@ -868,9 +868,9 @@ function Auxiliary.XyzLevelFreeCondition2(f,gf,minct,maxct,alterf,desc,op)
 				local tp=c:GetControler()
 				local mg=nil
 				if og then
-					mg=og:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
+					mg=og
 				else
-					mg=Duel.GetMatchingGroup(Auxiliary.XyzLevelFreeFilter,tp,LOCATION_MZONE,0,nil,c,f)
+					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
 				local altg=mg:Filter(Auxiliary.XyzAlterFilter,nil,alterf,c,e,tp,op):Filter(Auxiliary.MustMaterialCheck,nil,tp,EFFECT_MUST_BE_XMATERIAL)
 				if (not min or min<=1) and altg:GetCount()>0 then
@@ -905,9 +905,9 @@ function Auxiliary.XyzLevelFreeTarget2(f,gf,minct,maxct,alterf,desc,op)
 				end
 				local mg=nil
 				if og then
-					mg=og:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
+					mg=og
 				else
-					mg=Duel.GetMatchingGroup(Auxiliary.XyzLevelFreeFilter,tp,LOCATION_MZONE,0,nil,c,f)
+					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
 				local g=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
 				local ct=g:GetCount()
