@@ -159,6 +159,9 @@ function c35371948.damcon2(e,tp,eg,ep,ev,re,r,rp)
 		and re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0xfb)
 end
 function c35371948.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,0,35371948)
+	if Duel.GetFlagEffect(1-tp,35371948)==0 then
+		Duel.RegisterFlagEffect(1-tp,35371948,RESET_PHASE+PHASE_END,0,0)
+		Duel.Hint(HINT_CARD,0,35371948)
+	end
 	Duel.Damage(1-tp,200,REASON_EFFECT)
 end
