@@ -26,7 +26,7 @@ function c56840427.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c56840427.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.GetLP(tp)<=1000 then return end
+	if Duel.GetLP(tp)>1000 then return end
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
