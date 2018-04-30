@@ -124,7 +124,7 @@ function c80896940.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c80896940.mfilter(c)
-	return c:IsType(TYPE_PENDULUM) and c:IsSummonType(SUMMON_TYPE_PENDULUM) and c:IsType(TYPE_TUNER)
+	return c:IsType(TYPE_PENDULUM) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c80896940.valcheck(e,c)
 	local g=c:GetMaterial()
