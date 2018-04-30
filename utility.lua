@@ -425,9 +425,6 @@ end
 function Auxiliary.SynMixOperation(f1,f2,f3,f4,minct,maxc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,smat,mg)
 				local g=e:GetLabelObject()
-				if not g:IsExists(Card.IsType,1,nil,TYPE_TUNER) and c:IsHasEffect(80896940) then
-					c:RegisterFlagEffect(80896940,RESET_EVENT+0x1fe0000,0,1)
-				end
 				c:SetMaterial(g)
 				Duel.SendtoGrave(g,REASON_MATERIAL+REASON_SYNCHRO)
 				g:DeleteGroup()
