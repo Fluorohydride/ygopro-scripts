@@ -128,11 +128,17 @@ function c80896940.mfilter(c)
 end
 function c80896940.valcheck(e,c)
 	local g=c:GetMaterial()
-	if c:GetFlagEffect(80896940)~=0 or g:IsExists(c80896940.mfilter,1,nil) then
-		e:GetLabelObject():SetLabel(1)
-	else
-		e:GetLabelObject():SetLabel(0)
+	local tg=g:Filter(c80896940.mfilter,nil)
+	for tc in aux.Next(tg) do
+		g:RemoveCard(tc)
+		local flag=g:FilterCount(aux.NonTuner(Card.IsType,TYPE_SYNCHRO),nil)==g:GetCount()
+		g:AddCard(tc)
+		if flag then
+			e:GetLabelObject():SetLabel(1)
+			return
+		end
 	end
+	e:GetLabelObject():SetLabel(0)
 end
 function c80896940.lpop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SetLP(1-tp,math.ceil(Duel.GetLP(1-tp)/2))
