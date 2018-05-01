@@ -60,7 +60,7 @@ function c94703021.tktg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c94703021.tkop2(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerCanSpecialSummonMonster(tp,94703022,0,0x4011,0,0,1,RACE_CYBERSE,ATTRIBUTE_DARK) then return end
-	local ct=math.min(Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_MZONE,nil,TYPE_LINK),Duel.GetLocationCount(tp,LOCATION_MZONE))
+	local ct=math.min(Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_MZONE,nil,TYPE_LINK),(Duel.GetLocationCount(tp,LOCATION_MZONE)))
 	if ct<1 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 	repeat

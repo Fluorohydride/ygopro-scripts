@@ -24,7 +24,7 @@ function c31548814.spfilter(c,e,tp)
 end
 function c31548814.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local ft=math.min(Duel.GetLocationCount(tp,LOCATION_MZONE),3)
+		local ft=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),3)
 		if ft>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 		local g=Duel.GetMatchingGroup(c31548814.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 		return ft>0 and g:CheckWithSumEqual(Card.GetLevel,8,1,ft)
@@ -32,7 +32,7 @@ function c31548814.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c31548814.activate(e,tp,eg,ep,ev,re,r,rp)
-	local ft=math.min(Duel.GetLocationCount(tp,LOCATION_MZONE),3)
+	local ft=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),3)
 	if ft>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local g=Duel.GetMatchingGroup(c31548814.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 	if ft<=0 or g:GetCount()==0 then return end

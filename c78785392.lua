@@ -45,7 +45,7 @@ function c78785392.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c78785392.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local ct=math.min(4,Duel.GetLocationCount(tp,LOCATION_MZONE))
+	local ct=math.min(4,(Duel.GetLocationCount(tp,LOCATION_MZONE)))
 	local g=Duel.GetMatchingGroup(c78785392.filter,tp,LOCATION_DECK,0,nil,e,tp)
 	if not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and ct>3 and g:GetClassCount(Card.GetCode)>3 then

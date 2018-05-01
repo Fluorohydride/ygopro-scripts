@@ -47,11 +47,11 @@ function c41114306.spfilter(c,e,tp)
 end
 function c41114306.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c41114306.spfilter(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
+	if chk==0 then return Duel.GetMZoneCount(tp,e:GetHandler(),tp)>0
 		and Duel.IsExistingTarget(c41114306.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	local ft=2
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-	ft=math.min(ft,Duel.GetLocationCount(tp,LOCATION_MZONE)+1)
+	ft=math.min(ft,(Duel.GetMZoneCount(tp,e:GetHandler(),tp)))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c41114306.spfilter,tp,LOCATION_GRAVE,0,1,ft,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,g:GetCount(),0,0)

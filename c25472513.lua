@@ -27,7 +27,7 @@ function c25472513.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 end
 function c25472513.spop(e,tp,eg,ep,ev,re,r,rp)
-	local ft=math.min(Duel.GetLocationCount(tp,LOCATION_MZONE),4)
+	local ft=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),4)
 	if ft>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	if ft<=0 then return end
 	local c=e:GetHandler()

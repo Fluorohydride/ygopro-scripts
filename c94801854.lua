@@ -55,7 +55,7 @@ function c94801854.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c94801854.spfilter2(chkc,e,tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c94801854.spfilter2,tp,LOCATION_REMOVED,0,1,nil,e,tp) end
-	local ct=math.min(2,Duel.GetLocationCount(tp,LOCATION_MZONE))
+	local ct=math.min(2,(Duel.GetLocationCount(tp,LOCATION_MZONE)))
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) or not Duel.IsEnvironment(40005099) then ct=1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c94801854.spfilter2,tp,LOCATION_REMOVED,0,1,ct,nil,e,tp)

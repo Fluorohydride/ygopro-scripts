@@ -57,7 +57,7 @@ function c25451652.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Duel.GetMatchingGroup(c25451652.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,nil,e,tp)
 	local ct=5
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
-	ct=math.min(ct,g1:GetCount(),Duel.GetLocationCount(tp,LOCATION_MZONE))
+	ct=math.min(ct,g1:GetCount(),(Duel.GetLocationCount(tp,LOCATION_MZONE)))
 	if ct>0 and g2:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=g2:Select(tp,1,ct,nil)

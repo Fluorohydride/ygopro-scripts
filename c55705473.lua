@@ -59,7 +59,7 @@ end
 function c55705473.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=2
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
-	ct=math.min(ct,Duel.GetLocationCount(tp,LOCATION_MZONE))
+	ct=math.min(ct,(Duel.GetLocationCount(tp,LOCATION_MZONE)))
 	if ct<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c55705473.spfilter,tp,LOCATION_DECK,0,1,ct,nil,e,tp)
