@@ -533,7 +533,7 @@ end
 function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,op)
 	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0 and (not op or op(e,tp,0,c))
 end
-function Auxiliary.CanPlayerXyzSummonCardWithoutMaterial(xc,tp)
+function Auxiliary.CanPlayerXyzSummonCardWithoutMaterial(tp)
 	return Duel.IsPlayerAffectedByEffect(tp,67120578)==nil
 end
 --Xyz monster, lv k*n
