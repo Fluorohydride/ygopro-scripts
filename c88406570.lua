@@ -57,7 +57,7 @@ function c88406570.spop(e,tp,eg,ep,ev,re,r,rp)
 		if g1:GetCount()>0 then
 			local ct=Duel.SpecialSummon(g1,0,1-tp,1-tp,false,false,POS_FACEUP)
 			local zone=c:GetLinkedZone(tp)
-			ct=math.min(Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone),ct)
+			ct=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)),ct)
 			if zone~=0 and ct>0 and c:IsRelateToEffect(e) then
 				if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
