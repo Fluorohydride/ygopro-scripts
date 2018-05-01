@@ -66,8 +66,7 @@ function c80896940.initial_effect(c)
 	c:RegisterEffect(e7)
 end
 function c80896940.matfilter1(c)
-	return c:IsType(TYPE_TUNER)
-		or (c:IsType(TYPE_PENDULUM) and c:IsSummonType(SUMMON_TYPE_PENDULUM) and c:IsNotTuner())
+	return c:IsType(TYPE_TUNER) or (c:IsType(TYPE_PENDULUM) and c:IsSummonType(SUMMON_TYPE_PENDULUM))
 end
 function c80896940.indcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
@@ -124,15 +123,21 @@ function c80896940.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c80896940.mfilter(c)
-	return c:IsType(TYPE_PENDULUM) and c:IsSummonType(SUMMON_TYPE_PENDULUM) and c:IsType(TYPE_TUNER)
+	return c:IsType(TYPE_PENDULUM) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c80896940.valcheck(e,c)
 	local g=c:GetMaterial()
-	if c:GetFlagEffect(80896940)~=0 or g:IsExists(c80896940.mfilter,1,nil) then
-		e:GetLabelObject():SetLabel(1)
-	else
-		e:GetLabelObject():SetLabel(0)
+	local tg=g:Filter(c80896940.mfilter,nil)
+	for tc in aux.Next(tg) do
+		g:RemoveCard(tc)
+		local flag=g:FilterCount(aux.NonTuner(Card.IsType,TYPE_SYNCHRO),nil)==g:GetCount()
+		g:AddCard(tc)
+		if flag then
+			e:GetLabelObject():SetLabel(1)
+			return
+		end
 	end
+	e:GetLabelObject():SetLabel(0)
 end
 function c80896940.lpop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SetLP(1-tp,math.ceil(Duel.GetLP(1-tp)/2))
