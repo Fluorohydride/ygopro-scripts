@@ -63,7 +63,8 @@ function c23998625.spcon(e,tp,eg,ep,ev,re,r,rp)
 		and c:IsLocation(LOCATION_GRAVE)
 end
 function c23998625.spfilter(c,e,tp)
-	return c:IsCode(97403510) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
+	return c:IsCode(97403510) and e:GetHandler():IsCanBeXyzMaterial(c)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
 end
 function c23998625.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
