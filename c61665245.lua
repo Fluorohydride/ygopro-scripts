@@ -78,18 +78,38 @@ function c61665245.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local zone={}
 	zone[0]=c:GetLinkedZone(0)
 	zone[1]=c:GetLinkedZone(1)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone[tp])<=0
-		and Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone[1-tp])<=0 then return end
+	local ft={}
+	flag={}
+	for p=0,1 do
+		zone[p]=c:GetLinkedZone(p)
+		ft[p],flag[p]=Duel.GetLocationCount(p,LOCATION_MZONE,p,LOCATION_REASON_TOFIELD,zone[p])
+		flag[p]=(~flag[p])&0x7f
+	end
+	if ft[0]<=0 and ft[1]<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c61665245.spfilter3,tp,LOCATION_DECK,0,1,1,nil,e,tp,tc:GetRace())
 	local tc=g:GetFirst()
 	if tc then
-		local sump=tp
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE,1-tp,zone[1-tp])
-			and (not tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE,tp,zone[tp]) or Duel.SelectYesNo(tp,aux.Stringid(61665245,2))) then
-			sump=1-tp
+		local ava_zone=0
+		local ava_zone_rev=0x00ff00ff
+		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE,tp,zone[tp]) then
+			ava_zone=ava_zone|flag[tp]
+			ava_zone_rev=ava_zone_rev&(~flag[tp])
 		end
-		if Duel.SpecialSummonStep(tc,0,tp,sump,false,false,POS_FACEUP_DEFENSE,zone[sump]) then
+		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE,1-tp,zone[1-tp]) then
+			ava_zone=ava_zone|(flag[1-tp]<<16)
+			ava_zone_rev=ava_zone_rev&(~(flag[1-tp]<<16))
+		end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
+		local sel_zone=Duel.SelectDisableField(tp,1,LOCATION_MZONE,LOCATION_MZONE,ava_zone_rev)
+		local sump=0
+		if sel_zone&0xff>0 then
+			sump=tp
+		else
+			sump=1-tp
+			sel_zone=sel_zone>>16
+		end
+		if Duel.SpecialSummonStep(tc,0,tp,sump,false,false,POS_FACEUP_DEFENSE,sel_zone) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_DISABLE)
