@@ -50,6 +50,6 @@ function c77778835.desfilter(c,rc)
 	return rc:IsHasCardTarget(c)
 end
 function c77778835.desop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c77778835.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,aux.ExceptThisCard(e))
+	local g=Duel.GetMatchingGroup(c77778835.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,e:GetHandler())
 	Duel.Destroy(g,REASON_EFFECT)
 end
