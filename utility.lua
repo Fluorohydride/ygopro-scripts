@@ -265,7 +265,10 @@ function Auxiliary.GetMustMaterialGroup(tp,code)
 end
 function Auxiliary.MustMaterialCheck(v,tp,code)
 	local g=Auxiliary.GetMustMaterialGroup(tp,code)
-	if not v then return #g==0 end
+	if not v then
+		if code==EFFECT_MUST_BE_XMATERIAL and Duel.IsPlayerAffectedByEffect(tp,67120578) then return false end
+		return #g==0
+	end
 	local t=Auxiliary.GetValueType(v)
 	for tc in Auxiliary.Next(g) do
 		if (t=="Card" and v~=tc)
@@ -532,9 +535,6 @@ function Auxiliary.TuneMagicianCheckX(c,sg,ecode)
 end
 function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,op)
 	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0 and (not op or op(e,tp,0,c))
-end
-function Auxiliary.CanPlayerXyzSummonCardWithoutMaterial(tp)
-	return Duel.IsPlayerAffectedByEffect(tp,67120578)==nil and Auxiliary.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_XMATERIAL)
 end
 --Xyz monster, lv k*n
 function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,desc,maxct,op)
