@@ -332,16 +332,16 @@ function Auxiliary.AddSynchroProcedure2(c,f1,f2)
 	Auxiliary.AddSynchroProcedure(c,f1,f2,1,1)
 end
 --Synchro monster, f1~f3 each 1 MONSTER + f4 min to max monsters
-function Auxiliary.AddSynchroMixProcedure(c,f1,f2,f3,f4,minc,maxc)
+function Auxiliary.AddSynchroMixProcedure(c,f1,f2,f3,f4,minc,maxc,gc)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1164)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetRange(LOCATION_EXTRA)
-	e1:SetCondition(Auxiliary.SynMixCondition(f1,f2,f3,f4,minc,maxc))
-	e1:SetTarget(Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc))
-	e1:SetOperation(Auxiliary.SynMixOperation(f1,f2,f3,f4,minc,maxc))
+	e1:SetCondition(Auxiliary.SynMixCondition(f1,f2,f3,f4,minc,maxc,gc))
+	e1:SetTarget(Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc))
+	e1:SetOperation(Auxiliary.SynMixOperation(f1,f2,f3,f4,minc,maxc,gc))
 	e1:SetValue(SUMMON_TYPE_SYNCHRO)
 	c:RegisterEffect(e1)
 end
@@ -362,7 +362,7 @@ function Auxiliary.GetSynMaterials(tp,syncard)
 	end
 	return mg
 end
-function Auxiliary.SynMixCondition(f1,f2,f3,f4,minc,maxc)
+function Auxiliary.SynMixCondition(f1,f2,f3,f4,minc,maxc,gc)
 	return	function(e,c,smat,mg1)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
@@ -374,10 +374,10 @@ function Auxiliary.SynMixCondition(f1,f2,f3,f4,minc,maxc)
 					mg=Auxiliary.GetSynMaterials(tp,c)
 				end
 				if smat~=nil then mg:AddCard(smat) end
-				return mg:IsExists(Auxiliary.SynMixFilter1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat)
+				return mg:IsExists(Auxiliary.SynMixFilter1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc)
 			end
 end
-function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc)
+function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,smat,mg1)
 				local g=Group.CreateGroup()
 				local mg
@@ -388,15 +388,15 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc)
 				end
 				if smat~=nil then mg:AddCard(smat) end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-				local c1=mg:FilterSelect(tp,Auxiliary.SynMixFilter1,1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat):GetFirst()
+				local c1=mg:FilterSelect(tp,Auxiliary.SynMixFilter1,1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc):GetFirst()
 				g:AddCard(c1)
 				if f2 then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-					local c2=mg:FilterSelect(tp,Auxiliary.SynMixFilter2,1,1,c1,f2,f3,f4,minc,maxc,c,mg,smat,c1):GetFirst()
+					local c2=mg:FilterSelect(tp,Auxiliary.SynMixFilter2,1,1,c1,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc):GetFirst()
 					g:AddCard(c2)
 					if f3 then
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-						local c3=mg:FilterSelect(tp,Auxiliary.SynMixFilter3,1,1,Group.FromCards(c1,c2),f3,f4,minc,maxc,c,mg,smat,c1,c2):GetFirst()
+						local c3=mg:FilterSelect(tp,Auxiliary.SynMixFilter3,1,1,Group.FromCards(c1,c2),f3,f4,minc,maxc,c,mg,smat,c1,c2,gc):GetFirst()
 						g:AddCard(c3)
 					end
 				end
@@ -406,10 +406,10 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc)
 					if f4 then
 						mg2=mg2:Filter(f4,nil)
 					end
-					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat)
+					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc)
 					if cg:GetCount()==0 then break end
 					local minct=1
-					if Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat) then
+					if Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc) then
 						minct=0
 					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
@@ -425,7 +425,7 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc)
 				else return false end
 			end
 end
-function Auxiliary.SynMixOperation(f1,f2,f3,f4,minct,maxc)
+function Auxiliary.SynMixOperation(f1,f2,f3,f4,minct,maxc,gc)
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,smat,mg)
 				local g=e:GetLabelObject()
 				c:SetMaterial(g)
@@ -433,24 +433,24 @@ function Auxiliary.SynMixOperation(f1,f2,f3,f4,minct,maxc)
 				g:DeleteGroup()
 			end
 end
-function Auxiliary.SynMixFilter1(c,f1,f2,f3,f4,minc,maxc,syncard,mg,smat)
-	return (not f1 or f1(c)) and mg:IsExists(Auxiliary.SynMixFilter2,1,c,f2,f3,f4,minc,maxc,syncard,mg,smat,c)
+function Auxiliary.SynMixFilter1(c,f1,f2,f3,f4,minc,maxc,syncard,mg,smat,gc)
+	return (not f1 or f1(c)) and mg:IsExists(Auxiliary.SynMixFilter2,1,c,f2,f3,f4,minc,maxc,syncard,mg,smat,c,gc)
 end
-function Auxiliary.SynMixFilter2(c,f2,f3,f4,minc,maxc,syncard,mg,smat,c1)
+function Auxiliary.SynMixFilter2(c,f2,f3,f4,minc,maxc,syncard,mg,smat,c1,gc)
 	if f2 then
-		return f2(c) and mg:IsExists(Auxiliary.SynMixFilter3,1,Group.FromCards(c1,c),f3,f4,minc,maxc,syncard,mg,smat,c1,c)
+		return f2(c) and mg:IsExists(Auxiliary.SynMixFilter3,1,Group.FromCards(c1,c),f3,f4,minc,maxc,syncard,mg,smat,c1,c,gc)
 	else
-		return mg:IsExists(Auxiliary.SynMixFilter4,1,c1,f4,minc,maxc,syncard,mg,smat,c1,nil,nil)
+		return mg:IsExists(Auxiliary.SynMixFilter4,1,c1,f4,minc,maxc,syncard,mg,smat,c1,nil,nil,gc)
 	end
 end
-function Auxiliary.SynMixFilter3(c,f3,f4,minc,maxc,syncard,mg,smat,c1,c2)
+function Auxiliary.SynMixFilter3(c,f3,f4,minc,maxc,syncard,mg,smat,c1,c2,gc)
 	if f3 then
-		return f3(c) and mg:IsExists(Auxiliary.SynMixFilter4,1,Group.FromCards(c1,c2,c),f3,f4,minc,maxc,syncard,mg,smat,c1,c2)
+		return f3(c) and mg:IsExists(Auxiliary.SynMixFilter4,1,Group.FromCards(c1,c2,c),f3,f4,minc,maxc,syncard,mg,smat,c1,c2,gc)
 	else
-		return mg:IsExists(Auxiliary.SynMixFilter4,1,Group.FromCards(c1,c2),f4,minc,maxc,syncard,mg,smat,c1,c2,nil)
+		return mg:IsExists(Auxiliary.SynMixFilter4,1,Group.FromCards(c1,c2),f4,minc,maxc,syncard,mg,smat,c1,c2,nil,gc)
 	end
 end
-function Auxiliary.SynMixFilter4(c,f4,minc,maxc,syncard,mg1,smat,c1,c2,c3)
+function Auxiliary.SynMixFilter4(c,f4,minc,maxc,syncard,mg1,smat,c1,c2,c3,gc)
 	if f4 and not f4(c) then return false end
 	local sg=Group.FromCards(c1,c)
 	sg:AddCard(c1)
@@ -460,32 +460,33 @@ function Auxiliary.SynMixFilter4(c,f4,minc,maxc,syncard,mg1,smat,c1,c2,c3)
 	if f4 then
 		mg=mg:Filter(f4,nil)
 	end
-	return aux.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,smat)
+	return aux.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,smat,gc)
 end
-function Auxiliary.SynMixCheck(mg,sg1,minc,maxc,syncard,smat)
+function Auxiliary.SynMixCheck(mg,sg1,minc,maxc,syncard,smat,gc)
 	local tp=syncard:GetControler()
 	for c in aux.Next(sg1) do
 		mg:RemoveCard(c)
 	end
 	local sg=Group.CreateGroup()
-	if minc==0 and Auxiliary.SynMixCheckGoal(tp,sg1,0,0,syncard,sg,smat) then return true end
+	if minc==0 and Auxiliary.SynMixCheckGoal(tp,sg1,0,0,syncard,sg,smat,gc) then return true end
 	if maxc==0 then return false end
-	return mg:IsExists(Auxiliary.SynMixCheckRecursive,1,nil,tp,sg,mg,0,minc,maxc,syncard,sg1,smat)
+	return mg:IsExists(Auxiliary.SynMixCheckRecursive,1,nil,tp,sg,mg,0,minc,maxc,syncard,sg1,smat,gc)
 end
-function Auxiliary.SynMixCheckRecursive(c,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat)
+function Auxiliary.SynMixCheckRecursive(c,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc)
 	sg:AddCard(c)
 	ct=ct+1
-	local res=Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat)
-		or (ct<maxc and mg:IsExists(Auxiliary.SynMixCheckRecursive,1,sg,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat))
+	local res=Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc)
+		or (ct<maxc and mg:IsExists(Auxiliary.SynMixCheckRecursive,1,sg,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc))
 	sg:RemoveCard(c)
 	ct=ct-1
 	return res
 end
-function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat)
+function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc)
 	if ct<minc then return false end
 	local g=sg:Clone()
 	g:Merge(sg1)
 	if Duel.GetLocationCountFromEx(tp,tp,g,syncard)<=0 then return false end
+	if gc and not gc(g) then return false end
 	if smat and not g:IsContains(smat) then return false end
 	if not Auxiliary.MustMaterialCheck(g,tp,EFFECT_MUST_BE_SMATERIAL) then return false end
 	if not g:IsExists(Card.IsType,1,nil,TYPE_TUNER) and not syncard:IsHasEffect(80896940) then return false end
