@@ -2109,7 +2109,7 @@ function Auxiliary.ExceptThisCard(e)
 	if c:IsRelateToEffect(e) then return c else return nil end
 end
 --check .mat_filter
-function Auxiliary.MatFilterCard(c,sumc)
+function Auxiliary.MatFilterCard(sumc,c)
 	return not sumc.mat_filter or sumc.mat_filter(c,sumc)
 end
 function Auxiliary.MatFilterGroup(sumc,mg)

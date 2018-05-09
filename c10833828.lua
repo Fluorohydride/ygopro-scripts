@@ -77,7 +77,7 @@ function c10833828.spfilter3(c,e,tp,m,g,f,chkf)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and g:IsExists(c10833828.spfilter4,1,nil,m,c,chkf)
 end
 function c10833828.spfilter4(c,m,fusc,chkf)
-	if not aux.MatFilterCard(c,fusc) then return false end
+	if not aux.MatFilterCard(fusc,c) then return false end
 	return fusc:CheckFusionMaterial(aux.MatFilterGroup(m,fusc),c,chkf)
 end
 function c10833828.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)

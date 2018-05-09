@@ -71,7 +71,7 @@ function c73511233.spfilter1(c,e)
 	return c73511233.spfilter0(c) and not c:IsImmuneToEffect(e)
 end
 function c73511233.spfilter2(c,e,tp,m,f,gc,chkf)
-	return c:IsType(TYPE_FUSION) and (not f or f(c)) and aux.MatFilterCard(gc,c)
+	return c:IsType(TYPE_FUSION) and (not f or f(c)) and aux.MatFilterCard(c,gc)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(aux.MatFilterGroup(m,c),gc,chkf)
 end
 function c73511233.spfilter3(c)

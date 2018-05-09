@@ -61,7 +61,7 @@ function c60226558.filter1(c,e)
 	return not c:IsImmuneToEffect(e)
 end
 function c60226558.filter2(c,e,tp,m,ec,f,chkf)
-	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x9d) and (not f or f(c)) and aux.MatFilterCard(ec,c)
+	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x9d) and (not f or f(c)) and aux.MatFilterCard(c,ec)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(aux.MatFilterGroup(m,c),ec,chkf)
 end
 function c60226558.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

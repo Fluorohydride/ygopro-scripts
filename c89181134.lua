@@ -35,7 +35,7 @@ function c89181134.filter1(c,e)
 	return not c:IsImmuneToEffect(e)
 end
 function c89181134.filter2(c,e,tp,m,f,gc,chkf)
-	return c:IsType(TYPE_FUSION) and c:IsAttribute(ATTRIBUTE_DARK) and (not f or f(c)) and aux.MatFilterCard(gc,c)
+	return c:IsType(TYPE_FUSION) and c:IsAttribute(ATTRIBUTE_DARK) and (not f or f(c)) and aux.MatFilterCard(c,gc)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(aux.MatFilterGroup(m,c),gc,chkf)
 end
 function c89181134.filter3(c,e)

@@ -26,7 +26,7 @@ function c42002073.filter1(c,e)
 	return c:IsOnField() and not c:IsImmuneToEffect(e)
 end
 function c42002073.filter2(c,e,tp,m,f,gc,chkf)
-	return c:IsType(TYPE_FUSION) and (not f or f(c)) and aux.MatFilterCard(gc,c)
+	return c:IsType(TYPE_FUSION) and (not f or f(c)) and aux.MatFilterCard(c,gc)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(aux.MatFilterGroup(m,c),gc,chkf)
 end
 function c42002073.target(e,tp,eg,ep,ev,re,r,rp,chk)

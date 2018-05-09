@@ -31,7 +31,7 @@ function c36484016.filter2(c,e,tp,m,f,chkf)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and m:IsExists(c36484016.filter3,1,nil,c,m,chkf)
 end
 function c36484016.filter3(c,fusc,m,chkf)
-	if not aux.MatFilterCard(c,fusc) then return false end
+	if not aux.MatFilterCard(fusc,c) then return false end
 	return c:IsType(TYPE_SYNCHRO) and fusc:CheckFusionMaterial(aux.MatFilterGroup(m,fusc),c,chkf)
 end
 function c36484016.filter4(c)
