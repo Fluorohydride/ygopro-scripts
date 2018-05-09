@@ -56,7 +56,10 @@ function c35199656.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(Card.IsControler,1,nil,1-tp)
 end
 function c35199656.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,0,35199656)
+	if Duel.GetFlagEffect(1-tp,35199656)==0 then
+		Duel.RegisterFlagEffect(1-tp,35199656,RESET_PHASE+PHASE_END,0,0)
+		Duel.Hint(HINT_CARD,0,35199656)
+	end
 	local ct=eg:FilterCount(Card.IsControler,nil,1-tp)
 	Duel.Damage(1-tp,ct*200,REASON_EFFECT)
 end

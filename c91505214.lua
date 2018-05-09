@@ -52,6 +52,9 @@ function c91505214.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and c:GetFlagEffect(91505214)~=0
 end
 function c91505214.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,0,91505214)
+	if Duel.GetFlagEffect(1-tp,91505214)==0 then
+		Duel.RegisterFlagEffect(1-tp,91505214,RESET_PHASE+PHASE_END,0,0)
+		Duel.Hint(HINT_CARD,0,91505214)
+	end
 	Duel.Damage(1-tp,200,REASON_EFFECT)
 end

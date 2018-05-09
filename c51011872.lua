@@ -34,7 +34,10 @@ function c51011872.reccon(e,tp,eg,ep,ev,re,r,rp)
 	return lg and eg:IsExists(c51011872.cfilter,1,nil,lg)
 end
 function c51011872.recop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,0,51011872)
+	if Duel.GetFlagEffect(1-tp,51011872)==0 then
+		Duel.RegisterFlagEffect(1-tp,51011872,RESET_PHASE+PHASE_END,0,0)
+		Duel.Hint(HINT_CARD,0,51011872)
+	end
 	Duel.Recover(tp,200,REASON_EFFECT)
 end
 function c51011872.costfilter(c)
