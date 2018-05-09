@@ -31,7 +31,8 @@ function c36484016.filter2(c,e,tp,m,f,chkf)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and m:IsExists(c36484016.filter3,1,nil,c,m,chkf)
 end
 function c36484016.filter3(c,fusc,m,chkf)
-	return c:IsType(TYPE_SYNCHRO) and fusc:CheckFusionMaterial(m,c,chkf)
+	if not aux.MatFilterCard(c,fusc) then return false end
+	return c:IsType(TYPE_SYNCHRO) and fusc:CheckFusionMaterial(aux.MatFilterGroup(m,fusc),c,chkf)
 end
 function c36484016.filter4(c)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
@@ -79,6 +80,7 @@ function c36484016.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
+			mg1=aux.MatFilterGroup(mg1,tc)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 			local gc=mg1:FilterSelect(tp,c36484016.filter3,1,1,nil,tc,mg1,chkf):GetFirst()
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,gc,chkf)
@@ -88,6 +90,7 @@ function c36484016.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 		else
+			mg3=aux.MatFilterGroup(mg3,tc)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 			local gc=mg3:FilterSelect(tp,c36484016.filter3,1,1,nil,tc,mg3,chkf):GetFirst()
 			local mat2=Duel.SelectFusionMaterial(tp,tc,mg3,gc,chkf)

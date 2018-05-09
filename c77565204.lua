@@ -73,7 +73,7 @@ function c77565204.filter1(c,e)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
 end
 function c77565204.filter2(c,m)
-	return c:IsFusionSummonableCard() and c:CheckFusionMaterial(m)
+	return c:IsFusionSummonableCard() and c:CheckFusionMaterial(aux.MatFilterGroup(m,c))
 end
 function c77565204.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -86,6 +86,7 @@ function c77565204.tgop(e,tp,eg,ep,ev,re,r,rp)
 		local tc=tg:GetFirst()
 		Duel.ConfirmCards(1-tp,tc)
 		local code=tc:GetCode()
+		mg=aux.MatFilterGroup(mg,tc)
 		local mat=Duel.SelectFusionMaterial(tp,tc,mg)
 		mat:KeepAlive()
 		Duel.SendtoGrave(mat,REASON_EFFECT)
@@ -97,7 +98,7 @@ function c77565204.proccon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp and e:GetHandler():GetTurnCounter()==2
 end
 function c77565204.procfilter(c,code,e,tp)
-	return c:IsCode(code) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)
+	return c:IsCode(code) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL)
 end
 function c77565204.procop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -24,9 +24,7 @@ function c94666032.filter(c,e,tp,m1,m2,ft)
 		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m1:Filter(Card.IsCanBeRitualMaterial,c,c)
 	mg:Merge(m2)
-	if c.mat_filter then
-		mg=mg:Filter(c.mat_filter,nil)
-	end
+	mg=aux.MatFilterGroup(c,mg)
 	if mg:IsContains(c) then mg:RemoveCard(c) end
 	if ft>0 then
 		return mg:CheckWithSumGreater(Card.GetRitualLevel,c:GetLevel(),c)
@@ -64,6 +62,7 @@ function c94666032.activate(e,tp,eg,ep,ev,re,r,rp)
 		local mg=mg1:Filter(Card.IsCanBeRitualMaterial,tc,tc)
 		mg:Merge(mg2)
 		if mg:IsContains(tc) then mg:RemoveCard(tc) end
+		mg=aux.MatFilterGroup(tc,mg)
 		local mat=nil
 		if ft>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)

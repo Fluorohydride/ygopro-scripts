@@ -38,11 +38,11 @@ function c73360025.mfilter2(c,e)
 end
 function c73360025.spfilter1(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsRace(RACE_FIEND) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(aux.MatFilterGroup(m,c),nil,chkf)
 end
 function c73360025.spfilter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsRace(RACE_FIEND) and c:IsSetCard(0xaf) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(aux.MatFilterGroup(m,c),nil,chkf)
 end
 function c73360025.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -92,6 +92,7 @@ function c73360025.spop(e,tp,eg,ep,ev,re,r,rp)
 		local tc=tg:GetFirst()
 		if sg1:IsContains(tc) and (sg3==nil or not sg3:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			if tc:IsSetCard(0xaf) then
+				mg2=aux.MatFilterGroup(mg2,tc)
 				local mat1=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
 				tc:SetMaterial(mat1)
 				local mat2=mat1:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
@@ -99,6 +100,7 @@ function c73360025.spop(e,tp,eg,ep,ev,re,r,rp)
 				Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 				Duel.Remove(mat2,POS_FACEUP,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			else
+				mg1=aux.MatFilterGroup(mg1,tc)
 				local mat2=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 				tc:SetMaterial(mat2)
 				Duel.SendtoGrave(mat2,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
@@ -106,6 +108,7 @@ function c73360025.spop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 		else
+			mg3=aux.MatFilterGroup(mg3,tc)
 			local mat=Duel.SelectFusionMaterial(tp,tc,mg3,nil,chkf)
 			local fop=ce:GetOperation()
 			fop(ce,e,tp,tc,mat)

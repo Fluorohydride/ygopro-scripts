@@ -17,7 +17,7 @@ function c80033124.ffilter(c,e)
 		and not c:IsImmuneToEffect(e)
 end
 function c80033124.spfilter(c,e,tp)
-	return c:IsCode(40418351) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)
+	return c:IsCode(40418351) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial()
 end
 function c80033124.fcheck(c,sg,g,code,...)
 	if not c:IsFusionCode(code) then return false end

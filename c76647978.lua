@@ -36,7 +36,7 @@ function c76647978.filter1(c,e,tp,mc)
 		and Duel.GetLocationCountFromEx(tp,tp,mg)>0
 end
 function c76647978.filter2(c,e,tp,mg)
-	return c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(mg,nil)
+	return c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(aux.MatFilterGroup(mg,c),nil)
 end
 function c76647978.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local mg=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)

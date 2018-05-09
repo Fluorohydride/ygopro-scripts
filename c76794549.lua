@@ -146,7 +146,7 @@ function c76794549.fselect(c,tp,mg,sg,mc,...)
 	return res
 end
 function c76794549.hnfilter(c,e,tp)
-	return c:IsCode(13331639) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)
+	return c:IsCode(13331639) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial()
 end
 function c76794549.hncost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

@@ -2102,3 +2102,14 @@ function Auxiliary.ExceptThisCard(e)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then return c else return nil end
 end
+--check .mat_filter
+function Auxiliary.MatFilterCard(c,sumc)
+	return not sumc.mat_filter or sumc.mat_filter(c,sumc)
+end
+function Auxiliary.MatFilterGroup(sumc,mg)
+	if not sumc.mat_filter then
+		return mg
+	else
+		return mg:Filter(sumc.mat_filter,nil,sumc)
+	end
+end
