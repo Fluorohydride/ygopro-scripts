@@ -17,6 +17,7 @@ function c95612049.filter(c,e,tp,m)
 	if not c:IsCode(72426662,46427957) or bit.band(c:GetType(),0x81)~=0x81
 		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
+	mg=aux.MatFilterGroup(c,mg)
 	return mg:CheckWithSumGreater(Card.GetRitualLevel,c:GetLevel(),c)
 end
 function c95612049.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -35,6 +36,7 @@ function c95612049.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=tg:GetFirst()
 	if tc then
 		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
+		mg=aux.MatFilterGroup(tc,mg)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		local mat=mg:SelectWithSumGreater(tp,Card.GetRitualLevel,tc:GetLevel(),tc)
 		tc:SetMaterial(mat)
