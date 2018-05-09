@@ -5,12 +5,6 @@ function c80896940.initial_effect(c)
 	aux.EnablePendulumAttribute(c,false)
 	--synchro summon
 	aux.AddSynchroMixProcedure(c,c80896940.matfilter1,nil,nil,aux.NonTuner(Card.IsType,TYPE_SYNCHRO),1,99)
-	--no tuner check
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetCode(80896940)
-	c:RegisterEffect(e1)
 	--indes
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
