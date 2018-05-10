@@ -54,7 +54,7 @@ function c59913418.costcon(e)
 	local mg=c:GetMaterial()
 	return c:GetSummonType()==SUMMON_TYPE_RITUAL and mg:GetCount()>0 and not mg:IsExists(c59913418.mfilter,1,nil)
 end
-function c59913418.costchange(e,re,rp,val)
+function c59913418.costval(e,re,rp,val)
 	if re and re:IsHasType(0x7e0) and re:GetHandler()==e:GetHandler() then
 		return 0
 	else return val end
