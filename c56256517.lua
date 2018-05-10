@@ -25,11 +25,18 @@ function c56256517.activate(e,tp,eg,ep,ev,re,r,rp)
 	g:KeepAlive()
 	local c=e:GetHandler()
 	c:SetTurnCounter(0)
+	local fid=c:GetFieldID()
+	local tc=g:GetFirst()
+	while tc do
+		tc:RegisterFlagEffect(56256517,RESET_EVENT+0x1fe0000,0,1,fid)
+		tc=g:GetNext()
+	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
 	e1:SetCountLimit(1)
+	e1:SetLabel(fid)
 	e1:SetLabelObject(g)
 	e1:SetCondition(c56256517.thcon)
 	e1:SetOperation(c56256517.thop)
@@ -39,6 +46,9 @@ end
 function c56256517.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
+function c56256517.thfilter(c,fid)
+	return c:GetFlagEffectLabel(56256517)==fid
+end
 function c56256517.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ct=c:GetTurnCounter()
@@ -46,7 +56,7 @@ function c56256517.thop(e,tp,eg,ep,ev,re,r,rp)
 	c:SetTurnCounter(ct)
 	if ct==3 then
 		local g=e:GetLabelObject()
-		if g:GetCount()==3 then
+		if g:FilterCount(c56256517.thfilter,nil,e:GetLabel())==3 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 		end
 	end
