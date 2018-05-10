@@ -2,7 +2,7 @@
 function c81385346.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_DESTROY)
+	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -26,6 +26,7 @@ function c81385346.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c81385346.filter2,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetHandler())
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,g:GetFirst():GetControler(),500)
 end
 function c81385346.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
