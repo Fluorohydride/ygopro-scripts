@@ -14,7 +14,7 @@ function c59438930.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c59438930.condition(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsOnField() and (re:IsActiveType(TYPE_MONSTER)
+	return re:GetHandler():IsOnField() and re:GetHandler():IsRelateToEffect(re) and (re:IsActiveType(TYPE_MONSTER)
 		or (re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and not re:IsHasType(EFFECT_TYPE_ACTIVATE)))
 end
 function c59438930.cost(e,tp,eg,ep,ev,re,r,rp,chk)
