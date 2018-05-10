@@ -53,6 +53,7 @@ end
 function c38342335.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)~=0
+		and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA)
 		and e:GetLabel()==1 and Duel.IsPlayerCanDraw(tp,1)
 		and Duel.SelectYesNo(tp,aux.Stringid(38342335,1)) then
 		Duel.BreakEffect()

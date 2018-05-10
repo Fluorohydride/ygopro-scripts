@@ -61,6 +61,7 @@ function c3679218.spop(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetLabel()==1 and Duel.IsPlayerCanDraw(tp,1)
 		and Duel.SelectYesNo(tp,aux.Stringid(3679218,1)) then
 		Duel.BreakEffect()
+		Duel.ShuffleDeck(tp)
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end
 end
