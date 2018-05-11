@@ -17,7 +17,7 @@ function c34834619.mtfilter(c,e)
 end
 function c34834619.spfilter(c,e,tp,m)
 	return c:IsCode(85346853) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,true,false)
-		and m:CheckWithSumEqual(Card.GetRitualLevel,4,1,99,c)
+		and aux.MatFilterGroup(c,m):CheckWithSumEqual(Card.GetRitualLevel,4,1,99,c)
 end
 function c34834619.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -34,6 +34,7 @@ function c34834619.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c34834619.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp,mg)
 	local tc=g:GetFirst()
 	if tc then
+		mg=aux.MatFilterGroup(tc,mg)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local mat=mg:SelectWithSumEqual(tp,Card.GetRitualLevel,4,1,99,tc)
 		tc:SetMaterial(mat)

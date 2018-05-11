@@ -77,7 +77,8 @@ function c10833828.spfilter3(c,e,tp,m,g,f,chkf)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and g:IsExists(c10833828.spfilter4,1,nil,m,c,chkf)
 end
 function c10833828.spfilter4(c,m,fusc,chkf)
-	return fusc:CheckFusionMaterial(m,c,chkf)
+	if not aux.MatFilterCard(fusc,c) then return false end
+	return fusc:CheckFusionMaterial(aux.MatFilterGroup(m,fusc),c,chkf)
 end
 function c10833828.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -125,6 +126,7 @@ function c10833828.spop2(e,tp,eg,ep,ev,re,r,rp)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
+			mg1=aux.MatFilterGroup(mg1,tc)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 			local ec=g:FilterSelect(tp,c10833828.spfilter4,1,1,nil,mg1,tc,chkf):GetFirst()
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,ec,chkf)
@@ -133,6 +135,7 @@ function c10833828.spop2(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 		else
+			mg2=aux.MatFilterGroup(mg2,tc)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 			local ec=g:FilterSelect(tp,c10833828.spfilter4,1,1,nil,mg2,tc,chkf):GetFirst()
 			local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,ec,chkf)

@@ -1460,6 +1460,7 @@ end
 function Auxiliary.RPGFilter(c,filter,e,tp,m,ft)
 	if (filter and not filter(c)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
+	mg=aux.MatFilterGroup(c,mg)
 	if ft>0 then
 		return mg:CheckWithSumGreater(Card.GetRitualLevel,c:GetOriginalLevel(),c)
 	else
@@ -1491,6 +1492,7 @@ function Auxiliary.RPGOperation(filter)
 				local tc=tg:GetFirst()
 				if tc then
 					mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
+					mg=aux.MatFilterGroup(tc,mg)
 					local mat=nil
 					if ft>0 then
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
@@ -1532,6 +1534,7 @@ end
 function Auxiliary.RPEFilter(c,filter,e,tp,m,ft)
 	if (filter and not filter(c)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
+	mg=aux.MatFilterGroup(c,mg)
 	if ft>0 then
 		return mg:CheckWithSumEqual(Card.GetRitualLevel,c:GetOriginalLevel(),1,99,c)
 	else
@@ -1563,6 +1566,7 @@ function Auxiliary.RPEOperation(filter)
 				local tc=tg:GetFirst()
 				if tc then
 					mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
+					mg=aux.MatFilterGroup(tc,mg)
 					local mat=nil
 					if ft>0 then
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
@@ -1604,6 +1608,7 @@ end
 function Auxiliary.RPEFilter2(c,filter,e,tp,m,ft)
 	if (filter and not filter(c)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
+	mg=aux.MatFilterGroup(c,mg)
 	if ft>0 then
 		return mg:CheckWithSumEqual(Card.GetRitualLevel,c:GetLevel(),1,99,c)
 	else
@@ -1635,6 +1640,7 @@ function Auxiliary.RPEOperation2(filter)
 				local tc=tg:GetFirst()
 				if tc then
 					mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
+					mg=aux.MatFilterGroup(tc,mg)
 					local mat=nil
 					if ft>0 then
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
@@ -2100,4 +2106,15 @@ end
 function Auxiliary.ExceptThisCard(e)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then return c else return nil end
+end
+--check .mat_filter
+function Auxiliary.MatFilterCard(sumc,c)
+	return not sumc.mat_filter or sumc.mat_filter(c,sumc)
+end
+function Auxiliary.MatFilterGroup(sumc,mg)
+	if not sumc.mat_filter then
+		return mg
+	else
+		return mg:Filter(sumc.mat_filter,nil,sumc)
+	end
 end

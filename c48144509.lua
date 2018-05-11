@@ -21,7 +21,7 @@ function c48144509.exfilter1(c,e)
 end
 function c48144509.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsRace(RACE_DRAGON) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(aux.MatFilterGroup(m,c),nil,chkf)
 end
 function c48144509.fcheck(tp,sg,fc)
 	return sg:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)<=2
@@ -83,6 +83,7 @@ function c48144509.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tc=tg:GetFirst()
 		mg1:RemoveCard(tc)
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
+			mg1=aux.MatFilterGroup(mg1,tc)
 			if exmat then Auxiliary.FCheckAdditional=c48144509.fcheck end
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			Auxiliary.FCheckAdditional=nil
@@ -91,6 +92,7 @@ function c48144509.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 		else
+			mg2=aux.MatFilterGroup(mg2,tc)
 			local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
 			local fop=ce:GetOperation()
 			fop(ce,e,tp,tc,mat2)

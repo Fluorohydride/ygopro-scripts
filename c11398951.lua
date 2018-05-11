@@ -14,6 +14,7 @@ function c11398951.filter(c,e,tp,m1,m2,ft)
 		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m1:Filter(Card.IsCanBeRitualMaterial,c,c)
 	mg:Merge(m2)
+	mg=aux.MatFilterGroup(c,mg)
 	if ft>0 then
 		return mg:CheckWithSumEqual(Card.GetRitualLevel,c:GetLevel(),1,99,c)
 	else
@@ -48,6 +49,7 @@ function c11398951.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		local mg=mg1:Filter(Card.IsCanBeRitualMaterial,tc,tc)
 		mg:Merge(mg2)
+		mg=aux.MatFilterGroup(tc,mg)
 		local mat=nil
 		if ft>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)

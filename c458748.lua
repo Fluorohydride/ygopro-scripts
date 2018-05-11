@@ -21,7 +21,8 @@ function c458748.filter1(c,e,tp)
 		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
 function c458748.filter2(c,e,tp,att)
-	return c:IsSetCard(0xf4) and c:GetOriginalAttribute()~=att and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial()
+	return c:IsSetCard(0xf4) and c:GetOriginalAttribute()~=att
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial()
 end
 function c458748.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

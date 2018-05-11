@@ -17,12 +17,13 @@ function c45948430.filter(c,e,tp)
 end
 function c45948430.matfilter1(c,tp,rc)
 	local lv=c:GetLevel()
-	return lv>0 and lv<8 and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK) and c:IsAbleToGrave() and c:IsCanBeRitualMaterial(rc)
+	return lv>0 and lv<8 and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
+		and c:IsAbleToGrave() and c:IsCanBeRitualMaterial(rc) and aux.MatFilterCard(rc,c)
 		and Duel.IsExistingMatchingCard(c45948430.matfilter2,tp,LOCATION_DECK,0,1,c,lv,c:GetAttribute(),rc)
 end
 function c45948430.matfilter2(c,lv,att,rc)
 	return ((c:IsAttribute(ATTRIBUTE_LIGHT) and att==ATTRIBUTE_DARK) or (c:IsAttribute(ATTRIBUTE_DARK) and att==ATTRIBUTE_LIGHT))
-		and c:GetLevel()==8-lv and c:IsAbleToGrave() and c:IsCanBeRitualMaterial(rc)
+		and c:GetLevel()==8-lv and c:IsAbleToGrave() and c:IsCanBeRitualMaterial(rc) and aux.MatFilterCard(rc,c)
 end
 function c45948430.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

@@ -14,6 +14,7 @@ end
 function c37626500.filter(c,e,tp,m,ft)
 	if not c37626500.ritual_filter(c) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
+	mg=aux.MatFilterGroup(c,mg)
 	if c:IsCode(21105106) then return c:ritual_custom_condition(mg,ft) end
 	if ft>0 then
 		return mg:CheckWithSumEqual(Card.GetRitualLevel,c:GetLevel(),1,99,c)
@@ -43,6 +44,7 @@ function c37626500.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=tg:GetFirst()
 	if tc then
 		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
+		mg=aux.MatFilterGroup(tc,mg)
 		if tc:IsCode(21105106) then
 			tc:ritual_custom_operation(mg)
 			local mat=tc:GetMaterial()

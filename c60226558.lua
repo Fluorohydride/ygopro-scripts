@@ -61,8 +61,8 @@ function c60226558.filter1(c,e)
 	return not c:IsImmuneToEffect(e)
 end
 function c60226558.filter2(c,e,tp,m,ec,f,chkf)
-	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x9d) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,ec,chkf)
+	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x9d) and (not f or f(c)) and aux.MatFilterCard(c,ec)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(aux.MatFilterGroup(m,c),ec,chkf)
 end
 function c60226558.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -108,12 +108,14 @@ function c60226558.spop(e,tp,eg,ep,ev,re,r,rp)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
+			mg1=aux.MatFilterGroup(mg1,tc)
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,ec,chkf)
 			tc:SetMaterial(mat1)
 			Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 		else
+			mg2=aux.MatFilterGroup(mg2,tc)
 			local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,ec,chkf)
 			local fop=ce:GetOperation()
 			fop(ce,e,tp,tc,mat2)

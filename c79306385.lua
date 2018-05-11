@@ -13,6 +13,7 @@ c79306385.fit_monster={48546368}
 function c79306385.filter(c,e,tp,m,ft)
 	if not c:IsCode(48546368) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
+	mg=aux.MatFilterGroup(c,mg)
 	if ft>0 then
 		return mg:CheckWithSumGreater(Card.GetRitualLevel,12,c)
 	else
@@ -47,6 +48,7 @@ function c79306385.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=tg:GetFirst()
 	if tc then
 		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
+		mg=aux.MatFilterGroup(tc,mg)
 		local mat=nil
 		if ft>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
