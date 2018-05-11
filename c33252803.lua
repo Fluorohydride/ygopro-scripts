@@ -13,6 +13,7 @@ end
 function c33252803.filter1(c,e,tp)
 	local m=_G["c"..c:GetCode()]
 	return c:IsFaceup() and c:IsSetCard(0x48) and not c:IsSetCard(0x1048) and m
+		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingMatchingCard(c33252803.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,c:GetRank()+1,m.xyz_number)
 		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
@@ -29,9 +30,9 @@ function c33252803.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c33252803.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 then return end
 	local m=_G["c"..tc:GetCode()]
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) or not m then return end
+	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 or not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL)
+		or tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) or not m then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c33252803.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc,tc:GetRank()+1,m.xyz_number)
 	local sc=g:GetFirst()

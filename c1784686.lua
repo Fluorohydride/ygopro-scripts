@@ -20,6 +20,7 @@ function c1784686.initial_effect(c)
 end
 function c1784686.tgfilter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x10a2) and c:IsCanBeFusionMaterial()
+		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_FMATERIAL)
 		and Duel.IsExistingMatchingCard(c1784686.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetCode())
 		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
@@ -35,7 +36,7 @@ function c1784686.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c1784686.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 then return end
+	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 or not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_FMATERIAL) then return end
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsCanBeFusionMaterial() and not tc:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,c1784686.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetCode())

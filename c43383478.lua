@@ -38,6 +38,7 @@ function c43383478.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c43383478.filter1(c,e,tp)
 	return c:IsSetCard(0xba) and c:IsType(TYPE_XYZ) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingMatchingCard(c43383478.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,c:GetRank()+1)
 end
 function c43383478.filter2(c,e,tp,mc,rk)
@@ -49,7 +50,6 @@ function c43383478.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.GetLocationCountFromEx(tp)>0
-		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingTarget(c43383478.filter1,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c43383478.filter1,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
