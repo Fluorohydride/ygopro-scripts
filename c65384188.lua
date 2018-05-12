@@ -10,7 +10,7 @@ function c65384188.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c65384188.filter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsType(TYPE_EFFECT)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsType(TYPE_EFFECT) and not c:IsDisabled()
 end
 function c65384188.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
