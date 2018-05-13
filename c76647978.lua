@@ -27,47 +27,75 @@ function c76647978.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,2000) end
 	Duel.PayLPCost(tp,2000)
 end
-function c76647978.filter0(c,e,tp,mg)
-	return mg:IsExists(c76647978.filter1,1,nil,e,tp,c)
+function c76647978.fcheck(tp,sg,fc)
+	return #sg==2
 end
-function c76647978.filter1(c,e,tp,mc)
-	local mg=Group.FromCards(c,mc)
-	return Duel.IsExistingMatchingCard(c76647978.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg)
-		and Duel.GetLocationCountFromEx(tp,tp,mg)>0
+function c76647978.filter1(c,e)
+	return c:IsOnField() and not c:IsImmuneToEffect(e)
 end
-function c76647978.filter2(c,e,tp,mg)
-	return c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(mg,nil)
+function c76647978.filter2(c,e,tp,m,f,chkf)
+	return c:IsType(TYPE_FUSION) and (not f or f(c))
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
 function c76647978.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local mg=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)
-	if chk==0 then return mg:IsExists(c76647978.filter0,1,nil,e,tp,mg) end
+	if chk==0 then
+		local chkf=tp
+		local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)
+		Auxiliary.FCheckAdditional=c76647978.fcheck
+		local res=Duel.IsExistingMatchingCard(c76647978.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
+		if not res then
+			local ce=Duel.GetChainMaterial(tp)
+			if ce~=nil then
+				local fgroup=ce:GetTarget()
+				local mg2=fgroup(ce,e,tp)
+				local mf=ce:GetValue()
+				res=Duel.IsExistingMatchingCard(c76647978.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
+			end
+		end
+		Auxiliary.FCheckAdditional=nil
+		return res
+	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		Duel.SetChainLimit(aux.FALSE)
 	end
 end
-function c76647978.filter3(c,e)
-	return c:IsOnField() and not c:IsImmuneToEffect(e)
-end
 function c76647978.activate(e,tp,eg,ep,ev,re,r,rp)
-	local mg=Duel.GetFusionMaterial(tp):Filter(c76647978.filter3,nil,e)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g1=mg:FilterSelect(tp,c76647978.filter0,1,1,nil,e,tp,mg)
-	if g1:GetCount()==0 then return end
-	local tc1=g1:GetFirst()
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-	local g2=mg:FilterSelect(tp,c76647978.filter1,1,1,tc1,e,tp,tc1)
-	g1:Merge(g2)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg=Duel.SelectMatchingCard(tp,c76647978.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,g1)
-	local tc=sg:GetFirst()
-	tc:SetMaterial(g1)
-	Duel.SendtoGrave(g1,REASON_MATERIAL+REASON_FUSION+REASON_EFFECT)
-	Duel.BreakEffect()
-	Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
-	tc:RegisterFlagEffect(76647978,RESET_EVENT+0x1fe0000,0,1)
-	tc:CompleteProcedure()
-	e:GetLabelObject():SetLabelObject(tc)
+	local chkf=tp
+	local mg1=Duel.GetFusionMaterial(tp):Filter(c76647978.filter1,nil,e)
+	Auxiliary.FCheckAdditional=c76647978.fcheck
+	local sg1=Duel.GetMatchingGroup(c76647978.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
+	local mg2=nil
+	local sg2=nil
+	local ce=Duel.GetChainMaterial(tp)
+	if ce~=nil then
+		local fgroup=ce:GetTarget()
+		mg2=fgroup(ce,e,tp)
+		local mf=ce:GetValue()
+		sg2=Duel.GetMatchingGroup(c76647978.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf)
+	end
+	if sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0) then
+		local sg=sg1:Clone()
+		if sg2 then sg:Merge(sg2) end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local tg=sg:Select(tp,1,1,nil)
+		local tc=tg:GetFirst()
+		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
+			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
+			tc:SetMaterial(mat1)
+			Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
+			Duel.BreakEffect()
+			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
+		else
+			local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
+			local fop=ce:GetOperation()
+			fop(ce,e,tp,tc,mat2)
+		end
+		tc:RegisterFlagEffect(76647978,RESET_EVENT+0x1fe0000,0,1)
+		tc:CompleteProcedure()
+		e:GetLabelObject():SetLabelObject(tc)
+	end
+	Auxiliary.FCheckAdditional=nil
 end
 function c76647978.mgfilter(c,e,tp,fusc,mg)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE)
