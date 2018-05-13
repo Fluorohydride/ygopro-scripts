@@ -34,6 +34,7 @@ end
 function c19476824.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetDecktopGroup(tp,3)
+	Duel.DisableShuffleCheck()
 	if g:GetCount()>0 and Duel.Remove(g,POS_FACEUP,REASON_EFFECT)~=0
 		and c:IsFaceup() and c:IsRelateToEffect(e) then
 		local og=Duel.GetOperatedGroup()

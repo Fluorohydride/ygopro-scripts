@@ -32,6 +32,7 @@ function c24037702.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		local ol=tc:GetOriginalLevel()
 		local rg=Duel.GetDecktopGroup(tp,ol)
+		Duel.DisableShuffleCheck()
 		Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)
 	end
 end
