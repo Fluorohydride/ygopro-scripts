@@ -67,6 +67,7 @@ function c60431417.thop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 then
 		Duel.BreakEffect()
 		local rg=Duel.GetDecktopGroup(tp,4)
+		Duel.DisableShuffleCheck()
 		Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)
 	end
 end
