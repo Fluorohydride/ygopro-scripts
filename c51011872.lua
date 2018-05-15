@@ -30,7 +30,8 @@ function c51011872.cfilter(c,ec)
 	if c:IsLocation(LOCATION_MZONE) then
 		return c:IsSetCard(0xfb) and c:IsFaceup() and ec:GetLinkedGroup():IsContains(c)
 	else
-		return c:IsSetCard(0xfb) and c:IsPreviousPosition(POS_FACEUP) and ec:GetLinkedZone(c:GetPreviousControler()) & 0x1 << c:GetPreviousSequence()~=0
+		return c:IsPreviousSetCard(0xfb) and c:IsPreviousPosition(POS_FACEUP)
+			and bit.extract(ec:GetLinkedZone(c:GetPreviousControler()),c:GetPreviousSequence())~=0
 	end
 end
 function c51011872.reccon(e,tp,eg,ep,ev,re,r,rp)

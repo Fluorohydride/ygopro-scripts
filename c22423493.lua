@@ -84,7 +84,7 @@ function c22423493.thcfilter(c,ec)
 	if c:IsLocation(LOCATION_MZONE) then
 		return ec:GetLinkedGroup():IsContains(c)
 	else
-		return ec:GetLinkedZone(c:GetPreviousControler()) & 0x1 << c:GetPreviousSequence()~=0
+		return bit.extract(ec:GetLinkedZone(c:GetPreviousControler()),c:GetPreviousSequence())~=0
 	end
 end
 function c22423493.thcon(e,tp,eg,ep,ev,re,r,rp)
