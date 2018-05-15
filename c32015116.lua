@@ -27,12 +27,12 @@ function c32015116.rdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)
 end
 function c32015116.rdfilter(c,lv)
-	if lv<6 then
+	if lv<=5 then
 		return c:IsFaceup() and c:GetLevel()==lv
-	elseif lv==7 then
-		return false
-	else
+	elseif lv==6
 		return c:IsFaceup() and c:GetLevel()>=6 end
+	else
+		return false
 end
 function c32015116.rdop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
