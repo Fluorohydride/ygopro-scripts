@@ -27,6 +27,7 @@ function c87116928.initial_effect(c)
 	e3:SetValue(1)
 	c:RegisterEffect(e3)
 end
+c87116928.material_setcode=0x1093
 function c87116928.matfilter(c)
 	return c:GetSequence()>4
 end

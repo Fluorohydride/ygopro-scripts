@@ -23,6 +23,7 @@ function c84058253.initial_effect(c)
 	e3:SetOperation(c84058253.tgop)
 	c:RegisterEffect(e3)
 end
+c84058253.material_setcode=0x1093
 function c84058253.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
 end
