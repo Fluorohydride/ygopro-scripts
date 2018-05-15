@@ -70,7 +70,5 @@ function c42421606.efop(e,tp,eg,ep,ev,re,r,rp)
 		if e:GetHandler():IsRelateToEffect(e) then
 			Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 		end
-	else
-		return
 	end
 end

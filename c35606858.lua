@@ -101,7 +101,5 @@ function c35606858.dcop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	elseif d>=2 and d<=5 then
 		Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
-	else
-		return
 	end
 end

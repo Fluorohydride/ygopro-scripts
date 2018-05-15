@@ -63,7 +63,5 @@ function c36708764.activate(e,tp,eg,ep,ev,re,r,rp)
 		if at:IsRelateToEffect(e) and at:IsControler(1-tp) and at:IsType(TYPE_MONSTER) then
 			Duel.Destroy(at,REASON_EFFECT)
 		end
-	else
-		return
 	end
 end

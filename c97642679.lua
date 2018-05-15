@@ -34,7 +34,5 @@ function c97642679.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,0,LOCATION_MZONE,1,1,nil)
 		Duel.Destroy(g,REASON_EFFECT)
-	else
-		return
 	end
 end

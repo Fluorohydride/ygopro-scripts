@@ -37,7 +37,5 @@ function c62893810.operation(e,tp,eg,ep,ev,re,r,rp)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SendtoGrave(sg,REASON_EFFECT+REASON_DISCARD)
 		Duel.ShuffleHand(tp)
-	else
-		return
 	end
 end
