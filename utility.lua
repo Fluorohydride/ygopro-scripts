@@ -272,7 +272,7 @@ function Auxiliary.MustMaterialCheck(v,tp,code)
 	local t=Auxiliary.GetValueType(v)
 	for tc in Auxiliary.Next(g) do
 		if (t=="Card" and v~=tc)
-			or (t=="Group" and not v:IsExists(tc)) then return false end
+			or (t=="Group" and not v:IsContains(tc)) then return false end
 	end
 	return true
 end
