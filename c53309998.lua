@@ -28,7 +28,7 @@ function c53309998.cfilter(c,zone)
 	return bit.extract(zone,seq)~=0
 end
 function c53309998.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local zone=Duel.GetLinkedZone(0)+Duel.GetLinkedZone(1)<<0x10
+	local zone=Duel.GetLinkedZone(0)+(Duel.GetLinkedZone(1)<<0x10)
 	return eg:IsExists(c53309998.cfilter,1,nil,zone)
 end
 function c53309998.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
