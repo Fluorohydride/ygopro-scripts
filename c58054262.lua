@@ -62,7 +62,7 @@ function c58054262.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local sg=Group.CreateGroup()
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>=2
-		and g:IsExists(c22666164.sptarget_selector,1,nil,tp,g,sg,1)
+		and g:IsExists(c58054262.sptarget_selector,1,nil,tp,g,sg,1)
 	end
 	for i=1,3 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
