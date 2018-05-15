@@ -33,7 +33,7 @@ function c15574615.spcost_selector(c,tp,g,sg,i)
 	g:RemoveCard(c)
 	local flag=false
 	if i<4 then
-		flag=g:IsExists(c4335427.spcost_selector,1,nil,tp,g,sg,i+1)
+		flag=g:IsExists(c15574615.spcost_selector,1,nil,tp,g,sg,i+1)
 	else
 		flag=Duel.GetMZoneCount(tp,sg,tp)>0
 	end
