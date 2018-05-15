@@ -42,5 +42,7 @@ function c76895648.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(g,REASON_EFFECT)
 	elseif dice==6 then
 		Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+	else
+		return
 	end
 end

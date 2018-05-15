@@ -26,6 +26,8 @@ function c84397023.op(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+0xfe0000+RESET_PHASE+PHASE_END)
 			g:GetFirst():RegisterEffect(e1)
 			Duel.ShuffleHand(tp)
+		else
+			return
 		end
 	end
 end
