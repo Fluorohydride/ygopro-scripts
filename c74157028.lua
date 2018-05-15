@@ -10,3 +10,4 @@ function c74157028.initial_effect(c)
 	e2:SetValue(1)
 	c:RegisterEffect(e2)
 end
+c74157028.material_setcode=0x1093
