@@ -66,7 +66,7 @@ function c42421606.efop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.HintSelection(g)
 			Duel.Destroy(g,REASON_EFFECT)
 		end
-	else
+	elseif dc==6 then
 		if e:GetHandler():IsRelateToEffect(e) then
 			Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 		end

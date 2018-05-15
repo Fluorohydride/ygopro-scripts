@@ -18,7 +18,7 @@ function c84397023.op(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 		local ct=Duel.TossDice(tp,1)
 		if ct==1 then Duel.SendtoGrave(g,REASON_EFFECT)
-		else
+		elseif ct>=2 and ct<=6 then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_CHANGE_LEVEL)

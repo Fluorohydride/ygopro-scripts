@@ -99,7 +99,7 @@ function c35606858.dcop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	elseif d==6 then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
-	else
+	elseif d>=2 and d<=5 then
 		Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
 	end
 end

@@ -15,7 +15,7 @@ function c16135253.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)
 end
 function c16135253.filter(c,e,tp,lv)
-	if (lv<6 and c:GetLevel()~=lv) or (lv==6 and c:GetLevel()<6) then return false end
+	if (lv~=6 and c:GetLevel()~=lv) or (lv==6 and c:GetLevel()<6) then return false end
 	return c:IsRace(RACE_FAIRY) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c16135253.target(e,tp,eg,ep,ev,re,r,rp,chk)

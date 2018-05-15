@@ -30,7 +30,7 @@ function c97642679.operation(e,tp,eg,ep,ev,re,r,rp)
 	elseif d==6 then
 		local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,0,nil)
 		Duel.Destroy(g,REASON_EFFECT)
-	else
+	elseif d>=3 and d<=5 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,0,LOCATION_MZONE,1,1,nil)
 		Duel.Destroy(g,REASON_EFFECT)

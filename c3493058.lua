@@ -27,7 +27,7 @@ function c3493058.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local dg=g:Select(tp,2,2,nil)
 		Duel.Destroy(dg,REASON_EFFECT)
-	else
+	elseif dc>=2 and dc<=4 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local g=Duel.SelectMatchingCard(tp,c3493058.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,aux.ExceptThisCard(e))
 		Duel.Destroy(g,REASON_EFFECT)

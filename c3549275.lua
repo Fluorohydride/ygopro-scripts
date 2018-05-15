@@ -19,8 +19,16 @@ function c3549275.operation(e,tp,eg,ep,ev,re,r,rp)
 		d1,d2=Duel.TossDice(tp,1,1)
 	end
 	if d1<d2 then
-		if d2==6 then Duel.Damage(tp,6000,REASON_EFFECT) else Duel.Damage(tp,d2*500,REASON_EFFECT) end
+		if d2==6 then
+			Duel.Damage(tp,6000,REASON_EFFECT)
+		elseif d2>=2 and d2<=5 then
+			Duel.Damage(tp,d2*500,REASON_EFFECT)
+		end
 	else
-		if d1==6 then Duel.Damage(1-tp,6000,REASON_EFFECT) else Duel.Damage(1-tp,d1*500,REASON_EFFECT) end
+		if d1==6 then
+			Duel.Damage(1-tp,6000,REASON_EFFECT)
+		elseif d1>=2 and d1<=5 then
+			Duel.Damage(1-tp,d1*500,REASON_EFFECT)
+		end
 	end
 end

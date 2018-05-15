@@ -32,6 +32,7 @@ function c38299233.rdop(e,tp,eg,ep,ev,re,r,rp)
 	while d1==6 do
 		d1=Duel.TossDice(tp,1)
 	end
+	if d1>5 then return end
 	local tc=Duel.GetFieldCard(1-tp,LOCATION_MZONE,d1-1)
 	if tc then
 		Duel.Destroy(tc,REASON_EFFECT)

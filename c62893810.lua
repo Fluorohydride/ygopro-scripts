@@ -30,7 +30,7 @@ function c62893810.operation(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 		if g:GetCount()==0 then return end
 		Duel.SendtoGrave(g,REASON_EFFECT+REASON_DISCARD)
-	else
+	elseif d>=2 and d<=5 then
 		local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 		if g:GetCount()==0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)

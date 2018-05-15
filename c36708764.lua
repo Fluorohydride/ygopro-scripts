@@ -58,7 +58,7 @@ function c36708764.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Damage(1-tp,at:GetAttack(),REASON_EFFECT)
 		end
 		return
-	else
+	elseif dc==6 then
 		local at=Duel.GetFirstTarget()
 		if at:IsRelateToEffect(e) and at:IsControler(1-tp) and at:IsType(TYPE_MONSTER) then
 			Duel.Destroy(at,REASON_EFFECT)
