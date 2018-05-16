@@ -29,7 +29,7 @@ end
 function c32015116.rdfilter(c,lv)
 	if lv<=5 then
 		return c:IsFaceup() and c:GetLevel()==lv
-	elseif lv==6
+	elseif lv==6 then
 		return c:IsFaceup() and c:GetLevel()>=6 end
 	else
 		return false
