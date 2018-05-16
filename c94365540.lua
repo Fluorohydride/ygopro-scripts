@@ -37,7 +37,12 @@ function c94365540.condition(e,c)
 end
 function c94365540.cfilter(c,tp,zone)
 	local seq=c:GetSequence()
-	if c:IsControler(tp) then seq=seq+16 end
+	if c:IsLocation(LOCATION_MZONE) then
+		if c:IsControler(1-tp) then seq=seq+16 end
+	else
+		seq=c:GetPreviousSequence()
+		if c:GetPreviousControler()==1-tp then seq=seq+16 end
+	end
 	return bit.extract(zone,seq)~=0
 end
 function c94365540.lkfilter(c)
@@ -47,7 +52,7 @@ function c94365540.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local zone=0
 	local lg=Duel.GetMatchingGroup(c94365540.lkfilter,tp,0,LOCATION_MZONE,nil)
 	for tc in aux.Next(lg) do
-		zone=bit.bor(zone,tc:GetLinkedZone())
+		zone=bit.bor(zone,tc:GetLinkedZone(tp))
 	end
 	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c94365540.cfilter,1,nil,tp,zone)
 end

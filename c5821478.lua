@@ -27,11 +27,16 @@ function c5821478.initial_effect(c)
 end
 function c5821478.cfilter(c,zone)
 	local seq=c:GetSequence()
-	if c:IsControler(1) then seq=seq+16 end
+	if c:IsLocation(LOCATION_MZONE) then
+		if c:IsControler(1) then seq=seq+16 end
+	else
+		seq=c:GetPreviousSequence()
+		if c:GetPreviousControler()==1 then seq=seq+16 end
+	end
 	return bit.extract(zone,seq)~=0
 end
 function c5821478.descon(e,tp,eg,ep,ev,re,r,rp)
-	local zone=Duel.GetLinkedZone(0)+Duel.GetLinkedZone(1)*0x10000
+	local zone=Duel.GetLinkedZone(0)+(Duel.GetLinkedZone(1)<<0x10)
 	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c5821478.cfilter,1,nil,zone)
 end
 function c5821478.desfilter(c)

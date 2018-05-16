@@ -19,7 +19,7 @@ function c72529749.cfilter(c,ec)
 	if c:IsLocation(LOCATION_MZONE) then
 		return ec:GetLinkedGroup():IsContains(c)
 	else
-		return bit.band(ec:GetLinkedZone(c:GetPreviousControler()),bit.lshift(0x1,c:GetPreviousSequence()))~=0
+		return bit.extract(ec:GetLinkedZone(c:GetPreviousControler()),c:GetPreviousSequence())~=0
 	end
 end
 function c72529749.rmcon(e,tp,eg,ep,ev,re,r,rp)

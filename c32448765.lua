@@ -36,12 +36,16 @@ function c32448765.initial_effect(c)
 	e5:SetOperation(c32448765.atkop)
 	c:RegisterEffect(e5)
 end
-function c32448765.cfilter(c,g)
-	return c:IsSetCard(0xfb) and g:IsContains(c)
+function c32448765.cfilter(c,ec)
+	if c:IsLocation(LOCATION_MZONE) then
+		return c:IsSetCard(0xfb) and c:IsFaceup() and ec:GetLinkedGroup():IsContains(c)
+	else
+		return c:IsPreviousSetCard(0xfb) and c:IsPreviousPosition(POS_FACEUP)
+			and bit.extract(ec:GetLinkedZone(c:GetPreviousControler()),c:GetPreviousSequence())~=0
+	end
 end
 function c32448765.damcon(e,tp,eg,ep,ev,re,r,rp)
-	local lg=e:GetHandler():GetLinkedGroup()
-	return lg and eg:IsExists(c32448765.cfilter,1,nil,lg)
+	return eg:IsExists(c32448765.cfilter,1,nil,e:GetHandler())
 end
 function c32448765.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,32448765)

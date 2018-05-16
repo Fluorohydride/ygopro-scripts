@@ -80,13 +80,16 @@ function c22423493.disop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c22423493.thcfilter(c,lg)
-	return lg:IsContains(c)
+function c22423493.thcfilter(c,ec)
+	if c:IsLocation(LOCATION_MZONE) then
+		return ec:GetLinkedGroup():IsContains(c)
+	else
+		return bit.extract(ec:GetLinkedZone(c:GetPreviousControler()),c:GetPreviousSequence())~=0
+	end
 end
 function c22423493.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local lg=c:GetLinkedGroup()
-	return not eg:IsContains(c) and eg:FilterCount(c22423493.thcfilter,nil,lg)==2
+	return not eg:IsContains(c) and eg:FilterCount(c22423493.thcfilter,nil,c)==2
 end
 function c22423493.thfilter(c)
 	return c:IsRace(RACE_MACHINE) and c:IsLevelAbove(5) and c:IsAbleToHand()
