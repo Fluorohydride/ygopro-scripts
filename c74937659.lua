@@ -76,11 +76,10 @@ function c74937659.cfilter(c,ec)
 	if c:IsLocation(LOCATION_MZONE) then
 		return ec:GetLinkedGroup():IsContains(c)
 	else
-		return ec:GetLinkedZone(c:GetPreviousControler()) & 0x1 << c:GetPreviousSequence()~=0
+		return bit.extract(ec:GetLinkedZone(c:GetPreviousControler()),c:GetPreviousSequence())~=0
 	end
 end
 function c74937659.thcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
 	return eg:IsExists(c74937659.cfilter,1,nil,e:GetHandler())
 end
 function c74937659.thfilter(c)
