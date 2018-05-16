@@ -30,9 +30,10 @@ function c32015116.rdfilter(c,lv)
 	if lv<=5 then
 		return c:IsFaceup() and c:GetLevel()==lv
 	elseif lv==6 then
-		return c:IsFaceup() and c:GetLevel()>=6 end
+		return c:IsFaceup() and c:GetLevel()>=6
 	else
 		return false
+	end
 end
 function c32015116.rdop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
