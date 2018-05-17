@@ -16,7 +16,7 @@ function c83546647.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:GetFirst():IsControler(1-tp) and ep==tp and Duel.GetAttackTarget()==nil
 end
 function c83546647.spfilter(c,e,tp)
-	return c:GetLevel()==1 and not c:IsPublic() and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(1) and not c:IsPublic() and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.IsExistingMatchingCard(c83546647.spfilter2,tp,LOCATION_DECK,0,1,nil,e,tp,c:GetCode())
 end
 function c83546647.spfilter2(c,e,tp,code)

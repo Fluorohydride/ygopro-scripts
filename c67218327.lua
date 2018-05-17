@@ -20,7 +20,7 @@ function c67218327.lkfilter(c)
 	return c:IsType(TYPE_LINK) and c:IsLinkState()
 end
 function c67218327.filter(c)
-	return c:IsRace(RACE_CYBERSE) and c:GetLevel()==4 and c:IsAbleToHand()
+	return c:IsRace(RACE_CYBERSE) and c:IsLevel(4) and c:IsAbleToHand()
 end
 function c67218327.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c67218327.filter(chkc) end

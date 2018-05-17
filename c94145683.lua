@@ -22,7 +22,7 @@ function c94145683.filter1(c,e,tp,ft)
 		and Duel.IsExistingMatchingCard(c94145683.filter2,tp,LOCATION_DECK,0,1,nil,lv,e,tp)
 end
 function c94145683.filter2(c,lv,e,tp)
-	return c:IsRace(RACE_WINDBEAST) and c:GetLevel()==lv and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_WINDBEAST) and c:IsLevel(lv) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c94145683.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)

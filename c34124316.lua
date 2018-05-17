@@ -24,11 +24,10 @@ function c34124316.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmDecktop(tp,5)
 	local tc=g1:GetFirst()
 	while tc do
-		local lv=tc:GetLevel()
 		local pos=0
 		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) then pos=pos+POS_FACEUP_ATTACK end
 		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE) then pos=pos+POS_FACEDOWN_DEFENSE end
-		if lv>0 and lv<=4 and pos~=0 then
+		if tc:IsLevelBelow(4) and pos~=0 then
 			Duel.DisableShuffleCheck()
 			Duel.SpecialSummonStep(tc,0,tp,tp,false,false,pos)
 		elseif tc:IsAbleToHand() then
@@ -39,11 +38,10 @@ function c34124316.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmDecktop(1-tp,5)
 	tc=g2:GetFirst()
 	while tc do
-		local lv=tc:GetLevel()
 		local pos=0
 		if tc:IsCanBeSpecialSummoned(e,0,1-tp,false,false,POS_FACEUP_ATTACK) then pos=pos+POS_FACEUP_ATTACK end
 		if tc:IsCanBeSpecialSummoned(e,0,1-tp,false,false,POS_FACEDOWN_DEFENSE) then pos=pos+POS_FACEDOWN_DEFENSE end
-		if lv>0 and lv<=4 and pos~=0 then
+		if tc:IsLevelBelow(4) and pos~=0 then
 			Duel.DisableShuffleCheck()
 			Duel.SpecialSummonStep(tc,0,1-tp,1-tp,false,false,pos)
 		elseif tc:IsAbleToHand() then

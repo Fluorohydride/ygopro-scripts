@@ -74,7 +74,7 @@ function c68371799.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c68371799.spfilter(c,e,tp)
-	return c:GetLevel()==6 and c:IsSetCard(0x45) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+	return c:IsLevel(6) and c:IsSetCard(0x45) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c68371799.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c68371799.spfilter(chkc,e,tp) end

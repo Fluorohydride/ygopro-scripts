@@ -28,9 +28,9 @@ function c32015116.rdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c32015116.rdfilter(c,lv)
 	if lv<=5 then
-		return c:IsFaceup() and c:GetLevel()==lv
+		return c:IsFaceup() and c:IsLevel(lv)
 	elseif lv==6 then
-		return c:IsFaceup() and c:GetLevel()>=6
+		return c:IsFaceup() and c:IsLevelAbove(6)
 	else
 		return false
 	end

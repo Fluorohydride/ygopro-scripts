@@ -70,7 +70,7 @@ function c58257569.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:GetPreviousLocation()==LOCATION_SZONE and not c:IsReason(REASON_LOST_TARGET)
 end
 function c58257569.thfilter(c)
-	return c:IsRace(RACE_DRAGON) and c:GetLevel()==1 and c:IsAbleToHand()
+	return c:IsRace(RACE_DRAGON) and c:IsLevel(1) and c:IsAbleToHand()
 end
 function c58257569.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c58257569.thfilter,tp,LOCATION_GRAVE+LOCATION_DECK,0,1,nil) end

@@ -31,7 +31,7 @@ function c65591858.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return not c:IsSetCard(0x70)
 end
 function c65591858.filter(c,e,tp)
-	return c:GetLevel()==5 and c:IsSetCard(0x70) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(5) and c:IsSetCard(0x70) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c65591858.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c65591858.filter(chkc,e,tp) end

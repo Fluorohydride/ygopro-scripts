@@ -10,7 +10,7 @@ function c59563768.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c59563768.filter(c)
-	return c:IsFaceup() and c:GetLevel()==2
+	return c:IsFaceup() and c:IsLevel(2)
 end
 function c59563768.atkval(e,c)
 	return Duel.GetMatchingGroupCount(c59563768.filter,e:GetHandlerPlayer(),LOCATION_MZONE,0,nil)*400

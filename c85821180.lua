@@ -13,10 +13,10 @@ function c85821180.initial_effect(c)
 end
 function c85821180.cfilter(c,e,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsDiscardable()
-		and Duel.IsExistingMatchingCard(c85821180.filter,tp,LOCATION_DECK,0,1,nil,c:GetRace(),c:GetAttribute(),c:GetLevel(),e,tp)
+		and Duel.IsExistingMatchingCard(c85821180.filter,tp,LOCATION_DECK,0,1,nil,c:GetRace(),c:GetAttribute(),c:GetLevel()+1,e,tp)
 end
 function c85821180.filter(c,race,att,lv,e,tp)
-	return c:IsType(TYPE_TUNER) and c:IsRace(race) and c:IsAttribute(att) and c:GetLevel()==lv+1 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsType(TYPE_TUNER) and c:IsRace(race) and c:IsAttribute(att) and c:IsLevel(lv) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c85821180.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)
@@ -42,7 +42,7 @@ function c85821180.activate(e,tp,eg,ep,ev,re,r,rp)
 	local att=e:GetValue()
 	local lv=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c85821180.filter,tp,LOCATION_DECK,0,1,1,nil,race,att,lv,e,tp)
+	local g=Duel.SelectMatchingCard(tp,c85821180.filter,tp,LOCATION_DECK,0,1,1,nil,race,att,lv+1,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end

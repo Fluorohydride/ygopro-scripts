@@ -12,7 +12,7 @@ function c57019473.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c57019473.filter(c)
-	return c:IsRace(RACE_THUNDER) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:GetLevel()==4
+	return c:IsRace(RACE_THUNDER) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(4)
 		and c:GetCode()~=57019473 and c:IsAttackBelow(1600) and c:IsAbleToRemove()
 end
 function c57019473.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

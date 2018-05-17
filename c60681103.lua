@@ -54,7 +54,7 @@ function c60681103.rmop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c60681103.filter(c,e,tp)
-	return c:IsRace(RACE_DRAGON) and (c:GetLevel()==7 or c:GetLevel()==8) and not c:IsCode(60681103)
+	return c:IsRace(RACE_DRAGON) and (c:IsLevel(7) or c:IsLevel(8)) and not c:IsCode(60681103)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c60681103.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

@@ -29,7 +29,7 @@ function c14943837.synlimit(e,c)
 	return not c:IsRace(RACE_DRAGON)
 end
 function c14943837.synlimit2(e,c)
-	return c:GetLevel()~=4
+	return not c:IsLevel(4)
 end
 function c14943837.filter2(c,e,sp)
 	return c:IsAttackBelow(500) and c:IsCanBeSpecialSummoned(e,0,sp,false,false)

@@ -34,13 +34,13 @@ function c76136345.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c76136345.cfilter(c,tp)
-	return c:IsFaceup() and c:GetLevel()==10 and c:IsControler(tp) and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_EARTH)
+	return c:IsFaceup() and c:IsLevel(10) and c:IsControler(tp) and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_EARTH)
 end
 function c76136345.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c76136345.cfilter,1,nil,tp)
 end
 function c76136345.filter(c,e,tp)
-	return c:GetLevel()==4 and c:IsAttackAbove(1800) and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_EARTH)
+	return c:IsLevel(4) and c:IsAttackAbove(1800) and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_EARTH)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c76136345.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -78,7 +78,7 @@ function c76136345.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,Card.IsAbleToGraveAsCost,1,1,REASON_COST)
 end
 function c76136345.thfilter(c)
-	return c:GetLevel()==10 and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_EARTH) and c:IsAbleToHand()
+	return c:IsLevel(10) and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_EARTH) and c:IsAbleToHand()
 end
 function c76136345.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c76136345.thfilter,tp,LOCATION_DECK,0,1,nil) end

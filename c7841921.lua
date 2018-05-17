@@ -27,7 +27,7 @@ function c7841921.initial_effect(c)
 end
 function c7841921.ntcon(e,c,minc)
 	if c==nil then return true end
-	return minc==0 and c:GetLevel()>4 and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
+	return minc==0 and c:IsLevelAbove(5) and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c7841921.atkcon(e)
 	return e:GetHandler():GetMaterialCount()==0

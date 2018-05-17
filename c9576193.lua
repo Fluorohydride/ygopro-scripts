@@ -15,7 +15,7 @@ function c9576193.filter1(c,tp)
 	return lv>0 and c:IsFaceup() and Duel.IsExistingTarget(c9576193.filter2,tp,LOCATION_GRAVE,0,1,nil,lv)
 end
 function c9576193.filter2(c,lv)
-	return c:GetLevel()==lv and c:IsAbleToRemove()
+	return c:IsLevel(lv) and c:IsAbleToRemove()
 end
 function c9576193.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
@@ -34,13 +34,13 @@ function c9576193.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc2=g:GetFirst()
 	if tc2==tc1 then tc2=g:GetNext() end
 	if tc1:IsFacedown() or not tc1:IsRelateToEffect(e) then return end
-	if not tc2:IsRelateToEffect(e) or tc2:GetLevel()~=tc1:GetLevel() or Duel.Remove(tc2,POS_FACEUP,REASON_EFFECT)==0 then return end
+	if not tc2:IsRelateToEffect(e) or not tc2:IsLevel(tc1:GetLevel()) or Duel.Remove(tc2,POS_FACEUP,REASON_EFFECT)==0 then return end
 	Duel.BreakEffect()
 	if Duel.Draw(tp,1,REASON_EFFECT)==0 then return end
 	local dr=Duel.GetOperatedGroup():GetFirst()
 	Duel.ConfirmCards(1-tp,dr)
 	Duel.BreakEffect()
-	if dr:GetLevel()==tc1:GetLevel() then
+	if dr:IsLevel(tc1:GetLevel()) then
 		if Duel.SpecialSummon(dr,0,tp,tp,false,false,POS_FACEUP)==0 then
 			Duel.ShuffleHand(tp)
 		end

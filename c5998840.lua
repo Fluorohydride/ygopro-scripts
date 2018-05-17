@@ -22,7 +22,7 @@ function c5998840.synlimit(e,c)
 	return not c:IsSetCard(0x100d)
 end
 function c5998840.filter(c,e,tp)
-	return c:GetLevel()<=4 and c:IsSetCard(0x100d) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevelBelow(4) and c:IsSetCard(0x100d) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c5998840.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

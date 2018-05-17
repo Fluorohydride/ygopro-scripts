@@ -15,5 +15,5 @@ function c85742772.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c85742772.atktarget(e,c)
-	return c:GetLevel()>=4
+	return c:IsLevelAbove(4)
 end

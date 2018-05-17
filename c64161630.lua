@@ -18,7 +18,7 @@ function c64161630.cfilter(c,e,tp)
 end
 function c64161630.filter(c,rk,rc,e,tp)
 	return c:IsType(TYPE_XYZ) and c:IsSetCard(0x48)
-		and c:GetRank()==rk and c:IsRace(rc) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsRank(rk) and c:IsRace(rc) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c64161630.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)

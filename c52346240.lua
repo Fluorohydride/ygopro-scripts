@@ -12,7 +12,7 @@ function c52346240.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c52346240.filter(c,e,tp)
-	return c:GetLevel()==1 and c:IsRace(RACE_BEAST) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+	return c:IsLevel(1) and c:IsRace(RACE_BEAST) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c52346240.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c52346240.filter(chkc,e,tp) end

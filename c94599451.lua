@@ -72,7 +72,7 @@ function c94599451.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c94599451.thfilter2(c,lv)
 	return (c:IsLocation(LOCATION_DECK) or (c:IsFaceup() and c:IsType(TYPE_PENDULUM))) and c:IsCanAddCounter(0x1,1,false,LOCATION_MZONE)
-		and c:GetLevel()==lv and c:IsAbleToHand()
+		and c:IsLevel(lv) and c:IsAbleToHand()
 end
 function c94599451.thop(e,tp,eg,ep,ev,re,r,rp)
 	local lv=e:GetLabel()

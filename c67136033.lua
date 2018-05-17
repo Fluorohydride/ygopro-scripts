@@ -28,7 +28,7 @@ function c67136033.initial_effect(c)
 end
 function c67136033.ntcon(e,c,minc)
 	if c==nil then return true end
-	return minc==0 and c:GetLevel()>4 and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
+	return minc==0 and c:IsLevelAbove(5) and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c67136033.ntop(e,tp,eg,ep,ev,re,r,rp,c)
 	--change base attack
@@ -42,7 +42,7 @@ function c67136033.ntop(e,tp,eg,ep,ev,re,r,rp,c)
 	c:RegisterEffect(e1)
 end
 function c67136033.filter(c)
-	return c:IsRace(RACE_BEASTWARRIOR) and c:GetLevel()==4
+	return c:IsRace(RACE_BEASTWARRIOR) and c:IsLevel(4)
 end
 function c67136033.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c67136033.filter,tp,LOCATION_MZONE,0,1,nil) end

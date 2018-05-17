@@ -39,7 +39,7 @@ function c45450218.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.Draw(tp,1,REASON_EFFECT)
 	if ct==0 or Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=Duel.GetOperatedGroup():GetFirst()
-	if tc:GetLevel()<=4 and tc:IsAttribute(ATTRIBUTE_DARK) and tc:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	if tc:IsLevelBelow(4) and tc:IsAttribute(ATTRIBUTE_DARK) and tc:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.SelectYesNo(tp,aux.Stringid(45450218,1)) then
 		Duel.ConfirmCards(1-tp,tc)
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)

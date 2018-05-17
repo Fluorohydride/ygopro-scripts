@@ -16,7 +16,7 @@ function c78275321.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)
 end
 function c78275321.filter(c,e,tp)
-	return c:GetLevel()==5 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(5) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c78275321.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c78275321.filter(chkc,e,tp) end

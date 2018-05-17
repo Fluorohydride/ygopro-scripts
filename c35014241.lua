@@ -21,7 +21,7 @@ function c35014241.cfilter2(c,e,tp,tc)
 		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,tc))>0
 end
 function c35014241.spfilter(c,e,tp,lv)
-	return c:IsType(TYPE_SYNCHRO) and c:GetLevel()==lv and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsType(TYPE_SYNCHRO) and c:IsLevel(lv) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c35014241.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)

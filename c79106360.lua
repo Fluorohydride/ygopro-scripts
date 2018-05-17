@@ -41,8 +41,7 @@ function c79106360.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g2 then Duel.ShuffleSetCard(g2) end
 end
 function c79106360.spfilter(c,e,tp)
-	local lv=c:GetLevel()
-	return lv>0 and lv<=4 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
+	return c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
 end
 function c79106360.sp(e,tp,ct)
 	local g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)

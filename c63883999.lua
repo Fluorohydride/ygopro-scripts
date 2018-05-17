@@ -36,7 +36,7 @@ function c63883999.rfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_FIEND) and c:IsAbleToRemove()
 end
 function c63883999.spfilter(c,lv,e,tp)
-	return c:IsSetCard(0x45) and c:GetLevel()==lv and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x45) and c:IsLevel(lv) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c63883999.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c63883999.filter(chkc,e,tp) end

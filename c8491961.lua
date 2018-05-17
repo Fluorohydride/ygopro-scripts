@@ -73,7 +73,7 @@ function c8491961.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c8491961.thfilter(c)
-	return c:GetLevel()==1 and c:IsRace(RACE_WINDBEAST) and c:IsAbleToHand()
+	return c:IsLevel(1) and c:IsRace(RACE_WINDBEAST) and c:IsAbleToHand()
 end
 function c8491961.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c8491961.thfilter,tp,LOCATION_DECK,0,1,nil) end

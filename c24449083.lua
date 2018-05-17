@@ -18,7 +18,7 @@ function c24449083.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c24449083.cfilter(c)
-	return c:IsFaceup() and c:GetLevel()==1 and c:IsRace(RACE_FAIRY)
+	return c:IsFaceup() and c:IsLevel(1) and c:IsRace(RACE_FAIRY)
 end
 function c24449083.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c24449083.cfilter,tp,LOCATION_MZONE,0,1,nil)

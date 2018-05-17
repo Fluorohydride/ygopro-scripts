@@ -12,7 +12,7 @@ function c44341034.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c44341034.filter(c,e,tp)
-	return c:GetLevel()==3 and c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(3) and c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c44341034.sumtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c44341034.filter(chkc,e,tp) end

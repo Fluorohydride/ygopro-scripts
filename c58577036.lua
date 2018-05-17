@@ -35,7 +35,7 @@ function c58577036.operation(e,tp,eg,ep,ev,re,r,rp)
 		return
 	end
 	Duel.ConfirmDecktop(tp,dcount-seq)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and lv~=spcard:GetLevel()
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and not spcard:IsLevel(lv)
 		and spcard:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 		Duel.DisableShuffleCheck()
 		if dcount-seq==1 then Duel.SpecialSummon(spcard,0,tp,tp,false,false,POS_FACEUP)

@@ -43,7 +43,7 @@ function c97520701.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():IsPreviousPosition(POS_FACEDOWN)
 end
 function c97520701.thfilter(c)
-	return c:GetLevel()==10 and c:IsRace(RACE_MACHINE) and c:IsAbleToHand()
+	return c:IsLevel(10) and c:IsRace(RACE_MACHINE) and c:IsAbleToHand()
 end
 function c97520701.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c97520701.thfilter(chkc) end

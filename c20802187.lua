@@ -31,7 +31,7 @@ function c20802187.xyzfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)
 end
 function c20802187.matfilter(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT) and c:GetLevel()==4 and not c:IsType(TYPE_TOKEN)
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(4) and not c:IsType(TYPE_TOKEN)
 end
 function c20802187.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c20802187.xyzfilter(chkc) end
@@ -55,7 +55,7 @@ function c20802187.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c20802187.thfilter(c,e)
-	return c:IsRace(RACE_THUNDER) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:GetLevel()==4 and c:IsCanBeEffectTarget(e)
+	return c:IsRace(RACE_THUNDER) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(4) and c:IsCanBeEffectTarget(e)
 end
 function c20802187.thfilter2(c,g)
 	return g:IsExists(Card.IsCode,1,c,c:GetCode())

@@ -83,7 +83,7 @@ function c6733059.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetParam(lv)
 end
 function c6733059.dfilter(c,lv)
-	return c:IsFaceup() and c:GetLevel()==lv
+	return c:IsFaceup() and c:IsLevel(lv)
 end
 function c6733059.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end

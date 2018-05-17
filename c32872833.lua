@@ -10,7 +10,7 @@ function c32872833.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c32872833.filter(c)
-	return c:IsFaceup() and c:GetLevel()==8
+	return c:IsFaceup() and c:IsLevel(8)
 end
 function c32872833.ntcon(e,c,minc)
 	if c==nil then return true end

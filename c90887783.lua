@@ -14,7 +14,7 @@ function c90887783.filter1(c,tp)
 		and Duel.IsExistingMatchingCard(c90887783.filter2,tp,LOCATION_DECK,0,1,nil,c:GetLevel())
 end
 function c90887783.filter2(c,lv)
-	return c:IsRace(RACE_DRAGON) and c:GetLevel()==lv and c:IsAbleToHand()
+	return c:IsRace(RACE_DRAGON) and c:IsLevel(lv) and c:IsAbleToHand()
 end
 function c90887783.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c90887783.filter1,tp,LOCATION_HAND,0,1,nil,tp) end

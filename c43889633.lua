@@ -27,8 +27,7 @@ function c43889633.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c43889633.filter(c)
-	local lv=c:GetLevel()
-	return c:IsFaceup() and lv>0 and lv<=4 and c:IsRace(RACE_FISH+RACE_SEASERPENT+RACE_AQUA) and c:IsAbleToRemove()
+	return c:IsFaceup() and c:IsLevelBelow(4) and c:IsRace(RACE_FISH+RACE_SEASERPENT+RACE_AQUA) and c:IsAbleToRemove()
 end
 function c43889633.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c43889633.filter(chkc) end

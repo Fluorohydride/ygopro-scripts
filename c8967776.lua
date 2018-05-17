@@ -33,7 +33,7 @@ function c8967776.spcon(e,c)
 		Duel.IsExistingMatchingCard(Card.IsType,c:GetControler(),LOCATION_GRAVE,0,10,nil,TYPE_MONSTER)
 end
 function c8967776.filter(c,e,tp)
-	return c:IsRace(RACE_FAIRY) and c:GetLevel()>=8
+	return c:IsRace(RACE_FAIRY) and c:IsLevelAbove(8)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c8967776.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

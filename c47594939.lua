@@ -28,10 +28,10 @@ function c47594939.initial_effect(c)
 	e3:SetLabelObject(g)
 end
 function c47594939.lvfilter(c,lv,tp)
-	return c:GetLevel()==lv and c:IsControler(tp)
+	return c:IsLevel(lv) and c:IsControler(tp)
 end
 function c47594939.rkfilter(c,rk,tp)
-	return c:GetRank()==rk and c:IsControler(tp)
+	return c:IsRank(rk) and c:IsControler(tp)
 end
 function c47594939.splimit(e,c,sump,sumtype,sumpos,targetp)
 	local lv=c:GetLevel()

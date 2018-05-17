@@ -10,7 +10,7 @@ function c98931003.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c98931003.filter(c)
-	return c:IsFaceup() and (c:GetLevel()==7 or c:GetRank()==7)
+	return c:IsFaceup() and (c:IsLevel(7) or c:IsRank(7))
 end
 function c98931003.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c98931003.filter(chkc) end

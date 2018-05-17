@@ -15,7 +15,7 @@ function c38568567.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsAbleToEnterBP()
 end
 function c38568567.cfilter(c)
-	return c:GetLevel()==4 and c:IsRace(RACE_PLANT) and c:IsAbleToGraveAsCost()
+	return c:IsLevel(4) and c:IsRace(RACE_PLANT) and c:IsAbleToGraveAsCost()
 end
 function c38568567.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c38568567.cfilter,tp,LOCATION_HAND,0,1,nil) end

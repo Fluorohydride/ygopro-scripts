@@ -25,7 +25,7 @@ function c57108202.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c57108202.filter(c,lv)
-	return c:IsSetCard(0x26) and c:GetLevel()==lv and c:IsAbleToHand()
+	return c:IsSetCard(0x26) and c:IsLevel(lv) and c:IsAbleToHand()
 end
 function c57108202.cona(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsDisabled() and e:GetHandler():IsAttackPos()

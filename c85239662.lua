@@ -34,5 +34,5 @@ function c85239662.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c85239662.target(e,c)
-	return c:GetLevel()~=e:GetLabel()
+	return not c:IsLevel(e:GetLabel())
 end

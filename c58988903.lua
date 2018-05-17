@@ -31,7 +31,7 @@ function c58988903.filter1(c,e,tp)
 		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 end
 function c58988903.filter2(c,e,tp,mc,rk)
-	return c:GetRank()==rk and c:IsSetCard(0xba) and mc:IsCanBeXyzMaterial(c)
+	return c:IsRank(rk) and c:IsSetCard(0xba) and mc:IsCanBeXyzMaterial(c)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
 end
 function c58988903.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

@@ -15,8 +15,7 @@ function c42548470.filter1(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0x58) and lv1~=0 and Duel.IsExistingTarget(c42548470.filter2,tp,LOCATION_MZONE,0,1,c,lv1)
 end
 function c42548470.filter2(c,lv)
-	local lv2=c:GetLevel()
-	return c:IsFaceup() and c:IsSetCard(0x58) and lv2~=0 and lv2~=lv
+	return c:IsFaceup() and c:IsSetCard(0x58) and not c:IsLevel(lv)
 end
 function c42548470.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

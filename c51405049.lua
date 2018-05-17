@@ -11,13 +11,13 @@ function c51405049.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c51405049.cfilter(c)
-	return c:IsFaceup() and c:GetLevel()==1
+	return c:IsFaceup() and c:IsLevel(1)
 end
 function c51405049.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c51405049.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c51405049.filter(c)
-	return c:GetLevel()==1 and c:IsAbleToHand()
+	return c:IsLevel(1) and c:IsAbleToHand()
 end
 function c51405049.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c51405049.filter,tp,LOCATION_DECK,0,1,nil) end

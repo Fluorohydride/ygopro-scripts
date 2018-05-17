@@ -31,7 +31,7 @@ function c16802689.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c16802689.hspfilter(c,ft,tp)
-	return c:IsSetCard(0xe6) and c:GetLevel()==12 and not c:IsCode(16802689)
+	return c:IsSetCard(0xe6) and c:IsLevel(12) and not c:IsCode(16802689)
 		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c16802689.hspcon(e,c)

@@ -16,7 +16,7 @@ function c86174055.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)
 end
 function c86174055.filter(c,e,tp)
-	return c:GetLevel()==2 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(2) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c86174055.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c86174055.filter(chkc,e,tp) end

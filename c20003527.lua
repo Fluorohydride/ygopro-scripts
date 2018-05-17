@@ -61,7 +61,7 @@ function c20003527.sumcon(e,c,minc)
 	if minc>=1 then min=minc end
 	local tp=c:GetControler()
 	local mg=Duel.GetMatchingGroup(c20003527.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
-	return c:GetLevel()>4 and Duel.CheckTribute(c,min,10,mg)
+	return c:IsLevelAbove(5) and Duel.CheckTribute(c,min,10,mg)
 end
 function c20003527.sumop(e,tp,eg,ep,ev,re,r,rp,c,minc)
 	local min=1

@@ -16,7 +16,7 @@ function c94878265.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)
 end
 function c94878265.filter(c)
-	return c:GetLevel()==4 and c:IsRace(RACE_BEAST) and c:IsAbleToHand()
+	return c:IsLevel(4) and c:IsRace(RACE_BEAST) and c:IsAbleToHand()
 end
 function c94878265.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c94878265.filter(chkc) end

@@ -23,10 +23,10 @@ function c51043053.atcon(e)
 		and Duel.GetFieldGroupCount(e:GetHandlerPlayer(),0,LOCATION_HAND)<5
 end
 function c51043053.filter(c)
-	return c:IsFaceup() and c:GetLevel()==8 and c:IsRace(RACE_DRAGON)
+	return c:IsFaceup() and c:IsLevel(8) and c:IsRace(RACE_DRAGON)
 end
 function c51043053.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetLevel()~=8
+	return not e:GetHandler():IsLevel(8)
 		and Duel.IsExistingMatchingCard(c51043053.filter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c51043053.operation(e,tp,eg,ep,ev,re,r,rp)

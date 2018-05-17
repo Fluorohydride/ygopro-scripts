@@ -38,7 +38,7 @@ function c56827051.lvop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
 	local ct=e:GetLabel()
 	local sel=nil
-	if c:GetLevel()==1 then
+	if c:IsLevel(1) then
 		sel=Duel.SelectOption(tp,aux.Stringid(56827051,2))
 	else
 		sel=Duel.SelectOption(tp,aux.Stringid(56827051,2),aux.Stringid(56827051,3))

@@ -31,7 +31,7 @@ function c94344242.xyzlimit(e,c)
 	return not c:IsRace(RACE_INSECT)
 end
 function c94344242.spfilter(c,e,tp)
-	return c:GetLevel()==3 and c:IsRace(RACE_INSECT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+	return c:IsLevel(3) and c:IsRace(RACE_INSECT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c94344242.filter(c)
 	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition()

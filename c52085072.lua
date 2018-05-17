@@ -37,7 +37,7 @@ function c52085072.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c52085072.spcfilter(c)
-	return c:IsFaceup() and c:GetLevel()==1 and c:IsAbleToGraveAsCost()
+	return c:IsFaceup() and c:IsLevel(1) and c:IsAbleToGraveAsCost()
 end
 function c52085072.mzfilter(c,tp)
 	return c:GetSequence()<5

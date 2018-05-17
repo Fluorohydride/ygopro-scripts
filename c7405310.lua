@@ -16,7 +16,7 @@ function c7405310.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(lv)
 end
 function c7405310.filter(c,lv)
-	return c:GetLevel()==lv
+	return c:IsLevel(lv)
 end
 function c7405310.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c7405310.filter,1-tp,LOCATION_EXTRA,0,nil,e:GetLabel())

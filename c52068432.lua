@@ -35,7 +35,7 @@ function c52068432.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c52068432.mat_filter(c)
-	return c:GetLevel()~=9
+	return not c:IsLevel(9)
 end
 function c52068432.tfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0xb4) and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)

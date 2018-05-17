@@ -18,7 +18,7 @@ function c1003028.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c1003028.cfilter(c)
-	return c:IsFaceup() and c:GetLevel()~=4
+	return c:IsFaceup() and not c:IsLevel(4)
 end
 function c1003028.spcon(e,c)
 	if c==nil then return true end

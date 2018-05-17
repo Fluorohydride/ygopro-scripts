@@ -12,7 +12,7 @@ function c84530620.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c84530620.filter(c)
-	return c:IsRace(RACE_THUNDER) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:GetLevel()==4
+	return c:IsRace(RACE_THUNDER) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(4)
 		and c:GetCode()~=84530620 and c:IsSummonable(true,nil)
 end
 function c84530620.target(e,tp,eg,ep,ev,re,r,rp,chk)

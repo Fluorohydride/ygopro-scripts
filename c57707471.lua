@@ -24,7 +24,7 @@ function c57707471.initial_effect(c)
 end
 c57707471.xyz_number=21
 function c57707471.ovfilter(c)
-	return c:IsFaceup() and c:IsXyzType(TYPE_XYZ) and c:GetRank()==5
+	return c:IsFaceup() and c:IsXyzType(TYPE_XYZ) and c:IsRank(5)
 end
 function c57707471.xyzop(e,tp,chk,mc)
 	if chk==0 then return mc:CheckRemoveOverlayCard(tp,1,REASON_COST) end

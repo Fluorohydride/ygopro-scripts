@@ -34,7 +34,7 @@ function c56832966.initial_effect(c)
 end
 c56832966.xyz_number=39
 function c56832966.ovfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x107f) and c:IsType(TYPE_XYZ) and c:GetRank()==4
+	return c:IsFaceup() and c:IsSetCard(0x107f) and c:IsType(TYPE_XYZ) and c:IsRank(4)
 end
 function c56832966.aclimit(e,re,tp)
 	return not re:GetHandler():IsImmuneToEffect(e)

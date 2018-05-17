@@ -14,7 +14,7 @@ function c23269426.spfilter(c,e,tp,code)
 	return c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c23269426.filter(c,e,tp)
-	return c:IsFaceup() and c:GetLevel()==3
+	return c:IsFaceup() and c:IsLevel(3)
 		and Duel.IsExistingMatchingCard(c23269426.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,e,tp,c:GetCode())
 end
 function c23269426.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

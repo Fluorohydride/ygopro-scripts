@@ -14,5 +14,5 @@ function c99214782.condition(e)
 	return e:GetHandler():IsAttackPos()
 end
 function c99214782.target(e,c)
-	return c:GetLevel()>=5 and c:IsSummonType(SUMMON_TYPE_SPECIAL)
+	return c:IsLevelAbove(5) and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end

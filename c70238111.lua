@@ -25,7 +25,7 @@ function c70238111.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c70238111.filter(c,tp)
-	return c:IsRace(RACE_CYBERSE) and c:GetLink()==3 and (c:IsFaceup() or not c:IsLocation(LOCATION_MZONE))
+	return c:IsRace(RACE_CYBERSE) and c:IsLink(3) and (c:IsFaceup() or not c:IsLocation(LOCATION_MZONE))
 		and c:IsAbleToRemove() and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
 function c70238111.spfilter(c,e,tp)

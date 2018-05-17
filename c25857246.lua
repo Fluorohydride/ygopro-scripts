@@ -31,7 +31,7 @@ function c25857246.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c25857246.mat_filter(c)
-	return c:GetLevel()~=8
+	return not c:IsLevel(8)
 end
 function c25857246.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp)

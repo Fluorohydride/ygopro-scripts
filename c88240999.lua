@@ -36,7 +36,7 @@ function c88240999.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c88240999.mat_filter(c)
-	return c:GetLevel()~=10
+	return not c:IsLevel(10)
 end
 function c88240999.adcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()

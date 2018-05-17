@@ -10,15 +10,14 @@ function c69042950.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c69042950.mfilter(c,clv)
-	return c:IsFaceup() and c:GetLevel()==clv
+	return c:IsFaceup() and c:IsLevel(clv)
 end
 function c69042950.mfilter2(c)
 	return c:IsFaceup() and c:IsLevelBelow(4)
 end
 function c69042950.spfilter(c,e,tp)
-	local lv=c:GetLevel()
-	return lv>0 and lv<=4 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and Duel.IsExistingMatchingCard(c69042950.mfilter,tp,LOCATION_MZONE,0,1,nil,lv)
+	return c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and Duel.IsExistingMatchingCard(c69042950.mfilter,tp,LOCATION_MZONE,0,1,nil,c:GetLevel())
 end
 function c69042950.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

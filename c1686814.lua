@@ -42,7 +42,7 @@ function c1686814.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c1686814.sprfilter(c)
-	return c:IsFaceup() and c:GetLevel()>4 and c:IsAbleToGraveAsCost()
+	return c:IsFaceup() and c:IsLevelAbove(5) and c:IsAbleToGraveAsCost()
 end
 function c1686814.sprfilter1(c,tp,g,sc)
 	local lv=c:GetLevel()
@@ -50,7 +50,7 @@ function c1686814.sprfilter1(c,tp,g,sc)
 end
 function c1686814.sprfilter2(c,tp,mc,sc,lv)
 	local sg=Group.FromCards(c,mc)
-	return c:GetLevel()==lv and not c:IsType(TYPE_TUNER)
+	return c:IsLevel(lv) and not c:IsType(TYPE_TUNER)
 		and Duel.GetLocationCountFromEx(tp,tp,sg,sc)>0
 end
 function c1686814.sprcon(e,c)
@@ -73,7 +73,7 @@ function c1686814.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(Card.IsControler,1,nil,tp)
 end
 function c1686814.spfilter(c,e,tp)
-	return (c:IsSetCard(0xc2) or ((c:GetLevel()==7 or c:GetLevel()==8) and c:IsRace(RACE_DRAGON)))
+	return (c:IsSetCard(0xc2) or ((c:IsLevel(7) or c:IsLevel(8)) and c:IsRace(RACE_DRAGON)))
 		and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c1686814.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

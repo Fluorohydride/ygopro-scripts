@@ -24,7 +24,7 @@ function c45644898.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c45644898.thfilter(c)
-	return c:IsType(TYPE_TUNER) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:GetLevel()==1 and c:IsAbleToHand()
+	return c:IsType(TYPE_TUNER) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(1) and c:IsAbleToHand()
 end
 function c45644898.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c45644898.thfilter(chkc) end

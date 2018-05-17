@@ -28,7 +28,7 @@ function c40450317.filter(c,e,tp)
 	return g:GetClassCount(Card.GetCode)>1
 end
 function c40450317.filter2(c,e,tp,tc)
-	return c:GetLevel()==tc:GetLevel() and c:IsRace(tc:GetRace()) and c:IsAttribute(tc:GetAttribute())
+	return c:IsLevel(tc:GetLevel()) and c:IsRace(tc:GetRace()) and c:IsAttribute(tc:GetAttribute())
 		and not c:IsCode(tc:GetCode()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c40450317.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

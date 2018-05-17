@@ -10,7 +10,7 @@ function c28654932.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c28654932.filter(c,e)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:GetLevel()>=5
+	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsLevelAbove(5)
 		and (not e or c:IsRelateToEffect(e)) and c:IsAbleToRemove()
 end
 function c28654932.target(e,tp,eg,ep,ev,re,r,rp,chk)

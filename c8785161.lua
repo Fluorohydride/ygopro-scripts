@@ -34,11 +34,11 @@ function c8785161.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c8785161.spfilter1(c,e,tp)
 	local lv=c:GetLevel()
-	return lv>0 and lv<6 and c:IsSetCard(0xba) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevelBelow(5) and c:IsSetCard(0xba) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.IsExistingMatchingCard(c8785161.spfilter2,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,c,e,tp,6-lv)
 end
 function c8785161.spfilter2(c,e,tp,lv)
-	return c:IsSetCard(0xba) and c:GetLevel()==lv and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0xba) and c:IsLevel(lv) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c8785161.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

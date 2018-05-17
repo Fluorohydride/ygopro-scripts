@@ -19,7 +19,7 @@ function c47185546.filter1(c,e,tp)
 		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 end
 function c47185546.filter2(c,e,tp,mc,rk)
-	return (c:GetRank()==rk+2 or c:GetRank()==rk-2) and c:IsRace(RACE_INSECT) and mc:IsCanBeXyzMaterial(c)
+	return (c:IsRank(rk+2) or c:IsRank(rk-2) and c:IsRace(RACE_INSECT) and mc:IsCanBeXyzMaterial(c)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
 end
 function c47185546.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

@@ -20,7 +20,7 @@ function c78811937.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(rg,POS_FACEUP,REASON_COST)
 end
 function c78811937.filter(c)
-	return c:GetLevel()==4 and c:IsAttribute(ATTRIBUTE_DARK) and c:IsAbleToHand()
+	return c:IsLevel(4) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsAbleToHand()
 end
 function c78811937.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c78811937.filter,tp,LOCATION_DECK,0,1,nil) end

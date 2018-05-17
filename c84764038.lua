@@ -66,7 +66,7 @@ function c84764038.regop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterFlagEffect(84764038,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c84764038.thfilter(c)
-	return c:GetLevel()==3 and c:IsAttribute(ATTRIBUTE_DARK) and c:IsRace(RACE_FIEND)
+	return c:IsLevel(3) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsRace(RACE_FIEND)
 		and not c:IsCode(84764038) and c:IsAbleToHand()
 end
 function c84764038.thcon(e,tp,eg,ep,ev,re,r,rp)

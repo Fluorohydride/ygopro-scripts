@@ -64,7 +64,7 @@ function c36857073.spfilter2(c,e,tp)
 end
 function c36857073.spfilter3(c,e,tp,lv)
 	return c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
-		and c:GetLevel()==lv
+		and c:IsLevel(lv)
 end
 function c36857073.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)

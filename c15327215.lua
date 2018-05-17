@@ -44,7 +44,7 @@ function c15327215.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c15327215.filter(c,mc)
 	return c:IsLevelBelow(4) and c:IsSetCard(0x3d) and c:IsAbleToRemoveAsCost()
-		and not (c:GetLevel()==mc:GetLevel() and c:IsAttribute(mc:GetAttribute()) and c:GetAttack()==mc:GetAttack() and c:GetDefense()==mc:GetDefense())
+		and not (c:IsLevel(mc:GetLevel()) and c:IsAttribute(mc:GetAttribute()) and c:GetAttack()==mc:GetAttack() and c:GetDefense()==mc:GetDefense())
 end
 function c15327215.cost(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingMatchingCard(c15327215.filter,tp,LOCATION_GRAVE,0,1,nil,e:GetHandler()) end

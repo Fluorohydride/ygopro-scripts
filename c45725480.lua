@@ -13,7 +13,7 @@ function c45725480.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c45725480.filter(c)
-	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:GetLevel()==7 and c:IsAbleToRemoveAsCost()
+	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsLevel(7) and c:IsAbleToRemoveAsCost()
 end
 function c45725480.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c45725480.filter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil) end

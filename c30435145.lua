@@ -9,7 +9,7 @@ function c30435145.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c30435145.filter(c,g)
-	return c:GetLevel()>4 and c:IsSetCard(0x7) and g:CheckWithSumEqual(Card.GetLevel,c:GetLevel()*2,1,99)
+	return c:IsLevelAbove(5) and c:IsSetCard(0x7) and g:CheckWithSumEqual(Card.GetLevel,c:GetLevel()*2,1,99)
 end
 function c30435145.rfilter(c)
 	return c:GetLevel()>0 and c:IsSetCard(0x7) and c:IsAbleToRemove()
@@ -44,5 +44,5 @@ function c30435145.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c30435145.ntcon(e,c,minc)
 	if c==nil then return true end
-	return minc==0 and c:GetLevel()>4 and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
+	return minc==0 and c:IsLevelAbove(5) and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end

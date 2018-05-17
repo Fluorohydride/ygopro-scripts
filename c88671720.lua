@@ -12,7 +12,7 @@ function c88671720.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c88671720.filter(c,e,tp)
-	return c:GetLevel()==4 and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_DARK)
+	return c:IsLevel(4) and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_DARK)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c88671720.sumtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

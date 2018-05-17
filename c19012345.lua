@@ -10,7 +10,7 @@ function c19012345.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c19012345.condition(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and e:GetHandler():GetLevel()<12
+	return ep~=tp and e:GetHandler():IsLevelBelow(11)
 end
 function c19012345.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

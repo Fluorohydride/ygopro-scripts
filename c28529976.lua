@@ -24,10 +24,9 @@ function c28529976.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c28529976.cfilter(c,e,tp,ft)
-	local lv=c:GetLevel()
-	return lv>0 and lv<=2 and c:IsRace(RACE_PLANT)
+	return c:IsLevelBelow(2) and c:IsRace(RACE_PLANT)
 		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
-		and Duel.IsExistingMatchingCard(c28529976.filter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,lv+3,e,tp)
+		and Duel.IsExistingMatchingCard(c28529976.filter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,c:GetLevel()+3,e,tp)
 end
 function c28529976.filter(c,lv,e,tp)
 	return c:IsLevelBelow(lv) and c:IsRace(RACE_PLANT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

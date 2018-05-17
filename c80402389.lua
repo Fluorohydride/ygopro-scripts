@@ -28,14 +28,14 @@ function c80402389.check(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do
 		if tc:IsPreviousLocation(LOCATION_MZONE) and tc:IsReason(REASON_DESTROY)
-			and tc:IsRace(RACE_INSECT) and tc:GetLevel()~=0 and tc:IsPreviousPosition(POS_FACEUP) then
+			and tc:IsRace(RACE_INSECT) and tc:IsLevelAbove(1) and tc:IsPreviousPosition(POS_FACEUP) then
 			Duel.RaiseSingleEvent(c,EVENT_CUSTOM+80402389,e,r,rp,tc:GetControler(),tc:GetLevel())
 		end
 		tc=eg:GetNext()
 	end
 end
 function c80402389.filter(c,lv)
-	return c:IsRace(RACE_INSECT) and c:GetLevel()==lv and c:IsAbleToHand()
+	return c:IsRace(RACE_INSECT) and c:IsLevel(lv) and c:IsAbleToHand()
 end
 function c80402389.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e)

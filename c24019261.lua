@@ -16,7 +16,7 @@ function c24019261.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c24019261.filter(c,e,tp,tid)
 	return bit.band(c:GetReason(),0x41)==0x41 and c:GetTurnID()==tid
-		and c:GetLevel()==4 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsLevel(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c24019261.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tid=Duel.GetTurnCount()

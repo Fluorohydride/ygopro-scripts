@@ -16,6 +16,5 @@ function c2084239.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c2084239.tg(e,c)
-	local lv=c:GetLevel()
-	return lv>0 and lv<=2 and c:IsAttribute(ATTRIBUTE_WATER) and c:IsRace(RACE_AQUA)
+	return c:IsLevelBelow(2) and c:IsAttribute(ATTRIBUTE_WATER) and c:IsRace(RACE_AQUA)
 end

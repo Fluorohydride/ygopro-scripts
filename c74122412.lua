@@ -33,7 +33,7 @@ function c74122412.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c74122412.mat_filter(c)
-	return c:GetLevel()~=7
+	return not c:IsLevel(7)
 end
 function c74122412.indcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end

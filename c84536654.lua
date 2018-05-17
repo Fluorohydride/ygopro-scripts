@@ -11,7 +11,7 @@ function c84536654.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c84536654.spfilter(c,code,lv,e,tp)
-	return c:GetLevel()==lv and c:IsSetCard(0xa008) and not c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsLevel(lv) and c:IsSetCard(0xa008) and not c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c84536654.filter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x8) and c:IsType(TYPE_FUSION) and c:IsAbleToExtra()

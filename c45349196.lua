@@ -29,7 +29,7 @@ function c45349196.initial_effect(c)
 end
 c45349196.material_setcode=0x3b
 function c45349196.mfilter1(c)
-	return c:IsFusionSetCard(0x45) and c:IsFusionType(TYPE_NORMAL) and c:GetLevel()==6
+	return c:IsFusionSetCard(0x45) and c:IsFusionType(TYPE_NORMAL) and c:IsLevel(6)
 end
 function c45349196.mfilter2(c)
 	return c:IsFusionSetCard(0x3b) and c:IsFusionType(TYPE_NORMAL)

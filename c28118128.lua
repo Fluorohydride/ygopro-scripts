@@ -14,7 +14,7 @@ function c28118128.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c28118128.filter(c,e,tp)
-	return c:GetCode()~=28118128 and c:GetLevel()==2 and c:IsRace(RACE_BEAST)
+	return c:GetCode()~=28118128 and c:IsLevel(2) and c:IsRace(RACE_BEAST)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c28118128.operation(e,tp,eg,ep,ev,re,r,rp)

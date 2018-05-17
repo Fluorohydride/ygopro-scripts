@@ -23,7 +23,7 @@ function c14536035.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c14536035.spfilter(c)
-	return c:GetLevel()>=5 and c:IsAttribute(ATTRIBUTE_DARK)
+	return c:IsLevelAbove(5) and c:IsAttribute(ATTRIBUTE_DARK)
 end
 function c14536035.spcon(e,c)
 	if c==nil then return true end

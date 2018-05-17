@@ -41,7 +41,7 @@ function c4334811.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c4334811.cfilter(c)
-	return c:IsAttribute(ATTRIBUTE_EARTH) and c:IsRace(RACE_MACHINE) and c:GetLevel()==4 and c:IsAbleToDeckAsCost()
+	return c:IsAttribute(ATTRIBUTE_EARTH) and c:IsRace(RACE_MACHINE) and c:IsLevel(4) and c:IsAbleToDeckAsCost()
 end
 function c4334811.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c4334811.cfilter,tp,LOCATION_GRAVE,0,2,nil) end

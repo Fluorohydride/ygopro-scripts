@@ -44,8 +44,7 @@ function c65737274.cfilter(c,tp)
 	return c:IsRace(RACE_DRAGON) and Duel.IsExistingTarget(c65737274.lvfilter,tp,LOCATION_MZONE,0,1,c)
 end
 function c65737274.lvfilter(c)
-	local lv=c:GetLevel()
-	return c:IsFaceup() and lv>0 and lv~=8
+	return c:IsFaceup() and not c:IsLevel(8)
 end
 function c65737274.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c65737274.cfilter,1,nil,tp) end
@@ -60,7 +59,7 @@ function c65737274.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c65737274.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetLevel()~=8 then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsLevel(8) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

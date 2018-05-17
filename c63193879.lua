@@ -46,7 +46,7 @@ function c63193879.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g=Duel.SelectTarget(tp,c63193879.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	local op=0
-	if g:GetFirst():GetLevel()==1 then op=Duel.SelectOption(tp,aux.Stringid(63193879,1))
+	if g:GetFirst():IsLevel(1) then op=Duel.SelectOption(tp,aux.Stringid(63193879,1))
 	else op=Duel.SelectOption(tp,aux.Stringid(63193879,1),aux.Stringid(63193879,2)) end
 	e:SetLabel(op)
 end

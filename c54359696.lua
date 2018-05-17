@@ -11,7 +11,7 @@ function c54359696.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c54359696.filter(c)
-	return c:IsSetCard(0x6e) and c:GetLevel()==3 and c:IsAbleToHand()
+	return c:IsSetCard(0x6e) and c:IsLevel(3) and c:IsAbleToHand()
 end
 function c54359696.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

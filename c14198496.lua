@@ -25,7 +25,7 @@ function c14198496.operation(e,tp,eg,ep,ev,re,r,rp)
 	if ct==0 then return end
 	local dc=Duel.GetOperatedGroup():GetFirst()
 	Duel.ConfirmCards(1-tp,dc)
-	if dc:GetLevel()==1 then
+	if dc:IsLevel(1) then
 		Duel.BreakEffect()
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end

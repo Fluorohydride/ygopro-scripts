@@ -12,7 +12,7 @@ function c32476434.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c32476434.filter(c)
-	return c:IsFaceup() and c:GetLevel()==3 and c:IsRace(RACE_BEASTWARRIOR)
+	return c:IsFaceup() and c:IsLevel(3) and c:IsRace(RACE_BEASTWARRIOR)
 end
 function c32476434.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c32476434.filter(chkc) and chkc~=e:GetHandler() end

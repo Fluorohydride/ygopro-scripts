@@ -19,7 +19,7 @@ end
 function c58554959.otcon(e,c,minc)
 	if c==nil then return true end
 	return Duel.GetFieldGroupCount(c:GetControler(),0,LOCATION_MZONE)>0
-		and c:GetLevel()>6 and minc<=1 and Duel.CheckTribute(c,1)
+		and c:IsLevelAbove(7) and minc<=1 and Duel.CheckTribute(c,1)
 end
 function c58554959.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	local sg=Duel.SelectTribute(tp,c,1,1)

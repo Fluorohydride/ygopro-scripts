@@ -23,7 +23,7 @@ function c51912531.synlimit(e,c)
 	return not c:IsAttribute(ATTRIBUTE_EARTH)
 end
 function c51912531.filter(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_EARTH) and c:GetLevel()>1
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_EARTH) and c:IsLevelAbove(2)
 end
 function c51912531.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c51912531.filter(chkc) end

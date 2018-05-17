@@ -11,7 +11,7 @@ function c27217742.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c27217742.thfilter(c)
-	return c:IsRace(RACE_THUNDER) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:GetLevel()==4 and not c:IsCode(27217742) and c:IsAbleToHand()
+	return c:IsRace(RACE_THUNDER) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(4) and not c:IsCode(27217742) and c:IsAbleToHand()
 end
 function c27217742.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c27217742.thfilter,tp,LOCATION_DECK,0,1,nil) end

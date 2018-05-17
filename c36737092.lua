@@ -20,7 +20,7 @@ function c36737092.filter1(c,e,tp)
 		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
 function c36737092.filter2(c,lv,e,tp)
-	return c:IsType(TYPE_SYNCHRO) and c:GetLevel()==lv and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsType(TYPE_SYNCHRO) and c:IsLevel(lv) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c36737092.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

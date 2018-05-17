@@ -33,8 +33,7 @@ function c44635489.spcon(e,c)
 		and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c44635489.filter(c,clv)
-	local lv=c:GetLevel()
-	return c:IsSetCard(0x53) and lv~=0 and lv~=clv
+	return c:IsSetCard(0x53) and not c:IsLevel(clv)
 		and ((c:IsLocation(LOCATION_MZONE) and c:IsFaceup()) or c:IsLocation(LOCATION_GRAVE))
 end
 function c44635489.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

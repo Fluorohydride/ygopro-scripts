@@ -15,7 +15,7 @@ function c50732780.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)
 end
 function c50732780.filter(c,e,tp)
-	return c:IsRace(RACE_FIEND) and c:GetLevel()==1 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_FIEND) and c:IsLevel(1) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c50732780.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

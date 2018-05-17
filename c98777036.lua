@@ -67,7 +67,7 @@ function c98777036.sumop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c98777036.ctffilter(c,lv)
-	return c:IsControlerCanBeChanged() and c:IsFaceup() and c:GetLevel()==lv
+	return c:IsControlerCanBeChanged() and c:IsFaceup() and c:IsLevel(lv)
 end
 function c98777036.ctfilter(c,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()

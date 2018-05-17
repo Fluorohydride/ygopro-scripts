@@ -45,7 +45,7 @@ function c9348522.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c9348522.spfilter(c,e,tp)
-	return c:GetLevel()==9 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(9) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c9348522.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c9348522.spfilter(chkc,e,tp) end

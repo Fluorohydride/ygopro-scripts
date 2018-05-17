@@ -55,7 +55,7 @@ function c18634367.spcon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c18634367.cfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 end
 function c18634367.filter(c,e,tp)
-	return c:GetLevel()==1 and c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(1) and c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c18634367.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c18634367.filter(chkc,e,tp) end

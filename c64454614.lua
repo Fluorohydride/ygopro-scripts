@@ -63,11 +63,11 @@ function c64454614.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:IsSummonType(SUMMON_TYPE_LINK)
 end
 function c64454614.spfilter(c,e,tp)
-	return c:IsType(TYPE_NORMAL) and c:GetLevel()==4 and c:IsRace(RACE_WARRIOR) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsType(TYPE_NORMAL) and c:IsLevel(4) and c:IsRace(RACE_WARRIOR) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.IsExistingMatchingCard(c64454614.thfilter,tp,LOCATION_DECK,0,1,c)
 end
 function c64454614.thfilter(c)
-	return c:GetLevel()==4 and c:IsRace(RACE_WARRIOR) and c:IsAbleToHand()
+	return c:IsLevel(4) and c:IsRace(RACE_WARRIOR) and c:IsAbleToHand()
 end
 function c64454614.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

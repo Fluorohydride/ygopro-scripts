@@ -16,7 +16,7 @@ function c1845204.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,1000)
 end
 function c1845204.filter(c,e,tp)
-	return c:IsType(TYPE_FUSION) and c:GetLevel()<=5
+	return c:IsType(TYPE_FUSION) and c:IsLevelBelow(5)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial()
 end
 function c1845204.target(e,tp,eg,ep,ev,re,r,rp,chk)
