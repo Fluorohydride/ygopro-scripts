@@ -23,10 +23,10 @@ function c44762290.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c44762290.eqlimit(e,c)
-	return c:GetLevel()==1
+	return c:IsLevel(1)
 end
 function c44762290.filter(c)
-	return c:IsFaceup() and c:GetLevel()==1
+	return c:IsFaceup() and c:IsLevel(1)
 end
 function c44762290.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c44762290.filter(chkc) end

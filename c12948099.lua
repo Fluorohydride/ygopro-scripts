@@ -37,7 +37,7 @@ function c12948099.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c12948099.filter(c)
-	return c:IsType(TYPE_XYZ) and c:GetRank()==4 and c:IsAbleToExtra()
+	return c:IsType(TYPE_XYZ) and c:IsRank(4) and c:IsAbleToExtra()
 end
 function c12948099.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c12948099.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end

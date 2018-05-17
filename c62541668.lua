@@ -25,8 +25,7 @@ function c62541668.initial_effect(c)
 end
 c62541668.xyz_number=77
 function c62541668.ovfilter(c)
-	local rk=c:GetRank()
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_DARK) and c:IsType(TYPE_XYZ) and (rk==10 or rk==11)
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_DARK) and c:IsType(TYPE_XYZ) and (c:IsRank(10) or c:IsRank(11))
 end
 function c62541668.xyzop(e,tp,chk)
 	if chk==0 then return true end

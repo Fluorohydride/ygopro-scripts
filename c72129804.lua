@@ -38,7 +38,7 @@ function c72129804.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	local tc=tg:GetFirst()
 	while tc do
-		if tc:AddCounter(0x1041,1) and tc:GetLevel()>1 then
+		if tc:AddCounter(0x1041,1) and tc:IsLevelAbove(2) then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_CHANGE_LEVEL)

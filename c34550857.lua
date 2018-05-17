@@ -20,7 +20,7 @@ function c34550857.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c34550857.thfilter(c)
-	return c:IsRace(RACE_WINDBEAST) and c:GetLevel()==1 and c:IsAbleToHand()
+	return c:IsRace(RACE_WINDBEAST) and c:IsLevel(1) and c:IsAbleToHand()
 end
 function c34550857.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c34550857.thfilter,tp,LOCATION_DECK,0,1,nil) end

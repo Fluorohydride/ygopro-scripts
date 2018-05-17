@@ -12,7 +12,7 @@ function c34206604.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c34206604.filter(c,e,tp)
-	return c:IsType(TYPE_FUSION) and c:GetLevel()<=6 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsType(TYPE_FUSION) and c:IsLevelBelow(6) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c34206604.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000) end

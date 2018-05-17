@@ -20,7 +20,7 @@ function c7500772.initial_effect(c)
 end
 function c7500772.ntcon(e,c,minc)
 	if c==nil then return true end
-	return minc==0 and c:GetLevel()>4 and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
+	return minc==0 and c:IsLevelAbove(5) and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 		and Duel.GetFieldGroupCount(c:GetControler(),0,LOCATION_MZONE)>1
 end
 function c7500772.filter(c)

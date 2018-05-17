@@ -24,7 +24,7 @@ function c9402966.filter(c,e,tp,lv)
 		and Duel.IsExistingMatchingCard(c9402966.scfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,lv+c:GetOriginalLevel())
 end
 function c9402966.scfilter(c,e,tp,lv)
-	return c:IsSetCard(0x9a) and c:GetLevel()==lv and c:IsType(TYPE_SYNCHRO)
+	return c:IsSetCard(0x9a) and c:IsLevel(lv) and c:IsType(TYPE_SYNCHRO)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false)
 end
 function c9402966.sctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

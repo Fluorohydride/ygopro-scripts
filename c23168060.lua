@@ -11,7 +11,7 @@ function c23168060.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c23168060.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetLevel()~=3
+	return not e:GetHandler():IsLevel(3)
 end
 function c23168060.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -111,10 +111,7 @@ function c21105106.ritfilter2(c,lv,mg)
 	if lv<1 then return false end
 	local mg2=mg:Clone()
 	mg2:Remove(Card.IsRace,nil,c:GetRace())
-	return mg2:IsExists(c21105106.ritfilter3,1,nil,lv)
-end
-function c21105106.ritfilter3(c,lv)
-	return c:GetLevel()==lv
+	return mg2:IsExists(Card.IsLevel,1,nil,lv)
 end
 function c21105106.ritual_custom_operation(c,mg)
 	local tp=c:GetControler()
@@ -131,7 +128,7 @@ function c21105106.ritual_custom_operation(c,mg)
 	lv=lv-tc2:GetLevel()
 	g:Remove(Card.IsRace,nil,tc2:GetRace())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g3=g:FilterSelect(tp,c21105106.ritfilter3,1,1,nil,lv)
+	local g3=g:FilterSelect(tp,Card.IsLevel,1,1,nil,lv)
 	g1:Merge(g2)
 	g1:Merge(g3)
 	c:SetMaterial(g1)

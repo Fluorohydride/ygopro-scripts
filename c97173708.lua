@@ -22,11 +22,10 @@ function c97173708.rfilter1(c,e,tp)
 		and Duel.IsExistingTarget(c97173708.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp,lv)
 end
 function c97173708.rfilter2(c,clv)
-	local lv=c:GetLevel()
-	return lv==clv and c:IsType(TYPE_TOKEN)
+	return c:IsLevel(clv) and c:IsType(TYPE_TOKEN)
 end
 function c97173708.spfilter(c,e,tp,clv)
-	return c:GetLevel()==clv and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(clv) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c97173708.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c97173708.spfilter(chkc,e,tp,e:GetLabel()) end

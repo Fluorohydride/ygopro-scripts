@@ -17,7 +17,7 @@ function c71541986.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEDOWN)
 end
 function c71541986.spfilter(c,e,tp)
-	return c:IsAttribute(ATTRIBUTE_WATER) and c:GetLevel()==8 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsAttribute(ATTRIBUTE_WATER) and c:IsLevel(8) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c71541986.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)

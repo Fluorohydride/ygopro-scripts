@@ -21,8 +21,7 @@ function c61777313.synlimit(e,c)
 	return c:IsSetCard(0x42)
 end
 function c61777313.cfilter(c,lv)
-	local clv=c:GetLevel()
-	return c:IsSetCard(0x42) and clv>0 and clv~=lv and c:IsAbleToGraveAsCost()
+	return c:IsSetCard(0x42) and not c:IsLevel(lv) and c:IsAbleToGraveAsCost()
 end
 function c61777313.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c61777313.cfilter,tp,LOCATION_DECK,0,1,nil,e:GetHandler():GetLevel()) end

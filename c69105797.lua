@@ -61,7 +61,7 @@ function c69105797.cop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	while tc do
 		tc:AddCounter(0x1041,1)
-		if tc:GetLevel()>1 then
+		if tc:IsLevelAbove(2) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_CHANGE_LEVEL)

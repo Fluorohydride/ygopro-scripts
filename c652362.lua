@@ -12,8 +12,7 @@ function c652362.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c652362.filter(c,e,tp)
-	local lv=c:GetLevel()
-	return lv>0 and lv<=4 and c:IsSetCard(0xc) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevelBelow(4) and c:IsSetCard(0xc) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c652362.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c652362.filter(chkc,e,tp) end

@@ -58,7 +58,7 @@ function c62709239.spfilter1(c,e,tp)
 		and Duel.IsExistingTarget(c62709239.spfilter2,tp,LOCATION_GRAVE,0,1,c,c:GetLevel(),e,tp)
 end
 function c62709239.spfilter2(c,lv,e,tp)
-	return c:GetLevel()==lv and c:IsSetCard(0x10db) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(lv) and c:IsSetCard(0x10db) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c62709239.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

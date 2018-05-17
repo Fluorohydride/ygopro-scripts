@@ -35,7 +35,7 @@ function c83048208.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return not c:IsStatus(STATUS_CONTINUOUS_POS) and c:IsPosition(POS_FACEUP_DEFENSE) and c:IsPreviousPosition(POS_FACEUP_ATTACK)
 end
 function c83048208.thfilter(c)
-	return c:IsRace(RACE_INSECT) and c:GetLevel()==3 and c:IsAbleToHand()
+	return c:IsRace(RACE_INSECT) and c:IsLevel(3) and c:IsAbleToHand()
 end
 function c83048208.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c83048208.thfilter,tp,LOCATION_DECK,0,1,nil) end

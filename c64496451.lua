@@ -70,7 +70,7 @@ function c64496451.splimit(e,c)
 end
 function c64496451.ntcon(e,c,minc)
 	if c==nil then return true end
-	return minc==0 and c:GetLevel()>4 and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
+	return minc==0 and c:IsLevelAbove(5) and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c64496451.lvcon(e)
 	return e:GetHandler():GetMaterialCount()==0

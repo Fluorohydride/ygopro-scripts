@@ -15,7 +15,7 @@ function c86474024.filter1(c,tp)
 	return lv1>0 and c:IsFaceup() and Duel.IsExistingMatchingCard(c86474024.filter2,tp,LOCATION_MZONE,0,1,c,lv1)
 end
 function c86474024.filter2(c,lv1)
-	return c:IsFaceup() and c:GetLevel()==lv1
+	return c:IsFaceup() and c:IsLevel(lv1)
 end
 function c86474024.condition(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsChainNegatable(ev)

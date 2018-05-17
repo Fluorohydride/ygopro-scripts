@@ -13,7 +13,7 @@ function c32566831.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c32566831.cfilter(c)
-	return c:IsSetCard(0x3b) and c:GetLevel()==7 and c:IsAbleToGraveAsCost()
+	return c:IsSetCard(0x3b) and c:IsLevel(7) and c:IsAbleToGraveAsCost()
 end
 function c32566831.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c32566831.cfilter,tp,LOCATION_HAND,0,1,nil) end
@@ -26,7 +26,7 @@ function c32566831.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
 end
 function c32566831.tgfilter(c)
-	return c:IsSetCard(0x3b) and c:GetLevel()==7 and c:IsAbleToGrave()
+	return c:IsSetCard(0x3b) and c:IsLevel(7) and c:IsAbleToGrave()
 end
 function c32566831.activate(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)

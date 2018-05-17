@@ -24,10 +24,10 @@ function c7817703.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c7817703.eqlimit(e,c)
-	return c:IsSetCard(0x26) and c:GetLevel()==3
+	return c:IsSetCard(0x26) and c:IsLevel(3)
 end
 function c7817703.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x26) and c:GetLevel()==3
+	return c:IsFaceup() and c:IsSetCard(0x26) and c:IsLevel(3)
 end
 function c7817703.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c7817703.filter(chkc) end

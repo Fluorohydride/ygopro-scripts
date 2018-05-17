@@ -20,7 +20,7 @@ function c57421866.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c57421866.filter(c)
-	return c:IsFaceup() and c:GetLevel()>=5
+	return c:IsFaceup() and c:IsLevelAbove(5)
 end
 function c57421866.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c57421866.filter(chkc) end

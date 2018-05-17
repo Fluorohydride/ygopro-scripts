@@ -20,7 +20,7 @@ function c33846209.desfilter(c,tc,ec)
 	return c:GetEquipTarget()~=tc and c~=ec
 end
 function c33846209.costfilter(c,ec)
-	if c:IsFacedown() or c:GetLevel()~=4 or not c:IsType(TYPE_DUAL) then return false end
+	if c:IsFacedown() or not c:IsLevel(4) or not c:IsType(TYPE_DUAL) then return false end
 	return Duel.IsExistingTarget(c33846209.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,c,ec)
 end
 function c33846209.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

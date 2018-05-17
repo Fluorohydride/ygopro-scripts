@@ -28,7 +28,7 @@ function c58531587.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c58531587.atktarget(e,c)
-	return c:GetLevel()>=4
+	return c:IsLevelAbove(4)
 end
 function c58531587.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp

@@ -27,7 +27,7 @@ function c55010259.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c55010259.spfilter1(c,e,tp)
-	return c:IsRace(RACE_MACHINE) and c:GetLevel()==4 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_MACHINE) and c:IsLevel(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c55010259.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -46,7 +46,7 @@ function c55010259.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0
 end
 function c55010259.spfilter2(c,e,tp)
-	return c:IsSetCard(0x51) and c:GetLevel()==4 and not c:IsCode(55010259) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x51) and c:IsLevel(4) and not c:IsCode(55010259) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c55010259.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

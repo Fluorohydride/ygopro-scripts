@@ -60,7 +60,7 @@ function c10736540.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c10736540.spfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x107a) and c:GetLevel()==5
+	return c:IsFaceup() and c:IsSetCard(0x107a) and c:IsLevel(5)
 end
 function c10736540.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c10736540.spfilter(chkc) end
@@ -73,7 +73,7 @@ function c10736540.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c10736540.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) or tc:GetLevel()<2 then return end
+	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) or tc:IsLevel(1) then return end
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

@@ -32,7 +32,7 @@ function c25853045.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c25853045.ovfilter(c)
-	return c:IsFaceup() and c:GetRank()==3 and c:IsAttribute(ATTRIBUTE_WATER) and c:GetOverlayCount()==0
+	return c:IsFaceup() and c:IsRank(3) and c:IsAttribute(ATTRIBUTE_WATER) and c:GetOverlayCount()==0
 end
 function c25853045.atkval(e,c)
 	return c:GetOverlayCount()*200

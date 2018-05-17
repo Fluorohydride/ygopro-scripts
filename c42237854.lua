@@ -29,7 +29,7 @@ function c42237854.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c42237854.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:GetLevel()==4
+	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsLevel(4)
 end
 function c42237854.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c42237854.filter(chkc) end

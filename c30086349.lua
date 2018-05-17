@@ -28,10 +28,10 @@ function c30086349.initial_effect(c)
 end
 c30086349.material_setcode=0x3b
 function c30086349.mfilter1(c)
-	return c:IsFusionSetCard(0x3b) and c:GetLevel()==7
+	return c:IsFusionSetCard(0x3b) and c:IsLevel(7)
 end
 function c30086349.mfilter2(c)
-	return c:IsRace(RACE_DRAGON) and c:GetLevel()==6
+	return c:IsRace(RACE_DRAGON) and c:IsLevel(6)
 end
 function c30086349.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)

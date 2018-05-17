@@ -22,7 +22,7 @@ function c47882565.filter1(c,e,tp)
 		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 end
 function c47882565.filter2(c,e,tp,mc,rk)
-	return c:GetRank()==rk and c:IsSetCard(0xe5) and mc:IsCanBeXyzMaterial(c)
+	return c:IsRank(rk) and c:IsSetCard(0xe5) and mc:IsCanBeXyzMaterial(c)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
 end
 function c47882565.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

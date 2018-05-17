@@ -67,7 +67,7 @@ function c66141736.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c66141736.spfilter2(c,e,tp)
-	return c:IsSetCard(0x57) and c:GetLevel()==1 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x57) and c:IsLevel(1) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c66141736.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c66141736.spfilter2(chkc,e,tp) end

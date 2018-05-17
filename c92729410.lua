@@ -30,7 +30,7 @@ function c92729410.splimit(e,c)
 	return c:GetRace()~=RACE_BEAST
 end
 function c92729410.filter(c,e,tp)
-	return c:GetCode()~=92729410 and c:GetLevel()==2 and c:IsRace(RACE_BEAST)
+	return c:GetCode()~=92729410 and c:IsLevel(2) and c:IsRace(RACE_BEAST)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
 end
 function c92729410.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

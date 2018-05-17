@@ -12,7 +12,7 @@ function c30399511.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c30399511.filter(c)
-	return c:GetLevel()==3 and c:IsSetCard(0x2) and c:IsType(TYPE_EFFECT) and c:IsAbleToHand()
+	return c:IsLevel(3) and c:IsSetCard(0x2) and c:IsType(TYPE_EFFECT) and c:IsAbleToHand()
 end
 function c30399511.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c30399511.filter,tp,LOCATION_DECK,0,1,nil) end

@@ -31,8 +31,7 @@ function c64319467.splimit(e,c)
 	return c:GetAttribute()~=ATTRIBUTE_WATER
 end
 function c64319467.filter(c,e,tp)
-	local lv=c:GetLevel()
-	return (lv==3 or lv==4) and c:IsRace(RACE_FISH) and c:IsAttribute(ATTRIBUTE_WATER)
+	return (c:IsLevel(3) or c:IsLevel(4)) and c:IsRace(RACE_FISH) and c:IsAttribute(ATTRIBUTE_WATER)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c64319467.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

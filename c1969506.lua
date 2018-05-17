@@ -27,7 +27,7 @@ function c1969506.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c1969506.filter(c,e,tp)
-	return c:IsSetCard(0x83) and c:GetLevel()==8 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x83) and c:IsLevel(8) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c1969506.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c1969506.filter(chkc,e,tp) end

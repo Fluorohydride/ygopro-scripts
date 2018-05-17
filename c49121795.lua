@@ -71,7 +71,7 @@ function c49121795.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:GetPreviousControler()==tp and rp==1-tp and c:IsReason(REASON_DESTROY)
 end
 function c49121795.thfilter(c)
-	return c:IsRace(RACE_MACHINE) and c:GetLevel()==4 and c:IsAbleToHand()
+	return c:IsRace(RACE_MACHINE) and c:IsLevel(4) and c:IsAbleToHand()
 end
 function c49121795.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c49121795.thfilter,tp,LOCATION_DECK,0,1,nil) end

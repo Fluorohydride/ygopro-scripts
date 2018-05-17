@@ -34,7 +34,7 @@ function c7634581.value(e,c)
 	return Duel.GetFieldGroupCount(c:GetControler(),0,LOCATION_MZONE)*1000
 end
 function c7634581.efilter(e,c)
-	return c:IsType(TYPE_NORMAL) and c:GetLevel()==4
+	return c:IsType(TYPE_NORMAL) and c:IsLevel(4)
 end
 function c7634581.cfilter(c,tp)
 	return bit.band(c:GetPreviousTypeOnField(),TYPE_NORMAL)~=0 and c:GetPreviousControler()==tp

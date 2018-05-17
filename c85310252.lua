@@ -38,7 +38,7 @@ function c85310252.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c85310252.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	local tc=g:GetFirst()
 	local op=0
-	if tc:GetLevel()==1 then op=Duel.SelectOption(tp,aux.Stringid(85310252,1))
+	if tc:IsLevel(1) then op=Duel.SelectOption(tp,aux.Stringid(85310252,1))
 	else op=Duel.SelectOption(tp,aux.Stringid(85310252,1),aux.Stringid(85310252,2)) end
 	e:SetLabel(op)
 end

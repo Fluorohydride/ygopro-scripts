@@ -45,7 +45,7 @@ function c43464884.splimit(e,c)
 	return not c:IsRace(RACE_BEASTWARRIOR)
 end
 function c43464884.cgfilter(c,mc)
-	return c:IsRace(RACE_BEASTWARRIOR) and c:GetLevel()>0 and not (c:GetLevel()==mc:GetLevel() and c:IsAttribute(mc:GetAttribute()))
+	return c:IsRace(RACE_BEASTWARRIOR) and c:GetLevel()>0 and not (c:IsLevel(mc:GetLevel()) and c:IsAttribute(mc:GetAttribute()))
 end
 function c43464884.cgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()

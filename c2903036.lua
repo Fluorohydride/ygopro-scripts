@@ -20,7 +20,7 @@ function c2903036.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c2903036.filter(c,e,tp)
-	return c:GetLevel()==7 and c:IsSummonableCard() and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(7) and c:IsSummonableCard() and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c2903036.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c2903036.filter,tp,LOCATION_HAND,0,1,nil,e,tp) end

@@ -32,10 +32,10 @@ function c96142517.filter1(c,e,tp)
 		and Duel.IsExistingMatchingCard(c96142517.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,rk+1)
 end
 function c96142517.filter2(c,e,rk)
-	return c:IsType(TYPE_XYZ) and c:GetRank()==rk and c:IsCanBeEffectTarget(e)
+	return c:IsType(TYPE_XYZ) and c:IsRank(rk) and c:IsCanBeEffectTarget(e)
 end
 function c96142517.filter3(c)
-	return c:IsType(TYPE_XYZ) and c:GetRank()==8 and c:IsCode(48995978)
+	return c:IsType(TYPE_XYZ) and c:IsRank(8) and c:IsCode(48995978)
 end
 function c96142517.spfilter(c,e,tp,rk)
 	if c:GetOriginalCode()==6165656 then
@@ -44,14 +44,14 @@ function c96142517.spfilter(c,e,tp,rk)
 		return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and g1:GetCount()>0 and g2:GetCount()>0 
 			and (g1:IsExists(Card.IsCode,1,nil,48995978) or g2:IsExists(Card.IsCode,1,nil,48995978))
 	else
-		return c:GetRank()==rk and (c:IsSetCard(0x1048) or c:IsSetCard(0x1073))	and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		return c:IsRank(rk) and (c:IsSetCard(0x1048) or c:IsSetCard(0x1073))	and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 	end
 end
 function c96142517.spfilter2(c,e,tp,rk,g)
 	if c:GetOriginalCode()==6165656 then
 		return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and g:IsExists(Card.IsCode,1,nil,48995978)
 	else
-		return c:GetRank()==rk and (c:IsSetCard(0x1048) or c:IsSetCard(0x1073))	and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		return c:IsRank(rk) and (c:IsSetCard(0x1048) or c:IsSetCard(0x1073))	and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 	end
 end
 function c96142517.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

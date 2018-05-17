@@ -16,5 +16,5 @@ function c3136426.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c3136426.target(e,c)
-	return c:GetLevel()>3 and c:IsFaceup()
+	return c:IsLevelAbove(4) and c:IsFaceup()
 end

@@ -22,7 +22,7 @@ function c27407330.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c27407330.spfilter(c)
-	return c:GetLevel()>=5 and c:IsAttribute(ATTRIBUTE_LIGHT)
+	return c:IsLevelAbove(5) and c:IsAttribute(ATTRIBUTE_LIGHT)
 end
 function c27407330.spcon(e,c)
 	if c==nil then return true end

@@ -15,9 +15,6 @@ function c62376646.spfilter(c,e,tp)
 	return c:IsSetCard(0xfc) and c:GetLevel()>0
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE) and c:IsCanBeEffectTarget(e)
 end
-function c62376646.rfilter(c,lv)
-	return c:GetLevel()==lv
-end
 function c62376646.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local g=Duel.GetMatchingGroup(c62376646.spfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
@@ -26,7 +23,7 @@ function c62376646.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and g:GetClassCount(Card.GetLevel)>=2 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g1=g:Select(tp,1,1,nil)
-	g:Remove(c62376646.rfilter,nil,g1:GetFirst():GetLevel())
+	g:Remove(Card.IsLevel,nil,g1:GetFirst():GetLevel())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g2=g:Select(tp,1,1,nil)
 	g1:Merge(g2)

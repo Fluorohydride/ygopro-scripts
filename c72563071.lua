@@ -22,7 +22,7 @@ function c72563071.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,c72563071.cfilter,1,1,REASON_COST+REASON_DISCARD)
 end
 function c72563071.spfilter(c,e,tp)
-	return c:GetLevel()==6 and c:IsAttribute(ATTRIBUTE_DARK) and c:IsRace(RACE_MACHINE)
+	return c:IsLevel(6) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsRace(RACE_MACHINE)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c72563071.target(e,tp,eg,ep,ev,re,r,rp,chk)

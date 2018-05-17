@@ -18,7 +18,7 @@ function c36630403.filter1(c,e,tp,lv)
 		and Duel.IsExistingMatchingCard(c36630403.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,lv+clv)
 end
 function c36630403.filter2(c,e,tp,lv)
-	return c:GetLevel()==lv and c:IsRace(RACE_ZOMBIE) and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(lv) and c:IsRace(RACE_ZOMBIE) and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c36630403.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c36630403.filter1(chkc,e,tp,e:GetHandler():GetLevel()) end

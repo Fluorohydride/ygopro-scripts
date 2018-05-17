@@ -11,7 +11,7 @@ function c58441120.initial_effect(c)
 end
 function c58441120.filter(c)
 	local lv=c:GetLevel()
-	return c:IsFaceup() and lv>0 and lv~=4
+	return c:IsFaceup() and not c:IsLevel(4)
 end
 function c58441120.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c58441120.filter(chkc) end

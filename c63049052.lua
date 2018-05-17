@@ -40,7 +40,7 @@ function c63049052.tgop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetOwner():CancelToGrave(false)
 end
 function c63049052.filter(c)
-	return c:IsFaceup() and c:GetRank()==4
+	return c:IsFaceup() and c:IsRank(4)
 end
 function c63049052.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c63049052.filter(chkc) end

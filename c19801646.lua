@@ -41,7 +41,7 @@ function c19801646.thcon(e,tp,eg,ep,ev,re,r,rp)
 		and c:IsPreviousPosition(POS_FACEUP) and not c:IsLocation(LOCATION_DECK)
 end
 function c19801646.thfilter(c)
-	return c:GetLevel()==7 and c:IsAttribute(ATTRIBUTE_WATER) and c:IsAbleToHand()
+	return c:IsLevel(7) and c:IsAttribute(ATTRIBUTE_WATER) and c:IsAbleToHand()
 end
 function c19801646.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c19801646.thfilter,tp,LOCATION_DECK,0,1,nil) end

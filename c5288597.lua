@@ -28,7 +28,7 @@ function c5288597.cfilter(c,e,tp)
 		and Duel.IsExistingMatchingCard(c5288597.spfilter,tp,LOCATION_DECK,0,1,nil,lv+1,rc,att,e,tp)
 end
 function c5288597.spfilter(c,lv,rc,att,e,tp)
-	return c:GetLevel()==lv and c:IsRace(rc) and c:IsAttribute(att) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(lv) and c:IsRace(rc) and c:IsAttribute(att) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c5288597.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

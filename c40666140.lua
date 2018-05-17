@@ -16,7 +16,7 @@ function c40666140.filter(c,e,tp)
 	return c:IsFaceup() and lv>0 and Duel.IsExistingMatchingCard(c40666140.filter2,tp,LOCATION_HAND,0,1,nil,lv,e,tp)
 end
 function c40666140.filter2(c,lv,e,tp)
-	return c:IsSetCard(0x42) and c:GetLevel()<=lv and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x42) and c:IsLevelBelow(lv) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c40666140.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c40666140.filter(chkc,e,tp) end

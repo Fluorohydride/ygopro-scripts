@@ -24,8 +24,7 @@ function c70546737.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c70546737.filter(c,clv)
-	local lv=c:GetLevel()
-	return c:IsSetCard(0x87) and lv~=0 and lv~=clv
+	return c:IsSetCard(0x87) and not c:IsLevel(clv)
 		and ((c:IsLocation(LOCATION_MZONE) and c:IsFaceup()) or c:IsLocation(LOCATION_GRAVE))
 end
 function c70546737.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

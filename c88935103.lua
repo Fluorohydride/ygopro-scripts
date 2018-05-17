@@ -65,7 +65,7 @@ function c88935103.valcheck(e,c)
 	end
 end
 function c88935103.cfilter(c)
-	return c:IsFaceup() and c:GetLevel()>=7 and c:IsSetCard(0x99)
+	return c:IsFaceup() and c:IsLevelAbove(7) and c:IsSetCard(0x99)
 end
 function c88935103.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c88935103.cfilter(chkc) end
@@ -78,7 +78,7 @@ function c88935103.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c88935103.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) or tc:GetLevel()<4 then return end
+	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) or tc:IsLevelBelow(3) then return end
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

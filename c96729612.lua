@@ -10,7 +10,7 @@ function c96729612.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c96729612.filter(c)
-	return bit.band(c:GetType(),0x81)==0x81 and c:GetLevel()<=7 and c:IsAbleToHand()
+	return bit.band(c:GetType(),0x81)==0x81 and c:IsLevelBelow(7) and c:IsAbleToHand()
 end
 function c96729612.filter2(c)
 	return bit.band(c:GetType(),0x82)==0x82 and c:IsAbleToHand()

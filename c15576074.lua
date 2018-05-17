@@ -14,7 +14,7 @@ function c15576074.filter(c)
 	return c:IsSetCard(0x57) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck()
 end
 function c15576074.filter2(c)
-	return c:GetLevel()==4 and c:IsAbleToHand()
+	return c:IsLevel(4) and c:IsAbleToHand()
 end
 function c15576074.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c15576074.filter(chkc) end

@@ -11,7 +11,7 @@ function c78845026.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c78845026.filter(c)
-	return c:IsFaceup() and c:GetLevel()==4 and c:IsAttribute(ATTRIBUTE_LIGHT) and not c:IsType(TYPE_TUNER)
+	return c:IsFaceup() and c:IsLevel(4) and c:IsAttribute(ATTRIBUTE_LIGHT) and not c:IsType(TYPE_TUNER)
 end
 function c78845026.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c78845026.filter(chkc) end

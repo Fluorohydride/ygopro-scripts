@@ -22,7 +22,7 @@ function c43708640.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c43708640.filter(c,e,tp)
-	return c:IsType(TYPE_NORMAL) and c:GetLevel()==4 and c:IsRace(RACE_BEASTWARRIOR)
+	return c:IsType(TYPE_NORMAL) and c:IsLevel(4) and c:IsRace(RACE_BEASTWARRIOR)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c43708640.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

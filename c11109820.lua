@@ -21,8 +21,7 @@ function c11109820.filter2(c,e,tp,mc,rk)
 		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
 end
 function c11109820.spfilter(c,e,tp,rk)
-	local crk=c:GetRank()
-	return (crk==rk or crk==rk-1) and not c:IsSetCard(0x48) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return (c:IsRank(rk) or c:IsRank(rk-1)) and not c:IsSetCard(0x48) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c11109820.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

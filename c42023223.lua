@@ -29,7 +29,7 @@ function c42023223.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c42023223.thfilter(c)
-	return c:IsSetCard(0xe9) and c:GetLevel()==8 and c:IsAbleToHand()
+	return c:IsSetCard(0xe9) and c:IsLevel(8) and c:IsAbleToHand()
 end
 function c42023223.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c42023223.thfilter,tp,LOCATION_DECK,0,1,nil) end
@@ -51,7 +51,7 @@ function c42023223.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c42023223.spfilter(c,e,tp)
-	return c:IsSetCard(0x2066) and c:GetLevel()==4 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x2066) and c:IsLevel(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c42023223.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1

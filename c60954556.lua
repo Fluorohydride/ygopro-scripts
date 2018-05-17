@@ -26,7 +26,7 @@ function c60954556.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c60954556.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c60954556.spfilter(c,e,tp)
-	return c:IsRace(RACE_WINDBEAST) and c:GetLevel()==1 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_WINDBEAST) and c:IsLevel(1) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c60954556.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

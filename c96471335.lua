@@ -29,7 +29,7 @@ function c96471335.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c96471335.ovfilter(c)
-	return c:IsFaceup() and c:GetRank()==6 and c:IsRace(RACE_SPELLCASTER)
+	return c:IsFaceup() and c:IsRank(6) and c:IsRace(RACE_SPELLCASTER)
 end
 function c96471335.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

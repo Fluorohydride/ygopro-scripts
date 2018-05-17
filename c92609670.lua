@@ -54,7 +54,7 @@ function c92609670.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c92609670.lvfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x106f) and c:GetLevel()>1
+	return c:IsFaceup() and c:IsSetCard(0x106f) and c:IsLevelAbove(2)
 end
 function c92609670.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c92609670.lvfilter,tp,LOCATION_MZONE,0,1,nil) end

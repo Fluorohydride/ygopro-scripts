@@ -24,5 +24,5 @@ function c83266092.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c83266092.target(e,c)
-	return c:GetLevel()>=6 and c:IsSummonType(SUMMON_TYPE_SPECIAL)
+	return c:IsLevelAbove(6) and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end

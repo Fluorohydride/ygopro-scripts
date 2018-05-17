@@ -14,7 +14,7 @@ function c23536866.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c23536866.filter(c,e,tp)
-	return c:GetLevel()==5 and c:IsAttribute(ATTRIBUTE_WATER) and not c:IsCode(23536866)
+	return c:IsLevel(5) and c:IsAttribute(ATTRIBUTE_WATER) and not c:IsCode(23536866)
 		and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c23536866.xyzfilter(c,mg)

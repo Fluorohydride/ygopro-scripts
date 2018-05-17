@@ -15,7 +15,7 @@ function c2295440.costfilter(c,e,tp)
 		and Duel.IsExistingMatchingCard(c2295440.filter,tp,LOCATION_HAND+LOCATION_DECK,0,1,c,e,tp)
 end
 function c2295440.filter(c,e,tp)
-	return c:GetLevel()==1 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(1) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c2295440.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)

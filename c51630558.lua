@@ -12,7 +12,7 @@ function c51630558.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c51630558.filter(c)
-	return c:IsFaceup() and c:GetLevel()>=8
+	return c:IsFaceup() and c:IsLevelAbove(8)
 end
 function c51630558.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c51630558.filter,1,nil) end

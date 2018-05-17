@@ -15,7 +15,7 @@ function c5728014.filter(c,e,tp)
 	return c:IsFaceup() and lv>0 and Duel.IsExistingMatchingCard(c5728014.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp,lv)
 end
 function c5728014.spfilter(c,e,tp,lv)
-	return c:GetLevel()==lv and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(lv) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c5728014.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

@@ -21,7 +21,7 @@ function c72549351.mzfilter(c,tp)
 	return c:IsControler(tp) and c:GetSequence()<5
 end
 function c72549351.spfilter(c,e,tp)
-	return c:IsRace(RACE_DRAGON) and c:GetLevel()==8 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_DRAGON) and c:IsLevel(8) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c72549351.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c72549351.rfilter,nil,tp)

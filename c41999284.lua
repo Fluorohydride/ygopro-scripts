@@ -1,7 +1,7 @@
 --リンクリボー
 function c41999284.initial_effect(c)
 	c:EnableReviveLimit()
-	aux.AddLinkProcedure(c,c41999284.matfilter,1)
+	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLevel,1),1)
 	--atk to 0
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_ATKCHANGE)
@@ -24,9 +24,6 @@ function c41999284.initial_effect(c)
 	e2:SetOperation(c41999284.spop)
 	c:RegisterEffect(e2)
 end
-function c41999284.matfilter(c)
-	return c:GetLevel()==1
-end
 function c41999284.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer() and aux.nzatk(Duel.GetAttacker())
 end
@@ -46,7 +43,7 @@ function c41999284.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c41999284.cfilter(c,tp)
-	return c:GetLevel()==1 and Duel.GetMZoneCount(tp,c)>0
+	return c:IsLevel(1) and Duel.GetMZoneCount(tp,c)>0
 end
 function c41999284.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c41999284.cfilter,1,nil,tp) end

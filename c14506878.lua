@@ -11,7 +11,7 @@ function c14506878.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c14506878.filter(c)
-	return c:GetLevel()==4 and c:IsAbleToHand()
+	return c:IsLevel(4) and c:IsAbleToHand()
 end
 function c14506878.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c14506878.filter(chkc) end

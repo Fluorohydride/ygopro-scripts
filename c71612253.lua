@@ -37,7 +37,7 @@ function c71612253.initial_effect(c)
 	end
 end
 function c71612253.ovfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsSetCard(0x10af) and c:GetRank()==4
+	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsSetCard(0x10af) and c:IsRank(4)
 end
 function c71612253.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if bit.band(r,REASON_EFFECT)~=0 then

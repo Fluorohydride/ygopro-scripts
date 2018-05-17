@@ -16,8 +16,7 @@ function c88283496.retcon(e,tp,eg,ep,ev,re,r,rp)
 	if tc==e:GetHandler() then tc=Duel.GetAttackTarget() end
 	if not tc then return false end
 	e:SetLabelObject(tc)
-	local lv=tc:GetLevel()
-	return lv>0 and lv<=4 and not tc:IsStatus(STATUS_BATTLE_DESTROYED)
+	return IsLevelBelow(4) and not tc:IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c88283496.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk ==0 then	return e:GetLabelObject():IsAbleToHand() end

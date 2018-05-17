@@ -20,7 +20,7 @@ function c88197162.condition(e,tp,eg,ep,ev,re,r,rp)
 	return not Duel.IsExistingMatchingCard(c88197162.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c88197162.filter(c)
-	return c:IsFaceup() and c:GetLevel()==4 and c:IsSummonType(SUMMON_TYPE_NORMAL)
+	return c:IsFaceup() and c:IsLevel(4) and c:IsSummonType(SUMMON_TYPE_NORMAL)
 end
 function c88197162.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetActivityCount(tp,ACTIVITY_SPSUMMON)==0

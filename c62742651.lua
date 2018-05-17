@@ -24,7 +24,7 @@ function c62742651.ntfilter(c)
 end
 function c62742651.ntcon(e,c,minc)
 	if c==nil then return true end
-	return minc==0 and c:GetLevel()>4 and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
+	return minc==0 and c:IsLevelAbove(5) and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c62742651.ntfilter,c:GetControler(),LOCATION_MZONE,0,1,nil)
 end
 function c62742651.damcon(e,tp,eg,ep,ev,re,r,rp)

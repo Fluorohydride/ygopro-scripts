@@ -33,7 +33,7 @@ function c90075978.sfilter(c)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsRace(RACE_REPTILE) and c:IsCanTurnSet()
 end
 function c90075978.spfilter(c,e,tp)
-	return c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsRace(RACE_REPTILE) and c:GetLevel()>=7
+	return c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsRace(RACE_REPTILE) and c:IsLevelAbove(7)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c90075978.setcon(e,tp,eg,ep,ev,re,r,rp)

@@ -70,7 +70,7 @@ function c16259549.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c16259549.filter(c,e)
-	return c:GetLevel()==3 and c:IsCanBeEffectTarget(e) and c:IsAbleToDeck()
+	return c:IsLevel(3) and c:IsCanBeEffectTarget(e) and c:IsAbleToDeck()
 end
 function c16259549.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c16259549.filter(chkc,e) end

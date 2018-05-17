@@ -59,7 +59,7 @@ function c6061630.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c6061630.sfilter(c,lv,e,tp)
 	return c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and c:GetLevel()==lv
+		and c:IsLevel(lv)
 end
 function c6061630.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end

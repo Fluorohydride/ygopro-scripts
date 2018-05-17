@@ -22,7 +22,7 @@ function c10591919.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c10591919.filter(c,e,tp)
-	return c:IsSetCard(0x26) and c:GetLevel()==4 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x26) and c:IsLevel(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c10591919.cona(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsDisabled() and e:GetHandler():IsAttackPos()

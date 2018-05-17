@@ -34,5 +34,5 @@ function c17530001.operation(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e2)
 end
 function c17530001.tglimit(e,c)
-	return c:GetLevel()==e:GetLabel()
+	return c:IsLevel(e:GetLabel())
 end

@@ -18,7 +18,7 @@ function c77363314.thcon(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():GetBattledGroupCount()>0
 end
 function c77363314.thfilter(c)
-	return c:IsRace(RACE_DRAGON) and c:GetLevel()==8 and c:IsAbleToHand()
+	return c:IsRace(RACE_DRAGON) and c:IsLevel(8) and c:IsAbleToHand()
 end
 function c77363314.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c77363314.thfilter,tp,LOCATION_DECK,0,1,nil) end

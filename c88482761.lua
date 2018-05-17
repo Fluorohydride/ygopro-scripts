@@ -35,7 +35,7 @@ function c88482761.rmfilter2(c,e,tp,lv)
 		and Duel.IsExistingMatchingCard(c88482761.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetOriginalLevel()+lv)
 end
 function c88482761.spfilter(c,e,tp,lv)
-	return c:GetLevel()==lv and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(lv) and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c88482761.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c88482761.rmfilter1(chkc,e,tp) end

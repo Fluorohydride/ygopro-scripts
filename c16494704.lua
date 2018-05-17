@@ -11,7 +11,7 @@ function c16494704.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c16494704.exfilter0(c)
-	return c:IsSetCard(0x99) and c:GetLevel()>=1 and c:IsAbleToGrave()
+	return c:IsSetCard(0x99) and c:IsLevelAbove(1) and c:IsAbleToGrave()
 end
 function c16494704.filter(c,e,tp,m,ft)
 	if not c:IsRace(RACE_DRAGON) or bit.band(c:GetType(),0x81)~=0x81

@@ -26,5 +26,5 @@ function c85101228.con(e)
 	return Duel.IsExistingMatchingCard(c85101228.filter,e:GetHandler():GetControler(),LOCATION_MZONE,0,1,nil)
 end
 function c85101228.tg(e,c)
-	return c:GetLevel()>=4
+	return c:IsLevelAbove(4)
 end

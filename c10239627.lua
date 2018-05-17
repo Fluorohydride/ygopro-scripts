@@ -67,7 +67,7 @@ function c10239627.thop1(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c10239627.thfilter2(c)
-	return c:IsRace(RACE_SPELLCASTER) and c:GetLevel()==1 and c:IsAbleToHand()
+	return c:IsRace(RACE_SPELLCASTER) and c:IsLevel(1) and c:IsAbleToHand()
 end
 function c10239627.thtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c10239627.thfilter2,tp,LOCATION_DECK,0,1,nil) end

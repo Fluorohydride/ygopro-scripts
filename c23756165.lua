@@ -47,8 +47,7 @@ function c23756165.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return ec==nil or ec:GetFlagEffect(23756165)==0
 end
 function c23756165.filter(c)
-	local lv=c:GetLevel()
-	return lv>0 and lv<=5 and c:IsFaceup() and c:IsAbleToChangeControler()
+	return c:IsLevelBelow(5) and c:IsFaceup() and c:IsAbleToChangeControler()
 end
 function c23756165.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c23756165.filter(chkc) end

@@ -25,7 +25,7 @@ function c48049769.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c48049769.filter(c)
-	return c:IsRace(RACE_THUNDER) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:GetLevel()==4 and c:IsAttackBelow(1600) and c:IsAbleToHand()
+	return c:IsRace(RACE_THUNDER) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(4) and c:IsAttackBelow(1600) and c:IsAbleToHand()
 end
 function c48049769.filter1(c,g)
 	return g:IsExists(Card.IsCode,1,c,c:GetCode())

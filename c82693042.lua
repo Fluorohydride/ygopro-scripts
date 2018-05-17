@@ -35,7 +35,7 @@ function c82693042.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c82693042.filter(c)
-	return c:GetLevel()==3 and c:IsAbleToHand()
+	return c:IsLevel(3) and c:IsAbleToHand()
 end
 function c82693042.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c82693042.filter,tp,LOCATION_DECK,0,1,nil) end

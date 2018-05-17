@@ -59,7 +59,7 @@ function c83319610.spfilter1(c,e,tp)
 		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 end
 function c83319610.spfilter2(c,e,tp,mc,rk)
-	return c:GetRank()==rk and c:IsSetCard(0x58) and mc:IsCanBeXyzMaterial(c)
+	return c:IsRank(rk) and c:IsSetCard(0x58) and mc:IsCanBeXyzMaterial(c)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
 end
 function c83319610.spcost(e,tp,eg,ep,ev,re,r,rp,chk)

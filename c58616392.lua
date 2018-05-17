@@ -19,7 +19,7 @@ function c58616392.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c58616392.filter(c)
-	return c:IsRace(RACE_FIEND) and c:GetLevel()==8 and c:IsAbleToHand()
+	return c:IsRace(RACE_FIEND) and c:IsLevel(8) and c:IsAbleToHand()
 end
 function c58616392.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

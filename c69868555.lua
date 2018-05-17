@@ -42,7 +42,7 @@ function c69868555.cfilter(c)
 	return c:GetSummonLocation()~=LOCATION_GRAVE
 end
 function c69868555.dfilter(c,eg)
-	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and (c:GetLevel()==7 or c:GetLevel()==8) and not eg:IsContains(c)
+	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and (c:IsLevel(7) or c:IsLevel(8)) and not eg:IsContains(c)
 end
 function c69868555.discon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c69868555.cfilter,1,nil) and Duel.IsExistingMatchingCard(c69868555.dfilter,tp,LOCATION_MZONE,0,1,nil,eg)
@@ -105,7 +105,7 @@ function c69868555.tkop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 end
 function c69868555.thcostfilter(c)
-	return c:IsRace(RACE_DRAGON) and (c:GetLevel()==7 or c:GetLevel()==8) and c:IsAbleToGraveAsCost()
+	return c:IsRace(RACE_DRAGON) and (c:IsLevel(7) or c:IsLevel(8)) and c:IsAbleToGraveAsCost()
 		and (c:IsLocation(LOCATION_HAND) or c:IsFaceup())
 end
 function c69868555.thcost(e,tp,eg,ep,ev,re,r,rp,chk)

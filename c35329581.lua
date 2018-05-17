@@ -17,7 +17,7 @@ function c35329581.filter(c,e,tp)
 		and c:IsType(TYPE_SYNCHRO) and Duel.IsExistingMatchingCard(c35329581.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c)
 end
 function c35329581.spfilter(c,e,tp,tc)
-	return c:IsType(TYPE_SYNCHRO) and c:GetLevel()==tc:GetLevel()
+	return c:IsType(TYPE_SYNCHRO) and c:IsLevel(tc:GetLevel())
 		and c:GetRace()==tc:GetRace() and c:GetCode()~=tc:GetCode()
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end

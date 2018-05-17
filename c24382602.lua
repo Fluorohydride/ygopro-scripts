@@ -33,7 +33,7 @@ function c24382602.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c24382602.extg(e,c)
-	return c:IsType(TYPE_TUNER) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:GetLevel()==1
+	return c:IsType(TYPE_TUNER) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(1)
 end
 function c24382602.tgfilter(c)
 	return c:IsFaceup()

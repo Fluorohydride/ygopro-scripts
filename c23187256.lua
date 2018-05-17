@@ -43,7 +43,7 @@ function c23187256.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c23187256.gfilter(c,rank)
-	return c:GetRank()==rank
+	return c:IsRank(rank)
 end
 function c23187256.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCountFromEx(tp)

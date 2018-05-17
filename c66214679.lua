@@ -28,7 +28,7 @@ function c66214679.spcon(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():GetFlagEffect(1)>0
 end
 function c66214679.filter(c,e,tp)
-	return c:GetLevel()==4 and c:IsAttribute(ATTRIBUTE_DARK) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(4) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c66214679.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c66214679.filter(chkc,e,tp) end

@@ -54,11 +54,11 @@ function c63730624.initial_effect(c)
 end
 function c63730624.eqlimit(e,c)
 	return c:GetControler()==e:GetHandler():GetControler()
-		and (c:IsCode(2403771) or (c:IsSetCard(0x26) and c:GetLevel()>=4 and c:IsRace(RACE_MACHINE)))
+		and (c:IsCode(2403771) or (c:IsSetCard(0x26) and c:IsLevelAbove(4) and c:IsRace(RACE_MACHINE)))
 end
 function c63730624.filter(c,tp)
 	return c:IsControler(tp) and c:IsFaceup()
-		and (c:IsCode(2403771) or (c:IsSetCard(0x26) and c:GetLevel()>=4 and c:IsRace(RACE_MACHINE)))
+		and (c:IsCode(2403771) or (c:IsSetCard(0x26) and c:IsLevelAbove(4) and c:IsRace(RACE_MACHINE)))
 end
 function c63730624.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c63730624.filter(chkc,tp) end

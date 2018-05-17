@@ -24,7 +24,7 @@ function c1662004.synlimit(e,c)
 	return not c:IsRace(RACE_BEASTWARRIOR)
 end
 function c1662004.spfilter(c,e,tp)
-	return c:IsDefenseBelow(200) and c:IsAttribute(ATTRIBUTE_FIRE) and c:GetLevel()==3 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+	return c:IsDefenseBelow(200) and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsLevel(3) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c1662004.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c1662004.spfilter(chkc,e,tp) end 

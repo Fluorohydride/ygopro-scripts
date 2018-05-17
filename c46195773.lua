@@ -30,7 +30,7 @@ function c46195773.efilter(e,re,rp)
 end
 function c46195773.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local d=Duel.GetAttackTarget()
-	if chk==0 then return d and d:IsFaceup() and d:GetLevel()>=6 and d:IsType(TYPE_SYNCHRO) end
+	if chk==0 then return d and d:IsFaceup() and d:IsLevelAbove(6) and d:IsType(TYPE_SYNCHRO) end
 	d:CreateEffectRelation(e)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,d,1,0,0)
 end

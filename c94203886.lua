@@ -43,8 +43,7 @@ function c94203886.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c94203886.lvfilter(c,lv)
-	local clv=c:GetLevel()
-	return c:IsFaceup() and c:IsSetCard(0x54) and clv>0 and clv~=lv
+	return c:IsFaceup() and c:IsSetCard(0x54) and not c:IsLevel(lv)
 end
 function c94203886.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c94203886.lvfilter(chkc,e:GetHandler():GetLevel()) end

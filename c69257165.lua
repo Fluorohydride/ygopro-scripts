@@ -12,7 +12,7 @@ function c69257165.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c69257165.ctffilter(c,lv)
-	return c:IsFaceup() and c:IsControlerCanBeChanged() and c:GetLevel()==lv
+	return c:IsFaceup() and c:IsControlerCanBeChanged() and c:IsLevel(lv)
 end
 function c69257165.ctfilter(c,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsDiscardable()
@@ -40,7 +40,7 @@ function c69257165.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c69257165.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetLevel()==e:GetLabel() then
+	if tc and tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsLevel(e:GetLabel()) then
 		Duel.GetControl(tc,tp,PHASE_END,1)
 	end
 end

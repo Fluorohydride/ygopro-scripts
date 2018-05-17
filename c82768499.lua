@@ -12,7 +12,7 @@ function c82768499.desfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x99)
 end
 function c82768499.thfilter(c)
-	return c:IsSetCard(0x99) and c:GetLevel()==7 and (c:IsFaceup() or not c:IsLocation(LOCATION_EXTRA)) and c:IsAbleToHand()
+	return c:IsSetCard(0x99) and c:IsLevel(7) and (c:IsFaceup() or not c:IsLocation(LOCATION_EXTRA)) and c:IsAbleToHand()
 end
 function c82768499.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

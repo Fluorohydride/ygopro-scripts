@@ -12,7 +12,7 @@ function c38120068.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c38120068.filter(c)
-	return c:GetLevel()==8 and c:IsDiscardable()
+	return c:IsLevel(8) and c:IsDiscardable()
 end
 function c38120068.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c38120068.filter,tp,LOCATION_HAND,0,1,nil) end
