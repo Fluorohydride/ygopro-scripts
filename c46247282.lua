@@ -33,6 +33,7 @@ function c46247282.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCode(EFFECT_DISABLE_FIELD)
+	e4:SetCondition(c46247282.discon)
 	e4:SetOperation(c46247282.disop)
 	c:RegisterEffect(e4)
 end
@@ -71,6 +72,10 @@ function c46247282.desop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Destroy(g,REASON_EFFECT)
 		end
 	end
+end
+function c46247282.discon(e)
+	e:SetValue(0)
+	return true
 end
 function c46247282.disop(e,tp)
 	local c=e:GetHandler()
