@@ -19,5 +19,5 @@ function c13708425.atkop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)
 	e1:SetValue(300)
 	e1:SetReset(RESET_EVENT+0x1fe0000)
-	sync:RegisterEffect(e1)
+	sync:RegisterEffect(e1,true)
 end

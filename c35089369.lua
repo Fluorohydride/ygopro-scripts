@@ -88,7 +88,7 @@ function c35089369.immop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_IMMUNE_EFFECT)
 	e1:SetValue(c35089369.efilter)
 	e1:SetReset(RESET_EVENT+0x1fe0000)
-	rc:RegisterEffect(e1)
+	rc:RegisterEffect(e1,true)
 end
 function c35089369.efilter(e,te)
 	return te:IsActiveType(TYPE_SPELL)

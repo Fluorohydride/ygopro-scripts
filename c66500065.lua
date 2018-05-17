@@ -88,5 +88,5 @@ function c66500065.indop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
 	e1:SetValue(1)
 	e1:SetReset(RESET_EVENT+0x1fe0000)
-	rc:RegisterEffect(e1)
+	rc:RegisterEffect(e1,true)
 end

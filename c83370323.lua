@@ -25,7 +25,7 @@ function c83370323.op(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetOperation(c83370323.atkop)
 	e1:SetReset(RESET_EVENT+0x1fe0000)
-	sync:RegisterEffect(e1)
+	sync:RegisterEffect(e1,true)
 end
 function c83370323.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

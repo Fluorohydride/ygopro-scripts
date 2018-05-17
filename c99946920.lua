@@ -87,5 +87,5 @@ function c99946920.atkop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_CANNOT_CHANGE_CONTROL)
 	e1:SetReset(RESET_EVENT+0x1fe0000)
-	rc:RegisterEffect(e1)
+	rc:RegisterEffect(e1,true)
 end

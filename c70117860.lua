@@ -53,7 +53,7 @@ function c70117860.efop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetLabel(ep)
 	e1:SetValue(c70117860.tgval)
 	e1:SetReset(RESET_EVENT+0x1fe0000)
-	rc:RegisterEffect(e1)
+	rc:RegisterEffect(e1,true)
 end
 function c70117860.tgval(e,re,rp)
 	return rp==1-e:GetLabel()
