@@ -42,7 +42,7 @@ function c65676461.atop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(-1000)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		bc:RegisterEffect(e1)
 		Duel.SpecialSummonComplete()
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
@@ -52,7 +52,7 @@ function c65676461.atop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 			e1:SetCode(EFFECT_EXTRA_ATTACK)
 			e1:SetValue(1)
-			e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			c:RegisterEffect(e1)
 		end
 	end

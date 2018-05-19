@@ -64,7 +64,7 @@ function c63442604.activate(e,tp,eg,ep,ev,re,r,rp)
 	de:SetCode(EVENT_PHASE+PHASE_END)
 	de:SetCountLimit(1)
 	de:SetOperation(c63442604.desop)
-	de:SetReset(RESET_EVENT+0x1fe0000)
+	de:SetReset(RESET_EVENT+RESETS_STANDARD)
 	token:RegisterEffect(de)
 end
 function c63442604.desop(e,tp,eg,ep,ev,re,r,rp)

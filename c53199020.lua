@@ -47,7 +47,7 @@ function c53199020.chcon1(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and re:GetHandler():GetType()==TYPE_SPELL and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c53199020.chop1(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():RegisterFlagEffect(53199020,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	return e:GetHandler():RegisterFlagEffect(53199020,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c53199020.chcon2(e,tp,eg,ep,ev,re,r,rp)
 	return ev==1 and e:GetHandler():GetFlagEffect(53199020)>0

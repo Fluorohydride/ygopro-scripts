@@ -35,7 +35,7 @@ function c12817939.disop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_DISABLE)
 		e1:SetReset(RESET_EVENT+0x17a0000)
 		d:RegisterEffect(e1)
-		c:RegisterFlagEffect(12817939,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,2)
+		c:RegisterFlagEffect(12817939,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,2)
 	end
 end
 function c12817939.spcon(e,tp,eg,ep,ev,re,r,rp)

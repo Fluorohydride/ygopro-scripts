@@ -30,7 +30,7 @@ function c47233801.damop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	local dam=c:GetFlagEffectLabel(47233801)
 	if dam==nil then
-		c:RegisterFlagEffect(47233801,RESET_EVENT+0x1fe0000,0,0,200)
+		c:RegisterFlagEffect(47233801,RESET_EVENT+RESETS_STANDARD,0,0,200)
 		dam=200
 	else
 		dam=dam*2

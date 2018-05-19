@@ -83,7 +83,7 @@ function c45803070.setop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c45803070.rmcon)
 		e1:SetOperation(c45803070.rmop)
 		Duel.RegisterEffect(e1,tp)
-		tc:RegisterFlagEffect(45803070,RESET_EVENT+0x1fe0000,0,1,fid)
+		tc:RegisterFlagEffect(45803070,RESET_EVENT+RESETS_STANDARD,0,1,fid)
 	end
 end
 function c45803070.rmcon(e,tp,eg,ep,ev,re,r,rp)

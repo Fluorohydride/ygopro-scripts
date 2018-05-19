@@ -53,7 +53,7 @@ function c87259933.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c87259933.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(87259933)==0 end
-	e:GetHandler():RegisterFlagEffect(87259933,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(87259933,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c87259933.filter(c,e,tp)
 	return c:IsSetCard(0x1034) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

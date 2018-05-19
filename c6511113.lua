@@ -69,7 +69,7 @@ end
 function c6511113.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	if chk==0 then return e:GetHandler():GetFlagEffect(6511113)==0 end
-	e:GetHandler():RegisterFlagEffect(6511113,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(6511113,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c6511113.filter1(c)
 	return c:GetType()==TYPE_TRAP and (c:IsSetCard(0x4c) or c:IsSetCard(0x89)) and c:IsAbleToGraveAsCost()

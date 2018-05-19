@@ -32,7 +32,7 @@ end
 function c88989706.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToBattle() then
-		c:RegisterFlagEffect(88989707,RESET_EVENT+0x1fe0000,0,0)
+		c:RegisterFlagEffect(88989707,RESET_EVENT+RESETS_STANDARD,0,0)
 	end
 end
 function c88989706.discon(e,tp,eg,ep,ev,re,r,rp)

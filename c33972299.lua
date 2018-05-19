@@ -33,6 +33,6 @@ end
 function c33972299.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		c:RegisterFlagEffect(33972299,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		c:RegisterFlagEffect(33972299,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end

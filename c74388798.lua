@@ -35,7 +35,7 @@ function c74388798.efilter(e,te)
 end
 function c74388798.damop(e,tp,eg,ep,ev,re,r,rp)
 	if ep~=tp and Duel.GetAttackTarget()==nil then
-		e:GetHandler():RegisterFlagEffect(74388798,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,2)
+		e:GetHandler():RegisterFlagEffect(74388798,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,2)
 	end
 end
 function c74388798.spcon(e,tp,eg,ep,ev,re,r,rp)

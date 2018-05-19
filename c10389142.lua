@@ -45,7 +45,7 @@ function c10389142.spop(e,tp,eg,ep,ev,re,r,rp)
 	for i=1,ft do
 		local token=Duel.CreateToken(tp,10389143)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
-		token:RegisterFlagEffect(10389142,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1,fid)
+		token:RegisterFlagEffect(10389142,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
 		g:AddCard(token)
 	end
 	Duel.SpecialSummonComplete()

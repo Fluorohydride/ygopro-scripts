@@ -43,10 +43,10 @@ function c25793414.cpop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetCode(EFFECT_CHANGE_CODE)
 		e1:SetValue(code)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 		if not tc:IsType(TYPE_TRAPMONSTER) then
-			cid=c:CopyEffect(code,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,1)
+			cid=c:CopyEffect(code,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,1)
 		end
 		local e2=Effect.CreateEffect(c)
 		e2:SetDescription(aux.Stringid(25793414,2))
@@ -58,7 +58,7 @@ function c25793414.cpop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetLabelObject(e1)
 		e2:SetLabel(cid)
 		e2:SetOperation(c25793414.rstop)
-		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e2)
 	end
 end

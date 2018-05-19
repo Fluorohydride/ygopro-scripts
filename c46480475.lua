@@ -30,7 +30,7 @@ function c46480475.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetCountLimit(1)
 	e1:SetCondition(c46480475.tgcon)
 	e1:SetOperation(c46480475.tgop)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN,3)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,3)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c46480475.tgcon(e,tp,eg,ep,ev,re,r,rp)

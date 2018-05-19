@@ -52,7 +52,7 @@ end
 function c22093873.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():GetFlagEffect(22093873)~=0 then return end
 	local fid=eg:GetFirst():GetFieldID()
-	e:GetHandler():RegisterFlagEffect(22093873,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(22093873,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	e:GetLabelObject():SetLabel(fid)
 end
 function c22093873.drtg(e,tp,eg,ep,ev,re,r,rp,chk)

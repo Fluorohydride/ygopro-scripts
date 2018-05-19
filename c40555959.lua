@@ -23,7 +23,7 @@ function c40555959.activate(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c40555959.cfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(40555959,1)) then
 		c40555959.remop(e,tp,eg,ep,ev,re,r,rp)
-		e:GetHandler():RegisterFlagEffect(40555959,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(40555959,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(40555959,2))
 	end
 end
@@ -37,7 +37,7 @@ function c40555959.remtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(40555959)==0
 		and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,LOCATION_HAND,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_HAND)
-	e:GetHandler():RegisterFlagEffect(40555959,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(40555959,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c40555959.remop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
@@ -57,7 +57,7 @@ function c40555959.remop(e,tp,eg,ep,ev,re,r,rp)
 		g:KeepAlive()
 		local tc=g:GetFirst()
 		while tc do
-			tc:RegisterFlagEffect(40555959,RESET_EVENT+0x1fe0000,0,1)
+			tc:RegisterFlagEffect(40555959,RESET_EVENT+RESETS_STANDARD,0,1)
 			tc=g:GetNext()
 		end
 	end

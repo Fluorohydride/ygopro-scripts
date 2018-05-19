@@ -70,7 +70,7 @@ function c97489701.naop(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.NegateAttack()
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0 then
-		c:RegisterFlagEffect(97489701,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		c:RegisterFlagEffect(97489701,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c97489701.spcon(e,tp,eg,ep,ev,re,r,rp)

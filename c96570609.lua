@@ -87,7 +87,7 @@ function c96570609.spop(e,tp,eg,ep,ev,re,r,rp)
 		if tc then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 			local fid=e:GetHandler():GetFieldID()
-			tc:RegisterFlagEffect(96570609,RESET_EVENT+0x1fe0000,0,1,fid)
+			tc:RegisterFlagEffect(96570609,RESET_EVENT+RESETS_STANDARD,0,1,fid)
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 			e1:SetCode(EVENT_PHASE+PHASE_END)

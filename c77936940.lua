@@ -22,7 +22,7 @@ function c77936940.reg(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if bit.band(r,0x41)==0x41 and rp==1-tp and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
 		and c:IsPreviousPosition(POS_FACEUP) then
-		c:RegisterFlagEffect(77936940,RESET_EVENT+0x1fe0000,0,1)
+		c:RegisterFlagEffect(77936940,RESET_EVENT+RESETS_STANDARD,0,1)
 	end
 end
 function c77936940.spcon(e,tp,eg,ep,ev,re,r,rp)

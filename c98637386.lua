@@ -31,7 +31,7 @@ function c98637386.spop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 			e1:SetCode(EVENT_PRE_BATTLE_DAMAGE)
 			e1:SetOperation(c98637386.rdop)
-			e1:SetReset(RESET_EVENT+0x1fe0000)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e1,true)
 			Duel.SpecialSummonComplete()
 		end

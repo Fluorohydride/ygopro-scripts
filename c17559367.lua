@@ -18,7 +18,7 @@ function c17559367.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EVENT_PHASE+PHASE_BATTLE)
 		e1:SetCountLimit(1)
 		e1:SetOperation(c17559367.operation)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE)
 		c:RegisterEffect(e1)
 	end
 end

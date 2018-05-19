@@ -18,7 +18,7 @@ function c3146695.regop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c3146695.cfilter,tp,LOCATION_MZONE,0,nil)
 	local tc=g:GetFirst()
 	while tc do
-		tc:RegisterFlagEffect(3146695,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		tc:RegisterFlagEffect(3146695,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		tc=g:GetNext()
 	end
 	g:KeepAlive()

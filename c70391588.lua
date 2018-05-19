@@ -33,7 +33,7 @@ function c70391588.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_LEVEL)
 		e1:SetValue(1)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
 	end
 	if not Duel.IsPlayerCanSpecialSummonMonster(tp,70391589,0,0x4011,0,0,lv,RACE_SPELLCASTER,ATTRIBUTE_DARK) then return end
@@ -43,7 +43,7 @@ function c70391588.activate(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_CHANGE_LEVEL)
 	e2:SetValue(lv)
-	e2:SetReset(RESET_EVENT+0x1fe0000)
+	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 	token:RegisterEffect(e2)
 	Duel.SpecialSummonComplete()
 end

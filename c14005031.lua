@@ -49,7 +49,7 @@ function c14005031.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCountLimit(1)		
 		e1:SetCondition(c14005031.matcon)
 		e1:SetOperation(c14005031.matop)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 	end
 end

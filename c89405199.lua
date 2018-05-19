@@ -36,7 +36,7 @@ function c89405199.drop(e,tp,eg,ep,ev,re,r,rp)
 	if ct then
 		c:SetFlagEffectLabel(flag,ct+ev)
 	else
-		c:RegisterFlagEffect(flag,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1,ev)
+		c:RegisterFlagEffect(flag,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,ev)
 	end
 end
 function c89405199.damcon(e,tp,eg,ep,ev,re,r,rp)

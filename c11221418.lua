@@ -27,7 +27,7 @@ function c11221418.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 then
-		tc:RegisterFlagEffect(11221418,RESET_EVENT+0x1fe0000,0,0)
+		tc:RegisterFlagEffect(11221418,RESET_EVENT+RESETS_STANDARD,0,0)
 		local g=Duel.GetMatchingGroup(Card.IsAbleToHand,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		if g:GetCount()==0 then return end
 		Duel.SendtoHand(g,nil,REASON_EFFECT)

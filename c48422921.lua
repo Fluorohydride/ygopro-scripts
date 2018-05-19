@@ -36,14 +36,14 @@ function c48422921.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOwnerPlayer(tp)
 		e1:SetCondition(c48422921.descon)
 		e1:SetOperation(c48422921.desop)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1,true)
 		local reg=tc:GetFlagEffectLabel(48422921)
 		if reg then
 			reg=bit.bor(reg,att)
 			tc:SetFlagEffectLabel(48422921,reg)
 		else
-			tc:RegisterFlagEffect(48422921,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1,att)
+			tc:RegisterFlagEffect(48422921,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,att)
 		end
 	end
 end

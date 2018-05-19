@@ -30,7 +30,7 @@ function c18807108.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
-		c:CreateRelation(tc,RESET_EVENT+0x1fe0000)
+		c:CreateRelation(tc,RESET_EVENT+RESETS_STANDARD)
 		e:GetLabelObject():SetLabelObject(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

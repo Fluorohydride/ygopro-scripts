@@ -49,7 +49,7 @@ function c70284332.operation(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
 		e2:SetCondition(c70284332.dircon)
 		e2:SetValue(LOCATION_REMOVED)
-		e2:SetReset(RESET_EVENT+0x1fe0000)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 	end
 end

@@ -27,8 +27,8 @@ function c23681456.operation(e,tp,eg,ep,ev,re,r,rp)
 		local tc=g:GetFirst()
 		while tc do
 			Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
-			tc:RegisterFlagEffect(23681456,RESET_EVENT+0x1fe0000,0,1,fid)
-			tc:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(23681456,0))
+			tc:RegisterFlagEffect(23681456,RESET_EVENT+RESETS_STANDARD,0,1,fid)
+			tc:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(23681456,0))
 			tc=g:GetNext()
 		end
 		Duel.SpecialSummonComplete()

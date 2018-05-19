@@ -20,7 +20,7 @@ function c56387350.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c56387350.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(56387350,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE,0,1)
+	e:GetHandler():RegisterFlagEffect(56387350,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
 end
 function c56387350.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(56387350)~=0

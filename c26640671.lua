@@ -57,9 +57,9 @@ function c26640671.regop(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	if d and d:IsControler(1-tp) and e:GetHandler():IsHasCardTarget(a) then
-		d:RegisterFlagEffect(26640671,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		d:RegisterFlagEffect(26640671,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	elseif d and a:IsControler(1-tp) and e:GetHandler():IsHasCardTarget(d) then
-		a:RegisterFlagEffect(26640671,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		a:RegisterFlagEffect(26640671,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c26640671.pfilter(c)
@@ -70,7 +70,7 @@ function c26640671.posop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
 	local tc=g:GetFirst()
 	while tc do
-		tc:RegisterFlagEffect(26640672,RESET_EVENT+0x1fe0000,0,1)
+		tc:RegisterFlagEffect(26640672,RESET_EVENT+RESETS_STANDARD,0,1)
 		tc=g:GetNext()
 	end
 end

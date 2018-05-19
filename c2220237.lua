@@ -55,7 +55,7 @@ end
 function c2220237.damval2(e,re,val,r,rp,rc)
 	local c=e:GetHandler()
 	if bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0 and c:GetFlagEffect(2220237)==0 then
-		c:RegisterFlagEffect(2220237,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		c:RegisterFlagEffect(2220237,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		return 0
 	end
 	return val

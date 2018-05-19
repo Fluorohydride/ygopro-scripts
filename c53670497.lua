@@ -50,7 +50,7 @@ function c53670497.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 			Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
 		end
 		e:SetLabel(1)
-		e:GetHandler():RegisterFlagEffect(53670497,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(53670497,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c53670497.target2(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -63,7 +63,7 @@ function c53670497.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	else
 		Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
 	end
-	e:GetHandler():RegisterFlagEffect(53670497,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(53670497,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c53670497.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

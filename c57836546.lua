@@ -42,7 +42,7 @@ function c57836546.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	while tc do
 		if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
-			tc:RegisterFlagEffect(57836546,RESET_EVENT+0x1fe0000,0,1,fid)
+			tc:RegisterFlagEffect(57836546,RESET_EVENT+RESETS_STANDARD,0,1,fid)
 		end
 		tc=g:GetNext()
 	end

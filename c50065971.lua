@@ -47,7 +47,7 @@ function c50065971.dirop(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_BASE_DEFENSE)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		e1:SetValue(c:GetBaseDefense()/2)
 		c:RegisterEffect(e1)
 		--
@@ -55,7 +55,7 @@ function c50065971.dirop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DIRECT_ATTACK)
-		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e2)
 	end
 end
@@ -64,10 +64,10 @@ function c50065971.spreg(e,tp,eg,ep,ev,re,r,rp)
 	if bit.band(r,REASON_EFFECT+REASON_DESTROY)~=REASON_EFFECT+REASON_DESTROY then return end
 	if Duel.GetCurrentPhase()==PHASE_STANDBY then
 		e:SetLabel(Duel.GetTurnCount())
-		c:RegisterFlagEffect(50065971,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY,0,2)
+		c:RegisterFlagEffect(50065971,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY,0,2)
 	else
 		e:SetLabel(0)
-		c:RegisterFlagEffect(50065971,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY,0,1)
+		c:RegisterFlagEffect(50065971,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY,0,1)
 	end
 end
 function c50065971.spcon(e,tp,eg,ep,ev,re,r,rp)

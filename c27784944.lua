@@ -65,7 +65,7 @@ function c27784944.spreg(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	if c:IsReason(REASON_COST) and rc:IsSetCard(0x109) then
 		e:SetLabel(Duel.GetTurnCount()+1)
-		c:RegisterFlagEffect(27784944,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,2)
+		c:RegisterFlagEffect(27784944,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
 	end
 end
 function c27784944.spcon(e,tp,eg,ep,ev,re,r,rp)

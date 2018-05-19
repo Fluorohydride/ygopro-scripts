@@ -33,7 +33,7 @@ function c55063681.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)
 			e1:SetValue(400)
 			e1:SetCondition(c55063681.atkcon)
-			e1:SetReset(RESET_EVENT+0x1fe0000)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e1)
 		else
 			local e1=Effect.CreateEffect(c)
@@ -42,9 +42,9 @@ function c55063681.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetRange(LOCATION_MZONE)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)
 			e1:SetValue(400)
-			e1:SetReset(RESET_EVENT+0x1fe0000)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e1)
-			tc:RegisterFlagEffect(55063681,RESET_EVENT+0x1fe0000,0,1)
+			tc:RegisterFlagEffect(55063681,RESET_EVENT+RESETS_STANDARD,0,1)
 		end
 	end
 end

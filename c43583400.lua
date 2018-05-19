@@ -33,7 +33,7 @@ end
 function c43583400.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:GetBattleTarget() then return end
-	c:RegisterFlagEffect(43583400,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE,0,1)
+	c:RegisterFlagEffect(43583400,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
 end
 function c43583400.sumcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE and e:GetHandler():GetFlagEffect(43583400)>0

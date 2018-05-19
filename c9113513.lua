@@ -88,7 +88,7 @@ function c9113513.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 	end
 	if tc then
-		tc:RegisterFlagEffect(9113513,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		tc:RegisterFlagEffect(9113513,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		tc:CompleteProcedure()
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

@@ -22,7 +22,7 @@ function c89792713.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do
 		if tc:IsFaceup() and tc:IsRelateToBattle() then
-			tc:RegisterFlagEffect(89792713,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+			tc:RegisterFlagEffect(89792713,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		end
 		tc=eg:GetNext()
 	end

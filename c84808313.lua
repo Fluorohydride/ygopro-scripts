@@ -39,7 +39,7 @@ function c84808313.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetRange(LOCATION_SZONE)
 	e1:SetCondition(c84808313.descon)
 	e1:SetOperation(c84808313.desop)
-	e1:SetReset(RESET_EVENT+0x1fe0000)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e1)
 end
 function c84808313.descon(e,tp,eg,ep,ev,re,r,rp)

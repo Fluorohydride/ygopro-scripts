@@ -21,7 +21,7 @@ function c28066831.flagop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCost(c28066831.cost)
 	e1:SetTarget(c28066831.target)
 	e1:SetOperation(c28066831.operation)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 	c:RegisterEffect(e1)
 end
 function c28066831.costfilter(c)

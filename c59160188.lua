@@ -50,7 +50,7 @@ function c59160188.regop(e,tp,eg,ep,ev,re,r,rp)
 	if ct then
 		c:SetFlagEffectLabel(59160188,ct+eg:GetCount())
 	else
-		c:RegisterFlagEffect(59160188,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1,eg:GetCount())
+		c:RegisterFlagEffect(59160188,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,eg:GetCount())
 	end
 end
 function c59160188.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

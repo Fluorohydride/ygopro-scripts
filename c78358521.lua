@@ -57,7 +57,7 @@ function c78358521.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		c:RegisterFlagEffect(78358521,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		c:RegisterFlagEffect(78358521,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c78358521.sumcon(e,tp,eg,ep,ev,re,r,rp)
@@ -97,7 +97,7 @@ function c78358521.decop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetTargetRange(1,0)
-	e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+	e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 	c:RegisterEffect(e2)
 	Duel.RegisterFlagEffect(tp,78358522,RESET_PHASE+PHASE_END,0,1)
 end

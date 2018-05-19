@@ -46,7 +46,7 @@ function c21250202.regfilter(c,tp)
 end
 function c21250202.regop1(e,tp,eg,ep,ev,re,r,rp)
 	if rp~=tp and eg:GetCount()==1 and eg:IsExists(c21250202.regfilter,1,nil,tp) then
-		e:GetHandler():RegisterFlagEffect(21250202,RESET_EVENT+0x1fe0000+RESET_CHAIN,0,1,ev)
+		e:GetHandler():RegisterFlagEffect(21250202,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1,ev)
 	end
 end
 function c21250202.regop2(e,tp,eg,ep,ev,re,r,rp)
@@ -54,7 +54,7 @@ function c21250202.regop2(e,tp,eg,ep,ev,re,r,rp)
 	local chain_ct={c:GetFlagEffectLabel(21250202)}
 	for i=1,#chain_ct do
 		if chain_ct[i]==ev then
-			c:RegisterFlagEffect(21250203,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+			c:RegisterFlagEffect(21250203,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 			return
 		end
 	end
@@ -98,13 +98,13 @@ function c21250202.disop(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 		local e2=Effect.CreateEffect(e:GetHandler())
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		e2:SetValue(RESET_TURN_SET)
-		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e2)
 	end
 end

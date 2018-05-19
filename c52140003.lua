@@ -36,7 +36,7 @@ function c52140003.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetCountLimit(1)
 	e1:SetCondition(c52140003.tgcon)
 	e1:SetOperation(c52140003.tgop)
-	e1:SetReset(RESET_EVENT+0x1fe0000)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e1)
 	c:SetTurnCounter(0)
 end

@@ -35,7 +35,7 @@ function c58569561.actop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTargetRange(0,1)
 	e1:SetCondition(c58569561.accon)
 	e1:SetValue(c58569561.actlimit)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE)
 	c:RegisterEffect(e1)
 end
 function c58569561.accon(e)

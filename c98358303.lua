@@ -44,8 +44,8 @@ function c98358303.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 		if c:IsRelateToEffect(e) then
-			c:RegisterFlagEffect(98358303,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,2)
-			tc:RegisterFlagEffect(98358303,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,2)
+			c:RegisterFlagEffect(98358303,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
+			tc:RegisterFlagEffect(98358303,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
 			e:SetLabelObject(tc)
 		end
 	end

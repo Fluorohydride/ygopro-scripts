@@ -45,5 +45,5 @@ function c39699564.setop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c39699564.sumop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(39699564,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(39699564,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end

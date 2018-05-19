@@ -31,7 +31,7 @@ function c5237827.rmop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCountLimit(1)
 		e1:SetCondition(c5237827.thcon)
 		e1:SetOperation(c5237827.thop)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN)
 		tc:RegisterEffect(e1)
 	end
 end

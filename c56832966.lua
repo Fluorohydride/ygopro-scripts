@@ -49,7 +49,7 @@ function c56832966.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:CheckRemoveOverlayCard(tp,2,REASON_COST) and c:GetFlagEffect(56832966)==0 end
 	c:RemoveOverlayCard(tp,2,2,REASON_COST)
-	c:RegisterFlagEffect(56832966,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE_CAL,0,1)
+	c:RegisterFlagEffect(56832966,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE_CAL,0,1)
 end
 function c56832966.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

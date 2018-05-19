@@ -70,7 +70,7 @@ function c12117532.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetRange(LOCATION_MZONE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(-500)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetCondition(c12117532.rcon)
 		tc:RegisterEffect(e1,true)
 	end

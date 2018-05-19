@@ -21,7 +21,7 @@ function c72657739.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c72657739.spcon)
 		e1:SetTarget(c72657739.sptg)
 		e1:SetOperation(c72657739.spop)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN)
 		c:RegisterEffect(e1)
 	end
 end

@@ -55,7 +55,7 @@ function c24104865.checkop2(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if aux.bdgcon(e,tp,eg,ep,ev,re,r,rp) then
 		g:AddCard(t)
-		t:RegisterFlagEffect(24104865,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE,0,1)
+		t:RegisterFlagEffect(24104865,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
 	end
 end
 function c24104865.spcon(e,tp,eg,ep,ev,re,r,rp)
@@ -87,7 +87,7 @@ function c24104865.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	while tc do
 		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
-		tc:RegisterFlagEffect(24104865,RESET_EVENT+0x1fe0000,0,0)
+		tc:RegisterFlagEffect(24104865,RESET_EVENT+RESETS_STANDARD,0,0)
 		c:CreateRelation(tc,RESET_EVENT+0x1020000)
 		tc=sg:GetNext()
 	end

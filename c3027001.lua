@@ -28,7 +28,7 @@ function c3027001.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local reg=tg:Filter(c3027001.cfilter,e:GetHandler(),tp)
 	local tc=reg:GetFirst()
 	while tc do
-		tc:RegisterFlagEffect(3027001,RESET_EVENT+0x1fe0000+RESET_CHAIN,0,1)
+		tc:RegisterFlagEffect(3027001,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
 		tc=reg:GetNext()
 	end
 end
@@ -42,7 +42,7 @@ function c3027001.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(c3027001.repvalue)
 	e1:SetOperation(c3027001.repop)
 	e1:SetLabelObject(re)
-	e1:SetReset(RESET_EVENT+0x1fe0000)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e1)
 end
 function c3027001.repfilter(c)

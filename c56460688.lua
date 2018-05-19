@@ -40,7 +40,7 @@ function c56460688.operation(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetOperatedGroup()
 		local tc=g:GetFirst()
 		while tc do
-			tc:RegisterFlagEffect(56460688,RESET_EVENT+0x1fe0000,0,1)
+			tc:RegisterFlagEffect(56460688,RESET_EVENT+RESETS_STANDARD,0,1)
 			tc=g:GetNext()
 		end
 		c:RegisterFlagEffect(56460688,RESET_EVENT+0x17a0000,0,1)

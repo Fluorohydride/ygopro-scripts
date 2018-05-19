@@ -28,7 +28,7 @@ function c31709826.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,1000)
 end
 function c31709826.spop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(31709826,RESET_EVENT+0x1fe0000,0,0)
+	e:GetHandler():RegisterFlagEffect(31709826,RESET_EVENT+RESETS_STANDARD,0,0)
 end
 function c31709826.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer() and e:GetHandler():GetFlagEffect(31709826)>0

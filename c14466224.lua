@@ -71,13 +71,13 @@ function c14466224.eqop(e,tp,eg,ep,ev,re,r,rp)
 			if def<0 then def=0 end
 			if not Duel.Equip(tp,tc,c,false) then return end
 			--Add Equip limit
-			tc:RegisterFlagEffect(14466224,RESET_EVENT+0x1fe0000,0,0)
+			tc:RegisterFlagEffect(14466224,RESET_EVENT+RESETS_STANDARD,0,0)
 			e:SetLabelObject(tc)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
 			e1:SetCode(EFFECT_EQUIP_LIMIT)
-			e1:SetReset(RESET_EVENT+0x1fe0000)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			e1:SetValue(c14466224.eqlimit)
 			tc:RegisterEffect(e1)
 			if atk>0 then
@@ -85,7 +85,7 @@ function c14466224.eqop(e,tp,eg,ep,ev,re,r,rp)
 				e2:SetType(EFFECT_TYPE_EQUIP)
 				e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_OWNER_RELATE)
 				e2:SetCode(EFFECT_UPDATE_ATTACK)
-				e2:SetReset(RESET_EVENT+0x1fe0000)
+				e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 				e2:SetValue(atk)
 				tc:RegisterEffect(e2)
 			end
@@ -94,7 +94,7 @@ function c14466224.eqop(e,tp,eg,ep,ev,re,r,rp)
 				e3:SetType(EFFECT_TYPE_EQUIP)
 				e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_OWNER_RELATE)
 				e3:SetCode(EFFECT_UPDATE_DEFENSE)
-				e3:SetReset(RESET_EVENT+0x1fe0000)
+				e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 				e3:SetValue(def)
 				tc:RegisterEffect(e3)
 			end

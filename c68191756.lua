@@ -34,7 +34,7 @@ function c68191756.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE) then
 		local fid=c:GetFieldID()
-		tc:RegisterFlagEffect(68191756,RESET_EVENT+0x1fe0000,0,1,fid)
+		tc:RegisterFlagEffect(68191756,RESET_EVENT+RESETS_STANDARD,0,1,fid)
 		local e3=Effect.CreateEffect(c)
 		e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)

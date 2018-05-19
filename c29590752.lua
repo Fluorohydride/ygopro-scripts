@@ -44,7 +44,7 @@ function c29590752.dcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c29590752.dtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(29590753)==0 end
-	e:GetHandler():RegisterFlagEffect(29590753,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE,EFFECT_FLAG_OATH,1)
+	e:GetHandler():RegisterFlagEffect(29590753,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,EFFECT_FLAG_OATH,1)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,1,tp,0)
 end
 function c29590752.dop(e,tp,eg,ep,ev,re,r,rp)

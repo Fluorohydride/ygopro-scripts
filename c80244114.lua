@@ -64,19 +64,19 @@ function c80244114.indop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_INDESTRUCTABLE_COUNT)
 		e1:SetCountLimit(1)
 		e1:SetValue(c80244114.valcon)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
 		local e2=Effect.CreateEffect(e:GetHandler())
 		e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
 		e2:SetCode(EVENT_DAMAGE_STEP_END)
 		e2:SetOperation(c80244114.addown)
-		e2:SetReset(RESET_EVENT+0x1fe0000)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 	end
 end
 function c80244114.valcon(e,re,r,rp)
 	if bit.band(r,REASON_BATTLE)~=0 then
-		e:GetHandler():RegisterFlagEffect(80244114,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE,0,1)
+		e:GetHandler():RegisterFlagEffect(80244114,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE,0,1)
 		return true
 	else return false end
 end
@@ -86,7 +86,7 @@ function c80244114.addown(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)
 	e1:SetValue(-800)
-	e1:SetReset(RESET_EVENT+0x1fe0000)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	e:GetHandler():RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_UPDATE_DEFENSE)

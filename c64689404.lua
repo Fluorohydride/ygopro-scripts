@@ -33,7 +33,7 @@ end
 function c64689404.ractg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetLabelObject():GetLabel()~=RACE_ALL end
 	if e:GetHandler():GetFlagEffect(64689404)==0 then
-		e:GetHandler():RegisterFlagEffect(64689404,RESET_EVENT+0x1fe0000,0,0)
+		e:GetHandler():RegisterFlagEffect(64689404,RESET_EVENT+RESETS_STANDARD,0,0)
 		e:GetLabelObject():SetLabel(0)
 	end
 	local prc=e:GetLabelObject():GetLabel()

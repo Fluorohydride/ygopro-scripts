@@ -74,7 +74,7 @@ function c85216896.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()~=2 then return end
 	for tc in aux.Next(g) do
 		if Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
-			tc:RegisterFlagEffect(85216896,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+			tc:RegisterFlagEffect(85216896,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		end
 	end
 	g:KeepAlive()

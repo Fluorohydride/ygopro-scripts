@@ -43,7 +43,7 @@ function c33438666.repval(e,c)
 	return c33438666.repfilter(c,e:GetHandlerPlayer())
 end
 function c33438666.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(33438666,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE,0,1)
+	e:GetHandler():RegisterFlagEffect(33438666,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
 end
 function c33438666.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(33438666)~=0

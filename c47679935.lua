@@ -58,7 +58,7 @@ function c47679935.limop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetCurrentChain()==0 then
 		Duel.SetChainLimitTillChainEnd(c47679935.chainlm)
 	elseif Duel.GetCurrentChain()==1 then
-		e:GetHandler():RegisterFlagEffect(47679935,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(47679935,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c47679935.limop2(e,tp,eg,ep,ev,re,r,rp)

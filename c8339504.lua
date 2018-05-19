@@ -54,7 +54,7 @@ function c8339504.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Overlay(sc,Group.FromCards(c))
 		end
 		local fid=c:GetFieldID()
-		sc:RegisterFlagEffect(8339504,RESET_EVENT+0x1fe0000,0,1,fid)
+		sc:RegisterFlagEffect(8339504,RESET_EVENT+RESETS_STANDARD,0,1,fid)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)

@@ -54,7 +54,7 @@ function c22359980.operation(e,tp,eg,ep,ev,re,r,rp)
 	if a and a:IsControler(1-tp) and a:IsFaceup() and a:IsLocation(LOCATION_MZONE) then
 		e:GetLabelObject():AddCard(a)
 		if a:GetFlagEffect(22359980)==0 then
-			a:RegisterFlagEffect(22359980,RESET_EVENT+0x1fe0000,0,1)
+			a:RegisterFlagEffect(22359980,RESET_EVENT+RESETS_STANDARD,0,1)
 		end
 	end
 end

@@ -49,7 +49,7 @@ function c17857780.operation(e,tp,eg,ep,ev,re,r,rp)
 		else
 			e1:SetValue(-1000)
 		end
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
 	end
 end

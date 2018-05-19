@@ -35,7 +35,7 @@ function c42216237.atkval(e,c)
 end
 function c42216237.spreg(e,tp,eg,ep,ev,re,r,rp)
 	e:SetLabel(Duel.GetTurnCount())
-	e:GetHandler():RegisterFlagEffect(42216237,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,2)
+	e:GetHandler():RegisterFlagEffect(42216237,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
 end
 function c42216237.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

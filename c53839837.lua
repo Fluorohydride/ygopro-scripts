@@ -34,10 +34,10 @@ function c53839837.spr(e,tp,eg,ep,ev,re,r,rp)
 	if bit.band(r,0x41)~=0x41 or rp==tp or c:GetPreviousControler()~=tp then return end
 	if Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_STANDBY then
 		e:SetLabel(Duel.GetTurnCount())
-		c:RegisterFlagEffect(53839837,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,2)
+		c:RegisterFlagEffect(53839837,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,2)
 	else
 		e:SetLabel(0)
-		c:RegisterFlagEffect(53839837,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1)
+		c:RegisterFlagEffect(53839837,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1)
 	end
 end
 function c53839837.spcon(e,tp,eg,ep,ev,re,r,rp)

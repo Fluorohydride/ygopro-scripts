@@ -42,7 +42,7 @@ function c46796664.discon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c46796664.disop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.SelectEffectYesNo(tp,e:GetHandler()) then return end
-	e:GetHandler():RegisterFlagEffect(46796664,RESET_EVENT+0x1fe0000,0,1)
+	e:GetHandler():RegisterFlagEffect(46796664,RESET_EVENT+RESETS_STANDARD,0,1)
 	if not Duel.NegateEffect(ev) then return end
 	Duel.BreakEffect()
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT)

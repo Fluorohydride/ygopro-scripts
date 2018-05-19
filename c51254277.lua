@@ -18,7 +18,7 @@ function c51254277.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCountLimit(1)
 	e1:SetTarget(c51254277.rmtg)
 	e1:SetOperation(c51254277.rmop)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c51254277.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)

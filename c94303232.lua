@@ -40,7 +40,7 @@ function c94303232.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do
 		if tc:IsPreviousPosition(POS_FACEUP_ATTACK) and tc:IsPosition(POS_FACEUP_DEFENSE) then
-			tc:RegisterFlagEffect(94303232,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+			tc:RegisterFlagEffect(94303232,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		end
 		tc=eg:GetNext()
 	end
@@ -69,14 +69,14 @@ function c94303232.operation(e,tp,eg,ep,ev,re,r,rp)
 	if dc==tc then tc=g:GetNext() end
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		if Duel.Equip(tp,c,tc) and dc:IsRelateToEffect(e) then
-			tc:RegisterFlagEffect(94303233,RESET_EVENT+0x1fe0000,0,1)
+			tc:RegisterFlagEffect(94303233,RESET_EVENT+RESETS_STANDARD,0,1)
 			c:SetCardTarget(dc)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_OWNER_RELATE)
 			e1:SetRange(LOCATION_MZONE)
 			e1:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
-			e1:SetReset(RESET_EVENT+0x1fe0000)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			e1:SetCondition(c94303232.rcon)
 			dc:RegisterEffect(e1,true)
 			local e2=e1:Clone()

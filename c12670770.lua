@@ -50,14 +50,14 @@ function c12670770.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetCountLimit(1)
 	e1:SetCondition(c12670770.sdescon)
 	e1:SetOperation(c12670770.sdesop)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,3)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,3)
 	c:RegisterEffect(e1)
 	c:SetTurnCounter(0)
 	if Duel.IsExistingMatchingCard(c12670770.filter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 		and Duel.IsExistingMatchingCard(c12670770.filter2,tp,LOCATION_DECK,0,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(12670770,0)) then
 		Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_DECK)
-		c:RegisterFlagEffect(12670770,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		c:RegisterFlagEffect(12670770,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		c:RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(12670770,1))
 	end
 end
@@ -65,7 +65,7 @@ function c12670770.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return e:GetHandler():GetFlagEffect(12670770)==0
 		and Duel.IsExistingMatchingCard(c12670770.filter2,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_DECK)
-	e:GetHandler():RegisterFlagEffect(12670770,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(12670770,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c12670770.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():GetFlagEffect(12670770)==0 or not e:GetHandler():IsRelateToEffect(e) then return end
@@ -123,7 +123,7 @@ function c12670770.spop(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CANNOT_TRIGGER)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
 		tc=g:GetNext()
 	end

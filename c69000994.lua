@@ -54,10 +54,10 @@ function c69000994.threg(e,tp,eg,ep,ev,re,r,rp)
 	if bit.band(r,0x41)~=0x41 then return end
 	if Duel.GetCurrentPhase()==PHASE_STANDBY then
 		e:SetLabel(Duel.GetTurnCount())
-		c:RegisterFlagEffect(69000994,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY,0,2)
+		c:RegisterFlagEffect(69000994,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY,0,2)
 	else
 		e:SetLabel(0)
-		c:RegisterFlagEffect(69000994,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY,0,1)
+		c:RegisterFlagEffect(69000994,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY,0,1)
 	end
 end
 function c69000994.thcon(e,tp,eg,ep,ev,re,r,rp)

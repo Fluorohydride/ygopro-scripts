@@ -32,9 +32,9 @@ function c4141820.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetLabel(ep)
 			e1:SetCondition(c4141820.hdcon)
 			e1:SetOperation(c4141820.hdop)
-			e1:SetReset(RESET_EVENT+0x1fe0000)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			rc:RegisterEffect(e1,true)
-			rc:RegisterFlagEffect(4141820,RESET_EVENT+0x1fe0000,0,1)
+			rc:RegisterFlagEffect(4141820,RESET_EVENT+RESETS_STANDARD,0,1)
 		end
 		rc=eg:GetNext()
 	end

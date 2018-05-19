@@ -39,7 +39,7 @@ function c26781870.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c26781870.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(26781870)==0 end
-	e:GetHandler():RegisterFlagEffect(26781870,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(26781870,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c26781870.filter(c)
 	return c:GetSummonLocation()==LOCATION_HAND and c:IsAbleToHand()

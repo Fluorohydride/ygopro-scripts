@@ -64,7 +64,7 @@ function c95474755.exop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Remove(sg,POS_FACEDOWN,REASON_EFFECT)
 end
 function c95474755.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(95474755,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE,0,1)
+	e:GetHandler():RegisterFlagEffect(95474755,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
 end
 function c95474755.grcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(95474755)~=0

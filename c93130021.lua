@@ -62,7 +62,7 @@ function c93130021.operation(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or not c:IsRelateToEffect(e) or c:IsFacedown()
 			or not Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,0x4011,atk,def,lv,race,att) then return end
 		local token=Duel.CreateToken(tp,93130022)
-		c:CreateRelation(token,RESET_EVENT+0x1fe0000)
+		c:CreateRelation(token,RESET_EVENT+RESETS_STANDARD)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -107,7 +107,7 @@ function c93130021.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)
 			e1:SetValue(400)
-			e1:SetReset(RESET_EVENT+0x1ff0000)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD_DISABLE)
 			c:RegisterEffect(e1)
 		end
 	end

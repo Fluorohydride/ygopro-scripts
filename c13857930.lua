@@ -31,7 +31,7 @@ function c13857930.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c13857930.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(13857930)==0 end
-	e:GetHandler():RegisterFlagEffect(13857930,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE,0,1)
+	e:GetHandler():RegisterFlagEffect(13857930,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE,0,1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c13857930.activate(e,tp,eg,ep,ev,re,r,rp)

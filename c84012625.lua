@@ -32,7 +32,7 @@ function c84012625.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOwnerPlayer(tp)
 		e1:SetCondition(c84012625.tdcon)
 		e1:SetOperation(c84012625.tdop)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1,true)
 	end
 end

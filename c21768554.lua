@@ -60,7 +60,7 @@ function c21768554.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc=g:GetNext()
 	end
-	c:RegisterFlagEffect(21768554,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	c:RegisterFlagEffect(21768554,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c21768554.con(e)
 	local c=e:GetOwner()

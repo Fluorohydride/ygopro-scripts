@@ -74,7 +74,7 @@ function c24010609.regop(e,tp,eg,ep,ev,re,r,rp)
 		if flag then
 			c:SetFlagEffectLabel(24010609,flag+1)
 		else
-			c:RegisterFlagEffect(24010609,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1,1)
+			c:RegisterFlagEffect(24010609,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,1)
 		end
 	end
 end

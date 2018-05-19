@@ -63,7 +63,7 @@ function c52575195.tgop(e,tp,eg,ep,ev,re,r,rp)
 		else
 			e1:SetLabel(Duel.GetTurnCount()+1)
 		end
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetCondition(c52575195.retcon)
 		e1:SetOperation(c52575195.retop)
 		tc:RegisterEffect(e1)

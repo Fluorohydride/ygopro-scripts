@@ -56,8 +56,8 @@ function c7617062.ftarget(e,c)
 end
 function c7617062.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	c:RegisterFlagEffect(7617062,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE,0,1)
-	eg:GetFirst():RegisterFlagEffect(7617063,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE,0,1)
+	c:RegisterFlagEffect(7617062,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE,0,1)
+	eg:GetFirst():RegisterFlagEffect(7617063,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE,0,1)
 end
 function c7617062.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(7617062)>0

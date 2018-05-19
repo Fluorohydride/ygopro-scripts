@@ -37,7 +37,7 @@ function c16625614.chcon1(e,tp,eg,ep,ev,re,r,rp)
 	return rc:IsControler(tp) and rc:IsCode(94212438) and re:GetLabel()==94212438
 end
 function c16625614.chop1(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():RegisterFlagEffect(16625614,RESET_EVENT+0x1fe0000+RESET_CHAIN,0,1)
+	return e:GetHandler():RegisterFlagEffect(16625614,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
 end
 function c16625614.chcon2(e,tp,eg,ep,ev,re,r,rp)
 	return ev==1 and e:GetHandler():GetFlagEffect(16625614)>0
@@ -75,10 +75,10 @@ function c16625614.dbop(e,tp,eg,ep,ev,re,r,rp)
 		e8:SetReset(RESET_EVENT+0x47c0000)
 		tc:RegisterEffect(e8)
 		Duel.SpecialSummonComplete()
-		c:RegisterFlagEffect(94212438,RESET_EVENT+0x1fe0000,0,0)
+		c:RegisterFlagEffect(94212438,RESET_EVENT+RESETS_STANDARD,0,0)
 	elseif tc and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
 		Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
-		c:RegisterFlagEffect(94212438,RESET_EVENT+0x1fe0000,0,0)
+		c:RegisterFlagEffect(94212438,RESET_EVENT+RESETS_STANDARD,0,0)
 	end
 end
 function c16625614.efilter(e,te)

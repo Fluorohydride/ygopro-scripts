@@ -99,7 +99,7 @@ function c71386411.spop(e,tp,eg,ep,ev,re,r,rp)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_UPDATE_LEVEL)
-	e2:SetReset(RESET_EVENT+0x1fe0000)
+	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 	e2:SetValue(-1)
 	tc:RegisterEffect(e2)
 	if c:IsRelateToEffect(e) then

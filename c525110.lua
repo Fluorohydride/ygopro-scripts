@@ -38,7 +38,7 @@ function c525110.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetValue(1)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		t1:RegisterEffect(e1)
 		if t2 then
 			Duel.SpecialSummonStep(t2,0,tp,tp,false,false,POS_FACEUP)

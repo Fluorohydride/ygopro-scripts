@@ -44,7 +44,7 @@ function c30650147.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetType(EFFECT_TYPE_SINGLE)
 		e3:SetCode(EFFECT_CHANGE_LEVEL)
 		e3:SetValue(tc:GetOriginalLevel())
-		e3:SetReset(RESET_EVENT+0x1fe0000)
+		e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 		token:RegisterEffect(e3,true)
 		Duel.SpecialSummonComplete()
 	end

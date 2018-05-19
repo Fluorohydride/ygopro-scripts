@@ -40,7 +40,7 @@ function c36415522.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.SelectYesNo(tp,aux.Stringid(36415522,0)) then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
-		e:GetHandler():RegisterFlagEffect(36415522,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(36415522,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	else
 		e:SetCategory(0)
 	end
@@ -50,7 +50,7 @@ function c36415522.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c36415522.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(36415522)==0 end
-	e:GetHandler():RegisterFlagEffect(36415522,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(36415522,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c36415522.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -69,12 +69,12 @@ function c36415522.spop(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
-		e2:SetReset(RESET_EVENT+0x1fe0000)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 		Duel.SpecialSummonComplete()
 	end

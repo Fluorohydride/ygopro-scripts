@@ -64,9 +64,9 @@ function c4694209.addc2(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_DESTROY_REPLACE)
 		e1:SetTarget(c4694209.reptg)
 		e1:SetOperation(c4694209.repop)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
-		tc:RegisterFlagEffect(4694209,RESET_EVENT+0x1fe0000,0,0)
+		tc:RegisterFlagEffect(4694209,RESET_EVENT+RESETS_STANDARD,0,0)
 	end
 end
 function c4694209.reptg(e,tp,eg,ep,ev,re,r,rp,chk)

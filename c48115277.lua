@@ -26,7 +26,7 @@ function c48115277.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ct=c:GetFlagEffectLabel(48115277)
 	if not ct then
-		c:RegisterFlagEffect(48115277,RESET_EVENT+0x1fe0000,0,1,0)
+		c:RegisterFlagEffect(48115277,RESET_EVENT+RESETS_STANDARD,0,1,0)
 	else
 		c:SetFlagEffectLabel(48115277,ct+1)
 	end
@@ -61,7 +61,7 @@ function c48115277.spop(e,tp,eg,ep,ev,re,r,rp)
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_CANNOT_ATTACK)
-			e1:SetReset(RESET_EVENT+0x1fe0000)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			token:RegisterEffect(e1,true)
 		end
 		Duel.SpecialSummonComplete()

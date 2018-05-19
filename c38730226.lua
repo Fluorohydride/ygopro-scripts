@@ -25,7 +25,7 @@ function c38730226.op(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTarget(c38730226.dtg)
 	e1:SetOperation(c38730226.dop)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c38730226.dtg(e,tp,eg,ep,ev,re,r,rp,chk)

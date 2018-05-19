@@ -34,7 +34,7 @@ function c60080151.activate(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetLabel(Duel.GetTurnCount())
 			e1:SetReset(RESET_PHASE+PHASE_END+RESET_OPPO_TURN,2)
 			Duel.RegisterEffect(e1,tp)
-			tc:RegisterFlagEffect(60080151,RESET_EVENT+0x1fe0000,0,0)
+			tc:RegisterFlagEffect(60080151,RESET_EVENT+RESETS_STANDARD,0,0)
 		end
 	end
 end

@@ -36,7 +36,7 @@ function c99070951.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if not tc or not tc:IsAbleToRemove() then return end
 	Duel.DisableShuffleCheck()
 	Duel.Remove(tc,POS_FACEDOWN,REASON_EFFECT)
-	tc:RegisterFlagEffect(99070951,RESET_EVENT+0x1fe0000,0,1)
+	tc:RegisterFlagEffect(99070951,RESET_EVENT+RESETS_STANDARD,0,1)
 	if c:IsLocation(LOCATION_MZONE) then
 		c:RegisterFlagEffect(99070951,RESET_EVENT+0x680000,0,1)
 	end

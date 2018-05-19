@@ -63,9 +63,9 @@ function c86124104.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EVENT_CHAINING)
 		e1:SetRange(LOCATION_MZONE)
 		e1:SetOperation(c86124104.actop)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
-		tc:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(86124104,2))
+		tc:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(86124104,2))
 	end
 end
 function c86124104.actop(e,tp,eg,ep,ev,re,r,rp)

@@ -29,10 +29,10 @@ function c25345186.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c25345186.regop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
-	tc:RegisterFlagEffect(25345186,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	tc:RegisterFlagEffect(25345186,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	tc=Duel.GetAttackTarget()
 	if tc then
-		tc:RegisterFlagEffect(25345186,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		tc:RegisterFlagEffect(25345186,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c25345186.filter(c)

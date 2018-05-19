@@ -27,7 +27,7 @@ end
 function c47349310.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetAttackTarget() then return end
-	c:RegisterFlagEffect(47349310,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE,0,1)
+	c:RegisterFlagEffect(47349310,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
 end
 function c47349310.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(47349310)~=0

@@ -36,7 +36,7 @@ c46384672.lvup={73879377}
 c46384672.lvdncount=1
 c46384672.lvdn={980973}
 function c46384672.bdop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(46384672,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(46384672,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c46384672.cfilter(c,tp)
 	local atk=c:GetAttack()
