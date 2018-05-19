@@ -14,7 +14,7 @@ function c43140791.initial_effect(c)
 	Duel.AddCustomActivityCounter(43140791,ACTIVITY_SPSUMMON,c43140791.counterfilter)
 end
 function c43140791.counterfilter(c)
-	return not (c:IsLevel(3) or c:IsLevel(4))
+	return not c:IsLevel(3,4)
 end
 function c43140791.cfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_INSECT)
@@ -38,7 +38,7 @@ function c43140791.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e2,tp)
 end
 function c43140791.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
-	return c:IsLevel(3) or c:IsLevel(4)
+	return c:IsLevel(3,4)
 end
 function c43140791.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)

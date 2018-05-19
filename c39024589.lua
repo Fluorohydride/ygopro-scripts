@@ -33,7 +33,7 @@ function c39024589.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c39024589.cfilter,1,nil,tp)
 end
 function c39024589.thfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x10ec) and (c:IsLevel(1) or c:IsLevel(8)) and c:IsType(TYPE_PENDULUM) and c:IsAbleToHand()
+	return c:IsFaceup() and c:IsSetCard(0x10ec) and c:IsLevel(1,8) and c:IsType(TYPE_PENDULUM) and c:IsAbleToHand()
 end
 function c39024589.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c39024589.thfilter,tp,LOCATION_EXTRA,0,1,nil) end
@@ -57,7 +57,7 @@ function c39024589.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c39024589.filter(c,e,tp)
 	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsSetCard(0x10ec)
-		and (c:IsLevel(1) or c:IsLevel(8)) and c:IsType(TYPE_PENDULUM) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsLevel(1,8) and c:IsType(TYPE_PENDULUM) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c39024589.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local loc=0
