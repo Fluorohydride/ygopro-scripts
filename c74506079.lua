@@ -33,7 +33,7 @@ function c74506079.matcheck(e,c)
 		e1:SetCountLimit(1)
 		e1:SetTarget(c74506079.sptg)
 		e1:SetOperation(c74506079.spop)
-		e1:SetReset(RESET_EVENT+0xfe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD)
 		c:RegisterEffect(e1)
 	end
 	if ct>=4 then
@@ -46,7 +46,7 @@ function c74506079.matcheck(e,c)
 		e1:SetCost(c74506079.tgcost)
 		e1:SetTarget(c74506079.tgtg)
 		e1:SetOperation(c74506079.tgop)
-		e1:SetReset(RESET_EVENT+0xfe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD)
 		c:RegisterEffect(e1)
 	end
 	if ct>=6 then
@@ -59,7 +59,7 @@ function c74506079.matcheck(e,c)
 		e1:SetCountLimit(1)
 		e1:SetTarget(c74506079.drtg)
 		e1:SetOperation(c74506079.drop)
-		e1:SetReset(RESET_EVENT+0xfe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD)
 		c:RegisterEffect(e1)
 	end
 end

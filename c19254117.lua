@@ -95,8 +95,8 @@ function c19254117.tgop(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_ONLY_BE_ATTACKED)
-		e2:SetReset(RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e2,true)
-		tc:RegisterFlagEffect(19254117,RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END,0,0)
+		tc:RegisterFlagEffect(19254117,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_PHASE+PHASE_END,0,0)
 	end
 end

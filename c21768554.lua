@@ -54,7 +54,7 @@ function c21768554.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_SET_CONTROL)
 			e1:SetValue(tp)
-			e1:SetReset(RESET_EVENT+0x1fc0000)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
 			e1:SetCondition(c21768554.con)
 			tc:RegisterEffect(e1)
 		end

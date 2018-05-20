@@ -20,7 +20,7 @@ end
 function c16509093.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsCanTurnSet() and c:GetFlagEffect(16509093)==0 end
-	c:RegisterFlagEffect(16509093,RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END,0,1)
+	c:RegisterFlagEffect(16509093,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_PHASE+PHASE_END,0,1)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,c,1,0,0)
 end
 function c16509093.operation(e,tp,eg,ep,ev,re,r,rp)

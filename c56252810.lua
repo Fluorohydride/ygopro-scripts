@@ -68,7 +68,7 @@ function c56252810.activate(e,tp,eg,ep,ev,re,r,rp)
 		e5:SetType(EFFECT_TYPE_SINGLE)
 		e5:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
 		e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e5:SetReset(RESET_EVENT+0x47e0000)
+		e5:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_OVERLAY-RESET_TOFIELD-RESET_LEAVE)
 		e5:SetValue(LOCATION_REMOVED)
 		tc:RegisterEffect(e5,true)
 	end

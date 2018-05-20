@@ -51,7 +51,7 @@ function c67556500.lvop(e,tp,eg,ep,ev,re,r,rp)
 	e3:SetCode(EFFECT_MUST_BE_SMATERIAL)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_CANNOT_DISABLE)
 	e3:SetTargetRange(1,0)
-	e3:SetReset(RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END)
+	e3:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_PHASE+PHASE_END)
 	c:RegisterEffect(e3)
 end
 function c67556500.splimit(e,c,sump,sumtype,sumpos,targetp,se)

@@ -36,7 +36,7 @@ function c92854392.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetType(EFFECT_TYPE_SINGLE)
 		e3:SetCode(EFFECT_MUST_BE_ATTACKED)
 		e3:SetValue(1)
-		e3:SetReset(RESET_PHASE+PHASE_BATTLE+RESET_EVENT+0x1fc0000)
+		e3:SetReset(RESET_PHASE+PHASE_BATTLE+RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
 		tc:RegisterEffect(e3,true)
 		Duel.ChangeAttackTarget(tc)
 	end

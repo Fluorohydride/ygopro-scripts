@@ -25,7 +25,7 @@ function c45812361.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c45812361.sumsuc(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(45812361,RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(45812361,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_PHASE+PHASE_END,0,1)
 end
 function c45812361.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(45812361)~=0 and Duel.GetCurrentPhase()==PHASE_MAIN1

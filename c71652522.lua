@@ -38,7 +38,7 @@ function c71652522.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetOperation(c71652522.ctop)
 		e2:SetLabelObject(tc)
 		Duel.RegisterEffect(e2,tp)
-		tc:RegisterFlagEffect(71652522,RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_BATTLE,0,1)
+		tc:RegisterFlagEffect(71652522,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_PHASE+PHASE_BATTLE,0,1)
 	end
 end
 function c71652522.ctop(e,tp,eg,ep,ev,re,r,rp)

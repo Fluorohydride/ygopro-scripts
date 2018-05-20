@@ -32,7 +32,7 @@ function c18282103.spop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
 		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e2:SetReset(RESET_EVENT+0x47e0000)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_OVERLAY-RESET_TOFIELD-RESET_LEAVE)
 		e2:SetValue(LOCATION_REMOVED)
 		c:RegisterEffect(e2,true)
 	end

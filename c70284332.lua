@@ -40,7 +40,7 @@ function c70284332.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_OWNER_RELATE)
 		e1:SetRange(LOCATION_MZONE)
 		e1:SetValue(tp)
-		e1:SetReset(RESET_EVENT+0x1fc0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
 		e1:SetCondition(c70284332.con)
 		tc:RegisterEffect(e1)
 		--redirect

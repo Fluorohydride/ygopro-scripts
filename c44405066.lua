@@ -44,7 +44,7 @@ function c44405066.indcon(e)
 	return e:GetHandler():GetOverlayCount()>0
 end
 function c44405066.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(44405066,RESET_EVENT+0x1fc0000+RESET_CHAIN,0,1)
+	e:GetHandler():RegisterFlagEffect(44405066,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN,0,1)
 end
 function c44405066.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

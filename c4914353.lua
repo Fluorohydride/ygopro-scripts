@@ -66,7 +66,7 @@ function c4914353.spop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e2:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
 		e2:SetValue(LOCATION_REMOVED)
-		e2:SetReset(RESET_EVENT+0x47e0000)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_OVERLAY-RESET_TOFIELD-RESET_LEAVE)
 		c:RegisterEffect(e2,true)
 		Duel.SpecialSummonComplete()
 	end
