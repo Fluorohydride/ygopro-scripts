@@ -10,5 +10,5 @@ function c91949988.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c91949988.ovfilter(c)
-	return c:IsFaceup() and (c:IsRank(5) or c:IsRank(6))
+	return c:IsFaceup() and c:IsRank(5,6)
 end

@@ -36,7 +36,7 @@ function c87835759.lvcon(e)
 	return Duel.GetTurnPlayer()~=e:GetHandlerPlayer()
 end
 function c87835759.tgfilter(c)
-	return c:IsRace(RACE_DRAGON) and (c:IsLevel(7) or c:IsLevel(8)) and c:IsAbleToGrave()
+	return c:IsRace(RACE_DRAGON) and c:IsLevel(7,8) and c:IsAbleToGrave()
 end
 function c87835759.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c87835759.tgfilter,tp,LOCATION_DECK,0,1,nil) end
@@ -54,7 +54,7 @@ function c87835759.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,Card.IsAbleToGraveAsCost,1,1,REASON_COST)
 end
 function c87835759.spfilter(c,e,tp)
-	return c:IsRace(RACE_DRAGON) and (c:IsLevel(7) or c:IsLevel(8)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_DRAGON) and c:IsLevel(7,8) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c87835759.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c87835759.spfilter(chkc,e,tp) end

@@ -22,7 +22,7 @@ function c85004150.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c85004150.ovfilter(c)
-	return c:IsFaceup() and c:IsXyzType(TYPE_XYZ) and (c:IsRank(5) or c:IsRank(6)) and c:IsRace(RACE_INSECT)
+	return c:IsFaceup() and c:IsXyzType(TYPE_XYZ) and c:IsRank(5,6) and c:IsRace(RACE_INSECT)
 end
 function c85004150.mfilter(c)
 	return c:IsRace(RACE_INSECT) and c:IsAttribute(ATTRIBUTE_LIGHT)

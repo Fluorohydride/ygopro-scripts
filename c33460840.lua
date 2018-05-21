@@ -24,7 +24,7 @@ function c33460840.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c33460840.filter(c,ec)
-	return c:IsRace(RACE_DRAGON) and (c:IsLevel(7) or c:IsLevel(8)) and not c:IsForbidden()
+	return c:IsRace(RACE_DRAGON) and c:IsLevel(7,8) and not c:IsForbidden()
 end
 function c33460840.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
@@ -74,7 +74,7 @@ function c33460840.eqlimit(e,c)
 	return e:GetOwner()==c
 end
 function c33460840.spfilter(c,e,tp)
-	return c:IsRace(RACE_DRAGON) and (c:IsLevel(7) or c:IsLevel(8)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_DRAGON) and c:IsLevel(7,8) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c33460840.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

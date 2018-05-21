@@ -11,7 +11,7 @@ function c87047161.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c87047161.filter(c)
-	return (c:IsLevel(3) or c:IsLevel(4) or c:IsLevel(5)) and c:IsRace(RACE_FISH) and c:IsAbleToHand()
+	return c:IsLevel(3,4,5) and c:IsRace(RACE_FISH) and c:IsAbleToHand()
 end
 function c87047161.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c87047161.filter,tp,LOCATION_DECK,0,1,nil) end

@@ -73,7 +73,7 @@ function c1686814.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(Card.IsControler,1,nil,tp)
 end
 function c1686814.spfilter(c,e,tp)
-	return (c:IsSetCard(0xc2) or ((c:IsLevel(7) or c:IsLevel(8)) and c:IsRace(RACE_DRAGON)))
+	return (c:IsSetCard(0xc2) or (c:IsLevel(7,8) and c:IsRace(RACE_DRAGON)))
 		and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c1686814.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
