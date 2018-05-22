@@ -100,7 +100,7 @@ function c82103466.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,c)
 		if g:GetCount()==0 then return false end
 		local g1,atk=g:GetMaxGroup(Card.GetBaseAttack)
-		return c:GetAttack()~=atk and c:GetFlagEffect(82103466)==0
+		return not c:IsAttack(atk) and c:GetFlagEffect(82103466)==0
 	end
 	c:RegisterFlagEffect(82103466,RESET_CHAIN,0,1)
 end

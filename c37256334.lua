@@ -23,7 +23,7 @@ function c37256334.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c37256334.deffilter1(c,def)
-	return c:IsPosition(POS_FACEUP_DEFENSE) and c:GetDefense()~=def
+	return c:IsPosition(POS_FACEUP_DEFENSE) and not c:IsDefense(def)
 end
 function c37256334.deftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(Card.IsPosition,tp,LOCATION_MZONE,0,nil,POS_FACEUP_DEFENSE)

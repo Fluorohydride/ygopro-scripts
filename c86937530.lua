@@ -24,7 +24,7 @@ function c86937530.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c86937530.filter(c)
-	return c:GetAttack()==1850 and c:IsRace(RACE_SPELLCASTER) and c:IsAbleToHand()
+	return c:IsAttack(1850) and c:IsRace(RACE_SPELLCASTER) and c:IsAbleToHand()
 end
 function c86937530.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c86937530.filter,tp,LOCATION_DECK,0,1,nil) end

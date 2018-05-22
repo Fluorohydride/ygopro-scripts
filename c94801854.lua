@@ -34,7 +34,7 @@ function c94801854.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(sg,REASON_COST)
 end
 function c94801854.spfilter1(c,e,tp)
-	return c:IsRace(RACE_ZOMBIE) and c:IsType(TYPE_TUNER) and c:IsDefenseBelow(0) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_ZOMBIE) and c:IsType(TYPE_TUNER) and c:IsDefense(0) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c94801854.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c94801854.spfilter1,tp,LOCATION_DECK,0,1,nil,e,tp) end

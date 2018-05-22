@@ -31,10 +31,10 @@ function c16886617.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c16886617.rfilter(c)
-	return c:IsFaceup() and c:GetAttack()==0 and c:IsReleasable()
+	return c:IsFaceup() and c:IsAttack(0) and c:IsReleasable()
 end
 function c16886617.mzfilter(c)
-	return c:IsFaceup() and c:GetAttack()==0 and c:IsReleasable() and c:GetSequence()<5
+	return c:IsFaceup() and c:IsAttack(0) and c:IsReleasable() and c:GetSequence()<5
 end
 function c16886617.spcon(e,c)
 	if c==nil then return true end

@@ -25,7 +25,7 @@ function c91422370.filter(c,e,tp)
 	return c:IsSetCard(0x58) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c91422370.filter2(c,atk,e,tp)
-	return c:IsSetCard(0x58) and c:GetAttack()==atk and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x58) and c:IsAttack(atk) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c91422370.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c91422370.filter,tp,LOCATION_HAND,0,1,nil,e,tp) end

@@ -47,7 +47,7 @@ function c53573406.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return e:GetLabel()~=se:GetLabel() and not c:IsLocation(LOCATION_EXTRA)
 end
 function c53573406.filter(c,e,tp)
-	return c:IsDefenseBelow(0) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+	return c:IsDefense(0) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c53573406.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:GetControler()==tp and chkc:GetLocation()==LOCATION_GRAVE and c53573406.filter(chkc,e,tp) end

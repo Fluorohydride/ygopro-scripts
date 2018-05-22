@@ -13,7 +13,7 @@ function c24062258.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c24062258.filter(c,e,tp)
-	return c:GetCode()~=24062258 and c:IsLevel(4) and c:IsAttribute(ATTRIBUTE_DARK) and (c:GetAttack()==0 or c:IsDefenseBelow(0))
+	return c:GetCode()~=24062258 and c:IsLevel(4) and c:IsAttribute(ATTRIBUTE_DARK) and (c:IsAttack(0) or c:IsDefense(0))
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c24062258.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

@@ -34,7 +34,7 @@ function c20785975.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c20785975.filter(c)
-	return c:IsFaceup() and c:GetAttack()~=c:GetBaseAttack() and c:IsAbleToRemove()
+	return c:IsFaceup() and not c:IsAttack(c:GetBaseAttack()) and c:IsAbleToRemove()
 end
 function c20785975.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c20785975.filter(chkc) end

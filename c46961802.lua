@@ -13,7 +13,7 @@ function c46961802.filter1(c,tp)
 	return c:IsFaceup() and Duel.IsExistingTarget(c46961802.filter2,tp,LOCATION_MZONE,0,1,c,c:GetAttack())
 end
 function c46961802.filter2(c,atk)
-	return c:IsFaceup() and c:GetAttack()==atk
+	return c:IsFaceup() and c:IsAttack(atk)
 end
 function c46961802.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
@@ -28,7 +28,7 @@ function c46961802.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc1=g:GetFirst()
 	local tc2=g:GetNext()
 	if tc1:IsFacedown() or tc2:IsFacedown() or not tc1:IsRelateToEffect(e) or not tc2:IsRelateToEffect(e)
-		or tc1:GetAttack()~=tc2:GetAttack() then return end
+		or not tc1:IsAttack(tc2:GetAttack()) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_DIRECT_ATTACK)

@@ -20,5 +20,5 @@ function c60519422.indtg(e,c)
 	return true
 end
 function c60519422.indval(e,c)
-	return c:GetAttack()==e:GetLabel()
+	return c:IsAttack(e:GetLabel())
 end

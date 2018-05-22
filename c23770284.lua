@@ -56,5 +56,5 @@ function c23770284.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c23770284.indval(e,c)
-	return c:GetAttack()==e:GetHandler():GetAttack()
+	return c:IsAttack(e:GetHandler():GetAttack())
 end

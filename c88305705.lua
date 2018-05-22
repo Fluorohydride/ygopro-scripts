@@ -68,7 +68,7 @@ function c88305705.ftarget(e,c)
 end
 function c88305705.discon(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) then return false end
-	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():GetAttack()==0
+	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsAttack(0)
 end
 function c88305705.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
