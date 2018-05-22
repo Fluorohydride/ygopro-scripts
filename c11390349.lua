@@ -30,7 +30,7 @@ function c11390349.val(e,c)
 	return Duel.GetMatchingGroupCount(c11390349.vfilter,e:GetOwnerPlayer(),LOCATION_MZONE,0,nil)*-300
 end
 function c11390349.filter(c)
-	return c:IsFaceup() and c:IsDefenseBelow(0) and c:IsControlerCanBeChanged()
+	return c:IsFaceup() and c:IsDefense(0) and c:IsControlerCanBeChanged()
 end
 function c11390349.ctltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c11390349.filter(chkc) end
@@ -41,7 +41,7 @@ function c11390349.ctltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c11390349.ctlop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsDefenseBelow(0) then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsDefense(0) then
 		Duel.GetControl(tc,tp,PHASE_END,1)
 	end
 end

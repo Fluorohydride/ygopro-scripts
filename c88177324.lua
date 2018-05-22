@@ -36,7 +36,7 @@ function c88177324.filter1(c)
 	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and not c:IsDisabled()
 end
 function c88177324.filter2(c)
-	return c:IsFaceup() and (c:GetAttack()~=c:GetBaseAttack() or c:GetDefense()~=c:GetBaseDefense())
+	return c:IsFaceup() and (not c:IsAttack(c:GetBaseAttack()) or not c:IsDefense(c:GetBaseDefense()))
 end
 function c88177324.filter3(c)
 	return c:IsFaceup() and c:IsType(TYPE_EFFECT)
@@ -68,7 +68,7 @@ function c88177324.negop(e,tp,eg,ep,ev,re,r,rp)
 	g=Duel.GetMatchingGroup(c88177324.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,exc)
 	tc=g:GetFirst()
 	while tc do
-		if tc:GetAttack()~=tc:GetBaseAttack() then
+		if not tc:IsAttack(tc:GetBaseAttack()) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_SET_ATTACK_FINAL)
@@ -76,7 +76,7 @@ function c88177324.negop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+0x1fe0000)
 			tc:RegisterEffect(e1)
 		end
-		if tc:GetDefense()~=tc:GetBaseDefense() then
+		if not tc:IsDefense(tc:GetBaseDefense()) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_SET_DEFENSE_FINAL)

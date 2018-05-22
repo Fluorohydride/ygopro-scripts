@@ -19,7 +19,7 @@ function c52824910.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c52824910.indes(e,c)
-	return c:GetAttack()==e:GetHandler():GetAttack()
+	return c:IsAttack(e:GetHandler():GetAttack())
 end
 function c52824910.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_DESTROY)

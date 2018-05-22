@@ -58,7 +58,7 @@ function c99185129.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c99185129.filter(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA and not (c:GetAttack()==0 and c:IsDisabled())
+	return c:GetSummonLocation()==LOCATION_EXTRA and not (c:IsAttack(0) and c:IsDisabled())
 end
 function c99185129.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c99185129.filter(chkc) end

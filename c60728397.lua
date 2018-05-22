@@ -37,7 +37,7 @@ function c60728397.activate(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsRelateToEffect(e) and tc:IsCanAddCounter(0x1009,2) and g:GetFirst():IsLocation(LOCATION_GRAVE) then
 			local atk=tc:GetAttack()
 			tc:AddCounter(0x1009,2)
-			if atk>0 and tc:GetAttack()==0 then
+			if atk>0 and tc:IsAttack(0) then
 				Duel.RaiseEvent(tc,EVENT_CUSTOM+54306223,e,0,0,0,0)
 			end
 		end

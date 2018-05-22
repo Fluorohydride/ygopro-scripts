@@ -119,7 +119,7 @@ function c10000020.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(-2000)
 		e1:SetReset(RESET_EVENT+0x1fe0000)
 		tc:RegisterEffect(e1)
-		if preatk~=0 and tc:GetAttack()==0 then dg:AddCard(tc) end
+		if preatk~=0 and tc:IsAttack(0) then dg:AddCard(tc) end
 		tc=g:GetNext()
 	end
 	Duel.Destroy(dg,REASON_EFFECT)

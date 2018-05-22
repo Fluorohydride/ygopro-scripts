@@ -27,7 +27,7 @@ function c17857780.atktg(e,c)
 	return c:IsType(TYPE_PENDULUM)
 end
 function c17857780.filter(c)
-	return c:IsFaceup() and c:GetAttack()~=c:GetBaseAttack()
+	return c:IsFaceup() and not c:IsAttack(c:GetBaseAttack())
 end
 function c17857780.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c17857780.filter(chkc) end

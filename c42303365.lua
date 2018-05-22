@@ -11,7 +11,7 @@ function c42303365.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c42303365.filter(c)
-	return c:IsFaceup() and c:IsControlerCanBeChanged() and c:GetAttack()==0
+	return c:IsFaceup() and c:IsControlerCanBeChanged() and c:IsAttack(0)
 end
 function c42303365.ctltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c42303365.filter(chkc) end
@@ -22,7 +22,7 @@ function c42303365.ctltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c42303365.ctlop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetAttack()==0 then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsAttack(0) then
 		Duel.GetControl(tc,tp)
 	end
 end

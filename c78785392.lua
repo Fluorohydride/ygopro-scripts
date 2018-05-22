@@ -35,7 +35,7 @@ function c78785392.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return not c:IsSetCard(0xe6)
 end
 function c78785392.filter(c,e,tp)
-	return c:GetAttack()==100 and c:IsSetCard(0xe6) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsAttack(100) and c:IsSetCard(0xe6) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c78785392.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)

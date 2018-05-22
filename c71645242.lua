@@ -92,7 +92,7 @@ function c71645242.desfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_PLANT)
 end
 function c71645242.filter2(c,atk,e,tp)
-	return c:GetAttack()==atk and c:IsCanBeSpecialSummoned(e,0x20,tp,false,false)
+	return c:IsAttack(atk) and c:IsCanBeSpecialSummoned(e,0x20,tp,false,false)
 end
 function c71645242.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c71645242.filter2(chkc,e:GetLabel(),e,tp) end
@@ -121,7 +121,7 @@ function c71645242.spop2(e,tp,eg,ep,ev,re,r,rp)
 	og:RemoveCard(c)
 	local atk=og:GetSum(Card.GetPreviousAttackOnField)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:GetAttack()==atk then
+	if tc:IsRelateToEffect(e) and tc:IsAttack(atk) then
 		Duel.SpecialSummon(tc,0x20,tp,tp,false,false,POS_FACEUP)
 	end
 end

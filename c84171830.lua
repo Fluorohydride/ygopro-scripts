@@ -56,7 +56,7 @@ function c84171830.atktg(e,c)
 	return c==Duel.GetAttacker() and c:IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c84171830.filter(c)
-	return c:GetAttack()==2800 and c:GetDefense()==1000
+	return c:IsAttack(2800) and c:IsDefense(1000)
 end
 function c84171830.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c84171830.filter,tp,LOCATION_HAND,0,1,nil) end

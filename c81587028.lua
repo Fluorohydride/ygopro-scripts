@@ -17,7 +17,7 @@ function c81587028.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_DESTROY)
 end
 function c81587028.filter1(c,e,tp)
-	return c:IsType(TYPE_NORMAL) and (c:GetAttack()==0 or c:IsDefenseBelow(0)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+	return c:IsType(TYPE_NORMAL) and (c:IsAttack(0) or c:IsDefense(0)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c81587028.filter2(c,g)
 	return g:IsExists(c81587028.filter3,1,c,c:GetCode())

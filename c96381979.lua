@@ -101,7 +101,7 @@ function c96381979.afilter1(c,g)
 	return g:IsExists(c96381979.afilter2,1,c,c:GetAttack())
 end
 function c96381979.afilter2(c,atk)
-	return c:GetAttack()==atk
+	return c:IsAttack(atk)
 end
 function c96381979.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
