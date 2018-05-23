@@ -66,7 +66,7 @@ function c29834183.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e4:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
 		e4:SetCode(EVENT_LEAVE_FIELD)
 		e4:SetOperation(c29834183.desop)
-		e4:SetReset(RESET_EVENT+0x17e0000)
+		e4:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_LEAVE)
 		e4:SetLabelObject(e3)
 		c:RegisterEffect(e4)
 	end
