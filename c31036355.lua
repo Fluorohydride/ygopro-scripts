@@ -10,7 +10,8 @@ function c31036355.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c31036355.filter(c)
-	return c:IsAbleToChangeControler() and (c:GetSequence()<5 or Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0)
+	local tp=c:GetControler()
+	return c:IsAbleToChangeControler() and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
 end
 function c31036355.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c31036355.filter,tp,LOCATION_MZONE,0,1,nil)
