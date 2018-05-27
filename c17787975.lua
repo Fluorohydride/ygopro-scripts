@@ -70,7 +70,7 @@ function c17787975.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(dam)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,dam)
-	c:RegisterFlagEffect(17787975,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE,0,1)
+	c:RegisterFlagEffect(17787975,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE,0,1)
 end
 function c17787975.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

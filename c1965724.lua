@@ -36,7 +36,7 @@ function c1965724.regcon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c1965724.cfilter2,tp,LOCATION_MZONE,0,1,nil)
 end
 function c1965724.regop(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():RegisterFlagEffect(1965724,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	return e:GetHandler():RegisterFlagEffect(1965724,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c1965724.atkcon(e)
 	return e:GetHandler():GetFlagEffect(1965724)~=0

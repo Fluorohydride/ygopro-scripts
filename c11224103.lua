@@ -34,7 +34,7 @@ c11224103.lvup={48229808}
 c11224103.lvdncount=1
 c11224103.lvdn={75830094}
 function c11224103.bdop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(11224103,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(11224103,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c11224103.efilter(e,te)
 	return te:IsActiveType(TYPE_SPELL)

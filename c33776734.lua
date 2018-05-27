@@ -51,7 +51,7 @@ c33776734.lvupcount=1
 c33776734.lvup={33776734}
 function c33776734.checkop1(e,tp,eg,ep,ev,re,r,rp)
 	if re and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) then
-		re:GetHandler():RegisterFlagEffect(33776734,RESET_EVENT+0x1fe0000,0,1)
+		re:GetHandler():RegisterFlagEffect(33776734,RESET_EVENT+RESETS_STANDARD,0,1)
 	end
 end
 function c33776734.checkop2(e,tp,eg,ep,ev,re,r,rp)

@@ -49,7 +49,7 @@ function c37675138.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTarget(c37675138.sdtg)
 	e1:SetOperation(c37675138.sdop)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c37675138.sdtg(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -17,7 +17,7 @@ function c96287685.initial_effect(c)
 end
 function c96287685.regop(e,tp,eg,ep,ev,re,r,rp)
 	if re:GetHandler():IsCode(83968380) then
-		e:GetHandler():RegisterFlagEffect(96287685,RESET_EVENT+0x1fe0000+RESET_CHAIN,0,1)
+		e:GetHandler():RegisterFlagEffect(96287685,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
 	end
 end
 function c96287685.drawop(e,tp,eg,ep,ev,re,r,rp)

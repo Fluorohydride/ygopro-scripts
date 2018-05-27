@@ -51,7 +51,7 @@ function c85638822.rcop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		c:RemoveCounter(tp,0x46,1,REASON_EFFECT)
-		c:RegisterFlagEffect(85638822,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE,0,0)
+		c:RegisterFlagEffect(85638822,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,0)
 	end
 end
 function c85638822.spcon(e,tp,eg,ep,ev,re,r,rp)

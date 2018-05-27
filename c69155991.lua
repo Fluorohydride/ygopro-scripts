@@ -36,7 +36,7 @@ function c69155991.initial_effect(c)
 end
 function c69155991.chop(e,tp,eg,ep,ev,re,r,rp)
 	if re:IsHasType(EFFECT_TYPE_ACTIVATE) or re:GetHandler():IsType(TYPE_MONSTER) then
-		e:GetHandler():RegisterFlagEffect(69155991,RESET_EVENT+0x1fe0000+RESET_CHAIN,0,1)
+		e:GetHandler():RegisterFlagEffect(69155991,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
 	end
 end
 function c69155991.desop1(e,tp,eg,ep,ev,re,r,rp)
@@ -45,7 +45,7 @@ function c69155991.desop1(e,tp,eg,ep,ev,re,r,rp)
 	c:ResetFlagEffect(69155991)
 	local ph=Duel.GetCurrentPhase()
 	if (ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL) and not Duel.IsDamageCalculated() then
-		c:RegisterFlagEffect(69155992,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE,0,1)
+		c:RegisterFlagEffect(69155992,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE,0,1)
 	else
 		Duel.Destroy(c,REASON_EFFECT)
 	end

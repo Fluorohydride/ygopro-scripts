@@ -46,7 +46,7 @@ function c71797713.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 			fc=fg:Select(tp,1,1,nil)
 		end
 		Duel.Hint(HINT_CARD,0,fc:GetCode())
-		fc:RegisterFlagEffect(61557074,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,0)
+		fc:RegisterFlagEffect(61557074,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,0)
 	end
 	local flag=0
 	if g:IsExists(c71797713.regfilter,1,nil,ATTRIBUTE_EARTH+ATTRIBUTE_WIND) then flag=bit.bor(flag,0x1) end
@@ -78,7 +78,7 @@ function c71797713.regop(e,tp,eg,ep,ev,re,r,rp)
 	e0:SetRange(LOCATION_MZONE)
 	e0:SetTargetRange(LOCATION_MZONE,0)
 	e0:SetTarget(c71797713.immtg)
-	e0:SetReset(RESET_EVENT+0x1fe0000)
+	e0:SetReset(RESET_EVENT+RESETS_STANDARD)
 	if bit.band(flag,0x1)~=0 then
 		local e1=e0:Clone()
 		e1:SetDescription(aux.Stringid(71797713,1))

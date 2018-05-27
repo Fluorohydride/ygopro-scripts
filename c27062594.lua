@@ -39,7 +39,7 @@ function c27062594.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCost(c27062594.damcost)
 	e1:SetTarget(c27062594.damtg)
 	e1:SetOperation(c27062594.damop)
-	e1:SetReset(RESET_EVENT+0x1fe0000)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e1,true)
 	Duel.SpecialSummonComplete()
 end
@@ -77,7 +77,7 @@ function c27062594.damop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(val)
-		e1:SetReset(RESET_EVENT+0x1ff0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)
 	end
 end

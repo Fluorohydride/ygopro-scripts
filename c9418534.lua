@@ -37,7 +37,7 @@ function c9418534.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EVENT_PHASE+PHASE_END)
 		e1:SetCondition(c9418534.descon)
 		e1:SetOperation(c9418534.desop)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,2)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,2)
 		e1:SetCountLimit(1)
 		tc:RegisterEffect(e1)
 	end

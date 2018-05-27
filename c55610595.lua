@@ -30,7 +30,7 @@ function c55610595.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCountLimit(1,55610595)
 		e1:SetTarget(c55610595.thtg)
 		e1:SetOperation(c55610595.thop)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 	end
 end

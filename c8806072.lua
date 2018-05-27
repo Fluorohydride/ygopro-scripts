@@ -19,7 +19,7 @@ end
 function c8806072.chop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetCurrentPhase()==PHASE_MAIN1 and Duel.GetTurnPlayer()==tp and Duel.GetCurrentChain()>1
 		and e:GetHandler():GetFlagEffect(8806072)==0 then
-		e:GetHandler():RegisterFlagEffect(8806072,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(8806072,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c8806072.atkcon(e)

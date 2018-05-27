@@ -41,7 +41,7 @@ function c87046457.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetRange(LOCATION_SZONE)
 	e1:SetCondition(c87046457.descon)
 	e1:SetOperation(c87046457.desop)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
 	c:RegisterEffect(e1)
 	c:SetTurnCounter(0)
 end
@@ -69,13 +69,13 @@ function c87046457.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	local atkg=e:GetLabelObject()
 	if c:GetFlagEffect(87046457)==0 then
-		c:RegisterFlagEffect(87046457,RESET_EVENT+0x1ff0000,0,1)
+		c:RegisterFlagEffect(87046457,RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,1)
 		atkg:Clear()
 	end
 	local g=eg:Filter(c87046457.filter,nil,e,tp)
 	local tc=g:GetFirst()
 	while tc do
-		tc:RegisterFlagEffect(87046457,RESET_EVENT+0x1fe0000,0,1)
+		tc:RegisterFlagEffect(87046457,RESET_EVENT+RESETS_STANDARD,0,1)
 		atkg:AddCard(tc)
 		tc=g:GetNext()
 	end

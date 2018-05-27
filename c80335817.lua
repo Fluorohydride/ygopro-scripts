@@ -50,7 +50,7 @@ function c80335817.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
 		e1:SetValue(c:GetBaseAttack()*2)
-		e1:SetReset(RESET_EVENT+0x1ff0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)
 	end
 end
@@ -73,9 +73,9 @@ function c80335817.rmop(e,tp,eg,ep,ev,re,r,rp)
 		local oc=og:GetFirst()
 		while oc do
 			if oc:IsControler(tp) then
-				oc:RegisterFlagEffect(80335817,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1)
+				oc:RegisterFlagEffect(80335817,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1)
 			else
-				oc:RegisterFlagEffect(80335817,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY+RESET_OPPO_TURN,0,1)
+				oc:RegisterFlagEffect(80335817,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_OPPO_TURN,0,1)
 			end
 			oc=og:GetNext()
 		end

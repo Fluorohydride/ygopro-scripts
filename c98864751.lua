@@ -47,7 +47,7 @@ function c98864751.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	if tc:GetFlagEffect(98864751)==0 then
 		c98864751[ep]=c98864751[ep]+1
-		tc:RegisterFlagEffect(98864751,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		tc:RegisterFlagEffect(98864751,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c98864751.clear(e,tp,eg,ep,ev,re,r,rp)
@@ -98,6 +98,6 @@ function c98864751.drop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_EXTRA_ATTACK)
 	e1:SetValue(1)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_BATTLE)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE)
 	e:GetHandler():GetEquipTarget():RegisterEffect(e1)
 end

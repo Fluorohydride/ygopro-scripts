@@ -28,7 +28,7 @@ function c56256517.activate(e,tp,eg,ep,ev,re,r,rp)
 	local fid=c:GetFieldID()
 	local tc=g:GetFirst()
 	while tc do
-		tc:RegisterFlagEffect(56256517,RESET_EVENT+0x1fe0000,0,1,fid)
+		tc:RegisterFlagEffect(56256517,RESET_EVENT+RESETS_STANDARD,0,1,fid)
 		tc=g:GetNext()
 	end
 	local e1=Effect.CreateEffect(c)

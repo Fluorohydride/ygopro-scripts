@@ -48,7 +48,7 @@ function c76794549.checkop(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) then
 			tc:RegisterFlagEffect(76794549,RESET_EVENT+0x1f20000+RESET_PHASE+PHASE_END,0,1)
 		elseif tc:IsLocation(LOCATION_EXTRA) then
-			tc:RegisterFlagEffect(76794549,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+			tc:RegisterFlagEffect(76794549,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		end
 		tc=eg:GetNext()
 	end

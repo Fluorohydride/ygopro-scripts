@@ -42,7 +42,7 @@ function c27642961.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetRange(LOCATION_SZONE)
 	e1:SetCondition(c27642961.descon)
 	e1:SetOperation(c27642961.desop)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN,3)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,3)
 	c:SetTurnCounter(0)
 	c:RegisterEffect(e1)
 end

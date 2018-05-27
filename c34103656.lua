@@ -50,7 +50,7 @@ function c34103656.lvop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetTarget(c34103656.efftg)
 		e1:SetValue(lv)
 		e1:SetLabel(fid)
-		e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 	end
 end

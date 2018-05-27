@@ -38,7 +38,7 @@ function c10032958.reg(c,opt)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(1000)
-		e1:SetReset(RESET_EVENT+0x1ff0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)
 	elseif opt==1 then
 		--chain attack
@@ -48,7 +48,7 @@ function c10032958.reg(c,opt)
 		e1:SetCode(EVENT_BATTLE_DESTROYING)
 		e1:SetCondition(c10032958.atcon)
 		e1:SetOperation(c10032958.atop)
-		e1:SetReset(RESET_EVENT+0x1ff0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)
 	else
 		--damage
@@ -61,7 +61,7 @@ function c10032958.reg(c,opt)
 		e1:SetCondition(aux.bdgcon)
 		e1:SetTarget(c10032958.damtg)
 		e1:SetOperation(c10032958.damop)
-		e1:SetReset(RESET_EVENT+0x1ff0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)
 	end
 end

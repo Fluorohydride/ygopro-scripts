@@ -62,7 +62,7 @@ function c25629622.limop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetCurrentChain()==0 then
 		Duel.SetChainLimitTillChainEnd(c25629622.chlimit)
 	elseif Duel.GetCurrentChain()==1 then
-		e:GetHandler():RegisterFlagEffect(25629622,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(25629622,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c25629622.chlimit(e,rp,tp)
@@ -88,7 +88,7 @@ function c25629622.setop(e,tp,eg,ep,ev,re,r,rp)
 		local tc=g:GetFirst()
 		local fid=c:GetFieldID()
 		Duel.SSet(tp,tc)
-		tc:RegisterFlagEffect(25629622,RESET_EVENT+0x1fe0000,0,1,fid)
+		tc:RegisterFlagEffect(25629622,RESET_EVENT+RESETS_STANDARD,0,1,fid)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)

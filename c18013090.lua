@@ -48,7 +48,7 @@ function c18013090.atop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCondition(c18013090.atkcon)
 	e2:SetValue(1000)
-	e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE_CAL+PHASE_END)
+	e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE_CAL+PHASE_END)
 	c:RegisterEffect(e2)
 end
 function c18013090.atkcon(e)

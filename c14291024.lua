@@ -67,7 +67,7 @@ function c14291024.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c14291024.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.HintSelection(g)
 	c:SetCardTarget(g:GetFirst())
-	c:RegisterFlagEffect(14291024,RESET_EVENT+0x1ff0000,0,1)
+	c:RegisterFlagEffect(14291024,RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,1)
 end
 function c14291024.adcon(e)
 	return e:GetHandler():GetFirstCardTarget()~=nil

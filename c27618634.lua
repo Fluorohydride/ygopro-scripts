@@ -45,11 +45,11 @@ function c27618634.atop(e,tp,eg,ep,ev,re,r,rp)
 	local bc=c:GetBattleTarget()
 	if bc and c:IsPosition(POS_FACEUP_ATTACK) then
 		if c:GetFlagEffect(27618634)==0 then
-			c:RegisterFlagEffect(27618634,RESET_EVENT+0x1fe0000,0,1)
+			c:RegisterFlagEffect(27618634,RESET_EVENT+RESETS_STANDARD,0,1)
 			e:GetLabelObject():Clear()
 		end
 		e:GetLabelObject():AddCard(bc)
-		bc:RegisterFlagEffect(27618635,RESET_EVENT+0x1fe0000,0,1)
+		bc:RegisterFlagEffect(27618635,RESET_EVENT+RESETS_STANDARD,0,1)
 	end
 end
 function c27618634.atlcon(e)

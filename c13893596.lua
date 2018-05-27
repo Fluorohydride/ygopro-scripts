@@ -80,7 +80,7 @@ function c13893596.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE)
 		and c:IsRelateToEffect(e) and c:IsFaceup() then
-		tc:CreateRelation(c,RESET_EVENT+0x1fe0000)
+		tc:CreateRelation(c,RESET_EVENT+RESETS_STANDARD)
 	end
 end
 function c13893596.atkval(e,c)

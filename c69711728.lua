@@ -44,7 +44,7 @@ function c69711728.filter(c,lv,e,tp)
 end
 function c69711728.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(69711728)==0 end
-	e:GetHandler():RegisterFlagEffect(69711728,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(69711728,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c69711728.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c69711728.filter(chkc,eg:GetFirst():GetLevel(),e,tp) end

@@ -28,7 +28,7 @@ function c21452275.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c21452275.flipop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(21452275,RESET_EVENT+0x1fe0000,0,1)
+	e:GetHandler():RegisterFlagEffect(21452275,RESET_EVENT+RESETS_STANDARD,0,1)
 end
 function c21452275.indcon(e)
 	return e:GetHandler():GetFlagEffect(21452275)~=0

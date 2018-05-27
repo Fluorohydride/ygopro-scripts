@@ -60,7 +60,7 @@ function c44508094.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
-	e:GetHandler():RegisterFlagEffect(44508094,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,0)
+	e:GetHandler():RegisterFlagEffect(44508094,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,0)
 end
 function c44508094.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

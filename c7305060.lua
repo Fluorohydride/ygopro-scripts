@@ -40,7 +40,7 @@ function c7305060.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c7305060.flipop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(7305060,RESET_EVENT+0x1fe0000,0,1)
+	e:GetHandler():RegisterFlagEffect(7305060,RESET_EVENT+RESETS_STANDARD,0,1)
 end
 function c7305060.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp

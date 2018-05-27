@@ -29,10 +29,10 @@ function c31531170.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCondition(c31531170.pendcon)
 	e1:SetOperation(c31531170.pendop)
 	e1:SetValue(SUMMON_TYPE_PENDULUM)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 	tc1:RegisterEffect(e1)
-	tc1:RegisterFlagEffect(31531170,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1,tc2:GetFieldID())
-	tc2:RegisterFlagEffect(31531170,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1,tc1:GetFieldID())
+	tc1:RegisterFlagEffect(31531170,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,tc2:GetFieldID())
+	tc2:RegisterFlagEffect(31531170,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,tc1:GetFieldID())
 end
 function c31531170.pendcon(e,c,og)
 	if c==nil then return true end

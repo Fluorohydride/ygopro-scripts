@@ -31,7 +31,7 @@ function c3129635.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EVENT_BATTLED)
 	e1:SetTarget(c3129635.destg)
 	e1:SetOperation(c3129635.desop)
-	e1:SetReset(RESET_EVENT+0x1fe0000)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e1,true)
 	Duel.SpecialSummonComplete()
 end

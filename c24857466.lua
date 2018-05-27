@@ -60,7 +60,7 @@ function c24857466.chop(e,tp,eg,ep,ev,re,r,rp)
 		local ty=re:GetActiveType()
 		local flag=c:GetFlagEffectLabel(24857466)
 		if not flag then
-			c:RegisterFlagEffect(24857466,RESET_EVENT+0x1fe0000,0,0,ty)
+			c:RegisterFlagEffect(24857466,RESET_EVENT+RESETS_STANDARD,0,0,ty)
 			e:SetLabelObject(de)
 		elseif de~=e:GetLabelObject() then
 			e:SetLabelObject(de)

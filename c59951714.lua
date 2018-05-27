@@ -31,7 +31,7 @@ end
 function c59951714.spr(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if r==REASON_SUMMON then
-		c:RegisterFlagEffect(59951714,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1)
+		c:RegisterFlagEffect(59951714,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1)
 	end
 end
 function c59951714.spcon(e,tp,eg,ep,ev,re,r,rp)

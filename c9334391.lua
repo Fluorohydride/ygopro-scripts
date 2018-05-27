@@ -41,7 +41,7 @@ function c9334391.activate(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetCode(EFFECT_CHANGE_TYPE)
 			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 			e1:SetValue(TYPE_SPELL+TYPE_CONTINUOUS)
-			e1:SetReset(RESET_EVENT+0x1fc0000)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
 			tc:RegisterEffect(e1)
 			Duel.RaiseEvent(tc,EVENT_CUSTOM+47408488,e,0,tp,0,0)
 		end

@@ -48,7 +48,7 @@ function c33282498.operation(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
-		e1:SetReset(RESET_EVENT+0x1ff0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		e1:SetValue(ct*200)
 		c:RegisterEffect(e1)
 		local e2=e1:Clone()
@@ -57,7 +57,7 @@ function c33282498.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c33282498.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(33282498,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,2)
+	e:GetHandler():RegisterFlagEffect(33282498,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
 end
 function c33282498.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

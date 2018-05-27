@@ -68,7 +68,7 @@ function c74402414.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)
 	local tc=rg:GetFirst()
 	while tc do
-		tc:RegisterFlagEffect(74402414,RESET_EVENT+0x1fe0000,0,0)
+		tc:RegisterFlagEffect(74402414,RESET_EVENT+RESETS_STANDARD,0,0)
 		tc=rg:GetNext()
 	end
 	e:GetLabelObject():Clear()

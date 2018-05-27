@@ -83,10 +83,10 @@ function c62000467.spop(e,tp,eg,ep,ev,re,r,rp)
 		sg1:Merge(sg2)
 		local tc=sg1:GetFirst()
 		Duel.SpecialSummonStep(tc,125,tp,tp,false,false,POS_FACEUP)
-		tc:RegisterFlagEffect(tc:GetOriginalCode(),RESET_EVENT+0x1ff0000,0,0)
+		tc:RegisterFlagEffect(tc:GetOriginalCode(),RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,0)
 		tc=sg1:GetNext()
 		Duel.SpecialSummonStep(tc,125,tp,tp,false,false,POS_FACEUP)
-		tc:RegisterFlagEffect(tc:GetOriginalCode(),RESET_EVENT+0x1ff0000,0,0)
+		tc:RegisterFlagEffect(tc:GetOriginalCode(),RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,0)
 		Duel.SpecialSummonComplete()
 	end
 end

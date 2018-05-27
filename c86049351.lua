@@ -45,7 +45,7 @@ function c86049351.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(atk)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		sc:RegisterEffect(e1)
 		if bc==Duel.GetAttackTarget() then bc,sc=sc,bc end
 		if bc:IsAttackable() and not bc:IsImmuneToEffect(e) and not sc:IsImmuneToEffect(e) then

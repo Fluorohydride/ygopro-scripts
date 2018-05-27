@@ -77,5 +77,5 @@ function c53678698.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c53678698.rfilter,1,nil,tp)
 end
 function c53678698.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(53678698,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(53678698,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end

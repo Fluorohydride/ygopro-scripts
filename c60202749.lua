@@ -41,10 +41,10 @@ function c60202749.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetOperation(c60202749.sdesop)
 	if Duel.GetCurrentPhase()==PHASE_END and Duel.GetTurnPlayer()~=tp then
 		e1:SetLabel(Duel.GetTurnCount())
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_OPPO_TURN,2)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_OPPO_TURN,2)
 	else
 		e1:SetLabel(0)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_OPPO_TURN)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_OPPO_TURN)
 	end
 	e:GetHandler():RegisterEffect(e1)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
@@ -63,7 +63,7 @@ function c60202749.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_OWNER_RELATE)
 		e1:SetRange(LOCATION_MZONE)
 		e1:SetCode(EFFECT_DISABLE)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetCondition(c60202749.rcon)
 		tc:RegisterEffect(e1,true)
 	end

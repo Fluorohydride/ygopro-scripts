@@ -48,7 +48,7 @@ function c18214905.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
 			fc=fg:Select(tp,1,1,nil)
 		end
 		Duel.Hint(HINT_CARD,0,fc:GetCode())
-		fc:RegisterFlagEffect(61557074,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,0)
+		fc:RegisterFlagEffect(61557074,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,0)
 	end
 	Duel.SendtoGrave(tc,REASON_COST)
 end
@@ -77,7 +77,7 @@ function c18214905.attop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_ATTRIBUTE)
 		e1:SetValue(e:GetLabel())
-		e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 	end
 end

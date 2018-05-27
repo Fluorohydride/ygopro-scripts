@@ -34,7 +34,7 @@ function c88616795.activate(e,tp,eg,ep,ev,re,r,rp)
 		else 
 			e2:SetValue(c88616795.efilter2) 
 		end
-		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e2)
 	end
 end

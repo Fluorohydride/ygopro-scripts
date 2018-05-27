@@ -38,13 +38,13 @@ function c36378044.atktg1(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.SelectYesNo(tp,aux.Stringid(36378044,1)) then
 		e:SetLabel(1)
 		Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,3)
-		e:GetHandler():RegisterFlagEffect(36378044,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(36378044,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	else e:SetLabel(0) end
 end
 function c36378044.atktg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(36378044)==0 end
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,3)
-	e:GetHandler():RegisterFlagEffect(36378044,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(36378044,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c36378044.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 or not e:GetHandler():IsRelateToEffect(e) then return end

@@ -46,7 +46,7 @@ function c27911549.spop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetRange(LOCATION_MZONE)
 			e1:SetTargetRange(LOCATION_MZONE,0)
 			e1:SetValue(RACE_INSECT)
-			e1:SetReset(RESET_EVENT+0x1fe0000)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			c:RegisterEffect(e1)
 		end
 	end

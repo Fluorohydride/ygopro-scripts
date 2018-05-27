@@ -61,9 +61,9 @@ function c74586817.rmop(e,tp,eg,ep,ev,re,r,rp)
 		local oc=og:GetFirst()
 		while oc do
 			if oc:IsControler(tp) then
-				oc:RegisterFlagEffect(74586817,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1,fid)
+				oc:RegisterFlagEffect(74586817,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1,fid)
 			else
-				oc:RegisterFlagEffect(74586817,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY+RESET_OPPO_TURN,0,1,fid)
+				oc:RegisterFlagEffect(74586817,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_OPPO_TURN,0,1,fid)
 			end
 			oc=og:GetNext()
 		end

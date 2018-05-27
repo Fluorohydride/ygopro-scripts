@@ -31,9 +31,9 @@ function c33145233.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
 			e1:SetLabel(ep)
 			e1:SetValue(c33145233.tgval)
-			e1:SetReset(RESET_EVENT+0x1fe0000)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			rc:RegisterEffect(e1,true)
-			rc:RegisterFlagEffect(33145233,RESET_EVENT+0x1fe0000,0,1)
+			rc:RegisterFlagEffect(33145233,RESET_EVENT+RESETS_STANDARD,0,1)
 		end
 		rc=eg:GetNext()
 	end

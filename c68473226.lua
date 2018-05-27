@@ -44,7 +44,7 @@ function c68473226.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e1:SetValue(1)
 	e1:SetCondition(c68473226.indcon)
-	e1:SetReset(RESET_EVENT+0x1fe0000)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	rc:RegisterEffect(e1)
 end
 function c68473226.indcon(e,tp,eg,ep,ev,re,r,rp)

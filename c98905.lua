@@ -21,7 +21,7 @@ end
 function c98905.callback(c)
 	local tp=c:GetPreviousControler()
 	if c:IsSetCard(0xe5) and c:IsType(TYPE_XYZ) and c:IsControler(tp) and c:GetOverlayCount()>0 then
-		c:RegisterFlagEffect(98905,RESET_EVENT+0x1fe0000,0,1)
+		c:RegisterFlagEffect(98905,RESET_EVENT+RESETS_STANDARD,0,1)
 	end
 end
 function c98905.checkop(e,tp,eg,ep,ev,re,r,rp)

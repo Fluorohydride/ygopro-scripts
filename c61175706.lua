@@ -39,10 +39,10 @@ function c61175706.arcanareg(c,coin)
 	e1:SetTargetRange(LOCATION_MZONE,0)
 	e1:SetTarget(c61175706.atktg)
 	e1:SetValue(c61175706.atkval)
-	e1:SetReset(RESET_EVENT+0x1fe0000)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e1)
 	--
-	c:RegisterFlagEffect(36690018,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
+	c:RegisterFlagEffect(36690018,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
 end
 function c61175706.atktg(e,c)
 	return c:IsSetCard(0x5)

@@ -44,7 +44,7 @@ function c18205590.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		e1:SetAbsoluteRange(tp,1,0)
 		e1:SetTarget(c18205590.splimit)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		g:GetFirst():RegisterEffect(e1,true)
 	end
 end

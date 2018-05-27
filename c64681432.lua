@@ -60,7 +60,7 @@ function c64681432.desop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 		e1:SetValue(ct*300)
-		e1:SetReset(RESET_EVENT+0x1ff0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)
 	end
 end
@@ -68,7 +68,7 @@ function c64681432.tgreg1(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterFlagEffect(64681432,RESET_EVENT+0x1ec0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c64681432.tgreg2(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(64681432,RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(64681432,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_PHASE+PHASE_END,0,1)
 end
 function c64681432.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(64681432)~=0

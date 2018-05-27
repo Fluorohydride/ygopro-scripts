@@ -47,7 +47,7 @@ function c31829185.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
 		and rp~=tp and bit.band(r,REASON_DESTROY)~=0 then
-		c:RegisterFlagEffect(31829185,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		c:RegisterFlagEffect(31829185,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c31829185.eqcon(e,tp,eg,ep,ev,re,r,rp)
@@ -76,14 +76,14 @@ function c31829185.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetValue(c31829185.eqlimit)
 		c:RegisterEffect(e1)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_EQUIP)
 		e2:SetCode(EFFECT_SET_CONTROL)
 		e2:SetValue(tp)
-		e2:SetReset(RESET_EVENT+0x1fc0000)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
 		c:RegisterEffect(e2)
 	end
 end

@@ -22,7 +22,7 @@ function c80744121.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c80744121.spcon)
 		e1:SetTarget(c80744121.sptg)
 		e1:SetOperation(c80744121.spop)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,1)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,1)
 		c:RegisterEffect(e1)
 	end
 end

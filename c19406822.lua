@@ -22,7 +22,7 @@ function c19406822.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local pg=e:GetLabelObject()
 	if c:GetFlagEffect(19406822)==0 then
-		c:RegisterFlagEffect(19406822,RESET_EVENT+0x1ff0000,0,1)
+		c:RegisterFlagEffect(19406822,RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,1)
 		pg:Clear()
 	end
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,0,LOCATION_MZONE,LOCATION_MZONE,nil)

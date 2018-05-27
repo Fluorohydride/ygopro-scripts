@@ -52,8 +52,8 @@ function c50584941.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_CHANGE_CODE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetValue(code)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
-		tc:ReplaceEffect(code,RESET_EVENT+0x1fe0000)
+		tc:ReplaceEffect(code,RESET_EVENT+RESETS_STANDARD)
 	end
 end

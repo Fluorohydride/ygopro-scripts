@@ -28,7 +28,7 @@ function c20858318.op(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	local tc=g:GetFirst()
 	while tc do
-		tc:RegisterFlagEffect(20858318,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		tc:RegisterFlagEffect(20858318,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		tc=g:GetNext()
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())

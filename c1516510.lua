@@ -35,7 +35,7 @@ function c1516510.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetDescription(aux.Stringid(1516510,1))
 			e1:SetValue(2)
 		end
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e1)
 	end
 	if bit.band(flag,0x4)~=0 then
@@ -44,7 +44,7 @@ function c1516510.operation(e,tp,eg,ep,ev,re,r,rp)
 		e4:SetCode(EFFECT_IMMUNE_EFFECT)
 		e4:SetValue(c1516510.efilter)
 		e4:SetOwnerPlayer(tp)
-		e4:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e4:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e4)
 	end
 end

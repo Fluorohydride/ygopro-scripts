@@ -40,10 +40,10 @@ function c3167573.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local e2=e:GetLabelObject()
 		if Duel.GetTurnPlayer()==tp then
-			c:RegisterFlagEffect(3167573,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,2)
+			c:RegisterFlagEffect(3167573,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,2)
 			e2:SetLabel(Duel.GetTurnCount()+2)
 		else
-			c:RegisterFlagEffect(3167573,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,1)
+			c:RegisterFlagEffect(3167573,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,1)
 			e2:SetLabel(Duel.GetTurnCount()+1)
 		end
 	end

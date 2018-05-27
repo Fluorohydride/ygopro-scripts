@@ -29,10 +29,10 @@ function c30492798.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_CLIENT_HINT)
 			e1:SetRange(LOCATION_MZONE)
 			e1:SetCode(EFFECT_IMMUNE_EFFECT)
-			e1:SetReset(RESET_EVENT+0x1fe0000)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			e1:SetValue(c30492798.efilter)
 			rc:RegisterEffect(e1,true)
-			rc:RegisterFlagEffect(30492798,RESET_EVENT+0x1fe0000,0,1)
+			rc:RegisterFlagEffect(30492798,RESET_EVENT+RESETS_STANDARD,0,1)
 		end
 		rc=eg:GetNext()
 	end

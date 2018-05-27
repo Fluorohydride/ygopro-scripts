@@ -46,7 +46,7 @@ function c85555787.activate(e,tp,eg,ep,ev,re,r,rp)
 			e3:SetCode(EFFECT_CANNOT_TRIGGER)
 			e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 			e3:SetRange(LOCATION_GRAVE)
-			e3:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+			e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			oc:RegisterEffect(e3)
 		end
 	end
@@ -86,7 +86,7 @@ function c85555787.desop(e,tp,eg,ep,ev,re,r,rp)
 			e3:SetCode(EFFECT_CANNOT_TRIGGER)
 			e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 			e3:SetRange(LOCATION_GRAVE)
-			e3:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+			e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			oc:RegisterEffect(e3)
 		end
 	end

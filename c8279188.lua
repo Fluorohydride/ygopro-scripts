@@ -36,7 +36,7 @@ function c8279188.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	e1:SetRange(LOCATION_SZONE)
 	e1:SetCondition(c8279188.descon)
 	e1:SetOperation(c8279188.desop)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_OPPO_TURN,3)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_OPPO_TURN,3)
 	e:GetHandler():RegisterEffect(e1)
 	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and tp~=Duel.GetTurnPlayer() and tg:IsOnField() and tg:IsCanBeEffectTarget(e)
 		and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)~=0 and Duel.SelectYesNo(tp,aux.Stringid(8279188,0)) then

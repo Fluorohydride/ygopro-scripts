@@ -39,7 +39,7 @@ function c35073065.spop(e,tp,eg,ep,ev,re,r,rp)
 			else
 				e1:SetValue(ec:GetRace())
 			end
-			e1:SetReset(RESET_EVENT+0x1ff0000)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 			c:RegisterEffect(e1)
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_SINGLE)
@@ -49,13 +49,13 @@ function c35073065.spop(e,tp,eg,ep,ev,re,r,rp)
 			else
 				e2:SetValue(ec:GetAttribute())
 			end
-			e2:SetReset(RESET_EVENT+0x1ff0000)
+			e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 			c:RegisterEffect(e2)
 			local e3=Effect.CreateEffect(c)
 			e3:SetType(EFFECT_TYPE_SINGLE)
 			e3:SetCode(EFFECT_CHANGE_LEVEL)
 			e3:SetValue(ec:GetLevel())
-			e3:SetReset(RESET_EVENT+0x1ff0000)
+			e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 			c:RegisterEffect(e3)
 		end
 		Duel.SpecialSummonComplete()

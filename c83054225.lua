@@ -46,7 +46,7 @@ function c83054225.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=sg:GetFirst()
 	while tc do
 		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
-		tc:RegisterFlagEffect(83054225,RESET_EVENT+0x1fe0000,0,1,fid)
+		tc:RegisterFlagEffect(83054225,RESET_EVENT+RESETS_STANDARD,0,1,fid)
 		tc=sg:GetNext()
 	end
 	Duel.SpecialSummonComplete()

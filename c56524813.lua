@@ -35,7 +35,7 @@ function c56524813.spop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EVENT_LEAVE_FIELD)
 		e1:SetRange(LOCATION_MZONE)
 		e1:SetOperation(c56524813.desop)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		g:GetFirst():RegisterEffect(e1)
 	end
 end

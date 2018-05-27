@@ -43,8 +43,8 @@ function c31550470.operation(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		c:SetCardTarget(tc)
 		e:SetLabelObject(tc)
-		c:CreateRelation(tc,RESET_EVENT+0x1fe0000)
-		tc:CreateRelation(c,RESET_EVENT+0x1fe0000)
+		c:CreateRelation(tc,RESET_EVENT+RESETS_STANDARD)
+		tc:CreateRelation(c,RESET_EVENT+RESETS_STANDARD)
 		Duel.SpecialSummonComplete()
 	end
 end

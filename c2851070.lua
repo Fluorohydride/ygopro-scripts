@@ -35,7 +35,7 @@ function c2851070.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Damage(p,Duel.GetAttacker():GetAttack(),REASON_EFFECT)
 	local lp2=Duel.GetLP(p)
 	if lp2<lp1 then
-		e:GetHandler():RegisterFlagEffect(2851070,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_DAMAGE,0,1)
+		e:GetHandler():RegisterFlagEffect(2851070,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE,0,1)
 	end
 end
 function c2851070.destg(e,tp,eg,ep,ev,re,r,rp,chk)

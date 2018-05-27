@@ -43,7 +43,7 @@ function c76067258.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
-		tc:RegisterFlagEffect(76067258,RESET_EVENT+0x1fe0000,0,0)
+		tc:RegisterFlagEffect(76067258,RESET_EVENT+RESETS_STANDARD,0,0)
 		--indes
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
@@ -51,7 +51,7 @@ function c76067258.operation(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_OWNER_RELATE)
 		e2:SetCondition(c76067258.indcon)
 		e2:SetValue(1)
-		e2:SetReset(RESET_EVENT+0x1fe0000)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 	end
 end

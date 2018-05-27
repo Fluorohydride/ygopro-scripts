@@ -80,8 +80,8 @@ function c86238081.regcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c86238081.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	c:RegisterFlagEffect(86238081,RESET_EVENT+0x1fe0000,0,1)
-	c:RegisterFlagEffect(0,RESET_EVENT+0x1fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(86238081,3))
+	c:RegisterFlagEffect(86238081,RESET_EVENT+RESETS_STANDARD,0,1)
+	c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(86238081,3))
 end
 function c86238081.effcon(e)
 	return e:GetHandler():GetFlagEffect(86238081)>0
@@ -104,7 +104,7 @@ function c86238081.desop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(ct*200)
-		e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 	end
 end

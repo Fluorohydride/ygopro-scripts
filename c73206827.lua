@@ -51,7 +51,7 @@ function c73206827.coinop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	local res=Duel.TossCoin(tp,1)
 	if res==0 then
-		c:RegisterFlagEffect(73206828,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,2)
+		c:RegisterFlagEffect(73206828,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,2)
 	end
 end
 function c73206827.effectcon(e)

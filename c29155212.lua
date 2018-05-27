@@ -35,5 +35,5 @@ function c29155212.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c29155212.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
-	e:GetHandler():RegisterFlagEffect(29155212,RESET_EVENT+0x1ff0000,0,1)
+	e:GetHandler():RegisterFlagEffect(29155212,RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,1)
 end

@@ -40,7 +40,7 @@ function c6021033.spop(e,tp,eg,ep,ev,re,r,rp)
 		if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
 		c:SetCardTarget(tc)
 		e:SetLabelObject(tc)
-		tc:RegisterFlagEffect(6021033,RESET_EVENT+0x1fe0000,0,0)
+		tc:RegisterFlagEffect(6021033,RESET_EVENT+RESETS_STANDARD,0,0)
 		c:RegisterFlagEffect(6021033,RESET_EVENT+0x1020000,0,0)
 	end
 end

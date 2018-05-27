@@ -29,7 +29,7 @@ function c51644030.atkop1(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(600)
-		e1:SetReset(RESET_EVENT+0x1ff0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)
 	end
 end
@@ -53,7 +53,7 @@ function c51644030.atkop2(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(-atk)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 		if c:IsRelateToEffect(e) and not tc:IsHasEffect(EFFECT_REVERSE_UPDATE) then
 			Duel.BreakEffect()
@@ -67,9 +67,9 @@ function c51644030.atkop2(e,tp,eg,ep,ev,re,r,rp)
 				e2:SetCondition(c51644030.retcon)
 				e2:SetOperation(c51644030.retop)
 				if Duel.GetCurrentPhase()<=PHASE_STANDBY then
-					e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY,2)
+					e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY,2)
 				else
-					e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_STANDBY)
+					e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY)
 				end
 				Duel.RegisterEffect(e2,tp)
 			end

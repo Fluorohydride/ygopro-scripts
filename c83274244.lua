@@ -37,7 +37,7 @@ function c83274244.atop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EVENT_CHAIN_SOLVING)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetOperation(c83274244.negop)
-	e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_DAMAGE)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_DAMAGE)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c83274244.negop(e,tp,eg,ep,ev,re,r,rp)

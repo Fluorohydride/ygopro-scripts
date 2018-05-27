@@ -39,7 +39,7 @@ function c49511705.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCondition(c49511705.effcon)
 	e1:SetOperation(c49511705.effop)
 	e1:SetLabelObject(re)
-	e1:SetReset(RESET_EVENT+0x1fc0000+RESET_CHAIN)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN)
 	c:RegisterEffect(e1)
 end
 function c49511705.effcon(e,tp,eg,ep,ev,re,r,rp)

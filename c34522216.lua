@@ -40,7 +40,7 @@ function c34522216.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c34522216.flipop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(34522216,RESET_EVENT+0x1fe0000,0,1)
+	e:GetHandler():RegisterFlagEffect(34522216,RESET_EVENT+RESETS_STANDARD,0,1)
 end
 function c34522216.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xe0)

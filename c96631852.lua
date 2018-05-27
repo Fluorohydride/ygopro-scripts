@@ -38,7 +38,7 @@ function c96631852.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_UPDATE_DEFENSE)
 		e1:SetCondition(c96631852.rcon)
 		e1:SetValue(700)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1,true)
 	end
 end

@@ -38,7 +38,7 @@ function c62007535.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCost(c62007535.cost)
 	e1:SetTarget(c62007535.target)
 	e1:SetOperation(c62007535.operation)
-	e1:SetReset(RESET_EVENT+0x1ff0000)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 	c:RegisterEffect(e1)
 end
 function c62007535.cost(e,tp,eg,ep,ev,re,r,rp,chk)

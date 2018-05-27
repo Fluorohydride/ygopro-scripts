@@ -133,6 +133,6 @@ end
 function c34487429.rdop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SelectEffectYesNo(tp,e:GetHandler()) then
 		Duel.ChangeBattleDamage(tp,ev/2)
-		e:GetHandler():RegisterFlagEffect(34487429,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(34487429,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end

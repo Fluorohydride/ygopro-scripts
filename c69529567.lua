@@ -36,7 +36,7 @@ end
 function c69529567.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.Destroy(e:GetHandler(),REASON_EFFECT)~=0 then
-		e:GetHandler():RegisterFlagEffect(69529567,RESET_EVENT+0x1fe0000,0,1)
+		e:GetHandler():RegisterFlagEffect(69529567,RESET_EVENT+RESETS_STANDARD,0,1)
 	end
 end
 function c69529567.spcon(e,tp,eg,ep,ev,re,r,rp)

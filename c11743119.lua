@@ -39,13 +39,13 @@ function c11743119.eqop(e,tp,eg,ep,ev,re,r,rp)
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
 			if not Duel.Equip(tp,tc,c,false) then return end
 			--Add Equip limit
-			tc:RegisterFlagEffect(11743119,RESET_EVENT+0x1fe0000,0,0)
+			tc:RegisterFlagEffect(11743119,RESET_EVENT+RESETS_STANDARD,0,0)
 			e:SetLabelObject(tc)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_EQUIP_LIMIT)
 			e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
-			e1:SetReset(RESET_EVENT+0x1fe0000)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			e1:SetValue(c11743119.eqlimit)
 			tc:RegisterEffect(e1)
 		else Duel.SendtoGrave(tc,REASON_EFFECT) end

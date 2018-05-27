@@ -50,7 +50,7 @@ function c59123937.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCountLimit(1,59123938)
 	e1:SetTarget(c59123937.target)
 	e1:SetOperation(c59123937.operation)
-	e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 	c:RegisterEffect(e1)
 end
 function c59123937.filter0(c)

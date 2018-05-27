@@ -50,7 +50,7 @@ function c24221808.rmop(e,tp,eg,ep,ev,re,r,rp)
 				c:RegisterFlagEffect(24221808,RESET_EVENT+0x1680000,0,1)
 			end
 			sg:AddCard(tc)
-			tc:CreateRelation(c,RESET_EVENT+0x1fe0000)
+			tc:CreateRelation(c,RESET_EVENT+RESETS_STANDARD)
 		end
 	end
 end

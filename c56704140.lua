@@ -31,7 +31,7 @@ function c56704140.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_CANNOT_BE_BATTLE_TARGET)
 	e1:SetLabel(e:GetLabel())
 	e1:SetValue(c56704140.tgval)
-	e1:SetReset(RESET_EVENT+0x1fe0000)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e1)
 end
 function c56704140.tgval(e,c)

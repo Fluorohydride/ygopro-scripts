@@ -65,7 +65,7 @@ function c72709014.regfilter(c,ec)
 end
 function c72709014.regop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c72709014.regfilter,1,nil,e:GetHandler():GetEquipTarget()) then
-		e:GetHandler():RegisterFlagEffect(72709014,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(72709014,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c72709014.spcon(e,tp,eg,ep,ev,re,r,rp)

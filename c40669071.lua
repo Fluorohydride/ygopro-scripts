@@ -45,7 +45,7 @@ function c40669071.lzop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCode(EFFECT_DISABLE_FIELD)
 	e1:SetOperation(c40669071.disop)
-	e1:SetReset(RESET_EVENT+0x1ff0000)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 	e1:SetLabel(e:GetLabel())
 	e:GetHandler():RegisterEffect(e1)
 end

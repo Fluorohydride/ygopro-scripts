@@ -71,13 +71,13 @@ function c56673480.drop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local pg=e:GetLabelObject()
 	if c:GetFlagEffect(56673480)==0 then
-		c:RegisterFlagEffect(56673480,RESET_EVENT+0x1ff0000,0,1)
+		c:RegisterFlagEffect(56673480,RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,1)
 		pg:Clear()
 	end
 	local tc=eg:GetFirst()
 	while tc do
 		pg:AddCard(tc)
-		tc:RegisterFlagEffect(56673481,RESET_EVENT+0x1fe0000,0,1)
+		tc:RegisterFlagEffect(56673481,RESET_EVENT+RESETS_STANDARD,0,1)
 		tc=eg:GetNext()
 	end
 end

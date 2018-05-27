@@ -64,12 +64,12 @@ end
 function c64631466.equip_monster(c,tp,tc)
 	if not Duel.Equip(tp,tc,c,false) then return end
 	--Add Equip limit
-	tc:RegisterFlagEffect(64631466,RESET_EVENT+0x1fe0000,0,0)
+	tc:RegisterFlagEffect(64631466,RESET_EVENT+RESETS_STANDARD,0,0)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 	e1:SetCode(EFFECT_EQUIP_LIMIT)
-	e1:SetReset(RESET_EVENT+0x1fe0000)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	e1:SetValue(c64631466.eqlimit)
 	tc:RegisterEffect(e1)
 	--substitute
@@ -77,7 +77,7 @@ function c64631466.equip_monster(c,tp,tc)
  	e2:SetType(EFFECT_TYPE_EQUIP)
  	e2:SetCode(EFFECT_DESTROY_SUBSTITUTE)
  	e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
- 	e2:SetReset(RESET_EVENT+0x1fe0000)
+ 	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
  	e2:SetValue(c64631466.repval)
  	tc:RegisterEffect(e2)
 end

@@ -37,7 +37,7 @@ function c58132856.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsPreviousLocation(LOCATION_SZONE) and c:IsPreviousPosition(POS_FACEDOWN)
 		and c:IsReason(REASON_EFFECT) and c:IsReason(REASON_DESTROY) and rp~=tp then
-		c:RegisterFlagEffect(58132856,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,0)
+		c:RegisterFlagEffect(58132856,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,0)
 	end
 end
 function c58132856.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

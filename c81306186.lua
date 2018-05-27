@@ -32,7 +32,7 @@ function c81306186.rmop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local tc=Duel.SelectMatchingCard(tp,c81306186.filter,tp,LOCATION_DECK,0,1,1,nil):GetFirst()
 	if tc and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 then
-		tc:RegisterFlagEffect(81306186,RESET_EVENT+0x1fe0000,0,0)
+		tc:RegisterFlagEffect(81306186,RESET_EVENT+RESETS_STANDARD,0,0)
 		e:SetLabelObject(tc)
 	end
 end

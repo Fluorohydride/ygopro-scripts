@@ -62,7 +62,7 @@ function c74416026.activate(e,tp,eg,ep,ev,re,r,rp)
 				Duel.RegisterEffect(e1,tp)
 				Duel.SpecialSummonComplete()
 				sc:CompleteProcedure()
-				sc:RegisterFlagEffect(74416026,RESET_EVENT+0x1fe0000,0,1)
+				sc:RegisterFlagEffect(74416026,RESET_EVENT+RESETS_STANDARD,0,1)
 			end
 		end
 	end

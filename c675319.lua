@@ -65,7 +65,7 @@ function c675319.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
 		local tg=Duel.SelectMatchingCard(tp,c675319.desfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,1,nil,e,tp)
 		Duel.SetTargetCard(tg)
-		tg:GetFirst():RegisterFlagEffect(675319,RESET_EVENT+0x1fc0000+RESET_CHAIN,0,1)
+		tg:GetFirst():RegisterFlagEffect(675319,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN,0,1)
 		tg:GetFirst():SetStatus(STATUS_DESTROY_CONFIRMED,true)
 		return true
 	else return false end

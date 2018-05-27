@@ -19,7 +19,7 @@ function c12451640.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCountLimit(1)
 	e1:SetTarget(c12451640.thtg1)
 	e1:SetOperation(c12451640.thop1)
-	e1:SetReset(RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_PHASE+PHASE_END)
 	c:RegisterEffect(e1)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(12451640,1))
@@ -33,9 +33,9 @@ function c12451640.regop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetOperation(c12451640.thop2)
 	e2:SetLabel(Duel.GetTurnCount())
 	if Duel.GetTurnPlayer()==tp then
-		e2:SetReset(RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
 	else
-		e2:SetReset(RESET_EVENT+0x1fc0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_PHASE+PHASE_END+RESET_SELF_TURN)
 	end
 	c:RegisterEffect(e2)
 end

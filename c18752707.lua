@@ -29,7 +29,7 @@ function c18752707.activate(e,tp,eg,ep,ev,re,r,rp)
 		else
 			e1:SetValue(val2)
 		end
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 		tc=g:GetNext()
 	end

@@ -32,7 +32,7 @@ function c79852326.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCondition(c79852326.damcon)
 	e1:SetTarget(c79852326.damtg)
 	e1:SetOperation(c79852326.damop)
-	e1:SetReset(RESET_EVENT+0x17e0000)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_LEAVE)
 	c:RegisterEffect(e1,true)
 	Duel.SpecialSummonComplete()
 end

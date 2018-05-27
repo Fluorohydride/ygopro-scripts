@@ -41,7 +41,7 @@ function c85313220.disop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c85313220.btop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(85313220,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,2)
+	e:GetHandler():RegisterFlagEffect(85313220,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,2)
 end
 function c85313220.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer() and e:GetHandler():GetFlagEffect(85313220)~=0

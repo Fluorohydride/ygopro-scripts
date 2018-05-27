@@ -30,7 +30,7 @@ function c39984786.valcheck(e,c)
 		e1:SetCountLimit(1)
 		e1:SetTarget(c39984786.sptg)
 		e1:SetOperation(c39984786.spop)
-		e1:SetReset(RESET_EVENT+0xfc0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD-RESET_TURN_SET+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 	end
 end

@@ -54,7 +54,7 @@ function c14772491.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c14772491.rcon)
 		e1:SetValue(sc:GetAttack())
 		e1:SetLabelObject(sc)
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1,true)
 	end
 end

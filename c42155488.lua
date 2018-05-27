@@ -69,7 +69,7 @@ function c42155488.decop(e,tp,eg,ep,ev,re,r,rp,chk)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SYNCHRO_CHECK)
 		e1:SetValue(c42155488.syncheck)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		e1:SetLabel(rc)
 		c:RegisterEffect(e1)
 	end

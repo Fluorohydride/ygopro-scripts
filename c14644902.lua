@@ -34,7 +34,7 @@ function c14644902.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetCode(EVENT_PHASE+PHASE_END)
 			e1:SetCondition(c14644902.descon)
 			e1:SetOperation(c14644902.desop)
-			e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			e1:SetCountLimit(1)
 			sg:GetFirst():RegisterEffect(e1)
 		end

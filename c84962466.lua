@@ -42,7 +42,7 @@ function c84962466.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.Remove(rg,POS_FACEUP,REASON_COST)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 		Duel.SelectTarget(tp,c84962466.filter,tp,LOCATION_MZONE,0,1,1,nil)
-		e:GetHandler():RegisterFlagEffect(84962466,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(84962466,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	else e:SetProperty(EFFECT_FLAG_DAMAGE_STEP) end
 end
 function c84962466.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -55,7 +55,7 @@ function c84962466.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Remove(rg,POS_FACEUP,REASON_COST)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c84962466.filter,tp,LOCATION_MZONE,0,1,1,nil)
-	e:GetHandler():RegisterFlagEffect(84962466,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(84962466,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c84962466.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
@@ -65,7 +65,7 @@ function c84962466.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(e:GetLabel())
-		e1:SetReset(RESET_EVENT+0x1fe0000)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
 	end
 end

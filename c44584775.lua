@@ -37,7 +37,7 @@ function c44584775.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if Duel.GetCurrentPhase()==PHASE_DAMAGE then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
-		e:GetHandler():RegisterFlagEffect(44584775,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(44584775,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	else
 		e:SetCategory(0)
 	end
@@ -49,7 +49,7 @@ function c44584775.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c44584775.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(44584775)==0 end
-	e:GetHandler():RegisterFlagEffect(44584775,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(44584775,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c44584775.filter(c,e,tp,dam)
 	return c:IsAttackBelow(dam) and c:IsRace(RACE_REPTILE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -32,7 +32,7 @@ function c67630339.check(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	if Duel.GetAttackTarget()==nil then
 		c67630339[1-tc:GetControler()]=c67630339[1-tc:GetControler()]+1
-		Duel.GetAttacker():RegisterFlagEffect(67630339,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		Duel.GetAttacker():RegisterFlagEffect(67630339,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		if c67630339[1-tc:GetControler()]==1 then
 			c67630339[2]=Duel.GetAttacker()
 		end

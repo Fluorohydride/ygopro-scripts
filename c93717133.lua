@@ -81,7 +81,7 @@ function c93717133.rmop(e,tp,eg,ep,ev,re,r,rp)
 		if not og:IsContains(tc) then mcount=0 end
 		local oc=og:GetFirst()
 		while oc do
-			oc:RegisterFlagEffect(93717133,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+			oc:RegisterFlagEffect(93717133,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 			oc=og:GetNext()
 		end
 		og:KeepAlive()
@@ -109,7 +109,7 @@ function c93717133.retop(e,tp,eg,ep,ev,re,r,rp)
 			local e1=Effect.CreateEffect(e:GetOwner())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)
-			e1:SetReset(RESET_EVENT+0x1ff0000)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 			e1:SetValue(e:GetLabel()*500)
 			e:GetOwner():RegisterEffect(e1)
 		end

@@ -46,7 +46,7 @@ function c89493368.damcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c89493368.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	e:GetHandler():RegisterFlagEffect(89493368,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	e:GetHandler():RegisterFlagEffect(89493368,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,800)
 end
 function c89493368.damop(e,tp,eg,ep,ev,re,r,rp)

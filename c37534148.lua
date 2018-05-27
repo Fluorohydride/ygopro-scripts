@@ -65,7 +65,7 @@ function c37534148.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetLabelObject(ec)
 	e1:SetReset(RESET_EVENT+0x16c0000+RESET_PHASE+PHASE_END)
 	e:GetHandler():RegisterEffect(e1)
-	ec:RegisterFlagEffect(37534148,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+	ec:RegisterFlagEffect(37534148,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c37534148.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ec=e:GetHandler():GetPreviousEquipTarget()

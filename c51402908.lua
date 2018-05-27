@@ -30,7 +30,7 @@ function c51402908.spr(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_ONFIELD)
 		and c:IsPreviousPosition(POS_FACEUP) then
-		c:RegisterFlagEffect(51402908,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,2)
+		c:RegisterFlagEffect(51402908,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
 	end
 end
 function c51402908.spcon(e,tp,eg,ep,ev,re,r,rp)

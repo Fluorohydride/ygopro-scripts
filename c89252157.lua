@@ -36,7 +36,7 @@ function c89252157.spop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_IMMUNE_EFFECT)
 		e1:SetValue(c89252157.efilter)
 		e1:SetOwnerPlayer(tp)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1,true)
 		Duel.SpecialSummonComplete()
 	end

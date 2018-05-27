@@ -55,7 +55,7 @@ function c11375683.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c11375683.flipop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(11375683,RESET_EVENT+0x1fe0000,0,1)
+	e:GetHandler():RegisterFlagEffect(11375683,RESET_EVENT+RESETS_STANDARD,0,1)
 end
 function c11375683.indcon(e)
 	return e:GetHandler():GetFlagEffect(11375683)~=0

@@ -75,7 +75,7 @@ function c59808784.rmop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetOperation(c59808784.retop)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	tc:RegisterFlagEffect(59808784,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1,fid)
+	tc:RegisterFlagEffect(59808784,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
 end
 function c59808784.retcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

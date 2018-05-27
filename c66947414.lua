@@ -44,7 +44,7 @@ function c66947414.chkfilter(c,tp)
 end
 function c66947414.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c66947414.chkfilter,1,nil,tp) then
-		e:GetHandler():RegisterFlagEffect(66947414,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(66947414,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c66947414.spcon(e,tp,eg,ep,ev,re,r,rp)

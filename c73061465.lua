@@ -29,7 +29,7 @@ function c73061465.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(1,1)
 	e1:SetValue(c73061465.tgval)
-	e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_END,3)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END,3)
 	c:RegisterEffect(e1)
 end
 function c73061465.tgval(e,re,rp)

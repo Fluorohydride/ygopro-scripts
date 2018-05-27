@@ -95,13 +95,13 @@ function c21686473.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
 		e1:SetValue(bc:GetBaseAttack()*2)
-		e1:SetReset(RESET_EVENT+0x1ff0000+RESET_PHASE+PHASE_DAMAGE)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_DAMAGE)
 		c:RegisterEffect(e1)
 	end
 end
 function c21686473.valcon(e,re,r,rp)
 	if bit.band(r,REASON_BATTLE)~=0 then
-		e:GetHandler():RegisterFlagEffect(21686473,RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(21686473,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		return true
 	else return false end
 end
