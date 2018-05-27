@@ -61,11 +61,11 @@ function c29169993.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
-function c29169993.cfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x9f) and c:IsPreviousLocation(LOCATION_HAND)
+function c29169993.cfilter(c,tp)
+	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x9f) and c:IsPreviousLocation(LOCATION_HAND) and c:IsControler(tp)
 end
 function c29169993.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c29169993.cfilter,1,nil) and not eg:IsContains(e:GetHandler())
+	return eg:IsExists(c29169993.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
 end
 function c29169993.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
