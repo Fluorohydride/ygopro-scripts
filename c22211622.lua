@@ -55,7 +55,7 @@ function c22211622.rccfilter(c)
 	return c:IsFaceup() and c:IsCode(13331639)
 end
 function c22211622.rccon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c22211622.rccfilter,tp,LOCATION_MZONE,0,1,nil)
+	return Duel.IsExistingMatchingCard(c22211622.rccfilter,tp,LOCATION_ONFIELD,0,1,nil)
 end
 function c22211622.rcfilter(c)
 	return c:IsFaceup() and c:GetAttack()>0
