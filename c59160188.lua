@@ -45,12 +45,14 @@ function c59160188.relval(e,re,r,rp)
 	return re:IsActivated() and bit.band(r,REASON_COST)~=0
 end
 function c59160188.regop(e,tp,eg,ep,ev,re,r,rp)
+	local mct=eg:FilterCount(Card.IsType,nil,TYPE_MONSTER)
+	if mct==0 then return end
 	local c=e:GetHandler()
 	local ct=c:GetFlagEffectLabel(59160188)
 	if ct then
-		c:SetFlagEffectLabel(59160188,ct+eg:GetCount())
+		c:SetFlagEffectLabel(59160188,ct+mct)
 	else
-		c:RegisterFlagEffect(59160188,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,eg:GetCount())
+		c:RegisterFlagEffect(59160188,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,mct)
 	end
 end
 function c59160188.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
