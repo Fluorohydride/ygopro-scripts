@@ -61,7 +61,7 @@ function c78765160.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e2,tp)
 end
 function c78765160.tdfilter(c)
-	return c:IsFaceup() and c:IsRace(RACE_ZOMBIE) and c:IsDefenseBelow(0) and c:IsAbleToDeck()
+	return c:IsFaceup() and c:IsRace(RACE_ZOMBIE) and c:IsDefense(0) and c:IsAbleToDeck()
 end
 function c78765160.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c78765160.tdfilter(chkc) end

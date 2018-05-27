@@ -57,7 +57,7 @@ function c25704359.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c25704359.cfilter,1,nil,tp)
 end
 function c25704359.spfilter(c,e,tp,att)
-	return c:IsRace(RACE_SPELLCASTER) and c:GetDefense()==1500 and c:IsAttribute(att)
+	return c:IsRace(RACE_SPELLCASTER) and c:IsDefense(1500) and c:IsAttribute(att)
 		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE))
 end
 function c25704359.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

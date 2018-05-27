@@ -47,7 +47,7 @@ function c90579153.damop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c90579153.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetAttack()~=c:GetBaseAttack()
+	return not c:IsAttack(c:GetBaseAttack())
 end
 function c90579153.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

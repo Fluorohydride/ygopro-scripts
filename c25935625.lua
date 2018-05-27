@@ -57,11 +57,11 @@ function c25935625.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,c25935625.cfilter,2,2,REASON_COST)
 end
 function c25935625.spfilter1(c,e,tp)
-	return c:IsSetCard(0x9e) and c:GetAttack()==0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x9e) and c:IsAttack(0) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.IsExistingMatchingCard(c25935625.spfilter2,tp,LOCATION_DECK,0,1,c,e,tp)
 end
 function c25935625.spfilter2(c,e,tp)
-	return c:IsSetCard(0x9e) and c:IsDefenseBelow(0) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x9e) and c:IsDefense(0) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c25935625.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)

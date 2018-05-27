@@ -64,7 +64,7 @@ function c33282498.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:GetTurnID()~=Duel.GetTurnCount() and c:GetFlagEffect(33282498)>0
 end
 function c33282498.spfilter(c,e,tp)
-	return (c:IsLevel(7) or c:IsLevel(8)) and not c:IsCode(33282498) and c:IsRace(RACE_DRAGON)
+	return c:IsLevel(7,8) and not c:IsCode(33282498) and c:IsRace(RACE_DRAGON)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c33282498.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

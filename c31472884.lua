@@ -35,7 +35,7 @@ function c31472884.cfilter(c)
 		and Duel.IsExistingTarget(c31472884.tgfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,nil,c)
 end
 function c31472884.tgfilter(c,dc)
-	return c:IsFaceup() and (c:GetAttack()~=dc:GetAttack() or c:GetDefense()~=dc:GetDefense())
+	return c:IsFaceup() and (not c:IsAttack(dc:GetAttack()) or not c:IsDefense(dc:GetDefense()))
 end
 function c31472884.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)

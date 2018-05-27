@@ -58,7 +58,7 @@ function c35606858.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	c:RegisterFlagEffect(35606858,RESET_CHAIN,0,1)
 end
 function c35606858.tgfilter(c,val)
-	return c:IsRace(RACE_FIEND) and c:IsType(TYPE_MONSTER) and (c:GetAttack()==val or c:GetDefense()==val) and c:IsAbleToGrave()
+	return c:IsRace(RACE_FIEND) and c:IsType(TYPE_MONSTER) and (c:IsAttack(val) or c:IsDefense(val)) and c:IsAbleToGrave()
 end
 function c35606858.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c35606858.tgfilter,tp,LOCATION_DECK,0,1,nil,ev) end

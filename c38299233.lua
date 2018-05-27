@@ -22,9 +22,16 @@ end
 function c38299233.rdcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer()
 end
+function c38299233.mzfilter(c)
+	return c:GetSequence()<5
+end
 function c38299233.rdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)
+	local g=Duel.GetMatchingGroup(c38299233.mzfilter,tp,0,LOCATION_MZONE,nil)
+	if #g>=5 then
+		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
+	end
 end
 function c38299233.rdop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end

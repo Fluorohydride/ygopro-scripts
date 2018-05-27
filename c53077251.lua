@@ -18,7 +18,7 @@ function c53077251.filter(c,tp)
 	return c:IsFaceup() and Duel.IsExistingMatchingCard(c53077251.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,c,c:GetAttack())
 end
 function c53077251.filter2(c,atk)
-	return c:IsFaceup() and c:GetAttack()~=atk
+	return c:IsFaceup() and not c:IsAttack(atk)
 end
 function c53077251.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c53077251.filter(chkc,tp) end

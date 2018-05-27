@@ -10,7 +10,7 @@ function c18809562.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c18809562.filter(c)
-	return (c:IsLevel(7) or c:IsLevel(8)) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsAbleToHand()
+	return c:IsLevel(7,8) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsAbleToHand()
 end
 function c18809562.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_HAND,0,1,e:GetHandler(),TYPE_SPELL)

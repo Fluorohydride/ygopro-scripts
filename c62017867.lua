@@ -43,8 +43,7 @@ function c62017867.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetDecktopGroup(tp,1)
 	local tc=g:GetFirst()
 	Duel.DisableShuffleCheck()
-	if tc:IsSetCard(0x9a) then
-		Duel.SendtoHand(tc,nil,REASON_EFFECT)
+	if tc:IsSetCard(0x9a) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 then
 		Duel.ShuffleHand(tp)
 		local at=Duel.GetAttacker()
 		if at:IsFaceup() and at:IsRelateToBattle() then

@@ -75,7 +75,7 @@ function c17086528.slcon(e)
 	return Duel.GetFieldGroupCount(tp,LOCATION_ONFIELD,0)>Duel.GetFieldGroupCount(tp,0,LOCATION_ONFIELD)
 end
 function c17086528.atkfilter(c,atk)
-	return c:IsFaceup() and c:GetAttack()~=atk
+	return c:IsFaceup() and not c:IsAttack(atk)
 end
 function c17086528.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()

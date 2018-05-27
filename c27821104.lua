@@ -11,7 +11,7 @@ function c27821104.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c27821104.tfilter(c,atk,code,e,tp)
-	return c:IsSetCard(0x3d) and not c:IsCode(code) and c:GetAttack()==atk and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x3d) and not c:IsCode(code) and c:IsAttack(atk) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c27821104.filter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x3d)

@@ -43,7 +43,7 @@ function c71071546.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveCounter(tp,0x2c,ct,REASON_COST)
 end
 function c71071546.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetAttack()~=2000 end
+	if chk==0 then return not e:GetHandler():IsAttack(2000) end
 end
 function c71071546.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

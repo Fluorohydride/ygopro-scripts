@@ -15,5 +15,5 @@ function c85446833.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c85446833.target(e,c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:GetAttack()==0
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsAttack(0)
 end

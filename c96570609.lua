@@ -59,7 +59,7 @@ function c96570609.tgfilter(c)
 	return c:IsSetCard(0xbe) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToGrave()
 end
 function c96570609.spfilter(c,e,tp)
-	return c:IsAttackAbove(2400) and c:GetDefense()==1000 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsAttackAbove(2400) and c:IsDefense(1000) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c96570609.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

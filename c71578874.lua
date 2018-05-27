@@ -26,7 +26,7 @@ function c71578874.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c71578874.filter(c)
-	return c:IsFaceup() and c:GetAttack()~=c:GetDefense() and c:IsDefenseAbove(0)
+	return c:IsFaceup() and not c:IsAttack(c:GetDefense()) and c:IsDefenseAbove(0)
 		and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c71578874.adtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

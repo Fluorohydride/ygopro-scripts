@@ -60,7 +60,7 @@ function c95993388.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_SUMMON)
 end
 function c95993388.thfilter(c)
-	return c:GetAttack()==800 and c:GetDefense()==1000 and not c:IsCode(95993388) and c:IsAbleToHand()
+	return c:IsAttack(800) and c:IsDefense(1000) and not c:IsCode(95993388) and c:IsAbleToHand()
 end
 function c95993388.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c95993388.thfilter(chkc) end
