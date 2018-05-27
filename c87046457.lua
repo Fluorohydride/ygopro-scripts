@@ -69,7 +69,7 @@ function c87046457.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	local atkg=e:GetLabelObject()
 	if c:GetFlagEffect(87046457)==0 then
-		c:RegisterFlagEffect(87046457,RESET_EVENT+RESETS_STANDARD_DISABLE,0,1)
+		c:RegisterFlagEffect(87046457,RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,1)
 		atkg:Clear()
 	end
 	local g=eg:Filter(c87046457.filter,nil,e,tp)

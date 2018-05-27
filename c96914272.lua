@@ -55,7 +55,7 @@ function c96914272.lvop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SelectOption(tp,aux.Stringid(96914272,1))
 			e1:SetValue(lv)
 		end
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD_DISABLE)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)
 	end
 end

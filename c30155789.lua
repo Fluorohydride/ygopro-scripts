@@ -86,6 +86,6 @@ function c30155789.atkcon(e)
 end
 function c30155789.damop(e,tp,eg,ep,ev,re,r,rp)
 	if bit.band(r,REASON_EFFECT)~=0 and ep~=tp and rp==tp then
-		e:GetHandler():RegisterFlagEffect(30155789,RESET_EVENT+RESETS_STANDARD_DISABLE+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(30155789,RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END,0,1)
 	end
 end

@@ -24,7 +24,7 @@ function c50140163.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c50140163.eqcon)
 		e1:SetTarget(c50140163.eqtg)
 		e1:SetOperation(c50140163.eqop)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD_DISABLE)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		e1:SetLabelObject(e)
 		c:RegisterEffect(e1)
 	end
