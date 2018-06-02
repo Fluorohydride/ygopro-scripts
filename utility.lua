@@ -1015,8 +1015,7 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 		end
 	end
 	if #mat>0 and c.material_count==nil then
-		local code=c:GetOriginalCode()
-		local mt=_G["c" .. code]
+		local mt=getmetatable(c)
 		mt.material_count=#mat
 		mt.material=mat
 	end
@@ -1126,8 +1125,7 @@ function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
 		end
 	end
 	if #mat>0 and c.material_count==nil then
-		local code=c:GetOriginalCode()
-		local mt=_G["c" .. code]
+		local mt=getmetatable(c)
 		mt.material_count=#mat
 		mt.material=mat
 	end
@@ -1309,8 +1307,7 @@ function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
 		code[i]=code1
 	end
 	if c.material_count==nil then
-		local code=c:GetOriginalCode()
-		local mt=_G["c" .. code]
+		local mt=getmetatable(c)
 		mt.material_count=1
 		mt.material={code1}
 	end
@@ -1513,8 +1510,7 @@ function Auxiliary.RPGOperation(filter)
 end
 function Auxiliary.AddRitualProcGreaterCode(c,code1)
 	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
-		local code=c:GetOriginalCode()
-		local mt=_G["c" .. code]
+		local mt=getmetatable(c)
 		mt.fit_monster={code1}
 	end
 	Auxiliary.AddRitualProcGreater(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1))
@@ -1585,8 +1581,7 @@ function Auxiliary.RPEOperation(filter)
 end
 function Auxiliary.AddRitualProcEqualCode(c,code1)
 	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
-		local code=c:GetOriginalCode()
-		local mt=_G["c" .. code]
+		local mt=getmetatable(c)
 		mt.fit_monster={code1}
 	end
 	Auxiliary.AddRitualProcEqual(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1))
@@ -1657,16 +1652,14 @@ function Auxiliary.RPEOperation2(filter)
 end
 function Auxiliary.AddRitualProcEqual2Code(c,code1)
 	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
-		local code=c:GetOriginalCode()
-		local mt=_G["c" .. code]
+		local mt=getmetatable(c)
 		mt.fit_monster={code1}
 	end
 	Auxiliary.AddRitualProcEqual2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1))
 end
 function Auxiliary.AddRitualProcEqual2Code2(c,code1,code2)
 	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
-		local code=c:GetOriginalCode()
-		local mt=_G["c" .. code]
+		local mt=getmetatable(c)
 		mt.fit_monster={code1,code2}
 	end
 	Auxiliary.AddRitualProcEqual2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1,code2))
@@ -1796,8 +1789,7 @@ end
 function Auxiliary.EnableReviveLimitPendulumSummonable(c, loc)
 	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
 	c:EnableReviveLimit()
-	local code=c:GetOriginalCode()
-	local mt=_G["c" .. code]
+	local mt=getmetatable(c)
 	if loc==nil then loc=0xff end
 	mt.psummonable_location=loc
 	--complete procedure on pendulum summon success
