@@ -63,13 +63,6 @@ function c12219047.operation(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		e3:SetValue(0)
 		tc:RegisterEffect(e3)
-		if tc:IsType(TYPE_TRAPMONSTER) then
-			local e4=Effect.CreateEffect(c)
-			e4:SetType(EFFECT_TYPE_SINGLE)
-			e4:SetCode(EFFECT_DISABLE_TRAPMONSTER)
-			e4:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-			tc:RegisterEffect(e4)
-		end
 	end
 end
 function c12219047.condition2(e,tp,eg,ep,ev,re,r,rp)

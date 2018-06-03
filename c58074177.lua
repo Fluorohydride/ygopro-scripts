@@ -96,13 +96,6 @@ function c58074177.disop(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetValue(RESET_TURN_SET)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e3)
-		if tc:IsType(TYPE_TRAPMONSTER) then
-			local e4=Effect.CreateEffect(c)
-			e4:SetType(EFFECT_TYPE_SINGLE)
-			e4:SetCode(EFFECT_DISABLE_TRAPMONSTER)
-			e4:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-			tc:RegisterEffect(e4)
-		end
 	end
 end
 function c58074177.descon(e,tp,eg,ep,ev,re,r,rp)
