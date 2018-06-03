@@ -3,6 +3,14 @@ function c15661378.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c15661378.ffilter,3,false)
+	--ffilter swap
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e0:SetCode(EVENT_ADJUST)
+	e0:SetRange(0xff)
+	e0:SetOperation(c15661378.ffilter_swap)
+	c:RegisterEffect(e0)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -33,7 +41,19 @@ function c15661378.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c15661378.ffilter(c,fc,sub,mg,sg)
-	return c:IsControler(fc:GetControler()) and c:IsLocation(LOCATION_MZONE+LOCATION_HAND) and (not sg or not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode()))
+	if fc:GetFlagEffect(15661378)==0 and
+		not (c:IsControler(fc:GetControler()) and c:IsLocation(LOCATION_MZONE+LOCATION_HAND)) then
+		return false
+	end
+	return not sg or not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode())
+end
+function c15661378.ffilter_swap(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	if c:IsLocation(LOCATION_EXTRA) then
+		c:ResetFlagEffect(15661378)
+	else
+		c:RegisterFlagEffect(15661378,0,0,1)
+	end
 end
 function c15661378.cfilter(c,fc)
 	return c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(fc)
