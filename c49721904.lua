@@ -26,8 +26,8 @@ function c49721904.spfilter(c)
 end
 function c49721904.spcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0 and
-		Duel.IsExistingMatchingCard(c49721904.spfilter,c:GetControler(),LOCATION_MZONE,0,1,nil)
+	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c49721904.spfilter,c:GetControler(),LOCATION_MZONE,0,1,nil)
 end
 function c49721904.vfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x3d)

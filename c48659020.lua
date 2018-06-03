@@ -23,7 +23,7 @@ function c48659020.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c48659020.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
