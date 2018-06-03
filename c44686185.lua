@@ -66,7 +66,7 @@ function c44686185.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c44686185.repfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0x3d)
-		and c:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and c:IsReason(REASON_EFFECT)
+		and c:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c44686185.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemove() and eg:IsExists(c44686185.repfilter,1,nil,tp)

@@ -48,7 +48,7 @@ function c77610772.incon(e)
 end
 function c77610772.repfilter(c,tp,hc)
 	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE)
-		and c:IsControler(tp) and c:IsReason(REASON_EFFECT) and hc:GetLinkedGroup():IsContains(c)
+		and c:IsControler(tp) and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE) and hc:GetLinkedGroup():IsContains(c)
 end
 function c77610772.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGrave() and eg:IsExists(c77610772.repfilter,1,nil,tp,e:GetHandler()) end

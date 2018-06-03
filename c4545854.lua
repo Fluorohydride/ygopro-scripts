@@ -39,7 +39,7 @@ function c4545854.adval(e,c)
 	return c:GetRank()*200
 end
 function c4545854.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return not e:GetHandler():IsReason(REASON_RULE)
+	if chk==0 then return not e:GetHandler():IsReason(REASON_REPLACE)
 		and Duel.CheckRemoveOverlayCard(tp,1,0,1,REASON_EFFECT) end
 	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		Duel.RemoveOverlayCard(tp,1,0,1,1,REASON_EFFECT)

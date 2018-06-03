@@ -51,7 +51,7 @@ function c43175858.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c43175858.repfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
-		and c:IsType(TYPE_TOON) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
+		and c:IsType(TYPE_TOON) and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c43175858.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=eg:FilterCount(c43175858.repfilter,nil,tp)

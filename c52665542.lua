@@ -77,7 +77,7 @@ function c52665542.acop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c52665542.dfilter(c,tp)
 	return c:IsFaceup() and c:IsLocation(LOCATION_ONFIELD)
-		and c:IsSetCard(0x38) and c:IsControler(tp) and c:IsReason(REASON_EFFECT)
+		and c:IsSetCard(0x38) and c:IsControler(tp) and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c52665542.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

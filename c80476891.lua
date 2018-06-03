@@ -45,7 +45,7 @@ function c80476891.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c80476891.repfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
-		and c:IsType(TYPE_DUAL) and c:IsReason(REASON_EFFECT) and c:GetFlagEffect(80476891)==0
+		and c:IsType(TYPE_DUAL) and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE) and c:GetFlagEffect(80476891)==0
 end
 function c80476891.desfilter(c,e,tp)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD)

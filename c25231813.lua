@@ -56,7 +56,7 @@ function c25231813.indval(e,re,r,rp)
 end
 function c25231813.reptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:GetEquipTarget():IsReason(REASON_EFFECT)
+	if chk==0 then return c:GetEquipTarget():IsReason(REASON_EFFECT) and not c:GetEquipTarget():IsReason(REASON_REPLACE)
 		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED) end
 	if Duel.SelectEffectYesNo(tp,c,96) then
 		c:SetStatus(STATUS_DESTROY_CONFIRMED,true)

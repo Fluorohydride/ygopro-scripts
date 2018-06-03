@@ -33,7 +33,7 @@ function c78437364.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then
 		local g=c:GetLinkedGroup()
-		return not c:IsReason(REASON_REPLACE) and g:IsExists(c78437364.repfilter,1,nil,e,tp)
+		return c:IsReason(REASON_EFFECT+REASON_BATTLE) and not c:IsReason(REASON_REPLACE) and g:IsExists(c78437364.repfilter,1,nil,e,tp)
 	end
 	if Duel.SelectEffectYesNo(tp,c,96) then
 		local g=c:GetLinkedGroup()

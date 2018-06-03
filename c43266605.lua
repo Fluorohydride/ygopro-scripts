@@ -32,7 +32,7 @@ function c43266605.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c43266605.repfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0xc1) and c:IsOnField() and c:IsControler(tp) and c:IsReason(REASON_EFFECT+REASON_BATTLE)
+	return c:IsFaceup() and c:IsSetCard(0xc1) and c:IsOnField() and c:IsControler(tp) and c:IsReason(REASON_EFFECT+REASON_BATTLE) and not c:IsReason(REASON_REPLACE)
 end
 function c43266605.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() and eg:IsExists(c43266605.repfilter,1,nil,tp) end

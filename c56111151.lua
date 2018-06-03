@@ -63,7 +63,7 @@ function c56111151.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c56111151.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return not e:GetHandler():IsReason(REASON_RULE)
+	if chk==0 then return not e:GetHandler():IsReason(REASON_REPLACE)
 		and e:GetHandler():IsCanRemoveCounter(tp,0x37,1,REASON_EFFECT) end
 	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end

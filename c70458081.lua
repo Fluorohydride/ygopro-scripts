@@ -23,7 +23,7 @@ function c70458081.atlimit(e,c)
 end
 function c70458081.repfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0x9f) and not c:IsCode(70458081)
-		and c:IsOnField() and c:IsControler(tp) and c:IsReason(REASON_EFFECT+REASON_BATTLE)
+		and c:IsOnField() and c:IsControler(tp) and c:IsReason(REASON_EFFECT+REASON_BATTLE) and not c:IsReason(REASON_REPLACE)
 end
 function c70458081.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemove() and eg:IsExists(c70458081.repfilter,1,nil,tp) end

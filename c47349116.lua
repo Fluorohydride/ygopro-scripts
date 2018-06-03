@@ -58,7 +58,7 @@ function c47349116.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c47349116.repfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE+LOCATION_PZONE)
-		and c:IsType(TYPE_PENDULUM) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
+		and c:IsType(TYPE_PENDULUM) and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c47349116.tgfilter(c)
 	return c:IsRace(RACE_SPELLCASTER) and c:IsAbleToGrave()
