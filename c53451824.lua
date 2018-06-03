@@ -30,8 +30,7 @@ function c53451824.initial_effect(c)
 end
 function c53451824.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local crp=c:GetReasonPlayer()
-	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsReason(REASON_DESTROY) and c:GetPreviousControler()==tp and tp~=crp and crp~=PLAYER_NONE
+	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsReason(REASON_DESTROY) and c:GetPreviousControler()==tp and c:GetReasonPlayer()==1-tp
 end
 function c53451824.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_MZONE,0,nil,TYPE_TOKEN)

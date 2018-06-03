@@ -33,7 +33,7 @@ end
 function c85216896.cfilter(c,tp,zone)
 	local seq=c:GetPreviousSequence()
 	return c:GetPreviousControler()==tp and bit.extract(zone,seq)~=0 and c:GetSummonLocation()==LOCATION_EXTRA
-		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()~=tp)
+		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 end
 function c85216896.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local zone=e:GetHandler():GetLinkedZone()

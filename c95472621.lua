@@ -14,7 +14,7 @@ function c95472621.cfilter(c)
 	return c:IsLocation(LOCATION_GRAVE) and c:IsType(TYPE_MONSTER)
 end
 function c95472621.condition(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and eg:IsExists(c95472621.cfilter,1,nil)
+	return rp==1-tp and eg:IsExists(c95472621.cfilter,1,nil)
 end
 function c95472621.filter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()

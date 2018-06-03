@@ -21,7 +21,7 @@ function c66765023.initial_effect(c)
 end
 function c66765023.valcon(e,re,r,rp)
 	local res=false
-	if bit.band(r,REASON_EFFECT)~=0 and rp~=e:GetHandlerPlayer() then
+	if bit.band(r,REASON_EFFECT)~=0 and rp==1-e:GetHandlerPlayer() then
 		res=true
 		e:GetHandler():RegisterFlagEffect(66765023,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end

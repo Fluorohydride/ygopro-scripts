@@ -23,7 +23,7 @@ function c80244114.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c80244114.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():IsReason(REASON_DESTROY)
+	return rp==1-tp and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():IsReason(REASON_DESTROY)
 end
 function c80244114.spfilter(c,e,tp)
 	return c:IsCode(44508094) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

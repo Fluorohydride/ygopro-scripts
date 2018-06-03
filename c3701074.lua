@@ -28,7 +28,7 @@ function c3701074.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c3701074.rectg1(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return rp~=tp end
+	if chk==0 then return rp==1-tp end
 	Duel.SetTargetCard(eg)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,1-tp,0)
 end

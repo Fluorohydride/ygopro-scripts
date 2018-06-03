@@ -18,7 +18,7 @@ function c28486799.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c28486799.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep==tp and rp~=tp and ev>=1000
+	return ep==tp and rp==1-tp and ev>=1000
 		and (re or (Duel.GetAttacker() and Duel.GetAttacker():IsControler(1-tp)))
 end
 function c28486799.drtg(e,tp,eg,ep,ev,re,r,rp,chk)

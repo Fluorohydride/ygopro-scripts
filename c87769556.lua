@@ -20,7 +20,7 @@ function c87769556.cfilter(c)
 end
 function c87769556.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c87769556.cfilter,tp,LOCATION_MZONE,0,1,nil)
-		and rp~=tp and re:IsActiveType(TYPE_SPELL) and Duel.IsChainDisablable(ev) 
+		and rp==1-tp and re:IsActiveType(TYPE_SPELL) and Duel.IsChainDisablable(ev) 
 end
 function c87769556.negop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()

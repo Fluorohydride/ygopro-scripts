@@ -57,6 +57,6 @@ function c57043117.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c57043117.damval(e,re,val,r,rp,rc)
-	if bit.band(r,REASON_EFFECT)~=0 and rp~=e:GetOwnerPlayer() then return 0
+	if bit.band(r,REASON_EFFECT)~=0 and rp==1-e:GetOwnerPlayer() then return 0
 	else return val end
 end

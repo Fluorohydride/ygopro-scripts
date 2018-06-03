@@ -59,7 +59,7 @@ function c74163487.regop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c74163487.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=e:GetLabelObject()
-	return eg:IsContains(rc) and bit.band(r,REASON_EFFECT)~=0 and rp~=tp
+	return eg:IsContains(rc) and bit.band(r,REASON_EFFECT)~=0 and rp==1-tp
 end
 function c74163487.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

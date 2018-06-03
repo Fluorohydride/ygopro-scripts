@@ -41,7 +41,7 @@ function c73130445.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c73130445.cfilter(c,tp)
 	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
-		and c:GetReasonPlayer()~=tp and (c:IsReason(REASON_EFFECT) or (c:IsReason(REASON_BATTLE) and c==Duel.GetAttackTarget()))
+		and c:GetReasonPlayer()==1-tp and (c:IsReason(REASON_EFFECT) or (c:IsReason(REASON_BATTLE) and c==Duel.GetAttackTarget()))
 end
 function c73130445.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c73130445.cfilter,1,nil,tp)

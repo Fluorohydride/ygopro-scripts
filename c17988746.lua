@@ -13,7 +13,7 @@ function c17988746.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c17988746.condition(e,tp,eg,ep,ev,re,r,rp)
-	return ep==tp and tp~=rp and Duel.GetAttacker():IsControler(1-tp)
+	return ep==tp and 1-tp==rp and Duel.GetAttacker():IsControler(1-tp)
 end
 function c17988746.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

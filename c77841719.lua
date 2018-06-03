@@ -21,7 +21,7 @@ end
 function c77841719.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsPreviousPosition(POS_FACEUP) and not c:IsLocation(LOCATION_DECK)
-		and c:GetPreviousControler()==tp and rp~=tp
+		and c:GetPreviousControler()==tp and rp==1-tp
 end
 function c77841719.filter(c)
 	return c:IsFaceup() and c:IsControlerCanBeChanged()

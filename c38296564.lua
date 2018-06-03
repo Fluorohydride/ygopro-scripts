@@ -81,7 +81,7 @@ function c38296564.efilter(e,re)
 	return e:GetOwnerPlayer()~=re:GetOwnerPlayer()
 end
 function c38296564.tgval(e,re,rp)
-	return rp~=e:GetOwnerPlayer()
+	return rp==1-e:GetOwnerPlayer()
 end
 function c38296564.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsDisabled() then

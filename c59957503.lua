@@ -26,7 +26,7 @@ function c59957503.checkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c59957503.condition(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)==c59957503[0]
+	return rp==1-tp and Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)==c59957503[0]
 		and (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE)) and Duel.IsChainNegatable(ev)
 end
 function c59957503.target(e,tp,eg,ep,ev,re,r,rp,chk)

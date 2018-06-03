@@ -13,7 +13,7 @@ function c4192696.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c4192696.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep==tp and tp~=rp and bit.band(r,REASON_EFFECT)~=0
+	return ep==tp and 1-tp==rp and bit.band(r,REASON_EFFECT)~=0
 end
 function c4192696.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 

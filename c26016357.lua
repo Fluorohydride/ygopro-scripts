@@ -22,7 +22,7 @@ function c26016357.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c26016357.retcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetReasonPlayer()~=tp
+	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetReasonPlayer()==1-tp
 		and e:GetHandler():GetPreviousControler()==tp
 end
 function c26016357.rettg(e,tp,eg,ep,ev,re,r,rp,chk)

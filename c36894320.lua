@@ -42,7 +42,7 @@ function c36894320.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c36894320.valcon(e,re,r,rp)
-	return bit.band(r,REASON_EFFECT)~=0 and rp~=e:GetHandlerPlayer()
+	return bit.band(r,REASON_EFFECT)~=0 and rp==1-e:GetHandlerPlayer()
 end
 function c36894320.acfilter(c)
 	return c:IsFaceup() and c:IsCode(9409625) and c:IsAbleToGraveAsCost()

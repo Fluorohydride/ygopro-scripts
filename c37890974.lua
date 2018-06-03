@@ -32,7 +32,7 @@ function c37890974.initial_effect(c)
 end
 function c37890974.spfilter1(c,e,tp,rp)
 	local lv=c:GetLevel()
-	return (c:IsReason(REASON_BATTLE) or (rp~=tp and c:IsReason(REASON_EFFECT)))
+	return (c:IsReason(REASON_BATTLE) or (rp==1-tp and c:IsReason(REASON_EFFECT)))
 		and c:IsPreviousSetCard(0x114) and c:IsType(TYPE_MONSTER)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
 		and c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and c:IsCanBeEffectTarget(e)

@@ -63,7 +63,7 @@ function c93713837.posop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c93713837.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetReasonPlayer()~=tp and c:IsReason(REASON_EFFECT)
+	return c:GetReasonPlayer()==1-tp and c:IsReason(REASON_EFFECT)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c93713837.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

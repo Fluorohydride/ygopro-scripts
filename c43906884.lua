@@ -16,7 +16,7 @@ function c43906884.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x33)
 end
 function c43906884.con(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,0x41)==0x41 and rp~=tp
+	return bit.band(r,0x41)==0x41 and rp==1-tp
 		and bit.band(e:GetHandler():GetPreviousLocation(),LOCATION_ONFIELD)~=0
 		and bit.band(e:GetHandler():GetPreviousPosition(),POS_FACEDOWN)~=0
 		and Duel.IsExistingMatchingCard(c43906884.filter,tp,LOCATION_MZONE,0,1,nil)

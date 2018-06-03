@@ -89,7 +89,7 @@ function c87564935.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)
 end
 function c87564935.efilter1(e,re,rp)
-	return rp~=e:GetHandlerPlayer() and re:IsActiveType(TYPE_MONSTER)
+	return rp==1-e:GetHandlerPlayer() and re:IsActiveType(TYPE_MONSTER)
 end
 function c87564935.efilter2(e,te)
 	return te:GetHandlerPlayer()~=e:GetHandlerPlayer() and te:IsActiveType(TYPE_MONSTER)

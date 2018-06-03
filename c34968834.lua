@@ -18,7 +18,7 @@ end
 function c34968834.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
-	if rp~=tp and tp==e:GetLabel() then
+	if rp==1-tp and tp==e:GetLabel() then
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 	end
 end
@@ -30,7 +30,7 @@ end
 function c34968834.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.SpecialSummon(e:GetHandler(),0,tp,tp,false,false,POS_FACEUP)==0 then return end
-	if rp~=tp and tp==e:GetLabel() and Duel.IsExistingMatchingCard(c34968834.filter,tp,LOCATION_DECK,0,1,nil,e,tp)
+	if rp==1-tp and tp==e:GetLabel() and Duel.IsExistingMatchingCard(c34968834.filter,tp,LOCATION_DECK,0,1,nil,e,tp)
 		and Duel.SelectYesNo(tp,aux.Stringid(34968834,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

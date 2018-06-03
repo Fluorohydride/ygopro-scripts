@@ -88,7 +88,7 @@ function c2819435.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c2819435.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_MZONE,0,1,nil,TYPE_TOKEN) and e:GetHandler():GetFlagEffect(1)>0
+	return rp==1-tp and not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_MZONE,0,1,nil,TYPE_TOKEN) and e:GetHandler():GetFlagEffect(1)>0
 end
 function c2819435.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

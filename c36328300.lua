@@ -75,7 +75,7 @@ function c36328300.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c36328300.plcfilter(c,tp)
 	return c:IsPreviousSetCard(0x2034) and c:GetPreviousControler()==tp
-		and c:IsPreviousPosition(POS_FACEUP) and c:GetReasonPlayer()~=tp
+		and c:IsPreviousPosition(POS_FACEUP) and c:GetReasonPlayer()==1-tp
 		and c:IsReason(REASON_EFFECT) and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c36328300.plcon(e,tp,eg,ep,ev,re,r,rp)

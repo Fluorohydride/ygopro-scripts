@@ -29,7 +29,7 @@ function c98905.checkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c98905.filter(c,e,tp)
 	return c:GetFlagEffect(98905)~=0 and c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp)
-		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()~=tp)
+		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 		and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.IsExistingMatchingCard(c98905.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetCode())
 end

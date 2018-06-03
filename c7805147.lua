@@ -14,7 +14,7 @@ function c7805147.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c7805147.condition(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp
+	return rp==1-tp
 end
 function c7805147.filter(c,e,tp)
 	return c:IsLevelBelow(2) and c:IsRace(RACE_DRAGON) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

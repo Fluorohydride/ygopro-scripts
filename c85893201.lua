@@ -23,7 +23,7 @@ function c85893201.cfilter(c,tp)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp
 end
 function c85893201.descon(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and eg:IsExists(c85893201.cfilter,1,nil,1-tp)
+	return rp==1-tp and eg:IsExists(c85893201.cfilter,1,nil,1-tp)
 end
 function c85893201.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

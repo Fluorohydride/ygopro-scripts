@@ -18,7 +18,7 @@ function c60228941.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_GRAVE) and c60228941.filter2(chkc,e,tp) end
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
-	if tp~=rp and tp==e:GetLabel() and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if 1-tp==rp and tp==e:GetLabel() and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c60228941.filter2,tp,0,LOCATION_GRAVE,1,nil,e,tp)
 		and Duel.SelectYesNo(tp,aux.Stringid(60228941,1)) then
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)

@@ -23,7 +23,7 @@ function c58984738.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c58984738.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE) and rp~=tp
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE) and rp==1-tp
 end
 function c58984738.thfilter(c,tp)
 	return c:IsSetCard(0xf9) and c:GetType()==0x20004

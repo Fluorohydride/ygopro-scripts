@@ -23,7 +23,7 @@ function c95004025.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c95004025.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE) and rp~=tp
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE) and rp==1-tp
 end
 function c95004025.thfilter(c)
 	return c:IsSetCard(0xf9) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

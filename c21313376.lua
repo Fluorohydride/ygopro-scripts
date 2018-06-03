@@ -25,7 +25,7 @@ function c21313376.initial_effect(c)
 end
 c21313376.xyz_number=14
 function c21313376.refcon(e,re,val,r,rp,rc)
-	return bit.band(r,REASON_EFFECT)~=0 and rp~=e:GetHandlerPlayer()
+	return bit.band(r,REASON_EFFECT)~=0 and rp==1-e:GetHandlerPlayer()
 end
 function c21313376.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

@@ -27,7 +27,7 @@ function c37241623.checkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c37241623.condition(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)==c37241623[0] and re:IsActiveType(TYPE_XYZ) and Duel.IsChainNegatable(ev)
+	return rp==1-tp and Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)==c37241623[0] and re:IsActiveType(TYPE_XYZ) and Duel.IsChainNegatable(ev)
 end
 function c37241623.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

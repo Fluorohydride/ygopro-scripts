@@ -65,7 +65,7 @@ function c89907227.tkop2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c89907227.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_DESTROY) and rp~=tp and c:IsReason(REASON_EFFECT)
+	return c:IsReason(REASON_DESTROY) and rp==1-tp and c:IsReason(REASON_EFFECT)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
 end
 function c89907227.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

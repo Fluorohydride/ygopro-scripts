@@ -48,7 +48,7 @@ function c38325384.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c38325384.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp~=tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp
+	return rp==1-tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp
 end
 function c38325384.spfilter(c,e,tp)
 	return c:IsCanAddCounter(0x1,1,false,LOCATION_MZONE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

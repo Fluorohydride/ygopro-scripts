@@ -91,7 +91,7 @@ function c88177324.negop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c88177324.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and e:GetHandler():GetFlagEffect(88177324)>0
+	return rp==1-tp and e:GetHandler():GetFlagEffect(88177324)>0
 end
 function c88177324.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -47,5 +47,5 @@ function c94079037.drop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c94079037.rmcon(e)
 	local c=e:GetHandler()
-	return c:IsFaceup() and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()~=c:GetControler()
+	return c:IsFaceup() and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-c:GetControler()
 end

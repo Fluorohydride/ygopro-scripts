@@ -11,7 +11,7 @@ function c92080692.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c92080692.condition(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE))
+	return rp==1-tp and (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE))
 		and Duel.IsExistingMatchingCard(Card.IsCode,tp,0,LOCATION_GRAVE,1,nil,re:GetHandler():GetCode())
 		and Duel.IsChainNegatable(ev)
 end

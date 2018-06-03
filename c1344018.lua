@@ -31,7 +31,7 @@ function c1344018.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c1344018.evalue(e,re,rp)
-	return re:IsActiveType(TYPE_TRAP) and rp~=e:GetHandlerPlayer()
+	return re:IsActiveType(TYPE_TRAP) and rp==1-e:GetHandlerPlayer()
 end
 function c1344018.desfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x98) and c:IsType(TYPE_PENDULUM)

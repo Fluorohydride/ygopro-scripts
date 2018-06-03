@@ -30,7 +30,7 @@ function c84687358.descon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c84687358.tgfilter,1,nil,tp)
 end
 function c84687358.descon2(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and eg:IsExists(c84687358.tgfilter,1,nil,tp)
+	return rp==1-tp and eg:IsExists(c84687358.tgfilter,1,nil,tp)
 end
 function c84687358.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil)

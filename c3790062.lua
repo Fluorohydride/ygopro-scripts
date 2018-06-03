@@ -19,7 +19,7 @@ function c3790062.initial_effect(c)
 end
 c3790062.xyz_number=65
 function c3790062.condition(e,tp,eg,ep,ev,re,r,rp,chk)
-	return rp~=tp and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
+	return rp==1-tp and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
 		and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
 end
 function c3790062.cost(e,tp,eg,ep,ev,re,r,rp,chk)

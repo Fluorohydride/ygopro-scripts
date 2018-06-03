@@ -27,7 +27,7 @@ function c74762582.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c74762582.discon(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev)
+	return rp==1-tp and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev)
 end
 function c74762582.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

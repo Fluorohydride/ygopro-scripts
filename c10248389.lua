@@ -41,7 +41,7 @@ function c10248389.atkval(e,c)
 	return c:GetAttack()*2
 end
 function c10248389.disop(e,tp,eg,ep,ev,re,r,rp)
-	if rp~=tp then
+	if rp==1-tp then
 		Duel.NegateEffect(ev)
 	end
 end

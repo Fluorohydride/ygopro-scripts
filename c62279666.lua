@@ -21,7 +21,7 @@ function c62279666.initial_effect(c)
 end
 function c62279666.cfilter(c,tp,rp)
 	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and bit.band(c:GetPreviousTypeOnField(),TYPE_LINK)~=0
-		and (c:IsReason(REASON_BATTLE) or (rp~=tp and c:IsReason(REASON_EFFECT)))
+		and (c:IsReason(REASON_BATTLE) or (rp==1-tp and c:IsReason(REASON_EFFECT)))
 end
 function c62279666.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c62279666.cfilter,1,nil,tp,rp)
