@@ -53,12 +53,12 @@ end
 function c42901635.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(c42901635.spcostfilter,tp,LOCATION_GRAVE,0,nil)
+	local g=Duel.GetMatchingGroup(c42901635.spcostfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
 	local sg=Group.CreateGroup()
 	return g:IsExists(c42901635.spcost_selector,1,nil,tp,g,sg,1)
 end
 function c42901635.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.GetMatchingGroup(c42901635.spcostfilter,tp,LOCATION_GRAVE,0,nil)
+	local g=Duel.GetMatchingGroup(c42901635.spcostfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
 	local sg=Group.CreateGroup()
 	for i=1,3 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
@@ -86,7 +86,7 @@ function c42901635.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c42901635.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

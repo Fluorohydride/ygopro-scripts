@@ -20,13 +20,9 @@ function c9411399.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c9411399.operation(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local sc=Duel.GetFirstMatchingCard(c9411399.filter,tp,LOCATION_DECK,0,nil,e,tp)
-	if sc~=nil then
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
-			Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
-		else
-			Duel.Destroy(sc,REASON_EFFECT)
-		end
-		Duel.ShuffleDeck(tp)
+	if sc then
+		Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
