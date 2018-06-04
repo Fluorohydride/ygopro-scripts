@@ -45,6 +45,8 @@ function c7986397.selcheck(c,mg1,dg,mat1,rc)
 	mat:AddCard(c)
 	if c:IsLocation(LOCATION_DECK) then
 		mg:Sub(dg)
+	else
+		mg:RemoveCard(c)
 	end
 	local sum=mat:GetSum(Card.GetRitualLevel,rc)
 	local lv=rc:GetLevel()-sum
@@ -75,9 +77,10 @@ function c7986397.activate(e,tp,eg,ep,ev,re,r,rp)
 		local lv=tc:GetLevel()
 		if ft<=0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-			local mat2=mg:FilterSelect(tp,c7986397.mfilterf,1,1,nil,tp,mg,dg,tc)
-			lv=lv-mat2:GetFirst():GetRitualLevel(tc)
-			mat:Merge(mat2)
+			local mat2=mg:FilterSelect(tp,c7986397.mfilterf,1,1,nil,tp,mg,dg,tc):GetFirst()
+			lv=lv-mat2:GetRitualLevel(tc)
+			mat:AddCard(mat2)
+			mg:RemoveCard(mat2)
 		end
 		while lv~=0 do
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
