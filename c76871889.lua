@@ -52,7 +52,7 @@ function c76871889.atcon(e,tp,eg,ep,ev,re,r,rp)
 	local bc=ec:GetBattleTarget()
 	e:SetLabelObject(ec)
 	return ec:IsControler(tp) and ec:IsSetCard(0x106) and bc and bc:IsType(TYPE_MONSTER)
-		and ec:IsChainAttackable(2,true) and ec:IsStatus(STATUS_OPPO_BATTLE)
+		and ec:IsChainAttackable(0,true) and ec:IsStatus(STATUS_OPPO_BATTLE)
 end
 function c76871889.atcfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x106) and c:IsAbleToRemoveAsCost()
