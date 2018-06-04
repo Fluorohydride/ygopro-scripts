@@ -71,7 +71,7 @@ function c98095162.ddop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c98095162.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return (c:IsReason(REASON_BATTLE) or (c:GetReasonPlayer()~=tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp))
+	return (c:IsReason(REASON_BATTLE) or (c:GetReasonPlayer()==1-tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp))
 		and c:IsPreviousPosition(POS_FACEUP)
 end
 function c98095162.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

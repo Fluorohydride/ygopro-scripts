@@ -35,7 +35,7 @@ function c97811903.atkval(e,c)
 end
 function c97811903.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return not c:IsReason(REASON_REPLACE) and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()~=tp
+	if chk==0 then return not c:IsReason(REASON_REPLACE) and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
 		and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>0 end
 	if Duel.SelectEffectYesNo(tp,c,96) then
 		Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT+REASON_DISCARD)

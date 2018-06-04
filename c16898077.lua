@@ -99,7 +99,7 @@ function c16898077.damop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c16898077.damcon2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and rp~=tp
+	return Duel.GetTurnPlayer()~=tp and rp==1-tp
 end
 function c16898077.damtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -114,7 +114,7 @@ function c16898077.damop2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c16898077.damcon3(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp and rp~=tp
+	return Duel.GetTurnPlayer()~=tp and rp==1-tp
 end
 function c16898077.sfilter(c,e)
 	return c:IsFacedown() and (not e or c:IsRelateToEffect(e))

@@ -14,7 +14,7 @@ function c13026402.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c13026402.condition(e,tp,eg,ep,ev,re,r,rp)
-	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and rp~=tp
+	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and rp==1-tp
 		and re:IsActiveType(TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsChainNegatable(ev)
 end
 function c13026402.cost(e,tp,eg,ep,ev,re,r,rp,chk)

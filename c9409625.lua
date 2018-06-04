@@ -41,7 +41,7 @@ function c9409625.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c9409625.valcon(e,re,r,rp)
-	return bit.band(r,REASON_EFFECT)~=0 and rp~=e:GetHandlerPlayer()
+	return bit.band(r,REASON_EFFECT)~=0 and rp==1-e:GetHandlerPlayer()
 end
 function c9409625.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

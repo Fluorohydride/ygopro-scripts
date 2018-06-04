@@ -54,7 +54,7 @@ function c4628897.negop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c4628897.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetReasonPlayer()~=tp and c:IsReason(REASON_EFFECT)
+	return c:GetReasonPlayer()==1-tp and c:IsReason(REASON_EFFECT)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c4628897.spfilter(c,e,tp,code)

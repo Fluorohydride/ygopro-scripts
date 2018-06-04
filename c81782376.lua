@@ -36,7 +36,7 @@ function c81782376.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c81782376.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp~=tp and c:IsReason(REASON_EFFECT) 
+	return rp==1-tp and c:IsReason(REASON_EFFECT) 
 		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c81782376.drtg(e,tp,eg,ep,ev,re,r,rp,chk)

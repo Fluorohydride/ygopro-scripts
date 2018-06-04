@@ -12,5 +12,5 @@ function c27527047.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c27527047.tgval(e,re,rp)
-	return rp~=e:GetHandlerPlayer() and re:IsActiveType(TYPE_MONSTER)
+	return rp==1-e:GetHandlerPlayer() and re:IsActiveType(TYPE_MONSTER)
 end

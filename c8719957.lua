@@ -51,7 +51,7 @@ function c8719957.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c8719957.negcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_MZONE
+	return rp==1-tp and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_MZONE
 		and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainDisablable(ev) 
 end
 function c8719957.negop(e,tp,eg,ep,ev,re,r,rp)

@@ -28,7 +28,7 @@ function c74850403.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c74850403.evalue(e,re,rp)
-	return re:IsActiveType(TYPE_SPELL) and rp~=e:GetHandlerPlayer()
+	return re:IsActiveType(TYPE_SPELL) and rp==1-e:GetHandlerPlayer()
 end
 function c74850403.thcfilter(c,tp)
 	return c:IsType(TYPE_PENDULUM) and c:IsPreviousSetCard(0x98)

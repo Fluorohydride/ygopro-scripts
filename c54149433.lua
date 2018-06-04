@@ -43,7 +43,7 @@ function c54149433.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c54149433.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousControler()==tp and rp~=tp and c:IsReason(REASON_DESTROY)
+	return c:GetPreviousControler()==tp and rp==1-tp and c:IsReason(REASON_DESTROY)
 end
 function c54149433.spfilter(c,e,tp)
 	return c:IsSetCard(0x1081) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -62,7 +62,7 @@ function c97973962.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c97973962.thcon2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return (c:GetReasonPlayer()~=tp and c:IsReason(REASON_EFFECT))	and c:IsPreviousPosition(POS_FACEUP)
+	return (c:GetReasonPlayer()==1-tp and c:IsReason(REASON_EFFECT))	and c:IsPreviousPosition(POS_FACEUP)
 end
 function c97973962.thfilter2(c)
 	return c:IsCode(47457347) and c:IsAbleToHand()

@@ -58,7 +58,7 @@ function c85551711.costop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c85551711.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return ((rp~=tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)) 
+	return ((rp==1-tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)) 
 		or c:IsReason(REASON_BATTLE)) and c:IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c85551711.spfilter(c,e,tp)

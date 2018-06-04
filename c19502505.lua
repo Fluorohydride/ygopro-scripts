@@ -67,7 +67,7 @@ function c19502505.negop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c19502505.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return (c:IsReason(REASON_BATTLE) or (rp~=tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp))
+	return (c:IsReason(REASON_BATTLE) or (rp==1-tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp))
 		and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c19502505.thfilter(c)

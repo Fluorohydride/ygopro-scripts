@@ -35,7 +35,7 @@ function c74641045.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c74641045.retcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetReasonPlayer()~=tp
+	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetReasonPlayer()==1-tp
 		and e:GetHandler():GetPreviousControler()==tp
 end
 function c74641045.rettg(e,tp,eg,ep,ev,re,r,rp,chk)

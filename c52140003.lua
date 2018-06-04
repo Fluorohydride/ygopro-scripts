@@ -22,7 +22,7 @@ function c52140003.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c52140003.condition(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and rp~=tp
+	return re:IsActiveType(TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and rp==1-tp
 end
 function c52140003.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

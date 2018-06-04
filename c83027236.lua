@@ -22,7 +22,7 @@ end
 function c83027236.condtion(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return false end
 	local rc=re:GetHandler()
-	return rp~=tp and bit.band(r,REASON_EFFECT)~=0 and eg:IsExists(c83027236.cfilter,1,nil,1-tp)
+	return rp==1-tp and bit.band(r,REASON_EFFECT)~=0 and eg:IsExists(c83027236.cfilter,1,nil,1-tp)
 end
 function c83027236.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

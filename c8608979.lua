@@ -48,7 +48,7 @@ function c8608979.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c8608979.setcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp~=tp and c:IsReason(REASON_EFFECT)
+	return rp==1-tp and c:IsReason(REASON_EFFECT)
 		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_SZONE)
 end
 function c8608979.setfilter(c)

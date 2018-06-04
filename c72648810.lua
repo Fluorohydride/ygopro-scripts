@@ -14,7 +14,7 @@ end
 function c72648810.condition(e,tp,eg,ep,ev,re,r,rp)
 	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
 	local atype=re:GetActiveType()
-	return rp~=tp and (bit.band(atype,TYPE_PENDULUM+TYPE_MONSTER)==TYPE_PENDULUM+TYPE_MONSTER
+	return rp==1-tp and (bit.band(atype,TYPE_PENDULUM+TYPE_MONSTER)==TYPE_PENDULUM+TYPE_MONSTER
 		or (atype==TYPE_PENDULUM+TYPE_SPELL and bit.band(loc,LOCATION_PZONE)~=0 and not re:IsHasType(EFFECT_TYPE_ACTIVATE)))
 		and Duel.IsChainNegatable(ev)
 end

@@ -45,7 +45,7 @@ function c76004142.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c76004142.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp~=tp and c:IsReason(REASON_DESTROY)
+	return rp==1-tp and c:IsReason(REASON_DESTROY)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp
 end
 function c76004142.damtg(e,tp,eg,ep,ev,re,r,rp,chk)

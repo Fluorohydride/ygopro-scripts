@@ -55,7 +55,7 @@ function c21123811.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 function c21123811.discon(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev)
+	return rp==1-tp and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev)
 end
 function c21123811.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

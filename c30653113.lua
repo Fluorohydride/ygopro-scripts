@@ -22,7 +22,7 @@ function c30653113.cfilter(c,tp)
 	return c:IsPreviousLocation(LOCATION_HAND) and c:IsControler(tp) and c:IsReason(REASON_EFFECT) and c:IsReason(REASON_DISCARD)
 end
 function c30653113.condition(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and eg:IsExists(c30653113.cfilter,1,nil,tp)
+	return rp==1-tp and eg:IsExists(c30653113.cfilter,1,nil,tp)
 end
 function c30653113.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

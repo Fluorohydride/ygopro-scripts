@@ -55,7 +55,7 @@ function c11851647.lvop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c11851647.reccon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp~=tp and c:GetPreviousControler()==tp and bit.band(r,REASON_DESTROY)~=0 and c:IsPreviousLocation(LOCATION_ONFIELD)
+	return rp==1-tp and c:GetPreviousControler()==tp and bit.band(r,REASON_DESTROY)~=0 and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c11851647.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

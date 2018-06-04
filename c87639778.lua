@@ -54,7 +54,7 @@ function c87639778.handcon(e)
 end
 function c87639778.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp~=tp and c:IsReason(REASON_EFFECT)
+	return rp==1-tp and c:IsReason(REASON_EFFECT)
 		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_SZONE)
 end
 function c87639778.thfilter(c)

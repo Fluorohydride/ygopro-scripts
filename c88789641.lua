@@ -31,7 +31,7 @@ function c88789641.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e2,tp)
 end
 function c88789641.val(e,re,val,r,rp,rc)
-	if e:GetHandlerPlayer()~=rp then
+	if 1-e:GetHandlerPlayer()==rp then
 		return 0
 	else return val end
 end

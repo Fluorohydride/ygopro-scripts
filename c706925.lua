@@ -23,7 +23,7 @@ function c706925.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c706925.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp
+	return ep==1-tp
 end
 function c706925.spfilter(c,e,tp)
 	return not c:IsCode(706925) and c:IsLevelBelow(4) and c:IsSetCard(0x77) and c:IsRace(RACE_SEASERPENT)

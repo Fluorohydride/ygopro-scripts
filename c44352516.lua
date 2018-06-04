@@ -71,7 +71,7 @@ function c44352516.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c44352516.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp~=tp and bit.band(r,0x41)==0x41
+	return rp==1-tp and bit.band(r,0x41)==0x41
 		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c44352516.thfilter(c)

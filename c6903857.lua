@@ -22,7 +22,7 @@ function c6903857.initial_effect(c)
 end
 function c6903857.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousControler()==tp and c:IsReason(REASON_DESTROY) and rp~=tp
+	return c:GetPreviousControler()==tp and c:IsReason(REASON_DESTROY) and rp==1-tp
 		and (not c:IsReason(REASON_BATTLE) or c==Duel.GetAttackTarget())
 end
 function c6903857.dfilter(c)

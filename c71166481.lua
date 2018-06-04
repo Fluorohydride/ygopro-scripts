@@ -27,7 +27,7 @@ function c71166481.initial_effect(c)
 end
 c71166481.xyz_number=75
 function c71166481.chcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_MONSTER) and rp~=tp
+	return re:IsActiveType(TYPE_MONSTER) and rp==1-tp
 end
 function c71166481.chcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,2,REASON_COST) end

@@ -65,7 +65,7 @@ function c29223325.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c29223325.descon(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and e:GetHandler():GetPreviousControler()==tp
+	return rp==1-tp and e:GetHandler():GetPreviousControler()==tp
 end
 function c29223325.desop(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()

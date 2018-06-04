@@ -55,7 +55,7 @@ function c9030160.sumlimit(e,c)
 	return not c:IsControler(e:GetHandlerPlayer())
 end
 function c9030160.evalue(e,re,rp)
-	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and rp~=e:GetHandlerPlayer()
+	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and rp==1-e:GetHandlerPlayer()
 end
 function c9030160.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp

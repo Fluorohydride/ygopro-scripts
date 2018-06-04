@@ -78,7 +78,7 @@ function c29353756.eqlimit(e,c)
 	return c==e:GetLabelObject()
 end
 function c29353756.negcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_SZONE
+	return rp==1-tp and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_SZONE
 		and re:IsActiveType(TYPE_TRAP) and Duel.IsChainDisablable(ev) 
 end
 function c29353756.negop(e,tp,eg,ep,ev,re,r,rp)

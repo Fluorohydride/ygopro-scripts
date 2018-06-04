@@ -10,7 +10,7 @@ function c5914184.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c5914184.actcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep==tp and tp~=rp and ev>=1000 and bit.band(r,REASON_EFFECT)~=0
+	return ep==tp and 1-tp==rp and ev>=1000 and bit.band(r,REASON_EFFECT)~=0
 end
 function c5914184.actop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -19,7 +19,7 @@ function c11074235.initial_effect(c)
 end
 function c11074235.cfilter(c,tp)
 	return bit.band(c:GetPreviousTypeOnField(),TYPE_SPELL+TYPE_TRAP)~=0 and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
-		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()~=tp
+		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
 end
 function c11074235.spcon(e,tp,eg,ep,ev,re,r,rp)
 	 return eg:IsExists(c11074235.cfilter,1,nil,tp)

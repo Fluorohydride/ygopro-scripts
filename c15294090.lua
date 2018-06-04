@@ -14,7 +14,7 @@ function c15294090.cfilter(c,tp)
 	return c:IsPreviousSetCard(0xc008) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
 end
 function c15294090.condition(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_EFFECT)~=0 and rp~=tp and eg:IsExists(c15294090.cfilter,1,nil,tp)
+	return bit.band(r,REASON_EFFECT)~=0 and rp==1-tp and eg:IsExists(c15294090.cfilter,1,nil,tp)
 end
 function c15294090.spfilter(c,e,tp)
 	return c:IsReason(REASON_DESTROY) and c:GetTurnID()==Duel.GetTurnCount() and c:IsSetCard(0xc008)

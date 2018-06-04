@@ -36,7 +36,7 @@ function c8323633.filter(c,code)
 	return c:IsFaceup() and c:IsCode(code)
 end
 function c8323633.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c8323633.filter,1,nil,e:GetLabel()) and rp~=tp
+	return eg:IsExists(c8323633.filter,1,nil,e:GetLabel()) and rp==1-tp
 end
 function c8323633.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

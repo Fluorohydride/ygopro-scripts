@@ -15,7 +15,7 @@ function c23051413.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c23051413.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and e:GetHandler()==Duel.GetAttacker()
+	return rp==1-tp and e:GetHandler()==Duel.GetAttacker()
 end
 function c23051413.filter(c,e,tp)
 	return c:IsSetCard(0x2a) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

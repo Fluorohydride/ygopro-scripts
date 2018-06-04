@@ -26,7 +26,7 @@ function c81171949.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c81171949.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and bit.band(r,REASON_EFFECT)~=0 and bit.band(r,REASON_RETURN)==0
+	return rp==1-tp and bit.band(r,REASON_EFFECT)~=0 and bit.band(r,REASON_RETURN)==0
 end
 function c81171949.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

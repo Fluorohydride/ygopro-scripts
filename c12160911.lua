@@ -13,7 +13,7 @@ function c12160911.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c12160911.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPreviousLocation(LOCATION_HAND) and rp~=tp and bit.band(r,REASON_EFFECT)==REASON_EFFECT
+	return e:GetHandler():IsPreviousLocation(LOCATION_HAND) and rp==1-tp and bit.band(r,REASON_EFFECT)==REASON_EFFECT
 end
 function c12160911.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

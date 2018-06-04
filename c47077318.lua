@@ -24,7 +24,7 @@ function c47077318.initial_effect(c)
 end
 function c47077318.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_DESTROY) and c:GetReasonPlayer()~=tp
+	return c:IsReason(REASON_DESTROY) and c:GetReasonPlayer()==1-tp
 		and c:GetPreviousControler()==tp
 end
 function c47077318.target(e,tp,eg,ep,ev,re,r,rp,chk)

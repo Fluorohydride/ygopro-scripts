@@ -66,7 +66,7 @@ function c1621413.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c1621413.discon(e,tp,eg,ep,ev,re,r,rp)
-	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and rp~=tp and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
+	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and rp==1-tp and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
 		and e:GetHandler():GetOverlayGroup():IsExists(Card.IsCode,1,nil,16195942)
 end
 function c1621413.distg(e,tp,eg,ep,ev,re,r,rp,chk)

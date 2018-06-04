@@ -19,7 +19,7 @@ function c86767655.initial_effect(c)
 end
 c86767655.toss_coin=true
 function c86767655.discon(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and Duel.IsChainDisablable(ev) and e:GetHandler():GetFlagEffect(1)>0
+	return rp==1-tp and Duel.IsChainDisablable(ev) and e:GetHandler():GetFlagEffect(1)>0
 end
 function c86767655.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c1,c2=Duel.TossCoin(tp,2)

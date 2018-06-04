@@ -67,7 +67,7 @@ function c36368606.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummonComplete()
 end
 function c36368606.immcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and re:IsActiveType(TYPE_MONSTER)
+	return rp==1-tp and re:IsActiveType(TYPE_MONSTER)
 end
 function c36368606.immfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_CYBERSE) and c:IsType(TYPE_LINK)

@@ -78,7 +78,7 @@ end
 function c98935722.discon(e,tp,eg,ep,ev,re,r,rp)
 	local loc,seq=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_SEQUENCE)
 	seq=aux.MZoneSequence(seq)
-	return rp~=tp and re:IsActiveType(TYPE_MONSTER) and loc==LOCATION_MZONE
+	return rp==1-tp and re:IsActiveType(TYPE_MONSTER) and loc==LOCATION_MZONE
 		and Duel.IsExistingMatchingCard(c98935722.cfilter,tp,LOCATION_MZONE,0,1,nil,seq)
 end
 function c98935722.disop(e,tp,eg,ep,ev,re,r,rp)

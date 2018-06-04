@@ -96,7 +96,7 @@ function c8837932.dfilter(c,g)
 end
 function c8837932.disop(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetHandler():GetCardTarget()
-	if re:IsActiveType(TYPE_MONSTER) and rp~=tp
+	if re:IsActiveType(TYPE_MONSTER) and rp==1-tp
 		and Duel.IsExistingMatchingCard(c8837932.dfilter,tp,0,LOCATION_MZONE,1,nil,g) then
 		Duel.NegateEffect(ev)
 	end

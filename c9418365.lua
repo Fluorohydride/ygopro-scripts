@@ -41,7 +41,7 @@ function c9418365.spop(e,tp,eg,ep,ev,re,r,rp,c)
 end
 function c9418365.hdcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetSummonType()==SUMMON_TYPE_SPECIAL+1 and rp~=tp and c:IsReason(REASON_DESTROY)
+	return c:GetSummonType()==SUMMON_TYPE_SPECIAL+1 and rp==1-tp and c:IsReason(REASON_DESTROY)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
 end
 function c9418365.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)

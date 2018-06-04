@@ -12,7 +12,7 @@ function c9298235.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c9298235.filter(c,tp)
-	return c:IsReason(REASON_DESTROY) and c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:GetReasonPlayer()~=tp
+	return c:IsReason(REASON_DESTROY) and c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:GetReasonPlayer()==1-tp
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 		and c:GetPreviousControler()==tp and c:IsControler(tp) and c:IsSetCard(0xa9) and c:IsAbleToHand()
 end

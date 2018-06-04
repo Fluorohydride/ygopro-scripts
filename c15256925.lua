@@ -45,7 +45,7 @@ function c15256925.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c15256925.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPreviousLocation(LOCATION_SZONE) and rp~=tp
+	return e:GetHandler():IsPreviousLocation(LOCATION_SZONE) and rp==1-tp
 end
 function c15256925.spfilter(c,e,tp)
 	return c:IsCode(30208479,40737112) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)

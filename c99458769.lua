@@ -22,7 +22,7 @@ function c99458769.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c99458769.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPreviousLocation(LOCATION_HAND) and bit.band(r,0x4040)==0x4040 and rp~=tp
+	return e:GetHandler():IsPreviousLocation(LOCATION_HAND) and bit.band(r,0x4040)==0x4040 and rp==1-tp
 		and e:GetHandler():GetPreviousControler()==tp
 end
 function c99458769.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

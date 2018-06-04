@@ -45,7 +45,7 @@ function c21250202.regfilter(c,tp)
 		and c:IsType(TYPE_PENDULUM) and c:IsFaceup() and c:IsSetCard(0x99)
 end
 function c21250202.regop1(e,tp,eg,ep,ev,re,r,rp)
-	if rp~=tp and eg:GetCount()==1 and eg:IsExists(c21250202.regfilter,1,nil,tp) then
+	if rp==1-tp and eg:GetCount()==1 and eg:IsExists(c21250202.regfilter,1,nil,tp) then
 		e:GetHandler():RegisterFlagEffect(21250202,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1,ev)
 	end
 end

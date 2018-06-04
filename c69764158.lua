@@ -16,7 +16,7 @@ function c69764158.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c69764158.descon(e,tp,eg,ep,ev,re,r,rp)
-	return ep==tp and (bit.band(r,REASON_BATTLE)~=0 or (bit.band(r,REASON_EFFECT)~=0 and rp~=tp))
+	return ep==tp and (bit.band(r,REASON_BATTLE)~=0 or (bit.band(r,REASON_EFFECT)~=0 and rp==1-tp))
 end
 function c69764158.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end

@@ -52,7 +52,7 @@ function c34230233.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c34230233.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 and rp~=tp and tp==e:GetLabel() then
+	if tc and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 and rp==1-tp and tp==e:GetLabel() then
 		Duel.BreakEffect()
 		local hg=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
 		if hg:GetCount()>0 then

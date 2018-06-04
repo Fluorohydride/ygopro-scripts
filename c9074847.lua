@@ -14,7 +14,7 @@ function c9074847.confilter(c,tp)
 	return c:IsControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c9074847.condition(e,tp,eg,ep,ev,re,r,rp)
-	return rp~=tp and eg:IsExists(c9074847.confilter,1,nil,tp)
+	return rp==1-tp and eg:IsExists(c9074847.confilter,1,nil,tp)
 end
 function c9074847.thfilter(c,tp)
 	return c:IsLocation(LOCATION_HAND) and c:IsControler(tp)
