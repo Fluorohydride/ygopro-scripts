@@ -8,7 +8,6 @@ function c24731391.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(1,0)
-	e1:SetLabel(tp)
 	e1:SetValue(c24731391.val)
 	c:RegisterEffect(e1)
 	--target
@@ -49,12 +48,7 @@ function c24731391.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c24731391.val(e,re,dam,r,rp,rc)
-	if bit.band(r,REASON_BATTLE)>0 then return dam end
-	if bit.band(r,REASON_EFFECT)~=0 or bit.band(r,REASON_BATTLE)~=0 then
-		return dam/2
-	else
-		return dam
-	end
+	return dam/2
 end
 function c24731391.filter(c)
 	return c:IsType(TYPE_LINK)
