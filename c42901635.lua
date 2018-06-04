@@ -69,7 +69,7 @@ function c42901635.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c42901635.costfilter(c)
-	return c:IsType(TYPE_MONSTER) and (c:IsSetCard(0x2066) or c:IsCode(99785935,39256679,11549357)) and c:IsLevelBelow(4) and c:IsAbleToRemoveAsCost()
+	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x2066) and c:IsLevelBelow(4) and c:IsAbleToRemoveAsCost()
 end
 function c42901635.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c42901635.costfilter,tp,LOCATION_GRAVE,0,1,nil) end
@@ -96,7 +96,7 @@ function c42901635.spcon2(e,tp,eg,ep,ev,re,r,rp)
 		or (rp==1-tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp)
 end
 function c42901635.spfilter(c,e,tp)
-	return c:IsFaceup() and c:IsCode(99785935,39256679,11549357)
+	return c:IsFaceup() and c:IsCode(42023223,79418928,15502037)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and c:IsCanBeEffectTarget(e)
 end
@@ -126,8 +126,8 @@ function c42901635.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		sg:Merge(g1)
 		g:Sub(g1)
 	end
-	Duel.SetTargetCard(g)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,3,0,0)
+	Duel.SetTargetCard(sg)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,3,0,0)
 end
 function c42901635.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
