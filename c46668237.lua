@@ -19,7 +19,7 @@ function c46668237.cfilter(c,tp)
 		and c:IsPreviousLocation(LOCATION_MZONE) and bit.band(c:GetPreviousRaceOnField(),RACE_BEAST)~=0
 end
 function c46668237.condition(e,tp,eg,ep,ev,re,r,rp)
-	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c46668237.cfilter,1,nil,tp) and bit.band(r,REASON_DESTROY)~=0
+	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c46668237.cfilter,1,nil,tp) and bit.band(r,REASON_DESTROY+REASON_EFFECT)==REASON_DESTROY+REASON_EFFECT
 end
 function c46668237.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000) end
