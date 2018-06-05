@@ -2,7 +2,8 @@
 function c15661378.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()
-	aux.AddFusionProcFunRep(c,c15661378.ffilter,3,false)
+	local eff=aux.AddFusionProcFunRep(c,c15661378.ffilter,3,false)
+	eff[1]:SetValue(c15661378.matfilter)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -33,7 +34,10 @@ function c15661378.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c15661378.ffilter(c,fc,sub,mg,sg)
-	return c:IsControler(fc:GetControler()) and c:IsLocation(LOCATION_MZONE+LOCATION_HAND) and (not sg or not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode()))
+	return not sg or not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode())
+end
+function c15661378.matfilter(c,fc,sub,tp)
+	return c:IsLocation(LOCATION_ONFIELD+LOCATION_HAND) and c:IsControler(tp)
 end
 function c15661378.cfilter(c,fc)
 	return c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(fc)

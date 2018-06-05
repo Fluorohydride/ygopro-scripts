@@ -31,7 +31,7 @@ function c52101615.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c52101615.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	local chkf=tp+0x100
+	local chkf=tp+0x10100
 	if chk==0 then
 		if e:GetLabel()~=1 then return false end
 		e:SetLabel(0)
