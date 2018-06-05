@@ -31,9 +31,27 @@ function c15661378.initial_effect(c)
 	e3:SetTarget(c15661378.remtg)
 	e3:SetOperation(c15661378.remop)
 	c:RegisterEffect(e3)
+	--fusion material check
+	if not c:IsStatus(STATUS_COPYING_EFFECT) then
+		if not c15661378.check_group then
+			c15661378.check_group=Group.CreateGroup()
+			c15661378.check_group:KeepAlive()
+			local ge1=Effect.GlobalEffect()
+			ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+			ge1:SetCode(EVENT_CHAIN_SOLVING)
+			ge1:SetOperation(c15661378.checkop)
+			Duel.RegisterEffect(ge1,0)		
+			local ge2=Effect.GlobalEffect()
+			ge2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+			ge2:SetCode(EVENT_CHAIN_SOLVED)
+			ge2:SetOperation(c15661378.checkop2)
+			Duel.RegisterEffect(ge2,0)		
+		end
+		c15661378.check_group:AddCard(c)
+	end	
 end
 function c15661378.ffilter(c,fc,sub,mg,sg)
-	return c:IsControler(fc:GetControler()) and c:IsLocation(LOCATION_MZONE+LOCATION_HAND) and (not sg or not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode()))
+	return (c:IsControler(fc:GetControler()) and c:IsLocation(LOCATION_ONFIELD+LOCATION_HAND) or fc:GetFlagEffect(15661378)>0) and (not sg or not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode()))
 end
 function c15661378.cfilter(c,fc)
 	return c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(fc)
@@ -95,5 +113,17 @@ function c15661378.remop(e,tp,eg,ep,ev,re,r,rp)
 		sg1:Merge(g2)
 		sg1:Merge(sg3)
 		Duel.Remove(sg1,POS_FACEUP,REASON_EFFECT)
+	end
+end
+function c15661378.checkop(e,tp,eg,ep,ev,re,r,rp)
+	for tc in aux.Next(c15661378.check_group) do
+		if not tc:IsLocation(LOCATION_EXTRA) then
+			tc:RegisterFlagEffect(15661378,0,0,0)
+		end
+	end
+end
+function c15661378.checkop2(e,tp,eg,ep,ev,re,r,rp)
+	for tc in aux.Next(c15661378.check_group) do
+		tc:ResetFlagEffect(15661378)
 	end
 end
