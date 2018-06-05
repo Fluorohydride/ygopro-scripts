@@ -42,7 +42,7 @@ function c15661378.initial_effect(c)
 end
 function c15661378.ffilter(c,fc,sub,mg,sg)
 	if fc:GetFlagEffect(15661378)==0 and
-		not (c:IsControler(fc:GetControler()) and c:IsLocation(LOCATION_MZONE+LOCATION_HAND)) then
+		not (c:IsControler(fc:GetControler()) and c:IsLocation(LOCATION_ONFIELD+LOCATION_HAND)) then
 		return false
 	end
 	return not sg or not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode())
