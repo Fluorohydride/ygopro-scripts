@@ -1038,7 +1038,7 @@ function Auxiliary.FConditionMix(insf,sub,...)
 				local chkf=chkfnf&0xff
 				local c=e:GetHandler()
 				local tp=c:GetControler()
-				local notfusion=chkfnf>>8~=0
+				local notfusion=(chkfnf>>8)&0xf~=0
 				local matcheck=(chkfnf>>16)&0xf==0 and e:GetValue() or 0
 				local sub=sub or notfusion
 				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub,matcheck,tp,table.unpack(funs))
@@ -1057,7 +1057,7 @@ function Auxiliary.FOperationMix(insf,sub,...)
 				local chkf=chkfnf&0xff
 				local c=e:GetHandler()
 				local tp=c:GetControler()
-				local notfusion=chkfnf>>8~=0
+				local notfusion=(chkfnf>>8)&0xf~=0
 				local matcheck=(chkfnf>>16)&0xf==0 and e:GetValue() or 0
 				local sub=sub or notfusion
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,matcheck,tp,table.unpack(funs))
@@ -1149,7 +1149,7 @@ function Auxiliary.FConditionMixRep(insf,sub,fun1,minc,maxc,...)
 				local chkf=chkfnf&0xff
 				local c=e:GetHandler()
 				local tp=c:GetControler()
-				local notfusion=chkfnf>>8~=0
+				local notfusion=(chkfnf>>8)&0xf~=0
 				local matcheck=(chkfnf>>16)&0xf==0 and e:GetValue() or 0
 				local sub=sub or notfusion
 				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub,matcheck,tp,fun1,table.unpack(funs))
@@ -1168,7 +1168,7 @@ function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
 				local chkf=chkfnf&0xff
 				local c=e:GetHandler()
 				local tp=c:GetControler()
-				local notfusion=chkfnf>>8~=0
+				local notfusion=(chkfnf>>8)&0xf~=0
 				local sub=sub or notfusion
 				local matcheck=(chkfnf>>16)&0xf==0 and e:GetValue() or 0
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,matcheck,tp,fun1,table.unpack(funs))
