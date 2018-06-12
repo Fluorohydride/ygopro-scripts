@@ -44,17 +44,24 @@ function c53199020.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end
 function c53199020.chcon1(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and re:GetHandler():GetType()==TYPE_SPELL and re:IsHasType(EFFECT_TYPE_ACTIVATE)
+	return ep==1-tp and re:GetHandler():GetType()==TYPE_SPELL and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c53199020.chop1(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():RegisterFlagEffect(53199020,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+	re:GetHandler():RegisterFlagEffect(53199020,RESET_CHAIN,0,1)
 end
 function c53199020.chcon2(e,tp,eg,ep,ev,re,r,rp)
-	return ev==1 and e:GetHandler():GetFlagEffect(53199020)>0
+	return re:GetHandler():GetFlagEffect(53199020)>0
 end
 function c53199020.chop2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.ChangeChainOperation(1,c53199020.rep_op)
+	local g=Group.CreateGroup()
+	Duel.ChangeTargetCard(ev,g)
+	Duel.ChangeChainOperation(ev,c53199020.rep_op)
 end
 function c53199020.rep_op(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	if c:GetType()==TYPE_SPELL or c:GetType()==TYPE_TRAP then
+		c:CancelToGrave(false)
+	end
+	Duel.Hint(HINT_CARD,0,53199020)
 	Duel.DiscardHand(1-tp,aux.TRUE,1,1,REASON_EFFECT+REASON_DISCARD)
 end
