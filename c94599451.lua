@@ -32,6 +32,7 @@ function c94599451.initial_effect(c)
 	e4:SetCode(EFFECT_DESTROY_REPLACE)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetTarget(c94599451.reptg)
+	e4:SetOperation(c94599451.repop)
 	c:RegisterEffect(e4)
 end
 function c94599451.ctfilter(c)
@@ -85,9 +86,9 @@ function c94599451.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c94599451.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsReason(REASON_EFFECT) and Duel.IsCanRemoveCounter(tp,1,0,0x1,1,REASON_EFFECT) end
-	if Duel.SelectEffectYesNo(tp,c,96) then
-		Duel.RemoveCounter(tp,1,0,0x1,1,REASON_EFFECT+REASON_REPLACE)
-		return true
-	else return false end
+	if chk==0 then return c:IsReason(REASON_EFFECT) and c:GetCounter(0x1)>0 end
+	return Duel.SelectEffectYesNo(tp,c,96)
+end
+function c94599451.repop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():RemoveCounter(ep,0x1,1,REASON_EFFECT)
 end
