@@ -1836,6 +1836,7 @@ function Auxiliary.GetLinkCount(c)
 end
 function Auxiliary.LCheckOtherMaterial(c,mg,lc)
 	local le={c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL)}
+	if not le then return true end
 	for _,te in pairs(le) do
 		local f=te:GetValue()
 		if f(nil,lc,mg) then return true end
