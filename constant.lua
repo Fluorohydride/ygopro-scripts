@@ -531,6 +531,7 @@ EFFECT_ADD_LINK_CODE				=354	--用作连接素材时的卡名
 EFFECT_ADD_LINK_SETCODE			=355	--reserve
 EFFECT_ADD_LINK_ATTRIBUTE		=356	--用作连接素材时的属性
 EFFECT_ADD_LINK_RACE				=357	--用作连接素材时的种族
+EFFECT_EXTRA_LINK_MATERIAL		=358	--手卡的连接素材
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
 EVENT_STARTUP					=1000	--游戏开始时
