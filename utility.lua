@@ -1825,23 +1825,30 @@ function Auxiliary.AddLinkProcedure(c,f,min,max,gf)
 	c:RegisterEffect(e1)
 end
 function Auxiliary.LConditionFilter(c,f,lc)
-	if c:IsLocation(LOCATION_HAND) and not c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL) then return false end
-	if c:IsLocation(LOCATION_MZONE) and not c:IsFaceup() then return false end
-	return c:IsCanBeLinkMaterial(lc) and (not f or f(c))
+	return c:IsFaceup() and c:IsCanBeLinkMaterial(lc) and (not f or f(c))
+end
+function Auxiliary.LExtraFilter(c,f,lc)
+	if c:IsLocation(LOCATION_ONFIELD) and not c:IsFaceup() then return false end
+	return c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL) and c:IsCanBeLinkMaterial(lc) and (not f or f(c))
 end
 function Auxiliary.GetLinkCount(c)
 	if c:IsType(TYPE_LINK) and c:GetLink()>1 then
 		return 1+0x10000*c:GetLink()
 	else return 1 end
 end
+function Auxiliary.GetLinkMaterials(tp,f,lc)
+	local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f,lc)
+	local mg2=Duel.GetMatchingGroup(Auxiliary.LExtraFilter,tp,LOCATION_HAND+LOCATION_SZONE,LOCATION_ONFIELD,nil,f,lc)
+	if mg2:GetCount()>0 then mg:Merge(mg2) end
+	return mg
+end
 function Auxiliary.LCheckOtherMaterial(c,mg,lc)
 	local le={c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL)}
-	if not le then return true end
 	for _,te in pairs(le) do
 		local f=te:GetValue()
-		if f(nil,lc,mg) then return true end
+		if f and not f(te,lc,mg) then return false end
 	end
-	return false
+	return true
 end
 function Auxiliary.LCheckMaterialCompatibility(sg,lc)
 	for tc in Auxiliary.Next(sg) do
@@ -1869,7 +1876,7 @@ function Auxiliary.LinkCondition(f,minc,maxc,gf)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
 				local tp=c:GetControler()
-				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE+LOCATION_HAND,0,nil,f,c)
+				local mg=Auxiliary.GetLinkMaterials(tp,f,c)
 				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_LMATERIAL)
 				if sg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				local ct=sg:GetCount()
@@ -1880,7 +1887,7 @@ function Auxiliary.LinkCondition(f,minc,maxc,gf)
 end
 function Auxiliary.LinkTarget(f,minc,maxc,gf)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c)
-				local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE+LOCATION_HAND,0,nil,f,c)
+				local mg=Auxiliary.GetLinkMaterials(tp,f,c)
 				local bg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_LMATERIAL)
 				if #bg>0 then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LMATERIAL)
