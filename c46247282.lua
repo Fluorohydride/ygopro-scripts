@@ -33,6 +33,7 @@ function c46247282.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCode(EFFECT_DISABLE_FIELD)
+	e4:SetProperty(EFFECT_FLAG_REPEAT)
 	e4:SetOperation(c46247282.disop)
 	c:RegisterEffect(e4)
 end
