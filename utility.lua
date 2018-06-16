@@ -1846,7 +1846,7 @@ function Auxiliary.LCheckOtherMaterial(c,sg,lc)
 	local le={c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL)}
 	for _,te in pairs(le) do
 		local f=te:GetValue()
-		if f and not f(te,lc,mg) then return false end
+		if f and not f(te,lc,sg) then return false end
 	end
 	return true
 end
