@@ -1842,7 +1842,7 @@ function Auxiliary.GetLinkMaterials(tp,f,lc)
 	if mg2:GetCount()>0 then mg:Merge(mg2) end
 	return mg
 end
-function Auxiliary.LCheckOtherMaterial(c,mg,lc)
+function Auxiliary.LCheckOtherMaterial(c,sg,lc)
 	local le={c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL)}
 	for _,te in pairs(le) do
 		local f=te:GetValue()
@@ -1852,9 +1852,10 @@ function Auxiliary.LCheckOtherMaterial(c,mg,lc)
 end
 function Auxiliary.LCheckMaterialCompatibility(sg,lc)
 	for tc in Auxiliary.Next(sg) do
-		local mg=sg:Clone()
-		mg:RemoveCard(tc)
-		if not Auxiliary.LCheckOtherMaterial(tc,mg,lc) then return false end
+		sg:RemoveCard(tc)
+		local res=Auxiliary.LCheckOtherMaterial(tc,sg,lc)
+		sg:AddCard(tc)
+		if not res then return false end
 	end
 	return true
 end
