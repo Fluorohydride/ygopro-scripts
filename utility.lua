@@ -1852,7 +1852,7 @@ function Auxiliary.LCheckOtherMaterial(c,sg,lc)
 end
 function Auxiliary.LCheckMaterialCompatibility(sg,lc)
 	for tc in Auxiliary.Next(sg) do
-		local mg=sg:Clone()
+		local mg=sg:Filter(aux.TRUE,tc)
 		local res=Auxiliary.LCheckOtherMaterial(tc,mg,lc)
 		mg:DeleteGroup()
 		if not res then return false end
