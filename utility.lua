@@ -1852,9 +1852,9 @@ function Auxiliary.LCheckOtherMaterial(c,sg,lc)
 end
 function Auxiliary.LCheckMaterialCompatibility(sg,lc)
 	for tc in Auxiliary.Next(sg) do
-		sg:RemoveCard(tc)
-		local res=Auxiliary.LCheckOtherMaterial(tc,sg,lc)
-		sg:AddCard(tc)
+		local mg=sg:Clone()
+		local res=Auxiliary.LCheckOtherMaterial(tc,mg,lc)
+		mg:DeleteGroup()
 		if not res then return false end
 	end
 	return true
