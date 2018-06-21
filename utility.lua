@@ -1842,27 +1842,22 @@ function Auxiliary.GetLinkMaterials(tp,f,lc)
 	if mg2:GetCount()>0 then mg:Merge(mg2) end
 	return mg
 end
-function Auxiliary.LCheckOtherMaterial(c,sg,lc)
+function Auxiliary.LCheckOtherMaterial(c,mg,lc)
 	local le={c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL)}
 	for _,te in pairs(le) do
 		local f=te:GetValue()
-		if f and not f(te,lc,sg) then return false end
+		if f and not f(te,lc,mg) then return false end
 	end
 	return true
 end
-function Auxiliary.LCheckMaterialCompatibility(sg,lc)
-	for tc in Auxiliary.Next(sg) do
-		local mg=sg:Filter(aux.TRUE,tc)
-		local res=Auxiliary.LCheckOtherMaterial(tc,mg,lc)
-		mg:DeleteGroup()
-		if not res then return false end
-	end
-	return true
+function Auxiliary.LUncompatibilityFilter(c,sg,lc)
+	local mg=sg:Filter(aux.TRUE,c)
+	return not Auxiliary.LCheckOtherMaterial(c,mg,lc)
 end
 function Auxiliary.LCheckRecursive(c,tp,sg,mg,lc,ct,minc,maxc,gf)
 	sg:AddCard(c)
 	ct=ct+1
-	local res=Auxiliary.LCheckMaterialCompatibility(sg,lc)
+	local res=not sg:IsExists(Auxiliary.LUncompatibilityFilter,1,nil,sg,lc)
 		and (Auxiliary.LCheckGoal(tp,sg,lc,minc,ct,gf)
 			or ct<maxc and mg:IsExists(Auxiliary.LCheckRecursive,1,sg,tp,sg,mg,lc,ct,minc,maxc,gf))
 	sg:RemoveCard(c)
