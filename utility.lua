@@ -1857,15 +1857,16 @@ end
 function Auxiliary.LCheckRecursive(c,tp,sg,mg,lc,ct,minc,maxc,gf)
 	sg:AddCard(c)
 	ct=ct+1
-	local res=not sg:IsExists(Auxiliary.LUncompatibilityFilter,1,nil,sg,lc)
-		and (Auxiliary.LCheckGoal(tp,sg,lc,minc,ct,gf)
-			or ct<maxc and mg:IsExists(Auxiliary.LCheckRecursive,1,sg,tp,sg,mg,lc,ct,minc,maxc,gf))
+	local res=Auxiliary.LCheckGoal(tp,sg,lc,minc,ct,gf)
+		or ct<maxc and mg:IsExists(Auxiliary.LCheckRecursive,1,sg,tp,sg,mg,lc,ct,minc,maxc,gf)
 	sg:RemoveCard(c)
 	ct=ct-1
 	return res
 end
 function Auxiliary.LCheckGoal(tp,sg,lc,minc,ct,gf)
-	return ct>=minc and sg:CheckWithSumEqual(Auxiliary.GetLinkCount,lc:GetLink(),ct,ct) and Duel.GetLocationCountFromEx(tp,tp,sg,lc)>0 and (not gf or gf(sg))
+	return ct>=minc and sg:CheckWithSumEqual(Auxiliary.GetLinkCount,lc:GetLink(),ct,ct)
+		and Duel.GetLocationCountFromEx(tp,tp,sg,lc)>0 and (not gf or gf(sg))
+		and not sg:IsExists(Auxiliary.LUncompatibilityFilter,1,nil,sg,lc)
 end
 function Auxiliary.LinkCondition(f,minc,maxc,gf)
 	return	function(e,c)
