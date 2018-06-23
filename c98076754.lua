@@ -71,12 +71,13 @@ function c98076754.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
+c98076754.necrovalley_check_group={}
 function c98076754.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToDeck,tp,0,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,1,nil) end
 	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,g:GetCount(),0,0)
-	function c98076754.necrovalley_check_filter(c,te)
-		return te==e and c:IsControler(1-tp) and c:IsAbleToDeck()
+	c98076754.necrovalley_check_group[e]=function()
+		return Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_GRAVE,nil)
 	end
 end
 function c98076754.tdop(e,tp,eg,ep,ev,re,r,rp)

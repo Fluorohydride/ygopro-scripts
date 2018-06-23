@@ -21,6 +21,7 @@ end
 function c93983867.spfilter(c,e,tp)
 	return c:IsSetCard(0xc6) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
+c93983867.necrovalley_check_group={}
 function c93983867.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsControlerCanBeChanged() end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsControlerCanBeChanged,tp,0,LOCATION_MZONE,1,nil)
@@ -29,8 +30,8 @@ function c93983867.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,Card.IsControlerCanBeChanged,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
-	function c93983867.necrovalley_check_filter(c,te)
-		return e==te and c:IsControler(tp) and c93983867.spfilter(c,e,tp)
+	c93983867.necrovalley_check_group[e]=function()
+		return Duel.GetMatchingGroup(c93983867.spfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
 	end
 end
 function c93983867.activate(e,tp,eg,ep,ev,re,r,rp)

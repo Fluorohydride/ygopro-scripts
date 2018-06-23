@@ -81,9 +81,11 @@ function c47355498.disop(e,tp,eg,ep,ev,re,r,rp)
 	if tg and tg:GetCount()>0 then
 		res=tg:IsExists(c47355498.disfilter,1,nil,im0,im1)
 	end
-	if not res and rc.necrovalley_check_filter then
-		local tg2=Duel.GetMatchingGroup(rc.necrovalley_check_filter,rp,LOCATION_GRAVE,LOCATION_GRAVE,nil,re)
-		if tg2:GetCount()>0 then
+	if not res and rc.necrovalley_check_group then
+		local groupfun=rc.necrovalley_check_group[re]
+		local tg2
+		if groupfun then tg2=groupfun() end
+		if tg2 and tg2:GetCount()>0 then
 			res=tg2:IsExists(c47355498.disfilter,1,nil,im0,im1)
 		end
 	end
