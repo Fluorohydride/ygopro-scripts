@@ -26,39 +26,12 @@ function c42790071.initial_effect(c)
 	e3:SetOperation(c42790071.spop2)
 	c:RegisterEffect(e3)
 	Duel.AddCustomActivityCounter(42790071,ACTIVITY_SPSUMMON,c42790071.counterfilter)
-	if not c42790071.global_check then
-		c42790071.global_check=true
-		local ex1=Effect.GlobalEffect()
-		ex1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ex1:SetCode(EVENT_CHAINING)
-		ex1:SetCondition(c42790071.regcon)
-		ex1:SetOperation(c42790071.regop)
-		Duel.RegisterEffect(ex1,0)
-		local ex2=Effect.GlobalEffect()
-		ex2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ex2:SetCode(EVENT_CHAIN_NEGATED)
-		ex2:SetCondition(c42790071.regcon)
-		ex2:SetOperation(c42790071.regop2)
-		Duel.RegisterEffect(ex2,0)
-	end
-end
-function c42790071.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_TRAP)
-end
-function c42790071.regop(e,tp,eg,ep,ev,re,r,rp)
-	local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
-	c42790071[cid]=true
-end
-function c42790071.regop2(e,tp,eg,ep,ev,re,r,rp)
-	local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
-	c42790071[cid]=false
 end
 function c42790071.counterfilter(c)
 	return c:IsSetCard(0x103)
 end
 function c42790071.spcon1(e,tp,eg,ep,ev,re,r,rp)
-	local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
-	return c42790071[cid] and rp==tp
+	return rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_TRAP)
 end
 function c42790071.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
