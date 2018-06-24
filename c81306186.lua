@@ -77,7 +77,7 @@ function c81306186.relfilter(c,e,tp,tc,ft)
 	if c:IsLocation(LOCATION_GRAVE) then
 		return c:IsType(TYPE_RITUAL) and ft>0 and c:IsAbleToDeck()
 	else
-		return (ft>0 or c:IsControler(tp)) and c:IsReleasableByEffect(e)
+		return (ft>0 or c:IsControler(tp)) and c:IsReleasableByEffect()
 	end
 end
 function c81306186.spop(e,tp,eg,ep,ev,re,r,rp)
