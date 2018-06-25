@@ -43,11 +43,11 @@ function c43839002.activate(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_STANDBY then
 			e1:SetReset(RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,2)
 			e1:SetValue(Duel.GetTurnCount())
-			tc:RegisterFlagEffect(43839002,RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,2,fid)
+			tc:RegisterFlagEffect(43839002,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,2,fid)
 		else
 			e1:SetReset(RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN)
 			e1:SetValue(0)
-			tc:RegisterFlagEffect(43839002,RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1,fid)
+			tc:RegisterFlagEffect(43839002,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,0,1,fid)
 		end
 		Duel.RegisterEffect(e1,tp)
 		if tc:IsFacedown() then return end
