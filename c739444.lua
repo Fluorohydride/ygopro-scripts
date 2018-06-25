@@ -19,6 +19,7 @@ function c739444.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_DISABLE_FIELD)
 	e2:SetRange(LOCATION_MZONE)
+	e2:SetProperty(EFFECT_FLAG_REPEAT)
 	e2:SetCondition(c739444.discon)
 	e2:SetOperation(c739444.disop)
 	c:RegisterEffect(e2)
@@ -43,6 +44,6 @@ end
 function c739444.disop(e,tp)
 	local c=e:GetHandler()
 	local flag1=bit.band(c:GetLinkedZone(tp),0xffffff00)
-	local flag2=bit.band(c:GetLinkedZone(1-tp),0xff00ffff)
+	local flag2=bit.band(c:GetLinkedZone(tp),0xff00ffff)
 	return flag1+flag2
 end
