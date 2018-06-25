@@ -80,7 +80,7 @@ function c67120578.spop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetTargetRange(0x7f,0x7f)
 	e2:SetTarget(c67120578.splimtg_target)
 	e2:SetValue(c67120578.splimtg_value)
-	e2:SetLabel(tp)
+	e2:SetOwnerPlayer(tp)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
 	local e3=Effect.CreateEffect(c)
@@ -96,7 +96,7 @@ function c67120578.splimtg_target(e,c)
 end
 function c67120578.splimtg_value(e,c)
 	if not c then return false end
-	return c:GetControler()~=e:GetLabel()
+	return c:GetControler()==e:GetOwnerPlayer()
 end
 function c67120578.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return sumtype~=SUMMON_TYPE_XYZ
