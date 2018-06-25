@@ -15,7 +15,7 @@ function c85352446.filter(c)
 	return c:IsLevelBelow(5) and c:IsFaceup() and Duel.IsExistingMatchingCard(c85352446.filter2,0,LOCATION_MZONE,LOCATION_MZONE,1,c,c:GetLevel())
 end
 function c85352446.filter2(c,lv)
-	return c:IsFaceup() and not c:IsLevel(lv)
+	return c:IsFaceup() and c:IsLevelAbove(0) and not c:IsLevel(lv)
 end
 function c85352446.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c85352446.filter(chkc) end
