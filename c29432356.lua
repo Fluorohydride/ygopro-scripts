@@ -130,6 +130,7 @@ end
 function c29432356.eftg2(e,c)
 	local rpz=Duel.GetFieldCard(1-e:GetHandlerPlayer(),LOCATION_PZONE,1)
 	return c==Duel.GetFieldCard(1-e:GetHandlerPlayer(),LOCATION_PZONE,0)
+		and rpz
 		and c:GetFlagEffectLabel(31531170)==rpz:GetFieldID()
 		and rpz:GetFlagEffectLabel(31531170)==c:GetFieldID()
 end
