@@ -76,7 +76,7 @@ end
 function c19619755.limval(e,re,rp)
 	local rc=re:GetHandler()
 	local tp=rc:GetControler()
-	return rc:IsLocation(LOCATION_MZONE) and re:IsActiveType(TYPE_MONSTER) and not rc:IsImmuneToEffect(e)
+	return rc:IsLocation(LOCATION_MZONE) and re:IsActiveType(TYPE_MONSTER)
 		and Duel.GetMatchingGroupCount(c19619755.countfilter,tp,LOCATION_SZONE,0,nil)==0
 end
 function c19619755.atkcon0(e)

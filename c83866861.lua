@@ -17,7 +17,7 @@ function c83866861.initial_effect(c)
 	e2:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTargetRange(0,1)
-	e2:SetValue(c83866861.aclimit)
+	e2:SetValue(1)
 	e2:SetCondition(c83866861.actcon)
 	c:RegisterEffect(e2)
 	--special summon
@@ -38,9 +38,6 @@ function c83866861.initial_effect(c)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetValue(c83866861.atkval)
 	c:RegisterEffect(e4)
-end
-function c83866861.aclimit(e,re,tp)
-	return not re:GetHandler():IsImmuneToEffect(e)
 end
 function c83866861.actcon(e)
 	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()

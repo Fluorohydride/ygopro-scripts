@@ -79,10 +79,7 @@ function c50139096.actop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetTargetRange(0,1)
-	e1:SetValue(c50139096.actlimit)
+	e1:SetValue(1)
 	e1:SetReset(RESET_PHASE+PHASE_DAMAGE)
 	Duel.RegisterEffect(e1,tp)
-end
-function c50139096.actlimit(e,re,tp)
-	return not re:GetHandler():IsImmuneToEffect(e)
 end

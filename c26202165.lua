@@ -44,5 +44,5 @@ function c26202165.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c26202165.aclimit(e,re,tp)
 	local tc=e:GetLabelObject()
-	return re:GetHandler():IsCode(tc:GetCode()) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:GetHandler():IsCode(tc:GetCode())
 end

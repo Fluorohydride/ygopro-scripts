@@ -48,5 +48,5 @@ function c51788412.actcon(e)
 	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE
 end
 function c51788412.actlimit(e,re,tp)
-	return re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:IsActiveType(TYPE_MONSTER)
 end

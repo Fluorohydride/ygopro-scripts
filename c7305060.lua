@@ -65,5 +65,5 @@ function c7305060.limcon(e)
 end
 function c7305060.limval(e,re,rp)
 	local rc=re:GetHandler()
-	return re:IsActiveType(TYPE_TRAP) and not rc:IsSetCard(0xe0) and not rc:IsImmuneToEffect(e)
+	return re:IsActiveType(TYPE_TRAP) and not rc:IsSetCard(0xe0)
 end

@@ -89,7 +89,7 @@ end
 function c13331639.limval(e,re,rp)
 	local rc=re:GetHandler()
 	return rc:IsLocation(LOCATION_MZONE) and re:IsActiveType(TYPE_MONSTER)
-		and rc:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ) and not rc:IsImmuneToEffect(e)
+		and rc:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)
 end
 function c13331639.ddcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DRAW

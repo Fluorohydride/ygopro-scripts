@@ -56,5 +56,5 @@ function c80696379.condition(e)
 	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE
 end
 function c80696379.aclimit(e,re,tp)
-	return re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:IsActiveType(TYPE_MONSTER)
 end

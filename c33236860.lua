@@ -22,7 +22,7 @@ function c33236860.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCondition(c33236860.drpcon)
 	e2:SetTarget(c33236860.drptg)
-	e2:SetValue(aux.TRUE)
+	e2:SetValue(1)
 	c:RegisterEffect(e2)
 end
 function c33236860.descon(e,tp,eg,ep,ev,re,r,rp)
