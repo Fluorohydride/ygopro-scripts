@@ -43,7 +43,7 @@ function c58569561.accon(e)
 	return Duel.GetLP(tp)>Duel.GetLP(1-tp)
 end
 function c58569561.actlimit(e,re,tp)
-	return re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:IsActiveType(TYPE_MONSTER)
 end
 function c58569561.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp

@@ -62,7 +62,7 @@ function c17663375.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 	return bit.band(sumpos,POS_FACEDOWN)>0
 end
 function c17663375.aclimit(e,re,tp)
-	return re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:IsActiveType(TYPE_MONSTER)
 end
 function c17663375.actcon(e)
 	return Duel.GetAttacker()==e:GetHandler()

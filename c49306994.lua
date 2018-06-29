@@ -73,7 +73,7 @@ function c49306994.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c49306994.aclimit(e,re,tp)
-	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c49306994.actcon(e)
 	local tc=e:GetHandler():GetEquipTarget()

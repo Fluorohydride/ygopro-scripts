@@ -52,7 +52,6 @@ end
 function c18486927.actlimit(e,re,tp)
 	local ct=e:GetLabel()
 	return re:IsActiveType(ct) and (ct==TYPE_MONSTER or re:IsHasType(EFFECT_TYPE_ACTIVATE))
-		and not re:GetHandler():IsImmuneToEffect(e)
 end
 function c18486927.actcon(e)
 	local tc=Duel.GetAttacker()

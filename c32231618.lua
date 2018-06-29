@@ -36,5 +36,5 @@ function c32231618.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c32231618.actlimit(e,re,rp)
 	local rc=re:GetHandler()
-	return re:IsActiveType(TYPE_MONSTER) and not rc:IsSetCard(0xcc) and not rc:IsImmuneToEffect(e)
+	return re:IsActiveType(TYPE_MONSTER) and not rc:IsSetCard(0xcc)
 end

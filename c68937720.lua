@@ -22,5 +22,5 @@ function c68937720.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c68937720.aclimit(e,re,tp)
 	local rc=re:GetHandler()
-	return rc:IsLocation(LOCATION_HAND) and re:IsActiveType(TYPE_MONSTER) and not rc:IsImmuneToEffect(e)
+	return rc:IsLocation(LOCATION_HAND) and re:IsActiveType(TYPE_MONSTER)
 end
