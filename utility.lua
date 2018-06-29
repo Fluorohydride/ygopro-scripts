@@ -1854,8 +1854,17 @@ function Auxiliary.LCheckRecursive(c,tp,sg,mg,lc,ct,minc,maxc,gf)
 	ct=ct-1
 	return res
 end
+function Auxiliary.LMinCheck(tp,sg,lc,minc,ct)
+	if ct>=minc then return true end
+	local le={Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_LINK_COUNT)}
+	for _,te in pairs(le) do
+		local f=te:GetValue()
+		if f and f(te,lc,sg) then return true end
+	end
+	return false
+end
 function Auxiliary.LCheckGoal(tp,sg,lc,minc,ct,gf)
-	return ct>=minc and sg:CheckWithSumEqual(Auxiliary.GetLinkCount,lc:GetLink(),ct,ct)
+	return Auxiliary.LMinCheck(tp,sg,lc,minc,ct) and sg:CheckWithSumEqual(Auxiliary.GetLinkCount,lc:GetLink(),ct,ct)
 		and Duel.GetLocationCountFromEx(tp,tp,sg,lc)>0 and (not gf or gf(sg))
 		and not sg:IsExists(Auxiliary.LUncompatibilityFilter,1,nil,sg,lc)
 end
