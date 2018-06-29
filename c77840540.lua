@@ -20,28 +20,24 @@ function c77840540.initial_effect(c)
 	e2:SetOperation(c77840540.tdop)
 	c:RegisterEffect(e2)
 end
-function c77840540.cfilter(c)
-	return c:IsFaceup() and c:IsRace(RACE_INSECT) and c:IsReleasableByEffect()
-		and c:GetEquipCount()>0
+function c77840540.cfilter(c,tp)
+	return c:IsFaceup() and c:IsRace(RACE_INSECT) and c:IsReleasableByEffect(true)
+		and c:GetEquipCount()>0 and Duel.GetMZoneCount(tp,c)>0
 end
 function c77840540.filter(c,e,tp)
 	return c:IsRace(RACE_INSECT) and c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c77840540.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local loc=LOCATION_MZONE
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)<1 then loc=0 end
-		return Duel.IsExistingMatchingCard(c77840540.cfilter,tp,LOCATION_MZONE,loc,1,nil)
+		return Duel.IsExistingMatchingCard(c77840540.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,tp)
 			and Duel.IsExistingMatchingCard(c77840540.filter,tp,LOCATION_DECK,0,1,nil,e,tp)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_RELEASE,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c77840540.activate(e,tp,eg,ep,ev,re,r,rp)
-	local loc=LOCATION_MZONE
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<1 then loc=0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectMatchingCard(tp,c77840540.cfilter,tp,LOCATION_MZONE,loc,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c77840540.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,tp)
 	if g:GetCount()>0 and Duel.Release(g,REASON_EFFECT)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,c77840540.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)

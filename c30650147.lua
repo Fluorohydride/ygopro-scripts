@@ -11,7 +11,7 @@ function c30650147.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c30650147.filter(c,tp)
-	return c:IsFaceup() and c:GetOriginalLevel()>0 and c:IsReleasableByEffect()
+	return c:IsFaceup() and c:GetOriginalLevel()>0 and c:IsReleasableByEffect(true)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,30650148,0x106,0x4011,0,0,c:GetOriginalLevel(),RACE_ZOMBIE,ATTRIBUTE_DARK)
 end
 function c30650147.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
