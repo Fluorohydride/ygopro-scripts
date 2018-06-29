@@ -50,7 +50,7 @@ function c86221741.operation(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e2:SetTargetRange(0,1)
-	e2:SetValue(aux.TRUE)
+	e2:SetValue(1)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
 end

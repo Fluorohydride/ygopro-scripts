@@ -36,7 +36,7 @@ function c92781606.initial_effect(c)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetLabel(4)
 	e4:SetCondition(c92781606.actcon)
-	e4:SetValue(aux.TRUE)
+	e4:SetValue(1)
 	c:RegisterEffect(e4)
 	--direct attack
 	local e5=Effect.CreateEffect(c)

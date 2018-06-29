@@ -24,7 +24,7 @@ function c41128647.initial_effect(c)
 	e4:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e4:SetRange(LOCATION_FZONE)
 	e4:SetTargetRange(0,1)
-	e4:SetValue(aux.TRUE)
+	e4:SetValue(1)
 	e4:SetCondition(c41128647.actcon)
 	c:RegisterEffect(e4)
 end

@@ -10,7 +10,7 @@ function c88033975.initial_effect(c)
 	e1:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(0,1)
-	e1:SetValue(aux.TRUE)
+	e1:SetValue(1)
 	e1:SetCondition(c88033975.actcon)
 	c:RegisterEffect(e1)
 end
