@@ -72,7 +72,7 @@ function c34959756.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c34959756.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local tc=e:GetHandler():GetEquipPreviousTarget()
+	local tc=e:GetHandler():GetEquipTarget()
 	if tc then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	end
