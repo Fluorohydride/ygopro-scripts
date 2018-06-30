@@ -43,8 +43,8 @@ function c9596126.spcost_selector(c,tp,g,sg,i)
 end
 function c9596126.spcon(e,c)
 	if c==nil then return true end
-	if Duel.GetMZoneCount(tp)<=0 then return false end
 	local tp=c:GetControler()
+	if Duel.GetMZoneCount(tp)<=0 then return false end
 	local g=Duel.GetMatchingGroup(c9596126.spcostfilter,tp,LOCATION_GRAVE,0,nil)
 	local sg=Group.CreateGroup()
 	return g:IsExists(c9596126.spcost_selector,1,nil,tp,g,sg,1)

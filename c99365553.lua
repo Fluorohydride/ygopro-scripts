@@ -51,8 +51,8 @@ function c99365553.spcost_selector(c,tp,g,sg,i)
 end
 function c99365553.spcon1(e,c)
 	if c==nil then return true end
-	if Duel.GetMZoneCount(tp)<=0 then return false end
 	local tp=c:GetControler()
+	if Duel.GetMZoneCount(tp)<=0 then return false end
 	local g=Duel.GetMatchingGroup(c99365553.spcostfilter1,tp,LOCATION_GRAVE,0,nil)
 	local sg=Group.CreateGroup()
 	return g:IsExists(c99365553.spcost_selector,1,nil,tp,g,sg,1)
@@ -70,8 +70,8 @@ function c99365553.spop1(e,tp,eg,ep,ev,re,r,rp,c)
 end
 function c99365553.spcon2(e,c)
 	if c==nil then return true end
-	if c:IsHasEffect(EFFECT_NECRO_VALLEY) or Duel.GetMZoneCount(tp)<=0 then return false end
 	local tp=c:GetControler()
+	if c:IsHasEffect(EFFECT_NECRO_VALLEY) or Duel.GetMZoneCount(tp)<=0 then return false end
 	local g=Duel.GetMatchingGroup(c99365553.spcostfilter2,tp,LOCATION_HAND,0,nil)
 	local sg=Group.CreateGroup()
 	return g:IsExists(c99365553.spcost_selector,1,nil,tp,g,sg,1)
