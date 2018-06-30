@@ -35,8 +35,11 @@ end
 function c2347477.mfilter(c)
 	return c:IsLocation(LOCATION_MZONE) and c:IsRace(RACE_CYBERSE)
 end
+function c2347477.exmfilter(c)
+	return c:IsLocation(LOCATION_HAND) and c:IsCode(2347477)
+end
 function c2347477.matval(e,c,mg)
-	return c:IsSetCard(0x101) and mg:IsExists(c2347477.mfilter,1,nil)
+	return c:IsSetCard(0x101) and mg:IsExists(c2347477.mfilter,1,nil) and not mg:IsExists(c2347477.exmfilter,1,nil)
 end
 function c2347477.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_HAND)

@@ -1,6 +1,4 @@
 --コード・ラジエーター
---Code Radiator
---Script by nekrozar
 function c75130221.initial_effect(c)
 	--hand link
 	local e1=Effect.CreateEffect(c)
@@ -37,8 +35,11 @@ end
 function c75130221.mfilter(c)
 	return c:IsLocation(LOCATION_MZONE) and c:IsRace(RACE_CYBERSE)
 end
+function c75130221.exmfilter(c)
+	return c:IsLocation(LOCATION_HAND) and c:IsCode(75130221)
+end
 function c75130221.matval(e,c,mg)
-	return c:IsSetCard(0x101) and mg:IsExists(c75130221.mfilter,1,nil)
+	return c:IsSetCard(0x101) and mg:IsExists(c75130221.mfilter,1,nil) and not mg:IsExists(c75130221.exmfilter,1,nil)
 end
 function c75130221.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_HAND)
