@@ -68,5 +68,6 @@ function c63053267.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstMatchingCard(c63053267.filter,tp,LOCATION_DECK,0,nil)
 	if tc then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
+		Duel.ConfirmCards(1-tp,tc)
 	end
 end

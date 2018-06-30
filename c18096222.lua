@@ -17,7 +17,7 @@ function c18096222.initial_effect(c)
 	e2:SetDescription(aux.Stringid(18096222,0))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e2:SetCode(EVENT_LEAVE_FIELD)
+	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetCondition(c18096222.dacon)
 	e2:SetTarget(c18096222.datg)
 	e2:SetOperation(c18096222.daop)
@@ -91,11 +91,8 @@ function c18096222.eqlimit(e,c)
 end
 function c18096222.dacon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local ec=c:GetEquipTarget()
-	if c:IsReason(REASON_LOST_TARGET) then
-		ec=c:GetPreviousEquipTarget()
-	end
-	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_DESTROY) and ec~=nil
+	local ec=c:GetPreviousEquipTarget()
+	return c:IsReason(REASON_DESTROY) and ec~=nil
 end
 function c18096222.dafilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_DUAL) and not c:IsDualState()

@@ -26,5 +26,6 @@ function c27877771.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstMatchingCard(c27877771.filter,tp,LOCATION_DECK,0,nil)
 	if tc then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
+		Duel.ConfirmCards(1-tp,tc)
 	end
 end
