@@ -17,6 +17,7 @@ end
 function c93912845.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c93912845.spfilter(chkc,e,tp) end
 	if chk==0 then return Duel.GetLocationCount(1-tp,LOCATION_MZONE)>1 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.IsExistingTarget(c93912845.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,93912846,0,0x4011,1500,1500,3,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP,1-tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -25,6 +26,7 @@ function c93912845.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c93912845.activate(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		local tc=Duel.GetFirstTarget()
 		if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
