@@ -28,7 +28,8 @@ function c32679370.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 	tc=g:GetNext()
-	if ft>1 and tc and Duel.SelectYesNo(tp,aux.Stringid(32679370,1)) then
+	if ft>1 and tc and not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.SelectYesNo(tp,aux.Stringid(32679370,1)) then
 		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 	Duel.SpecialSummonComplete()

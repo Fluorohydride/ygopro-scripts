@@ -30,7 +30,8 @@ function c72714226.operation(e,tp,eg,ep,ev,re,r,rp)
 		local tc1=g:GetFirst()
 		local tc2=g:GetNext()
 		Duel.SpecialSummonStep(tc1,0,tp,tp,false,false,POS_FACEUP)
-		if tc2 and ct>1 and Duel.SelectYesNo(tp,aux.Stringid(72714226,1)) then
+		if tc2 and ct>1 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
+			and Duel.SelectYesNo(tp,aux.Stringid(72714226,1)) then
 			Duel.SpecialSummonStep(tc2,0,tp,tp,false,false,POS_FACEUP)
 		end
 		Duel.SpecialSummonComplete()
