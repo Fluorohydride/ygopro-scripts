@@ -43,19 +43,17 @@ function c63014935.initial_effect(c)
 	e4:SetOperation(c63014935.spcop)
 	c:RegisterEffect(e4)
 end
-function c63014935.spfilter(c,ft)
-	return c:IsReleasable() and (ft>0 or c:GetSequence()<5)
+function c63014935.spfilter(c,tp)
+	return c:IsReleasable() and Duel.GetMZoneCount(1-tp,c,tp)>0
 end
 function c63014935.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
-	return ft>-1 and Duel.IsExistingMatchingCard(c63014935.spfilter,tp,0,LOCATION_MZONE,1,nil,ft)
+	return Duel.IsExistingMatchingCard(c63014935.spfilter,tp,0,LOCATION_MZONE,1,nil,tp)
 end
 function c63014935.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectMatchingCard(tp,c63014935.spfilter,tp,0,LOCATION_MZONE,1,1,nil,ft)
+	local g=Duel.SelectMatchingCard(tp,c63014935.spfilter,tp,0,LOCATION_MZONE,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c63014935.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
