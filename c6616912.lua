@@ -34,7 +34,7 @@ function c6616912.initial_effect(c)
 	--to deck
 	local e6=Effect.CreateEffect(c)
 	e6:SetDescription(aux.Stringid(6616912,1))
-	e6:SetCategory(CATEGORY_TODECK)
+	e6:SetCategory(CATEGORY_TODECK+CATEGORY_DRAW)
 	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e6:SetCode(EVENT_PHASE+PHASE_BATTLE)
 	e6:SetCountLimit(1)
