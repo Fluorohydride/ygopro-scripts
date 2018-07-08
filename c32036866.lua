@@ -16,6 +16,7 @@ function c32036866.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetCondition(c32036866.condition2)
 	e2:SetCost(aux.bfgcost)
+	e2:SetTarget(c32036866.target2)
 	e2:SetOperation(c32036866.activate2)
 	c:RegisterEffect(e2)
 end
@@ -51,17 +52,27 @@ end
 function c32036866.condition2(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldCard(tp,LOCATION_SZONE,5)==nil
 end
-function c32036866.filter2(c,e,tp)
-	return c:IsSetCard(0x107) and c:IsType(TYPE_FIELD)
+function c32036866.filter2(c,tp)
+	return c:IsSetCard(0x107) and c:IsType(TYPE_FIELD) and c:GetActivateEffect():IsActivatable(tp,true,true)
+end
+function c32036866.target2(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsExistingMatchingCard(c32036866.filter2,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,tp) end
 end
 function c32036866.activate2(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c32036866.filter2),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,tp)
-	if g:GetCount()>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
-		local tc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c32036866.filter2),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,tp):GetFirst()
-		if tc then
-			Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
-			Duel.RaiseEvent(tc,4179255,tc:GetActivateEffect(),0,tp,tp,Duel.GetCurrentChain())
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
+	local tc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c32036866.filter2),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,tp):GetFirst()
+	if tc then
+		local fc=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
+		if fc then
+			Duel.SendtoGrave(fc,REASON_RULE)
+			Duel.BreakEffect()
 		end
+		Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+		local te=tc:GetActivateEffect()
+		te:UseCountLimit(tp,1,true)
+		local tep=tc:GetControler()
+		local cost=te:GetCost()
+		if cost then cost(te,tep,eg,ep,ev,re,r,rp,1) end
+		Duel.RaiseEvent(tc,4179255,te,0,tp,tp,Duel.GetCurrentChain())
 	end
 end
