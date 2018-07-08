@@ -18,22 +18,17 @@ function c51227866.condition(e,tp,eg,ep,ev,re,r,rp)
 	return not Duel.IsExistingMatchingCard(c51227866.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c51227866.filter(c,e,tp,spchk)
-	return c:IsType(TYPE_MONSTER) and (c:IsAbleToRemove() or (spchk and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)))
+	return c:IsType(TYPE_MONSTER) and (c:IsAbleToRemove() or (spchk and c:IsCanBeSpecialSummoned(e,0,tp,false,false)))
 end
 function c51227866.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local spchk=false
-	if Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_SPELL)>=3 then
-		spchk=true
-	end
+	local spchk=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_SPELL)>=3
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_GRAVE) and c51227866.filter(c,e,tp,spchk) end
-	if chk==0 then return Duel.IsExistingTarget(c51227866.filter,tp,0,LOCATION_GRAVE,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c51227866.filter,tp,0,LOCATION_GRAVE,1,nil,e,tp,spchk) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectTarget(tp,c51227866.filter,tp,0,LOCATION_GRAVE,1,1,nil)
-	if spchk and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and g:GetFirst():IsCanBeSpecialSummoned(e,0,tp,false,false) and not g:GetFirst():IsAbleToRemove() then
-		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
-	elseif not (spchk and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and g:GetFirst():IsCanBeSpecialSummoned(e,0,tp,false,false)) and g:GetFirst():IsAbleToRemove() then
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
-	end
+	local g=Duel.SelectTarget(tp,c51227866.filter,tp,0,LOCATION_GRAVE,1,1,nil,e,tp,spchk)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,0,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,0,0,0)
 end
 function c51227866.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
