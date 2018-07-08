@@ -48,7 +48,7 @@ function c29981921.repfilter(c,e)
 end
 function c29981921.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return not c:IsReason(REASON_REPLACE) and c:IsOnField() and c:IsFaceup()
+	if chk==0 then return return c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 		and Duel.IsExistingMatchingCard(c29981921.repfilter,tp,LOCATION_MZONE,0,1,c,e) end
 	if Duel.SelectEffectYesNo(tp,c,96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)

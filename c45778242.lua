@@ -16,6 +16,8 @@ function c45778242.initial_effect(c)
 	--destroy replace
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
+	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e3:SetRange(LOCATION_MZONE)
 	e3:SetCode(EFFECT_DESTROY_REPLACE)
 	e3:SetTarget(c45778242.reptg)
 	e3:SetOperation(c45778242.repop)
@@ -31,7 +33,7 @@ function c45778242.repfilter(c,e)
 end
 function c45778242.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return not c:IsReason(REASON_REPLACE) and c:IsLocation(LOCATION_MZONE) and c:IsFaceup()
+	if chk==0 then return c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 		and Duel.IsExistingMatchingCard(c45778242.repfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,c,e) end
 	if Duel.SelectEffectYesNo(tp,c,96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
