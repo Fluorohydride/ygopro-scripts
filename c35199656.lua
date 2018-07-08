@@ -19,9 +19,23 @@ function c35199656.initial_effect(c)
 	e2:SetCode(EVENT_TO_HAND)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCondition(c35199656.damcon)
-	e2:SetOperation(c35199656.damop)
+	e2:SetCondition(c35199656.damcon1)
+	e2:SetOperation(c35199656.damop1)
 	c:RegisterEffect(e2)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e3:SetCode(EVENT_TO_HAND)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetCondition(c35199656.regcon)
+	e3:SetOperation(c35199656.regop)
+	c:RegisterEffect(e3)
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e4:SetCode(EVENT_CHAIN_SOLVED)
+	e4:SetRange(LOCATION_MZONE)
+	e4:SetCondition(c35199656.damcon2)
+	e4:SetOperation(c35199656.damop2)
+	c:RegisterEffect(e4)
 end
 function c35199656.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -52,11 +66,28 @@ function c35199656.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c35199656.damcon(e,tp,eg,ep,ev,re,r,rp)
+function c35199656.damcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(Card.IsControler,1,nil,1-tp)
+		and (not re or not re:IsHasType(EFFECT_TYPE_ACTIONS) or re:IsHasType(EFFECT_TYPE_CONTINUOUS))
 end
-function c35199656.damop(e,tp,eg,ep,ev,re,r,rp)
+function c35199656.damop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,35199656)
 	local ct=eg:FilterCount(Card.IsControler,nil,1-tp)
+	Duel.Damage(1-tp,ct*200,REASON_EFFECT)
+end
+function c35199656.regcon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(Card.IsControler,1,nil,1-tp)
+		and re and re:IsHasType(EFFECT_TYPE_ACTIONS) and not re:IsHasType(EFFECT_TYPE_CONTINUOUS)
+end
+function c35199656.regop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():RegisterFlagEffect(35199656,RESET_CHAIN,0,1)
+end
+function c35199656.damcon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(35199656)>0
+end
+function c35199656.damop2(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,0,35199656)
+	local ct=e:GetHandler():GetFlagEffect(35199656)
+	e:GetHandler():ResetFlagEffect(35199656)
 	Duel.Damage(1-tp,ct*200,REASON_EFFECT)
 end

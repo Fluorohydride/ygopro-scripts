@@ -47,14 +47,14 @@ function c23434538.filter(c,sp)
 	return c:GetSummonPlayer()==sp
 end
 function c23434538.drcon1(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c23434538.filter,1,nil,1-tp) 
+	return eg:IsExists(c23434538.filter,1,nil,1-tp)
 		and (not re:IsHasType(EFFECT_TYPE_ACTIONS) or re:IsHasType(EFFECT_TYPE_CONTINUOUS))
 end
 function c23434538.drop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Draw(tp,1,REASON_EFFECT)
 end
 function c23434538.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c23434538.filter,1,nil,1-tp) 
+	return eg:IsExists(c23434538.filter,1,nil,1-tp)
 		and re:IsHasType(EFFECT_TYPE_ACTIONS) and not re:IsHasType(EFFECT_TYPE_CONTINUOUS)
 end
 function c23434538.regop(e,tp,eg,ep,ev,re,r,rp)
