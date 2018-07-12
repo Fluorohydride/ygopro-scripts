@@ -41,6 +41,7 @@ function c811734.activate(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local g=Duel.SelectMatchingCard(tp,c811734.atkfilter,tp,LOCATION_GRAVE,0,1,1,nil)
+		if g:GetCount()==0 then return end
 		local atk=g:GetFirst():GetAttack()
 		local tc=Duel.GetAttacker()
 		if Duel.Remove(g,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsRelateToBattle() and tc:IsFaceup() then
