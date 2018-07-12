@@ -22,7 +22,7 @@ function c15187079.initial_effect(c)
 	e6:SetType(EFFECT_TYPE_SINGLE)
 	e6:SetCode(EFFECT_DIRECT_ATTACK)
 	c:RegisterEffect(e6)
-	--damage
+	--control
 	local e7=Effect.CreateEffect(c)
 	e7:SetDescription(aux.Stringid(15187079,0))
 	e7:SetCategory(CATEGORY_CONTROL)
@@ -43,16 +43,31 @@ function c15187079.sdcon(e)
 	return ((f1==nil or not f1:IsFaceup()) and (f2==nil or not f2:IsFaceup()))
 end
 function c15187079.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,e:GetHandler()) end
-	local g=Duel.SelectReleaseGroup(tp,nil,1,1,e:GetHandler())
-	Duel.Release(g,REASON_COST)
+	e:SetLabel(1)
+	return true
 end
 function c15187079.filter(c)
 	return c:IsFaceup() and c:IsAbleToChangeControler()
 end
+function c15187079.costfilter(c,tp)
+	return Duel.IsExistingTarget(c15187079.filter,tp,0,LOCATION_MZONE,1,c)
+end
 function c15187079.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c15187079.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c15187079.filter,tp,0,LOCATION_MZONE,1,nil) end
+	if chk==0 then
+		if e:GetLabel()==1 then
+			e:SetLabel(0)
+			return Duel.CheckReleaseGroup(tp,c15187079.costfilter,1,c,tp)
+		else
+			return Duel.IsExistingTarget(c15187079.filter,tp,0,LOCATION_MZONE,1,nil)
+		end
+	end
+	if e:GetLabel()==1 then
+		e:SetLabel(0)
+		local sg=Duel.SelectReleaseGroup(tp,c15187079.costfilter,1,1,c,tp)
+		Duel.Release(sg,REASON_COST)
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
 	local g=Duel.SelectTarget(tp,c15187079.filter,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,1,0,0)
