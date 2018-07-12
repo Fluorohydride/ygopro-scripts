@@ -19,7 +19,7 @@ end
 function c80584548.desfilter(c,tc,ec)
 	return c:GetEquipTarget()~=tc and c~=ec
 end
-function c80584548.costfilter(c,ec)
+function c80584548.costfilter(c,ec,tp)
 	return Duel.IsExistingTarget(c80584548.desfilter,tp,0,LOCATION_ONFIELD,1,c,c,ec)
 end
 function c80584548.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -28,14 +28,14 @@ function c80584548.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(tp,c80584548.costfilter,1,c,c)
+			return Duel.CheckReleaseGroup(tp,c80584548.costfilter,1,c,c,tp)
 		else
 			return Duel.IsExistingTarget(nil,tp,0,LOCATION_ONFIELD,1,c)
 		end
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local sg=Duel.SelectReleaseGroup(tp,c80584548.costfilter,1,1,c,c)
+		local sg=Duel.SelectReleaseGroup(tp,c80584548.costfilter,1,1,c,c,tp)
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

@@ -23,7 +23,7 @@ end
 function c4333086.desfilter(c,tc,ec)
 	return c:GetEquipTarget()~=tc and c~=ec
 end
-function c4333086.costfilter(c,ec)
+function c4333086.costfilter(c,ec,tp)
 	if not c:IsRace(RACE_ZOMBIE) then return false end
 	return Duel.IsExistingTarget(c4333086.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,2,c,c,ec)
 end
@@ -33,7 +33,7 @@ function c4333086.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(tp,c4333086.costfilter,1,c,c)
+			return Duel.CheckReleaseGroup(tp,c4333086.costfilter,1,c,c,tp)
 				and Duel.IsExistingMatchingCard(c4333086.filter,tp,LOCATION_DECK,0,1,nil)
 		else
 			return Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,2,c)
@@ -42,7 +42,7 @@ function c4333086.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local sg=Duel.SelectReleaseGroup(tp,c4333086.costfilter,1,1,c,c)
+		local sg=Duel.SelectReleaseGroup(tp,c4333086.costfilter,1,1,c,c,tp)
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

@@ -19,7 +19,7 @@ end
 function c33846209.desfilter(c,tc,ec)
 	return c:GetEquipTarget()~=tc and c~=ec
 end
-function c33846209.costfilter(c,ec)
+function c33846209.costfilter(c,ec,tp)
 	if c:IsFacedown() or not c:IsLevel(4) or not c:IsType(TYPE_DUAL) then return false end
 	return Duel.IsExistingTarget(c33846209.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,c,ec)
 end
@@ -30,14 +30,14 @@ function c33846209.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if not Duel.IsPlayerCanDraw(tp,1) then return false end
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(tp,c33846209.costfilter,1,c,c)
+			return Duel.CheckReleaseGroup(tp,c33846209.costfilter,1,c,c,tp)
 		else
 			return Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 		end
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local sg=Duel.SelectReleaseGroup(tp,c33846209.costfilter,1,1,c,c)
+		local sg=Duel.SelectReleaseGroup(tp,c33846209.costfilter,1,1,c,c,tp)
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

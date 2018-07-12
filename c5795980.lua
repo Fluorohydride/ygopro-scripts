@@ -25,7 +25,7 @@ function c5795980.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	return true
 end
-function c5795980.cfilter(c,ec)
+function c5795980.cfilter(c,ec,tp)
 	if c:IsFacedown() or not c:IsLevelAbove(5) or not c:IsSummonType(SUMMON_TYPE_NORMAL) then return false end
 	return Duel.IsExistingTarget(c5795980.tgfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,c,ec)
 end
@@ -39,14 +39,14 @@ function c5795980.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if not Duel.IsPlayerCanDraw(tp,1) then return false end
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(tp,c5795980.cfilter,1,c,c)
+			return Duel.CheckReleaseGroup(tp,c5795980.cfilter,1,c,c,tp)
 		else
 			return Duel.IsExistingTarget(aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 		end
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local sg=Duel.SelectReleaseGroup(tp,c5795980.cfilter,1,1,c,c)
+		local sg=Duel.SelectReleaseGroup(tp,c5795980.cfilter,1,1,c,c,tp)
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
