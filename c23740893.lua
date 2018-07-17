@@ -41,7 +41,7 @@ function c23740893.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c23740893.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.CheckAdditionalSummon(tp) and Duel.GetFlagEffect(tp,23740893)==0 end
+	if chk==0 then return Duel.IsPlayerCanSummon(tp,true) and Duel.GetFlagEffect(tp,23740893)==0 end
 end
 function c23740893.sumop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(tp,23740893)~=0 then return end
