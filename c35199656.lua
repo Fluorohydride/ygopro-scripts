@@ -80,14 +80,16 @@ function c35199656.regcon(e,tp,eg,ep,ev,re,r,rp)
 		and re and re:IsHasType(EFFECT_TYPE_ACTIONS) and not re:IsHasType(EFFECT_TYPE_CONTINUOUS)
 end
 function c35199656.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(35199657,RESET_CHAIN,0,1)
+	local ct=eg:FilterCount(Card.IsControler,nil,1-tp)
+	e:GetHandler():RegisterFlagEffect(35199657,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1,ct)
 end
 function c35199656.damcon2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(35199657)>0
 end
 function c35199656.damop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,35199656)
-	local ct=e:GetHandler():GetFlagEffect(35199657)
-	e:GetHandler():ResetFlagEffect(35199657)
+	local labels={e:GetHandler():GetFlagEffectLabel(35199657)}
+	local ct=0
+	for i=1,#labels do ct=ct+labels[i] end
 	Duel.Damage(1-tp,ct*200,REASON_EFFECT)
 end
