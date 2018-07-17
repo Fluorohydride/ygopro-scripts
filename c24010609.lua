@@ -107,6 +107,7 @@ function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 	local init=1
 	if g:IsExists(Card.IsType,1,nil,TYPE_FIELD) then field=true end
 	while ct>0 and (ft>0 or field) and g:GetCount()>0 do
+		if ft==0 then g=g:Filter(Card.IsType,nil,TYPE_FIELD) end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 		local sg=g:Select(tp,init,1,nil)
 		if sg:GetCount()>0 then
