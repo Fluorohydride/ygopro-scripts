@@ -91,5 +91,6 @@ function c35199656.damop2(e,tp,eg,ep,ev,re,r,rp)
 	local labels={e:GetHandler():GetFlagEffectLabel(35199657)}
 	local ct=0
 	for i=1,#labels do ct=ct+labels[i] end
+	e:GetHandler():ResetFlagEffect(35199657)
 	Duel.Damage(1-tp,ct*200,REASON_EFFECT)
 end
