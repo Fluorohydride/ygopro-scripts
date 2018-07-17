@@ -31,7 +31,7 @@ function c8567955.sumcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,1000)
 end
 function c8567955.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanSummon(tp) and not Duel.IsPlayerExtraSummoned(tp) end
+	if chk==0 then return Duel.IsPlayerCanSummon(tp) and not Duel.CheckAdditionalSummon(tp) end
 end
 function c8567955.sumop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
