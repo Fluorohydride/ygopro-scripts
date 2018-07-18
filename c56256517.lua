@@ -22,6 +22,7 @@ function c56256517.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetDecktopGroup(tp,ct)
 	Duel.DisableShuffleCheck()
 	Duel.Remove(g,POS_FACEDOWN,REASON_EFFECT)
+	if g:IsExists(aux.NOT(aux.FilterBoolFunction(Card.IsLocation,LOCATION_REMOVED)),1,nil) then return end
 	g:KeepAlive()
 	local c=e:GetHandler()
 	c:SetTurnCounter(0)
