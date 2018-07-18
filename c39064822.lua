@@ -36,7 +36,7 @@ function c39064822.sumcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
 function c39064822.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanSummon(tp,true) and (e:GetHandler():GetMutualLinkedGroupCount()>0 or Duel.GetFlagEffect(tp,39064822)==0) end
+	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.CheckAdditionalSummon(tp) and (e:GetHandler():GetMutualLinkedGroupCount()>0 or Duel.GetFlagEffect(tp,39064822)==0) end
 	if e:GetHandler():GetMutualLinkedGroupCount()>0 then
 		e:SetCategory(CATEGORY_DRAW)
 		e:SetLabel(1)
