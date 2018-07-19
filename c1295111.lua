@@ -32,6 +32,7 @@ function c1295111.initial_effect(c)
 	e4:SetCode(EVENT_PRE_DAMAGE_CALCULATE)
 	e4:SetCountLimit(1,1295111)
 	e4:SetCondition(c1295111.atkcon)
+	e4:SetCost(c1295111.atkcost)
 	e4:SetTarget(c1295111.atktg)
 	e4:SetOperation(c1295111.atkop)
 	c:RegisterEffect(e4)
@@ -58,6 +59,10 @@ function c1295111.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	if a:IsControler(1-tp) then a=Duel.GetAttackTarget() end
 	return a
+end
+function c1295111.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.CheckLPCost(tp,1000) end
+	Duel.PayLPCost(tp,1000)
 end
 function c1295111.atkfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_LINK) and not c:IsAttack(0)
