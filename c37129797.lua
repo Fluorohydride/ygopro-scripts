@@ -43,7 +43,7 @@ function c37129797.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c37129797.spfilter(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp)
+	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE,1-tp)
 end
 function c37129797.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(1-tp) and c37129797.spfilter(chkc,e,tp) end
