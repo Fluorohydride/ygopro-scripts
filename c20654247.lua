@@ -34,11 +34,24 @@ function c20654247.initial_effect(c)
 	e4:SetTarget(c20654247.postg)
 	e4:SetOperation(c20654247.posop)
 	c:RegisterEffect(e4)
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_SINGLE)
+	e5:SetCode(EFFECT_MATERIAL_CHECK)
+	e5:SetValue(c20654247.valcheck)
+	e5:SetLabelObject(e4)
+	c:RegisterEffect(e5)
+end
+function c20654247.valcheck(e,c)
+	local mg=c:GetMaterial()
+	if mg:IsExists(Card.IsCode,1,nil,89631139) then
+		e:GetLabelObject():SetLabel(1)
+	else
+		e:GetLabelObject():SetLabel(0)
+	end
 end
 function c20654247.poscon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local mg=c:GetMaterial()
-	return c:GetSummonType()==SUMMON_TYPE_RITUAL and mg:IsExists(Card.IsCode,1,nil,89631139)
+	return c:GetSummonType()==SUMMON_TYPE_RITUAL and e:GetLabel()==1
 end
 function c20654247.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsCanChangePosition,tp,0,LOCATION_MZONE,1,nil) end

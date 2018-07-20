@@ -78,9 +78,15 @@ function c23299957.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2,true)
 		local e3=Effect.CreateEffect(c)
-		e3:SetType(EFFECT_TYPE_SINGLE)
+		e3:SetType(EFFECT_TYPE_FIELD)
 		e3:SetCode(EFFECT_CANNOT_DISEFFECT)
+		e3:SetRange(LOCATION_MZONE)
+		e3:SetValue(c23299957.efilter)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e3,true)
 	end
+end
+function c23299957.efilter(e,ct)
+	local te=Duel.GetChainInfo(ct,CHAININFO_TRIGGERING_EFFECT)
+	return te:GetHandler()==e:GetHandler()
 end
