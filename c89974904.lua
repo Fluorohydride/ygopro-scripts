@@ -42,7 +42,6 @@ function c89974904.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummonComplete()
 		local g=Duel.GetMatchingGroup(c89974904.cfilter,tp,LOCATION_EXTRA,0,nil,tc)
 		if g:GetCount()>0 then
-			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,1,nil)
 			Duel.SynchroSummon(tp,sg:GetFirst(),tc)

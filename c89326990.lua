@@ -37,7 +37,6 @@ function c89326990.operation(e,tp,eg,ep,ev,re,r,rp)
 	local mg=Group.FromCards(c,tc)
 	local g=Duel.GetMatchingGroup(c89326990.scfilter,tp,LOCATION_EXTRA,0,nil,mg)
 	if g:GetCount()>0 then
-		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.SynchroSummon(tp,sg:GetFirst(),nil,mg)

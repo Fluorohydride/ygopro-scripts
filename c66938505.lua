@@ -54,7 +54,6 @@ function c66938505.scop(e,tp,eg,ep,ev,re,r,rp)
 	local mg=Group.FromCards(c,tc)
 	local g=Duel.GetMatchingGroup(c66938505.scfilter2,tp,LOCATION_EXTRA,0,nil,mg)
 	if g:GetCount()>0 then
-		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,1,1,nil)
 		local e1=Effect.CreateEffect(c)
