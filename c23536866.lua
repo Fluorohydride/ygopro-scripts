@@ -72,9 +72,9 @@ function c23536866.operation(e,tp,eg,ep,ev,re,r,rp)
 	tc2:RegisterEffect(e4)
 	Duel.SpecialSummonComplete()
 	if Duel.GetLocationCountFromEx(tp,tp,g)<=0 then return end
-	Duel.BreakEffect()
 	local xyzg=Duel.GetMatchingGroup(c23536866.xyzfilter,tp,LOCATION_EXTRA,0,nil,g)
 	if xyzg:GetCount()>0 then
+		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local xyz=xyzg:Select(tp,1,1,nil):GetFirst()
 		Duel.XyzSummon(tp,xyz,g)

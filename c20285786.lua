@@ -62,9 +62,9 @@ function c20285786.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc=g:GetNext()
 	end
 	Duel.SpecialSummonComplete()
-	Duel.BreakEffect()
 	local xyzg=Duel.GetMatchingGroup(c20285786.xyzfilter,tp,LOCATION_EXTRA,0,nil,g)
 	if xyzg:GetCount()>0 then
+		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local xyz=xyzg:Select(tp,1,1,nil):GetFirst()
 		Duel.XyzSummon(tp,xyz,g)
