@@ -21,7 +21,7 @@ function c68184115.initial_effect(c)
 	e3:SetDescription(aux.Stringid(68184115,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e3:SetCode(EVENT_TO_GRAVE)
+	e3:SetCode(EVENT_LEAVE_FIELD)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCondition(c68184115.spcon)
@@ -59,7 +59,7 @@ function c68184115.eqlimit(e,c)
 	return e:GetOwner()==c
 end
 function c68184115.cfilter(c,ec,tp)
-	return c:IsControler(tp) and c:GetPreviousEquipTarget()==ec
+	return c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp) and c:GetEquipTarget()==ec
 end
 function c68184115.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c68184115.cfilter,1,nil,e:GetHandler(),tp)
