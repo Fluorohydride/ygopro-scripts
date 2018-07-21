@@ -13,12 +13,19 @@ function c4404099.initial_effect(c)
 	e1:SetOperation(c4404099.addc)
 	c:RegisterEffect(e1)
 	--attackup
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_LEAVE_FIELD_P)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e0:SetOperation(c4404099.regop)
+	c:RegisterEffect(e0)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(4404099,1))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_LEAVE_FIELD)
 	e2:SetCondition(c4404099.atkcon)
 	e2:SetOperation(c4404099.atkop)
+	e2:SetLabelObject(e0)
 	c:RegisterEffect(e2)
 end
 function c4404099.addct(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -30,8 +37,12 @@ function c4404099.addc(e,tp,eg,ep,ev,re,r,rp)
 		e:GetHandler():AddCounter(0x23,1)
 	end
 end
-function c4404099.atkcon(e,tp,eg,ep,ev,re,r,rp)
+function c4404099.regop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetHandler():GetCounter(0x23)
+	e:SetLabel(ct)
+end
+function c4404099.atkcon(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetLabelObject():GetLabel()
 	e:SetLabel(ct)
 	return ct>0 and not e:GetHandler():IsLocation(LOCATION_DECK)
 end

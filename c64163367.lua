@@ -12,22 +12,33 @@ function c64163367.initial_effect(c)
 	e2:SetOperation(c64163367.ctop1)
 	c:RegisterEffect(e2)
 	--counter2
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_LEAVE_FIELD_P)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e0:SetOperation(c64163367.regop)
+	c:RegisterEffect(e0)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(64163367,0))
 	e3:SetCategory(CATEGORY_COUNTER)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e3:SetCode(EVENT_LEAVE_FIELD)
+	e3:SetCode(EVENT_DESTROYED)
 	e3:SetCondition(c64163367.ctcon2)
 	e3:SetOperation(c64163367.ctop2)
+	e3:SetLabelObject(e0)
 	c:RegisterEffect(e3)
 end
 function c64163367.ctop1(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(COUNTER_NEED_ENABLE+0x100e,1)
 end
-function c64163367.ctcon2(e,tp,eg,ep,ev,re,r,rp)
+function c64163367.regop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetHandler():GetCounter(0x100e)
 	e:SetLabel(ct)
-	return e:GetHandler():IsReason(REASON_DESTROY) and ct>0
+end
+function c64163367.ctcon2(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetLabelObject():GetLabel()
+	e:SetLabel(ct)
+	return ct>0
 end
 function c64163367.ctop2(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetLabel()

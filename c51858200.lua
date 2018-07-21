@@ -6,6 +6,13 @@ function c51858200.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
 	--search
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_LEAVE_FIELD_P)
+	e0:SetRange(LOCATION_SZONE)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e0:SetOperation(c51858200.regop)
+	c:RegisterEffect(e0)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(51858200,0))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
@@ -17,6 +24,7 @@ function c51858200.initial_effect(c)
 	e2:SetCondition(c51858200.thcon)
 	e2:SetTarget(c51858200.thtg)
 	e2:SetOperation(c51858200.thop)
+	e2:SetLabelObject(e0)
 	c:RegisterEffect(e2)
 	--fusion summon
 	local e3=Effect.CreateEffect(c)
@@ -31,10 +39,15 @@ function c51858200.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c51858200.cfilter(c)
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetCounter(0x1041)>0
+	return c:IsLocation(LOCATION_MZONE) and c:GetCounter(0x1041)>0
+end
+function c51858200.regop(e,tp,eg,ep,ev,re,r,rp)
+	if eg:IsExists(c51858200.cfilter,1,nil) then
+		e:SetLabel(1)
+	else e:SetLabel(0) end
 end
 function c51858200.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c51858200.cfilter,1,nil)
+	return e:GetLabelObject():GetLabel()==1
 end
 function c51858200.thfilter(c)
 	return c:IsSetCard(0xf3) and c:IsAbleToHand()

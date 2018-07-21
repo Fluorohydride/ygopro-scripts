@@ -25,15 +25,22 @@ function c94243005.initial_effect(c)
 	e3:SetOperation(c94243005.spop)
 	c:RegisterEffect(e3)
 	--search
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_LEAVE_FIELD_P)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e0:SetOperation(c94243005.regop)
+	c:RegisterEffect(e0)
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetDescription(aux.Stringid(94243005,1))
 	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e4:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_SINGLE)
-	e4:SetCode(EVENT_LEAVE_FIELD)
+	e4:SetCode(EVENT_TO_GRAVE)
 	e4:SetCondition(c94243005.thcon)
 	e4:SetTarget(c94243005.thtg)
 	e4:SetOperation(c94243005.thop)
+	e4:SetLabelObject(e0)
 	c:RegisterEffect(e4)
 end
 function c94243005.ctfilter(c)
@@ -65,11 +72,15 @@ function c94243005.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
+function c94243005.regop(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetCounter(0x13)
+	e:SetLabel(ct)
+end
 function c94243005.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local ct=c:GetCounter(0x13)
+	local ct=e:GetLabelObject():GetLabel()
 	e:SetLabel(ct)
-	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsLocation(LOCATION_GRAVE) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp
 		and ct>0 and rp==1-tp and bit.band(r,REASON_EFFECT)~=0
 end
 function c94243005.thfilter(c,lv)

@@ -27,14 +27,21 @@ function c75041269.initial_effect(c)
 	e3:SetCondition(c75041269.dcon)
 	c:RegisterEffect(e3)
 	--spsummon
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_LEAVE_FIELD_P)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e0:SetOperation(c75041269.regop)
+	c:RegisterEffect(e0)
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(75041269,1))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e4:SetCode(EVENT_LEAVE_FIELD)
+	e4:SetCode(EVENT_TO_GRAVE)
 	e4:SetCondition(c75041269.spcon)
 	e4:SetTarget(c75041269.sptg)
 	e4:SetOperation(c75041269.spop)
+	e4:SetLabelObject(e0)
 	c:RegisterEffect(e4)
 end
 function c75041269.dcon(e)
@@ -46,9 +53,14 @@ end
 function c75041269.ctop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x1b,1)
 end
+function c75041269.regop(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetHandler():GetCounter(0x1b)>=4 then
+		e:SetLabel(1)
+	else e:SetLabel(0)
+end
 function c75041269.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_DESTROY) and c:IsLocation(LOCATION_GRAVE) and c:GetCounter(0x1b)>=4
+	return c:IsReason(REASON_DESTROY) and e:GetLabelObject():GetLabel()==1
 end
 function c75041269.spfilter(c,e,tp)
 	return c:IsCode(40591390) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

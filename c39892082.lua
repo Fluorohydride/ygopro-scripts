@@ -14,15 +14,22 @@ function c39892082.initial_effect(c)
 	e1:SetOperation(c39892082.addc)
 	c:RegisterEffect(e1)
 	--damage
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_LEAVE_FIELD_P)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e0:SetOperation(c39892082.regop)
+	c:RegisterEffect(e0)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(39892082,1))
 	e2:SetCategory(CATEGORY_DAMAGE)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e2:SetCode(EVENT_LEAVE_FIELD)
+	e2:SetCode(EVENT_DESTROYED)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetCondition(c39892082.damcon)
 	e2:SetTarget(c39892082.damtg)
 	e2:SetOperation(c39892082.damop)
+	e2:SetLabelObject(e0)
 	c:RegisterEffect(e2)
 end
 function c39892082.addccon(e,tp,eg,ep,ev,re,r,rp)
@@ -37,11 +44,14 @@ function c39892082.addc(e,tp,eg,ep,ev,re,r,rp)
 		e:GetHandler():AddCounter(0x29,1)
 	end
 end
-function c39892082.damcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local ct=c:GetCounter(0x29)
+function c39892082.regop(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetHandler():GetCounter(0x29)
 	e:SetLabel(ct)
-	return ct>0 and c:IsReason(REASON_DESTROY)
+end
+function c39892082.damcon(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetLabelObject():GetLabel()
+	e:SetLabel(ct)
+	return ct>0
 end
 function c39892082.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -36,7 +36,7 @@ function c39910367.initial_effect(c)
 	--Add counter2
 	local e6=Effect.CreateEffect(c)
 	e6:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e6:SetCode(EVENT_LEAVE_FIELD)
+	e6:SetCode(EVENT_LEAVE_FIELD_P)
 	e6:SetRange(LOCATION_FZONE)
 	e6:SetOperation(c39910367.addop2)
 	c:RegisterEffect(e6)
@@ -65,7 +65,7 @@ function c39910367.addop2(e,tp,eg,ep,ev,re,r,rp)
 	local count=0
 	local c=eg:GetFirst()
 	while c~=nil do
-		if not c:IsCode(39910367) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsReason(REASON_DESTROY) then
+		if not c:IsCode(39910367) and c:IsLocation(LOCATION_ONFIELD) and c:IsReason(REASON_DESTROY) then
 			count=count+c:GetCounter(0x1)
 		end
 		c=eg:GetNext()
