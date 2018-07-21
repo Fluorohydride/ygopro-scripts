@@ -55,6 +55,14 @@ function c10045474.activate(e,tp,eg,ep,ev,re,r,rp)
 			e5:SetReset(RESET_PHASE+PHASE_END)
 			e5:SetLabel(c:GetSequence())
 			Duel.RegisterEffect(e5,tp)
+			local e6=Effect.CreateEffect(c)
+			e6:SetType(EFFECT_TYPE_FIELD)
+			e6:SetCode(EFFECT_DISABLE_TRAPMONSTER)
+			e6:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+			e6:SetTarget(c10045474.distg)
+			e6:SetReset(RESET_PHASE+PHASE_END)
+			e6:SetLabel(c:GetSequence())
+			Duel.RegisterEffect(e6,tp)
 		end
 	end
 end
