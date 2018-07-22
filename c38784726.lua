@@ -19,7 +19,7 @@ function c38784726.initial_effect(c)
 	e2:SetOperation(c38784726.spop)
 	c:RegisterEffect(e2)
 end
-c38784726.fit_monster={1613112}
+c38784726.fit_monster={16313112}
 function c38784726.filter(c,e,tp,m,m2,ft)
 	if not c:IsSetCard(0x119) or bit.band(c:GetType(),0x81)~=0x81
 		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
