@@ -56,7 +56,9 @@ end
 function c75041269.regop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():GetCounter(0x1b)>=4 then
 		e:SetLabel(1)
-	else e:SetLabel(0)
+	else
+		e:SetLabel(0)
+	end
 end
 function c75041269.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
