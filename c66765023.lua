@@ -7,6 +7,7 @@ function c66765023.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_COUNT)
 	e1:SetCountLimit(1)
+	e1:SetCondition(c66765023.indcon)
 	e1:SetValue(c66765023.valcon)
 	c:RegisterEffect(e1)
 	--add win effect
@@ -18,6 +19,9 @@ function c66765023.initial_effect(c)
 	e2:SetCondition(c66765023.effcon)
 	e2:SetOperation(c66765023.effop)
 	c:RegisterEffect(e2)
+end
+function c66765023.indcon(e)
+	return Duel.GetTurnPlayer()~=e:GetHandlerPlayer()
 end
 function c66765023.valcon(e,re,r,rp)
 	local res=false
