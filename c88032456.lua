@@ -28,7 +28,7 @@ function c88032456.filter(c,e,tp)
 	else
 		local ct=Duel.GetLocationCount(tp,LOCATION_SZONE)
 		if e:IsHasType(EFFECT_TYPE_ACTIVATE) and not e:GetHandler():IsLocation(LOCATION_SZONE) then ct=ct-1 end
-		return c:IsSSetable() and (c:IsType(TYPE_FIELD) or ct>0)
+		return c:IsSSetable(true) and (c:IsType(TYPE_FIELD) or ct>0)
 	end
 end
 function c88032456.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
