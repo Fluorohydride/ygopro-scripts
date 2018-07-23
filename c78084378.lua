@@ -1,7 +1,7 @@
 --ダイプレクサ・キマイラ
 function c78084378.initial_effect(c)
 	--fusion material
-	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsRace,RACE_CYBERSE),2,false)
+	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsRace,RACE_CYBERSE),2,true)
 	c:EnableReviveLimit()
 	--lock
 	local e1=Effect.CreateEffect(c)
