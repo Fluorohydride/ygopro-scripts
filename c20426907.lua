@@ -39,7 +39,7 @@ end
 function c20426907.distg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local tc=eg:GetFirst()
-		if e:GetHandler():IsStatus(STATUS_ACTIVATED) then
+		if e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then
 			return tc:IsLevelBelow(4)
 		else
 			return tc:IsLevelBelow(4) and not tc:IsType(TYPE_NORMAL)
@@ -71,7 +71,7 @@ function c20426907.filter(c,activated)
 	return c:IsFaceup() and c:IsLevelAbove(5) and (activated or not c:IsType(TYPE_NORMAL))
 end
 function c20426907.distg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	local activated=e:GetHandler():IsStatus(STATUS_ACTIVATED)
+	local activated=e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 	if chk==0 then return eg:IsExists(c20426907.filter,1,nil,activated) end
 	local g=eg:Filter(c20426907.filter,nil,activated)
 	Duel.SetTargetCard(g)

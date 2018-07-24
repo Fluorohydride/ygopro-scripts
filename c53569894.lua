@@ -24,13 +24,14 @@ function c53569894.filter(c)
 	return c:IsFaceup() and c:IsCode(15013468,51402177)
 end
 function c53569894.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsDisabled() then
+	local c=e:GetHandler()
+	if c:IsDisabled() or not c:IsStatus(STATUS_EFFECT_ENABLED) then
 		e:SetLabel(1)
 	else e:SetLabel(0) end
 end
 function c53569894.leave(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if e:GetLabelObject():GetLabel()==0 and c:GetPreviousControler()==tp and c:IsStatus(STATUS_ACTIVATED) then
+	if e:GetLabelObject():GetLabel()==0 and c:GetPreviousControler()==tp then
 		local g=Duel.GetMatchingGroup(c53569894.filter,tp,LOCATION_ONFIELD,0,nil)
 		Duel.Destroy(g,REASON_EFFECT,LOCATION_REMOVED)
 	end

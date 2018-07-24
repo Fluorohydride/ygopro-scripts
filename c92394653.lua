@@ -31,7 +31,7 @@ function c92394653.filter(c,tp)
 		and c:IsControler(tp) and c:IsType(TYPE_SPIRIT)
 end
 function c92394653.condition(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c92394653.filter,1,nil,tp) and e:GetHandler():IsStatus(STATUS_ACTIVATED)
+	return eg:IsExists(c92394653.filter,1,nil,tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c92394653.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -19,6 +19,13 @@ function c16437822.initial_effect(c)
 	e2:SetTarget(c16437822.rettg)
 	e2:SetOperation(c16437822.retop)
 	c:RegisterEffect(e2)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e3:SetCode(EVENT_LEAVE_FIELD_P)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e3:SetOperation(c16437822.checkop)
+	c:RegisterEffect(e3)
+	e2:SetLabelObject(e3)
 end
 function c16437822.filter(c)
 	return c:GetEquipCount()~=0 and c:GetEquipGroup():IsExists(Card.IsCode,1,nil,75560629)
@@ -36,8 +43,13 @@ function c16437822.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
+function c16437822.checkop(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetHandler():IsStatus(STATUS_LEAVE_CONFIRMED) then
+		e:SetLabel(1)
+	else e:SetLabel(0) end
+end
 function c16437822.retcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsStatus(STATUS_ACTIVATED)
+	return e:GetLabelObject():GetLabel()==1
 end
 function c16437822.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToDeck() end

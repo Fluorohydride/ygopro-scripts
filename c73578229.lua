@@ -61,12 +61,13 @@ function c73578229.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Readjust()
 end
 function c73578229.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsDisabled() then
+	local c=e:GetHandler()
+	if c:IsDisabled() or not c:IsStatus(STATUS_EFFECT_ENABLED) then
 		e:SetLabel(1)
 	else e:SetLabel(0) end
 end
 function c73578229.desop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetLabelObject():GetLabel()==0 and e:GetHandler():IsStatus(STATUS_ACTIVATED) then
+	if e:GetLabelObject():GetLabel()==0 then
 		local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		if g:GetCount()>0 then
 			local ag=g:GetMaxGroup(Card.GetAttack)

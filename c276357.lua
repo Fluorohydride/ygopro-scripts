@@ -52,7 +52,7 @@ function c276357.filter(c,tp)
 		and c:IsControler(tp) and c:IsType(TYPE_SPIRIT)
 end
 function c276357.descon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c276357.filter,1,nil,tp) and e:GetHandler():IsStatus(STATUS_ACTIVATED)
+	return eg:IsExists(c276357.filter,1,nil,tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c276357.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end

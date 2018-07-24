@@ -6,10 +6,17 @@ function c77859858.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
 	--leave
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e2:SetCode(EVENT_LEAVE_FIELD_P)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e2:SetOperation(c77859858.checkop)
+	c:RegisterEffect(e2)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e3:SetCode(EVENT_LEAVE_FIELD)
 	e3:SetOperation(c77859858.leave)
+	e3:SetLabelObject(e2)
 	c:RegisterEffect(e3)
 	--Draw
 	local e4=Effect.CreateEffect(c)
@@ -42,9 +49,15 @@ function c77859858.initial_effect(c)
 	e6:SetOperation(c77859858.costop)
 	c:RegisterEffect(e6)
 end
+function c77859858.checkop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	if c:IsDisabled() or not c:IsStatus(STATUS_EFFECT_ENABLED) then
+		e:SetLabel(1)
+	else e:SetLabel(0) end
+end
 function c77859858.leave(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetPreviousControler()==tp and c:IsStatus(STATUS_ACTIVATED) then
+	if e:GetLabelObject():GetLabel()==0 and c:GetPreviousControler()==tp then
 		Duel.Damage(tp,3000,REASON_EFFECT)
 	end
 end

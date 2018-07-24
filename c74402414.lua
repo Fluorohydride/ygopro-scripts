@@ -41,11 +41,17 @@ function c74402414.initial_effect(c)
 	--damage
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e4:SetCode(EVENT_LEAVE_FIELD)
-	e4:SetCondition(c74402414.damcon)
-	e4:SetOperation(c74402414.damop)
+	e4:SetCode(EVENT_LEAVE_FIELD_P)
+	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e4:SetOperation(c74402414.checkop)
 	e4:SetLabelObject(g)
 	c:RegisterEffect(e4)
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e5:SetCode(EVENT_LEAVE_FIELD)
+	e5:SetOperation(c74402414.damop)
+	e5:SetLabelObject(e4)
+	c:RegisterEffect(e5)
 end
 function c74402414.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local hg=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
@@ -106,10 +112,16 @@ end
 function c74402414.dfilter(c)
 	return c:GetFlagEffect(74402414)~=0
 end
-function c74402414.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsStatus(STATUS_ACTIVATED)
+function c74402414.checkop(e,tp,eg,ep,ev,re,r,rp)
+	local ct=e:GetLabelObject():FilterCount(c74402414.dfilter,nil)
+	local c=e:GetHandler()
+	if c:IsDisabled() or not c:IsStatus(STATUS_EFFECT_ENABLED) or ct==0 then
+		e:SetLabel(1)
+	else e:SetLabel(0) end
 end
 function c74402414.damop(e,tp,eg,ep,ev,re,r,rp)
-	local ct=e:GetLabelObject():FilterCount(c74402414.dfilter,nil)
-	Duel.Damage(tp,ct*500,REASON_EFFECT)
+	local c=e:GetHandler()
+	if e:GetLabelObject():GetLabel()==0 and c:GetPreviousControler()==tp then
+		Duel.Damage(tp,ct*500,REASON_EFFECT)
+	end
 end
