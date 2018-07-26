@@ -38,7 +38,7 @@ function c88316955.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c88316955.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetLocation()~=LOCATION_DECK
+	return c:IsPreviousPosition(POS_FACEUP)
 		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
 end
 function c88316955.filter1(c,e,tp)

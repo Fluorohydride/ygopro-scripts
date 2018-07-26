@@ -6,7 +6,7 @@ function c20358953.initial_effect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
-	e1:SetCode(EVENT_LEAVE_FIELD)
+	e1:SetCode(EVENT_DESTROYED)
 	e1:SetCondition(c20358953.spcon)
 	e1:SetTarget(c20358953.sptg)
 	e1:SetOperation(c20358953.spop)
@@ -14,8 +14,8 @@ function c20358953.initial_effect(c)
 end
 function c20358953.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_DESTROY) and c:IsReason(REASON_EFFECT) and not c:IsLocation(LOCATION_DECK)
-		and c:GetPreviousControler()==tp and c:IsPreviousPosition(POS_FACEUP) and c:GetReasonPlayer()==1-tp
+	return c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
+		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c20358953.filter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsAttribute(ATTRIBUTE_WATER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

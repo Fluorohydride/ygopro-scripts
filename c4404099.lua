@@ -44,7 +44,7 @@ end
 function c4404099.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetLabelObject():GetLabel()
 	e:SetLabel(ct)
-	return ct>0 and not e:GetHandler():IsLocation(LOCATION_DECK)
+	return ct>0
 end
 function c4404099.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_FISH+RACE_SEASERPENT)

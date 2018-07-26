@@ -6,13 +6,9 @@ function c73702909.initial_effect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)
-	e1:SetCondition(c73702909.condition)
 	e1:SetTarget(c73702909.target)
 	e1:SetOperation(c73702909.operation)
 	c:RegisterEffect(e1)
-end
-function c73702909.condition(e,tp,eg,ep,ev,re,r,rp)
-	return not e:GetHandler():IsLocation(LOCATION_DECK)
 end
 function c73702909.spfilter(c,e,tp)
 	return c:IsLevelBelow(2) and c:IsRace(RACE_WARRIOR) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)

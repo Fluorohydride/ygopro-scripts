@@ -88,7 +88,7 @@ function c56562619.rmop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c56562619.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousPosition(POS_FACEUP) and not c:IsLocation(LOCATION_DECK)
+	return c:IsPreviousPosition(POS_FACEUP)
 end
 function c56562619.spfilter(c,e,tp)
 	return c:GetFlagEffect(56562619)~=0

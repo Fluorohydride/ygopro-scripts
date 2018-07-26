@@ -38,7 +38,7 @@ end
 function c19801646.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return (c:IsReason(REASON_BATTLE) or (c:GetReasonPlayer()==1-tp and c:IsReason(REASON_EFFECT)))
-		and c:IsPreviousPosition(POS_FACEUP) and not c:IsLocation(LOCATION_DECK)
+		and c:IsPreviousPosition(POS_FACEUP)
 end
 function c19801646.thfilter(c)
 	return c:IsLevel(7) and c:IsAttribute(ATTRIBUTE_WATER) and c:IsAbleToHand()

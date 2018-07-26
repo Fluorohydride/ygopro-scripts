@@ -65,7 +65,7 @@ function c78371393.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c78371393.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return not e:GetHandler():IsLocation(LOCATION_DECK) end
+	if chk==0 then return true end
 	if not Duel.CheckReleaseGroup(tp,nil,1,nil) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 	end

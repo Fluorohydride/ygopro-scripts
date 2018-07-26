@@ -50,7 +50,7 @@ function c69105797.atkfilter(e,c)
 end
 function c69105797.ccon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousPosition(POS_FACEUP) and not c:IsLocation(LOCATION_DECK)
+	return c:IsPreviousPosition(POS_FACEUP)
 end
 function c69105797.cfilter(c)
 	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_SPECIAL)

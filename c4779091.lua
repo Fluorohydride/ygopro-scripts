@@ -81,7 +81,7 @@ function c4779091.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c4779091.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetLocation()~=LOCATION_DECK
+	return c:IsPreviousPosition(POS_FACEUP)
 end
 function c4779091.filter(c,e,tp)
 	return c:IsCode(31764700) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)

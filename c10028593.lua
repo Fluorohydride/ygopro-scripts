@@ -13,7 +13,7 @@ function c10028593.initial_effect(c)
 end
 function c10028593.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousPosition(POS_FACEUP) and not c:IsLocation(LOCATION_DECK)
+	return c:IsPreviousPosition(POS_FACEUP)
 end
 function c10028593.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -122,7 +122,7 @@ function c48680970.efilter(e,re)
 end
 function c48680970.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousPosition(POS_FACEUP) and not c:IsLocation(LOCATION_DECK)
+	return c:IsPreviousPosition(POS_FACEUP)
 end
 function c48680970.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

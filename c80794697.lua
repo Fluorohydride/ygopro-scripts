@@ -14,7 +14,7 @@ function c80794697.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c80794697.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPreviousPosition(POS_FACEUP) and not e:GetHandler():IsLocation(LOCATION_DECK)
+	return e:GetHandler():IsPreviousPosition(POS_FACEUP)
 end
 function c80794697.tgfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsRace(RACE_CYBERSE) and c:IsDiscardable()

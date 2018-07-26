@@ -60,7 +60,7 @@ function c1278431.actcon(e)
 end
 function c1278431.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetLocation()~=LOCATION_DECK
+	return c:IsPreviousPosition(POS_FACEUP)
 		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
 end
 function c1278431.spfilter(c,e,tp)

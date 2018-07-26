@@ -288,7 +288,7 @@ EFFECT_FLAG_COF				=0x20000000 --N/A
 EFFECT_FLAG_CVAL_CHECK		=0x40000000	--N/A
 EFFECT_FLAG_IMMEDIATELY_APPLY	=0x80000000	--卡在发动时效果就立即适用（卡通王國）
 
-EFFECT_FLAG2_NAGA			=0x0001 --特殊情况时发动不会被无效（神卡纳迦的特殊处理）
+EFFECT_FLAG2_NAGA			=0x0001 --N/A
 EFFECT_FLAG2_COF			=0x0002 --通常魔法卡在MP1以外发动（邪恶的仪式的特殊处理）
 --========== Codes ==========	--对永续性效果表示效果类型(EFFECT开头)，对诱发型效果表示触发效果的事件/时点(EVENT开头)
 EFFECT_IMMUNE_EFFECT			=1		--效果免疫

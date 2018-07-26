@@ -20,7 +20,7 @@ function c77841719.initial_effect(c)
 end
 function c77841719.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousPosition(POS_FACEUP) and not c:IsLocation(LOCATION_DECK)
+	return c:IsPreviousPosition(POS_FACEUP)
 		and c:GetPreviousControler()==tp and rp==1-tp
 end
 function c77841719.filter(c)

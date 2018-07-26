@@ -14,7 +14,7 @@ function c24419823.initial_effect(c)
 end
 function c24419823.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return not c:IsLocation(LOCATION_DECK) and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsPreviousPosition(POS_FACEUP)
 end
 function c24419823.filter(c)
 	return c:IsType(TYPE_FIELD) and c:IsAbleToHand()

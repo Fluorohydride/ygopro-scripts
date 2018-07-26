@@ -22,7 +22,6 @@ function c9156135.initial_effect(c)
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_BATTLE_DESTROYED)
-	e4:SetCondition(c9156135.condition)
 	e4:SetTarget(c9156135.target)
 	e4:SetOperation(c9156135.operation)
 	c:RegisterEffect(e4)
@@ -42,9 +41,6 @@ function c9156135.addc(e,tp,eg,ep,ev,re,r,rp)
 	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		tc:AddCounter(0x1,1)
 	end
-end
-function c9156135.condition(e,tp,eg,ep,ev,re,r,rp)
-	return not e:GetHandler():IsLocation(LOCATION_DECK) and e:GetHandler():IsReason(REASON_BATTLE)
 end
 function c9156135.spfilter(c,e,tp)
 	return c:IsLevelBelow(2) and c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
