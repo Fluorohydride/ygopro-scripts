@@ -85,13 +85,10 @@ function c24094258.drcfilter(c,tp)
 	return c:IsPreviousLocation(LOCATION_PZONE) and c:GetPreviousControler()==tp
 end
 function c24094258.drcon(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(c24094258.drcfilter,1,nil,tp) then
-		e:SetLabel(tp)
-		return true
-	else return false end
+	return eg:IsExists(c24094258.drcfilter,1,nil,tp)
 end
 function c24094258.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetLabel()==tp end
+	if chk==0 then return true end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
