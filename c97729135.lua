@@ -43,7 +43,7 @@ function c97729135.mvtg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local zone=0
 	local lg=eg:Filter(c97729135.cfilter,nil,tp)
 	for tc in aux.Next(lg) do
-		zone=bit.bor(zone,tc:GetColumnZone(LOCATION_MZONE,0,0,1-tp))
+		zone=bit.bor(zone,tc:GetColumnZone(LOCATION_MZONE,1-tp))
 	end
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c97729135.mvfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c97729135.mvfilter,tp,0,LOCATION_MZONE,1,nil)
@@ -55,7 +55,7 @@ function c97729135.mvop1(e,tp,eg,ep,ev,re,r,rp)
 	local zone=0
 	local lg=eg:Filter(c97729135.cfilter,nil,tp)
 	for tc in aux.Next(lg) do
-		zone=bit.bor(zone,tc:GetColumnZone(LOCATION_MZONE,0,0,1-tp))
+		zone=bit.bor(zone,tc:GetColumnZone(LOCATION_MZONE,1-tp))
 	end
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) or tc:IsControler(tp)
@@ -73,7 +73,7 @@ function c97729135.mvtg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local zone=0
 	local lg=eg:Filter(c97729135.cfilter,nil,1-tp)
 	for tc in aux.Next(lg) do
-		zone=bit.bor(zone,tc:GetColumnZone(LOCATION_MZONE,0,0,tp))
+		zone=bit.bor(zone,tc:GetColumnZone(LOCATION_MZONE,tp))
 	end
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c97729135.mvfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c97729135.mvfilter,tp,LOCATION_MZONE,0,1,nil)
@@ -85,7 +85,7 @@ function c97729135.mvop2(e,tp,eg,ep,ev,re,r,rp)
 	local zone=0
 	local lg=eg:Filter(c97729135.cfilter,nil,1-tp)
 	for tc in aux.Next(lg) do
-		zone=bit.bor(zone,tc:GetColumnZone(LOCATION_MZONE,0,0,tp))
+		zone=bit.bor(zone,tc:GetColumnZone(LOCATION_MZONE,tp))
 	end
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) or tc:IsControler(1-tp)

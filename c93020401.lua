@@ -32,7 +32,7 @@ function c93020401.hspcon(e,c)
 	local zone=0
 	local lg=Duel.GetMatchingGroup(c93020401.cfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	for tc in aux.Next(lg) do
-		zone=bit.bor(zone,tc:GetColumnZone(LOCATION_MZONE,0,0,tp))
+		zone=bit.bor(zone,tc:GetColumnZone(LOCATION_MZONE,tp))
 	end
 	return Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)>0
 end
@@ -41,16 +41,15 @@ function c93020401.hspval(e,c)
 	local zone=0
 	local lg=Duel.GetMatchingGroup(c93020401.cfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	for tc in aux.Next(lg) do
-		zone=bit.bor(zone,tc:GetColumnZone(LOCATION_MZONE,0,0,tp))
+		zone=bit.bor(zone,tc:GetColumnZone(LOCATION_MZONE,tp))
 	end
 	return 0,zone
 end
 function c93020401.spcfilter(c,tp,mc)
 	if c:GetPreviousControler()==tp then return false end
-	local loc=LOCATION_MZONE
-	if c:IsPreviousLocation(LOCATION_SZONE) then loc=LOCATION_SZONE end
-	local zone=mc:GetColumnZone(loc)
+	local zone=mc:GetColumnZone(LOCATION_ONFIELD)
 	local seq=c:GetPreviousSequence()+16
+	if c:IsPreviousLocation(LOCATION_SZONE) then seq=seq+8 end
 	return zone and bit.extract(zone,seq)~=0
 end
 function c93020401.spcon(e,tp,eg,ep,ev,re,r,rp)

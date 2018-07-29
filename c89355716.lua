@@ -26,8 +26,9 @@ function c89355716.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c89355716.eftg(e,c)
-	local g=e:GetHandler():GetColumnGroup(1,1)
-	return c:IsType(TYPE_EFFECT) and c:IsSetCard(0x109) and c:GetSequence()<5 and g:IsContains(c)
+	local seq=c:GetSequence()
+	return c:IsType(TYPE_EFFECT) and c:IsSetCard(0x109)
+		and seq<5 and math.abs(e:GetHandler():GetSequence()-seq)<=1
 end
 function c89355716.spcfilter(c,e,tp,ft)
 	return c:IsReleasableByEffect() and (ft>0 or c:GetSequence()<5)
