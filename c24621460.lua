@@ -15,6 +15,7 @@ function c24621460.initial_effect(c)
 	c:RegisterEffect(e3)
 	--extra summon
 	local e4=Effect.CreateEffect(c)
+	e4:SetDescription(aux.Stringid(24621460,1))
 	e4:SetType(EFFECT_TYPE_FIELD)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetTargetRange(LOCATION_HAND+LOCATION_MZONE,0)

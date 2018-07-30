@@ -15,6 +15,7 @@ function c52112003.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SortDecktop(tp,tp,5)
 	if Duel.GetFlagEffect(tp,52112003)~=0 then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetDescription(aux.Stringid(52112003,0))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetTargetRange(LOCATION_HAND,0)
 	e1:SetCode(EFFECT_EXTRA_SUMMON_COUNT)

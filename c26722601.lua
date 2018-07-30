@@ -13,6 +13,7 @@ function c26722601.sumop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if ec~=e:GetHandler() and ec:IsSetCard(0x100a) and ec:IsSummonType(SUMMON_TYPE_ADVANCE) then
 		local e1=Effect.CreateEffect(c)
+		e1:SetDescription(aux.Stringid(26722601,0))
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetRange(LOCATION_MZONE)
 		e1:SetTargetRange(LOCATION_HAND+LOCATION_MZONE,0)
