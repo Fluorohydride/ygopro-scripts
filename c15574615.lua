@@ -57,7 +57,7 @@ function c15574615.spop(e,tp,eg,ep,ev,re,r,rp,c)
 		sg:Merge(g1)
 		g:Sub(g1)
 	end
-	Duel.SendtoGrave(g,REASON_COST)
+	Duel.SendtoGrave(sg,REASON_COST)
 end
 function c15574615.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end
