@@ -59,7 +59,7 @@ function c70913714.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e4:SetCondition(c70913714.ctcon)
 		e4:SetTarget(c70913714.cttg)
 		e4:SetOperation(c70913714.ctop)
-		e4:SetReset(RESET_EVENT+0x1020000)
+		e4:SetReset(RESET_EVENT+RESET_OVERLAY+RESET_TOFIELD)
 		c:RegisterEffect(e4)
 	end
 end
@@ -79,4 +79,5 @@ function c70913714.ctop(e,tp,eg,ep,ev,re,r,rp)
 	if ec and ec:IsRelateToEffect(e) then
 		Duel.GetControl(ec,tp)
 	end
+	e:Reset()
 end

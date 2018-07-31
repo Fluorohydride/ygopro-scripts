@@ -32,7 +32,7 @@ function c79852326.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCondition(c79852326.damcon)
 	e1:SetTarget(c79852326.damtg)
 	e1:SetOperation(c79852326.damop)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_LEAVE)
+	e1:SetReset(RESET_EVENT+RESET_OVERLAY+RESET_TOFIELD)
 	c:RegisterEffect(e1,true)
 	Duel.SpecialSummonComplete()
 end
@@ -51,4 +51,5 @@ end
 function c79852326.damop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Damage(p,d,REASON_EFFECT)
+	e:Reset()
 end
