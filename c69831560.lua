@@ -104,7 +104,8 @@ function c69831560.arcanareg(c,coin)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e4:SetCode(EVENT_LEAVE_FIELD)
 	e4:SetOperation(c69831560.desop2)
-	e4:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_LEAVE)
+	e4:SetReset(RESET_EVENT+RESET_OVERLAY+RESET_TOFIELD)
+	e4:SetLabelObject(e3)
 	c:RegisterEffect(e4)
 	c:RegisterFlagEffect(36690018,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,coin,63-coin)
 end
@@ -129,12 +130,13 @@ function c69831560.posop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c69831560.desop1(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetFlagEffectLabel(36690018)==0 then
-		e:GetHandler():RegisterFlagEffect(69831560,RESET_EVENT+RESETS_STANDARD-RESET_LEAVE,0,1)
-	end
+		e:SetLabel(1)
+	else e:SetLabel(0) end
 end
 function c69831560.desop2(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():GetFlagEffect(69831560)~=0 then
+	if e:GetLabelObject():GetLabel()~=0 then
 		local g=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)
 		Duel.Destroy(g,REASON_EFFECT)
 	end
+	e:Reset()
 end

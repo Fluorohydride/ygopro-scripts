@@ -66,7 +66,7 @@ function c93445074.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e4:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
 		e4:SetCode(EVENT_LEAVE_FIELD)
 		e4:SetOperation(c93445074.desop)
-		e4:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_LEAVE)
+		e4:SetReset(RESET_EVENT+RESET_OVERLAY+RESET_TOFIELD)
 		e4:SetLabelObject(e3)
 		c:RegisterEffect(e4)
 	end
@@ -77,6 +77,7 @@ function c93445074.checkop(e,tp,eg,ep,ev,re,r,rp)
 	else e:SetLabel(0) end
 end
 function c93445074.desop(e,tp,eg,ep,ev,re,r,rp)
+	e:Reset()
 	if e:GetLabelObject():GetLabel()~=0 then return end
 	local tc=e:GetHandler():GetEquipTarget()
 	if tc and tc:IsLocation(LOCATION_MZONE) then
