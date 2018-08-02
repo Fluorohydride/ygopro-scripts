@@ -65,11 +65,11 @@ function c80101899.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c80101899.aclimit1(e,tp,eg,ep,ev,re,r,rp)
-	if ep==1-tp or not re:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
+	if ep==1-tp or not re:IsHasType(EFFECT_TYPE_ACTIVATE) or not re:IsActiveType(TYPE_TRAP) then return end
 	Duel.RegisterFlagEffect(tp,80101899,RESET_PHASE+PHASE_END,0,1)
 end
 function c80101899.aclimit2(e,tp,eg,ep,ev,re,r,rp)
-	if ep==1-tp or not re:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
+	if ep==1-tp or not re:IsHasType(EFFECT_TYPE_ACTIVATE) or not re:IsActiveType(TYPE_TRAP) then return end
 	Duel.ResetFlagEffect(tp,80101899)
 end
 function c80101899.actcon(e)
