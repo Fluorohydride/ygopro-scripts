@@ -35,6 +35,7 @@ function c53860621.initial_effect(c)
 	e5:SetCode(EVENT_BATTLE_DESTROYING)
 	e5:SetRange(LOCATION_SZONE)
 	e5:SetCountLimit(1,53860621)
+	e5:SetCondition(c53860621.descon)
 	e5:SetTarget(c53860621.destg)
 	e5:SetOperation(c53860621.desop)
 	c:RegisterEffect(e5)
@@ -69,6 +70,10 @@ function c53860621.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
+end
+function c53860621.descon(e,tp,eg,ep,ev,re,r,rp)
+	local ec=e:GetHandler():GetEquipTarget()
+	return ec and eg:IsContains(ec)
 end
 function c53860621.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 end
