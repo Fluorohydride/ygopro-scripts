@@ -41,7 +41,7 @@ function c62834295.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c62834295.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		local tc=g:GetFirst()
-		if tc and tc:IsAbleToGrave() and (not tc:IsAbleToRemove() or Duel.SelectYesNo(tp,aux.Stringid(62834295,2))) then
+		if tc and tc:IsAbleToGrave() and (not tc:IsAbleToRemove() or Duel.SelectOption(tp,1191,1192)==0) then
 			Duel.SendtoGrave(tc,REASON_EFFECT)
 		else
 			Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)

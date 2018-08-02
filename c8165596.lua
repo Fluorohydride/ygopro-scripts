@@ -79,7 +79,7 @@ function c8165596.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.SelectMatchingCard(tp,c8165596.filter,tp,LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
-	if tc and (tc:IsAbleToHand() and Duel.SelectYesNo(tp,aux.Stringid(8165596,2))) then
+	if tc and (tc:IsAbleToHand() and Duel.SelectOption(tp,1190,aux.Stringid(8165596,2))==0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tc)
 	else

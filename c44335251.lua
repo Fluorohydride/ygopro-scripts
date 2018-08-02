@@ -39,7 +39,7 @@ function c44335251.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c44335251.cfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		local tc=g:GetFirst()
-		if tc and tc:IsAbleToHand() and (not tc:IsAbleToGrave() or Duel.SelectYesNo(tp,aux.Stringid(44335251,3))) then
+		if tc and tc:IsAbleToHand() and (not tc:IsAbleToGrave() or Duel.SelectOption(tp,1190,1191)==0) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tc)
 		else

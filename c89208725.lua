@@ -24,7 +24,7 @@ function c89208725.activate(e,tp,eg,ep,ev,re,r,rp)
 		local te=tc:GetActivateEffect()
 		local b1=tc:IsAbleToHand()
 		local b2=te:IsActivatable(tp)
-		if b1 and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(89208725,1))) then
+		if b1 and (not b2 or Duel.SelectOption(tp,1190,1150)==0) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tc)
 		else
