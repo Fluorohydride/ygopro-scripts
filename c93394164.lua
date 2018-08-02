@@ -102,15 +102,24 @@ end
 function c93394164.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local ec=c:GetEquipTarget()
-	if chk==0 then return ec and Duel.IsExistingMatchingCard(c93394164.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,ec:GetColumnGroup()) end
+	if chk==0 then
+		if not ec then return false end
+		local tg=ec:GetColumnGroup()
+		tg:AddCard(ec)
+		return Duel.IsExistingMatchingCard(c93394164.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,tg)
+	end
 	local tc=Duel.GetFirstTarget()
-	local g=Duel.GetMatchingGroup(c93394164.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,tc:GetColumnGroup())
+	local tg=tc:GetColumnGroup()
+	tg:AddCard(tc)
+	local g=Duel.GetMatchingGroup(c93394164.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,tg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c93394164.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) then return end
-	local g=Duel.GetMatchingGroup(c93394164.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,tc:GetColumnGroup())
+	local tg=tc:GetColumnGroup()
+	tg:AddCard(tc)
+	local g=Duel.GetMatchingGroup(c93394164.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,tg)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local sg=g:Select(tp,1,1,nil)
