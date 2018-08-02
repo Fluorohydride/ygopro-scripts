@@ -27,11 +27,12 @@ function c59650656.initial_effect(c)
 end
 function c59650656.cfilter(c,tp)
 	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
-		and (c:IsReason(REASON_DESTROY) and c:IsReason(REASON_EFFECT) or c:IsReason(REASON_BATTLE) and Duel.GetTurnPlayer()==1-tp)
+		and ((c:IsReason(REASON_DESTROY) and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
+			or (c:IsReason(REASON_BATTLE) and Duel.GetTurnPlayer()==1-tp))
 		and c:IsSetCard(0x7b) and c:IsType(TYPE_XYZ)
 end
 function c59650656.descon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and eg:IsExists(c59650656.cfilter,1,nil,tp)
+	return eg:IsExists(c59650656.cfilter,1,nil,tp)
 end
 function c59650656.filter(c)
 	return c:IsFaceup() and c:IsAbleToRemove()
