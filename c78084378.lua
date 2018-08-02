@@ -26,8 +26,8 @@ function c78084378.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c78084378.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,e:GetHandler(),RACE_CYBERSE) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,e:GetHandler(),RACE_CYBERSE)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,nil,RACE_CYBERSE) end
+	local g=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,nil,RACE_CYBERSE)
 	Duel.Release(g,REASON_COST)
 end
 function c78084378.operation(e,tp,eg,ep,ev,re,r,rp)
