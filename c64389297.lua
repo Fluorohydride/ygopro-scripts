@@ -21,9 +21,7 @@ function c64389297.initial_effect(c)
 	e3:SetDescription(aux.Stringid(64389297,0))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_IGNITION)
-	e3:SetProperty(EFFECT_FLAG_BOTH_SIDE)
 	e3:SetRange(LOCATION_SZONE)
-	e3:SetCondition(c64389297.spcon)
 	e3:SetCost(c64389297.spcost)
 	e3:SetTarget(c64389297.sptg)
 	e3:SetOperation(c64389297.spop)
@@ -48,13 +46,11 @@ function c64389297.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
 end
-function c64389297.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetEquipTarget():GetControler()==tp
-end
 function c64389297.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local tc=c:GetEquipTarget()
-	if chk==0 then return c:IsReleasable() and tc:IsReleasable() end
+	if chk==0 then return c:IsReleasable() and tc:IsReleasable()
+		and (tc:IsControler(tp) or tc:IsHasEffect(EFFECT_EXTRA_RELEASE)) end
 	local g=Group.FromCards(c,tc)
 	Duel.Release(g,REASON_COST)
 end
