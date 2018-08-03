@@ -56,9 +56,7 @@ function c40267580.eqop(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetValue(tp)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
 			c:RegisterEffect(e2)
-		else
-			Duel.SendtoGrave(c,REASON_EFFECT)
-		end
+		else Duel.SendtoGrave(c,REASON_RULE) end
 	end
 end
 function c40267580.reccon(e,tp,eg,ep,ev,re,r,rp)

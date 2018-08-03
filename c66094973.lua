@@ -87,7 +87,7 @@ function c66094973.eqop(e,tp,eg,ep,ev,re,r,rp)
 			e3:SetCode(66094973)
 			e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e3)
-		else Duel.SendtoGrave(tc,REASON_EFFECT) end
+		else Duel.SendtoGrave(tc,REASON_RULE) end
 	end
 end
 function c66094973.poscon(e,tp,eg,ep,ev,re,r,rp)

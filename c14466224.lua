@@ -98,6 +98,6 @@ function c14466224.eqop(e,tp,eg,ep,ev,re,r,rp)
 				e3:SetValue(def)
 				tc:RegisterEffect(e3)
 			end
-		else Duel.SendtoGrave(tc,REASON_EFFECT) end
+		else Duel.SendtoGrave(tc,REASON_RULE) end
 	end
 end

@@ -82,7 +82,7 @@ function c82962242.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
 		tc:RegisterFlagEffect(82962242,RESET_EVENT+RESETS_STANDARD,0,1)
-	else Duel.SendtoGrave(tc,REASON_EFFECT) end
+	else Duel.SendtoGrave(tc,REASON_RULE) end
 end
 function c82962242.eqlimit(e,c)
 	return e:GetOwner()==c and not c:IsDisabled()

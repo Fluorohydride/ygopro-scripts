@@ -56,7 +56,7 @@ function c6075801.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetValue(c6075801.eqlimit)
 		tc:RegisterEffect(e1)
-	else Duel.SendtoGrave(tc,REASON_EFFECT) end
+	else Duel.SendtoGrave(tc,REASON_RULE) end
 end
 function c6075801.eqlimit(e,c)
 	return e:GetOwner()==c

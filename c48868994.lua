@@ -83,6 +83,6 @@ function c48868994.opd(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetCode(48868994)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e2)
-		else Duel.SendtoGrave(tc,REASON_EFFECT) end
+		else Duel.SendtoGrave(tc,REASON_RULE) end
 	end
 end

@@ -59,9 +59,7 @@ function c80769747.eqop(e,tp,eg,ep,ev,re,r,rp)
 			e3:SetValue(-800)
 			e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 			c:RegisterEffect(e3)
-		else
-			Duel.SendtoGrave(c,REASON_EFFECT)
-		end
+		else Duel.SendtoGrave(c,REASON_RULE) end
 	end
 end
 function c80769747.ddescon(e,tp,eg,ep,ev,re,r,rp)

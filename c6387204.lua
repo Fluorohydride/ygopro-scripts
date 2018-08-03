@@ -53,7 +53,7 @@ function c6387204.eqop(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetValue(1000)
 			tc:RegisterEffect(e2)
 			tc:RegisterFlagEffect(6387204,RESET_EVENT+RESETS_STANDARD,0,0)
-		else Duel.SendtoGrave(tc,REASON_EFFECT) end
+		else Duel.SendtoGrave(tc,REASON_RULE) end
 	end
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)

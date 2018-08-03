@@ -74,7 +74,7 @@ function c50140163.eqop(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			e2:SetValue(c50140163.repval)
 			tc:RegisterEffect(e2)
-		else Duel.SendtoGrave(tc,REASON_EFFECT) end
+		else Duel.SendtoGrave(tc,REASON_RULE) end
 	end
 end
 function c50140163.repval(e,re,r,rp)

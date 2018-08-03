@@ -77,7 +77,7 @@ function c63465535.eqop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			e1:SetValue(c63465535.eqlimit)
 			tc:RegisterEffect(e1)
-		else Duel.SendtoGrave(tc,REASON_EFFECT) end
+		else Duel.SendtoGrave(tc,REASON_RULE) end
 	end
 end
 function c63465535.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)

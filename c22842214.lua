@@ -75,9 +75,7 @@ function c22842214.eqop(e,tp,eg,ep,ev,re,r,rp)
 			end
 			Duel.EquipComplete()
 		end
-	else
-		Duel.SendtoGrave(tg0,REASON_EFFECT)
-	end
+	else Duel.SendtoGrave(tg0,REASON_RULE) end
 end
 function c22842214.eqfilter(c,ec)
 	return c:GetFlagEffect(22842214)~=0 and c:IsHasCardTarget(ec)

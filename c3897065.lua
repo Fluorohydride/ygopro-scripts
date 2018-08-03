@@ -67,7 +67,7 @@ function c3897065.eqop(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetCode(3897065)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e2)
-		else Duel.SendtoGrave(tc,REASON_EFFECT) end
+		else Duel.SendtoGrave(tc,REASON_RULE) end
 	end
 end
 function c3897065.atcon(e)
