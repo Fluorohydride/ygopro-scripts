@@ -24,7 +24,7 @@ function c52628687.cffilter(c)
 	return c:IsSetCard(0x106e) and c:IsType(TYPE_SPELL) and not c:IsPublic()
 end
 function c52628687.spfilter(c,e,tp)
-	return c:IsRace(RACE_SPELLCASTER) and c:GetLevel()>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c52628687.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c52628687.spfilter(chkc,e,tp) end
