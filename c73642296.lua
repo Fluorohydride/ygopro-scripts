@@ -26,7 +26,7 @@ function c73642296.discon(e,tp,eg,ep,ev,re,r,rp)
 		or (ex3 and (bit.band(dv3,LOCATION_GRAVE)==LOCATION_GRAVE or g3 and g3:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE)))
 		or (ex4 and (bit.band(dv4,LOCATION_GRAVE)==LOCATION_GRAVE or g4 and g4:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE)))
 		or (ex5 and (bit.band(dv5,LOCATION_GRAVE)==LOCATION_GRAVE or g5 and g5:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE))))
-		and Duel.IsChainNegatable(ev)
+		and Duel.IsChainNegatable(ev) and not re:GetHandler():GetOriginalCode()==54241725
 end
 function c73642296.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
