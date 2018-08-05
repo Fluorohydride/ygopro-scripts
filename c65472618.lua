@@ -53,8 +53,8 @@ function c65472618.atkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c65472618.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
-		and (c:IsReason(REASON_EFFECT) or (c:IsReason(REASON_BATTLE) and Duel.GetAttacker():IsControler(1-tp)))
+	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+		and (c:IsReason(REASON_EFFECT) and rp==1-tp or c:IsReason(REASON_BATTLE) and Duel.GetAttacker():IsControler(1-tp))
 end
 function c65472618.thfilter(c)
 	return c:IsAttackBelow(2000) and c:IsRace(RACE_WARRIOR+RACE_SPELLCASTER) and not c:IsCode(65472618)

@@ -8,7 +8,6 @@ function c53485634.initial_effect(c)
 	e1:SetCode(EVENT_TO_GRAVE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
-	e1:SetCondition(c53485634.spcon)
 	e1:SetTarget(c53485634.sptg)
 	e1:SetOperation(c53485634.spop)
 	c:RegisterEffect(e1)
@@ -24,13 +23,10 @@ function c53485634.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c53485634.spfilter(c,e,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
-		and c:IsReason(REASON_DESTROY) and (c:IsReason(REASON_EFFECT) or (c:IsReason(REASON_BATTLE) and Duel.GetAttacker():IsControler(1-tp)))
+	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsReason(REASON_DESTROY)
+		and (c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp or c:IsReason(REASON_BATTLE) and Duel.GetAttacker():IsControler(1-tp))
 		and c:IsSetCard(0x3b) and c:IsLevelBelow(7) and c:IsControler(tp)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-end
-function c53485634.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp
 end
 function c53485634.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
