@@ -3,7 +3,7 @@ function c54912977.initial_effect(c)
 	--change target
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(54912977,0))
-	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
+	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCode(EVENT_BATTLE_CONFIRM)
 	e1:SetCondition(c54912977.condition)
