@@ -50,6 +50,7 @@ end
 function c69230391.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,0)
 	if e:GetLabel()==1 then
 		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,1000)
 	end
