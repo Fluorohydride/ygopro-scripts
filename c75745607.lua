@@ -25,7 +25,7 @@ function c75745607.hdreg(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_PREDRAW)
-	e1:SetReset(RESET_PHASE+PHASE_DRAW)
+	e1:SetReset(RESET_PHASE+PHASE_END,2)
 	e1:SetOperation(c75745607.hdop)
 	Duel.RegisterEffect(e1,tp)
 end

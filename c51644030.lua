@@ -66,11 +66,7 @@ function c51644030.atkop2(e,tp,eg,ep,ev,re,r,rp)
 				e2:SetLabelObject(c)
 				e2:SetCondition(c51644030.retcon)
 				e2:SetOperation(c51644030.retop)
-				if Duel.GetCurrentPhase()<=PHASE_STANDBY then
-					e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY,2)
-				else
-					e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY)
-				end
+				e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,2)
 				Duel.RegisterEffect(e2,tp)
 			end
 		end

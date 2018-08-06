@@ -36,7 +36,7 @@ function c34294855.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE)
 end
 function c34294855.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(34294855,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY,0,1)
+	e:GetHandler():RegisterFlagEffect(34294855,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
 end
 function c34294855.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(34294855)>0

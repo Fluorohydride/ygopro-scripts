@@ -33,7 +33,11 @@ function c28355718.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c28355718.spcon)
 		e1:SetTarget(c28355718.sptg)
 		e1:SetOperation(c28355718.spop)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,1)
+		if Duel.GetTurnPlayer()==tp then
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
+		else
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,1)
+		end
 		c:RegisterEffect(e1)
 	end
 end
