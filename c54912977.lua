@@ -3,7 +3,7 @@ function c54912977.initial_effect(c)
 	--change target
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(54912977,0))
-	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
+	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCode(EVENT_BATTLE_CONFIRM)
 	e1:SetCondition(c54912977.condition)
@@ -26,7 +26,7 @@ function c54912977.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c54912977.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) end
-	if chk==0 then return true end
+	if chk==0 then return Duel.IsExistingTarget(nil,tp,0,LOCATION_MZONE,1,Duel.GetAttacker()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,nil,tp,0,LOCATION_MZONE,1,1,Duel.GetAttacker())
 end
