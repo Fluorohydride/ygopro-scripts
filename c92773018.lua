@@ -34,8 +34,9 @@ end
 function c92773018.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.GetAttacker()
 	if chkc then return chkc==tg end
-	if chk==0 then return not e:GetHandler():IsStatus(STATUS_CHAINING)
+	if chk==0 then return e:GetHandler():GetFlagEffect(92773018)==0
 		and tg:IsOnField() and tg:IsCanBeEffectTarget(e) end
+	e:GetHandler():RegisterFlagEffect(92773018,RESET_CHAIN,0,1)
 	Duel.SetTargetCard(tg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tg,1,0,0)
 end
