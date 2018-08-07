@@ -26,9 +26,9 @@ function c54912977.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c54912977.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsCanBeBattleTarget,tp,0,LOCATION_MZONE,1,Duel.GetAttacker(),Duel.GetAttacker()) end
+	if chk==0 then return Duel.IsExistingTarget(nil,tp,0,LOCATION_MZONE,1,Duel.GetAttacker()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,Card.IsCanBeBattleTarget,tp,0,LOCATION_MZONE,1,1,Duel.GetAttacker(),Duel.GetAttacker())
+	Duel.SelectTarget(tp,nil,tp,0,LOCATION_MZONE,1,1,Duel.GetAttacker())
 end
 function c54912977.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
