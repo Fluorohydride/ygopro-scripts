@@ -39,7 +39,9 @@ end
 function c2542230.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
 	if cid~=e:GetLabel() then return end
-	e:GetOwner():CancelToGrave(false)
+	if e:GetOwner():IsRelateToChain(ev) then
+		e:GetOwner():CancelToGrave(false)
+	end
 end
 function c2542230.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and c:IsType(TYPE_SYNCHRO)

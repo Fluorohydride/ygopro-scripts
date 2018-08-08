@@ -32,7 +32,9 @@ end
 function c53656677.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
 	if cid~=e:GetLabel() then return end
-	e:GetOwner():CancelToGrave(false)
+	if e:GetOwner():IsRelateToChain(ev) then
+		e:GetOwner():CancelToGrave(false)
+	end
 end
 function c53656677.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc==Duel.GetAttackTarget() end

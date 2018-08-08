@@ -45,7 +45,9 @@ end
 function c57135971.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
 	if cid~=e:GetLabel() then return end
-	e:GetOwner():CancelToGrave(false)
+	if e:GetOwner():IsRelateToChain(ev) then
+		e:GetOwner():CancelToGrave(false)
+	end
 end
 function c57135971.filter(c)
 	return c:IsSetCard(0x3b) and c:IsFaceup()
