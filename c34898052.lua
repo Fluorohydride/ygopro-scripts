@@ -39,7 +39,7 @@ function c34898052.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		g:Sub(g1)
 		sg:Merge(g1)
 	end
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c34898052.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToDeck,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler()) end
