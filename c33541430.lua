@@ -37,7 +37,7 @@ function c33541430.drcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetTargetRange(1,0)
 	e1:SetCode(EFFECT_SKIP_DP)
-	e1:SetReset(RESET_PHASE+PHASE_DRAW+RESET_SELF_TURN)
+	e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
 	Duel.RegisterEffect(e1,tp)
 end
 function c33541430.drtg(e,tp,eg,ep,ev,re,r,rp,chk)

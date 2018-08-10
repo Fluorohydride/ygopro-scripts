@@ -30,7 +30,11 @@ function c37313786.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		e1:SetTargetRange(1,0)
 		e1:SetCode(EFFECT_SKIP_TURN)
-		e1:SetReset(RESET_PHASE+PHASE_DRAW+RESET_SELF_TURN)
+		if Duel.GetTurnPlayer()==tp then
+			e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
+		else
+			e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,1)
+		end
 		Duel.RegisterEffect(e1,tp)
 	end
 end

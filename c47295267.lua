@@ -49,7 +49,11 @@ function c47295267.retop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCountLimit(1)
 		e2:SetCondition(c47295267.descon)
 		e2:SetOperation(c47295267.desop)
-		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN)
+		if Duel.GetTurnPlayer()==tp then
+			e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
+		else
+			e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,1)
+		end
 		tc:RegisterEffect(e2)
 	end
 end

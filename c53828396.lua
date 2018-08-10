@@ -40,7 +40,7 @@ function c53828396.eqop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetCondition(c53828396.descon)
 	e2:SetTarget(c53828396.destg)
 	e2:SetOperation(c53828396.desop)
-	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
+	e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_OPPO_TURN,2)
 	c:RegisterEffect(e2)
 end
 function c53828396.eqlimit(e,c)

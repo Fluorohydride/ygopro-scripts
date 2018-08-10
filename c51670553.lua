@@ -57,7 +57,11 @@ function c51670553.skipop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetTargetRange(0,1)
 	e1:SetCode(EFFECT_SKIP_DP)
-	e1:SetReset(RESET_PHASE+PHASE_DRAW+RESET_OPPO_TURN)
+	if Duel.GetTurnPlayer()==tp then
+		e1:SetReset(RESET_PHASE+PHASE_END+RESET_OPPO_TURN,1)
+	else
+		e1:SetReset(RESET_PHASE+PHASE_END+RESET_OPPO_TURN,2)
+	end
 	Duel.RegisterEffect(e1,tp)
 end
 function c51670553.descon(e,tp,eg,ep,ev,re,r,rp)
