@@ -20,7 +20,6 @@ function c5851097.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCode(EVENT_TO_GRAVE)
-	e3:SetProperty(EFFECT_FLAG_NO_CTEFFECT)
 	e3:SetCondition(c5851097.descon)
 	e3:SetTarget(c5851097.destg)
 	e3:SetOperation(c5851097.desop)
@@ -30,7 +29,7 @@ function c5851097.filter(c,tp)
 	return c:IsPreviousLocation(LOCATION_DECK+LOCATION_ONFIELD) and c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp)
 end
 function c5851097.descon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c5851097.filter,1,nil,tp)
+	return eg:IsExists(c5851097.filter,1,nil,tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c5851097.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
