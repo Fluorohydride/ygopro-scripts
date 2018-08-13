@@ -1,21 +1,6 @@
 --地獄戦士
 function c50916353.initial_effect(c)
-	--reg
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetProperty(EFFECT_FLAG_AVAILABLE_BD)
-	e1:SetCode(EVENT_BATTLE_DAMAGE)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetCondition(c50916353.regcon)
-	e1:SetOperation(c50916353.regop)
-	c:RegisterEffect(e1)
-end
-function c50916353.regcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return ep==tp and c==Duel.GetAttackTarget()
-end
-function c50916353.regop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
+	--damage
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(50916353,0))
 	e1:SetCategory(CATEGORY_DAMAGE)
@@ -24,17 +9,16 @@ function c50916353.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCondition(c50916353.damcon)
 	e1:SetTarget(c50916353.damtg)
 	e1:SetOperation(c50916353.damop)
-	e1:SetLabel(ev)
-	e1:SetReset(RESET_PHASE+PHASE_DAMAGE)
 	c:RegisterEffect(e1)
 end
 function c50916353.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsLocation(LOCATION_GRAVE)
+	return ev==1 and e:GetHandler():IsLocation(LOCATION_GRAVE)
 end
 function c50916353.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	local damage=Duel.GetBattleDamage(tp)
+	if chk==0 then return damage>0 end
 	Duel.SetTargetPlayer(1-tp)
-	Duel.SetTargetParam(e:GetLabel())
+	Duel.SetTargetParam(damage)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,e:GetLabel())
 end
 function c50916353.damop(e,tp,eg,ep,ev,re,r,rp)

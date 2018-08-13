@@ -33,7 +33,6 @@ function c64631466.initial_effect(c)
 	--damage
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e4:SetProperty(EFFECT_FLAG_AVAILABLE_BD)
 	e4:SetCode(EVENT_BATTLE_DAMAGE)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCondition(c64631466.damcon)
