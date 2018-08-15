@@ -41,15 +41,18 @@ end
 function c49820233.damop(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 	local ct=Duel.GetFieldGroupCount(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)
-	if ct>0 and Duel.Damage(p,ct*200,REASON_EFFECT)~=0 and e:GetLabel()==1 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local g=Duel.SelectMatchingCard(tp,nil,tp,0,LOCATION_MZONE,1,1,nil)
-		if g:GetCount()>0 then
-			Duel.BreakEffect()
-			Duel.HintSelection(g)
-			if Duel.Destroy(g,REASON_EFFECT)~=0 then
-				local dam=g:GetFirst():GetBaseAttack()
-				Duel.Damage(p,dam,REASON_EFFECT)
+	if ct>0 then
+		Duel.Damage(p,ct*200,REASON_EFFECT)
+		if e:GetLabel()==1 then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+			local g=Duel.SelectMatchingCard(tp,nil,tp,0,LOCATION_MZONE,1,1,nil)
+			if g:GetCount()>0 then
+				Duel.BreakEffect()
+				Duel.HintSelection(g)
+				if Duel.Destroy(g,REASON_EFFECT)~=0 then
+					local dam=g:GetFirst():GetBaseAttack()
+					Duel.Damage(p,dam,REASON_EFFECT)
+				end
 			end
 		end
 	end
