@@ -42,7 +42,7 @@ function c27541563.discon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==1-tp and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
 end
 function c27541563.discfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x103) and c:IsAbleToGraveAsCost()
+	return c:IsFaceup() and c:IsSetCard(0x103) and c:IsAbleToGraveAsCost() and not c:IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c27541563.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
