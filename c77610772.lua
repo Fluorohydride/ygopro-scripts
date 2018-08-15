@@ -51,7 +51,8 @@ function c77610772.repfilter(c,tp,hc)
 		and c:IsControler(tp) and c:IsReason(REASON_EFFECT) and not c:IsReason(REASON_REPLACE) and hc:GetLinkedGroup():IsContains(c)
 end
 function c77610772.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToGrave() and eg:IsExists(c77610772.repfilter,1,nil,tp,e:GetHandler()) end
+	if chk==0 then return not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED)
+		and eg:IsExists(c77610772.repfilter,1,nil,tp,e:GetHandler()) end
 	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c77610772.repval(e,c)

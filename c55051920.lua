@@ -63,7 +63,8 @@ function c55051920.repfilter(c,tp)
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c55051920.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c55051920.repfilter,1,e:GetHandler(),tp) end
+	if chk==0 then return not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED)
+		and eg:IsExists(c55051920.repfilter,1,e:GetHandler(),tp) end
 	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c55051920.repval(e,c)

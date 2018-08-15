@@ -77,7 +77,8 @@ function c63881033.repfilter(c,tp)
 		and c:IsType(TYPE_XYZ) and c:IsRace(RACE_MACHINE) and not c:IsReason(REASON_REPLACE)
 end
 function c63881033.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c63881033.repfilter,1,nil,tp) end
+	if chk==0 then return not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED)
+		and eg:IsExists(c63881033.repfilter,1,nil,tp) end
 	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c63881033.repval(e,c)
