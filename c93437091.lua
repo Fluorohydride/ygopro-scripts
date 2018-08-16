@@ -28,6 +28,5 @@ function c93437091.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
 		local tg=sg:RandomSelect(1-tp,1)
 		Duel.SendtoHand(tg,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,tg)
 	end
 end
