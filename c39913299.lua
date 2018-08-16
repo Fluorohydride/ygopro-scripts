@@ -38,9 +38,9 @@ function c39913299.operation(e,tp,eg,ep,ev,re,r,rp)
 			local b1=sc:IsAbleToHand()
 			local b2=sc:IsCanBeSpecialSummoned(e,0,tp,false,false)
 			local op=0
-			if b1 and b2 then op=Duel.SelectOption(tp,aux.Stringid(39913299,2),aux.Stringid(39913299,3))
-			elseif b1 then op=Duel.SelectOption(tp,aux.Stringid(39913299,2))
-			else op=Duel.SelectOption(tp,aux.Stringid(39913299,3))+1 end
+			if b1 and b2 then op=Duel.SelectOption(tp,1190,1152)
+			elseif b1 then op=0
+			else op=1 end
 			if op==0 then
 				Duel.SendtoHand(sc,nil,REASON_EFFECT)
 				Duel.ConfirmCards(1-tp,sc)

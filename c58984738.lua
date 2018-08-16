@@ -40,7 +40,7 @@ function c58984738.thop(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		local b1=tc:IsAbleToHand()
 		local b2=tc:GetActivateEffect():IsActivatable(tp)
-		if b1 and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(58984738,2))) then
+		if b1 and (not b2 or Duel.SelectOption(tp,1190,1150)==0) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tc)
 		else

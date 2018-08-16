@@ -26,7 +26,7 @@ function c20065322.activate(e,tp,eg,ep,ev,re,r,rp)
 		local th=g:GetFirst():IsAbleToHand()
 		local sp=ft>0 and g:GetFirst():IsCanBeSpecialSummoned(e,0,tp,false,false)
 		local op=0
-		if th and sp then op=Duel.SelectOption(tp,aux.Stringid(20065322,0),aux.Stringid(20065322,1))
+		if th and sp then op=Duel.SelectOption(tp,1190,1152)
 		elseif th then op=0
 		else op=1 end
 		if op==0 then

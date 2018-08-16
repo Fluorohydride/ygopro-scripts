@@ -79,7 +79,7 @@ function c81470373.sumop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCondition(c81470373.ttcon)
 		c:RegisterEffect(e2)
 		if c:IsSummonable(true,nil)
-			and (not c:IsAbleToGrave() or Duel.SelectYesNo(tp,aux.Stringid(81470373,1))) then
+			and (not c:IsAbleToGrave() or Duel.SelectOption(tp,1151,1191)==0) then
 			Duel.BreakEffect()
 			Duel.Summon(tp,c,true,nil)
 		else

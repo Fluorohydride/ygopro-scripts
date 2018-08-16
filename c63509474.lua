@@ -64,7 +64,7 @@ function c63509474.operation(e,tp,eg,ep,ev,re,r,rp)
 		local sc=g:GetFirst()
 		if sc then
 			if sc:IsCanBeSpecialSummoned(e,0,tp,false,false)
-				and (not sc:IsAbleToHand() or Duel.SelectYesNo(tp,aux.Stringid(63509474,2))) then
+				and (not sc:IsAbleToHand() or Duel.SelectOption(tp,1190,1152)==1) then
 				Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
 			else
 				Duel.SendtoHand(sc,nil,REASON_EFFECT)

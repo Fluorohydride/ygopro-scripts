@@ -46,7 +46,7 @@ function c1322368.spop(e,tp,eg,ep,ev,re,r,rp)
 		local sc=sg:GetFirst()
 		if sc then
 			if zone~=0 and sc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone)
-				and (not sc:IsAbleToHand() or Duel.SelectYesNo(tp,aux.Stringid(1322368,1))) then
+				and (not sc:IsAbleToHand() or Duel.SelectOption(tp,1190,1152)==1) then
 				Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP,zone)
 			else
 				Duel.SendtoHand(sc,nil,REASON_EFFECT)
