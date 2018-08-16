@@ -35,7 +35,7 @@ function c31189536.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetLabelObject(tc)
 		e1:SetCondition(c31189536.descon)
 		e1:SetOperation(c31189536.desop)
-		e:SetReset(RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
 	end
 end
