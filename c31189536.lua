@@ -40,6 +40,7 @@ function c31189536.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c31189536.descon(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
 	return tc:GetFlagEffectLabel(31189536)==e:GetLabel()
 end
 function c31189536.desop(e,tp,eg,ep,ev,re,r,rp)
