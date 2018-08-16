@@ -18,7 +18,7 @@ function c38576155.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c38576155.thcfilter(c)
-	return c:IsFacedown() or not c:IsSetCard(0x228)
+	return c:IsFacedown() or not c:IsSetCard(0x122)
 end
 function c38576155.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)>0

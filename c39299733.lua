@@ -31,7 +31,7 @@ function c39299733.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE)
 	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e4:SetCode(EFFECT_ADD_SETCODE)
-	e4:SetValue(0x228)
+	e4:SetValue(0x122)
 	c:RegisterEffect(e4)
 	--direct attack
 	local e5=Effect.CreateEffect(c)

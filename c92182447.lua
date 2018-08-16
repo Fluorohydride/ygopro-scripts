@@ -11,7 +11,7 @@ function c92182447.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c92182447.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x228)
+	return c:IsFaceup() and c:IsSetCard(0x122)
 end
 function c92182447.condition(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetCurrentChain()>0 or Duel.GetCurrentPhase()~=PHASE_BATTLE or Duel.GetTurnPlayer()~=tp then return false end

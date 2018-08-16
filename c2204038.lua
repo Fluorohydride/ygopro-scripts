@@ -63,5 +63,5 @@ function c2204038.ptop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c2204038.ptfilter(e,c)
-	return c:IsSetCard(0x228)
+	return c:IsSetCard(0x122)
 end

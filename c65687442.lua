@@ -21,7 +21,7 @@ function c65687442.initial_effect(c)
 end
 c65687442.listed_names={92182447}
 function c65687442.filter(c,e,tp)
-	return c:IsSetCard(0x228) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x122) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c65687442.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

@@ -46,7 +46,7 @@ function c66809920.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c66809920.cfilter(c)
-	return c:IsSetCard(0x228) and not c:IsCode(66809920)
+	return c:IsSetCard(0x122) and not c:IsCode(66809920)
 end
 function c66809920.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c66809920.cfilter,tp,LOCATION_MZONE,0,1,nil)

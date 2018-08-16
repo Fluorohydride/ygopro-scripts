@@ -24,7 +24,7 @@ function c3026686.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c3026686.thfilter(c)
-	return c:IsSetCard(0x228) and c:IsAbleToHand() and not c:IsCode(3026686)
+	return c:IsSetCard(0x122) and c:IsAbleToHand() and not c:IsCode(3026686)
 end
 function c3026686.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c3026686.thfilter,tp,LOCATION_DECK,0,1,nil) end
