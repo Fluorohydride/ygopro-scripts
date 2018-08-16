@@ -55,7 +55,9 @@ function c7986397.activate(e,tp,eg,ep,ev,re,r,rp)
 		local mg=m:Filter(Card.IsCanBeRitualMaterial,tc,tc)
 		local dg=Duel.GetMatchingGroup(c7986397.dfilter,tp,LOCATION_DECK,0,nil)
 		if ft>0 then
-			if dg:IsExists(c7986397.dlvfilter,1,nil,tp,mg,tc) and Duel.SelectYesNo(tp,aux.Stringid(7986397,0)) then
+			local b1=dg:IsExists(c7986397.dlvfilter,1,nil,tp,mg,tc)
+			local b2=mg:CheckWithSumEqual(Card.GetRitualLevel,tc:GetLevel(),1,99,tc)
+			if b1 and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(7986397,0))) then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 				dmat=dg:FilterSelect(tp,c7986397.dlvfilter,1,1,nil,tp,mg,tc)
 				Duel.SetSelectedCard(dmat)
@@ -69,7 +71,10 @@ function c7986397.activate(e,tp,eg,ep,ev,re,r,rp)
 		else
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 			mat=mg:FilterSelect(tp,c7986397.mfilterf,1,1,nil,tp,mg,dg,tc)
-			if dg:IsExists(c7986397.dlvfilter,1,nil,tp,mg,tc,mat:GetFirst()) and Duel.SelectYesNo(tp,aux.Stringid(7986397,0)) then
+			local b1=dg:IsExists(c7986397.dlvfilter,1,nil,tp,mg,tc,mat:GetFirst())
+			Duel.SetSelectedCard(mat)
+			local b2=mg:CheckWithSumEqual(Card.GetRitualLevel,tc:GetLevel(),0,99,tc)
+			if b1 and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(7986397,0))) then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 				dmat=dg:FilterSelect(tp,c7986397.dlvfilter,1,1,nil,tp,mg,tc,mat:GetFirst())
 				mat:Merge(dmat)
