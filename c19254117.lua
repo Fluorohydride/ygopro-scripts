@@ -87,16 +87,15 @@ function c19254117.tgop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)
-		e1:SetCode(EFFECT_RISE_TO_FULL_HEIGHT)
+		e1:SetCode(EFFECT_ONLY_ATTACK_MONSTER)
 		e1:SetTargetRange(0,LOCATION_MZONE)
+		e1:SetValue(c19254117.atklimit)
 		e1:SetLabel(tc:GetRealFieldID())
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
-		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_SINGLE)
-		e2:SetCode(EFFECT_ONLY_BE_ATTACKED)
-		e2:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_PHASE+PHASE_END)
-		tc:RegisterEffect(e2,true)
 		tc:RegisterFlagEffect(19254117,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_PHASE+PHASE_END,0,0)
 	end
+end
+function c19254117.atklimit(e,c)
+	return c:GetRealFieldID()==e:GetLabel()
 end

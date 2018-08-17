@@ -23,17 +23,17 @@ end
 function c90740329.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_MUST_BE_ATTACKED)
-		e1:SetValue(1)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		tc:RegisterEffect(e1)
+		local fid=tc:GetRealFieldID()
 		local e2=Effect.CreateEffect(e:GetHandler())
 		e2:SetType(EFFECT_TYPE_FIELD)
 		e2:SetCode(EFFECT_MUST_ATTACK_MONSTER)
 		e2:SetTargetRange(0,LOCATION_MZONE)
+		e2:SetValue(c90740329.atklimit)
+		e2:SetLabel(fid)
 		e2:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e2,tp)
 	end
+end
+function c90740329.atklimit(e,c)
+	return c:GetRealFieldID()==e:GetLabel()
 end

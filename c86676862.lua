@@ -29,12 +29,8 @@ function c86676862.initial_effect(c)
 	c:RegisterEffect(e4)
 	local e5=e4:Clone()
 	e5:SetCode(EFFECT_MUST_ATTACK_MONSTER)
+	e5:SetValue(c86676862.atklimit)
 	c:RegisterEffect(e5)
-	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetCode(EFFECT_MUST_BE_ATTACKED)
-	e6:SetValue(1)
-	c:RegisterEffect(e6)
 end
 c86676862.material_setcode=0x8
 c86676862.dark_calling=true
@@ -46,5 +42,9 @@ function c86676862.ffilter(c)
 end
 function c86676862.poscon(e)
 	local ph=Duel.GetCurrentPhase()
-	return Duel.GetTurnPlayer()~=e:GetHandler():GetControler() and ph>=0x8 and ph<=0x20
+	return Duel.GetTurnPlayer()~=e:GetHandler():GetControler()
+		and ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE
+end
+function c86676862.atklimit(e,c)
+	return c==e:GetHandler()
 end

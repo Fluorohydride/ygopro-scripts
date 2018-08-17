@@ -48,6 +48,7 @@ function c69058960.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
 	if g:GetCount()>0 then
 		Duel.ChangePosition(g,POS_FACEUP_ATTACK)
+		local fid=c:GetRealFieldID()
 		local tc=g:GetFirst()
 		while tc do
 			local e1=Effect.CreateEffect(c)
@@ -57,16 +58,15 @@ function c69058960.operation(e,tp,eg,ep,ev,re,r,rp)
 			tc:RegisterEffect(e1)
 			local e2=e1:Clone()
 			e2:SetCode(EFFECT_MUST_ATTACK_MONSTER)
+			e2:SetValue(c69058960.atklimit)
+			e2:SetLabel(fid)
 			tc:RegisterEffect(e2)
 			tc=g:GetNext()
 		end
-		local e3=Effect.CreateEffect(c)
-		e3:SetType(EFFECT_TYPE_SINGLE)
-		e3:SetCode(EFFECT_MUST_BE_ATTACKED)
-		e3:SetValue(1)
-		e3:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_PHASE+PHASE_END)
-		c:RegisterEffect(e3)
 	end
+end
+function c69058960.atklimit(e,c)
+	return c:GetRealFieldID()==e:GetLabel()
 end
 function c69058960.filter(c)
 	return c:IsFaceup() and c:IsCode(95442074)

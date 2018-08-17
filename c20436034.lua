@@ -23,13 +23,6 @@ function c20436034.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_EQUIP)
 	e4:SetCode(EFFECT_ONLY_BE_ATTACKED)
 	c:RegisterEffect(e4)
-	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_FIELD)
-	e5:SetCode(EFFECT_ONLY_ATTACK_MONSTER)
-	e5:SetRange(LOCATION_SZONE)
-	e5:SetTargetRange(0,LOCATION_MZONE)
-	e5:SetCondition(c20436034.atkcon)
-	c:RegisterEffect(e5)
 	--equip limit
 	local e6=Effect.CreateEffect(c)
 	e6:SetType(EFFECT_TYPE_SINGLE)
@@ -53,7 +46,4 @@ function c20436034.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c20436034.eqlimit(e,c)
 	return e:GetHandlerPlayer()==c:GetControler()
-end
-function c20436034.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetEquipTarget()~=nil
 end

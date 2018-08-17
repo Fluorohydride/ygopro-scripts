@@ -35,14 +35,8 @@ function c22200403.initial_effect(c)
 	c:RegisterEffect(e4)
 	local e5=e4:Clone()
 	e5:SetCode(EFFECT_MUST_ATTACK_MONSTER)
+	e5:SetValue(c22200403.atklimit)
 	c:RegisterEffect(e5)
-	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetCode(EFFECT_MUST_BE_ATTACKED)
-	e6:SetCondition(c22200403.effcon)
-	e6:SetValue(1)
-	e6:SetLabel(3)
-	c:RegisterEffect(e6)
 	--draw
 	local e7=Effect.CreateEffect(c)
 	e7:SetDescription(aux.Stringid(22200403,1))
@@ -81,6 +75,9 @@ function c22200403.desop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToBattle() then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
+end
+function c22200403.atklimit(e,c)
+	return c==e:GetHandler()
 end
 function c22200403.drcon1(e,tp,eg,ep,ev,re,r,rp)
 	return c22200403.effcon(e)

@@ -23,6 +23,7 @@ end
 function c92854392.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
+		local fid=tc:GetRealFieldID()
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_MUST_ATTACK)
@@ -31,13 +32,12 @@ function c92854392.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterEffect(e1,tp)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_MUST_ATTACK_MONSTER)
+		e2:SetValue(c92854392.atklimit)
+		e2:SetLabel(fid)
 		Duel.RegisterEffect(e2,tp)
-		local e3=Effect.CreateEffect(e:GetHandler())
-		e3:SetType(EFFECT_TYPE_SINGLE)
-		e3:SetCode(EFFECT_MUST_BE_ATTACKED)
-		e3:SetValue(1)
-		e3:SetReset(RESET_PHASE+PHASE_BATTLE+RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
-		tc:RegisterEffect(e3,true)
 		Duel.ChangeAttackTarget(tc)
 	end
+end
+function c92854392.atklimit(e,c)
+	return c:GetRealFieldID()==e:GetLabel()
 end
