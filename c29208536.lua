@@ -15,15 +15,6 @@ function c29208536.initial_effect(c)
 	e1:SetTarget(c29208536.target)
 	e1:SetOperation(c29208536.operation)
 	c:RegisterEffect(e1)
-	--disable
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_DISABLE)
-	e2:SetRange(LOCATION_MZONE)
-	e2:SetTargetRange(LOCATION_ONFIELD,LOCATION_ONFIELD)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetTarget(c29208536.distg)
-	c:RegisterEffect(e2)
 	--cannnot activate
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
@@ -52,10 +43,18 @@ function c29208536.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_OWNER_RELATE+EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetRange(LOCATION_MZONE)
+		e1:SetCode(EFFECT_DISABLE)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetCondition(c29208536.rcon)
+		tc:RegisterEffect(e1)
 	end
 end
-function c29208536.distg(e,c)
-	return e:GetHandler():IsHasCardTarget(c)
+function c29208536.rcon(e)
+	return e:GetOwner():IsHasCardTarget(e:GetHandler())
 end
 function c29208536.actcon(e)
 	return e:GetHandler():GetCardTargetCount()>0

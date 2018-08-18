@@ -75,10 +75,10 @@ function c69228245.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_DISABLE)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetCondition(c69228245.rcon)
-		tc:RegisterEffect(e1,true)
+		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_CANNOT_ATTACK)
-		tc:RegisterEffect(e2,true)
+		tc:RegisterEffect(e2)
 	end
 end
 function c69228245.rcon(e)

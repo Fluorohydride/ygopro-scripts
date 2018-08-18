@@ -13,19 +13,6 @@ function c43730887.initial_effect(c)
 	local e2=e1:Clone()
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e2)
-	--disable
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_FIELD)
-	e4:SetCode(EFFECT_DISABLE)
-	e4:SetRange(LOCATION_MZONE)
-	e4:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e4:SetTarget(c43730887.distg)
-	c:RegisterEffect(e4)
-	--cannot attack
-	local e5=e4:Clone()
-	e5:SetCode(EFFECT_CANNOT_ATTACK)
-	c:RegisterEffect(e5)
 	--indes
 	local e6=Effect.CreateEffect(c)
 	e6:SetType(EFFECT_TYPE_SINGLE)
@@ -51,10 +38,21 @@ function c43730887.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_OWNER_RELATE+EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetRange(LOCATION_MZONE)
+		e1:SetCode(EFFECT_DISABLE)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetCondition(c43730887.rcon)
+		tc:RegisterEffect(e1)
+		local e2=e1:Clone()
+		e2:SetCode(EFFECT_CANNOT_ATTACK)
+		tc:RegisterEffect(e2)
 	end
 end
-function c43730887.distg(e,c)
-	return e:GetHandler():IsHasCardTarget(c)
+function c43730887.rcon(e)
+	return e:GetOwner():IsHasCardTarget(e:GetHandler())
 end
 function c43730887.indcon(e)
 	return e:GetHandler():GetFirstCardTarget()~=nil
