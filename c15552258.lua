@@ -21,7 +21,7 @@ function c15552258.activate(e,tp,eg,ep,ev,re,r,rp)
 		opt=Duel.SelectOption(1-tp,aux.Stringid(15552258,0),aux.Stringid(15552258,1))
 	end
 	if opt==1 then
-		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE,1)
+		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 		return
 	end
 	local tc=g:GetFirst()

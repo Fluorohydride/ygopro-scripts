@@ -100,7 +100,7 @@ function c21123811.negcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c21123811.negop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateAttack() then
-		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE,1)
+		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 	end
 end
 function c21123811.retop(e,tp,eg,ep,ev,re,r,rp)

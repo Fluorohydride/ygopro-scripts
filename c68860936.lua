@@ -29,6 +29,6 @@ function c68860936.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 	local ph=Duel.GetCurrentPhase()
 	if tp~=Duel.GetTurnPlayer() and ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE then
-		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE,1)
+		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 	end
 end

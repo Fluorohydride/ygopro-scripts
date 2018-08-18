@@ -44,7 +44,7 @@ function c276357.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c276357.activate(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) and Duel.NegateAttack() then
-		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE,1)
+		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 	end
 end
 function c276357.filter(c,tp)

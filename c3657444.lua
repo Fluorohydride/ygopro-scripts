@@ -40,7 +40,7 @@ function c3657444.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c3657444.operation1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Draw(tp,1,REASON_EFFECT)
-	Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE,1)
+	Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 end
 function c3657444.filter2(c)
 	return c:IsFaceup() and c:IsAbleToRemove()

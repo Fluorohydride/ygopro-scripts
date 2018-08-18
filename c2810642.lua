@@ -67,7 +67,7 @@ function c2810642.operation(e,tp,eg,ep,ev,re,r,rp)
 	local dc=Duel.GetFirstTarget()
 	if dc:IsRelateToEffect(e) and Duel.Destroy(dc,REASON_EFFECT)~=0 then
 		Duel.BreakEffect()
-		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE,1)
+		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 	end
 end
 function c2810642.rmfilter(c,fid)
