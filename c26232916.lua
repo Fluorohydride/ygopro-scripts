@@ -42,7 +42,7 @@ function c26232916.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c26232916.thcfilter,1,nil,tp)
 end
 function c26232916.thfilter(c)
-	return ((c:IsType(TYPE_MONSTER) and c:IsSetCard(0x2b)) or c:IsSetCard(0x61))
+	return (c:IsType(TYPE_MONSTER) and c:IsSetCard(0x2b) or c:IsSetCard(0x61))
 		and c:IsAbleToHand()
 end
 function c26232916.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -73,9 +73,9 @@ function c26232916.aclimit(e,re,tp)
 	return re:GetHandler():IsCode(tc:GetCode()) and not re:GetHandler():IsImmuneToEffect(e)
 end
 function c26232916.repfilter(c,tp)
-	return c:IsFaceup() and ((c:IsType(TYPE_MONSTER) and c:IsSetCard(0x2b)) or c:IsSetCard(0x61))
+	return c:IsFaceup() and (c:IsType(TYPE_MONSTER) and c:IsSetCard(0x2b) or c:IsSetCard(0x61))
 		and c:IsOnField() and c:IsControler(tp)
-		and not c:IsReason(REASON_REPLACE) and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
+		and not c:IsReason(REASON_REPLACE) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function c26232916.rmfilter(c)
 	return c:IsSetCard(0x2b) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
@@ -84,8 +84,8 @@ function c26232916.repval(e,c)
 	return c26232916.repfilter(c,e:GetHandlerPlayer())
 end
 function c26232916.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c26232916.repfilter,1,nil,tp) and
-		Duel.IsExistingMatchingCard(c26232916.rmfilter,tp,LOCATION_GRAVE,0,1,nil) end
+	if chk==0 then return eg:IsExists(c26232916.repfilter,1,nil,tp)
+		and Duel.IsExistingMatchingCard(c26232916.rmfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
 		local tg=Duel.SelectMatchingCard(tp,c26232916.rmfilter,tp,LOCATION_GRAVE,0,1,1,nil)
