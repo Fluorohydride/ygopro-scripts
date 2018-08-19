@@ -74,8 +74,8 @@ function c26232916.aclimit(e,re,tp)
 end
 function c26232916.repfilter(c,tp)
 	return c:IsFaceup() and (c:IsType(TYPE_MONSTER) and c:IsSetCard(0x2b) or c:IsSetCard(0x61))
-		and c:IsOnField() and c:IsControler(tp)
-		and not c:IsReason(REASON_REPLACE) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
+		and c:IsOnField() and c:IsControler(tp) and not c:IsReason(REASON_REPLACE)
+		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 end
 function c26232916.rmfilter(c)
 	return c:IsSetCard(0x2b) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
