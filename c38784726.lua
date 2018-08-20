@@ -95,7 +95,7 @@ function c38784726.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp
 end
 function c38784726.spfilter(c,e,tp)
-	return c:IsCode(1613112) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsCode(16313112) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c38784726.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
