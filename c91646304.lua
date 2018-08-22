@@ -38,7 +38,7 @@ end
 function c91646304.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return eg:IsExists(c91646304.repfilter,1,c,tp) and c:IsAbleToRemove()
-		and Duel.GetFlagEffect(tp,91646304)==0 end
+		and not c:IsStatus(STATUS_DESTROY_CONFIRMED) and Duel.GetFlagEffect(tp,91646304)==0 end
 	return Duel.SelectEffectYesNo(tp,c,96)
 end
 function c91646304.repval(e,c)

@@ -65,7 +65,7 @@ function c20457551.atkval(e,c)
 	return e:GetHandler():GetEquipTarget():GetLevel()*-100
 end
 function c20457551.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetCurrentPhase()==PHASE_END end
+	if chk==0 then return Duel.GetCurrentPhase()==PHASE_END and not e:GetHandler():IsStatus(STATUS_DESTROY_CONFIRMED) end
 	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
 		return true
