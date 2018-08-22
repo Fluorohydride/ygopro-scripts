@@ -49,7 +49,7 @@ end
 function c90020780.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsPreviousLocation(LOCATION_GRAVE) and (c:IsReason(REASON_EFFECT)
-		or c:IsReason(REASON_COST) and re:IsHasType(0x7e0))
+		or c:IsReason(REASON_COST) and re:IsHasType(0x7f0))
 end
 function c90020780.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
