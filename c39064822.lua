@@ -52,12 +52,13 @@ function c39064822.sumop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if Duel.GetFlagEffect(tp,39064822)~=0 then return end
 	local c=e:GetHandler()
+	local fid=c:GetFieldID()
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(39064822,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetTargetRange(LOCATION_HAND,0)
 	e1:SetCode(EFFECT_EXTRA_SUMMON_COUNT)
-	e1:SetLabelObject(c)
+	e1:SetLabel(fid)
 	e1:SetCondition(c39064822.sumcon2)
 	e1:SetValue(c39064822.sumval)
 	e1:SetReset(RESET_PHASE+PHASE_END)
@@ -65,10 +66,10 @@ function c39064822.sumop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(tp,39064822,RESET_PHASE+PHASE_END,0,1)
 end
 function c39064822.sumcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetLabelObject():IsLocation(LOCATION_MZONE)
+	return e:GetHandler():GetFieldID()==e:GetLabel()
 end
 function c39064822.sumval(e,c)
-	local c=e:GetLabelObject()
+	local c=e:GetHandler()
 	local sumzone=c:GetLinkedZone()
 	local relzone=-bit.lshift(1,c:GetSequence())
 	return 0,sumzone,relzone
