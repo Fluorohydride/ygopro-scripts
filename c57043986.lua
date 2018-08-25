@@ -40,7 +40,7 @@ end
 function c57043986.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if ((tc:IsFaceup() and not tc:IsDisabled()) or tc:IsType(TYPE_TRAPMONSTER)) and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and not tc:IsDisabled() and tc:IsRelateToEffect(e) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -52,11 +52,6 @@ function c57043986.negop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		e2:SetValue(RESET_TURN_SET)
 		tc:RegisterEffect(e2)
-		if tc:IsType(TYPE_TRAPMONSTER) then
-			local e3=e1:Clone()
-			e3:SetCode(EFFECT_DISABLE_TRAPMONSTER)
-			tc:RegisterEffect(e3)
-		end
 	end
 end
 function c57043986.spcon(e,tp,eg,ep,ev,re,r,rp)

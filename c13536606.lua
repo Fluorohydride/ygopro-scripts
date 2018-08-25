@@ -30,7 +30,7 @@ function c13536606.atkval(e,c)
 	return c:GetMutualLinkedGroupCount()*300
 end
 function c13536606.rfilter(c,tp,g)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ft=Duel.GetMZoneCount(tp,c)
 	local lk=math.min(3,ft)
 	return c:IsFaceup() and c:IsType(TYPE_LINK) and c:IsLinkBelow(lk) and c:IsReleasableByEffect() and g:IsContains(c)
 		and (ft==1 or not Duel.IsPlayerAffectedByEffect(tp,59822133))
