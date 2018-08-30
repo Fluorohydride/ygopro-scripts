@@ -73,8 +73,8 @@ function c80101899.aclimit2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ResetFlagEffect(tp,80101899)
 end
 function c80101899.actcon(e)
-	return Duel.GetFlagEffect(tp,80101899)~=0
+	return Duel.GetFlagEffect(e:GetHandlerPlayer(),80101899)~=0
 end
 function c80101899.aclimit3(e,re,tp)
-	return re:GetHandler():IsType(TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
+	return re:IsActiveType(TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end

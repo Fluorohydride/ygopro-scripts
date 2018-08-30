@@ -8,7 +8,7 @@ function c15661378.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetValue(aux.fuslimit)
+	e1:SetValue(c15661378.splimit)
 	c:RegisterEffect(e1)
 	--special summon rule
 	local e2=Effect.CreateEffect(c)
@@ -34,6 +34,10 @@ function c15661378.initial_effect(c)
 end
 function c15661378.ffilter(c,fc,sub,mg,sg)
 	return c:IsControler(fc:GetControler()) and c:IsLocation(LOCATION_MZONE+LOCATION_HAND) and (not sg or not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode()))
+end
+function c15661378.splimit(e,se,sp,st)
+	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
+		or st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
 end
 function c15661378.cfilter(c,fc)
 	return c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(fc)

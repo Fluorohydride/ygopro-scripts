@@ -37,17 +37,21 @@ end
 function c17722185.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	local ct=e:GetLabel()
+	c:RegisterFlagEffect(17722185,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+	local flag=e:GetLabel()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_DISABLE)
-	e1:SetRange(LOCATION_SZONE)
 	e1:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
 	e1:SetTarget(c17722185.distg)
-	e1:SetLabel(ct)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-	c:RegisterEffect(e1)
+	e1:SetCondition(c17722185.discon)
+	e1:SetLabel(flag)
+	e1:SetReset(RESET_PHASE+PHASE_END)
+	Duel.RegisterEffect(e1,tp)
 end
 function c17722185.distg(e,c)
 	return c:IsType(e:GetLabel())
+end
+function c17722185.discon(e)
+	return e:GetHandler():GetFlagEffect(17722185)~=0
 end
