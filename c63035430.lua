@@ -13,20 +13,17 @@ function c63035430.initial_effect(c)
 	e2:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
 	e2:SetCondition(c63035430.atkcon)
 	e2:SetTarget(c63035430.atktg)
-	e2:SetValue(c63035430.atkval)
+	e2:SetValue(1000)
 	c:RegisterEffect(e2)
 end
 function c63035430.atkcon(e)
-	c63035430[0]=false
 	return Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL and Duel.GetAttackTarget()
 end
 function c63035430.atktg(e,c)
-	return c==Duel.GetAttacker() and c:IsSetCard(0x3008)
-end
-function c63035430.atkval(e,c)
+	if c~=Duel.GetAttacker() or not c:IsSetCard(0x3008) then return false end
 	local d=Duel.GetAttackTarget()
-	if c63035430[0] or c:GetAttack()<d:GetAttack() then
-		c63035430[0]=true
-		return 1000
-	else return 0 end
+	if c:GetFlagEffect(63035430)>0 or c:GetAttack()<d:GetAttack() then
+		c:RegisterFlagEffect(63035430,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE_CAL,0,1)
+		return true
+	else return false end
 end
