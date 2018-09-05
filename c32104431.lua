@@ -71,6 +71,7 @@ function c32104431.fusiontg(e,tp,eg,ep,ev,re,r,rp,chk)
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_GRAVE)
 end
 function c32104431.fusionop(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp

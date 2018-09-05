@@ -39,6 +39,7 @@ function c72291412.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,c,1,tp,LOCATION_GRAVE)
 end
 function c72291412.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
