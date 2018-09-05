@@ -14,7 +14,7 @@ function c23842445.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_EQUIP_LIMIT)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetValue(1)
+	e2:SetValue(c23842445.eqlimit)
 	c:RegisterEffect(e2)
 	--damage
 	local e3=Effect.CreateEffect(c)
@@ -27,6 +27,9 @@ function c23842445.initial_effect(c)
 	e3:SetTarget(c23842445.damtg)
 	e3:SetOperation(c23842445.damop)
 	c:RegisterEffect(e3)
+end
+function c23842445.eqlimit(e,c)
+	return c:IsControler(1-e:GetHandlerPlayer())
 end
 function c23842445.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
