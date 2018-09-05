@@ -31,7 +31,7 @@ function c58531587.atktarget(e,c)
 	return c:IsLevelAbove(4)
 end
 function c58531587.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp
+	return Duel.GetTurnPlayer()==tp and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c58531587.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
