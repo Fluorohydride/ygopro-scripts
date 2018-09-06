@@ -28,13 +28,13 @@ end
 function c52022648.tgval(e,re,rp)
 	return re:IsActiveType(TYPE_SPELL)
 end
-function c52022648.costfilter(c,ec)
+function c52022648.costfilter(c,ec,tp)
 	return c:IsType(TYPE_SPELL) and c:IsDiscardable()
 		and Duel.IsExistingMatchingCard(c52022648.eqfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,c,ec)
 end
 function c52022648.eqcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c52022648.costfilter,tp,LOCATION_HAND,0,1,nil,e:GetHandler()) end
-	Duel.DiscardHand(tp,c52022648.costfilter,1,1,REASON_COST+REASON_DISCARD,nil,e:GetHandler())
+	if chk==0 then return Duel.IsExistingMatchingCard(c52022648.costfilter,tp,LOCATION_HAND,0,1,nil,e:GetHandler(),tp) end
+	Duel.DiscardHand(tp,c52022648.costfilter,1,1,REASON_COST+REASON_DISCARD,nil,e:GetHandler(),tp)
 end
 function c52022648.eqfilter(c,ec)
 	return c:IsType(TYPE_EQUIP) and c:CheckEquipTarget(ec)
