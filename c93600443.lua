@@ -29,7 +29,7 @@ end
 function c93600443.chkfilter(c,tc)
 	local lv=tc:GetLevel()
 	local att=tc:GetAttribute()
-	return c:IsFaceup() and c:IsLevelBelow(lv) and c:GetAttribute()==att
+	return c:IsFaceup() and c:IsLevelBelow(lv) and (c:GetAttribute()&att)==att
 end
 function c93600443.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c93600443.chkfilter(chkc,e:GetLabelObject()) end

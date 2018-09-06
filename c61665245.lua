@@ -53,6 +53,9 @@ end
 function c61665245.spfilter2(c,e,tp,lg)
 	return c:IsFaceup() and lg:IsContains(c) and Duel.IsExistingMatchingCard(c61665245.spfilter3,tp,LOCATION_DECK,0,1,nil,e,tp,c:GetRace())
 end
+function c61665245.spfilter_chkc(c,e,tp,lg,rc)
+	return c:IsFaceup() and lg:IsContains(c) and (c:GetRace()&rc)==rc
+end
 function c61665245.spfilter3(c,e,tp,rac)
 	if not c:IsRace(rac) then return false end
 	local ok=false
@@ -68,11 +71,12 @@ function c61665245.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	zone[0]=c:GetLinkedZone(0)
 	zone[1]=c:GetLinkedZone(1)
 	local lg=c:GetLinkedGroup()
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c61665245.spfilter2(chkc,e,tp,lg) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c61665245.spfilter_chkc(chkc,e,tp,lg,e:GetLabel()) end
 	if chk==0 then return Duel.IsExistingTarget(c61665245.spfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,e,tp,lg) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c61665245.spfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,e,tp,lg)
+	local g=Duel.SelectTarget(tp,c61665245.spfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,e,tp,lg)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
+	e:SetLabel(g:GetFirst():GetRace())
 end
 function c61665245.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

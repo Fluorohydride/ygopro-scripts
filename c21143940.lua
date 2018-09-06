@@ -20,7 +20,7 @@ function c21143940.filter(c,e,tp)
 		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
 function c21143940.chkfilter(c,att)
-	return c:IsFaceup() and c:IsSetCard(0x8) and c:GetAttribute()==att
+	return c:IsFaceup() and c:IsSetCard(0x8) and (c:GetAttribute()&att)==att
 end
 function c21143940.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c21143940.chkfilter(chkc,e:GetLabel()) end
