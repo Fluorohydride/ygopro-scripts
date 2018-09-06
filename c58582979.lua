@@ -27,7 +27,8 @@ end
 function c58582979.hspcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.IsExistingMatchingCard(c58582979.hspcfilter,tp,LOCATION_HAND,0,1,c)
+	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c58582979.hspcfilter,tp,LOCATION_HAND,0,1,c)
 end
 function c58582979.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
