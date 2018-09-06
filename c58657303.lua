@@ -15,7 +15,7 @@ function c58657303.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsEnvironment(47355498)
 end
 function c58657303.filter1(c,e)
-	return c:IsOnField() and not c:IsImmuneToEffect(e)
+	return not c:IsImmuneToEffect(e)
 end
 function c58657303.filter2(c,e,tp,m,f,gc,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsRace(RACE_SPELLCASTER) and (not f or f(c))
@@ -44,7 +44,7 @@ function c58657303.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local chkf=tp
 	if c:IsFacedown() or not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) then return end
-	local mg1=Duel.GetFusionMaterial(tp)
+	local mg1=Duel.GetFusionMaterial(tp):Filter(c58657303.filter1,nil,e)
 	local sg1=Duel.GetMatchingGroup(c58657303.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,c,chkf)
 	local mg2=nil
 	local sg2=nil
