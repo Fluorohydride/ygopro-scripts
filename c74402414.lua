@@ -116,12 +116,13 @@ function c74402414.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetLabelObject():FilterCount(c74402414.dfilter,nil)
 	local c=e:GetHandler()
 	if c:IsDisabled() or not c:IsStatus(STATUS_EFFECT_ENABLED) or ct==0 then
-		e:SetLabel(1)
-	else e:SetLabel(0) end
+		e:SetLabel(0)
+	else e:SetLabel(ct) end
 end
 function c74402414.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if e:GetLabelObject():GetLabel()==0 and c:GetPreviousControler()==tp then
+	local ct=e:GetLabelObject():GetLabel()
+	if ct>0 and c:GetPreviousControler()==tp then
 		Duel.Damage(tp,ct*500,REASON_EFFECT)
 	end
 end
