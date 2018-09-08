@@ -17,21 +17,11 @@ function c77075360.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk up
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(77075360,0))
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
-	e2:SetRange(LOCATION_MZONE)
-	e2:SetCountLimit(1,77075361)
-	e2:SetCondition(c77075360.atkcon)
-	e2:SetOperation(c77075360.atkop)
-	c:RegisterEffect(e2,false,1)
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetCondition(c77075360.spcon)
-	e3:SetOperation(c77075360.regop)
-	c:RegisterEffect(e3)
+	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e2:SetOperation(c77075360.regop)
+	c:RegisterEffect(e2)
 	Duel.AddCustomActivityCounter(77075360,ACTIVITY_SPSUMMON,c77075360.counterfilter)
 end
 c77075360.material_setcode=0x1017
@@ -65,25 +55,44 @@ function c77075360.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
-function c77075360.rescon(sg,e,tp,mg)
-	return aux.ChkfMMZ(#sg)(sg,e,tp,mg) and sg:GetClassCount(Card.GetLevel)==#sg
-end
 function c77075360.spop(e,tp,eg,ep,ev,re,r,rp)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local g=Duel.GetMatchingGroup(c77075360.filter,tp,LOCATION_DECK,0,nil,e,tp)
-	local ct=math.min(Duel.GetLocationCount(tp,LOCATION_MZONE),g:GetClassCount(Card.GetLevel))
-	if ct<=0 then return end
-	if Duel.IsPlayerAffectedByEffect(tp,CARD_BLUEEYES_SPIRIT) then ct=1 end
-	local sg=aux.SelectUnselectGroup(g,e,tp,ct,ct,c77075360.rescon,1,tp,HINTMSG_SPSUMMON)
+	if ft<=0 or g:GetCount()==0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
+	local sg=Group.CreateGroup()
+	while ft>0 and g:GetCount()>0 do
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local sg1=g:Select(tp,1,1,nil)
+		if sg1:GetCount()>0 then
+			local tc=sg1:GetFirst()
+			sg:AddCard(tc)
+			g:Remove(Card.IsLevel,nil,tc:GetLevel())
+			ft=ft-1
+		else
+			break
+		end
+	end
 	if #sg>0 then
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end
 function c77075360.regop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(77075360,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+	local c=e:GetHandler()
+	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(77075360,1))
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
+	e1:SetRange(LOCATION_MZONE)
+	e1:SetCountLimit(1,77075361)
+	e1:SetCondition(c77075360.atkcon)
+	e1:SetOperation(c77075360.atkop)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+	c:RegisterEffect(e1)
 end
 function c77075360.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetFlagEffect(77075360)~=0 and (c==Duel.GetAttacker() and Duel.GetAttackTarget()~=nil) or c==Duel.GetAttackTarget()
+	return c==Duel.GetAttacker() and Duel.GetAttackTarget()~=nil or c==Duel.GetAttackTarget()
 end
 function c77075360.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

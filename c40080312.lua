@@ -2,7 +2,7 @@
 function c40080312.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcCode3(c,89943723,43237273,80344569,false,false)
+	aux.AddFusionProcCode3(c,89943723,80344569,43237273,false,false)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -49,13 +49,12 @@ function c40080312.initial_effect(c)
 	e5:SetOperation(c40080312.drop)
 	c:RegisterEffect(e5)
 end
-c40080312.listed_names={89943723,43237273,80344569}
-c40080312.material_setcode={0x8,0x3008,0x9,0x1f}
+c17032740.material_setcode=0x8
 function c40080312.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
 function c40080312.cfilter(c)
-	return c:IsFusionCode(89943723,43237273,80344569) and c:IsAbleToDeckOrExtraAsCost()
+	return c:IsFusionCode(89943723,80344569,43237273) and c:IsAbleToDeckOrExtraAsCost()
 end
 function c40080312.fcheck(c,sg,g,code,...)
 	if not c:IsFusionCode(code) then return false end
@@ -83,14 +82,14 @@ function c40080312.spcon(e,c)
 	local tp=c:GetControler()
 	local mg=Duel.GetMatchingGroup(c40080312.cfilter,tp,LOCATION_ONFIELD,0,nil)
 	local sg=Group.CreateGroup()
-	return mg:IsExists(c40080312.fselect,1,nil,tp,mg,sg,89943723,43237273,80344569)
+	return mg:IsExists(c40080312.fselect,1,nil,tp,mg,sg,89943723,80344569,43237273)
 end
 function c40080312.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetMatchingGroup(c40080312.cfilter,tp,LOCATION_ONFIELD,0,nil)
 	local sg=Group.CreateGroup()
 	while sg:GetCount()<3 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-		local g=mg:FilterSelect(tp,c40080312.fselect,1,1,sg,tp,mg,sg,89943723,43237273,80344569)
+		local g=mg:FilterSelect(tp,c40080312.fselect,1,1,sg,tp,mg,sg,89943723,80344569,43237273)
 		sg:Merge(g)
 	end
 	local cg=sg:Filter(Card.IsFacedown,nil)
@@ -136,6 +135,7 @@ function c40080312.drop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	if Duel.Draw(p,d,REASON_EFFECT)~=0 and #g>0 then
 		Duel.BreakEffect()
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(40080312,1))
 		local sg=g:Select(tp,1,1,nil)
 		local tc=sg:GetFirst()
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)

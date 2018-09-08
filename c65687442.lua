@@ -29,19 +29,26 @@ function c65687442.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c65687442.spop(e,tp,eg,ep,ev,re,r,rp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<=0 then return end
 	local c=e:GetHandler()
-	if ft>5 then ft=5 end
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local g=Duel.GetMatchingGroup(c65687442.filter,tp,LOCATION_HAND,0,nil,e,tp)
+	if ft<=0 or g:GetCount()==0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local sg=Group.CreateGroup()
-	repeat
+	local init=1
+	while ft>0 and g:GetCount()>0 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local tc=g:Select(tp,1,1,nil):GetFirst()
-		sg:AddCard(tc)
-		g:Remove(Card.IsCode,nil,tc:GetCode())
-		ft=ft-1
-	until ft<=0 or g:GetCount()==0 or not Duel.SelectYesNo(tp,aux.Stringid(65687442,0))
+		local sg1=g:Select(tp,init,1,nil)
+		if sg1:GetCount()>0 then
+			local tc=sg1:GetFirst()
+			sg:AddCard(tc)
+			g:Remove(Card.IsCode,nil,tc:GetCode())
+			ft=ft-1
+			init=0
+		else
+			break
+		end
+	end
 	if #sg>0 then
 		local ct=Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 		if ct>2 then
@@ -56,7 +63,7 @@ function c65687442.spop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then
-		local e2=Effect.CreateEffect(e:GetHandler())
+		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e2:SetCode(EVENT_PHASE+PHASE_END)
 		e2:SetCountLimit(1)
