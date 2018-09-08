@@ -1,4 +1,4 @@
---Vendread Core
+--ヴェンデット・コア
 function c49394035.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

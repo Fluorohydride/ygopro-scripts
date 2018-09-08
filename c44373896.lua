@@ -1,4 +1,4 @@
---Destruction Dragon
+--デストロイ・ドラゴン
 function c44373896.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition

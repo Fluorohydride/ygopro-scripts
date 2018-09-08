@@ -1,4 +1,4 @@
---F.A. Turbo Charger
+--F.A.ターボチャージャー
 function c75059201.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

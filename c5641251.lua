@@ -1,4 +1,4 @@
---F.A. Dead Heat
+--F.A.デッド・ヒート
 function c5641251.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

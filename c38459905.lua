@@ -1,4 +1,4 @@
---F.A. Test Run
+--F.A.シェイクダウン
 function c38459905.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

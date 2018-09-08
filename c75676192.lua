@@ -1,4 +1,4 @@
---F.A. Motorhome Transport
+--F.A.ホームトランスポーター
 function c75676192.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()

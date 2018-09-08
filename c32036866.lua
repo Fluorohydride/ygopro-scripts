@@ -1,4 +1,4 @@
---F.A. Overheat
+--F.A.オーバー・ヒート
 function c32036866.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

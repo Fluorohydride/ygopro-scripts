@@ -1,4 +1,4 @@
---The King of D.
+--ロード・オブ・ドラゴン－ドラゴンの統制者－
 function c8978197.initial_effect(c)
 	--change name
 	local e1=Effect.CreateEffect(c)

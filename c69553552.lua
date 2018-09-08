@@ -1,4 +1,4 @@
---F.A. Winners
+--F.A.ウィナーズ
 function c69553552.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Loop of Destruction
+--破壊輪廻
 function c7852509.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

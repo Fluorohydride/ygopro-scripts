@@ -1,4 +1,4 @@
---F.A. Whip Crosser
+--F.A.ウィップクロッサー
 function c49655592.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

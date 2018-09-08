@@ -1,4 +1,4 @@
---Dark Magician the Dragon Knight
+--竜騎士ブラック・マジシャン
 function c41721210.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

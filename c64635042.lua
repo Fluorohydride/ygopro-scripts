@@ -1,6 +1,4 @@
 --デーモンの招来
---Beckoned Skull Archfiend
---Scripted by Eerie Code
 function c64635042.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

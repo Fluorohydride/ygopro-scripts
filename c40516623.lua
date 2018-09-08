@@ -1,4 +1,4 @@
---Yoko-Zuna Sumo Spirit
+--スモウ魂 YOKO－ZUNA
 function c40516623.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

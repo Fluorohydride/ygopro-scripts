@@ -1,4 +1,4 @@
---F.A. Auto Navigator
+--F.A.カーナビゲーター
 function c39271553.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

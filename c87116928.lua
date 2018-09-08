@@ -1,4 +1,4 @@
---Chimeratech Megafleet Dragon
+--キメラテック・メガフリート・ドラゴン
 function c87116928.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

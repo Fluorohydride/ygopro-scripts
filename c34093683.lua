@@ -1,4 +1,4 @@
---Revendread Executor
+--リヴェンデット・エグゼクター
 function c34093683.initial_effect(c)
 	c:EnableReviveLimit()
 	--change name

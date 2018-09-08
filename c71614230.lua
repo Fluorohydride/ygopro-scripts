@@ -1,4 +1,4 @@
---Kai-Den Kendo Spirit
+--ケンドウ魂 KAI－DEN
 function c71614230.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

@@ -1,4 +1,4 @@
---F.A. Dawn Dragster
+--F.A.ライトニングマスター
 function c33158448.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

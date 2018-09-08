@@ -1,4 +1,4 @@
---Odd-Eyes Arc Pendulum Dragon
+--オッドアイズ・アークペンデュラム・ドラゴン
 function c14105623.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

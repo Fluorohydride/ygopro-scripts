@@ -1,4 +1,4 @@
---Goddess of Sweet Revenge
+--煌々たる逆転の女神
 function c72589042.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)

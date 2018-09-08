@@ -1,4 +1,4 @@
---Vendread Battlelord
+--ヴェンデット・バスタード
 function c3909436.initial_effect(c)
 	c:EnableReviveLimit()
 	--act limit

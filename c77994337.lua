@@ -1,4 +1,4 @@
---Hallowhallow
+--ハロハロ
 function c77994337.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

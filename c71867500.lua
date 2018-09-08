@@ -1,4 +1,4 @@
---Dragon Revival Rhapsody
+--ドラゴン・復活の狂奏
 function c71867500.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

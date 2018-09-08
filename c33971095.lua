@@ -1,4 +1,4 @@
---Vendread Nightmare
+--ヴェンデット・ナイトメア
 function c33971095.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

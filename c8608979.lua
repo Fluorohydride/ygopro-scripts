@@ -1,4 +1,4 @@
---Super Team Buddy Force Unite!
+--一族の結集
 function c8608979.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

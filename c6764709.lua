@@ -1,4 +1,4 @@
---F.A. Dark Dragster
+--F.A.ダークネスマスター
 function c6764709.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

@@ -1,4 +1,4 @@
---Revendread Evolution
+--リヴェンデット・バース
 function c7986397.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

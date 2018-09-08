@@ -1,4 +1,4 @@
---F.A. Pit Stop
+--F.A.ピットストップ
 function c38532954.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

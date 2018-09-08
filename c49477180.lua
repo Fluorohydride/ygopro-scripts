@@ -1,4 +1,4 @@
---Vendread Strix
+--ヴェンデット・ストリゲス
 function c49477180.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

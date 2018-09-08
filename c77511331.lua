@@ -1,4 +1,4 @@
---Kuro-Obi Karate Spirit
+--カラテ魂 KURO－OBI
 function c77511331.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)

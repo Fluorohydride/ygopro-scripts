@@ -1,4 +1,4 @@
---Samurai Destroyer
+--鬼動武者
 function c40509732.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()
