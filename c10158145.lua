@@ -31,6 +31,14 @@ function c10158145.initial_effect(c)
 	e3:SetTarget(c10158145.target)
 	e3:SetOperation(c10158145.operation)
 	c:RegisterEffect(e3)
+	--cant spsummon from main deck check
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_FIELD)
+	e4:SetCode(63060238)
+	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e4:SetRange(LOCATION_MZONE)
+	e4:SetTargetRange(1,0)
+	c:RegisterEffect(e4)
 end
 function c10158145.get_zone(c,seq)
 	local zone=0
