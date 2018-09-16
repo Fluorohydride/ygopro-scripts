@@ -39,6 +39,7 @@ function c75782277.initial_effect(c)
 	e6:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e6)
 end
+c75782277.card_code_list={12206212}
 function c75782277.check(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=eg:GetFirst()
