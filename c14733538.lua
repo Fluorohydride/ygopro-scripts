@@ -5,14 +5,28 @@ function c14733538.initial_effect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOEXTRA)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetProperty(EFFECT_FLAG_LIMIT_ZONE)
 	e1:SetCountLimit(1,14733538+EFFECT_COUNT_CODE_OATH)
 	e1:SetTarget(c14733538.target)
 	e1:SetOperation(c14733538.activate)
+	e1:SetValue(c14733538.zones)
 	c:RegisterEffect(e1)
 end
 function c14733538.filter(c,e,tp,b1,setcode)
 	return c:IsSetCard(setcode) and c:IsType(TYPE_PENDULUM) and not c:IsForbidden()
 		and (b1 or c:IsCanBeSpecialSummoned(e,0,tp,false,false))
+end
+function c14733538.zones(e,tp,eg,ep,ev,re,r,rp)
+	local zone=0xff
+	local p0=Duel.CheckLocation(tp,LOCATION_PZONE,0)
+	local p1=Duel.CheckLocation(tp,LOCATION_PZONE,1)
+	local sp=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c14733538.filter,tp,LOCATION_DECK,0,1,nil,e,tp,false,0xc7)
+		and Duel.IsExistingMatchingCard(c14733538.filter,tp,LOCATION_DECK,0,1,nil,e,tp,false,0xda)
+	if p0==p1 or sp then return zone end
+	if p0 then zone=zone-0x1 end
+	if p1 then zone=zone-0x10 end
+	return zone
 end
 function c14733538.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)
