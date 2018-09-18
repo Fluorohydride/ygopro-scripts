@@ -19,8 +19,7 @@ function c73779005.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
 	if not d then return false end
 	if d:IsControler(tp) then a,d=d,a end
-	return a:IsType(TYPE_NORMAL)
-		and not a:IsStatus(STATUS_BATTLE_DESTROYED) and d:IsStatus(STATUS_BATTLE_DESTROYED)
+	return a:IsType(TYPE_NORMAL) and d:IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c73779005.filter(c)
 	return c:IsType(TYPE_NORMAL) and c:IsLevelAbove(4) and c:IsAbleToHand()
