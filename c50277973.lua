@@ -52,7 +52,5 @@ function c50277973.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,50277973,0,0x11,1800,1000,4,rac,att) then return end
 	c:AddMonsterAttribute(TYPE_NORMAL+TYPE_TRAP,att,rac,0,0,0)
-	Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
-	c:AddMonsterAttributeComplete()
-	Duel.SpecialSummonComplete()
+	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
 end

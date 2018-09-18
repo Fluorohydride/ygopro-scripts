@@ -56,7 +56,6 @@ function c94212438.plop(e,tp,eg,ep,ev,re,r,rp)
 	if tc and res and Duel.SelectYesNo(tp,aux.Stringid(16625614,0)) then
 		tc:AddMonsterAttribute(TYPE_NORMAL,ATTRIBUTE_DARK,RACE_FIEND,1,0,0)
 		Duel.SpecialSummonStep(tc,181,tp,tp,true,false,POS_FACEUP)
-		tc:AddMonsterAttributeComplete()
 		--immune
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

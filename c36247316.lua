@@ -64,9 +64,7 @@ function c36247316.activate(e,tp,eg,ep,ev,re,r,rp)
 			and Duel.IsPlayerCanSpecialSummonMonster(tp,36247316,0x10db,0x11,600,0,2,RACE_WARRIOR,ATTRIBUTE_DARK) then
 			Duel.BreakEffect()
 			c:AddMonsterAttribute(TYPE_NORMAL)
-			Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP_DEFENSE)
-			c:AddMonsterAttributeComplete()
-			Duel.SpecialSummonComplete()
+			Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_DEFENSE)
 		end
 	end
 end

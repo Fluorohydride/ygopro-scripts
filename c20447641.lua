@@ -45,7 +45,6 @@ function c20447641.activate(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,20447641,0xaa,0x21,1800,1000,4,RACE_MACHINE,ATTRIBUTE_EARTH) then
 		c:AddMonsterAttribute(TYPE_EFFECT)
 		Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
-		c:AddMonsterAttributeComplete()
 		c:RegisterFlagEffect(20447641,RESET_EVENT+RESETS_STANDARD,0,1)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_FIELD)

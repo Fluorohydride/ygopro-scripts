@@ -38,9 +38,7 @@ function c62645025.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e)
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,62645025,0x10db,0x21,0,0,2,RACE_WARRIOR,ATTRIBUTE_DARK) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT)
-	Duel.SpecialSummonStep(c,1,tp,tp,true,false,POS_FACEUP_ATTACK)
-	c:AddMonsterAttributeComplete()
-	Duel.SpecialSummonComplete()
+	Duel.SpecialSummon(c,1,tp,tp,true,false,POS_FACEUP_ATTACK)
 end
 function c62645025.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
