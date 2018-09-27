@@ -49,8 +49,12 @@ function c60018643.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c60018643.tgfilter,tp,LOCATION_MZONE,0,1,nil,tp,eg)
 		and Duel.GetFlagEffect(tp,60018643)==0 end
 	Duel.RegisterFlagEffect(tp,60018643,RESET_CHAIN,0,1)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,c60018643.tgfilter,tp,LOCATION_MZONE,0,1,1,nil,tp,eg)
+	if eg:GetCount()==1 then
+		Duel.SetTargetCard(eg)
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+		Duel.SelectTarget(tp,c60018643.tgfilter,tp,LOCATION_MZONE,0,1,1,nil,tp,eg)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c60018643.thop(e,tp,eg,ep,ev,re,r,rp)
