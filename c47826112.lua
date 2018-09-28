@@ -24,33 +24,35 @@ end
 function c47826112.cfilter(c,tp)
 	return c:IsLevelBelow(3) and c:IsAttribute(ATTRIBUTE_WATER) and (c:IsControler(tp) or c:IsFaceup())
 end
-function c47826112.mzfilter(c,tp)
-	return c:IsControler(tp) and c:GetSequence()<5
+function c47826112.fselect(c,tp,rg,sg)
+	sg:AddCard(c)
+	if sg:GetCount()<3 then
+		res=rg:IsExists(c47826112.fselect,1,sg,tp,rg,sg)
+	else
+		res=c47826112.fgoal(tp,sg)
+	end
+	sg:RemoveCard(c)
+	return res
+end
+function c47826112.fgoal(tp,sg)
+	if sg:GetCount()>0 and Duel.GetMZoneCount(tp,sg)>0 then
+		Duel.SetSelectedCard(sg)
+		return Duel.CheckReleaseGroup(tp,nil,0,nil)
+	else return false end
 end
 function c47826112.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c47826112.cfilter,nil,tp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft+1
-	if chk==0 then return ft>-3 and rg:GetCount()>2 and (ft>0 or rg:IsExists(c47826112.mzfilter,ct,nil,tp)) end
-	local g=nil
-	if ft>0 then
+	local g=Group.CreateGroup()
+	if chk==0 then return rg:IsExists(c47826112.fselect,1,nil,tp,rg,g) end
+	while g:GetCount()<3 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		g=rg:Select(tp,3,3,nil)
-	elseif ft>-2 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		g=rg:FilterSelect(tp,c47826112.mzfilter,ct,ct,nil,tp)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local g2=rg:Select(tp,3-ct,3-ct,g)
-		g:Merge(g2)
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		g=rg:FilterSelect(tp,c47826112.mzfilter,3,3,nil,tp)
+		local sg=rg:FilterSelect(tp,c47826112.fselect,1,1,g,tp,rg,g)
+		g:Merge(sg)
 	end
 	Duel.Release(g,REASON_COST)
 end
 function c47826112.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-3
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c47826112.spop(e,tp,eg,ep,ev,re,r,rp)

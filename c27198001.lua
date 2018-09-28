@@ -32,10 +32,16 @@ function c27198001.fselect(c,tp,rg,sg)
 	if sg:GetCount()<2 then
 		res=rg:IsExists(c27198001.fselect,1,sg,tp,rg,sg)
 	else
-		res=Duel.GetMZoneCount(tp,sg)>0
+		res=c27198001.fgoal(tp,sg)
 	end
 	sg:RemoveCard(c)
 	return res
+end
+function c27198001.fgoal(tp,sg)
+	if sg:GetCount()>0 and Duel.GetMZoneCount(tp,sg)>0 then
+		Duel.SetSelectedCard(sg)
+		return Duel.CheckReleaseGroup(tp,nil,0,nil)
+	else return false end
 end
 function c27198001.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp)
