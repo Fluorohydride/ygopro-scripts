@@ -22,11 +22,32 @@ function c52101615.subcon(e)
 	return e:GetHandler():IsLocation(0x1e)
 end
 function c52101615.filter(c,e,tp,m,gc,chkf)
-	return c:IsType(TYPE_FUSION) and c:IsAttribute(ATTRIBUTE_DARK)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:CheckFusionMaterial(m,gc,chkf)
+	if not (c:IsType(TYPE_FUSION) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)) then return false end
+	Auxiliary.FCheckAdditional=c52101615.fccheck(#m)
+	local res=c:CheckFusionMaterial(m,gc,chkf)
+	Auxiliary.FCheckAdditional=nil
+	return res
+end
+function c52101615.fccheck(ct)
+	return function(tp,sg,fc)
+		return #sg==ct
+	end
 end
 function c52101615.mfilter(c,tp)
 	return c:IsLocation(LOCATION_MZONE) and c:IsCanBeFusionMaterial() and (c:IsControler(tp) or c:IsFaceup())
+end
+function c52101615.fselect(c,tp,rg,sg,e,gc,chkf)
+	sg:AddCard(c)
+	local res=c52101615.fgoal(tp,sg,e,gc,chkf) or rg:IsExists(c52101615.fselect,1,sg,tp,rg,sg,e,gc,chkf)
+	sg:RemoveCard(c)
+	return res
+end
+function c52101615.fgoal(tp,sg,e,gc,chkf)
+	if sg:GetCount()>0 then
+		if not Duel.IsExistingMatchingCard(c52101615.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,sg,gc,chkf) then return false end
+		Duel.SetSelectedCard(sg)
+		return Duel.CheckReleaseGroup(tp,nil,0,nil)
+	else return false end
 end
 function c52101615.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
@@ -35,18 +56,28 @@ end
 function c52101615.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local chkf=tp+0x100
+	local g=Group.FromCards(c)
 	if chk==0 then
 		if e:GetLabel()~=1 then return false end
 		e:SetLabel(0)
 		local mg=Duel.GetReleaseGroup(tp):Filter(c52101615.mfilter,nil,tp)
-		return Duel.IsExistingMatchingCard(c52101615.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,c,chkf)
+		return mg:IsExists(c52101615.fselect,1,c,tp,mg,g,e,c,chkf)
 	end
 	local mg=Duel.GetReleaseGroup(tp):Filter(c52101615.mfilter,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c52101615.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,mg,c,chkf)
-	local mat=Duel.SelectFusionMaterial(tp,g:GetFirst(),mg,c,chkf)
-	Duel.Release(mat,REASON_COST)
-	e:SetLabel(g:GetFirst():GetCode())
+	while true do
+		local rg=mg:Filter(c52101615.fselect,g,tp,mg,g,e,c,chkf)
+		if #rg==0 then break end
+		local min=1
+		if c52101615.fgoal(tp,g,e,c,chkf) then min=0 end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		local sg=rg:FilterSelect(tp,c52101615.fselect,1,1,g,tp,rg,g,e,c,chkf)
+		if #sg==0 then break end
+		g:Merge(sg)
+	end
+	local fg=Duel.SelectMatchingCard(tp,c52101615.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,g,c,chkf)
+	Duel.Release(g,REASON_COST)
+	e:SetLabel(fg:GetFirst():GetCode())
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c52101615.filter2(c,e,tp,code)
