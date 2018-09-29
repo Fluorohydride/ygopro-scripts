@@ -61,9 +61,12 @@ function c12766474.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 	while true do
 		local mg=rg:Filter(c12766474.fselect,g,tp,rg,g)
-		if mg:GetCount()==0 or (c12766474.fgoal(tp,g) and not Duel.SelectYesNo(tp,210)) then break end
+		if #mg==0 then break end
+		local min=1
+		if c12766474.fgoal(tp,g) then min=0 end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local sg=Duel.SelectReleaseGroup(tp,c12766474.relfilter,1,1,nil,mg)
+		local sg=Duel.SelectReleaseGroup(tp,c12766474.relfilter,min,1,nil,mg)
+		if #sg==0 then break end
 		g:Merge(sg)
 	end
 	e:SetLabel(g:GetCount())
