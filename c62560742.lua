@@ -26,7 +26,7 @@ function c62560742.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,1,0,0)
 end
 function c62560742.mgfilter(c,e,tp,sync)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE)
+	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE) and c:IsType(TYPE_SYNCHRO)
 		and bit.band(c:GetReason(),0x80008)==0x80008 and c:GetReasonCard()==sync
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
