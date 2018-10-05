@@ -1,7 +1,7 @@
 --極神皇ロキ
 function c67098114.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,c67098114.tfilter,aux.NonTuner(nil),2)
+	aux.AddSynchroProcedure(c,c67098114.tfilter,aux.NonTuner(c,nil),2)
 	c:EnableReviveLimit()
 	--negate
 	local e1=Effect.CreateEffect(c)

@@ -2,7 +2,7 @@
 function c4103668.initial_effect(c)
 	c:SetUniqueOnField(1,0,4103668)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,7 +1,7 @@
 --花札衛－猪鹿蝶－
 function c3966653.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),2,2)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,nil),2,2)
 	c:EnableReviveLimit()
 	--pierce
 	local e2=Effect.CreateEffect(c)

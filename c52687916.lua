@@ -1,7 +1,7 @@
 --氷結界の龍 トリシューラ
 function c52687916.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),2)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,nil),2)
 	c:EnableReviveLimit()
 	--remove
 	local e1=Effect.CreateEffect(c)

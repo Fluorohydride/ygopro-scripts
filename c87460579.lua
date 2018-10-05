@@ -1,7 +1,7 @@
 --花札衛－五光－
 function c87460579.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),4,4)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,nil),4,4)
 	c:EnableReviveLimit()
 	--negate
 	local e2=Effect.CreateEffect(c)

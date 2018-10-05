@@ -1,7 +1,7 @@
 --白闘気一角
 function c63731062.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WATER),aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WATER),aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--special summon
 	local e1=Effect.CreateEffect(c)

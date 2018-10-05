@@ -4,7 +4,7 @@ function c80896940.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c,false)
 	--synchro summon
-	aux.AddSynchroMixProcedure(c,c80896940.matfilter1,nil,nil,aux.NonTuner(Card.IsType,TYPE_SYNCHRO),1,99)
+	aux.AddSynchroMixProcedure(c,c80896940.matfilter1,nil,nil,aux.NonTuner(c,Card.IsType,TYPE_SYNCHRO),1,99)
 	--indes
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -124,7 +124,7 @@ function c80896940.valcheck(e,c)
 	local tg=g:Filter(c80896940.mfilter,nil)
 	for tc in aux.Next(tg) do
 		g:RemoveCard(tc)
-		local flag=g:FilterCount(aux.NonTuner(Card.IsType,TYPE_SYNCHRO),nil)==g:GetCount()
+		local flag=g:FilterCount(aux.NonTuner(c,Card.IsType,TYPE_SYNCHRO),nil)==g:GetCount()
 		g:AddCard(tc)
 		if flag then
 			e:GetLabelObject():SetLabel(1)

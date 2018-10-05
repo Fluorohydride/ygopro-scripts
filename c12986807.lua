@@ -1,7 +1,7 @@
 --ラヴァル・グレイター
 function c12986807.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_FIRE),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,Card.IsAttribute,ATTRIBUTE_FIRE),1)
 	c:EnableReviveLimit()
 	--to hand
 	local e1=Effect.CreateEffect(c)

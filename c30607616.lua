@@ -2,7 +2,7 @@
 function c30607616.initial_effect(c)
 	c:SetUniqueOnField(1,0,30607616)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--battle immune
 	local e1=Effect.CreateEffect(c)

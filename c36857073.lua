@@ -1,7 +1,7 @@
 --琰魔竜 レッド・デーモン・ベリアル
 function c36857073.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c36857073.sfilter),1,1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,c36857073.sfilter),1,1)
 	c:EnableReviveLimit()
 	--spsummon
 	local e1=Effect.CreateEffect(c)

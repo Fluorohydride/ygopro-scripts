@@ -1,7 +1,7 @@
 --トライデント・ドラギオン
 function c39402797.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),aux.NonTuner(Card.IsRace,RACE_DRAGON),1)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),aux.NonTuner(c,Card.IsRace,RACE_DRAGON),1)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,7 +1,7 @@
 --超重蒸鬼テツドウ－O
 function c17775525.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x9a),aux.NonTuner(Card.IsSetCard,0x9a),2)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x9a),aux.NonTuner(c,Card.IsSetCard,0x9a),2)
 	c:EnableReviveLimit()
 	--defense attack
 	local e1=Effect.CreateEffect(c)

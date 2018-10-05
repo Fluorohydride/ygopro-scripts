@@ -1,7 +1,7 @@
 --ヘル・ブランブル
 function c45500495.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_PLANT),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,Card.IsRace,RACE_PLANT),1)
 	c:EnableReviveLimit()
 	--cost
 	local e1=Effect.CreateEffect(c)

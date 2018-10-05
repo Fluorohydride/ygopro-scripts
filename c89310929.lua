@@ -1,7 +1,7 @@
 --霞の谷の雷神鬼
 function c89310929.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0x37),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,Card.IsSetCard,0x37),1)
 	c:EnableReviveLimit()
 	--atkup
 	local e1=Effect.CreateEffect(c)

@@ -1,7 +1,7 @@
 --天輪の双星道士
 function c25472513.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1,1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,nil),1,1)
 	c:EnableReviveLimit()
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,7 +1,7 @@
 --ドラグニティナイト－ハールーン
 function c12496261.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x29),aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x29),aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--equip
 	local e1=Effect.CreateEffect(c)

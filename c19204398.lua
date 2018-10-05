@@ -1,7 +1,7 @@
 --A・O・J ライト・ゲイザー
 function c19204398.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--atk
 	local e1=Effect.CreateEffect(c)

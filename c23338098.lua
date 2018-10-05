@@ -1,7 +1,7 @@
 --A BF－涙雨のチドリ
 function c23338098.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--add type
 	local e1=Effect.CreateEffect(c)

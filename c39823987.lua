@@ -1,7 +1,7 @@
 --太陽龍インティ
 function c39823987.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,78275321),aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,78275321),aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--destroy&damage
 	local e1=Effect.CreateEffect(c)

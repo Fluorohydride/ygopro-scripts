@@ -1,7 +1,7 @@
 --ヴァイロン・オメガ
 function c93157004.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroMixProcedure(c,aux.Tuner(nil),aux.Tuner(nil),nil,aux.NonTuner(Card.IsSetCard,0x30),1,1)
+	aux.AddSynchroMixProcedure(c,aux.Tuner(nil),aux.Tuner(nil),nil,aux.NonTuner(c,Card.IsSetCard,0x30),1,1)
 	c:EnableReviveLimit()
 	--destroy
 	local e2=Effect.CreateEffect(c)

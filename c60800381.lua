@@ -1,7 +1,7 @@
 --ジャンク・ウォリアー
 function c60800381.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,c60800381.tfilter,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,c60800381.tfilter,aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--atkup
 	local e1=Effect.CreateEffect(c)

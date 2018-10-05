@@ -1,7 +1,7 @@
 --ドラグニティナイト－バルーチャ
 function c25682811.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),aux.NonTuner(Card.IsRace,RACE_WINDBEAST),1)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),aux.NonTuner(c,Card.IsRace,RACE_WINDBEAST),1)
 	c:EnableReviveLimit()
 	--equip
 	local e1=Effect.CreateEffect(c)

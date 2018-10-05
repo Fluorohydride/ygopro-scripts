@@ -1,7 +1,7 @@
 --魔轟神レヴュアタン
 function c39477584.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x35),aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x35),aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--to hand
 	local e1=Effect.CreateEffect(c)

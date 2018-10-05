@@ -1,7 +1,7 @@
 --セイヴァー・スター・ドラゴン
 function c7841112.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroMixProcedure(c,c7841112.mfilter1,c7841112.mfilter2,nil,aux.NonTuner(nil),1,1)
+	aux.AddSynchroMixProcedure(c,c7841112.mfilter1,c7841112.mfilter2,nil,aux.NonTuner(c,nil),1,1)
 	c:EnableReviveLimit()
 	--Negate
 	local e2=Effect.CreateEffect(c)

@@ -1,7 +1,7 @@
 --レッド・ライジング・ドラゴン
 function c66141736.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--special summon
 	local e1=Effect.CreateEffect(c)

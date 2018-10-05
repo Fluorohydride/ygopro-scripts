@@ -1,7 +1,7 @@
 --レアル・ジェネクス・クロキシアン
 function c38354937.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x2),aux.NonTuner(Card.IsAttribute,ATTRIBUTE_DARK),1)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x2),aux.NonTuner(c,Card.IsAttribute,ATTRIBUTE_DARK),1)
 	c:EnableReviveLimit()
 	--control
 	local e1=Effect.CreateEffect(c)

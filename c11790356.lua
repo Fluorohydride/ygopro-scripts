@@ -1,7 +1,7 @@
 --破戒蛮竜－バスター・ドラゴン
 function c11790356.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--Change race
 	local e1=Effect.CreateEffect(c)

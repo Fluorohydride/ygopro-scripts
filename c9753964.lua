@@ -1,7 +1,7 @@
 --琰魔竜 レッド・デーモン・アビス
 function c9753964.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c9753964.sfilter),1,1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,c9753964.sfilter),1,1)
 	c:EnableReviveLimit()
 	--negate
 	local e1=Effect.CreateEffect(c)

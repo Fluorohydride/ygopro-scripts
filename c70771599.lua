@@ -1,7 +1,7 @@
 --覇王眷竜 クリアウィング
 function c70771599.initial_effect(c)
 	c:EnableReviveLimit()
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c70771599.matfilter),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,c70771599.matfilter),1)
 	--destroy all
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(70771599,0))

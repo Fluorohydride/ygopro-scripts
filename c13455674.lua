@@ -1,7 +1,7 @@
 --水晶機巧－グリオンガンド
 function c13455674.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroMixProcedure(c,aux.NonTuner(nil),nil,nil,aux.Tuner(nil),2,99)
+	aux.AddSynchroMixProcedure(c,aux.NonTuner(c,nil),nil,nil,aux.Tuner(nil),2,99)
 	c:EnableReviveLimit()
 	--remove
 	local e2=Effect.CreateEffect(c)

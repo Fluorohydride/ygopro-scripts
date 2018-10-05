@@ -1,7 +1,7 @@
 --レッド・デーモンズ・ドラゴン・タイラント
 function c16172067.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroMixProcedure(c,aux.Tuner(nil),aux.Tuner(nil),nil,aux.NonTuner(nil),1,99)
+	aux.AddSynchroMixProcedure(c,aux.Tuner(nil),aux.Tuner(nil),nil,aux.NonTuner(c,nil),1,99)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e0=Effect.CreateEffect(c)

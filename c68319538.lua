@@ -1,7 +1,7 @@
 --宇宙砦ゴルガー
 function c68319538.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,652362),aux.NonTuner(Card.IsSetCard,0xc),1)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,652362),aux.NonTuner(c,Card.IsSetCard,0xc),1)
 	c:EnableReviveLimit()
 	--to hand
 	local e1=Effect.CreateEffect(c)

@@ -1,7 +1,7 @@
 --ゴヨウ・チェイサー
 function c63364266.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--atkup
 	local e1=Effect.CreateEffect(c)
