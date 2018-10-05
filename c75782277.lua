@@ -6,16 +6,6 @@ function c75782277.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
 	--trigger
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetCode(EVENT_SUMMON_SUCCESS)
-	e2:SetRange(LOCATION_FZONE)
-	e2:SetOperation(c75782277.check)
-	c:RegisterEffect(e2)
-	local e3=e2:Clone()
-	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
-	c:RegisterEffect(e3)
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_DESTROY)
 	e4:SetDescription(aux.Stringid(75782277,0))
@@ -38,6 +28,17 @@ function c75782277.initial_effect(c)
 	local e6=e5:Clone()
 	e6:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e6)
+	if not c75782277.global_check then
+		c75782277.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_SUMMON_SUCCESS)
+		ge1:SetOperation(c75782277.check)
+		Duel.RegisterEffect(ge1,0)
+		local ge2=ge1:Clone()
+		ge2:SetCode(EVENT_SPSUMMON_SUCCESS)
+		Duel.RegisterEffect(ge2,0)
+	end
 end
 c75782277.card_code_list={12206212}
 function c75782277.check(e,tp,eg,ep,ev,re,r,rp)
@@ -47,12 +48,12 @@ function c75782277.check(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Group.CreateGroup()
 	while tc do
 		if tc:IsFaceup() and tc:IsCode(76812113,12206212) then
-			if tc:IsControler(tp) then g1:AddCard(tc) else g2:AddCard(tc) end
+			if tc:IsControler(0) then g1:AddCard(tc) else g2:AddCard(tc) end
 		end
 		tc=eg:GetNext()
 	end
-	if g1:GetCount()>0 then Duel.RaiseEvent(g1,EVENT_CUSTOM+75782277,re,r,rp,tp,0) end
-	if g2:GetCount()>0 then Duel.RaiseEvent(g2,EVENT_CUSTOM+75782277,re,r,rp,1-tp,0) end
+	if g1:GetCount()>0 then Duel.RaiseEvent(g1,EVENT_CUSTOM+75782277,re,r,rp,0,0) end
+	if g2:GetCount()>0 then Duel.RaiseEvent(g2,EVENT_CUSTOM+75782277,re,r,rp,1,0) end
 end
 function c75782277.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

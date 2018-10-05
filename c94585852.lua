@@ -15,13 +15,6 @@ function c94585852.initial_effect(c)
 	e2:SetValue(c94585852.costchange)
 	c:RegisterEffect(e2)
 	--search
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetRange(LOCATION_FZONE)
-	e3:SetCode(EVENT_TO_GRAVE)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetOperation(c94585852.regop)
-	c:RegisterEffect(e3)
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(94585852,0))
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
@@ -32,6 +25,14 @@ function c94585852.initial_effect(c)
 	e4:SetTarget(c94585852.target)
 	e4:SetOperation(c94585852.operation)
 	c:RegisterEffect(e4)
+	if not c94585852.global_check then
+		c94585852.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_TO_GRAVE)
+		ge1:SetOperation(c94585852.regop)
+		Duel.RegisterEffect(ge1,0)
+	end
 end
 function c94585852.costchange(e,re,rp,val)
 	if Duel.GetCurrentPhase()==PHASE_STANDBY and re and re:GetHandler():IsSetCard(0x45) and re:GetHandler():IsType(TYPE_MONSTER) then
@@ -49,7 +50,7 @@ function c94585852.regop(e,tp,eg,ep,ev,re,r,rp)
 	while tc do
 		if tc:IsReason(REASON_DESTROY) and not tc:IsReason(REASON_BATTLE) and tc:IsSetCard(0x45) and tc:GetLevel()>0 then
 			local tlv=tc:GetLevel()
-			if tc:IsControler(tp) then
+			if tc:IsControler(0) then
 				if tlv>lv1 then lv1=tlv end
 				g1:AddCard(tc)
 			else
@@ -59,8 +60,8 @@ function c94585852.regop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc=eg:GetNext()
 	end
-	if g1:GetCount()>0 then Duel.RaiseEvent(g1,EVENT_CUSTOM+94585852,re,r,rp,tp,lv1) end
-	if g2:GetCount()>0 then Duel.RaiseEvent(g2,EVENT_CUSTOM+94585852,re,r,rp,1-tp,lv2) end
+	if g1:GetCount()>0 then Duel.RaiseEvent(g1,EVENT_CUSTOM+94585852,re,r,rp,0,lv1) end
+	if g2:GetCount()>0 then Duel.RaiseEvent(g2,EVENT_CUSTOM+94585852,re,r,rp,1,lv2) end
 end
 function c94585852.filter(c,lv)
 	return c:GetLevel()<lv and c:IsSetCard(0x45) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

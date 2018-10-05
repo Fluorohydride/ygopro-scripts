@@ -16,13 +16,6 @@ function c53039326.initial_effect(c)
 	e2:SetOperation(c53039326.mtop)
 	c:RegisterEffect(e2)
 	--search
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetCode(EVENT_DESTROY)
-	e3:SetRange(LOCATION_FZONE)
-	e3:SetOperation(c53039326.check)
-	c:RegisterEffect(e3)
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e4:SetDescription(aux.Stringid(53039326,2))
@@ -33,6 +26,14 @@ function c53039326.initial_effect(c)
 	e4:SetTarget(c53039326.target)
 	e4:SetOperation(c53039326.operation)
 	c:RegisterEffect(e4)
+	if not c53039326.global_check then
+		c53039326.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_DESTROY)
+		ge1:SetOperation(c53039326.check)
+		Duel.RegisterEffect(ge1,0)
+	end
 end
 function c53039326.cfilter(c)
 	return c:IsCode(36623431) and not c:IsPublic()
@@ -60,7 +61,6 @@ function c53039326.mtop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c53039326.check(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
 	if Duel.GetCurrentPhase()~=PHASE_END then return end
 	local tc=eg:GetFirst()
 	local turnp=Duel.GetTurnPlayer()
