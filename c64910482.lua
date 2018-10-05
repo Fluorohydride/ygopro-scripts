@@ -28,7 +28,7 @@ function c64910482.synfilter1(c,syncard,tuner,f)
 	return c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c))
 end
 function c64910482.synfilter2(c,syncard,tuner,f)
-	return c:IsSetCard(0x27) and c:IsNotTuner() and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c))
+	return c:IsSetCard(0x27) and c:IsNotTuner(syncard) and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c))
 end
 function c64910482.syncheck(c,g,mg,tp,lv,syncard,minc,maxc)
 	g:AddCard(c)

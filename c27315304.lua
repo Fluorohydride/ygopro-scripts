@@ -1,7 +1,7 @@
 --ミスト・ウォーム
 function c27315304.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),2)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,nil),2)
 	c:EnableReviveLimit()
 	--return hand
 	local e1=Effect.CreateEffect(c)

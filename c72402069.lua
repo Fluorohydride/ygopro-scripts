@@ -2,7 +2,7 @@
 function c72402069.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.EnablePendulumAttribute(c,false)
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0xaf),aux.NonTuner(Card.IsSetCard,0x10af),1)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0xaf),aux.NonTuner(c,Card.IsSetCard,0x10af),1)
 	--destroy and damage
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(72402069,0))

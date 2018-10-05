@@ -1,7 +1,7 @@
 --セイヴァー・デモン・ドラゴン
 function c67030233.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroMixProcedure(c,c67030233.mfilter1,c67030233.mfilter2,nil,aux.NonTuner(nil),1,1)
+	aux.AddSynchroMixProcedure(c,c67030233.mfilter1,c67030233.mfilter2,nil,aux.NonTuner(c,nil),1,1)
 	c:EnableReviveLimit()
 	--destroy
 	local e2=Effect.CreateEffect(c)

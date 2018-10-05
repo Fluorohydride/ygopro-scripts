@@ -1,7 +1,7 @@
 --ドリル・ウォリアー
 function c3429238.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,c3429238.tfilter,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,c3429238.tfilter,aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--direct attack
 	local e1=Effect.CreateEffect(c)

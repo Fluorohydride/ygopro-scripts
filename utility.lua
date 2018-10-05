@@ -239,10 +239,10 @@ function Auxiliary.Tuner(f,...)
 				return target:IsType(TYPE_TUNER) and (not f or f(target,table.unpack(ext_params)))
 			end
 end
-function Auxiliary.NonTuner(f,...)
+function Auxiliary.NonTuner(syncard,f,...)
 	local ext_params={...}
 	return	function(target)
-				return target:IsNotTuner() and (not f or f(target,table.unpack(ext_params)))
+				return target:IsNotTuner(syncard) and (not f or f(target,table.unpack(ext_params)))
 			end
 end
 function Auxiliary.GetValueType(v)

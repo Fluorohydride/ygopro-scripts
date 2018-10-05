@@ -1,7 +1,7 @@
 --BF－フルアーマード・ウィング
 function c54082269.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x33),aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x33),aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--immune
 	local e1=Effect.CreateEffect(c)

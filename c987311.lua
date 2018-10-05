@@ -1,7 +1,7 @@
 --DDD疾風王アレクサンダー
 function c987311.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0xaf),aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0xaf),aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--tohand
 	local e1=Effect.CreateEffect(c)

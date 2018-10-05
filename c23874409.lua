@@ -1,7 +1,7 @@
 --カラクリ将軍 無零
 function c23874409.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsRace,RACE_MACHINE),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,Card.IsRace,RACE_MACHINE),1)
 	c:EnableReviveLimit()
 	--spsummon
 	local e1=Effect.CreateEffect(c)

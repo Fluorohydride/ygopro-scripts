@@ -1,7 +1,7 @@
 --天刑王 ブラック・ハイランダー
 function c75326861.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),aux.NonTuner(Card.IsRace,RACE_FIEND),1)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),aux.NonTuner(c,Card.IsRace,RACE_FIEND),1)
 	c:EnableReviveLimit()
 	--disable spsummon
 	local e1=Effect.CreateEffect(c)

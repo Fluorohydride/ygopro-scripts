@@ -1,7 +1,7 @@
 --白闘気双頭神龍
 function c89907227.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsType,TYPE_SYNCHRO),aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsType,TYPE_SYNCHRO),aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--token
 	local e1=Effect.CreateEffect(c)

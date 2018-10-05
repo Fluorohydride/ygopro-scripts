@@ -1,7 +1,7 @@
 --ジャンク・バーサーカー
 function c59771339.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,c59771339.tfilter,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,c59771339.tfilter,aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--atkdown
 	local e1=Effect.CreateEffect(c)

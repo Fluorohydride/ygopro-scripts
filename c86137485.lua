@@ -1,7 +1,7 @@
 --ヘル・ツイン・コップ
 function c86137485.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--chain attack
 	local e1=Effect.CreateEffect(c)

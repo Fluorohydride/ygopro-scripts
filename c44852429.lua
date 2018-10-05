@@ -1,7 +1,7 @@
 --DDD呪血王サイフリート
 function c44852429.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0xaf),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,Card.IsSetCard,0xaf),1)
 	c:EnableReviveLimit()
 	--negate
 	local e1=Effect.CreateEffect(c)

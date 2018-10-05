@@ -2,7 +2,7 @@
 function c77092311.initial_effect(c)
 	c:SetUniqueOnField(1,0,77092311)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--deckdes
 	local e1=Effect.CreateEffect(c)

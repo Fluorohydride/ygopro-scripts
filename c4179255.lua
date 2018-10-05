@@ -1,7 +1,7 @@
 --妖精竜 エンシェント
 function c4179255.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--draw
 	local e0=Effect.CreateEffect(c)

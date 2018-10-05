@@ -2,7 +2,7 @@
 function c65536818.initial_effect(c)
 	c:SetSPSummonOnce(65536818)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--search
 	local e1=Effect.CreateEffect(c)

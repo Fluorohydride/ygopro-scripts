@@ -1,7 +1,7 @@
 --天穹覇龍ドラゴアセンション
 function c37910722.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,nil),1)
 	c:EnableReviveLimit()
 	--atk
 	local e1=Effect.CreateEffect(c)

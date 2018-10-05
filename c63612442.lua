@@ -1,7 +1,7 @@
 --X－セイバー ソウザ
 function c63612442.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0x100d),1)
+	aux.AddSynchroProcedure(c,nil,aux.NonTuner(c,Card.IsSetCard,0x100d),1)
 	c:EnableReviveLimit()
 	--get effect
 	local e1=Effect.CreateEffect(c)
