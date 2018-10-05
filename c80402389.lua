@@ -6,13 +6,6 @@ function c80402389.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
 	--trigger
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetCode(EVENT_TO_GRAVE)
-	e2:SetRange(LOCATION_SZONE)
-	e2:SetOperation(c80402389.check)
-	c:RegisterEffect(e2)
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e3:SetDescription(aux.Stringid(80402389,0))
@@ -23,9 +16,16 @@ function c80402389.initial_effect(c)
 	e3:SetTarget(c80402389.target)
 	e3:SetOperation(c80402389.operation)
 	c:RegisterEffect(e3)
+	if not c80402389.global_check then
+		c80402389.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_TO_GRAVE)
+		ge1:SetOperation(c80402389.check)
+		Duel.RegisterEffect(ge1,0)
+	end
 end
 function c80402389.check(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
 	local tc=eg:GetFirst()
 	while tc do
 		if tc:IsPreviousLocation(LOCATION_MZONE) and tc:IsReason(REASON_DESTROY)
