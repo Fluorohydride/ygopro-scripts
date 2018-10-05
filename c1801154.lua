@@ -16,13 +16,14 @@ function c1801154.initial_effect(c)
 	e2:SetTarget(c1801154.sptg)
 	e2:SetOperation(c1801154.spop)
 	c:RegisterEffect(e2)
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_TO_GRAVE)
-	e3:SetRange(LOCATION_FZONE)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetOperation(c1801154.check)
-	c:RegisterEffect(e3)
+	if not c1801154.global_check then
+		c1801154.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_TO_GRAVE)
+		ge1:SetOperation(c1801154.check)
+		Duel.RegisterEffect(ge1,0)
+	end
 end
 function c1801154.check(e,tp,eg,ep,ev,re,r,rp)
 	for tc in aux.Next(eg) do
