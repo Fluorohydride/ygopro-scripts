@@ -45,7 +45,7 @@ function c87116928.fcheck2(c)
 	return c:GetSequence()>4
 end
 function c87116928.fgoal(c,tp,sg)
-	return sg:GetCount()>1 and Duel.GetLocationCountFromEx(tp,tp,sg)>0 and sg:IsExists(c87116928.fcheck,1,nil,sg)
+	return #sg>1 and #sg<=3 and Duel.GetLocationCountFromEx(tp,tp,sg)>0 and sg:IsExists(c87116928.fcheck,1,nil,sg)
 end
 function c87116928.fselect(c,tp,mg,sg)
 	sg:AddCard(c)
