@@ -241,8 +241,8 @@ function Auxiliary.Tuner(f,...)
 end
 function Auxiliary.NonTuner(f,...)
 	local ext_params={...}
-	return	function(target)
-				return target:IsNotTuner() and (not f or f(target,table.unpack(ext_params)))
+	return	function(target,syncard)
+				return target:IsNotTuner(syncard) and (not f or f(target,table.unpack(ext_params)))
 			end
 end
 function Auxiliary.GetValueType(v)
@@ -348,8 +348,8 @@ end
 function Auxiliary.SynMaterialFilter(c,syncard)
 	return c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard)
 end
-function Auxiliary.SynLimitFilter(c,f,e)
-	return f and not f(e,c)
+function Auxiliary.SynLimitFilter(c,f,e,syncard)
+	return f and not f(e,c,syncard)
 end
 function Auxiliary.GetSynchroLevelFlowerCardian(c)
 	return 2
@@ -404,7 +404,7 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 				for i=0,maxc-1 do
 					local mg2=mg:Clone()
 					if f4 then
-						mg2=mg2:Filter(f4,nil)
+						mg2=mg2:Filter(f4,nil,c)
 					end
 					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc)
 					if cg:GetCount()==0 then break end
@@ -458,7 +458,7 @@ function Auxiliary.SynMixFilter4(c,f4,minc,maxc,syncard,mg1,smat,c1,c2,c3,gc)
 	if c3 then sg:AddCard(c3) end
 	local mg=mg1:Clone()
 	if f4 then
-		mg=mg:Filter(f4,nil)
+		mg=mg:Filter(f4,nil,syncard)
 	end
 	return aux.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,smat,gc)
 end
@@ -501,7 +501,7 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc)
 			local he,hf,hmin,hmax=c:GetHandSynchro()
 			if he then
 				found=true
-				if hf and hg:IsExists(Auxiliary.SynLimitFilter,1,c,hf,he) then return false end
+				if hf and hg:IsExists(Auxiliary.SynLimitFilter,1,c,hf,he,syncard) then return false end
 				if (hmin and hct<hmin) or (hmax and hct>hmax) then return false end
 			end
 		end
@@ -515,7 +515,7 @@ function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc)
 				local llct=g:FilterCount(Card.IsLocation,c,lloc)
 				if llct~=lct then return false end
 			end
-			if lf and g:IsExists(Auxiliary.SynLimitFilter,1,c,lf,le) then return false end
+			if lf and g:IsExists(Auxiliary.SynLimitFilter,1,c,lf,le,syncard) then return false end
 			if (lmin and lct<lmin) or (lmax and lct>lmax) then return false end
 		end
 	end

@@ -72,7 +72,7 @@ function c33541430.cardiansynlevel(c)
 	return 2
 end
 function c33541430.synfilter(c,syncard,tuner,f)
-	return c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c))
+	return c:IsFaceup() and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c,syncard))
 end
 function c33541430.syncheck(c,g,mg,tp,lv,syncard,minc,maxc)
 	g:AddCard(c)

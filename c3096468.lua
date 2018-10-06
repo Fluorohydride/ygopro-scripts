@@ -29,7 +29,7 @@ function c3096468.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c3096468.synfilter(c,syncard,tuner,f)
-	return (c:IsFaceup() or c:IsLocation(LOCATION_HAND)) and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c))
+	return (c:IsFaceup() or c:IsLocation(LOCATION_HAND)) and c:IsCanBeSynchroMaterial(syncard,tuner) and (f==nil or f(c,syncard))
 end
 function c3096468.syncheck(c,g,mg,tp,lv,syncard,minc,maxc)
 	g:AddCard(c)

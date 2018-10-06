@@ -46,7 +46,7 @@ function c90036274.cfilter1(c,tp)
 		and Duel.IsExistingMatchingCard(c90036274.cfilter2,tp,LOCATION_MZONE,0,1,c,c:GetLevel())
 end
 function c90036274.cfilter2(c,lv)
-	return c:IsFaceup() and c:IsNotTuner() and c:IsLevel(7-lv) and c:IsAbleToGraveAsCost()
+	return c:IsFaceup() and not c:IsType(TYPE_TUNER) and c:IsLevel(7-lv) and c:IsAbleToGraveAsCost()
 end
 function c90036274.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c90036274.cfilter1,tp,LOCATION_MZONE,0,1,nil,tp) end
