@@ -10,6 +10,7 @@ function c52098461.initial_effect(c)
 	e1:SetOperation(c52098461.activate)
 	c:RegisterEffect(e1)
 end
+c52098461.card_code_list={89943723}
 function c52098461.filter(c)
 	return c:IsFaceup() and c:IsCode(89943723) and c:IsAbleToDeck()
 end

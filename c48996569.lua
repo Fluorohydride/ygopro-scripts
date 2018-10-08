@@ -49,6 +49,7 @@ function c48996569.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c48996569.material_setcode=0x8
+c48996569.card_code_list={89943723}
 function c48996569.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end

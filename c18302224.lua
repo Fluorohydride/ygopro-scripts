@@ -10,6 +10,7 @@ function c18302224.initial_effect(c)
 	e1:SetOperation(c18302224.activate)
 	c:RegisterEffect(e1)
 end
+c18302224.card_code_list={89943723}
 function c18302224.cfilter(c,tp)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
 		and c:IsPreviousPosition(POS_FACEUP) and c:IsSetCard(0x9) and c:IsType(TYPE_FUSION)

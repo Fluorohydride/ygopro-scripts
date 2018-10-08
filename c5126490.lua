@@ -34,6 +34,7 @@ function c5126490.initial_effect(c)
 	e4:SetValue(1)
 	c:RegisterEffect(e4)
 end
+c5126490.card_code_list={89943723}
 function c5126490.spfilter1(c,tp)
 	return c:IsFaceup() and c:IsCode(89943723) and c:IsAbleToGraveAsCost()
 		and Duel.IsExistingMatchingCard(c5126490.spfilter2,tp,LOCATION_MZONE,0,1,c)

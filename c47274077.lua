@@ -46,6 +46,7 @@ function c47274077.initial_effect(c)
 	e5:SetOperation(c47274077.retop)
 	c:RegisterEffect(e5)
 end
+c47274077.card_code_list={89943723}
 function c47274077.eqlimit(e,c)
 	return c:IsCode(89943723)
 end

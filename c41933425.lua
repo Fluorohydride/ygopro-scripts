@@ -24,6 +24,7 @@ function c41933425.initial_effect(c)
 	e2:SetOperation(c41933425.spop)
 	c:RegisterEffect(e2)
 end
+c41933425.card_code_list={89943723}
 function c41933425.cfilter1(c,e,tp)
 	return c:IsSetCard(0x1f) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 		and Duel.IsExistingMatchingCard(c41933425.cfilter2,tp,LOCATION_GRAVE,0,1,c,e,tp,c)

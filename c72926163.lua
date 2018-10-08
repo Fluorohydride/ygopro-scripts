@@ -36,6 +36,7 @@ function c72926163.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c72926163.material_setcode=0x8
+c72926163.card_code_list={89943723}
 function c72926163.valcheck(e,c)
 	local g=c:GetMaterial()
 	local atk=0
