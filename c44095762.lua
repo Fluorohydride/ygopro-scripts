@@ -1,4 +1,4 @@
---聖なるバリア－ミラーフォース－
+--聖なるバリア －ミラーフォース－
 function c44095762.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

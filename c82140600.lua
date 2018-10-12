@@ -1,4 +1,4 @@
---約束の地－アヴァロン－
+--約束の地 －アヴァロン－
 function c82140600.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
