@@ -2122,7 +2122,7 @@ function Auxiliary.GetMultiLinkedZone(tp)
 	local b=0
 	local c=0
 	for tc in aux.Next(lg) do
-		a=tc:GetLinkedZone(tp) & 0x1f
+		a=tc:GetLinkedZone(tp) & 0x7f
 		c=b & a | c
 		b=b ~ a
 	end
