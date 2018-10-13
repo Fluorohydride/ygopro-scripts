@@ -2121,14 +2121,13 @@ end
 --used for multi-linked zone(zone linked by two or more link monsters)
 function Auxiliary.GetMultiLinkedZone(tp)
 	local function f(c) return c:IsFaceup() and c:IsType(TYPE_LINK) end
-	--target linked zone
-	local tlz=0
 	--single-linked zone
 	local slz=0
 	--multi-linked zone
 	local mlz=0
 	for tc in aux.Next(lg) do
-		tlz=tc:GetLinkedZone(tp) & 0x7f
+		--target linked zone
+		local tlz=tc:GetLinkedZone(tp) & 0x7f
 		mlz=slz & tlz | mlz
 		slz=slz ~ tlz
 	end
