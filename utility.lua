@@ -2120,7 +2120,7 @@ function Auxiliary.FaceupLinkMonsterFilter(c)
 end
 --used for multi-linked zone(zone linked by two or more link monsters)
 function Auxiliary.GetMultiLinkedZone(tp)
-	local lg=Duel.GetMatchingGroup(f,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local lg=Duel.GetMatchingGroup(aux.FaceupLinkMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	--single-linked zone
 	local slz=0
 	--multi-linked zone
