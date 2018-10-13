@@ -2122,8 +2122,11 @@ end
 function Auxiliary.GetMultiLinkedZone(tp)
 	local function f(c) return c:IsFaceup() and c:IsType(TYPE_LINK) end
 	local lg=Duel.GetMatchingGroup(aux.GetFaceupLinkMonster,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	--target linked zone
 	local tlz=0
+	--single-linked zone
 	local slz=0
+	--multi-linked zone
 	local mlz=0
 	for tc in aux.Next(lg) do
 		tlz=tc:GetLinkedZone(tp) & 0x7f
