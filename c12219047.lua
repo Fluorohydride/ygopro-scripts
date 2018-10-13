@@ -1,6 +1,7 @@
 --幻影騎士団カースド・ジャベリン
 function c12219047.initial_effect(c)
 	aux.AddXyzProcedure(c,nil,2,2)
+	c:EnableReviveLimit()
 	--disable and reduce ATK
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(12219047,0))
