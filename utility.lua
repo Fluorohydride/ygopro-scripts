@@ -2114,3 +2114,17 @@ function Auxiliary.ExceptThisCard(e)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then return c else return nil end
 end
+--used for multi-linked zone(zone linked by two or more link monsters)
+function Auxiliary.GetMultiLinkedZone(tp)
+	local function f(c) return c:IsFaceup() and c:IsType(TYPE_LINK) end
+	local lg=Duel.GetMatchingGroup(f,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local a=0
+	local b=0
+	local c=0
+	for tc in aux.Next(lg) do
+		a=tc:GetLinkedZone(tp) & 0x1f
+		c=b & a | c
+		b=b ~ a
+	end
+	return c
+end
