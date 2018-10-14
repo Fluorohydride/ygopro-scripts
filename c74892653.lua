@@ -41,19 +41,9 @@ end
 function c74892653.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=ep and Duel.GetCurrentChain()==0
 end
-function c74892653.cfcost(c)
-	return c:IsCode(84012625) and c:IsAbleToRemoveAsCost()
-end
 function c74892653.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local b1=e:GetHandler():IsReleasable()
-	local b2=Duel.IsExistingMatchingCard(c74892653.cfcost,tp,LOCATION_GRAVE,0,1,nil)
-	if chk==0 then return b1 or b2 end
-	if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(84012625,0))) then
-		local tg=Duel.GetFirstMatchingCard(c74892653.cfcost,tp,LOCATION_GRAVE,0,nil)
-		Duel.Remove(tg,POS_FACEUP,REASON_COST)
-	else
-		Duel.Release(e:GetHandler(),REASON_COST)
-	end
+	if chk==0 then return e:GetHandler():IsReleasable() end
+	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c74892653.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
