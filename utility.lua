@@ -2114,3 +2114,19 @@ function Auxiliary.ExceptThisCard(e)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then return c else return nil end
 end
+--filter for face-up link monster on field
+function Auxiliary.FaceupLinkMonsterFilter(c)
+	return c:IsFaceup() and c:IsType(TYPE_LINK)
+end
+--used for multi-linked zone(zone linked by two or more link monsters)
+function Auxiliary.GetMultiLinkedZone(tp)
+	local lg=Duel.GetMatchingGroup(Auxiliary.FaceupLinkMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local multi_linked_zone=0
+	local single_linked_zone=0
+	for tc in aux.Next(lg) do
+		local zone=tc:GetLinkedZone(tp)&0x7f
+		multi_linked_zone=single_linked_zone&zone|multi_linked_zone
+		single_linked_zone=single_linked_zone~zone
+	end
+	return multi_linked_zone
+end
