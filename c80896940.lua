@@ -124,7 +124,7 @@ function c80896940.valcheck(e,c)
 	local tg=g:Filter(c80896940.mfilter,nil)
 	for tc in aux.Next(tg) do
 		g:RemoveCard(tc)
-		local flag=g:FilterCount(aux.NonTuner(Card.IsType,TYPE_SYNCHRO),nil)==g:GetCount()
+		local flag=g:FilterCount(aux.NonTuner(Card.IsType,TYPE_SYNCHRO),nil,c)==g:GetCount()
 		g:AddCard(tc)
 		if flag then
 			e:GetLabelObject():SetLabel(1)
