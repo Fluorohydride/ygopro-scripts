@@ -79,14 +79,16 @@ function c3096468.synop(e,tp,eg,ep,ev,re,r,rp,syncard,f,min,max)
 		if sg:GetCount()==0 then break end
 		g:Merge(sg)
 	end
-	for tc in Auxiliary.Next(g) do
-		local e1=Effect.CreateEffect(c)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_IGNORE_IMMUNE)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_TO_GRAVE_REDIRECT)
-		e1:SetValue(LOCATION_REMOVED)
-		e1:SetReset(RESET_EVENT+RESETS_REDIRECT)
-		tc:RegisterEffect(e1,true)
+	if g:IsExists(Card.IsLocation,1,nil,LOCATION_HAND) then
+		for tc in Auxiliary.Next(g) do
+			local e1=Effect.CreateEffect(c)
+			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_IGNORE_IMMUNE)
+			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetCode(EFFECT_TO_GRAVE_REDIRECT)
+			e1:SetValue(LOCATION_REMOVED)
+			e1:SetReset(RESET_EVENT+RESETS_REDIRECT)
+			tc:RegisterEffect(e1,true)
+		end
 	end
 	Duel.SetSynchroMaterial(g)
 end
