@@ -39,7 +39,7 @@ function c71645242.initial_effect(c)
 	end
 end
 function c71645242.cfilter(c,tp)
-	return c:IsControler(tp) and c:GetSummonType()~=SUMMON_TYPE_SPECIAL+0x20
+	return c:IsFaceup() and c:IsControler(tp) and c:GetSummonType()~=SUMMON_TYPE_SPECIAL+0x20
 end
 function c71645242.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local sf=0
