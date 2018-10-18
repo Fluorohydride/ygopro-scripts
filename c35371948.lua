@@ -51,12 +51,15 @@ function c35371948.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_SZONE) and c35371948.cfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c35371948.cfilter,tp,0,LOCATION_SZONE,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(35371948,2))
-	Duel.SelectTarget(tp,c35371948.cfilter,tp,0,LOCATION_SZONE,1,1,e:GetHandler())
+	local g=Duel.SelectTarget(tp,c35371948.cfilter,tp,0,LOCATION_SZONE,1,1,e:GetHandler())
+	local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
+	g:GetFirst():RegisterFlagEffect(35371949,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1,cid)
 end
 function c35371948.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsFacedown() and tc:IsRelateToEffect(e) then
+	local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
+	if c:IsRelateToEffect(e) and tc:IsFacedown() and tc:IsRelateToEffect(e) and tc:GetFlagEffectLabel(35371949)==cid then
 		c:SetCardTarget(tc)
 		e:SetLabelObject(tc)
 		c:ResetFlagEffect(35371948)
