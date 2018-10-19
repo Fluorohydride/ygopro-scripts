@@ -8,7 +8,14 @@ function c68881649.initial_effect(c)
 	e1:SetRange(LOCATION_HAND+LOCATION_DECK)
 	e1:SetCondition(c68881649.spcon)
 	e1:SetOperation(c68881649.spop)
+	e1:SetValue(1)
 	c:RegisterEffect(e1)
+	--pierce
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetCode(EFFECT_PIERCE)
+	e2:SetCondition(c68881649.condition)
+	c:RegisterEffect(e2)
 end
 function c68881649.spfilter1(c,tp)
 	return c:IsFaceup() and c:IsCode(74364659) and c:IsAbleToGraveAsCost()
@@ -31,10 +38,7 @@ function c68881649.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	g1:Merge(g2)
 	Duel.SendtoGrave(g1,REASON_COST)
 	Duel.ShuffleDeck(tp)
-	--pierce
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_PIERCE)
-	e1:SetReset(RESET_EVENT+0xff0000)
-	c:RegisterEffect(e1)
+end
+function c68881649.condition(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
 end
