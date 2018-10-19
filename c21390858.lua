@@ -1,4 +1,4 @@
---凭依装着-达克
+--憑依装着－ダルク
 function c21390858.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)
@@ -20,6 +20,12 @@ function c21390858.initial_effect(c)
 	e2:SetTarget(c21390858.target)
 	e2:SetOperation(c21390858.operation)
 	c:RegisterEffect(e2)
+	--pierce
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetCode(EFFECT_PIERCE)
+	e3:SetCondition(c21390858.condition)
+	c:RegisterEffect(e3)
 end
 function c21390858.spfilter1(c,tp)
 	return c:IsFaceup() and c:IsCode(19327348) and c:IsAbleToGraveAsCost()
@@ -42,12 +48,6 @@ function c21390858.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	g1:Merge(g2)
 	Duel.SendtoGrave(g1,REASON_COST)
 	Duel.ShuffleDeck(tp)
-	--pierce
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_PIERCE)
-	e1:SetReset(RESET_EVENT+0xff0000)
-	c:RegisterEffect(e1)
 end
 function c21390858.tfilter(c)
 	return c:IsLevel(3,4) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsRace(RACE_SPELLCASTER) and c:IsAbleToHand()
