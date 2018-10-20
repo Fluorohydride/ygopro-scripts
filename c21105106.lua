@@ -111,9 +111,9 @@ function c21105106.rgoal(tp,sg,rc,greater)
 	if not (#sg==3 and Duel.GetMZoneCount(tp,sg,tp)>0 and sg:GetClassCount(Card.GetRace)==3) then return false end
 	if greater then
 		Duel.SetSelectedCard(sg)
-		return sg:CheckWithSumGreater(Card.GetLevel,rc:GetLevel())
+		return sg:CheckWithSumGreater(Card.GetRitualLevel,rc:GetLevel(),rc)
 	else
-		return sg:GetSum(Card.GetLevel)==rc:GetLevel()
+		return sg:CheckWithSumEqual(Card.GetRitualLevel,rc:GetLevel(),3,3,rc)
 	end
 end
 function c21105106.ritual_custom_operation(c,mg1,greater)
