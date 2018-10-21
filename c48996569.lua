@@ -50,6 +50,7 @@ function c48996569.initial_effect(c)
 end
 c48996569.material_setcode=0x8
 c48996569.card_code_list={89943723}
+c48996569.neos_fusion=true
 function c48996569.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
