@@ -4,7 +4,7 @@ function c87571563.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetCountLimit(1,87571563)
+	e1:SetCountLimit(1,87571563+EFFECT_COUNT_CODE_OATH)
 	e1:SetTarget(c87571563.target)
 	c:RegisterEffect(e1)
 	--move
