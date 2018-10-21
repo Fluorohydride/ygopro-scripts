@@ -87,11 +87,9 @@ end
 function c37433748.dirop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	local ec=c:GetEquipTarget()
-	if not ec then return end
 	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetType(EFFECT_TYPE_EQUIP)
 	e1:SetCode(EFFECT_DIRECT_ATTACK)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-	ec:RegisterEffect(e1)
+	c:RegisterEffect(e1)
 end
