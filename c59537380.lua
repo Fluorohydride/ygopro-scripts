@@ -23,19 +23,6 @@ function c59537380.initial_effect(c)
 	e2:SetTarget(c59537380.sptg)
 	e2:SetOperation(c59537380.spop)
 	c:RegisterEffect(e2)
-	if aux.GetMultiLinkedZone==nil then
-		function aux.GetMultiLinkedZone(tp)
-			local lg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_MZONE,LOCATION_MZONE,nil,TYPE_LINK)
-			local multi_linked_zone=0
-			local single_linked_zone=0
-			for tc in aux.Next(lg) do
-				local zone=tc:GetLinkedZone(tp)&0x7f
-				multi_linked_zone=single_linked_zone&zone|multi_linked_zone
-				single_linked_zone=single_linked_zone~zone
-			end
-			return multi_linked_zone
-		end
-	end
 end
 function c59537380.splimit(e,c,sump,sumtype,sumpos,targetp)
 	return not c:IsRace(RACE_DRAGON)

@@ -24,19 +24,6 @@ function c13143275.initial_effect(c)
 	e2:SetTarget(c13143275.sptg)
 	e2:SetOperation(c13143275.spop)
 	c:RegisterEffect(e2)
-	if aux.GetMultiLinkedZone==nil then
-		function aux.GetMultiLinkedZone(tp)
-			local lg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_MZONE,LOCATION_MZONE,nil,TYPE_LINK)
-			local multi_linked_zone=0
-			local single_linked_zone=0
-			for tc in aux.Next(lg) do
-				local zone=tc:GetLinkedZone(tp)&0x7f
-				multi_linked_zone=single_linked_zone&zone|multi_linked_zone
-				single_linked_zone=single_linked_zone~zone
-			end
-			return multi_linked_zone
-		end
-	end
 end
 function c13143275.matfilter(c)
 	return c:IsLevelBelow(4) and c:IsLinkRace(RACE_DRAGON)
