@@ -83,7 +83,7 @@ end
 function c6556178.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ec=c:GetPreviousEquipTarget()
-	return c:IsReason(REASON_LOST_TARGET) and ec:IsReason(REASON_DESTROY)
+	return ec and c:IsReason(REASON_LOST_TARGET) and ec:IsReason(REASON_DESTROY)
 end
 function c6556178.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end

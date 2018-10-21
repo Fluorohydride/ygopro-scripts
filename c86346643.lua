@@ -44,6 +44,7 @@ function c86346643.initial_effect(c)
 end
 c86346643.material_setcode=0x8
 c86346643.card_code_list={89943723}
+c86346643.neos_fusion=true
 function c86346643.cfilter1(c)
 	return c:IsAbleToGraveAsCost()
 end

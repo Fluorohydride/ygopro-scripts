@@ -37,6 +37,7 @@ function c72926163.initial_effect(c)
 end
 c72926163.material_setcode=0x8
 c72926163.card_code_list={89943723}
+c72926163.neos_fusion=true
 function c72926163.valcheck(e,c)
 	local g=c:GetMaterial()
 	local atk=0
