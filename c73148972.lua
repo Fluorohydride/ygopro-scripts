@@ -19,8 +19,8 @@ function c73148972.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c73148972.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsControler(tp) then
-		Duel.SendtoGrave(tc,REASON_EFFECT)
+	if tc:IsRelateToEffect(e) and tc:IsControler(tp)
+		and Duel.SendtoGrave(tc,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_GRAVE) then
 		local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND):RandomSelect(tp,1)
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	end
