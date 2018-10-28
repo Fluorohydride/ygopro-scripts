@@ -33,8 +33,8 @@ end
 function c48068378.chk(e,tp,eg,ep,ev,re,r,rp)
 	e:GetLabelObject():SetLabel(e:GetHandler():GetMutualLinkedGroupCount())
 end
-function c48068378.matfilter(c,lc,sumtype,tp)
-	return c:IsLevelBelow(4) and c:IsRace(RACE_CYBERSE,lc,sumtype,tp)
+function c48068378.matfilter(c)
+	return c:IsLevelBelow(4) and c:IsLinkRace(RACE_CYBERSE)
 end
 function c48068378.limop(e,tp,eg,ep,ev,re,r,rp,c)
 	--cannot link summon
