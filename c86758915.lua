@@ -26,6 +26,9 @@ function c86758915.filter(c,e,tp,m,ft)
 		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
 	if c:IsCode(21105106) then return c:ritual_custom_condition(mg,ft,true) end
+	if c.mat_filter then
+		mg=mg:Filter(c.mat_filter,nil)
+	end
 	if ft>0 then
 		return mg:CheckWithSumGreater(Card.GetRitualLevel,c:GetLevel(),c)
 	else
@@ -60,6 +63,9 @@ function c86758915.activate(e,tp,eg,ep,ev,re,r,rp)
 			local mat=tc:GetMaterial()
 			Duel.ReleaseRitualMaterial(mat)
 		else
+			if tc.mat_filter then
+				mg=mg:Filter(tc.mat_filter,nil)
+			end
 			if ft>0 then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 				mat=mg:SelectWithSumGreater(tp,Card.GetRitualLevel,tc:GetLevel(),tc)
