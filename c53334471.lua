@@ -49,8 +49,7 @@ function c53334471.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c53334471.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 	if sumpos and bit.band(sumpos,POS_FACEDOWN)>0 then return false end
-	local at=c53334471[sump]
-	if targetp then at=c53334471[targetp] end
+	local at=c53334471.getattribute(Duel.GetMatchingGroup(Card.IsFaceup,targetp or sump,LOCATION_MZONE,0,nil))
 	if at==0 then return false end
 	return c:GetAttribute()~=at
 end
