@@ -50,7 +50,7 @@ function c90846359.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c90846359.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 	if sumpos and bit.band(sumpos,POS_FACEDOWN)>0 then return false end
-	local rc=c53334471.getrace(Duel.GetMatchingGroup(Card.IsFaceup,targetp or sump,LOCATION_MZONE,0,nil))
+	local rc=c90846359.getrace(Duel.GetMatchingGroup(Card.IsFaceup,targetp or sump,LOCATION_MZONE,0,nil))
 	if rc==0 then return false end
 	return c:GetRace()~=rc
 end
