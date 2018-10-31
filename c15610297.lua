@@ -32,12 +32,13 @@ function c15610297.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	if chk==0 then return bc and bc:IsFaceup() and bc:IsRelateToBattle()
-		and c:IsLocation(LOCATION_MZONE) and c:IsRelateToBattle() end
+		and c:IsLocation(LOCATION_MZONE) and c:IsRelateToBattle()
+		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
 end
 function c15610297.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) or not c:IsLocation(LOCATION_MZONE) then return end
-	Duel.MoveToField(c,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+	if not Duel.MoveToField(c,tp,tp,LOCATION_SZONE,POS_FACEUP,true) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetCode(EFFECT_CHANGE_TYPE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
