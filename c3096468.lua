@@ -80,7 +80,7 @@ function c3096468.synop(e,tp,eg,ep,ev,re,r,rp,syncard,f,min,max)
 		g:Merge(sg)
 	end
 	if g:IsExists(Card.IsLocation,1,nil,LOCATION_HAND) then
-		for tc in Auxiliary.Next(g) do
+		for tc in aux.Next(g) do
 			local e1=Effect.CreateEffect(c)
 			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 			e1:SetType(EFFECT_TYPE_SINGLE)
