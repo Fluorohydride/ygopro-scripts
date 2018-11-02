@@ -67,8 +67,9 @@ function c35199656.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c35199656.damcon1(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(Card.IsControler,1,nil,1-tp)
-		and (not re or not re:IsHasType(EFFECT_TYPE_ACTIONS) or re:IsHasType(EFFECT_TYPE_CONTINUOUS))
+	local g=eg:Filter(Card.IsControler,nil,1-tp)
+	return #g>0
+		and (not re or not re:IsHasType(EFFECT_TYPE_ACTIONS) or re:IsHasType(EFFECT_TYPE_CONTINUOUS) or g:IsExists(Card.IsReason,1,nil,REASON_COST))
 end
 function c35199656.damop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,35199656)
@@ -76,8 +77,9 @@ function c35199656.damop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Damage(1-tp,ct*200,REASON_EFFECT)
 end
 function c35199656.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(Card.IsControler,1,nil,1-tp)
-		and re and re:IsHasType(EFFECT_TYPE_ACTIONS) and not re:IsHasType(EFFECT_TYPE_CONTINUOUS)
+	local g=eg:Filter(Card.IsControler,nil,1-tp)
+	return #g>0
+		and re and re:IsHasType(EFFECT_TYPE_ACTIONS) and not re:IsHasType(EFFECT_TYPE_CONTINUOUS) and not g:IsExists(Card.IsReason,1,nil,REASON_COST)
 end
 function c35199656.regop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=eg:FilterCount(Card.IsControler,nil,1-tp)
