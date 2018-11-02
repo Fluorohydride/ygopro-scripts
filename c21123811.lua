@@ -45,7 +45,7 @@ function c21123811.initial_effect(c)
 	--negate attack
 	local e6=Effect.CreateEffect(c)
 	e6:SetDescription(aux.Stringid(21123811,2))
-	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e6:SetType(EFFECT_TYPE_QUICK_O)
 	e6:SetRange(LOCATION_MZONE)
 	e6:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e6:SetCountLimit(1)
