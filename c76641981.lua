@@ -12,10 +12,13 @@ function c76641981.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c76641981.filter1(c)
-	return c:IsFaceup() and c:IsSetCard(0x27) and c:IsAbleToChangeControler()
+	local tp=c:GetControler()
+	return c:IsFaceup() and c:IsSetCard(0x27)
+		and c:IsAbleToChangeControler() and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
 end
 function c76641981.filter2(c)
-	return c:IsAbleToChangeControler()
+	local tp=c:GetControler()
+	return c:IsAbleToChangeControler() and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
 end
 function c76641981.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

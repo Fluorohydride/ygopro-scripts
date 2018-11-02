@@ -43,14 +43,20 @@ function c15308295.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c15308295.ctfilter(c)
+	local tp=c:GetControler()
 	return c:IsFaceup() and c:IsSetCard(0x10ec) and c:IsType(TYPE_PENDULUM) and c:IsAbleToChangeControler()
+		and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
+end
+function c15308295.ctfilter2(c)
+	local tp=c:GetControler()
+	return c:IsAbleToChangeControler() and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
 end
 function c15308295.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsAbleToChangeControler,tp,0,LOCATION_MZONE,1,nil)
+	if chk==0 then return Duel.IsExistingTarget(c15308295.ctfilter2,tp,0,LOCATION_MZONE,1,nil)
 		and Duel.IsExistingTarget(c15308295.ctfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
-	local g1=Duel.SelectTarget(tp,Card.IsAbleToChangeControler,tp,0,LOCATION_MZONE,1,1,nil)
+	local g1=Duel.SelectTarget(tp,c15308295.ctfilter2,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
 	local g2=Duel.SelectTarget(tp,c15308295.ctfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	g1:Merge(g2)

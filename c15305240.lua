@@ -10,7 +10,9 @@ function c15305240.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c15305240.filter(c)
+	local tp=c:GetControler()
 	return c:IsFaceup() and c:IsType(TYPE_NORMAL) and c:IsAbleToChangeControler()
+		and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
 end
 function c15305240.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c15305240.filter,tp,LOCATION_MZONE,0,1,nil)
