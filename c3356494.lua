@@ -60,17 +60,26 @@ end
 function c3356494.cfilter1(c)
 	return c:IsCode(93717133) and c:IsDiscardable()
 end
-function c3356494.cfilter2(c)
-	return (c:IsSetCard(0x55) or c:IsSetCard(0x7b)) and c:IsDiscardable()
+function c3356494.cfilter2(c,tp)
+	return c:IsSetCard(0x55) and c:IsDiscardable()
+		and Duel.IsExistingMatchingCard(c3356494.cfilter3,tp,LOCATION_HAND,0,1,c)
+end
+function c3356494.cfilter3(c)
+	return c:IsSetCard(0x7b) and c:IsDiscardable()
 end
 function c3356494.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.IsExistingMatchingCard(c3356494.cfilter1,tp,LOCATION_HAND,0,1,nil)
-	local b2=Duel.IsExistingMatchingCard(c3356494.cfilter2,tp,LOCATION_HAND,0,2,nil)
+	local b2=Duel.IsExistingMatchingCard(c3356494.cfilter2,tp,LOCATION_HAND,0,1,nil,tp)
 	if chk==0 then return b1 or b2 end
 	if b1 and (not b2 or Duel.SelectYesNo(tp,aux.Stringid(3356494,2))) then
 		Duel.DiscardHand(tp,c3356494.cfilter1,1,1,REASON_COST+REASON_DISCARD,nil)
 	else
-		Duel.DiscardHand(tp,c3356494.cfilter2,2,2,REASON_COST+REASON_DISCARD,nil)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
+		local g1=Duel.SelectMatchingCard(tp,c3356494.cfilter2,tp,LOCATION_HAND,0,1,1,nil,tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
+		local g2=Duel.SelectMatchingCard(tp,c3356494.cfilter3,tp,LOCATION_HAND,0,1,1,g1)
+		g1:Merge(g2)
+		Duel.SendtoGrave(g1,REASON_COST+REASON_DISCARD)
 	end
 end
 function c3356494.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
