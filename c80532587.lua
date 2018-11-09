@@ -41,7 +41,7 @@ function c80532587.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c80532587.cfilter(c,fc)
-	return c:IsFusionType(TYPE_SYNCHRO+TYPE_XYZ) and c:IsCanBeFusionMaterial(fc) and c:IsAbleToGraveAsCost()
+	return c:IsFusionType(TYPE_SYNCHRO+TYPE_XYZ) and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL) and c:IsAbleToGraveAsCost()
 end
 function c80532587.spfilter1(c,tp,g)
 	return g:IsExists(c80532587.spfilter2,1,c,tp,c)

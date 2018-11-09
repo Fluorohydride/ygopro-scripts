@@ -34,8 +34,8 @@ end
 function c25119460.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA+LOCATION_GRAVE)
 end
-function c25119460.matfilter(c)
-	return c:IsFusionCode(65622692,64500000) and c:IsAbleToRemoveAsCost()
+function c25119460.matfilter(c,fc)
+	return c:IsFusionCode(65622692,64500000) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)
 end
 function c25119460.spfilter1(c,tp,g)
 	return g:IsExists(c25119460.spfilter2,1,c,tp,c)
@@ -48,11 +48,11 @@ end
 function c25119460.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(c25119460.matfilter,tp,LOCATION_ONFIELD,0,nil)
+	local g=Duel.GetMatchingGroup(c25119460.matfilter,tp,LOCATION_ONFIELD,0,nil,c)
 	return g:IsExists(c25119460.spfilter1,1,nil,tp,g)
 end
 function c25119460.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.GetMatchingGroup(c25119460.matfilter,tp,LOCATION_ONFIELD,0,nil)
+	local g=Duel.GetMatchingGroup(c25119460.matfilter,tp,LOCATION_ONFIELD,0,nil,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g1=g:FilterSelect(tp,c25119460.spfilter1,1,1,nil,tp,g)
 	local mc=g1:GetFirst()

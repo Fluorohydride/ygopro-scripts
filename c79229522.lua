@@ -31,9 +31,9 @@ c79229522.material_setcode=0x1093
 function c79229522.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
-function c79229522.cfilter(c,tp)
+function c79229522.cfilter(c,tp,fc)
 	return (c:IsFusionCode(70095154) or c:IsRace(RACE_MACHINE) and c:IsType(TYPE_MONSTER))
-		and c:IsCanBeFusionMaterial() and c:IsAbleToGraveAsCost() and (c:IsControler(tp) or c:IsFaceup())
+		and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL) and c:IsAbleToGraveAsCost() and (c:IsControler(tp) or c:IsFaceup())
 end
 function c79229522.fcheck(c,sg)
 	return c:IsFusionCode(70095154) and sg:FilterCount(c79229522.fcheck2,c)+1==sg:GetCount()
@@ -53,12 +53,12 @@ end
 function c79229522.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c79229522.cfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,tp)
+	local mg=Duel.GetMatchingGroup(c79229522.cfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,tp,c)
 	local sg=Group.CreateGroup()
 	return mg:IsExists(c79229522.fselect,1,nil,tp,mg,sg)
 end
 function c79229522.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c79229522.cfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,tp)
+	local mg=Duel.GetMatchingGroup(c79229522.cfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,tp,c)
 	local sg=Group.CreateGroup()
 	while true do
 		local cg=mg:Filter(c79229522.fselect,sg,tp,mg,sg)

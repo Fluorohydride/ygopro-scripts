@@ -51,8 +51,8 @@ end
 function c1561110.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
-function c1561110.cfilter(c)
-	return c:IsFusionCode(30012506,77411244,3405259) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial()
+function c1561110.cfilter(c,fc)
+	return c:IsFusionCode(30012506,77411244,3405259) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)
 end
 function c1561110.fcheck(c,sg,g,code,...)
 	if not c:IsFusionCode(code) then return false end
@@ -78,12 +78,12 @@ end
 function c1561110.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c1561110.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
+	local mg=Duel.GetMatchingGroup(c1561110.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil,c)
 	local sg=Group.CreateGroup()
 	return mg:IsExists(c1561110.fselect,1,nil,tp,mg,sg,30012506,77411244,3405259)
 end
 function c1561110.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c1561110.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
+	local mg=Duel.GetMatchingGroup(c1561110.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil,c)
 	local sg=Group.CreateGroup()
 	while sg:GetCount()<3 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)

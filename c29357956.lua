@@ -51,8 +51,8 @@ end
 function c29357956.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
-function c29357956.spfilter(c)
-	return c:IsFusionSetCard(0x19) and c:IsCanBeFusionMaterial() and c:IsAbleToDeckOrExtraAsCost()
+function c29357956.spfilter(c,fc)
+	return c:IsFusionSetCard(0x19) and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL) and c:IsAbleToDeckOrExtraAsCost()
 end
 function c29357956.fselect(c,tp,mg,sg)
 	sg:AddCard(c)
@@ -68,12 +68,12 @@ end
 function c29357956.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c29357956.spfilter,tp,LOCATION_MZONE,0,nil)
+	local mg=Duel.GetMatchingGroup(c29357956.spfilter,tp,LOCATION_MZONE,0,nil,c)
 	local sg=Group.CreateGroup()
 	return mg:IsExists(c29357956.fselect,1,nil,tp,mg,sg)
 end
 function c29357956.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c29357956.spfilter,tp,LOCATION_MZONE,0,nil)
+	local mg=Duel.GetMatchingGroup(c29357956.spfilter,tp,LOCATION_MZONE,0,nil,c)
 	local sg=Group.CreateGroup()
 	while sg:GetCount()<3 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)

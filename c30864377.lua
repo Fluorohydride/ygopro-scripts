@@ -55,8 +55,8 @@ end
 function c30864377.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
-function c30864377.fspfilter(c)
-	return c30864377.matfilter(c) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial()
+function c30864377.fspfilter(c,fc)
+	return c30864377.matfilter(c) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)
 end
 function c30864377.spfilter1(c,tp,g)
 	return g:IsExists(c30864377.spfilter2,1,c,tp,c)
@@ -67,11 +67,11 @@ end
 function c30864377.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(c30864377.fspfilter,tp,LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(c30864377.fspfilter,tp,LOCATION_MZONE,0,nil,c)
 	return g:IsExists(c30864377.spfilter1,1,nil,tp,g)
 end
 function c30864377.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.GetMatchingGroup(c30864377.fspfilter,tp,LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(c30864377.fspfilter,tp,LOCATION_MZONE,0,nil,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g1=g:FilterSelect(tp,c30864377.spfilter1,1,1,nil,tp,g)
 	local mc=g1:GetFirst()

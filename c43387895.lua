@@ -38,7 +38,7 @@ function c43387895.splimit(e,se,sp,st)
 	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
 end
 function c43387895.spfilter(c,fc)
-	return c43387895.ffilter(c) and c:IsCanBeFusionMaterial(fc)
+	return c43387895.ffilter(c) and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)
 end
 function c43387895.spfilter1(c,tp,g)
 	return g:IsExists(c43387895.spfilter2,1,c,tp,c)

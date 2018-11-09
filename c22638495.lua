@@ -2,6 +2,7 @@
 function c22638495.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
+	aux.AddFusionProcFun2(c,c22638495.matfilter,aux.FilterBoolFunction(Card.IsFusionType,TYPE_PENDULUM),false)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -45,11 +46,14 @@ function c22638495.initial_effect(c)
 	e5:SetValue(aux.tgoval)
 	c:RegisterEffect(e5)
 end
+function c22638495.matfilter(c)
+	return c:IsFusionType(TYPE_PENDULUM) and c:IsFusionSetCard(0xc7)
+end
 function c22638495.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
 function c22638495.rfilter(c,fc)
-	return c:IsType(TYPE_PENDULUM) and c:IsCanBeFusionMaterial(fc)
+	return c:IsType(TYPE_PENDULUM) and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)
 end
 function c22638495.spfilter1(c,tp,g)
 	return g:IsExists(c22638495.spfilter2,1,c,tp,c)

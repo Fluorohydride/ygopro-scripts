@@ -60,20 +60,20 @@ function c90050480.sprcon(e,c)
 	return Duel.IsExistingMatchingCard(c90050480.sprfilter1,tp,LOCATION_ONFIELD,0,1,nil,tp,c)
 end
 function c90050480.sprfilter1(c,tp,fc)
-	return c:IsFusionCode(89943723) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(fc)
+	return c:IsFusionCode(89943723) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)
 		and Duel.IsExistingMatchingCard(c90050480.sprfilter2,tp,LOCATION_MZONE,0,1,c,tp,fc,c)
 end
 function c90050480.sprfilter2(c,tp,fc,mc)
-	return c:IsFusionSetCard(0x1f) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(fc)
+	return c:IsFusionSetCard(0x1f) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)
 		and Duel.IsExistingMatchingCard(c90050480.sprfilter3,tp,LOCATION_MZONE,0,1,Group.FromCards(c,mc),tp,fc,mc,c)
 end
 function c90050480.sprfilter3(c,tp,fc,mc1,mc2)
-	return c:IsFusionSetCard(0x1f) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(fc) and not c:IsFusionAttribute(mc2:GetFusionAttribute())
+	return c:IsFusionSetCard(0x1f) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL) and not c:IsFusionAttribute(mc2:GetFusionAttribute())
 		and Duel.IsExistingMatchingCard(c90050480.sprfilter4,tp,LOCATION_MZONE,0,1,Group.FromCards(c,mc1,mc2),tp,fc,mc1,mc2,c)
 end
 function c90050480.sprfilter4(c,tp,fc,mc1,mc2,mc3)
 	local g=Group.FromCards(c,mc1,mc2,mc3)
-	return c:IsFusionSetCard(0x1f) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(fc) and not c:IsFusionAttribute(mc2:GetFusionAttribute()) and not c:IsFusionAttribute(mc3:GetFusionAttribute())
+	return c:IsFusionSetCard(0x1f) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL) and not c:IsFusionAttribute(mc2:GetFusionAttribute()) and not c:IsFusionAttribute(mc3:GetFusionAttribute())
 		and Duel.GetLocationCountFromEx(tp,tp,g)>0
 end
 function c90050480.sprop(e,tp,eg,ep,ev,re,r,rp,c)

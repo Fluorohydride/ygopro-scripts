@@ -50,7 +50,7 @@ function c2129638.splimit(e,se,sp,st)
 	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
 end
 function c2129638.spfilter(c,fc)
-	return c:IsFusionCode(89631139) and c:IsCanBeFusionMaterial(fc) and c:IsAbleToGraveAsCost()
+	return c:IsFusionCode(89631139) and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL) and c:IsAbleToGraveAsCost()
 end
 function c2129638.spfilter1(c,tp,g)
 	return g:IsExists(c2129638.spfilter2,1,c,tp,c)

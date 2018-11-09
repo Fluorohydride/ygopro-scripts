@@ -44,7 +44,7 @@ function c72378329.splimit(e,se,sp,st)
 end
 function c72378329.rfilter(c,fc)
 	return (c:IsRace(RACE_DRAGON) and c:IsAttribute(ATTRIBUTE_DARK) or c:IsRace(RACE_BEAST))
-		and c:IsCanBeFusionMaterial(fc)
+		and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)
 end
 function c72378329.spfilter1(c,tp,g)
 	return g:IsExists(c72378329.spfilter2,1,c,tp,c)

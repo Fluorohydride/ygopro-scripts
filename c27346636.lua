@@ -37,9 +37,9 @@ end
 function c27346636.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
-function c27346636.cfilter(c)
+function c27346636.cfilter(c,fc)
 	return (c:IsFusionCode(78868776) or c:IsFusionSetCard(0x19) and c:IsType(TYPE_MONSTER))
-		and c:IsCanBeFusionMaterial() and c:IsAbleToDeckOrExtraAsCost()
+		and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL) and c:IsAbleToDeckOrExtraAsCost()
 end
 function c27346636.fcheck(c,sg)
 	return c:IsFusionCode(78868776) and sg:IsExists(c27346636.fcheck2,2,c)
@@ -61,12 +61,12 @@ end
 function c27346636.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c27346636.cfilter,tp,LOCATION_ONFIELD,0,nil)
+	local mg=Duel.GetMatchingGroup(c27346636.cfilter,tp,LOCATION_ONFIELD,0,nil,c)
 	local sg=Group.CreateGroup()
 	return mg:IsExists(c27346636.fselect,1,nil,tp,mg,sg)
 end
 function c27346636.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c27346636.cfilter,tp,LOCATION_ONFIELD,0,nil)
+	local mg=Duel.GetMatchingGroup(c27346636.cfilter,tp,LOCATION_ONFIELD,0,nil,c)
 	local sg=Group.CreateGroup()
 	while sg:GetCount()<3 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)

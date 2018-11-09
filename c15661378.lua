@@ -40,7 +40,7 @@ function c15661378.splimit(e,se,sp,st)
 		or st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
 end
 function c15661378.cfilter(c,fc)
-	return c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(fc)
+	return c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)
 end
 function c15661378.fselect(c,tp,mg,sg)
 	sg:AddCard(c)

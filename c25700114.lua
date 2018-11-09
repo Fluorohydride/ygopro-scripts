@@ -43,16 +43,20 @@ function c25700114.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetType(EFFECT_TYPE_SINGLE)
 		e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e3:SetCode(EFFECT_CANNOT_BE_FUSION_MATERIAL)
-		e3:SetValue(1)
+		e3:SetValue(c25700114.fuslimit)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e3)
 		local e4=e3:Clone()
 		e4:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
+		e4:SetValue(1)
 		tc:RegisterEffect(e4)
-		local e5=e3:Clone()
+		local e5=e4:Clone()
 		e5:SetCode(EFFECT_CANNOT_BE_XYZ_MATERIAL)
 		tc:RegisterEffect(e5)
 	end
+end
+function c25700114.fuslimit(e,c,sumtype)
+	return sumtype==SUMMON_TYPE_FUSION
 end
 function c25700114.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

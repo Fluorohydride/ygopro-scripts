@@ -53,8 +53,8 @@ c40080312.card_code_list={89943723}
 function c40080312.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
-function c40080312.cfilter(c)
-	return c:IsFusionCode(89943723,80344569,43237273) and c:IsAbleToDeckOrExtraAsCost()
+function c40080312.cfilter(c,fc)
+	return c:IsFusionCode(89943723,80344569,43237273) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)
 end
 function c40080312.fcheck(c,sg,g,code,...)
 	if not c:IsFusionCode(code) then return false end
@@ -80,12 +80,12 @@ end
 function c40080312.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c40080312.cfilter,tp,LOCATION_ONFIELD,0,nil)
+	local mg=Duel.GetMatchingGroup(c40080312.cfilter,tp,LOCATION_ONFIELD,0,nil,c)
 	local sg=Group.CreateGroup()
 	return mg:IsExists(c40080312.fselect,1,nil,tp,mg,sg,89943723,80344569,43237273)
 end
 function c40080312.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c40080312.cfilter,tp,LOCATION_ONFIELD,0,nil)
+	local mg=Duel.GetMatchingGroup(c40080312.cfilter,tp,LOCATION_ONFIELD,0,nil,c)
 	local sg=Group.CreateGroup()
 	while sg:GetCount()<3 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)

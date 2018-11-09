@@ -54,8 +54,8 @@ c28677304.neos_fusion=true
 function c28677304.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
-function c28677304.matfilter(c)
-	return c:IsFusionCode(89943723,43237273) and c:IsAbleToDeckOrExtraAsCost()
+function c28677304.matfilter(c,fc)
+	return c:IsFusionCode(89943723,43237273) and c:IsAbleToDeckOrExtraAsCost() and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)
 end
 function c28677304.spfilter1(c,tp,g)
 	return g:IsExists(c28677304.spfilter2,1,c,tp,c)
@@ -68,11 +68,11 @@ end
 function c28677304.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(c28677304.matfilter,tp,LOCATION_ONFIELD,0,nil)
+	local g=Duel.GetMatchingGroup(c28677304.matfilter,tp,LOCATION_ONFIELD,0,nil,c)
 	return g:IsExists(c28677304.spfilter1,1,nil,tp,g)
 end
 function c28677304.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.GetMatchingGroup(c28677304.matfilter,tp,LOCATION_ONFIELD,0,nil)
+	local g=Duel.GetMatchingGroup(c28677304.matfilter,tp,LOCATION_ONFIELD,0,nil,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g1=g:FilterSelect(tp,c28677304.spfilter1,1,1,nil,tp,g)
 	local mc=g1:GetFirst()

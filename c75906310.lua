@@ -63,8 +63,8 @@ end
 function c75906310.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
-function c75906310.cfilter(c)
-	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsFusionCode(84243274,73879377) and c:IsAbleToRemoveAsCost()
+function c75906310.cfilter(c,fc)
+	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsFusionCode(84243274,73879377) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)
 end
 function c75906310.fcheck(c,sg,g,code,...)
 	if not c:IsFusionCode(code) then return false end
@@ -90,13 +90,13 @@ end
 function c75906310.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c75906310.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
+	local mg=Duel.GetMatchingGroup(c75906310.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil,c)
 	local sg=Group.CreateGroup()
 	return Duel.GetFlagEffect(tp,75906310)>0 and Duel.GetFlagEffect(tp,75906311)>0
 		and mg:IsExists(c75906310.fselect,1,nil,tp,mg,sg,84243274,73879377)
 end
 function c75906310.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c75906310.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
+	local mg=Duel.GetMatchingGroup(c75906310.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil,c)
 	local sg=Group.CreateGroup()
 	while sg:GetCount()<2 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)

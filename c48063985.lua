@@ -43,9 +43,9 @@ function c48063985.initial_effect(c)
 	e4:SetOperation(c48063985.spop)
 	c:RegisterEffect(e4)
 end
-function c48063985.matfilter(c)
+function c48063985.matfilter(c,fc)
 	return (c:IsFusionSetCard(0x10b5) or c:IsFusionSetCard(0x20b5))
-		and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial()
+		and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)
 end
 function c48063985.spfilter1(c,tp,g)
 	return g:IsExists(c48063985.spfilter2,1,c,tp,c)
@@ -58,11 +58,11 @@ end
 function c48063985.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(c48063985.matfilter,tp,LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(c48063985.matfilter,tp,LOCATION_MZONE,0,nil,c)
 	return g:IsExists(c48063985.spfilter1,1,nil,tp,g)
 end
 function c48063985.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.GetMatchingGroup(c48063985.matfilter,tp,LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(c48063985.matfilter,tp,LOCATION_MZONE,0,nil,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g1=g:FilterSelect(tp,c48063985.spfilter1,1,1,nil,tp,g)
 	local mc=g1:GetFirst()

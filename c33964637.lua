@@ -59,16 +59,16 @@ function c33964637.sprcon(e,c)
 	return Duel.IsExistingMatchingCard(c33964637.sprfilter1,tp,LOCATION_MZONE,0,1,nil,tp,c)
 end
 function c33964637.sprfilter1(c,tp,fc)
-	return c:IsFusionSetCard(0x3d) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc)
+	return c:IsFusionSetCard(0x3d) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)
 		and Duel.IsExistingMatchingCard(c33964637.sprfilter2,tp,LOCATION_MZONE,0,1,c,tp,fc,c)
 end
 function c33964637.sprfilter2(c,tp,fc,mc)
-	return c:IsFusionSetCard(0x3d) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc) and not c:IsFusionAttribute(mc:GetFusionAttribute())
+	return c:IsFusionSetCard(0x3d) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL) and not c:IsFusionAttribute(mc:GetFusionAttribute())
 		and Duel.IsExistingMatchingCard(c33964637.sprfilter3,tp,LOCATION_MZONE,0,1,c,tp,fc,mc,c)
 end
 function c33964637.sprfilter3(c,tp,fc,mc1,mc2)
 	local g=Group.FromCards(c,mc1,mc2)
-	return c:IsFusionSetCard(0x3d) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc) and not c:IsFusionAttribute(mc1:GetFusionAttribute()) and not c:IsFusionAttribute(mc2:GetFusionAttribute())
+	return c:IsFusionSetCard(0x3d) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL) and not c:IsFusionAttribute(mc1:GetFusionAttribute()) and not c:IsFusionAttribute(mc2:GetFusionAttribute())
 		and Duel.GetLocationCountFromEx(tp,tp,g)>0
 end
 function c33964637.sprop(e,tp,eg,ep,ev,re,r,rp,c)

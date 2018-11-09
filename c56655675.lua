@@ -1,6 +1,7 @@
 --聖霊獣騎 ガイアペライオ
 function c56655675.initial_effect(c)
 	c:EnableReviveLimit()
+	aux.AddFusionProcMix(c,false,false,aux.FilterBoolFunction(Card.IsFusionSetCard,0x40b5),aux.FilterBoolFunction(Card.IsFusionSetCard,0x10b5),aux.FilterBoolFunction(Card.IsFusionSetCard,0x20b5))
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -26,9 +27,9 @@ function c56655675.initial_effect(c)
 	e3:SetOperation(c56655675.operation)
 	c:RegisterEffect(e3)
 end
-function c56655675.cfilter(c)
+function c56655675.cfilter(c,fc)
 	return (c:IsFusionSetCard(0x40b5) or c:IsFusionSetCard(0x10b5) or c:IsFusionSetCard(0x20b5))
-		and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial()
+		and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)
 end
 function c56655675.fcheck(c,sg,g,code,...)
 	if not c:IsFusionSetCard(code) then return false end
@@ -54,12 +55,12 @@ end
 function c56655675.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c56655675.cfilter,tp,LOCATION_MZONE,0,nil)
+	local mg=Duel.GetMatchingGroup(c56655675.cfilter,tp,LOCATION_MZONE,0,nil,c)
 	local sg=Group.CreateGroup()
 	return mg:IsExists(c56655675.fselect,1,nil,tp,mg,sg,0x40b5,0x10b5,0x20b5)
 end
 function c56655675.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c56655675.cfilter,tp,LOCATION_MZONE,0,nil)
+	local mg=Duel.GetMatchingGroup(c56655675.cfilter,tp,LOCATION_MZONE,0,nil,c)
 	local sg=Group.CreateGroup()
 	while sg:GetCount()<3 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
