@@ -60,7 +60,7 @@ function c68823957.cbop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c68823957.cecon(e,tp,eg,ep,ev,re,r,rp)
-	if e==re or not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return false end
+	if e==re or rp~=1-tp or not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return false end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	if not g or g:GetCount()~=1 then return false end
 	local tc=g:GetFirst()
