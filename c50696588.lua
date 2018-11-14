@@ -21,7 +21,8 @@ end
 function c50696588.activate(e,tp,eg,ep,ev,re,r,rp)
 	local flag=e:GetLabel()
 	local seq=math.log(bit.rshift(flag,16),2)
-	if not Duel.CheckLocation(1-tp,LOCATION_MZONE,seq) then return end
+	if not Duel.CheckLocation(1-tp,LOCATION_MZONE,seq)
+		or Duel.GetFlagEffect(tp,50696588)~=0 then return end
 	Duel.RegisterFlagEffect(tp,50696588,0,0,0)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)

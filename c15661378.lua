@@ -31,6 +31,12 @@ function c15661378.initial_effect(c)
 	e3:SetTarget(c15661378.remtg)
 	e3:SetOperation(c15661378.remop)
 	c:RegisterEffect(e3)
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_SINGLE)
+	e4:SetCode(EFFECT_MATERIAL_CHECK)
+	e4:SetValue(c15661378.valcheck)
+	e4:SetLabelObject(e3)
+	c:RegisterEffect(e4)
 end
 function c15661378.ffilter(c,fc,sub,mg,sg)
 	return c:IsControler(fc:GetControler()) and c:IsLocation(LOCATION_MZONE+LOCATION_HAND) and (not sg or not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode()))
@@ -74,10 +80,16 @@ end
 function c15661378.mfilter(c)
 	return c:GetOriginalRace()~=RACE_DRAGON
 end
-function c15661378.remcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
+function c15661378.valcheck(e,c)
 	local mg=c:GetMaterial()
-	return mg and not mg:IsExists(c15661378.mfilter,1,nil)
+	if not mg:IsExists(c15661378.mfilter,1,nil) then
+		e:GetLabelObject():SetLabel(1)
+	else
+		e:GetLabelObject():SetLabel(0)
+	end
+end
+function c15661378.remcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetLabel()==1
 end
 function c15661378.remtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,LOCATION_DECK,0,1,nil)
