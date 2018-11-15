@@ -100,7 +100,7 @@ function c87871125.thop2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c87871125.valcheck(e,c)
 	local g=c:GetMaterial()
-	if g:IsExists(Card.IsLinkCode,1,nil,87871125) and c:IsSummonType(SUMMON_TYPE_LINK) then
+	if g:IsExists(Card.IsLinkCode,1,nil,87871125) then
 		c:RegisterFlagEffect(87871125,RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD-RESET_LEAVE-RESET_TEMP_REMOVE,0,1)
 	end
 end
