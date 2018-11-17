@@ -34,6 +34,13 @@ function c87871125.initial_effect(c)
 	e4:SetCode(EFFECT_MATERIAL_CHECK)
 	e4:SetValue(c87871125.valcheck)
 	c:RegisterEffect(e4)
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e5:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e5:SetCondition(c87871125.regcon)
+	e5:SetOperation(c87871125.regop)
+	c:RegisterEffect(e5)
+	e4:SetLabelObject(e5)
 end
 function c87871125.matfilter(c)
 	return c:IsLinkType(TYPE_EFFECT) and c:IsLinkAttribute(ATTRIBUTE_FIRE)
@@ -81,7 +88,7 @@ function c87871125.sumlimit(e,c)
 	return c:IsCode(e:GetLabel())
 end
 function c87871125.thcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK) and e:GetHandler():GetFlagEffect(87871125)~=0
+	return e:GetHandler():GetFlagEffect(87871125)~=0
 end
 function c87871125.thfilter2(c)
 	return c:IsSetCard(0x119) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
@@ -101,6 +108,14 @@ end
 function c87871125.valcheck(e,c)
 	local g=c:GetMaterial()
 	if g:IsExists(Card.IsLinkCode,1,nil,87871125) then
-		c:RegisterFlagEffect(87871125,RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD-RESET_LEAVE-RESET_TEMP_REMOVE,0,1)
+		e:GetLabelObject():SetLabel(1)
+	else
+		e:GetLabelObject():SetLabel(0)
 	end
+end
+function c87871125.regcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK) and e:GetLabel()==1
+end
+function c87871125.regop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():RegisterFlagEffect(87871125,RESET_EVENT+RESETS_STANDARD,0,1)
 end

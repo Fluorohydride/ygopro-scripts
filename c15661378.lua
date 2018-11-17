@@ -18,6 +18,7 @@ function c15661378.initial_effect(c)
 	e2:SetRange(LOCATION_EXTRA)
 	e2:SetCondition(c15661378.spcon)
 	e2:SetOperation(c15661378.spop)
+	e2:SetValue(1)
 	c:RegisterEffect(e2)
 	--remove
 	local e3=Effect.CreateEffect(c)
@@ -89,7 +90,8 @@ function c15661378.valcheck(e,c)
 	end
 end
 function c15661378.remcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetLabel()==1
+	local c=e:GetHandler()
+	return (c:GetSummonType()==SUMMON_TYPE_SPECIAL+1 or c:IsSummonType(SUMMON_TYPE_FUSION)) and e:GetLabel()==1
 end
 function c15661378.remtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,LOCATION_DECK,0,1,nil)
