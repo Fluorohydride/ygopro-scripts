@@ -43,7 +43,7 @@ function c39732186.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c39732186.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=e:GetLabelObject()
-	if chk==0 then return bc:IsAbleToHand() end
+	if chk==0 then return bc and bc:IsAbleToHand() end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,bc,1,0,0)
 end
 function c39732186.thop(e,tp,eg,ep,ev,re,r,rp)
