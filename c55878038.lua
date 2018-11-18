@@ -21,6 +21,7 @@ function c55878038.initial_effect(c)
 	e2:SetCondition(c55878038.descon)
 	e2:SetTarget(c55878038.destg)
 	e2:SetOperation(c55878038.desop)
+	e2:SetLabelObject(e1)
 	c:RegisterEffect(e2)
 end
 function c55878038.spcostfilter(c)
@@ -42,7 +43,7 @@ function c55878038.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	if g:IsExists(Card.IsAttribute,1,nil,ATTRIBUTE_DARK) then
 		label=label+2
 	end
-	c:RegisterFlagEffect(55878038,RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD,0,1,label)
+	e:SetLabel(label)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c55878038.descon(e,tp,eg,ep,ev,re,r,rp)
@@ -52,7 +53,7 @@ function c55878038.spfilter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c55878038.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local label=e:GetHandler():GetFlagEffectLabel(55878038)
+	local label=e:GetLabelObject():GetLabel()
 	if chk==0 then
 		if label==1 then
 			return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -63,6 +64,7 @@ function c55878038.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 			return true
 		end
 	end
+	e:SetLabel(label)
 	if label==1 then
 		Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(55878038,1))
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -86,7 +88,7 @@ function c55878038.desop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_CANNOT_ATTACK)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 	c:RegisterEffect(e1)
-	local label=c:GetFlagEffectLabel(55878038)
+	local label=e:GetLabel()
 	if label==1 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
