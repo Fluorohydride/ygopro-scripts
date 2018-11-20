@@ -10,16 +10,11 @@ function c56641453.initial_effect(c)
 	e1:SetOperation(c56641453.activate)
 	c:RegisterEffect(e1)
 end
-c56641453.list={[42682609]=17955766,[43751755]=43237273,[17363041]=54959865,
-				[29246354]=17732278,[16241441]=89621922,[42239546]=80344569}
 function c56641453.filter1(c,e,tp)
-	if c:IsFacedown() then return false end
-	local code=c:GetCode()
-	local tcode=c56641453.list[code]
-	return tcode and Duel.IsExistingTarget(c56641453.filter2,tp,0x13,0,1,nil,tcode,e,tp)
+	return c:IsFaceup() and c:IsSetCard(0x1e) and Duel.IsExistingMatchingCard(c56641453.filter2,tp,0x13,0,1,nil,c,e,tp)
 end
-function c56641453.filter2(c,tcode,e,tp)
-	return c:IsCode(tcode) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+function c56641453.filter2(c,mc,e,tp)
+	return c:IsSetCard(0x1f) and aux.IsCodeListed(mc,c:GetCode()) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c56641453.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
@@ -33,10 +28,8 @@ function c56641453.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			and Duel.CheckReleaseGroup(tp,c56641453.filter1,1,nil,e,tp) end
 	e:SetLabel(0)
 	local rg=Duel.SelectReleaseGroup(tp,c56641453.filter1,1,1,nil,e,tp)
-	local code=rg:GetFirst():GetCode()
-	local tcode=c56641453.list[code]
 	Duel.Release(rg,REASON_COST)
-	Duel.SetTargetParam(tcode)
+	Duel.SetTargetCard(rg)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,0x13)
 end
 function c56641453.activate(e,tp,eg,ep,ev,re,r,rp)
@@ -53,9 +46,9 @@ function c56641453.activate(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	local tcode=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
+	local tc=Duel.GetFirstTarget()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c56641453.filter2),tp,0x13,0,1,1,nil,tcode,e,tp)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c56641453.filter2),tp,0x13,0,1,1,nil,tc,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end

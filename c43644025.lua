@@ -17,16 +17,11 @@ function c43644025.initial_effect(c)
 	e2:SetOperation(c43644025.activate)
 	c:RegisterEffect(e2)
 end
-c43644025.list={[42682609]=17955766,[43751755]=43237273,[17363041]=54959865,
-				[29246354]=17732278,[16241441]=89621922,[42239546]=80344569}
 function c43644025.filter1(c,e,tp)
-	if c:IsFacedown() then return false end
-	local code=c:GetCode()
-	local tcode=c43644025.list[code]
-	return tcode and Duel.IsExistingTarget(c43644025.filter2,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,tcode,e,tp)
+	return c:IsFaceup() and c:IsSetCard(0x1e) and Duel.IsExistingTarget(c43644025.filter2,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,c,e,tp)
 end
-function c43644025.filter2(c,tcode,e,tp)
-	return c:IsCode(tcode) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+function c43644025.filter2(c,mc,e,tp)
+	return c:IsSetCard(0x1f) and aux.IsCodeListed(mc,c:GetCode()) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c43644025.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
@@ -41,11 +36,9 @@ function c43644025.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 			and Duel.CheckReleaseGroup(tp,c43644025.filter1,1,nil,e,tp) end
 	e:SetLabel(0)
 	local rg=Duel.SelectReleaseGroup(tp,c43644025.filter1,1,1,nil,e,tp)
-	local code=rg:GetFirst():GetCode()
-	local tcode=c43644025.list[code]
 	Duel.Release(rg,REASON_COST)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectTarget(tp,c43644025.filter2,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil,tcode,e,tp)
+	local g=Duel.SelectTarget(tp,c43644025.filter2,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil,rg:GetFirst(),e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c43644025.activate(e,tp,eg,ep,ev,re,r,rp)
