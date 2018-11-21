@@ -13,7 +13,7 @@ function c16616620.filter1(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x1e) and Duel.IsExistingMatchingCard(c16616620.filter2,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,c,e,tp)
 end
 function c16616620.filter2(c,mc,e,tp)
-	return aux.IsCodeListed(mc,c:GetCode()) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsSetCard(0x1f) and aux.IsCodeListed(mc,c:GetCode()) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c16616620.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
