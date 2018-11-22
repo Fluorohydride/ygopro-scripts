@@ -5,7 +5,6 @@ function c20426907.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetHintTiming(0,TIMING_SUMMON+TIMING_SPSUMMON)
 	c:RegisterEffect(e1)
 	--disable
 	local e2=Effect.CreateEffect(c)

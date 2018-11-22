@@ -1,21 +1,9 @@
 --空牙団の修練
 function c37890974.initial_effect(c)
 	--Activate
-	local e0=Effect.CreateEffect(c)
-	e0:SetDescription(aux.Stringid(37890974,0))
-	e0:SetType(EFFECT_TYPE_ACTIVATE)
-	e0:SetCode(EVENT_FREE_CHAIN)
-	c:RegisterEffect(e0)
-	--Activate(spsummon)
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(37890974,1))
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
-	e1:SetCode(EVENT_DESTROYED)
-	e1:SetCountLimit(1,37890974)
-	e1:SetTarget(c37890974.sptg)
-	e1:SetOperation(c37890974.spop)
+	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)

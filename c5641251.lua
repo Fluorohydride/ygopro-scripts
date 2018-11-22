@@ -4,8 +4,6 @@ function c5641251.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetHintTiming(TIMING_ATTACK)
-	e1:SetTarget(c5641251.acttg)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
@@ -16,7 +14,6 @@ function c5641251.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCountLimit(1,5641251)
 	e2:SetCondition(c5641251.spcon)
-	e2:SetCost(c5641251.spcost)
 	e2:SetTarget(c5641251.sptg)
 	e2:SetOperation(c5641251.spop)
 	c:RegisterEffect(e2)
@@ -31,32 +28,8 @@ function c5641251.initial_effect(c)
 	e3:SetOperation(c5641251.lvlop)
 	c:RegisterEffect(e3)
 end
-function c5641251.acttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chk==0 then return true end
-	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) then
-		if c5641251.spcon(e,tp,eg,ep,ev,re,r,rp)
-			and c5641251.spcost(e,tp,eg,ep,ev,re,r,rp,0)
-			and c5641251.sptg(e,tp,eg,ep,ev,re,r,rp,0)
-			and Duel.SelectYesNo(tp,94) then
-			e:SetCategory(CATEGORY_SPECIAL_SUMMON)
-			e:SetProperty(0)
-			e:SetOperation(c5641251.spop)
-			c5641251.spcost(e,tp,eg,ep,ev,re,r,rp,1)
-			c5641251.sptg(e,tp,eg,ep,ev,re,r,rp,1)
-			e:GetHandler():RegisterFlagEffect(0,RESET_CHAIN,EFFECT_FLAG_CLIENT_HINT,1,0,65)
-			return
-		end
-	end
-	e:SetCategory(0)
-	e:SetProperty(0)
-	e:SetOperation(nil)
-end
 function c5641251.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
-end
-function c5641251.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFlagEffect(tp,5641251)==0 end
-	Duel.RegisterFlagEffect(tp,5641251,RESET_PHASE+PHASE_END,0,1)
 end
 function c5641251.spfilter(c,e,tp)
 	return c:IsSetCard(0x107) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP)

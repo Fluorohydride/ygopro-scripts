@@ -4,7 +4,6 @@ function c52714670.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetHintTiming(TIMING_SPSUMMON,TIMING_SPSUMMON)
 	c:RegisterEffect(e1)
 	--special summon
 	local e2=Effect.CreateEffect(c)
@@ -84,7 +83,7 @@ function c52714670.rmcfilter(c,tp)
 	return c:IsControler(tp) and c:IsFaceup() and c:IsSetCard(0x105)
 end
 function c52714670.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c52714670.rmcfilter,1,e:GetHandler(),tp)
+	return eg:IsExists(c52714670.rmcfilter,1,e:GetHandler(),tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c52714670.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and chkc:IsAbleToRemove() end
