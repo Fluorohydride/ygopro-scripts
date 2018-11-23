@@ -1,21 +1,9 @@
 --宝玉の集結
 function c87259933.initial_effect(c)
 	--Activate
-	local e0=Effect.CreateEffect(c)
-	e0:SetDescription(aux.Stringid(87259933,0))
-	e0:SetType(EFFECT_TYPE_ACTIVATE)
-	e0:SetCode(EVENT_FREE_CHAIN)
-	c:RegisterEffect(e0)
-	--Activate(spsummon)
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(87259933,1))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_DESTROYED)
-	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
-	e1:SetCondition(c87259933.spcon)
-	e1:SetCost(c87259933.spcost)
-	e1:SetTarget(c87259933.sptg1)
-	e1:SetOperation(c87259933.spop)
+	e1:SetCode(EVENT_FREE_CHAIN)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
@@ -27,8 +15,7 @@ function c87259933.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCountLimit(1)
 	e2:SetCondition(c87259933.spcon)
-	e2:SetCost(c87259933.spcost)
-	e2:SetTarget(c87259933.sptg2)
+	e2:SetTarget(c87259933.sptg)
 	e2:SetOperation(c87259933.spop)
 	c:RegisterEffect(e2)
 	--tohand
@@ -51,20 +38,10 @@ end
 function c87259933.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c87259933.cfilter,1,nil,tp)
 end
-function c87259933.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(87259933)==0 end
-	e:GetHandler():RegisterFlagEffect(87259933,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
-end
 function c87259933.filter(c,e,tp)
 	return c:IsSetCard(0x1034) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c87259933.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c87259933.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
-	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
-end
-function c87259933.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
+function c87259933.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c87259933.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
@@ -79,8 +56,9 @@ function c87259933.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c87259933.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
-	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
+	local c=e:GetHandler()
+	if chk==0 then return c:IsAbleToGraveAsCost() and c:IsStatus(STATUS_EFFECT_ENABLED) end
+	Duel.SendtoGrave(c,REASON_COST)
 end
 function c87259933.thfilter1(c,rc)
 	return c:IsFaceup() and c:IsSetCard(0x1034) and c:IsAbleToHand()

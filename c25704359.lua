@@ -54,7 +54,7 @@ function c25704359.cfilter(c,tp)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
 end
 function c25704359.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c25704359.cfilter,1,nil,tp)
+	return eg:IsExists(c25704359.cfilter,1,nil,tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c25704359.spfilter(c,e,tp,att)
 	return c:IsRace(RACE_SPELLCASTER) and c:IsDefense(1500) and c:IsAttribute(att)
