@@ -26,7 +26,7 @@ function c43586926.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c43586926.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c43586926.spop(e,tp,eg,ep,ev,re,r,rp)
