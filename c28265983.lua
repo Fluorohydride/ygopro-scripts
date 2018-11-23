@@ -60,10 +60,9 @@ function c28265983.descon2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c28265983.descost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lp=Duel.GetLP(tp)-Duel.GetLP(1-tp)
-	if chk==0 then return Duel.CheckLPCost(tp,lp) and Duel.GetFlagEffect(tp,28265984)==0 end
+	if chk==0 then return Duel.CheckLPCost(tp,lp) end
 	Duel.PayLPCost(tp,lp)
 	e:SetLabel(lp)
-	Duel.RegisterFlagEffect(tp,28265984,RESET_PHASE+PHASE_END,0,1)
 end
 function c28265983.desfilter2(c,num)
 	return c:IsFaceup() and c:IsAttackBelow(num)
