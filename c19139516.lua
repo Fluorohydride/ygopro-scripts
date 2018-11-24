@@ -17,10 +17,10 @@ function c19139516.initial_effect(c)
 	e2:SetTarget(c19139516.destg)
 	e2:SetOperation(c19139516.desop)
 	c:RegisterEffect(e2)
-	--search
+	--to hand
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(19139516,1))
-	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e3:SetCategory(CATEGORY_TOHAND)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetCode(EVENT_TO_GRAVE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
