@@ -2116,12 +2116,10 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	local min=min or 1
 	local max=max or #g
 	local ext_params={...}
-	local desc=Duel.GetLastHint()
 	local sg=Group.CreateGroup()
 	local fg=Duel.GrabSelectedCard()
-	if #fg>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,desc)
-		fg:Select(tp,#fg,#fg,nil)
+	for tc in aux.Next(fg) do
+		fg:SelectUnselect(sg,tp,false,false,min,max)
 	end
 	sg:Merge(fg)
 	local finish=(#sg>=min and #sg<=max and f(sg,...))
@@ -2129,7 +2127,6 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 		local cg=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,f,min,max,ext_params)
 		finish=(#sg>=min and #sg<=max and f(sg,...))
 		local cancel=not finish and cancelable
-		Duel.Hint(HINT_SELECTMSG,tp,desc)
 		local tc=cg:SelectUnselect(sg,tp,finish,cancel,min,max)
 		if not tc then break end
 		if not fg:IsContains(tc) then
