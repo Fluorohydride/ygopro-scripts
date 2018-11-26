@@ -36,16 +36,28 @@ end
 function c88305978.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
+		tc:RegisterFlagEffect(88305978,RESET_EVENT+RESETS_STANDARD,0,1)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_BATTLE)
 		e1:SetCountLimit(1)
-		e1:SetRange(LOCATION_MZONE)
+		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+		e1:SetLabelObject(tc)
+		e1:SetCondition(c88305978.rmcon)
 		e1:SetOperation(c88305978.rmop)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		tc:RegisterEffect(e1)
+		Duel.RegisterEffect(e1,tp)
+	end
+end
+function c88305978.rmcon(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	if tc:GetFlagEffect(88305978)~=0 then
+		return true
+	else
+		e:Reset()
+		return false
 	end
 end
 function c88305978.rmop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_EFFECT)
+	local tc=e:GetLabelObject()
+	Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 end
