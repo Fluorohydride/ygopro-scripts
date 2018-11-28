@@ -17,7 +17,8 @@ function c68024506.initial_effect(c)
 	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e0:SetCode(EVENT_CHAINING)
 	e0:SetRange(LOCATION_MZONE)
-	e0:SetOperation(aux.chainreg)
+	e0:SetCondition(aux.mskregcon)
+	e0:SetOperation(aux.mskreg)
 	c:RegisterEffect(e0)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(68024506,0))
@@ -33,9 +34,7 @@ function c68024506.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c68024506.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if not re:IsHasType(EFFECT_TYPE_ACTIVATE) or c:GetFlagEffect(1)<=0 then return false end
-	return c:GetColumnGroup():IsContains(re:GetHandler())
+	return e:GetHandler():GetFlagEffect(ev)>0
 end
 function c68024506.filter(c,e,tp)
 	return c:IsSetCard(0x108) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

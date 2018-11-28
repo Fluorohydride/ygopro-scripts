@@ -2064,6 +2064,14 @@ function Auxiliary.evospcon(e,tp,eg,ep,ev,re,r,rp)
 	local st=e:GetHandler():GetSummonType()
 	return st>=(SUMMON_TYPE_SPECIAL+150) and st<(SUMMON_TYPE_SPECIAL+180)
 end
+--chain reg condition for magical musketeer monsters
+function Auxiliary.mskregcon(e,tp,eg,ep,ev,re,r,rp)
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and e:GetHandler():GetColumnGroup():IsContains(re:GetHandler())
+end
+--chain reg for magical musketeer monsters
+function Auxiliary.mskreg(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():RegisterFlagEffect(ev,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN,0,1)
+end
 --filter for necro_valley test
 function Auxiliary.NecroValleyFilter(f)
 	return	function(target,...)
