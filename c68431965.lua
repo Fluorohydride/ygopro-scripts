@@ -68,7 +68,7 @@ function c68431965.aclimit(e,re,tp)
 	return re:GetHandler():IsCode(tc:GetCode()) and not re:GetHandler():IsImmuneToEffect(e)
 end
 function c68431965.sccon(e,tp,eg,ep,ev,re,r,rp)
-	return and Duel.GetTurnPlayer()~=tp
+	return Duel.GetTurnPlayer()~=tp
 		and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 end
 function c68431965.sctarg(e,tp,eg,ep,ev,re,r,rp,chk)
