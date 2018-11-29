@@ -24,7 +24,8 @@ function c2810642.splimit(e,se,sp,st)
 	return se:IsHasType(EFFECT_TYPE_ACTIONS)
 end
 function c2810642.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0 and Duel.GetAttacker():GetControler()~=tp
+	return (Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0 or Duel.IsPlayerAffectedByEffect(tp,8802510))
+		and Duel.GetAttacker():GetControler()~=tp
 end
 function c2810642.spfilter(c,e,tp)
 	return c:IsCode(49036338) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
