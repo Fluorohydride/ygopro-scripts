@@ -15,29 +15,25 @@ end
 function c92572371.cfilter(c)
 	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and (c:IsSetCard(0x79) or c:IsSetCard(0x7c)) and c:IsAbleToGraveAsCost()
 end
-function c92572371.mzfilter(c)
-	return c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5
+function c92572371.cfilter1(c,g,tp)
+	return g:IsExists(c92572371.cfilter2,1,c,c,tp)
+end
+function c92572371.cfilter2(c,mc,tp)
+	return Duel.GetMZoneCount(tp,Group.FromCards(c,mc))>0
 end
 function c92572371.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft+1
 	local sg=Duel.GetMatchingGroup(c92572371.cfilter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,nil)
-	if chk==0 then return sg:GetCount()>=2
-		and (ft>0 or (ct<3 and sg:IsExists(c92572371.mzfilter,ct,nil))) end
-	local g=nil
-	if ft<=0 then
+	if chk==0 then return sg:IsExists(c92572371.cfilter1,1,nil,sg,tp)
+		or (Duel.IsPlayerAffectedByEffect(tp,46241344) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0) end
+	if sg:IsExists(c92572371.cfilter1,1,nil,sg,tp)
+		and (not Duel.IsPlayerAffectedByEffect(tp,46241344) or Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or not Duel.SelectYesNo(tp,aux.Stringid(46241344,0))) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		g=sg:FilterSelect(tp,c92572371.mzfilter,ct,ct,nil)
-		if ct<2 then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-			local g1=sg:Select(tp,2-ct,2-ct,g)
-			g:Merge(g1)
-		end
-	else
+		local g1=sg:FilterSelect(tp,c92572371.cfilter1,1,1,nil,sg,tp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		g=sg:Select(tp,2,2,nil)
+		local g2=sg:FilterSelect(tp,c92572371.cfilter2,1,1,g1:GetFirst(),g1:GetFirst(),tp)
+		g1:Merge(g2)
+		Duel.SendtoGrave(g1,REASON_COST)
 	end
-	Duel.SendtoGrave(g,REASON_COST)
 end
 function c92572371.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end

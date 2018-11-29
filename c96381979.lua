@@ -89,10 +89,14 @@ function c96381979.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x7c) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToGraveAsCost()
 end
 function c96381979.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c96381979.cfilter,tp,LOCATION_ONFIELD,0,3,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c96381979.cfilter,tp,LOCATION_ONFIELD,0,3,3,nil)
-	Duel.SendtoGrave(g,REASON_COST)
+	if chk==0 then return Duel.IsExistingMatchingCard(c96381979.cfilter,tp,LOCATION_ONFIELD,0,3,nil)
+		or Duel.IsPlayerAffectedByEffect(tp,46241344) end
+	if Duel.IsExistingMatchingCard(c96381979.cfilter,tp,LOCATION_ONFIELD,0,3,nil)
+		and (not Duel.IsPlayerAffectedByEffect(tp,46241344) or not Duel.SelectYesNo(tp,aux.Stringid(46241344,0))) then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+		local g=Duel.SelectMatchingCard(tp,c96381979.cfilter,tp,LOCATION_ONFIELD,0,3,3,nil)
+		Duel.SendtoGrave(g,REASON_COST)
+	end
 end
 function c96381979.spfilter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsRace(RACE_BEASTWARRIOR) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

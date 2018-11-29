@@ -48,10 +48,14 @@ function c70355994.filter1(c)
 		and Duel.IsExistingTarget(c70355994.filter2,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 end
 function c70355994.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c70355994.filter1,tp,LOCATION_ONFIELD,0,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c70355994.filter1,tp,LOCATION_ONFIELD,0,1,1,nil)
-	Duel.SendtoGrave(g,REASON_COST)
+	if chk==0 then return Duel.IsExistingMatchingCard(c70355994.filter1,tp,LOCATION_ONFIELD,0,1,nil)
+		or (Duel.IsPlayerAffectedByEffect(tp,46241344) and Duel.IsExistingTarget(c70355994.filter2,0,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)) end
+	if Duel.IsExistingMatchingCard(c70355994.filter1,tp,LOCATION_ONFIELD,0,1,nil)
+		and (not Duel.IsPlayerAffectedByEffect(tp,46241344) or not Duel.SelectYesNo(tp,aux.Stringid(46241344,0))) then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+		local g=Duel.SelectMatchingCard(tp,c70355994.filter1,tp,LOCATION_ONFIELD,0,1,1,nil)
+		Duel.SendtoGrave(g,REASON_COST)
+	end
 end
 function c70355994.filter2(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
