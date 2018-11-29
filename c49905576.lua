@@ -8,6 +8,7 @@ function c49905576.initial_effect(c)
 	e1:SetOperation(c49905576.drop)
 	c:RegisterEffect(e1)
 end
+c49905576.card_code_list={56433456}
 function c49905576.drop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not re:IsHasType(EFFECT_TYPE_ACTIVATE) or not re:IsActiveType(TYPE_COUNTER) or not c:IsLocation(LOCATION_MZONE) or not c:IsFaceup() then return end

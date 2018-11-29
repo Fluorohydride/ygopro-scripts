@@ -50,6 +50,7 @@ function c15449853.initial_effect(c)
 	e7:SetOperation(c15449853.tdop)
 	c:RegisterEffect(e7)
 end
+c15449853.card_code_list={56433456}
 function c15449853.tdfilter(c,e)
 	return (c:IsRace(RACE_FAIRY) or c:IsType(TYPE_COUNTER)) and c:IsAbleToDeck() and (not e or c:IsCanBeEffectTarget(e))
 end

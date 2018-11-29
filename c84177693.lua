@@ -12,6 +12,7 @@ function c84177693.initial_effect(c)
 	e1:SetOperation(c84177693.recop)
 	c:RegisterEffect(e1)
 end
+c84177693.card_code_list={56433456}
 function c84177693.reccon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsReason(REASON_BATTLE) and Duel.IsEnvironment(56433456)
 end

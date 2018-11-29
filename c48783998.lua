@@ -11,6 +11,7 @@ function c48783998.initial_effect(c)
 	e1:SetOperation(c48783998.operation)
 	c:RegisterEffect(e1)
 end
+c48783998.card_code_list={56433456}
 function c48783998.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)
 end
