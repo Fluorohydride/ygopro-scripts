@@ -2135,6 +2135,7 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	while #sg<max do
 		local cg=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,f,min,max,ext_params)
 		finish=(#sg>=min and #sg<=max and f(sg,...))
+		if #cg==0 then break end
 		local cancel=not finish and cancelable
 		local tc=cg:SelectUnselect(sg,tp,finish,cancel,min,max)
 		if not tc then break end
