@@ -1902,6 +1902,13 @@ function Auxiliary.IsCodeListed(c,code)
 	end
 	return false
 end
+function Auxiliary.IsCounterAdded(c,counter)
+	if not c.counter_add_list then return false end
+	for i,ccounter in ipairs(c.counter_add_list) do
+		if counter==ccounter then return true end
+	end
+	return false
+end
 function Auxiliary.GetColumn(c,p)
 	local seq=c:GetSequence()
 	if c:IsLocation(LOCATION_MZONE) then

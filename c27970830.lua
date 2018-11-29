@@ -49,6 +49,7 @@ function c27970830.initial_effect(c)
 	e6:SetOperation(c27970830.op3)
 	c:RegisterEffect(e6)
 end
+c27970830.counter_add_list={0x3}
 function c27970830.ctfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x3d)
 end
