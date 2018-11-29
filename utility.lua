@@ -1868,7 +1868,8 @@ function Auxiliary.LinkTarget(f,min,max,gf)
 				local fg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_LMATERIAL)
 				Duel.SetSelectedCard(fg)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LMATERIAL)
-				local sg=mg:SelectSubGroup(tp,Auxiliary.LCheckGoal,true,min,max,tp,c,gf)
+				local cancel=Duel.GetCurrentChain()==0
+				local sg=mg:SelectSubGroup(tp,Auxiliary.LCheckGoal,cancel,min,max,tp,c,gf)
 				if sg then
 					sg:KeepAlive()
 					e:SetLabelObject(sg)
