@@ -1,4 +1,4 @@
---Gullveig of the Nordic Ascendant
+--極星天グルヴェイグ
 function c90207654.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,c90207654.matfilter,1,1)
