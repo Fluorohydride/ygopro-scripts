@@ -1,4 +1,4 @@
---ダイナレスラー・キング・Tレックス
+--ダイナレスラー・キング・Tレッスル
 function c77967790.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x11a),2)
@@ -56,21 +56,32 @@ function c77967790.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
+		local fid=c:GetFieldID()
 		Duel.RegisterFlagEffect(tp,77967790,RESET_PHASE+PHASE_BATTLE,0,1)
+		tc:RegisterFlagEffect(77967790,RESET_PHASE+PHASE_BATTLE+RESET_EVENT+RESETS_STANDARD,0,1,fid)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_CANNOT_ATTACK)
 		e1:SetTargetRange(0,LOCATION_MZONE)
+		e1:SetLabel(fid)
 		e1:SetLabelObject(tc)
-		e1:SetCondition(c77967790.descon)
+		e1:SetCondition(c77967790.atkcon2)
 		e1:SetTarget(c77967790.atktg2)
 		e1:SetReset(RESET_PHASE+PHASE_BATTLE)
 		Duel.RegisterEffect(e1,tp)
+		local e3=Effect.CreateEffect(c)
+		e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+		e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e3:SetCode(EVENT_ATTACK_ANNOUNCE)
+		e3:SetOperation(c77967790.atkop2)
+		e3:SetReset(RESET_PHASE+PHASE_BATTLE+RESET_EVENT+RESETS_STANDARD)
+		tc:RegisterEffect(e3,true)
 		local e2=Effect.CreateEffect(c)
 		e2:SetDescription(aux.Stringid(77967790,1))
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e2:SetCode(EVENT_PHASE+PHASE_BATTLE)
 		e2:SetCountLimit(1)
+		e2:SetLabel(fid)
 		e2:SetLabelObject(tc)
 		e2:SetCondition(c77967790.descon)
 		e2:SetOperation(c77967790.desop)
@@ -78,12 +89,20 @@ function c77967790.atkop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterEffect(e2,tp)
 	end
 end
+function c77967790.atkcon2(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	return tc:GetFlagEffect(77967791)==0
+end
 function c77967790.atktg2(e,c)
-	return c~=e:GetLabelObject()
+	local tc=e:GetLabelObject()
+	return c~=tc or c:GetFlagEffectLabel(77967790)~=e:GetLabel()
+end
+function c77967790.atkop2(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():RegisterFlagEffect(77967791,RESET_PHASE+PHASE_BATTLE,0,1)
 end
 function c77967790.descon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	return Duel.GetFlagEffect(tp,77967790)~=0 and tc:GetAttackAnnouncedCount()==0
+	return tc:GetFlagEffectLabel(77967790)==e:GetLabel() and tc:GetAttackAnnouncedCount()==0
 end
 function c77967790.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
