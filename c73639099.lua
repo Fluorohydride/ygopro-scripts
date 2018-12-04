@@ -56,7 +56,7 @@ function c73639099.efilter(e,te)
 	return te:IsActiveType(TYPE_TRAP)
 end
 function c73639099.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetActiveType()==TYPE_TRAP and e:GetHandler():GetFlagEffect(1)
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():GetType()==TYPE_TRAP and e:GetHandler():GetFlagEffect(1)
 end
 function c73639099.cfilter(c,code)
 	return c:IsFaceup() and c:IsCode(code)
