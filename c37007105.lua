@@ -25,6 +25,9 @@ function c37007105.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_GRAVE)
 end
+function c37007105.desfilter(c)
+	return c:IsFaceup() and c:GetSequence()<5
+end
 function c37007105.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) then return end
@@ -33,7 +36,7 @@ function c37007105.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rc=g:GetFirst()
 	if rc and Duel.Remove(rc,0,REASON_EFFECT)~=0 and rc:IsLocation(LOCATION_REMOVED)
 		and Duel.Destroy(tc,REASON_EFFECT)~=0 and bit.band(rc:GetOriginalRace(),RACE_CYBERSE)>0 then
-		local sg=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_SZONE,nil)
+		local sg=Duel.GetMatchingGroup(c37007105.desfilter,tp,0,LOCATION_SZONE,nil)
 		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(37007105,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
