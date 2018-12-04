@@ -18,7 +18,7 @@ function c13048472.filter2(c,mc)
 	return bit.band(c:GetType(),0x81)==0x81 and c:IsAbleToHand() and c13048472.isfit(c,mc)
 end
 function c13048472.isfit(c,mc)
-	return mc.fit_monster and c:IsCode(table.unpack(mc.fit_monster))
+	return (mc.fit_monster and c:IsCode(table.unpack(mc.fit_monster))) or aux.IsCodeListed(mc,c:GetCode())
 end
 function c13048472.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c13048472.filter,tp,LOCATION_DECK,0,1,nil,tp) end

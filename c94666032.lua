@@ -18,7 +18,7 @@ function c94666032.initial_effect(c)
 	e2:SetOperation(c94666032.repop)
 	c:RegisterEffect(e2)
 end
-c94666032.fit_monster={4388680}
+c94666032.card_code_list={4388680}
 function c94666032.filter(c,e,tp,m1,m2,ft)
 	if not c:IsSetCard(0x106) or bit.band(c:GetType(),0x81)~=0x81
 		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
