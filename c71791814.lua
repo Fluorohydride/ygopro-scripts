@@ -40,7 +40,8 @@ end
 function c71791814.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c71791814.thfilter,tp,LOCATION_DECK,0,1,nil)
-	local b2=Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_ONFIELD,nil,TYPE_SPELL+TYPE_TRAP)>0
+	local b2=Duel.GetFieldGroupCount(tp,LOCATION_MZONE)>0
+		and Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_ONFIELD,nil,TYPE_SPELL+TYPE_TRAP)>0
 		and Duel.IsExistingMatchingCard(c71791814.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp)
 	if chk==0 then return b1 or b2 end
 	local op=0
