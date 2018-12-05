@@ -1393,16 +1393,16 @@ function Auxiliary.RitualGreaterCheck(g,tp,c,lv)
 	Duel.SetSelectedCard(g)
 	return g:CheckWithSumGreater(Card.GetRitualLevel,lv,c) and Duel.GetMZoneCount(tp,g,tp)>0
 end
-function Auxiliary.RitualGreaterFilter(c,filter,e,tp,m)
+function Auxiliary.RitualFilter(c,filter,e,tp,m,greater_or_equal)
 	if (filter and not filter(c)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
-	return mg:CheckSubGroup(Auxiliary.RitualGreaterCheck,1,63,tp,c,c:GetOriginalLevel())
+	return mg:CheckSubGroup(Auxiliary["Ritual"..greater_or_equal.."Check"],1,63,tp,c,c:GetOriginalLevel())
 end
 function Auxiliary.RitualGreaterTarget(filter)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk)
 				if chk==0 then
 					local mg=Duel.GetRitualMaterial(tp)
-					return Duel.IsExistingMatchingCard(Auxiliary.RitualGreaterFilter,tp,LOCATION_HAND,0,1,nil,filter,e,tp,mg)
+					return Duel.IsExistingMatchingCard(Auxiliary.RitualFilter,tp,LOCATION_HAND,0,1,nil,filter,e,tp,mg,"Greater")
 				end
 				Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 			end
@@ -1411,7 +1411,7 @@ function Auxiliary.RitualGreaterOperation(filter)
 	return	function(e,tp,eg,ep,ev,re,r,rp)
 				local mg=Duel.GetRitualMaterial(tp)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-				local tg=Duel.SelectMatchingCard(tp,Auxiliary.RitualGreaterFilter,tp,LOCATION_HAND,0,1,1,nil,filter,e,tp,mg,ft)
+				local tg=Duel.SelectMatchingCard(tp,Auxiliary.RitualFilter,tp,LOCATION_HAND,0,1,1,nil,filter,e,tp,mg,"Greater")
 				local tc=tg:GetFirst()
 				if tc then
 					mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
@@ -1445,16 +1445,11 @@ end
 function Auxiliary.RitualEqualCheck(g,tp,c,lv)
 	return g:CheckWithSumEqual(Card.GetRitualLevel,lv,#g,#g,c) and Duel.GetMZoneCount(tp,g,tp)>0
 end
-function Auxiliary.RitualEqualFilter(c,filter,e,tp,m)
-	if (filter and not filter(c)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
-	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
-	return mg:CheckSubGroup(Auxiliary.RitualEqualCheck,1,63,tp,c,c:GetOriginalLevel())
-end
 function Auxiliary.RitualEqualTarget(filter)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk)
 				if chk==0 then
 					local mg=Duel.GetRitualMaterial(tp)
-					return Duel.IsExistingMatchingCard(Auxiliary.RitualEqualFilter,tp,LOCATION_HAND,0,1,nil,filter,e,tp,mg)
+					return Duel.IsExistingMatchingCard(Auxiliary.RitualFilter,tp,LOCATION_HAND,0,1,nil,filter,e,tp,mg,"Equal")
 				end
 				Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 			end
@@ -1463,7 +1458,7 @@ function Auxiliary.RitualEqualOperation(filter)
 	return	function(e,tp,eg,ep,ev,re,r,rp)
 				local mg=Duel.GetRitualMaterial(tp)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-				local tg=Duel.SelectMatchingCard(tp,Auxiliary.RitualEqualFilter,tp,LOCATION_HAND,0,1,1,nil,filter,e,tp,mg,ft)
+				local tg=Duel.SelectMatchingCard(tp,Auxiliary.RitualFilter,tp,LOCATION_HAND,0,1,1,nil,filter,e,tp,mg,"Equal")
 				local tc=tg:GetFirst()
 				if tc then
 					mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
