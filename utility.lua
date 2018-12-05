@@ -991,11 +991,9 @@ function Auxiliary.FConditionMix(insf,sub,...)
 				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub,table.unpack(funs))
 				if gc then
 					if not mg:IsContains(gc) then return false end
-					local sg=Group.CreateGroup()
-					return Auxiliary.FSelectMix(gc,tp,mg,sg,c,sub,chkf,table.unpack(funs))
+					Duel.SetSelectedCard(Group.FromCards(gc))
 				end
-				local sg=Group.CreateGroup()
-				return mg:IsExists(Auxiliary.FSelectMix,1,nil,tp,mg,sg,c,sub,chkf,table.unpack(funs))
+				return mg:CheckSubGroup(Auxiliary.FCheckMixGoal,#funs,#funs,tp,fc,sub,chkf,...)
 			end
 end
 function Auxiliary.FOperationMix(insf,sub,...)
@@ -1007,13 +1005,9 @@ function Auxiliary.FOperationMix(insf,sub,...)
 				local notfusion=chkfnf>>8~=0
 				local sub=sub or notfusion
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,table.unpack(funs))
-				local sg=Group.CreateGroup()
-				if gc then sg:AddCard(gc) end
-				while sg:GetCount()<#funs do
-					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-					local g=mg:FilterSelect(tp,Auxiliary.FSelectMix,1,1,sg,tp,mg,sg,c,sub,chkf,table.unpack(funs))
-					sg:Merge(g)
-				end
+				if gc then Duel.SetSelectedCard(Group.FromCards(gc)) end
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
+				local sg=mg:CheckSubGroup(tp,Auxiliary.FCheckMixGoal,false,#funs,#funs,tp,fc,sub,chkf,...)
 				Duel.SetFusionMaterial(sg)
 			end
 end
@@ -1041,23 +1035,12 @@ function Auxiliary.FCheckMix(c,mg,sg,fc,sub,fun1,fun2,...)
 end
 --if sg1 is subset of sg2 then not Auxiliary.FCheckAdditional(tp,sg1,fc) -> not Auxiliary.FCheckAdditional(tp,sg2,fc)
 Auxiliary.FCheckAdditional=nil
-function Auxiliary.FCheckMixGoal(tp,sg,fc,sub,chkf,...)
+function Auxiliary.FCheckMixGoal(sg,tp,fc,sub,chkf,...)
 	if sg:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
 	if not Auxiliary.MustMaterialCheck(sg,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
 	local g=Group.CreateGroup()
 	return sg:IsExists(Auxiliary.FCheckMix,1,nil,sg,g,fc,sub,...) and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
 		and (not Auxiliary.FCheckAdditional or Auxiliary.FCheckAdditional(tp,sg,fc))
-end
-function Auxiliary.FSelectMix(c,tp,mg,sg,fc,sub,chkf,...)
-	sg:AddCard(c)
-	local res
-	if sg:GetCount()<#{...} then
-		res=mg:IsExists(Auxiliary.FSelectMix,1,sg,tp,mg,sg,fc,sub,chkf,...)
-	else
-		res=Auxiliary.FCheckMixGoal(tp,sg,fc,sub,chkf,...)
-	end
-	sg:RemoveCard(c)
-	return res
 end
 --Fusion monster, mixed material * minc to maxc + material + ...
 function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
