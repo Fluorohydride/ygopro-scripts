@@ -534,7 +534,7 @@ function Auxiliary.TuneMagicianCheckX(c,sg,ecode)
 	return false
 end
 function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,op)
-	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0 and (not op or op(e,tp,0,c))
+	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0 and Auxiliary.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) and (not op or op(e,tp,0,c))
 end
 --Xyz monster, lv k*n
 function Auxiliary.AddXyzProcedure(c,f,lv,ct,alterf,desc,maxct,op)
@@ -748,14 +748,6 @@ end
 function Auxiliary.XyzLevelFreeFilter(c,xyzc,f)
 	return c:IsFaceup() and c:IsCanBeXyzMaterial(xyzc) and (not f or f(c,xyzc))
 end
-function Auxiliary.XyzLevelFreeCheck(c,tp,xyzc,mg,sg,gf,minc,maxc)
-	sg:AddCard(c)
-	local ct=sg:GetCount()
-	local res=(ct>=minc and Auxiliary.XyzLevelFreeGoal(sg,tp,xyzc,gf))
-		or (ct<maxc and mg:IsExists(Auxiliary.XyzLevelFreeCheck,1,sg,tp,xyzc,mg,sg,gf,minc,maxc))
-	sg:RemoveCard(c)
-	return res
-end
 function Auxiliary.XyzLevelFreeGoal(g,tp,xyzc,gf)
 	if g:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,g,EFFECT_TUNE_MAGICIAN_X) then return false end
 	return (not gf or gf(g)) and Duel.GetLocationCountFromEx(tp,tp,g,xyzc)>0
@@ -780,10 +772,8 @@ function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct)
 				end
 				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
 				if sg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
-				local ct=sg:GetCount()
-				if ct>maxc then return false end
-				return (ct>=minc and Auxiliary.XyzLevelFreeGoal(sg,tp,c,gf))
-					or mg:IsExists(Auxiliary.XyzLevelFreeCheck,1,sg,tp,c,mg,sg,gf,minc,maxc)
+				Duel.SetSelectedCard(sg)
+				return mg:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
 			end
 end
 function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
@@ -803,25 +793,11 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
 				else
 					mg=Duel.GetMatchingGroup(Auxiliary.XyzLevelFreeFilter,tp,LOCATION_MZONE,0,nil,c,f)
 				end
-				local g=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
-				local ct=g:GetCount()
+				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
+				Duel.SetSelectedCard(sg)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-				g:Select(tp,ct,ct,nil)
-				local ag=mg:Filter(Auxiliary.XyzLevelFreeCheck,g,tp,c,mg,g,gf,minc,maxc)
-				while ct<maxc and ag:GetCount()>0 do
-					local minsct=1
-					local finish=(ct>=minc and Auxiliary.XyzLevelFreeGoal(g,tp,c,gf))
-					if finish then
-						minsct=0
-					end
-					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-					local tg=ag:Select(tp,minsct,1,nil)
-					if tg:GetCount()==0 then break end
-					g:Merge(tg)
-					ct=g:GetCount()
-					ag=mg:Filter(Auxiliary.XyzLevelFreeCheck,g,tp,c,mg,g,gf,minc,maxc)
-				end
-				if g:GetCount()>0 then
+				local g=mg:SelectSubGroup(tp,Auxiliary.XyzLevelFreeGoal,true,minc,maxc,tp,c,gf)
+				if g and g:GetCount()>0 then
 					g:KeepAlive()
 					e:SetLabelObject(g)
 					return true
@@ -890,10 +866,8 @@ function Auxiliary.XyzLevelFreeCondition2(f,gf,minct,maxct,alterf,desc,op)
 				mg=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
 				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
 				if sg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
-				local ct=sg:GetCount()
-				if ct>maxc then return false end
-				return (ct>=minc and Auxiliary.XyzLevelFreeGoal(sg,tp,c,gf))
-					or mg:IsExists(Auxiliary.XyzLevelFreeCheck,1,sg,tp,c,mg,sg,gf,minc,maxc)
+				Duel.SetSelectedCard(sg)
+				return mg:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
 			end
 end
 function Auxiliary.XyzLevelFreeTarget2(f,gf,minct,maxct,alterf,desc,op)
@@ -913,40 +887,24 @@ function Auxiliary.XyzLevelFreeTarget2(f,gf,minct,maxct,alterf,desc,op)
 				else
 					mg=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 				end
-				local g=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
-				local ct=g:GetCount()
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-				g:Select(tp,ct,ct,nil)
+				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
 				local mg2=mg:Filter(Auxiliary.XyzLevelFreeFilter,nil,c,f)
-				local ag=mg2:Filter(Auxiliary.XyzLevelFreeCheck,g,tp,c,mg2,g,gf,minc,maxc)
-				local b1=ag:GetCount()>0
+				Duel.SetSelectedCard(sg)
+				local b1=mg2:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
 				local b2=(not min or min<=1) and mg:IsExists(Auxiliary.XyzAlterFilter,1,nil,alterf,c,e,tp,op)
+				local g=nil
 				if b2 and (not b1 or Duel.SelectYesNo(tp,desc)) then
 					e:SetLabel(1)
-					if g:GetCount()==0 then
-						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-						local sg=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c,e,tp,op)
-						g:Merge(sg)
-					end
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+					g=mg:FilterSelect(tp,Auxiliary.XyzAlterFilter,1,1,nil,alterf,c,e,tp,op)
 					if op then op(e,tp,1,g:GetFirst()) end
 				else
 					e:SetLabel(0)
-					local ct=g:GetCount()
-					while ct<maxc and ag:GetCount()>0 do
-						local minsct=1
-						local finish=(ct>=minc and Auxiliary.XyzLevelFreeGoal(g,tp,c,gf))
-						if finish then
-							minsct=0
-						end
-						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-						local tg=ag:Select(tp,minsct,1,nil)
-						if tg:GetCount()==0 then break end
-						g:Merge(tg)
-						ct=g:GetCount()
-						ag=mg2:Filter(Auxiliary.XyzLevelFreeCheck,g,tp,c,mg2,g,gf,minc,maxc)
-					end
+					Duel.SetSelectedCard(sg)
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+					g=mg2:SelectSubGroup(tp,Auxiliary.XyzLevelFreeGoal,true,minc,maxc,tp,c,gf)
 				end
-				if g:GetCount()>0 then
+				if g and g:GetCount()>0 then
 					g:KeepAlive()
 					e:SetLabelObject(g)
 					return true
