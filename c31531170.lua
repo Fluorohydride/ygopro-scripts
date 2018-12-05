@@ -11,7 +11,7 @@ function c31531170.initial_effect(c)
 end
 function c31531170.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.IsExistingTarget(nil,tp,0,LOCATION_PZONE,2,nil) end
+	if chk==0 then return PENDULUM_CHECKLIST&(0x1<<tp)~=0 and Duel.IsExistingTarget(nil,tp,0,LOCATION_PZONE,2,nil) end
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_PZONE)
 	Duel.SetTargetCard(g)
 end
@@ -25,7 +25,6 @@ function c31531170.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_SPSUMMON_PROC_G)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_BOTH_SIDE)
 	e1:SetRange(LOCATION_PZONE)
-	e1:SetCountLimit(1,10000000)
 	e1:SetCondition(c31531170.pendcon)
 	e1:SetOperation(c31531170.pendop)
 	e1:SetValue(SUMMON_TYPE_PENDULUM)
@@ -70,6 +69,7 @@ function c31531170.pendop(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 		local g=Duel.SelectMatchingCard(tp,aux.PConditionFilter,tp,LOCATION_EXTRA,0,1,ft,nil,e,tp,lscale,rscale)
 		sg:Merge(g)
 	end
+	PENDULUM_CHECKLIST=PENDULUM_CHECKLIST|(0x1<<tp)
 	Duel.HintSelection(Group.FromCards(c))
 	Duel.HintSelection(Group.FromCards(rpz))
 end
