@@ -993,7 +993,7 @@ function Auxiliary.FConditionMix(insf,sub,...)
 					if not mg:IsContains(gc) then return false end
 					Duel.SetSelectedCard(Group.FromCards(gc))
 				end
-				return mg:CheckSubGroup(Auxiliary.FCheckMixGoal,#funs,#funs,tp,fc,sub,chkf,...)
+				return mg:CheckSubGroup(Auxiliary.FCheckMixGoal,#funs,#funs,tp,c,sub,chkf,table.unpack(funs))
 			end
 end
 function Auxiliary.FOperationMix(insf,sub,...)
@@ -1007,7 +1007,7 @@ function Auxiliary.FOperationMix(insf,sub,...)
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,table.unpack(funs))
 				if gc then Duel.SetSelectedCard(Group.FromCards(gc)) end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-				local sg=mg:CheckSubGroup(tp,Auxiliary.FCheckMixGoal,false,#funs,#funs,tp,fc,sub,chkf,...)
+				local sg=mg:SelectSubGroup(tp,Auxiliary.FCheckMixGoal,false,#funs,#funs,tp,c,sub,chkf,table.unpack(funs))
 				Duel.SetFusionMaterial(sg)
 			end
 end
@@ -1102,14 +1102,17 @@ function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
 				while sg:GetCount()<maxc+#funs do
 					local cg=mg:Filter(Auxiliary.FSelectMixRep,sg,tp,mg,sg,c,sub,chkf,fun1,minc,maxc,table.unpack(funs))
 					if cg:GetCount()==0 then break end
-					local minct=1
-					if Auxiliary.FCheckMixRepGoal(tp,sg,c,sub,chkf,fun1,minc,maxc,table.unpack(funs)) then
-						minct=0
-					end
+					local finish=Auxiliary.FCheckMixRepGoal(tp,sg,c,sub,chkf,fun1,minc,maxc,table.unpack(funs))
+					local cancel_group=sg:Clone()
+					if gc then cancel_group:RemoveCard(gc) end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-					local g=cg:Select(tp,minct,1,nil)
-					if g:GetCount()==0 then break end
-					sg:Merge(g)
+					local tc=cg:SelectUnselect(cancel_group,tp,finish,false,minc+#funs,maxc+#funs)
+					if not tc then break end
+					if sg:IsContains(tc) then
+						sg:RemoveCard(tc)
+					else
+						sg:AddCard(tc)
+					end
 				end
 				Duel.SetFusionMaterial(sg)
 			end
