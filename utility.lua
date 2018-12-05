@@ -1469,13 +1469,20 @@ function Auxiliary.AddRitualProcEqual2Code2(c,code1,code2)
 end
 --add procedure to Pendulum monster, also allows registeration of activation effect
 function Auxiliary.EnablePendulumAttribute(c,reg)
+	if not PENDULUM_CHECKLIST then
+		PENDULUM_CHECKLIST=0
+		local ge1=Effect.GlobalEffect()
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_PHASE_START+PHASE_DRAW)
+		ge1:SetOperation(Auxiliary.PendulumReset)
+		Duel.RegisterEffect(ge1,0)
+	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1163)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC_G)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetRange(LOCATION_PZONE)
-	e1:SetCountLimit(1,10000000)
 	e1:SetCondition(Auxiliary.PendCondition())
 	e1:SetOperation(Auxiliary.PendOperation())
 	e1:SetValue(SUMMON_TYPE_PENDULUM)
@@ -1489,6 +1496,9 @@ function Auxiliary.EnablePendulumAttribute(c,reg)
 		e2:SetRange(LOCATION_HAND)
 		c:RegisterEffect(e2)
 	end
+end
+function Auxiliary.PendulumReset(e,tp,eg,ep,ev,re,r,rp)
+	PENDULUM_CHECKLIST=0
 end
 function Auxiliary.PConditionFilter(c,e,tp,lscale,rscale)
 	local lv=0
@@ -1506,6 +1516,7 @@ function Auxiliary.PendCondition()
 	return	function(e,c,og)
 				if c==nil then return true end
 				local tp=c:GetControler()
+				if PENDULUM_CHECKLIST&(0x1<<tp)~=0 then return false end
 				local rpz=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 				if rpz==nil or c==rpz then return false end
 				local lscale=c:GetLeftScale()
@@ -1552,7 +1563,9 @@ function Auxiliary.PendOperation()
 					tg=Duel.GetMatchingGroup(Auxiliary.PConditionFilter,tp,LOCATION_HAND+LOCATION_EXTRA,0,nil,e,tp,lscale,rscale)
 				end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-				local g=tg:SelectSubGroup(tp,Auxiliary.PendOperationCheck,false,1,#tg,tp)
+				local g=tg:SelectSubGroup(tp,Auxiliary.PendOperationCheck,true,1,#tg,tp)
+				if not g then return end
+				PENDULUM_CHECKLIST=PENDULUM_CHECKLIST|(0x1<<tp)
 				sg:Merge(g)
 				Duel.HintSelection(Group.FromCards(c))
 				Duel.HintSelection(Group.FromCards(rpz))
