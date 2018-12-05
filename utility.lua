@@ -1379,44 +1379,46 @@ function Auxiliary.FShaddollOperation(attr)
 				Duel.SetFusionMaterial(g)
 			end
 end
---Ritual Summon, geq fixed lv
-function Auxiliary.AddRitualProcGreater(c,filter)
+function Auxiliary.AddRitualProcUltimate(c,filter,level_function,greater_or_equal)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetTarget(Auxiliary.RitualGreaterTarget(filter))
-	e1:SetOperation(Auxiliary.RitualGreaterOperation(filter))
+	e1:SetTarget(Auxiliary.RitualUltimateTarget(filter,level_function,greater_or_equal))
+	e1:SetOperation(Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equal))
 	c:RegisterEffect(e1)
 end
 function Auxiliary.RitualGreaterCheck(g,tp,c,lv)
 	Duel.SetSelectedCard(g)
 	return g:CheckWithSumGreater(Card.GetRitualLevel,lv,c) and Duel.GetMZoneCount(tp,g,tp)>0
 end
-function Auxiliary.RitualFilter(c,filter,e,tp,m,greater_or_equal)
+function Auxiliary.RitualEqualCheck(g,tp,c,lv)
+	return g:CheckWithSumEqual(Card.GetRitualLevel,lv,#g,#g,c) and Duel.GetMZoneCount(tp,g,tp)>0
+end
+function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m,level_function,greater_or_equal)
 	if (filter and not filter(c)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
-	return mg:CheckSubGroup(Auxiliary["Ritual"..greater_or_equal.."Check"],1,63,tp,c,c:GetOriginalLevel())
+	return mg:CheckSubGroup(Auxiliary["Ritual"..greater_or_equal.."Check"],1,63,tp,c,level_function(c))
 end
-function Auxiliary.RitualGreaterTarget(filter)
+function Auxiliary.RitualUltimateTarget(filter,level_function,greater_or_equal)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk)
 				if chk==0 then
 					local mg=Duel.GetRitualMaterial(tp)
-					return Duel.IsExistingMatchingCard(Auxiliary.RitualFilter,tp,LOCATION_HAND,0,1,nil,filter,e,tp,mg,"Greater")
+					return Duel.IsExistingMatchingCard(Auxiliary.RitualUltimateFilter,tp,LOCATION_HAND,0,1,nil,filter,e,tp,mg,level_function,greater_or_equal)
 				end
 				Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 			end
 end
-function Auxiliary.RitualGreaterOperation(filter)
+function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equal)
 	return	function(e,tp,eg,ep,ev,re,r,rp)
 				local mg=Duel.GetRitualMaterial(tp)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-				local tg=Duel.SelectMatchingCard(tp,Auxiliary.RitualFilter,tp,LOCATION_HAND,0,1,1,nil,filter,e,tp,mg,"Greater")
+				local tg=Duel.SelectMatchingCard(tp,Auxiliary.RitualUltimateFilter,tp,LOCATION_HAND,0,1,1,nil,filter,e,tp,mg,level_function,greater_or_equal)
 				local tc=tg:GetFirst()
 				if tc then
 					mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-					local mat=mg:SelectSubGroup(tp,Auxiliary.RitualGreaterCheck,false,1,63,tp,tc,tc:GetOriginalLevel())
+					local mat=mg:SelectSubGroup(tp,Auxiliary["Ritual"..greater_or_equal.."Check"],false,1,63,tp,tc,level_function(tc))
 					tc:SetMaterial(mat)
 					Duel.ReleaseRitualMaterial(mat)
 					Duel.BreakEffect()
@@ -1424,6 +1426,10 @@ function Auxiliary.RitualGreaterOperation(filter)
 					tc:CompleteProcedure()
 				end
 			end
+end
+--Ritual Summon, geq fixed lv
+function Auxiliary.AddRitualProcGreater(c,filter)
+	Auxiliary.AddRitualProcUltimate(c,filter,Card.GetOriginalLevel,"Greater")
 end
 function Auxiliary.AddRitualProcGreaterCode(c,code1)
 	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
@@ -1434,43 +1440,7 @@ function Auxiliary.AddRitualProcGreaterCode(c,code1)
 end
 --Ritual Summon, equal to fixed lv
 function Auxiliary.AddRitualProcEqual(c,filter)
-	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetTarget(Auxiliary.RitualEqualTarget(filter))
-	e1:SetOperation(Auxiliary.RitualEqualOperation(filter))
-	c:RegisterEffect(e1)
-end
-function Auxiliary.RitualEqualCheck(g,tp,c,lv)
-	return g:CheckWithSumEqual(Card.GetRitualLevel,lv,#g,#g,c) and Duel.GetMZoneCount(tp,g,tp)>0
-end
-function Auxiliary.RitualEqualTarget(filter)
-	return	function(e,tp,eg,ep,ev,re,r,rp,chk)
-				if chk==0 then
-					local mg=Duel.GetRitualMaterial(tp)
-					return Duel.IsExistingMatchingCard(Auxiliary.RitualFilter,tp,LOCATION_HAND,0,1,nil,filter,e,tp,mg,"Equal")
-				end
-				Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
-			end
-end
-function Auxiliary.RitualEqualOperation(filter)
-	return	function(e,tp,eg,ep,ev,re,r,rp)
-				local mg=Duel.GetRitualMaterial(tp)
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-				local tg=Duel.SelectMatchingCard(tp,Auxiliary.RitualFilter,tp,LOCATION_HAND,0,1,1,nil,filter,e,tp,mg,"Equal")
-				local tc=tg:GetFirst()
-				if tc then
-					mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
-					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-					local mat=mg:SelectSubGroup(tp,Auxiliary.RitualEqualCheck,false,1,63,tp,tc,tc:GetOriginalLevel())
-					tc:SetMaterial(mat)
-					Duel.ReleaseRitualMaterial(mat)
-					Duel.BreakEffect()
-					Duel.SpecialSummon(tc,SUMMON_TYPE_RITUAL,tp,tp,false,true,POS_FACEUP)
-					tc:CompleteProcedure()
-				end
-			end
+	Auxiliary.AddRitualProcUltimate(c,filter,Card.GetOriginalLevel,"Equal")
 end
 function Auxiliary.AddRitualProcEqualCode(c,code1)
 	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
@@ -1481,67 +1451,7 @@ function Auxiliary.AddRitualProcEqualCode(c,code1)
 end
 --Ritual Summon, equal to monster lv
 function Auxiliary.AddRitualProcEqual2(c,filter)
-	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetTarget(Auxiliary.RitualEqualTarget2(filter))
-	e1:SetOperation(Auxiliary.RitualEqualOperation2(filter))
-	c:RegisterEffect(e1)
-end
-function Auxiliary.RitualEqualFilter2(c,filter,e,tp,m,ft)
-	if (filter and not filter(c)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
-	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
-	if ft>0 then
-		return mg:CheckWithSumEqual(Card.GetRitualLevel,c:GetLevel(),1,99,c)
-	else
-		return mg:IsExists(Auxiliary.RitualEqualFilter2F,1,nil,tp,mg,c)
-	end
-end
-function Auxiliary.RitualEqualFilter2F(c,tp,mg,rc)
-	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5 then
-		Duel.SetSelectedCard(c)
-		return mg:CheckWithSumEqual(Card.GetRitualLevel,rc:GetLevel(),0,99,rc)
-	else return false end
-end
-function Auxiliary.RitualEqualTarget2(filter)
-	return	function(e,tp,eg,ep,ev,re,r,rp,chk)
-				if chk==0 then
-					local mg=Duel.GetRitualMaterial(tp)
-					local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-					return ft>-1 and Duel.IsExistingMatchingCard(Auxiliary.RitualEqualFilter2,tp,LOCATION_HAND,0,1,nil,filter,e,tp,mg,ft)
-				end
-				Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
-			end
-end
-function Auxiliary.RitualEqualOperation2(filter)
-	return	function(e,tp,eg,ep,ev,re,r,rp)
-				local mg=Duel.GetRitualMaterial(tp)
-				local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-				local tg=Duel.SelectMatchingCard(tp,Auxiliary.RitualEqualFilter2,tp,LOCATION_HAND,0,1,1,nil,filter,e,tp,mg,ft)
-				local tc=tg:GetFirst()
-				if tc then
-					mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
-					local mat=nil
-					if ft>0 then
-						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-						mat=mg:SelectWithSumEqual(tp,Card.GetRitualLevel,tc:GetLevel(),1,99,tc)
-					else
-						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-						mat=mg:FilterSelect(tp,Auxiliary.RitualEqualFilter2F,1,1,nil,tp,mg,tc)
-						Duel.SetSelectedCard(mat)
-						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-						local mat2=mg:SelectWithSumEqual(tp,Card.GetRitualLevel,tc:GetLevel(),0,99,tc)
-						mat:Merge(mat2)
-					end
-					tc:SetMaterial(mat)
-					Duel.ReleaseRitualMaterial(mat)
-					Duel.BreakEffect()
-					Duel.SpecialSummon(tc,SUMMON_TYPE_RITUAL,tp,tp,false,true,POS_FACEUP)
-					tc:CompleteProcedure()
-				end
-			end
+	Auxiliary.AddRitualProcUltimate(c,filter,Card.GetLevel,"Equal")
 end
 function Auxiliary.AddRitualProcEqual2Code(c,code1)
 	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
