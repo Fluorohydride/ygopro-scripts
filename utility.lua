@@ -1389,27 +1389,20 @@ function Auxiliary.AddRitualProcGreater(c,filter)
 	e1:SetOperation(Auxiliary.RitualGreaterOperation(filter))
 	c:RegisterEffect(e1)
 end
-function Auxiliary.RitualGreaterFilter(c,filter,e,tp,m,ft)
+function Auxiliary.RitualGreaterCheck(g,tp,c,lv)
+	Duel.SetSelectedCard(g)
+	return g:CheckWithSumGreater(Card.GetRitualLevel,lv,c) and Duel.GetMZoneCount(tp,g,tp)>0
+end
+function Auxiliary.RitualGreaterFilter(c,filter,e,tp,m)
 	if (filter and not filter(c)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
-	if ft>0 then
-		return mg:CheckWithSumGreater(Card.GetRitualLevel,c:GetOriginalLevel(),c)
-	else
-		return mg:IsExists(Auxiliary.RitualGreaterFilterF,1,nil,tp,mg,c)
-	end
-end
-function Auxiliary.RitualGreaterFilterF(c,tp,mg,rc)
-	if c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5 then
-		Duel.SetSelectedCard(c)
-		return mg:CheckWithSumGreater(Card.GetRitualLevel,rc:GetOriginalLevel(),rc)
-	else return false end
+	return mg:CheckSubGroup(Auxiliary.RitualGreaterCheck,1,63,tp,c,c:GetOriginalLevel())
 end
 function Auxiliary.RitualGreaterTarget(filter)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk)
 				if chk==0 then
 					local mg=Duel.GetRitualMaterial(tp)
-					local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-					return ft>-1 and Duel.IsExistingMatchingCard(Auxiliary.RitualGreaterFilter,tp,LOCATION_HAND,0,1,nil,filter,e,tp,mg,ft)
+					return Duel.IsExistingMatchingCard(Auxiliary.RitualGreaterFilter,tp,LOCATION_HAND,0,1,nil,filter,e,tp,mg)
 				end
 				Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 			end
@@ -1423,18 +1416,8 @@ function Auxiliary.RitualGreaterOperation(filter)
 				local tc=tg:GetFirst()
 				if tc then
 					mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
-					local mat=nil
-					if ft>0 then
-						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-						mat=mg:SelectWithSumGreater(tp,Card.GetRitualLevel,tc:GetOriginalLevel(),tc)
-					else
-						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-						mat=mg:FilterSelect(tp,Auxiliary.RitualGreaterFilterF,1,1,nil,tp,mg,tc)
-						Duel.SetSelectedCard(mat)
-						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-						local mat2=mg:SelectWithSumGreater(tp,Card.GetRitualLevel,tc:GetOriginalLevel(),tc)
-						mat:Merge(mat2)
-					end
+					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+					local mat=mg:SelectSubGroup(tp,Auxiliary.RitualGreaterCheck,false,1,63,tp,tc,tc:GetOriginalLevel())
 					tc:SetMaterial(mat)
 					Duel.ReleaseRitualMaterial(mat)
 					Duel.BreakEffect()
