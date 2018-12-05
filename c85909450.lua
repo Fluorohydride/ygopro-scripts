@@ -21,10 +21,9 @@ function c85909450.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
-	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+	e3:SetProperty(EFFECT_FLAG_IGNORE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e3:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x64))
+	e3:SetTarget(c85909450.efftg)
 	e3:SetCondition(c85909450.effcon)
 	e3:SetValue(aux.tgoval)
 	c:RegisterEffect(e3)
@@ -41,6 +40,9 @@ function c85909450.initial_effect(c)
 end
 function c85909450.effcon(e)
 	return e:GetHandler():GetOverlayCount()>0
+end
+function c85909450.efftg(e,c)
+	return c:IsSetCard(0x64) and c:IsType(TYPE_MONSTER)
 end
 function c85909450.atlimit(e,c)
 	return c:IsFaceup() and c:IsSetCard(0x64)
