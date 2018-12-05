@@ -11,7 +11,7 @@ function c31531170.initial_effect(c)
 end
 function c31531170.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return PENDULUM_CHECKLIST&(0x1<<tp)~=0 and Duel.IsExistingTarget(nil,tp,0,LOCATION_PZONE,2,nil) end
+	if chk==0 then return PENDULUM_CHECKLIST and PENDULUM_CHECKLIST&(0x1<<tp)~=0 and Duel.IsExistingTarget(nil,tp,0,LOCATION_PZONE,2,nil) end
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_PZONE)
 	Duel.SetTargetCard(g)
 end
