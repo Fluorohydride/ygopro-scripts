@@ -72,11 +72,11 @@ function c85289965.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c85289965.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end
-	e:GetHandler():GetBattleTarget():CreateEffectRelation(e)
+	Duel.SetTargetCard(e:GetHandler():GetBattleTarget())
 end
 function c85289965.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local tc=c:GetBattleTarget()
+	local tc=Duel.GetFirstTarget()
 	if not c:IsRelateToEffect(e) or c:IsFacedown() or tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
 		local atk=tc:GetAttack()

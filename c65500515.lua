@@ -34,7 +34,7 @@ function c65500515.seqop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
 	local s=Duel.SelectDisableField(tp,1,LOCATION_MZONE,0,0)
 	local nseq=math.log(s,2)
-	Duel.MoveSequence(tc,nseq)
+	Duel.MoveSequence(c,nseq)
 	local a=Duel.GetAttacker()
 	if not a:IsAttackable() or not Duel.IsPlayerCanSpecialSummonMonster(tp,65500516,0,0x4011,a:GetAttack(),0,2,RACE_AQUA,ATTRIBUTE_WATER) then return end
 	local token=Duel.CreateToken(tp,65500516)
