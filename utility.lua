@@ -1548,17 +1548,7 @@ function Auxiliary.PendCondition()
 				return g:IsExists(Auxiliary.PConditionFilter,1,nil,e,tp,lscale,rscale,eset)
 			end
 end
-function Auxiliary.PendOperationCheck(g,tp)
-	local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ft2=Duel.GetLocationCountFromEx(tp)
-	local ft=Duel.GetUsableMZoneCount(tp)
-	local ect=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
-	if ect and ect<ft2 then ft2=ect end
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then
-		if ft1>0 then ft1=1 end
-		if ft2>0 then ft2=1 end
-		ft=1
-	end
+function Auxiliary.PendOperationCheck(g,ft1,ft2,ft)
 	local exg=g:Filter(Card.IsLocation,nil,LOCATION_EXTRA)
 	local mg=g-exg
 	return #g<=ft and #exg<=ft2 and #mg<=ft1
@@ -1571,10 +1561,23 @@ function Auxiliary.PendOperation()
 				if lscale>rscale then lscale,rscale=rscale,lscale end
 				local eset={Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_PENDULUM_SUMMON)}
 				local tg=nil
+				local loc=0
+				local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
+				local ft2=Duel.GetLocationCountFromEx(tp)
+				local ft=Duel.GetUsableMZoneCount(tp)
+				local ect=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
+				if ect and ect<ft2 then ft2=ect end
+				if Duel.IsPlayerAffectedByEffect(tp,59822133) then
+					if ft1>0 then ft1=1 end
+					if ft2>0 then ft2=1 end
+					ft=1
+				end
+				if ft1>0 then loc=loc|LOCATION_HAND end
+				if ft2>0 then loc=loc|LOCATION_EXTRA end
 				if og then
-					tg=og:Filter(Card.IsLocation,nil,LOCATION_HAND+LOCATION_EXTRA):Filter(Auxiliary.PConditionFilter,nil,e,tp,lscale,rscale,eset)
+					tg=og:Filter(Card.IsLocation,nil,loc):Filter(Auxiliary.PConditionFilter,nil,e,tp,lscale,rscale,eset)
 				else
-					tg=Duel.GetMatchingGroup(Auxiliary.PConditionFilter,tp,LOCATION_HAND+LOCATION_EXTRA,0,nil,e,tp,lscale,rscale,eset)
+					tg=Duel.GetMatchingGroup(Auxiliary.PConditionFilter,tp,loc,0,nil,e,tp,lscale,rscale,eset)
 				end
 				local ce=nil
 				local b1=PENDULUM_CHECKLIST&(0x1<<tp)==0
@@ -1600,7 +1603,7 @@ function Auxiliary.PendOperation()
 					tg=tg:Filter(Auxiliary.PConditionExtraFilterSpecific,nil,e,tp,lscale,rscale,ce)
 				end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-				local g=tg:SelectSubGroup(tp,Auxiliary.PendOperationCheck,true,1,#tg,tp)
+				local g=tg:SelectSubGroup(tp,Auxiliary.PendOperationCheck,true,1,#tg,ft1,ft2,ft)
 				if not g then return end
 				if ce then
 					Duel.Hint(HINT_CARD,0,ce:GetOwner():GetOriginalCode())
