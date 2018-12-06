@@ -47,7 +47,8 @@ end
 function c26692769.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c26692769.tgfilter,tp,LOCATION_DECK,0,1,1,nil,tp)
-	if #g>0 and Duel.SendtoGrave(g,REASON_EFFECT)>0 then
+	if #g>0 and Duel.SendtoGrave(g,REASON_EFFECT)>0 and g:GetFirst():IsLocation(LOCATION_GRAVE) then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 		local tc=Duel.SelectMatchingCard(tp,c26692769.setfilter,tp,LOCATION_DECK,0,1,1,nil):GetFirst()
 		if tc then
 			Duel.BreakEffect()
