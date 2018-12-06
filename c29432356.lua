@@ -88,6 +88,7 @@ end
 function c29432356.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(29432356,2))
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_EXTRA_PENDULUM_SUMMON)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
