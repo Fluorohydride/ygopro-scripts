@@ -1603,7 +1603,7 @@ function Auxiliary.PendOperation()
 					tg=tg:Filter(Auxiliary.PConditionExtraFilterSpecific,nil,e,tp,lscale,rscale,ce)
 				end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-				local g=tg:SelectSubGroup(tp,Auxiliary.PendOperationCheck,true,1,#tg,ft1,ft2,ft)
+				local g=tg:SelectSubGroup(tp,Auxiliary.PendOperationCheck,true,1,math.min(#tg,ft),ft1,ft2,ft)
 				if not g then return end
 				if ce then
 					Duel.Hint(HINT_CARD,0,ce:GetOwner():GetOriginalCode())
