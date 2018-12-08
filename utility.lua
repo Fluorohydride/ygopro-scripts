@@ -1951,14 +1951,16 @@ function Auxiliary.GetMultiLinkedZone(tp)
 	end
 	return multi_linked_zone
 end
-function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
+function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,mid_functions,ext_params)
 	sg:AddCard(c)
-	local res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params)))
-		or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params))
+	local midf=mid_functions[#sg]
+	local res=(not midf or midf(sg,table.unpack(ext_params)))
+		and ((#sg>=min and #sg<=max and f(sg,table.unpack(ext_params)))
+			or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,mid_functions,ext_params)))
 	sg:RemoveCard(c)
 	return res
 end
-function Group.CheckSubGroup(g,f,min,max,...)
+function Group.CheckSubGroup(g,f,min,max,mid_functions,...)
 	local min=min or 1
 	local max=max or #g
 	if min>max then return false end
@@ -1966,9 +1968,9 @@ function Group.CheckSubGroup(g,f,min,max,...)
 	local sg=Duel.GrabSelectedCard()
 	if #sg>max or #sg==max and not f(sg,...) then return false end
 	if #sg>=min and #sg<=max and f(sg,...) then return true end
-	return g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params)
+	return g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,mid_functions,ext_params)
 end
-function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
+function Group.SelectSubGroup(g,tp,f,cancelable,min,max,mid_functions,...)
 	local min=min or 1
 	local max=max or #g
 	local ext_params={...}
@@ -1980,7 +1982,7 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	sg:Merge(fg)
 	local finish=(#sg>=min and #sg<=max and f(sg,...))
 	while #sg<max do
-		local cg=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,f,min,max,ext_params)
+		local cg=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,f,min,max,mid_functions,ext_params)
 		finish=(#sg>=min and #sg<=max and f(sg,...))
 		if #cg==0 then break end
 		local cancel=not finish and cancelable
