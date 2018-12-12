@@ -55,6 +55,7 @@ function c74402414.initial_effect(c)
 end
 function c74402414.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local hg=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
+	hg:RemoveCard(e:GetHandler())
 	if chk==0 then return hg:GetCount()>0 and hg:FilterCount(Card.IsAbleToGraveAsCost,nil)==hg:GetCount() end
 	Duel.SendtoGrave(hg,REASON_COST)
 end
