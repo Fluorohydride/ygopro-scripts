@@ -31,8 +31,8 @@ end
 function c21105106.splimit(e,se,sp,st)
 	return e:GetHandler():IsLocation(LOCATION_HAND) and bit.band(st,SUMMON_TYPE_RITUAL)==SUMMON_TYPE_RITUAL
 end
-function c21105106.mat_filter(c)
-	return false
+function c21105106.mat_filter(c,tp)
+	return c:IsLocation(LOCATION_MZONE) and c:IsControler(tp)
 end
 function c21105106.discon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1
@@ -90,41 +90,6 @@ function c21105106.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,LOCATION_ONFIELD+LOCATION_GRAVE,LOCATION_ONFIELD+LOCATION_GRAVE,aux.ExceptThisCard(e))
 	Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 end
-function c21105106.filter(c,tp)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
-end
-function c21105106.ritual_custom_condition(c,mg,ft,greater)
-	--ft is kept for compatablity
-	local tp=c:GetControler()
-	local g=mg:Filter(c21105106.filter,c,tp)
-	local sg=Group.CreateGroup()
-	return g:IsExists(c21105106.rselect,1,nil,tp,sg,g,c,greater)
-end
-function c21105106.rselect(c,tp,sg,mg,rc,greater)
-	sg:AddCard(c)
-	local res=#sg==3 and c21105106.rgoal(tp,sg,rc,greater)
-		or #sg<3 and mg:IsExists(c21105106.rselect,1,sg,tp,sg,mg,rc,greater)
-	sg:RemoveCard(c)
-	return res
-end
-function c21105106.rgoal(tp,sg,rc,greater)
-	if not (#sg==3 and Duel.GetMZoneCount(tp,sg,tp)>0 and sg:GetClassCount(Card.GetRace)==3) then return false end
-	if greater then
-		Duel.SetSelectedCard(sg)
-		return sg:CheckWithSumGreater(Card.GetRitualLevel,rc:GetLevel(),rc)
-	else
-		return sg:CheckWithSumEqual(Card.GetRitualLevel,rc:GetLevel(),3,3,rc)
-	end
-end
-function c21105106.ritual_custom_operation(c,mg1,greater)
-	local tp=c:GetControler()
-	local lv=c:GetLevel()
-	local mg=mg1:Filter(c21105106.filter,c,tp)
-	local sg=Group.CreateGroup()
-	while #sg<3 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local g=mg:FilterSelect(tp,c21105106.rselect,1,1,sg,tp,sg,mg,c,greater)
-		sg:Merge(g)
-	end
-	c:SetMaterial(sg)
+function c21105106.mat_group_check(g)
+	return g:GetClassCount(Card.GetRace)==3
 end

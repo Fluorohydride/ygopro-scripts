@@ -1379,46 +1379,74 @@ function Auxiliary.FShaddollOperation(attr)
 				Duel.SetFusionMaterial(g)
 			end
 end
-function Auxiliary.AddRitualProcUltimate(c,filter,level_function,greater_or_equal)
+function Auxiliary.AddRitualProcUltimate(c,filter,level_function,greater_or_equal,summon_location,grave_filter)
+	summon_location=summon_location or LOCATION_HAND
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetTarget(Auxiliary.RitualUltimateTarget(filter,level_function,greater_or_equal))
-	e1:SetOperation(Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equal))
+	e1:SetTarget(Auxiliary.RitualUltimateTarget(filter,level_function,greater_or_equal,summon_location,grave_filter))
+	e1:SetOperation(Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equal,summon_location,grave_filter))
 	c:RegisterEffect(e1)
+	return e1
 end
-function Auxiliary.RitualGreaterCheck(g,tp,c,lv)
+function Auxiliary.RitualCheckGreater(g,c,lv)
 	Duel.SetSelectedCard(g)
-	return g:CheckWithSumGreater(Card.GetRitualLevel,lv,c) and Duel.GetMZoneCount(tp,g,tp)>0
+	return g:CheckWithSumGreater(Card.GetRitualLevel,lv,c)
 end
-function Auxiliary.RitualEqualCheck(g,tp,c,lv)
-	return g:CheckWithSumEqual(Card.GetRitualLevel,lv,#g,#g,c) and Duel.GetMZoneCount(tp,g,tp)>0
+function Auxiliary.RitualCheckEqual(g,c,lv)
+	return g:CheckWithSumEqual(Card.GetRitualLevel,lv,#g,#g,c)
 end
-function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m,level_function,greater_or_equal)
-	if (filter and not filter(c)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
-	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
-	return mg:CheckSubGroup(Auxiliary["Ritual"..greater_or_equal.."Check"],1,63,tp,c,level_function(c))
+function Auxiliary.RitualCheck(g,tp,c,lv,greater_or_equal)
+	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.mat_group_check or c.mat_group_check(g,tp))
 end
-function Auxiliary.RitualUltimateTarget(filter,level_function,greater_or_equal)
+function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,greater_or_equal)
+	if bit.band(c:GetType(),0x81)~=0x81 or (filter and not filter(c)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
+	local mg=m1:Filter(Card.IsCanBeRitualMaterial,c,c)
+	if m2 then
+		mg:Merge(m2)
+	end
+	if c.mat_filter then
+		mg=mg:Filter(c.mat_filter,nil)
+	end
+	return mg:CheckSubGroup(Auxiliary.RitualCheck,1,63,tp,c,level_function(c),greater_or_equal)
+end
+function Auxiliary.RitualExtraFilter(c,f)
+	return c:GetLevel()>0 and f(c) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
+end
+function Auxiliary.RitualUltimateTarget(filter,level_function,greater_or_equal,summon_location,grave_filter)
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk)
 				if chk==0 then
 					local mg=Duel.GetRitualMaterial(tp)
-					return Duel.IsExistingMatchingCard(Auxiliary.RitualUltimateFilter,tp,LOCATION_HAND,0,1,nil,filter,e,tp,mg,level_function,greater_or_equal)
+					local exg=nil
+					if grave_filter then
+						exg=Duel.GetMatchingGroup(Auxiliary.RitualExtraFilter,tp,LOCATION_GRAVE,0,nil,grave_filter)
+					end
+					return Duel.IsExistingMatchingCard(Auxiliary.RitualUltimateFilter,tp,summon_location,0,1,nil,filter,e,tp,mg,exg,level_function,greater_or_equal)
 				end
-				Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
+				Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,summon_location)
 			end
 end
-function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equal)
+function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equal,summon_location,grave_filter)
 	return	function(e,tp,eg,ep,ev,re,r,rp)
 				local mg=Duel.GetRitualMaterial(tp)
+				local exg=nil
+				if grave_filter then
+					exg=Duel.GetMatchingGroup(Auxiliary.RitualExtraFilter,tp,LOCATION_GRAVE,0,nil,grave_filter)
+				end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-				local tg=Duel.SelectMatchingCard(tp,Auxiliary.RitualUltimateFilter,tp,LOCATION_HAND,0,1,1,nil,filter,e,tp,mg,level_function,greater_or_equal)
+				local tg=Duel.SelectMatchingCard(tp,Auxiliary.NecroValleyFilter(Auxiliary.RitualUltimateFilter),tp,summon_location,0,1,1,nil,filter,e,tp,mg,exg,level_function,greater_or_equal)
 				local tc=tg:GetFirst()
 				if tc then
 					mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
+					if exg then
+						mg:Merge(exg)
+					end
+					if tc.mat_filter then
+						mg=mg:Filter(tc.mat_filter,nil)
+					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-					local mat=mg:SelectSubGroup(tp,Auxiliary["Ritual"..greater_or_equal.."Check"],false,1,63,tp,tc,level_function(tc))
+					local mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,false,1,63,tp,tc,level_function(tc),greater_or_equal)
 					tc:SetMaterial(mat)
 					Duel.ReleaseRitualMaterial(mat)
 					Duel.BreakEffect()
@@ -1428,44 +1456,44 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 			end
 end
 --Ritual Summon, geq fixed lv
-function Auxiliary.AddRitualProcGreater(c,filter)
-	Auxiliary.AddRitualProcUltimate(c,filter,Card.GetOriginalLevel,"Greater")
+function Auxiliary.AddRitualProcGreater(c,filter,summon_location,grave_filter)
+	return Auxiliary.AddRitualProcUltimate(c,filter,Card.GetOriginalLevel,"Greater",summon_location,grave_filter)
 end
-function Auxiliary.AddRitualProcGreaterCode(c,code1)
+function Auxiliary.AddRitualProcGreaterCode(c,code1,summon_location,grave_filter)
 	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
 		local mt=getmetatable(c)
 		mt.fit_monster={code1}
 	end
-	Auxiliary.AddRitualProcGreater(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1))
+	return Auxiliary.AddRitualProcGreater(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1),summon_location,grave_filter)
 end
 --Ritual Summon, equal to fixed lv
-function Auxiliary.AddRitualProcEqual(c,filter)
-	Auxiliary.AddRitualProcUltimate(c,filter,Card.GetOriginalLevel,"Equal")
+function Auxiliary.AddRitualProcEqual(c,filter,summon_location,grave_filter)
+	return Auxiliary.AddRitualProcUltimate(c,filter,Card.GetOriginalLevel,"Equal",summon_location,grave_filter)
 end
-function Auxiliary.AddRitualProcEqualCode(c,code1)
+function Auxiliary.AddRitualProcEqualCode(c,code1,summon_location,grave_filter)
 	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
 		local mt=getmetatable(c)
 		mt.fit_monster={code1}
 	end
-	Auxiliary.AddRitualProcEqual(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1))
+	return Auxiliary.AddRitualProcEqual(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1),summon_location,grave_filter)
 end
 --Ritual Summon, equal to monster lv
-function Auxiliary.AddRitualProcEqual2(c,filter)
-	Auxiliary.AddRitualProcUltimate(c,filter,Card.GetLevel,"Equal")
+function Auxiliary.AddRitualProcEqual2(c,filter,summon_location,grave_filter)
+	return Auxiliary.AddRitualProcUltimate(c,filter,Card.GetLevel,"Equal",summon_location,grave_filter)
 end
-function Auxiliary.AddRitualProcEqual2Code(c,code1)
+function Auxiliary.AddRitualProcEqual2Code(c,code1,summon_location,grave_filter)
 	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
 		local mt=getmetatable(c)
 		mt.fit_monster={code1}
 	end
-	Auxiliary.AddRitualProcEqual2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1))
+	return Auxiliary.AddRitualProcEqual2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1),summon_location,grave_filter)
 end
-function Auxiliary.AddRitualProcEqual2Code2(c,code1,code2)
+function Auxiliary.AddRitualProcEqual2Code2(c,code1,code2,summon_location,grave_filter)
 	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
 		local mt=getmetatable(c)
 		mt.fit_monster={code1,code2}
 	end
-	Auxiliary.AddRitualProcEqual2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1,code2))
+	return Auxiliary.AddRitualProcEqual2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1,code2),summon_location,grave_filter)
 end
 --add procedure to Pendulum monster, also allows registeration of activation effect
 function Auxiliary.EnablePendulumAttribute(c,reg)
