@@ -1,6 +1,6 @@
 --リヴェンデット・ボーン
 function c94666032.initial_effect(c)
-	aux.AddRitualProcUltimate(c,c94666032.filter,Card.GetLevel,"Greater",nil,c94666032.mfilter)
+	aux.AddRitualProcUltimate(c,c94666032.filter,Card.GetLevel,"Greater",LOCATION_HAND+LOCATION_GRAVE,c94666032.mfilter)
 	--destroy replace
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
