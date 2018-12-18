@@ -29,7 +29,7 @@ function c76263644.initial_effect(c)
 	e3:SetOperation(c76263644.spop)
 	c:RegisterEffect(e3)
 end
-c76263644.material_setcode=0x8
+c76263644.material_setcode=0xc008
 function c76263644.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetActivityCount(tp,ACTIVITY_BATTLE_PHASE)==0 end
 	local e1=Effect.CreateEffect(e:GetHandler())
