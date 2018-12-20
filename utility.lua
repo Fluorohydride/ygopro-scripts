@@ -1407,7 +1407,9 @@ function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,great
 		mg:Merge(m2)
 	end
 	if c.mat_filter then
-		mg=mg:Filter(c.mat_filter,nil)
+		mg=mg:Filter(c.mat_filter,c)
+	else
+		mg:RemoveCard(c)
 	end
 	return mg:CheckSubGroup(Auxiliary.RitualCheck,1,63,tp,c,level_function(c),greater_or_equal)
 end
@@ -1443,7 +1445,9 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 						mg:Merge(exg)
 					end
 					if tc.mat_filter then
-						mg=mg:Filter(tc.mat_filter,nil)
+						mg=mg:Filter(tc.mat_filter,tc)
+					else
+						mg:RemoveCard(tc)
 					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 					local mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,false,1,63,tp,tc,level_function(tc),greater_or_equal)
