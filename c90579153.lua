@@ -28,7 +28,7 @@ function c90579153.initial_effect(c)
 	e2:SetOperation(c90579153.desop)
 	c:RegisterEffect(e2)
 end
-c90579153.material_setcode=0x8
+c90579153.material_setcode=0xc008
 function c90579153.filter(c)
 	return c:IsSetCard(0xc008) and c:IsLevelBelow(4) and c:GetAttack()>0
 end

@@ -1765,7 +1765,7 @@ function Auxiliary.IsMaterialListCode(c,code)
 	return false
 end
 function Auxiliary.IsMaterialListSetCard(c,setcode)
-	return c.material_setcode and c.material_setcode==setcode
+	return c.material_setcode and c.material_setcode&setcode==setcode
 end
 function Auxiliary.IsCodeListed(c,code)
 	if not c.card_code_list then return false end
