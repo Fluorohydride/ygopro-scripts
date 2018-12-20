@@ -47,7 +47,7 @@ end
 function c51339637.setfilter(c,tp)
 	if not c:IsSummonType(SUMMON_TYPE_LINK) then return false end
 	local mat=c:GetMaterial()
-	return c:IsFaceup() and c:IsSetCard(0x119) and mat:IsExists(Card.IsLinkCode,1,nil,c:GetCode())
+	return c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0x119) and mat:IsExists(Card.IsLinkCode,1,nil,c:GetCode())
 end
 function c51339637.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c51339637.setfilter,1,nil,tp)
