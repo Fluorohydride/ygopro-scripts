@@ -68,7 +68,7 @@ function c80773359.tnop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 end
 function c80773359.lvfilter(c,lv)
-	return c:IsSetCard(0x33) and not c:IsLevel(lv)
+	return c:IsSetCard(0x33) and not c:IsLevel(lv) and c:IsLevelAbove(1)
 end
 function c80773359.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c80773359.lvfilter(chkc,e:GetHandler():GetLevel()) end

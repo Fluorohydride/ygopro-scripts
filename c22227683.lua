@@ -65,7 +65,7 @@ function c22227683.spfilter1(c,e,tp)
 		and Duel.IsExistingMatchingCard(c22227683.spfilter2,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,c,e,tp,c:GetLevel())
 end
 function c22227683.spfilter2(c,e,tp,lv)
-	return c:IsSetCard(0xab) and c:IsType(TYPE_MONSTER) and not c:IsLevel(lv)
+	return c:IsSetCard(0xab) and c:IsType(TYPE_MONSTER) and not c:IsLevel(lv) and c:IsLevelAbove(1)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c22227683.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

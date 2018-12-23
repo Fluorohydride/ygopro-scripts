@@ -12,7 +12,7 @@ function c74611888.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c74611888.cfilter(c)
-	return c:IsFaceup() and not c:IsLevel(c:GetOriginalLevel())
+	return c:IsFaceup() and not c:IsLevel(c:GetOriginalLevel()) and c:IsLevelAbove(1)
 end
 function c74611888.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c74611888.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)

@@ -10,7 +10,7 @@ function c37168514.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c37168514.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_ROCK) and not c:IsLevel(3)
+	return c:IsFaceup() and c:IsRace(RACE_ROCK) and not c:IsLevel(3) and c:IsLevelAbove(1)
 end
 function c37168514.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c37168514.filter,tp,LOCATION_MZONE,0,1,nil) end

@@ -31,7 +31,7 @@ function c95352218.filter1(c)
 	return c:IsFaceup() and c:IsLevelAbove(1)
 end
 function c95352218.filter2(c,lv)
-	return c:IsFaceup() and not c:IsLevel(lv)
+	return c:IsFaceup() and not c:IsLevel(lv) and c:IsLevelAbove(1)
 end
 function c95352218.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end

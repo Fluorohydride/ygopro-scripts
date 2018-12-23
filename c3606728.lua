@@ -19,7 +19,7 @@ function c3606728.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c3606728.lvfilter(c,lv)
-	return c:IsFaceup() and c:IsCode(26082117) and not c:IsLevel(lv)
+	return c:IsFaceup() and c:IsCode(26082117) and not c:IsLevel(lv) and c:IsLevelAbove(1)
 end
 function c3606728.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c3606728.lvfilter(chkc,e:GetHandler():GetLevel()) end
