@@ -91,5 +91,5 @@ function c21105106.rmop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 end
 function c21105106.mat_group_check(g)
-	return g:GetClassCount(Card.GetRace)==3
+	return #g==3 and g:GetClassCount(Card.GetRace)==3
 end
