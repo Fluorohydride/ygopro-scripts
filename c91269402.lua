@@ -21,7 +21,7 @@ function c91269402.initial_effect(c)
 	end
 end
 function c91269402.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if (bit.band(r,REASON_EFFECT)~=0 and rp==1-e:GetOwnerPlayer()) or bit.band(r,REASON_BATTLE)~=0 then
+	if (bit.band(r,REASON_EFFECT)~=0 and rp==1-ep) or bit.band(r,REASON_BATTLE)~=0 then
 		Duel.RegisterFlagEffect(ep,91269402,RESET_PHASE+PHASE_END,0,1)
 	end
 end
