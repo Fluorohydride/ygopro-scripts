@@ -35,7 +35,7 @@ function c9583383.rfilter(c,tp)
 		and Duel.IsExistingMatchingCard(c9583383.tfilter,tp,LOCATION_MZONE,0,1,nil,lv)
 end
 function c9583383.tfilter(c,clv)
-	return not c:IsLevel(clv) and c:IsFaceup() and c:IsSetCard(0x54)
+	return not c:IsLevel(clv) and c:IsLevelAbove(1) and c:IsFaceup() and c:IsSetCard(0x54)
 end
 function c9583383.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c9583383.rfilter,tp,LOCATION_GRAVE,0,1,nil,tp) end
