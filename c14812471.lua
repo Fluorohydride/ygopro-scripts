@@ -52,14 +52,12 @@ function c14812471.repfilter(c,tp)
 		and c:IsOnField() and c:IsControler(tp) and c:IsReason(REASON_EFFECT+REASON_BATTLE) and not c:IsReason(REASON_REPLACE)
 end
 function c14812471.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemove() and eg:IsExists(c14812471.repfilter,1,nil,tp)
-		 and Duel.GetFlagEffect(tp,14812471)==0 end
+	if chk==0 then return e:GetHandler():IsAbleToRemove() and eg:IsExists(c14812471.repfilter,1,nil,tp) end
 	return Duel.SelectEffectYesNo(tp,e:GetHandler(),96)
 end
 function c14812471.repval(e,c)
 	return c14812471.repfilter(c,e:GetHandlerPlayer())
 end
 function c14812471.repop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.RegisterFlagEffect(tp,14812471,RESET_PHASE+PHASE_END,0,1)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_EFFECT)
 end
