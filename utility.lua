@@ -2003,10 +2003,39 @@ function Auxiliary.GetMultiLinkedZone(tp)
 	end
 	return multi_linked_zone
 end
-function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
+function Auxiliary.LookupCache(cache,sg)
+	local t=cache[#sg]
+	local res
+	local found=false
+	if t then
+		for g,data in pairs(t) do
+			if sg:Equal(g) then
+				found=true
+				res=data
+				break
+			end
+		end
+	end
+	return found,(res==1)
+end
+function Auxiliary.StoreCache(cache,sg,res)
+	local g=sg:Clone()
+	if not cache[#g] then
+		cache[#g]={}
+	end
+	cache[#g][g]=(res and 1 or 0)
+end
+function Auxiliary.CheckGroupRecursive(c,sg,g,cache,f,min,max,ext_params)
 	sg:AddCard(c)
-	local res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params)))
-		or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params))
+	local res=false
+	local found,data=Auxiliary.LookupCache(cache,sg)
+	if found then
+		res=data
+	else
+		res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params)))
+			or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,cache,f,min,max,ext_params))
+		Auxiliary.StoreCache(cache,sg,res)
+	end
 	sg:RemoveCard(c)
 	return res
 end
@@ -2016,9 +2045,10 @@ function Group.CheckSubGroup(g,f,min,max,...)
 	if min>max then return false end
 	local ext_params={...}
 	local sg=Duel.GrabSelectedCard()
-	if #sg>max or #sg==max and not f(sg,...) then return false end
+	if #sg>max or #(g+sg)<min or #sg==max and not f(sg,...) then return false end
 	if #sg>=min and #sg<=max and f(sg,...) then return true end
-	return g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params)
+	local cache={}
+	return g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,cache,f,min,max,ext_params)
 end
 function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	local min=min or 1
@@ -2026,13 +2056,15 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	local ext_params={...}
 	local sg=Group.CreateGroup()
 	local fg=Duel.GrabSelectedCard()
+	if #fg>max or min>max or #(g+fg)<min then return nil end
 	for tc in aux.Next(fg) do
 		fg:SelectUnselect(sg,tp,false,false,min,max)
 	end
 	sg:Merge(fg)
 	local finish=(#sg>=min and #sg<=max and f(sg,...))
+	local cache={}
 	while #sg<max do
-		local cg=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,f,min,max,ext_params)
+		local cg=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,cache,f,min,max,ext_params)
 		finish=(#sg>=min and #sg<=max and f(sg,...))
 		if #cg==0 then break end
 		local cancel=not finish and cancelable
