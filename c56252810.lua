@@ -11,6 +11,7 @@ function c56252810.initial_effect(c)
 	e1:SetOperation(c56252810.activate)
 	c:RegisterEffect(e1)
 end
+c56252810.card_code_list={80280737}
 function c56252810.cfilter(c)
 	return c:IsCode(80280737) and c:IsAbleToRemoveAsCost()
 end
