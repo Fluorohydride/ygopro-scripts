@@ -1411,7 +1411,7 @@ function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,great
 	else
 		mg:RemoveCard(c)
 	end
-	return mg:CheckSubGroup(Auxiliary.RitualCheck,1,63,tp,c,level_function(c),greater_or_equal)
+	return mg:CheckSubGroup(Auxiliary.RitualCheck,1,level_function(c),tp,c,level_function(c),greater_or_equal)
 end
 function Auxiliary.RitualExtraFilter(c,f)
 	return c:GetLevel()>0 and f(c) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
@@ -1452,7 +1452,7 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 						mg:RemoveCard(tc)
 					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-					local mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,false,1,63,tp,tc,level_function(tc),greater_or_equal)
+					local mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,false,1,level_function(tc),tp,tc,level_function(tc),greater_or_equal)
 					tc:SetMaterial(mat)
 					Duel.ReleaseRitualMaterial(mat)
 					Duel.BreakEffect()
