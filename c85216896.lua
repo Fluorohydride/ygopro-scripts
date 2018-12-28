@@ -5,7 +5,7 @@ function c85216896.initial_effect(c)
 	--to hand
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(85216896,0))
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetCode(EVENT_DESTROYED)
