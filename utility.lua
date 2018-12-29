@@ -2003,7 +2003,7 @@ function Auxiliary.GetMultiLinkedZone(tp)
 	end
 	return multi_linked_zone
 end
-function Auxiliary.LookupCache(cache,sg)
+function Auxiliary.LookupSubGroupCache(cache,sg)
 	local t=cache[#sg]
 	local res
 	local found=false
@@ -2018,7 +2018,7 @@ function Auxiliary.LookupCache(cache,sg)
 	end
 	return found,(res==1)
 end
-function Auxiliary.StoreCache(cache,sg,res)
+function Auxiliary.StoreSubGroupCache(cache,sg,res)
 	local g=sg:Clone()
 	if not cache[#g] then
 		cache[#g]={}
@@ -2028,13 +2028,13 @@ end
 function Auxiliary.CheckGroupRecursive(c,sg,g,cache,f,min,max,ext_params)
 	sg:AddCard(c)
 	local res=false
-	local found,data=Auxiliary.LookupCache(cache,sg)
+	local found,data=Auxiliary.LookupSubGroupCache(cache,sg)
 	if found then
 		res=data
 	else
 		res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params)))
 			or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,cache,f,min,max,ext_params))
-		Auxiliary.StoreCache(cache,sg,res)
+		Auxiliary.StoreSubGroupCache(cache,sg,res)
 	end
 	sg:RemoveCard(c)
 	return res
