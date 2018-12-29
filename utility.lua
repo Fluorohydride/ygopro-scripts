@@ -2019,7 +2019,7 @@ function Auxiliary.StoreSubGroupCache(cache,sg,res)
 	local key=Auxiliary.GetGroupKey(sg)
 	if cache[key] then return end
 	cache[key]=(res and 1 or 0)
-	if res and #g>1 then
+	if res and #sg>1 then
 		for c in Auxiliary.Next(sg) do
 			Auxiliary.StoreSubGroupCache(cache,sg-c,true)
 		end
