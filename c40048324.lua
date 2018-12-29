@@ -12,6 +12,7 @@ function c40048324.initial_effect(c)
 	e1:SetOperation(c40048324.operation)
 	c:RegisterEffect(e1)
 end
+c40048324.card_code_list={80280737}
 function c40048324.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_SYNCHRO
 end

@@ -37,6 +37,8 @@ function c38898779.initial_effect(c)
 	e4:SetOperation(c38898779.spop)
 	c:RegisterEffect(e4)
 end
+c38898779.card_code_list={80280737}
+c38898779.assault_name=23693634
 function c38898779.tgfilter(c)
 	return c:IsRace(RACE_WARRIOR) and c:IsAbleToGrave()
 end

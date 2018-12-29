@@ -38,13 +38,12 @@ end
 function c91646304.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return eg:IsExists(c91646304.repfilter,1,c,tp) and c:IsAbleToRemove()
-		and not c:IsStatus(STATUS_DESTROY_CONFIRMED) and Duel.GetFlagEffect(tp,91646304)==0 end
+		and not c:IsStatus(STATUS_DESTROY_CONFIRMED) end
 	return Duel.SelectEffectYesNo(tp,c,96)
 end
 function c91646304.repval(e,c)
 	return c91646304.repfilter(c,e:GetHandlerPlayer())
 end
 function c91646304.repop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.RegisterFlagEffect(tp,91646304,RESET_PHASE+PHASE_END,0,1)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_EFFECT+REASON_REPLACE)
 end
