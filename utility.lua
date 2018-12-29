@@ -404,7 +404,9 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 				for i=0,maxc-1 do
 					local mg2=mg:Clone()
 					if f4 then
-						mg2=mg2:Filter(f4,nil,c)
+						mg2=mg2:Filter(f4,g,c)
+					else
+						mg2:Sub(g)
 					end
 					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc)
 					if cg:GetCount()==0 then break end
@@ -458,15 +460,14 @@ function Auxiliary.SynMixFilter4(c,f4,minc,maxc,syncard,mg1,smat,c1,c2,c3,gc)
 	if c3 then sg:AddCard(c3) end
 	local mg=mg1:Clone()
 	if f4 then
-		mg=mg:Filter(f4,nil,syncard)
+		mg=mg:Filter(f4,sg,syncard)
+	else
+		mg:Sub(sg)
 	end
 	return aux.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,smat,gc)
 end
 function Auxiliary.SynMixCheck(mg,sg1,minc,maxc,syncard,smat,gc)
 	local tp=syncard:GetControler()
-	for c in aux.Next(sg1) do
-		mg:RemoveCard(c)
-	end
 	local sg=Group.CreateGroup()
 	if minc==0 and Auxiliary.SynMixCheckGoal(tp,sg1,0,0,syncard,sg,smat,gc) then return true end
 	if maxc==0 then return false end
