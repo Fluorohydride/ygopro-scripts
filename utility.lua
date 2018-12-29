@@ -2016,7 +2016,14 @@ function Auxiliary.LookupSubGroupCache(cache,sg)
 	return res,(res==1)
 end
 function Auxiliary.StoreSubGroupCache(cache,sg,res)
-	cache[Auxiliary.GetGroupKey(sg)]=(res and 1 or 0)
+	local key=Auxiliary.GetGroupKey(sg)
+	if cache[key] then return end
+	cache[key]=(res and 1 or 0)
+	if res and #g>1 then
+		for c in Auxiliary.Next(sg) do
+			Auxiliary.StoreSubGroupCache(cache,sg-c,true)
+		end
+	end
 end
 function Auxiliary.CheckGroupRecursive(c,sg,g,cache,f,min,max,ext_params)
 	sg:AddCard(c)
