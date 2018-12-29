@@ -2016,14 +2016,14 @@ function Auxiliary.LookupSubGroupCache(cache,sg)
 			end
 		end
 	end
-	return found,(res==1)
+	return found,res
 end
 function Auxiliary.StoreSubGroupCache(cache,sg,res)
 	local g=sg:Clone()
 	if not cache[#g] then
 		cache[#g]={}
 	end
-	cache[#g][g]=(res and 1 or 0)
+	cache[#g][g]=res
 end
 function Auxiliary.CheckGroupRecursive(c,sg,g,cache,f,min,max,ext_params)
 	sg:AddCard(c)
