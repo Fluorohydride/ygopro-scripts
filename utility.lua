@@ -2015,20 +2015,10 @@ function Auxiliary.LookupSubGroupCache(cache,sg)
 	local res=cache[Auxiliary.GetGroupKey(sg)]
 	return res,(res==1)
 end
-function Auxiliary.StoreSubGroupCache(cache,sg,res,fg)
-	local key=Auxiliary.GetGroupKey(sg)
-	if cache[key] then return end
-	cache[key]=(res and 1 or 0)
-	if res then
-		local ng=sg-fg
-		if #ng>1 then
-			for c in Auxiliary.Next(ng) do
-				Auxiliary.StoreSubGroupCache(cache,sg-c,true,fg)
-			end
-		end
-	end
+function Auxiliary.StoreSubGroupCache(cache,sg,res)
+	cache[Auxiliary.GetGroupKey(sg)]=(res and 1 or 0)
 end
-function Auxiliary.CheckGroupRecursive(c,sg,g,fg,cache,f,min,max,ext_params)
+function Auxiliary.CheckGroupRecursive(c,sg,g,cache,f,min,max,ext_params)
 	sg:AddCard(c)
 	local res=false
 	local found,data=Auxiliary.LookupSubGroupCache(cache,sg)
@@ -2036,8 +2026,8 @@ function Auxiliary.CheckGroupRecursive(c,sg,g,fg,cache,f,min,max,ext_params)
 		res=data
 	else
 		res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params)))
-			or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,fg,cache,f,min,max,ext_params))
-		Auxiliary.StoreSubGroupCache(cache,sg,res,fg)
+			or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,cache,f,min,max,ext_params))
+		Auxiliary.StoreSubGroupCache(cache,sg,res)
 	end
 	sg:RemoveCard(c)
 	return res
@@ -2047,12 +2037,11 @@ function Group.CheckSubGroup(g,f,min,max,...)
 	local max=max or #g
 	if min>max then return false end
 	local ext_params={...}
-	local fg=Duel.GrabSelectedCard()
-	local sg=fg:Clone()
+	local sg=Duel.GrabSelectedCard()
 	if #sg>max or #(g+sg)<min or #sg==max and not f(sg,...) then return false end
 	if #sg>=min and #sg<=max and f(sg,...) then return true end
 	local cache={}
-	return g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,fg,cache,f,min,max,ext_params)
+	return g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,cache,f,min,max,ext_params)
 end
 function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	local min=min or 1
@@ -2068,7 +2057,7 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	local finish=(#sg>=min and #sg<=max and f(sg,...))
 	local cache={}
 	while #sg<max do
-		local cg=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,fg,cache,f,min,max,ext_params)
+		local cg=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,cache,f,min,max,ext_params)
 		finish=(#sg>=min and #sg<=max and f(sg,...))
 		if #cg==0 then break end
 		local cancel=not finish and cancelable
