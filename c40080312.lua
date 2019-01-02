@@ -1,4 +1,4 @@
---Elemental HERO Nebula Neos
+--E・HERO ネビュラ・ネオス
 function c40080312.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
@@ -42,7 +42,6 @@ function c40080312.initial_effect(c)
 	e5:SetCategory(CATEGORY_DRAW+CATEGORY_DISABLE)
 	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e5:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e5:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e5:SetCondition(c40080312.drcon)
 	e5:SetTarget(c40080312.drtg)
 	e5:SetOperation(c40080312.drop)
@@ -123,9 +122,9 @@ function c40080312.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_EXTRA)
 end
 function c40080312.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ct=Duel.GetFieldGroupCount(tp,0,LOCATION_ONFIELD)
 	if chk==0 then return true end
 	Duel.SetTargetPlayer(tp)
+	local ct=Duel.GetFieldGroupCount(tp,0,LOCATION_ONFIELD)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,ct)
 end
 function c40080312.drop(e,tp,eg,ep,ev,re,r,rp)
