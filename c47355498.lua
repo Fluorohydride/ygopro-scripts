@@ -60,6 +60,12 @@ function c47355498.initial_effect(c)
 	e10:SetRange(LOCATION_FZONE)
 	e10:SetOperation(c47355498.disop)
 	c:RegisterEffect(e10)
+	local e10=Effect.CreateEffect(c)
+	e10:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e10:SetCode(EVENT_CHAINING)
+	e10:SetRange(LOCATION_FZONE)
+	e10:SetOperation(c47355498.regop)
+	c:RegisterEffect(e10)
 end
 function c47355498.contp(e)
 	return not Duel.IsPlayerAffectedByEffect(e:GetHandler():GetControler(),EFFECT_NECRO_VALLEY_IM)
@@ -67,7 +73,8 @@ end
 function c47355498.conntp(e)
 	return not Duel.IsPlayerAffectedByEffect(1-e:GetHandler():GetControler(),EFFECT_NECRO_VALLEY_IM)
 end
-function c47355498.disfilter(c,im0,im1)
+function c47355498.disfilter(c,im0,im1,ev)
+    if c:GetFlagEffect(47355498+ev)<=0 then return false end
 	if c:IsControler(0) then return im0 and c:IsHasEffect(EFFECT_NECRO_VALLEY)
 	else return im1 and c:IsHasEffect(EFFECT_NECRO_VALLEY) end
 end
@@ -81,7 +88,7 @@ function c47355498.discheck(ev,category,re,im0,im1)
 		end
 	end
 	if tg and tg:GetCount()>0 then
-		return tg:IsExists(c47355498.disfilter,1,nil,im0,im1)
+		return tg:IsExists(c47355498.disfilter,1,nil,im0,im1,ev)
 	end
 	return false
 end
@@ -98,4 +105,14 @@ function c47355498.disop(e,tp,eg,ep,ev,re,r,rp)
 	if not res and c47355498.discheck(ev,CATEGORY_TOEXTRA,re,im0,im1) then res=true end
 	if not res and c47355498.discheck(ev,CATEGORY_LEAVE_GRAVE,re,im0,im1) then res=true end
 	if res then Duel.NegateEffect(ev) end
+end
+function c47355498.regop(e,tp,eg,ep,ev,re,r,rp)
+    for _,cate_type in ipairs({CATEGORY_SPECIAL_SUMMON,CATEGORY_REMOVE,CATEGORY_TOHAND,CATEGORY_TODECK,CATEGORY_TOEXTRA,CATEGORY_LEAVE_GRAVE}) do
+	    local ex,tg,ct,p,v=Duel.GetOperationInfo(ev,cate_type)
+        if ex and tg and #tg>0 then
+            for tc in aux.Next(tg) do
+                tc:RegisterFlagEffect(47355498+ev,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
+            end
+        end
+    end
 end
