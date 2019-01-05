@@ -74,7 +74,7 @@ function c47355498.conntp(e)
 	return not Duel.IsPlayerAffectedByEffect(1-e:GetHandler():GetControler(),EFFECT_NECRO_VALLEY_IM)
 end
 function c47355498.disfilter(c,im0,im1,ev)
-    if c:GetFlagEffect(47355498+ev)<=0 then return false end
+	if c:GetFlagEffect(47355498+ev)<=0 then return false end
 	if c:IsControler(0) then return im0 and c:IsHasEffect(EFFECT_NECRO_VALLEY)
 	else return im1 and c:IsHasEffect(EFFECT_NECRO_VALLEY) end
 end
@@ -107,12 +107,12 @@ function c47355498.disop(e,tp,eg,ep,ev,re,r,rp)
 	if res then Duel.NegateEffect(ev) end
 end
 function c47355498.regop(e,tp,eg,ep,ev,re,r,rp)
-    for _,cate_type in ipairs({CATEGORY_SPECIAL_SUMMON,CATEGORY_REMOVE,CATEGORY_TOHAND,CATEGORY_TODECK,CATEGORY_TOEXTRA,CATEGORY_LEAVE_GRAVE}) do
-	    local ex,tg,ct,p,v=Duel.GetOperationInfo(ev,cate_type)
-        if ex and tg and #tg>0 then
-            for tc in aux.Next(tg) do
-                tc:RegisterFlagEffect(47355498+ev,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
-            end
-        end
-    end
+	for _,cate_type in ipairs({CATEGORY_SPECIAL_SUMMON,CATEGORY_REMOVE,CATEGORY_TOHAND,CATEGORY_TODECK,CATEGORY_TOEXTRA,CATEGORY_LEAVE_GRAVE}) do
+		local ex,tg,ct,p,v=Duel.GetOperationInfo(ev,cate_type)
+		if ex and tg and #tg>0 then
+			for tc in aux.Next(tg) do
+				tc:RegisterFlagEffect(47355498+ev,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
+			end
+		end
+	end
 end
