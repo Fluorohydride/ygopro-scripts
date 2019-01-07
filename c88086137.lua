@@ -15,7 +15,7 @@ function c88086137.condition(e,tp,eg,ep,ev,re,r,rp)
 	local loc,seq,p=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_SEQUENCE,CHAININFO_TRIGGERING_CONTROLER)
 	if bit.bnd(loc,LOCATION_ONFIELD)==0 then return false end
 	if loc==LOCATION_SZONE then
-		if seq==5 then return false end
+		if seq>4 then return false end
 		seq=seq+8
 	end
 	if p==1-tp then seq=seq+16 end
