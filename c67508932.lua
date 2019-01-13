@@ -41,7 +41,8 @@ function c67508932.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c67508932.rmcond(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonLocation()&LOCATION_EXTRA==LOCATION_EXTRA
+	local c=e:GetHandler()
+	return c:GetSummonLocation()&LOCATION_EXTRA==LOCATION_EXTRA and c:IsRelateToBattle()
 end
 function c67508932.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_MZONE,1,nil) end
