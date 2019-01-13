@@ -39,6 +39,9 @@ function c50005218.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,0,LOCATION_DECK)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,1,0,0)
 end
+function c50005218.thfilter(c)
+	return c:IsSetCard(0x115) and c:IsAbleToHand()
+end
 function c50005218.thop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
@@ -46,14 +49,12 @@ function c50005218.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetDecktopGroup(tp,3)
 	if g:GetCount()>0 then
 		if g:IsExists(Card.IsSetCard,1,nil,0x115) then
-			if Duel.SelectYesNo(tp,aux.Stringid(50005218,2)) then
+			if g:IsExists(c50005218.thfilter,1,nil) and Duel.SelectYesNo(tp,aux.Stringid(50005218,2)) then
 				Duel.Hint(HINT_SELECTMSG,p,HINTMSG_ATOHAND)
-				local sg=g:FilterSelect(tp,Card.IsSetCard,1,1,nil,0x115)
-				if sg:GetFirst():IsAbleToHand() then
-					Duel.SendtoHand(sg,nil,REASON_EFFECT)
-					Duel.ConfirmCards(1-tp,sg)
-					Duel.ShuffleHand(tp)
-				end
+				local sg=g:FilterSelect(tp,c50005218.thfilter,1,1,nil)
+				Duel.SendtoHand(sg,nil,REASON_EFFECT)
+				Duel.ConfirmCards(1-tp,sg)
+				Duel.ShuffleHand(tp)
 			end
 			if tc:IsRelateToEffect(e) then
 				Duel.SendtoGrave(tc,REASON_EFFECT)
