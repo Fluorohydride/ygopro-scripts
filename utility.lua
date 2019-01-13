@@ -2007,7 +2007,7 @@ end
 function Auxiliary.GetGroupKey(g)
 	local v=0
 	for c in Auxiliary.Next(g) do
-		math.randomseed(c:GetFieldID())
+		math.randomseed(c:GetFieldID()+1)
 		v=v+math.random()
 	end
 	return v
