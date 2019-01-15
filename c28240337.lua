@@ -30,7 +30,7 @@ function c28240337.atkval(e,c)
 	return Duel.GetMatchingGroupCount(Card.IsRace,c:GetControler(),LOCATION_GRAVE+LOCATION_MZONE,LOCATION_GRAVE+LOCATION_MZONE,nil,RACE_ZOMBIE)*100
 end
 function c28240337.cfilter(c)
-	return c:IsRace(RACE_ZOMBIE)
+	return c:GetPreviousRaceOnField()&RACE_ZOMBIE~=0
 end
 function c28240337.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c28240337.cfilter,1,nil)
