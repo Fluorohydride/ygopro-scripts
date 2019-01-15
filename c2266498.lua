@@ -13,7 +13,7 @@ function c2266498.cfilter(c,e,tp,m,ft)
 	if bit.band(c:GetType(),0x81)~=0x81 or not c:IsSetCard(0x106) or c:IsPublic()
 		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	if c.mat_filter then
-		m=m:Filter(c.mat_filter,nil)
+		m=m:Filter(c.mat_filter,nil,tp)
 	end
 	local sg=Group.CreateGroup()
 	return m:IsExists(c2266498.spselect,1,nil,c,0,ft,m,sg)
@@ -53,7 +53,7 @@ function c2266498.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,tg)
 		local tc=tg:GetFirst()
 		if tc.mat_filter then
-			mg=mg:Filter(tc.mat_filter,nil)
+			mg=mg:Filter(tc.mat_filter,nil,tp)
 		end
 		local sg=Group.CreateGroup()
 		for i=0,98 do
