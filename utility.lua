@@ -1408,7 +1408,7 @@ function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,great
 		mg:Merge(m2)
 	end
 	if c.mat_filter then
-		mg=mg:Filter(c.mat_filter,c)
+		mg=mg:Filter(c.mat_filter,c,tp)
 	else
 		mg:RemoveCard(c)
 	end
@@ -1448,7 +1448,7 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 						mg:Merge(exg)
 					end
 					if tc.mat_filter then
-						mg=mg:Filter(tc.mat_filter,tc)
+						mg=mg:Filter(tc.mat_filter,tc,tp)
 					else
 						mg:RemoveCard(tc)
 					end

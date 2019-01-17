@@ -18,7 +18,7 @@ function c16494704.filter(c,e,tp,m,ft)
 		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
 	if c.mat_filter then
-		mg=mg:Filter(c.mat_filter,nil)
+		mg=mg:Filter(c.mat_filter,nil,tp)
 	end
 	if ft>0 then
 		return mg:CheckWithSumGreater(Card.GetRitualLevel,c:GetLevel(),c)
@@ -57,7 +57,7 @@ function c16494704.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
 		if tc.mat_filter then
-			mg=mg:Filter(tc.mat_filter,nil)
+			mg=mg:Filter(tc.mat_filter,nil,tp)
 		end
 		local mat=nil
 		if ft>0 then
