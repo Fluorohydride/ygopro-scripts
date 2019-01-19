@@ -38,6 +38,7 @@ function c11646785.initial_effect(c)
 	e4:SetOperation(c11646785.mtop)
 	c:RegisterEffect(e4)
 end
+c11646785.card_code_list={85374678}
 function c11646785.atcon(e)
 	return e:GetHandler():GetOverlayCount()==0
 end
