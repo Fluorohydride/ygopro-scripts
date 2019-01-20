@@ -73,7 +73,7 @@ function c43464884.cgop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c43464884.spfilter(c,e,tp,mc)
-	return c:IsLevel(mc:GetLevel()) and c:IsRace(mc:GetRace()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(mc:GetLevel()) and c:IsRace(RACE_BEASTWARRIOR) and c:IsAttribute(mc:GetAttribute()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c43464884.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
