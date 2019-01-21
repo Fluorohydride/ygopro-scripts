@@ -85,8 +85,11 @@ function c269510.cfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_CYBERSE) and c:IsType(TYPE_LINK)
 end
 function c269510.discon(e,tp,eg,ep,ev,re,r,rp)
+	local rc=re:GetHandler()
+	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
 	return Duel.GetMatchingGroupCount(c269510.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)>1
-		and re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsRace(RACE_CYBERSE)
+		and re:IsActiveType(TYPE_MONSTER)
+		and (rc:IsLocation(loc) and rc:IsRace(RACE_CYBERSE) or (not rc:IsLocation(loc) and rc:GetPreviousRaceOnField() & RACE_CYBERSE~=0))
 end
 function c269510.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
