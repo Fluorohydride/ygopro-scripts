@@ -2004,20 +2004,12 @@ function Auxiliary.GetMultiLinkedZone(tp)
 	end
 	return multi_linked_zone
 end
-function Auxiliary.GetGroupKey(g)
-	local v=0
-	for c in Auxiliary.Next(g) do
-		math.randomseed(c:GetFieldID()+1)
-		v=v+math.random()
-	end
-	return v
-end
 function Auxiliary.LookupSubGroupCache(cache,sg)
-	local res=cache[Auxiliary.GetGroupKey(sg)]
+	local res=cache[sg:GetHash()]
 	return res,(res==1)
 end
 function Auxiliary.StoreSubGroupCache(cache,sg,res)
-	cache[Auxiliary.GetGroupKey(sg)]=(res and 1 or 0)
+	cache[sg:GetHash()]=(res and 1 or 0)
 end
 function Auxiliary.CheckGroupRecursive(c,sg,g,cache,f,min,max,ext_params)
 	sg:AddCard(c)
