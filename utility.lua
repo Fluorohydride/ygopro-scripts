@@ -2008,9 +2008,11 @@ function Auxiliary.GetGroupKey(g)
 	local v=0
 	for c in Auxiliary.Next(g) do
 		math.randomseed(c:GetFieldID()+1)
-		v=v+math.random()
+		local v1=math.random()
+		local v2=math.random()
+		v=v+v1+v2
 	end
-	return v
+	return v+#g
 end
 function Auxiliary.LookupSubGroupCache(cache,sg)
 	local res=cache[Auxiliary.GetGroupKey(sg)]
