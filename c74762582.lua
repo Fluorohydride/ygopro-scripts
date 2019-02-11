@@ -84,8 +84,9 @@ function c74762582.spop(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE) then spos=spos+POS_FACEUP_DEFENSE end
 		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE) then spos=spos+POS_FACEDOWN_DEFENSE end
 		if spos~=0 then
+			local fg=tc:IsLocation(LOCATION_GRAVE)
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,spos)
-			if tc:IsFacedown() then
+			if tc:IsFacedown() and fd then
 				Duel.ConfirmCards(1-tp,tc)
 			end
 		end

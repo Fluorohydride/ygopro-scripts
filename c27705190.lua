@@ -70,8 +70,11 @@ function c27705190.spoperation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c27705190.spfilter2),tp,0x13,0,1,1,c,e,tp,zone)
 		if sg:GetCount()>0 then
+			local fh=sg:GetFirst():IsLocation(LOCATION_HAND)
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE,zone)
-			Duel.ConfirmCards(1-tp,sg)
+			if not fh then
+				Duel.ConfirmCards(1-tp,sg)
+			end
 		end
 	end
 end
