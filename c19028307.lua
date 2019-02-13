@@ -36,12 +36,12 @@ end
 function c19028307.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(c19028307.spcostfilter,tp,LOCATION_MZONE+LOCATION_HAND+LOCATION_GRAVE,0,nil)
+	local g=Duel.GetMatchingGroup(c19028307.spcostfilter,tp,LOCATION_MZONE+LOCATION_HAND+LOCATION_GRAVE,0,c)
 	local sg=Group.CreateGroup()
 	return g:IsExists(c19028307.spcost_selector,1,nil,tp,g,sg,1)
 end
 function c19028307.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.GetMatchingGroup(c19028307.spcostfilter,tp,LOCATION_MZONE+LOCATION_HAND+LOCATION_GRAVE,0,nil)
+	local g=Duel.GetMatchingGroup(c19028307.spcostfilter,tp,LOCATION_MZONE+LOCATION_HAND+LOCATION_GRAVE,0,c)
 	local sg=Group.CreateGroup()
 	for i=1,2 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
