@@ -2,6 +2,7 @@
 function c3779662.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeFun(c,7573135,aux.FilterBoolFunction(Card.IsFusionSetCard,0x19),2,true,true)
+	aux.AddContactFusionProcedure(c,c3779662.cfilter,LOCATION_ONFIELD,0,Duel.SendtoDeck,nil,2,REASON_COST):SetValue(1)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -9,17 +10,6 @@ function c3779662.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e1:SetValue(c3779662.splimit)
 	c:RegisterEffect(e1)
-	--special summon rule
-	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(3779662,1))
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetValue(1)
-	e2:SetCondition(c3779662.sprcon)
-	e2:SetOperation(c3779662.sprop)
-	c:RegisterEffect(e2)
 	--extra summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(3779662,4))
@@ -49,45 +39,7 @@ function c3779662.splimit(e,se,sp,st)
 end
 function c3779662.cfilter(c)
 	return (c:IsFusionCode(7573135) or c:IsFusionSetCard(0x19) and c:IsType(TYPE_MONSTER))
-		and c:IsCanBeFusionMaterial() and c:IsAbleToDeckOrExtraAsCost()
-end
-function c3779662.fcheck(c,sg)
-	return c:IsFusionCode(7573135) and sg:IsExists(c3779662.fcheck2,2,c)
-end
-function c3779662.fcheck2(c)
-	return c:IsFusionSetCard(0x19) and c:IsType(TYPE_MONSTER)
-end
-function c3779662.fselect(c,tp,mg,sg)
-	sg:AddCard(c)
-	local res=false
-	if sg:GetCount()<3 then
-		res=mg:IsExists(c3779662.fselect,1,sg,tp,mg,sg)
-	elseif Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
-		res=sg:IsExists(c3779662.fcheck,1,nil,sg)
-	end
-	sg:RemoveCard(c)
-	return res
-end
-function c3779662.sprcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c3779662.cfilter,tp,LOCATION_ONFIELD,0,nil)
-	local sg=Group.CreateGroup()
-	return mg:IsExists(c3779662.fselect,1,nil,tp,mg,sg)
-end
-function c3779662.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c3779662.cfilter,tp,LOCATION_ONFIELD,0,nil)
-	local sg=Group.CreateGroup()
-	while sg:GetCount()<3 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-		local g=mg:FilterSelect(tp,c3779662.fselect,1,1,sg,tp,mg,sg)
-		sg:Merge(g)
-	end
-	local cg=sg:Filter(Card.IsFacedown,nil)
-	if cg:GetCount()>0 then
-		Duel.ConfirmCards(1-tp,cg)
-	end
-	Duel.SendtoDeck(sg,nil,2,REASON_COST)
+		and c:IsAbleToDeckOrExtraAsCost()
 end
 function c3779662.espcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1

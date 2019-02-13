@@ -3,6 +3,7 @@ function c48156348.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeFun(c,41470137,aux.FilterBoolFunction(Card.IsFusionSetCard,0x19),1,true,true)
+	aux.AddContactFusionProcedure(c,c48156348.cfilter,LOCATION_ONFIELD,0,Duel.SendtoDeck,nil,2,REASON_COST)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -47,7 +48,7 @@ function c48156348.splimit(e,se,sp,st)
 end
 function c48156348.cfilter(c)
 	return (c:IsFusionCode(41470137) or c:IsFusionSetCard(0x19) and c:IsType(TYPE_MONSTER))
-		and c:IsCanBeFusionMaterial() and c:IsAbleToDeckOrExtraAsCost()
+		and c:IsAbleToDeckOrExtraAsCost()
 end
 function c48156348.spfilter1(c,tp,g)
 	return g:IsExists(c48156348.spfilter2,1,c,tp,c)
