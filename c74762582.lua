@@ -86,7 +86,7 @@ function c74762582.spop(e,tp,eg,ep,ev,re,r,rp)
 		if spos~=0 then
 			local fg=tc:IsLocation(LOCATION_GRAVE)
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,spos)
-			if tc:IsFacedown() and fd then
+			if tc:IsFacedown() and fg then
 				Duel.ConfirmCards(1-tp,tc)
 			end
 		end
