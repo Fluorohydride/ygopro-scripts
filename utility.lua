@@ -2010,7 +2010,7 @@ function Auxiliary.GetGroupKey(g)
 		math.randomseed(c:GetFieldID()+1)
 		v=v+math.random()
 	end
-	return v
+	return v+#g
 end
 function Auxiliary.LookupSubGroupCache(cache,sg)
 	local res=cache[Auxiliary.GetGroupKey(sg)]
