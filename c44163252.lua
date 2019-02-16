@@ -1,5 +1,4 @@
 --Valkyrie Sechste
---Script by JoyJ
 function c44163252.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -18,7 +17,7 @@ function c44163252.initial_effect(c)
 	e2:SetCategory(CATEGORY_DECKDES)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCountLimit(1,44163252+100)
+	e2:SetCountLimit(1,44163253)
 	e2:SetTarget(c44163252.tgtg)
 	e2:SetOperation(c44163252.tgop)
 	c:RegisterEffect(e2)

@@ -1,5 +1,4 @@
 --Super Anti-Kaiju War Machine Mecha-Thunder-King
---Script by JoyJ
 function c29913783.initial_effect(c)
 	c:SetUniqueOnField(1,0,aux.FilterBoolFunction(Card.IsSetCard,0xd3),LOCATION_MZONE)
 	--special summon

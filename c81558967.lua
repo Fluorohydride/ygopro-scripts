@@ -1,5 +1,4 @@
 --Valkyrie Vierte
---Script by JoyJ
 function c81558967.initial_effect(c)
 	--deck search
 	local e1=Effect.CreateEffect(c)
@@ -17,7 +16,7 @@ function c81558967.initial_effect(c)
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BATTLE_DESTROYED)
-	e2:SetCountLimit(1,81558967+100)
+	e2:SetCountLimit(1,81558968)
 	e2:SetCondition(c81558967.spcon)
 	e2:SetTarget(c81558967.sptg)
 	e2:SetOperation(c81558967.spop)
