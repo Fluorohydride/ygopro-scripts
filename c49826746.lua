@@ -10,3 +10,4 @@ function c49826746.initial_effect(c)
 	e1:SetTarget(aux.TargetBoolFunction(Card.IsCode,80280737))
 	c:RegisterEffect(e1)
 end
+c49826746.card_code_list={80280737}

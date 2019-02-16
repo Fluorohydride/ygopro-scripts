@@ -88,7 +88,7 @@ end
 function c14088859.reptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return bit.band(r,REASON_EFFECT)~=0 and re
 		and e:GetHandler():IsAbleToRemove() and eg:IsExists(c14088859.repfilter2,1,nil,tp,re) end
-	if Duel.SelectEffectYesNo(tp,e:GetHandler(),95) then
+	if Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(14088859,1)) then
 		return true
 	else return false end
 end
@@ -96,5 +96,5 @@ function c14088859.repop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_EFFECT)
 end
 function c14088859.repval2(e,c)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and aux.IsMaterialListCode(c,89943723) and c:IsType(TYPE_MONSTER)
+	return c:IsControler(e:GetHandlerPlayer()) and c:IsLocation(LOCATION_MZONE) and aux.IsMaterialListCode(c,89943723) and c:IsType(TYPE_MONSTER)
 end

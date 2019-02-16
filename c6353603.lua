@@ -46,10 +46,14 @@ function c6353603.filter1(c)
 end
 function c6353603.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) end
-	if chk==0 then return Duel.IsExistingMatchingCard(c6353603.filter1,tp,LOCATION_ONFIELD,0,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,c6353603.filter1,tp,LOCATION_ONFIELD,0,1,1,nil)
-	Duel.SendtoGrave(g1,REASON_COST)
+	if chk==0 then return Duel.IsExistingMatchingCard(c6353603.filter1,tp,LOCATION_ONFIELD,0,1,nil)
+		or (Duel.IsPlayerAffectedByEffect(tp,46241344) and Duel.IsExistingTarget(aux.TRUE,0,LOCATION_MZONE,LOCATION_MZONE,1,nil)) end
+	if Duel.IsExistingMatchingCard(c6353603.filter1,tp,LOCATION_ONFIELD,0,1,nil)
+		and (not Duel.IsPlayerAffectedByEffect(tp,46241344) or not Duel.SelectYesNo(tp,aux.Stringid(46241344,0))) then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+		local g1=Duel.SelectMatchingCard(tp,c6353603.filter1,tp,LOCATION_ONFIELD,0,1,1,nil)
+		Duel.SendtoGrave(g1,REASON_COST)
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g2=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g2,1,0,0)

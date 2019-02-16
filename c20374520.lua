@@ -13,9 +13,13 @@ function c20374520.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_BATTLE_DAMAGE)
+	e2:SetCondition(c20374520.condition)
 	e2:SetTarget(c20374520.target)
 	e2:SetOperation(c20374520.operation)
 	c:RegisterEffect(e2)
+end
+function c20374520.condition(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c20374520.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

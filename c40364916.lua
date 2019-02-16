@@ -61,7 +61,7 @@ function c40364916.rmfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_ZOMBIE) and c:IsAbleToRemove()
 end
 function c40364916.tgfilter(c)
-    return c:IsRace(RACE_ZOMBIE) and c:IsDefense(0) and c:IsAbleToGrave()
+	return c:IsRace(RACE_ZOMBIE) and c:IsDefense(0) and c:IsAbleToGrave()
 end
 function c40364916.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c40364916.rmfilter(chkc) end
@@ -73,7 +73,7 @@ end
 function c40364916.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local g=Duel.GetMatchingGroup(c40364916.tgfilter,tp,LOCATION_DECK,0,nil)
-	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED)
+	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0
 		and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(40364916,2)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local sg=g:Select(tp,1,1,nil)

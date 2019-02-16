@@ -52,7 +52,7 @@ end
 function c60399954.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local atk=0
-	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,c)
+	local g=Duel.GetMatchingGroup(Card.IsPosition,tp,LOCATION_MZONE,0,c,POS_FACEUP_ATTACK)
 	local tc=g:GetFirst()
 	while tc do
 		atk=atk+tc:GetAttack()

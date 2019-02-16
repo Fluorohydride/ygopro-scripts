@@ -50,8 +50,7 @@ function c90846359.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c90846359.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 	if sumpos and bit.band(sumpos,POS_FACEDOWN)>0 then return false end
-	local rc=c90846359[sump]
-	if targetp then rc=c90846359[targetp] end
+	local rc=c90846359.getrace(Duel.GetMatchingGroup(Card.IsFaceup,targetp or sump,LOCATION_MZONE,0,nil))
 	if rc==0 then return false end
 	return c:GetRace()~=rc
 end
@@ -78,7 +77,7 @@ function c90846359.adjustop(e,tp,eg,ep,ev,re,r,rp)
 		local rac=c90846359.getrace(g1)
 		if bit.band(rac,rac-1)~=0 then
 			if c90846359[tp]==0 or bit.band(c90846359[tp],rac)==0 then
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RACE)
+				Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(90846359,0))
 				rac=Duel.AnnounceRace(tp,1,rac)
 			else rac=c90846359[tp] end
 		end
@@ -90,7 +89,7 @@ function c90846359.adjustop(e,tp,eg,ep,ev,re,r,rp)
 		local rac=c90846359.getrace(g2)
 		if bit.band(rac,rac-1)~=0 then
 			if c90846359[1-tp]==0 or bit.band(c90846359[1-tp],rac)==0 then
-				Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_RACE)
+				Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(90846359,0))
 				rac=Duel.AnnounceRace(1-tp,1,rac)
 			else rac=c90846359[1-tp] end
 		end

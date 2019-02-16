@@ -11,11 +11,12 @@ function c31706048.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c31706048.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,5) end
+	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,5)
+		and Duel.GetDecktopGroup(tp,5):FilterCount(Card.IsAbleToHand,nil)>0 end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,0,LOCATION_DECK)
 end
 function c31706048.filter(c)
-	return (c:IsSetCard(0x104) and c:IsType(TYPE_MONSTER)) or c:IsSetCard(0xfe)
+	return (c:IsSetCard(0x104) and c:IsType(TYPE_MONSTER)) or c:IsSetCard(0xfe) and c:IsAbleToHand()
 end
 function c31706048.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerCanDiscardDeck(tp,5) then return end

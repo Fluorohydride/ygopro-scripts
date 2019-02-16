@@ -37,19 +37,20 @@ function c1295111.initial_effect(c)
 	e4:SetOperation(c1295111.atkop)
 	c:RegisterEffect(e4)
 end
-function c1295111.lmfilter(c,lc)
+function c1295111.lmfilter(c,lc,tp)
 	return c:IsFaceup() and c:IsCanBeLinkMaterial(lc) and c:IsCode(lc:GetCode())
+		and Duel.GetLocationCountFromEx(tp,tp,c,lc)>0 and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_LMATERIAL)
 end
 function c1295111.linkcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.IsExistingMatchingCard(c1295111.lmfilter,tp,LOCATION_MZONE,0,1,nil,c)
+	return Duel.IsExistingMatchingCard(c1295111.lmfilter,tp,LOCATION_MZONE,0,1,nil,c,tp)
 		and Duel.GetFlagEffect(tp,1295111)==0
 end
 function c1295111.linkop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.SelectMatchingCard(tp,c1295111.lmfilter,tp,LOCATION_MZONE,0,1,1,nil,c)
+	local mg=Duel.SelectMatchingCard(tp,c1295111.lmfilter,tp,LOCATION_MZONE,0,1,1,nil,c,tp)
 	c:SetMaterial(mg)
-	Duel.SendtoGrave(mg,REASON_LINK)
+	Duel.SendtoGrave(mg,REASON_MATERIAL+REASON_LINK)
 	Duel.RegisterFlagEffect(tp,1295111,RESET_PHASE+PHASE_END,0,1)
 end
 function c1295111.mattg(e,c)

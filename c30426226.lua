@@ -18,7 +18,9 @@ function c30426226.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g1=g:Filter(Card.IsControler,nil,tp)
 	local g2=g:Filter(Card.IsControler,nil,1-tp)
 	if chk==0 then return g1:GetCount()==g2:GetCount()
-		and g:FilterCount(c30426226.filter,nil)==0 end
+		and g:FilterCount(c30426226.filter,nil)==0
+		and Duel.GetMZoneCount(tp,g1,tp,LOCATION_REASON_CONTROL)>=g2:GetCount()
+		and Duel.GetMZoneCount(1-tp,g2,1-tp,LOCATION_REASON_CONTROL)>=g1:GetCount() end
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,g:GetCount(),0,0)
 end
 function c30426226.activate(e,tp,eg,ep,ev,re,r,rp)

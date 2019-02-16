@@ -63,7 +63,7 @@ function c28692962.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c28692962.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_TEMPORARY)~=0
+	if tc:IsRelateToEffect(e) and Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)~=0
 		and tc:IsLocation(LOCATION_REMOVED) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetDescription(aux.Stringid(28692962,1))

@@ -51,7 +51,7 @@ function c65536818.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c65536818.costfilter(c,lv)
-	return not c:IsLevel(lv) and c:IsRace(RACE_WYRM) and c:IsAbleToGraveAsCost()
+	return not c:IsLevel(lv) and c:IsLevelAbove(1) and c:IsRace(RACE_WYRM) and c:IsAbleToGraveAsCost()
 end
 function c65536818.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lv=e:GetHandler():GetLevel()

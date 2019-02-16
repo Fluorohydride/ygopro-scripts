@@ -49,7 +49,7 @@ end
 function c79559912.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re)
-		and Duel.Destroy(eg,REASON_EFFECT) and c:IsRelateToEffect(e) and c:IsFaceup()
+		and Duel.Destroy(eg,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) and c:IsFaceup()
 		and Duel.IsExistingMatchingCard(c79559912.atkfilter,tp,LOCATION_MZONE,0,1,c)
 		and Duel.SelectYesNo(tp,aux.Stringid(79559912,1)) then
 		Duel.BreakEffect()

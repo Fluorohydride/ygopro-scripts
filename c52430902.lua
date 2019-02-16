@@ -18,10 +18,13 @@ function c52430902.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,1000)
 end
 function c52430902.filter1(c)
-	return c:IsFaceup() and c:IsRace(RACE_PSYCHO) and c:GetCode()~=52430902 and c:IsAbleToChangeControler()
+	local tp=c:GetControler()
+	return c:IsFaceup() and c:IsRace(RACE_PSYCHO) and c:GetCode()~=52430902
+		and c:IsAbleToChangeControler() and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
 end
 function c52430902.filter2(c)
-	return c:IsFaceup() and c:IsAbleToChangeControler()
+	local tp=c:GetControler()
+	return c:IsFaceup() and c:IsAbleToChangeControler() and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
 end
 function c52430902.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

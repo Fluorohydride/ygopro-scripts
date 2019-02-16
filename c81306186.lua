@@ -73,7 +73,7 @@ function c81306186.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c81306186.relfilter(c,e,tp,tc,ft)
 	if not c:IsLevelAbove(tc:GetLevel()) then return false end
-	if tc.mat_filter and not tc.mat_filter(c) then return false end
+	if tc.mat_filter and not tc.mat_filter(c,tp) then return false end
 	if c:IsLocation(LOCATION_GRAVE) then
 		return c:IsType(TYPE_RITUAL) and ft>0 and c:IsAbleToDeck()
 	else

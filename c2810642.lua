@@ -24,7 +24,8 @@ function c2810642.splimit(e,se,sp,st)
 	return se:IsHasType(EFFECT_TYPE_ACTIONS)
 end
 function c2810642.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0 and Duel.GetAttacker():GetControler()~=tp
+	return (Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0 or Duel.IsPlayerAffectedByEffect(tp,8802510))
+		and Duel.GetAttacker():GetControler()~=tp
 end
 function c2810642.spfilter(c,e,tp)
 	return c:IsCode(49036338) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -58,6 +59,7 @@ function c2810642.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_PHASE+PHASE_END)
+	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetCountLimit(1)
 	e1:SetLabel(fid)
 	e1:SetLabelObject(g)

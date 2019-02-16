@@ -4,9 +4,6 @@ function c36415522.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetHintTiming(0,TIMING_ATTACK)
-	e1:SetTarget(c36415522.sptg1)
-	e1:SetOperation(c36415522.spop)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
@@ -14,9 +11,9 @@ function c36415522.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e2:SetRange(LOCATION_SZONE)
+	e2:SetCountLimit(1)
 	e2:SetCondition(c36415522.spcon)
-	e2:SetCost(c36415522.spcost)
-	e2:SetTarget(c36415522.sptg2)
+	e2:SetTarget(c36415522.sptg)
 	e2:SetOperation(c36415522.spop)
 	c:RegisterEffect(e2)
 	--no damage
@@ -32,34 +29,17 @@ end
 function c36415522.filter(c,e,tp)
 	return c:IsSetCard(0x9f) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c36415522.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	if Duel.CheckEvent(EVENT_ATTACK_ANNOUNCE) and Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c36415522.filter,tp,LOCATION_DECK,0,1,nil,e,tp)
-		and Duel.SelectYesNo(tp,aux.Stringid(36415522,0)) then
-		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
-		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
-		e:GetHandler():RegisterFlagEffect(36415522,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
-	else
-		e:SetCategory(0)
-	end
-end
 function c36415522.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
 end
-function c36415522.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(36415522)==0 end
-	e:GetHandler():RegisterFlagEffect(36415522,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
-end
-function c36415522.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
+function c36415522.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c36415522.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c36415522.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetFlagEffect(36415522)==0 then return end
+	if not c:IsRelateToEffect(e) then return end
 	if not Duel.NegateAttack() then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -80,8 +60,9 @@ function c36415522.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c36415522.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
-	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
+	local c=e:GetHandler()
+	if chk==0 then return c:IsStatus(STATUS_EFFECT_ENABLED) and c:IsAbleToGraveAsCost() end
+	Duel.SendtoGrave(c,REASON_COST)
 end
 function c36415522.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local a=Duel.GetAttacker()

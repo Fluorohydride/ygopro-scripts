@@ -117,8 +117,27 @@ function c88851326.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 		e1:SetReset(RESET_PHASE+PHASE_DRAW)
 		e1:SetValue(0)
 		Duel.RegisterEffect(e1,tp)
+		local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
+		local e2=Effect.CreateEffect(e:GetHandler())
+		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+		e2:SetCode(EVENT_CHAIN_SOLVING)
+		e2:SetLabel(cid)
+		e2:SetLabelObject(e1)
+		e2:SetReset(RESET_PHASE+PHASE_DRAW)
+		e2:SetCondition(c88851326.checkcon1)
+		e2:SetOperation(c88851326.checkop1)
+		Duel.RegisterEffect(e2,tp)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_GRAVE)
+end
+function c88851326.checkcon1(e,tp,eg,ep,ev,re,r,rp)
+	local cid,orig_effect=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID,CHAININFO_TRIGGERING_EFFECT)
+	return cid==e:GetLabel() and not e:GetOwner():IsRelateToEffect(orig_effect)
+end
+function c88851326.checkop1(e,tp,eg,ep,ev,re,r,rp)
+	e:GetLabelObject():Reset()
+	e:Reset()
 end
 function c88851326.thop(e,tp,eg,ep,ev,re,r,rp)
 	_replace_count=_replace_count+1

@@ -57,7 +57,7 @@ function c55168550.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummonComplete()
 end
 function c55168550.filter(c)
-	return c:IsSetCard(0x7b) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0x7b) and c:IsType(TYPE_MONSTER) and c:IsDefenseAbove(0)
 end
 function c55168550.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c55168550.filter(chkc) end

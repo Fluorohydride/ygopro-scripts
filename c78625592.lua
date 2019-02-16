@@ -4,7 +4,6 @@ function c78625592.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetHintTiming(0,TIMING_ATTACK)
 	c:RegisterEffect(e1)
 	--disable attack
 	local e2=Effect.CreateEffect(c)

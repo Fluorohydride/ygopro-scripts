@@ -12,7 +12,8 @@ function c3056267.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c3056267.swapfilter(c)
-	return c:IsAbleToChangeControler()
+	local tp=c:GetControler()
+	return c:IsAbleToChangeControler() and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
 end
 function c3056267.condition(e)
 	local ph=Duel.GetCurrentPhase()
@@ -21,7 +22,8 @@ end
 function c3056267.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return true end
-	if Duel.IsExistingTarget(c3056267.swapfilter,tp,0,LOCATION_MZONE,1,nil) then
+	if Duel.GetMZoneCount(tp,e:GetHandler(),tp,LOCATION_REASON_CONTROL)>0
+		and Duel.IsExistingTarget(c3056267.swapfilter,tp,0,LOCATION_MZONE,1,nil) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
 		local mon=Duel.SelectTarget(tp,c3056267.swapfilter,tp,0,LOCATION_MZONE,1,1,nil)
 		mon:AddCard(e:GetHandler())

@@ -19,7 +19,9 @@ function c43711255.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c43711255.bantg(e,c)
-	return c:IsCode(e:GetLabelObject():GetLabel()) and (not c:IsOnField() or c:GetRealFieldID()>e:GetFieldID())
+	local code1,code2=c:GetOriginalCodeRule()
+	local fcode=e:GetLabelObject():GetLabel()
+	return (code1==fcode or code2==fcode) and (not c:IsOnField() or c:GetRealFieldID()>e:GetFieldID())
 end
 function c43711255.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

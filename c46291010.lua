@@ -11,7 +11,7 @@ function c46291010.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c46291010.filter(c,lv)
-	return c:IsRace(RACE_PSYCHO) and not c:IsLevel(lv) and c:IsAbleToRemove()
+	return c:IsRace(RACE_PSYCHO) and not c:IsLevel(lv) and c:IsLevelAbove(1) and c:IsAbleToRemove()
 end
 function c46291010.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c46291010.filter,tp,LOCATION_DECK,0,1,nil,e:GetHandler():GetLevel()) end

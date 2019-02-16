@@ -20,6 +20,7 @@ function c91123920.initial_effect(c)
 	e3:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e3)
 end
+c91123920.card_code_list={56433456}
 function c91123920.efilter(e,te)
 	return te:IsActiveType(TYPE_SPELL)
 end

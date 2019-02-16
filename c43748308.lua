@@ -56,10 +56,14 @@ function c43748308.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x7c) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToGraveAsCost()
 end
 function c43748308.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c43748308.cfilter,tp,LOCATION_ONFIELD,0,2,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c43748308.cfilter,tp,LOCATION_ONFIELD,0,2,2,nil)
-	Duel.SendtoGrave(g,REASON_COST)
+	if chk==0 then return Duel.IsExistingMatchingCard(c43748308.cfilter,tp,LOCATION_ONFIELD,0,2,nil)
+ 		or Duel.IsPlayerAffectedByEffect(tp,46241344) end
+	if Duel.IsExistingMatchingCard(c43748308.cfilter,tp,LOCATION_ONFIELD,0,2,nil)
+		and (not Duel.IsPlayerAffectedByEffect(tp,46241344) or not Duel.SelectYesNo(tp,aux.Stringid(46241344,0))) then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+		local g=Duel.SelectMatchingCard(tp,c43748308.cfilter,tp,LOCATION_ONFIELD,0,2,2,nil)
+		Duel.SendtoGrave(g,REASON_COST)
+	end
 end
 function c43748308.spfilter(c,e,tp)
 	return c:IsSetCard(0x79) and c:GetCode()~=43748308 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

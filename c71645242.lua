@@ -39,7 +39,7 @@ function c71645242.initial_effect(c)
 	end
 end
 function c71645242.cfilter(c,tp)
-	return c:IsControler(tp) and c:GetSummonType()~=SUMMON_TYPE_SPECIAL+0x20
+	return c:IsFaceup() and c:IsControler(tp) and c:GetSummonType()~=SUMMON_TYPE_SPECIAL+0x20
 end
 function c71645242.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local sf=0
@@ -61,9 +61,13 @@ function c71645242.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
+function c71645242.opfilter(c,e)
+	return c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
+end
 function c71645242.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
-	local g=eg:Filter(Card.IsRelateToEffect,nil,e)
+	local g=eg:Filter(c71645242.opfilter,nil,e)
+	if g:GetCount()==0 then return end
 	local tc=g:GetFirst()
 	while tc do
 		if tc:IsFaceup() then
@@ -76,15 +80,16 @@ function c71645242.spop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc=g:GetNext()
 	end
-	if bit.extract(ev,tp)~=0 and Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
+	Duel.BreakEffect()
+	if bit.extract(ev,tp)~=0 and Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,71645243,0,0x4011,800,800,2,RACE_PLANT,ATTRIBUTE_DARK,POS_FACEUP_ATTACK,1-tp) then
 		local token=Duel.CreateToken(tp,71645243)
 		Duel.SpecialSummonStep(token,0x20,tp,1-tp,false,false,POS_FACEUP_ATTACK)
 	end
-	if bit.extract(ev,1-tp)~=0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,71645243,0,0x4011,800,800,2,RACE_PLANT,ATTRIBUTE_DARK) then
+	if bit.extract(ev,1-tp)~=0 and Duel.GetLocationCount(tp,LOCATION_MZONE,1-tp)>0
+		and Duel.IsPlayerCanSpecialSummonMonster(1-tp,71645243,0,0x4011,800,800,2,RACE_PLANT,ATTRIBUTE_DARK) then
 		local token=Duel.CreateToken(1-tp,71645243)
-		Duel.SpecialSummonStep(token,0x20,tp,tp,false,false,POS_FACEUP_ATTACK)
+		Duel.SpecialSummonStep(token,0x20,1-tp,tp,false,false,POS_FACEUP_ATTACK)
 	end
 	Duel.SpecialSummonComplete()
 end
@@ -114,14 +119,10 @@ function c71645242.spop2(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	local dg=Duel.GetMatchingGroup(c71645242.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	dg:AddCard(c)
-	Duel.Destroy(dg,REASON_EFFECT)
-	Duel.BreakEffect()
-	local og=Duel.GetOperatedGroup()
-	if not og:IsContains(c) then return end
-	og:RemoveCard(c)
-	local atk=og:GetSum(Card.GetPreviousAttackOnField)
-	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsAttack(atk) then
-		Duel.SpecialSummon(tc,0x20,tp,tp,false,false,POS_FACEUP)
+	if Duel.Destroy(dg,REASON_EFFECT)==dg:GetCount() then
+		local tc=Duel.GetFirstTarget()
+		if tc:IsRelateToEffect(e) then
+			Duel.SpecialSummon(tc,0x20,tp,tp,false,false,POS_FACEUP)
+		end
 	end
 end

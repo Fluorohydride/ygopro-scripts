@@ -17,7 +17,7 @@ function c12743620.filter1(c,tp)
 		and Duel.IsExistingTarget(c12743620.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,lv)
 end
 function c12743620.filter2(c,lv)
-	return c:IsFaceup() and (not c:IsType(TYPE_TUNER) or not c:IsLevel(lv))
+	return c:IsFaceup() and c:IsLevelAbove(1) and (not c:IsType(TYPE_TUNER) or not c:IsLevel(lv))
 end
 function c12743620.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

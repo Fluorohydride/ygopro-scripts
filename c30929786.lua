@@ -45,10 +45,14 @@ function c30929786.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x7c) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToGraveAsCost()
 end
 function c30929786.setcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c30929786.cfilter,tp,LOCATION_ONFIELD,0,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c30929786.cfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
-	Duel.SendtoGrave(g,REASON_COST)
+	if chk==0 then return Duel.IsExistingMatchingCard(c30929786.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
+		or (Duel.IsPlayerAffectedByEffect(tp,46241344) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0) end
+	if Duel.IsExistingMatchingCard(c30929786.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
+		and (not Duel.IsPlayerAffectedByEffect(tp,46241344) or Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or not Duel.SelectYesNo(tp,aux.Stringid(46241344,0))) then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+		local g=Duel.SelectMatchingCard(tp,c30929786.cfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
+		Duel.SendtoGrave(g,REASON_COST)
+	end
 end
 function c30929786.filter(c)
 	return c:IsSetCard(0x7c) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable(true)

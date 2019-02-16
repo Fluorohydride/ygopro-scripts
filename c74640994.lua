@@ -15,7 +15,7 @@ function c74640994.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c74640994.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0xed)
+	return c:IsFaceup() and c:IsSetCard(0xed) and c:IsDefenseAbove(0)
 end
 function c74640994.fufilter(c)
 	return c:IsFacedown() and c:IsSetCard(0xed)

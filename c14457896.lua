@@ -63,6 +63,13 @@ function c14457896.eqop(e,tp,eg,ep,ev,re,r,rp)
 	e3:SetValue(c14457896.atlimit)
 	e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e3)
+	--
+	if tc==Duel.GetAttacker() then
+		local bc=tc:GetBattleTarget()
+		if bc~=nil and bc:IsFaceup() and bc:IsRace(RACE_INSECT) then
+			Duel.NegateAttack()
+		end
+	end
 	--disable
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

@@ -22,6 +22,7 @@ function c55794644.initial_effect(c)
 	e2:SetOperation(c55794644.operation)
 	c:RegisterEffect(e2)
 end
+c55794644.card_code_list={56433456}
 function c55794644.spfilter(c)
 	return c:IsSetCard(0x44) and c:IsAbleToRemoveAsCost() and (not c:IsLocation(LOCATION_MZONE) or c:IsFaceup())
 end

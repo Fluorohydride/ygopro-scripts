@@ -9,10 +9,10 @@ function c97000273.initial_effect(c)
 	e1:SetTarget(c97000273.destg)
 	e1:SetOperation(c97000273.desop)
 	c:RegisterEffect(e1)
-	--search
+	--to hand
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(97000273,1))
-	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)

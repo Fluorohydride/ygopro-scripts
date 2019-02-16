@@ -30,7 +30,8 @@ function c75425043.cfilter(c,tp)
 	return c:GetSummonPlayer()==tp
 end
 function c75425043.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0 and eg:IsExists(c75425043.cfilter,1,nil,1-tp)
+	return (Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0 or Duel.IsPlayerAffectedByEffect(tp,8802510))
+		and eg:IsExists(c75425043.cfilter,1,nil,1-tp)
 end
 function c75425043.spfilter1(c,e,tp)
 	return c:IsCode(49036338) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.IsExistingMatchingCard(c75425043.thfilter,tp,LOCATION_DECK,0,1,c)
@@ -71,6 +72,7 @@ function c75425043.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_PHASE+PHASE_END)
+	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetCountLimit(1)
 	e1:SetLabel(fid)
 	e1:SetLabelObject(g)

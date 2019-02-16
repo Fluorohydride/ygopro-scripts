@@ -41,7 +41,8 @@ function c67508932.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c67508932.rmcond(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonLocation()&LOCATION_EXTRA==LOCATION_EXTRA
+	local c=e:GetHandler()
+	return c:GetSummonLocation()&LOCATION_EXTRA==LOCATION_EXTRA and c:IsRelateToBattle()
 end
 function c67508932.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_MZONE,1,nil) end
@@ -86,7 +87,7 @@ function c67508932.val(e,re,dam,r,rp,rc)
 end
 function c67508932.spfilter(c,e,tp)
 	return c:GetFlagEffectLabel(67508932)==e:GetHandler():GetFieldID()
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp)
 end
 function c67508932.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(67508933)>0
@@ -97,7 +98,7 @@ function c67508932.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,#g,tp,LOCATION_REMOVED)
 end
 function c67508932.spop(e,tp,eg,ep,ev,re,r,rp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
 	local tg=Duel.GetMatchingGroup(c67508932.spfilter,tp,LOCATION_REMOVED,LOCATION_REMOVED,nil,e,tp)
 	if ft<=0 or #tg==0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end

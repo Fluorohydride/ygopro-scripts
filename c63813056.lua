@@ -1,4 +1,4 @@
---Xtra HERO Dread Decimator
+--X・HERO ドレッドバスター
 function c63813056.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x8),2)
@@ -19,7 +19,8 @@ function c63813056.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c63813056.atktg(e,c)
-	return (c==e:GetHandler() or (e:GetHandler():GetLinkedGroup():IsContains(c) and c:IsSetCard(0x8) and c:IsFaceup()))
+	return c==e:GetHandler()
+		or c:IsFaceup() and c:IsSetCard(0x8) and e:GetHandler():GetLinkedGroup():IsContains(c)
 end
 function c63813056.atkfilter(c)
 	return c:IsSetCard(0x8) and c:IsType(TYPE_MONSTER)

@@ -20,10 +20,13 @@ function c36331074.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(g,nil,1,REASON_COST)
 end
 function c36331074.filter1(c)
-	return c:IsFaceup() and c:IsSetCard(0x10) and c:IsAbleToChangeControler()
+	local tp=c:GetControler()
+	return c:IsFaceup() and c:IsSetCard(0x10)
+		and c:IsAbleToChangeControler() and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
 end
 function c36331074.filter2(c)
-	return c:IsAbleToChangeControler()
+	local tp=c:GetControler()
+	return c:IsAbleToChangeControler() and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
 end
 function c36331074.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

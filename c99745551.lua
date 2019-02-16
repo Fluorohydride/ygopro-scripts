@@ -43,9 +43,7 @@ end
 function c99745551.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 	if #g<1 then return end
-	Duel.ShuffleHand(tp)
-	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_DISCARD)
-	local tc=g:Select(1-tp,1,1,nil)
+	local tc=g:RandomSelect(1-tp,1)
 	Duel.BreakEffect()
 	Duel.SendtoGrave(tc,REASON_EFFECT+REASON_DISCARD)
 	if not tc:GetFirst():IsCode(99745551) then

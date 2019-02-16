@@ -21,7 +21,7 @@ function c87871125.initial_effect(c)
 	--search
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(87871125,1))
-	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e3:SetCategory(CATEGORY_TOHAND)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1,87871126)
@@ -34,6 +34,14 @@ function c87871125.initial_effect(c)
 	e4:SetCode(EFFECT_MATERIAL_CHECK)
 	e4:SetValue(c87871125.valcheck)
 	c:RegisterEffect(e4)
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e5:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e5:SetCondition(c87871125.regcon)
+	e5:SetOperation(c87871125.regop)
+	c:RegisterEffect(e5)
+	e4:SetLabelObject(e5)
 end
 function c87871125.matfilter(c)
 	return c:IsLinkType(TYPE_EFFECT) and c:IsLinkAttribute(ATTRIBUTE_FIRE)
@@ -53,7 +61,7 @@ function c87871125.thfilter1(c)
 end
 function c87871125.thtg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c87871125.thfilter1,tp,LOCATION_GRAVE,0,1,nil) end
-	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_GRAVE)
+	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_GRAVE)
 end
 function c87871125.thop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
@@ -81,7 +89,7 @@ function c87871125.sumlimit(e,c)
 	return c:IsCode(e:GetLabel())
 end
 function c87871125.thcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK) and e:GetHandler():GetFlagEffect(87871125)~=0
+	return e:GetHandler():GetFlagEffect(87871125)~=0
 end
 function c87871125.thfilter2(c)
 	return c:IsSetCard(0x119) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
@@ -100,7 +108,15 @@ function c87871125.thop2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c87871125.valcheck(e,c)
 	local g=c:GetMaterial()
-	if g:IsExists(Card.IsLinkCode,1,nil,87871125) and c:IsSummonType(SUMMON_TYPE_LINK) then
-		c:RegisterFlagEffect(87871125,RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD-RESET_LEAVE-RESET_TEMP_REMOVE,0,1)
+	if g:IsExists(Card.IsLinkCode,1,nil,87871125) then
+		e:GetLabelObject():SetLabel(1)
+	else
+		e:GetLabelObject():SetLabel(0)
 	end
+end
+function c87871125.regcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK) and e:GetLabel()==1
+end
+function c87871125.regop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():RegisterFlagEffect(87871125,RESET_EVENT+RESETS_STANDARD,0,1)
 end

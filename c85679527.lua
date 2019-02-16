@@ -34,8 +34,10 @@ end
 function c85679527.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c85679527.sprfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil,tp)
-	local lv=g:GetFirst():GetLevel()
-	Duel.SendtoGrave(g,REASON_COST)
+	local rc=g:GetFirst()
+	local lv=rc:GetLevel()
+	Duel.SendtoGrave(rc,REASON_COST)
+	if not rc:IsType(TYPE_MONSTER) or lv<=0 then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)

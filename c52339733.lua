@@ -13,7 +13,7 @@ function c52339733.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	return d and a:GetControler()~=d:GetControler()
-		and a:IsDefenseAbove(0) and d:IsDefenseAbove(0)
+		and (a:IsDefenseAbove(0) or d:IsDefenseAbove(0))
 end
 function c52339733.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
@@ -22,11 +22,15 @@ function c52339733.atkop(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
-		e1:SetValue(a:GetDefense())
 		e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
-		a:RegisterEffect(e1)
-		local e2=e1:Clone()
-		e2:SetValue(d:GetDefense())
-		d:RegisterEffect(e2)
+		if a:IsDefenseAbove(0) then
+			e1:SetValue(a:GetDefense())
+			a:RegisterEffect(e1)
+		end
+		if d:IsDefenseAbove(0) then
+			local e2=e1:Clone()
+			e2:SetValue(d:GetDefense())
+			d:RegisterEffect(e2)
+		end
 	end
 end

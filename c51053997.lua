@@ -2,10 +2,8 @@
 function c51053997.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(51053997,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetHintTiming(0,TIMING_END_PHASE)
 	c:RegisterEffect(e1)
 	--remove
 	local e3=Effect.CreateEffect(c)
@@ -88,7 +86,7 @@ function c51053997.cfilter(c,tp)
 	return c:IsPreviousSetCard(0xc1) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
 end
 function c51053997.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c51053997.cfilter,1,e:GetHandler(),tp)
+	return eg:IsExists(c51053997.cfilter,1,e:GetHandler(),tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c51053997.spfilter(c,e,tp)
 	return c:IsSetCard(0xc1) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -12,6 +12,7 @@ function c91345518.initial_effect(c)
 	e1:SetOperation(c91345518.damop)
 	c:RegisterEffect(e1)
 end
+c91345518.card_code_list={56433456}
 function c91345518.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCurrentPhase()~=PHASE_MAIN2 and e:GetHandler():IsReleasable() end
 	Duel.Release(e:GetHandler(),REASON_COST)

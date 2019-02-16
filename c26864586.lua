@@ -14,7 +14,7 @@ function c26864586.filter1(c,tp)
 	return lv>0 and c:IsFaceup() and Duel.IsExistingTarget(c26864586.filter2,tp,LOCATION_MZONE,0,1,c,c:GetRace(),c:GetAttribute(),lv)
 end
 function c26864586.filter2(c,rc,at,lv)
-	return not c:IsLevel(lv) and c:IsFaceup() and c:IsRace(rc) and c:IsAttribute(at)
+	return not c:IsLevel(lv) and c:IsLevelAbove(1) and c:IsFaceup() and c:IsRace(rc) and c:IsAttribute(at)
 end
 function c26864586.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

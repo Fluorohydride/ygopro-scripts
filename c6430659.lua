@@ -21,7 +21,8 @@ function c6430659.atcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsAbleToEnterBP()
 end
 function c6430659.filter(c)
-	return c:IsFaceup() and c:IsLevelBelow(4) and c:IsAttackable() and not c:IsHasEffect(EFFECT_DIRECT_ATTACK)
+	return c:IsFaceup() and c:IsLevelBelow(4) and c:IsAttackable()
+		and not c:IsHasEffect(EFFECT_DIRECT_ATTACK) and not c:IsHasEffect(EFFECT_CANNOT_DIRECT_ATTACK)
 end
 function c6430659.attg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c6430659.filter(chkc) end

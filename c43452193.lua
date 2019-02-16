@@ -17,8 +17,8 @@ end
 function c43452193.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local a=Duel.GetAttacker()
 	local at=Duel.GetAttackTarget()
-	if chk==0 then return a:IsOnField() and a:IsAbleToChangeControler()
-		and at:IsOnField() and at:IsAbleToChangeControler() end
+	if chk==0 then return a:IsOnField() and a:IsAbleToChangeControler() and Duel.GetMZoneCount(1-tp,a,1-tp,LOCATION_REASON_CONTROL)>0
+		and at:IsOnField() and at:IsAbleToChangeControler() and Duel.GetMZoneCount(tp,at,tp,LOCATION_REASON_CONTROL)>0 end
 	local g=Group.FromCards(a,at)
 	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,2,0,0)

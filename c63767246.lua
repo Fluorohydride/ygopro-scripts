@@ -84,15 +84,17 @@ function c63767246.atkfilter2(c)
 end
 function c63767246.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c63767246.atkfilter2(chkc) end
-	if chk==0 then return eg:IsExists(c63767246.atkfilter1,1,nil,tp)
-		and Duel.IsExistingTarget(c63767246.atkfilter2,tp,LOCATION_MZONE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c63767246.atkfilter2,tp,LOCATION_MZONE,0,1,nil) end
+	local g=eg:Filter(c63767246.atkfilter1,nil,tp)
+	g:KeepAlive()
+	e:SetLabelObject(g)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c63767246.atkfilter2,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function c63767246.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	local g=eg:Filter(c63767246.atkfilter1,nil,tp)
+	local g=e:GetLabelObject()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		if g:GetCount()>=2 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)

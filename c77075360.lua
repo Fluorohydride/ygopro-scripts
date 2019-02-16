@@ -1,7 +1,7 @@
---Junk Speeder
+--ジャンク・スピーダー
 function c77075360.initial_effect(c)
 	--synchro summon
-	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x1017),aux.NonTuner(nil),1)
+	aux.AddSynchroProcedure(c,c77075360.tfilter,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -27,6 +27,9 @@ function c77075360.initial_effect(c)
 	Duel.AddCustomActivityCounter(77075360,ACTIVITY_SPSUMMON,c77075360.counterfilter)
 end
 c77075360.material_setcode=0x1017
+function c77075360.tfilter(c)
+	return c:IsSetCard(0x1017) or c:IsHasEffect(20932152)
+end
 function c77075360.counterfilter(c)
 	return c:GetSummonLocation()~=LOCATION_EXTRA or c:IsType(TYPE_SYNCHRO)
 end
@@ -51,10 +54,8 @@ function c77075360.filter(c,e,tp)
 	return c:IsSetCard(0x1017) and c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c77075360.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then
-		local ct=Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD)
-		return ct>0 and Duel.IsExistingMatchingCard(c77075360.filter,tp,LOCATION_DECK,0,1,nil,e,tp)
-	end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c77075360.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c77075360.spop(e,tp,eg,ep,ev,re,r,rp)

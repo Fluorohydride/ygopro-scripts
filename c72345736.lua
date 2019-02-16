@@ -28,6 +28,7 @@ function c72345736.initial_effect(c)
 	e4:SetOperation(c72345736.drop)
 	c:RegisterEffect(e4)
 end
+c72345736.counter_add_list={0x3}
 function c72345736.ctfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x3d)
 end

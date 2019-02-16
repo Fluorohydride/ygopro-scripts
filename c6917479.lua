@@ -36,10 +36,13 @@ function c6917479.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,1000)
 end
 function c6917479.ctfilter1(c)
-	return c:IsAbleToChangeControler()
+	local tp=c:GetControler()
+	return c:IsAbleToChangeControler() and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
 end
 function c6917479.ctfilter2(c)
+	local tp=c:GetControler()
 	return c:IsFaceup() and c:IsSetCard(0x8e) and c:IsAbleToChangeControler()
+		and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
 end
 function c6917479.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
