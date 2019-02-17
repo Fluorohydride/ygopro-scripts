@@ -1984,6 +1984,10 @@ function Auxiliary.bfgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
+--check for cards with different names
+function Auxiliary.dncheck(g)
+	return g:GetClassCount(Card.GetCode)==#g
+end
 --used for "except this card"
 function Auxiliary.ExceptThisCard(e)
 	local c=e:GetHandler()
