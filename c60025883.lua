@@ -40,7 +40,7 @@ function c60025883.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c60025883.costfilter(c,e,tp)
 	return c:IsType(TYPE_SYNCHRO) and c:IsAbleToRemoveAsCost()
-		and c:IsSetCard(0xc2) or (c:IsRace(RACE_DRAGON) and (c:IsLevel(7) or c:IsLevel(8)))
+		and (c:IsSetCard(0xc2) or c:IsRace(RACE_DRAGON) and (c:IsLevel(7) or c:IsLevel(8)))
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,60025884,0,0x4011,c:GetAttack(),c:GetDefense(),c:GetLevel(),c:GetRace(),c:GetAttribute())
 end
 function c60025883.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
