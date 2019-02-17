@@ -63,7 +63,7 @@ function c40971261.regop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c40971261.lpcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetFlagEffect(40971261)~=0
+	return c:GetFlagEffect(40971261)~=0 and re:GetHandler():IsCode(e:GetLabelObject():GetLabelObject():GetLabel())
 end
 function c40971261.lpop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
