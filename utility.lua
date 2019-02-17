@@ -2008,32 +2008,10 @@ function Auxiliary.GetMultiLinkedZone(tp)
 	end
 	return multi_linked_zone
 end
-function Auxiliary.GetGroupKey(g)
-	local v=0
-	for c in Auxiliary.Next(g) do
-		math.randomseed(c:GetFieldID()+1)
-		v=v+math.random()
-	end
-	return v+#g
-end
-function Auxiliary.LookupSubGroupCache(cache,sg)
-	local res=cache[Auxiliary.GetGroupKey(sg)]
-	return res,(res==1)
-end
-function Auxiliary.StoreSubGroupCache(cache,sg,res)
-	cache[Auxiliary.GetGroupKey(sg)]=(res and 1 or 0)
-end
-function Auxiliary.CheckGroupRecursive(c,sg,g,cache,f,min,max,ext_params)
+function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 	sg:AddCard(c)
-	local res=false
-	local found,data=Auxiliary.LookupSubGroupCache(cache,sg)
-	if found then
-		res=data
-	else
-		res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params)))
-			or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,cache,f,min,max,ext_params))
-		Auxiliary.StoreSubGroupCache(cache,sg,res)
-	end
+	local res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params)))
+		or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params))
 	sg:RemoveCard(c)
 	return res
 end
@@ -2045,8 +2023,7 @@ function Group.CheckSubGroup(g,f,min,max,...)
 	local sg=Duel.GrabSelectedCard()
 	if #sg>max or #(g+sg)<min or #sg==max and not f(sg,...) then return false end
 	if #sg>=min and #sg<=max and f(sg,...) then return true end
-	local cache={}
-	return g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,cache,f,min,max,ext_params)
+	return g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params)
 end
 function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	local min=min or 1
@@ -2060,9 +2037,8 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	end
 	sg:Merge(fg)
 	local finish=(#sg>=min and #sg<=max and f(sg,...))
-	local cache={}
 	while #sg<max do
-		local cg=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,cache,f,min,max,ext_params)
+		local cg=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,f,min,max,ext_params)
 		finish=(#sg>=min and #sg<=max and f(sg,...))
 		if #cg==0 then break end
 		local cancel=not finish and cancelable
