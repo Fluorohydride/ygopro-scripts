@@ -79,6 +79,7 @@ end
 function c856784.regop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(tp,856784,RESET_PHASE+PHASE_END,0,1)
 end
-function c856784.actcon(e,tp,eg,ep,ev,re,r,rp)
+function c856784.actcon(e)
+	local tp=e:GetHandlerPlayer()
 	return Duel.GetFlagEffect(tp,856784)>0
 end
