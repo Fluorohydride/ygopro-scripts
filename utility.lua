@@ -2008,14 +2008,18 @@ function Auxiliary.GetMultiLinkedZone(tp)
 	end
 	return multi_linked_zone
 end
+Auxiliary.GoalSubGroup=nil
 function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 	sg:AddCard(c)
+	Auxiliary.GoalSubGroup:Clear()
+	Auxiliary.GoalSubGroup:Merge(sg)
 	local res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params)))
 		or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params))
 	sg:RemoveCard(c)
 	return res
 end
 function Group.CheckSubGroup(g,f,min,max,...)
+	Auxiliary.GoalSubGroup=Group.CreateGroup()
 	local min=min or 1
 	local max=max or #g
 	if min>max then return false end
@@ -2023,9 +2027,15 @@ function Group.CheckSubGroup(g,f,min,max,...)
 	local sg=Duel.GrabSelectedCard()
 	if #sg>max or #(g+sg)<min or #sg==max and not f(sg,...) then return false end
 	if #sg>=min and #sg<=max and f(sg,...) then return true end
-	return g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params)
+	local eg=g:Clone()
+	for c in aux.Next(g) do
+		if Auxiliary.CheckGroupRecursive(c,sg,eg,f,min,max,ext_params) then return true end
+		eg:RemoveCard(c)
+	end
+	return false
 end
 function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
+	Auxiliary.GoalSubGroup=Group.CreateGroup()
 	local min=min or 1
 	local max=max or #g
 	local ext_params={...}
@@ -2038,7 +2048,18 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	sg:Merge(fg)
 	local finish=(#sg>=min and #sg<=max and f(sg,...))
 	while #sg<max do
-		local cg=g:Filter(Auxiliary.CheckGroupRecursive,sg,sg,g,f,min,max,ext_params)
+		local cg=Group.CreateGroup()
+		local eg=g:Clone()
+		for c in aux.Next(g) do
+			if not cg:IsContains(c) and not sg:IsContains(c) then
+				if Auxiliary.CheckGroupRecursive(c,sg,eg,f,min,max,ext_params) then
+					cg:Merge(Auxiliary.GoalSubGroup)
+				else
+					eg:RemoveCard(c)
+				end
+			end
+		end
+		cg:Sub(sg)
 		finish=(#sg>=min and #sg<=max and f(sg,...))
 		if #cg==0 then break end
 		local cancel=not finish and cancelable
