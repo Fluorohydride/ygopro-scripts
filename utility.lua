@@ -2057,7 +2057,7 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 		local cg=Group.CreateGroup()
 		local eg=g:Clone()
 		for c in aux.Next(g-sg) do
-			if not cg:IsContains(c) and not sg:IsContains(c) then
+			if not cg:IsContains(c) then
 				if Auxiliary.CheckGroupRecursiveCapture(c,sg,eg,f,min,max,ext_params) then
 					cg:Merge(Auxiliary.SubGroupCaptured)
 				else
