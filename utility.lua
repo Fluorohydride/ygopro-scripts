@@ -2018,10 +2018,13 @@ function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 end
 function Auxiliary.CheckGroupRecursiveCapture(c,sg,g,f,min,max,ext_params)
 	sg:AddCard(c)
-	Auxiliary.SubGroupCaptured:Clear()
-	Auxiliary.SubGroupCaptured:Merge(sg)
-	local res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params)))
-		or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursiveCapture,1,sg,sg,g,f,min,max,ext_params))
+	local res=#sg>=min and #sg<=max and f(sg,table.unpack(ext_params))
+	if res then
+		Auxiliary.SubGroupCaptured:Clear()
+		Auxiliary.SubGroupCaptured:Merge(sg)
+	else
+		res=#sg<max and g:IsExists(Auxiliary.CheckGroupRecursiveCapture,1,sg,sg,g,f,min,max,ext_params)
+	end
 	sg:RemoveCard(c)
 	return res
 end
