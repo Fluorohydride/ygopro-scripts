@@ -534,9 +534,9 @@ function Auxiliary.TuneMagicianCheckX(c,sg,ecode)
 	end
 	return false
 end
-function Auxiliary.TuneMagicianCheckAdditionalX(eff)
+function Auxiliary.TuneMagicianCheckAdditionalX(ecode)
 	return	function(g)
-				return not g:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,g,eff)
+				return not g:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,g,ecode)
 			end
 end
 function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,op)
