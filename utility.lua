@@ -1425,7 +1425,13 @@ function Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
 					return g:GetSum(Card.GetRitualLevel,c)<=lv
 				end
 	else
-		return nil
+		return	function(g,ec)
+					if ec then
+						return g:GetSum(Card.GetRitualLevel,c)-ec:GetRitualLevel(c)<=lv
+					else
+						return true
+					end
+				end
 	end
 end
 function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,greater_or_equal)
