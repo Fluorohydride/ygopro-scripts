@@ -2080,7 +2080,8 @@ function Group.CheckSubGroup(g,f,min,max,...)
 	if min>max then return false end
 	local ext_params={...}
 	local sg=Duel.GrabSelectedCard()
-	if #sg>max or #(g+sg)<min or #sg==max and (not f(sg,...) or Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,nil,g,f,min,max,ext_params)) then return false end
+	if #sg>max or #(g+sg)<min then return false end
+	if #sg==max and (not f(sg,...) or Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,nil,g,f,min,max,ext_params)) then return false end
 	if #sg>=min and #sg<=max and f(sg,...) and (not Auxiliary.GCheckAdditional or Auxiliary.GCheckAdditional(sg,nil,g,f,min,max,ext_params)) then return true end
 	local eg=g:Clone()
 	for c in aux.Next(g-sg) do
