@@ -30,7 +30,9 @@ function c91691605.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c91691605.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	local atk=e:GetHandler():GetAttack()
+	local c=e:GetHandler()
+	if not c:IsRelateToEffect(e) then return end
+	local atk=c:GetAttack()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c91691605.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp,atk)
 	if g:GetCount()>0 then
