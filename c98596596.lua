@@ -48,7 +48,7 @@ function c98596596.spop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c98596596.cfilter2(c,tp)
 	return c:IsReason(REASON_EFFECT) and c:IsLocation(LOCATION_GRAVE)
-		and (c:GetPreviousLocation()==LOCATION_HAND or c:GetPreviousLocation()&LOCATION_ONFIELD>0)
+		and (c:GetPreviousLocation()==LOCATION_HAND or c:GetPreviousLocation()&LOCATION_MZONE>0)
 		and c:GetPreviousControler()==tp and c:GetReasonPlayer()==1-tp
 end
 function c98596596.spcon2(e,tp,eg,ep,ev,re,r,rp)
@@ -57,16 +57,19 @@ end
 function c98596596.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,98596597,0,0x4011,100,100,1,RACE_PYRO,ATTRIBUTE_FIRE) end
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,ft,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,ft,0,0)
+	local ct=eg:FilterCount(c98596596.cfilter2,nil,tp)
+	e:SetLabel(ct)
+	ct=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),ct)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
+	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,ct,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,ct,0,0)
 end
 function c98596596.spop2(e,tp,eg,ep,ev,re,r,rp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if not e:GetHandler():IsRelateToEffect(e) or ft<=0 or not Duel.IsPlayerCanSpecialSummonMonster(tp,98596597,0,0x4011,100,100,1,RACE_PYRO,ATTRIBUTE_FIRE) then return end
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-	for i=1,ft do
+	local ct=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),e:GetLabel())
+	if not e:GetHandler():IsRelateToEffect(e) or ct<=0
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,98596597,0,0x4011,100,100,1,RACE_PYRO,ATTRIBUTE_FIRE) then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
+	for i=1,ct do
 		local token=Duel.CreateToken(tp,98596597)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 	end
