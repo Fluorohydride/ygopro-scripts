@@ -35,12 +35,12 @@ function c94599451.initial_effect(c)
 	e4:SetOperation(c94599451.repop)
 	c:RegisterEffect(e4)
 end
-function c94599451.ctfilter(c)
-	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
+function c94599451.ctfilter(c,tp)
+	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
 		and bit.band(c:GetPreviousTypeOnField(),TYPE_PENDULUM)~=0 and c:IsPreviousSetCard(0x10d)
 end
 function c94599451.ctcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c94599451.ctfilter,1,nil)
+	return eg:IsExists(c94599451.ctfilter,1,nil,tp)
 end
 function c94599451.ctop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x1,2)
