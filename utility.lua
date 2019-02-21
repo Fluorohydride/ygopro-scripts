@@ -1487,6 +1487,7 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 					local lv=level_function(tc)
 					Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(tc,lv,greater_or_equal)
 					local mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,false,1,lv,tp,tc,lv,greater_or_equal)
+					Auxiliary.GCheckAdditional=nil
 					tc:SetMaterial(mat)
 					Duel.ReleaseRitualMaterial(mat)
 					Duel.BreakEffect()
@@ -1691,9 +1692,9 @@ function Auxiliary.PendOperation()
 					tg=tg:Filter(Auxiliary.PConditionExtraFilterSpecific,nil,e,tp,lscale,rscale,ce)
 				end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-				Auxiliary.PendOperationCheck=Auxiliary.PendOperationCheck(ft1,ft2,ft)
+				Auxiliary.GCheckAdditional=Auxiliary.PendOperationCheck(ft1,ft2,ft)
 				local g=tg:SelectSubGroup(tp,aux.TRUE,true,1,math.min(#tg,ft),ft1,ft2,ft)
-				Auxiliary.PendOperationCheck=nil
+				Auxiliary.GCheckAdditional=nil
 				if not g then return end
 				if ce then
 					Duel.Hint(HINT_CARD,0,ce:GetOwner():GetOriginalCode())
