@@ -28,7 +28,7 @@ function c76647978.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,2000)
 end
 function c76647978.fcheck(tp,sg,fc)
-	return #sg==2
+	return #sg<=2
 end
 function c76647978.filter1(c,e)
 	return c:IsOnField() and not c:IsImmuneToEffect(e)
