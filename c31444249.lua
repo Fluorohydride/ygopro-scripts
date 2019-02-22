@@ -59,6 +59,9 @@ end
 function c31444249.fcheck(tp,sg,fc)
 	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=6
 end
+function c31444249.fcheck(sg)
+	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=6
+end
 function c31444249.dmcon(tp)
 	return not Duel.IsExistingMatchingCard(aux.FilterEqualFunction(Card.GetSummonLocation,LOCATION_EXTRA),tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(aux.FilterEqualFunction(Card.GetSummonLocation,LOCATION_EXTRA),tp,0,LOCATION_MZONE,1,nil)
@@ -72,10 +75,12 @@ function c31444249.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 			if sg:GetCount()>0 then
 				mg1:Merge(sg)
 				Auxiliary.FCheckAdditional=c31444249.fcheck
+				Auxiliary.GCheckAdditional=c31444249.gcheck
 			end
 		end
 		local res=Duel.IsExistingMatchingCard(c31444249.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		Auxiliary.FCheckAdditional=nil
+		Auxiliary.GCheckAdditional=nil
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
 			if ce~=nil then
@@ -100,9 +105,13 @@ function c31444249.spop(e,tp,eg,ep,ev,re,r,rp)
 			exmat=true
 		end
 	end
-	if exmat then Auxiliary.FCheckAdditional=c31444249.fcheck end
+	if exmat then
+		Auxiliary.FCheckAdditional=c31444249.fcheck
+		Auxiliary.GCheckAdditional=c31444249.gcheck
+	end
 	local sg1=Duel.GetMatchingGroup(c31444249.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	Auxiliary.FCheckAdditional=nil
+	Auxiliary.GCheckAdditional=nil
 	local mg2=nil
 	local sg2=nil
 	local ce=Duel.GetChainMaterial(tp)
@@ -119,9 +128,13 @@ function c31444249.spop(e,tp,eg,ep,ev,re,r,rp)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
-			if exmat then Auxiliary.FCheckAdditional=c31444249.fcheck end
+			if exmat then
+				Auxiliary.FCheckAdditional=c31444249.fcheck
+				Auxiliary.GCheckAdditional=c31444249.gcheck
+			end
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			Auxiliary.FCheckAdditional=nil
+			Auxiliary.GCheckAdditional=nil
 			tc:SetMaterial(mat1)
 			Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()

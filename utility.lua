@@ -534,6 +534,11 @@ function Auxiliary.TuneMagicianCheckX(c,sg,ecode)
 	end
 	return false
 end
+function Auxiliary.TuneMagicianCheckAdditionalX(ecode)
+	return	function(g)
+				return not g:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,g,ecode)
+			end
+end
 function Auxiliary.XyzAlterFilter(c,alterf,xyzc,e,tp,op)
 	return alterf(c) and c:IsCanBeXyzMaterial(xyzc) and Duel.GetLocationCountFromEx(tp,tp,c,xyzc)>0 and Auxiliary.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) and (not op or op(e,tp,0,c))
 end
@@ -750,7 +755,6 @@ function Auxiliary.XyzLevelFreeFilter(c,xyzc,f)
 	return c:IsFaceup() and c:IsCanBeXyzMaterial(xyzc) and (not f or f(c,xyzc))
 end
 function Auxiliary.XyzLevelFreeGoal(g,tp,xyzc,gf)
-	if g:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,g,EFFECT_TUNE_MAGICIAN_X) then return false end
 	return (not gf or gf(g)) and Duel.GetLocationCountFromEx(tp,tp,g,xyzc)>0
 end
 function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct)
@@ -774,7 +778,10 @@ function Auxiliary.XyzLevelFreeCondition(f,gf,minct,maxct)
 				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
 				if sg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				Duel.SetSelectedCard(sg)
-				return mg:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
+				Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
+				local res=mg:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
+				Auxiliary.GCheckAdditional=nil
+				return res
 			end
 end
 function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
@@ -797,7 +804,9 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
 				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
 				Duel.SetSelectedCard(sg)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+				Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
 				local g=mg:SelectSubGroup(tp,Auxiliary.XyzLevelFreeGoal,true,minc,maxc,tp,c,gf)
+				Auxiliary.GCheckAdditional=nil
 				if g and g:GetCount()>0 then
 					g:KeepAlive()
 					e:SetLabelObject(g)
@@ -868,7 +877,10 @@ function Auxiliary.XyzLevelFreeCondition2(f,gf,minct,maxct,alterf,desc,op)
 				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
 				if sg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				Duel.SetSelectedCard(sg)
-				return mg:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
+				Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
+				local res=mg:CheckSubGroup(Auxiliary.XyzLevelFreeGoal,minc,maxc,tp,c,gf)
+				Auxiliary.GCheckAdditional=nil
+				return res
 			end
 end
 function Auxiliary.XyzLevelFreeTarget2(f,gf,minct,maxct,alterf,desc,op)
@@ -903,7 +915,9 @@ function Auxiliary.XyzLevelFreeTarget2(f,gf,minct,maxct,alterf,desc,op)
 					e:SetLabel(0)
 					Duel.SetSelectedCard(sg)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+					Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
 					g=mg2:SelectSubGroup(tp,Auxiliary.XyzLevelFreeGoal,true,minc,maxc,tp,c,gf)
+					Auxiliary.GCheckAdditional=nil
 				end
 				if g and g:GetCount()>0 then
 					g:KeepAlive()
@@ -1400,6 +1414,31 @@ function Auxiliary.RitualCheckEqual(g,c,lv)
 end
 function Auxiliary.RitualCheck(g,tp,c,lv,greater_or_equal)
 	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.mat_group_check or c.mat_group_check(g,tp))
+end 
+function Auxiliary.RitualCheckAdditionalLevel(c,rc)
+	local raw_level=c:GetRitualLevel(rc)
+	local lv1=raw_level&0xffff
+	local lv2=raw_level>>16
+	if lv2>0 then
+		return math.min(lv1,lv2)
+	else
+		return lv1
+	end
+end
+function Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
+	if greater_or_equal=="Equal" then		
+		return	function(g)
+					return g:GetSum(Auxiliary.RitualCheckAdditionalLevel,c)<=lv
+				end
+	else
+		return	function(g,ec)
+					if ec then
+						return g:GetSum(Auxiliary.RitualCheckAdditionalLevel,c)-Auxiliary.RitualCheckAdditionalLevel(ec,c)<=lv
+					else
+						return true
+					end
+				end
+	end
 end
 function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,greater_or_equal)
 	if bit.band(c:GetType(),0x81)~=0x81 or (filter and not filter(c,e,tp)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
@@ -1412,7 +1451,11 @@ function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,great
 	else
 		mg:RemoveCard(c)
 	end
-	return mg:CheckSubGroup(Auxiliary.RitualCheck,1,level_function(c),tp,c,level_function(c),greater_or_equal)
+	local lv=level_function(c)
+	Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
+	local res=mg:CheckSubGroup(Auxiliary.RitualCheck,1,lv,tp,c,lv,greater_or_equal)
+	Auxiliary.GCheckAdditional=nil
+	return res
 end
 function Auxiliary.RitualExtraFilter(c,f)
 	return c:GetLevel()>0 and f(c) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
@@ -1453,7 +1496,10 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 						mg:RemoveCard(tc)
 					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-					local mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,false,1,level_function(tc),tp,tc,level_function(tc),greater_or_equal)
+					local lv=level_function(tc)
+					Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(tc,lv,greater_or_equal)
+					local mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,false,1,lv,tp,tc,lv,greater_or_equal)
+					Auxiliary.GCheckAdditional=nil
 					tc:SetMaterial(mat)
 					Duel.ReleaseRitualMaterial(mat)
 					Duel.BreakEffect()
@@ -1601,10 +1647,12 @@ function Auxiliary.PendCondition()
 				return g:IsExists(Auxiliary.PConditionFilter,1,nil,e,tp,lscale,rscale,eset)
 			end
 end
-function Auxiliary.PendOperationCheck(g,ft1,ft2,ft)
-	local exg=g:Filter(Card.IsLocation,nil,LOCATION_EXTRA)
-	local mg=g-exg
-	return #g<=ft and #exg<=ft2 and #mg<=ft1
+function Auxiliary.PendOperationCheck(ft1,ft2,ft)
+	return	function(g)
+				local exg=g:Filter(Card.IsLocation,nil,LOCATION_EXTRA)
+				local mg=g-exg
+				return #g<=ft and #exg<=ft2 and #mg<=ft1
+			end
 end
 function Auxiliary.PendOperation()
 	return	function(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
@@ -1656,7 +1704,9 @@ function Auxiliary.PendOperation()
 					tg=tg:Filter(Auxiliary.PConditionExtraFilterSpecific,nil,e,tp,lscale,rscale,ce)
 				end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-				local g=tg:SelectSubGroup(tp,Auxiliary.PendOperationCheck,true,1,math.min(#tg,ft),ft1,ft2,ft)
+				Auxiliary.GCheckAdditional=Auxiliary.PendOperationCheck(ft1,ft2,ft)
+				local g=tg:SelectSubGroup(tp,aux.TRUE,true,1,math.min(#tg,ft),ft1,ft2,ft)
+				Auxiliary.GCheckAdditional=nil
 				if not g then return end
 				if ce then
 					Duel.Hint(HINT_CARD,0,ce:GetOwner():GetOriginalCode())
@@ -2009,8 +2059,13 @@ function Auxiliary.GetMultiLinkedZone(tp)
 	return multi_linked_zone
 end
 Auxiliary.SubGroupCaptured=nil
+Auxiliary.GCheckAdditional=nil
 function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 	sg:AddCard(c)
+	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c,g,f,min,max,ext_params) then
+		sg:RemoveCard(c)
+		return false
+	end
 	local res=(#sg>=min and #sg<=max and f(sg,table.unpack(ext_params)))
 		or (#sg<max and g:IsExists(Auxiliary.CheckGroupRecursive,1,sg,sg,g,f,min,max,ext_params))
 	sg:RemoveCard(c)
@@ -2018,6 +2073,10 @@ function Auxiliary.CheckGroupRecursive(c,sg,g,f,min,max,ext_params)
 end
 function Auxiliary.CheckGroupRecursiveCapture(c,sg,g,f,min,max,ext_params)
 	sg:AddCard(c)
+	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c,g,f,min,max,ext_params) then
+		sg:RemoveCard(c)
+		return false
+	end
 	local res=#sg>=min and #sg<=max and f(sg,table.unpack(ext_params))
 	if res then
 		Auxiliary.SubGroupCaptured:Clear()
@@ -2034,8 +2093,9 @@ function Group.CheckSubGroup(g,f,min,max,...)
 	if min>max then return false end
 	local ext_params={...}
 	local sg=Duel.GrabSelectedCard()
-	if #sg>max or #(g+sg)<min or #sg==max and not f(sg,...) then return false end
-	if #sg>=min and #sg<=max and f(sg,...) then return true end
+	if #sg>max or #(g+sg)<min then return false end
+	if #sg==max and (not f(sg,...) or Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,nil,g,f,min,max,ext_params)) then return false end
+	if #sg>=min and #sg<=max and f(sg,...) and (not Auxiliary.GCheckAdditional or Auxiliary.GCheckAdditional(sg,nil,g,f,min,max,ext_params)) then return true end
 	local eg=g:Clone()
 	for c in aux.Next(g-sg) do
 		if Auxiliary.CheckGroupRecursive(c,sg,eg,f,min,max,ext_params) then return true end
