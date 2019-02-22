@@ -1008,10 +1008,7 @@ function Auxiliary.FConditionMix(insf,sub,...)
 					if not mg:IsContains(gc) then return false end
 					Duel.SetSelectedCard(Group.FromCards(gc))
 				end
-				Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_F)
-				local res=mg:CheckSubGroup(Auxiliary.FCheckMixGoal,#funs,#funs,tp,c,sub,chkf,table.unpack(funs))
-				Auxiliary.GCheckAdditional=nil
-				return res
+				return mg:CheckSubGroup(Auxiliary.FCheckMixGoal,#funs,#funs,tp,c,sub,chkf,table.unpack(funs))
 			end
 end
 function Auxiliary.FOperationMix(insf,sub,...)
@@ -1025,9 +1022,7 @@ function Auxiliary.FOperationMix(insf,sub,...)
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,table.unpack(funs))
 				if gc then Duel.SetSelectedCard(Group.FromCards(gc)) end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-				Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_F)
 				local sg=mg:SelectSubGroup(tp,Auxiliary.FCheckMixGoal,false,#funs,#funs,tp,c,sub,chkf,table.unpack(funs))
-				Auxiliary.GCheckAdditional=nil
 				Duel.SetFusionMaterial(sg)
 			end
 end
@@ -1056,6 +1051,7 @@ end
 --if sg1 is subset of sg2 then not Auxiliary.FCheckAdditional(tp,sg1,fc) -> not Auxiliary.FCheckAdditional(tp,sg2,fc)
 Auxiliary.FCheckAdditional=nil
 function Auxiliary.FCheckMixGoal(sg,tp,fc,sub,chkf,...)
+	if sg:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
 	if not Auxiliary.MustMaterialCheck(sg,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
 	local g=Group.CreateGroup()
 	return sg:IsExists(Auxiliary.FCheckMix,1,nil,sg,g,fc,sub,...) and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
