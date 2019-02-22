@@ -1418,16 +1418,26 @@ function Auxiliary.RitualCheckEqual(g,c,lv)
 end
 function Auxiliary.RitualCheck(g,tp,c,lv,greater_or_equal)
 	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.mat_group_check or c.mat_group_check(g,tp))
+end 
+function Auxiliary.RitualCheckAdditionalLevel(c,rc)
+	local raw_level=c:GetRitualLevel(rc)
+	local lv1=raw_level&0xffff
+	local lv2=raw_level>>16
+	if lv2>0 then
+		return math.min(lv1,lv2)
+	else
+		return lv1
+	end
 end
 function Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
 	if greater_or_equal=="Equal" then		
 		return	function(g)
-					return g:GetSum(Card.GetRitualLevel,c)<=lv
+					return g:GetSum(Auxiliary.RitualCheckAdditionalLevel,c)<=lv
 				end
 	else
 		return	function(g,ec)
 					if ec then
-						return g:GetSum(Card.GetRitualLevel,c)-ec:GetRitualLevel(c)<=lv
+						return g:GetSum(Auxiliary.RitualCheckAdditionalLevel,c)-Auxiliary.RitualCheckAdditionalLevel(ec,c)<=lv
 					else
 						return true
 					end
