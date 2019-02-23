@@ -59,7 +59,7 @@ end
 function c31444249.fcheck(tp,sg,fc)
 	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=6
 end
-function c31444249.fcheck(sg)
+function c31444249.gcheck(sg)
 	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=6
 end
 function c31444249.dmcon(tp)
