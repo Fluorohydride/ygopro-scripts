@@ -4,6 +4,7 @@ function c88928798.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY+CATEGORY_DAMAGE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
+	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetCondition(c88928798.condition)
 	e1:SetTarget(c88928798.target)
@@ -11,7 +12,7 @@ function c88928798.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c88928798.condition(e,tp,eg,ep,ev,re,r,rp)
-	if not re:IsHasType(EFFECT_TYPE_ACTIVATE) or not Duel.IsChainNegatable(ev) then return false end
+	if not (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE)) or not Duel.IsChainNegatable(ev) then return false end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	if not g or g:GetCount()~=1 then return false end
 	local gc=g:GetFirst()
@@ -31,5 +32,6 @@ function c88928798.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
+	Duel.BreakEffect()
 	Duel.Damage(1-tp,500,REASON_EFFECT)
 end
