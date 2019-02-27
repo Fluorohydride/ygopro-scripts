@@ -33,6 +33,7 @@ function c33776843.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 and tc:IsPreviousLocation(LOCATION_MZONE) then
 		local atk=tc:GetTextAttack()
 		if atk<0 then atk=0 end
+		Duel.BreakEffect()
 		Duel.Damage(1-tp,atk,REASON_EFFECT)
 	end
 end
