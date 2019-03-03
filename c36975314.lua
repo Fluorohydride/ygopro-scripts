@@ -61,12 +61,12 @@ end
 function c36975314.con(e)
 	local c=e:GetOwner()
 	local h=e:GetHandler()
-	return c:IsHasCardTarget(h)
+	return c:IsHasCardTarget(h) and not c:IsDisabled()
 end
 function c36975314.rcon(e)
 	local c=e:GetOwner()
 	local h=e:GetHandler()
-	return c:IsHasCardTarget(h) and h:IsControler(c:GetControler())
+	return c:IsHasCardTarget(h) and h:IsControler(c:GetControler()) and not c:IsDisabled()
 end
 function c36975314.descon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetFirstCardTarget()
