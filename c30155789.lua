@@ -53,20 +53,14 @@ function c30155789.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Equip(tp,c,tc)
 		--draw
 		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 		e1:SetCode(EVENT_DAMAGE)
 		e1:SetRange(LOCATION_SZONE)
+		e1:SetCondition(c30155789.damcon)
 		e1:SetOperation(c30155789.damop)
+		e1:SetCountLimit(1)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e1)
-		--Atkup
-		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_EQUIP)
-		e2:SetCode(EFFECT_UPDATE_ATTACK)
-		e2:SetValue(1000)
-		e2:SetCondition(c30155789.atkcon)
-		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-		c:RegisterEffect(e2)
 		--Equip limit
 		local e3=Effect.CreateEffect(c)
 		e3:SetType(EFFECT_TYPE_SINGLE)
@@ -83,11 +77,16 @@ end
 function c30155789.eqlimit(e,c)
 	return c==e:GetLabelObject()
 end
-function c30155789.atkcon(e)
-	return e:GetHandler():GetFlagEffect(30155789)~=0
+function c30155789.damcon(e,tp,eg,ep,ev,re,r,rp)
+	return bit.band(r,REASON_EFFECT)~=0 and ep~=tp and rp==tp
 end
 function c30155789.damop(e,tp,eg,ep,ev,re,r,rp)
-	if bit.band(r,REASON_EFFECT)~=0 and ep~=tp and rp==tp then
-		e:GetHandler():RegisterFlagEffect(30155789,RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END,0,1)
-	end
+	local c=e:GetHandler()
+	local tc=c:GetEquipTarget()
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_UPDATE_ATTACK)
+	e1:SetValue(1000)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+	tc:RegisterEffect(e1)
 end
