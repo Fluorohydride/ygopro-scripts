@@ -5,7 +5,7 @@ function c21768554.initial_effect(c)
 	e1:SetCategory(CATEGORY_CONTROL)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetCondition(c21768554.condition)
 	e1:SetTarget(c21768554.target)
 	e1:SetOperation(c21768554.operation)
@@ -13,12 +13,11 @@ function c21768554.initial_effect(c)
 	--destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(21768554,0))
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EVENT_PHASE+PHASE_END)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCountLimit(1)
 	e2:SetCondition(c21768554.descon)
-	e2:SetTarget(c21768554.destg)
 	e2:SetOperation(c21768554.desop)
 	c:RegisterEffect(e2)
 end
@@ -50,13 +49,13 @@ function c21768554.operation(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsFaceup() and tc:GetCounter(0x100e)>0 and tc:IsRelateToEffect(e) then
 			c:SetCardTarget(tc)
 			local e1=Effect.CreateEffect(c)
-			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+			e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_SET_CONTROL)
-			e1:SetValue(tp)
+			e1:SetValue(c21768554.ctval)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
 			e1:SetCondition(c21768554.con)
-			tc:RegisterEffect(e1)
+			tc:RegisterEffect(e1,true)
 		end
 		tc=g:GetNext()
 	end
@@ -65,17 +64,14 @@ end
 function c21768554.con(e)
 	local c=e:GetOwner()
 	local h=e:GetHandler()
-	return c:IsHasCardTarget(h) and not c:IsDisabled() and h:GetCounter(0x100e)>0
+	return c:IsHasCardTarget(h) and h:GetCounter(0x100e)>0
+end
+function c21768554.ctval(e,c)
+	return e:GetOwnerPlayer()
 end
 function c21768554.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(21768554)~=0
 end
-function c21768554.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
-end
 function c21768554.desop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
-		Duel.Destroy(e:GetHandler(),REASON_EFFECT)
-	end
+	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 end

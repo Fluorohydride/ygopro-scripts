@@ -3,21 +3,13 @@ function c25542642.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DISABLE)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER)
 	e1:SetTarget(c25542642.target)
+	e1:SetOperation(c25542642.tgop)
 	c:RegisterEffect(e1)
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetRange(LOCATION_SZONE)
-	e2:SetCode(EVENT_CHAIN_SOLVED)
-	e2:SetLabelObject(e1)
-	e2:SetCondition(c25542642.tgcon)
-	e2:SetOperation(c25542642.tgop)
-	c:RegisterEffect(e2)
 	--cannot attack/disable
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
@@ -69,13 +61,10 @@ function c25542642.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c25542642.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end
-function c25542642.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	return re==e:GetLabelObject()
-end
 function c25542642.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local tc=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS):GetFirst()
-	if c:IsRelateToEffect(re) and tc:IsFaceup() and tc:IsRelateToEffect(re) then
+	local tc=Duel.GetFirstTarget()
+	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
 	end
 end

@@ -25,13 +25,12 @@ end
 function c37744402.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and tc and tc:IsRelateToEffect(e) and c37744402.filter(tc) then
+	if c:IsRelateToEffect(e) and c:IsFaceup() and tc and tc:IsRelateToEffect(e) and tc:IsControlerCanBeChanged() then
 		c:SetCardTarget(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_CONTROL)
-		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE+EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_CANNOT_DISABLE)
-		e1:SetRange(LOCATION_MZONE)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE+EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetValue(tp)
 		e1:SetLabel(0)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
@@ -42,5 +41,5 @@ end
 function c37744402.ctcon(e)
 	local c=e:GetOwner()
 	local h=e:GetHandler()
-	return h:IsAttribute(ATTRIBUTE_WIND) and c:IsHasCardTarget(h)
+	return c:IsHasCardTarget(h)
 end

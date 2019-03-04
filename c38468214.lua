@@ -30,7 +30,7 @@ function c38468214.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc:GetCounter(0x100e)>0 and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
 		local e1=Effect.CreateEffect(c)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE+EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_CONTROL)
 		e1:SetValue(tp)
@@ -57,7 +57,7 @@ function c38468214.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c38468214.ctcon(e)
 	local c=e:GetOwner()
-	return c:IsHasCardTarget(e:GetHandler()) and not c:IsDisabled()
+	return c:IsHasCardTarget(e:GetHandler())
 end
 function c38468214.rmctcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==e:GetLabel()
