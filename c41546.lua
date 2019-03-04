@@ -89,6 +89,6 @@ function c41546.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c41546.val(e,re,dam,r,rp,rc)
 	if bit.band(r,REASON_BATTLE)~=0 then
-		return math.floor(dam/2)
+		return math.ceil(dam/2)
 	else return dam end
 end

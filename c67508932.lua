@@ -60,18 +60,6 @@ function c67508932.rmop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterFlagEffect(67508933,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-	e1:SetCondition(c67508932.dcon)
-	e1:SetOperation(c67508932.dop)
-	e1:SetReset(RESET_PHASE+PHASE_END)
-	Duel.RegisterEffect(e1,tp)
-end
-function c67508932.dcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp
-end
-function c67508932.dop(e,tp,eg,ep,ev,re,r,rp)
-	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CHANGE_DAMAGE)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
@@ -82,7 +70,7 @@ function c67508932.dop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c67508932.val(e,re,dam,r,rp,rc)
 	if bit.band(r,REASON_BATTLE)~=0 then
-		return dam/2
+		return math.ceil(dam/2)
 	else return dam end
 end
 function c67508932.spfilter(c,e,tp)
