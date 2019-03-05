@@ -25,9 +25,6 @@ function c17956906.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		return true
 	end
 end
-function c17956906.check(g)
-	return g:GetClassCount(Card.GetCode)==#g
-end
 function c17956906.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(c17956906.spfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
@@ -50,7 +47,7 @@ function c17956906.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local pay=Duel.AnnounceNumber(tp,table.unpack(pay_list))
 	Duel.PayLPCost(tp,pay*1000)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg=g:SelectSubGroup(tp,c17956906.check,false,pay,pay)
+	local sg=g:SelectSubGroup(tp,aux.dncheck,false,pay,pay)
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,sg:GetCount(),0,0)
 end

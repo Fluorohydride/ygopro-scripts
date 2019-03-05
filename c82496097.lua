@@ -33,7 +33,7 @@ function c82496097.matfilter(c)
 	return c:IsSetCard(0x126) and c:IsType(TYPE_XYZ) and c:IsFaceup()
 end
 function c82496097.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return c82496097.matfilter(c) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) end
+	if chkc then return c82496097.matfilter(chkc) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) end
 	if chk==0 then return Duel.IsExistingTarget(c82496097.matfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c82496097.matfilter,tp,LOCATION_MZONE,0,1,1,nil)
