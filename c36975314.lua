@@ -56,7 +56,7 @@ end
 function c36975314.con(e)
 	local c=e:GetOwner()
 	local h=e:GetHandler()
-	return c:IsHasCardTarget(h) and not c:IsDisabled()
+	return c:IsHasCardTarget(h) and not h:IsImmuneToEffect(e)
 end
 function c36975314.ctval(e,c)
 	return e:GetOwnerPlayer()

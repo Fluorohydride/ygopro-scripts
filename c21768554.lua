@@ -64,7 +64,7 @@ end
 function c21768554.con(e)
 	local c=e:GetOwner()
 	local h=e:GetHandler()
-	return c:IsHasCardTarget(h) and h:GetCounter(0x100e)>0
+	return c:IsHasCardTarget(h) and h:GetCounter(0x100e)>0 and not h:IsImmuneToEffect(e)
 end
 function c21768554.ctval(e,c)
 	return e:GetOwnerPlayer()
