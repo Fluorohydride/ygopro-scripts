@@ -1,7 +1,7 @@
 --Sin サイバー・エンド・ドラゴン
 function c1710476.initial_effect(c)
 	c:EnableReviveLimit()
-	c:SetUniqueOnField(1,1,aux.FilterBoolFunction(Card.IsSetCard,0x23),LOCATION_MZONE)
+	c:SetUniqueOnField(1,1,c1710476.uqfilter,LOCATION_MZONE)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -35,17 +35,41 @@ function c1710476.initial_effect(c)
 	e9:SetValue(aux.FALSE)
 	c:RegisterEffect(e9)
 end
+function c1710476.uqfilter(c)
+	if Duel.IsPlayerAffectedByEffect(c:GetControler(),75223115) then
+		return c:IsCode(1710476)
+	else
+		return c:IsSetCard(0x23)
+	end
+end
 function c1710476.spfilter(c)
 	return c:IsCode(1546123) and c:IsAbleToRemoveAsCost()
 end
+function c1710476.spfilter2(c,tp)
+	return c:IsHasEffect(48829461,tp) and c:IsAbleToRemoveAsCost() and Duel.GetMZoneCount(tp,c)>0
+end
 function c1710476.spcon(e,c)
 	if c==nil then return true end
-	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c1710476.spfilter,c:GetControler(),LOCATION_EXTRA,0,1,nil)
+	local tp=c:GetControler()
+	local b1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c1710476.spfilter,tp,LOCATION_EXTRA,0,1,nil)
+	local b2=Duel.IsExistingMatchingCard(c1710476.spfilter2,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil,tp)
+	return b1 or b2
 end
 function c1710476.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local tc=Duel.GetFirstMatchingCard(c1710476.spfilter,tp,LOCATION_EXTRA,0,nil)
-	Duel.Remove(tc,POS_FACEUP,REASON_COST)
+	local b1=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c1710476.spfilter,tp,LOCATION_EXTRA,0,1,nil)
+	local b2=Duel.IsExistingMatchingCard(c1710476.spfilter2,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil,tp)
+	if b2 and (not b1 or Duel.SelectYesNo(tp,aux.Stringid(48829461,0))) then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+		local tg=Duel.SelectMatchingCard(tp,c1710476.spfilter2,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,1,nil,tp)
+		local te=tg:GetFirst():IsHasEffect(48829461,tp)
+		te:UseCountLimit(tp)
+		Duel.Remove(tg,POS_FACEUP,REASON_COST)
+	else
+		local tc=Duel.GetFirstMatchingCard(c1710476.spfilter,tp,LOCATION_EXTRA,0,nil)
+		Duel.Remove(tc,POS_FACEUP,REASON_COST)
+	end
 end
 function c1710476.descon(e)
 	local f1=Duel.GetFieldCard(0,LOCATION_SZONE,5)

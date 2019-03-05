@@ -1,7 +1,7 @@
 --Sin トゥルース・ドラゴン
 function c37115575.initial_effect(c)
 	c:EnableReviveLimit()
-	c:SetUniqueOnField(1,1,aux.FilterBoolFunction(Card.IsSetCard,0x23),LOCATION_MZONE)
+	c:SetUniqueOnField(1,1,c37115575.uqfilter,LOCATION_MZONE)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(37115575,0))
@@ -40,6 +40,13 @@ function c37115575.initial_effect(c)
 	e9:SetTarget(c37115575.detg)
 	e9:SetOperation(c37115575.deop)
 	c:RegisterEffect(e9)
+end
+function c37115575.uqfilter(c)
+	if Duel.IsPlayerAffectedByEffect(c:GetControler(),75223115) then
+		return c:IsCode(37115575)
+	else
+		return c:IsSetCard(0x23)
+	end
 end
 function c37115575.cfilter(c,tp)
 	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
