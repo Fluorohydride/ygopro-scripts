@@ -68,6 +68,7 @@ function c46425662.atttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
 	local att=Duel.AnnounceAttribute(tp,1,0xff-e:GetHandler():GetAttribute())
 	e:SetLabel(att)
+	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,e:GetHandler(),1,tp,LOCATION_GRAVE)
 end
 function c46425662.attop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -98,7 +98,7 @@ function c11167052.thop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.SendtoGrave(hg,REASON_EFFECT+REASON_DISCARD)
 	if ct<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c11167052.thfilter),tp,LOCATION_GRAVE,0,ct,ct,nil)
+	local g=Duel.SelectMatchingCard(tp,c11167052.thfilter,tp,LOCATION_GRAVE,0,ct,ct,nil)
 	if g:GetCount()>0 then
 		Duel.BreakEffect()
 		Duel.SendtoHand(g,nil,REASON_EFFECT)

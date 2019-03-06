@@ -11,6 +11,7 @@ function c4064256.initial_effect(c)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetTargetRange(LOCATION_MZONE+LOCATION_GRAVE,LOCATION_MZONE+LOCATION_GRAVE)
 	e2:SetCode(EFFECT_CHANGE_RACE)
+	e2:SetCondition(c4064256.condition)
 	e2:SetValue(RACE_ZOMBIE)
 	c:RegisterEffect(e2)
 	--summon limit
@@ -32,8 +33,13 @@ function c4064256.initial_effect(c)
 	e5:SetRange(LOCATION_FZONE)
 	e5:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e5:SetTargetRange(1,1)
+	e5:SetCondition(c4064256.condition)
 	c:RegisterEffect(e5)
 end
 function c4064256.sumlimit(e,c,tp,sumtp)
 	return bit.band(sumtp,SUMMON_TYPE_ADVANCE)==SUMMON_TYPE_ADVANCE and c:GetRace()~=RACE_ZOMBIE
+end
+function c4064256.condition(e)
+	local tp=e:GetHandlerPlayer()
+	return not Duel.IsPlayerAffectedByEffect(tp,EFFECT_NECRO_VALLEY)
 end
