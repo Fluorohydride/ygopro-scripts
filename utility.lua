@@ -1861,6 +1861,7 @@ function Auxiliary.GetColumn(c,p)
 	else return nil end
 	if c:IsControler(p or 0) then return seq else return 4-seq end
 end
+--return the column of seq
 function Auxiliary.MZoneSequence(seq)
 	if seq==5 then return 1 end
 	if seq==6 then return 3 end
@@ -2150,4 +2151,8 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 	else
 		return nil
 	end
+end
+--target function of continuous trap with a card target
+function Auxiliary.ctg(e,c)
+	return e:GetHandler():IsHasCardTarget(c)
 end

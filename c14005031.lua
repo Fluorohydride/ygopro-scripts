@@ -3,7 +3,7 @@ function c14005031.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e1:SetTarget(c14005031.target)
@@ -54,7 +54,7 @@ function c14005031.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c14005031.disable(e,c)
-	return c:IsType(TYPE_EFFECT)
+	return c:IsType(TYPE_EFFECT) or bit.band(c:GetOriginalType(),TYPE_EFFECT)==TYPE_EFFECT
 end
 function c14005031.discon(e)
 	return e:GetHandler():GetFirstCardTarget()~=nil
