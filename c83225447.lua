@@ -17,9 +17,7 @@ function c83225447.initial_effect(c)
 	c:RegisterEffect(e2)
 	--atkdown
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(83225447,0))
-	e3:SetCategory(CATEGORY_ATKCHANGE)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e3:SetCode(EVENT_PHASE+PHASE_STANDBY)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCountLimit(1)
@@ -52,7 +50,6 @@ function c83225447.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c83225447.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local ec=c:GetEquipTarget()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
