@@ -20,7 +20,7 @@ function c57995165.initial_effect(c)
 	end
 end
 function c57995165.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(Card.IsControler,1,nil,tp) then Duel.RegisterFlagEffect(rp,57995165,RESET_PHASE+PHASE_END,0,1) end
+	Duel.RegisterFlagEffect(rp,57995165,RESET_PHASE+PHASE_END,0,1)
 end
 function c57995165.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFlagEffect(tp,57995165)==0 end
