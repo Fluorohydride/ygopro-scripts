@@ -28,17 +28,32 @@ function c82385847.spcon(e,c)
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 		and Duel.GetFieldGroupCount(c:GetControler(),LOCATION_MZONE,0,nil)<Duel.GetFieldGroupCount(c:GetControler(),0,LOCATION_MZONE,nil)
 end
-function c82385847.cfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x11a)
-end
 function c82385847.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c82385847.cfilter,1,nil) end
-	local sg=Duel.SelectReleaseGroup(tp,c82385847.cfilter,1,1,nil)
-	Duel.Release(sg,REASON_COST)
+	e:SetLabel(1)
+	return true
+end
+function c82385847.desfilter(c,tc,ec)
+	return c:GetEquipTarget()~=tc and c~=ec
+end
+function c82385847.costfilter(c,ec,tp)
+	return c:IsSetCard(0x11a) and Duel.IsExistingTarget(c82385847.desfilter,tp,0,LOCATION_ONFIELD,1,c,c,ec)
 end
 function c82385847.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	local c=e:GetHandler()
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end
-	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then
+		if e:GetLabel()==1 then
+			e:SetLabel(0)
+			return Duel.CheckReleaseGroup(tp,c82385847.costfilter,1,nil,c,tp)
+		else
+			return Duel.IsExistingTarget(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil)
+		end
+	end
+	if e:GetLabel()==1 then
+		e:SetLabel(0)
+		local sg=Duel.SelectReleaseGroup(tp,c82385847.costfilter,1,1,nil,c,tp)
+		Duel.Release(sg,REASON_COST)
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
