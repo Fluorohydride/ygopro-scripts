@@ -78,10 +78,10 @@ function c35606858.dccost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c35606858.cfilter(c,e,tp)
 	return c:IsRace(RACE_FIEND) and c:IsType(TYPE_MONSTER) and c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp)
-		and (c:IsAbleToHand() or c:IsAbleToDeck() or (Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)))
+		and (c:IsAbleToHand() or c:IsAbleToDeck() or Duel.GetLocationCount(tp,LOCATION_MZONE)>0)
 end
 function c35606858.dctg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c35606858.cfilter,1,nil,e,tp) end
+	if chk==0 then return Duel.IsPlayerCanSpecialSummon(tp) and eg:IsExists(c35606858.cfilter,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)
 end
 function c35606858.dcop(e,tp,eg,ep,ev,re,r,rp)
