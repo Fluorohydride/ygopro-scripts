@@ -60,7 +60,7 @@ function c69073023.spop(e,tp,eg,ep,ev,re,r,rp)
 	if tc and tc:IsRelateToEffect(e)
 		and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local mat=tg:Filter(c69073023.matfilter,tc,e,tp):GetFirst()
-		if mat and mat:IsRelateToEffect(e) then
+		if mat and mat:IsRelateToEffect(e) and not mat:IsImmuneToEffect(e) then
 			local og=mat:GetOverlayGroup()
 			if og:GetCount()>0 then
 				Duel.SendtoGrave(og,REASON_RULE)
