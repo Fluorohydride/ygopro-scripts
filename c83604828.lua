@@ -29,7 +29,7 @@ function c83604828.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if g:GetCount()==0 then return end
 	for i=1,lv do
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(83604828,1))
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COUNTER)
 		local tc=g:Select(tp,1,1,nil):GetFirst()
 		tc:AddCounter(0x1019,1)
 	end
