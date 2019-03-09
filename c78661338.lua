@@ -47,6 +47,7 @@ function c78661338.spop(e,tp,eg,ep,ev,re,r,rp)
 		local ct=Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_MZONE,nil,TYPE_LINK)
 		if Duel.Draw(tp,ct+1,REASON_EFFECT)==0 then return end
 		Duel.ShuffleHand(tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,ct,ct,nil)
 		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
 	end
