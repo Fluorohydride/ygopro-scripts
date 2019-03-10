@@ -68,6 +68,46 @@ function c269510.initial_effect(c)
 	e8:SetTarget(aux.TargetBoolFunction(Card.IsRace,RACE_CYBERSE))
 	e8:SetValue(1)
 	c:RegisterEffect(e8)
+	--check activated cards
+	if not c269510.global_check then
+		c269510.global_check=true
+		c269510.disable={}
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD)
+		ge1:SetCode(EFFECT_ACTIVATE_COST)
+		ge1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+		ge1:SetTargetRange(1,1)
+		ge1:SetTarget(c269510.regtg)
+		ge1:SetOperation(c269510.regop1)
+		Duel.RegisterEffect(ge1,0)
+		local ge2=Effect.CreateEffect(c)
+		ge2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge2:SetCode(EVENT_CHAINING)
+		ge2:SetOperation(c269510.regop2)
+		Duel.RegisterEffect(ge2,0)
+	end
+end
+function c269510.regtg(e,te,tp)
+	if te:IsActiveType(TYPE_MONSTER) and te:GetHandler():IsRace(RACE_CYBERSE) then
+		e:SetLabel(1)
+	else
+		e:SetLabel(0) 
+	end
+	return true
+end
+function c269510.regop1(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetLabel()==1 then
+		Duel.RegisterFlagEffect(tp,269510,RESET_CHAIN,0,1)
+	else
+		Duel.ResetFlagEffect(tp,269510)
+	end
+end
+function c269510.regop2(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetFlagEffect(tp,269510)~=0 then
+		c269510.disable[ev]=true
+	else
+		c269510.disable[ev]=false
+	end
 end
 function c269510.limfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_LINK)
@@ -86,7 +126,7 @@ function c269510.cfilter(c)
 end
 function c269510.discon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetMatchingGroupCount(c269510.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)>1
-		and re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsRace(RACE_CYBERSE)
+		and c269510.disable[ev]
 end
 function c269510.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
