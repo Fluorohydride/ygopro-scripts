@@ -48,7 +48,7 @@ function c39910367.op(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c39910367.rcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_COST)~=0 and ep==e:GetOwnerPlayer() and e:GetHandler():GetCounter(0x1)>=ev
+	return re:IsActivated() and bit.band(r,REASON_COST)~=0 and ep==e:GetOwnerPlayer() and e:GetHandler():GetCounter(0x1)>=ev
 end
 function c39910367.rop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RemoveCounter(ep,0x1,ev,REASON_EFFECT)
