@@ -40,14 +40,6 @@ function c13893596.initial_effect(c)
 	e5:SetCondition(c13893596.recon)
 	e5:SetValue(LOCATION_REMOVED)
 	c:RegisterEffect(e5)
-	--win
-	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e6:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_DELAY)
-	e6:SetCode(EVENT_TO_GRAVE)
-	e6:SetRange(LOCATION_MZONE)
-	e6:SetOperation(c13893596.winop)
-	c:RegisterEffect(e6)
 end
 function c13893596.cfilter(c)
 	return not c:IsAbleToDeckOrExtraAsCost()
@@ -78,9 +70,13 @@ function c13893596.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.SelectMatchingCard(tp,c13893596.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
-	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE)
-		and c:IsRelateToEffect(e) and c:IsFaceup() then
-		tc:CreateRelation(c,RESET_EVENT+RESETS_STANDARD)
+	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) and c:IsRelateToEffect(e) then
+		tc:CreateRelation(c,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
+		local g=Duel.GetMatchingGroup(c13893596.filter,tp,LOCATION_GRAVE,0,nil,c)
+		if c:GetOriginalCode()==13893596 and c:IsFaceup() and g:IsContains(tc) and g:GetClassCount(Card.GetCode)==5 then
+			local WIN_REASON_EXODIUS = 0x14
+			Duel.Win(tp,WIN_REASON_EXODIUS)
+		end
 	end
 end
 function c13893596.atkval(e,c)
@@ -88,12 +84,4 @@ function c13893596.atkval(e,c)
 end
 function c13893596.recon(e)
 	return e:GetHandler():IsFaceup()
-end
-function c13893596.winop(e,tp,eg,ep,ev,re,r,rp)
-	local WIN_REASON_EXODIUS = 0x14
-	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(c13893596.filter,tp,LOCATION_GRAVE,0,nil,c)
-	if g:GetClassCount(Card.GetCode)==5 then
-		Duel.Win(tp,WIN_REASON_EXODIUS)
-	end
 end

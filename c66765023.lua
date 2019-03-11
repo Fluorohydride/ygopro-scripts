@@ -32,7 +32,7 @@ function c66765023.valcon(e,re,r,rp)
 	return res
 end
 function c66765023.effcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(66765023)~=0
+	return e:GetHandler():GetFlagEffect(66765023)~=0 and Duel.GetTurnPlayer()~=e:GetHandlerPlayer()
 end
 function c66765023.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -40,11 +40,11 @@ function c66765023.effop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(66765023,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
+	e1:SetProperty(EFFECT_FLAG_CLIENT_HINT+EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetCode(EVENT_BATTLE_DAMAGE)
 	e1:SetCondition(c66765023.wincon)
 	e1:SetOperation(c66765023.winop)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,2)
 	c:RegisterEffect(e1)
 end
 function c66765023.wincon(e,tp,eg,ep,ev,re,r,rp)
