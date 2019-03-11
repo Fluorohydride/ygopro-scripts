@@ -15,6 +15,7 @@ function c73551138.initial_effect(c)
 	e4:SetCategory(CATEGORY_DISABLE)
 	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_SUMMON_SUCCESS)
+	e4:SetCondition(c73551138.negcon)
 	e4:SetOperation(c73551138.negop)
 	c:RegisterEffect(e4)
 	local e5=e4:Clone()
@@ -23,6 +24,9 @@ function c73551138.initial_effect(c)
 end
 function c73551138.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x3a)
+end
+function c73551138.negcon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.IsExistingMatchingCard(c73551138.filter,tp,LOCATION_MZONE,0,1,e:GetHandler())
 end
 function c73551138.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
