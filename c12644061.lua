@@ -63,7 +63,8 @@ function c12644061.disop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c12644061.condition(e)
 	local tp=e:GetHandlerPlayer()
-	return not Duel.IsPlayerAffectedByEffect(tp,EFFECT_NECRO_VALLEY)
+	return not Duel.IsPlayerAffectedByEffect(tp,EFFECT_NECRO_VALLEY) 
+		and not Duel.IsPlayerAffectedByEffect(1-tp,EFFECT_NECRO_VALLEY)
 end
 function c12644061.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
