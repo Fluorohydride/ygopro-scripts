@@ -31,12 +31,8 @@ function c39185163.disrmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	c:RegisterFlagEffect(39185163,RESET_CHAIN,0,1)
 end
 function c39185163.disrmcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=re:GetHandler()
-	local race=c:GetRace()
-	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
-	if loc==LOCATION_HAND then race=c:GetOriginalRace() end
-	if loc==LOCATION_MZONE and not c:IsLocation(LOCATION_MZONE) then race=c:GetPreviousRaceOnField() end
-	return race==RACE_ZOMBIE and not c:IsCode(39185163)
+	local race,code1,code2=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_RACE,CHAININFO_TRIGGERING_CODE,CHAININFO_TRIGGERING_CODE2)
+	return race&RACE_ZOMBIE>0 and code1~=39185163 and code2~=39185163
 end
 function c39185163.disrmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.IsChainDisablable(ev) and Duel.GetFlagEffect(tp,39185163)==0
