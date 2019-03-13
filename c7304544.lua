@@ -22,13 +22,14 @@ function c7304544.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c7304544.filter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) or (c:IsCode(7304544) and c:IsFaceup())
+	return c:IsCode(7304544) and c:IsFaceup()
 end
 function c7304544.filter2(c)
 	return c:IsType(TYPE_MONSTER) and not c:IsRace(RACE_PLANT+RACE_BEAST)
 end
 function c7304544.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp==Duel.GetTurnPlayer() and not Duel.IsExistingMatchingCard(c7304544.filter,tp,LOCATION_ONFIELD,0,1,nil) 
+	return tp==Duel.GetTurnPlayer() and not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_ONFIELD,0,1,nil,TYPE_SPELL+TYPE_TRAP)
+		and not Duel.IsExistingMatchingCard(c7304544.filter,tp,LOCATION_ONFIELD,0,1,nil)
 		and not Duel.IsExistingMatchingCard(c7304544.filter2,tp,LOCATION_GRAVE,0,1,nil)
 end
 function c7304544.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -38,8 +39,7 @@ function c7304544.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c7304544.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e)
-		and not Duel.IsExistingMatchingCard(c7304544.filter,tp,LOCATION_ONFIELD,0,1,nil)
-		and not Duel.IsExistingMatchingCard(c7304544.filter2,tp,LOCATION_GRAVE,0,1,nil) then
+		and not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_ONFIELD,0,1,nil,TYPE_SPELL+TYPE_TRAP) then
 		Duel.SpecialSummon(e:GetHandler(),0,tp,tp,false,false,POS_FACEUP)
 	end
 end
