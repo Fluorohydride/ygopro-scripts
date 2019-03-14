@@ -31,46 +31,6 @@ function c88305705.initial_effect(c)
 	e3:SetTarget(c88305705.rmtg)
 	e3:SetOperation(c88305705.rmop)
 	c:RegisterEffect(e3)
-	--check activated cards
-	if not c88305705.global_check then
-		c88305705.global_check=true
-		c88305705.disable={}
-		local ge1=Effect.CreateEffect(c)
-		ge1:SetType(EFFECT_TYPE_FIELD)
-		ge1:SetCode(EFFECT_ACTIVATE_COST)
-		ge1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		ge1:SetTargetRange(1,1)
-		ge1:SetTarget(c88305705.regtg)
-		ge1:SetOperation(c88305705.regop1)
-		Duel.RegisterEffect(ge1,0)
-		local ge2=Effect.CreateEffect(c)
-		ge2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge2:SetCode(EVENT_CHAINING)
-		ge2:SetOperation(c88305705.regop2)
-		Duel.RegisterEffect(ge2,0)
-	end
-end
-function c88305705.regtg(e,te,tp)
-	if te:IsActiveType(TYPE_MONSTER) and te:GetHandler():IsRace(RACE_CYBERSE) then
-		e:SetLabel(1)
-	else
-		e:SetLabel(0) 
-	end
-	return true
-end
-function c88305705.regop1(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetLabel()==1 then
-		Duel.RegisterFlagEffect(tp,88305705,RESET_CHAIN,0,1)
-	else
-		Duel.ResetFlagEffect(tp,88305705)
-	end
-end
-function c88305705.regop2(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFlagEffect(tp,88305705)~=0 then
-		c88305705.disable[ev]=true
-	else
-		c88305705.disable[ev]=false
-	end
 end
 function c88305705.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)
@@ -108,7 +68,8 @@ function c88305705.ftarget(e,c)
 end
 function c88305705.discon(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) then return false end
-	return c88305705.disable[ev]
+	local atk=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_ATTACK)
+	return re:IsActiveType(TYPE_MONSTER) and atk==0
 end
 function c88305705.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)

@@ -50,7 +50,8 @@ function c9272381.effcon(e)
 	return e:GetHandler():GetOverlayCount()>0
 end
 function c9272381.condition(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsAttribute(ATTRIBUTE_DARK) and Duel.IsChainNegatable(ev)
+	local attr=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_ATTRIBUTE)
+	return ep~=tp and re:IsActiveType(TYPE_MONSTER) and attr&ATTRIBUTE_DARK>0 and Duel.IsChainNegatable(ev)
 end
 function c9272381.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

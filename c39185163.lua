@@ -24,40 +24,6 @@ function c39185163.initial_effect(c)
 	e2:SetTarget(c39185163.sptg)
 	e2:SetOperation(c39185163.spop)
 	c:RegisterEffect(e2)
-	--check activated cards
-	if not c39185163.global_check then
-		c39185163.global_check=true
-		c39185163.disable={}
-		local ge1=Effect.CreateEffect(c)
-		ge1:SetType(EFFECT_TYPE_FIELD)
-		ge1:SetCode(EFFECT_ACTIVATE_COST)
-		ge1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		ge1:SetTargetRange(1,1)
-		ge1:SetTarget(c39185163.regtg)
-		ge1:SetOperation(c39185163.regop1)
-		Duel.RegisterEffect(ge1,0)
-		local ge2=Effect.CreateEffect(c)
-		ge2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge2:SetCode(EVENT_CHAINING)
-		ge2:SetOperation(c39185163.regop2)
-		Duel.RegisterEffect(ge2,0)
-	end
-end
-function c39185163.regtg(e,te,tp)
-	local tc=te:GetHandler()
-	if te:IsActiveType(TYPE_MONSTER) and not tc:IsCode(39185163) and tc:IsRace(RACE_ZOMBIE) then
-		e:SetLabel(1)
-	else
-		e:SetLabel(0) 
-	end
-	return true
-end
-function c39185163.regop1(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetLabel()==1 then
-		Duel.RegisterFlagEffect(tp,39185165,RESET_CHAIN,0,1)
-	else
-		Duel.ResetFlagEffect(tp,39185165)
-	end
 end
 function c39185163.disrmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -65,7 +31,8 @@ function c39185163.disrmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	c:RegisterFlagEffect(39185163,RESET_CHAIN,0,1)
 end
 function c39185163.disrmcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFlagEffect(rp,39185165)~=0
+	local race,code1,code2=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_RACE,CHAININFO_TRIGGERING_CODE,CHAININFO_TRIGGERING_CODE2)
+	return race&RACE_ZOMBIE>0 and code1~=39185163 and code2~=39185163
 end
 function c39185163.disrmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.IsChainDisablable(ev) and Duel.GetFlagEffect(tp,39185163)==0

@@ -15,7 +15,8 @@ function c5908650.initial_effect(c)
 	Duel.AddCustomActivityCounter(5908650,ACTIVITY_CHAIN,c5908650.chainfilter)
 end
 function c5908650.chainfilter(re,tp,cid)
-	return not (re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsAttribute(ATTRIBUTE_LIGHT))
+	local attr=Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_ATTRIBUTE)
+	return not (re:IsActiveType(TYPE_MONSTER) and attr&ATTRIBUTE_LIGHT==0)
 end
 function c5908650.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(5908650,tp,ACTIVITY_CHAIN)==0 end
