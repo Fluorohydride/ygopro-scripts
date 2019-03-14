@@ -42,7 +42,7 @@ function c73659078.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ShuffleHand(tp)
 	local ct=cg:GetCount()
 	for i=1,ct do
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(73659078,1))
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COUNTER)
 		local tc=g:Select(tp,1,1,nil):GetFirst()
 		tc:AddCounter(0x1015,1)
 	end

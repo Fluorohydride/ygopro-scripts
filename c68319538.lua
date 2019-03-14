@@ -45,7 +45,7 @@ function c68319538.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if ct==0 or g:GetCount()==0 then return end
 	for i=1,ct do
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(68319538,2))
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COUNTER)
 		local sg=g:Select(tp,1,1,nil)
 		sg:GetFirst():AddCounter(0x100e,1)
 	end

@@ -63,7 +63,7 @@ end
 function c63101919.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetLabel()
 	for i=1,ct do
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(63101919,3))
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COUNTER)
 		local g=Duel.SelectMatchingCard(tp,Card.IsCanAddCounter,tp,LOCATION_MZONE,0,1,1,nil,0x1,1)
 		if g:GetCount()==0 then return end
 		g:GetFirst():AddCounter(0x1,1)
