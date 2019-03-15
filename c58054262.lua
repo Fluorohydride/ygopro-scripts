@@ -58,7 +58,7 @@ function c58054262.sptarget_selector(c,tp,g,sg,i)
 end
 function c58054262.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	local g=Duel.GetMatchingGroup(c22666164.sptargetfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
+	local g=Duel.GetMatchingGroup(c58054262.sptargetfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
 	local sg=Group.CreateGroup()
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>=2
@@ -70,6 +70,7 @@ function c58054262.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		sg:Merge(g1)
 		g:Sub(g1)
 	end
+	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,3,0,0)
 end
 function c58054262.spop(e,tp,eg,ep,ev,re,r,rp)
