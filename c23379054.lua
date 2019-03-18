@@ -50,7 +50,7 @@ function c23379054.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,c23379054.filter1,tp,LOCATION_GRAVE,0,1,1,nil,e,tp,c:GetLevel())
 	g:AddCard(e:GetHandler())
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,2,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,2,tp,LOCATION_GRAVE)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c23379054.operation(e,tp,eg,ep,ev,re,r,rp)

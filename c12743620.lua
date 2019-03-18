@@ -27,7 +27,11 @@ function c12743620.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	e:SetLabelObject(g1:GetFirst())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g2=Duel.SelectTarget(tp,c12743620.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,g1:GetFirst():GetLevel())
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g1,1,0,0)
+	if g1:GetFirst():IsControler(tp) then
+		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g1,1,tp,LOCATION_GRAVE)
+	else
+		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g1,1,1-tp,LOCATION_GRAVE)
+	end
 end
 function c12743620.activate(e,tp,eg,ep,ev,re,r,rp)
 	local hc=e:GetLabelObject()

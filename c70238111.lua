@@ -38,7 +38,11 @@ function c70238111.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,c70238111.filter,tp,LOCATION_GRAVE+LOCATION_MZONE,0,1,1,nil,tp)
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
+	if g:GetFirst():IsLocation(LOCATION_GRAVE) then
+		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,tp,LOCATION_GRAVE)
+	else
+		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c70238111.activate(e,tp,eg,ep,ev,re,r,rp)

@@ -30,7 +30,7 @@ function c81171949.rmcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c81171949.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,e:GetHandler(),1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,e:GetHandler(),1,tp,LOCATION_GRAVE)
 end
 function c81171949.filter(c)
 	return c:IsCode(81171949) and c:GetFlagEffect(81171949)~=0

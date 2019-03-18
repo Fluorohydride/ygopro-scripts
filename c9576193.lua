@@ -25,7 +25,7 @@ function c9576193.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g2=Duel.SelectTarget(tp,c9576193.filter2,tp,LOCATION_GRAVE,0,1,1,nil,g1:GetFirst():GetLevel())
 	e:SetLabelObject(g1:GetFirst())
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g2,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g2,1,tp,LOCATION_GRAVE)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c9576193.activate(e,tp,eg,ep,ev,re,r,rp)

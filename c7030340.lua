@@ -27,13 +27,13 @@ function c7030340.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c7030340.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c7030340.filter1,tp,LOCATION_GRAVE,0,nil)
-	Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
+	local ct=Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if ct>0 and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
-		e1:SetValue(g:GetCount()*200)
+		e1:SetValue(ct*200)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 	end

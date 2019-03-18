@@ -35,7 +35,7 @@ function c49600724.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local sg=rg:FilterSelect(tp,Card.IsAttribute,2,2,nil,ac)
 	Duel.SetTargetCard(sg)
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,sg,2,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,sg,2,PLAYER_ALL,LOCATION_GRAVE)
 end
 function c49600724.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)

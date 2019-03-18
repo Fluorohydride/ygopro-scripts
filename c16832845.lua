@@ -48,13 +48,7 @@ end
 function c16832845.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c16832845.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil) end
 	local g=Duel.GetMatchingGroup(c16832845.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil)
-	if g:FilterCount(Card.IsControler,nil,1-tp)==0 then
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),tp,LOCATION_GRAVE)
-	elseif g:FilterCount(Card.IsControler,nil,tp)==0 then
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),1-tp,LOCATION_GRAVE)
-	else
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),PLAYER_ALL,LOCATION_GRAVE)
-	end
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)
 end
 function c16832845.spfilter(c,e,tp)
 	return c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

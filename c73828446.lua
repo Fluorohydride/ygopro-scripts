@@ -73,8 +73,7 @@ function c73828446.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabelObject(bc)
 	if chk==0 then return bc:IsAbleToRemove()
 		and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,bc) end
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,bc,1,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,LOCATION_ONFIELD)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,bc,1,bc:GetControler(),LOCATION_GRAVE)
 end
 function c73828446.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local bc=e:GetLabelObject()

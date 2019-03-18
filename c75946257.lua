@@ -18,7 +18,10 @@ function c75946257.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,c75946257.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)
+	local tc=g:GetFirst()
+	if tc then
+		Duel.SetOperationInfo(0,CATEGORY_REMOVE,tc,1,tc:GetControler(),LOCATION_GRAVE)
+	end
 end
 function c75946257.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

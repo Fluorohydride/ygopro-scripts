@@ -26,13 +26,16 @@ function c71587526.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c71587526.filter,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
 end
-function c71587526.rfilter(c,code)
-	return c:IsCode(code) and c:IsAbleToRemove()
+function c71587526.rfilter(c,tc)
+	return c:IsCode(tc:GetCode()) and c:IsAbleToRemove()
 end
 function c71587526.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 then
-		local rg=Duel.GetMatchingGroup(c71587526.rfilter,tp,0,LOCATION_GRAVE,nil,tc:GetCode())
-		Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)
+		local rg=Duel.GetMatchingGroup(c71587526.rfilter,tp,0,LOCATION_GRAVE,nil,tc)
+		if #rg>0 then
+			Duel.BreakEffect()
+			Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)
+		end
 	end
 end

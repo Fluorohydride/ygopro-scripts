@@ -52,8 +52,14 @@ function c11270236.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g1=Duel.SelectTarget(tp,c11270236.rmfilter1,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,1,nil,tp)
 	local g2=Duel.GetMatchingGroup(c11270236.rmfilter2,tp,0,LOCATION_MZONE,nil,g1:GetFirst():GetAttribute())
+	local gr=false
+	if g1:GetFisrt():IsLocation(LOCATION_GRAVE) then gr=true end
 	g1:Merge(g2)
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g1,g1:GetCount(),0,0)
+	if gr then
+		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g1,g1:GetCount(),tp,LOCATION_GRAVE)
+	else
+		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g1,g1:GetCount(),0,0)
+	end
 end
 function c11270236.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

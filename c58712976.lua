@@ -52,7 +52,7 @@ function c58712976.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if Duel.IsExistingTarget(c58712976.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,3,nil) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local g=Duel.SelectTarget(tp,c58712976.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,3,3,nil)
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,3,0,0)
+		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,3,PLAYER_ALL,LOCATION_GRAVE)
 	end
 end
 function c58712976.rmop(e,tp,eg,ep,ev,re,r,rp)

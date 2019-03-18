@@ -32,7 +32,7 @@ function c82140600.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	g1:Merge(g3)
 	Duel.SetTargetCard(g1)
 	local dg=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g1,5,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g1,5,tp,LOCATION_GRAVE)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,dg,dg:GetCount(),0,0)
 end
 function c82140600.activate(e,tp,eg,ep,ev,re,r,rp)

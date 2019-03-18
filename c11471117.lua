@@ -55,13 +55,19 @@ function c11471117.rmcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c11471117.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local tc=e:GetHandler():GetEquipTarget():GetBattleTarget()
-	Duel.SetTargetCard(tc)
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,tc,1,0,0)
 end
 function c11471117.rmop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
-		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
-	end
+	local c=e:GetHandler()
+	local tc=c:GetEquipTarget():GetBattleTarget()
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(EVENT_DAMAGE_STEP_END)
+	e1:SetReset(RESET_PHASE+PHASE_DAMAGE)
+	e1:SetLabelObject(tc)
+	e1:SetOperation(c11471117.rmop2)
+	Duel.RegisterEffect(e1,tp)
+end
+function c11471117.rmop2(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 end
