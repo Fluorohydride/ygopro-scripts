@@ -67,9 +67,8 @@ end
 function c47355498.conntp(e)
 	return not Duel.IsPlayerAffectedByEffect(1-e:GetHandler():GetControler(),EFFECT_NECRO_VALLEY_IM)
 end
-function c47355498.disfilter(c,im0,im1)
-	if c:IsControler(0) then return im0 and c:IsHasEffect(EFFECT_NECRO_VALLEY)
-	else return im1 and c:IsHasEffect(EFFECT_NECRO_VALLEY) end
+function c47355498.disfilter(c)
+	return c:IsHasEffect(EFFECT_NECRO_VALLEY)
 end
 function c47355498.discheck(ev,category,re,im0,im1)
 	local ex,tg,ct,p,v=Duel.GetOperationInfo(ev,category)
@@ -81,7 +80,15 @@ function c47355498.discheck(ev,category,re,im0,im1)
 		end
 	end
 	if tg and tg:GetCount()>0 then
-		return tg:IsExists(c47355498.disfilter,1,nil,im0,im1)
+		return tg:IsExists(c47355498.disfilter,1,nil)
+	end
+	return false
+end
+function c47355498.discheck2(ev,category)
+	local ex,tg,ct,p,v=Duel.GetOperationInfo(ev,category)
+	if not ex then return false end
+	if v==LOCATION_GRAVE and ct>0 and tg then
+		return tg:IsExists(c47355498.disfilter,1,nil)
 	end
 	return false
 end
@@ -92,10 +99,10 @@ function c47355498.disop(e,tp,eg,ep,ev,re,r,rp)
 	local im0=not Duel.IsPlayerAffectedByEffect(0,EFFECT_NECRO_VALLEY_IM)
 	local im1=not Duel.IsPlayerAffectedByEffect(1,EFFECT_NECRO_VALLEY_IM)
 	if not res and c47355498.discheck(ev,CATEGORY_SPECIAL_SUMMON,re,im0,im1) then res=true end
-	if not res and c47355498.discheck(ev,CATEGORY_REMOVE,re,im0,im1) then res=true end
 	if not res and c47355498.discheck(ev,CATEGORY_TOHAND,re,im0,im1) then res=true end
 	if not res and c47355498.discheck(ev,CATEGORY_TODECK,re,im0,im1) then res=true end
 	if not res and c47355498.discheck(ev,CATEGORY_TOEXTRA,re,im0,im1) then res=true end
 	if not res and c47355498.discheck(ev,CATEGORY_LEAVE_GRAVE,re,im0,im1) then res=true end
+	if not res and c47355498.discheck2(ev,CATEGORY_REMOVE) then res=true end
 	if res then Duel.NegateEffect(ev) end
 end
