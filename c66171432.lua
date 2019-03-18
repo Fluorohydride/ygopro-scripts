@@ -25,14 +25,14 @@ function c66171432.filter(c,e,tp)
 	return c:IsSetCard(0xe6) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c66171432.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,30459350)
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,EFFECT_IRON_WALL)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c66171432.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c66171432.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.IsPlayerAffectedByEffect(tp,30459350) then return end
+	if Duel.IsPlayerAffectedByEffect(tp,EFFECT_IRON_WALL) then return end
 	Duel.ConfirmDecktop(tp,3)
 	local g=Duel.GetDecktopGroup(tp,3)
 	local sg=g:Filter(c66171432.filter,nil,e,tp)

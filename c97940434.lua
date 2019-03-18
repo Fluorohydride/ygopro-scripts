@@ -23,7 +23,7 @@ function c97940434.initial_effect(c)
 	--30459350 chk
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
-	e3:SetCode(30459350)
+	e3:SetCode(EFFECT_IRON_WALL)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e3:SetTargetRange(0,1)

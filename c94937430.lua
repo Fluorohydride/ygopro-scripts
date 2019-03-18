@@ -9,7 +9,7 @@ function c94937430.initial_effect(c)
 	c:RegisterEffect(e1)
 	--add counter
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EVENT_TO_DECK)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetOperation(c94937430.acop)

@@ -38,21 +38,24 @@ end
 function c94662235.activate1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateSummon(eg:GetFirst())
 	local ec=eg:GetFirst()
-	Duel.Remove(ec,POS_FACEUP,REASON_EFFECT)
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_PHASE+PHASE_END)
-	e1:SetRange(LOCATION_REMOVED)
-	e1:SetCountLimit(1)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-	e1:SetOperation(c94662235.retop)
-	ec:RegisterEffect(e1)
+	if Duel.Remove(ec,POS_FACEUP,REASON_EFFECT)~=0 then
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_PHASE+PHASE_END)
+		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+		e1:SetCountLimit(1)
+		e1:SetLabelObject(ec)
+		e1:SetCondition(c94662235.retcon)
+		e1:SetOperation(c94662235.retop)
+		Duel.RegisterEffect(e1,tp)
+		ec:RegisterFlagEffect(94662235,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+	end
 end
 function c94662235.condition2(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsChainNegatable(ev) and c94662235.check(tp)
 end
 function c94662235.target2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:GetFirst():IsAbleToRemove() end
+	if chk==0 then return aux.nbcon(tp,re) end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 	if re:GetHandler():IsRelateToEffect(re) then
 		Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
@@ -60,18 +63,26 @@ function c94662235.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c94662235.activate2(e,tp,eg,ep,ev,re,r,rp)
 	local ec=eg:GetFirst()
-	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
-		Duel.Remove(ec,POS_FACEUP,REASON_EFFECT)
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetRange(LOCATION_REMOVED)
-		e1:SetCountLimit(1)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		e1:SetOperation(c94662235.retop)
-		ec:RegisterEffect(e1)
+	if Duel.NegateActivation(ev) and ec:IsRelateToEffect(re) then
+		if Duel.Remove(ec,POS_FACEUP,REASON_EFFECT)~=0 then
+			local e1=Effect.CreateEffect(e:GetHandler())
+			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+			e1:SetCode(EVENT_PHASE+PHASE_END)
+			e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+			e1:SetCountLimit(1)
+			e1:SetLabelObject(ec)
+			e1:SetCondition(c94662235.retcon)
+			e1:SetOperation(c94662235.retop)
+			Duel.RegisterEffect(e1,tp)
+			ec:RegisterFlagEffect(94662235,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+		end
 	end
 end
+function c94662235.retcon(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	return tc:GetFlagEffect(94662235)~=0
+end
 function c94662235.retop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SendtoHand(e:GetHandler(),nil,REASON_EFFECT)
+	local tc=e:GetLabelObject()
+	Duel.SendtoHand(tc,nil,REASON_EFFECT)
 end

@@ -268,7 +268,7 @@ EFFECT_FLAG_FUNC_VALUE		=0x0002		--此效果的Value属性是函数
 EFFECT_FLAG_COUNT_LIMIT		=0x0004		--发动次数限制
 EFFECT_FLAG_FIELD_ONLY		=0x0008		--此效果是注册给全局环境的
 EFFECT_FLAG_CARD_TARGET		=0x0010		--取对象效果
-EFFECT_FLAG_IGNORE_RANGE	=0x0020		--影响所有区域的卡（禁止令 大宇宙 王宫的铁壁）
+EFFECT_FLAG_IGNORE_RANGE	=0x0020		--影响所有区域的卡（大宇宙）
 EFFECT_FLAG_ABSOLUTE_TARGET	=0x0040		--Target Range不会因为控制权的改变而改变
 EFFECT_FLAG_IGNORE_IMMUNE	=0x0080		--无视效果免疫
 EFFECT_FLAG_SET_AVAILABLE	=0x0100		--影响场上里侧的卡/裡側狀態可發動
@@ -542,6 +542,7 @@ EFFECT_ADD_LINK_RACE				=357	--用作连接素材时的种族
 EFFECT_EXTRA_LINK_MATERIAL		=358	--手卡的连接素材
 EFFECT_QP_ACT_IN_SET_TURN		=359	--速攻魔法可以在盖放的回合发动
 EFFECT_EXTRA_PENDULUM_SUMMON	=360	--extra pendulum summon
+EFFECT_IRON_WALL		=361	--玩家已受到"不能除外"的效果影響
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
 EVENT_STARTUP					=1000	--游戏开始时

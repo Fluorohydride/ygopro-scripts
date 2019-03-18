@@ -2156,3 +2156,9 @@ end
 function Auxiliary.ctg(e,c)
 	return e:GetHandler():IsHasCardTarget(c)
 end
+--condition of "negate activation and banish"
+function Auxiliary.nbcon(tp,re)
+	local rc=re:GetHandler()
+	return not Duel.IsPlayerAffectedByEffect(tp,EFFECT_IRON_WALL) 
+		and (not rc:IsRelateToEffect(re) or rc:IsAbleToRemove())
+end
