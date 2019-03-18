@@ -16,14 +16,18 @@ end
 function c95472621.condition(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and eg:IsExists(c95472621.cfilter,1,nil)
 end
+function c95472621.chkfilter(c)
+	return c:IsType(TYPE_MONSTER) and not c:IsAbleToRemove()
+end
 function c95472621.filter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
 end
 function c95472621.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c95472621.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil) end
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,PLAYER_ALL,LOCATION_GRAVE)
+	if chk==0 then return not Duel.IsExistingMatchingCard(c95472621.chkfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil) end
+	local g=Duel.GetMatchingGroup(c95472621.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)
 end
 function c95472621.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,TYPE_MONSTER)
+	local g=Duel.GetMatchingGroup(c95472621.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil)
 	Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 end
