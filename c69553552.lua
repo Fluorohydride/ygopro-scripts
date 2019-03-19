@@ -25,14 +25,6 @@ function c69553552.initial_effect(c)
 	e3:SetTarget(c69553552.rmtg)
 	e3:SetOperation(c69553552.rmop)
 	c:RegisterEffect(e3)
-	--win
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e4:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_DELAY)
-	e4:SetCode(EVENT_REMOVE)
-	e4:SetRange(LOCATION_SZONE)
-	e4:SetOperation(c69553552.winop)
-	c:RegisterEffect(e4)
 end
 function c69553552.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x107)
@@ -57,19 +49,17 @@ function c69553552.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local tc=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,0,1,1,nil):GetFirst()
-	if tc and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0
-		and tc:IsSetCard(0x107) and tc:IsType(TYPE_FIELD) then
+	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,0,1,1,nil)
+	local tc=g:GetFirst()
+	if tc and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsSetCard(0x107) and tc:IsType(TYPE_FIELD) then
 		tc:RegisterFlagEffect(69553552,RESET_EVENT+RESETS_STANDARD,0,0)
+		local wg=Duel.GetMatchingGroup(c69553552.winfilter,tp,LOCATION_REMOVED,0,nil)
+		if wg:GetClassCount(Card.GetCode)==3 then
+			local WIN_REASON_FA_WINNERS=0x1d
+			Duel.Win(tp,WIN_REASON_FA_WINNERS)
+		end
 	end
 end
 function c69553552.winfilter(c)
 	return c:IsSetCard(0x107) and c:IsType(TYPE_FIELD) and c:GetFlagEffect(69553552)~=0
-end
-function c69553552.winop(e,tp,eg,ep,ev,re,r,rp)
-	local WIN_REASON_FA_WINNERS=0x1d
-	local g=Duel.GetMatchingGroup(c69553552.winfilter,tp,LOCATION_REMOVED,0,nil)
-	if g:GetClassCount(Card.GetCode)==3 then
-		Duel.Win(tp,WIN_REASON_FA_WINNERS)
-	end
 end

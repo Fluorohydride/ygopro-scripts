@@ -3,26 +3,18 @@ function c60162470.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(c60162470.target)
+	e1:SetOperation(c60162470.tgop)
 	c:RegisterEffect(e1)
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetRange(LOCATION_SZONE)
-	e2:SetCode(EVENT_CHAIN_SOLVED)
-	e2:SetLabelObject(e1)
-	e2:SetCondition(c60162470.tgcon)
-	e2:SetOperation(c60162470.tgop)
-	c:RegisterEffect(e2)
 	--atkup
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetCode(EFFECT_UPDATE_ATTACK)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e3:SetTarget(c60162470.atktg1)
+	e3:SetTarget(aux.ctg)
 	e3:SetValue(c60162470.atkval1)
 	c:RegisterEffect(e3)
 	--atkup
@@ -72,18 +64,12 @@ function c60162470.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c60162470.filter,tp,LOCATION_MZONE,0,1,1,nil,tg)
 end
-function c60162470.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	return re==e:GetLabelObject()
-end
 function c60162470.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local tc=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS):GetFirst()
-	if c:IsRelateToEffect(re) and tc:IsFaceup() and tc:IsRelateToEffect(re) then
+	local tc=Duel.GetFirstTarget()
+	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
 	end
-end
-function c60162470.atktg1(e,c)
-	return e:GetHandler():IsHasCardTarget(c)
 end
 function c60162470.atkfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_LINK)
