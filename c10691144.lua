@@ -3,6 +3,7 @@ function c10691144.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
+	e1:SetProperty(EFFECT_FLAG_OPTIONAL_GY_ACTION)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetOperation(c10691144.activate)
 	c:RegisterEffect(e1)
