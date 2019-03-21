@@ -19,8 +19,7 @@ function c31305911.initial_effect(c)
 end
 function c31305911.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local pos=c:GetBattlePosition()
-	return c==Duel.GetAttackTarget() and (pos==POS_FACEDOWN_DEFENSE or pos==POS_FACEDOWN_ATTACK) and c:IsLocation(LOCATION_MZONE)
+	return c==Duel.GetAttackTarget() and bit.band(c:GetBattlePosition(),POS_FACEDOWN)~=0 and c:IsLocation(LOCATION_MZONE)
 end
 function c31305911.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
