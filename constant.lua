@@ -20,7 +20,7 @@ LOCATION_FZONE		=0x100		--场地区
 LOCATION_PZONE		=0x200		--灵摆区
 --Positions 表示形式
 POS_FACEUP_ATTACK		=0x1	--表侧攻击
-POS_FACEDOWN_ATTACK		=0x2	--N/A
+POS_FACEDOWN_ATTACK		=0x2	--(reserved)
 POS_FACEUP_DEFENSE		=0x4	--表侧守备
 POS_FACEDOWN_DEFENSE	=0x8	--里侧守备
 POS_FACEUP				=0x5	--正面表示

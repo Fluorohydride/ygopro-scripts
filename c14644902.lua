@@ -32,16 +32,12 @@ function c14644902.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 			e1:SetRange(LOCATION_MZONE)
 			e1:SetCode(EVENT_PHASE+PHASE_END)
-			e1:SetCondition(c14644902.descon)
 			e1:SetOperation(c14644902.desop)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			e1:SetCountLimit(1)
 			sg:GetFirst():RegisterEffect(e1)
 		end
 	end
-end
-function c14644902.descon(e,tp,eg,ep,ev,re,r,rp)
-	return not e:GetHandler():IsHasEffect(66235877)
 end
 function c14644902.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
