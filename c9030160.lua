@@ -27,6 +27,7 @@ function c9030160.initial_effect(c)
 	c:RegisterEffect(e3)
 	local e5=e3:Clone()
 	e5:SetCode(EFFECT_CANNOT_BE_FUSION_MATERIAL)
+	e5:SetValue(c9030160.fuslimit)
 	c:RegisterEffect(e5)
 	local e6=e3:Clone()
 	e6:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
@@ -53,6 +54,10 @@ end
 function c9030160.sumlimit(e,c)
 	if not c then return false end
 	return not c:IsControler(e:GetHandlerPlayer())
+end
+function c9030160.fuslimit(e,c,sumtype)
+	if not c then return false end
+	return not c:IsControler(e:GetHandlerPlayer()) and sumtype==SUMMON_TYPE_FUSION
 end
 function c9030160.evalue(e,re,rp)
 	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and rp==1-e:GetHandlerPlayer()

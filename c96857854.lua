@@ -113,15 +113,19 @@ function c96857854.spop(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetType(EFFECT_TYPE_SINGLE)
 		e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 		e3:SetCode(EFFECT_CANNOT_BE_FUSION_MATERIAL)
-		e3:SetValue(1)
+		e3:SetValue(c96857854.fuslimit)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e3,true)
 		local e4=e3:Clone()
 		e4:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
+		e4:SetValue(1)
 		c:RegisterEffect(e4,true)
-		local e5=e3:Clone()
+		local e5=e4:Clone()
 		e5:SetCode(EFFECT_CANNOT_BE_XYZ_MATERIAL)
 		c:RegisterEffect(e5,true)
 		Duel.SpecialSummonComplete()
 	end
+end
+function c96857854.fuslimit(e,c,sumtype)
+	return sumtype==SUMMON_TYPE_FUSION
 end

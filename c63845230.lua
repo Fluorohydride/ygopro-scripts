@@ -40,6 +40,7 @@ function c63845230.initial_effect(c)
 	c:RegisterEffect(e6)
 	local e7=e5:Clone()
 	e7:SetCode(EFFECT_CANNOT_BE_FUSION_MATERIAL)
+	e7:SetValue(c63845230.fuslimit)
 	c:RegisterEffect(e7)
 	local e8=e5:Clone()
 	e8:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
@@ -57,6 +58,9 @@ function c63845230.initial_effect(c)
 	ea:SetTarget(c63845230.rmtg)
 	ea:SetOperation(c63845230.rmop)
 	c:RegisterEffect(ea)
+end
+function c63845230.fuslimit(e,c,sumtype)
+	return sumtype==SUMMON_TYPE_FUSION
 end
 function c63845230.cfilter(c)
 	return c:IsAbleToRemoveAsCost() and not c:IsType(TYPE_TOKEN)

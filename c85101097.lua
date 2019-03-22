@@ -15,12 +15,13 @@ function c85101097.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e3:SetCode(EFFECT_CANNOT_BE_FUSION_MATERIAL)
-	e3:SetValue(1)
+	e3:SetValue(c85101097.fuslimit)
 	c:RegisterEffect(e3)
 	local e4=e3:Clone()
 	e4:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
+	e4:SetValue(1)
 	c:RegisterEffect(e4)
-	local e5=e3:Clone()
+	local e5=e4:Clone()
 	e5:SetCode(EFFECT_CANNOT_BE_XYZ_MATERIAL)
 	c:RegisterEffect(e5)
 	--control
@@ -48,6 +49,9 @@ function c85101097.initial_effect(c)
 	e7:SetTarget(c85101097.damtg)
 	e7:SetOperation(c85101097.damop)
 	c:RegisterEffect(e7)
+end
+function c85101097.fuslimit(e,c,sumtype)
+	return sumtype==SUMMON_TYPE_FUSION
 end
 function c85101097.ctlcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
