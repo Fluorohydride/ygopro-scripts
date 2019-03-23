@@ -14,8 +14,8 @@ function c14624296.eqfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x9a)
 end
 function c14624296.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c14624296.eqfilter(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c14624296.eqfilter(chkc) and chkc~=e:GetHandler() end
+	if chk==0 then return e:GetHandler():IsAbleToEquip()
 		and Duel.IsExistingTarget(c14624296.eqfilter,tp,LOCATION_MZONE,0,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c14624296.eqfilter,tp,LOCATION_MZONE,0,1,1,e:GetHandler())

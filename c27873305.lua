@@ -20,18 +20,19 @@ function c27873305.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return (Duel.GetAttacker()==c or Duel.GetAttackTarget()==c)
 end
-function c27873305.thfilter(c)
+function c27873305.thfilter(c,tp)
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 and (not c:IsLocation(LOCATION_SZONE) or c:GetSequence()>4) then return false end
 	return c:IsFaceup() and (c:IsSetCard(0xaf) or c:IsSetCard(0xae)) and c:IsAbleToHand()
 end
-function c27873305.eqfilter(c)
-	return c:IsFaceup() and c:IsAbleToChangeControler()
+function c27873305.eqfilter(c,tp,chk)
+	return c:IsFaceup() and c:IsAbleToEquip(tp,chk)
 end
 function c27873305.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c27873305.thfilter(chkc) and chkc~=e:GetHandler() end
-	if chk==0 then return Duel.IsExistingTarget(c27873305.thfilter,tp,LOCATION_ONFIELD,0,1,e:GetHandler())
-		and Duel.IsExistingMatchingCard(c27873305.eqfilter,tp,0,LOCATION_MZONE,1,e:GetHandler():GetBattleTarget()) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c27873305.thfilter(chkc,tp) and chkc~=e:GetHandler() end
+	if chk==0 then return Duel.IsExistingTarget(c27873305.thfilter,tp,LOCATION_ONFIELD,0,1,e:GetHandler(),tp)
+		and Duel.IsExistingMatchingCard(c27873305.eqfilter,tp,0,LOCATION_MZONE,1,e:GetHandler():GetBattleTarget(),tp,true) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g1=Duel.SelectTarget(tp,c27873305.thfilter,tp,LOCATION_ONFIELD,0,1,1,e:GetHandler())
+	local g1=Duel.SelectTarget(tp,c27873305.thfilter,tp,LOCATION_ONFIELD,0,1,1,e:GetHandler(),tp)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g1,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,1-tp,LOCATION_MZONE)
 end
@@ -43,7 +44,7 @@ function c27873305.operation(e,tp,eg,ep,ev,re,r,rp)
 		local bc=c:GetBattleTarget()
 		if c:IsFaceup() and c:IsRelateToEffect(e) and bc:IsRelateToBattle() then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-			local g=Duel.SelectMatchingCard(tp,c27873305.eqfilter,tp,0,LOCATION_MZONE,1,1,bc)
+			local g=Duel.SelectMatchingCard(tp,c27873305.eqfilter,tp,0,LOCATION_MZONE,1,1,bc,tp,false)
 			local ec=g:GetFirst()
 			if not ec then return end
 			local atk=ec:GetTextAttack()

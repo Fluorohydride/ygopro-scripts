@@ -33,12 +33,11 @@ function c3428069.initial_effect(c)
 end
 function c3428069.filter(c,e,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==1-tp
-		and c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_EFFECT+REASON_BATTLE) and c:IsCanBeEffectTarget(e) and not c:IsForbidden()
+		and c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_EFFECT+REASON_BATTLE) and c:IsCanBeEffectTarget(e) and c:IsAbleToEquip(tp)
 end
 function c3428069.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c3428069.filter(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and eg:IsExists(c3428069.filter,1,nil,e,tp) end
+	if chk==0 then return eg:IsExists(c3428069.filter,1,nil,e,tp) end
 	local g=eg:Filter(c3428069.filter,nil,e,tp)
 	local tc=nil
 	if g:GetCount()>1 then

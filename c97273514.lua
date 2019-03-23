@@ -38,26 +38,24 @@ end
 function c97273514.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_INSECT)
 end
-function c97273514.eqfilter(c,tp)
-	return c:IsRace(RACE_INSECT) and c:CheckUniqueOnField(tp) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
+function c97273514.eqfilter(c)
+	return c:IsRace(RACE_INSECT) and c:IsType(TYPE_MONSTER) and c:IsAbleToEquip()
 end
 function c97273514.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c97273514.filter(chkc) and chkc~=c end
 	if chk==0 then return Duel.IsExistingTarget(c97273514.filter,tp,LOCATION_MZONE,0,1,c)
-		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingMatchingCard(c97273514.eqfilter,tp,LOCATION_DECK,0,1,nil,tp) end
+		and Duel.IsExistingMatchingCard(c97273514.eqfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c97273514.filter,tp,LOCATION_MZONE,0,1,1,c)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,tp,LOCATION_DECK)
 end
 function c97273514.eqop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local ec=Duel.SelectMatchingCard(tp,c97273514.eqfilter,tp,LOCATION_DECK,0,1,1,nil,tp):GetFirst()
+	local ec=Duel.SelectMatchingCard(tp,c97273514.eqfilter,tp,LOCATION_DECK,0,1,1,nil):GetFirst()
 	if ec then
 		Duel.Equip(tp,ec,tc)
 		local e1=Effect.CreateEffect(c)

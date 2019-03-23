@@ -38,15 +38,15 @@ end
 function c66094973.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsHasEffect(66094973)
 end
-function c66094973.filter(c)
-	return c:IsPosition(POS_FACEUP_DEFENSE) and c:IsAbleToChangeControler()
+function c66094973.filter(c,tp)
+	return c:IsPosition(POS_FACEUP_DEFENSE) and c:IsAbleToEquip(tp)
 end
 function c66094973.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c66094973.filter(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and Duel.GetFieldGroup(tp,LOCATION_HAND,0)~=0
-		and Duel.IsExistingTarget(c66094973.filter,tp,0,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c66094973.filter(chkc,tp) end
+	if chk==0 then return Duel.GetFieldGroup(tp,LOCATION_HAND,0)~=0
+		and Duel.IsExistingTarget(c66094973.filter,tp,0,LOCATION_MZONE,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectTarget(tp,c66094973.filter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c66094973.filter,tp,0,LOCATION_MZONE,1,1,nil,tp)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end

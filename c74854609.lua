@@ -19,8 +19,7 @@ end
 function c74854609.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local a=Duel.GetAttacker()
 	if chkc then return a==chkc end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and a:IsOnField() and a:IsCanBeEffectTarget(e) end
+	if chk==0 then return Duel.GetAttackTarget():IsAbleToEquip() and a:IsOnField() and a:IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(a)
 end
 function c74854609.eqlimit(e,c)

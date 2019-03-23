@@ -8,7 +8,6 @@ function c2648201.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetRange(LOCATION_HAND+LOCATION_MZONE)
-	e1:SetCondition(c2648201.eqcon)
 	e1:SetTarget(c2648201.eqtg)
 	e1:SetOperation(c2648201.eqop)
 	c:RegisterEffect(e1)
@@ -16,7 +15,7 @@ function c2648201.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(2648201,1))
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)	
+	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetCondition(c2648201.spcon)
@@ -24,15 +23,12 @@ function c2648201.initial_effect(c)
 	e2:SetOperation(c2648201.spop)
 	c:RegisterEffect(e2)
 end
-function c2648201.eqcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():CheckUniqueOnField(tp)
-end
 function c2648201.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x107f)
 end
 function c2648201.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c2648201.filter(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if chk==0 then return e:GetHandler():IsAbleToEquip()
 		and Duel.IsExistingTarget(c2648201.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c2648201.filter,tp,LOCATION_MZONE,0,1,1,nil)

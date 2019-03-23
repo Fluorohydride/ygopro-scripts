@@ -48,15 +48,15 @@ end
 function c82962242.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c82962242.cfilter,1,nil,tp)
 end
-function c82962242.eqfilter(c,atk)
-	return c:IsFaceup() and c:GetAttack()>atk and c:IsAbleToChangeControler()
+function c82962242.eqfilter(c,atk,tp)
+	return c:IsFaceup() and c:GetAttack()>atk and c:IsAbleToEquip(tp)
 end
 function c82962242.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c82962242.eqfilter(chkc,e:GetHandler():GetAttack()) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c82962242.eqfilter(chkc,e:GetHandler():GetAttack(),tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingTarget(c82962242.eqfilter,tp,0,LOCATION_MZONE,1,nil,e:GetHandler():GetAttack()) end
+		and Duel.IsExistingTarget(c82962242.eqfilter,tp,0,LOCATION_MZONE,1,nil,e:GetHandler():GetAttack(),tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectTarget(tp,c82962242.eqfilter,tp,0,LOCATION_MZONE,1,1,nil,e:GetHandler():GetAttack())
+	local g=Duel.SelectTarget(tp,c82962242.eqfilter,tp,0,LOCATION_MZONE,1,1,nil,e:GetHandler():GetAttack(),tp)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c82962242.eqop(e,tp,eg,ep,ev,re,r,rp)

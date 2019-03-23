@@ -16,7 +16,6 @@ function c29353756.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCategory(CATEGORY_EQUIP)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCondition(c29353756.eqcon)
 	e2:SetTarget(c29353756.eqtg)
 	e2:SetOperation(c29353756.eqop)
 	c:RegisterEffect(e2)
@@ -36,15 +35,12 @@ function c29353756.spcon(e,c)
 	return Duel.GetLP(tp)<=Duel.GetLP(1-tp)-2000
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 end
-function c29353756.eqcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():CheckUniqueOnField(tp)
-end
 function c29353756.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x107f)
 end
 function c29353756.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c29353756.filter(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if chk==0 then return e:GetHandler():IsAbleToEquip()
 		and Duel.IsExistingTarget(c29353756.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c29353756.filter,tp,LOCATION_MZONE,0,1,1,nil)
@@ -79,7 +75,7 @@ function c29353756.eqlimit(e,c)
 end
 function c29353756.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_SZONE
-		and re:IsActiveType(TYPE_TRAP) and Duel.IsChainDisablable(ev) 
+		and re:IsActiveType(TYPE_TRAP) and Duel.IsChainDisablable(ev)
 end
 function c29353756.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,29353756)

@@ -13,10 +13,10 @@ function c75719089.initial_effect(c)
 end
 function c75719089.filter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0x107a)
-		and Duel.IsExistingMatchingCard(c75719089.eqfilter,tp,LOCATION_DECK,0,1,nil,c,tp)
+		and Duel.IsExistingMatchingCard(c75719089.eqfilter,tp,LOCATION_DECK,0,1,nil,c,tp,true)
 end
-function c75719089.eqfilter(c,tc,tp)
-	return c:IsType(TYPE_EQUIP) and c:CheckEquipTarget(tc) and c:CheckUniqueOnField(tp) and not c:IsForbidden()
+function c75719089.eqfilter(c,tc,tp,chk)
+	return c:IsType(TYPE_EQUIP) and c:CheckEquipTarget(tc,tp,chk)
 end
 function c75719089.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c75719089.filter(chkc,tp) end
@@ -28,11 +28,10 @@ function c75719089.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c75719089.filter,tp,LOCATION_MZONE,0,1,1,nil,tp)
 end
 function c75719089.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsControler(tp) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		local g=Duel.SelectMatchingCard(tp,c75719089.eqfilter,tp,LOCATION_DECK,0,1,1,nil,tc,tp)
+		local g=Duel.SelectMatchingCard(tp,c75719089.eqfilter,tp,LOCATION_DECK,0,1,1,nil,tc,tp,false)
 		if g:GetCount()>0 then
 			Duel.Equip(tp,g:GetFirst(),tc)
 		end

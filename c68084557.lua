@@ -41,7 +41,7 @@ function c68084557.drop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Draw(p,d,REASON_EFFECT)
 end
 function c68084557.eqfilter(c,ec)
-	return c:IsType(TYPE_EQUIP) and c:GetEquipTarget() and c:GetEquipTarget()~=ec and c:CheckEquipTarget(ec)
+	return c:IsType(TYPE_EQUIP) and c:GetEquipTarget() and c:GetEquipTarget()~=ec and c:CheckEquipTarget(ec,c:GetControler(),true)
 end
 function c68084557.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and c68084557.eqfilter(chkc,e:GetHandler()) end
@@ -52,7 +52,7 @@ end
 function c68084557.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:CheckEquipTarget(c) then
+	if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:CheckEquipTarget(c,tc:GetControler(),true) then
 		Duel.Equip(tp,tc,c)
 	end
 end

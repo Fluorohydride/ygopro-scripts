@@ -29,7 +29,7 @@ function c97904474.eqcon(e,tp,eg,ep,ev,re,r,rp)
 		and c==Duel.GetAttackTarget() and bc:IsFaceup() and bc:IsControler(1-tp) and bc:IsRelateToBattle()
 end
 function c97904474.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
+	if chk==0 then return e:GetHandler():IsAbleToEquip() end
 end
 function c97904474.eqlimit(e,c)
 	return e:GetOwner()==c

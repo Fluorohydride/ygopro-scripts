@@ -23,12 +23,11 @@ function c77754169.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c77754169.eqfilter(c,tp)
-	return c:IsRace(RACE_INSECT) and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,2,c,c:GetCode()) and c:CheckUniqueOnField(tp)
+	return c:IsRace(RACE_INSECT) and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,2,c,c:GetCode()) and c:IsAbleToEquip()
 end
 function c77754169.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c77754169.eqfilter(chkc,tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingTarget(c77754169.eqfilter,tp,LOCATION_GRAVE,0,1,nil,tp)
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	local ct=math.min((Duel.GetLocationCount(tp,LOCATION_SZONE)),3)

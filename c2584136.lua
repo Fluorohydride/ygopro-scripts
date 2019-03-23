@@ -7,14 +7,19 @@ function c2584136.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)
 	e1:SetCondition(c2584136.eqcon)
+	e2:SetTarget(c2584136.eqtg)
 	e1:SetOperation(c2584136.eqop)
 	c:RegisterEffect(e1)
 end
 function c2584136.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and rp==1-tp 
+	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and rp==1-tp
 		and bc:IsFaceup() and bc:IsRelateToBattle()
+end
+function c2584136.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return e:GetHandler():IsAbleToEquip() end
+	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,e:GetHandler(),1,0,0)
 end
 function c2584136.eqlimit(e,c)
 	return e:GetOwner()==c

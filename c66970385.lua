@@ -20,12 +20,16 @@ function c66970385.filter(c,e,tp)
 		and Duel.IsExistingTarget(c66970385.eqfilter,tp,LOCATION_GRAVE,0,1,nil,tp,c)
 end
 function c66970385.eqfilter(c,tp,ec)
-	return c:IsSetCard(0x207a) and c:CheckUniqueOnField(tp) and c:CheckEquipTarget(ec)
+	return c:IsSetCard(0x207a) and c:CheckEquipTarget(ec,tp,true)
 end
 function c66970385.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingTarget(c66970385.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
+	if chk==0 then
+		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or not Duel.IsExistingTarget(c66970385.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp) then return false end
+		if e:GetHandler():IsLocation(LOCATION_HAND) then
+			return Duel.GetLocationCount(tp,LOCATION_SZONE)>1
+		else return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g1=Duel.SelectTarget(tp,c66970385.filter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	e:SetLabelObject(g1:GetFirst())
@@ -35,12 +39,12 @@ function c66970385.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g2,1,0,0)
 end
 function c66970385.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=e:GetLabelObject()
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local ec=tg:GetFirst()
 	if ec==tc then ec=tg:GetNext() end
-	if tc:IsRelateToEffect(e) and ec:IsRelateToEffect(e) and ec:CheckUniqueOnField(tp) and ec:CheckEquipTarget(tc)
+	if tc:IsRelateToEffect(e) and ec:IsRelateToEffect(e) and ec:CheckEquipTarget(tc)
 		and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 then
 		Duel.Equip(tp,ec,tc)
 	end

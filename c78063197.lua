@@ -90,19 +90,19 @@ function c78063197.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:CompleteProcedure()
 	end
 end
-function c78063197.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsAbleToChangeControler()
+function c78063197.filter(c,tp)
+	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsAbleToEquip(tp)
 end
 function c78063197.eqfilter(c)
 	local m=_G["c"..c:GetCode()]
 	return c:IsFaceup() and ((c:IsSetCard(0x110) and c:IsType(TYPE_FUSION)) or c:IsCode(64631466)) and m.can_equip_monster(c)
 end
 function c78063197.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c78063197.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c78063197.filter,tp,0,LOCATION_MZONE,1,nil)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c78063197.filter(chkc,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c78063197.filter,tp,0,LOCATION_MZONE,1,nil,tp)
 		and Duel.IsExistingMatchingCard(c78063197.eqfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectTarget(tp,c78063197.filter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c78063197.filter,tp,0,LOCATION_MZONE,1,1,nil,tp)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c78063197.eqop(e,tp,eg,ep,ev,re,r,rp)

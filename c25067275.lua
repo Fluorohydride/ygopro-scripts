@@ -24,7 +24,7 @@ function c25067275.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c25067275.tcfilter(tc,ec)
-	return tc:IsFaceup() and ec:CheckEquipTarget(tc)
+	return tc:IsFaceup() and ec:CheckEquipTarget(tc,ec:GetControler(),true)
 end
 function c25067275.ecfilter(c)
 	return c:IsType(TYPE_EQUIP) and Duel.IsExistingTarget(c25067275.tcfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,nil,c)
@@ -51,7 +51,7 @@ function c25067275.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	if tc==ec then tc=g:GetNext() end
-	if ec:IsFaceup() and ec:IsRelateToEffect(e) then 
+	if ec:IsFaceup() and ec:IsRelateToEffect(e) then
 		if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 			Duel.Equip(tp,ec,tc)
 			local e1=Effect.CreateEffect(e:GetHandler())

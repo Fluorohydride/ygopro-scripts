@@ -14,11 +14,10 @@ end
 function c26885836.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetBattleTarget()
 	e:SetLabelObject(tc)
-	return aux.bdogcon(e,tp,eg,ep,ev,re,r,rp) and not tc:IsForbidden()
+	return aux.bdogcon(e,tp,eg,ep,ev,re,r,rp) and tc:IsAbleToEquip(tp)
 end
 function c26885836.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return not e:GetHandler():IsHasEffect(26885836)
-		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
+	if chk==0 then return not e:GetHandler():IsHasEffect(26885836) end
 	local tc=e:GetLabelObject()
 	Duel.SetTargetCard(tc)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,tc,1,0,0)

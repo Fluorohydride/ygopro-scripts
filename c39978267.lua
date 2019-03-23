@@ -21,7 +21,7 @@ function c39978267.desfilter(c)
 	return c:IsType(TYPE_EQUIP)
 end
 function c39978267.eqfilter(c,ec)
-	return c:IsType(TYPE_EQUIP) and c:CheckEquipTarget(ec)
+	return c:IsType(TYPE_EQUIP) and c:CheckEquipTarget(ec,c:GetControler(),true)
 end
 function c39978267.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then

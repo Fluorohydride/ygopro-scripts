@@ -34,8 +34,8 @@ function c22011689.atkval(e,c)
 	return Duel.GetCounter(0,1,1,0x1041)*200
 end
 function c22011689.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
 	local bc=e:GetHandler():GetBattleTarget()
+	if chk==0 then return bc:IsAbleToEquip(tp) end
 	Duel.SetTargetCard(bc)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,bc,1,0,0)
 end
