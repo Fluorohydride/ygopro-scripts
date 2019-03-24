@@ -48,7 +48,7 @@ function c64038662.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(64038662,4))
 		local g1=Duel.SelectTarget(tp,c64038662.filter1,tp,LOCATION_MZONE,0,1,1,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		local g2=Duel.SelectTarget(tp,c64038662.filter1,tp,LOCATION_MZONE,0,1,1,g1:GetFirst())
+		local g2=Duel.SelectTarget(tp,c64038662.filter3,tp,LOCATION_MZONE,0,1,1,g1:GetFirst())
 		e:SetLabelObject(g1:GetFirst())
 	else
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)

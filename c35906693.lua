@@ -51,12 +51,17 @@ function c35906693.tgfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x107f) and c:IsType(TYPE_XYZ)
 end
 function c35906693.eqfilter(c)
-	return c:IsSetCard(0x7e) and c:IsType(TYPE_MONSTER) and c:IsAbleToEquip()
+	return c:IsSetCard(0x7e) and c:IsType(TYPE_MONSTER) and c:IsAbleToEquip(c:GetControler(),true)
 end
 function c35906693.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c35906693.tgfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c35906693.tgfilter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingMatchingCard(c35906693.eqfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,nil) end
+	if chk==0 then
+		if not Duel.IsExistingTarget(c35906693.tgfilter,tp,LOCATION_MZONE,0,1,nil)
+			or not Duel.IsExistingMatchingCard(c35906693.eqfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,nil) then return false end
+		if e:GetHandler():IsLocation(LOCATION_HAND) then
+			return Duel.GetLocationCount(tp,LOCATION_SZONE)>1
+		else return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c35906693.tgfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,tp,LOCATION_DECK+LOCATION_EXTRA)
