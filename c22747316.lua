@@ -2,9 +2,8 @@
 function c22747316.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY+CATEGORY_TOHAND)
+	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY+CATEGORY_TOHAND+CATEGORY_GRAVE_ACTION)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetProperty(EFFECT_FLAG_OPTIONAL_GY_ACTION)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetCondition(c22747316.condition)
 	e1:SetTarget(c22747316.target)
