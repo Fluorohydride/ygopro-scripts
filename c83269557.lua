@@ -1,13 +1,7 @@
 --ダーク・ヴァルキリア
 function c83269557.initial_effect(c)
+	c:EnableCounterPermit(0x1,LOCATION_MZONE,aux.IsDualState)
 	aux.EnableDualAttribute(c)
-	--counter permit
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_COUNTER_PERMIT+0x1)
-	e1:SetValue(LOCATION_MZONE)
-	e1:SetCondition(aux.IsDualState)
-	c:RegisterEffect(e1)
 	--atk up
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
