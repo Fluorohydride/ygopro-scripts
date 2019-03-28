@@ -36,16 +36,16 @@ function c96150936.indestg(e,c)
 	return c:IsSetCard(0x71) and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c96150936.desrepfilter(c)
-	return c:IsSetCard(0x71) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck()
+	return c:IsSetCard(0x71) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck() and not c:IsHasEffect(EFFECT_NECRO_VALLEY)
 end
 function c96150936.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
-		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c96150936.desrepfilter),tp,LOCATION_GRAVE,0,1,nil) end
+		and Duel.IsExistingMatchingCard(c96150936.desrepfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	return Duel.SelectEffectYesNo(tp,c,96)
 end
 function c96150936.desrepop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c96150936.desrepfilter),tp,LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c96150936.desrepfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.SendtoDeck(g,nil,2,REASON_EFFECT+REASON_REPLACE)
 end
