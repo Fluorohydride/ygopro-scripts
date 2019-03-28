@@ -73,7 +73,7 @@ function c44586426.tkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c44586426.nmfilter(c,cd)
 	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsType(TYPE_EFFECT)
-		and c:IsOriginalSetCard(0x28) and c:GetOriginalCode()~=cd
+		and c:IsSetCard(0x28) and not c:IsCode(cd)
 end
 function c44586426.nmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local cd=e:GetHandler():GetCode()
