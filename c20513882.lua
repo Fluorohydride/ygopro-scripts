@@ -25,7 +25,7 @@ function c20513882.thfilter(c,tc)
 		and c:GetOriginalLevel()==tc:GetOriginalLevel()
 		and c:GetOriginalRace()==tc:GetOriginalRace()
 		and c:GetOriginalAttribute()==tc:GetOriginalAttribute()
-		and c:GetOriginalCode()~=code1 and c:GetOriginalCode()~=code1
+		and c:GetOriginalCode()~=code1 and c:GetOriginalCode()~=code2
 		and c:IsAbleToHand()
 end
 function c20513882.target(e,tp,eg,ep,ev,re,r,rp,chk)
