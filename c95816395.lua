@@ -26,7 +26,10 @@ function c95816395.regop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c95816395.filter(c,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
-		and not Duel.IsExistingMatchingCard(Card.IsLevel,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil,c:GetLevel())
+		and not Duel.IsExistingMatchingCard(c95816395.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil,c:GetLevel())
+end
+function c95816395.cfilter(c,lv)
+	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsLevel(lv)
 end
 function c95816395.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c95816395.filter,tp,LOCATION_DECK,0,1,nil,tp) end
