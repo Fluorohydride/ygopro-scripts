@@ -42,7 +42,7 @@ end
 function c39271553.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local tc=Duel.GetFirstTarget()
 		if tc:IsRelateToEffect(e) then
 			local lv=math.abs(tc:GetLevel()-tc:GetOriginalLevel())
@@ -60,6 +60,7 @@ function c39271553.spop(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 			c:RegisterEffect(e2)
 		end
+		Duel.SpecialSummonComplete()
 	end
 end
 function c39271553.thfilter(c)
