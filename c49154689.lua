@@ -21,15 +21,14 @@ function c49154689.cfilter(c,e,tp)
 		and Duel.IsExistingMatchingCard(c49154689.spfilter,tp,0,LOCATION_GRAVE,1,nil,race,attr,e,tp)
 end
 function c49154689.spfilter(c,race,attr,e,tp)
-	return c:IsRace(race) and c:IsAttribute(attr)
+	return c:GetOriginalRace()==race and c:GetOriginalAttribute()==attr
 		and c:IsCanBeEffectTarget(e)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp)
 end
 function c49154689.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)
-	if chk==0 then return Duel.IsExistingMatchingCard(c49154689.cfilter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=Duel.SelectMatchingCard(tp,c49154689.cfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c49154689.cfilter,1,nil,e,tp) end
+	local sg=Duel.SelectReleaseGroup(tp,c49154689.cfilter,1,1,nil,e,tp)
 	e:SetLabelObject(sg:GetFirst())
 	Duel.Release(sg,REASON_COST)
 end
