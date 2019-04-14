@@ -11,7 +11,7 @@ function c68663748.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c68663748.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x31)
+	return c:IsFaceup() and c:IsSetCard(0x31) and c:IsType(TYPE_MONSTER)
 end
 function c68663748.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c68663748.filter(chkc) end
