@@ -57,7 +57,7 @@ function c66719533.drop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c66719533.effilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x105) and c:IsControler(tp)
+	return c:IsFaceup() and c:IsSetCard(0x105) and c:IsControler(tp) and c:GetPreviousControler()==tp
 end
 function c66719533.effcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c66719533.effilter,1,nil,tp)
