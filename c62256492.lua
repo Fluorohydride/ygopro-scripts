@@ -59,7 +59,7 @@ function c62256492.target(e,c)
 	return c:IsSetCard(0xbf) or c:IsSetCard(0xc0)
 end
 function c62256492.cfilter(c,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:GetBaseAttack()==1850
+	return c:IsFaceup() and c:IsControler(tp) and c:IsRace(RACE_SPELLCASTER) and c:GetBaseAttack()==1850
 end
 function c62256492.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c62256492.cfilter,1,nil,tp)
