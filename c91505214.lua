@@ -49,7 +49,7 @@ function c91505214.regop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c91505214.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return ep~=tp and c:GetFlagEffect(91505214)~=0
+	return ep~=tp and c:GetFlagEffect(91505214)~=0 and (re:GetActivateLocation()==LOCATION_GRAVE or re:GetActivateLocation()==LOCATION_HAND)
 end
 function c91505214.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,91505214)
