@@ -45,11 +45,11 @@ end
 function c94212438.plop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
+	local ids={31893528,67287533,94772232,30170981}
+	local id=ids[c:GetFlagEffect(94212438)+1]
 	local res=Duel.IsPlayerAffectedByEffect(tp,16625614) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,id,0,0x11,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP,tp,181)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 and not res then return end
-	local ids={31893528,67287533,94772232,30170981}
-	local id=ids[c:GetFlagEffect(94212438)+1]
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(94212438,1))
 	local g=Duel.SelectMatchingCard(tp,Card.IsCode,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,id)
 	local tc=g:GetFirst()
