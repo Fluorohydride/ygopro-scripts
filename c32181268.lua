@@ -20,5 +20,5 @@ function c32181268.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c32181268.aclimit(e,re,tp)
-	return not re:GetHandler():IsType(TYPE_SPIRIT) and re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)
+	return not re:GetHandler():IsType(TYPE_SPIRIT) and re:IsActiveType(TYPE_MONSTER)
 end
