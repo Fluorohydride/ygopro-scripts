@@ -23,7 +23,7 @@ function c77522571.initial_effect(c)
 	e2:SetTarget(c77522571.sptg2)
 	e2:SetOperation(c77522571.spop2)
 	c:RegisterEffect(e2)
-	--special summon
+	--level fusion
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(77522571,2))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
@@ -96,12 +96,6 @@ end
 function c77522571.costfilter(c)
 	return c:IsLevelAbove(1) and c:IsRace(RACE_FIEND)
 end
-function c77522571.fselect(c,e,tp,rg,sg)
-	sg:AddCard(c)
-	local res=c77522571.fgoal(e,tp,sg) or rg:IsExists(c77522571.fselect,1,sg,e,tp,rg,sg)
-	sg:RemoveCard(c)
-	return res
-end
 function c77522571.lvcheck(g)
 	local lv=0
 	local tc=g:GetFirst()
@@ -111,30 +105,22 @@ function c77522571.lvcheck(g)
 	end
 	return lv
 end
-function c77522571.fgoal(e,tp,sg)
-	if sg:GetCount()>1 and Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
+function c77522571.fgoal(sg,e,tp)
+	if Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
 		local lv=c77522571.lvcheck(sg)
 		Duel.SetSelectedCard(sg)
-		return Duel.CheckReleaseGroup(tp,nil,0,nil) and Duel.IsExistingMatchingCard(c77522571.spfilter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,lv)
+		return Duel.CheckReleaseGroup(tp,nil,0,nil)
+			and Duel.IsExistingMatchingCard(c77522571.spfilter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,lv)
 	else return false end
 end
 function c77522571.spfilter3(c,e,tp,lv)
-	return c:IsSetCard(0xad) and c:IsType(TYPE_FUSION) and c:IsLevel(lv) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial()
-end
-function c77522571.relfilter(c,g)
-	return g:IsContains(c)
+	return c:IsSetCard(0xad) and c:IsType(TYPE_FUSION) and c:IsLevel(lv)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial()
 end
 function c77522571.spcost3(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c77522571.costfilter,nil)
-	local g=Group.CreateGroup()
-	if chk==0 then return rg:IsExists(c77522571.fselect,1,nil,e,tp,rg,g) end
-	while true do
-		local mg=rg:Filter(c77522571.fselect,g,e,tp,rg,g)
-		if mg:GetCount()==0 or (c77522571.fgoal(e,tp,g) and not Duel.SelectYesNo(tp,210)) then break end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local sg=Duel.SelectReleaseGroup(tp,c77522571.relfilter,1,1,nil,mg)
-		g:Merge(sg)
-	end
+	if chk==0 then return rg:CheckSubGroup(c77522571.fgoal,2,99,e,tp) end
+	local g=rg:SelectSubGroup(tp,c77522571.fgoal,false,2,99,e,tp)
 	local lv=c77522571.lvcheck(g)
 	e:SetLabel(lv)
 	Duel.Release(g,REASON_COST)
