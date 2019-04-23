@@ -14,16 +14,21 @@ function c89208725.filter(c,tp)
 end
 function c89208725.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c89208725.filter,tp,LOCATION_DECK,0,1,nil,tp) end
+	if not Duel.CheckPhaseActivity() then e:SetLabel(1) else e:SetLabel(0) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c89208725.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(89208725,0))
+	if c71650854 and e:GetLabel()==1 then c71650854.popup_check=true end
 	local g=Duel.SelectMatchingCard(tp,c89208725.filter,tp,LOCATION_DECK,0,1,1,nil,tp)
+	if c71650854 then c71650854.popup_check=false end
 	local tc=g:GetFirst()
 	if tc then
 		local te=tc:GetActivateEffect()
 		local b1=tc:IsAbleToHand()
-		local b2=te:IsActivatable(tp)
+		if c71650854 and e:GetLabel()==1 then c71650854.popup_check=true end
+		local b2=te:IsActivatable(tp,true,true)
+		if c71650854 then c71650854.popup_check=false end
 		if b1 and (not b2 or Duel.SelectOption(tp,1190,1150)==0) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tc)

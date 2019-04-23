@@ -50,7 +50,7 @@ function c71650854.initial_effect(c)
 end
 function c71650854.condition(e,tp,eg,ep,ev,re,r,rp)
 	return (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
-		and not Duel.CheckPhaseActivity()
+		and (not Duel.CheckPhaseActivity() or c71650854.popup_check)
 end
 function c71650854.indcon(e)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1
