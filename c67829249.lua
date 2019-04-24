@@ -38,10 +38,5 @@ function c67829249.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_CANNOT_TRIGGER)
 		e1:SetReset(RESET_EVENT+0x17a0000+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
-		local e2=Effect.CreateEffect(e:GetHandler())
-		e2:SetType(EFFECT_TYPE_SINGLE)
-		e2:SetCode(EFFECT_CANNOT_USE_AS_COST)
-		e2:SetReset(RESET_EVENT+0x17a0000+RESET_PHASE+PHASE_END)
-		tc:RegisterEffect(e2)
 	end
 end
