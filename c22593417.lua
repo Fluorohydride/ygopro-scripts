@@ -49,6 +49,8 @@ function c22593417.hdop(e,tp,eg,ep,ev,re,r,rp)
 	if ct>1 then ct2=Duel.AnnounceNumber(tp,1,2) end
 	local g=hg:RandomSelect(tp,ct2)
 	local ct3=Duel.SendtoGrave(g,REASON_EFFECT+REASON_DISCARD)
+	if ct3<=0 then return false end
+	Duel.BreakEffect()
 	Duel.DiscardHand(1-tp,nil,ct3,ct3,REASON_EFFECT+REASON_DISCARD)
 end
 function c22593417.hdcon2(e)

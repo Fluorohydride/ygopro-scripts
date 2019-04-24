@@ -12,8 +12,8 @@ function c4041838.initial_effect(c)
 end
 function c4041838.targ(e,tp,eg,ep,ev,re,r,rp,chk)
 	local d=Duel.GetAttackTarget()
-	if chk ==0 then	return Duel.GetAttacker()==e:GetHandler()
-		and d~=nil and d:IsFaceup() and d:IsDefensePos() and d:IsFaceup() and d:IsRelateToBattle() end
+	if chk ==0 then return Duel.GetAttacker()==e:GetHandler()
+		and d~=nil and d:IsFaceup() and d:IsDefensePos() and d:IsRelateToBattle() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,d,1,0,0)
 end
 function c4041838.op(e,tp,eg,ep,ev,re,r,rp)
