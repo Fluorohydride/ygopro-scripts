@@ -71,7 +71,7 @@ end
 function c10406322.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		if tc:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)
+		if tc:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK)
 			or Duel.SelectOption(tp,aux.Stringid(10406322,2),aux.Stringid(10406322,3))==0 then
 			Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
 		else
