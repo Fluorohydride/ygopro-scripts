@@ -54,7 +54,7 @@ function c37115973.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c37115973.splimit(e,c)
-	return c:IsSetCard(0x48)
+	return c:IsSetCard(0x48) and c:IsType(TYPE_XYZ)
 end
 function c37115973.indval(e,c)
 	return c:IsType(TYPE_XYZ)
