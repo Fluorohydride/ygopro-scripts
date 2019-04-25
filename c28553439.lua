@@ -41,8 +41,7 @@ function c28553439.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,c28553439.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 		if sg:GetCount()==0 then return end
-		Duel.BreakEffect()
-		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
+		if Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)==0 then return end
 		local dg=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		if dg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(28553439,0)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
