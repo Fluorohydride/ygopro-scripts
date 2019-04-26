@@ -80,6 +80,7 @@ function c69327790.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==1 and g2 then
 		local tc=g2:GetFirst()
 		if tc:IsRelateToEffect(e) then
+			Duel.BreakEffect()
 			Duel.SendtoHand(g2,nil,REASON_EFFECT)
 		end
 	end

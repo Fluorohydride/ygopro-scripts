@@ -68,6 +68,7 @@ function c69230391.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Damage(1-tp,tc:GetLevel()*200,REASON_EFFECT)
 	end
 	if e:GetLabel()==1 then
+		Duel.BreakEffect()
 		Duel.Damage(1-tp,1000,REASON_EFFECT)
 	end
 end
