@@ -19,7 +19,6 @@ function c65687442.initial_effect(c)
 	e2:SetOperation(c65687442.thop)
 	c:RegisterEffect(e2)
 end
-c65687442.listed_names={92182447}
 function c65687442.filter(c,e,tp)
 	return c:IsSetCard(0x122) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
