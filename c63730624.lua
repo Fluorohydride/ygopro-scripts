@@ -75,7 +75,7 @@ function c63730624.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c63730624.scon1(e)
-	return e:GetHandler():GetEquipTarget() and Duel.GetTurnPlayer()==e:GetHandler():GetControler()
+	return Duel.GetTurnPlayer()==e:GetHandler():GetControler()
 end
 function c63730624.scon2(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp and Duel.GetAttacker()==e:GetHandler():GetEquipTarget()
@@ -95,7 +95,7 @@ function c63730624.sop2(e,tp,eg,ep,ev,re,r,rp)
 	d:RegisterEffect(e2)
 end
 function c63730624.ocon1(e)
-	return Duel.GetTurnPlayer()~=e:GetHandler():GetControler()
+	return e:GetHandler():GetEquipTarget() and Duel.GetTurnPlayer()~=e:GetHandler():GetControler()
 end
 function c63730624.atlimit(e,c)
 	return c~=e:GetHandler():GetEquipTarget()
@@ -103,7 +103,8 @@ end
 function c63730624.ocon2(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	return Duel.GetTurnPlayer()~=tp and d==e:GetHandler():GetEquipTarget() and a:IsRelateToBattle()
+	local tc=e:GetHandler():GetEquipTarget()
+	return tc and Duel.GetTurnPlayer()~=tp and d==tc and a:IsRelateToBattle()
 end
 function c63730624.otg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -104,14 +104,11 @@ function c37390589.operation(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetCode(EFFECT_EQUIP_LIMIT)
 			e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-			e2:SetValue(c37390589.eqlimit)
+			e2:SetValue(1)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			c:RegisterEffect(e2)
 		else
 			c:CancelToGrave(false)
 		end
 	end
-end
-function c37390589.eqlimit(e,c)
-	return c:GetControler()==e:GetOwnerPlayer()
 end

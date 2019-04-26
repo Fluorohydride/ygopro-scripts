@@ -545,7 +545,7 @@ EFFECT_EXTRA_PENDULUM_SUMMON	=360	--extra pendulum summon
 EFFECT_IRON_WALL				=361	--玩家已受到"不能除外"的效果影響
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
-EVENT_STARTUP					=1000	--游戏开始时
+EVENT_STARTUP					=1000	--N/A
 EVENT_FLIP						=1001	--翻转时
 EVENT_FREE_CHAIN				=1002	--自由时点（强脱等，还有昴星团等诱发即时效果）
 EVENT_DESTROY					=1010	--確定被破壞的卡片移動前
@@ -557,7 +557,7 @@ EVENT_LEAVE_FIELD				=1015	--离场时
 EVENT_CHANGE_POS				=1016	--表示形式变更时
 EVENT_RELEASE					=1017	--解放时
 EVENT_DISCARD					=1018	--丢弃手牌时
-EVENT_LEAVE_FIELD_P				=1019	--永久离场时
+EVENT_LEAVE_FIELD_P				=1019	--離場的卡片移動前
 EVENT_CHAIN_SOLVING				=1020	--连锁处理开始时（EVENT_CHAIN_ACTIVATING之後）
 EVENT_CHAIN_ACTIVATING			=1021	--连锁处理准备中
 EVENT_CHAIN_SOLVED				=1022	--连锁处理结束时
@@ -568,7 +568,7 @@ EVENT_CHAIN_END					=1026	--连锁串结束时
 EVENT_CHAINING					=1027	--效果发动时
 EVENT_BECOME_TARGET				=1028	--成为效果对象时
 EVENT_DESTROYED					=1029	--被破坏时
-EVENT_MOVE						=1030	--
+EVENT_MOVE						=1030	--移動卡片(急兔馬)
 EVENT_ADJUST					=1040	--adjust_all()调整後（御前试合）
 EVENT_SUMMON_SUCCESS			=1100	--通常召唤成功时
 EVENT_FLIP_SUMMON_SUCCESS		=1101	--翻转召唤成功时

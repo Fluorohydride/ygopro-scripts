@@ -14,7 +14,7 @@ function c423705.filter(c,ec)
 	return c:GetEquipTarget()==ec
 end
 function c423705.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c423705.filter,1,nil,e:GetHandler()) end
+	if chk==0 then return true end
 	local dg=eg:Filter(c423705.filter,nil,e:GetHandler())
 	Duel.SetTargetCard(dg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,dg,dg:GetCount(),0,0)

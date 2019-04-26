@@ -93,7 +93,8 @@ function c54451023.eqlimit(e,c)
 	return c:GetControler()==e:GetOwnerPlayer() and c:IsRace(RACE_PLANT)
 end
 function c54451023.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetReason(),0x41)==0x41 and e:GetHandler():GetEquipTarget()
+	return bit.band(e:GetHandler():GetReason(),REASON_EFFECT+REASON_DESTROY)==REASON_EFFECT+REASON_DESTROY 
+		and e:GetHandler():GetEquipTarget()
 end
 function c54451023.spfilter(c,e,tp)
 	return c:IsRace(RACE_PLANT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
