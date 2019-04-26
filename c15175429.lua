@@ -5,7 +5,6 @@ function c15175429.initial_effect(c)
 	e1:SetDescription(aux.Stringid(15175429,0))
 	e1:SetCategory(CATEGORY_DAMAGE+CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
-	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
@@ -15,8 +14,7 @@ function c15175429.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c15175429.condition(e,tp,eg,ep,ev,re,r,rp)
-	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and ep~=tp
-		and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL)
+	return ep~=tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL)
 end
 function c15175429.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return re:GetHandler():IsDestructable() end

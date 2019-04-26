@@ -89,7 +89,7 @@ function c89493368.spcost_selector(c,tp,g,sg,i)
 end
 function c89493368.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(c89493368.spcostfilter,tp,LOCATION_ONFIELD,0,c)
+	local g=Duel.GetMatchingGroup(c89493368.spcostfilter,tp,LOCATION_MZONE,0,c)
 	local sg=Group.CreateGroup()
 	if chk==0 then return c:IsAbleToGraveAsCost() and g:IsExists(c89493368.spcost_selector,1,nil,tp,g,sg,1) end
 	for i=1,2 do
