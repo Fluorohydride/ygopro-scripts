@@ -67,6 +67,7 @@ function c64178424.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c64178424.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
+	if not tc:IsRelateToEffect(e) then return end
 	local ft=math.min(Duel.GetLocationCount(tp,LOCATION_MZONE),tc:GetLink())
 	if ft<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
