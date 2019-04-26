@@ -1,5 +1,7 @@
 --Sin パラドクスギア
 function c48829461.initial_effect(c)
+	--sin territory
+	c:SetUniqueOnField(1,1,c48829461.uqfilter,LOCATION_MZONE)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_SEARCH)
@@ -19,6 +21,17 @@ function c48829461.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE+LOCATION_GRAVE)
 	e2:SetCountLimit(1,48829462)
 	c:RegisterEffect(e2)
+end
+function c48829461.sfilter(c)
+	return c:IsCode(598988,1710476,9433350,36521459,37115575,55343236) and not c:IsDisabled()
+end
+function c48829461.uqfilter(c)
+	if Duel.IsPlayerAffectedByEffect(c:GetControler(),75223115) 
+		and Duel.IsExistingMatchingCard(c48829461.sfilter,c:GetControler(),LOCATION_MZONE,LOCATION_MZONE,1,nil) then
+		return c:IsCode(48829461)
+	else
+		return false
+	end
 end
 function c48829461.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil)
