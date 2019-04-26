@@ -22,8 +22,11 @@ function c94092230.initial_effect(c)
 	e3:SetOperation(c94092230.ttop)
 	e3:SetValue(SUMMON_TYPE_ADVANCE)
 	c:RegisterEffect(e3)
-	local e4=e3:Clone()
-	e4:SetCode(EFFECT_LIMIT_SET_PROC)
+	local e4=Effect.CreateEffect(c)
+	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e4:SetType(EFFECT_TYPE_SINGLE)
+	e4:SetCode(EFFECT_LIMIT_SUMMON_PROC)
+	e4:SetCondition(c94092230.setcon)
 	c:RegisterEffect(e4)
 	--destroy
 	local e5=Effect.CreateEffect(c)
@@ -48,6 +51,10 @@ function c94092230.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectTribute(tp,c,3,3)
 	c:SetMaterial(g)
 	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)
+end
+function c94092230.setcon(e,c,minc)
+	if not c then return true end
+	return false
 end
 function c94092230.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
