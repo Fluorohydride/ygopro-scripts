@@ -55,10 +55,10 @@ function c8581705.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x45)
 end
 function c8581705.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c8581705.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c8581705.filter,tp,LOCATION_MZONE,0,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c8581705.filter(chkc) end
+	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c8581705.filter,tp,LOCATION_MZONE,0,1,1,nil)
+	Duel.SelectTarget(tp,c8581705.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
 function c8581705.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
