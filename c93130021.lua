@@ -1,4 +1,5 @@
 --ビクトリー・バイパーXX03
+--not fully implemented
 function c93130021.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(93130021,0))
