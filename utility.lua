@@ -1395,7 +1395,7 @@ function Auxiliary.AddContactFusionProcedure(c,filter,self_location,opponent_loc
 	return e2
 end
 function Auxiliary.ContactFusionMaterialFilter(c,fc,filter)
-	return c:IsCanBeFusionMaterial(fc) and (not filter or filter(c,fc))
+	return c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL) and (not filter or filter(c,fc))
 end
 function Auxiliary.ContactFusionCondition(filter,self_location,opponent_location)
 	return	function(e,c)
