@@ -37,7 +37,7 @@ function c87116928.sprop(c)
 				e1:SetType(EFFECT_TYPE_SINGLE)
 				e1:SetCode(EFFECT_SET_BASE_ATTACK)
 				e1:SetReset(RESET_EVENT+0xff0000)
-				e1:SetValue(g:GetCount()*1000)
+				e1:SetValue(g:GetCount()*1200)
 				c:RegisterEffect(e1)
 			end
 end
