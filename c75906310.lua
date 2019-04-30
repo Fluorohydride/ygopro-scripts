@@ -3,6 +3,7 @@ function c75906310.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCode2(c,84243274,73879377,true,true)
+	aux.AddContactFusionProcedure(c,c75906310.cfilter,LOCATION_ONFIELD+LOCATION_GRAVE,0,Duel.Remove,POS_FACEUP,REASON_COST)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -10,15 +11,6 @@ function c75906310.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e1:SetValue(c75906310.splimit)
 	c:RegisterEffect(e1)
-	--special summon rule
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(c75906310.spcon)
-	e2:SetOperation(c75906310.spop)
-	c:RegisterEffect(e2)
 	--cannot activate
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
@@ -63,47 +55,9 @@ end
 function c75906310.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
-function c75906310.cfilter(c)
-	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsFusionCode(84243274,73879377) and c:IsAbleToRemoveAsCost()
-end
-function c75906310.fcheck(c,sg,g,code,...)
-	if not c:IsFusionCode(code) then return false end
-	if ... then
-		g:AddCard(c)
-		local res=sg:IsExists(c75906310.fcheck,1,g,sg,g,...)
-		g:RemoveCard(c)
-		return res
-	else return true end
-end
-function c75906310.fselect(c,tp,mg,sg,...)
-	sg:AddCard(c)
-	local res=false
-	if sg:GetCount()<2 then
-		res=mg:IsExists(c75906310.fselect,1,sg,tp,mg,sg,...)
-	elseif Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
-		local g=Group.CreateGroup()
-		res=sg:IsExists(c75906310.fcheck,1,nil,sg,g,...)
-	end
-	sg:RemoveCard(c)
-	return res
-end
-function c75906310.spcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c75906310.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	local sg=Group.CreateGroup()
-	return Duel.GetFlagEffect(tp,75906310)>0 and Duel.GetFlagEffect(tp,75906311)>0
-		and mg:IsExists(c75906310.fselect,1,nil,tp,mg,sg,84243274,73879377)
-end
-function c75906310.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c75906310.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	local sg=Group.CreateGroup()
-	while sg:GetCount()<2 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g=mg:FilterSelect(tp,c75906310.fselect,1,1,sg,tp,mg,sg,84243274,73879377)
-		sg:Merge(g)
-	end
-	Duel.Remove(sg,POS_FACEUP,REASON_COST)
+function c75906310.cfilter(c,fc)
+	local tp=fc:GetControler()
+	return c:IsFusionCode(84243274,73879377) and c:IsAbleToRemoveAsCost() and Duel.GetFlagEffect(tp,75906310)>0 and Duel.GetFlagEffect(tp,75906311)>0
 end
 function c75906310.acfilter(c,code)
 	return c:IsFaceup() and c:IsCode(code)

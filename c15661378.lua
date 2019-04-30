@@ -3,6 +3,7 @@ function c15661378.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c15661378.ffilter,3,false)
+	aux.AddContactFusionProcedure(c,Card.IsAbleToRemoveAsCost,LOCATION_MZONE,0,Duel.Remove,POS_FACEUP,REASON_COST+REASON_FUSION+REASON_MATERIAL):SetValue(1)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -10,16 +11,6 @@ function c15661378.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e1:SetValue(c15661378.splimit)
 	c:RegisterEffect(e1)
-	--special summon rule
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(c15661378.spcon)
-	e2:SetOperation(c15661378.spop)
-	e2:SetValue(1)
-	c:RegisterEffect(e2)
 	--remove
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(15661378,0))
@@ -45,38 +36,6 @@ end
 function c15661378.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 		or st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
-end
-function c15661378.cfilter(c,fc)
-	return c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(fc)
-end
-function c15661378.fselect(c,tp,mg,sg)
-	sg:AddCard(c)
-	local res=false
-	if sg:GetCount()<3 then
-		res=mg:IsExists(c15661378.fselect,1,sg,tp,mg,sg)
-	elseif Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
-		res=sg:GetClassCount(Card.GetFusionCode)==3
-	end
-	sg:RemoveCard(c)
-	return res
-end
-function c15661378.spcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c15661378.cfilter,tp,LOCATION_MZONE,0,nil,c)
-	local sg=Group.CreateGroup()
-	return mg:IsExists(c15661378.fselect,1,nil,tp,mg,sg)
-end
-function c15661378.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c15661378.cfilter,tp,LOCATION_MZONE,0,nil,c)
-	local sg=Group.CreateGroup()
-	while sg:GetCount()<3 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g=mg:FilterSelect(tp,c15661378.fselect,1,1,sg,tp,mg,sg)
-		sg:Merge(g)
-	end
-	c:SetMaterial(sg)
-	Duel.Remove(sg,POS_FACEUP,REASON_COST+REASON_FUSION+REASON_MATERIAL)
 end
 function c15661378.mfilter(c)
 	return c:GetOriginalRace()~=RACE_DRAGON

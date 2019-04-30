@@ -2,6 +2,7 @@
 function c33964637.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c33964637.ffilter,3,true)
+	aux.AddContactFusionProcedure(c,Card.IsAbleToGraveAsCost,LOCATION_MZONE,0,Duel.SendtoGrave,REASON_COST)
 	--special summon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -9,15 +10,6 @@ function c33964637.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetValue(c33964637.splimit)
 	c:RegisterEffect(e1)
-	--special summon rule
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(c33964637.sprcon)
-	e2:SetOperation(c33964637.sprop)
-	c:RegisterEffect(e2)
 	--fusion limit
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
@@ -52,35 +44,6 @@ function c33964637.splimit(e,se,sp,st)
 end
 function c33964637.ffilter(c,fc,sub,mg,sg)
 	return c:IsFusionSetCard(0x3d) and (not sg or not sg:IsExists(Card.IsFusionAttribute,1,c,c:GetFusionAttribute()))
-end
-function c33964637.sprcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	return Duel.IsExistingMatchingCard(c33964637.sprfilter1,tp,LOCATION_MZONE,0,1,nil,tp,c)
-end
-function c33964637.sprfilter1(c,tp,fc)
-	return c:IsFusionSetCard(0x3d) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc)
-		and Duel.IsExistingMatchingCard(c33964637.sprfilter2,tp,LOCATION_MZONE,0,1,c,tp,fc,c)
-end
-function c33964637.sprfilter2(c,tp,fc,mc)
-	return c:IsFusionSetCard(0x3d) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc) and not c:IsFusionAttribute(mc:GetFusionAttribute())
-		and Duel.IsExistingMatchingCard(c33964637.sprfilter3,tp,LOCATION_MZONE,0,1,c,tp,fc,mc,c)
-end
-function c33964637.sprfilter3(c,tp,fc,mc1,mc2)
-	local g=Group.FromCards(c,mc1,mc2)
-	return c:IsFusionSetCard(0x3d) and c:IsAbleToGraveAsCost() and c:IsCanBeFusionMaterial(fc) and not c:IsFusionAttribute(mc1:GetFusionAttribute()) and not c:IsFusionAttribute(mc2:GetFusionAttribute())
-		and Duel.GetLocationCountFromEx(tp,tp,g)>0
-end
-function c33964637.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,c33964637.sprfilter1,tp,LOCATION_MZONE,0,1,1,nil,tp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectMatchingCard(tp,c33964637.sprfilter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst(),tp,c,g1:GetFirst())
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g3=Duel.SelectMatchingCard(tp,c33964637.sprfilter3,tp,LOCATION_MZONE,0,1,1,g1:GetFirst(),tp,c,g1:GetFirst(),g2:GetFirst())
-	g1:Merge(g2)
-	g1:Merge(g3)
-	Duel.SendtoGrave(g1,REASON_COST)
 end
 function c33964637.costfilter(c,tp)
 	return c:IsSetCard(0x3d) and c:IsAbleToRemoveAsCost() and (c:IsLocation(LOCATION_HAND) or c:IsFaceup())

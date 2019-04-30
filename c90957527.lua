@@ -3,6 +3,7 @@ function c90957527.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeFun(c,79580323,aux.FilterBoolFunction(Card.IsFusionSetCard,0x19),1,true,true)
+	aux.AddContactFusionProcedure(c,c90957527.cfilter,LOCATION_ONFIELD,0,Duel.SendtoDeck,nil,2,REASON_COST)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -48,35 +49,7 @@ function c90957527.splimit(e,se,sp,st)
 end
 function c90957527.cfilter(c)
 	return (c:IsFusionCode(79580323) or c:IsFusionSetCard(0x19) and c:IsType(TYPE_MONSTER))
-		and c:IsCanBeFusionMaterial() and c:IsAbleToDeckOrExtraAsCost()
-end
-function c90957527.spfilter1(c,tp,g)
-	return g:IsExists(c90957527.spfilter2,1,c,tp,c)
-end
-function c90957527.spfilter2(c,tp,mc)
-	return (c:IsFusionCode(79580323) and mc:IsFusionSetCard(0x19) and mc:IsType(TYPE_MONSTER)
-		or c:IsFusionSetCard(0x19) and c:IsType(TYPE_MONSTER) and mc:IsFusionCode(79580323))
-		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
-end
-function c90957527.sprcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(c90957527.cfilter,tp,LOCATION_ONFIELD,0,nil)
-	return g:IsExists(c90957527.spfilter1,1,nil,tp,g)
-end
-function c90957527.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.GetMatchingGroup(c90957527.cfilter,tp,LOCATION_ONFIELD,0,nil)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g1=g:FilterSelect(tp,c90957527.spfilter1,1,1,nil,tp,g)
-	local mc=g1:GetFirst()
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g2=g:FilterSelect(tp,c90957527.spfilter2,1,1,mc,tp,mc)
-	g1:Merge(g2)
-	local cg=g1:Filter(Card.IsFacedown,nil)
-	if cg:GetCount()>0 then
-		Duel.ConfirmCards(1-tp,cg)
-	end
-	Duel.SendtoDeck(g1,nil,2,REASON_COST)
+		and c:IsAbleToDeckOrExtraAsCost()
 end
 function c90957527.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
