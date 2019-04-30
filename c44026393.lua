@@ -54,16 +54,17 @@ function c44026393.spop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_CANNOT_BE_FUSION_MATERIAL)
 	e1:SetTargetRange(0xff,0xff)
 	e1:SetTarget(aux.NOT(aux.TargetBoolFunction(Card.IsSetCard,0x101b)))
-	e1:SetValue(c44026393.sumlimit)
+	e1:SetValue(c44026393.fuslimit)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
+	e2:SetValue(c44026393.sumlimit)
 	Duel.RegisterEffect(e2,tp)
-	local e3=e1:Clone()
+	local e3=e2:Clone()
 	e3:SetCode(EFFECT_CANNOT_BE_XYZ_MATERIAL)
 	Duel.RegisterEffect(e3,tp)
-	local e4=e1:Clone()
+	local e4=e2:Clone()
 	e4:SetCode(EFFECT_CANNOT_BE_LINK_MATERIAL)
 	Duel.RegisterEffect(e4,tp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
@@ -71,6 +72,10 @@ function c44026393.spop(e,tp,eg,ep,ev,re,r,rp)
 		local token=Duel.CreateToken(tp,44026394)
 		Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 	end
+end
+function c44026393.fuslimit(e,c,sumtype)
+	if not c then return false end
+	return c:IsControler(e:GetHandlerPlayer()) and sumtype==SUMMON_TYPE_FUSION
 end
 function c44026393.sumlimit(e,c)
 	if not c then return false end
