@@ -11,15 +11,6 @@ function c73285669.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e1:SetValue(c73285669.splimit)
 	c:RegisterEffect(e1)
-	--special summon rule
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(c73285669.sprcon)
-	e2:SetOperation(c73285669.sprop)
-	c:RegisterEffect(e2)
 end
 function c73285669.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
