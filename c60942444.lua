@@ -44,7 +44,7 @@ function c60942444.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c60942444.negcfilter(c,tp)
-	return c:IsControler(tp) and c:IsType(TYPE_MONSTER) and not c:IsType(TYPE_EFFECT) and c:IsFaceup()
+	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and not c:IsType(TYPE_EFFECT) and c:IsFaceup()
 end
 function c60942444.negcon(e,tp,eg,ep,ev,re,r,rp)
 	if rp==1-tp and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then
