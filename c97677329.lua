@@ -32,7 +32,7 @@ function c97677329.initial_effect(c)
 	e2:SetCountLimit(1,97677330)
 	e2:SetCondition(c97677329.spcon2)
 	e2:SetTarget(c97677329.sptg2)
-	e2:SetOperation(c97677329.spop)
+	e2:SetOperation(c97677329.spop2)
 	c:RegisterEffect(e2)
 end
 function c97677329.valcheck(e,c)
