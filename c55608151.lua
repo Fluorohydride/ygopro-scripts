@@ -17,7 +17,7 @@ function c55608151.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c55608151.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return Duel.IsExistingMatchingCard(c55608151.filter,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
 	local g=Duel.GetMatchingGroup(c55608151.filter,tp,0,LOCATION_ONFIELD,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)

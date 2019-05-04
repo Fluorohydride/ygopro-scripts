@@ -14,9 +14,9 @@ function c42364257.condition(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsCode(12580477) and Duel.IsChainDisablable(ev)
 end
 function c42364257.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
+	if chk==0 then return g:GetCount()>0 end
+	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c42364257.activate(e,tp,eg,ep,ev,re,r,rp)
