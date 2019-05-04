@@ -10,21 +10,25 @@ function c22431243.initial_effect(c)
 	e1:SetOperation(c22431243.activate)
 	c:RegisterEffect(e1)
 end
-function c22431243.cfilter(c,ft,tp)
+function c22431243.cfilter(c,tp)
 	return c:IsRace(RACE_REPTILE)
-		and (ft>0 or (c:IsControler(tp) and c:GetSequence()<5)) and (c:IsControler(tp) or c:IsFaceup())
+		and Duel.GetMZoneCount(tp,c)>0 and (c:IsControler(tp) or c:IsFaceup())
 end
 function c22431243.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if chk==0 then return ft>-1 and Duel.CheckReleaseGroup(tp,c22431243.cfilter,1,nil,ft,tp) end
-	local g=Duel.SelectReleaseGroup(tp,c22431243.cfilter,1,1,nil,ft,tp)
+	e:SetLabel(1)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c22431243.cfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c22431243.cfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c22431243.filter(c,e,tp)
 	return c:IsRace(RACE_DINOSAUR) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c22431243.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c22431243.filter,tp,LOCATION_HAND,0,1,nil,e,tp) end
+	local res=e:GetLabel()==1 or Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chk==0 then
+		e:SetLabel(0)
+		return res and Duel.IsExistingMatchingCard(c22431243.filter,tp,LOCATION_HAND,0,1,nil,e,tp)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c22431243.activate(e,tp,eg,ep,ev,re,r,rp)

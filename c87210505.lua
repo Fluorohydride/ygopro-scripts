@@ -11,20 +11,24 @@ function c87210505.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 c87210505.card_code_list={46986414}
-function c87210505.costfilter(c)
-	return c:IsFaceup() and c:IsCode(46986414)
+function c87210505.costfilter(c,tp)
+	return c:IsFaceup() and c:IsCode(46986414) and Duel.GetMZoneCount(tp,c)>0
 end
 function c87210505.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c87210505.costfilter,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,c87210505.costfilter,1,1,nil)
+	e:SetLabel(1)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c87210505.costfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c87210505.costfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c87210505.spfilter(c,e,tp)
 	return c:IsCode(50725996) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)
 end
 function c87210505.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
-		and Duel.IsExistingMatchingCard(c87210505.spfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,nil,e,tp) end
+	local res=e:GetLabel()==1 or Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chk==0 then
+		e:SetLabel(0)
+		return res and Duel.IsExistingMatchingCard(c87210505.spfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,nil,e,tp)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE)
 end
 function c87210505.activate(e,tp,eg,ep,ev,re,r,rp)
