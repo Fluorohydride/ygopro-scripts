@@ -57,7 +57,7 @@ function c94415058.aclimit(e,re,tp)
 	return re:IsActiveType(TYPE_SPELL) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c94415058.scfilter(c)
-	return c:IsSetCard(0x98) or c:IsSetCard(0x99)
+	return c:IsSetCard(0x98,0x99)
 end
 function c94415058.sccon(e)
 	return not Duel.IsExistingMatchingCard(c94415058.scfilter,e:GetHandlerPlayer(),LOCATION_PZONE,0,1,e:GetHandler())

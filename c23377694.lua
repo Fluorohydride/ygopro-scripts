@@ -55,7 +55,7 @@ function c23377694.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c23377694.cfilter,1,nil,tp)
 end
 function c23377694.spfilter(c,e,tp)
-	return (c:IsSetCard(0x9f) or c:IsSetCard(0x99)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x9f,0x99) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c23377694.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_PZONE) and c23377694.spfilter(chkc,e,tp) end

@@ -21,7 +21,7 @@ function c84388461.initial_effect(c)
 	e3:SetCost(c84388461.cost)
 end
 function c84388461.splimit(e,c,sump,sumtype,sumpos,targetp)
-	if c:IsSetCard(0xb4) or c:IsSetCard(0xc4) then return false end
+	if c:IsSetCard(0xb4,0xc4) then return false end
 	return bit.band(sumtype,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
 end
 function c84388461.filter(c)

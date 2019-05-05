@@ -21,7 +21,7 @@ function c27873305.condition(e,tp,eg,ep,ev,re,r,rp)
 	return (Duel.GetAttacker()==c or Duel.GetAttackTarget()==c)
 end
 function c27873305.thfilter(c)
-	return c:IsFaceup() and (c:IsSetCard(0xaf) or c:IsSetCard(0xae)) and c:IsAbleToHand()
+	return c:IsFaceup() and c:IsSetCard(0xaf,0xae) and c:IsAbleToHand()
 end
 function c27873305.eqfilter(c)
 	return c:IsFaceup() and c:IsAbleToChangeControler()

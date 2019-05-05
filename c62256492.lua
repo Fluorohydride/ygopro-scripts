@@ -56,7 +56,7 @@ function c62256492.atkval(e,c)
 	return ct*300
 end
 function c62256492.target(e,c)
-	return c:IsSetCard(0xbf) or c:IsSetCard(0xc0)
+	return c:IsSetCard(0xbf,0xc0)
 end
 function c62256492.cfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsRace(RACE_SPELLCASTER) and c:GetBaseAttack()==1850

@@ -73,7 +73,7 @@ function c7799906.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c7799906.exfilter(c)
-	return c:IsFacedown() or not (c:IsSetCard(0x9f) or (c:IsType(TYPE_PENDULUM) and c:IsSetCard(0x98)) or c:IsSetCard(0x99))
+	return c:IsFacedown() or not (c:IsSetCard(0x9f,0x99) or (c:IsType(TYPE_PENDULUM) and c:IsSetCard(0x98)))
 end
 function c7799906.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

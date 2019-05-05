@@ -34,7 +34,7 @@ function c80889750.mfilter1(c)
 	return c:IsFusionSetCard(0xad) and c:IsFusionType(TYPE_FUSION)
 end
 function c80889750.mfilter2(c)
-	return c:IsFusionSetCard(0xa9) or c:IsFusionSetCard(0xc3)
+	return c:IsFusionSetCard(0xa9,0xc3)
 end
 function c80889750.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION)

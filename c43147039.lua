@@ -36,7 +36,7 @@ function c43147039.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c43147039.sprfilter(c)
-	return c:IsFaceup() and (c:IsSetCard(0x55) or c:IsSetCard(0x7b))
+	return c:IsFaceup() and c:IsSetCard(0x55,0x7b)
 end
 function c43147039.sprcon(e,c)
 	if c==nil then return true end

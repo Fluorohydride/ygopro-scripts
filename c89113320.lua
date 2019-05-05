@@ -22,7 +22,7 @@ function c89113320.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c89113320.filter(c)
-	return (c:IsSetCard(0x9f) or c:IsSetCard(0x99)) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0x9f,0x99) and c:IsType(TYPE_MONSTER)
 end
 function c89113320.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c89113320.filter,tp,LOCATION_HAND,0,1,e:GetHandler()) end

@@ -28,7 +28,7 @@ function c87246309.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c87246309.thfilter(c)
-	return (c:IsSetCard(0xa9) or c:IsSetCard(0xc3)) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0xa9,0xc3) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c87246309.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c87246309.thfilter(chkc) end

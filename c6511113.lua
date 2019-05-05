@@ -72,7 +72,7 @@ function c6511113.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RegisterFlagEffect(6511113,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c6511113.filter1(c)
-	return c:GetType()==TYPE_TRAP and (c:IsSetCard(0x4c) or c:IsSetCard(0x89)) and c:IsAbleToGraveAsCost()
+	return c:GetType()==TYPE_TRAP and c:IsSetCard(0x4c,0x89) and c:IsAbleToGraveAsCost()
 		and c:CheckActivateEffect(false,true,false)~=nil
 end
 function c6511113.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -104,7 +104,7 @@ function c6511113.operation(e,tp,eg,ep,ev,re,r,rp)
 	if op then op(e,tp,eg,ep,ev,re,r,rp) end
 end
 function c6511113.filter2(c,e,tp,eg,ep,ev,re,r,rp)
-	if c:GetType()==TYPE_TRAP and (c:IsSetCard(0x4c) or c:IsSetCard(0x89)) and c:IsAbleToGraveAsCost() then
+	if c:GetType()==TYPE_TRAP and c:IsSetCard(0x4c,0x89) and c:IsAbleToGraveAsCost() then
 		if c:CheckActivateEffect(false,true,false)~=nil then return true end
 		local te=c:GetActivateEffect()
 		if te:GetCode()~=EVENT_CHAINING then return false end

@@ -43,7 +43,7 @@ function c47436247.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c47436247.filter(c,ct,e,tp)
-	return c:IsLevelBelow(ct) and (c:IsSetCard(0x3d) or c:IsSetCard(0x20))
+	return c:IsLevelBelow(ct) and c:IsSetCard(0x3d,0x20)
 		and c:IsType(TYPE_EFFECT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c47436247.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

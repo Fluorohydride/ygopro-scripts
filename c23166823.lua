@@ -26,7 +26,7 @@ function c23166823.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c23166823.splimit(e,c,sump,sumtype,sumpos,targetp)
-	if c:IsSetCard(0xb5) or c:IsSetCard(0xc4) then return false end
+	if c:IsSetCard(0xb5,0xc4) then return false end
 	return bit.band(sumtype,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
 end
 function c23166823.condition(e,tp,eg,ep,ev,re,r,rp)

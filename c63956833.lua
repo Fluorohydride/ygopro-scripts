@@ -15,7 +15,7 @@ function c63956833.initial_effect(c)
 	Duel.AddCustomActivityCounter(63956833,ACTIVITY_SPSUMMON,c63956833.counterfilter)
 end
 function c63956833.counterfilter(c)
-	return c:IsSetCard(0x55) or c:IsSetCard(0x7b)
+	return c:IsSetCard(0x55,0x7b)
 end
 function c63956833.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,2000)
@@ -35,7 +35,7 @@ function c63956833.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e2,tp)
 end
 function c63956833.splimit(e,c)
-	return not (c:IsSetCard(0x55) or c:IsSetCard(0x7b))
+	return not c:IsSetCard(0x55,0x7b)
 end
 function c63956833.filter1(c,e,tp)
 	return c:IsSetCard(0x55) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

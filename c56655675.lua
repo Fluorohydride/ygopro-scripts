@@ -23,7 +23,7 @@ function c56655675.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c56655675.cfilter(c)
-	return (c:IsFusionSetCard(0x40b5) or c:IsFusionSetCard(0x10b5) or c:IsFusionSetCard(0x20b5))
+	return c:IsFusionSetCard(0x40b5,0x10b5,0x20b5)
 		and c:IsAbleToRemoveAsCost()
 end
 function c56655675.condition(e,tp,eg,ep,ev,re,r,rp)

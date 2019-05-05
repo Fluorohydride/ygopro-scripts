@@ -68,7 +68,7 @@ function c83519853.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(83519853)~=0
 end
 function c83519853.thfilter(c)
-	return (c:IsSetCard(0x107a) or c:IsSetCard(0x207a)) and c:IsAbleToHand()
+	return c:IsSetCard(0x107a,0x207a) and c:IsAbleToHand()
 end
 function c83519853.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c83519853.thfilter,tp,LOCATION_DECK,0,1,nil) end

@@ -18,7 +18,7 @@ function c63992027.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tg:IsExists(Card.IsControler,1,nil,1-tp)
 end
 function c63992027.filter(c,e,tp)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ) and (c:IsSetCard(0x107b) or c:IsSetCard(0xe5)) and c:GetOverlayCount()>0
+	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsSetCard(0x107b,0xe5) and c:GetOverlayCount()>0
 		and (not e or Duel.IsExistingMatchingCard(c63992027.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c))
 end
 function c63992027.spfilter(c,e,tp,ec)

@@ -42,7 +42,7 @@ function c58468105.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION) and aux.bdocon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c58468105.tgfilter(c)
-	return (c:IsSetCard(0xc3) or c:IsSetCard(0xa9) or c:IsSetCard(0xad)) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
+	return c:IsSetCard(0xc3,0xa9,0xad) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
 end
 function c58468105.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=e:GetHandler():GetBattleTarget()

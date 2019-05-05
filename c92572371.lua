@@ -13,7 +13,7 @@ function c92572371.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c92572371.cfilter(c)
-	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and (c:IsSetCard(0x79) or c:IsSetCard(0x7c)) and c:IsAbleToGraveAsCost()
+	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsSetCard(0x79,0x7c) and c:IsAbleToGraveAsCost()
 end
 function c92572371.cfilter1(c,g,tp)
 	return g:IsExists(c92572371.cfilter2,1,c,c,tp)

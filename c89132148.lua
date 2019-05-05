@@ -24,7 +24,7 @@ function c89132148.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c89132148.filter(c)
-	return c:IsFaceup() and (c:IsSetCard(0x55) or c:IsSetCard(0x7b))
+	return c:IsFaceup() and c:IsSetCard(0x55,0x7b)
 end
 function c89132148.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
@@ -77,7 +77,7 @@ function c89132148.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c89132148.thfilter(c)
-	return (c:IsSetCard(0x55) or c:IsSetCard(0x7b)) and c:IsType(TYPE_MONSTER) and not c:IsCode(89132148) and c:IsAbleToHand()
+	return c:IsSetCard(0x55,0x7b) and c:IsType(TYPE_MONSTER) and not c:IsCode(89132148) and c:IsAbleToHand()
 end
 function c89132148.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c89132148.thfilter,tp,LOCATION_DECK,0,1,nil) end

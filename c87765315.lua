@@ -17,7 +17,7 @@ function c87765315.filter2(c)
 	return c:IsFaceup() and c:IsSetCard(0xc7) and not c:IsType(TYPE_PENDULUM)
 end
 function c87765315.filter3(c,e,tp)
-	return (c:IsSetCard(0xda) or c:IsSetCard(0xc7)) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsSetCard(0xda,0xc7) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c87765315.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c87765315.filter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)

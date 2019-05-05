@@ -13,7 +13,7 @@ end
 function c64283880.filter(c,e,tp)
 	return c:IsReason(REASON_DESTROY) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
-		and c:GetPreviousControler()==tp and (c:IsSetCard(0x54) or c:IsSetCard(0x82) or c:IsSetCard(0x59))
+		and c:GetPreviousControler()==tp and c:IsSetCard(0x54,0x82,0x59)
 		and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c64283880.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -26,7 +26,7 @@ function c64283880.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c64283880.spfilter(c,e,tp)
-	return (c:IsSetCard(0x54) or c:IsSetCard(0x82) or c:IsSetCard(0x59)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+	return c:IsSetCard(0x54,0x82,0x59) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c64283880.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

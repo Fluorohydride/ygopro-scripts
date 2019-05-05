@@ -13,7 +13,7 @@ function c19580308.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c19580308.cfilter(c,ft)
-	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and (c:IsSetCard(0xaf) or c:IsSetCard(0xae))
+	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsSetCard(0xaf,0xae)
 		and not c:IsCode(19580308) and c:IsAbleToGraveAsCost() and (ft>0 or c:GetSequence()<5)
 end
 function c19580308.cost(e,tp,eg,ep,ev,re,r,rp,chk)

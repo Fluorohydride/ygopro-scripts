@@ -26,7 +26,7 @@ function c28770951.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c28770951.matfilter(c)
-	return c:IsFaceup() and (c:IsSetCard(0x55) or c:IsSetCard(0x7b)) and c:IsType(TYPE_XYZ)
+	return c:IsFaceup() and c:IsSetCard(0x55,0x7b) and c:IsType(TYPE_XYZ)
 end
 function c28770951.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c28770951.matfilter(chkc) end
@@ -42,7 +42,7 @@ function c28770951.matop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c28770951.filter(c,e)
-	return (c:IsSetCard(0x55) or c:IsSetCard(0x7b)) and c:IsAbleToDeck() and c:IsCanBeEffectTarget(e)
+	return c:IsSetCard(0x55,0x7b) and c:IsAbleToDeck() and c:IsCanBeEffectTarget(e)
 end
 function c28770951.drtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c28770951.filter(chkc,e) end

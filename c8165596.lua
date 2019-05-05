@@ -69,7 +69,7 @@ function c8165596.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
 function c8165596.filter(c)
-	return c:IsSetCard(0x55) or c:IsSetCard(0x7b)
+	return c:IsSetCard(0x55,0x7b)
 end
 function c8165596.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c8165596.filter,tp,LOCATION_DECK,0,1,nil) end

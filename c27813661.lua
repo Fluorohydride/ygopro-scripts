@@ -28,7 +28,7 @@ function c27813661.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c27813661.tgtg(e,c)
-	return c:IsSetCard(0x98) or c:IsSetCard(0x9f) or c:IsSetCard(0x99)
+	return c:IsSetCard(0x98,0x9f,0x99)
 end
 function c27813661.desfilter(c)
 	return c:IsFaceup()

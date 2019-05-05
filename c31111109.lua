@@ -23,7 +23,7 @@ function c31111109.initial_effect(c)
 end
 c31111109.material_setcode=0x8
 function c31111109.ffilter(c,fc)
-	return c:IsFusionSetCard(0x9) or c:IsFusionSetCard(0x1f) or c:IsFusionSetCard(0x8)
+	return c:IsFusionSetCard(0x9,0x1f,0x8)
 end
 function c31111109.ffilter1(c,fc)
 	return c:IsFusionSetCard(0x9)
@@ -35,7 +35,7 @@ function c31111109.ffilter3(c,fc)
 	return c:IsFusionSetCard(0x8)
 end
 function c31111109.filter(c)
-	return (c:IsSetCard(0x9) or c:IsSetCard(0x1f) or c:IsSetCard(0x8)) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0x9,0x1f,0x8) and c:IsType(TYPE_MONSTER)
 		and not c:IsForbidden() and c:IsAbleToRemove()
 end
 function c31111109.copytg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

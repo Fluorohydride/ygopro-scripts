@@ -33,7 +33,7 @@ function c78348934.filter2(c,rc)
 	return c:GetRace()==rc and c:IsAbleToRemove()
 end
 function c78348934.filter3(c)
-	return c:IsFaceup() and (c:IsSetCard(0xd6) or c:IsSetCard(0xd7))
+	return c:IsFaceup() and c:IsSetCard(0xd6,0xd7)
 end
 function c78348934.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(1-tp) and c78348934.filter1(chkc) end

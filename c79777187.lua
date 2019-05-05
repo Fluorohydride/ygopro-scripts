@@ -25,7 +25,7 @@ function c79777187.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c79777187.target(e,c)
-	return c:IsSetCard(0xc6) or c:IsSetCard(0x9f)
+	return c:IsSetCard(0xc6,0x9f)
 end
 function c79777187.indct(e,re,r,rp)
 	if bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0 then

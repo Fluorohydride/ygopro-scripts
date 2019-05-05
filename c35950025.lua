@@ -22,7 +22,7 @@ function c35950025.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c35950025.cfilter(c)
-	return c:IsFaceup() and (c:IsSetCard(0x55) or c:IsSetCard(0x7b))
+	return c:IsFaceup() and c:IsSetCard(0x55,0x7b)
 end
 function c35950025.ntcon(e,c,minc)
 	if c==nil then return true end

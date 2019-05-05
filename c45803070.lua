@@ -31,7 +31,7 @@ function c45803070.initial_effect(c)
 end
 function c45803070.efilter(e,te)
 	local c=te:GetHandler()
-	return c:GetType()==TYPE_TRAP and (c:IsSetCard(0x4c) or c:IsSetCard(0x89))
+	return c:GetType()==TYPE_TRAP and c:IsSetCard(0x4c,0x89)
 end
 function c45803070.filter(c,e,tp)
 	return c:IsSetCard(0x108a) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
@@ -51,7 +51,7 @@ function c45803070.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c45803070.setfilter(c)
-	return c:GetType()==TYPE_TRAP and (c:IsSetCard(0x4c) or c:IsSetCard(0x89)) and c:IsSSetable()
+	return c:GetType()==TYPE_TRAP and c:IsSetCard(0x4c,0x89) and c:IsSSetable()
 end
 function c45803070.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c45803070.setfilter(chkc) end

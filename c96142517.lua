@@ -41,17 +41,17 @@ function c96142517.spfilter(c,e,tp,rk)
 	if c:GetOriginalCode()==6165656 then
 		local g1=Duel.GetMatchingGroup(c96142517.filter2,tp,LOCATION_GRAVE,0,nil,e,8)
 		local g2=Duel.GetMatchingGroup(c96142517.filter2,tp,0,LOCATION_GRAVE,nil,e,8)
-		return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and g1:GetCount()>0 and g2:GetCount()>0 
+		return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and g1:GetCount()>0 and g2:GetCount()>0
 			and (g1:IsExists(Card.IsCode,1,nil,48995978) or g2:IsExists(Card.IsCode,1,nil,48995978))
 	else
-		return c:IsRank(rk) and (c:IsSetCard(0x1048) or c:IsSetCard(0x1073))	and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		return c:IsRank(rk) and c:IsSetCard(0x1048,0x1073) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 	end
 end
 function c96142517.spfilter2(c,e,tp,rk,g)
 	if c:GetOriginalCode()==6165656 then
 		return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and g:IsExists(Card.IsCode,1,nil,48995978)
 	else
-		return c:IsRank(rk) and (c:IsSetCard(0x1048) or c:IsSetCard(0x1073))	and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		return c:IsRank(rk) and c:IsSetCard(0x1048,0x1073) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 	end
 end
 function c96142517.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -74,8 +74,8 @@ function c96142517.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		g1:Merge(sg)
 	end
 	local xg=Duel.GetMatchingGroup(c96142517.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp,9)
-	if rk==8 and xg:GetClassCount(Card.GetOriginalCode)==1 and xg:GetFirst():GetOriginalCode()==6165656 
-		and not g1:IsExists(Card.IsCode,1,nil,48995978) then 
+	if rk==8 and xg:GetClassCount(Card.GetOriginalCode)==1 and xg:GetFirst():GetOriginalCode()==6165656
+		and not g1:IsExists(Card.IsCode,1,nil,48995978) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 		local ng=Duel.SelectTarget(tp,c96142517.filter3,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil)
 		g1:Merge(ng)

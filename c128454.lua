@@ -14,7 +14,7 @@ function c128454.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c128454.thfilter(c)
-	return ((c:IsLocation(LOCATION_PZONE) and (c:IsSetCard(0x9f) or c:IsSetCard(0x98)))
+	return ((c:IsLocation(LOCATION_PZONE) and c:IsSetCard(0x9f,0x98))
 		or (c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsType(TYPE_PENDULUM))) and c:IsAbleToHand()
 end
 function c128454.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

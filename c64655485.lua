@@ -36,7 +36,7 @@ function c64655485.ffilter(c)
 	return c:IsLevelBelow(4) and c:IsFusionType(TYPE_EFFECT)
 end
 function c64655485.atkfilter(c)
-	return (c:IsSetCard(0x8) or c:IsSetCard(0x1f)) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0x8,0x1f) and c:IsType(TYPE_MONSTER)
 end
 function c64655485.atkval(e,c)
 	return Duel.GetMatchingGroupCount(c64655485.atkfilter,c:GetControler(),LOCATION_GRAVE,0,nil)*100

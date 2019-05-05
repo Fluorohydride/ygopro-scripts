@@ -33,7 +33,7 @@ function c82738277.initial_effect(c)
 end
 function c82738277.efilter(e,te)
 	local c=te:GetHandler()
-	return c:GetType()==TYPE_TRAP and (c:IsSetCard(0x4c) or c:IsSetCard(0x89))
+	return c:GetType()==TYPE_TRAP and c:IsSetCard(0x4c,0x89)
 end
 function c82738277.filter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x108a) and c:IsAbleToHand()

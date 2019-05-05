@@ -32,7 +32,7 @@ function c55051920.costfilter(c,tp)
 		and Duel.IsExistingTarget(c55051920.tgfilter,tp,LOCATION_ONFIELD,0,1,c)
 end
 function c55051920.tgfilter(c)
-	return c:IsFaceup() and (c:IsSetCard(0xfe) or c:IsSetCard(0x11b)) and not c:IsCode(55051920)
+	return c:IsFaceup() and c:IsSetCard(0xfe,0x11b) and not c:IsCode(55051920)
 end
 function c55051920.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c55051920.costfilter,tp,LOCATION_GRAVE+LOCATION_MZONE,0,1,nil,tp) end
@@ -59,7 +59,7 @@ function c55051920.tgop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c55051920.repfilter(c,tp)
-	return c:IsFaceup() and (c:IsSetCard(0xfe) or c:IsSetCard(0x11b)) and c:IsControler(tp) and c:IsOnField()
+	return c:IsFaceup() and c:IsSetCard(0xfe,0x11b) and c:IsControler(tp) and c:IsOnField()
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c55051920.reptg(e,tp,eg,ep,ev,re,r,rp,chk)

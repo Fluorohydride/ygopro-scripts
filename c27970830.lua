@@ -64,7 +64,7 @@ function c27970830.cost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RemoveCounter(tp,1,0,0x3,2,REASON_COST)
 end
 function c27970830.filter1(c)
-	return c:IsFaceup() and (c:IsSetCard(0x3d) or c:IsSetCard(0x20)) and c:IsType(TYPE_EFFECT)
+	return c:IsFaceup() and c:IsSetCard(0x3d,0x20) and c:IsType(TYPE_EFFECT)
 end
 function c27970830.tg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c27970830.filter1(chkc) end

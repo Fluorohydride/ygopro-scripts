@@ -65,7 +65,7 @@ function c57690191.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return not c:IsSetCard(0x107a)
 end
 function c57690191.drfilter(c)
-	return (c:IsSetCard(0x107a) or c:IsSetCard(0x207a)) and c:IsAbleToDeck()
+	return c:IsSetCard(0x107a,0x207a) and c:IsAbleToDeck()
 end
 function c57690191.drtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c57690191.drfilter(chkc) end

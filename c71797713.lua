@@ -102,5 +102,5 @@ function c71797713.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c71797713.immtg(e,c)
-	return c:IsSetCard(0x400d) or c:IsSetCard(0x113)
+	return c:IsSetCard(0x400d,0x113)
 end

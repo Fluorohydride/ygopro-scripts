@@ -39,7 +39,7 @@ function c73511233.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg and eg:IsExists(c73511233.thcfilter,1,nil,tp)
 end
 function c73511233.thfilter(c)
-	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and (c:IsSetCard(0x98) or c:IsSetCard(0x99) or c:IsSetCard(0x9f))
+	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsSetCard(0x98,0x99,0x9f)
 		and c:IsType(TYPE_PENDULUM) and c:IsAbleToHand()
 end
 function c73511233.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
