@@ -19,16 +19,16 @@ function c89208725.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c89208725.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(89208725,0))
-	if c71650854 and e:GetLabel()==1 then c71650854.popup_check=true end
+	if e:GetLabel()==1 then Duel.RegisterFlagEffect(tp,15248873,RESET_CHAIN,0,1) end
 	local g=Duel.SelectMatchingCard(tp,c89208725.filter,tp,LOCATION_DECK,0,1,1,nil,tp)
-	if c71650854 then c71650854.popup_check=false end
+	Duel.ResetFlagEffect(tp,15248873)
 	local tc=g:GetFirst()
 	if tc then
 		local te=tc:GetActivateEffect()
 		local b1=tc:IsAbleToHand()
-		if c71650854 and e:GetLabel()==1 then c71650854.popup_check=true end
+		if e:GetLabel()==1 then Duel.RegisterFlagEffect(tp,15248873,RESET_CHAIN,0,1) end
 		local b2=te:IsActivatable(tp,true,true)
-		if c71650854 then c71650854.popup_check=false end
+		Duel.ResetFlagEffect(tp,15248873)
 		if b1 and (not b2 or Duel.SelectOption(tp,1190,1150)==0) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tc)

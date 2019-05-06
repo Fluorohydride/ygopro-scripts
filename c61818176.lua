@@ -37,9 +37,9 @@ end
 function c61818176.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
-		if c71650854 and e:GetLabel()==1 then c71650854.popup_check=true end
+		if e:GetLabel()==1 then Duel.RegisterFlagEffect(tp,15248873,RESET_CHAIN,0,1) end
 		local g=Duel.GetMatchingGroup(c61818176.actfilter,tp,LOCATION_HAND+LOCATION_DECK,0,nil,tp)
-		if c71650854 then c71650854.popup_check=false end
+		Duel.ResetFlagEffect(tp,15248873)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(61818176,1)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
