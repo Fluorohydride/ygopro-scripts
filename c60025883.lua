@@ -32,7 +32,7 @@ function c60025883.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c60025883.lcheck(g,lc)
-	return g:IsExists(Card.IsType,1,nil,TYPE_SYNCHRO)
+	return g:IsExists(Card.IsLinkType,1,nil,TYPE_SYNCHRO)
 end
 function c60025883.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()

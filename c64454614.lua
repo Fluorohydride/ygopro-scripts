@@ -29,7 +29,7 @@ function c64454614.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c64454614.lcheck(g,lc)
-	return g:GetClassCount(Card.GetCode)==g:GetCount()
+	return g:GetClassCount(Card.GetLinkCode)==g:GetCount()
 end
 function c64454614.negfilter(c,g)
 	return g:IsContains(c)

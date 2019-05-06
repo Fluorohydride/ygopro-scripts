@@ -26,7 +26,7 @@ function c98642179.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c98642179.lcheck(g,lc)
-	return g:GetClassCount(Card.GetCode)==g:GetCount()
+	return g:GetClassCount(Card.GetLinkCode)==g:GetCount()
 end
 function c98642179.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
