@@ -9,12 +9,22 @@ function c42237854.initial_effect(c)
 	e1:SetTarget(c42237854.target)
 	e1:SetOperation(c42237854.activate)
 	c:RegisterEffect(e1)
+	--atk
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetCode(EFFECT_UPDATE_ATTACK)
+	e0:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e0:SetRange(LOCATION_MZONE)
+	e0:SetCondition(c42237854.condition)
+	e0:SetValue(c42237854.atkval)
+	c:RegisterEffect(e0)
 	--atk limit
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_CANNOT_SELECT_BATTLE_TARGET)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTargetRange(0,LOCATION_MZONE)
+	e2:SetCondition(c42237854.condition)
 	e2:SetValue(c42237854.atlimit)
 	c:RegisterEffect(e2)
 	--cannot be target
@@ -24,6 +34,7 @@ function c42237854.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_SET_AVAILABLE)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(LOCATION_MZONE,0)
+	e3:SetCondition(c42237854.condition)
 	e3:SetTarget(c42237854.tgtg)
 	e3:SetValue(aux.tgoval)
 	c:RegisterEffect(e3)
@@ -52,17 +63,7 @@ function c42237854.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,42237854,0,0x21,0,0,4,RACE_MACHINE,ATTRIBUTE_EARTH) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
-	Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
-	--atk
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_UPDATE_ATTACK)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-	e1:SetValue(c42237854.atkval)
-	c:RegisterEffect(e1)
-	Duel.SpecialSummonComplete()
+	Duel.SpecialSummon(c,1,tp,tp,true,false,POS_FACEUP)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c42237854.tgfilter,nil,e)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if g:GetCount()<=0 or ft<=0 then return end
@@ -90,6 +91,9 @@ function c42237854.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		Duel.EquipComplete()
 	end
+end
+function c42237854.condition(e)
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
 end
 function c42237854.atkval(e,c)
 	local atk=0

@@ -9,9 +9,20 @@ function c55838342.initial_effect(c)
 	e1:SetTarget(c55838342.target)
 	e1:SetOperation(c55838342.activate)
 	c:RegisterEffect(e1)
+	--search
+	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(55838342,0))
+	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
+	e2:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_SINGLE)
+	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e2:SetCondition(c55838342.thcon)
+	e2:SetTarget(c55838342.thtg)
+	e2:SetOperation(c55838342.thop)
+	c:RegisterEffect(e2)
 end
 function c55838342.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and 
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and
 		Duel.IsPlayerCanSpecialSummonMonster(tp,55838342,0,0x21,300,2100,2,RACE_INSECT,ATTRIBUTE_EARTH) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
@@ -21,20 +32,7 @@ function c55838342.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,55838342,0,0x21,300,2100,2,RACE_INSECT,ATTRIBUTE_EARTH) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
-	Duel.SpecialSummonStep(c,1,tp,tp,true,false,POS_FACEUP)
-	--search
-	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(55838342,0))
-	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
-	e1:SetProperty(EFFECT_FLAG_DELAY)
-	e1:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_SINGLE)
-	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e1:SetCondition(c55838342.thcon)
-	e1:SetTarget(c55838342.thtg)
-	e1:SetOperation(c55838342.thop)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-	c:RegisterEffect(e1,true)
-	Duel.SpecialSummonComplete()
+	Duel.SpecialSummon(c,1,tp,tp,true,false,POS_FACEUP)
 end
 function c55838342.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

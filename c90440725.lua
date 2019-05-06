@@ -10,13 +10,32 @@ function c90440725.initial_effect(c)
 	e1:SetTarget(c90440725.target)
 	e1:SetOperation(c90440725.activate)
 	c:RegisterEffect(e1)
+	--attack
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
+	e2:SetRange(LOCATION_MZONE)
+	e2:SetCondition(c90440725.atkcon)
+	e2:SetOperation(c90440725.atkop)
+	c:RegisterEffect(e2)
+	--turn set
+	local e3=Effect.CreateEffect(c)
+	e3:SetDescription(aux.Stringid(90440725,0))
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e3:SetCode(EVENT_PHASE+PHASE_END)
+	e3:SetRange(LOCATION_MZONE)
+	e3:SetCountLimit(1)
+	e3:SetCondition(c90440725.setcon)
+	e3:SetTarget(c90440725.settg)
+	e3:SetOperation(c90440725.setop)
+	c:RegisterEffect(e3)
 end
 function c90440725.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
 	return Duel.GetTurnPlayer()==1-tp and (ph==PHASE_MAIN1 or ph==PHASE_MAIN2)
 end
 function c90440725.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and 
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and
 		Duel.IsPlayerCanSpecialSummonMonster(tp,90440725,0,0x21,-2,-2,4,RACE_MACHINE,ATTRIBUTE_EARTH) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
@@ -26,32 +45,11 @@ function c90440725.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,90440725,0,0x21,-2,-2,4,RACE_MACHINE,ATTRIBUTE_EARTH) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
-	Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
-	--cannot attack
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetCondition(c90440725.atkcon)
-	e1:SetOperation(c90440725.atkop)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-	c:RegisterEffect(e1,true)
-	--turn set
-	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(90440725,0))
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e2:SetCode(EVENT_PHASE+PHASE_END)
-	e2:SetRange(LOCATION_MZONE)
-	e2:SetCountLimit(1)
-	e2:SetCondition(c90440725.setcon)
-	e2:SetTarget(c90440725.settg)
-	e2:SetOperation(c90440725.setop)
-	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-	c:RegisterEffect(e2,true)
-	Duel.SpecialSummonComplete()
+	Duel.SpecialSummon(c,1,tp,tp,true,false,POS_FACEUP)
 end
 function c90440725.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==e:GetHandler()
+	local c=e:GetHandler()
+	return c:GetSummonType()==SUMMON_TYPE_SPECIAL+1 and Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==c
 end
 function c90440725.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -69,10 +67,10 @@ function c90440725.atkop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 end
 function c90440725.setcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==1-tp
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1 and Duel.GetTurnPlayer()==1-tp
 end
 function c90440725.settg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsCanTurnSet() end
+	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,e:GetHandler(),1,0,0)
 end
 function c90440725.setop(e,tp,eg,ep,ev,re,r,rp)

@@ -9,9 +9,20 @@ function c3129635.initial_effect(c)
 	e1:SetTarget(c3129635.target)
 	e1:SetOperation(c3129635.activate)
 	c:RegisterEffect(e1)
+	--destroy
+	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(3129635,0))
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e2:SetCategory(CATEGORY_DESTROY)
+	e2:SetRange(LOCATION_MZONE)
+	e2:SetCode(EVENT_BATTLED)
+	e2:SetCondition(c3129635.descon)
+	e2:SetTarget(c3129635.destg)
+	e2:SetOperation(c3129635.desop)
+	c:RegisterEffect(e2)
 end
 function c3129635.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and 
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and
 		Duel.IsPlayerCanSpecialSummonMonster(tp,3129635,0,0x21,1800,1000,4,RACE_ROCK,ATTRIBUTE_DARK) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
@@ -21,18 +32,10 @@ function c3129635.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,3129635,0,0x21,1800,1000,4,RACE_ROCK,ATTRIBUTE_DARK) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
-	Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)
-	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(3129635,0))
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e1:SetCategory(CATEGORY_DESTROY)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetCode(EVENT_BATTLED)
-	e1:SetTarget(c3129635.destg)
-	e1:SetOperation(c3129635.desop)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-	c:RegisterEffect(e1,true)
-	Duel.SpecialSummonComplete()
+	Duel.SpecialSummon(c,1,tp,tp,true,false,POS_FACEUP)
+end
+function c3129635.descon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
 end
 function c3129635.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local a=Duel.GetAttacker()
