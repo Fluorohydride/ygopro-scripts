@@ -29,7 +29,7 @@ function c43857222.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(c43857222.lvfilter1,tp,LOCATION_MZONE,0,1,nil,tp) end
 	local g=Duel.GetMatchingGroup(c43857222.lvfilter1,tp,LOCATION_MZONE,0,nil,tp)
-	local mg,lv=g:GetMinGroup(Card.GetLevel)
+	local mg,lv=g:GetMaxGroup(Card.GetLevel)
 	local alv=0
 	if lv>2 then alv=Duel.AnnounceLevel(tp,1,math.min(lv-1,6))
 	else alv=Duel.AnnounceLevel(tp,1,1) end
