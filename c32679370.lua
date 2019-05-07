@@ -20,17 +20,12 @@ function c32679370.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c32679370.operation(e,tp,eg,ep,ev,re,r,rp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ft=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),3)
 	if ft<=0 then return end
-	local g=Duel.GetMatchingGroup(c32679370.filter,tp,LOCATION_DECK,0,nil,e,tp)
-	local tc=g:GetFirst()
-	if tc then
-		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local g=Duel.SelectMatchingCard(tp,c32679370.filter,tp,LOCATION_DECK,0,1,ft,nil,e,tp)
+	if g:GetCount()>0 then
+		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
-	tc=g:GetNext()
-	if ft>1 and tc and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and Duel.SelectYesNo(tp,aux.Stringid(32679370,1)) then
-		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
-	end
-	Duel.SpecialSummonComplete()
 end
