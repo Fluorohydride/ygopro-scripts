@@ -2,7 +2,7 @@
 function c22638495.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsType,TYPE_PENDULUM),aux.AND(aux.FilterBoolFunction(Card.IsType,TYPE_PENDULUM),aux.FilterBoolFunction(Card.IsFusionSetCard,0xc7)),false)
+	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionType,TYPE_PENDULUM),aux.AND(aux.FilterBoolFunction(Card.IsFusionType,TYPE_PENDULUM),aux.FilterBoolFunction(Card.IsFusionSetCard,0xc7)),false)
 	aux.AddContactFusionProcedure(c,Card.IsReleasable,LOCATION_MZONE,0,Duel.Release,REASON_COST+REASON_FUSION+REASON_MATERIAL)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
