@@ -15,7 +15,7 @@ function c26557451.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ep==1-tp and r&REASON_EFFECT~=0 and rp==1-tp
 end
 function c26557451.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,EFFECT_IRON_WALL) end
+	if chk==0 then return not Duel.IsPlayerCanRemove(tp) end
 	local g=eg:Filter(Card.IsControler,nil,1-tp)
 	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,0,1-tp,LOCATION_HAND)

@@ -2193,6 +2193,6 @@ end
 --condition of "negate activation and banish"
 function Auxiliary.nbcon(tp,re)
 	local rc=re:GetHandler()
-	return not Duel.IsPlayerAffectedByEffect(tp,EFFECT_IRON_WALL) 
+	return not Duel.IsPlayerCanRemove(tp) 
 		and (not rc:IsRelateToEffect(re) or rc:IsAbleToRemove())
 end

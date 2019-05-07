@@ -57,12 +57,4 @@ function c34267821.rmop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(1)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	--30459350 chk
-	local e2=Effect.CreateEffect(e:GetHandler())
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_IRON_WALL)
-	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e2:SetTargetRange(1,1)
-	e2:SetReset(RESET_PHASE+PHASE_END)
-	Duel.RegisterEffect(e2,tp)
 end
