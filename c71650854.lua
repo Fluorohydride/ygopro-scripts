@@ -49,8 +49,9 @@ function c71650854.initial_effect(c)
 	c:RegisterEffect(e7)
 end
 function c71650854.condition(e,tp,eg,ep,ev,re,r,rp)
-	return (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
-		and not Duel.CheckPhaseActivity()
+	return Duel.GetTurnPlayer()==tp
+		and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
+		and (not Duel.CheckPhaseActivity() or Duel.GetFlagEffect(tp,15248873)>0)
 end
 function c71650854.indcon(e)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1
