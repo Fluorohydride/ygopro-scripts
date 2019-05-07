@@ -106,6 +106,7 @@ function c2542230.regop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterFlagEffect(2542230,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c2542230.spcon(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	return c:GetFlagEffect(2542230)~=0 and Duel.GetCurrentPhase()==PHASE_END
 end
 function c2542230.spfilter(c,e,tp)
