@@ -24,6 +24,7 @@ function c43959432.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCondition(c43959432.atkcon)
 	e3:SetValue(c43959432.atkval)
+	e3:SetLabelObject(e1)
 	c:RegisterEffect(e3)
 	local e4=e3:Clone()
 	e4:SetCode(EFFECT_UPDATE_DEFENSE)
@@ -61,8 +62,7 @@ function c43959432.activate(e,tp,eg,ep,ev,re,r,rp)
 		e4:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e4:SetValue(c43959432.eqlimit)
 		tc:RegisterEffect(e4,true)
-		e2:SetLabelObject(tc)
-		e3:SetLabelObject(tc)
+		e:SetLabelObject(tc)
 	end
 end
 function c43959432.poscon(e,tp,eg,ep,ev,re,r,rp)
@@ -79,7 +79,7 @@ function c43959432.atkcon(e)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
 end
 function c43959432.atkval(e,c)
-	local tc=e:GetLabelObject()
+	local tc=e:GetLabelObject():GetLabelObject()
 	if not tc or tc:GetEquipTarget()~=c then return 0 end
 	local atk=tc:GetAttack()
 	if atk<0 then atk=0 end
