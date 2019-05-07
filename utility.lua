@@ -1448,7 +1448,7 @@ function Auxiliary.RitualCheckEqual(g,c,lv)
 end
 function Auxiliary.RitualCheck(g,tp,c,lv,greater_or_equal)
 	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.mat_group_check or c.mat_group_check(g,tp))
-end 
+end
 function Auxiliary.RitualCheckAdditionalLevel(c,rc)
 	local raw_level=c:GetRitualLevel(rc)
 	local lv1=raw_level&0xffff
@@ -1460,7 +1460,7 @@ function Auxiliary.RitualCheckAdditionalLevel(c,rc)
 	end
 end
 function Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
-	if greater_or_equal=="Equal" then		
+	if greater_or_equal=="Equal" then
 		return	function(g)
 					return g:GetSum(Auxiliary.RitualCheckAdditionalLevel,c)<=lv
 				end
@@ -2193,6 +2193,6 @@ end
 --condition of "negate activation and banish"
 function Auxiliary.nbcon(tp,re)
 	local rc=re:GetHandler()
-	return not Duel.IsPlayerCanRemove(tp) 
+	return Duel.IsPlayerCanRemove(tp) 
 		and (not rc:IsRelateToEffect(re) or rc:IsAbleToRemove())
 end
