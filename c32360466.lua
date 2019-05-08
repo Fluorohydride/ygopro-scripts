@@ -14,7 +14,7 @@ function c32360466.filter1(c)
 	return c:IsRace(RACE_WARRIOR) and c:IsAbleToHand()
 end
 function c32360466.filter2(c)
-	return c:IsSetCard(0x10cf) or c:IsSetCard(0xbd)
+	return c:IsSetCard(0x10cf,0xbd)
 end
 function c32360466.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c32360466.filter1,tp,LOCATION_DECK,0,nil)

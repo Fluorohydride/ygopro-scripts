@@ -20,10 +20,10 @@ function c10731333.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c10731333.ptg(e,c)
-	return c:IsSetCard(0x9f) or c:IsSetCard(0x99)
+	return c:IsSetCard(0x9f,0x99)
 end
 function c10731333.atkfilter(c)
-	return c:IsFaceup() and (c:IsSetCard(0x9f) or c:IsSetCard(0x99))
+	return c:IsFaceup() and c:IsSetCard(0x9f,0x99)
 end
 function c10731333.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()

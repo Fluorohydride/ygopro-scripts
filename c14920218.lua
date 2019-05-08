@@ -32,7 +32,7 @@ function c14920218.pcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_PZONE,0,1,e:GetHandler(),0x98)
 end
 function c14920218.pfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and (c:IsSetCard(0x98) or c:IsSetCard(0x99)) and not c:IsCode(14920218) and c:IsAbleToHand()
+	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsSetCard(0x98,0x99) and not c:IsCode(14920218) and c:IsAbleToHand()
 end
 function c14920218.ptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c14920218.pfilter,tp,LOCATION_EXTRA,0,1,nil) end

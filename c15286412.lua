@@ -12,7 +12,7 @@ function c15286412.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c15286412.cfilter(c)
-	return c:IsFaceup() and (c:IsSetCard(0x42) or c:IsSetCard(0x4b)) and c:IsAbleToRemoveAsCost()
+	return c:IsFaceup() and c:IsSetCard(0x42,0x4b) and c:IsAbleToRemoveAsCost()
 end
 function c15286412.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)

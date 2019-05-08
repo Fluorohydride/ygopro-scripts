@@ -21,11 +21,11 @@ function c55312487.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c55312487.spfilter1(c,e,tp)
-	return (c:IsSetCard(0xfe) or c:IsSetCard(0x116)) and Duel.GetMZoneCount(tp,c)>0
+	return c:IsSetCard(0xfe,0x116) and Duel.GetMZoneCount(tp,c)>0
 		and Duel.IsExistingMatchingCard(c55312487.spfilter2,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,e,tp,c:GetOriginalCode())
 end
 function c55312487.spfilter2(c,e,tp,code)
-	return (c:IsSetCard(0xfe) or c:IsSetCard(0x116)) and c:GetOriginalCode()~=code and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0xfe,0x116) and c:GetOriginalCode()~=code and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c55312487.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

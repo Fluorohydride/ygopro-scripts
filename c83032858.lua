@@ -49,7 +49,7 @@ function c83032858.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(tc,REASON_COST)
 end
 function c83032858.spfilter(c,e,tp)
-	return c:IsType(TYPE_MONSTER) and not c:IsCode(83032858) and (c:IsSetCard(0x400d) or c:IsSetCard(0x113)) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsType(TYPE_MONSTER) and not c:IsCode(83032858) and c:IsSetCard(0x400d,0x113) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c83032858.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c83032858.spfilter(chkc,e,tp) end

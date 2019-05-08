@@ -12,6 +12,7 @@ function c14306092.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
 	e1:SetCost(c14306092.ctcost)
+	e1:SetTarget(c14306092.cttg)
 	e1:SetOperation(c14306092.ctop)
 	c:RegisterEffect(e1)
 	--atkup
@@ -27,6 +28,9 @@ end
 function c14306092.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
+end
+function c14306092.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return e:GetHandler():IsCanAddCounter(0x2e,1) end
 end
 function c14306092.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -36,7 +36,7 @@ function c38695361.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST+REASON_DISCARD)
 end
 function c38695361.atkfilter(c)
-	return c:IsFaceup() and (c:IsSetCard(0x10cf) or c:IsSetCard(0xbd))
+	return c:IsFaceup() and c:IsSetCard(0x10cf,0xbd)
 end
 function c38695361.atktg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c38695361.atkfilter(chkc) end

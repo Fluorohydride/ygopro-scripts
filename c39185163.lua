@@ -3,9 +3,8 @@ function c39185163.initial_effect(c)
 	--negate / banish
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(39185163,0))
-	e1:SetCategory(CATEGORY_DISABLE+CATEGORY_REMOVE)
+	e1:SetCategory(CATEGORY_DISABLE+CATEGORY_REMOVE+CATEGORY_GRAVE_ACTION)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
-	e1:SetProperty(EFFECT_FLAG_OPTIONAL_GY_ACTION)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCondition(c39185163.disrmcon)
@@ -68,7 +67,7 @@ function c39185163.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c39185163.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c39185163.spop(e,tp,eg,ep,ev,re,r,rp)

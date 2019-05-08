@@ -30,7 +30,7 @@ function c11969228.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c11969228.mfilter(c)
-	return not c:IsType(TYPE_TOKEN) and c:IsLinkRace(RACE_DRAGON+RACE_WINDBEAST)
+	return not c:IsLinkType(TYPE_TOKEN) and c:IsLinkRace(RACE_DRAGON+RACE_WINDBEAST)
 end
 function c11969228.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)

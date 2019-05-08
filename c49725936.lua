@@ -1,7 +1,7 @@
 --スリーバーストショット・ドラゴン
 function c49725936.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,aux.NOT(aux.FilterBoolFunction(Card.IsType,TYPE_TOKEN)),2)
+	aux.AddLinkProcedure(c,aux.NOT(aux.FilterBoolFunction(Card.IsLinkType,TYPE_TOKEN)),2)
 	c:EnableReviveLimit()
 	--Negate
 	local e1=Effect.CreateEffect(c)

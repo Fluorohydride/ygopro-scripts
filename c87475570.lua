@@ -31,7 +31,7 @@ function c87475570.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c87475570.filter(c)
-	return (((c:IsSetCard(0x1034) or c:IsSetCard(0x2034)) and c:IsType(TYPE_MONSTER))
+	return ((c:IsSetCard(0x1034,0x2034) and c:IsType(TYPE_MONSTER))
 		or (c:IsSetCard(0x34) and c:IsType(TYPE_SPELL+TYPE_TRAP))) and c:IsAbleToHand()
 end
 function c87475570.target(e,tp,eg,ep,ev,re,r,rp,chk)

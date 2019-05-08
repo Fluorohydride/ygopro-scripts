@@ -32,7 +32,7 @@ function c50588353.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c50588353.lcheck(g,lc)
-	return g:IsExists(Card.IsType,1,nil,TYPE_TUNER)
+	return g:IsExists(Card.IsLinkType,1,nil,TYPE_TUNER)
 end
 function c50588353.hspcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)

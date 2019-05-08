@@ -35,7 +35,7 @@ function c97617181.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c97617181.spfilter(c,e,tp)
-	return (c:IsSetCard(0x55) or c:IsSetCard(0x7b)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x55,0x7b) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c97617181.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c97617181.spfilter(chkc,e,tp) end

@@ -26,7 +26,7 @@ function c84636823.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c84636823.aclimit(e,re,tp)
-	return re:IsActiveType(TYPE_SPELL) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
+	return re:IsActiveType(TYPE_SPELL) and (re:GetHandler():IsOnField() or re:IsHasType(EFFECT_TYPE_ACTIVATE))
 end
 function c84636823.distg(e,c)
 	return c:IsType(TYPE_SPELL)

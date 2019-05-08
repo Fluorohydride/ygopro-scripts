@@ -62,14 +62,14 @@ function c42925441.effcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RegisterFlagEffect(42925441,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c42925441.costfilter1(c,e,tp)
-	return c:IsFaceup() and (c:IsSetCard(0x55) or c:IsSetCard(0x7b)) and Duel.GetMZoneCount(tp,c)>0 and c:IsAbleToGraveAsCost()
+	return c:IsFaceup() and c:IsSetCard(0x55,0x7b) and Duel.GetMZoneCount(tp,c)>0 and c:IsAbleToGraveAsCost()
 		and Duel.IsExistingMatchingCard(c42925441.spfilter1,tp,LOCATION_DECK,0,1,nil,e,tp,c:GetOriginalCode())
 end
 function c42925441.spfilter1(c,e,tp,code)
 	return c:IsSetCard(0x55) and c:GetOriginalCode()~=code and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c42925441.costfilter2(c)
-	return c:IsFaceup() and (c:IsSetCard(0x55) or c:IsSetCard(0x7b)) and c:IsAbleToGraveAsCost()
+	return c:IsFaceup() and c:IsSetCard(0x55,0x7b) and c:IsAbleToGraveAsCost()
 end
 function c42925441.thfilter(c)
 	return c:IsSetCard(0x55) and not c:IsCode(42925441) and c:IsAbleToHand()

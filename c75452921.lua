@@ -27,7 +27,7 @@ function c75452921.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c75452921.lcheck(g,lc)
-	return g:GetClassCount(Card.GetCode)==g:GetCount()
+	return g:GetClassCount(Card.GetLinkCode)==g:GetCount()
 end
 function c75452921.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)

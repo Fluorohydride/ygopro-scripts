@@ -40,7 +40,7 @@ function c19619755.initial_effect(c)
 	--double atk
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_FIELD)
-	e5:SetCode(EFFECT_SET_ATTACK_FINAL)
+	e5:SetCode(EFFECT_SET_ATTACK)
 	e5:SetRange(LOCATION_PZONE)
 	e5:SetTargetRange(LOCATION_MZONE,0)
 	e5:SetCondition(c19619755.atkcon0)

@@ -22,20 +22,42 @@ function c79402185.initial_effect(c)
 	e2:SetOperation(c79402185.thop)
 	c:RegisterEffect(e2)
 end
+function c79402185.costfilter(c,tp)
+	return c:IsCode(43017476,58071123) and (c:IsControler(tp) or c:IsFaceup())
+end
+function c79402185.fcheck(c,mg,sg,code,...)
+	if not c:IsCode(code) then return false end
+	if ... then
+		sg:AddCard(c)
+		local res=mg:IsExists(c79402185.fcheck,1,sg,mg,sg,...)
+		sg:RemoveCard(c)
+		return res
+	else return true end
+end
+function c79402185.fselect(g,tp,sg)
+	if g:IsExists(c79402185.fcheck,1,nil,g,sg,43017476,43017476,58071123) and Duel.GetMZoneCount(tp,g)>0 then
+		Duel.SetSelectedCard(g)
+		return Duel.CheckReleaseGroupEx(tp,nil,0,nil)
+	else return false end
+end
 function c79402185.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroupEx(tp,Card.IsCode,2,nil,43017476)
-		and Duel.CheckReleaseGroupEx(tp,Card.IsCode,1,nil,58071123) end
-	local g1=Duel.SelectReleaseGroupEx(tp,Card.IsCode,2,2,nil,43017476)
-	local g2=Duel.SelectReleaseGroupEx(tp,Card.IsCode,1,1,nil,58071123)
-	g1:Merge(g2)
-	Duel.Release(g1,REASON_COST)
+	e:SetLabel(1)
+	local sg=Group.CreateGroup()
+	local g=Duel.GetReleaseGroup(tp,true):Filter(c79402185.costfilter,nil,tp)
+	if chk==0 then return g:CheckSubGroup(c79402185.fselect,3,3,tp,sg) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local rg=g:SelectSubGroup(tp,c79402185.fselect,false,3,3,tp,sg)
+	Duel.Release(rg,REASON_COST)
 end
 function c79402185.filter(c,e,tp)
-	return (c:IsCode(85066822) or c:IsCode(6022371)) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)
+	return c:IsCode(85066822,6022371) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)
 end
 function c79402185.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-3
-		and Duel.IsExistingMatchingCard(c79402185.filter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,nil,e,tp) end
+	local res=e:GetLabel()==1 or Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chk==0 then
+		e:SetLabel(0)
+		return res and Duel.IsExistingMatchingCard(c79402185.filter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,nil,e,tp)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE)
 end
 function c79402185.activate(e,tp,eg,ep,ev,re,r,rp)

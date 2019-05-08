@@ -88,7 +88,7 @@ end
 function c16898077.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c16898077.dfilter,1,nil,nil,1-tp) end
 	local g=eg:Filter(c16898077.dfilter,nil,nil,1-tp)
-	Duel.SetTargetCard(eg)
+	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,800)
 end
@@ -102,14 +102,15 @@ function c16898077.damcon2(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and rp==1-tp
 end
 function c16898077.damtg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetTargetCard(eg)
+	if chk==0 then return eg:IsExists(c16898077.sfilter,1,nil) end
+	local g=eg:Filter(c16898077.sfilter,nil)
+	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,eg:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,800)
 end
 function c16898077.damop2(e,tp,eg,ep,ev,re,r,rp)
-	local tc=eg:GetFirst()
-	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	local g=eg:Filter(c16898077.sfilter,nil,e)
+	if e:GetHandler():IsRelateToEffect(e) and g:GetCount()~=0 and Duel.Destroy(g,REASON_EFFECT)~=0 then
 		Duel.Damage(1-tp,800,REASON_EFFECT)
 	end
 end
@@ -122,7 +123,7 @@ end
 function c16898077.damtg3(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c16898077.sfilter,1,nil) end
 	local g=eg:Filter(c16898077.sfilter,nil)
-	Duel.SetTargetCard(eg)
+	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,800)
 end

@@ -37,7 +37,7 @@ function c72181263.desfilter1(c,tp,ec)
 		and Duel.IsExistingTarget(c72181263.desfilter2,tp,LOCATION_ONFIELD,0,1,c,ec)
 end
 function c72181263.desfilter2(c,ec)
-	return c~=ec and c:IsFaceup() and (c:IsSetCard(0xaf) or c:IsSetCard(0xae))
+	return c~=ec and c:IsFaceup() and c:IsSetCard(0xaf,0xae)
 end
 function c72181263.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

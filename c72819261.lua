@@ -48,7 +48,7 @@ function c72819261.sgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(tc,REASON_COST)
 end
 function c72819261.filter(c)
-	return (c:IsSetCard(0x400d) or c:IsSetCard(0x113)) and not c:IsCode(72819261) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
+	return c:IsSetCard(0x400d,0x113) and not c:IsCode(72819261) and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
 end
 function c72819261.sgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c72819261.filter,tp,LOCATION_DECK,0,1,nil) end

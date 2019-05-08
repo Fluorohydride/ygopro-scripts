@@ -10,15 +10,23 @@ function c80143954.initial_effect(c)
 	e1:SetTarget(c80143954.target)
 	e1:SetOperation(c80143954.activate)
 	c:RegisterEffect(e1)
-	--destroy replace
+	--negate
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EFFECT_DESTROY_REPLACE)
-	e2:SetRange(LOCATION_GRAVE)
-	e2:SetTarget(c80143954.reptg)
-	e2:SetValue(c80143954.repval)
-	e2:SetOperation(c80143954.repop)
+	e2:SetCode(EVENT_CHAIN_SOLVING)
+	e2:SetRange(LOCATION_SZONE)
+	e2:SetCondition(c80143954.negcon)
+	e2:SetOperation(c80143954.negop)
 	c:RegisterEffect(e2)
+	--destroy replace
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e3:SetCode(EFFECT_DESTROY_REPLACE)
+	e3:SetRange(LOCATION_GRAVE)
+	e3:SetTarget(c80143954.reptg)
+	e3:SetValue(c80143954.repval)
+	e3:SetOperation(c80143954.repop)
+	c:RegisterEffect(e3)
 end
 function c80143954.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -75,16 +83,6 @@ function c80143954.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_IGNORE_BATTLE_TARGET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e2)
-		--negate
-		local e4=Effect.CreateEffect(c)
-		e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e4:SetCode(EVENT_CHAIN_SOLVING)
-		e4:SetRange(LOCATION_SZONE)
-		e4:SetLabelObject(tc)
-		e4:SetCondition(c80143954.negcon)
-		e4:SetOperation(c80143954.negop)
-		e4:SetReset(RESET_EVENT+RESETS_STANDARD)
-		c:RegisterEffect(e4)
 	else
 		c:CancelToGrave(false)
 	end
@@ -95,7 +93,8 @@ end
 function c80143954.negcon(e,tp,eg,ep,ev,re,r,rp)
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return false end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
-	return rp==1-tp and re:IsActiveType(TYPE_MONSTER) and g and g:IsContains(e:GetLabelObject())
+	local tc=e:GetHandler():GetEquipTarget()
+	return tc and rp==1-tp and re:IsActiveType(TYPE_MONSTER) and g and g:IsContains(tc)
 end
 function c80143954.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)

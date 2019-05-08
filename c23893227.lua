@@ -32,7 +32,7 @@ function c23893227.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c23893227.filter(c)
-	return (c:IsSetCard(0x93) or c:IsSetCard(0x94)) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
+	return c:IsSetCard(0x93,0x94) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
 end
 function c23893227.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

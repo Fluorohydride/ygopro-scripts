@@ -92,13 +92,13 @@ function c56562619.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c56562619.spfilter(c,e,tp)
 	return c:GetFlagEffect(56562619)~=0
-		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,1-tp))
+		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp))
 end
 function c56562619.spfilter1(c,e,tp)
 	return c:GetFlagEffect(56562619)~=0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:GetOwner()==tp
 end
 function c56562619.spfilter2(c,e,tp)
-	return c:GetFlagEffect(56562619)~=0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,1-tp) and c:GetOwner()==1-tp
+	return c:GetFlagEffect(56562619)~=0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp) and c:GetOwner()==1-tp
 end
 function c56562619.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

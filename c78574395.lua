@@ -35,7 +35,7 @@ function c78574395.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(ct)
 end
 function c78574395.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return e:GetHandler():IsCanAddCounter(0x32,1) end
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,e:GetLabel(),0,0x32)
 end
 function c78574395.operation(e,tp,eg,ep,ev,re,r,rp,chk)

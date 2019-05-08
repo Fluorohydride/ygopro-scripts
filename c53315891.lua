@@ -3,21 +3,13 @@ function c53315891.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCode3(c,80019195,85800949,84565800,true,true)
+	aux.AddContactFusionProcedure(c,Card.IsAbleToGraveAsCost,LOCATION_ONFIELD,0,Duel.SendtoGrave,REASON_COST)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	c:RegisterEffect(e1)
-	--special summon rule
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(c53315891.sprcon)
-	e2:SetOperation(c53315891.sprop)
-	c:RegisterEffect(e2)
 	--immune
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
@@ -44,47 +36,6 @@ function c53315891.initial_effect(c)
 	e5:SetTarget(c53315891.sptg)
 	e5:SetOperation(c53315891.spop)
 	c:RegisterEffect(e5)
-end
-function c53315891.cfilter(c)
-	return c:IsFusionCode(80019195,85800949,84565800) and c:IsAbleToGraveAsCost()
-end
-function c53315891.fcheck(c,sg,g,code,...)
-	if not c:IsFusionCode(code) then return false end
-	if ... then
-		g:AddCard(c)
-		local res=sg:IsExists(c53315891.fcheck,1,g,sg,g,...)
-		g:RemoveCard(c)
-		return res
-	else return true end
-end
-function c53315891.fselect(c,tp,mg,sg,...)
-	sg:AddCard(c)
-	local res=false
-	if sg:GetCount()<3 then
-		res=mg:IsExists(c53315891.fselect,1,sg,tp,mg,sg,...)
-	elseif Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
-		local g=Group.CreateGroup()
-		res=sg:IsExists(c53315891.fcheck,1,nil,sg,g,...)
-	end
-	sg:RemoveCard(c)
-	return res
-end
-function c53315891.sprcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c53315891.cfilter,tp,LOCATION_ONFIELD,0,nil)
-	local sg=Group.CreateGroup()
-	return mg:IsExists(c53315891.fselect,1,nil,tp,mg,sg,80019195,85800949,84565800)
-end
-function c53315891.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c53315891.cfilter,tp,LOCATION_ONFIELD,0,nil)
-	local sg=Group.CreateGroup()
-	while sg:GetCount()<3 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local g=mg:FilterSelect(tp,c53315891.fselect,1,1,sg,tp,mg,sg,80019195,85800949,84565800)
-		sg:Merge(g)
-	end
-	Duel.SendtoGrave(sg,REASON_COST)
 end
 function c53315891.efilter(e,te)
 	return te:GetOwner()~=e:GetOwner()

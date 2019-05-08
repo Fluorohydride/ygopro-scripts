@@ -1,4 +1,5 @@
 --ビクトリー・バイパーXX03
+--not fully implemented
 function c93130021.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(93130021,0))
@@ -16,10 +17,11 @@ end
 function c93130021.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
-function c93130021.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function c93130021.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsOnField() and c93130021.filter(chkc) end
 	if chk==0 then return true end
 	local c=e:GetHandler()
-	local t1=Duel.IsExistingMatchingCard(c93130021.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
+	local t1=Duel.IsExistingTarget(c93130021.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 	local t2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,0x4011,c:GetAttack(),c:GetDefense(),c:GetLevel(),c:GetRace(),c:GetAttribute())
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(93130021,0))
@@ -34,24 +36,26 @@ function c93130021.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(op)
 	if op==1 then
 		e:SetCategory(CATEGORY_DESTROY)
-		local g=Duel.GetMatchingGroup(c93130021.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
+		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+		local g=Duel.SelectTarget(tp,c93130021.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	elseif op==2 then
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)
+		e:SetProperty(0)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 		Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	else
 		e:SetCategory(CATEGORY_ATKCHANGE)
+		e:SetProperty(0)
 	end
 end
 function c93130021.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if e:GetLabel()==1 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local g=Duel.SelectMatchingCard(tp,c93130021.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
-		if g:GetCount()>0 then
-			Duel.HintSelection(g)
-			Duel.Destroy(g,REASON_EFFECT)
+		local tc=Duel.GetFirstTarget()
+		if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+			Duel.Destroy(tc,REASON_EFFECT)
 		end
 	elseif e:GetLabel()==2 then
 		local atk=c:GetAttack()

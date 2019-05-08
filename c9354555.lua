@@ -30,6 +30,7 @@ function c9354555.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoDeck(dg,nil,2,REASON_EFFECT)
 	local sg=Duel.GetMatchingGroup(c9354555.filter2,tp,LOCATION_DECK,0,nil)
 	if sg:GetCount()==0 then return end
+	Duel.BreakEffect()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local hg=sg:Select(tp,1,1,nil)
 	sg:RemoveCard(hg:GetFirst())

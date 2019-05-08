@@ -90,7 +90,7 @@ function c12289247.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c12289247.cfilter(c)
-	return (c:IsSetCard(0x10f2) or c:IsSetCard(0x2073) or c:IsSetCard(0x2017) or c:IsSetCard(0x1046))
+	return c:IsSetCard(0x10f2,0x2073,0x2017,0x1046)
 		and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 		and (not c:IsLocation(LOCATION_MZONE) or c:IsFaceup())
 end

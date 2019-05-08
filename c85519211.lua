@@ -20,6 +20,7 @@ function c85519211.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c85519211.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c85519211.filter,tp,LOCATION_MZONE,0,nil)
-	Duel.Damage(1-tp,g:GetCount()*1000,REASON_EFFECT)
+	if Duel.Damage(1-tp,g:GetCount()*1000,REASON_EFFECT)==0 then return end
+	Duel.BreakEffect()
 	Duel.Destroy(g,REASON_EFFECT)
 end

@@ -18,6 +18,7 @@ function c91607976.initial_effect(c)
 	e2:SetCountLimit(1)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCondition(c91607976.cond1)
+	e2:SetTarget(c91607976.tgd1)
 	e2:SetOperation(c91607976.opd1)
 	c:RegisterEffect(e2)
 	local e3=Effect.CreateEffect(c)
@@ -41,6 +42,9 @@ function c91607976.vala(e,c)
 end
 function c91607976.cond1(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsDisabled() and e:GetHandler():IsDefensePos()
+end
+function c91607976.tgd1(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return e:GetHandler():IsCanAddCounter(0x8,1) end
 end
 function c91607976.opd1(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then

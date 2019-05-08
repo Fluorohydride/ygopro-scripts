@@ -3,6 +3,7 @@ function c40080312.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCode3(c,89943723,80344569,43237273,false,false)
+	aux.AddContactFusionProcedure(c,Card.IsAbleToDeckOrExtraAsCost,LOCATION_ONFIELD,0,Duel.SendtoDeck,nil,2,REASON_COST)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -10,15 +11,6 @@ function c40080312.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e1:SetValue(c40080312.splimit)
 	c:RegisterEffect(e1)
-	--special summon rule
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(c40080312.spcon)
-	e2:SetOperation(c40080312.spop)
-	c:RegisterEffect(e2)
 	--return
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(40080312,0))
@@ -51,51 +43,6 @@ c40080312.material_setcode=0x8
 c40080312.card_code_list={89943723}
 function c40080312.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
-end
-function c40080312.cfilter(c)
-	return c:IsFusionCode(89943723,80344569,43237273) and c:IsAbleToDeckOrExtraAsCost()
-end
-function c40080312.fcheck(c,sg,g,code,...)
-	if not c:IsFusionCode(code) then return false end
-	if ... then
-		g:AddCard(c)
-		local res=sg:IsExists(c40080312.fcheck,1,g,sg,g,...)
-		g:RemoveCard(c)
-		return res
-	else return true end
-end
-function c40080312.fselect(c,tp,mg,sg,...)
-	sg:AddCard(c)
-	local res=false
-	if sg:GetCount()<3 then
-		res=mg:IsExists(c40080312.fselect,1,sg,tp,mg,sg,...)
-	elseif Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
-		local g=Group.CreateGroup()
-		res=sg:IsExists(c40080312.fcheck,1,nil,sg,g,...)
-	end
-	sg:RemoveCard(c)
-	return res
-end
-function c40080312.spcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c40080312.cfilter,tp,LOCATION_ONFIELD,0,nil)
-	local sg=Group.CreateGroup()
-	return mg:IsExists(c40080312.fselect,1,nil,tp,mg,sg,89943723,80344569,43237273)
-end
-function c40080312.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c40080312.cfilter,tp,LOCATION_ONFIELD,0,nil)
-	local sg=Group.CreateGroup()
-	while sg:GetCount()<3 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-		local g=mg:FilterSelect(tp,c40080312.fselect,1,1,sg,tp,mg,sg,89943723,80344569,43237273)
-		sg:Merge(g)
-	end
-	local cg=sg:Filter(Card.IsFacedown,nil)
-	if cg:GetCount()>0 then
-		Duel.ConfirmCards(1-tp,cg)
-	end
-	Duel.SendtoDeck(sg,nil,2,REASON_COST)
 end
 function c40080312.retcon1(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsHasEffect(42015635)
@@ -142,21 +89,21 @@ function c40080312.drop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetCode(EFFECT_DISABLE)
-		e1:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		e2:SetValue(RESET_TURN_SET)
-		e2:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e2)
 		if tc:IsType(TYPE_TRAPMONSTER) then
 			local e3=Effect.CreateEffect(c)
 			e3:SetType(EFFECT_TYPE_SINGLE)
 			e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 			e3:SetCode(EFFECT_DISABLE_TRAPMONSTER)
-			e3:SetReset(RESET_EVENT+0x1fe0000+RESET_PHASE+PHASE_END)
+			e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			tc:RegisterEffect(e3)
 		end
 	end

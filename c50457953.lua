@@ -1,4 +1,4 @@
---幻木龙
+--幻木龍
 function c50457953.initial_effect(c)
 	--lvchange
 	local e1=Effect.CreateEffect(c)

@@ -9,6 +9,16 @@ function c20960340.initial_effect(c)
 	e1:SetTarget(c20960340.target)
 	e1:SetOperation(c20960340.activate)
 	c:RegisterEffect(e1)
+	--damage
+	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(20960340,0))
+	e2:SetCategory(CATEGORY_DAMAGE)
+	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
+	e2:SetCode(EVENT_BATTLED)
+	e2:SetCondition(c20960340.damcon)
+	e2:SetTarget(c20960340.damtg)
+	e2:SetOperation(c20960340.damop)
+	c:RegisterEffect(e2)
 end
 function c20960340.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp) and Duel.GetAttackTarget()==nil
@@ -27,24 +37,13 @@ function c20960340.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,20960340,0,0x21,atk,0,4,RACE_WARRIOR,ATTRIBUTE_LIGHT) then return end
 	c:AddMonsterAttribute(TYPE_TRAP+TYPE_EFFECT)
-	Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)
+	Duel.SpecialSummonStep(c,1,tp,tp,true,false,POS_FACEUP_ATTACK)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_ATTACK)
 	e1:SetValue(atk)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e1)
-	--damage
-	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(20960340,0))
-	e2:SetCategory(CATEGORY_DAMAGE)
-	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e2:SetCode(EVENT_BATTLED)
-	e2:SetCondition(c20960340.damcon)
-	e2:SetTarget(c20960340.damtg)
-	e2:SetOperation(c20960340.damop)
-	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-	c:RegisterEffect(e2,true)
 	Duel.SpecialSummonComplete()
 	local at=Duel.GetAttacker()
 	if at and at:IsAttackable() and at:IsFaceup() and not at:IsImmuneToEffect(e) and not at:IsStatus(STATUS_ATTACK_CANCELED) then
@@ -53,7 +52,8 @@ function c20960340.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c20960340.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
+	local c=e:GetHandler()
+	return c:IsStatus(STATUS_BATTLE_DESTROYED) and c:GetSummonType()==SUMMON_TYPE_SPECIAL+1
 end
 function c20960340.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

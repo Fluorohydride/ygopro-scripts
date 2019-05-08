@@ -53,7 +53,7 @@ function c69105797.ccon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsPreviousPosition(POS_FACEUP)
 end
 function c69105797.cfilter(c)
-	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_SPECIAL)
+	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_SPECIAL) and c:IsCanAddCounter(0x1041,1)
 end
 function c69105797.cop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

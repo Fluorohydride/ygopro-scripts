@@ -3,6 +3,7 @@ function c95793022.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c95793022.ffilter,3,false)
+	aux.AddContactFusionProcedure(c,Card.IsReleasable,LOCATION_MZONE,0,Duel.Release,REASON_COST+REASON_FUSION+REASON_MATERIAL)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -10,16 +11,6 @@ function c95793022.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e1:SetValue(c95793022.splimit)
 	c:RegisterEffect(e1)
-	--special summon rule
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(c95793022.spcon)
-	e2:SetTarget(c95793022.sptg)
-	e2:SetOperation(c95793022.spop)
-	c:RegisterEffect(e2)
 	--attack all
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
@@ -44,36 +35,6 @@ function c95793022.ffilter(c)
 end
 function c95793022.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA) or aux.fuslimit(e,se,sp,st)
-end
-function c95793022.spfilter(c,fc)
-	return c95793022.ffilter(c) and c:IsCanBeFusionMaterial(fc)
-end
-function c95793022.spcheck(g,tp)
-	return Duel.GetLocationCountFromEx(tp,tp,g)>0
-end
-function c95793022.spcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local g=Duel.GetReleaseGroup(tp):Filter(c95793022.spfilter,nil,c)
-	return g:CheckSubGroup(c95793022.spcheck,3,3,tp)
-end
-function c95793022.sptg(e,tp,eg,ep,ev,re,r,rp,check,c)
-	local g=Duel.GetReleaseGroup(tp):Filter(c95793022.spfilter,nil,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=g:SelectSubGroup(tp,c95793022.spcheck,true,3,3,tp)
-	if sg then
-		sg:KeepAlive()
-		e:SetLabelObject(sg)
-		return true
-	else
-		return false
-	end
-end
-function c95793022.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local sg=e:GetLabelObject()
-	c:SetMaterial(sg)
-	Duel.Release(sg,REASON_COST+REASON_FUSION+REASON_MATERIAL)
-	sg:DeleteGroup()
 end
 function c95793022.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

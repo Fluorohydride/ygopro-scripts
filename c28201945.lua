@@ -31,11 +31,11 @@ function c28201945.initial_effect(c)
 end
 function c28201945.efilter(e,te)
 	local c=te:GetHandler()
-	return c:GetType()==TYPE_TRAP and (c:IsSetCard(0x4c) or c:IsSetCard(0x89))
+	return c:GetType()==TYPE_TRAP and c:IsSetCard(0x4c,0x89)
 end
 function c28201945.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=re:GetHandler()
-	return rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and c:GetType()==TYPE_TRAP and (c:IsSetCard(0x4c) or c:IsSetCard(0x89)) and e:GetHandler():GetFlagEffect(1)>0
+	return rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and c:GetType()==TYPE_TRAP and c:IsSetCard(0x4c,0x89) and e:GetHandler():GetFlagEffect(1)>0
 end
 function c28201945.filter(c,e,tp,ft)
 	return c:IsSetCard(0x108a) and c:GetCode()~=28201945 and c:IsType(TYPE_MONSTER) and (c:IsAbleToHand() or (ft>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)))

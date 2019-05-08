@@ -64,14 +64,14 @@ function c15574615.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c15574615.spfilter(c,e,tp)
-	return c:IsCode(80208158,16796157,43791861,79185500) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(80208158,16796157,43791861,79185500) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsCanBeEffectTarget(e)
 end
 function c15574615.sptarget_selector(c,tp,g,sg,i)
 	if not c:IsCode(c15574615.spcost_list[i]) then return false end
 	if i<4 then
 		sg:AddCard(c)
 		g:RemoveCard(c)
-		local flag=g:IsExists(c4335427.sptarget_selector,1,nil,tp,g,sg,i+1)
+		local flag=g:IsExists(c15574615.sptarget_selector,1,nil,tp,g,sg,i+1)
 		sg:RemoveCard(c)
 		g:AddCard(c)
 		return flag
@@ -93,7 +93,8 @@ function c15574615.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		sg:Merge(g1)
 		g:Sub(g1)
 	end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,4,0,0)
+	Duel.SetTargetCard(sg)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,4,0,0)
 end
 function c15574615.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end

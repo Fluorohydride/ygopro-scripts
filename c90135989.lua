@@ -21,7 +21,7 @@ function c90135989.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c90135989.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
-	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsCanAddCounter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,0x1019,1)
 	local tc=g:GetFirst()
 	while tc do
 		tc:AddCounter(0x1019,1)

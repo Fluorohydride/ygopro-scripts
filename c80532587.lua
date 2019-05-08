@@ -4,21 +4,13 @@ function c80532587.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionType,TYPE_SYNCHRO),aux.FilterBoolFunction(Card.IsFusionType,TYPE_XYZ),false)
+	aux.AddContactFusionProcedure(c,Card.IsAbleToGraveAsCost,LOCATION_MZONE,0,Duel.SendtoGrave,REASON_COST)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	c:RegisterEffect(e1)
-	--special summon rule
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(c80532587.sprcon)
-	e2:SetOperation(c80532587.sprop)
-	c:RegisterEffect(e2)
 	--special summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(80532587,0))
@@ -39,34 +31,6 @@ function c80532587.initial_effect(c)
 	e4:SetTarget(c80532587.destg)
 	e4:SetOperation(c80532587.desop)
 	c:RegisterEffect(e4)
-end
-function c80532587.cfilter(c,fc)
-	return c:IsFusionType(TYPE_SYNCHRO+TYPE_XYZ) and c:IsCanBeFusionMaterial(fc) and c:IsAbleToGraveAsCost()
-end
-function c80532587.spfilter1(c,tp,g)
-	return g:IsExists(c80532587.spfilter2,1,c,tp,c)
-end
-function c80532587.spfilter2(c,tp,mc)
-	return (c:IsFusionType(TYPE_SYNCHRO) and mc:IsFusionType(TYPE_XYZ)
-		or c:IsFusionType(TYPE_XYZ) and mc:IsFusionType(TYPE_SYNCHRO))
-		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
-end
-function c80532587.sprcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c80532587.cfilter,tp,LOCATION_MZONE,0,nil,c)
-	return mg:IsExists(c80532587.spfilter1,1,nil,tp,mg)
-end
-function c80532587.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c80532587.cfilter,tp,LOCATION_MZONE,0,nil,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=mg:FilterSelect(tp,c80532587.spfilter1,1,1,nil,tp,mg)
-	local mc=g1:GetFirst()
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=mg:FilterSelect(tp,c80532587.spfilter2,1,1,mc,tp,mc)
-	g1:Merge(g2)
-	c:SetMaterial(g1)
-	Duel.SendtoGrave(g1,REASON_COST)
 end
 function c80532587.spfilter(c,e,tp)
 	return c:IsLevel(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

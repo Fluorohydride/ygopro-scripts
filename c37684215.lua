@@ -28,6 +28,7 @@ function c37684215.initial_effect(c)
 	e4:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e4:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e4:SetRange(LOCATION_SZONE)
+	e2:SetCondition(c37684215.indcon)
 	e4:SetValue(1)
 	c:RegisterEffect(e4)
 end
@@ -49,4 +50,7 @@ function c37684215.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
+end
+function c37684215.indcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetEquipTarget()
 end

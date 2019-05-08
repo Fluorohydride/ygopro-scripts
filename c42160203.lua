@@ -70,7 +70,7 @@ function c42160203.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoDeck(c,nil,0,REASON_COST)
 end
 function c42160203.spfilter(c,e,tp)
-	return c:IsFaceup() and (c:IsSetCard(0x10f8) or c:IsSetCard(0x20f8))
+	return c:IsFaceup() and c:IsSetCard(0x10f8,0x20f8)
 		and c:IsType(TYPE_PENDULUM) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c42160203.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

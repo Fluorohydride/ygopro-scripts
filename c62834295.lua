@@ -29,7 +29,7 @@ function c62834295.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c62834295.cfilter,1,nil,1-tp)
 end
 function c62834295.tgfilter(c)
-	return (c:IsSetCard(0xfe) or c:IsSetCard(0x11b)) and c:IsType(TYPE_MONSTER) and (c:IsAbleToGrave() or c:IsAbleToRemove())
+	return c:IsSetCard(0xfe,0x11b) and c:IsType(TYPE_MONSTER) and (c:IsAbleToGrave() or c:IsAbleToRemove())
 end
 function c62834295.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c62834295.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil) end

@@ -77,7 +77,7 @@ function c71612253.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c71612253.tgfilter(c)
-	return (c:IsSetCard(0xaf) or c:IsSetCard(0xae)) and c:IsAbleToGrave()
+	return c:IsSetCard(0xaf,0xae) and c:IsAbleToGrave()
 end
 function c71612253.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c71612253.tgfilter,tp,LOCATION_DECK,0,1,nil) end

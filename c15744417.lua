@@ -39,6 +39,8 @@ function c15744417.operation(e,tp,eg,ep,ev,re,r,rp)
 	elseif (d1==d2 and (d1==5 or d1==6)) or (d1==d3 and (d1==5 or d1==6)) or (d2==d3 and (d2==5 or d2==6)) then
 		res56=true
 	end
+	if not res12 and not res34 and not res56 then return end
+	Duel.BreakEffect()
 	if res12 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

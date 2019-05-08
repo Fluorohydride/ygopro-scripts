@@ -59,7 +59,7 @@ function c82428674.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsPreviousLocation(LOCATION_ONFIELD) and bit.band(r,REASON_EFFECT)~=0
 end
 function c82428674.thfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and (c:IsSetCard(0x94) or c:IsSetCard(0x93)) and c:IsAbleToHand()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSetCard(0x94,0x93) and c:IsAbleToHand()
 end
 function c82428674.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c82428674.thfilter,tp,LOCATION_DECK,0,1,nil) end

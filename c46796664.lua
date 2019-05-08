@@ -48,7 +48,7 @@ function c46796664.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 end
 function c46796664.tgfilter(c)
-	return (c:IsSetCard(0xaf) or c:IsSetCard(0xae)) and not c:IsCode(46796664) and c:IsAbleToGrave()
+	return c:IsSetCard(0xaf,0xae) and not c:IsCode(46796664) and c:IsAbleToGrave()
 end
 function c46796664.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c46796664.tgfilter,tp,LOCATION_DECK,0,1,nil) end

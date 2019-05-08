@@ -10,15 +10,23 @@ function c22493811.initial_effect(c)
 	e1:SetOperation(c22493811.activate)
 	c:RegisterEffect(e1)
 end
+function c22493811.costfilter(c,tp)
+	return c:IsRace(RACE_INSECT)
+		and Duel.GetMZoneCount(tp,c)>1 and (c:IsControler(tp) or c:IsFaceup())
+end
 function c22493811.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,nil,RACE_INSECT) end
-	local g=Duel.SelectReleaseGroup(tp,Card.IsRace,1,1,nil,RACE_INSECT)
+	e:SetLabel(1)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c22493811.costfilter,1,nil,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c22493811.costfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c22493811.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,22493812,0,0x4011,500,1200,4,RACE_INSECT,ATTRIBUTE_EARTH) end
+	local res=e:GetLabel()==1 or Duel.GetLocationCount(tp,LOCATION_MZONE)>1
+	if chk==0 then
+		e:SetLabel(0)
+		return res and not Duel.IsPlayerAffectedByEffect(tp,59822133)
+			and Duel.IsPlayerCanSpecialSummonMonster(tp,22493812,0,0x4011,500,1200,4,RACE_INSECT,ATTRIBUTE_EARTH)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,0,0)
 end

@@ -40,7 +40,7 @@ function c56292140.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c56292140.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return e:GetHandler():IsCanAddCounter(0x40,1) end
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x40)
 end
 function c56292140.ctop(e,tp,eg,ep,ev,re,r,rp)

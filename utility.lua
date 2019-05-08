@@ -128,7 +128,7 @@ function Auxiliary.EnableDualAttribute(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_ADD_TYPE)
-	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e2:SetRange(LOCATION_MZONE+LOCATION_GRAVE)
 	e2:SetCondition(aux.DualNormalCondition)
 	e2:SetValue(TYPE_NORMAL)
@@ -1394,6 +1394,40 @@ function Auxiliary.FShaddollOperation(attr)
 				Duel.SetFusionMaterial(g)
 			end
 end
+function Auxiliary.AddContactFusionProcedure(c,filter,self_location,opponent_location,mat_operation,...)
+	local self_location=self_location or 0
+	local opponent_location=opponent_location or 0
+	local operation_params={...}
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_SPSUMMON_PROC)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e2:SetRange(LOCATION_EXTRA)
+	e2:SetCondition(Auxiliary.ContactFusionCondition(filter,self_location,opponent_location))
+	e2:SetOperation(Auxiliary.ContactFusionOperation(filter,self_location,opponent_location,mat_operation,operation_params))
+	c:RegisterEffect(e2)
+	return e2
+end
+function Auxiliary.ContactFusionMaterialFilter(c,fc,filter)
+	return c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL) and (not filter or filter(c,fc))
+end
+function Auxiliary.ContactFusionCondition(filter,self_location,opponent_location)
+	return	function(e,c)
+				if c==nil then return true end
+				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
+				local tp=c:GetControler()
+				local mg=Duel.GetMatchingGroup(Auxiliary.ContactFusionMaterialFilter,tp,self_location,opponent_location,c,c,filter)
+				return c:CheckFusionMaterial(mg,nil,tp)
+			end
+end
+function Auxiliary.ContactFusionOperation(filter,self_location,opponent_location,mat_operation,operation_params)
+	return	function(e,tp,eg,ep,ev,re,r,rp,c)
+				local mg=Duel.GetMatchingGroup(Auxiliary.ContactFusionMaterialFilter,tp,self_location,opponent_location,c,c,filter)
+				local g=Duel.SelectFusionMaterial(tp,c,mg,nil,tp)
+				c:SetMaterial(g)
+				mat_operation(g,table.unpack(operation_params))
+			end
+end
 function Auxiliary.AddRitualProcUltimate(c,filter,level_function,greater_or_equal,summon_location,grave_filter,mat_filter)
 	summon_location=summon_location or LOCATION_HAND
 	local e1=Effect.CreateEffect(c)
@@ -1414,7 +1448,7 @@ function Auxiliary.RitualCheckEqual(g,c,lv)
 end
 function Auxiliary.RitualCheck(g,tp,c,lv,greater_or_equal)
 	return Auxiliary["RitualCheck"..greater_or_equal](g,c,lv) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.mat_group_check or c.mat_group_check(g,tp))
-end 
+end
 function Auxiliary.RitualCheckAdditionalLevel(c,rc)
 	local raw_level=c:GetRitualLevel(rc)
 	local lv1=raw_level&0xffff
@@ -1426,7 +1460,7 @@ function Auxiliary.RitualCheckAdditionalLevel(c,rc)
 	end
 end
 function Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
-	if greater_or_equal=="Equal" then		
+	if greater_or_equal=="Equal" then
 		return	function(g)
 					return g:GetSum(Auxiliary.RitualCheckAdditionalLevel,c)<=lv
 				end
@@ -1705,7 +1739,7 @@ function Auxiliary.PendOperation()
 				end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				Auxiliary.GCheckAdditional=Auxiliary.PendOperationCheck(ft1,ft2,ft)
-				local g=tg:SelectSubGroup(tp,aux.TRUE,true,1,math.min(#tg,ft),ft1,ft2,ft)
+				local g=tg:SelectSubGroup(tp,aux.TRUE,true,1,math.min(#tg,ft))
 				Auxiliary.GCheckAdditional=nil
 				if not g then return end
 				if ce then
@@ -2159,6 +2193,6 @@ end
 --condition of "negate activation and banish"
 function Auxiliary.nbcon(tp,re)
 	local rc=re:GetHandler()
-	return not Duel.IsPlayerAffectedByEffect(tp,EFFECT_IRON_WALL) 
+	return Duel.IsPlayerCanRemove(tp) 
 		and (not rc:IsRelateToEffect(re) or rc:IsAbleToRemove())
 end

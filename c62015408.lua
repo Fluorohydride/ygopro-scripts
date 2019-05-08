@@ -23,7 +23,7 @@ function c62015408.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST+REASON_DISCARD)
 end
 function c62015408.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,EFFECT_IRON_WALL)
+	if chk==0 then return Duel.IsPlayerCanRemove(tp)
 		and Duel.GetFieldGroupCount(tp,LOCATION_EXTRA,0)>0
 		and Duel.GetFieldGroupCount(tp,0,LOCATION_EXTRA)>0 end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,LOCATION_EXTRA)

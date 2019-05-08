@@ -59,7 +59,7 @@ function c14017402.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) then
 		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=1 then return end
-		local code=tc:GetOriginalCode()
+		local code=tc:GetCode()
 		local reset_flag=RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END
 		c:CopyEffect(code, reset_flag, 1)
 		local e1=Effect.CreateEffect(c)

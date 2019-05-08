@@ -40,7 +40,7 @@ function c58054262.filter(c,code,e,tp)
 	return c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c58054262.sptargetfilter(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsCode(60999392,23782705,96384007)
+	return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsCode(60999392,23782705,96384007) and c:IsCanBeEffectTarget(e)
 end
 c58054262.sptarget_list={60999392,23782705,96384007}
 function c58054262.sptarget_selector(c,tp,g,sg,i)
@@ -61,7 +61,7 @@ function c58054262.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(c58054262.sptargetfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
 	local sg=Group.CreateGroup()
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)>=2
+		and Duel.GetMZoneCount(tp,e:GetHandler())>=3
 		and g:IsExists(c58054262.sptarget_selector,1,nil,tp,g,sg,1)
 	end
 	for i=1,3 do

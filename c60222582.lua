@@ -12,13 +12,13 @@ function c60222582.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c60222582.cfilter(c)
-	return c:IsFaceup() and c:IsLevelAbove(5) and (c:IsSetCard(0x55) or c:IsSetCard(0x7b))
+	return c:IsFaceup() and c:IsLevelAbove(5) and c:IsSetCard(0x55,0x7b)
 end
 function c60222582.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c60222582.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c60222582.spfilter(c,e,tp)
-	return c:IsLevelAbove(5) and (c:IsSetCard(0x55) or c:IsSetCard(0x7b)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+	return c:IsLevelAbove(5) and c:IsSetCard(0x55,0x7b) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c60222582.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

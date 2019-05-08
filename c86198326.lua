@@ -27,21 +27,24 @@ function c86198326.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c86198326.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c86198326.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	Duel.SelectTarget(tp,c86198326.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c86198326.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	local opt=0
+	if g:GetFirst():IsDefenseAbove(0) then opt=Duel.SelectOption(tp,aux.Stringid(86198326,0),aux.Stringid(86198326,1)) end
+	e:SetLabel(opt)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
 end
 function c86198326.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	local opt=e:GetLabel()
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		local opt=Duel.SelectOption(tp,aux.Stringid(86198326,0),aux.Stringid(86198326,1))
 		Duel.Equip(tp,c,tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_EQUIP)
-		if opt==0 then 
+		if opt==0 then
 			e1:SetCode(EFFECT_UPDATE_ATTACK)
-		else 
-			e1:SetCode(EFFECT_UPDATE_DEFENSE) 
+		else
+			e1:SetCode(EFFECT_UPDATE_DEFENSE)
 		end
 		e1:SetValue(700)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)

@@ -22,7 +22,7 @@ function c27873305.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c27873305.thfilter(c,tp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 and (not c:IsLocation(LOCATION_SZONE) or c:GetSequence()>4) then return false end
-	return c:IsFaceup() and (c:IsSetCard(0xaf) or c:IsSetCard(0xae)) and c:IsAbleToHand()
+	return c:IsFaceup() and c:IsSetCard(0xaf,0xae) and c:IsAbleToHand()
 end
 function c27873305.eqfilter(c,tp,chk)
 	return c:IsFaceup() and c:IsAbleToEquip(tp,chk)

@@ -53,13 +53,13 @@ function c58820923.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58820923.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)>2
-		and not Duel.IsPlayerAffectedByEffect(1-tp,EFFECT_IRON_WALL) end
+		and Duel.IsPlayerCanRemove(1-tp) end
 end
 function c58820923.rmfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
 end
 function c58820923.rmop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.IsPlayerAffectedByEffect(1-tp,EFFECT_IRON_WALL) then return end
+	if not Duel.IsPlayerCanRemove(1-tp) then return end
 	local g=Duel.GetMatchingGroup(c58820923.rmfilter,1-tp,LOCATION_DECK,0,nil)
 	if g:GetCount()>2 then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_REMOVE)

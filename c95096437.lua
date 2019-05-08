@@ -22,13 +22,14 @@ end
 function c95096437.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) then
+		tc:RegisterFlagEffect(95096437,RESET_EVENT+0x1220000+RESET_PHASE+PHASE_END,0,1)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetDescription(aux.Stringid(95096437,0))
 		e1:SetCategory(CATEGORY_HANDES)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 		e1:SetCode(EVENT_BATTLE_DAMAGE)
-		e1:SetLabel(tc:GetFieldID())
+		e1:SetLabelObject(tc)
 		e1:SetCondition(c95096437.hdcon)
 		e1:SetTarget(c95096437.hdtg)
 		e1:SetOperation(c95096437.hdop)
@@ -37,7 +38,8 @@ function c95096437.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c95096437.hdcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and eg:GetFirst():GetFieldID()==e:GetLabel()
+	local tc=e:GetLabelObject()
+	return ep~=tp and eg:IsContains(tc) and tc:GetFlagEffect(95096437)~=0
 end
 function c95096437.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

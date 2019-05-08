@@ -1,4 +1,4 @@
---ワルキューレ・アルテスト
+--Valkyrie Erste
 function c66809920.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)
@@ -25,7 +25,6 @@ function c66809920.initial_effect(c)
 	e2:SetOperation(c66809920.rmop)
 	c:RegisterEffect(e2)
 end
-c66809920.listed_names={92182447}
 function c66809920.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return re and re:GetHandler():IsType(TYPE_SPELL) and e:GetHandler():IsPreviousLocation(LOCATION_HAND)
 end
@@ -46,7 +45,7 @@ function c66809920.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c66809920.cfilter(c)
-	return c:IsSetCard(0x122) and not c:IsCode(66809920)
+	return c:IsFaceup() and c:IsSetCard(0x122) and not c:IsCode(66809920)
 end
 function c66809920.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c66809920.cfilter,tp,LOCATION_MZONE,0,1,nil)
@@ -56,7 +55,7 @@ function c66809920.rmfilter(c)
 end
 function c66809920.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c66809920.rmfilter,tp,0,LOCATION_GRAVE,1,nil) end
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,LOCATION_GRAVE)
 end
 function c66809920.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -66,8 +65,7 @@ function c66809920.rmop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END)
 			e1:SetCode(EFFECT_SET_ATTACK)
 			e1:SetValue(rc:GetBaseAttack())
 			c:RegisterEffect(e1)

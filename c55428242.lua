@@ -40,10 +40,10 @@ function c55428242.initial_effect(c)
 end
 function c55428242.efilter(e,te)
 	local c=te:GetHandler()
-	return c:GetType()==TYPE_TRAP and (c:IsSetCard(0x4c) or c:IsSetCard(0x89))
+	return c:GetType()==TYPE_TRAP and c:IsSetCard(0x4c,0x89)
 end
 function c55428242.etarget(e,c)
-	return c:GetType()==TYPE_TRAP and (c:IsSetCard(0x4c) or c:IsSetCard(0x89))
+	return c:GetType()==TYPE_TRAP and c:IsSetCard(0x4c,0x89)
 end
 function c55428242.distarget(e,c)
 	return c:GetType()==TYPE_TRAP or c:GetType()==TYPE_TRAP+TYPE_EQUIP

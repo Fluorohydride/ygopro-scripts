@@ -33,7 +33,7 @@ end
 function c88409165.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) then
-		if tc:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)
+		if tc:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK)
 			or Duel.SelectOption(tp,aux.Stringid(88409165,1),aux.Stringid(88409165,2))==0 then
 			Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
 		else

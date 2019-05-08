@@ -21,12 +21,12 @@ function c90506641.filter(c)
 	return c:IsType(TYPE_NORMAL) and c:IsAbleToHand()
 end
 function c90506641.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,EFFECT_IRON_WALL)
+	if chk==0 then return Duel.IsPlayerCanRemove(tp)
 		and Duel.IsExistingMatchingCard(c90506641.filter,tp,LOCATION_DECK,0,5,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c90506641.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.IsPlayerAffectedByEffect(tp,EFFECT_IRON_WALL) then return end
+	if not Duel.IsPlayerCanRemove(tp) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(90506641,0))
 	local g=Duel.SelectMatchingCard(tp,c90506641.filter,tp,LOCATION_DECK,0,5,5,nil)
 	if g:GetCount()<5 then return end

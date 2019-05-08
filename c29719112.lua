@@ -22,7 +22,7 @@ function c29719112.initial_effect(c)
 	--to hand
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(29719112,1))
-	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e3:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetCode(EVENT_BATTLE_DESTROYED)
@@ -104,11 +104,11 @@ function c29719112.spop(e,tp,eg,ep,ev,re,r,rp)
 		tc:CompleteProcedure()
 	end
 end
-function c29719112.cfilter(c,e,tp)
-	return c:IsType(TYPE_FUSION) and c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE)
+function c29719112.cfilter(c,tp)
+	return c:IsType(TYPE_FUSION) and c:GetPreviousControler()==tp
 end
 function c29719112.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c29719112.cfilter,1,nil,e,tp)
+	return eg:IsExists(c29719112.cfilter,1,nil,tp)
 end
 function c29719112.thfilter(c)
 	return c:IsCode(37630732) and c:IsAbleToHand()

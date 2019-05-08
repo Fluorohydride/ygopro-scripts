@@ -3,6 +3,7 @@ function c1561110.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCode3(c,30012506,77411244,3405259,true,true)
+	aux.AddContactFusionProcedure(c,Card.IsAbleToRemoveAsCost,LOCATION_ONFIELD+LOCATION_GRAVE,0,Duel.Remove,POS_FACEUP,REASON_COST)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -10,15 +11,6 @@ function c1561110.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e1:SetValue(c1561110.splimit)
 	c:RegisterEffect(e1)
-	--special summon rule
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(c1561110.spcon)
-	e2:SetOperation(c1561110.spop)
-	c:RegisterEffect(e2)
 	--remove
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(1561110,0))
@@ -50,47 +42,6 @@ function c1561110.initial_effect(c)
 end
 function c1561110.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
-end
-function c1561110.cfilter(c)
-	return c:IsFusionCode(30012506,77411244,3405259) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial()
-end
-function c1561110.fcheck(c,sg,g,code,...)
-	if not c:IsFusionCode(code) then return false end
-	if ... then
-		g:AddCard(c)
-		local res=sg:IsExists(c1561110.fcheck,1,g,sg,g,...)
-		g:RemoveCard(c)
-		return res
-	else return true end
-end
-function c1561110.fselect(c,tp,mg,sg,...)
-	sg:AddCard(c)
-	local res=false
-	if sg:GetCount()<3 then
-		res=mg:IsExists(c1561110.fselect,1,sg,tp,mg,sg,...)
-	elseif Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
-		local g=Group.CreateGroup()
-		res=sg:IsExists(c1561110.fcheck,1,nil,sg,g,...)
-	end
-	sg:RemoveCard(c)
-	return res
-end
-function c1561110.spcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c1561110.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	local sg=Group.CreateGroup()
-	return mg:IsExists(c1561110.fselect,1,nil,tp,mg,sg,30012506,77411244,3405259)
-end
-function c1561110.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c1561110.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	local sg=Group.CreateGroup()
-	while sg:GetCount()<3 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g=mg:FilterSelect(tp,c1561110.fselect,1,1,sg,tp,mg,sg,30012506,77411244,3405259)
-		sg:Merge(g)
-	end
-	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c1561110.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,e:GetHandler()) end

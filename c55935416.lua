@@ -30,6 +30,7 @@ function c55935416.drop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	local ct=Duel.Draw(p,d,REASON_EFFECT)
 	if ct~=0 then
+		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_HAND,0,1,1,nil)
 		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)

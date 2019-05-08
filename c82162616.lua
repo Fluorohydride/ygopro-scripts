@@ -14,7 +14,7 @@ function c82162616.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c82162616.cfilter(c)
-	return c:IsFaceup() and (c:IsSetCard(0x55) or c:IsSetCard(0x7b))
+	return c:IsFaceup() and c:IsSetCard(0x55,0x7b)
 end
 function c82162616.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c82162616.cfilter,tp,LOCATION_MZONE,0,1,nil)
@@ -27,7 +27,7 @@ function c82162616.filter1(c,e,tp)
 		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 end
 function c82162616.filter2(c,e,tp,mc,rk)
-	return c:IsRank(rk) and (c:IsSetCard(0x55) or c:IsSetCard(0x7b)) and mc:IsCanBeXyzMaterial(c)
+	return c:IsRank(rk) and c:IsSetCard(0x55,0x7b) and mc:IsCanBeXyzMaterial(c)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
 end
 function c82162616.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

@@ -51,8 +51,7 @@ function c64389297.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=c:GetEquipTarget()
 	if chk==0 then return c:IsReleasable() and tc:IsReleasable()
 		and (tc:IsControler(tp) or tc:IsHasEffect(EFFECT_EXTRA_RELEASE)) end
-	local g=Group.FromCards(c,tc)
-	Duel.Release(g,REASON_COST)
+	Duel.Release(tc,REASON_COST)
 end
 function c64389297.spfilter(c,e,tp)
 	return c:IsCode(63162310) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)

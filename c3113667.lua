@@ -56,7 +56,7 @@ end
 function c3113667.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	local bc=tc:GetBattleTarget()
-	return tc:GetPreviousControler()~=tp and tc:IsLocation(LOCATION_GRAVE)
+	return tc:GetPreviousControler()~=tp
 		and bc:IsControler(tp) and bc:GetOriginalAttribute()==ATTRIBUTE_DARK and bc:GetOriginalRace()==RACE_MACHINE
 end
 function c3113667.cfilter(c)

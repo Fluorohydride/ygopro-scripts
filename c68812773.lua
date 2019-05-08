@@ -49,7 +49,7 @@ function c68812773.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c68812773.spfilter(c,e,tp)
-	return (c:IsSetCard(0x7b) or c:IsSetCard(0x55)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x7b,0x55) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c68812773.cfilter(c,ft,tp)
 	return c:IsRace(RACE_MACHINE)

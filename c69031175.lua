@@ -35,7 +35,7 @@ function c69031175.initial_effect(c)
 end
 function c69031175.condition1(e,tp,eg,ep,ev,re,r,rp)
 	local atg=Duel.GetAttackTarget()
-	return Duel.GetAttacker()==e:GetHandler() and atg and atg:IsRelateToBattle() and atg:GetCounter(0x1002)==0
+	return Duel.GetAttacker()==e:GetHandler() and atg and atg:IsRelateToBattle() and atg:GetCounter(0x1002)==0 and atg:IsCanAddCounter(0x1002,1)
 end
 function c69031175.operation1(e,tp,eg,ep,ev,re,r,rp)
 	local atg=Duel.GetAttackTarget()

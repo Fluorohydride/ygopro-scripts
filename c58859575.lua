@@ -3,6 +3,7 @@ function c58859575.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCode2(c,51638941,96300057,true,true)
+	aux.AddContactFusionProcedure(c,Card.IsAbleToRemoveAsCost,LOCATION_ONFIELD,0,Duel.Remove,POS_FACEUP,REASON_COST)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -10,15 +11,6 @@ function c58859575.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e1:SetValue(c58859575.splimit)
 	c:RegisterEffect(e1)
-	--special summon rule
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(c58859575.spcon)
-	e2:SetOperation(c58859575.spop)
-	c:RegisterEffect(e2)
 	--pos
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(58859575,0))
@@ -33,33 +25,6 @@ function c58859575.initial_effect(c)
 end
 function c58859575.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
-end
-function c58859575.matfilter(c)
-	return c:IsFusionCode(51638941,96300057) and c:IsAbleToRemoveAsCost()
-end
-function c58859575.spfilter1(c,tp,g)
-	return g:IsExists(c58859575.spfilter2,1,c,tp,c)
-end
-function c58859575.spfilter2(c,tp,mc)
-	return (c:IsFusionCode(51638941) and mc:IsFusionCode(96300057)
-		or c:IsFusionCode(96300057) and mc:IsFusionCode(51638941))
-		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
-end
-function c58859575.spcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(c58859575.matfilter,tp,LOCATION_ONFIELD,0,nil)
-	return g:IsExists(c58859575.spfilter1,1,nil,tp,g)
-end
-function c58859575.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.GetMatchingGroup(c58859575.matfilter,tp,LOCATION_ONFIELD,0,nil)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=g:FilterSelect(tp,c58859575.spfilter1,1,1,nil,tp,g)
-	local mc=g1:GetFirst()
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=g:FilterSelect(tp,c58859575.spfilter2,1,1,mc,tp,mc)
-	g1:Merge(g2)
-	Duel.Remove(g1,POS_FACEUP,REASON_COST)
 end
 function c58859575.poscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end

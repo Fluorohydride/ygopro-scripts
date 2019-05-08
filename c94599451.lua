@@ -47,7 +47,7 @@ function c94599451.ctop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c94599451.thfilter1(c,tp)
 	local lv=c:GetLevel()
-	return (c:IsLocation(LOCATION_DECK) or (c:IsFaceup() and c:IsType(TYPE_PENDULUM))) and lv>0 and c:IsCanAddCounter(0x1,1,false,LOCATION_MZONE)
+	return (c:IsLocation(LOCATION_DECK) or (c:IsFaceup() and c:IsType(TYPE_PENDULUM))) and lv>0 and c:IsCanAddCounter(0x1)
 		and Duel.IsCanRemoveCounter(tp,1,0,0x1,lv,REASON_COST) and c:IsAbleToHand()
 end
 function c94599451.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -72,7 +72,7 @@ function c94599451.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK+LOCATION_EXTRA)
 end
 function c94599451.thfilter2(c,lv)
-	return (c:IsLocation(LOCATION_DECK) or (c:IsFaceup() and c:IsType(TYPE_PENDULUM))) and c:IsCanAddCounter(0x1,1,false,LOCATION_MZONE)
+	return (c:IsLocation(LOCATION_DECK) or (c:IsFaceup() and c:IsType(TYPE_PENDULUM))) and c:IsCanAddCounter(0x1)
 		and c:IsLevel(lv) and c:IsAbleToHand()
 end
 function c94599451.thop(e,tp,eg,ep,ev,re,r,rp)

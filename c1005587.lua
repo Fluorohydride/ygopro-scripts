@@ -10,7 +10,7 @@ function c1005587.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c1005587.filter(c,tp)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsAttackAbove(2000) and c:GetSummonPlayer()==tp and not c:IsDisabled()
+	return aux.disfilter1(c) and c:IsAttackAbove(2000) and c:GetSummonPlayer()==tp and not c:IsDisabled()
 end
 function c1005587.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
@@ -20,7 +20,7 @@ function c1005587.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c1005587.filter2(c,e,tp)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsAttackAbove(2000)
+	return aux.disfilter1(c) and c:IsAttackAbove(2000)
 		and c:GetSummonPlayer()==tp and c:IsRelateToEffect(e)
 end
 function c1005587.activate(e,tp,eg,ep,ev,re,r,rp)

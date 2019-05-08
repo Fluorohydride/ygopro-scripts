@@ -55,7 +55,7 @@ function c26493435.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveCounter(tp,0x30,2,REASON_COST)
 end
 function c26493435.filter(c,e,tp)
-	return (c:IsSetCard(0x8f) or c:IsSetCard(0x54) or c:IsSetCard(0x59) or c:IsSetCard(0x82))
+	return c:IsSetCard(0x8f,0x54,0x59,0x82)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c26493435.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

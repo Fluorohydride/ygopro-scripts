@@ -27,14 +27,14 @@ function c57777714.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c57777714.splimit(e,c,sump,sumtype,sumpos,targetp)
-	if c:IsSetCard(0xb5) or c:IsSetCard(0xc4) then return false end
+	if c:IsSetCard(0xb5,0xc4) then return false end
 	return bit.band(sumtype,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
 end
 function c57777714.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c57777714.filter(c,e,tp)
-	return (c:IsSetCard(0xb5) or c:IsSetCard(0xc4)) and not c:IsCode(57777714) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0xb5,0xc4) and not c:IsCode(57777714) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c57777714.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c57777714.filter(chkc,e,tp) end

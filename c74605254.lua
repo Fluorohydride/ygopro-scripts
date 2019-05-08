@@ -78,7 +78,7 @@ function c74605254.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST+REASON_DISCARD)
 end
 function c74605254.thfilter(c)
-	return c:IsFaceup() and (c:IsSetCard(0xae) or c:IsSetCard(0xaf)) and c:IsAbleToHand()
+	return c:IsFaceup() and c:IsSetCard(0xae,0xaf) and c:IsAbleToHand()
 end
 function c74605254.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c74605254.thfilter(chkc) end

@@ -80,7 +80,7 @@ function c87043568.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c87043568.eqlimit(e,c)
-	return c:GetControler()==e:GetOwnerPlayer() and c==e:GetLabelObject()
+	return c==e:GetLabelObject()
 end
 function c87043568.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()

@@ -30,14 +30,14 @@ function c22617205.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c22617205.splimit(e,c,sump,sumtype,sumpos,targetp)
-	if c:IsSetCard(0x9c) or c:IsSetCard(0xc4) then return false end
+	if c:IsSetCard(0x9c,0xc4) then return false end
 	return bit.band(sumtype,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
 end
 function c22617205.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c22617205.filter1(c)
-	return c:IsFaceup() and (c:IsSetCard(0x9c) or c:IsSetCard(0xc4))
+	return c:IsFaceup() and c:IsSetCard(0x9c,0xc4)
 end
 function c22617205.filter2(c)
 	return c:IsFacedown()

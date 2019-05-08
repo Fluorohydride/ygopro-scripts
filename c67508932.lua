@@ -49,15 +49,26 @@ function c67508932.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_MZONE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,#g,1-tp,LOCATION_MZONE)
 end
+function c67508932.rfilter(c)
+	return not c:IsReason(REASON_REDIRECT)
+end
 function c67508932.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_MZONE,nil)
 	if Duel.Remove(g,POS_FACEUP,REASON_EFFECT)>0 then
 		local og=Duel.GetOperatedGroup()
-		for oc in aux.Next(og) do
-			oc:RegisterFlagEffect(67508932,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,c:GetFieldID())
+		local rg=og:Filter(c67508932.rfilter,nil)
+		if #rg==0 then return end
+		local lab=0
+		if c:GetFlagEffect(67508933)==0 then
+			lab=c:GetFieldID()
+			c:RegisterFlagEffect(67508933,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,lab)
+		else
+			lab=c:GetFlagEffectLabel(67508933)
 		end
-		c:RegisterFlagEffect(67508933,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+		for oc in aux.Next(rg) do
+			oc:RegisterFlagEffect(67508932,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,lab)
+		end
 	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -74,7 +85,8 @@ function c67508932.val(e,re,dam,r,rp,rc)
 	else return dam end
 end
 function c67508932.spfilter(c,e,tp)
-	return c:GetFlagEffectLabel(67508932)==e:GetHandler():GetFieldID()
+	return c:GetFlagEffectLabel(67508932)==e:GetHandler():GetFlagEffectLabel(67508933)
+		and c:GetReasonPlayer()==tp
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp)
 end
 function c67508932.spcon(e,tp,eg,ep,ev,re,r,rp)

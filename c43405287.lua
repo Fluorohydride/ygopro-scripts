@@ -12,6 +12,18 @@ function c43405287.initial_effect(c)
 	e1:SetTarget(c43405287.target)
 	e1:SetOperation(c43405287.operation)
 	c:RegisterEffect(e1)
+	--damage
+	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(43405287,0))
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e2:SetCategory(CATEGORY_DAMAGE)
+	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e2:SetCode(EVENT_BATTLE_DESTROYED)
+	e2:SetRange(LOCATION_SZONE)
+	e2:SetCondition(c43405287.damcon)
+	e2:SetTarget(c43405287.damtg)
+	e2:SetOperation(c43405287.damop)
+	c:RegisterEffect(e2)
 end
 function c43405287.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
@@ -59,19 +71,6 @@ function c43405287.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Equip(tp,c,tc)
-		--draw
-		local e1=Effect.CreateEffect(c)
-		e1:SetDescription(aux.Stringid(43405287,0))
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-		e1:SetCategory(CATEGORY_DAMAGE)
-		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		e1:SetCode(EVENT_BATTLE_DESTROYED)
-		e1:SetRange(LOCATION_SZONE)
-		e1:SetCondition(c43405287.damcon)
-		e1:SetTarget(c43405287.damtg)
-		e1:SetOperation(c43405287.damop)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		c:RegisterEffect(e1)
 		--Atkup
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_EQUIP)
@@ -92,13 +91,14 @@ function c43405287.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c43405287.eqlimit(e,c)
-	return c:GetControler()==e:GetOwnerPlayer() and c:IsSetCard(0xc008)
+	return c:IsSetCard(0xc008)
 end
 function c43405287.damfilter(c,rc)
 	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:GetReasonCard()==rc
 end
 function c43405287.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c43405287.damfilter,1,nil,e:GetHandler():GetEquipTarget())
+	local tc=e:GetHandler():GetEquipTarget()
+	return tc and eg:IsExists(c43405287.damfilter,1,nil,tc)
 end
 function c43405287.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

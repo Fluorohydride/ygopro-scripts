@@ -66,19 +66,17 @@ function c2434862.spop(e,tp,eg,ep,ev,re,r,rp)
 	if ft<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c2434862.filter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp)
-	local tc=g:GetFirst()
-	if not tc then return end
-	Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
+	if g:GetCount()<=0 then return end
+	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	ft=ft-1
-	local i=0
-	while tc and i<2 and e:GetLabel()==1 and not Duel.IsPlayerAffectedByEffect(tp,59822133) and ft>0
-		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c2434862.filter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,nil,e,tp)
-		and Duel.SelectYesNo(tp,aux.Stringid(2434862,2)) do
+	local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c2434862.filter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp)
+	if e:GetLabel()==1 and sg:GetCount()>0 and ft>0
+		and Duel.SelectYesNo(tp,aux.Stringid(2434862,2)) then
+		Duel.BreakEffect()
+		ft=math.min(ft,sg:GetCount(),2)
+		if ft>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		g=Duel.SelectMatchingCard(tp,c2434862.filter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp)
-		tc=g:GetFirst()
-		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
-		ft=ft-1
+		local tg=sg:Select(tp,1,ft,nil)
+		Duel.SpecialSummon(tg,0,tp,tp,false,false,POS_FACEUP)
 	end
-	Duel.SpecialSummonComplete()
 end

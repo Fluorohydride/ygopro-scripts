@@ -28,7 +28,7 @@ function c58990362.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c58990362.splimit(e,c,sump,sumtype,sumpos,targetp)
-	if c:IsSetCard(0x9e) or c:IsSetCard(0xc4) then return false end
+	if c:IsSetCard(0x9e,0xc4) then return false end
 	return bit.band(sumtype,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM
 end
 function c58990362.condition1(e,tp,eg,ep,ev,re,r,rp)
@@ -39,7 +39,7 @@ function c58990362.condition2(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
 end
 function c58990362.thfilter(c)
-	return (c:IsSetCard(0x9e) or c:IsSetCard(0xc4)) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
+	return c:IsSetCard(0x9e,0xc4) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
 end
 function c58990362.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c58990362.thfilter,tp,LOCATION_DECK,0,1,nil) end

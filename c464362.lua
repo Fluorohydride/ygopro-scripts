@@ -40,7 +40,7 @@ function c464362.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(g,REASON_EFFECT)
 end
 function c464362.atkfilter(c)
-	return c:IsFaceup() and (c:IsSetCard(0xa9) or c:IsSetCard(0xad))
+	return c:IsFaceup() and c:IsSetCard(0xa9,0xad)
 end
 function c464362.atkval(e,c)
 	return Duel.GetMatchingGroupCount(c464362.atkfilter,c:GetControler(),LOCATION_MZONE,0,nil)*300

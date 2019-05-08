@@ -10,6 +10,16 @@ function c54297661.initial_effect(c)
 	e1:SetTarget(c54297661.target)
 	e1:SetOperation(c54297661.activate)
 	c:RegisterEffect(e1)
+	--damage
+	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(54297661,0))
+	e2:SetCategory(CATEGORY_DAMAGE)
+	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
+	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e2:SetCondition(c54297661.damcon)
+	e2:SetTarget(c54297661.damtg)
+	e2:SetOperation(c54297661.damop)
+	c:RegisterEffect(e2)
 end
 function c54297661.mzfilter(c,tp)
 	return c:GetSequence()<5
@@ -56,7 +66,7 @@ function c54297661.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,54297661,0,0x21,atk,def,4,RACE_SPELLCASTER,ATTRIBUTE_DARK) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
-	if Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP_ATTACK) then
+	if Duel.SpecialSummonStep(c,1,tp,tp,true,false,POS_FACEUP_ATTACK) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK)
@@ -67,18 +77,11 @@ function c54297661.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_SET_DEFENSE)
 		e2:SetValue(def)
 		c:RegisterEffect(e2)
-		--damage
-		local e3=Effect.CreateEffect(c)
-		e3:SetDescription(aux.Stringid(54297661,0))
-		e3:SetCategory(CATEGORY_DAMAGE)
-		e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-		e3:SetCode(EVENT_SPSUMMON_SUCCESS)
-		e3:SetTarget(c54297661.damtg)
-		e3:SetOperation(c54297661.damop)
-		e3:SetReset(RESET_EVENT+RESETS_STANDARD)
-		c:RegisterEffect(e3,true)
 	end
 	Duel.SpecialSummonComplete()
+end
+function c54297661.damcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
 end
 function c54297661.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

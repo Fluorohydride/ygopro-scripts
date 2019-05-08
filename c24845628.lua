@@ -28,6 +28,7 @@ function c24845628.initial_effect(c)
 	c:RegisterEffect(e4)
 	local e5=e3:Clone()
 	e5:SetCode(EFFECT_CANNOT_BE_FUSION_MATERIAL)
+	e5:SetValue(c24845628.fuslimit)
 	c:RegisterEffect(e5)
 	local e6=e3:Clone()
 	e6:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
@@ -45,6 +46,9 @@ function c24845628.initial_effect(c)
 	e7:SetTarget(c24845628.thtg)
 	e7:SetOperation(c24845628.thop)
 	c:RegisterEffect(e7)
+end
+function c24845628.fuslimit(e,c,sumtype)
+	return sumtype==SUMMON_TYPE_FUSION
 end
 function c24845628.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end

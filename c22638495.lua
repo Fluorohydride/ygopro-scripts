@@ -2,6 +2,8 @@
 function c22638495.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
+	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionType,TYPE_PENDULUM),aux.AND(aux.FilterBoolFunction(Card.IsFusionType,TYPE_PENDULUM),aux.FilterBoolFunction(Card.IsFusionSetCard,0xc7)),false)
+	aux.AddContactFusionProcedure(c,Card.IsReleasable,LOCATION_MZONE,0,Duel.Release,REASON_COST+REASON_FUSION+REASON_MATERIAL)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -9,15 +11,6 @@ function c22638495.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e1:SetValue(c22638495.splimit)
 	c:RegisterEffect(e1)
-	--special summon rule
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(c22638495.spcon)
-	e2:SetOperation(c22638495.spop)
-	c:RegisterEffect(e2)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -47,33 +40,6 @@ function c22638495.initial_effect(c)
 end
 function c22638495.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
-end
-function c22638495.rfilter(c,fc)
-	return c:IsType(TYPE_PENDULUM) and c:IsCanBeFusionMaterial(fc)
-end
-function c22638495.spfilter1(c,tp,g)
-	return g:IsExists(c22638495.spfilter2,1,c,tp,c)
-end
-function c22638495.spfilter2(c,tp,mc)
-	return (c:IsFusionSetCard(0xc7) or mc:IsFusionSetCard(0xc7))
-		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
-end
-function c22638495.spcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local rg=Duel.GetReleaseGroup(tp):Filter(c22638495.rfilter,nil,c)
-	return rg:IsExists(c22638495.spfilter1,1,nil,tp,rg)
-end
-function c22638495.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local rg=Duel.GetReleaseGroup(tp):Filter(c22638495.rfilter,nil,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g1=rg:FilterSelect(tp,c22638495.spfilter1,1,1,nil,tp,rg)
-	local mc=g1:GetFirst()
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g2=rg:FilterSelect(tp,c22638495.spfilter2,1,1,mc,tp,mc)
-	g1:Merge(g2)
-	c:SetMaterial(g1)
-	Duel.Release(g1,REASON_COST+REASON_FUSION+REASON_MATERIAL)
 end
 function c22638495.spfilter(c,e,tp)
 	return c:IsSetCard(0xc7) and c:IsType(TYPE_PENDULUM) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

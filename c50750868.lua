@@ -29,7 +29,7 @@ function c50750868.lcheck(g,lc)
 	return g:IsExists(c50750868.mzfilter,1,nil)
 end
 function c50750868.mzfilter(c)
-	return c:IsSetCard(0x27) and c:IsType(TYPE_TUNER)
+	return c:IsLinkSetCard(0x27) and c:IsLinkType(TYPE_TUNER)
 end
 function c50750868.tgtg(e,c)
 	return e:GetHandler():GetLinkedGroup():IsContains(c) and c:IsSetCard(0x27) and c:IsType(TYPE_SYNCHRO)
