@@ -4,6 +4,7 @@ function c93382620.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)
 	e1:SetCost(c93382620.cost)
 	e1:SetTarget(c93382620.target)
@@ -20,10 +21,11 @@ function c93382620.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g,REASON_COST+REASON_DISCARD)
 end
 function c93382620.filter(c,e,tp)
-	return c:IsLocation(LOCATION_GRAVE) and c:GetPreviousControler()==tp and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:IsCanBeEffectTarget(e)
 end
-function c93382620.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local tc=eg:GetFirst()
+function c93382620.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return eg:IsContains(chkc) and c93382620.filter(chkc,e,tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and eg:IsExists(c93382620.filter,1,nil,e,tp) end
 	local g=eg:Filter(c93382620.filter,nil,e,tp)
