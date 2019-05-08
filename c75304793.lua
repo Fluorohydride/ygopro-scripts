@@ -47,8 +47,8 @@ function c75304793.filter(c)
 end
 function c75304793.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=Duel.GetMatchingGroupCount(c75304793.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
-	local b1=e:GetHandler():IsCanRemoveCounter(tp,0x35,5,REASON_COST)
-	local b2=e:GetHandler():IsCanRemoveCounter(tp,0x35,7,REASON_COST)
+	local b1=Duel.IsCanRemoveCounter(tp,1,0,0x35,5,REASON_COST)
+	local b2=Duel.IsCanRemoveCounter(tp,1,0,0x35,7,REASON_COST)
 		and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE,1,nil)
 	if chk==0 then return ct>0 and (b1 or b2) end
 	local op=0
@@ -62,12 +62,12 @@ function c75304793.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(op)
 	if op==0 then
 		e:SetCategory(CATEGORY_DAMAGE)
-		e:GetHandler():RemoveCounter(tp,0x35,5,REASON_COST)
+		Duel.RemoveCounter(tp,1,0,0x35,5,REASON_COST)
 		Duel.SetTargetPlayer(1-tp)
 		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,ct*300)
 	else
 		e:SetCategory(CATEGORY_REMOVE)
-		e:GetHandler():RemoveCounter(tp,0x35,7,REASON_COST)
+		Duel.RemoveCounter(tp,1,0,0x35,7,REASON_COST)
 		Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,0,LOCATION_ONFIELD+LOCATION_GRAVE)
 	end
 end
