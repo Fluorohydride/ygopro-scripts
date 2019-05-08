@@ -17,15 +17,14 @@ function c9581215.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
 end
-function c9581215.rmfilter(c,p,code)
-	return c:IsAbleToRemove(p) and c:IsCode(code)
+function c9581215.rmfilter(c,p,tc)
+	return c:IsAbleToRemove(p) and c:IsOriginalCodeRule(tc:GetOriginalCodeRule())
 end
 function c9581215.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.NegateEffect(ev) then return end
 	Duel.BreakEffect()
 	local sel=1
-	local code=eg:GetFirst():GetCode()
-	local g=Duel.GetMatchingGroup(c9581215.rmfilter,tp,0,LOCATION_HAND+LOCATION_DECK,nil,1-tp,code)
+	local g=Duel.GetMatchingGroup(c9581215.rmfilter,tp,0,LOCATION_HAND+LOCATION_DECK,nil,1-tp,eg:GetFirst())
 	local tg=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_HAND,nil)
 	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(9581215,0))
 	if g:GetCount()>0 then

@@ -25,7 +25,8 @@ function c41803903.thfilter(c,e,tp)
 end
 function c41803903.spfilter(c,e,tp,hc)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsSetCard(0x10ec)
-		and c:GetOriginalCode()~=hc:GetOriginalCode() and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+		and not c:IsOriginalCodeRule(hc:GetOriginalCodeRule())
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 		and Duel.GetLocationCountFromEx(tp,tp,hc,c)>0
 end
 function c41803903.target(e,tp,eg,ep,ev,re,r,rp,chk)

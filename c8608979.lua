@@ -26,7 +26,7 @@ end
 function c8608979.filter2(c,tc,e,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and c:GetOriginalRace()==tc:GetOriginalRace()
-		and c:GetOriginalCode()~=tc:GetOriginalCode()
+		and not c:IsOriginalCodeRule(tc:GetOriginalCodeRule())
 end
 function c8608979.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsFaceup() and chkc:IsLocation(LOCATION_MZONE) and c8608979.filter1(chkc,e,tp) end

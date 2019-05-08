@@ -20,12 +20,11 @@ function c20513882.cfilter(c,tp)
 		and Duel.IsExistingMatchingCard(c20513882.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,c)
 end
 function c20513882.thfilter(c,tc)
-	local code1,code2=tc:GetOriginalCode()
 	return c:IsType(TYPE_MONSTER)
 		and c:GetOriginalLevel()==tc:GetOriginalLevel()
 		and c:GetOriginalRace()==tc:GetOriginalRace()
 		and c:GetOriginalAttribute()==tc:GetOriginalAttribute()
-		and c:GetOriginalCode()~=code1 and c:GetOriginalCode()~=code2
+		and not c:IsOriginalCodeRule(tc:GetOriginalCodeRule())
 		and c:IsAbleToHand()
 end
 function c20513882.target(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -42,5 +42,5 @@ end
 function c7403341.aclimit(e,re,tp)
 	local c=re:GetHandler()
 	local tc=e:GetLabelObject()
-	return c:GetOriginalCode()==tc:GetOriginalCode() and not c:IsImmuneToEffect(e)
+	return c:IsOriginalCodeRule(tc:GetOriginalCodeRule()) and not c:IsImmuneToEffect(e)
 end

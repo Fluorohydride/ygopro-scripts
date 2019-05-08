@@ -31,8 +31,7 @@ function c10000040.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c10000040.spfilter(c,code)
-	local code1,code2=c:GetOriginalCodeRule()
-	return code1==code or code2==code
+	return c:IsOriginalCodeRule(code)
 end
 function c10000040.spcon(e,c)
 	if c==nil then return true end
