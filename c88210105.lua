@@ -32,7 +32,7 @@ function c88210105.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,c88210105.costfilter,1,1,REASON_COST+REASON_DISCARD)
 end
 function c88210105.filter(c)
-	return c:IsFaceup() and c:IsLevelAbove(1)
+	return c:IsFaceup() and c:IsLevelAbove(1) and c:IsCanAddCounter(0x1019,c:GetLevel())
 end
 function c88210105.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c88210105.filter(chkc) end

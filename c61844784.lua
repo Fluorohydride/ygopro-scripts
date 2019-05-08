@@ -11,7 +11,7 @@ function c61844784.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c61844784.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_SPELL)
+	return c:IsFaceup() and c:IsType(TYPE_SPELL) and c:IsCanAddCounter(0x102a,1)
 end
 function c61844784.addct(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c61844784.filter(chkc) and chkc~=e:GetHandler() end

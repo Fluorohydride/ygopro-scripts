@@ -61,10 +61,10 @@ function c35058588.cfilter(c)
 	return c:IsSetCard(0xe3) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function c35058588.tgfilter(c,e)
-	return c:IsFaceup() and c:IsCanBeEffectTarget(e)
+	return c:IsFaceup() and c:IsCanBeEffectTarget(e) and c:IsCanAddCounter(0x1038,1)
 end
 function c35058588.countertg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsFaceup() end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsCanAddCounter(0x1038,1) end
 	local tg=Duel.GetMatchingGroup(c35058588.tgfilter,tp,0,LOCATION_MZONE,nil,e)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() and tg:GetCount()>0
 		and Duel.IsExistingMatchingCard(c35058588.cfilter,tp,LOCATION_GRAVE,0,1,nil) end

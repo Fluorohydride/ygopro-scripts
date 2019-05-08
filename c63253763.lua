@@ -43,10 +43,10 @@ function c63253763.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.RemoveCounter(tp,1,1,0x100e,2,REASON_COST)
 end
 function c63253763.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsCanAddCounter,tp,0,LOCATION_MZONE,1,nil,0x100e,1) end
 end
 function c63253763.ctop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsCanAddCounter,tp,0,LOCATION_MZONE,nil,0x100e,1)
 	local tc=g:GetFirst()
 	while tc do
 		tc:AddCounter(0x100e,1)

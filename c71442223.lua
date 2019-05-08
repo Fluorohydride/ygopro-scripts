@@ -21,7 +21,8 @@ function c71442223.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local at=Duel.GetAttacker()
 	if chkc then return chkc==at end
 	if chk==0 then return at:IsOnField() and at:IsCanBeEffectTarget(e)
-		and Duel.IsExistingMatchingCard(c71442223.spfilter1,tp,LOCATION_HAND,0,1,nil,e,tp) end
+		and Duel.IsExistingMatchingCard(c71442223.spfilter1,tp,LOCATION_HAND,0,1,nil,e,tp)
+		and Duel.IsCanAddCounter(tp) end
 	Duel.SetTargetCard(at)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end

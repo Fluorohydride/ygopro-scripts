@@ -26,7 +26,7 @@ function c83604828.initial_effect(c)
 end
 function c83604828.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local lv=e:GetHandler():GetBattleTarget():GetLevel()
-	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsCanAddCounter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,0x1019,1)
 	if g:GetCount()==0 then return end
 	for i=1,lv do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COUNTER)

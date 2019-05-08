@@ -37,7 +37,7 @@ function c22138839.ccon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c22138839.cop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsCanAddCounter,tp,0,LOCATION_MZONE,nil,0x1041,1)
 	local tc=g:GetFirst()
 	while tc do
 		tc:AddCounter(0x1041,1)

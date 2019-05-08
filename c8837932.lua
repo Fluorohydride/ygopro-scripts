@@ -35,7 +35,7 @@ function c8837932.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c8837932.spfilter(c,e,tp,tid)
 	return c:IsReason(REASON_DESTROY) and c:IsType(TYPE_MONSTER) and c:GetTurnID()==tid
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp) and Duel.IsCanAddCounter(tp,0x1038,1,c)
 end
 function c8837932.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tid=Duel.GetTurnCount()

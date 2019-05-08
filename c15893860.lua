@@ -22,12 +22,12 @@ function c15893860.ctfilter(c)
 end
 function c15893860.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c15893860.ctfilter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
+		and Duel.IsExistingMatchingCard(Card.IsCanAddCounter,tp,0,LOCATION_MZONE,1,nil,0x1015,1) end
 end
 function c15893860.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetMatchingGroupCount(c15893860.ctfilter,tp,LOCATION_MZONE,0,nil)
 	if ct==0 then return end
-	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsCanAddCounter,tp,0,LOCATION_MZONE,nil,0x1015,1)
 	if g:GetCount()==0 then return end
 	for i=1,ct do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COUNTER)

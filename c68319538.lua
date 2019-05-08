@@ -32,7 +32,8 @@ function c68319538.filter(c)
 end
 function c68319538.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c68319538.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c68319538.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c68319538.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
+		and Duel.IsExistingMatchingCard(Card.IsCanAddCounter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,0x100e,1) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local g=Duel.SelectTarget(tp,c68319538.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,16,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,g:GetCount(),0,0)
@@ -42,7 +43,7 @@ function c68319538.operation(e,tp,eg,ep,ev,re,r,rp)
 	local rg=tg:Filter(Card.IsRelateToEffect,nil,e)
 	Duel.SendtoHand(rg,nil,REASON_EFFECT)
 	local ct=rg:FilterCount(Card.IsLocation,nil,LOCATION_HAND)
-	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsCanAddCounter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,0x100e,1)
 	if ct==0 or g:GetCount()==0 then return end
 	for i=1,ct do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COUNTER)

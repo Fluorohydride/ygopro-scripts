@@ -38,7 +38,7 @@ function c15475415.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
 end
 function c15475415.ctop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsCanAddCounter,tp,0,LOCATION_MZONE,nil,0x100e,1)
 	if g:GetCount()==0 then return end
 	for i=1,2 do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)

@@ -70,7 +70,7 @@ function c67547370.countcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c67547370.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_NORMAL) and c:IsLevel(1)
+	return c:IsFaceup() and c:IsType(TYPE_NORMAL) and c:IsLevel(1) and c:IsCanAddCounter(0x1039,1)
 end
 function c67547370.counttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c67547370.filter(chkc) end

@@ -6,11 +6,15 @@ function c5914184.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_DAMAGE)
 	e1:SetCondition(c5914184.actcon)
+	e1:SetTarget(c5914184.acttg)
 	e1:SetOperation(c5914184.actop)
 	c:RegisterEffect(e1)
 end
 function c5914184.actcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and 1-tp==rp and ev>=1000 and bit.band(r,REASON_EFFECT)~=0
+end
+function c5914184.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return e:GetHandler():IsCanAddCounter(0x1a,math.floor(ev/1000)) end
 end
 function c5914184.actop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
