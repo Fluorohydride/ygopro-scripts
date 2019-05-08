@@ -61,26 +61,29 @@ function c42925441.effcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(42925441)==0 end
 	e:GetHandler():RegisterFlagEffect(42925441,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
+--option 1
 function c42925441.costfilter1(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x55,0x7b) and Duel.GetMZoneCount(tp,c)>0 and c:IsAbleToGraveAsCost()
-		and Duel.IsExistingMatchingCard(c42925441.spfilter1,tp,LOCATION_DECK,0,1,nil,e,tp,c:GetOriginalCode())
+		and Duel.IsExistingMatchingCard(c42925441.spfilter1,tp,LOCATION_DECK,0,1,nil,e,tp,c)
 end
-function c42925441.spfilter1(c,e,tp,code)
-	return c:IsSetCard(0x55) and c:GetOriginalCode()~=code and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+function c42925441.spfilter1(c,e,tp,cc)
+	return c:IsSetCard(0x55) and c:IsType(TYPE_MONSTER) and not c:IsOriginalCodeRule(cc:GetOriginalCodeRule())
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
+--option 2
 function c42925441.costfilter2(c)
 	return c:IsFaceup() and c:IsSetCard(0x55,0x7b) and c:IsAbleToGraveAsCost()
 end
 function c42925441.thfilter(c)
 	return c:IsSetCard(0x55) and not c:IsCode(42925441) and c:IsAbleToHand()
 end
+--option both
 function c42925441.costfilter3(c,e,tp)
 	return c:IsFaceup() and c:IsCode(93717133) and Duel.GetMZoneCount(tp,c)>0 and c:IsAbleToGraveAsCost()
-		and Duel.IsExistingMatchingCard(c42925441.spfilter2,tp,LOCATION_DECK,0,1,nil,e,tp,c:GetOriginalCode())
+		and Duel.IsExistingMatchingCard(c42925441.spfilter2,tp,LOCATION_DECK,0,1,nil,e,tp,c)
 end
-function c42925441.spfilter2(c,e,tp,code)
-	return c:IsSetCard(0x55) and c:GetOriginalCode()~=code and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and Duel.IsExistingMatchingCard(c42925441.thfilter,tp,LOCATION_DECK,0,1,c)
+function c42925441.spfilter2(c,e,tp,cc)
+	return c42925441.spfilter1(c,e,tp,cc) and Duel.IsExistingMatchingCard(c42925441.thfilter,tp,LOCATION_DECK,0,1,c)
 end
 function c42925441.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.IsExistingMatchingCard(c42925441.costfilter1,tp,LOCATION_MZONE,0,1,nil,e,tp)
@@ -102,7 +105,7 @@ function c42925441.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if op==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c42925441.costfilter1,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
-		e:SetValue(g:GetFirst():GetOriginalCode())
+		e:SetLabelObject(g:GetFirst())
 		Duel.SendtoGrave(g,REASON_COST)
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
@@ -115,7 +118,7 @@ function c42925441.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c42925441.costfilter3,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
-		e:SetValue(g:GetFirst():GetOriginalCode())
+		e:SetLabelObject(g:GetFirst())
 		Duel.SendtoGrave(g,REASON_COST)
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_SEARCH)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
@@ -124,10 +127,11 @@ function c42925441.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c42925441.effop(e,tp,eg,ep,ev,re,r,rp)
 	local op=e:GetLabel()
+	local cc=e:GetLabelObject()
 	if op==0 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,c42925441.spfilter1,tp,LOCATION_DECK,0,1,1,nil,e,tp,e:GetValue())
+		local g=Duel.SelectMatchingCard(tp,c42925441.spfilter1,tp,LOCATION_DECK,0,1,1,nil,e,tp,cc)
 		if g:GetCount()>0 then
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		end
@@ -141,7 +145,7 @@ function c42925441.effop(e,tp,eg,ep,ev,re,r,rp)
 	else
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g1=Duel.SelectMatchingCard(tp,c42925441.spfilter2,tp,LOCATION_DECK,0,1,1,nil,e,tp,e:GetValue())
+		local g1=Duel.SelectMatchingCard(tp,c42925441.spfilter2,tp,LOCATION_DECK,0,1,1,nil,e,tp,cc)
 		if g1:GetCount()>0 and Duel.SpecialSummon(g1,0,tp,tp,false,false,POS_FACEUP)~=0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 			local g2=Duel.SelectMatchingCard(tp,c42925441.thfilter,tp,LOCATION_DECK,0,1,1,nil)

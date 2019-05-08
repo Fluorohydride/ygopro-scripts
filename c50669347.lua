@@ -26,7 +26,8 @@ function c50669347.desfilter(c,e,tp,g)
 		and Duel.IsExistingMatchingCard(c50669347.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp,c)
 end
 function c50669347.spfilter(c,e,tp,dc)
-	return c:IsSetCard(0x11f) and c:GetOriginalCode()~=dc:GetOriginalCode() and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x11f) and c:IsType(TYPE_MONSTER) and not c:IsOriginalCodeRule(dc:GetOriginalCodeRule()) 
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c50669347.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.IsExistingMatchingCard(c50669347.thfilter1,tp,LOCATION_DECK,0,1,nil)

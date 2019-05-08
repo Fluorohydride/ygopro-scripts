@@ -45,14 +45,14 @@ function c65172015.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c65172015.matfilter(c)
-	return (c:GetOriginalCode()==1561110 or c:GetOriginalCode()==91998119) and c:IsAbleToRemoveAsCost()
+	return c:IsOriginalCodeRule(1561110,91998119) and c:IsAbleToRemoveAsCost()
 end
 function c65172015.cfilter1(c,tp,g)
 	return g:IsExists(c65172015.cfilter2,1,c,tp,c)
 end
 function c65172015.cfilter2(c,tp,mc)
-	return (c:GetOriginalCode()==1561110 and mc:GetOriginalCode()==91998119
-		or c:GetOriginalCode()==91998119 and mc:GetOriginalCode()==1561110)
+	return (c:IsOriginalCodeRule(1561110) and mc:IsOriginalCodeRule(91998119)
+		or c:IsOriginalCodeRule(91998119) and mc:IsOriginalCodeRule(1561110))
 		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
 end
 function c65172015.spcon(e,c)

@@ -12,8 +12,7 @@ function c75190122.initial_effect(c)
 end
 c75190122.card_code_list={46986414,38033121}
 function c75190122.cfilter(c,code)
-	local code1,code2=c:GetOriginalCodeRule()
-	return c:IsFaceup() and (code1==code or code2==code)
+	return c:IsFaceup() and c:IsOriginalCodeRule(code)
 end
 function c75190122.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c75190122.cfilter,tp,LOCATION_MZONE,0,1,nil,46986414)

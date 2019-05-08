@@ -30,16 +30,17 @@ function c65664792.spfilter(c,e,tp)
 end
 function c65664792.spfilter1(c,e,tp)
 	return c65664792.spfilter(c,e,tp)
-		and Duel.IsExistingMatchingCard(c65664792.spfilter2,tp,LOCATION_DECK,0,1,nil,e,tp,c:GetOriginalCode())
+		and Duel.IsExistingMatchingCard(c65664792.spfilter2,tp,LOCATION_DECK,0,1,nil,e,tp,c)
 end
-function c65664792.spfilter2(c,e,tp,code1)
+function c65664792.spfilter2(c,e,tp,c1)
 	return c65664792.spfilter(c,e,tp)
-		and c:GetOriginalCode()~=code1
-		and Duel.IsExistingMatchingCard(c65664792.spfilter3,tp,LOCATION_GRAVE,0,1,nil,e,tp,code1,c:GetOriginalCode())
+		and not c:IsOriginalCodeRule(c1:GetOriginalCodeRule())
+		and Duel.IsExistingMatchingCard(c65664792.spfilter3,tp,LOCATION_GRAVE,0,1,nil,e,tp,c1,c2)
 end
-function c65664792.spfilter3(c,e,tp,code1,code2)
+function c65664792.spfilter3(c,e,tp,c1,c2)
 	return c65664792.spfilter(c,e,tp)
-		and c:GetOriginalCode()~=code1 and c:GetOriginalCode()~=code2
+		and not c:IsOriginalCodeRule(c1:GetOriginalCodeRule())
+		and not c:IsOriginalCodeRule(c2:GetOriginalCodeRule())
 end
 function c65664792.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c65664792.tdfilter,tp,LOCATION_ONFIELD,0,1,nil,e,tp) end
@@ -54,8 +55,8 @@ function c65664792.activate(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c65664792.spfilter1,tp,LOCATION_HAND,0,1,nil,e,tp)
 		and Duel.SelectYesNo(tp,aux.Stringid(65664792,2)) then
 		local sg1=Duel.SelectMatchingCard(tp,c65664792.spfilter1,tp,LOCATION_HAND,0,1,1,nil,e,tp)
-		local sg2=Duel.SelectMatchingCard(tp,c65664792.spfilter2,tp,LOCATION_DECK,0,1,1,nil,e,tp,sg1:GetFirst():GetOriginalCode())
-		local sg3=Duel.SelectMatchingCard(tp,c65664792.spfilter3,tp,LOCATION_GRAVE,0,1,1,nil,e,tp,sg1:GetFirst():GetOriginalCode(),sg2:GetFirst():GetOriginalCode())
+		local sg2=Duel.SelectMatchingCard(tp,c65664792.spfilter2,tp,LOCATION_DECK,0,1,1,nil,e,tp,sg1:GetFirst())
+		local sg3=Duel.SelectMatchingCard(tp,c65664792.spfilter3,tp,LOCATION_GRAVE,0,1,1,nil,e,tp,sg1:GetFirst(),sg2:GetFirst())
 		sg1:Merge(sg2)
 		sg1:Merge(sg3)
 		Duel.BreakEffect()

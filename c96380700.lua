@@ -20,8 +20,8 @@ function c96380700.matfilter(c)
 	return c:IsLevelBelow(2) and c:IsLinkRace(RACE_CYBERSE)
 end
 function c96380700.cfilter(c,e,tp,zone)
-	return c:IsRace(RACE_CYBERSE) and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_TOFIELD,zone)>0
-		and Duel.IsExistingTarget(c96380700.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp,c:GetOriginalCode())
+	return c:IsRace(RACE_CYBERSE) and c:IsType(TYPE_MONSTER) and Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_TOFIELD,zone)>0
+		and Duel.IsExistingTarget(c96380700.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp,c)
 end
 function c96380700.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -31,16 +31,17 @@ function c96380700.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 	e:SetLabelObject(g:GetFirst())
 end
-function c96380700.spfilter(c,e,tp,code)
-	return c:IsSetCard(0x101) and c:GetOriginalCode()~=code and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+function c96380700.spfilter(c,e,tp,rc)
+	return c:IsSetCard(0x101) and c:IsType(TYPE_MONSTER) and not c:IsOriginalCodeRule(rc:GetOriginalCodeRule()) 
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c96380700.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local cc=e:GetLabelObject()
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp)
-		and chkc~=cc and c96380700.spfilter(chkc,e,tp,cc:GetOriginalCode()) end
+		and c96380700.spfilter(chkc,e,tp,cc) end
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectTarget(tp,c96380700.spfilter,tp,LOCATION_GRAVE,0,1,1,cc,e,tp,cc:GetOriginalCode())
+	local g=Duel.SelectTarget(tp,c96380700.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp,cc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c96380700.spop(e,tp,eg,ep,ev,re,r,rp)

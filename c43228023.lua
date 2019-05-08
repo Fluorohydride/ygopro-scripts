@@ -57,13 +57,12 @@ function c43228023.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	Duel.Destroy(g,REASON_EFFECT)
 end
-function c43228023.spfilter(c,code)
-	local code1,code2=c:GetOriginalCodeRule()
-	return code1==code or code2==code
+function c43228023.spfilter(c)
+	return c:IsOriginalCodeRule(38517737)
 end
 function c43228023.valcheck(e,c)
 	local g=c:GetMaterial()
-	if g:IsExists(c43228023.spfilter,1,nil,38517737) then
+	if g:IsExists(c43228023.spfilter,1,nil) then
 		e:GetLabelObject():SetLabel(1)
 	else
 		e:GetLabelObject():SetLabel(0)

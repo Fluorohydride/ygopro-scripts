@@ -10,8 +10,7 @@ function c92881099.initial_effect(c)
 	e2:SetDescription(aux.Stringid(92881099,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
-	e2:SetCode(EVENT_DESTROYED)
+	e2:SetCode(EVENT_BATTLE_DESTROYED)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCountLimit(1,92881099)
 	e2:SetCondition(c92881099.spcon)
@@ -32,28 +31,33 @@ function c92881099.initial_effect(c)
 end
 c92881099.card_code_list={12206212}
 function c92881099.cfilter(c,tp)
-	return c:IsReason(REASON_BATTLE) and (c:GetPreviousCodeOnField()==76812113 or c:GetPreviousCodeOnField()==12206212)
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
+	return (c:GetPreviousCodeOnField()==76812113 or c:GetPreviousCodeOnField()==12206212)
+		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c92881099.spcon(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(c92881099.cfilter,1,nil,tp) then
-		local tc=eg:GetFirst()
-		e:SetLabel(tc:GetOriginalCode())
-		return Duel.IsExistingMatchingCard(c92881099.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,tc:GetOriginalCode())
-	end
+	return eg:FilterCount(c92881099.cfilter,nil,tp)>0
 end
-function c92881099.spfilter(c,e,tp,code)
-	return c:IsSetCard(0x64) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:GetOriginalCode()~=code
+function c92881099.spfilter(c,e,tp,g)
+	local diff=true
+	for tc in aux.Next(g) do
+		if c:IsOriginalCodeRule(tc:GetOriginalCodeRule()) then
+			diff=false
+			break
+		end
+	end
+	return diff and c:IsSetCard(0x64) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c92881099.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+	local g0=eg:Filter(c92881099.cfilter,nil,tp)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c92881099.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,e:GetLabel()) end
+		and Duel.IsExistingMatchingCard(c92881099.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,g0) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c92881099.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c92881099.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,e:GetLabel())
+	local g0=eg:Filter(c92881099.cfilter,nil,tp)
+	local g=Duel.SelectMatchingCard(tp,c92881099.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,g0)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
