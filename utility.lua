@@ -2193,6 +2193,16 @@ end
 --condition of "negate activation and banish"
 function Auxiliary.nbcon(tp,re)
 	local rc=re:GetHandler()
-	return Duel.IsPlayerCanRemove(tp) 
+	return Duel.IsPlayerCanRemove(tp)
 		and (not rc:IsRelateToEffect(re) or rc:IsAbleToRemove())
+end
+--send to deck of contact fusion
+function Auxiliary.tdcfop(c)
+	return	function(g)
+				local cg=g:Filter(Card.IsFacedown,nil)
+				if cg:GetCount()>0 then
+					Duel.ConfirmCards(1-c:GetControler(),cg)
+				end
+				Duel.SendtoDeck(g,nil,2,REASON_COST)
+			end
 end

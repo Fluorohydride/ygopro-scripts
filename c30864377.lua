@@ -2,7 +2,7 @@
 function c30864377.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c30864377.matfilter,2,true)
-	aux.AddContactFusionProcedure(c,Card.IsAbleToDeckOrExtraAsCost,LOCATION_MZONE,0,Duel.SendtoDeck,nil,2,REASON_COST)
+	aux.AddContactFusionProcedure(c,Card.IsAbleToDeckOrExtraAsCost,LOCATION_MZONE,0,aux.tdcfop(c))
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

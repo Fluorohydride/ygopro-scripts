@@ -3,6 +3,7 @@ function c29357956.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x19),3,true)
+	aux.AddContactFusionProcedure(c,Card.IsAbleToDeckOrExtraAsCost,LOCATION_MZONE,0,aux.tdcfop(c))
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -10,15 +11,6 @@ function c29357956.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e1:SetValue(c29357956.splimit)
 	c:RegisterEffect(e1)
-	--special summon rule
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_SPSUMMON_PROC)
-	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE)
-	e2:SetRange(LOCATION_EXTRA)
-	e2:SetCondition(c29357956.sprcon)
-	e2:SetOperation(c29357956.sprop)
-	c:RegisterEffect(e2)
 	--battle indestructable
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
@@ -50,41 +42,6 @@ function c29357956.initial_effect(c)
 end
 function c29357956.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
-end
-function c29357956.spfilter(c)
-	return c:IsFusionSetCard(0x19) and c:IsCanBeFusionMaterial() and c:IsAbleToDeckOrExtraAsCost()
-end
-function c29357956.fselect(c,tp,mg,sg)
-	sg:AddCard(c)
-	local res=false
-	if sg:GetCount()<3 then
-		res=mg:IsExists(c29357956.fselect,1,sg,tp,mg,sg)
-	else
-		res=Duel.GetLocationCountFromEx(tp,tp,sg)>0
-	end
-	sg:RemoveCard(c)
-	return res
-end
-function c29357956.sprcon(e,c)
-	if c==nil then return true end
-	local tp=c:GetControler()
-	local mg=Duel.GetMatchingGroup(c29357956.spfilter,tp,LOCATION_MZONE,0,nil)
-	local sg=Group.CreateGroup()
-	return mg:IsExists(c29357956.fselect,1,nil,tp,mg,sg)
-end
-function c29357956.sprop(e,tp,eg,ep,ev,re,r,rp,c)
-	local mg=Duel.GetMatchingGroup(c29357956.spfilter,tp,LOCATION_MZONE,0,nil)
-	local sg=Group.CreateGroup()
-	while sg:GetCount()<3 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-		local g=mg:FilterSelect(tp,c29357956.fselect,1,1,sg,tp,mg,sg)
-		sg:Merge(g)
-	end
-	local cg=sg:Filter(Card.IsFacedown,nil)
-	if cg:GetCount()>0 then
-		Duel.ConfirmCards(1-tp,cg)
-	end
-	Duel.SendtoDeck(sg,nil,2,REASON_COST)
 end
 function c29357956.actcon(e)
 	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()

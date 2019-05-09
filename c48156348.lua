@@ -3,7 +3,7 @@ function c48156348.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeFun(c,41470137,aux.FilterBoolFunction(Card.IsFusionSetCard,0x19),1,true,true)
-	aux.AddContactFusionProcedure(c,c48156348.cfilter,LOCATION_ONFIELD,0,Duel.SendtoDeck,nil,2,REASON_COST)
+	aux.AddContactFusionProcedure(c,c48156348.cfilter,LOCATION_ONFIELD,0,aux.tdcfop(c))
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
