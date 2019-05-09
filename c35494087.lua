@@ -22,7 +22,7 @@ function c35494087.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetCode(EFFECT_REFLECT_BATTLE_DAMAGE)
-	e3:SetValue(1)
+	e3:SetValue(c35494087.refval)
 	c:RegisterEffect(e3)
 	--self destroy
 	local e4=Effect.CreateEffect(c)
@@ -48,6 +48,16 @@ function c35494087.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c35494087.indval(e,c)
 	return c:IsSummonType(SUMMON_TYPE_NORMAL)
+end
+function c35494087.refval(e,c)
+	if e:GetHandler():GetFlagEffect(35494087)~=0 then
+		Duel.RegisterFlagEffect(e:GetHandlerPlayer(),35494087,RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():ResetFlagEffect(35494087)
+		return true
+	elseif Duel.GetFlagEffect(e:GetHandlerPlayer(),35494087)==0 then
+		e:GetHandler():RegisterFlagEffect(35494087,0,0,1)
+		return true
+	else return false end
 end
 function c35494087.sdfilter(c)
 	return c:IsFaceup() and not c:IsSetCard(0x2016)
