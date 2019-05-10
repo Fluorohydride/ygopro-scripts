@@ -35,7 +35,7 @@ end
 function c65664792.spfilter2(c,e,tp,c1)
 	return c65664792.spfilter(c,e,tp)
 		and not c:IsOriginalCodeRule(c1:GetOriginalCodeRule())
-		and Duel.IsExistingMatchingCard(c65664792.spfilter3,tp,LOCATION_GRAVE,0,1,nil,e,tp,c1,c2)
+		and Duel.IsExistingMatchingCard(c65664792.spfilter3,tp,LOCATION_GRAVE,0,1,nil,e,tp,c1,c)
 end
 function c65664792.spfilter3(c,e,tp,c1,c2)
 	return c65664792.spfilter(c,e,tp)
