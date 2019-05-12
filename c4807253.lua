@@ -24,8 +24,11 @@ function c4807253.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c4807253.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+	local c=e:GetHandler()
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and c:GetFlagEffect(4807253)==0	end
+	c:RegisterFlagEffect(4807253,RESET_CHAIN,0,1)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c4807253.spop(e,tp,eg,ep,ev,re,r,rp)
