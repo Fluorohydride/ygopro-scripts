@@ -36,8 +36,8 @@ end
 function c97795930.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:GetFlagEffect(97795931)>0 then return end
-	tc:RegisterFlagEffect(97795931,RESET_EVENT+RESETS_STANDARD,0,0)
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		tc:RegisterFlagEffect(97795931,RESET_EVENT+RESETS_STANDARD,0,0)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
 		e1:SetCode(EVENT_BATTLE_DESTROYING)

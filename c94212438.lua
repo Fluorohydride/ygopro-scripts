@@ -34,7 +34,7 @@ function c94212438.initial_effect(c)
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e5:SetCode(EVENT_ADJUST)
-	e5:SetRange(LOCATION_SZONE)
+	e5:SetRange(LOCATION_ONFIELD)
 	e5:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
 	e5:SetOperation(c94212438.winop)
 	c:RegisterEffect(e5)
@@ -96,7 +96,7 @@ function c94212438.cfilter3(c)
 end
 function c94212438.winop(e,tp,eg,ep,ev,re,r,rp)
 	local WIN_REASON_DESTINY_BOARD=0x15
-	local g=Duel.GetMatchingGroup(c94212438.cfilter3,tp,LOCATION_ONFIELD,0,aux.ExceptThisCard(e))
+	local g=Duel.GetMatchingGroup(c94212438.cfilter3,tp,LOCATION_ONFIELD,0,e:GetHandler())
 	if g:GetClassCount(Card.GetCode)==4 then
 		Duel.Win(tp,WIN_REASON_DESTINY_BOARD)
 	end

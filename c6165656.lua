@@ -34,9 +34,7 @@ function c6165656.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e4:SetRange(LOCATION_MZONE)
-	e4:SetCode(EVENT_PHASE+PHASE_END)
-	e4:SetCountLimit(1)
-	e4:SetCondition(c6165656.wincon)
+	e4:SetCode(EVENT_ADJUST)
 	e4:SetOperation(c6165656.winop)
 	c:RegisterEffect(e4)
 end
@@ -60,10 +58,9 @@ function c6165656.operation(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Damage(p,d,REASON_EFFECT)
 end
-function c6165656.wincon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp and Duel.GetLP(1-tp)<=2000 and e:GetHandler():GetOverlayCount()==0
-end
 function c6165656.winop(e,tp,eg,ep,ev,re,r,rp)
 	local WIN_REASON_DISASTER_LEO=0x18
-	Duel.Win(tp,WIN_REASON_DISASTER_LEO)
+	if Duel.GetTurnPlayer()==tp and Duel.GetLP(1-tp)<=2000 and e:GetHandler():GetOverlayCount()==0 then
+		Duel.Win(tp,WIN_REASON_DISASTER_LEO)
+	end
 end
