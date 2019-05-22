@@ -67,7 +67,7 @@ function c93854893.op(e,tp,eg,ep,ev,re,r,rp)
 		end
 	else
 		if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(93854893,3))
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,c93854893.ofilter,tp,LOCATION_REMOVED,0,1,1,nil)
 		if g:GetCount()>0 then
 			Duel.Overlay(c,g)

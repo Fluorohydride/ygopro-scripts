@@ -39,7 +39,7 @@ end
 function c18678554.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(18678554,2))
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,c18678554.matfilter,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,tc)
 		if g:GetCount()>0 then
 			Duel.Overlay(tc,g)

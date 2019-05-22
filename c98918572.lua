@@ -51,7 +51,7 @@ function c98918572.xyztg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(98918572,1))
 	local g1=Duel.SelectTarget(tp,c98918572.xyzfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	e:SetLabelObject(g1:GetFirst())
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(98918572,2))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local g2=Duel.SelectTarget(tp,c98918572.xyzfilter,tp,LOCATION_MZONE,0,1,1,g1:GetFirst())
 end
 function c98918572.xyzop(e,tp,eg,ep,ev,re,r,rp)

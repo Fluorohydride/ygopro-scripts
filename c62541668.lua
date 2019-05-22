@@ -51,7 +51,7 @@ function c62541668.rmop(e,tp,eg,ep,ev,re,r,rp)
 		local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_REMOVED)
 		if og:GetCount()>0 then
 			Duel.BreakEffect()
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(62541668,2))
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 			local sg=og:Select(tp,1,1,nil)
 			Duel.Overlay(e:GetHandler(),sg)
 		end

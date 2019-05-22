@@ -51,7 +51,7 @@ function c1825445.mtop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(1825445,1))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local g=Duel.SelectMatchingCard(tp,c1825445.filter2,tp,LOCATION_MZONE,0,1,1,tc,e)
 	if g:GetCount()>0 then
 		local og=g:GetFirst():GetOverlayGroup()
