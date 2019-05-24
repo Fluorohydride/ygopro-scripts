@@ -76,7 +76,7 @@ function c21377582.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c21377582.efilter(e,te)
-	return te:IsActiveType(e:GetLabel()) and te:GetOwner()~=e:GetOwner()
+	return te:GetHandler():GetOriginalType()&e:GetLabel()~=0 and te:GetOwner()~=e:GetOwner()
 end
 function c21377582.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_ADVANCE)
