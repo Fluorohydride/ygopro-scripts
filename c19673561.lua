@@ -1,6 +1,4 @@
 --ウィッチクラフト・スクロール
---
---Scripted By-FW空鸽
 function c19673561.initial_effect(c)
 	--Activate
 	local e0=Effect.CreateEffect(c)
@@ -66,6 +64,7 @@ function c19673561.setcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c19673561.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
+	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,e:GetHandler(),1,0,0)
 end
 function c19673561.setop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end

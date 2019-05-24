@@ -24,7 +24,7 @@ function c79229522.splimit(e,se,sp,st)
 	return e:GetHandler():GetLocation()~=LOCATION_EXTRA
 end
 function c79229522.cfilter(c,fc)
-    return c:IsAbleToGraveAsCost() and (c:IsControler(fc:GetControler()) or c:IsFaceup()) and (c:IsCode(70095154) or c:IsLocation(LOCATION_MZONE))
+	return c:IsAbleToGraveAsCost() and (c:IsControler(fc:GetControler()) or c:IsFaceup()) and (c:IsCode(70095154) or c:IsLocation(LOCATION_MZONE))
 end
 function c79229522.sprop(c)
 	return	function(g)

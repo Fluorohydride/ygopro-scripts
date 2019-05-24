@@ -1,6 +1,4 @@
 --ウィッチクラフト・ピットレ
---
---Scripted By-FW空鸽
 function c95245544.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)
