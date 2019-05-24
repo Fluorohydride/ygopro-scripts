@@ -32,7 +32,12 @@ function c71625222.desop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,0,nil)
 		Duel.Destroy(g,REASON_EFFECT)
 		local dg=Duel.GetOperatedGroup()
-		local sum=dg:GetSum(Card.GetAttack)
-		Duel.Damage(tp,sum/2,REASON_EFFECT)
+		local sum=0
+		for c in aux.Next(dg) do
+			sum=sum+math.max(c:GetAttack(),0)
+		end
+		if sum>0 then
+			Duel.Damage(tp,sum/2,REASON_EFFECT)
+		end
 	end
 end
