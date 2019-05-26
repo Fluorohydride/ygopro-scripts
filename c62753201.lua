@@ -12,7 +12,7 @@ function c62753201.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c62753201.cfilter(c)
-	return c:IsLevelBelow(3) and c:IsSetCard(0x102)
+	return c:IsSetCard(0x102)
 end
 function c62753201.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c62753201.cfilter,1,nil) end
