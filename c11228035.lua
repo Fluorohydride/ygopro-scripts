@@ -2,7 +2,7 @@
 function c11228035.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_TOEXTRA)
+	e1:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_TOEXTRA+CATEGORY_GRAVE_ACTION)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -37,7 +37,7 @@ function c11228035.activate(e,tp,eg,ep,ev,re,r,rp)
 			sc:RegisterEffect(e1)
 			sc=g:GetNext()
 		end
-		if tc:IsAbleToDeck() and not tc:IsHasEffect(EFFECT_NECRO_VALLEY)
+		if tc:IsAbleToDeck() and aux.NecroValleyFilter()(tc)
 			and Duel.SelectYesNo(tp,aux.Stringid(11228035,0)) then
 			Duel.BreakEffect()
 			Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
