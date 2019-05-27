@@ -19,19 +19,18 @@ function c76532077.initial_effect(c)
 	e2:SetOperation(c76532077.desop)
 	c:RegisterEffect(e2)
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_PHASE+PHASE_STANDBY)
+	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e3:SetCode(EFFECT_SELF_DESTROY)
 	e3:SetRange(LOCATION_SZONE)
-	e3:SetCountLimit(1)
 	e3:SetCondition(c76532077.descon2)
-	e3:SetOperation(c76532077.desop2)
 	c:RegisterEffect(e3)
 end
 function c76532077.descon(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer()
 end
 function c76532077.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if g:GetCount()>0 then
 		local tg=g:GetMaxGroup(Card.GetAttack)
@@ -47,8 +46,5 @@ function c76532077.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c76532077.descon2(e,tp,eg,ep,ev,re,r,rp)
-	return tp==Duel.GetTurnPlayer() and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)<=4
-end
-function c76532077.desop2(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+	return tp==Duel.GetTurnPlayer() and Duel.GetCurrentPhase()==PHASE_STANDBY and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)<=4
 end
