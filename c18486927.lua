@@ -64,7 +64,7 @@ function c18486927.nametg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local code=e:GetHandler():GetCode()
 	--c:IsSetCard(0x51) and not c:IsCode(code)
 	c18486927.announce_filter={0x51,OPCODE_ISSETCARD,code,OPCODE_ISCODE,OPCODE_NOT,OPCODE_AND}
-	local ac=Duel.AnnounceCardFilter(tp,table.unpack(c18486927.announce_filter))
+	local ac=Duel.AnnounceCard(tp,table.unpack(c18486927.announce_filter))
 	Duel.SetTargetParam(ac)
 	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,ANNOUNCE_CARD_FILTER)
 end

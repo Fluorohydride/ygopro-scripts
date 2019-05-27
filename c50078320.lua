@@ -37,7 +37,7 @@ function c50078320.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
 	if bit.band(cv,ANNOUNCE_CARD)~=0 then
 		--c:IsType(cv) and not c:IsCode(code)
-		ac=Duel.AnnounceCardFilter(tp,cv,OPCODE_ISTYPE,code,OPCODE_ISCODE,OPCODE_NOT,OPCODE_AND)
+		ac=Duel.AnnounceCard(tp,cv,OPCODE_ISTYPE,code,OPCODE_ISCODE,OPCODE_NOT,OPCODE_AND)
 	else
 		local afilter={table.unpack(re:GetHandler().announce_filter)}
 		--and not c:IsCode(code)
@@ -45,7 +45,7 @@ function c50078320.operation(e,tp,eg,ep,ev,re,r,rp)
 		table.insert(afilter,OPCODE_ISCODE)
 		table.insert(afilter,OPCODE_NOT)
 		table.insert(afilter,OPCODE_AND)
-		ac=Duel.AnnounceCardFilter(tp,table.unpack(afilter))
+		ac=Duel.AnnounceCard(tp,table.unpack(afilter))
 	end
 	Duel.ChangeTargetParam(ev,ac)
 end

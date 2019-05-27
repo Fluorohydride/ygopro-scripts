@@ -53,11 +53,11 @@ function c18631392.anctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	c18631392.announce_filter={TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK,OPCODE_ISTYPE,OPCODE_NOT}
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
-	local ac1=Duel.AnnounceCardFilter(tp,table.unpack(c18631392.announce_filter))
+	local ac1=Duel.AnnounceCard(tp,table.unpack(c18631392.announce_filter))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
-	local ac2=Duel.AnnounceCardFilter(tp,table.unpack(c18631392.announce_filter))
+	local ac2=Duel.AnnounceCard(tp,table.unpack(c18631392.announce_filter))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
-	local ac3=Duel.AnnounceCardFilter(tp,table.unpack(c18631392.announce_filter))
+	local ac3=Duel.AnnounceCard(tp,table.unpack(c18631392.announce_filter))
 	e:SetOperation(c18631392.retop(ac1,ac2,ac3))
 end
 function c18631392.hfilter(c,code1,code2,code3)
