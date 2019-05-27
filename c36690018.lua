@@ -10,7 +10,7 @@ function c36690018.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c36690018.filter(c)
-	return c:GetFlagEffect(36690018)~=0
+	return c:GetFlagEffect(36690018)~=0 and c:GetFlagEffect(73206827)==0
 end
 function c36690018.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c36690018.filter(chkc) end
