@@ -57,6 +57,7 @@ function c73206827.effectcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return (c:GetFlagEffect(73206828)==0 or c:IsHasEffect(EFFECT_CANNOT_DISABLE))
 		and rp==tp and re and re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x5)
+		and bit.band(re:GetCode(),EVENT_SUMMON_SUCCESS+EVENT_FLIP_SUMMON_SUCCESS+EVENT_SPSUMMON_SUCCESS)~=0
 end
 function c73206827.effectop(e,tp,eg,ep,ev,re,r,rp)
 	local res=0
