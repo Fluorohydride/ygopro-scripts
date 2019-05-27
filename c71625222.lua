@@ -21,8 +21,8 @@ function c71625222.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c71625222.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(71625222,1))
-	local coin=Duel.SelectOption(tp,60,61)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COIN)
+	local coin=Duel.AnnounceCoin(tp)
 	local res=Duel.TossCoin(tp,1)
 	if coin~=res then
 		local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)

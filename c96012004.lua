@@ -44,7 +44,7 @@ function c96012004.coinop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 then return end
 	if e:GetLabel()==2 and Duel.GetCurrentChain()~=ev+1 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COIN)
-	local res=1-Duel.SelectOption(tp,60,61)
+	local res=1-Duel.AnnounceCoin(tp)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetProperty(EFFECT_FLAG_DELAY)

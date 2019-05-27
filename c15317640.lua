@@ -55,7 +55,8 @@ function c15317640.rcttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)
 end
 function c15317640.rctop(e,tp,eg,ep,ev,re,r,rp)
-	local coin=Duel.SelectOption(tp,60,61)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COIN)
+	local coin=Duel.AnnounceCoin(tp)
 	local res=Duel.TossCoin(tp,1)
 	if coin==res then
 		e:GetHandler():RemoveCounter(tp,0x1f,1,REASON_EFFECT)

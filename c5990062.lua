@@ -22,7 +22,7 @@ function c5990062.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if not tc then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
-	local res=Duel.SelectOption(tp,70,71,72)
+	local res=Duel.AnnounceType(tp)
 	Duel.ConfirmDecktop(tp,1)
 	if (res==0 and tc:IsType(TYPE_MONSTER))
 		or (res==1 and tc:IsType(TYPE_SPELL))

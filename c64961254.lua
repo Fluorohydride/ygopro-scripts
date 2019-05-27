@@ -1,4 +1,4 @@
---女神ヴェルダンディの導き
+--Goddess Verdande's Guidance
 function c64961254.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -42,7 +42,7 @@ end
 function c64961254.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(1-tp,1) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
-	Duel.SetTargetParam(Duel.SelectOption(tp,70,71,72))
+	Duel.SetTargetParam(Duel.AnnounceType(tp))
 end
 function c64961254.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroupCount(1-tp,0,LOCATION_DECK)<=0

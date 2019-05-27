@@ -19,7 +19,8 @@ end
 function c67959180.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		local opt=Duel.SelectOption(tp,60,61)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COIN)
+		local opt=Duel.AnnounceCoin(tp)
 		local coin=Duel.TossCoin(tp,1)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

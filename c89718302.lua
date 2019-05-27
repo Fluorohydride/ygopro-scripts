@@ -18,7 +18,7 @@ function c89718302.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c89718302.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COIN)
-	local coin=Duel.SelectOption(tp,60,61)
+	local coin=Duel.AnnounceCoin(tp)
 	local res=Duel.TossCoin(tp,1)
 	if coin~=res then
 		Duel.Damage(1-tp,1000,REASON_EFFECT)

@@ -25,7 +25,7 @@ function c64538655.desop(e,tp,eg,ep,ev,re,r,rp)
 	if c==tc then tc=Duel.GetAttacker() end
 	if not tc:IsRelateToBattle() then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COIN)
-	local coin=Duel.SelectOption(tp,60,61)
+	local coin=Duel.AnnounceCoin(tp)
 	local res=Duel.TossCoin(tp,1)
 	if coin~=res then
 		Duel.Destroy(tc,REASON_EFFECT)

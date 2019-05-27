@@ -21,7 +21,7 @@ function c82642348.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c82642348.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COIN)
-	local coin=Duel.SelectOption(tp,60,61)
+	local coin=Duel.AnnounceCoin(tp)
 	local res=Duel.TossCoin(tp,1)
 	if coin~=res then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

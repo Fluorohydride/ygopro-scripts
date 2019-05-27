@@ -50,7 +50,7 @@ function c4483989.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttackTarget()
 	if a:IsFaceup() and a:IsRelateToEffect(e) and at:IsFaceup() and at:IsRelateToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_COIN)
-		local coin=Duel.SelectOption(1-tp,60,61)
+		local coin=Duel.AnnounceCoin(1-tp)
 		local res=Duel.TossCoin(1-tp,1)
 		if coin~=res then
 			Duel.ChangePosition(at,POS_FACEUP_ATTACK)

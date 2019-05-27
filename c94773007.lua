@@ -16,7 +16,8 @@ function c94773007.attg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)
 end
 function c94773007.atop(e,tp,eg,ep,ev,re,r,rp)
-	local opt=Duel.SelectOption(tp,60,61)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COIN)
+	local opt=Duel.AnnounceCoin(tp)
 	local coin=Duel.TossCoin(tp,1)
 	if opt==coin then
 		Duel.SetLP(tp,math.ceil(Duel.GetLP(tp)/2))

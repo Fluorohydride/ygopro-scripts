@@ -19,12 +19,13 @@ function c37313786.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)
 end
 function c37313786.activate(e,tp,eg,ep,ev,re,r,rp)
-	local coin=Duel.SelectOption(tp,60,61)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COIN)
+	local coin=Duel.AnnounceCoin(tp)
 	local res=Duel.TossCoin(tp,1)
 	if coin~=res then
 		local gc=Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)
 		Duel.Draw(tp,5-gc,REASON_EFFECT)
-	else 
+	else
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
