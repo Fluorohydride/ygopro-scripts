@@ -10,7 +10,7 @@ function c99189322.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c99189322.filter(c)
-	return c:GetFlagEffect(36690018)~=0 and c:GetFlagEffect(73206827)==0
+	return c:GetFlagEffect(36690018)~=0
 end
 function c99189322.rfilter(c)
 	return c:IsSetCard(0x5) and c:IsAbleToRemove()

@@ -24,7 +24,10 @@ end
 function c97574404.coinop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	local res=Duel.TossCoin(tp,1)
+	local res=0
+	if c:IsHasEffect(73206827) then
+		res=1-Duel.SelectOption(tp,60,61)
+	else res=Duel.TossCoin(tp,1) end
 	c97574404.arcanareg(c,res)
 end
 function c97574404.arcanareg(c,coin)
