@@ -63,12 +63,13 @@ function c64184058.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c64184058.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToHand() end
+	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetHandler(),1,0,0)
 end
 function c64184058.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SendtoHand(c,nil,REASON_EFFECT)~=0 then
+	if c:IsRelateToEffect(e) and Duel.SendtoHand(c,nil,REASON_EFFECT)~=0
+		and Duel.GetCurrentChain()==ev+1 then
 		local cid=Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)

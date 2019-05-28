@@ -40,8 +40,8 @@ function c21598948.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local a=Duel.GetAttacker()
 	if not a:IsRelateToEffect(e) then return end
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(21598948,4))
-	local coin=Duel.SelectOption(tp,aux.Stringid(21598948,2),aux.Stringid(21598948,3))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COIN)
+	local coin=Duel.AnnounceCoin(tp)
 	local res=Duel.TossCoin(tp,1)
 	if coin~=res then
 		local e1=Effect.CreateEffect(e:GetHandler())

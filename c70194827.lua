@@ -12,7 +12,7 @@ function c70194827.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c70194827.atcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler()==Duel.GetAttacker() and e:GetHandler():IsChainAttackable(2,true)
+	return e:GetHandler()==Duel.GetAttacker()
 		and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)~=0
 end
 function c70194827.atcost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -22,11 +22,15 @@ end
 function c70194827.atop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToBattle() then return end
-	Duel.ChainAttack()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE)
 	c:RegisterEffect(e1)
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetCode(EFFECT_EXTRA_ATTACK)
+	e2:SetValue(1)
+	e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE)
+	c:RegisterEffect(e2)
 end
