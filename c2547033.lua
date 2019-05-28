@@ -1,4 +1,4 @@
---オルターガイスト・ホーンテッドロック
+--オルターガイスト・ホーンデッドロック
 function c2547033.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -28,6 +28,22 @@ function c2547033.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 	e3:SetCondition(c2547033.actcon)
 	c:RegisterEffect(e3)
+	if not c2547033.global_check then
+		c2547033.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_SSET)
+		ge1:SetOperation(c2547033.checkop)
+		Duel.RegisterEffect(ge1,0)
+	end
+end
+function c2547033.checkop(e,tp,eg,ep,ev,re,r,rp)
+	if not re or not re:GetHandler():IsSetCard(0x103) then return end
+	local tc=eg:GetFirst()
+	while tc do
+		tc:RegisterFlagEffect(2547033,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+		tc=eg:GetNext()
+	end
 end
 function c2547033.tgfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x103) and c:IsAbleToGrave()
