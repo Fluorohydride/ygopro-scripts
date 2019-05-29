@@ -30,7 +30,7 @@ function c92408984.cost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if ct==1 then return end
 	local pe=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT)
 	if not pe:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
-	if not pe:GetHandler():IsType(TYPE_TRAP) then return false end
+	if not pe:IsHasType(EFFECT_TYPE_ACTIVATE) or not pe:IsActiveType(TYPE_TRAP) then return false end
 	local tg=Duel.GetChainInfo(ct-1,CHAININFO_TARGET_CARDS)
 	if not tg or not tg:IsExists(c92408984.cfilter,1,nil) then return false end
 	if not Duel.IsChainNegatable(ct-1) then return false end
@@ -64,7 +64,7 @@ function c92408984.operation1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c92408984.condition2(e,tp,eg,ep,ev,re,r,rp)
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
-	if not re:GetHandler():IsType(TYPE_TRAP) then return false end
+	if not re:IsHasType(EFFECT_TYPE_ACTIVATE) or not re:IsActiveType(TYPE_TRAP) then return false end
 	local tg=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	if not tg or not tg:IsExists(c92408984.cfilter,1,nil) then return false end
 	return Duel.IsChainNegatable(ev)
