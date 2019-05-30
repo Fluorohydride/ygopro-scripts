@@ -1,6 +1,5 @@
 --究極変異態・インセクト女王
 function c41456841.initial_effect(c)
-	c:EnableUnsummonable()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)

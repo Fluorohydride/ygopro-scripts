@@ -1,6 +1,5 @@
 --PSYフレームギア・α
 function c75425043.initial_effect(c)
-	c:EnableUnsummonable()
 	--splimit
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
