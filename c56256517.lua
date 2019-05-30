@@ -1,4 +1,4 @@
---予言通帳
+--予見通帳
 function c56256517.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
