@@ -25,7 +25,7 @@ function c19310321.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(19310321,1))
 	local g1=Duel.SelectTarget(tp,c19310321.filter1,tp,LOCATION_MZONE,0,1,1,nil)
 	e:SetLabelObject(g1:GetFirst())
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(19310321,2))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local g2=Duel.SelectTarget(tp,c19310321.filter2,tp,LOCATION_GRAVE,0,2,2,nil)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g2,2,0,0)
 end
