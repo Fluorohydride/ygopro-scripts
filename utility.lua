@@ -1886,6 +1886,7 @@ function Auxiliary.IsCounterAdded(c,counter)
 	end
 	return false
 end
+--return the column of card c (from the viewpoint of p)
 function Auxiliary.GetColumn(c,p)
 	local seq=c:GetSequence()
 	if c:IsLocation(LOCATION_MZONE) then
@@ -1895,10 +1896,15 @@ function Auxiliary.GetColumn(c,p)
 	else return nil end
 	if c:IsControler(p or 0) then return seq else return 4-seq end
 end
---return the column of seq
+--return the column of monster zone seq (from the viewpoint of controller)
 function Auxiliary.MZoneSequence(seq)
 	if seq==5 then return 1 end
 	if seq==6 then return 3 end
+	return seq
+end
+--return the column of spell/trap zone seq (from the viewpoint of controller)
+function Auxiliary.SZoneSequence(seq)
+	if seq>4 then return nil end
 	return seq
 end
 --card effect disable filter(target)

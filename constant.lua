@@ -6,16 +6,16 @@ MAX_COUNTER	=65535		--max number for adding/removing counters, by card::add_coun
 LOCATION_DECK		=0x01		--卡组
 LOCATION_HAND		=0x02		--手牌
 LOCATION_MZONE		=0x04		--怪兽区
-LOCATION_SZONE		=0x08		--魔陷区
+LOCATION_SZONE		=0x08		--魔陷区(0~4)+场地区(5)
 LOCATION_GRAVE		=0x10		--墓地
 LOCATION_REMOVED	=0x20		--除外区
 LOCATION_EXTRA		=0x40		--额外
 LOCATION_OVERLAY	=0x80		--超量素材
-LOCATION_ONFIELD	=0x0c		--场上（怪兽+魔陷）
+LOCATION_ONFIELD	=0x0c		--场上（LOCATION_MZONE+LOCATION_SZONE）
 --Locations (for redirect) 若在重定向类效果中指定LOCATION_DECK则为弹回卡组顶部
 LOCATION_DECKBOT	=0x10001	--弹回卡组底部
 LOCATION_DECKSHF	=0x20001	--弹回卡组并洗牌
---Locations (for SetRange)
+--Locations of spell cards
 LOCATION_FZONE		=0x100		--场地区
 LOCATION_PZONE		=0x200		--灵摆区
 --Positions 表示形式
