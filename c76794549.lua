@@ -16,7 +16,7 @@ function c76794549.initial_effect(c)
 	e2:SetDescription(aux.Stringid(76794549,3))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCode(EVENT_DESTROYED)
+	e2:SetCode(EVENT_CUSTOM+76794549)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c76794549.spcon)
@@ -40,6 +40,12 @@ function c76794549.initial_effect(c)
 		ge1:SetCode(EVENT_DESTROYED)
 		ge1:SetOperation(c76794549.checkop)
 		Duel.RegisterEffect(ge1,0)
+		local ge2=Effect.CreateEffect(c)
+		ge2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge2:SetCode(EVENT_DESTROYED)
+		ge2:SetCondition(c76794549.regcon)
+		ge2:SetOperation(c76794549.regop)
+		Duel.RegisterEffect(ge2,0)
 	end
 end
 function c76794549.checkop(e,tp,eg,ep,ev,re,r,rp)
@@ -52,6 +58,21 @@ function c76794549.checkop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc=eg:GetNext()
 	end
+end
+function c76794549.spcfilter(c,tp)
+	return c:IsReason(REASON_BATTLE+REASON_EFFECT)
+		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
+end
+function c76794549.regcon(e,tp,eg,ep,ev,re,r,rp)
+	local v=0
+	if eg:IsExists(c76794549.spcfilter,1,nil,0) then v=v+1 end
+	if eg:IsExists(c76794549.spcfilter,1,nil,1) then v=v+2 end
+	if v==0 then return false end
+	e:SetLabel(({0,1,PLAYER_ALL})[v])
+	return true
+end
+function c76794549.regop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.RaiseEvent(eg,EVENT_CUSTOM+76794549,re,r,rp,ep,e:GetLabel())
 end
 function c76794549.rpfilter(c,e,tp)
 	return c:IsCode(94415058) and (not c:IsForbidden()
@@ -82,12 +103,8 @@ function c76794549.rpop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c76794549.spcfilter(c,tp)
-	return c:IsReason(REASON_BATTLE+REASON_EFFECT)
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
-end
 function c76794549.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c76794549.spcfilter,1,nil,tp)
+	return ev==tp or ev==PLAYER_ALL
 end
 function c76794549.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
