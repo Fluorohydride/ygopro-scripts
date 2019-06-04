@@ -16,7 +16,7 @@ function c12289247.initial_effect(c)
 	e2:SetDescription(aux.Stringid(12289247,3))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCode(EVENT_DESTROYED)
+	e2:SetCode(EVENT_CUSTOM+12289247)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c12289247.spcon)
@@ -33,6 +33,30 @@ function c12289247.initial_effect(c)
 	e3:SetTarget(c12289247.hntg)
 	e3:SetOperation(c12289247.hnop)
 	c:RegisterEffect(e3)
+	if not c12289247.global_check then
+		c12289247.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_DESTROYED)
+		ge1:SetCondition(c12289247.regcon)
+		ge1:SetOperation(c12289247.regop)
+		Duel.RegisterEffect(ge1,0)
+	end
+end
+function c12289247.spcfilter(c,tp)
+	return c:IsReason(REASON_BATTLE+REASON_EFFECT)
+		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
+end
+function c12289247.regcon(e,tp,eg,ep,ev,re,r,rp)
+	local v=0
+	if eg:IsExists(c12289247.spcfilter,1,nil,0) then v=v+1 end
+	if eg:IsExists(c12289247.spcfilter,1,nil,1) then v=v+2 end
+	if v==0 then return false end
+	e:SetLabel(({0,1,PLAYER_ALL})[v])
+	return true
+end
+function c12289247.regop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.RaiseEvent(eg,EVENT_CUSTOM+12289247,re,r,rp,ep,e:GetLabel())
 end
 function c12289247.rpfilter(c,e,tp)
 	return c:IsCode(20409757) and (not c:IsForbidden()
@@ -62,12 +86,8 @@ function c12289247.rpop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c12289247.spcfilter(c,tp)
-	return c:IsReason(REASON_BATTLE+REASON_EFFECT)
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
-end
 function c12289247.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c12289247.spcfilter,1,nil,tp)
+	return ev==tp or ev==PLAYER_ALL
 end
 function c12289247.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
