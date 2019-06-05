@@ -80,8 +80,9 @@ end
 function c6203182.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ec=c:GetPreviousEquipTarget()
+	if not ec then return false end
 	local rc=ec:GetReasonCard()
-	return ec and rc and c:IsReason(REASON_LOST_TARGET) and ec:IsReason(REASON_MATERIAL)
+	return rc and c:IsReason(REASON_LOST_TARGET) and ec:IsReason(REASON_MATERIAL)
 		and (ec:IsReason(REASON_FUSION) or ec:IsReason(REASON_SYNCHRO) or ec:IsReason(REASON_XYZ) or ec:IsReason(REASON_LINK))
 end
 function c6203182.ctop(e,tp,eg,ep,ev,re,r,rp)
