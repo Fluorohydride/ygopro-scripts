@@ -57,6 +57,7 @@ function c41181774.hdop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoDeck(sg,nil,2,REASON_EFFECT)
 	local ct=sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_EXTRA)
 	if ct==0 then return end
+	Duel.BreakEffect()
 	local dg=Duel.GetFieldGroup(tp,0,LOCATION_HAND):RandomSelect(tp,ct)
 	local dt=Duel.SendtoGrave(dg,REASON_EFFECT+REASON_DISCARD)
 	local c=e:GetHandler()
