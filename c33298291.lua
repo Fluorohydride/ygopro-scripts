@@ -35,7 +35,7 @@ function c33298291.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c33298291.spfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=g:SelectSubGroup(tp,c33298291.fselect,false,3,3)
-	if sg:GetCount()==3 then
+	if sg and sg:GetCount()==3 then
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP_ATTACK)
 	end
 end
