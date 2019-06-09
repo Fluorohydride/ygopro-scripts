@@ -114,26 +114,26 @@ function c66011101.operation3(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c66011101.atkfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
-		local e1=Effect.CreateEffect(e:GetHandler())
+		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
 		e1:SetValue(tc:GetAttack()*2)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
-		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_FIELD)
-		e2:SetCode(EFFECT_SKIP_BP)
-		e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		e2:SetTargetRange(1,0)
-		if Duel.GetTurnPlayer()==tp then
-			e2:SetLabel(Duel.GetTurnCount())
-			e2:SetCondition(c66011101.skipcon)
-			e2:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
-		else
-			e2:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,1)
-		end
-		Duel.RegisterEffect(e2,tp)
 	end
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_SKIP_BP)
+	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e2:SetTargetRange(1,0)
+	if Duel.GetTurnPlayer()==tp then
+		e2:SetLabel(Duel.GetTurnCount())
+		e2:SetCondition(c66011101.skipcon)
+		e2:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
+	else
+		e2:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,1)
+	end
+	Duel.RegisterEffect(e2,tp)
 end
 function c66011101.skipcon(e)
 	return Duel.GetTurnCount()~=e:GetLabel()

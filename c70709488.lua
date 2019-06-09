@@ -26,7 +26,7 @@ function c70709488.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c70709488.lcheck(g,lc)
-	return g:GetClassCount(Card.GetCode)==g:GetCount()
+	return g:GetClassCount(Card.GetLinkCode)==g:GetCount()
 end
 function c70709488.tgfilter(c)
 	return c:IsType(TYPE_MONSTER)

@@ -37,17 +37,14 @@ function c26443791.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return g:GetCount()>0 end
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
-function c26443791.filter(c)
-	return c:IsFaceup()
-end
 function c26443791.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c26443791.filter,tp,0,LOCATION_MZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
 end
 function c26443791.atkfilter(c)
-	return c:IsRace(RACE_INSECT)
+	return c:IsFaceup() and c:IsRace(RACE_INSECT)
 end
 function c26443791.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c26443791.filter,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	local tc=g:GetFirst()
 	local ct=Duel.GetMatchingGroupCount(c26443791.atkfilter,tp,LOCATION_REMOVED,0,nil)
 	while tc do
@@ -68,8 +65,8 @@ function c26443791.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return rp==1-tp and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
-function c26443791.spfilter(c,e,tp,lv)
-	return c:IsRace(RACE_INSECT) and c:IsLevelBelow(11) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+function c26443791.spfilter(c,e,tp)
+	return c:IsFaceup() and c:IsRace(RACE_INSECT) and c:IsLevelBelow(11) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c26443791.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)

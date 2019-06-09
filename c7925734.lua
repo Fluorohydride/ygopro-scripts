@@ -32,8 +32,10 @@ function c7925734.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED)
 		and c:IsRelateToEffect(e) then
 		if tc:IsType(TYPE_LINK) then
+			Duel.BreakEffect()
 			Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 		else
+			Duel.BreakEffect()
 			if Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT+REASON_DISCARD)~=0 then
 				Duel.Draw(tp,1,REASON_EFFECT)
 			end

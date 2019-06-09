@@ -17,7 +17,7 @@ end
 function c43528009.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(43528009,0))
 	local ag=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_HAND,0,2,2,nil)
-	if ag:GetCount()>0 then
+	if ag:GetCount()==2 then
 		Duel.SendtoHand(ag,1-tp,REASON_EFFECT)
 		Duel.ConfirmCards(tp,ag)
 		Duel.ShuffleHand(tp)

@@ -40,14 +40,14 @@ function c65899613.damfilter(c)
 	return c:IsFaceup() and c:IsCode(65899613)
 end
 function c65899613.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c65899613.damfilter,tp,LOCATION_MZONE,0,1,nil) end
-	local val=Duel.GetMatchingGroupCount(c65899613.damfilter,tp,LOCATION_MZONE,0,nil)*200
+	if chk==0 then return Duel.IsExistingMatchingCard(c65899613.damfilter,tp,LOCATION_ONFIELD,0,1,nil) end
+	local val=Duel.GetMatchingGroupCount(c65899613.damfilter,tp,LOCATION_ONFIELD,0,nil)*200
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(val)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,val)
 end
 function c65899613.damop(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
-	local val=Duel.GetMatchingGroupCount(c65899613.damfilter,tp,LOCATION_MZONE,0,nil)*200
+	local val=Duel.GetMatchingGroupCount(c65899613.damfilter,tp,LOCATION_ONFIELD,0,nil)*200
 	Duel.Damage(p,val,REASON_EFFECT)
 end

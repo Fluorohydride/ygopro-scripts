@@ -27,6 +27,7 @@ function c6203182.initial_effect(c)
 	e4:SetProperty(EFFECT_FLAG_DELAY)
 	e4:SetCode(EVENT_TO_GRAVE)
 	e4:SetCondition(c6203182.ctcon)
+	e4:SetTarget(c6203182.cttg)
 	e4:SetOperation(c6203182.ctop)
 	c:RegisterEffect(e4)
 	--destroy
@@ -37,7 +38,7 @@ function c6203182.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c6203182.spfilter(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp)
 end
 function c6203182.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(1-tp) and c6203182.spfilter(chkc,e,tp) end
@@ -84,12 +85,20 @@ function c6203182.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=ec:GetReasonCard()
 	return rc and c:IsReason(REASON_LOST_TARGET) and ec:IsReason(REASON_MATERIAL)
 		and (ec:IsReason(REASON_FUSION) or ec:IsReason(REASON_SYNCHRO) or ec:IsReason(REASON_XYZ) or ec:IsReason(REASON_LINK))
+		and (rc:IsSummonType(SUMMON_TYPE_FUSION) or rc:IsSummonType(SUMMON_TYPE_SYNCHRO) or rc:IsSummonType(SUMMON_TYPE_XYZ) or rc:IsSummonType(SUMMON_TYPE_LINK))
+end
+function c6203182.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
+	local ec=c:GetPreviousEquipTarget()
+	local rc=ec:GetReasonCard()
+	if chk==0 then return rc:IsControlerCanBeChanged() end
+	rc:CreateEffectRelation(e)
+	Duel.SetOperationInfo(0,CATEGORY_CONTROL,rc,1,0,0)
 end
 function c6203182.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ec=c:GetPreviousEquipTarget()
 	local rc=ec:GetReasonCard()
-	if rc then
+	if rc and rc:IsRelateToEffect(e) then
 		Duel.GetControl(rc,tp)
 	end
 end

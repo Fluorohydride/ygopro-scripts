@@ -36,12 +36,13 @@ function c27565379.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=re:GetHandler()
 	local atk=tc:GetBaseAttack()
 	Duel.SetTargetPlayer(1-tp)
-	Duel.SetTargetParam(atk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,atk)
 end
 function c27565379.damop(e,tp,eg,ep,ev,re,r,rp)
-	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
-	Duel.Damage(p,d,REASON_EFFECT)
+	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
+	local tc=re:GetHandler()
+	local atk=tc:GetBaseAttack()
+	Duel.Damage(p,atk,REASON_EFFECT)
 end
 function c27565379.cfilter(c,tp)
 	if c:IsSetCard(0x12f) and c:GetPreviousControler()==tp then return true end
