@@ -43,7 +43,7 @@ function c71861848.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(71861848)>0
 end
 function c71861848.spfilter(c,e,tp)
-	return c:IsSetCard(0x119) and not c:IsCode(71861848) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x119) and not c:IsCode(71861848) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c71861848.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c71861848.spfilter(chkc,e,tp) end
