@@ -87,7 +87,6 @@ function c2819435.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c2819435.thop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c2819435.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
@@ -97,9 +96,11 @@ function c2819435.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c2819435.reg1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	c:ResetFlagEffect(2819435)
-	if e:GetHandler():GetFlagEffect(1)==0 then
-		e:GetHandler():RegisterFlagEffect(1,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN,0,1)
+	if c:GetFlagEffect(2819435)>0 then 
+		c:ResetFlagEffect(2819435)
+	end
+	if c:GetFlagEffect(1)==0 then
+		c:RegisterFlagEffect(1,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN,0,1)
 	end
 end
 function c2819435.reg2(e,tp,eg,ep,ev,re,r,rp)
