@@ -47,7 +47,6 @@ function c14005031.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EVENT_PHASE+PHASE_END)
 		e1:SetRange(LOCATION_SZONE)
 		e1:SetCountLimit(1)		
-		e1:SetCondition(c14005031.matcon)
 		e1:SetOperation(c14005031.matop)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
@@ -65,9 +64,6 @@ function c14005031.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c14005031.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
-end
-function c14005031.matcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFirstCardTarget()~=nil
 end
 function c14005031.matop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

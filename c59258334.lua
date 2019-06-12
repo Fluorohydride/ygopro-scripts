@@ -56,7 +56,7 @@ function c59258334.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_CONTROL)
 		e1:SetValue(c59258334.ctval)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetCondition(c59258334.con)
 		tc:RegisterEffect(e1,true)
 	end

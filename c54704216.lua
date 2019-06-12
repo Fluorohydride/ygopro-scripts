@@ -10,19 +10,6 @@ function c54704216.initial_effect(c)
 	e1:SetTarget(c54704216.target)
 	e1:SetOperation(c54704216.operation)
 	c:RegisterEffect(e1)
-	--cannot attack
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_CANNOT_ATTACK)
-	e2:SetRange(LOCATION_SZONE)
-	e2:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e2:SetTarget(aux.ctg)
-	c:RegisterEffect(e2)
-	--cannot change position
-	local e3=e2:Clone()
-	e3:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
-	e3:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
-	c:RegisterEffect(e3)
 	--damage
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(54704216,0))
@@ -56,17 +43,14 @@ function c54704216.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
 		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_FIELD)
-		e1:SetRange(LOCATION_SZONE)
+		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CANNOT_ATTACK)
-		e1:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-		e1:SetTarget(c54704216.efftg)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		c:RegisterEffect(e1)
+		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
-		e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
-		c:RegisterEffect(e2)
+		tc:RegisterEffect(e2)
 	end
 end
 function c54704216.efftg(e,c)
@@ -74,7 +58,6 @@ function c54704216.efftg(e,c)
 end
 function c54704216.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsStatus(STATUS_DESTROY_CONFIRMED) then return false end
 	local tc=c:GetFirstCardTarget()
 	return tc and eg:IsContains(tc)
 end
@@ -91,7 +74,7 @@ function c54704216.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,500)
 end
 function c54704216.damop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
+	if not e:GetHandler():GetFirstCardTarget() then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Damage(p,d,REASON_EFFECT)
 end

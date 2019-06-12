@@ -39,7 +39,7 @@ function c70284332.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_SET_CONTROL)
 		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetValue(c70284332.ctval)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetCondition(c70284332.con)
 		tc:RegisterEffect(e1,true)
 		--redirect
