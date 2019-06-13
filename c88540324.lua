@@ -76,7 +76,7 @@ function c88540324.atkval(e,c)
 	local c=e:GetHandler()
 	local tc=c:GetEquipTarget()
 	local ct=0
-	if tc:IsControler(e:GetHandlerPlayer()) and tc:IsSetCard(0x119) and tc:IsSummonType(SUMMON_TYPE_LINK) and c:GetFlagEffect(88540324)~=0 then
+	if tc:IsControler(e:GetHandlerPlayer()) and tc:IsSetCard(0x119) and tc:IsSummonType(SUMMON_TYPE_LINK) and tc:GetFlagEffect(88540324)~=0 then
 		ct=tc:GetLink()
 	end
 	return math.max(0,ct-1)
