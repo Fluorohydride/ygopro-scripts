@@ -27,6 +27,21 @@ function c64178424.initial_effect(c)
 	e3:SetTarget(c64178424.sptg2)
 	e3:SetOperation(c64178424.spop2)
 	c:RegisterEffect(e3)
+	if not c64178424.global_check then
+		c64178424.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD)
+		ge1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE)
+		ge1:SetCode(EFFECT_MATERIAL_CHECK)
+		ge1:SetValue(c64178424.valcheck)
+		Duel.RegisterEffect(ge1,0)
+	end
+end
+function c64178424.valcheck(e,c)
+	local g=c:GetMaterial()
+	if g:IsExists(Card.IsLinkCode,1,nil,c:GetCode()) then
+		c:RegisterFlagEffect(64178424,RESET_EVENT+0x4fe0000,0,1)
+	end
 end
 function c64178424.spfilter(c,e,tp)
 	return c:IsSetCard(0x119) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -49,9 +64,7 @@ function c64178424.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c64178424.filter(c)
-	if not c:IsSummonType(SUMMON_TYPE_LINK) then return false end
-	local mat=c:GetMaterial()
-	return c:IsFaceup() and c:IsSetCard(0x119) and mat:IsExists(Card.IsLinkCode,1,nil,c:GetCode())
+	return c:IsFaceup() and c:IsSetCard(0x119) and c:IsSummonType(SUMMON_TYPE_LINK) and c:GetFlagEffect(64178424)~=0
 end
 function c64178424.spfilter2(c,e,tp)
 	return c:IsSetCard(0x119) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

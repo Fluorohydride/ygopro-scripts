@@ -31,6 +31,21 @@ function c20788863.initial_effect(c)
 	e3:SetTarget(c20788863.drtg2)
 	e3:SetOperation(c20788863.drop2)
 	c:RegisterEffect(e3)
+	if not c20788863.global_check then
+		c20788863.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD)
+		ge1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE)
+		ge1:SetCode(EFFECT_MATERIAL_CHECK)
+		ge1:SetValue(c20788863.valcheck)
+		Duel.RegisterEffect(ge1,0)
+	end
+end
+function c20788863.valcheck(e,c)
+	local g=c:GetMaterial()
+	if g:IsExists(Card.IsLinkCode,1,nil,c:GetCode()) then
+		c:RegisterFlagEffect(20788863,RESET_EVENT+0x4fe0000,0,1)
+	end
 end
 function c20788863.cfilter(c)
 	return c:IsSetCard(0x119) and c:IsType(TYPE_MONSTER) and c:IsDiscardable()
@@ -59,9 +74,7 @@ function c20788863.drop1(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c20788863.lfilter(c)
-	if not c:IsSummonType(SUMMON_TYPE_LINK) then return false end
-	local mat=c:GetMaterial()
-	return c:IsFaceup() and c:IsSetCard(0x119) and mat:IsExists(Card.IsLinkCode,1,nil,c:GetCode())
+	return c:IsFaceup() and c:IsSetCard(0x119) and c:IsSummonType(SUMMON_TYPE_LINK) and c:GetFlagEffect(20788863)~=0
 end
 function c20788863.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c20788863.lfilter,tp,LOCATION_MZONE,0,1,nil)
