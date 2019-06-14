@@ -31,7 +31,7 @@ end
 function c36975314.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -39,6 +39,7 @@ function c36975314.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetValue(c36975314.ctval)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetLabelObject(e)
 		e1:SetCondition(c36975314.con)
 		tc:RegisterEffect(e1,true)
 		--cannot attack, trigger
@@ -57,7 +58,8 @@ end
 function c36975314.con(e)
 	local c=e:GetOwner()
 	local h=e:GetHandler()
-	return c:IsHasCardTarget(h) and not h:IsImmuneToEffect(e)
+	local te=e:GetLabelObject()
+	return c:IsHasCardTarget(h) and not h:IsImmuneToEffect(te)
 end
 function c36975314.ctval(e,c)
 	return e:GetOwnerPlayer()
