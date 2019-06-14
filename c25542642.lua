@@ -3,13 +3,24 @@ function c25542642.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DISABLE)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CONTINUOUS_TARGET)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER)
 	e1:SetTarget(c25542642.target)
 	e1:SetOperation(c25542642.tgop)
 	c:RegisterEffect(e1)
+	--cannot attack/disable
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_CANNOT_ATTACK)
+	e3:SetRange(LOCATION_SZONE)
+	e3:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+	e3:SetTarget(aux.ctg)
+	c:RegisterEffect(e3)
+	local e5=e3:Clone()
+	e5:SetCode(EFFECT_DISABLE)
+	c:RegisterEffect(e5)
 	--cannot be battle target
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
@@ -55,20 +66,11 @@ function c25542642.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
-		--cannot attack/disable
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_CANNOT_ATTACK)
-		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		tc:RegisterEffect(e1,true)
-		local e2=e1:Clone()
-		e2:SetCode(EFFECT_DISABLE)
-		tc:RegisterEffect(e2,true)
 	end
 end
 function c25542642.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	if c:IsStatus(STATUS_DESTROY_CONFIRMED) then return false end
 	local tc=c:GetFirstCardTarget()
 	return tc and eg:IsContains(tc)
 end
