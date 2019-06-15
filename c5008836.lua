@@ -6,7 +6,7 @@ function c5008836.initial_effect(c)
 	e0:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	c:RegisterEffect(e0)
-	--summon with 3 tribute
+	--summon with 5 tribute
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(5008836,0))
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -80,7 +80,8 @@ function c5008836.facechk(e,tp,eg,ep,ev,re,r,rp)
 	e:GetLabelObject():SetLabel(1)
 end
 function c5008836.winfilter(e,c)
-	return c:GetOwner()~=e:GetHandlerPlayer() and c:IsRace(RACE_FIEND) and c:IsAttribute(ATTRIBUTE_DARK)
+	return c:GetOwner()==1-e:GetHandlerPlayer()
+		and c:GetPreviousRaceOnField()&RACE_FIEND~=0 and c:GetPreviousAttributeOnField()&ATTRIBUTE_DARK~=0
 end
 function c5008836.wincon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
