@@ -11,7 +11,7 @@ function c12989604.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c12989604.filter(c)
-	return c:IsSpecialSummonable(SUMMON_TYPE_LINK)
+	return c:IsLinkSummonable(nil)
 end
 function c12989604.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c12989604.filter,tp,LOCATION_EXTRA,0,1,nil) end
@@ -22,6 +22,6 @@ function c12989604.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c12989604.filter,tp,LOCATION_EXTRA,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
-		Duel.SpecialSummonRule(tp,tc,SUMMON_TYPE_LINK)
+		Duel.LinkSummon(tp,tc,nil)
 	end
 end
