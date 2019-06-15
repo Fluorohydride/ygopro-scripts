@@ -87,13 +87,14 @@ function c28570310.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=eg:Filter(c28570310.cfilter,nil,1-tp):Filter(Card.IsAbleToHand,nil)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and g:GetCount()>0 end
+	Duel.SetTargetCard(eg)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,g:GetCount(),0,0)
 end
 function c28570310.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		local g=eg:Filter(Card.IsControler,nil,1-tp):Filter(Card.IsAbleToHand,nil)
+		local g=eg:Filter(c28570310.cfilter,nil,1-tp):Filter(Card.IsRelateToEffect,nil,e)
 		if g:GetCount()>0 then
 			Duel.BreakEffect()
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
