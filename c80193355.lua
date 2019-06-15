@@ -14,7 +14,7 @@ function c80193355.cfilter(c)
 	return c:IsLocation(LOCATION_MZONE) and c:IsFaceup() and c:IsSetCard(0x4)
 end
 function c80193355.condition(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c80193355.cfilter,1,nil)
+	return (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE)) and eg:IsExists(c80193355.cfilter,1,nil)
 end
 function c80193355.spfilter(c,e,tp,g)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and (not g or not g:IsContains(c))

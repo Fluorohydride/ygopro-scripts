@@ -21,7 +21,7 @@ function c18158397.cfilter(c,tp)
 end
 function c18158397.condition(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,0x41)==0x41 and re and re:GetHandler():IsSetCard(0x18)
-		and eg:IsExists(c18158397.cfilter,1,nil,1-tp)
+		and eg:IsExists(c18158397.cfilter,1,nil,1-tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c18158397.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
