@@ -37,7 +37,7 @@ function c62899696.filter(tc,c,tp)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SYNCHRO_MATERIAL)
-	tc:RegisterEffect(e1)
+	tc:RegisterEffect(e1,true)
 	local mg=Group.FromCards(c,tc)
 	local res=Duel.IsExistingMatchingCard(c62899696.synfilter,tp,LOCATION_EXTRA,0,1,nil,mg)
 	c:ResetFlagEffect(62899696)
@@ -57,7 +57,8 @@ end
 function c62899696.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToEffect(e)
+		and tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
 		c:RegisterFlagEffect(62899696,0,0,1)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
