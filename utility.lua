@@ -1841,7 +1841,7 @@ function Auxiliary.LinkCondition(f,minc,maxc,gf)
 				local tp=c:GetControler()
 				local mg=nil
 				if og then
-					mg=og
+					mg=og:Filter(Auxiliary.LConditionFilter,nil,f,c)
 				else
 					mg=Auxiliary.GetLinkMaterials(tp,f,c)
 				end
@@ -1862,7 +1862,7 @@ function Auxiliary.LinkTarget(f,minc,maxc,gf)
 				end
 				local mg=nil
 				if og then
-					mg=og
+					mg=og:Filter(Auxiliary.LConditionFilter,nil,f,c)
 				else
 					mg=Auxiliary.GetLinkMaterials(tp,f,c)
 				end
