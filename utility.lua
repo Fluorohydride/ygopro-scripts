@@ -1827,26 +1827,50 @@ function Auxiliary.LCheckGoal(sg,tp,lc,gf)
 		and Duel.GetLocationCountFromEx(tp,tp,sg,lc)>0 and (not gf or gf(sg))
 		and not sg:IsExists(Auxiliary.LUncompatibilityFilter,1,nil,sg,lc)
 end
-function Auxiliary.LinkCondition(f,min,max,gf)
-	return	function(e,c)
+function Auxiliary.LinkCondition(f,minc,maxc,gf)
+	return	function(e,c,og,min,max)
 				if c==nil then return true end
 				if c:IsType(TYPE_PENDULUM) and c:IsFaceup() then return false end
+				local minc=minc
+				local maxc=maxc
+				if min then
+					if min>minc then minc=min end
+					if max<maxc then maxc=max end
+					if minc>maxc then return false end
+				end
 				local tp=c:GetControler()
-				local mg=Auxiliary.GetLinkMaterials(tp,f,c)
+				local mg=nil
+				if og then
+					mg=og:Filter(Auxiliary.LConditionFilter,nil,f,c)
+				else
+					mg=Auxiliary.GetLinkMaterials(tp,f,c)
+				end
 				local fg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_LMATERIAL)
 				if fg:IsExists(Auxiliary.MustMaterialCounterFilter,1,nil,mg) then return false end
 				Duel.SetSelectedCard(fg)
-				return mg:CheckSubGroup(Auxiliary.LCheckGoal,min,max,tp,c,gf)
+				return mg:CheckSubGroup(Auxiliary.LCheckGoal,minc,maxc,tp,c,gf)
 			end
 end
-function Auxiliary.LinkTarget(f,min,max,gf)
-	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c)
-				local mg=Auxiliary.GetLinkMaterials(tp,f,c)
+function Auxiliary.LinkTarget(f,minc,maxc,gf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c,og,min,max)
+				local minc=minc
+				local maxc=maxc
+				if min then
+					if min>minc then minc=min end
+					if max<maxc then maxc=max end
+					if minc>maxc then return false end
+				end
+				local mg=nil
+				if og then
+					mg=og:Filter(Auxiliary.LConditionFilter,nil,f,c)
+				else
+					mg=Auxiliary.GetLinkMaterials(tp,f,c)
+				end
 				local fg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_LMATERIAL)
 				Duel.SetSelectedCard(fg)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_LMATERIAL)
 				local cancel=Duel.GetCurrentChain()==0
-				local sg=mg:SelectSubGroup(tp,Auxiliary.LCheckGoal,cancel,min,max,tp,c,gf)
+				local sg=mg:SelectSubGroup(tp,Auxiliary.LCheckGoal,cancel,minc,maxc,tp,c,gf)
 				if sg then
 					sg:KeepAlive()
 					e:SetLabelObject(sg)
@@ -1854,8 +1878,8 @@ function Auxiliary.LinkTarget(f,min,max,gf)
 				else return false end
 			end
 end
-function Auxiliary.LinkOperation(f,min,max,gf)
-	return	function(e,tp,eg,ep,ev,re,r,rp,c,smat,mg)
+function Auxiliary.LinkOperation(f,minc,maxc,gf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,c,og,min,max)
 				local g=e:GetLabelObject()
 				c:SetMaterial(g)
 				Duel.SendtoGrave(g,REASON_MATERIAL+REASON_LINK)
