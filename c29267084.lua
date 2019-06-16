@@ -11,6 +11,23 @@ function c29267084.initial_effect(c)
 	e1:SetTarget(c29267084.target)
 	e1:SetOperation(c29267084.operation)
 	c:RegisterEffect(e1)
+	--cannot attack, atk down
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_CANNOT_ATTACK)
+	e2:SetRange(LOCATION_SZONE)
+	e2:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+	e2:SetTarget(aux.ctg)
+	c:RegisterEffect(e2)
+	local e3=e2:Clone()
+	e3:SetCode(EFFECT_UPDATE_ATTACK)
+	e3:SetValue(-700)
+	c:RegisterEffect(e3)
+	--cannot change position
+	local e4=e2:Clone()
+	e4:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
+	e4:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
+	c:RegisterEffect(e4)
 	--Destroy
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
@@ -34,25 +51,11 @@ function c29267084.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
-		--cannot attack, atk down
-		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_SINGLE)
-		e2:SetCode(EFFECT_CANNOT_ATTACK)
-		e2:SetProperty(EFFECT_FLAG_OWNER_RELATE)
-		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-		tc:RegisterEffect(e2,true)
-		local e3=e2:Clone()
-		e3:SetCode(EFFECT_UPDATE_ATTACK)
-		e3:SetValue(-700)
-		tc:RegisterEffect(e3,true)
-		--cannot change position
-		local e4=e2:Clone()
-		e4:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
-		tc:RegisterEffect(e4,true)
 	end
 end
 function c29267084.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	if c:IsStatus(STATUS_DESTROY_CONFIRMED) then return false end
 	local tc=c:GetFirstCardTarget()
 	return tc and eg:IsContains(tc)
 end

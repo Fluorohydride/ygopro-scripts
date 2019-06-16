@@ -10,6 +10,19 @@ function c54704216.initial_effect(c)
 	e1:SetTarget(c54704216.target)
 	e1:SetOperation(c54704216.operation)
 	c:RegisterEffect(e1)
+	--cannot attack
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_CANNOT_ATTACK)
+	e2:SetRange(LOCATION_SZONE)
+	e2:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+	e2:SetTarget(aux.ctg)
+	c:RegisterEffect(e2)
+	--cannot change position
+	local e3=e2:Clone()
+	e3:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
+	e3:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
+	c:RegisterEffect(e3)
 	--damage
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(54704216,0))
@@ -42,22 +55,11 @@ function c54704216.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_CANNOT_ATTACK)
-		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		tc:RegisterEffect(e1)
-		local e2=e1:Clone()
-		e2:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
-		tc:RegisterEffect(e2)
 	end
-end
-function c54704216.efftg(e,c)
-	return e:GetHandler():IsRelateToCard(c)
 end
 function c54704216.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	if c:IsStatus(STATUS_DESTROY_CONFIRMED) then return false end
 	local tc=c:GetFirstCardTarget()
 	return tc and eg:IsContains(tc)
 end
