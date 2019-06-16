@@ -15,11 +15,11 @@ function c69155991.initial_effect(c)
 	e2:SetOperation(c69155991.desop1)
 	c:RegisterEffect(e2)
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetCode(EFFECT_SELF_DESTROY)
-	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetCondition(c69155991.descon)
+	e3:SetCode(EVENT_BATTLED)
+	e3:SetOperation(c69155991.desop2)
+	e3:SetLabelObject(e2)
 	c:RegisterEffect(e3)
 	--to grave
 	local e4=Effect.CreateEffect(c)
@@ -42,10 +42,17 @@ function c69155991.desop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:GetFlagEffect(69155991)==0 then return end
 	c:ResetFlagEffect(69155991)
-	c:RegisterFlagEffect(69155992,RESET_EVENT+RESETS_STANDARD,0,1)
+	local ph=Duel.GetCurrentPhase()
+	if (ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL) and not Duel.IsDamageCalculated() then
+		c:RegisterFlagEffect(69155992,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE,0,1)
+	else
+		Duel.Destroy(c,REASON_EFFECT)
+	end
 end
-function c69155991.descon(e)
-	return e:GetHandler():GetFlagEffect(69155992)~=0
+function c69155991.desop2(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetHandler():GetFlagEffect(69155992)~=0 then
+		Duel.Destroy(e:GetHandler(),REASON_EFFECT)
+	end
 end
 function c69155991.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
