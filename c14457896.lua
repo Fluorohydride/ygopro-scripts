@@ -87,8 +87,8 @@ end
 function c14457896.atlimit(e,c)
 	return c:IsRace(RACE_INSECT) and c:IsFaceup()
 end
-function c14457896.disfilter(c)
-	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsRace(RACE_INSECT)
+function c14457896.disfilter(c,re)
+	return c:IsFaceup() and c:IsRace(RACE_INSECT) and c:IsRelateToEffect(re)
 end
 function c14457896.discon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
@@ -96,7 +96,7 @@ function c14457896.discon(e,tp,eg,ep,ev,re,r,rp)
 	if not tc or rc~=tc then return false end
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return false end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
-	return g and g:IsExists(c14457896.disfilter,1,nil) and Duel.IsChainNegatable(ev)
+	return g and g:IsExists(c14457896.disfilter,1,nil,re) and Duel.IsChainNegatable(ev)
 end
 function c14457896.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
