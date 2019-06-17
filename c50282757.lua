@@ -34,8 +34,10 @@ function c50282757.initial_effect(c)
 end
 c50282757.material_setcode=0x8
 c50282757.dark_calling=true
+c50282757.card_code_list={94820406}
 function c50282757.splimit(e,se,sp,st)
 	return st==SUMMON_TYPE_FUSION+0x10
+		or Duel.IsPlayerAffectedByEffect(sp,72043279) and st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
 end
 function c50282757.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPosition(POS_FACEUP_DEFENSE) and Duel.GetTurnPlayer()==tp
