@@ -2,17 +2,15 @@
 function c30643162.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetTarget(c30643162.target)
 	e1:SetOperation(c30643162.activate)
 	c:RegisterEffect(e1)
 end
-function c30643162.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c30643162.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tg=Duel.GetAttacker()
-	if chkc then return chkc==tg end
-	if chk==0 then return tg:IsControler(tp) and tg:IsOnField() and tg:IsCanBeEffectTarget(e) end
+	if chk==0 then return tg:IsControler(tp) and tg:IsOnField() end
 	Duel.SetTargetCard(tg)
 end
 function c30643162.activate(e,tp,eg,ep,ev,re,r,rp)

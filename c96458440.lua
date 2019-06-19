@@ -30,7 +30,7 @@ function c96458440.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c96458440.eqlimit(e,c)
-	return c:IsCode(8508055,3810071,49814180)
+	return c:IsCode(8508055,3810071,49814180) and c:IsControler(e:GetHandlerPlayer())
 end
 function c96458440.filter(c)
 	return c:IsFaceup() and c:IsCode(8508055,3810071,49814180)

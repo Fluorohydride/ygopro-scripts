@@ -38,7 +38,6 @@ function c18712704.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(dg,REASON_EFFECT)
 		if sc:IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 			and sc:IsCanBeSpecialSummoned(e,0,tp,false,false) then
-			Duel.BreakEffect()
 			Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end
