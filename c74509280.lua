@@ -13,10 +13,10 @@ function c74509280.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c74509280.sfilter(c)
-	return c:IsCode(598988,1710476,9433350,36521459,37115575,55343236) and not c:IsDisabled()
+	return c:IsOriginalCodeRule(598988,1710476,9433350,36521459,37115575,55343236) and not c:IsDisabled()
 end
 function c74509280.uqfilter(c)
-	if Duel.IsPlayerAffectedByEffect(c:GetControler(),75223115) 
+	if Duel.IsPlayerAffectedByEffect(c:GetControler(),75223115)
 		and Duel.IsExistingMatchingCard(c74509280.sfilter,c:GetControler(),LOCATION_MZONE,LOCATION_MZONE,1,nil) then
 		return c:IsCode(74509280)
 	else
