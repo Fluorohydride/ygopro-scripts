@@ -46,7 +46,7 @@ function c61888819.frccon(e)
 	return e:GetHandler():GetSequence()>4
 end
 function c61888819.frcval(e,c,fp,rp,r)
-	return e:GetHandler():GetLinkedZone()
+	return e:GetHandler():GetLinkedZone() | 0x600060
 end
 function c61888819.indcon(e)
 	return e:GetHandler():GetLinkedGroupCount()>0
