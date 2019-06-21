@@ -5,6 +5,14 @@ function c95372220.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_DRAGON),2)
 	--zone limit
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_MUST_USE_MZONE)
+	e1:SetRange(LOCATION_MZONE)
+	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e1:SetTargetRange(1,0)
+	e1:SetValue(c95372220.zonelimit)
+	c:RegisterEffect(e1)
 	--destroy
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(95372220,0))
@@ -34,6 +42,9 @@ function c95372220.initial_effect(c)
 	e5:SetTarget(c95372220.negtg)
 	e5:SetOperation(c95372220.negop)
 	c:RegisterEffect(e5)
+end
+function c95372220.zonelimit(e)
+	return 0x7f & ~e:GetHandler():GetLinkedZone()
 end
 function c95372220.cfilter(c,ec)
 	if c:IsLocation(LOCATION_MZONE) then
