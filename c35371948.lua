@@ -155,10 +155,10 @@ function c35371948.rstop2(e,tp,eg,ep,ev,re,r,rp)
 	if te then te:Reset() end
 end
 function c35371948.damcon1(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and Duel.GetLP(1-tp)>0 and eg:GetFirst():IsSetCard(0xfb)
+	return ep~=tp and eg:GetFirst():IsSetCard(0xfb)
 end
 function c35371948.damcon2(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and Duel.GetLP(1-tp)>0 and bit.band(r,REASON_BATTLE)==0 and re
+	return ep~=tp and bit.band(r,REASON_BATTLE)==0 and re
 		and re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0xfb)
 end
 function c35371948.damop(e,tp,eg,ep,ev,re,r,rp)

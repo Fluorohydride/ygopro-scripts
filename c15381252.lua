@@ -29,7 +29,7 @@ function c15381252.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c15381252.activate(e,tp,eg,ep,ev,re,r,rp)
 	local count=8
-	while count>0 and Duel.IsPlayerCanDiscardDeck(tp,1) and Duel.GetLP(1-tp)>0 do
+	while count>0 and Duel.IsPlayerCanDiscardDeck(tp,1) do
 		if count<8 then Duel.BreakEffect() end
 		Duel.ConfirmDecktop(tp,1)
 		local g=Duel.GetDecktopGroup(tp,1)
