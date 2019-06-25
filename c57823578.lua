@@ -78,7 +78,7 @@ function c57823578.thop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 and Duel.SendtoHand(g,nil,REASON_EFFECT)~=0 then
 		local ct=Duel.GetOperatedGroup():FilterCount(Card.IsLocation,nil,LOCATION_HAND)
 		local val=Duel.Damage(tp,ct*500,REASON_EFFECT)
-		if val>0 and Duel.GetLP(tp)>0 then
+		if val>0 then
 			Duel.BreakEffect()
 			Duel.Damage(1-tp,val,REASON_EFFECT)
 		end

@@ -25,7 +25,7 @@ function c65430834.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.Destroy(g,REASON_EFFECT)
 	if ct>0 then
 		local val=Duel.Damage(tp,ct*1000,REASON_EFFECT)
-		if val>0 and Duel.GetLP(tp)>0 then
+		if val>0 then
 			Duel.BreakEffect()
 			Duel.Damage(1-tp,val,REASON_EFFECT)
 		end

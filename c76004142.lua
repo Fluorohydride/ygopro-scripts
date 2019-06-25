@@ -37,7 +37,7 @@ function c76004142.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local atk=tc:GetAttack()/2
 		local val=Duel.Damage(tp,atk,REASON_EFFECT)
-		if val>0 and Duel.GetLP(tp)>0 then
+		if val>0 then
 			Duel.BreakEffect()
 			Duel.Damage(1-tp,val,REASON_EFFECT)
 		end
