@@ -1,5 +1,7 @@
 --デンジャラス・デストーイ・ナイトメアリー
 function c58468105.initial_effect(c)
+	--fusion material
+	c:EnableReviveLimit()
 	aux.AddFusionProcFunFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0xc3),aux.FilterBoolFunction(Card.IsFusionSetCard,0xa9),2,99,true)
 	--atkup
 	local e1=Effect.CreateEffect(c)
