@@ -16,6 +16,7 @@ function c86780027.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c86780027.tg(e,c)
+	local tp=e:GetHandlerPlayer()
 	local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_MONSTER)
 	if g:GetCount()==0 or g:GetClassCount(Card.GetOriginalRace)>1 then return false end
 	return c:IsRace(g:GetFirst():GetOriginalRace())
