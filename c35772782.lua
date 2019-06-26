@@ -74,7 +74,7 @@ function c35772782.dcop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c35772782.actlimit(e,re,tp)
-	return re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:IsActiveType(TYPE_MONSTER)
 end
 function c35772782.dicecon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

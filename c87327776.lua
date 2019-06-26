@@ -58,7 +58,7 @@ function c87327776.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c87327776.actlimit(e,re,rp)
 	local rc=re:GetHandler()
-	return re:IsActiveType(TYPE_MONSTER) and not rc:IsAttribute(ATTRIBUTE_FIRE) and not rc:IsImmuneToEffect(e)
+	return re:IsActiveType(TYPE_MONSTER) and not rc:IsAttribute(ATTRIBUTE_FIRE)
 end
 function c87327776.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
