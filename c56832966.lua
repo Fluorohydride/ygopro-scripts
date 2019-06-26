@@ -17,7 +17,7 @@ function c56832966.initial_effect(c)
 	e2:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTargetRange(0,1)
-	e2:SetValue(c56832966.aclimit)
+	e2:SetValue(1)
 	e2:SetCondition(c56832966.actcon)
 	c:RegisterEffect(e2)
 	--atk
@@ -35,9 +35,6 @@ end
 c56832966.xyz_number=39
 function c56832966.ovfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x107f) and c:IsType(TYPE_XYZ) and c:IsRank(4)
-end
-function c56832966.aclimit(e,re,tp)
-	return not re:GetHandler():IsImmuneToEffect(e)
 end
 function c56832966.actcon(e)
 	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()
