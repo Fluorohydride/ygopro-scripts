@@ -26,23 +26,20 @@ function c40583194.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_ATTACK_ANNOUNCE)
-		e1:SetOperation(c40583194.atkop)
+		e1:SetType(EFFECT_TYPE_FIELD)
+		e1:SetCode(EFFECT_CANNOT_SELECT_EFFECT_TARGET)
+		e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
+		e1:SetRange(LOCATION_MZONE)
+		e1:SetTargetRange(0,0xff)
+		e1:SetValue(c40583194.etarget)
+		e1:SetCondition(c40583194.limcon)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 	end
 end
-function c40583194.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local e1=Effect.CreateEffect(e:GetOwner())
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_CANNOT_SELECT_EFFECT_TARGET)
-	e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
-	e1:SetTargetRange(0,0xff)
-	e1:SetValue(c40583194.etarget)
-	e1:SetReset(RESET_PHASE+PHASE_DAMAGE)
-	Duel.RegisterEffect(e1,tp)
-end
 function c40583194.etarget(e,re,c)
 	return c:IsType(TYPE_MONSTER) and (c:IsFaceup() or c:IsLocation(LOCATION_MZONE))
+end
+function c40583194.limcon(e)
+	return Duel.GetAttacker()==e:GetHandler()
 end

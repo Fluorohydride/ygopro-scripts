@@ -12,15 +12,14 @@ function c20409757.initial_effect(c)
 	c:RegisterEffect(e1)
 	--actlimit
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e2:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e2:SetRange(LOCATION_PZONE)
+	e2:SetTargetRange(0,1)
+	e2:SetValue(c20409757.aclimit)
 	e2:SetCondition(c20409757.actcon)
-	e2:SetOperation(c20409757.actop)
 	c:RegisterEffect(e2)
-	local e3=e2:Clone()
-	e3:SetCode(EVENT_BE_BATTLE_TARGET)
-	c:RegisterEffect(e3)
 	--scale
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE)
@@ -47,20 +46,11 @@ end
 function c20409757.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
 end
-function c20409757.actcon(e,tp,eg,ep,ev,re,r,rp)
+function c20409757.actcon(e)
+	local tp=e:GetHandlerPlayer()
 	local tc=Duel.GetAttacker()
 	if tc:IsControler(1-tp) then tc=Duel.GetAttackTarget() end
 	return tc and tc:IsControler(tp) and tc:IsType(TYPE_PENDULUM)
-end
-function c20409757.actop(e,tp,eg,ep,ev,re,r,rp)
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e1:SetCode(EFFECT_CANNOT_ACTIVATE)
-	e1:SetTargetRange(0,1)
-	e1:SetValue(c20409757.aclimit)
-	e1:SetReset(RESET_PHASE+PHASE_DAMAGE)
-	Duel.RegisterEffect(e1,tp)
 end
 function c20409757.aclimit(e,re,tp)
 	return re:IsActiveType(TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
