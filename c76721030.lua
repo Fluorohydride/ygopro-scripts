@@ -23,5 +23,5 @@ function c76721030.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c76721030.aclimit(e,re,tp)
 	local loc=re:GetActivateLocation()
-	return (loc==LOCATION_MZONE or loc==LOCATION_HAND) and re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)
+	return (loc==LOCATION_MZONE or loc==LOCATION_HAND) and re:IsActiveType(TYPE_MONSTER)
 end

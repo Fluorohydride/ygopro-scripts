@@ -21,7 +21,7 @@ function c72772445.initial_effect(c)
 	e3:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e3:SetRange(LOCATION_FZONE)
 	e3:SetTargetRange(0,1)
-	e3:SetValue(c72772445.aclimit)
+	e3:SetValue(1)
 	e3:SetCondition(c72772445.actcon)
 	c:RegisterEffect(e3)
 	--spsummon
@@ -38,9 +38,6 @@ function c72772445.initial_effect(c)
 end
 function c72772445.actfilter(c,tp)
 	return c and c:IsFaceup() and c:IsSetCard(0xe2) and c:IsType(TYPE_MONSTER) and c:IsControler(tp)
-end
-function c72772445.aclimit(e,re,tp)
-	return not re:GetHandler():IsImmuneToEffect(e)
 end
 function c72772445.actcon(e)
 	local tp=e:GetHandlerPlayer()
