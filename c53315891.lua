@@ -72,7 +72,7 @@ function c53315891.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c53315891.spfilter(c,e,tp)
-	return c:IsSetCard(0xa0) and c:IsCanBeSpecialSummoned(e,0,tp,true,true)
+	return c:IsSetCard(0xa0) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c53315891.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
@@ -87,6 +87,6 @@ function c53315891.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,3,3,nil)
-		Duel.SpecialSummon(sg,0,tp,tp,true,true,POS_FACEUP)
+		Duel.SpecialSummon(sg,0,tp,tp,true,false,POS_FACEUP)
 	end
 end
