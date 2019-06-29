@@ -14,7 +14,7 @@ function c95472621.cfilter(c)
 	return c:IsLocation(LOCATION_GRAVE) and c:IsType(TYPE_MONSTER)
 end
 function c95472621.condition(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and eg:IsExists(c95472621.cfilter,1,nil)
+	return rp==1-tp and (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE)) and eg:IsExists(c95472621.cfilter,1,nil)
 end
 function c95472621.chkfilter(c)
 	return c:IsType(TYPE_MONSTER) and not c:IsAbleToRemove()
@@ -24,7 +24,7 @@ function c95472621.filter(c)
 end
 function c95472621.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		return Duel.IsExistingMatchingCard(c95472621.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil) 
+		return Duel.IsExistingMatchingCard(c95472621.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil)
 			and not Duel.IsExistingMatchingCard(c95472621.chkfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil)
 	end
 	local g=Duel.GetMatchingGroup(c95472621.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil)
