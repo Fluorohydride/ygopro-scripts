@@ -51,9 +51,10 @@ function c8062132.initial_effect(c)
 	--win
 	local e7=Effect.CreateEffect(c)
 	e7:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e7:SetCode(EVENT_CHAIN_SOLVING)
+	e7:SetCode(EVENT_ADJUST)
 	e7:SetRange(LOCATION_MZONE)
 	e7:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_DELAY)
+	e7:SetCondition(c8062132.wincon)
 	e7:SetOperation(c8062132.winop)
 	c:RegisterEffect(e7)
 end
@@ -92,7 +93,15 @@ function c8062132.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	c:AddCounter(0x11,1)
 end
+function c8062132.wincon(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetLabel()==1 then
+		e:SetLabel(0)
+		return false
+	end
+	return true
+end
 function c8062132.winop(e,tp,eg,ep,ev,re,r,rp)
+	e:SetLabel(1)
 	local WIN_REASON_VENNOMINAGA = 0x12
 	local c=e:GetHandler()
 	if c:GetCounter(0x11)==3 then

@@ -19,9 +19,10 @@ function c48995978.initial_effect(c)
 	--win
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_CHAIN_SOLVING)
+	e2:SetCode(EVENT_ADJUST)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_DELAY)
+	e2:SetCondition(c48995978.wincon)
 	e2:SetOperation(c48995978.winop)
 	c:RegisterEffect(e2)
 end
@@ -53,7 +54,15 @@ function c48995978.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:AddCounter(0x2b,1)
 	end
 end
+function c48995978.wincon(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetLabel()==1 then
+		e:SetLabel(0)
+		return false
+	end
+	return true
+end
 function c48995978.winop(e,tp,eg,ep,ev,re,r,rp)
+	e:SetLabel(1)
 	local WIN_REASON_DESTINY_LEO=0x17
 	local c=e:GetHandler()
 	if c:GetCounter(0x2b)==3 then

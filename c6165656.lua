@@ -32,10 +32,9 @@ function c6165656.initial_effect(c)
 	--win
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_DELAY)
 	e4:SetRange(LOCATION_MZONE)
-	e4:SetCode(EVENT_PHASE+PHASE_END)
-	e4:SetCountLimit(1)
+	e4:SetCode(EVENT_ADJUST)
 	e4:SetCondition(c6165656.wincon)
 	e4:SetOperation(c6165656.winop)
 	c:RegisterEffect(e4)
@@ -61,9 +60,17 @@ function c6165656.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Damage(p,d,REASON_EFFECT)
 end
 function c6165656.wincon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp and Duel.GetLP(1-tp)<=2000 and e:GetHandler():GetOverlayCount()==0
+	if e:GetLabel()==1 then
+		e:SetLabel(0)
+		return false
+	end
+	return true
 end
 function c6165656.winop(e,tp,eg,ep,ev,re,r,rp)
+	e:SetLabel(1)
 	local WIN_REASON_DISASTER_LEO=0x18
-	Duel.Win(tp,WIN_REASON_DISASTER_LEO)
+	if Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_END
+		and Duel.GetLP(1-tp)<=2000 and e:GetHandler():GetOverlayCount()==0 then
+		Duel.Win(tp,WIN_REASON_DISASTER_LEO)
+	end
 end
