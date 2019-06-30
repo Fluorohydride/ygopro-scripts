@@ -40,8 +40,9 @@ end
 function c94415058.actcon(e)
 	local tp=e:GetHandlerPlayer()
 	local tc=Duel.GetAttacker()
+	if not tc then return false end
 	if tc:IsControler(1-tp) then tc=Duel.GetAttackTarget() end
-	return tc and tc:IsControler(tp) and tc:IsType(TYPE_PENDULUM)
+	return tc:IsControler(tp) and tc:IsType(TYPE_PENDULUM)
 end
 function c94415058.aclimit(e,re,tp)
 	return re:IsActiveType(TYPE_SPELL) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
