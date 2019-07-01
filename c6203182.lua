@@ -81,14 +81,11 @@ end
 function c6203182.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ec=c:GetPreviousEquipTarget()
-	if not ec then return false end
-	local rc=ec:GetReasonCard()
-	return rc and c:IsReason(REASON_LOST_TARGET) and ec:IsReason(REASON_MATERIAL)
+	return ec and ec:GetReasonCard() and c:IsReason(REASON_LOST_TARGET) and ec:IsReason(REASON_MATERIAL)
 		and (ec:IsReason(REASON_FUSION) or ec:IsReason(REASON_SYNCHRO) or ec:IsReason(REASON_XYZ) or ec:IsReason(REASON_LINK))
-		and (rc:IsSummonType(SUMMON_TYPE_FUSION) or rc:IsSummonType(SUMMON_TYPE_SYNCHRO) or rc:IsSummonType(SUMMON_TYPE_XYZ) or rc:IsSummonType(SUMMON_TYPE_LINK))
 end
 function c6203182.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ec=c:GetPreviousEquipTarget()
+	local ec=e:GetHandler():GetPreviousEquipTarget()
 	local rc=ec:GetReasonCard()
 	if chk==0 then return rc:IsControlerCanBeChanged() end
 	rc:CreateEffectRelation(e)
