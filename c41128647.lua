@@ -24,12 +24,9 @@ function c41128647.initial_effect(c)
 	e4:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e4:SetRange(LOCATION_FZONE)
 	e4:SetTargetRange(0,1)
-	e4:SetValue(c41128647.aclimit)
+	e4:SetValue(1)
 	e4:SetCondition(c41128647.actcon)
 	c:RegisterEffect(e4)
-end
-function c41128647.aclimit(e,re,tp)
-	return not re:GetHandler():IsImmuneToEffect(e)
 end
 function c41128647.cfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0xd8) and c:IsControler(tp)

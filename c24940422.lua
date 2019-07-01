@@ -46,7 +46,7 @@ function c24940422.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c24940422.aclimit(e,re,tp)
-	return not re:GetHandler():IsCode(24940422) and re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and not re:GetHandler():IsImmuneToEffect(e)
+	return not re:GetHandler():IsCode(24940422) and re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
 end
 function c24940422.tdfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToDeck()

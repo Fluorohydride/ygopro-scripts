@@ -35,7 +35,7 @@ function c8529136.activate(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetRange(LOCATION_MZONE)
 			e1:SetTargetRange(0,1)
 			e1:SetCondition(c8529136.actcon)
-			e1:SetValue(c8529136.aclimit)
+			e1:SetValue(1)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			tc:RegisterEffect(e1)
 			local e2=Effect.CreateEffect(c)
@@ -72,9 +72,6 @@ function c8529136.actcon(e)
 	local c=e:GetHandler()
 	return (Duel.GetAttacker()==c or Duel.GetAttackTarget()==c) and c:GetBattleTarget()~=nil
 		and e:GetOwnerPlayer()==e:GetHandlerPlayer()
-end
-function c8529136.aclimit(e,re,tp)
-	return not re:GetHandler():IsImmuneToEffect(e)
 end
 function c8529136.effcon(e)
 	return e:GetOwnerPlayer()==e:GetHandlerPlayer()

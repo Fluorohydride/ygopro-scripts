@@ -50,7 +50,7 @@ function c70917315.limcon(e)
 end
 function c70917315.limval(e,re,rp)
 	local rc=re:GetHandler()
-	return re:IsActiveType(TYPE_SPELL) and not rc:IsSetCard(0xe0) and not rc:IsImmuneToEffect(e)
+	return re:IsActiveType(TYPE_SPELL) and not rc:IsSetCard(0xe0)
 end
 function c70917315.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
