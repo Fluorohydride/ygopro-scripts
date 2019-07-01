@@ -70,7 +70,7 @@ function c26232916.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c26232916.aclimit(e,re,tp)
 	local tc=e:GetLabelObject()
-	return re:GetHandler():IsCode(tc:GetCode()) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:GetHandler():IsCode(tc:GetCode())
 end
 function c26232916.repfilter(c,tp)
 	return c:IsFaceup() and (c:IsType(TYPE_MONSTER) and c:IsSetCard(0x2b) or c:IsSetCard(0x61))
@@ -99,4 +99,3 @@ function c26232916.repop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_REPLACE)
 end
-

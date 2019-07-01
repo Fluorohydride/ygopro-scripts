@@ -40,7 +40,7 @@ function c43845801.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_CANNOT_ACTIVATE)
 		e2:SetTargetRange(0,1)
 		e2:SetLabelObject(tc)
-		e2:SetValue(c43845801.aclimit)
+		e2:SetValue(1)
 		e2:SetCondition(c43845801.actcon)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e2,tp)
@@ -48,7 +48,4 @@ function c43845801.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c43845801.actcon(e)
 	return Duel.GetAttacker()==e:GetLabelObject()
-end
-function c43845801.aclimit(e,re,tp)
-	return not re:GetHandler():IsImmuneToEffect(e)
 end

@@ -65,7 +65,7 @@ function c68431965.lvop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c68431965.aclimit(e,re,tp)
 	local tc=e:GetLabelObject()
-	return re:GetHandler():IsCode(tc:GetCode()) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:GetHandler():IsCode(tc:GetCode())
 end
 function c68431965.sccon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp

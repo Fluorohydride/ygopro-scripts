@@ -25,7 +25,7 @@ function c33022867.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(0,1)
 	e3:SetCondition(c33022867.condition)
-	e3:SetValue(c33022867.aclimit)
+	e3:SetValue(1)
 	c:RegisterEffect(e3)
 end
 function c33022867.fselect(g,tp)
@@ -70,7 +70,4 @@ end
 function c33022867.condition(e)
 	local ph=Duel.GetCurrentPhase()
 	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE
-end
-function c33022867.aclimit(e,re,tp)
-	return not re:GetHandler():IsImmuneToEffect(e)
 end

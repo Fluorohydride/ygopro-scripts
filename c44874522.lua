@@ -70,7 +70,7 @@ function c44874522.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c44874522.aclimit(e,re,tp)
-	return (re:IsHasType(EFFECT_TYPE_ACTIVATE) or re:IsActiveType(TYPE_MONSTER)) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE) or re:IsActiveType(TYPE_MONSTER)
 end
 function c44874522.actcon(e)
 	return Duel.GetAttacker()==e:GetHandler()

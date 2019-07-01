@@ -70,5 +70,5 @@ function c29208536.aclimit(e,re,tp)
 		table.insert(cg,tc:GetCode())
 		tc=g:GetNext()
 	end
-	return re:GetHandler():IsCode(table.unpack(cg)) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:GetHandler():IsCode(table.unpack(cg))
 end

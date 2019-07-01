@@ -60,7 +60,7 @@ function c38601126.eqlimit(e,c)
 end
 function c38601126.aclimit(e,re,tp)
 	local loc=re:GetActivateLocation()
-	return loc==LOCATION_SZONE and not re:IsHasType(EFFECT_TYPE_ACTIVATE) and not re:GetHandler():IsImmuneToEffect(e)
+	return loc==LOCATION_SZONE and not re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c38601126.dacost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
