@@ -29,6 +29,7 @@ function c25924653.initial_effect(c)
 	e3:SetCode(EVENT_LEAVE_FIELD)
 	e3:SetOperation(c25924653.leave)
 	c:RegisterEffect(e3)
+	e1:SetLabelObject(e3)
 end
 function c25924653.spgfilter(c,e,tp)
 	return c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,104,tp,false,false)
@@ -44,38 +45,30 @@ end
 function c25924653.spgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,104,tp,tp,false,false,POS_FACEUP)>0
-		and c:IsFaceup() and c:IsRelateToEffect(e) then
-		c:SetCardTarget(tc)
-		tc:RegisterFlagEffect(25924654,RESET_EVENT+0x53e0000,0,1)
+	if tc and tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,104,tp,tp,false,false,POS_FACEUP) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetCode(EFFECT_DISABLE)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		e1:SetCondition(c25924653.discon)
-		tc:RegisterEffect(e1)
+		tc:RegisterEffect(e1,true)
 		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e2:SetCode(EVENT_CHAIN_SOLVING)
-		e2:SetRange(LOCATION_MZONE)
+		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-		e2:SetOperation(c25924653.disop)
-		c:RegisterEffect(e2)
-	end
-end
-function c25924653.discon(e)
-	return e:GetOwner():IsHasCardTarget(e:GetHandler())
-end
-function c25924653.disop(e,tp,eg,ep,ev,re,r,rp)
-	if re:GetHandler():GetFlagEffect(25924654)~=0 then
-		Duel.NegateEffect(ev)
+		tc:RegisterEffect(e2,true)
+		Duel.SpecialSummonComplete()
+		if c:IsRelateToEffect(e) then
+			c:SetCardTarget(tc)
+			e:GetLabelObject():SetLabelObject(tc)
+			c:CreateRelation(tc,RESET_EVENT+0x5020000)
+			tc:CreateRelation(c,RESET_EVENT+0x5fe0000)
+		end
 	end
 end
 function c25924653.leave(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local tc=c:GetFirstCardTarget()
-	if tc and tc:IsLocation(LOCATION_MZONE) and tc:GetFlagEffect(25924654)~=0 then
+	local tc=e:GetLabelObject()
+	if tc and c:IsRelateToCard(tc) and tc:IsRelateToCard(c) then
 		Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
 	end
 end
@@ -101,7 +94,7 @@ function c25924653.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c25924653.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc then
-		Duel.SpecialSummon(tc,104,tp,tp,false,false,POS_FACEUP)		
+		Duel.SpecialSummon(tc,104,tp,tp,false,false,POS_FACEUP)
 		tc:RegisterFlagEffect(tc:GetOriginalCode(),RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,0)
 	end
 end
