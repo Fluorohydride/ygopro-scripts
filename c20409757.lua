@@ -49,6 +49,7 @@ end
 function c20409757.actcon(e)
 	local tp=e:GetHandlerPlayer()
 	local tc=Duel.GetAttacker()
+	if not tc then return false end
 	if tc:IsControler(1-tp) then tc=Duel.GetAttackTarget() end
 	return tc and tc:IsControler(tp) and tc:IsType(TYPE_PENDULUM)
 end
