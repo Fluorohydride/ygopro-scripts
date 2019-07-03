@@ -45,15 +45,16 @@ function c62541668.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)
 end
 function c62541668.rmop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(c62541668.rmfilter,tp,0,LOCATION_MZONE,nil)
 	if g:GetCount()>0 then
 		Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 		local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_REMOVED)
-		if og:GetCount()>0 then
+		if og:GetCount()>0 and c:IsRelateToEffect(e) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 			local sg=og:Select(tp,1,1,nil)
-			Duel.Overlay(e:GetHandler(),sg)
+			Duel.Overlay(c,sg)
 		end
 	end
 end
