@@ -1,5 +1,6 @@
 --ラーの翼神竜－球体形
 function c10000080.initial_effect(c)
+	Duel.EnableGlobalFlag(GLOBALFLAG_BRAINWASHING_CHECK)
 	--summon with 3 tribute
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(10000080,0))
@@ -110,13 +111,28 @@ function c10000080.retcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c10000080.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetOwner()
-	c:ResetEffect(EFFECT_SET_CONTROL,RESET_CODE)
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SET_CONTROL)
-	e1:SetValue(c:GetOwner())
-	e1:SetReset(RESET_EVENT+0xec0000)
-	c:RegisterEffect(e1)
+	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_REMOVE_BRAINWASHING)
+	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+	e1:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+	e1:SetLabelObject(c)
+	e1:SetTarget(c10000080.rettg)
+	Duel.RegisterEffect(e1,tp)
+	--reset
+	local e2=Effect.CreateEffect(e:GetHandler())
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetCode(EVENT_ADJUST)
+	e2:SetLabelObject(e1)
+	e2:SetOperation(c10000080.reset)
+	Duel.RegisterEffect(e2,tp)
+end
+function c10000080.rettg(e,c)
+	return c==e:GetLabelObject() and c:GetFlagEffect(10000080)~=0
+end
+function c10000080.reset(e,tp,eg,ep,ev,re,r,rp)
+	e:GetLabelObject():Reset()
+	e:Reset()
 end
 function c10000080.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end
