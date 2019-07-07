@@ -32,7 +32,7 @@ function c72883039.initial_effect(c)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e4:SetTargetRange(1,1)
-	e4:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x4a))
+	e4:SetTarget(c72883039.tdtg)
 	c:RegisterEffect(e4)
 	--spsummon
 	local e5=Effect.CreateEffect(c)
@@ -67,6 +67,9 @@ function c72883039.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
 		c72883039.spcost(e,tp,eg,ep,ev,re,r,rp,1)
 		c72883039.sptg(e,tp,eg,ep,ev,re,r,rp,1)
 	end
+end
+function c72883039.tdtg(e,c)
+	return c:IsSetCard(0x4a) and c:IsLocation(LOCATION_MZONE)
 end
 function c72883039.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
