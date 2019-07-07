@@ -10,8 +10,12 @@ function c43422537.initial_effect(c)
 end
 function c43422537.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local te=Duel.IsPlayerAffectedByEffect(tp,EFFECT_SET_SUMMON_COUNT_LIMIT)
-		return te==nil or te:GetValue()<2
+		local ct=0
+		local ce={Duel.IsPlayerAffectedByEffect(tp,EFFECT_SET_SUMMON_COUNT_LIMIT)}
+		for _,te in ipairs(ce) do
+			ct=math.max(ct,te:GetValue())
+		end
+		return ct<2
 	end
 end
 function c43422537.activate(e,tp,eg,ep,ev,re,r,rp)
