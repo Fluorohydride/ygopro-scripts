@@ -47,6 +47,7 @@ function c23002292.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ConfirmCards(tp,sg)
 		end
 	end
+	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_ACTIVATE)

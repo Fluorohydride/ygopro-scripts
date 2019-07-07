@@ -42,5 +42,7 @@ function c7092142.operation(e,tp,eg,ep,ev,re,r,rp)
 	local sg=eg:Filter(c7092142.spfilter2,nil,e,tp)
 	if ft<sg:GetCount() then return end
 	local ct=Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
+	if ct==0 then return end
+	Duel.BreakEffect()
 	Duel.Damage(1-tp,ct*500,REASON_EFFECT)
 end

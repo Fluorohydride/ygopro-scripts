@@ -60,7 +60,7 @@ function c13529466.econ2(e)
 	return e:GetHandler():GetFlagEffect(13529467)~=0
 end
 function c13529466.elimit(e,re,tp)
-	return re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:IsActiveType(TYPE_MONSTER)
 end
 function c13529466.atkcon(e)
 	return e:GetHandler():GetFlagEffect(13529468)~=0

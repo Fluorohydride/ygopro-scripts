@@ -12,7 +12,7 @@ function c1102515.initial_effect(c)
 	e1:SetOperation(c1102515.operation)
 	c:RegisterEffect(e1)
 end
-c1102515.lvdncount=1
+c1102515.lvup={74713516}
 c1102515.lvdn={74713516}
 function c1102515.condition(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1 then e:SetLabel(2)

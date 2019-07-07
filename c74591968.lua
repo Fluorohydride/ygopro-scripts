@@ -36,9 +36,7 @@ function c74591968.initial_effect(c)
 	e4:SetCondition(c74591968.sumcon)
 	c:RegisterEffect(e4) 
 end
-c74591968.lvupcount=1
 c74591968.lvup={60482781}
-c74591968.lvdncount=1
 c74591968.lvdn={47507260}
 function c74591968.bdop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterFlagEffect(74591968,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)

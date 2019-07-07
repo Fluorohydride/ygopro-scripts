@@ -12,7 +12,7 @@ function c45349196.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetTargetRange(0,1)
 	e1:SetCondition(c45349196.accon)
-	e1:SetValue(c45349196.aclimit)
+	e1:SetValue(1)
 	c:RegisterEffect(e1)
 	--damage
 	local e2=Effect.CreateEffect(c)
@@ -36,9 +36,6 @@ function c45349196.mfilter2(c)
 end
 function c45349196.accon(e)
 	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()
-end
-function c45349196.aclimit(e,re,tp)
-	return not re:GetHandler():IsImmuneToEffect(e)
 end
 function c45349196.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

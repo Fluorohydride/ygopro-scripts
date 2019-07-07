@@ -41,7 +41,7 @@ function c60508057.damop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c60508057.actlimit(e,re,rp)
 	local rc=re:GetHandler()
-	return re:IsActiveType(TYPE_MONSTER) and not rc:IsSetCard(0xba) and not rc:IsImmuneToEffect(e)
+	return re:IsActiveType(TYPE_MONSTER) and not rc:IsSetCard(0xba)
 end
 function c60508057.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE)

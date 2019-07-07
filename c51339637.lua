@@ -23,6 +23,21 @@ function c51339637.initial_effect(c)
 	e2:SetTarget(c51339637.settg)
 	e2:SetOperation(c51339637.setop)
 	c:RegisterEffect(e2)
+	if not c51339637.global_check then
+		c51339637.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD)
+		ge1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE)
+		ge1:SetCode(EFFECT_MATERIAL_CHECK)
+		ge1:SetValue(c51339637.valcheck)
+		Duel.RegisterEffect(ge1,0)
+	end
+end
+function c51339637.valcheck(e,c)
+	local g=c:GetMaterial()
+	if g:IsExists(Card.IsLinkCode,1,nil,c:GetCode()) then
+		c:RegisterFlagEffect(51339637,RESET_EVENT+0x4fe0000,0,1)
+	end
 end
 function c51339637.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x119) and c:IsType(TYPE_LINK)
@@ -45,9 +60,7 @@ function c51339637.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c51339637.setfilter(c,tp)
-	if not c:IsSummonType(SUMMON_TYPE_LINK) then return false end
-	local mat=c:GetMaterial()
-	return c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0x119) and mat:IsExists(Card.IsLinkCode,1,nil,c:GetCode())
+	return c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0x119) and c:IsSummonType(SUMMON_TYPE_LINK) and c:GetFlagEffect(51339637)~=0
 end
 function c51339637.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c51339637.setfilter,1,nil,tp)

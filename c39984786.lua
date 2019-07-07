@@ -35,7 +35,7 @@ function c39984786.valcheck(e,c)
 	end
 end
 function c39984786.filter(c,e,tp)
-	return c:GetFlagEffect(39984786)~=0 and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:GetFlagEffect(39984786)~=0 and c:IsCanBeEffectTarget(e) and c:IsLocation(LOCATION_GRAVE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c39984786.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return e:GetHandler():GetMaterial():IsContains(chkc) and c39984786.filter(chkc,e,tp) end

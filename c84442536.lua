@@ -56,11 +56,9 @@ function c84442536.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c84442536.repop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetType()==TYPE_SPELL or c:GetType()==TYPE_TRAP then
-		c:CancelToGrave(false)
-	end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
-		Duel.Destroy(tc,REASON_EFFECT)
+	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0
+		and c:IsType(TYPE_SPELL+TYPE_TRAP) then
+		c:CancelToGrave(false)
 	end
 end

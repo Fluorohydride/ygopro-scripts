@@ -41,7 +41,7 @@ function c58551308.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	elseif g1:GetCount()>0 then
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g1,1,0,0)
 	elseif g2:GetCount()>0 then
-		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g2,1,1,0)
+		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g2,1,0x10,0)
 	end
 end
 function c58551308.spop(e,tp,eg,ep,ev,re,r,rp)

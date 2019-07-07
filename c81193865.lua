@@ -24,7 +24,7 @@ function c81193865.initial_effect(c)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetTargetRange(0,1)
 	e3:SetCondition(c81193865.actcon)
-	e3:SetValue(c81193865.actlimit)
+	e3:SetValue(1)
 	c:RegisterEffect(e3)
 	--chain attack
 	local e4=Effect.CreateEffect(c)
@@ -86,9 +86,6 @@ end
 function c81193865.actcon(e)
 	local ph=Duel.GetCurrentPhase()
 	return Duel.GetTurnPlayer()==e:GetHandler():GetControler() and ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE
-end
-function c81193865.actlimit(e,re,tp)
-	return not re:GetHandler():IsImmuneToEffect(e)
 end
 function c81193865.cacon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker()==e:GetHandler():GetEquipTarget() and Duel.GetAttackTarget()~=nil

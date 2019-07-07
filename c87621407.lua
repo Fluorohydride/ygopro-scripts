@@ -16,10 +16,14 @@ function c87621407.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local ct=Duel.GetMatchingGroupCount(c87621407.filter,tp,LOCATION_ONFIELD,0,nil)
 	Duel.SetTargetPlayer(tp)
-	Duel.SetTargetParam(ct+1)
+	Duel.SetTargetParam(1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,ct+1)
 end
 function c87621407.operation(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
-	Duel.Draw(p,d,REASON_EFFECT)
+	local ct=Duel.GetMatchingGroupCount(c87621407.filter,tp,LOCATION_ONFIELD,0,nil)
+	if Duel.Draw(p,d,REASON_EFFECT)~=0 and ct>0 then
+		Duel.BreakEffect()
+		Duel.Draw(p,ct,REASON_EFFECT)
+	end
 end

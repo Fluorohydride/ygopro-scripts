@@ -37,6 +37,21 @@ function c88540324.initial_effect(c)
 	e6:SetCode(EFFECT_EXTRA_ATTACK_MONSTER)
 	e6:SetValue(c88540324.atkval)
 	c:RegisterEffect(e6)
+	if not c88540324.global_check then
+		c88540324.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD)
+		ge1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE)
+		ge1:SetCode(EFFECT_MATERIAL_CHECK)
+		ge1:SetValue(c88540324.valcheck)
+		Duel.RegisterEffect(ge1,0)
+	end
+end
+function c88540324.valcheck(e,c)
+	local g=c:GetMaterial()
+	if g:IsExists(Card.IsLinkCode,1,nil,c:GetCode()) then
+		c:RegisterFlagEffect(88540324,RESET_EVENT+0x4fe0000,0,1)
+	end
 end
 function c88540324.eqlimit(e,c)
 	return c:IsSetCard(0x119)
@@ -61,11 +76,8 @@ function c88540324.atkval(e,c)
 	local c=e:GetHandler()
 	local tc=c:GetEquipTarget()
 	local ct=0
-	if tc:IsControler(e:GetHandlerPlayer()) and tc:IsSetCard(0x119) and tc:IsSummonType(SUMMON_TYPE_LINK) then
-		local mat=tc:GetMaterial()
-		if mat:IsExists(Card.IsLinkCode,1,nil,tc:GetCode()) then
-			ct=tc:GetLink()
-		end
+	if tc:IsControler(e:GetHandlerPlayer()) and tc:IsSetCard(0x119) and tc:IsSummonType(SUMMON_TYPE_LINK) and tc:GetFlagEffect(88540324)~=0 then
+		ct=tc:GetLink()
 	end
 	return math.max(0,ct-1)
 end

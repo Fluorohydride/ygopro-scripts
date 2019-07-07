@@ -9,14 +9,27 @@ function c52155219.initial_effect(c)
 	e1:SetTarget(c52155219.target)
 	e1:SetOperation(c52155219.activate)
 	c:RegisterEffect(e1)
+	if not c52155219.global_check then
+		c52155219.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD)
+		ge1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE)
+		ge1:SetCode(EFFECT_MATERIAL_CHECK)
+		ge1:SetValue(c52155219.valcheck)
+		Duel.RegisterEffect(ge1,0)
+	end
+end
+function c52155219.valcheck(e,c)
+	local g=c:GetMaterial()
+	if g:IsExists(Card.IsLinkCode,1,nil,c:GetCode()) then
+		c:RegisterFlagEffect(52155219,RESET_EVENT+0x4fe0000,0,1)
+	end
 end
 function c52155219.thfilter(c)
 	return c:IsSetCard(0x119) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c52155219.immfilter(c)
-	if not c:IsSummonType(SUMMON_TYPE_LINK) then return false end
-	local mat=c:GetMaterial()
-	return c:IsFaceup() and c:IsSetCard(0x119) and mat:IsExists(Card.IsLinkCode,1,nil,c:GetCode())
+	return c:IsFaceup() and c:IsSetCard(0x119) and c:IsSummonType(SUMMON_TYPE_LINK) and c:GetFlagEffect(52155219)~=0
 end
 function c52155219.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c52155219.immfilter(chkc) end

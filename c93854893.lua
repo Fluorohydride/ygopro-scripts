@@ -47,7 +47,6 @@ function c93854893.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local op=Duel.SelectOption(tp,table.unpack(ops))+1
 	local sel=opval[op]
 	e:SetLabel(sel)
-	Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(93854893,sel+1))
 	if sel==0 then
 		e:SetCategory(CATEGORY_TOGRAVE)
 		Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,1-tp,LOCATION_ONFIELD)

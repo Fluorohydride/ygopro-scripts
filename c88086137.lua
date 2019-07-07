@@ -13,14 +13,18 @@ end
 function c88086137.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local loc,seq,p=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION,CHAININFO_TRIGGERING_SEQUENCE,CHAININFO_TRIGGERING_CONTROLER)
-	if loc&LOCATION_ONFIELD==0 then return false end
-	if loc==LOCATION_SZONE then
+	local col=0
+	if loc&LOCATION_MZONE~=0 then
+		col=aux.MZoneSequence(seq)
+	elseif loc&LOCATION_SZONE~=0 then
 		if seq>4 then return false end
-		seq=seq+8
+		col=aux.SZoneSequence(seq)
+	else
+		return false
 	end
-	if p==1-tp then seq=seq+16 end
-	return bit.extract(c:GetColumnZone(LOCATION_ONFIELD),seq)~=0
-		and (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE)) and Duel.IsChainNegatable(ev)
+	if p==1-tp then col=4-col end
+	return aux.GetColumn(c,tp)==col	and (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE))
+		and Duel.IsChainNegatable(ev)
 end
 function c88086137.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

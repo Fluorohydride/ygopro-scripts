@@ -6,7 +6,6 @@ function c26302107.initial_effect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_HANDES+CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
-	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCost(c26302107.spcost)
 	e1:SetTarget(c26302107.sptg)
 	e1:SetOperation(c26302107.spop)
@@ -15,48 +14,44 @@ function c26302107.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(26302107,1))
 	e2:SetCategory(CATEGORY_ATKCHANGE)
-	e2:SetProperty(EFFECT_FLAG_DELAY)
+	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCode(EVENT_TO_GRAVE)
+	e2:SetCode(EVENT_DISCARD)
 	e2:SetCountLimit(1,26302107)
-	e2:SetCondition(c26302107.atkcon)
 	e2:SetTarget(c26302107.atktg)
 	e2:SetOperation(c26302107.atkop)
 	c:RegisterEffect(e2)
-	local e3=e2:Clone()
-	e3:SetCode(EVENT_REMOVE)
-	c:RegisterEffect(e3)
 end
 function c26302107.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	if chk==0 then return not c:IsPublic() and c:GetFlagEffect(26302107)==0 end
-	c:RegisterFlagEffect(26302107,RESET_CHAIN,0,1)
+	if chk==0 then return not e:GetHandler():IsPublic() end
 end
 function c26302107.spfilter(c,e,tp)
 	return c:IsCode(26302107) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c26302107.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c26302107.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) and Duel.IsPlayerCanDraw(tp) end
+		and Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil)
+		and Duel.IsExistingMatchingCard(c26302107.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) and Duel.IsPlayerCanDraw(tp,1) end
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
 end
 function c26302107.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 	if #g<1 then return end
-	local tc=g:RandomSelect(1-tp,1)
-	Duel.BreakEffect()
-	Duel.SendtoGrave(tc,REASON_EFFECT+REASON_DISCARD)
-	if not tc:GetFirst():IsCode(26302107) then
+	local tc=g:RandomSelect(1-tp,1):GetFirst()
+	if tc and Duel.SendtoGrave(tc,REASON_DISCARD+REASON_EFFECT)~=0 and not tc:IsCode(26302107)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
+		local spg=Duel.GetMatchingGroup(c26302107.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
+		if spg:GetCount()<=0 then return end
+		local sg=spg:GetFirst()
+		if spg:GetCount()~=1 then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+			sg=spg:Select(tp,1,1,nil)
+		end
 		Duel.BreakEffect()
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sc=Duel.SelectMatchingCard(tp,c26302107.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
-		if #sc>0 and Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP) then
+		if Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)~=0 then
 			Duel.Draw(tp,1,REASON_EFFECT)
 		end
 	end
-end
-function c26302107.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousLocation()==LOCATION_HAND and (r&REASON_DISCARD)~=0
 end
 function c26302107.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end

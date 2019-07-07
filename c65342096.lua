@@ -1,6 +1,6 @@
 --魔法都市の実験施設
 function c65342096.initial_effect(c)
-	c:EnableCounterPermit(0x1,LOCATION_SZONE)
+	c:EnableCounterPermit(0x1)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -57,8 +57,8 @@ function c65342096.spcon(e,tp,eg,ep,ev,re,r,rp)
 		or c65342096.spconcheck(Duel.GetAttackTarget(),tp))
 end
 function c65342096.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsCanRemoveCounter(tp,LOCATION_ONFIELD,0,0x1,6,REASON_COST) end
-	Duel.RemoveCounter(tp,LOCATION_ONFIELD,0,0x1,6,REASON_COST)
+	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x1,6,REASON_COST) end
+	Duel.RemoveCounter(tp,1,0,0x1,6,REASON_COST)
 end
 function c65342096.spfilter(c,e,tp)
 	return c:IsRace(RACE_SPELLCASTER) and c:IsLevelAbove(7) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

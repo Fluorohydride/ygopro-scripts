@@ -18,7 +18,7 @@ function c82705573.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c82705573.filter(c,tp)
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
 		and c:GetControler()==tp and c:IsReason(REASON_DESTROY) and c:IsAttribute(ATTRIBUTE_FIRE)
 end
 function c82705573.condition(e,tp,eg,ep,ev,re,r,rp)

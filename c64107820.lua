@@ -19,7 +19,7 @@ function c64107820.initial_effect(c)
 	e1:SetLabelObject(e2)
 end
 function c64107820.cfilter(c)
-	return c:IsRace(RACE_PSYCHO) and c:IsAbleToRemoveAsCost()
+	return c:IsRace(RACE_PSYCHO) and c:IsLevelAbove(1) and c:IsAbleToRemoveAsCost()
 end
 function c64107820.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c64107820.cfilter,tp,LOCATION_GRAVE,0,1,nil) end

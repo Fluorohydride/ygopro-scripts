@@ -42,6 +42,9 @@ end
 function c94212438.plcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and e:GetHandler():GetFlagEffect(94212438)<4
 end
+function c94212438.plfilter(c,id)
+	return c:IsCode(id) and not c:IsForbidden()
+end
 function c94212438.plop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
@@ -51,7 +54,7 @@ function c94212438.plop(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,id,0,0x11,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP,tp,181)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 and not res then return end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(94212438,1))
-	local g=Duel.SelectMatchingCard(tp,Card.IsCode,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,id)
+	local g=Duel.SelectMatchingCard(tp,c94212438.plfilter,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,id)
 	local tc=g:GetFirst()
 	if tc and res and Duel.SelectYesNo(tp,aux.Stringid(16625614,0)) then
 		tc:AddMonsterAttribute(TYPE_NORMAL,ATTRIBUTE_DARK,RACE_FIEND,1,0,0)

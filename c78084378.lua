@@ -9,6 +9,7 @@ function c78084378.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
+	e1:SetCondition(c78084378.con)
 	e1:SetCost(c78084378.cost)
 	e1:SetOperation(c78084378.operation)
 	c:RegisterEffect(e1)
@@ -24,6 +25,9 @@ function c78084378.initial_effect(c)
 	e2:SetTarget(c78084378.thtg)
 	e2:SetOperation(c78084378.thop)
 	c:RegisterEffect(e2)
+end
+function c78084378.con(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.IsAbleToEnterBP()
 end
 function c78084378.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsRace,1,nil,RACE_CYBERSE) end

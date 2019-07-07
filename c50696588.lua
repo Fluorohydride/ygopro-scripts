@@ -29,7 +29,7 @@ function c50696588.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_MUST_USE_MZONE)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_NO_TURN_RESET)
 	e1:SetTargetRange(0,1)
-	e1:SetValue(flag)
+	e1:SetValue(flag | 0x600060)
 	e1:SetCountLimit(1)
 	Duel.RegisterEffect(e1,tp)
 end

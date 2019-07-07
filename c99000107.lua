@@ -25,7 +25,7 @@ function c99000107.initial_effect(c)
 end
 function c99000107.aclimit(e,re,tp)
 	local tc=re:GetHandler()
-	return tc:IsLocation(LOCATION_MZONE) and tc:IsFaceup() and tc:IsAttackPos() and re:IsActiveType(TYPE_MONSTER) and not tc:IsImmuneToEffect(e)
+	return tc:IsLocation(LOCATION_MZONE) and tc:IsFaceup() and tc:IsAttackPos() and re:IsActiveType(TYPE_MONSTER)
 end
 function c99000107.tgcon(e)
 	return e:GetHandler():IsDefensePos()

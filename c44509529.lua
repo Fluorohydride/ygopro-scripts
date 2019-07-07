@@ -10,7 +10,7 @@ function c44509529.initial_effect(c)
 	e1:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(0,1)
-	e1:SetValue(c44509529.aclimit)
+	e1:SetValue(1)
 	e1:SetCondition(c44509529.actcon)
 	c:RegisterEffect(e1)
 	--spsummon
@@ -28,9 +28,6 @@ function c44509529.initial_effect(c)
 	e2:SetTarget(c44509529.sptg)
 	e2:SetOperation(c44509529.spop)
 	c:RegisterEffect(e2)
-end
-function c44509529.aclimit(e,re,tp)
-	return not re:GetHandler():IsImmuneToEffect(e)
 end
 function c44509529.actcon(e)
 	local a=Duel.GetAttacker()

@@ -18,6 +18,7 @@ function c76532077.initial_effect(c)
 	e2:SetTarget(c76532077.destg)
 	e2:SetOperation(c76532077.desop)
 	c:RegisterEffect(e2)
+	--self destroy
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
 	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
@@ -45,6 +46,7 @@ function c76532077.desop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(tg,REASON_EFFECT)
 	end
 end
-function c76532077.descon2(e,tp,eg,ep,ev,re,r,rp)
+function c76532077.descon2(e)
+	local tp=e:GetHandlerPlayer()
 	return tp==Duel.GetTurnPlayer() and Duel.GetCurrentPhase()==PHASE_STANDBY and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)<=4
 end

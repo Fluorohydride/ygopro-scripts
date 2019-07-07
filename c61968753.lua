@@ -11,7 +11,7 @@ function c61968753.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c61968753.filter1(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition() and c:IsCode(79979666)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition() and c:IsCode(79979666) and c:IsReleasableByEffect()
 end
 function c61968753.filter2(c)
 	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition()
@@ -39,14 +39,17 @@ function c61968753.pfilter(c,e)
 end
 function c61968753.posop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c61968753.pfilter,nil,e)
-	if g:GetCount()==2 then
-		Duel.ChangePosition(g,POS_FACEUP_DEFENSE)
+	if g:GetCount()==2 and Duel.ChangePosition(g,POS_FACEUP_DEFENSE)~=0 then
 		local tc=e:GetLabelObject()
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)>-1 and not tc:IsImmuneToEffect(e) and tc:IsReleasable() then
+		if not tc:IsImmuneToEffect(e) and tc:IsReleasableByEffect() then
+			Duel.BreakEffect()
+			if Duel.Release(tc,REASON_EFFECT)==0 or Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=Duel.SelectMatchingCard(tp,c61968753.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
-			Duel.Release(tc,REASON_EFFECT)
-			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
+			if sg:GetCount()>0 then
+				Duel.BreakEffect()
+				Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
+			end
 		end
 	end
 end

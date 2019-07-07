@@ -1,5 +1,6 @@
 --トリック・ボックス
 function c93983867.initial_effect(c)
+	Duel.EnableGlobalFlag(GLOBALFLAG_BRAINWASHING_CHECK)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_CONTROL+CATEGORY_SPECIAL_SUMMON)
@@ -39,25 +40,53 @@ function c93983867.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,c93983867.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 		local tc=g:GetFirst()
 		if tc and Duel.SpecialSummon(tc,0,tp,1-tp,false,false,POS_FACEUP)~=0 then
+			tc:RegisterFlagEffect(93983867,RESET_EVENT+RESETS_STANDARD,0,1)
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 			e1:SetCode(EVENT_PHASE+PHASE_END)
-			e1:SetRange(LOCATION_MZONE)
-			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+			e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 			e1:SetCountLimit(1)
+			e1:SetLabelObject(tc)
+			e1:SetCondition(c93983867.retcon)
 			e1:SetOperation(c93983867.retop)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-			tc:RegisterEffect(e1)
+			Duel.RegisterEffect(e1,tp)
 		end
 	end
 end
+function c93983867.retcon(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	if tc:GetFlagEffect(93983867)~=0 then
+		return true
+	else
+		e:Reset()
+		return false
+	end
+end
 function c93983867.retop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	c:ResetEffect(EFFECT_SET_CONTROL,RESET_CODE)
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SET_CONTROL)
-	e1:SetValue(c:GetOwner())
-	e1:SetReset(RESET_EVENT+0xec0000)
-	c:RegisterEffect(e1)
+	local tc=e:GetLabelObject()
+	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_REMOVE_BRAINWASHING)
+	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+	e1:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+	e1:SetLabelObject(tc)
+	e1:SetTarget(c93983867.rettg)
+	Duel.RegisterEffect(e1,tp)
+	--reset
+	local e2=Effect.CreateEffect(e:GetHandler())
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetCode(EVENT_ADJUST)
+	e2:SetLabelObject(e1)
+	e2:SetOperation(c93983867.reset)
+	Duel.RegisterEffect(e2,tp)
+end
+function c93983867.rettg(e,c)
+	return c==e:GetLabelObject() and c:GetFlagEffect(93983867)~=0
+end
+function c93983867.reset(e,tp,eg,ep,ev,re,r,rp)
+	local e1=e:GetLabelObject()
+	local tc=e1:GetLabelObject()
+	tc:ResetFlagEffect(93983867)
+	e1:Reset()
+	e:Reset()
 end

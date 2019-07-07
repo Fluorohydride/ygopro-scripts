@@ -1,4 +1,4 @@
---予言通帳
+--予見通帳
 function c56256517.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -32,6 +32,7 @@ function c56256517.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterFlagEffect(56256517,RESET_EVENT+RESETS_STANDARD,0,1,fid)
 		tc=g:GetNext()
 	end
+	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)

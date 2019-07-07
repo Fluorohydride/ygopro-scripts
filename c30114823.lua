@@ -64,7 +64,8 @@ function c30114823.tdop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c30114823.tdfilter,tp,LOCATION_DECK,0,1,1,nil,e:GetLabel())
 	local tc=g:GetFirst()
-	if tc and tc:IsAbleToGrave() and (e:GetLabel()==0 or not tc:IsAbleToHand() or Duel.SelectOption(tp,1191,1190)==0) then
+	if not tc then return end
+	if tc:IsAbleToGrave() and (e:GetLabel()==0 or not tc:IsAbleToHand() or Duel.SelectOption(tp,1191,1190)==0) then
 		Duel.SendtoGrave(tc,REASON_EFFECT)
 	else
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)

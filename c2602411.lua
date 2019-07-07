@@ -63,7 +63,7 @@ function c2602411.eqlimit(e,c)
 end
 function c2602411.aclimit(e,re,tp)
 	local loc=re:GetActivateLocation()
-	return loc==LOCATION_GRAVE and re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)
+	return loc==LOCATION_GRAVE and re:IsActiveType(TYPE_MONSTER)
 end
 function c2602411.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

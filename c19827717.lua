@@ -18,12 +18,10 @@ end
 function c19827717.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetDescription(aux.Stringid(19827717,0))
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_PHASE+PHASE_END)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCountLimit(1)
 	e1:SetCondition(c19827717.retcon)
-	e1:SetTarget(c19827717.rettg)
 	e1:SetOperation(c19827717.retop)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
@@ -33,20 +31,13 @@ function c19827717.filter(c,tid)
 end
 function c19827717.retcon(e,tp,eg,ep,ev,re,r,rp)
 	local tid=Duel.GetTurnCount()
-	return Duel.IsExistingMatchingCard(c19827717.filter,tp,LOCATION_GRAVE,0,1,nil,tid)
-end
-function c19827717.rettg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local tid=Duel.GetTurnCount()
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c19827717.filter(chkc,tid) end
-	if chk==0 then return Duel.IsExistingTarget(c19827717.filter,tp,LOCATION_GRAVE,0,1,nil,tid) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectTarget(tp,c19827717.filter,tp,LOCATION_GRAVE,0,1,1,nil,tid)
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
+	return Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c19827717.filter),tp,LOCATION_GRAVE,0,1,nil,tid)
 end
 function c19827717.retop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
-		Duel.SendtoHand(tc,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,tc)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c19827717.filter),tp,LOCATION_GRAVE,0,1,1,nil,tid)
+	if g:GetCount()>0 then
+		Duel.SendtoHand(g,nil,REASON_EFFECT)
+		Duel.ConfirmCards(1-tp,g)
 	end
 end

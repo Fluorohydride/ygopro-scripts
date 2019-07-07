@@ -13,12 +13,13 @@ function c40817915.initial_effect(c)
 	--unsynchroable
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
 	e2:SetValue(1)
 	c:RegisterEffect(e2)
 end
 function c40817915.ofilter(c)
-	return c:GetOverlayCount()~=0
+	return c:IsFaceup() and c:GetOverlayCount()~=0
 end
 function c40817915.spfilter(c,e,tp)
 	return c:IsCode(40817915) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

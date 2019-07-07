@@ -12,7 +12,7 @@ function c58139128.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetCode(EVENT_CHAIN_ACTIVATING)
+	e2:SetCode(EVENT_CHAIN_SOLVING)
 	e2:SetOperation(c58139128.disop)
 	c:RegisterEffect(e2)
 	--cannot activate

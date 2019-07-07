@@ -31,6 +31,7 @@ function c43455065.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.DiscardHand(tp,nil,ct,ct,REASON_EFFECT+REASON_DISCARD)
 		end
 	end
+	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
 	local rct=1
 	if Duel.GetTurnPlayer()~=tp then rct=2 end
 	local c=e:GetHandler()

@@ -25,6 +25,5 @@ function c24707869.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if tg:GetCount()~=2 then return end
 	Duel.SendtoGrave(tg,REASON_EFFECT+REASON_RETURN)
-	Duel.BreakEffect()
 	Duel.Draw(tp,1,REASON_EFFECT)
 end

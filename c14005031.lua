@@ -3,7 +3,7 @@ function c14005031.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CONTINUOUS_TARGET)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e1:SetTarget(c14005031.target)
@@ -47,7 +47,6 @@ function c14005031.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EVENT_PHASE+PHASE_END)
 		e1:SetRange(LOCATION_SZONE)
 		e1:SetCountLimit(1)		
-		e1:SetCondition(c14005031.matcon)
 		e1:SetOperation(c14005031.matop)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
@@ -65,9 +64,6 @@ function c14005031.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c14005031.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
-end
-function c14005031.matcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFirstCardTarget()~=nil
 end
 function c14005031.matop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

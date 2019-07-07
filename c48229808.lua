@@ -21,9 +21,7 @@ function c48229808.initial_effect(c)
 	e2:SetOperation(c48229808.operation)
 	c:RegisterEffect(e2)
 end
-c48229808.lvupcount=1
 c48229808.lvup={11224103}
-c48229808.lvdncount=2
 c48229808.lvdn={75830094,11224103}
 function c48229808.condition(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and re:IsHasType(EFFECT_TYPE_ACTIVATE)

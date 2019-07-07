@@ -23,7 +23,7 @@ function c34010534.initial_effect(c)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetTargetRange(0,1)
 	e3:SetCondition(c34010534.actcon)
-	e3:SetValue(c34010534.aclimit)
+	e3:SetValue(1)
 	c:RegisterEffect(e3)
 end
 function c34010534.sumfilter(c)
@@ -60,7 +60,4 @@ function c34010534.actcon(e)
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
 	return (a and c34010534.cfilter(a,tp)) or (d and c34010534.cfilter(d,tp))
-end
-function c34010534.aclimit(e,re,tp)
-	return not re:GetHandler():IsImmuneToEffect(e)
 end

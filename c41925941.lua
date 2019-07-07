@@ -6,7 +6,7 @@ function c41925941.initial_effect(c)
 	e1:SetCategory(CATEGORY_ATKCHANGE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
+	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCondition(c41925941.condition)
 	e1:SetCost(c41925941.cost)
 	e1:SetTarget(c41925941.target)
@@ -18,7 +18,7 @@ function c41925941.condition(e,tp,eg,ep,ev,re,r,rp)
 	if phase~=PHASE_DAMAGE or Duel.IsDamageCalculated() then return false end
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	if a:IsControler(tp) then 
+	if a:IsControler(tp) then
 		e:SetLabelObject(d)
 		return a:IsFaceup() and a:IsRace(RACE_FIEND) and a:IsRelateToBattle()
 			and d and d:IsFaceup() and d:IsRelateToBattle()
@@ -46,10 +46,9 @@ function c41925941.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,cost)
 	e:SetLabel(cost)
 end
-function c41925941.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c41925941.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetLabelObject()
-	if chkc then return chkc==tc end
-	if chk==0 then return tc:IsCanBeEffectTarget(e) end
+	if chk==0 then return true end
 	Duel.SetTargetCard(tc)
 end
 function c41925941.operation(e,tp,eg,ep,ev,re,r,rp,chk)

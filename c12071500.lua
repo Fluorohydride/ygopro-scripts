@@ -9,6 +9,7 @@ function c12071500.initial_effect(c)
 	e1:SetOperation(c12071500.activate)
 	c:RegisterEffect(e1)
 end
+c12071500.card_code_list={94820406}
 function c12071500.filter0(c)
 	return c:IsLocation(LOCATION_HAND) and c:IsAbleToRemove()
 end
@@ -41,6 +42,7 @@ function c12071500.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,2,tp,LOCATION_HAND+LOCATION_GRAVE)
 end
 function c12071500.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp

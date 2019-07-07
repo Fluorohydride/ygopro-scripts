@@ -82,7 +82,7 @@ function c81269231.rmop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c81269231.aclimit(e,re,tp)
-	return (re:IsHasType(EFFECT_TYPE_ACTIVATE) or re:IsActiveType(TYPE_MONSTER)) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE) or re:IsActiveType(TYPE_MONSTER)
 end
 function c81269231.actcon(e)
 	local tp=e:GetHandlerPlayer()

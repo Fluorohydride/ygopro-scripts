@@ -78,14 +78,11 @@ function c35618217.actop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e1:SetTargetRange(0,1)
 	e1:SetCondition(c35618217.actcon)
-	e1:SetValue(c35618217.actlimit)
+	e1:SetValue(1)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 end
 function c35618217.actcon(e)
 	local ph=Duel.GetCurrentPhase()
 	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE
-end
-function c35618217.actlimit(e,re,tp)
-	return not re:GetHandler():IsImmuneToEffect(e)
 end

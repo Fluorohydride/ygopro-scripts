@@ -17,7 +17,7 @@ function c25494711.initial_effect(c)
 	e2:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTargetRange(0,1)
-	e2:SetValue(c25494711.aclimit)
+	e2:SetValue(1)
 	e2:SetCondition(c25494711.actcon)
 	c:RegisterEffect(e2)
 	--destroy replace
@@ -63,9 +63,6 @@ function c25494711.atkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c25494711.ftarget(e,c)
 	return e:GetLabel()~=c:GetFieldID()
-end
-function c25494711.aclimit(e,re,tp)
-	return not re:GetHandler():IsImmuneToEffect(e)
 end
 function c25494711.actcon(e)
 	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()

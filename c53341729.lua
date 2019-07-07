@@ -9,7 +9,7 @@ function c53341729.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCode(EVENT_CHAIN_ACTIVATING)
+	e2:SetCode(EVENT_CHAIN_SOLVING)
 	e2:SetOperation(c53341729.disop)
 	c:RegisterEffect(e2)
 end

@@ -64,7 +64,6 @@ function c75906310.acfilter(c,code)
 end
 function c75906310.aclimit(e,re,tp)
 	return Duel.IsExistingMatchingCard(c75906310.acfilter,e:GetHandlerPlayer(),LOCATION_REMOVED,LOCATION_REMOVED,1,nil,re:GetHandler():GetCode())
-		and not re:GetHandler():IsImmuneToEffect(e)
 end
 function c75906310.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp

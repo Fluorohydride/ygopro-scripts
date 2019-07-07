@@ -5,9 +5,13 @@ function c60577362.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetCondition(c60577362.condition)
 	e1:SetTarget(c60577362.target)
 	e1:SetOperation(c60577362.activate)
 	c:RegisterEffect(e1)
+end
+function c60577362.condition(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.IsAbleToEnterBP()
 end
 function c60577362.filter(c)
 	return c:IsFaceup() and c:IsAttackBelow(2000) and c:IsRace(RACE_ZOMBIE)

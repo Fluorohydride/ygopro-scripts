@@ -63,5 +63,5 @@ function c15397015.econ(e)
 	return e:GetHandler():GetFlagEffect(15397015+e:GetLabel())>=ct
 end
 function c15397015.elimit(e,re,tp)
-	return re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:IsActiveType(TYPE_MONSTER)
 end
