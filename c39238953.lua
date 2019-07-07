@@ -19,9 +19,9 @@ function c39238953.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		or Duel.IsPlayerCanSpecialSummon(tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
 	c39238953.announce_filter={TYPE_MONSTER,OPCODE_ISTYPE,TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK,OPCODE_ISTYPE,OPCODE_NOT,OPCODE_AND}
-	local ac=Duel.AnnounceCardFilter(tp,table.unpack(c39238953.announce_filter))
+	local ac=Duel.AnnounceCard(tp,table.unpack(c39238953.announce_filter))
 	Duel.SetTargetParam(ac)
-	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,ANNOUNCE_CARD_FILTER)
+	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,0)
 end
 function c39238953.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ac=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
