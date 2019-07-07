@@ -5,11 +5,18 @@ function c9952083.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCondition(c9952083.condition)
+	e1:SetTarget(c9952083.target)
 	e1:SetOperation(c9952083.activate)
 	c:RegisterEffect(e1)
 end
 function c9952083.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentChain()>1 and Duel.CheckChainUniqueness() and Duel.GetTurnPlayer()==tp
+end
+function c9952083.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then
+		local ct=Duel.GetFlagEffectLabel(tp,43422537)
+		return ct==nil or ct<3
+	end
 end
 function c9952083.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
@@ -20,4 +27,5 @@ function c9952083.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(3)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
+	Duel.RegisterFlagEffect(tp,43422537,RESET_PHASE+PHASE_END,0,1,3)
 end
