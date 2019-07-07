@@ -42,7 +42,7 @@ function c63519819.initial_effect(c)
 	e5:SetRange(LOCATION_MZONE)
 	e5:SetCode(EFFECT_SET_DEFENSE)
 	e5:SetCondition(c63519819.adcon)
-	e5:SetValue(c63519819.defval)	
+	e5:SetValue(c63519819.defval)
 	c:RegisterEffect(e5)
 end
 function c63519819.eqcon(e,tp,eg,ep,ev,re,r,rp)
@@ -50,18 +50,17 @@ function c63519819.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return c63519819.can_equip_monster(c)
 end
 function c63519819.eqfilter(c)
-	return c:GetFlagEffect(63519819)~=0 
+	return c:GetFlagEffect(63519819)~=0
 end
 function c63519819.can_equip_monster(c)
 	local g=c:GetEquipGroup():Filter(c63519819.eqfilter,nil)
 	return g:GetCount()==0
 end
 function c63519819.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsAbleToChangeControler() end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingTarget(Card.IsAbleToChangeControler,tp,0,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsAbleToEquip(tp) end
+	if chk==0 then return Duel.IsExistingTarget(Card.IsAbleToEquip,tp,0,LOCATION_MZONE,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectTarget(tp,Card.IsAbleToChangeControler,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,Card.IsAbleToEquip,tp,0,LOCATION_MZONE,1,1,nil,tp)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c63519819.eqlimit(e,c)
@@ -85,7 +84,7 @@ function c63519819.equip_monster(c,tp,tc)
  	e2:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
  	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
  	e2:SetValue(c63519819.repval)
- 	tc:RegisterEffect(e2)		
+ 	tc:RegisterEffect(e2)
 end
 function c63519819.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

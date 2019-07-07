@@ -24,7 +24,7 @@ function c26931058.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if e:GetLabel()==0 then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c26931058.filter1(chkc,tp)
 		else return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_SZONE) and c26931058.filter3(chkc,e,tp) end
 	end
-	local b1=Duel.IsExistingTarget(c26931058.filter1,tp,LOCATION_MZONE,0,1,nil,tp) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	local b1=Duel.IsExistingTarget(c26931058.filter1,tp,LOCATION_MZONE,0,1,nil,tp)
 	local b2=Duel.IsExistingTarget(c26931058.filter3,tp,LOCATION_SZONE,0,1,nil,e,tp) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 	if chk==0 then return b1 or b2 end
 	local op=0

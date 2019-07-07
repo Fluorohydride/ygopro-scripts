@@ -12,12 +12,12 @@ function c51345461.initial_effect(c)
 	e1:SetOperation(c51345461.eqop)
 	c:RegisterEffect(e1)
 end
-function c51345461.filter(c,rc,tid)
-	return c:IsReason(REASON_BATTLE) and c:GetReasonCard()==rc and c:GetTurnID()==tid and not c:IsForbidden()
+function c51345461.filter(c,rc,tid,tp)
+	return c:IsReason(REASON_BATTLE) and c:GetReasonCard()==rc and c:GetTurnID()==tid and c:IsAbleToEquip(tp)
 end
 function c51345461.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local g=Duel.GetMatchingGroup(c51345461.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,e:GetHandler(),Duel.GetTurnCount())
+	local g=Duel.GetMatchingGroup(c51345461.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,e:GetHandler(),Duel.GetTurnCount(),tp)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,g:GetCount(),0,0)
 end
 function c51345461.eqop(e,tp,eg,ep,ev,re,r,rp)
@@ -25,7 +25,7 @@ function c51345461.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if ft<=0 then return end
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	local g=Duel.GetMatchingGroup(c51345461.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,e:GetHandler(),Duel.GetTurnCount())
+	local g=Duel.GetMatchingGroup(c51345461.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,e:GetHandler(),Duel.GetTurnCount(),tp)
 	if g:GetCount()==0 then return end
 	if g:GetCount()>ft then return end
 	local tc=g:GetFirst()

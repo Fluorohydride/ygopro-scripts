@@ -34,12 +34,11 @@ function c3897065.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c3897065.eqfilter(c,tp)
-	return c:IsFaceup() and not c:IsRace(RACE_MACHINE) and (c:IsControler(tp) or c:IsAbleToChangeControler())
+	return c:IsFaceup() and not c:IsRace(RACE_MACHINE) and c:IsAbleToEquip(tp)
 end
 function c3897065.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c3897065.eqfilter(chkc,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingTarget(c3897065.eqfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler(),tp) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c3897065.eqfilter(chkc,tp) and chkc~=e:GetHandler() end
+	if chk==0 then return Duel.IsExistingTarget(c3897065.eqfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler(),tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectTarget(tp,c3897065.eqfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,e:GetHandler(),tp)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)

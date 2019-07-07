@@ -30,16 +30,15 @@ function c92868896.eqcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,c92868896.cfilter,1,1,REASON_COST+REASON_DISCARD,e:GetHandler())
 end
 function c92868896.eqfilter(c,ec)
-	return c:IsSetCard(0x29) and c:IsType(TYPE_TUNER) and not c:IsForbidden()
+	return c:IsSetCard(0x29) and c:IsType(TYPE_TUNER) and c:IsAbleToEquip()
 end
 function c92868896.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingMatchingCard(c92868896.eqfilter,tp,LOCATION_DECK,0,1,nil,e:GetHandler()) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c92868896.eqfilter,tp,LOCATION_DECK,0,1,nil,e:GetHandler()) end
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,tp,LOCATION_DECK)
 end
 function c92868896.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectMatchingCard(tp,c92868896.eqfilter,tp,LOCATION_DECK,0,1,1,nil,c)
 		if g:GetCount()>0 then

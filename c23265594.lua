@@ -55,7 +55,7 @@ function c23265594.filter(c)
 end
 function c23265594.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c23265594.filter(chkc) end
-	if chk==0 then return e:GetHandler():GetFlagEffect(23265594)==0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if chk==0 then return e:GetHandler():GetFlagEffect(23265594)==0 and e:GetHandler():IsAbleToEquip()
 		and Duel.IsExistingTarget(c23265594.filter,tp,LOCATION_MZONE,0,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectTarget(tp,c23265594.filter,tp,LOCATION_MZONE,0,1,1,e:GetHandler())

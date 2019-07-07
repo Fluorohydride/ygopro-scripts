@@ -42,12 +42,11 @@ function c10613952.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c10613952.filter(c,e,tp,ec)
-	return c:IsSetCard(0x207a) and c:IsCanBeEffectTarget(e) and c:CheckUniqueOnField(tp) and c:CheckEquipTarget(ec)
+	return c:IsSetCard(0x207a) and c:IsCanBeEffectTarget(e) and c:CheckEquipTarget(ec)
 end
 function c10613952.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c10613952.filter(chkc,e,tp,e:GetHandler()) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingMatchingCard(c10613952.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp,e:GetHandler()) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c10613952.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp,e:GetHandler()) end
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	local g=Duel.GetMatchingGroup(c10613952.filter,tp,LOCATION_GRAVE,0,nil,e,tp,e:GetHandler())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)

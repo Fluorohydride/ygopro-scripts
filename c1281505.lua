@@ -31,7 +31,7 @@ function c1281505.eqcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c1281505.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and chkc:IsFaceup() end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if chk==0 then return e:GetHandler():IsAbleToEquip()
 		and Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,0,1,1,nil)

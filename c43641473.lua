@@ -12,7 +12,7 @@ function c43641473.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c43641473.tcfilter(tc,ec)
-	return tc:IsFaceup() and ec:CheckEquipTarget(tc)
+	return tc:IsFaceup() and ec:CheckEquipTarget(tc,ec:GetControler(),true)
 end
 function c43641473.ecfilter(c)
 	return c:IsType(TYPE_EQUIP) and c:GetEquipTarget()~=nil and Duel.IsExistingTarget(c43641473.tcfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,c:GetEquipTarget(),c)
@@ -32,11 +32,11 @@ function c43641473.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	if tc==ec then tc=g:GetNext() end
-	if ec:IsFaceup() and ec:IsRelateToEffect(e) then 
+	if ec:IsFaceup() and ec:IsRelateToEffect(e) then
 		if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 			Duel.Equip(tp,ec,tc)
-		else 
-			Duel.SendtoGrave(ec,REASON_EFFECT) 
+		else
+			Duel.SendtoGrave(ec,REASON_EFFECT)
 		end
 	end
 end

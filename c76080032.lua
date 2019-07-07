@@ -8,7 +8,6 @@ function c76080032.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetRange(LOCATION_HAND)
-	e1:SetCondition(c76080032.eqcon)
 	e1:SetTarget(c76080032.eqtg)
 	e1:SetOperation(c76080032.eqop)
 	c:RegisterEffect(e1)
@@ -21,15 +20,12 @@ function c76080032.initial_effect(c)
 	e3:SetOperation(c76080032.disop)
 	c:RegisterEffect(e3)
 end
-function c76080032.eqcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():CheckUniqueOnField(tp)
-end
 function c76080032.filter(c)
 	return c:IsFaceup() and c:IsCode(56840427)
 end
 function c76080032.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c76080032.filter(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if chk==0 then return e:GetHandler():IsAbleToEquip()
 		and Duel.IsExistingTarget(c76080032.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c76080032.filter,tp,LOCATION_MZONE,0,1,1,nil)

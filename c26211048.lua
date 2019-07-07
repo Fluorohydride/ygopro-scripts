@@ -20,15 +20,14 @@ function c26211048.eqcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
-function c26211048.eqfilter(c)
-	return c:IsLocation(LOCATION_MZONE) or c:IsType(TYPE_MONSTER) and not c:IsForbidden()
+function c26211048.eqfilter(c,tp)
+	return c:IsLocation(LOCATION_MZONE) or c:IsType(TYPE_MONSTER) and c:IsAbleToEquip(tp)
 end
 function c26211048.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_MZONE) and chkc:IsControler(1-tp) and c26211048.eqfilter(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingTarget(c26211048.eqfilter,tp,0,LOCATION_GRAVE+LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_MZONE) and chkc:IsControler(1-tp) and c26211048.eqfilter(chkc,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c26211048.eqfilter,tp,0,LOCATION_GRAVE+LOCATION_MZONE,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectTarget(tp,c26211048.eqfilter,tp,0,LOCATION_GRAVE+LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c26211048.eqfilter,tp,0,LOCATION_GRAVE+LOCATION_MZONE,1,1,nil,tp)
 	if g:GetFirst():IsLocation(LOCATION_GRAVE) then
 		Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 	end

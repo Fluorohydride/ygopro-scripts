@@ -46,15 +46,14 @@ function c14466224.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetLabelObject()
 	return ec==nil or ec:GetFlagEffect(14466224)==0
 end
-function c14466224.filter(c)
-	return c:IsFaceup() and c:IsAbleToChangeControler()
+function c14466224.filter(c,tp)
+	return c:IsFaceup() and c:IsAbleToEquip(tp)
 end
 function c14466224.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c14466224.filter(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingTarget(c14466224.filter,tp,0,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c14466224.filter(chkc,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c14466224.filter,tp,0,LOCATION_MZONE,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectTarget(tp,c14466224.filter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c14466224.filter,tp,0,LOCATION_MZONE,1,1,nil,tp)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c14466224.eqlimit(e,c)

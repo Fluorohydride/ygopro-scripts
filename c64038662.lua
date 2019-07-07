@@ -18,18 +18,22 @@ function c64038662.initial_effect(c)
 	e2:SetOperation(c64038662.efop)
 	c:RegisterEffect(e2)
 end
-function c64038662.filter1(c)
-	return c:IsFaceup() and c:IsSetCard(0x56)
+function c64038662.filter1(c,tp)
+	return c:IsFaceup() and c:IsSetCard(0x56) and c:IsAbleToEquip()
+		and Duel.IsExistingTarget(c64038662.filter3,tp,LOCATION_MZONE,0,1,c)
 end
 function c64038662.filter2(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x56) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+end
+function c64038662.filter3(c)
+	return c:IsFaceup() and c:IsSetCard(0x56)
 end
 function c64038662.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then
 		if e:GetLabel()==1 then return false
 		else return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c64038662.filter2(chkc,e,tp) end
 	end
-	local b1=Duel.IsExistingTarget(c64038662.filter1,tp,LOCATION_MZONE,0,2,nil) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	local b1=Duel.IsExistingTarget(c64038662.filter1,tp,LOCATION_MZONE,0,1,nil,tp)
 	local b2=Duel.IsExistingTarget(c64038662.filter2,tp,LOCATION_SZONE,0,1,nil,e,tp) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 	if chk==0 then return b1 or b2 end
 	local op=0
@@ -44,7 +48,7 @@ function c64038662.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(64038662,4))
 		local g1=Duel.SelectTarget(tp,c64038662.filter1,tp,LOCATION_MZONE,0,1,1,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		local g2=Duel.SelectTarget(tp,c64038662.filter1,tp,LOCATION_MZONE,0,1,1,g1:GetFirst())
+		local g2=Duel.SelectTarget(tp,c64038662.filter3,tp,LOCATION_MZONE,0,1,1,g1:GetFirst())
 		e:SetLabelObject(g1:GetFirst())
 	else
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)

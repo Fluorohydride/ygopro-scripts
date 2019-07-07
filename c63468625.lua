@@ -56,15 +56,14 @@ function c63468625.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.SelectMatchingCard(tp,c63468625.spfilter,tp,LOCATION_HAND,0,3,3,c)
 	Duel.SendtoGrave(g,REASON_COST)
 end
-function c63468625.eqfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsAbleToChangeControler()
+function c63468625.eqfilter(c,tp)
+	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsAbleToEquip(tp)
 end
 function c63468625.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c63468625.eqfilter(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingTarget(c63468625.eqfilter,tp,0,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c63468625.eqfilter(chkc,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c63468625.eqfilter,tp,0,LOCATION_MZONE,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectTarget(tp,c63468625.eqfilter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c63468625.eqfilter,tp,0,LOCATION_MZONE,1,1,nil,tp)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c63468625.eqlimit(e,c)

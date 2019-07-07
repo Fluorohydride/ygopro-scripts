@@ -14,22 +14,21 @@ function c18060565.initial_effect(c)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e2)
 end
+function c18060565.eqfilter(c)
+	return c:IsSetCard(0x29) and c:IsRace(RACE_DRAGON) and c:IsLevelBelow(3) and c:IsAbleToEquip()
+end
 function c18060565.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x29) and c:IsRace(RACE_WINDBEAST)
 end
 function c18060565.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c18060565.filter(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if chk==0 then return Duel.IsExistingMatchingCard(c18060565.filter,tp,LOCATION_DECK,0,1,nil)
 		and Duel.IsExistingTarget(c18060565.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c18060565.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,tp,LOCATION_DECK)
 end
-function c18060565.eqfilter(c)
-	return c:IsSetCard(0x29) and c:IsRace(RACE_DRAGON) and c:IsLevelBelow(3) and not c:IsForbidden()
-end
 function c18060565.eqop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)

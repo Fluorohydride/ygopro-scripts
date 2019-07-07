@@ -50,14 +50,18 @@ end
 function c35906693.tgfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x107f) and c:IsType(TYPE_XYZ)
 end
-function c35906693.eqfilter(c,tp)
-	return c:IsSetCard(0x7e) and c:IsType(TYPE_MONSTER) and c:CheckUniqueOnField(tp) and not c:IsForbidden()
+function c35906693.eqfilter(c)
+	return c:IsSetCard(0x7e) and c:IsType(TYPE_MONSTER) and c:IsAbleToEquip(c:GetControler(),true)
 end
 function c35906693.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c35906693.tgfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c35906693.tgfilter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingMatchingCard(c35906693.eqfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,nil,tp) end
+	if chk==0 then
+		if not Duel.IsExistingTarget(c35906693.tgfilter,tp,LOCATION_MZONE,0,1,nil)
+			or not Duel.IsExistingMatchingCard(c35906693.eqfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,nil) then return false end
+		if e:GetHandler():IsLocation(LOCATION_HAND) then
+			return Duel.GetLocationCount(tp,LOCATION_SZONE)>1
+		else return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c35906693.tgfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,tp,LOCATION_DECK+LOCATION_EXTRA)
@@ -71,7 +75,7 @@ function c35906693.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if ft<=0 or tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.GetMatchingGroup(c35906693.eqfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil,tp)
+	local g=Duel.GetMatchingGroup(c35906693.eqfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil)
 	local sg=g:SelectSubGroup(tp,c35906693.eqcheck,false,1,ft)
 	local ec=sg:GetFirst()
 	while ec do

@@ -28,7 +28,7 @@ end
 function c2830693.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local at=Duel.GetAttacker()
 	if chkc then return chkc==at end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if chk==0 then return e:GetHandler():IsAbleToEquip()
 		and at:IsControler(1-tp) and at:IsRelateToBattle() and at:IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(at)
 end

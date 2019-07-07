@@ -27,7 +27,6 @@ function c69933858.eqcheck(c,ec)
 end
 function c69933858.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return false end
 		local g=Duel.GetMatchingGroup(c69933858.efilter,tp,LOCATION_MZONE,0,nil)
 		return Duel.IsExistingMatchingCard(c69933858.eqfilter,tp,LOCATION_GRAVE,0,1,nil,g)
 	end

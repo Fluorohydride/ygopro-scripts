@@ -20,7 +20,7 @@ function c62878208.filter1(c,e,tp)
 		and Duel.IsExistingTarget(c62878208.filter2,tp,0,LOCATION_MZONE,1,nil,c)
 end
 function c62878208.filter2(c,ec)
-	return c:IsPosition(POS_FACEUP_ATTACK) and ec:CheckEquipTarget(c)
+	return c:IsPosition(POS_FACEUP_ATTACK) and ec:CheckEquipTarget(c,ec:GetControler(),true)
 end
 function c62878208.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

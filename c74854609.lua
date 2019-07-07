@@ -19,8 +19,12 @@ end
 function c74854609.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local a=Duel.GetAttacker()
 	if chkc then return a==chkc end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and a:IsOnField() and a:IsCanBeEffectTarget(e) end
+	if chk==0 then
+		if not Duel.GetAttackTarget():IsAbleToEquip(tp,true) or not a:IsOnField() or not a:IsCanBeEffectTarget(e) then return false end
+		if e:GetHandler():IsLocation(LOCATION_HAND) then
+			return Duel.GetLocationCount(tp,LOCATION_SZONE)>1
+		else return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
+	end
 	Duel.SetTargetCard(a)
 end
 function c74854609.eqlimit(e,c)

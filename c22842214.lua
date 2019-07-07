@@ -31,12 +31,11 @@ function c22842214.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c22842214.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_FISH+RACE_AQUA+RACE_SEASERPENT) and not c:IsForbidden()
+	return c:IsFaceup() and c:IsRace(RACE_FISH+RACE_AQUA+RACE_SEASERPENT) and c:IsAbleToEquip()
 end
 function c22842214.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c22842214.filter(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingTarget(c22842214.filter,tp,LOCATION_REMOVED,0,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c22842214.filter,tp,LOCATION_REMOVED,0,1,nil) end
 	local fc=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectTarget(tp,c22842214.filter,tp,LOCATION_REMOVED,0,1,fc,nil)

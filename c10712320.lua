@@ -18,7 +18,7 @@ function c10712320.filter1(c,tp)
 		and Duel.IsExistingTarget(c10712320.filter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,c:GetEquipTarget(),c)
 end
 function c10712320.filter2(c,eqc)
-	return c:IsFaceup() and eqc:CheckEquipTarget(c)
+	return c:IsFaceup() and eqc:CheckEquipTarget(c,eqc:GetControler(),true)
 end
 function c10712320.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

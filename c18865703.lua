@@ -8,7 +8,6 @@ function c18865703.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCategory(CATEGORY_EQUIP)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetCondition(c18865703.eqcon)
 	e1:SetTarget(c18865703.eqtg)
 	e1:SetOperation(c18865703.eqop)
 	c:RegisterEffect(e1)
@@ -26,15 +25,12 @@ function c18865703.initial_effect(c)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e3)
 end
-function c18865703.eqcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():CheckUniqueOnField(tp)
-end
 function c18865703.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x107f)
 end
 function c18865703.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c18865703.filter(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if chk==0 then return e:GetHandler():IsAbleToEquip()
 		and Duel.IsExistingTarget(c18865703.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c18865703.filter,tp,LOCATION_MZONE,0,1,1,nil)

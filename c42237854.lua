@@ -40,13 +40,12 @@ function c42237854.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c42237854.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsLevel(4)
+	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsLevel(4) and c:IsAbleToEquip()
 end
 function c42237854.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c42237854.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c42237854.filter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,42237854,0,0x21,0,0,4,RACE_MACHINE,ATTRIBUTE_EARTH) end
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)

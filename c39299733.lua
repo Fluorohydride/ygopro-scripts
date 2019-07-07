@@ -1,4 +1,4 @@
---運命の戦車
+--Fortune Chariot
 function c39299733.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
@@ -25,7 +25,7 @@ function c39299733.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
 	e3:SetValue(c39299733.repval)
-	c:RegisterEffect(e3)	
+	c:RegisterEffect(e3)
 	--add setcode
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE)
@@ -61,7 +61,7 @@ end
 function c39299733.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c39299733.filter(chkc) end
-	if chk==0 then return e:GetHandler():GetFlagEffect(39299733)==0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if chk==0 then return c:GetFlagEffect(39299733)==0 and c:IsAbleToEquip()
 		and Duel.IsExistingTarget(c39299733.filter,tp,LOCATION_MZONE,0,1,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectTarget(tp,c39299733.filter,tp,LOCATION_MZONE,0,1,1,c)

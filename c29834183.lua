@@ -23,7 +23,7 @@ function c29834183.eqfilter(c,tp)
 end
 function c29834183.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c29834183.eqfilter(chkc,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if chk==0 then return e:GetHandler():IsAbleToEquip()
 		and Duel.IsExistingTarget(c29834183.eqfilter,tp,0,LOCATION_MZONE,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c29834183.eqfilter,tp,0,LOCATION_MZONE,1,1,nil,tp)

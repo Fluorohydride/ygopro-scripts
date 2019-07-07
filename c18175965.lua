@@ -82,13 +82,12 @@ function c18175965.filter(c,ec)
 	return c:IsCode(81954378) and c:CheckEquipTarget(ec)
 end
 function c18175965.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingMatchingCard(c18175965.filter,tp,LOCATION_DECK,0,1,nil,e:GetHandler()) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c18175965.filter,tp,LOCATION_DECK,0,1,nil,e:GetHandler()) end
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,tp,LOCATION_DECK)
 end
 function c18175965.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectMatchingCard(tp,c18175965.filter,tp,LOCATION_DECK,0,1,1,nil,c)
 	if g:GetCount()>0 then

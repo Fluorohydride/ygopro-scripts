@@ -63,12 +63,11 @@ function c11790356.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
 function c11790356.filter2(c)
-	return c:IsSetCard(0xd6) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
+	return c:IsSetCard(0xd6) and c:IsType(TYPE_MONSTER) and c:IsAbleToEquip()
 end
 function c11790356.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c11790356.cfilter(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingTarget(c11790356.cfilter,tp,LOCATION_MZONE,0,1,nil)
+	if chk==0 then return Duel.IsExistingTarget(c11790356.cfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(c11790356.filter2,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c11790356.cfilter,tp,LOCATION_MZONE,0,1,1,nil)

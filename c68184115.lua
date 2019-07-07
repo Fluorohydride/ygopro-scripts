@@ -30,11 +30,10 @@ function c68184115.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c68184115.filter(c)
-	return c:IsSetCard(0x56) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
+	return c:IsSetCard(0x56) and c:IsType(TYPE_MONSTER) and c:IsAbleToEquip()
 end
 function c68184115.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingMatchingCard(c68184115.filter,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c68184115.filter,tp,LOCATION_GRAVE+LOCATION_HAND,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,nil,1,tp,LOCATION_GRAVE+LOCATION_HAND)
 end
 function c68184115.eqop(e,tp,eg,ep,ev,re,r,rp)

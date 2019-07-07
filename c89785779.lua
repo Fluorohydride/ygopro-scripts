@@ -30,20 +30,19 @@ function c89785779.eqcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST+REASON_DISCARD)
 end
-function c89785779.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsAbleToChangeControler()
+function c89785779.filter(c,tp)
+	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsAbleToEquip(tp)
 end
 function c89785779.eqfilter(c)
 	local m=_G["c"..c:GetCode()]
 	return c:IsFaceup() and ((c:IsSetCard(0x110) and c:IsType(TYPE_FUSION)) or c:IsCode(64631466)) and m.can_equip_monster(c)
 end
 function c89785779.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and c89785779.filter(chkc) and chkc~=e:GetHandler() end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingTarget(c89785779.filter,tp,0,LOCATION_MZONE,1,nil)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c89785779.filter(chkc,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c89785779.filter,tp,0,LOCATION_MZONE,1,nil,tp)
 		and Duel.IsExistingMatchingCard(c89785779.eqfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectTarget(tp,c89785779.filter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c89785779.filter,tp,0,LOCATION_MZONE,1,1,nil,tp)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c89785779.eqop(e,tp,eg,ep,ev,re,r,rp)
