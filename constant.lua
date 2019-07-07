@@ -804,9 +804,6 @@ ACTIVITY_FLIPSUMMON		=4		--
 ACTIVITY_ATTACK			=5		--
 ACTIVITY_BATTLE_PHASE	=6		-- not available in custom counter
 ACTIVITY_CHAIN			=7		-- only available in custom counter
---announce type（宣言类型，CATEGORY_ANNOUNCE的OperationInfo的target_param）
-ANNOUNCE_CARD			=0x7	--宣言卡片
-ANNOUNCE_CARD_FILTER	=0x8	--宣言符合条件的卡片
 --cards with double names
 CARD_MARINE_DOLPHIN		=78734254	--海洋海豚
 CARD_TWINKLE_MOSS		=13857930	--光輝苔蘚
