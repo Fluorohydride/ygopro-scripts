@@ -10,8 +10,8 @@ function c43422537.initial_effect(c)
 end
 function c43422537.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local ct=Duel.GetFlagEffectLabel(tp,43422537)
-		return ct==nil or ct<2
+		local te=Duel.IsPlayerAffectedByEffect(tp,EFFECT_SET_SUMMON_COUNT_LIMIT)
+		return te==nil or te:GetValue()<2
 	end
 end
 function c43422537.activate(e,tp,eg,ep,ev,re,r,rp)
@@ -23,5 +23,4 @@ function c43422537.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(2)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	Duel.RegisterFlagEffect(tp,43422537,RESET_PHASE+PHASE_END,0,1,2)
 end
