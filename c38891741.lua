@@ -15,12 +15,11 @@ function c38891741.condition(e,tp,eg,ep,ev,re,r,rp)
 	return (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE)) and Duel.IsChainNegatable(ev)
 end
 function c38891741.cfilter(c,type)
-	return c:IsType(type) and c:IsDiscardable()
+	return c:IsType(type)
 end
 function c38891741.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if Duel.IsPlayerAffectedByEffect(tp,EFFECT_DISCARD_COST_CHANGE) then return true end
 	local type=bit.band(re:GetActiveType(),0x7)
-	if chk==0 then return Duel.IsExistingMatchingCard(c38891741.cfilter,tp,LOCATION_HAND,0,1,nil,type) end
+	if chk==0 then return Duel.CheckDiscardHand(tp,c38891741.cfilter,1,REASON_COST+REASON_DISCARD,e:GetHandler(),type) end
 	Duel.DiscardHand(tp,c38891741.cfilter,1,1,REASON_COST+REASON_DISCARD,nil,type)
 end
 function c38891741.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -32,7 +31,7 @@ function c38891741.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c38891741.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.NegateActivation(ev) then return end
-	if re:GetHandler():IsRelateToEffect(re) then 
+	if re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

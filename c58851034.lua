@@ -15,12 +15,11 @@ function c58851034.condition(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_SPELL) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsChainNegatable(ev)
 end
 function c58851034.cfilter(c)
-	return c:IsType(TYPE_SPELL) and c:IsDiscardable()
+	return c:IsType(TYPE_SPELL)
 end
 function c58851034.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if Duel.IsPlayerAffectedByEffect(tp,EFFECT_DISCARD_COST_CHANGE) then return true end
-	if chk==0 then return Duel.IsExistingMatchingCard(c58851034.cfilter,tp,LOCATION_HAND,0,1,nil) end
-	Duel.DiscardHand(tp,c58851034.cfilter,1,1,REASON_COST+REASON_DISCARD,nil)
+	if chk==0 then return Duel.CheckDiscardHand(tp,c58851034.cfilter,1,REASON_COST+REASON_DISCARD,e:GetHandler()) end
+	Duel.DiscardHand(tp,c58851034.cfilter,1,1,REASON_COST+REASON_DISCARD)
 end
 function c58851034.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
