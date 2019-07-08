@@ -46,20 +46,19 @@ end
 function c99357565.spfilter(c,e,tp)
 	return c:IsCode(99357565) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c99357565.fselect(g,tp)
-	Duel.SetSelectedCard(g)
-	return Duel.CheckDiscardHand(tp,nil,0,REASON_COST+REASON_DISCARD)
-end
 function c99357565.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetDiscardHand(tp,REASON_COST+REASON_DISCARD)
-	if chk==0 then return g:CheckSubGroup(c99357565.fselect,1,1,tp) end
 	local ct=2
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) and ct>1 then ct=1 end
 	ct=math.min(ct,(Duel.GetLocationCount(tp,LOCATION_MZONE)),
 		Duel.GetMatchingGroupCount(c99357565.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,nil,e,tp))
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
-	local rg=g:SelectSubGroup(tp,c99357565.fselect,false,1,ct,tp)
-	Duel.SendtoGrave(rg,REASON_COST+REASON_DISCARD)
+	if chk==0 then
+		if ct==0 then return false end
+		local min,max=Duel.GetDiscardHandChangeCount(tp,REASON_COST,1,ct)
+		return max>0 and Duel.CheckDiscardHand(tp,nil,1,REASON_DISCARD+REASON_COST)
+	end
+	local min,max=Duel.GetDiscardHandChangeCount(tp,REASON_COST,1,ct)
+	if min<=0 then min=1 end
+	Duel.DiscardHand(tp,nil,min,max,REASON_COST+REASON_DISCARD)
 	local ct=Duel.GetOperatedGroup():GetCount()
 	e:SetLabel(ct)
 end

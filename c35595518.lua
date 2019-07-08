@@ -26,18 +26,18 @@ function c35595518.spcon(e,c)
 	return Duel.GetFieldGroupCount(c:GetControler(),LOCATION_MZONE,0,nil)==0
 		and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
-function c35595518.fselect(g,tp)
-	Duel.SetSelectedCard(g)
-	return Duel.CheckDiscardHand(tp,nil,0,REASON_COST+REASON_DISCARD)
-end
 function c35595518.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetDiscardHand(tp,REASON_COST+REASON_DISCARD)
-	if chk==0 then return g:CheckSubGroup(c35595518.fselect,1,1,tp) end
 	local rt=Duel.GetTargetCount(Card.IsType,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,TYPE_SPELL+TYPE_TRAP)
+	if chk==0 then
+		if rt==0 then return false end
+		if rt>2 then rt=2 end
+		local min,max=Duel.GetDiscardHandChangeCount(tp,REASON_COST,1,rt)
+		return max>0 and Duel.CheckDiscardHand(tp,nil,1,REASON_DISCARD+REASON_COST)
+	end
 	if rt>2 then rt=2 end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
-	local rg=g:SelectSubGroup(tp,c35595518.fselect,false,1,rt,tp)
-	Duel.SendtoGrave(rg,REASON_COST+REASON_DISCARD)
+	local min,max=Duel.GetDiscardHandChangeCount(tp,REASON_COST,1,rt)
+	if min<=0 then min=1 end
+	Duel.DiscardHand(tp,nil,min,max,REASON_COST+REASON_DISCARD)
 	local ct=Duel.GetOperatedGroup():GetCount()
 	e:SetLabel(ct)
 end

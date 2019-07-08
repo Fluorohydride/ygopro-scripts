@@ -11,18 +11,19 @@ function c47217354.initial_effect(c)
 	e1:SetOperation(c47217354.op)
 	c:RegisterEffect(e1)
 end
-function c47217354.fselect(g,tp)
-	Duel.SetSelectedCard(g)
-	return Duel.CheckDiscardHand(tp,nil,0,REASON_DISCARD+REASON_EFFECT)
-end
 function c47217354.tg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetDiscardHand(tp,REASON_DISCARD+REASON_EFFECT)
-	if chk==0 then return g:CheckSubGroup(c47217354.fselect,1,1,tp) end
+	if chk==0 then
+		local min,max=Duel.GetDiscardHandChangeCount(tp,REASON_EFFECT,1,60)
+		return max>0 and Duel.CheckDiscardHand(tp,nil,1,REASON_DISCARD+REASON_EFFECT)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
 end
 function c47217354.op(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.DiscardHand(tp,aux.TRUE,1,60,REASON_EFFECT+REASON_DISCARD)==0 then return end
+	local min,max=Duel.GetDiscardHandChangeCount(tp,REASON_EFFECT,1,60)
+	if max<=0 then return end
+	if min<=0 then min=1 end
+	if Duel.DiscardHand(tp,nil,min,max,REASON_EFFECT+REASON_DISCARD)==0 then return end
 	local ct=Duel.GetOperatedGroup():GetCount()
 	if ct>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)

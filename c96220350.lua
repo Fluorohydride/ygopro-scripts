@@ -58,16 +58,11 @@ function c96220350.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
-function c96220350.fselect(g,tp)
-	Duel.SetSelectedCard(g)
-	return Duel.CheckDiscardHand(tp,nil,0,REASON_COST+REASON_DISCARD)
-end
 function c96220350.atkcost1(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetDiscardHand(tp,REASON_COST+REASON_DISCARD)
-	if chk==0 then return g:CheckSubGroup(c96220350.fselect,1,1,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
-	local rg=g:SelectSubGroup(tp,c96220350.fselect,false,1,60,tp)
-	Duel.SendtoGrave(rg,REASON_COST+REASON_DISCARD)
+	local min,max=Duel.GetDiscardHandChangeCount(tp,REASON_COST,1,60)
+	if chk==0 then return max>0 and Duel.CheckDiscardHand(tp,nil,1,REASON_DISCARD+REASON_COST) end
+	if min<=0 then min=1 end
+	Duel.DiscardHand(tp,nil,min,max,REASON_COST+REASON_DISCARD)
 	local ct=Duel.GetOperatedGroup():GetCount()
 	e:SetLabel(ct)
 end

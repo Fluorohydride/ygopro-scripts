@@ -32,18 +32,18 @@ function c17775525.initial_effect(c)
 	e3:SetOperation(c17775525.rmop)
 	c:RegisterEffect(e3)
 end
-function c17775525.fselect(g,tp)
-	Duel.SetSelectedCard(g)
-	return Duel.CheckDiscardHand(tp,nil,0,REASON_COST+REASON_DISCARD)
-end
 function c17775525.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetDiscardHand(tp,REASON_COST+REASON_DISCARD)
-	if chk==0 then return g:CheckSubGroup(c17775525.fselect,1,1,tp) end
 	local rt=Duel.GetTargetCount(nil,tp,0,LOCATION_ONFIELD,nil)
+	if chk==0 then
+		if rt==0 then return false end
+		if rt>2 then rt=2 end
+		local min,max=Duel.GetDiscardHandChangeCount(tp,REASON_COST,1,rt)
+		return max>0 and Duel.CheckDiscardHand(tp,nil,1,REASON_DISCARD+REASON_COST)
+	end
 	if rt>2 then rt=2 end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
-	local rg=g:SelectSubGroup(tp,c17775525.fselect,false,1,rt,tp)
-	Duel.SendtoGrave(rg,REASON_COST+REASON_DISCARD)
+	local min,max=Duel.GetDiscardHandChangeCount(tp,REASON_COST,1,rt)
+	if min<=0 then min=1 end
+	Duel.DiscardHand(tp,nil,min,max,REASON_COST+REASON_DISCARD)
 	local ct=Duel.GetOperatedGroup():GetCount()
 	e:SetLabel(ct)
 end

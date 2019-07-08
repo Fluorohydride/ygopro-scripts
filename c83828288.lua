@@ -12,7 +12,7 @@ function c83828288.initial_effect(c)
 end
 function c83828288.filter(c,tp)
 	local lv=c:GetLevel()
-	return lv>0 and c:IsFaceup() and c:IsAbleToHand() and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>=lv and Duel.IsPlayerCanDraw(tp,lv)
+	return lv>0 and c:IsFaceup() and c:IsAbleToHand() and Duel.CheckDiscardHand(tp,nil,lv,REASON_DISCARD+REASON_EFFECT) and Duel.IsPlayerCanDraw(tp,lv)
 end
 function c83828288.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c83828288.filter(chkc,tp) end
@@ -27,7 +27,7 @@ end
 function c83828288.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local lv=tc:GetLevel()
-	if tc:IsRelateToEffect(e) and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>=lv then
+	if tc:IsRelateToEffect(e) then
 		if Duel.DiscardHand(tp,aux.TRUE,lv,lv,REASON_EFFECT+REASON_DISCARD)==0 then return end
 		local ct=Duel.GetOperatedGroup():GetCount()
 		if ct>0 and Duel.Draw(tp,lv,REASON_EFFECT)~=0 then
