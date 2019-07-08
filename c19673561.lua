@@ -20,7 +20,7 @@ function c19673561.initial_effect(c)
 	c:RegisterEffect(e1)
 	--ep set
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(19673561,0))
+	e2:SetDescription(aux.Stringid(19673561,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_PHASE+PHASE_END)
 	e2:SetRange(LOCATION_GRAVE)
@@ -31,11 +31,13 @@ function c19673561.initial_effect(c)
 	c:RegisterEffect(e2)
 	--change cost
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e3:SetCode(83289866)
+	e3:SetDescription(aux.Stringid(19673561,2))
+	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_DISCARD_HAND_REPLACE)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCountLimit(1,19673561)
+	e3:SetCondition(c19673561.disccon)
+	e3:SetOperation(c19673561.discop)
 	c:RegisterEffect(e3)
 end
 function c19673561.drcon(e,tp,eg,ep,ev,re,r,rp)
@@ -72,4 +74,11 @@ function c19673561.setop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) then
 		Duel.MoveToField(c,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
 	end
+end
+function c19673561.disccon(e,tp,eg,ep,ev,re,r,rp)
+	return bit.band(r,REASON_COST)~=0 and re:IsHasType(0x7e0) and re:IsActiveType(TYPE_MONSTER)
+		and re:GetHandler():IsSetCard(0x128) and e:GetHandler():IsAbleToGraveAsCost()
+end
+function c19673561.discop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end

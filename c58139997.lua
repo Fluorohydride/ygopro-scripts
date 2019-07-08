@@ -26,22 +26,12 @@ function c58139997.initial_effect(c)
 	e2:SetOperation(c58139997.activate)
 	c:RegisterEffect(e2)
 end
-function c58139997.costfilter(c,tp)
-	if c:IsLocation(LOCATION_HAND) then return c:IsType(TYPE_SPELL) and c:IsDiscardable() end
-	return c:IsFaceup() and c:IsAbleToGraveAsCost() and c:IsHasEffect(83289866,tp)
+function c58139997.costfilter(c)
+	return c:IsType(TYPE_SPELL)
 end
 function c58139997.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c58139997.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,1,nil,tp) end
-	local g=Duel.GetMatchingGroup(c58139997.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,nil,tp)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
-	local tc=g:Select(tp,1,1,nil):GetFirst()
-	local te=tc:IsHasEffect(83289866,tp)
-	if te then
-		te:UseCountLimit(tp)
-		Duel.SendtoGrave(tc,REASON_COST)
-	else
-		Duel.SendtoGrave(tc,REASON_COST+REASON_DISCARD)
-	end
+	if chk==0 then return Duel.CheckDiscardHand(tp,c58139997.costfilter,1,REASON_COST+REASON_DISCARD) end
+	Duel.DiscardHand(tp,c58139997.costfilter,1,1,REASON_COST+REASON_DISCARD)
 end
 function c58139997.spfilter(c,e,tp)
 	return c:IsSetCard(0x128) and not c:IsCode(58139997) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

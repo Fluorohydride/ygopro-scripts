@@ -30,24 +30,14 @@ end
 function c59851535.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2
 end
-function c59851535.costfilter(c,tp)
-	if c:IsLocation(LOCATION_HAND) then return c:IsType(TYPE_SPELL) and c:IsDiscardable() end
-	return c:IsFaceup() and c:IsAbleToGraveAsCost() and c:IsHasEffect(83289866,tp)
+function c59851535.costfilter(c)
+	return c:IsType(TYPE_SPELL)
 end
 function c59851535.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c59851535.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,1,nil,tp) end
-	local g=Duel.GetMatchingGroup(c59851535.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,nil,tp)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
-	local tc=g:Select(tp,1,1,nil):GetFirst()
-	local te=tc:IsHasEffect(83289866,tp)
-	if te then
-		te:UseCountLimit(tp)
-		Duel.Release(e:GetHandler(),REASON_COST)
-		Duel.SendtoGrave(tc,REASON_COST)
-	else
-		Duel.Release(e:GetHandler(),REASON_COST)
-		Duel.SendtoGrave(tc,REASON_COST+REASON_DISCARD)
-	end
+	if chk==0 then return e:GetHandler():IsReleasable()
+		and Duel.CheckDiscardHand(tp,c59851535.costfilter,1,REASON_COST+REASON_DISCARD) end
+	Duel.Release(e:GetHandler(),REASON_COST)
+	Duel.DiscardHand(tp,c59851535.costfilter,1,1,REASON_COST+REASON_DISCARD)
 end
 function c59851535.spfilter(c,e,tp)
 	return c:IsSetCard(0x128) and not c:IsCode(59851535) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

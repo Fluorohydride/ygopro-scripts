@@ -28,22 +28,12 @@ end
 function c84523092.tgtg(e,c)
 	return c~=e:GetHandler() and c:IsRace(RACE_SPELLCASTER)
 end
-function c84523092.costfilter(c,tp)
-	if c:IsLocation(LOCATION_HAND) then return c:IsType(TYPE_SPELL) and c:IsDiscardable() end
-	return c:IsFaceup() and c:IsAbleToGraveAsCost() and c:IsHasEffect(83289866,tp)
+function c84523092.costfilter(c)
+	return c:IsType(TYPE_SPELL)
 end
 function c84523092.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c84523092.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,1,nil,tp) end
-	local g=Duel.GetMatchingGroup(c84523092.costfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,nil,tp)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
-	local tc=g:Select(tp,1,1,nil):GetFirst()
-	local te=tc:IsHasEffect(83289866,tp)
-	if te then
-		te:UseCountLimit(tp)
-		Duel.SendtoGrave(tc,REASON_COST)
-	else
-		Duel.SendtoGrave(tc,REASON_COST+REASON_DISCARD)
-	end
+	if chk==0 then return Duel.CheckDiscardHand(tp,c84523092.costfilter,1,REASON_COST+REASON_DISCARD) end
+	Duel.DiscardHand(tp,c84523092.costfilter,1,1,REASON_COST+REASON_DISCARD)
 end
 function c84523092.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsFaceup() and chkc:IsControler(1-tp) end
