@@ -32,12 +32,20 @@ function c17775525.initial_effect(c)
 	e3:SetOperation(c17775525.rmop)
 	c:RegisterEffect(e3)
 end
+function c17775525.fselect(g,tp)
+	Duel.SetSelectedCard(g)
+	return Duel.CheckDiscardHand(tp,nil,0,REASON_COST+REASON_DISCARD)
+end
 function c17775525.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
+	local g=Duel.GetDiscardHand(tp,REASON_COST+REASON_DISCARD)
+	if chk==0 then return g:CheckSubGroup(c17775525.fselect,1,1,tp) end
 	local rt=Duel.GetTargetCount(nil,tp,0,LOCATION_ONFIELD,nil)
 	if rt>2 then rt=2 end
-	local cg=Duel.DiscardHand(tp,Card.IsDiscardable,1,rt,REASON_COST+REASON_DISCARD,nil)
-	e:SetLabel(cg)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
+	local rg=g:SelectSubGroup(tp,c17775525.fselect,false,1,rt,tp)
+	Duel.SendtoGrave(rg,REASON_COST+REASON_DISCARD)
+	local ct=Duel.GetOperatedGroup():GetCount()
+	e:SetLabel(ct)
 end
 function c17775525.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) end
@@ -62,7 +70,7 @@ function c17775525.filter(c)
 end
 function c17775525.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		return Duel.IsExistingMatchingCard(c17775525.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil) 
+		return Duel.IsExistingMatchingCard(c17775525.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil)
 			and not Duel.IsExistingMatchingCard(c17775525.chkfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil)
 	end
 	local g=Duel.GetMatchingGroup(c17775525.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil)

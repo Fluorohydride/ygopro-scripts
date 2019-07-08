@@ -27,9 +27,17 @@ end
 function c8809344.rkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
+function c8809344.fselect(g,tp)
+	Duel.SetSelectedCard(g)
+	return Duel.CheckDiscardHand(tp,nil,0,REASON_COST+REASON_DISCARD)
+end
 function c8809344.rkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
-	local ct=Duel.DiscardHand(tp,Card.IsDiscardable,1,60,REASON_COST+REASON_DISCARD)
+	local g=Duel.GetDiscardHand(tp,REASON_COST+REASON_DISCARD)
+	if chk==0 then return g:CheckSubGroup(c8809344.fselect,1,1,tp) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
+	local rg=g:SelectSubGroup(tp,c8809344.fselect,false,1,60,tp)
+	Duel.SendtoGrave(rg,REASON_COST+REASON_DISCARD)
+	local ct=Duel.GetOperatedGroup():GetCount()
 	e:SetLabel(ct)
 end
 function c8809344.rkop(e,tp,eg,ep,ev,re,r,rp)
