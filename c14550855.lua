@@ -30,8 +30,7 @@ function c14550855.activate(e,tp,eg,ep,ev,re,r,rp)
 	local min,max=Duel.GetDiscardHandChangeCount(tp,REASON_EFFECT,1,ac)
 	if max<=0 then return end
 	if min<=0 then min=1 end
-	if Duel.DiscardHand(tp,nil,min,max,REASON_DISCARD+REASON_EFFECT)==0 then return end
-	local ct=Duel.GetOperatedGroup():GetCount()
+	local ct=Duel.DiscardHand(tp,nil,min,max,REASON_DISCARD+REASON_EFFECT)
 	if ct<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c14550855.filter,tp,LOCATION_DECK,0,1,ct,nil)

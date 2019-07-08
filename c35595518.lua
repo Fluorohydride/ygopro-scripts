@@ -37,8 +37,7 @@ function c35595518.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if rt>2 then rt=2 end
 	local min,max=Duel.GetDiscardHandChangeCount(tp,REASON_COST,1,rt)
 	if min<=0 then min=1 end
-	Duel.DiscardHand(tp,nil,min,max,REASON_COST+REASON_DISCARD)
-	local ct=Duel.GetOperatedGroup():GetCount()
+	local ct=Duel.DiscardHand(tp,nil,min,max,REASON_COST+REASON_DISCARD)
 	e:SetLabel(ct)
 end
 function c35595518.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

@@ -17,15 +17,19 @@ function c50321796.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c50321796.costfilter(c)
-	return c:IsDiscardable() and c:IsAbleToGraveAsCost()
+	return c:IsAbleToGraveAsCost()
 end
 function c50321796.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c50321796.costfilter,tp,LOCATION_HAND,0,1,e:GetHandler()) end
 	local rt=Duel.GetTargetCount(Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,nil)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
-	local cg=Duel.SelectMatchingCard(tp,c50321796.costfilter,tp,LOCATION_HAND,0,1,rt,nil)
-	Duel.SendtoGrave(cg,REASON_COST+REASON_DISCARD)
-	e:SetLabel(cg:GetCount())
+	if chk==0 then
+		if rt==0 then return false end
+		local min,max=Duel.GetDiscardHandChangeCount(tp,REASON_COST,1,rt)
+		return max>0 and Duel.CheckDiscardHand(tp,c50321796.costfilter,1,REASON_DISCARD+REASON_COST)
+	end
+	local min,max=Duel.GetDiscardHandChangeCount(tp,REASON_COST,1,rt)
+	if min<=0 then min=1 end
+	local ct=Duel.DiscardHand(tp,c50321796.costfilter,min,max,REASON_COST+REASON_DISCARD)
+	e:SetLabel(ct)
 end
 function c50321796.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsAbleToHand() end
@@ -38,7 +42,7 @@ end
 function c50321796.operation(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local rg=tg:Filter(Card.IsRelateToEffect,nil,e)
-	if rg:GetCount()>0 then 
+	if rg:GetCount()>0 then
 		Duel.SendtoHand(rg,nil,REASON_EFFECT)
 	end
 end

@@ -58,8 +58,7 @@ function c99357565.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	local min,max=Duel.GetDiscardHandChangeCount(tp,REASON_COST,1,ct)
 	if min<=0 then min=1 end
-	Duel.DiscardHand(tp,nil,min,max,REASON_COST+REASON_DISCARD)
-	local ct=Duel.GetOperatedGroup():GetCount()
+	local ct=Duel.DiscardHand(tp,nil,min,max,REASON_COST+REASON_DISCARD)
 	e:SetLabel(ct)
 end
 function c99357565.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

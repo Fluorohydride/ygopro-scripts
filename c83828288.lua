@@ -28,8 +28,7 @@ function c83828288.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local lv=tc:GetLevel()
 	if tc:IsRelateToEffect(e) then
-		if Duel.DiscardHand(tp,aux.TRUE,lv,lv,REASON_EFFECT+REASON_DISCARD)==0 then return end
-		local ct=Duel.GetOperatedGroup():GetCount()
+		local ct=Duel.DiscardHand(tp,aux.TRUE,lv,lv,REASON_EFFECT+REASON_DISCARD)
 		if ct>0 and Duel.Draw(tp,lv,REASON_EFFECT)~=0 then
 			Duel.BreakEffect()
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)

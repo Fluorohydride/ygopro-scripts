@@ -23,8 +23,7 @@ function c47217354.op(e,tp,eg,ep,ev,re,r,rp)
 	local min,max=Duel.GetDiscardHandChangeCount(tp,REASON_EFFECT,1,60)
 	if max<=0 then return end
 	if min<=0 then min=1 end
-	if Duel.DiscardHand(tp,nil,min,max,REASON_EFFECT+REASON_DISCARD)==0 then return end
-	local ct=Duel.GetOperatedGroup():GetCount()
+	local ct=Duel.DiscardHand(tp,nil,min,max,REASON_EFFECT+REASON_DISCARD)
 	if ct>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
