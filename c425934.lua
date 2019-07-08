@@ -7,6 +7,9 @@ function c425934.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(1,1)
 	e1:SetCode(EFFECT_CANNOT_DISCARD_HAND)
-	e1:SetValue(1)
+	e1:SetTarget(c425934.dislimit)
 	c:RegisterEffect(e1)
+end
+function c425934.dislimit(e,c,re,r)
+	return re and re:IsActivated() and r==REASON_COST
 end
