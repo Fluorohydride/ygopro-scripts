@@ -25,7 +25,7 @@ function c41139112.filter3(c,e,tp)
 	return c:IsLevelAbove(5) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c41139112.filter(c,e,tp)
-	return Duel.IsExistingMatchingCard(c41139112.filter1,tp,LOCATION_HAND,0,1,nil)
+	return Duel.IsExistingMatchingCard(c41139112.filter1,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil)
 		or Duel.IsExistingMatchingCard(c41139112.filter2,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 		or Duel.IsExistingMatchingCard(c41139112.filter3,tp,LOCATION_HAND,0,1,nil,e,tp)
 end
@@ -36,7 +36,7 @@ end
 function c41139112.activate(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.TossDice(tp,1)
 	if d==1 or d==2 then
-		local g=Duel.GetMatchingGroup(c41139112.filter1,tp,LOCATION_HAND,0,nil)
+		local g=Duel.GetMatchingGroup(c41139112.filter1,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(41139112,0)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
 			local tc=g:Select(tp,1,1,nil):GetFirst()

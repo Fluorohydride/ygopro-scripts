@@ -22,6 +22,7 @@ function c94561645.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tc=Duel.GetOperatedGroup():GetFirst()
 		if tc:IsType(TYPE_MONSTER) and tc:IsSummonable(true,nil)
 			and Duel.SelectYesNo(tp,aux.Stringid(94561645,0)) then
+			Duel.BreakEffect()
 			Duel.Summon(tp,tc,true,nil)
 		end
 	end

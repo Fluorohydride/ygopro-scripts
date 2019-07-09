@@ -41,8 +41,7 @@ function c72291078.filter(c)
 	return c:IsSetCard(0x101b) and c:IsSummonable(true,nil)
 end
 function c72291078.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c72291078.filter,tp,LOCATION_HAND,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c72291078.filter,tp,LOCATION_HAND,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_SUMMON,nil,1,0,0)
 end
 function c72291078.operation(e,tp,eg,ep,ev,re,r,rp)

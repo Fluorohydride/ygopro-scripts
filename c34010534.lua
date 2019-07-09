@@ -30,12 +30,12 @@ function c34010534.sumfilter(c)
 	return c:IsRace(RACE_CYBERSE) and c:IsSummonable(true,nil)
 end
 function c34010534.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c34010534.sumfilter,tp,LOCATION_HAND,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c34010534.sumfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_SUMMON,nil,1,0,0)
 end
 function c34010534.sumop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
-	local g=Duel.SelectMatchingCard(tp,c34010534.sumfilter,tp,LOCATION_HAND,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c34010534.sumfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.Summon(tp,tc,true,nil)

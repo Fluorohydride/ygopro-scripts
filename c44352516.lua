@@ -60,7 +60,7 @@ function c44352516.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
-		local g=Duel.GetMatchingGroup(c44352516.filter2,tp,LOCATION_HAND,0,nil)
+		local g=Duel.GetMatchingGroup(c44352516.filter2,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(44352516,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
