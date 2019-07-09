@@ -30,9 +30,8 @@ end
 function c78876707.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_COST) end
-	local rt=math.min(Duel.GetTargetCount(Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,nil),c:GetOverlayCount())
-	c:RemoveOverlayCard(tp,1,rt,REASON_COST)
-	local ct=Duel.GetOperatedGroup():GetCount()
+	local rt=Duel.GetTargetCount(Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,nil)
+	local ct=c:RemoveOverlayCard(tp,1,rt,REASON_COST)
 	e:SetLabel(ct)
 end
 function c78876707.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

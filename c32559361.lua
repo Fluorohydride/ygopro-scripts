@@ -69,8 +69,7 @@ function c32559361.damcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c32559361.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
-	e:GetHandler():RemoveOverlayCard(tp,1,99,REASON_COST)
-	local ct=Duel.GetOperatedGroup():GetCount()
+	local ct=e:GetHandler():RemoveOverlayCard(tp,1,99,REASON_COST)
 	e:SetLabel(ct)
 end
 function c32559361.damtg2(e,tp,eg,ep,ev,re,r,rp,chk)
