@@ -42,9 +42,8 @@ end
 function c96592102.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_COST) end
-	local rt=math.min(Duel.GetMatchingGroupCount(aux.TRUE,tp,0,LOCATION_MZONE,nil),c:GetOverlayCount())
-	c:RemoveOverlayCard(tp,1,rt,REASON_COST)
-	local ct=Duel.GetOperatedGroup():GetCount()
+	local rt=Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)
+	local ct=c:RemoveOverlayCard(tp,1,rt,REASON_COST)
 	e:SetLabel(ct)
 end
 function c96592102.destg(e,tp,eg,ep,ev,re,r,rp,chk)

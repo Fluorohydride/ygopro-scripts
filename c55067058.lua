@@ -21,11 +21,5 @@ function c55067058.rcon(e,tp,eg,ep,ev,re,r,rp)
 		and ep==e:GetOwnerPlayer() and re:GetHandler():GetOverlayCount()>=ev-1
 end
 function c55067058.rop(e,tp,eg,ep,ev,re,r,rp)
-	local ct=bit.band(ev,0xffff)
-	if ct==1 then
-		e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_EFFECT)
-	else
-		e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_EFFECT)
-		re:GetHandler():RemoveOverlayCard(tp,ct-1,ct-1,REASON_COST)
-	end
+	return e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_EFFECT)
 end
