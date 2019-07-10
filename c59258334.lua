@@ -38,6 +38,7 @@ function c59258334.initial_effect(c)
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_TARGET)
 	e5:SetCode(EFFECT_SET_CONTROL)
+	e5:SetTarget(c59258334.cttg)
 	e5:SetValue(c59258334.ctval)
 	c:RegisterEffect(e5)
 end
@@ -59,8 +60,11 @@ function c59258334.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:SetCardTarget(tc)
 	end
 end
+function c59258334.cttg(e,c)
+	return c:GetCounter(0x100e)>0
+end
 function c59258334.ctval(e,c)
-	return e:GetHandlerPlayer() and c:GetCounter(0x100e)>0
+	return e:GetHandlerPlayer()
 end
 function c59258334.descon(e)
 	local c=e:GetHandler()

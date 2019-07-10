@@ -24,6 +24,7 @@ function c21768554.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_TARGET)
 	e3:SetCode(EFFECT_SET_CONTROL)
+	e3:SetTarget(c21768554.cttg)
 	e3:SetValue(c21768554.ctval)
 	c:RegisterEffect(e3)
 end
@@ -59,8 +60,11 @@ function c21768554.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 	c:RegisterFlagEffect(21768554,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
+function c21768554.cttg(e,c)
+	return c:GetCounter(0x100e)>0
+end
 function c21768554.ctval(e,c)
-	return e:GetHandlerPlayer() and c:GetCounter(0x100e)>0
+	return e:GetHandlerPlayer()
 end
 function c21768554.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(21768554)~=0
