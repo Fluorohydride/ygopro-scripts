@@ -56,11 +56,13 @@ end
 function c51476410.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local chkf=PLAYER_NONE
 	if chk==0 then return Duel.GetLocationCountFromEx(tp,tp,e:GetHandler())>0
+		and Duel.IsPlayerCanRemove(tp)
 		and Duel.IsExistingMatchingCard(c51476410.spfilter3,tp,LOCATION_GRAVE,0,1,nil,e,tp,chkf) end
 	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,nil,1,tp,LOCATION_GRAVE)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c51476410.spop(e,tp,eg,ep,ev,re,r,rp)
+	if not Duel.IsPlayerCanRemove(tp) then return end
 	local chkf=tp
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c51476410.spfilter3),tp,LOCATION_GRAVE,0,1,1,nil,e,tp,chkf)
