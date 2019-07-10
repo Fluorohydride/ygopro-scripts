@@ -25,6 +25,11 @@ function c23869735.initial_effect(c)
 	e3:SetCondition(c23869735.descon2)
 	e3:SetOperation(c23869735.desop2)
 	c:RegisterEffect(e3)
+	--disable
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_TARGET)
+	e4:SetCode(EFFECT_DISABLE)
+	c:RegisterEffect(e4)
 end
 function c23869735.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,e:GetHandler()) end
@@ -48,18 +53,7 @@ function c23869735.operation(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		c:SetCardTarget(tc)
 		Duel.SpecialSummonComplete()
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_OWNER_RELATE)
-		e1:SetRange(LOCATION_MZONE)
-		e1:SetCode(EFFECT_DISABLE)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		e1:SetCondition(c23869735.rcon)
-		tc:RegisterEffect(e1,true)
 	end
-end
-function c23869735.rcon(e)
-	return e:GetOwner():IsHasCardTarget(e:GetHandler())
 end
 function c23869735.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetFirstCardTarget()

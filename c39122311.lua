@@ -31,6 +31,12 @@ function c39122311.initial_effect(c)
 	e4:SetCondition(c39122311.descon2)
 	e4:SetOperation(c39122311.desop2)
 	c:RegisterEffect(e4)
+	--change race
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_TARGET)
+	e5:SetCode(EFFECT_CHANGE_RACE)
+	e5:SetValue(RACE_WYRM)
+	c:RegisterEffect(e5)
 end
 function c39122311.filter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
@@ -49,19 +55,8 @@ function c39122311.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e)
 		and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE) then
 		c:SetCardTarget(tc)
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_CHANGE_RACE)
-		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		e1:SetValue(RACE_WYRM)
-		e1:SetCondition(c39122311.rcon)
-		tc:RegisterEffect(e1)
 		Duel.SpecialSummonComplete()
 	end
-end
-function c39122311.rcon(e)
-	return e:GetOwner():IsHasCardTarget(e:GetHandler())
 end
 function c39122311.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsDisabled() then

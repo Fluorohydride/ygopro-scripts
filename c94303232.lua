@@ -27,6 +27,15 @@ function c94303232.initial_effect(c)
 	e3:SetOperation(c94303232.rmop)
 	e3:SetLabelObject(e1)
 	c:RegisterEffect(e3)
+	--
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_TARGET)
+	e4:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
+	e4:SetValue(c94303232.effval)
+	c:RegisterEffect(e4)
+	local e5=e4:Clone()
+	e5:SetCode(EFFECT_CANNOT_ATTACK)
+	c:RegisterEffect(e5)
 	if not c94303232.global_check then
 		c94303232.global_check=true
 		local ge1=Effect.CreateEffect(c)
@@ -71,22 +80,11 @@ function c94303232.operation(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.Equip(tp,c,tc) and dc:IsRelateToEffect(e) then
 			tc:RegisterFlagEffect(94303233,RESET_EVENT+RESETS_STANDARD,0,1)
 			c:SetCardTarget(dc)
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_OWNER_RELATE)
-			e1:SetRange(LOCATION_MZONE)
-			e1:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e1:SetCondition(c94303232.rcon)
-			dc:RegisterEffect(e1,true)
-			local e2=e1:Clone()
-			e2:SetCode(EFFECT_CANNOT_ATTACK)
-			dc:RegisterEffect(e2,true)
 		end
 	end
 end
-function c94303232.rcon(e)
-	return e:GetOwner():IsHasCardTarget(e:GetHandler())
+function c94303232.effval(e,c)
+	return c~=e:GetHandler():GetEquipTarget()
 end
 function c94303232.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
