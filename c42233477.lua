@@ -13,11 +13,8 @@ function c42233477.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk up
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetType(EFFECT_TYPE_TARGET)
 	e3:SetCode(EFFECT_UPDATE_ATTACK)
-	e3:SetRange(LOCATION_SZONE)
-	e3:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e3:SetTarget(aux.ctg)
 	e3:SetValue(1000)
 	c:RegisterEffect(e3)
 	--destroy
