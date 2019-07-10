@@ -24,7 +24,7 @@ function c25542642.initial_effect(c)
 	e4:SetCode(EFFECT_CANNOT_SELECT_BATTLE_TARGET)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e4:SetValue(aux.ctg)
+	e4:SetValue(c25542642.tgval)
 	c:RegisterEffect(e4)
 	--destroy
 	local e6=Effect.CreateEffect(c)
@@ -64,6 +64,9 @@ function c25542642.tgop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
 	end
+end
+function c25542642.tgval(e,c)
+	return e:GetHandler():IsHasCardTarget(c)
 end
 function c25542642.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
