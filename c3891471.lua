@@ -32,6 +32,12 @@ function c3891471.initial_effect(c)
 	e4:SetTarget(c3891471.damtg)
 	e4:SetOperation(c3891471.damop)
 	c:RegisterEffect(e4)
+	--add type
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_TARGET)
+	e5:SetCode(EFFECT_ADD_TYPE)
+	e5:SetValue(TYPE_TUNER)
+	c:RegisterEffect(e5)
 end
 function c3891471.filter(c,e,tp)
 	return c:IsRace(RACE_PSYCHO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -50,14 +56,8 @@ function c3891471.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
 		local lv=tc:GetLevel()
 		if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK) then
-			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_ADD_TYPE)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e1:SetValue(TYPE_TUNER)
-			tc:RegisterEffect(e1)
-			Duel.SpecialSummonComplete()
 			c:SetCardTarget(tc)
+			Duel.SpecialSummonComplete()
 			c:RegisterFlagEffect(3891471,RESET_EVENT+0x17a0000,0,1,lv)
 		end
 	end

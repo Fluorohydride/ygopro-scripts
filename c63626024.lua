@@ -17,6 +17,12 @@ function c63626024.initial_effect(c)
 	e2:SetCode(EVENT_LEAVE_FIELD)
 	e2:SetOperation(c63626024.desop)
 	c:RegisterEffect(e2)
+	--add setcode
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_TARGET)
+	e3:SetCode(EFFECT_ADD_SETCODE)
+	e3:SetValue(0x2b)
+	c:RegisterEffect(e3)
 end
 function c63626024.cfilter(c)
 	return c:IsSetCard(0x2b)
@@ -42,12 +48,6 @@ function c63626024.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		c:SetCardTarget(tc)
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_ADD_SETCODE)
-		e1:SetValue(0x2b)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		tc:RegisterEffect(e1)
 		Duel.SpecialSummonComplete()
 	end
 end
