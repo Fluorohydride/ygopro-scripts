@@ -25,8 +25,11 @@ function c29654737.operation(e,tp,eg,ep,ev,re,r,rp)
 		local tg=g:Filter(Card.IsType,nil,TYPE_MONSTER)
 		if tg:GetCount()>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-			local sg=tg:Select(tp,1,1,nil)
-			Duel.SendtoHand(sg,tp,REASON_EFFECT)
+			local ac=tg:Select(tp,1,1,nil):GetFirst()
+			Duel.SendtoHand(ac,tp,REASON_EFFECT)
+			if ac:GetOwner()~=ac:GetControler() then
+				ac:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,67)
+			end
 		end
 		Duel.ShuffleHand(1-tp)
 	end
