@@ -49,7 +49,6 @@ function c39238953.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		if sel==1 then
 			Duel.SendtoHand(sg,tp,REASON_EFFECT)
-			sg:GetFirst():RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,67)
 			Duel.ConfirmCards(1-tp,sg)
 		elseif sel==2 then
 			Duel.SpecialSummon(sg,0,tp,tp,true,false,POS_FACEUP_ATTACK)

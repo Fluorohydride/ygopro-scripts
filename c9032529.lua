@@ -21,11 +21,8 @@ function c9032529.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(p,LOCATION_HAND,0)
 	if g:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,p,aux.Stringid(9032529,0))
-	local ac=g:Select(p,1,1,nil):GetFirst()
-	if Duel.SendtoHand(ac,1-p,REASON_EFFECT)~=0 then
-		if ac:GetOwner()~=ac:GetControler() then
-			ac:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,67)
-		end
+	local sg=g:Select(p,1,1,nil)
+	if Duel.SendtoHand(sg,1-p,REASON_EFFECT)~=0 then
 		Duel.ShuffleHand(p)
 		Duel.BreakEffect()
 		Duel.Recover(p,d,REASON_EFFECT)

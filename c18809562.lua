@@ -19,13 +19,10 @@ function c18809562.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c18809562.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(18809562,0))
-	local ac=Duel.SelectMatchingCard(tp,Card.IsType,tp,LOCATION_HAND,0,1,1,nil,TYPE_SPELL):GetFirst()
-	if ac then
-		Duel.SendtoHand(ac,1-tp,REASON_EFFECT)
-		if ac:GetOwner()~=ac:GetControler() then
-			ac:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,67)
-		end
-		Duel.ConfirmCards(tp,ac)
+	local ag=Duel.SelectMatchingCard(tp,Card.IsType,tp,LOCATION_HAND,0,1,1,nil,TYPE_SPELL)
+	if ag:GetCount()>0 then
+		Duel.SendtoHand(ag,1-tp,REASON_EFFECT)
+		Duel.ConfirmCards(tp,ag)
 		Duel.ShuffleHand(tp)
 		Duel.ShuffleHand(1-tp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

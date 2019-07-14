@@ -19,11 +19,6 @@ function c43528009.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ag=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_HAND,0,2,2,nil)
 	if ag:GetCount()==2 then
 		Duel.SendtoHand(ag,1-tp,REASON_EFFECT)
-		for ac in aux.Next(ag) do
-			if ac:GetOwner()~=ac:GetControler() then
-				ac:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,67)
-			end
-		end
 		Duel.ConfirmCards(tp,ag)
 		Duel.ShuffleHand(tp)
 		Duel.ShuffleHand(1-tp)

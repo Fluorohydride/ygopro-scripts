@@ -19,15 +19,9 @@ function c5556668.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmCards(tp,g2)
 	Duel.ConfirmCards(1-tp,g1)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local ac1=g2:Select(tp,1,1,nil):GetFirst()
+	local ag1=g2:Select(tp,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATOHAND)
-	local ac2=g1:Select(1-tp,1,1,nil):GetFirst()
-	Duel.SendtoHand(ac1,tp,REASON_EFFECT)
-	Duel.SendtoHand(ac2,1-tp,REASON_EFFECT)
-	if ac1:GetOwner()~=ac1:GetControler() then
-		ac1:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,67)
-	end
-	if ac2:GetOwner()~=ac2:GetControler() then
-		ac2:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,67)
-	end
+	local ag2=g1:Select(1-tp,1,1,nil)
+	Duel.SendtoHand(ag1,tp,REASON_EFFECT)
+	Duel.SendtoHand(ag2,1-tp,REASON_EFFECT)
 end

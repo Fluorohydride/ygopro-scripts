@@ -24,7 +24,6 @@ function c61705417.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,tp,REASON_EFFECT)
-		tc:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,67)
 		Duel.ConfirmCards(1-tp,tc)
 		tc:RegisterFlagEffect(61705417,RESET_EVENT+0x5c0000+RESET_PHASE+PHASE_END,0,1)
 		local e1=Effect.CreateEffect(e:GetHandler())
