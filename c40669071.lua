@@ -38,7 +38,7 @@ function c40669071.lztg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return ct>0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0)
 			+Duel.GetLocationCount(1-tp,LOCATION_MZONE,PLAYER_NONE,0)>ct end
-	local dis=Duel.SelectDisableField(tp,ct,LOCATION_MZONE,LOCATION_MZONE,0)
+	local dis=Duel.SelectDisableField(tp,ct,LOCATION_MZONE,LOCATION_MZONE,0xe000e0)
 	e:SetLabel(dis)
 end
 function c40669071.lzop(e,tp,eg,ep,ev,re,r,rp)
