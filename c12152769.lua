@@ -26,8 +26,11 @@ function c12152769.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsChainDisablable(0) and hg:GetCount()>0
 		and Duel.SelectYesNo(1-tp,aux.Stringid(12152769,1)) then
 		Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(12152769,2))
-		local sg=hg:Select(1-tp,1,1,nil)
-		Duel.SendtoHand(sg,tp,REASON_EFFECT)
+		local ac=hg:Select(1-tp,1,1,nil):GetFirst()
+		Duel.SendtoHand(ac,tp,REASON_EFFECT)
+		if ac:GetOwner()~=ac:GetControler() then
+			ac:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,67)
+		end
 		Duel.NegateEffect(0)
 		return
 	end

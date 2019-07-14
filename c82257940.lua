@@ -57,4 +57,6 @@ function c82257940.thop(e,tp,eg,ep,ev,re,r,rp)
 	g:DeleteGroup()
 	Duel.SendtoHand(tc1,1-tc1:GetControler(),REASON_EFFECT)
 	Duel.SendtoHand(tc2,1-tc2:GetControler(),REASON_EFFECT)
+	tc1:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,67)
+	tc2:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,67)
 end
