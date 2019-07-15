@@ -22,12 +22,10 @@ function c38247752.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:SetCardTarget(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_OWNER_RELATE)
-		e1:SetRange(LOCATION_MZONE)
 		e1:SetCode(EFFECT_CANNOT_ATTACK)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetCondition(c38247752.rcon)
-		tc:RegisterEffect(e1,true)
+		tc:RegisterEffect(e1)
 	end
 end
 function c38247752.rcon(e)
