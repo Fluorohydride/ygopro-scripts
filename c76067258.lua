@@ -47,7 +47,8 @@ end
 function c76067258.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e)
+		and not tc:IsImmuneToEffect(e) then
 		c:SetCardTarget(tc)
 		tc:RegisterFlagEffect(76067258,RESET_EVENT+RESETS_STANDARD,0,0)
 	end
