@@ -28,7 +28,10 @@ function c90887783.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g1:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g2=Duel.SelectMatchingCard(tp,c90887783.filter2,tp,LOCATION_DECK,0,1,1,nil,g1:GetFirst():GetLevel())
-	Duel.SendtoHand(g2,nil,REASON_EFFECT)
+	if g2:GetCount()==0 then return end
+	Duel.BreakEffect()
+	if Duel.SendtoHand(g2,nil,REASON_EFFECT)==0 then return end
 	Duel.ConfirmCards(1-tp,g2)
+	Duel.BreakEffect()
 	Duel.SendtoDeck(g1,nil,2,REASON_EFFECT)
 end
