@@ -45,8 +45,8 @@ function c57666212.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc=sg:GetNext()
 	end
-	if d1>0 and Duel.SelectYesNo(0,aux.Stringid(57666212,1)) then Duel.Draw(0,d1,REASON_EFFECT) end
-	if d2>0 and Duel.SelectYesNo(1,aux.Stringid(57666212,1)) then Duel.Draw(1,d2,REASON_EFFECT) end
+	if d1>0 and Duel.IsPlayerCanDraw(0,d1) and Duel.SelectYesNo(0,aux.Stringid(57666212,1)) then Duel.Draw(0,d1,REASON_EFFECT) end
+	if d2>0 and Duel.IsPlayerCanDraw(1,d2) and Duel.SelectYesNo(1,aux.Stringid(57666212,1)) then Duel.Draw(1,d2,REASON_EFFECT) end
 end
 function c57666212.disatt(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
