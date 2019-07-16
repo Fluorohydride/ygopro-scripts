@@ -1029,6 +1029,7 @@ function Auxiliary.FConditionMix(insf,sub,...)
 	return	function(e,g,gc,chkfnf)
 				if g==nil then return insf and Auxiliary.MustMaterialCheck(nil,e:GetHandlerPlayer(),EFFECT_MUST_BE_FMATERIAL) end
 				local c=e:GetHandler()
+				local tp=c:GetControler()
 				local notfusion=chkfnf&0x100>0
 				local concat_fusion=chkfnf&0x200>0
 				local sub=(sub or notfusion) and not concat_fusion
