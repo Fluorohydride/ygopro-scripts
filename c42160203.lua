@@ -4,7 +4,7 @@ function c42160203.initial_effect(c)
 	aux.AddXyzProcedure(c,c42160203.matfilter,4,2)
 	--change atk
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(101001039,0))
+	e1:SetDescription(aux.Stringid(42160203,0))
 	e1:SetCategory(CATEGORY_ATKCHANGE)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BATTLE_CONFIRM)
