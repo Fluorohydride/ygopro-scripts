@@ -13,7 +13,7 @@ function c52684508.initial_effect(c)
 	Duel.AddCustomActivityCounter(52684508,ACTIVITY_ATTACK,c52684508.counterfilter)
 end
 function c52684508.counterfilter(c)
-    return not c:IsCode(74677422)
+	return not c:IsCode(74677422)
 end
 function c52684508.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(52684508,tp,ACTIVITY_ATTACK)==0 end
