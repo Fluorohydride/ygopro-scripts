@@ -38,7 +38,7 @@ function c40663548.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c40663548.cfilter(c,tp)
-	return c:IsRace(RACE_PLANT) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+	return c:IsRace(RACE_PLANT) and c:GetPreviousControler()==tp
 end
 function c40663548.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c40663548.cfilter,1,nil,tp)
@@ -73,7 +73,7 @@ function c40663548.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if ct>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local g=Duel.SelectTarget(tp,Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,ct,nil)
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),1-tp,LOCATION_GRAVE)
+		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)
 	end
 end
 function c40663548.rmop(e,tp,eg,ep,ev,re,r,rp)

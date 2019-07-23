@@ -19,7 +19,8 @@ function c80627281.spfilter1(c,e,tp)
 		and lk>0 and Duel.IsExistingMatchingCard(c80627281.spfilter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,lk)
 end
 function c80627281.spfilter2(c,e,tp,lk)
-	return c:IsSetCard(0x12b) and c:IsLink(lk-1) and c:IsType(TYPE_LINK) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_LINK,tp,false,false)
+	return c:IsSetCard(0x12b) and c:IsType(TYPE_LINK) and c:GetLink()<lk
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_LINK,tp,false,false)
 end
 function c80627281.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c80627281.spfilter1(chkc,e,tp) end

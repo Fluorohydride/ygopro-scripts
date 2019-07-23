@@ -16,7 +16,7 @@ function c75713017.atcon(e,tp,eg,ep,ev,re,r,rp)
 	if not bc then return false end
 	local seq=bc:GetPreviousSequence()
 	e:SetLabel(seq+16)
-	return Duel.GetAttacker()==e:GetHandler() and aux.bdocon(e,tp,eg,ep,ev,re,r,rp) and seq<5 and e:GetHandler():IsChainAttackable(0)
+	return Duel.GetAttacker()==c and aux.bdocon(e,tp,eg,ep,ev,re,r,rp) and seq<5 and c:IsChainAttackable(0)
 end
 function c75713017.atcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end

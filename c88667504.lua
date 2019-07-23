@@ -54,13 +54,13 @@ function c88667504.setfilter(c)
 	return c:IsCode(96462121,22866836) and c:IsSSetable()
 end
 function c88667504.settg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c88667504.setfilter,tp,LOCATION_DECK,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c88667504.setfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end
 end
 function c88667504.setop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-	local g=Duel.SelectMatchingCard(tp,c88667504.setfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c88667504.setfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
 	if g:GetCount()>0 then
-		Duel.SSet(tp,g:GetFirst())
+		Duel.SSet(tp,g)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end

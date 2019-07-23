@@ -32,5 +32,6 @@ function c80831552.immcon(e)
 	return Duel.IsExistingMatchingCard(c80831552.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
 end
 function c80831552.efilter(e,re)
-	return re:GetOwnerPlayer()~=e:GetHandlerPlayer() and re:IsActiveType(TYPE_MONSTER) and re:IsActivated()
+	return re:GetOwnerPlayer()~=e:GetHandlerPlayer()
+		and re:IsActiveType(TYPE_MONSTER) and re:IsActivated() and re:GetHandler():IsLinkBelow(3)
 end

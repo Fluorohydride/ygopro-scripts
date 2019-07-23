@@ -61,7 +61,7 @@ function c27352108.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsLocation(LOCATION_GRAVE) and r==REASON_LINK
 end
 function c27352108.thfilter(c)
-	return c:IsAttribute(ATTRIBUTE_DARK)
+	return c:IsAttribute(ATTRIBUTE_DARK) and c:IsAbleToHand()
 end
 function c27352108.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c27352108.thfilter(chkc) and chkc~=e:GetHandler() end
@@ -71,7 +71,7 @@ function c27352108.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c27352108.thfilter2(c)
-	return c:IsType(TYPE_MONSTER)
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c27352108.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

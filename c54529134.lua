@@ -39,6 +39,7 @@ function c54529134.activate(e,tp,eg,ep,ev,re,r,rp)
 	if sc then
 		sc:SetMaterial(Group.FromCards(tc))
 		Duel.SendtoGrave(tc,REASON_EFFECT+REASON_MATERIAL+REASON_LINK)
+		Duel.BreakEffect()
 		Duel.SpecialSummon(sc,SUMMON_TYPE_LINK,tp,tp,false,false,POS_FACEUP)
 		sc:CompleteProcedure()
 	end

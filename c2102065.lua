@@ -27,7 +27,7 @@ function c2102065.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c2102065.atkfilter1(c)
-	return c:IsRace(ATTRIBUTE_WATER) and c:GetAttack()>0
+	return c:IsAttribute(ATTRIBUTE_WATER) and c:GetAttack()>0
 end
 function c2102065.atktg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c2102065.atkfilter1(chkc) end
@@ -48,7 +48,7 @@ function c2102065.atkop1(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c2102065.atkfilter2(c)
-	return c:IsFaceup() and c:IsRace(ATTRIBUTE_WATER)
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER)
 end
 function c2102065.atktg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c2102065.atkfilter2(chkc) end
