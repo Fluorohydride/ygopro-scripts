@@ -1033,7 +1033,7 @@ function Auxiliary.FConditionMix(insf,sub,...)
 				local notfusion=chkfnf&0x100>0
 				local concat_fusion=chkfnf&0x200>0
 				local sub=(sub or notfusion) and not concat_fusion
-				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub,table.unpack(funs))
+				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub,concat_fusion,table.unpack(funs))
 				if gc then
 					if not mg:IsContains(gc) then return false end
 					Duel.SetSelectedCard(Group.FromCards(gc))
@@ -1049,15 +1049,16 @@ function Auxiliary.FOperationMix(insf,sub,...)
 				local notfusion=chkfnf&0x100>0
 				local concat_fusion=chkfnf&0x200>0
 				local sub=(sub or notfusion) and not concat_fusion
-				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,table.unpack(funs))
+				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,concat_fusion,table.unpack(funs))
 				if gc then Duel.SetSelectedCard(Group.FromCards(gc)) end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 				local sg=mg:SelectSubGroup(tp,Auxiliary.FCheckMixGoal,false,#funs,#funs,tp,c,sub,chkfnf,table.unpack(funs))
 				Duel.SetFusionMaterial(sg)
 			end
 end
-function Auxiliary.FConditionFilterMix(c,fc,sub,...)
-	if not c:IsCanBeFusionMaterial(fc) then return false end
+function Auxiliary.FConditionFilterMix(c,fc,sub,concat_fusion,...)
+	local fusion_type=concat_fusion and SUMMON_TYPE_SPECIAL or SUMMON_TYPE_FUSION
+	if not c:IsCanBeFusionMaterial(fc,fusion_type) then return false end
 	for i,f in ipairs({...}) do
 		if f(c,fc,sub) then return true end
 	end
@@ -1125,7 +1126,7 @@ function Auxiliary.FConditionMixRep(insf,sub,fun1,minc,maxc,...)
 				local notfusion=chkfnf&0x100>0
 				local concat_fusion=chkfnf&0x200>0
 				local sub=(sub or notfusion) and not concat_fusion
-				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub,fun1,table.unpack(funs))
+				local mg=g:Filter(Auxiliary.FConditionFilterMix,c,c,sub,concat_fusion,fun1,table.unpack(funs))
 				if gc then
 					if not mg:IsContains(gc) then return false end
 					local sg=Group.CreateGroup()
@@ -1143,7 +1144,7 @@ function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
 				local notfusion=chkfnf&0x100>0
 				local concat_fusion=chkfnf&0x200>0
 				local sub=(sub or notfusion) and not concat_fusion
-				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,fun1,table.unpack(funs))
+				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,concat_fusion,fun1,table.unpack(funs))
 				local sg=Group.CreateGroup()
 				if gc then sg:AddCard(gc) end
 				while sg:GetCount()<maxc+#funs do
