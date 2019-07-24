@@ -14,7 +14,7 @@ function c17655904.initial_effect(c)
 end
 c17655904.card_code_list={89631139}
 function c17655904.counterfilter(c)
-    return not c:IsCode(89631139)
+	return not c:IsCode(89631139)
 end
 function c17655904.cfilter(c)
 	return c:IsFaceup() and c:IsCode(89631139)

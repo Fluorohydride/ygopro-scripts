@@ -68,7 +68,7 @@ function c68295149.tgval(e,re,rp)
 	return rp==1-e:GetHandlerPlayer() and re:IsActiveType(TYPE_MONSTER)
 end
 function c68295149.repfilter(c)
-	return c:IsType(TYPE_RITUAL+TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ) and c:IsAbleToRemove()
+	return c:IsType(TYPE_MONSTER) and c:IsType(TYPE_RITUAL+TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ) and c:IsAbleToRemove()
 end
 function c68295149.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
