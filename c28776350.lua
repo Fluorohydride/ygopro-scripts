@@ -73,7 +73,7 @@ function c28776350.actg(e,tp,eg,ep,ev,re,r,rp,chk)
 		return g:FilterCount(Card.IsAbleToHand,nil)>0
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
-	c28776350.announce_filter={TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK,OPCODE_ISTYPE,OPCODE_NOT}
+	getmetatable(e:GetHandler()).announce_filter={TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK,OPCODE_ISTYPE,OPCODE_NOT}
 	local ac=Duel.AnnounceCard(tp,table.unpack(c28776350.announce_filter))
 	Duel.SetTargetParam(ac)
 	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,0)

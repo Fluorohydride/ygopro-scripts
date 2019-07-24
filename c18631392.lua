@@ -51,7 +51,7 @@ function c18631392.anctg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local g=Duel.GetDecktopGroup(tp,3)
 		return g:FilterCount(Card.IsAbleToHand,nil)>0
 	end
-	c18631392.announce_filter={TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK,OPCODE_ISTYPE,OPCODE_NOT}
+	getmetatable(e:GetHandler()).announce_filter={TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK,OPCODE_ISTYPE,OPCODE_NOT}
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
 	local ac1=Duel.AnnounceCard(tp,table.unpack(c18631392.announce_filter))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
