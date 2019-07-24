@@ -1,4 +1,4 @@
---ギミック・パペット－テラー・ベビー
+--ギミック・パペット－ビスク・ドール
 function c79086452.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
