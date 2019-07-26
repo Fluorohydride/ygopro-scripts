@@ -15,18 +15,13 @@ function c2266498.cfilter(c,e,tp,m,ft)
 	if c.mat_filter then
 		m=m:Filter(c.mat_filter,nil,tp)
 	end
-	local sg=Group.CreateGroup()
-	return m:IsExists(c2266498.spselect,1,nil,c,0,ft,m,sg)
-end
-function c2266498.spgoal(mc,ct,sg)
-	return sg:CheckWithSumEqual(Card.GetRitualLevel,mc:GetLevel(),ct,ct,mc) and sg:GetClassCount(Card.GetCode)==ct
-end
-function c2266498.spselect(c,mc,ct,ft,m,sg)
-	sg:AddCard(c)
-	ct=ct+1
-	local res=(ft>=ct and c2266498.spgoal(mc,ct,sg)) or m:IsExists(c2266498.spselect,1,sg,mc,ct,ft,m,sg)
-	sg:RemoveCard(c)
+	aux.GCheckAdditional=aux.RitualCheckAdditional(c,c:GetLevel(),"Equal")
+	local res=m:CheckSubGroup(c2266498.fselect,1,math.min(c:GetLevel(),ft),c)
+	aux.GCheckAdditional=nil
 	return res
+end
+function c2266498.fselect(g,mc)
+	return aux.dncheck(g) and g:CheckWithSumEqual(Card.GetRitualLevel,mc:GetLevel(),g:GetCount(),g:GetCount(),mc)
 end
 function c2266498.filter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x106) and Duel.IsPlayerCanRelease(tp,c)
@@ -55,22 +50,13 @@ function c2266498.activate(e,tp,eg,ep,ev,re,r,rp)
 		if tc.mat_filter then
 			mg=mg:Filter(tc.mat_filter,nil,tp)
 		end
-		local sg=Group.CreateGroup()
-		for i=0,98 do
-			local cg=mg:Filter(c2266498.spselect,sg,tc,i,ft,mg,sg)
-			if cg:GetCount()==0 then break end
-			local min=1
-			if c2266498.spgoal(tc,i,sg) then
-				if not Duel.SelectYesNo(tp,210) then break end
-				min=0
-			end
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local g=cg:Select(tp,min,1,nil)
-			if g:GetCount()==0 then break end
-			sg:Merge(g)
-		end
-		if sg:GetCount()==0 then return end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Equal")
+		local sg=mg:SelectSubGroup(tp,c2266498.fselect,false,1,math.min(tc:GetLevel(),ft),tc)
+		aux.GCheckAdditional=nil
+		if not sg or sg:GetCount()==0 then return end
 		if Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)==sg:GetCount() then
+			Duel.BreakEffect()
 			local og=Duel.GetOperatedGroup()
 			Duel.ConfirmCards(1-tp,og)
 			tc:SetMaterial(og)
