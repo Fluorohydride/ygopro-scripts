@@ -57,9 +57,9 @@ end
 function c18551923.rmcost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if Duel.GetCurrentPhase()==PHASE_STANDBY then
-		e:GetHandler():RegisterFlagEffect(18551923,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY,0,2,Duel.GetTurnCount())
+		e:GetHandler():RegisterFlagEffect(18551923,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY,EFFECT_FLAG_OATH,2,Duel.GetTurnCount())
 	else
-		e:GetHandler():RegisterFlagEffect(18551923,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY,0,1,0)
+		e:GetHandler():RegisterFlagEffect(18551923,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY,EFFECT_FLAG_OATH,1,0)
 	end
 end
 function c18551923.rmcon1(e,tp,eg,ep,ev,re,r,rp)

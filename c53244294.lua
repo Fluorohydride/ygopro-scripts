@@ -54,7 +54,7 @@ function c53244294.ztg(e,tp,eg,ep,ev,re,r,rp,chk)
 		+Duel.GetLocationCount(1-tp,LOCATION_MZONE,PLAYER_NONE,0)
 		+Duel.GetLocationCount(tp,LOCATION_SZONE,PLAYER_NONE,0)
 		+Duel.GetLocationCount(1-tp,LOCATION_SZONE,PLAYER_NONE,0)>0 end
-	local dis=Duel.SelectDisableField(tp,1,LOCATION_ONFIELD,LOCATION_ONFIELD,0)
+	local dis=Duel.SelectDisableField(tp,1,LOCATION_ONFIELD,LOCATION_ONFIELD,0xe000e0)
 	e:SetLabel(dis)
 end
 function c53244294.zop(e,tp,eg,ep,ev,re,r,rp)

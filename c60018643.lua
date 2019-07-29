@@ -17,19 +17,6 @@ function c60018643.initial_effect(c)
 	e2:SetTarget(c60018643.thtg)
 	e2:SetOperation(c60018643.thop)
 	c:RegisterEffect(e2)
-	if not c60018643.global_check then
-		c60018643.global_check=true
-		local e3=Effect.CreateEffect(c)
-		e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e3:SetCode(EVENT_PHASE_START+PHASE_DRAW)
-		e3:SetOperation(c60018643.clear)
-		Duel.RegisterEffect(e3,0)
-	end
-end
-c60018643.attlimit=0
-function c60018643.clear(e,tp,eg,ep,ev,re,r,rp)
-	c60018643.attlimit=0
 end
 function c60018643.cfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0x101) and c:IsControler(tp) and bit.band(c:GetSummonLocation(),LOCATION_EXTRA)~=0
@@ -41,8 +28,7 @@ function c60018643.tgfilter(c,tp,eg)
 	return eg:IsContains(c) and Duel.IsExistingMatchingCard(c60018643.thfilter,tp,LOCATION_DECK,0,1,nil,c:GetAttribute())
 end
 function c60018643.thfilter(c,att)
-	local lim=c60018643.attlimit
-	return c:IsRace(RACE_CYBERSE) and c:IsAttribute(att) and (lim==0 or not c:IsAttribute(lim)) and c:IsAbleToHand()
+	return c:IsRace(RACE_CYBERSE) and c:IsAttribute(att) and c:IsAbleToHand()
 end
 function c60018643.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c60018643.tgfilter(chkc,tp,eg) end
@@ -67,7 +53,15 @@ function c60018643.thop(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetCount()>0 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,g)
-			c60018643.attlimit=c60018643.attlimit+att
+			local e0=Effect.CreateEffect(c)
+			e0:SetType(EFFECT_TYPE_FIELD)
+			e0:SetCode(EFFECT_CANNOT_TO_HAND)
+			e0:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+			e0:SetTargetRange(1,0)
+			e0:SetTarget(c60018643.thlimit)
+			e0:SetLabel(att)
+			e0:SetReset(RESET_PHASE+PHASE_END)
+			Duel.RegisterEffect(e0,tp)
 		end
 	end
 	local e1=Effect.CreateEffect(c)
@@ -78,6 +72,9 @@ function c60018643.thop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTarget(c60018643.splimit)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
+end
+function c60018643.thlimit(e,c,tp,re)
+	return c:IsAttribute(e:GetLabel()) and re and re:GetHandler():IsCode(60018643)
 end
 function c60018643.splimit(e,c)
 	return not c:IsRace(RACE_CYBERSE) and c:IsLocation(LOCATION_EXTRA)

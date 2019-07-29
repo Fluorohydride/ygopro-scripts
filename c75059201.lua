@@ -97,7 +97,7 @@ function c75059201.lvop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c75059201.aclimit(e,re,tp)
-	return re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:IsActiveType(TYPE_MONSTER)
 end
 function c75059201.actcon(e)
 	if not e:GetHandler():IsLevelAbove(7) then return false end

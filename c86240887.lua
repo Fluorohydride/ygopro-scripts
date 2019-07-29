@@ -60,5 +60,5 @@ function c86240887.target(e,c)
 	return c:IsRace(RACE_DRAGON)
 end
 function c86240887.aclimit(e,re,tp)
-	return re:GetHandler():IsRace(RACE_DRAGON) and re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:GetHandler():IsRace(RACE_DRAGON) and re:IsActiveType(TYPE_MONSTER)
 end

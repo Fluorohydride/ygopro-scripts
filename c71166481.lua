@@ -6,12 +6,14 @@ function c71166481.initial_effect(c)
 	--change effect
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(71166481,0))
+	e1:SetCategory(CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
 	e1:SetCondition(c71166481.chcon)
 	e1:SetCost(c71166481.chcost)
+	e1:SetTarget(c71166481.chtg)
 	e1:SetOperation(c71166481.chop)
 	c:RegisterEffect(e1)
 	--attach
@@ -32,6 +34,11 @@ end
 function c71166481.chcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,2,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,2,2,REASON_COST)
+end
+function c71166481.chtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
+		and Duel.IsPlayerCanDraw(1-tp,1) end
+	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,PLAYER_ALL,1)
 end
 function c71166481.chop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Group.CreateGroup()

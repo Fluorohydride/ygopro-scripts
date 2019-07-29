@@ -63,6 +63,8 @@ function c25542642.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
+		--workaround
+		Duel.AdjustInstantly(c)
 	end
 end
 function c25542642.tgval(e,c)
@@ -70,7 +72,6 @@ function c25542642.tgval(e,c)
 end
 function c25542642.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsStatus(STATUS_DESTROY_CONFIRMED) then return false end
 	local tc=c:GetFirstCardTarget()
 	return tc and eg:IsContains(tc)
 end

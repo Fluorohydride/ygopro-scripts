@@ -3,7 +3,7 @@ function c81470373.initial_effect(c)
 	--search and normal summon / gy
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(81470373,0))
-	e1:SetCategory(CATEGORY_SUMMON)
+	e1:SetCategory(CATEGORY_SUMMON+CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,81470373)
@@ -12,6 +12,10 @@ function c81470373.initial_effect(c)
 	e1:SetTarget(c81470373.sumtg)
 	e1:SetOperation(c81470373.sumop)
 	c:RegisterEffect(e1)
+	local e2=Effect.CreateEffect(c)
+	e2:SetValue(SUMMON_TYPE_NORMAL)
+	c:RegisterEffect(e2)
+	e1:SetLabelObject(e2)
 end
 function c81470373.sumcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
@@ -29,23 +33,11 @@ end
 function c81470373.acfilter(c,tp)
 	return c:IsCode(91351370) and not c:IsForbidden() and c:CheckUniqueOnField(tp)
 end
-function c81470373.ttcon(e,c,minc)
-	if c==nil then return true end
-	return minc==0 and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
-end
 function c81470373.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0
 			or not Duel.IsExistingMatchingCard(c81470373.acfilter,tp,LOCATION_DECK,0,1,nil,tp) then return false end
-		local c=e:GetHandler()
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_LIMIT_SUMMON_PROC)
-		e1:SetCondition(c81470373.ttcon)
-		c:RegisterEffect(e1)
-		local res=c:IsSummonable(true,nil) or c:IsAbleToGrave()
-		e1:Reset()
-		return res
+		return e:GetHandler():IsSummonable(true,e:GetLabelObject()) or e:GetHandler():IsAbleToGrave()
 	end
 end
 function c81470373.sumop(e,tp,eg,ep,ev,re,r,rp)
@@ -71,22 +63,15 @@ function c81470373.sumop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c81470373.tgop)
 		tc:RegisterEffect(e1)
 		if not c:IsRelateToEffect(e) then return end
-		Duel.BreakEffect()
-		--summon
-		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_SINGLE)
-		e2:SetCode(EFFECT_LIMIT_SUMMON_PROC)
-		e2:SetCondition(c81470373.ttcon)
-		c:RegisterEffect(e2)
-		if c:IsSummonable(true,nil)
+		local se=e:GetLabelObject()
+		if c:IsSummonable(true,se)
 			and (not c:IsAbleToGrave() or Duel.SelectOption(tp,1151,1191)==0) then
 			Duel.BreakEffect()
-			Duel.Summon(tp,c,true,nil)
+			Duel.Summon(tp,c,true,se)
 		else
 			Duel.BreakEffect()
 			Duel.SendtoGrave(c,REASON_EFFECT)
 		end
-		e2:Reset()
 	end
 end
 function c81470373.splimit(e,c)

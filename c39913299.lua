@@ -17,10 +17,10 @@ function c39913299.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,1)
 		and Duel.IsExistingMatchingCard(Card.IsAbleToHand,tp,LOCATION_DECK,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
-	c39913299.announce_filter={TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK,OPCODE_ISTYPE,OPCODE_NOT}
-	local ac=Duel.AnnounceCardFilter(tp,table.unpack(c39913299.announce_filter))
+	getmetatable(e:GetHandler()).announce_filter={TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK,OPCODE_ISTYPE,OPCODE_NOT}
+	local ac=Duel.AnnounceCard(tp,table.unpack(getmetatable(e:GetHandler()).announce_filter))
 	Duel.SetTargetParam(ac)
-	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,ANNOUNCE_CARD_FILTER)
+	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,0)
 end
 function c39913299.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmDecktop(tp,1)

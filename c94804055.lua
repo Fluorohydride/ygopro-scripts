@@ -8,13 +8,11 @@ function c94804055.initial_effect(c)
 	--quick
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(94804055,0))
-	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e2:SetCondition(c94804055.condition)
 	e2:SetCost(c94804055.cost)
-	e2:SetTarget(c94804055.target)
 	e2:SetOperation(c94804055.operation)
 	c:RegisterEffect(e2)
 	--maintain
@@ -43,12 +41,6 @@ function c94804055.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c94804055.cfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
-end
-function c94804055.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local tg=Duel.GetAttacker()
-	if chkc then return false end
-	if chk==0 then return tg:IsOnField() and tg:IsCanBeEffectTarget(e) end
-	Duel.SetTargetCard(tg)
 end
 function c94804055.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp

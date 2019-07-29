@@ -2,7 +2,7 @@
 function c12822541.initial_effect(c)
 	--tohand
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
+	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
@@ -37,7 +37,7 @@ function c12822541.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 	else
 		e:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
-		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
+		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_EXTRA)
 	end
 end
 function c12822541.thop(e,tp,eg,ep,ev,re,r,rp)

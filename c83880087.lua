@@ -71,5 +71,5 @@ function c83880087.rcon(e,tp,eg,ep,ev,re,r,rp)
 		and ep==e:GetOwnerPlayer() and ev==1
 end
 function c83880087.rop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
+	return Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end

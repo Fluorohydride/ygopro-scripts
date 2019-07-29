@@ -46,7 +46,7 @@ function c34945480.sumsuc(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c34945480.actlimit(e,re,tp)
-	return re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:IsActiveType(TYPE_MONSTER)
 end
 function c34945480.condition(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetHandler():GetOverlayGroup()

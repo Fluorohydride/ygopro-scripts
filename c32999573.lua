@@ -23,12 +23,8 @@ function c32999573.rcon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,LOCATION_HAND,0,1,nil)
 end
 function c32999573.rop(e,tp,eg,ep,ev,re,r,rp)
-	local ct=bit.band(ev,0xffff)
+	e:GetHandler():RegisterFlagEffect(32999573+ep,RESET_PHASE+PHASE_END,0,1)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,LOCATION_HAND,0,1,1,nil)
-	Duel.Remove(g,POS_FACEDOWN,REASON_EFFECT)
-	if ct>1 then
-		re:GetHandler():RemoveOverlayCard(tp,ct-1,ct-1,REASON_COST)
-	end
-	e:GetHandler():RegisterFlagEffect(32999573+ep,RESET_PHASE+PHASE_END,0,1)
+	return Duel.Remove(g,POS_FACEDOWN,REASON_COST)
 end

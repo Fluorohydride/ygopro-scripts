@@ -16,8 +16,7 @@ function c84530620.filter(c)
 		and c:GetCode()~=84530620 and c:IsSummonable(true,nil)
 end
 function c84530620.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c84530620.filter,tp,LOCATION_HAND,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c84530620.filter,tp,LOCATION_HAND,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_SUMMON,nil,1,0,0)
 end
 function c84530620.operation(e,tp,eg,ep,ev,re,r,rp)

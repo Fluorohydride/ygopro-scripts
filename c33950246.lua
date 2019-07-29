@@ -30,13 +30,13 @@ function c33950246.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c33950246.aclimit(e,re,tp)
-	return re:IsActiveType(TYPE_FLIP) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:IsActiveType(TYPE_FLIP)
 end
 function c33950246.disable(e,c)
 	return c:IsType(TYPE_FLIP)
 end
 function c33950246.disop(e,tp,eg,ep,ev,re,r,rp)
-	if re:IsActiveType(TYPE_FLIP) then 
-		Duel.NegateEffect(ev) 
+	if re:IsActiveType(TYPE_FLIP) then
+		Duel.NegateEffect(ev)
 	end
 end

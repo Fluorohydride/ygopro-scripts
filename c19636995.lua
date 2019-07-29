@@ -55,10 +55,11 @@ function c19636995.desfilter(c,col)
 end
 function c19636995.descon(e,tp,eg,ep,ev,re,r,rp)
 	local col=aux.GetColumn(e:GetHandler())
-	return col and eg:IsExists(c19636995.desfilter,1,nil,col)
+	return col and eg:IsExists(c19636995.desfilter,1,e:GetHandler(),col)
 end
 function c19636995.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return e:GetHandler():GetFlagEffect(19636995)==0 end
+	e:GetHandler():RegisterFlagEffect(19636995,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 end
 function c19636995.desop(e,tp,eg,ep,ev,re,r,rp)

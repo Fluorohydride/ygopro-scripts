@@ -14,10 +14,10 @@ function c15800838.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0
 		and Duel.IsExistingMatchingCard(nil,tp,LOCATION_HAND,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
-	c15800838.announce_filter={TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK,OPCODE_ISTYPE,OPCODE_NOT}
-	local ac=Duel.AnnounceCardFilter(tp,table.unpack(c15800838.announce_filter))
+	getmetatable(e:GetHandler()).announce_filter={TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK,OPCODE_ISTYPE,OPCODE_NOT}
+	local ac=Duel.AnnounceCard(tp,table.unpack(getmetatable(e:GetHandler()).announce_filter))
 	Duel.SetTargetParam(ac)
-	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,ANNOUNCE_CARD_FILTER)
+	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,0)
 end
 function c15800838.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ac=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)

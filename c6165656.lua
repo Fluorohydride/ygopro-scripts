@@ -60,7 +60,8 @@ function c6165656.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c6165656.winop(e,tp,eg,ep,ev,re,r,rp)
 	local WIN_REASON_DISASTER_LEO=0x18
-	if Duel.GetTurnPlayer()==tp and Duel.GetLP(1-tp)<=2000 and e:GetHandler():GetOverlayCount()==0 then
+	if Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_END
+		and Duel.GetLP(1-tp)<=2000 and e:GetHandler():GetOverlayCount()==0 then
 		Duel.Win(tp,WIN_REASON_DISASTER_LEO)
 	end
 end

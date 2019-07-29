@@ -43,7 +43,7 @@ function c91969909.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
 	local ac=Duel.AnnounceCard(tp)
 	Duel.SetTargetParam(ac)
-	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,ANNOUNCE_CARD)
+	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,0)
 end
 function c91969909.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local ac=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)

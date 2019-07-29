@@ -50,5 +50,5 @@ function c94016752.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c94016752.aclimit(e,re,tp)
-	return re:GetHandler():IsCode(e:GetLabel()) and re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsImmuneToEffect(e)
+	return re:GetHandler():IsCode(e:GetLabel()) and re:IsActiveType(TYPE_MONSTER)
 end

@@ -21,6 +21,6 @@ function c92065772.operation(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterEffect(e1)
 end
 function c92065772.disop(e,tp)
-	local dis1=Duel.SelectDisableField(tp,1,LOCATION_MZONE,LOCATION_MZONE,0)
+	local dis1=Duel.SelectDisableField(tp,1,LOCATION_MZONE,LOCATION_MZONE,0xe000e0)
 	return dis1
 end

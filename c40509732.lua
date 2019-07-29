@@ -10,7 +10,7 @@ function c40509732.initial_effect(c)
 	e1:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(0,1)
-	e1:SetValue(c40509732.aclimit)
+	e1:SetValue(1)
 	e1:SetCondition(c40509732.con)
 	c:RegisterEffect(e1)
 	--disable
@@ -35,9 +35,6 @@ function c40509732.initial_effect(c)
 	e4:SetTarget(c40509732.sptg)
 	e4:SetOperation(c40509732.spop)
 	c:RegisterEffect(e4)
-end
-function c40509732.aclimit(e,re,tp)
-	return not re:GetHandler():IsImmuneToEffect(e)
 end
 function c40509732.con(e)
 	local c=e:GetHandler()

@@ -23,21 +23,20 @@ function c50078320.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c50078320.condition(e,tp,eg,ep,ev,re,r,rp)
-	local ex,cg,ct,cp,cv=Duel.GetOperationInfo(ev,CATEGORY_ANNOUNCE)
-	return rp==1-tp and ex and bit.band(cv,ANNOUNCE_CARD+ANNOUNCE_CARD_FILTER)~=0
+	local ex=Duel.GetOperationInfo(ev,CATEGORY_ANNOUNCE)
+	return rp==1-tp and ex
 end
 function c50078320.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c50078320.operation(e,tp,eg,ep,ev,re,r,rp)
-	local ex,cg,ct,cp,cv=Duel.GetOperationInfo(ev,CATEGORY_ANNOUNCE)
 	local code=Duel.GetChainInfo(ev,CHAININFO_TARGET_PARAM)
 	local ac=0
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
-	if bit.band(cv,ANNOUNCE_CARD)~=0 then
-		--c:IsType(cv) and not c:IsCode(code)
-		ac=Duel.AnnounceCardFilter(tp,cv,OPCODE_ISTYPE,code,OPCODE_ISCODE,OPCODE_NOT,OPCODE_AND)
+	if re:GetHandler().announce_filter==nil then
+		--not c:IsCode(code)
+		ac=Duel.AnnounceCard(tp,code,OPCODE_ISCODE,OPCODE_NOT)
 	else
 		local afilter={table.unpack(re:GetHandler().announce_filter)}
 		--and not c:IsCode(code)
@@ -45,7 +44,7 @@ function c50078320.operation(e,tp,eg,ep,ev,re,r,rp)
 		table.insert(afilter,OPCODE_ISCODE)
 		table.insert(afilter,OPCODE_NOT)
 		table.insert(afilter,OPCODE_AND)
-		ac=Duel.AnnounceCardFilter(tp,table.unpack(afilter))
+		ac=Duel.AnnounceCard(tp,table.unpack(afilter))
 	end
 	Duel.ChangeTargetParam(ev,ac)
 end
