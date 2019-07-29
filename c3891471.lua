@@ -36,6 +36,7 @@ function c3891471.initial_effect(c)
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_TARGET)
 	e5:SetCode(EFFECT_ADD_TYPE)
+	e5:SetRange(LOCATION_SZONE)
 	e5:SetValue(TYPE_TUNER)
 	c:RegisterEffect(e5)
 end

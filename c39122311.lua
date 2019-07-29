@@ -35,6 +35,7 @@ function c39122311.initial_effect(c)
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_TARGET)
 	e5:SetCode(EFFECT_CHANGE_RACE)
+	e5:SetRange(LOCATION_SZONE)
 	e5:SetValue(RACE_WYRM)
 	c:RegisterEffect(e5)
 end

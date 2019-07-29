@@ -15,6 +15,7 @@ function c12503902.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_TARGET)
 	e2:SetCode(EFFECT_UPDATE_ATTACK)
+	e2:SetRange(LOCATION_SZONE)
 	e2:SetValue(500)
 	c:RegisterEffect(e2)
 	--Destroy

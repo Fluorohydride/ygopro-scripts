@@ -21,6 +21,7 @@ function c63626024.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_TARGET)
 	e3:SetCode(EFFECT_ADD_SETCODE)
+	e3:SetRange(LOCATION_SZONE)
 	e3:SetValue(0x2b)
 	c:RegisterEffect(e3)
 end

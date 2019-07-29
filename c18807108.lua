@@ -22,6 +22,7 @@ function c18807108.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_TARGET)
 	e3:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
+	e3:SetRange(LOCATION_SZONE)
 	c:RegisterEffect(e3)
 	--cannot attack
 	local e4=e3:Clone()

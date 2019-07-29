@@ -29,11 +29,13 @@ function c23440062.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_TARGET)
 	e4:SetCode(EFFECT_DISABLE)
+	e4:SetRange(LOCATION_SZONE)
 	c:RegisterEffect(e4)
 	--cannot attack
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_TARGET)
 	e5:SetCode(EFFECT_CANNOT_ATTACK)
+	e5:SetRange(LOCATION_SZONE)
 	c:RegisterEffect(e5)
 end
 function c23440062.cost(e,tp,eg,ep,ev,re,r,rp,chk)

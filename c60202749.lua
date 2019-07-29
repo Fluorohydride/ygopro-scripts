@@ -28,6 +28,7 @@ function c60202749.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_TARGET)
 	e4:SetCode(EFFECT_DISABLE)
+	e4:SetRange(LOCATION_SZONE)
 	c:RegisterEffect(e4)
 end
 function c60202749.filter(c,e,tp)

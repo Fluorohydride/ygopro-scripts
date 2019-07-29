@@ -28,11 +28,13 @@ function c22082163.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_TARGET)
 	e4:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
+	e4:SetRange(LOCATION_SZONE)
 	c:RegisterEffect(e4)
 	--must attack
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_TARGET)
 	e5:SetCode(EFFECT_MUST_ATTACK)
+	e5:SetRange(LOCATION_SZONE)
 	c:RegisterEffect(e5)
 end
 function c22082163.filter(c,e,tp)
