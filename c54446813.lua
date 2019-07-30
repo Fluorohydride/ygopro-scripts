@@ -30,7 +30,7 @@ function c54446813.btcon(e,tp,eg,ep,ev,re,r,rp)
 	if not tc then return false end
 	local bc=tc:GetBattleTarget()
 	e:SetLabelObject(tc)
-	return tc:IsControler(tp) and tc:IsSetCard(0x11a) and tc~=e:GetHandler() and bc and bc:IsAttackAbove(tc)
+	return tc:IsControler(tp) and tc:IsSetCard(0x11a) and tc~=e:GetHandler() and bc and bc:IsAttackAbove(tc:GetAttack())
 end
 function c54446813.btcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
