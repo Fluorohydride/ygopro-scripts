@@ -41,6 +41,7 @@ function c89355716.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c89355716.spcfilter(chkc,e,tp,ft) end
 	if chk==0 then return Duel.IsExistingTarget(c89355716.spcfilter,tp,LOCATION_MZONE,0,1,e:GetHandler(),e,tp,ft) end
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	Duel.SelectTarget(tp,c89355716.spcfilter,tp,LOCATION_MZONE,0,1,1,e:GetHandler(),e,tp,ft)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)

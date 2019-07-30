@@ -45,6 +45,7 @@ function c91299846.tfcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c91299846.tftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>-1 end
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c91299846.tfop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end

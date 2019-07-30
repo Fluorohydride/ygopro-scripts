@@ -37,6 +37,7 @@ function c16849715.retcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c16849715.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetHandler():GetBattleTarget(),1,0,0)
 end
 function c16849715.retop(e,tp,eg,ep,ev,re,r,rp)

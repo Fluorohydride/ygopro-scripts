@@ -42,6 +42,7 @@ function c52834429.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetParam(1)
 	e:SetLabelObject(ec)
 	ec:CreateEffectRelation(e)
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,ec,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,p,1)
 end
