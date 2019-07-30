@@ -18,7 +18,7 @@ function c10045474.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c10045474.disfilter(c)
-	return c:IsFaceup() and not c:IsDisabled() and not c:IsType(TYPE_NORMAL)
+	return c:IsFaceup() and not c:IsDisabled() and c:IsType(TYPE_EFFECT)
 end
 function c10045474.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c10045474.disfilter(chkc) end
