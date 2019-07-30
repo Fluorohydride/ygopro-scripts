@@ -1947,10 +1947,10 @@ function Auxiliary.IsMaterialListSetCard(c,setcode)
 	if not c.material_setcode then return false end
 	if type(c.material_setcode)=='table' then
 		for i,scode in ipairs(c.material_setcode) do
-			if setcode==scode&0xfff then return true end
+			if setcode&0xfff==scode&0xfff and setcode&scode==setcode then return true end
 		end	
 	else
-		return setcode==c.material_setcode&0xfff
+		return setcode&0xfff==c.material_setcode&0xfff and setcode&c.material_setcode==setcode
 	end
 	return false
 end
