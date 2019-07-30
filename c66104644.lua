@@ -40,6 +40,7 @@ function c66104644.initial_effect(c)
 	--special summon
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(66104644,2))
+	e5:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e5:SetType(EFFECT_TYPE_QUICK_O)
 	e5:SetCode(EVENT_FREE_CHAIN)
 	e5:SetRange(LOCATION_MZONE)
