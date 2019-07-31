@@ -18,6 +18,7 @@ function c6203182.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
 	e3:SetCode(EFFECT_CANNOT_BE_BATTLE_TARGET)
+	e3:SetValue(aux.imval1)
 	c:RegisterEffect(e3)
 	--control
 	local e4=Effect.CreateEffect(c)
