@@ -100,7 +100,7 @@ function c32615065.spcon(e,tp,eg,ep,ev,re,r,rp)
 		and rp==1-tp and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c32615065.spfilter(c,e,tp)
-	return c:IsCode(96220350) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)
+	return c:IsCode(96220350) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial()
 end
 function c32615065.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0

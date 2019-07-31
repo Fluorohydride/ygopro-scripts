@@ -2,7 +2,7 @@
 function c1516510.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcCodeFun(c,16178681,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),1,true,false)
+	aux.AddFusionProcCodeFun(c,16178681,aux.FilterBoolFunction(Card.IsRace,RACE_SPELLCASTER),1,true,true)
 	--multi attack
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)

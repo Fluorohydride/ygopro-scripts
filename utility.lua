@@ -1821,7 +1821,7 @@ function Auxiliary.AddLinkProcedure(c,f,min,max,gf)
 	c:RegisterEffect(e1)
 end
 function Auxiliary.LConditionFilter(c,f,lc)
-	return c:IsFaceup() and c:IsCanBeLinkMaterial(lc) and (not f or f(c))
+	return (c:IsFaceup() or not c:IsOnField()) and c:IsCanBeLinkMaterial(lc) and (not f or f(c))
 end
 function Auxiliary.LExtraFilter(c,f,lc,tp)
 	if c:IsLocation(LOCATION_ONFIELD) and not c:IsFaceup() then return false end
