@@ -58,14 +58,13 @@ function c68431965.lvop1(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_CANNOT_ACTIVATE)
 		e2:SetTargetRange(1,0)
 		e2:SetValue(c68431965.aclimit)
-		e2:SetLabelObject(g:GetFirst())
+		e2:SetLabel(g:GetFirst():GetCode())
 		e2:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e2,tp)
 	end
 end
 function c68431965.aclimit(e,re,tp)
-	local tc=e:GetLabelObject()
-	return re:GetHandler():IsCode(tc:GetCode())
+	return re:GetHandler():IsCode(e:GetLabel())
 end
 function c68431965.sccon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
