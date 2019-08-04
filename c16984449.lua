@@ -31,7 +31,8 @@ function c16984449.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c16984449.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==1 then
+	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		tc:EnableDualState()
+		Duel.SpecialSummonComplete()
 	end
 end
