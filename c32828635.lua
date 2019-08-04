@@ -21,17 +21,14 @@ function c32828635.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 c32828635.fit_monster={46427957,72426662}
-function c32828635.cfilter(c,e,tp,m)
-	if bit.band(c:GetType(),0x81)~=0x81 or not c:IsCode(46427957,72426662)
-		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
-	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
-	return mg:CheckWithSumGreater(Card.GetRitualLevel,c:GetLevel(),c)
+function c32828635.cfilter(c,e,tp)
+	return c:IsCode(46427957,72426662)
 end
 function c32828635.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local mg1=Duel.GetRitualMaterial(tp)
 		mg1:Remove(Card.IsLocation,nil,LOCATION_HAND)
-		return Duel.IsExistingMatchingCard(c32828635.cfilter,tp,LOCATION_HAND,0,1,nil,e,tp,mg1)
+		return Duel.IsExistingMatchingCard(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,nil,c32828635.cfilter,e,tp,mg1,nil,Card.GetLevel,"Greater")
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
@@ -39,12 +36,20 @@ function c32828635.activate(e,tp,eg,ep,ev,re,r,rp)
 	local mg1=Duel.GetRitualMaterial(tp)
 	mg1:Remove(Card.IsLocation,nil,LOCATION_HAND)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local tg=Duel.SelectMatchingCard(tp,c32828635.cfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp,mg1)
+	local tg=Duel.SelectMatchingCard(tp,aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,1,nil,c32828635.cfilter,e,tp,mg1,nil,Card.GetLevel,"Greater")
 	local tc=tg:GetFirst()
 	if tc then
 		local mg=mg1:Filter(Card.IsCanBeRitualMaterial,tc,tc)
+		if tc.mat_filter then
+			mg=mg:Filter(tc.mat_filter,tc,tp)
+		else
+			mg:RemoveCard(tc)
+		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local mat=mg:SelectWithSumGreater(tp,Card.GetRitualLevel,tc:GetLevel(),tc)
+		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Greater")
+		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,false,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
+		aux.GCheckAdditional=nil
+		if not mat or mat:GetCount()==0 then return end
 		tc:SetMaterial(mat)
 		Duel.ReleaseRitualMaterial(mat)
 		Duel.SpecialSummon(tc,SUMMON_TYPE_RITUAL,tp,tp,false,true,POS_FACEUP)
