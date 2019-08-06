@@ -64,8 +64,6 @@ function c25542642.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
-		--workaround
-		Duel.AdjustInstantly(c)
 	end
 end
 function c25542642.tgval(e,c)
