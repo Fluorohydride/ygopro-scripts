@@ -32,7 +32,7 @@ function c94303232.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_TARGET)
 	e4:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
 	e4:SetRange(LOCATION_SZONE)
-	e4:SetValue(c94303232.effval)
+	e4:SetTarget(c94303232.efftg)
 	c:RegisterEffect(e4)
 	local e5=e4:Clone()
 	e5:SetCode(EFFECT_CANNOT_ATTACK)
@@ -84,7 +84,7 @@ function c94303232.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c94303232.effval(e,c)
+function c94303232.efftg(e,c)
 	return c~=e:GetHandler():GetEquipTarget()
 end
 function c94303232.rmcon(e,tp,eg,ep,ev,re,r,rp)
