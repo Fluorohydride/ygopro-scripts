@@ -11,7 +11,7 @@ function c40509732.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(0,1)
 	e1:SetValue(1)
-	e1:SetCondition(c40509732.con)
+	e1:SetCondition(c40509732.actcon)
 	c:RegisterEffect(e1)
 	--disable
 	local e2=Effect.CreateEffect(c)
@@ -44,6 +44,10 @@ function c40509732.initial_effect(c)
 	e4:SetTarget(c40509732.sptg)
 	e4:SetOperation(c40509732.spop)
 	c:RegisterEffect(e4)
+end
+function c40509732.actcon(e)
+	local c=e:GetHandler()
+	return (Duel.GetAttacker()==c and c:GetBattleTarget()) or Duel.GetAttackTarget()==c
 end
 function c40509732.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetBattleTarget()
