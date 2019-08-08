@@ -23,12 +23,16 @@ function c6713443.filter(c,e,tp)
 	return c:IsSetCard(0x79) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c6713443.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c6713443.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
 end
 function c6713443.sfilter(c)
 	return c:IsSetCard(0x7c) and c:GetCode()~=6713443 and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable()
+end
+function c6713443.fselect(g,ft)
+	if g:IsExists(Card.IsType,1,nil,TYPE_FIELD) then ft=ft+1 end
+	return g:GetCount()<=ft and not g:IsExists(Card.IsType,2,nil,TYPE_FIELD)
 end
 function c6713443.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
@@ -41,12 +45,11 @@ function c6713443.spop(e,tp,eg,ep,ev,re,r,rp)
 	if ct>0 then
 		local ft2=Duel.GetLocationCount(tp,LOCATION_SZONE)
 		if ft2>ct then ft2=ct end
-		if ft2<=0 then return end
 		local sg=Duel.GetMatchingGroup(c6713443.sfilter,tp,LOCATION_DECK,0,nil)
-		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(6713443,0)) then
+		if sg:CheckSubGroup(c6713443.fselect,1,99,ft2) and Duel.SelectYesNo(tp,aux.Stringid(6713443,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-			local setg=sg:Select(tp,1,ft2,nil)
+			local setg=sg:SelectSubGroup(tp,c6713443.fselect,false,1,99,ft2)
 			Duel.SSet(tp,setg)
 		end
 	end
