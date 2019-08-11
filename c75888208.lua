@@ -46,13 +46,10 @@ function c75888208.spop1(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-function c75888208.cfilter(c)
-	return c:IsFaceup() and c:IsCode(74665651)
-end
 function c75888208.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	return ph==PHASE_MAIN1 or (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE) or ph==PHASE_MAIN2
-		and Duel.IsExistingMatchingCard(c75888208.cfilter,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil)
+	return (ph==PHASE_MAIN1 or (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE) or ph==PHASE_MAIN2)
+		and Duel.IsEnvironment(74665651)
 end
 function c75888208.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end

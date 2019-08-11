@@ -45,13 +45,10 @@ function c49389190.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
-function c49389190.cfilter(c)
-	return c:IsFaceup() and c:IsCode(1050355)
-end
 function c49389190.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	return ph==PHASE_MAIN1 or (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE) or ph==PHASE_MAIN2
-		and Duel.IsExistingMatchingCard(c49389190.cfilter,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil)
+	return (ph==PHASE_MAIN1 or (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE) or ph==PHASE_MAIN2)
+		and Duel.IsEnvironment(1050355)
 end
 function c49389190.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end
