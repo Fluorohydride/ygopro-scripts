@@ -42,7 +42,6 @@ function c35255456.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ConfirmCards(1-tp,cf)
 		end
 		Duel.SendtoDeck(mat,nil,2,REASON_EFFECT)
-		Duel.BreakEffect()
 		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
 	end
 end
