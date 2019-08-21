@@ -34,5 +34,8 @@ function c59019082.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.DiscardDeck(tp,2,REASON_EFFECT)
 	local dg=Duel.GetOperatedGroup()
 	local d=dg:FilterCount(c59019082.filter,nil)
-	if d>0 then Duel.Draw(tp,d,REASON_EFFECT) end
+	if d>0 then
+		Duel.BreakEffect()
+		Duel.Draw(tp,d,REASON_EFFECT)
+	end
 end

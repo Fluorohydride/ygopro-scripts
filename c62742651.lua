@@ -47,6 +47,7 @@ function c62742651.damop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Damage(tp,dam,REASON_EFFECT)~=0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c62742651.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp,dam)
 		if g:GetCount()~=0 and Duel.SelectYesNo(tp,aux.Stringid(62742651,2)) then
+			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,1,nil)
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
