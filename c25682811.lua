@@ -47,7 +47,7 @@ function c25682811.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
 	local tc=sg:GetFirst()
 	while tc do
-		Duel.Equip(tp,tc,c,false)
+		Duel.Equip(tp,tc,c,false,true)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
@@ -57,6 +57,7 @@ function c25682811.eqop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 		tc=sg:GetNext()
 	end
+	Duel.EquipComplete()
 end
 function c25682811.eqlimit(e,c)
 	return e:GetOwner()==c

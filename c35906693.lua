@@ -75,7 +75,7 @@ function c35906693.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local sg=g:SelectSubGroup(tp,c35906693.eqcheck,false,1,ft)
 	local ec=sg:GetFirst()
 	while ec do
-		Duel.Equip(tp,ec,tc)
+		Duel.Equip(tp,ec,tc,true,true)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
@@ -86,6 +86,7 @@ function c35906693.eqop(e,tp,eg,ep,ev,re,r,rp)
 		ec:RegisterEffect(e1)
 		ec=sg:GetNext()
 	end
+	Duel.EquipComplete()
 end
 function c35906693.eqlimit(e,c)
 	return c==e:GetLabelObject()
