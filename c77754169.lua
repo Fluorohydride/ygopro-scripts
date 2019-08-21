@@ -4,6 +4,7 @@ function c77754169.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(77754169,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_EQUIP)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,77754169)
@@ -22,23 +23,26 @@ function c77754169.initial_effect(c)
 	e2:SetOperation(c77754169.desop)
 	c:RegisterEffect(e2)
 end
-function c77754169.eqfilter(c,tp)
-	return c:IsRace(RACE_INSECT) and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,2,c,c:GetCode()) and c:CheckUniqueOnField(tp)
+function c77754169.eqfilter(c,e,tp)
+	return c:IsRace(RACE_INSECT) and c:IsCanBeEffectTarget(e) and c:CheckUniqueOnField(tp)
+end
+function c77754169.fselect(g)
+	return g:GetClassCount(Card.GetCode)==1
 end
 function c77754169.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c77754169.eqfilter(chkc,tp) end
+	if chkc then return false end
+	local g=Duel.GetMatchingGroup(c77754169.eqfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
+	local ft=math.min((Duel.GetLocationCount(tp,LOCATION_SZONE)),3)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingTarget(c77754169.eqfilter,tp,LOCATION_GRAVE,0,1,nil,tp)
+		and g:CheckSubGroup(c77754169.fselect,1,ft)
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
-	local ct=math.min((Duel.GetLocationCount(tp,LOCATION_SZONE)),3)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectTarget(tp,c77754169.eqfilter,tp,LOCATION_GRAVE,0,1,ct,nil,tp)
-	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,g:GetCount(),0,0)
+	local sg=g:SelectSubGroup(tp,c77754169.fselect,false,1,ft)
+	Duel.SetTargetCard(sg)
+	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,sg,sg:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c77754169.spop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
@@ -46,7 +50,7 @@ function c77754169.spop(e,tp,eg,ep,ev,re,r,rp)
 		if ft<g:GetCount() then return end
 		Duel.BreakEffect()
 		for tc in aux.Next(g) do
-			Duel.Equip(tp,tc,c,false)
+			Duel.Equip(tp,tc,c,false,true)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
@@ -56,6 +60,7 @@ function c77754169.spop(e,tp,eg,ep,ev,re,r,rp)
 			tc:RegisterEffect(e1)
 			tc:RegisterFlagEffect(77754169,RESET_EVENT+RESETS_STANDARD,0,1)
 		end
+		Duel.EquipComplete()
 	end
 end
 function c77754169.eqlimit(e,c)
