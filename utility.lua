@@ -1958,7 +1958,7 @@ function Auxiliary.IsMaterialListSetCard(c,setcode)
 	if type(c.material_setcode)=='table' then
 		for i,scode in ipairs(c.material_setcode) do
 			if setcode&0xfff==scode&0xfff and setcode&scode==setcode then return true end
-		end	
+		end
 	else
 		return setcode&0xfff==c.material_setcode&0xfff and setcode&c.material_setcode==setcode
 	end
@@ -1998,6 +1998,13 @@ end
 function Auxiliary.SZoneSequence(seq)
 	if seq>4 then return nil end
 	return seq
+end
+--check for cards in zones
+function Auxiliary.IsSummonZone(c,zone,p)
+	local seq=c:GetSummonSequence()
+	local tp=p or 0
+	if c:IsControler(1-tp) then seq=seq+16 end
+	return bit.extract(zone,seq)~=0
 end
 --card effect disable filter(target)
 function Auxiliary.disfilter1(c)

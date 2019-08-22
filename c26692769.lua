@@ -57,12 +57,11 @@ function c26692769.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c26692769.descfilter(c,lg)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsAttribute(ATTRIBUTE_DARK) and lg:IsContains(c)
+function c26692769.descfilter(c,zone)
+	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsAttribute(ATTRIBUTE_DARK) and aux.IsSummonZone(c,zone)
 end
 function c26692769.descon(e,tp,eg,ep,ev,re,r,rp)
-	local lg=e:GetHandler():GetLinkedGroup()
-	return eg:IsExists(c26692769.descfilter,1,nil,lg)
+	return eg:IsExists(c26692769.descfilter,1,nil,e:GetHandler():GetLinkedZone())
 end
 function c26692769.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

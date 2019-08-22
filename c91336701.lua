@@ -58,12 +58,11 @@ function c91336701.ctop(e,tp,eg,ep,ev,re,r,rp)
 		e:GetHandler():AddCounter(0x1,1)
 	end
 end
-function c91336701.cfilter(c,g)
-	return c:IsFaceup() and g:IsContains(c) and c:IsRace(RACE_SPELLCASTER)
+function c91336701.cfilter(c,zone)
+	return c:IsFaceup() and c:IsRace(RACE_SPELLCASTER) and aux.IsSummonZone(c,zone)
 end
 function c91336701.ctcon2(e,tp,eg,ep,ev,re,r,rp)
-	local lg=e:GetHandler():GetLinkedGroup()
-	return lg and eg:IsExists(c91336701.cfilter,1,nil,lg)
+	return eg:IsExists(c91336701.cfilter,1,nil,e:GetHandler():GetLinkedZone())
 end
 function c91336701.atkval(e,c)
 	return c:GetCounter(0x1)*300

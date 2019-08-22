@@ -30,15 +30,8 @@ function c11674673.initial_effect(c)
 	e2:SetOperation(c11674673.spop)
 	c:RegisterEffect(e2)
 end
-function c11674673.thcfilter(c,ec)
-	if c:IsLocation(LOCATION_MZONE) then
-		return ec:GetLinkedGroup():IsContains(c)
-	else
-		return bit.extract(ec:GetLinkedZone(c:GetPreviousControler()),c:GetPreviousSequence())~=0
-	end
-end
 function c11674673.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c11674673.thcfilter,1,nil,e:GetHandler())
+	return eg:IsExists(aux.IsSummonZone,1,nil,e:GetHandler():GetLinkedZone())
 end
 function c11674673.cfilter(c)
 	return c:IsType(TYPE_SPELL) and c:IsAbleToRemoveAsCost()

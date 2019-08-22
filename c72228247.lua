@@ -43,12 +43,11 @@ end
 function c72228247.antg(e,c)
 	return e:GetHandler():GetLinkedGroup():IsContains(c)
 end
-function c72228247.cfilter(c,lg)
-	return c:IsType(TYPE_EFFECT) and lg:IsContains(c)
+function c72228247.cfilter(c,zone)
+	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and aux.IsSummonZone(c,zone)
 end
 function c72228247.thcon(e,tp,eg,ep,ev,re,r,rp)
-	local lg=e:GetHandler():GetLinkedGroup()
-	return eg:IsExists(c72228247.cfilter,1,nil,lg)
+	return eg:IsExists(c72228247.cfilter,1,nil,e:GetHandler():GetLinkedZone())
 end
 function c72228247.thfilter(c)
 	return c:IsSetCard(0x116) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

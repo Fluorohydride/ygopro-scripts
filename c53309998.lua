@@ -17,19 +17,9 @@ function c53309998.initial_effect(c)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e2)
 end
-function c53309998.cfilter(c,zone)
-	local seq=c:GetSequence()
-	if c:IsLocation(LOCATION_MZONE) then
-		if c:IsControler(1) then seq=seq+16 end
-	else
-		seq=c:GetPreviousSequence()
-		if c:GetPreviousControler()==1 then seq=seq+16 end
-	end
-	return bit.extract(zone,seq)~=0
-end
 function c53309998.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local zone=Duel.GetLinkedZone(0)+(Duel.GetLinkedZone(1)<<0x10)
-	return eg:IsExists(c53309998.cfilter,1,nil,zone)
+	return eg:IsExists(aux.IsSummonZone,1,nil,zone)
 end
 function c53309998.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

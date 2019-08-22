@@ -29,16 +29,11 @@ function c1948619.initial_effect(c)
 	e3:SetOperation(c1948619.spop)
 	c:RegisterEffect(e3)
 end
-function c1948619.setcfilter(c,tp,ec)
-	if c:IsLocation(LOCATION_MZONE) then
-		return c:IsSetCard(0x8) and c:IsFaceup() and c:IsControler(tp) and ec:GetLinkedGroup():IsContains(c)
-	else
-		return c:IsPreviousSetCard(0x8) and c:IsPreviousPosition(POS_FACEUP)
-			and c:GetPreviousControler()==tp and bit.extract(ec:GetLinkedZone(tp),c:GetPreviousSequence())~=0
-	end
+function c1948619.setcfilter(c,tp,zone)
+	return c:IsSetCard(0x8) and c:IsFaceup() and aux.IsSummonZone(c,zone,tp)
 end
 function c1948619.setcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c1948619.setcfilter,1,nil,tp,e:GetHandler())
+	return eg:IsExists(c1948619.setcfilter,1,nil,tp,e:GetHandler():GetLinkedZone(tp))
 end
 function c1948619.setfilter(c)
 	return ((c:IsType(TYPE_SPELL) and c:IsSetCard(0x46)) or (c:IsType(TYPE_QUICKPLAY) and c:IsSetCard(0xa5))) and c:IsSSetable()

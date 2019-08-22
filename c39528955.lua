@@ -42,12 +42,11 @@ end
 function c39528955.atklimit(e,c)
 	return e:GetHandler():GetLinkedGroup():IsContains(c)
 end
-function c39528955.seqcfilter(c,tp,lg)
-	return c:IsType(TYPE_EFFECT) and lg:IsContains(c)
+function c39528955.seqcfilter(c,zone)
+	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and aux.IsSummonZone(c,zone)
 end
 function c39528955.seqcon(e,tp,eg,ep,ev,re,r,rp)
-	local lg=e:GetHandler():GetLinkedGroup()
-	return eg:IsExists(c39528955.seqcfilter,1,nil,tp,lg)
+	return eg:IsExists(c39528955.seqcfilter,1,nil,e:GetHandler():GetLinkedZone())
 end
 function c39528955.seqfilter(c)
 	local tp=c:GetControler()

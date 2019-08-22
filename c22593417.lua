@@ -27,14 +27,9 @@ function c22593417.initial_effect(c)
 	e2:SetOperation(c22593417.hdop2)
 	c:RegisterEffect(e2)
 end
-function c22593417.cfilter(c,zone)
-	local seq=c:GetSequence()
-	if c:IsControler(1) then seq=seq+16 end
-	return bit.extract(zone,seq)~=0
-end
 function c22593417.hdcon(e,tp,eg,ep,ev,re,r,rp)
 	local zone=Duel.GetLinkedZone(0)+Duel.GetLinkedZone(1)*0x10000
-	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c22593417.cfilter,1,nil,zone)
+	return not eg:IsContains(e:GetHandler()) and eg:IsExists(aux.IsSummonZone,1,nil,zone)
 end
 function c22593417.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

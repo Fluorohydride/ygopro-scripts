@@ -37,9 +37,8 @@ end
 function c55838342.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:GetSummonType()~=SUMMON_TYPE_SPECIAL+1 then return false end
-	local lg1=Duel.GetLinkedGroup(tp,1,1)
-	local lg2=Duel.GetLinkedGroup(1-tp,1,1)
-	return (lg1 and lg1:IsContains(c)) or (lg2 and lg2:IsContains(c))
+	local zone=Duel.GetLinkedZone(tp)+Duel.GetLinkedZone(1-tp)*0x10000
+	return aux.IsSummonZone(c,zone,tp)
 end
 function c55838342.filter(c)
 	return c:IsSetCard(0xfe) and c:IsAbleToHand()

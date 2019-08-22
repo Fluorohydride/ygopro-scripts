@@ -37,10 +37,8 @@ function c55241609.spval(e,c)
 	return 0,Duel.GetLinkedZone(c:GetControler())
 end
 function c55241609.descon(e,tp,eg,ep,ev,re,r,rp)
-	local lg1=Duel.GetLinkedGroup(tp,1,1)
-	local lg2=Duel.GetLinkedGroup(1-tp,1,1)
-	lg1:Merge(lg2)
-	return lg1 and lg1:IsContains(e:GetHandler())
+	local zone=Duel.GetLinkedZone(tp)+Duel.GetLinkedZone(1-tp)*0x10000
+	return aux.IsSummonZone(e:GetHandler(),zone,tp)
 end
 function c55241609.desfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x116)

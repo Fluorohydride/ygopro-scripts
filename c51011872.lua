@@ -26,16 +26,11 @@ function c51011872.initial_effect(c)
 	e3:SetOperation(c51011872.drop)
 	c:RegisterEffect(e3)
 end
-function c51011872.cfilter(c,ec)
-	if c:IsLocation(LOCATION_MZONE) then
-		return c:IsSetCard(0xfb) and c:IsFaceup() and ec:GetLinkedGroup():IsContains(c)
-	else
-		return c:IsPreviousSetCard(0xfb) and c:IsPreviousPosition(POS_FACEUP)
-			and bit.extract(ec:GetLinkedZone(c:GetPreviousControler()),c:GetPreviousSequence())~=0
-	end
+function c51011872.cfilter(c,zone)
+	return c:IsSetCard(0xfb) and c:IsFaceup() and aux.IsSummonZone(c,zone)
 end
 function c51011872.reccon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c51011872.cfilter,1,nil,e:GetHandler())
+	return eg:IsExists(c51011872.cfilter,1,nil,e:GetHandler():GetLinkedZone())
 end
 function c51011872.recop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,51011872)

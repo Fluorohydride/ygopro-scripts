@@ -56,19 +56,9 @@ end
 function c66403530.value(e,c)
 	return Duel.GetFieldGroupCount(c:GetControler(),LOCATION_REMOVED,LOCATION_REMOVED)*200
 end
-function c66403530.cfilter(c,zone)
-	local seq=c:GetSequence()
-	if c:IsLocation(LOCATION_MZONE) then
-		if c:IsControler(1) then seq=seq+16 end
-	else
-		seq=c:GetPreviousSequence()
-		if c:GetPreviousControler()==1 then seq=seq+16 end
-	end
-	return bit.extract(zone,seq)~=0
-end
 function c66403530.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local zone=Duel.GetLinkedZone(0)+(Duel.GetLinkedZone(1)<<0x10)
-	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c66403530.cfilter,1,nil,zone)
+	return not eg:IsContains(e:GetHandler()) and eg:IsExists(aux.IsSummonZone,1,nil,zone)
 end
 function c66403530.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

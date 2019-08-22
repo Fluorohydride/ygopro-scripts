@@ -47,12 +47,8 @@ function c4478086.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
-function c4478086.cfilter(c,lg)
-	return lg:IsContains(c)
-end
 function c4478086.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local lg=e:GetHandler():GetLinkedGroup()
-	return eg:IsExists(c4478086.cfilter,1,nil,lg)
+	return eg:IsExists(aux.IsSummonZone,1,nil,e:GetHandler():GetLinkedZone())
 end
 function c4478086.filter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsRace(RACE_CYBERSE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP)

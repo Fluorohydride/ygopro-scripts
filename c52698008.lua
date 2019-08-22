@@ -45,16 +45,9 @@ end
 function c52698008.indtg(e,c)
 	return c:IsRace(RACE_CYBERSE) and e:GetHandler():GetLinkedGroup():IsContains(c)
 end
-function c52698008.thcfilter(c,ec)
-	if c:IsLocation(LOCATION_MZONE) then
-		return ec:GetLinkedGroup():IsContains(c)
-	else
-		return bit.extract(ec:GetLinkedZone(c:GetPreviousControler()),c:GetPreviousSequence())~=0
-	end
-end
 function c52698008.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return not eg:IsContains(c) and eg:IsExists(c52698008.thcfilter,1,nil,c)
+	return not eg:IsContains(c) and eg:IsExists(aux.IsSummonZone,1,nil,c:GetLinkedZone())
 end
 function c52698008.cfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsRace(RACE_CYBERSE) and c:IsAbleToRemoveAsCost()

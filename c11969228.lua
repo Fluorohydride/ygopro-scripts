@@ -50,12 +50,11 @@ function c11969228.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
-function c11969228.cfilter(c,lg)
-	return c:IsRace(RACE_DRAGON) and bit.band(c:GetSummonLocation(),LOCATION_EXTRA)~=0 and lg:IsContains(c)
+function c11969228.cfilter(c,zone)
+	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and bit.band(c:GetSummonLocation(),LOCATION_EXTRA)~=0 and aux.IsSummonZone(c,zone)
 end
 function c11969228.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local lg=e:GetHandler():GetLinkedGroup()
-	return eg:IsExists(c11969228.cfilter,1,nil,lg)
+	return eg:IsExists(c11969228.cfilter,1,nil,e:GetHandler():GetLinkedZone())
 end
 function c11969228.spfilter(c,e,tp)
 	return c:IsRace(RACE_DRAGON+RACE_WINDBEAST) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

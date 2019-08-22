@@ -46,15 +46,8 @@ end
 function c87871125.matfilter(c)
 	return c:IsLinkType(TYPE_EFFECT) and c:IsLinkAttribute(ATTRIBUTE_FIRE)
 end
-function c87871125.cfilter(c,ec)
-	if c:IsLocation(LOCATION_MZONE) then
-		return ec:GetLinkedGroup():IsContains(c)
-	else
-		return bit.band(ec:GetLinkedZone(c:GetPreviousControler()),bit.lshift(0x1,c:GetPreviousSequence()))~=0
-	end
-end
 function c87871125.thcon1(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c87871125.cfilter,1,nil,e:GetHandler())
+	return eg:IsExists(aux.IsSummonZone,1,nil,e:GetHandler():GetLinkedZone())
 end
 function c87871125.thfilter1(c)
 	return c:IsAttribute(ATTRIBUTE_FIRE) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

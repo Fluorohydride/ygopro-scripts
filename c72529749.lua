@@ -15,19 +15,12 @@ function c72529749.initial_effect(c)
 	e1:SetOperation(c72529749.rmop)
 	c:RegisterEffect(e1)
 end
-function c72529749.cfilter(c,ec)
-	if c:IsLocation(LOCATION_MZONE) then
-		return ec:GetLinkedGroup():IsContains(c)
-	else
-		return bit.extract(ec:GetLinkedZone(c:GetPreviousControler()),c:GetPreviousSequence())~=0
-	end
-end
 function c72529749.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c72529749.cfilter,1,nil,e:GetHandler())
+	return eg:IsExists(aux.IsSummonZone,1,nil,e:GetHandler(),e:GetHandler():GetLinkedZone())
 end
 function c72529749.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local g=eg:Filter(c72529749.cfilter,nil,e:GetHandler())
+	local g=eg:Filter(aux.IsSummonZone,nil,e:GetHandler(),e:GetHandler():GetLinkedZone())
 	local tg=g:Filter(Card.IsLocation,nil,LOCATION_MZONE)
 	Duel.SetTargetCard(tg)
 	local g2=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil,TYPE_SPELL+TYPE_TRAP)

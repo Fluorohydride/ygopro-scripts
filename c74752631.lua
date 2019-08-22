@@ -63,16 +63,11 @@ function c74752631.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
-function c74752631.cfilter(c,ec)
-	if c:IsLocation(LOCATION_MZONE) then
-		return c:IsSetCard(0x3d) and c:IsFaceup() and ec:GetLinkedGroup():IsContains(c)
-	else
-		return c:IsPreviousSetCard(0x3d) and c:IsPreviousPosition(POS_FACEUP)
-			and bit.extract(ec:GetLinkedZone(c:GetPreviousControler()),c:GetPreviousSequence())~=0
-	end
+function c74752631.cfilter(c,zone)
+	return c:IsSetCard(0x3d) and c:IsFaceup() and aux.IsSummonZone(c,zone)
 end
 function c74752631.ctcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c74752631.cfilter,1,nil,e:GetHandler())
+	return eg:IsExists(c74752631.cfilter,1,nil,e:GetHandler():GetLinkedZone())
 end
 function c74752631.ctop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x3,1)
