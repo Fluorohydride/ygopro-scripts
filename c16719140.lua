@@ -30,13 +30,15 @@ function c16719140.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)
 	if chk==0 then return true end
 end
-function c16719140.costfilter(c,e,tp,mg,rlv)
+function c16719140.costfilter(c,e,tp,mg,rlv,mc)
 	if not (c:IsLevelAbove(0) and c:IsSetCard(0xed) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
 		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN))) then return false end
-	return mg:CheckSubGroup(c16719140.fselect,1,c:GetLevel(),tp,c:GetLevel()-rlv)
+	return mg:CheckSubGroup(c16719140.fselect,1,c:GetLevel(),tp,c:GetLevel()-rlv,mc)
 end
-function c16719140.fselect(g,tp,lv)
-	if Duel.GetMZoneCount(tp,g)>0 then
+function c16719140.fselect(g,tp,lv,mc)
+	local mg=g:Clone()
+	mg:AddCard(mc)
+	if Duel.GetMZoneCount(tp,mg)>0 then
 		if lv<=0 then
 			return g:GetCount()==1
 		else
@@ -55,11 +57,11 @@ function c16719140.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
 		if not c:IsLevelAbove(1) or not c:IsReleasableByEffect() or mg:GetCount()==0 then return false end
-		return Duel.IsExistingMatchingCard(c16719140.costfilter,tp,LOCATION_DECK,0,1,nil,e,tp,mg,c:GetOriginalLevel())
+		return Duel.IsExistingMatchingCard(c16719140.costfilter,tp,LOCATION_DECK,0,1,nil,e,tp,mg,c:GetOriginalLevel(),c)
 	end
 	e:SetLabel(0)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c16719140.costfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,mg,c:GetOriginalLevel())
+	local g=Duel.SelectMatchingCard(tp,c16719140.costfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,mg,c:GetOriginalLevel(),c)
 	Duel.SendtoGrave(g,REASON_COST)
 	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
@@ -75,7 +77,7 @@ function c16719140.spop1(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN) then spos=spos+POS_FACEDOWN_DEFENSE end
 	if spos~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local g=mg:SelectSubGroup(tp,c16719140.fselect,false,1,tc:GetLevel(),tp,tc:GetLevel()-c:GetOriginalLevel())
+		local g=mg:SelectSubGroup(tp,c16719140.fselect,false,1,tc:GetLevel(),tp,tc:GetLevel()-c:GetOriginalLevel(),c)
 		if g and g:GetCount()>0 then
 			g:AddCard(c)
 			if Duel.Release(g,REASON_EFFECT)~=0 then
