@@ -20,7 +20,7 @@ function c84442536.condition(e,tp,eg,ep,ev,re,r,rp)
 	if not g or g:GetCount()~=1 then return false end
 	local tc=g:GetFirst()
 	e:SetLabelObject(tc)
-	return c84442536.cfilter(tc,tp) 
+	return c84442536.cfilter(tc,tp)
 end
 function c84442536.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetLabelObject()
@@ -57,8 +57,7 @@ end
 function c84442536.repop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0
-		and c:IsType(TYPE_SPELL+TYPE_TRAP) then
-		c:CancelToGrave(false)
+	if tc:IsRelateToEffect(e) then
+		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

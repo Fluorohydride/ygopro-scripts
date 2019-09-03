@@ -58,10 +58,6 @@ function c53199020.chop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChangeChainOperation(ev,c53199020.rep_op)
 end
 function c53199020.rep_op(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:GetType()==TYPE_SPELL or c:GetType()==TYPE_TRAP then
-		c:CancelToGrave(false)
-	end
 	Duel.Hint(HINT_CARD,0,53199020)
 	Duel.DiscardHand(1-tp,aux.TRUE,1,1,REASON_EFFECT+REASON_DISCARD)
 end
