@@ -107,7 +107,7 @@ function c56562619.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c56562619.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ft2=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
+	local ft2=Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)
 	local rg=e:GetLabelObject()
 	if (ft1<=0 and ft2<=0) or rg:GetCount()<=0 then return end
 	local sg=nil
