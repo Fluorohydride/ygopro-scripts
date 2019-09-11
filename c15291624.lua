@@ -43,8 +43,8 @@ function c15291624.chainfilter(re,tp,cid)
 		and Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_LOCATION)==LOCATION_HAND)
 end
 function c15291624.spfilter(c,fc,tp)
-	return c:IsRace(RACE_THUNDER) and c:IsType(TYPE_EFFECT) and not c:IsType(TYPE_FUSION)
-		and c:IsReleasable() and Duel.GetLocationCountFromEx(tp,tp,c,fc)>0
+	return c:IsRace(RACE_THUNDER) and c:IsFusionType(TYPE_EFFECT) and not c:IsFusionType(TYPE_FUSION)
+		and c:IsReleasable() and Duel.GetLocationCountFromEx(tp,tp,c,fc)>0 and c:IsCanBeFusionMaterial(fc,SUMMON_TYPE_SPECIAL)
 end
 function c15291624.spcon(e,c)
 	if c==nil then return true end

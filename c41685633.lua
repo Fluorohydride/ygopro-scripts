@@ -44,8 +44,8 @@ function c41685633.sprfilter1(c)
 	return c:IsRace(RACE_THUNDER) and c:IsAbleToRemoveAsCost()
 end
 function c41685633.sprfilter2(c,tp,sc)
-	return c:IsFaceup() and c:IsRace(RACE_THUNDER) and c:IsType(TYPE_FUSION)
-		and not c:IsCode(41685633) and c:IsAbleToRemoveAsCost() and Duel.GetLocationCountFromEx(tp,tp,c,sc)>0
+	return c:IsRace(RACE_THUNDER) and c:IsFusionType(TYPE_FUSION)
+		and not c:IsFusionCode(41685633) and c:IsAbleToRemoveAsCost() and Duel.GetLocationCountFromEx(tp,tp,c,sc)>0 and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
 end
 function c41685633.sprcon(e,c)
 	if c==nil then return true end
