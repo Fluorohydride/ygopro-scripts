@@ -50,10 +50,6 @@ function c69840739.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c69840739.repop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:GetType()==TYPE_SPELL or c:GetType()==TYPE_TRAP then
-		c:CancelToGrave(false)
-	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectMatchingCard(tp,c69840739.filter,tp,0,LOCATION_ONFIELD,1,1,nil)
 	if g:GetCount()>0 then
