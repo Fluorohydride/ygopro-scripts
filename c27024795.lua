@@ -11,13 +11,13 @@ function c27024795.initial_effect(c)
 	e1:SetCondition(c27024795.spcon)
 	e1:SetTarget(c27024795.sptg)
 	e1:SetOperation(c27024795.spop)
-	c:RegisterEffect(e1)	
+	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(27024795,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,27024795+EFFECT_COUNT_CODE_DUEL)
@@ -46,7 +46,7 @@ function c27024795.fselect(c,tp,rg,sg,e)
 	return res
 end
 function c27024795.fgoal(tp,sg,e)
-	return #sg==3 and sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)==2 and sg:GetSum(Card.GetLevel)==10 
+	return #sg==3 and sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)==2 and sg:GetSum(Card.GetLevel)==10
 		and Duel.IsExistingMatchingCard(c27024795.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,sg)
 end
 function c27024795.spfilter(c,e,tp,mg)
@@ -72,14 +72,16 @@ function c27024795.spop(e,tp,eg,ep,ev,re,r,rp)
 		sg:Merge(g)
 	end
 	if Duel.SendtoGrave(sg,REASON_EFFECT)==3 then
-		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=Duel.SelectMatchingCard(tp,c27024795.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
-		Duel.SpecialSummon(tg,0,tp,tp,false,false,POS_FACEUP)
+		if tg:GetCount()>0 then
+			Duel.BreakEffect()
+			Duel.SpecialSummon(tg,0,tp,tp,false,false,POS_FACEUP)
+		end
 	end
 end
 function c27024795.cfilter(c,tp)
-	return c:IsPreviousSetCard(0x4b) and c:GetPreviousControler()==tp 
+	return c:IsPreviousSetCard(0x4b) and c:GetPreviousControler()==tp
 end
 function c27024795.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return rp~=tp and eg:IsExists(c27024795.cfilter,1,nil,tp)
@@ -100,4 +102,4 @@ function c27024795.spop2(e,tp,eg,ep,ev,re,r,rp)
 	if #g>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
-end 
+end
