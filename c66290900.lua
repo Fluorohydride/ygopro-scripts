@@ -47,6 +47,7 @@ function c66290900.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		return Duel.IsExistingMatchingCard(c66290900.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,chkf)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
+	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_MZONE)
 end
 function c66290900.cffilter(c)
 	return c:IsLocation(LOCATION_HAND) or (c:IsLocation(LOCATION_MZONE) and c:IsFacedown())
