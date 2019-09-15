@@ -27,13 +27,11 @@ function c83518674.spfilter(c,e,tp)
 	return c:IsCode(83518674) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c83518674.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil)
-		and Duel.IsExistingMatchingCard(c83518674.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
+		and Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil,REASON_EFFECT) end
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
 end
 function c83518674.spop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 	if g:GetCount()<=0 then return end
 	local tc=g:RandomSelect(1-tp,1):GetFirst()
