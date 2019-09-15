@@ -1,4 +1,4 @@
---Danger! Feets of Strength!
+--未界域捕縛作戦
 function c83928661.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

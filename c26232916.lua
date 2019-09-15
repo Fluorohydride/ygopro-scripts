@@ -1,4 +1,4 @@
---Hidden Village of Ninjitsu Arts
+--隠れ里－忍法修練の地
 function c26232916.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

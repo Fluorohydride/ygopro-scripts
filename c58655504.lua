@@ -1,4 +1,4 @@
---Gnomaterial
+--ノーマテリア
 function c58655504.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)

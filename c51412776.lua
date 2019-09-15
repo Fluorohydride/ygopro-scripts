@@ -1,4 +1,4 @@
---Heritage of the Chalice
+--聖杯の継承
 function c51412776.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Danger! Response Team
+--未界域調査報告
 function c25140659.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

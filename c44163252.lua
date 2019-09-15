@@ -1,4 +1,4 @@
---Valkyrie Sechste
+--ワルキューレ・セクスト
 function c44163252.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

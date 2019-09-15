@@ -1,4 +1,4 @@
---Danger!? Jackalope?
+--未界域のジャッカロープ
 function c43694650.initial_effect(c)
 	--special summon (self)
 	local e1=Effect.CreateEffect(c)

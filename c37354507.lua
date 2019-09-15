@@ -1,4 +1,4 @@
---Ninja Grandmaster Saizo
+--忍者マスター SAIZO
 function c37354507.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x2b),2,2)

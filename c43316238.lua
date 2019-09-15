@@ -1,4 +1,4 @@
---Danger! Bigfoot!
+--未界域のビッグフット
 function c43316238.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

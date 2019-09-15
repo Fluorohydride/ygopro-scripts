@@ -1,4 +1,4 @@
---Time Thief Bezel Ship
+--クロノダイバー・ベゼルシップ
 function c82496097.initial_effect(c)
 	--xyz material
 	local e1=Effect.CreateEffect(c)

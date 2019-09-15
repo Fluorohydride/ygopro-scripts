@@ -1,4 +1,4 @@
---Time Thief Redoer
+--クロノダイバー・リダン
 function c55285840.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,4,2)

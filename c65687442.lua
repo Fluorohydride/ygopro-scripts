@@ -1,4 +1,4 @@
---Ride of the Valkyries
+--Walkuren Ritt
 function c65687442.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

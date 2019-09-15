@@ -1,4 +1,4 @@
---Alviss of the Nordic Alfar
+--極星霊アルヴィース
 function c27024795.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

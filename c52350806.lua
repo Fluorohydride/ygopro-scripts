@@ -1,4 +1,4 @@
---Danger! Mothman!
+--未界域のモスマン
 function c52350806.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Noble Arms - Clarent
+--聖剣クラレント
 function c41359411.initial_effect(c)
 	c:SetUniqueOnField(1,0,41359411)
 	--Activate

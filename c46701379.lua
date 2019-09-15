@@ -1,4 +1,4 @@
---Valkyrie Funfte
+--ワルキューレ・フュンフト
 function c46701379.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Noble Knight Custennin
+--聖騎士コルネウス
 function c42472002.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

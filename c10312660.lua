@@ -1,4 +1,4 @@
---You're in Danger!
+--未界域の歓待
 function c10312660.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

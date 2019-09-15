@@ -1,4 +1,4 @@
---Pinpoint Landing
+--一点着地
 function c17322533.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	--activate

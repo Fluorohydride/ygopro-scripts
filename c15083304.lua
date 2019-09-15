@@ -1,4 +1,4 @@
---Danger! Zone
+--未界域の危険地帯
 function c15083304.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

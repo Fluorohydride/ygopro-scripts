@@ -1,4 +1,4 @@
---Until Noble Arms are Needed Once Again
+--聖剣の導く未来
 function c87800375.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

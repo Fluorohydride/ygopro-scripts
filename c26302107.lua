@@ -1,4 +1,4 @@
---Danger! Dogman!
+--未界域のワーウルフ
 function c26302107.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Saryuja's Shackles
+--蛇龍の枷鎖
 function c11434258.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Yellow Dragon Ninja
+--黄竜の忍者
 function c90247311.initial_effect(c)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

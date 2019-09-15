@@ -1,4 +1,4 @@
---Danger! Ogopogo!
+--未界域のオゴポゴ
 function c83518674.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

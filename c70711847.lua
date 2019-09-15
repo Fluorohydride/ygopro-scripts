@@ -1,4 +1,4 @@
---Danger! Nessie!
+--未界域のネッシー
 function c70711847.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

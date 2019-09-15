@@ -1,4 +1,4 @@
---Goddess Verdande's Guidance
+--女神ヴェルダンディの導き
 function c64961254.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

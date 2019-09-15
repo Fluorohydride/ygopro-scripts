@@ -1,4 +1,4 @@
---Consolation Prize
+--廃車復活
 function c63413494.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Yellow Ninja
+--黄色い忍者
 function c64749612.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

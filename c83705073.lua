@@ -1,4 +1,4 @@
---Valkyrie Erda
+--ワルキューレ・エルダ
 function c83705073.initial_effect(c)
 	c:SetUniqueOnField(1,0,83705073)
 	--atk up

@@ -1,4 +1,4 @@
---Valkyrie Vierte
+--ワルキューレ・フィアット
 function c81558967.initial_effect(c)
 	--deck search
 	local e1=Effect.CreateEffect(c)

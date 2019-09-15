@@ -1,4 +1,4 @@
---Danger! Chupacabra!
+--未界域のチュパカブラ
 function c16209941.initial_effect(c)
 	--special summon (self)
 	local e1=Effect.CreateEffect(c)
