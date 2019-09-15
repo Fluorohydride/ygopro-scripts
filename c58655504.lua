@@ -23,19 +23,16 @@ function c58655504.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST+REASON_DISCARD)
 end
-function c58655504.filter(c)
-	return c:IsFaceup()
-end
 function c58655504.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c58655504.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c58655504.filter,tp,0,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
+	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,c58655504.filter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
 end
 function c58655504.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) then
+	if tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
@@ -49,6 +46,7 @@ function c58655504.operation(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e2)
 		local e3=e1:Clone()
 		e3:SetCode(EFFECT_CANNOT_BE_FUSION_MATERIAL)
+		e3:SetValue(c58655504.fuslimit)
 		tc:RegisterEffect(e3)
 		local e4=e1:Clone()
 		e4:SetCode(EFFECT_CANNOT_BE_SYNCHRO_MATERIAL)
@@ -60,4 +58,7 @@ function c58655504.operation(e,tp,eg,ep,ev,re,r,rp)
 		e6:SetCode(EFFECT_CANNOT_BE_LINK_MATERIAL)
 		tc:RegisterEffect(e6)
 	end
+end
+function c58655504.fuslimit(e,c,sumtype)
+	return sumtype==SUMMON_TYPE_FUSION
 end
