@@ -51,10 +51,11 @@ end
 function c57288708.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local g=eg:Filter(c57288708.tgfilter,nil)
+	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,g:GetCount(),0,0)
 end
 function c57288708.tgop(e,tp,eg,ep,ev,re,r,rp)
-	local g=eg:Filter(c57288708.tgfilter,nil)
+	local g=eg:Filter(c57288708.tgfilter,nil):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()>0 then
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	end
