@@ -75,15 +75,14 @@ function c1735088.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(0)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c1735088.cfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
+	e:SetLabel(g:GetFirst():GetCode())
 	Duel.Remove(g,POS_FACEDOWN,REASON_COST)
-	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c1735088.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	local tc=Duel.GetFirstTarget()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c1735088.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,tc:GetCode())
+	local g=Duel.SelectMatchingCard(tp,c1735088.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,e:GetLabel())
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
