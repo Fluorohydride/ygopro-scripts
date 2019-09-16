@@ -12,7 +12,19 @@ function c52112003.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0 end
 end
 function c52112003.activate(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SortDecktop(tp,tp,5)
+	local ct=math.min(5,Duel.GetFieldGroupCount(tp,LOCATION_DECK,0))
+	if ct>0 then
+		local t={}
+		for i=1,ct do
+			t[i]=i
+		end
+		local ac=1
+		if ct>1 then
+			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(52112003,1))
+			ac=Duel.AnnounceNumber(tp,table.unpack(t))
+		end
+		Duel.SortDecktop(tp,tp,ac)
+	end
 	if Duel.GetFlagEffect(tp,52112003)~=0 then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetDescription(aux.Stringid(52112003,0))

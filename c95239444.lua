@@ -36,10 +36,7 @@ function c95239444.stcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(Duel.GetOperatedGroup():GetFirst():GetLevel())
 end
 function c95239444.stop(e,tp,eg,ep,ev,re,r,rp)
-	local ct=e:GetLabel()
-	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=ct then
-		Duel.SortDecktop(tp,tp,ct)
-	end
+	Duel.SortDecktop(tp,tp,e:GetLabel())
 end
 function c95239444.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

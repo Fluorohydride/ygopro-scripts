@@ -42,6 +42,7 @@ end
 function c69394324.operation(e,tp,eg,ep,ev,re,r,rp)
 	local b1=Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=5
 	local b2=Duel.GetFieldGroupCount(1-tp,LOCATION_DECK,0)>=5
+	if not b1 and not b2 then return end
 	local op=nil
 	if b1 and b2 then
 		op=Duel.SelectOption(tp,aux.Stringid(69394324,0),aux.Stringid(69394324,1))
