@@ -17,7 +17,7 @@ function c47387961.initial_effect(c)
 end
 c47387961.xyz_number=8
 function c47387961.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ)
+	return c:IsFaceup() and c:IsType(TYPE_XYZ) and not (c:IsAttack(0) and c:IsDisabled() or not c:IsType(TYPE_EFFECT))
 end
 function c47387961.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c47387961.filter(chkc) end
