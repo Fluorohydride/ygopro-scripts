@@ -29,8 +29,7 @@ function c17955766.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tg=g:FilterSelect(tp,Card.IsType,1,1,nil,TYPE_MONSTER)
 		local tc=tg:GetFirst()
 		if tc then
-			local atk=tc:GetAttack()
-			if atk>=0 and Duel.IsExistingMatchingCard(c17955766.filter,tp,LOCATION_MZONE,0,1,nil,atk) then
+			if tc:IsAttackAbove(0) and Duel.IsExistingMatchingCard(c17955766.filter,tp,LOCATION_MZONE,0,1,nil,tc:GetAttack()) then
 				Duel.Destroy(tc,REASON_EFFECT)
 				Duel.Damage(1-tp,500,REASON_EFFECT)
 			else
