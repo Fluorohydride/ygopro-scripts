@@ -2,6 +2,7 @@
 function c65687442.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(65687442,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -10,6 +11,7 @@ function c65687442.initial_effect(c)
 	c:RegisterEffect(e1)
 	--to hand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(65687442,1))
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
@@ -33,22 +35,9 @@ function c65687442.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c65687442.filter,tp,LOCATION_HAND,0,nil,e,tp)
 	if ft<=0 or g:GetCount()==0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-	local sg=Group.CreateGroup()
-	local init=1
-	while ft>0 and g:GetCount()>0 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg1=g:Select(tp,init,1,nil)
-		if sg1:GetCount()>0 then
-			local tc=sg1:GetFirst()
-			sg:AddCard(tc)
-			g:Remove(Card.IsCode,nil,tc:GetCode())
-			ft=ft-1
-			init=0
-		else
-			break
-		end
-	end
-	if #sg>0 then
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ft)
+	if sg and #sg>0 then
 		local ct=Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 		if ct>2 then
 			local e1=Effect.CreateEffect(c)
@@ -72,8 +61,8 @@ function c65687442.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c65687442.tdop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
-	Duel.SendtoDeck(g,tp,2,REASON_EFFECT)
+	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,LOCATION_MZONE,0,nil)
+	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
 end
 function c65687442.thfilter(c)
 	return c:IsCode(92182447) and c:IsAbleToHand()
