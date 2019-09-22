@@ -6,7 +6,6 @@ function c71166481.initial_effect(c)
 	--change effect
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(71166481,0))
-	e1:SetCategory(CATEGORY_DRAW)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetRange(LOCATION_MZONE)
@@ -38,7 +37,6 @@ end
 function c71166481.chtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
 		and Duel.IsPlayerCanDraw(1-tp,1) end
-	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,PLAYER_ALL,1)
 end
 function c71166481.chop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Group.CreateGroup()
