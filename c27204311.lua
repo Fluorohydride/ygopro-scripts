@@ -36,11 +36,14 @@ function c27204311.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFlagEffect(1-tp,27204311)>=5 and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 end
 function c27204311.relfilter(c)
+	return c:IsFaceup()
+end
+function c27204311.relfilter2(c)
 	return c:IsFaceup() and c:IsReleasableByEffect()
 end
 function c27204311.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c27204311.relfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	if chk==0 then return g:GetCount()>0 and Duel.GetMZoneCount(tp,g)>0 and Duel.GetMZoneCount(1-tp,g,tp)>0
+	if chk==0 then return g:GetCount()>0
 		and Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,27204312,0,0x4011,g:GetSum(Card.GetBaseAttack),g:GetSum(Card.GetBaseDefense),11,RACE_ROCK,ATTRIBUTE_LIGHT) end
@@ -48,7 +51,7 @@ function c27204311.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),2,0,0)
 end
 function c27204311.spop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c27204311.relfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(c27204311.relfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if g:GetCount()>0 and Duel.Release(g,REASON_EFFECT)~=0 then
 		local og=Duel.GetOperatedGroup()
 		local c=e:GetHandler()
