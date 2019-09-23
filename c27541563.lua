@@ -39,7 +39,7 @@ function c27541563.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c27541563.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE and Duel.GetCurrentPhase()~=PHASE_DAMAGE_CAL
+	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c27541563.discon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
