@@ -5,6 +5,7 @@ function c27541563.initial_effect(c)
 	e1:SetDescription(aux.Stringid(27541563,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetCondition(c27541563.condition)
 	c:RegisterEffect(e1)
 	--negate
 	local e2=Effect.CreateEffect(c)
@@ -36,6 +37,9 @@ function c27541563.initial_effect(c)
 	e5:SetRange(LOCATION_SZONE)
 	e5:SetValue(c27541563.effectfilter)
 	c:RegisterEffect(e5)
+end
+function c27541563.condition(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c27541563.discon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
