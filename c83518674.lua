@@ -27,8 +27,7 @@ function c83518674.spfilter(c,e,tp)
 	return c:IsCode(83518674) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c83518674.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
-		and Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil,REASON_EFFECT) end
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil,REASON_EFFECT) end
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
 end
 function c83518674.spop(e,tp,eg,ep,ev,re,r,rp)
