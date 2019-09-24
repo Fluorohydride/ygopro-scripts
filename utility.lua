@@ -1003,6 +1003,11 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 	for i=1,#val do
 		if type(val[i])=='function' then
 			fun[i]=function(c,fc,sub,mg,sg) return val[i](c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) end
+		elseif type(val[i])=='table' then
+			fun[i]=function(c,fc,sub) return c:IsFusionCode(table.unpack(val[i])) or (sub and c:CheckFusionSubstitute(fc)) end
+			for _,fcode in ipairs(val[i]) do
+				table.insert(mat,fcode)
+			end
 		else
 			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
 			table.insert(mat,val[i])
@@ -1101,6 +1106,11 @@ function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
 	for i=1,#val do
 		if type(val[i])=='function' then
 			fun[i]=function(c,fc,sub,mg,sg) return val[i](c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) end
+		elseif type(val[i])=='table' then
+			fun[i]=function(c,fc,sub) return c:IsFusionCode(table.unpack(val[i])) or (sub and c:CheckFusionSubstitute(fc)) end
+			for _,fcode in ipairs(val[i]) do
+				table.insert(mat,fcode)
+			end
 		else
 			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
 			table.insert(mat,val[i])
@@ -1958,7 +1968,7 @@ function Auxiliary.IsMaterialListSetCard(c,setcode)
 	if type(c.material_setcode)=='table' then
 		for i,scode in ipairs(c.material_setcode) do
 			if setcode&0xfff==scode&0xfff and setcode&scode==setcode then return true end
-		end	
+		end
 	else
 		return setcode&0xfff==c.material_setcode&0xfff and setcode&c.material_setcode==setcode
 	end
