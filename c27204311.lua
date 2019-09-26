@@ -39,8 +39,9 @@ function c27204311.relfilter(c)
 	return c:IsFaceup() and c:IsReleasableByEffect()
 end
 function c27204311.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroup(c27204311.relfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if chk==0 then return g:GetCount()>0 and Duel.GetMZoneCount(tp,g)>0 and Duel.GetMZoneCount(1-tp,g,tp)>0
+		and Duel.IsPlayerCanRelease(tp)
 		and Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,27204312,0,0x4011,g:GetSum(Card.GetBaseAttack),g:GetSum(Card.GetBaseDefense),11,RACE_ROCK,ATTRIBUTE_LIGHT) end
