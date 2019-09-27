@@ -40,6 +40,7 @@ function c11167052.initial_effect(c)
 	e5:SetCode(EVENT_FREE_CHAIN)
 	e5:SetHintTiming(0,TIMING_END_PHASE)
 	e5:SetRange(LOCATION_SZONE)
+	e5:SetCondition(c11167052.thcon)
 	e5:SetCost(c11167052.thcost)
 	e5:SetTarget(c11167052.thtg)
 	e5:SetOperation(c11167052.thop)
@@ -78,6 +79,9 @@ function c11167052.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
+end
+function c11167052.thcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c11167052.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
