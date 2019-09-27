@@ -18,35 +18,31 @@ function c8339504.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c8339504.cfilter(c,e,tp)
 	local rk=c:GetRank()
-	return rk>0 and Duel.IsExistingMatchingCard(c8339504.spfilter1,tp,LOCATION_EXTRA,0,1,nil,c,e,tp)
+	return rk>0 and Duel.GetLocationCountFromEx(tp,tp,c)>0 and Duel.IsExistingMatchingCard(c8339504.spfilter1,tp,LOCATION_EXTRA,0,1,nil,rk,race,att,code,e,tp)
 end
-function c8339504.spfilter1(c,tc,e,tp)
-	return c:IsRank(tc:GetRank()) and c:IsRace(tc:GetRace()) and c:IsAttribute(tc:GetAttribute())
-		and not c:IsCode(tc:GetCode()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-end
-function c8339504.spfilter2(c,tc,e,tp)
-	return c:IsRank(tc:GetPreviousRankOnField()) and c:IsRace(tc:GetPreviousRaceOnField()) and c:IsAttribute(tc:GetPreviousAttributeOnField())
-		and not c:IsCode(tc:GetPreviousCodeOnField()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+function c8339504.spfilter1(c,rk,race,att,code,e,tp)
+	return c:IsRank(rk) and c:IsRace(race) and c:IsAttribute(att)
+		and not c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c8339504.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return e:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
+		return e:IsHasType(EFFECT_TYPE_ACTIVATE)
 			and Duel.CheckReleaseGroup(tp,c8339504.cfilter,1,nil,e,tp)
 	end
 	e:SetLabel(0)
 	local g=Duel.SelectReleaseGroup(tp,c8339504.cfilter,1,1,nil,e,tp)
+	e:SetLabel(g:GetFirst():GetRank(),g:GetFirst():GetRace(),g:GetFirst():GetAttribute(),g:GetFirst():GetCode())
 	Duel.Release(g,REASON_COST)
-	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c8339504.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	if Duel.GetLocationCountFromEx(tp)<=0 then return end
 	local c=e:GetHandler()
-	local tc=Duel.GetFirstTarget()
+	local rk,race,att,code=e:GetLabel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c8339504.spfilter2,tp,LOCATION_EXTRA,0,1,1,nil,tc,e,tp)
+	local g=Duel.SelectMatchingCard(tp,c8339504.spfilter1,tp,LOCATION_EXTRA,0,1,1,nil,rk,race,att,code,e,tp)
 	local sc=g:GetFirst()
 	if sc and Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		if c:IsRelateToEffect(e) then
