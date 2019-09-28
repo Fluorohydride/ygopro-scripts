@@ -23,6 +23,7 @@ function c2665273.initial_effect(c)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1,2665273)
+	e3:SetHintTiming(0,TIMING_END_PHASE)
 	e3:SetCost(c2665273.drcost)
 	e3:SetTarget(c2665273.drtg)
 	e3:SetOperation(c2665273.drop)
@@ -72,6 +73,12 @@ function c2665273.drop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		if sg:GetCount()>0 then
 			Duel.BreakEffect()
+			for tc in aux.Next(sg) do
+				local og=tc:GetOverlayGroup()
+				if og:GetCount()>0 then
+					Duel.SendtoGrave(og,REASON_RULE)
+				end
+			end
 			Duel.Overlay(c,sg)
 		end
 	end
