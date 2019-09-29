@@ -39,7 +39,7 @@ function c51570882.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA) or aux.fuslimit(e,se,sp,st)
 end
 function c51570882.disfilter(c)
-	return c:IsFaceup() and not (c:IsAttack(0) and c:IsDisabled())
+	return c:IsFaceup() and (c:IsAttackAbove(1) or aux.disfilter1(c))
 end
 function c51570882.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c51570882.disfilter(chkc) end
