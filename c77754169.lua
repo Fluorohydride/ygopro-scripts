@@ -25,6 +25,7 @@ function c77754169.initial_effect(c)
 end
 function c77754169.eqfilter(c,e,tp)
 	return c:IsRace(RACE_INSECT) and c:IsCanBeEffectTarget(e) and c:CheckUniqueOnField(tp)
+		and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,2,c,c:GetCode())
 end
 function c77754169.fselect(g)
 	return g:GetClassCount(Card.GetCode)==1
