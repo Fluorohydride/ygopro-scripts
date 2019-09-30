@@ -9,7 +9,7 @@ function c60990740.initial_effect(c)
 	e1:SetCountLimit(1,60990740)
 	e1:SetHintTiming(0,TIMING_END_PHASE)
 	e1:SetCondition(c60990740.condition)
-	e1:SetCost(c60990740.cost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetTarget(c60990740.target)
 	e1:SetOperation(c60990740.operation)
 	c:RegisterEffect(e1)
@@ -25,10 +25,6 @@ function c60990740.initial_effect(c)
 end
 function c60990740.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
-end
-function c60990740.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c60990740.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,1)

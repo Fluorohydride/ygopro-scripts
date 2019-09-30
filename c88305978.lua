@@ -9,7 +9,7 @@ function c88305978.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCondition(c88305978.condition)
-	e1:SetCost(c88305978.cost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetTarget(c88305978.target)
 	e1:SetOperation(c88305978.operation)
 	c:RegisterEffect(e1)
@@ -17,10 +17,6 @@ end
 function c88305978.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 		and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
-end
-function c88305978.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c88305978.filter(c,e,tp)
 	return c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -19,7 +19,7 @@ function c70238111.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetHintTiming(0,TIMING_END_PHASE)
 	e2:SetCondition(c70238111.spcon)
-	e2:SetCost(c70238111.spcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c70238111.sptg)
 	e2:SetOperation(c70238111.spop)
 	c:RegisterEffect(e2)
@@ -61,10 +61,6 @@ function c70238111.cfilter(c)
 end
 function c70238111.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return not Duel.IsExistingMatchingCard(c70238111.cfilter,tp,LOCATION_MZONE,0,1,nil)
-end
-function c70238111.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c70238111.spfilter2(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x101) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

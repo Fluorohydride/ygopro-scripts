@@ -15,7 +15,7 @@ function c6890729.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c6890729.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c6890729.thtg)
 	e2:SetOperation(c6890729.thop)
 	c:RegisterEffect(e2)
@@ -68,10 +68,6 @@ function c6890729.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(g,0,tp,tp,true,true,POS_FACEUP)
 		g:GetFirst():CompleteProcedure()
 	end
-end
-function c6890729.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c6890729.thfilter(c)
 	return c:IsCode(6022371,85066822) and c:IsAbleToHand()

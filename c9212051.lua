@@ -36,7 +36,7 @@ function c9212051.initial_effect(c)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetHintTiming(0,TIMING_END_PHASE)
-	e3:SetCost(c9212051.spcost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c9212051.sptg)
 	e3:SetOperation(c9212051.spop)
 	c:RegisterEffect(e3)
@@ -97,10 +97,6 @@ function c9212051.thop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
-end
-function c9212051.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c9212051.spfilter(c,e,tp)
 	return c:IsSetCard(0xee) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

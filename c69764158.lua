@@ -10,17 +10,13 @@ function c69764158.initial_effect(c)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCountLimit(1)
 	e1:SetCondition(c69764158.descon)
-	e1:SetCost(c69764158.descost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetTarget(c69764158.destg)
 	e1:SetOperation(c69764158.desop)
 	c:RegisterEffect(e1)
 end
 function c69764158.descon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and (bit.band(r,REASON_BATTLE)~=0 or (bit.band(r,REASON_EFFECT)~=0 and rp==1-tp))
-end
-function c69764158.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c69764158.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

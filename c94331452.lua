@@ -15,14 +15,10 @@ function c94331452.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCost(c94331452.cost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c94331452.target2)
 	e2:SetOperation(c94331452.operation)
 	c:RegisterEffect(e2)
-end
-function c94331452.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c94331452.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x1066)

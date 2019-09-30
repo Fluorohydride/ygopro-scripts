@@ -7,16 +7,12 @@ function c52913738.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCondition(c52913738.regcon)
-	e1:SetCost(c52913738.regcost)
+	e1:SetCost(aux.bfgcost)
 	e1:SetOperation(c52913738.regop)
 	c:RegisterEffect(e1)
 end
 function c52913738.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1
-end
-function c52913738.regcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c52913738.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
