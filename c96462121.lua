@@ -48,20 +48,21 @@ function c96462121.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c96462121.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or not tc:IsControler(tp)
-		or Duel.GetLocationCountFromEx(tp,tp,tc)<=0 or not aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then return end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c96462121.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetRank()+2,tc)
-	local sc=g:GetFirst()
-	if sc then
-		local mg=tc:GetOverlayGroup()
-		if mg:GetCount()>0 then
-			Duel.Overlay(sc,mg)
+	if tc:IsRelateToEffect(e) and tc:IsControler(tp) and tc:IsFaceup()
+		and Duel.GetLocationCountFromEx(tp,tp,tc)>0 and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local g=Duel.SelectMatchingCard(tp,c96462121.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetRank()+2,tc)
+		local sc=g:GetFirst()
+		if sc then
+			local mg=tc:GetOverlayGroup()
+			if mg:GetCount()>0 then
+				Duel.Overlay(sc,mg)
+			end
+			sc:SetMaterial(Group.FromCards(tc))
+			Duel.Overlay(sc,Group.FromCards(tc))
+			Duel.SpecialSummon(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)
+			sc:CompleteProcedure()
 		end
-		sc:SetMaterial(Group.FromCards(tc))
-		Duel.Overlay(sc,Group.FromCards(tc))
-		Duel.SpecialSummon(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)
-		sc:CompleteProcedure()
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
