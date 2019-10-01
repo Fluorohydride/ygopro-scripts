@@ -37,13 +37,14 @@ function c29296344.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 and tc:IsType(TYPE_LINK) then
 		local ct=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),tc:GetLink())
-		if ct<=0 then return end
-		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
-		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c29296344.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
-		if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(29296344,0)) then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ct)
-			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
+		if ct>0 then
+			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
+			local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c29296344.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
+			if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(29296344,0)) then
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+				local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ct)
+				Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
+			end
 		end
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())

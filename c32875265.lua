@@ -26,21 +26,22 @@ end
 function c32875265.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local ct=Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE,nil)-Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0,nil)
-	if ft<=0 or ct<=0 then return end
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-	ct=math.min(ct,ft)
-	local g=Duel.GetMatchingGroup(c32875265.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ct)
-	if sg and Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)>0
-		and Duel.GetLP(tp)<=Duel.GetLP(1-tp)-2000
-		and Duel.IsExistingMatchingCard(c32875265.setfilter,tp,LOCATION_DECK,0,1,nil)
-		and Duel.SelectYesNo(tp,aux.Stringid(32875265,0)) then
-		Duel.BreakEffect()
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-		local tg=Duel.SelectMatchingCard(tp,c32875265.setfilter,tp,LOCATION_DECK,0,1,1,nil)
-		Duel.SSet(tp,tg)
-		Duel.ConfirmCards(1-tp,tg)
+	if ft>0 and ct>0 then
+		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
+		ct=math.min(ct,ft)
+		local g=Duel.GetMatchingGroup(c32875265.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ct)
+		if sg and Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)>0
+			and Duel.GetLP(tp)<=Duel.GetLP(1-tp)-2000
+			and Duel.IsExistingMatchingCard(c32875265.setfilter,tp,LOCATION_DECK,0,1,nil)
+			and Duel.SelectYesNo(tp,aux.Stringid(32875265,0)) then
+			Duel.BreakEffect()
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
+			local tg=Duel.SelectMatchingCard(tp,c32875265.setfilter,tp,LOCATION_DECK,0,1,1,nil)
+			Duel.SSet(tp,tg)
+			Duel.ConfirmCards(1-tp,tg)
+		end
 	end
 	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())

@@ -19,20 +19,21 @@ function c31706048.filter(c)
 	return (c:IsSetCard(0x104) and c:IsType(TYPE_MONSTER)) or c:IsSetCard(0xfe) and c:IsAbleToHand()
 end
 function c31706048.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.IsPlayerCanDiscardDeck(tp,5) then return end
-	Duel.ConfirmDecktop(tp,5)
-	local g=Duel.GetDecktopGroup(tp,5)
-	if g:GetCount()>0 then
-		if g:IsExists(c31706048.filter,1,nil) then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-			local sg=g:FilterSelect(tp,c31706048.filter,1,1,nil)
-			Duel.SendtoHand(sg,nil,REASON_EFFECT)
-			Duel.ConfirmCards(1-tp,sg)
-			Duel.ShuffleHand(tp)
-			g:Sub(sg)
-			Duel.SendtoGrave(g,REASON_EFFECT+REASON_REVEAL)
-		else
-			Duel.ShuffleDeck(tp)
+	if Duel.IsPlayerCanDiscardDeck(tp,5) then
+		Duel.ConfirmDecktop(tp,5)
+		local g=Duel.GetDecktopGroup(tp,5)
+		if g:GetCount()>0 then
+			if g:IsExists(c31706048.filter,1,nil) then
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+				local sg=g:FilterSelect(tp,c31706048.filter,1,1,nil)
+				Duel.SendtoHand(sg,nil,REASON_EFFECT)
+				Duel.ConfirmCards(1-tp,sg)
+				Duel.ShuffleHand(tp)
+				g:Sub(sg)
+				Duel.SendtoGrave(g,REASON_EFFECT+REASON_REVEAL)
+			else
+				Duel.ShuffleDeck(tp)
+			end
 		end
 	end
 	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end

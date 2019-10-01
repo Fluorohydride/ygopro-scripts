@@ -58,16 +58,17 @@ function c67508932.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Remove(g,POS_FACEUP,REASON_EFFECT)>0 then
 		local og=Duel.GetOperatedGroup()
 		local rg=og:Filter(c67508932.rfilter,nil)
-		if #rg==0 then return end
-		local lab=0
-		if c:GetFlagEffect(67508933)==0 then
-			lab=c:GetFieldID()
-			c:RegisterFlagEffect(67508933,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,lab)
-		else
-			lab=c:GetFlagEffectLabel(67508933)
-		end
-		for oc in aux.Next(rg) do
-			oc:RegisterFlagEffect(67508932,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,lab)
+		if #rg>0 then
+			local lab=0
+			if c:GetFlagEffect(67508933)==0 then
+				lab=c:GetFieldID()
+				c:RegisterFlagEffect(67508933,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,lab)
+			else
+				lab=c:GetFlagEffectLabel(67508933)
+			end
+			for oc in aux.Next(rg) do
+				oc:RegisterFlagEffect(67508932,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,lab)
+			end
 		end
 	end
 	local e1=Effect.CreateEffect(c)
