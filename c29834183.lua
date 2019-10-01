@@ -17,7 +17,7 @@ function c29834183.eqcon(e,tp,eg,ep,ev,re,r,rp)
 		and c:IsReason(REASON_DESTROY) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c29834183.eqfilter(c,tp)
-	if not c:IsFaceup() or not c:IsControlerCanBeChanged() then return false end
+	if not c:IsFaceup() then return false end
 	if c:IsType(TYPE_TRAPMONSTER) then return Duel.GetLocationCount(tp,LOCATION_SZONE,tp,LOCATION_REASON_CONTROL)>0 and Duel.GetLocationCount(tp,LOCATION_SZONE,tp,0)>=2 end
 	return true
 end
