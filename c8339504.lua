@@ -18,7 +18,7 @@ function c8339504.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c8339504.cfilter(c,e,tp)
 	local rk=c:GetRank()
-	return rk>0 and Duel.GetLocationCountFromEx(tp,tp,c)>0 and Duel.IsExistingMatchingCard(c8339504.spfilter1,tp,LOCATION_EXTRA,0,1,nil,rk,race,att,code,e,tp)
+	return rk>0 and Duel.GetLocationCountFromEx(tp,tp,c)>0 and Duel.IsExistingMatchingCard(c8339504.spfilter1,tp,LOCATION_EXTRA,0,1,nil,rk,c:GetRace(),c:GetAttribute(),c:GetCode(),e,tp)
 end
 function c8339504.spfilter1(c,rk,race,att,code,e,tp)
 	return c:IsRank(rk) and c:IsRace(race) and c:IsAttribute(att)
