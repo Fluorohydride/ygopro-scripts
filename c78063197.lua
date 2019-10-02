@@ -116,7 +116,7 @@ function c78063197.eqop(e,tp,eg,ep,ev,re,r,rp)
 		if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and tc1:IsControler(1-tp) and tc2 then
 			if Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
 				m.equip_monster(tc2,tp,tc1)
-			else Duel.Destroy(tc,REASON_RULE) end
+			else Duel.Destroy(tc1,REASON_RULE) end
 		end
 	end
 end
