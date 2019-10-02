@@ -51,7 +51,7 @@ function c33453260.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c33453260.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
 end
 function c33453260.filter(c)
-	return c:IsFaceup() and c:IsControlerCanBeChanged()
+	return c:IsFaceup()
 end
 function c33453260.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c33453260.filter(chkc) end
