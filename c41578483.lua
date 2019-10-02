@@ -90,7 +90,9 @@ function c41578483.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) and tc:IsControler(1-tp) then
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
-			c41578483.equip_monster(c,tp,tc)
+			if Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
+				c41578483.equip_monster(c,tp,tc)
+			else Duel.Destroy(tc,REASON_RULE) end
 		else Duel.SendtoGrave(tc,REASON_RULE) end
 	end
 end
