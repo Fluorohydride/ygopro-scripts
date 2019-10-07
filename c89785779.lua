@@ -55,9 +55,7 @@ function c89785779.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if not tc2 then return end
 	local m=_G["c"..tc2:GetCode()]
 	if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and tc1:IsControler(1-tp) then
-		if Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
-			m.equip_monster(tc2,tp,tc1)
-		else Duel.Destroy(tc1,REASON_RULE) end
+		m.equip_monster(tc2,tp,tc1)
 	end
 end
 function c89785779.thfilter(c)
