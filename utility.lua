@@ -1522,7 +1522,7 @@ function Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
 				end
 	end
 end
-function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,greater_or_equal)
+function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,greater_or_equal,gc)
 	if bit.band(c:GetType(),0x81)~=0x81 or (filter and not filter(c,e,tp)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m1:Filter(Card.IsCanBeRitualMaterial,c,c)
 	if m2 then
@@ -1532,6 +1532,10 @@ function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,great
 		mg=mg:Filter(c.mat_filter,c,tp)
 	else
 		mg:RemoveCard(c)
+	end
+	if gc then
+		if not mg:IsContains(gc) then return false end
+		Duel.SetSelectedCard(gc)
 	end
 	local lv=level_function(c)
 	Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
