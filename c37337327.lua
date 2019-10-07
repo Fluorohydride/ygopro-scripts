@@ -2,7 +2,7 @@
 function c37337327.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()
-	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_WARRIOR+RACE_MACHINE),2,2,c37337327.lcheck)
+	aux.AddLinkProcedure(c,c37337327.mfilter,2,2,c37337327.lcheck)
 	--synchro effect
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(37337327,0))
@@ -26,6 +26,9 @@ function c37337327.initial_effect(c)
 	e2:SetTarget(c37337327.sptg)
 	e2:SetOperation(c37337327.spop)
 	c:RegisterEffect(e2)
+end
+function c37337327.mfilter(c)
+	return c:IsType(TYPE_EFFECT) and c:IsLinkRace(RACE_WARRIOR+RACE_MACHINE)
 end
 function c37337327.lcheck(g,lc)
 	return g:IsExists(Card.IsLinkType,1,nil,TYPE_TUNER)
