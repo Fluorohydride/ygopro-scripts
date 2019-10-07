@@ -44,7 +44,7 @@ function c45247637.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c45247637.filter(c)
-	return c:IsFaceup() and c:IsControlerCanBeChanged()
+	return c:IsFaceup()
 end
 function c45247637.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:GetLocation()==LOCATION_MZONE and chkc:GetControler()~=tp and c45247637.filter(chkc) end
