@@ -74,6 +74,10 @@ function c41578483.eqlimit(e,c)
 	return e:GetOwner()==c
 end
 function c41578483.equip_monster(c,tp,tc)
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then
+		Duel.Destroy(tc,REASON_RULE)
+		return
+	end
 	if not Duel.Equip(tp,tc,c,false) then return end
 	--Add Equip limit
 	tc:RegisterFlagEffect(41578483,RESET_EVENT+RESETS_STANDARD,0,0)
@@ -90,9 +94,7 @@ function c41578483.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) and tc:IsControler(1-tp) then
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
-			if Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
-				c41578483.equip_monster(c,tp,tc)
-			else Duel.Destroy(tc,REASON_RULE) end
+			c41578483.equip_monster(c,tp,tc)
 		else Duel.SendtoGrave(tc,REASON_RULE) end
 	end
 end
