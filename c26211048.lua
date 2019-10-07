@@ -41,6 +41,10 @@ function c26211048.eqop(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsLocation(LOCATION_MZONE) then Duel.SendtoGrave(tc,REASON_EFFECT) end
 		return
 	end
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then
+		Duel.Destroy(tc,REASON_RULE)
+		return
+	end
 	Duel.Equip(tp,tc,c,false)
 	local e1=Effect.CreateEffect(c)
 	e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)

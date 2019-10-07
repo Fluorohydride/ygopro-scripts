@@ -93,6 +93,10 @@ function c68140974.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) then
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
+			if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then
+				Duel.Destroy(tc,REASON_RULE)
+				return
+			end
 			local atk=tc:GetTextAttack()
 			if atk<0 then atk=0 end
 			if not Duel.Equip(tp,tc,c,false) then return end

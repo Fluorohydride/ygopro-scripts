@@ -49,6 +49,10 @@ function c39987164.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsAttackPos() and tc:IsRelateToEffect(e) then
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
+			if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then
+				Duel.Destroy(tc,REASON_RULE)
+				return
+			end
 			if not Duel.Equip(tp,tc,c,false) then return end
 			--Add Equip limit
 			tc:RegisterFlagEffect(39987164,RESET_EVENT+RESETS_STANDARD,0,0)
