@@ -28,7 +28,7 @@ function c37337327.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c37337327.mfilter(c)
-	return c:IsType(TYPE_EFFECT) and c:IsLinkRace(RACE_WARRIOR+RACE_MACHINE)
+	return c:IsLinkType(TYPE_EFFECT) and c:IsLinkRace(RACE_WARRIOR+RACE_MACHINE)
 end
 function c37337327.lcheck(g,lc)
 	return g:IsExists(Card.IsLinkType,1,nil,TYPE_TUNER)
