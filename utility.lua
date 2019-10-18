@@ -1004,9 +1004,18 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 		if type(val[i])=='function' then
 			fun[i]=function(c,fc,sub,mg,sg) return val[i](c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) end
 		elseif type(val[i])=='table' then
-			fun[i]=function(c,fc,sub) return c:IsFusionCode(table.unpack(val[i])) or (sub and c:CheckFusionSubstitute(fc)) end
+			fun[i]=function(c,fc,sub,mg,sg)
+					for _,fcode in ipairs(val[i]) do
+						if type(fcode)=='function' then
+							if fcode(c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) then return true end
+						else
+							if c:IsFusionCode(fcode) or (sub and c:CheckFusionSubstitute(fc)) then return true end
+						end
+					end
+					return false
+			end
 			for _,fcode in ipairs(val[i]) do
-				table.insert(mat,fcode)
+				if type(fcode)~='function' then table.insert(mat,fcode) end
 			end
 		else
 			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
@@ -1107,9 +1116,18 @@ function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
 		if type(val[i])=='function' then
 			fun[i]=function(c,fc,sub,mg,sg) return val[i](c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) end
 		elseif type(val[i])=='table' then
-			fun[i]=function(c,fc,sub) return c:IsFusionCode(table.unpack(val[i])) or (sub and c:CheckFusionSubstitute(fc)) end
+			fun[i]=function(c,fc,sub,mg,sg)
+					for _,fcode in ipairs(val[i]) do
+						if type(fcode)=='function' then
+							if fcode(c,fc,sub,mg,sg) and not c:IsHasEffect(6205579) then return true end
+						else
+							if c:IsFusionCode(fcode) or (sub and c:CheckFusionSubstitute(fc)) then return true end
+						end
+					end
+					return false
+			end
 			for _,fcode in ipairs(val[i]) do
-				table.insert(mat,fcode)
+				if type(fcode)~='function' then table.insert(mat,fcode) end
 			end
 		else
 			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
@@ -1306,8 +1324,19 @@ function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
 	end
 	if c.material_count==nil then
 		local mt=getmetatable(c)
-		mt.material_count=1
-		mt.material={code1}
+		if type(code1)=='table' then
+			mt.material_count=0
+			mt.material={}
+			for _,fcode in ipairs(code1) do
+				if type(fcode)~='function' then
+					mt.material_count=mt.material_count+1
+					table.insert(mt.material,fcode)
+				end
+			end
+		else
+			mt.material_count=1
+			mt.material={code1}
+		end
 	end
 	Auxiliary.AddFusionProcMix(c,sub,insf,table.unpack(code))
 end
