@@ -36,6 +36,20 @@ function c13518809.initial_effect(c)
 	e4:SetTarget(c13518809.damtg)
 	e4:SetOperation(c13518809.damop)
 	c:RegisterEffect(e4)
+	--material check
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e5:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e5:SetCondition(c13518809.matcon)
+	e5:SetOperation(c13518809.matop)
+	c:RegisterEffect(e5)
+	local e6=Effect.CreateEffect(c)
+	e6:SetType(EFFECT_TYPE_SINGLE)
+	e6:SetCode(EFFECT_MATERIAL_CHECK)
+	e6:SetValue(c13518809.valcheck)
+	e6:SetLabelObject(e5)
+	c:RegisterEffect(e6)
 end
 function c13518809.indcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL)
@@ -47,9 +61,7 @@ function c13518809.mfilter(c)
 	return not c:IsType(TYPE_RITUAL)
 end
 function c13518809.condition(e)
-	local c=e:GetHandler()
-	local mg=c:GetMaterial()
-	return c:GetSummonType()==SUMMON_TYPE_RITUAL and mg:GetCount()>0 and not mg:IsExists(c13518809.mfilter,1,nil)
+	return e:GetHandler():GetFlagEffect(13518809)>0
 end
 function c13518809.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -63,4 +75,18 @@ end
 function c13518809.damop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Damage(p,d,REASON_EFFECT)
+end
+function c13518809.matcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL) and e:GetLabel()==1
+end
+function c13518809.matop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():RegisterFlagEffect(13518809,RESET_EVENT+RESETS_STANDARD,0,1)
+end
+function c13518809.valcheck(e,c)
+	local g=c:GetMaterial()
+	if g:GetCount()>0 and not g:IsExists(c13518809.mfilter,1,nil) then
+		e:GetLabelObject():SetLabel(1)
+	else
+		e:GetLabelObject():SetLabel(0)
+	end
 end

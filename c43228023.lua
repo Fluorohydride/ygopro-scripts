@@ -27,11 +27,18 @@ function c43228023.initial_effect(c)
 	e3:SetTarget(c43228023.destg)
 	e3:SetOperation(c43228023.desop)
 	c:RegisterEffect(e3)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e0:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e0:SetCondition(c43228023.matcon)
+	e0:SetOperation(c43228023.matop)
+	c:RegisterEffect(e0)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE)
 	e4:SetCode(EFFECT_MATERIAL_CHECK)
 	e4:SetValue(c43228023.valcheck)
-	e4:SetLabelObject(e3)
+	e4:SetLabelObject(e0)
 	c:RegisterEffect(e4)
 end
 function c43228023.descost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -48,7 +55,7 @@ function c43228023.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(1-tp) end
 	if chk==0 then return Duel.IsExistingTarget(nil,tp,0,LOCATION_ONFIELD,1,nil) end
 	local ct=1
-	if e:GetLabel()==1 and e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION) then ct=3 end
+	if e:GetHandler():GetFlagEffect(43228023)>0 then ct=3 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,nil,tp,0,LOCATION_ONFIELD,1,ct,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
@@ -56,6 +63,12 @@ end
 function c43228023.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	Duel.Destroy(g,REASON_EFFECT)
+end
+function c43228023.matcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION) and e:GetLabel()==1
+end
+function c43228023.matop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():RegisterFlagEffect(43228023,RESET_EVENT+RESETS_STANDARD,0,1)
 end
 function c43228023.spfilter(c)
 	return c:IsOriginalCodeRule(38517737)

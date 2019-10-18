@@ -39,6 +39,20 @@ function c59913418.initial_effect(c)
 	e3:SetTarget(c59913418.destg)
 	e3:SetOperation(c59913418.desop)
 	c:RegisterEffect(e3)
+	--material check
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e4:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e4:SetCondition(c59913418.matcon)
+	e4:SetOperation(c59913418.matop)
+	c:RegisterEffect(e4)
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_SINGLE)
+	e5:SetCode(EFFECT_MATERIAL_CHECK)
+	e5:SetValue(c59913418.valcheck)
+	e5:SetLabelObject(e4)
+	c:RegisterEffect(e5)
 end
 function c59913418.indcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL)
@@ -50,9 +64,7 @@ function c59913418.mfilter(c)
 	return not c:IsType(TYPE_RITUAL)
 end
 function c59913418.costcon(e)
-	local c=e:GetHandler()
-	local mg=c:GetMaterial()
-	return c:GetSummonType()==SUMMON_TYPE_RITUAL and mg:GetCount()>0 and not mg:IsExists(c59913418.mfilter,1,nil)
+	return e:GetHandler():GetFlagEffect(59913418)>0
 end
 function c59913418.costval(e,re,rp,val)
 	if re and re:IsHasType(0x7e0) and re:GetHandler()==e:GetHandler() then
@@ -76,5 +88,19 @@ function c59913418.desop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetOperatedGroup():FilterCount(Card.IsControler,nil,1-tp)
 	if ct>0 then
 		Duel.Damage(1-tp,ct*200,REASON_EFFECT)
+	end
+end
+function c59913418.matcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL) and e:GetLabel()==1
+end
+function c59913418.matop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():RegisterFlagEffect(59913418,RESET_EVENT+RESETS_STANDARD,0,1)
+end
+function c59913418.valcheck(e,c)
+	local g=c:GetMaterial()
+	if g:GetCount()>0 and not g:IsExists(c59913418.mfilter,1,nil) then
+		e:GetLabelObject():SetLabel(1)
+	else
+		e:GetLabelObject():SetLabel(0)
 	end
 end
