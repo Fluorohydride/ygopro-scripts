@@ -60,7 +60,6 @@ function c7165085.activate(e,tp,eg,ep,ev,re,r,rp)
 					tg:CreateEffectRelation(te)
 					tg=g:GetNext()
 				end
-				tc:SetStatus(STATUS_ACTIVATED,true)
 				if operation then operation(te,tep,eg,ep,ev,re,r,rp) end
 				tc:ReleaseEffectRelation(te)
 				tg=g:GetFirst()
