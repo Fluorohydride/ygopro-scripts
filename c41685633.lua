@@ -40,8 +40,8 @@ function c41685633.initial_effect(c)
 	e4:SetTarget(c41685633.desreptg)
 	c:RegisterEffect(e4)
 end
-function c41685633.sprfilter1(c)
-	return c:IsRace(RACE_THUNDER) and c:IsAbleToRemoveAsCost()
+function c41685633.sprfilter1(c,sc)
+	return c:IsRace(RACE_THUNDER) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
 end
 function c41685633.sprfilter2(c,tp,sc)
 	return c:IsRace(RACE_THUNDER) and c:IsFusionType(TYPE_FUSION)
@@ -50,15 +50,16 @@ end
 function c41685633.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.IsExistingMatchingCard(c41685633.sprfilter1,tp,LOCATION_HAND,0,1,nil)
+	return Duel.IsExistingMatchingCard(c41685633.sprfilter1,tp,LOCATION_HAND,0,1,nil,c)
 		and Duel.IsExistingMatchingCard(c41685633.sprfilter2,tp,LOCATION_MZONE,0,1,nil,tp,c)
 end
 function c41685633.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectMatchingCard(tp,c41685633.sprfilter1,tp,LOCATION_HAND,0,1,1,nil)
+	local g1=Duel.SelectMatchingCard(tp,c41685633.sprfilter1,tp,LOCATION_HAND,0,1,1,nil,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g2=Duel.SelectMatchingCard(tp,c41685633.sprfilter2,tp,LOCATION_MZONE,0,1,1,nil,tp,c)
 	g1:Merge(g2)
+	c:SetMaterial(g)
 	Duel.Remove(g1,POS_FACEUP,REASON_COST)
 end
 function c41685633.descon(e,tp,eg,ep,ev,re,r,rp)
