@@ -44,8 +44,8 @@ function c65172015.initial_effect(c)
 	e4:SetOperation(c65172015.spop2)
 	c:RegisterEffect(e4)
 end
-function c65172015.matfilter(c)
-	return c:IsOriginalCodeRule(1561110,91998119) and c:IsAbleToRemoveAsCost()
+function c65172015.matfilter(c,sc)
+	return c:IsOriginalCodeRule(1561110,91998119) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
 end
 function c65172015.cfilter1(c,tp,g)
 	return g:IsExists(c65172015.cfilter2,1,c,tp,c)
@@ -58,17 +58,18 @@ end
 function c65172015.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(c65172015.matfilter,tp,LOCATION_ONFIELD,0,nil)
+	local g=Duel.GetMatchingGroup(c65172015.matfilter,tp,LOCATION_ONFIELD,0,nil,sc)
 	return g:IsExists(c65172015.cfilter1,1,nil,tp,g)
 end
 function c65172015.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local g=Duel.GetMatchingGroup(c65172015.matfilter,tp,LOCATION_ONFIELD,0,nil)
+	local g=Duel.GetMatchingGroup(c65172015.matfilter,tp,LOCATION_ONFIELD,0,nil,sc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g1=g:FilterSelect(tp,c65172015.cfilter1,1,1,nil,tp,g)
 	local mc=g1:GetFirst()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g2=g:FilterSelect(tp,c65172015.cfilter2,1,1,mc,tp,mc)
 	g1:Merge(g2)
+	c:SetMaterial(g1)
 	Duel.Remove(g1,POS_FACEUP,REASON_COST)
 end
 function c65172015.discon(e,tp,eg,ep,ev,re,r,rp)
