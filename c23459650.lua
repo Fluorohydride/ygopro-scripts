@@ -21,7 +21,8 @@ function c23459650.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c23459650.mfilter(c)
-	return c:IsCode(88176533,24175232)
+	local code,code2=c:GetPreviousCodeOnField()
+	return code==88176533 or code==24175232 or code2==88176533 or code2==24175232
 end
 function c23459650.activate(e,tp,eg,ep,ev,re,r,rp)
 	local mg=Duel.GetRitualMaterial(tp)
