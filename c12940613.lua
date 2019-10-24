@@ -56,6 +56,8 @@ function c12940613.activate(e,tp,eg,ep,ev,re,r,rp)
 	if dg:GetCount()~=0 and Duel.SelectYesNo(tp,aux.Stringid(12940613,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-		Duel.SendtoDeck(dg:Select(tp,1,1,nil),nil,2,REASON_EFFECT)
+		local sg=dg:Select(tp,1,1,nil)
+		Duel.HintSelection(sg)
+		Duel.SendtoDeck(sg,nil,2,REASON_EFFECT)
 	end
 end
