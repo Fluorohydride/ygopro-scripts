@@ -71,6 +71,7 @@ function c20343502.tdop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(Card.IsAbleToDeck),tp,LOCATION_GRAVE,LOCATION_GRAVE,1,2,nil)
 	if #g>0 then
+		Duel.HintSelection(g)
 		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
 	end
 end

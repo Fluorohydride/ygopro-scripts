@@ -47,5 +47,6 @@ end
 function c96150936.desrepop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c96150936.desrepfilter,tp,LOCATION_GRAVE,0,1,1,nil)
+	Duel.HintSelection(g)
 	Duel.SendtoDeck(g,nil,2,REASON_EFFECT+REASON_REPLACE)
 end
