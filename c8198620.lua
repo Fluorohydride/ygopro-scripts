@@ -1,6 +1,6 @@
 --冥界龍 ドラゴネクロ
 function c8198620.initial_effect(c)
-	c:SetUniqueOnField(1,0,8198620)
+	c:SetUniqueOnField(1,0,8198620,LOCATION_MZONE)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsRace,RACE_ZOMBIE),2,false)
