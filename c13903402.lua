@@ -1,6 +1,6 @@
 --光の王 マルデル
 function c13903402.initial_effect(c)
-	c:SetUniqueOnField(1,0,13903402)
+	c:SetUniqueOnField(1,0,13903402,LOCATION_MZONE)
 	--to hand
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(13903402,0))
