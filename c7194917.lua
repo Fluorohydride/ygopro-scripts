@@ -1,6 +1,6 @@
 --No.52 ダイヤモンド・クラブ・キング
 function c7194917.initial_effect(c)
-	c:SetUniqueOnField(1,0,7194917)
+	c:SetUniqueOnField(1,0,7194917,LOCATION_MZONE)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)
 	c:EnableReviveLimit()
