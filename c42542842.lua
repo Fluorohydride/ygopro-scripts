@@ -1,6 +1,6 @@
 --麗の魔妖－妲姫
 function c42542842.initial_effect(c)
-	c:SetUniqueOnField(1,0,42542842)
+	c:SetUniqueOnField(1,0,42542842,LOCATION_MZONE)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(42542842,0))
