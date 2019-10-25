@@ -1,6 +1,6 @@
 --武神－ミカヅチ
 function c53678698.initial_effect(c)
-	c:SetUniqueOnField(1,0,53678698)
+	c:SetUniqueOnField(1,0,53678698,LOCATION_MZONE)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(53678698,0))
