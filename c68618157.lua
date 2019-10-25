@@ -1,6 +1,6 @@
 --武神姫－アマテラス
 function c68618157.initial_effect(c)
-	c:SetUniqueOnField(1,0,68618157)
+	c:SetUniqueOnField(1,0,68618157,LOCATION_MZONE)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,3)
 	c:EnableReviveLimit()
