@@ -1,6 +1,6 @@
 --彼岸の詩人 ウェルギリウス
 function c601193.initial_effect(c)
-	c:SetUniqueOnField(1,0,601193)
+	c:SetUniqueOnField(1,0,601193,LOCATION_MZONE)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
