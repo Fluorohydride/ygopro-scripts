@@ -1,6 +1,6 @@
 --ジゴバイト
 function c40894584.initial_effect(c)
-	c:SetUniqueOnField(1,0,40894584)
+	c:SetUniqueOnField(1,0,40894584,LOCATION_MZONE)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
