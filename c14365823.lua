@@ -1,7 +1,7 @@
 --トリックスター・ディーヴァリディス
 function c14365823.initial_effect(c)
 	c:EnableReviveLimit()
-	c:SetUniqueOnField(1,0,14365823)
+	c:SetUniqueOnField(1,0,14365823,LOCATION_MZONE)
 	aux.AddLinkProcedure(c,c14365823.mfilter,2,2)
 	--damage
 	local e1=Effect.CreateEffect(c)
