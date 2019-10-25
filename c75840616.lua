@@ -1,6 +1,6 @@
 --武神帝－スサノヲ
 function c75840616.initial_effect(c)
-	c:SetUniqueOnField(1,0,75840616)
+	c:SetUniqueOnField(1,0,75840616,LOCATION_MZONE)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x88),4,2)
 	c:EnableReviveLimit()
