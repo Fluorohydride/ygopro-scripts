@@ -1,6 +1,6 @@
 --轍の魔妖－朧車
 function c30607616.initial_effect(c)
-	c:SetUniqueOnField(1,0,30607616)
+	c:SetUniqueOnField(1,0,30607616,LOCATION_MZONE)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
