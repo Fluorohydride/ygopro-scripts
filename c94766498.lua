@@ -1,6 +1,6 @@
 --先史遺産アステカ・マスク・ゴーレム
 function c94766498.initial_effect(c)
-	c:SetUniqueOnField(1,0,94766498)
+	c:SetUniqueOnField(1,0,94766498,LOCATION_MZONE)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
