@@ -1,6 +1,6 @@
 --武神帝－カグツチ
 function c1855932.initial_effect(c)
-	c:SetUniqueOnField(1,0,1855932)
+	c:SetUniqueOnField(1,0,1855932,LOCATION_MZONE)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_BEASTWARRIOR),4,2)
 	c:EnableReviveLimit()
