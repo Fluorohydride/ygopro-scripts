@@ -1,6 +1,6 @@
 --アーティファクト－カドケウス
 function c84268896.initial_effect(c)
-	c:SetUniqueOnField(1,0,84268896)
+	c:SetUniqueOnField(1,0,84268896,LOCATION_MZONE)
 	--set
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
