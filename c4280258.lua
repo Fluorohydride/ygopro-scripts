@@ -1,6 +1,6 @@
 --召命の神弓－アポロウーサ
 function c4280258.initial_effect(c)
-	c:SetUniqueOnField(1,0,4280258)
+	c:SetUniqueOnField(1,0,4280258,LOCATION_MZONE)
 	--link summon
 	aux.AddLinkProcedure(c,aux.NOT(aux.FilterBoolFunction(Card.IsLinkType,TYPE_TOKEN)),2,99,c4280258.lcheck)
 	c:EnableReviveLimit()
