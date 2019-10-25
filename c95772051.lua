@@ -1,6 +1,6 @@
 --魔聖騎士ランスロット
 function c95772051.initial_effect(c)
-	c:SetUniqueOnField(1,0,95772051)
+	c:SetUniqueOnField(1,0,95772051,LOCATION_MZONE)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(95772051,0))
