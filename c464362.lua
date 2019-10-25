@@ -1,6 +1,6 @@
 --デストーイ・シザー・タイガー
 function c464362.initial_effect(c)
-	c:SetUniqueOnField(1,0,464362)
+	c:SetUniqueOnField(1,0,464362,LOCATION_MZONE)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeFunRep(c,30068120,aux.FilterBoolFunction(Card.IsFusionSetCard,0xa9),1,63,true,true)
