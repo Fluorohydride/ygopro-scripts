@@ -62,10 +62,11 @@ function c53490455.recop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c53490455.thcon(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	local tc=eg:GetFirst()
 	local bc=tc:GetBattleTarget()
-	return eg:GetCount()==1	and tc:IsLocation(LOCATION_GRAVE) and tc:IsReason(REASON_BATTLE)
-		and bc:IsRelateToBattle() and bc:IsControler(tp) and bc:IsSetCard(0x119)
+	return tc:IsLocation(LOCATION_GRAVE) and tc:IsReason(REASON_BATTLE) and 
+		tc:GetPreviousControler()==1-tp and bc:GetPreviousControler()==tp and bc:IsPreviousSetCard(0x119) and tc~=c and bc~=c
 end
 function c53490455.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToHand() end
