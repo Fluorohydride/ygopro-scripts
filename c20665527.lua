@@ -62,7 +62,7 @@ function c20665527.cfilter(c)
 		and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c20665527.descon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c20665527.cfilter,1,e:GetHandler())
+	return eg:IsExists(c20665527.cfilter,1,nil) and not eg:IsContains(e:GetHandler())
 end
 function c20665527.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
