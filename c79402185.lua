@@ -70,7 +70,7 @@ function c79402185.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c79402185.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c79402185.thfilter,1,nil)
+	return eg:IsExists(c79402185.thfilter,1,nil) and not eg:IsContains(e:GetHandler())
 end
 function c79402185.thfilter(c)
 	return (c:IsCode(85066822) or c:IsCode(6022371)) and c:IsPreviousLocation(LOCATION_ONFIELD)
