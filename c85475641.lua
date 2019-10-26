@@ -21,7 +21,7 @@ function c85475641.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		e:SetLabel(tc:GetLevel())
-		return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0
+		return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0 and not eg:IsContains(e:GetHandler())
 	else return false end
 end
 function c85475641.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
