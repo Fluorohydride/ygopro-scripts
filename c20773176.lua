@@ -36,7 +36,7 @@ function c20773176.filter(c,tp)
 		or c:IsPreviousLocation(LOCATION_PZONE))
 end
 function c20773176.condition(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c20773176.filter,1,nil,tp)
+	return eg:IsExists(c20773176.filter,1,nil,tp) and not eg:IsContains(e:GetHandler())
 end
 function c20773176.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
