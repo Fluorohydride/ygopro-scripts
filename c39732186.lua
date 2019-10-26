@@ -57,7 +57,8 @@ function c39732186.thcon2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	local bc=tc:GetBattleTarget()
 	return tc:IsLocation(LOCATION_GRAVE) and tc:IsReason(REASON_BATTLE) and tc:GetPreviousControler()==1-tp
-	and bc:GetPreviousControler()==tp and bit.band(RACE_CYBERSE,bc:GetPreviousRaceOnField())==RACE_CYBERSE and tc~=c and bc~=c
+		and ((bc:IsRelateToBattle() and bc:IsControler(tp) and bc:IsRace(RACE_CYBERSE)) or (not bc:IsRelateToBattle()
+		and bc:GetPreviousControler()==tp and bit.band(RACE_CYBERSE,bc:GetPreviousRaceOnField())==RACE_CYBERSE)) and tc~=c and bc~=c
 end
 function c39732186.cfilter(c,tp)
 	return c:IsAbleToRemoveAsCost() and Duel.IsExistingTarget(c39732186.thfilter,tp,LOCATION_GRAVE,0,1,c)
