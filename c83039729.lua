@@ -1,6 +1,6 @@
 --六武衆の師範
 function c83039729.initial_effect(c)
-	c:SetUniqueOnField(1,0,83039729)
+	c:SetUniqueOnField(1,0,83039729,LOCATION_MZONE)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

@@ -1,6 +1,6 @@
 --セキュア・ガードナー
 function c2220237.initial_effect(c)
-	c:SetUniqueOnField(1,0,2220237)
+	c:SetUniqueOnField(1,0,2220237,LOCATION_MZONE)
 	--link summon
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,c2220237.matfilter,1,1)

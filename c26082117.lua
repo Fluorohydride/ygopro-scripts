@@ -1,6 +1,6 @@
 --ガガガマジシャン
 function c26082117.initial_effect(c)
-	c:SetUniqueOnField(1,0,26082117)
+	c:SetUniqueOnField(1,0,26082117,LOCATION_MZONE)
 	--lv change
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(26082117,0))

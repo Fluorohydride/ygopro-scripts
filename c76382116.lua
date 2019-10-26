@@ -1,6 +1,6 @@
 --鉄の王 ドヴェルグス
 function c76382116.initial_effect(c)
-	c:SetUniqueOnField(1,0,76382116)
+	c:SetUniqueOnField(1,0,76382116,LOCATION_MZONE)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(76382116,0))

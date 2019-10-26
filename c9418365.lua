@@ -1,6 +1,6 @@
 --武神－ヒルメ
 function c9418365.initial_effect(c)
-	c:SetUniqueOnField(1,0,9418365)
+	c:SetUniqueOnField(1,0,9418365,LOCATION_MZONE)
 	c:EnableReviveLimit()
 	--special summon
 	local e1=Effect.CreateEffect(c)

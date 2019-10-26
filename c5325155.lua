@@ -1,6 +1,6 @@
 --毒の魔妖－束脛
 function c5325155.initial_effect(c)
-	c:SetUniqueOnField(1,0,5325155)
+	c:SetUniqueOnField(1,0,5325155,LOCATION_MZONE)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(5325155,0))

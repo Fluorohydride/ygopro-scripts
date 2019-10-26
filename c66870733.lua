@@ -1,6 +1,6 @@
 --氷の魔妖－雪女
 function c66870733.initial_effect(c)
-	c:SetUniqueOnField(1,0,66870733)
+	c:SetUniqueOnField(1,0,66870733,LOCATION_MZONE)
 	--link summon
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x121),2,2)

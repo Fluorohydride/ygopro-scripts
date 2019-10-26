@@ -1,6 +1,6 @@
 --デーモン・イーター
 function c60666820.initial_effect(c)
-	c:SetUniqueOnField(1,0,60666820)
+	c:SetUniqueOnField(1,0,60666820,LOCATION_MZONE)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

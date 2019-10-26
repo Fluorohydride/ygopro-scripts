@@ -1,6 +1,6 @@
 --ブルー・ダストン
 function c40217358.initial_effect(c)
-	c:SetUniqueOnField(1,0,40217358)
+	c:SetUniqueOnField(1,0,40217358,LOCATION_MZONE)
 	--cannot release
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

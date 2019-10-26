@@ -1,6 +1,6 @@
 --ワルキューレ・エルダ
 function c83705073.initial_effect(c)
-	c:SetUniqueOnField(1,0,83705073)
+	c:SetUniqueOnField(1,0,83705073,LOCATION_MZONE)
 	--atk up
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)

@@ -1,6 +1,6 @@
 --稲荷火
 function c62953041.initial_effect(c)
-	c:SetUniqueOnField(1,0,62953041)
+	c:SetUniqueOnField(1,0,62953041,LOCATION_MZONE)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

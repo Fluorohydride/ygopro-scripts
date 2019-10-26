@@ -1,6 +1,6 @@
 --武神－ヤマト
 function c32339440.initial_effect(c)
-	c:SetUniqueOnField(1,0,32339440)
+	c:SetUniqueOnField(1,0,32339440,LOCATION_MZONE)
 	--to hand
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(32339440,0))
