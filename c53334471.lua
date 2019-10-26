@@ -4,6 +4,7 @@ function c53334471.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER)
 	e1:SetTarget(c53334471.acttg)
 	c:RegisterEffect(e1)
 	--adjust
@@ -65,6 +66,13 @@ end
 function c53334471.rmfilter(c,at)
 	return c:GetAttribute()==at
 end
+function c53334471.isonlyone(val)
+	return val&(val-1)==0
+end
+function c53334471.tgselect(sg,g)
+	local att=c53334471.getattribute(g-sg)
+	return att>0 and c53334471.isonlyone(att) and not sg:IsExists(c53334471.rmfilter,1,nil,att)
+end
 function c53334471.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	local phase=Duel.GetCurrentPhase()
 	if (phase==PHASE_DAMAGE and not Duel.IsDamageCalculated()) or phase==PHASE_DAMAGE_CAL then return end
@@ -74,10 +82,15 @@ function c53334471.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	if g1:GetCount()==0 then c53334471[tp]=0
 	else
 		local att=c53334471.getattribute(g1)
-		if bit.band(att,att-1)~=0 then
+		if not c53334471.isonlyone(att) then
 			if c53334471[tp]==0 or bit.band(c53334471[tp],att)==0 then
-				Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(53334471,0))
-				att=Duel.AnnounceAttribute(tp,1,att)
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+				local sg=g1:SelectSubGroup(tp,c53334471.tgselect,false,1,#g1,g1)
+				if not sg then
+					att=0
+				else
+					att=c53334471.getattribute(g1-sg)
+				end
 			else att=c53334471[tp] end
 		end
 		g1:Remove(c53334471.rmfilter,nil,att)
@@ -86,10 +99,15 @@ function c53334471.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	if g2:GetCount()==0 then c53334471[1-tp]=0
 	else
 		local att=c53334471.getattribute(g2)
-		if bit.band(att,att-1)~=0 then
+		if not c53334471.isonlyone(att) then
 			if c53334471[1-tp]==0 or bit.band(c53334471[1-tp],att)==0 then
-				Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(53334471,0))
-				att=Duel.AnnounceAttribute(1-tp,1,att)
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+				local sg=g2:SelectSubGroup(1-tp,c53334471.tgselect,false,1,#g2,g2)
+				if not sg then
+					att=0
+				else
+					att=c53334471.getattribute(g2-sg)
+				end
 			else att=c53334471[1-tp] end
 		end
 		g2:Remove(c53334471.rmfilter,nil,att)
