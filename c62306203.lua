@@ -29,9 +29,10 @@ end
 function c62306203.cfilter(c,tp)
 	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 		and bit.band(c:GetPreviousTypeOnField(),TYPE_LINK)~=0 and bit.band(c:GetPreviousRaceOnField(),RACE_CYBERSE)~=0
+		and c:IsReason(REASON_EFFECT) and rp==1-tp
 end
 function c62306203.spcon1(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and eg:IsExists(c62306203.cfilter,1,e:GetHandler(),tp)
+	return eg:IsExists(c62306203.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
 end
 function c62306203.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
