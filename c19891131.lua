@@ -54,10 +54,10 @@ function c19891131.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c19891131.cfilter(c,tp)
-	return c:IsType(TYPE_XYZ) and c:GetPreviousControler()==tp
+	return bit.band(c:GetPreviousTypeOnField(),TYPE_XYZ)~=0 and c:GetPreviousControler()==tp and c:IsPreviousPosition(POS_FACEUP)
 end
 function c19891131.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c19891131.cfilter,1,nil,tp)
+	return eg:IsExists(c19891131.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
 end
 function c19891131.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
