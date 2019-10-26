@@ -69,7 +69,7 @@ function c86962245.spfilter(c,tp)
 		and c:GetPreviousControler()==1-tp and c:GetPreviousSequence()<5
 end
 function c86962245.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c86962245.spfilter,1,nil,tp)
+	return eg:IsExists(c86962245.spfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
 end
 function c86962245.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
