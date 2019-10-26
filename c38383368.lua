@@ -22,13 +22,14 @@ function c38383368.initial_effect(c)
 	e2:SetOperation(c38383368.drop)
 	c:RegisterEffect(e2)
 end
-function c38383368.cfilter(c)
+function c38383368.cfilter(c,e)
 	if not (c:IsReason(REASON_BATTLE) and c:GetPreviousSequence()>5) then return false end
 	local d=c:GetBattleTarget()
-	return d:IsRelateToBattle() and d:GetSequence()<=5 or not d:IsRelateToBattle() and d:GetPreviousSequence()<=5
+	return ((d:IsRelateToBattle() and d:GetSequence()<=5) or (not d:IsRelateToBattle() and d:GetPreviousSequence()<=5))
+		and c~=e:GetHandler() and d~=e:GetHandler()
 end
 function c38383368.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local tc=eg:Filter(c38383368.cfilter,nil):GetFirst()
+	local tc=eg:Filter(c38383368.cfilter,nil,e):GetFirst()
 	if chk==0 then return tc and Duel.GetLocationCount(tc:GetControler(),LOCATION_MZONE,tp)>0
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE,tc:GetControler()) end
 	e:SetLabel(tc:GetControler())
