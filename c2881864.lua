@@ -1,6 +1,6 @@
 --炎の王 ナグルファー
 function c2881864.initial_effect(c)
-	c:SetUniqueOnField(1,0,2881864,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,2881864)
 	--destroy replace
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)

@@ -1,6 +1,6 @@
 --レッド・ダストン
 function c61019812.initial_effect(c)
-	c:SetUniqueOnField(1,0,61019812,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,61019812)
 	--cannot release
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

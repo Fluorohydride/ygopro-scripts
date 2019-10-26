@@ -1,6 +1,6 @@
 --エーリアン・リベンジャー
 function c63253763.initial_effect(c)
-	c:SetUniqueOnField(1,0,63253763,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,63253763)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

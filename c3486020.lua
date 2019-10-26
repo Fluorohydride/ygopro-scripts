@@ -1,6 +1,6 @@
 --麗の魔妖－妖狐
 function c3486020.initial_effect(c)
-	c:SetUniqueOnField(1,0,3486020,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,3486020)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()

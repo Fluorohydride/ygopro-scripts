@@ -1,6 +1,6 @@
 --ランリュウ
 function c44680819.initial_effect(c)
-	c:SetUniqueOnField(1,0,44680819,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,44680819)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

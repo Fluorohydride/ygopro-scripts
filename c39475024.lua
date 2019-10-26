@@ -1,6 +1,6 @@
 --骸の魔妖－餓者髑髏
 function c39475024.initial_effect(c)
-	c:SetUniqueOnField(1,0,39475024,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,39475024)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()

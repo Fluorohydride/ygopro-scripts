@@ -1,6 +1,6 @@
 --翼の魔妖－天狗
 function c4103668.initial_effect(c)
-	c:SetUniqueOnField(1,0,4103668,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,4103668)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()

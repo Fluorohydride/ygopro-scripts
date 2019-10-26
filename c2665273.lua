@@ -1,6 +1,6 @@
 --永の王 オルムガンド
 function c2665273.initial_effect(c)
-	c:SetUniqueOnField(1,0,2665273,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,2665273)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,9,2,nil,nil,99)
 	c:EnableReviveLimit()

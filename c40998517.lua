@@ -1,6 +1,6 @@
 --剣の王 フローディ
 function c40998517.initial_effect(c)
-	c:SetUniqueOnField(1,0,40998517,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,40998517)
 	--destroy
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(40998517,0))

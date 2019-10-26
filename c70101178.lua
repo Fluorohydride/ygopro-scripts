@@ -1,6 +1,6 @@
 --パンサー・シャーク
 function c70101178.initial_effect(c)
-	c:SetUniqueOnField(1,0,70101178,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,70101178)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(70101178,0))

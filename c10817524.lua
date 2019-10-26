@@ -1,6 +1,6 @@
 --始祖竜ワイアーム
 function c10817524.initial_effect(c)
-	c:SetUniqueOnField(1,0,10817524,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,10817524)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionType,TYPE_NORMAL),2,false)

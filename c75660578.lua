@@ -1,6 +1,6 @@
 --死の王 ヘル
 function c75660578.initial_effect(c)
-	c:SetUniqueOnField(1,0,75660578,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,75660578)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(75660578,0))

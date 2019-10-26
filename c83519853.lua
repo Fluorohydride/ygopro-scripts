@@ -1,6 +1,6 @@
 --魔聖騎士皇ランスロット
 function c83519853.initial_effect(c)
-	c:SetUniqueOnField(1,0,83519853,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,83519853)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0x107a),1)
 	c:EnableReviveLimit()

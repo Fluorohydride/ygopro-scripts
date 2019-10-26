@@ -1,6 +1,6 @@
 --異次元エスパー・スター・ロビン
 function c80208158.initial_effect(c)
-	c:SetUniqueOnField(1,1,80208158,LOCATION_MZONE)
+	c:SetUniqueOnField(1,1,80208158)
 	--target
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

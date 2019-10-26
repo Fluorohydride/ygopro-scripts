@@ -1,6 +1,6 @@
 --ジェスター・コンフィ
 function c8487449.initial_effect(c)
-	c:SetUniqueOnField(1,0,8487449,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,8487449)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

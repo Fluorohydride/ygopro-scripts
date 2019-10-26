@@ -1,6 +1,6 @@
 --氷の王 ニードヘッグ
 function c49275969.initial_effect(c)
-	c:SetUniqueOnField(1,0,49275969,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,49275969)
 	--disable special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(49275969,0))

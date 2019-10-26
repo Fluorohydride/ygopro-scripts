@@ -1,6 +1,6 @@
 --イーグル・シャーク
 function c7500772.initial_effect(c)
-	c:SetUniqueOnField(1,0,7500772,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,7500772)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(7500772,0))

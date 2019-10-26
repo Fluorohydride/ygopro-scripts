@@ -1,6 +1,6 @@
 --武神－アラスダ
 function c23979249.initial_effect(c)
-	c:SetUniqueOnField(1,0,23979249,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,23979249)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(23979249,0))

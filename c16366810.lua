@@ -1,6 +1,6 @@
 --イエロー・ダストン
 function c16366810.initial_effect(c)
-	c:SetUniqueOnField(1,0,16366810,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,16366810)
 	--cannot release
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

@@ -1,6 +1,6 @@
 --時械神サンダイオン
 function c33015627.initial_effect(c)
-	c:SetUniqueOnField(1,0,33015627,LOCATION_MZONE)
+	c:SetUniqueOnField(1,0,33015627)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_SINGLE_RANGE)
