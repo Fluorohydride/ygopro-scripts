@@ -84,7 +84,7 @@ function c36197902.cfilter2(c,tp)
 		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 end
 function c36197902.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c36197902.cfilter2,1,nil,tp)
+	return eg:IsExists(c36197902.cfilter2,1,nil,tp) and not eg:IsContains(e:GetHandler())
 end
 function c36197902.spfilter(c,e,tp)
 	return c:IsRace(RACE_CYBERSE) and c:IsType(TYPE_LINK) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
