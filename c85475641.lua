@@ -13,8 +13,10 @@ function c85475641.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c85475641.filter(c,tp)
+	local d=c:GetBattleTarget()
 	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:GetLevel()>0
 		and c:IsControler(tp) and c:GetPreviousControler()==tp and c:GetCode()~=85475641
+		and ((d:IsRelateToBattle() and d:IsControler(1-tp)) or (not d:IsRelateToBattle() and d:GetPreviousControler()==1-tp))
 end
 function c85475641.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c85475641.filter,nil,tp)
