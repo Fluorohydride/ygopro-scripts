@@ -69,11 +69,12 @@ function c51369889.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c51369889.cfilter(c,e,tp)
 	return (c:IsReason(REASON_BATTLE) or (c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp))
-		and c:IsPreviousPosition(POS_FACEUP) and c:IsType(TYPE_XYZ) and c:IsRace(RACE_MACHINE)
+		and c:IsPreviousPosition(POS_FACEUP) and bit.band(c:GetPreviousTypeOnField(),TYPE_XYZ)~=0
+		and bit.band(c:GetPreviousRaceOnField(),RACE_MACHINE)~=0
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
 end
 function c51369889.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c51369889.cfilter,1,nil,e,tp)
+	return eg:IsExists(c51369889.cfilter,1,nil,e,tp) and not eg:IsContains(e:GetHandler())
 end
 function c51369889.damfilter(c)
 	return c:IsType(TYPE_XYZ) and c:IsRace(RACE_MACHINE) and c:IsAbleToRemoveAsCost() and c:GetRank()>0
