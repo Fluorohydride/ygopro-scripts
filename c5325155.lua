@@ -20,12 +20,12 @@ function c5325155.counterfilter(c)
 	return c:GetSummonLocation()~=LOCATION_EXTRA or c:IsSetCard(0x121)
 end
 function c5325155.cfilter(c,tp,rp)
-	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsSetCard(0x121) and not c:IsCode(5325155)
+	return c:IsSetCard(0x121) and not c:IsCode(5325155)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
 		and (c:IsReason(REASON_BATTLE) or (rp==1-tp and c:IsReason(REASON_EFFECT)))
 end
 function c5325155.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c5325155.cfilter,1,nil,tp,rp)
+	return eg:IsExists(c5325155.cfilter,1,nil,tp,rp) and not eg:IsContains(e:GetHandler())
 end
 function c5325155.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(5325155,tp,ACTIVITY_SPSUMMON)==0 end
