@@ -48,7 +48,7 @@ function c44763696.cfilter2(c,tp)
 		and c:IsPreviousPosition(POS_FACEUP) and c:IsSetCard(0x23) and not c:IsReason(REASON_BATTLE)
 end
 function c44763696.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c44763696.cfilter2,1,nil,tp)
+	return eg:IsExists(c44763696.cfilter2,1,nil,tp) and not eg:IsContains(e:GetHandler())
 end
 function c44763696.thfilter(c)
 	return c:IsSetCard(0x23) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
