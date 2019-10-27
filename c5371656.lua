@@ -18,7 +18,7 @@ function c5371656.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c5371656.eqlimit(e,c)
-	return c:IsType(TYPE_NORMAL) and c:IsLevelBelow(3)
+	return c:IsType(TYPE_NORMAL) and c:IsLevelBelow(3) and c:IsControler(e:GetHandlerPlayer())
 end
 function c5371656.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_NORMAL) and c:IsLevelBelow(3)
@@ -27,11 +27,14 @@ function c5371656.rfilter(c)
 	local tpe=c:GetType()
 	return bit.band(tpe,TYPE_NORMAL)~=0 and bit.band(tpe,TYPE_TOKEN)==0 and c:IsReleasable()
 end
+function c5371656.tgfilter(c,tp)
+	return c5371656.filter(c) and Duel.IsExistingMatchingCard(c5371656.rfilter,tp,LOCATION_MZONE,0,1,c)
+end
 function c5371656.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c5371656.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c5371656.filter,tp,LOCATION_MZONE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c5371656.tgfilter,tp,LOCATION_MZONE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectTarget(tp,c5371656.filter,tp,LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,c5371656.tgfilter,tp,LOCATION_MZONE,0,1,1,nil,tp)
 	local rg=Duel.GetMatchingGroup(c5371656.rfilter,tp,LOCATION_MZONE,0,g:GetFirst())
 	Duel.Release(rg,REASON_COST)
 	e:SetLabel(rg:GetCount()*1000)
