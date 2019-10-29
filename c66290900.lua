@@ -38,7 +38,7 @@ function c66290900.filter1(c,e)
 	return c:IsAbleToDeck() and c:IsType(TYPE_MONSTER) and not c:IsImmuneToEffect(e)
 end
 function c66290900.filter2(c,e,tp,m,chkf)
-	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and c:CheckFusionMaterial(m,nil,chkf)
+	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x19) and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and c:CheckFusionMaterial(m,nil,chkf,true)
 end
 function c66290900.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -60,7 +60,7 @@ function c66290900.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
-		local mat=Duel.SelectFusionMaterial(tp,tc,mg,nil,chkf)
+		local mat=Duel.SelectFusionMaterial(tp,tc,mg,nil,chkf,true)
 		local cf=mat:Filter(c66290900.cffilter,nil)
 		if cf:GetCount()>0 then
 			Duel.ConfirmCards(1-tp,cf)

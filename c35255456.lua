@@ -15,7 +15,7 @@ function c35255456.filter1(c,e)
 end
 function c35255456.filter2(c,e,tp,m,chkf)
 	return c:IsSetCard(0x3008) and aux.IsMaterialListCode(c,89943723)
-		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and c:CheckFusionMaterial(m,nil,chkf)
+		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and c:CheckFusionMaterial(m,nil,chkf,true)
 end
 function c35255456.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -36,7 +36,7 @@ function c35255456.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
-		local mat=Duel.SelectFusionMaterial(tp,tc,mg,nil,chkf)
+		local mat=Duel.SelectFusionMaterial(tp,tc,mg,nil,chkf,true)
 		local cf=mat:Filter(c35255456.cffilter,nil)
 		if cf:GetCount()>0 then
 			Duel.ConfirmCards(1-tp,cf)
