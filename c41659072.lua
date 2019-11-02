@@ -3,6 +3,13 @@ function c41659072.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroMixProcedure(c,aux.Tuner(nil),nil,nil,aux.NonTuner(nil),1,99,c41659072.syncheck)
 	c:EnableReviveLimit()
+	--spsummon condition
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
+	e1:SetValue(c41659072.sumlimit)
+	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(41659072,0))
@@ -30,6 +37,9 @@ function c41659072.initial_effect(c)
 end
 function c41659072.syncheck(g)
 	return g:GetClassCount(Card.GetAttribute)==1
+end
+function c41659072.sumlimit(e,se,sp,st)
+	return bit.band(st,SUMMON_TYPE_SYNCHRO)~=SUMMON_TYPE_SYNCHRO or not se
 end
 function c41659072.condition(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_TUNER)
