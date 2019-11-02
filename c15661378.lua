@@ -3,7 +3,7 @@ function c15661378.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c15661378.ffilter,3,false)
-	aux.AddContactFusionProcedure(c,Card.IsAbleToRemoveAsCost,LOCATION_MZONE,0,Duel.Remove,POS_FACEUP,REASON_COST+REASON_FUSION+REASON_MATERIAL):SetValue(1)
+	aux.AddContactFusionProcedure(c,Card.IsAbleToRemoveAsCost,LOCATION_MZONE,0,Duel.Remove,POS_FACEUP,REASON_COST+REASON_MATERIAL):SetValue(1)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
