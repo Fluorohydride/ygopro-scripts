@@ -66,6 +66,13 @@ end
 function c90846359.rmfilter(c,rc)
 	return c:GetRace()==rc
 end
+function c90846359.isonlyone(val)
+	return val&(val-1)==0
+end
+function c90846359.tgselect(sg,g)
+	local rac=c90846359.getrace(g-sg)
+	return rac>0 and c90846359.isonlyone(rac) and not sg:IsExists(c90846359.rmfilter,1,nil,rac)
+end
 function c90846359.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	local phase=Duel.GetCurrentPhase()
 	if (phase==PHASE_DAMAGE and not Duel.IsDamageCalculated()) or phase==PHASE_DAMAGE_CAL then return end
@@ -77,8 +84,13 @@ function c90846359.adjustop(e,tp,eg,ep,ev,re,r,rp)
 		local rac=c90846359.getrace(g1)
 		if bit.band(rac,rac-1)~=0 then
 			if c90846359[tp]==0 or bit.band(c90846359[tp],rac)==0 then
-				Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(90846359,0))
-				rac=Duel.AnnounceRace(tp,1,rac)
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+				local sg=g1:SelectSubGroup(tp,c90846359.tgselect,false,1,#g1,g1)
+				if not sg then
+					rac=0
+				else
+					rac=c90846359.getrace(g1-sg)
+				end
 			else rac=c90846359[tp] end
 		end
 		g1:Remove(c90846359.rmfilter,nil,rac)
@@ -89,8 +101,13 @@ function c90846359.adjustop(e,tp,eg,ep,ev,re,r,rp)
 		local rac=c90846359.getrace(g2)
 		if bit.band(rac,rac-1)~=0 then
 			if c90846359[1-tp]==0 or bit.band(c90846359[1-tp],rac)==0 then
-				Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(90846359,0))
-				rac=Duel.AnnounceRace(1-tp,1,rac)
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+				local sg=g2:SelectSubGroup(1-tp,c90846359.tgselect,false,1,#g2,g2)
+				if not sg then
+					rac=0
+				else
+					rac=c90846359.getrace(g2-sg)
+				end
 			else rac=c90846359[1-tp] end
 		end
 		g2:Remove(c90846359.rmfilter,nil,rac)
