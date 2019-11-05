@@ -30,7 +30,7 @@ function c22666164.spcost_selector(c,tp,g,sg,i)
 	return flag
 end
 function c22666164.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroup(c22666164.spcostfilter,tp,LOCATION_ONFIELD,0,nil)
+	local g=Duel.GetMatchingGroup(c22666164.spcostfilter,tp,LOCATION_MZONE,0,nil)
 	local sg=Group.CreateGroup()
 	if chk==0 then return g:IsExists(c22666164.spcost_selector,1,nil,tp,g,sg,1) end
 	for i=1,3 do
