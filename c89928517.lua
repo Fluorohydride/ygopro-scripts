@@ -34,13 +34,13 @@ function c89928517.operation(e,tp,eg,ep,ev,re,r,rp)
 			if Duel.GetLocationCount(p,LOCATION_MZONE)>0
 				and tc:IsCanBeSpecialSummoned(e,0,p,false,false)
 				and Duel.SelectYesNo(p,aux.Stringid(89928517,1)) then
-				Duel.SpecialSummon(tc,0,p,p,false,false,POS_FACEUP)
+				Duel.SpecialSummonStep(tc,0,p,p,false,false,POS_FACEUP)
 			end
 			i=i+1
 			p=1-tp
 		end
-	elseif tc1:IsType(TYPE_SPELL) and tc2:IsType(TYPE_SPELL)
-		and Duel.IsPlayerCanDraw(tp,2) and Duel.IsPlayerCanDraw(1-tp,2) then
+		Duel.SpecialSummonComplete()
+	elseif tc1:IsType(TYPE_SPELL) and tc2:IsType(TYPE_SPELL) then
 		Duel.Draw(tp,2,REASON_EFFECT)
 		Duel.Draw(1-tp,2,REASON_EFFECT)
 	elseif tc1:IsType(TYPE_TRAP) and tc2:IsType(TYPE_TRAP)
