@@ -28,14 +28,11 @@ function c23160024.initial_effect(c)
 	e4:SetOperation(c23160024.drop)
 	c:RegisterEffect(e4)
 	--ritural
-	local e5=Effect.CreateEffect(c)
-	e5:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	local e5=aux.AddRitualProcEqualCode(c,98287529,nil,nil,c23160024.mfilter)
 	e5:SetType(EFFECT_TYPE_IGNITION)
+	e5:SetCode(0)
 	e5:SetRange(LOCATION_GRAVE)
 	e5:SetCost(aux.bfgcost)
-	e5:SetTarget(c23160024.sptg)
-	e5:SetOperation(c23160024.spop)
-	c:RegisterEffect(e5)
 end
 function c23160024.cfilter(c,tp)
 	return c:IsPreviousSetCard(0xe0) and c:IsReason(REASON_RELEASE) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
@@ -47,37 +44,6 @@ function c23160024.drop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,e:GetHandler():GetCode())
 	Duel.Draw(tp,1,REASON_EFFECT)
 end
-function c23160024.spfilter(c,e,tp)
-	return c:IsCode(98287529)
-end
-function c23160024.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then
-		local mg=Duel.GetRitualMaterial(tp):Filter(Card.IsType,nil,TYPE_PENDULUM)
-		return Duel.IsExistingMatchingCard(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,nil,c23160024.spfilter,e,tp,mg,nil,Card.GetOriginalLevel,"Equal")
-	end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
-end
-function c23160024.spop(e,tp,eg,ep,ev,re,r,rp)
-	local mg=Duel.GetRitualMaterial(tp):Filter(Card.IsType,nil,TYPE_PENDULUM)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,1,nil,c23160024.spfilter,e,tp,mg,nil,Card.GetOriginalLevel,"Equal")
-	local tc=g:GetFirst()
-	if tc then
-		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
-		if tc.mat_filter then
-			mg=mg:Filter(tc.mat_filter,tc,tp)
-		else
-			mg:RemoveCard(tc)
-		end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetOriginalLevel(),"Equal")
-		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,false,1,tc:GetOriginalLevel(),tp,tc,tc:GetOriginalLevel(),"Equal")
-		aux.GCheckAdditional=nil
-		if not mat or mat:GetCount()==0 then return end
-		tc:SetMaterial(mat)
-		Duel.ReleaseRitualMaterial(mat)
-		Duel.BreakEffect()
-		Duel.SpecialSummon(tc,SUMMON_TYPE_RITUAL,tp,tp,false,true,POS_FACEUP)
-		tc:CompleteProcedure()
-	end
+function c23160024.mfilter(c)
+	return c:IsType(TYPE_PENDULUM)
 end

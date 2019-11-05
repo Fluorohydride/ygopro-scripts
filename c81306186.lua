@@ -65,6 +65,7 @@ function c81306186.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		e:SetOperation(c81306186.spop)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,tc,1,0,0)
+		Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,0,tp,LOCATION_GRAVE)
 	else
 		e:SetCategory(CATEGORY_TOHAND)
 		e:SetOperation(c81306186.thop)
