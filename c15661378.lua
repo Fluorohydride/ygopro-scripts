@@ -4,6 +4,13 @@ function c15661378.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c15661378.ffilter,3,false)
 	aux.AddContactFusionProcedure(c,Card.IsAbleToRemoveAsCost,LOCATION_MZONE,0,Duel.Remove,POS_FACEUP,REASON_COST+REASON_MATERIAL):SetValue(1)
+	--material limit
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e0:SetCode(EFFECT_MATERIAL_LIMIT)
+	e0:SetValue(c15661378.matlimit)
+	c:RegisterEffect(e0)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -31,7 +38,11 @@ function c15661378.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c15661378.ffilter(c,fc,sub,mg,sg)
-	return c:IsControler(fc:GetControler()) and c:IsLocation(LOCATION_MZONE+LOCATION_HAND) and (not sg or not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode()))
+	return not sg or not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode())
+end
+function c15661378.matlimit(e,c,fc,st)
+	if st~=SUMMON_TYPE_FUSION then return true end
+	return c:IsControler(fc:GetControler()) and c:IsLocation(LOCATION_ONFIELD+LOCATION_HAND)
 end
 function c15661378.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
@@ -42,7 +53,7 @@ function c15661378.mfilter(c)
 end
 function c15661378.valcheck(e,c)
 	local mg=c:GetMaterial()
-	if not mg:IsExists(c15661378.mfilter,1,nil) then
+	if mg:GetCount()>0 and not mg:IsExists(c15661378.mfilter,1,nil) then
 		e:GetLabelObject():SetLabel(1)
 	else
 		e:GetLabelObject():SetLabel(0)
