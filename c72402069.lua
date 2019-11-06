@@ -79,20 +79,19 @@ function c72402069.desop(e,tp,eg,ep,ev,re,r,rp)
 		if oc>0 then Duel.Damage(1-tp,oc*1000,REASON_EFFECT) end
 	end
 end
-function c72402069.disfilter(c,tp)
+function c72402069.disfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM)
-		and Duel.IsExistingMatchingCard(c72402069.disfilter1,tp,0,LOCATION_MZONE,1,c)
 end
 function c72402069.disfilter1(c)
 	return c:IsFaceup() and not c:IsDisabled()
 end
 function c72402069.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not eg:IsContains(e:GetHandler())
-		and Duel.IsExistingMatchingCard(c72402069.disfilter,tp,0,LOCATION_MZONE,1,nil,tp) end
+		and Duel.IsExistingMatchingCard(c72402069.disfilter,tp,0,LOCATION_MZONE,1,nil) end
 end
 function c72402069.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,1-tp,aux.Stringid(72402069,2))
-	local pc=Duel.SelectMatchingCard(1-tp,c72402069.disfilter,tp,0,LOCATION_MZONE,1,1,nil,tp):GetFirst()
+	local pc=Duel.SelectMatchingCard(1-tp,c72402069.disfilter,tp,0,LOCATION_MZONE,1,1,nil):GetFirst()
 	if not pc then return end
 	local g=Duel.GetMatchingGroup(c72402069.disfilter1,tp,0,LOCATION_MZONE,pc)
 	local tc=g:GetFirst()
