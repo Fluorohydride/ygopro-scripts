@@ -53,7 +53,7 @@ function c60195675.xyzcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=c:GetBattleTarget()
 	if not c:IsRelateToBattle() or c:IsFacedown() then return false end
 	e:SetLabelObject(tc)
-	return tc and tc:IsType(TYPE_MONSTER) and tc:IsReason(REASON_BATTLE)
+	return tc and tc:IsType(TYPE_MONSTER) and tc:IsReason(REASON_BATTLE) and not tc:IsType(TYPE_TOKEN)
 end
 function c60195675.xyztg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ) end
