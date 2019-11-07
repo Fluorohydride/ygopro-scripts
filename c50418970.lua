@@ -93,8 +93,8 @@ function c50418970.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToHand() end
 	local dt=Duel.GetDrawCount(tp)
 	if dt~=0 then
-		_replace_count=0
-		_replace_max=dt
+		aux.DrawReplaceCount=0
+		aux.DrawReplaceMax=dt
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
@@ -108,8 +108,8 @@ function c50418970.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50418970.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	_replace_count=_replace_count+1
-	if _replace_count<=_replace_max and c:IsRelateToEffect(e) then
+	aux.DrawReplaceCount=aux.DrawReplaceCount+1
+	if aux.DrawReplaceCount<=aux.DrawReplaceMax and c:IsRelateToEffect(e) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,c)
 	end

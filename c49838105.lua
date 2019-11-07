@@ -54,8 +54,8 @@ function c49838105.cftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local dt=Duel.GetDrawCount(tp)
 	if dt~=0 then
-		_replace_count=0
-		_replace_max=dt
+		aux.DrawReplaceCount=0
+		aux.DrawReplaceMax=dt
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
@@ -69,8 +69,8 @@ end
 function c49838105.cfop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then return end
-	_replace_count=_replace_count+1
-	if _replace_count<=_replace_max then
+	aux.DrawReplaceCount=aux.DrawReplaceCount+1
+	if aux.DrawReplaceCount<=aux.DrawReplaceMax then
 		Duel.ConfirmDecktop(tp,1)
 		local g=Duel.GetDecktopGroup(tp,1)
 		local tc=g:GetFirst()
