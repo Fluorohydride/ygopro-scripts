@@ -1992,6 +1992,21 @@ function Auxiliary.LinkOperation(f,minc,maxc,gf)
 				g:DeleteGroup()
 			end
 end
+function Auxiliary.EnableExtraDeckSummonCountLimit()
+	if Auxiliary.ExtraDeckSummonCountLimit~=nil then return end
+	Auxiliary.ExtraDeckSummonCountLimit={}
+	Auxiliary.ExtraDeckSummonCountLimit[0]=1
+	Auxiliary.ExtraDeckSummonCountLimit[1]=1
+	local ge1=Effect.GlobalEffect()
+	ge1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	ge1:SetCode(EVENT_PHASE_START+PHASE_DRAW)
+	ge1:SetOperation(Auxiliary.ExtraDeckSummonCountLimitReset)
+	Duel.RegisterEffect(ge1,0)
+end
+function Auxiliary.ExtraDeckSummonCountLimitReset()
+	Auxiliary.ExtraDeckSummonCountLimit[0]=1
+	Auxiliary.ExtraDeckSummonCountLimit[1]=1
+end
 function Auxiliary.IsMaterialListCode(c,code)
 	if not c.material then return false end
 	for i,mcode in ipairs(c.material) do

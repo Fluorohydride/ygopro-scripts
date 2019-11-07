@@ -54,7 +54,8 @@ function c57734012.filter2(c,e,tp,mc,no)
 end
 function c57734012.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local loc=0
-	local ect=c92345028 and Duel.IsPlayerAffectedByEffect(tp,92345028) and c92345028[tp]
+	local ect=aux.ExtraDeckSummonCountLimit and Duel.IsPlayerAffectedByEffect(tp,92345028)
+		and aux.ExtraDeckSummonCountLimit[tp]
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_GRAVE end
 	if Duel.GetLocationCountFromEx(tp)>0 and (ect==nil or ect>1) then loc=loc+LOCATION_EXTRA end
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
@@ -67,7 +68,8 @@ function c57734012.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(tp,57734012)~=0 then return end
 	Duel.RegisterFlagEffect(tp,57734012,0,0,0)
 	local loc=0
-	local ect=c92345028 and Duel.IsPlayerAffectedByEffect(tp,92345028) and c92345028[tp]
+	local ect=aux.ExtraDeckSummonCountLimit and Duel.IsPlayerAffectedByEffect(tp,92345028)
+		and aux.ExtraDeckSummonCountLimit[tp]
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_GRAVE end
 	if Duel.GetLocationCountFromEx(tp)>0 and (ect==nil or ect>1) then loc=loc+LOCATION_EXTRA end
 	if loc==0 then return end

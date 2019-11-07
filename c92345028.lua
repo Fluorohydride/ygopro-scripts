@@ -1,5 +1,6 @@
 --フューリー・オブ・ファイア
 function c92345028.initial_effect(c)
+	aux.EnableExtraDeckSummonCountLimit()
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -9,20 +10,6 @@ function c92345028.initial_effect(c)
 	e1:SetTarget(c92345028.target)
 	e1:SetOperation(c92345028.activate)
 	c:RegisterEffect(e1)
-	if c92345028.global_check==nil then
-		c92345028.global_check=true
-		c92345028[0]=1
-		c92345028[1]=1
-		local ge1=Effect.CreateEffect(c)
-		ge1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-		ge1:SetCode(EVENT_PHASE_START+PHASE_DRAW)
-		ge1:SetOperation(c92345028.resetop)
-		Duel.RegisterEffect(ge1,0)
-	end
-end
-function c92345028.resetop(e,tp,eg,ep,ev,re,r,rp)
-	c92345028[0]=1
-	c92345028[1]=1
 end
 function c92345028.filter(c,e,tp)
 	return c:IsSetCard(0x119) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
@@ -83,16 +70,16 @@ function c92345028.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e3,tp)
 end
 function c92345028.splimit(e,c,sump,sumtype,sumpos,targetp,se)
-	return c:IsLocation(LOCATION_EXTRA) and c92345028[sump]<=0
+	return c:IsLocation(LOCATION_EXTRA) and aux.ExtraDeckSummonCountLimit[sump]<=0
 end
 function c92345028.cfilter(c,tp)
 	return c:GetSummonPlayer()==tp and c:IsPreviousLocation(LOCATION_EXTRA)
 end
 function c92345028.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c92345028.cfilter,1,nil,tp) then
-		c92345028[tp]=c92345028[tp]-1
+		aux.ExtraDeckSummonCountLimit[tp]=aux.ExtraDeckSummonCountLimit[tp]-1
 	end
 	if eg:IsExists(c92345028.cfilter,1,nil,1-tp) then
-		c92345028[1-tp]=c92345028[1-tp]-1
+		aux.ExtraDeckSummonCountLimit[1-tp]=aux.ExtraDeckSummonCountLimit[1-tp]-1
 	end
 end
