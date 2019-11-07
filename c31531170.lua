@@ -11,8 +11,8 @@ function c31531170.initial_effect(c)
 end
 function c31531170.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if not PENDULUM_CHECKLIST then PENDULUM_CHECKLIST=0 end
-	if chk==0 then return (PENDULUM_CHECKLIST&(0x1<<tp)==0 or Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_PENDULUM_SUMMON)) and Duel.IsExistingTarget(nil,tp,0,LOCATION_PZONE,2,nil) end
+	if not aux.PendulumChecklist then aux.PendulumChecklist=0 end
+	if chk==0 then return (aux.PendulumChecklist&(0x1<<tp)==0 or Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_PENDULUM_SUMMON)) and Duel.IsExistingTarget(nil,tp,0,LOCATION_PZONE,2,nil) end
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_PZONE)
 	Duel.SetTargetCard(g)
 end
@@ -38,7 +38,7 @@ function c31531170.pendcon(e,c,og)
 	if c==nil then return true end
 	local tp=e:GetOwnerPlayer()
 	local eset={Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_PENDULUM_SUMMON)}
-	if PENDULUM_CHECKLIST&(0x1<<tp)~=0 and #eset==0 then return false end
+	if aux.PendulumChecklist&(0x1<<tp)~=0 and #eset==0 then return false end
 	local rpz=Duel.GetFieldCard(1-tp,LOCATION_PZONE,1)
 	if rpz==nil or rpz:GetFieldID()~=c:GetFlagEffectLabel(31531170) then return false end
 	local lscale=c:GetLeftScale()
@@ -70,7 +70,7 @@ function c31531170.pendop(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 		tg=Duel.GetMatchingGroup(aux.PConditionFilter,tp,LOCATION_EXTRA,0,nil,e,tp,lscale,rscale,eset)
 	end
 	local ce=nil
-	local b1=PENDULUM_CHECKLIST&(0x1<<tp)==0
+	local b1=aux.PendulumChecklist&(0x1<<tp)==0
 	local b2=#eset>0
 	if b1 and b2 then
 		local options={1163}
@@ -96,7 +96,7 @@ function c31531170.pendop(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 		Duel.Hint(HINT_CARD,0,ce:GetOwner():GetOriginalCode())
 		ce:Reset()
 	else
-		PENDULUM_CHECKLIST=PENDULUM_CHECKLIST|(0x1<<tp)
+		aux.PendulumChecklist=aux.PendulumChecklist|(0x1<<tp)
 	end
 	Duel.Hint(HINT_CARD,0,31531170)
 	sg:Merge(g)

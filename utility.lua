@@ -1686,8 +1686,8 @@ function Auxiliary.AddRitualProcGreater2Code2(c,code1,code2,summon_location,grav
 end
 --add procedure to Pendulum monster, also allows registeration of activation effect
 function Auxiliary.EnablePendulumAttribute(c,reg)
-	if not PENDULUM_CHECKLIST then
-		PENDULUM_CHECKLIST=0
+	if not Auxiliary.PendulumChecklist then
+		Auxiliary.PendulumChecklist=0
 		local ge1=Effect.GlobalEffect()
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		ge1:SetCode(EVENT_PHASE_START+PHASE_DRAW)
@@ -1715,7 +1715,7 @@ function Auxiliary.EnablePendulumAttribute(c,reg)
 	end
 end
 function Auxiliary.PendulumReset(e,tp,eg,ep,ev,re,r,rp)
-	PENDULUM_CHECKLIST=0
+	Auxiliary.PendulumChecklist=0
 end
 function Auxiliary.PConditionExtraFilterSpecific(c,e,tp,lscale,rscale,te)
 	if not te then return true end
@@ -1739,14 +1739,14 @@ function Auxiliary.PConditionFilter(c,e,tp,lscale,rscale,eset)
 	return (c:IsLocation(LOCATION_HAND) or (c:IsFaceup() and c:IsType(TYPE_PENDULUM)))
 		and lv>lscale and lv<rscale and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_PENDULUM,tp,bool,bool)
 		and not c:IsForbidden()
-		and (PENDULUM_CHECKLIST&(0x1<<tp)==0 or Auxiliary.PConditionExtraFilter(c,e,tp,lscale,rscale,eset))
+		and (Auxiliary.PendulumChecklist&(0x1<<tp)==0 or Auxiliary.PConditionExtraFilter(c,e,tp,lscale,rscale,eset))
 end
 function Auxiliary.PendCondition()
 	return	function(e,c,og)
 				if c==nil then return true end
 				local tp=c:GetControler()
 				local eset={Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_PENDULUM_SUMMON)}
-				if PENDULUM_CHECKLIST&(0x1<<tp)~=0 and #eset==0 then return false end
+				if Auxiliary.PendulumChecklist&(0x1<<tp)~=0 and #eset==0 then return false end
 				local rpz=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 				if rpz==nil or c==rpz then return false end
 				local lscale=c:GetLeftScale()
@@ -1799,7 +1799,7 @@ function Auxiliary.PendOperation()
 					tg=Duel.GetMatchingGroup(Auxiliary.PConditionFilter,tp,loc,0,nil,e,tp,lscale,rscale,eset)
 				end
 				local ce=nil
-				local b1=PENDULUM_CHECKLIST&(0x1<<tp)==0
+				local b1=Auxiliary.PendulumChecklist&(0x1<<tp)==0
 				local b2=#eset>0
 				if b1 and b2 then
 					local options={1163}
@@ -1830,7 +1830,7 @@ function Auxiliary.PendOperation()
 					Duel.Hint(HINT_CARD,0,ce:GetOwner():GetOriginalCode())
 					ce:Reset()
 				else
-					PENDULUM_CHECKLIST=PENDULUM_CHECKLIST|(0x1<<tp)
+					Auxiliary.PendulumChecklist=Auxiliary.PendulumChecklist|(0x1<<tp)
 				end
 				sg:Merge(g)
 				Duel.HintSelection(Group.FromCards(c))
