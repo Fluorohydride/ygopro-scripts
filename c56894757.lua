@@ -29,9 +29,9 @@ end
 function c56894757.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x128)
 end
-function c56894757.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c56894757.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc,exc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and chkc:IsAbleToHand() end
-	if chk==0 then return Duel.IsExistingMatchingCard(c56894757.cfilter,tp,LOCATION_MZONE,0,1,nil)
+	if chk==0 then return Duel.IsExistingMatchingCard(c56894757.cfilter,tp,LOCATION_MZONE,0,1,exc)
 		and Duel.IsExistingTarget(Card.IsAbleToHand,tp,0,LOCATION_SZONE,1,nil) end
 	local ct=Duel.GetMatchingGroupCount(c56894757.cfilter,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
