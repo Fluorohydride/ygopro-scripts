@@ -4,7 +4,7 @@ function c595626.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(595626,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e1:SetType(EFFECT_TYPE_QUICK_O)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_HAND)
@@ -81,7 +81,7 @@ function c595626.thfilter(c)
 	return c:IsCode(83764718) and c:IsAbleToHand()
 end
 function c595626.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c595626.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil,83764718) end
 end
 function c595626.thop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
@@ -89,9 +89,13 @@ function c595626.thop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EVENT_PHASE+PHASE_END)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetCountLimit(1)
+	e1:SetCondition(c595626.thcon2)
 	e1:SetOperation(c595626.thop2)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
+end
+function c595626.thcon2(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.IsExistingMatchingCard(c595626.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,1,nil)
 end
 function c595626.thop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
