@@ -1,5 +1,6 @@
 --宣告者の神託
 function c79306385.initial_effect(c)
+	aux.AddCodeList(c,48546368)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -9,7 +10,6 @@ function c79306385.initial_effect(c)
 	e1:SetOperation(c79306385.activate)
 	c:RegisterEffect(e1)
 end
-c79306385.fit_monster={48546368}
 function c79306385.filter(c,e,tp)
 	return c:IsCode(48546368)
 end

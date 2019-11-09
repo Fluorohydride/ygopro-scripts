@@ -1,5 +1,6 @@
 --宣告者の預言
 function c27383110.initial_effect(c)
+	aux.AddCodeList(c,44665365)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -31,7 +32,6 @@ function c27383110.initial_effect(c)
 	c:RegisterEffect(e3)
 	e1:SetLabelObject(e3)
 end
-c27383110.fit_monster={44665365}
 function c27383110.filter(c,e,tp)
 	return c:IsCode(44665365)
 end

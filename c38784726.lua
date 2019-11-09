@@ -1,5 +1,6 @@
 --転生炎獣の降臨
 function c38784726.initial_effect(c)
+	aux.AddCodeList(c,16313112)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -19,7 +20,6 @@ function c38784726.initial_effect(c)
 	e2:SetOperation(c38784726.spop)
 	c:RegisterEffect(e2)
 end
-c38784726.fit_monster={16313112}
 function c38784726.filter(c,e,tp)
 	return c:IsSetCard(0x119)
 end

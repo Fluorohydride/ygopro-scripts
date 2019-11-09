@@ -1639,10 +1639,6 @@ function Auxiliary.AddRitualProcGreater(c,filter,summon_location,grave_filter,ma
 	return Auxiliary.AddRitualProcUltimate(c,filter,Card.GetOriginalLevel,"Greater",summon_location,grave_filter,mat_filter)
 end
 function Auxiliary.AddRitualProcGreaterCode(c,code1,summon_location,grave_filter,mat_filter)
-	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
-		local mt=getmetatable(c)
-		mt.fit_monster={code1}
-	end
 	Auxiliary.AddCodeList(c,code1)
 	return Auxiliary.AddRitualProcGreater(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1),summon_location,grave_filter,mat_filter)
 end
@@ -1651,10 +1647,6 @@ function Auxiliary.AddRitualProcEqual(c,filter,summon_location,grave_filter,mat_
 	return Auxiliary.AddRitualProcUltimate(c,filter,Card.GetOriginalLevel,"Equal",summon_location,grave_filter,mat_filter)
 end
 function Auxiliary.AddRitualProcEqualCode(c,code1,summon_location,grave_filter,mat_filter)
-	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
-		local mt=getmetatable(c)
-		mt.fit_monster={code1}
-	end
 	Auxiliary.AddCodeList(c,code1)
 	return Auxiliary.AddRitualProcEqual(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1),summon_location,grave_filter,mat_filter)
 end
@@ -1663,18 +1655,10 @@ function Auxiliary.AddRitualProcEqual2(c,filter,summon_location,grave_filter,mat
 	return Auxiliary.AddRitualProcUltimate(c,filter,Card.GetLevel,"Equal",summon_location,grave_filter,mat_filter)
 end
 function Auxiliary.AddRitualProcEqual2Code(c,code1,summon_location,grave_filter,mat_filter)
-	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
-		local mt=getmetatable(c)
-		mt.fit_monster={code1}
-	end
 	Auxiliary.AddCodeList(c,code1)
 	return Auxiliary.AddRitualProcEqual2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1),summon_location,grave_filter,mat_filter)
 end
 function Auxiliary.AddRitualProcEqual2Code2(c,code1,code2,summon_location,grave_filter,mat_filter)
-	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
-		local mt=getmetatable(c)
-		mt.fit_monster={code1,code2}
-	end
 	Auxiliary.AddCodeList(c,code1,code2)
 	return Auxiliary.AddRitualProcEqual2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1,code2),summon_location,grave_filter,mat_filter)
 end
@@ -1683,18 +1667,10 @@ function Auxiliary.AddRitualProcGreater2(c,filter,summon_location,grave_filter,m
 	return Auxiliary.AddRitualProcUltimate(c,filter,Card.GetLevel,"Greater",summon_location,grave_filter,mat_filter)
 end
 function Auxiliary.AddRitualProcGreater2Code(c,code1,summon_location,grave_filter,mat_filter)
-	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
-		local mt=getmetatable(c)
-		mt.fit_monster={code1}
-	end
 	Auxiliary.AddCodeList(c,code1)
 	return Auxiliary.AddRitualProcGreater2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1),summon_location,grave_filter,mat_filter)
 end
 function Auxiliary.AddRitualProcGreater2Code2(c,code1,code2,summon_location,grave_filter,mat_filter)
-	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
-		local mt=getmetatable(c)
-		mt.fit_monster={code1,code2}
-	end
 	Auxiliary.AddCodeList(c,code1,code2)
 	return Auxiliary.AddRitualProcGreater2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1,code2),summon_location,grave_filter,mat_filter)
 end
