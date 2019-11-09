@@ -1,5 +1,6 @@
 --インスタント・ネオスペース
 function c11913700.initial_effect(c)
+	aux.AddCodeList(c,89943723)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_EQUIP)
@@ -33,7 +34,6 @@ function c11913700.initial_effect(c)
 	e4:SetOperation(c11913700.spop)
 	c:RegisterEffect(e4)
 end
-c11913700.card_code_list={89943723}
 function c11913700.eqlimit(e,c)
 	return aux.IsMaterialListCode(c,89943723)
 end

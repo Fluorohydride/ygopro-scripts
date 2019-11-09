@@ -1,5 +1,6 @@
 --鉄のハンス
 function c41916534.initial_effect(c)
+	aux.AddCodeList(c,72283691)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(41916534,0))
@@ -27,7 +28,6 @@ function c41916534.initial_effect(c)
 	e4:SetValue(c41916534.value)
 	c:RegisterEffect(e4)
 end
-c41916534.card_code_list={72283691}
 function c41916534.filter(c,e,tp)
 	return c:IsCode(73405179) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end

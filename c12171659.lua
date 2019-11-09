@@ -1,5 +1,6 @@
 --天空の使者 ゼラディアス
 function c12171659.initial_effect(c)
+	aux.AddCodeList(c,56433456)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(12171659,0))
@@ -19,7 +20,6 @@ function c12171659.initial_effect(c)
 	e2:SetCondition(c12171659.descon)
 	c:RegisterEffect(e2)
 end
-c12171659.card_code_list={56433456}
 function c12171659.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsAbleToGraveAsCost() and c:IsDiscardable() end

@@ -1,5 +1,6 @@
 --ネオス・フュージョン
 function c14088859.initial_effect(c)
+	aux.AddCodeList(c,89943723)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(14088859,0))
@@ -28,7 +29,6 @@ function c14088859.initial_effect(c)
 	e3:SetValue(c14088859.repval2)
 	c:RegisterEffect(e3)
 end
-c14088859.card_code_list={89943723}
 function c14088859.filter1(c,e)
 	return c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
 end

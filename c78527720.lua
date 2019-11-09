@@ -1,5 +1,6 @@
 --シンデレラ
 function c78527720.initial_effect(c)
+	aux.AddCodeList(c,72283691)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(78527720,0))
@@ -26,7 +27,6 @@ function c78527720.initial_effect(c)
 	e3:SetOperation(c78527720.eqop)
 	c:RegisterEffect(e3)
 end
-c78527720.card_code_list={72283691}
 function c78527720.filter(c,e,tp)
 	return c:IsCode(14512825) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end

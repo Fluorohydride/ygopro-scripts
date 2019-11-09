@@ -1,5 +1,6 @@
 --ハーピィの羽根休め
 function c39275698.initial_effect(c)
+	aux.AddCodeList(c,12206212)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -11,7 +12,6 @@ function c39275698.initial_effect(c)
 	e1:SetCountLimit(1,39275698+EFFECT_COUNT_CODE_OATH)
 	c:RegisterEffect(e1)
 end
-c39275698.card_code_list={12206212}
 function c39275698.drfilter(c)
 	return c:IsCode(76812113,12206212) and c:IsAbleToDeck()
 end

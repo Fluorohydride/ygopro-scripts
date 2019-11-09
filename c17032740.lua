@@ -42,7 +42,6 @@ function c17032740.initial_effect(c)
 end
 c17032740.material_setcode=0x8
 c17032740.toss_coin=true
-c17032740.card_code_list={89943723}
 function c17032740.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end

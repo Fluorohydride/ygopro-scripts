@@ -1,5 +1,6 @@
 --E－HERO ワイルド・サイクロン
 function c13293158.initial_effect(c)
+	aux.AddCodeList(c,94820406)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCode2(c,21844576,86188410,true,true)
@@ -33,7 +34,6 @@ function c13293158.initial_effect(c)
 end
 c13293158.material_setcode=0x8
 c13293158.dark_calling=true
-c13293158.card_code_list={94820406}
 function c13293158.splimit(e,se,sp,st)
 	return st==SUMMON_TYPE_FUSION+0x10
 		or Duel.IsPlayerAffectedByEffect(sp,72043279) and st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION

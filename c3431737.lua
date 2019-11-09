@@ -1,5 +1,6 @@
 --バスター・ビースト
 function c3431737.initial_effect(c)
+	aux.AddCodeList(c,80280737)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(3431737,0))
@@ -11,7 +12,6 @@ function c3431737.initial_effect(c)
 	e1:SetOperation(c3431737.operation)
 	c:RegisterEffect(e1)
 end
-c3431737.card_code_list={80280737}
 function c3431737.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsAbleToGraveAsCost() and c:IsDiscardable() end

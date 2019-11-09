@@ -1,5 +1,6 @@
 --E－HERO アダスター・ゴールド
 function c13650422.initial_effect(c)
+	aux.AddCodeList(c,94820406)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
@@ -17,7 +18,6 @@ function c13650422.initial_effect(c)
 	e2:SetCondition(c13650422.atkcon)
 	c:RegisterEffect(e2)
 end
-c13650422.card_code_list={94820406}
 function c13650422.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsDiscardable() end

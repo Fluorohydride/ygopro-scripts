@@ -1,5 +1,6 @@
 --マジシャン・オブ・カオス
 function c47963370.initial_effect(c)
+	aux.AddCodeList(c,46986414)
 	c:EnableReviveLimit()
 	--change name
 	local e1=Effect.CreateEffect(c)
@@ -33,7 +34,6 @@ function c47963370.initial_effect(c)
 	e3:SetOperation(c47963370.spop)
 	c:RegisterEffect(e3)
 end
-c47963370.card_code_list={46986414}
 function c47963370.descon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
 end

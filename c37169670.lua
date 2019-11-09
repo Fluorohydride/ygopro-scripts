@@ -1,5 +1,6 @@
 --ハイパーサイコガンナー／バスター
 function c37169670.initial_effect(c)
+	aux.AddCodeList(c,80280737)
 	c:EnableReviveLimit()
 	--Cannot special summon
 	local e1=Effect.CreateEffect(c)
@@ -29,7 +30,6 @@ function c37169670.initial_effect(c)
 	e3:SetOperation(c37169670.spop)
 	c:RegisterEffect(e3)
 end
-c37169670.card_code_list={80280737}
 c37169670.assault_name=95526884
 function c37169670.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetAttackTarget()~=nil end

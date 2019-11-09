@@ -1,5 +1,6 @@
 --神秘の代行者 アース
 function c91188343.initial_effect(c)
+	aux.AddCodeList(c,56433456)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(91188343,0))
@@ -10,7 +11,6 @@ function c91188343.initial_effect(c)
 	e1:SetOperation(c91188343.op)
 	c:RegisterEffect(e1)
 end
-c91188343.card_code_list={56433456}
 function c91188343.filter1(c)
 	return c:IsSetCard(0x44) and c:GetCode()~=91188343 and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end

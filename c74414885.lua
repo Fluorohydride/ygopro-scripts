@@ -1,5 +1,6 @@
 --NEXT
 function c74414885.initial_effect(c)
+	aux.AddCodeList(c,89943723)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -16,7 +17,6 @@ function c74414885.initial_effect(c)
 	e2:SetCondition(c74414885.handcon)
 	c:RegisterEffect(e2)
 end
-c74414885.card_code_list={89943723}
 function c74414885.filter(c,e,tp)
 	return (c:IsCode(89943723) or c:IsSetCard(0x1f)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end

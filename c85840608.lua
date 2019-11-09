@@ -1,5 +1,6 @@
 --ネオスペース・コネクター
 function c85840608.initial_effect(c)
+	aux.AddCodeList(c,89943723)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(85840608,0))
@@ -23,7 +24,6 @@ function c85840608.initial_effect(c)
 	e2:SetOperation(c85840608.spop2)
 	c:RegisterEffect(e2)
 end
-c85840608.card_code_list={89943723}
 function c85840608.spfilter(c,e,tp)
 	return (c:IsSetCard(0x1f) or c:IsCode(89943723)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end

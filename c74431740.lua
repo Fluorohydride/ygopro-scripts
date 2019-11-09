@@ -1,5 +1,6 @@
 --バスター・リブート
 function c74431740.initial_effect(c)
+	aux.AddCodeList(c,80280737)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -25,7 +26,6 @@ function c74431740.initial_effect(c)
 	e2:SetOperation(c74431740.tdop)
 	c:RegisterEffect(e2)
 end
-c74431740.card_code_list={80280737}
 function c74431740.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)
 	return true

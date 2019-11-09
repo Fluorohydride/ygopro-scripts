@@ -1,5 +1,6 @@
 --バスター・スナイパー
 function c39015.initial_effect(c)
+	aux.AddCodeList(c,80280737)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(39015,0))
@@ -22,7 +23,6 @@ function c39015.initial_effect(c)
 	e2:SetOperation(c39015.chop)
 	c:RegisterEffect(e2)
 end
-c39015.card_code_list={80280737}
 function c39015.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end
 	Duel.Release(e:GetHandler(),REASON_COST)

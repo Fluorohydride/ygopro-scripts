@@ -1,5 +1,6 @@
 --奇跡の代行者 ジュピター
 function c28573958.initial_effect(c)
+	aux.AddCodeList(c,56433456)
 	--atkup
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(28573958,0))
@@ -26,7 +27,6 @@ function c28573958.initial_effect(c)
 	e2:SetOperation(c28573958.spop)
 	c:RegisterEffect(e2)
 end
-c28573958.card_code_list={56433456}
 function c28573958.cfilter1(c)
 	return c:IsSetCard(0x44) and c:IsAbleToRemoveAsCost()
 end

@@ -1,5 +1,6 @@
 --青き眼の激臨
 function c29432790.initial_effect(c)
+	aux.AddCodeList(c,89631139)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_REMOVE)
@@ -13,7 +14,6 @@ function c29432790.initial_effect(c)
 	Duel.AddCustomActivityCounter(29432790,ACTIVITY_SUMMON,c29432790.counterfilter)
 	Duel.AddCustomActivityCounter(29432790,ACTIVITY_SPSUMMON,c29432790.counterfilter)
 end
-c29432790.card_code_list={89631139}
 function c29432790.counterfilter(c)
 	return c:IsCode(89631139)
 end

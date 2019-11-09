@@ -1,5 +1,6 @@
 --トゥーン・ブラック・マジシャン・ガール
 function c90960358.initial_effect(c)
+	aux.AddCodeList(c,46986414)
 	c:EnableReviveLimit()
 	--special summon
 	local e2=Effect.CreateEffect(c)
@@ -60,7 +61,7 @@ function c90960358.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	return Duel.IsExistingMatchingCard(c90960358.cfilter,tp,LOCATION_ONFIELD,0,1,nil) 
+	return Duel.IsExistingMatchingCard(c90960358.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
 		and ft>-1 and Duel.CheckReleaseGroup(tp,c90960358.spcfilter,1,nil,ft,tp)
 end
 function c90960358.spop(e,tp,eg,ep,ev,re,r,rp,c)

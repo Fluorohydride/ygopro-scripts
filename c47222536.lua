@@ -1,5 +1,6 @@
 --黒の魔導陣
 function c47222536.initial_effect(c)
+	aux.AddCodeList(c,46986414)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
@@ -26,7 +27,6 @@ function c47222536.initial_effect(c)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e3)
 end
-c47222536.card_code_list={46986414}
 function c47222536.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>2 end
 end

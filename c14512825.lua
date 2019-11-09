@@ -1,5 +1,7 @@
 --カボチャの馬車
 function c14512825.initial_effect(c)
+	aux.AddCodeList(c,72283691)
+	--direct attack
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_DIRECT_ATTACK)
@@ -21,7 +23,6 @@ function c14512825.initial_effect(c)
 	e3:SetValue(1)
 	c:RegisterEffect(e3)
 end
-c14512825.card_code_list={72283691}
 function c14512825.indtg(e,c)
 	return c:IsFaceup() and c:IsCode(72283691)
 end

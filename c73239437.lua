@@ -1,5 +1,6 @@
 --ダブルヒーローアタック
 function c73239437.initial_effect(c)
+	aux.AddCodeList(c,89943723)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -12,7 +13,6 @@ function c73239437.initial_effect(c)
 	e1:SetOperation(c73239437.activate)
 	c:RegisterEffect(e1)
 end
-c73239437.card_code_list={89943723}
 function c73239437.cfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,89943723)
 end

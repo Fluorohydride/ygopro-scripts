@@ -1,5 +1,6 @@
 --E・HERO アナザー・ネオス
 function c69884162.initial_effect(c)
+	aux.AddCodeList(c,89943723)
 	aux.EnableDualAttribute(c)
 	--code
 	local e1=Effect.CreateEffect(c)
@@ -11,4 +12,3 @@ function c69884162.initial_effect(c)
 	e1:SetValue(89943723)
 	c:RegisterEffect(e1)
 end
-c69884162.card_code_list={89943723}

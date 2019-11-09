@@ -1,5 +1,6 @@
 --裁きの光
 function c44595286.initial_effect(c)
+	aux.AddCodeList(c,56433456)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOGRAVE)
@@ -12,7 +13,6 @@ function c44595286.initial_effect(c)
 	e1:SetOperation(c44595286.activate)
 	c:RegisterEffect(e1)
 end
-c44595286.card_code_list={56433456}
 function c44595286.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsEnvironment(56433456)
 end

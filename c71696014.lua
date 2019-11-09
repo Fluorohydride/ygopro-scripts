@@ -1,5 +1,6 @@
 --マジシャンズ・ローブ
 function c71696014.initial_effect(c)
+	aux.AddCodeList(c,46986414)
 	--spsummon (DM)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(71696014,0))

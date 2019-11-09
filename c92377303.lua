@@ -1,5 +1,6 @@
 --黒衣の大賢者
 function c92377303.initial_effect(c)
+	aux.AddCodeList(c,46986414)
 	c:EnableReviveLimit()
 	--special summon
 	local e1=Effect.CreateEffect(c)
