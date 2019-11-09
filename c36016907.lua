@@ -38,7 +38,8 @@ function c36016907.spcost1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c36016907.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end
 function c36016907.spop1(e,tp,eg,ep,ev,re,r,rp)
@@ -56,7 +57,8 @@ end
 function c36016907.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c36016907.spfilter2(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingTarget(c36016907.spfilter2,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,e,tp) and c:IsAbleToRemove() end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingTarget(c36016907.spfilter2,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,e,tp) and c:IsAbleToRemove() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c36016907.spfilter2,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)

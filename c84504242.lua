@@ -39,11 +39,11 @@ end
 function c84504242.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x138)
 end
-function c84504242.thfilter(c)
-	return c:IsType(TYPE_RITUAL) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
-end
 function c84504242.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c84504242.cfilter,1,nil)
+end
+function c84504242.thfilter(c)
+	return c:IsType(TYPE_RITUAL) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c84504242.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c84504242.thfilter(chkc) end
@@ -56,6 +56,5 @@ function c84504242.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,tc)
 	end
 end

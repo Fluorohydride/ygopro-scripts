@@ -14,17 +14,19 @@ end
 function c46271408.cfilter(c)
 	return c:GetSequence()<5
 end
-function c46271408.thfilter(c)
-	return c:IsSetCard(0x1115) and c:IsLevel(4) and c:IsAbleToHand()
+function c46271408.thfilter(c,e,tp)
+	return c:IsSetCard(0x1115) and c:IsLevel(4) and (c:IsAbleToHand() or (spchk and c:IsCanBeSpecialSummoned(e,0,tp,false,false)))
 end
 function c46271408.condition(e,tp,eg,ep,ev,re,r,rp)
 	return not Duel.IsExistingMatchingCard(c46271408.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c46271408.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c46271408.thfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c46271408.thfilter,tp,LOCATION_GRAVE,0,1,nil) end
+	local spchk=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_SPELL)>=3
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c46271408.thfilter(chkc,e,tp,spchk) end
+	if chk==0 then return Duel.IsExistingTarget(c46271408.thfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp,spchk) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectTarget(tp,c46271408.thfilter,tp,LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,c46271408.thfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp,spchk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
@@ -38,7 +40,6 @@ function c46271408.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		else
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
-			Duel.ConfirmCards(1-tp,tc)
 		end
 	end
 end

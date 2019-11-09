@@ -26,9 +26,6 @@ function c35394356.initial_effect(c)
 	e2:SetOperation(c35394356.rop)
 	c:RegisterEffect(e2)
 end
-function c35394356.cfilter(c)
-	return c:IsFaceup() and c:GetAttack()>0
-end
 function c35394356.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
@@ -37,10 +34,10 @@ function c35394356.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RemoveOverlayCard(tp,1,0,1,1,REASON_COST)
 end
 function c35394356.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c35394356.cfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c35394356.cfilter,tp,0,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPPO)
-	Duel.SelectTarget(tp,c35394356.cfilter,tp,0,LOCATION_MZONE,1,1,nil)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and aux.nzatk(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(aux.nzatk,tp,0,LOCATION_MZONE,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+	Duel.SelectTarget(tp,aux.nzatk,tp,0,LOCATION_MZONE,1,1,nil)
 end
 function c35394356.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
@@ -55,7 +52,7 @@ function c35394356.atkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c35394356.rcon(e,tp,eg,ep,ev,re,r,rp)
 	return aux.exccon(e) and bit.band(r,REASON_COST)~=0 and re:IsHasType(0x7e0) and re:IsActiveType(TYPE_XYZ)
-	and re:GetHandler():GetOverlayCount()>=ev-1 and e:GetHandler():IsAbleToRemoveAsCost() and ep==e:GetOwnerPlayer()
+		and re:GetHandler():GetOverlayCount()>=ev-1 and e:GetHandler():IsAbleToRemoveAsCost() and ep==e:GetOwnerPlayer()
 end
 function c35394356.rop(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)

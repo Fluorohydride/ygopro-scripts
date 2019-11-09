@@ -27,18 +27,15 @@ function c38143903.initial_effect(c)
 end
 c38143903.toss_coin=true
 function c38143903.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE and Duel.GetCurrentPhase()~=PHASE_DAMAGE_CAL
+	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c38143903.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_MZONE and re:IsActiveType(TYPE_MONSTER)
 		and Duel.IsChainNegatable(ev)
 end
 function c38143903.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local p=re:GetHandlerPlayer()
 	if chk==0 then return e:GetHandler():IsAbleToGrave()
-		and ((Duel.GetLocationCount(1-p,LOCATION_MZONE)>0 and re:GetHandler():IsControler(p))
-			or re:GetHandler():IsControler(1-p)
-			or not re:GetHandler():IsRelateToEffect(re)) end
+		and (not re:GetHandler():IsRelateToEffect(re) or re:GetHandler():IsAbleToChangeControler()) end
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,p,1)
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,e:GetHandler(),1,0,0)
@@ -47,7 +44,7 @@ function c38143903.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c38143903.negop(e,tp,eg,ep,ev,re,r,rp)
-	local p=re:GetHandlerPlayer()
+	local p=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_CONTROLER)
 	Duel.Hint(HINT_SELECTMSG,p,HINTMSG_COIN)
 	local coin=Duel.AnnounceCoin(p)
 	local res=Duel.TossCoin(p,1)

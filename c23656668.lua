@@ -1,5 +1,6 @@
 --グラビティ・コントローラー
 function c23656668.initial_effect(c)
+	--link summon
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,c23656668.mfilter,1,1)
 	--cannot link material
@@ -29,7 +30,7 @@ function c23656668.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c23656668.mfilter(c)
-	return not c:IsType(TYPE_LINK) and c:GetSequence()>4
+	return not c:IsLinkType(TYPE_LINK) and c:GetSequence()>4
 end
 function c23656668.lmlimit(e)
 	local c=e:GetHandler()
@@ -48,9 +49,7 @@ function c23656668.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local tc=e:GetLabelObject()
 	if chk==0 then return tc and c:IsAbleToDeck() and tc:IsAbleToDeck() end
-	local g=Group.CreateGroup()
-	g:AddCard(c)
-	g:AddCard(tc)
+	local g=Group.FromCards(c,tc)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,2,0,0)
 end
 function c23656668.tdop(e,tp,eg,ep,ev,re,r,rp)

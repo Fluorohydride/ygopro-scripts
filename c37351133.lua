@@ -38,34 +38,30 @@ function c37351133.spcon1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c37351133.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end
 function c37351133.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	if c:IsRelateToEffect(e) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
 function c37351133.cfilter2(c,tp,rp)
-	return c:GetPreviousControler()==1-tp and c:GetPreviousSequence()>4 and (c:IsReason(REASON_BATTLE)
-	or (rp==tp and c:IsReason(REASON_EFFECT))) and c:IsPreviousLocation(LOCATION_MZONE)
-end
-function c37351133.disfilter(c)
-	return c:IsFaceup() and not c:IsDisabled() and c:IsType(TYPE_EFFECT)
+	return c:GetPreviousControler()==1-tp and c:GetPreviousSequence()>4 and c:IsPreviousLocation(LOCATION_MZONE)
+		and (c:IsReason(REASON_BATTLE) or (rp==tp and c:IsReason(REASON_EFFECT)))
 end
 function c37351133.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c37351133.cfilter2,1,nil,tp,rp)
 end
 function c37351133.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
-		and Duel.IsExistingMatchingCard(c37351133.disfilter,tp,0,LOCATION_MZONE,1,nil)
+		and Duel.IsExistingMatchingCard(aux.disfilter1,tp,0,LOCATION_MZONE,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(37351133,2)) then
 		Duel.BreakEffect()
-		local g=Duel.SelectMatchingCard(tp,c37351133.disfilter,tp,0,LOCATION_MZONE,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,aux.disfilter1,tp,0,LOCATION_MZONE,1,1,nil)
 		Duel.HintSelection(g)
 		local tc=g:GetFirst()
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)

@@ -80,7 +80,8 @@ function c1966438.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c1966438.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end
 function c1966438.spop(e,tp,eg,ep,ev,re,r,rp)
@@ -109,7 +110,8 @@ function c1966438.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(1966438)>0
 end
 function c1966438.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,tp,LOCATION_GRAVE)
 end
 function c1966438.spop2(e,tp,eg,ep,ev,re,r,rp)
@@ -122,7 +124,7 @@ function c1966438.spop2(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 			e1:SetReset(RESET_EVENT+RESETS_REDIRECT)
 			e1:SetValue(LOCATION_DECKBOT)
-			c:RegisterEffect(e1,true)
+			c:RegisterEffect(e1)
 		end
 	end
 end

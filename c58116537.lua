@@ -50,14 +50,29 @@ function c58116537.actcon(e,tp,eg,ep,ev,re,r,rp)
 	return sg and sg:GetClassCount(Card.GetAttribute)>=2
 end
 function c58116537.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_MZONE,1,nil) end
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	if chk==0 then
+		if g:GetCount()==0 then return false end
+		local tc=g:GetFirst()
+		local att=0
+		while tc do
+			att=bit.bor(att,tc:GetAttribute())
+			tc=g:GetNext()
+		end
+		return att~=0
+	end
+	local tc=g:GetFirst()
+	local att=0
+	while tc do
+		att=bit.bor(att,tc:GetAttribute())
+		tc=g:GetNext()
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
-	local att=Duel.AnnounceAttribute(tp,1,0xffff)
-	Duel.SetOperationInfo(0,CATEGORY_ANNOUNCE,nil,0,tp,0)
-	e:SetLabel(att)
+	local ac=Duel.AnnounceAttribute(tp,1,att)
+	e:SetLabel(ac)
 end
 function c58116537.actop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	local sg=g:Filter(Card.IsAttribute,nil,e:GetLabel())
 	if sg:GetCount()<=0 then return end
 	local tc=sg:GetFirst()

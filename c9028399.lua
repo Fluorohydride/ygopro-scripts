@@ -16,14 +16,15 @@ function c9028399.initial_effect(c)
 end
 function c9028399.cfilter(c,tp,rp)
 	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
-	and c:IsPreviousPosition(POS_FACEUP) and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_EARTH)~=0
-	and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
+		and c:IsPreviousPosition(POS_FACEUP) and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_EARTH)~=0
+		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 end
 function c9028399.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c9028399.cfilter,1,nil,tp)
 end
 function c9028399.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		nd e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,0,tp,LOCATION_DECK)
 end
@@ -35,7 +36,7 @@ function c9028399.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c9028399.tgfilter,tp,LOCATION_DECK,0,nil)
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
-	and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(9028399,1)) then
+		and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(9028399,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local sg=g:Select(tp,1,1,nil)

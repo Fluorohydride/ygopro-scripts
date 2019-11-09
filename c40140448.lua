@@ -47,13 +47,13 @@ end
 function c40140448.atcon(e)
 	return Duel.IsExistingMatchingCard(c40140448.atfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,e:GetHandler())
 end
-function c40140448.srfilter(c)
-	return c:IsSetCard(0x137) and c:IsAbleToHand() and not c:IsCode(40140448) and c:IsType(TYPE_MONSTER)
-end
 function c40140448.srcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToGraveAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,nil) end
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToGraveAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,1,nil)
 	Duel.SendtoGrave(g,REASON_COST)
+end
+function c40140448.srfilter(c)
+	return c:IsSetCard(0x137) and c:IsAbleToHand() and not c:IsCode(40140448) and c:IsType(TYPE_MONSTER)
 end
 function c40140448.srtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c40140448.srfilter,tp,LOCATION_DECK,0,1,nil) end

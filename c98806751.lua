@@ -24,12 +24,13 @@ function c98806751.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c98806751.spfilter(c,tp)
-	return c:IsType(TYPE_SYNCHRO) and c:IsAbleToRemove() and Duel.GetMZoneCount(tp,c)>0 and c:IsFaceup()
+	return c:IsType(TYPE_SYNCHRO) and c:IsAbleToRemove() and Duel.GetMZoneCount(tp,c)>0 and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())
 end
 function c98806751.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_MZONE+LOCATION_GRAVE) and chkc:IsControler(tp) and c98806751.spfilter(chkc,tp) end
-	if chk==0 then return Duel.IsExistingTarget(c98806751.spfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil,tp) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return Duel.IsExistingTarget(c98806751.spfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil,tp)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,c98806751.spfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,1,nil,tp)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
@@ -43,12 +44,13 @@ function c98806751.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c98806751.thfilter(c)
-	return c:IsType(TYPE_SYNCHRO) and c:IsAbleToRemove() and c:IsFaceup()
+	return c:IsType(TYPE_SYNCHRO) and c:IsAbleToRemove() and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())
 end
 function c98806751.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_MZONE+LOCATION_GRAVE) and chkc:IsControler(tp) and c98806751.thfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c98806751.thfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,c) and c:IsAbleToHand() end
+	if chk==0 then return Duel.IsExistingTarget(c98806751.thfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,c)
+		and c:IsAbleToHand() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,c98806751.thfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,1,c)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)

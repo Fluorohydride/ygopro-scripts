@@ -1,5 +1,6 @@
 --クロシープ
 function c50277355.initial_effect(c)
+	--link summon
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,nil,2,2,c50277355.lcheck)
 	--activate
@@ -28,15 +29,17 @@ function c50277355.condition(e,tp,eg,ep,ev,re,r,rp)
 	local lg=e:GetHandler():GetLinkedGroup()
 	return eg:IsExists(c50277355.cfilter,1,nil,lg)
 end
+function c50277355.lkfilter(c,type)
+	return c:IsFaceup() and c:IsType(type)
+end
 function c50277355.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lg=e:GetHandler():GetLinkedGroup()
-	local b1=Duel.IsPlayerCanDraw(tp,2) and lg:IsExists(Card.IsType,1,nil,TYPE_RITUAL)
-	local b2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c50277355.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) and lg:IsExists(Card.IsType,1,nil,TYPE_FUSION)
-	local b3=Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil) and lg:IsExists(Card.IsType,1,nil,TYPE_SYNCHRO)
-	local b4=Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) and lg:IsExists(Card.IsType,1,nil,TYPE_XYZ)
+	local b1=Duel.IsPlayerCanDraw(tp,2) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_RITUAL)
+	local b2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c50277355.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_FUSION)
+	local b3=Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_SYNCHRO)
+	local b4=Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_XYZ)
 	if chk==0 then return b1 or b2 or b3 or b4 end
-	Duel.SetTargetPlayer(tp)
-	Duel.SetTargetParam(2)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,2)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
@@ -44,55 +47,57 @@ end
 function c50277355.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local lg=e:GetHandler():GetLinkedGroup()
-	local b1=Duel.IsPlayerCanDraw(tp,2) and lg:IsExists(Card.IsType,1,nil,TYPE_RITUAL)
-	local b2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c50277355.spfilter),tp,LOCATION_GRAVE,0,1,nil,e,tp) and lg:IsExists(Card.IsType,1,nil,TYPE_FUSION)
-	local b3=Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil) and lg:IsExists(Card.IsType,1,nil,TYPE_SYNCHRO)
-	local b4=Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) and lg:IsExists(Card.IsType,1,nil,TYPE_XYZ)
+	local b1=Duel.IsPlayerCanDraw(tp,2) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_RITUAL)
+	local b2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c50277355.spfilter),tp,LOCATION_GRAVE,0,1,nil,e,tp) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_FUSION)
+	local b3=Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,0,1,nil) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_SYNCHRO)
+	local b4=Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_XYZ)
 	local res=0
 	if b1 then
-		local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
-		res=Duel.Draw(p,d,REASON_EFFECT)
+		res=Duel.Draw(tp,2,REASON_EFFECT)
 		if res==2 then
-			Duel.ShuffleHand(p)
+			Duel.ShuffleHand(tp)
 			Duel.BreakEffect()
-			local g=Duel.GetFieldGroup(p,LOCATION_HAND,0)
-			local sg=g:Select(p,2,2,nil)
-			Duel.SendtoGrave(sg,REASON_DISCARD+REASON_EFFECT)
+			Duel.DiscardHand(tp,aux.TRUE,2,2,REASON_EFFECT+REASON_DISCARD)
 		end
 	end
 	if b2 then
 		if res~=0 then Duel.BreakEffect() end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c50277355.spfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
-		res=Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+		local g1=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c50277355.spfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+		if g1:GetCount()>0 then
+			res=Duel.SpecialSummon(g1,0,tp,tp,false,false,POS_FACEUP)
+		end
 	end
 	if b3 then
 		if res~=0 then Duel.BreakEffect() end
-		local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
-		local tc=g:GetFirst()
-		while tc do
+		local g2=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
+		local tc1=g2:GetFirst()
+		while tc1 do
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)
 			e1:SetValue(700)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			tc:RegisterEffect(e1)
+			tc1:RegisterEffect(e1)
 			res=res+1
-			tc=g:GetNext()
+			tc1=g2:GetNext()
 		end
 	end
 	if b4 then
 		if res~=0 then Duel.BreakEffect() end
-		local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
-		local tc=g:GetFirst()
-		while tc do
-			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_UPDATE_ATTACK)
-			e1:SetValue(-700)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			tc:RegisterEffect(e1)
-			tc=g:GetNext()
+		local g3=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
+		local tc2=g3:GetFirst()
+		while tc2 do
+			local e2=Effect.CreateEffect(e:GetHandler())
+			e2:SetType(EFFECT_TYPE_SINGLE)
+			e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+			e2:SetCode(EFFECT_UPDATE_ATTACK)
+			e2:SetValue(-700)
+			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
+			tc2:RegisterEffect(e2)
+			tc2=g3:GetNext()
 		end
 	end
 end

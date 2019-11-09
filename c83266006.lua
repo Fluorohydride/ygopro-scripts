@@ -17,14 +17,16 @@ function c83266006.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2
 end
 function c83266006.cfilter(c,e,tp)
-	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsRace(RACE_ZOMBIE) and Duel.IsExistingMatchingCard(c83266006.spfilter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,nil,e,tp,c:GetAttribute())
+	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsRace(RACE_ZOMBIE)
+		and Duel.IsExistingMatchingCard(c83266006.spfilter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,nil,e,tp,c:GetAttribute())
 end
 function c83266006.spfilter(c,e,tp,att)
 	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsRace(RACE_ZOMBIE) and c:IsAttribute(att) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c83266006.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c83266006.cfilter(chkc) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingTarget(c83266006.cfilter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingTarget(c83266006.cfilter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c83266006.cfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE+LOCATION_REMOVED)
@@ -36,14 +38,14 @@ function c83266006.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c83266006.spfilter),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,1,nil,e,tp,att)
 		if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0 then
-			local gc=g:GetFirst()
-			gc:RegisterFlagEffect(83266006,RESET_EVENT+RESETS_STANDARD,0,1)
+			local tc=g:GetFirst()
+			tc:RegisterFlagEffect(83266006,RESET_EVENT+RESETS_STANDARD,0,1)
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 			e1:SetCode(EVENT_PHASE+PHASE_END)
 			e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 			e1:SetCountLimit(1)
-			e1:SetLabelObject(gc)
+			e1:SetLabelObject(tc)
 			e1:SetCondition(c83266006.rmcon)
 			e1:SetOperation(c83266006.rmop)
 			Duel.RegisterEffect(e1,tp)

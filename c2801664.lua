@@ -37,7 +37,8 @@ function c2801664.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c2801664.cfilter,tp,LOCATION_MZONE,0,2,nil)
 end
 function c2801664.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c2801664.spop(e,tp,eg,ep,ev,re,r,rp)
@@ -57,7 +58,7 @@ function c2801664.xatkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c2801664.xatktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsFaceup() and not c:IsHasEffect(EFFECT_EXTRA_ATTACK_MONSTER) end
+	if chk==0 then return not c:IsHasEffect(EFFECT_EXTRA_ATTACK_MONSTER) end
 end
 function c2801664.xatkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

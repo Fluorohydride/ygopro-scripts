@@ -40,12 +40,13 @@ function c77539547.thfilter(c)
 end
 function c77539547.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c77539547.tgfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c77539547.tgfilter,tp,LOCATION_SZONE,0,1,nil) and Duel.IsExistingMatchingCard(c77539547.thfilter,tp,LOCATION_DECK,0,1,nil) end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local g=Duel.SelectTarget(tp,c77539547.tgfilter,tp,LOCATION_SZONE,0,1,1,nil)
-		Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,1,0,0)
-		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
-	end
+	if chk==0 then return Duel.IsExistingTarget(c77539547.tgfilter,tp,LOCATION_SZONE,0,1,nil)
+		and Duel.IsExistingMatchingCard(c77539547.thfilter,tp,LOCATION_DECK,0,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local g=Duel.SelectTarget(tp,c77539547.tgfilter,tp,LOCATION_SZONE,0,1,1,nil)
+	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
+end
 function c77539547.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
@@ -57,17 +58,14 @@ function c77539547.thop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c77539547.disfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and not c:IsDisabled()
-end
 function c77539547.discon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x137) and rp==tp and re:GetHandler()~=e:GetHandler() and e:GetHandler():GetFlagEffect(1)>0
 end
 function c77539547.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c77539547.disfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c77539547.disfilter,tp,0,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and aux.disfilter1(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(aux.disfilter1,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPPO)
-	local g=Duel.SelectTarget(tp,c77539547.disfilter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,aux.disfilter1,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end
 function c77539547.disop(e,tp,eg,ep,ev,re,r,rp)

@@ -45,12 +45,11 @@ function c38783169.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c38783169.tntg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	if chk==0 then return c:IsFaceup() and c:IsLevelAbove(1) and not c:IsType(TYPE_TUNER) and c:IsRelateToEffect(e) end
+	if chk==0 then return not e:GetHandler():IsType(TYPE_TUNER) end
 end
 function c38783169.tnop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and c:IsLevelAbove(1) then
+	if c:IsFaceup() and c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_ADD_TYPE)

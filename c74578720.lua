@@ -52,13 +52,15 @@ function c74578720.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(tp,74578720,RESET_PHASE+PHASE_END,0,1)
 end
 function c74578720.cfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:IsReason(REASON_EFFECT) and bit.band(c:GetPreviousTypeOnField(),TYPE_XYZ)~=0 and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:IsReason(REASON_EFFECT)
+		and bit.band(c:GetPreviousTypeOnField(),TYPE_XYZ)~=0 and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c74578720.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c74578720.cfilter,1,nil,tp)
 end
 function c74578720.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c74578720.spop(e,tp,eg,ep,ev,re,r,rp)
@@ -70,6 +72,6 @@ function c74578720.spop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
 		e1:SetValue(LOCATION_REMOVED)
 		e1:SetReset(RESET_EVENT+RESETS_REDIRECT)
-		c:RegisterEffect(e1,true)
+		c:RegisterEffect(e1)
 	end
 end

@@ -64,32 +64,31 @@ function c11711438.stgop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoGrave(c,REASON_EFFECT)
 	end
 end
-function c11711438.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x137)
+function c11711438.cfilter(c,tp)
+	return c:IsFaceup() and c:IsSetCard(0x137) and c:GetSummonPlayer()==tp
 end
-function c11711438.tgfilter(c,tp,eg)
-	return eg:IsContains(c) and Duel.IsExistingMatchingCard(c11711438.thfilter,tp,LOCATION_DECK,0,1,nil,c:GetCode())
+function c11711438.tgfilter(c,tp,g)
+	return g:IsContains(c) and Duel.IsExistingMatchingCard(c11711438.thfilter,tp,LOCATION_DECK,0,1,nil,c:GetCode())
 end
 function c11711438.thfilter(c,code)
 	return c:IsSetCard(0x137) and c:IsType(TYPE_MONSTER) and not c:IsCode(code) and c:IsAbleToHand()
 end
 function c11711438.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2) and rp==tp and eg:IsExists(c11711438.cfilter,1,nil)
+	return Duel.GetTurnPlayer()==tp and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2) and eg:IsExists(c11711438.cfilter,1,nil,tp)
 end
 function c11711438.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c11711438.tgfilter(chkc,tp,eg) end
-	if chk==0 then return Duel.IsExistingTarget(c11711438.tgfilter,tp,LOCATION_MZONE,0,1,nil,tp,eg) and Duel.GetFlagEffect(tp,c11711438)==0 end
-	Duel.RegisterFlagEffect(tp,c11711438,RESET_CHAIN,0,1)
-	if eg:GetCount()==1 then
-		Duel.SetTargetCard(eg)
+	local g=eg:Filter(c11711438.cfilter,nil,tp)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c11711438.tgfilter(chkc,tp,g) end
+	if chk==0 then return Duel.IsExistingTarget(c11711438.tgfilter,tp,LOCATION_MZONE,0,1,nil,tp,g) end
+	if g:GetCount()==1 then
+		Duel.SetTargetCard(g)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-		Duel.SelectTarget(tp,c11711438.tgfilter,tp,LOCATION_MZONE,0,1,1,nil,tp,eg)
+		Duel.SelectTarget(tp,c11711438.tgfilter,tp,LOCATION_MZONE,0,1,1,nil,tp,g)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c11711438.thop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local code=tc:GetCode()
@@ -102,13 +101,14 @@ function c11711438.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c11711438.spfilter(c,e,tp)
-	return c:IsSetCard(0x137) and c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x137) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c11711438.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_SZONE)
 end
 function c11711438.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c11711438.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c11711438.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c11711438.spop(e,tp,eg,ep,ev,re,r,rp)

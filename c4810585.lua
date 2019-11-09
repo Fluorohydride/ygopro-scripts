@@ -36,7 +36,7 @@ function c4810585.initial_effect(c)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetCountLimit(1,4810585)
 	e3:SetCondition(c4810585.spcon)
-	e3:SetCost(c4810585.spcost)
+	e3:SetCost(aux.bfgcost)
 	e3:SetTarget(c4810585.sptg)
 	e3:SetOperation(c4810585.spop)
 	c:RegisterEffect(e3)
@@ -58,7 +58,7 @@ function c4810585.atcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c4810585.atcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsFaceup() and c:IsLocation(LOCATION_SZONE) and c:IsAbleToGraveAsCost() end
+	if chk==0 then return c:IsAbleToGraveAsCost() and c:IsStatus(STATUS_EFFECT_ENABLED) end
 	Duel.SendtoGrave(c,REASON_COST)
 end
 function c4810585.atop(e,tp,eg,ep,ev,re,r,rp)
@@ -74,18 +74,14 @@ function c4810585.atlimit(e,c)
 	return c:IsSetCard(0x137) and c:IsFaceup()
 end
 function c4810585.spfilter(c,e,tp)
-	return c:IsSetCard(0x137) and c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x137) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c4810585.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer()
 end
-function c4810585.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	if chk==0 then return c:IsAbleToRemoveAsCost() end
-	Duel.Remove(c,POS_FACEUP,REASON_COST)
-end
 function c4810585.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c4810585.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c4810585.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c4810585.spop(e,tp,eg,ep,ev,re,r,rp)

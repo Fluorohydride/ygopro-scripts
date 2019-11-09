@@ -68,15 +68,13 @@ function c42149850.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(42149850)>0
 end
 function c42149850.settg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and c:IsSSetable() end
+	if chk==0 then return e:GetHandler():IsSSetable() end
 end
 function c42149850.setop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		local flag=Duel.SSet(tp,c)
-		Duel.ConfirmCards(1-tp,c)
-		if flag~=0 then
+		if Duel.SSet(tp,c)~=0 then
+			Duel.ConfirmCards(1-tp,c)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)

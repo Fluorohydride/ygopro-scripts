@@ -54,24 +54,19 @@ function c36849933.rstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then
 		local mg=Duel.GetRitualMaterial(tp)
-		local sg=nil
-		return mg:IsContains(c) and Duel.IsExistingMatchingCard(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,nil,aux.TRUE,e,tp,mg,sg,Card.GetLevel,"Greater",c)
+		return mg:IsContains(c) and Duel.IsExistingMatchingCard(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,nil,aux.TRUE,e,tp,mg,nil,Card.GetLevel,"Greater",c)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c36849933.rsop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local mg=Duel.GetRitualMaterial(tp)
-	local sg=nil
 	if c:GetControler()~=tp or not c:IsRelateToEffect(e) or not mg:IsContains(c) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local tg=Duel.SelectMatchingCard(tp,aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,1,nil,aux.TRUE,e,tp,mg,sg,Card.GetLevel,"Greater",c)
+	local tg=Duel.SelectMatchingCard(tp,aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,1,nil,aux.TRUE,e,tp,mg,nil,Card.GetLevel,"Greater",c)
 	local tc=tg:GetFirst()
 	if tc then
 		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
-		if sg then
-			mg:Merge(sg)
-		end
 		if tc.mat_filter then
 			mg=mg:Filter(tc.mat_filter,tc,tp)
 		else

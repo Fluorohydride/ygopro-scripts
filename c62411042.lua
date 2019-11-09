@@ -14,14 +14,11 @@ function c62411042.initial_effect(c)
 	e2:SetCode(EFFECT_CANNOT_BE_EFFECT_TARGET)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e2:SetTargetRange(LOCATION_SZONE,0)
-	e2:SetTarget(c62411042.tgtg)
-	e2:SetValue(aux.tgoval)
+	e2:SetTargetRange(LOCATION_ONFIELD,0)
+	e2:SetTarget(aux.TargetBoolFunction(Card.IsType,TYPE_SPELL+TYPE_TRAP))
+	e2:SetValue(1)
 	c:RegisterEffect(e2)
 end
 function c62411042.indcon(e,c)
 	return Duel.IsExistingMatchingCard(aux.TRUE,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,e:GetHandler())
-end
-function c62411042.tgtg(e,c)
-	return c:IsFaceup()
 end
