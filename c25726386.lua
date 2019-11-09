@@ -24,11 +24,11 @@ function c25726386.initial_effect(c)
 	e2:SetOperation(c25726386.disop)
 	c:RegisterEffect(e2)
 end
-function c25726386.filter(c,e,tp)
-	return c:IsSetCard(0x138) and c~=e:GetHandler()
+function c25726386.filter(c,e,tp,chk)
+	return c:IsSetCard(0x138) and (not chk or c~=e:GetHandler())
 end
-function c25726386.matfilter(c,e,tp)
-	return c~=e:GetHandler()
+function c25726386.matfilter(c,e,tp,chk)
+	return not chk or c~=e:GetHandler()
 end
 function c25726386.rscon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2

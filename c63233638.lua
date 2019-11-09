@@ -21,11 +21,11 @@ function c63233638.initial_effect(c)
 	e3:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e3)
 end
-function c63233638.filter(c,e,tp)
-	return c:IsSetCard(0x138) and c~=e:GetHandler()
+function c63233638.filter(c,e,tp,chk)
+	return c:IsSetCard(0x138) and (not chk or c~=e:GetHandler())
 end
-function c63233638.matfilter(c,e,tp)
-	return c~=e:GetHandler()
+function c63233638.matfilter(c,e,tp,chk)
+	return not chk or c~=e:GetHandler()
 end
 function c63233638.rscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end

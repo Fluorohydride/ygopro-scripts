@@ -22,11 +22,11 @@ function c99628747.initial_effect(c)
 	e2:SetOperation(c99628747.desop)
 	c:RegisterEffect(e2)
 end
-function c99628747.filter(c,e,tp)
-	return c:IsSetCard(0x138) and c~=e:GetHandler()
+function c99628747.filter(c,e,tp,chk)
+	return c:IsSetCard(0x138) and (not chk or c~=e:GetHandler())
 end
-function c99628747.matfilter(c,e,tp)
-	return c~=e:GetHandler()
+function c99628747.matfilter(c,e,tp,chk)
+	return not chk or c~=e:GetHandler()
 end
 function c99628747.rscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end

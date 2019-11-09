@@ -1551,8 +1551,8 @@ function Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
 				end
 	end
 end
-function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,greater_or_equal,gc)
-	if bit.band(c:GetType(),0x81)~=0x81 or (filter and not filter(c,e,tp)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
+function Auxiliary.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,greater_or_equal,gc,chk)
+	if bit.band(c:GetType(),0x81)~=0x81 or (filter and not filter(c,e,tp,chk)) or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m1:Filter(Card.IsCanBeRitualMaterial,c,c)
 	if m2 then
 		mg:Merge(m2)
@@ -1579,12 +1579,12 @@ function Auxiliary.RitualUltimateTarget(filter,level_function,greater_or_equal,s
 	return	function(e,tp,eg,ep,ev,re,r,rp,chk)
 				if chk==0 then
 					local mg=Duel.GetRitualMaterial(tp)
-					if mat_filter then mg=mg:Filter(mat_filter,nil,e,tp) end
+					if mat_filter then mg=mg:Filter(mat_filter,nil,e,tp,true) end
 					local exg=nil
 					if grave_filter then
 						exg=Duel.GetMatchingGroup(Auxiliary.RitualExtraFilter,tp,LOCATION_GRAVE,0,nil,grave_filter)
 					end
-					return Duel.IsExistingMatchingCard(Auxiliary.RitualUltimateFilter,tp,summon_location,0,1,nil,filter,e,tp,mg,exg,level_function,greater_or_equal)
+					return Duel.IsExistingMatchingCard(Auxiliary.RitualUltimateFilter,tp,summon_location,0,1,nil,filter,e,tp,mg,exg,level_function,greater_or_equal,nil,true)
 				end
 				Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,summon_location)
 				if grave_filter then
