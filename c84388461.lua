@@ -27,8 +27,8 @@ end
 function c84388461.filter(c)
 	return c:IsSetCard(0xb4)
 end
-function c84388461.mfilter(c,e,tp)
-	return c~=e:GetHandler()
+function c84388461.mfilter(c,e,tp,chk)
+	return not chk or c~=e:GetHandler()
 end
 function c84388461.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end
