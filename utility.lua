@@ -1898,7 +1898,7 @@ function Auxiliary.LCheckOtherMaterial(c,mg,lc,tp)
 	local le={c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL,tp)}
 	for _,te in pairs(le) do
 		local f=te:GetValue()
-		if f and not f(te,lc,mg) then return false end
+		if f and not f(te,lc,mg,c) then return false end
 	end
 	return true
 end
@@ -1918,7 +1918,7 @@ function Auxiliary.LExtraMaterialCount(mg,lc,tp)
 		for _,te in pairs(le) do
 			local sg=mg:Filter(aux.TRUE,tc)
 			local f=te:GetValue()
-			if not f or f(te,lc,sg) then
+			if not f or f(te,lc,sg,tc) then
 				te:UseCountLimit(tp)
 			end
 		end
