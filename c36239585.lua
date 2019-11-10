@@ -75,9 +75,9 @@ function c36239585.setop(e,tp,eg,ep,ev,re,r,rp)
 	if not tc:IsRelateToEffect(e) then return end
 	local res=false
 	if tc:IsType(TYPE_MONSTER) then
-		res=Duel.SpecialSummon(tc,0,tp,1-tp,false,false,POS_FACEDOWN_DEFENSE)
+		res=Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 	else
-		res=Duel.SSet(tp,tc,1-tp)
+		res=Duel.SSet(tp,tc)
 	end
 	if res~=0 then
 		Duel.ConfirmCards(1-tp,tc)
