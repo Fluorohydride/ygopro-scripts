@@ -77,7 +77,7 @@ function c75702749.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c75702749.spfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
 		local tc=g:GetFirst()
-		if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
+		if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 			Duel.Equip(tp,c,tc)
 			Duel.SpecialSummonComplete()
 			Duel.BreakEffect()
