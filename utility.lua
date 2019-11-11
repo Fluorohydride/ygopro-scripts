@@ -2015,6 +2015,9 @@ function Auxiliary.IsMaterialListSetCard(c,setcode)
 	end
 	return false
 end
+function Auxiliary.IsMaterialListType(c,type)
+	return c.material_type and type&c.material_type==type
+end
 function Auxiliary.AddCodeList(c,...)
 	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
 	if c.card_code_list==nil then

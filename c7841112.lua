@@ -47,6 +47,7 @@ function c7841112.initial_effect(c)
 	e5:SetOperation(c7841112.spop)
 	c:RegisterEffect(e5)
 end
+c7841112.material_type=TYPE_SYNCHRO
 function c7841112.mfilter1(c)
 	return c:IsCode(21159309)
 end

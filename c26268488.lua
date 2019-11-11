@@ -43,6 +43,7 @@ function c26268488.initial_effect(c)
 	e4:SetOperation(c26268488.spop)
 	c:RegisterEffect(e4)
 end
+c26268488.material_type=TYPE_SYNCHRO
 function c26268488.indct(e,re,r,rp)
 	if bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0 then
 		return 1

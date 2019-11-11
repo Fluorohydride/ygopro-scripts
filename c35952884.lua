@@ -48,6 +48,7 @@ function c35952884.initial_effect(c)
 	e4:SetOperation(c35952884.sumop)
 	c:RegisterEffect(e4)
 end
+c35952884.material_type=TYPE_SYNCHRO
 function c35952884.mfilter(c)
 	return not c:IsType(TYPE_TUNER)
 end

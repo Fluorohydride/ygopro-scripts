@@ -50,6 +50,7 @@ function c97489701.initial_effect(c)
 	e6:SetCode(21142671)
 	c:RegisterEffect(e6)
 end
+c97489701.material_type=TYPE_SYNCHRO
 function c97489701.atkval(e,c)
 	return Duel.GetMatchingGroupCount(Card.IsType,c:GetControler(),LOCATION_GRAVE,0,nil,TYPE_TUNER)*500
 end

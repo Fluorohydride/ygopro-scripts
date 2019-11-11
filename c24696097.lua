@@ -48,6 +48,7 @@ function c24696097.initial_effect(c)
 	e4:SetOperation(c24696097.sumop)
 	c:RegisterEffect(e4)
 end
+c24696097.material_type=TYPE_SYNCHRO
 function c24696097.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsAbleToEnterBP() and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=5
 end

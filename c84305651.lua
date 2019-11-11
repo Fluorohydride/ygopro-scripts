@@ -21,6 +21,7 @@ function c84305651.initial_effect(c)
 	e2:SetOperation(c84305651.spop)
 	c:RegisterEffect(e2)
 end
+c84305651.material_type=TYPE_SYNCHRO
 function c84305651.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttackTarget()~=nil
 end

@@ -20,7 +20,7 @@ function c58601383.initial_effect(c)
 	e3:SetValue(c58601383.efilter2)
 	c:RegisterEffect(e3)
 end
-c58601383.miracle_synchro_fusion=true
+c58601383.material_type=TYPE_SYNCHRO
 function c58601383.ffilter(c)
 	return c:IsFusionType(TYPE_SYNCHRO) and not c:IsFusionType(TYPE_EFFECT)
 end

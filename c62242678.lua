@@ -41,6 +41,7 @@ function c62242678.initial_effect(c)
 	e5:SetCode(21142671)
 	c:RegisterEffect(e5)
 end
+c62242678.material_type=TYPE_SYNCHRO
 function c62242678.sfilter(c)
 	return c:IsRace(RACE_DRAGON) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsSynchroType(TYPE_SYNCHRO)
 end

@@ -38,6 +38,7 @@ function c74892653.initial_effect(c)
 	e3:SetOperation(c74892653.scop)
 	c:RegisterEffect(e3)
 end
+c74892653.material_type=TYPE_SYNCHRO
 function c74892653.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=ep and Duel.GetCurrentChain()==0
 end

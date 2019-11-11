@@ -25,7 +25,7 @@ function c25793414.initial_effect(c)
 	e2:SetOperation(c25793414.spop)
 	c:RegisterEffect(e2)
 end
-c25793414.miracle_synchro_fusion=true
+c25793414.material_type=TYPE_SYNCHRO
 function c25793414.cptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsType(TYPE_MONSTER) end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsType,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,TYPE_MONSTER) end

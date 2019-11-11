@@ -38,6 +38,7 @@ function c89907227.initial_effect(c)
 	e3:SetOperation(c89907227.spop)
 	c:RegisterEffect(e3)
 end
+c89907227.material_type=TYPE_SYNCHRO
 function c89907227.tkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp and e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end

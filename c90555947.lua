@@ -17,7 +17,7 @@ function c90555947.initial_effect(c)
 	e1:SetOperation(c90555947.disop)
 	c:RegisterEffect(e1)
 end
-c90555947.miracle_synchro_fusion=true
+c90555947.material_type=TYPE_SYNCHRO
 function c90555947.ffilter(c)
 	return c:IsFusionAttribute(ATTRIBUTE_EARTH) and c:IsFusionType(TYPE_SYNCHRO)
 end

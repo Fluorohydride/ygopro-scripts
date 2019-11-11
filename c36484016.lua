@@ -27,7 +27,7 @@ function c36484016.filter1(c,e)
 	return c:IsOnField() and c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
 end
 function c36484016.filter2(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and c.miracle_synchro_fusion and (not f or f(c))
+	return c:IsType(TYPE_FUSION) and aux.IsMaterialListType(c,TYPE_SYNCHRO) and (not f or f(c))
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and m:IsExists(c36484016.filter3,1,nil,c,m,chkf)
 end
 function c36484016.filter3(c,fusc,m,chkf)

@@ -73,7 +73,7 @@ function c13331639.initial_effect(c)
 	e8:SetOperation(c13331639.penop)
 	c:RegisterEffect(e8)
 end
-c13331639.miracle_synchro_fusion=true
+c13331639.material_type=TYPE_SYNCHRO
 function c13331639.fusfilter1(c)
 	return c:IsRace(RACE_DRAGON) and c:IsFusionType(TYPE_FUSION)
 end

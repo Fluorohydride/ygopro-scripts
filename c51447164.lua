@@ -41,6 +41,7 @@ function c51447164.initial_effect(c)
 	e3:SetOperation(c51447164.spop)
 	c:RegisterEffect(e3)
 end
+c51447164.material_type=TYPE_SYNCHRO
 function c51447164.discon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsStatus(STATUS_BATTLE_DESTROYED) then return false end
