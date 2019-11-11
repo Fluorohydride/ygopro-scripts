@@ -1,5 +1,6 @@
 --怪鳥グライフ
 function c899287.initial_effect(c)
+	aux.AddCodeList(c,72283691)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(899287,0))
@@ -25,7 +26,6 @@ function c899287.initial_effect(c)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e3)
 end
-c899287.card_code_list={72283691}
 function c899287.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsDiscardable() end

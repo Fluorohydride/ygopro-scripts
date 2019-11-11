@@ -1,5 +1,6 @@
 --ハーピィ・レディ －鳳凰の陣－
 function c86308219.initial_effect(c)
+	aux.AddCodeList(c,12206212)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
@@ -13,7 +14,6 @@ function c86308219.initial_effect(c)
 	c:RegisterEffect(e1)
 	Duel.AddCustomActivityCounter(86308219,ACTIVITY_SPSUMMON,c86308219.counterfilter)
 end
-c86308219.card_code_list={12206212}
 function c86308219.counterfilter(c)
 	return bit.band(c:GetSummonLocation(),LOCATION_DECK+LOCATION_EXTRA)==0
 end

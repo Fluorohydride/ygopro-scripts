@@ -1,5 +1,6 @@
 --黒魔術の継承
 function c41735184.initial_effect(c)
+	aux.AddCodeList(c,46986414,38033121)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
@@ -11,7 +12,6 @@ function c41735184.initial_effect(c)
 	e1:SetOperation(c41735184.activate)
 	c:RegisterEffect(e1)
 end
-c41735184.card_code_list={46986414,38033121}
 function c41735184.cfilter(c)
 	return c:IsType(TYPE_SPELL) and c:IsAbleToRemoveAsCost()
 end

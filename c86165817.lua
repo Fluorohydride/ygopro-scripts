@@ -1,5 +1,6 @@
 --E－HERO マリシャス・ベイン
 function c86165817.initial_effect(c)
+	aux.AddCodeList(c,94820406)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,c86165817.matfilter,aux.FilterBoolFunction(Card.IsFusionSetCard,0x6008),true)
@@ -33,7 +34,6 @@ function c86165817.initial_effect(c)
 end
 c86165817.material_setcode=0x8
 c86165817.dark_calling=true
-c86165817.card_code_list={94820406}
 function c86165817.splimit(e,se,sp,st)
 	return st==SUMMON_TYPE_FUSION+0x10
 		or Duel.IsPlayerAffectedByEffect(sp,72043279) and st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION

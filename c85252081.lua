@@ -1,5 +1,6 @@
 --超量機獣グランパルス
 function c85252081.initial_effect(c)
+	aux.AddCodeList(c,12369277)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)
 	c:EnableReviveLimit()
@@ -38,7 +39,6 @@ function c85252081.initial_effect(c)
 	e4:SetOperation(c85252081.mtop)
 	c:RegisterEffect(e4)
 end
-c85252081.card_code_list={12369277}
 function c85252081.atcon(e)
 	return e:GetHandler():GetOverlayCount()==0
 end

@@ -1,5 +1,6 @@
 --超量機獣ラスターレックス
 function c57450198.initial_effect(c)
+	aux.AddCodeList(c,73422829)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,7,2)
 	c:EnableReviveLimit()
@@ -38,7 +39,6 @@ function c57450198.initial_effect(c)
 	e4:SetOperation(c57450198.mtop)
 	c:RegisterEffect(e4)
 end
-c57450198.card_code_list={73422829}
 function c57450198.atcon(e)
 	return e:GetHandler():GetOverlayCount()==0
 end

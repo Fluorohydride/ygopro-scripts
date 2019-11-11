@@ -1,5 +1,6 @@
 --ハーピィ・オラクル
 function c66386380.initial_effect(c)
+	aux.AddCodeList(c,12206212)
 	--to hand
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(66386380,0))
@@ -33,7 +34,6 @@ function c66386380.initial_effect(c)
 	e4:SetOperation(c66386380.ssop)
 	c:RegisterEffect(e4)
 end
-c66386380.card_code_list={12206212}
 function c66386380.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

@@ -1,5 +1,6 @@
 --ミラクル・コンタクト
 function c35255456.initial_effect(c)
+	aux.AddCodeList(c,89943723)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -9,7 +10,6 @@ function c35255456.initial_effect(c)
 	e1:SetOperation(c35255456.activate)
 	c:RegisterEffect(e1)
 end
-c35255456.card_code_list={89943723}
 function c35255456.filter1(c,e)
 	return c:IsAbleToDeck() and not c:IsImmuneToEffect(e)
 end

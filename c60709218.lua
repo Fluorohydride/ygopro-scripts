@@ -1,5 +1,6 @@
 --師弟の絆
 function c60709218.initial_effect(c)
+	aux.AddCodeList(c,46986414,38033121)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -11,7 +12,6 @@ function c60709218.initial_effect(c)
 	e1:SetOperation(c60709218.activate)
 	c:RegisterEffect(e1)
 end
-c60709218.card_code_list={46986414,38033121}
 function c60709218.cfilter(c)
 	return c:IsCode(46986414) and c:IsFaceup()
 end

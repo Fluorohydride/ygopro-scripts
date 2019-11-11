@@ -1,5 +1,6 @@
 --天空勇士ネオパーシアス
 function c12510878.initial_effect(c)
+	aux.AddCodeList(c,56433456)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -37,7 +38,6 @@ function c12510878.initial_effect(c)
 	e5:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e5)
 end
-c12510878.card_code_list={56433456}
 function c12510878.spcon(e,c)
 	if c==nil then return true end
 	return Duel.CheckReleaseGroup(c:GetControler(),Card.IsCode,1,nil,18036057)

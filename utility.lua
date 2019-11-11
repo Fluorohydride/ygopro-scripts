@@ -1022,10 +1022,13 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 			table.insert(mat,val[i])
 		end
 	end
-	if #mat>0 and c.material_count==nil then
-		local mt=getmetatable(c)
-		mt.material_count=#mat
-		mt.material=mat
+	if #mat>0 then
+		if c.material_count==nil then
+			local mt=getmetatable(c)
+			mt.material_count=#mat
+			mt.material=mat
+		end
+		Auxiliary.AddCodeList(c,table.unpack(mat))
 	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -1134,10 +1137,13 @@ function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
 			table.insert(mat,val[i])
 		end
 	end
-	if #mat>0 and c.material_count==nil then
-		local mt=getmetatable(c)
-		mt.material_count=#mat
-		mt.material=mat
+	if #mat>0 then
+		if c.material_count==nil then
+			local mt=getmetatable(c)
+			mt.material_count=#mat
+			mt.material=mat
+		end
+		Auxiliary.AddCodeList(c,table.unpack(mat))
 	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -1333,9 +1339,11 @@ function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
 					table.insert(mt.material,fcode)
 				end
 			end
+			Auxiliary.AddCodeList(c,table.unpack(code1))
 		else
 			mt.material_count=1
 			mt.material={code1}
+			Auxiliary.AddCodeList(c,code1)
 		end
 	end
 	Auxiliary.AddFusionProcMix(c,sub,insf,table.unpack(code))
@@ -1631,10 +1639,7 @@ function Auxiliary.AddRitualProcGreater(c,filter,summon_location,grave_filter,ma
 	return Auxiliary.AddRitualProcUltimate(c,filter,Card.GetOriginalLevel,"Greater",summon_location,grave_filter,mat_filter)
 end
 function Auxiliary.AddRitualProcGreaterCode(c,code1,summon_location,grave_filter,mat_filter)
-	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
-		local mt=getmetatable(c)
-		mt.fit_monster={code1}
-	end
+	Auxiliary.AddCodeList(c,code1)
 	return Auxiliary.AddRitualProcGreater(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1),summon_location,grave_filter,mat_filter)
 end
 --Ritual Summon, equal to fixed lv
@@ -1642,10 +1647,7 @@ function Auxiliary.AddRitualProcEqual(c,filter,summon_location,grave_filter,mat_
 	return Auxiliary.AddRitualProcUltimate(c,filter,Card.GetOriginalLevel,"Equal",summon_location,grave_filter,mat_filter)
 end
 function Auxiliary.AddRitualProcEqualCode(c,code1,summon_location,grave_filter,mat_filter)
-	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
-		local mt=getmetatable(c)
-		mt.fit_monster={code1}
-	end
+	Auxiliary.AddCodeList(c,code1)
 	return Auxiliary.AddRitualProcEqual(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1),summon_location,grave_filter,mat_filter)
 end
 --Ritual Summon, equal to monster lv
@@ -1653,17 +1655,11 @@ function Auxiliary.AddRitualProcEqual2(c,filter,summon_location,grave_filter,mat
 	return Auxiliary.AddRitualProcUltimate(c,filter,Card.GetLevel,"Equal",summon_location,grave_filter,mat_filter)
 end
 function Auxiliary.AddRitualProcEqual2Code(c,code1,summon_location,grave_filter,mat_filter)
-	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
-		local mt=getmetatable(c)
-		mt.fit_monster={code1}
-	end
+	Auxiliary.AddCodeList(c,code1)
 	return Auxiliary.AddRitualProcEqual2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1),summon_location,grave_filter,mat_filter)
 end
 function Auxiliary.AddRitualProcEqual2Code2(c,code1,code2,summon_location,grave_filter,mat_filter)
-	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
-		local mt=getmetatable(c)
-		mt.fit_monster={code1,code2}
-	end
+	Auxiliary.AddCodeList(c,code1,code2)
 	return Auxiliary.AddRitualProcEqual2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1,code2),summon_location,grave_filter,mat_filter)
 end
 --Ritual Summon, geq monster lv
@@ -1671,17 +1667,11 @@ function Auxiliary.AddRitualProcGreater2(c,filter,summon_location,grave_filter,m
 	return Auxiliary.AddRitualProcUltimate(c,filter,Card.GetLevel,"Greater",summon_location,grave_filter,mat_filter)
 end
 function Auxiliary.AddRitualProcGreater2Code(c,code1,summon_location,grave_filter,mat_filter)
-	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
-		local mt=getmetatable(c)
-		mt.fit_monster={code1}
-	end
+	Auxiliary.AddCodeList(c,code1)
 	return Auxiliary.AddRitualProcGreater2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1),summon_location,grave_filter,mat_filter)
 end
 function Auxiliary.AddRitualProcGreater2Code2(c,code1,code2,summon_location,grave_filter,mat_filter)
-	if not c:IsStatus(STATUS_COPYING_EFFECT) and c.fit_monster==nil then
-		local mt=getmetatable(c)
-		mt.fit_monster={code1,code2}
-	end
+	Auxiliary.AddCodeList(c,code1,code2)
 	return Auxiliary.AddRitualProcGreater2(c,Auxiliary.FilterBoolFunction(Card.IsCode,code1,code2),summon_location,grave_filter,mat_filter)
 end
 --add procedure to Pendulum monster, also allows registeration of activation effect
@@ -2024,6 +2014,20 @@ function Auxiliary.IsMaterialListSetCard(c,setcode)
 		return setcode&0xfff==c.material_setcode&0xfff and setcode&c.material_setcode==setcode
 	end
 	return false
+end
+function Auxiliary.AddCodeList(c,...)
+	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
+	if c.card_code_list==nil then
+		local mt=getmetatable(c)
+		mt.card_code_list={}
+		for _,code in ipairs{...} do
+			table.insert(mt.card_code_list,code)
+		end
+	else
+		for _,code in ipairs{...} do
+			table.insert(c.card_code_list,code)
+		end
+	end
 end
 function Auxiliary.IsCodeListed(c,code)
 	if not c.card_code_list then return false end

@@ -1,5 +1,6 @@
 --天空賢者ミネルヴァ
 function c53666449.initial_effect(c)
+	aux.AddCodeList(c,56433456)
 	--atk
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -17,7 +18,6 @@ function c53666449.initial_effect(c)
 	e1:SetOperation(c53666449.atkop)
 	c:RegisterEffect(e1)
 end
-c53666449.card_code_list={56433456}
 function c53666449.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_COUNTER) and e:GetHandler():GetFlagEffect(1)>0
 end

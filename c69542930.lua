@@ -1,5 +1,6 @@
 --光と闇の洗礼
 function c69542930.initial_effect(c)
+	aux.AddCodeList(c,46986414)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -10,7 +11,6 @@ function c69542930.initial_effect(c)
 	e1:SetOperation(c69542930.activate)
 	c:RegisterEffect(e1)
 end
-c69542930.card_code_list={46986414}
 function c69542930.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsCode,1,nil,46986414) end
 	local g=Duel.SelectReleaseGroup(tp,Card.IsCode,1,1,nil,46986414)

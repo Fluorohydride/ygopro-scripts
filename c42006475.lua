@@ -1,5 +1,6 @@
 --守護神官マナ
 function c42006475.initial_effect(c)
+	aux.AddCodeList(c,38033121)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(42006475,0))
@@ -32,7 +33,6 @@ function c42006475.initial_effect(c)
 	e3:SetOperation(c42006475.spop2)
 	c:RegisterEffect(e3)
 end
-c42006475.card_code_list={38033121}
 function c42006475.tfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:IsRace(RACE_SPELLCASTER)
 end

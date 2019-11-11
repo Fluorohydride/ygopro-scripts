@@ -1,5 +1,6 @@
 --Re－BUSTER
 function c56252810.initial_effect(c)
+	aux.AddCodeList(c,80280737)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DESTROY+CATEGORY_SPECIAL_SUMMON)
@@ -11,7 +12,6 @@ function c56252810.initial_effect(c)
 	e1:SetOperation(c56252810.activate)
 	c:RegisterEffect(e1)
 end
-c56252810.card_code_list={80280737}
 function c56252810.cfilter(c)
 	return c:IsCode(80280737) and c:IsAbleToRemoveAsCost()
 end

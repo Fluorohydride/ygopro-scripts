@@ -1,5 +1,6 @@
 --鉄の騎士
 function c73405179.initial_effect(c)
+	aux.AddCodeList(c,72283691)
 	--atk down
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -25,7 +26,6 @@ function c73405179.initial_effect(c)
 	e3:SetCondition(c73405179.thcon)
 	c:RegisterEffect(e3)
 end
-c73405179.card_code_list={72283691}
 function c73405179.filter(c)
 	return c:IsFaceup() and c:IsCode(41916534)
 end

@@ -1,5 +1,6 @@
 --サイバー・ボンテージ
 function c63224564.initial_effect(c)
+	aux.AddCodeList(c,12206212)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_EQUIP)
@@ -23,7 +24,6 @@ function c63224564.initial_effect(c)
 	e4:SetValue(c63224564.eqlimit)
 	c:RegisterEffect(e4)
 end
-c63224564.card_code_list={12206212}
 function c63224564.eqlimit(e,c)
 	return c:IsCode(76812113,12206212)
 end

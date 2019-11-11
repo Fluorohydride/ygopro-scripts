@@ -1,5 +1,6 @@
 --ネフティスの輪廻
 function c23459650.initial_effect(c)
+	aux.AddCodeList(c,88176533,24175232)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -9,7 +10,6 @@ function c23459650.initial_effect(c)
 	e1:SetOperation(c23459650.activate)
 	c:RegisterEffect(e1)
 end
-c23459650.fit_monster={88176533,24175232}
 function c23459650.filter(c,e,tp)
 	return c:IsSetCard(0x11f)
 end

@@ -1,5 +1,6 @@
 --サイキック・リフレクター
 function c74644400.initial_effect(c)
+	aux.AddCodeList(c,80280737)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(74644400,0))
@@ -27,7 +28,6 @@ function c74644400.initial_effect(c)
 	e3:SetOperation(c74644400.spop)
 	c:RegisterEffect(e3)
 end
-c74644400.card_code_list={80280737}
 function c74644400.thfilter(c)
 	return aux.IsCodeListed(c,80280737) and not c:IsCode(74644400) or c:IsCode(80280737)
 		and c:IsAbleToHand()

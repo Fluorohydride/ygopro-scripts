@@ -1,5 +1,6 @@
 --ハーピィ・パフューマー
 function c39392286.initial_effect(c)
+	aux.AddCodeList(c,12206212)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(39392286,0))
@@ -23,7 +24,6 @@ function c39392286.initial_effect(c)
 	e3:SetValue(76812113)
 	c:RegisterEffect(e3)
 end
-c39392286.card_code_list={12206212}
 function c39392286.thfilter(c)
 	return aux.IsCodeListed(c,12206212) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
 end

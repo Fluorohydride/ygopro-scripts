@@ -1,5 +1,6 @@
 --バスター・マーセナリ
 function c77036039.initial_effect(c)
+	aux.AddCodeList(c,80280737)
 	--destroy
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(77036039,0))
@@ -13,7 +14,6 @@ function c77036039.initial_effect(c)
 	e1:SetOperation(c77036039.operation)
 	c:RegisterEffect(e1)
 end
-c77036039.card_code_list={80280737}
 function c77036039.cfilter(c)
 	return c:IsCode(80280737) and c:IsAbleToDeckAsCost()
 end

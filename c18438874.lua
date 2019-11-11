@@ -1,5 +1,6 @@
 --イービル・マインド
 function c18438874.initial_effect(c)
+	aux.AddCodeList(c,94820406)
 	--draw
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(18438874,0))
@@ -35,7 +36,6 @@ function c18438874.initial_effect(c)
 	e3:SetOperation(c18438874.thop2)
 	c:RegisterEffect(e3)
 end
-c18438874.card_code_list={94820406}
 function c18438874.cfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_FIEND)
 end

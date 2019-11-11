@@ -1,5 +1,6 @@
 --騎士の称号
 function c87210505.initial_effect(c)
+	aux.AddCodeList(c,46986414)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -10,7 +11,6 @@ function c87210505.initial_effect(c)
 	e1:SetOperation(c87210505.activate)
 	c:RegisterEffect(e1)
 end
-c87210505.card_code_list={46986414}
 function c87210505.costfilter(c,tp)
 	return c:IsFaceup() and c:IsCode(46986414) and Duel.GetMZoneCount(tp,c)>0
 end

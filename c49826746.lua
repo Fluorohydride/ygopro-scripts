@@ -1,5 +1,6 @@
 --黒翼の魔術師
 function c49826746.initial_effect(c)
+	aux.AddCodeList(c,80280737)
 	--Trap activate in set turn
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -10,4 +11,3 @@ function c49826746.initial_effect(c)
 	e1:SetTarget(aux.TargetBoolFunction(Card.IsCode,80280737))
 	c:RegisterEffect(e1)
 end
-c49826746.card_code_list={80280737}

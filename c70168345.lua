@@ -1,5 +1,6 @@
 --黒・魔・導・連・弾
 function c70168345.initial_effect(c)
+	aux.AddCodeList(c,46986414,38033121)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_ATKCHANGE)
@@ -11,7 +12,6 @@ function c70168345.initial_effect(c)
 	e1:SetOperation(c70168345.operation)
 	c:RegisterEffect(e1)
 end
-c70168345.card_code_list={46986414,38033121}
 function c70168345.filter(c)
 	return c:IsCode(38033121) and (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE))
 end

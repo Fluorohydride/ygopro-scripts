@@ -1,5 +1,6 @@
 --マジシャン・オブ・ブラック・イリュージョン
 function c35191415.initial_effect(c)
+	aux.AddCodeList(c,46986414)
 	--change name
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

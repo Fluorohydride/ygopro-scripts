@@ -1,5 +1,6 @@
 --トライアングル・X・スパーク
 function c12181376.initial_effect(c)
+	aux.AddCodeList(c,12206212)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_ATKCHANGE)
@@ -9,7 +10,6 @@ function c12181376.initial_effect(c)
 	e1:SetOperation(c12181376.activate)
 	c:RegisterEffect(e1)
 end
-c12181376.card_code_list={12206212}
 function c12181376.filter(c)
 	return c:IsFaceup() and c:IsCode(12206212)
 end

@@ -1,5 +1,6 @@
 --ハーピィの狩場
 function c75782277.initial_effect(c)
+	aux.AddCodeList(c,12206212)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -40,7 +41,6 @@ function c75782277.initial_effect(c)
 		Duel.RegisterEffect(ge2,0)
 	end
 end
-c75782277.card_code_list={12206212}
 function c75782277.check(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=eg:GetFirst()

@@ -38,7 +38,6 @@ function c81566151.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c81566151.material_setcode=0x8
-c81566151.card_code_list={89943723}
 c81566151.neos_fusion=true
 function c81566151.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)

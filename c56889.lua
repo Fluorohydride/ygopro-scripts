@@ -1,5 +1,6 @@
 --競闘－クロス・ディメンション
 function c56889.initial_effect(c)
+	aux.AddCodeList(c,83104731)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_REMOVE)
@@ -20,7 +21,6 @@ function c56889.initial_effect(c)
 	e2:SetOperation(c56889.repop)
 	c:RegisterEffect(e2)
 end
-c56889.card_code_list={83104731}
 function c56889.rmfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x7) and c:IsAbleToRemove()
 end

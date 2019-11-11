@@ -1,5 +1,6 @@
 --E－HERO ダーク・ガイア
 function c58332301.initial_effect(c)
+	aux.AddCodeList(c,94820406)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),aux.FilterBoolFunction(Card.IsRace,RACE_ROCK),true)
@@ -28,7 +29,6 @@ function c58332301.initial_effect(c)
 end
 c58332301.material_setcode=0x8
 c58332301.dark_calling=true
-c58332301.card_code_list={94820406}
 function c58332301.splimit(e,se,sp,st)
 	return st==SUMMON_TYPE_FUSION+0x10
 		or Duel.IsPlayerAffectedByEffect(sp,72043279) and st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION

@@ -1,5 +1,6 @@
 --TG ハルバード・キャノン／バスター
 function c47027714.initial_effect(c)
+	aux.AddCodeList(c,80280737)
 	c:EnableReviveLimit()
 	--Cannot special summon
 	local e0=Effect.CreateEffect(c)
@@ -37,7 +38,6 @@ function c47027714.initial_effect(c)
 	e4:SetOperation(c47027714.spop)
 	c:RegisterEffect(e4)
 end
-c47027714.card_code_list={80280737}
 c47027714.assault_name=97836203
 function c47027714.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=ep and Duel.GetCurrentChain()==0

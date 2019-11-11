@@ -1,5 +1,6 @@
 --強靭！無敵！最強！
 function c56920308.initial_effect(c)
+	aux.AddCodeList(c,89631139)
 	--effect gain
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -24,7 +25,6 @@ function c56920308.initial_effect(c)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e3)
 end
-c56920308.card_code_list={89631139}
 function c56920308.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0xdd)
 end

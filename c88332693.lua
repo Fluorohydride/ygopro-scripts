@@ -1,5 +1,6 @@
 --バスター・モード・ゼロ
 function c88332693.initial_effect(c)
+	aux.AddCodeList(c,80280737)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(88332693,0))
@@ -23,7 +24,6 @@ function c88332693.initial_effect(c)
 	e2:SetOperation(c88332693.setop)
 	c:RegisterEffect(e2)
 end
-c88332693.card_code_list={80280737}
 function c88332693.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	return true

@@ -1,5 +1,6 @@
 --黒魔術のカーテン
 function c99789342.initial_effect(c)
+	aux.AddCodeList(c,46986414)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -10,7 +11,6 @@ function c99789342.initial_effect(c)
 	e1:SetOperation(c99789342.activate)
 	c:RegisterEffect(e1)
 end
-c99789342.card_code_list={46986414}
 function c99789342.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetActivityCount(tp,ACTIVITY_SUMMON)==0
 		and Duel.GetActivityCount(tp,ACTIVITY_FLIPSUMMON)==0 and Duel.GetActivityCount(tp,ACTIVITY_SPSUMMON)==0 end
