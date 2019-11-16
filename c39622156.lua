@@ -58,15 +58,15 @@ function c39622156.daop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e3,tp)
 end
 function c39622156.atkcon(e)
-	return e:GetHandler():GetFlagEffect(39622156)~=0
+	return Duel.GetFlagEffect(tp,39622156)~=0
 end
 function c39622156.atktg(e,c)
 	return c:GetFieldID()~=e:GetLabel()
 end
 function c39622156.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():GetFlagEffect(39622156)~=0 then return end
+	if Duel.GetFlagEffect(tp,39622156)~=0 then return end
 	local fid=eg:GetFirst():GetFieldID()
-	e:GetHandler():RegisterFlagEffect(39622156,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+	Duel.RegisterFlagEffect(tp,39622156,RESET_PHASE+PHASE_BATTLE,0,1)
 	e:GetLabelObject():SetLabel(fid)
 end
 function c39622156.condition(e,tp,eg,ep,ev,re,r,rp)
