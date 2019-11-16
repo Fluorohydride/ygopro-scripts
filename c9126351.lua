@@ -68,7 +68,6 @@ function c9126351.excost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToHandAsCost,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.SendtoHand(g,nil,REASON_COST)
-	Duel.RegisterFlagEffect(tp,9126352,RESET_PHASE+PHASE_END,EFFECT_FLAG_OATH,1)
 end
 function c9126351.extg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanSummon(tp) and Duel.IsPlayerCanAdditionalSummon(tp) end
@@ -82,6 +81,7 @@ function c9126351.exop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTarget(c9126351.estg)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
+	Duel.RegisterFlagEffect(tp,9126352,RESET_PHASE+PHASE_END,0,1)
 end
 function c9126351.estg(e,c)
 	return c:IsSetCard(0x12) and c:GetCode()~=9126351
