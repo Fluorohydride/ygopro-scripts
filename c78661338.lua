@@ -49,9 +49,11 @@ function c78661338.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ShuffleHand(tp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,ct,ct,nil)
-		if g:GetCount()>0 then
+		if ct>0 then
 			Duel.BreakEffect()
-			Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+			if g:GetCount()>0 then
+				Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+			end
 		end
 	end
 end
