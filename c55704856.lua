@@ -23,10 +23,14 @@ end
 function c55704856.filter3(c)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToDeck()
 end
+function c55704856.fcheck(tp,sg,fc)
+	return sg:IsExists(Card.IsFusionSetCard,1,nil,0x1093)
+end
 function c55704856.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
 		local mg=Duel.GetMatchingGroup(c55704856.filter0,tp,LOCATION_MZONE+LOCATION_REMOVED,0,nil)
+		aux.FCheckAdditional=c55704856.fcheck
 		local res=Duel.IsExistingMatchingCard(c55704856.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -37,6 +41,7 @@ function c55704856.target(e,tp,eg,ep,ev,re,r,rp,chk)
 				res=Duel.IsExistingMatchingCard(c55704856.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg3,mf,chkf)
 			end
 		end
+		aux.FCheckAdditional=nil
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -44,6 +49,7 @@ end
 function c55704856.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
 	local mg=Duel.GetMatchingGroup(c55704856.filter1,tp,LOCATION_MZONE+LOCATION_REMOVED,0,nil,e)
+	aux.FCheckAdditional=c55704856.fcheck
 	local sg1=Duel.GetMatchingGroup(c55704856.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg,nil,chkf)
 	local mg3=nil
 	local sg2=nil
@@ -86,6 +92,7 @@ function c55704856.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
 	end
+	aux.FCheckAdditional=nil
 end
 function c55704856.ftarget(e,c)
 	return e:GetLabel()~=c:GetFieldID()

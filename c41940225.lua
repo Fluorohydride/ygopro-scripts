@@ -29,14 +29,14 @@ function c41940225.filter1(c,e)
 	return c:IsFaceup() and c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
 end
 function c41940225.filter2(c,e,tp,m,f,chkf)
-	return c41940225.spfilter(c) and (not f or f(c))
+	return c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,78193831) and (not f or f(c))
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
 function c41940225.filter3(c,e)
 	return not c:IsImmuneToEffect(e)
 end
-function c41940225.spfilter(c)
-	return aux.IsMaterialListCode(c,78193831)
+function c41940225.fcheck(tp,sg,fc)
+	return sg:IsExists(Card.IsFusionCode,1,nil,78193831)
 end
 function c41940225.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -44,6 +44,7 @@ function c41940225.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		local mg1=Duel.GetFusionMaterial(tp)
 		local mg2=Duel.GetMatchingGroup(c41940225.filter0,tp,0,LOCATION_MZONE,nil)
 		mg1:Merge(mg2)
+		aux.FCheckAdditional=c41940225.fcheck
 		local res=Duel.IsExistingMatchingCard(c41940225.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -54,6 +55,7 @@ function c41940225.target(e,tp,eg,ep,ev,re,r,rp,chk)
 				res=Duel.IsExistingMatchingCard(c41940225.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg3,mf,chkf)
 			end
 		end
+		aux.FCheckAdditional=nil
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -63,6 +65,7 @@ function c41940225.activate(e,tp,eg,ep,ev,re,r,rp)
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c41940225.filter3,nil,e)
 	local mg2=Duel.GetMatchingGroup(c41940225.filter1,tp,0,LOCATION_MZONE,nil,e)
 	mg1:Merge(mg2)
+	aux.FCheckAdditional=c41940225.fcheck
 	local sg1=Duel.GetMatchingGroup(c41940225.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg3=nil
 	local sg2=nil
@@ -92,6 +95,7 @@ function c41940225.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:CompleteProcedure()
 	end
+	aux.FCheckAdditional=nil
 end
 function c41940225.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToGraveAsCost,tp,LOCATION_HAND,0,1,nil) end
