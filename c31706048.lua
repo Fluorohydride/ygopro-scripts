@@ -24,6 +24,7 @@ function c31706048.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetDecktopGroup(tp,5)
 		if g:GetCount()>0 then
 			if g:IsExists(c31706048.filter,1,nil) then
+				Duel.DisableShuffleCheck()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 				local sg=g:FilterSelect(tp,c31706048.filter,1,1,nil)
 				Duel.SendtoHand(sg,nil,REASON_EFFECT)
