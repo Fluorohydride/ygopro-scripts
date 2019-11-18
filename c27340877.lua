@@ -15,18 +15,18 @@ function c27340877.filter(c)
 end
 function c27340877.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c27340877.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c27340877.filter,tp,LOCATION_MZONE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c27340877.filter,tp,LOCATION_MZONE,0,1,nil)
+		and Duel.IsPlayerCanDraw(tp,2) and Duel.IsPlayerCanDraw(1-tp,2) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEDOWN)
 	Duel.SelectTarget(tp,c27340877.filter,tp,LOCATION_MZONE,0,1,1,nil)
-	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATTRIBUTE)
-	local rc=Duel.AnnounceAttribute(1-tp,2,0xffffff)
-	e:SetLabel(rc)
 end
 function c27340877.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFacedown() then
+		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATTRIBUTE)
+		local rc=Duel.AnnounceAttribute(1-tp,2,0xffffff)
 		Duel.ConfirmCards(1-tp,tc)
-		if tc:IsAttribute(e:GetLabel()) then
+		if tc:IsAttribute(rc) then
 			Duel.Draw(1-tp,2,REASON_EFFECT)
 		else
 			Duel.Draw(tp,2,REASON_EFFECT)
