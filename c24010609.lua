@@ -61,8 +61,7 @@ function c24010609.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(tc,REASON_EFFECT)
 end
 function c24010609.actop(e,tp,eg,ep,ev,re,r,rp)
-	local rc=re:GetHandler()
-	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) then
+	if ep==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) then
 		Duel.SetChainLimit(c24010609.chainlm)
 	end
 end
