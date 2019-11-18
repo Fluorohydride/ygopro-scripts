@@ -31,6 +31,6 @@ function c63422098.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsSummonType(SUMMON_TYPE_SYNCHRO) then
 		local ct=c:GetMaterialCount()-1
-		c:RegisterFlagEffect(63422098,RESET_EVENT+RESETS_STANDARD,0,0,ct*200)
+		c:RegisterFlagEffect(63422098,RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,0,ct*200)
 	end
 end
