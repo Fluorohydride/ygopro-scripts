@@ -13,40 +13,38 @@ end
 function c7986397.dfilter(c)
 	return c:IsSetCard(0x106) and c:IsLevelAbove(1) and c:IsAbleToGrave()
 end
-function c7986397.filter(c,e,tp,m)
-	if not c:IsSetCard(0x106) or bit.band(c:GetType(),0x81)~=0x81
-		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
-	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
-	local dg=Duel.GetMatchingGroup(c7986397.dfilter,tp,LOCATION_DECK,0,nil)
-	mg:Merge(dg)
-	if c.mat_filter then
-		mg=mg:Filter(c.mat_filter,c,tp)
-	else
-		mg:RemoveCard(c)
-	end
-	aux.GCheckAdditional=aux.RitualCheckAdditional(c,c:GetLevel(),"Equal")
-	local res=mg:CheckSubGroup(c7986397.fselect,1,c:GetLevel(),c)
-	aux.GCheckAdditional=nil
-	return res
+function c7986397.filter(c,e,tp)
+	return c:IsSetCard(0x106)
 end
-function c7986397.fselect(g,mc)
-	return aux.RitualCheck(g,tp,mc,mc:GetLevel(),"Equal") and g:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=1
+function c7986397.rcheck(tp,g,c)
+	return g:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=1
+end
+function c7986397.rgcheck(g)
+	return g:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=1
 end
 function c7986397.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local mg=Duel.GetRitualMaterial(tp)
-		return Duel.IsExistingMatchingCard(c7986397.filter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,e,tp,mg)
+		local dg=Duel.GetMatchingGroup(c7986397.dfilter,tp,LOCATION_DECK,0,nil)
+		aux.RCheckAdditional=c7986397.rcheck
+		aux.RGCheckAdditional=c7986397.rgcheck
+		local res=Duel.IsExistingMatchingCard(aux.RitualUltimateFilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,c7986397.filter,e,tp,mg,dg,Card.GetLevel,"Equal")
+		aux.RCheckAdditional=nil
+		aux.RGCheckAdditional=nil
+		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 end
 function c7986397.activate(e,tp,eg,ep,ev,re,r,rp)
 	local m=Duel.GetRitualMaterial(tp)
+	local dg=Duel.GetMatchingGroup(c7986397.dfilter,tp,LOCATION_DECK,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c7986397.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp,m)
+	aux.RCheckAdditional=c7986397.rcheck
+	aux.RGCheckAdditional=c7986397.rgcheck
+	local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(aux.RitualUltimateFilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,c7986397.filter,e,tp,m,dg,Card.GetLevel,"Equal")
 	local tc=tg:GetFirst()
 	if tc then
 		local mg=m:Filter(Card.IsCanBeRitualMaterial,tc,tc)
-		local dg=Duel.GetMatchingGroup(c7986397.dfilter,tp,LOCATION_DECK,0,nil)
 		mg:Merge(dg)
 		if tc.mat_filter then
 			mg=mg:Filter(tc.mat_filter,tc,tp)
@@ -55,9 +53,13 @@ function c7986397.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Equal")
-		local mat=mg:SelectSubGroup(tp,c7986397.fselect,false,1,tc:GetLevel(),tc)
+		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,false,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Equal")
 		aux.GCheckAdditional=nil
-		if not mat or mat:GetCount()==0 then return end
+		if not mat or mat:GetCount()==0 then
+			aux.RCheckAdditional=nil
+			aux.RGCheckAdditional=nil
+			return
+		end
 		tc:SetMaterial(mat)
 		local dmat=mat:Filter(Card.IsLocation,nil,LOCATION_DECK)
 		if dmat:GetCount()>0 then
@@ -81,6 +83,8 @@ function c7986397.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetLabelObject(tc)
 		Duel.RegisterEffect(e1,tp)
 	end
+	aux.RCheckAdditional=nil
+	aux.RGCheckAdditional=nil
 end
 function c7986397.descon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
