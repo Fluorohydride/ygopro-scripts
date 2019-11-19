@@ -11,11 +11,10 @@ function c89312388.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c89312388.filter2(c,fc)
-	if not c:IsAbleToGraveAsCost() then return false end
-	return c:IsCode(table.unpack(fc.material))
+	return aux.IsMaterialListCode(fc,c:GetCode()) and c:IsAbleToGraveAsCost()
 end
 function c89312388.filter1(c,tp)
-	return c.material and Duel.IsExistingMatchingCard(c89312388.filter2,tp,LOCATION_DECK,0,1,nil,c)
+	return Duel.IsExistingMatchingCard(c89312388.filter2,tp,LOCATION_DECK,0,1,nil,c)
 end
 function c89312388.coscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c89312388.filter1,tp,LOCATION_EXTRA,0,1,nil,tp) end

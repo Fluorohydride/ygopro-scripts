@@ -21,8 +21,8 @@ function c2390019.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c2390019.ffilter(c,e,tp)
-	return c:IsType(TYPE_FUSION) and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT) 
-		and c.material and Duel.IsExistingMatchingCard(c2390019.cfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,1,nil,c,e,tp)
+	return c:IsType(TYPE_FUSION) and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT)
+		and Duel.IsExistingMatchingCard(c2390019.cfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,1,nil,c,e,tp)
 end
 function c2390019.cfilter(c,fc,e,tp)
 	if c:IsSetCard(0xf) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost() then
@@ -32,7 +32,7 @@ function c2390019.cfilter(c,fc,e,tp)
 	else return false end
 end
 function c2390019.filter(c,fc,e,tp)
-	return c:IsCode(table.unpack(fc.material)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return aux.IsMaterialListCode(fc,c:GetCode()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c2390019.cfilter2(c,g,mg,ft,rm)
 	if not rm and ft==0 and not c:IsLocation(LOCATION_MZONE) then return false end
@@ -61,8 +61,8 @@ function c2390019.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		rg:RemoveCard(sc)
 		mg:RemoveCard(sc)
 		if not sc:IsLocation(LOCATION_MZONE) then ft=ft-1 end
-	until g:GetCount()==5 or rg:GetCount()==0 or mg:GetClassCount(Card.GetCode)==g:GetCount() 
-		or (ft==0 and not rg:IsExists(Card.IsLocation,1,nil,LOCATION_MZONE)) 
+	until g:GetCount()==5 or rg:GetCount()==0 or mg:GetClassCount(Card.GetCode)==g:GetCount()
+		or (ft==0 and not rg:IsExists(Card.IsLocation,1,nil,LOCATION_MZONE))
 		or not Duel.SelectYesNo(tp,aux.Stringid(2390019,0))
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 	e:SetLabel(Duel.GetOperatedGroup():GetCount())
@@ -90,7 +90,7 @@ function c2390019.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 end
 function c2390019.tdfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_MONSTER) 
+	return c:IsFaceup() and c:IsType(TYPE_MONSTER)
 		and c:IsSetCard(0xf) and c:IsAbleToDeck()
 end
 function c2390019.drtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
