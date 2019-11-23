@@ -27,7 +27,6 @@ function c58332301.initial_effect(c)
 	e3:SetOperation(c58332301.posop)
 	c:RegisterEffect(e3)
 end
-c58332301.material_setcode=0x8
 c58332301.dark_calling=true
 function c58332301.splimit(e,se,sp,st)
 	return st==SUMMON_TYPE_FUSION+0x10
