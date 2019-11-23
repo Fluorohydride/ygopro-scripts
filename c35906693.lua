@@ -62,9 +62,6 @@ function c35906693.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c35906693.tgfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,tp,LOCATION_DECK+LOCATION_EXTRA)
 end
-function c35906693.eqcheck(g)
-	return g:GetClassCount(Card.GetCode)==#g
-end
 function c35906693.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	local c=e:GetHandler()
@@ -72,7 +69,7 @@ function c35906693.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if ft<=0 or tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.GetMatchingGroup(c35906693.eqfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil,tp)
-	local sg=g:SelectSubGroup(tp,c35906693.eqcheck,false,1,ft)
+	local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ft)
 	local ec=sg:GetFirst()
 	while ec do
 		Duel.Equip(tp,ec,tc,true,true)

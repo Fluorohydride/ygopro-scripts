@@ -62,15 +62,12 @@ function c74431740.tdfilter(c,e)
 	return not c:IsCode(74431740) and (aux.IsCodeListed(c,80280737) or c:IsCode(80280737)) and c:IsAbleToDeck()
 		and (not e or c:IsCanBeEffectTarget(e))
 end
-function c74431740.tdcheck(g)
-	return g:GetClassCount(Card.GetCode)==#g
-end
 function c74431740.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c74431740.tdfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c74431740.tdfilter,tp,LOCATION_GRAVE,0,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.GetMatchingGroup(c74431740.tdfilter,tp,LOCATION_GRAVE,0,e:GetHandler(),e)
-	local sg=g:SelectSubGroup(tp,c74431740.tdcheck,false,1,#g)
+	local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,#g)
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,sg,#sg,0,0)
 end
