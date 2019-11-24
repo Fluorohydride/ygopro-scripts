@@ -25,7 +25,7 @@ function c60681103.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonLocation()==LOCATION_GRAVE
 end
 function c60681103.rmfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove() and c:IsLevelAbove(1)
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove() and (c:IsLevelAbove(1) or c:IsRankAbove(1))
 end
 function c60681103.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE+LOCATION_GRAVE) and chkc:IsControler(1-tp) and c60681103.rmfilter(chkc) end
