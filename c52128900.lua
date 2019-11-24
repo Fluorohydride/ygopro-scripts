@@ -11,7 +11,7 @@ function c52128900.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c52128900.filter1(c)
-	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO)
+	return aux.nzatk(c) and c:IsType(TYPE_SYNCHRO)
 end
 function c52128900.filter2(c)
 	return c:IsFaceup() and not c:IsType(TYPE_SYNCHRO)
