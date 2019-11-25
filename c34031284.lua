@@ -39,7 +39,7 @@ function c34031284.lcheck(g,lc)
 	return g:IsExists(Card.IsLinkSetCard,1,nil,0xf)
 end
 function c34031284.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsEnvironment(90011152)
+	return Duel.IsEnvironment(90011152,PLAYER_ALL,LOCATION_FZONE)
 end
 function c34031284.refcon(e)
 	return Duel.GetAttackTarget()==e:GetHandler()

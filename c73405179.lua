@@ -37,7 +37,7 @@ function c73405179.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsReason(REASON_EFFECT) and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c73405179.thfilter(c)
-	return (c:IsCode(41916534) or (Duel.IsEnvironment(72283691) and c:IsRace(RACE_WARRIOR))) and c:IsAbleToHand()
+	return (c:IsCode(41916534) or (Duel.IsEnvironment(72283691,PLAYER_ALL,LOCATION_FZONE) and c:IsRace(RACE_WARRIOR))) and c:IsAbleToHand()
 end
 function c73405179.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c73405179.thfilter,tp,LOCATION_DECK,0,1,nil) end

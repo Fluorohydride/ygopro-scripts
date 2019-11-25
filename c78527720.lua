@@ -44,7 +44,7 @@ function c78527720.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c78527720.filter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp)
 	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0
-		and Duel.IsEnvironment(72283691) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+		and Duel.IsEnvironment(72283691,PLAYER_ALL,LOCATION_FZONE) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingMatchingCard(c78527720.efilter,tp,LOCATION_DECK,0,1,nil,c)
 		and c:IsRelateToEffect(e) and c:IsFaceup() and Duel.SelectYesNo(tp,aux.Stringid(78527720,1)) then
 		Duel.BreakEffect()

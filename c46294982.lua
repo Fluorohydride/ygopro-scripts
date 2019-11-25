@@ -35,11 +35,11 @@ function c46294982.initial_effect(c)
 end
 function c46294982.ntcon(e,c,minc)
 	if c==nil then return true end
-	return minc==0 and c:IsLevelAbove(5) and Duel.IsEnvironment(72283691)
+	return minc==0 and c:IsLevelAbove(5) and Duel.IsEnvironment(72283691,PLAYER_ALL,LOCATION_FZONE)
 		and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c46294982.descon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsEnvironment(72283691)
+	return Duel.IsEnvironment(72283691,PLAYER_ALL,LOCATION_FZONE)
 end
 function c46294982.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

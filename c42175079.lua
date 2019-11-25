@@ -11,12 +11,9 @@ function c42175079.initial_effect(c)
 	e1:SetOperation(c42175079.activate)
 	c:RegisterEffect(e1)
 end
-function c42175079.filter(c)
-	return c:IsFaceup() and c:IsCode(10080320)
-end
 function c42175079.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_END and Duel.GetTurnPlayer()==tp
-		and Duel.IsExistingMatchingCard(c42175079.filter,tp,LOCATION_ONFIELD,0,1,nil)
+		and Duel.IsEnvironment(10080320,tp)
 end
 function c42175079.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler()) end

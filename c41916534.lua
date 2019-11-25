@@ -44,7 +44,7 @@ function c41916534.spop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end
-	if not Duel.IsEnvironment(72283691) then
+	if not Duel.IsEnvironment(72283691,PLAYER_ALL,LOCATION_FZONE) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
@@ -59,7 +59,7 @@ function c41916534.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsLocation(LOCATION_EXTRA)
 end
 function c41916534.atkcon(e)
-	return Duel.IsEnvironment(72283691)
+	return Duel.IsEnvironment(72283691,PLAYER_ALL,LOCATION_FZONE)
 end
 function c41916534.atkfilter(c)
 	return c:IsFaceup() and c:IsCode(73405179)

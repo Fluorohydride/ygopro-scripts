@@ -49,7 +49,7 @@ end
 function c75888208.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
 	return (ph==PHASE_MAIN1 or (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE) or ph==PHASE_MAIN2)
-		and Duel.IsEnvironment(74665651)
+		and Duel.IsEnvironment(74665651,PLAYER_ALL,LOCATION_FZONE)
 end
 function c75888208.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end
