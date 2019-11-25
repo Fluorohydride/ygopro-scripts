@@ -46,7 +46,7 @@ function c23020408.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c23020408.cfilter(c)
-	return (c:IsCode(46986414,38033121) or (c:IsSetCard(0x139) and c:IsType(TYPE_MONSTER))) and c:IsFaceup()
+	return (c:IsCode(46986414,38033121) or (c:IsSetCard(0x139) and c:IsType(TYPE_MONSTER))) and (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE))
 end
 function c23020408.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c23020408.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,LOCATION_ONFIELD+LOCATION_GRAVE,nil)
