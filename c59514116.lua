@@ -37,6 +37,7 @@ function c59514116.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			res1=Duel.IsExistingMatchingCard(c59514116.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
 		end
 	end
+	aux.FCheckAdditional=nil
 	local mg3=Duel.GetRitualMaterial(tp)
 	aux.RCheckAdditional=c59514116.rcheck
 	local res2=mg3:IsExists(Card.IsCode,1,nil,46986414,38033121)
