@@ -60,7 +60,7 @@ function c1735088.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 end
 function c1735088.cfilter(c,e,tp)
-	return c:IsFaceup() and c:IsSetCard(0x58) and c:IsAbleToRemoveAsCost() and Duel.GetMZoneCount(tp,c)>0
+	return c:IsFaceup() and c:IsSetCard(0x58) and c:IsAbleToRemoveAsCost(POS_FACEDOWN) and Duel.GetMZoneCount(tp,c)>0
 		and Duel.IsExistingMatchingCard(c1735088.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,c:GetCode())
 end
 function c1735088.spfilter(c,e,tp,code)

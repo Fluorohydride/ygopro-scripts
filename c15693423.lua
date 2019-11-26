@@ -20,15 +20,12 @@ end
 function c15693423.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_BATTLE
 end
-function c15693423.rmfilter(c,p)
-	return Duel.IsPlayerCanRemove(p,c) and not c:IsType(TYPE_TOKEN)
-end
 function c15693423.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_ONFIELD)
 	local ct=g:GetCount()-Duel.GetFieldGroupCount(tp,LOCATION_ONFIELD,0)
 	if e:GetHandler():IsLocation(LOCATION_HAND) then ct=ct-1 end
 	if chk==0 then return Duel.IsPlayerCanRemove(1-tp)
-		and ct>0 and g:IsExists(c15693423.rmfilter,1,nil,1-tp) end
+		and ct>0 and g:IsExists(Card.IsAbleToRemove,1,nil,1-tp,POS_FACEDOWN,REASON_RULE) end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,ct,0,0)
 end
 function c15693423.activate(e,tp,eg,ep,ev,re,r,rp)
@@ -37,7 +34,7 @@ function c15693423.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ct=g:GetCount()-Duel.GetFieldGroupCount(tp,LOCATION_ONFIELD,0)
 	if ct>0 then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_REMOVE)
-		local sg=g:FilterSelect(1-tp,c15693423.rmfilter,ct,ct,nil,1-tp)
+		local sg=g:FilterSelect(1-tp,Card.IsAbleToRemove,ct,ct,nil,1-tp,POS_FACEDOWN,REASON_RULE)
 		Duel.Remove(sg,POS_FACEDOWN,REASON_RULE)
 	end
 end

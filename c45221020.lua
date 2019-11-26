@@ -11,7 +11,7 @@ function c45221020.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c45221020.cfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToRemoveAsCost()
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToRemoveAsCost(POS_FACEDOWN)
 end
 function c45221020.filter(c,e,tp,lv)
 	return c:IsType(TYPE_NORMAL) and c:IsLevelBelow(lv) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

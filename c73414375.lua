@@ -19,9 +19,9 @@ function c73414375.operation(e,tp,eg,ep,ev,re,r,rp)
 		local rg=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,3,nil)
 		g:Merge(rg)
 	end
-	if Duel.IsExistingMatchingCard(Card.IsAbleToRemove,1-tp,0,LOCATION_GRAVE,1,nil) and Duel.SelectYesNo(1-tp,aux.Stringid(73414375,1)) then
+	if Duel.IsExistingMatchingCard(Card.IsAbleToRemove,1-tp,0,LOCATION_GRAVE,1,nil,1-tp) and Duel.SelectYesNo(1-tp,aux.Stringid(73414375,1)) then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_REMOVE)
-		local rg=Duel.SelectMatchingCard(1-tp,Card.IsAbleToRemove,1-tp,0,LOCATION_GRAVE,1,3,nil)
+		local rg=Duel.SelectMatchingCard(1-tp,Card.IsAbleToRemove,1-tp,0,LOCATION_GRAVE,1,3,nil,1-tp)
 		g:Merge(rg)
 	end
 	Duel.Remove(g,POS_FACEUP,REASON_EFFECT)

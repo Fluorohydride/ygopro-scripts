@@ -14,7 +14,7 @@ function c90384300.initial_effect(c)
 end
 function c90384300.costfilter(c)
 	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsType(TYPE_MONSTER)
-		and not c:IsSummonableCard() and not c:IsType(TYPE_TOKEN) and c:IsAbleToRemoveAsCost()
+		and not c:IsSummonableCard() and c:IsAbleToRemoveAsCost(POS_FACEDOWN)
 end
 function c90384300.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c90384300.costfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,2,nil) end

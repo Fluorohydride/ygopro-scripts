@@ -11,7 +11,7 @@ function c81223446.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c81223446.filter1(c)
-	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
+	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove(tp,POS_FACEDOWN)
 end
 function c81223446.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and (not f or f(c))
