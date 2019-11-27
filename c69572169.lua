@@ -22,13 +22,8 @@ end
 function c69572169.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetMatchingGroup(c69572169.rfilter,tp,LOCATION_GRAVE,0,e:GetHandler())
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() and rg:GetClassCount(Card.GetCode)>=3 end
-	local g=Group.CreateGroup()
-	for i=1,3 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local tc=rg:Select(tp,1,1,nil):GetFirst()
-		rg:Remove(Card.IsCode,nil,tc:GetCode())
-		g:AddCard(tc)
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local g=rg:SelectSubGroup(tp,aux.dncheck,false,3,3)
 	g:AddCard(e:GetHandler())
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end

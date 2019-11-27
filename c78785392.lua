@@ -50,16 +50,7 @@ function c78785392.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and ct>3 and g:GetClassCount(Card.GetCode)>3 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g1=g:Select(tp,1,1,nil)
-		g:Remove(Card.IsCode,nil,g1:GetFirst():GetCode())
-		ct=ct-1
-		while ct>0 and g:GetCount()>0 do
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local g2=g:Select(tp,1,1,nil)
-			g:Remove(Card.IsCode,nil,g2:GetFirst():GetCode())
-			g1:Merge(g2)
-			ct=ct-1
-		end
+		local g1=g:SelectSubGroup(tp,aux.dncheck,false,4,4)
 		local tc=g1:GetFirst()
 		while tc do
 			if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK) then

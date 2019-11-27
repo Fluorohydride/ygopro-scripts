@@ -21,14 +21,8 @@ function c47457347.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local g=Duel.GetMatchingGroup(c47457347.filter,tp,LOCATION_REMOVED,0,nil,e,tp):Filter(Card.IsCanBeEffectTarget,nil,e)
-	local tg=Group.CreateGroup()
-	repeat
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=g:Select(tp,1,1,nil)
-		tg:Merge(sg)
-		g:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
-		ft=ft-1
-	until g:GetCount()==0 or ft==0 or not Duel.SelectYesNo(tp,aux.Stringid(47457347,0))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local tg=g:SelectSubGroup(tp,aux.dncheck,false,1,ft)
 	Duel.SetTargetCard(tg)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,tg,tg:GetCount(),0,0)
 end

@@ -21,7 +21,7 @@ function c856784.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if not Duel.IsPlayerCanDraw(tp,1) then return false end
 		local g=Duel.GetMatchingGroup(nil,tp,LOCATION_DECK,0,nil)
-		return g:CheckSubGroup(aux.dncheck,3,3)
+		return g:GetClassCount(Card.GetCode)>=3
 	end
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end

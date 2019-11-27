@@ -29,12 +29,12 @@ function c74414885.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c74414885.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
 	if g:GetCount()==0 then return end
-	repeat
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=g:Select(tp,1,1,nil)
-		local tc=sg:GetFirst()
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ft)
+	for tc in aux.Next(sg) do
 		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -55,9 +55,7 @@ function c74414885.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetTarget(c74414885.splimit)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e3,true)
-		g:Remove(Card.IsCode,nil,tc:GetCode())
-		ft=ft-1
-	until ft<=0 or g:GetCount()==0 or not Duel.SelectYesNo(tp,aux.Stringid(74414885,0))
+	end
 	Duel.SpecialSummonComplete()
 end
 function c74414885.splimit(e,c)

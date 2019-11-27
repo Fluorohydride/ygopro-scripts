@@ -66,11 +66,7 @@ function c41933425.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c41933425.spfilter1),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp)
 	if g:GetClassCount(Card.GetCode)>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg1=g:Select(tp,1,1,nil)
-		g:Remove(Card.IsCode,nil,sg1:GetFirst():GetCode())
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg2=g:Select(tp,1,1,nil)
-		sg1:Merge(sg2)
+		local sg1=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
 		Duel.SpecialSummon(sg1,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

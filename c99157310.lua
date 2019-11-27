@@ -69,13 +69,8 @@ function c99157310.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>2
 		and g:GetClassCount(Card.GetCode)>2 end
-	local tg=Group.CreateGroup()
-	for i=1,3 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=g:Select(tp,1,1,nil)
-		tg:Merge(sg)
-		g:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local tg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
 	Duel.SetTargetCard(tg)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,tg,tg:GetCount(),0,0)
 end

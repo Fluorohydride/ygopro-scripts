@@ -30,15 +30,7 @@ function c72537897.activate(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>2
 		and g:GetClassCount(Card.GetCode)>=3 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg1=g:Select(tp,1,1,nil)
-		g:Remove(Card.IsCode,nil,sg1:GetFirst():GetCode())
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg2=g:Select(tp,1,1,nil)
-		g:Remove(Card.IsCode,nil,sg2:GetFirst():GetCode())
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg3=g:Select(tp,1,1,nil)
-		sg1:Merge(sg2)
-		sg1:Merge(sg3)
+		local sg1=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
 		local fid=c:GetFieldID()
 		local tc=sg1:GetFirst()
 		while tc do

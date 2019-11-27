@@ -51,19 +51,7 @@ function c10613952.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	local g=Duel.GetMatchingGroup(c10613952.filter,tp,LOCATION_GRAVE,0,nil,e,tp,e:GetHandler())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g1=g:Select(tp,1,1,nil)
-	g:Remove(Card.IsCode,nil,g1:GetFirst():GetCode())
-	if ft>1 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(10613952,3)) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		local g2=g:Select(tp,1,1,nil)
-		g:Remove(Card.IsCode,nil,g2:GetFirst():GetCode())
-		g1:Merge(g2)
-		if ft>2 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(10613952,3)) then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-			g2=g:Select(tp,1,1,nil)
-			g1:Merge(g2)
-		end
-	end
+	local g1=g:SelectSubGroup(tp,aux.dncheck,false,1,math.min(ft,3))
 	Duel.SetTargetCard(g1)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g1,g1:GetCount(),0,0)
 end

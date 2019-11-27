@@ -47,13 +47,7 @@ function c36734924.thop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetMatchingGroup(c36734924.thfilter,tp,LOCATION_DECK,0,nil)
 		if g:GetCount()<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local sg1=g:Select(tp,1,1,nil)
-		g:Remove(Card.IsCode,nil,sg1:GetFirst():GetCode())
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,210) then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-			local sg2=g:Select(tp,1,1,nil)
-			sg1:Merge(sg2)
-		end
+		local sg1=g:SelectSubGroup(tp,aux.dncheck,false,1,2)
 		Duel.SendtoHand(sg1,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,sg1)
 	end

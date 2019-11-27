@@ -80,7 +80,7 @@ function c10424147.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local g=Duel.GetMatchingGroup(c10424147.spfilter3,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil,e)
 	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
-		and g:CheckSubGroup(aux.dncheck,3,3)
+		and g:GetClassCount(Card.GetCode)>=3
 		and Duel.IsExistingMatchingCard(c10424147.spfilter4,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local sg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)

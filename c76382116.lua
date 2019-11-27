@@ -32,7 +32,7 @@ function c76382116.fselect(g,e,tp)
 		table.insert(code,tc:GetCode())
 	end
 	local sg=Duel.GetMatchingGroup(c76382116.spfilter,tp,LOCATION_HAND,0,nil,e,tp,table.unpack(code))
-	if sg:CheckSubGroup(aux.dncheck,g:GetCount(),g:GetCount()) and Duel.GetMZoneCount(tp,g)>=g:GetCount() then
+	if sg:GetClassCount(Card.GetCode)>=g:GetCount() and Duel.GetMZoneCount(tp,g)>=g:GetCount() then
 		Duel.SetSelectedCard(g)
 		return Duel.CheckReleaseGroup(tp,nil,0,nil)
 	else return false end

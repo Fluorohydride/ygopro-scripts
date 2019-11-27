@@ -28,14 +28,10 @@ end
 function c68191243.op(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local g=Duel.GetMatchingGroup(c68191243.filter,tp,LOCATION_HAND,0,nil,e,tp)
-	while g:GetCount()>0 and ft>0 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=g:Select(tp,1,1,nil)
-		Duel.SpecialSummonStep(sg:GetFirst(),0,tp,tp,false,false,POS_FACEUP)
-		ft=ft-1
-		g:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
-		if g:GetCount()>0 and ft>0 and not Duel.SelectYesNo(tp,aux.Stringid(68191243,0)) then ft=0 end
-	end
-	Duel.SpecialSummonComplete()
+	if g:GetCount()==0 then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ft)	
+	Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 end

@@ -32,13 +32,9 @@ end
 function c40177746.thop(e,tp,eg,ep,ev,re,r,rp)
 	local dg=Duel.GetMatchingGroup(c40177746.filter,tp,LOCATION_DECK,0,nil)
 	local ct=e:GetLabel()
-	if dg:GetClassCount(Card.GetCode)==0 or dg:GetClassCount(Card.GetCode)<ct then return end
-	local g=Group.CreateGroup()
-	for i=1,ct do
-		local tc=dg:Select(tp,1,1,nil):GetFirst()
-		g:AddCard(tc)
-		dg:Remove(Card.IsCode,nil,tc:GetCode())
-	end
+	if dg:GetClassCount(Card.GetCode)<ct then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+	local g=dg:SelectSubGroup(tp,aux.dncheck,false,ct,ct)
 	Duel.SendtoHand(g,nil,REASON_EFFECT)
 	Duel.ConfirmCards(1-tp,g)
 end

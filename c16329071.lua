@@ -24,13 +24,8 @@ end
 function c16329071.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c16329071.filter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_ONFIELD+LOCATION_REMOVED,0,nil)
 	if g:GetClassCount(Card.GetCode)<5 then return end
-	local sg=Group.CreateGroup()
-	for i=1,5 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-		local g1=g:Select(tp,1,1,nil)
-		g:Remove(Card.IsCode,nil,g1:GetFirst():GetCode())
-		sg:Merge(g1)
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+	local sg=g:SelectSubGroup(tp,aux.dncheck,false,5,5)
 	local cg=sg:Filter(Card.IsLocation,nil,LOCATION_HAND)
 	if cg:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,cg)

@@ -34,14 +34,8 @@ end
 function c30786387.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c30786387.filter,tp,LOCATION_DECK,0,nil)
 	if g:GetClassCount(Card.GetCode)>=3 then
-		local rg=Group.CreateGroup()
-		for i=1,3 do
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(30786387,1))
-			local sg=g:Select(tp,1,1,nil)
-			local tc=sg:GetFirst()
-			rg:AddCard(tc)
-			g:Remove(Card.IsCode,nil,tc:GetCode())
-		end
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(30786387,1))
+		local rg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
 		Duel.ConfirmCards(1-tp,rg)
 		Duel.ShuffleDeck(tp)
 		local tg=rg:GetFirst()
