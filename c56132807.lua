@@ -60,13 +60,8 @@ function c56132807.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.IsExistingTarget(c56132807.thfilter,tp,LOCATION_GRAVE,0,1,c) end
 	local g=Duel.GetMatchingGroup(c56132807.thfilter,tp,LOCATION_GRAVE,0,c):Filter(Card.IsCanBeEffectTarget,nil,e)
-	local tg=Group.CreateGroup()
-	repeat
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local sg=g:Select(tp,1,1,nil)
-		tg:Merge(sg)
-		g:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
-	until tg:GetCount()==3 or g:GetCount()==0 or not Duel.SelectYesNo(tp,aux.Stringid(56132807,0))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+	local tg=g:SelectSubGroup(tp,aux.dncheck,false,1,3)
 	Duel.SetTargetCard(tg)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,tg,tg:GetCount(),0,0)
 end

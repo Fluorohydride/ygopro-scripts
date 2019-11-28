@@ -72,11 +72,7 @@ function c23064604.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c23064604.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,nil)
 	if g:GetClassCount(Card.GetCode)<2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local tg1=g:Select(tp,1,1,nil)
-	g:Remove(Card.IsCode,nil,tg1:GetFirst():GetCode())
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local tg2=g:Select(tp,1,1,nil)
-	tg1:Merge(tg2)
+	local tg1=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
 	if Duel.SendtoGrave(tg1,REASON_EFFECT)~=0 and tg1:IsExists(Card.IsLocation,2,nil,LOCATION_GRAVE) then
 		local sg=nil
 		local hg=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_HAND,nil)

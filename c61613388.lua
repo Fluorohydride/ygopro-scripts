@@ -40,20 +40,12 @@ function c61613388.activate(e,tp,eg,ep,ev,re,r,rp)
 	if ct1>Duel.GetLocationCount(tp,LOCATION_MZONE) then ct1=Duel.GetLocationCount(tp,LOCATION_MZONE) end
 	if ct2>Duel.GetLocationCount(1-tp,LOCATION_MZONE) then ct2=Duel.GetLocationCount(1-tp,LOCATION_MZONE) end
 	if ct1<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct1=1 end
 	local g=Duel.GetMatchingGroup(c61613388.filter,tp,LOCATION_DECK,0,nil,e,tp)
 	if g:GetCount()==0 then return end
 	Duel.BreakEffect()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg=g:Select(tp,1,1,nil)
-	g:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
-	ct1=ct1-1
-	while ct1>0 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(61613388,0)) do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g1=g:Select(tp,1,1,nil)
-		g:Remove(Card.IsCode,nil,g1:GetFirst():GetCode())
-		sg:Merge(g1)
-		ct1=ct1-1
-	end
+	local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ct1)
 	local sc=sg:GetFirst()
 	while sc do
 		if Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEUP) then
@@ -68,6 +60,7 @@ function c61613388.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummonComplete()
 	if ct2>0 and Duel.IsExistingMatchingCard(Card.IsCanBeSpecialSummoned,tp,0,LOCATION_DECK,1,nil,e,0,1-tp,false,false)
 		and Duel.SelectYesNo(1-tp,aux.Stringid(61613388,1)) then
+		if Duel.IsPlayerAffectedByEffect(1-tp,59822133) then ct2=1 end
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SPSUMMON)
 		local sg2=Duel.SelectMatchingCard(1-tp,Card.IsCanBeSpecialSummoned,tp,0,LOCATION_DECK,1,ct2,nil,e,0,1-tp,false,false)

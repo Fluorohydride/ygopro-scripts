@@ -38,15 +38,8 @@ function c79407975.spcon(e,c)
 end
 function c79407975.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c79407975.spfilter,tp,LOCATION_GRAVE,0,nil)
-	local rg=Group.CreateGroup()
-	for i=1,7 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local tc=g:Select(tp,1,1,nil):GetFirst()
-		if tc then
-			rg:AddCard(tc)
-			g:Remove(Card.IsCode,nil,tc:GetCode())
-		end
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local rg=g:SelectSubGroup(tp,aux.dncheck,false,7,7)
 	Duel.Remove(rg,POS_FACEUP,REASON_COST)
 end
 function c79407975.cfilter(c)

@@ -31,22 +31,13 @@ function c82428674.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(nil,tp,0,LOCATION_ONFIELD,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
-function c82428674.rescon(sg,e,tp,mg)
-	return sg:GetClassCount(Card.GetLevel)==sg:GetCount()
-end
 function c82428674.activate(e,tp,eg,ep,ev,re,r,rp)
 	local dg=Duel.GetMatchingGroup(nil,tp,0,LOCATION_ONFIELD,nil)
 	local ct=dg:GetCount()
 	local g=Duel.GetMatchingGroup(c82428674.rmfilter,tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_MZONE,0,nil)
 	if ct==0 or g:GetCount()==0 then return end
-	local rg=Group.CreateGroup()
-	repeat
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local sg=g:Select(tp,1,1,nil)
-		rg:Merge(sg)
-		g:Remove(Card.IsLevel,nil,sg:GetFirst():GetLevel())
-		ct=ct-1
-	until ct==0 or g:GetCount()==0 or not Duel.SelectYesNo(tp,aux.Stringid(82428674,0))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local rg=g:SelectSubGroup(tp,aux.dlvcheck,false,1,ct)
 	local rc=Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)
 	if rc>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

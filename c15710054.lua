@@ -44,18 +44,12 @@ end
 function c15710054.filter1(c,e,tp)
 	return c:IsSetCard(0x104) and not c:IsCode(15710054) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c15710054.filter2(c,g)
-	return g:IsExists(c15710054.filter3,1,c,c:GetCode())
-end
-function c15710054.filter3(c,code)
-	return not c:IsCode(code)
-end
 function c15710054.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then return false end
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return false end
 		local g=Duel.GetMatchingGroup(c15710054.filter1,tp,LOCATION_DECK,0,nil,e,tp)
-		return g:IsExists(c15710054.filter2,1,nil,g)
+		return g:GetClassCount(Card.GetCode)>=2
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_DECK)
 end
@@ -63,18 +57,10 @@ function c15710054.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
 	local g=Duel.GetMatchingGroup(c15710054.filter1,tp,LOCATION_DECK,0,nil,e,tp)
-	local dg=g:Filter(c15710054.filter2,nil,g)
-	if dg:GetCount()>=1 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=dg:Select(tp,1,1,nil)
-		local tc1=sg:GetFirst()
-		dg:Remove(Card.IsCode,nil,tc1:GetCode())
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local tc2=dg:Select(tp,1,1,nil):GetFirst()
-		Duel.SpecialSummonStep(tc1,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
-		Duel.SpecialSummonStep(tc2,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
-		Duel.SpecialSummonComplete()
-		local g=Group.FromCards(tc1,tc2)
-		Duel.ConfirmCards(1-tp,g)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local sg=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
+	if sg then
+		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
+		Duel.ConfirmCards(1-tp,sg)
 	end
 end

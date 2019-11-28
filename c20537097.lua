@@ -66,13 +66,8 @@ function c20537097.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c20537097.thfilter,tp,LOCATION_DECK,0,nil)
 	local ct=e:GetHandler():GetColumnGroup():FilterCount(Card.IsControler,nil,1-tp)
 	if ct<=0 or g:GetClassCount(Card.GetCode)<ct then return end
-	local hg=Group.CreateGroup()
-	for i=1,ct do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local tc=g:Select(tp,1,1,nil):GetFirst()
-		hg:AddCard(tc)
-		g:Remove(Card.IsCode,nil,tc:GetCode())
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+	local hg=g:SelectSubGroup(tp,aux.dncheck,false,ct,ct)
 	Duel.SendtoHand(hg,nil,REASON_EFFECT)
 	Duel.ConfirmCards(1-tp,hg)
 end

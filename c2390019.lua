@@ -79,14 +79,8 @@ function c2390019.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rc=e:GetLabelObject()
 	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c2390019.filter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,nil,rc,e,tp)
 	if mg:GetClassCount(Card.GetCode)<ct then return end
-	local g=Group.CreateGroup()
-	while ct>0 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=mg:Select(tp,1,1,nil)
-		g:AddCard(sg:GetFirst())
-		mg:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
-		ct=ct-1
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local g=mg:SelectSubGroup(tp,aux.dncheck,false,ct,ct)
 	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 end
 function c2390019.tdfilter(c)

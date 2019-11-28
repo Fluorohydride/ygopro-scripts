@@ -108,13 +108,8 @@ function c59934749.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	lvt[pc]=nil
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(59934749,2))
 	local lv=Duel.AnnounceNumber(tp,table.unpack(lvt))
-	local rg=Group.CreateGroup()
-	for i=1,lv do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local sg=cg:Select(tp,1,1,nil)
-		cg:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
-		rg:Merge(sg)
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local rg=cg:SelectSubGroup(tp,aux.dncheck,false,lv,lv)
 	Duel.SendtoGrave(rg,REASON_COST)
 	e:SetLabel(lv)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)

@@ -2238,6 +2238,26 @@ end
 function Auxiliary.dncheck(g)
 	return g:GetClassCount(Card.GetCode)==#g
 end
+--check for cards with different levels
+function Auxiliary.dlvcheck(g)
+	return g:GetClassCount(Card.GetLevel)==#g
+end
+--check for cards with different ranks
+function Auxiliary.drkcheck(g)
+	return g:GetClassCount(Card.GetRank)==#g
+end
+--check for cards with different links
+function Auxiliary.dlkcheck(g)
+	return g:GetClassCount(Card.GetLink)==#g
+end
+--check for cards with different attributes
+function Auxiliary.dabcheck(g)
+	return g:GetClassCount(Card.GetAttribute)==#g
+end
+--check for cards with different races
+function Auxiliary.drccheck(g)
+	return g:GetClassCount(Card.GetRace)==#g
+end
 --used for "except this card"
 function Auxiliary.ExceptThisCard(e)
 	local c=e:GetHandler()

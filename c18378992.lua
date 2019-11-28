@@ -22,7 +22,7 @@ function c18378992.costcheck(g,tp)
 	local code1=g:GetFirst():GetCode()
 	local code2=g:GetNext():GetCode()
 	local tg=Duel.GetMatchingGroup(c18378992.thfilter,tp,LOCATION_DECK,0,nil,code1,code2)
-	return tg:CheckSubGroup(aux.dncheck,2,2)
+	return tg:GetClassCount(Card.GetCode)>=2
 end
 function c18378992.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)

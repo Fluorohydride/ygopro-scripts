@@ -61,13 +61,7 @@ function c12950294.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c12950294.thfilter,tp,LOCATION_DECK,0,nil)
 	if g:GetClassCount(Card.GetCode)<2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local tg1=g:Select(tp,1,1,nil)
-	g:Remove(Card.IsCode,nil,tg1:GetFirst():GetCode())
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local tg2=g:Select(tp,1,1,nil)
-	tg1:Merge(tg2)
-	if tg1:GetCount()==2 then
-		Duel.SendtoHand(tg1,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,tg1)
-	end
+	local tg1=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
+	Duel.SendtoHand(tg1,nil,REASON_EFFECT)
+	Duel.ConfirmCards(1-tp,tg1)
 end

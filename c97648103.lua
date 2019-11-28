@@ -27,11 +27,7 @@ function c97648103.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c97648103.thfilter,tp,LOCATION_GRAVE,0,nil,e)
 	if chk==0 then return g:GetClassCount(Card.GetCode)>=2 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g1=g:Select(tp,1,1,nil)
-	g:Remove(Card.IsCode,nil,g1:GetFirst():GetCode())
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g2=g:Select(tp,1,1,nil)
-	g1:Merge(g2)
+	local g1=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
 	Duel.SetTargetCard(g1)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g1,2,0,0)
 end

@@ -31,22 +31,18 @@ end
 function c28617139.thfilter(c)
 	return c:IsSetCard(0x12d) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
-function c28617139.fselect(g)
-	return g:GetClassCount(Card.GetAttribute)==g:GetCount()
-end
 function c28617139.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c28617139.thfilter,tp,LOCATION_DECK,0,nil)
-	if chk==0 then return g:CheckSubGroup(c28617139.fselect,2,2) end
+	if chk==0 then return g:GetClassCount(Card.GetAttribute)>=2 end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,2,tp,LOCATION_DECK)
 end
 function c28617139.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c28617139.thfilter,tp,LOCATION_DECK,0,nil)
+	if g:GetClassCount(Card.GetAttribute)<2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local sg=g:SelectSubGroup(tp,c28617139.fselect,false,2,2)
-	if sg and sg:GetCount()==2 then
-		Duel.SendtoHand(sg,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,sg)
-	end
+	local sg=g:SelectSubGroup(tp,aux.dabcheck,false,2,2)
+	Duel.SendtoHand(sg,nil,REASON_EFFECT)
+	Duel.ConfirmCards(1-tp,sg)
 end
 function c28617139.cffilter(c)
 	return c:IsRace(RACE_WINDBEAST) and c:IsLevelAbove(2) and not c:IsPublic()

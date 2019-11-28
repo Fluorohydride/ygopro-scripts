@@ -77,7 +77,7 @@ function c69394324.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(c69394324.spfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>=3
-		and g:CheckSubGroup(aux.dncheck,3,3) end
+		and g:GetClassCount(Card.GetCode)>=3 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
 	Duel.SetTargetCard(sg)

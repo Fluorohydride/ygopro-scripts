@@ -65,13 +65,8 @@ function c35546670.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c35546670.costfilter2,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
 	if chk==0 then return g:GetClassCount(Card.GetCode)>=8 end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
-	local rg=Group.CreateGroup()
-	for i=1,8 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local sg=g:Select(tp,1,1,nil)
-		rg:AddCard(sg:GetFirst())
-		g:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local rg=g:SelectSubGroup(tp,aux.dncheck,false,8,8)
 	Duel.Remove(rg,POS_FACEUP,REASON_COST)
 end
 function c35546670.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)

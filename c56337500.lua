@@ -81,7 +81,7 @@ function c56337500.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 or Duel.IsPlayerAffectedByEffect(tp,59822133) then return false end
 		local g=Duel.GetMatchingGroup(c56337500.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
-		return g:CheckSubGroup(aux.dncheck,2,2)
+		return g:GetClassCount(Card.GetCode)>=2
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_DECK)
 end

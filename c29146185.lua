@@ -65,13 +65,8 @@ end
 function c29146185.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c29146185.cffilter,tp,LOCATION_HAND,0,nil)
 	if chk==0 then return g:GetClassCount(Card.GetCode)>=4 end
-	local cg=Group.CreateGroup()
-	for i=1,4 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-		local sg=g:Select(tp,1,1,nil)
-		g:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
-		cg:Merge(sg)
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
+	local cg=g:SelectSubGroup(tp,aux.dncheck,false,4,4)
 	Duel.ConfirmCards(1-tp,cg)
 	Duel.ShuffleHand(tp)
 end

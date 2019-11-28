@@ -22,11 +22,7 @@ function c62376646.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
 		and g:GetClassCount(Card.GetLevel)>=2 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g1=g:Select(tp,1,1,nil)
-	g:Remove(Card.IsLevel,nil,g1:GetFirst():GetLevel())
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g2=g:Select(tp,1,1,nil)
-	g1:Merge(g2)
+	local g1=g:SelectSubGroup(tp,aux.dlvcheck,false,2,2)
 	Duel.SetTargetCard(g1)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g1,2,0,0)
 end

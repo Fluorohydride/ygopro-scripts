@@ -53,13 +53,8 @@ function c73881652.drtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(c73881652.drfilter,tp,LOCATION_GRAVE,0,e:GetHandler(),e)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
 		and g:GetClassCount(Card.GetCode)>4 end
-	local sg=Group.CreateGroup()
-	for i=1,5 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-		local g1=g:Select(tp,1,1,nil)
-		g:Remove(Card.IsCode,nil,g1:GetFirst():GetCode())
-		sg:Merge(g1)
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+	local sg=g:SelectSubGroup(tp,aux.dncheck,false,5,5)
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,5,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)

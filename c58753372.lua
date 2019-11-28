@@ -74,13 +74,8 @@ end
 function c58753372.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c58753372.spfilter2,tp,LOCATION_DECK,0,nil)
 	if g:GetClassCount(Card.GetCode)>=3 then
-		local cg=Group.CreateGroup()
-		for i=1,3 do
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local sg=g:Select(tp,1,1,nil)
-			g:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
-			cg:Merge(sg)
-		end
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local cg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
 		Duel.ConfirmCards(1-tp,cg)
 		Duel.ShuffleDeck(tp)
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SPSUMMON)
