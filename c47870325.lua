@@ -27,7 +27,7 @@ function c47870325.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,PLAYER_ALL,LOCATION_GRAVE)
 end
 function c47870325.rmfilter(c,tp)
-	return c:IsType(TYPE_SPELL) and c:IsAbleToRemove(tp)
+	return c:IsType(TYPE_SPELL) and c:IsAbleToRemove(tp,POS_FACEDOWN)
 end
 function c47870325.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

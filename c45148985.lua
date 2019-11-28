@@ -24,8 +24,14 @@ function c45148985.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetValue(1)
 	c:RegisterEffect(e3)
-	local e4=e3:Clone()
+	--cannot remove
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_FIELD)
+	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e4:SetCode(EFFECT_CANNOT_REMOVE)
+	e4:SetRange(LOCATION_MZONE)
+	e4:SetTargetRange(1,1)
+	e4:SetTarget(c45148985.rmlimit)
 	c:RegisterEffect(e4)
 	--spsummon
 	local e5=Effect.CreateEffect(c)
@@ -62,6 +68,9 @@ function c45148985.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local rg=g:SelectSubGroup(tp,c45148985.gselect,false,5,5,tp)
 	Duel.Remove(rg,POS_FACEUP,REASON_COST)
+end
+function c45148985.rmlimit(e,c,tp,r)
+	return c==e:GetHandler() and r==REASON_EFFECT
 end
 function c45148985.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,0,LOCATION_ONFIELD)>Duel.GetFieldGroupCount(tp,LOCATION_ONFIELD,0)

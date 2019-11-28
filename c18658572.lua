@@ -26,7 +26,7 @@ function c18658572.cfop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetMinGroup(Card.GetSequence):GetFirst()
 	Duel.MoveSequence(tc,0)
 	Duel.ConfirmDecktop(tp,1)
-	if tc:IsAbleToRemove() and Duel.SelectYesNo(tp,aux.Stringid(18658572,1)) then
+	if tc:IsAbleToRemove(tp,POS_FACEDOWN) and Duel.SelectYesNo(tp,aux.Stringid(18658572,1)) then
 		Duel.DisableShuffleCheck()
 		Duel.Remove(tc,POS_FACEDOWN,REASON_EFFECT)
 	end

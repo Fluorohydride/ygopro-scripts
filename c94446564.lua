@@ -15,7 +15,7 @@ function c94446564.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		local tc1=g1:GetFirst()
 		local g2=Duel.GetDecktopGroup(1-tp,1)
 		local tc2=g2:GetFirst()
-		return tc1 and tc2 and tc1:IsAbleToRemove() and tc2:IsAbleToRemove() and tc1:IsAbleToHand() and tc2:IsAbleToHand()
+		return tc1 and tc2 and tc1:IsAbleToRemove(tp) and tc2:IsAbleToRemove(1-tp) and tc1:IsAbleToHand() and tc2:IsAbleToHand()
 	end
 end
 function c94446564.activate(e,tp,eg,ep,ev,re,r,rp)

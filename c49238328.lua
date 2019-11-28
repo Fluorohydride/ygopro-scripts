@@ -19,7 +19,7 @@ function c49238328.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 end
 function c49238328.cfilter(c)
-	return c:IsFacedown() and c:IsAbleToRemoveAsCost()
+	return c:IsFacedown() and c:IsAbleToRemoveAsCost(POS_FACEDOWN)
 end
 function c49238328.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c49238328.cfilter,tp,LOCATION_EXTRA,0,nil)
