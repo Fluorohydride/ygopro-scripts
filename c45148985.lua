@@ -54,23 +54,13 @@ function c45148985.sprcon(e,c)
 	local ct=-ft+1
 	return ft>-5 and g:GetClassCount(Card.GetCode)>=5 and (ft>0 or g:IsExists(c45148985.mzfilter,ct,nil))
 end
+function c45148985.gselect(g,tp)
+	return aux.dncheck(g) and Duel.GetMZoneCount(tp,g)>0
+end
 function c45148985.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c45148985.sprfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft+1
-	local rg=Group.CreateGroup()
-	for i=1,5 do
-		local sc=nil
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		if ct>0 then
-			sc=g:FilterSelect(tp,c45148985.mzfilter,1,1,nil):GetFirst()
-		else
-			sc=g:Select(tp,1,1,nil):GetFirst()
-		end
-		rg:AddCard(sc)
-		g:Remove(Card.IsCode,nil,sc:GetCode())
-		ct=ct-1
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local rg=g:SelectSubGroup(tp,c45148985.gselect,false,5,5,tp)
 	Duel.Remove(rg,POS_FACEUP,REASON_COST)
 end
 function c45148985.spcon(e,tp,eg,ep,ev,re,r,rp)

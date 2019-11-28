@@ -29,9 +29,6 @@ end
 function c84869738.desfilter(c)
 	return not c84869738.cfilter(c)
 end
-function c84869738.mzfilter(c)
-	return c:GetSequence()<5
-end
 function c84869738.spfilter(c,e,tp)
 	return c:IsSetCard(0x20f8) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
@@ -39,13 +36,18 @@ function c84869738.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c84869738.desfilter,tp,LOCATION_MZONE,0,nil)
 	if chk==0 then
 		local loc=0
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)>-g:FilterCount(c84869738.mzfilter,nil) then loc=loc+LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE end
+		if Duel.GetMZoneCount(tp,g)>0 then loc=loc+LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE end
 		if Duel.GetLocationCountFromEx(tp,tp,g)>0 then loc=loc+LOCATION_EXTRA end
 		return g:GetCount()>0 and loc~=0
 			and Duel.IsExistingMatchingCard(c84869738.spfilter,tp,loc,0,1,nil,e,tp)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE+LOCATION_EXTRA)
+end
+function c84869738.gcheck(g,ft1,ft2,ft)
+	return aux.dncheck(g) and #g<=ft
+		and g:FilterCount(Card.IsLocation,nil,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE)<=ft1
+		and g:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)<=ft2
 end
 function c84869738.activate(e,tp,eg,ep,ev,re,r,rp)
 	local dg=Duel.GetMatchingGroup(c84869738.desfilter,tp,LOCATION_MZONE,0,nil)
@@ -64,22 +66,10 @@ function c84869738.activate(e,tp,eg,ep,ev,re,r,rp)
 	if loc==0 then return end
 	local ect=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
 	if ect and ect<ft2 then ft2=ect end
-	local ct=4
 	local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c84869738.spfilter),tp,loc,0,nil,e,tp)
 	if sg:GetCount()==0 then return end
-	local rg=Group.CreateGroup()
-	repeat
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local tc=sg:Select(tp,1,1,nil):GetFirst()
-		rg:AddCard(tc)
-		sg:Remove(Card.IsCode,nil,tc:GetCode())
-		if tc:IsLocation(LOCATION_EXTRA) then ft2=ft2-1
-		else ft1=ft1-1 end
-		if ft1<=0 then sg:Remove(Card.IsLocation,nil,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE) end
-		if ft2<=0 then sg:Remove(Card.IsLocation,nil,LOCATION_EXTRA) end
-		ft=ft-1
-		ct=ct-1
-	until ct==0 or sg:GetCount()==0 or ft==0 or not Duel.SelectYesNo(tp,aux.Stringid(84869738,0))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local rg=sg:SelectSubGroup(tp,c84869738.gcheck,false,1,4,ft1,ft2,ft)
 	Duel.SpecialSummon(rg,0,tp,tp,true,false,POS_FACEUP)
 end
 function c84869738.xyzfilter(c)
