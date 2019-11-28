@@ -63,22 +63,10 @@ function c77075360.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c77075360.filter,tp,LOCATION_DECK,0,nil,e,tp)
 	if ft<=0 or g:GetCount()==0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-	local sg=Group.CreateGroup()
-	while ft>0 and g:GetCount()>0 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg1=g:Select(tp,1,1,nil)
-		if sg1:GetCount()>0 then
-			local tc=sg1:GetFirst()
-			sg:AddCard(tc)
-			g:Remove(Card.IsLevel,nil,tc:GetLevel())
-			ft=ft-1
-		else
-			break
-		end
-	end
-	if #sg>0 then
-		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
-	end
+	local ct=math.min(g:GetClassCount(Card.GetLevel),ft)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local sg=g:SelectSubGroup(tp,aux.dlvcheck,false,ct,ct)
+	Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c77075360.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
