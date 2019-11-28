@@ -55,10 +55,9 @@ function c23187256.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ct=c:GetOverlayGroup():GetClassCount(Card.GetCode)
 	if ct>ft then ct=ft end
 	if g1:GetCount()>0 and ct>0 then
-		repeat
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local g2=g1:Select(tp,1,1,nil)
-			local tc=g2:GetFirst()
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local g2=g1:SelectSubGroup(tp,aux.drkcheck,false,1,ct)
+		for tc in aux.Next(g2) do
 			Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
@@ -70,9 +69,7 @@ function c23187256.operation(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetCode(EFFECT_DISABLE_EFFECT)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e2)
-			g1:Remove(c23187256.gfilter,nil,tc:GetRank())
-			ct=ct-1
-		until g1:GetCount()==0 or ct==0 or not Duel.SelectYesNo(tp,aux.Stringid(23187256,1))
+		end
 		Duel.SpecialSummonComplete()
 		Duel.BreakEffect()
 		c:RemoveOverlayCard(tp,1,1,REASON_EFFECT)

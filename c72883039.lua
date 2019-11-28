@@ -87,34 +87,16 @@ function c72883039.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(c72883039.spfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE)
 end
+function c72883039.gselect(g)
+	return aux.dncheck(g) and g:GetClassCount(Card.GetLocation)==#g
+end
 function c72883039.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft==0 then return end
+	if ft<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-	local g1=Duel.GetMatchingGroup(c72883039.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
-	local g2=Duel.GetMatchingGroup(c72883039.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
-	local g3=Duel.GetMatchingGroup(aux.NecroValleyFilter(c72883039.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
-	local sg=Group.CreateGroup()
-	if g1:GetCount()>0 and ((g2:GetCount()==0 and g3:GetCount()==0) or Duel.SelectYesNo(tp,aux.Stringid(72883039,1))) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg1=g1:Select(tp,1,1,nil)
-		sg:Merge(sg1)
-		g2:Remove(Card.IsCode,nil,sg1:GetFirst():GetCode())
-		g3:Remove(Card.IsCode,nil,sg1:GetFirst():GetCode())
-		ft=ft-1
-	end
-	if g2:GetCount()>0 and ft>0 and ((sg:GetCount()==0 and g3:GetCount()==0) or Duel.SelectYesNo(tp,aux.Stringid(72883039,2))) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg2=g2:Select(tp,1,1,nil)
-		sg:Merge(sg2)
-		g3:Remove(Card.IsCode,nil,sg2:GetFirst():GetCode())
-		ft=ft-1
-	end
-	if g3:GetCount()>0 and ft>0 and (sg:GetCount()==0 or Duel.SelectYesNo(tp,aux.Stringid(72883039,3))) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg3=g3:Select(tp,1,1,nil)
-		sg:Merge(sg3)
-	end
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c72883039.spfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local sg=g:SelectSubGroup(tp,c72883039.gselect,false,1,math.min(ft,3))
 	Duel.SpecialSummon(sg,0,tp,tp,true,false,POS_FACEUP)
 end

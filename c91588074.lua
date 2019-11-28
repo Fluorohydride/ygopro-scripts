@@ -39,25 +39,13 @@ function c91588074.spcon(e,c)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToDeckOrExtraAsCost,c:GetControler(),LOCATION_HAND+LOCATION_ONFIELD,0,c)
 	return g:GetClassCount(Card.GetCode)>=10 and (ft>0 or g:IsExists(Card.IsLocation,ct,nil,LOCATION_MZONE))
 end
+function c91588074.gselect(g,tp)
+	return aux.dncheck(g) and Duel.GetMZoneCount(tp,g)>0
+end
 function c91588074.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft+1
 	local g=Duel.GetMatchingGroup(Card.IsAbleToDeckOrExtraAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD,0,c)
-	local rg=Group.CreateGroup()
-	for i=1,10 do
-		local tc=nil
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-		if ct>0 then
-			tc=g:FilterSelect(tp,Card.IsLocation,1,1,nil,LOCATION_MZONE):GetFirst()
-		else
-			tc=g:Select(tp,1,1,nil):GetFirst()
-		end
-		if tc then
-			rg:AddCard(tc)
-			g:Remove(Card.IsCode,nil,tc:GetCode())
-		end
-		ct=ct-1
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+	local rg=g:SelectSubGroup(tp,c91588074.gselect,false,10,10,tp)
 	local cg=rg:Filter(Card.IsFacedown,nil)
 	if cg:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,cg)

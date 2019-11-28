@@ -73,19 +73,15 @@ function c28265983.destg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c28265983.desfilter2,tp,0,LOCATION_MZONE,nil,e:GetLabel())
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
+function c28265983.gselect(g,num)
+	return g:GetSum(Card.GetAttack)<=num
+end
 function c28265983.desop2(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local num=e:GetLabel()
 	local g=Duel.GetMatchingGroup(c28265983.desfilter2,tp,0,LOCATION_MZONE,nil,num)
 	if g:GetCount()==0 then return end
-	local dg=Group.CreateGroup()
-	repeat
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local tg=g:FilterSelect(tp,c28265983.desfilter2,1,1,nil,num)
-		local tc=tg:GetFirst()
-		num=num-tc:GetAttack()
-		g:RemoveCard(tc)
-		dg:AddCard(tc)
-	until not g:IsExists(c28265983.desfilter2,1,nil,num) or not Duel.SelectYesNo(tp,aux.Stringid(28265983,3))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+	local dg=g:SelectSubGroup(tp,c28265983.gselect,false,1,#g,num)
 	Duel.Destroy(dg,REASON_EFFECT)
 end
