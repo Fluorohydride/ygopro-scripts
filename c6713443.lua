@@ -31,8 +31,8 @@ function c6713443.sfilter(c)
 	return c:IsSetCard(0x7c) and c:GetCode()~=6713443 and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable()
 end
 function c6713443.fselect(g,ft)
-	if g:IsExists(Card.IsType,1,nil,TYPE_FIELD) then ft=ft+1 end
-	return g:GetCount()<=ft and not g:IsExists(Card.IsType,2,nil,TYPE_FIELD)
+	local fc=g:FilterCount(Card.IsType,nil,TYPE_FIELD)
+	return fc<=1 and #g-fc<ft
 end
 function c6713443.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
@@ -44,12 +44,11 @@ function c6713443.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	if ct>0 then
 		local ft2=Duel.GetLocationCount(tp,LOCATION_SZONE)
-		if ft2>ct then ft2=ct end
 		local sg=Duel.GetMatchingGroup(c6713443.sfilter,tp,LOCATION_DECK,0,nil)
-		if sg:CheckSubGroup(c6713443.fselect,1,99,ft2) and Duel.SelectYesNo(tp,aux.Stringid(6713443,0)) then
+		if sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(6713443,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-			local setg=sg:SelectSubGroup(tp,c6713443.fselect,false,1,99,ft2)
+			local setg=sg:SelectSubGroup(tp,c6713443.fselect,false,1,math.min(ct,ft2+1),ft2)
 			Duel.SSet(tp,setg)
 		end
 	end

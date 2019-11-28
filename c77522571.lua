@@ -96,18 +96,9 @@ end
 function c77522571.costfilter(c)
 	return c:IsLevelAbove(1) and c:IsRace(RACE_FIEND)
 end
-function c77522571.lvcheck(g)
-	local lv=0
-	local tc=g:GetFirst()
-	while tc do
-		lv=lv+tc:GetLevel()
-		tc=g:GetNext()
-	end
-	return lv
-end
 function c77522571.fgoal(sg,e,tp)
 	if Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
-		local lv=c77522571.lvcheck(sg)
+		local lv=sg:GetSum(Card.GetLevel)
 		Duel.SetSelectedCard(sg)
 		return Duel.CheckReleaseGroup(tp,nil,0,nil)
 			and Duel.IsExistingMatchingCard(c77522571.spfilter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,lv)
@@ -119,9 +110,9 @@ function c77522571.spfilter3(c,e,tp,lv)
 end
 function c77522571.spcost3(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c77522571.costfilter,nil)
-	if chk==0 then return rg:CheckSubGroup(c77522571.fgoal,2,99,e,tp) end
-	local g=rg:SelectSubGroup(tp,c77522571.fgoal,false,2,99,e,tp)
-	local lv=c77522571.lvcheck(g)
+	if chk==0 then return rg:CheckSubGroup(c77522571.fgoal,2,rg:GetCount(),e,tp) end
+	local g=rg:SelectSubGroup(tp,c77522571.fgoal,false,2,rg:GetCount(),e,tp)
+	local lv=sg:GetSum(Card.GetLevel)
 	e:SetLabel(lv)
 	Duel.Release(g,REASON_COST)
 end

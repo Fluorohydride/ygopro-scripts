@@ -38,10 +38,10 @@ function c27012990.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()~=1 then return false end
 		e:SetLabel(0)
-		return g:CheckSubGroup(c27012990.fselect,1,99,tp)
+		return g:CheckSubGroup(c27012990.fselect,1,g:GetCount(),tp)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local rg=g:SelectSubGroup(tp,c27012990.fselect,false,1,99,tp)
+	local rg=g:SelectSubGroup(tp,c27012990.fselect,false,1,g:GetCount(),tp)
 	local ct=rg:GetSum(Card.GetLink)
 	e:SetLabel(ct)
 	local tct=1

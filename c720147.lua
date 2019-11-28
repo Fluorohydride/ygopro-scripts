@@ -43,7 +43,7 @@ function c720147.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	local rg=Duel.GetReleaseGroup(tp):Filter(c720147.costfilter,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=rg:SelectSubGroup(tp,c720147.fselect,false,1,99,tp)
+	local sg=rg:SelectSubGroup(tp,c720147.fselect,false,1,rg:GetCount(),tp)
 	sg:KeepAlive()
 	e:SetLabelObject(sg)
 	Duel.Release(sg,REASON_COST)
