@@ -79,7 +79,7 @@ function c59385322.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c59385322.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_LOST_TARGET)
-		and not e:GetHandler():GetPreviousEquipTarget():IsLocation(LOCATION_MZONE)
+		and not e:GetHandler():GetPreviousEquipTarget():IsLocation(LOCATION_ONFIELD+LOCATION_OVERLAY)
 end
 function c59385322.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToHand() end
