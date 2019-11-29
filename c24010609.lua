@@ -106,6 +106,7 @@ function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c24010609.setfilter),tp,LOCATION_GRAVE,0,nil)
 	local ct=e:GetHandler():GetFlagEffectLabel(24010609) or 0
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
+	if #g==0 or ct==0 or ft<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local tg=g:SelectSubGroup(tp,c24010609.gselect,false,1,math.min(ct,ft+1),ft)
 	Duel.SSet(tp,tg)
