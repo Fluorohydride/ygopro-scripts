@@ -40,6 +40,9 @@ end
 function c10877309.xyzfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsSetCard(0x126)
 end
+function c10877309.matfilter(c)
+	return c:IsSetCard(0x126) and c:IsCanOverlay()
+end
 function c10877309.ccfilter(c)
 	return bit.band(c:GetType(),0x7)
 end
@@ -47,7 +50,7 @@ function c10877309.fselect(g)
 	return g:GetClassCount(c10877309.ccfilter)==g:GetCount()
 end
 function c10877309.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local g=Duel.GetMatchingGroup(Card.IsSetCard,tp,LOCATION_GRAVE,0,e:GetHandler(),0x126)
+	local g=Duel.GetMatchingGroup(c10877309.matfilter,tp,LOCATION_GRAVE,0,e:GetHandler())
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c10877309.xyzfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c10877309.xyzfilter,tp,LOCATION_MZONE,0,1,nil)
 		and g:CheckSubGroup(c10877309.fselect,3,3) end
@@ -57,7 +60,7 @@ end
 function c10877309.matop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
-		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsSetCard),tp,LOCATION_GRAVE,0,nil,0x126)
+		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c10877309.matfilter),tp,LOCATION_GRAVE,0,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local sg=g:SelectSubGroup(tp,c10877309.fselect,false,3,3)
 		if sg and sg:GetCount()==3 then

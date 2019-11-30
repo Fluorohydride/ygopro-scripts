@@ -30,7 +30,7 @@ function c83108603.xyzfilter(c,tp)
 		and Duel.IsExistingMatchingCard(c83108603.matfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,c)
 end
 function c83108603.matfilter(c)
-	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsSetCard(0x107d) and c:IsType(TYPE_MONSTER) and not c:IsType(TYPE_TOKEN)
+	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsSetCard(0x107d) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c83108603.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c83108603.xyzfilter(chkc,tp) end

@@ -26,7 +26,7 @@ function c93854893.ovfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x11b) and c:IsType(TYPE_LINK)
 end
 function c93854893.ofilter(c)
-	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsType(TYPE_MONSTER)
+	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c93854893.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.IsExistingMatchingCard(Card.IsAbleToGrave,tp,0,LOCATION_ONFIELD,1,nil)

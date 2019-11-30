@@ -37,18 +37,15 @@ end
 function c69073023.spfilter(c,e,tp)
 	return c:IsType(TYPE_XYZ) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c69073023.matfilter(c)
-	return not c:IsType(TYPE_TOKEN) and c:IsAbleToChangeControler()
-end
 function c69073023.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c69073023.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
-		and Duel.IsExistingTarget(c69073023.matfilter,tp,0,LOCATION_ONFIELD,1,nil) end
+		and Duel.IsExistingTarget(Card.IsCanOverlay,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c69073023.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-	Duel.SelectTarget(tp,c69073023.matfilter,tp,0,LOCATION_ONFIELD,1,1,nil)
+	Duel.SelectTarget(tp,Card.IsCanOverlay,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c69073023.spop(e,tp,eg,ep,ev,re,r,rp)
@@ -57,7 +54,7 @@ function c69073023.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=tg:Filter(c69073023.spfilter,nil,e,tp):GetFirst()
 	if tc and tc:IsRelateToEffect(e)
 		and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 then
-		local mat=tg:Filter(c69073023.matfilter,tc,e,tp):GetFirst()
+		local mat=tg:Filter(Card.IsCanOverlay,tc):GetFirst()
 		if mat and mat:IsRelateToEffect(e) and not mat:IsImmuneToEffect(e) then
 			local og=mat:GetOverlayGroup()
 			if og:GetCount()>0 then

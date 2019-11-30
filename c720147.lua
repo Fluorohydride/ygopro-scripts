@@ -26,7 +26,7 @@ function c720147.matfilter1(c,tp,g)
 		and Duel.IsExistingMatchingCard(c720147.matfilter2,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,g:GetCount(),sg)
 end
 function c720147.matfilter2(c)
-	return c:IsSetCard(0x134) and c:IsType(TYPE_MONSTER) and not c:IsType(TYPE_TOKEN) and not c:IsForbidden()
+	return c:IsSetCard(0x134) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c720147.fselect(g,tp)
 	if Duel.IsExistingTarget(c720147.matfilter1,tp,LOCATION_MZONE,0,1,g,tp,g) then

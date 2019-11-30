@@ -57,7 +57,7 @@ function c8696773.matcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c8696773.matfilter(c)
-	return c:IsSetCard(0x107d) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0x107d) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c8696773.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c8696773.matfilter(chkc) end

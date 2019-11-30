@@ -39,7 +39,7 @@ end
 function c90098780.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
+		local g=Duel.GetMatchingGroup(Card.IsCanOverlay,tp,LOCATION_HAND,0,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(90098780,2)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 			local sg=g:Select(tp,1,2,nil)

@@ -32,10 +32,13 @@ end
 function c86643777.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsRace(RACE_INSECT)
 end
+function c86643777.matfilter(c)
+	return c:IsRace(RACE_INSECT) and c:IsCanOverlay()
+end
 function c86643777.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c86643777.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c86643777.filter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingMatchingCard(Card.IsRace,tp,LOCATION_HAND,0,1,nil,RACE_INSECT) end
+		and Duel.IsExistingMatchingCard(c86643777.matfilter,tp,LOCATION_HAND,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c86643777.filter,tp,LOCATION_MZONE,0,1,1,nil)
 end
@@ -44,7 +47,7 @@ function c86643777.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local g=Duel.SelectMatchingCard(tp,Card.IsRace,tp,LOCATION_HAND,0,1,1,nil,RACE_INSECT)
+		local g=Duel.SelectMatchingCard(tp,c86643777.matfilter,tp,LOCATION_HAND,0,1,1,nil)
 		if g:GetCount()>0 then
 			Duel.Overlay(tc,g)
 		end

@@ -41,17 +41,13 @@ function c2665273.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsPlayerCanDraw(1-tp,1) end
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,PLAYER_ALL,1)
 end
-function c2665273.ofilter(c,tp)
-	return not c:IsType(TYPE_TOKEN) and (c:IsControler(tp) or c:IsAbleToChangeControler())
-end
 function c2665273.drop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local td=Duel.Draw(tp,1,REASON_EFFECT)
 	local ed=Duel.Draw(1-tp,1,REASON_EFFECT)
-	local cp=c:GetControler()
 	if td+ed>0 and c:IsRelateToEffect(e) then
 		local sg=Group.CreateGroup()
-		local tg1=Duel.GetMatchingGroup(c2665273.ofilter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,aux.ExceptThisCard(e),cp)
+		local tg1=Duel.GetMatchingGroup(Card.IsCanOverlay,tp,LOCATION_HAND+LOCATION_ONFIELD,0,aux.ExceptThisCard(e))
 		if td>0 and tg1:GetCount()>0 then
 			Duel.ShuffleHand(tp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
@@ -61,7 +57,7 @@ function c2665273.drop(e,tp,eg,ep,ev,re,r,rp)
 				sg:AddCard(tc1)
 			end
 		end
-		local tg2=Duel.GetMatchingGroup(c2665273.ofilter,1-tp,LOCATION_HAND+LOCATION_ONFIELD,0,aux.ExceptThisCard(e),cp)
+		local tg2=Duel.GetMatchingGroup(Card.IsCanOverlay,1-tp,LOCATION_HAND+LOCATION_ONFIELD,0,aux.ExceptThisCard(e))
 		if ed>0 and tg2:GetCount()>0 then
 			Duel.ShuffleHand(1-tp)
 			Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_XMATERIAL)

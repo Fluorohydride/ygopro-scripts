@@ -31,7 +31,7 @@ function c20802187.xyzfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)
 end
 function c20802187.matfilter(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(4) and not c:IsType(TYPE_TOKEN)
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(4) and c:IsCanOverlay()
 end
 function c20802187.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c20802187.xyzfilter(chkc) end
@@ -44,7 +44,7 @@ function c20802187.matop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,c20802187.matfilter,tp,LOCATION_MZONE,0,1,1,nil)
 		if g:GetCount()>0 then
 			Duel.Overlay(tc,g)
