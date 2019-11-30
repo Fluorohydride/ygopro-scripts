@@ -28,8 +28,7 @@ function c27024795.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c27024795.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local tc=eg:GetFirst()
-	return #eg==1 and eg:IsContains(e:GetHandler()) and re:IsActiveType(TYPE_LINK) and re:GetHandler():IsSetCard(0x42)
+	return #eg==1 and eg:GetFirst()==e:GetHandler() and re and re:IsActiveType(TYPE_LINK) and re:GetHandler():IsSetCard(0x42)
 end
 function c27024795.matfilter(c)
 	return c:IsSetCard(0x42) and c:IsType(TYPE_MONSTER) and (c:IsFaceup() or c:IsLocation(LOCATION_DECK)) and c:IsLevelAbove(1)
