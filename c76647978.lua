@@ -99,7 +99,8 @@ function c76647978.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:RegisterFlagEffect(76647978,RESET_EVENT+RESETS_STANDARD,0,1)
 		tc:CompleteProcedure()
-		e:GetLabelObject():SetLabelObject(tc)
+		local e1=e:GetLabelObject()
+		if e1 then e1:SetLabelObject(tc) end
 	end
 	Auxiliary.FCheckAdditional=nil
 	Auxiliary.GCheckAdditional=nil
