@@ -98,7 +98,7 @@ function c24010609.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c24010609.gselect(g,ft)
 	local fc=g:FilterCount(Card.IsType,nil,TYPE_FIELD)
-	return fc<=1 and aux.dncheck(g) and #g-fc<ft
+	return fc<=1 and aux.dncheck(g) and #g-fc<=ft
 end
 function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

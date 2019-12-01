@@ -32,7 +32,7 @@ function c6713443.sfilter(c)
 end
 function c6713443.fselect(g,ft)
 	local fc=g:FilterCount(Card.IsType,nil,TYPE_FIELD)
-	return fc<=1 and #g-fc<ft
+	return fc<=1 and #g-fc<=ft
 end
 function c6713443.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
