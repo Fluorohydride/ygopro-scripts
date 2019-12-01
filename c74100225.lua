@@ -11,7 +11,7 @@ function c74100225.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c74100225.filter(c,cat)
-	return c:IsSetCard(cat) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(cat) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c74100225.spfilter(c,e,tp)
 	return c:IsSetCard(0x504e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -26,7 +26,7 @@ function c73881652.tgfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsSetCard(0xf1)
 end
 function c73881652.matfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0xf1)
+	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0xf1) and c:IsCanOverlay()
 end
 function c73881652.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c73881652.tgfilter(chkc) end

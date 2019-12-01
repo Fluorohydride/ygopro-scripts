@@ -59,7 +59,7 @@ function c4820694.tgfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x53) and c:IsType(TYPE_XYZ)
 end
 function c4820694.mfilter(c)
-	return c:IsSetCard(0x53) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0x53) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c4820694.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

@@ -38,7 +38,8 @@ function c3298689.filter2(c,e,tp,mc,rk)
 end
 function c3298689.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c3298689.filter1(chkc,e,tp) end
-	if chk==0 then return Duel.IsExistingTarget(c3298689.filter1,tp,LOCATION_MZONE,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c3298689.filter1,tp,LOCATION_MZONE,0,1,nil,e,tp)
+		and e:GetHandler():IsCanOverlay() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g=Duel.SelectTarget(tp,c3298689.filter1,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -70,7 +71,7 @@ function c3298689.xyzfilter(c)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_DARK) and c:IsType(TYPE_XYZ)
 end
 function c3298689.matfilter(c)
-	return c:IsSetCard(0x10db) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0x10db) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c3298689.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c3298689.xyzfilter(chkc) end
@@ -82,7 +83,7 @@ end
 function c3298689.matop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,c3298689.matfilter,tp,LOCATION_HAND,0,1,1,nil)
 		if g:GetCount()>0 then
 			Duel.Overlay(tc,g)

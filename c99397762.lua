@@ -15,6 +15,7 @@ end
 function c99397762.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c99397762.filter(chkc) end
 	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+		and e:GetHandler():IsCanOverlay()
 		and Duel.IsExistingTarget(c99397762.filter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c99397762.filter,tp,LOCATION_MZONE,0,1,1,nil)

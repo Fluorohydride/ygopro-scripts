@@ -59,7 +59,7 @@ function c92015800.indval2(e,te,rp)
 	return rp==1-e:GetHandlerPlayer() and te:IsActivated() and te:GetHandler():GetAttribute()&e:GetHandler():GetAttribute()~=0
 end
 function c92015800.xyzfilter(c)
-	return c:IsType(TYPE_MONSTER)
+	return c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c92015800.xyztg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingTarget(c92015800.xyzfilter,tp,0,LOCATION_GRAVE,1,nil)

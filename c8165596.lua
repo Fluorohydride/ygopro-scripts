@@ -68,21 +68,23 @@ end
 function c8165596.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
-function c8165596.filter(c)
-	return c:IsSetCard(0x55,0x7b)
+function c8165596.filter(c,mc)
+	return c:IsSetCard(0x55,0x7b) and (c:IsAbleToHand() or (mc:IsType(TYPE_XYZ) and c:IsCanOverlay()))
 end
 function c8165596.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c8165596.filter,tp,LOCATION_DECK,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c8165596.filter,tp,LOCATION_DECK,0,1,nil,e:GetHandler()) end
 end
 function c8165596.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local c=e:GetHandler()
-	local g=Duel.SelectMatchingCard(tp,c8165596.filter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c8165596.filter,tp,LOCATION_DECK,0,1,1,nil,c)
 	local tc=g:GetFirst()
-	if tc and (tc:IsAbleToHand() and Duel.SelectOption(tp,1190,aux.Stringid(8165596,2))==0) then
-		Duel.SendtoHand(tc,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,tc)
-	else
-		Duel.Overlay(c,Group.FromCards(tc))
+	if tc then
+		if c:IsType(TYPE_XYZ) and tc:IsCanOverlay() and (not tc:IsAbleToHand() or Duel.SelectOption(tp,1190,aux.Stringid(8165596,2))==1) then
+			Duel.Overlay(c,Group.FromCards(tc))
+		else
+			Duel.SendtoHand(tc,nil,REASON_EFFECT)
+			Duel.ConfirmCards(1-tp,tc)
+		end
 	end
 end

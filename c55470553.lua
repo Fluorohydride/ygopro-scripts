@@ -45,17 +45,16 @@ function c55470553.posop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ChangePosition(at,POS_FACEUP_DEFENSE)
 	end
 end
-function c55470553.spfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x107f) and not c:IsType(TYPE_TOKEN)
-		and (c:IsControler(tp) or c:IsAbleToChangeControler())
+function c55470553.spfilter(c)
+	return c:IsFaceup() and c:IsSetCard(0x107f) and c:IsCanOverlay()
 end
 function c55470553.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c55470553.spfilter(chkc,tp) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c55470553.spfilter(chkc) end
 	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingTarget(c55470553.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c55470553.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,tp)
+		and Duel.IsExistingTarget(c55470553.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+	Duel.SelectTarget(tp,c55470553.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c55470553.spop(e,tp,eg,ep,ev,re,r,rp)

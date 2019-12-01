@@ -27,7 +27,7 @@ function c18678554.xyzfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsSetCard(0x126)
 end
 function c18678554.matfilter(c)
-	return c:IsSetCard(0x126)
+	return c:IsSetCard(0x126) and c:IsCanOverlay()
 end
 function c18678554.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c18678554.xyzfilter(chkc) end
@@ -49,7 +49,7 @@ end
 function c18678554.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c18678554.xyzfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c18678554.xyzfilter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingMatchingCard(nil,tp,0,LOCATION_GRAVE,1,nil) end
+		and Duel.IsExistingMatchingCard(Card.IsCanOverlay,tp,0,LOCATION_GRAVE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c18678554.xyzfilter,tp,LOCATION_MZONE,0,1,1,nil)
 end
@@ -57,7 +57,7 @@ function c18678554.matop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(aux.TRUE),tp,0,LOCATION_GRAVE,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(Card.IsCanOverlay),tp,0,LOCATION_GRAVE,1,1,nil)
 		Duel.Overlay(tc,g)
 	end
 end

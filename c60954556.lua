@@ -77,7 +77,7 @@ function c60954556.xyzcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c60954556.xyzfilter(c)
-	return c:IsSetCard(0xf7) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0xf7) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c60954556.xyztg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c60954556.xyzfilter(chkc) end

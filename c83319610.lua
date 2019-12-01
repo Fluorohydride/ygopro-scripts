@@ -31,10 +31,10 @@ function c83319610.initial_effect(c)
 end
 function c83319610.filter1(c,e,tp)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsRace(RACE_MACHINE)
-		and Duel.IsExistingMatchingCard(c83319610.filter2,tp,LOCATION_HAND+LOCATION_MZONE,0,1,c,e)
+		and Duel.IsExistingMatchingCard(c83319610.filter2,tp,LOCATION_HAND+LOCATION_MZONE,0,1,c)
 end
 function c83319610.filter2(c,e)
-	return c:IsSetCard(0x58) and c:IsType(TYPE_MONSTER) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and not c:IsImmuneToEffect(e)
+	return c:IsSetCard(0x58) and c:IsType(TYPE_MONSTER) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsCanOverlay() and not (e and c:IsImmuneToEffect(e))
 end
 function c83319610.mttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c83319610.filter1(chkc,e,tp) end

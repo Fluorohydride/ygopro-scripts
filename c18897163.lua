@@ -80,7 +80,7 @@ function c18897163.xyzcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c18897163.xyzfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsSetCard(0xaf)
+	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsSetCard(0xaf) and c:IsCanOverlay()
 end
 function c18897163.xyztg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c18897163.xyzfilter,tp,LOCATION_EXTRA,0,1,nil) end

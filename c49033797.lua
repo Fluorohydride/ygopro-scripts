@@ -26,6 +26,7 @@ function c49033797.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetLabel(flag)
 		if flag==3 then
 			return e:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsExistingMatchingCard(c49033797.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,0xb6)
+				and e:GetHandler():IsCanOverlay()
 		elseif flag==6 then
 			return Duel.IsExistingMatchingCard(c49033797.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,0xb7)
 		elseif flag==5 then

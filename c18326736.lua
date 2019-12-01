@@ -91,7 +91,7 @@ function c18326736.skipcon(e)
 	return Duel.GetTurnPlayer()~=e:GetHandlerPlayer()
 end
 function c18326736.mtfilter(c)
-	return c:IsSetCard(0x109c)
+	return c:IsSetCard(0x109c) and c:IsCanOverlay()
 end
 function c18326736.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ)

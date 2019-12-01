@@ -29,7 +29,7 @@ function c28400508.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c28400508.cfilter(c)
-	return c:IsRace(RACE_DRAGON) and c:IsSetCard(0x48) and not c:IsCode(28400508)
+	return c:IsRace(RACE_DRAGON) and c:IsSetCard(0x48) and not c:IsCode(28400508) and c:IsCanOverlay()
 end
 function c28400508.spfilter(c,e,tp)
 	return c:IsRace(RACE_DRAGON) and c:IsSetCard(0x48) and not c:IsCode(28400508)
@@ -49,7 +49,7 @@ function c28400508.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	local fid=0
 	if tc then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(28400508,1))
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g2=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c28400508.cfilter),tp,LOCATION_EXTRA+LOCATION_GRAVE,0,1,1,tc)
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		Duel.Overlay(tc,g2)

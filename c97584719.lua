@@ -59,9 +59,9 @@ end
 function c97584719.xyzcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=c:GetBattleTarget()
-	if not c:IsRelateToBattle() or c:IsFacedown() then return false end
+	if not c:IsRelateToBattle() then return false end
 	e:SetLabelObject(tc)
-	return tc and tc:IsType(TYPE_MONSTER) and tc:IsReason(REASON_BATTLE) and not tc:IsType(TYPE_TOKEN)
+	return tc and tc:IsType(TYPE_MONSTER) and tc:IsReason(REASON_BATTLE) and tc:IsCanOverlay()
 end
 function c97584719.xyztg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ) end
@@ -72,7 +72,7 @@ end
 function c97584719.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) then
+	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
 		Duel.Overlay(c,tc)
 	end
 end

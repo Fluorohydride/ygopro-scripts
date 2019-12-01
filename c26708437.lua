@@ -17,6 +17,7 @@ end
 function c26708437.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c26708437.filter(chkc,e,tp) end
 	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and e:GetHandler():IsCanOverlay()
 		and Duel.IsExistingTarget(c26708437.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c26708437.filter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)

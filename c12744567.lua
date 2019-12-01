@@ -27,13 +27,12 @@ function c12744567.initial_effect(c)
 end
 c12744567.xyz_number=101
 function c12744567.filter(c)
-	return not c:IsType(TYPE_TOKEN) and c:IsAbleToChangeControler()
-		and c:IsSummonType(SUMMON_TYPE_SPECIAL)
+	return c:IsSummonType(SUMMON_TYPE_SPECIAL) and c:IsCanOverlay()
 end
 function c12744567.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c12744567.filter(chkc) end
 	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ) and Duel.IsExistingTarget(c12744567.filter,tp,0,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	Duel.SelectTarget(tp,c12744567.filter,tp,0,LOCATION_MZONE,1,1,nil)
 end
 function c12744567.operation(e,tp,eg,ep,ev,re,r,rp)

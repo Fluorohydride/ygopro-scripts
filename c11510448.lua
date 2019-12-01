@@ -56,7 +56,7 @@ function c11510448.filter1(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)
 end
 function c11510448.filter2(c)
-	return c:IsSetCard(0xf1) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0xf1) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c11510448.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

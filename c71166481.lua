@@ -53,7 +53,8 @@ end
 function c71166481.xtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c71166481.xfilter(chkc) and chkc~=c end
-	if chk==0 then return Duel.IsExistingTarget(c71166481.xfilter,tp,LOCATION_MZONE,0,1,c) end
+	if chk==0 then return Duel.IsExistingTarget(c71166481.xfilter,tp,LOCATION_MZONE,0,1,c)
+		and c:IsCanOverlay() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c71166481.xfilter,tp,LOCATION_MZONE,0,1,1,c)
 end

@@ -76,7 +76,7 @@ function c84869738.xyzfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x20f8) and c:IsType(TYPE_XYZ)
 end
 function c84869738.matfilter(c)
-	return c:IsSetCard(0x20f8) and c:IsType(TYPE_MONSTER) and (c:IsFaceup() or not c:IsLocation(LOCATION_EXTRA))
+	return c:IsSetCard(0x20f8) and c:IsType(TYPE_MONSTER) and (c:IsFaceup() or not c:IsLocation(LOCATION_EXTRA)) and c:IsCanOverlay()
 end
 function c84869738.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c84869738.xyzfilter(chkc) end
@@ -88,8 +88,8 @@ end
 function c84869738.matop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-		local g=Duel.SelectMatchingCard(tp,c84869738.matfilter,tp,LOCATION_GRAVE+LOCATION_EXTRA,0,2,2,nil)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c84869738.matfilter),tp,LOCATION_GRAVE+LOCATION_EXTRA,0,2,2,nil)
 		if g:GetCount()>0 then
 			Duel.Overlay(tc,g)
 		end
