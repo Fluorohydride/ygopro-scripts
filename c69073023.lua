@@ -51,7 +51,7 @@ function c69073023.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c69073023.spop(e,tp,eg,ep,ev,re,r,rp)
 	local hc=e:GetLabelObject()
-	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	if tc==hc then tc=g:GetNext() end
 	if hc:IsRelateToEffect(e) and Duel.SpecialSummon(hc,0,tp,tp,false,false,POS_FACEUP)>0 then
