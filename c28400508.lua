@@ -49,7 +49,7 @@ function c28400508.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	local fid=0
 	if tc then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(28400508,1))
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g2=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c28400508.cfilter),tp,LOCATION_EXTRA+LOCATION_GRAVE,0,1,1,tc)
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		Duel.Overlay(tc,g2)

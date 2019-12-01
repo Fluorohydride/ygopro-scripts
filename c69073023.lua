@@ -44,27 +44,27 @@ function c69073023.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.IsExistingTarget(Card.IsCanOverlay,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c69073023.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+	e:SetLabelObject(g:GetFirst())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	Duel.SelectTarget(tp,Card.IsCanOverlay,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c69073023.spop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
+	local hc=e:GetLabelObject()
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tc=tg:Filter(c69073023.spfilter,nil,e,tp):GetFirst()
-	if tc and tc:IsRelateToEffect(e)
-		and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 then
-		local mat=tg:Filter(Card.IsCanOverlay,tc):GetFirst()
-		if mat and mat:IsRelateToEffect(e) and not mat:IsImmuneToEffect(e) then
-			local og=mat:GetOverlayGroup()
+	local tc=g:GetFirst()
+	if tc==hc then tc=g:GetNext() end
+	if hc:IsRelateToEffect(e) and Duel.SpecialSummon(hc,0,tp,tp,false,false,POS_FACEUP)>0 then
+		if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+			local og=tc:GetOverlayGroup()
 			if og:GetCount()>0 then
 				Duel.SendtoGrave(og,REASON_RULE)
 			end
-			mat:CancelToGrave()
-			Duel.Overlay(tc,mat)
+			tc:CancelToGrave()
+			Duel.Overlay(hc,tc)
 		end
 	end
-	local e1=Effect.CreateEffect(c)
+	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CHANGE_DAMAGE)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
