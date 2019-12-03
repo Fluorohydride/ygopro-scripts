@@ -105,7 +105,7 @@ function c44097050.rlcost(e,tp,eg,ep,ev,re,r,rp,chk)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		rg=g:SelectSubGroup(tp,c44097050.rselect,false,2,2,tp)
 	else
-		rg=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
+		rg=Duel.SelectReleaseGroup(tp,nil,3,3,nil)
 	end
 	Duel.Release(rg,REASON_COST)
 end
