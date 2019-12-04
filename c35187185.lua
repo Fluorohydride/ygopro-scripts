@@ -1,5 +1,6 @@
 --Oneiros, the Dream Mirror Erlking
 function c35187185.initial_effect(c)
+	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c35187185.ffilter,2,true)
 	--attribute
@@ -65,7 +66,8 @@ function c35187185.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetPreviousControler()==tp and rp==1-tp
 end
 function c35187185.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c35187185.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.IsExistingMatchingCard(c35187185.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
 end
 function c35187185.spop(e,tp,eg,ep,ev,re,r,rp)

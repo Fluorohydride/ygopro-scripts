@@ -43,15 +43,9 @@ function c62171834.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,sg)
 	end
 end
-function c62171834.ufilter(c)
-	return c:IsFaceup() and c:IsCode(74665651)
+function c62171834.upcon(e)
+	return Duel.IsEnvironment(74665651,PLAYER_ALL,LOCATION_FZONE)
 end
-function c62171834.upcon(e,tp)
-	return Duel.IsExistingMatchingCard(c62171834.ufilter,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil)
-end
-function c62171834.dfilter(c)
-	return c:IsFaceup() and c:IsCode(1050355)
-end
-function c62171834.downcon(e,tp)
-	return Duel.IsExistingMatchingCard(c62171834.dfilter,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil)
+function c62171834.downcon(e)
+	return Duel.IsEnvironment(1050355,PLAYER_ALL,LOCATION_FZONE)
 end

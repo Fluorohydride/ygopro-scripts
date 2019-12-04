@@ -21,11 +21,8 @@ function c61459246.initial_effect(c)
 	e2:SetOperation(c61459246.activate2)
 	c:RegisterEffect(e2)
 end
-function c61459246.cfilter1(c)
-	return c:IsFaceup() and c:IsCode(74665651)
-end
 function c61459246.condition1(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsChainNegatable(ev) and rp==1-tp and Duel.IsExistingMatchingCard(c61459246.cfilter1,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil)
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsChainNegatable(ev) and rp==1-tp and Duel.IsEnvironment(74665651,PLAYER_ALL,LOCATION_FZONE)
 end
 function c61459246.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -39,11 +36,8 @@ function c61459246.activate1(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end
-function c61459246.cfilter2(c)
-	return c:IsFaceup() and c:IsCode(1050355)
-end
 function c61459246.condition2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0 and rp==1-tp and Duel.IsExistingMatchingCard(c61459246.cfilter2,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil)
+	return Duel.GetCurrentChain()==0 and rp==1-tp and Duel.IsEnvironment(1050355,PLAYER_ALL,LOCATION_FZONE)
 end
 function c61459246.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

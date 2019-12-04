@@ -26,7 +26,7 @@ function c99792080.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c99792080.dircon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsSetCard(0x131) and re:IsActiveType(TYPE_MONSTER)
+	return re:GetHandler():IsSetCard(0x131) and re:IsActiveType(TYPE_MONSTER) and Duel.IsAbleToEnterBP()
 end
 function c99792080.dirop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -38,22 +38,22 @@ function c99792080.dirop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 	end
 end
-function c99792080.cfilter(c)
-	return c:IsFaceup() and c:IsCode(74665651)
+function c99792080.spcon(e,tp,eg,ep,ev,re,r,rp)
+	local ph=Duel.GetCurrentPhase()
+	return (ph==PHASE_MAIN1 or (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE) or ph==PHASE_MAIN2)
+		and Duel.IsEnvironment(74665651,PLAYER_ALL,LOCATION_FZONE)
+end
+function c99792080.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
+	local c=e:GetHandler()
+	if chk==0 then return c:IsReleasable() end
+	Duel.Release(c,REASON_COST)
 end
 function c99792080.spfilter(c,e,tp)
 	return c:IsCode(62393472) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c99792080.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return ((Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE) or Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2) and Duel.IsExistingMatchingCard(c99792080.cfilter,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil)
-end
-function c99792080.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	if chk==0 then return c:IsReleasable() and Duel.GetMZoneCount(tp,c)>0 end
-	Duel.Release(c,REASON_COST)
-end
 function c99792080.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c99792080.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
+	if chk==0 then return Duel.GetMZoneCount(tp,c)>0
+		and Duel.IsExistingMatchingCard(c99792080.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c99792080.spop(e,tp,eg,ep,ev,re,r,rp)

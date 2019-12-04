@@ -20,22 +20,16 @@ end
 function c98570539.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x131) and (not f or f(c)) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
-function c98570539.cfilter1(c)
-	return c:IsFaceup() and c:IsCode(74665651)
-end
-function c98570539.cfilter2(c)
-	return c:IsFaceup() and c:IsCode(1050355)
-end
 function c98570539.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
 		local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil)
 		local mg2=nil
-		if Duel.IsExistingMatchingCard(c98570539.cfilter1,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil) then
+		if Duel.IsEnvironment(74665651,PLAYER_ALL,LOCATION_FZONE) then
 			mg2=Duel.GetFusionMaterial(tp):Filter(Card.IsLocation,nil,LOCATION_HAND)
 			mg1:Merge(mg2)
 		end
-		if Duel.IsExistingMatchingCard(c98570539.cfilter2,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil) then
+		if Duel.IsEnvironment(1050355,PLAYER_ALL,LOCATION_FZONE) then
 			mg2=Duel.GetMatchingGroup(c98570539.filter0,tp,LOCATION_GRAVE,0,nil)
 			mg1:Merge(mg2)
 		end
@@ -58,11 +52,11 @@ function c98570539.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsOnField,nil):Filter(c98570539.filter1,nil,e)
 	local mg2=nil
-	if Duel.IsExistingMatchingCard(c98570539.cfilter1,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil) then
+	if Duel.IsEnvironment(74665651,PLAYER_ALL,LOCATION_FZONE) then
 		mg2=Duel.GetFusionMaterial(tp):Filter(Card.IsLocation,nil,LOCATION_HAND)
 		mg1:Merge(mg2)
 	end
-	if Duel.IsExistingMatchingCard(c98570539.cfilter2,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil) then
+	if Duel.IsEnvironment(1050355,PLAYER_ALL,LOCATION_FZONE) then
 		mg2=Duel.GetMatchingGroup(c98570539.filter0,tp,LOCATION_GRAVE,0,nil)
 		mg1:Merge(mg2)
 	end

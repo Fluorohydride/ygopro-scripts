@@ -1,5 +1,6 @@
 --Desert Locusts
 function c63410069.initial_effect(c)
+	--synchro summon
 	c:EnableReviveLimit()
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
 	--discard
@@ -32,9 +33,8 @@ function c63410069.diccon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c63410069.dictg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetTargetPlayer(0)
 	Duel.SetTargetParam(1)
-	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,0,1)
+	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,Duel.GetTurnPlayer(),1)
 end
 function c63410069.dicop(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetTurnPlayer()
@@ -42,7 +42,7 @@ function c63410069.dicop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(p,LOCATION_HAND,0)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_DISCARD)
-		sg=g:Select(p,1,1,nil)
+		local sg=g:Select(p,1,1,nil)
 		Duel.SendtoGrave(sg,REASON_EFFECT+REASON_DISCARD)
 	end
 end
