@@ -89,7 +89,7 @@ function c79856792.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(79856792)==0
 end
 function c79856792.cfilter(c)
-	return c:IsSetCard(0x1034) and c:IsAbleToRemoveAsCost()
+	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function c79856792.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c79856792.cfilter,tp,LOCATION_GRAVE,0,1,nil) end

@@ -16,7 +16,7 @@ function c47121070.tfcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c47121070.filter,1,nil,tp)
 end
 function c47121070.tffilter(c)
-	return c:IsSetCard(0x1034) and not c:IsForbidden()
+	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
 end
 function c47121070.tftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
@@ -45,6 +45,5 @@ function c47121070.tfop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
 		e1:SetValue(TYPE_SPELL+TYPE_CONTINUOUS)
 		tc:RegisterEffect(e1)
-		Duel.RaiseEvent(tc,EVENT_CUSTOM+47408488,e,0,tp,0,0)
 	end
 end

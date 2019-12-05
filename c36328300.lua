@@ -96,6 +96,5 @@ function c36328300.plop(e,tp,eg,ep,ev,re,r,rp)
 			tc:RegisterEffect(e1)
 			tc=g:GetNext()
 		end
-		Duel.RaiseEvent(g,EVENT_CUSTOM+47408488,e,0,tp,0,0)
 	end
 end
