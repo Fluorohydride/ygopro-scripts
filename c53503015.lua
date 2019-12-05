@@ -69,7 +69,7 @@ function c53503015.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c53503015.drop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,tp,53503015)
+	Duel.Hint(HINT_CARD,0,53503015)
 	if Duel.Draw(tp,2,REASON_EFFECT)==2 then
 		Duel.ShuffleHand(tp)
 		Duel.BreakEffect()

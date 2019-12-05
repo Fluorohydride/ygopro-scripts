@@ -74,7 +74,7 @@ function c675319.repval(e,c)
 	return c==e:GetLabelObject()
 end
 function c675319.repop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,1-tp,675319)
+	Duel.Hint(HINT_CARD,0,675319)
 	local tc=Duel.GetFirstTarget()
 	tc:SetStatus(STATUS_DESTROY_CONFIRMED,false)
 	Duel.Destroy(tc,REASON_EFFECT+REASON_REPLACE)

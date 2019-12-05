@@ -134,5 +134,5 @@ function c88021907.desrepval(e,c)
 end
 function c88021907.desrepop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_EFFECT)
-	Duel.Hint(HINT_CARD,1-tp,88021907)
+	Duel.Hint(HINT_CARD,0,88021907)
 end

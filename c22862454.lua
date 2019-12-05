@@ -38,7 +38,7 @@ function c22862454.desrepval(e,c)
 	return c22862454.repfilter(c,e:GetHandlerPlayer())
 end
 function c22862454.desrepop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,1-tp,22862454)
+	Duel.Hint(HINT_CARD,0,22862454)
 	local tc=e:GetLabelObject()
 	tc:SetStatus(STATUS_DESTROY_CONFIRMED,false)
 	Duel.Destroy(tc,REASON_EFFECT+REASON_REPLACE)

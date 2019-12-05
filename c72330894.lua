@@ -63,7 +63,7 @@ function c72330894.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	else return false end
 end
 function c72330894.desrepop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,1-tp,72330894)
+	Duel.Hint(HINT_CARD,0,72330894)
 	local tc=e:GetLabelObject()
 	tc:SetStatus(STATUS_DESTROY_CONFIRMED,false)
 	Duel.Destroy(tc,REASON_EFFECT+REASON_REPLACE)

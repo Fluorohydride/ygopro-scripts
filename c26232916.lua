@@ -94,7 +94,7 @@ function c26232916.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	return false
 end
 function c26232916.repop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,1-tp,26232916)
+	Duel.Hint(HINT_CARD,0,26232916)
 	local tc=e:GetLabelObject()
 	Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_REPLACE)
 end
