@@ -67,7 +67,6 @@ function c47408488.ctcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c47408488.cfilter,1,nil) and not c47408488.chain_solving
 end
 function c47408488.ctop1(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,0,47408488)
 	e:GetHandler():AddCounter(0x6,1)
 end
 function c47408488.regcon(e,tp,eg,ep,ev,re,r,rp)
@@ -80,7 +79,6 @@ function c47408488.ctcon2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(47408488)>0
 end
 function c47408488.ctop2(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,0,47408488)
 	e:GetHandler():ResetFlagEffect(47408488)
 	e:GetHandler():AddCounter(0x6,1)
 end
