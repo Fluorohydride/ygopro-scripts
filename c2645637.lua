@@ -52,7 +52,7 @@ function c2645637.atkcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c2645637.spfilter,1,nil) and not eg:IsContains(e:GetHandler())
 end
 function c2645637.atkfilter(c)
-	return c:IsFaceup() and not (c:IsAttack(0) and c:IsDisabled())
+	return c:IsFaceup() and c:GetAttack()>0
 end
 function c2645637.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
@@ -64,7 +64,7 @@ end
 function c2645637.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetAttack()>0 then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
