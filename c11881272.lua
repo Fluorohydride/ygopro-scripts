@@ -95,7 +95,7 @@ function c11881272.actop(e,tp,eg,ep,ev,re,r,rp)
 		local b=te:IsActivatable(tp,true,true)
 		if b then
 			Duel.ResetFlagEffect(tp,11881272)
-			local fc=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
+			local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
 			if fc then
 				Duel.SendtoGrave(fc,REASON_RULE)
 				Duel.BreakEffect()

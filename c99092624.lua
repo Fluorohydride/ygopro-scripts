@@ -20,13 +20,9 @@ function c99092624.initial_effect(c)
 	e2:SetOperation(c99092624.tdop)
 	c:RegisterEffect(e2)
 end
-function c99092624.cfilter(c)
-	return c:GetSequence()==5
-end
 function c99092624.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local ct=Duel.GetMatchingGroupCount(c99092624.cfilter,tp,LOCATION_SZONE,LOCATION_SZONE,nil)
-		ct=ct+Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,TYPE_FIELD)
+		local ct=Duel.GetFieldGroupCount(tp,LOCATION_FZONE,LOCATION_FZONE)+Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,TYPE_FIELD)
 		if ct==0 then return false end
 		for p=0,1 do
 			if Duel.GetLocationCount(p,LOCATION_MZONE)>0 and Duel.IsPlayerCanSpecialSummonMonster(tp,71645243,0,0x4011,800,800,2,RACE_PLANT,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE,p) then return true end
@@ -37,8 +33,7 @@ function c99092624.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,0,PLAYER_ALL,0)
 end
 function c99092624.activate(e,tp,eg,ep,ev,re,r,rp)
-	local ct=Duel.GetMatchingGroupCount(c99092624.cfilter,tp,LOCATION_SZONE,LOCATION_SZONE,nil)
-	ct=ct+Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,TYPE_FIELD)
+	local ct=Duel.GetFieldGroupCount(tp,LOCATION_FZONE,LOCATION_FZONE)+Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,TYPE_FIELD)
 	if ct==0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 	repeat

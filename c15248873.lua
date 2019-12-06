@@ -11,7 +11,7 @@ function c15248873.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c15248873.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFieldCard(tp,LOCATION_SZONE,5)==nil and Duel.GetFieldCard(1-tp,LOCATION_SZONE,5)~=nil
+	return Duel.GetFieldCard(tp,LOCATION_FZONE,0)==nil and Duel.GetFieldCard(1-tp,LOCATION_FZONE,0)~=nil
 end
 function c15248873.filter(c,tp)
 	return c:IsType(TYPE_FIELD) and c:GetActivateEffect():IsActivatable(tp,true,true)
@@ -26,7 +26,7 @@ function c15248873.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.SelectMatchingCard(tp,c15248873.filter,tp,LOCATION_DECK,0,1,1,nil,tp):GetFirst()
 	Duel.ResetFlagEffect(tp,15248873)
 	if tc then
-		local fc=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
+		local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
 		if fc then
 			Duel.SendtoGrave(fc,REASON_RULE)
 			Duel.BreakEffect()
