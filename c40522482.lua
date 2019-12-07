@@ -25,7 +25,7 @@ function c40522482.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local atk=tg:GetFirst():GetAttack()
 	local g=Duel.GetMatchingGroup(c40522482.desfilter,tp,0,LOCATION_MZONE,nil,atk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
-	local fc=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
+	local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
 	local dam=0
 	if fc and c40522482.ffilter(fc) then
 		dam=g:GetSum(Card.GetBaseAttack)
@@ -44,7 +44,7 @@ function c40522482.activate(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 and Duel.Destroy(g,REASON_EFFECT)>0 then
 		local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_GRAVE)
 		if og:GetCount()==0 then return end
-		local fc=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
+		local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
 		local dam=0
 		if fc and c40522482.ffilter(fc) then
 			dam=og:GetSum(Card.GetBaseAttack)

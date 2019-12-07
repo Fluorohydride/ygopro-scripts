@@ -58,12 +58,8 @@ function c25862681.sumop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c25862681.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c1=Duel.GetFieldCard(0,LOCATION_SZONE,5)
-	local c2=Duel.GetFieldCard(1,LOCATION_SZONE,5)
-	if chk==0 then return c1 or c2 end
-	local g=Group.CreateGroup()
-	if c1 then g:AddCard(c1) end
-	if c2 then g:AddCard(c2) end
+	local g=Duel.GetFieldGroup(tp,LOCATION_FZONE,LOCATION_FZONE)
+	if chk==0 then return g:GetCount()>0 end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,1000)
 end
@@ -71,11 +67,7 @@ function c25862681.ffilter(c)
 	return c:IsType(TYPE_FIELD) and c:IsAbleToHand()
 end
 function c25862681.desop(e,tp,eg,ep,ev,re,r,rp)
-	local c1=Duel.GetFieldCard(0,LOCATION_SZONE,5)
-	local c2=Duel.GetFieldCard(1,LOCATION_SZONE,5)
-	local g=Group.CreateGroup()
-	if c1 then g:AddCard(c1) end
-	if c2 then g:AddCard(c2) end
+	local g=Duel.GetFieldGroup(tp,LOCATION_FZONE,LOCATION_FZONE)
 	if g:GetCount()>0 then
 		local ct=Duel.Destroy(g,REASON_EFFECT)
 		if ct>0 then

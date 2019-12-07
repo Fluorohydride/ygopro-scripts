@@ -51,7 +51,7 @@ function c32036866.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c32036866.condition2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFieldCard(tp,LOCATION_SZONE,5)==nil
+	return Duel.GetFieldCard(tp,LOCATION_FZONE,0)==nil
 end
 function c32036866.filter2(c,tp)
 	return c:IsSetCard(0x107) and c:IsType(TYPE_FIELD) and c:GetActivateEffect():IsActivatable(tp,true,true)
@@ -63,7 +63,7 @@ function c32036866.activate2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 	local tc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c32036866.filter2),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,tp):GetFirst()
 	if tc then
-		local fc=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
+		local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
 		if fc then
 			Duel.SendtoGrave(fc,REASON_RULE)
 			Duel.BreakEffect()

@@ -20,14 +20,15 @@ function c36625827.initial_effect(c)
 	e2:SetOperation(c36625827.desop)
 	c:RegisterEffect(e2)
 end
+function c36625827.ctfilter(c)
+	return c:IsFaceup() and c:IsCode(75041269) and c:IsCanAddCounter(0x1b,1)
+end
 function c36625827.addc(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
-	if tc and tc:IsFaceup() and tc:IsCode(75041269) then
+	local g=Duel.GetMatchingGroup(c36625827.ctfilter,tp,LOCATION_FZONE,LOCATION_FZONE,nil)
+	local tc=g:GetFirst()
+	while tc do
 		tc:AddCounter(0x1b,1)
-	end
-	tc=Duel.GetFieldCard(1-tp,LOCATION_SZONE,5)
-	if tc and tc:IsFaceup() and tc:IsCode(75041269) then
-		tc:AddCounter(0x1b,1)
+		tc=g:GetNext()
 	end
 end
 function c36625827.descon(e,tp,eg,ep,ev,re,r,rp)

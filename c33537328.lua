@@ -32,11 +32,7 @@ function c33537328.initial_effect(c)
 	c:RegisterEffect(e7)
 end
 function c33537328.sdcon(e)
-	local c=e:GetHandler()
-	if c:IsStatus(STATUS_BATTLE_DESTROYED) then return false end
-	local f1=Duel.GetFieldCard(0,LOCATION_SZONE,5)
-	local f2=Duel.GetFieldCard(1,LOCATION_SZONE,5)
-	return ((f1==nil or not f1:IsFaceup()) and (f2==nil or not f2:IsFaceup()))
+	return not Duel.IsExistingMatchingCard(Card.IsFaceup,0,LOCATION_FZONE,LOCATION_FZONE,1,nil)
 end
 function c33537328.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
