@@ -45,7 +45,7 @@ function c18210764.tecon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c18210764.tefilter(c)
 	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsType(TYPE_PENDULUM)
-		and not c:IsCode(18210764) and not c:IsForbidden()
+		and not c:IsCode(18210764)
 end
 function c18210764.tetg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and chkc:IsControler(tp) and c18210764.tefilter(chkc) end

@@ -46,7 +46,7 @@ function c29432356.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c29432356.scfilter(c,pc)
-	return c:IsType(TYPE_PENDULUM) and c:IsSetCard(0xc4) and not c:IsForbidden()
+	return c:IsType(TYPE_PENDULUM) and c:IsSetCard(0xc4)
 		and c:GetLeftScale()~=pc:GetLeftScale()
 end
 function c29432356.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
