@@ -55,6 +55,7 @@ function c93085839.effop1(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e1:SetOwnerPlayer(ep)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	e1:SetOperation(c93085839.sumop)
 	rc:RegisterEffect(e1,true)
@@ -63,7 +64,7 @@ function c93085839.sumop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SetChainLimitTillChainEnd(c93085839.chainlm)
 end
 function c93085839.chainlm(e,rp,tp)
-	return tp==rp
+	return e:GetOwnerPlayer()==rp
 end
 function c93085839.effop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
