@@ -86,5 +86,6 @@ function c99157310.spop(e,tp,eg,ep,ev,re,r,rp)
 		local sg=g:Select(tp,ft,ft,nil)
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 		Duel.ConfirmCards(1-tp,sg)
+		Duel.ShuffleSetCard(sg)
 	end
 end

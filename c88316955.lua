@@ -62,5 +62,6 @@ function c88316955.spop(e,tp,eg,ep,ev,re,r,rp)
 	if sg then
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 		Duel.ConfirmCards(1-tp,sg)
+		Duel.ShuffleSetCard(sg)
 	end
 end

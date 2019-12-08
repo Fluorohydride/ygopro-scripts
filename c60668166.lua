@@ -33,5 +33,6 @@ function c60668166.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 		Duel.ConfirmCards(1-tp,g)
+		Duel.ShuffleSetCard(g)
 	end
 end

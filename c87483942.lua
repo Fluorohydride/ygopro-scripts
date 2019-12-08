@@ -28,5 +28,6 @@ function c87483942.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 		Duel.ConfirmCards(1-tp,g)
+		Duel.ShuffleSetCard(g)
 	end
 end

@@ -50,6 +50,7 @@ function c6713443.spop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 			local setg=sg:SelectSubGroup(tp,c6713443.fselect,false,1,math.min(ct,ft2+1),ft2)
 			Duel.SSet(tp,setg)
+			if setg:GetCount()==1 then Duel.ConfirmCards(1-tp,setg) end
 		end
 	end
 end

@@ -59,6 +59,7 @@ function c50766506.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 	Duel.SpecialSummonComplete()
 	Duel.ConfirmCards(1-tp,cg)
+	Duel.ShuffleSetCard(cg)
 end
 function c50766506.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetHandler():GetCardTarget():Filter(Card.IsLocation,nil,LOCATION_MZONE)

@@ -73,6 +73,7 @@ function c39998992.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 		Duel.ConfirmCards(1-tp,g)
+		Duel.ShuffleSetCard(g)
 	end
 end
 function c39998992.indtg(e,c)
