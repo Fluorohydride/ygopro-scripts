@@ -25,24 +25,28 @@ function c65500515.seqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_CONTROL)>0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,65500516,0,0x4011,a:GetAttack(),0,2,RACE_AQUA,ATTRIBUTE_WATER) end
+	Duel.SetTargetCard(a)
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
 function c65500515.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsControler(1-tp) or c:IsImmuneToEffect(e) or Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	if not c:IsRelateToEffect(e) or c:IsControler(1-tp) or c:IsImmuneToEffect(e) or Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_CONTROL)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
 	local s=Duel.SelectDisableField(tp,1,LOCATION_MZONE,0,0)
 	local nseq=math.log(s,2)
 	Duel.MoveSequence(c,nseq)
 	local a=Duel.GetAttacker()
-	if not a:IsAttackable() or not Duel.IsPlayerCanSpecialSummonMonster(tp,65500516,0,0x4011,a:GetAttack(),0,2,RACE_AQUA,ATTRIBUTE_WATER) then return end
+	local atk=a:IsRelateToEffect(e) and a:GetAttack() or 0
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,65500516,0,0x4011,atk,0,2,RACE_AQUA,ATTRIBUTE_WATER) then return end
+	Duel.BreakEffect()
 	local token=Duel.CreateToken(tp,65500516)
 	Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_ATTACK)
-	e1:SetValue(a:GetAttack())
+	e1:SetValue(atk)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	token:RegisterEffect(e1,true)
 	Duel.SpecialSummonComplete()
