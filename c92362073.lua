@@ -86,6 +86,5 @@ function c92362073.tpop(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		Duel.ShuffleDeck(tp)
 		Duel.MoveSequence(tc,0)
-		Duel.ConfirmDecktop(tp,1)
 	end
 end
