@@ -52,7 +52,8 @@ function c48086335.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingTarget(c48086335.filter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-	Duel.SelectTarget(tp,c48086335.filter,tp,LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,c48086335.filter,tp,LOCATION_GRAVE,0,1,1,nil)
+	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 end
 function c48086335.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

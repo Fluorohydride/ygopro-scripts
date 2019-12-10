@@ -57,7 +57,7 @@ function c80019195.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c80019195.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
+	if tc:IsRelateToEffect(e) then
 		Duel.SSet(tp,tc)
 	end
 end
