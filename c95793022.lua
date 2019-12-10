@@ -2,7 +2,7 @@
 function c95793022.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcFunRep(c,c95793022.ffilter,3,false)
+	aux.AddFusionProcFunRep(c,c95793022.ffilter,3,true)
 	aux.AddContactFusionProcedure(c,Card.IsReleasable,LOCATION_MZONE,0,Duel.Release,REASON_COST+REASON_MATERIAL)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

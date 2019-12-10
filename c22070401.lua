@@ -1,7 +1,7 @@
 --スターヴ・ヴェネミー・リーサルドーズ・ドラゴン
 function c22070401.initial_effect(c)
 	c:EnableReviveLimit()
-	aux.AddFusionProcFunRep(c,c22070401.ffilter,3,false)
+	aux.AddFusionProcFunRep(c,c22070401.ffilter,3,true)
 	aux.EnablePendulumAttribute(c,false)
 	--counter
 	local e1=Effect.CreateEffect(c)
