@@ -92,11 +92,9 @@ function c57314798.desop(e,tp,eg,ep,ev,re,r,rp)
 		local tc2=g2:GetFirst()
 		if tc1 then
 			Duel.SSet(tp,tc1)
-			Duel.ConfirmCards(1-tp,tc1)
 		end
 		if tc2 then
 			Duel.SSet(1-tp,tc2)
-			Duel.ConfirmCards(tp,tc2)
 		end
 	end
 end

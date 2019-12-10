@@ -117,6 +117,5 @@ function c44133040.setop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsSSetable() then
 		Duel.SSet(tp,c)
-		Duel.ConfirmCards(1-tp,c)
 	end
 end

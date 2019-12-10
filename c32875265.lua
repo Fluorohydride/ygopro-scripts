@@ -40,7 +40,6 @@ function c32875265.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 			local tg=Duel.SelectMatchingCard(tp,c32875265.setfilter,tp,LOCATION_DECK,0,1,1,nil)
 			Duel.SSet(tp,tg)
-			Duel.ConfirmCards(1-tp,tg)
 		end
 	end
 	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end

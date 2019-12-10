@@ -94,6 +94,5 @@ function c36429703.setop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e1)
 		end
-		Duel.ConfirmCards(1-tp,g)
 	end
 end
