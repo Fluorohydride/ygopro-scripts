@@ -31,7 +31,6 @@ function c53143898.setop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c53143898.setfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SSet(tp,g:GetFirst())
-		Duel.ConfirmCards(1-tp,g)
 	end
 end
 function c53143898.thfilter1(c)

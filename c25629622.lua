@@ -100,7 +100,6 @@ function c25629622.setop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c25629622.tgop)
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
-		Duel.ConfirmCards(1-tp,g)
 	end
 end
 function c25629622.tgcon(e,tp,eg,ep,ev,re,r,rp)

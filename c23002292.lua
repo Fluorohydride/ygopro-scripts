@@ -44,7 +44,6 @@ function c23002292.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 			local sg=g:Select(1-tp,1,1,nil)
 			Duel.SSet(1-tp,sg:GetFirst())
-			Duel.ConfirmCards(tp,sg)
 		end
 	end
 	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end

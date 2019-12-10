@@ -45,7 +45,6 @@ function c7480763.stop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		local ct=Duel.SSet(tp,g)
 		if ct~=0 then
-			Duel.ConfirmCards(1-tp,g)
 			local tc=g:GetFirst()
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
