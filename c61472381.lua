@@ -43,7 +43,6 @@ function c61472381.setop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c61472381.setfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.SSet(tp,g:GetFirst())
-		Duel.ConfirmCards(1-tp,g)
 	end
 end
 function c61472381.discon(e,tp,eg,ep,ev,re,r,rp)

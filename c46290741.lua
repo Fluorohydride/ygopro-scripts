@@ -87,7 +87,6 @@ function c46290741.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.SSet(tp,tc)
-		Duel.ConfirmCards(1-tp,tc)
 	end
 end
 function c46290741.tfilter(c,tp)

@@ -99,7 +99,6 @@ function c14756848.desop(e,tp,eg,ep,ev,re,r,rp)
 			and Duel.SelectYesNo(tp,aux.Stringid(14756848,3)) then
 			Duel.BreakEffect()
 			Duel.SSet(tp,tc)
-			Duel.ConfirmCards(1-tp,tc)
 		end
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

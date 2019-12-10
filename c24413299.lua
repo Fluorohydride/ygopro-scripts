@@ -61,7 +61,6 @@ function c24413299.operation(e,tp,eg,ep,ev,re,r,rp)
 						and Duel.SelectYesNo(tp,aux.Stringid(24413299,3)) then
 						Duel.BreakEffect()
 						Duel.SSet(tp,tc)
-						Duel.ConfirmCards(1-tp,tc)
 					end
 				end
 			end

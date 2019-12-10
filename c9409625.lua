@@ -96,7 +96,6 @@ function c9409625.tdop(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(9409625,2)) then
 			local sc=g:Select(tp,1,1,nil):GetFirst()
 			Duel.SSet(tp,sc)
-			Duel.ConfirmCards(1-tp,sc)
 		end
 	end
 end
