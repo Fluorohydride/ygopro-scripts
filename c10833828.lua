@@ -82,8 +82,10 @@ function c10833828.fcheck1(fid)
 			end
 end
 function c10833828.fcheck2(c,fid)
-	local flag=c:GetFlagEffectLabel(10833828)
-	return flag and flag==fid
+	for _,flag in ipairs({c:GetFlagEffectLabel(10833828)}) do
+		if flag==fid then return true end
+	end
+	return false
 end
 function c10833828.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

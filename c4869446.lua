@@ -32,6 +32,8 @@ function c4869446.posop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c4869446.postg(e,c)
-	local flag=c:GetFlagEffectLabel(4869446)
-	return flag and flag==e:GetHandler():GetFieldId()
+	for _,flag in ipairs({c:GetFlagEffectLabel(4869446)}) do
+		if flag==e:GetHandler():GetFieldId() then return true end
+	end
+	return false
 end
