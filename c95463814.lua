@@ -2,7 +2,7 @@
 function c95463814.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsLevel,10),3,false)
+	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsLevel,10),3,true)
 	--damage
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(95463814,0))
