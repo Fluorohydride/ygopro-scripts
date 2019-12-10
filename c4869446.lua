@@ -19,31 +19,19 @@ function c4869446.initial_effect(c)
 	e3:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
 	e3:SetTarget(c4869446.postg)
 	c:RegisterEffect(e3)
-	local ng=Group.CreateGroup()
-	ng:KeepAlive()
-	e2:SetLabelObject(ng)
-	e3:SetLabelObject(ng)
 end
 function c4869446.cfilter(c)
 	return c:IsFaceup() and c:IsPreviousPosition(POS_FACEDOWN)
 end
 function c4869446.posop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local sg=e:GetLabelObject()
-	if c:GetFlagEffect(4869446)==0 then
-		sg:Clear()
-		c:RegisterFlagEffect(4869446,RESET_EVENT+RESETS_STANDARD,0,1)
-	end
 	local g=eg:Filter(c4869446.cfilter,nil)
 	local tc=g:GetFirst()
 	while tc do
-		sg:AddCard(tc)
-		tc:CreateRelation(c,RESET_EVENT+RESETS_STANDARD)
+		tc:RegisterFlagEffect(4869446,RESET_EVENT+RESETS_STANDARD,0,1,e:GetHandler():GetFieldId())
 		tc=g:GetNext()
 	end
 end
 function c4869446.postg(e,c)
-	local g=e:GetLabelObject()
-	if e:GetHandler():GetFlagEffect(4869446)==0 or g:GetCount()==0 then return false end
-	return g:IsContains(c) and c:IsRelateToCard(e:GetHandler())
+	local flag=c:GetFlagEffectLabel(4869446)
+	return flag and flag==e:GetHandler():GetFieldId()
 end

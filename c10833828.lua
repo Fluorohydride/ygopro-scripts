@@ -37,10 +37,6 @@ function c10833828.initial_effect(c)
 	e4:SetTarget(c10833828.damtg)
 	e4:SetOperation(c10833828.damop)
 	c:RegisterEffect(e4)
-	local ng=Group.CreateGroup()
-	ng:KeepAlive()
-	e2:SetLabelObject(ng)
-	e3:SetLabelObject(ng)
 end
 function c10833828.spfilter1(c,e,tp)
 	return c:IsSetCard(0x10af) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
@@ -69,13 +65,7 @@ function c10833828.spop1(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2,true)
-		local sg=e:GetLabelObject()
-		if c:GetFlagEffect(10833828)==0 then
-			sg:Clear()
-			c:RegisterFlagEffect(10833828,RESET_EVENT+RESETS_STANDARD,0,1)
-		end
-		sg:AddCard(tc)
-		tc:CreateRelation(c,RESET_EVENT+RESETS_STANDARD)
+		tc:RegisterFlagEffect(10833828,RESET_EVENT+RESETS_STANDARD,0,1,c:GetFieldId())
 	end
 	Duel.SpecialSummonComplete()
 end
@@ -86,25 +76,20 @@ function c10833828.spfilter3(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsRace(RACE_FIEND) and (not f or f(c))
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
-function c10833828.spfilter4(c,tc)
-	return c:IsRelateToCard(tc)
-end
-function c10833828.fcheck1(g)
+function c10833828.fcheck1(fid)
 	return	function(tp,sg,fc)
-				return sg:IsExists(c10833828.fcheck2,1,nil,g)
+				return sg:IsExists(c10833828.fcheck2,1,nil,fid)
 			end
 end
-function c10833828.fcheck2(c,g)
-	return g:IsContains(c)
+function c10833828.fcheck2(c,fid)
+	local flag=c:GetFlagEffectLabel(10833828)
+	return flag and flag==fid
 end
 function c10833828.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local c=e:GetHandler()
-		local g=e:GetLabelObject():Filter(c10833828.spfilter4,nil,c)
-		if c:GetFlagEffect(10833828)==0 or g:GetCount()==0 then return false end
 		local chkf=tp
 		local mg1=Duel.GetFusionMaterial(tp)
-		aux.FCheckAdditional=c10833828.fcheck1(g)
+		aux.FCheckAdditional=c10833828.fcheck1(e:GetHandler():GetFieldID())
 		local res=Duel.IsExistingMatchingCard(c10833828.spfilter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -123,12 +108,10 @@ function c10833828.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c10833828.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:GetFlagEffect(10833828)==0 then return end
-	local g=e:GetLabelObject():Filter(c10833828.spfilter4,nil,e:GetHandler())
-	if g:GetCount()==0 then return end
+	if not c:IsRelateToEffect(e) then return end
 	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c10833828.spfilter2,nil,e)
-	aux.FCheckAdditional=c10833828.fcheck1(g)
+	aux.FCheckAdditional=c10833828.fcheck1(c:GetFieldID())
 	local sg1=Duel.GetMatchingGroup(c10833828.spfilter3,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil
 	local sg2=nil
