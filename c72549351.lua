@@ -13,17 +13,7 @@ end
 function c72549351.rfilter(c,tp)
 	return c:IsRace(RACE_DRAGON) and (c:IsControler(tp) or c:IsFaceup())
 end
-function c72549351.fselect(c,tp,rg,sg)
-	sg:AddCard(c)
-	if sg:GetCount()<2 then
-		res=rg:IsExists(c72549351.fselect,1,sg,tp,rg,sg)
-	else
-		res=c72549351.fgoal(tp,sg)
-	end
-	sg:RemoveCard(c)
-	return res
-end
-function c72549351.fgoal(tp,sg)
+function c72549351.fgoal(sg,tp)
 	if sg:GetCount()>0 and Duel.GetMZoneCount(tp,sg)>0 then
 		Duel.SetSelectedCard(sg)
 		return Duel.CheckReleaseGroup(tp,nil,0,nil)
@@ -32,15 +22,10 @@ end
 function c72549351.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c72549351.rfilter,nil,tp)
-	local g=Group.CreateGroup()
-	if chk==0 then return rg:IsExists(c72549351.fselect,1,nil,tp,rg,g) end
-	while g:GetCount()<2 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local sg=rg:FilterSelect(tp,c72549351.fselect,1,1,g,tp,rg,g)
-		g:Merge(sg)
-	end
+	if chk==0 then return rg:CheckSubGroup(c72549351.fgoal,2,2,tp) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local g=rg:SelectSubGroup(tp,c72549351.fgoal,false,2,2,tp)
 	Duel.Release(g,REASON_COST)
-	return true
 end
 function c72549351.spfilter(c,e,tp)
 	return c:IsRace(RACE_DRAGON) and c:IsLevel(8) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
