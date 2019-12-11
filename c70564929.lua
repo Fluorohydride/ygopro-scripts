@@ -46,7 +46,7 @@ end
 function c70564929.setop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsSSetable() then
+	if tc:IsRelateToEffect(e) then
 		Duel.SSet(tp,tc)
 	end
 end

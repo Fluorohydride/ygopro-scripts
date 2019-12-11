@@ -46,7 +46,7 @@ function c50237654.drop(e,tp,eg,ep,ev,re,r,rp)
 		if dc:IsType(TYPE_SPELL+TYPE_TRAP) and dc:IsSSetable()
 			and Duel.SelectYesNo(tp,aux.Stringid(50237654,0)) then
 			Duel.BreakEffect()
-			Duel.SSet(tp,dc,tp,false)
+			if Duel.SSet(tp,dc,tp,false)==0 then return end
 			if dc:IsType(TYPE_QUICKPLAY) then
 				local e1=Effect.CreateEffect(c)
 				e1:SetType(EFFECT_TYPE_SINGLE)

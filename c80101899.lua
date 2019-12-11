@@ -30,8 +30,7 @@ function c80101899.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 		local g2=Duel.SelectMatchingCard(tp,c80101899.setfilter,tp,LOCATION_DECK,0,1,1,nil,tc1:GetCode())
 		local tc2=g2:GetFirst()
-		if tc2 then
-			Duel.SSet(tp,tc2)
+		if tc2 and Duel.SSet(tp,tc2)~=0 then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)

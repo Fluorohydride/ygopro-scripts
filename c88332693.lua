@@ -64,8 +64,7 @@ end
 function c88332693.setop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local tc=Duel.SelectMatchingCard(tp,c88332693.setfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil):GetFirst()
-	if tc then
-		Duel.SSet(tp,tc)
+	if tc and Duel.SSet(tp,tc)~=0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
