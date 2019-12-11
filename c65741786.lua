@@ -54,7 +54,7 @@ function c65741786.indop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e1:SetValue(c65741786.indval)
-	e1:SetOwnerPlayer(tp)
+	e1:SetOwnerPlayer(ep)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	rc:RegisterEffect(e1,true)
 end
