@@ -59,7 +59,7 @@ function c20537097.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c20537097.thfilter,tp,LOCATION_DECK,0,nil)
 	local ct=c:GetColumnGroup():FilterCount(Card.IsControler,nil,1-tp)
 	if c:IsControler(1-tp) then ct=ct+1 end
-	if chk==0 then return ct>0 and g:GetClassCount(Card.GetCode)>=ct end
+	if chk==0 then return c:IsRelateToEffect(e) and ct>0 and g:GetClassCount(Card.GetCode)>=ct end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,ct,tp,LOCATION_DECK)
 end
 function c20537097.thop(e,tp,eg,ep,ev,re,r,rp)
