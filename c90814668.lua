@@ -30,7 +30,7 @@ function c90814668.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectReleaseGroup(tp,c90814668.cfilter,1,1,nil,e,tp)
-	e:SetLabel(g:GetFirst():GetRank(),g:GetFirst():GetOriginalRace(),g:GetFirst():GetOriginalAttribute())
+	e:SetLabel(g:GetFirst():GetOriginalRace(),g:GetFirst():GetOriginalAttribute())
 	Duel.Release(g,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
 end
