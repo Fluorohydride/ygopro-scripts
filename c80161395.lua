@@ -17,9 +17,13 @@ function c80161395.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=sg:GetFirst()
 	local atk=tc:GetAttack()
 	local def=tc:GetDefense()
+	local isdef=tc:IsDefenseAbove(0)
 	Duel.Release(tc,REASON_COST)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(80161395,0))
-	local sel=Duel.SelectOption(tp,aux.Stringid(80161395,1),aux.Stringid(80161395,2))
+	local sel=0
+	if isdef then
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(80161395,0))
+		sel=Duel.SelectOption(tp,aux.Stringid(80161395,1),aux.Stringid(80161395,2))
+	end
 	if sel==0 then e:SetLabel(atk)
 	else e:SetLabel(def) end
 end
