@@ -57,9 +57,9 @@ function c64961254.operation(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsCanBeSpecialSummoned(e,0,1-tp,false,false,POS_FACEDOWN_DEFENSE,1-tp) then
 			Duel.SpecialSummon(tc,0,1-tp,1-tp,false,false,POS_FACEDOWN_DEFENSE)
 		end
-	elseif (opt==1 and tc:IsType(TYPE_SPELL)) then
+	elseif (opt==1 and tc:IsType(TYPE_SPELL) and tc:IsSSetable()) then
 		Duel.SSet(1-tp,tc)
-	elseif (opt==2 and tc:IsType(TYPE_TRAP))then
+	elseif (opt==2 and tc:IsType(TYPE_TRAP) and tc:IsSSetable())then
 		Duel.SSet(1-tp,tc)
 	else
 		Duel.SendtoHand(g,1-tp,REASON_EFFECT)

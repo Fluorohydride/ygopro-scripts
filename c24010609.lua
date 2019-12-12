@@ -109,7 +109,7 @@ function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 	if #g==0 or ct==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local tg=g:SelectSubGroup(tp,c24010609.gselect,false,1,math.min(ct,ft+1),ft)
-	Duel.SSet(tp,tg)
+	if Duel.SSet(tp,tg)==0 then return end
 	local tc=tg:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(c)

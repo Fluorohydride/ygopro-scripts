@@ -36,8 +36,7 @@ function c60990740.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmDecktop(tp,1)
 	local tc=Duel.GetDecktopGroup(tp,1):GetFirst()
 	Duel.DisableShuffleCheck()
-	if tc:GetType()==TYPE_TRAP and tc:IsSSetable() then
-		Duel.SSet(tp,tc)
+	if tc:GetType()==TYPE_TRAP and Duel.SSet(tp,tc)~=0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)

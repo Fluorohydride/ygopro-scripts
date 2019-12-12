@@ -71,9 +71,7 @@ function c48086335.setop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_MONSTER_SSET)
 		e1:SetValue(TYPE_SPELL)
 		tc:RegisterEffect(e1,true)
-		if tc:IsSSetable() then
-			Duel.SSet(tp,tc)
-		end
+		Duel.SSet(tp,tc)
 		e1:Reset()
 	end
 end
