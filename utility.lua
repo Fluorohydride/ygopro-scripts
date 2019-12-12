@@ -2373,6 +2373,62 @@ function Group.SelectSubGroup(g,tp,f,cancelable,min,max,...)
 		return nil
 	end
 end
+function Auxiliary.CreateChecks(f,list)
+	local checks={}
+	for i=1,#list do
+		checks[i]=function(c) return f(c,list[i]) end
+	end
+	return checks
+end
+function Auxiliary.CheckGroupRecursiveEach(c,sg,g,f,checks,ext_params)
+	if not checks[1+#sg](c) then
+		return false
+	end
+	sg:AddCard(c)
+	if Auxiliary.GCheckAdditional and not Auxiliary.GCheckAdditional(sg,c,g,f,min,max,ext_params) then
+		sg:RemoveCard(c)
+		return false
+	end
+	local res
+	if #sg==#checks then
+		res=f(sg,table.unpack(ext_params))
+	else
+		res=g:IsExists(Auxiliary.CheckGroupRecursiveEach,1,sg,sg,g,f,checks,ext_params)
+	end
+	sg:RemoveCard(c)
+	return res
+end
+function Group.CheckSubGroupEach(g,f,checks,...)
+	local ct=#checks
+	if ct==0 then return false end
+	if #g<ct then return false end
+	local ext_params={...}
+	local sg=Group.CreateGroup()
+	return g:IsExists(Auxiliary.CheckGroupRecursiveEach,1,sg,sg,g,f,checks,ext_params)
+end
+function Group.SelectSubGroupEach(g,tp,f,cancelable,checks,...)
+	local ct=#checks
+	local ext_params={...}
+	local sg=Group.CreateGroup()
+	local finish=false
+	while #sg<ct do
+		local cg=g:Filter(Auxiliary.CheckGroupRecursiveEach,sg,sg,g,f,checks,ext_params)
+		if #cg==0 then break end
+		local tc=cg:SelectUnselect(sg,tp,false,cancelable,ct,ct)
+		if not tc then break end
+		if not sg:IsContains(tc) then
+			sg:AddCard(tc)
+			if #sg==ct then finish=true end
+		else
+			sg:Clear()
+		end
+	end
+	if finish then
+		return sg
+	else
+		return nil
+	end
+end
 --target function of continuous trap with a card target
 function Auxiliary.ctg(e,c)
 	return e:GetHandler():IsHasCardTarget(c)

@@ -48,6 +48,7 @@ function c76794549.initial_effect(c)
 		Duel.RegisterEffect(ge2,0)
 	end
 end
+c76794549.hnchecks=aux.CreateChecks(Card.IsSetCard,{0x10f2,0x2073,0x2017,0x1046})
 function c76794549.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do
@@ -142,26 +143,10 @@ function c76794549.cfilter(c)
 		and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 		and (not c:IsLocation(LOCATION_MZONE) or c:IsFaceup())
 end
-function c76794549.fcheck(c,sg,g,code,...)
-	if not c:IsSetCard(code) then return false end
-	if ... then
-		g:AddCard(c)
-		local res=sg:IsExists(c76794549.fcheck,1,g,sg,g,...)
-		g:RemoveCard(c)
-		return res
-	else return true end
-end
-function c76794549.fselect(c,tp,mg,sg,mc,...)
-	sg:AddCard(c)
-	local res=false
-	if sg:GetCount()<5 then
-		res=mg:IsExists(c76794549.fselect,1,sg,tp,mg,sg,mc,...)
-	elseif Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
-		local g=Group.FromCards(mc)
-		res=sg:IsExists(c76794549.fcheck,1,g,sg,g,...)
-	end
-	sg:RemoveCard(c)
-	return res
+function c76794549.hngoal(g,tp,c)
+	local sg=Group.FromCards(c)
+	sg:Merge(g)
+	return Duel.GetLocationCountFromEx(tp,tp,sg)>0
 end
 function c76794549.hnfilter(c,e,tp)
 	return c:IsCode(13331639) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial()
@@ -169,14 +154,11 @@ end
 function c76794549.hncost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local mg=Duel.GetMatchingGroup(c76794549.cfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
-	local sg=Group.FromCards(c)
 	if chk==0 then return c:IsAbleToRemoveAsCost()
-		and mg:IsExists(c76794549.fselect,1,sg,tp,mg,sg,c,0x10f2,0x2073,0x2017,0x1046) end
-	while sg:GetCount()<5 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g=mg:FilterSelect(tp,c76794549.fselect,1,1,sg,tp,mg,sg,c,0x10f2,0x2073,0x2017,0x1046)
-		sg:Merge(g)
-	end
+		and mg:CheckSubGroupEach(c76794549.hngoal,c76794549.hnchecks,tp,c) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=mg:SelectSubGroupEach(tp,c76794549.hngoal,false,c76794549.hnchecks,tp,c)
+	sg:AddCard(c)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c76794549.hntg(e,tp,eg,ep,ev,re,r,rp,chk)
