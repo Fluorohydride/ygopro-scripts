@@ -40,12 +40,14 @@ function c91588074.spcon(e,c)
 	return g:GetClassCount(Card.GetCode)>=10 and (ft>0 or g:IsExists(Card.IsLocation,ct,nil,LOCATION_MZONE))
 end
 function c91588074.gselect(g,tp)
-	return aux.dncheck(g) and Duel.GetMZoneCount(tp,g)>0
+	return Duel.GetMZoneCount(tp,g)>0
 end
 function c91588074.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToDeckOrExtraAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+	aux.GCheckAdditional=aux.dncheck
 	local rg=g:SelectSubGroup(tp,c91588074.gselect,false,10,10,tp)
+	aux.GCheckAdditional=nil
 	local cg=rg:Filter(Card.IsFacedown,nil)
 	if cg:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,cg)

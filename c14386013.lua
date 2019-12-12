@@ -57,7 +57,9 @@ function c14386013.drop(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c14386013.drfilter),p,LOCATION_HAND+LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
-	local sg=g:SelectSubGroup(p,aux.dncheck,false,1,Duel.GetFieldGroupCount(p,LOCATION_DECK,0))
+	aux.GCheckAdditional=aux.dncheck
+	local sg=g:SelectSubGroup(p,aux.TRUE,false,1,Duel.GetFieldGroupCount(p,LOCATION_DECK,0))
+	aux.GCheckAdditional=nil
 	if sg then
 		Duel.ConfirmCards(1-p,sg)
 		Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)

@@ -50,7 +50,9 @@ function c28770951.drtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(c28770951.filter,tp,LOCATION_GRAVE,0,nil,e)
 	if chk==0 then return g:GetClassCount(Card.GetCode)>=5 and Duel.IsPlayerCanDraw(tp,2) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local sg=g:SelectSubGroup(tp,aux.dncheck,false,5,5)
+	aux.GCheckAdditional=aux.dncheck
+	local sg=g:SelectSubGroup(tp,aux.TRUE,false,5,5)
+	aux.GCheckAdditional=nil
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,sg,sg:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)

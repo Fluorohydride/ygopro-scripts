@@ -54,7 +54,9 @@ function c73881652.drtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
 		and g:GetClassCount(Card.GetCode)>4 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local sg=g:SelectSubGroup(tp,aux.dncheck,false,5,5)
+	aux.GCheckAdditional=aux.dncheck
+	local sg=g:SelectSubGroup(tp,aux.TRUE,false,5,5)
+	aux.GCheckAdditional=nil
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,5,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
