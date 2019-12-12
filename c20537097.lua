@@ -55,16 +55,19 @@ function c20537097.thfilter(c)
 	return c:IsSetCard(0x10c) and c:IsType(TYPE_MONSTER) and not c:IsCode(20537097) and c:IsAbleToHand()
 end
 function c20537097.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(c20537097.thfilter,tp,LOCATION_DECK,0,nil)
-	local ct=e:GetHandler():GetColumnGroup():FilterCount(Card.IsControler,nil,1-tp)
-	if chk==0 then return ct>0 and g:GetClassCount(Card.GetCode)>=ct end
+	local ct=c:GetColumnGroup():FilterCount(Card.IsControler,nil,1-tp)
+	if c:IsControler(1-tp) then ct=ct+1 end
+	if chk==0 then return c:IsRelateToEffect(e) and ct>0 and g:GetClassCount(Card.GetCode)>=ct end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,ct,tp,LOCATION_DECK)
 end
 function c20537097.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c20537097.thfilter,tp,LOCATION_DECK,0,nil)
-	local ct=e:GetHandler():GetColumnGroup():FilterCount(Card.IsControler,nil,1-tp)
+	local ct=c:GetColumnGroup():FilterCount(Card.IsControler,nil,1-tp)
+	if c:IsControler(1-tp) then ct=ct+1 end
 	if ct<=0 or g:GetClassCount(Card.GetCode)<ct then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local hg=g:SelectSubGroup(tp,aux.dncheck,false,ct,ct)
