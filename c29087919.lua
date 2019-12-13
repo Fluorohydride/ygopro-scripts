@@ -30,7 +30,7 @@ function c29087919.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and ct>1 and mg:CheckSubGroup(c29087919.fgoal,2,ct,exg) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg1=mg:SelectSubGroup(tp,c29087919.fgoal,false,2,ct,exg)
-		Duel.SetTargetCard(sg1)
+	Duel.SetTargetCard(sg1)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg1,sg1:GetCount(),0,0)
 end
 function c29087919.filter2(c,e,tp)
