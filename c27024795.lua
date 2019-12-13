@@ -33,46 +33,28 @@ end
 function c27024795.matfilter(c)
 	return c:IsSetCard(0x42) and c:IsType(TYPE_MONSTER) and (c:IsFaceup() or c:IsLocation(LOCATION_DECK)) and c:IsLevelAbove(1)
 end
-function c27024795.fselect(c,tp,rg,sg,e)
-	sg:AddCard(c)
-	local res=false
-	if #sg<3 then
-		res=rg:IsExists(c27024795.fselect,1,sg,tp,rg,sg,e)
-	else
-		res=c27024795.fgoal(tp,sg,e)
-	end
-	sg:RemoveCard(c)
-	return res
-end
-function c27024795.fgoal(tp,sg,e)
-	return #sg==3 and sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)==2 and sg:GetSum(Card.GetLevel)==10
+function c27024795.fgoal(sg,e,tp)
+	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)==2 and sg:GetSum(Card.GetLevel)==10
 		and Duel.IsExistingMatchingCard(c27024795.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,sg)
 end
 function c27024795.spfilter(c,e,tp,mg)
-	return c:IsSetCard(0x4b) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and (not mg or Duel.GetLocationCountFromEx(tp,tp,mg,c)>0)
+	return c:IsSetCard(0x4b) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mg,c)>0
 end
 function c27024795.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local mg=Duel.GetMatchingGroup(c27024795.matfilter,tp,LOCATION_DECK+LOCATION_MZONE,0,nil)
-		local sg=Group.CreateGroup()
-		return mg:IsExists(c27024795.fselect,1,nil,tp,mg,sg,e)
+		return mg:CheckSubGroup(c27024795.fgoal,3,3,e,tp)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,3,tp,LOCATION_DECK+LOCATION_MZONE)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c27024795.spop(e,tp,eg,ep,ev,re,r,rp)
 	local mg=Duel.GetMatchingGroup(c27024795.matfilter,tp,LOCATION_DECK+LOCATION_MZONE,0,nil)
-	local sg=Group.CreateGroup()
-	for i=0,2 do
-		local cg=mg:Filter(c27024795.fselect,sg,tp,mg,sg,e)
-		if cg:GetCount()==0 then break end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local g=cg:Select(tp,1,1,nil)
-		sg:Merge(g)
-	end
-	if Duel.SendtoGrave(sg,REASON_EFFECT)==3 then
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local sg=mg:SelectSubGroup(tp,c27024795.fgoal,false,3,3,e,tp)
+	if sg and Duel.SendtoGrave(sg,REASON_EFFECT)==3 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local tg=Duel.SelectMatchingCard(tp,c27024795.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
+		local tg=Duel.SelectMatchingCard(tp,c27024795.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,nil)
 		if tg:GetCount()>0 then
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tg,0,tp,tp,false,false,POS_FACEUP)

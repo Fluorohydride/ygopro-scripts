@@ -17,20 +17,8 @@ end
 function c29087919.xyzfilter(c,mg,ct)
 	return c:IsXyzSummonable(mg,2,ct)
 end
-function c29087919.mfilter1(c,mg,exg,ct)
-	return mg:IsExists(c29087919.mfilter2,1,nil,Group.FromCards(c),mg,exg,ct)
-end
-function c29087919.mfilter2(c,g,mg,exg,ct)
-	local tc=g:GetFirst()
-	while tc do
-		if c:IsCode(tc:GetCode()) then return false end
-		tc=g:GetNext()
-	end
-	g:AddCard(c)
-	local result=exg:IsExists(Card.IsXyzSummonable,1,nil,g,g:GetCount(),g:GetCount())
-		or (g:GetCount()<ct and mg:IsExists(c29087919.mfilter2,1,nil,g,mg,exg,ct))
-	g:RemoveCard(c)
-	return result
+function c29087919.fgoal(sg,exg)
+	return aux.dncheck(sg) and exg:IsExists(Card.IsXyzSummonable,1,nil,sg,#sg,#sg)
 end
 function c29087919.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
@@ -39,18 +27,9 @@ function c29087919.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local exg=Duel.GetMatchingGroup(c29087919.xyzfilter,tp,LOCATION_EXTRA,0,nil,mg,ct)
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and ct>1 and mg:IsExists(c29087919.mfilter1,1,nil,mg,exg,ct) end
+		and ct>1 and mg:CheckSubGroup(c29087919.fgoal,2,ct,exg) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg1=mg:FilterSelect(tp,c29087919.mfilter1,1,1,nil,mg,exg,ct)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg2=mg:FilterSelect(tp,c29087919.mfilter2,1,1,nil,sg1,mg,exg,ct)
-	sg1:Merge(sg2)
-	while sg1:GetCount()<ct and mg:IsExists(c29087919.mfilter2,1,nil,sg1,mg,exg,ct)
-		and (not exg:IsExists(Card.IsXyzSummonable,1,nil,sg1,sg1:GetCount(),sg1:GetCount()) or Duel.SelectYesNo(tp,aux.Stringid(29087919,0))) do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg3=mg:FilterSelect(tp,c29087919.mfilter2,1,1,nil,sg1,mg,exg,ct)
-		sg1:Merge(sg3)
-	end
+	local sg1=mg:SelectSubGroup(tp,c29087919.fgoal,false,2,ct,exg)
 	Duel.SetTargetCard(sg1)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg1,sg1:GetCount(),0,0)
 end
