@@ -65,7 +65,9 @@ function c77075360.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local ct=math.min(g:GetClassCount(Card.GetLevel),ft)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg=g:SelectSubGroup(tp,aux.dlvcheck,false,ct,ct)
+	aux.GCheckAdditional=aux.dlvcheck
+	local sg=g:SelectSubGroup(tp,aux.TRUE,false,ct,ct)
+	aux.GCheckAdditional=nil
 	Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c77075360.regop(e,tp,eg,ep,ev,re,r,rp)

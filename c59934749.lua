@@ -109,7 +109,9 @@ function c59934749.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(59934749,2))
 	local lv=Duel.AnnounceNumber(tp,table.unpack(lvt))
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local rg=cg:SelectSubGroup(tp,aux.dncheck,false,lv,lv)
+	aux.GCheckAdditional=aux.dncheck
+	local rg=cg:SelectSubGroup(tp,aux.TRUE,false,lv,lv)
+	aux.GCheckAdditional=nil
 	Duel.SendtoGrave(rg,REASON_COST)
 	e:SetLabel(lv)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)

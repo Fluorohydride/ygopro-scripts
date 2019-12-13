@@ -66,7 +66,9 @@ function c35546670.tgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return g:GetClassCount(Card.GetCode)>=8 end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local rg=g:SelectSubGroup(tp,aux.dncheck,false,8,8)
+	aux.GCheckAdditional=aux.dncheck
+	local rg=g:SelectSubGroup(tp,aux.TRUE,false,8,8)
+	aux.GCheckAdditional=nil
 	Duel.Remove(rg,POS_FACEUP,REASON_COST)
 end
 function c35546670.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)

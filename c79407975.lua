@@ -39,7 +39,9 @@ end
 function c79407975.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c79407975.spfilter,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local rg=g:SelectSubGroup(tp,aux.dncheck,false,7,7)
+	aux.GCheckAdditional=aux.dncheck
+	local rg=g:SelectSubGroup(tp,aux.TRUE,false,7,7)
+	aux.GCheckAdditional=nil
 	Duel.Remove(rg,POS_FACEUP,REASON_COST)
 end
 function c79407975.cfilter(c)

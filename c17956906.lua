@@ -47,7 +47,9 @@ function c17956906.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local pay=Duel.AnnounceNumber(tp,table.unpack(pay_list))
 	Duel.PayLPCost(tp,pay*1000)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg=g:SelectSubGroup(tp,aux.dncheck,false,pay,pay)
+	aux.GCheckAdditional=aux.dncheck
+	local sg=g:SelectSubGroup(tp,aux.TRUE,false,pay,pay)
+	aux.GCheckAdditional=nil
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,sg:GetCount(),0,0)
 end

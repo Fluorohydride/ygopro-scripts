@@ -71,7 +71,9 @@ function c12215894.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c12215894.cfilter,tp,LOCATION_GRAVE+LOCATION_ONFIELD,0,nil)
 	if chk==0 then return g:GetClassCount(Card.GetCode)>=9 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local rg=g:SelectSubGroup(tp,aux.dncheck,false,9,9)
+	aux.GCheckAdditional=aux.dncheck
+	local rg=g:SelectSubGroup(tp,aux.TRUE,false,9,9)
+	aux.GCheckAdditional=nil
 	Duel.Remove(rg,POS_FACEUP,REASON_COST)
 end
 function c12215894.target2(e,tp,eg,ep,ev,re,r,rp,chk)
