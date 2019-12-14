@@ -25,7 +25,7 @@ function c54913680.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return rg:CheckSubGroup(c54913680.fgoal,2,2,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local sg=rg:SelectSubGroup(tp,c54913680.fgoal,false,2,2,tp)
-	Duel.Release(g,REASON_COST)
+	Duel.Release(sg,REASON_COST)
 end
 function c54913680.spfilter(c,e,tp)
 	return c:IsCode(63176202) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
