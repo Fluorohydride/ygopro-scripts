@@ -999,7 +999,6 @@ function Auxiliary.XyzLevelFreeOperation2(f,gf,minct,maxct,alterf,desc,op)
 				end
 			end
 end
---material_count: number of different names in material list
 --material: names in material list
 --Fusion monster, mixed materials
 function Auxiliary.AddFusionProcMix(c,sub,insf,...)
@@ -1030,9 +1029,8 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 		end
 	end
 	if #mat>0 then
-		if c.material_count==nil then
+		if c.material==nil then
 			local mt=getmetatable(c)
-			mt.material_count=#mat
 			mt.material=mat
 		end
 		Auxiliary.AddCodeList(c,table.unpack(mat))
@@ -1145,9 +1143,8 @@ function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
 		end
 	end
 	if #mat>0 then
-		if c.material_count==nil then
+		if c.material==nil then
 			local mt=getmetatable(c)
-			mt.material_count=#mat
 			mt.material=mat
 		end
 		Auxiliary.AddCodeList(c,table.unpack(mat))
