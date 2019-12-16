@@ -36,8 +36,8 @@ function c80769747.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+		if c:IsRelateToEffect(e) and c:IsFaceup() then
 			Duel.Equip(tp,c,tc,true)
 			--Add Equip limit
 			local e1=Effect.CreateEffect(tc)

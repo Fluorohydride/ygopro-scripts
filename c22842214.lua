@@ -45,10 +45,12 @@ end
 function c22842214.eqlimit(e,c)
 	return e:GetOwner()==c
 end
+function c22842214.tgfilter(c,e)
+	return c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
+end
 function c22842214.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
-	local tg0=g:Filter(Card.IsRelateToEffect,nil,e)
+	local tg0=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c22842214.tgfilter,nil,e)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if tg0:GetCount()==0 or ft<=0 then return end
 	if c:IsFaceup() and c:IsRelateToEffect(e) then

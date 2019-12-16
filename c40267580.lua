@@ -39,7 +39,7 @@ function c40267580.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if tc and not c:IsStatus(STATUS_BATTLE_DESTROYED) and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if tc and not c:IsStatus(STATUS_BATTLE_DESTROYED) and c:IsFaceup() and c:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
 		if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 			Duel.Equip(tp,c,tc)
 			--Add Equip limit

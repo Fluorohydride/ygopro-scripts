@@ -58,7 +58,7 @@ function c66094973.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFieldGroup(tp,LOCATION_HAND,0)==0 then return end
 	Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT+REASON_DISCARD)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
 			local atk=tc:GetTextAttack()
 			if atk<0 then atk=0 end

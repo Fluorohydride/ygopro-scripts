@@ -39,7 +39,7 @@ function c53241226.activate(e,tp,eg,ep,ev,re,r,rp)
 	if hc==tc then hc=g:GetNext() end
 	if hc:IsControler(tp) and tc:IsFaceup() and tc:IsRelateToEffect(e)
 		and tc:IsControler(1-tp) and tc:IsLocation(LOCATION_MZONE)
-		and tc:IsAbleToChangeControler() then
+		and tc:IsAbleToChangeControler() and not tc:IsImmuneToEffect(e) then
 		if hc:IsFaceup() and hc:IsRelateToEffect(e)
 			and hc:IsLocation(LOCATION_MZONE) then
 			if Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
@@ -70,8 +70,7 @@ function c53241226.activate(e,tp,eg,ep,ev,re,r,rp)
 				end
 			else Duel.Destroy(tc,REASON_RULE)
 			end
-		else Duel.SendtoGrave(tc,REASON_RULE)
-		end
+		else Duel.SendtoGrave(tc,REASON_RULE) end
 	end
 end
 function c53241226.eqlimit(e,c)

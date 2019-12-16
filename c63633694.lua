@@ -71,7 +71,7 @@ end
 function c63633694.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) then
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
 			local p=c:GetControler()
 			if Duel.GetLocationCount(p,LOCATION_SZONE)<=0 then
