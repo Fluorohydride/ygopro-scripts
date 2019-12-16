@@ -52,7 +52,7 @@ function c32354768.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 function c32354768.mtfilter(c)
-	return c:IsSetCard(0xc4) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0xc4) and c:IsType(TYPE_MONSTER+TYPE_PENDULUM)
 end
 function c32354768.valcheck(e,c)
 	if c:GetMaterial():IsExists(c32354768.mtfilter,1,nil) then
