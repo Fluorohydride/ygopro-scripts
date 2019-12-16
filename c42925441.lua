@@ -34,7 +34,7 @@ function c42925441.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetRange(LOCATION_SZONE)
 	e1:SetCondition(c42925441.descon)
 	e1:SetOperation(c42925441.desop)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,3)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY+RESET_SELF_TURN,2)
 	c:SetTurnCounter(0)
 	c:RegisterEffect(e1)
 	if c42925441.effcost(e,tp,eg,ep,ev,re,r,rp,0)
@@ -54,7 +54,7 @@ function c42925441.desop(e,tp,eg,ep,ev,re,r,rp)
 	ct=ct+1
 	c:SetTurnCounter(ct)
 	if ct==2 then
-		Duel.Destroy(c,REASON_EFFECT)
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c42925441.effcost(e,tp,eg,ep,ev,re,r,rp,chk)
