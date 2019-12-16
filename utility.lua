@@ -245,13 +245,6 @@ function Auxiliary.NonTuner(f,...)
 				return target:IsNotTuner(syncard) and (not f or f(target,table.unpack(ext_params)))
 			end
 end
-function Auxiliary.TableInsertValue(table,value)
-	if type(table)~='table' then return end
-	for _,tval in ipairs(table) do
-		if tval==value then return end
-	end
-	table.insert(table,value)
-end
 function Auxiliary.GetValueType(v)
 	local t=type(v)
 	if t=="userdata" then
@@ -1021,19 +1014,19 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 					return false
 			end
 			for _,fcode in ipairs(val[i]) do
-				if type(fcode)~='function' then Auxiliary.TableInsertValue(mat,fcode) end
+				if type(fcode)~='function' and not mat[fcode] then mat[fcode]=true end
 			end
 		else
 			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
-			Auxiliary.TableInsertValue(mat,val[i])
+			if not mat[val[i]] then mat[val[i]]=true end
 		end
 	end
-	if #mat>0 then
-		if c.material==nil then
-			local mt=getmetatable(c)
-			mt.material=mat
-		end
-		Auxiliary.AddCodeList(c,table.unpack(mat))
+	if c.material==nil then
+		local mt=getmetatable(c)
+		mt.material=mat
+	end
+	for index,_ in pairs(mat) do
+		Auxiliary.AddCodeList(c,index)
 	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -1135,19 +1128,19 @@ function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
 					return false
 			end
 			for _,fcode in ipairs(val[i]) do
-				if type(fcode)~='function' then Auxiliary.TableInsertValue(mat,fcode) end
+				if type(fcode)~='function' and not mat[fcode] then mat[fcode]=true end
 			end
 		else
 			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
-			Auxiliary.TableInsertValue(mat,val[i])
+			if not mat[val[i]] then mat[val[i]]=true end
 		end
 	end
-	if #mat>0 then
-		if c.material==nil then
-			local mt=getmetatable(c)
-			mt.material=mat
-		end
-		Auxiliary.AddCodeList(c,table.unpack(mat))
+	if c.material==nil then
+		local mt=getmetatable(c)
+		mt.material=mat
+	end
+	for index,_ in pairs(mat) do
+		Auxiliary.AddCodeList(c,index)
 	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -1984,11 +1977,7 @@ function Auxiliary.ExtraDeckSummonCountLimitReset()
 	Auxiliary.ExtraDeckSummonCountLimit[1]=1
 end
 function Auxiliary.IsMaterialListCode(c,code)
-	if not c.material then return false end
-	for i,mcode in ipairs(c.material) do
-		if code==mcode then return true end
-	end
-	return false
+	return c.material and c.material[code]
 end
 function Auxiliary.IsMaterialListSetCard(c,setcode)
 	if not c.material_setcode then return false end
@@ -2010,20 +1999,16 @@ function Auxiliary.AddCodeList(c,...)
 		local mt=getmetatable(c)
 		mt.card_code_list={}
 		for _,code in ipairs{...} do
-			Auxiliary.TableInsertValue(mt.card_code_list,code)
+			if not mt.card_code_list[code] then mt.card_code_list[code]=true end
 		end
 	else
 		for _,code in ipairs{...} do
-			Auxiliary.TableInsertValue(c.card_code_list,code)
+			if not c.card_code_list[code] then c.card_code_list[code]=true end
 		end
 	end
 end
 function Auxiliary.IsCodeListed(c,code)
-	if not c.card_code_list then return false end
-	for i,ccode in ipairs(c.card_code_list) do
-		if code==ccode then return true end
-	end
-	return false
+	return c.card_code_list and c.card_code_list[code]
 end
 function Auxiliary.IsCounterAdded(c,counter)
 	if not c.counter_add_list then return false end
