@@ -1014,11 +1014,11 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 					return false
 			end
 			for _,fcode in ipairs(val[i]) do
-				if type(fcode)~='function' and not mat[fcode] then mat[fcode]=true end
+				if type(fcode)~='function' then mat[fcode]=true end
 			end
 		else
 			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
-			if not mat[val[i]] then mat[val[i]]=true end
+			mat[val[i]]=true
 		end
 	end
 	if c.material==nil then
@@ -1128,11 +1128,11 @@ function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
 					return false
 			end
 			for _,fcode in ipairs(val[i]) do
-				if type(fcode)~='function' and not mat[fcode] then mat[fcode]=true end
+				if type(fcode)~='function' then mat[fcode]=true end
 			end
 		else
 			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
-			if not mat[val[i]] then mat[val[i]]=true end
+			mat[val[i]]=true
 		end
 	end
 	if c.material==nil then
@@ -1999,11 +1999,11 @@ function Auxiliary.AddCodeList(c,...)
 		local mt=getmetatable(c)
 		mt.card_code_list={}
 		for _,code in ipairs{...} do
-			if not mt.card_code_list[code] then mt.card_code_list[code]=true end
+			mt.card_code_list[code]=true
 		end
 	else
 		for _,code in ipairs{...} do
-			if not c.card_code_list[code] then c.card_code_list[code]=true end
+			c.card_code_list[code]=true
 		end
 	end
 end
