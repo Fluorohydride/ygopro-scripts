@@ -992,7 +992,6 @@ function Auxiliary.XyzLevelFreeOperation2(f,gf,minct,maxct,alterf,desc,op)
 				end
 			end
 end
---material_count: number of different names in material list
 --material: names in material list
 --Fusion monster, mixed materials
 function Auxiliary.AddFusionProcMix(c,sub,insf,...)
@@ -1015,20 +1014,19 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 					return false
 			end
 			for _,fcode in ipairs(val[i]) do
-				if type(fcode)~='function' then table.insert(mat,fcode) end
+				if type(fcode)~='function' then mat[fcode]=true end
 			end
 		else
 			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
-			table.insert(mat,val[i])
+			mat[val[i]]=true
 		end
 	end
-	if #mat>0 then
-		if c.material_count==nil then
-			local mt=getmetatable(c)
-			mt.material_count=#mat
-			mt.material=mat
-		end
-		Auxiliary.AddCodeList(c,table.unpack(mat))
+	if c.material==nil then
+		local mt=getmetatable(c)
+		mt.material=mat
+	end
+	for index,_ in pairs(mat) do
+		Auxiliary.AddCodeList(c,index)
 	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -1130,20 +1128,19 @@ function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
 					return false
 			end
 			for _,fcode in ipairs(val[i]) do
-				if type(fcode)~='function' then table.insert(mat,fcode) end
+				if type(fcode)~='function' then mat[fcode]=true end
 			end
 		else
 			fun[i]=function(c,fc,sub) return c:IsFusionCode(val[i]) or (sub and c:CheckFusionSubstitute(fc)) end
-			table.insert(mat,val[i])
+			mat[val[i]]=true
 		end
 	end
-	if #mat>0 then
-		if c.material_count==nil then
-			local mt=getmetatable(c)
-			mt.material_count=#mat
-			mt.material=mat
-		end
-		Auxiliary.AddCodeList(c,table.unpack(mat))
+	if c.material==nil then
+		local mt=getmetatable(c)
+		mt.material=mat
+	end
+	for index,_ in pairs(mat) do
+		Auxiliary.AddCodeList(c,index)
 	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -1323,28 +1320,9 @@ function Auxiliary.AddFusionProcCode4(c,code1,code2,code3,code4,sub,insf)
 end
 --Fusion monster, name * n
 function Auxiliary.AddFusionProcCodeRep(c,code1,cc,sub,insf)
-	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
 	local code={}
 	for i=1,cc do
 		code[i]=code1
-	end
-	if c.material_count==nil then
-		local mt=getmetatable(c)
-		if type(code1)=='table' then
-			mt.material_count=0
-			mt.material={}
-			for _,fcode in ipairs(code1) do
-				if type(fcode)~='function' then
-					mt.material_count=mt.material_count+1
-					table.insert(mt.material,fcode)
-				end
-			end
-			Auxiliary.AddCodeList(c,table.unpack(code1))
-		else
-			mt.material_count=1
-			mt.material={code1}
-			Auxiliary.AddCodeList(c,code1)
-		end
 	end
 	Auxiliary.AddFusionProcMix(c,sub,insf,table.unpack(code))
 end
@@ -1844,7 +1822,7 @@ function Auxiliary.EnableReviveLimitPendulumSummonable(c, loc)
 	c:RegisterEffect(e1)
 end
 function Auxiliary.PendulumSummonableBool(c)
-	return c.psummonable_location~=nil and c:GetLocation() & c.psummonable_location > 0
+	return c.psummonable_location~=nil and c:GetLocation()&c.psummonable_location>0
 end
 function Auxiliary.PSSCompleteProcedure(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -1999,11 +1977,7 @@ function Auxiliary.ExtraDeckSummonCountLimitReset()
 	Auxiliary.ExtraDeckSummonCountLimit[1]=1
 end
 function Auxiliary.IsMaterialListCode(c,code)
-	if not c.material then return false end
-	for i,mcode in ipairs(c.material) do
-		if code==mcode then return true end
-	end
-	return false
+	return c.material and c.material[code]
 end
 function Auxiliary.IsMaterialListSetCard(c,setcode)
 	if not c.material_setcode then return false end
@@ -2025,20 +1999,16 @@ function Auxiliary.AddCodeList(c,...)
 		local mt=getmetatable(c)
 		mt.card_code_list={}
 		for _,code in ipairs{...} do
-			table.insert(mt.card_code_list,code)
+			mt.card_code_list[code]=true
 		end
 	else
 		for _,code in ipairs{...} do
-			table.insert(c.card_code_list,code)
+			c.card_code_list[code]=true
 		end
 	end
 end
 function Auxiliary.IsCodeListed(c,code)
-	if not c.card_code_list then return false end
-	for i,ccode in ipairs(c.card_code_list) do
-		if code==ccode then return true end
-	end
-	return false
+	return c.card_code_list and c.card_code_list[code]
 end
 function Auxiliary.IsCounterAdded(c,counter)
 	if not c.counter_add_list then return false end
