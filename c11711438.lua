@@ -61,7 +61,7 @@ function c11711438.stgop(e,tp,eg,ep,ev,re,r,rp)
 	ct=ct+1
 	c:SetTurnCounter(ct)
 	if ct==2 then
-		Duel.SendtoGrave(c,REASON_EFFECT)
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c11711438.cfilter(c,tp)

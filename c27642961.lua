@@ -55,7 +55,7 @@ function c27642961.desop(e,tp,eg,ep,ev,re,r,rp)
 	ct=ct+1
 	c:SetTurnCounter(ct)
 	if ct==3 then
-		Duel.Destroy(c,REASON_EFFECT)
+		Duel.Destroy(c,REASON_RULE)
 	end
 end
 function c27642961.cfilter(c,tp)
