@@ -49,8 +49,8 @@ function c36898537.valcheck(e,c)
 	local tpe=0
 	local tc=g:GetFirst()
 	while tc do
-		if not tc:IsType(TYPE_TUNER) then
-			tpe=bit.bor(tpe,tc:GetType())
+		if not tc:IsSynchroType(TYPE_TUNER) then
+			tpe=bit.bor(tpe,tc:GetSynchroType())
 		end
 		tc=g:GetNext()
 	end
