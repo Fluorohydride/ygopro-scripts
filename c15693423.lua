@@ -12,6 +12,7 @@ function c15693423.initial_effect(c)
 	c:RegisterEffect(e1)
 	--act in hand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(15693423,0))
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_TRAP_ACT_IN_HAND)
 	e2:SetCondition(c15693423.handcon)

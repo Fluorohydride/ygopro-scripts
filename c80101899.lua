@@ -32,6 +32,7 @@ function c80101899.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tc2=g2:GetFirst()
 		if tc2 and Duel.SSet(tp,tc2)~=0 then
 			local e1=Effect.CreateEffect(c)
+			e1:SetDescription(aux.Stringid(80101899,0))
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
 			e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
