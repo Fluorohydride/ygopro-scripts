@@ -37,8 +37,6 @@ function c22628574.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	e:SetLabelObject(te)
 	Duel.ClearTargetCard()
 	local tg=te:GetTarget()
-	e:SetCategory(te:GetCategory())
-	e:SetProperty(te:GetProperty())
 	if tg then tg(e,tp,eg,ep,ev,re,r,rp,1) end
 	Duel.ClearOperationInfo(0)
 end
