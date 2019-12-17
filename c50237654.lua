@@ -49,7 +49,6 @@ function c50237654.drop(e,tp,eg,ep,ev,re,r,rp)
 			if Duel.SSet(tp,dc,tp,false)==0 then return end
 			if dc:IsType(TYPE_QUICKPLAY) then
 				local e1=Effect.CreateEffect(c)
-				e1:SetDescription(aux.Stringid(50237654,1))
 				e1:SetType(EFFECT_TYPE_SINGLE)
 				e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 				e1:SetCode(EFFECT_QP_ACT_IN_SET_TURN)
@@ -58,7 +57,6 @@ function c50237654.drop(e,tp,eg,ep,ev,re,r,rp)
 			end
 			if dc:IsType(TYPE_TRAP) then
 				local e1=Effect.CreateEffect(c)
-				e1:SetDescription(aux.Stringid(50237654,1))
 				e1:SetType(EFFECT_TYPE_SINGLE)
 				e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
 				e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
