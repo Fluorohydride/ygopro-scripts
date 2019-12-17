@@ -40,6 +40,7 @@ function c38844957.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local te=g:GetFirst():CheckActivateEffect(true,true,false)
 	e:SetLabelObject(te)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	e:SetProperty(te:GetProperty())
 	local tg=te:GetTarget()
 	if tg then tg(e,tp,eg,ep,ev,re,r,rp,1) end
 	Duel.ClearOperationInfo(0)

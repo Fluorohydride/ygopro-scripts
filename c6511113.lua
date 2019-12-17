@@ -88,6 +88,7 @@ function c6511113.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local te,ceg,cep,cev,cre,cr,crp=g:GetFirst():CheckActivateEffect(false,true,true)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 	Duel.SendtoGrave(g,REASON_COST)
+	e:SetProperty(te:GetProperty())
 	local tg=te:GetTarget()
 	if tg then tg(e,tp,ceg,cep,cev,cre,cr,crp,1) end
 	te:SetLabelObject(e:GetLabelObject())
@@ -132,6 +133,7 @@ function c6511113.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 	Duel.SendtoGrave(g,REASON_COST)
+	e:SetProperty(te:GetProperty())
 	local tg=te:GetTarget()
 	if tg then
 		if fchain then
