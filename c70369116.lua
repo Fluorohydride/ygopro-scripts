@@ -64,11 +64,11 @@ function c70369116.cptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.SelectMatchingCard(tp,c70369116.cpfilter,tp,LOCATION_DECK,0,1,1,nil)
 	local te,ceg,cep,cev,cre,cr,crp=g:GetFirst():CheckActivateEffect(false,true,true)
 	Duel.SendtoGrave(g,REASON_COST)
-	e:SetProperty(te:GetProperty())
 	local tg=te:GetTarget()
 	if tg then tg(e,tp,ceg,cep,cev,cre,cr,crp,1) end
 	te:SetLabelObject(e:GetLabelObject())
 	e:SetLabelObject(te)
+	Duel.ClearOperationInfo(0)
 end
 function c70369116.cpop(e,tp,eg,ep,ev,re,r,rp)
 	local te=e:GetLabelObject()
