@@ -62,7 +62,7 @@ function c57288708.tgop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c57288708.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousPosition(POS_FACEUP) and not c:IsSummonType(SUMMON_TYPE_SPECIAL)
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE) and not c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c57288708.spfilter(c,e,tp)
 	return c:IsSetCard(0xfd) and not c:IsCode(57288708) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

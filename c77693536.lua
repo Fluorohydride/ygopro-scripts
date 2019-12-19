@@ -57,7 +57,7 @@ function c77693536.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
 		local atk=tc:GetTextAttack()
 		if atk<0 then atk=0 end
-		if Duel.Equip(tp,tc,c)==0 then return end
+		if not Duel.Equip(tp,tc,c) then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_EQUIP)
 		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_OWNER_RELATE)

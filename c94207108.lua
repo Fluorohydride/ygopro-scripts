@@ -95,7 +95,7 @@ function c94207108.eqop(mc)
 	return
 		function (e,tp,eg,ep,ev,re,r,rp)
 			local tc=e:GetLabelObject()
-			if Duel.Equip(tp,tc,mc)==0 then return end
+			if not Duel.Equip(tp,tc,mc) then return end
 			local e1=Effect.CreateEffect(mc)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

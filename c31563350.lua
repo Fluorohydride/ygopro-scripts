@@ -35,7 +35,7 @@ function c31563350.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c31563350.filter,tp,LOCATION_HAND,0,1,1,nil,tp)
 	local tc=g:GetFirst()
 	if tc then
-		if not Duel.Equip(tp,tc,c,true) then return end
+		if not Duel.Equip(tp,tc,c) then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
 		e1:SetType(EFFECT_TYPE_SINGLE)
