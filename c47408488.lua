@@ -90,7 +90,7 @@ end
 function c47408488.pltg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local ct=e:GetHandler():GetCounter(0x6)
-		return ct>0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>=-1+ct
+		return ct>0 and Duel.GetSZoneCount(tp,e:GetHandler())>=ct
 			and Duel.IsExistingMatchingCard(c47408488.plfilter,tp,LOCATION_DECK,0,ct,nil)
 	end
 end

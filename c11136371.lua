@@ -13,15 +13,20 @@ function c11136371.cfilter(c)
 	return c:GetSequence()<5 and c:IsAbleToGraveAsCost()
 end
 function c11136371.plcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c11136371.cfilter,tp,LOCATION_SZONE,0,1,e:GetHandler()) end
+	e:SetLabel(1)
 	local g=Duel.GetMatchingGroup(c11136371.cfilter,tp,LOCATION_SZONE,0,e:GetHandler())
+	if chk==0 then return g:GetCount()>0 and Duel.GetSZoneCount(tp,g)>0 end
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c11136371.plfilter(c)
 	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
 end
 function c11136371.pltg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c11136371.plfilter,tp,LOCATION_GRAVE,0,1,nil) end
+	local res=e:GetLabel()==1 or Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if chk==0 then
+		e:SetLabel(0)
+		return res and Duel.IsExistingMatchingCard(c11136371.plfilter,tp,LOCATION_GRAVE,0,1,nil)
+	end
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,nil,1,tp,LOCATION_GRAVE)
 end
 function c11136371.plop(e,tp,eg,ep,ev,re,r,rp)

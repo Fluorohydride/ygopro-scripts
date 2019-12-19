@@ -30,7 +30,7 @@ function c91299846.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c91299846.cfilter(c,tp)
-	return c:IsFaceup() and c:IsType(TYPE_CONTINUOUS) and c:IsAbleToGraveAsCost()
+	return c:IsFaceup() and c:IsType(TYPE_CONTINUOUS) and c:IsAbleToGraveAsCost() and Duel.GetSZoneCount(tp,c)>0
 		and Duel.IsExistingMatchingCard(c91299846.tffilter,tp,LOCATION_DECK,0,1,nil,c,tp)
 end
 function c91299846.tffilter(c,cc,tp)
@@ -44,7 +44,7 @@ function c91299846.tfcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c91299846.tftg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>-1 end
+	if chk==0 then return true end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c91299846.tfop(e,tp,eg,ep,ev,re,r,rp)

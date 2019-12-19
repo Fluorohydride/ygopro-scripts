@@ -20,18 +20,18 @@ function c27873305.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return (Duel.GetAttacker()==c or Duel.GetAttackTarget()==c)
 end
-function c27873305.thfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0xaf,0xae) and c:IsAbleToHand()
+function c27873305.thfilter(c,tp)
+	return c:IsFaceup() and c:IsSetCard(0xaf,0xae) and c:IsAbleToHand() and Duel.GetSZoneCount(tp,c)>0
 end
 function c27873305.eqfilter(c)
 	return c:IsFaceup() and c:IsAbleToChangeControler()
 end
 function c27873305.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c27873305.thfilter(chkc) and chkc~=e:GetHandler() end
-	if chk==0 then return Duel.IsExistingTarget(c27873305.thfilter,tp,LOCATION_ONFIELD,0,1,e:GetHandler())
+	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c27873305.thfilter(chkc,tp) and chkc~=e:GetHandler() end
+	if chk==0 then return Duel.IsExistingTarget(c27873305.thfilter,tp,LOCATION_ONFIELD,0,1,e:GetHandler(),tp)
 		and Duel.IsExistingMatchingCard(c27873305.eqfilter,tp,0,LOCATION_MZONE,1,e:GetHandler():GetBattleTarget()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g1=Duel.SelectTarget(tp,c27873305.thfilter,tp,LOCATION_ONFIELD,0,1,1,e:GetHandler())
+	local g1=Duel.SelectTarget(tp,c27873305.thfilter,tp,LOCATION_ONFIELD,0,1,1,e:GetHandler(),tp)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g1,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,nil,1,1-tp,LOCATION_MZONE)
 end
