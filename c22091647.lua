@@ -73,7 +73,7 @@ function c22091647.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,aux.ExceptThisCard(e))
 	local tc=g:GetFirst()
 	if tc then
-		if not Duel.Equip(tp,tc,c,true) then return end
+		if not Duel.Equip(tp,tc,c) then return end
 		tc:RegisterFlagEffect(22091647,RESET_EVENT+RESETS_STANDARD,0,0)
 		e:SetLabelObject(tc)
 		local e1=Effect.CreateEffect(c)

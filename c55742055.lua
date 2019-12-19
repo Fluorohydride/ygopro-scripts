@@ -102,7 +102,7 @@ function c55742055.operation2(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local sg=tg:Select(tp,1,1,nil)
-		Duel.Equip(tp,sg:GetFirst(),tc,true)
+		Duel.Equip(tp,sg:GetFirst(),tc)
 	end
 end
 function c55742055.thfilter(c)

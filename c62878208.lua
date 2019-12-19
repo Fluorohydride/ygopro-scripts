@@ -39,7 +39,7 @@ function c62878208.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if eq==tc then tc=g:GetNext() end
 	if eqc and eq:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
-		if Duel.Equip(tp,eq,tc)==0 then return end
+		if not Duel.Equip(tp,eq,tc) then return end
 		Duel.BreakEffect()
 		local a=eqc
 		local d=tc

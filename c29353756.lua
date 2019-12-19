@@ -57,7 +57,7 @@ function c29353756.eqop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
-	Duel.Equip(tp,c,tc,true)
+	Duel.Equip(tp,c,tc)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_EQUIP_LIMIT)
@@ -79,7 +79,7 @@ function c29353756.eqlimit(e,c)
 end
 function c29353756.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_SZONE
-		and re:IsActiveType(TYPE_TRAP) and Duel.IsChainDisablable(ev) 
+		and re:IsActiveType(TYPE_TRAP) and Duel.IsChainDisablable(ev)
 end
 function c29353756.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,29353756)
