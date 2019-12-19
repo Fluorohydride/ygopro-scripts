@@ -15,7 +15,7 @@ end
 function c80549379.repcon(e)
 	local c=e:GetHandler()
 	local tp=c:GetControler()
-	return c:IsFaceup() and c:IsReason(REASON_DESTROY)
+	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsReason(REASON_DESTROY)
 		and Duel.IsExistingMatchingCard(c80549379.filter,tp,LOCATION_MZONE,0,1,c)
 end
 function c80549379.repop(e,tp,eg,ep,ev,re,r,rp)
