@@ -47,9 +47,24 @@ function c45667991.rcop1(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_RACE)
 		e1:SetValue(RACE_DRAGON)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_OPPO_TURN)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e2:SetCode(EVENT_PHASE+PHASE_END)
+		e2:SetCountLimit(1)
+		e2:SetCondition(c45667991.resetcon)
+		e2:SetOperation(c45667991.resetop)
+		e2:SetLabelObject(e1)
+		Duel.RegisterEffect(e2,tp)
 	end
+end
+function c45667991.resetcon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetTurnPlayer()==1-tp
+end
+function c45667991.resetop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetLabelObject():Reset()
+	e:Reset()
 end
 function c45667991.rctg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsRace(RACE_DRAGON) end
