@@ -42,7 +42,7 @@ end
 function c22011689.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) then
 		if not Duel.Equip(tp,tc,c,false) then return end
 		--Add Equip limit
 		local e1=Effect.CreateEffect(c)

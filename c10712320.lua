@@ -37,9 +37,5 @@ function c10712320.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc==eqc then tc=g:GetNext() end
 	if not eqc:IsRelateToEffect(e) then return end
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then
-		Duel.SendtoGrave(eqc,REASON_EFFECT)
-		return
-	end
 	Duel.Equip(tp,eqc,tc)
 end
