@@ -39,9 +39,9 @@ function c54895237.gspfilter(c,cc,tp)
 		and not c:IsForbidden() and c:CheckUniqueOnField(tp,LOCATION_ONFIELD,cc)
 end
 function c54895237.gspcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c54895237.gspcfilter,tp,LOCATION_SZONE,0,1,nil,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c54895237.gspcfilter,tp,LOCATION_ONFIELD,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c54895237.gspcfilter,tp,LOCATION_SZONE,0,1,1,nil,tp)
+	local g=Duel.SelectMatchingCard(tp,c54895237.gspcfilter,tp,LOCATION_ONFIELD,0,1,1,nil,tp)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c54895237.gsptg(e,tp,eg,ep,ev,re,r,rp,chk)
