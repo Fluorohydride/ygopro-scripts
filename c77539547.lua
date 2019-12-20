@@ -39,11 +39,11 @@ function c77539547.thfilter(c)
 	return c:IsSetCard(0x137) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
 end
 function c77539547.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c77539547.tgfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c77539547.tgfilter,tp,LOCATION_SZONE,0,1,nil)
+	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c77539547.tgfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c77539547.tgfilter,tp,LOCATION_ONFIELD,0,1,nil)
 		and Duel.IsExistingMatchingCard(c77539547.thfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectTarget(tp,c77539547.tgfilter,tp,LOCATION_SZONE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,c77539547.tgfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
