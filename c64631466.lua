@@ -84,9 +84,7 @@ function c64631466.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) and tc:IsControler(1-tp) then
-		if c:IsFaceup() and c:IsRelateToEffect(e) then
-			c64631466.equip_monster(c,tp,tc)
-		else Duel.SendtoGrave(tc,REASON_RULE) end
+		c64631466.equip_monster(c,tp,tc)
 	end
 end
 function c64631466.repval(e,re,r,rp)

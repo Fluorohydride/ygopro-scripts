@@ -39,39 +39,30 @@ function c53241226.activate(e,tp,eg,ep,ev,re,r,rp)
 	if hc==tc then hc=g:GetNext() end
 	if hc:IsControler(tp) and tc:IsFaceup() and tc:IsRelateToEffect(e)
 		and tc:IsControler(1-tp) and tc:IsLocation(LOCATION_MZONE)
-		and tc:IsAbleToChangeControler() then
-		if hc:IsFaceup() and hc:IsRelateToEffect(e)
-			and hc:IsLocation(LOCATION_MZONE) then
-			if Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
-				if Duel.Equip(tp,tc,hc,false) then
-				--Add Equip limit
-				local e1=Effect.CreateEffect(c)
-				e1:SetType(EFFECT_TYPE_SINGLE)
-				e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
-				e1:SetCode(EFFECT_EQUIP_LIMIT)
-				e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-				e1:SetLabelObject(hc)
-				e1:SetValue(c53241226.eqlimit)
-				tc:RegisterEffect(e1,true)
-				--substitute
-				local e2=Effect.CreateEffect(c)
-				e2:SetType(EFFECT_TYPE_EQUIP)
-				e2:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-				e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-				e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-				e2:SetValue(c53241226.desrepval)
-				tc:RegisterEffect(e2,true)
-				--damage 0
-				local e3=Effect.CreateEffect(c)
-				e3:SetType(EFFECT_TYPE_SINGLE)
-				e3:SetCode(EFFECT_NO_BATTLE_DAMAGE)
-				e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-				hc:RegisterEffect(e3,true)
-				end
-			else Duel.Destroy(tc,REASON_RULE)
-			end
-		else Duel.SendtoGrave(tc,REASON_RULE)
-		end
+		and tc:IsAbleToChangeControler() and Duel.Equip(tp,tc,hc,false) then
+		--Add Equip limit
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
+		e1:SetCode(EFFECT_EQUIP_LIMIT)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetLabelObject(hc)
+		e1:SetValue(c53241226.eqlimit)
+		tc:RegisterEffect(e1,true)
+		--substitute
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_EQUIP)
+		e2:SetCode(EFFECT_DESTROY_SUBSTITUTE)
+		e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e2:SetValue(c53241226.desrepval)
+		tc:RegisterEffect(e2,true)
+		--damage 0
+		local e3=Effect.CreateEffect(c)
+		e3:SetType(EFFECT_TYPE_SINGLE)
+		e3:SetCode(EFFECT_NO_BATTLE_DAMAGE)
+		e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+		hc:RegisterEffect(e3,true)
 	end
 end
 function c53241226.eqlimit(e,c)
