@@ -112,7 +112,7 @@ function c77522571.spcost3(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c77522571.costfilter,nil)
 	if chk==0 then return rg:CheckSubGroup(c77522571.fgoal,2,rg:GetCount(),e,tp) end
 	local g=rg:SelectSubGroup(tp,c77522571.fgoal,false,2,rg:GetCount(),e,tp)
-	local lv=sg:GetSum(Card.GetLevel)
+	local lv=g:GetSum(Card.GetLevel)
 	e:SetLabel(lv)
 	Duel.Release(g,REASON_COST)
 end
