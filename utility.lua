@@ -2398,15 +2398,16 @@ function Auxiliary.CheckGroupRecursiveEach(c,sg,g,f,checks,ext_params)
 	sg:RemoveCard(c)
 	return res
 end
-function Group.CheckSubGroupEach(g,f,checks,...)
-	local ct=#checks
-	if ct==0 then return false end
-	if #g<ct then return false end
+function Group.CheckSubGroupEach(g,checks,f,...)
+	if f==nil then f=Auxiliary.TRUE end
+	if #g<#checks then return false end
 	local ext_params={...}
 	local sg=Group.CreateGroup()
 	return g:IsExists(Auxiliary.CheckGroupRecursiveEach,1,sg,sg,g,f,checks,ext_params)
 end
-function Group.SelectSubGroupEach(g,tp,f,cancelable,checks,...)
+function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
+	if cancelable==nil then cancelable=false end
+	if f==nil then f=Auxiliary.TRUE end
 	local ct=#checks
 	local ext_params={...}
 	local sg=Group.CreateGroup()

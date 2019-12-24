@@ -41,12 +41,12 @@ function c72989439.spcon(e,c)
 	local tp=c:GetControler()
 	if Duel.GetMZoneCount(tp)<=0 then return false end
 	local g=Duel.GetMatchingGroup(c72989439.spcostfilter,tp,LOCATION_GRAVE,0,nil)
-	return g:CheckSubGroupEach(aux.TRUE,c72989439.spchecks)
+	return g:CheckSubGroupEach(c72989439.spchecks)
 end
 function c72989439.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c72989439.spcostfilter,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg=g:SelectSubGroupEach(tp,aux.TRUE,false,c72989439.spchecks)
+	local sg=g:SelectSubGroupEach(tp,c72989439.spchecks)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c72989439.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)

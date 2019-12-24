@@ -19,9 +19,9 @@ function c34898052.rfilter(c)
 end
 function c34898052.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c34898052.rfilter,tp,LOCATION_GRAVE,0,nil)
-	if chk==0 then return g:CheckSubGroupEach(aux.TRUE,c34898052.rchecks) end
+	if chk==0 then return g:CheckSubGroupEach(c34898052.rchecks) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg=g:SelectSubGroupEach(tp,aux.TRUE,false,c34898052.rchecks)
+	local sg=g:SelectSubGroupEach(tp,c34898052.rchecks)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c34898052.target(e,tp,eg,ep,ev,re,r,rp,chk)

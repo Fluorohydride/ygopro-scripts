@@ -155,9 +155,9 @@ function c76794549.hncost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local mg=Duel.GetMatchingGroup(c76794549.cfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
 	if chk==0 then return c:IsAbleToRemoveAsCost()
-		and mg:CheckSubGroupEach(c76794549.hngoal,c76794549.hnchecks,tp,c) end
+		and mg:CheckSubGroupEach(c76794549.hnchecks,c76794549.hngoal,tp,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg=mg:SelectSubGroupEach(tp,c76794549.hngoal,false,c76794549.hnchecks,tp,c)
+	local sg=mg:SelectSubGroupEach(tp,c76794549.hnchecks,false,c76794549.hngoal,tp,c)
 	sg:AddCard(c)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end

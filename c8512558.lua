@@ -37,19 +37,19 @@ function c8512558.gcheck(g)
 	if #g==1 then
 		return true
 	elseif #g==2 then
-		return g:CheckSubGroupEach(aux.TRUE,c8512558.combination2[1])
-			or g:CheckSubGroupEach(aux.TRUE,c8512558.combination2[2])
-			or g:CheckSubGroupEach(aux.TRUE,c8512558.combination2[3])
-			or g:CheckSubGroupEach(aux.TRUE,c8512558.combination2[4])
-			or g:CheckSubGroupEach(aux.TRUE,c8512558.combination2[5])
-			or g:CheckSubGroupEach(aux.TRUE,c8512558.combination2[6])
+		return g:CheckSubGroupEach(c8512558.combination2[1])
+			or g:CheckSubGroupEach(c8512558.combination2[2])
+			or g:CheckSubGroupEach(c8512558.combination2[3])
+			or g:CheckSubGroupEach(c8512558.combination2[4])
+			or g:CheckSubGroupEach(c8512558.combination2[5])
+			or g:CheckSubGroupEach(c8512558.combination2[6])
 	elseif #g==3 then
-		return g:CheckSubGroupEach(aux.TRUE,c8512558.combination3[1])
-			or g:CheckSubGroupEach(aux.TRUE,c8512558.combination3[2])
-			or g:CheckSubGroupEach(aux.TRUE,c8512558.combination3[3])
-			or g:CheckSubGroupEach(aux.TRUE,c8512558.combination3[4])
+		return g:CheckSubGroupEach(c8512558.combination3[1])
+			or g:CheckSubGroupEach(c8512558.combination3[2])
+			or g:CheckSubGroupEach(c8512558.combination3[3])
+			or g:CheckSubGroupEach(c8512558.combination3[4])
 	elseif #g==4 then
-		return g:CheckSubGroupEach(aux.TRUE,c8512558.combination4)
+		return g:CheckSubGroupEach(c8512558.combination4)
 	end
 end
 function c8512558.spop(e,tp,eg,ep,ev,re,r,rp)
