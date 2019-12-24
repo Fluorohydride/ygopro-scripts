@@ -27,30 +27,11 @@ end
 function c86559484.spcostfilter(c)
 	return c:IsAbleToRemoveAsCost() and c:IsRace(RACE_DRAGON+RACE_WYRM)
 end
-function c86559484.spcost_selector(c,tp,g,sg,i)
-	sg:AddCard(c)
-	g:RemoveCard(c)
-	local flag=false
-	if i<2 then
-		flag=g:IsExists(c86559484.spcost_selector,1,nil,tp,g,sg,i+1)
-	else
-		flag=sg:FilterCount(Card.IsRace,nil,RACE_DRAGON)>0
-			and sg:FilterCount(Card.IsRace,nil,RACE_WYRM)>0
-	end
-	sg:RemoveCard(c)
-	g:AddCard(c)
-	return flag
-end
 function c86559484.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c86559484.spcostfilter,tp,LOCATION_GRAVE,0,nil)
-	local sg=Group.CreateGroup()
-	if chk==0 then return g:IsExists(c86559484.spcost_selector,1,nil,tp,g,sg,1) end
-	for i=1,2 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g1=g:FilterSelect(tp,c86559484.spcost_selector,1,1,nil,tp,g,sg,i)
-		sg:Merge(g1)
-		g:Sub(g1)
-	end
+	if chk==0 then return g:CheckSubGroup(aux.gfcheck,2,2,Card.IsRace,RACE_DRAGON,RACE_WYRM) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroup(tp,aux.gfcheck,false,2,2,Card.IsRace,RACE_DRAGON,RACE_WYRM)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c86559484.spfilter(c,e,tp)

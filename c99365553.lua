@@ -35,37 +35,17 @@ end
 function c99365553.spcostfilter2(c)
 	return c:IsAbleToGraveAsCost() and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
 end
-function c99365553.spcost_selector(c,tp,g,sg,i)
-	sg:AddCard(c)
-	g:RemoveCard(c)
-	local flag=false
-	if i<2 then
-		flag=g:IsExists(c99365553.spcost_selector,1,nil,tp,g,sg,i+1)
-	else
-		flag=sg:FilterCount(Card.IsAttribute,nil,ATTRIBUTE_LIGHT)>0
-			and sg:FilterCount(Card.IsAttribute,nil,ATTRIBUTE_DARK)>0
-	end
-	sg:RemoveCard(c)
-	g:AddCard(c)
-	return flag
-end
 function c99365553.spcon1(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	if Duel.GetMZoneCount(tp)<=0 then return false end
 	local g=Duel.GetMatchingGroup(c99365553.spcostfilter1,tp,LOCATION_GRAVE,0,nil)
-	local sg=Group.CreateGroup()
-	return g:IsExists(c99365553.spcost_selector,1,nil,tp,g,sg,1)
+	return g:CheckSubGroup(aux.gfcheck,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
 end
 function c99365553.spop1(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c99365553.spcostfilter1,tp,LOCATION_GRAVE,0,nil)
-	local sg=Group.CreateGroup()
-	for i=1,2 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g1=g:FilterSelect(tp,c99365553.spcost_selector,1,1,nil,tp,g,sg,i)
-		sg:Merge(g1)
-		g:Sub(g1)
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroup(tp,aux.gfcheck,false,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c99365553.spcon2(e,c)
@@ -73,18 +53,13 @@ function c99365553.spcon2(e,c)
 	local tp=c:GetControler()
 	if c:IsHasEffect(EFFECT_NECRO_VALLEY) or Duel.GetMZoneCount(tp)<=0 then return false end
 	local g=Duel.GetMatchingGroup(c99365553.spcostfilter2,tp,LOCATION_HAND,0,nil)
-	local sg=Group.CreateGroup()
-	return g:IsExists(c99365553.spcost_selector,1,nil,tp,g,sg,1)
+	return g:CheckSubGroup(aux.gfcheck,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
 end
 function c99365553.spop2(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c99365553.spcostfilter2,tp,LOCATION_HAND,0,nil)
 	local sg=Group.CreateGroup()
-	for i=1,2 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local g1=g:FilterSelect(tp,c99365553.spcost_selector,1,1,nil,tp,g,sg,i)
-		sg:Merge(g1)
-		g:Sub(g1)
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local sg=g:SelectSubGroup(tp,aux.gfcheck,false,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
 	Duel.SendtoGrave(sg,REASON_COST)
 end
 function c99365553.spcon3(e,tp,eg,ep,ev,re,r,rp)

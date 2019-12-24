@@ -27,37 +27,17 @@ end
 function c9596126.spcostfilter(c)
 	return c:IsAbleToRemoveAsCost() and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
 end
-function c9596126.spcost_selector(c,tp,g,sg,i)
-	sg:AddCard(c)
-	g:RemoveCard(c)
-	local flag=false
-	if i<2 then
-		flag=g:IsExists(c9596126.spcost_selector,1,nil,tp,g,sg,i+1)
-	else
-		flag=sg:FilterCount(Card.IsAttribute,nil,ATTRIBUTE_LIGHT)>0
-			and sg:FilterCount(Card.IsAttribute,nil,ATTRIBUTE_DARK)>0
-	end
-	sg:RemoveCard(c)
-	g:AddCard(c)
-	return flag
-end
 function c9596126.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	if Duel.GetMZoneCount(tp)<=0 then return false end
 	local g=Duel.GetMatchingGroup(c9596126.spcostfilter,tp,LOCATION_GRAVE,0,nil)
-	local sg=Group.CreateGroup()
-	return g:IsExists(c9596126.spcost_selector,1,nil,tp,g,sg,1)
+	return g:CheckSubGroup(aux.gfcheck,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
 end
 function c9596126.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c9596126.spcostfilter,tp,LOCATION_GRAVE,0,nil)
-	local sg=Group.CreateGroup()
-	for i=1,2 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g1=g:FilterSelect(tp,c9596126.spcost_selector,1,1,nil,tp,g,sg,i)
-		sg:Merge(g1)
-		g:Sub(g1)
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroup(tp,aux.gfcheck,false,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c9596126.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
