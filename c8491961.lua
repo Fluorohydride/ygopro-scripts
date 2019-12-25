@@ -15,11 +15,9 @@ function c8491961.initial_effect(c)
 	c:RegisterEffect(e1)
 	--damage
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-	e2:SetRange(LOCATION_MZONE)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetCode(EFFECT_ALSO_BATTLE_DAMAGE)
 	e2:SetCondition(c8491961.damcon)
-	e2:SetOperation(c8491961.damop)
 	c:RegisterEffect(e2)
 	--search
 	local e3=Effect.CreateEffect(c)
@@ -61,13 +59,8 @@ function c8491961.atkop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e2)
 	end
 end
-function c8491961.damcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return ep==tp and c:IsRelateToBattle() and eg:GetFirst()==c:GetBattleTarget()
-		and c:IsSummonType(SUMMON_TYPE_XYZ)
-end
-function c8491961.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(1-ep,ev,false)
+function c8491961.damcon(e)
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c8491961.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
