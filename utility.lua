@@ -2230,6 +2230,20 @@ end
 function Auxiliary.drccheck(g)
 	return g:GetClassCount(Card.GetRace)==#g
 end
+--check for group with 2 cards, each card match f with a1/a2 as argument
+function Auxiliary.gfcheck(g,f,a1,a2)
+	if #g~=2 then return false end
+	local c1=g:GetFirst()
+	local c2=g:GetNext()
+	return f(c1,a1) and f(c2,a2) or f(c2,a1) and f(c1,a2)
+end
+--check for group with 2 cards, each card match f1 with a1, f2 with a2 as argument
+function Auxiliary.gffcheck(g,f1,a1,f2,a2)
+	if #g~=2 then return false end
+	local c1=g:GetFirst()
+	local c2=g:GetNext()
+	return f1(c1,a1) and f2(c2,a2) or f1(c2,a1) and f2(c1,a2)
+end
 --used for "except this card"
 function Auxiliary.ExceptThisCard(e)
 	local c=e:GetHandler()
