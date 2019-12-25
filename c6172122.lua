@@ -36,8 +36,12 @@ function c6172122.filter1(c,e)
 	return not c:IsImmuneToEffect(e)
 end
 function c6172122.filter2(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and aux.IsMaterialListSetCard(c,0x3b) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
+	if not (c:IsType(TYPE_FUSION) and aux.IsMaterialListSetCard(c,0x3b) and (not f or f(c))
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)) then return false end
+	aux.FCheckAdditional=c.red_eyes_fusion_check or c6172122.fcheck
+	local res=c:CheckFusionMaterial(m,nil,chkf)
+	aux.FCheckAdditional=nil
+	return res
 end
 function c6172122.fcheck(tp,sg,fc)
 	return sg:IsExists(Card.IsFusionSetCard,1,nil,0x3b)
@@ -48,7 +52,6 @@ function c6172122.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		local mg1=Duel.GetFusionMaterial(tp)
 		local mg2=Duel.GetMatchingGroup(c6172122.filter0,tp,LOCATION_DECK,0,nil)
 		mg1:Merge(mg2)
-		aux.FCheckAdditional=c6172122.fcheck
 		local res=Duel.IsExistingMatchingCard(c6172122.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -59,7 +62,6 @@ function c6172122.target(e,tp,eg,ep,ev,re,r,rp,chk)
 				res=Duel.IsExistingMatchingCard(c6172122.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
 			end
 		end
-		aux.FCheckAdditional=nil
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -69,7 +71,6 @@ function c6172122.activate(e,tp,eg,ep,ev,re,r,rp)
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c6172122.filter1,nil,e)
 	local mg2=Duel.GetMatchingGroup(c6172122.filter0,tp,LOCATION_DECK,0,nil)
 	mg1:Merge(mg2)
-	aux.FCheckAdditional=c6172122.fcheck
 	local sg1=Duel.GetMatchingGroup(c6172122.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg3=nil
 	local sg2=nil
@@ -86,6 +87,7 @@ function c6172122.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
+		aux.FCheckAdditional=tc.red_eyes_fusion_check or c6172122.fcheck
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			tc:SetMaterial(mat1)
