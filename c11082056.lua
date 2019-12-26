@@ -22,14 +22,13 @@ function c11082056.tgfilter(c,e,tp)
 end
 function c11082056.spfilter(c,e,tp,code)
 	return c:IsType(TYPE_FUSION) and c.material_trap and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and code==c.material_trap
+		and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c11082056.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
-		and Duel.IsExistingMatchingCard(c11082056.tgfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c11082056.tgfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c11082056.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCountFromEx(tp)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
 	local g=Duel.SelectMatchingCard(tp,c11082056.tgfilter,tp,LOCATION_HAND+LOCATION_SZONE,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()

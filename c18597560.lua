@@ -11,26 +11,32 @@ function c18597560.initial_effect(c)
 	e1:SetOperation(c18597560.activate)
 	c:RegisterEffect(e1)
 end
-function c18597560.cfilter(c,tp)
-	return c:IsCode(70095154) and Duel.GetLocationCountFromEx(tp,tp,c)>0
+function c18597560.cfilter(c,e,tp)
+	return c:IsCode(70095154) and Duel.IsExistingMatchingCard(c18597560.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c)
 end
 function c18597560.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c18597560.cfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroup(tp,c18597560.cfilter,1,1,nil,tp)
+	e:SetLabel(100)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c18597560.cfilter,1,nil,e,tp) end
+	local g=Duel.SelectReleaseGroup(tp,c18597560.cfilter,1,1,nil,e,tp)
 	Duel.Release(g,REASON_COST)
 end
-function c18597560.filter(c,e,tp)
-	return c:IsType(TYPE_FUSION) and aux.IsMaterialListSetCard(c,0x1093) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+function c18597560.filter(c,e,tp,rc)
+	return c:IsType(TYPE_FUSION) and aux.IsMaterialListSetCard(c,0x1093)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,rc,c)>0
 end
 function c18597560.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c18597560.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
+	if chk==0 then
+		local chk=e:GetLabel()==100
+		e:SetLabel(0)
+		return chk or Duel.IsExistingMatchingCard(c18597560.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,nil)
+	end
+	e:SetLabel(0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c18597560.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCountFromEx(tp)<=0 then return end
 	local c=e:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local tc=Duel.SelectMatchingCard(tp,c18597560.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp):GetFirst()
+	local tc=Duel.SelectMatchingCard(tp,c18597560.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,nil):GetFirst()
 	if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		tc:RegisterFlagEffect(18597560,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
 		local e1=Effect.CreateEffect(c)
