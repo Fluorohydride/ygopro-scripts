@@ -38,12 +38,12 @@ function c17745969.spfilter2(c,e,tp,atk)
 			or c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0)
 end
 function c17745969.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE)
-		and c17745969.spfilter1(chkc,e,tp,LOCATION_DECK+LOCATION_EXTRA) end
-	if chk==0 then return Duel.IsExistingTarget(c17745969.spfilter1,tp,0,LOCATION_MZONE,1,nil,e,tp,LOCATION_DECK+LOCATION_EXTRA) end
+	local loc=LOCATION_DECK+LOCATION_EXTRA
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c17745969.spfilter1(chkc,e,tp,loc) end
+	if chk==0 then return Duel.IsExistingTarget(c17745969.spfilter1,tp,0,LOCATION_MZONE,1,nil,e,tp,loc) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c17745969.spfilter1,tp,0,LOCATION_MZONE,1,1,nil,e,tp,LOCATION_DECK+LOCATION_EXTRA)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK+LOCATION_EXTRA)
+	Duel.SelectTarget(tp,c17745969.spfilter1,tp,0,LOCATION_MZONE,1,1,nil,e,tp,loc)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,loc)
 end
 function c17745969.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

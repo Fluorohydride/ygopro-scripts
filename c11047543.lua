@@ -22,8 +22,7 @@ function c11047543.filter2(c,e,tp,lv)
 end
 function c11047543.spfilter(c,e,tp,lv)
 	return c:IsRace(RACE_PSYCHO) and c:IsType(TYPE_SYNCHRO) and c:IsLevel(lv)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
-		and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c11047543.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

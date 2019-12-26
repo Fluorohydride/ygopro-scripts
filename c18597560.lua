@@ -26,9 +26,9 @@ function c18597560.filter(c,e,tp,rc)
 end
 function c18597560.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local chk=e:GetLabel()==100
+		local res=e:GetLabel()==100
 		e:SetLabel(0)
-		return chk or Duel.IsExistingMatchingCard(c18597560.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,nil)
+		return res or Duel.IsExistingMatchingCard(c18597560.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,nil)
 	end
 	e:SetLabel(0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
