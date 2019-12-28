@@ -12,5 +12,5 @@ function c64145892.rdcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp
 end
 function c64145892.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
+	Duel.ChangeBattleDamage(ep,math.floor(ev/2))
 end

@@ -36,5 +36,5 @@ function c63630268.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c63630268.damval(e,re,val,r,rp,rc)
-	return val/2
+	return math.floor(val/2)
 end

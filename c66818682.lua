@@ -28,12 +28,12 @@ function c66818682.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local tc=Duel.GetAttacker()
 	tc:CreateEffectRelation(e)
-	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,tc:GetAttack()/2)
+	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,math.ceil(tc:GetAttack()/2))
 end
 function c66818682.recop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		Duel.Recover(tp,tc:GetAttack()/2,REASON_EFFECT)
+		Duel.Recover(tp,math.ceil(tc:GetAttack()/2),REASON_EFFECT)
 	end
 end
 function c66818682.spcon(e,tp,eg,ep,ev,re,r,rp)

@@ -38,7 +38,7 @@ function c85121942.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	local dam=bc:GetTextAttack()/2
+	local dam=math.floor(bc:GetTextAttack()/2)
 	if dam<0 then dam=0 end
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(dam)

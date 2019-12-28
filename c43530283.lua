@@ -36,13 +36,13 @@ function c43530283.atkval(e,c)
 	if c:GetFlagEffect(43530283)==0 then
 		return c:GetBaseAttack()*2
 	else
-		return c:GetBaseAttack()/2
+		return math.ceil(c:GetBaseAttack()/2)
 	end
 end
 function c43530283.defval(e,c)
 	if c:GetFlagEffect(43530283)==0 then
 		return c:GetBaseDefense()*2
 	else
-		return c:GetBaseDefense()/2
+		return math.ceil(c:GetBaseDefense()/2)
 	end
 end

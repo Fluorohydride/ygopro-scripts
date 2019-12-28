@@ -34,7 +34,7 @@ function c75249652.activate(e,tp,eg,ep,ev,re,r,rp)
 			if tatk>0 then atk=atk+tatk end
 			tc=dg:GetNext()
 		end
-		local dam=Duel.Damage(tp,atk/2,REASON_EFFECT)
+		local dam=Duel.Damage(tp,math.floor(atk/2),REASON_EFFECT)
 		if Duel.GetLP(tp)>0 and dam>0 then
 			Duel.BreakEffect()
 			Duel.Damage(1-tp,dam,REASON_EFFECT)

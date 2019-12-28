@@ -50,7 +50,7 @@ function c85008676.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c85008676.halfop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(tp,math.ceil(ev/2))
+	Duel.ChangeBattleDamage(tp,math.floor(ev/2))
 end
 function c85008676.damcon2(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and aux.damcon1(e,tp,eg,ep,ev,re,r,rp)
@@ -71,7 +71,7 @@ function c85008676.damval2(e,re,val,r,rp,rc)
 		local cc=Duel.GetCurrentChain()
 	if cc==0 or bit.band(r,REASON_EFFECT)==0 then return end
 	local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
-	return cid==e:GetLabel() and math.ceil(val/2) or val
+	return cid==e:GetLabel() and math.floor(val/2) or val
 end
 function c85008676.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)

@@ -46,7 +46,7 @@ function c49678559.operation(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
-		e1:SetValue(tc:GetAttack()/2)
+		e1:SetValue(math.ceil(tc:GetAttack()/2))
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
 		local e2=Effect.CreateEffect(c)
@@ -80,6 +80,6 @@ function c49678559.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c49678559.damval(e,re,dam,r,rp,rc)
 	if bit.band(r,REASON_BATTLE)~=0 then
-		return dam/2
+		return math.floor(dam/2)
 	else return dam end
 end

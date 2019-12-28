@@ -48,7 +48,7 @@ function c30086349.damop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c30086349.damfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
 	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
-		Duel.Damage(1-tp,math.ceil(g:GetFirst():GetBaseAttack()/2),REASON_EFFECT)
+		Duel.Damage(1-tp,math.floor(g:GetFirst():GetBaseAttack()/2),REASON_EFFECT)
 	end
 end
 function c30086349.spcon(e,tp,eg,ep,ev,re,r,rp)

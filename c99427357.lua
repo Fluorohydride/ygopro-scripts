@@ -41,12 +41,12 @@ function c99427357.rectg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsExistingTarget(c99427357.recfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g=Duel.SelectTarget(tp,c99427357.recfilter,tp,LOCATION_MZONE,0,1,1,nil)
-	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,g:GetFirst():GetAttack()/2)
+	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,math.ceil(g:GetFirst():GetAttack()/2))
 end
 function c99427357.recop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetAttack()>0 then
-		Duel.Recover(tp,tc:GetAttack()/2,REASON_EFFECT)
+		Duel.Recover(tp,math.ceil(tc:GetAttack()/2),REASON_EFFECT)
 	end
 end
 function c99427357.negcon(e,tp,eg,ep,ev,re,r,rp)

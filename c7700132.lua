@@ -13,8 +13,8 @@ function c7700132.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if Duel.GetCurrentPhase()==PHASE_DAMAGE and e:GetHandler()==Duel.GetAttackTarget() then
 		Duel.SetTargetPlayer(1-tp)
-		Duel.SetTargetParam(Duel.GetAttacker():GetAttack()/2)
-		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,Duel.GetAttacker():GetAttack()/2)
+		Duel.SetTargetParam(math.floor(Duel.GetAttacker():GetAttack()/2))
+		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,math.floor(Duel.GetAttacker():GetAttack()/2))
 	end
 end
 function c7700132.damop(e,tp,eg,ep,ev,re,r,rp)

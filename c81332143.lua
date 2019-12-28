@@ -22,7 +22,7 @@ function c81332143.activate(e,tp,eg,ep,ev,re,r,rp)
 		opt=Duel.SelectOption(1-tp,aux.Stringid(81332143,0))
 	end
 	if opt==0 then
-		local lp=(Duel.GetLP(tp)+Duel.GetLP(1-tp))/2
+		local lp=math.ceil((Duel.GetLP(tp)+Duel.GetLP(1-tp))/2)
 		Duel.SetLP(tp,lp)
 		Duel.SetLP(1-tp,lp)
 	end

@@ -54,7 +54,7 @@ function c27352108.rdcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp
 end
 function c27352108.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
+	Duel.ChangeBattleDamage(ep,math.floor(ev/2))
 end
 function c27352108.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

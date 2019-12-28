@@ -51,7 +51,7 @@ function c35058588.atkop(e,tp,eg,ep,ev,re,r,rp)
 			local e2=Effect.CreateEffect(e:GetHandler())
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetCode(EFFECT_SET_ATTACK_FINAL)
-			e2:SetValue(hc:GetAttack()/2)
+			e2:SetValue(math.ceil(hc:GetAttack()/2))
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			hc:RegisterEffect(e2)
 		end

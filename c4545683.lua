@@ -72,7 +72,7 @@ function c4545683.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c4545683.val(e,c)
-	return Duel.GetLP(c:GetControler())/2
+	return math.ceil(Duel.GetLP(c:GetControler())/2)
 end
 function c4545683.eqfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsAbleToChangeControler()
