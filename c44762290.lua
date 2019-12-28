@@ -13,6 +13,7 @@ function c44762290.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_EQUIP)
 	e2:SetCode(EFFECT_DIRECT_ATTACK)
+	e2:SetCondition(c44762290.dircon)
 	c:RegisterEffect(e2)
 	--equip limit
 	local e3=Effect.CreateEffect(c)
@@ -40,4 +41,7 @@ function c44762290.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
+end
+function c44762290.dircon(e)
+	return e:GetHandler():GetEquipTarget():GetControler()==e:GetHandlerPlayer()
 end
