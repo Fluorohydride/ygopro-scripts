@@ -29,15 +29,8 @@ function c58116537.initial_effect(c)
 	e2:SetTarget(c58116537.atktg)
 	e2:SetOperation(c58116537.atkop)
 	c:RegisterEffect(e2)
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetCode(EVENT_CHAINING)
-	e3:SetRange(LOCATION_SZONE)
-	e3:SetOperation(aux.chainreg)
-	c:RegisterEffect(e3)
 	local e4=e2:Clone()
-	e4:SetCode(EVENT_CHAIN_SOLVING)
+	e4:SetCode(EVENT_CHAINING)
 	e4:SetCondition(c58116537.atkcon2)
 	c:RegisterEffect(e4)
 end
@@ -112,5 +105,5 @@ function c58116537.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c58116537.atkcon2(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x137) and rp==tp and e:GetHandler():GetFlagEffect(1)>0
+	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x137) and rp==tp
 end
