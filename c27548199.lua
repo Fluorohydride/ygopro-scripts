@@ -69,7 +69,7 @@ function c27548199.eqop(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetProperty(EFFECT_FLAG_OWNER_RELATE+EFFECT_FLAG_IGNORE_IMMUNE)
 			e2:SetCode(EFFECT_UPDATE_ATTACK)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e2:SetValue(atk/2)
+			e2:SetValue(math.ceil(atk/2))
 			tc:RegisterEffect(e2)
 		end
 	end

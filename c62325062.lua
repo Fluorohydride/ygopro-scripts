@@ -39,5 +39,5 @@ function c62325062.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c62325062.atkval(e,c)
-	return c:GetBaseAttack()/2
+	return math.ceil(c:GetBaseAttack()/2)
 end

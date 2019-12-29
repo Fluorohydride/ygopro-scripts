@@ -42,7 +42,7 @@ function c16625614.operation(e,tp,eg,ep,ev,re,r,rp)
 	local coin=Duel.TossCoin(tp,1)
 	if coin==1 then
 		if Duel.NegateAttack() then
-			Duel.Damage(1-tp,math.ceil(tc:GetAttack()/2),REASON_EFFECT)
+			Duel.Damage(1-tp,math.floor(tc:GetAttack()/2),REASON_EFFECT)
 		end
 	end
 end

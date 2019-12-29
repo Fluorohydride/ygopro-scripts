@@ -40,7 +40,7 @@ function c31444249.rdcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and ac:IsControler(tp) and ac:IsSetCard(0xbb) and ac:GetOriginalLevel()>=2 and not ac:IsImmuneToEffect(e)
 end
 function c31444249.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
+	Duel.ChangeBattleDamage(ep,math.floor(ev/2))
 end
 function c31444249.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

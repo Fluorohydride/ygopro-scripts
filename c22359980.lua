@@ -62,7 +62,7 @@ function c22359980.atktg(e,c)
 	return c:GetFlagEffect(22359980)~=0 and e:GetLabelObject():IsContains(c)
 end
 function c22359980.atkval(e,c)
-	return c:GetAttack()/2
+	return math.ceil(c:GetAttack()/2)
 end
 function c22359980.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp

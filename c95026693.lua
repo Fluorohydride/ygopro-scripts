@@ -35,7 +35,7 @@ function c95026693.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c95026693.filter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
-		local dam=g:GetFirst():GetAttack()/2
+		local dam=math.floor(g:GetFirst():GetAttack()/2)
 		Duel.Damage(1-tp,dam,REASON_EFFECT)
 	end
 end

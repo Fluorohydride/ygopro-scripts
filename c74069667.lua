@@ -75,7 +75,7 @@ function c74069667.spop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c74069667.val(e,re,dam,r,rp,rc)
 	if bit.band(r,REASON_BATTLE)~=0 then
-		return dam/2
+		return math.floor(dam/2)
 	else return dam end
 end
 function c74069667.spfilter2(c,e,tp)

@@ -50,7 +50,7 @@ function c92246806.rdcon(e,tp,eg,ep,ev,re,r,rp)
 		and c:GetEffectCount(EFFECT_DIRECT_ATTACK)<2 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0
 end
 function c92246806.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
+	Duel.ChangeBattleDamage(ep,math.floor(ev/2))
 end
 function c92246806.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

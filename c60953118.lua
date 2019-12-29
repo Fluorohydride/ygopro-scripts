@@ -82,7 +82,7 @@ function c60953118.rdcon2(e)
 end
 function c60953118.rdval(e,re,val,r,rp,rc)
 	if bit.band(r,REASON_BATTLE)~=0 then
-		return val/2
+		return math.floor(val/2)
 	else
 		return val
 	end

@@ -36,6 +36,6 @@ function c99795159.dirtg(e,c)
 end
 function c99795159.val(e,re,dam,r,rp,rc)
 	if bit.band(r,REASON_EFFECT)~=0 or (rc and not rc:IsSetCard(0x8d)) then
-		return dam/2
+		return math.floor(dam/2)
 	else return dam end
 end

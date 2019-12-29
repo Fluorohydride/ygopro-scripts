@@ -56,7 +56,7 @@ function c54569495.spop(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c54569495.damop2(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(tp,math.ceil(ev/2))
+	Duel.ChangeBattleDamage(tp,math.floor(ev/2))
 end
 function c54569495.damcon1(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()

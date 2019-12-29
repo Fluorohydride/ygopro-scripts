@@ -89,7 +89,7 @@ function c83965310.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		if c:IsFaceup() and c:IsRelateToEffect(e) then
-			local atk=tc:GetTextAttack()/2
+			local atk=math.ceil(tc:GetTextAttack()/2)
 			if tc:IsFacedown() then atk=0 end
 			if atk<0 then atk=0 end
 			if not Duel.Equip(tp,tc,c,false) then return end

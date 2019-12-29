@@ -52,7 +52,7 @@ end
 function c4266839.retg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local ec=e:GetHandler():GetEquipTarget()
-	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,ec:GetAttack()/2)
+	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,math.ceil(ec:GetAttack()/2))
 end
 function c4266839.reop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -60,6 +60,6 @@ function c4266839.reop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=c:GetEquipTarget()
 	if ec then
 		local atk=ec:GetAttack()
-		Duel.Recover(tp,atk/2,REASON_EFFECT)
+		Duel.Recover(tp,math.ceil(atk/2),REASON_EFFECT)
 	end
 end

@@ -24,12 +24,12 @@ function c89662736.nacost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c89662736.natg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetAttacker():IsOnField() end
-	local dam=Duel.GetAttacker():GetAttack()/2
+	local dam=math.floor(Duel.GetAttacker():GetAttack()/2)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,dam)
 end
 function c89662736.naop(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	if Duel.NegateAttack() then
-		Duel.Damage(1-tp,a:GetAttack()/2,REASON_EFFECT)
+		Duel.Damage(1-tp,math.floor(a:GetAttack()/2),REASON_EFFECT)
 	end
 end

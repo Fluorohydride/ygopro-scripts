@@ -30,13 +30,13 @@ function c39823987.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetHandler():GetReasonCard()
 	if tc:IsRelateToBattle() then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,tc,1,0,0)
-		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,tc:GetAttack()/2)
+		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,math.floor(tc:GetAttack()/2))
 	end
 end
 function c39823987.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetReasonCard()
 	if not tc:IsRelateToBattle() then return end
-	local atk=tc:GetAttack()/2
+	local atk=math.floor(tc:GetAttack()/2)
 	if atk<0 then atk=0 end
 	if Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		Duel.Damage(1-tp,atk,REASON_EFFECT)

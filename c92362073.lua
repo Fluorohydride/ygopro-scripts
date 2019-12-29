@@ -69,7 +69,7 @@ function c92362073.atkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c92362073.val(e,re,dam,r,rp,rc)
 	if bit.band(r,REASON_BATTLE)~=0 then
-		return dam/2
+		return math.floor(dam/2)
 	else return dam end
 end
 function c92362073.tpcon(e,tp,eg,ep,ev,re,r,rp)
