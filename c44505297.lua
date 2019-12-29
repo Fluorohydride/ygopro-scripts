@@ -60,7 +60,7 @@ function c44505297.eqop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetType(EFFECT_TYPE_EQUIP)
 	e2:SetCode(EFFECT_UPDATE_ATTACK)
 	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-	e2:SetValue(atk))
+	e2:SetValue(atk)
 	tc:RegisterEffect(e2)
 	local def=math.ceil(tc:GetTextDefense()/2)
 	if def<0 then def=0 end
