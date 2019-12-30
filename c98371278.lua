@@ -46,8 +46,8 @@ function c98371278.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc1=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsLocation,nil,LOCATION_GRAVE):GetFirst()
 	local tc2=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsLocation,nil,LOCATION_MZONE):GetFirst()
-	if tc1 and tc2 and tc1:IsRelateToEffect(e) and tc2:IsRelateToEffect(e) and aux.NecroValleyFilter()(tc1) then
-		Duel.Equip(tp,tc1,tc2)
+	if tc1 and tc2 and tc1:IsRelateToEffect(e) and aux.NecroValleyFilter()(tc1) then
+		if not Duel.Equip(tp,tc1,tc2) then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)

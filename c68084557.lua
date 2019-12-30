@@ -52,7 +52,7 @@ end
 function c68084557.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:CheckEquipTarget(c) then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:CheckEquipTarget(c) then
 		Duel.Equip(tp,tc,c)
 	end
 end

@@ -46,7 +46,7 @@ function c6075801.eqop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectMatchingCard(tp,c6075801.filter,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,c)
 	local tc=g:GetFirst()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if tc then
 		if not Duel.Equip(tp,tc,c) then return end
 		--Add Equip limit
 		local e1=Effect.CreateEffect(c)
@@ -56,7 +56,7 @@ function c6075801.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetValue(c6075801.eqlimit)
 		tc:RegisterEffect(e1)
-	else Duel.SendtoGrave(tc,REASON_RULE) end
+	end
 end
 function c6075801.eqlimit(e,c)
 	return e:GetOwner()==c
