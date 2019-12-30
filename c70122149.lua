@@ -53,19 +53,13 @@ function c70122149.rftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return d~=nil and d:IsControler(tp) and d:IsSetCard(0x129) end
 end
 function c70122149.rfop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-		e1:SetOperation(c70122149.damop)
-		e1:SetReset(RESET_PHASE+PHASE_DAMAGE)
-		Duel.RegisterEffect(e1,tp)
-	end
-end
-function c70122149.damop(e,tp,eg,ep,ev,re,r,rp)
-	if ep==tp then
-		Duel.ChangeBattleDamage(1-ep,ev,false)
-	end
+	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_ALSO_BATTLE_DAMAGE)
+	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e1:SetTargetRange(1,0)
+	e1:SetReset(RESET_PHASE+PHASE_DAMAGE)
+	Duel.RegisterEffect(e1,tp)
 end
 function c70122149.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

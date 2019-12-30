@@ -38,8 +38,8 @@ function c33460840.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c33460840.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,c)
 	local tc=g:GetFirst()
 	if not (tc and Duel.Equip(tp,tc,c)) then return end
-	local atk=tc:GetTextAttack()/2
-	local def=tc:GetTextDefense()/2
+	local atk=math.ceil(tc:GetTextAttack()/2)
+	local def=math.ceil(tc:GetTextDefense()/2)
 	if atk<0 then atk=0 end
 	if def<0 then def=0 end
 	--Add Equip limit

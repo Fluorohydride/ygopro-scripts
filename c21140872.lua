@@ -48,6 +48,9 @@ function c21140872.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 c21140872.material_setcode=0x3b
+function c21140872.red_eyes_fusion_check(tp,sg,fc)
+	return aux.gffcheck(sg,Card.IsFusionCode,74677422,Card.IsRace,RACE_WARRIOR)
+end
 function c21140872.eqcon(e)
 	return Duel.GetAttacker():IsSetCard(0x3b)
 end

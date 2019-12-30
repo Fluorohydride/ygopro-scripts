@@ -16,7 +16,7 @@ function c27352108.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BE_MATERIAL)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
-	e2:SetCountLimit(1,69121955)
+	e2:SetCountLimit(1,27352108)
 	e2:SetCondition(c27352108.thcon)
 	e2:SetTarget(c27352108.thtg)
 	e2:SetOperation(c27352108.thop)
@@ -54,7 +54,7 @@ function c27352108.rdcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp
 end
 function c27352108.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
+	Duel.ChangeBattleDamage(ep,math.floor(ev/2))
 end
 function c27352108.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

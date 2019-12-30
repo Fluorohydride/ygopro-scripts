@@ -46,7 +46,7 @@ function c26211048.eqop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(c26211048.eqlimit)
 	tc:RegisterEffect(e1)
 	if tc:IsFaceup() then
-		local atk=tc:GetTextAttack()/2
+		local atk=math.ceil(tc:GetTextAttack()/2)
 		if atk<0 then atk=0 end
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_EQUIP)
@@ -54,7 +54,7 @@ function c26211048.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e2:SetValue(atk)
 		tc:RegisterEffect(e2)
-		local def=tc:GetTextDefense()/2
+		local def=math.ceil(tc:GetTextDefense()/2)
 		if def<0 then def=0 end
 		local e3=Effect.CreateEffect(c)
 		e3:SetType(EFFECT_TYPE_EQUIP)

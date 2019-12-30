@@ -37,7 +37,7 @@ function c71625222.desop(e,tp,eg,ep,ev,re,r,rp)
 			sum=sum+math.max(c:GetAttack(),0)
 		end
 		if sum>0 then
-			Duel.Damage(tp,sum/2,REASON_EFFECT)
+			Duel.Damage(tp,math.floor(sum/2),REASON_EFFECT)
 		end
 	end
 end

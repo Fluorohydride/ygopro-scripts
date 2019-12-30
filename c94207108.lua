@@ -70,16 +70,14 @@ function c94207108.spop1(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(1)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE)
 		c:RegisterEffect(e1)
-		local e3=Effect.CreateEffect(c)
-		e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e3:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-		e3:SetOperation(c94207108.damop)
-		e3:SetReset(RESET_PHASE+PHASE_DAMAGE)
-		Duel.RegisterEffect(e3,tp)
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_FIELD)
+		e2:SetCode(EFFECT_AVOID_BATTLE_DAMAGE)
+		e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+		e2:SetTargetRange(1,0)
+		e2:SetReset(RESET_PHASE+PHASE_DAMAGE)
+		Duel.RegisterEffect(e2,tp)
 	end
-end
-function c94207108.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(tp,0)
 end
 function c94207108.eqcon(mc)
 	return

@@ -48,7 +48,7 @@ function c50065971.dirop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_BASE_DEFENSE)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		e1:SetValue(c:GetBaseDefense()/2)
+		e1:SetValue(math.ceil(c:GetBaseDefense()/2))
 		c:RegisterEffect(e1)
 		--
 		local e2=Effect.CreateEffect(c)

@@ -43,7 +43,7 @@ function c72926163.valcheck(e,c)
 	local tc=g:GetFirst()
 	if tc:IsCode(89943723) or tc:CheckFusionSubstitute(c) then tc=g:GetNext() end
 	if not tc:IsCode(89943723) then
-		atk=tc:GetTextAttack()/2
+		atk=math.ceil(tc:GetTextAttack()/2)
 	end
 	e:SetLabel(atk)
 end

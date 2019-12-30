@@ -70,15 +70,10 @@ function c5524387.operation(e,tp,eg,ep,ev,re,r,rp)
 		d:RegisterEffect(e2)
 	end
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-	e3:SetOperation(c5524387.damop)
-	e3:SetLabelObject(a)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_AVOID_BATTLE_DAMAGE)
+	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e3:SetTargetRange(1,0)
 	e3:SetReset(RESET_PHASE+PHASE_DAMAGE)
 	Duel.RegisterEffect(e3,tp)
-end
-function c5524387.damop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetLabelObject()==Duel.GetAttacker() then
-		Duel.ChangeBattleDamage(tp,0)
-	end
 end

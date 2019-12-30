@@ -97,5 +97,5 @@ function c17132130.lpc(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer()
 end
 function c17132130.lpcop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SetLP(1-tp,Duel.GetLP(1-tp)/2)
+	Duel.SetLP(1-tp,math.ceil(Duel.GetLP(1-tp)/2))
 end

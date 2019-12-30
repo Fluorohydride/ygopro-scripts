@@ -54,7 +54,7 @@ function c9161357.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetValue(c9161357.eqlimit)
 		tc:RegisterEffect(e1)
-		local atk=tc:GetBaseAttack()/2
+		local atk=math.ceil(tc:GetBaseAttack()/2)
 		if atk>0 then
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_EQUIP)
@@ -85,5 +85,5 @@ function c9161357.lpcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c9161357.lpop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SetLP(1-tp,Duel.GetLP(1-tp)/2)
+	Duel.SetLP(1-tp,math.ceil(Duel.GetLP(1-tp)/2))
 end

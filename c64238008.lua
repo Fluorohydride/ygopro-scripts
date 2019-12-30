@@ -19,7 +19,7 @@ function c64238008.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	if chk==0 then return Duel.GetCustomActivityCount(64238008,tp,ACTIVITY_CHAIN)==0 and Duel.CheckReleaseGroup(tp,nil,1,nil) end
 	local g=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
-	local atk=g:GetFirst():GetTextAttack()/2
+	local atk=math.floor(g:GetFirst():GetTextAttack()/2)
 	if atk<0 then atk=0 end
 	e:SetLabel(atk)
 	Duel.Release(g,REASON_COST)

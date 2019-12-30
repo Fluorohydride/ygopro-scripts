@@ -45,6 +45,6 @@ function c95448692.activate2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c95448692.val(e,re,dam,r,rp,rc)
 	if c95448692[e:GetOwnerPlayer()]==1 or bit.band(r,REASON_EFFECT)~=0 then
-		return dam/2
+		return math.floor(dam/2)
 	else return dam end
 end
