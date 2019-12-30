@@ -49,7 +49,7 @@ function c28427869.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c28427869.halfop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(tp,math.ceil(ev/2))
+	Duel.ChangeBattleDamage(tp,math.floor(ev/2))
 end
 function c28427869.skipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)

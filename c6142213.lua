@@ -23,14 +23,14 @@ function c6142213.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c6142213.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local dam=Duel.GetAttackTarget():GetAttack()/2
+	local dam=math.floor(Duel.GetAttackTarget():GetAttack()/2)
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(dam)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,0,1-tp,dam)
 end
 function c6142213.operation(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
-	Duel.Damage(p,Duel.GetAttackTarget():GetAttack()/2,REASON_EFFECT)
+	Duel.Damage(p,math.floor(Duel.GetAttackTarget():GetAttack()/2),REASON_EFFECT)
 end
 function c6142213.indcon(e)
 	return e:GetHandler()==Duel.GetAttacker()

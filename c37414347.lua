@@ -23,18 +23,11 @@ function c37414347.initial_effect(c)
 	e3:SetValue(1)
 	c:RegisterEffect(e3)
 	--counter
-	local e0=Effect.CreateEffect(c)
-	e0:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e0:SetCode(EVENT_CHAINING)
-	e0:SetRange(LOCATION_MZONE)
-	e0:SetOperation(aux.chainreg)
-	c:RegisterEffect(e0)
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(37414347,0))
 	e4:SetCategory(CATEGORY_COUNTER)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e4:SetCode(EVENT_CHAIN_SOLVING)
+	e4:SetCode(EVENT_CHAINING)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCondition(c37414347.ctcon)
 	e4:SetTarget(c37414347.cttg)
@@ -63,7 +56,7 @@ function c37414347.atkval(e,c)
 	return lg:GetSum(Card.GetLevel)*300
 end
 function c37414347.ctcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and re:GetHandler():IsSetCard(0x107) and e:GetHandler():GetFlagEffect(1)>0
+	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and re:GetHandler():IsSetCard(0x107)
 end
 function c37414347.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

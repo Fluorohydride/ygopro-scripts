@@ -38,6 +38,7 @@ function c6430659.atop(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DIRECT_ATTACK)
+		e1:SetCondition(c6430659.dircon)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 		tc:RegisterFlagEffect(6430659,RESET_EVENT+RESETS_STANDARD,0,1)
@@ -51,6 +52,9 @@ function c6430659.atop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetOperation(c6430659.tgop)
 		Duel.RegisterEffect(e2,tp)
 	end
+end
+function c6430659.dircon(e)
+	return e:GetHandler():GetControler()==e:GetOwnerPlayer()
 end
 function c6430659.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

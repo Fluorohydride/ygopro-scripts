@@ -52,7 +52,7 @@ function c35268887.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c35268887.val(e,re,dam,r,rp,rc)
 	if bit.band(r,REASON_EFFECT)~=0 then
-		return dam/2
+		return math.floor(dam/2)
 	else return dam end
 end
 function c35268887.tokentg(e,tp,eg,ep,ev,re,r,rp,chk)

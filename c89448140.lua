@@ -33,7 +33,7 @@ function c89448140.condition(e)
 	return Duel.IsExistingMatchingCard(c89448140.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
 end
 function c89448140.val(e,re,dam,r,rp,rc)
-	return math.ceil(dam/2)
+	return math.floor(dam/2)
 end
 function c89448140.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)

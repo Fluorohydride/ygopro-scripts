@@ -79,5 +79,5 @@ function c77625948.atkcon(e)
 		and e:GetHandler():GetEffectCount(EFFECT_DIRECT_ATTACK)==1
 end
 function c77625948.atkval(e,c)
-	return c:GetAttack()/2
+	return math.ceil(c:GetAttack()/2)
 end

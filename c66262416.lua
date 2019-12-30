@@ -44,13 +44,11 @@ function c66262416.spop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(LOCATION_REMOVED)
 		c:RegisterEffect(e2,true)
 		local e3=Effect.CreateEffect(c)
-		e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e3:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-		e3:SetOperation(c66262416.damop)
+		e3:SetType(EFFECT_TYPE_FIELD)
+		e3:SetCode(EFFECT_AVOID_BATTLE_DAMAGE)
+		e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+		e3:SetTargetRange(1,0)
 		e3:SetReset(RESET_PHASE+PHASE_DAMAGE)
 		Duel.RegisterEffect(e3,tp)
 	end
-end
-function c66262416.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(tp,0)
 end

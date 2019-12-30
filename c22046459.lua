@@ -45,6 +45,6 @@ function c22046459.value(e,c)
 	if Duel.GetLP(p)<Duel.GetLP(1-p) then
 		return c:GetBaseAttack()*2
 	elseif Duel.GetLP(p)>Duel.GetLP(1-p) then
-		return c:GetBaseAttack()/2
+		return math.ceil(c:GetBaseAttack()/2)
 	end
 end

@@ -44,7 +44,7 @@ function c60312997.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c60312997.damval(e,re,val,r,rp,rc)
 	if r==REASON_BATTLE then
-		return val/2
+		return math.floor(val/2)
 	else return val end
 end
 function c60312997.spop(e,tp,eg,ep,ev,re,r,rp)

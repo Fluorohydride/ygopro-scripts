@@ -48,8 +48,8 @@ function c23792058.tdop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c23792058.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,math.ceil(ev/2),false)
-	Duel.ChangeBattleDamage(1-ep,math.ceil(ev/2),false)
+	Duel.ChangeBattleDamage(ep,math.floor(ev/2),false)
+	Duel.ChangeBattleDamage(1-ep,math.floor(ev/2),false)
 end
 function c23792058.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_PZONE)

@@ -57,7 +57,7 @@ function c79068663.damop(e,tp,eg,ep,ev,re,r,rp)
 	local des=eg:GetFirst()
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 	if des:IsRelateToEffect(e) then
-		local dam=des:GetAttack()/2
+		local dam=math.floor(des:GetAttack()/2)
 		if dam<0 then dam=0 end
 		Duel.Damage(p,dam,REASON_EFFECT)
 	end
