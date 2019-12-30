@@ -55,17 +55,16 @@ function c42444868.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c42444868.spfilter(c,e,tp)
 	return c:IsSetCard(0x10a) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and (c:IsLocation(LOCATION_DECK) and Duel.GetMZoneCount(tp)>0
+			or c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0)
 end
 function c42444868.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ec=re:GetHandler()
 	if Duel.NegateActivation(ev) and ec:IsRelateToEffect(re) then
 		ec:CancelToGrave()
 		if Duel.SendtoDeck(ec,nil,2,REASON_EFFECT)~=0 and ec:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
-			local loc=0
-			if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_DECK end
-			if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
-			local g=Duel.GetMatchingGroup(c42444868.spfilter,tp,loc,0,nil,e,tp)
-			if loc~=0 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(42444868,0)) then
+			local g=Duel.GetMatchingGroup(c42444868.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil,e,tp)
+			if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(42444868,0)) then
 				Duel.BreakEffect()
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				local sg=g:Select(tp,1,1,nil)

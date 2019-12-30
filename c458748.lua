@@ -17,11 +17,11 @@ function c458748.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	return true
 end
 function c458748.filter1(c,e,tp)
-	return c:IsSetCard(0xf4) and Duel.IsExistingMatchingCard(c458748.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetOriginalAttribute())
-		and Duel.GetLocationCountFromEx(tp,tp,c)>0
+	return c:IsSetCard(0xf4) and Duel.IsExistingMatchingCard(c458748.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetOriginalAttribute(),c)
 end
-function c458748.filter2(c,e,tp,att)
+function c458748.filter2(c,e,tp,att,mc)
 	return c:IsSetCard(0xf4) and c:GetOriginalAttribute()~=att and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial()
+		and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
 end
 function c458748.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -35,10 +35,10 @@ function c458748.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c458748.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCountFromEx(tp)<=0 or not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) then return end
+	if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) then return end
 	local att=e:GetLabel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c458748.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,att)
+	local g=Duel.SelectMatchingCard(tp,c458748.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,att,nil)
 	local tc=g:GetFirst()
 	if tc then
 		tc:SetMaterial(nil)
