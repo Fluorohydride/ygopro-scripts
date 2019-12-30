@@ -28,7 +28,6 @@ function c41230939.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c41230939.eqop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) then
