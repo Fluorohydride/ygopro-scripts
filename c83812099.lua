@@ -40,10 +40,11 @@ function c83812099.eqtg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c83812099.eqop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	if not c:IsRelateToEffect(e) or not c:IsFaceup() then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectMatchingCard(tp,c83812099.filter1,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil,c)
 	local eqc=g:GetFirst()
-	if eqc and c:IsRelateToEffect(e) and c:IsFaceup() then
+	if eqc then
 		Duel.Equip(tp,eqc,c)
 	end
 end
@@ -64,7 +65,7 @@ end
 function c83812099.eqop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local eqc=e:GetHandler():GetEquipGroup():Filter(Card.IsCode,nil,75560629):GetFirst()
-	if eqc and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if eqc then
 		Duel.Equip(tp,eqc,tc)
 	end
 end
