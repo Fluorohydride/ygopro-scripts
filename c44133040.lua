@@ -32,18 +32,11 @@ function c44133040.initial_effect(c)
 	e5:SetValue(aux.tgoval)
 	c:RegisterEffect(e5)
 	--atkup
-	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e6:SetCode(EVENT_CHAINING)
-	e6:SetRange(LOCATION_SZONE)
-	e6:SetOperation(aux.chainreg)
-	c:RegisterEffect(e6)
 	local e7=Effect.CreateEffect(c)
 	e7:SetDescription(aux.Stringid(44133040,0))
 	e7:SetCategory(CATEGORY_ATKCHANGE)
 	e7:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e7:SetCode(EVENT_CHAIN_SOLVED)
+	e7:SetCode(EVENT_CHAINING)
 	e7:SetRange(LOCATION_SZONE)
 	e7:SetCondition(c44133040.atkcon)
 	e7:SetOperation(c44133040.atkop)
@@ -82,7 +75,7 @@ end
 function c44133040.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=re:GetHandler()
-	return rp==tp and c:GetFlagEffect(1)>0
+	return rp==tp
 		and ((re:IsActiveType(TYPE_MONSTER) and c:GetEquipTarget()==rc)
 			or (re:IsHasType(EFFECT_TYPE_ACTIVATE) and rc:IsSetCard(0x129) and rc~=c))
 end
