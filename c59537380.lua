@@ -32,16 +32,17 @@ function c59537380.lkfilter(c)
 end
 function c59537380.spfilter(c,e,tp,zone)
 	return c:IsRace(RACE_DRAGON) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone)
+		and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c59537380.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local zone=aux.GetMultiLinkedZone(tp)
-	if chk==0 then return zone~=0 and Duel.GetLocationCountFromEx(tp)>0
+	if chk==0 then return zone~=0
 		and Duel.IsExistingMatchingCard(c59537380.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,zone) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c59537380.spop(e,tp,eg,ep,ev,re,r,rp)
 	local zone=aux.GetMultiLinkedZone(tp)
-	if Duel.GetLocationCountFromEx(tp)<=0 or zone==0 then return end
+	if zone==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c59537380.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,zone)
 	if g:GetCount()>0 then
