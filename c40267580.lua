@@ -37,26 +37,23 @@ function c40267580.eqlimit(e,c)
 end
 function c40267580.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if tc and not c:IsStatus(STATUS_BATTLE_DESTROYED) and c:IsFaceup() and c:IsRelateToEffect(e) then
-		if tc:IsFaceup() and tc:IsRelateToEffect(e) then
-			Duel.Equip(tp,c,tc)
-			--Add Equip limit
-			local e1=Effect.CreateEffect(tc)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_EQUIP_LIMIT)
-			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e1:SetValue(c40267580.eqlimit)
-			c:RegisterEffect(e1)
-			local e2=Effect.CreateEffect(c)
-			e2:SetType(EFFECT_TYPE_EQUIP)
-			e2:SetCode(EFFECT_SET_CONTROL)
-			e2:SetValue(tp)
-			e2:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
-			c:RegisterEffect(e2)
-		else Duel.SendtoGrave(c,REASON_RULE) end
+	if tc and not c:IsStatus(STATUS_BATTLE_DESTROYED)
+		and c:IsFaceup() and c:IsRelateToEffect(e) and Duel.Equip(tp,c,tc) then
+		--Add Equip limit
+		local e1=Effect.CreateEffect(tc)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_EQUIP_LIMIT)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetValue(c40267580.eqlimit)
+		c:RegisterEffect(e1)
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_EQUIP)
+		e2:SetCode(EFFECT_SET_CONTROL)
+		e2:SetValue(tp)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
+		c:RegisterEffect(e2)
 	end
 end
 function c40267580.reccon(e,tp,eg,ep,ev,re,r,rp)

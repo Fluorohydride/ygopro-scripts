@@ -34,32 +34,28 @@ function c80769747.eqlimit(e,c)
 end
 function c80769747.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		if tc:IsFaceup() and tc:IsRelateToEffect(e) then
-			Duel.Equip(tp,c,tc)
-			--Add Equip limit
-			local e1=Effect.CreateEffect(tc)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_EQUIP_LIMIT)
-			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e1:SetValue(c80769747.eqlimit)
-			c:RegisterEffect(e1)
-			local e2=Effect.CreateEffect(c)
-			e2:SetType(EFFECT_TYPE_EQUIP)
-			e2:SetCode(EFFECT_UPDATE_ATTACK)
-			e2:SetValue(-800)
-			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-			c:RegisterEffect(e2)
-			local e3=Effect.CreateEffect(c)
-			e3:SetType(EFFECT_TYPE_EQUIP)
-			e3:SetCode(EFFECT_UPDATE_DEFENSE)
-			e3:SetValue(-800)
-			e3:SetReset(RESET_EVENT+RESETS_STANDARD)
-			c:RegisterEffect(e3)
-		else Duel.SendtoGrave(c,REASON_RULE) end
+	if c:IsRelateToEffect(e) and c:IsFaceup() and Duel.Equip(tp,c,tc) then
+		--Add Equip limit
+		local e1=Effect.CreateEffect(tc)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_EQUIP_LIMIT)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetValue(c80769747.eqlimit)
+		c:RegisterEffect(e1)
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_EQUIP)
+		e2:SetCode(EFFECT_UPDATE_ATTACK)
+		e2:SetValue(-800)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
+		c:RegisterEffect(e2)
+		local e3=Effect.CreateEffect(c)
+		e3:SetType(EFFECT_TYPE_EQUIP)
+		e3:SetCode(EFFECT_UPDATE_DEFENSE)
+		e3:SetValue(-800)
+		e3:SetReset(RESET_EVENT+RESETS_STANDARD)
+		c:RegisterEffect(e3)
 	end
 end
 function c80769747.ddescon(e,tp,eg,ep,ev,re,r,rp)
