@@ -47,27 +47,27 @@ end
 function c65172015.matfilter(c,sc)
 	return c:IsOriginalCodeRule(1561110,91998119) and c:IsAbleToRemoveAsCost() and c:IsCanBeFusionMaterial(sc,SUMMON_TYPE_SPECIAL)
 end
-function c65172015.cfilter1(c,tp,g)
-	return g:IsExists(c65172015.cfilter2,1,c,tp,c)
+function c65172015.cfilter1(c,tp,g,sc)
+	return g:IsExists(c65172015.cfilter2,1,c,tp,c,sc)
 end
-function c65172015.cfilter2(c,tp,mc)
+function c65172015.cfilter2(c,tp,mc,sc)
 	return (c:IsOriginalCodeRule(1561110) and mc:IsOriginalCodeRule(91998119)
 		or c:IsOriginalCodeRule(91998119) and mc:IsOriginalCodeRule(1561110))
-		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
+		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc),sc)>0
 end
 function c65172015.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local g=Duel.GetMatchingGroup(c65172015.matfilter,tp,LOCATION_ONFIELD,0,nil,c)
-	return g:IsExists(c65172015.cfilter1,1,nil,tp,g)
+	return g:IsExists(c65172015.cfilter1,1,nil,tp,g,c)
 end
 function c65172015.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c65172015.matfilter,tp,LOCATION_ONFIELD,0,nil,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=g:FilterSelect(tp,c65172015.cfilter1,1,1,nil,tp,g)
+	local g1=g:FilterSelect(tp,c65172015.cfilter1,1,1,nil,tp,g,c)
 	local mc=g1:GetFirst()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=g:FilterSelect(tp,c65172015.cfilter2,1,1,mc,tp,mc)
+	local g2=g:FilterSelect(tp,c65172015.cfilter2,1,1,mc,tp,mc,c)
 	g1:Merge(g2)
 	c:SetMaterial(g1)
 	Duel.Remove(g1,POS_FACEUP,REASON_COST)
