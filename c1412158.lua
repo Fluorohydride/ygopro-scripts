@@ -45,8 +45,10 @@ function c1412158.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c1412158.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local tc=Duel.GetFirstMatchingCard(c1412158.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp,nil)
-	if tc and c:IsRelateToEffect(e) and c:IsFaceup() and Duel.SendtoDeck(c,nil,2,REASON_EFFECT)~=0 then
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
+	if c:IsRelateToEffect(e) and c:IsFaceup() then
+		local tc=Duel.GetFirstMatchingCard(c1412158.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp,c)
+		if tc and Duel.SendtoDeck(c,nil,2,REASON_EFFECT)~=0 then
+			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
+		end
 	end
 end
