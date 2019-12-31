@@ -58,7 +58,7 @@ end
 function c39024589.filter(c,e,tp,mc)
 	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsSetCard(0x10ec)
 		and c:IsLevel(1,8) and c:IsType(TYPE_PENDULUM) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and (c:IsLocation(LOCATION_HAND) and Duel.GetMZoneCount(tp,e:GetHandler())>0
+		and (c:IsLocation(LOCATION_HAND) and Duel.GetMZoneCount(tp,mc)>0
 			or c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0)
 end
 function c39024589.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
