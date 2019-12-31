@@ -14,11 +14,10 @@ function c74100225.filter(c,cat)
 	return c:IsSetCard(cat) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c74100225.spfilter(c,e,tp)
-	return c:IsSetCard(0x504e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x504e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c74100225.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
-		and Duel.IsExistingTarget(c74100225.filter,tp,LOCATION_GRAVE,0,1,nil,0x304e)
+	if chk==0 then return Duel.IsExistingTarget(c74100225.filter,tp,LOCATION_GRAVE,0,1,nil,0x304e)
 		and Duel.IsExistingTarget(c74100225.filter,tp,LOCATION_GRAVE,0,1,nil,0x604e)
 		and Duel.IsExistingMatchingCard(c74100225.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
@@ -30,7 +29,6 @@ function c74100225.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c74100225.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCountFromEx(tp)<=0 then return end
 	local g=Duel.GetMatchingGroup(c74100225.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp)
 	if g:GetCount()==0 then return end
 	local mg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)

@@ -39,10 +39,11 @@ function c72218246.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2
 end
 function c72218246.rfilter(c,e,tp,mc)
-	return c:IsRace(RACE_PLANT) and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
+	return c:IsRace(RACE_PLANT) and Duel.IsExistingMatchingCard(c72218246.spfilter1,tp,LOCATION_EXTRA,0,1,nil,e,tp,Group.FromCards(c,mc))
 end
-function c72218246.spfilter1(c,e,tp)
-	return c:IsType(TYPE_SYNCHRO) and (c:IsSetCard(0x123) or c:IsRace(RACE_PLANT)) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false)
+function c72218246.spfilter1(c,e,tp,mg)
+	return c:IsType(TYPE_SYNCHRO) and (c:IsSetCard(0x123) or c:IsRace(RACE_PLANT))
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mg,c)>0
 end
 function c72218246.spcost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -53,14 +54,13 @@ function c72218246.spcost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c72218246.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
-		and Duel.IsExistingMatchingCard(c72218246.spfilter1,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
+	if chk==0 then return aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c72218246.spop1(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCountFromEx(tp)<=0 or not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL) then return end
+	if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c72218246.spfilter1,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
+	local g=Duel.SelectMatchingCard(tp,c72218246.spfilter1,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,nil)
 	local tc=g:GetFirst()
 	if tc and Duel.SpecialSummon(tc,SUMMON_TYPE_SYNCHRO,tp,tp,false,false,POS_FACEUP)~=0 then
 		tc:CompleteProcedure()
