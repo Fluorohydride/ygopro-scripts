@@ -48,7 +48,7 @@ function c84869738.exfilter2(c)
 	return c:IsLocation(LOCATION_EXTRA) and c:IsFacedown() and c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)
 end
 function c84869738.exfilter3(c)
-	return c:IsLocation(LOCATION_EXTRA) and not (c:IsFacedown() and c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ))
+	return c:IsLocation(LOCATION_EXTRA) and (c:IsType(TYPE_LINK) or (c:IsFaceup() and c:IsType(TYPE_PENDULUM)))
 end
 function c84869738.gcheck(g,ft1,ft2,ft3,ect,ft)
 	return aux.dncheck(g) and #g<=ft

@@ -32,7 +32,7 @@ function c36328300.cfilter(c)
 	return c:IsSetCard(0x1034) and (c:IsFaceup() or not c:IsLocation(LOCATION_ONFIELD)) and c:IsAbleToGraveAsCost()
 end
 function c36328300.exfilter(c,tp)
-	return Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c),TYPE_FUSION)>0
+	return Duel.GetLocationCountFromEx(tp,tp,c,TYPE_FUSION)>0
 end
 function c36328300.gselect(g,tp)
 	return Duel.GetLocationCountFromEx(tp,tp,g,TYPE_FUSION)>0
