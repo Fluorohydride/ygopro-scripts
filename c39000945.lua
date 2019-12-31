@@ -113,7 +113,7 @@ function c39000945.rthop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	Duel.SendtoHand(g,nil,REASON_EFFECT)
-	if Duel.GetOperatedGroup():GetCount()>0 then
+	if Duel.GetOperatedGroup():GetCount()>0 and ct>0 then
 		e:GetHandler():AddCounter(0x1,ct)
 	end
 end

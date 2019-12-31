@@ -35,14 +35,16 @@ function c36328300.exfilter(c,tp)
 	return Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c))>0
 end
 function c36328300.gselect(g,tp)
-	return aux.dncheck(g) and Duel.GetLocationCountFromEx(tp,tp,g)>0
+	return Duel.GetLocationCountFromEx(tp,tp,g)>0
 end
 function c36328300.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c36328300.cfilter,tp,LOCATION_ONFIELD+LOCATION_HAND+LOCATION_DECK,0,nil)
 	if chk==0 then return g:GetClassCount(Card.GetCode)>=7
 		and (Duel.GetLocationCountFromEx(tp)>0 or g:IsExists(c36328300.exfilter,1,nil,tp)) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	aux.GCheckAdditional=aux.dncheck
 	local rg=g:SelectSubGroup(tp,c36328300.gselect,false,7,7,tp)
+	aux.GCheckAdditional=nil
 	Duel.SendtoGrave(rg,REASON_COST)
 end
 function c36328300.filter(c,e,tp)

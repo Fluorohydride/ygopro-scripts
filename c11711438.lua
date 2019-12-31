@@ -61,7 +61,7 @@ function c11711438.stgop(e,tp,eg,ep,ev,re,r,rp)
 	ct=ct+1
 	c:SetTurnCounter(ct)
 	if ct==2 then
-		Duel.SendtoGrave(c,REASON_EFFECT)
+		Duel.SendtoGrave(c,REASON_RULE)
 	end
 end
 function c11711438.cfilter(c,tp)
@@ -78,13 +78,13 @@ function c11711438.thcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c11711438.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=eg:Filter(c11711438.cfilter,nil,tp)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c11711438.tgfilter(chkc,tp,g) end
-	if chk==0 then return Duel.IsExistingTarget(c11711438.tgfilter,tp,LOCATION_MZONE,0,1,nil,tp,g) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c11711438.tgfilter(chkc,tp,g) end
+	if chk==0 then return Duel.IsExistingTarget(c11711438.tgfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,tp,g) end
 	if g:GetCount()==1 then
 		Duel.SetTargetCard(g)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-		Duel.SelectTarget(tp,c11711438.tgfilter,tp,LOCATION_MZONE,0,1,1,nil,tp,g)
+		Duel.SelectTarget(tp,c11711438.tgfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,tp,g)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

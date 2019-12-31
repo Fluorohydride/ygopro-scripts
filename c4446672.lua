@@ -25,7 +25,7 @@ function c4446672.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		if Duel.Destroy(tc,REASON_EFFECT)>0 then
-			Duel.Damage(1-tp,tc:GetBaseAttack()/2,REASON_EFFECT)
+			Duel.Damage(1-tp,math.floor(tc:GetBaseAttack()/2),REASON_EFFECT)
 		end
 	end
 end

@@ -57,7 +57,7 @@ function c69931927.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c69931927.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local dam=e:GetHandler():GetDefense()/2
+	local dam=math.floor(e:GetHandler():GetDefense()/2)
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(dam)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,dam)

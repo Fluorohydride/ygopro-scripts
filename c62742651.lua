@@ -34,7 +34,7 @@ end
 function c62742651.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local bc=e:GetHandler():GetBattleTarget()
-	local dam=bc:GetAttack()/2
+	local dam=math.floor(bc:GetAttack()/2)
 	if dam<0 then dam=0 end
 	Duel.SetTargetParam(dam)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,tp,dam)

@@ -66,7 +66,7 @@ function c56535497.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc2=g:GetFirst()
 	if tc1==tc2 then tc2=g:GetNext() end
 	if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and tc2:IsFaceup() and tc2:IsRelateToEffect(e) then
-		local atk=tc1:GetAttack()/2
+		local atk=math.ceil(tc1:GetAttack()/2)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)

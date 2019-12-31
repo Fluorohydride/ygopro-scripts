@@ -49,30 +49,28 @@ function c50140163.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		if c:IsFaceup() and c:IsRelateToEffect(e) then
-			local atk=tc:GetTextAttack()
-			local def=tc:GetTextDefense()
-			if atk<0 then atk=0 end
-			if def<0 then def=0 end
-			if not Duel.Equip(tp,tc,c,false) then return end
-			--Add Equip limit
-			tc:RegisterFlagEffect(50140163,RESET_EVENT+RESETS_STANDARD,0,0)
-			e:GetLabelObject():SetLabelObject(tc)
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
-			e1:SetCode(EFFECT_EQUIP_LIMIT)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e1:SetValue(c50140163.eqlimit)
-			tc:RegisterEffect(e1)
-			local e2=Effect.CreateEffect(c)
-			e2:SetType(EFFECT_TYPE_EQUIP)
-			e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_OWNER_RELATE+EFFECT_FLAG_SET_AVAILABLE)
-			e2:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e2:SetValue(c50140163.repval)
-			tc:RegisterEffect(e2)
-		else Duel.SendtoGrave(tc,REASON_RULE) end
+		local atk=tc:GetTextAttack()
+		local def=tc:GetTextDefense()
+		if atk<0 then atk=0 end
+		if def<0 then def=0 end
+		if not Duel.Equip(tp,tc,c,false) then return end
+		--Add Equip limit
+		tc:RegisterFlagEffect(50140163,RESET_EVENT+RESETS_STANDARD,0,0)
+		e:GetLabelObject():SetLabelObject(tc)
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetCode(EFFECT_EQUIP_LIMIT)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetValue(c50140163.eqlimit)
+		tc:RegisterEffect(e1)
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_EQUIP)
+		e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_OWNER_RELATE+EFFECT_FLAG_SET_AVAILABLE)
+		e2:SetCode(EFFECT_DESTROY_SUBSTITUTE)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e2:SetValue(c50140163.repval)
+		tc:RegisterEffect(e2)
 	end
 end
 function c50140163.repval(e,re,r,rp)

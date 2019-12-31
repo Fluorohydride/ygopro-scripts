@@ -69,11 +69,8 @@ function c49551909.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 		--damage
 		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e2:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-		e2:SetRange(LOCATION_SZONE)
-		e2:SetCondition(c49551909.damcon)
-		e2:SetOperation(c49551909.damop)
+		e2:SetType(EFFECT_TYPE_EQUIP)
+		e2:SetCode(EFFECT_ALSO_BATTLE_DAMAGE)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e2)
 		--Equip limit
@@ -105,11 +102,4 @@ function c49551909.desop(e,tp,eg,ep,ev,re,r,rp)
 	if bc:IsRelateToBattle() then
 		Duel.Destroy(bc,REASON_EFFECT)
 	end
-end
-function c49551909.damcon(e,tp,eg,ep,ev,re,r,rp)
-	local ec=e:GetHandler():GetEquipTarget()
-	return ec and ep==tp and (Duel.GetAttacker()==ec or Duel.GetAttackTarget()==ec)
-end
-function c49551909.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(1-tp,ev,false)
 end

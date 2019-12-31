@@ -74,5 +74,5 @@ function c69073023.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c69073023.damval(e,re,val,r,rp,rc)
-	return val/2
+	return math.floor(val/2)
 end

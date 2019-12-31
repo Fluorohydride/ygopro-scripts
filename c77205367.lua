@@ -11,12 +11,10 @@ function c77205367.initial_effect(c)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
 	e1:SetValue(1)
 	c:RegisterEffect(e1)
+	--damage
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-	e2:SetRange(LOCATION_MZONE)
-	e2:SetCondition(c77205367.damcon)
-	e2:SetOperation(c77205367.damop)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetCode(EFFECT_ALSO_BATTLE_DAMAGE)
 	c:RegisterEffect(e2)
 	--atk
 	local e3=Effect.CreateEffect(c)
@@ -31,13 +29,6 @@ function c77205367.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 c77205367.xyz_number=96
-function c77205367.damcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return ep==tp and c:IsRelateToBattle() and eg:GetFirst()==c:GetBattleTarget()
-end
-function c77205367.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(1-tp,ev,false)
-end
 function c77205367.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetOverlayGroup():IsExists(Card.IsCode,1,nil,55727845)
 end

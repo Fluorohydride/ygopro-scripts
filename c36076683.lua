@@ -48,6 +48,6 @@ function c36076683.atkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c36076683.damval(e,re,dam,r,rp,rc)
 	if bit.band(r,REASON_BATTLE)~=0 and rc==e:GetHandler() then
-		return dam/2
+		return math.floor(dam/2)
 	else return dam end
 end

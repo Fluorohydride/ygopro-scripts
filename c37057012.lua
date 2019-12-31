@@ -18,5 +18,5 @@ function c37057012.atkcon(e)
 		and e:GetHandler()==Duel.GetAttacker() and Duel.GetAttackTarget()~=nil
 end
 function c37057012.atkval(e,c)
-	return Duel.GetAttackTarget():GetAttack()/2
+	return math.ceil(Duel.GetAttackTarget():GetAttack()/2)
 end

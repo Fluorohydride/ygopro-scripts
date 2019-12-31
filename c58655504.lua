@@ -17,7 +17,7 @@ function c58655504.cfilter(c,tp)
 	return c:GetSummonPlayer()==1-tp
 end
 function c58655504.condition(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c58655504.cfilter,1,nil,tp) and Duel.GetFieldGroupCount(tp,LOCATION_ONFIELD,0)==0
+	return eg:IsExists(c58655504.cfilter,1,nil,tp)
 end
 function c58655504.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end
@@ -25,9 +25,10 @@ function c58655504.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58655504.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
+	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_ONFIELD,0)==0
+		and Duel.IsExistingTarget(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
+	Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
 end
 function c58655504.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

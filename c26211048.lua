@@ -37,11 +37,7 @@ function c26211048.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) or not tc:IsType(TYPE_MONSTER) then return end
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or c:IsFacedown() or not c:IsRelateToEffect(e) then
-		if tc:IsLocation(LOCATION_MZONE) then Duel.SendtoGrave(tc,REASON_EFFECT) end
-		return
-	end
-	Duel.Equip(tp,tc,c,false)
+	if not Duel.Equip(tp,tc,c,false) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -50,7 +46,7 @@ function c26211048.eqop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(c26211048.eqlimit)
 	tc:RegisterEffect(e1)
 	if tc:IsFaceup() then
-		local atk=tc:GetTextAttack()/2
+		local atk=math.ceil(tc:GetTextAttack()/2)
 		if atk<0 then atk=0 end
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_EQUIP)
@@ -58,7 +54,7 @@ function c26211048.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e2:SetValue(atk)
 		tc:RegisterEffect(e2)
-		local def=tc:GetTextDefense()/2
+		local def=math.ceil(tc:GetTextDefense()/2)
 		if def<0 then def=0 end
 		local e3=Effect.CreateEffect(c)
 		e3:SetType(EFFECT_TYPE_EQUIP)

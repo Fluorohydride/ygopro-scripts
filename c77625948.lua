@@ -37,10 +37,9 @@ function c77625948.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c77625948.eqop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToEffect(e) then
 		local atk=tc:GetTextAttack()
 		if atk<0 then atk=0 end
 		if not Duel.Equip(tp,tc,c,false) then return end
@@ -79,5 +78,5 @@ function c77625948.atkcon(e)
 		and e:GetHandler():GetEffectCount(EFFECT_DIRECT_ATTACK)==1
 end
 function c77625948.atkval(e,c)
-	return c:GetAttack()/2
+	return math.ceil(c:GetAttack()/2)
 end

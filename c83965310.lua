@@ -88,30 +88,28 @@ function c83965310.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		if c:IsFaceup() and c:IsRelateToEffect(e) then
-			local atk=tc:GetTextAttack()/2
-			if tc:IsFacedown() then atk=0 end
-			if atk<0 then atk=0 end
-			if not Duel.Equip(tp,tc,c,false) then return end
-			--Add Equip limit
-			tc:RegisterFlagEffect(83965310,RESET_EVENT+RESETS_STANDARD,0,0)
-			e:SetLabelObject(tc)
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
-			e1:SetCode(EFFECT_EQUIP_LIMIT)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e1:SetValue(c83965310.eqlimit)
-			tc:RegisterEffect(e1)
-			if atk>0 then
-				local e2=Effect.CreateEffect(c)
-				e2:SetType(EFFECT_TYPE_EQUIP)
-				e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_OWNER_RELATE)
-				e2:SetCode(EFFECT_UPDATE_ATTACK)
-				e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-				e2:SetValue(atk)
-				tc:RegisterEffect(e2)
-			end
-		else Duel.SendtoGrave(tc,REASON_RULE) end
+		local atk=math.ceil(tc:GetTextAttack()/2)
+		if tc:IsFacedown() then atk=0 end
+		if atk<0 then atk=0 end
+		if not Duel.Equip(tp,tc,c,false) then return end
+		--Add Equip limit
+		tc:RegisterFlagEffect(83965310,RESET_EVENT+RESETS_STANDARD,0,0)
+		e:SetLabelObject(tc)
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetCode(EFFECT_EQUIP_LIMIT)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetValue(c83965310.eqlimit)
+		tc:RegisterEffect(e1)
+		if atk>0 then
+			local e2=Effect.CreateEffect(c)
+			e2:SetType(EFFECT_TYPE_EQUIP)
+			e2:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE+EFFECT_FLAG_OWNER_RELATE)
+			e2:SetCode(EFFECT_UPDATE_ATTACK)
+			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
+			e2:SetValue(atk)
+			tc:RegisterEffect(e2)
+		end
 	end
 end

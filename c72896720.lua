@@ -38,7 +38,7 @@ function c72896720.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local atk=0
 	if d:IsFaceup() then atk=d:GetAttack() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,atk/2)
+	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,math.floor(atk/2))
 end
 function c72896720.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
@@ -46,6 +46,6 @@ function c72896720.desop(e,tp,eg,ep,ev,re,r,rp)
 		local atk=0
 		if tc:IsFaceup() then atk=tc:GetAttack() end
 		if Duel.Destroy(tc,REASON_EFFECT)==0 then return end
-		Duel.Damage(1-tp,atk/2,REASON_EFFECT)
+		Duel.Damage(1-tp,math.floor(atk/2),REASON_EFFECT)
 	end
 end

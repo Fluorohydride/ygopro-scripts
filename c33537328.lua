@@ -41,7 +41,7 @@ function c33537328.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if Duel.SelectEffectYesNo(tp,c,96) then
 		local g=Duel.SelectReleaseGroup(tp,Card.IsReleasableByEffect,1,1,c)
 		Duel.Release(g,REASON_EFFECT)
-		Duel.SetLP(1-tp,Duel.GetLP(1-tp)/2)
+		Duel.SetLP(1-tp,math.ceil(Duel.GetLP(1-tp)/2))
 		return true
 	else return false end
 end

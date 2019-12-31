@@ -42,10 +42,9 @@ function c9161357.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c9161357.eqop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) then
 		if not Duel.Equip(tp,tc,c,false) then return end
 		e:SetLabelObject(tc)
 		local e1=Effect.CreateEffect(c)
@@ -55,7 +54,7 @@ function c9161357.eqop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetValue(c9161357.eqlimit)
 		tc:RegisterEffect(e1)
-		local atk=tc:GetBaseAttack()/2
+		local atk=math.ceil(tc:GetBaseAttack()/2)
 		if atk>0 then
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_EQUIP)
@@ -86,5 +85,5 @@ function c9161357.lpcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c9161357.lpop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SetLP(1-tp,Duel.GetLP(1-tp)/2)
+	Duel.SetLP(1-tp,math.ceil(Duel.GetLP(1-tp)/2))
 end

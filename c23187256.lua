@@ -56,7 +56,9 @@ function c23187256.operation(e,tp,eg,ep,ev,re,r,rp)
 	if ct>ft then ct=ft end
 	if g1:GetCount()>0 and ct>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g2=g1:SelectSubGroup(tp,aux.drkcheck,false,1,ct)
+		aux.GCheckAdditional=aux.drkcheck
+		local g2=g1:SelectSubGroup(tp,aux.TRUE,false,1,ct)
+		aux.GCheckAdditional=nil
 		for tc in aux.Next(g2) do
 			Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
 			local e1=Effect.CreateEffect(c)
@@ -92,7 +94,7 @@ function c23187256.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c23187256.val(e,re,dam,r,rp,rc)
 	if bit.band(r,REASON_BATTLE)~=0 then
-		return dam/2
+		return math.floor(dam/2)
 	else return dam end
 end
 function c23187256.indfilter(c)

@@ -88,7 +88,6 @@ function c64756282.cptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		return tg and tg(e,tp,eg,ep,ev,re,r,rp,0,chkc,c)
 	end
 	if chk==0 then return true end
-	e:SetCategory(te:GetCategory())
 	e:SetProperty(te:GetProperty())
 	e:SetLabel(te:GetLabel())
 	e:SetLabelObject(te:GetLabelObject())
@@ -97,6 +96,7 @@ function c64756282.cptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	te:SetLabel(e:GetLabel())
 	te:SetLabelObject(e:GetLabelObject())
 	e:SetLabelObject(te)
+	Duel.ClearOperationInfo(0)
 end
 function c64756282.cpop(e,tp,eg,ep,ev,re,r,rp)
 	local te=e:GetLabelObject()

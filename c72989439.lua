@@ -32,7 +32,6 @@ function c72989439.initial_effect(c)
 	e3:SetOperation(c72989439.atop)
 	c:RegisterEffect(e3)
 end
-c72989439.spchecks=aux.CreateChecks(Card.IsAttribute,{ATTRIBUTE_LIGHT,ATTRIBUTE_DARK})
 function c72989439.spcostfilter(c)
 	return c:IsAbleToRemoveAsCost() and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
 end
@@ -41,12 +40,12 @@ function c72989439.spcon(e,c)
 	local tp=c:GetControler()
 	if Duel.GetMZoneCount(tp)<=0 then return false end
 	local g=Duel.GetMatchingGroup(c72989439.spcostfilter,tp,LOCATION_GRAVE,0,nil)
-	return g:CheckSubGroupEach(c72989439.spchecks)
+	return g:CheckSubGroup(aux.gfcheck,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
 end
 function c72989439.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c72989439.spcostfilter,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg=g:SelectSubGroupEach(tp,c72989439.spchecks)
+	local sg=g:SelectSubGroup(tp,aux.gfcheck,false,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c72989439.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)

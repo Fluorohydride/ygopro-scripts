@@ -12,31 +12,18 @@ function c54813225.initial_effect(c)
 	e1:SetOperation(c54813225.spop)
 	c:RegisterEffect(e1)
 end
-function c54813225.relrec(c,tp,sg,mg)
-	sg:AddCard(c)
-	local res=c54813225.relgoal(tp,sg) or mg:IsExists(c54813225.relrec,1,sg,tp,sg,mg)
-	sg:RemoveCard(c)
-	return res
-end
-function c54813225.relgoal(tp,sg)
+function c54813225.relgoal(sg,tp)
 	Duel.SetSelectedCard(sg)
 	if sg:CheckWithSumGreater(Card.GetLevel,3) and Duel.GetMZoneCount(tp,sg)>0 then
 		Duel.SetSelectedCard(sg)
 		return Duel.CheckReleaseGroup(tp,nil,0,nil)
 	else return false end
 end
-function c54813225.relfilter(c,g)
-	return g:IsContains(c)
-end
 function c54813225.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local mg=Duel.GetReleaseGroup(tp):Filter(Card.IsType,nil,TYPE_TOKEN)
-	local sg=Group.CreateGroup()
-	if chk==0 then return mg:IsExists(c54813225.relrec,1,nil,tp,sg,mg) end
-	repeat
-		local cg=mg:Filter(c54813225.relrec,sg,tp,sg,mg)
-		local g=Duel.SelectReleaseGroup(tp,c54813225.relfilter,1,1,nil,cg)
-		sg:Merge(g)
-	until c54813225.relgoal(tp,sg)
+	if chk==0 then return mg:CheckSubGroup(c54813225.relgoal,1,3,tp) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local sg=mg:SelectSubGroup(tp,c54813225.relgoal,false,1,3,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c54813225.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -102,5 +102,5 @@ function c31801517.rdcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and not e:GetHandler():GetOverlayGroup():IsExists(Card.IsCode,1,nil,93717133)
 end
 function c31801517.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
+	Duel.ChangeBattleDamage(ep,math.floor(ev/2))
 end

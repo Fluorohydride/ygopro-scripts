@@ -51,11 +51,27 @@ function c32354768.initial_effect(c)
 	e6:SetValue(c32354768.valcheck)
 	c:RegisterEffect(e6)
 end
-function c32354768.mtfilter(c)
+function c32354768.mtfilter1(c)
 	return c:IsSetCard(0xc4) and c:IsType(TYPE_MONSTER)
 end
+function c32354768.mtfilter2(c)
+	return c:IsFusionSetCard(0xc4) and c:IsFusionType(TYPE_MONSTER)
+end
+function c32354768.mtfilter3(c)
+	return c:IsSetCard(0xc4) and c:IsSynchroType(TYPE_MONSTER)
+end
+function c32354768.mtfilter4(c)
+	return c:IsSetCard(0xc4) and c:IsXyzType(TYPE_MONSTER)
+end
 function c32354768.valcheck(e,c)
-	if c:GetMaterial():IsExists(c32354768.mtfilter,1,nil) then
+	local g=c:GetMaterial()
+	if c:IsType(TYPE_RITUAL) and g:IsExists(c32354768.mtfilter1,1,nil) then
+		c:RegisterFlagEffect(32354768,RESET_EVENT+0x4fe0000+RESET_PHASE+PHASE_END,0,1)
+	elseif c:IsType(TYPE_FUSION) and g:IsExists(c32354768.mtfilter2,1,nil) then
+		c:RegisterFlagEffect(32354768,RESET_EVENT+0x4fe0000+RESET_PHASE+PHASE_END,0,1)
+	elseif c:IsType(TYPE_SYNCHRO) and g:IsExists(c32354768.mtfilter3,1,nil) then
+		c:RegisterFlagEffect(32354768,RESET_EVENT+0x4fe0000+RESET_PHASE+PHASE_END,0,1)
+	elseif c:IsType(TYPE_XYZ) and g:IsExists(c32354768.mtfilter4,1,nil) then
 		c:RegisterFlagEffect(32354768,RESET_EVENT+0x4fe0000+RESET_PHASE+PHASE_END,0,1)
 	end
 end

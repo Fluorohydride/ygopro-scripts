@@ -32,7 +32,7 @@ end
 function c42421606.efop(e,tp,eg,ep,ev,re,r,rp)
 	local dc=Duel.TossDice(tp,1)
 	if dc==1 then
-		Duel.SetLP(tp,Duel.GetLP(tp)/2)
+		Duel.SetLP(tp,math.ceil(Duel.GetLP(tp)/2))
 	elseif dc==2 then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	elseif dc==3 then

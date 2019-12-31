@@ -54,8 +54,7 @@ function c79856792.spcon(e,c)
 	if c==nil then return true end
 	if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)<=0 then return false end
 	local g=Duel.GetMatchingGroup(c79856792.spfilter,c:GetControler(),LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	local ct=g:GetClassCount(Card.GetCode)
-	return ct>6
+	return g:GetClassCount(Card.GetCode)==7
 end
 function c79856792.spop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterFlagEffect(79856792,RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD-RESET_TURN_SET+RESET_PHASE+PHASE_END,0,1)

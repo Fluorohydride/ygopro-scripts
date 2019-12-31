@@ -58,5 +58,5 @@ function c72083436.rdcon(e,tp,eg,ep,ev,re,r,rp)
 		and c:GetEffectCount(EFFECT_DIRECT_ATTACK)<2 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0 and c:GetFlagEffect(72083436)>0
 end
 function c72083436.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
+	Duel.ChangeBattleDamage(ep,math.floor(ev/2))
 end

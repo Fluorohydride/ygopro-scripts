@@ -72,23 +72,16 @@ function c63633694.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		if c:IsFaceup() and c:IsRelateToEffect(e) then
-			local p=c:GetControler()
-			if Duel.GetLocationCount(p,LOCATION_SZONE)<=0 then
-				Duel.SendtoGrave(tc,REASON_RULE)
-				return
-			end
-			if not Duel.Equip(tp,tc,c,false) then return end
-			tc:RegisterFlagEffect(63633694,RESET_EVENT+RESETS_STANDARD,0,0)
-			e:SetLabelObject(tc)
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
-			e1:SetCode(EFFECT_EQUIP_LIMIT)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e1:SetValue(c63633694.eqlimit)
-			tc:RegisterEffect(e1)
-		else Duel.SendtoGrave(tc,REASON_RULE) end
+		if not Duel.Equip(tp,tc,c,false) then return end
+		tc:RegisterFlagEffect(63633694,RESET_EVENT+RESETS_STANDARD,0,0)
+		e:SetLabelObject(tc)
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetCode(EFFECT_EQUIP_LIMIT)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetValue(c63633694.eqlimit)
+		tc:RegisterEffect(e1)
 	end
 end
 function c63633694.eqlimit(e,c)

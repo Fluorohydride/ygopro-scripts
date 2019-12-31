@@ -62,7 +62,7 @@ function c51402177.damcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c51402177.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local dam=e:GetHandler():GetBattleTarget():GetBaseDefense()/2
+	local dam=math.floor(e:GetHandler():GetBattleTarget():GetBaseDefense()/2)
 	if dam<0 then dam=0 end
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(dam)

@@ -46,5 +46,5 @@ function c47737087.atkcon(e)
 	return c:IsDefensePos() and c==Duel.GetAttacker() and Duel.GetAttackTarget()==nil and c:GetEffectCount(EFFECT_DIRECT_ATTACK)==1
 end
 function c47737087.atkval(e,c)
-	return c:GetAttack()/2
+	return math.ceil(c:GetAttack()/2)
 end

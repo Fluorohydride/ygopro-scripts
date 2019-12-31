@@ -6,12 +6,17 @@ function c27503418.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetCondition(c27503418.condition)
+	e1:SetTarget(c27503418.target)
 	e1:SetOperation(c27503418.activate)
 	c:RegisterEffect(e1)
 end
 function c27503418.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttackTarget()
 	return tc and tc:IsFaceup() and tc:IsControler(tp) and tc:IsType(TYPE_SYNCHRO)
+end
+function c27503418.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	Duel.SetTargetCard(Duel.GetAttackTarget())
 end
 function c27503418.filter1(c,e,tp,lv)
 	local rlv=c:GetLevel()-lv
@@ -24,7 +29,8 @@ function c27503418.filter2(c,tp,lv)
 end
 function c27503418.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttackTarget()
-	if Duel.NegateAttack() and Duel.GetLocationCountFromEx(tp,tp,tc)>0 and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
+	if Duel.NegateAttack() and tc:IsRelateToEffect(e)
+		and Duel.GetLocationCountFromEx(tp,tp,tc)>0 and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
 		and Duel.IsExistingMatchingCard(c27503418.filter1,tp,LOCATION_EXTRA,0,1,nil,e,tp,tc:GetLevel())
 		and tc:IsAbleToRemove() and Duel.SelectYesNo(tp,aux.Stringid(27503418,0)) then
 		Duel.BreakEffect()

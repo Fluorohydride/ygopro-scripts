@@ -31,7 +31,7 @@ function c56339050.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc==tc end
 	if chk==0 then return tc:IsOnField() and tc:IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(tc)
-	local dam=tc:GetAttack()/2
+	local dam=math.floor(tc:GetAttack()/2)
 	Duel.SetTargetParam(dam)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,tc,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,dam)
@@ -39,7 +39,7 @@ end
 function c56339050.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsAttackable() then
-		local atk=tc:GetAttack()/2
+		local atk=math.floor(tc:GetAttack()/2)
 		if Duel.Destroy(tc,REASON_EFFECT)~=0 then
 			Duel.Damage(1-tp,atk,REASON_EFFECT)
 		end
