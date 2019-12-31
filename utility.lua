@@ -2236,6 +2236,9 @@ function Auxiliary.gffcheck(g,f1,a1,f2,a2)
 	local c2=g:GetNext()
 	return f1(c1,a1) and f2(c2,a2) or f1(c2,a1) and f2(c1,a2)
 end
+function Auxiliary.mzctcheck(g,tp)
+	return Duel.GetMZoneCount(tp,g)>0
+end
 --used for "except this card"
 function Auxiliary.ExceptThisCard(e)
 	local c=e:GetHandler()
