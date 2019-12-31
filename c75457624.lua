@@ -21,6 +21,7 @@ function c75457624.cfilter2(c,mc,e,tp)
 	return Duel.IsExistingMatchingCard(c75457624.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,Group.FromCards(c,mc))
 end
 function c75457624.cost(e,tp,eg,ep,ev,re,r,rp,chk)
+	e:SetLabel(100)
 	local cg=Duel.GetMatchingGroup(c75457624.cfilter,tp,LOCATION_MZONE,0,nil)
 	if chk==0 then return cg:IsExists(c75457624.cfilter1,1,nil,cg,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
@@ -35,7 +36,12 @@ function c75457624.filter(c,e,tp,mg)
 	return c:IsSetCard(0xb5) and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and Duel.GetLocationCountFromEx(tp,tp,mg,c)>0
 end
 function c75457624.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c75457624.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,nil) end
+	if chk==0 then
+		local res=e:GetLabel()==100
+		e:SetLabel(0)
+		return res or Duel.IsExistingMatchingCard(c75457624.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,nil)
+	end
+	e:SetLabel(0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c75457624.activate(e,tp,eg,ep,ev,re,r,rp)
