@@ -17,11 +17,11 @@ function c11109820.filter1(c,e,tp)
 end
 function c11109820.filter2(c,e,tp,mc,rk)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)
-		and Duel.IsExistingMatchingCard(c11109820.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,rk+c:GetRank())
-		and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
+		and Duel.IsExistingMatchingCard(c11109820.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,rk+c:GetRank(),Group.FromCards(c,mc))
 end
-function c11109820.spfilter(c,e,tp,rk)
+function c11109820.spfilter(c,e,tp,rk,mg)
 	return (c:IsRank(rk) or c:IsRank(rk-1)) and not c:IsSetCard(0x48) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and Duel.GetLocationCountFromEx(tp,tp,mg,c)>0
 end
 function c11109820.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
@@ -62,7 +62,7 @@ function c11109820.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(g,REASON_EFFECT)
 	local og=Duel.GetOperatedGroup()
 	if og:FilterCount(Card.IsLocation,nil,LOCATION_GRAVE)<2 then return end
-	local sg=Duel.GetMatchingGroup(c11109820.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp,tc1:GetRank()+tc2:GetRank())
+	local sg=Duel.GetMatchingGroup(c11109820.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp,tc1:GetRank()+tc2:GetRank(),nil)
 	if sg:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local ssg=sg:Select(tp,1,1,nil)

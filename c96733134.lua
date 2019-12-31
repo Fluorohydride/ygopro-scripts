@@ -112,14 +112,14 @@ function c96733134.spfilter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x10f8,0x20f8)
 		and c:IsType(TYPE_PENDULUM) and not c:IsCode(96733134)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+		and Duel.GetLocationCountFromEx(tp,tp,rc,c)>0
 end
 function c96733134.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCountFromEx(tp,tp,e:GetHandler())>0
-		and Duel.IsExistingMatchingCard(c96733134.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c96733134.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,e:GetHandler()) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c96733134.spop(e,tp,eg,ep,ev,re,r,rp)
-	local ft=Duel.GetLocationCountFromEx(tp)
+	local ft=Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_PENDULUM)
 	if ft==0 then return end
 	ft=math.min(ft,2)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then
@@ -128,7 +128,7 @@ function c96733134.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ect=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
 	if ect~=nil then ft=math.min(ft,ect) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c96733134.spfilter,tp,LOCATION_EXTRA,0,1,ft,nil,e,tp)
+	local g=Duel.SelectMatchingCard(tp,c96733134.spfilter,tp,LOCATION_EXTRA,0,1,ft,nil,e,tp,nil)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
