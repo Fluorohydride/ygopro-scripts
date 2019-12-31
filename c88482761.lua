@@ -35,12 +35,11 @@ function c88482761.rmfilter2(c,e,tp,lv)
 		and Duel.IsExistingMatchingCard(c88482761.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetOriginalLevel()+lv)
 end
 function c88482761.spfilter(c,e,tp,lv)
-	return c:IsLevel(lv) and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevel(lv) and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c88482761.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c88482761.rmfilter1(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
-		and Duel.IsExistingTarget(c88482761.rmfilter1,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c88482761.rmfilter1,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,c88482761.rmfilter1,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,tp,LOCATION_GRAVE)
@@ -56,7 +55,6 @@ function c88482761.operation(e,tp,eg,ep,ev,re,r,rp)
 		lv=lv+g:GetFirst():GetOriginalLevel()
 		g:AddCard(tc)
 		if Duel.Remove(g,POS_FACEUP,REASON_EFFECT)==2 then
-			if Duel.GetLocationCountFromEx(tp)<=0 then return end
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=Duel.SelectMatchingCard(tp,c88482761.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,lv)
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
