@@ -30,6 +30,7 @@ function c2819435.initial_effect(c)
 	e6:SetProperty(EFFECT_FLAG_DELAY)
 	e6:SetCode(EVENT_CHAINING)
 	e6:SetRange(LOCATION_FZONE)
+	e6:SetCondition(c2819435.spcon)
 	e6:SetCost(c2819435.cost)
 	e6:SetTarget(c2819435.sptg)
 	e6:SetOperation(c2819435.spop)
@@ -78,6 +79,9 @@ function c2819435.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 	end
+end
+function c2819435.spcon(e,tp,eg,ep,ev,re,r,rp)
+	return rp==1-tp
 end
 function c2819435.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
