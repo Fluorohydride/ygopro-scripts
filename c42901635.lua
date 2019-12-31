@@ -31,41 +31,21 @@ function c42901635.initial_effect(c)
 	e3:SetOperation(c42901635.spop2)
 	c:RegisterEffect(e3)
 end
+c42901635.spchecks=aux.CreateChecks(Card.IsCode,{42023223,79418928,15502037})
 function c42901635.spcostfilter(c)
 	return (c:IsLocation(LOCATION_HAND+LOCATION_GRAVE) or c:IsFaceup())
 		and c:IsAbleToRemoveAsCost() and c:IsCode(42023223,79418928,15502037)
-end
-c42901635.spcost_list={42023223,79418928,15502037}
-function c42901635.spcost_selector(c,tp,g,sg,i)
-	if not c:IsCode(c42901635.spcost_list[i]) then return false end
-	sg:AddCard(c)
-	g:RemoveCard(c)
-	local flag=false
-	if i<3 then
-		flag=g:IsExists(c42901635.spcost_selector,1,nil,tp,g,sg,i+1)
-	else
-		flag=Duel.GetMZoneCount(tp,sg,tp)>0
-	end
-	sg:RemoveCard(c)
-	g:AddCard(c)
-	return flag
 end
 function c42901635.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local g=Duel.GetMatchingGroup(c42901635.spcostfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
-	local sg=Group.CreateGroup()
-	return g:IsExists(c42901635.spcost_selector,1,nil,tp,g,sg,1)
+	return g:CheckSubGroupEach(c42901635.spchecks,aux.mzctcheck,tp)
 end
 function c42901635.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c42901635.spcostfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
-	local sg=Group.CreateGroup()
-	for i=1,3 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g1=g:FilterSelect(tp,c42901635.spcost_selector,1,1,nil,tp,g,sg,i)
-		sg:Merge(g1)
-		g:Sub(g1)
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroupEach(tp,c42901635.spchecks,false,aux.mzctcheck,tp)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c42901635.costfilter(c)
@@ -100,32 +80,14 @@ function c42901635.spfilter(c,e,tp)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and c:IsCanBeEffectTarget(e)
 end
-function c42901635.sptarget_selector(c,tp,g,sg,i)
-	if not c:IsCode(c42901635.spcost_list[i]) then return false end
-	if i<3 then
-		sg:AddCard(c)
-		g:RemoveCard(c)
-		local flag=g:IsExists(c42901635.sptarget_selector,1,nil,tp,g,sg,i+1)
-		sg:RemoveCard(c)
-		g:AddCard(c)
-		return flag
-	else
-		return true
-	end
-end
 function c42901635.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local g=Duel.GetMatchingGroup(c42901635.spfilter,tp,LOCATION_REMOVED,0,nil,e,tp)
-	local sg=Group.CreateGroup()
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>2
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and g:IsExists(c42901635.sptarget_selector,1,nil,tp,g,sg,1) end
-	for i=1,3 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g1=g:FilterSelect(tp,c42901635.sptarget_selector,1,1,nil,tp,g,sg,i)
-		sg:Merge(g1)
-		g:Sub(g1)
-	end
+		and g:CheckSubGroupEach(c42901635.spchecks) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local sg=g:SelectSubGroupEach(tp,c42901635.spchecks)
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,3,0,0)
 end
