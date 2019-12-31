@@ -37,11 +37,11 @@ function c23379054.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 end
 function c23379054.filter1(c,e,tp,lv,mc)
 	return c:IsType(TYPE_FUSION) and c:IsAbleToRemove()
-		and Duel.IsExistingMatchingCard(c23379054.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,lv+c:GetLevel(),Group.FromCards(c,mc))
+		and Duel.IsExistingMatchingCard(c23379054.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,lv+c:GetLevel(),mc)
 end
-function c23379054.filter2(c,e,tp,lv,mg)
+function c23379054.filter2(c,e,tp,lv,mc)
 	return c:IsLevel(lv) and c:IsRace(RACE_DRAGON) and c:IsType(TYPE_SYNCHRO)
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mg,c)>0
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
 end
 function c23379054.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
