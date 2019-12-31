@@ -41,6 +41,7 @@ function c89493368.initial_effect(c)
 	e5:SetOperation(c89493368.spop)
 	c:RegisterEffect(e5)
 end
+c89493368.spchecks=aux.CreateChecks(Card.IsCode,{15175429,52286175})
 function c89493368.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(Card.IsControler,1,nil,1-tp)
 end
@@ -72,32 +73,16 @@ end
 function c89493368.spcostfilter(c)
 	return c:IsAbleToGraveAsCost() and c:IsCode(15175429,52286175)
 end
-function c89493368.spcost_selector(c,tp,g,sg,i)
-	sg:AddCard(c)
-	g:RemoveCard(c)
-	local flag=false
-	if i<2 then
-		flag=g:IsExists(c89493368.spcost_selector,1,nil,tp,g,sg,i+1)
-	else
-		flag=Duel.GetMZoneCount(tp,sg,tp)>-1
-			and sg:FilterCount(Card.IsCode,nil,15175429)>0
-			and sg:FilterCount(Card.IsCode,nil,52286175)>0
-	end
-	sg:RemoveCard(c)
-	g:AddCard(c)
-	return flag
+function c89493368.fgoal(g,tp,c)
+	local sg=Group.FromCards(c)
+	sg:Merge(g)
+	return Duel.GetMZoneCount(tp,sg)>0
 end
 function c89493368.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(c89493368.spcostfilter,tp,LOCATION_MZONE,0,c)
-	local sg=Group.CreateGroup()
-	if chk==0 then return c:IsAbleToGraveAsCost() and g:IsExists(c89493368.spcost_selector,1,nil,tp,g,sg,1) end
-	for i=1,2 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local g1=g:FilterSelect(tp,c89493368.spcost_selector,1,1,nil,tp,g,sg,i)
-		sg:Merge(g1)
-		g:Sub(g1)
-	end
+	if chk==0 then return c:IsAbleToGraveAsCost() and g:CheckSubGroupEach(c89493368.spchecks,c89493368.fgoal,tp,c) end
+	local sg=g:SelectSubGroupEach(tp,c89493368.spchecks,false,c89493368.fgoal,tp,c)
 	sg:AddCard(c)
 	Duel.SendtoGrave(sg,REASON_COST)
 end

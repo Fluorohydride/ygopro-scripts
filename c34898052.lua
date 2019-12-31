@@ -12,33 +12,16 @@ function c34898052.initial_effect(c)
 	e1:SetOperation(c34898052.activate)
 	c:RegisterEffect(e1)
 end
-function c34898052.rfilter(c,att)
-	return (not att or c:IsAttribute(att)) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
-end
-c34898052.cost_table={ATTRIBUTE_EARTH,ATTRIBUTE_WATER,ATTRIBUTE_FIRE,ATTRIBUTE_WIND}
-function c34898052.rcostselector(c,g,sg,i)
-	if not c:IsAttribute(c34898052.cost_table[i]) then return false end
-	if i<4 then
-		g:RemoveCard(c)
-		sg:AddCard(c)
-		local flag=g:IsExists(c34898052.rcostselector,1,nil,g,sg,i+1)
-		g:AddCard(c)
-		sg:RemoveCard(c)
-		return flag
-	else
-		return true
-	end
+c34898052.rchecks=aux.CreateChecks(Card.IsAttribute,{ATTRIBUTE_EARTH,ATTRIBUTE_WATER,ATTRIBUTE_FIRE,ATTRIBUTE_WIND})
+function c34898052.rfilter(c)
+	return c:IsAttribute(ATTRIBUTE_EARTH+ATTRIBUTE_WATER+ATTRIBUTE_FIRE+ATTRIBUTE_WIND)
+		and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function c34898052.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c34898052.rfilter,tp,LOCATION_GRAVE,0,nil)
-	local sg=Group.CreateGroup()
-	if chk==0 then return g:IsExists(c34898052.rcostselector,1,nil,g,sg,1) end
-	for i=1,4 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g1=g:FilterSelect(tp,c34898052.rcostselector,1,1,nil,g,sg,i)
-		g:Sub(g1)
-		sg:Merge(g1)
-	end
+	if chk==0 then return g:CheckSubGroupEach(c34898052.rchecks) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroupEach(tp,c34898052.rchecks)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c34898052.target(e,tp,eg,ep,ev,re,r,rp,chk)

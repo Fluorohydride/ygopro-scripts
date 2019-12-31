@@ -31,40 +31,20 @@ function c4335427.initial_effect(c)
 	e4:SetOperation(c4335427.rmop)
 	c:RegisterEffect(e4)
 end
+c4335427.spchecks=aux.CreateChecks(Card.IsType,{TYPE_RITUAL,TYPE_FUSION,TYPE_SYNCHRO,TYPE_XYZ})
 function c4335427.spcostfilter(c)
 	return c:IsFaceup() and c:IsAbleToRemoveAsCost() and c:IsType(TYPE_RITUAL+TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)
-end
-c4335427.spcost_table={TYPE_RITUAL,TYPE_FUSION,TYPE_SYNCHRO,TYPE_XYZ}
-function c4335427.spcost_selector(c,tp,g,sg,i)
-	if not c:IsType(c4335427.spcost_table[i]) then return false end
-	sg:AddCard(c)
-	g:RemoveCard(c)
-	local flag=false
-	if i<4 then
-		flag=g:IsExists(c4335427.spcost_selector,1,nil,tp,g,sg,i+1)
-	else
-		flag=Duel.GetMZoneCount(tp,sg,tp)>0
-	end
-	sg:RemoveCard(c)
-	g:AddCard(c)
-	return flag
 end
 function c4335427.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local g=Duel.GetMatchingGroup(c4335427.spcostfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	local sg=Group.CreateGroup()
-	return g:IsExists(c4335427.spcost_selector,1,nil,tp,g,sg,1)
+	return g:CheckSubGroupEach(c4335427.spchecks,aux.mzctcheck,tp)
 end
 function c4335427.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c4335427.spcostfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	local sg=Group.CreateGroup()
-	for i=1,4 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g1=g:FilterSelect(tp,c4335427.spcost_selector,1,1,nil,tp,g,sg,i)
-		sg:Merge(g1)
-		g:Sub(g1)
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroupEach(tp,c4335427.spchecks,false,aux.mzctcheck,tp)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c4335427.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)

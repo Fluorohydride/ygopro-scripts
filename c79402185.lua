@@ -22,20 +22,12 @@ function c79402185.initial_effect(c)
 	e2:SetOperation(c79402185.thop)
 	c:RegisterEffect(e2)
 end
+c79402185.spchecks=aux.CreateChecks(Card.IsCode,{43017476,43017476,58071123})
 function c79402185.costfilter(c,tp)
 	return c:IsCode(43017476,58071123) and (c:IsControler(tp) or c:IsFaceup())
 end
-function c79402185.fcheck(c,mg,sg,code,...)
-	if not c:IsCode(code) then return false end
-	if ... then
-		sg:AddCard(c)
-		local res=mg:IsExists(c79402185.fcheck,1,sg,mg,sg,...)
-		sg:RemoveCard(c)
-		return res
-	else return true end
-end
-function c79402185.fselect(g,tp,sg)
-	if g:IsExists(c79402185.fcheck,1,nil,g,sg,43017476,43017476,58071123) and Duel.GetMZoneCount(tp,g)>0 then
+function c79402185.fgoal(g,tp)
+	if Duel.GetMZoneCount(tp,g)>0 then
 		Duel.SetSelectedCard(g)
 		return Duel.CheckReleaseGroupEx(tp,nil,0,nil)
 	else return false end
@@ -44,9 +36,9 @@ function c79402185.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	local sg=Group.CreateGroup()
 	local g=Duel.GetReleaseGroup(tp,true):Filter(c79402185.costfilter,nil,tp)
-	if chk==0 then return g:CheckSubGroup(c79402185.fselect,3,3,tp,sg) end
+	if chk==0 then return g:CheckSubGroupEach(c79402185.spchecks,c79402185.fgoal,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local rg=g:SelectSubGroup(tp,c79402185.fselect,false,3,3,tp,sg)
+	local rg=g:SelectSubGroupEach(tp,c79402185.spchecks,false,c79402185.fgoal,tp)
 	Duel.Release(rg,REASON_COST)
 end
 function c79402185.filter(c,e,tp)
