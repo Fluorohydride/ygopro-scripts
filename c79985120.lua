@@ -65,7 +65,7 @@ function c79985120.spfilter(c,e,tp)
 	return c:IsCode(81927732) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c79985120.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then returnDuel.IsExistingMatchingCard(c79985120.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp)
+	if chk==0 then return Duel.IsExistingMatchingCard(c79985120.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp)
 		and e:GetHandler():IsCanOverlay() end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,e:GetHandler(),1,0,0)
