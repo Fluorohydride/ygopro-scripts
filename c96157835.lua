@@ -65,16 +65,15 @@ function c96157835.spcon2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c96157835.spfilter2(c,e,tp)
 	return c:IsSetCard(0xba) and c:IsType(TYPE_XYZ) and not c:IsCode(96157835) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c96157835.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
-		and Duel.IsExistingMatchingCard(c96157835.spfilter2,tp,LOCATION_EXTRA,0,1,nil,e,tp)
+	if chk==0 then return Duel.IsExistingMatchingCard(c96157835.spfilter2,tp,LOCATION_EXTRA,0,1,nil,e,tp)
 		and e:GetHandler():IsCanOverlay() end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,e:GetHandler(),1,0,0)
 end
 function c96157835.spop2(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCountFromEx(tp)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c96157835.spfilter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
