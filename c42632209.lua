@@ -14,10 +14,10 @@ function c42632209.initial_effect(c)
 	c:RegisterEffect(e1)
 	--double battle damage
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e2:SetCode(EVENT_PRE_BATTLE_DAMAGE)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e2:SetCondition(c42632209.damcon)
-	e2:SetOperation(c42632209.damop)
+	e2:SetValue(aux.ChangeBattleDamage(1,DOUBLE_DAMAGE))
 	c:RegisterEffect(e2)
 	--search
 	local e3=Effect.CreateEffect(c)
@@ -37,11 +37,8 @@ end
 function c42632209.efilter(e,te)
 	return not te:GetOwner():IsSetCard(0x132)
 end
-function c42632209.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and e:GetHandler():GetBattleTarget()~=nil and e:GetHandler():GetSequence()>4
-end
-function c42632209.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev*2)
+function c42632209.damcon(e)
+	return e:GetHandler():GetBattleTarget()~=nil and e:GetHandler():GetSequence()>4
 end
 function c42632209.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -2038,6 +2038,23 @@ function Auxiliary.SZoneSequence(seq)
 	if seq>4 then return nil end
 	return seq
 end
+function Auxiliary.ChangeBattleDamage(player,val)
+	return	function(e,damp)
+				if player==0 then
+					if e:GetHandlerPlayer()==damp then
+						return val
+					else
+						return -1
+					end
+				elseif player==1 then
+					if e:GetHandlerPlayer()==1-damp then
+						return val
+					else
+						return -1
+					end
+				end
+			end
+end 
 --card effect disable filter(target)
 function Auxiliary.disfilter1(c)
 	return c:IsFaceup() and not c:IsDisabled() and (not c:IsType(TYPE_NORMAL) or c:GetOriginalType()&TYPE_EFFECT~=0)

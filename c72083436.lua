@@ -42,21 +42,19 @@ function c72083436.daop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-		e2:SetCode(EVENT_PRE_BATTLE_DAMAGE)
+		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 		e2:SetCondition(c72083436.rdcon)
-		e2:SetOperation(c72083436.rdop)
+		e2:SetValue(aux.ChangeBattleDamage(1,HALF_DAMAGE))
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e2)
 		tc:RegisterFlagEffect(72083436,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
 		tc=g:GetNext()
 	end
 end
-function c72083436.rdcon(e,tp,eg,ep,ev,re,r,rp)
+function c72083436.rdcon(e)
 	local c=e:GetHandler()
-	return ep~=tp and Duel.GetAttackTarget()==nil
+	local tp=e:GetHandlerPlayer()
+	return Duel.GetAttackTarget()==nil
 		and c:GetEffectCount(EFFECT_DIRECT_ATTACK)<2 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0 and c:GetFlagEffect(72083436)>0
-end
-function c72083436.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,math.floor(ev/2))
 end
