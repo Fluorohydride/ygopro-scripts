@@ -39,7 +39,7 @@ function c74578720.bdop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_REFLECT_BATTLE_DAMAGE)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetTargetRange(1,0)
-	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
+	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 end
 function c74578720.cfilter(c,tp)
