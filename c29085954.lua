@@ -31,7 +31,7 @@ function c29085954.filter(c,e,tp,mc)
 end
 function c29085954.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return aux.MustMaterialCheck(e:GetHandler(),tp,EFFECT_MUST_BE_XMATERIAL)
-		and Duel.IsExistingMatchingCard(c28400508.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,e:GetHandler()) end
+		and Duel.IsExistingMatchingCard(c29085954.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,e:GetHandler()) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c29085954.spop(e,tp,eg,ep,ev,re,r,rp)
