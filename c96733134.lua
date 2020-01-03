@@ -94,7 +94,7 @@ function c96733134.hspop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-function c96733134.damtg(e)
+function c96733134.damtg(e,c)
 	return c:IsType(TYPE_PENDULUM) and c:GetBattleTarget()~=nil
 end
 function c96733134.spcon(e,tp,eg,ep,ev,re,r,rp)

@@ -11,7 +11,7 @@ function c40384720.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e2:SetCondition(c40384720.rdcon)
-	e2:SetValue(c40384720.rdop)
+	e2:SetValue(c40384720.rdval)
 	c:RegisterEffect(e2)
 end
 function c40384720.dfilter(c)
@@ -26,8 +26,8 @@ function c40384720.rdcon(e)
 	return Duel.GetAttackTarget()==nil
 		and c:GetEffectCount(EFFECT_DIRECT_ATTACK)<2 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0
 end
-function c40384720.rdop(e,damp)
-	if damp=1-e:GetHandlerPlayer() then
+function c40384720.rdval(e,damp)
+	if damp==1-e:GetHandlerPlayer() then
 		return e:GetHandler():GetBaseAttack()
 	else return -1 end
 end

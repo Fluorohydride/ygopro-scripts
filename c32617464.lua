@@ -43,7 +43,7 @@ function c32617464.matfilter(c)
 end
 function c32617464.damtg(e,c)
 	local lg=e:GetHandler():GetMutualLinkedGroup()
-	return lg:IsContains(c) and c:GetBattleTarget()~=nil and c:GetBattleTarget():GetControler()==1-e:GetHandlerPlayer
+	return lg:IsContains(c) and c:GetBattleTarget()~=nil and c:GetBattleTarget():GetControler()==1-e:GetHandlerPlayer()
 end
 function c32617464.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetMutualLinkedGroupCount()>=2

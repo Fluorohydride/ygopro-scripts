@@ -83,6 +83,6 @@ end
 function c66393507.indtg(e,c)
 	return e:GetHandler():GetLinkedGroup():IsContains(c) and c:IsSetCard(0x104)
 end
-function c66393507.damcon(e,c)
+function c66393507.damtg(e,c)
 	return c:IsSetCard(0x104) and c:GetBattleTarget()~=nil and e:GetHandler():GetLinkedGroup():IsContains(c)
 end

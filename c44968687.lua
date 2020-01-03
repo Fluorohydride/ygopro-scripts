@@ -102,7 +102,7 @@ function c44968687.damop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		e2:SetTargetRange(0,1)
 		e2:SetValue(DOUBLE_DAMAGE)
-		e2:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL)
+		e2:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL+PHASE_END)
 		Duel.RegisterEffect(e2,tp)
 	end
 end
