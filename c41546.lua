@@ -80,15 +80,10 @@ function c41546.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
-	e3:SetCode(EFFECT_CHANGE_DAMAGE)
+	e3:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e3:SetTargetRange(0,1)
-	e3:SetValue(c41546.val)
+	e3:SetValue(HALF_DAMAGE)
 	e3:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e3,tp)
-end
-function c41546.val(e,re,dam,r,rp,rc)
-	if bit.band(r,REASON_BATTLE)~=0 then
-		return math.floor(dam/2)
-	else return dam end
 end
