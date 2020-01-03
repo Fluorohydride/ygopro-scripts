@@ -73,7 +73,7 @@ function c22211622.rcop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Recover(tp,tc:GetAttack(),REASON_EFFECT)
 	end
 end
-function c22211622.desfilter(c,tp,mc)
+function c22211622.desfilter(c,e,tp,mc)
 	return c:IsFaceup() and Duel.IsExistingMatchingCard(c22211622.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,Group.FromCards(c,mc))
 end
 function c22211622.spfilter(c,e,tp,dg)
@@ -82,10 +82,10 @@ function c22211622.spfilter(c,e,tp,dg)
 end
 function c22211622.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(tp) and c22211622.desfilter(chkc,tp,c) and chkc~=c end
-	if chk==0 then return Duel.IsExistingTarget(c22211622.desfilter,tp,LOCATION_ONFIELD,0,1,c,tp,c) end
+	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(tp) and c22211622.desfilter(chkc,e,tp,c) and chkc~=c end
+	if chk==0 then return Duel.IsExistingTarget(c22211622.desfilter,tp,LOCATION_ONFIELD,0,1,c,e,tp,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c22211622.desfilter,tp,LOCATION_ONFIELD,0,1,1,c,tp,c)
+	local g=Duel.SelectTarget(tp,c22211622.desfilter,tp,LOCATION_ONFIELD,0,1,1,c,e,tp,c)
 	g:AddCard(c)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)

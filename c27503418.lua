@@ -36,7 +36,7 @@ function c27503418.activate(e,tp,eg,ep,ev,re,r,rp)
 		and tc:IsAbleToRemove() and Duel.SelectYesNo(tp,aux.Stringid(27503418,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g1=Duel.SelectMatchingCard(tp,c27503418.filter1,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetLevel())
+		local g1=Duel.SelectMatchingCard(tp,c27503418.filter1,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc)
 		local lv=g1:GetFirst():GetLevel()-tc:GetLevel()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local g2=Duel.SelectMatchingCard(tp,c27503418.filter2,tp,LOCATION_GRAVE,0,1,1,nil,tp,lv)
