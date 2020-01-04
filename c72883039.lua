@@ -98,5 +98,7 @@ function c72883039.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c72883039.spfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=g:SelectSubGroup(tp,c72883039.gselect,false,1,math.min(ft,3))
-	Duel.SpecialSummon(sg,0,tp,tp,true,false,POS_FACEUP)
+	if sg then
+		Duel.SpecialSummon(sg,0,tp,tp,true,false,POS_FACEUP)
+	end
 end
