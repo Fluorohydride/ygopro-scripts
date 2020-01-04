@@ -41,7 +41,6 @@ end
 function c34550857.efop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=c:GetReasonCard()
-	local p=rc:GetControler()
 	local e1=Effect.CreateEffect(rc)
 	e1:SetDescription(aux.Stringid(34550857,1))
 	e1:SetType(EFFECT_TYPE_SINGLE)
