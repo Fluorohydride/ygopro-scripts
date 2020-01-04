@@ -70,7 +70,7 @@ function c10424147.spfilter3(c,e)
 	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsSetCard(0x20dc) and c:IsType(TYPE_XYZ) and c:IsCanBeEffectTarget(e)
 end
 function c10424147.spfilter4(c,e,tp)
-	return c:IsCode(84025439) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(84025439) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c10424147.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
@@ -79,8 +79,7 @@ end
 function c10424147.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local g=Duel.GetMatchingGroup(c10424147.spfilter3,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil,e)
-	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
-		and g:GetClassCount(Card.GetCode)>=3
+	if chk==0 then return g:GetClassCount(Card.GetCode)>=3
 		and Duel.IsExistingMatchingCard(c10424147.spfilter4,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local sg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
@@ -91,7 +90,6 @@ function c10424147.mtfilter(c,e)
 	return c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
 end
 function c10424147.spop2(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCountFromEx(tp)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=Duel.SelectMatchingCard(tp,c10424147.spfilter4,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	local sc=sg:GetFirst()

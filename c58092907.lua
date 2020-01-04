@@ -52,11 +52,11 @@ end
 function c58092907.spfilter2(c,e,tp)
 	if c:IsLocation(LOCATION_HAND+LOCATION_DECK) or (not c:IsLocation(LOCATION_GRAVE) and c:IsFacedown())
 		or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsControler(1-tp) then return false end
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if c:IsLocation(LOCATION_EXTRA) then
-		ft=Duel.GetLocationCountFromEx(tp)
+		return Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
+	else
+		return Duel.GetMZoneCount(tp)>0
 	end
-	return ft>0
 end
 function c58092907.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ec=eg:GetFirst()

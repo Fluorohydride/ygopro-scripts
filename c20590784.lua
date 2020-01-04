@@ -23,14 +23,12 @@ function c20590784.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c20590784.filter(c,e,tp)
 	return c:IsSetCard(0xa3) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and (c:IsLocation(LOCATION_DECK) and Duel.GetMZoneCount(tp)>0
+			or c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0)
 end
 function c20590784.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateAttack() and Duel.Draw(tp,1,REASON_EFFECT)~=0 then
-		local loc=0
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_GRAVE end
-		if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
-		if loc==0 then return end
-		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c20590784.filter),tp,loc,0,nil,e,tp)
+		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c20590784.filter),tp,LOCATION_GRAVE+LOCATION_EXTRA,0,nil,e,tp)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(20590784,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

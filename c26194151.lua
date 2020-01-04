@@ -11,7 +11,8 @@ function c26194151.initial_effect(c)
 end
 function c26194151.filter1(c,e,tp)
 	local lv=c:GetLevel()
-	return c:IsSetCard(0xa3) and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false)
+	return c:IsSetCard(0xa3) and c:IsType(TYPE_SYNCHRO)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 		and Duel.IsExistingMatchingCard(c26194151.filter2,tp,LOCATION_GRAVE,0,1,nil,tp,lv)
 end
 function c26194151.filter2(c,tp,lv)
@@ -24,12 +25,10 @@ function c26194151.filter3(c)
 	return c:GetLevel()>0 and not c:IsType(TYPE_TUNER) and c:IsAbleToRemove()
 end
 function c26194151.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
-		and Duel.IsExistingMatchingCard(c26194151.filter1,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c26194151.filter1,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c26194151.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCountFromEx(tp)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g1=Duel.SelectMatchingCard(tp,c26194151.filter1,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	local tc=g1:GetFirst()

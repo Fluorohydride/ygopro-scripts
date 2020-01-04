@@ -73,19 +73,19 @@ function c22211622.rcop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Recover(tp,tc:GetAttack(),REASON_EFFECT)
 	end
 end
-function c22211622.desfilter(c,tp,mc)
-	return c:IsFaceup() and Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
+function c22211622.desfilter(c,e,tp,mc)
+	return c:IsFaceup() and Duel.IsExistingMatchingCard(c22211622.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,Group.FromCards(c,mc))
 end
-function c22211622.spfilter(c,e,tp)
-	return c:IsType(TYPE_XYZ+TYPE_PENDULUM) and c:IsRace(RACE_DRAGON) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+function c22211622.spfilter(c,e,tp,dg)
+	return c:IsType(TYPE_XYZ+TYPE_PENDULUM) and c:IsRace(RACE_DRAGON)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,dg,c)>0
 end
 function c22211622.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(tp) and c22211622.desfilter(chkc,tp,c) and chkc~=c end
-	if chk==0 then return Duel.IsExistingTarget(c22211622.desfilter,tp,LOCATION_ONFIELD,0,1,c,tp,c)
-		and Duel.IsExistingMatchingCard(c22211622.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
+	if chkc then return chkc:IsLocation(LOCATION_ONFIELD) and chkc:IsControler(tp) and c22211622.desfilter(chkc,e,tp,c) and chkc~=c end
+	if chk==0 then return Duel.IsExistingTarget(c22211622.desfilter,tp,LOCATION_ONFIELD,0,1,c,e,tp,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,c22211622.desfilter,tp,LOCATION_ONFIELD,0,1,1,c,tp,c)
+	local g=Duel.SelectTarget(tp,c22211622.desfilter,tp,LOCATION_ONFIELD,0,1,1,c,e,tp,c)
 	g:AddCard(c)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -96,9 +96,8 @@ function c22211622.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
 	local dg=Group.FromCards(c,tc)
 	if Duel.Destroy(dg,REASON_EFFECT)==2 then
-		if Duel.GetLocationCountFromEx(tp)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,c22211622.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
+		local g=Duel.SelectMatchingCard(tp,c22211622.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,nil)
 		if g:GetCount()==0 then return end
 		local sc=g:GetFirst()
 		if Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEUP) then

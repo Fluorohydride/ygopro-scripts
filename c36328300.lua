@@ -32,15 +32,15 @@ function c36328300.cfilter(c)
 	return c:IsSetCard(0x1034) and (c:IsFaceup() or not c:IsLocation(LOCATION_ONFIELD)) and c:IsAbleToGraveAsCost()
 end
 function c36328300.exfilter(c,tp)
-	return Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c))>0
+	return Duel.GetLocationCountFromEx(tp,tp,c,TYPE_FUSION)>0
 end
 function c36328300.gselect(g,tp)
-	return Duel.GetLocationCountFromEx(tp,tp,g)>0
+	return Duel.GetLocationCountFromEx(tp,tp,g,TYPE_FUSION)>0
 end
 function c36328300.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c36328300.cfilter,tp,LOCATION_ONFIELD+LOCATION_HAND+LOCATION_DECK,0,nil)
 	if chk==0 then return g:GetClassCount(Card.GetCode)>=7
-		and (Duel.GetLocationCountFromEx(tp)>0 or g:IsExists(c36328300.exfilter,1,nil,tp)) end
+		and (Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_FUSION)>0 or g:IsExists(c36328300.exfilter,1,nil,tp)) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	aux.GCheckAdditional=aux.dncheck
 	local rg=g:SelectSubGroup(tp,c36328300.gselect,false,7,7,tp)
@@ -56,7 +56,7 @@ function c36328300.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c36328300.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCountFromEx(tp)<=0 or not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) then return end
+	if Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_FUSION)<=0 or not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c36328300.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then

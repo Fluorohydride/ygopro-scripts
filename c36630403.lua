@@ -19,10 +19,11 @@ function c36630403.filter1(c,e,tp,lv)
 end
 function c36630403.filter2(c,e,tp,lv)
 	return c:IsLevel(lv) and c:IsRace(RACE_ZOMBIE) and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c36630403.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c36630403.filter1(chkc,e,tp,e:GetHandler():GetLevel()) end
-	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0 and e:GetHandler():IsAbleToRemove()
+	if chk==0 then return e:GetHandler():IsAbleToRemove()
 		and Duel.IsExistingTarget(c36630403.filter1,tp,LOCATION_GRAVE,0,1,nil,e,tp,e:GetHandler():GetLevel()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,c36630403.filter1,tp,LOCATION_GRAVE,0,1,1,nil,e,tp,e:GetHandler():GetLevel())
@@ -37,7 +38,6 @@ function c36630403.operation(e,tp,eg,ep,ev,re,r,rp)
 	local lv=c:GetLevel()+tc:GetLevel()
 	local g=Group.FromCards(c,tc)
 	if Duel.Remove(g,POS_FACEUP,REASON_EFFECT)==2 then
-		if Duel.GetLocationCountFromEx(tp)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,c36630403.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,lv)
 		if sg:GetCount()>0 then
