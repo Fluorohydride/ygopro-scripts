@@ -9,7 +9,7 @@ function c33145233.initial_effect(c)
 	--become material
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_EVENT_PLAYER)
 	e2:SetCode(EVENT_BE_MATERIAL)
 	e2:SetCondition(c33145233.condition)
 	e2:SetOperation(c33145233.operation)
