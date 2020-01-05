@@ -26,6 +26,7 @@ function c25857977.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e3:SetCode(EVENT_BE_MATERIAL)
+	e3:SetCountLimit(1,25857978)
 	e3:SetCondition(c25857977.effcon)
 	e3:SetOperation(c25857977.effop)
 	c:RegisterEffect(e3)
@@ -86,7 +87,6 @@ function c25857977.effcon(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():GetReasonCard():IsSetCard(0x10af)
 end
 function c25857977.effop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFlagEffect(ep,25857977)~=0 then return end
 	local c=e:GetHandler()
 	local rc=c:GetReasonCard()
 	local e1=Effect.CreateEffect(rc)
@@ -109,7 +109,6 @@ function c25857977.effop(e,tp,eg,ep,ev,re,r,rp)
 		rc:RegisterEffect(e2,true)
 	end
 	rc:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(25857977,5))
-	Duel.RegisterFlagEffect(ep,25857977,RESET_PHASE+PHASE_END,0,1)
 end
 function c25857977.desfilter3(c,tp)
 	return Duel.IsExistingMatchingCard(c25857977.tdfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,1,c)
