@@ -65,6 +65,7 @@ function c59123937.filter2(c,e,tp,m,f,gc,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x10af)
 		and c:IsLevelAbove(8) and (not f or f(c))
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,gc,chkf)
+		and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c59123937.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(59123937)~=0
@@ -74,8 +75,7 @@ function c59123937.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
 		local mg1=Duel.GetMatchingGroup(c59123937.filter0,tp,LOCATION_GRAVE,0,nil)
-		local res=Duel.GetLocationCountFromEx(tp)>0
-			and Duel.IsExistingMatchingCard(c59123937.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,c,chkf)
+		local res=Duel.IsExistingMatchingCard(c59123937.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,c,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
 			if ce~=nil then
@@ -105,7 +105,7 @@ function c59123937.operation(e,tp,eg,ep,ev,re,r,rp)
 		local mf=ce:GetValue()
 		sg2=Duel.GetMatchingGroup(c59123937.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,c,chkf)
 	end
-	if (Duel.GetLocationCountFromEx(tp)>0 and sg1:GetCount()>0) or (sg2~=nil and sg2:GetCount()>0) then
+	if sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0) then
 		local sg=sg1:Clone()
 		if sg2 then sg:Merge(sg2) end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

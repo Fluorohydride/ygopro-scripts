@@ -104,21 +104,16 @@ function c66750703.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c66750703.spfilter(c,e,tp)
 	return c:IsRace(RACE_BEASTWARRIOR) and c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+		and (c:IsLocation(LOCATION_DECK) and Duel.GetMZoneCount(tp)>0
+			or c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0)
 end
 function c66750703.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local loc=0
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_DECK end
-	if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
-	if chk==0 then return loc~=0 and Duel.IsExistingMatchingCard(c66750703.spfilter,tp,loc,0,1,nil,e,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,loc)
+	if chk==0 then return Duel.IsExistingMatchingCard(c66750703.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,nil,e,tp) end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK+LOCATION_EXTRA)
 end
 function c66750703.spop(e,tp,eg,ep,ev,re,r,rp)
-	local loc=0
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_DECK end
-	if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
-	if loc==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c66750703.spfilter,tp,loc,0,1,1,nil,e,tp)
+	local g=Duel.SelectMatchingCard(tp,c66750703.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,true,false,POS_FACEUP)
 	end

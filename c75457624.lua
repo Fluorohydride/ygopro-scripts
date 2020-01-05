@@ -14,34 +14,39 @@ end
 function c75457624.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xb5) and c:IsAbleToRemoveAsCost()
 end
-function c75457624.cfilter1(c,cg,tp)
-	return cg:IsExists(c75457624.cfilter2,1,c,c,tp)
+function c75457624.cfilter1(c,cg,e,tp)
+	return cg:IsExists(c75457624.cfilter2,1,c,c,e,tp)
 end
-function c75457624.cfilter2(c,mc,tp)
-	return Duel.GetLocationCountFromEx(tp,tp,Group.FromCards(c,mc))>0
+function c75457624.cfilter2(c,mc,e,tp)
+	return Duel.IsExistingMatchingCard(c75457624.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,Group.FromCards(c,mc))
 end
 function c75457624.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local cg=Duel.GetMatchingGroup(c75457624.cfilter,tp,LOCATION_MZONE,0,nil)
-	if chk==0 then return cg:IsExists(c75457624.cfilter1,1,nil,cg,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=cg:FilterSelect(tp,c75457624.cfilter1,1,1,nil,cg,tp)
-	local tc=g1:GetFirst()
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=cg:FilterSelect(tp,c75457624.cfilter2,1,1,tc,tc,tp)
-	g1:Merge(g2)
-	Duel.Remove(g1,POS_FACEUP,REASON_COST)
+	e:SetLabel(100)
+	return true
 end
-function c75457624.filter(c,e,tp)
-	return c:IsSetCard(0xb5) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+function c75457624.filter(c,e,tp,mg)
+	return c:IsSetCard(0xb5) and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and Duel.GetLocationCountFromEx(tp,tp,mg,c)>0
 end
 function c75457624.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c75457624.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
+	local cg=Duel.GetMatchingGroup(c75457624.cfilter,tp,LOCATION_MZONE,0,nil)
+	if chk==0 then
+		if e:GetLabel()~=100 then return false end
+		e:SetLabel(0)
+		return cg:IsExists(c75457624.cfilter1,1,nil,cg,e,tp)
+	end
+	e:SetLabel(0)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local g1=cg:FilterSelect(tp,c75457624.cfilter1,1,1,nil,cg,e,tp)
+	local tc=g1:GetFirst()
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local g2=cg:FilterSelect(tp,c75457624.cfilter2,1,1,tc,tc,e,tp)
+	g1:Merge(g2)
+	Duel.Remove(g1,POS_FACEUP,REASON_COST)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c75457624.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCountFromEx(tp)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c75457624.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
+	local g=Duel.SelectMatchingCard(tp,c75457624.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,nil)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,true,false,POS_FACEUP)
 	end

@@ -20,11 +20,11 @@ function c93600443.filter(c,e,tp)
 	local lv=c:GetLevel()
 	local att=c:GetAttribute()
 	return lv>0 and c:IsFaceup()
-		and Duel.IsExistingMatchingCard(c93600443.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,lv,att)
-		and Duel.GetLocationCountFromEx(tp,tp,c)>0
+		and Duel.IsExistingMatchingCard(c93600443.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,lv,att,c)
 end
-function c93600443.spfilter(c,e,tp,lv,att)
+function c93600443.spfilter(c,e,tp,lv,att,mc)
 	return c:IsSetCard(0xa008) and c:GetLevel()>lv and c:IsAttribute(att) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+		and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
 end
 function c93600443.chkfilter(c,tc)
 	local lv=tc:GetLevel()
@@ -42,13 +42,12 @@ function c93600443.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c93600443.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 then return end
 	if not tc:IsRelateToEffect(e) then return end
 	local att=tc:GetAttribute()
 	local lv=tc:GetLevel()
 	if Duel.SendtoGrave(tc,REASON_EFFECT)==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c93600443.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,lv,att)
+	local g=Duel.SelectMatchingCard(tp,c93600443.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,lv,att,nil)
 	if g:GetCount()>0 then
 		Duel.BreakEffect()
 		Duel.SpecialSummon(g,0,tp,tp,true,false,POS_FACEUP)

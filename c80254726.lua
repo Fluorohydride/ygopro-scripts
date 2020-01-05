@@ -38,13 +38,13 @@ function c80254726.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c80254726.sfilter(c,e,tp)
-	return c:IsCode(9012916) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(9012916) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c80254726.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re)
 		and Duel.Destroy(eg,REASON_EFFECT)~=0 then
 		local sc=Duel.GetFirstMatchingCard(c80254726.sfilter,tp,LOCATION_EXTRA,0,nil,e,tp)
-		if sc and Duel.GetLocationCountFromEx(tp)>0 and Duel.SelectYesNo(tp,aux.Stringid(80254726,0)) then
+		if sc and Duel.SelectYesNo(tp,aux.Stringid(80254726,0)) then
 			Duel.BreakEffect()
 			Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
 		end

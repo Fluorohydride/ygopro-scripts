@@ -67,7 +67,7 @@ function c93238626.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c93238626.filter(c,e,tp,mc,no)
 	return c.xyz_number==no and c:IsSetCard(0x1048) and mc:IsCanBeXyzMaterial(c)
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
 end
 function c93238626.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -80,7 +80,7 @@ end
 function c93238626.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.NegateAttack() then return end
 	local tc=Duel.GetAttackTarget()
-	if Duel.GetLocationCountFromEx(tp,tp,tc)<=0 or not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL) then return end
+	if not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL) then return end
 	local m=_G["c"..tc:GetCode()]
 	if tc:IsFacedown() or not tc:IsRelateToBattle() or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) or not m then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

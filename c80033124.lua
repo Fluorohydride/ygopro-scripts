@@ -17,18 +17,19 @@ function c80033124.ffilter(c,e)
 	return c:IsFusionCode(41230939,77625948,3019642) and c:IsCanBeFusionMaterial() and c:IsAbleToDeck()
 		and not c:IsImmuneToEffect(e)
 end
-function c80033124.spfilter(c,e,tp)
+function c80033124.spfilter(c,e,tp,sg)
 	return c:IsCode(40418351) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)
+		and (not sg or Duel.GetLocationCountFromEx(tp,tp,sg,c)>0)
 end
-function c80033124.fgoal(g,tp)
-	return Duel.GetLocationCountFromEx(tp,tp,g)>0
+function c80033124.fgoal(g,e,tp)
+	return Duel.IsExistingMatchingCard(c80033124.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,g)
 end
 function c80033124.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
-		if not Duel.IsExistingMatchingCard(c80033124.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) then return false end
+		if not Duel.IsExistingMatchingCard(c80033124.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,nil) then return false end
 		local mg=Duel.GetMatchingGroup(c80033124.ffilter0,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-		return mg:CheckSubGroupEach(c80033124.fchecks,c80033124.fgoal,tp)
+		return mg:CheckSubGroupEach(c80033124.fchecks,c80033124.fgoal,e,tp)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
@@ -37,10 +38,9 @@ function c80033124.cfilter(c)
 end
 function c80033124.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) then return end
-	if not Duel.IsExistingMatchingCard(c80033124.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) then return end
 	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c80033124.ffilter),tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,0,nil,e)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local sg=mg:SelectSubGroupEach(tp,c80033124.fchecks,false,c80033124.fgoal,tp)
+	local sg=mg:SelectSubGroupEach(tp,c80033124.fchecks,false,c80033124.fgoal,e,tp)
 	if not sg then return end
 	local cg=sg:Filter(c80033124.cfilter,nil)
 	if cg:GetCount()>0 then

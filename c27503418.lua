@@ -18,9 +18,10 @@ function c27503418.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetTargetCard(Duel.GetAttackTarget())
 end
-function c27503418.filter1(c,e,tp,lv)
-	local rlv=c:GetLevel()-lv
-	return rlv>0 and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false)
+function c27503418.filter1(c,e,tp,tc)
+	local rlv=c:GetLevel()-tc:GetLevel()
+	return rlv>0 and c:IsType(TYPE_SYNCHRO)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,tc,c)>0
 		and Duel.IsExistingMatchingCard(c27503418.filter2,tp,LOCATION_GRAVE,0,1,nil,tp,rlv)
 end
 function c27503418.filter2(c,tp,lv)
@@ -30,12 +31,12 @@ end
 function c27503418.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttackTarget()
 	if Duel.NegateAttack() and tc:IsRelateToEffect(e)
-		and Duel.GetLocationCountFromEx(tp,tp,tc)>0 and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
-		and Duel.IsExistingMatchingCard(c27503418.filter1,tp,LOCATION_EXTRA,0,1,nil,e,tp,tc:GetLevel())
+		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
+		and Duel.IsExistingMatchingCard(c27503418.filter1,tp,LOCATION_EXTRA,0,1,nil,e,tp,tc)
 		and tc:IsAbleToRemove() and Duel.SelectYesNo(tp,aux.Stringid(27503418,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g1=Duel.SelectMatchingCard(tp,c27503418.filter1,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetLevel())
+		local g1=Duel.SelectMatchingCard(tp,c27503418.filter1,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc)
 		local lv=g1:GetFirst():GetLevel()-tc:GetLevel()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local g2=Duel.SelectMatchingCard(tp,c27503418.filter2,tp,LOCATION_GRAVE,0,1,1,nil,tp,lv)

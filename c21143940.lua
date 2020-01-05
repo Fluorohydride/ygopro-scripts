@@ -11,13 +11,13 @@ function c21143940.initial_effect(c)
 	e1:SetOperation(c21143940.activate)
 	c:RegisterEffect(e1)
 end
-function c21143940.tfilter(c,att,e,tp)
-	return c:IsSetCard(0xa008) and c:IsAttribute(att) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+function c21143940.tfilter(c,att,e,tp,tc)
+	return c:IsSetCard(0xa008) and c:IsAttribute(att)
+		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and Duel.GetLocationCountFromEx(tp,tp,tc,c)>0
 end
 function c21143940.filter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x8)
-		and Duel.IsExistingMatchingCard(c21143940.tfilter,tp,LOCATION_EXTRA,0,1,nil,c:GetAttribute(),e,tp)
-		and Duel.GetLocationCountFromEx(tp,tp,c)>0
+		and Duel.IsExistingMatchingCard(c21143940.tfilter,tp,LOCATION_EXTRA,0,1,nil,c:GetAttribute(),e,tp,c)
 end
 function c21143940.chkfilter(c,att)
 	return c:IsFaceup() and c:IsSetCard(0x8) and (c:GetAttribute()&att)==att
@@ -35,9 +35,8 @@ function c21143940.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not tc:IsRelateToEffect(e) then return end
 	local att=tc:GetAttribute()
 	if Duel.SendtoGrave(tc,REASON_EFFECT)==0 then return end
-	if Duel.GetLocationCountFromEx(tp)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg=Duel.SelectMatchingCard(tp,c21143940.tfilter,tp,LOCATION_EXTRA,0,1,1,nil,att,e,tp)
+	local sg=Duel.SelectMatchingCard(tp,c21143940.tfilter,tp,LOCATION_EXTRA,0,1,1,nil,att,e,tp,nil)
 	if sg:GetCount()>0 then
 		Duel.BreakEffect()
 		Duel.SpecialSummon(sg,0,tp,tp,true,false,POS_FACEUP)

@@ -97,16 +97,15 @@ function c77522571.costfilter(c)
 	return c:IsLevelAbove(1) and c:IsRace(RACE_FIEND)
 end
 function c77522571.fgoal(sg,e,tp)
-	if Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
-		local lv=sg:GetSum(Card.GetLevel)
-		Duel.SetSelectedCard(sg)
-		return Duel.CheckReleaseGroup(tp,nil,0,nil)
-			and Duel.IsExistingMatchingCard(c77522571.spfilter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,lv)
-	else return false end
+	local lv=sg:GetSum(Card.GetLevel)
+	Duel.SetSelectedCard(sg)
+	return Duel.CheckReleaseGroup(tp,nil,0,nil)
+		and Duel.IsExistingMatchingCard(c77522571.spfilter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,lv,sg)
 end
-function c77522571.spfilter3(c,e,tp,lv)
+function c77522571.spfilter3(c,e,tp,lv,sg)
 	return c:IsSetCard(0xad) and c:IsType(TYPE_FUSION) and c:IsLevel(lv)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial()
+		and Duel.GetLocationCountFromEx(tp,tp,sg,c)>0
 end
 function c77522571.spcost3(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c77522571.costfilter,nil)
@@ -121,10 +120,10 @@ function c77522571.sptg3(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c77522571.spop3(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCountFromEx(tp)<=0 or not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) then return end
+	if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) then return end
 	local lv=e:GetLabel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c77522571.spfilter3,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,lv)
+	local g=Duel.SelectMatchingCard(tp,c77522571.spfilter3,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,lv,nil)
 	local tc=g:GetFirst()
 	if tc then
 		tc:SetMaterial(nil)

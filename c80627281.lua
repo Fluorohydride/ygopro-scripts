@@ -20,12 +20,11 @@ function c80627281.spfilter1(c,e,tp)
 end
 function c80627281.spfilter2(c,e,tp,lk)
 	return c:IsSetCard(0x12b) and c:IsType(TYPE_LINK) and c:GetLink()<lk
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_LINK,tp,false,false)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_LINK,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c80627281.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c80627281.spfilter1(chkc,e,tp) end
-	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
-		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_LMATERIAL)
+	if chk==0 then return aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_LMATERIAL)
 		and eg:IsExists(c80627281.spfilter1,1,nil,e,tp) end
 	if eg:GetCount()==1 then
 		Duel.SetTargetCard(eg)
@@ -39,7 +38,7 @@ end
 function c80627281.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or Duel.GetLocationCountFromEx(tp)<=0 or not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_LMATERIAL) then return end
+	if not tc:IsRelateToEffect(e) or not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_LMATERIAL) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c80627281.spfilter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetLink())
 	local tc=g:GetFirst()
