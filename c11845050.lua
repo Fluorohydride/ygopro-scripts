@@ -25,6 +25,8 @@ function c11845050.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e3:SetCode(EVENT_BE_MATERIAL)
+	e3:SetProperty(EFFECT_FLAG_EVENT_PLAYER)
+	e3:SetCountLimit(1,11845052)
 	e3:SetCondition(c11845050.effcon)
 	e3:SetOperation(c11845050.effop)
 	c:RegisterEffect(e3)
@@ -74,7 +76,6 @@ function c11845050.effcon(e,tp,eg,ep,ev,re,r,rp)
 		and mg:FilterCount(Card.IsXyzType,nil,TYPE_MONSTER)==mg:GetCount()
 end
 function c11845050.effop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFlagEffect(ep,11845050)~=0 then return end
 	local c=e:GetHandler()
 	local rc=c:GetReasonCard()
 	local e1=Effect.CreateEffect(rc)
@@ -93,5 +94,4 @@ function c11845050.effop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		rc:RegisterEffect(e2,true)
 	end
-	Duel.RegisterFlagEffect(ep,11845050,RESET_PHASE+PHASE_END,0,1)
 end
