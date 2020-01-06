@@ -83,7 +83,7 @@ function c35884610.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
 end
-function c35884610.damcon(e,tp,eg,ep,ev,re,r,rp)
+function c35884610.damcon(e)
 	return e:GetHandler():GetEquipTarget():GetBattleTarget()~=nil
 end
 function c35884610.atcon(e,tp,eg,ep,ev,re,r,rp)
