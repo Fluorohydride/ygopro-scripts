@@ -26,35 +26,31 @@ function c29762407.initial_effect(c)
 	e3:SetOperation(c29762407.operation)
 	c:RegisterEffect(e3)
 end
-function c29762407.cfilter(c)
+function c29762407.cfilter(c,e,tp)
 	return c:IsFaceup() and c:IsCode(89194033) and c:IsAbleToGraveAsCost()
+		and Duel.IsExistingMatchingCard(c29762407.filter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_EXTRA,0,1,nil,e,tp,Group.FromCards(c,e:GetHandler()))
 end
 function c29762407.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost()
-		and Duel.IsExistingMatchingCard(c29762407.cfilter,tp,LOCATION_ONFIELD,0,1,nil) end
+		and Duel.IsExistingMatchingCard(c29762407.cfilter,tp,LOCATION_ONFIELD,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c29762407.cfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c29762407.cfilter,tp,LOCATION_ONFIELD,0,1,1,nil,e,tp)
 	g:AddCard(e:GetHandler())
 	Duel.SendtoGrave(g,REASON_COST)
 end
-function c29762407.filter(c,e,tp)
+function c29762407.filter(c,e,tp,tg)
 	return (c:IsLocation(LOCATION_HAND+LOCATION_DECK) or c:IsType(TYPE_FUSION))
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and (c:IsLocation(LOCATION_HAND+LOCATION_DECK) and Duel.GetMZoneCount(tp,tg)>0
+			or c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(tp,tp,tg,c)>0)
 end
 function c29762407.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local loc=0
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_HAND+LOCATION_DECK end
-	if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
-	if chk==0 then return loc~=0 and Duel.IsExistingMatchingCard(c29762407.filter,tp,loc,0,1,nil,e,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,loc)
+	if chk==0 then return true end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_EXTRA)
 end
 function c29762407.operation(e,tp,eg,ep,ev,re,r,rp)
-	local loc=0
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_HAND+LOCATION_DECK end
-	if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
-	if loc==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c29762407.filter,tp,loc,0,1,1,nil,e,tp)
+	local g=Duel.SelectMatchingCard(tp,c29762407.filter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_EXTRA,0,1,1,nil,e,tp,nil)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end

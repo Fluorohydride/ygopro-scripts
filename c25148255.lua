@@ -29,14 +29,13 @@ function c25148255.mfilter(c,e,tp,mc)
 		and Duel.IsExistingMatchingCard(c25148255.scfilter,tp,LOCATION_EXTRA,0,1,nil,mg)
 end
 function c25148255.scfilter(c,mg)
-	return aux.IsMaterialListSetCard(c,0x1017) and c:IsSynchroSummonable(nil,mg)
+	return aux.IsMaterialListSetCard(c,0x1017) and c:IsSynchroSummonable(nil,mg) and Duel.GetLocationCountFromEx(tp,tp,mg,c)>0
 end
 function c25148255.sctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c25148255.mfilter(chkc,e,tp,c) end
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 		and Duel.IsExistingTarget(c25148255.mfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 	Duel.SelectTarget(tp,c25148255.mfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp,c)
@@ -49,7 +48,6 @@ function c25148255.scop(e,tp,eg,ep,ev,re,r,rp)
 	if not tc:IsRelateToEffect(e) or Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==0 then return end
 	if not c:IsRelateToEffect(e) then return end
 	local mg=Group.FromCards(c,tc)
-	if Duel.GetLocationCountFromEx(tp,tp,mg)<=0 then return end
 	local g=Duel.GetMatchingGroup(c25148255.scfilter,tp,LOCATION_EXTRA,0,nil,mg)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

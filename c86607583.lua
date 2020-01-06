@@ -53,14 +53,13 @@ function c86607583.tgop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c86607583.spfilter(c,e,tp)
-	return c:IsSetCard(0x101) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP)
+	return c:IsSetCard(0x101) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c86607583.cfilter(c)
 	return c:IsRace(RACE_CYBERSE) and c:IsType(TYPE_LINK)
 end
 function c86607583.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanAddCounter(tp,0x47,1,e:GetHandler())
-		and Duel.GetLocationCountFromEx(tp)>0
 		and Duel.IsExistingMatchingCard(c86607583.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp)
 		and Duel.IsExistingMatchingCard(c86607583.cfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	local ct=Duel.GetMatchingGroupCount(c86607583.cfilter,tp,LOCATION_GRAVE,0,nil)
@@ -76,7 +75,6 @@ function c86607583.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetMatchingGroupCount(c86607583.cfilter,tp,LOCATION_GRAVE,0,nil)
 	if c:IsRelateToEffect(e) and ct>0 and c:IsCanAddCounter(0x47,ct) then
 		c:AddCounter(0x47,ct)
-		if Duel.GetLocationCountFromEx(tp)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c86607583.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 		local tc=g:GetFirst()

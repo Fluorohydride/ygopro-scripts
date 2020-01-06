@@ -29,47 +29,56 @@ end
 function c84869738.desfilter(c)
 	return not c84869738.cfilter(c)
 end
-function c84869738.spfilter(c,e,tp)
-	return c:IsSetCard(0x20f8) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+function c84869738.spfilter(c,e,tp,g)
+	if not (c:IsSetCard(0x20f8) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)) then return false end
+	if c:IsLocation(LOCATION_EXTRA) then
+		return Duel.GetLocationCountFromEx(tp,tp,g,c)>0
+	else
+		return Duel.GetMZoneCount(tp,g)>0
+	end
 end
 function c84869738.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c84869738.desfilter,tp,LOCATION_MZONE,0,nil)
-	if chk==0 then
-		local loc=0
-		if Duel.GetMZoneCount(tp,g)>0 then loc=loc+LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE end
-		if Duel.GetLocationCountFromEx(tp,tp,g)>0 then loc=loc+LOCATION_EXTRA end
-		return g:GetCount()>0 and loc~=0
-			and Duel.IsExistingMatchingCard(c84869738.spfilter,tp,loc,0,1,nil,e,tp)
-	end
+	if chk==0 then return g:GetCount()>0
+		and Duel.IsExistingMatchingCard(c84869738.spfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE+LOCATION_EXTRA,0,1,nil,e,tp,g) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE+LOCATION_EXTRA)
 end
-function c84869738.gcheck(g,ft1,ft2,ft)
+function c84869738.exfilter2(c)
+	return c:IsLocation(LOCATION_EXTRA) and c:IsFacedown() and c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)
+end
+function c84869738.exfilter3(c)
+	return c:IsLocation(LOCATION_EXTRA) and (c:IsType(TYPE_LINK) or (c:IsFaceup() and c:IsType(TYPE_PENDULUM)))
+end
+function c84869738.gcheck(g,ft1,ft2,ft3,ect,ft)
 	return aux.dncheck(g) and #g<=ft
 		and g:FilterCount(Card.IsLocation,nil,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE)<=ft1
-		and g:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)<=ft2
+		and g:FilterCount(c84869738.exfilter2,nil)<=ft2
+		and g:FilterCount(c84869738.exfilter3,nil)<=ft3
+		and g:FilterCount(Card.IsLocation,nil,LOCATION_EXTRA)<=ect
 end
 function c84869738.activate(e,tp,eg,ep,ev,re,r,rp)
 	local dg=Duel.GetMatchingGroup(c84869738.desfilter,tp,LOCATION_MZONE,0,nil)
 	if Duel.Destroy(dg,REASON_EFFECT)==0 then return end
 	local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ft2=Duel.GetLocationCountFromEx(tp)
+	local ft2=Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)
+	local ft3=Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_PENDULUM+TYPE_LINK)
 	local ft=Duel.GetUsableMZoneCount(tp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then
 		if ft1>0 then ft1=1 end
 		if ft2>0 then ft2=1 end
+		if ft3>0 then ft3=1 end
 		ft=1
 	end
+	local ect=(c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]) or ft
 	local loc=0
 	if ft1>0 then loc=loc+LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE end
-	if ft2>0 then loc=loc+LOCATION_EXTRA end
+	if ect>0 and (ft2>0 or ft3>0) then loc=loc+LOCATION_EXTRA end
 	if loc==0 then return end
-	local ect=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
-	if ect and ect<ft2 then ft2=ect end
 	local sg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c84869738.spfilter),tp,loc,0,nil,e,tp)
 	if sg:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local rg=sg:SelectSubGroup(tp,c84869738.gcheck,false,1,4,ft1,ft2,ft)
+	local rg=sg:SelectSubGroup(tp,c84869738.gcheck,false,1,4,ft1,ft2,ft3,ect,ft)
 	Duel.SpecialSummon(rg,0,tp,tp,true,false,POS_FACEUP)
 end
 function c84869738.xyzfilter(c)

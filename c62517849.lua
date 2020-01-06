@@ -27,11 +27,10 @@ function c62517849.thfilter(c)
 end
 function c62517849.spfilter(c,e,tp,mc)
 	return not c:IsCode(62517849) and c:IsType(TYPE_XYZ) and c:IsSetCard(0x107f) and mc:IsCanBeXyzMaterial(c)
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
 end
 function c62517849.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c62517849.thfilter,tp,LOCATION_DECK,0,1,nil)
-		and Duel.GetLocationCountFromEx(tp,tp,e:GetHandler())>0
 		and aux.MustMaterialCheck(e:GetHandler(),tp,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingMatchingCard(c62517849.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,e:GetHandler()) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
@@ -44,7 +43,7 @@ function c62517849.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoHand(g1,nil,REASON_EFFECT)
 	Duel.ConfirmCards(1-tp,g1)
 	local c=e:GetHandler()
-	if Duel.GetLocationCountFromEx(tp,tp,c)>0 and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then
+	if aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then
 		if c:IsFaceup() and c:IsRelateToEffect(e) and c:IsControler(tp) and not c:IsImmuneToEffect(e) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local g=Duel.SelectMatchingCard(tp,c62517849.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,c)

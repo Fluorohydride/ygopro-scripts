@@ -18,11 +18,11 @@ function c46232525.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c46232525.tgfilter(c,e,tp)
-	return c:IsType(TYPE_MONSTER) and Duel.IsExistingMatchingCard(c46232525.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetRace())
-		and Duel.GetLocationCountFromEx(tp,tp,c)>0
+	return c:IsType(TYPE_MONSTER) and Duel.IsExistingMatchingCard(c46232525.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetRace(),mc)
 end
-function c46232525.spfilter(c,e,tp,race)
+function c46232525.spfilter(c,e,tp,race,mc)
 	return c:IsType(TYPE_FUSION) and c.material_race and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and race==c.material_race
+		and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
 end
 function c46232525.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c46232525.tgfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil,e,tp) end
@@ -38,7 +38,7 @@ function c46232525.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoGrave(tc,REASON_EFFECT)
 		if not tc:IsLocation(LOCATION_GRAVE) then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=Duel.SelectMatchingCard(tp,c46232525.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,race)
+		local sg=Duel.SelectMatchingCard(tp,c46232525.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,race,nil)
 		local sc=sg:GetFirst()
 		if sc then
 			Duel.BreakEffect()

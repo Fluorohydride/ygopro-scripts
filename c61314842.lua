@@ -29,7 +29,6 @@ function c61314842.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
-		and Duel.GetLocationCountFromEx(tp)>0
 		and mg:IsExists(c61314842.mfilter1,1,nil,mg,exg) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg1=mg:FilterSelect(tp,c61314842.mfilter1,1,1,nil,mg,exg)
@@ -49,7 +48,6 @@ function c61314842.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c61314842.filter2,nil,e,tp)
 	if g:GetCount()<2 then return end
 	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
-	if Duel.GetLocationCountFromEx(tp,tp,g)<=0 then return end
 	local xyzg=Duel.GetMatchingGroup(c61314842.xyzfilter,tp,LOCATION_EXTRA,0,nil,g)
 	if xyzg:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

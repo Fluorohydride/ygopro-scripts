@@ -50,19 +50,19 @@ function c57734012.filter1(c,e,tp)
 end
 function c57734012.filter2(c,e,tp,mc,no)
 	return c.xyz_number==no and c:IsSetCard(0x1048) and mc:IsCanBeXyzMaterial(c)
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
 end
 function c57734012.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local loc=0
 	local ect=aux.ExtraDeckSummonCountLimit and Duel.IsPlayerAffectedByEffect(tp,92345028)
 		and aux.ExtraDeckSummonCountLimit[tp]
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_GRAVE end
-	if Duel.GetLocationCountFromEx(tp)>0 and (ect==nil or ect>1) then loc=loc+LOCATION_EXTRA end
+	if Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_XYZ)>0 and (ect==nil or ect>1) then loc=loc+LOCATION_EXTRA end
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
-		and Duel.GetFlagEffect(tp,57734012)==0 and loc~=0 and Duel.GetLocationCountFromEx(tp)>0
+		and Duel.GetFlagEffect(tp,57734012)==0 and loc~=0
 		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingMatchingCard(c57734012.filter1,tp,loc,0,1,nil,e,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,loc)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE+LOCATION_EXTRA)
 end
 function c57734012.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(tp,57734012)~=0 then return end
@@ -71,13 +71,12 @@ function c57734012.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ect=aux.ExtraDeckSummonCountLimit and Duel.IsPlayerAffectedByEffect(tp,92345028)
 		and aux.ExtraDeckSummonCountLimit[tp]
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_GRAVE end
-	if Duel.GetLocationCountFromEx(tp)>0 and (ect==nil or ect>1) then loc=loc+LOCATION_EXTRA end
+	if Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_XYZ)>0 and (ect==nil or ect>1) then loc=loc+LOCATION_EXTRA end
 	if loc==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g1=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c57734012.filter1),tp,loc,0,1,1,nil,e,tp)
 	local tc1=g1:GetFirst()
 	if tc1 and Duel.SpecialSummon(tc1,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		if Duel.GetLocationCountFromEx(tp,tp,tc1)<=0 then return end
 		if not aux.MustMaterialCheck(tc1,tp,EFFECT_MUST_BE_XMATERIAL) then return end
 		local m=_G["c"..tc1:GetCode()]
 		if not m then return end

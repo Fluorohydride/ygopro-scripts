@@ -24,20 +24,18 @@ function c70238111.initial_effect(c)
 	e2:SetOperation(c70238111.spop)
 	c:RegisterEffect(e2)
 end
-function c70238111.filter(c,tp)
+function c70238111.filter(c,e,tp)
 	return c:IsRace(RACE_CYBERSE) and c:IsLink(3) and (c:IsFaceup() or not c:IsLocation(LOCATION_MZONE))
-		and c:IsAbleToRemove() and Duel.GetLocationCountFromEx(tp,tp,c)>0
+		and c:IsAbleToRemove() and Duel.IsExistingMatchingCard(c70238111.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c)
 end
-function c70238111.spfilter(c,e,tp)
-	return c:IsSetCard(0x101) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+function c70238111.spfilter(c,e,tp,rc)
+	return c:IsSetCard(0x101) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,rc,c)>0
 end
 function c70238111.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_MZONE) and chkc:IsControler(tp) and c70238111.filter(chkc,tp) end
-	if chk==0 then return Duel.IsExistingTarget(c70238111.filter,tp,LOCATION_GRAVE+LOCATION_MZONE,0,1,nil,tp)
-		and Duel.IsExistingMatchingCard(c70238111.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp)
-	end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_MZONE) and chkc:IsControler(tp) and c70238111.filter(chkc,e,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c70238111.filter,tp,LOCATION_GRAVE+LOCATION_MZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectTarget(tp,c70238111.filter,tp,LOCATION_GRAVE+LOCATION_MZONE,0,1,1,nil,tp)
+	local g=Duel.SelectTarget(tp,c70238111.filter,tp,LOCATION_GRAVE+LOCATION_MZONE,0,1,1,nil,e,tp)
 	if g:GetFirst():IsLocation(LOCATION_GRAVE) then
 		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,tp,LOCATION_GRAVE)
 	else
@@ -48,9 +46,8 @@ end
 function c70238111.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 then
-		if Duel.GetLocationCountFromEx(tp)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,c70238111.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
+		local g=Duel.SelectMatchingCard(tp,c70238111.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,nil)
 		if g:GetCount()>0 then
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		end

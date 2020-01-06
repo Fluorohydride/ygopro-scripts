@@ -128,7 +128,7 @@ function c50907446.FShaddollSpFilter2(c,fc,tp,mc,chkf)
 	if aux.FCheckAdditional and not aux.FCheckAdditional(tp,sg,fc) then return false end
 	return ((c50907446.FShaddollFilter1(c,sg) and c50907446.FShaddollFilter2(mc))
 		or (c50907446.FShaddollFilter1(mc,sg) and c50907446.FShaddollFilter2(c)))
-		and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg)>0)
+		and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
 end
 function c50907446.FShaddollCondition()
 	return  function(e,g,gc,chkf)

@@ -93,7 +93,7 @@ function c90809975.negop(e,tp,eg,ep,ev,re,r,rp)
 	if rc:IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)~=0 and not rc:IsLocation(LOCATION_HAND+LOCATION_DECK)
 		and not rc:IsHasEffect(EFFECT_NECRO_VALLEY) then
 		if rc:IsType(TYPE_MONSTER) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and (not rc:IsLocation(LOCATION_EXTRA) or Duel.GetLocationCountFromEx(tp)>0)
+			and (not rc:IsLocation(LOCATION_EXTRA) or Duel.GetLocationCountFromEx(tp,tp,nil,rc)>0)
 			and rc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
 			and Duel.SelectYesNo(tp,aux.Stringid(90809975,3)) then
 			Duel.BreakEffect()
