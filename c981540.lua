@@ -28,13 +28,8 @@ function c981540.activate(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
-		e2:SetValue(c981540.rdval)
+		e2:SetValue(aux.ChangeBattleDamage(0,HALF_DAMAGE))
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e2)
 	end
-end
-function c981540.rdval(e,damp)
-	if damp==e:GetOwnerPlayer() then
-		return HALF_DAMAGE
-	else return -1 end
 end

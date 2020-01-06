@@ -2038,17 +2038,17 @@ function Auxiliary.SZoneSequence(seq)
 	if seq>4 then return nil end
 	return seq
 end
-function Auxiliary.ChangeBattleDamage(player,val)
+function Auxiliary.ChangeBattleDamage(player,value)
 	return	function(e,damp)
 				if player==0 then
-					if e:GetHandlerPlayer()==damp then
-						return val
+					if e:GetOwnerPlayer()==damp then
+						return value
 					else
 						return -1
 					end
 				elseif player==1 then
-					if e:GetHandlerPlayer()==1-damp then
-						return val
+					if e:GetOwnerPlayer()==1-damp then
+						return value
 					else
 						return -1
 					end

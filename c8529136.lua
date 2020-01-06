@@ -77,7 +77,7 @@ function c8529136.effcon(e)
 	return e:GetOwnerPlayer()==e:GetHandlerPlayer()
 end
 function c8529136.damcon(e)
-	return e:GetHandler():GetBattleTarget()~=nil and e:GetOwnerPlayer()==tp
+	return e:GetHandler():GetBattleTarget()~=nil
 end
 function c8529136.descon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetBattleTarget()
