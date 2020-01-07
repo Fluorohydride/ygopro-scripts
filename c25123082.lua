@@ -29,7 +29,6 @@ function c25123082.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		e1:SetValue(1000)
 		tc:RegisterEffect(e1)
-		tc:RegisterFlagEffect(25123082,RESET_EVENT+0x1220000+RESET_PHASE+PHASE_END,0,1)
 		local e2=Effect.CreateEffect(e:GetHandler())
 		e2:SetDescription(aux.Stringid(25123082,0))
 		e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
@@ -42,7 +41,21 @@ function c25123082.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetOperation(c25123082.shop)
 		e2:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e2,tp)
+		local e3=Effect.CreateEffect(e:GetHandler())
+		e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e3:SetCode(EFFECT_DESTROY_REPLACE)
+		e3:SetRange(LOCATION_MZONE)
+		e3:SetCondition(c25123082.regcon)
+		e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+		tc:RegisterEffect(e3)
 	end
+end
+function c25123082.regcon(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	if c:GetBattleTarget() and r==REASON_BATTLE then
+		c:RegisterFlagEffect(25123082,RESET_PHASE+PHASE_DAMAGE,0,1)
+	end
+	return false
 end
 function c25123082.shcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
