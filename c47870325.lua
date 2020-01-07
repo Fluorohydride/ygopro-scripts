@@ -99,17 +99,12 @@ function c47870325.atkop(e,tp,eg,ep,ev,re,r,rp)
 		if not res then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_FIELD)
-			e1:SetCode(EFFECT_CHANGE_DAMAGE)
+			e1:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 			e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 			e1:SetTargetRange(1,0)
-			e1:SetValue(c47870325.damval)
+			e1:SetValue(DOUBLE_DAMAGE)
 			e1:SetReset(RESET_PHASE+PHASE_END)
 			Duel.RegisterEffect(e1,p)
 		end
 	end
-end
-function c47870325.damval(e,re,dam,r,rp,rc)
-	if bit.band(r,REASON_BATTLE)~=0 then
-		return dam*2
-	else return dam end
 end

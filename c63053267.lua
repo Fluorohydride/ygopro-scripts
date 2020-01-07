@@ -21,11 +21,12 @@ function c63053267.initial_effect(c)
 	--double damage
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
-	e4:SetCode(EFFECT_CHANGE_DAMAGE)
-	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e4:SetTargetRange(0,1)
+	e4:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e4:SetRange(LOCATION_SZONE)
-	e4:SetValue(c63053267.damval)
+	e4:SetTargetRange(LOCATION_MZONE,0)
+	e4:SetCondition(c63053267.damcon)
+	e4:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x10b))
+	e4:SetValue(aux.ChangeBattleDamage(1,DOUBLE_DAMAGE))
 	c:RegisterEffect(e4)
 	--search
 	local e5=Effect.CreateEffect(c)
@@ -37,16 +38,26 @@ function c63053267.initial_effect(c)
 	e5:SetTarget(c63053267.thtg)
 	e5:SetOperation(c63053267.thop)
 	c:RegisterEffect(e5)
+	--reg
+	local e6=Effect.CreateEffect(c)
+	e6:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e6:SetCode(EVENT_PRE_BATTLE_DAMAGE)
+	e6:SetRange(LOCATION_SZONE)
+	e6:SetCondition(c63053267.regcon)
+	e6:SetOperation(c63053267.regop)
+	c:RegisterEffect(e6)
 end
 function c63053267.indtg(e,c)
 	return c:IsSetCard(0x10b) and c:GetSequence()<5
 end
-function c63053267.damval(e,re,val,r,rp,rc)
-	local tp=e:GetHandlerPlayer()
-	if Duel.GetFlagEffect(tp,63053267)~=0 or bit.band(r,REASON_BATTLE)==0
-		or not rc:IsSetCard(0x10b) or not rc:IsControler(tp) then return val end
-	Duel.RegisterFlagEffect(tp,63053267,RESET_PHASE+PHASE_END,0,1)
-	return val*2
+function c63053267.regcon(e,tp,eg,ep,ev,re,r,rp)
+	return ep==1-tp and eg:GetFirst():IsSetCard(0x10b)
+end
+function c63053267.regop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():RegisterFlagEffect(63053267,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+end
+function c63053267.damcon(e)
+	return e:GetHandler():GetFlagEffect(63053267)==0
 end
 function c63053267.cfilter(c)
 	return c:IsSetCard(0x10b) and c:IsDiscardable()

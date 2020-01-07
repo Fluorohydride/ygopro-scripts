@@ -63,9 +63,9 @@ function c60953118.arcanareg(c,coin)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(1,0)
-	e1:SetCode(EFFECT_CHANGE_DAMAGE)
+	e1:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e1:SetCondition(c60953118.rdcon1)
-	e1:SetValue(c60953118.rdval)
+	e1:SetValue(HALF_DAMAGE)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
@@ -79,11 +79,4 @@ function c60953118.rdcon1(e)
 end
 function c60953118.rdcon2(e)
 	return e:GetHandler():GetFlagEffectLabel(36690018)==0
-end
-function c60953118.rdval(e,re,val,r,rp,rc)
-	if bit.band(r,REASON_BATTLE)~=0 then
-		return math.floor(val/2)
-	else
-		return val
-	end
 end

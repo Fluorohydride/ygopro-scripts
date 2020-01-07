@@ -39,19 +39,18 @@ function c20858318.op(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 	local e2=Effect.CreateEffect(e:GetHandler())
-	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e2:SetCode(EVENT_PRE_BATTLE_DAMAGE)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
+	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e2:SetTargetRange(0,1)
 	e2:SetCondition(c20858318.rdcon)
-	e2:SetOperation(c20858318.rdop)
+	e2:SetValue(400)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
 end
 function c20858318.affected(e,c)
 	return c:GetFlagEffect(20858318)~=0
 end
-function c20858318.rdcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:GetFirst():GetFlagEffect(20858318)~=0
-end
-function c20858318.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,400)
+function c20858318.rdcon(e)
+	return Duel.GetAttacker():GetFlagEffect(20858318)~=0 and Duel.GetAttackTarget()==nil
 end

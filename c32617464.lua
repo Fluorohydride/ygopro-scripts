@@ -5,11 +5,12 @@ function c32617464.initial_effect(c)
 	c:EnableReviveLimit()
 	--double damage
 	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_PRE_BATTLE_DAMAGE)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetCondition(c32617464.damcon)
-	e1:SetOperation(c32617464.damop)
+	e1:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+	e1:SetTarget(c32617464.damtg)
+	e1:SetValue(aux.ChangeBattleDamage(1,DOUBLE_DAMAGE))
 	c:RegisterEffect(e1)
 	--remove
 	local e2=Effect.CreateEffect(c)
@@ -40,13 +41,9 @@ end
 function c32617464.matfilter(c)
 	return not c:IsLinkType(TYPE_TOKEN)
 end
-function c32617464.damcon(e,tp,eg,ep,ev,re,r,rp)
+function c32617464.damtg(e,c)
 	local lg=e:GetHandler():GetMutualLinkedGroup()
-	local tc=eg:GetFirst()
-	return ep~=tp and lg:IsContains(tc) and tc:GetBattleTarget()~=nil
-end
-function c32617464.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev*2)
+	return lg:IsContains(c) and c:GetBattleTarget()~=nil and c:GetBattleTarget():GetControler()==1-e:GetHandlerPlayer()
 end
 function c32617464.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetMutualLinkedGroupCount()>=2

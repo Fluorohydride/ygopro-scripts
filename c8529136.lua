@@ -45,10 +45,10 @@ function c8529136.activate(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			tc:RegisterEffect(e2)
 			local e3=Effect.CreateEffect(c)
-			e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-			e3:SetCode(EVENT_PRE_BATTLE_DAMAGE)
+			e3:SetType(EFFECT_TYPE_SINGLE)
+			e3:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 			e3:SetCondition(c8529136.damcon)
-			e3:SetOperation(c8529136.damop)
+			e3:SetValue(aux.ChangeBattleDamage(1,DOUBLE_DAMAGE))
 			e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			tc:RegisterEffect(e3)
 			local e4=Effect.CreateEffect(c)
@@ -76,11 +76,8 @@ end
 function c8529136.effcon(e)
 	return e:GetOwnerPlayer()==e:GetHandlerPlayer()
 end
-function c8529136.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and e:GetHandler():GetBattleTarget()~=nil and e:GetOwnerPlayer()==tp
-end
-function c8529136.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev*2)
+function c8529136.damcon(e)
+	return e:GetHandler():GetBattleTarget()~=nil
 end
 function c8529136.descon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetBattleTarget()

@@ -14,10 +14,14 @@ function c23792058.initial_effect(c)
 	e1:SetOperation(c23792058.tdop)
 	c:RegisterEffect(e1)
 	--damage
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetCode(EFFECT_BOTH_BATTLE_DAMAGE)
+	c:RegisterEffect(e0)
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
-	e2:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-	e2:SetOperation(c23792058.damop)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
+	e2:SetValue(HALF_DAMAGE)
 	c:RegisterEffect(e2)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
@@ -46,10 +50,6 @@ function c23792058.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) then
 		Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
 	end
-end
-function c23792058.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,math.floor(ev/2),false)
-	Duel.ChangeBattleDamage(1-ep,math.floor(ev/2),false)
 end
 function c23792058.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_PZONE)

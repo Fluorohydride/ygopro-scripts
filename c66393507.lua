@@ -33,11 +33,12 @@ function c66393507.initial_effect(c)
 	c:RegisterEffect(e4)
 	--double damage
 	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e5:SetCode(EVENT_PRE_BATTLE_DAMAGE)
+	e5:SetType(EFFECT_TYPE_FIELD)
+	e5:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e5:SetRange(LOCATION_MZONE)
-	e5:SetCondition(c66393507.damcon)
-	e5:SetOperation(c66393507.damop)
+	e5:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+	e5:SetTarget(c66393507.damtg)
+	e5:SetValue(aux.ChangeBattleDamage(1,DOUBLE_DAMAGE))
 	c:RegisterEffect(e5)
 end
 function c66393507.spcon(e,tp,eg,ep,ev,re,r,rp)
@@ -82,10 +83,6 @@ end
 function c66393507.indtg(e,c)
 	return e:GetHandler():GetLinkedGroup():IsContains(c) and c:IsSetCard(0x104)
 end
-function c66393507.damcon(e,tp,eg,ep,ev,re,r,rp)
-	local tc=eg:GetFirst()
-	return ep~=tp and tc:IsSetCard(0x104) and tc:GetBattleTarget()~=nil and e:GetHandler():GetLinkedGroup():IsContains(tc)
-end
-function c66393507.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev*2)
+function c66393507.damtg(e,c)
+	return c:IsSetCard(0x104) and c:GetBattleTarget()~=nil and e:GetHandler():GetLinkedGroup():IsContains(c)
 end

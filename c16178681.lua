@@ -26,10 +26,10 @@ function c16178681.initial_effect(c)
 	c:RegisterEffect(e3)
 	--double
 	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e4:SetCode(EVENT_PRE_BATTLE_DAMAGE)
+	e4:SetType(EFFECT_TYPE_SINGLE)
+	e4:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e4:SetCondition(c16178681.damcon)
-	e4:SetOperation(c16178681.damop)
+	e4:SetValue(aux.ChangeBattleDamage(1,DOUBLE_DAMAGE))
 	c:RegisterEffect(e4)
 end
 function c16178681.rdcon(e,tp,eg,ep,ev,re,r,rp)
@@ -64,9 +64,6 @@ function c16178681.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
-function c16178681.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and e:GetHandler():GetBattleTarget()~=nil
-end
-function c16178681.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev*2)
+function c16178681.damcon(e)
+	return e:GetHandler():GetBattleTarget()~=nil
 end
