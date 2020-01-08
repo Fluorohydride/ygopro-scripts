@@ -120,7 +120,7 @@ function c13235258.atkcon1(e)
 	return ec and ec:GetControler()==e:GetHandlerPlayer()
 end
 function c13235258.atktg(e,c)
-	return c~=e:GetHandler():GetEquipTarget()
+	return c~=e:GetHandler():GetEquipTarget() and c:IsFaceup() and c:IsRace(RACE_INSECT)
 end
 function c13235258.cfilter(c,tp)
 	return c:GetSummonPlayer()==tp
