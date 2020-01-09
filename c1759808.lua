@@ -46,8 +46,8 @@ function c1759808.activate(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetOperation(c1759808.tdop)
 			e1:SetReset(RESET_PHASE+PHASE_END,2)
 			Duel.RegisterEffect(e1,tp)
-			Duel.SpecialSummonComplete()
 		end
+		Duel.SpecialSummonComplete()
 	end
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		local e2=Effect.CreateEffect(e:GetHandler())
