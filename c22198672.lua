@@ -28,8 +28,8 @@ end
 function c22198672.filter(c)
 	if not c:IsType(TYPE_LINK) then return false end
 	local p=c:GetControler()
-	local zone=bit.band(c:GetLinkedZone(),0x1f)
-	return Duel.GetLocationCount(p,LOCATION_MZONE,p,LOCATION_REASON_CONTROL,zone)>0
+	local zone=c:GetLinkedZone()&0x1f
+	return Duel.GetLocationCount(p,LOCATION_MZONE,PLAYER_NONE,0,zone)>0
 end
 function c22198672.seqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c22198672.filter(chkc) end
@@ -42,12 +42,13 @@ function c22198672.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) then return end
 	local p=tc:GetControler()
-	local zone=bit.band(tc:GetLinkedZone(),0x1f)
-	if Duel.GetLocationCount(p,LOCATION_MZONE,p,LOCATION_REASON_CONTROL,zone)>0 then
+	local zone=tc:GetLinkedZone()&0x1f
+	if Duel.GetLocationCount(p,LOCATION_MZONE,PLAYER_NONE,0,zone)>0 then
 		local i=0
-		if not tc:IsControler(tp) then i=16 end
+		if p~=tp then i=16 end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
-		local nseq=math.log(Duel.SelectDisableField(tp,1,LOCATION_MZONE,LOCATION_MZONE,bit.bnot(bit.lshift(zone,i))),2) - i
+		local s=Duel.SelectDisableField(tp,1,LOCATION_MZONE,LOCATION_MZONE,~(zone<<i))
+		local nseq=math.log(s,2)-i
 		Duel.MoveSequence(tc,nseq)
 	end
 end

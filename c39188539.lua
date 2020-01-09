@@ -39,11 +39,13 @@ function c39188539.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local seq=c:GetSequence()
 	if seq>4 then return end
 	local flag=0
-	if seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1) then flag=bit.replace(flag,0x1,seq-1) end
-	if seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1) then flag=bit.replace(flag,0x1,seq+1) end
+	if seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1) then flag=flag|(1<<(seq-1)) end
+	if seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1) then flag=flag|(1<<(seq+1)) end
 	if flag==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
-	Duel.MoveSequence(c,Duel.SelectDisableField(tp,1,LOCATION_MZONE,0,bit.bnot(flag)))
+	local s=Duel.SelectDisableField(tp,1,LOCATION_MZONE,0,~flag)
+	local nseq=math.log(s,2)
+	Duel.MoveSequence(c,nseq)
 end
 function c39188539.filter(c,g)
 	return g:IsContains(c) and c:IsAbleToHand()
