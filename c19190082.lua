@@ -1,4 +1,4 @@
---Valkyrie Chariot
+--戦乙女の戦車
 function c19190082.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

@@ -44,20 +44,34 @@ end
 function c48086335.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
 end
-function c48086335.filter(c)
-	return c:IsSetCard(0x97) and c:IsType(TYPE_MONSTER) and c:IsSSetable()
+function c48086335.filter(c,e)
+	if not c:IsSetCard(0x97) or not c:IsType(TYPE_MONSTER) then return false end
+	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_MONSTER_SSET)
+	e1:SetValue(TYPE_SPELL)
+	c:RegisterEffect(e1,true)
+	local res=c:IsSSetable()
+	e1:Reset()
+	return res
 end
 function c48086335.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c48086335.filter(chkc) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c48086335.filter(chkc,e) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingTarget(c48086335.filter,tp,LOCATION_GRAVE,0,1,nil) end
+		and Duel.IsExistingTarget(c48086335.filter,tp,LOCATION_GRAVE,0,1,nil,e) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-	Duel.SelectTarget(tp,c48086335.filter,tp,LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,c48086335.filter,tp,LOCATION_GRAVE,0,1,1,nil,e)
+	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 end
 function c48086335.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsSSetable() then
+	if tc:IsRelateToEffect(e) then
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_MONSTER_SSET)
+		e1:SetValue(TYPE_SPELL)
+		tc:RegisterEffect(e1,true)
 		Duel.SSet(tp,tc)
-		Duel.ConfirmCards(1-tp,tc)
+		e1:Reset()
 	end
 end

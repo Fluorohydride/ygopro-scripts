@@ -1,4 +1,4 @@
---Time Thief Winder
+--クロノダイバー・リューズ
 function c56308388.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

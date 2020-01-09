@@ -44,11 +44,7 @@ function c69931927.initial_effect(c)
 	c:RegisterEffect(e8)
 end
 function c69931927.sdcon(e)
-	local c=e:GetHandler()
-	if c:IsStatus(STATUS_BATTLE_DESTROYED) then return false end
-	local f1=Duel.GetFieldCard(0,LOCATION_SZONE,5)
-	local f2=Duel.GetFieldCard(1,LOCATION_SZONE,5)
-	return ((f1==nil or not f1:IsFaceup()) and (f2==nil or not f2:IsFaceup()))
+	return not Duel.IsExistingMatchingCard(Card.IsFaceup,0,LOCATION_FZONE,LOCATION_FZONE,1,nil)
 end
 function c69931927.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetAttackAnnouncedCount()==0 end
@@ -61,7 +57,7 @@ function c69931927.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c69931927.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local dam=e:GetHandler():GetDefense()/2
+	local dam=math.floor(e:GetHandler():GetDefense()/2)
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(dam)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,dam)

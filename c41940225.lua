@@ -29,14 +29,18 @@ function c41940225.filter1(c,e)
 	return c:IsFaceup() and c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
 end
 function c41940225.filter2(c,e,tp,m,f,chkf)
-	return c41940225.spfilter(c) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
+	if not (c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,78193831) and (not f or f(c))
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)) then return false end
+	aux.FCheckAdditional=c.destruction_swordsman_fusion_check or c41940225.fcheck
+	local res=c:CheckFusionMaterial(m,nil,chkf)
+	aux.FCheckAdditional=nil
+	return res
 end
 function c41940225.filter3(c,e)
 	return not c:IsImmuneToEffect(e)
 end
-function c41940225.spfilter(c)
-	return aux.IsMaterialListCode(c,78193831)
+function c41940225.fcheck(tp,sg,fc)
+	return sg:IsExists(Card.IsFusionCode,1,nil,78193831)
 end
 function c41940225.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -79,6 +83,7 @@ function c41940225.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
+		aux.FCheckAdditional=tc.destruction_swordsman_fusion_check or c41940225.fcheck
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			tc:SetMaterial(mat1)
@@ -92,6 +97,7 @@ function c41940225.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:CompleteProcedure()
 	end
+	aux.FCheckAdditional=nil
 end
 function c41940225.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToGraveAsCost,tp,LOCATION_HAND,0,1,nil) end

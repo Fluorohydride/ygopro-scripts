@@ -74,26 +74,24 @@ function c63468625.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) then
-		if c:IsFaceup() and c:IsRelateToEffect(e) then
-			local atk=tc:GetTextAttack()
-			if atk<0 then atk=0 end
-			if not Duel.Equip(tp,tc,c,false) then return end
-			--Add Equip limit
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
-			e1:SetCode(EFFECT_EQUIP_LIMIT)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e1:SetValue(c63468625.eqlimit)
-			tc:RegisterEffect(e1)
-			local e2=Effect.CreateEffect(c)
-			e2:SetType(EFFECT_TYPE_EQUIP)
-			e2:SetCode(EFFECT_UPDATE_ATTACK)
-			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e2:SetValue(atk)
-			tc:RegisterEffect(e2)
-			tc:RegisterFlagEffect(63468625,RESET_EVENT+RESETS_STANDARD,0,1)
-		else Duel.SendtoGrave(tc,REASON_RULE) end
+		local atk=tc:GetTextAttack()
+		if atk<0 then atk=0 end
+		if not Duel.Equip(tp,tc,c,false) then return end
+		--Add Equip limit
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
+		e1:SetCode(EFFECT_EQUIP_LIMIT)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetValue(c63468625.eqlimit)
+		tc:RegisterEffect(e1)
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_EQUIP)
+		e2:SetCode(EFFECT_UPDATE_ATTACK)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e2:SetValue(atk)
+		tc:RegisterEffect(e2)
+		tc:RegisterFlagEffect(63468625,RESET_EVENT+RESETS_STANDARD,0,1)
 	end
 end
 function c63468625.damcon(e,tp,eg,ep,ev,re,r,rp)

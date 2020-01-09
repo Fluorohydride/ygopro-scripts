@@ -40,7 +40,7 @@ function c47766694.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 			local sg=g:Select(dp,1,1,nil)
-			Duel.SSet(dp,sg:GetFirst())
+			Duel.SSet(dp,sg,dp,false)
 		end
 	end
 end

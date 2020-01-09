@@ -32,7 +32,7 @@ function c2980764.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c2980764.tglimit(e,c)
-	return c:IsAttribute(ATTRIBUTE_DARK)
+	return c and c:IsAttribute(ATTRIBUTE_DARK)
 end
 function c2980764.sumlimit(e,c)
 	return c:IsAttribute(ATTRIBUTE_DARK)

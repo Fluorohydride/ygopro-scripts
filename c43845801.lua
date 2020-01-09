@@ -1,5 +1,6 @@
 --アルティメット・バースト
 function c43845801.initial_effect(c)
+	aux.AddCodeList(c,23995346)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -10,7 +11,6 @@ function c43845801.initial_effect(c)
 	e1:SetOperation(c43845801.activate)
 	c:RegisterEffect(e1)
 end
-c43845801.card_code_list={23995346}
 function c43845801.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsAbleToEnterBP()
 end

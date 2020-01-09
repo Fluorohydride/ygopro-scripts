@@ -16,11 +16,10 @@ function c52977572.initial_effect(c)
 	c:RegisterEffect(e2)
 	--damage reduce
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e3:SetRange(LOCATION_SZONE)
-	e3:SetCode(EVENT_PRE_BATTLE_DAMAGE)
+	e3:SetType(EFFECT_TYPE_EQUIP)
+	e3:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e3:SetCondition(c52977572.rdcon)
-	e3:SetOperation(c52977572.rdop)
+	e3:SetValue(aux.ChangeBattleDamage(1,HALF_DAMAGE))
 	c:RegisterEffect(e3)
 end
 function c52977572.filter(c,e,tp)
@@ -56,11 +55,9 @@ end
 function c52977572.eqlimit(e,c)
 	return e:GetLabelObject()==c
 end
-function c52977572.rdcon(e,tp,eg,ep,ev,re,r,rp)
+function c52977572.rdcon(e)
 	local c=e:GetHandler():GetEquipTarget()
-	return ep~=tp and c==Duel.GetAttacker() and Duel.GetAttackTarget()==nil
+	local tp=e:GetHandlerPlayer()
+	return Duel.GetAttackTarget()==nil
 		and c:GetEffectCount(EFFECT_DIRECT_ATTACK)<2 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0
-end
-function c52977572.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
 end

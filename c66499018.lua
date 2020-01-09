@@ -20,8 +20,8 @@ function c66499018.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	local dt=Duel.GetDrawCount(tp)
 	if dt~=0 then
-		_replace_count=0
-		_replace_max=dt
+		aux.DrawReplaceCount=0
+		aux.DrawReplaceMax=dt
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
@@ -35,8 +35,8 @@ function c66499018.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c66499018.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	_replace_count=_replace_count+1
-	if _replace_count<=_replace_max and c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	aux.DrawReplaceCount=aux.DrawReplaceCount+1
+	if aux.DrawReplaceCount<=aux.DrawReplaceMax and c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)

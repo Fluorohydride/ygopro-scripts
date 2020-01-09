@@ -27,10 +27,13 @@ function c4869446.posop(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c4869446.cfilter,nil)
 	local tc=g:GetFirst()
 	while tc do
-		e:GetHandler():SetCardTarget(tc)
+		tc:RegisterFlagEffect(4869446,RESET_EVENT+RESETS_STANDARD,0,1,e:GetHandler():GetFieldID())
 		tc=g:GetNext()
 	end
 end
 function c4869446.postg(e,c)
-	return e:GetHandler():IsHasCardTarget(c)
+	for _,flag in ipairs({c:GetFlagEffectLabel(4869446)}) do
+		if flag==e:GetHandler():GetFieldID() then return true end
+	end
+	return false
 end

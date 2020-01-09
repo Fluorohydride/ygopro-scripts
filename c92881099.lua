@@ -1,5 +1,6 @@
 --魅惑の合わせ鏡
 function c92881099.initial_effect(c)
+	aux.AddCodeList(c,12206212)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -29,7 +30,6 @@ function c92881099.initial_effect(c)
 	e3:SetOperation(c92881099.spop2)
 	c:RegisterEffect(e3)
 end
-c92881099.card_code_list={12206212}
 function c92881099.cfilter(c,tp)
 	return (c:GetPreviousCodeOnField()==76812113 or c:GetPreviousCodeOnField()==12206212)
 		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)

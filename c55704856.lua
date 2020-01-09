@@ -17,11 +17,18 @@ function c55704856.filter1(c,e)
 	return (c:IsLocation(LOCATION_MZONE) or c:IsFaceup()) and c:IsCanBeFusionMaterial() and c:IsAbleToDeck() and not c:IsImmuneToEffect(e)
 end
 function c55704856.filter2(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and aux.IsMaterialListSetCard(c,0x1093) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
+	if not (c:IsType(TYPE_FUSION) and aux.IsMaterialListSetCard(c,0x1093) and (not f or f(c))
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)) then return false end
+	aux.FCheckAdditional=c.cyber_fusion_check or c55704856.fcheck
+	local res=c:CheckFusionMaterial(m,nil,chkf)
+	aux.FCheckAdditional=nil
+	return res
 end
 function c55704856.filter3(c)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToDeck()
+end
+function c55704856.fcheck(tp,sg,fc)
+	return sg:IsExists(Card.IsFusionSetCard,1,nil,0x1093)
 end
 function c55704856.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -60,6 +67,7 @@ function c55704856.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
+		aux.FCheckAdditional=tc.cyber_fusion_check or c55704856.fcheck
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			local mat=Duel.SelectFusionMaterial(tp,tc,mg,nil,chkf)
 			tc:SetMaterial(mat)
@@ -86,6 +94,7 @@ function c55704856.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
 	end
+	aux.FCheckAdditional=nil
 end
 function c55704856.ftarget(e,c)
 	return e:GetLabel()~=c:GetFieldID()

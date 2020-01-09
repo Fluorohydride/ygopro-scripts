@@ -66,13 +66,7 @@ function c47075569.thop(e,tp,eg,ep,ev,re,r,rp)
 	if ct==0 or g:GetCount()==0 then return end
 	if ct>g:GetClassCount(Card.GetCode) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g1=g:Select(tp,1,1,nil)
-	if ct==2 then
-		g:Remove(Card.IsCode,nil,g1:GetFirst():GetCode())
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g2=g:Select(tp,1,1,nil)
-		g1:Merge(g2)
-	end
+	local g1=g:SelectSubGroup(tp,aux.dncheck,false,ct,ct)
 	Duel.SendtoHand(g1,nil,REASON_EFFECT)
 	Duel.ConfirmCards(1-tp,g1)
 end

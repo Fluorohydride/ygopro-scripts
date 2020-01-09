@@ -64,7 +64,7 @@ function c53334641.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c53334641.mtfilter(c)
-	return c:IsSetCard(0x8d)
+	return c:IsSetCard(0x8d) and c:IsCanOverlay()
 end
 function c53334641.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ)

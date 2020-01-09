@@ -1,4 +1,4 @@
---Time Thief Redoer
+--クロノダイバー・リダン
 function c55285840.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,nil,4,2)
@@ -32,6 +32,7 @@ function c55285840.matop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetDecktopGroup(1-tp,1)
 	if c:IsRelateToEffect(e) and g:GetCount()==1 then
+		Duel.DisableShuffleCheck()
 		Duel.Overlay(c,g)
 	end
 end
@@ -78,7 +79,7 @@ function c55285840.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RaiseSingleEvent(c,EVENT_DETACH_MATERIAL,e,0,0,0,0)
 	if sg:IsExists(Card.IsType,1,nil,TYPE_MONSTER) then
 		Duel.BreakEffect()
-		Duel.Remove(c,POS_FACEUP,REASON_EFFECT+REASON_TEMPORARY)
+		Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)

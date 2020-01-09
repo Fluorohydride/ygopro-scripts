@@ -41,9 +41,7 @@ function c494922.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c494922.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and (tc:IsType(TYPE_FIELD) or Duel.GetLocationCount(tp,LOCATION_SZONE)>0) then
-		Duel.SSet(tp,tc)
-		Duel.ConfirmCards(1-tp,tc)
+	if tc:IsRelateToEffect(e) and Duel.SSet(tp,tc)~=0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)

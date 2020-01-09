@@ -52,14 +52,14 @@ function c4820694.lpop(e,tp,eg,ep,ev,re,r,rp)
 		local og2=tc2:GetOverlayGroup()
 		og1:Merge(og2)
 		if Duel.SendtoGrave(og1,REASON_EFFECT)<og1:GetCount() then return end
-		Duel.SetLP(1-tp,Duel.GetLP(1-tp)/2)
+		Duel.SetLP(1-tp,math.ceil(Duel.GetLP(1-tp)/2))
 	end
 end
 function c4820694.tgfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x53) and c:IsType(TYPE_XYZ)
 end
 function c4820694.mfilter(c)
-	return c:IsSetCard(0x53) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0x53) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c4820694.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

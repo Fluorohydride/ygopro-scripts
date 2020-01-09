@@ -15,17 +15,10 @@ function c64990807.cfilter(c)
 	return c:IsSetCard(0x2f) and c:IsType(TYPE_MONSTER) and not c:IsPublic()
 end
 function c64990807.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetMatchingGroup(c64990807.cfilter,tp,LOCATION_HAND,0,nil):GetClassCount(Card.GetCode)>=3 end
 	local g=Duel.GetMatchingGroup(c64990807.cfilter,tp,LOCATION_HAND,0,nil)
+	if chk==0 then return g:GetClassCount(Card.GetCode)>=3 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-	local tc1=g:Select(tp,1,1,nil):GetFirst()
-	g:Remove(Card.IsCode,nil,tc1:GetCode())
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-	local tc2=g:Select(tp,1,1,nil):GetFirst()
-	g:Remove(Card.IsCode,nil,tc2:GetCode())
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-	local tc3=g:Select(tp,1,1,nil):GetFirst()
-	local cg=Group.FromCards(tc1,tc2,tc3)
+	local cg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
 	Duel.ConfirmCards(1-tp,cg)
 	Duel.ShuffleHand(tp)
 end

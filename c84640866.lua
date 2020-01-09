@@ -11,7 +11,7 @@ function c84640866.initial_effect(c)
 end
 function c84640866.filter(c,tp)
 	return c:GetSummonPlayer()~=tp and bit.band(c:GetSummonLocation(),LOCATION_DECK+LOCATION_GRAVE)~=0
-		and c:IsAbleToRemove() and c:IsLocation(LOCATION_MZONE)
+		and c:IsAbleToRemove(tp,POS_FACEDOWN) and c:IsLocation(LOCATION_MZONE)
 end
 function c84640866.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=eg:Filter(c84640866.filter,nil,tp)

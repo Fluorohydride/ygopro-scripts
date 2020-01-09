@@ -1,5 +1,6 @@
 --大天使ゼラート
 function c18378582.initial_effect(c)
+	aux.AddCodeList(c,56433456)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
@@ -27,7 +28,6 @@ function c18378582.initial_effect(c)
 	e3:SetOperation(c18378582.desop)
 	c:RegisterEffect(e3)
 end
-c18378582.card_code_list={56433456}
 function c18378582.rfilter(c,code)
 	return c:IsFaceup() and c:IsCode(code)
 end

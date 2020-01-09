@@ -19,11 +19,9 @@ function c9603356.initial_effect(c)
 	c:RegisterEffect(e2)
 	--damage reduce
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e3:SetRange(LOCATION_MZONE)
-	e3:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-	e3:SetCondition(c9603356.rdcon)
-	e3:SetOperation(c9603356.rdop)
+	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
+	e3:SetValue(aux.ChangeBattleDamage(1,HALF_DAMAGE))
 	c:RegisterEffect(e3)
 end
 function c9603356.mtcon(e,tp,eg,ep,ev,re,r,rp)
@@ -47,10 +45,4 @@ function c9603356.disop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateEffect(ev) and rc:IsRelateToEffect(re) then
 		Duel.Destroy(rc,REASON_EFFECT)
 	end
-end
-function c9603356.rdcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and e:GetHandler()==Duel.GetAttacker()
-end
-function c9603356.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
 end

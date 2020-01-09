@@ -11,7 +11,7 @@ function c35486099.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c35486099.filter(c)
-	return c:IsSetCard(0x1034) and not c:IsForbidden()
+	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
 end
 function c35486099.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c35486099.filter(chkc) end
@@ -50,6 +50,5 @@ function c35486099.activate(e,tp,eg,ep,ev,re,r,rp)
 			tc:RegisterEffect(e1)
 			tc=sg:GetNext()
 		end
-		Duel.RaiseEvent(sg,EVENT_CUSTOM+47408488,e,0,tp,0,0)
 	end
 end

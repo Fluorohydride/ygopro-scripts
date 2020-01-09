@@ -34,7 +34,7 @@ function c5560911.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) then
-		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+		if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
 			if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 				local lv=tc:GetLevel()
 				local e1=Effect.CreateEffect(c)
@@ -52,5 +52,6 @@ function c5560911.operation(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetValue(LOCATION_DECKBOT)
 			c:RegisterEffect(e2)
 		end
+		Duel.SpecialSummonComplete()
 	end
 end

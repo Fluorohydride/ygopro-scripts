@@ -23,10 +23,11 @@ function c71628381.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToDeck() end
 	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,e:GetHandler(),1,0,0)
 end
-function c71628381.mgfilter(c,e,tp,fusc)
+function c71628381.mgfilter(c,e,tp,fusc,mg)
 	return not c:IsControler(tp) or not c:IsLocation(LOCATION_GRAVE)
 		or bit.band(c:GetReason(),0x40008)~=0x40008 or c:GetReasonCard()~=fusc
 		or not c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		or not fusc:CheckFusionMaterial(mg,c,PLAYER_NONE,true)
 end
 function c71628381.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -36,7 +37,7 @@ function c71628381.spop(e,tp,eg,ep,ev,re,r,rp)
 	local sumtype=c:GetSummonType()
 	if Duel.SendtoDeck(c,nil,0,REASON_EFFECT)==0 or bit.band(sumtype,SUMMON_TYPE_FUSION)~=SUMMON_TYPE_FUSION or mg:GetCount()==0
 		or mg:GetCount()>Duel.GetLocationCount(tp,LOCATION_MZONE)
-		or mg:IsExists(c71628381.mgfilter,1,nil,e,tp,c) then
+		or mg:IsExists(c71628381.mgfilter,1,nil,e,tp,c,mg) then
 		sumable=false
 	end
 	if sumable and Duel.SelectYesNo(tp,aux.Stringid(71628381,1)) then

@@ -48,34 +48,34 @@ end
 function c22842214.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
-	local tg0=g:Filter(Card.IsRelateToEffect,nil,e)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
-	if tg0:GetCount()==0 or ft<=0 then return end
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		local tg=nil
-		if ft<tg0:GetCount() then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-			tg=tg0:FilterSelect(tp,c22842214.filter,ft,ft,nil)
+	local tg=Group.CreateGroup()
+	if c:IsRelateToEffect(e) and c:IsFaceup() then
+		if ft>=g:GetCount() then
+			tg:Merge(g)
 		else
-			tg=tg0:Clone()
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
+			tg:Merge(g:Select(tp,ft,ft,nil))
 		end
-		if tg:GetCount()>0 then
-			local tc=tg:GetFirst()
-			while tc do
-				Duel.Equip(tp,tc,c,false,true)
-				tc:RegisterFlagEffect(22842214,RESET_EVENT+RESETS_STANDARD,0,0)
-				local e1=Effect.CreateEffect(c)
-				e1:SetType(EFFECT_TYPE_SINGLE)
-				e1:SetCode(EFFECT_EQUIP_LIMIT)
-				e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
-				e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-				e1:SetValue(c22842214.eqlimit)
-				tc:RegisterEffect(e1)
-				tc=tg:GetNext()
-			end
-			Duel.EquipComplete()
-		end
-	else Duel.SendtoGrave(tg0,REASON_RULE) end
+	end
+	g:Sub(tg)
+	local tc=tg:GetFirst()
+	while tc do
+		Duel.Equip(tp,tc,c,false,true)
+		tc:RegisterFlagEffect(22842214,RESET_EVENT+RESETS_STANDARD,0,0)
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_EQUIP_LIMIT)
+		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetValue(c22842214.eqlimit)
+		tc:RegisterEffect(e1)
+		tc=tg:GetNext()
+	end
+	Duel.EquipComplete()
+	if g:GetCount()>0 then
+		Duel.SendtoGrave(g,REASON_RULE)
+	end
 end
 function c22842214.eqfilter(c,ec)
 	return c:GetFlagEffect(22842214)~=0 and c:IsHasCardTarget(ec)

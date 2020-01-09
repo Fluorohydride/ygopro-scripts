@@ -1,5 +1,6 @@
 --シンデレラ
 function c78527720.initial_effect(c)
+	aux.AddCodeList(c,72283691)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(78527720,0))
@@ -26,7 +27,6 @@ function c78527720.initial_effect(c)
 	e3:SetOperation(c78527720.eqop)
 	c:RegisterEffect(e3)
 end
-c78527720.card_code_list={72283691}
 function c78527720.filter(c,e,tp)
 	return c:IsCode(14512825) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
@@ -44,7 +44,7 @@ function c78527720.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c78527720.filter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp)
 	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0
-		and Duel.IsEnvironment(72283691) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+		and Duel.IsEnvironment(72283691,PLAYER_ALL,LOCATION_FZONE) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingMatchingCard(c78527720.efilter,tp,LOCATION_DECK,0,1,nil,c)
 		and c:IsRelateToEffect(e) and c:IsFaceup() and Duel.SelectYesNo(tp,aux.Stringid(78527720,1)) then
 		Duel.BreakEffect()

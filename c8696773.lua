@@ -21,6 +21,7 @@ function c8696773.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e3:SetCode(EVENT_BE_MATERIAL)
+	e3:SetProperty(EFFECT_FLAG_EVENT_PLAYER)
 	e3:SetCondition(c8696773.effcon)
 	e3:SetOperation(c8696773.effop)
 	c:RegisterEffect(e3)
@@ -57,7 +58,7 @@ function c8696773.matcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c8696773.matfilter(c)
-	return c:IsSetCard(0x107d) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0x107d) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c8696773.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c8696773.matfilter(chkc) end

@@ -51,6 +51,6 @@ function c23898021.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_SET)
 		local tg=sg:RandomSelect(1-tp,1)
 		Duel.ShuffleDeck(tp)
-		Duel.SSet(tp,tg:GetFirst())
+		Duel.SSet(tp,tg,tp,false)
 	end
 end

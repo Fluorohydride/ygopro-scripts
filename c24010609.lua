@@ -61,8 +61,7 @@ function c24010609.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(tc,REASON_EFFECT)
 end
 function c24010609.actop(e,tp,eg,ep,ev,re,r,rp)
-	local rc=re:GetHandler()
-	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) then
+	if ep==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) then
 		Duel.SetChainLimit(c24010609.chainlm)
 	end
 end
@@ -97,39 +96,20 @@ function c24010609.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return ct and ct>0 and Duel.IsExistingMatchingCard(c24010609.setfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,nil,1,tp,0)
 end
+function c24010609.gselect(g,ft)
+	local fc=g:FilterCount(Card.IsType,nil,TYPE_FIELD)
+	return fc<=1 and aux.dncheck(g) and #g-fc<=ft
+end
 function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c24010609.setfilter),tp,LOCATION_GRAVE,0,nil)
 	local ct=e:GetHandler():GetFlagEffectLabel(24010609) or 0
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
-	local tg=Group.CreateGroup()
-	local tg1=Group.CreateGroup()
-	local field=false
-	local init=1
-	if g:IsExists(Card.IsType,1,nil,TYPE_FIELD) then field=true end
-	while ct>0 and (ft>0 or field) and g:GetCount()>0 do
-		if ft==0 then g=g:Filter(Card.IsType,nil,TYPE_FIELD) end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-		local sg=g:Select(tp,init,1,nil)
-		if sg:GetCount()>0 then
-			if sg:GetFirst():IsType(TYPE_FIELD) then
-				tg:Merge(sg)
-				g:Remove(Card.IsType,nil,TYPE_FIELD)
-				field=false
-			else
-				tg1:Merge(sg)
-				g:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
-				ft=ft-1
-			end
-			init=0
-			ct=ct-1
-		else
-			break
-		end
-	end
-	tg:Merge(tg1)
-	Duel.SSet(tp,tg)
+	if #g==0 or ct==0 then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
+	local tg=g:SelectSubGroup(tp,c24010609.gselect,false,1,math.min(ct,ft+1),ft)
+	if Duel.SSet(tp,tg)==0 then return end
 	local tc=tg:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(c)

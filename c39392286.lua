@@ -1,5 +1,6 @@
 --ハーピィ・パフューマー
 function c39392286.initial_effect(c)
+	aux.AddCodeList(c,12206212)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(39392286,0))
@@ -23,7 +24,6 @@ function c39392286.initial_effect(c)
 	e3:SetValue(76812113)
 	c:RegisterEffect(e3)
 end
-c39392286.card_code_list={12206212}
 function c39392286.thfilter(c)
 	return aux.IsCodeListed(c,12206212) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
 end
@@ -39,14 +39,10 @@ end
 function c39392286.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c39392286.thfilter,tp,LOCATION_DECK,0,nil)
 	if #g<=0 then return end
+	local ct=1
+	if e:GetLabel()==1 then ct=2 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local sg1=g:Select(tp,1,1,nil)
-	g:Remove(Card.IsCode,nil,sg1:GetFirst():GetCode())
-	if #g>0 and e:GetLabel()==1 and Duel.SelectYesNo(tp,210) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local sg2=g:Select(tp,1,1,nil)
-		sg1:Merge(sg2)
-	end
+	local sg1=g:SelectSubGroup(tp,aux.dncheck,false,1,ct)
 	Duel.SendtoHand(sg1,nil,REASON_EFFECT)
 	Duel.ConfirmCards(1-tp,sg1)
 end

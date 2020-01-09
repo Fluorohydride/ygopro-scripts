@@ -42,7 +42,7 @@ function c6133894.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,1-tp,3)
 end
 function c6133894.hdop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.IsEnvironment(94585852) then
+	if Duel.IsEnvironment(94585852,tp) then
 		local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND):RandomSelect(tp,3)
 		Duel.SendtoGrave(g,REASON_EFFECT+REASON_DISCARD)
 	end

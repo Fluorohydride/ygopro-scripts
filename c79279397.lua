@@ -20,11 +20,15 @@ function c79279397.filter(c,e,tp)
 end
 function c79279397.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.GetMatchingGroup(c79279397.filter,tp,LOCATION_DECK,0,nil,e,tp)
+	if ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local g=Duel.SelectMatchingCard(tp,c79279397.filter,tp,LOCATION_DECK,0,1,ft,nil,e,tp)
 	if g:GetCount()>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=g:Select(tp,1,ft,nil)
-		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP_ATTACK)
-		Duel.Damage(tp,sg:GetCount()*1000,REASON_EFFECT)
+		local ct=Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_ATTACK)
+		if ct>0 then
+			Duel.BreakEffect()
+			Duel.Damage(tp,ct*1000,REASON_EFFECT)
+		end
 	end
 end

@@ -60,7 +60,7 @@ function c1735088.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 end
 function c1735088.cfilter(c,e,tp)
-	return c:IsFaceup() and c:IsSetCard(0x58) and c:IsAbleToRemoveAsCost() and Duel.GetMZoneCount(tp,c)>0
+	return c:IsFaceup() and c:IsSetCard(0x58) and c:IsAbleToRemoveAsCost(POS_FACEDOWN) and Duel.GetMZoneCount(tp,c)>0
 		and Duel.IsExistingMatchingCard(c1735088.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,c:GetCode())
 end
 function c1735088.spfilter(c,e,tp,code)
@@ -75,15 +75,14 @@ function c1735088.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(0)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c1735088.cfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
+	e:SetLabel(g:GetFirst():GetCode())
 	Duel.Remove(g,POS_FACEDOWN,REASON_COST)
-	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c1735088.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	local tc=Duel.GetFirstTarget()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c1735088.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,tc:GetCode())
+	local g=Duel.SelectMatchingCard(tp,c1735088.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,e:GetLabel())
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
@@ -96,7 +95,8 @@ function c1735088.matfilter(c)
 end
 function c1735088.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c1735088.matfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c1735088.matfilter,tp,LOCATION_MZONE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c1735088.matfilter,tp,LOCATION_MZONE,0,1,nil)
+		and e:GetHandler():IsCanOverlay() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c1735088.matfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,e:GetHandler(),1,0,0)

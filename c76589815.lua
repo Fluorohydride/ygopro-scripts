@@ -48,21 +48,18 @@ function c76589815.cftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0
 		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
 end
-function c76589815.cffilter(c)
-	return c:IsType(TYPE_SPELL) and c:IsSSetable()
+function c76589815.cffilter(c,tp)
+	return c:IsType(TYPE_SPELL) and c:IsSSetable(true) and (c:IsType(TYPE_FIELD) or Duel.GetLocationCount(tp,LOCATION_SZONE)>0)
 end
 function c76589815.cfop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
 	if g:GetCount()==0 then return end
 	Duel.ConfirmCards(tp,g)
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
-		local sg=g:Filter(c76589815.cffilter,nil)
-		if sg:GetCount()>0 then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-			local setg=sg:Select(tp,1,1,nil)
-			Duel.SSet(tp,setg:GetFirst())
-			Duel.ConfirmCards(1-tp,setg)
-		end
+	local sg=g:Filter(c76589815.cffilter,nil,tp)
+	if sg:GetCount()>0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
+		local setg=sg:Select(tp,1,1,nil)
+		Duel.SSet(tp,setg:GetFirst())
 	end
 	Duel.ShuffleHand(1-tp)
 end

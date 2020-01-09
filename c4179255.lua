@@ -4,19 +4,12 @@ function c4179255.initial_effect(c)
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
 	--draw
-	local e0=Effect.CreateEffect(c)
-	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e0:SetCode(EVENT_CHAINING)
-	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e0:SetRange(LOCATION_MZONE)
-	e0:SetOperation(aux.chainreg)
-	c:RegisterEffect(e0)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DRAW)
 	e1:SetDescription(aux.Stringid(4179255,0))
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e1:SetCode(EVENT_CHAIN_SOLVED)
+	e1:SetCode(EVENT_CHAINING)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1,4179255)
 	e1:SetCondition(c4179255.drcon)
@@ -41,7 +34,6 @@ function c4179255.initial_effect(c)
 end
 function c4179255.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp and re and re:IsActiveType(TYPE_FIELD) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
-		and e:GetHandler():GetFlagEffect(1)>0
 end
 function c4179255.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -53,14 +45,8 @@ function c4179255.drop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Draw(p,d,REASON_EFFECT)
 end
-function c4179255.check()
-	local tc=Duel.GetFieldCard(0,LOCATION_SZONE,5)
-	if tc and tc:IsFaceup() then return true end
-	tc=Duel.GetFieldCard(1,LOCATION_SZONE,5)
-	return tc and tc:IsFaceup()
-end
 function c4179255.descon(e,tp,eg,ep,ev,re,r,rp)
-	return c4179255.check()
+	return Duel.IsExistingMatchingCard(nil,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil)
 end
 function c4179255.desfilter(c)
 	return c:IsPosition(POS_FACEUP_ATTACK)
@@ -74,7 +60,8 @@ function c4179255.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c4179255.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsPosition(POS_FACEUP_ATTACK) and c4179255.check() then
+	if tc:IsRelateToEffect(e) and tc:IsPosition(POS_FACEUP_ATTACK)
+		and Duel.IsExistingMatchingCard(nil,tp,LOCATION_FZONE,LOCATION_FZONE,1,nil) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

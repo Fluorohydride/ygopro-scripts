@@ -46,7 +46,7 @@ function c49678559.operation(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
-		e1:SetValue(tc:GetAttack()/2)
+		e1:SetValue(math.ceil(tc:GetAttack()/2))
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
 		local e2=Effect.CreateEffect(c)
@@ -69,17 +69,12 @@ function c49678559.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		Duel.SendtoGrave(g,REASON_EFFECT)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
-		e1:SetCode(EFFECT_CHANGE_DAMAGE)
+		e1:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		e1:SetTargetRange(1,0)
-		e1:SetValue(c49678559.damval)
+		e1:SetValue(HALF_DAMAGE)
 		e1:SetReset(RESET_PHASE+PHASE_END,1)
 		Duel.RegisterEffect(e1,tp)
 		return true
 	else return false end
-end
-function c49678559.damval(e,re,dam,r,rp,rc)
-	if bit.band(r,REASON_BATTLE)~=0 then
-		return dam/2
-	else return dam end
 end

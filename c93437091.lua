@@ -1,5 +1,6 @@
 --ビンゴマシーンGO!GO!
 function c93437091.initial_effect(c)
+	aux.AddCodeList(c,89631139,23995346)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
@@ -10,7 +11,6 @@ function c93437091.initial_effect(c)
 	e1:SetOperation(c93437091.thop)
 	c:RegisterEffect(e1)
 end
-c93437091.card_code_list={89631139,23995346}
 function c93437091.thfilter(c)
 	return (((aux.IsCodeListed(c,89631139) or aux.IsCodeListed(c,23995346)) and not c:IsCode(93437091) and c:IsType(TYPE_SPELL+TYPE_TRAP))
 		or (c:IsSetCard(0xdd) and c:IsType(TYPE_MONSTER))) and c:IsAbleToHand()

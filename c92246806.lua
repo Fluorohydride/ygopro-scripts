@@ -17,10 +17,10 @@ function c92246806.initial_effect(c)
 	c:RegisterEffect(e2)
 	--damage reduce
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_PRE_BATTLE_DAMAGE)
+	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e3:SetCondition(c92246806.rdcon)
-	e3:SetOperation(c92246806.rdop)
+	e3:SetValue(aux.ChangeBattleDamage(1,HALF_DAMAGE))
 	c:RegisterEffect(e3)
 	--return
 	local e4=Effect.CreateEffect(c)
@@ -44,13 +44,11 @@ function c92246806.sumop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Summon(tp,g:GetFirst(),true,nil)
 	end
 end
-function c92246806.rdcon(e,tp,eg,ep,ev,re,r,rp)
+function c92246806.rdcon(e)
 	local c=e:GetHandler()
-	return ep~=tp and Duel.GetAttackTarget()==nil
+	local tp=e:GetHandlerPlayer()
+	return Duel.GetAttackTarget()==nil
 		and c:GetEffectCount(EFFECT_DIRECT_ATTACK)<2 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0
-end
-function c92246806.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
 end
 function c92246806.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

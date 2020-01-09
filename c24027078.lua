@@ -1,4 +1,4 @@
---Morgan, the Enchantress of Avalon
+--アヴァロンの魔女モルガン
 function c24027078.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(24027078,0))

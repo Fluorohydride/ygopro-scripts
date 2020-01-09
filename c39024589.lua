@@ -55,26 +55,19 @@ function c39024589.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
-function c39024589.filter(c,e,tp)
+function c39024589.filter(c,e,tp,mc)
 	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsSetCard(0x10ec)
 		and c:IsLevel(1,8) and c:IsType(TYPE_PENDULUM) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and (c:IsLocation(LOCATION_HAND) and Duel.GetMZoneCount(tp,mc)>0
+			or c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0)
 end
 function c39024589.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local loc=0
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if e:GetHandler():GetSequence()<5 then ft=ft+1 end
-	if ft>0 then loc=loc+LOCATION_HAND end
-	if Duel.GetLocationCountFromEx(tp,tp,e:GetHandler())>0 then loc=loc+LOCATION_EXTRA end
-	if chk==0 then return loc~=0 and Duel.IsExistingMatchingCard(c39024589.filter,tp,loc,0,1,nil,e,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,loc)
+	if chk==0 then return Duel.IsExistingMatchingCard(c39024589.filter,tp,LOCATION_HAND+LOCATION_EXTRA,0,1,nil,e,tp,e:GetHandler()) end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_EXTRA)
 end
 function c39024589.spop(e,tp,eg,ep,ev,re,r,rp)
-	local loc=0
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then loc=loc+LOCATION_HAND end
-	if Duel.GetLocationCountFromEx(tp)>0 then loc=loc+LOCATION_EXTRA end
-	if loc==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c39024589.filter,tp,loc,0,1,1,nil,e,tp)
+	local g=Duel.SelectMatchingCard(tp,c39024589.filter,tp,LOCATION_HAND+LOCATION_EXTRA,0,1,1,nil,e,tp,nil)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end

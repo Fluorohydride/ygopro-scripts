@@ -83,11 +83,10 @@ end
 function c25629622.setop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local g=Duel.SelectMatchingCard(tp,c25629622.setfilter,tp,LOCATION_DECK,0,1,1,nil)
-	if g:GetCount()>0 then
+	local tc=g:GetFirst()
+	if tc and Duel.SSet(tp,tc)~=0 then
 		local c=e:GetHandler()
-		local tc=g:GetFirst()
 		local fid=c:GetFieldID()
-		Duel.SSet(tp,tc)
 		tc:RegisterFlagEffect(25629622,RESET_EVENT+RESETS_STANDARD,0,1,fid)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -100,7 +99,6 @@ function c25629622.setop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c25629622.tgop)
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
-		Duel.ConfirmCards(1-tp,g)
 	end
 end
 function c25629622.tgcon(e,tp,eg,ep,ev,re,r,rp)

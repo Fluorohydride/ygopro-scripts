@@ -2,10 +2,12 @@
 function c45025640.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
-	e1:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-	e1:SetCondition(c45025640.damcon)
-	e1:SetOperation(c45025640.damop)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_REFLECT_BATTLE_DAMAGE)
+	e1:SetRange(LOCATION_MZONE)
+	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e1:SetTargetRange(0,1)
+	e1:SetCondition(c45025640.rfcon)
 	c:RegisterEffect(e1)
 	--to hand
 	local e2=Effect.CreateEffect(c)
@@ -18,12 +20,8 @@ function c45025640.initial_effect(c)
 	e2:SetOperation(c45025640.thop)
 	c:RegisterEffect(e2)
 end
-function c45025640.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp
-end
-function c45025640.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(1-ep,ev,false)
-	Duel.ChangeBattleDamage(ep,0,false)
+function c45025640.rfcon(e)
+	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()
 end
 function c45025640.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

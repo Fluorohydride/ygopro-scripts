@@ -26,7 +26,7 @@ function c93854893.ovfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x11b) and c:IsType(TYPE_LINK)
 end
 function c93854893.ofilter(c)
-	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsType(TYPE_MONSTER)
+	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c93854893.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.IsExistingMatchingCard(Card.IsAbleToGrave,tp,0,LOCATION_ONFIELD,1,nil)
@@ -88,5 +88,5 @@ function c93854893.desrepval(e,c)
 end
 function c93854893.desrepop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_EFFECT)
-	Duel.Hint(HINT_CARD,1-tp,93854893)
+	Duel.Hint(HINT_CARD,0,93854893)
 end

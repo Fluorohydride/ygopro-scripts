@@ -29,13 +29,12 @@ function c48739166.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,2,2,REASON_COST)
 end
 function c48739166.filter(c)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsAbleToChangeControler()
-		and not c:IsType(TYPE_TOKEN) and c:IsSummonType(SUMMON_TYPE_SPECIAL)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsSummonType(SUMMON_TYPE_SPECIAL) and c:IsCanOverlay()
 end
 function c48739166.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c48739166.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c48739166.filter,tp,0,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	Duel.SelectTarget(tp,c48739166.filter,tp,0,LOCATION_MZONE,1,1,nil)
 end
 function c48739166.operation(e,tp,eg,ep,ev,re,r,rp)

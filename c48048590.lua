@@ -67,10 +67,10 @@ function c48048590.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c48048590.filter1(c,e,tp)
-	return c.material and Duel.IsExistingMatchingCard(c48048590.filter2,tp,LOCATION_GRAVE,0,1,nil,e,tp,c)
+	return Duel.IsExistingMatchingCard(c48048590.filter2,tp,LOCATION_GRAVE,0,1,nil,e,tp,c)
 end
 function c48048590.filter2(c,e,tp,fc)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE) and c:IsCode(table.unpack(fc.material))
+	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE) and aux.IsMaterialListCode(fc,c:GetCode())
 end
 function c48048590.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return c48048590.cost(e,tp,eg,ep,ev,re,r,rp,0)

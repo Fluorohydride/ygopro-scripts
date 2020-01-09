@@ -33,7 +33,6 @@ function c21698716.repop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
 	e1:SetValue(TYPE_SPELL+TYPE_CONTINUOUS)
 	c:RegisterEffect(e1)
-	Duel.RaiseEvent(c,EVENT_CUSTOM+47408488,e,0,tp,0,0)
 end
 function c21698716.filter(c)
 	return c:IsSetCard(0x1034) and c:IsAbleToDeck() and c:IsFaceup()

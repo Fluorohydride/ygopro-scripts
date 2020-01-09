@@ -46,7 +46,7 @@ function c55168550.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local lv=e:GetLabel()
-	if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP)~=0 and c:GetLevel()~=lv then
+	if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) and c:GetLevel()~=lv then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_LEVEL)

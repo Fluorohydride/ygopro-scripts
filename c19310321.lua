@@ -16,7 +16,7 @@ function c19310321.filter1(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:GetOverlayCount()==0
 end
 function c19310321.filter2(c)
-	return c:IsSetCard(0x76)
+	return c:IsSetCard(0x76) and c:IsCanOverlay()
 end
 function c19310321.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

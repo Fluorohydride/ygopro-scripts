@@ -1,5 +1,6 @@
 --熟練の黒魔術師
 function c73752131.initial_effect(c)
+	aux.AddCodeList(c,46986414)
 	c:EnableCounterPermit(0x1)
 	c:SetCounterLimit(0x1,3)
 	--add counter

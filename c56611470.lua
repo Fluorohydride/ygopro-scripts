@@ -32,7 +32,7 @@ function c56611470.mfilter1(c,mg,exg,tp)
 end
 function c56611470.mfilter2(c,mc,exg,tp)
 	local g=Group.FromCards(c,mc)
-	return exg:IsExists(Card.IsXyzSummonable,1,nil,g) and Duel.GetLocationCountFromEx(tp,tp,g)>0
+	return exg:IsExists(Card.IsXyzSummonable,1,nil,g)
 end
 function c56611470.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
@@ -61,7 +61,6 @@ function c56611470.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c56611470.tfilter,nil,e)
 	if g:GetCount()<2 then return end
-	if Duel.GetLocationCountFromEx(tp,tp,g)<=0 then return end
 	local xyzg=Duel.GetMatchingGroup(c56611470.xyzfilter,tp,LOCATION_EXTRA,0,nil,g)
 	if xyzg:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

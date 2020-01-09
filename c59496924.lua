@@ -46,7 +46,7 @@ function c59496924.repval(e,c)
 	return c59496924.repfilter(c,e:GetHandlerPlayer())
 end
 function c59496924.repop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,1-tp,59496924)
+	Duel.Hint(HINT_CARD,0,59496924)
 	local tc=e:GetLabelObject()
 	tc:SetStatus(STATUS_DESTROY_CONFIRMED,false)
 	Duel.Destroy(tc,REASON_EFFECT+REASON_REPLACE)

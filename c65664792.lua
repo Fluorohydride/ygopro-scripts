@@ -1,5 +1,6 @@
 --華麗なるハーピィ・レディ
 function c65664792.initial_effect(c)
+	aux.AddCodeList(c,12206212)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TODECK)
@@ -21,7 +22,6 @@ function c65664792.initial_effect(c)
 	e2:SetOperation(c65664792.thop)
 	c:RegisterEffect(e2)
 end
-c65664792.card_code_list={12206212}
 function c65664792.tdfilter(c,e,tp)
 	return c:IsCode(12206212) and c:IsAbleToDeck()
 end

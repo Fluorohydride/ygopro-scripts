@@ -25,14 +25,7 @@ function c39299733.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
 	e3:SetValue(c39299733.repval)
-	c:RegisterEffect(e3)	
-	--add setcode
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e4:SetCode(EFFECT_ADD_SETCODE)
-	e4:SetValue(0x122)
-	c:RegisterEffect(e4)
+	c:RegisterEffect(e3)
 	--direct attack
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_EQUIP)
@@ -40,11 +33,10 @@ function c39299733.initial_effect(c)
 	c:RegisterEffect(e5)
 	--damage reduce
 	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e6:SetRange(LOCATION_SZONE)
-	e6:SetCode(EVENT_PRE_BATTLE_DAMAGE)
+	e6:SetType(EFFECT_TYPE_EQUIP)
+	e6:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e6:SetCondition(c39299733.rdcon)
-	e6:SetOperation(c39299733.rdop)
+	e6:SetValue(aux.ChangeBattleDamage(1,HALF_DAMAGE))
 	c:RegisterEffect(e6)
 	--eqlimit
 	local e7=Effect.CreateEffect(c)
@@ -94,13 +86,11 @@ end
 function c39299733.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0 or bit.band(r,REASON_EFFECT)~=0
 end
-function c39299733.rdcon(e,tp,eg,ep,ev,re,r,rp)
+function c39299733.rdcon(e)
 	local c=e:GetHandler():GetEquipTarget()
-	return ep~=tp and c==Duel.GetAttacker() and Duel.GetAttackTarget()==nil
+	local tp=e:GetHandlerPlayer()
+	return Duel.GetAttackTarget()==nil
 		and c:GetEffectCount(EFFECT_DIRECT_ATTACK)<2 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0
-end
-function c39299733.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
 end
 function c39299733.eqlimit(e,c)
 	return c:IsRace(RACE_FAIRY) or e:GetHandler():GetEquipTarget()==c

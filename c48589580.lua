@@ -1,5 +1,6 @@
 --天空神騎士ロードパーシアス
 function c48589580.initial_effect(c)
+	aux.AddCodeList(c,56433456)
 	--link summon
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_FAIRY),2)
@@ -29,7 +30,6 @@ function c48589580.initial_effect(c)
 	e2:SetOperation(c48589580.spop)
 	c:RegisterEffect(e2)
 end
-c48589580.card_code_list={56433456}
 function c48589580.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)

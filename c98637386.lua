@@ -27,16 +27,13 @@ function c98637386.spop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) then
 		if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-			e1:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-			e1:SetOperation(c98637386.rdop)
+			e1:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
+			e1:SetValue(HALF_DAMAGE)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e1,true)
 			Duel.SpecialSummonComplete()
 		end
 	end
-end
-function c98637386.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
 end

@@ -17,14 +17,11 @@ function c856784.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tg=g:GetMaxGroup(Card.GetAttack)
 	return tg:IsExists(Card.IsControler,1,nil,1-tp) and Duel.GetLP(tp)<Duel.GetLP(1-tp)
 end
-function c856784.check(g)
-	return g:GetClassCount(Card.GetCode)==#g
-end
 function c856784.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if not Duel.IsPlayerCanDraw(tp,1) then return false end
 		local g=Duel.GetMatchingGroup(nil,tp,LOCATION_DECK,0,nil)
-		return g:CheckSubGroup(c856784.check,3,3)
+		return g:GetClassCount(Card.GetCode)>=3
 	end
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
@@ -33,7 +30,7 @@ function c856784.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(nil,tp,LOCATION_DECK,0,nil)
 	if g:GetCount()>=3 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-		local sg=g:SelectSubGroup(tp,c856784.check,false,3,3)
+		local sg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
 		Duel.ConfirmCards(1-tp,sg)
 		if Duel.ShuffleDeck(tp)~=0 then
 			for i=1,3 do

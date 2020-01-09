@@ -50,6 +50,9 @@ function c86240887.initial_effect(c)
 	e7:SetCode(EFFECT_PIERCE)
 	c:RegisterEffect(e7)
 end
+function c86240887.destruction_swordsman_fusion_check(tp,sg,fc)
+	return aux.gffcheck(sg,Card.IsFusionCode,78193831,Card.IsRace,RACE_DRAGON)
+end
 function c86240887.val(e,c)
 	return Duel.GetMatchingGroupCount(c86240887.filter,c:GetControler(),0,LOCATION_GRAVE+LOCATION_MZONE,nil)*1000
 end

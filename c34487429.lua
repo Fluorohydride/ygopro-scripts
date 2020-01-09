@@ -123,7 +123,7 @@ function c34487429.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsExistingMatchingCard(c34487429.filter1,tp,LOCATION_SZONE,0,5,nil) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
+		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
 function c34487429.rdcon(e,tp,eg,ep,ev,re,r,rp)
@@ -132,7 +132,7 @@ function c34487429.rdcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c34487429.rdop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SelectEffectYesNo(tp,e:GetHandler()) then
-		Duel.ChangeBattleDamage(tp,ev/2)
+		Duel.ChangeBattleDamage(tp,math.floor(ev/2))
 		e:GetHandler():RegisterFlagEffect(34487429,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end

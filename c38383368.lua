@@ -29,8 +29,8 @@ function c38383368.cfilter(c)
 end
 function c38383368.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=eg:Filter(c38383368.cfilter,nil):GetFirst()
-	if chk==0 then return tc and Duel.GetLocationCount(tc:GetControler(),LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE) end
+	if chk==0 then return tc and Duel.GetLocationCount(tc:GetControler(),LOCATION_MZONE,tp)>0
+		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE,tc:GetControler()) end
 	e:SetLabel(tc:GetControler())
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end

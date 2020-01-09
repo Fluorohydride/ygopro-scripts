@@ -87,7 +87,7 @@ function c19048328.regop(e,tp,eg,ep,ev,re,r,rp)
 	if bit.band(att,ATTRIBUTE_DARK)~=0 then
 		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(19048328,7))
 	end
-	if bit.band(att,ATTRIBUTE_DEVINE)~=0 then
+	if bit.band(att,ATTRIBUTE_DIVINE)~=0 then
 		c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(19048328,8))
 	end
 end

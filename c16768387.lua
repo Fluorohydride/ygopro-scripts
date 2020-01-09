@@ -8,5 +8,16 @@ function c16768387.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c16768387.operation(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SortDecktop(tp,tp,5)
+	local ct=math.min(5,Duel.GetFieldGroupCount(tp,LOCATION_DECK,0))
+	if ct==0 then return end
+	local t={}
+	for i=1,ct do
+		t[i]=i
+	end
+	local ac=1
+	if ct>1 then
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(16768387,1))
+		ac=Duel.AnnounceNumber(tp,table.unpack(t))
+	end
+	Duel.SortDecktop(tp,tp,ac)
 end

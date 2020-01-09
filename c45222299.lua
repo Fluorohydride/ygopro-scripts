@@ -20,9 +20,15 @@ function c45222299.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,0,LOCATION_HAND)
 end
 function c45222299.operation(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)==0 then return end
+	local ct=Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)
+	if ct==0 then return end
+	local ac=1
+	if ct>1 then
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(45222299,1))
+		ac=Duel.AnnounceNumber(tp,1,2)
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND):RandomSelect(tp,2)
+	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND):RandomSelect(tp,ac)
 	Duel.ConfirmCards(tp,g)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=g:Select(tp,1,1,nil)

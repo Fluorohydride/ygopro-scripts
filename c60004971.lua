@@ -80,7 +80,7 @@ function c60004971.eqop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectMatchingCard(tp,c60004971.eqfilter,tp,LOCATION_DECK,0,1,1,nil)
 		local tc=g:GetFirst()
-		if not tc or not Duel.Equip(tp,tc,ec,true) then return end
+		if not tc or not Duel.Equip(tp,tc,ec) then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)

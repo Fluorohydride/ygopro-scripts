@@ -96,7 +96,7 @@ function c67526112.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c67526112.bttg(e,c)
-	return not c:GetSummonLocation()==LOCATION_EXTRA
+	return c:GetSummonLocation()~=LOCATION_EXTRA
 end
 function c67526112.immval(e,te)
 	return te:GetOwner()~=e:GetHandler() and te:IsActiveType(TYPE_MONSTER) and te:IsActivated()

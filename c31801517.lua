@@ -25,10 +25,10 @@ function c31801517.initial_effect(c)
 	c:RegisterEffect(e2)
 	--half damage
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_PRE_BATTLE_DAMAGE)
+	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e3:SetCondition(c31801517.rdcon)
-	e3:SetOperation(c31801517.rdop)
+	e3:SetValue(aux.ChangeBattleDamage(1,HALF_DAMAGE))
 	c:RegisterEffect(e3)
 end
 c31801517.xyz_number=62
@@ -98,9 +98,6 @@ function c31801517.spop2(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummonComplete()
 	end
 end
-function c31801517.rdcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp and not e:GetHandler():GetOverlayGroup():IsExists(Card.IsCode,1,nil,93717133)
-end
-function c31801517.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
+function c31801517.rdcon(e)
+	return not e:GetHandler():GetOverlayGroup():IsExists(Card.IsCode,1,nil,93717133)
 end

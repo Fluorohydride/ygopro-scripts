@@ -2,7 +2,7 @@
 function c37337327.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()
-	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_WARRIOR+RACE_MACHINE),2,2,c37337327.lcheck)
+	aux.AddLinkProcedure(c,c37337327.mfilter,2,2,c37337327.lcheck)
 	--synchro effect
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(37337327,0))
@@ -26,6 +26,9 @@ function c37337327.initial_effect(c)
 	e2:SetTarget(c37337327.sptg)
 	e2:SetOperation(c37337327.spop)
 	c:RegisterEffect(e2)
+end
+function c37337327.mfilter(c)
+	return c:IsLinkType(TYPE_EFFECT) and c:IsLinkRace(RACE_WARRIOR+RACE_MACHINE)
 end
 function c37337327.lcheck(g,lc)
 	return g:IsExists(Card.IsLinkType,1,nil,TYPE_TUNER)
@@ -61,15 +64,15 @@ function c37337327.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c37337327.spfilter(c,e,tp)
 	return c:IsSetCard(0x43) and c:IsType(TYPE_SYNCHRO) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SYNCHRO,tp,false,false)
+		and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c37337327.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
-		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
+	if chk==0 then return aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
 		and Duel.IsExistingMatchingCard(c37337327.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c37337327.spop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCountFromEx(tp)<=0 or not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL) then return end
+	if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c37337327.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then

@@ -38,7 +38,7 @@ function c62070231.operation(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
-		e1:SetValue(tc:GetAttack()/2)
+		e1:SetValue(math.ceil(tc:GetAttack()/2))
 		if Duel.GetTurnPlayer()~=tp then
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,2)
 		else

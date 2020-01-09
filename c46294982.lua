@@ -1,5 +1,6 @@
 --ヘクサ・トルーデ
 function c46294982.initial_effect(c)
+	aux.AddCodeList(c,72283691)
 	--summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(46294982,0))
@@ -32,14 +33,13 @@ function c46294982.initial_effect(c)
 	e3:SetOperation(c46294982.atkop)
 	c:RegisterEffect(e3)
 end
-c46294982.card_code_list={72283691}
 function c46294982.ntcon(e,c,minc)
 	if c==nil then return true end
-	return minc==0 and c:IsLevelAbove(5) and Duel.IsEnvironment(72283691)
+	return minc==0 and c:IsLevelAbove(5) and Duel.IsEnvironment(72283691,PLAYER_ALL,LOCATION_FZONE)
 		and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c46294982.descon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsEnvironment(72283691)
+	return Duel.IsEnvironment(72283691,PLAYER_ALL,LOCATION_FZONE)
 end
 function c46294982.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

@@ -16,10 +16,8 @@ function c91027843.initial_effect(c)
 	c:RegisterEffect(e2)
 	--immune
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(91027843,0))
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetCode(EFFECT_IMMUNE_EFFECT)
-	e3:SetProperty(EFFECT_FLAG_CLIENT_HINT)
 	e3:SetRange(LOCATION_FZONE)
 	e3:SetTargetRange(LOCATION_MZONE,0)
 	e3:SetTarget(c91027843.immtg)
@@ -49,7 +47,7 @@ end
 function c91027843.valcheck(e,c)
 	local g=c:GetMaterial()
 	if g:IsExists(Card.IsLinkCode,1,nil,67712104) then
-		c:RegisterFlagEffect(91027843,RESET_EVENT+0x4fe0000,0,1)
+		c:RegisterFlagEffect(91027843,RESET_EVENT+0x4fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(91027843,0))
 	end
 end
 function c91027843.atkval(e,c)

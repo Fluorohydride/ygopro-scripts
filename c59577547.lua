@@ -53,14 +53,15 @@ end
 function c59577547.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c59577547.filter(chkc,c:GetAttack()) end
-	if chk==0 then return Duel.IsExistingTarget(c59577547.filter,tp,LOCATION_GRAVE,0,1,nil,c:GetAttack()) end
+	if chk==0 then return c:IsRelateToEffect(e)
+		and Duel.IsExistingTarget(c59577547.filter,tp,LOCATION_GRAVE,0,1,nil,c:GetAttack()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c59577547.filter,tp,LOCATION_GRAVE,0,1,1,nil,c:GetAttack())
 end
 function c59577547.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and c:IsFaceup() and c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)

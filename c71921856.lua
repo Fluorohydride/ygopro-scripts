@@ -33,7 +33,7 @@ function c71921856.initial_effect(c)
 end
 c71921856.xyz_number=79
 function c71921856.filter(c)
-	return c:IsSetCard(0x84) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0x84) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c71921856.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ)

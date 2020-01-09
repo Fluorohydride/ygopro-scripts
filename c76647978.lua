@@ -99,7 +99,8 @@ function c76647978.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:RegisterFlagEffect(76647978,RESET_EVENT+RESETS_STANDARD,0,1)
 		tc:CompleteProcedure()
-		e:GetLabelObject():SetLabelObject(tc)
+		local e1=e:GetLabelObject()
+		if e1 then e1:SetLabelObject(tc) end
 	end
 	Auxiliary.FCheckAdditional=nil
 	Auxiliary.GCheckAdditional=nil
@@ -108,7 +109,7 @@ function c76647978.mgfilter(c,e,tp,fusc,mg)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE)
 		and bit.band(c:GetReason(),0x40008)==0x40008 and c:GetReasonCard()==fusc
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and fusc:CheckFusionMaterial(mg,c)
+		and fusc:CheckFusionMaterial(mg,c,PLAYER_NONE,true)
 end
 function c76647978.spfilter(c,e,tp)
 	if c:IsFaceup() and c:GetFlagEffect(76647978)~=0 and c==e:GetLabelObject() then

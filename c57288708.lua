@@ -51,17 +51,18 @@ end
 function c57288708.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local g=eg:Filter(c57288708.tgfilter,nil)
+	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,g:GetCount(),0,0)
 end
 function c57288708.tgop(e,tp,eg,ep,ev,re,r,rp)
-	local g=eg:Filter(c57288708.tgfilter,nil)
+	local g=eg:Filter(c57288708.tgfilter,nil):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()>0 then
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	end
 end
 function c57288708.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousPosition(POS_FACEUP) and not c:IsSummonType(SUMMON_TYPE_SPECIAL)
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE) and not c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c57288708.spfilter(c,e,tp)
 	return c:IsSetCard(0xfd) and not c:IsCode(57288708) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

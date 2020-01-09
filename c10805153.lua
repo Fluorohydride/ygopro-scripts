@@ -29,9 +29,9 @@ end
 function c10805153.filter(c)
 	return c:IsSetCard(0x128) and c:IsFaceup() and not c:IsHasEffect(EFFECT_EXTRA_ATTACK)
 end
-function c10805153.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c10805153.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc,exc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and chkc:IsFaceup() end
-	if chk==0 then return Duel.IsExistingTarget(c10805153.filter,tp,LOCATION_MZONE,0,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c10805153.filter,tp,LOCATION_MZONE,0,1,exc) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c10805153.filter,tp,LOCATION_MZONE,0,1,1,nil)
 end

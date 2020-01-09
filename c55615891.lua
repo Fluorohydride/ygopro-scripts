@@ -22,6 +22,7 @@ function c55615891.initial_effect(c)
 	e2:SetOperation(c55615891.desop)
 	c:RegisterEffect(e2)
 end
+c55615891.material_setcode=0x8
 function c55615891.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)

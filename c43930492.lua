@@ -59,8 +59,7 @@ function c43930492.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c43930492.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsSSetable() then
+	if tc:IsRelateToEffect(e) then
 		Duel.SSet(tp,tc)
-		Duel.ConfirmCards(1-tp,tc)
 	end
 end

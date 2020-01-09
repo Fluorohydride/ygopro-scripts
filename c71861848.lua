@@ -35,7 +35,7 @@ function c71861848.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c71861848.regop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsReason(REASON_LINK) then
+	if r==REASON_LINK then
 		e:GetHandler():RegisterFlagEffect(71861848,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end

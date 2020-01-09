@@ -1,5 +1,6 @@
 --C・チッキー
 function c17363041.initial_effect(c)
+	aux.AddCodeList(c,54959865)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(17363041,0))
@@ -12,7 +13,6 @@ function c17363041.initial_effect(c)
 	e1:SetOperation(c17363041.spop)
 	c:RegisterEffect(e1)
 end
-c17363041.card_code_list={54959865}
 function c17363041.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsEnvironment(42015635)
 end

@@ -66,15 +66,18 @@ end
 function c58600555.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c58600555.cfilter,1,nil)
 end
+function c58600555.matfilter(c)
+	return c:IsRace(RACE_INSECT) and c:IsCanOverlay()
+end
 function c58600555.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ)
-		and Duel.IsExistingMatchingCard(Card.IsRace,tp,LOCATION_GRAVE,0,1,nil,RACE_INSECT) end
+		and Duel.IsExistingMatchingCard(c58600555.matfilter,tp,LOCATION_GRAVE,0,1,nil) end
 end
 function c58600555.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(Card.IsRace),tp,LOCATION_GRAVE,0,1,1,nil,RACE_INSECT)
+	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c58600555.matfilter),tp,LOCATION_GRAVE,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.Overlay(c,g)
 	end

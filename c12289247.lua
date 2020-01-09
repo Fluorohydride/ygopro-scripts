@@ -43,6 +43,7 @@ function c12289247.initial_effect(c)
 		Duel.RegisterEffect(ge1,0)
 	end
 end
+c12289247.hnchecks=aux.CreateChecks(Card.IsSetCard,{0x10f2,0x2073,0x2017,0x1046})
 function c12289247.spcfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT)
 		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
@@ -114,52 +115,34 @@ function c12289247.cfilter(c)
 		and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 		and (not c:IsLocation(LOCATION_MZONE) or c:IsFaceup())
 end
-function c12289247.fcheck(c,sg,g,code,...)
-	if not c:IsSetCard(code) then return false end
-	if ... then
-		g:AddCard(c)
-		local res=sg:IsExists(c12289247.fcheck,1,g,sg,g,...)
-		g:RemoveCard(c)
-		return res
-	else return true end
+function c12289247.hngoal(g,e,tp,c)
+	local sg=Group.FromCards(c)
+	sg:Merge(g)
+	return Duel.IsExistingMatchingCard(c12289247.hnfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,sg)
 end
-function c12289247.fselect(c,tp,mg,sg,mc,...)
-	sg:AddCard(c)
-	local res=false
-	if sg:GetCount()<5 then
-		res=mg:IsExists(c12289247.fselect,1,sg,tp,mg,sg,mc,...)
-	elseif Duel.GetLocationCountFromEx(tp,tp,sg)>0 then
-		local g=Group.FromCards(mc)
-		res=sg:IsExists(c12289247.fcheck,1,g,sg,g,...)
-	end
-	sg:RemoveCard(c)
-	return res
-end
-function c12289247.hnfilter(c,e,tp)
+function c12289247.hnfilter(c,e,tp,sg)
 	return c:IsCode(13331639) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial()
+		and (not sg or Duel.GetLocationCountFromEx(tp,tp,sg,c)>0)
 end
 function c12289247.hncost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local mg=Duel.GetMatchingGroup(c12289247.cfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
-	local sg=Group.FromCards(c)
 	if chk==0 then return c:IsAbleToRemoveAsCost()
-		and mg:IsExists(c12289247.fselect,1,sg,tp,mg,sg,c,0x10f2,0x2073,0x2017,0x1046) end
-	while sg:GetCount()<5 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g=mg:FilterSelect(tp,c12289247.fselect,1,1,sg,tp,mg,sg,c,0x10f2,0x2073,0x2017,0x1046)
-		sg:Merge(g)
-	end
+		and Duel.IsExistingMatchingCard(c12289247.hnfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp)
+		and mg:CheckSubGroupEach(c12289247.hnchecks,c12289247.hngoal,e,tp,c) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=mg:SelectSubGroupEach(tp,c12289247.hnchecks,false,c12289247.hngoal,e,tp,c)
+	sg:AddCard(c)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c12289247.hntg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL)
-		and Duel.IsExistingMatchingCard(c12289247.hnfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
+	if chk==0 then return aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c12289247.hnop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCountFromEx(tp)<=0 or not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) then return end
+	if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c12289247.hnfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
+	local g=Duel.SelectMatchingCard(tp,c12289247.hnfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,nil)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 		g:GetFirst():CompleteProcedure()

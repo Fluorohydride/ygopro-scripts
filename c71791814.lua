@@ -64,15 +64,8 @@ function c71791814.effop(e,tp,eg,ep,ev,re,r,rp)
 		local ct=Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)
 		local g=Duel.GetMatchingGroup(c71791814.thfilter,tp,LOCATION_DECK,0,nil)
 		if ct<=0 or g:GetCount()==0 then return end
-		local sg=Group.CreateGroup()
-		repeat
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-			local sg1=g:Select(tp,1,1,nil)
-			local tc=sg1:GetFirst()
-			sg:AddCard(tc)
-			g:Remove(Card.IsCode,nil,tc:GetCode())
-			ct=ct-1
-		until ct<=0 or g:GetCount()==0 or not Duel.SelectYesNo(tp,aux.Stringid(71791814,2))
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+		local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ct)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,sg)
 	else
@@ -81,15 +74,8 @@ function c71791814.effop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetMatchingGroup(c71791814.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 		if ft<=0 or ct<=0 or g:GetCount()==0 then return end
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-		repeat
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local sg=g:Select(tp,1,1,nil)
-			local tc=sg:GetFirst()
-			Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
-			g:Remove(Card.IsCode,nil,tc:GetCode())
-			ft=ft-1
-			ct=ct-1
-		until ft<=0 or ct<=0 or g:GetCount()==0 or not Duel.SelectYesNo(tp,aux.Stringid(71791814,3))
-		Duel.SpecialSummonComplete()
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,math.min(ft,ct))
+		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

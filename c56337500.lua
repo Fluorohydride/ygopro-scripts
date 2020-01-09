@@ -77,14 +77,11 @@ end
 function c56337500.spfilter(c,e,tp)
 	return c:IsRace(RACE_CYBERSE) and c:IsLevel(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c56337500.spcheck(g)
-	return g:GetClassCount(Card.GetCode)==#g
-end
 function c56337500.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 or Duel.IsPlayerAffectedByEffect(tp,59822133) then return false end
 		local g=Duel.GetMatchingGroup(c56337500.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
-		return g:CheckSubGroup(c56337500.spcheck,2,2)
+		return g:GetClassCount(Card.GetCode)>=2
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,tp,LOCATION_DECK)
 end
@@ -92,7 +89,7 @@ function c56337500.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	local g=Duel.GetMatchingGroup(c56337500.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg=g:SelectSubGroup(tp,c56337500.spcheck,false,2,2)
+	local sg=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
 	if sg then
 		local tc=sg:GetFirst()
 		while tc do

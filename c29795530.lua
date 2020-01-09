@@ -17,7 +17,7 @@ function c29795530.initial_effect(c)
 	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCondition(aux.exccon)
-	e2:SetCost(c29795530.lvcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c29795530.lvtg)
 	e2:SetOperation(c29795530.lvop)
 	c:RegisterEffect(e2)
@@ -40,10 +40,6 @@ function c29795530.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 		tc=g:GetNext()
 	end
-end
-function c29795530.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c29795530.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c29795530.filter(chkc) end

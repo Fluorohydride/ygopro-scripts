@@ -27,14 +27,13 @@ function c22567609.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	Duel.Recover(tp,1000,REASON_EFFECT)
 	if ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local g=Duel.GetMatchingGroup(c22567609.filter,tp,LOCATION_DECK,0,nil,e,tp)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(22567609,1)) then
 		Duel.BreakEffect()
-		Duel.SpecialSummonStep(g:GetFirst(),0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
-		if ft>1 and g:GetCount()>1 and Duel.SelectYesNo(tp,aux.Stringid(22567609,1)) then
-			Duel.SpecialSummonStep(g:GetNext(),0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
-		end
-		Duel.SpecialSummonComplete()
-		Duel.ConfirmCards(1-tp,Duel.GetOperatedGroup())
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local sg=g:Select(tp,1,ft,nil)
+		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
+		Duel.ConfirmCards(1-tp,sg)
 	end
 end

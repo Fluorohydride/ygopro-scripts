@@ -1,4 +1,4 @@
---剛鬼ザ・ブレード・オーガ
+--剛鬼ザ・ソリッド・オーガ
 function c22510667.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0xfc),2)

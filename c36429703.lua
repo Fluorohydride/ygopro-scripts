@@ -16,17 +16,10 @@ function c36429703.initial_effect(c)
 	e1:SetOperation(c36429703.spop)
 	c:RegisterEffect(e1)
 	--set
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetCode(EVENT_CHAINING)
-	e2:SetRange(LOCATION_MZONE)
-	e2:SetOperation(aux.chainreg)
-	c:RegisterEffect(e2)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(36429703,1))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e3:SetCode(EVENT_CHAIN_SOLVED)
+	e3:SetCode(EVENT_CHAINING)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1,36429704)
 	e3:SetCondition(c36429703.setcon)
@@ -75,7 +68,7 @@ function c36429703.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c36429703.setcon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	return re:IsActiveType(TYPE_XYZ) and rc:IsSetCard(0xba) and rc:IsControler(tp) and e:GetHandler():GetFlagEffect(1)>0
+	return re:IsActiveType(TYPE_XYZ) and rc:IsSetCard(0xba) and rc:IsControler(tp)
 end
 function c36429703.setfilter(c)
 	return c:IsSetCard(0x95) and c:IsType(TYPE_SPELL) and c:IsSSetable()
@@ -84,8 +77,7 @@ function c36429703.setop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local g=Duel.SelectMatchingCard(tp,c36429703.setfilter,tp,LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
-	if tc then
-		Duel.SSet(tp,tc)
+	if tc and Duel.SSet(tp,tc)~=0 then
 		if tc:IsType(TYPE_QUICKPLAY) then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
@@ -94,6 +86,5 @@ function c36429703.setop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e1)
 		end
-		Duel.ConfirmCards(1-tp,g)
 	end
 end

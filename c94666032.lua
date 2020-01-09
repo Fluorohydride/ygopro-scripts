@@ -1,5 +1,6 @@
 --リヴェンデット・ボーン
 function c94666032.initial_effect(c)
+	aux.AddCodeList(c,4388680)
 	aux.AddRitualProcGreater2(c,c94666032.filter,LOCATION_HAND+LOCATION_GRAVE,c94666032.mfilter)
 	--destroy replace
 	local e2=Effect.CreateEffect(c)
@@ -11,7 +12,6 @@ function c94666032.initial_effect(c)
 	e2:SetOperation(c94666032.repop)
 	c:RegisterEffect(e2)
 end
-c94666032.card_code_list={4388680}
 function c94666032.filter(c)
 	return c:IsSetCard(0x106)
 end

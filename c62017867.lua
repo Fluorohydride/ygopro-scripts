@@ -28,7 +28,6 @@ function c62017867.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=5 end
 end
 function c62017867.operation(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<5 then return end
 	Duel.SortDecktop(tp,tp,5)
 end
 function c62017867.atkcon(e,tp,eg,ep,ev,re,r,rp)

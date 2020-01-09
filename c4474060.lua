@@ -42,7 +42,6 @@ function c4474060.sttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)>2 end
 end
 function c4474060.stop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)<3 then return end
 	Duel.SortDecktop(tp,1-tp,3)
 end
 function c4474060.atkcon(e,tp,eg,ep,ev,re,r,rp)

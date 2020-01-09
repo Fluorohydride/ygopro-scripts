@@ -27,6 +27,7 @@ function c36857073.initial_effect(c)
 	e2:SetOperation(c36857073.spop2)
 	c:RegisterEffect(e2)
 end
+c36857073.material_type=TYPE_SYNCHRO
 function c36857073.sfilter(c)
 	return c:IsRace(RACE_DRAGON) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsType(TYPE_SYNCHRO)
 end

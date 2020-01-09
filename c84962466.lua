@@ -6,6 +6,7 @@ function c84962466.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
+	e1:SetCondition(c84962466.condition)
 	e1:SetTarget(c84962466.target1)
 	e1:SetOperation(c84962466.operation)
 	c:RegisterEffect(e1)
@@ -17,12 +18,16 @@ function c84962466.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(TIMING_DAMAGE_STEP)
+	e2:SetCondition(c84962466.condition)
 	e2:SetTarget(c84962466.target2)
 	e2:SetOperation(c84962466.operation)
 	c:RegisterEffect(e2)
 end
+function c84962466.condition(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
+end
 function c84962466.cfilter(c,tp)
-	return c:IsFaceup() and c:IsRace(RACE_BEAST+RACE_BEASTWARRIOR) and c:IsAbleToRemove()
+	return c:IsFaceup() and c:IsRace(RACE_BEAST+RACE_BEASTWARRIOR) and c:IsAbleToRemoveAsCost()
 		and Duel.IsExistingTarget(c84962466.filter,tp,LOCATION_MZONE,0,1,c)
 end
 function c84962466.filter(c)
@@ -33,7 +38,7 @@ function c84962466.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		return Duel.GetCurrentPhase()~=PHASE_DAMAGE or Duel.IsExistingMatchingCard(c84962466.cfilter,tp,LOCATION_MZONE,0,1,nil,tp)
 	end
-	if Duel.GetCurrentPhase()==PHASE_DAMAGE or 
+	if Duel.GetCurrentPhase()==PHASE_DAMAGE or
 		(Duel.IsExistingMatchingCard(c84962466.cfilter,tp,LOCATION_MZONE,0,1,nil,tp) and Duel.SelectYesNo(tp,aux.Stringid(84962466,0))) then
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)

@@ -42,6 +42,7 @@ end
 function c69394324.operation(e,tp,eg,ep,ev,re,r,rp)
 	local b1=Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>=5
 	local b2=Duel.GetFieldGroupCount(1-tp,LOCATION_DECK,0)>=5
+	if not b1 and not b2 then return end
 	local op=nil
 	if b1 and b2 then
 		op=Duel.SelectOption(tp,aux.Stringid(69394324,0),aux.Stringid(69394324,1))
@@ -71,17 +72,14 @@ function c69394324.spfilter(c,e,tp)
 	return c:IsSetCard(0xc008) and c:IsLevelBelow(9) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and c:IsCanBeEffectTarget(e)
 end
-function c69394324.spcheck(g)
-	return g:GetClassCount(Card.GetCode)==#g
-end
 function c69394324.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c69394324.spfilter(chkc,e,tp) end
 	local g=Duel.GetMatchingGroup(c69394324.spfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>=3
-		and g:CheckSubGroup(c69394324.spcheck,3,3) end
+		and g:GetClassCount(Card.GetCode)>=3 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg=g:SelectSubGroup(tp,c69394324.spcheck,false,3,3)
+	local sg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,3,0,0)
 end

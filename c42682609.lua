@@ -1,5 +1,6 @@
 --C・ドルフィーナ
 function c42682609.initial_effect(c)
+	aux.AddCodeList(c,17955766)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(42682609,0))
@@ -12,7 +13,6 @@ function c42682609.initial_effect(c)
 	e1:SetOperation(c42682609.spop)
 	c:RegisterEffect(e1)
 end
-c42682609.card_code_list={17955766}
 function c42682609.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsEnvironment(42015635)
 end

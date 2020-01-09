@@ -1,5 +1,6 @@
 --パーシアスの神域
 function c15449853.initial_effect(c)
+	aux.AddCodeList(c,56433456)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -50,7 +51,6 @@ function c15449853.initial_effect(c)
 	e7:SetOperation(c15449853.tdop)
 	c:RegisterEffect(e7)
 end
-c15449853.card_code_list={56433456}
 function c15449853.tdfilter(c,e)
 	return (c:IsRace(RACE_FAIRY) or c:IsType(TYPE_COUNTER)) and c:IsAbleToDeck() and (not e or c:IsCanBeEffectTarget(e))
 end
@@ -58,13 +58,8 @@ function c15449853.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local g=Duel.GetMatchingGroup(c15449853.tdfilter,tp,LOCATION_GRAVE,0,nil,e)
 	if chk==0 then return g:GetClassCount(Card.GetCode)>=3 end
-	local tg=Group.CreateGroup()
-	repeat
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-		local sg=g:Select(tp,1,1,nil)
-		tg:Merge(sg)
-		g:Remove(Card.IsCode,nil,sg:GetFirst():GetCode())
-	until tg:GetCount()==3
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+	local tg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
 	Duel.SetTargetCard(tg)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,tg,tg:GetCount(),0,0)
 end

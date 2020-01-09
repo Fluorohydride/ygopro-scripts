@@ -35,7 +35,7 @@ function c82693917.value(e,c)
 	return c:GetLevel()*300
 end
 function c82693917.lvcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()==tp and e:GetHandler():IsLevelAbove(1) and e:GetHandler():IsLevelBelow(11)
+	return Duel.GetTurnPlayer()==tp
 end
 function c82693917.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

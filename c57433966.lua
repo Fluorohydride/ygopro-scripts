@@ -1,4 +1,4 @@
---Danger! Excitement! Mystery!
+--魅惑の未界域
 function c57433966.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

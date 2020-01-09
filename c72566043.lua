@@ -52,20 +52,20 @@ function c72566043.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsSummonType(SUMMON_TYPE_RITUAL)
 end
-function c72566043.setfilter(c)
-	return c:IsType(TYPE_TRAP) and c:IsSSetable()
+function c72566043.setfilter(c,tp)
+	local chk=not c:IsControler(tp)
+	return c:IsType(TYPE_TRAP) and c:IsSSetable(chk) and (not chk or Duel.GetLocationCount(tp,LOCATION_SZONE)>0)
 end
 function c72566043.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c72566043.setfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c72566043.setfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c72566043.setfilter(chkc,tp) end
+	if chk==0 then return Duel.IsExistingTarget(c72566043.setfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-	local g=Duel.SelectTarget(tp,c72566043.setfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c72566043.setfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil,tp)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 end
 function c72566043.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsSSetable() then
+	if tc:IsRelateToEffect(e) then
 		Duel.SSet(tp,tc)
-		Duel.ConfirmCards(1-tp,tc)
 	end
 end

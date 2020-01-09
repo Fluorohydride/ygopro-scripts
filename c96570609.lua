@@ -75,11 +75,7 @@ function c96570609.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c96570609.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,nil)
 	if g:GetClassCount(Card.GetCode)<2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local tg1=g:Select(tp,1,1,nil)
-	g:Remove(Card.IsCode,nil,tg1:GetFirst():GetCode())
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local tg2=g:Select(tp,1,1,nil)
-	tg1:Merge(tg2)
+	local tg1=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
 	if Duel.SendtoGrave(tg1,REASON_EFFECT)~=0 and tg1:IsExists(Card.IsLocation,2,nil,LOCATION_GRAVE)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

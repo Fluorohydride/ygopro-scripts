@@ -56,23 +56,26 @@ function c50750868.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50750868.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
-	local zone=c:GetLinkedZone(tp)&0x1f
-	local ct=Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)
-	if ct<3 then return end
-	local g1=Duel.GetMatchingGroup(c50750868.spfilter,tp,LOCATION_HAND,0,nil,e,tp,zone)
-	local g2=Duel.GetMatchingGroup(c50750868.spfilter,tp,LOCATION_DECK,0,nil,e,tp,zone)
-	local g3=Duel.GetMatchingGroup(aux.NecroValleyFilter(c50750868.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp,zone)
-	if #g1==0 or #g2==0 or #g3==0 then return end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg1=g1:Select(tp,1,1,nil)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg2=g2:Select(tp,1,1,nil)
-	sg1:Merge(sg2)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local sg3=g3:Select(tp,1,1,nil)
-	sg1:Merge(sg3)
-	Duel.SpecialSummon(sg1,0,tp,tp,false,false,POS_FACEUP_DEFENSE,zone)
+	if c:IsRelateToEffect(e) and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
+		local zone=c:GetLinkedZone(tp)&0x1f
+		local ct=Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)
+		if ct>=3 then
+			local g1=Duel.GetMatchingGroup(c50750868.spfilter,tp,LOCATION_HAND,0,nil,e,tp,zone)
+			local g2=Duel.GetMatchingGroup(c50750868.spfilter,tp,LOCATION_DECK,0,nil,e,tp,zone)
+			local g3=Duel.GetMatchingGroup(aux.NecroValleyFilter(c50750868.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp,zone)
+			if #g1>0 and #g2>0 and #g3>0 then
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+				local sg1=g1:Select(tp,1,1,nil)
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+				local sg2=g2:Select(tp,1,1,nil)
+				sg1:Merge(sg2)
+				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+				local sg3=g3:Select(tp,1,1,nil)
+				sg1:Merge(sg3)
+				Duel.SpecialSummon(sg1,0,tp,tp,false,false,POS_FACEUP_DEFENSE,zone)
+			end
+		end
+	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)

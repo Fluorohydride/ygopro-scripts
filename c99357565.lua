@@ -64,11 +64,12 @@ function c99357565.spop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=e:GetLabel()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft>=ct then
-		if ft>1 and ct>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c99357565.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,ct,ct,nil,e,tp)
-		if g:GetCount()>0 then
-			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+		if ct==1 or not Duel.IsPlayerAffectedByEffect(tp,59822133) then
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+			local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c99357565.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,ct,ct,nil,e,tp)
+			if g:GetCount()>0 then
+				Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+			end
 		end
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())

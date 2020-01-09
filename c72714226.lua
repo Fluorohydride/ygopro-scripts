@@ -23,7 +23,7 @@ function c72714226.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c72714226.operation(e,tp,eg,ep,ev,re,r,rp)
-	local ct=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),3)
+	local ct=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ct<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

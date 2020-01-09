@@ -12,12 +12,12 @@ function c20281581.initial_effect(c)
 	c:RegisterEffect(e1)
 	--damage reduce
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(20281581,0))
-	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e2:SetRange(LOCATION_PZONE)
-	e2:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-	e2:SetCondition(c20281581.rdcon)
-	e2:SetOperation(c20281581.rdop)
+	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e2:SetTargetRange(1,0)
+	e2:SetValue(HALF_DAMAGE)
 	c:RegisterEffect(e2)
 	--flip
 	local e3=Effect.CreateEffect(c)
@@ -41,12 +41,6 @@ function c20281581.initial_effect(c)
 end
 function c20281581.descon(e)
 	return not Duel.IsExistingMatchingCard(nil,e:GetHandlerPlayer(),LOCATION_PZONE,0,1,e:GetHandler())
-end
-function c20281581.rdcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep==tp
-end
-function c20281581.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(tp,ev/2)
 end
 function c20281581.filter(c)
 	return c:IsFacedown()

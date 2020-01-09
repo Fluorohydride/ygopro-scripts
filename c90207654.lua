@@ -53,31 +53,21 @@ function c90207654.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
-function c90207654.fselect(c,tp,rg,sg,e)
-	sg:AddCard(c)
-	local res=c90207654.fgoal(tp,sg,e) or rg:IsExists(c90207654.fselect,1,sg,tp,rg,sg,e)
-	sg:RemoveCard(c)
-	return res
-end
-function c90207654.fgoal(tp,sg,e)
-	local ct=#sg
-	return ct>0 and ct<=3 and Duel.GetMZoneCount(tp,sg)>=ct
-		and Duel.IsExistingMatchingCard(c90207654.spfilter,tp,LOCATION_DECK,0,ct,nil,e,tp)
+function c90207654.gcheck(tp)
+	return	function(sg)
+				return Duel.GetMZoneCount(tp,sg)>=#sg
+			end
 end
 function c90207654.spop(e,tp,eg,ep,ev,re,r,rp)
 	local rg=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,LOCATION_HAND+LOCATION_ONFIELD,0,nil)
-	local sg=Group.CreateGroup()
-	local min=1
-	for i=0,2 do
-		local cg=rg:Filter(c90207654.fselect,sg,tp,rg,sg,e)
-		if #cg==0 then break end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g=cg:Select(tp,min,1,nil)
-		if #g==0 then break end
-		sg:Merge(g)
-		min=0
-	end
-	if #sg>0 and Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)~=0 then
+	local ct=Duel.GetMatchingGroupCount(c90207654.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
+	if ct>3 then ct=3 end
+	if ct>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	aux.GCheckAdditional=c90207654.gcheck(tp)
+	local sg=rg:SelectSubGroup(tp,aux.TRUE,false,1,ct)
+	aux.GCheckAdditional=nil
+	if sg and Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)~=0 then
 		local ct=#(Duel.GetOperatedGroup())
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=Duel.SelectMatchingCard(tp,c90207654.spfilter,tp,LOCATION_DECK,0,ct,ct,nil,e,tp)

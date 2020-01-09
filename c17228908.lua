@@ -117,7 +117,7 @@ function c17228908.repval(e,c)
 	return c17228908.repfilter(c,e:GetHandlerPlayer())
 end
 function c17228908.repop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,1-tp,17228908)
+	Duel.Hint(HINT_CARD,0,17228908)
 	local tg=e:GetLabelObject()
 	local tc=tg:GetFirst()
 	while tc do

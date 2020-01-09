@@ -118,6 +118,7 @@ function c74997493.drop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Draw(p,d,REASON_EFFECT)==4 then
 		local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,p,LOCATION_HAND,0,nil)
 		if g:GetCount()==0 then return end
+		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 		local sg=g:Select(p,3,3,nil)
 		Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)

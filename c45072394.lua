@@ -24,14 +24,14 @@ function c45072394.initial_effect(c)
 end
 function c45072394.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local loc=0
-	if Duel.IsEnvironment(72283691) then
+	if Duel.IsEnvironment(72283691,PLAYER_ALL,LOCATION_FZONE) then
 		loc=LOCATION_MZONE
 	end
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToGrave,tp,LOCATION_MZONE,loc,1,nil) end
 end
 function c45072394.operation(e,tp,eg,ep,ev,re,r,rp)
 	local loc=0
-	if Duel.IsEnvironment(72283691) then
+	if Duel.IsEnvironment(72283691,PLAYER_ALL,LOCATION_FZONE) then
 		loc=LOCATION_MZONE
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)

@@ -38,7 +38,7 @@ function c75130221.discon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsLocation(LOCATION_GRAVE) and c:IsPreviousLocation(LOCATION_ONFIELD+LOCATION_HAND) and r==REASON_LINK and c:GetReasonCard():IsSetCard(0x101)
 end
 function c75130221.disfilter(c)
-	return c:IsFaceup() and not (c:IsAttack(0) and c:IsDisabled())
+	return c:IsFaceup() and (c:IsAttackAbove(1) or aux.disfilter1(c))
 end
 function c75130221.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c75130221.disfilter(chkc) end

@@ -17,7 +17,7 @@ function c70628672.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,70628672)
-	e2:SetCost(c70628672.thcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c70628672.thtg)
 	e2:SetOperation(c70628672.thop)
 	c:RegisterEffect(e2)
@@ -42,10 +42,6 @@ function c70628672.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoGrave(g,REASON_EFFECT)
 		end
 	end
-end
-function c70628672.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c70628672.thfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x16) and c:IsAbleToHand()

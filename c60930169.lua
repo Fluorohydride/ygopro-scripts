@@ -46,9 +46,9 @@ function c60930169.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c60930169.activate(e,tp,eg,ep,ev,re,r,rp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ft=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),2)
 	if ft<=0 then return end
-	if ft>2 then ft=2 end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c60930169.spfilter,tp,LOCATION_DECK,0,1,ft,nil,e,tp,e:GetLabel())
 	if g:GetCount()>0 then

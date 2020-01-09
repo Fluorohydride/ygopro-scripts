@@ -1,5 +1,6 @@
 --神罰
 function c81066751.initial_effect(c)
+	aux.AddCodeList(c,56433456)
 	--Activate(effect)
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)
@@ -10,7 +11,6 @@ function c81066751.initial_effect(c)
 	e4:SetOperation(c81066751.activate)
 	c:RegisterEffect(e4)
 end
-c81066751.card_code_list={56433456}
 function c81066751.cfilter(c)
 	return c:IsFaceup() and c:IsCode(56433456)
 end

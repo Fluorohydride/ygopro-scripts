@@ -26,6 +26,7 @@ function c2743001.initial_effect(c)
 	e2:SetOperation(c2743001.spop)
 	c:RegisterEffect(e2)
 end
+c2743001.material_type=TYPE_SYNCHRO
 function c2743001.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
@@ -37,7 +38,7 @@ function c2743001.rmfilter(c)
 end
 function c2743001.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		return Duel.IsExistingMatchingCard(c2743001.rmfilter,tp,0,LOCATION_GRAVE+LOCATION_ONFIELD,1,nil) 
+		return Duel.IsExistingMatchingCard(c2743001.rmfilter,tp,0,LOCATION_GRAVE+LOCATION_ONFIELD,1,nil)
 			and not Duel.IsExistingMatchingCard(c2743001.chkfilter,tp,0,LOCATION_GRAVE+LOCATION_ONFIELD,1,nil)
 	end
 	local g=Duel.GetMatchingGroup(c2743001.rmfilter,tp,0,LOCATION_GRAVE+LOCATION_ONFIELD,nil)

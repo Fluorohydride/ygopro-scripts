@@ -92,7 +92,7 @@ function c67865534.xyzcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c67865534.xyzfilter(c)
-	return c:IsType(TYPE_PENDULUM) and c:IsType(TYPE_MONSTER)
+	return c:IsType(TYPE_PENDULUM) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c67865534.xyztg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c67865534.xyzfilter(chkc) end

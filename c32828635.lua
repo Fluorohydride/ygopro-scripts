@@ -1,13 +1,6 @@
 --エンドレス・オブ・ザ・ワールド
 function c32828635.initial_effect(c)
-	--Activate
-	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e1:SetType(EFFECT_TYPE_ACTIVATE)
-	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetTarget(c32828635.target)
-	e1:SetOperation(c32828635.activate)
-	c:RegisterEffect(e1)
+	aux.AddRitualProcGreater2Code2(c,46427957,72426662,nil,nil,c32828635.mfilter)
 	--salvage
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(32828635,0))
@@ -20,36 +13,8 @@ function c32828635.initial_effect(c)
 	e2:SetOperation(c32828635.thop)
 	c:RegisterEffect(e2)
 end
-c32828635.fit_monster={46427957,72426662}
-function c32828635.cfilter(c,e,tp,m)
-	if bit.band(c:GetType(),0x81)~=0x81 or not c:IsCode(46427957,72426662)
-		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
-	local mg=m:Filter(Card.IsCanBeRitualMaterial,c,c)
-	return mg:CheckWithSumGreater(Card.GetRitualLevel,c:GetLevel(),c)
-end
-function c32828635.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then
-		local mg1=Duel.GetRitualMaterial(tp)
-		mg1:Remove(Card.IsLocation,nil,LOCATION_HAND)
-		return Duel.IsExistingMatchingCard(c32828635.cfilter,tp,LOCATION_HAND,0,1,nil,e,tp,mg1)
-	end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
-end
-function c32828635.activate(e,tp,eg,ep,ev,re,r,rp)
-	local mg1=Duel.GetRitualMaterial(tp)
-	mg1:Remove(Card.IsLocation,nil,LOCATION_HAND)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local tg=Duel.SelectMatchingCard(tp,c32828635.cfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp,mg1)
-	local tc=tg:GetFirst()
-	if tc then
-		local mg=mg1:Filter(Card.IsCanBeRitualMaterial,tc,tc)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local mat=mg:SelectWithSumGreater(tp,Card.GetRitualLevel,tc:GetLevel(),tc)
-		tc:SetMaterial(mat)
-		Duel.ReleaseRitualMaterial(mat)
-		Duel.SpecialSummon(tc,SUMMON_TYPE_RITUAL,tp,tp,false,true,POS_FACEUP)
-		tc:CompleteProcedure()
-	end
+function c32828635.mfilter(c)
+	return not c:IsLocation(LOCATION_HAND)
 end
 function c32828635.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToDeckAsCost() end

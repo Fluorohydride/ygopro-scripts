@@ -22,13 +22,13 @@ end
 function c97970833.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstMatchingCard(c97970833.filter,tp,LOCATION_DECK,0,nil,tp)
 	if tc then
-		local fc=Duel.GetFieldCard(tp,LOCATION_SZONE,5)
+		local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
 		if fc then
 			Duel.SendtoGrave(fc,REASON_RULE)
 			Duel.BreakEffect()
 		end
 		Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
-		fc=Duel.GetFieldCard(1-tp,LOCATION_SZONE,5)
+		fc=Duel.GetFieldCard(1-tp,LOCATION_FZONE,0)
 		local te=tc:GetActivateEffect()
 		te:UseCountLimit(tp,1,true)
 		if fc and fc:IsFaceup() and Duel.IsPlayerCanDraw(1-tp,1) and Duel.SelectYesNo(tp,aux.Stringid(97970833,0)) then

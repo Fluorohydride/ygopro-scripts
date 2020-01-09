@@ -60,19 +60,11 @@ end
 function c68819554.damop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_CHANGE_DAMAGE)
+	e1:SetCode(EFFECT_AVOID_BATTLE_DAMAGE)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetTargetRange(1,0)
-	e1:SetValue(c68819554.damval)
-	e1:SetReset(RESET_PHASE+PHASE_END)
+	e1:SetReset(RESET_PHASE+PHASE_DAMAGE_CAL+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	Duel.RegisterFlagEffect(tp,68819554,RESET_PHASE+PHASE_END,0,1)
-end
-function c68819554.damval(e,re,val,r,rp,rc)
-	local tp=e:GetHandlerPlayer()
-	if Duel.GetFlagEffect(tp,68819554)==0 or bit.band(r,REASON_BATTLE)==0 then return val end
-	Duel.ResetFlagEffect(tp,68819554)
-	return 0
 end
 function c68819554.thfilter(c)
 	return c:IsSetCard(0xc6) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand() and not c:IsCode(68819554)

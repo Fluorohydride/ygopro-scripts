@@ -18,10 +18,10 @@ function c49469105.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,c49469105.cfilter,1,1,REASON_COST+REASON_DISCARD)
 end
 function c49469105.filter1(c,g)
-	return c.material and g:IsExists(c49469105.filter2,1,nil,c)
+	return g:IsExists(c49469105.filter2,1,nil,c)
 end
 function c49469105.filter2(c,fc)
-	return c:IsCode(table.unpack(fc.material))
+	return aux.IsMaterialListCode(fc,c:GetCode())
 end
 function c49469105.spfilter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)

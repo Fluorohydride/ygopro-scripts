@@ -1,4 +1,4 @@
---Ninjitsu Art of Mirage-Transformation
+--忍法 妖変化の術
 function c63626024.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

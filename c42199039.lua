@@ -71,9 +71,13 @@ function c42199039.dtop(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DIRECT_ATTACK)
+		e1:SetCondition(c42199039.dircon)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		ec:RegisterEffect(e1)
 	end
+end
+function c42199039.dircon(e)
+	return e:GetHandler():GetControler()==e:GetOwnerPlayer()
 end
 function c42199039.thfilter(c)
 	return c:IsSetCard(0x60) and not c:IsCode(42199039) and c:IsAbleToHand()

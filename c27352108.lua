@@ -16,7 +16,7 @@ function c27352108.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BE_MATERIAL)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
-	e2:SetCountLimit(1,69121955)
+	e2:SetCountLimit(1,27352108)
 	e2:SetCondition(c27352108.thcon)
 	e2:SetTarget(c27352108.thtg)
 	e2:SetOperation(c27352108.thop)
@@ -33,7 +33,7 @@ end
 function c27352108.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP_ATTACK)~=0 then
+	if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP_ATTACK) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
@@ -41,20 +41,13 @@ function c27352108.spop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
-		e2:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-		e2:SetCondition(c27352108.rdcon)
-		e2:SetOperation(c27352108.rdop)
+		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
+		e2:SetValue(aux.ChangeBattleDamage(0,HALF_DAMAGE))
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e2)
 		Duel.SpecialSummonComplete()
 	end
-end
-function c27352108.rdcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep==tp
-end
-function c27352108.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
 end
 function c27352108.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -23,6 +23,7 @@ function c27068117.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if e:GetLabel()==0 then return false end
 		e:SetLabel(0)
 		return Duel.IsExistingTarget(c27068117.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
+			and e:GetHandler():IsCanOverlay()
 	end
 	e:SetLabel(0)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)

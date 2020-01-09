@@ -33,10 +33,6 @@ function c43641473.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc==ec then tc=g:GetNext() end
 	if ec:IsFaceup() and ec:IsRelateToEffect(e) then 
-		if tc:IsFaceup() and tc:IsRelateToEffect(e) then
-			Duel.Equip(tp,ec,tc)
-		else 
-			Duel.SendtoGrave(ec,REASON_EFFECT) 
-		end
+		Duel.Equip(tp,ec,tc)
 	end
 end

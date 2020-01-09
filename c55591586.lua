@@ -12,19 +12,11 @@ function c55591586.initial_effect(c)
 	e1:SetOperation(c55591586.spop)
 	c:RegisterEffect(e1)
 	--atk
-	--atk up
-	local e0=Effect.CreateEffect(c)
-	e0:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e0:SetCode(EVENT_CHAINING)
-	e0:SetRange(LOCATION_MZONE)
-	e0:SetOperation(aux.chainreg)
-	c:RegisterEffect(e0)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(55591586,1))
 	e2:SetCategory(CATEGORY_ATKCHANGE)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
-	e2:SetCode(EVENT_CHAIN_SOLVED)
+	e2:SetCode(EVENT_CHAINING)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1)
 	e2:SetCondition(c55591586.atkcon)
@@ -58,42 +50,22 @@ end
 function c55591586.spcostfilter(c)
 	return c:IsAbleToRemoveAsCost() and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
 end
-function c55591586.spcost_selector(c,tp,g,sg,i)
-	sg:AddCard(c)
-	g:RemoveCard(c)
-	local flag=false
-	if i<2 then
-		flag=g:IsExists(c55591586.spcost_selector,1,nil,tp,g,sg,i+1)
-	else
-		flag=sg:FilterCount(Card.IsAttribute,nil,ATTRIBUTE_LIGHT)>0
-			and sg:FilterCount(Card.IsAttribute,nil,ATTRIBUTE_DARK)>0
-	end
-	sg:RemoveCard(c)
-	g:AddCard(c)
-	return flag
-end
 function c55591586.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	if Duel.GetMZoneCount(tp)<=0 then return false end
 	local g=Duel.GetMatchingGroup(c55591586.spcostfilter,tp,LOCATION_GRAVE,0,nil)
-	local sg=Group.CreateGroup()
-	return g:IsExists(c55591586.spcost_selector,1,nil,tp,g,sg,1)
+	return g:CheckSubGroup(aux.gfcheck,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
 end
 function c55591586.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c55591586.spcostfilter,tp,LOCATION_GRAVE,0,nil)
-	local sg=Group.CreateGroup()
-	for i=1,2 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local g1=g:FilterSelect(tp,c55591586.spcost_selector,1,1,nil,tp,g,sg,i)
-		sg:Merge(g1)
-		g:Sub(g1)
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroup(tp,aux.gfcheck,false,2,2,Card.IsAttribute,ATTRIBUTE_LIGHT,ATTRIBUTE_DARK)
 	Duel.Remove(sg,POS_FACEUP,REASON_COST)
 end
 function c55591586.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
-	return re:IsActiveType(TYPE_MONSTER) and loc==LOCATION_HAND and e:GetHandler():GetFlagEffect(1)>0
+	return re:IsActiveType(TYPE_MONSTER) and loc==LOCATION_HAND
 end
 function c55591586.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

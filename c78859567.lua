@@ -32,14 +32,8 @@ function c78859567.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c78859567.filter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp)
 	if g:GetCount()>0 then
-		local sg=Group.CreateGroup()
-		repeat
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local sg2=g:Select(tp,1,1,nil)
-			sg:AddCard(sg2:GetFirst())
-			g:Remove(Card.IsCode,nil,sg2:GetFirst():GetCode())
-			ct=ct-1
-		until ct==0 or g:GetCount()==0 or not Duel.SelectYesNo(tp,aux.Stringid(78859567,0))
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ct)
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP,zone)
 	end
 end

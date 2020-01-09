@@ -13,13 +13,9 @@ function c164710.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER)
-	e2:SetCost(c164710.lvcost)
+	e2:SetCost(aux.bfgcost)
 	e2:SetOperation(c164710.lvop)
 	c:RegisterEffect(e2)
-end
-function c164710.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c164710.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

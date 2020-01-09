@@ -34,9 +34,9 @@ function c40101111.initial_effect(c)
 	e5:SetValue(c40101111.splimit)
 	c:RegisterEffect(e5)
 end
-c40101111.miracle_synchro_fusion=true
+c40101111.material_type=TYPE_SYNCHRO
 function c40101111.splimit(e,se,sp,st)
-	if e:GetHandler():IsLocation(LOCATION_EXTRA) then 
+	if e:GetHandler():IsLocation(LOCATION_EXTRA) then
 		return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
 	end
 	return true

@@ -1,4 +1,4 @@
---Valkyrie Erste
+--ワルキューレ・アルテスト
 function c66809920.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)

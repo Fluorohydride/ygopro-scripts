@@ -27,7 +27,8 @@ end
 function c31755044.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c31755044.matfilter(chkc) end
 	if chk==0 then return not e:GetHandler():IsStatus(STATUS_CHAINING)
-		and Duel.IsExistingTarget(c31755044.matfilter,tp,LOCATION_MZONE,0,1,nil) end
+		and Duel.IsExistingTarget(c31755044.matfilter,tp,LOCATION_MZONE,0,1,nil)
+		and e:GetHandler():IsCanOverlay() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c31755044.matfilter,tp,LOCATION_MZONE,0,1,1,nil)
 end

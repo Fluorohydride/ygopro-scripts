@@ -54,8 +54,7 @@ function c79856792.spcon(e,c)
 	if c==nil then return true end
 	if Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)<=0 then return false end
 	local g=Duel.GetMatchingGroup(c79856792.spfilter,c:GetControler(),LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
-	local ct=g:GetClassCount(Card.GetCode)
-	return ct>6
+	return g:GetClassCount(Card.GetCode)==7
 end
 function c79856792.spop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterFlagEffect(79856792,RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD-RESET_TURN_SET+RESET_PHASE+PHASE_END,0,1)
@@ -89,7 +88,7 @@ function c79856792.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(79856792)==0
 end
 function c79856792.cfilter(c)
-	return c:IsSetCard(0x1034) and c:IsAbleToRemoveAsCost()
+	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function c79856792.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c79856792.cfilter,tp,LOCATION_GRAVE,0,1,nil) end

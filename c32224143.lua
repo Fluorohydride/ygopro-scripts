@@ -49,12 +49,6 @@ function c32224143.operation(e,tp,eg,ep,ev,re,r,rp)
 	local seq=tc:GetSequence()
 	if tc:IsControler(1-tp) then seq=seq+16 end
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and Duel.Destroy(tc,REASON_EFFECT)~=0 then
-		local g=Duel.GetMatchingGroup(c32224143.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,nil)
-		local tc=g:GetFirst()
-		while tc do
-			tc:RegisterFlagEffect(32224143,RESET_EVENT+0x5fe0000,0,1)
-			tc=g:GetNext()
-		end
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_DISABLE_FIELD)
@@ -65,17 +59,8 @@ function c32224143.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterEffect(e1,tp)
 	end
 end
-function c32224143.cfilter2(c)
-	return c32224143.cfilter(c) and c:GetFlagEffect(32224143)~=0
-end
 function c32224143.discon(e)
-	local g=Duel.GetMatchingGroup(c32224143.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,nil)
-	if g:IsExists(c32224143.cfilter2,1,nil) then
-		local tc=g:GetFirst()
-		while tc do
-			tc:RegisterFlagEffect(32224143,RESET_EVENT+0x5fe0000,0,1)
-			tc=g:GetNext()
-		end
+	if Duel.IsExistingMatchingCard(c32224143.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil) then
 		return true
 	end
 	e:Reset()

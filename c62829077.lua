@@ -48,7 +48,6 @@ function c62829077.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>2
-		and Duel.GetLocationCountFromEx(tp)>0
 		and mg:IsExists(c62829077.mfilter1,1,nil,mg,exg) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg1=mg:FilterSelect(tp,c62829077.mfilter1,1,1,nil,mg,exg)
@@ -85,7 +84,6 @@ function c62829077.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc=g:GetNext()
 	end
 	Duel.SpecialSummonComplete()
-	if Duel.GetLocationCountFromEx(tp,tp,g)<=0 then return end
 	local xyzg=Duel.GetMatchingGroup(c62829077.xyzfilter,tp,LOCATION_EXTRA,0,nil,g)
 	if xyzg:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

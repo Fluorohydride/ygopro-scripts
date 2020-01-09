@@ -57,14 +57,8 @@ function c30270176.spcon(e,c)
 end
 function c30270176.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local hg=Duel.GetMatchingGroup(c30270176.spcfilter,tp,LOCATION_HAND,0,c)
-	local rg=Group.CreateGroup()
-	for i=1,3 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-		local g=hg:Select(tp,1,1,nil)
-		local tc=g:GetFirst()
-		rg:AddCard(tc)
-		hg:Remove(Card.IsCode,nil,tc:GetCode())
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
+	local rg=hg:SelectSubGroup(tp,aux.dncheck,false,3,3)
 	Duel.ConfirmCards(1-tp,rg)
 	Duel.ShuffleHand(tp)
 end

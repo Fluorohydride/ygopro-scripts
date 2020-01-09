@@ -50,7 +50,7 @@ function c27548199.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c27548199.eqfilter),tp,LOCATION_GRAVE,0,1,1,nil,tp,c)
 	local tc=g:GetFirst()
 	if tc then
-		if not Duel.Equip(tp,tc,c,true) then return end
+		if not Duel.Equip(tp,tc,c) then return end
 		local lk=tc:GetLink()
 		if lk>0 then
 			c:AddCounter(0x4b,lk)
@@ -69,7 +69,7 @@ function c27548199.eqop(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetProperty(EFFECT_FLAG_OWNER_RELATE+EFFECT_FLAG_IGNORE_IMMUNE)
 			e2:SetCode(EFFECT_UPDATE_ATTACK)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e2:SetValue(atk/2)
+			e2:SetValue(math.ceil(atk/2))
 			tc:RegisterEffect(e2)
 		end
 	end

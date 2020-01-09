@@ -22,7 +22,7 @@ function c29455728.mgfilter(c,e,tp,fusc,mg)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE)
 		and bit.band(c:GetReason(),0x40008)==0x40008 and c:GetReasonCard()==fusc
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and fusc:CheckFusionMaterial(mg,c)
+		and fusc:CheckFusionMaterial(mg,c,PLAYER_NONE,true)
 end
 function c29455728.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=e:GetHandler():GetMaterial()

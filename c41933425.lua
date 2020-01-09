@@ -1,5 +1,6 @@
---Contact Gate
+--コンタクト・ゲート
 function c41933425.initial_effect(c)
+	aux.AddCodeList(c,89943723)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -24,7 +25,6 @@ function c41933425.initial_effect(c)
 	e2:SetOperation(c41933425.spop)
 	c:RegisterEffect(e2)
 end
-c41933425.card_code_list={89943723}
 function c41933425.cfilter1(c,e,tp)
 	return c:IsSetCard(0x1f) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 		and Duel.IsExistingMatchingCard(c41933425.cfilter2,tp,LOCATION_GRAVE,0,1,c,e,tp,c)
@@ -66,11 +66,7 @@ function c41933425.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c41933425.spfilter1),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp)
 	if g:GetClassCount(Card.GetCode)>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg1=g:Select(tp,1,1,nil)
-		g:Remove(Card.IsCode,nil,sg1:GetFirst():GetCode())
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg2=g:Select(tp,1,1,nil)
-		sg1:Merge(sg2)
+		local sg1=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
 		Duel.SpecialSummon(sg1,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

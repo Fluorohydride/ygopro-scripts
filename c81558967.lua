@@ -1,4 +1,4 @@
---Valkyrie Vierte
+--ワルキューレ・フィアット
 function c81558967.initial_effect(c)
 	--deck search
 	local e1=Effect.CreateEffect(c)
@@ -44,6 +44,7 @@ function c81558967.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmDecktop(tp,ct)
 	tg=g:Filter(c81558967.thfilter,nil)
 	if tg:GetCount()>0 then
+		Duel.DisableShuffleCheck()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local tc=tg:Select(tp,1,1,nil):GetFirst()
 		if tc:IsAbleToHand() then
@@ -55,8 +56,9 @@ function c81558967.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 		g:RemoveCard(tc)
 		Duel.SendtoGrave(g,REASON_EFFECT+REASON_REVEAL)
+	else
+		Duel.ShuffleDeck(tp)
 	end
-	Duel.ShuffleDeck(tp)
 end
 function c81558967.spfilter(c,e,tp)
 	return c:IsSetCard(0x122) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

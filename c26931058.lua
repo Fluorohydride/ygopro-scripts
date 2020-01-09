@@ -53,7 +53,7 @@ function c26931058.efop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,c26931058.filter2,tp,LOCATION_MZONE,0,1,1,tc,tc)
 		local ec=g:GetFirst()
 		if ec and Duel.Equip(tp,tc,ec,false) then
-			aux.SetUnionState(tc1)
+			aux.SetUnionState(tc)
 		end
 	else
 		local tc=Duel.GetFirstTarget()

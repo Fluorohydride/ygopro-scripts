@@ -53,7 +53,6 @@ function c26692769.operation(e,tp,eg,ep,ev,re,r,rp)
 		if tc then
 			Duel.BreakEffect()
 			Duel.SSet(tp,tc)
-			Duel.ConfirmCards(1-tp,tc)
 		end
 	end
 end

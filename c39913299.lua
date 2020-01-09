@@ -2,7 +2,7 @@
 function c39913299.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_DECKDES)
+	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_DECKDES+CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,39913299+EFFECT_COUNT_CODE_OATH)
@@ -11,7 +11,7 @@ function c39913299.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c39913299.filter(c,e,tp)
-	return c:IsAttribute(ATTRIBUTE_DEVINE) and (c:IsAbleToHand() or c:IsCanBeSpecialSummoned(e,0,tp,false,false))
+	return c:IsAttribute(ATTRIBUTE_DIVINE) and (c:IsAbleToHand() or (Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)))
 end
 function c39913299.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,1)
@@ -36,7 +36,7 @@ function c39913299.operation(e,tp,eg,ep,ev,re,r,rp)
 			local sg=g:Select(tp,1,1,nil)
 			local sc=sg:GetFirst()
 			local b1=sc:IsAbleToHand()
-			local b2=sc:IsCanBeSpecialSummoned(e,0,tp,false,false)
+			local b2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and sc:IsCanBeSpecialSummoned(e,0,tp,false,false)
 			local op=0
 			if b1 and b2 then op=Duel.SelectOption(tp,1190,1152)
 			elseif b1 then op=0

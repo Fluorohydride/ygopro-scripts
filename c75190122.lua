@@ -1,5 +1,6 @@
 --黒・爆・裂・破・魔・導
 function c75190122.initial_effect(c)
+	aux.AddCodeList(c,46986414,38033121)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DESTROY)
@@ -10,7 +11,6 @@ function c75190122.initial_effect(c)
 	e1:SetOperation(c75190122.activate)
 	c:RegisterEffect(e1)
 end
-c75190122.card_code_list={46986414,38033121}
 function c75190122.cfilter(c,code)
 	return c:IsFaceup() and c:IsOriginalCodeRule(code)
 end

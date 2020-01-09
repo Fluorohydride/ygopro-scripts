@@ -50,7 +50,7 @@ end
 function c35842855.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)==1 then
-		local atk=tc:GetTextAttack()/2
+		local atk=math.floor(tc:GetTextAttack()/2)
 		if atk>0 then
 			Duel.Damage(tp,atk,REASON_EFFECT,true)
 			Duel.Damage(1-tp,atk,REASON_EFFECT,true)

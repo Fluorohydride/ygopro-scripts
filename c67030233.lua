@@ -45,6 +45,7 @@ function c67030233.initial_effect(c)
 	e5:SetValue(1)
 	c:RegisterEffect(e5)
 end
+c67030233.material_type=TYPE_SYNCHRO
 function c67030233.mfilter1(c)
 	return c:IsCode(21159309)
 end

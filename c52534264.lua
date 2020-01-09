@@ -1,4 +1,4 @@
---Second Expedition into Danger!
+--第弐次未界域探険隊
 function c52534264.initial_effect(c)
 	--activate inst
 	local e1=Effect.CreateEffect(c)

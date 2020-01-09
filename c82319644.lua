@@ -39,7 +39,7 @@ function c82319644.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c82319644.desfilter,tp,0,LOCATION_MZONE,nil,atk)
 	if g:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local dg=g:SelectSubGroup(tp,c82319644.fselect,false,1,99,atk)
+	local dg=g:SelectSubGroup(tp,c82319644.fselect,false,1,g:GetCount(),atk)
 	Duel.HintSelection(dg)
 	Duel.Destroy(dg,REASON_EFFECT)
 end

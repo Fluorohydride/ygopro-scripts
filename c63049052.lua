@@ -96,7 +96,7 @@ function c63049052.eqlimit(e,c)
 	return c:GetControler()==e:GetOwnerPlayer() and c:IsType(TYPE_XYZ)
 end
 function c63049052.mfilter(c)
-	return c:IsSetCard(0x88) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0x88) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c63049052.mattg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c63049052.mfilter,tp,LOCATION_HAND,0,1,nil) end

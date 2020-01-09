@@ -51,7 +51,6 @@ function c32588805.setop(e,tp,eg,ep,ev,re,r,rp)
 	else g=Duel.SelectMatchingCard(tp,c32588805.setfilter2,tp,LOCATION_DECK,0,1,1,nil,TYPE_TRAP+TYPE_CONTINUOUS) end
 	if g:GetCount()>0 then
 		Duel.SSet(tp,g:GetFirst())
-		Duel.ConfirmCards(1-tp,g)
 	end
 end
 function c32588805.atkfilter(c)

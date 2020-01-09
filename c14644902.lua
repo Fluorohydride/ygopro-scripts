@@ -15,10 +15,9 @@ function c14644902.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c14644902.rfilter(c,e,tp)
 	return c:IsReleasableByEffect() and not c:IsImmuneToEffect(e)
-		and Duel.GetLocationCountFromEx(tp,tp,c)>0
 end
 function c14644902.filter(c,e,tp)
-	return c:IsType(TYPE_FUSION) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsType(TYPE_FUSION) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c14644902.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -32,6 +31,7 @@ function c14644902.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 			e1:SetRange(LOCATION_MZONE)
 			e1:SetCode(EVENT_PHASE+PHASE_END)
+			e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 			e1:SetOperation(c14644902.desop)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			e1:SetCountLimit(1)

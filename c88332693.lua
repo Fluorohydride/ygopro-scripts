@@ -1,5 +1,6 @@
 --バスター・モード・ゼロ
 function c88332693.initial_effect(c)
+	aux.AddCodeList(c,80280737)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(88332693,0))
@@ -23,7 +24,6 @@ function c88332693.initial_effect(c)
 	e2:SetOperation(c88332693.setop)
 	c:RegisterEffect(e2)
 end
-c88332693.card_code_list={80280737}
 function c88332693.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	return true
@@ -64,9 +64,7 @@ end
 function c88332693.setop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local tc=Duel.SelectMatchingCard(tp,c88332693.setfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil):GetFirst()
-	if tc then
-		Duel.SSet(tp,tc)
-		Duel.ConfirmCards(1-tp,tc)
+	if tc and Duel.SSet(tp,tc)~=0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)

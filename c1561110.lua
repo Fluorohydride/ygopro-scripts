@@ -80,13 +80,8 @@ function c1561110.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		return ft>2 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 			and g:GetClassCount(Card.GetCode)>2
 	end
-	local sg=Group.CreateGroup()
-	for i=1,3 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g1=g:Select(tp,1,1,nil)
-		g:Remove(Card.IsCode,nil,g1:GetFirst():GetCode())
-		sg:Merge(g1)
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local sg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,3,0,0)
 end

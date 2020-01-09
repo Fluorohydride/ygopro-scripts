@@ -34,12 +34,25 @@ function c20654247.initial_effect(c)
 	e4:SetTarget(c20654247.postg)
 	e4:SetOperation(c20654247.posop)
 	c:RegisterEffect(e4)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e0:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e0:SetCondition(c20654247.matcon)
+	e0:SetOperation(c20654247.matop)
+	c:RegisterEffect(e0)
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_SINGLE)
 	e5:SetCode(EFFECT_MATERIAL_CHECK)
 	e5:SetValue(c20654247.valcheck)
-	e5:SetLabelObject(e4)
+	e5:SetLabelObject(e0)
 	c:RegisterEffect(e5)
+end
+function c20654247.matcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_RITUAL) and e:GetLabel()==1
+end
+function c20654247.matop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():RegisterFlagEffect(20654247,RESET_EVENT+RESETS_STANDARD,0,1)
 end
 function c20654247.valcheck(e,c)
 	local mg=c:GetMaterial()
@@ -50,8 +63,7 @@ function c20654247.valcheck(e,c)
 	end
 end
 function c20654247.poscon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return c:GetSummonType()==SUMMON_TYPE_RITUAL and e:GetLabel()==1
+	return e:GetHandler():GetFlagEffect(20654247)>0
 end
 function c20654247.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsCanChangePosition,tp,0,LOCATION_MZONE,1,nil) end

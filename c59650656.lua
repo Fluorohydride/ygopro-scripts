@@ -62,8 +62,8 @@ function c59650656.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.IsExistingTarget(c59650656.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	local dt=Duel.GetDrawCount(tp)
 	if dt~=0 then
-		_replace_count=0
-		_replace_max=dt
+		aux.DrawReplaceCount=0
+		aux.DrawReplaceMax=dt
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
@@ -79,8 +79,8 @@ function c59650656.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c59650656.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	_replace_count=_replace_count+1
-	if _replace_count<=_replace_max and tc:IsRelateToEffect(e) then
+	aux.DrawReplaceCount=aux.DrawReplaceCount+1
+	if aux.DrawReplaceCount<=aux.DrawReplaceMax and tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

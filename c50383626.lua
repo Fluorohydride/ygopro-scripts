@@ -45,7 +45,7 @@ function c50383626.rellimit(e,c,tp,sumtp)
 	return c==e:GetHandler()
 end
 function c50383626.spcfilter(c,tp)
-	return c:GetPreviousControler()==tp and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_DARK)~=0
+	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_DARK)~=0
 end
 function c50383626.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c50383626.spcfilter,1,nil,tp)

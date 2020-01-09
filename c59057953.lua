@@ -15,7 +15,7 @@ function c59057953.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_PZONE,0,2,nil,0x10ec)
 end
 function c59057953.filter(c)
-	return c:IsType(TYPE_PENDULUM) and c:IsSetCard(0x10ec) and not c:IsForbidden()
+	return c:IsType(TYPE_PENDULUM) and c:IsSetCard(0x10ec)
 end
 function c59057953.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -28,12 +28,6 @@ function c59057953.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c59057953.filter,tp,LOCATION_DECK,0,nil)
 	if g:GetClassCount(Card.GetCode)<2 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(59057953,0))
-	local tg1=g:Select(tp,1,1,nil)
-	g:Remove(Card.IsCode,nil,tg1:GetFirst():GetCode())
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(59057953,0))
-	local tg2=g:Select(tp,1,1,nil)
-	tg1:Merge(tg2)
-	if tg1:GetCount()==2 then
-		Duel.SendtoExtraP(tg1,tp,REASON_EFFECT)
-	end
+	local tg1=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
+	Duel.SendtoExtraP(tg1,tp,REASON_EFFECT)
 end

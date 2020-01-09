@@ -32,6 +32,7 @@ function c89474727.initial_effect(c)
 	e3:SetOperation(c89474727.spop)
 	c:RegisterEffect(e3)
 end
+c89474727.material_type=TYPE_SYNCHRO
 function c89474727.cfilter(c)
 	return c:IsType(TYPE_SYNCHRO) and c:IsAbleToRemoveAsCost()
 end

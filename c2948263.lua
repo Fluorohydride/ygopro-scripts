@@ -18,10 +18,9 @@ function c2948263.initial_effect(c)
 	c:RegisterEffect(e2)
 	--reduce
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-	e3:SetCondition(c2948263.rdcon)
-	e3:SetOperation(c2948263.rdop)
+	e3:SetType(EFFECT_TYPE_SINGLE)
+	e3:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
+	e3:SetValue(aux.ChangeBattleDamage(1,HALF_DAMAGE))
 	c:RegisterEffect(e3)
 	--disable
 	local e4=Effect.CreateEffect(c)
@@ -59,12 +58,6 @@ function c2948263.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	e1:SetValue(atk*2)
 	e1:SetReset(RESET_EVENT+0xff0000)
 	c:RegisterEffect(e1)
-end
-function c2948263.rdcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp
-end
-function c2948263.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
 end
 function c2948263.discon(e,tp,eg,ep,ev,re,r,rp)
 	local tgp,loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_CONTROLER,CHAININFO_TRIGGERING_LOCATION)

@@ -23,11 +23,12 @@ function c96733134.initial_effect(c)
 	c:RegisterEffect(e2)
 	--double damage
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_PRE_BATTLE_DAMAGE)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetCondition(c96733134.damcon)
-	e3:SetOperation(c96733134.damop)
+	e3:SetTargetRange(LOCATION_MZONE,0)
+	e3:SetTarget(c96733134.damtg)
+	e3:SetValue(aux.ChangeBattleDamage(1,DOUBLE_DAMAGE))
 	c:RegisterEffect(e3)
 	--special summon
 	local e4=Effect.CreateEffect(c)
@@ -69,17 +70,7 @@ end
 function c96733134.rfilter(c,tp)
 	return c:IsSetCard(0x20f8) and (c:IsControler(tp) or c:IsFaceup())
 end
-function c96733134.fselect(c,tp,rg,sg)
-	sg:AddCard(c)
-	if sg:GetCount()<2 then
-		res=rg:IsExists(c96733134.fselect,1,sg,tp,rg,sg)
-	else
-		res=c96733134.fgoal(tp,sg)
-	end
-	sg:RemoveCard(c)
-	return res
-end
-function c96733134.fgoal(tp,sg)
+function c96733134.fgoal(sg,tp)
 	if sg:GetCount()>0 and Duel.GetMZoneCount(tp,sg)>0 then
 		Duel.SetSelectedCard(sg)
 		return Duel.CheckReleaseGroup(tp,nil,0,nil)
@@ -87,13 +78,9 @@ function c96733134.fgoal(tp,sg)
 end
 function c96733134.hspcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c96733134.rfilter,nil,tp)
-	local g=Group.CreateGroup()
-	if chk==0 then return rg:IsExists(c96733134.fselect,1,nil,tp,rg,g) end
-	while g:GetCount()<2 do
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local sg=rg:FilterSelect(tp,c96733134.fselect,1,1,g,tp,rg,g)
-		g:Merge(sg)
-	end
+	if chk==0 then return rg:CheckSubGroup(c96733134.fgoal,2,2,tp) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local g=rg:SelectSubGroup(tp,c96733134.fgoal,false,2,2,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c96733134.hsptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -107,12 +94,8 @@ function c96733134.hspop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-function c96733134.damcon(e,tp,eg,ep,ev,re,r,rp)
-	local tc=eg:GetFirst()
-	return ep~=tp and tc:IsType(TYPE_PENDULUM) and tc:GetBattleTarget()~=nil
-end
-function c96733134.damop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev*2)
+function c96733134.damtg(e,c)
+	return c:IsType(TYPE_PENDULUM) and c:GetBattleTarget()~=nil
 end
 function c96733134.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE
@@ -126,14 +109,14 @@ function c96733134.spfilter(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x10f8,0x20f8)
 		and c:IsType(TYPE_PENDULUM) and not c:IsCode(96733134)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+		and Duel.GetLocationCountFromEx(tp,tp,rc,c)>0
 end
 function c96733134.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCountFromEx(tp,tp,e:GetHandler())>0
-		and Duel.IsExistingMatchingCard(c96733134.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c96733134.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,e:GetHandler()) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c96733134.spop(e,tp,eg,ep,ev,re,r,rp)
-	local ft=Duel.GetLocationCountFromEx(tp)
+	local ft=Duel.GetLocationCountFromEx(tp,tp,nil,TYPE_PENDULUM)
 	if ft==0 then return end
 	ft=math.min(ft,2)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then
@@ -142,7 +125,7 @@ function c96733134.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ect=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
 	if ect~=nil then ft=math.min(ft,ect) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c96733134.spfilter,tp,LOCATION_EXTRA,0,1,ft,nil,e,tp)
+	local g=Duel.SelectMatchingCard(tp,c96733134.spfilter,tp,LOCATION_EXTRA,0,1,ft,nil,e,tp,nil)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end

@@ -53,7 +53,7 @@ function c80088625.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	e:SetLabelObject(bc)
-	return c:GetMutualLinkedGroupCount()>0 and bc and bc:IsStatus(STATUS_OPPO_BATTLE) and bc:IsRelateToBattle()
+	return c:GetMutualLinkedGroupCount()==2 and bc and bc:IsStatus(STATUS_OPPO_BATTLE) and bc:IsRelateToBattle()
 end
 function c80088625.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=e:GetLabelObject()

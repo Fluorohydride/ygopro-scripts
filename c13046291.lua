@@ -52,16 +52,19 @@ end
 function c13046291.matfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and c:IsType(TYPE_XYZ) and c:GetOverlayCount()==0
 end
+function c13046291.matfilter2(c)
+	return c:IsRace(RACE_REPTILE+RACE_DINOSAUR) and c:IsCanOverlay()
+end
 function c13046291.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c13046291.matfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c13046291.matfilter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingMatchingCard(Card.IsRace,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,RACE_REPTILE+RACE_DINOSAUR) end
+		and Duel.IsExistingMatchingCard(c13046291.matfilter2,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c13046291.matfilter,tp,LOCATION_MZONE,0,1,1,nil)
 end
 function c13046291.matop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsRace),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,RACE_REPTILE+RACE_DINOSAUR)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c13046291.matfilter2),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil)
 	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) and g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,2)

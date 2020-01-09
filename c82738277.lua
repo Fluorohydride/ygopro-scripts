@@ -69,7 +69,7 @@ function c82738277.retop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 			local sg=g:Select(tp,1,1,nil)
-			Duel.SSet(tp,sg:GetFirst())
+			Duel.SSet(tp,sg,tp,false)
 		end
 	end
 end

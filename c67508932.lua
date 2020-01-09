@@ -58,31 +58,27 @@ function c67508932.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Remove(g,POS_FACEUP,REASON_EFFECT)>0 then
 		local og=Duel.GetOperatedGroup()
 		local rg=og:Filter(c67508932.rfilter,nil)
-		if #rg==0 then return end
-		local lab=0
-		if c:GetFlagEffect(67508933)==0 then
-			lab=c:GetFieldID()
-			c:RegisterFlagEffect(67508933,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,lab)
-		else
-			lab=c:GetFlagEffectLabel(67508933)
-		end
-		for oc in aux.Next(rg) do
-			oc:RegisterFlagEffect(67508932,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,lab)
+		if #rg>0 then
+			local lab=0
+			if c:GetFlagEffect(67508933)==0 then
+				lab=c:GetFieldID()
+				c:RegisterFlagEffect(67508933,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,lab)
+			else
+				lab=c:GetFlagEffectLabel(67508933)
+			end
+			for oc in aux.Next(rg) do
+				oc:RegisterFlagEffect(67508932,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,lab)
+			end
 		end
 	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetCode(EFFECT_CHANGE_DAMAGE)
+	e1:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetTargetRange(0,1)
-	e1:SetValue(c67508932.val)
+	e1:SetValue(HALF_DAMAGE)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-end
-function c67508932.val(e,re,dam,r,rp,rc)
-	if bit.band(r,REASON_BATTLE)~=0 then
-		return math.ceil(dam/2)
-	else return dam end
 end
 function c67508932.spfilter(c,e,tp)
 	return c:GetFlagEffectLabel(67508932)==e:GetHandler():GetFlagEffectLabel(67508933)

@@ -1,5 +1,6 @@
 --覇王城
 function c72043279.initial_effect(c)
+	aux.AddCodeList(c,94820406)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
@@ -26,7 +27,6 @@ function c72043279.initial_effect(c)
 	e3:SetOperation(c72043279.atkop)
 	c:RegisterEffect(e3)
 end
-c72043279.card_code_list={94820406}
 function c72043279.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
 	local bc=Duel.GetAttackTarget()

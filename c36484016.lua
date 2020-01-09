@@ -27,14 +27,18 @@ function c36484016.filter1(c,e)
 	return c:IsOnField() and c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
 end
 function c36484016.filter2(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and c.miracle_synchro_fusion and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and m:IsExists(c36484016.filter3,1,nil,c,m,chkf)
-end
-function c36484016.filter3(c,fusc,m,chkf)
-	return c:IsType(TYPE_SYNCHRO) and fusc:CheckFusionMaterial(m,c,chkf)
+	if not (c:IsType(TYPE_FUSION) and aux.IsMaterialListType(c,TYPE_SYNCHRO) and (not f or f(c))
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)) then return false end
+	aux.FCheckAdditional=c.synchro_fusion_check or c36484016.fcheck
+	local res=c:CheckFusionMaterial(m,nil,chkf)
+	aux.FCheckAdditional=nil
+	return res
 end
 function c36484016.filter4(c)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
+end
+function c36484016.fcheck(tp,sg,fc)
+	return sg:IsExists(Card.IsFusionType,1,nil,TYPE_SYNCHRO)
 end
 function c36484016.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -78,25 +82,21 @@ function c36484016.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
+		aux.FCheckAdditional=tc.synchro_fusion_check or c36484016.fcheck
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-			local gc=mg1:FilterSelect(tp,c36484016.filter3,1,1,nil,tc,mg1,chkf):GetFirst()
-			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,gc,chkf)
-			mat1:AddCard(gc)
+			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			tc:SetMaterial(mat1)
 			Duel.Remove(mat1,POS_FACEUP,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 		else
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-			local gc=mg3:FilterSelect(tp,c36484016.filter3,1,1,nil,tc,mg3,chkf):GetFirst()
-			local mat2=Duel.SelectFusionMaterial(tp,tc,mg3,gc,chkf)
-			mat2:AddCard(gc)
+			local mat2=Duel.SelectFusionMaterial(tp,tc,mg3,nil,chkf)
 			local fop=ce:GetOperation()
 			fop(ce,e,tp,tc,mat2)
 		end
 		tc:CompleteProcedure()
 	end
+	aux.FCheckAdditional=nil
 end
 function c36484016.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

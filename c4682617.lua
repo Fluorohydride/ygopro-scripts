@@ -56,13 +56,8 @@ function c4682617.activate(e,tp,eg,ep,ev,re,r,rp)
 		if sct>0 and ft>0 and Duel.SelectYesNo(tp,aux.Stringid(4682617,0)) then
 			Duel.BreakEffect()
 			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-			local g=Group.CreateGroup()
-			repeat
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-				local tc=sg:Select(tp,1,1,nil):GetFirst()
-				g:AddCard(tc)
-				sg:Remove(Card.IsCode,nil,tc:GetCode())
-			until sct==g:GetCount() or ft==g:GetCount() or not Duel.SelectYesNo(tp,210)
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+			local g=sg:SelectSubGroup(tp,aux.dncheck,false,1,math.min(ft,sct))
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

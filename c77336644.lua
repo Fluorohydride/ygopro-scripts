@@ -1,5 +1,6 @@
 --レッド・デーモンズ・ドラゴン／バスター
 function c77336644.initial_effect(c)
+	aux.AddCodeList(c,80280737)
 	c:EnableReviveLimit()
 	--Cannot special summon
 	local e1=Effect.CreateEffect(c)
@@ -30,7 +31,6 @@ function c77336644.initial_effect(c)
 	e3:SetOperation(c77336644.spop)
 	c:RegisterEffect(e3)
 end
-c77336644.card_code_list={80280737}
 c77336644.assault_name=70902743
 function c77336644.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker()==e:GetHandler()

@@ -53,7 +53,7 @@ function c83519853.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c83519853.filter,tp,LOCATION_DECK,0,1,1,nil,c)
 	local tc=g:GetFirst()
 	if tc then
-		Duel.Equip(tp,tc,c,true)
+		Duel.Equip(tp,tc,c)
 	end
 end
 function c83519853.regcon(e,tp,eg,ep,ev,re,r,rp)

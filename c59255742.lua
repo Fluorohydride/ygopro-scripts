@@ -3,7 +3,7 @@ function c59255742.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_BRAINWASHING_CHECK)
 	--fusion material
 	c:EnableReviveLimit()
-	aux.AddFusionProcFunRep(c,c59255742.ffilter,2,false)
+	aux.AddFusionProcFunRep(c,c59255742.ffilter,2,true)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
@@ -42,7 +42,7 @@ function c59255742.initial_effect(c)
 	e4:SetOperation(c59255742.ctop)
 	c:RegisterEffect(e4)
 end
-c59255742.miracle_synchro_fusion=true
+c59255742.material_type=TYPE_SYNCHRO
 function c59255742.ffilter(c)
 	return c:IsFusionAttribute(ATTRIBUTE_EARTH) and c:IsRace(RACE_WARRIOR) and c:IsFusionType(TYPE_SYNCHRO)
 end

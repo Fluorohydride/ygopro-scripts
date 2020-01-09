@@ -63,7 +63,7 @@ function c28534130.activate(e,tp,eg,ep,ev,re,r,rp)
 		sc:RegisterEffect(e3)
 		local e4=e3:Clone()
 		e4:SetCode(EFFECT_CANNOT_TRIGGER)
-		c:RegisterEffect(e4)
+		sc:RegisterEffect(e4)
 	end
 end
 function c28534130.tdfilter(c)

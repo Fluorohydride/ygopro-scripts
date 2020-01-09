@@ -1,5 +1,6 @@
 --ネオス・フュージョン
 function c14088859.initial_effect(c)
+	aux.AddCodeList(c,89943723)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(14088859,0))
@@ -28,31 +29,30 @@ function c14088859.initial_effect(c)
 	e3:SetValue(c14088859.repval2)
 	c:RegisterEffect(e3)
 end
-c14088859.card_code_list={89943723}
 function c14088859.filter1(c,e)
-	return c:IsAbleToGrave() and c:IsCanBeFusionMaterial() and not c:IsImmuneToEffect(e)
+	return c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
 end
 function c14088859.filter2(c,e,tp,m,chkf)
 	return c.neos_fusion and aux.IsMaterialListCode(c,89943723)
-		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and c:CheckFusionMaterial(m,nil,chkf)
+		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and c:CheckFusionMaterial(m,nil,chkf,true)
 end
 function c14088859.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local chkf=tp
+		local chkf=tp|0x200
 		local mg=Duel.GetMatchingGroup(c14088859.filter1,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_DECK,0,nil,e)
 		return Duel.IsExistingMatchingCard(c14088859.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,chkf)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c14088859.activate(e,tp,eg,ep,ev,re,r,rp)
-	local chkf=tp
+	local chkf=tp|0x200
 	local mg=Duel.GetMatchingGroup(c14088859.filter1,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_DECK,0,nil,e)
 	local sg=Duel.GetMatchingGroup(c14088859.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg,chkf)
 	if sg:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
-		local mat=Duel.SelectFusionMaterial(tp,tc,mg,nil,chkf)
+		local mat=Duel.SelectFusionMaterial(tp,tc,mg,nil,chkf,true)
 		Duel.SendtoGrave(mat,REASON_EFFECT)
 		Duel.BreakEffect()
 		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)

@@ -59,7 +59,7 @@ end
 function c55787576.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c55787576.spfilter),1-tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
+		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c55787576.spfilter),1-tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,1-tp)
 		if Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0
 			and g:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(55787576,1)) then
 			Duel.BreakEffect()

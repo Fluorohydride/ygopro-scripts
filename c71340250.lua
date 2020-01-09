@@ -55,7 +55,8 @@ function c71340250.cfilter(c)
 	return c:IsRace(RACE_MACHINE) and c:IsAbleToRemoveAsCost()
 end
 function c71340250.spfilter(c,e,tp,lv)
-	return c:IsSetCard(0x16) and c:IsType(TYPE_FUSION) and c:IsLevelBelow(lv) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsSetCard(0x16) and c:IsType(TYPE_FUSION) and c:IsLevelBelow(lv)
+		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c71340250.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -64,7 +65,6 @@ function c71340250.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetLabel(0)
 		local cg=Duel.GetMatchingGroup(c71340250.cfilter,tp,LOCATION_GRAVE,0,nil)
 		return c:IsAbleToRemoveAsCost()
-			and Duel.GetLocationCountFromEx(tp)>0
 			and Duel.IsExistingMatchingCard(c71340250.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,cg:GetCount())
 	end
 	Duel.PayLPCost(tp,math.floor(Duel.GetLP(tp)/2))
@@ -97,10 +97,10 @@ function c71340250.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c71340250.sfilter(c,e,tp,lv)
-	return c:IsSetCard(0x16) and c:IsType(TYPE_FUSION) and c:IsLevel(lv) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsSetCard(0x16) and c:IsType(TYPE_FUSION) and c:IsLevel(lv)
+		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c71340250.spop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLocationCountFromEx(tp)<=0 then return end
 	local lv=e:GetLabel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c71340250.sfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,lv)

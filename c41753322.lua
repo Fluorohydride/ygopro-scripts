@@ -37,11 +37,10 @@ function c41753322.initial_effect(c)
 	c:RegisterEffect(e4)
 	--damage amp
 	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e5:SetRange(LOCATION_MZONE)
-	e5:SetCode(EVENT_PRE_BATTLE_DAMAGE)
+	e5:SetType(EFFECT_TYPE_SINGLE)
+	e5:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e5:SetCondition(c41753322.dcon)
-	e5:SetOperation(c41753322.dop)
+	e5:SetOperation(aux.ChangeBattleDamage(1,DOUBLE_DAMAGE))
 	c:RegisterEffect(e5)
 end
 function c41753322.otfilter(c,tp)
@@ -80,10 +79,7 @@ function c41753322.posop2(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsCanTurnSet,tp,LOCATION_MZONE,LOCATION_MZONE,aux.ExceptThisCard(e))
 	Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
 end
-function c41753322.dcon(e,tp,eg,ep,ev,re,r,rp)
+function c41753322.dcon(e)
 	local c=e:GetHandler()
-	return ep~=tp and Duel.GetAttackTarget()==c
-end
-function c41753322.dop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev*2)
+	return Duel.GetAttackTarget()==c
 end

@@ -18,7 +18,8 @@ end
 function c74852810.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(c74852810.filter1,tp,0,LOCATION_MZONE,1,nil)
-		and Duel.IsExistingTarget(c74852810.filter2,tp,LOCATION_MZONE,0,1,nil) end
+		and Duel.IsExistingTarget(c74852810.filter2,tp,LOCATION_MZONE,0,1,nil)
+		and e:GetHandler():IsCanOverlay() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g1=Duel.SelectTarget(tp,c74852810.filter1,tp,0,LOCATION_MZONE,1,1,nil)
 	e:SetLabelObject(g1:GetFirst())

@@ -15,12 +15,12 @@ function c43841694.filter(c,e,tp)
 	return c:IsType(TYPE_XYZ) and c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c43841694.filter2(c)
-	return c:IsFaceup() and c:IsSetCard(0x106e) and c:IsType(TYPE_SPELL)
+	return c:IsFaceup() and c:IsSetCard(0x106e) and c:IsType(TYPE_SPELL) and c:IsCanOverlay()
 end
 function c43841694.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingTarget(c43841694.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp) 
+		and Duel.IsExistingTarget(c43841694.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 		and Duel.IsExistingTarget(c43841694.filter2,tp,LOCATION_REMOVED,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g1=Duel.SelectTarget(tp,c43841694.filter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
@@ -36,7 +36,7 @@ function c43841694.activate(e,tp,eg,ep,ev,re,r,rp)
 	sg:RemoveCard(tc)
 	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 then
 		Duel.BreakEffect()
-		if sg:GetCount()>0 then 
+		if sg:GetCount()>0 then
 			Duel.Overlay(tc,sg)
 		end
 	end

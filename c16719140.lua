@@ -30,59 +30,62 @@ function c16719140.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100)
 	if chk==0 then return true end
 end
-function c16719140.costfilter(c,e,tp,mg,rlv)
+function c16719140.costfilter(c,e,tp,mg,rlv,mc)
 	if not (c:IsLevelAbove(0) and c:IsSetCard(0xed) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
 		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN))) then return false end
-	local lv=c:GetLevel()-rlv
-	return mg:GetCount()>0 and (lv<=0 or mg:CheckWithSumGreater(Card.GetOriginalLevel,lv))
+	return mg:CheckSubGroup(c16719140.fselect,1,c:GetLevel(),tp,c:GetLevel()-rlv,mc)
+end
+function c16719140.fselect(g,tp,lv,mc)
+	local mg=g:Clone()
+	mg:AddCard(mc)
+	if Duel.GetMZoneCount(tp,mg)>0 then
+		if lv<=0 then
+			return g:GetCount()==1
+		else
+			Duel.SetSelectedCard(g)
+			return g:CheckWithSumGreater(Card.GetOriginalLevel,lv)
+		end
+	else return false end
 end
 function c16719140.relfilter(c)
 	return c:IsLevelAbove(1) and c:IsReleasableByEffect()
 end
 function c16719140.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	local mg=Duel.GetReleaseGroup(tp):Filter(c16719140.relfilter,nil)
+	local mg=Duel.GetReleaseGroup(tp):Filter(c16719140.relfilter,c)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		if not mg:IsContains(c) then return false end
-		mg:RemoveCard(c)
-		return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-			and Duel.IsExistingMatchingCard(c16719140.costfilter,tp,LOCATION_DECK,0,1,nil,e,tp,mg,c:GetOriginalLevel())
+		if not c:IsLevelAbove(1) or not c:IsReleasableByEffect() or mg:GetCount()==0 then return false end
+		return Duel.IsExistingMatchingCard(c16719140.costfilter,tp,LOCATION_DECK,0,1,nil,e,tp,mg,c:GetOriginalLevel(),c)
 	end
 	e:SetLabel(0)
-	mg:RemoveCard(c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c16719140.costfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,mg,c:GetOriginalLevel())
+	local g=Duel.SelectMatchingCard(tp,c16719140.costfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,mg,c:GetOriginalLevel(),c)
 	Duel.SendtoGrave(g,REASON_COST)
 	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
 end
 function c16719140.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<-1 then return end
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
-	local mg=Duel.GetReleaseGroup(tp):Filter(c16719140.relfilter,nil)
-	if not mg:IsContains(c) then return end
-	mg:RemoveCard(c)
+	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
+	local mg=Duel.GetReleaseGroup(tp):Filter(c16719140.relfilter,c)
 	if mg:GetCount()==0 then return end
 	local spos=0
 	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then spos=spos+POS_FACEUP_DEFENSE end
 	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN) then spos=spos+POS_FACEDOWN_DEFENSE end
 	if spos~=0 then
-		local lv=tc:GetLevel()-c:GetOriginalLevel()
-		local g=Group.CreateGroup()
-		if lv<=0 then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-			g=mg:Select(tp,1,1,nil)
-		else
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-			g=mg:SelectWithSumGreater(tp,Card.GetOriginalLevel,lv)
-		end
-		g:AddCard(c)
-		if g:GetCount()>=2 and Duel.Release(g,REASON_EFFECT)~=0 then
-			Duel.SpecialSummon(tc,0,tp,tp,false,false,spos)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		local g=mg:SelectSubGroup(tp,c16719140.fselect,false,1,tc:GetLevel(),tp,tc:GetLevel()-c:GetOriginalLevel(),c)
+		if g and g:GetCount()>0 then
+			g:AddCard(c)
+			if Duel.Release(g,REASON_EFFECT)~=0 then
+				Duel.SpecialSummon(tc,0,tp,tp,false,false,spos)
+				if tc:IsFacedown() then
+					Duel.ConfirmCards(1-tp,tc)
+				end
+			end
 		end
 	end
 end

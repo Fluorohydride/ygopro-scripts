@@ -17,7 +17,8 @@ function c58446973.filter(c)
 	return c:IsSetCard(0xbb) and c:IsType(TYPE_MONSTER) and not c:IsCode(58446973) and c:IsAbleToGrave()
 end
 function c58446973.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c58446973.filter,tp,LOCATION_DECK,0,1,nil) end
+	if chk==0 then return e:GetHandler():IsRelateToEffect(e)
+		and Duel.IsExistingMatchingCard(c58446973.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
 end
 function c58446973.operation(e,tp,eg,ep,ev,re,r,rp)

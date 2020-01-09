@@ -16,11 +16,12 @@ function c31444249.initial_effect(c)
 	c:RegisterEffect(e2)
 	--reduce battle damage
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_PRE_BATTLE_DAMAGE)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e3:SetRange(LOCATION_SZONE)
-	e3:SetCondition(c31444249.rdcon)
-	e3:SetOperation(c31444249.rdop)
+	e3:SetTargetRange(LOCATION_MZONE,0)
+	e3:SetTarget(c31444249.rdtg)
+	e3:SetValue(aux.ChangeBattleDamage(1,HALF_DAMAGE))
 	c:RegisterEffect(e3)
 	--spsummon
 	local e4=Effect.CreateEffect(c)
@@ -35,12 +36,8 @@ end
 function c31444249.lvtg(e,c)
 	return c:IsSetCard(0xbb) and c:GetOriginalLevel()>=2
 end
-function c31444249.rdcon(e,tp,eg,ep,ev,re,r,rp)
-	local ac=eg:GetFirst()
-	return ep~=tp and ac:IsControler(tp) and ac:IsSetCard(0xbb) and ac:GetOriginalLevel()>=2 and not ac:IsImmuneToEffect(e)
-end
-function c31444249.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
+function c31444249.rdtg(e,c)
+	return c:IsSetCard(0xbb) and c:GetOriginalLevel()>=2
 end
 function c31444249.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

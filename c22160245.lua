@@ -1,5 +1,6 @@
 --E－HERO インフェルノ・ウィング
 function c22160245.initial_effect(c)
+	aux.AddCodeList(c,94820406)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCode2(c,58932615,21844576,true,true)
@@ -29,7 +30,6 @@ function c22160245.initial_effect(c)
 end
 c22160245.material_setcode=0x8
 c22160245.dark_calling=true
-c22160245.card_code_list={94820406}
 function c22160245.splimit(e,se,sp,st)
 	return st==SUMMON_TYPE_FUSION+0x10
 		or Duel.IsPlayerAffectedByEffect(sp,72043279) and st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION

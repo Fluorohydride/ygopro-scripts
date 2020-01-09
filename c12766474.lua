@@ -31,16 +31,10 @@ end
 function c12766474.counterfilter(c)
 	return c:IsAttribute(ATTRIBUTE_DARK)
 end
-function c12766474.fselect(c,tp,rg,sg)
-	sg:AddCard(c)
-	local res=c12766474.fgoal(tp,sg) or rg:IsExists(c12766474.fselect,1,sg,tp,rg,sg)
-	sg:RemoveCard(c)
-	return res
-end
 function c12766474.relfilter(c,g)
 	return g:IsContains(c)
 end
-function c12766474.fgoal(tp,sg)
+function c12766474.fgoal(sg,tp)
 	if sg:GetCount()>0 and Duel.GetMZoneCount(tp,sg)>0 then
 		Duel.SetSelectedCard(sg)
 		return Duel.CheckReleaseGroup(tp,nil,0,nil)
@@ -48,9 +42,8 @@ function c12766474.fgoal(tp,sg)
 end
 function c12766474.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(Card.IsAttribute,nil,ATTRIBUTE_DARK)
-	local g=Group.CreateGroup()
 	if chk==0 then return Duel.GetCustomActivityCount(12766474,tp,ACTIVITY_SPSUMMON)==0
-		and rg:IsExists(c12766474.fselect,1,nil,tp,rg,g) end
+		and rg:CheckSubGroup(c12766474.fgoal,1,#rg,tp) end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
@@ -59,13 +52,8 @@ function c12766474.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetTarget(c12766474.splimit)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	while true do
-		local mg=rg:Filter(c12766474.fselect,g,tp,rg,g)
-		if mg:GetCount()==0 or (c12766474.fgoal(tp,g) and not Duel.SelectYesNo(tp,210)) then break end
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local sg=Duel.SelectReleaseGroup(tp,c12766474.relfilter,1,1,nil,mg)
-		g:Merge(sg)
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local g=rg:SelectSubGroup(tp,c12766474.fgoal,false,1,#rg,tp)
 	e:SetLabel(g:GetCount())
 	Duel.Release(g,REASON_COST)
 end

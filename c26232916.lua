@@ -1,4 +1,4 @@
---Hidden Village of Ninjitsu Arts
+--隠れ里－忍法修練の地
 function c26232916.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -63,14 +63,13 @@ function c26232916.thop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_CANNOT_ACTIVATE)
 		e1:SetTargetRange(1,0)
 		e1:SetValue(c26232916.aclimit)
-		e1:SetLabelObject(tc)
+		e1:SetLabel(tc:GetCode())
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
 	end
 end
 function c26232916.aclimit(e,re,tp)
-	local tc=e:GetLabelObject()
-	return re:GetHandler():IsCode(tc:GetCode())
+	return re:GetHandler():IsCode(e:GetLabel())
 end
 function c26232916.repfilter(c,tp)
 	return c:IsFaceup() and (c:IsType(TYPE_MONSTER) and c:IsSetCard(0x2b) or c:IsSetCard(0x61))
@@ -95,7 +94,7 @@ function c26232916.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	return false
 end
 function c26232916.repop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_CARD,1-tp,26232916)
+	Duel.Hint(HINT_CARD,0,26232916)
 	local tc=e:GetLabelObject()
 	Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_REPLACE)
 end

@@ -1,5 +1,6 @@
 --力の代行者 マーズ
 function c91123920.initial_effect(c)
+	aux.AddCodeList(c,56433456)
 	--immune spell
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -20,7 +21,6 @@ function c91123920.initial_effect(c)
 	e3:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e3)
 end
-c91123920.card_code_list={56433456}
 function c91123920.efilter(e,te)
 	return te:IsActiveType(TYPE_SPELL)
 end

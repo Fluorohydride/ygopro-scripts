@@ -12,7 +12,7 @@ function c22900598.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c22900598.condition(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFieldCard(tp,LOCATION_SZONE,5)~=nil then return false end
+	if Duel.GetFieldCard(tp,LOCATION_FZONE,0)~=nil then return false end
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
 	return g:GetCount()>0 and g:FilterCount(Card.IsRace,nil,RACE_ZOMBIE)==g:GetCount()
 end

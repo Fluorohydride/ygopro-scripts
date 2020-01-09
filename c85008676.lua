@@ -43,14 +43,13 @@ function c85008676.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c85008676.damop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-	e1:SetOperation(c85008676.halfop)
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
+	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e1:SetTargetRange(1,0)
+	e1:SetValue(HALF_DAMAGE)
 	e1:SetReset(RESET_PHASE+PHASE_DAMAGE)
 	Duel.RegisterEffect(e1,tp)
-end
-function c85008676.halfop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(tp,math.ceil(ev/2))
 end
 function c85008676.damcon2(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp and aux.damcon1(e,tp,eg,ep,ev,re,r,rp)
@@ -71,7 +70,7 @@ function c85008676.damval2(e,re,val,r,rp,rc)
 		local cc=Duel.GetCurrentChain()
 	if cc==0 or bit.band(r,REASON_EFFECT)==0 then return end
 	local cid=Duel.GetChainInfo(0,CHAININFO_CHAIN_ID)
-	return cid==e:GetLabel() and math.ceil(val/2) or val
+	return cid==e:GetLabel() and math.floor(val/2) or val
 end
 function c85008676.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)

@@ -54,6 +54,7 @@ function c21123811.initial_effect(c)
 	e6:SetOperation(c21123811.negop)
 	c:RegisterEffect(e6)
 end
+c21123811.material_type=TYPE_SYNCHRO
 function c21123811.discon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.IsChainNegatable(ev)
 end

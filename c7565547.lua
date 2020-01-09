@@ -22,13 +22,17 @@ function c7565547.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c7565547.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		local g=Duel.GetMatchingGroup(c7565547.eqfilter,tp,LOCATION_SZONE,LOCATION_SZONE,nil)
-		local ec=g:GetFirst()
-		while ec do
-			Duel.Equip(tp,ec,tc)
-			ec=g:GetNext()
+	local dg=Group.CreateGroup()
+	local g=Duel.GetMatchingGroup(c7565547.eqfilter,tp,LOCATION_SZONE,LOCATION_SZONE,nil)
+	local ec=g:GetFirst()
+	while ec do
+		if tc:IsFaceup() and tc:IsRelateToEffect(e) and ec:CheckEquipTarget(tc) then
+			Duel.Equip(tp,ec,tc,false,false)
+		else
+			dg:AddCard(ec)
 		end
-		Duel.EquipComplete()
+		ec=g:GetNext()
 	end
+	Duel.EquipComplete()
+	Duel.Destroy(dg,REASON_EFFECT)
 end

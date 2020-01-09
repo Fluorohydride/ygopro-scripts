@@ -36,7 +36,7 @@ function c3701074.recop1(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=eg:GetFirst()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		local rec=tc:GetAttack()/2
+		local rec=math.ceil(tc:GetAttack()/2)
 		Duel.Recover(1-tp,rec,REASON_EFFECT)
 	end
 end
@@ -57,6 +57,6 @@ function c3701074.recop2(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 			g=g:Select(tp,1,1,nil)
 		end
-		Duel.Recover(1-tp,g:GetFirst():GetAttack()/2,REASON_EFFECT)
+		Duel.Recover(1-tp,math.ceil(g:GetFirst():GetAttack()/2),REASON_EFFECT)
 	end
 end

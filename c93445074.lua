@@ -17,7 +17,7 @@ function c93445074.eqcon(e,tp,eg,ep,ev,re,r,rp)
 		and c:IsReason(REASON_DESTROY) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c93445074.eqfilter(c,tp)
-	if not c:IsFaceup() or not c:IsControlerCanBeChanged() then return false end
+	if not c:IsFaceup() then return false end
 	if c:IsType(TYPE_TRAPMONSTER) then return Duel.GetLocationCount(tp,LOCATION_SZONE,tp,LOCATION_REASON_CONTROL)>0 and Duel.GetLocationCount(tp,LOCATION_SZONE,tp,0)>=2 end
 	return true
 end
@@ -37,7 +37,7 @@ function c93445074.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) then
-		Duel.Equip(tp,c,tc,true)
+		Duel.Equip(tp,c,tc)
 		--Add Equip limit
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

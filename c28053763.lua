@@ -55,7 +55,7 @@ end
 function c28053763.tkop2(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(1-tp,LOCATION_MZONE)<=0 then return end
 	if not Duel.IsPlayerCanSpecialSummonMonster(1-tp,28053764,0,0x4011,300,300,1,RACE_MACHINE,ATTRIBUTE_EARTH,POS_FACEUP_ATTACK) then return end
-	Duel.Hint(HINT_CARD,PLAYER_ALL,28053763)
+	Duel.Hint(HINT_CARD,0,28053763)
 	local token=Duel.CreateToken(1-tp,28053764)
 	Duel.SpecialSummon(token,0,1-tp,1-tp,false,false,POS_FACEUP_ATTACK)
 end

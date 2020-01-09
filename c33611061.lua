@@ -35,19 +35,7 @@ function c33611061.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetMatchingGroup(c33611061.thfilter,tp,LOCATION_DECK,0,nil)
 		if g:GetCount()==0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g1=g:Select(tp,1,1,nil)
-		g:Remove(Card.IsCode,nil,g1:GetFirst():GetCode())
-		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(33611061,0)) then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-			local g2=g:Select(tp,1,1,nil)
-			g:Remove(Card.IsCode,nil,g2:GetFirst():GetCode())
-			g1:Merge(g2)
-			if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(33611061,0)) then
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-				local g3=g:Select(tp,1,1,nil)
-				g1:Merge(g3)
-			end
-		end
+		local g1=g:SelectSubGroup(tp,aux.dncheck,false,1,3)
 		Duel.SendtoHand(g1,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g1)
 	end

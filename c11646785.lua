@@ -1,5 +1,6 @@
 --超量機獣エアロボロス
 function c11646785.initial_effect(c)
+	aux.AddCodeList(c,85374678)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)
 	c:EnableReviveLimit()
@@ -38,7 +39,6 @@ function c11646785.initial_effect(c)
 	e4:SetOperation(c11646785.mtop)
 	c:RegisterEffect(e4)
 end
-c11646785.card_code_list={85374678}
 function c11646785.atcon(e)
 	return e:GetHandler():GetOverlayCount()==0
 end
@@ -69,11 +69,11 @@ function c11646785.setop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c11646785.mtfilter(c,e)
-	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and not c:IsType(TYPE_TOKEN) and c:IsSetCard(0x10dc) and not c:IsImmuneToEffect(e)
+	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsSetCard(0x10dc) and c:IsCanOverlay() and not (e and c:IsImmuneToEffect(e))
 end
 function c11646785.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ)
-		and Duel.IsExistingMatchingCard(c11646785.mtfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil,e) end
+		and Duel.IsExistingMatchingCard(c11646785.mtfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil) end
 end
 function c11646785.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

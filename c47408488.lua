@@ -8,22 +8,26 @@ function c47408488.initial_effect(c)
 	c:RegisterEffect(e1)
 	--counter
 	local e2=Effect.CreateEffect(c)
-	e2:SetCategory(CATEGORY_COUNTER)
-	e2:SetDescription(aux.Stringid(47408488,0))
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e2:SetProperty(EFFECT_FLAG_DELAY)
+	e2:SetCode(EVENT_MOVE)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetCode(EVENT_CUSTOM+47408488)
-	e2:SetOperation(c47408488.ctop)
+	e2:SetCondition(c47408488.ctcon1)
+	e2:SetOperation(c47408488.ctop1)
 	c:RegisterEffect(e2)
-	--equip
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e0:SetCode(EVENT_MOVE)
+	e0:SetRange(LOCATION_SZONE)
+	e0:SetCondition(c47408488.regcon)
+	e0:SetOperation(c47408488.regop)
+	c:RegisterEffect(e0)
 	local e3=Effect.CreateEffect(c)
-	e3:SetCategory(CATEGORY_COUNTER)
-	e3:SetDescription(aux.Stringid(47408488,0))
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
+	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e3:SetCode(EVENT_CHAIN_SOLVED)
 	e3:SetRange(LOCATION_SZONE)
-	e3:SetCode(EVENT_EQUIP)
-	e3:SetCondition(c47408488.eqcon)
-	e3:SetOperation(c47408488.ctop)
+	e3:SetCondition(c47408488.ctcon2)
+	e3:SetOperation(c47408488.ctop2)
 	c:RegisterEffect(e3)
 	--place
 	local e4=Effect.CreateEffect(c)
@@ -34,12 +38,48 @@ function c47408488.initial_effect(c)
 	e4:SetTarget(c47408488.pltg)
 	e4:SetOperation(c47408488.plop)
 	c:RegisterEffect(e4)
+	if not c47408488.global_check then
+		c47408488.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_CHAIN_SOLVING)
+		ge1:SetOperation(c47408488.checkop)
+		Duel.RegisterEffect(ge1,0)
+		local ge2=Effect.CreateEffect(c)
+		ge2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge2:SetCode(EVENT_CHAIN_SOLVED)
+		ge2:SetOperation(c47408488.reset)
+		Duel.RegisterEffect(ge2,0)
+	end
 end
-function c47408488.eqcon(e,tp,eg,ep,ev,re,r,rp)
-	local tc=eg:GetFirst()
-	return tc:IsFaceup() and tc:IsSetCard(0x1034)
+function c47408488.checkop(e,tp,eg,ep,ev,re,r,rp)
+	c47408488.chain_solving=true
 end
-function c47408488.ctop(e,tp,eg,ep,ev,re,r,rp)
+function c47408488.reset(e,tp,eg,ep,ev,re,r,rp)
+	c47408488.chain_solving=false
+end
+function c47408488.cfilter(c)
+	local type=c:GetOriginalType()
+	if c:IsPreviousLocation(LOCATION_ONFIELD) then type=c:GetPreviousTypeOnField() end
+	return c:IsLocation(LOCATION_SZONE) and c:GetSequence()<5 and c:IsSetCard(0x1034) and bit.band(type,TYPE_MONSTER)~=0
+end
+function c47408488.ctcon1(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c47408488.cfilter,1,nil) and not c47408488.chain_solving
+end
+function c47408488.ctop1(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():AddCounter(0x6,1)
+end
+function c47408488.regcon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(c47408488.cfilter,1,nil) and c47408488.chain_solving
+end
+function c47408488.regop(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():RegisterFlagEffect(47408488,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
+end
+function c47408488.ctcon2(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(47408488)>0
+end
+function c47408488.ctop2(e,tp,eg,ep,ev,re,r,rp)
+	e:GetHandler():ResetFlagEffect(47408488)
 	e:GetHandler():AddCounter(0x6,1)
 end
 function c47408488.plcost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -51,14 +91,15 @@ function c47408488.pltg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local ct=e:GetHandler():GetCounter(0x6)
 		return ct>0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>=-1+ct
+			and Duel.IsExistingMatchingCard(c47408488.plfilter,tp,LOCATION_DECK,0,ct,nil)
 	end
 end
 function c47408488.plfilter(c)
-	return c:IsSetCard(0x1034) and not c:IsForbidden()
+	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()
 end
 function c47408488.plop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
-	if ft<=0 then return end
+	if ft<e:GetLabel() then return end
 	if ft>e:GetLabel() then ft=e:GetLabel() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 	local g=Duel.SelectMatchingCard(tp,c47408488.plfilter,tp,LOCATION_DECK,0,ft,ft,nil)
@@ -75,6 +116,5 @@ function c47408488.plop(e,tp,eg,ep,ev,re,r,rp)
 			tc:RegisterEffect(e1)
 			tc=g:GetNext()
 		end
-		Duel.RaiseEvent(g,EVENT_CUSTOM+47408488,e,0,tp,0,0)
 	end
 end

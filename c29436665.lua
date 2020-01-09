@@ -1,5 +1,6 @@
 --黒魔導の執行官
 function c29436665.initial_effect(c)
+	aux.AddCodeList(c,46986414)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

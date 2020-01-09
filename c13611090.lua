@@ -40,17 +40,9 @@ function c13611090.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(tc:GetDefense()*2)
 		tc:RegisterEffect(e2)
 		local e3=Effect.CreateEffect(e:GetHandler())
-		e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_SINGLE)
-		e3:SetCode(EVENT_PRE_BATTLE_DAMAGE)
-		e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		e3:SetCondition(c13611090.rdcon)
-		e3:SetOperation(c13611090.rdop)
+		e3:SetType(EFFECT_TYPE_SINGLE)
+		e3:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
+		e3:SetValue(aux.ChangeBattleDamage(1,HALF_DAMAGE))
 		tc:RegisterEffect(e3)
 	end
-end
-function c13611090.rdcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep~=tp
-end
-function c13611090.rdop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangeBattleDamage(ep,ev/2)
 end

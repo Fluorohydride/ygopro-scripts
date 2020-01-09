@@ -33,7 +33,7 @@ function c18271561.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		dg=dg:Select(tp,1,1,nil)
 	end
-	local atk=dg:GetFirst():GetAttack()/2
+	local atk=math.floor(dg:GetFirst():GetAttack()/2)
 	if Duel.Destroy(dg,REASON_EFFECT)>0 then
 		Duel.Damage(tp,atk,REASON_EFFECT,true)
 		Duel.Damage(1-tp,atk,REASON_EFFECT,true)

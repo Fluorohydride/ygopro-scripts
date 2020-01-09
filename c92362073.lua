@@ -60,17 +60,12 @@ function c92362073.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_CHANGE_DAMAGE)
+	e2:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetTargetRange(0,1)
-	e2:SetValue(c92362073.val)
+	e2:SetValue(HALF_DAMAGE)
 	e2:SetReset(RESET_PHASE+PHASE_BATTLE)
 	Duel.RegisterEffect(e2,tp)
-end
-function c92362073.val(e,re,dam,r,rp,rc)
-	if bit.band(r,REASON_BATTLE)~=0 then
-		return dam/2
-	else return dam end
 end
 function c92362073.tpcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
@@ -86,6 +81,5 @@ function c92362073.tpop(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		Duel.ShuffleDeck(tp)
 		Duel.MoveSequence(tc,0)
-		Duel.ConfirmDecktop(tp,1)
 	end
 end

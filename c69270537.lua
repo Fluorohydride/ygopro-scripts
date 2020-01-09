@@ -21,7 +21,7 @@ function c69270537.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,1,0,0)
 end
 function c69270537.spfilter(c,e,tp,fc)
-	return fc.material and c:IsCode(table.unpack(fc.material)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return aux.IsMaterialListCode(fc,c:GetCode()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c69270537.fcheck(sp)
 	return function(tp,g,c)
@@ -35,7 +35,7 @@ function c69270537.activate(e,tp,eg,ep,ev,re,r,rp)
 		and tc:IsLocation(LOCATION_EXTRA) then
 		aux.FCheckAdditional=c69270537.fcheck(tp)
 		local sg=Duel.GetMatchingGroup(c69270537.spfilter,tp,LOCATION_DECK,0,nil,e,tp,tc)
-		if tc:CheckFusionMaterial(sg) and Duel.SelectYesNo(tp,aux.Stringid(69270537,0)) then
+		if tc:CheckFusionMaterial(sg,nil,PLAYER_NONE,true) and Duel.SelectYesNo(tp,aux.Stringid(69270537,0)) then
 			Duel.BreakEffect()
 			local mats=Duel.SelectFusionMaterial(tp,tc,sg)
 			Duel.SpecialSummon(mats,0,tp,tp,false,false,POS_FACEUP)

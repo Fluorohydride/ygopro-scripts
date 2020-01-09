@@ -36,10 +36,10 @@ function c1825445.tglimit(e,c)
 end
 function c1825445.filter1(c,e,tp)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsSetCard(0xdc)
-		and Duel.IsExistingMatchingCard(c1825445.filter2,tp,LOCATION_MZONE,0,1,c,e)
+		and Duel.IsExistingMatchingCard(c1825445.filter2,tp,LOCATION_MZONE,0,1,c)
 end
 function c1825445.filter2(c,e)
-	return c:IsType(TYPE_MONSTER) and not c:IsType(TYPE_TOKEN) and c:IsFaceup() and not c:IsImmuneToEffect(e)
+	return c:IsType(TYPE_MONSTER) and c:IsFaceup() and c:IsCanOverlay() and not (e and c:IsImmuneToEffect(e))
 end
 function c1825445.mttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c1825445.filter1(chkc,e,tp) end

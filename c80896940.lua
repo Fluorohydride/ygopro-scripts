@@ -59,6 +59,7 @@ function c80896940.initial_effect(c)
 	e7:SetOperation(c80896940.penop)
 	c:RegisterEffect(e7)
 end
+c80896940.material_type=TYPE_SYNCHRO
 function c80896940.matfilter1(c)
 	return c:IsType(TYPE_TUNER) or (c:IsType(TYPE_PENDULUM) and c:IsSummonType(SUMMON_TYPE_PENDULUM))
 end

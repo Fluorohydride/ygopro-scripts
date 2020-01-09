@@ -28,15 +28,10 @@ end
 function c40854824.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local g=Duel.GetMatchingGroup(c40854824.filter,tp,LOCATION_DECK,0,nil,e,tp)
 	if g:GetCount()==0 then return end
-	repeat
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=g:Select(tp,1,1,nil)
-		local tc=sg:GetFirst()
-		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
-		g:Remove(Card.IsCode,nil,tc:GetCode())
-		ft=ft-1
-	until ft<=0 or g:GetCount()==0 or not Duel.SelectYesNo(tp,aux.Stringid(40854824,0))
-	Duel.SpecialSummonComplete()
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,ft)
+	Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 end

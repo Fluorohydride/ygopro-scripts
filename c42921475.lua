@@ -62,10 +62,6 @@ function c42921475.chop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChangeChainOperation(ev,c42921475.repop)
 end
 function c42921475.repop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if c:GetType()==TYPE_SPELL or c:GetType()==TYPE_TRAP then
-		c:CancelToGrave(false)
-	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g=Duel.SelectMatchingCard(tp,c42921475.filter,tp,0,LOCATION_MZONE,1,1,nil)
 	if g:GetCount()>0 then

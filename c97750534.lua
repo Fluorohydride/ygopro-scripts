@@ -1,5 +1,6 @@
 --死の代行者 ウラヌス
 function c97750534.initial_effect(c)
+	aux.AddCodeList(c,56433456)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -19,7 +20,6 @@ function c97750534.initial_effect(c)
 	e2:SetOperation(c97750534.tgop)
 	c:RegisterEffect(e2)
 end
-c97750534.card_code_list={56433456}
 function c97750534.spcon(e,c)
 	if c==nil then return Duel.IsEnvironment(56433456) end
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0

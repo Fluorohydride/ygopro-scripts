@@ -65,36 +65,44 @@ function c10833828.spop1(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2,true)
-		c:SetCardTarget(tc)
+		tc:RegisterFlagEffect(10833828,RESET_EVENT+RESETS_STANDARD,0,1,c:GetFieldID())
 	end
 	Duel.SpecialSummonComplete()
 end
 function c10833828.spfilter2(c,e)
 	return not c:IsImmuneToEffect(e)
 end
-function c10833828.spfilter3(c,e,tp,m,g,f,chkf)
+function c10833828.spfilter3(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsRace(RACE_FIEND) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and g:IsExists(c10833828.spfilter4,1,nil,m,c,chkf)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
-function c10833828.spfilter4(c,m,fusc,chkf)
-	return fusc:CheckFusionMaterial(m,c,chkf)
+function c10833828.fcheck1(fid)
+	return	function(tp,sg,fc)
+				return sg:IsExists(c10833828.fcheck2,1,nil,fid)
+			end
+end
+function c10833828.fcheck2(c,fid)
+	for _,flag in ipairs({c:GetFlagEffectLabel(10833828)}) do
+		if flag==fid then return true end
+	end
+	return false
 end
 function c10833828.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local g=e:GetHandler():GetCardTarget():Filter(Card.IsControler,nil,tp)
-		if g:GetCount()==0 then return false end
 		local chkf=tp
 		local mg1=Duel.GetFusionMaterial(tp)
-		local res=Duel.IsExistingMatchingCard(c10833828.spfilter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,g,nil,chkf)
+		aux.FCheckAdditional=c10833828.fcheck1(e:GetHandler():GetFieldID())
+		local res=Duel.IsExistingMatchingCard(c10833828.spfilter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
 			if ce~=nil then
 				local fgroup=ce:GetTarget()
 				local mg2=fgroup(ce,e,tp)
 				local mf=ce:GetValue()
-				res=Duel.IsExistingMatchingCard(c10833828.spfilter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,g,mf,chkf)
+				res=Duel.IsExistingMatchingCard(c10833828.spfilter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
 			end
 		end
+		aux.FCheckAdditional=nil
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -103,12 +111,10 @@ end
 function c10833828.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	local g=c:GetCardTarget():Filter(Card.IsControler,nil,tp)
-	g:Remove(Card.IsImmuneToEffect,nil,e)
-	if g:GetCount()==0 then return false end
 	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c10833828.spfilter2,nil,e)
-	local sg1=Duel.GetMatchingGroup(c10833828.spfilter3,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,g,nil,chkf)
+	aux.FCheckAdditional=c10833828.fcheck1(c:GetFieldID())
+	local sg1=Duel.GetMatchingGroup(c10833828.spfilter3,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil
 	local sg2=nil
 	local ce=Duel.GetChainMaterial(tp)
@@ -116,7 +122,7 @@ function c10833828.spop2(e,tp,eg,ep,ev,re,r,rp)
 		local fgroup=ce:GetTarget()
 		mg2=fgroup(ce,e,tp)
 		local mf=ce:GetValue()
-		sg2=Duel.GetMatchingGroup(c10833828.spfilter3,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,g,mf,chkf)
+		sg2=Duel.GetMatchingGroup(c10833828.spfilter3,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf)
 	end
 	if sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0) then
 		local sg=sg1:Clone()
@@ -125,22 +131,19 @@ function c10833828.spop2(e,tp,eg,ep,ev,re,r,rp)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-			local ec=g:FilterSelect(tp,c10833828.spfilter4,1,1,nil,mg1,tc,chkf):GetFirst()
-			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,ec,chkf)
+			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			tc:SetMaterial(mat1)
 			Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 		else
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-			local ec=g:FilterSelect(tp,c10833828.spfilter4,1,1,nil,mg2,tc,chkf):GetFirst()
-			local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,ec,chkf)
+			local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
 			local fop=ce:GetOperation()
 			fop(ce,e,tp,tc,mat2)
 		end
 		tc:CompleteProcedure()
 	end
+	aux.FCheckAdditional=nil
 end
 function c10833828.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp

@@ -25,19 +25,13 @@ function c60668166.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c60668166.operation(e,tp,eg,ep,ev,re,r,rp)
-	local ct=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local ct=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),2)
 	if ct<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
-	local g=Duel.GetMatchingGroup(c60668166.filter,tp,LOCATION_DECK,0,nil,e,tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local g=Duel.SelectMatchingCard(tp,c60668166.filter,tp,LOCATION_DECK,0,1,ct,nil,e,tp)
 	if g:GetCount()>0 then
-		local t1=g:GetFirst()
-		local t2=g:GetNext()
-		Duel.SpecialSummonStep(t1,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
-		Duel.ConfirmCards(1-tp,t1)
-		if t2 and ct>1 and Duel.SelectYesNo(tp,aux.Stringid(60668166,1)) then
-			Duel.SpecialSummonStep(t2,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
-			Duel.ConfirmCards(1-tp,t2)
-		end
-		Duel.SpecialSummonComplete()
+		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
+		Duel.ConfirmCards(1-tp,g)
 	end
 end

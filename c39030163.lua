@@ -34,12 +34,15 @@ function c39030163.mtcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
+function c39030163.mtfilter(c,e)
+	return c:IsCanOverlay() and c:IsCanBeEffectTarget(e)
+end
 function c39030163.mttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=e:GetHandler():GetEquipGroup()
 	if chkc then return g:IsContains(chkc) and chkc:IsCanBeEffectTarget(e) end
-	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ) and g:IsExists(Card.IsCanBeEffectTarget,1,nil,e) end
+	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ) and g:IsExists(c39030163.mtfilter,1,nil,e) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-	local tg=g:FilterSelect(tp,Card.IsCanBeEffectTarget,1,2,nil,e)
+	local tg=g:FilterSelect(tp,c39030163.mtfilter,1,2,nil,e)
 	Duel.SetTargetCard(tg)
 end
 function c39030163.mtfilter(c,e)

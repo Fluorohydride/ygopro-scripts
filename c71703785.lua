@@ -1,5 +1,6 @@
 --守護神官マハード
 function c71703785.initial_effect(c)
+	aux.AddCodeList(c,46986414)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(71703785,0))

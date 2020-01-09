@@ -72,17 +72,11 @@ end
 function c74974229.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c74974229.spfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
 	local ct=Duel.GetMatchingGroupCount(c74974229.ctfilter,tp,0,LOCATION_MZONE,nil)
 	if g:GetCount()==0 or ct==0 then return end
-	repeat
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local sg=g:Select(tp,1,1,nil)
-		local tc=sg:GetFirst()
-		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
-		g:Remove(Card.IsCode,nil,tc:GetCode())
-		ft=ft-1
-		ct=ct-1
-	until ft<=0 or g:GetCount()==0 or ct==0 or not Duel.SelectYesNo(tp,aux.Stringid(74974229,3))
-	Duel.SpecialSummonComplete()
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	local sg=g:SelectSubGroup(tp,aux.dncheck,false,1,math.min(ft,ct))
+	Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 end

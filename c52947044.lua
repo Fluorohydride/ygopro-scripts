@@ -17,8 +17,11 @@ function c52947044.filter1(c,e)
 	return not c:IsImmuneToEffect(e) and c:IsLocation(LOCATION_HAND)
 end
 function c52947044.filter2(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and (aux.IsMaterialListSetCard(c,0xc008) or c:IsCode(30757127,76263644,90579153,93657021)) and (not f or f(c))
+	return c:IsType(TYPE_FUSION) and aux.IsMaterialListSetCard(c,0xc008) and (not f or f(c))
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
+end
+function c52947044.fcheck(tp,sg,fc)
+	return sg:IsExists(Card.IsFusionSetCard,1,nil,0xc008)
 end
 function c52947044.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -26,6 +29,7 @@ function c52947044.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		local mg1=Duel.GetFusionMaterial(tp):Filter(Card.IsLocation,nil,LOCATION_HAND)
 		local mg2=Duel.GetMatchingGroup(c52947044.filter0,tp,LOCATION_DECK,0,nil)
 		mg1:Merge(mg2)
+		aux.FCheckAdditional=c52947044.fcheck
 		local res=Duel.IsExistingMatchingCard(c52947044.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -36,6 +40,7 @@ function c52947044.target(e,tp,eg,ep,ev,re,r,rp,chk)
 				res=Duel.IsExistingMatchingCard(c52947044.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
 			end
 		end
+		aux.FCheckAdditional=nil
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -46,6 +51,7 @@ function c52947044.activate(e,tp,eg,ep,ev,re,r,rp)
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c52947044.filter1,nil,e)
 	local mg2=Duel.GetMatchingGroup(c52947044.filter0,tp,LOCATION_DECK,0,nil)
 	mg1:Merge(mg2)
+	aux.FCheckAdditional=c52947044.fcheck
 	local sg1=Duel.GetMatchingGroup(c52947044.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg3=nil
 	local sg2=nil
@@ -87,6 +93,7 @@ function c52947044.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetLabelObject(tc)
 		Duel.RegisterEffect(e1,tp)
 	end
+	aux.FCheckAdditional=nil
 	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
