@@ -40,8 +40,8 @@ function c2414168.spop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(ev)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c2414168.defcon(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()

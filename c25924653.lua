@@ -56,7 +56,6 @@ function c25924653.spgop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2,true)
-		Duel.SpecialSummonComplete()
 		if c:IsRelateToEffect(e) then
 			c:SetCardTarget(tc)
 			e:GetLabelObject():SetLabelObject(tc)
@@ -64,6 +63,7 @@ function c25924653.spgop(e,tp,eg,ep,ev,re,r,rp)
 			tc:CreateRelation(c,RESET_EVENT+0x5fe0000)
 		end
 	end
+	Duel.SpecialSummonComplete()
 end
 function c25924653.leave(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

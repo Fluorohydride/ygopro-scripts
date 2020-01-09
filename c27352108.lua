@@ -46,8 +46,8 @@ function c27352108.spop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(aux.ChangeBattleDamage(0,HALF_DAMAGE))
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e2)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c27352108.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

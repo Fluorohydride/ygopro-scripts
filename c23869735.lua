@@ -47,7 +47,6 @@ function c23869735.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e)
 		and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		c:SetCardTarget(tc)
-		Duel.SpecialSummonComplete()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_OWNER_RELATE)
@@ -57,6 +56,7 @@ function c23869735.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c23869735.rcon)
 		tc:RegisterEffect(e1,true)
 	end
+	Duel.SpecialSummonComplete()
 end
 function c23869735.rcon(e)
 	return e:GetOwner():IsHasCardTarget(e:GetHandler())
