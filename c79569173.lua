@@ -42,6 +42,7 @@ function c79569173.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	c:RegisterEffect(e1)
 	local dis=Duel.SelectDisableField(tp,3,0,LOCATION_SZONE,0)
 	e:SetLabel(dis)
+	Duel.Hint(HINT_ZONE,tp,dis)
 end
 function c79569173.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(1-tp,LOCATION_SZONE,PLAYER_NONE,0)<3 then return end

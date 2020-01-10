@@ -47,6 +47,7 @@ function c97466438.ztg(e,tp,eg,ep,ev,re,r,rp,chk)
 		+Duel.GetLocationCount(1-tp,LOCATION_SZONE,PLAYER_NONE,0)>0 end
 	local dis=Duel.SelectDisableField(tp,1,LOCATION_ONFIELD,LOCATION_ONFIELD,0xe000e0)
 	e:SetLabel(dis)
+	Duel.Hint(HINT_ZONE,tp,dis)
 end
 function c97466438.zop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
