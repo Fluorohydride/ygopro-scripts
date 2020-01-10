@@ -45,8 +45,8 @@ function c31550470.operation(e,tp,eg,ep,ev,re,r,rp)
 		e:SetLabelObject(tc)
 		c:CreateRelation(tc,RESET_EVENT+RESETS_STANDARD)
 		tc:CreateRelation(c,RESET_EVENT+RESETS_STANDARD)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c31550470.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetFirstCardTarget()

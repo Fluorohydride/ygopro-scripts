@@ -67,8 +67,8 @@ function c34959756.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+RESETS_REDIRECT)
 		e2:SetValue(LOCATION_REMOVED)
 		tc:RegisterEffect(e2)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c34959756.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

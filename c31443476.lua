@@ -39,8 +39,8 @@ function c31443476.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		e2:SetCountLimit(1)
 		Duel.RegisterEffect(e2,tp)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c31443476.descon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

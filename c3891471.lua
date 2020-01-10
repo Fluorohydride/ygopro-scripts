@@ -56,10 +56,10 @@ function c3891471.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			e1:SetValue(TYPE_TUNER)
 			tc:RegisterEffect(e1)
-			Duel.SpecialSummonComplete()
 			c:SetCardTarget(tc)
 			c:RegisterFlagEffect(3891471,RESET_EVENT+0x17a0000,0,1,lv)
 		end
+		Duel.SpecialSummonComplete()
 	end
 end
 function c3891471.desop(e,tp,eg,ep,ev,re,r,rp)

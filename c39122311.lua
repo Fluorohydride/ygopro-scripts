@@ -57,8 +57,8 @@ function c39122311.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(RACE_WYRM)
 		e1:SetCondition(c39122311.rcon)
 		tc:RegisterEffect(e1)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c39122311.rcon(e)
 	return e:GetOwner():IsHasCardTarget(e:GetHandler())
