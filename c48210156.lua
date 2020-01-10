@@ -49,6 +49,7 @@ function c48210156.spop(e,tp,eg,ep,ev,re,r,rp)
 		e4:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e4)
 	end
+	Duel.SpecialSummonComplete()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
@@ -57,7 +58,6 @@ function c48210156.spop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTarget(c48210156.splimit)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
-	Duel.SpecialSummonComplete()
 end
 function c48210156.splimit(e,c)
 	return c:GetRace()~=RACE_FIEND

@@ -52,6 +52,6 @@ function c42079445.spop(e,tp,eg,ep,ev,re,r,rp)
 		e5:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
 		e5:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e5,true)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end

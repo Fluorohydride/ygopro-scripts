@@ -51,8 +51,8 @@ function c46589034.spop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetValue(tc:GetLevel())
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 			c:RegisterEffect(e1)
-			Duel.SpecialSummonComplete()
 		end
+		Duel.SpecialSummonComplete()
 	end
 end
 function c46589034.xyzlimit(e,c)
