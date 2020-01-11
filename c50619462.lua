@@ -70,8 +70,8 @@ function c50619462.spop(e,tp,eg,ep,ev,re,r,rp)
 		e4:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 		e4:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e4,true)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c50619462.descon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

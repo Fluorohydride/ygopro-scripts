@@ -76,8 +76,8 @@ function c50371210.operation(e,tp,eg,ep,ev,re,r,rp)
 		local e3=e2:Clone()
 		e3:SetCode(EFFECT_DISABLE_EFFECT)
 		tc:RegisterEffect(e3)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c50371210.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetEquipTarget()

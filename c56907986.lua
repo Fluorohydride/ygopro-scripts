@@ -85,8 +85,8 @@ function c56907986.spop2(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetLabelObject(tc)
 		Duel.RegisterEffect(e3,tp)
 		tc:RegisterFlagEffect(56907986,RESET_EVENT+RESETS_STANDARD,0,1)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c56907986.descon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

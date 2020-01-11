@@ -47,6 +47,6 @@ function c57477163.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(800)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
