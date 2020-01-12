@@ -56,8 +56,8 @@ function c98935722.activate(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e)
 		and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		c:SetCardTarget(tc)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c98935722.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsDisabled() then
