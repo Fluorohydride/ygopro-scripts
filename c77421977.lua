@@ -11,12 +11,10 @@ function c77421977.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk up
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetType(EFFECT_TYPE_TARGET)
 	e2:SetCode(EFFECT_UPDATE_ATTACK)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
 	e2:SetValue(800)
-	e2:SetTarget(aux.ctg)
 	c:RegisterEffect(e2)
 	--must attack
 	local e3=Effect.CreateEffect(c)
@@ -26,14 +24,14 @@ function c77421977.initial_effect(c)
 	e3:SetTargetRange(0,LOCATION_MZONE)
 	e3:SetCondition(c77421977.effcon)
 	c:RegisterEffect(e3)
-	--only attack monster
+	--must attack monster
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
-	e4:SetCode(EFFECT_ONLY_ATTACK_MONSTER)
+	e4:SetCode(EFFECT_MUST_ATTACK_MONSTER)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetTargetRange(0,LOCATION_MZONE)
 	e4:SetCondition(c77421977.effcon)
-	e4:SetValue(aux.ctg)
+	e4:SetValue(c77421977.atklimit)
 	c:RegisterEffect(e4)
 	--draw
 	local e5=Effect.CreateEffect(c)
@@ -71,6 +69,9 @@ function c77421977.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c77421977.effcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFirstCardTarget()~=nil
+end
+function c77421977.atklimit(e,c)
+	return e:GetHandler():IsHasCardTarget(c)
 end
 function c77421977.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
