@@ -13,11 +13,9 @@ function c61936647.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk up
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetType(EFFECT_TYPE_TARGET)
 	e3:SetCode(EFFECT_UPDATE_ATTACK)
 	e3:SetRange(LOCATION_SZONE)
-	e3:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e3:SetTarget(aux.ctg)
 	e3:SetValue(800)
 	c:RegisterEffect(e3)
 	--destroy replace
@@ -70,7 +68,7 @@ function c61936647.tgop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c61936647.repfilter(c,e)
-	return aux.ctg(e,c) and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
+	return e:GetHandler():IsHasCardTarget(c) and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c61936647.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

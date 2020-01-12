@@ -34,6 +34,14 @@ function c59258334.initial_effect(c)
 	e4:SetCondition(c59258334.rccon)
 	e4:SetOperation(c59258334.rcop)
 	c:RegisterEffect(e4)
+	--control
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_TARGET)
+	e5:SetCode(EFFECT_SET_CONTROL)
+	e5:SetRange(LOCATION_SZONE)
+	e5:SetTarget(c59258334.cttg)
+	e5:SetValue(c59258334.ctval)
+	c:RegisterEffect(e5)
 end
 function c59258334.filter(c)
 	return c:GetCounter(0x100e)>0 and c:IsControlerCanBeChanged()
@@ -51,23 +59,13 @@ function c59258334.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:GetCounter(0x100e)>0 and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
-		local e1=Effect.CreateEffect(c)
-		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_SET_CONTROL)
-		e1:SetValue(c59258334.ctval)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		e1:SetCondition(c59258334.con)
-		tc:RegisterEffect(e1,true)
 	end
 end
-function c59258334.con(e)
-	local c=e:GetOwner()
-	local h=e:GetHandler()
-	return c:IsHasCardTarget(h) and h:GetCounter(0x100e)>0 and not h:IsImmuneToEffect(e)
+function c59258334.cttg(e,c)
+	return c:GetCounter(0x100e)>0
 end
 function c59258334.ctval(e,c)
-	return e:GetOwnerPlayer()
+	return e:GetHandlerPlayer()
 end
 function c59258334.descon(e)
 	local c=e:GetHandler()

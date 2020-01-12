@@ -28,6 +28,12 @@ function c12117532.initial_effect(c)
 	e3:SetCondition(c12117532.atkcon)
 	e3:SetOperation(c12117532.atkop)
 	c:RegisterEffect(e3)
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_TARGET)
+	e4:SetCode(EFFECT_UPDATE_ATTACK)
+	e4:SetRange(LOCATION_SZONE)
+	e4:SetValue(c12117532.atkval)
+	c:RegisterEffect(e4)
 end
 function c12117532.filter(c)
 	return c:IsFaceup()
@@ -62,17 +68,9 @@ function c12117532.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=c:GetFirstCardTarget()
 	if tc then
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_OWNER_RELATE)
-		e1:SetRange(LOCATION_MZONE)
-		e1:SetCode(EFFECT_UPDATE_ATTACK)
-		e1:SetValue(-500)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		e1:SetCondition(c12117532.rcon)
-		tc:RegisterEffect(e1,true)
+		tc:RegisterFlagEffect(12117532,RESET_EVENT+RESETS_STANDARD,0,1)
 	end
 end
-function c12117532.rcon(e)
-	return e:GetOwner():IsHasCardTarget(e:GetHandler())
+function c12117532.atkval(e,c)
+	return c:GetFlagEffect(12117532)*500
 end

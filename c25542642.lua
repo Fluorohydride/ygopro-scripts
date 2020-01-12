@@ -12,11 +12,9 @@ function c25542642.initial_effect(c)
 	c:RegisterEffect(e1)
 	--cannot attack/disable
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetType(EFFECT_TYPE_TARGET)
 	e3:SetCode(EFFECT_CANNOT_ATTACK)
 	e3:SetRange(LOCATION_SZONE)
-	e3:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e3:SetTarget(aux.ctg)
 	c:RegisterEffect(e3)
 	local e5=e3:Clone()
 	e5:SetCode(EFFECT_DISABLE)
@@ -27,7 +25,7 @@ function c25542642.initial_effect(c)
 	e4:SetCode(EFFECT_CANNOT_SELECT_BATTLE_TARGET)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e4:SetValue(aux.ctg)
+	e4:SetValue(c25542642.tgval)
 	c:RegisterEffect(e4)
 	--destroy
 	local e6=Effect.CreateEffect(c)
@@ -66,9 +64,10 @@ function c25542642.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
-		--workaround
-		Duel.AdjustInstantly(c)
 	end
+end
+function c25542642.tgval(e,c)
+	return e:GetHandler():IsHasCardTarget(c)
 end
 function c25542642.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

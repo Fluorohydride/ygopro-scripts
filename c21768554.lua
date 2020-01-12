@@ -20,6 +20,14 @@ function c21768554.initial_effect(c)
 	e2:SetCondition(c21768554.descon)
 	e2:SetOperation(c21768554.desop)
 	c:RegisterEffect(e2)
+	--control
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_TARGET)
+	e3:SetCode(EFFECT_SET_CONTROL)
+	e3:SetRange(LOCATION_SZONE)
+	e3:SetTarget(c21768554.cttg)
+	e3:SetValue(c21768554.ctval)
+	c:RegisterEffect(e3)
 end
 function c21768554.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xc)
@@ -48,26 +56,16 @@ function c21768554.operation(e,tp,eg,ep,ev,re,r,rp)
 	while tc do
 		if tc:IsFaceup() and tc:GetCounter(0x100e)>0 and tc:IsRelateToEffect(e) then
 			c:SetCardTarget(tc)
-			local e1=Effect.CreateEffect(c)
-			e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_SET_CONTROL)
-			e1:SetValue(c21768554.ctval)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e1:SetCondition(c21768554.con)
-			tc:RegisterEffect(e1,true)
 		end
 		tc=g:GetNext()
 	end
 	c:RegisterFlagEffect(21768554,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
-function c21768554.con(e)
-	local c=e:GetOwner()
-	local h=e:GetHandler()
-	return c:IsHasCardTarget(h) and h:GetCounter(0x100e)>0 and not h:IsImmuneToEffect(e)
+function c21768554.cttg(e,c)
+	return c:GetCounter(0x100e)>0
 end
 function c21768554.ctval(e,c)
-	return e:GetOwnerPlayer()
+	return e:GetHandlerPlayer()
 end
 function c21768554.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(21768554)~=0
