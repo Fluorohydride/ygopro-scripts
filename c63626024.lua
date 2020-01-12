@@ -48,8 +48,8 @@ function c63626024.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(0x2b)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c63626024.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetFirstCardTarget()

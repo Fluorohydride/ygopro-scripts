@@ -48,8 +48,8 @@ function c68191756.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetCondition(c68191756.thcon)
 		e3:SetOperation(c68191756.thop)
 		Duel.RegisterEffect(e3,tp)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c68191756.splimit(e,c)
 	return not c:IsSetCard(0x10c)

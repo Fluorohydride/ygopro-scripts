@@ -62,8 +62,8 @@ function c6556178.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetValue(c6556178.eqlimit)
 		c:RegisterEffect(e1)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c6556178.eqlimit(e,c)
 	return e:GetOwner()==c
