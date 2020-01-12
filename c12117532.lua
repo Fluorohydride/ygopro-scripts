@@ -33,7 +33,7 @@ function c12117532.initial_effect(c)
 	e4:SetCode(EFFECT_UPDATE_ATTACK)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetValue(c12117532.atkval)
-	c:RegisterEffect(e1)
+	c:RegisterEffect(e4)
 end
 function c12117532.filter(c)
 	return c:IsFaceup()
