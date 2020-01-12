@@ -64,6 +64,6 @@ function c8967776.spop(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetValue(4000)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD)
 		tc:RegisterEffect(e3)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end

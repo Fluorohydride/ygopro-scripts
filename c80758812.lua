@@ -48,8 +48,8 @@ function c80758812.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		tc:EnableDualState()
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c80758812.relfilter(c,tp)
 	return c:IsType(TYPE_DUAL) and c:IsReleasableByEffect() and Duel.GetMZoneCount(tp,c)>0

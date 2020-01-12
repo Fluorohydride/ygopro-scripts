@@ -81,8 +81,8 @@ function c84274024.spop(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetCode(EFFECT_DISABLE_EFFECT)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			tc:RegisterEffect(e2,true)
-			Duel.SpecialSummonComplete()
 		end
+		Duel.SpecialSummonComplete()
 	end
 	Duel.RegisterFlagEffect(tp,84274024,RESET_PHASE+PHASE_END,0,1)
 end
