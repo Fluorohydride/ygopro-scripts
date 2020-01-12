@@ -38,7 +38,7 @@ function c10000.spcon(e,c)
 	return rg:CheckSubGroup(c10000.fselect,1,rg:GetCount(),tp)
 end
 function c10000.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local rg=Duel.GetReleaseGroup(tp)
+	local rg=Duel.GetReleaseGroup(tp):Filter(c10000.rfilter,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local sg=rg:SelectSubGroup(tp,c10000.fselect,true,1,rg:GetCount(),tp)
 	if sg then
