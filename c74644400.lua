@@ -78,6 +78,6 @@ function c74644400.spop(e,tp,eg,ep,ev,re,r,rp,chk)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetValue(lv)
 		tc:RegisterEffect(e1)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
