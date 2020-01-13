@@ -39,7 +39,7 @@ end
 function c20073910.condition(e,tp,eg,ep,ev,re,r,rp)
 	if rp==tp or not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return false end
 	local tg=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
-	return tg:IsContains(e:GetHandler()) and e:GetHandler():IsFacedown()
+	return tg and tg:IsContains(e:GetHandler()) and e:GetHandler():IsFacedown()
 end
 function c20073910.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
