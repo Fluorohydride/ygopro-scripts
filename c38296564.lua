@@ -71,7 +71,7 @@ function c38296564.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c38296564.acon(e)
-	return e:GetHandlerPlayer()==e:GetFirstTarget():GetControler()
+	return e:GetHandlerPlayer()==e:GetHandler():GetFirstCardTarget():GetControler()
 end
 function c38296564.efilter(e,re)
 	return e:GetHandlerPlayer()~=re:GetOwnerPlayer()
