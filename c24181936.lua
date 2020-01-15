@@ -61,7 +61,7 @@ end
 function c24181936.atkcon2(e)
 	local tc=e:GetLabelObject()
 	return Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL
-		and tc:GetFlagEffect(24181936)~=0 and Duel.GetAttacker()==tc
+		and tc:GetFlagEffect(24181936)~=0 and Duel.GetAttacker()==tc and Duel.GetAttackTarget()~=nil
 end
 function c24181936.atktg(e,c)
 	return c==Duel.GetAttacker()
