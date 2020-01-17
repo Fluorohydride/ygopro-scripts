@@ -16,7 +16,7 @@ function c86395581.initial_effect(c)
 	e2:SetDescription(aux.Stringid(86395581,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCode(EVENT_DESTROYED)
+	e2:SetCode(EVENT_BATTLE_DESTROYED)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCountLimit(1,100200273)
@@ -63,8 +63,8 @@ function c86395581.aclimit(e,re,tp)
 	return re:IsActiveType(TYPE_MONSTER) and not re:GetHandler():IsAttribute(ATTRIBUTE_WIND)
 end
 function c86395581.cfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_WIND)~=0
-		and c:IsReason(REASON_BATTLE)
+	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
+		and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_WIND)~=0
 end
 function c86395581.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c86395581.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
