@@ -58,9 +58,9 @@ function c3891471.operation(e,tp,eg,ep,ev,re,r,rp)
 		local lv=tc:GetLevel()
 		if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK) then
 			c:SetCardTarget(tc)
-			Duel.SpecialSummonComplete()
 			c:RegisterFlagEffect(3891471,RESET_EVENT+0x17a0000,0,1,lv)
 		end
+		Duel.SpecialSummonComplete()
 	end
 end
 function c3891471.desop(e,tp,eg,ep,ev,re,r,rp)

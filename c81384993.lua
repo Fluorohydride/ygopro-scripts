@@ -48,8 +48,8 @@ function c81384993.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetCondition(c81384993.rmcon1)
 		e3:SetOperation(c81384993.rmop1)
 		Duel.RegisterEffect(e3,tp)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c81384993.rmcon1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

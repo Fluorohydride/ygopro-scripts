@@ -55,8 +55,8 @@ function c13647631.spop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_SET_BASE_DEFENSE)
 		e2:SetValue(math.ceil(def/2))
 		c:RegisterEffect(e2)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c13647631.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

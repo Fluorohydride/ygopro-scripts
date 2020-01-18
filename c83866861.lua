@@ -65,8 +65,8 @@ function c83866861.spop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(math.ceil(atk/2))
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1,true)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c83866861.atkfilter(c,p)
 	return c:GetOwner()==p

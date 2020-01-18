@@ -96,8 +96,8 @@ function c36841733.spop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(c36841733.bttg)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c36841733.bttg(e,c)
 	return c:IsFaceup() and c:IsLevelBelow(e:GetHandler():GetLevel())

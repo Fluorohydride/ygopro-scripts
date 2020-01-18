@@ -67,8 +67,8 @@ function c90200789.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		Duel.BreakEffect()
 		c:SetCardTarget(tc)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c90200789.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetFirstCardTarget()

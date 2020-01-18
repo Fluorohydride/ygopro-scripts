@@ -25,7 +25,6 @@ function c23557835.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,2,LOCATION_REMOVED)
 end
 function c23557835.op(e,tp,eg,ep,ev,re,r,rp)
-	local count=0
 	local ft1=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft1>0 then
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft1=1 end
@@ -36,7 +35,6 @@ function c23557835.op(e,tp,eg,ep,ev,re,r,rp)
 			while tc do
 				Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
 				tc=g:GetNext()
-				count=count+1
 			end
 		end
 	end
@@ -50,9 +48,8 @@ function c23557835.op(e,tp,eg,ep,ev,re,r,rp)
 			while tc do
 				Duel.SpecialSummonStep(tc,0,1-tp,1-tp,false,false,POS_FACEUP)
 				tc=g:GetNext()
-				count=count+1
 			end
 		end
 	end
-	if count>0 then Duel.SpecialSummonComplete() end
+	Duel.SpecialSummonComplete()
 end

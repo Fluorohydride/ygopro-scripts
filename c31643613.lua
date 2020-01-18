@@ -36,7 +36,6 @@ function c31643613.spop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ConfirmCards(1-tp,g2)
 		end
 	end
-	Duel.SpecialSummonComplete()
 	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

@@ -64,7 +64,6 @@ function c52628687.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e1)
 		Duel.Equip(tp,c,tc)
-		Duel.SpecialSummonComplete()
 		--Add Equip limit
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
@@ -75,4 +74,5 @@ function c52628687.operation(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(c52628687.eqlimit)
 		c:RegisterEffect(e2)
 	end
+	Duel.SpecialSummonComplete()
 end

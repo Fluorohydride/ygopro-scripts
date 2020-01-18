@@ -60,8 +60,8 @@ function c87988305.operation(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
-		Duel.SpecialSummonComplete()
 	end
+	Duel.SpecialSummonComplete()
 end
 function c87988305.cfilter(c,tp)
 	return c:IsLevel(8) and c:IsRace(RACE_FIEND) and c:IsControler(tp)
