@@ -2420,10 +2420,6 @@ function Group.SelectSubGroupEach(g,tp,checks,cancelable,f,...)
 		return nil
 	end
 end
---target function of continuous trap with a card target
-function Auxiliary.ctg(e,c)
-	return e:GetHandler():IsHasCardTarget(c)
-end
 --condition of "negate activation and banish"
 function Auxiliary.nbcon(tp,re)
 	local rc=re:GetHandler()

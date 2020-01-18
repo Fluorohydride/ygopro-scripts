@@ -12,11 +12,9 @@ function c50078509.initial_effect(c)
 	c:RegisterEffect(e1)
 	--disable
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetType(EFFECT_TYPE_TARGET)
 	e3:SetCode(EFFECT_DISABLE)
 	e3:SetRange(LOCATION_SZONE)
-	e3:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e3:SetTarget(aux.ctg)
 	c:RegisterEffect(e3)
 	--cannot attack
 	local e4=e3:Clone()
@@ -46,8 +44,6 @@ function c50078509.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
-		--workaround
-		Duel.AdjustInstantly(c)
 	end
 end
 function c50078509.descon(e,tp,eg,ep,ev,re,r,rp)

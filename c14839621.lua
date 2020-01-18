@@ -26,6 +26,7 @@ function c14839621.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return ft>0 end
 	local seq=Duel.SelectDisableField(tp,1,LOCATION_MZONE,LOCATION_MZONE,0)
 	e:SetLabel(seq)
+	Duel.Hint(HINT_ZONE,tp,seq)
 end
 function c14839621.cfilter(c,seq,tp)
 	local nseq=c:GetSequence()

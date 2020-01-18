@@ -68,7 +68,8 @@ function c37818794.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_MZONE,1,nil)
 		and c:GetFlagEffect(37818794)<c:GetFlagEffectLabel(37818795) end
 	c:RegisterFlagEffect(37818794,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,nil,1,1-tp,LOCATION_MZONE)
+	local g=Duel.GetMatchingGroup(aux.TRUE,tp,0,LOCATION_MZONE,nil)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,0)
 end
 function c37818794.desop(e,tp,eg,ep,ev,re,r,rp)

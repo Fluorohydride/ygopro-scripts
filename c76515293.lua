@@ -9,6 +9,13 @@ function c76515293.initial_effect(c)
 	e1:SetTarget(c76515293.target)
 	e1:SetOperation(c76515293.operation)
 	c:RegisterEffect(e1)
+	--cannot trigger
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_TARGET)
+	e2:SetCode(EFFECT_CANNOT_TRIGGER)
+	e2:SetRange(LOCATION_SZONE)
+	e2:SetValue(1)
+	c:RegisterEffect(e2)
 end
 function c76515293.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsFacedown() end
@@ -23,18 +30,7 @@ function c76515293.operation(e,tp,eg,ep,ev,re,r,rp)
 	while tc do
 		if c:IsRelateToEffect(e) and tc:IsFacedown() and tc:IsRelateToEffect(e) then
 			c:SetCardTarget(tc)
-			e:SetLabelObject(tc)
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_CANNOT_TRIGGER)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e1:SetCondition(c76515293.rcon)
-			e1:SetValue(1)
-			tc:RegisterEffect(e1)
 		end
 		tc=g:GetNext()
 	end
-end
-function c76515293.rcon(e)
-	return e:GetOwner():IsHasCardTarget(e:GetHandler())
 end

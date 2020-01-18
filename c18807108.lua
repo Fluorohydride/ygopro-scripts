@@ -18,6 +18,16 @@ function c18807108.initial_effect(c)
 	e2:SetOperation(c18807108.desop)
 	c:RegisterEffect(e2)
 	e1:SetLabelObject(e2)
+	--cannot change pos
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_TARGET)
+	e3:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
+	e3:SetRange(LOCATION_SZONE)
+	c:RegisterEffect(e3)
+	--cannot attack
+	local e4=e3:Clone()
+	e4:SetCode(EFFECT_CANNOT_ATTACK)
+	c:RegisterEffect(e4)
 end
 function c18807108.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) end
@@ -30,22 +40,7 @@ function c18807108.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
-		c:CreateRelation(tc,RESET_EVENT+RESETS_STANDARD)
-		e:GetLabelObject():SetLabelObject(tc)
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
-		e1:SetCode(EFFECT_CANNOT_CHANGE_POSITION)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET)
-		e1:SetCondition(c18807108.rcon)
-		tc:RegisterEffect(e1,true)
-		local e2=e1:Clone()
-		e2:SetCode(EFFECT_CANNOT_ATTACK)
-		tc:RegisterEffect(e2,true)
 	end
-end
-function c18807108.rcon(e)
-	return not e:GetHandler():IsImmuneToEffect(e) and e:GetOwner():IsRelateToCard(e:GetHandler())
 end
 function c18807108.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

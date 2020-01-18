@@ -41,7 +41,7 @@ function c19501924.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b2=b and ft==1 and st-ft>0
 	local b3=b and ft==2
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c19501924.cfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c19501924.cfilter,tp,LOCATION_MZONE,0,1,nil) and b1 or b2 or b3 end
+	if chk==0 then return Duel.IsExistingTarget(c19501924.cfilter,tp,LOCATION_MZONE,0,1,nil) and (b1 or b2 or b3) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 	Duel.SelectTarget(tp,c19501924.cfilter,tp,LOCATION_MZONE,0,1,ft,nil)
 end

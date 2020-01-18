@@ -40,6 +40,7 @@ function c40669071.lztg(e,tp,eg,ep,ev,re,r,rp,chk)
 			+Duel.GetLocationCount(1-tp,LOCATION_MZONE,PLAYER_NONE,0)>ct end
 	local dis=Duel.SelectDisableField(tp,ct,LOCATION_MZONE,LOCATION_MZONE,0xe000e0)
 	e:SetLabel(dis)
+	Duel.Hint(HINT_ZONE,tp,dis)
 end
 function c40669071.lzop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

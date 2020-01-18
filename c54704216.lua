@@ -12,11 +12,9 @@ function c54704216.initial_effect(c)
 	c:RegisterEffect(e1)
 	--cannot attack
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetType(EFFECT_TYPE_TARGET)
 	e2:SetCode(EFFECT_CANNOT_ATTACK)
 	e2:SetRange(LOCATION_SZONE)
-	e2:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e2:SetTarget(aux.ctg)
 	c:RegisterEffect(e2)
 	--cannot change position
 	local e3=e2:Clone()

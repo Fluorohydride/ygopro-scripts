@@ -17,6 +17,13 @@ function c70284332.initial_effect(c)
 	e2:SetCondition(c70284332.descon)
 	e2:SetOperation(c70284332.desop)
 	c:RegisterEffect(e2)
+	--control
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_TARGET)
+	e3:SetCode(EFFECT_SET_CONTROL)
+	e3:SetRange(LOCATION_SZONE)
+	e3:SetValue(c70284332.ctval)
+	c:RegisterEffect(e3)
 end
 function c70284332.filter(c,e,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsType(TYPE_SYNCHRO) and c:IsCanBeEffectTarget(e) and c:IsControlerCanBeChanged()
@@ -34,14 +41,6 @@ function c70284332.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_SET_CONTROL)
-		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
-		e1:SetValue(c70284332.ctval)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		e1:SetCondition(c70284332.con)
-		tc:RegisterEffect(e1,true)
 		--redirect
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
@@ -52,13 +51,8 @@ function c70284332.operation(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e2)
 	end
 end
-function c70284332.con(e)
-	local c=e:GetOwner()
-	local h=e:GetHandler()
-	return c:IsHasCardTarget(h) and not h:IsImmuneToEffect(e)
-end
 function c70284332.ctval(e,c)
-	return e:GetOwnerPlayer()
+	return e:GetHandlerPlayer()
 end
 function c70284332.dircon(e)
 	return e:GetHandler():IsReason(REASON_DESTROY)

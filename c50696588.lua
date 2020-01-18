@@ -17,6 +17,7 @@ function c50696588.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(1-tp,LOCATION_MZONE,PLAYER_NONE,0)>0 end
 	local flag=Duel.SelectDisableField(tp,1,0,LOCATION_MZONE,0)
 	e:SetLabel(flag)
+	Duel.Hint(HINT_ZONE,tp,flag)
 end
 function c50696588.activate(e,tp,eg,ep,ev,re,r,rp)
 	local flag=e:GetLabel()
