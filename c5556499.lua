@@ -22,11 +22,18 @@ function c5556499.initial_effect(c)
 	c:RegisterEffect(e2)
 	--handes
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e3:SetCode(EVENT_CHAINING)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetCode(EVENT_CHAIN_SOLVING)
-	e3:SetOperation(c5556499.hdop)
+	e3:SetOperation(aux.chainreg)
 	c:RegisterEffect(e3)
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e4:SetRange(LOCATION_MZONE)
+	e4:SetCode(EVENT_CHAIN_SOLVING)
+	e4:SetOperation(c5556499.hdop)
+	c:RegisterEffect(e4)
 end
 function c5556499.spfilter(c)
 	return c:IsRace(RACE_MACHINE) and c:IsDiscardable()
@@ -63,11 +70,12 @@ function c5556499.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c5556499.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
 function c5556499.hdop(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetHandler():GetFlagEffect(1)==0 then return end
 	if ep==tp then return end
 	if not re:IsActiveType(TYPE_EFFECT) or not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
