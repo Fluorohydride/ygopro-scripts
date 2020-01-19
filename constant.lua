@@ -776,6 +776,7 @@ TIMING_TOGRAVE				=0x800000   	--进墓地时点
 TIMING_BATTLE_PHASE			=0x1000000  	--战斗阶段时点
 TIMING_EQUIP				=0x2000000  	--装备时点
 TIMING_BATTLE_STEP_END		=0x4000000  	--戰鬥步驟結束時
+TIMING_BATTLED				=0x8000000  	--伤害计算后时点
 ----组合时点
 TIMINGS_CHECK_MONSTER       =0x1c0 -- 怪兽正面上场
 --Global flag	--特殊标记
