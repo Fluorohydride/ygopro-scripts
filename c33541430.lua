@@ -110,7 +110,6 @@ function c33541430.synop(e,tp,eg,ep,ev,re,r,rp,syncard,f,min,max)
 		if cg:GetCount()==0 then break end
 		local minct=1
 		if c33541430.syngoal(g,tp,lv,syncard,minc,i) then
-			if not Duel.SelectYesNo(tp,210) then break end
 			minct=0
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
