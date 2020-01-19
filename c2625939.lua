@@ -20,6 +20,17 @@ function c2625939.activate(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.SelectYesNo(tp,aux.Stringid(2625939,0)) then
 		Duel.BreakEffect()
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
+		local ct=1
+		if ft>1 then
+			local num={}
+			local i=1
+			while i<=ft do
+				num[i]=i
+				i=i+1
+			end
+			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(2625939,1))
+			ct=Duel.AnnounceNumber(tp,table.unpack(num))	
+		end
 		repeat
 			local token=Duel.CreateToken(tp,2625940)
 			Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
@@ -30,8 +41,8 @@ function c2625939.activate(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetValue(1)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			token:RegisterEffect(e1,true)
-			ft=ft-1
-		until ft==0 or not Duel.SelectYesNo(tp,210)
+			ct=ct-1
+		until ct==0
 		Duel.SpecialSummonComplete()
 	end
 end
