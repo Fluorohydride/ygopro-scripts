@@ -99,7 +99,7 @@ function c18175965.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c18175965.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsStatus(STATUS_PROC_COMPLETE) end
+	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,0,0,tp,1)
 end
@@ -107,6 +107,6 @@ function c18175965.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT)==0 then return end
 	if c:IsRelateToEffect(e) then
-		Duel.SpecialSummon(c,0,tp,tp,true,true,POS_FACEUP)
+		Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
 	end
 end
