@@ -89,7 +89,7 @@ function c51686645.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c51686645.eqlimit(e,c)
-	return c:IsControler(e:GetOwnerPlayer())
+	return c:IsControler(1-e:GetHandlerPlayer())
 end
 function c51686645.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_LOST_TARGET)
