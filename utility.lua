@@ -2050,12 +2050,8 @@ function Auxiliary.ChangeBattleDamage(player,value)
 			end
 end 
 --card effect disable filter(target)
-function Auxiliary.disfilter1(c)
-	return c:IsFaceup() and not c:IsDisabled() and (not c:IsType(TYPE_NORMAL) or c:GetOriginalType()&TYPE_EFFECT~=0)
-end
---card effect disable filter for trapmonster(target)
-function Auxiliary.disfilter2(c)
-	return c:IsFaceup() and (not c:IsDisabled() or c:IsType(TYPE_TRAPMONSTER)) and (not c:IsType(TYPE_NORMAL) or c:GetOriginalType()&TYPE_EFFECT~=0)
+function Auxiliary.disfilter1(c,trap)
+	return c:IsFaceup() and not (c:IsDisabled() and (not trap or not c:IsType(TYPE_TRAPMONSTER))) and (not c:IsType(TYPE_NORMAL) or c:GetOriginalType()&TYPE_EFFECT~=0)
 end
 --condition of EVENT_BATTLE_DESTROYING
 function Auxiliary.bdcon(e,tp,eg,ep,ev,re,r,rp)
