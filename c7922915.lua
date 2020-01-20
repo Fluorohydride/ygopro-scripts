@@ -58,7 +58,7 @@ function c7922915.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return aux.exccon(e) and Duel.IsExistingMatchingCard(c7922915.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
 end
 function c7922915.negfilter(c)
-	return aux.disfilter1(c) and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return aux.disfilter1(c,true) and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c7922915.negtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c7922915.negfilter(chkc) end
@@ -69,7 +69,7 @@ end
 function c7922915.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsDisabled() then
+	if tc:IsRelateToEffect(e) and tc:IsFaceup() and (not tc:IsDisabled() or tc:IsType(TYPE_TRAPMONSTER)) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
