@@ -31,10 +31,10 @@ function c68406755.initial_effect(c)
 	local e4=e3:Clone()
 	e4:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e4)
-	--must be attacked
+	--only be attacked
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_FIELD)
-	e5:SetCode(EFFECT_MUST_ATTACK_MONSTER)
+	e5:SetCode(EFFECT_ONLY_ATTACK_MONSTER)
 	e5:SetRange(LOCATION_MZONE)
 	e5:SetTargetRange(0,LOCATION_MZONE)
 	e5:SetCondition(c68406755.efcon)
