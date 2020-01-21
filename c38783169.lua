@@ -106,7 +106,7 @@ function c38783169.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectTarget(tp,c38783169.filter,tp,LOCATION_MZONE,0,1,1,c)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
-	c:RegisterFlagEffect(c38783169,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
+	c:RegisterFlagEffect(38783169,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c38783169.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
