@@ -79,10 +79,10 @@ function c63492244.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:SetCardTarget(tc)
 		e:SetLabelObject(tc)
 		c:ResetFlagEffect(63492244)
-		tc:ResetFlagEffect(63492244)
+		tc:ResetFlagEffect(63492245)
 		local fid=c:GetFieldID()
 		c:RegisterFlagEffect(63492244,RESET_EVENT+RESETS_STANDARD,0,1,fid)
-		tc:RegisterFlagEffect(63492244,RESET_EVENT+RESETS_STANDARD,0,1,fid)
+		tc:RegisterFlagEffect(63492245,RESET_EVENT+RESETS_STANDARD,0,1,fid)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
@@ -128,12 +128,12 @@ function c63492244.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c63492244.rcon(e)
-	return e:GetOwner():IsHasCardTarget(e:GetHandler()) and e:GetHandler():GetFlagEffect(63492244)~=0
+	return e:GetOwner():IsHasCardTarget(e:GetHandler()) and e:GetHandler():GetFlagEffect(63492245)~=0
 end
 function c63492244.rstcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=e:GetLabelObject():GetLabelObject()
-	if tc:GetFlagEffectLabel(63492244)==e:GetLabel()
+	if tc:GetFlagEffectLabel(63492245)==e:GetLabel()
 		and c:GetFlagEffectLabel(63492244)==e:GetLabel() then
 		return not c:IsDisabled()
 	else
@@ -149,7 +149,7 @@ end
 function c63492244.agcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=e:GetLabelObject()
-	if tc:GetFlagEffectLabel(63492244)==e:GetLabel()
+	if tc:GetFlagEffectLabel(63492245)==e:GetLabel()
 		and c:GetFlagEffectLabel(63492244)==e:GetLabel() then
 		return not c:IsDisabled()
 	else
@@ -163,10 +163,12 @@ function c63492244.agop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c63492244.rstop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	if tc:GetFlagEffectLabel(63492244)~=e:GetLabel() then return end
+	local te=e:GetLabelObject()
+	if tc~=te:GetLabelObject() then return end
+	if tc:GetFlagEffectLabel(63492245)~=e:GetLabel() then return end
 	local c=e:GetHandler()
 	c:CancelCardTarget(tc)
 	local te=e:GetLabelObject()
-	tc:ResetFlagEffect(63492244)
+	tc:ResetFlagEffect(63492245)
 	if te then te:Reset() end
 end
