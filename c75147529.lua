@@ -66,7 +66,7 @@ function c75147529.rmop(e,tp,eg,ep,ev,re,r,rp)
 		else
 			reset=RESET_SELF_TURN
 		end
-		if Duel.GetTurnPlayer()==1-tp then
+		if Duel.GetTurnPlayer()==1-tp and Duel.GetCurrentPhase()==PHASE_END then
 			e1:SetReset(RESET_PHASE+PHASE_END+RESET_OPPO_TURN,2)
 			e1:SetValue(Duel.GetTurnCount())
 			tc:RegisterFlagEffect(75147529,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+reset,0,2)
