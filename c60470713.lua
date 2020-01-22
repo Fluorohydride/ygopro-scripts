@@ -37,35 +37,22 @@ end
 function c60470713.mfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x71) and c:IsRace(RACE_FAIRY)
 end
-function c60470713.filter1(c)
-	return c:IsSetCard(0x71) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
-end
-function c60470713.filter2(c,e,tp)
+function c60470713.filter(c,e,tp,chk)
 	return c:IsSetCard(0x71) and c:IsType(TYPE_MONSTER)
-		and (c:IsAbleToHand() or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK))
+		and (c:IsAbleToHand() or chk and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK))
 end
 function c60470713.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local b=Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c60470713.mfilter,tp,LOCATION_MZONE,0,1,nil)
-	if not b then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g=Duel.SelectMatchingCard(tp,c60470713.filter1,tp,LOCATION_DECK,0,1,1,nil)
-		if g:GetCount()>0 then
-			Duel.SendtoHand(g,nil,REASON_EFFECT)
-			Duel.ConfirmCards(1-tp,g)
-		end
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g=Duel.SelectMatchingCard(tp,c60470713.filter2,tp,LOCATION_DECK,0,1,1,nil,e,tp)
-		local tc=g:GetFirst()
-		if tc then
-			if not tc:IsAbleToHand() or (tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK)
-				and Duel.SelectYesNo(tp,aux.Stringid(60470713,1))) then
-				Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK)
-			else
-				Duel.SendtoHand(tc,nil,REASON_EFFECT)
-				Duel.ConfirmCards(1-tp,tc)
-			end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+	local g=Duel.SelectMatchingCard(tp,c60470713.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp,b)
+	local tc=g:GetFirst()
+	if tc then
+		if b and tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK)
+			and (not tc:IsAbleToHand() or Duel.SelectOption(tp,1190,1152)==1) then
+			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK)
+		else
+			Duel.SendtoHand(tc,nil,REASON_EFFECT)
+			Duel.ConfirmCards(1-tp,tc)
 		end
 	end
 end
