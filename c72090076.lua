@@ -44,7 +44,7 @@ function c72090076.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c72090076.thfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x23e) and c:IsType(TYPE_MONSTER) and not c:IsCode(72090076) and c:IsAbleToHand()
+	return c:IsFaceup() and c:IsSetCard(0x13d) and c:IsType(TYPE_MONSTER) and not c:IsCode(72090076) and c:IsAbleToHand()
 end
 function c72090076.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c72090076.thfilter(chkc) end

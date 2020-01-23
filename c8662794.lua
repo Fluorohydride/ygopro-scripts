@@ -35,11 +35,11 @@ end
 function c8662794.atktg(e,c)
 	local lg1=c:GetLinkedGroup()
 	local lg2=e:GetHandler():GetLinkedGroup()
-	return c:IsFaceup() and c:IsType(TYPE_LINK) and not c:IsSetCard(0x23c)
+	return c:IsFaceup() and c:IsType(TYPE_LINK) and not c:IsSetCard(0x13c)
 		and (lg1 and lg1:IsContains(e:GetHandler()) or lg2 and lg2:IsContains(c))
 end
 function c8662794.desfilter(c)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousTypeOnField()&TYPE_LINK~=0 and c:IsPreviousSetCard(0x23c)
+	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousTypeOnField()&TYPE_LINK~=0 and c:IsPreviousSetCard(0x13c)
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c8662794.descon(e,tp,eg,ep,ev,re,r,rp)

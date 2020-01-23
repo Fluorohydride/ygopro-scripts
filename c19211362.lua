@@ -43,7 +43,7 @@ function c19211362.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c19211362.srfilter(c)
-	return c:IsSetCard(0x23e) and c:IsType(TYPE_MONSTER) and not c:IsCode(19211362) and c:IsAbleToHand()
+	return c:IsSetCard(0x13d) and c:IsType(TYPE_MONSTER) and not c:IsCode(19211362) and c:IsAbleToHand()
 end
 function c19211362.srtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c19211362.srfilter,tp,LOCATION_DECK,0,1,nil) end

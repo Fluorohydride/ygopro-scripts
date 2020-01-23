@@ -58,7 +58,7 @@ function c63972571.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c63972571.cfilter(c)
-	return c:IsSetCard(0x23d) and c:IsType(TYPE_MONSTER) and (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE))
+	return c:IsSetCard(0x13e) and c:IsType(TYPE_MONSTER) and (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE))
 		and c:IsAbleToRemoveAsCost()
 end
 function c63972571.descost(e,tp,eg,ep,ev,re,r,rp,chk)

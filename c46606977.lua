@@ -44,7 +44,7 @@ function c46606977.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c46606977.thfilter(c)
-	return c:IsSetCard(0x23e) and c:IsType(TYPE_MONSTER) and not c:IsCode(46606977) and c:IsAbleToHand()
+	return c:IsSetCard(0x13d) and c:IsType(TYPE_MONSTER) and not c:IsCode(46606977) and c:IsAbleToHand()
 end
 function c46606977.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c46606977.thfilter(chkc) end

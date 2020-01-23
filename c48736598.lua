@@ -26,13 +26,13 @@ function c48736598.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c48736598.lcheck(g,lc)
-	return g:IsExists(Card.IsLinkSetCard,1,nil,0x23c)
+	return g:IsExists(Card.IsLinkSetCard,1,nil,0x13c)
 end
 function c48736598.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetMutualLinkedGroupCount()>0
 end
 function c48736598.spfilter(c,e,tp)
-	if not c:IsSetCard(0x23c) then return false end
+	if not c:IsSetCard(0x13c) then return false end
 	local ok=false
 	for p=0,1 do
 		local zone=Duel.GetLinkedZone(p)&0xff
@@ -86,7 +86,7 @@ function c48736598.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c48736598.desfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x23c) and c:IsLinkState()
+	return c:IsFaceup() and c:IsSetCard(0x13c) and c:IsLinkState()
 end
 function c48736598.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c48736598.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
