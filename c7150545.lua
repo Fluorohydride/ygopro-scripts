@@ -18,7 +18,11 @@ function c7150545.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetValue(c7150545.xyzlv)
+	e2:SetLabel(3)
 	c:RegisterEffect(e2)
+	local e3=e2:Clone()
+	e3:SetLabel(5)
+	c:RegisterEffect(e3)
 end
 function c7150545.tgfilter(c,e,tp)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER) and c:IsLevelAbove(1)
@@ -66,10 +70,8 @@ function c7150545.splimit(e,c)
 	return not c:IsType(TYPE_XYZ) and c:IsLocation(LOCATION_EXTRA)
 end
 function c7150545.xyzlv(e,c,rc)
-	if rc:IsAttribute(ATTRIBUTE_WATER) and rc:IsRank(3) then
-		return c:GetLevel()+0x10000*3
-	elseif rc:IsAttribute(ATTRIBUTE_WATER) and rc:IsRank(5) then
-		return c:GetLevel()+0x10000*5
+	if rc:IsAttribute(ATTRIBUTE_WATER) then
+		return c:GetLevel()+0x10000*e:GetLabel()
 	else
 		return c:GetLevel()
 	end

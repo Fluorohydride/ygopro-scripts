@@ -21,7 +21,11 @@ function c70156946.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetValue(c70156946.xyzlv)
+	e3:SetLabel(3)
 	c:RegisterEffect(e3)
+	local e4=e3:Clone()
+	e4:SetLabel(5)
+	c:RegisterEffect(e4)
 end
 function c70156946.spfilter(c,e,tp)
 	return c:IsAttribute(ATTRIBUTE_WATER) and c:IsLevelAbove(3) and c:IsLevelBelow(5) and not c:IsCode(70156946)
@@ -53,10 +57,8 @@ function c70156946.splimit(e,c)
 	return not c:IsType(TYPE_XYZ) and c:IsLocation(LOCATION_EXTRA)
 end
 function c70156946.xyzlv(e,c,rc)
-	if rc:IsAttribute(ATTRIBUTE_WATER) and rc:IsRank(3) then
-		return c:GetLevel()+0x10000*3
-	elseif rc:IsAttribute(ATTRIBUTE_WATER) and rc:IsRank(5) then
-		return c:GetLevel()+0x10000*5
+	if rc:IsAttribute(ATTRIBUTE_WATER) then
+		return c:GetLevel()+0x10000*e:GetLabel()
 	else
 		return c:GetLevel()
 	end
