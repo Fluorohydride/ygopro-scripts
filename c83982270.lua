@@ -13,7 +13,7 @@ function c83982270.initial_effect(c)
 end
 function c83982270.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE)
 end
 function c83982270.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
