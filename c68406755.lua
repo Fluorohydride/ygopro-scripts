@@ -34,12 +34,19 @@ function c68406755.initial_effect(c)
 	--only be attacked
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_FIELD)
-	e5:SetCode(EFFECT_ONLY_ATTACK_MONSTER)
+	e5:SetCode(EFFECT_CANNOT_SELECT_BATTLE_TARGET)
 	e5:SetRange(LOCATION_MZONE)
 	e5:SetTargetRange(0,LOCATION_MZONE)
 	e5:SetCondition(c68406755.efcon)
 	e5:SetValue(c68406755.atklimit)
 	c:RegisterEffect(e5)
+	local e6=Effect.CreateEffect(c)
+	e6:SetType(EFFECT_TYPE_FIELD)
+	e6:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
+	e6:SetRange(LOCATION_MZONE)
+	e6:SetTargetRange(0,LOCATION_MZONE)
+	e6:SetCondition(c68406755.efcon)
+	c:RegisterEffect(e6)
 end
 function c68406755.splimit(e,se,sp,st)
 	return se:GetHandler():IsSetCard(0xe2)
@@ -73,5 +80,5 @@ function c68406755.atkval(e,c)
 	return g:GetClassCount(Card.GetCode)*500
 end
 function c68406755.atklimit(e,c)
-	return c:IsCode(68406755)
+	return not c:IsCode(68406755)
 end
