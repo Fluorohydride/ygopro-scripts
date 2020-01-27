@@ -11,7 +11,7 @@ function c9581215.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c9581215.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()>1 and rp==1-tp and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainDisablable(ev)
+	return ev>1 and rp==1-tp and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainDisablable(ev)
 end
 function c9581215.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
