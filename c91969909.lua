@@ -25,6 +25,7 @@ function c91969909.initial_effect(c)
 	e4:SetDescription(aux.Stringid(91969909,0))
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetCountLimit(1)
+	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetTarget(c91969909.rmtg)
 	e4:SetOperation(c91969909.rmop)
@@ -39,6 +40,7 @@ end
 function c91969909.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:GetControler()~=tp and chkc:IsLocation(LOCATION_ONFIELD) and c91969909.rmfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c91969909.rmfilter,tp,0,LOCATION_ONFIELD,1,nil) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEDOWN)
 	local g=Duel.SelectTarget(tp,c91969909.rmfilter,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CODE)
 	local ac=Duel.AnnounceCard(tp)

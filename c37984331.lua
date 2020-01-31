@@ -23,6 +23,6 @@ function c37984331.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ct==4 and not Duel.IsExistingMatchingCard(c37984331.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,c)
 end
 function c37984331.operation(e,tp,eg,ep,ev,re,r,rp)
-	local WIN_REASON_EXODIA = 0x10
-	Duel.Win(1-tp,WIN_REASON_EXODIA)
+	local WIN_REASON_TRUE_EXODIA = 0x20
+	Duel.Win(1-tp,WIN_REASON_TRUE_EXODIA)
 end

@@ -38,7 +38,8 @@ function c22091647.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c22091647.costfilter(c)
-	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:GetType()==TYPE_EQUIP+TYPE_SPELL and c:IsAbleToRemoveAsCost()
+	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup() or c:GetEquipTarget()) and c:GetType()==TYPE_EQUIP+TYPE_SPELL
+		and c:IsAbleToRemoveAsCost()
 end
 function c22091647.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c22091647.costfilter,tp,LOCATION_SZONE+LOCATION_GRAVE,0,1,nil) end

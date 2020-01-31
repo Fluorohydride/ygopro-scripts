@@ -41,7 +41,7 @@ function c38783169.initial_effect(c)
 	e5:SetType(EFFECT_TYPE_SINGLE)
 	e5:SetCode(EFFECT_EQUIP_LIMIT)
 	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e5:SetValue(c38783169.eqlimit)
+	e5:SetValue(1)
 	c:RegisterEffect(e5)
 end
 function c38783169.tntg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -106,7 +106,7 @@ function c38783169.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectTarget(tp,c38783169.filter,tp,LOCATION_MZONE,0,1,1,c)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
-	c:RegisterFlagEffect(c38783169,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
+	c:RegisterFlagEffect(38783169,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c38783169.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -133,7 +133,4 @@ function c38783169.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c38783169.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0 or bit.band(r,REASON_EFFECT)~=0
-end
-function c38783169.eqlimit(e,c)
-	return e:GetHandler():GetEquipTarget()==c
 end
