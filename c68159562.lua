@@ -32,11 +32,11 @@ end
 function c68159562.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then
-		return Duel.IsExistingTarget(aux.disfilter1,tp,0,LOCATION_ONFIELD,1,nil)
+		return Duel.IsExistingTarget(aux.disfilter1,tp,0,LOCATION_ONFIELD,1,nil,true)
 		and Duel.IsExistingTarget(c68159562.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g1=Duel.SelectTarget(tp,aux.disfilter1,tp,0,LOCATION_ONFIELD,1,1,nil)
+	local g1=Duel.SelectTarget(tp,aux.disfilter1,tp,0,LOCATION_ONFIELD,1,1,nil,true)
 	e:SetLabelObject(g1:GetFirst())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local g2=Duel.SelectTarget(tp,c68159562.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,1,nil)
@@ -48,7 +48,7 @@ function c68159562.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local lc=tg:GetFirst()
 	if lc==tc then lc=tg:GetNext() end
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) and not tc:IsDisabled() then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) and (not tc:IsDisabled() or tc:IsType(TYPE_TRAPMONSTER)) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
