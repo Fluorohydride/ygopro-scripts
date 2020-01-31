@@ -46,12 +46,16 @@ function c79337169.operation(e,tp,eg,ep,ev,re,r,rp)
 		local e3=Effect.CreateEffect(c)
 		e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 		e3:SetCode(EVENT_DAMAGE_STEP_END)
+		e3:SetCondition(c79337169.resetcon)
 		e3:SetOperation(c79337169.resetop)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e3:SetLabelObject(e2)
 		tc:RegisterEffect(e3)
 		tc=g:GetNext()
 	end
+end
+function c79337169.resetcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetBattledGroupCount()>0
 end
 function c79337169.resetop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=e:GetLabelObject()
