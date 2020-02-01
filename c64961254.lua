@@ -40,26 +40,23 @@ function c64961254.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c64961254.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDiscardDeck(1-tp,1) end
+	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CARDTYPE)
 	Duel.SetTargetParam(Duel.AnnounceType(tp))
 end
 function c64961254.operation(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFieldGroupCount(1-tp,0,LOCATION_DECK)<=0
-		or not e:GetHandler():IsRelateToEffect(e)then return end
-	Duel.DisableShuffleCheck()
+	if Duel.GetFieldGroupCount(tp,0,LOCATION_DECK)<=0 then return end
 	Duel.ConfirmDecktop(1-tp,1)
 	local g=Duel.GetDecktopGroup(1-tp,1)
 	local tc=g:GetFirst()
-	if not tc then return end
+	Duel.DisableShuffleCheck()
 	local opt=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
-	if (opt==0 and tc:IsType(TYPE_MONSTER)) then
-		if tc:IsCanBeSpecialSummoned(e,0,1-tp,false,false,POS_FACEDOWN_DEFENSE,1-tp) then
-			Duel.SpecialSummon(tc,0,1-tp,1-tp,false,false,POS_FACEDOWN_DEFENSE)
-		end
-	elseif (opt==1 and tc:IsType(TYPE_SPELL) and tc:IsSSetable()) then
+	if opt==0 and tc:IsType(TYPE_MONSTER)
+		and tc:IsCanBeSpecialSummoned(e,0,1-tp,false,false,POS_FACEDOWN_DEFENSE,1-tp) then
+		Duel.SpecialSummon(tc,0,1-tp,1-tp,false,false,POS_FACEDOWN_DEFENSE)
+	elseif opt==1 and tc:IsType(TYPE_SPELL) and tc:IsSSetable() then
 		Duel.SSet(1-tp,tc)
-	elseif (opt==2 and tc:IsType(TYPE_TRAP) and tc:IsSSetable())then
+	elseif opt==2 and tc:IsType(TYPE_TRAP) and tc:IsSSetable() then
 		Duel.SSet(1-tp,tc)
 	else
 		Duel.SendtoHand(g,1-tp,REASON_EFFECT)
