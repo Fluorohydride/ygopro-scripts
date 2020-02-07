@@ -58,8 +58,9 @@ function c38030232.tkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToEffect(e) then
 		local atk=tc:GetBaseAttack()
+		if not tc:IsFaceup() then atk=0 end
 		if Duel.IsPlayerCanSpecialSummonMonster(tp,38030233,0x12c,0x4011,atk,0,4,RACE_WYRM,ATTRIBUTE_LIGHT) then
 			local token=Duel.CreateToken(tp,38030233)
 			local e1=Effect.CreateEffect(c)
