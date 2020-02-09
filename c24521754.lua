@@ -40,7 +40,7 @@ function c24521754.atkcon(e)
 	return e:GetHandler():GetSequence()==2
 end
 function c24521754.seqcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSequence()<4
+	return e:GetHandler():GetSequence()<5
 end
 function c24521754.seqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
