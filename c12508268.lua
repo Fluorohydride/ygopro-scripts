@@ -40,13 +40,13 @@ function c12508268.activate(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetOperation(c12508268.disop)
 	Duel.RegisterEffect(e2,tp)
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e3:SetCode(EVENT_BATTLE_DESTROYING)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-	e3:SetCondition(aux.bdocon)
+	e3:SetReset(RESET_PHASE+PHASE_END)
+	e3:SetLabelObject(tc)
+	e3:SetCondition(c12508268.damcon)
 	e3:SetOperation(c12508268.damop)
-	tc:RegisterEffect(e3)
+	Duel.RegisterEffect(e3,tp)
 end
 function c12508268.discon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
@@ -57,10 +57,10 @@ function c12508268.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ac=Duel.GetAttacker()
 	local bc=Duel.GetAttackTarget()
-	local ec=e:GetLabelObject()
+	local tc=e:GetLabelObject()
 	if not ac or not bc then return end
-	if ac~=ec then ac,bc=bc,ac end
-	if ac==ec and bc:IsControler(1-tp) then
+	if ac~=tc then ac,bc=bc,ac end
+	if ac==tc and bc:IsControler(1-tp) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
@@ -73,8 +73,14 @@ function c12508268.disop(e,tp,eg,ep,ev,re,r,rp)
 		bc:RegisterEffect(e2)
 	end
 end
+function c12508268.damcon(e,tp,eg,ep,ev,re,r,rp)
+	local tc=e:GetLabelObject()
+	local fid=tc:GetFlagEffectLabel(12508268)
+	return fid and fid==tc:GetFieldID() and tc==eg:GetFirst() and tc:IsRelateToBattle() and tc:IsStatus(STATUS_OPPO_BATTLE)
+end
 function c12508268.damop(e,tp,eg,ep,ev,re,r,rp)
-	local bc=e:GetHandler():GetBattleTarget()
+	local tc=e:GetLabelObject()
+	local bc=tc:GetBattleTarget()
 	if not bc then return end
 	local dam=math.max(bc:GetBaseAttack(),0)
 	if dam>0 then
