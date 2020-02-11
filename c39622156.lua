@@ -58,7 +58,7 @@ function c39622156.daop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e3,tp)
 end
 function c39622156.atkcon(e)
-	return Duel.GetFlagEffect(tp,39622156)~=0
+	return Duel.GetFlagEffect(e:GetHandlerPlayer(),39622156)~=0
 end
 function c39622156.atktg(e,c)
 	return c:GetFieldID()~=e:GetLabel()
