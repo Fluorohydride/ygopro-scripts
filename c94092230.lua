@@ -25,7 +25,7 @@ function c94092230.initial_effect(c)
 	local e4=Effect.CreateEffect(c)
 	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetCode(EFFECT_LIMIT_SUMMON_PROC)
+	e4:SetCode(EFFECT_LIMIT_SET_PROC)
 	e4:SetCondition(c94092230.setcon)
 	c:RegisterEffect(e4)
 	--destroy
