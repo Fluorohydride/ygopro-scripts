@@ -53,7 +53,7 @@ function c37351133.cfilter2(c,tp,rp)
 		and (c:IsReason(REASON_BATTLE) or (rp==tp and c:IsReason(REASON_EFFECT)))
 end
 function c37351133.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c37351133.cfilter2,1,nil,tp,rp)
+	return eg:IsExists(c37351133.cfilter2,1,nil,tp,rp) and not eg:IsContains(e:GetHandler())
 end
 function c37351133.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
