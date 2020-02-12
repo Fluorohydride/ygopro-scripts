@@ -22,10 +22,8 @@ function c96404912.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,1-tp,1)
 end
 function c96404912.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateActivation(ev) then
-		if re:GetHandler():IsRelateToEffect(re) then
-			Duel.Destroy(eg,REASON_EFFECT)
-		end
-		Duel.Draw(1-tp,1,REASON_EFFECT)
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
+		Duel.Destroy(eg,REASON_EFFECT)
 	end
+	Duel.Draw(1-tp,1,REASON_EFFECT)
 end
