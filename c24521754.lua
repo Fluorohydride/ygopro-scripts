@@ -45,7 +45,7 @@ function c24521754.seqcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c24521754.seqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE)>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
 	local fd=Duel.SelectDisableField(tp,1,LOCATION_MZONE,0,0)
 	Duel.Hint(HINT_ZONE,tp,fd)
@@ -54,7 +54,6 @@ function c24521754.seqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local pseq=c:GetSequence()
 	if pseq>seq then pseq,seq=seq,pseq end
 	local dg=Group.CreateGroup()
-	dg:KeepAlive()
 	local g=nil
 	local exg=nil
 	for i=pseq,seq do
@@ -93,7 +92,6 @@ function c24521754.seqop(e,tp,eg,ep,ev,re,r,rp)
 	if c:GetSequence()==seq then
 		if pseq>seq then pseq,seq=seq,pseq end
 		local dg=Group.CreateGroup()
-		dg:KeepAlive()
 		local g=nil
 		local exg=nil
 		for i=pseq,seq do
