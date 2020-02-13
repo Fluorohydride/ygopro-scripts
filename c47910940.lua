@@ -57,7 +57,7 @@ function c47910940.drop(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Draw(p,d,REASON_EFFECT)
 end
 function c47910940.atkfilter(c)
-	return (c:IsPreviousPosition(POS_FACEUP) or c:IsPreviousLocation(LOCATION_MZONE+LOCATION_EXTRA)) and bit.band(c:GetPreviousTypeOnField(),TYPE_MONSTER)~=0
+	return c:IsFaceup() and c:IsType(TYPE_MONSTER)
 end
 function c47910940.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c47910940.atkfilter,1,nil) and not eg:IsContains(e:GetHandler())
