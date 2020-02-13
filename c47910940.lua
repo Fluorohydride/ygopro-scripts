@@ -57,7 +57,7 @@ function c47910940.drop(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Draw(p,d,REASON_EFFECT)
 end
 function c47910940.atkfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_MONSTER)
+	return c:IsPreviousPosition(POS_FACEUP) and bit.band(c:GetPreviousTypeOnField(),TYPE_MONSTER)~=0
 end
 function c47910940.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c47910940.atkfilter,1,nil) and not eg:IsContains(e:GetHandler())
@@ -65,12 +65,14 @@ end
 function c47910940.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ct=eg:FilterCount(c47910940.atkfilter,nil)
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_UPDATE_ATTACK)
-	e1:SetValue(ct*600)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END)
-	c:RegisterEffect(e1)
+	if c:IsFaceup() and c:IsRelateToEffect(e) then
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_UPDATE_ATTACK)
+		e1:SetValue(ct*600)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END)
+		c:RegisterEffect(e1)
+	end
 end
 function c47910940.costfilter(c)
 	return c:IsAttribute(ATTRIBUTE_WATER) and c:IsAbleToGraveAsCost()
