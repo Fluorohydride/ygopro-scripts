@@ -48,6 +48,7 @@ function c7563579.spop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c7563579.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0 and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
+		or e:GetHandler():IsPreviousLocation(LOCATION_PZONE)
 end
 function c7563579.spfilter(c,e,tp)
 	return c:IsSetCard(0xc6) and not c:IsCode(7563579) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

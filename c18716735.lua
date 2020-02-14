@@ -58,6 +58,7 @@ function c18716735.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c18716735.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0 and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
+		or e:GetHandler():IsPreviousLocation(LOCATION_PZONE)
 end
 function c18716735.thfilter(c)
 	return c:IsSetCard(0xe1) and c:IsType(TYPE_MONSTER)

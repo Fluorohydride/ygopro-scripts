@@ -88,6 +88,7 @@ function c83190280.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c83190280.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT+REASON_BATTLE)~=0 and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
+		or e:GetHandler():IsPreviousLocation(LOCATION_PZONE)
 end
 function c83190280.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c83190280.filter(chkc,e,tp) end
