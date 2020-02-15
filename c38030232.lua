@@ -58,18 +58,17 @@ function c38030232.tkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		local atk=tc:GetBaseAttack()
-		if Duel.IsPlayerCanSpecialSummonMonster(tp,38030233,0x12c,0x4011,atk,0,4,RACE_WYRM,ATTRIBUTE_LIGHT) then
-			local token=Duel.CreateToken(tp,38030233)
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_SET_BASE_ATTACK)
-			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-			e1:SetValue(atk)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD)
-			token:RegisterEffect(e1)
-			Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
-		end
+	local atk=tc:GetBaseAttack()
+	if not tc:IsRelateToEffect(e) or not tc:IsFaceup() then atk=0 end
+	if Duel.IsPlayerCanSpecialSummonMonster(tp,38030233,0x12c,0x4011,atk,0,4,RACE_WYRM,ATTRIBUTE_LIGHT) then
+		local token=Duel.CreateToken(tp,38030233)
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_SET_BASE_ATTACK)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetValue(atk)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD)
+		token:RegisterEffect(e1)
+		Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
