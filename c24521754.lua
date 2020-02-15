@@ -22,9 +22,11 @@ function c24521754.initial_effect(c)
 	--move
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(24521754,0))
+	e4:SetCategory(CATEGORY_DESTROY)
 	e4:SetType(EFFECT_TYPE_IGNITION)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCountLimit(1)
+	e4:SetCondition(c24521754.seqcon)
 	e4:SetTarget(c24521754.seqtg)
 	e4:SetOperation(c24521754.seqop)
 	c:RegisterEffect(e4)
@@ -38,17 +40,31 @@ end
 function c24521754.atkcon(e)
 	return e:GetHandler():GetSequence()==2
 end
-function c24521754.seqfilter(c)
-	local tp=c:GetControler()
-	return c:IsFaceup() and c:GetSequence()<5 and Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_CONTROL)>0
+function c24521754.seqcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetSequence()<5
 end
 function c24521754.seqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 end
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0)>0 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
 	local fd=Duel.SelectDisableField(tp,1,LOCATION_MZONE,0,0)
 	Duel.Hint(HINT_ZONE,tp,fd)
-	e:SetLabel(math.log(fd,2))
+	local seq=math.log(fd,2)
+	e:SetLabel(seq)
+	local pseq=c:GetSequence()
+	if pseq>seq then pseq,seq=seq,pseq end
+	local dg=Group.CreateGroup()
+	local g=nil
+	local exg=nil
+	for i=pseq,seq do
+		g=Duel.GetMatchingGroup(c24521754.seqfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,c,tp,i)
+		dg:Merge(g)
+		if i==1 or i==3 then
+			exg=Duel.GetMatchingGroup(c24521754.exfilter,tp,LOCATION_MZONE,LOCATION_MZONE,c,tp,i)
+			dg:Merge(exg)
+		end
+	end
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,dg,dg:GetCount(),0,0)
 end
 function c24521754.seqfilter(c,tp,seq)
 	if c:IsControler(tp) then
@@ -76,7 +92,6 @@ function c24521754.seqop(e,tp,eg,ep,ev,re,r,rp)
 	if c:GetSequence()==seq then
 		if pseq>seq then pseq,seq=seq,pseq end
 		local dg=Group.CreateGroup()
-		dg:KeepAlive()
 		local g=nil
 		local exg=nil
 		for i=pseq,seq do
