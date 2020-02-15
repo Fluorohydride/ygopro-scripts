@@ -1,5 +1,6 @@
 --暗黒の召喚神
 function c87917187.initial_effect(c)
+	aux.AddCodeList(c,6007213,32491822,69890967)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(87917187,0))
