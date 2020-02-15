@@ -53,7 +53,7 @@ function c82197831.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(c,REASON_COST)
 end
 function c82197831.spfilter(c,e,tp)
-	return not c:IsCode(82197831) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(82197831) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLevelAbove(1)
 end
 function c82197831.gcheck(sg)
 	return sg:GetSum(Card.GetLevel)<=7
