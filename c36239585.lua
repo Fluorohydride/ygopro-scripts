@@ -47,19 +47,13 @@ function c36239585.setfilter(c,e,tp)
 	if not c:IsSetCard(0x8d) then return false end
 	if c:IsType(TYPE_MONSTER) then
 		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
-	else return c:IsCanTurnSet() end
-end
-function c36239585.sefilter(c)
-	return c:IsSetCard(0x8d) and c:IsSSetable()
-end
-function c36239585.filter(c,e,tp)
-	return c:IsSetCard(0x8d) and (c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE) or c:IsSSetable())
+	else return c:IsSSetable() end
 end
 function c36239585.posfilter(c)
 	return c:IsFaceup() and c:IsCanTurnSet()
 end
 function c36239585.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c36239585.filter(chkc,e,tp) end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c36239585.setfilter(chkc,e,tp) end
 	if chk==0 then return Duel.IsExistingTarget(c36239585.setfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 	local g=Duel.SelectTarget(tp,c36239585.setfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
