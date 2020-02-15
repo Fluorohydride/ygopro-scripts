@@ -59,7 +59,7 @@ function c28770951.drtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c28770951.drop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	if not tg or tg:FilterCount(Card.IsRelateToEffect,nil,e)~=5 then return end
+	if not tg or tg:FilterCount(Card.IsRelateToEffect,nil,e)==0 then return end
 	Duel.SendtoDeck(tg,nil,0,REASON_EFFECT)
 	local g=Duel.GetOperatedGroup()
 	if g:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then Duel.ShuffleDeck(tp) end
