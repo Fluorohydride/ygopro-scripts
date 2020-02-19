@@ -75,7 +75,7 @@ function c36016907.spop2(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_REDIRECT)
 		e1:SetValue(LOCATION_REMOVED)
 		tc:RegisterEffect(e1,true)
-		if c:IsFaceup() and c:IsRelateToEffect(e) then
+		if c:IsFaceup() and c:IsRelateToEffect(e) and c:IsAbleToRemove() then
 			Duel.BreakEffect()
 			if Duel.Remove(c,POS_FACEUP,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 				local e2=Effect.CreateEffect(c)
