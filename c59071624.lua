@@ -80,7 +80,7 @@ function c59071624.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c59071624.spfilter2(c,e,tp,g)
-	return g:IsContains(c) and (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE))
+	return g:IsContains(c) and c59071624.cfilter(c,tp)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c59071624.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
