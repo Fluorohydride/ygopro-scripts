@@ -73,6 +73,6 @@ function c74665651.atlimit(e,c)
 	return c:IsFaceup() and c:IsSetCard(0x131) and Duel.IsExistingMatchingCard(c74665651.limfilter,c:GetControler(),LOCATION_MZONE,0,1,nil,c:GetLevel())
 end
 function c74665651.tglimit(e,c)
-	return c:IsSetCard(0xbb)
+	return c:IsSetCard(0x131)
 		and Duel.IsExistingMatchingCard(c74665651.limfilter,c:GetControler(),LOCATION_MZONE,0,1,nil,c:GetLevel())
 end
