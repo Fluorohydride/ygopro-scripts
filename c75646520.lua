@@ -21,7 +21,14 @@ function c75646520.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTarget(c75646520.distarget)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_DISABLE_TRAPMONSTER)
+	e2:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+	e2:SetTarget(c75646520.distarget)
+	e2:SetReset(RESET_PHASE+PHASE_END)
+	Duel.RegisterEffect(e2,tp)
 end
 function c75646520.distarget(e,c)
-	return c:GetType()==TYPE_CONTINUOUS+TYPE_TRAP
+	return bit.band(c:GetType(),0x20004)==0x20004
 end
