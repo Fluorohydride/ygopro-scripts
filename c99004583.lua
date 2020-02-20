@@ -4,7 +4,7 @@ function c99004583.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetCondition(c99004583.condition)
+	e1:SetCondition(aux.bpcon)
 	e1:SetTarget(c99004583.target)
 	e1:SetOperation(c99004583.activate)
 	c:RegisterEffect(e1)
@@ -18,9 +18,6 @@ function c99004583.initial_effect(c)
 	e2:SetTarget(c99004583.settg)
 	e2:SetOperation(c99004583.setop)
 	c:RegisterEffect(e2)
-end
-function c99004583.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c99004583.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFlagEffect(tp,99004583)==0 or Duel.GetFlagEffect(1-tp,99004583)==0 end

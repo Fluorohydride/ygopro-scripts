@@ -4,7 +4,7 @@ function c35498188.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetCondition(c35498188.condition)
+	e1:SetCondition(aux.bpcon)
 	e1:SetCost(c35498188.cost)
 	e1:SetTarget(c35498188.target)
 	e1:SetOperation(c35498188.activate)
@@ -19,9 +19,6 @@ function c35498188.initial_effect(c)
 	e2:SetTarget(c35498188.settg)
 	e2:SetOperation(c35498188.setop)
 	c:RegisterEffect(e2)
-end
-function c35498188.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c35498188.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,e:GetHandler()) end

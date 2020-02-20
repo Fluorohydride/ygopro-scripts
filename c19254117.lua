@@ -69,8 +69,7 @@ function c19254117.ddop(e,tp,eg,ep,ev,re,r,rp)
 	e:Reset()
 end
 function c19254117.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp
-		and (Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE))
+	return Duel.GetTurnPlayer()~=tp and aux.bpcon()
 end
 function c19254117.tgfilter(c)
 	return c:GetFlagEffect(19254117)==0
