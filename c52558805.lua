@@ -13,14 +13,11 @@ function c52558805.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
-	e1:SetCondition(c52558805.atkcon)
+	e1:SetCondition(aux.dscon)
 	e1:SetCost(c52558805.atkcost)
 	e1:SetTarget(c52558805.atktg)
 	e1:SetOperation(c52558805.atkop)
 	c:RegisterEffect(e1)
-end
-function c52558805.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c52558805.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

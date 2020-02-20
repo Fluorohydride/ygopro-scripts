@@ -6,7 +6,7 @@ function c9765723.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE+TIMING_DAMAGE_STEP)
-	e1:SetCondition(c9765723.condition)
+	e1:SetCondition(aux.dscon)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
@@ -44,9 +44,6 @@ function c9765723.initial_effect(c)
 	e4:SetTarget(c9765723.damtg)
 	e4:SetOperation(c9765723.damop)
 	c:RegisterEffect(e4)
-end
-function c9765723.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c9765723.cfilter(c)
 	return c:IsSetCard(0xaf,0xae) and c:IsAbleToGraveAsCost()

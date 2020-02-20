@@ -13,7 +13,7 @@ function c30757127.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCountLimit(1,30757127)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP,TIMING_DAMAGE_STEP+TIMING_END_PHASE)
-	e1:SetCondition(c30757127.atkcon)
+	e1:SetCondition(aux.dscon)
 	e1:SetCost(c30757127.atkcost)
 	e1:SetTarget(c30757127.atktg)
 	e1:SetOperation(c30757127.atkop)
@@ -22,9 +22,6 @@ end
 c30757127.material_setcode=0xc008
 function c30757127.ffilter(c)
 	return c:IsFusionAttribute(ATTRIBUTE_DARK) and c:IsFusionType(TYPE_EFFECT)
-end
-function c30757127.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c30757127.cfilter(c,tp)
 	return c:IsDiscardable() and Duel.IsExistingMatchingCard(c30757127.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,c)

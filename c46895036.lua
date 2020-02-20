@@ -21,7 +21,7 @@ function c46895036.initial_effect(c)
 	e2:SetHintTiming(TIMING_DAMAGE_STEP)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1)
-	e2:SetCondition(c46895036.condition)
+	e2:SetCondition(aux.dscon)
 	e2:SetCost(c46895036.cost)
 	e2:SetTarget(c46895036.target)
 	e2:SetOperation(c46895036.operation)
@@ -42,9 +42,6 @@ function c46895036.atkfilter(c)
 end
 function c46895036.atkval(e,c)
 	return Duel.GetMatchingGroupCount(c46895036.atkfilter,c:GetControler(),LOCATION_ONFIELD,0,nil)*200
-end
-function c46895036.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c46895036.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

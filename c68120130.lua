@@ -21,7 +21,7 @@ function c68120130.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetHintTiming(TIMING_DAMAGE_STEP)
 	e2:SetCountLimit(1)
-	e2:SetCondition(c68120130.defcon)
+	e2:SetCondition(aux.dscon)
 	e2:SetOperation(c68120130.defup)
 	c:RegisterEffect(e2)
 end
@@ -41,9 +41,6 @@ function c68120130.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
-end
-function c68120130.defcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c68120130.defup(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

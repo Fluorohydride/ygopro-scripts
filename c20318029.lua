@@ -10,7 +10,7 @@ function c20318029.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP+TIMING_END_PHASE)
 	e1:SetCountLimit(1,20318029)
-	e1:SetCondition(c20318029.atkcon)
+	e1:SetCondition(aux.dscon)
 	e1:SetCost(c20318029.atkcost)
 	e1:SetTarget(c20318029.atktg)
 	e1:SetOperation(c20318029.atkop)
@@ -31,9 +31,6 @@ function c20318029.initial_effect(c)
 	e3:SetCode(EVENT_TO_GRAVE)
 	e3:SetCondition(c20318029.thcon)
 	c:RegisterEffect(e3)
-end
-function c20318029.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c20318029.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end

@@ -24,7 +24,7 @@ function c95685352.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetHintTiming(TIMING_DAMAGE_STEP)
 	e2:SetCountLimit(1)
-	e2:SetCondition(c95685352.atkcon2)
+	e2:SetCondition(aux.dscon)
 	e2:SetCost(c95685352.atkcost2)
 	e2:SetTarget(c95685352.atktg2)
 	e2:SetOperation(c95685352.atkop2)
@@ -57,9 +57,6 @@ function c95685352.atkop1(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(math.ceil(tc:GetBaseAttack()/2))
 		tc:RegisterEffect(e1)
 	end
-end
-function c95685352.atkcon2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c95685352.atkcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

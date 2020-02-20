@@ -12,16 +12,13 @@ function c62070231.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
-	e1:SetCondition(c62070231.condition)
+	e1:SetCondition(aux.dscon)
 	e1:SetCost(c62070231.cost)
 	e1:SetTarget(c62070231.target)
 	e1:SetOperation(c62070231.operation)
 	c:RegisterEffect(e1)
 end
 c62070231.xyz_number=94
-function c62070231.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
-end
 function c62070231.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)

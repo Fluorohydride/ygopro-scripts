@@ -25,7 +25,7 @@ function c58069384.initial_effect(c)
 	e2:SetHintTiming(TIMING_DAMAGE_STEP)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1)
-	e2:SetCondition(c58069384.atkcon)
+	e2:SetCondition(aux.dscon)
 	e2:SetCost(c58069384.atkcost)
 	e2:SetOperation(c58069384.atkop)
 	c:RegisterEffect(e2)
@@ -61,9 +61,6 @@ function c58069384.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
-end
-function c58069384.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c58069384.atkfilter(c)
 	return c:IsCode(70095154) and c:IsAbleToRemoveAsCost() and (c:IsLocation(LOCATION_HAND) or c:IsFaceup())

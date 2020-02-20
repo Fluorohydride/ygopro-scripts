@@ -18,7 +18,7 @@ function c84224627.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(TIMING_DAMAGE_STEP)
 	e2:SetCountLimit(1)
-	e2:SetCondition(c84224627.condition)
+	e2:SetCondition(aux.dscon)
 	e2:SetCost(c84224627.cost)
 	e2:SetTarget(c84224627.target)
 	e2:SetOperation(c84224627.operation)
@@ -26,9 +26,6 @@ function c84224627.initial_effect(c)
 end
 function c84224627.indcon(e)
 	return e:GetHandler():GetOverlayGroup():IsExists(Card.IsAttribute,1,nil,ATTRIBUTE_WATER)
-end
-function c84224627.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c84224627.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

@@ -21,7 +21,7 @@ function c31833038.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e3:SetHintTiming(TIMING_DAMAGE_STEP+TIMING_END_PHASE)
 	e3:SetCountLimit(1)
-	e3:SetCondition(c31833038.atkcon)
+	e3:SetCondition(aux.dscon)
 	e3:SetTarget(c31833038.atktg)
 	e3:SetOperation(c31833038.atkop)
 	c:RegisterEffect(e3)
@@ -37,9 +37,6 @@ function c31833038.initial_effect(c)
 end
 function c31833038.efilter1(e,re,rp)
 	return re:IsActiveType(TYPE_MONSTER)
-end
-function c31833038.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c31833038.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end

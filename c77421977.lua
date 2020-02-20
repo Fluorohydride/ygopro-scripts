@@ -5,7 +5,7 @@ function c77421977.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CONTINUOUS_TARGET)
-	e1:SetCondition(c77421977.condition)
+	e1:SetCondition(aux.dscon)
 	e1:SetTarget(c77421977.target)
 	e1:SetOperation(c77421977.activate)
 	c:RegisterEffect(e1)
@@ -50,9 +50,6 @@ function c77421977.initial_effect(c)
 end
 function c77421977.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x135)
-end
-function c77421977.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c77421977.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c77421977.cfilter(chkc) end

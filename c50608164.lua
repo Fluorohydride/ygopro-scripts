@@ -24,7 +24,7 @@ function c50608164.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetHintTiming(TIMING_DAMAGE_STEP)
 	e3:SetCountLimit(1)
-	e3:SetCondition(c50608164.condition)
+	e3:SetCondition(aux.dscon)
 	e3:SetCost(c50608164.cost)
 	e3:SetTarget(c50608164.target)
 	e3:SetOperation(c50608164.operation)
@@ -32,9 +32,6 @@ function c50608164.initial_effect(c)
 end
 function c50608164.val(e,c)
 	return Duel.GetFieldGroupCount(c:GetControler(),0,LOCATION_MZONE)*500
-end
-function c50608164.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c50608164.cfilter(c)
 	return c:IsSetCard(0x8) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()

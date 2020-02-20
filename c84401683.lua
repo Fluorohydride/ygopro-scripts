@@ -13,7 +13,7 @@ function c84401683.initial_effect(c)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP,TIMING_DAMAGE_STEP+TIMINGS_CHECK_MONSTER)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
-	e1:SetCondition(c84401683.negcon)
+	e1:SetCondition(aux.dscon)
 	e1:SetCost(c84401683.negcost)
 	e1:SetTarget(c84401683.negtg)
 	e1:SetOperation(c84401683.negop)
@@ -29,9 +29,6 @@ function c84401683.initial_effect(c)
 	e2:SetTarget(c84401683.destg)
 	e2:SetOperation(c84401683.desop)
 	c:RegisterEffect(e2)
-end
-function c84401683.negcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c84401683.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

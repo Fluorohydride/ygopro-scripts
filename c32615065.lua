@@ -44,7 +44,7 @@ function c32615065.ffilter(c)
 end
 function c32615065.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE
-		and (Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
+		and aux.dscon()
 end
 function c32615065.atkfilter(c)
 	return c:IsFaceup() and c:GetAttack()>0

@@ -23,7 +23,7 @@ function c49221191.ovfilter(c)
 	return c:IsFaceup() and c:IsCode(65676461)
 end
 function c49221191.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetLP(tp)<=1000 and (Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
+	return Duel.GetLP(tp)<=1000 and aux.dscon()
 end
 function c49221191.rfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()

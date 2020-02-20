@@ -6,7 +6,7 @@ function c14393464.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
-	e1:SetCondition(c14393464.condition)
+	e1:SetCondition(aux.dscon)
 	c:RegisterEffect(e1)
 	--atk/def
 	local e2=Effect.CreateEffect(c)
@@ -30,9 +30,6 @@ function c14393464.initial_effect(c)
 	e3:SetTarget(c14393464.destg)
 	e3:SetOperation(c14393464.desop)
 	c:RegisterEffect(e3)
-end
-function c14393464.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c14393464.atktg(e,c)
 	return c:IsRace(RACE_CYBERSE)

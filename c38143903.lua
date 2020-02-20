@@ -6,7 +6,7 @@ function c38143903.initial_effect(c)
 	e0:SetType(EFFECT_TYPE_ACTIVATE)
 	e0:SetCode(EVENT_FREE_CHAIN)
 	e0:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
-	e0:SetCondition(c38143903.condition)
+	e0:SetCondition(aux.dscon)
 	c:RegisterEffect(e0)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(38143903,1))
@@ -26,9 +26,6 @@ function c38143903.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 c38143903.toss_coin=true
-function c38143903.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
-end
 function c38143903.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_MZONE and re:IsActiveType(TYPE_MONSTER)
 		and Duel.IsChainNegatable(ev)

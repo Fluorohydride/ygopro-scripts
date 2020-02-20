@@ -68,5 +68,5 @@ function c12219047.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c12219047.condition2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetOverlayGroup():IsExists(Card.IsSetCard,1,nil,0x10db)
-		and (Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
+		and aux.dscon()
 end

@@ -18,7 +18,7 @@ function c93356623.cfilter(c)
 end
 function c93356623.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c93356623.cfilter,tp,LOCATION_MZONE,0,1,nil)
-		and (Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
+		and aux.dscon()
 end
 function c93356623.filter(c)
 	return c:IsFaceup() and (c:IsAttackAbove(1) or c:IsDefenseAbove(1) or aux.disfilter1(c))

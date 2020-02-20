@@ -17,7 +17,7 @@ function c51644030.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,51644030)
-	e2:SetCondition(c51644030.atkcon)
+	e2:SetCondition(aux.dscon)
 	e2:SetTarget(c51644030.atktg)
 	e2:SetOperation(c51644030.atkop2)
 	c:RegisterEffect(e2)
@@ -32,9 +32,6 @@ function c51644030.atkop1(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)
 	end
-end
-function c51644030.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c51644030.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsFaceup() end

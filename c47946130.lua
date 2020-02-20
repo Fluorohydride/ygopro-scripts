@@ -83,7 +83,7 @@ function c47946130.negop(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47946130.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return not c:IsAttack(c:GetBaseAttack()) and (Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
+	return not c:IsAttack(c:GetBaseAttack()) and aux.dscon()
 end
 function c47946130.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

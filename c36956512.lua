@@ -29,7 +29,7 @@ function c36956512.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e3:SetHintTiming(TIMING_DAMAGE_STEP,TIMING_DAMAGE_STEP+TIMINGS_CHECK_MONSTER)
 	e3:SetCountLimit(1)
-	e3:SetCondition(c36956512.atkcon)
+	e3:SetCondition(aux.dscon)
 	e3:SetCost(c36956512.atkcost)
 	e3:SetTarget(c36956512.atktg)
 	e3:SetOperation(c36956512.atkop)
@@ -56,9 +56,6 @@ function c36956512.spcon2(e,c)
 	local tp=c:GetControler()
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c36956512.cfilter,tp,0,LOCATION_MZONE,1,nil)
-end
-function c36956512.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c36956512.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0x37,3,REASON_COST) end
