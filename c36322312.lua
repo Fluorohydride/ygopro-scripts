@@ -44,19 +44,16 @@ end
 function c36322312.sprfilter(c)
 	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsSetCard(0x51) and bit.band(c:GetOriginalType(),TYPE_MONSTER)~=0 and c:IsAbleToGraveAsCost()
 end
-function c36322312.fselect(g,tp)
-	return Duel.GetMZoneCount(tp,g)>0
-end
 function c36322312.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local g=Duel.GetMatchingGroup(c36322312.sprfilter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,nil)
-	return g:CheckSubGroup(c36322312.fselect,2,2,tp)
+	return g:CheckSubGroup(aux.mzctcheck,2,2,tp)
 end
 function c36322312.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c36322312.sprfilter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local sg=g:SelectSubGroup(tp,c36322312.fselect,true,2,2,tp)
+	local sg=g:SelectSubGroup(tp,aux.mzctcheck,true,2,2,tp)
 	if sg then
 		sg:KeepAlive()
 		e:SetLabelObject(sg)

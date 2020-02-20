@@ -28,19 +28,16 @@ function c33022867.initial_effect(c)
 	e3:SetValue(1)
 	c:RegisterEffect(e3)
 end
-function c33022867.fselect(g,tp)
-	return Duel.GetMZoneCount(tp,g)>0
-end
 function c33022867.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local rg=Duel.GetReleaseGroup(tp)
-	return rg:CheckSubGroup(c33022867.fselect,3,3,tp)
+	return rg:CheckSubGroup(aux.mzctcheck,3,3,tp)
 end
 function c33022867.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local rg=Duel.GetReleaseGroup(tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=rg:SelectSubGroup(tp,c33022867.fselect,true,3,3,tp)
+	local sg=rg:SelectSubGroup(tp,aux.mzctcheck,true,3,3,tp)
 	if sg then
 		sg:KeepAlive()
 		e:SetLabelObject(sg)

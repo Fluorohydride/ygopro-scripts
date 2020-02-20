@@ -60,14 +60,11 @@ function c45148985.sprcon(e,c)
 	local ct=-ft+1
 	return ft>-5 and g:GetClassCount(Card.GetCode)>=5 and (ft>0 or g:IsExists(c45148985.mzfilter,ct,nil))
 end
-function c45148985.gselect(g,tp)
-	return Duel.GetMZoneCount(tp,g)>0
-end
 function c45148985.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c45148985.sprfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	aux.GCheckAdditional=aux.dncheck
-	local rg=g:SelectSubGroup(tp,c45148985.gselect,false,5,5,tp)
+	local rg=g:SelectSubGroup(tp,aux.mzctcheck,false,5,5,tp)
 	aux.GCheckAdditional=nil
 	Duel.Remove(rg,POS_FACEUP,REASON_COST)
 end

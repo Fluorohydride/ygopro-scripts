@@ -62,13 +62,10 @@ function c95403418.spcon(e,c)
 	local ct=-ft+1
 	return mg:GetCount()>0 and (ft>0 or mg:IsExists(c95403418.mzfilter,ct,nil))
 end
-function c95403418.gselect(g,tp)
-	return Duel.GetMZoneCount(tp,g)>0
-end
 function c95403418.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetMatchingGroup(c95403418.filter,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=mg:SelectSubGroup(tp,c95403418.gselect,false,1,#mg,tp)
+	local g=mg:SelectSubGroup(tp,aux.mzctcheck,false,1,#mg,tp)
 	local ct=Duel.SendtoGrave(g,REASON_COST)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

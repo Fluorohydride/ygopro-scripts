@@ -38,16 +38,13 @@ end
 function c25857977.desfilter2(c,e)
 	return c25857977.desfilter(c) and c:IsCanBeEffectTarget(e)
 end
-function c25857977.fselect(g,tp)
-	return Duel.GetMZoneCount(tp,g)>0
-end
 function c25857977.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c25857977.desfilter(chkc) end
 	local g=Duel.GetMatchingGroup(c25857977.desfilter2,tp,LOCATION_ONFIELD,0,nil,e)
 	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and g:CheckSubGroup(c25857977.fselect,1,g:GetCount(),tp) end
+		and g:CheckSubGroup(aux.mzctcheck,1,g:GetCount(),tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local sg=g:SelectSubGroup(tp,c25857977.fselect,false,1,g:GetCount(),tp)
+	local sg=g:SelectSubGroup(tp,aux.mzctcheck,false,1,g:GetCount(),tp)
 	Duel.SetTargetCard(sg)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,sg,sg:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
