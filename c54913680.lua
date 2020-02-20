@@ -13,18 +13,12 @@ end
 function c54913680.rfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x3d)
 end
-function c54913680.fgoal(sg,tp)
-	if sg:GetCount()>0 and Duel.GetMZoneCount(tp,sg)>0 then
-		Duel.SetSelectedCard(sg)
-		return Duel.CheckReleaseGroup(tp,nil,0,nil)
-	else return false end
-end
 function c54913680.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c54913680.rfilter,nil)
-	if chk==0 then return rg:CheckSubGroup(c54913680.fgoal,2,2,tp) end
+	if chk==0 then return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=rg:SelectSubGroup(tp,c54913680.fgoal,false,2,2,tp)
+	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,false,2,2,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c54913680.spfilter(c,e,tp)

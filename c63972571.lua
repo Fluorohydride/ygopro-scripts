@@ -35,10 +35,7 @@ function c63972571.rfilter(c,tp)
 end
 function c63972571.fselect(g,tp)
 	Duel.SetSelectedCard(g)
-	if Duel.GetMZoneCount(tp,g)>0 and g:CheckWithSumGreater(Card.GetLevel,8) then
-		Duel.SetSelectedCard(g)
-		return Duel.CheckReleaseGroup(tp,nil,0,nil)
-	else return false end
+	return g:CheckWithSumGreater(Card.GetLevel,8) and aux.mzctcheckrel(g,tp)
 end
 function c63972571.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetReleaseGroup(tp):Filter(c63972571.rfilter,nil,tp)

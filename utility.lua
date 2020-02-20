@@ -2011,6 +2011,9 @@ function Auxiliary.IsCounterAdded(c,counter)
 	end
 	return false
 end
+function Auxiliary.IsInGroup(c,g)
+	return g:IsContains(c)
+end
 --return the column of card c (from the viewpoint of p)
 function Auxiliary.GetColumn(c,p)
 	local seq=c:GetSequence()
@@ -2249,6 +2252,9 @@ function Auxiliary.gffcheck(g,f1,a1,f2,a2)
 end
 function Auxiliary.mzctcheck(g,tp)
 	return Duel.GetMZoneCount(tp,g)>0
+end
+function Auxiliary.mzctcheckrel(g,tp)
+	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroup(tp,Auxiliary.IsInGroup,#g,nil,g)
 end
 --used for "except this card"
 function Auxiliary.ExceptThisCard(e)

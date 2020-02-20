@@ -20,10 +20,8 @@ function c40998517.costfilter(c,tp)
 		and Duel.IsExistingTarget(nil,tp,LOCATION_MZONE,LOCATION_MZONE,1,c)
 end
 function c40998517.fselect(g,tp)
-	if Duel.IsExistingTarget(nil,tp,LOCATION_MZONE,LOCATION_MZONE,g:GetCount(),g) then
-		Duel.SetSelectedCard(g)
-		return Duel.CheckReleaseGroup(tp,nil,0,nil)
-	else return false end
+	return Duel.IsExistingTarget(nil,tp,LOCATION_MZONE,LOCATION_MZONE,g:GetCount(),g)
+		and Duel.CheckReleaseGroup(tp,aux.IsInGroup,#g,nil,g)
 end
 function c40998517.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c40998517.costfilter,1,nil,tp) end

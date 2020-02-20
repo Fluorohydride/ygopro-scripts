@@ -29,10 +29,8 @@ function c720147.matfilter2(c)
 	return c:IsSetCard(0x134) and c:IsType(TYPE_MONSTER) and c:IsCanOverlay()
 end
 function c720147.fselect(g,tp)
-	if Duel.IsExistingTarget(c720147.matfilter1,tp,LOCATION_MZONE,0,1,g,tp,g) then
-		Duel.SetSelectedCard(g)
-		return Duel.CheckReleaseGroup(tp,nil,0,nil)
-	else return false end
+	return Duel.IsExistingTarget(c720147.matfilter1,tp,LOCATION_MZONE,0,1,g,tp,g)
+		and Duel.CheckReleaseGroup(tp,aux.IsInGroup,#g,nil,g)
 end
 function c720147.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=e:GetLabelObject()

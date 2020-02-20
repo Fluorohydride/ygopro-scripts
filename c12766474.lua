@@ -34,16 +34,10 @@ end
 function c12766474.relfilter(c,g)
 	return g:IsContains(c)
 end
-function c12766474.fgoal(sg,tp)
-	if sg:GetCount()>0 and Duel.GetMZoneCount(tp,sg)>0 then
-		Duel.SetSelectedCard(sg)
-		return Duel.CheckReleaseGroup(tp,nil,0,nil)
-	else return false end
-end
 function c12766474.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(Card.IsAttribute,nil,ATTRIBUTE_DARK)
 	if chk==0 then return Duel.GetCustomActivityCount(12766474,tp,ACTIVITY_SPSUMMON)==0
-		and rg:CheckSubGroup(c12766474.fgoal,1,#rg,tp) end
+		and rg:CheckSubGroup(aux.mzctcheckrel,1,#rg,tp) end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
@@ -53,7 +47,7 @@ function c12766474.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=rg:SelectSubGroup(tp,c12766474.fgoal,false,1,#rg,tp)
+	local g=rg:SelectSubGroup(tp,aux.mzctcheckrel,false,1,#rg,tp)
 	e:SetLabel(g:GetCount())
 	Duel.Release(g,REASON_COST)
 end

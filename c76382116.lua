@@ -33,8 +33,7 @@ function c76382116.fselect(g,e,tp)
 	end
 	local sg=Duel.GetMatchingGroup(c76382116.spfilter,tp,LOCATION_HAND,0,nil,e,tp,table.unpack(code))
 	if sg:GetClassCount(Card.GetCode)>=g:GetCount() and Duel.GetMZoneCount(tp,g)>=g:GetCount() then
-		Duel.SetSelectedCard(g)
-		return Duel.CheckReleaseGroup(tp,nil,0,nil)
+		return Duel.CheckReleaseGroup(tp,aux.IsInGroup,#g,nil,g)
 	else return false end
 end
 function c76382116.spcost(e,tp,eg,ep,ev,re,r,rp,chk)

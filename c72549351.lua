@@ -13,18 +13,12 @@ end
 function c72549351.rfilter(c,tp)
 	return c:IsRace(RACE_DRAGON) and (c:IsControler(tp) or c:IsFaceup())
 end
-function c72549351.fgoal(sg,tp)
-	if sg:GetCount()>0 and Duel.GetMZoneCount(tp,sg)>0 then
-		Duel.SetSelectedCard(sg)
-		return Duel.CheckReleaseGroup(tp,nil,0,nil)
-	else return false end
-end
 function c72549351.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c72549351.rfilter,nil,tp)
-	if chk==0 then return rg:CheckSubGroup(c72549351.fgoal,2,2,tp) end
+	if chk==0 then return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=rg:SelectSubGroup(tp,c72549351.fgoal,false,2,2,tp)
+	local g=rg:SelectSubGroup(tp,aux.mzctcheckrel,false,2,2,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c72549351.spfilter(c,e,tp)
