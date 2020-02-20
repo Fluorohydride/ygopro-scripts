@@ -29,7 +29,7 @@ function c26773909.checkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c26773909.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and (ph~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
+	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and aux.dscon()
 end
 function c26773909.filter(c,lp)
 	return c:IsFaceup() and c:IsAttackBelow(lp) and c:GetFlagEffect(26773909)==0

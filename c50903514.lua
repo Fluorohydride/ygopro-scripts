@@ -29,7 +29,7 @@ function c50903514.initial_effect(c)
 end
 function c50903514.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and (ph~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
+	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and aux.dscon()
 end
 function c50903514.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_WARRIOR)

@@ -29,7 +29,7 @@ function c38695361.initial_effect(c)
 end
 function c38695361.atkcon1(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and (ph~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
+	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and aux.dscon()
 end
 function c38695361.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end

@@ -60,9 +60,7 @@ function c79856792.spop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterFlagEffect(79856792,RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD-RESET_TURN_SET+RESET_PHASE+PHASE_END,0,1)
 end
 function c79856792.atcon(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():GetFlagEffect(79856792)~=0 then return false end
-	local phase=Duel.GetCurrentPhase()
-	return phase~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
+	return aux.dscon() and e:GetHandler():GetFlagEffect(79856792)==0
 end
 function c79856792.afilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x1034) and c:IsAbleToGraveAsCost()

@@ -14,7 +14,7 @@ function c16708652.initial_effect(c)
 end
 function c16708652.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and (ph~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
+	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and aux.dscon()
 end
 function c16708652.filter(c)
 	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsCanChangePosition() and c:IsSetCard(0x11)
