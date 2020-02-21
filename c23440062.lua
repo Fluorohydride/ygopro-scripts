@@ -31,12 +31,6 @@ function c23440062.initial_effect(c)
 	e4:SetCode(EFFECT_DISABLE)
 	e4:SetRange(LOCATION_SZONE)
 	c:RegisterEffect(e4)
-	--cannot attack
-	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_TARGET)
-	e5:SetCode(EFFECT_CANNOT_ATTACK)
-	e5:SetRange(LOCATION_SZONE)
-	c:RegisterEffect(e5)
 end
 function c23440062.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,800) end
@@ -58,6 +52,13 @@ function c23440062.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK) then
 		c:SetCardTarget(tc)
+		--cannot attack
+		local e5=Effect.CreateEffect(c)
+		e5:SetType(EFFECT_TYPE_TARGET)
+		e5:SetCode(EFFECT_CANNOT_ATTACK)
+		e5:SetRange(LOCATION_SZONE)
+		e5:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+		c:RegisterEffect(e5)
 	end
 	Duel.SpecialSummonComplete()
 end
