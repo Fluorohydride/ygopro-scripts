@@ -58,9 +58,6 @@ end
 function c44097050.splimit(e,c,tp,sumtp,sumpos)
 	return bit.band(sumtp,SUMMON_TYPE_LINK)==SUMMON_TYPE_LINK
 end
-function c44097050.rselect(g,tp)
-	return Duel.GetMZoneCount(tp,g)>0
-end
 function c44097050.costfilter(c,tp)
 	return Duel.IsExistingMatchingCard(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 end
@@ -73,7 +70,7 @@ end
 function c44097050.rlcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetReleaseGroup(tp)
 	local b1=Duel.CheckReleaseGroup(tp,c44097050.costfilter,1,nil,tp)
-	local b2=g:GetCount()>1 and g:CheckSubGroup(c44097050.rselect,2,2,tp)
+	local b2=g:GetCount()>1 and g:CheckSubGroup(aux.mzctcheck,2,2,tp)
 		and Duel.IsExistingMatchingCard(c44097050.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp)
 	local b3=Duel.CheckReleaseGroup(tp,nil,3,nil) and Duel.IsExistingMatchingCard(c44097050.thfilter,tp,LOCATION_GRAVE,0,1,nil)
 	if chk==0 then return b1 or b2 or b3 end
@@ -103,7 +100,7 @@ function c44097050.rlcost(e,tp,eg,ep,ev,re,r,rp,chk)
 		rg=Duel.SelectReleaseGroup(tp,c44097050.costfilter,1,1,nil,tp)
 	elseif opval[op]==2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		rg=g:SelectSubGroup(tp,c44097050.rselect,false,2,2,tp)
+		rg=g:SelectSubGroup(tp,aux.mzctcheck,false,2,2,tp)
 	else
 		rg=Duel.SelectReleaseGroup(tp,nil,3,3,nil)
 	end
