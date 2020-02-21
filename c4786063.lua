@@ -25,7 +25,7 @@ function c4786063.initial_effect(c)
 	e3:SetHintTiming(TIMING_DAMAGE_STEP)
 	e3:SetRange(LOCATION_HAND)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
-	e3:SetCondition(c4786063.condition)
+	e3:SetCondition(aux.dscon)
 	e3:SetCost(c4786063.cost)
 	e3:SetTarget(c4786063.target)
 	e3:SetOperation(c4786063.operation)
@@ -61,9 +61,6 @@ function c4786063.eqop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c4786063.eqlimit(e,c)
 	return c:IsSetCard(0x9a)
-end
-function c4786063.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c4786063.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end

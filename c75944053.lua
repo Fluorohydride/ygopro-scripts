@@ -17,7 +17,7 @@ function c75944053.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetHintTiming(TIMING_DAMAGE_STEP)
 	e2:SetCountLimit(1)
-	e2:SetCondition(c75944053.condition)
+	e2:SetCondition(aux.dscon)
 	e2:SetTarget(c75944053.target)
 	e2:SetOperation(c75944053.operation)
 	c:RegisterEffect(e2)
@@ -40,9 +40,6 @@ function c75944053.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c75944053.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0xab)
-end
-function c75944053.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c75944053.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c75944053.filter(chkc) end

@@ -16,7 +16,7 @@ function c61529473.initial_effect(c)
 	e2:SetHintTiming(TIMING_DAMAGE_STEP,TIMING_DAMAGE_STEP+TIMING_END_PHASE)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCountLimit(1,61529473)
-	e2:SetCondition(c61529473.atkcon)
+	e2:SetCondition(aux.dscon)
 	e2:SetCost(c61529473.cost)
 	e2:SetTarget(c61529473.atktg)
 	e2:SetOperation(c61529473.atkop)
@@ -47,9 +47,6 @@ function c61529473.initial_effect(c)
 	e4:SetTarget(c61529473.destg)
 	e4:SetOperation(c61529473.desop)
 	c:RegisterEffect(e4)
-end
-function c61529473.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c61529473.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFlagEffect(tp,61529473)==0 end

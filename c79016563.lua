@@ -47,7 +47,7 @@ function c79016563.recop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Recover(p,d,REASON_EFFECT)
 end
 function c79016563.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return (Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
+	return aux.dscon()
 		and e:GetHandler():GetMutualLinkedGroupCount()>=2
 end
 function c79016563.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

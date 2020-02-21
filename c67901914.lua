@@ -8,7 +8,7 @@ function c67901914.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,67901914+EFFECT_COUNT_CODE_OATH)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
-	e1:SetCondition(c67901914.condition)
+	e1:SetCondition(aux.dscon)
 	e1:SetTarget(c67901914.target)
 	e1:SetOperation(c67901914.activate)
 	c:RegisterEffect(e1)
@@ -26,9 +26,6 @@ function c67901914.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:GetFlagEffect(67901914)==0 and Duel.GetAttackTarget()==nil then
 		tc:RegisterFlagEffect(67901914,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
-end
-function c67901914.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c67901914.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x108) and c:GetFlagEffect(67901914)==0

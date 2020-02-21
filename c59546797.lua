@@ -22,7 +22,7 @@ function c59546797.initial_effect(c)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetHintTiming(TIMING_DAMAGE_STEP)
-	e2:SetCondition(c59546797.atkcon)
+	e2:SetCondition(aux.dscon)
 	e2:SetCost(c59546797.atkcost)
 	e2:SetTarget(c59546797.atktg)
 	e2:SetOperation(c59546797.atkop)
@@ -43,9 +43,6 @@ function c59546797.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		Duel.Recover(tp,1000,REASON_EFFECT)
 	end
-end
-function c59546797.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c59546797.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end

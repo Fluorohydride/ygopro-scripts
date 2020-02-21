@@ -41,7 +41,7 @@ function c93211810.clear(e,tp,eg,ep,ev,re,r,rp)
 end
 function c93211810.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	return Duel.GetTurnPlayer()==tp and ph<PHASE_MAIN2 and (ph~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
+	return Duel.GetTurnPlayer()==tp and ph<PHASE_MAIN2 and aux.dscon()
 end
 function c93211810.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return c93211810[tp]<2 end

@@ -31,7 +31,7 @@ function c46724542.lcheck(g,lc)
 end
 function c46724542.con(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE
-		and (Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()) and e:GetHandler():GetAttackAnnouncedCount()<1
+		and aux.dscon() and e:GetHandler():GetAttackAnnouncedCount()<1
 end
 function c46724542.filter(c)
 	return c:IsFaceup() and c:IsAttackAbove(2100) and c:IsRace(RACE_MACHINE)

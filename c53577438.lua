@@ -17,7 +17,7 @@ function c53577438.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_TO_GRAVE)
 	e2:SetCountLimit(1,53577439)
-	e2:SetCondition(c53577438.dacon)
+	e2:SetCondition(aux.bpcon)
 	e2:SetTarget(c53577438.datg)
 	e2:SetOperation(c53577438.daop)
 	c:RegisterEffect(e2)
@@ -44,9 +44,6 @@ function c53577438.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 	end
-end
-function c53577438.dacon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c53577438.dafilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_CYBERSE) and not c:IsHasEffect(EFFECT_EXTRA_ATTACK) and c:GetSequence()>=5

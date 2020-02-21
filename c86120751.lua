@@ -9,7 +9,7 @@ function c86120751.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP,TIMING_DAMAGE_STEP+TIMINGS_CHECK_MONSTER)
-	e1:SetCondition(c86120751.adcon)
+	e1:SetCondition(aux.dscon)
 	e1:SetCost(c86120751.adcost)
 	e1:SetTarget(c86120751.adtg)
 	e1:SetOperation(c86120751.adop)
@@ -27,9 +27,6 @@ function c86120751.initial_effect(c)
 	local e3=e2:Clone()
 	e3:SetCode(EVENT_FLIP)
 	c:RegisterEffect(e3)
-end
-function c86120751.adcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c86120751.adcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

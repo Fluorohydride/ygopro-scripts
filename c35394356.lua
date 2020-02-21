@@ -10,7 +10,7 @@ function c35394356.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetHintTiming(0,TIMING_ATTACK+TIMING_DAMAGE_STEP)
 	e1:SetCountLimit(1,35394356)
-	e1:SetCondition(c35394356.atkcon)
+	e1:SetCondition(aux.dscon)
 	e1:SetCost(c35394356.atkcost)
 	e1:SetTarget(c35394356.atktg)
 	e1:SetOperation(c35394356.atkop)
@@ -25,9 +25,6 @@ function c35394356.initial_effect(c)
 	e2:SetCondition(c35394356.rcon)
 	e2:SetOperation(c35394356.rop)
 	c:RegisterEffect(e2)
-end
-function c35394356.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c35394356.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckRemoveOverlayCard(tp,1,0,1,REASON_COST) end

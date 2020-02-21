@@ -17,7 +17,7 @@ function c879958.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_FREE_CHAIN)
-	e2:SetCondition(c879958.atcon)
+	e2:SetCondition(aux.bpcon)
 	e2:SetCost(c879958.atkcost)
 	e2:SetTarget(c879958.atktg)
 	e2:SetOperation(c879958.atkop)
@@ -92,9 +92,6 @@ function c879958.operation(e,tp,eg,ep,ev,re,r,rp)
 	else
 		c:CancelToGrave(false)
 	end
-end
-function c879958.atcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c879958.cfilter(c)
 	return c:IsType(TYPE_LINK) and c:IsAbleToRemoveAsCost()

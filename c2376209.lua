@@ -7,7 +7,7 @@ function c2376209.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
-	e1:SetCondition(c2376209.condition)
+	e1:SetCondition(aux.dscon)
 	e1:SetTarget(c2376209.target)
 	e1:SetOperation(c2376209.operation)
 	c:RegisterEffect(e1)
@@ -22,9 +22,6 @@ function c2376209.initial_effect(c)
 	e2:SetTarget(c2376209.sptg)
 	e2:SetOperation(c2376209.spop)
 	c:RegisterEffect(e2)
-end
-function c2376209.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c2376209.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsFaceup() end

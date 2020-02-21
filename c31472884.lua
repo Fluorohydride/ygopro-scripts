@@ -7,7 +7,7 @@ function c31472884.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
-	e1:SetCondition(c31472884.condition)
+	e1:SetCondition(aux.dscon)
 	e1:SetCost(c31472884.cost)
 	e1:SetTarget(c31472884.target)
 	e1:SetOperation(c31472884.activate)
@@ -26,9 +26,6 @@ function c31472884.check(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetAttackTarget()==nil then
 		Duel.RegisterFlagEffect(tc:GetControler(),31472884,RESET_PHASE+PHASE_END,0,1)
 	end
-end
-function c31472884.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c31472884.cfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsDiscardable() and c:GetAttack()>=0 and c:GetDefense()>=0

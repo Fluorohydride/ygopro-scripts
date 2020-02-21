@@ -21,7 +21,7 @@ function c40945356.initial_effect(c)
 	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,EFFECT_COUNT_CODE_SINGLE)
-	e2:SetCondition(c40945356.condition2)
+	e2:SetCondition(aux.dscon)
 	e2:SetCost(c40945356.cost)
 	e2:SetTarget(c40945356.target2)
 	e2:SetOperation(c40945356.operation2)
@@ -60,9 +60,6 @@ function c40945356.operation1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c40945356.indtg(e,c)
 	return c:IsSetCard(0x61) or (c:IsSetCard(0x2b) and c:IsType(TYPE_MONSTER))
-end
-function c40945356.condition2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c40945356.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x2b)

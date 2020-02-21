@@ -13,13 +13,10 @@ function c89310929.initial_effect(c)
 	e1:SetCountLimit(1)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetCondition(c89310929.condition)
+	e1:SetCondition(aux.dscon)
 	e1:SetTarget(c89310929.target)
 	e1:SetOperation(c89310929.operation)
 	c:RegisterEffect(e1)
-end
-function c89310929.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c89310929.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and chkc:IsAbleToHand() end

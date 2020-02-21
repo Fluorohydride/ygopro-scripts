@@ -9,7 +9,7 @@ function c67037924.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP,TIMING_DAMAGE_STEP+TIMINGS_CHECK_MONSTER)
 	e1:SetCountLimit(1,67037924)
-	e1:SetCondition(c67037924.condition)
+	e1:SetCondition(aux.dscon)
 	e1:SetTarget(c67037924.target)
 	e1:SetOperation(c67037924.activate)
 	c:RegisterEffect(e1)
@@ -25,9 +25,6 @@ function c67037924.initial_effect(c)
 	e2:SetTarget(c67037924.settg)
 	e2:SetOperation(c67037924.setop)
 	c:RegisterEffect(e2)
-end
-function c67037924.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c67037924.filter(c)
 	return c:IsFaceup() and c:GetSummonLocation()==LOCATION_EXTRA and c:GetAttack()>0

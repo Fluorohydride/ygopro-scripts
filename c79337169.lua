@@ -9,14 +9,11 @@ function c79337169.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
-	e1:SetCondition(c79337169.condition)
+	e1:SetCondition(aux.dscon)
 	e1:SetCost(c79337169.cost)
 	e1:SetTarget(c79337169.target)
 	e1:SetOperation(c79337169.operation)
 	c:RegisterEffect(e1)
-end
-function c79337169.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c79337169.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end

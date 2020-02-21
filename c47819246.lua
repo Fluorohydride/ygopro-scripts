@@ -6,7 +6,7 @@ function c47819246.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
-	e1:SetCondition(c47819246.condition)
+	e1:SetCondition(aux.dscon)
 	e1:SetCost(c47819246.cost)
 	e1:SetTarget(c47819246.target)
 	e1:SetOperation(c47819246.operation)
@@ -33,9 +33,6 @@ function c47819246.initial_effect(c)
 	e4:SetTarget(c47819246.mttg)
 	e4:SetOperation(c47819246.mtop)
 	c:RegisterEffect(e4)
-end
-function c47819246.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c47819246.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

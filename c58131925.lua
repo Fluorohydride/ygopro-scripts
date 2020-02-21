@@ -9,15 +9,11 @@ function c58131925.initial_effect(c)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
-	e1:SetCondition(c58131925.condition)
+	e1:SetCondition(aux.dscon)
 	e1:SetCost(c58131925.cost)
 	e1:SetTarget(c58131925.target)
 	e1:SetOperation(c58131925.operation)
 	c:RegisterEffect(e1)
-end
-function c58131925.condition(e,tp,eg,ep,ev,re,r,rp)
-	local phase=Duel.GetCurrentPhase()
-	return phase~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c58131925.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end

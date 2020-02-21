@@ -24,7 +24,7 @@ function c92327802.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetHintTiming(TIMING_DAMAGE_STEP)
 	e2:SetCountLimit(1)
-	e2:SetCondition(c92327802.condition)
+	e2:SetCondition(aux.dscon)
 	e2:SetCost(c92327802.cost)
 	e2:SetTarget(c92327802.tg)
 	e2:SetOperation(c92327802.op)
@@ -38,9 +38,6 @@ function c92327802.damval(e,re,val,r,rp,rc)
 		return 0
 	end
 	return val
-end
-function c92327802.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c92327802.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x43,1,REASON_COST) end

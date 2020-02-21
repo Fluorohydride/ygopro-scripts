@@ -9,7 +9,7 @@ function c81570454.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,81570454)
-	e1:SetCondition(c81570454.eqcon)
+	e1:SetCondition(aux.dscon)
 	e1:SetTarget(c81570454.eqtg)
 	e1:SetOperation(c81570454.eqop)
 	c:RegisterEffect(e1)
@@ -31,9 +31,6 @@ function c81570454.initial_effect(c)
 	e3:SetTarget(c81570454.thtg)
 	e3:SetOperation(c81570454.thop)
 	c:RegisterEffect(e3)
-end
-function c81570454.eqcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c81570454.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and chkc:IsFaceup() end

@@ -11,7 +11,7 @@ function c3758046.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,3758046)
-	e1:SetCondition(c3758046.con)
+	e1:SetCondition(aux.bpcon)
 	e1:SetCost(c3758046.cost)
 	e1:SetOperation(c3758046.operation)
 	c:RegisterEffect(e1)
@@ -27,9 +27,6 @@ function c3758046.initial_effect(c)
 	e2:SetTarget(c3758046.thtg)
 	e2:SetOperation(c3758046.thop)
 	c:RegisterEffect(e2)
-end
-function c3758046.con(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end
 function c3758046.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

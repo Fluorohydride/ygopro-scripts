@@ -7,7 +7,7 @@ function c34815282.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP,TIMING_DAMAGE_STEP+TIMINGS_CHECK_MONSTER)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
-	e1:SetCondition(c34815282.condition)
+	e1:SetCondition(aux.dscon)
 	e1:SetTarget(c34815282.target)
 	e1:SetOperation(c34815282.operation)
 	c:RegisterEffect(e1)
@@ -31,9 +31,6 @@ function c34815282.initial_effect(c)
 	e4:SetCode(EFFECT_UPDATE_LEVEL)
 	e4:SetValue(-1)
 	c:RegisterEffect(e4)
-end
-function c34815282.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c34815282.filter(c)
 	return c:IsFaceup() and c:GetBaseAttack()>1000 and c:GetLevel()>0

@@ -30,7 +30,7 @@ function c90243945.initial_effect(c)
 	e4:SetCode(EVENT_FREE_CHAIN)
 	e4:SetRange(LOCATION_MZONE+LOCATION_HAND)
 	e4:SetHintTiming(TIMING_DAMAGE_STEP)
-	e4:SetCondition(c90243945.atkcon)
+	e4:SetCondition(aux.dscon)
 	e4:SetCost(c90243945.atkcost)
 	e4:SetTarget(c90243945.atktg)
 	e4:SetOperation(c90243945.atkop)
@@ -48,9 +48,6 @@ function c90243945.tgop(e,tp,eg,ep,ev,re,r,rp)
 	if tg then
 		Duel.SendtoGrave(tg,REASON_EFFECT)
 	end
-end
-function c90243945.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c90243945.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

@@ -21,7 +21,7 @@ function c4474060.initial_effect(c)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetHintTiming(TIMING_DAMAGE_STEP)
-	e3:SetCondition(c4474060.atkcon)
+	e3:SetCondition(aux.dscon)
 	e3:SetCost(c4474060.atkcost)
 	e3:SetTarget(c4474060.atktg)
 	e3:SetOperation(c4474060.atkop)
@@ -43,9 +43,6 @@ function c4474060.sttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c4474060.stop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SortDecktop(tp,1-tp,3)
-end
-function c4474060.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c4474060.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end

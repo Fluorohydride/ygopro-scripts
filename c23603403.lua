@@ -28,7 +28,7 @@ function c23603403.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetCondition(c23603403.atkcon)
+	e3:SetCondition(aux.dscon)
 	e3:SetCost(c23603403.atkcost)
 	e3:SetTarget(c23603403.atktg)
 	e3:SetOperation(c23603403.atkop)
@@ -62,9 +62,6 @@ function c23603403.valcheck(e,c)
 	else
 		e:GetLabelObject():SetLabel(0)
 	end
-end
-function c23603403.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c23603403.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

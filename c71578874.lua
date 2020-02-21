@@ -20,7 +20,7 @@ function c71578874.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e3:SetHintTiming(TIMING_DAMAGE_STEP)
 	e3:SetCountLimit(1)
-	e3:SetCondition(c71578874.swcon)
+	e3:SetCondition(aux.dscon)
 	e3:SetTarget(c71578874.swtg)
 	e3:SetOperation(c71578874.swop)
 	c:RegisterEffect(e3)
@@ -50,9 +50,6 @@ function c71578874.adop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_SET_DEFENSE_FINAL)
 		tc:RegisterEffect(e2)
 	end
-end
-function c71578874.swcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c71578874.swfilter(c)
 	return c:IsFaceup() and c:IsDefenseAbove(0)

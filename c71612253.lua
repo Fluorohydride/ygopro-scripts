@@ -45,7 +45,7 @@ function c71612253.checkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c71612253.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFlagEffect(tp,71612253)~=0 and (Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated())
+	return Duel.GetFlagEffect(tp,71612253)~=0 and aux.dscon()
 end
 function c71612253.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

@@ -6,7 +6,7 @@ function c82832464.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
-	e1:SetCondition(c82832464.condition)
+	e1:SetCondition(aux.dscon)
 	c:RegisterEffect(e1)
 	--atkup
 	local e2=Effect.CreateEffect(c)
@@ -28,9 +28,6 @@ function c82832464.initial_effect(c)
 	e3:SetTarget(c82832464.sptg)
 	e3:SetOperation(c82832464.spop)
 	c:RegisterEffect(e3)
-end
-function c82832464.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c82832464.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

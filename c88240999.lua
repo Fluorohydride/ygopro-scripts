@@ -18,7 +18,7 @@ function c88240999.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e2:SetHintTiming(TIMING_DAMAGE_STEP,TIMING_DAMAGE_STEP+TIMINGS_CHECK_MONSTER)
 	e2:SetCountLimit(1,88240999)
-	e2:SetCondition(c88240999.adcon)
+	e2:SetCondition(aux.dscon)
 	e2:SetCost(c88240999.adcost)
 	e2:SetTarget(c88240999.adtg)
 	e2:SetOperation(c88240999.adop)
@@ -37,9 +37,6 @@ function c88240999.initial_effect(c)
 end
 function c88240999.mat_filter(c)
 	return not c:IsLevel(10)
-end
-function c88240999.adcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c88240999.adcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end

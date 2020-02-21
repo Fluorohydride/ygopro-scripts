@@ -9,7 +9,7 @@ function c19254117.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,19254117+EFFECT_COUNT_CODE_OATH)
-	e1:SetCondition(c19254117.condition)
+	e1:SetCondition(aux.dscon)
 	e1:SetTarget(c19254117.target)
 	e1:SetOperation(c19254117.activate)
 	c:RegisterEffect(e1)
@@ -25,9 +25,6 @@ function c19254117.initial_effect(c)
 	e2:SetTarget(c19254117.tgtg)
 	e2:SetOperation(c19254117.tgop)
 	c:RegisterEffect(e2)
-end
-function c19254117.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentPhase()~=PHASE_DAMAGE or not Duel.IsDamageCalculated()
 end
 function c19254117.filter(c)
 	return c:IsFaceup() and c:IsDefenseAbove(0)
@@ -72,8 +69,7 @@ function c19254117.ddop(e,tp,eg,ep,ev,re,r,rp)
 	e:Reset()
 end
 function c19254117.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp
-		and (Duel.IsAbleToEnterBP() or (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE))
+	return Duel.GetTurnPlayer()~=tp and aux.bpcon()
 end
 function c19254117.tgfilter(c)
 	return c:GetFlagEffect(19254117)==0
