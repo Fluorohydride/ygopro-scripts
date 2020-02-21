@@ -63,7 +63,6 @@ function c95239444.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 		local tg=Duel.SelectMatchingCard(tp,Card.IsAbleToHand,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,sg:GetCount(),c)
 		if tg:GetCount()>0 then
-			Duel.BreakEffect()
 			Duel.DisableShuffleCheck(false)
 			Duel.SendtoHand(tg,nil,REASON_EFFECT)
 		end
