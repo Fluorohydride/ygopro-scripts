@@ -14,10 +14,7 @@ function c54813225.initial_effect(c)
 end
 function c54813225.relgoal(sg,tp)
 	Duel.SetSelectedCard(sg)
-	if sg:CheckWithSumGreater(Card.GetLevel,3) and Duel.GetMZoneCount(tp,sg)>0 then
-		Duel.SetSelectedCard(sg)
-		return Duel.CheckReleaseGroup(tp,nil,0,nil)
-	else return false end
+	return sg:CheckWithSumGreater(Card.GetLevel,3) and aux.mzctcheckrel(sg,tp)
 end
 function c54813225.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local mg=Duel.GetReleaseGroup(tp):Filter(Card.IsType,nil,TYPE_TOKEN)

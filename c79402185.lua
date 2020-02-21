@@ -27,10 +27,7 @@ function c79402185.costfilter(c,tp)
 	return c:IsCode(43017476,58071123) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c79402185.fgoal(g,tp)
-	if Duel.GetMZoneCount(tp,g)>0 then
-		Duel.SetSelectedCard(g)
-		return Duel.CheckReleaseGroupEx(tp,nil,0,nil)
-	else return false end
+	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,aux.IsInGroup,#g,nil,g)
 end
 function c79402185.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)

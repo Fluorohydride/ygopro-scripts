@@ -24,17 +24,11 @@ end
 function c47826112.cfilter(c,tp)
 	return c:IsLevelBelow(3) and c:IsAttribute(ATTRIBUTE_WATER) and (c:IsControler(tp) or c:IsFaceup())
 end
-function c47826112.fgoal(sg,tp)
-	if sg:GetCount()>0 and Duel.GetMZoneCount(tp,sg)>0 then
-		Duel.SetSelectedCard(sg)
-		return Duel.CheckReleaseGroup(tp,nil,0,nil)
-	else return false end
-end
 function c47826112.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c47826112.cfilter,nil,tp)
-	if chk==0 then return rg:CheckSubGroup(c47826112.fgoal,3,3,tp) end
+	if chk==0 then return rg:CheckSubGroup(aux.mzctcheckrel,3,3,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=rg:SelectSubGroup(tp,c47826112.fgoal,false,3,3,tp)
+	local g=rg:SelectSubGroup(tp,aux.mzctcheckrel,false,3,3,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c47826112.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

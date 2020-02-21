@@ -98,8 +98,7 @@ function c77522571.costfilter(c)
 end
 function c77522571.fgoal(sg,e,tp)
 	local lv=sg:GetSum(Card.GetLevel)
-	Duel.SetSelectedCard(sg)
-	return Duel.CheckReleaseGroup(tp,nil,0,nil)
+	return Duel.CheckReleaseGroup(tp,aux.IsInGroup,#sg,nil,sg)
 		and Duel.IsExistingMatchingCard(c77522571.spfilter3,tp,LOCATION_EXTRA,0,1,nil,e,tp,lv,sg)
 end
 function c77522571.spfilter3(c,e,tp,lv,sg)

@@ -56,10 +56,8 @@ function c88000953.desfilter(c,g)
 	return not ec or not g:IsContains(ec)
 end
 function c88000953.fselect(g,tp)
-	if Duel.IsExistingMatchingCard(c88000953.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,g:GetCount(),g,g) then
-		Duel.SetSelectedCard(g)
-		return Duel.CheckReleaseGroup(tp,nil,0,nil)
-	else return false end
+	return Duel.IsExistingMatchingCard(c88000953.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,g:GetCount(),g,g)
+		and Duel.CheckReleaseGroup(tp,aux.IsInGroup,#g,nil,g)
 end
 function c88000953.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lg=e:GetHandler():GetLinkedGroup()

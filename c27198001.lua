@@ -27,17 +27,11 @@ function c27198001.initial_effect(c)
 	e3:SetOperation(c27198001.operation)
 	c:RegisterEffect(e3)
 end
-function c27198001.fgoal(sg,tp)
-	if sg:GetCount()>0 and Duel.GetMZoneCount(tp,sg)>0 then
-		Duel.SetSelectedCard(sg)
-		return Duel.CheckReleaseGroup(tp,nil,0,nil)
-	else return false end
-end
 function c27198001.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rg=Duel.GetReleaseGroup(tp)
-	if chk==0 then return rg:CheckSubGroup(c27198001.fgoal,2,2,tp) end
+	if chk==0 then return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=rg:SelectSubGroup(tp,c27198001.fgoal,false,2,2,tp)
+	local g=rg:SelectSubGroup(tp,aux.mzctcheckrel,false,2,2,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c27198001.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

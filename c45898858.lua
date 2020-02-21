@@ -14,18 +14,12 @@ c45898858.spchecks=aux.CreateChecks(Card.IsCode,{22587018,22587018,58071123})
 function c45898858.costfilter(c,tp)
 	return c:IsCode(22587018,58071123) and (c:IsControler(tp) or c:IsFaceup())
 end
-function c45898858.fgoal(g,tp)
-	if Duel.GetMZoneCount(tp,g)>0 then
-		Duel.SetSelectedCard(g)
-		return Duel.CheckReleaseGroup(tp,nil,0,nil)
-	else return false end
-end
 function c45898858.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	local g=Duel.GetReleaseGroup(tp):Filter(c45898858.costfilter,nil,tp)
-	if chk==0 then return g:CheckSubGroupEach(c45898858.spchecks,c45898858.fgoal,tp) end
+	if chk==0 then return g:CheckSubGroupEach(c45898858.spchecks,aux.mzctcheckrel,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local rg=g:SelectSubGroupEach(tp,c45898858.spchecks,false,c45898858.fgoal,tp)
+	local rg=g:SelectSubGroupEach(tp,c45898858.spchecks,false,aux.mzctcheckrel,tp)
 	Duel.Release(rg,REASON_COST)
 end
 function c45898858.filter(c,e,tp)
