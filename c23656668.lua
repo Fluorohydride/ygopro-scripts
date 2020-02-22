@@ -55,14 +55,9 @@ end
 function c23656668.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=e:GetLabelObject()
-	local g=Group.CreateGroup()
-	if c:IsRelateToBattle() then
-		g:AddCard(c)
-	end
+	if not c:IsRelateToBattle() then return end
 	if tc and tc:IsRelateToBattle() and tc:IsControler(1-tp) then
-		g:AddCard(tc)
-	end
-	if g:GetCount()>0 then
+		local g=Group.FromCards(c,tc)
 		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
 	end
 end
