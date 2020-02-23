@@ -14,7 +14,7 @@ end
 function c3567660.filter(c,tp)
 	if not (c:IsFaceup() and c:IsType(TYPE_LINK) and c:GetSequence()>=5) then return false end
 	local zone=bit.band(c:GetLinkedZone(),0x1f)
-	return Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_CONTROL,zone)>0
+	return Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0,zone)>0
 end
 function c3567660.seqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c3567660.filter(chkc,tp) end
@@ -26,7 +26,7 @@ function c3567660.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not (tc:IsRelateToEffect(e) and tc:IsControler(tp)) then return end
 	local zone=bit.band(tc:GetLinkedZone(),0x1f)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_CONTROL,zone)>0 then
+	if Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0,zone)>0 then
 		local flag=bit.bxor(zone,0xff)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
 		local s=Duel.SelectDisableField(tp,1,LOCATION_MZONE,0,flag)

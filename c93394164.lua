@@ -61,7 +61,7 @@ function c93394164.seqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ec=e:GetHandler():GetEquipTarget()
 	local p=ec:GetControler()
 	local zone=bit.band(ec:GetLinkedZone(),0x1f)
-	if chk==0 then return Duel.GetLocationCount(p,LOCATION_MZONE,p,LOCATION_REASON_CONTROL,zone)>0 end
+	if chk==0 then return Duel.GetLocationCount(p,LOCATION_MZONE,PLAYER_NONE,0,zone)>0 end
 end
 function c93394164.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -70,7 +70,7 @@ function c93394164.seqop(e,tp,eg,ep,ev,re,r,rp)
 	if not ec or ec:IsImmuneToEffect(e) then return end
 	local p=ec:GetControler()
 	local zone=bit.band(ec:GetLinkedZone(),0x1f)
-	if Duel.GetLocationCount(p,LOCATION_MZONE,p,LOCATION_REASON_CONTROL,zone)>0 then
+	if Duel.GetLocationCount(p,LOCATION_MZONE,PLAYER_NONE,0,zone)>0 then
 		local s=0
 		if ec:IsControler(tp) then
 			local flag=bit.bxor(zone,0xff)
