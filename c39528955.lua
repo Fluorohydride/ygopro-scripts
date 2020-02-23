@@ -51,7 +51,7 @@ function c39528955.seqcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c39528955.seqfilter(c)
 	local tp=c:GetControler()
-	return c:IsFaceup() and c:GetSequence()<5 and Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_CONTROL)>0
+	return c:IsFaceup() and c:GetSequence()<5 and Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0)>0
 end
 function c39528955.seqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
@@ -63,7 +63,8 @@ end
 function c39528955.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local ttp=tc:GetControler()
-	if not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) or Duel.GetLocationCount(ttp,LOCATION_MZONE,ttp,LOCATION_REASON_CONTROL)<=0 then return end
+	if not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e)
+		or Duel.GetLocationCount(ttp,LOCATION_MZONE,PLAYER_NONE,0)<=0 then return end
 	local p1,p2
 	if tc:IsControler(tp) then
 		p1=LOCATION_MZONE

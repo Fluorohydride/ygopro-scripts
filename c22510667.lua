@@ -40,7 +40,7 @@ function c22510667.seqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		local zone=bit.band(e:GetHandler():GetLinkedZone(),0x1f)
 		return Duel.IsExistingTarget(c22510667.seqfilter,tp,LOCATION_MZONE,0,1,nil)
-			and Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_CONTROL,zone)>0
+			and Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0,zone)>0
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(22510667,0))
 	Duel.SelectTarget(tp,c22510667.seqfilter,tp,LOCATION_MZONE,0,1,1,nil)
@@ -49,7 +49,7 @@ function c22510667.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local zone=bit.band(e:GetHandler():GetLinkedZone(),0x1f)
 	if not tc:IsRelateToEffect(e) or tc:IsControler(1-tp)
-		or Duel.GetLocationCount(p,LOCATION_MZONE,p,LOCATION_REASON_CONTROL,zone)<=0 then return end
+		or Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0,zone)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
 	local flag=bit.bxor(zone,0xff)
 	local s=Duel.SelectDisableField(tp,1,LOCATION_MZONE,0,flag)

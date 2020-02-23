@@ -40,7 +40,7 @@ function c25163979.mvfilter3(c)
 end
 function c25163979.mvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.IsExistingMatchingCard(c25163979.mvfilter1,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_CONTROL)>0
+		and Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0)>0
 	local b2=Duel.IsExistingMatchingCard(c25163979.mvfilter2,tp,LOCATION_MZONE,0,1,nil,tp)
 	if chk==0 then return b1 or b2 end
 	local op=0
@@ -52,7 +52,7 @@ end
 function c25163979.mvop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if e:GetLabel()==0 then
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+		if Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25163979,3))
 		local g=Duel.SelectMatchingCard(tp,c25163979.mvfilter1,tp,LOCATION_MZONE,0,1,1,nil)
 		if g:GetCount()>0 then
