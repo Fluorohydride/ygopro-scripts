@@ -15,6 +15,12 @@ function c87188910.initial_effect(c)
 	e1:SetTarget(c87188910.drtg)
 	e1:SetOperation(c87188910.drop)
 	c:RegisterEffect(e1)
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetCode(EFFECT_MATERIAL_CHECK)
+	e0:SetValue(c87188910.valcheck)
+	e0:SetLabelObject(e1)
+	c:RegisterEffect(e0)
 	--atk/def
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
@@ -41,17 +47,19 @@ function c87188910.initial_effect(c)
 	e4:SetOperation(c87188910.desop)
 	c:RegisterEffect(e4)
 end
-function c87188910.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
-end
 function c87188910.matfilter(c)
 	return not c:IsType(TYPE_TUNER)
 end
+function c87188910.valcheck(e,c)
+	local g=c:GetMaterial()
+	local ct=g:FilterCount(c87188910.matfilter,nil)
+	e:GetLabelObject():SetLabel(ct)
+end
+function c87188910.drcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
+end
 function c87188910.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	local mg=c:GetMaterial()
-	if mg:GetCount()<=0 then return false end
-	local ct=mg:FilterCount(c87188910.matfilter,nil)
+	local ct=e:GetLabel()
 	if chk==0 then return ct>0 and Duel.IsPlayerCanDraw(tp,ct) end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(ct)
