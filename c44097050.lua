@@ -68,12 +68,20 @@ function c44097050.thfilter(c)
 	return c:IsType(TYPE_TRAP) and c:IsAbleToHand()
 end
 function c44097050.rlcost(e,tp,eg,ep,ev,re,r,rp,chk)
+	e:SetLabel(100)
+	if chk==0 then return true end
+end
+function c44097050.rltg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetReleaseGroup(tp)
 	local b1=Duel.CheckReleaseGroup(tp,c44097050.costfilter,1,nil,tp)
 	local b2=g:GetCount()>1 and g:CheckSubGroup(aux.mzctcheck,2,2,tp)
 		and Duel.IsExistingMatchingCard(c44097050.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp)
 	local b3=Duel.CheckReleaseGroup(tp,nil,3,nil) and Duel.IsExistingMatchingCard(c44097050.thfilter,tp,LOCATION_GRAVE,0,1,nil)
-	if chk==0 then return b1 or b2 or b3 end
+	if chk==0 then
+		if e:GetLabel()~=100 then return false end
+		e:SetLabel(0)
+		return b1 or b2 or b3
+	end
 	local off=0
 	local ops={}
 	local opval={}
@@ -94,33 +102,26 @@ function c44097050.rlcost(e,tp,eg,ep,ev,re,r,rp,chk)
 		off=off+1
 	end
 	local op=Duel.SelectOption(tp,table.unpack(ops))
-	e:SetLabel(opval[op])
+	local sel=opval[op]
+	e:SetLabel(sel)
 	local rg=nil
-	if opval[op]==1 then
-		rg=Duel.SelectReleaseGroup(tp,c44097050.costfilter,1,1,nil,tp)
-	elseif opval[op]==2 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		rg=g:SelectSubGroup(tp,aux.mzctcheck,false,2,2,tp)
-	else
-		rg=Duel.SelectReleaseGroup(tp,nil,3,3,nil)
-	end
-	Duel.Release(rg,REASON_COST)
-end
-function c44097050.rltg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	local sel=e:GetLabel()
 	local cat=0
 	if sel==1 then
-		local dg=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 		e:SetCategory(bit.bor(cat,CATEGORY_DESTROY))
+		rg=Duel.SelectReleaseGroup(tp,c44097050.costfilter,1,1,nil,tp)
+		local dg=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,dg,1,0,0)
 	elseif sel==2 then
 		e:SetCategory(bit.bor(cat,CATEGORY_SPECIAL_SUMMON))
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+		rg=g:SelectSubGroup(tp,aux.mzctcheck,false,2,2,tp)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 	else
 		e:SetCategory(bit.bor(cat,CATEGORY_TOHAND))
+		rg=Duel.SelectReleaseGroup(tp,nil,3,3,nil)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_GRAVE)
 	end
+	Duel.Release(rg,REASON_COST)
 end
 function c44097050.rlop(e,tp,eg,ep,ev,re,r,rp)
 	local sel=e:GetLabel()
