@@ -85,8 +85,8 @@ function c63180841.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c63180841.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetReleaseGroup(tp):Filter(c63180841.spfilter,nil,tp)
-	if chk==0 then return g:CheckSubGroup(aux.mzctcheck,2,2,tp) end
-	local rg=g:SelectSubGroup(tp,aux.mzctcheck,false,2,2,tp)
+	if chk==0 then return g:CheckSubGroup(aux.mzctcheckrel,2,2,tp) end
+	local rg=g:SelectSubGroup(tp,aux.mzctcheckrel,false,2,2,tp)
 	Duel.Release(rg,REASON_COST)
 end
 function c63180841.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
