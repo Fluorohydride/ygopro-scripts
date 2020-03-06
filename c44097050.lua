@@ -74,7 +74,7 @@ end
 function c44097050.rltg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetReleaseGroup(tp)
 	local b1=Duel.CheckReleaseGroup(tp,c44097050.costfilter,1,nil,tp)
-	local b2=g:GetCount()>1 and g:CheckSubGroup(aux.mzctcheck,2,2,tp)
+	local b2=g:GetCount()>1 and g:CheckSubGroup(aux.mzctcheckrel,2,2,tp)
 		and Duel.IsExistingMatchingCard(c44097050.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp)
 	local b3=Duel.CheckReleaseGroup(tp,nil,3,nil) and Duel.IsExistingMatchingCard(c44097050.thfilter,tp,LOCATION_GRAVE,0,1,nil)
 	if chk==0 then
@@ -114,7 +114,7 @@ function c44097050.rltg(e,tp,eg,ep,ev,re,r,rp,chk)
 	elseif sel==2 then
 		e:SetCategory(bit.bor(cat,CATEGORY_SPECIAL_SUMMON))
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		rg=g:SelectSubGroup(tp,aux.mzctcheck,false,2,2,tp)
+		rg=g:SelectSubGroup(tp,aux.mzctcheckrel,false,2,2,tp)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 	else
 		e:SetCategory(bit.bor(cat,CATEGORY_TOHAND))
