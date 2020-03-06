@@ -47,14 +47,19 @@ function c94183877.spfilter(c,e,tp,code)
 	return c:IsSetCard(0x134) and c:IsLevel(9) and not c:IsCode(code) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c94183877.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c94183877.rfilter,1,nil,e,tp) end
+	e:SetLabel(100)
+	if chk==0 then return true end
+end
+function c94183877.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then
+		if e:GetLabel()~=100 then return false end
+		e:SetLabel(0)
+		return Duel.CheckReleaseGroup(tp,c94183877.rfilter,1,nil,e,tp)
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectReleaseGroup(tp,c94183877.rfilter,1,1,nil,e,tp)
 	e:SetLabel(g:GetFirst():GetCode())
 	Duel.Release(g,REASON_COST)
-end
-function c94183877.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c94183877.spop(e,tp,eg,ep,ev,re,r,rp)
