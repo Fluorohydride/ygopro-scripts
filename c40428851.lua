@@ -71,11 +71,8 @@ function c40428851.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ac=Duel.GetAttacker()
 	local tc=Duel.GetAttackTarget()
-	if ac:IsControler(tp) and ac:IsSetCard(0x137) and ac~=c then
-		return true
-	elseif tc and tc:IsControler(tp) and tc:IsSetCard(0x137) and tc~=c then
-		return true
-	else return false end
+	if not ac:IsControler(tp) then ac,tc=tc,ac end
+	return ac and ac:IsControler(tp) and ac:IsFaceup() and ac:IsSetCard(0x137) and ac~=c
 end
 function c40428851.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
