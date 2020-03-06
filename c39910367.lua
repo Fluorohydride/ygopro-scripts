@@ -65,7 +65,7 @@ function c39910367.addop2(e,tp,eg,ep,ev,re,r,rp)
 	local count=0
 	local c=eg:GetFirst()
 	while c~=nil do
-		if not c:IsCode(39910367) and c:IsLocation(LOCATION_ONFIELD) and c:IsReason(REASON_DESTROY) then
+		if c~=e:GetHandler() and c:IsLocation(LOCATION_ONFIELD) and c:IsReason(REASON_DESTROY) then
 			count=count+c:GetCounter(0x1)
 		end
 		c=eg:GetNext()
