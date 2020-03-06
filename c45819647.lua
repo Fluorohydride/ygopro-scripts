@@ -41,7 +41,7 @@ function c45819647.lcheck(g,lc)
 	return g:IsExists(Card.IsLinkRace,1,nil,RACE_SPELLCASTER)
 end
 function c45819647.ctfilter(c)
-	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup() or c:GetEquipTarget()) and c:IsType(TYPE_SPELL)
+	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup() or c:GetEquipTarget() or c:IsLocation(LOCATION_FZONE)) and c:IsType(TYPE_SPELL)
 end
 function c45819647.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)
