@@ -39,15 +39,20 @@ function c33945211.srfilter(c,code)
 	return c:IsSetCard(0x12b) and c:IsType(TYPE_TRAP) and not c:IsCode(code) and c:IsAbleToHand()
 end
 function c33945211.srcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c33945211.costfilter,tp,LOCATION_GRAVE,0,1,nil,tp) end
+	e:SetLabel(100)
+	if chk==0 then return true end
+end
+function c33945211.srtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then
+		if e:GetLabel()~=100 then return false end
+		e:SetLabel(0)
+		return Duel.IsExistingMatchingCard(c33945211.costfilter,tp,LOCATION_GRAVE,0,1,nil,tp)
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local tc=Duel.SelectMatchingCard(tp,c33945211.costfilter,tp,LOCATION_GRAVE,0,1,1,nil,tp):GetFirst()
 	e:SetLabel(tc:GetCode())
 	Duel.Remove(tc,POS_FACEUP,REASON_COST)
-end
-function c33945211.srtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
+	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)ATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c33945211.srop(e,tp,eg,ep,ev,re,r,rp)
 	local code=e:GetLabel()
