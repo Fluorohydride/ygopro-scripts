@@ -26,9 +26,7 @@ function c99792080.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c99792080.dircon(e,tp,eg,ep,ev,re,r,rp)
-	local ph=Duel.GetCurrentPhase()
-	return re:GetHandler():IsSetCard(0x131) and re:IsActiveType(TYPE_MONSTER)
-		and (Duel.IsAbleToEnterBP() or (ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE))
+	return re:GetHandler():IsSetCard(0x131) and re:IsActiveType(TYPE_MONSTER) and aux.bpcon()
 end
 function c99792080.dirop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
