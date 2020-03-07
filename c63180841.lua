@@ -32,6 +32,7 @@ function c63180841.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_QUICK_O)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_GRAVE)
+	e3:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e3:SetCountLimit(1,63180842)
 	e3:SetCondition(c63180841.spcon)
 	e3:SetCost(c63180841.spcost)
@@ -77,15 +78,16 @@ function c63180841.atkop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateAttack()
 end
 function c63180841.spfilter(c,tp)
-	return c:IsType(TYPE_SYNCHRO) and Duel.GetMZoneCount(tp,c)>0
+	return c:IsType(TYPE_SYNCHRO) and (c:IsControler(tp) or c:IsFaceup())
 end
 function c63180841.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==1-tp
 end
 function c63180841.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,c63180841.spfilter,2,nil,tp) end
-	local g=Duel.SelectReleaseGroup(tp,c63180841.spfilter,2,2,nil,tp)
-	Duel.Release(g,REASON_COST)
+	local g=Duel.GetReleaseGroup(tp):Filter(c63180841.spfilter,nil,tp)
+	if chk==0 then return g:CheckSubGroup(aux.mzctcheckrel,2,2,tp) end
+	local rg=g:SelectSubGroup(tp,aux.mzctcheckrel,false,2,2,tp)
+	Duel.Release(rg,REASON_COST)
 end
 function c63180841.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
