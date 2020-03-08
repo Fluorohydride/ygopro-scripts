@@ -22,10 +22,14 @@ function c43708041.initial_effect(c)
 	e3:SetCode(EVENT_FREE_CHAIN)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e3:SetCondition(c43708041.thcon)
 	e3:SetCost(c43708041.thcost)
 	e3:SetTarget(c43708041.thtg)
 	e3:SetOperation(c43708041.thop)
 	c:RegisterEffect(e3)
+end
+function c43708041.thcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
 end
 function c43708041.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
