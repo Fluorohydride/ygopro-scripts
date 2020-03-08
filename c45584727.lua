@@ -41,18 +41,21 @@ function c45584727.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c45584727.cfilter,tp,LOCATION_MZONE,0,1,nil)
 		and not Duel.IsExistingMatchingCard(c45584727.cfilter2,tp,LOCATION_MZONE,0,1,nil)
 end
-function c45584727.rmfilter(c)
+function c45584727.tgfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x122) and c:IsPosition(POS_FACEUP_ATTACK)
+end
+function c45584727.rmfilter(c)
+	return c:IsFaceup() and c:IsAbleToRemove()
 end
 function c45584727.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.IsExistingTarget(c45584727.rmfilter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingTarget(Card.IsAbleToRemove,tp,0,LOCATION_MZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c45584727.tgfilter,tp,LOCATION_MZONE,0,1,nil)
+		and Duel.IsExistingTarget(c45584727.rmfilter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
-	Duel.SelectTarget(tp,c45584727.rmfilter,tp,LOCATION_MZONE,0,1,1,nil)
+	local g1=Duel.SelectTarget(tp,c45584727.tgfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectTarget(tp,nil,tp,0,LOCATION_MZONE,1,1,nil)
-	e:SetLabelObject(g:GetFirst())
+	local g2=Duel.SelectTarget(tp,c45584727.rmfilter,tp,0,LOCATION_MZONE,1,1,nil)
+	e:SetLabelObject(g2:GetFirst())
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g1,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g2,1,0,0)
 end
