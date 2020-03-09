@@ -80,6 +80,9 @@ function c87602890.operation(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.SendtoGrave(g1,REASON_EFFECT)
 		end
+		if e:GetLabel()==1 then
+			Duel.ShuffleExtra(1-tp)
+		end
 	end
 end
 function c87602890.valcheck(e,c)
