@@ -91,6 +91,7 @@ function c77565204.tgop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoGrave(mat,REASON_EFFECT)
 		e:SetLabel(code)
 		e:SetLabelObject(mat)
+		Duel.ShuffleExtra(tp)
 	end
 end
 function c77565204.proccon(e,tp,eg,ep,ev,re,r,rp)

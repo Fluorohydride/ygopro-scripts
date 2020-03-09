@@ -27,4 +27,5 @@ function c21088856.operation(e,tp,eg,ep,ev,re,r,rp)
 	else
 		Duel.Recover(tp,atk,REASON_EFFECT)
 	end
+	Duel.ShuffleExtra(1-tp)
 end

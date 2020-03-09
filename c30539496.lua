@@ -79,6 +79,7 @@ function c30539496.spop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 			local tg=rg:SelectSubGroup(tp,aux.dncheck,false,1,3)
 			Duel.Remove(tg,POS_FACEUP,REASON_EFFECT)
+			Duel.ShuffleExtra(1-tp)
 		end
 	end
 end
