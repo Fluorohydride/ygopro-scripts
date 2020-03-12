@@ -51,4 +51,6 @@ function c94431029.activate(e,tp,eg,ep,ev,re,r,rp)
 			end
 		end
 	end
+	Duel.ShuffleExtra(tp)
+	Duel.ShuffleExtra(1-tp)
 end

@@ -31,4 +31,5 @@ function c80159717.exop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local sg=Duel.SelectMatchingCard(tp,Card.IsAbleToGrave,tp,0,LOCATION_EXTRA,ct,ct,nil)
 	Duel.SendtoGrave(sg,REASON_EFFECT)
+	Duel.ShuffleExtra(1-tp)
 end

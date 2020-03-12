@@ -78,4 +78,5 @@ function c50179591.rmop2(e,tp,eg,ep,ev,re,r,rp)
 	if mg:GetCount()>0 then
 		Duel.Remove(mg,POS_FACEUP,REASON_EFFECT)
 	end
+	Duel.ShuffleExtra(1-tp)
 end

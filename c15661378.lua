@@ -83,5 +83,6 @@ function c15661378.remop(e,tp,eg,ep,ev,re,r,rp)
 		sg1:Merge(g2)
 		sg1:Merge(sg3)
 		Duel.Remove(sg1,POS_FACEUP,REASON_EFFECT)
+		Duel.ShuffleExtra(1-tp)
 	end
 end

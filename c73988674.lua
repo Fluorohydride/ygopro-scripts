@@ -29,4 +29,6 @@ function c73988674.operation(e,tp,eg,ep,ev,re,r,rp)
 	elseif ct1<ct2 then
 		Duel.Recover(1-tp,3000,REASON_EFFECT)
 	end
+	Duel.ShuffleExtra(tp)
+	Duel.ShuffleExtra(1-tp)
 end

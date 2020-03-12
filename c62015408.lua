@@ -40,5 +40,7 @@ function c62015408.operation(e,tp,eg,ep,ev,re,r,rp)
 		if tg:GetCount()>0 then
 			Duel.Remove(tg,POS_FACEUP,REASON_EFFECT)
 		end
+		Duel.ShuffleExtra(tp)
+		Duel.ShuffleExtra(1-tp)
 	end
 end
