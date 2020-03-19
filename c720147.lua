@@ -45,17 +45,27 @@ function c720147.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	sg:KeepAlive()
 	e:SetLabelObject(sg)
 	Duel.Release(sg,REASON_COST)
+	for rc in aux.Next(sg) do
+		rc:CreateEffectRelation(e)
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c720147.matfilter1,tp,LOCATION_MZONE,0,1,1,nil,tp,sg)
 end
 function c720147.activate(e,tp,eg,ep,ev,re,r,rp)
-	local rg=e:GetLabelObject()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		rg:AddCard(tc)
+		local rg=e:GetLabelObject()
+		local exg=rg:Filter(Card.IsRelateToEffect,nil,e)
+		exg:AddCard(tc)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c720147.matfilter2),tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,rg:GetCount()-1,rg:GetCount()-1,rg)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c720147.matfilter2),tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,rg:GetCount(),rg:GetCount(),exg)
 		if g:GetCount()>0 then
+			for oc in aux.Next(g) do
+				local og=oc:GetOverlayGroup()
+				if og:GetCount()>0 then
+					Duel.SendtoGrave(og,REASON_RULE)
+				end
+			end
 			Duel.Overlay(tc,g)
 		end
 	end
