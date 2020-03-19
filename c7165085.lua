@@ -34,6 +34,7 @@ function c7165085.activate(e,tp,eg,ep,ev,re,r,rp)
 		local te=tc:GetActivateEffect()
 		local tep=tc:GetControler()
 		if not te then
+			Duel.ChangePosition(tc,POS_FACEUP)
 			Duel.Destroy(tc,REASON_EFFECT)
 		else
 			local condition=te:GetCondition()
