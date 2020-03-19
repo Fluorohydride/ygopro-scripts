@@ -46,6 +46,7 @@ function c47674738.thop(e,tp,eg,ep,ev,re,r,rp)
 		local sg=g:FilterSelect(tp,c47674738.thfilter,1,1,nil)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,sg)
+		Duel.ShuffleHand(tp)
 		ct=g:GetCount()-sg:GetCount()
 	end
 	if ct>0 then
