@@ -39,19 +39,19 @@ function c39030163.mtfilter(c,e)
 end
 function c39030163.mttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=e:GetHandler():GetEquipGroup()
-	if chkc then return g:IsContains(chkc) and chkc:IsCanBeEffectTarget(e) end
+	if chkc then return g:IsContains(chkc) and c39030163.mtfilter(chkc,e) end
 	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ) and g:IsExists(c39030163.mtfilter,1,nil,e) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local tg=g:FilterSelect(tp,c39030163.mtfilter,1,2,nil,e)
 	Duel.SetTargetCard(tg)
 end
-function c39030163.mtfilter(c,e)
+function c39030163.matfilter(c,e)
 	return c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
 end
 function c39030163.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c39030163.mtfilter,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c39030163.matfilter,nil,e)
 	if g:GetCount()>0 then
 		Duel.Overlay(c,g)
 	end
