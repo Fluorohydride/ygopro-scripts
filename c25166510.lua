@@ -57,7 +57,7 @@ function c25166510.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetMatchingGroup(aux.disfilter1,tp,0,LOCATION_ONFIELD,nil)
 	if ct>0 and #tg>0 and Duel.SelectYesNo(tp,aux.Stringid(25166510,2)) then
 		Duel.BreakEffect()
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25166510,3))
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 		local sg=tg:Select(tp,1,ct,nil)
 		Duel.HintSelection(sg)
 		local tc=sg:GetFirst()

@@ -80,7 +80,7 @@ function c40080312.drop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	if Duel.Draw(p,d,REASON_EFFECT)~=0 and #g>0 then
 		Duel.BreakEffect()
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(40080312,1))
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 		local sg=g:Select(tp,1,1,nil)
 		local tc=sg:GetFirst()
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
