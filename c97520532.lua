@@ -33,7 +33,7 @@ function c97520532.spfilter(c,e,tp)
 	return c:IsSetCard(0x83) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c97520532.thop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(97520532,1))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 	local g1=Duel.SelectMatchingCard(tp,c97520532.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g1:GetCount()>0 then
 		local tc=g1:GetFirst()

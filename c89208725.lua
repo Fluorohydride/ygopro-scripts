@@ -18,7 +18,7 @@ function c89208725.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c89208725.activate(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(89208725,0))
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 	if e:GetLabel()==1 then Duel.RegisterFlagEffect(tp,15248873,RESET_CHAIN,0,1) end
 	local g=Duel.SelectMatchingCard(tp,c89208725.filter,tp,LOCATION_DECK,0,1,1,nil,tp)
 	Duel.ResetFlagEffect(tp,15248873)

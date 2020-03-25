@@ -49,7 +49,7 @@ function c50793215.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c50793215.thop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 	local g=Duel.SelectMatchingCard(tp,c50793215.thfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,ft)
 	if g:GetCount()>0 then
 		local sc=g:GetFirst()
