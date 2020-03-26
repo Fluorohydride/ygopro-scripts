@@ -28,7 +28,7 @@ end
 function c85787173.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local atk=math.abs(Duel.GetLP(0)-Duel.GetLP(1))
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c85787173.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp,ft,atk)
 	local tc=g:GetFirst()
 	if tc then

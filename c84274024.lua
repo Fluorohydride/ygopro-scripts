@@ -115,7 +115,7 @@ end
 function c84274024.thop2(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetFlagEffect(tp,84274026)~=0 or eg:GetFirst():IsFacedown() then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 	local g=Duel.SelectMatchingCard(tp,c84274024.thfilter2,tp,LOCATION_DECK,0,1,1,nil,e,tp,ft,eg:GetFirst():GetRank())
 	local tc=g:GetFirst()
 	if tc then

@@ -20,7 +20,7 @@ function c20065322.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c20065322.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	Duel.Hint(HINT_SELECTMSG,tp,0)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 	local g=Duel.SelectMatchingCard(tp,c20065322.filter,tp,LOCATION_DECK,0,1,1,nil,ft,e,tp)
 	if g:GetCount()>0 then
 		local th=g:GetFirst():IsAbleToHand()

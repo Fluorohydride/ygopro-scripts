@@ -745,6 +745,8 @@ HINTMSG_ZONE			=569	--请选择[%ls]的位置
 HINTMSG_DISABLEZONE		=570	--请选择要变成不能使用的卡片区域
 HINTMSG_TOZONE			=571	--请选择要移动到的位置
 HINTMSG_COUNTER			=572	--请选择要放置指示物的卡
+HINTMSG_DISABLE			=573	--请选择要无效的卡
+HINTMSG_OPERATECARD		=574	--请选择要操作的卡
 --Select	--请选择
 SELECT_HEADS				=60	--正面
 SELECT_TAILS				=61	--反面
