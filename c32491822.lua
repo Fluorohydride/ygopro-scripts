@@ -14,6 +14,7 @@ function c32491822.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c32491822.spcon)
+	e2:SetTarget(c32491822.sptg)
 	e2:SetOperation(c32491822.spop)
 	c:RegisterEffect(e2)
 	--damage
@@ -36,41 +37,32 @@ function c32491822.initial_effect(c)
 	e4:SetValue(c32491822.atlimit)
 	c:RegisterEffect(e4)
 end
-function c32491822.spfilter(c)
-	return c:IsFaceup() and c:GetType()==TYPE_SPELL+TYPE_CONTINUOUS and c:IsAbleToGraveAsCost()
+function c32491822.spfilter(c,check)
+	return c:IsAbleToGraveAsCost()
+		and (c:IsFaceup() and c:GetType()==TYPE_SPELL+TYPE_CONTINUOUS or check and c:IsFacedown() and c:IsType(TYPE_SPELL))
 end
 function c32491822.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<-2 then return false end
-	if ft<=0 then
-		local ct=-ft+1
-		return Duel.IsExistingMatchingCard(c32491822.spfilter,tp,LOCATION_MZONE,0,ct,nil)
-			and Duel.IsExistingMatchingCard(c32491822.spfilter,tp,LOCATION_ONFIELD,0,3,nil)
-	else
-		return Duel.IsExistingMatchingCard(c32491822.spfilter,tp,LOCATION_ONFIELD,0,3,nil)
-	end
+	local check=Duel.IsPlayerAffectedByEffect(tp,54828837)
+	local g=Duel.GetMatchingGroup(c32491822.spfilter,tp,LOCATION_ONFIELD,0,nil,check)
+	return g:CheckSubGroup(aux.mzctcheck,3,3,tp)
+end
+function c32491822.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local check=Duel.IsPlayerAffectedByEffect(tp,54828837)
+	local g=Duel.GetMatchingGroup(c32491822.spfilter,tp,LOCATION_ONFIELD,0,nil,check)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local sg=g:SelectSubGroup(tp,aux.mzctcheck,true,3,3,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c32491822.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<=0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local sg=Duel.GetMatchingGroup(c32491822.spfilter,tp,LOCATION_ONFIELD,0,nil)
-		local ct=-ft+1
-		local g1=sg:FilterSelect(tp,Card.IsLocation,ct,ct,nil,LOCATION_MZONE)
-		if ct<3 then
-			sg:Sub(g1)
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-			local g2=sg:Select(tp,3-ct,3-ct,nil)
-			g1:Merge(g2)
-		end
-		Duel.SendtoGrave(g1,REASON_COST)
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local g=Duel.SelectMatchingCard(tp,c32491822.spfilter,tp,LOCATION_ONFIELD,0,3,3,nil)
-		Duel.SendtoGrave(g,REASON_COST)
-	end
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c32491822.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
