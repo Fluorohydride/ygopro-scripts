@@ -8,6 +8,7 @@ function c38572779.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c38572779.immcon)
 	e1:SetCost(c38572779.immcost)
+	e1:SetTarget(c38572779.immtg)
 	e1:SetOperation(c38572779.immop)
 	c:RegisterEffect(e1)
 	--special summon
@@ -29,6 +30,9 @@ function c38572779.immcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
+function c38572779.immtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.GetFlagEffect(tp,38572779)==0 end
+end
 function c38572779.immop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -42,6 +46,7 @@ function c38572779.immop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_PHASE+PHASE_MAIN2)
 	end
 	Duel.RegisterEffect(e1,tp)
+	Duel.RegisterFlagEffect(tp,38572779,RESET_PHASE+PHASE_END,0,1)
 end
 function c38572779.efilter(e,re)
 	return e:GetOwnerPlayer()~=re:GetOwnerPlayer() and re:IsActivated()
