@@ -34,8 +34,8 @@ function c23020408.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c23020408.filter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
+		Duel.ShuffleDeck(tp)
 		if tc:IsLocation(LOCATION_DECK) then
-			Duel.ShuffleDeck(tp)
 			Duel.MoveSequence(tc,0)
 		else
 			Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
