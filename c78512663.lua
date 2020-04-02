@@ -41,10 +41,13 @@ function c78512663.initial_effect(c)
 	e6:SetDescription(aux.Stringid(78512663,1))
 	e6:SetCategory(CATEGORY_TOHAND)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e6:SetCode(EVENT_CUSTOM+78512663)
+	e6:SetCode(EVENT_TO_DECK)
+	e6:SetCondition(c78512663.thcon)
 	e6:SetTarget(c78512663.thtg)
 	e6:SetOperation(c78512663.thop)
 	c:RegisterEffect(e6)
+	e3:SetLabelObject(e6)
+	e4:SetLabelObject(e6)
 end
 c78512663.material_setcode=0x8
 function c78512663.splimit(e,se,sp,st)
@@ -67,9 +70,9 @@ function c78512663.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 	Duel.SendtoDeck(c,nil,2,REASON_EFFECT)
-	if c:IsLocation(LOCATION_EXTRA) then
-		Duel.RaiseSingleEvent(c,EVENT_CUSTOM+78512663,e,0,0,0,0)
-	end
+end
+function c78512663.thcon(e,tp,eg,ep,ev,re,r,rp)
+	return re:GetLabelObject()==e
 end
 function c78512663.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

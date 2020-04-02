@@ -43,10 +43,13 @@ function c49352945.initial_effect(c)
 	e6:SetDescription(aux.Stringid(49352945,2))
 	e6:SetCategory(CATEGORY_TODECK)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e6:SetCode(EVENT_CUSTOM+49352945)
+	e6:SetCode(EVENT_TO_DECK)
+	e6:SetCondition(c49352945.tdcon)
 	e6:SetTarget(c49352945.tdtg)
 	e6:SetOperation(c49352945.tdop)
 	c:RegisterEffect(e6)
+	e3:SetLabelObject(e6)
+	e4:SetLabelObject(e6)
 end
 c49352945.material_setcode=0x8
 function c49352945.splimit(e,se,sp,st)
@@ -66,9 +69,6 @@ function c49352945.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 	Duel.SendtoDeck(c,nil,2,REASON_EFFECT)
-	if c:IsLocation(LOCATION_EXTRA) then
-		Duel.RaiseSingleEvent(c,EVENT_CUSTOM+49352945,e,0,0,0,0)
-	end
 end
 function c49352945.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
@@ -81,6 +81,9 @@ end
 function c49352945.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c49352945.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	Duel.Destroy(g,REASON_EFFECT)
+end
+function c49352945.tdcon(e,tp,eg,ep,ev,re,r,rp)
+	return re:GetLabelObject()==e
 end
 function c49352945.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
