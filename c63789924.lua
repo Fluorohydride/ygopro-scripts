@@ -42,7 +42,7 @@ function c63789924.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c63789924.discon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,0x41)==0x41 and e:GetHandler():GetEquipTarget()~=nil and e:GetHandler():IsLocation(LOCATION_GRAVE)
+	return bit.band(r,0x41)==0x41 and e:GetHandler():GetEquipTarget()~=nil
 end
 function c63789924.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
