@@ -57,6 +57,9 @@ end
 function c69164989.activate2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c69164989.thfilter,tp,LOCATION_DECK,0,1,1,nil,tp)
+	if g:GetCount()==0 then
+		g=Duel.SelectMatchingCard(tp,c69164989.thfilter,tp,LOCATION_DECK,0,1,1,nil,tp,true)
+	end
 	local tc=g:GetFirst()
 	if tc and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 then
 		Duel.ConfirmCards(1-tp,tc)
