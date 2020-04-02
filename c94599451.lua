@@ -37,7 +37,7 @@ function c94599451.initial_effect(c)
 end
 function c94599451.ctfilter(c,tp)
 	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
-		and bit.band(c:GetPreviousTypeOnField(),TYPE_PENDULUM)~=0 and c:IsPreviousSetCard(0x10d)
+		and c:IsType(TYPE_PENDULUM) and c:IsPreviousSetCard(0x10d) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function c94599451.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c94599451.ctfilter,1,nil,tp)
