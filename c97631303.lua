@@ -51,7 +51,7 @@ function c97631303.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	else
 		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_HANDES)
 		Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,c,1,0,0)
-		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
+		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_GRAVE)
 	end
 end
 function c97631303.spfilter(c,e,tp)
