@@ -78,9 +78,14 @@ end
 function c27279764.adtg(e,c)
 	return c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
+function c27279764.tgfilter(c)
+	return not c:IsPublic() or c:IsType(TYPE_MONSTER)
+end
 function c27279764.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE+LOCATION_HAND)>0 end
-	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,0,LOCATION_MZONE+LOCATION_HAND)
+	local mc=Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)
+	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
+	if chk==0 then return mc>0 or g and g:IsExists(c27279764.tgfilter,1,nil) end
+	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,1-tp,LOCATION_MZONE+LOCATION_HAND)
 end
 function c27279764.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsType,1-tp,LOCATION_MZONE+LOCATION_HAND,0,nil,TYPE_MONSTER)
