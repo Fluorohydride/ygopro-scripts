@@ -35,8 +35,13 @@ end
 function c68199168.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()~=PHASE_DRAW and eg:IsExists(c68199168.cfilter,1,nil,1-tp)
 end
+function c68199168.tgfilter(c)
+	return not c:IsPublic() or c:IsType(TYPE_MONSTER)
+end
 function c68199168.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE+LOCATION_HAND)>0 end
+	local mc=Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)
+	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
+	if chk==0 then return mc>0 or g and g:IsExists(c68199168.tgfilter,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,1-tp,LOCATION_MZONE+LOCATION_HAND)
 end
 function c68199168.tgop(e,tp,eg,ep,ev,re,r,rp)
