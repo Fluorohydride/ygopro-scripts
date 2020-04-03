@@ -24,7 +24,7 @@ function c85431040.filter(c,e,tp)
 	return c:IsCode(85431040) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c85431040.operation(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Damage(1-tp,300,REASON_EFFECT)
+	if Duel.Damage(1-tp,300,REASON_EFFECT)==0 then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
 	if ft>2 then ft=2 end
