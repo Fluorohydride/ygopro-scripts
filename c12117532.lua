@@ -72,5 +72,5 @@ function c12117532.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c12117532.atkval(e,c)
-	return c:GetFlagEffect(12117532)*500
+	return c:GetFlagEffect(12117532)*-500
 end
