@@ -27,7 +27,7 @@ function c80101899.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g1=Duel.SelectMatchingCard(tp,c80101899.rmfilter,tp,LOCATION_DECK,0,1,1,nil,tp)
 	local tc1=g1:GetFirst()
 	if tc1 and Duel.Remove(tc1,POS_FACEUP,REASON_EFFECT)~=0 and tc1:IsLocation(LOCATION_REMOVED) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 		local g2=Duel.SelectMatchingCard(tp,c80101899.setfilter,tp,LOCATION_DECK,0,1,1,nil,tc1:GetCode())
 		local tc2=g2:GetFirst()
 		if tc2 and Duel.SSet(tp,tc2)~=0 then
