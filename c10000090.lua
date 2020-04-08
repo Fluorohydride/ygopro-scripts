@@ -1,5 +1,6 @@
 --ラーの翼神竜－不死鳥
 function c10000090.initial_effect(c)
+	aux.AddCodeList(c,10000010)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
