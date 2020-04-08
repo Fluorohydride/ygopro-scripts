@@ -68,9 +68,9 @@ function c12117532.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=c:GetFirstCardTarget()
 	if tc then
-		tc:RegisterFlagEffect(12117532,RESET_EVENT+RESETS_STANDARD,0,1)
+		c:RegisterFlagEffect(12117532,RESET_EVENT+RESETS_STANDARD,0,1)
 	end
 end
 function c12117532.atkval(e,c)
-	return c:GetFlagEffect(12117532)*-500
+	return e:GetHandler():GetFlagEffect(12117532)*-500
 end
