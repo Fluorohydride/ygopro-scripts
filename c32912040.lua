@@ -72,7 +72,7 @@ function c32912040.operation(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,c32912040.filter,tp,LOCATION_DECK,0,1,1,nil,tp,tc:GetCode())
 		if g:GetCount()>0 then
 			local tc=g:GetFirst()
-			Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+			Duel.MoveToField(tc,tp,tp,LOCATION_FZONE,POS_FACEUP,true)
 			local te=tc:GetActivateEffect()
 			te:UseCountLimit(tp,1,true)
 			local tep=tc:GetControler()

@@ -82,7 +82,7 @@ function c67754901.penop(e,tp,eg,ep,ev,re,r,rp)
 		local sg=Duel.SelectMatchingCard(tp,c67754901.penfilter,tp,LOCATION_EXTRA,0,1,1,nil)
 		local tc=sg:GetFirst()
 		if tc then
-			Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+			Duel.MoveToField(tc,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 		end
 	end
 end

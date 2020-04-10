@@ -76,7 +76,7 @@ function c72332074.actop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoGrave(fc,REASON_RULE)
 			Duel.BreakEffect()
 		end
-		Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+		Duel.MoveToField(tc,tp,tp,LOCATION_FZONE,POS_FACEUP,true)
 		local te=tc:GetActivateEffect()
 		te:UseCountLimit(tp,1,true)
 		Duel.RaiseEvent(tc,4179255,te,0,tp,tp,Duel.GetCurrentChain())

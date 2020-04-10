@@ -99,7 +99,7 @@ function c46035545.thop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,c46035545.pfilter,tp,LOCATION_EXTRA,0,1,ct,nil)
 		local pc=g:GetFirst()
 		while pc do
-			Duel.MoveToField(pc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+			Duel.MoveToField(pc,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_CANNOT_TRIGGER)

@@ -74,7 +74,7 @@ function c24096228.operation(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 		Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
 	elseif bit.band(tpe,TYPE_FIELD)~=0 then
-		Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+		Duel.MoveToField(tc,tp,tp,LOCATION_FZONE,POS_FACEUP,true)
 	end
 	tc:CreateEffectRelation(te)
 	if co then co(te,tp,eg,ep,ev,re,r,rp,1) end

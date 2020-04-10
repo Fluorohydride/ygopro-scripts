@@ -28,8 +28,8 @@ function c25964547.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25964547,1))
 	local g2=Duel.SelectMatchingCard(tp,c25964547.cfilter2,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,tp,tc1:GetCode())
 	local tc2=g2:GetFirst()
-	if Duel.MoveToField(tc1,tp,tp,LOCATION_SZONE,POS_FACEUP,false) then
-		if Duel.MoveToField(tc2,tp,1-tp,LOCATION_SZONE,POS_FACEUP,false) then
+	if Duel.MoveToField(tc1,tp,tp,LOCATION_FZONE,POS_FACEUP,false) then
+		if Duel.MoveToField(tc2,tp,1-tp,LOCATION_FZONE,POS_FACEUP,false) then
 			tc2:SetStatus(STATUS_EFFECT_ENABLED,true)
 		end
 		tc1:SetStatus(STATUS_EFFECT_ENABLED,true)

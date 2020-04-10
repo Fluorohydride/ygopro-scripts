@@ -42,7 +42,7 @@ function c2368215.spop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,c2368215.stfilter,tp,LOCATION_EXTRA+LOCATION_DECK,0,1,1,nil,code)
 		if g:GetCount()>0 then
 			Duel.BreakEffect()
-			Duel.MoveToField(g:GetFirst(),tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+			Duel.MoveToField(g:GetFirst(),tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 		end
 	end
 	local e1=Effect.CreateEffect(c)

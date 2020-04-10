@@ -98,7 +98,7 @@ function c76794549.rpop(e,tp,eg,ep,ev,re,r,rp)
 			op=Duel.SelectOption(tp,aux.Stringid(76794549,1))
 		end
 		if op==0 then
-			Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+			Duel.MoveToField(tc,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 		else
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		end
