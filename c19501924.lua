@@ -57,7 +57,7 @@ function c19501924.activate(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetCount()<=ft then
 			local tc=g:GetFirst()
 			while tc do
-				Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+				Duel.MoveToField(tc,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 				tc=g:GetNext()
 			end
 		else
@@ -65,7 +65,7 @@ function c19501924.activate(e,tp,eg,ep,ev,re,r,rp)
 			local sg=g:Select(tp,ft,ft,nil)
 			local tc=sg:GetFirst()
 			while tc do
-				Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+				Duel.MoveToField(tc,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 				tc=sg:GetNext()
 			end
 			g:Sub(sg)

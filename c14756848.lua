@@ -111,7 +111,7 @@ function c14756848.desop(e,tp,eg,ep,ev,re,r,rp)
 			and not tc:IsLocation(LOCATION_HAND+LOCATION_DECK) and not tc:IsForbidden()
 			and Duel.SelectYesNo(tp,aux.Stringid(14756848,4)) then
 			Duel.BreakEffect()
-			Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+			Duel.MoveToField(tc,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 		end
 	end
 end

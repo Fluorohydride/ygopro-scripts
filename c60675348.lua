@@ -37,7 +37,7 @@ function c60675348.activate(e,tp,eg,ep,ev,re,r,rp)
 		local sg=g:Select(tp,1,ct,nil)
 		local sc=sg:GetFirst()
 		while sc do
-			Duel.MoveToField(sc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+			Duel.MoveToField(sc,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 			sc=sg:GetNext()
 		end
 		local e1=Effect.CreateEffect(c)

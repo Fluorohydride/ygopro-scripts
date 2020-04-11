@@ -28,7 +28,7 @@ end
 function c22900598.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstMatchingCard(c22900598.filter,tp,LOCATION_DECK,0,nil,tp)
 	if tc then
-		Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+		Duel.MoveToField(tc,tp,tp,LOCATION_FZONE,POS_FACEUP,true)
 		local te=tc:GetActivateEffect()
 		te:UseCountLimit(tp,1,true)
 		local tep=tc:GetControler()

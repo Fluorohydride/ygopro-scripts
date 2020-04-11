@@ -38,7 +38,7 @@ function c89208725.activate(e,tp,eg,ep,ev,re,r,rp)
 				Duel.SendtoGrave(fc,REASON_RULE)
 				Duel.BreakEffect()
 			end
-			Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
+			Duel.MoveToField(tc,tp,tp,LOCATION_FZONE,POS_FACEUP,true)
 			te:UseCountLimit(tp,1,true)
 			local tep=tc:GetControler()
 			local cost=te:GetCost()
