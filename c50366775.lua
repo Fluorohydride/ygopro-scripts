@@ -13,7 +13,7 @@ function c50366775.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCode(EVENT_TO_GRAVE)
+	e2:SetCode(EVENT_BE_MATERIAL)
 	e2:SetProperty(EFFECT_FLAG_DELAY)
 	e2:SetCountLimit(1,50366776)
 	e2:SetCondition(c50366775.thcon)
@@ -57,7 +57,7 @@ function c50366775.operation(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e4)
 end
 function c50366775.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsReason(REASON_LINK)
+	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_LINK
 end
 function c50366775.thfilter(c)
 	return c:IsRace(RACE_CYBERSE) and c:IsLevelAbove(5) and c:IsAbleToHand()
