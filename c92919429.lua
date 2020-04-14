@@ -30,8 +30,7 @@ function c92919429.lvfilter(c)
 	return c:IsRace(RACE_FAIRY) and c:IsAbleToGrave()
 end
 function c92919429.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c92919429.lvfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,nil)
-		and e:GetHandler():IsLevelAbove(1) and e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c92919429.lvfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK+LOCATION_EXTRA)
 end
 function c92919429.lvop(e,tp,eg,ep,ev,re,r,rp)
