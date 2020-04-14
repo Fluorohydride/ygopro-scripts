@@ -27,7 +27,7 @@ function c92919429.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c92919429.lvfilter(c)
-	return c:IsRace(RACE_FAIRY) and c:IsLevelAbove(1) and c:IsAbleToGrave()
+	return c:IsRace(RACE_FAIRY) and c:IsAbleToGrave()
 end
 function c92919429.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c92919429.lvfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,nil)
@@ -39,12 +39,12 @@ function c92919429.lvop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c92919429.lvfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,1,nil)
 	local tc=g:GetFirst()
-	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) and c:IsFaceup() and c:IsRelateToEffect(e) then
-		local lv=tc:GetLevel()
+	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) and tc:GetLevel()>0
+		and c:IsFaceup() and c:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_LEVEL)
-		e1:SetValue(lv)
+		e1:SetValue(tc:GetLevel())
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 	end
