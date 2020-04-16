@@ -59,6 +59,7 @@ function c50669347.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c50669347.thfilter1,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 and Duel.SendtoHand(g,nil,REASON_EFFECT)>0 then
+		Duel.ConfirmCards(1-tp,g)
 		local g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(c50669347.thfilter2),tp,LOCATION_GRAVE,0,nil)
 		if g2:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(50669347,3)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
