@@ -38,7 +38,7 @@ function c64202399.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c64202399.cfilter(c)
-	return c:IsFaceup() and c:IsCode(89631139)
+	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsCode(89631139)
 end
 function c64202399.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c64202399.cfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,1,nil)
