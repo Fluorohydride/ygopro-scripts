@@ -5,6 +5,7 @@ function c71612253.initial_effect(c)
 	c:EnableReviveLimit()
 	--atk & def
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(71612253,1))
 	e1:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_DEFCHANGE+CATEGORY_DAMAGE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_FREE_CHAIN)
