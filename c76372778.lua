@@ -17,7 +17,8 @@ function c76372778.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsStatus(STATUS_BATTLE_DESTROYED) then return false end
 	local bc=c:GetBattleTarget()
-	return bc and bc:IsStatus(STATUS_BATTLE_DESTROYED) and not bc:IsType(TYPE_TOKEN) and bc:GetLeaveFieldDest()==0
+	return bc and bc:IsStatus(STATUS_BATTLE_DESTROYED) and not bc:IsType(TYPE_TOKEN)
+		and bc:GetLeaveFieldDest()==0 and bc:GetDestination()~=LOCATION_DECK
 end
 function c76372778.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
@@ -28,19 +29,15 @@ function c76372778.operation(e,tp,eg,ep,ev,re,r,rp)
 	local bc=c:GetBattleTarget()
 	if bc:IsRelateToBattle() then
 		local e1=Effect.CreateEffect(c)
-		e1:SetCode(EFFECT_SEND_REPLACE)
-		e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-		e1:SetTarget(c76372778.reptg)
-		e1:SetOperation(c76372778.repop)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
+		e1:SetCondition(c76372778.recon)
+		e1:SetValue(LOCATION_DECKSHF)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE)
 		bc:RegisterEffect(e1)
 	end
 end
-function c76372778.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c76372778.recon(e)
 	local c=e:GetHandler()
-	if chk==0 then return c:GetDestination()==LOCATION_GRAVE and c:IsReason(REASON_BATTLE) end
-	return true
-end
-function c76372778.repop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.SendtoDeck(e:GetHandler(),nil,2,REASON_EFFECT)
+	return c:GetDestination()==LOCATION_GRAVE and c:IsReason(REASON_BATTLE)
 end
