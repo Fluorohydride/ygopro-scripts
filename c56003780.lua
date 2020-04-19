@@ -54,6 +54,7 @@ function c56003780.spop(e,tp,eg,ep,ev,re,r,rp)
 			zone=bit.bor(zone,tc:GetLinkedZone(tp))
 		end
 		zone=bit.band(zone,0x1f)
+		if zone==0 then return end
 		Duel.SpecialSummon(e:GetHandler(),0,tp,tp,false,false,POS_FACEUP,zone)
 	end
 end

@@ -67,19 +67,17 @@ end
 function c71278040.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if eg:GetCount()~=1 then return false end
 	local tc=eg:GetFirst()
-	local zone=bit.band(tc:GetLinkedZone(tp),0x1f)
+	local zone=tc:GetLinkedZone(tp)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)>0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone) end
+	if chk==0 then return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone) end
 	Duel.SetTargetCard(tc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end
 function c71278040.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
-		local tc=Duel.GetFirstTarget()
-		if not tc:IsRelateToEffect(e) then return end
-		local zone=bit.band(tc:GetLinkedZone(tp),0x1f)
+	local tc=Duel.GetFirstTarget()
+	local zone=tc:GetLinkedZone(tp)
+	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and zone&0x1f~=0 then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP,zone)
 	end
 end

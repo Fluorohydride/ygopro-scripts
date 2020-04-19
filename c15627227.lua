@@ -26,10 +26,8 @@ function c15627227.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c15627227.spfilter1(c,e,tp)
-	if c:IsFaceup() and c:IsType(TYPE_LINK) then
-		local zone=c:GetLinkedZone(tp)
-		return zone~=0 and Duel.IsExistingMatchingCard(c15627227.spfilter2,tp,LOCATION_HAND,0,1,nil,e,tp,zone)
-	else return false end
+	return c:IsFaceup() and c:IsType(TYPE_LINK)
+		and Duel.IsExistingMatchingCard(c15627227.spfilter2,tp,LOCATION_HAND,0,1,nil,e,tp,c:GetLinkedZone(tp))
 end
 function c15627227.spfilter2(c,e,tp,zone)
 	return c:IsSetCard(0x102) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone)
@@ -47,7 +45,7 @@ function c15627227.spop(e,tp,eg,ep,ev,re,r,rp)
 	local lc=Duel.GetFirstTarget()
 	if lc:IsRelateToEffect(e) and lc:IsFaceup() then
 		local zone=lc:GetLinkedZone(tp)
-		if zone==0 then return end
+		if Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=Duel.SelectMatchingCard(tp,c15627227.spfilter2,tp,LOCATION_HAND,0,1,1,nil,e,tp,zone):GetFirst()
 		if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP,zone) then

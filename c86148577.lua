@@ -38,13 +38,12 @@ function c86148577.spfilter(c,e,tp,zone)
 end
 function c86148577.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local zone=aux.GetMultiLinkedZone(tp)
-	if chk==0 then return zone~=0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c86148577.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp,zone) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c86148577.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp,zone) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)
 end
 function c86148577.spop(e,tp,eg,ep,ev,re,r,rp)
 	local zone=aux.GetMultiLinkedZone(tp)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or zone==0 then return end
+	if Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c86148577.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp,zone)
 	if g:GetCount()>0 then

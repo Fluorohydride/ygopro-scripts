@@ -45,7 +45,7 @@ function c76685519.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local zone=c:GetLinkedZone(tp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP,zone)~=0 then
+	if tc:IsRelateToEffect(e) and zone&0x1f~=0 and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP,zone)~=0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CANNOT_ATTACK)

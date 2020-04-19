@@ -43,10 +43,9 @@ function c86926989.filter(c,e,tp,zone)
 	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsRace(RACE_ZOMBIE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone)
 end
 function c86926989.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local zone=e:GetHandler():GetLinkedZone(tp)&0x1f
+	local zone=e:GetHandler():GetLinkedZone(tp)
 	if chkc then return chkc:IsLocation(LOCATION_REMOVED) and chkc:IsControler(tp) and c86926989.filter(chkc,e,tp,zone) end
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingTarget(c86926989.filter,tp,LOCATION_REMOVED,0,1,nil,e,tp,zone) end
+	if chk==0 then return Duel.IsExistingTarget(c86926989.filter,tp,LOCATION_REMOVED,0,1,nil,e,tp,zone) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c86926989.filter,tp,LOCATION_REMOVED,0,1,1,nil,e,tp,zone)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
@@ -54,8 +53,8 @@ end
 function c86926989.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	local zone=c:GetLinkedZone(tp)&0x1f
-	if tc and tc:IsRelateToEffect(e) and zone~=0 then
+	local zone=c:GetLinkedZone(tp)
+	if tc:IsRelateToEffect(e) and zone&0x1f~=0 then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP,zone)
 	end
 end

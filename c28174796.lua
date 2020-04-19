@@ -20,8 +20,8 @@ function c28174796.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c28174796.cfilter,tp,LOCATION_MZONE,0,2,nil)
 end
 function c28174796.spfilter(c,e,tp,ec)
-	local zone=bit.band(c:GetLinkedZone(tp),0x1f)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER) and c:IsType(TYPE_LINK) and zone>0 and ec:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone)
+	local zone=c:GetLinkedZone(tp)
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER) and c:IsType(TYPE_LINK) and ec:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone)
 end
 function c28174796.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
@@ -34,16 +34,15 @@ end
 function c28174796.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
-		local zone=bit.band(tc:GetLinkedZone(tp),0x1f)
-		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP,zone)>0 then
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
-			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-			e1:SetReset(RESET_EVENT+RESETS_REDIRECT)
-			e1:SetValue(LOCATION_REMOVED)
-			c:RegisterEffect(e1,true)
-		end
+	local zone=tc:GetLinkedZone(tp)
+	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and zone&0x1f~=0
+		and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP,zone)>0 then
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetReset(RESET_EVENT+RESETS_REDIRECT)
+		e1:SetValue(LOCATION_REMOVED)
+		c:RegisterEffect(e1,true)
 	end
 end

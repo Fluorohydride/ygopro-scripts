@@ -24,14 +24,14 @@ function c45462149.filter(c,e,tp,zone)
 end
 function c45462149.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		local zone=e:GetHandler():GetLinkedZone(tp)&0x1f
-		return zone~=0 and Duel.IsExistingMatchingCard(c45462149.filter,tp,LOCATION_HAND,0,1,nil,e,tp,zone)
+		local zone=e:GetHandler():GetLinkedZone(tp)
+		return Duel.IsExistingMatchingCard(c45462149.filter,tp,LOCATION_HAND,0,1,nil,e,tp,zone)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c45462149.operation(e,tp,eg,ep,ev,re,r,rp)
-	local zone=e:GetHandler():GetLinkedZone(tp)&0x1f
-	if zone~=0 then
+	local zone=e:GetHandler():GetLinkedZone(tp)
+	if Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c45462149.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp,zone)
 		if g:GetCount()>0 then

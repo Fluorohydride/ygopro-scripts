@@ -42,14 +42,13 @@ function c40216089.spfilter1(c,e,tp,zone)
 	return c:IsRace(RACE_MACHINE) and c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone)
 end
 function c40216089.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
-	local zone=bit.band(e:GetHandler():GetLinkedZone(tp),0x1f)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c40216089.spfilter1,tp,LOCATION_HAND,0,1,nil,e,tp,zone) end
+	local zone=e:GetHandler():GetLinkedZone(tp)
+	if chk==0 then return Duel.IsExistingMatchingCard(c40216089.spfilter1,tp,LOCATION_HAND,0,1,nil,e,tp,zone) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c40216089.spop1(e,tp,eg,ep,ev,re,r,rp)
-	local zone=bit.band(e:GetHandler():GetLinkedZone(tp),0x1f)
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or zone<=0 then return end
+	local zone=e:GetHandler():GetLinkedZone(tp)
+	if Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c40216089.spfilter1,tp,LOCATION_HAND,0,1,1,nil,e,tp,zone)
 	if g:GetCount()>0 then
