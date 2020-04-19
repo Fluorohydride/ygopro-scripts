@@ -828,8 +828,9 @@ function Auxiliary.XyzLevelFreeTarget(f,gf,minct,maxct)
 				local sg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_XMATERIAL)
 				Duel.SetSelectedCard(sg)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+				local cancel=Duel.GetCurrentChain()==0
 				Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
-				local g=mg:SelectSubGroup(tp,Auxiliary.XyzLevelFreeGoal,true,minc,maxc,tp,c,gf)
+				local g=mg:SelectSubGroup(tp,Auxiliary.XyzLevelFreeGoal,cancel,minc,maxc,tp,c,gf)
 				Auxiliary.GCheckAdditional=nil
 				if g and g:GetCount()>0 then
 					g:KeepAlive()
@@ -939,8 +940,9 @@ function Auxiliary.XyzLevelFreeTarget2(f,gf,minct,maxct,alterf,desc,op)
 					e:SetLabel(0)
 					Duel.SetSelectedCard(sg)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
+					local cancel=Duel.GetCurrentChain()==0
 					Auxiliary.GCheckAdditional=Auxiliary.TuneMagicianCheckAdditionalX(EFFECT_TUNE_MAGICIAN_X)
-					g=mg2:SelectSubGroup(tp,Auxiliary.XyzLevelFreeGoal,true,minc,maxc,tp,c,gf)
+					g=mg2:SelectSubGroup(tp,Auxiliary.XyzLevelFreeGoal,cancel,minc,maxc,tp,c,gf)
 					Auxiliary.GCheckAdditional=nil
 				end
 				if g and g:GetCount()>0 then
