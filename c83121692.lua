@@ -47,20 +47,21 @@ function c83121692.operation(e,tp,eg,ep,ev,re,r,rp)
 	if c:GetFlagEffect(83121693)==0 then
 		c:RegisterFlagEffect(83121693,RESET_EVENT+RESETS_STANDARD,0,0)
 		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_FIELD)
+		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
-		e1:SetRange(LOCATION_MZONE)
-		e1:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-		e1:SetTarget(c83121692.indtg)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetCondition(c83121692.indcon)
 		e1:SetValue(1)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		c:RegisterEffect(e1)
+		tc:RegisterEffect(e1)
 	end
 end
-function c83121692.indtg(e,c)
-	if c==e:GetHandler() then
+function c83121692.indcon(e)
+	local c=e:GetHandler()
+	local rc=e:GetOwner()
+	if c==rc then
 		return c:GetFlagEffect(83121692)~=0
 	else
-		return e:GetHandler():IsHasCardTarget(c)
+		return rc:IsHasCardTarget(c)
 	end
 end
