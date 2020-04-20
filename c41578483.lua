@@ -133,7 +133,8 @@ function c41578483.distg(e,c)
 end
 function c41578483.discon(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetHandler():GetEquipGroup():Filter(c41578483.disfilter,nil)
-	return re:IsActiveType(TYPE_MONSTER) and g:IsExists(Card.IsCode,1,nil,re:GetHandler():GetCode())
+	local code,type=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_CODE,CHAININFO_TYPE)
+	return type==TYPE_MONSTER and g:IsExists(Card.IsCode,1,nil,code)
 end
 function c41578483.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
