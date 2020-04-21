@@ -19,6 +19,7 @@ function c31863912.initial_effect(c)
 	e2:SetLabel(1)
 	c:RegisterEffect(e2)
 end
+c31863912.toss_dice=true
 function c31863912.cfilter(c,sp)
 	return c:IsFaceup() and c:GetSummonPlayer()==sp
 end

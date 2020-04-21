@@ -18,6 +18,7 @@ function c35798491.initial_effect(c)
 	e2:SetOperation(c35798491.disop)
 	c:RegisterEffect(e2)
 end
+c35798491.toss_dice=true
 function c35798491.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end

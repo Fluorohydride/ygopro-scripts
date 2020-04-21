@@ -12,6 +12,7 @@ function c74137509.initial_effect(c)
 	e1:SetOperation(c74137509.activate)
 	c:RegisterEffect(e1)
 end
+c74137509.toss_dice=true
 function c74137509.condition(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetCurrentPhase()==PHASE_DAMAGE and Duel.IsDamageCalculated() then return false end
 	return true
