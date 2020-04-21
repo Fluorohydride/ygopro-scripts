@@ -547,6 +547,8 @@ EFFECT_EXTRA_LINK_MATERIAL		=358	--手卡的连接素材
 EFFECT_QP_ACT_IN_SET_TURN		=359	--速攻魔法可以在盖放的回合发动
 EFFECT_EXTRA_PENDULUM_SUMMON	=360	--extra pendulum summon
 EFFECT_MATERIAL_LIMIT			=361	--
+EFFECT_SET_BATTLE_ATTACK		=362    --战斗的伤害计算用设置的攻击力进行
+EFFECT_SET_BATTLE_DEFENSE		=363    --战斗的伤害计算用设置的守备力进行
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
 EVENT_STARTUP					=1000	--N/A
