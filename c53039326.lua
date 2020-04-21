@@ -1,5 +1,6 @@
 --鋼核合成獣研究所
 function c53039326.initial_effect(c)
+	aux.AddCodeList(c,36623431)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

@@ -1,5 +1,6 @@
 --コアキメイル・フルバリア
 function c31692182.initial_effect(c)
+	aux.AddCodeList(c,36623431)
 	--destroy
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(31692182,0))

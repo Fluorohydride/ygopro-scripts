@@ -1,5 +1,6 @@
 --オートマチック・レーザー
 function c58990631.initial_effect(c)
+	aux.AddCodeList(c,36623431)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DESTROY)

@@ -1,5 +1,6 @@
 --能力吸収コア
 function c55117418.initial_effect(c)
+	aux.AddCodeList(c,36623431)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)

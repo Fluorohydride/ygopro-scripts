@@ -1,5 +1,6 @@
 --コアキメイル・マキシマム
 function c65026212.initial_effect(c)
+	aux.AddCodeList(c,36623431)
 	c:EnableReviveLimit()
 	--cost
 	local e1=Effect.CreateEffect(c)

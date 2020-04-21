@@ -1,5 +1,6 @@
 --鋼核初期化
 function c91985515.initial_effect(c)
+	aux.AddCodeList(c,36623431)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)

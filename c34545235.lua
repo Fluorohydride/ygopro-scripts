@@ -1,5 +1,6 @@
 --鋼核の輝き
 function c34545235.initial_effect(c)
+	aux.AddCodeList(c,36623431)
 	--negate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_NEGATE+CATEGORY_DESTROY)

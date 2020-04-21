@@ -1,5 +1,6 @@
 --コアキメイル・アイス
 function c54520292.initial_effect(c)
+	aux.AddCodeList(c,36623431)
 	--cost
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

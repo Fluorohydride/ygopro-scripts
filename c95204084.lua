@@ -1,5 +1,6 @@
 --コアキメイル・トルネード
 function c95204084.initial_effect(c)
+	aux.AddCodeList(c,36623431)
 	--destroy
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(95204084,0))
