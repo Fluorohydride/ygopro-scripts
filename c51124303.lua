@@ -67,7 +67,7 @@ function c51124303.activate(e,tp,eg,ep,ev,re,r,rp)
 		local mg2=Duel.GetMatchingGroup(c51124303.mfilter,tp,LOCATION_EXTRA,0,nil)
 		mg:Merge(mg2)
 	else
-		mg=mg:Filter(Card.IsLocation,nil,LOCATION_MZONE)
+		mg=mg:Filter(c51124303.mzfilter,nil,tp)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local mat=mg:FilterSelect(tp,c51124303.filter,1,1,nil,e,tp)
