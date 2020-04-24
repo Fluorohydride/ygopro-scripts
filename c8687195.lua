@@ -12,22 +12,18 @@ function c8687195.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c8687195.condition(e,tp,eg,ep,ev,re,r,rp)
-	return r~=REASON_REPLACE and Duel.GetAttackTarget()==e:GetHandler() and Duel.GetAttacker():IsControler(1-tp)
-end
-function c8687195.filter(c,at)
-	return at:IsContains(c)
+	return Duel.GetAttackTarget()==e:GetHandler() and Duel.GetAttacker():IsControler(1-tp)
 end
 function c8687195.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local at=Duel.GetAttacker():GetAttackableTarget()
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and at:IsContains(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c8687195.filter,tp,LOCATION_MZONE,0,1,e:GetHandler(),at) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and chkc~=e:GetHandler() end
+	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c8687195.filter,tp,LOCATION_MZONE,0,1,1,e:GetHandler(),at)
+	Duel.SelectTarget(tp,nil,tp,LOCATION_MZONE,0,1,1,e:GetHandler())
 end
 function c8687195.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local a=Duel.GetAttacker()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToEffect(e) and a:IsAttackable() and not a:IsImmuneToEffect(e) then
 		Duel.CalculateDamage(a,tc)
 	end
 end
