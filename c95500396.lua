@@ -69,15 +69,14 @@ end
 function c95500396.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local tc=c:GetEquipTarget()
-	if chk==0 then return c:GetControler()==tc:GetControler() and tc:IsReleasable() end
+	if chk==0 then return c:GetControler()==tc:GetControler() and tc:IsReleasable() and Duel.GetMZoneCount(tp,tc)>0 end
 	Duel.Release(tc,REASON_COST)
 end
 function c95500396.spfilter(c,e,tp)
 	return c:IsSetCard(0x9a) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c95500396.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(c95500396.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c95500396.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c95500396.spop(e,tp,eg,ep,ev,re,r,rp)
