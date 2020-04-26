@@ -3,7 +3,7 @@ function c80773359.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()
-	--add type
+	--add type & attack
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
@@ -36,36 +36,52 @@ function c80773359.initial_effect(c)
 	e4:SetTarget(c80773359.lvtg)
 	e4:SetOperation(c80773359.lvop)
 	c:RegisterEffect(e4)
-	--atk
-	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_SINGLE)
-	e5:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e5:SetRange(LOCATION_MZONE)
-	e5:SetCode(EFFECT_UPDATE_ATTACK)
-	e5:SetCondition(c80773359.condtion)
-	e5:SetValue(3000)
-	c:RegisterEffect(e5)
 end
 function c80773359.valcheck(e,c)
+	local flag=0
 	local g=c:GetMaterial()
 	if g:IsExists(Card.IsSetCard,1,nil,0x33) then
-		e:GetLabelObject():SetLabel(1)
-	else
-		e:GetLabelObject():SetLabel(0)
+		flag=flag|1
 	end
+	if g:GetCount()>0 and not g:IsExists(c80773359.mfilter,1,nil) then
+		flag=flag|2
+	end
+	e:GetLabelObject():SetLabel(flag)
+end
+function c80773359.mfilter(c)
+	return not c:IsType(TYPE_SYNCHRO)
 end
 function c80773359.tncon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO) and e:GetLabel()==1
+	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO) and e:GetLabel()>0
 end
 function c80773359.tnop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e1:SetCode(EFFECT_ADD_TYPE)
-	e1:SetValue(TYPE_TUNER)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-	c:RegisterEffect(e1)
+	if e:GetLabel()&1==1 then
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetCode(EFFECT_ADD_TYPE)
+		e1:SetValue(TYPE_TUNER)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		c:RegisterEffect(e1)
+	end
+	if e:GetLabel()&2==2 then
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+		e2:SetRange(LOCATION_MZONE)
+		e2:SetCode(EFFECT_UPDATE_ATTACK)
+		e2:SetCondition(c80773359.atkcon)
+		e2:SetValue(3000)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
+		c:RegisterEffect(e2)
+		c:RegisterFlagEffect(80773359,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(80773359,1))
+	end
+end
+function c80773359.atkcon(e)
+	local c=e:GetHandler()
+	local ph=Duel.GetCurrentPhase()
+	return (ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL) and Duel.GetAttacker()==c
 end
 function c80773359.lvfilter(c,lv)
 	return c:IsSetCard(0x33) and not c:IsLevel(lv) and c:IsLevelAbove(1)
@@ -87,14 +103,4 @@ function c80773359.lvop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)
 	end
-end
-function c80773359.mfilter(c)
-	return not c:IsType(TYPE_SYNCHRO)
-end
-function c80773359.condtion(e)
-	local c=e:GetHandler()
-	local mg=c:GetMaterial()
-	local ph=Duel.GetCurrentPhase()
-	return (ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL) and Duel.GetAttacker()==c
-		and c:IsSummonType(SUMMON_TYPE_SYNCHRO) and mg:GetCount()>0 and not mg:IsExists(c80773359.mfilter,1,nil)
 end
