@@ -27,6 +27,7 @@ function c93191801.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and 
 		Duel.IsPlayerCanSpecialSummonMonster(tp,93191801,0,0x11,1800,1500,5,RACE_ZOMBIE,ATTRIBUTE_LIGHT) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,0,PLAYER_ALL,LOCATION_GRAVE)
 end
 function c93191801.filter(c)
 	return c:IsFaceup() and c:IsCode(95440946)
