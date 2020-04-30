@@ -1,5 +1,6 @@
 --人造人間－サイコ・リターナー
 function c9418534.initial_effect(c)
+	aux.AddCodeList(c,77585513)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(9418534,0))

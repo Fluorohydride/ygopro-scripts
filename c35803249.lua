@@ -1,5 +1,6 @@
 --人造人間－サイコ・ロード
 function c35803249.initial_effect(c)
+	aux.AddCodeList(c,77585513)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

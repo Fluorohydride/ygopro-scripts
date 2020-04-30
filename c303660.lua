@@ -1,5 +1,6 @@
 --電脳増幅器
 function c303660.initial_effect(c)
+	aux.AddCodeList(c,77585513)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_EQUIP)
