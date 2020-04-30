@@ -1,5 +1,6 @@
 --光の創造神 ホルアクティ
 function c10000040.initial_effect(c)
+	aux.AddCodeList(c,10000010)
 	c:EnableReviveLimit()
 	--special summon
 	local e1=Effect.CreateEffect(c)

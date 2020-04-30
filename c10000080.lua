@@ -1,5 +1,6 @@
 --ラーの翼神竜－球体形
 function c10000080.initial_effect(c)
+	aux.AddCodeList(c,10000010)
 	Duel.EnableGlobalFlag(GLOBALFLAG_BRAINWASHING_CHECK)
 	--summon with 3 tribute
 	local e1=Effect.CreateEffect(c)
