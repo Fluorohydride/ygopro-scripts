@@ -101,7 +101,7 @@ function c90846359.adjustop(e,tp,eg,ep,ev,re,r,rp)
 		local rac=c90846359.getrace(g2)
 		if bit.band(rac,rac-1)~=0 then
 			if c90846359[1-tp]==0 or bit.band(c90846359[1-tp],rac)==0 then
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+				Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
 				local sg=g2:SelectSubGroup(1-tp,c90846359.tgselect,false,1,#g2,g2)
 				if not sg then
 					rac=0
