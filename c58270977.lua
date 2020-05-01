@@ -13,17 +13,17 @@ function c58270977.initial_effect(c)
 	e1:SetOperation(c58270977.activate)
 	c:RegisterEffect(e1)
 end
-function c58270977.cfilter(c,tp)
-	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsSetCard(0x8) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost() and Duel.GetMZoneCount(tp,c)>0
+function c58270977.cfilter(c)
+	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsSetCard(0x8) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function c58270977.spfilter(c,e,tp)
 	return c:IsSetCard(0x8) and c:IsType(TYPE_MONSTER) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c58270977.fselect(g,e,tp)
-	return Duel.IsExistingTarget(c58270977.spfilter,tp,LOCATION_GRAVE,0,1,g,e,tp)
+	return Duel.IsExistingTarget(c58270977.spfilter,tp,LOCATION_GRAVE,0,1,g,e,tp) and Duel.GetMZoneCount(tp,g)>0
 end
 function c58270977.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroup(c58270977.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil,tp)
+	local g=Duel.GetMatchingGroup(c58270977.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil)
 	if chk==0 then return g:CheckSubGroup(c58270977.fselect,4,4,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local sg=g:SelectSubGroup(tp,c58270977.fselect,false,4,4,e,tp)
