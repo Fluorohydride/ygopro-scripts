@@ -19,16 +19,14 @@ function c58607704.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	e:SetLabelObject(tc)
 	return tc:IsOnField() and tc:IsType(TYPE_SPELL+TYPE_TRAP)
 end
-function c58607704.filter(c,re,rp,tf,ceg,cep,cev,cre,cr,crp)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and tf(re,rp,ceg,cep,cev,cre,cr,crp,0,c)
+function c58607704.filter(c,ct)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) and Duel.CheckChainTarget(ct,c)
 end
 function c58607704.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local tf=re:GetTarget()
-	local res,ceg,cep,cev,cre,cr,crp=Duel.CheckEvent(re:GetCode(),true)
-	if chkc then return chkc~=e:GetLabelObject() and chkc:IsOnField() and chkc:IsType(TYPE_SPELL+TYPE_TRAP) and tf(re,rp,ceg,cep,cev,cre,cr,crp,0,chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c58607704.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetLabelObject(),re,rp,tf,ceg,cep,cev,cre,cr,crp) end
+	if chkc then return chkc~=e:GetLabelObject() and chkc:IsOnField() and c58607704.filter(chkc,ev) end
+	if chk==0 then return Duel.IsExistingTarget(c58607704.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetLabelObject(),ev) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c58607704.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetLabelObject(),re,rp,tf,ceg,cep,cev,cre,cr,crp)
+	Duel.SelectTarget(tp,c58607704.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetLabelObject(),ev)
 end
 function c58607704.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)

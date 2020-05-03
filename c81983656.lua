@@ -78,16 +78,14 @@ function c81983656.cecon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	return g and g:GetCount()==1 and g:GetFirst()==e:GetHandler()
 end
-function c81983656.cefilter(c,re,rp,tf,ceg,cep,cev,cre,cr,crp)
-	return c:IsFaceup() and c:IsSetCard(0x33) and tf(re,rp,ceg,cep,cev,cre,cr,crp,0,c)
+function c81983656.cefilter(c,ct)
+	return c:IsFaceup() and c:IsSetCard(0x33) and Duel.CheckChainTarget(ct,c)
 end
 function c81983656.cetg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	local tf=re:GetTarget()
-	local res,ceg,cep,cev,cre,cr,crp=Duel.CheckEvent(re:GetCode(),true)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c81983656.cefilter(chkc,re,rp,tf,ceg,cep,cev,cre,cr,crp) end
-	if chk==0 then return Duel.IsExistingTarget(c81983656.cefilter,tp,LOCATION_MZONE,0,1,e:GetHandler(),re,rp,tf,ceg,cep,cev,cre,cr,crp) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c81983656.cefilter(chkc,ev) end
+	if chk==0 then return Duel.IsExistingTarget(c81983656.cefilter,tp,LOCATION_MZONE,0,1,e:GetHandler(),ev) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c81983656.cefilter,tp,LOCATION_MZONE,0,1,1,e:GetHandler(),re,rp,tf,ceg,cep,cev,cre,cr,crp)
+	Duel.SelectTarget(tp,c81983656.cefilter,tp,LOCATION_MZONE,0,1,1,e:GetHandler(),ev)
 end
 function c81983656.ceop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()

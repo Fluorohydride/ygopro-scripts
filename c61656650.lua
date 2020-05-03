@@ -18,20 +18,18 @@ function c61656650.efcon(e,tp,eg,ep,ev,re,r,rp)
 	local ex,dg=Duel.GetOperationInfo(0,CATEGORY_DESTROY)
 	return tc:IsControler(tp) and dg and dg:GetCount()==1 and dg:GetFirst()==tc and tc:IsType(TYPE_MONSTER)
 end
-function c61656650.filter(c,re,rp,tf)
-	return tf(re,rp,nil,nil,nil,nil,nil,nil,0,c)
+function c61656650.filter(c,ct)
+	return Duel.CheckChainTarget(ct,c)
 end
 function c61656650.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	local tf=re:GetTarget()
-	if chk==0 then return Duel.IsExistingTarget(c61656650.filter,tp,0,LOCATION_MZONE,1,nil,re,rp,tf) end
+	if chk==0 then return Duel.IsExistingTarget(c61656650.filter,tp,0,LOCATION_MZONE,1,nil,ev) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c61656650.filter,tp,0,LOCATION_MZONE,1,1,nil,re,rp,tf)
+	Duel.SelectTarget(tp,c61656650.filter,tp,0,LOCATION_MZONE,1,1,nil,ev)
 end
 function c61656650.efop(e,tp,eg,ep,ev,re,r,rp)
-	local tf=re:GetTarget()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tf(re,rp,nil,nil,nil,nil,nil,nil,0,tc) then
+	if tc:IsRelateToEffect(e) and Duel.CheckChainTarget(ev,tc) then
 		local g=Group.FromCards(tc)
 		Duel.ChangeTargetCard(ev,g)
 	end
