@@ -81,7 +81,8 @@ function c67508932.rmop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c67508932.spfilter(c,e,tp)
-	return c:GetFlagEffectLabel(67508932)==e:GetHandler():GetFlagEffectLabel(67508933)
+	local lab=c:GetFlagEffectLabel(67508932)
+	return lab>0 and lab==e:GetHandler():GetFlagEffectLabel(67508933)
 		and c:GetReasonPlayer()==tp
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,1-tp)
 end
