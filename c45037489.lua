@@ -33,8 +33,6 @@ function c45037489.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c45037489.disop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if not c:IsFaceup() or not c:IsRelateToEffect(e) then return end
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
