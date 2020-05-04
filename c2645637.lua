@@ -30,21 +30,20 @@ function c2645637.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c2645637.disop(e,tp,eg,ep,ev,re,r,rp)
-	if rp==tp or e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) then return end
-	if Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_REMOVED and re:IsActiveType(TYPE_MONSTER) then
+	if Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_REMOVED and re:IsActiveType(TYPE_MONSTER) and rp==1-tp then
 		Duel.NegateEffect(ev)
 	end
 end
 function c2645637.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_MONSTER) and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_GRAVE
 end
-function c2645637.spfilter(c,re,ev)
+function c2645637.spfilter(c)
 	return c:GetSummonLocation()==LOCATION_GRAVE
-		and not (re and re:IsActivated() and re:IsActiveType(TYPE_MONSTER)
-		and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_GRAVE)
 end
 function c2645637.atkcon2(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c2645637.spfilter,1,nil,re,ev) and not eg:IsContains(e:GetHandler())
+	return eg:IsExists(c2645637.spfilter,1,nil) and not eg:IsContains(e:GetHandler()) 
+		and not (re and re:IsActivated() and re:IsActiveType(TYPE_MONSTER)
+		and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_GRAVE)
 end
 function c2645637.atkfilter(c)
 	return c:IsFaceup() and c:GetAttack()>0
