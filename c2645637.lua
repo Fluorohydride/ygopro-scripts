@@ -43,7 +43,7 @@ end
 function c2645637.atkcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c2645637.spfilter,1,nil) and not eg:IsContains(e:GetHandler()) 
 		and not (re and re:IsActivated() and re:IsActiveType(TYPE_MONSTER)
-		and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_GRAVE)
+			and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_GRAVE)
 end
 function c2645637.atkfilter(c)
 	return c:IsFaceup() and c:GetAttack()>0
