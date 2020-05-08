@@ -7,7 +7,7 @@ function c6442944.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetValue(1)
-	e1:SetCountLimit(1,6442944)
+	e1:SetCountLimit(1,6442944+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c6442944.hspcon)
 	c:RegisterEffect(e1)
 	--spsummon

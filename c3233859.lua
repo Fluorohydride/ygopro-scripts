@@ -7,7 +7,7 @@ function c3233859.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetTargetRange(POS_FACEUP_DEFENSE,0)
-	e1:SetCountLimit(1,3233859)
+	e1:SetCountLimit(1,3233859+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c3233859.sprcon)
 	c:RegisterEffect(e1)
 	--destroy

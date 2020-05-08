@@ -17,7 +17,7 @@ function c26420373.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e2:SetCode(EFFECT_SPSUMMON_PROC)
 	e2:SetRange(LOCATION_HAND)
-	e2:SetCountLimit(1,26420373)
+	e2:SetCountLimit(1,26420373+EFFECT_COUNT_CODE_OATH)
 	e2:SetCondition(c26420373.hspcon)
 	c:RegisterEffect(e2)
 	--special summon

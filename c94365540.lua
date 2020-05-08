@@ -7,7 +7,7 @@ function c94365540.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_SPSUM_PARAM)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetTargetRange(POS_FACEUP_DEFENSE,0)
-	e1:SetCountLimit(1,94365540)
+	e1:SetCountLimit(1,94365540+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c94365540.condition)
 	c:RegisterEffect(e1)
 	--Special summon

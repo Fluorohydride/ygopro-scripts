@@ -6,7 +6,7 @@ function c42472002.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetRange(LOCATION_HAND)
-	e1:SetCountLimit(1,42472002)
+	e1:SetCountLimit(1,42472002+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c42472002.sprcon)
 	c:RegisterEffect(e1)
 	--effect gain

@@ -6,7 +6,7 @@ function c67748760.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
-	e1:SetCountLimit(1,67748760)
+	e1:SetCountLimit(1,67748760+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c67748760.sprcon)
 	c:RegisterEffect(e1)
 	--tohand
