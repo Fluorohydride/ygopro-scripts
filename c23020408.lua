@@ -30,19 +30,25 @@ function c23020408.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 end
 function c23020408.activate(e,tp,eg,ep,ev,re,r,rp)
+	local op=Duel.SelectOption(tp,aux.Stringid(23020408,3),aux.Stringid(23020408,4))
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(23020408,2))
-	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c23020408.filter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
-	local tc=g:GetFirst()
-	if tc then
-		Duel.ShuffleDeck(tp)
-		if tc:IsLocation(LOCATION_DECK) then
-			Duel.MoveSequence(tc,0)
-		else
+	if op==0 then
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c23020408.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil)
+		local tc=g:GetFirst()
+		if tc then
+			Duel.HintSelection(g)
 			Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
 		end
-		if tc:IsLocation(LOCATION_DECK) then
-			Duel.ConfirmDecktop(tp,1)
+	else
+		local g=Duel.SelectMatchingCard(tp,c23020408.filter,tp,LOCATION_DECK,0,1,1,nil)
+		local tc=g:GetFirst()
+		if tc then
+			Duel.ShuffleDeck(tp)
+			Duel.MoveSequence(tc,0)
 		end
+	end
+	if tc and tc:IsLocation(LOCATION_DECK) then
+		Duel.ConfirmDecktop(tp,1)
 	end
 end
 function c23020408.cfilter(c)
