@@ -30,7 +30,16 @@ function c23020408.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 end
 function c23020408.activate(e,tp,eg,ep,ev,re,r,rp)
-	local op=Duel.SelectOption(tp,aux.Stringid(23020408,3),aux.Stringid(23020408,4))
+	local b1=Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c23020408.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil)
+	local b2=Duel.IsExistingMatchingCard(c23020408.filter,tp,LOCATION_DECK,0,1,nil)
+	local op=0
+	if b1 and b2 then
+		op=Duel.SelectOption(tp,aux.Stringid(23020408,3),aux.Stringid(23020408,4))
+	elseif b1 then
+		op=0
+	else
+		op=1
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(23020408,2))
 	if op==0 then
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c23020408.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil)
