@@ -11,7 +11,6 @@ function c40251688.initial_effect(c)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetCountLimit(1,40251688)
 	e1:SetCondition(c40251688.regcon)
-	e1:SetTarget(c40251688.regtg)
 	e1:SetOperation(c40251688.regop)
 	c:RegisterEffect(e1)
 	--equip
@@ -30,20 +29,11 @@ end
 function c40251688.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
-function c40251688.tgfilter1(c)
-	return c:IsType(TYPE_EQUIP) and c:IsType(TYPE_SPELL)
-end
-function c40251688.thfilter1(c)
-	return c:IsRace(RACE_WARRIOR)
-end
-function c40251688.tgfilter2(c)
+function c40251688.tgfilter(c)
 	return c:IsType(TYPE_EQUIP) and c:IsType(TYPE_SPELL) and c:IsAbleToGrave()
 end
-function c40251688.thfilter2(c)
+function c40251688.thfilter(c)
 	return c:IsRace(RACE_WARRIOR) and c:IsAbleToHand()
-end
-function c40251688.regtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c40251688.tgfilter1,tp,LOCATION_DECK,0,1,nil) and Duel.IsExistingMatchingCard(c40251688.thfilter1,tp,LOCATION_DECK,0,1,nil) end
 end
 function c40251688.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
@@ -56,14 +46,14 @@ function c40251688.regop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function c40251688.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c40251688.tgfilter2,tp,LOCATION_DECK,0,1,nil)
+	return Duel.IsExistingMatchingCard(c40251688.tgfilter,tp,LOCATION_DECK,0,1,nil)
 end
 function c40251688.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,40251688)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c40251688.tgfilter2,tp,LOCATION_DECK,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c40251688.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)~=0 and g:GetFirst():IsLocation(LOCATION_GRAVE) then
-		local sg=Duel.GetMatchingGroup(c40251688.thfilter2,tp,LOCATION_DECK,0,nil)
+		local sg=Duel.GetMatchingGroup(c40251688.thfilter,tp,LOCATION_DECK,0,nil)
 		if sg:GetCount()>0 then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
