@@ -40,7 +40,7 @@ function c18013090.atcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c18013090.atop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetFlagEffect(1)==0 then return end
+	if c:GetFlagEffect(1)==0 or c:GetFlagEffect(18013090)~=0 then return end
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_UPDATE_ATTACK)
@@ -50,6 +50,7 @@ function c18013090.atop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetValue(1000)
 	e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE_CAL+PHASE_END)
 	c:RegisterEffect(e2)
+	c:RegisterFlagEffect(18013090,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c18013090.atkcon(e)
 	local c=e:GetHandler()
