@@ -75,7 +75,7 @@ function c62528292.effilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x137) and c:IsType(TYPE_EFFECT)
 end
 function c62528292.eftg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c62528292.effilter,tp,LOCATION_MZONE,0,1,nil) end
+	if chk==0 then return true end
 end
 function c62528292.efop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
