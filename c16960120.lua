@@ -30,7 +30,7 @@ function c16960120.thfilter(c)
 	return c:IsSetCard(0x133) and c:IsType(TYPE_MONSTER) and not c:IsCode(16960120) and c:IsAbleToHand()
 end
 function c16960120.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c16960120.filter,tp,LOCATION_DECK,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c16960120.thfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,1,tp,1)
 end
