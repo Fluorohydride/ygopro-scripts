@@ -38,7 +38,7 @@ end
 function c38761908.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if Duel.DiscardHand(tp,c38761908.filter1,1,1,REASON_EFFECT+REASON_DISCARD,nil)~=0
-		and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+		and tc:IsRelateToEffect(e) then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	end
 end
