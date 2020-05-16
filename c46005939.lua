@@ -84,12 +84,14 @@ function c46005939.activate(e,tp,eg,ep,ev,re,r,rp)
 		e5:SetCode(EFFECT_XYZ_LEVEL)
 		e5:SetValue(c46005939.xyzlv)
 		e5:SetLabel(tc2:GetLevel())
+		e5:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc1:RegisterEffect(e5,true)
 		e6=Effect.CreateEffect(e:GetHandler())
 		e6:SetType(EFFECT_TYPE_SINGLE)
 		e6:SetCode(EFFECT_XYZ_LEVEL)
 		e6:SetValue(c46005939.xyzlv)
 		e6:SetLabel(tc1:GetLevel())
+		e6:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc2:RegisterEffect(e6,true)
 	end
 	local xyzg=Duel.GetMatchingGroup(Card.IsXyzSummonable,tp,LOCATION_EXTRA,0,nil,g,2,2)
@@ -97,7 +99,8 @@ function c46005939.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local xyz=xyzg:Select(tp,1,1,nil):GetFirst()
 		Duel.XyzSummon(tp,xyz,g)
+	else
+		if e5 then e5:Reset() end
+		if e6 then e5:Reset() end
 	end
-	if e5 then e5:Reset() end
-	if e6 then e5:Reset() end
 end

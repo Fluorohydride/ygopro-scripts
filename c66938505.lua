@@ -61,12 +61,11 @@ function c66938505.scop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
-		e1:SetValue(LOCATION_DECK)
+		e1:SetValue(LOCATION_DECKSHF)
 		e1:SetReset(RESET_EVENT+RESETS_REDIRECT)
 		c:RegisterEffect(e1,true)
 		local e2=e1:Clone()
 		tc:RegisterEffect(e2,true)
 		Duel.SynchroSummon(tp,sg:GetFirst(),nil,mg)
-		Duel.ShuffleDeck(tp)
 	end
 end
