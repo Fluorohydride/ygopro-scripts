@@ -59,10 +59,11 @@ function c62899696.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if c:IsFaceup() and c:IsRelateToEffect(e)
 		and tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
-		c:RegisterFlagEffect(62899696,0,0,1)
+		c:RegisterFlagEffect(62899696,RESET_EVENT+RESETS_STANDARD,0,1)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SYNCHRO_MATERIAL)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
 		local mg=Group.FromCards(c,tc)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -70,8 +71,9 @@ function c62899696.spop(e,tp,eg,ep,ev,re,r,rp)
 		local sc=g:GetFirst()
 		if sc then
 			Duel.SynchroSummon(tp,sc,nil,mg)
+		else
+			c:ResetFlagEffect(62899696)
+			e1:Reset()
 		end
-		c:ResetFlagEffect(62899696)
-		e1:Reset()
 	end
 end
