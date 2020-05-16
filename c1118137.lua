@@ -77,8 +77,7 @@ end
 function c1118137.desreptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local tg=c:GetEquipTarget()
-	if chk==0 then return not c:IsStatus(STATUS_DESTROY_CONFIRMED)
-		and tg and tg:IsReason(REASON_BATTLE+REASON_EFFECT) and not tg:IsReason(REASON_REPLACE)
+	if chk==0 then return tg and tg:IsReason(REASON_BATTLE+REASON_EFFECT) and not tg:IsReason(REASON_REPLACE)
 		and Duel.IsCanRemoveCounter(tp,1,0,0x1,1,REASON_EFFECT) end
 	return Duel.SelectEffectYesNo(tp,c,96)
 end
