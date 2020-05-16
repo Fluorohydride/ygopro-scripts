@@ -80,11 +80,11 @@ function c69217334.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local sel=0
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
 	if b1 and b2 then
-		sel=Duel.SelectOption(tp,aux.Stringid(69217334,0),aux.Stringid(69217334,1))
+		sel=Duel.SelectOption(tp,aux.Stringid(69217334,1),aux.Stringid(69217334,2))
 	elseif b1 then
-		sel=Duel.SelectOption(tp,aux.Stringid(69217334,0))
+		sel=Duel.SelectOption(tp,aux.Stringid(69217334,1))
 	else
-		sel=Duel.SelectOption(tp,aux.Stringid(69217334,1))+1
+		sel=Duel.SelectOption(tp,aux.Stringid(69217334,2))+1
 	end
 	if sel==0 then
 		e:SetCategory(CATEGORY_DRAW)
