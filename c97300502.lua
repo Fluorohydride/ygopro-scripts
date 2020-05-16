@@ -31,11 +31,8 @@ function c97300502.initial_effect(c)
 	e4:SetOperation(c97300502.atkop)
 	c:RegisterEffect(e4)
 end
-function c97300502.cfilter(c,tp)
-	return c:IsFaceup() and c:IsControler(tp)
-end
 function c97300502.descon(e,tp,eg,ep,ev,re,r,rp)
-	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c97300502.cfilter,1,nil,1-tp)
+	return not eg:IsContains(e:GetHandler()) and eg:IsExists(Card.IsControler,1,nil,1-tp)
 end
 function c97300502.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) end
