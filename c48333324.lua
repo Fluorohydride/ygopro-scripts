@@ -49,7 +49,9 @@ function c48333324.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)
 		sc:CompleteProcedure()
 		local g1=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,sc)
-		g1:RemoveCard(c)
+		if c:IsStatus(STATUS_LEAVE_CONFIRMED) then
+			g1:RemoveCard(c)
+		end
 		if g1:GetCount()>0 then
 			Duel.BreakEffect()
 		end
