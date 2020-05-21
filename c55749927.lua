@@ -12,7 +12,7 @@ function c55749927.initial_effect(c)
 end
 function c55749927.rmfilter(c)
 	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup() or c:GetEquipTarget())
-		and c:GetType()&(TYPE_EQUIP+TYPE_SPELL)>0
+		and (c:GetType()&(TYPE_EQUIP+TYPE_SPELL))==TYPE_EQUIP+TYPE_SPELL
 		and c:IsAbleToRemove()
 end
 function c55749927.desfilter(c,tp,g)

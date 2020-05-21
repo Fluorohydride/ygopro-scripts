@@ -39,7 +39,7 @@ function c22091647.initial_effect(c)
 end
 function c22091647.costfilter(c)
 	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup() or c:GetEquipTarget())
-		and c:GetType()&(TYPE_EQUIP+TYPE_SPELL)>0
+		and (c:GetType()&(TYPE_EQUIP+TYPE_SPELL))==TYPE_EQUIP+TYPE_SPELL
 		and c:IsAbleToRemoveAsCost()
 end
 function c22091647.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
