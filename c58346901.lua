@@ -29,7 +29,8 @@ function c58346901.initial_effect(c)
 end
 function c58346901.cfilter(c,tp)
 	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup())
-		and ((c:IsRace(RACE_WARRIOR) and c:IsAttribute(ATTRIBUTE_FIRE)) or c:GetType()==TYPE_EQUIP+TYPE_SPELL)
+		and (c:IsRace(RACE_WARRIOR) and c:IsAttribute(ATTRIBUTE_FIRE)
+			or c:GetType()&(TYPE_EQUIP+TYPE_SPELL)>0)
 		and c:IsAbleToGraveAsCost() and Duel.GetMZoneCount(tp,c)>0
 end
 function c58346901.cost(e,tp,eg,ep,ev,re,r,rp,chk)
