@@ -60,8 +60,20 @@ function c28534130.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 		e3:SetOperation(c28534130.regop)
 		sc:RegisterEffect(e3)
+		local e4=Effect.CreateEffect(c)
+		e4:SetLabelObject(e3)
+		e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+		e4:SetCode(EVENT_SPSUMMON_NEGATED)
+		e4:SetOperation(c28534130.resetop)
+		Duel.RegisterEffect(e4,0)
+		
+		e3:SetLabelObject(e4)
 		Duel.LinkSummon(tp,sc,nil,tc)
 	end
+end
+function c28534130.resetop(e)
+	e:GetLabelObject():Reset()
+	e:Reset()
 end
 function c28534130.regop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=e:GetOwner()
@@ -74,6 +86,7 @@ function c28534130.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_CANNOT_TRIGGER)
 	c:RegisterEffect(e2)
+	e:GetLabelObject():Reset()
 	e:Reset()
 end
 function c28534130.tdfilter(c)
