@@ -23,14 +23,16 @@ function c85327820.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		local mg=Duel.GetRitualMaterial(tp):Filter(Card.IsSetCard,nil,0x135)
 		local mg2=nil
 		if Duel.IsExistingMatchingCard(c85327820.cfilter,tp,LOCATION_MZONE,0,1,nil) then
-			e:SetLabel(1)
 			mg2=Duel.GetMatchingGroup(aux.RitualExtraFilter,tp,LOCATION_GRAVE,0,nil,c85327820.mfilter)
 		end
 		return Duel.IsExistingMatchingCard(aux.RitualUltimateFilter,tp,LOCATION_HAND,0,1,nil,c85327820.filter,e,tp,mg,mg2,Card.GetLevel,"Greater")
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
-	if e:GetLabel()==1 then
+	if Duel.IsExistingMatchingCard(c85327820.cfilter,tp,LOCATION_MZONE,0,1,nil) then
 		Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,0,tp,LOCATION_GRAVE)
+		e:SetLabel(1)
+	else
+		e:SetLabel(0)
 	end
 end
 function c85327820.activate(e,tp,eg,ep,ev,re,r,rp)
