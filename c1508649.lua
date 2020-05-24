@@ -48,7 +48,7 @@ function c1508649.discon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and Duel.IsChainNegatable(ev)
 end
 function c1508649.cfilter(c,g)
-	return c:IsFaceup() and c:IsSetCard(0x103)
+	return c:IsSetCard(0x103)
 		and g:IsContains(c) and not c:IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c1508649.discost(e,tp,eg,ep,ev,re,r,rp,chk)
