@@ -14,8 +14,9 @@ function c42596828.initial_effect(c)
 	e1:SetCost(c42596828.defcost)
 	e1:SetOperation(c42596828.defop)
 	c:RegisterEffect(e1)
-	--atk up
+	--use DEF for damage calc
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(42596828,1))
 	e2:SetCategory(CATEGORY_ATKCHANGE)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_MZONE)
