@@ -23,6 +23,7 @@ function c38342335.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTargetRange(1,0)
+	e2:SetCondition(c38342335.drcon)
 	e2:SetValue(c38342335.drval)
 	c:RegisterEffect(e2)
 end
@@ -66,8 +67,10 @@ end
 function c38342335.drfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x112) and c:GetMutualLinkedGroupCount()>0
 end
+function c38342335.drcon(e)
+	return Duel.GetMatchingGroupCount(c38342335.drfilter,e:GetHandlerPlayer(),LOCATION_MZONE,LOCATION_MZONE,nil)>0
+end
 function c38342335.drval(e)
 	local g=Duel.GetMatchingGroup(c38342335.drfilter,e:GetHandlerPlayer(),LOCATION_MZONE,LOCATION_MZONE,nil)
-	if g:GetCount()<=0 then return 1 end
 	return g:GetClassCount(Card.GetCode)
 end
