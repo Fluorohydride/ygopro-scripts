@@ -24,6 +24,7 @@ function c51412776.initial_effect(c)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetCountLimit(1,51412776)
 	e3:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
+	e3:SetCondition(c51412776.thcon)
 	e3:SetTarget(c51412776.thtg)
 	e3:SetOperation(c51412776.thop)
 	c:RegisterEffect(e3)
@@ -43,11 +44,21 @@ function c51412776.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
-function c51412776.checkfilter(c)
-	return c:IsSetCard(0x107a) and c:IsReason(REASON_BATTLE) and c:GetEquipCount()>0 and c:GetEquipGroup():IsExists(Card.IsSetCard,1,nil,0x207a)
+function c51412776.checkfilter(c,tp)
+	return c:IsSetCard(0x107a) and c:IsReason(REASON_BATTLE) and c:IsControler(tp)
+		and c:GetEquipCount()>0 and c:GetEquipGroup():IsExists(Card.IsSetCard,1,nil,0x207a)
 end
 function c51412776.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(c51412776.checkfilter,1,nil) then Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+51412776,nil,0,rp,ep,ev) end
+	local v=0
+	if eg:IsExists(c51412776.checkfilter,1,nil,0) then v=v+1 end
+	if eg:IsExists(c51412776.checkfilter,1,nil,1) then v=v+2 end
+	if v>0 then
+		local evp=({0,1,PLAYER_ALL})[v]
+		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+51412776,nil,0,rp,ep,evp)
+	end
+end
+function c51412776.thcon(e,tp,eg,ep,ev,re,r,rp)
+	return ev==tp or ev==PLAYER_ALL
 end
 function c51412776.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToHand() end
