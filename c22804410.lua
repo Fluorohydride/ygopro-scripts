@@ -71,7 +71,7 @@ function c22804410.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc or not tc:IsRelateToEffect(e) then return end
 	local atk=tc:GetAttack()
-	if atk>0 and c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToEffect(e) and c:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
