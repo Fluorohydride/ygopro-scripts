@@ -27,11 +27,11 @@ end
 function c74094021.spcon(e,c)
 	if c==nil then return true end
 	return Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0 and
-		Duel.IsExistingMatchingCard(c74094021.spfilter,c:GetControler(),LOCATION_ONFIELD,0,1,nil)
+	Duel.IsExistingMatchingCard(c74094021.spfilter,c:GetControler(),LOCATION_ONFIELD,0,1,nil)
 end
 function c74094021.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,e:GetHandler(),0x3d) end
-	local sg=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,e:GetHandler(),0x3d)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,aux.AND(Card.IsFaceup,Card.IsSetCard),1,e:GetHandler(),0x3d) end
+	local sg=Duel.SelectReleaseGroup(tp,aux.AND(Card.IsFaceup,Card.IsSetCard),1,1,e:GetHandler(),0x3d)
 	Duel.Release(sg,REASON_COST)
 end
 function c74094021.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -44,6 +44,6 @@ end
 function c74094021.operation(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.Destroy(tc,REASON_EFFECT)
+	Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
