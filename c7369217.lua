@@ -38,7 +38,7 @@ function c7369217.initial_effect(c)
 	--eqlimit
 	local e6=Effect.CreateEffect(c)
 	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetCode(EFFECT_EQUIP_LIMIT)
+	e6:SetCode(EFFECT_UNION_LIMIT)
 	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e6:SetValue(1)
 	c:RegisterEffect(e6)
@@ -68,7 +68,7 @@ function c7369217.eqop(e,tp,eg,ep,ev,re,r,rp)
 		return
 	end
 	if not Duel.Equip(tp,c,tc,false) then return end
-	aux.SetUnionState(c)
+	aux.SetUnionState(c,1)
 end
 function c7369217.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(7369217)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0

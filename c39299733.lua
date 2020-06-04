@@ -1,5 +1,6 @@
 --運命の戦車
 function c39299733.initial_effect(c)
+	aux.EnableUnionAttribute(c,c39299733.unilimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(39299733,0))
@@ -19,13 +20,6 @@ function c39299733.initial_effect(c)
 	e2:SetTarget(c39299733.sptg)
 	e2:SetOperation(c39299733.spop)
 	c:RegisterEffect(e2)
-	--destroy sub
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_EQUIP)
-	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e3:SetValue(c39299733.repval)
-	c:RegisterEffect(e3)
 	--direct attack
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_EQUIP)
@@ -38,13 +32,6 @@ function c39299733.initial_effect(c)
 	e6:SetCondition(c39299733.rdcon)
 	e6:SetValue(aux.ChangeBattleDamage(1,HALF_DAMAGE))
 	c:RegisterEffect(e6)
-	--eqlimit
-	local e7=Effect.CreateEffect(c)
-	e7:SetType(EFFECT_TYPE_SINGLE)
-	e7:SetCode(EFFECT_EQUIP_LIMIT)
-	e7:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e7:SetValue(c39299733.eqlimit)
-	c:RegisterEffect(e7)
 end
 function c39299733.filter(c)
 	local ct1,ct2=c:GetUnionCount()
@@ -69,7 +56,7 @@ function c39299733.eqop(e,tp,eg,ep,ev,re,r,rp)
 		return
 	end
 	if not Duel.Equip(tp,c,tc,false) then return end
-	aux.SetUnionState(c)
+	aux.SetUnionState(c,c39299733.eqlimit)
 end
 function c39299733.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -83,14 +70,14 @@ function c39299733.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
 end
-function c39299733.repval(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE)~=0 or bit.band(r,REASON_EFFECT)~=0
-end
 function c39299733.rdcon(e)
 	local c=e:GetHandler():GetEquipTarget()
 	local tp=e:GetHandlerPlayer()
 	return Duel.GetAttackTarget()==nil
 		and c:GetEffectCount(EFFECT_DIRECT_ATTACK)<2 and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)>0
+end
+function c39299733.unilimit(e,c)
+	return c:IsRace(RACE_FAIRY)
 end
 function c39299733.eqlimit(e,c)
 	return c:IsRace(RACE_FAIRY) or e:GetHandler():GetEquipTarget()==c

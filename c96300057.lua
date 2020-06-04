@@ -1,5 +1,6 @@
 --W－ウィング・カタパルト
 function c96300057.initial_effect(c)
+	aux.EnableUnionAttribute(c,c96300057.unilimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(96300057,0))
@@ -31,23 +32,9 @@ function c96300057.initial_effect(c)
 	e4:SetCode(EFFECT_UPDATE_DEFENSE)
 	e4:SetValue(400)
 	c:RegisterEffect(e4)
-	--destroy sub
-	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_EQUIP)
-	e5:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e5:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e5:SetValue(c96300057.repval)
-	c:RegisterEffect(e5)
-	--eqlimit
-	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetCode(EFFECT_EQUIP_LIMIT)
-	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e6:SetValue(c96300057.eqlimit)
-	c:RegisterEffect(e6)
 end
-function c96300057.repval(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0
+function c96300057.unilimit(e,c)
+	return c:IsCode(51638941)
 end
 function c96300057.eqlimit(e,c)
 	return c:IsCode(51638941) or e:GetHandler():GetEquipTarget()==c
@@ -74,7 +61,7 @@ function c96300057.eqop(e,tp,eg,ep,ev,re,r,rp)
 		return
 	end
 	if not Duel.Equip(tp,c,tc,false) then return end
-	aux.SetUnionState(c)
+	aux.SetUnionState(c,c96300057.eqlimit)
 end
 function c96300057.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(96300057)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0

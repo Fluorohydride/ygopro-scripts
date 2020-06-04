@@ -1,5 +1,6 @@
 --強化支援メカ・ヘビーウェポン
 function c23265594.initial_effect(c)
+	aux.EnableUnionAttribute(c,c23265594.unilimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(23265594,0))
@@ -31,20 +32,9 @@ function c23265594.initial_effect(c)
 	e4:SetCode(EFFECT_UPDATE_DEFENSE)
 	e4:SetValue(500)
 	c:RegisterEffect(e4)
-	--destroy sub
-	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_EQUIP)
-	e5:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e5:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e5:SetValue(1)
-	c:RegisterEffect(e5)
-	--eqlimit
-	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetCode(EFFECT_EQUIP_LIMIT)
-	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e6:SetValue(c23265594.eqlimit)
-	c:RegisterEffect(e6)
+end
+function c23265594.unilimit(e,c)
+	return c:IsRace(RACE_MACHINE)
 end
 function c23265594.eqlimit(e,c)
 	return c:IsRace(RACE_MACHINE) or e:GetHandler():GetEquipTarget()==c
@@ -71,7 +61,7 @@ function c23265594.eqop(e,tp,eg,ep,ev,re,r,rp)
 		return
 	end
 	if not Duel.Equip(tp,c,tc,false) then return end
-	aux.SetUnionState(c)
+	aux.SetUnionState(c,c23265594.eqlimit)
 end
 function c23265594.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(23265594)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0

@@ -1,5 +1,6 @@
 --マシンナーズ・ピースキーパー
 function c78349103.initial_effect(c)
+	aux.EnableUnionAttribute(c,c78349103.unilimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(78349103,0))
@@ -19,20 +20,6 @@ function c78349103.initial_effect(c)
 	e2:SetTarget(c78349103.sptg)
 	e2:SetOperation(c78349103.spop)
 	c:RegisterEffect(e2)
-	--destroy sub
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_EQUIP)
-	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e3:SetValue(c78349103.repval)
-	c:RegisterEffect(e3)
-	--eqlimit
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetCode(EFFECT_EQUIP_LIMIT)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e4:SetValue(c78349103.eqlimit)
-	c:RegisterEffect(e4)
 	--search
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(78349103,2))
@@ -45,8 +32,8 @@ function c78349103.initial_effect(c)
 	e5:SetOperation(c78349103.sop)
 	c:RegisterEffect(e5)
 end
-function c78349103.repval(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0
+function c78349103.unilimit(e,c)
+	return c:IsRace(RACE_MACHINE)
 end
 function c78349103.eqlimit(e,c)
 	return c:IsRace(RACE_MACHINE) or e:GetHandler():GetEquipTarget()==c
@@ -73,7 +60,7 @@ function c78349103.eqop(e,tp,eg,ep,ev,re,r,rp)
 		return
 	end
 	if not Duel.Equip(tp,c,tc,false) then return end
-	aux.SetUnionState(c)
+	aux.SetUnionState(c,c78349103.eqlimit)
 end
 function c78349103.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(78349103)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0

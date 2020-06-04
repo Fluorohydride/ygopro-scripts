@@ -26,12 +26,12 @@ function c48568432.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
 	e3:SetCondition(aux.IsUnionState)
-	e3:SetValue(1)
+	e3:SetValue(aux.UnionReplaceFilter)
 	c:RegisterEffect(e3)
 	--eqlimit
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetCode(EFFECT_EQUIP_LIMIT)
+	e4:SetCode(EFFECT_UNION_LIMIT)
 	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e4:SetValue(aux.TargetBoolFunction(Card.IsRace,RACE_MACHINE))
 	c:RegisterEffect(e4)
@@ -49,6 +49,9 @@ function c48568432.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 c48568432.old_union=true
+function c48568432.eqlimit(e,c)
+	return c:IsRace(RACE_MACHINE) or e:GetHandler():GetEquipTarget()==c
+end
 function c48568432.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:GetUnionCount()==0
 end
@@ -70,7 +73,7 @@ function c48568432.eqop(e,tp,eg,ep,ev,re,r,rp)
 		return
 	end
 	if not Duel.Equip(tp,c,tc,false) then return end
-	aux.SetUnionState(c)
+	aux.SetUnionState(c,c48568432.eqlimit)
 end
 function c48568432.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(48568432)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0

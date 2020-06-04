@@ -26,7 +26,7 @@ function c47228077.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
 	e3:SetCondition(aux.IsUnionState)
-	e3:SetValue(1)
+	e3:SetValue(aux.UnionReplaceFilter)
 	c:RegisterEffect(e3)
 	--destroy
 	local e4=Effect.CreateEffect(c)
@@ -43,14 +43,17 @@ function c47228077.initial_effect(c)
 	--eqlimit
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_SINGLE)
-	e5:SetCode(EFFECT_EQUIP_LIMIT)
+	e5:SetCode(EFFECT_UNION_LIMIT)
 	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e5:SetValue(c47228077.eqlimit)
+	e5:SetValue(c47228077.unilimit)
 	c:RegisterEffect(e5)
 end
 c47228077.old_union=true
-function c47228077.eqlimit(e,c)
+function c47228077.unilimit(e,c)
 	return c:IsSetCard(0x30)
+end
+function c47228077.eqlimit(e,c)
+	return c:IsSetCard(0x30) or e:GetHandler():GetEquipTarget()==c
 end
 function c47228077.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x30) and c:GetUnionCount()==0
@@ -73,7 +76,7 @@ function c47228077.eqop(e,tp,eg,ep,ev,re,r,rp)
 		return
 	end
 	if not Duel.Equip(tp,c,tc,false) then return end
-	aux.SetUnionState(c)
+	aux.SetUnionState(c,c47228077.eqlimit)
 end
 function c47228077.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(47228077)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0

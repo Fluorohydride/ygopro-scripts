@@ -38,17 +38,20 @@ function c57062206.initial_effect(c)
 	--eqlimit
 	local e6=Effect.CreateEffect(c)
 	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetCode(EFFECT_EQUIP_LIMIT)
+	e6:SetCode(EFFECT_UNION_LIMIT)
 	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e6:SetValue(c57062206.eqlimit)
+	e6:SetValue(c57062206.unilimit)
 	c:RegisterEffect(e6)
 end
 c57062206.old_union=true
 function c57062206.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end
-function c57062206.eqlimit(e,c)
+function c57062206.unilimit(e,c)
 	return c:IsCode(60246171)
+end
+function c57062206.eqlimit(e,c)
+	return c:IsCode(60246171) or e:GetHandler():GetEquipTarget()==c
 end
 function c57062206.filter(c)
 	return c:IsFaceup() and c:IsCode(60246171) and c:GetUnionCount()==0
@@ -71,7 +74,7 @@ function c57062206.eqop(e,tp,eg,ep,ev,re,r,rp)
 		return
 	end
 	if not Duel.Equip(tp,c,tc,false) then return end
-	aux.SetUnionState(c)
+	aux.SetUnionState(c,c57062206.eqlimit)
 end
 function c57062206.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(57062206)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
