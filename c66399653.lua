@@ -44,7 +44,7 @@ function c66399653.tgfilter(c,e,tp,chk)
 end
 function c66399653.cfilter(c,ec)
 	return c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT)
-		and c:IsType(TYPE_UNION) and c:CheckEquipTarget(ec) and aux.CheckUnionEquip(c,ec) and not c:IsCode(ec:GetCode())
+		and c:IsType(TYPE_UNION) and c:CheckUnionTarget(ec) and aux.CheckUnionEquip(c,ec) and not c:IsCode(ec:GetCode())
 end
 function c66399653.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c66399653.tgfilter(chkc,e,tp,true) end
