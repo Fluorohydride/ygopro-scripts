@@ -13,7 +13,6 @@ function c13117073.initial_effect(c)
 	e1:SetCountLimit(1,13117073)
 	e1:SetCondition(c13117073.regcon)
 	e1:SetCost(c13117073.regcost)
-	e1:SetTarget(c13117073.regtg)
 	e1:SetOperation(c13117073.regop)
 	c:RegisterEffect(e1)
 	--indes
@@ -38,9 +37,6 @@ function c13117073.regcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c13117073.thfilter1(c)
 	return c:IsType(TYPE_FIELD) or c:GetType()==TYPE_SPELL+TYPE_CONTINUOUS
-end
-function c13117073.regtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c13117073.thfilter1,tp,LOCATION_GRAVE,0,1,nil) end
 end
 function c13117073.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
