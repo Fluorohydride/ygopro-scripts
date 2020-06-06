@@ -22,6 +22,7 @@ function c13173832.initial_effect(c)
 	c:RegisterEffect(e2)
 	--GY recycle, if added to hand
 	local e3=e2:Clone()
+	e3:SetDescription(aux.Stringid(13173832,1))
 	e3:SetCode(EVENT_TO_HAND)
 	e3:SetCondition(c13173832.thcon2)
 	e3:SetCost(c13173832.thcost)
