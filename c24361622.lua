@@ -11,6 +11,7 @@ function c24361622.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
+	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER)
 	e1:SetCondition(c24361622.thcon)
 	e1:SetCost(c24361622.thcost)
 	e1:SetTarget(c24361622.thtg)
@@ -38,9 +39,9 @@ function c24361622.thfilter(c)
 	return c:IsFaceup() and c:IsAbleToHand()
 end
 function c24361622.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c24361622.thcfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,nil,tp) end
+	if chk==0 then return Duel.CheckReleaseGroupEx(tp,c24361622.thcfilter,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=Duel.SelectMatchingCard(tp,c24361622.thcfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,1,nil,tp)
+	local g=Duel.SelectReleaseGroupEx(tp,c24361622.thcfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c24361622.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
