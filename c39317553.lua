@@ -33,7 +33,7 @@ function c39317553.ovfilter(c)
 end
 function c39317553.xyzop(e,tp,chk)
 	if chk==0 then return Duel.GetFlagEffect(tp,39317553)==0 end
-	Duel.RegisterFlagEffect(tp,39317553,RESET_PHASE+PHASE_END,0,1)
+	Duel.RegisterFlagEffect(tp,39317553,RESET_PHASE+PHASE_END,EFFECT_FLAG_OATH,1)
 end
 function c39317553.xyzcon(e)
 	local c=e:GetHandler()

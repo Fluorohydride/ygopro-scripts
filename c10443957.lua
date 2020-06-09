@@ -42,7 +42,7 @@ function c10443957.ovfilter(c)
 end
 function c10443957.xyzop(e,tp,chk)
 	if chk==0 then return Duel.GetFlagEffect(tp,10443957)==0 end
-	Duel.RegisterFlagEffect(tp,10443957,RESET_PHASE+PHASE_END,0,1)
+	Duel.RegisterFlagEffect(tp,10443957,RESET_PHASE+PHASE_END,EFFECT_FLAG_OATH,1)
 end
 function c10443957.atkval(e,c)
 	return c:GetOverlayCount()*200

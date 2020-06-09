@@ -21,7 +21,7 @@ function c78144171.ovfilter(c)
 end
 function c78144171.xyzop(e,tp,chk)
 	if chk==0 then return Duel.GetFlagEffect(tp,78144171)==0 end
-	Duel.RegisterFlagEffect(tp,78144171,RESET_PHASE+PHASE_END,0,1)
+	Duel.RegisterFlagEffect(tp,78144171,RESET_PHASE+PHASE_END,EFFECT_FLAG_OATH,1)
 end
 function c78144171.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
