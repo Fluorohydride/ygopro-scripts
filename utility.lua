@@ -191,6 +191,7 @@ function Auxiliary.IsUnionState(effect)
 	local c=effect:GetHandler()
 	return c:IsHasEffect(EFFECT_UNION_STATUS)
 end
+--set EFFECT_EQUIP_LIMIT after equipping(using function 'eqlimit' of union monsters)
 function Auxiliary.SetUnionState(c)
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_SINGLE)
@@ -216,11 +217,11 @@ function Auxiliary.CheckUnionEquip(uc,tc)
 	if uc.old_union then return ct1==0
 	else return ct2==0 end
 end
---EFFECT_DESTROY_SUBSTITUTE filter for new union monsters
+--EFFECT_DESTROY_SUBSTITUTE filter for modern union monsters
 function Auxiliary.UnionReplaceFilter(e,re,r,rp)
 	return r&(REASON_BATTLE+REASON_EFFECT)~=0
 end
---add effect to new Union monster
+--add effect to modern Union monster(using function 'eqlimit' of union monsters)
 function Auxiliary.EnableUnionAttribute(c)
 	--destroy sub
 	local e1=Effect.CreateEffect(c)
