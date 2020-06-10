@@ -42,7 +42,7 @@ function c19086954.initial_effect(c)
 	--eqlimit
 	local e6=Effect.CreateEffect(c)
 	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetCode(EFFECT_EQUIP_LIMIT)
+	e6:SetCode(EFFECT_UNION_LIMIT)
 	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e6:SetValue(c19086954.eqlimit)
 	c:RegisterEffect(e6)
@@ -52,7 +52,7 @@ function c19086954.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end
 function c19086954.eqlimit(e,c)
-	return c:IsCode(73698349)
+	return c:IsCode(73698349) or e:GetHandler():GetEquipTarget()==c
 end
 function c19086954.filter(c)
 	return c:IsFaceup() and c:IsCode(73698349) and c:GetUnionCount()==0

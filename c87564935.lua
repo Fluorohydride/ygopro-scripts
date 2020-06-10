@@ -45,12 +45,15 @@ function c87564935.initial_effect(c)
 	--eqlimit
 	local e6=Effect.CreateEffect(c)
 	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetCode(EFFECT_EQUIP_LIMIT)
+	e6:SetCode(EFFECT_UNION_LIMIT)
 	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e6:SetValue(1)
+	e6:SetValue(c87564935.eqlimit)
 	c:RegisterEffect(e6)
 end
 c87564935.old_union=true
+function c87564935.eqlimit(e,c)
+	return true
+end
 function c87564935.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end

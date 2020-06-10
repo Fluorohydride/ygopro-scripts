@@ -26,14 +26,14 @@ function c63676256.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
 	e3:SetCondition(aux.IsUnionState)
-	e3:SetValue(1)
+	e3:SetValue(aux.UnionReplaceFilter)
 	c:RegisterEffect(e3)
 	--eqlimit
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetCode(EFFECT_EQUIP_LIMIT)
+	e4:SetCode(EFFECT_UNION_LIMIT)
 	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e4:SetValue(1)
+	e4:SetValue(c63676256.eqlimit)
 	c:RegisterEffect(e4)
 	--atk,def
 	local e5=Effect.CreateEffect(c)
@@ -58,6 +58,9 @@ function c63676256.initial_effect(c)
 	c:RegisterEffect(e7)
 end
 c63676256.old_union=true
+function c63676256.eqlimit(e,c)
+	return true
+end
 function c63676256.filter(c)
 	return c:IsFaceup() and c:GetUnionCount()==0
 end
