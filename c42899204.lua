@@ -36,15 +36,15 @@ end
 function c42899204.filter(c,atk)
 	return c:IsSetCard(0x129) and c:IsFaceup() and c:GetAttack()>atk
 end
-function c42899204.filter1(c,tp)
-	return c:IsAttackPos() and c:IsControler(1-tp)
+function c42899204.filter1(c,e,tp)
+	return c:IsCanBeEffectTarget(e) and c:IsAttackPos() and c:IsControler(1-tp)
 		and Duel.IsExistingMatchingCard(c42899204.filter,tp,LOCATION_MZONE,0,1,nil,c:GetAttack())
 end
 function c42899204.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return eg:IsContains(chkc) and c42899204.filter1(chkc,tp) end
-	if chk==0 then return eg:IsExists(c42899204.filter1,1,nil,tp) end
+	if chkc then return eg:IsContains(chkc) and c42899204.filter1(chkc,e,tp) end
+	if chk==0 then return eg:IsExists(c42899204.filter1,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
-	local tc=eg:FilterSelect(tp,c42899204.filter1,1,1,nil,tp):GetFirst()
+	local tc=eg:FilterSelect(tp,c42899204.filter1,1,1,nil,e,tp):GetFirst()
 	Duel.SetTargetCard(tc)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,tc,1,0,0)
 end
