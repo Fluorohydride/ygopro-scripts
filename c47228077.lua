@@ -50,7 +50,7 @@ function c47228077.initial_effect(c)
 end
 c47228077.old_union=true
 function c47228077.eqlimit(e,c)
-	return c:IsSetCard(0x30) or e:GetHandler():GetEquipTarget()==c
+	return c:IsSetCard(0x30)
 end
 function c47228077.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x30) and c:GetUnionCount()==0

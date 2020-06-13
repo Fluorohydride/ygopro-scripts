@@ -64,7 +64,7 @@ function c65685470.initial_effect(c)
 end
 c65685470.old_union=true
 function c65685470.eqlimit(e,c)
-	return c:IsSetCard(0x3d) or e:GetHandler():GetEquipTarget()==c
+	return c:IsSetCard(0x3d)
 end
 function c65685470.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x3d) and c:GetUnionCount()==0

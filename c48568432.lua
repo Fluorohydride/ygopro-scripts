@@ -50,7 +50,7 @@ function c48568432.initial_effect(c)
 end
 c48568432.old_union=true
 function c48568432.eqlimit(e,c)
-	return c:IsRace(RACE_MACHINE) or e:GetHandler():GetEquipTarget()==c
+	return c:IsRace(RACE_MACHINE)
 end
 function c48568432.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and c:GetUnionCount()==0

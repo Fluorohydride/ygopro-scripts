@@ -53,7 +53,7 @@ function c87798440.repval(e,re,r,rp)
 	return bit.band(r,REASON_BATTLE)~=0
 end
 function c87798440.eqlimit(e,c)
-	return c:IsRace(RACE_WARRIOR) or e:GetHandler():GetEquipTarget()==c
+	return c:IsRace(RACE_WARRIOR)
 end
 function c87798440.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_WARRIOR) and c:GetUnionCount()==0

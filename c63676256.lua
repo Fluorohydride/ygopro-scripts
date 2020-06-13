@@ -33,7 +33,7 @@ function c63676256.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_SINGLE)
 	e4:SetCode(EFFECT_UNION_LIMIT)
 	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e4:SetValue(c63676256.eqlimit)
+	e4:SetValue(1)
 	c:RegisterEffect(e4)
 	--atk,def
 	local e5=Effect.CreateEffect(c)
@@ -58,9 +58,6 @@ function c63676256.initial_effect(c)
 	c:RegisterEffect(e7)
 end
 c63676256.old_union=true
-function c63676256.eqlimit(e,c)
-	return true
-end
 function c63676256.filter(c)
 	return c:IsFaceup() and c:GetUnionCount()==0
 end

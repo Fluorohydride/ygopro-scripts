@@ -191,13 +191,14 @@ function Auxiliary.IsUnionState(effect)
 	local c=effect:GetHandler()
 	return c:IsHasEffect(EFFECT_UNION_STATUS)
 end
---set EFFECT_EQUIP_LIMIT after equipping(using function 'eqlimit' of union monsters)
+--set EFFECT_EQUIP_LIMIT after equipping
 function Auxiliary.SetUnionState(c)
+	local eset={c:IsHasEffect(EFFECT_UNION_LIMIT)}
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_SINGLE)
 	e0:SetCode(EFFECT_EQUIP_LIMIT)
 	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e0:SetValue(c.eqlimit)
+	e0:SetValue(eset[1].GetValue())
 	e0:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e0)
 	local e1=Effect.CreateEffect(c)
@@ -221,8 +222,8 @@ end
 function Auxiliary.UnionReplaceFilter(e,re,r,rp)
 	return r&(REASON_BATTLE+REASON_EFFECT)~=0
 end
---add effect to modern Union monster(using function 'eqlimit' of union monsters)
-function Auxiliary.EnableUnionAttribute(c)
+--add effect to modern union monsters
+function Auxiliary.EnableUnionAttribute(c,f)
 	--destroy sub
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_EQUIP)
@@ -236,7 +237,7 @@ function Auxiliary.EnableUnionAttribute(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_UNION_LIMIT)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetValue(c.eqlimit)
+	e2:SetValue(f)
 	c:RegisterEffect(e2)
 end
 function Auxiliary.TargetEqualFunction(f,value,...)
