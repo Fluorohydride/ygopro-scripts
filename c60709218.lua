@@ -16,7 +16,7 @@ function c60709218.cfilter(c)
 	return c:IsCode(46986414) and c:IsFaceup()
 end
 function c60709218.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c60709218.cfilter,tp,LOCATION_MZONE,0,1,nil)
+	return Duel.IsExistingMatchingCard(c60709218.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
 end
 function c60709218.spfilter(c,e,tp)
 	return c:IsCode(38033121) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -36,8 +36,7 @@ function c60709218.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sc=g:GetFirst()
 	if sc and Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local g2=Duel.GetMatchingGroup(c60709218.setfilter,tp,LOCATION_DECK,0,nil)
-		if g2:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-			and Duel.SelectYesNo(tp,aux.Stringid(60709218,0)) then
+		if g2:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(60709218,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 			local tc=g2:Select(tp,1,1,nil)
