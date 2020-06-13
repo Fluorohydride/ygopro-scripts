@@ -1,6 +1,6 @@
 --マシンナーズ・ギアフレーム
 function c42940404.initial_effect(c)
-	aux.EnableUnionAttribute(c)
+	aux.EnableUnionAttribute(c,c42940404.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(42940404,0))

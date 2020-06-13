@@ -1,6 +1,6 @@
 --トルクチューン・ギア
 function c79538761.initial_effect(c)
-	aux.EnableUnionAttribute(c)
+	aux.EnableUnionAttribute(c,1)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(79538761,0))
@@ -38,9 +38,6 @@ function c79538761.initial_effect(c)
 	e6:SetCode(EFFECT_UPDATE_DEFENSE)
 	e6:SetValue(500)
 	c:RegisterEffect(e6)
-end
-function c79538761.eqlimit(e,c)
-	return true
 end
 function c79538761.filter(c)
 	local ct1,ct2=c:GetUnionCount()

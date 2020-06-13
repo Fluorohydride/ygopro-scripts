@@ -1,6 +1,6 @@
 --C－クラッシュ・ワイバーン
 function c3405259.initial_effect(c)
-	aux.EnableUnionAttribute(c)
+	aux.EnableUnionAttribute(c,c3405259.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(3405259,0))

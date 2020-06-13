@@ -1,6 +1,6 @@
 --A－アサルト・コア
 function c30012506.initial_effect(c)
-	aux.EnableUnionAttribute(c)
+	aux.EnableUnionAttribute(c,c30012506.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(30012506,0))

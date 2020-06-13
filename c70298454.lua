@@ -1,6 +1,6 @@
 --比翼レンリン
 function c70298454.initial_effect(c)
-	aux.EnableUnionAttribute(c)
+	aux.EnableUnionAttribute(c,1)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(70298454,0))
@@ -32,9 +32,6 @@ function c70298454.initial_effect(c)
 	e5:SetCode(EFFECT_EXTRA_ATTACK)
 	e5:SetValue(1)
 	c:RegisterEffect(e5)
-end
-function c70298454.eqlimit(e,c)
-	return true
 end
 function c70298454.filter(c)
 	local ct1,ct2=c:GetUnionCount()

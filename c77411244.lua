@@ -1,6 +1,6 @@
 --B－バスター・ドレイク
 function c77411244.initial_effect(c)
-	aux.EnableUnionAttribute(c)
+	aux.EnableUnionAttribute(c,c77411244.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(77411244,0))

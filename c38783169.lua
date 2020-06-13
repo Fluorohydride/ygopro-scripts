@@ -1,7 +1,7 @@
 --チューン・ナイト
 function c38783169.initial_effect(c)
 	aux.EnableExtraDeckSummonCountLimit()
-	aux.EnableUnionAttribute(c)
+	aux.EnableUnionAttribute(c,1)
 	--tuner
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(38783169,0))
@@ -30,9 +30,6 @@ function c38783169.initial_effect(c)
 	e3:SetTarget(c38783169.sptg)
 	e3:SetOperation(c38783169.spop)
 	c:RegisterEffect(e3)
-end
-function c38783169.eqlimit(e,c)
-	return true
 end
 function c38783169.tntg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsType(TYPE_TUNER) end

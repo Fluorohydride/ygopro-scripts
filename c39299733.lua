@@ -1,6 +1,6 @@
 --運命の戦車
 function c39299733.initial_effect(c)
-	aux.EnableUnionAttribute(c)
+	aux.EnableUnionAttribute(c,c39299733.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(39299733,0))

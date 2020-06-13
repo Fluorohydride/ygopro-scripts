@@ -1,6 +1,6 @@
 --奇動装置メイルファクター
 function c81951640.initial_effect(c)
-	aux.EnableUnionAttribute(c)
+	aux.EnableUnionAttribute(c,1)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(81951640,0))
@@ -32,9 +32,6 @@ function c81951640.initial_effect(c)
 	e4:SetTarget(c81951640.tg)
 	e4:SetOperation(c81951640.op)
 	c:RegisterEffect(e4)
-end
-function c81951640.eqlimit(e,c)
-	return true
 end
 function c81951640.filter(c)
 	local ct1,ct2=c:GetUnionCount()

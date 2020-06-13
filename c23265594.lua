@@ -1,6 +1,6 @@
 --強化支援メカ・ヘビーウェポン
 function c23265594.initial_effect(c)
-	aux.EnableUnionAttribute(c)
+	aux.EnableUnionAttribute(c,c23265594.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(23265594,0))

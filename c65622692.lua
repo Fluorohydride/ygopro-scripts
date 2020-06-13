@@ -1,6 +1,6 @@
 --Y－ドラゴン・ヘッド
 function c65622692.initial_effect(c)
-	aux.EnableUnionAttribute(c)
+	aux.EnableUnionAttribute(c,c65622692.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(65622692,0))

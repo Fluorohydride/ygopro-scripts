@@ -1,6 +1,6 @@
 --ユニオン・ドライバー
 function c99249638.initial_effect(c)
-	aux.EnableUnionAttribute(c)
+	aux.EnableUnionAttribute(c,1)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(99249638,0))
@@ -31,9 +31,6 @@ function c99249638.initial_effect(c)
 	e4:SetTarget(c99249638.retg)
 	e4:SetOperation(c99249638.reop)
 	c:RegisterEffect(e4)
-end
-function c99249638.eqlimit(e,c)
-	return true
 end
 function c99249638.filter(c)
 	local ct1,ct2=c:GetUnionCount()

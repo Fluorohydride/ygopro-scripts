@@ -1,6 +1,6 @@
 --アーマード・サイバーン
 function c67159705.initial_effect(c)
-	aux.EnableUnionAttribute(c)
+	aux.EnableUnionAttribute(c,c67159705.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(67159705,0))

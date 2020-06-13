@@ -1,6 +1,6 @@
 --W－ウィング・カタパルト
 function c96300057.initial_effect(c)
-	aux.EnableUnionAttribute(c)
+	aux.EnableUnionAttribute(c,c96300057.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(96300057,0))

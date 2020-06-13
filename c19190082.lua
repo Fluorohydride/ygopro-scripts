@@ -1,6 +1,6 @@
 --戦乙女の戦車
 function c19190082.initial_effect(c)
-	aux.EnableUnionAttribute(c)
+	aux.EnableUnionAttribute(c,c19190082.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(19190082,0))

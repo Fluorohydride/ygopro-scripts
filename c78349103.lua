@@ -1,6 +1,6 @@
 --マシンナーズ・ピースキーパー
 function c78349103.initial_effect(c)
-	aux.EnableUnionAttribute(c)
+	aux.EnableUnionAttribute(c,c78349103.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(78349103,0))
