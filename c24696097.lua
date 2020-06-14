@@ -44,6 +44,7 @@ function c24696097.initial_effect(c)
 	e4:SetCode(EVENT_PHASE+PHASE_END)
 	e4:SetRange(LOCATION_REMOVED)
 	e4:SetCountLimit(1)
+	e4:SetCondition(c24696097.sumcon)
 	e4:SetTarget(c24696097.sumtg)
 	e4:SetOperation(c24696097.sumop)
 	c:RegisterEffect(e4)
@@ -111,10 +112,11 @@ function c24696097.daop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterFlagEffect(24696097,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,0)
 	end
 end
+function c24696097.sumcon(e,tp,eg,ep,ev,re,r,rp)
+	return e:GetHandler():GetFlagEffect(24696097)>0
+end
 function c24696097.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:GetFlagEffect(24696097)>0
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) end
+	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c24696097.sumop(e,tp,eg,ep,ev,re,r,rp)
