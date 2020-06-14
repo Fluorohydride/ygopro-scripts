@@ -24,7 +24,7 @@ function c62829077.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c62829077.splimit(e,c,sump,sumtype,sumpos,targetp,se)
-	return se~=e:GetLabelObject()
+	return se~=e:GetLabelObject() and c:GetFlagEffect(62829077)==0
 end
 function c62829077.filter(c,e,tp)
 	return c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -88,6 +88,7 @@ function c62829077.activate(e,tp,eg,ep,ev,re,r,rp)
 	if xyzg:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local xyz=xyzg:Select(tp,1,1,nil):GetFirst()
+		xyz:RegisterFlagEffect(62829077,RESET_EVENT+RESETS_STANDARD,0,1)
 		Duel.XyzSummon(tp,xyz,g)
 	end
 end
