@@ -75,7 +75,7 @@ function c35803249.spfilter(c,tp)
 end
 function c35803249.spcon(e,c)
 	if c==nil then return true end
-	return Duel.IsExistingMatchingCard(c35803249.spfilter,tp,LOCATION_MZONE,0,1,nil,tp)
+	return Duel.IsExistingMatchingCard(c35803249.spfilter,c:GetControler(),LOCATION_MZONE,0,1,nil,c:GetControler())
 end
 function c35803249.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
