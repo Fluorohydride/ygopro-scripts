@@ -21,7 +21,7 @@ end
 function c86852702.cost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,c) end
-	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST,nil)
+	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD,nil)
 end
 function c86852702.thfilter1(c)
 	return c:IsSetCard(0x36) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
@@ -47,7 +47,7 @@ end
 function c86852702.cost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.IsExistingMatchingCard(c86852702.costfilter,tp,LOCATION_HAND,0,1,c) end
-	Duel.DiscardHand(tp,c86852702.costfilter,1,1,REASON_COST,nil)
+	Duel.DiscardHand(tp,c86852702.costfilter,1,1,REASON_COST+REASON_DISCARD,nil)
 end
 function c86852702.thfilter2(c)
 	return c:IsSetCard(0x36) and not c:IsCode(86852702) and c:IsAbleToHand()
