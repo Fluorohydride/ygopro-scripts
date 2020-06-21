@@ -4,7 +4,6 @@ function c80921533.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetValue(SUMMON_TYPE_NORMAL)
 	c:RegisterEffect(e1)
 	--summon
 	local e2=Effect.CreateEffect(c)
@@ -15,8 +14,19 @@ function c80921533.initial_effect(c)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetTarget(c80921533.target)
 	e2:SetOperation(c80921533.operation)
-	e2:SetLabelObject(e1)
 	c:RegisterEffect(e2)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_FIELD)
+	e3:SetCode(EFFECT_SUMMON_PROC)
+	e3:SetRange(LOCATION_FZONE)
+	e3:SetCondition(c80921533.ntcon)
+	e3:SetValue(SUMMON_TYPE_NORMAL)
+	c:RegisterEffect(e3)
+	e2:SetLabelObject(e3)
+end
+function c80921533.ntcon(e,c,minc)
+	if c==nil then return true end
+	return minc==0 and Duel.CheckTribute(c,0)
 end
 function c80921533.filter(c,se)
 	if not c:IsSummonableCard() then return false end
