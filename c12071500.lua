@@ -9,6 +9,17 @@ function c12071500.initial_effect(c)
 	e1:SetTarget(c12071500.target)
 	e1:SetOperation(c12071500.activate)
 	c:RegisterEffect(e1)
+	--
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetCode(EFFECT_ADD_CODE)
+	e2:SetValue(94820406)
+	e2:SetLabelObject(e1)
+	e2:SetCondition(c12071500.effcon)
+	c:RegisterEffect(e2)
+end
+function c12071500.effcon(e)
+	return e:GetLabelObject():GetLabel()==1
 end
 function c12071500.filter0(c)
 	return c:IsLocation(LOCATION_HAND) and c:IsAbleToRemove()
@@ -17,8 +28,11 @@ function c12071500.filter1(c,e)
 	return c:IsLocation(LOCATION_HAND) and c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
 end
 function c12071500.filter2(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and c.dark_calling and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION+0x10,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
+	e:SetLabel(1)
+	local res=c:IsType(TYPE_FUSION) and c.dark_calling and (not f or f(c))
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
+	e:SetLabel(0)
+	return res
 end
 function c12071500.filter3(c)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
@@ -65,17 +79,19 @@ function c12071500.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
+		e:SetLabel(1)
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			tc:SetMaterial(mat1)
 			Duel.Remove(mat1,POS_FACEUP,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
-			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION+0x10,tp,tp,false,false,POS_FACEUP)
+			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 		else
 			local mat2=Duel.SelectFusionMaterial(tp,tc,mg3,nil,chkf)
 			local fop=ce:GetOperation()
-			fop(ce,e,tp,tc,mat2,SUMMON_TYPE_FUSION+0x10)
+			fop(ce,e,tp,tc,mat2,SUMMON_TYPE_FUSION)
 		end
 		tc:CompleteProcedure()
+		e:SetLabel(0)
 	end
 end

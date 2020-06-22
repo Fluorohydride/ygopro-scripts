@@ -26,7 +26,7 @@ end
 c21947653.material_setcode=0x8
 c21947653.dark_calling=true
 function c21947653.splimit(e,se,sp,st)
-	return st==SUMMON_TYPE_FUSION+0x10
+	return se:GetHandler():IsCode(94820406)
 		or Duel.IsPlayerAffectedByEffect(sp,72043279) and st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
 end
 function c21947653.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
