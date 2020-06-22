@@ -49,7 +49,9 @@ function c48333324.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)
 		sc:CompleteProcedure()
 		local g1=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,sc)
-		g1:RemoveCard(c)
+		if c:IsStatus(STATUS_LEAVE_CONFIRMED) then
+			g1:RemoveCard(c)
+		end
 		if g1:GetCount()>0 then
 			Duel.BreakEffect()
 		end
@@ -59,18 +61,15 @@ function c48333324.activate(e,tp,eg,ep,ev,re,r,rp)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_DISABLE)
+			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			nc:RegisterEffect(e1)
-			local e2=Effect.CreateEffect(c)
-			e2:SetType(EFFECT_TYPE_SINGLE)
+			local e2=e1:Clone()
 			e2:SetCode(EFFECT_DISABLE_EFFECT)
-			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 			nc:RegisterEffect(e2)
 			if nc:IsType(TYPE_TRAPMONSTER) then
-				local e3=Effect.CreateEffect(c)
-				e3:SetType(EFFECT_TYPE_SINGLE)
+				local e3=e1:Clone()
 				e3:SetCode(EFFECT_DISABLE_TRAPMONSTER)
-				e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 				nc:RegisterEffect(e3)
 			end
 			nc=ng:GetNext()
