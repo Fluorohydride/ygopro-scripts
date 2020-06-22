@@ -1,5 +1,6 @@
 --トゥーン・ドラゴン・エッガー
 function c38369349.initial_effect(c)
+	aux.AddCodeList(c,15259703)
 	c:EnableReviveLimit()
 	--special summon
 	local e2=Effect.CreateEffect(c)

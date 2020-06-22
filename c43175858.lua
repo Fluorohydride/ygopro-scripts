@@ -1,5 +1,6 @@
 --トゥーン・キングダム
 function c43175858.initial_effect(c)
+	aux.AddCodeList(c,15259703)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_REMOVE)

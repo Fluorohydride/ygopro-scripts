@@ -1,5 +1,6 @@
 --コピーキャット
 function c88032456.initial_effect(c)
+	aux.AddCodeList(c,15259703)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

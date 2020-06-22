@@ -1,5 +1,6 @@
 --コミックハンド
 function c33453260.initial_effect(c)
+	aux.AddCodeList(c,15259703)
 	--Equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_EQUIP+CATEGORY_CONTROL)

@@ -1,5 +1,6 @@
 --トゥーン・ゴブリン突撃部隊
 function c15270885.initial_effect(c)
+	aux.AddCodeList(c,15259703)
 	--cannot attack
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)

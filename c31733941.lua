@@ -1,5 +1,6 @@
 --レッドアイズ・トゥーン・ドラゴン
 function c31733941.initial_effect(c)
+	aux.AddCodeList(c,15259703)
 	--cannot attack
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)

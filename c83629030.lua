@@ -1,5 +1,6 @@
 --トゥーン・サイバー・ドラゴン
 function c83629030.initial_effect(c)
+	aux.AddCodeList(c,15259703)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

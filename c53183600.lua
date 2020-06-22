@@ -1,5 +1,6 @@
 --ブルーアイズ・トゥーン・ドラゴン
 function c53183600.initial_effect(c)
+	aux.AddCodeList(c,15259703)
 	c:EnableReviveLimit()
 	--special summon
 	local e2=Effect.CreateEffect(c)
