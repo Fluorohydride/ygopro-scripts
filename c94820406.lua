@@ -12,22 +12,24 @@ end
 function c94820406.filter1(c,e)
 	return not c:IsImmuneToEffect(e)
 end
-function c94820406.filter2(c,e,tp,m,f,chkf)
+function c94820406.filter2(c,e,tp,m,f,chkf,sumtype)
 	return c:IsType(TYPE_FUSION) and c:IsRace(RACE_FIEND) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION+0x10,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
+		and c:IsCanBeSpecialSummoned(e,sumtype,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
 function c94820406.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
+		local sumtype=SUMMON_TYPE_FUSION
+		if e:GetHandler():IsCode(94820406) then sumtype=sumtype+0x10 end
 		local mg1=Duel.GetFusionMaterial(tp)
-		local res=Duel.IsExistingMatchingCard(c94820406.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
+		local res=Duel.IsExistingMatchingCard(c94820406.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf,sumtype)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
 			if ce~=nil then
 				local fgroup=ce:GetTarget()
 				local mg2=fgroup(ce,e,tp)
 				local mf=ce:GetValue()
-				res=Duel.IsExistingMatchingCard(c94820406.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
+				res=Duel.IsExistingMatchingCard(c94820406.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf,sumtype)
 			end
 		end
 		return res
@@ -36,8 +38,10 @@ function c94820406.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c94820406.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
+	local sumtype=SUMMON_TYPE_FUSION
+	if e:GetHandler():IsCode(94820406) then sumtype=sumtype+0x10 end
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c94820406.filter1,nil,e)
-	local sg1=Duel.GetMatchingGroup(c94820406.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
+	local sg1=Duel.GetMatchingGroup(c94820406.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf,sumtype)
 	local mg2=nil
 	local sg2=nil
 	local ce=Duel.GetChainMaterial(tp)
@@ -45,7 +49,7 @@ function c94820406.activate(e,tp,eg,ep,ev,re,r,rp)
 		local fgroup=ce:GetTarget()
 		mg2=fgroup(ce,e,tp)
 		local mf=ce:GetValue()
-		sg2=Duel.GetMatchingGroup(c94820406.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf)
+		sg2=Duel.GetMatchingGroup(c94820406.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg2,mf,chkf,sumtype)
 	end
 	if sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0) then
 		local sg=sg1:Clone()
