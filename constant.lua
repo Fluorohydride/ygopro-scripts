@@ -134,8 +134,6 @@ SUMMON_TYPE_PENDULUM	=0x4a000000 --灵摆召唤
 SUMMON_TYPE_LINK		=0x4c000000 --连接召唤
 --Summon Value --特定的召唤方式
 SUMMON_VALUE_SELF					=0x1	--自身效果或条件
-SUMMON_VALUE_GORZ_BATTLE			=0x1	--冥府之使者 格斯战斗伤害
-SUMMON_VALUE_GORZ_EFFECT			=0x3	--冥府之使者 格斯效果伤害
 SUMMON_VALUE_DARK_FUSION			=0x10	--暗黑融合
 SUMMON_VALUE_BLACK_GARDEN			=0x11	--黑色花园
 SUMMON_VALUE_SYNCHRO_MATERIAL		=0x12	--特殊召唤并作为同调素材（黑羽-东云之东风检查）
