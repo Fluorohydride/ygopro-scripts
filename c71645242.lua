@@ -97,7 +97,7 @@ function c71645242.desfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_PLANT)
 end
 function c71645242.filter2(c,atk,e,tp)
-	return c:IsAttack(atk) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_BLACK_GARDEN,tp,false,false)
+	return c:IsAttack(atk) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c71645242.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c71645242.filter2(chkc,e:GetLabel(),e,tp) end
