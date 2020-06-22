@@ -16,7 +16,7 @@ function c55488859.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)
 end
 function c55488859.filter(c,e,tp)
-	return c:IsSetCard(0x604e) and c:IsCanBeSpecialSummoned(e,150,tp,false,false)
+	return c:IsSetCard(0x604e) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_EVOLTILE,tp,false,false)
 end
 function c55488859.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -27,7 +27,7 @@ function c55488859.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c55488859.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,150,tp,tp,false,false,POS_FACEUP)~=0 then
+	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,SUMMON_VALUE_EVOLTILE,tp,tp,false,false,POS_FACEUP)~=0 then
 		local rf=tc.evolreg
 		if rf then rf(tc) end
 	end

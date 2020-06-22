@@ -25,7 +25,7 @@ function c8632967.chainlm(e,rp,tp)
 end
 function c8632967.sucfilter(c)
 	local st=c:GetSummonType()
-	return c:IsSetCard(0x304e) and st>=(SUMMON_TYPE_SPECIAL+150) and st<(SUMMON_TYPE_SPECIAL+180)
+	return c:IsSetCard(0x304e) and st&SUMMON_VALUE_EVOLTILE>0
 end
 function c8632967.sucop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c8632967.sucfilter,1,nil) then

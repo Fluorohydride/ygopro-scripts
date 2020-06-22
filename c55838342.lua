@@ -32,11 +32,11 @@ function c55838342.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,55838342,0,0x21,300,2100,2,RACE_INSECT,ATTRIBUTE_EARTH) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
-	Duel.SpecialSummon(c,1,tp,tp,true,false,POS_FACEUP)
+	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP)
 end
 function c55838342.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetSummonType()~=SUMMON_TYPE_SPECIAL+1 then return false end
+	if c:GetSummonType()~=SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF then return false end
 	local lg1=Duel.GetLinkedGroup(tp,1,1)
 	local lg2=Duel.GetLinkedGroup(1-tp,1,1)
 	return (lg1 and lg1:IsContains(c)) or (lg2 and lg2:IsContains(c))

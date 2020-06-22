@@ -50,7 +50,7 @@ function c43959432.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,43959432,0,0x21,1000,1000,4,RACE_ROCK,ATTRIBUTE_EARTH) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
-	Duel.SpecialSummon(c,1,tp,tp,true,false,POS_FACEUP)
+	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		Duel.BreakEffect()
@@ -67,7 +67,7 @@ function c43959432.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c43959432.poscon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetSummonType()==SUMMON_TYPE_SPECIAL+1 and c==Duel.GetAttacker() and c:IsRelateToBattle()
+	return c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF and c==Duel.GetAttacker() and c:IsRelateToBattle()
 end
 function c43959432.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -76,7 +76,7 @@ function c43959432.posop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c43959432.atkcon(e)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c43959432.atkval(e,c)
 	local tc=e:GetLabelObject():GetLabelObject()

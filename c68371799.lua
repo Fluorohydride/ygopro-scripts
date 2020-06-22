@@ -9,7 +9,7 @@ function c68371799.initial_effect(c)
 	e1:SetCountLimit(1,68371799+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c68371799.spcon)
 	e1:SetOperation(c68371799.spop)
-	e1:SetValue(1)
+	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
@@ -52,7 +52,7 @@ function c68371799.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	c:RegisterEffect(e1)
 end
 function c68371799.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c68371799.desfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x45)

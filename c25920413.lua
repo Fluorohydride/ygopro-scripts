@@ -9,7 +9,7 @@ function c25920413.initial_effect(c)
 	e1:SetTargetRange(POS_FACEUP,1)
 	e1:SetCondition(c25920413.spcon)
 	e1:SetOperation(c25920413.spop)
-	e1:SetValue(1)
+	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
 	--counter
 	local e2=Effect.CreateEffect(c)
@@ -59,7 +59,7 @@ function c25920413.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.RegisterEffect(e2,tp)
 end
 function c25920413.ctcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c25920413.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

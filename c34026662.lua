@@ -11,7 +11,7 @@ function c34026662.initial_effect(c)
 end
 function c34026662.filter(c)
 	local st=c:GetSummonType()
-	return c:IsFaceup() and st>=(SUMMON_TYPE_SPECIAL+150) and st<(SUMMON_TYPE_SPECIAL+180)
+	return c:IsFaceup() and st&SUMMON_VALUE_EVOLTILE>0
 end
 function c34026662.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c34026662.filter(chkc) end

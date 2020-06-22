@@ -49,14 +49,14 @@ end
 function c44330098.sumop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	local sumtype=1
-	if bit.band(r,REASON_BATTLE)~=0 then sumtype=2 end
+	local sumtype=SUMMON_VALUE_GORZ_EFFECT
+	if bit.band(r,REASON_BATTLE)~=0 then sumtype=SUMMON_VALUE_GORZ_BATTLE end
 	if Duel.SpecialSummon(c,sumtype,tp,tp,false,false,POS_FACEUP)~=0 then
 		e:SetLabel(ev)
 	end
 end
 function c44330098.sumcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+2
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_GORZ_BATTLE
 end
 function c44330098.sumtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -84,7 +84,7 @@ function c44330098.sumop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 end
 function c44330098.sumcon3(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_GORZ_EFFECT
 end
 function c44330098.sumtg3(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

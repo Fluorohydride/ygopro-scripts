@@ -35,7 +35,7 @@ end
 c13293158.material_setcode=0x8
 c13293158.dark_calling=true
 function c13293158.splimit(e,se,sp,st)
-	return st==SUMMON_TYPE_FUSION+0x10
+	return st==SUMMON_TYPE_FUSION+SUMMON_VALUE_DARK_FUSION
 		or Duel.IsPlayerAffectedByEffect(sp,72043279) and st&SUMMON_TYPE_FUSION==SUMMON_TYPE_FUSION
 end
 function c13293158.aclimit(e,re,tp)

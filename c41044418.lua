@@ -87,7 +87,7 @@ function c41044418.rbop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(tp,41044418,RESET_PHASE+PHASE_END,0,1)
 end
 function c41044418.tgfilter(c)
-	return c:IsFaceup() and c:IsCode(10000010) and c:IsSummonType(SUMMON_TYPE_SPECIAL+200)
+	return c:IsFaceup() and c:IsCode(10000010) and c:IsSummonType(SUMMON_TYPE_SPECIAL+SUMMON_VALUE_MILLENNIUM_REVELATION)
 end
 function c41044418.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c41044418.tgfilter,tp,LOCATION_MZONE,0,1,nil)

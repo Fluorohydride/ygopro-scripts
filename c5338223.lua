@@ -22,7 +22,7 @@ function c5338223.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(rg,REASON_COST)
 end
 function c5338223.spfilter(c,e,tp)
-	return c:IsSetCard(0x604e) and c:IsCanBeSpecialSummoned(e,170,tp,false,false)
+	return c:IsSetCard(0x604e) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_EVOLTILE,tp,false,false)
 end
 function c5338223.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -42,7 +42,7 @@ function c5338223.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c5338223.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
-		Duel.SpecialSummon(g,170,tp,tp,false,false,POS_FACEUP)
+		Duel.SpecialSummon(g,SUMMON_VALUE_EVOLTILE,tp,tp,false,false,POS_FACEUP)
 		local rf=g:GetFirst().evolreg
 		if rf then rf(g:GetFirst()) end
 	end

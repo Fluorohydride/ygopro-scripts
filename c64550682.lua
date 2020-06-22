@@ -8,7 +8,7 @@ function c64550682.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c64550682.spcon)
-	e1:SetValue(1)
+	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
@@ -42,7 +42,7 @@ function c64550682.spcon(e,c)
 		and Duel.IsExistingMatchingCard(c64550682.spfilter,c:GetControler(),LOCATION_MZONE,0,1,nil)
 end
 function c64550682.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c64550682.desfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x24)

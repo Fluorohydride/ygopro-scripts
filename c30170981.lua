@@ -11,5 +11,5 @@ function c30170981.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c30170981.spcost(e,c,tp,sumtype)
-	return sumtype==SUMMON_TYPE_SPECIAL+181
+	return sumtype==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_DARK_SANCTUARY
 end

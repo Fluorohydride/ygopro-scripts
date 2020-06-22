@@ -102,7 +102,7 @@ function c82224646.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c82224646.scfilter1(c,e,tp,mc)
 	local mg=Group.FromCards(c,mc)
-	return c:IsCanBeSynchroMaterial() and c:IsCanBeSpecialSummoned(e,182,tp,false,false)
+	return c:IsCanBeSynchroMaterial() and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_SYNCHRO_MATERIAL,tp,false,false)
 		and Duel.IsExistingMatchingCard(c82224646.scfilter2,tp,LOCATION_EXTRA,0,1,nil,tp,mg)
 end
 function c82224646.scfilter2(c,tp,mg)
@@ -121,7 +121,7 @@ end
 function c82224646.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,182,tp,tp,false,false,POS_FACEUP) then
+	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,SUMMON_VALUE_SYNCHRO_MATERIAL,tp,tp,false,false,POS_FACEUP) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
