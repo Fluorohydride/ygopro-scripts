@@ -44,9 +44,12 @@ function c70369116.attop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 	end
 end
-function c70369116.cpfilter(c)
-	return (c:GetType()==TYPE_SPELL or c:IsType(TYPE_QUICKPLAY)) and c:IsSetCard(0x46) and c:IsAbleToGraveAsCost()
-		and c:CheckActivateEffect(false,true,false)~=nil
+function c70369116.cpfilter(c,e,tp,eg,ep,ev,re,r,rp)
+	local te=c:CheckActivateEffect(false,true,false)
+	if not ((c:GetType()==TYPE_SPELL or c:IsType(TYPE_QUICKPLAY)) and c:IsSetCard(0x46) and c:IsAbleToGraveAsCost()
+		and te and te:GetOperation()) then return false end
+	local tg=te:GetTarget()
+	return (not tg) or tg(e,tp,eg,ep,ev,re,r,rp,0)
 end
 function c70369116.cpcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
@@ -56,17 +59,18 @@ function c70369116.cptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()==0 then return false end
 		e:SetLabel(0)
-		return Duel.CheckLPCost(tp,2000) and Duel.IsExistingMatchingCard(c70369116.cpfilter,tp,LOCATION_DECK,0,1,nil)
+		return Duel.CheckLPCost(tp,2000)
+			and Duel.IsExistingMatchingCard(c70369116.cpfilter,tp,LOCATION_DECK,0,1,nil,e,tp,eg,ep,ev,re,r,rp,0)
 	end
 	e:SetLabel(0)
 	Duel.PayLPCost(tp,2000)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c70369116.cpfilter,tp,LOCATION_DECK,0,1,1,nil)
-	local te,ceg,cep,cev,cre,cr,crp=g:GetFirst():CheckActivateEffect(false,true,true)
+	local g=Duel.SelectMatchingCard(tp,c70369116.cpfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,eg,ep,ev,re,r,rp,0)
+	local te=g:GetFirst():CheckActivateEffect(false,true,false)
 	Duel.SendtoGrave(g,REASON_COST)
 	e:SetProperty(te:GetProperty())
 	local tg=te:GetTarget()
-	if tg then tg(e,tp,ceg,cep,cev,cre,cr,crp,1) end
+	if tg then tg(e,tp,eg,ep,ev,re,r,rp,1) end
 	te:SetLabelObject(e:GetLabelObject())
 	e:SetLabelObject(te)
 	Duel.ClearOperationInfo(0)
