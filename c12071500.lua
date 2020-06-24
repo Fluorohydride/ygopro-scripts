@@ -9,14 +9,6 @@ function c12071500.initial_effect(c)
 	e1:SetTarget(c12071500.target)
 	e1:SetOperation(c12071500.activate)
 	c:RegisterEffect(e1)
-	--
-	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetCode(EFFECT_ADD_CODE)
-	e2:SetValue(94820406)
-	e2:SetLabelObject(e1)
-	e2:SetCondition(c12071500.effcon)
-	c:RegisterEffect(e2)
 end
 function c12071500.effcon(e)
 	return e:GetLabelObject():GetLabel()==1
@@ -28,10 +20,14 @@ function c12071500.filter1(c,e)
 	return c:IsLocation(LOCATION_HAND) and c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
 end
 function c12071500.filter2(c,e,tp,m,f,chkf)
-	e:SetLabel(1)
+	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_ADD_CODE)
+	e1:SetValue(94820406)
+	e:GetHandler():RegisterEffect(e1)
 	local res=c:IsType(TYPE_FUSION) and c.dark_calling and (not f or f(c))
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
-	e:SetLabel(0)
+	e1:Reset()
 	return res
 end
 function c12071500.filter3(c)
@@ -79,7 +75,11 @@ function c12071500.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tg=sg:Select(tp,1,1,nil)
 		local tc=tg:GetFirst()
-		e:SetLabel(1)
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_ADD_CODE)
+		e1:SetValue(94820406)
+		e:GetHandler():RegisterEffect(e1)
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			tc:SetMaterial(mat1)
@@ -92,6 +92,6 @@ function c12071500.activate(e,tp,eg,ep,ev,re,r,rp)
 			fop(ce,e,tp,tc,mat2,SUMMON_TYPE_FUSION)
 		end
 		tc:CompleteProcedure()
-		e:SetLabel(0)
+		e1:Reset()
 	end
 end
