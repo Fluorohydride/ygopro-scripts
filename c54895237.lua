@@ -31,7 +31,7 @@ function c54895237.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c54895237.gspcfilter(c,tp)
-	return c:IsFaceup() and c:IsType(TYPE_CONTINUOUS) and c:IsAbleToGraveAsCost()
+	return c:IsFaceup() and c:IsType(TYPE_CONTINUOUS) and c:IsAbleToGraveAsCost() and Duel.GetSZoneCount(tp,c)>0
 		and Duel.IsExistingMatchingCard(c54895237.gspfilter,tp,LOCATION_HAND,0,1,nil,c,tp)
 end
 function c54895237.gspfilter(c,cc,tp)
@@ -47,7 +47,6 @@ end
 function c54895237.gsptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.GetLocationCount(tp,LOCATION_SZONE)>-1
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 end

@@ -44,15 +44,18 @@ end
 function c30929786.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x7c) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToGraveAsCost()
 end
+function c30929786.cfilter2(c,tp)
+	return c30929786.cfilter(c) and (Duel.IsExistingMatchingCard(c30929786.filter2,tp,LOCATION_DECK,0,1,nil) or Duel.GetSZoneCount(tp,c)>0)
+end
 function c30929786.setcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
-	if Duel.IsExistingMatchingCard(c30929786.filter2,tp,LOCATION_DECK,0,1,nil) then ft=ft+1 end
-	if chk==0 then return Duel.IsExistingMatchingCard(c30929786.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
-		or (Duel.IsPlayerAffectedByEffect(tp,46241344) and ft>0) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c30929786.cfilter2,tp,LOCATION_ONFIELD,0,1,nil,tp)
+		or (Duel.IsPlayerAffectedByEffect(tp,46241344) and (Duel.IsExistingMatchingCard(c30929786.filter2,tp,LOCATION_DECK,0,1,nil) or ft>0)) end
 	if Duel.IsExistingMatchingCard(c30929786.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
-		and (not Duel.IsPlayerAffectedByEffect(tp,46241344) or ft<=0 or not Duel.SelectYesNo(tp,aux.Stringid(46241344,0))) then
+		and (not Duel.IsPlayerAffectedByEffect(tp,46241344) or not Duel.IsExistingMatchingCard(c30929786.filter2,tp,LOCATION_DECK,0,1,nil)
+		or ft<=0 or not Duel.SelectYesNo(tp,aux.Stringid(46241344,0))) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local g=Duel.SelectMatchingCard(tp,c30929786.cfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,c30929786.cfilter2,tp,LOCATION_ONFIELD,0,1,1,nil,tp)
 		Duel.SendtoGrave(g,REASON_COST)
 	end
 end

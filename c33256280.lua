@@ -14,13 +14,11 @@ function c33256280.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c33256280.desfilter(c,tp)
-	if c:IsFacedown() then return false end
-	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
-	if ft==0 and c:IsLocation(LOCATION_SZONE) and c:GetSequence()<5 then
-		return Duel.IsExistingMatchingCard(c33256280.filter,tp,LOCATION_DECK,0,1,nil,true)
-	else
-		return Duel.IsExistingMatchingCard(c33256280.filter,tp,LOCATION_DECK,0,1,nil,false)
-	end
+	return c:IsFaceup() and (Duel.IsExistingMatchingCard(c33256280.filter2,tp,LOCATION_DECK,0,1,nil)
+		or (Duel.GetSZoneCount(tp,c)>0 and Duel.IsExistingMatchingCard(c33256280.filter,tp,LOCATION_DECK,0,1,nil,true)))
+end
+function c33256280.filter2(c)
+	return c33256280.filter(c,false) and c:IsType(TYPE_FIELD)
 end
 function c33256280.filter(c,ignore)
 	return c:IsSetCard(0xe1) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable(ignore)
