@@ -1,5 +1,6 @@
 --戦乙女の戦車
 function c19190082.initial_effect(c)
+	aux.EnableUnionAttribute(c,c19190082.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(19190082,0))
@@ -19,20 +20,6 @@ function c19190082.initial_effect(c)
 	e2:SetTarget(c19190082.sptg)
 	e2:SetOperation(c19190082.spop)
 	c:RegisterEffect(e2)
-	--destroy sub
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_EQUIP)
-	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e3:SetValue(c19190082.repval)
-	c:RegisterEffect(e3)
-	--eqlimit
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetCode(EFFECT_EQUIP_LIMIT)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e4:SetValue(c19190082.eqlimit)
-	c:RegisterEffect(e4)
 	--atk up
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(19190082,2))
@@ -80,9 +67,6 @@ function c19190082.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
-end
-function c19190082.repval(e,re,r,rp)
-	return r&(REASON_BATTLE+REASON_EFFECT)~=0
 end
 function c19190082.eqlimit(e,c)
 	return c:IsRace(RACE_FAIRY) or e:GetHandler():GetEquipTarget()==c

@@ -1,5 +1,6 @@
 --強化支援メカ・ヘビーアーマー
 function c39890958.initial_effect(c)
+	aux.EnableUnionAttribute(c,c39890958.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(39890958,0))
@@ -19,13 +20,6 @@ function c39890958.initial_effect(c)
 	e2:SetTarget(c39890958.sptg)
 	e2:SetOperation(c39890958.spop)
 	c:RegisterEffect(e2)
-	--destroy sub
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_EQUIP)
-	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e3:SetValue(c39890958.repval)
-	c:RegisterEffect(e3)
 	--untargetable
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_EQUIP)
@@ -43,13 +37,6 @@ function c39890958.initial_effect(c)
 	e5:SetTarget(c39890958.sumtg)
 	e5:SetOperation(c39890958.sumop)
 	c:RegisterEffect(e5)
-	--eqlimit
-	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetCode(EFFECT_EQUIP_LIMIT)
-	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e6:SetValue(c39890958.eqlimit)
-	c:RegisterEffect(e6)
 end
 function c39890958.filter(c)
 	local ct1,ct2=c:GetUnionCount()
@@ -87,9 +74,6 @@ function c39890958.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
-end
-function c39890958.repval(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE)~=0 or bit.band(r,REASON_EFFECT)~=0
 end
 function c39890958.spfilter(c,e,tp)
 	return c:IsType(TYPE_UNION) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

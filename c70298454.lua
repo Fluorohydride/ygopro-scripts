@@ -1,5 +1,6 @@
 --比翼レンリン
 function c70298454.initial_effect(c)
+	aux.EnableUnionAttribute(c,1)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(70298454,0))
@@ -19,13 +20,6 @@ function c70298454.initial_effect(c)
 	e2:SetTarget(c70298454.sptg)
 	e2:SetOperation(c70298454.spop)
 	c:RegisterEffect(e2)
-	--destroy sub
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_EQUIP)
-	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e3:SetValue(c70298454.repval)
-	c:RegisterEffect(e3)
 	--change atk
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_EQUIP)
@@ -38,13 +32,6 @@ function c70298454.initial_effect(c)
 	e5:SetCode(EFFECT_EXTRA_ATTACK)
 	e5:SetValue(1)
 	c:RegisterEffect(e5)
-	--eqlimit
-	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetCode(EFFECT_EQUIP_LIMIT)
-	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e6:SetValue(1)
-	c:RegisterEffect(e6)
 end
 function c70298454.filter(c)
 	local ct1,ct2=c:GetUnionCount()
@@ -85,7 +72,4 @@ function c70298454.spop(e,tp,eg,ep,ev,re,r,rp)
 		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) then
 		Duel.SendtoGrave(c,REASON_RULE)
 	end
-end
-function c70298454.repval(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0
 end

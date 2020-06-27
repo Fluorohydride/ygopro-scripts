@@ -1,5 +1,6 @@
 --マシンナーズ・ギアフレーム
 function c42940404.initial_effect(c)
+	aux.EnableUnionAttribute(c,c42940404.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(42940404,0))
@@ -19,20 +20,6 @@ function c42940404.initial_effect(c)
 	e2:SetTarget(c42940404.sptg)
 	e2:SetOperation(c42940404.spop)
 	c:RegisterEffect(e2)
-	--destroy sub
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_EQUIP)
-	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e3:SetValue(c42940404.repval)
-	c:RegisterEffect(e3)
-	--eqlimit
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetCode(EFFECT_EQUIP_LIMIT)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e4:SetValue(c42940404.eqlimit)
-	c:RegisterEffect(e4)
 	--search
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(42940404,2))
@@ -42,9 +29,6 @@ function c42940404.initial_effect(c)
 	e5:SetTarget(c42940404.stg)
 	e5:SetOperation(c42940404.sop)
 	c:RegisterEffect(e5)
-end
-function c42940404.repval(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0
 end
 function c42940404.eqlimit(e,c)
 	return c:IsRace(RACE_MACHINE) or e:GetHandler():GetEquipTarget()==c

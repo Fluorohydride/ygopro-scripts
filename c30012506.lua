@@ -1,5 +1,6 @@
 --A－アサルト・コア
 function c30012506.initial_effect(c)
+	aux.EnableUnionAttribute(c,c30012506.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(30012506,0))
@@ -19,13 +20,6 @@ function c30012506.initial_effect(c)
 	e2:SetTarget(c30012506.sptg)
 	e2:SetOperation(c30012506.spop)
 	c:RegisterEffect(e2)
-	--destroy sub
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_EQUIP)
-	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e3:SetValue(c30012506.repval)
-	c:RegisterEffect(e3)
 	--immune
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_EQUIP)
@@ -42,13 +36,6 @@ function c30012506.initial_effect(c)
 	e5:SetTarget(c30012506.thtg)
 	e5:SetOperation(c30012506.thop)
 	c:RegisterEffect(e5)
-	--eqlimit
-	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetCode(EFFECT_EQUIP_LIMIT)
-	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e6:SetValue(c30012506.eqlimit)
-	c:RegisterEffect(e6)
 end
 function c30012506.filter(c)
 	local ct1,ct2=c:GetUnionCount()
@@ -86,9 +73,6 @@ function c30012506.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
-end
-function c30012506.repval(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE)~=0 or bit.band(r,REASON_EFFECT)~=0
 end
 function c30012506.efilter(e,te)
 	return te:GetOwnerPlayer()~=e:GetHandlerPlayer() and te:GetOwner()~=e:GetOwner()

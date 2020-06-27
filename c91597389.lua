@@ -14,7 +14,7 @@ function c91597389.filter(c,tp)
 	return c:IsType(TYPE_UNION) and Duel.IsExistingMatchingCard(c91597389.filter2,tp,LOCATION_MZONE,0,1,nil,c)
 end
 function c91597389.filter2(c,eqc)
-	return c:IsFaceup() and eqc:CheckEquipTarget(c) and aux.CheckUnionEquip(eqc,c)
+	return c:IsFaceup() and eqc:CheckUnionTarget(c) and aux.CheckUnionEquip(eqc,c)
 end
 function c91597389.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c91597389.filter(chkc,tp) end

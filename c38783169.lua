@@ -1,6 +1,7 @@
 --チューン・ナイト
 function c38783169.initial_effect(c)
 	aux.EnableExtraDeckSummonCountLimit()
+	aux.EnableUnionAttribute(c,1)
 	--tuner
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(38783169,0))
@@ -29,20 +30,6 @@ function c38783169.initial_effect(c)
 	e3:SetTarget(c38783169.sptg)
 	e3:SetOperation(c38783169.spop)
 	c:RegisterEffect(e3)
-	--destroy sub
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_EQUIP)
-	e4:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e4:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e4:SetValue(c38783169.repval)
-	c:RegisterEffect(e4)
-	--eqlimit
-	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_SINGLE)
-	e5:SetCode(EFFECT_EQUIP_LIMIT)
-	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e5:SetValue(1)
-	c:RegisterEffect(e5)
 end
 function c38783169.tntg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsType(TYPE_TUNER) end
@@ -130,7 +117,4 @@ function c38783169.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
-end
-function c38783169.repval(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE)~=0 or bit.band(r,REASON_EFFECT)~=0
 end

@@ -1,5 +1,6 @@
 --奇動装置メイルファクター
 function c81951640.initial_effect(c)
+	aux.EnableUnionAttribute(c,1)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(81951640,0))
@@ -19,13 +20,6 @@ function c81951640.initial_effect(c)
 	e2:SetTarget(c81951640.sptg)
 	e2:SetOperation(c81951640.spop)
 	c:RegisterEffect(e2)
-	--destroy sub
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_EQUIP)
-	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e3:SetValue(c81951640.repval)
-	c:RegisterEffect(e3)
 	--spsummon
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(81951640,2))
@@ -38,13 +32,6 @@ function c81951640.initial_effect(c)
 	e4:SetTarget(c81951640.tg)
 	e4:SetOperation(c81951640.op)
 	c:RegisterEffect(e4)
-	--eqlimit
-	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_SINGLE)
-	e5:SetCode(EFFECT_EQUIP_LIMIT)
-	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e5:SetValue(1)
-	c:RegisterEffect(e5)
 end
 function c81951640.filter(c)
 	local ct1,ct2=c:GetUnionCount()
@@ -82,9 +69,6 @@ function c81951640.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
-end
-function c81951640.repval(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE)~=0 or bit.band(r,REASON_EFFECT)~=0
 end
 function c81951640.con(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

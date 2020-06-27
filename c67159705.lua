@@ -1,5 +1,6 @@
 --アーマード・サイバーン
 function c67159705.initial_effect(c)
+	aux.EnableUnionAttribute(c,c67159705.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(67159705,0))
@@ -19,20 +20,6 @@ function c67159705.initial_effect(c)
 	e2:SetTarget(c67159705.sptg)
 	e2:SetOperation(c67159705.spop)
 	c:RegisterEffect(e2)
-	--destroy sub
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_EQUIP)
-	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e3:SetValue(1)
-	c:RegisterEffect(e3)
-	--eqlimit
-	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_SINGLE)
-	e4:SetCode(EFFECT_EQUIP_LIMIT)
-	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e4:SetValue(c67159705.eqlimit)
-	c:RegisterEffect(e4)
 	--destroy
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(67159705,2))
@@ -44,9 +31,6 @@ function c67159705.initial_effect(c)
 	e5:SetTarget(c67159705.destg)
 	e5:SetOperation(c67159705.desop)
 	c:RegisterEffect(e5)
-end
-function c67159705.repval(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE)~=0
 end
 function c67159705.eqlimit(e,c)
 	return c:IsCode(70095154) or aux.IsMaterialListCode(c,70095154) or e:GetHandler():GetEquipTarget()==c
