@@ -46,11 +46,10 @@ function c42596828.defop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c42596828.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local ac=Duel.GetAttacker()
-	local bc=Duel.GetAttackTarget()
+	local ac,bc=Duel.GetBattleMonster(tp)
 	return bc and (ac==c or bc==c)
-		and ac:IsPosition(POS_ATTACK)
-		and bc:IsPosition(POS_ATTACK)
+		and ac:IsPosition(POS_ATTACK) and ac:IsDefenseAbove(0)
+		and bc:IsPosition(POS_ATTACK) and bc:IsDefenseAbove(0)
 end
 function c42596828.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -64,25 +63,13 @@ function c42596828.atkop(e,tp,eg,ep,ev,re,r,rp)
 	if a:IsRelateToBattle() and d and d:IsRelateToBattle() then
 		local ea=Effect.CreateEffect(c)
 		ea:SetType(EFFECT_TYPE_SINGLE)
-		if EFFECT_SET_BATTLE_ATTACK then
-			ea:SetCode(EFFECT_SET_BATTLE_ATTACK)
-		else
-			ea:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
-			ea:SetCode(EFFECT_SET_ATTACK_FINAL)	
-			ea:SetRange(LOCATION_MZONE)
-		end
+		ea:SetCode(EFFECT_SET_BATTLE_ATTACK)
 		ea:SetReset(RESET_PHASE+PHASE_DAMAGE)
 		ea:SetValue(a:GetDefense())
 		a:RegisterEffect(ea,true)
 		local ed=Effect.CreateEffect(c)
 		ed:SetType(EFFECT_TYPE_SINGLE)
-		if EFFECT_SET_BATTLE_ATTACK then
-			ed:SetCode(EFFECT_SET_BATTLE_ATTACK)
-		else
-			ed:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
-			ed:SetCode(EFFECT_SET_ATTACK_FINAL)
-			ed:SetRange(LOCATION_MZONE)
-		end
+		ed:SetCode(EFFECT_SET_BATTLE_ATTACK)
 		ed:SetReset(RESET_PHASE+PHASE_DAMAGE)
 		ed:SetValue(d:GetDefense())
 		d:RegisterEffect(ed,true)
