@@ -1,5 +1,4 @@
 --メタルシルバー・アーマー
---Effect is not fully implemented
 function c33114323.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
