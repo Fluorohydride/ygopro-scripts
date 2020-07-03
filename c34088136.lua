@@ -37,7 +37,7 @@ end
 c34088136.lvup={49441499,34830502}
 c34088136.lvdn={49441499}
 function c34088136.con(e)
-	return e:GetHandler():GetFlagEffect(34088136)~=0
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_LV
 end
 function c34088136.regop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterFlagEffect(34088137,RESET_EVENT+0x1ec0000+RESET_PHASE+PHASE_END,0,1)
@@ -63,8 +63,7 @@ function c34088136.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c34088136.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc then
-		Duel.SpecialSummon(tc,0,tp,tp,true,true,POS_FACEUP)
-		tc:RegisterFlagEffect(34830502,RESET_EVENT+0x16e0000,0,0)
+		Duel.SpecialSummon(tc,SUMMON_VALUE_LV,tp,tp,true,true,POS_FACEUP)
 		tc:CompleteProcedure()
 	end
 end

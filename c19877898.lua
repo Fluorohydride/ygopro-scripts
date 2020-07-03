@@ -16,5 +16,5 @@ end
 c19877898.lvup={34830502}
 c19877898.lvdn={49441499,34088136,34830502}
 function c19877898.con(e)
-	return e:GetHandler():GetFlagEffect(19877898)~=0
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_LV
 end

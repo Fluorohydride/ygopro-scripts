@@ -27,7 +27,7 @@ function c12817939.disop(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
 	if d==c then d=Duel.GetAttacker() end
 	if d and d:IsStatus(STATUS_BATTLE_DESTROYED) and d:IsType(TYPE_EFFECT)
-		and c:GetFlagEffect(85313220)~=0 and not c:IsStatus(STATUS_BATTLE_DESTROYED) then
+		and c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_LV and not c:IsStatus(STATUS_BATTLE_DESTROYED) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
@@ -57,8 +57,7 @@ function c12817939.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c12817939.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc then
-		Duel.SpecialSummon(tc,0,tp,tp,true,true,POS_FACEUP)
-		tc:RegisterFlagEffect(12817939,RESET_EVENT+0x16e0000,0,0)
+		Duel.SpecialSummon(tc,SUMMON_VALUE_LV,tp,tp,true,true,POS_FACEUP)
 		tc:CompleteProcedure()
 	end
 end
