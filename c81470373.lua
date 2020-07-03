@@ -13,9 +13,17 @@ function c81470373.initial_effect(c)
 	e1:SetOperation(c81470373.sumop)
 	c:RegisterEffect(e1)
 	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetCode(EFFECT_SUMMON_PROC)
+	e2:SetRange(LOCATION_HAND)
+	e2:SetCondition(c81470373.ntcon)
 	e2:SetValue(SUMMON_TYPE_NORMAL)
 	c:RegisterEffect(e2)
 	e1:SetLabelObject(e2)
+end
+function c81470373.ntcon(e,c,minc)
+	if c==nil then return true end
+	return minc==0 and Duel.CheckTribute(c,0)
 end
 function c81470373.sumcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0

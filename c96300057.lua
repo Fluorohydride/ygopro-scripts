@@ -1,5 +1,6 @@
 --W－ウィング・カタパルト
 function c96300057.initial_effect(c)
+	aux.EnableUnionAttribute(c,c96300057.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(96300057,0))
@@ -31,23 +32,6 @@ function c96300057.initial_effect(c)
 	e4:SetCode(EFFECT_UPDATE_DEFENSE)
 	e4:SetValue(400)
 	c:RegisterEffect(e4)
-	--destroy sub
-	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_EQUIP)
-	e5:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e5:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e5:SetValue(c96300057.repval)
-	c:RegisterEffect(e5)
-	--eqlimit
-	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetCode(EFFECT_EQUIP_LIMIT)
-	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e6:SetValue(c96300057.eqlimit)
-	c:RegisterEffect(e6)
-end
-function c96300057.repval(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0
 end
 function c96300057.eqlimit(e,c)
 	return c:IsCode(51638941) or e:GetHandler():GetEquipTarget()==c

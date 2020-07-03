@@ -24,9 +24,7 @@ function c63035430.atktg(e,c)
 end
 function c63035430.atkval(e,c)
 	local d=Duel.GetAttackTarget()
-	if c:GetFlagEffect(63035430)~=0 then return 1000 end
 	if c:GetAttack()<d:GetAttack() then
-		c:RegisterFlagEffect(63035430,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE_CAL,0,1)
 		return 1000
 	else return 0 end
 end

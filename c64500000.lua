@@ -1,5 +1,6 @@
 --Z－メタル・キャタピラー
 function c64500000.initial_effect(c)
+	aux.EnableUnionAttribute(c,c64500000.eqlimit)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(64500000,0))
@@ -31,23 +32,6 @@ function c64500000.initial_effect(c)
 	e4:SetCode(EFFECT_UPDATE_DEFENSE)
 	e4:SetValue(600)
 	c:RegisterEffect(e4)
-	--destroy sub
-	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_EQUIP)
-	e5:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e5:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e5:SetValue(c64500000.repval)
-	c:RegisterEffect(e5)
-	--eqlimit
-	local e6=Effect.CreateEffect(c)
-	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetCode(EFFECT_EQUIP_LIMIT)
-	e6:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e6:SetValue(c64500000.eqlimit)
-	c:RegisterEffect(e6)
-end
-function c64500000.repval(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE+REASON_EFFECT)~=0
 end
 function c64500000.eqlimit(e,c)
 	return c:IsCode(62651957,65622692) or e:GetHandler():GetEquipTarget()==c

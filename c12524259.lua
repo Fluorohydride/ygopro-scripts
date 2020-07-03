@@ -17,7 +17,7 @@ function c12524259.tgfilter(c,tp)
 		and Duel.IsExistingMatchingCard(c12524259.eqfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,c,tp)
 end
 function c12524259.eqfilter(c,tc,tp)
-	return aux.CheckUnionEquip(c,tc) and c:CheckEquipTarget(tc) and c:IsType(TYPE_UNION)
+	return aux.CheckUnionEquip(c,tc) and c:CheckUnionTarget(tc) and c:IsType(TYPE_UNION)
 		and c:IsRace(RACE_MACHINE) and c:CheckUniqueOnField(tp) and not c:IsForbidden()
 end
 function c12524259.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

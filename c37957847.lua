@@ -22,7 +22,7 @@ function c37957847.target(e,c)
 end
 function c37957847.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local bc=e:GetHandler():GetBattleTarget()
-	return bc and bc:IsStatus(STATUS_BATTLE_DESTROYED) and bc:IsRace(RACE_INSECT)
+	return bc and bc:IsRace(RACE_INSECT)
 end
 function c37957847.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

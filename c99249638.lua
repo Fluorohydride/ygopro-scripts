@@ -1,5 +1,6 @@
 --ユニオン・ドライバー
 function c99249638.initial_effect(c)
+	aux.EnableUnionAttribute(c,1)
 	--equip
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(99249638,0))
@@ -19,13 +20,6 @@ function c99249638.initial_effect(c)
 	e2:SetTarget(c99249638.sptg)
 	e2:SetOperation(c99249638.spop)
 	c:RegisterEffect(e2)
-	--destroy sub
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_EQUIP)
-	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-	e3:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e3:SetValue(c99249638.repval)
-	c:RegisterEffect(e3)
 	--reequip
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(99249638,2))
@@ -37,13 +31,6 @@ function c99249638.initial_effect(c)
 	e4:SetTarget(c99249638.retg)
 	e4:SetOperation(c99249638.reop)
 	c:RegisterEffect(e4)
-	--eqlimit
-	local e5=Effect.CreateEffect(c)
-	e5:SetType(EFFECT_TYPE_SINGLE)
-	e5:SetCode(EFFECT_EQUIP_LIMIT)
-	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e5:SetValue(1)
-	c:RegisterEffect(e5)
 end
 function c99249638.filter(c)
 	local ct1,ct2=c:GetUnionCount()
@@ -82,9 +69,6 @@ function c99249638.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
 end
-function c99249638.repval(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE)~=0 or bit.band(r,REASON_EFFECT)~=0
-end
 function c99249638.recost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetHandler():GetEquipTarget()
 	e:SetLabelObject(tc)
@@ -92,7 +76,7 @@ function c99249638.recost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 end
 function c99249638.refilter(c,tc,tp)
-	return aux.CheckUnionEquip(c,tc) and c:CheckEquipTarget(tc) and c:IsType(TYPE_UNION)
+	return aux.CheckUnionEquip(c,tc) and c:CheckUnionTarget(tc) and c:IsType(TYPE_UNION)
 		and c:IsLevelBelow(4) and c:CheckUniqueOnField(tp) and not c:IsForbidden()
 end
 function c99249638.retg(e,tp,eg,ep,ev,re,r,rp,chk)
