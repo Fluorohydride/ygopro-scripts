@@ -46,7 +46,7 @@ function c19501924.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c19501924.cfilter,tp,LOCATION_MZONE,0,1,ft,nil)
 end
 function c19501924.mfilter(c,e)
-	return c:IsFaceup() and c:IsRelateToEffect(e)
+	return c:IsFaceup() and c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
 end
 function c19501924.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=0
