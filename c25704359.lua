@@ -41,7 +41,7 @@ function c25704359.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c25704359.atktg(e,c)
-	return c:IsSetCard(0xc0) and Duel.GetAttacker()==c
+	return c:IsSetCard(0x10c0) and Duel.GetAttacker()==c
 end
 function c25704359.atkcon(e)
 	return Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL and Duel.GetAttackTarget()~=nil
