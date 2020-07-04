@@ -75,6 +75,15 @@ function c41044418.rbop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTargetRange(1,0)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
+	--reg
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e0:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+	e0:SetReset(RESET_PHASE+PHASE_END)
+	e0:SetCondition(c41044418.regcon)
+	e0:SetOperation(c41044418.regop)
+	Duel.RegisterEffect(e0,tp)
 	--to grave
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -86,8 +95,17 @@ function c41044418.rbop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e2,tp)
 	Duel.RegisterFlagEffect(tp,41044418,RESET_PHASE+PHASE_END,0,1)
 end
+function c41044418.regcon(e,tp,eg,ep,ev,re,r,rp)
+	return eg:IsExists(Card.IsCode,1,nil,10000010) and re and re:GetHandler():IsCode(83764718)
+end
+function c41044418.regop(e,tp,eg,ep,ev,re,r,rp)
+	local g=eg:Filter(Card.IsCode,nil,10000010)
+	for tc in aux.Next(g) do
+		tc:RegisterFlagEffect(41044418,RESET_EVENT+0x1fe0000,0,0)
+	end
+end
 function c41044418.tgfilter(c)
-	return c:IsFaceup() and c:IsCode(10000010) and c:IsSummonType(SUMMON_TYPE_SPECIAL+200)
+	return c:IsFaceup() and c:GetFlagEffect(41044418)~=0
 end
 function c41044418.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c41044418.tgfilter,tp,LOCATION_MZONE,0,1,nil)

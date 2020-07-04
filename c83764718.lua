@@ -12,8 +12,6 @@ function c83764718.initial_effect(c)
 end
 function c83764718.filter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		or (Duel.IsPlayerAffectedByEffect(tp,41044418) and c:IsControler(tp)
-			and c:IsCode(10000010) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_SPECIAL+200,tp,true,false))
 end
 function c83764718.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and c83764718.filter(chkc,e,tp) end
@@ -26,10 +24,6 @@ end
 function c83764718.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		if Duel.IsPlayerAffectedByEffect(tp,41044418) and tc:IsCode(10000010) and tc:IsControler(tp) then
-			Duel.SpecialSummon(tc,SUMMON_TYPE_SPECIAL+200,tp,tp,true,false,POS_FACEUP)
-		else
-			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
-		end
+		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
