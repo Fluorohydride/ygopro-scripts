@@ -48,7 +48,7 @@ end
 function c91870448.plop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	if bc:IsRelateToBattle() and bc:IsControler(1-tp) then
+	if bc:IsRelateToBattle() and bc:IsControler(1-tp) and not bc:IsImmuneToEffect(e) then
 		if Duel.MoveToField(bc,tp,1-tp,LOCATION_SZONE,POS_FACEUP,true) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetCode(EFFECT_CHANGE_TYPE)
