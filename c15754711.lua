@@ -30,13 +30,12 @@ end
 function c15754711.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
+	if not (tc:IsRelateToEffect(e) and tc:IsFaceup()) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c15754711.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp,tc:GetCode())
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
-		if tc:IsRelateToEffect(e) then
-			Duel.SendtoHand(tc,nil,REASON_EFFECT)
-		end
+		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)

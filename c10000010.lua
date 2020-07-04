@@ -31,6 +31,7 @@ function c10000010.initial_effect(c)
 	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e5:SetType(EFFECT_TYPE_SINGLE)
 	e5:SetCode(EFFECT_SPSUMMON_CONDITION)
+	e5:SetValue(c10000010.splimit)
 	c:RegisterEffect(e5)
 	--One Turn Kill
 	local e6=Effect.CreateEffect(c)
@@ -65,6 +66,10 @@ end
 function c10000010.setcon(e,c,minc)
 	if not c then return true end
 	return false
+end
+function c10000010.splimit(e,se,sp,st)
+	return Duel.IsPlayerAffectedByEffect(sp,41044418) and se:GetHandler():IsCode(83764718)
+		and e:GetHandler():IsControler(sp) and e:GetHandler():IsLocation(LOCATION_GRAVE)
 end
 function c10000010.genchainlm(c)
 	return	function (e,rp,tp)
