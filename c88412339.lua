@@ -78,5 +78,5 @@ function c88412339.splimit(e,c)
 end
 function c88412339.aclimit(e,re,tp)
 	local rc=re:GetHandler()
-	return rc:IsCode(88412339) and re:GetActiveType()==TYPE_PENDULUM+TYPE_SPELL
+	return rc:IsOnField() and rc:IsCode(88412339) and re:GetActiveType()==TYPE_PENDULUM+TYPE_SPELL
 end
