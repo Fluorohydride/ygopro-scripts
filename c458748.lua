@@ -41,7 +41,8 @@ function c458748.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c458748.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,att,nil)
 	local tc=g:GetFirst()
 	if tc then
-		tc:SetMaterial(nil)
+		local mg=Group.CreateGroup()
+		tc:SetMaterial(mg)
 		if Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)~=0 then
 			tc:CompleteProcedure()
 		end
