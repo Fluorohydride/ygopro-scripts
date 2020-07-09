@@ -147,7 +147,7 @@ function c12289247.hnop(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		local mg=Group.CreateGroup()
 		tc:SetMaterial(mg)
-		if Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP) then
+		if Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)~=0 then
 			tc:CompleteProcedure()
 		end
 	end
