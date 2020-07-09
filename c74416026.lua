@@ -26,23 +26,23 @@ function c74416026.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
 end
-function c74416026.spfilter(c,e,tp)
+function c74416026.spfilter(c,e,tp,tg)
 	return c:IsType(TYPE_FUSION) and c:IsLevelAbove(8) and c:IsSetCard(0xad)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)
-		and c:CheckFusionMaterial()
+		and c:CheckFusionMaterial() and Duel.GetLocationCountFromEx(tp,tp,tg,c)>0
 end
 function c74416026.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS):Filter(c74416026.filter,nil,tp)
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)~=0 then
 		local tg=g:Filter(Card.IsRelateToEffect,nil,re)
-		local sg=Duel.GetMatchingGroup(c74416026.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp)
-		if tg:GetCount()>0 and sg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(74416026,0)) then
+		if tg:GetCount()>0 and Duel.IsExistingMatchingCard(c74416026.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,tg)
+			and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) and Duel.SelectYesNo(tp,aux.Stringid(74416026,0)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 			local tc=tg:Select(tp,1,1,nil):GetFirst()
 			if Duel.SendtoGrave(tc,REASON_EFFECT)==0 or not tc:IsLocation(LOCATION_GRAVE) then return end
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-			local sc=sg:Select(tp,1,1,nil):GetFirst()
+			local sc=Duel.SelectMatchingCard(tp,c74416026.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp):GetFirst()
 			local mg=Group.CreateGroup()
 			sc:SetMaterial(mg)
 			if Duel.SpecialSummonStep(sc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP) then
