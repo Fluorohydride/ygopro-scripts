@@ -57,7 +57,7 @@ function c44509529.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(c44509529.spfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
 	local g1=Duel.GetMatchingGroup(c44509529.costfilter,tp,LOCATION_MZONE,0,nil)
 	local g2=Duel.GetMatchingGroup(c44509529.costfilter,tp,LOCATION_GRAVE,0,nil)
-	local b=c:IsReleasable() and Duel.GetMZoneCount(tp,c)>1
+	local b=c:IsReleasable() and Duel.GetMZoneCount(tp,c)>1 and g:GetClassCount(Card.GetCode)>=2
 	local b1=c:IsSetCard(0x120) and g1:IsExists(c44509529.repfilter1,1,nil,tp) and g:GetClassCount(Card.GetCode)>=2
 	local b2=c:IsSetCard(0x120) and g2:IsExists(c44509529.repfilter2,1,nil,g) and Duel.GetMZoneCount(tp)>1
 	if chk==0 then return (b or b1 or b2) and not Duel.IsPlayerAffectedByEffect(tp,59822133) end
