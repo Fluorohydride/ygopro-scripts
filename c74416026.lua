@@ -48,7 +48,9 @@ function c74416026.activate(e,tp,eg,ep,ev,re,r,rp)
 			local sc=Duel.SelectMatchingCard(tp,c74416026.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,nil):GetFirst()
 			sc:SetMaterial(nil)
 			if Duel.SpecialSummonStep(sc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP) then
-				local e1=Effect.CreateEffect(e:GetHandler())
+				local c=e:GetHandler()
+				local fid=c:GetFieldID()
+				local e1=Effect.CreateEffect(c)
 				e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 				e1:SetCode(EVENT_PHASE+PHASE_END)
 				e1:SetCountLimit(1)
@@ -57,23 +59,25 @@ function c74416026.activate(e,tp,eg,ep,ev,re,r,rp)
 				e1:SetCondition(c74416026.rmcon)
 				e1:SetOperation(c74416026.rmop)
 				if Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_END then
-					e1:SetLabel(Duel.GetTurnCount())
+					e1:SetLabel(Duel.GetTurnCount(),fid)
 					e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN,2)
+					sc:RegisterFlagEffect(74416026,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,2,fid)
 				else
-					e:SetLabel(0)
+					e1:SetLabel(0,fid)
 					e1:SetReset(RESET_PHASE+PHASE_END+RESET_SELF_TURN)
+					sc:RegisterFlagEffect(74416026,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,1,fid)
 				end
 				Duel.RegisterEffect(e1,tp)
 				Duel.SpecialSummonComplete()
 				sc:CompleteProcedure()
-				sc:RegisterFlagEffect(74416026,RESET_EVENT+RESETS_STANDARD,0,1)
 			end
 		end
 	end
 end
 function c74416026.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	return Duel.GetTurnPlayer()==tp and Duel.GetTurnCount()~=e:GetLabel() and tc:GetFlagEffect(74416026)~=0
+	local turn,fid=e:GetLabel()
+	return Duel.GetTurnPlayer()==tp and Duel.GetTurnCount()~=turn and tc:GetFlagEffectLabel(74416026)==fid
 end
 function c74416026.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
