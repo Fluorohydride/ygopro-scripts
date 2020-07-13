@@ -22,7 +22,7 @@ function c32542011.cfilter2(c,att)
 end
 function c32542011.spfilter(c,tid,e,tp)
 	local re=c:GetReasonEffect()
-	return c:GetTurnID()==tid and c:IsReason(REASON_COST) and re and re:IsHasType(0x7e0) and re:IsActiveType(TYPE_MONSTER)
+	return c:GetTurnID()==tid and c:IsReason(REASON_COST) and re and re:IsActivated() and re:IsActiveType(TYPE_MONSTER)
 		and c:IsAttribute(ATTRIBUTE_WATER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c32542011.target(e,tp,eg,ep,ev,re,r,rp,chk)

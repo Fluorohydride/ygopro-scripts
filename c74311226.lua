@@ -23,7 +23,7 @@ function c74311226.datg(e,c)
 	return c:IsLevelBelow(3) and c:IsRace(RACE_SEASERPENT)
 end
 function c74311226.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsReason(REASON_COST) and re:IsHasType(0x7e0) and re:IsActiveType(TYPE_MONSTER)
+	return e:GetHandler():IsReason(REASON_COST) and re:IsActivated() and re:IsActiveType(TYPE_MONSTER)
 		and re:GetHandler():IsAttribute(ATTRIBUTE_WATER)
 end
 function c74311226.thfilter(c)

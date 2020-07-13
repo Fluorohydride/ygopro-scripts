@@ -59,7 +59,7 @@ function c68392533.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c68392533.costchange(e,re,rp,val)
-	if re and re:IsHasType(0x7e0) and re:GetHandler()==e:GetHandler():GetEquipTarget() then
+	if re and re:IsActivated() and re:GetHandler()==e:GetHandler():GetEquipTarget() then
 		return 0
 	else return val end
 end

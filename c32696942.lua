@@ -14,7 +14,7 @@ function c32696942.initial_effect(c)
 end
 function c32696942.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_COST) and re:IsHasType(0x7e0) and re:IsActiveType(TYPE_MONSTER)
+	return c:IsReason(REASON_COST) and re:IsActivated() and re:IsActiveType(TYPE_MONSTER)
 		and bit.band(c:GetPreviousLocation(),LOCATION_OVERLAY)~=0
 end
 function c32696942.filter(c,e,tp)

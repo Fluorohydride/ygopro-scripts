@@ -65,7 +65,7 @@ function c83880087.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c83880087.rcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_COST)~=0 and re:IsHasType(0x7e0)
+	return bit.band(r,REASON_COST)~=0 and re:IsActivated()
 		and re:IsActiveType(TYPE_XYZ) and re:GetHandler():IsSetCard(0x107f)
 		and e:GetHandler():IsAbleToRemoveAsCost()
 		and ep==e:GetOwnerPlayer() and ev==1
