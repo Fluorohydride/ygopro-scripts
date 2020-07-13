@@ -47,7 +47,6 @@ function c21390858.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g2=Duel.SelectMatchingCard(tp,c21390858.spfilter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst())
 	g1:Merge(g2)
 	Duel.SendtoGrave(g1,REASON_COST)
-	Duel.ShuffleDeck(tp)
 end
 function c21390858.tfilter(c)
 	return c:IsLevel(3,4) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsRace(RACE_SPELLCASTER) and c:IsAbleToHand()
