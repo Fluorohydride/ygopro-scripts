@@ -11,12 +11,10 @@ function c84012625.initial_effect(c)
 	c:RegisterEffect(e1)
 	--release replace
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_RELEASE_REPLACE)
+	e2:SetType(EFFECT_TYPE_SINGLE)
+	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e2:SetCode(84012625)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetTarget(c84012625.reptg)
-	e2:SetValue(c84012625.repval)
-	e2:SetOperation(c84012625.repop)
 	c:RegisterEffect(e2)
 end
 function c84012625.filter(c)
@@ -49,20 +47,4 @@ end
 function c84012625.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetBattleTarget()
 	Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
-end
-function c84012625.repfilter(c,tp,re)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
-		and c:IsSetCard(0xa3) and c:IsType(TYPE_SYNCHRO) and c:IsReason(REASON_COST)
-		and c==re:GetHandler() and not c:IsReason(REASON_REPLACE)
-end
-function c84012625.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c84012625.repfilter,1,nil,tp,re)
-		and e:GetHandler():IsAbleToRemoveAsCost() end
-	return Duel.SelectYesNo(tp,aux.Stringid(84012625,0))
-end
-function c84012625.repval(e,c)
-	return c84012625.repfilter(c,e:GetHandlerPlayer(),c:GetReasonEffect())
-end
-function c84012625.repop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST+REASON_REPLACE)
 end
