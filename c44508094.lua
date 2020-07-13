@@ -35,9 +35,26 @@ function c44508094.condition(e,tp,eg,ep,ev,re,r,rp)
 	local ex,tg,tc=Duel.GetOperationInfo(ev,CATEGORY_DESTROY)
 	return ex and tg~=nil and tc+tg:FilterCount(Card.IsOnField,nil)-tg:GetCount()>0
 end
+function c44508094.excostfilter(c,tp)
+	return c:IsAbleToRemoveAsCost() and c:IsHasEffect(84012625,tp)
+end
 function c44508094.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsReleasable() end
-	Duel.Release(e:GetHandler(),REASON_COST)
+	local g=Duel.GetMatchingGroup(c44508094.excostfilter,tp,LOCATION_GRAVE,0,nil,tp)
+	if e:GetHandler():IsReleasable() then g:AddCard(e:GetHandler()) end
+	if chk==0 then return #g>0 end
+	local tc
+	if #g>1 then
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(84012625,0))
+		tc=g:Select(tp,1,1,nil):GetFirst()
+	else
+		tc=g:GetFirst()
+	end
+	local te=tc:IsHasEffect(84012625,tp)
+	if te then
+		Duel.Remove(tc,POS_FACEUP,REASON_COST+REASON_REPLACE)
+	else
+		Duel.Release(tc,REASON_COST)
+	end
 end
 function c44508094.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
