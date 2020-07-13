@@ -33,6 +33,22 @@ function c67712104.initial_effect(c)
 	e3:SetTarget(c67712104.indtg)
 	e3:SetOperation(c67712104.indop)
 	c:RegisterEffect(e3)
+	--global chk of 91027843
+	if not c67712104.global_check then
+		c67712104.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD)
+		ge1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE)
+		ge1:SetCode(EFFECT_MATERIAL_CHECK)
+		ge1:SetValue(c67712104.valcheck)
+		Duel.RegisterEffect(ge1,0)
+	end
+end
+function c67712104.valcheck(e,c)
+	local g=c:GetMaterial()
+	if g:IsExists(Card.IsLinkCode,1,nil,67712104) then
+		c:RegisterFlagEffect(91027843,RESET_EVENT+0x4fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(91027843,0))
+	end
 end
 function c67712104.immcon1(e)
 	return e:GetHandler():GetSequence()>4
