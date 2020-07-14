@@ -21,11 +21,12 @@ function c17322533.initial_effect(c)
 	c:RegisterEffect(e2)
 	--to grave
 	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e3:SetCode(EFFECT_SELF_TOGRAVE)
+	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e3:SetCode(EVENT_PHASE+PHASE_END)
 	e3:SetRange(LOCATION_SZONE)
+	e3:SetCountLimit(1)
 	e3:SetCondition(c17322533.tgcon)
+	e3:SetOperation(c17322533.tgop)
 	c:RegisterEffect(e3)
 end
 function c17322533.filter(c,tp)
@@ -47,8 +48,10 @@ function c17322533.operation(e,tp,eg,ep,ev,re,r,rp)
 		e:GetHandler():RegisterFlagEffect(17322533,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DRAW,0,1)
 	end
 end
-function c17322533.tgcon(e)
+function c17322533.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	local tp=e:GetHandlerPlayer()
-	return Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_END
-		and e:GetHandler():GetFlagEffect(17322533)==0
+	return Duel.GetTurnPlayer()==tp and e:GetHandler():GetFlagEffect(17322533)==0
+end
+function c17322533.tgop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
 end
