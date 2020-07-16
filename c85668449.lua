@@ -59,7 +59,7 @@ function c85668449.lrcon(e,tp,eg,ep,ev,re,r,rp)
 	if tp~=ep then return false end
 	local lp=Duel.GetLP(ep)
 	if lp<ev then return false end
-	if not re or not re:IsHasType(0x7e0) then return false end
+	if not re or not re:IsActivated() then return false end
 	local rc=re:GetHandler()
 	return rc:IsLocation(LOCATION_MZONE) and rc:IsRace(RACE_PSYCHO)
 end

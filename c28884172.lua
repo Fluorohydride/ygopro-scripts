@@ -52,7 +52,7 @@ function c28884172.splimit(e,c)
 end
 function c28884172.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_COST) and re:IsHasType(0x7e0) and re:IsActiveType(TYPE_MONSTER)
+	return c:IsReason(REASON_COST) and re:IsActivated() and re:IsActiveType(TYPE_XYZ)
 		and c:IsPreviousLocation(LOCATION_OVERLAY)
 end
 function c28884172.atkfilter(c)

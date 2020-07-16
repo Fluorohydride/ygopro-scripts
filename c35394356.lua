@@ -48,7 +48,7 @@ function c35394356.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c35394356.rcon(e,tp,eg,ep,ev,re,r,rp)
-	return aux.exccon(e) and bit.band(r,REASON_COST)~=0 and re:IsHasType(0x7e0) and re:IsActiveType(TYPE_XYZ)
+	return aux.exccon(e) and bit.band(r,REASON_COST)~=0 and re:IsActivated() and re:IsActiveType(TYPE_XYZ)
 		and re:GetHandler():GetOverlayCount()>=ev-1 and e:GetHandler():IsAbleToRemoveAsCost() and ep==e:GetOwnerPlayer()
 end
 function c35394356.rop(e,tp,eg,ep,ev,re,r,rp)
