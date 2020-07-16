@@ -97,7 +97,7 @@ function c21140872.ngcon(e,tp,eg,ep,ev,re,r,rp)
 	return g and g:IsExists(c21140872.ngcfilter,1,nil,tp) and Duel.IsChainNegatable(ev)
 end
 function c21140872.ngfilter(c)
-	return c:IsType(TYPE_EQUIP) and c:IsAbleToGraveAsCost()
+	return c:IsType(TYPE_EQUIP) and (c:IsFaceup() or c:GetEquipTarget()) and c:IsAbleToGraveAsCost()
 end
 function c21140872.ngcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c21140872.ngfilter,tp,LOCATION_SZONE,0,1,nil) end
