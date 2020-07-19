@@ -72,31 +72,40 @@ end
 function c85216896.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()~=2 then return end
-	for tc in aux.Next(g) do
-		if Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
-			tc:RegisterFlagEffect(85216896,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+	if Duel.Remove(g,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and g:IsExists(Card.IsLocation,1,nil,LOCATION_REMOVED) then
+		local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_REMOVED)
+		local c=e:GetHandler()
+		local fid=c:GetFieldID()
+		for tc in aux.Next(og) do
+			tc:RegisterFlagEffect(85216896,RESET_EVENT+RESETS_STANDARD,0,1,fid)
 		end
+		og:KeepAlive()
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_PHASE+PHASE_END)
+		e1:SetLabel(fid)
+		e1:SetLabelObject(og)
+		e1:SetCountLimit(1)
+		e1:SetCondition(c85216896.retcon)
+		e1:SetOperation(c85216896.retop)
+		Duel.RegisterEffect(e1,tp)
 	end
-	g:KeepAlive()
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_PHASE+PHASE_END)
-	e1:SetReset(RESET_PHASE+PHASE_END)
-	e1:SetLabelObject(g)
-	e1:SetCountLimit(1)
-	e1:SetCondition(c85216896.retcon)
-	e1:SetOperation(c85216896.retop)
-	Duel.RegisterEffect(e1,tp)
 end
-function c85216896.retfilter(c)
-	return c:GetFlagEffect(85216896)~=0
+function c85216896.retfilter(c,fid)
+	return c:GetFlagEffectLabel(85216896)==fid
 end
 function c85216896.retcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetLabelObject():IsExists(c85216896.retfilter,1,nil)
+	local g=e:GetLabelObject()
+	if not g:IsExists(c85216896.retfilter,1,nil,e:GetLabel()) then
+		g:DeleteGroup()
+		e:Reset()
+		return false
+	else return true end
 end
 function c85216896.retop(e,tp,eg,ep,ev,re,r,rp)
-	local g=e:GetLabelObject():Filter(c85216896.retfilter,nil)
-	for tc in aux.Next(g) do
+	local g=e:GetLabelObject()
+	local tg=g:Filter(c85216896.retfilter,nil,e:GetLabel())
+	for tc in aux.Next(tg) do
 		Duel.ReturnToField(tc)
 	end
 end
