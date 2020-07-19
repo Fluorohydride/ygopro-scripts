@@ -43,7 +43,7 @@ function c58116537.actcon(e,tp,eg,ep,ev,re,r,rp)
 	return sg and sg:GetClassCount(Card.GetAttribute)>=2
 end
 function c58116537.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	if chk==0 then
 		if g:GetCount()==0 then return false end
 		local tc=g:GetFirst()
