@@ -77,28 +77,56 @@ function c16317140.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c16317140.spfilter(c,e,tp)
-	return c:IsCode(32491822,6007213,69890967)
-		and (c:IsAbleToHand() or (Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,true,false)))
+	return c:IsCode(32491822,6007213,69890967) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+end
+function c16317140.spfilter1(c)
+	return c:IsCode(32491822,6007213,69890967) and c:IsAbleToHand()
 end
 function c16317140.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD)
 end
 function c16317140.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c16317140.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_GRAVE)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_GRAVE)
+	local b1=Duel.IsExistingMatchingCard(c16317140.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
+	local b2=Duel.IsExistingMatchingCard(c16317140.spfilter1,tp,LOCATION_GRAVE,0,1,nil)
+	if chk==0 then return b1 or b2 end
+	local off=1
+	local ops,opval={},{}
+	if b1 then
+		ops[off]=1152
+		opval[off]=0
+		off=off+1
+	end
+	if b2 then
+		ops[off]=1190
+		opval[off]=1
+		off=off+1
+	end
+	local op=Duel.SelectOption(tp,table.unpack(ops))+1
+	local sel=opval[op]
+	e:SetLabel(sel)
+	if sel==0 then
+		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_GRAVE)
+	else
+		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_GRAVE)
+	end
 end
 function c16317140.spop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
-	local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c16317140.spfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
-	local sc=sg:GetFirst()
-	if sc then
-		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and sc:IsCanBeSpecialSummoned(e,0,tp,true,false)
-			and (not sc:IsAbleToHand() or Duel.SelectOption(tp,1190,1152)==1) then
+	local c=e:GetHandler()
+	local sel=e:GetLabel()
+	if sel==0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
+		local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c16317140.spfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+		local sc=sg:GetFirst()
+		if sc and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and sc:IsCanBeSpecialSummoned(e,0,tp,true,false) then
 			Duel.SpecialSummon(sc,0,tp,tp,true,false,POS_FACEUP)
-		else
+		end
+	else
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+		local sg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c16317140.spfilter1),tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
+		local sc=sg:GetFirst()
+		if sc and sc:IsAbleToHand() then
 			Duel.SendtoHand(sc,nil,REASON_EFFECT)
 		end
-	end
+	end	
 end
