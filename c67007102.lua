@@ -14,10 +14,12 @@ function c67007102.initial_effect(c)
 	--set
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(67007102,1))
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCode(EVENT_PHASE+PHASE_END)
+	e2:SetType(EFFECT_TYPE_QUICK_O)
+	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)
+	e2:SetCondition(c67007102.setcon)
 	e2:SetCountLimit(1,67007102)
+	e2:SetHintTiming(TIMING_END_PHASE)
 	e2:SetCost(aux.bfgcost)
 	e2:SetTarget(c67007102.settg)
 	e2:SetOperation(c67007102.setop)
@@ -60,6 +62,9 @@ function c67007102.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c67007102.setfilter(c)
 	return c:IsSetCard(0x2142) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSSetable()
+end
+function c67007102.setcon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetCurrentPhase()==PHASE_END
 end
 function c67007102.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c67007102.setfilter,tp,LOCATION_DECK,0,1,nil) end
