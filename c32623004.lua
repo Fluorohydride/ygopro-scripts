@@ -25,7 +25,7 @@ function c32623004.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c32623004.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsSetCard(0x5a)
+	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSetCard(0x5a)
 end
 function c32623004.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
