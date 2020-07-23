@@ -57,6 +57,9 @@ function c47297616.opdisable(e,tp,eg,ep,ev,re,r,rp)
 		return
 	end
 	if Duel.NegateActivation(ev) then
+		if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
+			Duel.SendtoGrave(eg,REASON_EFFECT)
+		end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
