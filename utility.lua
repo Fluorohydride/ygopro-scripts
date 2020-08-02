@@ -229,7 +229,6 @@ function Auxiliary.EnableUnionAttribute(c,f)
 	e1:SetType(EFFECT_TYPE_EQUIP)
 	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetCode(EFFECT_DESTROY_SUBSTITUTE)
-	e1:SetCondition(aux.IsUnionState)
 	e1:SetValue(aux.UnionReplaceFilter)
 	c:RegisterEffect(e1)
 	--limit
