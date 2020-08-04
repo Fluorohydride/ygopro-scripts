@@ -60,7 +60,7 @@ function c41418852.cpop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c41418852.rcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_COST)~=0 and re:IsHasType(0x7e0) and re:IsActiveType(TYPE_XYZ) and re:GetHandler():IsSetCard(0x14a)
+	return bit.band(r,REASON_COST)~=0 and re:IsActivated() and re:IsActiveType(TYPE_XYZ) and re:GetHandler():IsSetCard(0x14a)
 		and ep==e:GetOwnerPlayer() and re:GetActivateLocation()&LOCATION_MZONE~=0
 end
 function c41418852.rop(e,tp,eg,ep,ev,re,r,rp)

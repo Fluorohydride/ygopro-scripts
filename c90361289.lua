@@ -65,7 +65,8 @@ function c90361289.spfilter(c,e,tp,attr)
 	return c:GetTextAttack()>=0 and c:GetTextAttack()==c:GetTextDefense() and c:IsAttribute(attr)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c90361289.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
+function c90361289.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c90361289.cfilter(chkc,e,tp) end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingTarget(c90361289.cfilter,tp,0,LOCATION_MZONE,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)

@@ -25,7 +25,7 @@ function c37104630.extg(e,c)
 	return c:IsLevelBelow(4) and c:IsRace(RACE_SEASERPENT)
 end
 function c37104630.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsReason(REASON_COST) and re:IsHasType(0x7e0) and re:IsActiveType(TYPE_MONSTER)
+	return e:GetHandler():IsReason(REASON_COST) and re:IsActivated() and re:IsActiveType(TYPE_MONSTER)
 		and re:GetHandler():IsAttribute(ATTRIBUTE_WATER)
 end
 function c37104630.desfilter(c)

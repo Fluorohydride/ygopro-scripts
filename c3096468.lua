@@ -22,7 +22,7 @@ function c3096468.initial_effect(c)
 	--hand synchro
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_SPSUM_PARAM)
 	e3:SetCondition(c3096468.syncon)
 	e3:SetCode(EFFECT_HAND_SYNCHRO)
 	e3:SetTargetRange(0,1)

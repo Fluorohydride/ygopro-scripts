@@ -26,7 +26,7 @@ function c45483489.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c45483489.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsReason(REASON_COST) and re:IsHasType(0x7e0) and re:IsActiveType(TYPE_MONSTER)
+	return e:GetHandler():IsReason(REASON_COST) and re:IsActivated() and re:IsActiveType(TYPE_MONSTER)
 		and re:GetHandler():IsAttribute(ATTRIBUTE_WATER)
 end
 function c45483489.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)

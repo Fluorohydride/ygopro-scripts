@@ -14,7 +14,7 @@ function c92418590.initial_effect(c)
 	--xyz limit
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetCode(EFFECT_CANNOT_BE_XYZ_MATERIAL)
 	e2:SetValue(c92418590.xyzlimit)
 	c:RegisterEffect(e2)

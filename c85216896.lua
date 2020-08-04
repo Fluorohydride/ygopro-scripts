@@ -72,21 +72,23 @@ end
 function c85216896.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()~=2 then return end
-	for tc in aux.Next(g) do
-		if Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
+	if Duel.Remove(g,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and g:IsExists(Card.IsLocation,1,nil,LOCATION_REMOVED) then
+		local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_REMOVED)
+		local c=e:GetHandler()
+		for tc in aux.Next(og) do
 			tc:RegisterFlagEffect(85216896,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		end
+		og:KeepAlive()
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_PHASE+PHASE_END)
+		e1:SetReset(RESET_PHASE+PHASE_END)
+		e1:SetLabelObject(og)
+		e1:SetCountLimit(1)
+		e1:SetCondition(c85216896.retcon)
+		e1:SetOperation(c85216896.retop)
+		Duel.RegisterEffect(e1,tp)
 	end
-	g:KeepAlive()
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_PHASE+PHASE_END)
-	e1:SetReset(RESET_PHASE+PHASE_END)
-	e1:SetLabelObject(g)
-	e1:SetCountLimit(1)
-	e1:SetCondition(c85216896.retcon)
-	e1:SetOperation(c85216896.retop)
-	Duel.RegisterEffect(e1,tp)
 end
 function c85216896.retfilter(c)
 	return c:GetFlagEffect(85216896)~=0

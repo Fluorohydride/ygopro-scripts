@@ -40,7 +40,8 @@ function c60600126.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c60600126.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local de,dp=Duel.GetChainInfo(ev,CHAININFO_DISABLE_REASON,CHAININFO_DISABLE_PLAYER)
-	return rp==tp and de and dp==1-tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and e:GetHandler()==re:GetHandler()
+	return rp==tp and de and dp==1-tp and re:IsHasType(EFFECT_TYPE_ACTIVATE)
+		and e:GetHandler()==re:GetHandler() and e:GetHandler():GetReasonEffect()==de
 end
 function c60600126.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,nil) end

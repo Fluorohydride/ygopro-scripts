@@ -32,7 +32,7 @@ function c98918572.rfilter(c,oc)
 end
 function c98918572.rcon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	return bit.band(r,REASON_COST)~=0 and re:IsHasType(0x7e0)
+	return bit.band(r,REASON_COST)~=0 and re:IsActivated()
 		and re:IsActiveType(TYPE_XYZ) and ep==e:GetOwnerPlayer() and rc:IsSetCard(0xf1)
 		and Duel.IsExistingMatchingCard(c98918572.rfilter,tp,LOCATION_MZONE,0,1,rc,ev)
 end

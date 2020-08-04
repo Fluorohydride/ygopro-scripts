@@ -16,11 +16,9 @@ end
 function c37744402.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c37744402.filter(chkc) end
 	if chk==0 then return true end
-	if not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
-		local g=Duel.SelectTarget(tp,c37744402.filter,tp,0,LOCATION_MZONE,1,1,nil)
-		Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,g:GetCount(),0,0)
-	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
+	local g=Duel.SelectTarget(tp,c37744402.filter,tp,0,LOCATION_MZONE,1,1,nil)
+	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,g:GetCount(),0,0)
 end
 function c37744402.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

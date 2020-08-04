@@ -60,7 +60,7 @@ function c13647631.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c13647631.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_COST) and re:IsHasType(0x7e0) and re:IsActiveType(TYPE_MONSTER)
+	return c:IsReason(REASON_COST) and re:IsActivated() and re:IsActiveType(TYPE_XYZ)
 		and c:IsPreviousLocation(LOCATION_OVERLAY)
 end
 function c13647631.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

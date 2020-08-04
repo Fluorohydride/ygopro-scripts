@@ -28,8 +28,7 @@ function c78625448.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c78625448.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local bc=c:GetBattleTarget()
-	return bc and (bc:IsControler(1-tp) or bc:IsType(TYPE_TOKEN) and bc:GetPreviousControler()==1-tp)
+	return c:IsRelateToBattle() and c:IsStatus(STATUS_OPPO_BATTLE)
 end
 function c78625448.atkfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x14a)

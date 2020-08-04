@@ -34,21 +34,6 @@ function c91027843.initial_effect(c)
 	e4:SetTarget(c91027843.eqtg)
 	e4:SetOperation(c91027843.eqop)
 	c:RegisterEffect(e4)
-	if not c91027843.global_check then
-		c91027843.global_check=true
-		local ge1=Effect.CreateEffect(c)
-		ge1:SetType(EFFECT_TYPE_FIELD)
-		ge1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE)
-		ge1:SetCode(EFFECT_MATERIAL_CHECK)
-		ge1:SetValue(c91027843.valcheck)
-		Duel.RegisterEffect(ge1,0)
-	end
-end
-function c91027843.valcheck(e,c)
-	local g=c:GetMaterial()
-	if g:IsExists(Card.IsLinkCode,1,nil,67712104) then
-		c:RegisterFlagEffect(91027843,RESET_EVENT+0x4fe0000,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(91027843,0))
-	end
 end
 function c91027843.atkval(e,c)
 	return 200+c:GetEquipGroup():FilterCount(Card.IsSetCard,nil,0x12b)*600

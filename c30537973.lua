@@ -56,12 +56,15 @@ end
 function c30537973.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(30537973)~=0
 end
+function c30537973.desfilter(c)
+	return c:IsFaceup() and c:GetSequence()<5
+end
 function c30537973.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and chkc:IsFaceup() and chkc~=c end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsFaceup,tp,LOCATION_SZONE,LOCATION_SZONE,1,c) end
+	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and chkc~=c and c30537973.desfilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(c30537973.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,c) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,c)
+	local g=Duel.SelectTarget(tp,c30537973.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,c)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c30537973.desop(e,tp,eg,ep,ev,re,r,rp)
