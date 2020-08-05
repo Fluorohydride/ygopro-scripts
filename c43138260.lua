@@ -8,7 +8,7 @@ function c43138260.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c43138260.spcon)
 	e1:SetOperation(c43138260.spop)
-	e1:SetValue(1)
+	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
@@ -31,7 +31,7 @@ function c43138260.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.RemoveOverlayCard(tp,1,0,2,2,REASON_COST)
 end
 function c43138260.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c43138260.spfilter(c,e,tp)
 	return c:IsRace(RACE_FISH) and c:IsLevel(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

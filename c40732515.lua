@@ -8,7 +8,7 @@ function c40732515.initial_effect(c)
 	e1:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e1:SetCondition(c40732515.spcon)
 	e1:SetOperation(c40732515.spop)
-	e1:SetValue(1)
+	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
 	--to hand
 	local e2=Effect.CreateEffect(c)
@@ -61,7 +61,7 @@ function c40732515.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	end
 end
 function c40732515.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c40732515.filter(c)
 	return c:IsType(TYPE_SPELL) and c:IsAbleToHand()

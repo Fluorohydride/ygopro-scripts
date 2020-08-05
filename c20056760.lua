@@ -29,7 +29,7 @@ function c20056760.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if chk==0 then
 		if ft<-1 then return false end
-		return e:GetHandler():IsCanBeSpecialSummoned(e,1,tp,false,false)
+		return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
 			and Duel.IsExistingTarget(c20056760.filter,tp,LOCATION_ONFIELD,0,2,nil)
 			and (ft>0 or Duel.IsExistingTarget(c20056760.filter,tp,LOCATION_MZONE,0,-ft+1,nil))
 	end
@@ -54,11 +54,11 @@ function c20056760.spop1(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Destroy(g,REASON_EFFECT)~=0 then
 		local c=e:GetHandler()
 		if not c:IsRelateToEffect(e) then return end
-		Duel.SpecialSummon(c,1,tp,tp,false,false,POS_FACEUP)
+		Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,false,false,POS_FACEUP)
 	end
 end
 function c20056760.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c20056760.spfilter(c,e,tp)
 	return c:IsSetCard(0xd1) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

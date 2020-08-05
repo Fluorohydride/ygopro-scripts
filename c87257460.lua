@@ -81,7 +81,7 @@ function c87257460.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c87257460.spfilter(c,e,tp)
-	return c:IsCode(23756165) and c:IsCanBeSpecialSummoned(e,1,tp,true,false)
+	return c:IsCode(23756165) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_LV,tp,true,false)
 end
 function c87257460.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
@@ -94,7 +94,7 @@ function c87257460.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c87257460.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc then
-		Duel.SpecialSummon(tc,1,tp,tp,true,false,POS_FACEUP)
+		Duel.SpecialSummon(tc,SUMMON_VALUE_LV,tp,tp,true,false,POS_FACEUP)
 		tc:CompleteProcedure()
 	end
 end

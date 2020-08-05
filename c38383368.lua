@@ -37,12 +37,12 @@ end
 function c38383368.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		Duel.SpecialSummon(c,1,tp,e:GetLabel(),false,false,POS_FACEUP_DEFENSE)
+		Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,e:GetLabel(),false,false,POS_FACEUP_DEFENSE)
 	end
 end
 function c38383368.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_DESTROY) and c:GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return c:IsReason(REASON_DESTROY) and c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c38383368.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

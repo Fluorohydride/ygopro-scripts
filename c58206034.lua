@@ -19,7 +19,7 @@ end
 c58206034.lvup={12817939}
 c58206034.lvdn={85313220,12817939}
 function c58206034.discon(e)
-	return e:GetHandler():GetFlagEffect(12817939)~=0
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_LV
 end
 function c58206034.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

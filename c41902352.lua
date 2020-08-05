@@ -19,5 +19,5 @@ function c41902352.synlimit(e)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c41902352.spcost(e,c,tp,sumtype)
-	return sumtype~=SUMMON_TYPE_SPECIAL+182
+	return sumtype~=SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SYNCHRO_MATERIAL
 end

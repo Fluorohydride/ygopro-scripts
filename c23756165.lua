@@ -24,7 +24,7 @@ c23756165.lvup={50140163,87257460}
 c23756165.lvdn={87257460}
 function c23756165.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetSummonType()==SUMMON_TYPE_SPECIAL+1 then
+	if c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_LV then
 		local e1=Effect.CreateEffect(c)
 		e1:SetDescription(aux.Stringid(23756165,0))
 		e1:SetCategory(CATEGORY_EQUIP)
@@ -98,7 +98,7 @@ function c23756165.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c23756165.spfilter(c,e,tp)
-	return c:IsCode(50140163) and c:IsCanBeSpecialSummoned(e,1,tp,true,false)
+	return c:IsCode(50140163) and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_LV,tp,true,false)
 end
 function c23756165.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>-1
@@ -111,7 +111,7 @@ function c23756165.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c23756165.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc then
-		Duel.SpecialSummon(tc,1,tp,tp,true,false,POS_FACEUP)
+		Duel.SpecialSummon(tc,SUMMON_VALUE_LV,tp,tp,true,false,POS_FACEUP)
 		tc:CompleteProcedure()
 	end
 end

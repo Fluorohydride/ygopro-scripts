@@ -8,7 +8,7 @@ function c7025445.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c7025445.spcon)
 	e1:SetOperation(c7025445.spop)
-	e1:SetValue(1)
+	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
 	--level change
 	local e2=Effect.CreateEffect(c)
@@ -45,7 +45,7 @@ function c7025445.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	e:SetLabel(g:GetFirst():GetLevel())
 end
 function c7025445.lvcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c7025445.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

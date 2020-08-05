@@ -27,7 +27,7 @@ function c40591390.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c40591390.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return re and re:GetHandler():IsCode(75041269)
 end
 function c40591390.desfilter(c)
 	return c:IsFacedown() or not c:IsSetCard(0xc008)

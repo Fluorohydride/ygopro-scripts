@@ -57,7 +57,7 @@ function c55586621.spcon(e,tp,eg,ep,ev,re,r,rp)
 		and tc:IsType(TYPE_MONSTER) and tc:IsReason(REASON_BATTLE) and tc:IsLocation(LOCATION_GRAVE)
 end
 function c55586621.spfilter(c,e,tp)
-	return c:IsSetCard(0x31) and c:IsCanBeSpecialSummoned(e,0x8,tp,false,false)
+	return c:IsSetCard(0x31) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c55586621.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c55586621.spfilter(chkc,e,tp) end
@@ -70,6 +70,6 @@ end
 function c55586621.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		Duel.SpecialSummon(tc,0x8,tp,tp,false,false,POS_FACEUP)
+		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

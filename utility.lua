@@ -2234,12 +2234,12 @@ end
 --sp_summon condition for gladiator beast monsters
 function Auxiliary.gbspcon(e,tp,eg,ep,ev,re,r,rp)
 	local st=e:GetHandler():GetSummonType()
-	return st>=(SUMMON_TYPE_SPECIAL+100) and st<(SUMMON_TYPE_SPECIAL+150)
+	return st&SUMMON_VALUE_GLADIATOR>0
 end
 --sp_summon condition for evolsaur monsters
 function Auxiliary.evospcon(e,tp,eg,ep,ev,re,r,rp)
 	local st=e:GetHandler():GetSummonType()
-	return st>=(SUMMON_TYPE_SPECIAL+150) and st<(SUMMON_TYPE_SPECIAL+180)
+	return st&SUMMON_VALUE_EVOLTILE>0
 end
 --filter for necro_valley test
 function Auxiliary.NecroValleyFilter(f)

@@ -8,7 +8,7 @@ function c13224603.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c13224603.hspcon)
 	e1:SetOperation(c13224603.hspop)
-	e1:SetValue(1)
+	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
 	--summon
 	local e2=Effect.CreateEffect(c)
@@ -92,7 +92,7 @@ function c13224603.splimit(e,c)
 end
 function c13224603.reccon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c13224603.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

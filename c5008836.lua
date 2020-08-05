@@ -13,7 +13,7 @@ function c5008836.initial_effect(c)
 	e1:SetCode(EFFECT_SUMMON_PROC)
 	e1:SetCondition(c5008836.ttcon)
 	e1:SetOperation(c5008836.ttop)
-	e1:SetValue(SUMMON_TYPE_ADVANCE+1)
+	e1:SetValue(SUMMON_TYPE_ADVANCE+SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
 	--tribute check
 	local e2=Effect.CreateEffect(c)
@@ -88,7 +88,7 @@ function c5008836.wincon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
 	if c==tc then tc=Duel.GetAttackTarget() end
 	if not c:IsRelateToBattle() or c:IsFacedown() then return false end
-	return c:GetSummonType()==SUMMON_TYPE_ADVANCE+1 and c5008836.winfilter(e,tc)
+	return c:GetSummonType()==SUMMON_TYPE_ADVANCE+SUMMON_VALUE_SELF and c5008836.winfilter(e,tc)
 end
 function c5008836.winop(e,tp,eg,ep,ev,re,r,rp)
 	local WIN_REASON_GUARDIAN_GOD_EXODIA=0x1f

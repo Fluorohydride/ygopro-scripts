@@ -63,7 +63,7 @@ function c42237854.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,42237854,0,0x21,0,0,4,RACE_MACHINE,ATTRIBUTE_EARTH) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
-	Duel.SpecialSummon(c,1,tp,tp,true,false,POS_FACEUP)
+	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c42237854.tgfilter,nil,e)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	if g:GetCount()<=0 or ft<=0 then return end
@@ -93,7 +93,7 @@ function c42237854.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c42237854.condition(e)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c42237854.atkval(e,c)
 	local atk=0

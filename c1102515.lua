@@ -15,7 +15,7 @@ end
 c1102515.lvup={74713516}
 c1102515.lvdn={74713516}
 function c1102515.condition(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1 then e:SetLabel(2)
+	if e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_LV then e:SetLabel(2)
 	else e:SetLabel(1) end
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)
 end

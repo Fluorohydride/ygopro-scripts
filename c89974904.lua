@@ -15,7 +15,7 @@ function c89974904.cfilter(c,tc)
 		and c:IsSynchroSummonable(tc)
 end
 function c89974904.spfilter(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,182,tp,false,false)
+	return c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_SYNCHRO_MATERIAL,tp,false,false)
 		and Duel.IsExistingMatchingCard(c89974904.cfilter,tp,LOCATION_EXTRA,0,1,nil,c)
 end
 function c89974904.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -30,7 +30,7 @@ end
 function c89974904.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,182,tp,tp,false,false,POS_FACEUP) then
+	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,SUMMON_VALUE_SYNCHRO_MATERIAL,tp,tp,false,false,POS_FACEUP) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)

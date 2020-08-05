@@ -3,7 +3,7 @@ function c15661378.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c15661378.ffilter,3,false)
-	aux.AddContactFusionProcedure(c,Card.IsAbleToRemoveAsCost,LOCATION_MZONE,0,Duel.Remove,POS_FACEUP,REASON_COST+REASON_MATERIAL):SetValue(1)
+	aux.AddContactFusionProcedure(c,Card.IsAbleToRemoveAsCost,LOCATION_MZONE,0,Duel.Remove,POS_FACEUP,REASON_COST+REASON_MATERIAL):SetValue(SUMMON_VALUE_SELF)
 	--material limit
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_SINGLE)
@@ -61,7 +61,7 @@ function c15661378.valcheck(e,c)
 end
 function c15661378.remcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return (c:GetSummonType()==SUMMON_TYPE_SPECIAL+1 or c:IsSummonType(SUMMON_TYPE_FUSION)) and e:GetLabel()==1
+	return (c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF or c:IsSummonType(SUMMON_TYPE_FUSION)) and e:GetLabel()==1
 end
 function c15661378.remtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,LOCATION_DECK,0,1,nil)

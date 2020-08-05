@@ -41,7 +41,7 @@ function c23626223.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,23626223,0,0x21,0,2500,7,RACE_ROCK,ATTRIBUTE_EARTH) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
-	Duel.SpecialSummon(c,1,tp,tp,true,false,POS_FACEUP)
+	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP)
 end
 function c23626223.tgfilter(c)
 	return c:IsFaceup() and bit.band(c:GetOriginalType(),TYPE_TRAP)~=0 and c:IsType(TYPE_MONSTER)
@@ -49,14 +49,14 @@ end
 function c23626223.tgcon(e)
 	local c=e:GetHandler()
 	return Duel.IsExistingMatchingCard(c23626223.tgfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,c)
-		and c:GetSummonType()==SUMMON_TYPE_SPECIAL+1
+		and c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c23626223.cfilter(c,tp)
 	return c:IsPreviousLocation(LOCATION_SZONE) and c:GetPreviousControler()==tp
 end
 function c23626223.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetSummonType()==SUMMON_TYPE_SPECIAL+1 and not eg:IsContains(c) and eg:IsExists(c23626223.cfilter,1,nil,tp)
+	return c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF and not eg:IsContains(c) and eg:IsExists(c23626223.cfilter,1,nil,tp)
 end
 function c23626223.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end
