@@ -17,14 +17,11 @@ function c10045474.initial_effect(c)
 	e2:SetCondition(c10045474.handcon)
 	c:RegisterEffect(e2)
 end
-function c10045474.disfilter(c)
-	return c:IsFaceup() and not c:IsDisabled() and c:IsType(TYPE_EFFECT)
-end
 function c10045474.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c10045474.disfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c10045474.disfilter,tp,0,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and aux.disfilter1(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(aux.disfilter1,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c10045474.disfilter,tp,0,LOCATION_MZONE,1,1,nil)
+	Duel.SelectTarget(tp,aux.disfilter1,tp,0,LOCATION_MZONE,1,1,nil)
 end
 function c10045474.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
