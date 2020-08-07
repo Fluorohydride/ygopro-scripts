@@ -40,8 +40,8 @@ function c76833149.initial_effect(c)
 	e4:SetOperation(c76833149.damop)
 	c:RegisterEffect(e4)
 end
-function c76833149.ovfilter(c)
-	return (c:IsFaceup() or c:IsLocation(LOCATION_HAND)) and c:IsRace(RACE_BEAST) and c:IsCanOverlay()
+function c76833149.ovfilter(c,e)
+	return (c:IsFaceup() or c:IsLocation(LOCATION_HAND)) and c:IsRace(RACE_BEAST) and c:IsCanOverlay() and (not e or not c:IsImmuneToEffect(e))
 end
 function c76833149.ovtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ)
@@ -51,9 +51,9 @@ function c76833149.ovop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local g=Duel.SelectMatchingCard(tp,c76833149.ovfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,1,c)
+		local g=Duel.SelectMatchingCard(tp,c76833149.ovfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,1,1,c,e)
 		local tc=g:GetFirst()
-		if tc and not c:IsImmuneToEffect(e) then
+		if tc then
 			local og=tc:GetOverlayGroup()
 			if og:GetCount()>0 then
 				Duel.SendtoGrave(og,REASON_RULE)
