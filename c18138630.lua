@@ -10,7 +10,7 @@ function c18138630.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e1:SetCode(EFFECT_CHANGE_CODE)
-	e1:SetRange(LOCATION_ONFIELD+LOCATION_GRAVE)
+	e1:SetRange(LOCATION_SZONE+LOCATION_GRAVE)
 	e1:SetValue(70245411)
 	c:RegisterEffect(e1)
 	--destroy
