@@ -18,23 +18,28 @@ function c15397015.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e3:SetCode(EVENT_CHAINING)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetOperation(c15397015.counterop)
 	c:RegisterEffect(e3)
+	--adjust
 	local e4=Effect.CreateEffect(c)
-	e4:SetType(EFFECT_TYPE_FIELD)
-	e4:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e4:SetCode(EFFECT_CANNOT_ACTIVATE)
+	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e4:SetCode(EVENT_ADJUST)
+	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e4:SetRange(LOCATION_MZONE)
-	e4:SetTargetRange(1,0)
-	e4:SetCondition(c15397015.econ)
-	e4:SetValue(c15397015.elimit)
-	e4:SetLabel(0)
+	e4:SetOperation(c15397015.adjustop)
 	c:RegisterEffect(e4)
-	local e6=e4:Clone()
-	e6:SetTargetRange(0,1)
-	e6:SetLabel(1)
-	c:RegisterEffect(e6)
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_FIELD)
+	e5:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e5:SetCode(EFFECT_CANNOT_ACTIVATE)
+	e5:SetRange(LOCATION_MZONE)
+	e5:SetTargetRange(1,1)
+	e5:SetValue(c15397015.elimit)
+	e5:SetLabel(3)
+	c:RegisterEffect(e5)
+	e4:SetLabelObject(e5)
 end
 function c15397015.sumcon(e)
 	return Duel.GetFieldGroupCount(e:GetHandler():GetControler(),LOCATION_MZONE,0)>0
@@ -44,24 +49,34 @@ function c15397015.sumlimit(e,se,sp,st,pos,tp)
 end
 function c15397015.counterop(e,tp,eg,ep,ev,re,r,rp)
 	if not re:IsActiveType(TYPE_MONSTER) then return end
-	if ep==tp then
-		e:GetHandler():RegisterFlagEffect(15397015,RESET_EVENT+0x3ff0000+RESET_PHASE+PHASE_END,0,1)
+	if ep==0 then
+		e:GetHandler():RegisterFlagEffect(15397015,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	else
-		e:GetHandler():RegisterFlagEffect(15397016,RESET_EVENT+0x3ff0000+RESET_PHASE+PHASE_END,0,1)
+		e:GetHandler():RegisterFlagEffect(15397016,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c15397015.cfilter(c,type)
 	return c:IsFaceup() and c:IsType(type)
 end
-function c15397015.econ(e)
+function c15397015.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=0
 	for i,type in ipairs({TYPE_FUSION,TYPE_RITUAL,TYPE_SYNCHRO,TYPE_XYZ,TYPE_PENDULUM,TYPE_LINK}) do
 		if Duel.IsExistingMatchingCard(c15397015.cfilter,0,LOCATION_MZONE,LOCATION_MZONE,1,nil,type) then
 			ct=ct+1
 		end
 	end
-	return e:GetHandler():GetFlagEffect(15397015+e:GetLabel())>=ct
+	local c=e:GetHandler()
+	local te=e:GetLabelObject()
+	if c:GetFlagEffect(15397015)>=ct and c:GetFlagEffect(15397016)>=ct then
+		te:SetLabel(2)
+	elseif c:GetFlagEffect(15397015)>=ct then
+		te:SetLabel(0)
+	elseif c:GetFlagEffect(15397016)>=ct then
+		te:SetLabel(1)
+	else
+		te:SetLabel(3)
+	end
 end
 function c15397015.elimit(e,re,tp)
-	return re:IsActiveType(TYPE_MONSTER)
+	return re:IsActiveType(TYPE_MONSTER) and (e:GetLabel()==tp or e:GetLabel()==2)
 end
