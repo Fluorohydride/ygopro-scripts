@@ -72,13 +72,6 @@ function c87804365.activate(e,tp,eg,ep,ev,re,r,rp)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		tc:RegisterEffect(e2)
-		if op==0 then
-			local e3=e1:Clone()
-			e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_IGNORE_IMMUNE)
-			e3:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
-			e3:SetValue(LOCATION_DECKBOT)
-			tc:RegisterEffect(e3,true)
-		end
 		tc=g:GetNext()
 	end
 	Duel.SpecialSummonComplete()
@@ -86,6 +79,17 @@ function c87804365.activate(e,tp,eg,ep,ev,re,r,rp)
 	if op==0 then
 		local tg=Duel.GetMatchingGroup(c87804365.synfilter,tp,LOCATION_EXTRA,0,nil,og)
 		if og:GetCount()==g:GetCount() and tg:GetCount()>0 then
+			local tc=og:GetFirst()
+			while tc do
+				local e3=Effect.CreateEffect(e:GetHandler())
+				e3:SetType(EFFECT_TYPE_SINGLE)
+				e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_IGNORE_IMMUNE)
+				e3:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
+				e3:SetReset(RESET_EVENT+RESETS_STANDARD)
+				e3:SetValue(LOCATION_DECKBOT)
+				tc:RegisterEffect(e3)
+				tc=og:GetNext()
+			end
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local rg=tg:Select(tp,1,1,nil)
 			Duel.SynchroSummon(tp,rg:GetFirst(),nil,og,og:GetCount()-1,og:GetCount()-1)
