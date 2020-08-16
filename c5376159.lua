@@ -46,7 +46,6 @@ function c5376159.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c5376159.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c5376159.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	if g:GetCount()<=0 then return end
 	local tg=g:GetMaxGroup(Card.GetLevel)
 	local mg=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,tg)
 	local rg=mg:Filter(Card.IsAbleToRemove,nil)

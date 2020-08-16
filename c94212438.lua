@@ -35,7 +35,7 @@ function c94212438.initial_effect(c)
 	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e5:SetCode(EVENT_ADJUST)
 	e5:SetRange(LOCATION_ONFIELD)
-	e5:SetProperty(EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_CANNOT_DISABLE)
+	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e5:SetOperation(c94212438.winop)
 	c:RegisterEffect(e5)
 end
@@ -51,14 +51,14 @@ function c94212438.plop(e,tp,eg,ep,ev,re,r,rp)
 	local ids={31893528,67287533,94772232,30170981}
 	local id=ids[c:GetFlagEffect(94212438)+1]
 	local res=Duel.IsPlayerAffectedByEffect(tp,16625614) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,id,0,0x11,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP,tp,181)
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,id,0,0x11,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP,tp,SUMMON_VALUE_DARK_SANCTUARY)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 and not res then return end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(94212438,1))
 	local g=Duel.SelectMatchingCard(tp,c94212438.plfilter,tp,LOCATION_DECK+LOCATION_HAND,0,1,1,nil,id)
 	local tc=g:GetFirst()
 	if tc and res and Duel.SelectYesNo(tp,aux.Stringid(16625614,0)) then
 		tc:AddMonsterAttribute(TYPE_NORMAL,ATTRIBUTE_DARK,RACE_FIEND,1,0,0)
-		Duel.SpecialSummonStep(tc,181,tp,tp,true,false,POS_FACEUP)
+		Duel.SpecialSummonStep(tc,SUMMON_VALUE_DARK_SANCTUARY,tp,tp,true,false,POS_FACEUP)
 		--immune
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

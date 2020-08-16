@@ -7,7 +7,7 @@ function c94203886.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c94203886.spcon)
-	e1:SetValue(1)
+	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
 	--lvchange
 	local e2=Effect.CreateEffect(c)
@@ -30,7 +30,7 @@ function c94203886.spcon(e,c)
 		Duel.IsExistingMatchingCard(c94203886.filter,c:GetControler(),LOCATION_MZONE,0,1,nil)
 end
 function c94203886.lvcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c94203886.lvcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCurrentPhase()==PHASE_MAIN1 end

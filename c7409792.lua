@@ -8,7 +8,7 @@ function c7409792.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,7409792+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c7409792.spcon)
-	e1:SetValue(1)
+	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e3=Effect.CreateEffect(c)
@@ -26,7 +26,7 @@ function c7409792.spcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 end
 function c7409792.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c7409792.filter(c,e,tp)
 	return c:IsLevel(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

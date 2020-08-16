@@ -21,7 +21,7 @@ function c14154221.initial_effect(c)
 end
 function c14154221.cfilter(c)
 	local st=c:GetSummonType()
-	return st>=(SUMMON_TYPE_SPECIAL+150) and st<(SUMMON_TYPE_SPECIAL+180)
+	return st&SUMMON_VALUE_EVOLTILE>0
 end
 function c14154221.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c14154221.cfilter,1,nil)

@@ -5,11 +5,11 @@ function c96914272.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
-	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c96914272.spcon)
 	e1:SetOperation(c96914272.spop)
-	e1:SetValue(1)
+	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
 	--lv change
 	local e2=Effect.CreateEffect(c)
@@ -37,7 +37,7 @@ function c96914272.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	e:SetLabel(g:GetFirst():GetLevel())
 end
 function c96914272.lvcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c96914272.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

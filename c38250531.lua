@@ -67,7 +67,8 @@ function c38250531.ftarget(e,c)
 end
 function c38250531.spreg(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if rp==1-tp and c:IsReason(REASON_DESTROY) then
+	if rp==1-tp and c:IsReason(REASON_DESTROY)
+		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD) then
 		e:SetLabel(Duel.GetTurnCount()+1)
 		c:RegisterFlagEffect(38250531,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,2)
 	end
@@ -83,6 +84,6 @@ end
 function c38250531.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		Duel.SpecialSummon(c,1,tp,tp,false,false,POS_FACEUP_DEFENSE)
+		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end

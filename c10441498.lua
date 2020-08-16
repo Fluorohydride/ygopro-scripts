@@ -33,7 +33,7 @@ function c10441498.lvfilter(c,lv)
 end
 function c10441498.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c10441498.lvfilter(chkc,e:GetLabel()) end
-	if chk==0 then return Duel.IsExistingTarget(c10441498.cfilter,tp,LOCATION_HAND,0,1,nil,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c10441498.cfilter,tp,LOCATION_HAND,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local cg=Duel.SelectMatchingCard(tp,c10441498.cfilter,tp,LOCATION_HAND,0,1,1,nil,tp)
 	Duel.ConfirmCards(1-tp,cg)

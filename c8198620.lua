@@ -10,7 +10,7 @@ function c8198620.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE+EFFECT_FLAG_SINGLE_RANGE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e1:SetRange(LOCATION_EXTRA)
-	e1:SetValue(c8198620.splimit)
+	e1:SetValue(aux.fuslimit)
 	c:RegisterEffect(e1)
 	--battle
 	local e2=Effect.CreateEffect(c)
@@ -30,9 +30,6 @@ function c8198620.initial_effect(c)
 	e3:SetTarget(c8198620.indestg)
 	e3:SetValue(1)
 	c:RegisterEffect(e3)
-end
-function c8198620.splimit(e,se,sp,st)
-	return not e:GetHandler():IsLocation(LOCATION_EXTRA) or bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
 end
 function c8198620.attg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=e:GetHandler():GetBattleTarget()

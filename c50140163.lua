@@ -11,7 +11,7 @@ c50140163.lvup={23756165}
 c50140163.lvdn={23756165,87257460}
 function c50140163.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetSummonType()==SUMMON_TYPE_SPECIAL+1 then
+	if c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_LV then
 		local e1=Effect.CreateEffect(c)
 		e1:SetDescription(aux.Stringid(50140163,0))
 		e1:SetCategory(CATEGORY_EQUIP)

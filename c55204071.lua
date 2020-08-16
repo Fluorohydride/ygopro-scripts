@@ -9,7 +9,7 @@ function c55204071.initial_effect(c)
 	e1:SetCountLimit(1,55204071+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c55204071.spcon)
 	e1:SetOperation(c55204071.spop)
-	e1:SetValue(1)
+	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
@@ -46,7 +46,7 @@ function c55204071.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(g,REASON_COST)
 end
 function c55204071.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c55204071.spfilter(c,e,tp)
 	return c:IsCode(55204071) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

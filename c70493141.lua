@@ -8,7 +8,7 @@ function c70493141.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c70493141.hspcon)
 	e1:SetOperation(c70493141.hspop)
-	e1:SetValue(1)
+	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
 	--recover
 	local e2=Effect.CreateEffect(c)
@@ -33,7 +33,7 @@ function c70493141.hspop(e,tp,eg,ep,ev,re,r,rp,c)
 end
 function c70493141.reccon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:GetSummonType()==SUMMON_TYPE_SPECIAL+1 and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return rp==1-tp and c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c70493141.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

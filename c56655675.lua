@@ -6,7 +6,7 @@ function c56655675.initial_effect(c)
 		table.insert(mat_list,aux.FilterBoolFunction(Card.IsFusionSetCard,0xb5|(0x1000<<i)))
 	end
 	aux.AddFusionProcMix(c,false,false,table.unpack(mat_list))
-	aux.AddContactFusionProcedure(c,c56655675.cfilter,LOCATION_MZONE,0,Duel.Remove,POS_FACEUP,REASON_COST):SetValue(1)
+	aux.AddContactFusionProcedure(c,c56655675.cfilter,LOCATION_MZONE,0,Duel.Remove,POS_FACEUP,REASON_COST):SetValue(SUMMON_VALUE_SELF)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -27,7 +27,7 @@ function c56655675.cfilter(c)
 		and c:IsAbleToRemoveAsCost()
 end
 function c56655675.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c56655675.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

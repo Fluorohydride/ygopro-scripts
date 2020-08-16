@@ -7,7 +7,7 @@ function c35950025.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SUMMON_PROC)
 	e1:SetCondition(c35950025.ntcon)
-	e1:SetValue(1)
+	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
@@ -30,7 +30,7 @@ function c35950025.ntcon(e,c,minc)
 		and Duel.IsExistingMatchingCard(c35950025.cfilter,c:GetControler(),LOCATION_MZONE,0,1,nil)
 end
 function c35950025.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_NORMAL+1
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_NORMAL+SUMMON_VALUE_SELF
 end
 function c35950025.spfilter(c,e,tp)
 	return c:IsCode(93717133) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

@@ -54,7 +54,7 @@ function c66863374.tdfilter(c,e,tp)
 end
 function c66863374.spfilter(c,e,tp,tc)
 	return c:IsSetCard(0x19) and not c:IsOriginalCodeRule(tc:GetOriginalCodeRule())
-		and c:IsCanBeSpecialSummoned(e,135,tp,false,false)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_VALUE_GLADIATOR,tp,false,false)
 end
 function c66863374.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c66863374.tdfilter(chkc,e,tp) end
@@ -72,7 +72,7 @@ function c66863374.spop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,c66863374.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,tc)
 		local tc=g:GetFirst()
 		if tc then
-			Duel.SpecialSummon(tc,135,tp,tp,false,false,POS_FACEUP)
+			Duel.SpecialSummon(tc,SUMMON_VALUE_GLADIATOR,tp,tp,false,false,POS_FACEUP)
 			tc:RegisterFlagEffect(tc:GetOriginalCode(),RESET_EVENT+RESETS_STANDARD+RESET_DISABLE,0,0)
 		end
 	end

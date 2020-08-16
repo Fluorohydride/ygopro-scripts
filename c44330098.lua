@@ -49,14 +49,13 @@ end
 function c44330098.sumop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
-	local sumtype=1
-	if bit.band(r,REASON_BATTLE)~=0 then sumtype=2 end
-	if Duel.SpecialSummon(c,sumtype,tp,tp,false,false,POS_FACEUP)~=0 then
-		e:SetLabel(ev)
-	end
+	local typ=bit.band(r,REASON_BATTLE)~=0 and 1 or 2
+	e:SetLabel(typ,ev)
+	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,false,false,POS_FACEUP)
 end
 function c44330098.sumcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+2
+	local typ,val=e:GetLabelObject():GetLabel()
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF and typ==1
 end
 function c44330098.sumtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -66,7 +65,7 @@ end
 function c44330098.sumop2(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	local val=e:GetLabelObject():GetLabel()
+	local typ,val=e:GetLabelObject():GetLabel()
 	if not Duel.IsPlayerCanSpecialSummonMonster(tp,44330099,0,0x4011,-2,-2,7,RACE_FAIRY,ATTRIBUTE_LIGHT) then return end
 	local token=Duel.CreateToken(tp,44330099)
 	local e1=Effect.CreateEffect(c)
@@ -84,11 +83,12 @@ function c44330098.sumop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 end
 function c44330098.sumcon3(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+1
+	local typ,val=e:GetLabelObject():GetLabel()
+	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF and typ==2
 end
 function c44330098.sumtg3(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local d=e:GetLabelObject():GetLabel()
+	local typ,d=e:GetLabelObject():GetLabel()
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetTargetParam(d)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,d)
