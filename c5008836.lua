@@ -13,7 +13,7 @@ function c5008836.initial_effect(c)
 	e1:SetCode(EFFECT_SUMMON_PROC)
 	e1:SetCondition(c5008836.ttcon)
 	e1:SetOperation(c5008836.ttop)
-	e1:SetValue(SUMMON_TYPE_ADVANCE+2)
+	e1:SetValue(SUMMON_TYPE_ADVANCE+1)
 	c:RegisterEffect(e1)
 	--tribute check
 	local e2=Effect.CreateEffect(c)
