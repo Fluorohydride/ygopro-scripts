@@ -36,7 +36,7 @@ function c37115575.initial_effect(c)
 	e9:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e9:SetCategory(CATEGORY_DESTROY)
 	e9:SetCode(EVENT_BATTLE_DESTROYING)
-	e9:SetCondition(c37115575.decon)
+	e9:SetCondition(aux.bdocon)
 	e9:SetTarget(c37115575.detg)
 	e9:SetOperation(c37115575.deop)
 	c:RegisterEffect(e9)
@@ -74,19 +74,12 @@ end
 function c37115575.descon(e)
 	return not Duel.IsExistingMatchingCard(Card.IsFaceup,0,LOCATION_FZONE,LOCATION_FZONE,1,nil)
 end
-function c37115575.decon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	return c:IsRelateToBattle() and c:GetBattleTarget():IsType(TYPE_MONSTER)
-end
-function c37115575.defilter(c)
-	return c:IsFaceup()
-end
 function c37115575.detg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local g=Duel.GetMatchingGroup(c37115575.defilter,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c37115575.deop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c37115575.defilter,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	Duel.Destroy(g,REASON_EFFECT)
 end
