@@ -48,9 +48,38 @@ function c18514525.atkop(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e2)
 	end
 end
+function c18514525.excostfilter(c,tp)
+	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsAbleToRemoveAsCost() and c:IsHasEffect(25725326,tp)
+end
+function c18514525.costfilter(c,tp,g)
+	local tg=g:Clone()
+	tg:RemoveCard(c)
+	return Duel.GetMZoneCount(tp,c)>1 and tg:GetClassCount(Card.GetCode)>=2
+end
 function c18514525.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsReleasable() end
-	Duel.Release(e:GetHandler(),REASON_COST)
+	e:SetLabel(0)
+	local g=Duel.GetMatchingGroup(c18514525.excostfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil,tp)
+	local tg=Duel.GetMatchingGroup(c18514525.spfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
+	if e:GetHandler():IsReleasable() then g:AddCard(e:GetHandler()) end
+	if chk==0 then
+		e:SetLabel(100)
+		return not Duel.IsPlayerAffectedByEffect(tp,59822133) and g:IsExists(c18514525.costfilter,1,nil,tp,tg)
+	end
+	local cg=g:Filter(c18514525.costfilter,nil,tp,tg)
+	local tc
+	if #cg>1 then
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25725326,0))
+		tc=cg:Select(tp,1,1,nil):GetFirst()
+	else
+		tc=cg:GetFirst()
+	end
+	local te=tc:IsHasEffect(25725326,tp)
+	if te then
+		te:UseCountLimit(tp)
+		Duel.Remove(tc,POS_FACEUP,REASON_COST+REASON_REPLACE)
+	else
+		Duel.Release(tc,REASON_COST)
+	end
 end
 function c18514525.spfilter(c,e,tp)
 	return c:IsSetCard(0x120) and not c:IsType(TYPE_FUSION)
@@ -58,9 +87,9 @@ function c18514525.spfilter(c,e,tp)
 end
 function c18514525.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
+	if chk==0 then return e:GetLabel()==100 end
+	e:SetLabel(0)
 	local g=Duel.GetMatchingGroup(c18514525.spfilter,tp,LOCATION_GRAVE,0,nil,e,tp)
-	if chk==0 then return Duel.GetMZoneCount(tp,e:GetHandler())>1 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and g:GetClassCount(Card.GetCode)>=2 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g1=g:SelectSubGroup(tp,aux.dncheck,false,2,2)
 	Duel.SetTargetCard(g1)

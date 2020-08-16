@@ -35,9 +35,27 @@ function c70875686.initial_effect(c)
 	e2:SetOperation(c70875686.thop)
 	c:RegisterEffect(e2)
 end
+function c70875686.excostfilter(c,tp)
+	return (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE)) and c:IsAbleToRemoveAsCost() and c:IsHasEffect(25725326,tp)
+end
 function c70875686.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsReleasable() end
-	Duel.Release(e:GetHandler(),REASON_COST)
+	local g=Duel.GetMatchingGroup(c70875686.excostfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil,tp)
+	if e:GetHandler():IsReleasable() then g:AddCard(e:GetHandler()) end
+	if chk==0 then return #g>0 end
+	local tc
+	if #g>1 then
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25725326,0))
+		tc=g:Select(tp,1,1,nil):GetFirst()
+	else
+		tc=g:GetFirst()
+	end
+	local te=tc:IsHasEffect(25725326,tp)
+	if te then
+		te:UseCountLimit(tp)
+		Duel.Remove(tc,POS_FACEUP,REASON_COST+REASON_REPLACE)
+	else
+		Duel.Release(tc,REASON_COST)
+	end
 end
 function c70875686.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
