@@ -17,13 +17,37 @@ function c85360035.initial_effect(c)
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
-	e2:SetCode(EVENT_DESTROYED)
+	e2:SetCode(EVENT_CUSTOM+85360035)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,85360036)
-	e2:SetCondition(c85360035.thcon)
 	e2:SetTarget(c85360035.thtg)
 	e2:SetOperation(c85360035.thop)
 	c:RegisterEffect(e2)
+	if not c85360035.global_check then
+		c85360035.global_check=true
+		local ge1=Effect.CreateEffect(c)
+		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		ge1:SetCode(EVENT_LEAVE_FIELD_P)
+		ge1:SetCondition(c85360035.regcon)
+		ge1:SetOperation(c85360035.regop)
+		Duel.RegisterEffect(ge1,0)
+	end
+end
+function c85360035.cfilter(c,tp)
+	return c:GetFlagEffect(85360035)~=0 and c:IsReason(REASON_DESTROY)
+		and c:IsControler(tp) and c:IsFaceup() and c:IsSetCard(0x14f) and c:IsType(TYPE_FUSION)
+		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
+end
+function c85360035.regcon(e,tp,eg,ep,ev,re,r,rp)
+	local v=0
+	if eg:IsExists(c85360035.cfilter,1,nil,0) then v=v+1 end
+	if eg:IsExists(c85360035.cfilter,1,nil,1) then v=v+2 end
+	if v==0 then return false end
+	e:SetLabel(({0,1,PLAYER_ALL})[v])
+	return true
+end
+function c85360035.regop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.RaiseEvent(eg,EVENT_CUSTOM+85360035,re,r,rp,ep,e:GetLabel())
 end
 function c85360035.desfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x14f)
@@ -50,15 +74,6 @@ function c85360035.operation(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ConfirmCards(1-tp,g)
 		end
 	end
-end
-function c85360035.thfilter1(c,tp)
-	local mg=c:GetMaterial()
-	return mg and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
-		and c:GetPreviousTypeOnField()&TYPE_FUSION~=0 and mg:IsExists(Card.IsType,1,nil,TYPE_EFFECT)
-		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
-end
-function c85360035.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c85360035.thfilter1,1,nil,tp)
 end
 function c85360035.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

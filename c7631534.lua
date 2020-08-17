@@ -3,6 +3,12 @@ function c7631534.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x14f),2,true)
+	--effect monster material check
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetCode(EFFECT_MATERIAL_CHECK)
+	e0:SetValue(c7631534.matcheck)
+	c:RegisterEffect(e0)
 	--destroy replace
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -26,6 +32,12 @@ function c7631534.initial_effect(c)
 	e2:SetTarget(c7631534.distg)
 	e2:SetOperation(c7631534.disop)
 	c:RegisterEffect(e2)
+end
+function c7631534.matcheck(e,c)
+	local g=c:GetMaterial()
+	if g:IsExists(Card.IsType,1,nil,TYPE_EFFECT) then
+		c:RegisterFlagEffect(85360035,RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD,0,1)
+	end
 end
 function c7631534.repfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0x14f) and c:IsType(TYPE_FUSION) and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
@@ -57,8 +69,7 @@ function c7631534.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(tc,REASON_EFFECT+REASON_REPLACE)
 end
 function c7631534.fmfilter(c)
-	local mg=c:GetMaterial()
-	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x14f) and c:IsFaceup() and mg and mg:IsExists(Card.IsType,1,nil,TYPE_EFFECT)
+	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x14f) and c:IsFaceup() and c:GetFlagEffect(85360035)~=0
 end
 function c7631534.discon(e,tp,eg,ep,ev,re,r,rp)
 	return (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)

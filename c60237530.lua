@@ -3,6 +3,12 @@ function c60237530.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x14f),2,true)
+	--effect monster material check
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetCode(EFFECT_MATERIAL_CHECK)
+	e0:SetValue(c60237530.matcheck)
+	c:RegisterEffect(e0)
 	--destroy
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(60237530,0))
@@ -28,6 +34,12 @@ function c60237530.initial_effect(c)
 	e3:SetCode(EFFECT_UPDATE_DEFENSE)
 	c:RegisterEffect(e3)
 end
+function c60237530.matcheck(e,c)
+	local g=c:GetMaterial()
+	if g:IsExists(Card.IsType,1,nil,TYPE_EFFECT) then
+		c:RegisterFlagEffect(85360035,RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD,0,1)
+	end
+end
 function c60237530.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsAttackPos() end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsAttackPos,tp,0,LOCATION_MZONE,1,nil) end
@@ -51,8 +63,7 @@ function c60237530.ffilter(e,c)
 	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x14f)
 end
 function c60237530.fmfilter(c)
-	local mg=c:GetMaterial()
-	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x14f) and c:IsFaceup() and mg and mg:IsExists(Card.IsType,1,nil,TYPE_EFFECT)
+	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x14f) and c:IsFaceup() and c:GetFlagEffect(85360035)~=0
 end
 function c60237530.adcon(e)
 	local tp=e:GetHandlerPlayer()

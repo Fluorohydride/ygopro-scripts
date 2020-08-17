@@ -3,6 +3,12 @@ function c33026283.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeFun(c,85360035,aux.FilterBoolFunction(Card.IsFusionSetCard,0x14f),2,true,false)
+	--effect monster material check
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetCode(EFFECT_MATERIAL_CHECK)
+	e0:SetValue(c33026283.matcheck)
+	c:RegisterEffect(e0)
 	--actlimit
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -37,6 +43,12 @@ function c33026283.initial_effect(c)
 	e3:SetTarget(c33026283.distg)
 	e3:SetOperation(c33026283.disop)
 	c:RegisterEffect(e3)
+end
+function c33026283.matcheck(e,c)
+	local g=c:GetMaterial()
+	if g:IsExists(Card.IsType,1,nil,TYPE_EFFECT) then
+		c:RegisterFlagEffect(85360035,RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD,0,1)
+	end
 end
 function c33026283.actcon(e)
 	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()
