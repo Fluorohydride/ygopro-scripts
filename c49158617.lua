@@ -37,20 +37,27 @@ function c49158617.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tg:GetCount()>0 then
 		Duel.Destroy(tg,REASON_EFFECT)
 		local og=Duel.GetOperatedGroup()
-		if og:IsExists(c49158617.ffilter,1,nil,tp) and Duel.SelectYesNo(tp,aux.Stringid(49158617,2)) then
+		if og:IsExists(c49158617.ffilter,1,nil,tp) then
 			local b1=Duel.IsPlayerCanDraw(tp,1)
 			local b2=Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,nil)
-			local sel=0
-			if b1 and b2 then
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPTION)
-				sel=Duel.SelectOption(tp,aux.Stringid(49158617,0),aux.Stringid(49158617,1))+1
-			elseif b1 then
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPTION)
-				sel=Duel.SelectOption(tp,aux.Stringid(49158617,0))+1
-			elseif b2 then
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPTION)
-				sel=Duel.SelectOption(tp,aux.Stringid(49158617,1))+2
+			local off=1
+			local ops={}
+			local opval={}
+			if b1 then
+				ops[off]=aux.Stringid(49158617,0)
+				opval[off-1]=1
+				off=off+1
 			end
+			if b2 then
+				ops[off]=aux.Stringid(49158617,1)
+				opval[off-1]=2
+				off=off+1
+			end
+			ops[off]=aux.Stringid(49158617,2)
+			opval[off-1]=3
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPTION)
+			local op=Duel.SelectOption(tp,table.unpack(ops))
+			local sel=opval[op]
 			if sel==1 then
 				Duel.BreakEffect()
 				Duel.Draw(tp,1,REASON_EFFECT)
