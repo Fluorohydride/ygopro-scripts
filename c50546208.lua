@@ -25,7 +25,7 @@ function c50546208.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c50546208.thfilter1(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0xdf) and not c:IsCode(50546208) and c:IsAbleToHand() and Duel.GetMZoneCount(tp,c)
+	return c:IsFaceup() and c:IsSetCard(0xdf) and not c:IsCode(50546208) and c:IsAbleToHand() and Duel.GetMZoneCount(tp,c)>0
 end
 function c50546208.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(tp) and c50546208.thfilter1(chkc,tp) end
@@ -39,8 +39,8 @@ end
 function c50546208.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) and c:IsRelateToEffect(e) then
-		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
+	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) and c:IsRelateToEffect(e)
+		and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_LEAVE_FIELD_REDIRECT)
