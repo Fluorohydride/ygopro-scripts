@@ -4,6 +4,7 @@ function c8736823.initial_effect(c)
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e0:SetCode(EVENT_TO_GRAVE)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e0:SetOperation(c8736823.checkop)
 	c:RegisterEffect(e0)
 	--spsummon
@@ -36,11 +37,12 @@ function c8736823.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c8736823.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if re and re:GetHandler():IsSetCard(0x14e) then
+	if re and re:GetHandler() then
 		e:SetLabelObject(re:GetHandler())
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_CHAIN_END)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetOperation(c8736823.resetop)
 		e1:SetLabelObject(e)
 		Duel.RegisterEffect(e1,tp)
