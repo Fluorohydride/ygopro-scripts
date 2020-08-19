@@ -59,7 +59,7 @@ function c75888208.spfilter2(c,e,tp)
 	return c:IsCode(49389190) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c75888208.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetMZoneCount(tp,c)>0
+	if chk==0 then return Duel.GetMZoneCount(tp,e:GetHandler())>0
 		and Duel.IsExistingMatchingCard(c75888208.spfilter2,tp,LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
