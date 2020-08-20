@@ -55,7 +55,12 @@ end
 function c74148483.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		local opt=Duel.SelectOption(tp,aux.Stringid(74148483,1),aux.Stringid(74148483,2))
+		local opt=0
+		if c:IsLevel(1) then
+			opt=Duel.SelectOption(tp,aux.Stringid(74148483,1))
+		else
+			opt=Duel.SelectOption(tp,aux.Stringid(74148483,1),aux.Stringid(74148483,2))
+		end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_LEVEL)
