@@ -24,6 +24,7 @@ end
 function c73304257.sprcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return false end
 	local g1=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
 	local g2=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	return g1:GetSum(Card.GetAttack)<g2:GetSum(Card.GetAttack)
