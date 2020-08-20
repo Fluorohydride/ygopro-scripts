@@ -1,7 +1,6 @@
 --電脳堺姫-娘々
 function c8736823.initial_effect(c)
 	--same effect send this card to grave and spsummon another card check
-	--not fully implemented
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e0:SetCode(EVENT_TO_GRAVE)
@@ -47,11 +46,23 @@ function c8736823.checkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c8736823.resetop)
 		e1:SetLabelObject(e)
 		Duel.RegisterEffect(e1,tp)
+		local e2=e1:Clone()
+		e2:SetCode(EVENT_BREAK_EFFECT)
+		e2:SetOperation(c8736823.resetop2)
+		e2:SetReset(RESET_CHAIN)
+		e2:SetLabelObject(e1)
+		Duel.RegisterEffect(e2,tp)
 	end
 end
 function c8736823.resetop(e,tp,eg,ep,ev,re,r,rp)
 	--this will run after EVENT_SPSUMMON_SUCCESS
 	e:GetLabelObject():SetLabelObject(nil)
+	e:Reset()
+end
+function c8736823.resetop2(e,tp,eg,ep,ev,re,r,rp)
+	local e1=e:GetLabelObject()
+	e1:GetLabelObject():SetLabelObject(nil)
+	e1:Reset()
 	e:Reset()
 end
 function c8736823.cfilter(c,tp,se)
