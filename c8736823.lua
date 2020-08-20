@@ -1,6 +1,7 @@
 --電脳堺姫-娘々
 function c8736823.initial_effect(c)
-	--Datascape monster send this card to grave and spsummon check
+	--same effect send this card to grave and spsummon another card check
+	--not fully implemented
 	local e0=Effect.CreateEffect(c)
 	e0:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 	e0:SetCode(EVENT_TO_GRAVE)
@@ -37,8 +38,8 @@ function c8736823.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c8736823.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if re and re:GetHandler() then
-		e:SetLabelObject(re:GetHandler())
+	if (r&REASON_EFFECT)>0 then
+		e:SetLabelObject(re)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_CHAIN_END)
@@ -53,12 +54,12 @@ function c8736823.resetop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetLabelObject():SetLabelObject(nil)
 	e:Reset()
 end
-function c8736823.cfilter(c,tp)
-	return c:IsFaceup() and c:IsLevel(3) and c:IsControler(tp)
+function c8736823.cfilter(c,tp,se)
+	return c:IsFaceup() and c:IsLevel(3) and c:IsControler(tp) and (se==nil or c:GetReasonEffect()~=se)
 end
 function c8736823.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local ec=e:GetLabelObject():GetLabelObject()
-	return eg:IsExists(c8736823.cfilter,1,ec,tp)
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c8736823.cfilter,1,nil,tp,se)
 end
 function c8736823.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
