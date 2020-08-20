@@ -62,7 +62,7 @@ function c15989522.desop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(-2600)
 		c:RegisterEffect(e1)
-		if tc:IsRelateToEffect(e) then
+		if not c:IsHasEffect(EFFECT_REVERSE_UPDATE) and tc:IsRelateToEffect(e) then
 			Duel.Destroy(tc,REASON_EFFECT)
 		end
 	end
