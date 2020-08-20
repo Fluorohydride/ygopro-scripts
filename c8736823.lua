@@ -1,5 +1,13 @@
 --電脳堺姫-娘々
 function c8736823.initial_effect(c)
+	--same effect send this card to grave and spsummon another card check
+	--not fully implemented
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_TO_GRAVE)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e0:SetOperation(c8736823.checkop)
+	c:RegisterEffect(e0)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(8736823,0))
@@ -9,6 +17,7 @@ function c8736823.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetRange(LOCATION_GRAVE)
 	e1:SetCountLimit(1,8736823)
+	e1:SetLabelObject(e0)
 	e1:SetCondition(c8736823.spcon)
 	e1:SetTarget(c8736823.sptg)
 	e1:SetOperation(c8736823.spop)
@@ -28,11 +37,29 @@ function c8736823.initial_effect(c)
 	e3:SetOperation(c8736823.tdop)
 	c:RegisterEffect(e3)
 end
-function c8736823.cfilter(c,tp)
-	return c:IsFaceup() and c:IsLevel(3) and c:IsControler(tp)
+function c8736823.checkop(e,tp,eg,ep,ev,re,r,rp)
+	if (r&REASON_EFFECT)>0 then
+		e:SetLabelObject(re)
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_CHAIN_END)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetOperation(c8736823.resetop)
+		e1:SetLabelObject(e)
+		Duel.RegisterEffect(e1,tp)
+	end
+end
+function c8736823.resetop(e,tp,eg,ep,ev,re,r,rp)
+	--this will run after EVENT_SPSUMMON_SUCCESS
+	e:GetLabelObject():SetLabelObject(nil)
+	e:Reset()
+end
+function c8736823.cfilter(c,tp,se)
+	return c:IsFaceup() and c:IsLevel(3) and c:IsControler(tp) and (se==nil or c:GetReasonEffect()~=se)
 end
 function c8736823.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c8736823.cfilter,1,nil,tp)
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c8736823.cfilter,1,nil,tp,se)
 end
 function c8736823.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
