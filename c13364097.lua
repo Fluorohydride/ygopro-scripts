@@ -73,8 +73,13 @@ end
 function c13364097.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		local sel=0
 		local lvl=3
-		local sel=Duel.SelectOption(tp,aux.Stringid(13364097,2),aux.Stringid(13364097,3))
+		if tc:IsLevelBelow(3) or tc:IsRankBelow(3) then
+			sel=Duel.SelectOption(tp,aux.Stringid(13364097,2))
+		else
+			sel=Duel.SelectOption(tp,aux.Stringid(13364097,2),aux.Stringid(13364097,3))
+		end
 		if sel==1 then
 			lvl=-3
 		end
