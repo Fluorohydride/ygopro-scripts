@@ -62,7 +62,7 @@ function c13364097.lvcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 end
 function c13364097.lvfilter(c)
-	return c:IsSetCard(0x14e) and c:IsType(TYPE_MONSTER) and c:IsFaceup() and (c:IsLevelAbove(4) or c:IsRankAbove(4))
+	return c:IsSetCard(0x14e) and c:IsType(TYPE_MONSTER) and c:IsFaceup() and (c:IsLevelAbove(1) or c:IsRankAbove(1))
 end
 function c13364097.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c13364097.lvfilter(chkc) end
