@@ -28,7 +28,7 @@ function c47946130.initial_effect(c)
 	e3:SetCode(EVENT_CHAINING)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCondition(c47946130.negcon)
-	e3:SetCondition(c47946130.ChainUniqueCost) -- 8/19 eratta: chain unique
+	e3:SetCost(c47946130.ChainUniqueCost) -- 8/19 eratta: chain unique
 	e3:SetTarget(c47946130.negtg)
 	e3:SetOperation(c47946130.negop)
 	c:RegisterEffect(e3)
