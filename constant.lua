@@ -585,6 +585,7 @@ EVENT_BECOME_TARGET				=1028	--成为效果对象时
 EVENT_DESTROYED					=1029	--被破坏时
 EVENT_MOVE						=1030	--移動卡片(急兔馬)
 EVENT_ADJUST					=1040	--adjust_all()调整後（御前试合）
+EVENT_BREAK_EFFECT				=1050	--Duel.BreakEffect()被调用时
 EVENT_SUMMON_SUCCESS			=1100	--通常召唤成功时
 EVENT_FLIP_SUMMON_SUCCESS		=1101	--翻转召唤成功时
 EVENT_SPSUMMON_SUCCESS			=1102	--特殊召唤成功时
