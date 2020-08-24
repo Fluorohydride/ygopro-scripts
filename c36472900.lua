@@ -8,5 +8,9 @@ function c36472900.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c36472900.indes(e,c)
-	return c:IsAttackAbove(1900)
+	if c:IsDefensePos() and Duel.GetAttacker()==c then
+		return c:IsDefenseAbove(1900)
+	else
+		return c:IsAttackAbove(1900)
+	end
 end
