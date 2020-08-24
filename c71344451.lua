@@ -21,6 +21,7 @@ function c71344451.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsPlayerCanDraw(tp,1) end
 	Duel.SetOperationInfo(0,CATEGORY_DECKDES,nil,0,tp,ct)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
+	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,tp,LOCATION_GRAVE)
 end
 function c71344451.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetFieldGroupCount(tp,0,LOCATION_ONFIELD)
