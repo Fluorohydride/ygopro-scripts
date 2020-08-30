@@ -29,6 +29,12 @@ function c23732205.initial_effect(c)
 	e2:SetTarget(c23732205.sptg)
 	e2:SetOperation(c23732205.spop)
 	c:RegisterEffect(e2)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e3:SetCode(EVENT_TO_GRAVE)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e3:SetOperation(c23732205.checkop)
+	c:RegisterEffect(e3)
 end
 function c23732205.mfilter(c)
 	return c:IsLinkRace(RACE_DRAGON) and c:IsLinkAttribute(ATTRIBUTE_DARK)
@@ -63,6 +69,10 @@ function c23732205.cfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0x102)
 end
 function c23732205.spcon(e,tp,eg,ep,ev,re,r,rp)
+	if e:GetHandler():GetFlagEffect(1)>0 then
+		e:GetHandler():ResetFlagEffect(1)
+		return false
+	end
 	return eg:IsExists(c23732205.cfilter,1,nil,tp)
 end
 function c23732205.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -81,4 +91,16 @@ function c23732205.spop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(LOCATION_REMOVED)
 		c:RegisterEffect(e1,true)
 	end
+end
+function c23732205.checkop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	c:RegisterFlagEffect(1,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN,0,1)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(EVENT_BREAK_EFFECT)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetOperation(function() Debug.Message("hi") e1:GetLabelObject():ResetFlagEffect(1) end)
+	e1:SetLabelObject(c)
+	e1:SetReset(RESET_CHAIN)
+	Duel.RegisterEffect(e1,tp)
 end
