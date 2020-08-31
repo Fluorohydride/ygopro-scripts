@@ -69,8 +69,8 @@ function c23732205.cfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0x102)
 end
 function c23732205.spcon(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():GetFlagEffect(1)>0 then
-		e:GetHandler():ResetFlagEffect(1)
+	if e:GetHandler():GetFlagEffect(23732205)>0 then
+		e:GetHandler():ResetFlagEffect(23732205)
 		return false
 	end
 	return eg:IsExists(c23732205.cfilter,1,nil,tp)
@@ -93,13 +93,14 @@ function c23732205.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c23732205.checkop(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetCurrentChain()<=0 then return end
 	local c=e:GetHandler()
-	c:RegisterFlagEffect(1,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN,0,1)
+	c:RegisterFlagEffect(23732205,RESET_EVENT+RESETS_STANDARD-RESET_TURN_SET+RESET_CHAIN,0,1)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_BREAK_EFFECT)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e1:SetOperation(function() e1:GetLabelObject():ResetFlagEffect(1) end)
+	e1:SetOperation(function() e1:GetLabelObject():ResetFlagEffect(23732205) end)
 	e1:SetLabelObject(c)
 	e1:SetReset(RESET_CHAIN)
 	Duel.RegisterEffect(e1,tp)
