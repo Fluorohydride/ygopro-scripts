@@ -32,7 +32,8 @@ function c52904476.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c52904476.filter(c,e,tp)
-	return c:IsSetCard(0x11f) and c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+	return c:IsSetCard(0x11f) and c:IsLevelBelow(4) and not c:IsCode(52904476)
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c52904476.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c52904476.filter(chkc,e,tp) end
