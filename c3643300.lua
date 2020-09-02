@@ -16,6 +16,7 @@ function c3643300.initial_effect(c)
 	e2:SetCode(EFFECT_IGNORE_BATTLE_TARGET)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCondition(c3643300.econ)
+	e2:SetValue(aux.imval1)
 	c:RegisterEffect(e2)
 end
 function c3643300.econ(e)

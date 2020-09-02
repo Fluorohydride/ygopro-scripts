@@ -54,6 +54,7 @@ function c39622156.daop(e,tp,eg,ep,ev,re,r,rp)
 	e3:SetCode(EFFECT_IGNORE_BATTLE_TARGET)
 	e3:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 	e3:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+	e3:SetValue(aux.imval1)
 	e3:SetReset(RESET_PHASE+PHASE_BATTLE)
 	Duel.RegisterEffect(e3,tp)
 end

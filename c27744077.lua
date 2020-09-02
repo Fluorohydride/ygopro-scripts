@@ -18,6 +18,7 @@ function c27744077.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetCode(EFFECT_IGNORE_BATTLE_TARGET)
 	e1:SetTargetRange(LOCATION_MZONE,0)
 	e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
+	e1:SetValue(aux.imval1)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 end

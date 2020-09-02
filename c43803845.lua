@@ -21,5 +21,6 @@ function c43803845.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(LOCATION_MZONE,0)
 	e3:SetCondition(aux.IsDualState)
+	e3:SetValue(aux.imval1)
 	c:RegisterEffect(e3)
 end

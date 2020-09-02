@@ -32,6 +32,7 @@ function c79698395.initial_effect(c)
 	c:RegisterEffect(e4)
 	local e5=e4:Clone()
 	e5:SetCode(EFFECT_IGNORE_BATTLE_TARGET)
+	e5:SetValue(aux.imval1)
 	c:RegisterEffect(e5)
 end
 function c79698395.target(e,c)
