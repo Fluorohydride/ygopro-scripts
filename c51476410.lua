@@ -40,7 +40,7 @@ function c51476410.spfilter2(c,e,tp,m,f,chkf)
 end
 function c51476410.spfilter3(c,e,tp,chkf,rc)
 	if not c:IsType(TYPE_FUSION) or not c:IsAbleToExtra() then return false end
-	if Duel.GetLocationCountFromEx(tp,tp,rc,c)<=0 then return false end
+	if Duel.GetLocationCountFromEx(tp,tp,rc,TYPE_FUSION)<=0 then return false end
 	local mg=Duel.GetMatchingGroup(c51476410.spfilter0,tp,LOCATION_GRAVE,0,c)
 	local res=c51476410.spfilter2(c,e,tp,mg,nil,chkf)
 	if not res then
