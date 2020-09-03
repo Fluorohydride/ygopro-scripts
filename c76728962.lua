@@ -83,6 +83,7 @@ function c76728962.desop(e,tp,eg,ep,ev,re,r,rp)
 	local dg=g:Select(tp,1,ct,nil)
 	Duel.HintSelection(dg)
 	if Duel.Destroy(dg,REASON_EFFECT)~=0 and c1+c2+c3==3 then
+		Duel.BreakEffect()
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end
 end
