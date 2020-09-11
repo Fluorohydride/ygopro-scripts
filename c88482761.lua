@@ -28,7 +28,7 @@ function c88482761.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c88482761.rmfilter1(c,e,tp)
 	return c:IsSetCard(0x2016) and c:IsAbleToRemove()
-		and Duel.IsExistingMatchingCard(c88482761.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp,c:GetOriginalLevel())
+		and Duel.IsExistingMatchingCard(c88482761.rmfilter2,tp,LOCATION_HAND,0,1,nil,e,tp,c:GetOriginalLevel())
 end
 function c88482761.rmfilter2(c,e,tp,lv)
 	return c:IsSetCard(0x2016) and c:IsType(TYPE_TUNER) and c:IsAbleToRemove()
