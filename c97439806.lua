@@ -12,7 +12,7 @@ function c97439806.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c97439806.costfilter(c)
-	return c:IsSetCard(0x35) and c:GetCode()~=97439806 and c:IsDiscardable()
+	return c:IsSetCard(0x35) and c:IsType(TYPE_MONSTER) and c:GetCode()~=97439806 and c:IsDiscardable()
 end
 function c97439806.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c97439806.costfilter,tp,LOCATION_HAND,0,1,nil) end

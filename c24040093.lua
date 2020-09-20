@@ -23,7 +23,7 @@ function c24040093.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c24040093.filter(c)
-	return c:IsSetCard(0x35) and c:GetCode()~=24040093 and c:IsAbleToHand()
+	return c:IsSetCard(0x35) and c:IsType(TYPE_MONSTER) and c:GetCode()~=24040093 and c:IsAbleToHand()
 end
 function c24040093.tg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c24040093.filter,tp,LOCATION_DECK,0,1,nil) end

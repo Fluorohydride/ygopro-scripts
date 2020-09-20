@@ -17,7 +17,7 @@ function c46833854.con(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)-Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>=2
 end
 function c46833854.cfilter(c)
-	return c:IsSetCard(0x35) and not c:IsPublic()
+	return c:IsSetCard(0x35) and c:IsType(TYPE_MONSTER) and not c:IsPublic()
 end
 function c46833854.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable()
