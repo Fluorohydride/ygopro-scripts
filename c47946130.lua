@@ -84,9 +84,7 @@ function c47946130.negop(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetValue(-500)
 	c:RegisterEffect(e1)
 	if not c:IsImmuneToEffect(e1) and not c:IsHasEffect(EFFECT_REVERSE_UPDATE) then
-		if Duel.NegateActivation(ev) and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
-			Duel.SendtoGrave(eg,REASON_EFFECT)
-		end
+		Duel.NegateActivation(ev)
 	end
 end
 function c47946130.atkcon(e,tp,eg,ep,ev,re,r,rp)

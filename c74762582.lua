@@ -47,9 +47,6 @@ function c74762582.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c74762582.disop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) then
-		if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsRelateToEffect(re) then
-			Duel.SendtoGrave(eg,REASON_EFFECT)
-		end
 		local tc=Duel.GetFirstTarget()
 		if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 			Duel.BreakEffect()
