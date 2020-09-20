@@ -1,5 +1,6 @@
 --Strength in Unity
 function c96239878.initial_effect(c)
+	aux.AddCodeList(c,89631139,46986414)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
