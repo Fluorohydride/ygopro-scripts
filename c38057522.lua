@@ -30,9 +30,10 @@ function c38057522.disfilter(c)
 end
 function c38057522.discon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c38057522.disfilter,tp,LOCATION_MZONE,0,1,nil)
-		and rp==1-tp and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainDisablable(ev)
+		and rp==1-tp and re:IsActiveType(TYPE_MONSTER)
 end
 function c38057522.disop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,0,38057522)
 	Duel.NegateEffect(ev)
 end
 function c38057522.tdfilter(c,tp)

@@ -20,9 +20,10 @@ function c87769556.cfilter(c)
 end
 function c87769556.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c87769556.cfilter,tp,LOCATION_MZONE,0,1,nil)
-		and rp==1-tp and re:IsActiveType(TYPE_SPELL) and Duel.IsChainDisablable(ev) 
+		and rp==1-tp and re:IsActiveType(TYPE_SPELL)
 end
 function c87769556.negop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.Hint(HINT_CARD,0,87769556)
 	local rc=re:GetHandler()
 	if Duel.NegateEffect(ev) and rc:IsRelateToEffect(re) then
 		Duel.Destroy(rc,REASON_EFFECT)

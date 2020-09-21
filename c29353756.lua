@@ -79,7 +79,7 @@ function c29353756.eqlimit(e,c)
 end
 function c29353756.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_SZONE
-		and re:IsActiveType(TYPE_TRAP) and Duel.IsChainDisablable(ev)
+		and re:IsActiveType(TYPE_TRAP)
 end
 function c29353756.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,29353756)
