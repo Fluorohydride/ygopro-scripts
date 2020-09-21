@@ -42,6 +42,6 @@ function c75487237.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateActivation(ev)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		Duel.ChangePosition(,POS_FACEUP_DEFENSE)
+		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end
