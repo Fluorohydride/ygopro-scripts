@@ -71,7 +71,7 @@ function c37129797.drfilter(c)
 	return c:IsRace(RACE_ZOMBIE) and c:IsPreviousLocation(LOCATION_GRAVE)
 end
 function c37129797.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c37129797.drfilter,1,nil) and not eg:IsContains(e:GetHandler())
+	return eg:IsExists(c37129797.drfilter,1,e:GetHandler())
 end
 function c37129797.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
