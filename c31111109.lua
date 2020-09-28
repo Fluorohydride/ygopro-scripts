@@ -68,6 +68,7 @@ function c31111109.copyop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetRange(LOCATION_MZONE)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		e2:SetLabel(cid)
+		e2:SetLabelObject(e1)
 		e2:SetOperation(c31111109.rstop)
 		c:RegisterEffect(e2)
 	end
@@ -75,7 +76,15 @@ end
 function c31111109.rstop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local cid=e:GetLabel()
+	local atke=e:GetLabelObject()
+	if atke then
+		atke:SetReset(RESET_EVENT+RESETS_STANDARD)
+	end
 	c:ResetEffect(cid,RESET_COPY)
+	c:ResetEffect(RESET_DISABLE,RESET_EVENT)
+	if atke then
+		atke:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
+	end
 	Duel.HintSelection(Group.FromCards(c))
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end

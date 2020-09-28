@@ -122,7 +122,10 @@ end
 function c45014450.rstop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local cid=e:GetLabel()
-	if cid~=0 then c:ResetEffect(cid,RESET_COPY) end
+	if cid~=0 then
+		c:ResetEffect(cid,RESET_COPY)
+		c:ResetEffect(RESET_DISABLE,RESET_EVENT)
+	end
 	local e1=e:GetLabelObject()
 	e1:Reset()
 	Duel.HintSelection(Group.FromCards(c))
