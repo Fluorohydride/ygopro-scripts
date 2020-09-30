@@ -830,3 +830,4 @@ ACTIVITY_CHAIN			=7		-- only available in custom counter
 --cards with double names
 CARD_MARINE_DOLPHIN		=78734254	--海洋海豚
 CARD_TWINKLE_MOSS		=13857930	--光輝苔蘚
+CARD_QUESTION		    =38723936	--谜题
