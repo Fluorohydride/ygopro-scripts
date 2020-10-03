@@ -74,6 +74,9 @@ function c40771118.plop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(40771118,2))
 	local g=Duel.SelectMatchingCard(tp,c40771118.plfilter,tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,1,1,nil,tp,c)
 	local tc=g:GetFirst()
+	local bg=Duel.GetMatchingGroup(aux.AND(Card.IsFaceup,Card.IsCode),tp,LOCATION_SZONE,0,nil,94212438)
+	local bc=bg:GetFirst()
+	if bg:GetCount()>1 then bc=bg:Select():GetFirst() end
 	if tc and Duel.IsPlayerAffectedByEffect(tp,16625614) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,tc:GetCode(),0,0x11,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP,tp,SUMMON_VALUE_DARK_SANCTUARY)
 		and Duel.SelectYesNo(tp,aux.Stringid(16625614,0)) then
@@ -96,9 +99,9 @@ function c40771118.plop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+0x47c0000)
 		tc:RegisterEffect(e2)
 		Duel.SpecialSummonComplete()
-		c:RegisterFlagEffect(94212438,RESET_EVENT+RESETS_STANDARD,0,0)
+		bc:RegisterFlagEffect(94212438,RESET_EVENT+RESETS_STANDARD,0,0)
 	elseif tc and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true) then
-		c:RegisterFlagEffect(94212438,RESET_EVENT+RESETS_STANDARD,0,0)
+		bc:RegisterFlagEffect(94212438,RESET_EVENT+RESETS_STANDARD,0,0)
 	end
 end
