@@ -96,9 +96,7 @@ function c40771118.plop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+0x47c0000)
 		tc:RegisterEffect(e2)
 		Duel.SpecialSummonComplete()
-		c:RegisterFlagEffect(94212438,RESET_EVENT+RESETS_STANDARD,0,0)
-	elseif tc and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true) then
-		c:RegisterFlagEffect(94212438,RESET_EVENT+RESETS_STANDARD,0,0)
+	elseif tc and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
+		Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
 	end
 end
