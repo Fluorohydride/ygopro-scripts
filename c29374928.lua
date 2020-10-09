@@ -24,6 +24,40 @@ function c29374928.initial_effect(c)
 	e2:SetTarget(c29374928.sptg2)
 	e2:SetOperation(c29374928.spop2)
 	c:RegisterEffect(e2)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e3:SetCode(EVENT_TO_GRAVE)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e3:SetOperation(c29374928.checkop)
+	c:RegisterEffect(e3)
+	e2:SetLabelObject(e3)
+end
+function c29374928.checkop(e,tp,eg,ep,ev,re,r,rp)
+	if (r&REASON_EFFECT)==0 then return end
+	e:SetLabelObject(re)
+	local e1=Effect.CreateEffect(e:GetHandler())	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(EVENT_CHAIN_END)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetOperation(c29374928.resetop)
+	e1:SetLabelObject(e)
+	Duel.RegisterEffect(e1,tp)
+	local e2=e1:Clone()
+	e2:SetCode(EVENT_BREAK_EFFECT)
+	e2:SetOperation(c29374928.resetop2)
+	e2:SetReset(RESET_CHAIN)
+	e2:SetLabelObject(e1)
+	Duel.RegisterEffect(e2,tp)
+end
+function c29374928.resetop(e,tp,eg,ep,ev,re,r,rp)
+	--this will run after EVENT_SPSUMMON_SUCCESS
+	e:GetLabelObject():SetLabelObject(nil)
+	e:Reset()
+end
+function c29374928.resetop2(e,tp,eg,ep,ev,re,r,rp)
+	local e1=e:GetLabelObject()
+	e1:GetLabelObject():SetLabelObject(nil)
+	e1:Reset()
+	e:Reset()
 end
 function c29374928.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -70,13 +104,14 @@ end
 function c29374928.splimit(e,c)
 	return not c:IsRace(RACE_CYBERSE)
 end
-function c29374928.cfilter(c,tp)
+function c29374928.cfilter(c,tp,se)
 	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsPreviousPosition(POS_FACEUP) and bit.band(c:GetPreviousTypeOnField(),TYPE_LINK)~=0 and c:IsLinkAbove(3)
 		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c29374928.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c29374928.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
+	return eg:IsExists(c29374928.cfilter,1,nil,tp,e:GetLabelObject():GetLabelObject()) and not eg:IsContains(e:GetHandler())
 end
 function c29374928.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

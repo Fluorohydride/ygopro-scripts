@@ -29,6 +29,13 @@ function c23732205.initial_effect(c)
 	e2:SetTarget(c23732205.sptg)
 	e2:SetOperation(c23732205.spop)
 	c:RegisterEffect(e2)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e3:SetCode(EVENT_TO_GRAVE)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e3:SetOperation(c23732205.checkop)
+	c:RegisterEffect(e3)
+	e2:SetLabelObject(e3)
 end
 function c23732205.mfilter(c)
 	return c:IsLinkRace(RACE_DRAGON) and c:IsLinkAttribute(ATTRIBUTE_DARK)
@@ -59,11 +66,11 @@ function c23732205.desop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c23732205.cfilter(c,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0x102)
+function c23732205.cfilter(c,tp,se)
+	return c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0x102) and (se==nil or c:GetReasonEffect()~=se)
 end
 function c23732205.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c23732205.cfilter,1,nil,tp)
+	return eg:IsExists(c23732205.cfilter,1,nil,tp,e:GetLabelObject():GetLabelObject())
 end
 function c23732205.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -81,4 +88,32 @@ function c23732205.spop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(LOCATION_REMOVED)
 		c:RegisterEffect(e1,true)
 	end
+end
+function c23732205.checkop(e,tp,eg,ep,ev,re,r,rp)
+	if (r&REASON_EFFECT)==0 then return end
+	e:SetLabelObject(re)
+	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(EVENT_CHAIN_END)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetOperation(c23732205.resetop)
+	e1:SetLabelObject(e)
+	Duel.RegisterEffect(e1,tp)
+	local e2=e1:Clone()
+	e2:SetCode(EVENT_BREAK_EFFECT)
+	e2:SetOperation(c23732205.resetop2)
+	e2:SetReset(RESET_CHAIN)
+	e2:SetLabelObject(e1)
+	Duel.RegisterEffect(e2,tp)
+end
+function c23732205.resetop(e,tp,eg,ep,ev,re,r,rp)
+	--this will run after EVENT_SPSUMMON_SUCCESS
+	e:GetLabelObject():SetLabelObject(nil)
+	e:Reset()
+end
+function c23732205.resetop2(e,tp,eg,ep,ev,re,r,rp)
+	local e1=e:GetLabelObject()
+	e1:GetLabelObject():SetLabelObject(nil)
+	e1:Reset()
+	e:Reset()
 end

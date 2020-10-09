@@ -12,13 +12,48 @@ function c46668237.initial_effect(c)
 	e1:SetTarget(c46668237.target)
 	e1:SetOperation(c46668237.operation)
 	c:RegisterEffect(e1)
+	local e3=Effect.CreateEffect(c)
+	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e3:SetCode(EVENT_TO_GRAVE)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e3:SetOperation(c46668237.checkop)
+	c:RegisterEffect(e3)
+	e2:SetLabelObject(e3)
 end
-function c46668237.cfilter(c,tp)
+function c46668237.checkop(e,tp,eg,ep,ev,re,r,rp)
+	if (r&REASON_EFFECT)==0 then return end
+	e:SetLabelObject(re)
+	local e1=Effect.CreateEffect(e:GetHandler())	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(EVENT_CHAIN_END)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetOperation(c46668237.resetop)
+	e1:SetLabelObject(e)
+	Duel.RegisterEffect(e1,tp)
+	local e2=e1:Clone()
+	e2:SetCode(EVENT_BREAK_EFFECT)
+	e2:SetOperation(c46668237.resetop2)
+	e2:SetReset(RESET_CHAIN)
+	e2:SetLabelObject(e1)
+	Duel.RegisterEffect(e2,tp)
+end
+function c46668237.resetop(e,tp,eg,ep,ev,re,r,rp)
+	--this will run after EVENT_SPSUMMON_SUCCESS
+	e:GetLabelObject():SetLabelObject(nil)
+	e:Reset()
+end
+function c46668237.resetop2(e,tp,eg,ep,ev,re,r,rp)
+	local e1=e:GetLabelObject()
+	e1:GetLabelObject():SetLabelObject(nil)
+	e1:Reset()
+	e:Reset()
+end
+function c46668237.cfilter(c,tp,se)
 	return c:IsType(TYPE_MONSTER) and c:IsRace(RACE_BEAST) and c:GetPreviousControler()==tp and c:IsPreviousPosition(POS_FACEUP)
 		and c:IsPreviousLocation(LOCATION_MZONE) and bit.band(c:GetPreviousRaceOnField(),RACE_BEAST)~=0
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c46668237.condition(e,tp,eg,ep,ev,re,r,rp)
-	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c46668237.cfilter,1,nil,tp) and bit.band(r,REASON_DESTROY+REASON_EFFECT)==REASON_DESTROY+REASON_EFFECT
+	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c46668237.cfilter,1,nil,tp,e:GetLabelObject():GetLabelObject()) and bit.band(r,REASON_DESTROY+REASON_EFFECT)==REASON_DESTROY+REASON_EFFECT
 end
 function c46668237.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000) end
