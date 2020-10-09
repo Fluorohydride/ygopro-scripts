@@ -58,7 +58,7 @@ function c4997565.cfilter(c)
 end
 function c4997565.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tc=re:GetHandler()
-	if chk==0 then return Duel.IsExistingMatchingCard(c4997565.cfilter,tp,LOCATION_MZONE,0,1,nil)
+	if chk==0 then return Duel.IsExistingMatchingCard(c4997565.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
 		and not tc:IsDisabled() and tc:IsRelateToEffect(re) and tc:IsCanBeEffectTarget(e) end
 	Duel.SetTargetCard(tc)
 end
@@ -80,9 +80,9 @@ function c4997565.disop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_DISABLE)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
-		if Duel.IsExistingMatchingCard(c4997565.cfilter,tp,LOCATION_MZONE,0,1,nil) then
+		if Duel.IsExistingMatchingCard(c4997565.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
-			local g=Duel.SelectMatchingCard(tp,c4997565.cfilter,tp,LOCATION_MZONE,0,1,1,nil)
+			local g=Duel.SelectMatchingCard(tp,c4997565.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 			local opt=Duel.SelectOption(tp,aux.Stringid(4997565,2),aux.Stringid(4997565,3))
 			if opt==0 then
 				local e3=Effect.CreateEffect(c)
