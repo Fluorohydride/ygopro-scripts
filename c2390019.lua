@@ -20,64 +20,54 @@ function c2390019.initial_effect(c)
 	e2:SetOperation(c2390019.drop)
 	c:RegisterEffect(e2)
 end
-function c2390019.ffilter(c,e,tp)
-	return c:IsType(TYPE_FUSION) and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT)
-		and Duel.IsExistingMatchingCard(c2390019.cfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,1,nil,c,e,tp)
+function c2390019.cfilter(c)
+	return c:IsSetCard(0xf) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
-function c2390019.cfilter(c,fc,e,tp)
-	if c:IsSetCard(0xf) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost() then
-		if e and tp then
-			return Duel.IsExistingMatchingCard(c2390019.filter,tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,1,c,fc,e,tp)
-		else return true end
-	else return false end
-end
-function c2390019.filter(c,fc,e,tp)
+function c2390019.spfilter(c,e,tp,fc)
 	return aux.IsMaterialListCode(fc,c:GetCode()) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c2390019.cfilter2(c,g,mg,ft,rm)
-	if not rm and ft==0 and not c:IsLocation(LOCATION_MZONE) then return false end
-	local g2=g:Clone()
-	g2:AddCard(c)
-	local mg2=mg:Clone()
-	mg2:Sub(g2)
-	return mg2:GetClassCount(Card.GetCode)>=g2:GetCount()
+function c2390019.fselect(cg,tp,tg)
+	return Duel.GetMZoneCount(tp,cg,tp)>=#cg and tg:Filter(aux.TRUE,cg):CheckSubGroup(aux.dncheck,#cg,#cg)
+end
+function c2390019.ffilter(c,e,tp,cg)
+	if not (c:IsType(TYPE_FUSION) and c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT)) then return false end
+	local tg=Duel.GetMatchingGroup(c2390019.spfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp,c)
+	local maxct=math.min(#tg,#cg,5)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then maxct=1 end
+	return cg:CheckSubGroup(c2390019.fselect,1,maxct,tp,tg)
 end
 function c2390019.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c2390019.ffilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-	local rc=Duel.SelectMatchingCard(tp,c2390019.ffilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp):GetFirst()
-	Duel.ConfirmCards(1-tp,rc)
-	e:SetLabelObject(rc)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
-	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c2390019.filter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,nil,rc,e,tp)
-	local rg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c2390019.cfilter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_MZONE,0,nil)
-	local g=Group.CreateGroup()
-	local rm=(ft>0)
-	repeat
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local sc=rg:FilterSelect(tp,c2390019.cfilter2,1,1,nil,g,mg,ft,rm):GetFirst()
-		g:AddCard(sc)
-		rg:RemoveCard(sc)
-		mg:RemoveCard(sc)
-		if not sc:IsLocation(LOCATION_MZONE) then ft=ft-1 end
-	until g:GetCount()==5 or rg:GetCount()==0 or mg:GetClassCount(Card.GetCode)==g:GetCount()
-		or (ft==0 and not rg:IsExists(Card.IsLocation,1,nil,LOCATION_MZONE))
-		or not Duel.SelectYesNo(tp,aux.Stringid(2390019,0))
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
-	e:SetLabel(Duel.GetOperatedGroup():GetCount())
+	e:SetLabel(100)
+	if chk==0 then return true end
 end
 function c2390019.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,e:GetLabel(),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK)
+	local cg=Duel.GetMatchingGroup(c2390019.cfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
+	if chk==0 then
+		if e:GetLabel()~=100 then return false end
+		e:SetLabel(0)
+		return Duel.IsExistingMatchingCard(c2390019.ffilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,cg)
+	end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
+	local fc=Duel.SelectMatchingCard(tp,c2390019.ffilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,cg):GetFirst()
+	Duel.ConfirmCards(1-tp,fc)
+	e:SetLabelObject(fc)
+	local tg=Duel.GetMatchingGroup(c2390019.spfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp,fc)
+	local maxct=math.min(#tg,#cg,5)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then maxct=1 end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local g=cg:SelectSubGroup(tp,c2390019.fselect,false,1,maxct,tp,tg)
+	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	local ct=Duel.GetOperatedGroup():GetCount()
+	e:SetLabel(ct)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,ct,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE)
 end
 function c2390019.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local ct=e:GetLabel()
 	if ft<ct then return end
-	local rc=e:GetLabelObject()
-	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c2390019.filter),tp,LOCATION_HAND+LOCATION_GRAVE+LOCATION_DECK,0,nil,rc,e,tp)
+	local fc=e:GetLabelObject()
+	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c2390019.spfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp,fc)
 	if mg:GetClassCount(Card.GetCode)<ct then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=mg:SelectSubGroup(tp,aux.dncheck,false,ct,ct)
