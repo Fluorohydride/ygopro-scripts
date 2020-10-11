@@ -10,7 +10,7 @@ function c81223446.initial_effect(c)
 	e1:SetOperation(c81223446.activate)
 	c:RegisterEffect(e1)
 end
-function c81223446.filter1(c)
+function c81223446.filter1(c,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove(tp,POS_FACEDOWN)
 end
 function c81223446.filter2(c,e,tp,m,f,chkf)
@@ -20,7 +20,7 @@ end
 function c81223446.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
-		local mg1=Duel.GetMatchingGroup(c81223446.filter1,tp,LOCATION_GRAVE,0,nil)
+		local mg1=Duel.GetMatchingGroup(c81223446.filter1,tp,LOCATION_GRAVE,0,nil,tp)
 		local res=Duel.IsExistingMatchingCard(c81223446.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -38,7 +38,7 @@ function c81223446.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c81223446.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
-	local mg1=Duel.GetMatchingGroup(aux.NecroValleyFilter(c81223446.filter1),tp,LOCATION_GRAVE,0,nil)
+	local mg1=Duel.GetMatchingGroup(aux.NecroValleyFilter(c81223446.filter1),tp,LOCATION_GRAVE,0,nil,tp)
 	local sg1=Duel.GetMatchingGroup(c81223446.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil
 	local sg2=nil

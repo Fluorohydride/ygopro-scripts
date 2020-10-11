@@ -21,8 +21,9 @@ end
 function c47128571.desfilter(c,def)
 	return c:IsFaceup() and c:GetAttack()<=def
 end
-function c47128571.cfilter(c)
-	return c:IsType(TYPE_MONSTER) and not c:IsType(TYPE_LINK) and c:IsLocation(LOCATION_GRAVE) and Duel.IsExistingMatchingCard(c47128571.desfilter,tp,0,LOCATION_MZONE,1,nil,c:GetDefense())
+function c47128571.cfilter(c,tp)
+	return c:IsType(TYPE_MONSTER) and not c:IsType(TYPE_LINK) and c:IsLocation(LOCATION_GRAVE)
+		and Duel.IsExistingMatchingCard(c47128571.desfilter,tp,0,LOCATION_MZONE,1,nil,c:GetDefense())
 end
 function c47128571.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
@@ -31,10 +32,10 @@ function c47128571.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.HintSelection(g)
 		Duel.Destroy(g,REASON_EFFECT)
 		local sg=Duel.GetOperatedGroup()
-		if sg:GetCount()>0 and Duel.NegateAttack() and sg:IsExists(c47128571.cfilter,1,nil) then
+		if sg:GetCount()>0 and Duel.NegateAttack() and sg:IsExists(c47128571.cfilter,1,nil,tp) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(47128571,0))
-			local cg=sg:FilterSelect(tp,c47128571.cfilter,1,1,nil)
+			local cg=sg:FilterSelect(tp,c47128571.cfilter,1,1,nil,tp)
 			Duel.HintSelection(cg)
 			local dg=Duel.GetMatchingGroup(c47128571.desfilter,tp,0,LOCATION_MZONE,nil,cg:GetFirst():GetDefense())
 			if Duel.Destroy(dg,REASON_EFFECT)~=0 then

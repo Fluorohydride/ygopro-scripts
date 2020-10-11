@@ -24,19 +24,19 @@ function c45943123.initial_effect(c)
 	e2:SetOperation(c45943123.drop)
 	c:RegisterEffect(e2)
 end
-function c45943123.cfilter(c)
+function c45943123.cfilter(c,tp)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER) and c:IsType(TYPE_XYZ) and c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT)
 end
 function c45943123.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local b=e:IsHasType(EFFECT_TYPE_ACTIVATE) and e:GetHandler():IsLocation(LOCATION_HAND)
 	local ct=Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)
 	if b then ct=ct-1 end
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c45943123.cfilter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c45943123.cfilter(chkc,tp) end
 	if chk==0 then
-		return Duel.IsExistingTarget(c45943123.cfilter,tp,LOCATION_MZONE,0,1,nil) and ct>0
+		return Duel.IsExistingTarget(c45943123.cfilter,tp,LOCATION_MZONE,0,1,nil,tp) and ct>0
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g=Duel.SelectTarget(tp,c45943123.cfilter,tp,LOCATION_MZONE,0,1,1,nil)
+	local g=Duel.SelectTarget(tp,c45943123.cfilter,tp,LOCATION_MZONE,0,1,1,nil,tp)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,ct*400)
 end
 function c45943123.activate(e,tp,eg,ep,ev,re,r,rp)

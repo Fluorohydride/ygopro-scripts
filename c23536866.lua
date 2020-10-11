@@ -17,7 +17,7 @@ function c23536866.filter(c,e,tp)
 	return c:IsLevel(5) and c:IsAttribute(ATTRIBUTE_WATER) and not c:IsCode(23536866)
 		and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c23536866.xyzfilter(c,mg)
+function c23536866.xyzfilter(c,mg,tp)
 	return c:IsAttribute(ATTRIBUTE_WATER) and c:IsXyzSummonable(mg,2,2) and Duel.GetLocationCountFromEx(tp,tp,mg,c)>0
 end
 function c23536866.mfilter1(c,mg,exg)
@@ -29,7 +29,7 @@ end
 function c23536866.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	local mg=Duel.GetMatchingGroup(c23536866.filter,tp,LOCATION_GRAVE,0,nil,e,tp)
-	local exg=Duel.GetMatchingGroup(c23536866.xyzfilter,tp,LOCATION_EXTRA,0,nil,mg)
+	local exg=Duel.GetMatchingGroup(c23536866.xyzfilter,tp,LOCATION_EXTRA,0,nil,mg,tp)
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
@@ -70,7 +70,7 @@ function c23536866.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e4=e3:Clone()
 	tc2:RegisterEffect(e4)
 	Duel.SpecialSummonComplete()
-	local xyzg=Duel.GetMatchingGroup(c23536866.xyzfilter,tp,LOCATION_EXTRA,0,nil,g)
+	local xyzg=Duel.GetMatchingGroup(c23536866.xyzfilter,tp,LOCATION_EXTRA,0,nil,g,tp)
 	if xyzg:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local xyz=xyzg:Select(tp,1,1,nil):GetFirst()
