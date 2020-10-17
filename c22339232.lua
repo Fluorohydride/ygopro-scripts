@@ -1,5 +1,6 @@
 --ワイトメア
 function c22339232.initial_effect(c)
+	aux.AddCodeList(c,32274490)
 	--change code
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
