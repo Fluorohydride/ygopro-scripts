@@ -1,4 +1,4 @@
---Plunder Patrollship Lys
+--海造賊－双翼のリュース号
 function c18832779.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()

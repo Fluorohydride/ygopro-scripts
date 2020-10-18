@@ -1,4 +1,4 @@
---Phantasos, the Dream Mirror Foe
+--夢魔鏡の魔獣－パンタス
 function c99792080.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)

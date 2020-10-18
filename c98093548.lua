@@ -1,4 +1,4 @@
---Brotherhood of the Fire Fist - Elephant
+--俊炎星－ゾウセイ
 function c98093548.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

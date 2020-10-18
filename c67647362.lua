@@ -1,4 +1,4 @@
---Blackbeard, the Plunder Patroll Captain
+--海造賊－キャプテン黒髭
 function c67647362.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c67647362.lcheck)

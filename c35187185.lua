@@ -1,4 +1,4 @@
---Oneiros, the Dream Mirror Erlking
+--夢魔鏡の天魔－ネイロス
 function c35187185.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

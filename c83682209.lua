@@ -1,4 +1,4 @@
---Piwraithe the Ghost Pirate
+--海霊賊
 function c83682209.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Boot-Up Order - Gear Charge
+--起動指令 ギア・チャージ
 function c63717421.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Star Power!!
+--一曲集中
 function c76500786.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Traptrix Genlisea
+--リセの蟲惑魔
 function c88078306.initial_effect(c)
 	--immune
 	local e1=Effect.CreateEffect(c)

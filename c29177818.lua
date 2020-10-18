@@ -1,4 +1,4 @@
---Rose Girl
+--バラガール
 function c29177818.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

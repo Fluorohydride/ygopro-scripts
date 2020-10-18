@@ -1,4 +1,4 @@
---Bluebeard, the Plunder Patroll Shipwright
+--海造賊－青髭の海技士
 function c55349375.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

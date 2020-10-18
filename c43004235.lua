@@ -1,4 +1,4 @@
---Plunder Patroll Parrrty
+--海造賊－祝宴
 function c43004235.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

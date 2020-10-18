@@ -1,4 +1,4 @@
---Execution of the Contract
+--契約の遂行
 function c55976207.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

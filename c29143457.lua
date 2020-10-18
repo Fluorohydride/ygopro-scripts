@@ -1,4 +1,4 @@
---Fire Formation - Ingen
+--炎舞－「隠元」
 function c29143457.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

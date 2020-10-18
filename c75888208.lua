@@ -1,4 +1,4 @@
---Ikelos, the Dream Mirror Mara
+--夢魔鏡の夢魔－イケロス
 function c75888208.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

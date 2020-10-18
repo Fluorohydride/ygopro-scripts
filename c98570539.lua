@@ -1,4 +1,4 @@
---Dream Mirror of Chaos
+--混沌の夢魔鏡
 function c98570539.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

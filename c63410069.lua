@@ -1,4 +1,4 @@
---Desert Locusts
+--砂漠の飛蝗賊
 function c63410069.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()

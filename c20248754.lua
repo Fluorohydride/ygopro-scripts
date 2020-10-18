@@ -1,4 +1,4 @@
---Plunder Patrollship Moerk
+--海造賊－静寂のメルケ号
 function c20248754.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)

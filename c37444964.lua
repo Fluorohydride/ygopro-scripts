@@ -1,4 +1,4 @@
---Dream Mirror Fantasy
+--夢魔鏡の夢物語
 function c37444964.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

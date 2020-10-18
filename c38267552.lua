@@ -1,4 +1,4 @@
---Morpheus, the Dream Mirror Black Knight
+--夢魔鏡の黒騎士－ルペウス
 function c38267552.initial_effect(c)
 	--indestructable
 	local e1=Effect.CreateEffect(c)

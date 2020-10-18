@@ -1,4 +1,4 @@
---Hollow Giants
+--龍馬躓図
 function c15462014.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

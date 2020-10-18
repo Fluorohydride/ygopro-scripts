@@ -1,4 +1,4 @@
---Toon Black Luster Soldier
+--トゥーン・カオス・ソルジャー
 function c28711704.initial_effect(c)
 	aux.AddCodeList(c,15259703)
 	c:EnableReviveLimit()

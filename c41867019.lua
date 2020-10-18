@@ -1,4 +1,4 @@
---Mayakashi Mayhem
+--魔妖遊行
 function c41867019.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

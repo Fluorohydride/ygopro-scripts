@@ -1,4 +1,4 @@
---The Chaos Creator
+--混沌の創世神
 function c90488465.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon

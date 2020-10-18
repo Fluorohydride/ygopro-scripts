@@ -1,4 +1,4 @@
---Dream Mirror Phantasms
+--夢幻の夢魔鏡
 function c62171834.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

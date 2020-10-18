@@ -1,4 +1,4 @@
---Guard Ghost
+--背護衛
 function c56198785.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)

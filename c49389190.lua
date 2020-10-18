@@ -1,4 +1,4 @@
---Ikelos, the Dream Mirror Sprite
+--夢魔鏡の乙女－イケロス
 function c49389190.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)

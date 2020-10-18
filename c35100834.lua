@@ -1,4 +1,4 @@
---Powerhold the Moving Battery
+--機動砲塁 パワー・ホールド
 function c35100834.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

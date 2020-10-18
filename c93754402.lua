@@ -1,4 +1,4 @@
---Fire Formation - Domei
+--炎舞－「洞明」
 function c93754402.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Dream Mirror Oneiromancy
+--夢魔鏡の夢占い
 function c61459246.initial_effect(c)
 	--activate(effect)
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Pride of the Plunder Patroll
+--海造賊－誇示
 function c17016131.initial_effect(c)
 	--activate
 	local e0=Effect.CreateEffect(c)

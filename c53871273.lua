@@ -1,4 +1,4 @@
---Chaos Valkyria
+--混沌のヴァルキリア
 function c53871273.initial_effect(c)
 	--splimit
 	local e1=Effect.CreateEffect(c)

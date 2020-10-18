@@ -1,4 +1,4 @@
---Goldenhair, the Newest Plunder Patroll
+--海造賊－金髪の訓練生
 function c81344070.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Phantasos, the Dream Mirror Friend
+--夢魔鏡の聖獣－パンタス
 function c62393472.initial_effect(c)
 	--spsummon1
 	local e1=Effect.CreateEffect(c)

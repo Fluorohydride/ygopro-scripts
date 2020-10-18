@@ -1,4 +1,4 @@
---Dream Mirror of Terror
+--闇黒の夢魔鏡
 function c1050355.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
