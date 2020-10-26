@@ -61,9 +61,10 @@ function c40634253.damfilter1(c,tp)
 end
 function c40634253.damcon2(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return false end
+	local tgp,loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_CONTROLER,CHAININFO_TRIGGERING_LOCATION)
 	local rc=re:GetHandler()
-	return rc:IsControler(tp) and rc:GetOriginalAttribute()==ATTRIBUTE_DARK
-		and rc:GetOriginalRace()==RACE_MACHINE
+	return tgp==tp and loc==LOCATION_MZONE
+		and rc:GetOriginalAttribute()==ATTRIBUTE_DARK and rc:GetOriginalRace()==RACE_MACHINE
 		and eg:IsExists(c40634253.damfilter1,1,nil,tp)
 end
 function c40634253.damtg(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -64,9 +64,10 @@ function c3113667.cfilter(c)
 end
 function c3113667.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return false end
+	local tgp,loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_CONTROLER,CHAININFO_TRIGGERING_LOCATION)
 	local rc=re:GetHandler()
-	return rc:IsControler(tp) and rc:GetOriginalAttribute()==ATTRIBUTE_DARK
-		and rc:GetOriginalRace()==RACE_MACHINE
+	return tgp==tp and loc==LOCATION_MZONE
+		and rc:GetOriginalAttribute()==ATTRIBUTE_DARK and rc:GetOriginalRace()==RACE_MACHINE
 		and eg:IsExists(c3113667.cfilter,1,nil)
 end
 function c3113667.spfilter(c,e,tp)
