@@ -1876,7 +1876,14 @@ function Auxiliary.LConditionFilter(c,f,lc)
 end
 function Auxiliary.LExtraFilter(c,f,lc,tp)
 	if c:IsLocation(LOCATION_ONFIELD) and not c:IsFaceup() then return false end
-	return c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL,tp) and c:IsCanBeLinkMaterial(lc) and (not f or f(c))
+	if not c:IsCanBeLinkMaterial(lc) or f and not f(c) then return false end
+	local le={c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL,tp)}
+	for _,te in pairs(le) do
+		local tf=te:GetValue()
+		local related,valid=tf(te,lc,nil,c,tp)
+		if related then return true end
+	end
+	return false
 end
 function Auxiliary.GetLinkCount(c)
 	if c:IsType(TYPE_LINK) and c:GetLink()>1 then
@@ -1891,11 +1898,15 @@ function Auxiliary.GetLinkMaterials(tp,f,lc)
 end
 function Auxiliary.LCheckOtherMaterial(c,mg,lc,tp)
 	local le={c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL,tp)}
+	local res1=false
+	local res2=true
 	for _,te in pairs(le) do
 		local f=te:GetValue()
-		if f and not f(te,lc,mg,c,tp) then return false end
+		local related,valid=f(te,lc,mg,c,tp)
+		if related then res2=false end
+		if related and valid then res1=true end
 	end
-	return true
+	return res1 or res2
 end
 function Auxiliary.LUncompatibilityFilter(c,sg,lc,tp)
 	local mg=sg:Filter(aux.TRUE,c)
@@ -1913,7 +1924,8 @@ function Auxiliary.LExtraMaterialCount(mg,lc,tp)
 		for _,te in pairs(le) do
 			local sg=mg:Filter(aux.TRUE,tc)
 			local f=te:GetValue()
-			if not f or f(te,lc,sg) then
+			local related,valid=f(te,lc,sg,tc,tp)
+			if related and valid then
 				te:UseCountLimit(tp)
 			end
 		end
