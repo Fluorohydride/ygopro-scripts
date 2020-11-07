@@ -27,7 +27,7 @@ function c44790889.ntcon(e,c,minc)
 end
 function c44790889.actcon(e)
 	return Duel.GetAttacker()==e:GetHandler() and Duel.GetAttackTarget()~=nil
-		and not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_ONFIELD,0,1,nil,TYPE_SPELL+TYPE_TRAP)
+		and not Duel.IsExistingMatchingCard(Card.IsType,e:GetHandlerPlayer(),LOCATION_ONFIELD,0,1,nil,TYPE_SPELL+TYPE_TRAP)
 end
 function c44790889.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
