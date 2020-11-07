@@ -11,6 +11,7 @@ function c22751868.initial_effect(c)
 	e2:SetCategory(CATEGORY_POSITION)
 	e2:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_FIELD)
 	e2:SetRange(LOCATION_FZONE)
+	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_BE_BATTLE_TARGET)
 	e2:SetCondition(c22751868.poscon)
 	e2:SetTarget(c22751868.postg)
@@ -36,10 +37,10 @@ end
 function c22751868.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local d=Duel.GetAttackTarget()
 	if chk==0 then return d:IsCanChangePosition() end
-	d:CreateEffectRelation(e)
+	Duel.SetTargetCard(d)
 end
 function c22751868.posop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetAttackTarget()
+	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE,0,POS_FACEUP_ATTACK,0)
 	end
