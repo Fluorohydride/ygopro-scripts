@@ -51,7 +51,7 @@ function c35906693.tgfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x107f) and c:IsType(TYPE_XYZ)
 end
 function c35906693.eqfilter(c,tp)
-	return c:IsSetCard(0x7e) and c:IsType(TYPE_MONSTER) and c:CheckUniqueOnField(tp) and not c:IsForbidden()
+	return c:IsSetCard(0x107e) and c:IsType(TYPE_MONSTER) and c:CheckUniqueOnField(tp) and not c:IsForbidden()
 end
 function c35906693.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c35906693.tgfilter(chkc) end

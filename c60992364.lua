@@ -46,7 +46,7 @@ function c60992364.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c60992364.thfilter(c)
-	return c:IsSetCard(0x7e) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0x107e) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c60992364.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c60992364.thfilter,tp,LOCATION_DECK,0,1,nil) end
