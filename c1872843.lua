@@ -1,5 +1,6 @@
 --夢魔鏡の白騎士－ルペウス
 function c1872843.initial_effect(c)
+	aux.AddCodeList(c,1050355)
 	--indestructable
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(1872843,0))

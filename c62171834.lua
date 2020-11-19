@@ -1,5 +1,6 @@
 --夢幻の夢魔鏡
 function c62171834.initial_effect(c)
+	aux.AddCodeList(c,74665651,1050355)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
