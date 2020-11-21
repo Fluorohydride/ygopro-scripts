@@ -99,7 +99,7 @@ REASON_BATTLE		=0x20		--战斗破坏
 REASON_EFFECT		=0x40		--效果
 REASON_COST			=0x80		--用於代價或無法支付代價而破壞
 REASON_ADJUST		=0x100		--调整（御前试合）
-REASON_LOST_TARGET	=0x200		--失去装备对象（被破坏）/失去叠放对象（不是被破坏）
+REASON_LOST_TARGET	=0x200		--失去装备对象
 REASON_RULE			=0x400		--规则
 REASON_SPSUMMON		=0x800		--特殊召唤
 REASON_DISSUMMON	=0x1000		--召唤失败
@@ -115,7 +115,7 @@ REASON_XYZ			=0x200000	--用於超量召喚
 REASON_REPLACE		=0x1000000	--代替
 REASON_DRAW			=0x2000000	--抽卡
 REASON_REDIRECT		=0x4000000	--改变去向（大宇宙，带菌等）
-REASON_REVEAL		=0x8000000	--翻开卡组（森罗）
+REASON_LOST_OVERLAY =0x8000000	--超量素材随着超量怪兽离场
 REASON_LINK			=0x10000000	--用于连接召唤
 --Location Reason
 LOCATION_REASON_TOFIELD		=0x1	--Duel.GetLocationCount()預設值,凱薩競技場
