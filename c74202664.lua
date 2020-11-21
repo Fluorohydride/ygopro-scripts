@@ -40,13 +40,10 @@ function c74202664.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		end
 	else
-		local c=e:GetHandler()
-		if not c:IsRelateToEffect(e) then return end
-		local p=c:GetControler()
-		local b1=Duel.GetLP(p)~=1000
-		local ea=Duel.IsPlayerAffectedByEffect(1-p,EFFECT_REVERSE_DAMAGE)
-		local eb=Duel.IsPlayerAffectedByEffect(1-p,EFFECT_REVERSE_RECOVER)
-		local b2=Duel.GetLP(1-p)<8000 and (ea or not eb)
+		local b1=Duel.GetLP(tp)~=1000
+		local ea=Duel.IsPlayerAffectedByEffect(1-tp,EFFECT_REVERSE_DAMAGE)
+		local eb=Duel.IsPlayerAffectedByEffect(1-tp,EFFECT_REVERSE_RECOVER)
+		local b2=Duel.GetLP(1-tp)<8000 and (ea or not eb)
 		local b3=true
 		local off=0
 		local ops={}
@@ -69,9 +66,9 @@ function c74202664.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		local op=Duel.SelectOption(1-tp,table.unpack(ops))
 		if opval[op]==1 then
-			Duel.SetLP(p,1000)
+			Duel.SetLP(tp,1000)
 		elseif opval[op]==2 then
-			Duel.Recover(1-p,8000-Duel.GetLP(1-p),REASON_EFFECT)
+			Duel.Recover(1-tp,8000-Duel.GetLP(1-tp),REASON_EFFECT)
 		else return end
 	end
 end
