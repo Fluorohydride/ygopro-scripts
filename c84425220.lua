@@ -47,11 +47,20 @@ end
 function c84425220.fselect(g,tp)
 	return g:GetSum(Card.GetLevel)==10 and aux.mzctcheck(g,tp)
 end
+function c84425220.gcheck(g)
+	return g:GetSum(Card.GetLevel)<=10
+end
 function c84425220.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c84425220.rfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil)
-	if chk==0 then return g:CheckSubGroup(c84425220.fselect,1,g:GetCount(),tp) end
+	Auxiliary.GCheckAdditional=c84425220.gcheck
+	if chk==0 then
+		local res=g:CheckSubGroup(c84425220.fselect,1,g:GetCount(),tp)
+		Auxiliary.GCheckAdditional=nil
+		return res
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local rg=g:SelectSubGroup(tp,c84425220.fselect,false,1,g:GetCount(),tp)
+	Auxiliary.GCheckAdditional=nil
 	Duel.Remove(rg,POS_FACEUP,REASON_COST)
 end
 function c84425220.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
