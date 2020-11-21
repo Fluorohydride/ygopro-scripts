@@ -115,8 +115,9 @@ REASON_XYZ			=0x200000	--用於超量召喚
 REASON_REPLACE		=0x1000000	--代替
 REASON_DRAW			=0x2000000	--抽卡
 REASON_REDIRECT		=0x4000000	--改变去向（大宇宙，带菌等）
-REASON_LOST_OVERLAY =0x8000000	--超量素材随着超量怪兽离场
+REASON_REVEAL		=0x8000000	--翻开卡组（森罗）
 REASON_LINK			=0x10000000	--用于连接召唤
+REASON_LOST_OVERLAY =0x20000000	--超量素材随着超量怪兽离场
 --Location Reason
 LOCATION_REASON_TOFIELD		=0x1	--Duel.GetLocationCount()預設值,凱薩競技場
 LOCATION_REASON_CONTROL		=0x2	--Card.IsControlerCanBeChanged()使用
