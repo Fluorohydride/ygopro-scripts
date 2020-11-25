@@ -45,8 +45,11 @@ end
 function c59160188.relval(e,re,r,rp)
 	return re:IsActivated() and bit.band(r,REASON_COST)~=0
 end
+function c59160188.regfilter(c)
+	return c:GetPreviousTypeOnField()&TYPE_MONSTER>0
+end
 function c59160188.regop(e,tp,eg,ep,ev,re,r,rp)
-	local mct=eg:FilterCount(Card.IsType,nil,TYPE_MONSTER)
+	local mct=eg:FilterCount(c59160188.regfilter,nil)
 	if mct==0 then return end
 	local c=e:GetHandler()
 	local ct=c:GetFlagEffectLabel(59160188)
