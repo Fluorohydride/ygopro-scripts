@@ -27,6 +27,7 @@ function c55285840.initial_effect(c)
 end
 function c55285840.mattg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(1-tp,LOCATION_DECK,0)>0 end
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c55285840.matop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -52,6 +53,7 @@ function c55285840.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			and Duel.IsExistingMatchingCard(c55285840.tgfilter,tp,0,LOCATION_ONFIELD,1,nil) then return true end
 		return false
 	end
+	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c55285840.check(g)
 	return g:FilterCount(Card.IsType,nil,TYPE_MONSTER)<=1
