@@ -1,5 +1,6 @@
 --新生代化石騎士 スカルポーン
 function c86520461.initial_effect(c)
+	aux.AddCodeList(c,59419719)
 	--fusion summon
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsRace,RACE_ROCK),c86520461.matfilter,true)

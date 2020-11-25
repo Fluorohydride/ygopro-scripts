@@ -1,5 +1,6 @@
 --中生代化石騎士 スカルナイト
 function c59531356.initial_effect(c)
+	aux.AddCodeList(c,59419719)
 	--fusion summon
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsRace,RACE_ROCK),c59531356.matfilter,true)
