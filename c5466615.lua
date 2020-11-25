@@ -72,7 +72,7 @@ function c5466615.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c5466615.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local ec,bc=Duel.GetBattleMonster(tp)
-	return bc and ec:IsSetCard(0x157) and ec:IsLevelAbove(8)
+	return ec and bc and ec:IsSetCard(0x157) and ec:IsLevelAbove(8)
 end
 function c5466615.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
