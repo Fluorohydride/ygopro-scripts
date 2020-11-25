@@ -71,8 +71,9 @@ function c5466615.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c5466615.drcon(e,tp,eg,ep,ev,re,r,rp)
-	local ec,bc=Duel.GetBattleMonster(tp)
-	return ec and bc and ec:IsSetCard(0x157) and ec:IsLevelAbove(8)
+	local rc=eg:GetFirst()
+	return rc:IsRelateToBattle() and rc:IsStatus(STATUS_OPPO_BATTLE) and rc:IsControler(tp)
+		and rc:IsFaceup() and rc:IsSetCard(0x157) and rc:IsLevelAbove(8)
 end
 function c5466615.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
