@@ -26,7 +26,7 @@ function c72924435.atkfilter(c)
 	return c:IsRace(RACE_PLANT) and c:IsFaceup()
 end
 function c72924435.atkval(e,c)
-	return Duel.GetMatchingGroupCount(c72924435.atkfilter,c:GetControler(),LOCATION_MZONE,0,c)*300
+	return Duel.GetMatchingGroupCount(c72924435.atkfilter,c:GetControler(),LOCATION_MZONE,0,c)*400
 end
 function c72924435.filter(c,e,tp)
 	return c:IsRace(RACE_PLANT) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
