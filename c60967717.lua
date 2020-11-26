@@ -18,20 +18,21 @@ function c60967717.initial_effect(c)
 	e2:SetOperation(c60967717.repop)
 	c:RegisterEffect(e2)
 end
-function c60967717.filter(c,e,tp,check)
+function c60967717.filter(c,e,tp,ft)
 	return c:IsSetCard(0x157) and c:IsLevelBelow(4)
-		and ((check and c:IsCanBeSpecialSummoned(e,0,tp,false,false)) or c:IsAbleToHand())
+		and ((ft>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)) or c:IsAbleToHand())
 end
 function c60967717.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(c60967717.filter,tp,LOCATION_DECK,0,nil,Duel.GetMZoneCount(tp)>0)
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	local g=Duel.GetMatchingGroup(c60967717.filter,tp,LOCATION_DECK,0,nil,ft)
 	if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(60967717,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 		local tc=g:Select(tp,1,1,nil):GetFirst()
 		local opt=0
 		if not tc:IsAbleToHand() then
-			opt=0
-		elseif not tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 			opt=1
+		elseif not tc:IsCanBeSpecialSummoned(e,0,tp,false,false) or ft<=0 then
+			opt=0
 		else
 			opt=Duel.SelectOption(tp,1190,1152)
 		end
