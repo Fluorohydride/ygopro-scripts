@@ -20,11 +20,11 @@ function c60967717.initial_effect(c)
 end
 function c60967717.filter(c,e,tp,ft)
 	return c:IsSetCard(0x157) and c:IsLevelBelow(4)
-		and ((ft>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)) or c:IsAbleToHand())
+		and (c:IsAbleToHand() or (ft>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)))
 end
 function c60967717.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.GetMatchingGroup(c60967717.filter,tp,LOCATION_DECK,0,nil,ft)
+	local g=Duel.GetMatchingGroup(c60967717.filter,tp,LOCATION_DECK,0,nil,e,tp,ft)
 	if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(60967717,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 		local tc=g:Select(tp,1,1,nil):GetFirst()
