@@ -48,7 +48,7 @@ function c284224.matcheck(e,c)
 	end
 end
 function c284224.indtg(e,c)
-	return c:IsType(0x14f) and c:IsType(TYPE_FUSION)
+	return c:IsSetCard(0x14f) and c:IsType(TYPE_FUSION)
 end
 function c284224.indct(e,re,r,rp)
 	if bit.band(r,REASON_BATTLE)~=0 then
