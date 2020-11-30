@@ -35,6 +35,7 @@ function c23020408.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.ShuffleDeck(tp)
+		Duel.HintSelection(g)
 		if tc:IsLocation(LOCATION_DECK) then
 			Duel.MoveSequence(tc,0)
 		else
