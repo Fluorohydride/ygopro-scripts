@@ -46,6 +46,7 @@ function c84025439.initial_effect(c)
 	c:RegisterEffect(e4)
 	--spsummon
 	local e6=Effect.CreateEffect(c)
+	e6:SetDescription(aux.Stringid(84025439,1))
 	e6:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e6:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e6:SetProperty(EFFECT_FLAG_DELAY)
