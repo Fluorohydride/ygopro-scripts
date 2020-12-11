@@ -182,7 +182,7 @@ function Auxiliary.SpiritReturnTarget1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function Auxiliary.SpiritReturnCondition2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return not c:IsHasEffect(EFFECT_SPIRIT_DONOT_RETURN)
+	return not c:IsHasEffect(EFFECT_SPIRIT_DONOT_RETURN) and c:IsHasEffect(EFFECT_SPIRIT_MAYNOT_RETURN)
 end
 function Auxiliary.SpiritReturnTarget2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToHand() end
