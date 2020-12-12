@@ -54,9 +54,9 @@ function c86937530.cfilter(c,code)
 end
 function c86937530.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
-	if Duel.IsChainDisablable(0) then
+	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
+	if Duel.IsChainDisablable(0) and tc:IsFaceup() then
 		local g=Duel.GetMatchingGroup(c86937530.cfilter,tp,0,LOCATION_DECK+LOCATION_EXTRA,nil,tc:GetCode())
 		if g:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(86937530,2)) then
 			Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
@@ -66,8 +66,6 @@ function c86937530.thop(e,tp,eg,ep,ev,re,r,rp)
 			return
 		end
 	end
-	if tc:IsRelateToEffect(e) then
-		local rg=Group.FromCards(c,tc)
-		Duel.SendtoHand(rg,nil,REASON_EFFECT)
-	end
+	local rg=Group.FromCards(c,tc)
+	Duel.SendtoHand(rg,nil,REASON_EFFECT)
 end
