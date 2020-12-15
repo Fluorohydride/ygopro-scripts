@@ -7,6 +7,7 @@ function c96378317.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
+	e1:SetHintTiming(TIMING_DAMAGE_STEP)
 	e1:SetCountLimit(1,96378317)
 	e1:SetCondition(aux.dscon)
 	e1:SetTarget(c96378317.target)
@@ -27,14 +28,10 @@ end
 function c96378317.atkfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_BEAST+RACE_BEASTWARRIOR+RACE_WINDBEAST) and c:IsLinkState()
 end
-function c96378317.atkfilter2(c,e)
-	return c96378317.atkfilter(c) and c:IsCanBeEffectTarget(e)
-end
 function c96378317.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsController(tp) and c96378317.atkfilter(chkc) end
-	local g=Duel.GetMatchingGroup(c96378317.atkfilter2,tp,LOCATION_MZONE,0,nil,e)
-	if chk==0 then return #g>0 end
-	Duel.SelectTarget(tp,c96378317.atkfilter,tp,LOCATION_MZONE,0,1,#g,nil)
+	if chk==0 then return Duel.IsExistingTarget(c96378317.atkfilter,tp,LOCATION_MZONE,0,1,nil) end
+	Duel.SelectTarget(tp,c96378317.atkfilter,tp,LOCATION_MZONE,0,1,99,nil)
 end
 function c96378317.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e):Filter(Card.IsFaceup,nil)
