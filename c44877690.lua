@@ -54,7 +54,11 @@ function c44877690.cfilter(c)
 end
 function c44877690.retcon(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsExistingMatchingCard(c44877690.cfilter,tp,LOCATION_MZONE,0,1,e:GetHandler()) then return false end
-	return aux.SpiritReturnCondition(e,tp,eg,ep,ev,re,r,rp)
+	if e:IsHasType(EFFECT_TYPE_TRIGGER_F) then
+		return aux.SpiritReturnConditionForced(e,tp,eg,ep,ev,re,r,rp)
+	else
+		return aux.SpiritReturnConditionOptional(e,tp,eg,ep,ev,re,r,rp)
+	end
 end
 function c44877690.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(44877690)==0 end

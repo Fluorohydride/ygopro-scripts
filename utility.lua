@@ -162,29 +162,29 @@ function Auxiliary.SpiritReturnReg(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
 	e1:SetReset(RESET_EVENT+0xd6e0000+RESET_PHASE+PHASE_END)
-	e1:SetCondition(Auxiliary.SpiritReturnCondition1)
-	e1:SetTarget(Auxiliary.SpiritReturnTarget1)
+	e1:SetCondition(Auxiliary.SpiritReturnConditionForced)
+	e1:SetTarget(Auxiliary.SpiritReturnTargetForced)
 	e1:SetOperation(Auxiliary.SpiritReturnOperation)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCondition(Auxiliary.SpiritReturnCondition2)
-	e2:SetTarget(Auxiliary.SpiritReturnTarget2)
+	e2:SetCondition(Auxiliary.SpiritReturnConditionOptional)
+	e2:SetTarget(Auxiliary.SpiritReturnTargetOptional)
 	c:RegisterEffect(e2)
 end
-function Auxiliary.SpiritReturnCondition1(e,tp,eg,ep,ev,re,r,rp)
+function Auxiliary.SpiritReturnConditionForced(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return not c:IsHasEffect(EFFECT_SPIRIT_DONOT_RETURN) and not c:IsHasEffect(EFFECT_SPIRIT_MAYNOT_RETURN)
 end
-function Auxiliary.SpiritReturnTarget1(e,tp,eg,ep,ev,re,r,rp,chk)
+function Auxiliary.SpiritReturnTargetForced(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetHandler(),1,0,0)
 end
-function Auxiliary.SpiritReturnCondition2(e,tp,eg,ep,ev,re,r,rp)
+function Auxiliary.SpiritReturnConditionOptional(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return not c:IsHasEffect(EFFECT_SPIRIT_DONOT_RETURN) and c:IsHasEffect(EFFECT_SPIRIT_MAYNOT_RETURN)
 end
-function Auxiliary.SpiritReturnTarget2(e,tp,eg,ep,ev,re,r,rp,chk)
+function Auxiliary.SpiritReturnTargetOptional(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToHand() end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetHandler(),1,0,0)
 end
