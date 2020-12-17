@@ -80,6 +80,7 @@ function c87460579.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttackTarget()
 	if tc:IsControler(tp) then tc=Duel.GetAttacker() end
 	tc:RegisterFlagEffect(87460579,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
+	Duel.AdjustInstantly(c)
 end
 function c87460579.distg(e,c)
 	return c:GetFlagEffect(87460579)~=0
