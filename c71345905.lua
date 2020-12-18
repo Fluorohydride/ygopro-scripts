@@ -73,6 +73,7 @@ function c71345905.disop(e,tp,eg,ep,ev,re,r,rp)
 	local bc=c:GetBattleTarget()
 	if bc then
 		bc:RegisterFlagEffect(71345905,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
+		Duel.AdjustInstantly(e:GetHandler())
 	end
 end
 function c71345905.distg(e,c)

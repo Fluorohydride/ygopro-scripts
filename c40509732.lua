@@ -53,6 +53,7 @@ function c40509732.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetBattleTarget()
 	if not tc then return end
 	tc:RegisterFlagEffect(40509732,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
+	Duel.AdjustInstantly(e:GetHandler())
 end
 function c40509732.distg(e,c)
 	return c:GetFlagEffect(40509732)~=0
