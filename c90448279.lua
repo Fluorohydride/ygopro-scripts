@@ -88,5 +88,6 @@ function c90448279.ovop(e,tp,eg,ep,ev,re,r,rp)
 		if tc then
 			Duel.Overlay(c,tc)
 		end
+		Duel.ShuffleDeck(tp)
 	end
 end
