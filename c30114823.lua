@@ -43,6 +43,8 @@ function c30114823.tdcon(e,tp,eg,ep,ev,re,r,rp)
 			Duel.HintSelection(Group.FromCards(c))
 		end
 		return true
+	else
+		return false
 	end
 end
 function c30114823.tdfilter(c,chk)
