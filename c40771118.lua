@@ -35,7 +35,7 @@ function c40771118.thfilter(c)
 	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsRace(RACE_FIEND) and c:IsAbleToHand()
 end
 function c40771118.cfilter(c)
-	return c:IsFaceup() and (c:IsCode(94212438) or c:IsCode(31893528,67287533,94772232,30170981))
+	return c:IsFaceup() and (c:IsCode(94212438) or c:IsSetCode(0x1c))
 end
 function c40771118.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and chkc:IsControler(tp) and c40771118.thfilter(chkc) end
@@ -59,7 +59,7 @@ function c40771118.plcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c40771118.plfilter(c,tp,mc)
-	if not c:IsCode(31893528,67287533,94772232,30170981) then return false end
+	if not c:IsSetCode(0x1c) then return false end
 	if Duel.IsPlayerAffectedByEffect(tp,16625614) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,c:GetCode(),0,0x11,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP,tp,SUMMON_VALUE_DARK_SANCTUARY) then return true end
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
