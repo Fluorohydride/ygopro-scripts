@@ -31,9 +31,7 @@ function c9560338.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if ct>=4 then
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 	end
-	if ct>=5 then
-		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
-	end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c9560338.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
