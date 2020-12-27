@@ -32,20 +32,16 @@ function c30114823.matval(e,lc,mg,c,tp)
 	if not lc:IsSetCard(0x101) then return false,nil end
 	return true,not mg or mg:IsExists(c30114823.mfilter,1,nil) and not mg:IsExists(c30114823.exmfilter,1,nil)
 end
+function c30114823.cfilter(c)
+	return c:IsCode(30114823) and c:IsLocation(LOCATION_GRAVE) and c:IsPreviousLocation(LOCATION_ONFIELD)
+end
 function c30114823.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	e:SetLabel(0)
-	if c:IsLocation(LOCATION_GRAVE) and c:IsPreviousLocation(LOCATION_ONFIELD+LOCATION_HAND) and r==REASON_LINK and c:GetReasonCard():IsSetCard(0x101) then
-		if c:IsPreviousLocation(LOCATION_ONFIELD) then
-			e:SetLabel(1)
-			Duel.Hint(HINT_OPSELECTED,tp,aux.Stringid(30114823,1))
-			Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(30114823,1))
-			Duel.HintSelection(Group.FromCards(c))
-		end
-		return true
-	else
-		return false
-	end
+	local rc=c:GetReasonCard()
+	if not (c:IsLocation(LOCATION_GRAVE) and c:IsPreviousLocation(LOCATION_ONFIELD+LOCATION_HAND) and r==REASON_LINK and rc:IsSetCard(0x101)) then return false end
+	if c:IsPreviousLocation(LOCATION_ONFIELD) or rc:GetMaterial():IsExists(c30114823.cfilter,1,nil) then e:SetLabel(1) end
+	return true
 end
 function c30114823.tdfilter(c,chk)
 	return c:IsRace(RACE_CYBERSE) and c:IsAttackBelow(1200) and (c:IsAbleToGrave() or (chk==1 and c:IsAbleToHand()))
