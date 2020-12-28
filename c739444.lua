@@ -19,9 +19,8 @@ function c739444.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_DISABLE_FIELD)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetProperty(EFFECT_FLAG_REPEAT)
 	e2:SetCondition(c739444.discon)
-	e2:SetOperation(c739444.disop)
+	e2:SetValue(c739444.disval)
 	c:RegisterEffect(e2)
 end
 function c739444.matfilter(c)
@@ -41,9 +40,7 @@ end
 function c739444.discon(e)
 	return e:GetHandler():GetFlagEffect(739444)~=0
 end
-function c739444.disop(e,tp)
+function c739444.disval(e)
 	local c=e:GetHandler()
-	local flag1=bit.band(c:GetLinkedZone(tp),0xffffff00)
-	local flag2=bit.band(c:GetLinkedZone(tp),0xff00ffff)
-	return flag1+flag2
+	return c:GetLinkedZone(0)
 end
