@@ -38,9 +38,7 @@ function c30114823.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	if c:IsLocation(LOCATION_GRAVE) and c:IsPreviousLocation(LOCATION_ONFIELD+LOCATION_HAND) and r==REASON_LINK and c:GetReasonCard():IsSetCard(0x101) then
 		if c:IsPreviousLocation(LOCATION_ONFIELD) then
 			e:SetLabel(1)
-			Duel.Hint(HINT_OPSELECTED,tp,aux.Stringid(30114823,1))
-			Duel.Hint(HINT_OPSELECTED,1-tp,aux.Stringid(30114823,1))
-			Duel.HintSelection(Group.FromCards(c))
+			c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(30114823,1))
 		end
 		return true
 	else
