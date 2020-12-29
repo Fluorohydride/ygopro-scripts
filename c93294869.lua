@@ -45,5 +45,5 @@ function c93294869.setop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c93294869.flipop(e,tp,eg,ep,ev,re,r,rp)
-	e:GetHandler():RegisterFlagEffect(93294869,0,0,0)
+	e:GetHandler():RegisterFlagEffect(93294869,RESET_EVENT+RESETS_STANDARD,0,1)
 end
