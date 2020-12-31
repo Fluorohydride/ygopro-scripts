@@ -26,9 +26,19 @@ function c16684346.initial_effect(c)
 	e2:SetOperation(c16684346.tdop)
 	c:RegisterEffect(e2)
 end
+function c16684346.exmatcheck(c,lc,tp)
+	if not c:IsLocation(LOCATION_HAND) then return false end
+	local le={c:IsHasEffect(EFFECT_EXTRA_LINK_MATERIAL,tp)}
+	for _,te in pairs(le) do
+		local f=te:GetValue()
+		local related,valid=f(te,lc,nil,c,tp)
+		if related and not te:GetHandler():IsCode(16684346) then return false end
+	end
+	return true
+end
 function c16684346.matval(e,lc,mg,c,tp)
 	if not lc:IsRace(RACE_CYBERSE) then return false,nil end
-	return true,not mg or mg:IsContains(e:GetHandler()) and not mg:IsExists(Card.IsLocation,1,nil,LOCATION_HAND)
+	return true,not mg or mg:IsContains(e:GetHandler()) and not mg:IsExists(c16684346.exmatcheck,1,nil,lc,tp)
 end
 function c16684346.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
