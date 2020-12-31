@@ -9,7 +9,7 @@ function c92065772.initial_effect(c)
 	e1:SetOperation(c92065772.operation)
 	c:RegisterEffect(e1)
 end
-function c90502999.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function c92065772.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk=0 then return true end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0)<=0
 		and Duel.GetLocationCount(1-tp,LOCATION_MZONE,PLAYER_NONE,0)<=0 then return end
