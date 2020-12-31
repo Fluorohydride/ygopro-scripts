@@ -2501,7 +2501,7 @@ function Auxiliary.tdcfop(c)
 				Duel.SendtoDeck(g,nil,2,REASON_COST)
 			end
 end
---
+--return the global index of the zone in (p,loc,seq)
 function Auxiliary.SequenceToGlobal(p,loc,seq)
 	if p~=0 and p~=1 then
 		return 0
