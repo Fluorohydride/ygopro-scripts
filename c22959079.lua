@@ -22,8 +22,7 @@ function c22959079.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c22959079.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	local seq=tc:GetSequence()
-	if tc:IsControler(1-tp) then seq=seq+16 end
+	local val=aux.SequenceToGlobal(tc:GetControler(),LOCATION_MZONE,tc:GetSequence())
 	if tc:IsRelateToEffect(e) and Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -37,10 +36,9 @@ function c22959079.operation(e,tp,eg,ep,ev,re,r,rp)
 		local e2=Effect.CreateEffect(e:GetHandler())
 		e2:SetType(EFFECT_TYPE_FIELD)
 		e2:SetCode(EFFECT_DISABLE_FIELD)
-		e2:SetLabel(seq)
 		e2:SetLabelObject(tc)
 		e2:SetCondition(c22959079.discon)
-		e2:SetOperation(c22959079.disop)
+		e2:SetValue(val)
 		Duel.RegisterEffect(e2,tp)
 	end
 end
@@ -53,9 +51,8 @@ end
 function c22959079.discon(e,c)
 	if e:GetLabelObject():IsLocation(LOCATION_REMOVED) then
 		return true
-	else e:Reset() return false end
-end
-function c22959079.disop(e,tp)
-	local dis1=bit.lshift(0x1,e:GetLabel())
-	return dis1
+	else
+		e:Reset()
+		return false
+	end
 end

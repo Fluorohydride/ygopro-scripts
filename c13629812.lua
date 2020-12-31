@@ -39,26 +39,21 @@ function c13629812.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
-	local seq=tc:GetSequence()
-	if tc:IsControler(1-tp) then seq=seq+16 end
+	local val=aux.SequenceToGlobal(tc:GetControler(),LOCATION_MZONE,tc:GetSequence())
 	if tc:IsRelateToEffect(e) and Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)~=0 and tc:IsLocation(LOCATION_REMOVED) then
 		c:SetCardTarget(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_DISABLE_FIELD)
 		e1:SetRange(LOCATION_SZONE)
-		e1:SetLabel(seq)
 		e1:SetCondition(c13629812.discon)
-		e1:SetOperation(c13629812.disop)
+		e1:SetValue(val)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e1)
 	end
 end
 function c13629812.discon(e)
 	return e:GetHandler():GetCardTargetCount()>0
-end
-function c13629812.disop(e,tp)
-	return bit.lshift(0x1,e:GetLabel())
 end
 function c13629812.retcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -73,7 +68,7 @@ function c13629812.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=e:GetLabelObject()
 	if tc:IsRelateToEffect(e) then
-		local zone=bit.lshift(0x1,tc:GetPreviousSequence())
+		local zone=0x1<<tc:GetPreviousSequence()
 		Duel.ReturnToField(tc,tc:GetPreviousPosition(),zone)
 	end
 end

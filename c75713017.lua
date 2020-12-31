@@ -15,7 +15,7 @@ function c75713017.atcon(e,tp,eg,ep,ev,re,r,rp)
 	local bc=c:GetBattleTarget()
 	if not bc then return false end
 	local seq=bc:GetPreviousSequence()
-	e:SetLabel(seq+16)
+	e:SetLabel(seq)
 	return Duel.GetAttacker()==c and aux.bdocon(e,tp,eg,ep,ev,re,r,rp) and seq<5 and c:IsChainAttackable(0)
 end
 function c75713017.atcost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -24,14 +24,12 @@ function c75713017.atcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c75713017.atop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ChainAttack()
+	local seq=e:GetLabel()
+	local val=aux.SequenceToGlobal(1-tp,LOCATION_MZONE,seq)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_DISABLE_FIELD)
-	e1:SetLabel(e:GetLabel())
-	e1:SetOperation(c75713017.disop)
+	e1:SetValue(val)
 	e1:SetReset(RESET_PHASE+PHASE_END,2)
 	Duel.RegisterEffect(e1,tp)
-end
-function c75713017.disop(e,tp)
-	return bit.lshift(0x1,e:GetLabel())
 end

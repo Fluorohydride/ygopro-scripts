@@ -81,15 +81,14 @@ function c10584050.activate(e,tp,eg,ep,ev,re,r,rp)
 		sc=sg:GetNext()
 	end
 	if dis~=0 then
+		if tp==1 then
+			dis=((dis&0xffff)<<16)|((dis>>16)&0xffff)
+		end
 		local e3=Effect.CreateEffect(c)
 		e3:SetType(EFFECT_TYPE_FIELD)
 		e3:SetCode(EFFECT_DISABLE_FIELD)
-		e3:SetOperation(c10584050.disop)
+		e3:SetValue(dis)
 		e3:SetReset(RESET_PHASE+PHASE_END)
-		e3:SetLabel(dis)
 		Duel.RegisterEffect(e3,tp)
 	end
-end
-function c10584050.disop(e,tp)
-	return e:GetLabel()
 end

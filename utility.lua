@@ -2501,3 +2501,24 @@ function Auxiliary.tdcfop(c)
 				Duel.SendtoDeck(g,nil,2,REASON_COST)
 			end
 end
+--
+function Auxiliary.SequenceToGlobal(p,loc,seq)
+	if p~=0 and p~=1 then
+		return 0
+	end
+	if loc==LOCATION_MZONE then
+		if seq<=6 then
+			return 0x1<<(16*p+seq)
+		else
+			return 0
+		end
+	elseif loc == LOCATION_SZONE then
+		if seq<=4 then
+			return 0x10<<(16*p+seq)
+		else
+			return 0
+		end
+	else
+		return 0
+	end
+end
