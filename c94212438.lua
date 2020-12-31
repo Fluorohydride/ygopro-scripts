@@ -83,10 +83,10 @@ function c94212438.plop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c94212438.cfilter1(c,tp)
-	return c:IsControler(tp) and (c:IsCode(94212438) or c:IsSetCode(0x1c))
+	return c:IsControler(tp) and (c:IsCode(94212438) or c:IsSetCard(0x1c))
 end
 function c94212438.cfilter2(c)
-	return c:IsFaceup() and (c:IsCode(94212438) or c:IsSetCode(0x1c))
+	return c:IsFaceup() and (c:IsCode(94212438) or c:IsSetCard(0x1c))
 end
 function c94212438.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c94212438.cfilter1,1,nil,tp)
@@ -96,7 +96,7 @@ function c94212438.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(g,REASON_EFFECT)
 end
 function c94212438.cfilter3(c)
-	return c:IsFaceup() and c:IsSetCode(0x1c)
+	return c:IsFaceup() and c:IsSetCard(0x1c)
 end
 function c94212438.winop(e,tp,eg,ep,ev,re,r,rp)
 	local WIN_REASON_DESTINY_BOARD=0x15

@@ -45,7 +45,7 @@ function c14386013.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c14386013.drfilter(c)
-	return (c:IsCode(94212438) or c:IsSetCode(0x1c)) and c:IsAbleToDeck()
+	return (c:IsCode(94212438) or c:IsSetCard(0x1c)) and c:IsAbleToDeck()
 end
 function c14386013.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp)
