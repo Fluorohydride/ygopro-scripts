@@ -35,8 +35,15 @@ end
 function c75130221.discon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	e:SetLabel(0)
-	if c:IsPreviousLocation(LOCATION_ONFIELD) then e:SetLabel(1) end
-	return c:IsLocation(LOCATION_GRAVE) and c:IsPreviousLocation(LOCATION_ONFIELD+LOCATION_HAND) and r==REASON_LINK and c:GetReasonCard():IsSetCard(0x101)
+	if c:IsLocation(LOCATION_GRAVE) and c:IsPreviousLocation(LOCATION_ONFIELD+LOCATION_HAND) and r==REASON_LINK and c:GetReasonCard():IsSetCard(0x101) then
+		if c:IsPreviousLocation(LOCATION_ONFIELD) then
+			e:SetLabel(1)
+			c:RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(75130221,1))
+		end
+		return true
+	else
+		return false
+	end
 end
 function c75130221.disfilter(c)
 	return c:IsFaceup() and (c:IsAttackAbove(1) or aux.disfilter1(c))
