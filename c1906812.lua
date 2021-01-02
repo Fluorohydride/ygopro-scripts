@@ -34,7 +34,7 @@ function c1906812.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c1906812.mfilter(c)
-	return c:IsStatus(STATUS_SPSUMMON_TURN) and c:IsFusionType(TYPE_EFFECT)
+	return c:IsStatus(STATUS_SPSUMMON_TURN) and c:IsFusionType(TYPE_EFFECT) and c:IsLocation(LOCATION_MZONE)
 end
 function c1906812.seqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
