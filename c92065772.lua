@@ -10,7 +10,8 @@ function c92065772.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c92065772.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk=0 then return true end
+	if chk==0 then return true end
+	e:SetLabel(0)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0)<=0
 		and Duel.GetLocationCount(1-tp,LOCATION_MZONE,PLAYER_NONE,0)<=0 then return end
 	local dis1=Duel.SelectDisableField(tp,1,LOCATION_MZONE,LOCATION_MZONE,0xe000e0)
