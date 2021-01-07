@@ -45,7 +45,7 @@ function c86133013.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		tg=eg
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-		local tg=eg:FilterSelect(tp,c86133013.tgfilter,1,1,nil,e,tp,rp,g,ft)
+		tg=eg:FilterSelect(tp,c86133013.tgfilter,1,1,nil,e,tp,rp,g,ft)
 	end
 	Duel.SetTargetCard(tg)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
