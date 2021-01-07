@@ -117,7 +117,7 @@ function c44190146.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c44190146.descon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	return rc:GetFieldID()==c44190146[0][rc]
+	return rc:IsControler(tp) and rc:GetFieldID()==c44190146[0][rc]
 end
 function c44190146.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
