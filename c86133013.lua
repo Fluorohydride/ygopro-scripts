@@ -13,7 +13,7 @@ function c86133013.initial_effect(c)
 end
 function c86133013.tgfilter(c,e,tp,rp,g,ft)
 	local lv=c:GetLevel()
-	if not ((c:IsReason(REASON_BATTLE) or (rp==tp and c:IsReason(REASON_EFFECT)))
+	if not ((c:IsReason(REASON_BATTLE) or (rp==1-tp and c:IsReason(REASON_EFFECT)))
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
 		and c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and c:IsCanBeEffectTarget(e)
 		and lv>0) then return false end
