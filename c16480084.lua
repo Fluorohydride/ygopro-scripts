@@ -1,7 +1,16 @@
 --エヴォルダー・ペルタ
 function c16480084.initial_effect(c)
+	--defup
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
+	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e1:SetCondition(aux.evospcon)
+	e1:SetOperation(c16480084.operation)
+	c:RegisterEffect(e1)
 end
-function c16480084.evolreg(c)
+function c16480084.operation(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	if not c:IsRelateToEffect(e) then return end
 	--defup
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

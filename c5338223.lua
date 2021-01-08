@@ -43,7 +43,5 @@ function c5338223.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c5338223.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
 		Duel.SpecialSummon(g,SUMMON_VALUE_EVOLTILE,tp,tp,false,false,POS_FACEUP)
-		local rf=g:GetFirst().evolreg
-		if rf then rf(g:GetFirst()) end
 	end
 end

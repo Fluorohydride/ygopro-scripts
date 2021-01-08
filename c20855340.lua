@@ -31,7 +31,5 @@ function c20855340.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.SpecialSummon(tc,SUMMON_VALUE_EVOLTILE,tp,tp,false,false,POS_FACEUP)
-		local rf=tc.evolreg
-		if rf then rf(tc) end
 	end
 end
