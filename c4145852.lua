@@ -45,11 +45,12 @@ function c4145852.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c4145852.discon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	local tg=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	return c:GetOriginalRace()==RACE_BEASTWARRIOR
 		and not c:IsStatus(STATUS_BATTLE_DESTROYED) and ep==1-tp
 		and re:IsActiveType(TYPE_TRAP) and Duel.IsChainNegatable(ev)
 		and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET)
-		and Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS):IsContains(c)
+		and tg and tg:IsContains(c)
 end
 function c4145852.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
