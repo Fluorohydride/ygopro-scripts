@@ -57,11 +57,14 @@ end
 function c21249921.eqlimit(e,c)
 	return e:GetOwner()==c
 end
+function c21249921.atkfilter(c,tp)
+	return c:IsControler(tp) and c:IsAbleToGraveAsCost()
+end
 function c21249921.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:GetEquipGroup():IsExists(Card.IsAbleToGraveAsCost,1,nil) end
+	if chk==0 then return c:GetEquipGroup():IsExists(c21249921.atkfilter,1,nil,e:GetHandlerPlayer()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=c:GetEquipGroup():FilterSelect(tp,Card.IsAbleToGraveAsCost,1,1,nil)
+	local g=c:GetEquipGroup():FilterSelect(tp,c21249921.atkfilter,1,1,nil,e:GetHandlerPlayer())
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c21249921.atkop(e,tp,eg,ep,ev,re,r,rp)
