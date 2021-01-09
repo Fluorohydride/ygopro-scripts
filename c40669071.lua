@@ -43,17 +43,18 @@ function c40669071.lztg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_ZONE,tp,dis)
 end
 function c40669071.lzop(e,tp,eg,ep,ev,re,r,rp)
+	local zone=e:GetLabel()
+	if tp==1 then
+		zone=((zone&0xffff)<<16)|((zone>>16)&0xffff)
+	end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetRange(LOCATION_MZONE)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetCode(EFFECT_DISABLE_FIELD)
-	e1:SetOperation(c40669071.disop)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
-	e1:SetLabel(e:GetLabel())
+	e1:SetValue(zone)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	e:GetHandler():RegisterEffect(e1)
-end
-function c40669071.disop(e,tp)
-	return e:GetLabel()
 end
 function c40669071.tgtg(e,c)
 	return e:GetHandler():GetLinkedGroup():IsContains(c)

@@ -33,8 +33,7 @@ function c46247282.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCode(EFFECT_DISABLE_FIELD)
-	e4:SetProperty(EFFECT_FLAG_REPEAT)
-	e4:SetOperation(c46247282.disop)
+	e4:SetValue(c46247282.disval)
 	c:RegisterEffect(e4)
 end
 function c46247282.cfilter(c)
@@ -73,7 +72,7 @@ function c46247282.desop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c46247282.disop(e,tp)
+function c46247282.disval(e)
 	local c=e:GetHandler()
-	return c:GetColumnZone(LOCATION_ONFIELD)
+	return c:GetColumnZone(LOCATION_ONFIELD,0)
 end

@@ -46,16 +46,13 @@ function c32224143.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c32224143.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	local seq=tc:GetSequence()
-	if tc:IsControler(1-tp) then seq=seq+16 end
+	local val=aux.SequenceToGlobal(tc:GetControler(),LOCATION_MZONE,tc:GetSequence())
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_DISABLE_FIELD)
-		e1:SetLabel(seq)
 		e1:SetCondition(c32224143.discon)
-		e1:SetOperation(c32224143.disop)
-		e1:SetReset(0)
+		e1:SetValue(val)
 		Duel.RegisterEffect(e1,tp)
 	end
 end
@@ -65,9 +62,6 @@ function c32224143.discon(e)
 	end
 	e:Reset()
 	return false
-end
-function c32224143.disop(e,tp)
-	return bit.lshift(0x1,e:GetLabel())
 end
 function c32224143.atkcon(e)
 	return Duel.IsExistingMatchingCard(c32224143.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,e:GetHandler())

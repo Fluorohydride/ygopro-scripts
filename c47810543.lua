@@ -40,16 +40,13 @@ function c47810543.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local seq=4-g:GetFirst():GetSequence()
 		if Duel.CheckLocation(1-tp,LOCATION_MZONE,seq) then
+			local val=aux.SequenceToGlobal(1-tp,LOCATION_MZONE,seq)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_FIELD)
 			e1:SetCode(EFFECT_DISABLE_FIELD)
+			e1:SetValue(val)
 			e1:SetReset(RESET_PHASE+PHASE_END)
-			e1:SetLabel(16+seq)
-			e1:SetOperation(c47810543.disop)
 			Duel.RegisterEffect(e1,tp)
 		end
 	end
-end
-function c47810543.disop(e,tp)
-	return 0x1<<e:GetLabel()
 end

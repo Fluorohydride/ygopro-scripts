@@ -31,21 +31,17 @@ function c82685480.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()==0 then return end
 	if Duel.Destroy(g,REASON_EFFECT)==0 then return end
-	local seq=0
+	local val=0
 	local og=Duel.GetOperatedGroup()
 	local tc=og:GetFirst()
 	while tc do
-		seq=bit.replace(seq,0x1,tc:GetPreviousSequence())
+		val=val|aux.SequenceToGlobal(tc:GetPreviousControler(),LOCATION_MZONE,tc:GetPreviousSequence())
 		tc=og:GetNext()
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_DISABLE_FIELD)
-	e1:SetLabel(seq*0x10000)
-	e1:SetOperation(c82685480.disop)
+	e1:SetValue(val)
 	e1:SetReset(RESET_PHASE+PHASE_END,2)
 	Duel.RegisterEffect(e1,tp)
-end
-function c82685480.disop(e,tp)
-	return e:GetLabel()
 end

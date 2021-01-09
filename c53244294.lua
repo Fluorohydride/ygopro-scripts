@@ -59,15 +59,16 @@ function c53244294.ztg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_ZONE,tp,dis)
 end
 function c53244294.zop(e,tp,eg,ep,ev,re,r,rp)
+	local zone=e:GetLabel()
+	if tp==1 then
+		zone=((zone&0xffff)<<16)|((zone>>16)&0xffff)
+	end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCode(EFFECT_DISABLE_FIELD)
-	e1:SetOperation(c53244294.disop)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetValue(zone)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
-	e1:SetLabel(e:GetLabel())
 	e:GetHandler():RegisterEffect(e1)
-end
-function c53244294.disop(e,tp)
-	return e:GetLabel()
 end
