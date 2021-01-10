@@ -12,7 +12,6 @@ function c69112325.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_MZONE,0)
 	e2:SetTarget(c69112325.indtg)
-	e2:SetCountLimit(1)
 	e2:SetValue(c69112325.valcon)
 	c:RegisterEffect(e2)
 end
@@ -20,5 +19,7 @@ function c69112325.indtg(e,c)
 	return c:IsRace(RACE_PLANT+RACE_BEAST+RACE_BEASTWARRIOR)
 end
 function c69112325.valcon(e,re,r,rp)
-	return bit.band(r,REASON_BATTLE)~=0
+	if bit.band(r,REASON_BATTLE)~=0 then
+		return 1
+	else return 0 end
 end
