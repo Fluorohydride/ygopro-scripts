@@ -1,4 +1,4 @@
---Destined Rivals
+--対峙する宿命
 function c22634473.initial_effect(c)
 	aux.AddCodeList(c,89631139,46986414)
 	--Activate

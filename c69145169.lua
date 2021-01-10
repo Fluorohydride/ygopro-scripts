@@ -1,4 +1,4 @@
---Successor Soul
+--受け継ぎし魂
 function c69145169.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

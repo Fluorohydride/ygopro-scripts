@@ -1,4 +1,4 @@
---Strength in Unity
+--束ねられし力
 function c96239878.initial_effect(c)
 	aux.AddCodeList(c,89631139,46986414)
 	--Activate
