@@ -16,7 +16,7 @@ function c72204747.filter1(c,e,sp)
 		and Duel.IsExistingMatchingCard(c72204747.filter2,sp,LOCATION_DECK,0,1,nil,lv,e,sp)
 end
 function c72204747.filter2(c,lv,e,sp)
-	return c:IsLevelBelow(lv) and c:IsSetCard(0xc008)  and c:IsCanBeSpecialSummoned(e,0,sp,false,false)
+	return c:IsLevelBelow(lv) and c:IsSetCard(0xc008) and c:IsCanBeSpecialSummoned(e,0,sp,false,false)
 end
 function c72204747.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c72204747.filter1(chkc,e,tp) end

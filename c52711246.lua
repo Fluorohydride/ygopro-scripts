@@ -55,7 +55,7 @@ function c52711246.operation(e,tp,eg,ep,ev,re,r,rp)
 			Duel.HintSelection(t2)
 			Duel.Destroy(t2,REASON_EFFECT)
 		end
-		if b3 and #g3>0  and Duel.SelectYesNo(tp,aux.Stringid(52711246,3)) then
+		if b3 and #g3>0 and Duel.SelectYesNo(tp,aux.Stringid(52711246,3)) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 			local t3=g3:Select(tp,1,1,nil)

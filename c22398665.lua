@@ -96,11 +96,11 @@ function c22398665.RitualCheck(g,tp,c,atk,greater_or_equal)
 end
 function c22398665.RitualCheckAdditional(c,atk,greater_or_equal)
 	if greater_or_equal=="Equal" then
-		return  function(g)
+		return	function(g)
 					return (not Auxiliary.RGCheckAdditional or Auxiliary.RGCheckAdditional(g)) and g:GetSum(Card.GetAttack)<=atk
 				end
 	else
-		return  function(g,ec)
+		return	function(g,ec)
 					if atk==0 then return #g<=1 end
 					if ec then
 						return (not Auxiliary.RGCheckAdditional or Auxiliary.RGCheckAdditional(g,ec)) and g:GetSum(Card.GetAttack)-Card.GetAttack(ec)<=atk

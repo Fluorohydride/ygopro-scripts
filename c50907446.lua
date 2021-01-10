@@ -131,7 +131,7 @@ function c50907446.FShaddollSpFilter2(c,fc,tp,mc,chkf)
 		and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
 end
 function c50907446.FShaddollCondition()
-	return  function(e,g,gc,chkf)
+	return	function(e,g,gc,chkf)
 			if g==nil then return aux.MustMaterialCheck(nil,e:GetHandlerPlayer(),EFFECT_MUST_BE_FMATERIAL) end
 			local c=e:GetHandler()
 			local mg=g:Filter(c50907446.FShaddollFilter,nil,c)
@@ -149,7 +149,7 @@ function c50907446.FShaddollCondition()
 		end
 end
 function c50907446.FShaddollOperation()
-	return  function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
+	return	function(e,tp,eg,ep,ev,re,r,rp,gc,chkf)
 			local c=e:GetHandler()
 			local mg=eg:Filter(c50907446.FShaddollFilter,nil,c)
 			local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)

@@ -6,7 +6,7 @@ function c47942531.initial_effect(c)
 	e1:SetCode(EFFECT_MATERIAL_CHECK)
 	e1:SetValue(c47942531.valcheck)
 	c:RegisterEffect(e1)
-	--give atk effect only when  summon
+	--give atk effect only when summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_SUMMON_COST)

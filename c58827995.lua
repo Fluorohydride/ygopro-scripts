@@ -16,8 +16,8 @@ function c58827995.cfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost() and c:IsLevelAbove(1) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup())
 end
 function c58827995.fselect(g,tp)
-    Duel.SetSelectedCard(g)
-    return g:CheckWithSumGreater(Card.GetLevel,4) and aux.mzctcheck(g,tp)
+	Duel.SetSelectedCard(g)
+	return g:CheckWithSumGreater(Card.GetLevel,4) and aux.mzctcheck(g,tp)
 end
 function c58827995.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE+LOCATION_HAND,0)
