@@ -51,7 +51,7 @@ end
 function c27407330.rmop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c27407330.filter,tp,LOCATION_DECK,0,1,1,nil)
-	if g:GetCount()>0 then 
+	if g:GetCount()>0 then
 		Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 	end
 end

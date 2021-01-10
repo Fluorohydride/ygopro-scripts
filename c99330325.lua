@@ -23,7 +23,7 @@ function c99330325.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c99330325.chkfilter1(c,e,tp)
-	return c:IsSetCard(0xd3) and c:IsType(TYPE_MONSTER) and 
+	return c:IsSetCard(0xd3) and c:IsType(TYPE_MONSTER) and
 		not c:IsHasEffect(EFFECT_REVIVE_LIMIT) and Duel.IsPlayerCanSpecialSummon(tp,0,POS_FACEUP,tp,c)
 		and Duel.IsExistingMatchingCard(c99330325.chkfilter2,tp,LOCATION_DECK,0,1,nil,e,tp,c:GetCode())
 end

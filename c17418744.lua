@@ -18,7 +18,7 @@ function c17418744.counterfilter(c)
 end
 function c17418744.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(17418744,tp,ACTIVITY_SUMMON)==0
-		and Duel.GetCustomActivityCount(17418744,tp,ACTIVITY_SPSUMMON)==0 
+		and Duel.GetCustomActivityCount(17418744,tp,ACTIVITY_SPSUMMON)==0
 		and Duel.GetCustomActivityCount(17418744,tp,ACTIVITY_FLIPSUMMON)==0 end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)

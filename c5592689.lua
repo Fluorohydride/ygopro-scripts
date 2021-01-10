@@ -30,7 +30,7 @@ function c5592689.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c5592689.sscon(e,tp,eg,ep,ev,re,r,rp)
-	return tp==Duel.GetTurnPlayer() and not Duel.IsExistingMatchingCard(c5592689.filter,tp,LOCATION_ONFIELD,0,1,nil) 
+	return tp==Duel.GetTurnPlayer() and not Duel.IsExistingMatchingCard(c5592689.filter,tp,LOCATION_ONFIELD,0,1,nil)
 end
 function c5592689.sstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

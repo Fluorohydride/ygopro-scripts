@@ -1,4 +1,4 @@
---発条機雷ゼンマイン 
+--発条機雷ゼンマイン
 function c78156759.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)

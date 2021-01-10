@@ -38,7 +38,7 @@ function c1372887.cfilter(c,tp)
 	return c:IsControler(1-tp) and not c:IsReason(REASON_DRAW) and c:IsPreviousLocation(LOCATION_DECK+LOCATION_GRAVE)
 end
 function c1372887.drcon1(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c1372887.cfilter,1,nil,tp) 
+	return eg:IsExists(c1372887.cfilter,1,nil,tp)
 		and (not re:IsHasType(EFFECT_TYPE_ACTIONS) or re:IsHasType(EFFECT_TYPE_CONTINUOUS))
 end
 function c1372887.drop1(e,tp,eg,ep,ev,re,r,rp)
@@ -46,7 +46,7 @@ function c1372887.drop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Draw(tp,1,REASON_EFFECT)
 end
 function c1372887.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c1372887.cfilter,1,nil,tp) and Duel.GetFlagEffect(tp,1372887)==0 
+	return eg:IsExists(c1372887.cfilter,1,nil,tp) and Duel.GetFlagEffect(tp,1372887)==0
 		and re:IsHasType(EFFECT_TYPE_ACTIONS) and not re:IsHasType(EFFECT_TYPE_CONTINUOUS)
 end
 function c1372887.regop(e,tp,eg,ep,ev,re,r,rp)

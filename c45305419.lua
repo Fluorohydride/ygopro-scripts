@@ -17,7 +17,7 @@ function c45305419.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c45305419.filter(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false) 
+	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_GRAVE,0,2,c,c:GetCode())
 end
 function c45305419.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

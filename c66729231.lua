@@ -15,7 +15,7 @@ function c66729231.initial_effect(c)
 end
 function c66729231.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,1000) end
-	Duel.PayLPCost(tp,1000) 
+	Duel.PayLPCost(tp,1000)
 end
 function c66729231.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end

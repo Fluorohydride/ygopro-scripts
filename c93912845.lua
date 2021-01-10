@@ -41,7 +41,7 @@ function c93912845.activate(e,tp,eg,ep,ev,re,r,rp)
 			tc:RegisterEffect(e2,true)
 		end
 	end
-	if Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>1 
+	if Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>1
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,93912846,0,0x4011,1500,1500,3,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP,1-tp)
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
 		for i=1,2 do

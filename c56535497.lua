@@ -28,7 +28,7 @@ end
 function c56535497.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return true end
-	if Duel.GetCurrentPhase()==PHASE_DAMAGE or 
+	if Duel.GetCurrentPhase()==PHASE_DAMAGE or
 		(Duel.IsExistingTarget(c56535497.filter,tp,LOCATION_MZONE,LOCATION_MZONE,2,nil) and Duel.SelectYesNo(tp,aux.Stringid(56535497,0))) then
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DAMAGE_STEP)
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(56535497,2))
@@ -37,7 +37,7 @@ function c56535497.target1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(56535497,3))
 		Duel.SelectTarget(tp,c56535497.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,rg:GetFirst())
 		e:GetHandler():RegisterFlagEffect(56535497,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
-	else 
+	else
 		e:SetLabelObject(nil)
 		e:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	end

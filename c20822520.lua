@@ -48,7 +48,7 @@ function c20822520.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and not re:GetHandler():IsSetCard(0x106e)
 end
 function c20822520.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then 
+	if chk==0 then
 		if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<2 then return false end
 		local g=Duel.GetDecktopGroup(tp,2)
 		return g:FilterCount(Card.IsAbleToHand,nil)>0

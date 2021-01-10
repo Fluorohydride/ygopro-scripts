@@ -27,7 +27,7 @@ function c76218643.indcon(e)
 	return Duel.IsExistingMatchingCard(c76218643.indfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
 end
 function c76218643.filter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:IsType(TYPE_TUNER) 
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsType(TYPE_TUNER)
 end
 function c76218643.reccon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c76218643.filter,1,nil,tp)

@@ -14,7 +14,7 @@ end
 function c7802006.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c7802006.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	local tc=g:GetFirst()
-	while tc do 
+	while tc do
 		tc:AddCounter(0x1,1)
 		tc=g:GetNext()
 	end

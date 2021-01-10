@@ -32,7 +32,7 @@ function c47171541.cfilter(c)
 end
 function c47171541.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local res=e:GetLabel()==1 or Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-	if chk==0 then 
+	if chk==0 then
 		e:SetLabel(0)
 		return res and Duel.IsExistingTarget(c47171541.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 	end

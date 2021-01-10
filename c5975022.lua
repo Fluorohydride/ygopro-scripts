@@ -25,7 +25,7 @@ function c5975022.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c5975022.desfilter(c)
-	return c:IsFaceup() 
+	return c:IsFaceup()
 end
 function c5975022.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:GetLocation()==LOCATION_MZONE and c5975022.desfilter(chkc) end

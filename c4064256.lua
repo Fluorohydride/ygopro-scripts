@@ -41,6 +41,6 @@ function c4064256.sumlimit(e,c,tp,sumtp)
 end
 function c4064256.condition(e)
 	local tp=e:GetHandlerPlayer()
-	return not Duel.IsPlayerAffectedByEffect(tp,EFFECT_NECRO_VALLEY) 
+	return not Duel.IsPlayerAffectedByEffect(tp,EFFECT_NECRO_VALLEY)
 		and not Duel.IsPlayerAffectedByEffect(1-tp,EFFECT_NECRO_VALLEY)
 end

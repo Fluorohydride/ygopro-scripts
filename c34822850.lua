@@ -68,6 +68,6 @@ function c34822850.atlimit(e,c)
 	return c:IsFaceup() and c:IsSetCard(0xbb) and Duel.IsExistingMatchingCard(c34822850.filter,c:GetControler(),LOCATION_MZONE,0,1,nil,c:GetLevel())
 end
 function c34822850.tglimit(e,c)
-	return c:IsSetCard(0xbb) 
+	return c:IsSetCard(0xbb)
 		and Duel.IsExistingMatchingCard(c34822850.filter,c:GetControler(),LOCATION_MZONE,0,1,nil,c:GetLevel())
 end

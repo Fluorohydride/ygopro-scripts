@@ -50,7 +50,7 @@ function c63519819.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return c63519819.can_equip_monster(c)
 end
 function c63519819.eqfilter(c)
-	return c:GetFlagEffect(63519819)~=0 
+	return c:GetFlagEffect(63519819)~=0
 end
 function c63519819.can_equip_monster(c)
 	local g=c:GetEquipGroup():Filter(c63519819.eqfilter,nil)

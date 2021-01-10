@@ -54,7 +54,7 @@ function c82044279.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c82044279.operation(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then 
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

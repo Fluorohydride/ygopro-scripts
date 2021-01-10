@@ -18,7 +18,7 @@ function c23557835.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,2000)
 end
 function c23557835.tg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return 
+	if chk==0 then return
 		(Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c23557835.filter,tp,LOCATION_REMOVED,0,1,nil,e,tp)) or
 		(Duel.GetLocationCount(1-tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c23557835.filter,tp,0,LOCATION_REMOVED,1,nil,e,1-tp))
 	end

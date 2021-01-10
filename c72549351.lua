@@ -26,7 +26,7 @@ function c72549351.spfilter(c,e,tp)
 end
 function c72549351.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local res=e:GetLabel()==1 or Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-	if chk==0 then 
+	if chk==0 then
 		e:SetLabel(0)
 		return res and Duel.IsExistingMatchingCard(c72549351.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp)
 	end

@@ -13,7 +13,7 @@ end
 function c2584136.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and rp==1-tp 
+	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and rp==1-tp
 		and bc:IsFaceup() and bc:IsRelateToBattle()
 end
 function c2584136.eqlimit(e,c)

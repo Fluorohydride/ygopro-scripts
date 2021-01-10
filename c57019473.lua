@@ -16,7 +16,7 @@ function c57019473.filter(c)
 		and c:GetCode()~=57019473 and c:IsAttackBelow(1600) and c:IsAbleToRemove()
 end
 function c57019473.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c57019473.filter(chkc) end 
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c57019473.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c57019473.filter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,c57019473.filter,tp,LOCATION_GRAVE,0,1,1,nil)

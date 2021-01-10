@@ -92,7 +92,7 @@ function c24096228.operation(e,tp,eg,ep,ev,re,r,rp)
 		etc:CreateEffectRelation(te)
 		etc=g:GetNext()
 	end
-	if op then 
+	if op then
 		if tc:IsSetCard(0x95) then
 			op(e,tp,eg,ep,ev,re,r,rp)
 		else

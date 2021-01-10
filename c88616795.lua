@@ -31,8 +31,8 @@ function c88616795.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_IMMUNE_EFFECT)
 		if e:GetLabel()==0 then
 			e2:SetValue(c88616795.efilter1)
-		else 
-			e2:SetValue(c88616795.efilter2) 
+		else
+			e2:SetValue(c88616795.efilter2)
 		end
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e2)

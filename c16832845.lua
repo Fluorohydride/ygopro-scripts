@@ -49,9 +49,9 @@ function c16832845.filter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
 end
 function c16832845.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then 
-		return Duel.IsExistingMatchingCard(c16832845.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil) and 
-			not Duel.IsExistingMatchingCard(c16832845.chkfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil) 
+	if chk==0 then
+		return Duel.IsExistingMatchingCard(c16832845.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil) and
+			not Duel.IsExistingMatchingCard(c16832845.chkfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil)
 	end
 	local g=Duel.GetMatchingGroup(c16832845.filter,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)

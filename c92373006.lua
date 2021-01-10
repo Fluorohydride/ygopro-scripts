@@ -25,7 +25,7 @@ function c92373006.sprfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x19)
 end
 function c92373006.sprcon(e,c)
-	if c==nil then return true end 
+	if c==nil then return true end
 	local tp=c:GetControler()
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(c92373006.sprfilter,tp,LOCATION_MZONE,0,1,nil)

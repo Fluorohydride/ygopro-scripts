@@ -2102,7 +2102,7 @@ function Auxiliary.ChangeBattleDamage(player,value)
 					end
 				end
 			end
-end 
+end
 --card effect disable filter(target)
 function Auxiliary.disfilter1(c)
 	return c:IsFaceup() and not c:IsDisabled() and (not c:IsType(TYPE_NORMAL) or c:GetOriginalType()&TYPE_EFFECT~=0)

@@ -30,7 +30,7 @@ function c94224458.spfilter(c,e,tp,check)
 		and (check or c:IsSetCard(0x1142))
 end
 function c94224458.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then 
+	if chk==0 then
 		local chk1=Duel.IsExistingMatchingCard(c94224458.filter,tp,LOCATION_MZONE,0,1,nil)
 		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 			and Duel.IsExistingMatchingCard(c94224458.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,e,tp,chk1)

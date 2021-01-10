@@ -1,6 +1,6 @@
 --紋章獣ユニコーン
 function c45705025.initial_effect(c)
-	--revive 
+	--revive
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(45705025,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

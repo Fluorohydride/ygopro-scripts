@@ -1,6 +1,6 @@
 --馬頭鬼
 function c92826944.initial_effect(c)
-	--revive 
+	--revive
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(92826944,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)

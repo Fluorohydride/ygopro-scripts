@@ -41,7 +41,7 @@ end
 c6165656.xyz_number=88
 --target check is in RUM magic cards
 function c6165656.splimit(e,se,sp,st)
-	return se:GetHandler():IsSetCard(0x95) and se:GetHandler():IsType(TYPE_SPELL) 
+	return se:GetHandler():IsSetCard(0x95) and se:GetHandler():IsType(TYPE_SPELL)
 		and se:IsHasProperty(EFFECT_FLAG_CARD_TARGET)
 end
 function c6165656.cost(e,tp,eg,ep,ev,re,r,rp,chk)

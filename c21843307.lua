@@ -16,7 +16,7 @@ function c21843307.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c21843307.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ec=eg:GetFirst()
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and 
+	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and
 		Duel.IsPlayerCanSpecialSummonMonster(tp,ec:GetCode(),0,0x11,0,0,ec:GetLevel(),RACE_WARRIOR,ATTRIBUTE_LIGHT) end
 	ec:CreateEffectRelation(e)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)

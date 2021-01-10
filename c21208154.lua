@@ -58,7 +58,7 @@ function c21208154.filter(c)
 end
 function c21208154.adval(e,c)
 	local g=Duel.GetMatchingGroup(c21208154.filter,0,LOCATION_MZONE,LOCATION_MZONE,nil)
-	if g:GetCount()==0 then 
+	if g:GetCount()==0 then
 		return 100
 	else
 		local tg,val=g:GetMaxGroup(Card.GetAttack)
@@ -74,7 +74,7 @@ function c21208154.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(c21208154.aclimit)
 	e1:SetReset(RESET_PHASE+PHASE_END+RESET_OPPO_TURN,2)
 	Duel.RegisterEffect(e1,tp)
-end 
+end
 function c21208154.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end

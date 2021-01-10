@@ -56,7 +56,7 @@ function c39712330.activate1(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c39712330.filter,tp,LOCATION_HAND,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
-		if tc:IsSummonable(true,nil) and (not tc:IsMSetable(true,nil) 
+		if tc:IsSummonable(true,nil) and (not tc:IsMSetable(true,nil)
 			or Duel.SelectPosition(tp,tc,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)==POS_FACEUP_ATTACK) then
 			Duel.Summon(tp,tc,true,nil)
 		else Duel.MSet(tp,tc,true,nil) end

@@ -25,7 +25,7 @@ function c368382.tfilter(c,tp)
 end
 function c368382.negcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)	
-	return e:GetHandler():GetFlagEffect(368382)==0 and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) 
+	return e:GetHandler():GetFlagEffect(368382)==0 and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET)
 		and g and g:IsExists(c368382.tfilter,1,e:GetHandler(),tp) and Duel.IsChainDisablable(ev)
 end
 function c368382.negop(e,tp,eg,ep,ev,re,r,rp)

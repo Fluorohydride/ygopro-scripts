@@ -22,7 +22,7 @@ end
 function c7030340.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c7030340.filter2(chkc) end
 	if chk==0 then
-		return Duel.IsExistingMatchingCard(c7030340.filter1,tp,LOCATION_GRAVE,0,1,nil) 
+		return Duel.IsExistingMatchingCard(c7030340.filter1,tp,LOCATION_GRAVE,0,1,nil)
 			and not Duel.IsExistingMatchingCard(c7030340.chkfilter,tp,LOCATION_GRAVE,0,1,nil)
 			and Duel.IsExistingTarget(c7030340.filter2,tp,LOCATION_MZONE,0,1,nil)
 	end

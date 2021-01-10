@@ -13,7 +13,7 @@ function c25518020.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
 	e2:SetTarget(aux.TargetBoolFunction(Card.IsRace,RACE_MACHINE))
-	e2:SetValue(200) 
+	e2:SetValue(200)
 	c:RegisterEffect(e2)
 	--add counter
 	local e3=Effect.CreateEffect(c)

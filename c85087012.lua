@@ -29,7 +29,7 @@ function c85087012.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 			table.insert(ct,i)
 		end
 	end
-	if #ct==1 then 
+	if #ct==1 then
 		Duel.DiscardDeck(tp,ct[1],REASON_COST)
 		e:SetLabel(1)
 	else

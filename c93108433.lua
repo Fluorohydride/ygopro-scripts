@@ -19,7 +19,7 @@ end
 function c93108433.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c93108433.mfilter(chkc,tp) end
 	if chk==0 then return Duel.IsPlayerCanDraw(tp) and Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)>0
-		and Duel.IsExistingTarget(c93108433.mfilter,tp,LOCATION_MZONE,0,1,e:GetHandler(),tp) 
+		and Duel.IsExistingTarget(c93108433.mfilter,tp,LOCATION_MZONE,0,1,e:GetHandler(),tp)
 		and not Duel.IsExistingMatchingCard(c93108433.hfilter,tp,LOCATION_HAND,0,1,nil,tp)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)

@@ -14,7 +14,7 @@ function c50781944.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c50781944.filter(c,tp)
-	return c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_MZONE) and 
+	return c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_MZONE) and
 		c:GetPreviousControler()==tp and c:IsType(TYPE_MONSTER)
 end
 function c50781944.reccon(e,tp,eg,ep,ev,re,r,rp)

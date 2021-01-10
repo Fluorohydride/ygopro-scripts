@@ -76,7 +76,7 @@ function c46647144.tkop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or Duel.GetLocationCount(1-tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,46647145,0xfe,0x4011,0,0,1,RACE_MACHINE,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE)
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,46647145,0xfe,0x4011,0,0,1,RACE_MACHINE,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE,1-tp) 
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,46647145,0xfe,0x4011,0,0,1,RACE_MACHINE,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE,1-tp)
 		or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	local token1=Duel.CreateToken(tp,46647145)
 	local token2=Duel.CreateToken(tp,46647145)
