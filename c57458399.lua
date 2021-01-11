@@ -16,7 +16,6 @@ function c57458399.initial_effect(c)
 	--level
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(57458399,1))
-	e2:SetCategory(CATEGORY_LVCHANGE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,57458400)

@@ -19,7 +19,6 @@ function c55976207.initial_effect(c)
 	--lv
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(55976207,0))
-	e3:SetCategory(CATEGORY_LVCHANGE)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetRange(LOCATION_SZONE)
