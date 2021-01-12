@@ -2,7 +2,7 @@
 function c9287078.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_TOGRAVE+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
+	e1:SetCategory(CATEGORY_TOGRAVE+CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -30,6 +30,7 @@ function c9287078.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g2=Duel.SelectTarget(tp,c9287078.filter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst())
 	g1:Merge(g2)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g1,2,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c9287078.spfilter(c,e,tp)
 	return c:IsRace(RACE_SPELLCASTER) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

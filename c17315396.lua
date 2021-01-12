@@ -3,7 +3,7 @@ function c17315396.initial_effect(c)
 	--special summon (self)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(17315396,0))
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,17315396)
@@ -39,7 +39,7 @@ end
 function c17315396.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,tp,LOCATION_HAND)
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,tp,LOCATION_DECK+LOCATION_HAND)
 end
 function c17315396.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
