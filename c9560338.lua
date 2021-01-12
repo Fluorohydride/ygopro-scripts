@@ -3,7 +3,7 @@ function c9560338.initial_effect(c)
 	--effect
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(9560338,0))
-	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetCountLimit(1,9560338)

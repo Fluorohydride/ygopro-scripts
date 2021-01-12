@@ -2,7 +2,7 @@
 function c30241314.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(c30241314.target)
@@ -20,7 +20,6 @@ function c30241314.initial_effect(c)
 end
 function c30241314.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c30241314.filter(c,e,sp)
 	return c:IsCode(54493213) and c:IsCanBeSpecialSummoned(e,0,sp,false,false)

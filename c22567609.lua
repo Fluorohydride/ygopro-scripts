@@ -3,7 +3,7 @@ function c22567609.initial_effect(c)
 	--battle destroyed
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(22567609,0))
-	e1:SetCategory(CATEGORY_RECOVER+CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_RECOVER+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_BATTLE_DESTROYED)
 	e1:SetCondition(c22567609.condition)
@@ -18,7 +18,6 @@ end
 function c22567609.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,1000)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c22567609.filter(c,e,tp)
 	return c:IsCode(22567609) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
