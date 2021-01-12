@@ -3,7 +3,7 @@ function c88241506.initial_effect(c)
 	--negate attack
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(88241506,0))
-	e1:SetCategory(CATEGORY_POSITION+CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_POSITION+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_BE_BATTLE_TARGET)
 	e1:SetCountLimit(1,88241506)
@@ -29,7 +29,6 @@ end
 function c88241506.natg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,e:GetHandler(),1,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE)
 end
 function c88241506.naop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
