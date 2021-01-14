@@ -45,7 +45,7 @@ function c56638325.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c56638325.limfilter(c,tp)
-	return c:GetSummonPlayer()==tp
+	return c:IsSummonPlayer(tp)
 end
 function c56638325.limcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetOverlayCount()>0 and eg:IsExists(c56638325.limfilter,1,nil,tp)

@@ -27,7 +27,7 @@ function c43241495.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c43241495.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp and c:IsSummonType(SUMMON_TYPE_PENDULUM)
+	return c:IsSummonPlayer(tp) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c43241495.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c43241495.cfilter,1,nil,tp)

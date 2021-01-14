@@ -59,7 +59,7 @@ function c71278040.lvop(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e3)
 end
 function c71278040.cfilter1(c,tp)
-	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_LINK) and c:GetSummonPlayer()==tp
+	return c:IsFaceup() and c:IsSummonType(SUMMON_TYPE_LINK) and c:IsSummonPlayer(tp)
 end
 function c71278040.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c71278040.cfilter1,1,nil,tp)

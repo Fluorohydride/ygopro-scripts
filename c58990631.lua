@@ -46,7 +46,7 @@ function c58990631.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c58990631.filter2(c,tp)
-	return c:IsFaceup() and c:IsAttackAbove(1000) and c:GetSummonPlayer()~=tp
+	return c:IsFaceup() and c:IsAttackAbove(1000) and c:IsSummonPlayer(1-tp)
 end
 function c58990631.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c58990631.filter2,1,nil,tp) end
@@ -55,7 +55,7 @@ function c58990631.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c58990631.filter3(c,e,tp)
-	return c:IsFaceup() and c:IsAttackAbove(1000) and c:GetSummonPlayer()~=tp
+	return c:IsFaceup() and c:IsAttackAbove(1000) and c:IsSummonPlayer(1-tp)
 		and c:IsRelateToEffect(e)
 end
 function c58990631.activate2(e,tp,eg,ep,ev,re,r,rp)

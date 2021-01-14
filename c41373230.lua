@@ -64,7 +64,7 @@ function c41373230.imop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c41373230.efilter(e,te)
 	return e:GetHandler()~=te:GetHandler() and te:GetActivateLocation()==LOCATION_MZONE and te:IsActiveType(TYPE_MONSTER)
-		and te:IsActivated() and te:GetHandler():GetSummonLocation()==LOCATION_EXTRA
+		and te:IsActivated() and te:GetHandler():IsSummonLocation(LOCATION_EXTRA)
 end
 function c41373230.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

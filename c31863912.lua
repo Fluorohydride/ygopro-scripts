@@ -21,7 +21,7 @@ function c31863912.initial_effect(c)
 end
 c31863912.toss_dice=true
 function c31863912.cfilter(c,sp)
-	return c:IsFaceup() and c:GetSummonPlayer()==sp
+	return c:IsFaceup() and c:IsSummonPlayer(sp)
 end
 function c31863912.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -40,7 +40,7 @@ function c31863912.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)
 end
 function c31863912.filter(c,sp,e,lv)
-	return c:IsFaceup() and c:GetSummonPlayer()==sp and c:IsLevel(lv) and c:IsAbleToHand() and c:IsRelateToEffect(e)
+	return c:IsFaceup() and c:IsSummonPlayer(sp) and c:IsLevel(lv) and c:IsAbleToHand() and c:IsRelateToEffect(e)
 end
 function c31863912.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 or not e:GetHandler():IsRelateToEffect(e) then return end

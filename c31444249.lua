@@ -60,8 +60,8 @@ function c31444249.gcheck(sg)
 	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=6
 end
 function c31444249.dmcon(tp)
-	return not Duel.IsExistingMatchingCard(aux.FilterEqualFunction(Card.GetSummonLocation,LOCATION_EXTRA),tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingMatchingCard(aux.FilterEqualFunction(Card.GetSummonLocation,LOCATION_EXTRA),tp,0,LOCATION_MZONE,1,nil)
+	return not Duel.IsExistingMatchingCard(Card.IsSummonLocation,tp,LOCATION_MZONE,0,1,nil,LOCATION_EXTRA)
+		and Duel.IsExistingMatchingCard(Card.IsSummonLocation,tp,0,LOCATION_MZONE,1,nil,LOCATION_EXTRA)
 end
 function c31444249.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

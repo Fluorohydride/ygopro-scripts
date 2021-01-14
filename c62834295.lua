@@ -23,7 +23,7 @@ function c62834295.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c62834295.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp
+	return c:IsSummonPlayer(tp)
 end
 function c62834295.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c62834295.cfilter,1,nil,1-tp)

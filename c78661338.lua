@@ -29,7 +29,7 @@ function c78661338.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c78661338.spfilter(c,sp)
-	return c:GetSummonPlayer()==sp and c:IsType(TYPE_LINK)
+	return c:IsSummonPlayer(sp) and c:IsType(TYPE_LINK)
 end
 function c78661338.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c78661338.spfilter,1,nil,1-tp)

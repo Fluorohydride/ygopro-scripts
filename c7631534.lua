@@ -76,7 +76,7 @@ function c7631534.discon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c7631534.fmfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c7631534.disfilter(c)
-	return aux.disfilter1(c) and c:GetSummonLocation()==LOCATION_EXTRA
+	return aux.disfilter1(c) and c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c7631534.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c7631534.disfilter(chkc) end

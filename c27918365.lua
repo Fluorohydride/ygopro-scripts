@@ -49,7 +49,7 @@ function c27918365.spval(e,c)
 end
 function c27918365.negcon(e,tp,eg,ep,ev,re,r,rp)
 	local loc=Duel.GetChainInfo(0,CHAININFO_TRIGGERING_LOCATION)
-	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and re:IsActiveType(TYPE_MONSTER) and re:GetHandler():GetSummonLocation()==LOCATION_EXTRA and loc==LOCATION_MZONE
+	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSummonLocation(LOCATION_EXTRA) and loc==LOCATION_MZONE
 		and Duel.IsChainNegatable(ev)
 end
 function c27918365.negcost(e,tp,eg,ep,ev,re,r,rp,chk)

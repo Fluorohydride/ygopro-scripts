@@ -62,7 +62,7 @@ function c68295149.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c68295149.tgtg(e,c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c68295149.tgval(e,re,rp)
 	return rp==1-e:GetHandlerPlayer() and re:IsActiveType(TYPE_MONSTER)

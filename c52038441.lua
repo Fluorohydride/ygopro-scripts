@@ -16,7 +16,7 @@ function c52038441.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c52038441.cfilter(c,tp)
-	return c:IsFaceup() and c:GetSummonPlayer()==1-tp and (aux.disfilter1(c) or c:GetAttack()>0)
+	return c:IsFaceup() and c:IsSummonPlayer(1-tp) and (aux.disfilter1(c) or c:GetAttack()>0)
 end
 function c52038441.discon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c52038441.cfilter,1,nil,tp)

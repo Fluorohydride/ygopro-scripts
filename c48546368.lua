@@ -59,7 +59,7 @@ function c48546368.negop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c48546368.filter(c,tp)
-	return c:GetSummonPlayer()==tp
+	return c:IsSummonPlayer(tp)
 end
 function c48546368.discon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentChain()==0 and eg:IsExists(c48546368.filter,1,nil,1-tp)

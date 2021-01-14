@@ -68,7 +68,7 @@ function c90050480.retop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c90050480.limcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonLocation()==LOCATION_EXTRA
+	return e:GetHandler():IsSummonLocation(LOCATION_EXTRA)
 end
 function c90050480.limtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

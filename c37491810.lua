@@ -60,7 +60,7 @@ function c37491810.despop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c37491810.desmcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonLocation()==LOCATION_EXTRA
+	return e:GetHandler():IsSummonLocation(LOCATION_EXTRA)
 end
 function c37491810.desmfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsAbleToDeck()

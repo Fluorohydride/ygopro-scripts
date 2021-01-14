@@ -92,7 +92,7 @@ function c57282724.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(sg,REASON_EFFECT)
 end
 function c57282724.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp and c:IsPreviousLocation(LOCATION_EXTRA)
+	return c:IsSummonPlayer(tp) and c:IsPreviousLocation(LOCATION_EXTRA)
 end
 function c57282724.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c57282724.cfilter,1,nil,1-tp)

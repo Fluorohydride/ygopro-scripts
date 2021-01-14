@@ -45,7 +45,7 @@ function c8820526.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c8820526.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp and c:IsSummonType(SUMMON_TYPE_PENDULUM)
+	return c:IsSummonPlayer(tp) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c8820526.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c8820526.cfilter,2,nil,tp)

@@ -40,7 +40,7 @@ function c74069667.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c74069667.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0xaf) and c:GetSummonPlayer()==tp
+	return c:IsFaceup() and c:IsSetCard(0xaf) and c:IsSummonPlayer(tp)
 end
 function c74069667.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c74069667.cfilter,1,nil,tp)

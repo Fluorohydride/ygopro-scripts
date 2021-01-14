@@ -22,7 +22,7 @@ function c60681103.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c60681103.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonLocation()==LOCATION_GRAVE
+	return e:GetHandler():IsSummonLocation(LOCATION_GRAVE)
 end
 function c60681103.rmfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove() and (c:IsLevelAbove(1) or c:IsRankAbove(1))

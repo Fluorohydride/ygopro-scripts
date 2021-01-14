@@ -20,7 +20,7 @@ function c84905691.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c84905691.filter(c,e,tp)
-	return c:GetSummonPlayer()~=tp and (not e or c:IsRelateToEffect(e))
+	return c:IsSummonPlayer(1-tp) and (not e or c:IsRelateToEffect(e))
 end
 function c84905691.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not e:GetHandler():IsStatus(STATUS_CHAINING) and not eg:IsContains(e:GetHandler())

@@ -44,7 +44,7 @@ function c65589010.eftg(e,c)
 	return c:IsFaceup() and c:IsSetCard(0x145)
 end
 function c65589010.efilter(e,re,rp)
-	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():GetSummonLocation()==LOCATION_EXTRA and re:GetActivateLocation()==LOCATION_MZONE
+	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsSummonLocation(LOCATION_EXTRA) and re:GetActivateLocation()==LOCATION_MZONE
 end
 function c65589010.descon(e,tp,eg,ep,ev,re,r,rp)
 	local ac=Duel.GetAttacker()

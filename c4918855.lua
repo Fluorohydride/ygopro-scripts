@@ -91,7 +91,7 @@ function c4918855.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateActivation(ev)
 end
 function c4918855.cfilter(c,tp)
-	return c:GetSummonLocation()==LOCATION_GRAVE and c:IsPreviousControler(1-tp)
+	return c:IsSummonLocation(LOCATION_GRAVE) and c:IsPreviousControler(1-tp)
 end
 function c4918855.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c4918855.cfilter,1,nil,tp)

@@ -43,7 +43,7 @@ function c21887175.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c21887175.matfilter(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c21887175.tgcon(e)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_LINK)

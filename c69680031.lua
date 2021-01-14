@@ -27,7 +27,7 @@ function c69680031.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c69680031.cfilter(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c69680031.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()

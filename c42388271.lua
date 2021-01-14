@@ -59,7 +59,7 @@ function c42388271.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c42388271.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp and c:IsPreviousLocation(LOCATION_EXTRA)
+	return c:IsSummonPlayer(tp) and c:IsPreviousLocation(LOCATION_EXTRA)
 end
 function c42388271.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_NORMAL) and eg:IsExists(c42388271.cfilter,1,nil,1-tp)

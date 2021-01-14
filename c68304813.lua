@@ -40,7 +40,7 @@ function c68304813.valcheck(e,c)
 end
 function c68304813.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return tc:IsSummonType(SUMMON_TYPE_ADVANCE) and tc:GetSummonPlayer()==tp and e:GetLabel()==1
+	return tc:IsSummonType(SUMMON_TYPE_ADVANCE) and tc:IsSummonPlayer(tp) and e:GetLabel()==1
 end
 function c68304813.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

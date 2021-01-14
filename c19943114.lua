@@ -13,7 +13,7 @@ function c19943114.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c19943114.cfilter(c,tp)
-	return c:IsType(TYPE_LINK) and c:GetSummonPlayer()==tp
+	return c:IsType(TYPE_LINK) and c:IsSummonPlayer(tp)
 end
 function c19943114.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c19943114.cfilter,1,nil,tp)

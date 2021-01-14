@@ -34,7 +34,7 @@ function c87091930.descfilter2(c)
 	return c:IsType(TYPE_XYZ) and c:IsAttribute(ATTRIBUTE_DARK)
 end
 function c87091930.descfilter(c,tp)
-	return c:IsSummonType(SUMMON_TYPE_XYZ) and c:GetSummonPlayer()==tp
+	return c:IsSummonType(SUMMON_TYPE_XYZ) and c:IsSummonPlayer(tp)
 		and c:GetMaterial():IsExists(c87091930.descfilter2,1,nil)
 end
 function c87091930.descon(e,tp,eg,ep,ev,re,r,rp)

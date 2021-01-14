@@ -62,7 +62,7 @@ function c62481203.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c62481203.repfilter(c,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:GetSummonLocation()==LOCATION_EXTRA and c:IsSetCard(0xfb)
+	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:IsSummonLocation(LOCATION_EXTRA) and c:IsSetCard(0xfb)
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c62481203.reptg(e,tp,eg,ep,ev,re,r,rp,chk)

@@ -21,7 +21,7 @@ function c34379489.initial_effect(c)
 end
 function c34379489.filter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_MZONE)
-		and not c:IsType(TYPE_PENDULUM) and c:GetSummonLocation()==LOCATION_EXTRA
+		and not c:IsType(TYPE_PENDULUM) and c:IsSummonLocation(LOCATION_EXTRA)
 		and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsReason(REASON_REPLACE)
 end
 function c34379489.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -50,5 +50,5 @@ function c34379489.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e2,tp)
 end
 function c34379489.indtg(e,c)
-	return c:IsType(TYPE_PENDULUM) and c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsType(TYPE_PENDULUM) and c:IsSummonLocation(LOCATION_EXTRA)
 end

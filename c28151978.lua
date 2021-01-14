@@ -72,6 +72,6 @@ function c28151978.synlimit(e,c)
 end
 function c28151978.rmcon(e)
 	local c=e:GetHandler()
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 		and bit.band(c:GetReason(),REASON_MATERIAL+REASON_SYNCHRO)==REASON_MATERIAL+REASON_SYNCHRO
 end

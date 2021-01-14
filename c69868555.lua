@@ -39,7 +39,7 @@ function c69868555.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c69868555.cfilter(c)
-	return c:GetSummonLocation()~=LOCATION_GRAVE
+	return not c:IsSummonLocation(LOCATION_GRAVE)
 end
 function c69868555.dfilter(c,eg)
 	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and c:IsLevel(7,8) and not eg:IsContains(c)

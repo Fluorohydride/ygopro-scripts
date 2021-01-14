@@ -11,7 +11,7 @@ function c4433488.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c4433488.cfilter(c,tp)
-	return c:IsType(TYPE_LINK) and c:IsSummonType(SUMMON_TYPE_LINK) and c:GetSummonPlayer()==tp
+	return c:IsType(TYPE_LINK) and c:IsSummonType(SUMMON_TYPE_LINK) and c:IsSummonPlayer(tp)
 end
 function c4433488.spfilter(c,e,tp,g)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false) and g and g:IsContains(c)

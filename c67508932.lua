@@ -42,7 +42,7 @@ function c67508932.initial_effect(c)
 end
 function c67508932.rmcond(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetSummonLocation()&LOCATION_EXTRA==LOCATION_EXTRA and c:IsRelateToBattle()
+	return c:IsSummonLocation(LOCATION_EXTRA) and c:IsRelateToBattle()
 end
 function c67508932.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_MZONE,1,nil) end

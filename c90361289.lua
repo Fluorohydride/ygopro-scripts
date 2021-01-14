@@ -42,7 +42,7 @@ function c90361289.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c90361289.filter(c)
-	return c:GetSummonLocation()==LOCATION_DECK
+	return c:IsSummonLocation(LOCATION_DECK)
 end
 function c90361289.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c90361289.filter,1,nil)
@@ -86,7 +86,7 @@ function c90361289.spop2(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c90361289.damfilter(c,tp)
-	return c:GetSummonPlayer()==1-tp
+	return c:IsSummonPlayer(1-tp)
 end
 function c90361289.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c90361289.damfilter,1,nil,tp)

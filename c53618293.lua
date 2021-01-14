@@ -24,7 +24,7 @@ function c53618293.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c53618293.cfilter(c,tp)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:IsFaceup() and c:IsRace(RACE_PLANT) and c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and c:IsFaceup() and c:IsRace(RACE_PLANT) and c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c53618293.negcon(e,tp,eg,ep,ev,re,r,rp)
 	if not (rp==1-tp and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET)) then return false end

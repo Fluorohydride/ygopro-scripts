@@ -68,7 +68,7 @@ function c90036274.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c90036274.disfilter(c)
-	return c:IsFaceup() and c:GetSummonLocation()==LOCATION_EXTRA and (c:IsAttackAbove(1) or aux.disfilter1(c))
+	return c:IsFaceup() and c:IsSummonLocation(LOCATION_EXTRA) and (c:IsAttackAbove(1) or aux.disfilter1(c))
 end
 function c90036274.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c90036274.disfilter(chkc) end

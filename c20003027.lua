@@ -35,7 +35,7 @@ function c20003027.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c20003027.cfilter(c,sp)
-	return c:GetSummonPlayer()==sp
+	return c:IsSummonPlayer(sp)
 end
 function c20003027.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c20003027.cfilter,1,nil,1-tp)

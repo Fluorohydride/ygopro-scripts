@@ -31,7 +31,7 @@ function c48372950.ntcon(e,c,minc)
 		and Duel.IsExistingMatchingCard(c48372950.ntfilter,c:GetControler(),LOCATION_MZONE,0,1,nil)
 end
 function c48372950.cfilter(c,tp)
-	return c:GetSummonPlayer()==1-tp
+	return c:IsSummonPlayer(1-tp)
 end
 function c48372950.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp and eg:IsExists(c48372950.cfilter,1,nil,tp)

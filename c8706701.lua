@@ -50,7 +50,7 @@ function c8706701.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c8706701.cfilter(c,tp)
-	return c:IsSummonType(SUMMON_TYPE_SYNCHRO) and c:GetSummonPlayer()==tp
+	return c:IsSummonType(SUMMON_TYPE_SYNCHRO) and c:IsSummonPlayer(tp)
 end
 function c8706701.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c8706701.cfilter,1,nil,tp) and aux.exccon(e)

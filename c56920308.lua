@@ -72,7 +72,7 @@ function c56920308.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(tc,REASON_EFFECT)
 end
 function c56920308.cfilter(c,tp)
-	return c:IsCode(89631139) and c:GetSummonPlayer()==tp
+	return c:IsCode(89631139) and c:IsSummonPlayer(tp)
 end
 function c56920308.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c56920308.cfilter,1,nil,tp)

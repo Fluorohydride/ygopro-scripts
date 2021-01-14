@@ -51,7 +51,7 @@ function c11969228.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c11969228.cfilter(c,lg)
-	return c:IsRace(RACE_DRAGON) and bit.band(c:GetSummonLocation(),LOCATION_EXTRA)~=0 and lg:IsContains(c)
+	return c:IsRace(RACE_DRAGON) and c:IsSummonLocation(LOCATION_EXTRA) and lg:IsContains(c)
 end
 function c11969228.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local lg=e:GetHandler():GetLinkedGroup()

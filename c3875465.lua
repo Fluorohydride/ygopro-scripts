@@ -46,7 +46,7 @@ function c3875465.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c3875465.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x14b) and c:IsSummonType(SUMMON_TYPE_LINK) and c:GetSummonPlayer()==tp
+	return c:IsFaceup() and c:IsSetCard(0x14b) and c:IsSummonType(SUMMON_TYPE_LINK) and c:IsSummonPlayer(tp)
 end
 function c3875465.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c3875465.cfilter,1,nil,tp)

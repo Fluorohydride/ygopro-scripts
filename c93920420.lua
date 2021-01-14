@@ -35,7 +35,7 @@ function c93920420.indcon(e)
 	return bit.band(e:GetHandler():GetSummonType(),SUMMON_TYPE_SPECIAL)==0
 end
 function c93920420.indlimit(e,c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c93920420.spfilter1(c,e,tp)
 	return c:IsSetCard(0xfe) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

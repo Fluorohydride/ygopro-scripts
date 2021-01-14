@@ -31,7 +31,7 @@ function c97729135.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c97729135.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp and c:GetSequence()>=5
+	return c:IsSummonPlayer(tp) and c:GetSequence()>=5
 end
 function c97729135.mvcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c97729135.cfilter,1,nil,tp)

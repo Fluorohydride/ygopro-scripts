@@ -44,7 +44,7 @@ function c18114794.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	local p1=false
 	while tc do
-		if tc:GetSummonPlayer()==turnp then p1=true end
+		if tc:IsSummonPlayer(turnp) then p1=true end
 		tc=eg:GetNext()
 	end
 	if p1 then

@@ -21,7 +21,7 @@ function c94484482.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp
 end
 function c94484482.cfilter(c,tp)
-	return c:GetSummonPlayer()==1-tp
+	return c:IsSummonPlayer(1-tp)
 end
 function c94484482.condition2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c94484482.cfilter,1,nil,tp)

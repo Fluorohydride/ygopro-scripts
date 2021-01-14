@@ -43,7 +43,7 @@ function c90788081.lvop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c90788081.indfilter(c)
-	return c:IsFaceup() and c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsFaceup() and c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c90788081.indtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c90788081.indfilter(chkc) end

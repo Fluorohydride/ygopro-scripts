@@ -62,7 +62,7 @@ function c2819435.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 end
 function c2819435.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return eg:GetCount()==1 and tc:GetSummonPlayer()==tp and tc:IsFaceup() and tc:IsType(TYPE_NORMAL)
+	return eg:GetCount()==1 and tc:IsSummonPlayer(tp) and tc:IsFaceup() and tc:IsType(TYPE_NORMAL)
 end
 function c2819435.thfilter(c)
 	return c:IsSetCard(0xfa) and c:IsAbleToHand()

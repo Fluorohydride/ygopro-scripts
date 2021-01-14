@@ -32,7 +32,7 @@ function c44139064.initial_effect(c)
 	Duel.AddCustomActivityCounter(44139064,ACTIVITY_SPSUMMON,c44139064.counterfilter)
 end
 function c44139064.counterfilter(c)
-	return c:GetSummonLocation()~=LOCATION_EXTRA or c:IsType(TYPE_FUSION)
+	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsType(TYPE_FUSION)
 end
 function c44139064.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return not c:IsType(TYPE_FUSION) and c:IsLocation(LOCATION_EXTRA)

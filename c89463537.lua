@@ -50,5 +50,5 @@ function c89463537.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c89463537.distg(e,c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end

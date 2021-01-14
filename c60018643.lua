@@ -19,7 +19,7 @@ function c60018643.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c60018643.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x101) and c:IsControler(tp) and bit.band(c:GetSummonLocation(),LOCATION_EXTRA)~=0
+	return c:IsFaceup() and c:IsSetCard(0x101) and c:IsControler(tp) and c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c60018643.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c60018643.cfilter,1,nil,tp)

@@ -32,7 +32,7 @@ function c96891787.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c96891787.cfilter(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c96891787.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c96891787.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
@@ -49,10 +49,10 @@ function c96891787.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c96891787.indes(e,c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c96891787.atkfilter(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA and c:IsFaceup()
+	return c:IsSummonLocation(LOCATION_EXTRA) and c:IsFaceup()
 end
 function c96891787.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c96891787.atkfilter(chkc) end

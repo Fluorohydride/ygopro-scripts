@@ -65,7 +65,7 @@ function c11711438.stgop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c11711438.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x137) and c:GetSummonPlayer()==tp
+	return c:IsFaceup() and c:IsSetCard(0x137) and c:IsSummonPlayer(tp)
 end
 function c11711438.tgfilter(c,tp,g)
 	return g:IsContains(c) and Duel.IsExistingMatchingCard(c11711438.thfilter,tp,LOCATION_DECK,0,1,nil,c:GetCode())
