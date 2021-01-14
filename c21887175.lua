@@ -76,7 +76,7 @@ end
 function c21887175.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_LINK)
-		and rp==1-tp and c:GetPreviousControler()==tp
+		and rp==1-tp and c:IsPreviousControler(tp)
 end
 function c21887175.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToDeck,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end

@@ -27,7 +27,7 @@ end
 function c8495780.cfcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return bit.band(r,REASON_EFFECT)~=0 and re:GetHandler():IsAttribute(ATTRIBUTE_WATER)
-		and c:IsPreviousLocation(LOCATION_DECK+LOCATION_GRAVE) and c:GetPreviousControler()==tp and not c:IsPublic()
+		and c:IsPreviousLocation(LOCATION_DECK+LOCATION_GRAVE) and c:IsPreviousControler(tp) and not c:IsPublic()
 end
 function c8495780.cftg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.NOT(Card.IsPublic),tp,0,LOCATION_HAND,1,nil) end

@@ -41,7 +41,7 @@ function c35187185.ffilter(c,fc,sub,mg,sg)
 	return c:IsFusionSetCard(0x131) and (not sg or not sg:IsExists(Card.IsFusionAttribute,1,c,c:GetFusionAttribute()))
 end
 function c35187185.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 end
 function c35187185.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c35187185.cfilter,1,e:GetHandler(),tp)
@@ -63,7 +63,7 @@ function c35187185.spfilter(c,e,tp)
 	return c:IsSetCard(0x131) and not c:IsCode(35187185) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c35187185.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousControler()==tp and rp==1-tp
+	return e:GetHandler():IsPreviousControler(tp) and rp==1-tp
 end
 function c35187185.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

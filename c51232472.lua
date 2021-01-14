@@ -13,7 +13,7 @@ function c51232472.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c51232472.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousLocation()==LOCATION_HAND and bit.band(r,0x4040)==0x4040
+	return e:GetHandler():IsPreviousLocation(LOCATION_HAND) and bit.band(r,0x4040)==0x4040
 end
 function c51232472.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

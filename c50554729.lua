@@ -41,14 +41,14 @@ function c50554729.value(e,c)
 	return Duel.GetMatchingGroupCount(c50554729.filter,0,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)*100
 end
 function c50554729.cfilter1(c,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_MZONE+LOCATION_HAND) and c:GetPreviousControler()==tp
+	return c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_MZONE+LOCATION_HAND) and c:IsPreviousControler(tp)
 end
 function c50554729.thcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c50554729.cfilter1,1,nil,tp)
 end
 function c50554729.cfilter2(c,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
-		and c:IsPreviousLocation(LOCATION_MZONE+LOCATION_HAND) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_MZONE+LOCATION_HAND) and c:IsPreviousControler(tp)
 end
 function c50554729.thcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c50554729.cfilter2,1,nil,tp)

@@ -13,7 +13,7 @@ function c80627281.initial_effect(c)
 end
 function c80627281.spfilter1(c,e,tp)
 	local lk=c:GetLink()
-	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 		and c:IsPreviousSetCard(0x12b) and bit.band(c:GetPreviousTypeOnField(),TYPE_LINK)~=0
 		and c:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and c:IsCanBeEffectTarget(e)
 		and lk>0 and Duel.IsExistingMatchingCard(c80627281.spfilter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,lk)

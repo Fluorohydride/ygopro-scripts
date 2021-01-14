@@ -12,7 +12,7 @@ function c99075257.initial_effect(c)
 end
 function c99075257.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	return eg:GetCount()==1 and tc:IsSetCard(0x3008) and tc:IsPreviousPosition(POS_FACEUP) and tc:GetPreviousControler()==tp
+	return eg:GetCount()==1 and tc:IsSetCard(0x3008) and tc:IsPreviousPosition(POS_FACEUP) and tc:IsPreviousControler(tp)
 end
 function c99075257.filter(c,lv)
 	return c:IsLevelBelow(lv) and c:IsSetCard(0xc008) and c:IsAbleToHand()

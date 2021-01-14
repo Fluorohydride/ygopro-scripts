@@ -46,8 +46,8 @@ function c47766694.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c47766694.descon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_DESTROY)~=0
-		and bit.band(e:GetHandler():GetPreviousLocation(),LOCATION_ONFIELD)~=0
-		and bit.band(e:GetHandler():GetPreviousPosition(),POS_FACEDOWN)~=0
+		and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
+		and e:GetHandler():IsPreviousPosition(POS_FACEDOWN)
 end
 function c47766694.desfilter(c)
 	return c:IsFaceup()

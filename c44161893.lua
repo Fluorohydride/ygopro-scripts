@@ -23,7 +23,7 @@ function c44161893.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c44161893.cfilter(c,tp,rp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:GetPreviousTypeOnField()&TYPE_LINK~=0
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:GetPreviousTypeOnField()&TYPE_LINK~=0
 		and c:IsPreviousSetCard(0x119) and rp==1-tp and c:IsReason(REASON_EFFECT)
 end
 function c44161893.spcon(e,tp,eg,ep,ev,re,r,rp)

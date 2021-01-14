@@ -51,7 +51,7 @@ function c28139785.ddop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c28139785.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousControler()==tp and rp==1-tp and c:IsReason(REASON_DESTROY)
+	return c:IsPreviousControler(tp) and rp==1-tp and c:IsReason(REASON_DESTROY)
 end
 function c28139785.thfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:GetLevel()>0 and c:IsAbleToHand()

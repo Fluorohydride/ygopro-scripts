@@ -39,7 +39,7 @@ function c45869829.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c45869829.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp
+	return rp==1-tp and c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp)
 end
 function c45869829.thfilter(c)
 	return c:IsType(TYPE_QUICKPLAY) and c:GetCode()~=45869829 and c:IsAbleToHand()

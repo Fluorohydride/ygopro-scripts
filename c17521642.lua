@@ -11,7 +11,7 @@ function c17521642.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c17521642.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:GetControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsPreviousControler(tp) and c:GetControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c17521642.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c17521642.cfilter,1,nil,tp)

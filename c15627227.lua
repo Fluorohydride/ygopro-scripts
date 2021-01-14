@@ -83,7 +83,7 @@ function c15627227.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c15627227.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousControler()==tp and bit.band(r,0x21)==0x21
+	return c:IsPreviousControler(tp) and bit.band(r,0x21)==0x21
 end
 function c15627227.thfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x102) and c:IsAbleToHand()

@@ -42,6 +42,6 @@ function c25290459.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.SpecialSummon(tc,0,tp,tp,true,true,POS_FACEUP)
-		if tc:GetPreviousLocation()==LOCATION_DECK then Duel.ShuffleDeck(tp) end
+		if tc:IsPreviousLocation(LOCATION_DECK) then Duel.ShuffleDeck(tp) end
 	end
 end

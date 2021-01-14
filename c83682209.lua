@@ -15,7 +15,7 @@ function c83682209.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c83682209.spfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsPreviousPosition(POS_FACEUP) and c:IsReason(REASON_BATTLE+REASON_EFFECT) and not c:IsCode(83682209)
 		and (c:GetPreviousAttributeOnField()&ATTRIBUTE_WATER)>0
 end

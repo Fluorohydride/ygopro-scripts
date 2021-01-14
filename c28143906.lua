@@ -12,7 +12,7 @@ function c28143906.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c28143906.retcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousLocation()==LOCATION_HAND
+	return e:GetHandler():IsPreviousLocation(LOCATION_HAND)
 end
 function c28143906.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

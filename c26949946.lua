@@ -63,7 +63,7 @@ function c26949946.indtg(e,c)
 	return c:IsSetCard(0x101b) and c~=e:GetHandler()
 end
 function c26949946.setcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and e:GetHandler():GetPreviousControler()==tp
+	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
 end
 function c26949946.filter(c)
 	return c:GetType()==TYPE_SPELL+TYPE_QUICKPLAY and c:IsSSetable()

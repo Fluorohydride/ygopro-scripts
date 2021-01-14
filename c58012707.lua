@@ -70,7 +70,7 @@ function c58012707.dmop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c58012707.cfilter(c,tp)
-	return c:IsReason(REASON_EFFECT) and c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+	return c:IsReason(REASON_EFFECT) and c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 end
 function c58012707.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and eg:IsExists(c58012707.cfilter,1,nil,tp)

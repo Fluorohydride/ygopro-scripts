@@ -68,7 +68,7 @@ function c81997228.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c81997228.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:GetPreviousControler()==tp
+	return rp==1-tp and c:IsPreviousControler(tp)
 end
 function c81997228.spfilter(c,e,tp)
 	return not c:IsType(TYPE_FUSION) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

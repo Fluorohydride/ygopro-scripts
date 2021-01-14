@@ -55,7 +55,7 @@ function c43583400.sumop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c43583400.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:IsReason(REASON_EFFECT) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
+	return rp==1-tp and c:IsReason(REASON_EFFECT) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
 end
 function c43583400.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

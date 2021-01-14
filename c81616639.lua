@@ -13,7 +13,7 @@ function c81616639.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c81616639.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and e:GetHandler():GetPreviousControler()==tp
+	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
 end
 function c81616639.spfilter(c,e,tp)
 	return c:IsLevelBelow(4) and not c:IsCode(81616639) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

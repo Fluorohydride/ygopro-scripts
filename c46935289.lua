@@ -58,7 +58,7 @@ function c46935289.disop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c46935289.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and e:GetHandler():GetPreviousControler()==tp
+	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
 end
 function c46935289.thfilter(c)
 	return c:IsType(TYPE_RITUAL) and c:IsAbleToHand()

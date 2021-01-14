@@ -60,7 +60,7 @@ function c5043010.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c5043010.cfilter(c,tp,zone)
 	local seq=c:GetPreviousSequence()
-	if c:GetPreviousControler()~=tp then seq=seq+16 end
+	if c:IsPreviousControler(1-tp) then seq=seq+16 end
 	return c:IsPreviousLocation(LOCATION_MZONE) and bit.extract(zone,seq)~=0
 end
 function c5043010.regcon(e,tp,eg,ep,ev,re,r,rp)

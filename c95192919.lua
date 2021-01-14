@@ -67,7 +67,7 @@ function c95192919.tdop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c95192919.cfilter(c,tp)
-	return c:IsRace(RACE_WINDBEAST) and c:GetPreviousControler()==tp
+	return c:IsRace(RACE_WINDBEAST) and c:IsPreviousControler(tp)
 end
 function c95192919.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c95192919.cfilter,1,e:GetHandler(),tp)

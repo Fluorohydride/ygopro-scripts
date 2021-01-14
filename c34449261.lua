@@ -46,8 +46,8 @@ function c34449261.activate(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 and Duel.Destroy(g,REASON_EFFECT)~=0 and dam>0 then
 		local dg=Duel.GetOperatedGroup()
 		Duel.BreakEffect()
-		if dg:IsExists(aux.FilterEqualFunction(Card.GetPreviousControler,tp),1,nil) then Duel.Damage(tp,dam,REASON_EFFECT,true) end
-		if dg:IsExists(aux.FilterEqualFunction(Card.GetPreviousControler,1-tp),1,nil) then Duel.Damage(1-tp,dam,REASON_EFFECT,true) end
+		if dg:IsExists(Card.IsPreviousControler,1,nil,tp) then Duel.Damage(tp,dam,REASON_EFFECT,true) end
+		if dg:IsExists(Card.IsPreviousControler,1,nil,1-tp) then Duel.Damage(1-tp,dam,REASON_EFFECT,true) end
 		Duel.RDComplete()
 	end
 end

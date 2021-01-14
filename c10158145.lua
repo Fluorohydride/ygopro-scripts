@@ -89,7 +89,7 @@ function c10158145.splimit(e,c,sump,sumtype,sumpos,targetp)
 	return not c:IsType(TYPE_LINK)
 end
 function c10158145.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():GetPreviousControler()==tp
+	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():IsPreviousControler(tp)
 end
 function c10158145.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

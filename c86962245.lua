@@ -66,7 +66,7 @@ function c86962245.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c86962245.spfilter(c,tp)
 	return c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_SZONE)
-		and c:GetPreviousControler()==1-tp and c:GetPreviousSequence()<5
+		and c:IsPreviousControler(1-tp) and c:GetPreviousSequence()<5
 end
 function c86962245.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c86962245.spfilter,1,nil,tp)

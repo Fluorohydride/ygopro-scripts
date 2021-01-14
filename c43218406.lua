@@ -99,7 +99,7 @@ function c43218406.atktg(e,c)
 end
 function c43218406.recon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:GetPreviousControler()==tp
+	return rp==1-tp and c:IsPreviousControler(tp)
 end
 function c43218406.filter(c)
 	return c:IsAbleToRemove() and c:IsType(TYPE_MONSTER)

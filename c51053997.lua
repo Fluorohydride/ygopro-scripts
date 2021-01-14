@@ -83,7 +83,7 @@ function c51053997.retop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ReturnToField(tc)
 end
 function c51053997.cfilter(c,tp)
-	return c:IsPreviousSetCard(0xc1) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
+	return c:IsPreviousSetCard(0xc1) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
 end
 function c51053997.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c51053997.cfilter,1,e:GetHandler(),tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)

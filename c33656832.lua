@@ -33,7 +33,7 @@ function c33656832.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c33656832.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp and c:IsReason(REASON_EFFECT)
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp) and c:IsReason(REASON_EFFECT)
 end
 function c33656832.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c33656832.cfilter,1,nil,tp)

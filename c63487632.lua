@@ -93,7 +93,7 @@ function c63487632.eqcheck(e,tp,eg,ep,ev,re,r,rp)
 end
 function c63487632.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_EFFECT) and rp==1-tp and c:GetPreviousLocation()==LOCATION_MZONE
+	return c:IsReason(REASON_EFFECT) and rp==1-tp and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c63487632.spfilter2(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)

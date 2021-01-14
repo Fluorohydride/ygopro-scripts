@@ -21,7 +21,7 @@ function c37675138.initial_effect(c)
 end
 function c37675138.descon(e,tp,eg,ep,ev,re,r,rp)
 	return re:GetOwner():IsRace(RACE_ZOMBIE) and e:GetHandler():GetSummonLocation()==LOCATION_GRAVE
-		and e:GetHandler():GetPreviousControler()==tp
+		and e:GetHandler():IsPreviousControler(tp)
 end
 function c37675138.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)

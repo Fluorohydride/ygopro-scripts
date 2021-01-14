@@ -54,7 +54,7 @@ function c30502181.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c30502181.eqcondtion(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousLocation()==LOCATION_DECK
+	return e:GetHandler():IsPreviousLocation(LOCATION_DECK)
 end
 function c30502181.eqtarget(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:GetLocation()==LOCATION_MZONE and chkc:GetControler()==tp and c30502181.filter(chkc) end

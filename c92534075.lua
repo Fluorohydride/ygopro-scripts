@@ -29,7 +29,7 @@ function c92534075.initial_effect(c)
 end
 function c92534075.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp
+	return rp==1-tp and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp)
 end
 function c92534075.thfilter(c)
 	return c:IsSetCard(0x108) and not c:IsCode(92534075) and c:IsAbleToHand()

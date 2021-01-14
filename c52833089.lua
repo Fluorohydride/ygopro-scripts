@@ -13,7 +13,7 @@ function c52833089.initial_effect(c)
 end
 function c52833089.cfilter(c,tp)
 	return c:IsSetCard(0x33) and c:IsLocation(LOCATION_GRAVE)
-		and c:GetPreviousControler()==tp and bit.band(c:GetReason(),REASON_BATTLE)~=0
+		and c:IsPreviousControler(tp) and bit.band(c:GetReason(),REASON_BATTLE)~=0
 end
 function c52833089.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c52833089.cfilter,1,nil,tp)

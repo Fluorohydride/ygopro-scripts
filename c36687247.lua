@@ -23,7 +23,7 @@ function c36687247.atcon(e)
 end
 function c36687247.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if bit.band(c:GetPreviousLocation(),LOCATION_ONFIELD)~=0 and c:IsReason(REASON_DESTROY) then
+	if c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsReason(REASON_DESTROY) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetDescription(aux.Stringid(36687247,0))
 		e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)

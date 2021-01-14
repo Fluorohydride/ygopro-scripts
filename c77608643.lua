@@ -27,7 +27,7 @@ function c77608643.initial_effect(c)
 end
 function c77608643.filter(c,e,tp)
 	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE)
-		and c:GetPreviousControler()==tp and c:IsSetCard(0xc008)
+		and c:IsPreviousControler(tp) and c:IsSetCard(0xc008)
 end
 function c77608643.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c77608643.filter,nil,e,tp)

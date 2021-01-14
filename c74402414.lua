@@ -122,7 +122,7 @@ end
 function c74402414.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ct=e:GetLabelObject():GetLabel()
-	if ct>0 and c:GetPreviousControler()==tp then
+	if ct>0 and c:IsPreviousControler(tp) then
 		Duel.Damage(tp,ct*500,REASON_EFFECT)
 	end
 end

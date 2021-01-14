@@ -20,7 +20,7 @@ function c79569173.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c79569173.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp)
 		and c:IsReason(REASON_DESTROY) and c:IsRace(RACE_DINOSAUR)
 end
 function c79569173.condition(e,tp,eg,ep,ev,re,r,rp)

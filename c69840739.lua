@@ -73,8 +73,8 @@ function c69840739.drop(e,tp,eg,ep,ev,re,r,rp)
 		if og:IsExists(Card.IsControler,1,nil,tp) then Duel.ShuffleDeck(tp) end
 		if og:IsExists(Card.IsControler,1,nil,1-tp) then Duel.ShuffleDeck(1-tp) end
 		Duel.BreakEffect()
-		local ct1=og:FilterCount(aux.FilterEqualFunction(Card.GetPreviousControler,tp),nil)
-		local ct2=og:FilterCount(aux.FilterEqualFunction(Card.GetPreviousControler,1-tp),nil)
+		local ct1=og:FilterCount(Card.IsPreviousControler,nil,tp)
+		local ct2=og:FilterCount(Card.IsPreviousControler,nil,1-tp)
 		Duel.Draw(tp,ct1,REASON_EFFECT)
 		Duel.Draw(1-tp,ct2,REASON_EFFECT)
 	end

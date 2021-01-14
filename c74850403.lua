@@ -32,7 +32,7 @@ function c74850403.evalue(e,re,rp)
 end
 function c74850403.thcfilter(c,tp)
 	return c:IsType(TYPE_PENDULUM) and c:IsPreviousSetCard(0x98)
-		and c:GetPreviousControler()==tp and c:IsPreviousPosition(POS_FACEUP)
+		and c:IsPreviousControler(tp) and c:IsPreviousPosition(POS_FACEUP)
 		and c:IsPreviousLocation(LOCATION_MZONE+LOCATION_PZONE)
 end
 function c74850403.thcon(e,tp,eg,ep,ev,re,r,rp)

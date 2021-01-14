@@ -26,7 +26,7 @@ function c5969957.initial_effect(c)
 end
 function c5969957.spcfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsAttribute(ATTRIBUTE_DARK)
-		and c:GetSummonLocation()==LOCATION_EXTRA and c:GetPreviousControler()==tp
+		and c:GetSummonLocation()==LOCATION_EXTRA and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c5969957.spcon(e,tp,eg,ep,ev,re,r,rp)

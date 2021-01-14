@@ -14,7 +14,7 @@ end
 function c75252099.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c==Duel.GetAttackTarget()
-		and c:GetPreviousControler()==tp and c:GetBattlePosition()==POS_FACEUP_ATTACK
+		and c:IsPreviousControler(tp) and c:GetBattlePosition()==POS_FACEUP_ATTACK
 end
 function c75252099.filter(c,e,tp)
 	return c:IsRace(RACE_PLANT) and c:IsType(TYPE_TUNER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

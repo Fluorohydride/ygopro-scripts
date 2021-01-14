@@ -44,7 +44,7 @@ function c85771019.tgop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c85771019.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,REASON_DESTROY)~=0 and e:GetHandler():GetPreviousControler()==tp
+	return bit.band(r,REASON_DESTROY)~=0 and e:GetHandler():IsPreviousControler(tp)
 		and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c85771019.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

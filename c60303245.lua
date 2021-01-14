@@ -52,7 +52,7 @@ function c60303245.immop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c60303245.spcfilter(c,tp)
-	return c:IsSummonType(SUMMON_TYPE_NORMAL) and c:GetPreviousControler()==tp
+	return c:IsSummonType(SUMMON_TYPE_NORMAL) and c:IsPreviousControler(tp)
 end
 function c60303245.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c60303245.spcfilter,1,nil,tp)

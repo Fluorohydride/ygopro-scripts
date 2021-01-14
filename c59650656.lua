@@ -26,7 +26,7 @@ function c59650656.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c59650656.cfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and (c:IsReason(REASON_DESTROY) and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
 			or c:IsReason(REASON_BATTLE) and Duel.GetTurnPlayer()==1-tp)
 		and c:IsSetCard(0x7b) and c:IsType(TYPE_XYZ)

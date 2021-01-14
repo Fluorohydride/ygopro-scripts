@@ -28,7 +28,7 @@ function c6568731.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c6568731.filter(c,tp,rp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and ((c:IsReason(REASON_EFFECT) and rp==1-tp) or (c:IsReason(REASON_BATTLE) and Duel.GetAttacker():IsControler(1-tp)))
 end
 function c6568731.condition(e,tp,eg,ep,ev,re,r,rp)

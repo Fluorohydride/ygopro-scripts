@@ -22,7 +22,7 @@ end
 function c48092532.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsFaceup() and c:IsPreviousPosition(POS_FACEUP)
-		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp)
 end
 function c48092532.rmop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterFlagEffect(48092532,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)

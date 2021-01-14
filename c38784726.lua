@@ -77,7 +77,7 @@ function c38784726.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c38784726.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp
+	return rp==1-tp and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp)
 end
 function c38784726.spfilter(c,e,tp)
 	return c:IsCode(16313112) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)

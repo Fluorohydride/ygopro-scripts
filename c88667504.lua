@@ -31,7 +31,7 @@ function c88667504.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c88667504.cfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and bit.band(c:GetPreviousRaceOnField(),RACE_MACHINE)~=0 and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_EARTH)~=0 and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function c88667504.descon(e,tp,eg,ep,ev,re,r,rp)

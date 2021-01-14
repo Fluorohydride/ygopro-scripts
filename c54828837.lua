@@ -56,7 +56,7 @@ function c54828837.negop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c54828837.protfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
 		and (c:GetPreviousCodeOnField()==32491822 or c:GetPreviousCodeOnField()==6007213 or c:GetPreviousCodeOnField()==69890967)
 end
 function c54828837.protcon(e,tp,eg,ep,ev,re,r,rp)

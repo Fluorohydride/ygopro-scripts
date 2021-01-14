@@ -20,7 +20,7 @@ function c32663969.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c32663969.cfilter(c,tp)
-	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:GetPreviousControler()==tp
+	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:IsPreviousControler(tp)
 end
 function c32663969.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c32663969.cfilter,1,nil,1-tp)

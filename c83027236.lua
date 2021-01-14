@@ -17,7 +17,7 @@ function c83027236.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c83027236.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_DECK) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_DECK) and c:IsPreviousControler(tp)
 end
 function c83027236.condtion(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return false end

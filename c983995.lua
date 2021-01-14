@@ -43,7 +43,7 @@ function c983995.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c983995.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return bit.band(r,REASON_DESTROY)~=0 and rp==1-tp and c:GetPreviousControler()==tp
+	return bit.band(r,REASON_DESTROY)~=0 and rp==1-tp and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEDOWN)
 end
 function c983995.drtg(e,tp,eg,ep,ev,re,r,rp,chk)

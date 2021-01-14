@@ -33,7 +33,7 @@ function c87259933.initial_effect(c)
 end
 function c87259933.cfilter(c,tp)
 	return c:IsSetCard(0x1034) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
-		and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+		and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 end
 function c87259933.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c87259933.cfilter,1,nil,tp)

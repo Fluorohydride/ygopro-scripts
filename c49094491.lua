@@ -27,7 +27,7 @@ function c49094491.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c49094491.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 		and bit.band(c:GetPreviousRaceOnField(),RACE_CYBERSE)~=0 and c:GetSummonLocation()==LOCATION_EXTRA
 		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 end

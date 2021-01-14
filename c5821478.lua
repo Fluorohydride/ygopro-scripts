@@ -31,7 +31,7 @@ function c5821478.cfilter(c,zone)
 		if c:IsControler(1) then seq=seq+16 end
 	else
 		seq=c:GetPreviousSequence()
-		if c:GetPreviousControler()==1 then seq=seq+16 end
+		if c:IsPreviousControler(1) then seq=seq+16 end
 	end
 	return bit.extract(zone,seq)~=0
 end

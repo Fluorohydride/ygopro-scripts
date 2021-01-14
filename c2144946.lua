@@ -45,7 +45,7 @@ function c2144946.lvcon(e)
 	return ph==PHASE_MAIN1 or ph==PHASE_MAIN2
 end
 function c2144946.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousSetCard(0x107)
+	return c:IsPreviousControler(tp) and c:IsPreviousSetCard(0x107)
 end
 function c2144946.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c2144946.cfilter,1,nil,tp)

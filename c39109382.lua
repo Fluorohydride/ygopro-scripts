@@ -65,7 +65,7 @@ function c39109382.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c39109382.cfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsPreviousSetCard(0x13) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
 end
 function c39109382.descon2(e,tp,eg,ep,ev,re,r,rp)

@@ -12,7 +12,7 @@ function c80955168.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c80955168.cfilter(c,tp)
-	return c:IsFaceup() and c:IsPreviousLocation(LOCATION_GRAVE) and c:GetPreviousControler()==1-tp
+	return c:IsFaceup() and c:IsPreviousLocation(LOCATION_GRAVE) and c:IsPreviousControler(1-tp)
 		and c:IsControler(tp) and c:IsRace(RACE_ZOMBIE)
 end
 function c80955168.condition(e,tp,eg,ep,ev,re,r,rp,chk)

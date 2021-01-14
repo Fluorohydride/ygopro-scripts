@@ -13,7 +13,7 @@ function c58324930.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c58324930.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():GetPreviousControler()==tp and rp==1-tp
+	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD) and e:GetHandler():IsPreviousControler(tp) and rp==1-tp
 end
 function c58324930.filter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()

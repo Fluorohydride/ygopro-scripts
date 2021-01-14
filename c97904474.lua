@@ -25,7 +25,7 @@ end
 function c97904474.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:GetPreviousControler()==tp
+	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:IsPreviousControler(tp)
 		and c==Duel.GetAttackTarget() and bc:IsFaceup() and bc:IsControler(1-tp) and bc:IsRelateToBattle()
 end
 function c97904474.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)

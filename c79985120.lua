@@ -59,7 +59,7 @@ function c79985120.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c79985120.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousControler()==tp and rp==1-tp and c:IsReason(REASON_DESTROY)
+	return c:IsPreviousControler(tp) and rp==1-tp and c:IsReason(REASON_DESTROY)
 end
 function c79985120.spfilter(c,e,tp)
 	return c:IsCode(81927732) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0

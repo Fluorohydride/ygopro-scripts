@@ -24,7 +24,7 @@ end
 function c31772684.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsReason(REASON_DESTROY) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
-		and rp==1-tp and c:GetPreviousControler()==tp
+		and rp==1-tp and c:IsPreviousControler(tp)
 end
 function c31772684.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

@@ -24,7 +24,7 @@ function c91392974.initial_effect(c)
 end
 function c91392974.cfilter(c,tp)
 	return c:IsPreviousSetCard(0x8) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
+		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c91392974.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local v=0

@@ -82,7 +82,7 @@ function c24094258.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c24094258.drcfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_PZONE) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_PZONE) and c:IsPreviousControler(tp)
 end
 function c24094258.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c24094258.drcfilter,1,nil,tp)

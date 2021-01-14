@@ -55,7 +55,7 @@ function c123709.tgop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c123709.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_DESTROY)
-		and bit.band(e:GetHandler():GetPreviousLocation(),LOCATION_ONFIELD)~=0
+		and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c123709.filter(c)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsAbleToHand()

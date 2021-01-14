@@ -45,7 +45,7 @@ end
 function c94283662.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_DESTROY)>0
 		and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
-		and e:GetHandler():GetPreviousControler()==tp
+		and e:GetHandler():IsPreviousControler(tp)
 end
 function c94283662.filter(c)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_DARK) and c:IsAbleToHand()

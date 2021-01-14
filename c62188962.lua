@@ -33,7 +33,7 @@ function c62188962.atkcon(e)
 	return Duel.GetCurrentPhase()==PHASE_DAMAGE_CAL
 end
 function c62188962.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_DECK) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_DECK) and c:IsPreviousControler(tp)
 end
 function c62188962.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c62188962.cfilter,1,nil,1-tp)

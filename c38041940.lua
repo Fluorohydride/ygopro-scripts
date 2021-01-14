@@ -15,7 +15,7 @@ end
 function c38041940.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return bit.band(c:GetReason(),0x41)==0x41 and c:IsPreviousLocation(LOCATION_ONFIELD)
-		and c:GetPreviousControler()==tp
+		and c:IsPreviousControler(tp)
 end
 function c38041940.spfilter(c,e,tp)
 	return c:IsLevelBelow(4) and c:IsRace(RACE_PLANT) and c:GetCode()~=38041940 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

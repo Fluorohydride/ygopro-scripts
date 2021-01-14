@@ -48,7 +48,7 @@ function c34004470.atop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c34004470.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return bit.band(r,0x41)==0x41 and rp==1-tp and c:GetPreviousControler()==tp
+	return bit.band(r,0x41)==0x41 and rp==1-tp and c:IsPreviousControler(tp)
 end
 function c34004470.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

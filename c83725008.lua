@@ -33,7 +33,7 @@ function c83725008.reset(e,tp,eg,ep,ev,re,r,rp)
 	c83725008[1]=false
 end
 function c83725008.cfilter(c)
-	return c:GetPreviousLocation()==LOCATION_DECK
+	return c:IsPreviousLocation(LOCATION_DECK)
 end
 function c83725008.set(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return false end

@@ -40,7 +40,7 @@ function c15462014.egfilter(c)
 	return c:GetSummonLocation()==LOCATION_EXTRA and d:GetSummonLocation()==LOCATION_EXTRA
 end
 function c15462014.pcheck(c,tp)
-	return c:GetPreviousControler()==tp
+	return c:IsPreviousControler(tp)
 end
 function c15462014.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c15462014.egfilter,1,nil)

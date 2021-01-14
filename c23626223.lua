@@ -52,7 +52,7 @@ function c23626223.tgcon(e)
 		and c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c23626223.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_SZONE) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_SZONE) and c:IsPreviousControler(tp)
 end
 function c23626223.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

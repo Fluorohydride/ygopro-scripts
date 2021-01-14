@@ -41,7 +41,7 @@ function c91438994.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c91438994.filter1(c,tp)
-	return c:GetPreviousControler()==tp and c:GetPreviousLocation()==LOCATION_MZONE
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c91438994.addc1(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c91438994.filter1,1,nil,tp) then
@@ -49,7 +49,7 @@ function c91438994.addc1(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c91438994.filter2(c,tp)
-	return c:GetPreviousControler()~=tp and c:GetPreviousLocation()==LOCATION_GRAVE
+	return c:IsPreviousControler(1-tp) and c:IsPreviousLocation(LOCATION_GRAVE)
 end
 function c91438994.addc2(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c91438994.filter2,1,nil,tp) then

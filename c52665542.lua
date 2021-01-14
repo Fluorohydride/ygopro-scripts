@@ -67,7 +67,7 @@ function c52665542.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c52665542.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_DECK) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_DECK) and c:IsPreviousControler(tp)
 end
 function c52665542.accon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c52665542.cfilter,1,nil,tp)

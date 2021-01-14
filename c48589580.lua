@@ -53,7 +53,7 @@ function c48589580.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c48589580.cfilter(c,tp)
 	return bit.band(c:GetPreviousRaceOnField(),RACE_FAIRY)~=0 and c:IsRace(RACE_FAIRY)
-		and c:GetPreviousControler()==tp and c:GetPreviousLocation()==LOCATION_MZONE and c:IsPreviousPosition(POS_FACEUP)
+		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c48589580.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c48589580.cfilter,1,nil,tp)

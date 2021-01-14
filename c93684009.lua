@@ -37,7 +37,7 @@ function c93684009.tglimit(e,c)
 	return c:IsSetCard(0x19)
 end
 function c93684009.cfilter(c,tp)
-	return c:IsSetCard(0x19) and c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_DECK) and c:GetPreviousControler()==tp
+	return c:IsSetCard(0x19) and c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_DECK) and c:IsPreviousControler(tp)
 end
 function c93684009.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c93684009.cfilter,1,nil,tp)

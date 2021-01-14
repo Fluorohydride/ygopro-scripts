@@ -68,7 +68,7 @@ function c65589010.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c65589010.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_FZONE) and c:GetPreviousControler()==tp
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_FZONE) and c:IsPreviousControler(tp)
 		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
 end
 function c65589010.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)

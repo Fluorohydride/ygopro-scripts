@@ -80,7 +80,7 @@ function c56773577.acop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c56773577.setcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:IsReason(REASON_DESTROY) and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp
+	return rp==1-tp and c:IsReason(REASON_DESTROY) and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp)
 end
 function c56773577.setfilter(c)
 	return c:IsSetCard(0x91) and not c:IsCode(56773577) and c:IsSSetable()

@@ -47,7 +47,7 @@ end
 function c63509474.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return rp==1-tp and c:IsReason(REASON_DESTROY)
-		and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp
+		and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp)
 end
 function c63509474.filter(c,e,tp)
 	return c:IsRace(RACE_FISH) and (c:IsAbleToHand() or c:IsCanBeSpecialSummoned(e,0,tp,false,false))

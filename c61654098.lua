@@ -31,7 +31,7 @@ function c61654098.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c61654098.spcfilter(c,tp,rp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:IsPreviousSetCard(0xfd)
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:IsPreviousSetCard(0xfd)
 		and (c:IsReason(REASON_BATTLE) or (rp==1-tp and c:IsReason(REASON_EFFECT)))
 end
 function c61654098.spcon(e,tp,eg,ep,ev,re,r,rp)

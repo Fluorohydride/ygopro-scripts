@@ -35,7 +35,7 @@ function c14839621.cfilter(c,seq,tp)
 		return c:IsFaceup() and c:IsType(TYPE_EFFECT) and bit.extract(seq,nseq)~=0
 	else
 		nseq=c:GetPreviousSequence()
-		if c:GetPreviousControler()==1-tp then nseq=nseq+16 end
+		if c:IsPreviousControler(1-tp) then nseq=nseq+16 end
 		return bit.band(c:GetPreviousTypeOnField(),TYPE_EFFECT)~=0 and bit.extract(seq,nseq)~=0
 	end
 end

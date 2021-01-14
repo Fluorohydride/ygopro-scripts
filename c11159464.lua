@@ -30,7 +30,7 @@ function c11159464.drop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c11159464.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetPreviousLocation(),LOCATION_ONFIELD)~=0
+	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c11159464.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

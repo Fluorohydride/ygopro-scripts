@@ -59,7 +59,7 @@ function c71095768.checkop(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsRelateToEffect(te) then
 			if tc:IsControler(1) then seq=seq+16 end
 		else
-			if tc:GetPreviousControler()==1 then seq=seq+16 end
+			if tc:IsPreviousControler(1) then seq=seq+16 end
 		end
 		c71095768[2]=seq
 	end
