@@ -15,9 +15,9 @@ function c98022050.initial_effect(c)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e2)
 end
-function c98022050.desfilter(c,tp)
+function c98022050.desfilter(c,tp,solve)
 	return c:IsRace(RACE_DINOSAUR) and not c:IsCode(98022050) and (c:IsFaceup() or c:IsLocation(LOCATION_HAND))
-		and Duel.IsExistingMatchingCard(c98022050.thfilter,tp,LOCATION_DECK,0,1,nil,c:GetOriginalLevel())
+		and (solve or Duel.IsExistingMatchingCard(c98022050.thfilter,tp,LOCATION_DECK,0,1,nil,c:GetOriginalLevel()))
 end
 function c98022050.thfilter(c,lv)
 	return ((c:GetOriginalLevel()==lv and c:IsRace(RACE_REPTILE+RACE_SEASERPENT+RACE_WINDBEAST))
@@ -33,6 +33,10 @@ function c98022050.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectMatchingCard(tp,c98022050.desfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil,tp)
+	if g:GetCount()==0 then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+		g=Duel.SelectMatchingCard(tp,c98022050.desfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil,tp,true)
+	end
 	local tc=g:GetFirst()
 	if tc and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		local lv=tc:GetOriginalLevel()
