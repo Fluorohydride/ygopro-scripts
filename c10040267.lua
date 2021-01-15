@@ -1,5 +1,6 @@
 --新生代化石マシン スカルバギー
 function c10040267.initial_effect(c)
+	aux.AddCodeList(c,59419719)
 	--fusion summon
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,c10040267.matfilter,aux.FilterBoolFunction(Card.IsLevelBelow,4),true)

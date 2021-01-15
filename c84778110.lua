@@ -1,5 +1,6 @@
 --フリント・クラッガー
 function c84778110.initial_effect(c)
+	aux.AddCodeList(c,59419719)
 	--tograve
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(84778110,0))

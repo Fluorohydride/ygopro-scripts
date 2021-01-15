@@ -1,5 +1,6 @@
 --シェル・ナイト
 function c10163855.initial_effect(c)
+	aux.AddCodeList(c,59419719)
 	--burn
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(10163855,0))
