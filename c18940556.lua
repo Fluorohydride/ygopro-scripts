@@ -62,9 +62,10 @@ end
 function c18940556.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil,TYPE_MONSTER)
 		and Duel.IsExistingMatchingCard(c18940556.posfilter,tp,0,LOCATION_MZONE,1,nil) end
-	local g=Duel.GetMatchingGroup(c18940556.posfilter,tp,0,LOCATION_MZONE,nil)
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,nil,1,tp,LOCATION_HAND+LOCATION_MZONE)
-	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,g:GetCount(),0,0)
+	local g1=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_HAND+LOCATION_MZONE,0,nil,TYPE_MONSTER)
+	local g2=Duel.GetMatchingGroup(c18940556.posfilter,tp,0,LOCATION_MZONE,nil)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g1,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_POSITION,g2,g2:GetCount(),0,0)
 end
 function c18940556.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
@@ -78,13 +79,14 @@ function c18940556.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c18940556.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local d=Duel.GetAttackTarget()
-	if chk==0 then return Duel.GetAttacker()==e:GetHandler() and d and d:IsDefensePos() end
+	if chk==0 then return Duel.GetAttacker()==e:GetHandler() and d and d:IsRelateToBattle() and d:IsDefensePos() end
+	Duel.SetTargetCard(d)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,1000)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,d,1,0,0)
 end
 function c18940556.tgop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.Damage(1-tp,1000,REASON_EFFECT)~=0 then
-		local d=Duel.GetAttackTarget()
+		local d=Duel.GetFirstTarget()
 		if d:IsRelateToBattle() and d:IsDefensePos() then
 			Duel.SendtoGrave(d,REASON_EFFECT)
 		end
