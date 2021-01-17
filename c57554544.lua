@@ -49,8 +49,9 @@ end
 function c57554544.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c57554544.filter1,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(c57554544.filter2,tp,LOCATION_DECK,0,1,nil) end
+	local g=Duel.GetMatchingGroup(c57554544.filter1,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
-	Duel.SetOperationInfo(0,CATEGORY_DESTROY,nil,1,tp,LOCATION_HAND+LOCATION_MZONE)
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c57554544.operation(e,tp,eg,ep,ev,re,r,rp)
