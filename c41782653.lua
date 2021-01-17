@@ -65,7 +65,7 @@ function c41782653.desfilter(c)
 end
 function c41782653.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c41782653.desfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil) end
-	local g=Duel.GetMatchingGroup(c41782653.desfilter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,nil)
+	local g=Duel.GetMatchingGroup(c41782653.desfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
