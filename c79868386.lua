@@ -64,7 +64,8 @@ function c79868386.activate(e,tp,eg,ep,ev,re,r,rp)
 			e4:SetReset(RESET_PHASE+PHASE_END)
 			Duel.RegisterEffect(e4,tp)
 			local sg=Duel.GetMatchingGroup(c79868386.desfilter,tp,0,LOCATION_ONFIELD,nil)
-			if #sg>0 and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
+			if #sg>0 and Duel.GetTurnPlayer()==tp
+				and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 				and Duel.SelectYesNo(tp,aux.Stringid(79868386,0)) then
 				Duel.Destroy(sg,REASON_EFFECT)
 			end
