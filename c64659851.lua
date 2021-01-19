@@ -4,7 +4,7 @@ function c64659851.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(64659851,0))
-	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,64659851+EFFECT_COUNT_CODE_OATH)
@@ -19,9 +19,10 @@ function c64659851.thfilter(c)
 	return (c:IsCode(77585513) or aux.IsCodeListed(c,77585513) and c:IsType(TYPE_MONSTER)) and c:IsAbleToHand()
 end
 function c64659851.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c64659851.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) or Duel.IsExistingMatchingCard(c64659851.thfilter,tp,LOCATION_DECK,0,1,nil) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_DECK)
+	if chk==0 then
+		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c64659851.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) 
+			or Duel.IsExistingMatchingCard(c64659851.thfilter,tp,LOCATION_DECK,0,1,nil)
+	end
 end
 function c64659851.setfilter(c)
 	return c:IsType(TYPE_TRAP) and c:IsSSetable(true)
