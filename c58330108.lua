@@ -97,7 +97,7 @@ function c58330108.operation(e,tp,eg,ep,ev,re,r,rp)
 	if gc==1 then
 		local g=Duel.GetMatchingGroup(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e))
 		Duel.Destroy(g,REASON_EFFECT)
-	else
+	elseif gc>=2 then
 		local loc=LOCATION_ONFIELD
 		if gc>2 then loc=LOCATION_ONFIELD+LOCATION_GRAVE end
 		local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,loc,loc,aux.ExceptThisCard(e))
