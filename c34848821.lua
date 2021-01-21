@@ -52,6 +52,7 @@ function c34848821.imop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTargetRange(LOCATION_MZONE,0)
 	e1:SetTarget(c34848821.imval)
 	e1:SetValue(c34848821.imfilter)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e1)
 end
 function c34848821.imval(e,c)
