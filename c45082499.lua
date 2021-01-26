@@ -18,7 +18,7 @@ function c45082499.initial_effect(c)
 	e2:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_ONFIELD,0)
-	e2:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x7e))
+	e2:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x107e))
 	e2:SetValue(aux.indoval)
 	c:RegisterEffect(e2)
 	--destroy sub
