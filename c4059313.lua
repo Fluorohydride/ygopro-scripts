@@ -51,7 +51,7 @@ function c4059313.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetOperation(c4059313.tgop)
 		tc:RegisterEffect(e3)
 		if not tc:IsType(TYPE_EFFECT) then
-			local e4=Effect.CreateEffect(c)
+			local e4=Effect.CreateEffect(e:GetHandler())
 			e4:SetType(EFFECT_TYPE_SINGLE)
 			e4:SetCode(EFFECT_ADD_TYPE)
 			e4:SetValue(TYPE_EFFECT)
