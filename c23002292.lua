@@ -12,19 +12,15 @@ function c23002292.initial_effect(c)
 	c:RegisterEffect(e1)
 	--act in hand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(23002292,0))
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_TRAP_ACT_IN_HAND)
+	e2:SetOperation(c23002292.handop)
 	c:RegisterEffect(e2)
 end
 function c23002292.condition(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 		and re:IsActiveType(TYPE_TRAP) and Duel.IsChainNegatable(ev)
-end
-function c23002292.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	if e:GetHandler():IsStatus(STATUS_ACT_FROM_HAND) then
-		Duel.PayLPCost(tp,math.floor(Duel.GetLP(tp)/2))
-	end
 end
 function c23002292.setfilter(c)
 	return c:IsType(TYPE_TRAP) and c:IsSSetable(true)
@@ -58,4 +54,7 @@ function c23002292.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c23002292.aclimit(e,re,tp)
 	return re:GetHandler():IsType(TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
+end
+function c23002292.handop(e,tp,eg,ep,ev,re,r,rp)
+	Duel.PayLPCost(tp,math.floor(Duel.GetLP(tp)/2))
 end
