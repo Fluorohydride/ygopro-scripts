@@ -9,7 +9,6 @@ function c26534688.initial_effect(c)
 	--lv
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(26534688,0))
-	e2:SetCategory(CATEGORY_LVCHANGE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_FZONE)

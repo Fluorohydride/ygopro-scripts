@@ -15,7 +15,7 @@ function c70703416.initial_effect(c)
 	--lv
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(70703416,0))
-	e3:SetCategory(CATEGORY_TOGRAVE+CATEGORY_LVCHANGE)
+	e3:SetCategory(CATEGORY_TOGRAVE)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1,70703416)

@@ -37,7 +37,6 @@ function c14886190.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		if e:IsHasType(EFFECT_TYPE_ACTIVATE) and not e:GetHandler():IsLocation(LOCATION_SZONE) then ft=ft-1 end
 		return ft>0 and Duel.IsExistingMatchingCard(c14886190.tffilter,tp,LOCATION_DECK,0,1,nil,tp)
 	end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_EXTRA)
 end
 function c14886190.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end

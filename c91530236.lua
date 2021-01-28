@@ -2,7 +2,7 @@
 function c91530236.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_SEARCH+CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,91530236+EFFECT_COUNT_CODE_OATH)
@@ -36,7 +36,6 @@ function c91530236.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		return Duel.IsExistingMatchingCard(c91530236.thfilter,tp,LOCATION_DECK,0,1,nil,e,tp,mft,sft)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c91530236.activate(e,tp,eg,ep,ev,re,r,rp)
 	local mft=Duel.GetLocationCount(tp,LOCATION_MZONE)

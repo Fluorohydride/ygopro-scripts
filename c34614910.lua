@@ -3,7 +3,6 @@ function c34614910.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(34614910,0))
-	e1:SetCategory(CATEGORY_LVCHANGE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetRange(LOCATION_MZONE+LOCATION_HAND)

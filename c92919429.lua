@@ -3,7 +3,7 @@ function c92919429.initial_effect(c)
 	--lv
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(92919429,0))
-	e1:SetCategory(CATEGORY_TOGRAVE+CATEGORY_LVCHANGE)
+	e1:SetCategory(CATEGORY_TOGRAVE)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetProperty(EFFECT_FLAG_DELAY)

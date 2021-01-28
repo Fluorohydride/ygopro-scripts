@@ -47,7 +47,6 @@ function c57523313.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsAbleToHand() end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,c,1,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_HAND)
 end
 function c57523313.thfilter(c,e,tp)
 	return c:IsRace(RACE_BEAST) and not c:IsCode(57523313) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
