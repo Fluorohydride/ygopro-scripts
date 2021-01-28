@@ -30,26 +30,33 @@ end
 function c62941499.desfilter(c)
 	return not c:IsLocation(LOCATION_SZONE) or c:GetSequence()<5
 end
+function c62941499.exmzfilter(c,seq)
+	return c:GetSequence()==seq
+end
 function c62941499.seqfilter(c,seq)
 	local loc=LOCATION_MZONE
-	if seq>8 then
+	if seq>=8 then
 		loc=LOCATION_SZONE
 		seq=seq-8
 	end
-	if seq>=5 and seq<=7 then return false end
+	if seq>=5 and loc==LOCATION_SZONE then return false end
+	if seq==7 and loc==LOCATION_MZONE then return false end
 	local cseq=c:GetSequence()
 	local cloc=c:GetLocation()
 	if cloc==LOCATION_SZONE and cseq>=5 then return false end
 	if cloc==LOCATION_MZONE and cseq>=5 and loc==LOCATION_MZONE
 		and (seq==1 and cseq==5 or seq==3 and cseq==6) then return true end
-	return cseq==seq or cloc==loc and math.abs(cseq-seq)==1
+	if cloc==LOCATION_MZONE and seq>=5 and loc==LOCATION_MZONE and Duel.IsExistingMatchingCard(c62941499.exmzfilter,tp,0,LOCATION_MZONE,1,nil,seq) then
+		return seq==5 and cseq==1 or seq==6 and cseq==3
+	end
+	return cseq==seq or seq<5 and cseq<5 and cloc==loc and math.abs(cseq-seq)==1
 end
 function c62941499.seqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT)
 		and Duel.IsExistingMatchingCard(c62941499.desfilter,tp,0,LOCATION_ONFIELD,1,nil) end
 	local filter=0
-	for i=0,16 do
+	for i=0,15 do
 		if not Duel.IsExistingMatchingCard(c62941499.seqfilter,tp,0,LOCATION_ONFIELD,1,nil,i) then
 			filter=filter|1<<(i+16)
 		end
