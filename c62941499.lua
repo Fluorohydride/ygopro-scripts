@@ -33,7 +33,7 @@ end
 function c62941499.exmzfilter(c,seq)
 	return c:GetSequence()==seq
 end
-function c62941499.seqfilter(c,seq)
+function c62941499.seqfilter(c,seq,tp)
 	local loc=LOCATION_MZONE
 	if seq>=8 then
 		loc=LOCATION_SZONE
@@ -57,7 +57,7 @@ function c62941499.seqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(c62941499.desfilter,tp,0,LOCATION_ONFIELD,1,nil) end
 	local filter=0
 	for i=0,15 do
-		if not Duel.IsExistingMatchingCard(c62941499.seqfilter,tp,0,LOCATION_ONFIELD,1,nil,i) then
+		if not Duel.IsExistingMatchingCard(c62941499.seqfilter,tp,0,LOCATION_ONFIELD,1,nil,i,tp) then
 			filter=filter|1<<(i+16)
 		end
 	end
@@ -65,19 +65,19 @@ function c62941499.seqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local flag=Duel.SelectField(tp,1,0,LOCATION_ONFIELD,filter)
 	local seq=math.log(flag>>16,2)
 	e:SetLabel(seq)
-	local g=Duel.GetMatchingGroup(c62941499.seqfilter,tp,0,LOCATION_ONFIELD,nil,seq)
+	local g=Duel.GetMatchingGroup(c62941499.seqfilter,tp,0,LOCATION_ONFIELD,nil,seq,tp)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c62941499.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local seq=e:GetLabel()
-	local ct=Duel.GetMatchingGroupCount(c62941499.seqfilter,tp,0,LOCATION_ONFIELD,nil,seq)
+	local ct=Duel.GetMatchingGroupCount(c62941499.seqfilter,tp,0,LOCATION_ONFIELD,nil,seq,tp)
 	if ct<=0 or not c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT) then return end
 	local count=c:RemoveOverlayCard(tp,1,ct,REASON_EFFECT)
 	if count<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectMatchingCard(tp,c62941499.seqfilter,tp,0,LOCATION_ONFIELD,count,count,nil,seq)
+	local g=Duel.SelectMatchingCard(tp,c62941499.seqfilter,tp,0,LOCATION_ONFIELD,count,count,nil,seq,tp)
 	Duel.HintSelection(g)
 	Duel.Destroy(g,REASON_EFFECT)
 end
