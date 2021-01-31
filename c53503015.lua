@@ -45,7 +45,7 @@ function c53503015.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	else
 		e:SetLabel(2)
 		e:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
-		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_DECK)
+		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 	end
 end
 function c53503015.operation(e,tp,eg,ep,ev,re,r,rp)

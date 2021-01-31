@@ -65,7 +65,6 @@ function c96026108.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	e:SetLabel(0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_DECK)
 end
 function c96026108.thfilter(c)
 	return c:IsType(TYPE_RITUAL) and c:IsType(TYPE_SPELL) and c:IsAbleToHand()
