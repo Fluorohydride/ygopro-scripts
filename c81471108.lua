@@ -49,7 +49,10 @@ function c81471108.eqop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
-	Duel.Equip(tp,c,tc)
+	c81471108.equip_monster(c,tp,tc)
+end
+function c81471108.equip_monster(c,tp,tc)
+	if not Duel.Equip(tp,c,tc) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_EQUIP_LIMIT)

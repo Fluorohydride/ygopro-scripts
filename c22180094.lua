@@ -42,14 +42,24 @@ function c22180094.atlimit(e,c)
 	local lc=e:GetLabelObject()
 	return not lc:GetColumnGroup():IsContains(c)
 end
-function c22180094.costfilter(c)
-	return c:IsSetCard(0x156) and c:IsAbleToRemoveAsCost()
+function c22180094.costfilter(c,e,tp)
+	if c:IsLocation(LOCATION_HAND) then
+		return c:IsSetCard(0x156) and c:IsAbleToRemoveAsCost()
+	else
+		return e:GetHandler():IsSetCard(0x156) and c:IsHasEffect(55049722,tp) and c:IsAbleToRemoveAsCost()
+	end
 end
 function c22180094.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c22180094.costfilter,tp,LOCATION_HAND,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c22180094.costfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c22180094.costfilter,tp,LOCATION_HAND,0,1,1,nil)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	local tg=Duel.SelectMatchingCard(tp,c22180094.costfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
+	local te=tg:GetFirst():IsHasEffect(55049722,tp)
+	if te then
+		te:UseCountLimit(tp)
+		Duel.Remove(tg,POS_FACEUP,REASON_REPLACE)
+	else
+		Duel.Remove(tg,POS_FACEUP,REASON_COST)
+	end
 end
 function c22180094.spfilter(c,e,tp)
 	return c:IsSetCard(0x156) and not c:IsCode(22180094) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

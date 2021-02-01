@@ -1,5 +1,6 @@
 --漆黒の薔薇の開華
 function c99092624.initial_effect(c)
+	aux.AddCodeList(c,73580471)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN)

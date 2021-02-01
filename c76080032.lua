@@ -53,7 +53,10 @@ function c76080032.eqop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
-	Duel.Equip(tp,c,tc)
+	c76080032.equip_monster(c,tp,tc)
+end
+function c76080032.equip_monster(c,tp,tc)
+	if not Duel.Equip(tp,c,tc) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_EQUIP_LIMIT)
@@ -77,7 +80,6 @@ end
 function c76080032.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetEquipTarget():GetBattleTarget()
 	tc:RegisterFlagEffect(76080032,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
-	Duel.AdjustInstantly(e:GetHandler())
 end
 function c76080032.distg(e,c)
 	return c:GetFlagEffect(76080032)~=0
