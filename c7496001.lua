@@ -19,7 +19,7 @@ function c7496001.initial_effect(c)
 	c:RegisterEffect(e2)
 	--play fieldspell
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(7496001,2))
+	e3:SetDescription(aux.Stringid(7496001,1))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCost(c7496001.afcost)

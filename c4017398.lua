@@ -12,7 +12,7 @@ function c4017398.initial_effect(c)
 	c:RegisterEffect(e1)
 	--draw
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(36224040,1))
+	e2:SetDescription(aux.Stringid(4017398,0))
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_GRAVE)
