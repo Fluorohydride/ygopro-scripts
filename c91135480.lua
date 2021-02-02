@@ -4,7 +4,7 @@ function c91135480.initial_effect(c)
 	aux.AddXyzProcedure(c,nil,4,2)
 	--Apply
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(91135480,1))
+	e1:SetDescription(aux.Stringid(91135480,0))
 	e1:SetCategory(CATEGORY_DISABLE+CATEGORY_ATKCHANGE+CATEGORY_CONTROL)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_CHAINING)
