@@ -21,12 +21,13 @@ function c62623659.tdfilter(c)
 end
 function c62623659.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c62623659.filter,tp,LOCATION_DECK,0,1,nil)
-		and Duel.IsExistingMatchingCard(c62623659.tdfilter,tp,LOCATION_HAND,0,1,nil) end
+		and Duel.IsExistingMatchingCard(c62623659.tdfilter,tp,LOCATION_HAND,0,1,e:GetHandler()) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
 function c62623659.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local g=Duel.SelectMatchingCard(tp,c62623659.tdfilter,tp,LOCATION_HAND,0,1,1,nil)
+	if g:GetCount()==0 then return end
 	Duel.ConfirmCards(1-tp,g)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g1=Duel.SelectMatchingCard(tp,c62623659.filter,tp,LOCATION_DECK,0,1,1,nil)
