@@ -28,7 +28,7 @@ function c49407319.initial_effect(c)
 end
 function c49407319.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:GetPreviousControler()==tp
 		and (c:IsReason(REASON_EFFECT) and rp==1-tp or c:IsReason(REASON_BATTLE) and Duel.GetAttacker():IsControler(1-tp))
 end
 function c49407319.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
