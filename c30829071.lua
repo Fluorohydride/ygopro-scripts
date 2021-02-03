@@ -1,4 +1,4 @@
---驚楽園の大使 ＜Ｂｕｆｏ＞
+--驚楽園の大使 ＜Bufo＞
 function c30829071.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
@@ -43,7 +43,7 @@ function c30829071.eqop1(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	if tc==ec then tc=g:GetNext() end
-	if ec:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if ec:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) then
 		Duel.Equip(tp,ec,tc)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -60,37 +60,35 @@ function c30829071.eqlimit(e,c)
 end
 function c30829071.eqfilter1(c,tp)
 	return c:IsSetCard(0x15c) and c:IsType(TYPE_TRAP) and c:IsFaceup() and c:GetEquipTarget()
-		and Duel.IsExistingTarget(c30829071.eqfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,c:GetEquipTarget(),tp)
+		and Duel.IsExistingMatchingCard(c30829071.eqfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,c:GetEquipTarget(),tp)
 end
 function c30829071.eqfilter2(c,tp)
 	return c:IsFaceup() and (c:IsSetCard(0x15b) or not c:IsControler(tp))
 end
 function c30829071.eqtg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return false end
+	if chkc then return chkc:IsLocation(LOCATION_SZONE) and chkc:IsControler(tp) and c30829071.eqfilter1(chkc,tp) end
 	if chk==0 then return Duel.IsExistingTarget(c30829071.eqfilter1,tp,LOCATION_SZONE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g1=Duel.SelectTarget(tp,c30829071.eqfilter1,tp,LOCATION_SZONE,0,1,1,nil,tp)
-	local tc=g1:GetFirst()
-	e:SetLabelObject(tc)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g2=Duel.SelectTarget(tp,c30829071.eqfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,tc:GetEquipTarget(),tp)
+	local g=Duel.SelectTarget(tp,c30829071.eqfilter1,tp,LOCATION_SZONE,0,1,1,nil,tp)
+	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c30829071.eqop2(e,tp,eg,ep,ev,re,r,rp)
-	local ec=e:GetLabelObject()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tc=g:GetFirst()
-	if tc==ec then tc=g:GetNext() end
-	if ec:IsFaceup() and ec:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
-		Duel.Equip(tp,ec,tc)
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
-		e1:SetCode(EFFECT_EQUIP_LIMIT)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-		e1:SetValue(c30829071.eqlimit2)
-		ec:RegisterEffect(e1)
+	local tc=Duel.GetFirstTarget()
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
+		local g=Duel.SelectMatchingCard(tp,c30829071.eqfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,tc:GetEquipTarget(),tp)
+		local ec=g:GetFirst()
+		if ec then
+			Duel.HintSelection(g)
+			Duel.Equip(tp,tc,ec)
+			local e1=Effect.CreateEffect(e:GetHandler())
+			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+			e1:SetCode(EFFECT_EQUIP_LIMIT)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+			e1:SetValue(c30829071.eqlimit)
+			e1:SetLabelObject(ec)
+			tc:RegisterEffect(e1)
+		end
 	end
-end
-function c30829071.eqlimit2(e,c)
-	return c:IsSetCard(0x15b) or c:IsControler(1-e:GetHandlerPlayer())
 end
