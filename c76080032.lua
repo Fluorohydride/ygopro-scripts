@@ -26,6 +26,7 @@ function c76080032.initial_effect(c)
 	e4:SetCode(EFFECT_DISABLE)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetTargetRange(0,LOCATION_MZONE)
+	e4:SetCondition(c76080032.discon)
 	e4:SetTarget(c76080032.distg)
 	c:RegisterEffect(e4)
 	local e5=e4:Clone()
@@ -76,13 +77,14 @@ end
 function c76080032.discon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler():GetEquipTarget()
 	return ec and (ec==Duel.GetAttacker() or ec==Duel.GetAttackTarget()) and ec:GetBattleTarget()
+		and Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE
 end
 function c76080032.disop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=e:GetHandler():GetEquipTarget():GetBattleTarget()
-	tc:RegisterFlagEffect(76080032,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
+	Duel.AdjustInstantly(e:GetHandler())
 end
 function c76080032.distg(e,c)
-	return c:GetFlagEffect(76080032)~=0
+	local ec=e:GetHandler():GetEquipTarget()
+	return ec and c==ec:GetBattleTarget()
 end
 function c76080032.eqlimit(e,c)
 	return c==e:GetLabelObject()
