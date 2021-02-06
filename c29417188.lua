@@ -23,7 +23,7 @@ function c29417188.operation(e,tp,eg,ep,ev,re,r,rp)
 	--forbidden
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
+	e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetCode(EFFECT_FORBIDDEN)
 	e1:SetTargetRange(0x7f,0x7f)
 	e1:SetTarget(c29417188.bantg)
