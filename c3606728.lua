@@ -3,7 +3,6 @@ function c3606728.initial_effect(c)
 	--lvchange
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(3606728,0))
-	e1:SetCategory(CATEGORY_LVCHANGE)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)

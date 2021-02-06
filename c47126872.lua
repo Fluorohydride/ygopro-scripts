@@ -27,6 +27,7 @@ end
 function c47126872.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and c47126872.filter(chkc) end
 	if chk==0 then return true end
+	e:SetLabelObject(nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,c47126872.filter,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),0,0)
@@ -34,7 +35,7 @@ end
 function c47126872.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) then
-		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and e:GetHandler():IsRelateToEffect(e) then
+		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and not tc:IsType(TYPE_TOKEN) and e:GetHandler():IsRelateToEffect(e) then
 			e:SetLabelObject(tc)
 			tc:RegisterFlagEffect(47126872,RESET_EVENT+RESETS_STANDARD,0,1)
 		end

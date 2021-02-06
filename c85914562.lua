@@ -14,7 +14,7 @@ function c85914562.initial_effect(c)
 	--spsummon2
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(85914562,1))
-	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_DECKDES)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,85914563)
@@ -40,7 +40,6 @@ function c85914562.spop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c85914562.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>4 end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_DECK)
 end
 function c85914562.spfilter(c,e,tp)
 	return not c:IsType(TYPE_TUNER) and c:IsLevelBelow(4) and c:IsRace(RACE_ROCK) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

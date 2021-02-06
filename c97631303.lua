@@ -3,7 +3,7 @@ function c97631303.initial_effect(c)
 	aux.AddCodeList(c,46986414,38033121)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_SPSUMMON)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,97631303)
@@ -46,12 +46,9 @@ function c97631303.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	e:SetLabel(s)
 	if s==0 then
-		e:SetCategory(CATEGORY_SPECIAL_SUMMON)
 		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
 	else
-		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_HANDES)
 		Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,c,1,0,0)
-		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,0,tp,LOCATION_GRAVE)
 	end
 end
 function c97631303.spfilter(c,e,tp)

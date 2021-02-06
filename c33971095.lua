@@ -7,7 +7,6 @@ function c33971095.initial_effect(c)
 	c:RegisterEffect(e1)
 	--increase lv
 	local e2=Effect.CreateEffect(c)
-	e2:SetCategory(CATEGORY_LVCHANGE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_SZONE)

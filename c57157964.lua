@@ -1,5 +1,6 @@
 --古生代化石マシン スカルコンボイ
 function c57157964.initial_effect(c)
+	aux.AddCodeList(c,59419719)
 	--fusion summon
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,c57157964.matfilter,aux.FilterBoolFunction(Card.IsLevelAbove,7),true)

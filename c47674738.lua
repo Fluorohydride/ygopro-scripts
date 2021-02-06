@@ -30,7 +30,6 @@ function c47674738.initial_effect(c)
 end
 function c47674738.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>4 end
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_DECK)
 end
 function c47674738.thfilter(c)
 	return c:IsSetCard(0x140) and c:IsAbleToHand()

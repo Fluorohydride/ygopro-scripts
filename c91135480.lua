@@ -4,7 +4,7 @@ function c91135480.initial_effect(c)
 	aux.AddXyzProcedure(c,nil,4,2)
 	--Apply
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(91135480,1))
+	e1:SetDescription(aux.Stringid(91135480,0))
 	e1:SetCategory(CATEGORY_DISABLE+CATEGORY_ATKCHANGE+CATEGORY_CONTROL)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetCode(EVENT_CHAINING)
@@ -26,7 +26,7 @@ function c91135480.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		if g:IsExists(Card.IsType,1,nil,TYPE_MONSTER)
 			then return true end
 		if g:IsExists(Card.IsType,1,nil,TYPE_SPELL)
-			and Duel.IsExistingMatchingCard(Card.IsControlerCanBeChanged,tp,0,LOCATION_MZONE,1,nil) then return true end
+			and Duel.IsExistingMatchingCard(c91135480.ctfilter,tp,0,LOCATION_MZONE,1,nil) then return true end
 		if g:IsExists(Card.IsType,1,nil,TYPE_TRAP)
 			and Duel.IsExistingMatchingCard(c91135480.dfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) then return true end
 		return false
@@ -40,15 +40,16 @@ end
 function c91135480.dfilter(c)
 	return c:IsFaceup() and not c:IsDisabled() and c:IsType(TYPE_EFFECT)
 end
+function c91135480.ctfilter(c)
+	return c:IsFaceup() and c:IsControlerCanBeChanged()
+end
 function c91135480.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or not c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT) then return end
 	local g=c:GetOverlayGroup()
 	local tg=Group.CreateGroup()
-	if e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT) then
-		tg:Merge(g:Filter(Card.IsType,nil,TYPE_MONSTER))
-	end
-	if Duel.IsExistingMatchingCard(Card.IsControlerCanBeChanged,tp,0,LOCATION_MZONE,1,nil) then
+	tg:Merge(g:Filter(Card.IsType,nil,TYPE_MONSTER))
+	if Duel.IsExistingMatchingCard(c91135480.ctfilter,tp,0,LOCATION_MZONE,1,nil) then
 		tg:Merge(g:Filter(Card.IsType,nil,TYPE_SPELL))
 	end
 	if Duel.IsExistingMatchingCard(c91135480.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) then
@@ -71,7 +72,7 @@ function c91135480.operation(e,tp,eg,ep,ev,re,r,rp)
 	if sg:IsExists(Card.IsType,1,nil,TYPE_SPELL) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
-		local g=Duel.SelectMatchingCard(tp,Card.IsControlerCanBeChanged,tp,0,LOCATION_MZONE,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,c91135480.ctfilter,tp,0,LOCATION_MZONE,1,1,nil)
 		Duel.HintSelection(g)
 		Duel.GetControl(g:GetFirst(),tp,PHASE_END,1)
 	end

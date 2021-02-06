@@ -18,7 +18,8 @@ function c63571750.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	c:CancelToGrave()
-	Duel.SendtoDeck(c,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(c,tp,2,REASON_EFFECT)
+	if not c:IsLocation(LOCATION_DECK) then return end
 	Duel.ShuffleDeck(tp)
 	c:ReverseInDeck()
 	local e1=Effect.CreateEffect(c)
@@ -41,7 +42,7 @@ function c63571750.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c63571750.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SendtoGrave(c,REASON_EFFECT)~=0 then
+	if c:IsRelateToEffect(e) and Duel.SendtoGrave(c,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_GRAVE) then
 		local tc=Duel.GetFirstTarget()
 		if tc and tc:IsRelateToEffect(e) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)

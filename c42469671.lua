@@ -38,7 +38,8 @@ function c42469671.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c42469671.desfilter,tp,0,LOCATION_MZONE,nil)
 	if Duel.Destroy(g,REASON_EFFECT)~=0 then
 	local dc=Duel.GetOperatedGroup():FilterCount(c42469671.sgfilter,nil,1-tp)
-		if dc~=0 and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
+		if dc~=0 and Duel.GetTurnPlayer()==tp
+			and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 			and Duel.SelectYesNo(tp,aux.Stringid(42469671,0)) then
 			Duel.BreakEffect()
 			Duel.Draw(tp,dc,REASON_EFFECT)

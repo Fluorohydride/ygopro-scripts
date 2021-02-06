@@ -27,7 +27,7 @@ function c20032555.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 		e:SetCategory(CATEGORY_DAMAGE)
 		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,800)
 	else
-		e:SetCategory(CATEGORY_LVCHANGE)
+		e:SetCategory(0)
 	end
 end
 function c20032555.effop(e,tp,eg,ep,ev,re,r,rp)

@@ -1,5 +1,6 @@
 --レッドローズ・ドラゴン
 function c26118970.initial_effect(c)
+	aux.AddCodeList(c,73580471)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(26118970,0))

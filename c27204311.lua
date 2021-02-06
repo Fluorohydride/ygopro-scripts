@@ -38,18 +38,18 @@ end
 function c27204311.relfilter(c)
 	return c:IsFaceup() and c:IsReleasableByEffect()
 end
+function c27204311.adfilter(c,f)
+	return math.max(f(c),0)
+end
 function c27204311.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if chk==0 then return g:GetCount()>0 and Duel.GetMZoneCount(tp,g)>0 and Duel.GetMZoneCount(1-tp,g,tp)>0
 		and Duel.IsPlayerCanRelease(tp)
 		and Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,27204312,0,0x4011,g:GetSum(Card.GetBaseAttack),g:GetSum(Card.GetBaseDefense),11,RACE_ROCK,ATTRIBUTE_LIGHT,POS_FACEUP,1-tp) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,27204312,0,0x4011,g:GetSum(c27204311.adfilter,Card.GetTextAttack),g:GetSum(c27204311.adfilter,Card.GetTextDefense),11,RACE_ROCK,ATTRIBUTE_LIGHT,POS_FACEUP,1-tp) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),2,0,0)
-end
-function c27204311.adfilter(c,f)
-	return math.max(f(c),0)
 end
 function c27204311.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c27204311.relfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)

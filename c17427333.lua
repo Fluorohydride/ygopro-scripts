@@ -32,8 +32,10 @@ function c17427333.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local atk=g:GetFirst():GetTextAttack()
 	Duel.Release(g,REASON_COST)
 	local ct=math.floor(atk/1000)
+	local exc=nil
+	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then exc=e:GetHandler() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g1=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,ct,nil)
+	local g1=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,ct,exc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g1,g1:GetCount(),0,0)
 end
 function c17427333.operation(e,tp,eg,ep,ev,re,r,rp)

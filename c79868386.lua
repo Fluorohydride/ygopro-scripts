@@ -46,6 +46,8 @@ function c79868386.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e2)
+		Duel.AdjustInstantly()
+		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		if Duel.Destroy(tc,REASON_EFFECT)~=0 then
 			local e3=Effect.CreateEffect(e:GetHandler())
 			e3:SetType(EFFECT_TYPE_FIELD)
@@ -64,7 +66,8 @@ function c79868386.activate(e,tp,eg,ep,ev,re,r,rp)
 			e4:SetReset(RESET_PHASE+PHASE_END)
 			Duel.RegisterEffect(e4,tp)
 			local sg=Duel.GetMatchingGroup(c79868386.desfilter,tp,0,LOCATION_ONFIELD,nil)
-			if #sg>0 and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
+			if #sg>0 and Duel.GetTurnPlayer()==tp
+				and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 				and Duel.SelectYesNo(tp,aux.Stringid(79868386,0)) then
 				Duel.Destroy(sg,REASON_EFFECT)
 			end

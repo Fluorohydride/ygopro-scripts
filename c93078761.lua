@@ -16,7 +16,6 @@ function c93078761.filter(c)
 end
 function c93078761.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_DECK)
 end
 function c93078761.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

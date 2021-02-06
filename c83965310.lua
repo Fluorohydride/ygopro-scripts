@@ -70,8 +70,9 @@ function c83965310.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(g,REASON_COST)
 end
 function c83965310.eqcon(e,tp,eg,ep,ev,re,r,rp)
-	local ec=e:GetLabelObject()
-	return ec==nil or ec:GetFlagEffect(83965310)==0
+	local c=e:GetHandler()
+	local eqg=c:GetEquipGroup()
+	return eqg==nil or not eqg:IsExists(Card.GetFlagEffect,1,nil,83965310)
 end
 function c83965310.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsAbleToChangeControler() end
@@ -94,7 +95,6 @@ function c83965310.eqop(e,tp,eg,ep,ev,re,r,rp)
 		if not Duel.Equip(tp,tc,c,false) then return end
 		--Add Equip limit
 		tc:RegisterFlagEffect(83965310,RESET_EVENT+RESETS_STANDARD,0,0)
-		e:SetLabelObject(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)

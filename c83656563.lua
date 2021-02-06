@@ -1,5 +1,6 @@
 --中生代化石マシン スカルワゴン
 function c83656563.initial_effect(c)
+	aux.AddCodeList(c,59419719)
 	--fusion summon
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,c83656563.matfilter1,c83656563.matfilter2,true)

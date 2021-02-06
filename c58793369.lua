@@ -24,7 +24,6 @@ function c58793369.initial_effect(c)
 	--level down
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(58793369,1))
-	e4:SetCategory(CATEGORY_LVCHANGE)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetCode(EVENT_SUMMON_SUCCESS)
 	e4:SetProperty(EFFECT_FLAG_DELAY)

@@ -18,7 +18,7 @@ function c45082499.initial_effect(c)
 	e2:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_ONFIELD,0)
-	e2:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x7e))
+	e2:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x107e))
 	e2:SetValue(aux.indoval)
 	c:RegisterEffect(e2)
 	--destroy sub
@@ -51,7 +51,10 @@ function c45082499.eqop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
-	Duel.Equip(tp,c,tc)
+	c45082499.equip_monster(c,tp,tc)
+end
+function c45082499.equip_monster(c,tp,tc)
+	if not Duel.Equip(tp,c,tc) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_EQUIP_LIMIT)

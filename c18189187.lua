@@ -59,9 +59,13 @@ function c18189187.thfilter(c)
 end
 function c18189187.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,1-tp,LOCATION_ONFIELD)
-	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,0)
-	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,0,tp,LOCATION_HAND)
+	if Duel.IsEnvironment(74665651,PLAYER_ALL,LOCATION_FZONE) then
+		Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,1-tp,LOCATION_ONFIELD)
+	end
+	if Duel.IsEnvironment(1050355,PLAYER_ALL,LOCATION_FZONE) then
+		Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,1,tp,0)
+		Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,tp,LOCATION_HAND)
+	end
 end
 function c18189187.thop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsEnvironment(74665651,PLAYER_ALL,LOCATION_FZONE)

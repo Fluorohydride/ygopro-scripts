@@ -29,7 +29,6 @@ function c75059201.initial_effect(c)
 	--lv up
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(75059201,0))
-	e4:SetCategory(CATEGORY_LVCHANGE)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e4:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
 	e4:SetCode(EVENT_CHAINING)

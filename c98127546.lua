@@ -92,7 +92,7 @@ end
 function c98127546.negcon(e,tp,eg,ep,ev,re,r,rp)
 	local ex,g,gc,dp,dv=Duel.GetOperationInfo(ev,CATEGORY_SPECIAL_SUMMON)
 	return Duel.IsChainNegatable(ev) and rp==1-tp
-		and ex and (bit.band(dv,LOCATION_GRAVE)==LOCATION_GRAVE or g and g:IsExists(c98127546.cfilter,1,nil))
+		and (ex and (dv&LOCATION_GRAVE==LOCATION_GRAVE or g and g:IsExists(c98127546.cfilter,1,nil)) or re:IsHasCategory(CATEGORY_GRAVE_SPSUMMON))
 end
 function c98127546.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

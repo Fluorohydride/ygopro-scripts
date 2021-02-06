@@ -34,7 +34,6 @@ function c3040496.thfilter(c)
 end
 function c3040496.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,5) end
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,0,tp,LOCATION_DECK)
 end
 function c3040496.thop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerCanDiscardDeck(tp,5) then

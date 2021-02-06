@@ -57,8 +57,9 @@ function c5126490.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.SendtoGrave(g1,REASON_COST)
 end
 function c5126490.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetAttackTarget()~=nil end
-	local bc=e:GetHandler():GetBattleTarget()
+	local c=e:GetHandler()
+	local bc=c:GetBattleTarget()
+	if chk==0 then return c:IsStatus(STATUS_OPPO_BATTLE) and bc~=nil end
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,bc:GetAttack())
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,bc:GetDefense())
 end
