@@ -26,7 +26,7 @@ function c44763696.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c44763696.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsPreviousPosition(POS_FACEUP) and c:IsSetCard(0x23)
 		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 end
@@ -44,7 +44,7 @@ function c44763696.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Draw(p,d,REASON_EFFECT)
 end
 function c44763696.cfilter2(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsPreviousPosition(POS_FACEUP) and c:IsSetCard(0x23) and not c:IsReason(REASON_BATTLE)
 end
 function c44763696.thcon(e,tp,eg,ep,ev,re,r,rp)

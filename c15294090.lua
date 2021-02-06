@@ -11,7 +11,7 @@ function c15294090.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c15294090.cfilter(c,tp)
-	return c:IsPreviousSetCard(0xc008) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+	return c:IsPreviousSetCard(0xc008) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 end
 function c15294090.condition(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT)~=0 and rp==1-tp and eg:IsExists(c15294090.cfilter,1,nil,tp)

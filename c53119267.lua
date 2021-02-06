@@ -15,7 +15,7 @@ function c53119267.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c53119267.filter(c,tp)
-	return c:IsPreviousLocation(LOCATION_HAND) and c:GetControler()~=tp and c:GetPreviousControler()~=tp
+	return c:IsPreviousLocation(LOCATION_HAND) and c:GetControler()~=tp and c:IsPreviousControler(1-tp)
 		and c:IsReason(REASON_DISCARD)
 end
 function c53119267.damop(e,tp,eg,ep,ev,re,r,rp)

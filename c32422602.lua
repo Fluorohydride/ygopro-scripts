@@ -35,7 +35,7 @@ end
 function c32422602.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return bit.band(r,REASON_EFFECT)~=0 and re:GetHandler():IsSetCard(0x137)
-		and c:IsPreviousLocation(LOCATION_DECK) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_DECK) and c:IsPreviousControler(tp)
 end
 function c32422602.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

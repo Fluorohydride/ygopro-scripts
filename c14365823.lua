@@ -43,7 +43,7 @@ function c14365823.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Damage(p,d,REASON_EFFECT)
 end
 function c14365823.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp
+	return c:IsSummonPlayer(tp)
 end
 function c14365823.damcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c14365823.cfilter,1,nil,1-tp)

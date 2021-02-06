@@ -32,7 +32,7 @@ function c9000988.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsAbleToEnterBP()
 end
 function c9000988.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsFaceup() and c:IsRace(RACE_DRAGON) and c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c9000988.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c9000988.filter(chkc) end

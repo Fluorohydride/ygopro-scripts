@@ -73,7 +73,7 @@ end
 function c42901635.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsReason(REASON_BATTLE)
-		or (rp==1-tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp)
+		or (rp==1-tp and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp))
 end
 function c42901635.spfilter(c,e,tp)
 	return c:IsFaceup() and c:IsCode(42023223,79418928,15502037)

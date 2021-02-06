@@ -38,7 +38,7 @@ function c29975188.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c29975188.cfilter(c,tp)
-	return c:IsFaceup() and c:IsCode(70095154) and c:GetSummonPlayer()==tp
+	return c:IsFaceup() and c:IsCode(70095154) and c:IsSummonPlayer(tp)
 end
 function c29975188.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c29975188.cfilter,1,nil,tp)

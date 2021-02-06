@@ -18,7 +18,7 @@ function c35577420.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c35577420.cfilter(c)
-	return c:GetPreviousLocation()==LOCATION_DECK
+	return c:IsPreviousLocation(LOCATION_DECK)
 end
 function c35577420.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	if not re then return false end

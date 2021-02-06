@@ -60,7 +60,7 @@ end
 function c78917791.actlimit(e,re,rp)
 	local rc=re:GetHandler()
 	return re:IsActiveType(TYPE_MONSTER) and rc:IsOnField()
-		and rc:GetSummonLocation()==LOCATION_EXTRA and not rc:IsSetCard(0x12c)
+		and rc:IsSummonLocation(LOCATION_EXTRA) and not rc:IsSetCard(0x12c)
 end
 function c78917791.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()

@@ -90,7 +90,7 @@ function c53184342.disop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c53184342.cfilter(c,tp)
-	return c:IsReason(REASON_BATTLE) and c:IsLocation(LOCATION_GRAVE) and c:GetPreviousControler()==1-tp and c:IsType(TYPE_MONSTER)
+	return c:IsReason(REASON_BATTLE) and c:IsLocation(LOCATION_GRAVE) and c:IsPreviousControler(1-tp) and c:IsType(TYPE_MONSTER)
 end
 function c53184342.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c53184342.cfilter,1,nil,tp)
@@ -99,7 +99,7 @@ function c53184342.chkfilter(c,tp)
 	return not c:IsForbidden() and c:CheckUniqueOnField(tp,LOCATION_SZONE)
 end
 function c53184342.filter(c,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==1-tp
+	return c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(1-tp)
 		and c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c53184342.chkfilter(c,tp)
 end
 function c53184342.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)

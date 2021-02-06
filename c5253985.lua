@@ -61,7 +61,7 @@ function c5253985.sumop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c5253985.cfilter(c,tp)
-	return c:GetPreviousControler()==1-tp
+	return c:IsPreviousControler(1-tp)
 end
 function c5253985.limitop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

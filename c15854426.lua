@@ -20,7 +20,7 @@ function c15854426.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c15854426.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and bit.band(c:GetPreviousAttributeOnField(),ATTRIBUTE_WIND)~=0
 		and c:IsPreviousPosition(POS_FACEUP)
 end

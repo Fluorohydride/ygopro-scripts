@@ -48,7 +48,7 @@ function c30439101.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c30439101.cfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 		and c:IsPreviousSetCard(0x146) and c:IsControler(tp)
 end
 function c30439101.discon(e,tp,eg,ep,ev,re,r,rp)

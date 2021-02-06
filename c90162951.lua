@@ -39,7 +39,7 @@ function c90162951.val(e,c)
 	return math.abs(Duel.GetLP(0)-Duel.GetLP(1))
 end
 function c90162951.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp
+	return c:IsSummonPlayer(tp)
 end
 function c90162951.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -117,7 +117,7 @@ function c19048328.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c19048328.cfilter(c,p)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:GetOriginalAttribute()~=0
-		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==p
+		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(p)
 end
 function c19048328.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c19048328.cfilter,nil,1-tp)

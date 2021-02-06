@@ -19,7 +19,7 @@ function c57953380.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c57953380.gfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_GRAVE) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_GRAVE) and c:IsPreviousControler(tp)
 end
 function c57953380.con(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c57953380.gfilter,1,nil,tp)

@@ -34,7 +34,7 @@ function c43218406.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c43218406.spfilter(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c43218406.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c43218406.spfilter,tp,LOCATION_MZONE,LOCATION_MZONE,2,nil)
@@ -54,7 +54,7 @@ function c43218406.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,1500)
 end
 function c43218406.desfilter(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c43218406.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c43218406.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
@@ -99,7 +99,7 @@ function c43218406.atktg(e,c)
 end
 function c43218406.recon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:GetPreviousControler()==tp
+	return rp==1-tp and c:IsPreviousControler(tp)
 end
 function c43218406.filter(c)
 	return c:IsAbleToRemove() and c:IsType(TYPE_MONSTER)

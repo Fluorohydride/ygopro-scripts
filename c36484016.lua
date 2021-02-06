@@ -100,7 +100,7 @@ function c36484016.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c36484016.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return bit.band(r,0x41)==0x41 and rp==1-tp and c:GetPreviousControler()==tp
+	return bit.band(r,0x41)==0x41 and rp==1-tp and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEDOWN)
 end
 function c36484016.drtg(e,tp,eg,ep,ev,re,r,rp,chk)

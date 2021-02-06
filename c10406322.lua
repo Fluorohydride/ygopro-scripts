@@ -52,7 +52,7 @@ function c10406322.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c10406322.cfilter(c,tp)
-	return c:IsReason(REASON_EFFECT) and c:IsPreviousLocation(LOCATION_DECK) and c:GetPreviousControler()==tp
+	return c:IsReason(REASON_EFFECT) and c:IsPreviousLocation(LOCATION_DECK) and c:IsPreviousControler(tp)
 end
 function c10406322.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c10406322.cfilter,1,nil,tp)

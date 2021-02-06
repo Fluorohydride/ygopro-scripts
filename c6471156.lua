@@ -60,7 +60,7 @@ end
 function c6471156.cfilter2(c,tp)
 	return c:IsSetCard(0x83) and c:IsReason(REASON_DESTROY)
 		and (c:IsReason(REASON_BATTLE) or c:GetReasonPlayer()==1-tp and c:IsReason(REASON_DESTROY))
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
+		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c6471156.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c6471156.cfilter2,1,nil,tp)

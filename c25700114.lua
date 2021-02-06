@@ -60,7 +60,7 @@ function c25700114.fuslimit(e,c,sumtype)
 end
 function c25700114.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and bit.band(r,0x41)==0x41 and c:GetPreviousControler()==tp
+	return rp==1-tp and bit.band(r,0x41)==0x41 and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEDOWN)
 end
 function c25700114.filter(c)

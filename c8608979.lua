@@ -49,7 +49,7 @@ end
 function c8608979.setcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return rp==1-tp and c:IsReason(REASON_EFFECT)
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_SZONE)
+		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_SZONE)
 end
 function c8608979.setfilter(c)
 	return c:IsCode(8608979) and c:IsSSetable()

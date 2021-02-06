@@ -14,7 +14,7 @@ function c25206027.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c25206027.spfilter(c,tp)
-	return c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp and c:IsType(TYPE_MONSTER)
+	return c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp) and c:IsType(TYPE_MONSTER)
 end
 function c25206027.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c25206027.spfilter,1,nil,tp)

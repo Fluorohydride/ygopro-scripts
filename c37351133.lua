@@ -49,7 +49,7 @@ function c37351133.spop1(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c37351133.cfilter2(c,tp,rp)
-	return c:GetPreviousControler()==1-tp and c:GetPreviousSequence()>4 and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(1-tp) and c:GetPreviousSequence()>4 and c:IsPreviousLocation(LOCATION_MZONE)
 		and (c:IsReason(REASON_BATTLE) or (rp==tp and c:IsReason(REASON_EFFECT)))
 end
 function c37351133.spcon2(e,tp,eg,ep,ev,re,r,rp)

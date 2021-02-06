@@ -70,7 +70,7 @@ function c82224646.tnop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c82224646.rmcon(e)
 	local c=e:GetHandler()
-	return c:GetSummonLocation()==LOCATION_EXTRA and c:IsReason(REASON_MATERIAL) and c:IsReason(REASON_SYNCHRO)
+	return c:IsSummonLocation(LOCATION_EXTRA) and c:IsReason(REASON_MATERIAL) and c:IsReason(REASON_SYNCHRO)
 end
 function c82224646.spfilter(c,e,tp)
 	return c:IsLevelBelow(3) and c:IsSetCard(0x9f,0x99) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

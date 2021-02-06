@@ -57,7 +57,7 @@ function c31801517.atkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c31801517.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousControler()==tp and rp==1-tp and c:IsReason(REASON_EFFECT)
+	return c:IsPreviousControler(tp) and rp==1-tp and c:IsReason(REASON_EFFECT)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetOverlayGroup():IsExists(Card.IsCode,1,nil,93717133)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end

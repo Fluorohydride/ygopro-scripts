@@ -30,7 +30,7 @@ function c48285768.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c48285768.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonLocation()==LOCATION_EXTRA
+	return e:GetHandler():IsSummonLocation(LOCATION_EXTRA)
 end
 function c48285768.tgfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x155) and c:IsAbleToGrave()

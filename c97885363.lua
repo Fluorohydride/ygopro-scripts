@@ -13,7 +13,7 @@ function c97885363.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c97885363.condition(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and e:GetHandler():GetPreviousControler()==tp
+	return rp==1-tp and e:GetHandler():IsPreviousControler(tp)
 end
 function c97885363.filter(c,e,tp)
 	return c:IsSetCard(0xe) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

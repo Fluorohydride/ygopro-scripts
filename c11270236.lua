@@ -33,7 +33,7 @@ function c11270236.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c11270236.ffilter2(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA and c:IsLocation(LOCATION_MZONE)
+	return c:IsSummonLocation(LOCATION_EXTRA) and c:IsLocation(LOCATION_MZONE)
 end
 function c11270236.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA) or aux.fuslimit(e,se,sp,st)

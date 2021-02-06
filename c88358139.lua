@@ -15,7 +15,7 @@ function c88358139.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c88358139.cfilter(c,tp)
-	return c:IsFaceup() and c:GetSummonPlayer()==tp and c:IsSetCard(0x9f) and not c:IsCode(88358139)
+	return c:IsFaceup() and c:IsSummonPlayer(tp) and c:IsSetCard(0x9f) and not c:IsCode(88358139)
 end
 function c88358139.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c88358139.cfilter,1,nil,tp)

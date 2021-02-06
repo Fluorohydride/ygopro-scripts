@@ -31,7 +31,7 @@ function c56337500.initial_effect(c)
 	Duel.AddCustomActivityCounter(56337500,ACTIVITY_SPSUMMON,c56337500.counterfilter)
 end
 function c56337500.counterfilter(c)
-	return c:GetSummonLocation()~=LOCATION_EXTRA or c:IsRace(RACE_CYBERSE)
+	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsRace(RACE_CYBERSE)
 end
 function c56337500.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(56337500,tp,ACTIVITY_SPSUMMON)==0 end
@@ -71,7 +71,7 @@ function c56337500.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c56337500.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return (c:IsReason(REASON_BATTLE) or (c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp and c:GetPreviousControler()==tp))
+	return (c:IsReason(REASON_BATTLE) or (c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp and c:IsPreviousControler(tp)))
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_XYZ)
 end
 function c56337500.spfilter(c,e,tp)

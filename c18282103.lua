@@ -12,7 +12,7 @@ function c18282103.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c18282103.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousLocation()==LOCATION_HAND and bit.band(r,REASON_DISCARD)~=0
+	return e:GetHandler():IsPreviousLocation(LOCATION_HAND) and bit.band(r,REASON_DISCARD)~=0
 end
 function c18282103.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

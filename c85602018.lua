@@ -17,7 +17,7 @@ function c85602018.initial_effect(c)
 	end
 end
 function c85602018.cfilter(c,tp)
-	return c:IsControler(tp) and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsControler(tp) and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c85602018.checkop(e,tp,eg,ep,ev,re,r,rp)
 	for p=0,1 do

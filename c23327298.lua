@@ -12,7 +12,7 @@ function c23327298.initial_effect(c)
 end
 function c23327298.cfilter(c,tp)
 	return c:IsType(TYPE_SYNCHRO) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
-		and c:IsControler(tp) and c:GetPreviousControler()==tp and c:GetReasonPlayer()==1-tp
+		and c:IsControler(tp) and c:IsPreviousControler(tp) and c:GetReasonPlayer()==1-tp
 end
 function c23327298.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c23327298.cfilter,1,nil,tp)

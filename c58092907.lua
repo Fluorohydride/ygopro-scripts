@@ -43,7 +43,7 @@ function c58092907.initial_effect(c)
 end
 function c58092907.spfilter(c,tp,rp)
 	return (c:IsReason(REASON_BATTLE) or (c:IsReason(REASON_EFFECT) and rp==1-tp)) and c:IsPreviousLocation(LOCATION_MZONE)
-		and c:GetPreviousControler()==tp and c:GetSummonLocation()==LOCATION_EXTRA
+		and c:IsPreviousControler(tp) and c:IsSummonLocation(LOCATION_EXTRA)
 		and bit.band(c:GetPreviousTypeOnField(),TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ)~=0 and c:IsPreviousPosition(POS_FACEUP)
 end
 function c58092907.spcon(e,tp,eg,ep,ev,re,r,rp)

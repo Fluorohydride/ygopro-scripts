@@ -32,7 +32,7 @@ function c3428069.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c3428069.filter(c,e,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==1-tp
+	return c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(1-tp)
 		and c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_EFFECT+REASON_BATTLE) and c:IsCanBeEffectTarget(e) and not c:IsForbidden()
 end
 function c3428069.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

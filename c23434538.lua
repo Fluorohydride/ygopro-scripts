@@ -44,7 +44,7 @@ function c23434538.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e3,tp)
 end
 function c23434538.filter(c,sp)
-	return c:GetSummonPlayer()==sp
+	return c:IsSummonPlayer(sp)
 end
 function c23434538.drcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c23434538.filter,1,nil,1-tp)

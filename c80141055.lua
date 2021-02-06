@@ -29,7 +29,7 @@ function c80141055.indtg(e,c)
 	return c:GetSequence()<5 and c:IsFacedown()
 end
 function c80141055.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_SZONE) and c:GetPreviousSequence()<5 and c:IsPreviousPosition(POS_FACEDOWN) and c:IsReason(REASON_EFFECT)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_SZONE) and c:GetPreviousSequence()<5 and c:IsPreviousPosition(POS_FACEDOWN) and c:IsReason(REASON_EFFECT)
 end
 function c80141055.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and eg:IsExists(c80141055.cfilter,1,nil,tp)

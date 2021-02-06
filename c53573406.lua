@@ -21,7 +21,7 @@ function c53573406.initial_effect(c)
 	Duel.AddCustomActivityCounter(53573406,ACTIVITY_SPSUMMON,c53573406.counterfilter)
 end
 function c53573406.counterfilter(c)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c53573406.cfilter(c)
 	return c:IsFaceup() and c:IsLevelAbove(5)

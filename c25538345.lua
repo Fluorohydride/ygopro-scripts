@@ -46,7 +46,7 @@ function c25538345.sgop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c25538345.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_GRAVE) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_GRAVE) and c:IsPreviousControler(tp)
 		and ((c:IsSetCard(0x10db) and c:IsType(TYPE_MONSTER)) or (c:IsSetCard(0xdb) and c:IsType(TYPE_SPELL+TYPE_TRAP)))
 end
 function c25538345.sscon(e,tp,eg,ep,ev,re,r,rp)

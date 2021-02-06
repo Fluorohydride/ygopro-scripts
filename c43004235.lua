@@ -58,7 +58,7 @@ function c43004235.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c43004235.exfilter(c,tp)
-	return c:GetSummonLocation()==LOCATION_EXTRA and c:GetSummonPlayer()==tp and c:IsSetCard(0x13f) and c:IsFaceup()
+	return c:IsSummonLocation(LOCATION_EXTRA) and c:IsSummonPlayer(tp) and c:IsSetCard(0x13f) and c:IsFaceup()
 end
 function c43004235.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c43004235.exfilter,1,nil,tp)

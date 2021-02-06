@@ -29,7 +29,7 @@ function c60930169.checkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c60930169.filter(c,e,tp)
-	if c:GetFlagEffect(60930169)~=0 and c:GetPreviousControler()==tp then
+	if c:GetFlagEffect(60930169)~=0 and c:IsPreviousControler(tp) then
 		e:SetLabel(c:GetCode())
 		return true
 	else return false end

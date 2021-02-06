@@ -31,7 +31,7 @@ function c77092311.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c77092311.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousLocation()==LOCATION_GRAVE
+	return e:GetHandler():IsPreviousLocation(LOCATION_GRAVE)
 end
 function c77092311.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,3) and Duel.IsPlayerCanDiscardDeck(1-tp,3) end
@@ -45,7 +45,7 @@ function c77092311.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(g1,REASON_EFFECT)
 end
 function c77092311.spfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:GetPreviousTypeOnField()&TYPE_SYNCHRO~=0
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:GetPreviousTypeOnField()&TYPE_SYNCHRO~=0
 		and c:GetOriginalLevel()==7 and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 end
 function c77092311.spcon(e,tp,eg,ep,ev,re,r,rp)

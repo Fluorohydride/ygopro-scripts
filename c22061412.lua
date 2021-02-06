@@ -38,7 +38,7 @@ function c22061412.atkup(e,c)
 	return Duel.GetMatchingGroupCount(c22061412.atkfilter,c:GetControler(),LOCATION_REMOVED,0,nil)*300
 end
 function c22061412.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetPreviousLocation(),LOCATION_ONFIELD)>0
+	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c22061412.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x3008) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

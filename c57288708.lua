@@ -39,7 +39,7 @@ function c57288708.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c57288708.tgfilter(c)
-	return bit.band(c:GetSummonLocation(),LOCATION_EXTRA)==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c57288708.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c57288708.tgfilter,1,nil)

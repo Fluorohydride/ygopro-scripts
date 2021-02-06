@@ -48,7 +48,7 @@ function c26920296.cfilter(c,type)
 	return c:IsFaceup() and c:IsType(type)
 end
 function c26920296.drcfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_HAND+LOCATION_MZONE) and c:IsType(TYPE_MONSTER) and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_HAND+LOCATION_MZONE) and c:IsType(TYPE_MONSTER) and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp)
 end
 function c26920296.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c26920296.drcfilter,1,nil,tp)

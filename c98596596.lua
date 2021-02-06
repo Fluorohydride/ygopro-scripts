@@ -28,7 +28,7 @@ function c98596596.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c98596596.cfilter1(c,tp)
-	return c:IsReason(REASON_BATTLE) and c:IsLocation(LOCATION_GRAVE) and c:GetPreviousControler()==tp
+	return c:IsReason(REASON_BATTLE) and c:IsLocation(LOCATION_GRAVE) and c:IsPreviousControler(tp)
 end
 function c98596596.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c98596596.cfilter1,1,nil,tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)
@@ -48,8 +48,8 @@ function c98596596.spop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c98596596.cfilter2(c,tp)
 	return c:IsReason(REASON_EFFECT) and c:IsLocation(LOCATION_GRAVE)
-		and (c:GetPreviousLocation()==LOCATION_HAND or c:GetPreviousLocation()&LOCATION_MZONE>0)
-		and c:GetPreviousControler()==tp and c:GetReasonPlayer()==1-tp
+		and c:IsPreviousLocation(LOCATION_HAND+LOCATION_MZONE)
+		and c:IsPreviousControler(tp) and c:GetReasonPlayer()==1-tp
 end
 function c98596596.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c98596596.cfilter2,1,nil,tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)

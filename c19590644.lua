@@ -12,7 +12,7 @@ function c19590644.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c19590644.cfilter(c,tp)
-	return c:GetPreviousControler()==tp
+	return c:IsPreviousControler(tp)
 end
 function c19590644.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:Filter(c19590644.cfilter,nil,tp):GetFirst()

@@ -32,7 +32,7 @@ function c69000994.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c69000994.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
 		and c:IsReason(REASON_EFFECT) and c:IsSetCard(0x81)
 end
 function c69000994.spcon(e,tp,eg,ep,ev,re,r,rp)

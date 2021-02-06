@@ -34,7 +34,7 @@ end
 function c64635042.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsSummonType(SUMMON_TYPE_SYNCHRO)
-		and rp==1-tp and c:GetPreviousControler()==tp
+		and rp==1-tp and c:IsPreviousControler(tp)
 end
 function c64635042.spfilter(c,e,tp)
 	return c:IsCode(70781052) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

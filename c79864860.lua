@@ -45,7 +45,7 @@ function c79864860.atkval(e,c)
 	return atk
 end
 function c79864860.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp and c:IsPreviousLocation(LOCATION_EXTRA)
+	return c:IsSummonPlayer(tp) and c:IsPreviousLocation(LOCATION_EXTRA)
 end
 function c79864860.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=ep and eg:IsExists(c79864860.cfilter,1,nil,1-tp) and Duel.GetCurrentChain()==0

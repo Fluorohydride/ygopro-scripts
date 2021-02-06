@@ -16,7 +16,7 @@ end
 function c78540593.descon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	return eg:GetCount()==1 and tc:IsReason(REASON_DESTROY) and tc:IsReason(REASON_BATTLE+REASON_EFFECT)
-		and tc:IsPreviousLocation(LOCATION_MZONE) and tc:GetPreviousControler()==tp
+		and tc:IsPreviousLocation(LOCATION_MZONE) and tc:IsPreviousControler(tp)
 		and bit.band(tc:GetPreviousRaceOnField(),RACE_PLANT)~=0
 end
 function c78540593.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

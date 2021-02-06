@@ -54,7 +54,7 @@ function c62111090.atkcon(e)
 	if ph~=PHASE_DAMAGE and ph~=PHASE_DAMAGE_CAL then return false end
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	return e:GetHandler()==a and d and d:GetSummonLocation()==LOCATION_EXTRA
+	return e:GetHandler()==a and d and d:IsSummonLocation(LOCATION_EXTRA)
 end
 function c62111090.atkval(e,c)
 	return e:GetHandler():GetBaseAttack()

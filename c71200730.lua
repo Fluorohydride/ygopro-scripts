@@ -12,8 +12,7 @@ function c71200730.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c71200730.spcon(e,tp,eg,ep,ev,re,r,rp)
-	local loc=e:GetHandler():GetPreviousLocation()
-	return (loc==LOCATION_HAND or loc==LOCATION_DECK) and bit.band(r,REASON_EFFECT)~=0 and rp==1-tp
+	return e:GetHandler():IsPreviousLocation(LOCATION_HAND+LOCATION_DECK) and bit.band(r,REASON_EFFECT)~=0 and rp==1-tp
 end
 function c71200730.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

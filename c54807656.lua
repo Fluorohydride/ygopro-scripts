@@ -32,7 +32,7 @@ function c54807656.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c54807656.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x130) and c:IsSummonType(SUMMON_TYPE_LINK) and c:GetSummonPlayer()==tp
+	return c:IsFaceup() and c:IsSetCard(0x130) and c:IsSummonType(SUMMON_TYPE_LINK) and c:IsSummonPlayer(tp)
 end
 function c54807656.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c54807656.cfilter,1,nil,tp)

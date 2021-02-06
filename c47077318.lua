@@ -25,7 +25,7 @@ end
 function c47077318.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsReason(REASON_DESTROY) and c:GetReasonPlayer()==1-tp
-		and c:GetPreviousControler()==tp
+		and c:IsPreviousControler(tp)
 end
 function c47077318.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,1) end

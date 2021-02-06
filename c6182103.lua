@@ -62,7 +62,7 @@ function c6182103.negop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c6182103.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return rp==1-tp and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c6182103.thfilter(c,typ)

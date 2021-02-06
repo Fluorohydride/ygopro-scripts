@@ -15,7 +15,7 @@ function c86308219.initial_effect(c)
 	Duel.AddCustomActivityCounter(86308219,ACTIVITY_SPSUMMON,c86308219.counterfilter)
 end
 function c86308219.counterfilter(c)
-	return bit.band(c:GetSummonLocation(),LOCATION_DECK+LOCATION_EXTRA)==0
+	return not c:IsSummonLocation(LOCATION_DECK+LOCATION_EXTRA)
 end
 function c86308219.cfilter(c)
 	return c:IsFaceup() and c:IsCode(76812113,12206212)

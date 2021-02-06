@@ -23,7 +23,7 @@ function c1281505.initial_effect(c)
 end
 function c1281505.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousLocation()==LOCATION_MZONE
+	return c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c1281505.eqcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,500) end

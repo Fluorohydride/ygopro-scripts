@@ -89,7 +89,7 @@ function c84121193.spop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c84121193.regcon1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_DESTROY) and rp==1-tp and c:GetPreviousControler()==tp
+	return c:IsReason(REASON_DESTROY) and rp==1-tp and c:IsPreviousControler(tp)
 end
 function c84121193.regop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

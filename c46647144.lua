@@ -62,7 +62,7 @@ function c46647144.atktg(e,c)
 	return c:IsFaceup() and c:IsSetCard(0xfe) and c~=e:GetHandler()
 end
 function c46647144.cfilter(c,tp)
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c46647144.tkcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c46647144.cfilter,1,nil,tp)

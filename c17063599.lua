@@ -26,7 +26,7 @@ function c17063599.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c17063599.cfilter(c,tp)
-	return bit.band(c:GetSummonLocation(),LOCATION_EXTRA)==LOCATION_EXTRA and c:GetSummonPlayer()==1-tp and c:IsAttackAbove(2000) and c:IsFaceup()
+	return c:IsSummonLocation(LOCATION_EXTRA) and c:IsSummonPlayer(1-tp) and c:IsAttackAbove(2000) and c:IsFaceup()
 end
 function c17063599.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c17063599.cfilter,1,nil,tp)
@@ -45,7 +45,7 @@ function c17063599.actcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_HAND)
 end
 function c17063599.filter(c)
-	return c:IsFaceup() and c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsFaceup() and c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c17063599.acttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c17063599.filter(chkc) end

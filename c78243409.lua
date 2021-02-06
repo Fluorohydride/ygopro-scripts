@@ -13,8 +13,7 @@ function c78243409.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c78243409.condition(e,tp,eg,ep,ev,re,r,rp)
-	local pl=e:GetHandler():GetPreviousLocation()
-	return bit.band(r,REASON_DESTROY)~=0 and bit.band(pl,LOCATION_ONFIELD)~=0
+	return bit.band(r,REASON_DESTROY)~=0 and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c78243409.filter(c,e,sp)
 	return c:IsRace(RACE_PYRO) and c:IsCanBeSpecialSummoned(e,0,sp,false,false)

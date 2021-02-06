@@ -70,7 +70,7 @@ function c60884672.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c60884672.catkfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousTypeOnField()&TYPE_XYZ~=0 and c:IsReason(REASON_EFFECT)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousTypeOnField()&TYPE_XYZ~=0 and c:IsReason(REASON_EFFECT)
 end
 function c60884672.catkcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c60884672.catkfilter,1,nil,tp)

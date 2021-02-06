@@ -33,7 +33,7 @@ function c52714670.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c52714670.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp
+	return c:IsSummonPlayer(tp)
 end
 function c52714670.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c52714670.cfilter,1,nil,1-tp)
@@ -80,7 +80,7 @@ function c52714670.ermop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 end
 function c52714670.rmcfilter(c,tp)
-	return c:IsControler(tp) and c:IsFaceup() and c:IsSetCard(0x105) and c:GetPreviousControler()==tp
+	return c:IsControler(tp) and c:IsFaceup() and c:IsSetCard(0x105) and c:IsPreviousControler(tp)
 end
 function c52714670.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c52714670.rmcfilter,1,e:GetHandler(),tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)

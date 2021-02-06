@@ -10,7 +10,7 @@ function c43586926.initial_effect(c)
 end
 function c43586926.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsReason(REASON_DESTROY) and bit.band(c:GetPreviousLocation(),LOCATION_ONFIELD)~=0 then
+	if c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_ONFIELD) then
 		--spsummon
 		local e1=Effect.CreateEffect(c)
 		e1:SetDescription(aux.Stringid(43586926,0))

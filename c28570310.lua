@@ -73,7 +73,7 @@ function c28570310.acop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c28570310.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp
+	return c:IsSummonPlayer(tp)
 end
 function c28570310.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c28570310.cfilter,1,nil,1-tp)

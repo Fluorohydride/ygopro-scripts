@@ -43,7 +43,7 @@ function c16001119.chop(e,tp,eg,ep,ev,re,r,rp)
 	tc:RegisterEffect(e1)
 end
 function c16001119.confil(c,tp)
-	return (c:GetSummonPlayer()==tp or c:GetSummonPlayer()==1-tp) and c:IsSummonType(SUMMON_TYPE_SYNCHRO)
+	return (c:IsSummonPlayer(tp) or c:IsSummonPlayer(1-tp)) and c:IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
 function c16001119.spfilter(c,e,tp)
 	return c:IsSetCard(0x147) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

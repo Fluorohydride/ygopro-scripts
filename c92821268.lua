@@ -15,7 +15,7 @@ function c92821268.initial_effect(c)
 end
 function c92821268.cfilter(c,tp)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE) and c:IsSetCard(0x83)
-		and c:GetPreviousControler()==tp and c:IsAbleToRemoveAsCost()
+		and c:IsPreviousControler(tp) and c:IsAbleToRemoveAsCost()
 end
 function c92821268.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c92821268.cfilter,1,nil,tp) end

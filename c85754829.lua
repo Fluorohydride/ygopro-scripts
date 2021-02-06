@@ -22,7 +22,7 @@ function c85754829.atkval(e,c)
 	return c:GetCounter(0xf)*300
 end
 function c85754829.cfilter(c)
-	return bit.band(c:GetPreviousPosition(),POS_FACEDOWN)~=0 and bit.band(c:GetPosition(),POS_FACEUP)~=0
+	return c:IsPreviousPosition(POS_FACEDOWN) and c:IsFaceup()
 end
 function c85754829.accon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c85754829.cfilter,1,e:GetHandler())

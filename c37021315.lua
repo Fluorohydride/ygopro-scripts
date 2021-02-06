@@ -29,7 +29,7 @@ end
 function c37021315.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEDOWN)
-		and c:IsReason(REASON_DESTROY) and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp and rp==1-tp
+		and c:IsReason(REASON_DESTROY) and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp) and rp==1-tp
 end
 function c37021315.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

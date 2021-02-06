@@ -45,10 +45,10 @@ function c27565379.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Damage(p,atk,REASON_EFFECT)
 end
 function c27565379.cfilter(c,tp)
-	if c:IsSetCard(0x12f) and c:GetPreviousControler()==tp then return true end
+	if c:IsSetCard(0x12f) and c:IsPreviousControler(tp) then return true end
 	local rc=c:GetBattleTarget()
 	return rc:IsSetCard(0x12f)
-		and (not rc:IsLocation(LOCATION_MZONE) and rc:GetPreviousControler()==tp
+		and (not rc:IsLocation(LOCATION_MZONE) and rc:IsPreviousControler(tp)
 			or rc:IsLocation(LOCATION_MZONE) and rc:IsControler(tp))
 end
 function c27565379.spcon(e,tp,eg,ep,ev,re,r,rp)

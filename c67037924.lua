@@ -27,7 +27,7 @@ function c67037924.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c67037924.filter(c)
-	return c:IsFaceup() and c:GetSummonLocation()==LOCATION_EXTRA and c:GetAttack()>0
+	return c:IsFaceup() and c:IsSummonLocation(LOCATION_EXTRA) and c:GetAttack()>0
 end
 function c67037924.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c67037924.filter(chkc) end
@@ -57,7 +57,7 @@ function c67037924.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c67037924.cfilter(c,tp)
-	return c:GetSummonLocation()==LOCATION_EXTRA and c:GetSummonPlayer()==1-tp
+	return c:IsSummonLocation(LOCATION_EXTRA) and c:IsSummonPlayer(1-tp)
 end
 function c67037924.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c67037924.cfilter,1,nil,tp) and aux.exccon(e,tp,eg,ep,ev,re,r,rp)

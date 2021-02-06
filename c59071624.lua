@@ -70,7 +70,7 @@ end
 function c59071624.cfilter(c,tp)
 	return c:IsPreviousLocation(LOCATION_MZONE)
 		and (c:IsLocation(LOCATION_GRAVE) or (c:IsLocation(LOCATION_REMOVED) and c:IsFaceup()))
-		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==tp and c:GetPreviousControler()==1-tp
+		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==tp and c:IsPreviousControler(1-tp)
 end
 function c59071624.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c59071624.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())

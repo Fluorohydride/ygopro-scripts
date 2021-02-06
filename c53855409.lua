@@ -24,7 +24,7 @@ function c53855409.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c53855409.gfilter(c,tp)
-	return c:GetPreviousLocation()==LOCATION_GRAVE and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_GRAVE) and c:IsPreviousControler(tp)
 end
 function c53855409.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c53855409.gfilter,1,nil,tp)

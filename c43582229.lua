@@ -53,5 +53,5 @@ function c43582229.condition(e)
 end
 function c43582229.efilter(e,te)
 	return te:IsActiveType(TYPE_MONSTER) and te:IsActivated()
-		and te:GetOwnerPlayer()==1-e:GetHandlerPlayer() and te:GetHandler():GetSummonLocation()==LOCATION_EXTRA
+		and te:GetOwnerPlayer()==1-e:GetHandlerPlayer() and te:GetHandler():IsSummonLocation(LOCATION_EXTRA)
 end

@@ -49,7 +49,7 @@ function c23377694.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c23377694.cfilter(c,tp)
-	return c:IsSetCard(0x9f) and c:GetPreviousControler()==tp
+	return c:IsSetCard(0x9f) and c:IsPreviousControler(tp)
 end
 function c23377694.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c23377694.cfilter,1,nil,tp)

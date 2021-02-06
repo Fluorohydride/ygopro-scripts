@@ -57,7 +57,7 @@ function c17241941.initial_effect(c)
 end
 function c17241941.rmcon(e)
 	local c=e:GetHandler()
-	return c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsSummonLocation(LOCATION_EXTRA)
 		and bit.band(c:GetReason(),REASON_MATERIAL+REASON_SYNCHRO)==REASON_MATERIAL+REASON_SYNCHRO
 end
 function c17241941.posfilter1(c)

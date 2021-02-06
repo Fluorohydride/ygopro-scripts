@@ -12,7 +12,7 @@ function c57319935.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c57319935.cfilter(c,tp)
-	return c:IsType(TYPE_XYZ) and c:GetPreviousControler()==tp
+	return c:IsType(TYPE_XYZ) and c:IsPreviousControler(tp)
 end
 function c57319935.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()

@@ -13,9 +13,7 @@ function c26185991.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c26185991.condition(e,tp,eg,ep,ev,re,r,rp)
-	local pp=e:GetHandler():GetPreviousControler()
-	local pl=e:GetHandler():GetPreviousLocation()
-	return pp==tp and (pl==LOCATION_MZONE or pl==LOCATION_SZONE)
+	return e:GetHandler():IsPreviousControler(tp) and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c26185991.filter(c,e,sp)
 	return c:IsRace(RACE_INSECT) and c:IsCanBeSpecialSummoned(e,0,sp,false,false)

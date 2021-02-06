@@ -59,7 +59,7 @@ function c44536921.lvcon(e)
 	return e:GetHandler():GetCounter(0x1041)>0
 end
 function c44536921.cfilter(c,tp)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_DARK) and c:IsSummonType(SUMMON_TYPE_FUSION) and c:GetSummonPlayer()==tp
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_DARK) and c:IsSummonType(SUMMON_TYPE_FUSION) and c:IsSummonPlayer(tp)
 end
 function c44536921.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c44536921.cfilter,1,nil,tp)

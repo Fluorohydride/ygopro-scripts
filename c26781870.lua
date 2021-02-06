@@ -28,13 +28,13 @@ function c26781870.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c26781870.cfilter(c,tp)
-	return c:GetSummonPlayer()==1-tp and c:IsPreviousLocation(LOCATION_HAND)
+	return c:IsSummonPlayer(1-tp) and c:IsPreviousLocation(LOCATION_HAND)
 end
 function c26781870.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c26781870.cfilter,1,nil,tp)
 end
 function c26781870.filter(c)
-	return c:GetSummonLocation()==LOCATION_HAND and c:IsAbleToHand()
+	return c:IsSummonLocation(LOCATION_HAND) and c:IsAbleToHand()
 		and c:IsSummonType(SUMMON_TYPE_SPECIAL)
 end
 function c26781870.target(e,tp,eg,ep,ev,re,r,rp,chk)

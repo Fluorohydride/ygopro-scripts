@@ -14,7 +14,7 @@ function c30525991.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c30525991.cfilter(c)
-	return c:GetPreviousLocation()==LOCATION_DECK
+	return c:IsPreviousLocation(LOCATION_DECK)
 end
 function c30525991.con(e,tp,eg,ep,ev,re,r,rp)
 	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c30525991.cfilter,1,nil)

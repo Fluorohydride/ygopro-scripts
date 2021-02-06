@@ -69,7 +69,7 @@ function c60168186.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 function c60168186.cfilter(c,tp,typ)
-	return c:IsFaceup() and c:IsType(typ) and c:IsSetCard(0x10af) and c:IsControler(tp) and bit.band(c:GetSummonLocation(),LOCATION_EXTRA)~=0
+	return c:IsFaceup() and c:IsType(typ) and c:IsSetCard(0x10af) and c:IsControler(tp) and c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c60168186.effcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c60168186.cfilter,1,nil,tp,e:GetLabel())
@@ -86,7 +86,7 @@ function c60168186.recop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Recover(p,d,REASON_EFFECT)
 end
 function c60168186.filter(c,tp,typ)
-	return c:IsType(typ) and c:IsSetCard(0x10af) and c:IsControler(tp) and bit.band(c:GetSummonLocation(),LOCATION_EXTRA)~=0
+	return c:IsType(typ) and c:IsSetCard(0x10af) and c:IsControler(tp) and c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c60168186.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

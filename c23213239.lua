@@ -30,7 +30,7 @@ function c23213239.initial_effect(c)
 end
 function c23213239.cfilter(c,tp)
 	local rc=c:GetReasonCard()
-	return c:IsReason(REASON_BATTLE) and c:GetPreviousControler()==tp and c:IsSetCard(0x11e)
+	return c:IsReason(REASON_BATTLE) and c:IsPreviousControler(tp) and c:IsSetCard(0x11e)
 		and rc and rc:IsControler(1-tp) and rc:IsRelateToBattle()
 end
 function c23213239.bdcon(e,tp,eg,ep,ev,re,r,rp)

@@ -29,7 +29,7 @@ function c48048590.initial_effect(c)
 	Duel.AddCustomActivityCounter(48048590,ACTIVITY_SPSUMMON,c48048590.counterfilter)
 end
 function c48048590.counterfilter(c)
-	return c:GetSummonLocation()~=LOCATION_EXTRA or c:IsType(TYPE_FUSION)
+	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsType(TYPE_FUSION)
 end
 function c48048590.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(48048590,tp,ACTIVITY_SPSUMMON)==0 end

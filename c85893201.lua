@@ -20,7 +20,7 @@ function c85893201.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c85893201.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp)
 end
 function c85893201.descon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and eg:IsExists(c85893201.cfilter,1,nil,1-tp)

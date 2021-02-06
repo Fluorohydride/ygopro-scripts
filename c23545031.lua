@@ -70,7 +70,7 @@ function c23545031.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c23545031.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousControler()==tp
+	return c:IsPreviousControler(tp)
 		and (c:IsReason(REASON_EFFECT) and rp==1-tp or c:IsReason(REASON_BATTLE) and Duel.GetAttacker():IsControler(1-tp))
 end
 function c23545031.spcfilter(c)

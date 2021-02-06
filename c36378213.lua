@@ -12,7 +12,7 @@ function c36378213.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c36378213.filter(c,e,tp)
-	return c:IsPreviousLocation(LOCATION_GRAVE) and c:GetPreviousControler()==tp and c:IsSetCard(0x16)
+	return c:IsPreviousLocation(LOCATION_GRAVE) and c:IsPreviousControler(tp) and c:IsSetCard(0x16)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c36378213.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -22,7 +22,7 @@ function c36378213.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c36378213.spfilter(c,e,tp)
-	return c:IsPreviousLocation(LOCATION_GRAVE) and c:GetPreviousControler()==tp and c:IsSetCard(0x16)
+	return c:IsPreviousLocation(LOCATION_GRAVE) and c:IsPreviousControler(tp) and c:IsSetCard(0x16)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsRelateToEffect(e)
 end
 function c36378213.activate(e,tp,eg,ep,ev,re,r,rp)

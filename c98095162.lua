@@ -57,7 +57,7 @@ function c98095162.tgop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c98095162.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_DECK) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_DECK) and c:IsPreviousControler(tp)
 end
 function c98095162.ddcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_EFFECT)~=0 and eg:IsExists(c98095162.cfilter,1,nil,tp)
@@ -71,7 +71,7 @@ function c98095162.ddop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c98095162.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return (c:IsReason(REASON_BATTLE) or (c:GetReasonPlayer()==1-tp and c:IsReason(REASON_EFFECT) and c:GetPreviousControler()==tp))
+	return (c:IsReason(REASON_BATTLE) or (c:GetReasonPlayer()==1-tp and c:IsReason(REASON_EFFECT) and c:IsPreviousControler(tp)))
 		and c:IsPreviousPosition(POS_FACEUP)
 end
 function c98095162.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

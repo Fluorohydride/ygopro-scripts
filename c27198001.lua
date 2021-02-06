@@ -45,7 +45,7 @@ function c27198001.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c27198001.pcon(e)
-	return e:GetHandler():GetSummonLocation()==LOCATION_GRAVE
+	return e:GetHandler():IsSummonLocation(LOCATION_GRAVE)
 end
 function c27198001.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

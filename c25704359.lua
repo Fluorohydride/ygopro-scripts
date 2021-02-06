@@ -48,7 +48,7 @@ function c25704359.atkcon(e)
 end
 function c25704359.cfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:GetOriginalAttribute()~=0
-		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 end
 function c25704359.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c25704359.cfilter,1,nil,tp) and e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED)

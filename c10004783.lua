@@ -53,7 +53,7 @@ function c10004783.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c10004783.tfcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(e:GetHandler():GetPreviousLocation(),LOCATION_ONFIELD)~=0
+	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c10004783.tffilter(c)
 	return c:IsSetCard(0x1034) and c:IsType(TYPE_MONSTER) and not c:IsForbidden()

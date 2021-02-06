@@ -30,7 +30,7 @@ function c65479980.spfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x156)
 end
 function c65479980.cfilter(c,tp)
-	return c:GetSummonPlayer()==1-tp
+	return c:IsSummonPlayer(1-tp)
 end
 function c65479980.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c65479980.cfilter,1,nil,tp)

@@ -13,7 +13,7 @@ function c82050203.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c82050203.retcon(e,tp,eg,ep,ev,re,r,rp)
-	return bit.band(r,0x41)==0x41 and rp==1-tp and e:GetHandler():GetPreviousControler()==tp
+	return bit.band(r,0x41)==0x41 and rp==1-tp and e:GetHandler():IsPreviousControler(tp)
 end
 function c82050203.rettg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and chkc:IsAbleToHand() end

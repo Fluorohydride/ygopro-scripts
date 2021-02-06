@@ -40,7 +40,7 @@ function c91407982.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c91407982.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp and c:IsReason(REASON_EFFECT)
+	return c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp) and c:IsReason(REASON_EFFECT)
 end
 function c91407982.indcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c91407982.cfilter,1,nil,tp)

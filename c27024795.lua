@@ -62,7 +62,7 @@ function c27024795.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c27024795.cfilter(c,tp)
-	return c:IsPreviousSetCard(0x4b) and c:GetPreviousControler()==tp
+	return c:IsPreviousSetCard(0x4b) and c:IsPreviousControler(tp)
 end
 function c27024795.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return rp~=tp and eg:IsExists(c27024795.cfilter,1,nil,tp)

@@ -41,7 +41,7 @@ function c37491810.initial_effect(c)
 end
 function c37491810.filter(c,tp)
 	return c:IsReason(REASON_EFFECT) and c:IsPreviousSetCard(0xe1)
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
+		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c37491810.despcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c37491810.filter,1,nil,tp)
@@ -60,7 +60,7 @@ function c37491810.despop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c37491810.desmcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSummonLocation()==LOCATION_EXTRA
+	return e:GetHandler():IsSummonLocation(LOCATION_EXTRA)
 end
 function c37491810.desmfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM) and c:IsAbleToDeck()

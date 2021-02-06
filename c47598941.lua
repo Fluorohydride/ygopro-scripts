@@ -35,7 +35,7 @@ function c47598941.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c47598941.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_PZONE) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_PZONE) and c:IsPreviousControler(tp)
 end
 function c47598941.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c47598941.cfilter,1,nil,tp)

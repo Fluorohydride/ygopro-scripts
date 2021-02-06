@@ -94,7 +94,7 @@ function c88851326.settg(e,c)
 	return c:IsLocation(LOCATION_HAND)
 end
 function c88851326.attg(e,c)
-	return c:IsStatus(STATUS_SPSUMMON_TURN) and c:GetSummonLocation()==LOCATION_EXTRA
+	return c:IsStatus(STATUS_SPSUMMON_TURN) and c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c88851326.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer() and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0

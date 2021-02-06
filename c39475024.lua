@@ -29,7 +29,7 @@ function c39475024.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c39475024.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousLocation()==LOCATION_GRAVE
+	return e:GetHandler():IsPreviousLocation(LOCATION_GRAVE)
 end
 function c39475024.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -48,7 +48,7 @@ function c39475024.imfilter(e,te)
 	return te:GetOwner()~=e:GetOwner()
 end
 function c39475024.spfilter(c,tp)
-	return c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp and c:GetPreviousTypeOnField()&TYPE_LINK~=0
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:GetPreviousTypeOnField()&TYPE_LINK~=0
 		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 end
 function c39475024.spcon(e,tp,eg,ep,ev,re,r,rp)

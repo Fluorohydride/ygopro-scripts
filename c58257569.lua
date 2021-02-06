@@ -67,7 +67,7 @@ function c58257569.eqlimit(e,c)
 end
 function c58257569.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousLocation()==LOCATION_SZONE and not c:IsReason(REASON_LOST_TARGET)
+	return c:IsPreviousLocation(LOCATION_SZONE) and not c:IsReason(REASON_LOST_TARGET)
 end
 function c58257569.thfilter(c)
 	return c:IsRace(RACE_DRAGON) and c:IsLevel(1) and c:IsAbleToHand()

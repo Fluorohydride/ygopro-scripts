@@ -13,7 +13,7 @@ function c63737050.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c63737050.cfilter(c,tp)
-	return c:GetSummonPlayer()~=tp
+	return c:IsSummonPlayer(1-tp)
 end
 function c63737050.condition(e,tp,eg,ep,ev,re,r,rp)
 	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c63737050.cfilter,1,nil,tp)

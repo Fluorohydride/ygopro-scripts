@@ -38,7 +38,7 @@ function c2645637.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_MONSTER) and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_GRAVE
 end
 function c2645637.spfilter(c)
-	return c:GetSummonLocation()==LOCATION_GRAVE
+	return c:IsSummonLocation(LOCATION_GRAVE)
 end
 function c2645637.atkcon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c2645637.spfilter,1,nil) and not eg:IsContains(e:GetHandler())

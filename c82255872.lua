@@ -43,7 +43,7 @@ function c82255872.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c82255872.cfilter(c,tp)
-	return c:GetSummonPlayer()==1-tp
+	return c:IsSummonPlayer(1-tp)
 end
 function c82255872.tkcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c82255872.cfilter,1,nil,tp)

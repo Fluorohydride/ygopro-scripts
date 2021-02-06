@@ -25,7 +25,7 @@ function c19605133.initial_effect(c)
 end
 function c19605133.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=eg:GetFirst()
-	return ec:IsSetCard(0x2a) and ec:IsSummonType(SUMMON_TYPE_SYNCHRO) and ec:GetSummonPlayer()==tp
+	return ec:IsSetCard(0x2a) and ec:IsSummonType(SUMMON_TYPE_SYNCHRO) and ec:IsSummonPlayer(tp)
 end
 function c19605133.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

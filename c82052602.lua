@@ -29,7 +29,6 @@ end
 function c82052602.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do
-		local pos=tc:GetPosition()
 		if tc:IsSetCard(0x54) and tc:IsLocation(LOCATION_GRAVE) and tc:IsReason(REASON_BATTLE)
 			and tc:GetControler()==tc:GetPreviousControler() then
 			c82052602[tc:GetControler()]=true

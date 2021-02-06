@@ -16,7 +16,7 @@ function c87844926.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c87844926.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp
+	return c:IsSummonPlayer(tp)
 end
 function c87844926.ddcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c87844926.cfilter,1,nil,1-tp)

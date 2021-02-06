@@ -55,7 +55,7 @@ function c74003290.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c74003290.cfilter(c,tp)
-	return c:GetSummonLocation()==LOCATION_EXTRA and c:GetPreviousControler()==1-tp
+	return c:IsSummonLocation(LOCATION_EXTRA) and c:IsPreviousControler(1-tp)
 end
 function c74003290.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c74003290.cfilter,1,nil,tp)

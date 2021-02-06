@@ -62,7 +62,7 @@ function c76794549.checkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c76794549.spcfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT)
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD)
+		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c76794549.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local v=0

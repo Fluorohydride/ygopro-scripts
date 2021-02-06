@@ -134,7 +134,7 @@ function c49306994.checkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c49306994.leave(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if e:GetLabelObject():GetLabel()==0 and c:GetPreviousControler()==tp
+	if e:GetLabelObject():GetLabel()==0 and c:IsPreviousControler(tp)
 		and c:IsPreviousLocation(LOCATION_SZONE) and c:IsPreviousPosition(POS_FACEUP) then
 		Duel.Damage(tp,3000,REASON_EFFECT)
 	end

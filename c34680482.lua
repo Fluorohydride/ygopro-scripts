@@ -24,7 +24,7 @@ function c34680482.initial_effect(c)
 end
 function c34680482.retcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetReasonPlayer()==1-tp
-		and e:GetHandler():GetPreviousControler()==tp
+		and e:GetHandler():IsPreviousControler(tp)
 end
 function c34680482.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

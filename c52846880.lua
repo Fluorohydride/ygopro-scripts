@@ -61,7 +61,7 @@ function c52846880.condition(e,tp,eg,ep,ev,re,r,rp)
 	local bc=Duel.GetAttackTarget()
 	if not bc then return false end
 	if tc:IsControler(1-tp) then tc,bc=bc,tc end
-	if tc:IsSetCard(0xb4) and bc:GetSummonLocation()==LOCATION_EXTRA then
+	if tc:IsSetCard(0xb4) and bc:IsSummonLocation(LOCATION_EXTRA) then
 		e:SetLabelObject(bc)
 		return true
 	else return false end

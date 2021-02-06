@@ -49,7 +49,7 @@ function c37115575.uqfilter(c)
 	end
 end
 function c37115575.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP)
 		and c:IsPreviousSetCard(0x23) and c:GetPreviousCodeOnField()~=37115575 and not c:IsReason(REASON_RULE)
 end
 function c37115575.spcon(e,tp,eg,ep,ev,re,r,rp)

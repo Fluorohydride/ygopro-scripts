@@ -22,12 +22,12 @@ end
 function c88724332.target(e,c)
 	return c:IsFaceup() and not c:IsRace(RACE_WYRM)
 		and c:IsSummonType(SUMMON_TYPE_SPECIAL)
-		and bit.band(c:GetSummonLocation(),LOCATION_DECK+LOCATION_EXTRA)~=0
+		and c:IsSummonLocation(LOCATION_DECK+LOCATION_EXTRA)
 end
 function c88724332.deftg(e,c)
 	return c:IsFaceup() and not c:IsRace(RACE_WYRM)
 		and c:IsSummonType(SUMMON_TYPE_SPECIAL)
-		and bit.band(c:GetSummonLocation(),LOCATION_DECK+LOCATION_EXTRA)~=0
+		and c:IsSummonLocation(LOCATION_DECK+LOCATION_EXTRA)
 end
 function c88724332.defval(e,c)
 	return -c:GetBaseDefense()

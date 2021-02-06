@@ -35,7 +35,7 @@ function c16226786.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c16226786.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousLocation()==LOCATION_HAND
+	return e:GetHandler():IsPreviousLocation(LOCATION_HAND)
 end
 function c16226786.thfilter(c)
 	return c:IsType(TYPE_FLIP) and c:IsAbleToHand()

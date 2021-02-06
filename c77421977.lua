@@ -72,7 +72,7 @@ function c77421977.atklimit(e,c)
 end
 function c77421977.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_SZONE) and c:GetPreviousControler()==tp
+	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousLocation(LOCATION_SZONE) and c:IsPreviousControler(tp)
 		and c:IsReason(REASON_EFFECT) and rp==1-tp
 end
 function c77421977.drtg(e,tp,eg,ep,ev,re,r,rp,chk)

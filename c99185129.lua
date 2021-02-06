@@ -55,7 +55,7 @@ function c99185129.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c99185129.filter(c)
-	return c:IsFaceup() and c:GetSummonLocation()==LOCATION_EXTRA and (c:IsAttackAbove(1) or aux.disfilter1(c))
+	return c:IsFaceup() and c:IsSummonLocation(LOCATION_EXTRA) and (c:IsAttackAbove(1) or aux.disfilter1(c))
 end
 function c99185129.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c99185129.filter(chkc) end

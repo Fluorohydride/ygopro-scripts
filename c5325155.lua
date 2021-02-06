@@ -17,11 +17,11 @@ function c5325155.initial_effect(c)
 	Duel.AddCustomActivityCounter(5325155,ACTIVITY_SPSUMMON,c5325155.counterfilter)
 end
 function c5325155.counterfilter(c)
-	return c:GetSummonLocation()~=LOCATION_EXTRA or c:IsSetCard(0x121)
+	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsSetCard(0x121)
 end
 function c5325155.cfilter(c,tp,rp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsSetCard(0x121) and not c:IsCode(5325155)
-		and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 		and (c:IsReason(REASON_BATTLE) or (rp==1-tp and c:IsReason(REASON_EFFECT)))
 end
 function c5325155.spcon(e,tp,eg,ep,ev,re,r,rp)

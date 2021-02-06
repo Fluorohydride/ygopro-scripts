@@ -56,7 +56,7 @@ function c82103466.initial_effect(c)
 	c:RegisterEffect(e6)
 end
 function c82103466.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and ((c:IsReason(REASON_BATTLE) and Duel.GetAttacker():IsControler(1-tp))
 		or (c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp))
 end

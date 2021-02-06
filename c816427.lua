@@ -49,7 +49,7 @@ function c816427.rmop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c816427.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_GRAVE) and c:GetPreviousControler()==1-tp
+	return c:IsPreviousLocation(LOCATION_GRAVE) and c:IsPreviousControler(1-tp)
 end
 function c816427.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c816427.cfilter,1,nil,tp)

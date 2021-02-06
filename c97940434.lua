@@ -22,7 +22,7 @@ function c97940434.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c97940434.spfilter(c,sp)
-	return c:GetSummonPlayer()==sp
+	return c:IsSummonPlayer(sp)
 end
 function c97940434.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c97940434.spfilter,1,nil,1-tp)

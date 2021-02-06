@@ -32,7 +32,7 @@ function c92881099.initial_effect(c)
 end
 function c92881099.cfilter(c,tp)
 	return (c:GetPreviousCodeOnField()==76812113 or c:GetPreviousCodeOnField()==12206212)
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c92881099.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:FilterCount(c92881099.cfilter,nil,tp)>0
@@ -67,7 +67,7 @@ function c92881099.spfilter2(c,e,tp)
 end
 function c92881099.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_ONFIELD) and (rp==1-tp or (rp==tp and re:GetHandler():IsSetCard(0x64))) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_ONFIELD) and (rp==1-tp or (rp==tp and re:GetHandler():IsSetCard(0x64))) and c:IsPreviousControler(tp)
 end
 function c92881099.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c92881099.spfilter2(chkc,e,tp) end

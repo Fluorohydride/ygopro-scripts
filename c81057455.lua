@@ -55,7 +55,7 @@ function c81057455.posop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c81057455.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousControler()==tp and rp==1-tp and bit.band(r,0x41)==0x41
+	return c:IsPreviousControler(tp) and rp==1-tp and bit.band(r,0x41)==0x41
 end
 function c81057455.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,2) end

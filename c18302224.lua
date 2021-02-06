@@ -12,7 +12,7 @@ function c18302224.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c18302224.cfilter(c,tp)
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 		and c:IsPreviousPosition(POS_FACEUP) and c:IsSetCard(0x9) and c:IsType(TYPE_FUSION)
 end
 function c18302224.condition(e,tp,eg,ep,ev,re,r,rp)

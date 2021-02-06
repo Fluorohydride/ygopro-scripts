@@ -37,7 +37,7 @@ function c68989981.tgop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c68989981.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return rp==1-tp and c:IsReason(REASON_EFFECT) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
+	return rp==1-tp and c:IsReason(REASON_EFFECT) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
 end
 function c68989981.spfilter(c,e,tp)
 	return c:IsRace(RACE_ZOMBIE) and c:IsLevelBelow(4) and not c:IsCode(68989981) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

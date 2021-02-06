@@ -26,7 +26,7 @@ function c43383478.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local p2=false
 	while tc do
 		if tc:IsSetCard(0xba) and tc:IsType(TYPE_XYZ) and tc:IsReason(REASON_DESTROY) then
-			if tc:GetPreviousControler()==0 then p1=true else p2=true end
+			if tc:IsPreviousControler(0) then p1=true else p2=true end
 		end
 		tc=eg:GetNext()
 	end

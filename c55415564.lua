@@ -34,7 +34,7 @@ function c55415564.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c55415564.disfilter1(c,e,tp)
-	return c:GetSummonPlayer()==1-tp and c:IsSummonType(SUMMON_TYPE_PENDULUM) and (not e or c:IsRelateToEffect(e))
+	return c:IsSummonPlayer(1-tp) and c:IsSummonType(SUMMON_TYPE_PENDULUM) and (not e or c:IsRelateToEffect(e))
 end
 function c55415564.discon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c55415564.disfilter1,1,nil,nil,tp)

@@ -38,7 +38,7 @@ end
 function c55787576.immval(e,te)
 	local tc=te:GetHandler()
 	return te:GetOwner()~=e:GetHandler() and te:IsActiveType(TYPE_MONSTER)
-		and te:IsActivated() and tc:IsSummonType(SUMMON_TYPE_SPECIAL) and tc:GetSummonLocation()==LOCATION_EXTRA
+		and te:IsActivated() and tc:IsSummonType(SUMMON_TYPE_SPECIAL) and tc:IsSummonLocation(LOCATION_EXTRA)
 end
 function c55787576.tgtg(e,c)
 	return e:GetHandler()==c or (c:IsSetCard(0xfe) and e:GetHandler():GetColumnGroup():IsContains(c))

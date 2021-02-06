@@ -14,7 +14,7 @@ function c31712840.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c31712840.cfilter(c,tp)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE) and c:IsType(TYPE_XYZ)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsType(TYPE_XYZ)
 		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp)
 end
 function c31712840.spcon(e,tp,eg,ep,ev,re,r,rp)

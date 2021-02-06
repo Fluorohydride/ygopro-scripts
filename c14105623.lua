@@ -18,7 +18,7 @@ function c14105623.initial_effect(c)
 end
 function c14105623.cfilter(c,tp)
 	return c:IsReason(REASON_BATTLE+REASON_EFFECT) and c:IsPreviousSetCard(0x99)
-		and c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
+		and c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
 end
 function c14105623.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c14105623.cfilter,1,nil,tp)

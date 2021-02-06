@@ -28,7 +28,7 @@ end
 function c25935625.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsReason(REASON_DESTROY) and c:IsReason(REASON_BATTLE+REASON_EFFECT)
-		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp)
 end
 function c25935625.filter(c,e,tp)
 	return c:IsSetCard(0x9e) and not c:IsCode(25935625) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

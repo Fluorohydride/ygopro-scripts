@@ -73,7 +73,7 @@ function c92345028.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return c:IsLocation(LOCATION_EXTRA) and aux.ExtraDeckSummonCountLimit[sump]<=0
 end
 function c92345028.cfilter(c,tp)
-	return c:GetSummonPlayer()==tp and c:IsPreviousLocation(LOCATION_EXTRA)
+	return c:IsSummonPlayer(tp) and c:IsPreviousLocation(LOCATION_EXTRA)
 end
 function c92345028.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c92345028.cfilter,1,nil,tp) then

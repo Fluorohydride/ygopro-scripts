@@ -13,7 +13,7 @@ function c4732017.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c4732017.condition(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetPreviousLocation()==LOCATION_GRAVE
+	return e:GetHandler():IsPreviousLocation(LOCATION_GRAVE)
 end
 function c4732017.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

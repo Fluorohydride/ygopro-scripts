@@ -48,7 +48,7 @@ end
 function c51617185.cfilter(c,tp)
 	return c:IsCode(5556499) and c:IsControler(tp)
 		and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousPosition(POS_FACEUP)
-		and c:GetPreviousControler()==tp and c:IsAbleToRemoveAsCost()
+		and c:IsPreviousControler(tp) and c:IsAbleToRemoveAsCost()
 end
 function c51617185.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not eg:IsContains(e:GetHandler()) and eg:IsExists(c51617185.cfilter,1,nil,tp) end

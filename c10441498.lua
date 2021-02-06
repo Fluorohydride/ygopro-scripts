@@ -57,7 +57,7 @@ function c10441498.lvop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c10441498.thfilter2(c,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_ONFIELD+LOCATION_HAND) and c:GetPreviousControler()==tp
+	return c:IsType(TYPE_MONSTER) and c:IsPreviousLocation(LOCATION_ONFIELD+LOCATION_HAND) and c:IsPreviousControler(tp)
 end
 function c10441498.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c10441498.thfilter2,1,e:GetHandler(),tp)
