@@ -28,7 +28,7 @@ function c49407319.initial_effect(c)
 end
 function c49407319.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetPreviousControler()==tp
+	return c:IsPreviousControler(tp)
 		and (c:IsReason(REASON_EFFECT) and rp==1-tp or c:IsReason(REASON_BATTLE) and Duel.GetAttacker():IsControler(1-tp))
 end
 function c49407319.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -41,7 +41,7 @@ function c49407319.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Damage(1-tp,2000,REASON_EFFECT)
 end
 function c49407319.filter(c,tp,rp,seq)
-	return c:GetPreviousControler()==tp and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsPreviousControler(tp) and c:IsPreviousLocation(LOCATION_MZONE)
 		and ((c:IsReason(REASON_EFFECT) and rp==1-tp) or (c:IsReason(REASON_BATTLE) and Duel.GetAttacker():IsControler(1-tp)))
 		and c:GetPreviousSequence()<5 and math.abs(seq-c:GetPreviousSequence())==1
 end

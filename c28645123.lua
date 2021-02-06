@@ -52,7 +52,7 @@ function c28645123.actcon(e)
 	return (a and c28645123.actfilter(a,tp)) or (d and c28645123.actfilter(d,tp))
 end
 function c28645123.cfilter(c,tp)
-	return c:IsSetCard(0x135) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousControler()==tp
+	return c:IsSetCard(0x135) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 end
 function c28645123.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c28645123.cfilter,1,nil,tp)

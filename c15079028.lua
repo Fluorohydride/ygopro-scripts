@@ -51,7 +51,7 @@ function c15079028.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c15079028.cfilter(c,tp)
 	return c:IsRace(RACE_FAIRY)
-		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousControler()==tp
+		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp)
 end
 function c15079028.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c15079028.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
