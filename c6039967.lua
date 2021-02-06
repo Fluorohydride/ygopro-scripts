@@ -102,7 +102,7 @@ function c6039967.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c6039967.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local tg=Duel.GetMatchingGroup(c6039967.spfilter2,tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,e,tp,e:GetHandler(),Duel.GetTurnCount())
+	local tg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c6039967.spfilter2),tp,LOCATION_GRAVE,LOCATION_GRAVE,nil,e,tp,e:GetHandler(),Duel.GetTurnCount())
 	if ft<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local g=nil
