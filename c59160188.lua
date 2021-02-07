@@ -43,7 +43,7 @@ function c59160188.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c59160188.relval(e,re,r,rp)
-	return re:IsActivated() and bit.band(r,REASON_COST)~=0
+	return (c59160188.re_activated or re:IsActivated()) and bit.band(r,REASON_COST)~=0
 end
 function c59160188.regfilter(c)
 	return c:GetPreviousTypeOnField()&TYPE_MONSTER>0
