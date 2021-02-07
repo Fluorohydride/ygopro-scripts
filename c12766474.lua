@@ -49,6 +49,7 @@ function c12766474.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=rg:SelectSubGroup(tp,aux.mzctcheckrel,false,1,#rg,tp)
 	e:SetLabel(g:GetCount())
+	aux.UseExtraReleaseCount(g,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c12766474.splimit(e,c,sump,sumtype,sumpos,targetp,se)

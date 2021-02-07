@@ -112,6 +112,7 @@ function c77522571.spcost3(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=rg:SelectSubGroup(tp,c77522571.fgoal,false,2,rg:GetCount(),e,tp)
 	local lv=g:GetSum(Card.GetLevel)
 	e:SetLabel(lv)
+	aux.UseExtraReleaseCount(g,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c77522571.sptg3(e,tp,eg,ep,ev,re,r,rp,chk)

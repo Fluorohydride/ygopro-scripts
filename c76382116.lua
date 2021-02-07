@@ -48,6 +48,7 @@ function c76382116.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 		table.insert(code,tc:GetCode())
 	end
 	e:SetLabel(table.unpack(code))
+	aux.UseExtraReleaseCount(sg,tp)
 	Duel.Release(sg,REASON_COST)
 end
 function c76382116.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

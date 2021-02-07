@@ -44,6 +44,7 @@ function c17197110.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=rg:SelectSubGroup(tp,c17197110.fselect,false,1,maxc,tp)
 	e:SetLabel(g:GetCount())
+	aux.UseExtraReleaseCount(g,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c17197110.target(e,tp,eg,ep,ev,re,r,rp,chk)

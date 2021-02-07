@@ -55,6 +55,7 @@ function c20951752.sumcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,nil) end
 	local g=Duel.GetReleaseGroup(tp)
 	local ct=g:FilterCount(Card.IsRace,nil,RACE_FAIRY)
+	aux.UseExtraReleaseCount(g,tp)
 	Duel.Release(g,REASON_COST)
 	e:GetLabelObject():SetLabel(ct)
 end

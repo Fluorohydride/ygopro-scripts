@@ -44,6 +44,7 @@ function c720147.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local sg=rg:SelectSubGroup(tp,c720147.fselect,false,1,rg:GetCount(),tp)
 	sg:KeepAlive()
 	e:SetLabelObject(sg)
+	aux.UseExtraReleaseCount(sg,tp)
 	Duel.Release(sg,REASON_COST)
 	for rc in aux.Next(sg) do
 		rc:CreateEffectRelation(e)

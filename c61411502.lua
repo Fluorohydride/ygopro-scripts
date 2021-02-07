@@ -20,6 +20,7 @@ function c61411502.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return g:CheckSubGroupEach(c61411502.rchecks,c61411502.rgoal,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local rg=g:SelectSubGroupEach(tp,c61411502.rchecks,false,c61411502.rgoal,tp)
+	aux.UseExtraReleaseCount(rg,tp)
 	Duel.Release(rg,REASON_COST)
 end
 function c61411502.target(e,tp,eg,ep,ev,re,r,rp,chk)
