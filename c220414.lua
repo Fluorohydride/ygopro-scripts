@@ -74,11 +74,7 @@ function c220414.rmop(e,tp,eg,ep,ev,re,r,rp)
 		local fid=c:GetFieldID()
 		local tc=og:GetFirst()
 		while tc do
-			if tc:IsControler(tp) then
-				tc:RegisterFlagEffect(220414,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_OPPO_TURN,0,2,fid)
-			else
-				tc:RegisterFlagEffect(220414,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,2,fid)
-			end
+			tc:RegisterFlagEffect(220414,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_OPPO_TURN,0,2,fid)
 			tc=og:GetNext()
 		end
 		c:SetTurnCounter(0)
