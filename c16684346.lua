@@ -49,7 +49,8 @@ end
 function c16684346.fselect(g)
 	return g:IsExists(Card.IsRace,1,nil,RACE_CYBERSE)
 end
-function c16684346.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
+function c16684346.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return false end
 	local g1=Duel.GetMatchingGroup(c16684346.tdfilter,tp,LOCATION_GRAVE,0,e:GetHandler(),e)
 	if chk==0 then return g1:CheckSubGroup(c16684346.fselect,2,2) end
 	local g2=Duel.GetMatchingGroup(c16684346.tdfilter,tp,LOCATION_GRAVE,0,nil,e)
