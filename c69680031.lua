@@ -69,7 +69,7 @@ function c69680031.spop(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e2)
 	end
 end
-function c69680031.atkcon(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c69680031.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local ac=Duel.GetAttacker()
 	return ac:IsFaceup() and ac:IsControler(tp) and ac:IsSetCard(0x145)
 end
