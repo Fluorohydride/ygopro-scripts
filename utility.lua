@@ -2522,3 +2522,14 @@ function Auxiliary.SequenceToGlobal(p,loc,seq)
 		return 0
 	end
 end
+--use the count limit of Lair of Darkness if the tributes are not selected by Duel.SelectReleaseGroup
+function Auxiliary.UseExtraReleaseCount(g,tp)
+	local eg=g:Filter(Auxiliary.ExtraReleaseFilter,nil,tp)
+	for ec in Auxiliary.Next(eg) do
+		local te=ec:IsHasEffect(EFFECT_EXTRA_RELEASE_NONSUM,tp)
+		if te then te:UseCountLimit(tp) end
+	end
+end
+function Auxiliary.ExtraReleaseFilter(c,tp)
+	return c:IsControler(1-tp) and c:IsHasEffect(EFFECT_EXTRA_RELEASE_NONSUM,tp)
+end

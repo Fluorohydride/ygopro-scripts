@@ -57,6 +57,7 @@ function c88696724.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local mat=Duel.SelectFusionMaterial(tp,g:GetFirst(),mg,c,chkf)
 	Auxiliary.FCheckAdditional=nil
 	if c59160188 then c59160188.re_activated=false end
+	aux.UseExtraReleaseCount(mat,tp)
 	Duel.Release(mat,REASON_COST)
 	e:SetLabel(g:GetFirst():GetCode())
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)

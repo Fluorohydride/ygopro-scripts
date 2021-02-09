@@ -28,6 +28,7 @@ function c744887.rmcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return g:CheckSubGroup(c744887.fselect,2,2,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local rg=g:SelectSubGroup(tp,c744887.fselect,false,2,2,tp)
+	aux.UseExtraReleaseCount(rg,tp)
 	Duel.Release(rg,REASON_COST)
 end
 function c744887.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

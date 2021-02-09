@@ -31,6 +31,7 @@ function c9341993.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return g:CheckSubGroup(c9341993.fselect,1,g:GetCount(),tp,exc) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local rg=g:SelectSubGroup(tp,c9341993.fselect,false,1,g:GetCount(),tp,exc)
+	aux.UseExtraReleaseCount(rg,tp)
 	e:SetLabel(100,Duel.Release(rg,REASON_COST))
 end
 function c9341993.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

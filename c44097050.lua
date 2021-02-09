@@ -101,6 +101,7 @@ function c44097050.rlcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	elseif opval[op]==2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		rg=g:SelectSubGroup(tp,aux.mzctcheck,false,2,2,tp)
+		aux.UseExtraReleaseCount(rg,tp)
 	else
 		rg=Duel.SelectReleaseGroup(tp,nil,3,3,nil)
 	end
