@@ -1,5 +1,6 @@
 --スターダスト・シャオロン
 function c68543408.initial_effect(c)
+	aux.AddCodeList(c,44508094)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(68543408,0))

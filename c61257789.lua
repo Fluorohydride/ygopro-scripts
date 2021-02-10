@@ -1,6 +1,6 @@
 --スターダスト・ドラゴン／バスター
 function c61257789.initial_effect(c)
-	aux.AddCodeList(c,80280737)
+	aux.AddCodeList(c,80280737,44508094)
 	c:EnableReviveLimit()
 	--Cannot special summon
 	local e1=Effect.CreateEffect(c)
