@@ -1,5 +1,6 @@
 --Sin スターダスト・ドラゴン
 function c36521459.initial_effect(c)
+	aux.AddCodeList(c,44508094)
 	c:EnableReviveLimit()
 	c:SetUniqueOnField(1,1,c36521459.uqfilter,LOCATION_MZONE)
 	--special summon
