@@ -1,5 +1,6 @@
 --シューティング・スター・ドラゴン
 function c24696097.initial_effect(c)
+	aux.AddCodeList(c,44508094)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSynchroType,TYPE_SYNCHRO),aux.FilterBoolFunction(Card.IsCode,44508094),1,1)
 	c:EnableReviveLimit()
