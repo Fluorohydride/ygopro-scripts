@@ -457,13 +457,15 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
 				local c1=mg:FilterSelect(tp,Auxiliary.SynMixFilter1,1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc):GetFirst()
 				g:AddCard(c1)
+				local c2
+				local c3
 				if f2 then
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-					local c2=mg:FilterSelect(tp,Auxiliary.SynMixFilter2,1,1,c1,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc):GetFirst()
+					c2=mg:FilterSelect(tp,Auxiliary.SynMixFilter2,1,1,c1,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc):GetFirst()
 					g:AddCard(c2)
 					if f3 then
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-						local c3=mg:FilterSelect(tp,Auxiliary.SynMixFilter3,1,1,Group.FromCards(c1,c2),f3,f4,minc,maxc,c,mg,smat,c1,c2,gc):GetFirst()
+						c3=mg:FilterSelect(tp,Auxiliary.SynMixFilter3,1,1,Group.FromCards(c1,c2),f3,f4,minc,maxc,c,mg,smat,c1,c2,gc):GetFirst()
 						g:AddCard(c3)
 					end
 				end
@@ -471,14 +473,14 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 				for i=0,maxc-1 do
 					local mg2=mg:Clone()
 					if f4 then
-						mg2=mg2:Filter(f4,g,c)
+						mg2=mg2:Filter(f4,g,c,c1,c2,c3)
 					else
 						mg2:Sub(g)
 					end
-					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc)
+					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,c1,c2,c3,smat,gc)
 					if cg:GetCount()==0 then break end
 					local minct=1
-					if Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc) then
+					if Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,c1,c2,c3,smat,gc) then
 						minct=0
 					end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
@@ -521,40 +523,40 @@ function Auxiliary.SynMixFilter3(c,f3,f4,minc,maxc,syncard,mg,smat,c1,c2,gc,mgch
 end
 function Auxiliary.SynMixFilter4(c,f4,minc,maxc,syncard,mg1,smat,c1,c2,c3,gc,mgchk)
 	if f4 and not f4(c,syncard,c1,c2,c3) then return false end
-	local sg=Group.FromCards(c1,c)
+	local sg=Group.FromCards(c)
 	sg:AddCard(c1)
 	if c2 then sg:AddCard(c2) end
 	if c3 then sg:AddCard(c3) end
 	local mg=mg1:Clone()
 	if f4 then
-		mg=mg:Filter(f4,sg,syncard)
+		mg=mg:Filter(f4,sg,syncard,c1,c2,c3)
 	else
 		mg:Sub(sg)
 	end
-	return aux.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,smat,gc,mgchk)
+	return aux.SynMixCheck(mg,sg,c1,c2,c3,minc-1,maxc-1,syncard,smat,gc,mgchk)
 end
-function Auxiliary.SynMixCheck(mg,sg1,minc,maxc,syncard,smat,gc,mgchk)
+function Auxiliary.SynMixCheck(mg,sg1,c1,c2,c3,minc,maxc,syncard,smat,gc,mgchk)
 	local tp=syncard:GetControler()
 	local sg=Group.CreateGroup()
-	if minc==0 and Auxiliary.SynMixCheckGoal(tp,sg1,0,0,syncard,sg,smat,gc,mgchk) then return true end
+	if minc==0 and Auxiliary.SynMixCheckGoal(tp,sg,0,0,syncard,sg1,c1,c2,c3,smat,gc,mgchk) then return true end
 	if maxc==0 then return false end
-	return mg:IsExists(Auxiliary.SynMixCheckRecursive,1,nil,tp,sg,mg,0,minc,maxc,syncard,sg1,smat,gc,mgchk)
+	return mg:IsExists(Auxiliary.SynMixCheckRecursive,1,nil,tp,sg,mg,0,minc,maxc,syncard,sg1,c1,c2,c3,smat,gc,mgchk)
 end
-function Auxiliary.SynMixCheckRecursive(c,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc,mgchk)
+function Auxiliary.SynMixCheckRecursive(c,tp,sg,mg,ct,minc,maxc,syncard,sg1,c1,c2,c3,smat,gc,mgchk)
 	sg:AddCard(c)
 	ct=ct+1
-	local res=Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
-		or (ct<maxc and mg:IsExists(Auxiliary.SynMixCheckRecursive,1,sg,tp,sg,mg,ct,minc,maxc,syncard,sg1,smat,gc,mgchk))
+	local res=Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,c1,c2,c3,smat,gc,mgchk)
+		or (ct<maxc and mg:IsExists(Auxiliary.SynMixCheckRecursive,1,sg,tp,sg,mg,ct,minc,maxc,syncard,sg1,c1,c2,c3,smat,gc,mgchk))
 	sg:RemoveCard(c)
 	ct=ct-1
 	return res
 end
-function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,smat,gc,mgchk)
+function Auxiliary.SynMixCheckGoal(tp,sg,minc,ct,syncard,sg1,c1,c2,c3,smat,gc,mgchk)
 	if ct<minc then return false end
 	local g=sg:Clone()
 	g:Merge(sg1)
 	if Duel.GetLocationCountFromEx(tp,tp,g,syncard)<=0 then return false end
-	if gc and not gc(g) then return false end
+	if gc and not gc(g,c1,c2,c3) then return false end
 	if smat and not g:IsContains(smat) then return false end
 	if not Auxiliary.MustMaterialCheck(g,tp,EFFECT_MUST_BE_SMATERIAL) then return false end
 	if not g:CheckWithSumEqual(Card.GetSynchroLevel,syncard:GetLevel(),g:GetCount(),g:GetCount(),syncard)
