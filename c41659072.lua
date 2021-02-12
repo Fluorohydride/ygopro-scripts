@@ -37,7 +37,7 @@ function c41659072.initial_effect(c)
 end
 function c41659072.syncheck(g)
 	local sg=g:Clone()
-	local attr=0x7f
+	local attr=ATTRIBUTE_ALL
 	for c in aux.Next(sg) do
 		attr=attr&c:GetAttribute()
 		if attr==0 then break end
