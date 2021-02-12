@@ -36,7 +36,13 @@ function c41659072.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c41659072.syncheck(g)
-	return g:GetClassCount(Card.GetAttribute)==1
+	local sg=g:Clone()
+	local attr=0x7f
+	for c in aux.Next(sg) do
+		attr=attr&c:GetAttribute()
+		if attr==0 then break end
+	end
+	return attr~=0
 end
 function c41659072.sumlimit(e,se,sp,st)
 	return bit.band(st,SUMMON_TYPE_SYNCHRO)~=SUMMON_TYPE_SYNCHRO or not se
