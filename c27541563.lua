@@ -5,7 +5,6 @@ function c27541563.initial_effect(c)
 	e1:SetDescription(aux.Stringid(27541563,0))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
-	e1:SetCondition(aux.dscon)
 	c:RegisterEffect(e1)
 	--negate
 	local e2=Effect.CreateEffect(c)
