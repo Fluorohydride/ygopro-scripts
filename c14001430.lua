@@ -39,7 +39,7 @@ function c14001430.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c14001430.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
-	local g=Duel.GetMatchingGroup(c14001430.tdfilter,tp,LOCATION_GRAVE,0,nil)
+	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c14001430.tdfilter),tp,LOCATION_GRAVE,0,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
 	end
