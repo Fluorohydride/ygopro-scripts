@@ -65,7 +65,7 @@ function c91957038.nsop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c91957038.damfilter(c)
-	return c:IsAttack(1850) and c:IsRace(RACE_SPELLCASTER) and c:IsFaceup()
+	return c:GetBaseAttack()==1850 and c:IsRace(RACE_SPELLCASTER) and c:IsFaceup()
 end
 function c91957038.damcon(e)
 	return e:GetHandler():GetFlagEffect(91957038)==0
