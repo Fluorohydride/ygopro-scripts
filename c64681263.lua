@@ -16,5 +16,6 @@ function c64681263.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c64681263.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND+LOCATION_GRAVE,0)
+	if aux.NecroValleyNegateCheck(g) then return end
 	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
 end

@@ -75,5 +75,6 @@ function c17469113.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c17469113.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c17469113.tdfilter,tp,LOCATION_MZONE+LOCATION_GRAVE+LOCATION_REMOVED,LOCATION_MZONE+LOCATION_GRAVE+LOCATION_REMOVED,aux.ExceptThisCard(e))
+	if aux.NecroValleyNegateCheck(g) then return end
 	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
 end

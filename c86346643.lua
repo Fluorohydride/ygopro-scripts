@@ -97,5 +97,6 @@ function c86346643.tdtg3(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c86346643.tdop3(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_GRAVE,nil)
+	if aux.NecroValleyNegateCheck(g) then return end
 	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
 end

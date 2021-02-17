@@ -90,14 +90,14 @@ function c3429238.filter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c3429238.spop(e,tp,eg,ep,ev,re,r,rp)
-	local ct=Duel.GetMatchingGroupCount(c3429238.filter,tp,LOCATION_GRAVE,0,nil)
-	if ct>0 and Duel.IsPlayerAffectedByEffect(tp,EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0) then return end
+	local tg=Duel.GetMatchingGroup(c3429238.filter,tp,LOCATION_GRAVE,0,1,1,nil)
+	if aux.NecroValleyNegateCheck(tg) then return end
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c3429238.filter),tp,LOCATION_GRAVE,0,1,1,nil)
+		local g=tg:Select(tp,1,1,nil)
 		if g:GetCount()>0 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,g)
