@@ -26,13 +26,11 @@ function c87571563.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end
 	if Duel.IsExistingTarget(c87571563.spfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 		and Duel.SelectYesNo(tp,aux.Stringid(87571563,1)) then
-		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND)
+		e:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOHAND+CATEGORY_GRAVE_ACTION+CATEGORY_GRAVE_SPSUMMON)
 		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
 		e:SetOperation(c87571563.activate)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 		local g=Duel.SelectTarget(tp,c87571563.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
-		Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,0,0,0)
-		Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,0,0,0)
 	else
 		e:SetCategory(0)
 		e:SetProperty(0)

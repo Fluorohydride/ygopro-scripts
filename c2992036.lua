@@ -3,7 +3,7 @@ function c2992036.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(2992036,0))
-	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON)
+	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_ACTION+CATEGORY_GRAVE_SPSUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -44,11 +44,10 @@ function c2992036.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local tg=g:SelectSubGroup(tp,c2992036.fselect,false,3,3,e,tp)
 	Duel.SetTargetCard(tg)
-	Duel.SetOperationInfo(0,CATEGORY_TOHAND,tg,0,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,tg,0,0,0)
 end
 function c2992036.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	if aux.NecroValleyNegateCheck(tg) then return end
 	if tg:GetCount()>0 then
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		local b1=tg:IsExists(Card.IsAbleToHand,1,nil)
