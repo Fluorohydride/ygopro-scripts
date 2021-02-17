@@ -34,13 +34,20 @@ function c21546416.initial_effect(c)
 end
 c21546416.lvup={46384672}
 c21546416.lvdn={57030525}
-function c21546416.costfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
+function c21546416.costfilter(c,e,tp)
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost() and Duel.IsExistingMatchingCard(c21546416.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,c,e,tp,e:GetLabel())
 end
 function c21546416.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c21546416.costfilter,tp,LOCATION_HAND,0,1,nil) end
+	if chk==0 then
+		if c:IsCode(46384672) then
+			e:SetLabel(1)
+		else
+			e:SetLabel(0)
+		end
+		return Duel.IsExistingMatchingCard(c21546416.costfilter,tp,LOCATION_HAND,0,1,nil,e,tp)
+	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c21546416.costfilter,tp,LOCATION_HAND,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c21546416.costfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c21546416.spfilter(c,e,tp,label)
