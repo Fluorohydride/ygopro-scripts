@@ -38,6 +38,7 @@ function c21546416.costfilter(c,e,tp)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost() and Duel.IsExistingMatchingCard(c21546416.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,c,e,tp,e:GetLabel())
 end
 function c21546416.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
+	local c=e:GetHandler()
 	if chk==0 then
 		if c:IsCode(46384672) then
 			e:SetLabel(1)
@@ -51,7 +52,8 @@ function c21546416.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c21546416.spfilter(c,e,tp,label)
-	return c:IsSetCard(0x111) and c:IsLevelBelow(7) and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or label==1 and c:IsCode(73879377) and c:IsCanBeSpecialSummoned(e,0,tp,true,false))
+	return c:IsSetCard(0x111) and c:IsLevelBelow(7)
+		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or label==1 and c:IsCode(73879377) and c:IsCanBeSpecialSummoned(e,0,tp,true,false))
 end
 function c21546416.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
@@ -61,7 +63,8 @@ function c21546416.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		else
 			e:SetLabel(0)
 		end
-		return c:IsAbleToGrave() and Duel.GetMZoneCount(tp,c)>0 and Duel.IsExistingMatchingCard(c21546416.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp,e:GetLabel())
+		return c:IsAbleToGrave() and Duel.GetMZoneCount(tp,c)>0
+			and Duel.IsExistingMatchingCard(c21546416.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp,e:GetLabel())
 	end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,c,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)
