@@ -34,13 +34,13 @@ function c94141712.initial_effect(c)
 end
 c94141712.lvup={73879377}
 c94141712.lvdn={21546416,57030525}
-function c94141712.costfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
+function c94141712.costfilter(c,e,tp)
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost() and Duel.IsExistingMatchingCard(c94141712.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,c,e,tp)
 end
 function c94141712.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c94141712.costfilter,tp,LOCATION_HAND,0,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c94141712.costfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c94141712.costfilter,tp,LOCATION_HAND,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c94141712.costfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c94141712.spfilter(c,e,tp)
@@ -48,7 +48,8 @@ function c94141712.spfilter(c,e,tp)
 end
 function c94141712.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return c:IsAbleToGrave() and Duel.GetMZoneCount(tp,c)>0 and Duel.IsExistingMatchingCard(c94141712.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp) end
+	if chk==0 then return c:IsAbleToGrave() and Duel.GetMZoneCount(tp,c)>0
+		and Duel.IsExistingMatchingCard(c94141712.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,c,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)
 end
