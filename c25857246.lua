@@ -53,11 +53,11 @@ function c25857246.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c25857246.filter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsReleasableByEffect()
+	return c:IsType(TYPE_MONSTER)
 end
 function c25857246.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
-		and Duel.CheckReleaseGroupEx(tp,c25857246.filter,1,nil) end
+		and Duel.CheckReleaseGroupByEffect(tp,true,c25857246.filter,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c25857246.operation(e,tp,eg,ep,ev,re,r,rp)
@@ -65,7 +65,7 @@ function c25857246.operation(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)
 	if ct==0 then ct=1 end
 	if ct>2 then ct=2 end
-	local g=Duel.SelectReleaseGroupEx(tp,c25857246.filter,1,ct,nil)
+	local g=Duel.SelectReleaseGroupByEffect(tp,true,c25857246.filter,1,ct,nil)
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)
 		local rct=Duel.Release(g,REASON_EFFECT)
