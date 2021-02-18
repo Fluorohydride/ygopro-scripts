@@ -34,7 +34,8 @@ function c57030525.initial_effect(c)
 end
 c57030525.lvup={980973}
 function c57030525.costfilter(c,e,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost() and Duel.IsExistingMatchingCard(c57030525.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,c,e,tp)
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
+		and Duel.IsExistingMatchingCard(c57030525.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,c,e,tp)
 end
 function c57030525.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c57030525.costfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
