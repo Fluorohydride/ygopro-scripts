@@ -2533,3 +2533,18 @@ end
 function Auxiliary.ExtraReleaseFilter(c,tp)
 	return c:IsControler(1-tp) and c:IsHasEffect(EFFECT_EXTRA_RELEASE_NONSUM,tp)
 end
+--handling the Duel.Equip with equip limit
+function Auxiliary.equipwithlimit(c,tp,parm1,parm2,label)
+	if not Duel.Equip(tp,parm1,parm2) then return end
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_EQUIP_LIMIT)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetLabelObject(label)
+	e1:SetValue(Auxiliary.EquipLimit)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+	c:RegisterEffect(e1)
+end
+function Auxiliary.EquipLimit(e,c)
+	return c==e:GetLabelObject()
+end
