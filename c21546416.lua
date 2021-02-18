@@ -35,7 +35,8 @@ end
 c21546416.lvup={46384672}
 c21546416.lvdn={57030525}
 function c21546416.costfilter(c,e,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost() and Duel.IsExistingMatchingCard(c21546416.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,c,e,tp,e:GetLabel())
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
+		and Duel.IsExistingMatchingCard(c21546416.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,c,e,tp,e:GetLabel())
 end
 function c21546416.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
