@@ -17,7 +17,7 @@ function c43839002.rmfilter(c,tp)
 		and Duel.IsExistingMatchingCard(c43839002.thfilter,tp,LOCATION_DECK,0,1,nil,c:GetTextAttack())
 end
 function c43839002.thfilter(c,atk)
-	return c:IsRace(RACE_CYBERSE) and c:GetAttack()>=0 and c:GetAttack()<atk and c:IsAbleToHand()
+	return c:IsRace(RACE_CYBERSE) and c:GetTextAttack()>=0 and c:GetTextAttack()<atk and c:IsAbleToHand()
 end
 function c43839002.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c43839002.rmfilter(chkc,tp) end
