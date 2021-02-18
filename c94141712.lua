@@ -35,7 +35,8 @@ end
 c94141712.lvup={73879377}
 c94141712.lvdn={21546416,57030525}
 function c94141712.costfilter(c,e,tp)
-	return c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost() and Duel.IsExistingMatchingCard(c94141712.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,c,e,tp)
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
+		and Duel.IsExistingMatchingCard(c94141712.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,c,e,tp)
 end
 function c94141712.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c94141712.costfilter,tp,LOCATION_HAND,0,1,nil,e,tp) end
