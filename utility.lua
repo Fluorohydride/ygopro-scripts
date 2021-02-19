@@ -2541,16 +2541,11 @@ function Auxiliary.equipwithlimit(c,tp,parm1,parm2,label,f,group)
 	e1:SetCode(EFFECT_EQUIP_LIMIT)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 	e1:SetLabelObject(label)
-	e1:SetValue(Auxiliary.EquipLimit(f))
+	e1:SetValue(f)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	if group then
 		group:RegisterEffect(e1)
 	else
 		c:RegisterEffect(e1)
 	end
-end
-function Auxiliary.EquipLimit(f)
-	return	function(e,c)
-				return c==e:GetLabelObject()
-			end
 end
