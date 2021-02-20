@@ -48,7 +48,9 @@ function c91135480.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) or not c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT) then return end
 	local g=c:GetOverlayGroup()
 	local tg=Group.CreateGroup()
-	tg:Merge(g:Filter(Card.IsType,nil,TYPE_MONSTER))
+	if c:IsFaceup() then
+		tg:Merge(g:Filter(Card.IsType,nil,TYPE_MONSTER))
+	end
 	if Duel.IsExistingMatchingCard(c91135480.ctfilter,tp,0,LOCATION_MZONE,1,nil) then
 		tg:Merge(g:Filter(Card.IsType,nil,TYPE_SPELL))
 	end
@@ -74,7 +76,17 @@ function c91135480.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
 		local g=Duel.SelectMatchingCard(tp,c91135480.ctfilter,tp,0,LOCATION_MZONE,1,1,nil)
 		Duel.HintSelection(g)
-		Duel.GetControl(g:GetFirst(),tp,PHASE_END,1)
+		if Duel.GetControl(g:GetFirst(),tp,PHASE_END,1)~=0 then
+			local e1=Effect.CreateEffect(c)
+			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+			e1:SetCode(EFFECT_CANNOT_ATTACK_ANNOUNCE)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+			g:GetFirst():RegisterEffect(e1)
+			local e2=e1:Clone()
+			e2:SetCode(EFFECT_CANNOT_TRIGGER)
+			g:GetFirst():RegisterEffect(e2)
+		end
 	end
 	if sg:IsExists(Card.IsType,1,nil,TYPE_TRAP) then
 		Duel.BreakEffect()
@@ -82,19 +94,20 @@ function c91135480.operation(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,c91135480.dfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 		if g:GetCount()>0 then
 			local tc=g:GetFirst()
-			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-			e1:SetCode(EFFECT_DISABLE)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-			tc:RegisterEffect(e1)
-			local e2=Effect.CreateEffect(e:GetHandler())
-			e2:SetType(EFFECT_TYPE_SINGLE)
-			e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-			e2:SetCode(EFFECT_DISABLE_EFFECT)
-			e2:SetValue(RESET_TURN_SET)
-			e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-			tc:RegisterEffect(e2)
+			Duel.NegateRelatedChain(tc,RESET_TURN_SET)
+			local e3=Effect.CreateEffect(c)
+			e3:SetType(EFFECT_TYPE_SINGLE)
+			e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+			e3:SetCode(EFFECT_DISABLE)
+			e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+			tc:RegisterEffect(e3)
+			local e4=Effect.CreateEffect(c)
+			e4:SetType(EFFECT_TYPE_SINGLE)
+			e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+			e4:SetCode(EFFECT_DISABLE_EFFECT)
+			e4:SetValue(RESET_TURN_SET)
+			e4:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+			tc:RegisterEffect(e4)
 		end
 	end
 end
