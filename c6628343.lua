@@ -23,6 +23,7 @@ function c6628343.initial_effect(c)
 end
 function c6628343.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return r==REASON_RITUAL and eg:IsExists(Card.IsSetCard,1,nil,0x10cf)
+		and not e:GetHandler():IsPreviousLocation(LOCATION_OVERLAY)
 end
 function c6628343.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
