@@ -76,16 +76,17 @@ function c91135480.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
 		local g=Duel.SelectMatchingCard(tp,c91135480.ctfilter,tp,0,LOCATION_MZONE,1,1,nil)
 		Duel.HintSelection(g)
-		if Duel.GetControl(g:GetFirst(),tp,PHASE_END,1)~=0 then
+		local tc=g:GetFirst()
+		if Duel.GetControl(tc,tp,PHASE_END,1)~=0 then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 			e1:SetCode(EFFECT_CANNOT_ATTACK_ANNOUNCE)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-			g:GetFirst():RegisterEffect(e1)
+			tc:RegisterEffect(e1)
 			local e2=e1:Clone()
 			e2:SetCode(EFFECT_CANNOT_TRIGGER)
-			g:GetFirst():RegisterEffect(e2)
+			tc:RegisterEffect(e2)
 		end
 	end
 	if sg:IsExists(Card.IsType,1,nil,TYPE_TRAP) then
