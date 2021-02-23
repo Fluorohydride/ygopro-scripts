@@ -9,12 +9,13 @@ function c84808313.initial_effect(c)
 	c:RegisterEffect(e1)
 	--reduce tribute
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(84808313,0))
 	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_DECREASE_TRIBUTE)
+	e2:SetCode(EFFECT_SUMMON_PROC)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_HAND,0)
-	e2:SetTarget(aux.TargetBoolFunction(Card.IsRace,RACE_DINOSAUR))
-	e2:SetValue(0x20002)
+	e2:SetCondition(c84808313.ntcon)
+	e2:SetTarget(c84808313.nttg)
 	c:RegisterEffect(e2)
 	--remain field
 	local e3=Effect.CreateEffect(c)
@@ -53,4 +54,11 @@ function c84808313.desop(e,tp,eg,ep,ev,re,r,rp)
 	if ct==3 then
 		Duel.Destroy(c,REASON_RULE)
 	end
+end
+function c84808313.ntcon(e,c,minc)
+	if c==nil then return true end
+	return minc==0 and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
+end
+function c84808313.nttg(e,c)
+	return c:IsLevelAbove(5) and c:IsRace(RACE_DINOSAUR)
 end
