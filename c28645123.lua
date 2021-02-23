@@ -6,6 +6,7 @@ function c28645123.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e1:SetHintTiming(TIMING_DAMAGE_STEP)
+	e1:SetCondition(aux.dscon)
 	c:RegisterEffect(e1)
 	--atk down
 	local e2=Effect.CreateEffect(c)
@@ -40,7 +41,7 @@ function c28645123.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c28645123.atkval(e)
-	return Duel.GetMatchingGroupCount(Card.IsFaceup,e:GetHandlerPlayer(),LOCATION_ONFIELD,0,nil)*-100
+	return Duel.GetFieldGroupCount(e:GetHandlerPlayer(),LOCATION_ONFIELD,0)*-100
 end
 function c28645123.actfilter(c,tp)
 	return c:IsFaceup() and c:IsSetCard(0x135) and c:IsControler(tp)
@@ -52,13 +53,13 @@ function c28645123.actcon(e)
 	return (a and c28645123.actfilter(a,tp)) or (d and c28645123.actfilter(d,tp))
 end
 function c28645123.cfilter(c,tp)
-	return c:IsSetCard(0x135) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
+	return c:IsPreviousSetCard(0x135) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 end
 function c28645123.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c28645123.cfilter,1,nil,tp)
 end
 function c28645123.spfilter(c,e,tp)
-	return c:GetAttack()==2300 and c:IsRace(RACE_CYBERSE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsAttack(2300) and c:IsRace(RACE_CYBERSE) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c28645123.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c28645123.spfilter(chkc,e,tp) and not eg:IsContains(chkc) end

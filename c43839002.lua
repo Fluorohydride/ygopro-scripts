@@ -13,11 +13,11 @@ function c43839002.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c43839002.rmfilter(c,tp)
-	return c:IsFaceup() and c:IsRace(RACE_CYBERSE) and c:IsAbleToRemove() and c:GetBaseAttack()>0
-		and Duel.IsExistingMatchingCard(c43839002.thfilter,tp,LOCATION_DECK,0,1,nil,c)
+	return c:IsFaceup() and c:IsRace(RACE_CYBERSE) and c:IsAbleToRemove() and c:GetTextAttack()>0 and c:GetOriginalType()&TYPE_MONSTER~=0
+		and Duel.IsExistingMatchingCard(c43839002.thfilter,tp,LOCATION_DECK,0,1,nil,c:GetTextAttack())
 end
-function c43839002.thfilter(c,rc)
-	return c:IsRace(RACE_CYBERSE) and c:GetAttack()>=0 and c:GetAttack()<rc:GetBaseAttack() and c:IsAbleToHand()
+function c43839002.thfilter(c,atk)
+	return c:IsRace(RACE_CYBERSE) and c:GetTextAttack()>=0 and c:GetAttack()<atk and c:IsAbleToHand()
 end
 function c43839002.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c43839002.rmfilter(chkc,tp) end
@@ -52,7 +52,7 @@ function c43839002.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterEffect(e1,tp)
 		if tc:IsFacedown() then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local g=Duel.SelectMatchingCard(tp,c43839002.thfilter,tp,LOCATION_DECK,0,1,1,nil,tc)
+		local g=Duel.SelectMatchingCard(tp,c43839002.thfilter,tp,LOCATION_DECK,0,1,1,nil,tc:GetTextAttack())
 		if g:GetCount()>0 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,g)
