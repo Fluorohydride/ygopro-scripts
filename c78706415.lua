@@ -11,7 +11,7 @@ end
 function c78706415.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local g=Duel.GetFieldGroup(tp,0x1e,0x1e)
-	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,g:GetCount(),0,0)
+	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,g:GetCount(),0,0x1e)
 end
 function c78706415.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

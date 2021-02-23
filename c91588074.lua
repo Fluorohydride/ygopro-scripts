@@ -57,7 +57,7 @@ end
 function c91588074.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local g=Duel.GetMatchingGroup(c91588074.tdfilter,tp,0x5e,0x5e,e:GetHandler())
-	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,g:GetCount(),0,0)
+	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,g:GetCount(),0,0x5e)
 	Duel.SetChainLimit(aux.FALSE)
 end
 function c91588074.tdop(e,tp,eg,ep,ev,re,r,rp)
