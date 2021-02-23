@@ -85,14 +85,6 @@ function c47355498.discheck(ev,category,re,im0,im1)
 	end
 	return false
 end
-function c47355498.discheck2(ev,category,re)
-	local ex,tg,ct,p,v=Duel.GetOperationInfo(ev,category)
-	if not ex then return false end
-	if v==LOCATION_GRAVE and ct>0 and tg then
-		return tg:IsExists(c47355498.disfilter,1,nil,re)
-	end
-	return false
-end
 function c47355498.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=re:GetHandler()
 	if not Duel.IsChainDisablable(ev) or tc:IsHasEffect(EFFECT_NECRO_VALLEY_IM) then return end
@@ -104,6 +96,6 @@ function c47355498.disop(e,tp,eg,ep,ev,re,r,rp)
 	if not res and c47355498.discheck(ev,CATEGORY_TODECK,re,im0,im1) then res=true end
 	if not res and c47355498.discheck(ev,CATEGORY_TOEXTRA,re,im0,im1) then res=true end
 	if not res and c47355498.discheck(ev,CATEGORY_LEAVE_GRAVE,re,im0,im1) then res=true end
-	if not res and c47355498.discheck2(ev,CATEGORY_REMOVE,re) then res=true end
+	if not res and c47355498.discheck(ev,CATEGORY_REMOVE,re,im0,im1) then res=true end
 	if res then Duel.NegateEffect(ev) end
 end
