@@ -29,6 +29,13 @@ function c24207889.initial_effect(c)
 	local e6=e4:Clone()
 	e6:SetCode(EFFECT_CANNOT_FLIP_SUMMON)
 	c:RegisterEffect(e6)
+	if not c24207889.global_check then
+		c24207889.global_check=true
+		c24207889[0]=Group.CreateGroup()	
+		c24207889[0]:KeepAlive()	
+		c24207889[1]=Group.CreateGroup()	
+		c24207889[1]:KeepAlive()
+	end
 end
 function c24207889.rmfilter(c,rc)
 	return c:IsFaceup() and c:IsRace(rc)
@@ -51,6 +58,7 @@ function c24207889.adjustop(e,tp,eg,ep,ev,re,r,rp)
 			local rg=g:Filter(Card.IsRace,nil,race)
 			local rc=rg:GetCount()
 			if rc>1 then
+				rg:Sub(c24207889[p])
 				Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TOGRAVE)
 				local dg=rg:Select(p,rc-1,rc-1,nil)
 				sg:Merge(dg)
@@ -61,5 +69,10 @@ function c24207889.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	if sg:GetCount()>0 then
 		Duel.SendtoGrave(sg,REASON_RULE)
 		Duel.Readjust()
+	end
+	for p=0,1 do
+		local g=Duel.GetMatchingGroup(Card.IsFaceup,p,LOCATION_MZONE,0,nil)
+		c24207889[p]:Clear()
+		c24207889[p]:Merge(g)
 	end
 end
