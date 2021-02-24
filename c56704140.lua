@@ -35,7 +35,7 @@ end
 function c56704140.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
-	local aat=Duel.AnnounceAttribute(tp,1,0x7f)
+	local aat=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL)
 	e:SetLabel(aat)
 end
 function c56704140.operation(e,tp,eg,ep,ev,re,r,rp)

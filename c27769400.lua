@@ -74,7 +74,7 @@ end
 function c27769400.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
-	local rc=Duel.AnnounceAttribute(tp,1,0xff)
+	local rc=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL)
 	Duel.SetTargetParam(rc)
 	e:GetHandler():SetHint(CHINT_ATTRIBUTE,rc)
 	local g=Duel.GetMatchingGroup(c27769400.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,rc)
