@@ -61,13 +61,13 @@ function c25704359.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return false end
 		local g=eg:Filter(c25704359.cfilter,nil,tp)
-		local att=0x7f
+		local att=ATTRIBUTE_ALL
 		local tc=g:GetFirst()
 		while tc do
 			att=bit.band(att,tc:GetOriginalAttribute())
 			tc=g:GetNext()
 		end
-		att=0x7f-att
+		att=ATTRIBUTE_ALL-att
 		e:SetLabel(att)
 		return Duel.IsExistingMatchingCard(c25704359.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,att)
 	end

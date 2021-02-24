@@ -53,7 +53,7 @@ end
 function c8522996.chtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
-	local aat=Duel.AnnounceAttribute(tp,1,0x7f)
+	local aat=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL)
 	e:SetLabel(aat)
 end
 function c8522996.chop(e,tp,eg,ep,ev,re,r,rp)
@@ -78,5 +78,5 @@ function c8522996.condition(e,c)
 	return c:IsAttribute(e:GetHandler():GetAttribute())
 end
 function c8522996.splimit(e,c,tp,sumtp,sumpos)
-	return c:IsAttribute(0xff-e:GetHandler():GetAttribute())
+	return c:IsAttribute(ATTRIBUTE_ALL-e:GetHandler():GetAttribute())
 end

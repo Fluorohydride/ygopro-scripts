@@ -19,7 +19,7 @@ function c32056070.filter(c,att,used)
 	return c:GetBaseAttack()==2300 and c:IsRace(RACE_CYBERSE) and c:IsAttribute(att) and c:GetAttribute()&used==0
 end
 function c32056070.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 and not eg:IsExists(c32056070.filter,1,nil,0xff,0) then return false end
+	if chk==0 and not eg:IsExists(c32056070.filter,1,nil,ATTRIBUTE_ALL,0) then return false end
 	local b1=Duel.IsExistingMatchingCard(aux.nzatk,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
 	local b2=Duel.IsExistingMatchingCard(aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 	local b3=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
