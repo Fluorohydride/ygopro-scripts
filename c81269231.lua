@@ -52,7 +52,7 @@ function c81269231.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c81269231.rmcon)
 		e1:SetTarget(c81269231.rmtg)
 		e1:SetOperation(c81269231.rmop)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetReset(RESET_EVENT+RESET_TURN_SET+RESET_TOHAND+RESET_TODECK+RESET_TOFIELD)
 		c:RegisterEffect(e1)
 	end
 	if bit.band(flag,0x2)~=0 then
