@@ -2266,6 +2266,18 @@ function Auxiliary.NecroValleyFilter(f)
 				return (not f or f(target,...)) and not (target:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0))
 			end
 end
+--Necrovalley test for effect with not certain target or not certain action
+function Auxiliary.NecroValleyNegateCheck(v)
+	if not Duel.IsChainDisablable(0) then return false end
+	local g=Group.CreateGroup()
+	if Auxiliary.GetValueType(v)=="Card" then g:AddCard(v) end
+	if Auxiliary.GetValueType(v)=="Group" then g:Merge(v) end
+	if g:IsExists(Card.IsHasEffect,1,nil,EFFECT_NECRO_VALLEY) then
+		Duel.NegateEffect(0)
+		return true
+	end
+	return false
+end
 --shortcut for self-banish costs
 function Auxiliary.bfgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end

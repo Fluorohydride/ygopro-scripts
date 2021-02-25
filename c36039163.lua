@@ -21,6 +21,7 @@ function c36039163.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c36039163.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_GRAVE,0)
+	if aux.NecroValleyNegateCheck(g) then return end
 	if Duel.SendtoDeck(g,nil,0,REASON_EFFECT)~=0 then
 		if g:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then Duel.ShuffleDeck(tp) end
 	end
