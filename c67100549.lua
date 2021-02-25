@@ -77,7 +77,7 @@ function c67100549.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c67100549.regcon(e,tp,eg,ep,ev,re,r,rp)
 	local code1,code2=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_CODE,CHAININFO_TRIGGERING_CODE2)
-	return e:GetHandler():IsReason(REASON_COST) and re:IsActivated() and (code1==68468459 or code2==68468459)
+	return e:GetHandler():IsReason(REASON_COST) and re and re:IsActivated() and (code1==68468459 or code2==68468459)
 end
 function c67100549.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
