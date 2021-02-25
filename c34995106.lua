@@ -121,7 +121,8 @@ function c34995106.activate(e,tp,eg,ep,ev,re,r,rp)
 	aux.FCheckAdditional=nil
 end
 function c34995106.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsReason(REASON_COST) and re:IsActivated() and re:GetHandler():IsCode(68468459)
+	local code1,code2=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_CODE,CHAININFO_TRIGGERING_CODE2)
+	return e:GetHandler():IsReason(REASON_COST) and re:IsActivated() and (code1==68468459 or code2==68468459)
 end
 function c34995106.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
