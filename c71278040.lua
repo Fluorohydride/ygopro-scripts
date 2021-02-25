@@ -66,10 +66,8 @@ function c71278040.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c71278040.cfilter1,1,nil,tp)
 end
 function c71278040.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
+	if eg:GetCount()~=1 then return false end
 	local tc=eg:GetFirst()
-	if eg:GetCount()>1 then
-		tc=eg:Select(tp,1,1,nil):GetFirst()
-	end
 	local zone=tc:GetLinkedZone(tp)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone) end
