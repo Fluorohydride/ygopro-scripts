@@ -2,13 +2,7 @@
 function c34093683.initial_effect(c)
 	c:EnableReviveLimit()
 	--change name
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetCode(EFFECT_CHANGE_CODE)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetValue(4388680)
-	c:RegisterEffect(e1)
+	aux.EnableChangeCode(c,4388680)
 	--cannot be target
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)

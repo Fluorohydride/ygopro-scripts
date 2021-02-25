@@ -1,13 +1,7 @@
 --破壊剣の使い手－バスター・ブレイダー
 function c3428069.initial_effect(c)
 	--Code
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetCode(EFFECT_CHANGE_CODE)
-	e1:SetRange(LOCATION_MZONE+LOCATION_GRAVE)
-	e1:SetValue(78193831)
-	c:RegisterEffect(e1)
+	aux.EnableChangeCode(c,78193831,LOCATION_MZONE+LOCATION_GRAVE)
 	--Equip
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(3428069,0))

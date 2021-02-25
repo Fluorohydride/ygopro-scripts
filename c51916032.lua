@@ -2,13 +2,7 @@
 function c51916032.initial_effect(c)
 	aux.AddCodeList(c,77585513)
 	--change
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetCode(EFFECT_CHANGE_CODE)
-	e1:SetRange(LOCATION_MZONE+LOCATION_GRAVE)
-	e1:SetValue(77585513)
-	c:RegisterEffect(e1)
+	aux.EnableChangeCode(c,77585513,LOCATION_MZONE+LOCATION_GRAVE)
 	--tohand
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(51916032,0))
