@@ -37,7 +37,8 @@ function c71278040.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c71278040.lvcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsCode(71278040)
+	local code1,code2=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_CODE,CHAININFO_TRIGGERING_CODE2)
+	return re and (code1==71278040 or code2==71278040)
 end
 function c71278040.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
