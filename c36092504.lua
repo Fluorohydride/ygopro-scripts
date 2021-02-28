@@ -47,11 +47,15 @@ function c36092504.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.HintSelection(rg)
 		res=Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)
 	end
+	g1=Duel.GetMatchingGroup(c36092504.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil)
+	g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsAbleToRemove),tp,0,LOCATION_ONFIELD+LOCATION_EXTRA+LOCATION_GRAVE,nil)
 	if g1:IsExists(Card.IsType,1,nil,TYPE_SYNCHRO) and g2:IsExists(c36092504.rmfilter1,3,nil) then
 		if res~=0 then Duel.BreakEffect() end
 		local rg=g2:Filter(c36092504.rmfilter1,nil):RandomSelect(tp,3)
 		res=Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)
 	end
+	g1=Duel.GetMatchingGroup(c36092504.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil)
+	g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsAbleToRemove),tp,0,LOCATION_ONFIELD+LOCATION_EXTRA+LOCATION_GRAVE,nil)
 	if g1:IsExists(Card.IsType,1,nil,TYPE_XYZ) and g2:IsExists(c36092504.rmfilter2,1,nil) then
 		if res~=0 then Duel.BreakEffect() end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
@@ -59,6 +63,8 @@ function c36092504.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.HintSelection(rg)
 		res=Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)
 	end
+	g1=Duel.GetMatchingGroup(c36092504.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil)
+	g2=Duel.GetMatchingGroup(aux.NecroValleyFilter(Card.IsAbleToRemove),tp,0,LOCATION_ONFIELD+LOCATION_EXTRA+LOCATION_GRAVE,nil)
 	if g1:IsExists(Card.IsType,1,nil,TYPE_LINK) and g2:IsExists(Card.IsLocation,1,nil,LOCATION_GRAVE) then
 		if res~=0 then Duel.BreakEffect() end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
