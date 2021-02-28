@@ -82,7 +82,7 @@ function c86938484.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c86938484.cfilter(c,tp)
-	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsSetCard(0x9d) and c:IsAbleToGraveAsCost() and Duel.GetMZoneCount(tp,c)>0
+	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsSetCard(0x9d) and c:IsAbleToGrave() and Duel.GetMZoneCount(tp,c)>0
 end
 function c86938484.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false)
