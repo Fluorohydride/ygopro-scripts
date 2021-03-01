@@ -56,7 +56,7 @@ function c51686645.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,Card.IsFaceup,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,e:GetHandler(),1,0,0)
-	e:GetHandler():RegisterFlagEffect(51686645,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,EFFECT_FLAG_OATH,1)
+	e:GetHandler():RegisterFlagEffect(51686645,RESET_EVENT+RESETS_STANDARD-RESET_TOGRAVE+RESET_PHASE+PHASE_END,EFFECT_FLAG_OATH,1)
 end
 function c51686645.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -89,12 +89,15 @@ function c51686645.eqlimit(e,c)
 	return c:IsControler(1-e:GetHandlerPlayer())
 end
 function c51686645.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsReason(REASON_LOST_TARGET)
-		and not e:GetHandler():GetPreviousEquipTarget():IsLocation(LOCATION_ONFIELD+LOCATION_OVERLAY)
+	if e:GetHandler():IsReason(REASON_LOST_TARGET)
+		and not e:GetHandler():GetPreviousEquipTarget():IsLocation(LOCATION_ONFIELD+LOCATION_OVERLAY) then return true end
+	e:GetHandler():ResetFlagEffect(51686645)
+	return false
 end
 function c51686645.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if e:GetHandler():GetFlagEffect(51686645)>0 then
+		e:GetHandler():ResetFlagEffect(51686645)
 		e:SetLabel(1)
 		Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
 		Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
