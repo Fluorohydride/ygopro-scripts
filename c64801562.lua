@@ -64,16 +64,15 @@ function c64801562.indval(e,re,rp)
 		or (re:IsHasType(EFFECT_TYPE_CONTINUOUS) and rc:IsHasCardTarget(tc))
 end
 function c64801562.descon(e)
-	local c=e:GetHandler()
-	local tc=c:GetEquipTarget()
-	return tc and (tc:GetAttack()>=1300 or c:GetFlagEffect(64801562)>0)
+	local tc=e:GetHandler():GetEquipTarget()
+	return tc and tc:GetAttack()>=1300
 end
 function c64801562.descheck(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
 	local c=e:GetHandler()
 	local tc=c:GetEquipTarget()
 	if ph>=PHASE_DAMAGE and ph<=PHASE_DAMAGE_CAL
-		and tc and tc:GetAttack()>=1300 and c:GetFlagEffect(64801562)==0 then
-		c:RegisterFlagEffect(64801562,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
+		and tc and tc:GetAttack()>=1300 then
+		Duel.Destroy(c,REASON_EFFECT)
 	end
 end
