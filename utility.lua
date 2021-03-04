@@ -1297,7 +1297,12 @@ function Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,..
 	local chkf=chkfnf&0xff
 	if Auxiliary.FCheckAdditional and not Auxiliary.FCheckAdditional(tp,g,fc) then return false end
 	if chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,g,fc)>0 then
-		if minc<=0 and #{...}==0 then return true end
+		if minc<=0 and #{...}==0 then
+			local concat_fusion=chkfnf&0x200>0
+			if not concat_fusion and g:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,g,EFFECT_TUNE_MAGICIAN_F) then return false end
+			if not Auxiliary.MustMaterialCheck(g,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
+			return true
+		end
 		return mg:IsExists(Auxiliary.FCheckSelectMixRepAll,1,g,tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,...)
 	else
 		return mg:IsExists(Auxiliary.FCheckSelectMixRepM,1,g,tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,...)
