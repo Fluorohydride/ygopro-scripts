@@ -43,7 +43,7 @@ function c96239878.mtfilter1(c)
 	return c:IsCode(89631139,46986414)
 end
 function c96239878.mtfilter2(c)
-	return c:IsFusionCode(89631139) or c:IsFusionCode(46986414)
+	return c:IsFusionCode(89631139,46986414)
 end
 function c96239878.valcheck(e,c)
 	local g=c:GetMaterial()
@@ -54,7 +54,8 @@ function c96239878.valcheck(e,c)
 	end
 end
 function c96239878.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:GetFirst():GetFlagEffect(96239878)~=0
+	local tc=eg:GetFirst()
+	return tc:IsSummonPlayer(tp) and tc:GetFlagEffect(96239878)~=0
 end
 function c96239878.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return (chkc:IsOnField() or chkc:IsLocation(LOCATION_GRAVE)) and chkc:IsControler(1-tp) and chkc:IsAbleToRemove() end
