@@ -44,8 +44,8 @@ function c83199011.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c83199011.ovcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnCount()~=e:GetHandler():GetTurnID() or e:GetHandler():IsReason(REASON_RETURN)
-		and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
+	return (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
+		and Duel.GetTurnCount()~=e:GetHandler():GetTurnID() or e:GetHandler():IsReason(REASON_RETURN)
 end
 function c83199011.costfilter(c)
 	return c:IsType(TYPE_FUSION) and c:IsAbleToRemoveAsCost()
