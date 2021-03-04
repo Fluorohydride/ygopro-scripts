@@ -21,7 +21,7 @@ function c83199011.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
 	e2:SetCountLimit(1,83199012)
-	e2:SetCondition(aux.exccon)
+	e2:SetCondition(c83199011.ovcon)
 	e2:SetCost(c83199011.ovcost)
 	e2:SetTarget(c83199011.ovtg)
 	e2:SetOperation(c83199011.ovop)
@@ -42,6 +42,10 @@ function c83199011.spop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
+end
+function c83199011.ovcon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetTurnCount()~=e:GetHandler():GetTurnID() or e:GetHandler():IsReason(REASON_RETURN)
+		and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 end
 function c83199011.costfilter(c)
 	return c:IsType(TYPE_FUSION) and c:IsAbleToRemoveAsCost()
