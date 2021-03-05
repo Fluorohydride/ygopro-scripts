@@ -89,10 +89,8 @@ function c51686645.eqlimit(e,c)
 	return c:IsControler(1-e:GetHandlerPlayer())
 end
 function c51686645.drcon(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsReason(REASON_LOST_TARGET)
-		and not e:GetHandler():GetPreviousEquipTarget():IsLocation(LOCATION_ONFIELD+LOCATION_OVERLAY) then return true end
-	e:GetHandler():ResetFlagEffect(51686645)
-	return false
+	return e:GetHandler():IsReason(REASON_LOST_TARGET)
+		and not e:GetHandler():GetPreviousEquipTarget():IsLocation(LOCATION_ONFIELD+LOCATION_OVERLAY)
 end
 function c51686645.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
