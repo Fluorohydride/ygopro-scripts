@@ -2,7 +2,7 @@
 function c18558867.initial_effect(c)
 	--direct attack
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(18558867,1))
+	e1:SetDescription(aux.Stringid(18558867,0))
 	e1:SetCategory(CATEGORY_ATKCHANGE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetRange(LOCATION_MZONE)
