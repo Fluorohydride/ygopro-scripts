@@ -72,7 +72,7 @@ function c18558867.draop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c18558867.spfilter(c,tp)
-	return c:IsPreviousControler(tp) and c:IsSetCard(0x253) and c:IsType(TYPE_MONSTER)
+	return c:IsPreviousControler(tp) and c:IsSetCard(0x15f) and c:IsType(TYPE_MONSTER)
 end
 function c18558867.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c18558867.spfilter,1,nil,tp)
