@@ -22,7 +22,7 @@ function c51474037.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(c51474037.filter1,tp,LOCATION_MZONE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g1=Duel.SelectTarget(tp,c51474037.filter1,tp,LOCATION_MZONE,0,1,1,nil)
+	local g1=Duel.SelectTarget(tp,c51474037.filter1,tp,LOCATION_MZONE,0,1,1,nil,tp)
 	local tc1=g1:GetFirst()
 	local check=tc1:IsCanTurnSet()
 	e:SetLabelObject(tc1)
