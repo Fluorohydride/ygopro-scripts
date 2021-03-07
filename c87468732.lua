@@ -2,7 +2,7 @@
 function c87468732.initial_effect(c)
 	--pendulum proc
 	aux.EnablePendulumAttribute(c)
-	--right scale
+	--left zone
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_LSCALE)
@@ -11,15 +11,21 @@ function c87468732.initial_effect(c)
 	e1:SetCondition(c87468732.sccon)
 	e1:SetValue(-3)
 	c:RegisterEffect(e1)
-	--left scale
+	local e8=e1:Clone()
+	e8:SetCode(EFFECT_UPDATE_RSCALE)
+	c:RegisterEffect(e8)
+	--right zone
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetCode(EFFECT_UPDATE_RSCALE)
+	e2:SetCode(EFFECT_UPDATE_LSCALE)
 	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e2:SetRange(LOCATION_PZONE)
 	e2:SetCondition(c87468732.sccon)
 	e2:SetValue(4)
 	c:RegisterEffect(e2)
+	local e9=e1:Clone()
+	e9:SetCode(EFFECT_UPDATE_RSCALE)
+	c:RegisterEffect(e9)
 	--special summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(87468732,0))
