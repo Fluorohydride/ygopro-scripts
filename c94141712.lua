@@ -1,13 +1,7 @@
 --アームド・ドラゴン・サンダー LV7
 function c94141712.initial_effect(c)
 	--change name
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetCode(EFFECT_CHANGE_CODE)
-	e1:SetRange(LOCATION_MZONE+LOCATION_GRAVE)
-	e1:SetValue(73879377)
-	c:RegisterEffect(e1)
+	aux.EnableChangeCode(c,73879377,LOCATION_MZONE+LOCATION_GRAVE)
 	--spsummon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(94141712,0))

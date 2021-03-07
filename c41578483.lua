@@ -32,6 +32,7 @@ function c41578483.initial_effect(c)
 	--disable
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
+	e4:SetProperty(0,EFFECT_FLAG2_MILLENNIUM_RESTRICT)
 	e4:SetCode(EFFECT_DISABLE)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
@@ -122,14 +123,7 @@ end
 function c41578483.distg(e,c)
 	if c:IsFacedown() then return false end
 	local g=e:GetHandler():GetEquipGroup():Filter(c41578483.disfilter,nil)
-	local code=c:GetCode()
-	local code2=c:GetFlagEffectLabel(41578484)
-	if code2 then code=code2 end
-	local res=g:IsExists(Card.IsCode,1,nil,code)
-	if res and code2==nil and code~=c:GetOriginalCode() then
-		c:RegisterFlagEffect(41578484,RESET_EVENT+RESETS_STANDARD,0,0,code)
-	end
-	return res
+	return g:IsExists(Card.IsCode,1,nil,c:GetCode())
 end
 function c41578483.discon(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetHandler():GetEquipGroup():Filter(c41578483.disfilter,nil)

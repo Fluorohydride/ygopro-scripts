@@ -1,13 +1,7 @@
 --PSYフレーム・マルチスレッダー
 function c43266605.initial_effect(c)
 	--change name
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetCode(EFFECT_CHANGE_CODE)
-	e1:SetRange(LOCATION_HAND+LOCATION_GRAVE)
-	e1:SetValue(49036338)
-	c:RegisterEffect(e1)
+	aux.EnableChangeCode(c,49036338,LOCATION_HAND+LOCATION_GRAVE)
 	--destroy replace
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

@@ -1,13 +1,7 @@
 --魔知ガエル
 function c46239604.initial_effect(c)
 	--change code
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
-	e1:SetRange(LOCATION_MZONE)
-	e1:SetCode(EFFECT_CHANGE_CODE)
-	e1:SetValue(84451804)
-	c:RegisterEffect(e1)
+	aux.EnableChangeCode(c,84451804)
 	--search
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(46239604,0))
