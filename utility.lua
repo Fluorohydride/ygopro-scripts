@@ -250,6 +250,7 @@ function Auxiliary.ChangeCodeCondition(check,condition)
 	return  function(e)
 				if condition and not condition(e) then return false end
 				local le={e:GetHandler():IsHasEffect(EFFECT_DISABLE)}
+				if le[1]==nil then return check end
 				for _,te in ipairs(le) do
 					if not te:IsHasProperty(0,EFFECT_FLAG2_MILLENNIUM_RESTRICT) then return check end
 				end
