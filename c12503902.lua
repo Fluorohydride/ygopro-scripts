@@ -43,44 +43,20 @@ function c12503902.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	Duel.SelectTarget(tp,c12503902.filter,tp,LOCATION_MZONE,0,1,1,nil)
 end
-function c12503902.tfilter1(c,tc)
-	return c:IsType(TYPE_SPELL) and c:IsHasCardTarget(tc)
-end
 function c12503902.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if c:IsRelateToEffect(e) and c12503902.filter(tc) and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
-		local g=Duel.GetMatchingGroup(c12503902.tfilter1,tp,LOCATION_SZONE,LOCATION_SZONE,nil,tc)
-		if g:GetCount()>0 then
-			local sg,fid=g:GetMaxGroup(Card.GetFieldID)
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_FIELD)
-			e1:SetRange(LOCATION_SZONE)
-			e1:SetTargetRange(LOCATION_SZONE,LOCATION_SZONE)
-			e1:SetCode(EFFECT_DISABLE)
-			e1:SetCondition(c12503902.discon)
-			e1:SetTarget(c12503902.distg)
-			e1:SetLabel(fid)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			c:RegisterEffect(e1,true)
-		else
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-			e1:SetRange(LOCATION_SZONE)
-			e1:SetCode(EVENT_CHAIN_SOLVING)
-			e1:SetCondition(c12503902.discon2)
-			e1:SetOperation(c12503902.disop2)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			c:RegisterEffect(e1,true)
-		end
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetRange(LOCATION_SZONE)
+		e1:SetCode(EVENT_CHAIN_SOLVING)
+		e1:SetCondition(c12503902.discon2)
+		e1:SetOperation(c12503902.disop2)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		c:RegisterEffect(e1,true)
 	end
-end
-function c12503902.discon(e)
-	return e:GetHandler():GetCardTargetCount()>0
-end
-function c12503902.distg(e,c)
-	return c:GetFieldID()<=e:GetLabel() and c:IsHasCardTarget(e:GetHandler():GetFirstCardTarget()) and c:IsType(TYPE_SPELL)
 end
 function c12503902.discon2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetFirstCardTarget()
