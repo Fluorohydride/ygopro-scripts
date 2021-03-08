@@ -20,7 +20,7 @@ function c7614732.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
 		local mg1=Duel.GetFusionMaterial(tp):Filter(aux.NOT(Card.IsImmuneToEffect),nil,e)
-		aux.FCheckAdditional=c7614732.fcheck
+		aux.FGoalCheckAdditional=c7614732.fcheck
 		local res=Duel.IsExistingMatchingCard(c7614732.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -31,7 +31,7 @@ function c7614732.target(e,tp,eg,ep,ev,re,r,rp,chk)
 				res=Duel.IsExistingMatchingCard(c7614732.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
 			end
 		end
-		aux.FCheckAdditional=nil
+		aux.FGoalCheckAdditional=nil
 		return res
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -40,7 +40,7 @@ function c7614732.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(aux.NOT(Card.IsImmuneToEffect),nil,e)
-	aux.FCheckAdditional=c7614732.fcheck
+	aux.FGoalCheckAdditional=c7614732.fcheck
 	local sg1=Duel.GetMatchingGroup(c7614732.filter,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil
 	local sg2=nil
@@ -59,9 +59,7 @@ function c7614732.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tc=tg:GetFirst()
 		local res=false
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
-			Auxiliary.FCheckAdditional=c7614732.fcheck
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
-			Auxiliary.FCheckAdditional=nil
 			tc:SetMaterial(mat1)
 			Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
@@ -102,5 +100,5 @@ function c7614732.activate(e,tp,eg,ep,ev,re,r,rp)
 			end
 		end
 	end
-	aux.FCheckAdditional=nil
+	aux.FGoalCheckAdditional=nil
 end

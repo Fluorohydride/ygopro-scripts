@@ -1159,6 +1159,7 @@ function Auxiliary.FCheckMix(c,mg,sg,fc,sub,fun1,fun2,...)
 end
 --if sg1 is subset of sg2 then not Auxiliary.FCheckAdditional(tp,sg1,fc) -> not Auxiliary.FCheckAdditional(tp,sg2,fc)
 Auxiliary.FCheckAdditional=nil
+Auxiliary.FGoalCheckAdditional=nil
 function Auxiliary.FCheckMixGoal(sg,tp,fc,sub,chkfnf,...)
 	local chkf=chkfnf&0xff
 	local concat_fusion=chkfnf&0x200>0
@@ -1167,6 +1168,7 @@ function Auxiliary.FCheckMixGoal(sg,tp,fc,sub,chkfnf,...)
 	local g=Group.CreateGroup()
 	return sg:IsExists(Auxiliary.FCheckMix,1,nil,sg,g,fc,sub,...) and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
 		and (not Auxiliary.FCheckAdditional or Auxiliary.FCheckAdditional(tp,sg,fc))
+		and (not Auxiliary.FGoalCheckAdditional or Auxiliary.FGoalCheckAdditional(tp,sg,fc))
 end
 --Fusion monster, mixed material * minc to maxc + material + ...
 function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
@@ -1287,6 +1289,7 @@ function Auxiliary.FCheckMixRepGoal(tp,sg,fc,sub,chkfnf,fun1,minc,maxc,...)
 	local g=Group.CreateGroup()
 	return Auxiliary.FCheckMixRep(sg,g,fc,sub,chkf,fun1,minc,maxc,...) and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
 		and (not Auxiliary.FCheckAdditional or Auxiliary.FCheckAdditional(tp,sg,fc))
+		and (not Auxiliary.FGoalCheckAdditional or Auxiliary.FGoalCheckAdditional(tp,sg,fc))
 end
 function Auxiliary.FCheckMixRepTemplate(c,cond,tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,...)
 	for i,f in ipairs({...}) do
@@ -1325,7 +1328,13 @@ function Auxiliary.FCheckSelectMixRep(tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,..
 	local chkf=chkfnf&0xff
 	if Auxiliary.FCheckAdditional and not Auxiliary.FCheckAdditional(tp,g,fc) then return false end
 	if chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,g,fc)>0 then
-		if minc<=0 and #{...}==0 then return true end
+		if minc<=0 and #{...}==0 then
+			local concat_fusion=chkfnf&0x200>0
+			if not concat_fusion and g:IsExists(Auxiliary.TuneMagicianCheckX,1,nil,g,EFFECT_TUNE_MAGICIAN_F) then return false end
+			if not Auxiliary.MustMaterialCheck(g,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
+			if Auxiliary.FGoalCheckAdditional and not Auxiliary.FGoalCheckAdditional(tp,g,fc) then return false end
+			return true
+		end
 		return mg:IsExists(Auxiliary.FCheckSelectMixRepAll,1,g,tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,...)
 	else
 		return mg:IsExists(Auxiliary.FCheckSelectMixRepM,1,g,tp,mg,sg,g,fc,sub,chkfnf,fun1,minc,maxc,...)
