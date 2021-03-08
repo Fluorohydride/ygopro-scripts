@@ -69,10 +69,11 @@ function c64801562.descon(e)
 end
 function c64801562.descheck(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	local c=e:GetHandler()
-	local tc=c:GetEquipTarget()
-	if ph>=PHASE_DAMAGE and ph<=PHASE_DAMAGE_CAL
-		and tc and tc:GetAttack()>=1300 then
-		Duel.Destroy(c,REASON_EFFECT)
+	if ph>=PHASE_DAMAGE and ph<=PHASE_DAMAGE_CAL then
+		local c=e:GetHandler()
+		local tc=c:GetEquipTarget()
+		if tc and tc:GetAttack()>=1300 then
+			Duel.Destroy(c,REASON_EFFECT)
+		end
 	end
 end
