@@ -71,10 +71,10 @@ function c87468732.cfilter(c)
 	return c:IsFacedown() or not c:IsType(TYPE_PENDULUM)
 end
 function c87468732.sccon1(e)
-	return e:GetHandler():GetSequence()==0 and not Duel.IsExistingMatchingCard(c87468732.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
+	return e:GetHandler()==Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_PZONE,0) and not Duel.IsExistingMatchingCard(c87468732.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
 end
 function c87468732.sccon2(e)
-	return e:GetHandler():GetSequence()==4 and not Duel.IsExistingMatchingCard(c87468732.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
+	return e:GetHandler()==Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_PZONE,1) and not Duel.IsExistingMatchingCard(c87468732.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
 end
 function c87468732.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
