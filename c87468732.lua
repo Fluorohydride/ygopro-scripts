@@ -2,24 +2,30 @@
 function c87468732.initial_effect(c)
 	--pendulum proc
 	aux.EnablePendulumAttribute(c)
-	--right scale
+	--left zone
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_LSCALE)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e1:SetRange(LOCATION_PZONE)
-	e1:SetCondition(c87468732.sccon)
+	e1:SetCondition(c87468732.sccon1)
 	e1:SetValue(-3)
 	c:RegisterEffect(e1)
-	--left scale
+	local e8=e1:Clone()
+	e8:SetCode(EFFECT_UPDATE_RSCALE)
+	c:RegisterEffect(e8)
+	--right zone
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetCode(EFFECT_UPDATE_RSCALE)
+	e2:SetCode(EFFECT_UPDATE_LSCALE)
 	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e2:SetRange(LOCATION_PZONE)
-	e2:SetCondition(c87468732.sccon)
+	e2:SetCondition(c87468732.sccon2)
 	e2:SetValue(4)
 	c:RegisterEffect(e2)
+	local e9=e2:Clone()
+	e9:SetCode(EFFECT_UPDATE_RSCALE)
+	c:RegisterEffect(e9)
 	--special summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(87468732,0))
@@ -64,8 +70,11 @@ end
 function c87468732.cfilter(c)
 	return c:IsFacedown() or not c:IsType(TYPE_PENDULUM)
 end
-function c87468732.sccon(e)
-	return not Duel.IsExistingMatchingCard(c87468732.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
+function c87468732.sccon1(e)
+	return e:GetHandler()==Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_PZONE,0) and not Duel.IsExistingMatchingCard(c87468732.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
+end
+function c87468732.sccon2(e)
+	return e:GetHandler()==Duel.GetFieldCard(e:GetHandlerPlayer(),LOCATION_PZONE,1) and not Duel.IsExistingMatchingCard(c87468732.cfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
 end
 function c87468732.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp
