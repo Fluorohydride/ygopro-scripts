@@ -53,7 +53,7 @@ function c75402014.eqop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,c75402014.eqfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,tp)
 		local tc=g:GetFirst()
 		if not tc then return end
-		local mt=_G["c"..tc:GetCode()]
+		local mt=_G["c"..tc:GetOriginalCode()]
 		if mt.equip_monster then
 			mt.equip_monster(tc,tp,c)
 		else

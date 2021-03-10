@@ -29,7 +29,7 @@ function c12081875.effcon(e)
 end
 function c12081875.efffilter(c,e,tp,eg,ep,ev,re,r,rp)
 	if not (c:IsSetCard(0x11c) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck() and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())) then return false end
-	local m=_G["c"..c:GetCode()]
+	local m=_G["c"..c:GetOriginalCode()]
 	if not m then return false end
 	local te=m.discard_effect
 	if not te then return false end
@@ -46,7 +46,7 @@ function c12081875.efftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.ClearTargetCard()
 	tc:CreateEffectRelation(e)
 	e:SetLabelObject(tc)
-	local m=_G["c"..tc:GetCode()]
+	local m=_G["c"..tc:GetOriginalCode()]
 	local te=m.discard_effect
 	local tg=te:GetTarget()
 	if tg then tg(e,tp,eg,ep,ev,re,r,rp,1) end
@@ -54,7 +54,7 @@ end
 function c12081875.effop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetLabelObject()
 	if tc:IsRelateToEffect(e) then
-		local m=_G["c"..tc:GetCode()]
+		local m=_G["c"..tc:GetOriginalCode()]
 		local te=m.discard_effect
 		local op=te:GetOperation()
 		if op then op(e,tp,eg,ep,ev,re,r,rp) end
