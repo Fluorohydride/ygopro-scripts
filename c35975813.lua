@@ -45,8 +45,10 @@ function c35975813.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c35975813.mtop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.CheckLPCost(tp,800) then
-		Duel.PayLPCost(tp,800)
+	if Duel.CheckLPCost(tp,800) or Duel.IsPlayerAffectedByEffect(tp,94585852) then
+		if not Duel.IsPlayerAffectedByEffect(tp,94585852) or not Duel.SelectYesNo(tp,aux.Stringid(94585852,1)) then
+			Duel.PayLPCost(tp,800)
+		end
 	else
 		Duel.Destroy(e:GetHandler(),REASON_COST)
 	end

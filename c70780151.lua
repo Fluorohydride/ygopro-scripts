@@ -54,8 +54,10 @@ function c70780151.discon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsChainNegatable(ev)
 end
 function c70780151.discost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckLPCost(tp,1000) end
-	Duel.PayLPCost(tp,1000)
+	if chk==0 then return Duel.CheckLPCost(tp,1000) or Duel.IsPlayerAffectedByEffect(tp,94585852) end
+	if not Duel.IsPlayerAffectedByEffect(tp,94585852) or not Duel.SelectYesNo(tp,aux.Stringid(94585852,1)) then
+		Duel.PayLPCost(tp,1000)
+	end
 end
 function c70780151.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
