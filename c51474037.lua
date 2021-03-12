@@ -58,7 +58,7 @@ function c51474037.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tc2=g:GetFirst()
 		if tc2==tc1 then tc2=g:GetNext() end
 		if tc1:IsRelateToEffect(e) and Duel.Destroy(tc1,REASON_EFFECT)~=0 and tc2 and tc2:IsRelateToEffect(e) then
-			local e1=Effect.CreateEffect(tc2)
+			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_SET_ATTACK_FINAL)
 			e1:SetValue(0)
