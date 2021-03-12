@@ -38,7 +38,7 @@ function c4694209.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c4694209.addc(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		e:GetHandler():AddCounter(0x1021+COUNTER_NEED_ENABLE,1)
+		e:GetHandler():AddCounter(0x1021,1)
 	end
 end
 function c4694209.attackup(e,c)
