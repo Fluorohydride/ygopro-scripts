@@ -101,7 +101,7 @@ function c27693363.costfilter(c,e,tp)
 	return Duel.IsExistingMatchingCard(c27693363.tgfilter,tp,LOCATION_GRAVE,0,1,c,e,tp,check)
 end
 function c27693363.tgfilter(c,e,tp,check)
-	return c:IsSetCard(0x162) and c:IsType(TYPE_MONSTER)
+	return c:IsSetCard(0x163) and c:IsType(TYPE_MONSTER)
 		and (c:IsAbleToHand() or check and c:IsCanBeSpecialSummoned(e,0,tp,false,false))
 end
 function c27693363.thcost(e,tp,eg,ep,ev,re,r,rp,chk)

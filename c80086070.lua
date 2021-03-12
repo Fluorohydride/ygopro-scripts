@@ -88,7 +88,7 @@ function c80086070.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c80086070.negfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x162) and c:IsOnField() and c:IsControler(tp)
+	return c:IsFaceup() and c:IsSetCard(0x163) and c:IsOnField() and c:IsControler(tp)
 end
 function c80086070.negcon(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) then return false end

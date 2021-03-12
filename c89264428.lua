@@ -38,13 +38,13 @@ function c89264428.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c89264428.repfilter(e,c)
-	return c:IsLevelAbove(7) and c:IsSetCard(0x162)
+	return c:IsLevelAbove(7) and c:IsSetCard(0x163)
 end
 function c89264428.ctop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x5b,1)
 end
 function c89264428.cfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x162) and c:IsType(TYPE_SYNCHRO)
+	return c:IsFaceup() and c:IsSetCard(0x163) and c:IsType(TYPE_SYNCHRO)
 end
 function c89264428.tkccon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c89264428.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)

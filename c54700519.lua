@@ -18,7 +18,7 @@ function c54700519.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c54700519.confilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x162)
+	return c:IsFaceup() and c:IsSetCard(0x163)
 end
 function c54700519.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c54700519.confilter,tp,LOCATION_MZONE,0,1,e:GetHandler())

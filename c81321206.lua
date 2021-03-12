@@ -17,7 +17,7 @@ function c81321206.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c81321206.spfilter2(c,e,tp)
-	return c:IsSetCard(0x162) and not c:IsCode(81321206) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x163) and not c:IsCode(81321206) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c81321206.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c81321206.spfilter2,tp,LOCATION_HAND,0,1,nil,e,tp) end

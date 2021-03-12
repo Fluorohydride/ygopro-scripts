@@ -18,7 +18,7 @@ function c81108658.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c81108658.confilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x162)
+	return c:IsFaceup() and c:IsSetCard(0x163)
 end
 function c81108658.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c81108658.confilter,tp,LOCATION_MZONE,0,1,e:GetHandler())

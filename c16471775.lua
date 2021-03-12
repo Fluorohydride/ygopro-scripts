@@ -26,7 +26,7 @@ function c16471775.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_COST+REASON_DISCARD,nil)
 end
 function c16471775.filter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x162) and c:IsAbleToHand()
+	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x163) and c:IsAbleToHand()
 end
 function c16471775.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c16471775.filter,tp,LOCATION_DECK,0,2,nil) end

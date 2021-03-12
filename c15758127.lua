@@ -33,10 +33,10 @@ function c15758127.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,700)
 end
 function c15758127.thfilter(c)
-	return c:IsSetCard(0x162) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsSetCard(0x163) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c15758127.rfilter(c,tp)
-	return (c:IsFaceup() or c:IsControler(tp)) and c:IsLevelAbove(1) and c:IsSetCard(0x162)
+	return (c:IsFaceup() or c:IsControler(tp)) and c:IsLevelAbove(1) and c:IsSetCard(0x163)
 end
 function c15758127.mnfilter(c,g,lv)
 	return g:IsExists(c15758127.mnfilter2,1,c,c,lv)
@@ -45,7 +45,7 @@ function c15758127.mnfilter2(c,mc,lv)
 	return c:GetLevel()-mc:GetLevel()==lv
 end
 function c15758127.spfilter(c,e,tp,g)
-	return c:IsSetCard(0x162) and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and Duel.GetLocationCountFromEx(tp,tp,g,c)>0
+	return c:IsSetCard(0x163) and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and Duel.GetLocationCountFromEx(tp,tp,g,c)>0
 end
 function c15758127.spfilter1(c,e,tp,g)
 	return c15758127.spfilter(c,e,tp,g) and g:IsExists(c15758127.mnfilter,1,nil,g,c:GetLevel())
@@ -108,7 +108,7 @@ function c15758127.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c15758127.cfilter(c,tp)
-	return c:IsPreviousSetCard(0x162) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousTypeOnField()&TYPE_SYNCHRO~=0 and c:GetPreviousControler()==tp
+	return c:IsPreviousSetCard(0x163) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousTypeOnField()&TYPE_SYNCHRO~=0 and c:GetPreviousControler()==tp
 end
 function c15758127.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c15758127.cfilter,1,nil,tp) and Duel.GetAttacker():IsControler(1-tp)
