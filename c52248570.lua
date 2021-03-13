@@ -28,7 +28,8 @@ function c52248570.mtcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c52248570.mtop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.CheckLPCost(tp,1000) or Duel.IsPlayerAffectedByEffect(tp,94585852) then
-		if not Duel.IsPlayerAffectedByEffect(tp,94585852) or not Duel.SelectYesNo(tp,aux.Stringid(94585852,1)) then
+		if not Duel.IsPlayerAffectedByEffect(tp,94585852)
+			or not Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(94585852,1)) then
 			Duel.PayLPCost(tp,1000)
 		end
 	else
