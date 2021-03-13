@@ -8,11 +8,11 @@ function c94585852.initial_effect(c)
 	--cost change
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
-	e2:SetCode(EFFECT_LPCOST_CHANGE)
+	e2:SetCode(94585852)
 	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e2:SetRange(LOCATION_FZONE)
 	e2:SetTargetRange(1,1)
-	e2:SetValue(c94585852.costchange)
+	e2:SetCondition(c94585852.costcon)
 	c:RegisterEffect(e2)
 	--search
 	local e4=Effect.CreateEffect(c)
@@ -34,12 +34,8 @@ function c94585852.initial_effect(c)
 		Duel.RegisterEffect(ge1,0)
 	end
 end
-function c94585852.costchange(e,re,rp,val)
-	if Duel.GetCurrentPhase()==PHASE_STANDBY and re and re:GetHandler():IsSetCard(0x45) and re:GetHandler():IsType(TYPE_MONSTER) then
-		return 0
-	else
-		return val
-	end
+function c94585852.costcon(e)
+	return Duel.GetCurrentPhase()==PHASE_STANDBY
 end
 function c94585852.regop(e,tp,eg,ep,ev,re,r,rp)
 	local lv1=0
