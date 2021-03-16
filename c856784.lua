@@ -28,7 +28,7 @@ end
 function c856784.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(nil,tp,LOCATION_DECK,0,nil)
-	if g:GetCount()>=3 then
+	if g:GetClassCount(Card.GetCode)>=3 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 		local sg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
 		Duel.ConfirmCards(1-tp,sg)
