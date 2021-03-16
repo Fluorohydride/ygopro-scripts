@@ -64,7 +64,7 @@ end
 function c25920413.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() then
-		c:AddCounter(COUNTER_NEED_ENABLE+0x100e,1)
+		c:AddCounter(0x100e,1)
 	end
 end
 function c25920413.adcon(e)
