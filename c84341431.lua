@@ -22,12 +22,9 @@ function c84341431.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c84341431.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsReason(REASON_EFFECT) and not e:GetHandler():IsReason(REASON_REPLACE) and (Duel.CheckLPCost(tp,500) or Duel.IsPlayerAffectedByEffect(tp,94585852)) end
+	if chk==0 then return e:GetHandler():IsReason(REASON_EFFECT) and not e:GetHandler():IsReason(REASON_REPLACE) and Duel.CheckLPCost(tp,500) end
 	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
-		if not Duel.IsPlayerAffectedByEffect(tp,94585852)
-			or not Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(94585852,1)) then
-			Duel.PayLPCost(tp,500)
-		end
+		Duel.PayLPCost(tp,500)
 		return true
 	else return false end
 end
