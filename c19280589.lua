@@ -56,7 +56,7 @@ function c19280589.ctkfilter(c)
 	return c:IsFaceup() and c:IsCode(19280590)
 end
 function c19280589.tkcon2(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c19280589.ctkfilter,tp,LOCATION_MZONE,0,1,nil)
+	return Duel.IsExistingMatchingCard(c19280589.ctkfilter,tp,LOCATION_ONFIELD,0,1,nil)
 end
 function c19280589.tktg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)

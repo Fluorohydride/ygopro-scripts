@@ -102,5 +102,5 @@ function c60025883.tgfilter(c)
 	return c:GetOriginalCode()==60025884
 end
 function c60025883.tgcon(e)
-	return Duel.IsExistingMatchingCard(c60025883.tgfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil)
+	return Duel.IsExistingMatchingCard(c60025883.tgfilter,e:GetHandlerPlayer(),LOCATION_ONFIELD,0,1,nil)
 end
