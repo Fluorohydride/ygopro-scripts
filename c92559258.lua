@@ -75,7 +75,7 @@ function c92559258.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveCounter(tp,0x1,3,REASON_COST)
 end
 function c92559258.spfilter(c,e,tp)
-	return c:IsAttackAbove(1000) and c:IsCanAddCounter(0x1) and Duel.IsCanAddCounter(tp,0x1,1,c) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsAttackAbove(1000) and c:IsCanHaveCounter(0x1) and Duel.IsCanAddCounter(tp,0x1,1,c) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c92559258.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

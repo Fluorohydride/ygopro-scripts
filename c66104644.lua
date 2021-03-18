@@ -79,7 +79,7 @@ function c66104644.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveCounter(tp,0x1,3,REASON_COST)
 end
 function c66104644.spfilter(c,e,tp)
-	return c:IsFaceup() and c:IsCanAddCounter(0x1) and Duel.IsCanAddCounter(tp,0x1,1,c)
+	return c:IsFaceup() and c:IsCanHaveCounter(0x1) and Duel.IsCanAddCounter(tp,0x1,1,c)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c66104644.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -121,7 +121,7 @@ function c66104644.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RemoveCounter(tp,1,0,0x1,3,REASON_COST)
 end
 function c66104644.spfilter2(c,e,tp)
-	return c:IsCanAddCounter(0x1) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCanHaveCounter(0x1) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c66104644.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
