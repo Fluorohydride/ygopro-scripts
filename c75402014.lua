@@ -38,7 +38,8 @@ function c75402014.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsContains(e:GetHandler())
 end
 function c75402014.eqfilter(c,tp)
-	return c:IsSetCard(0x107e) and c:IsType(TYPE_MONSTER) and not c:IsForbidden() and c:CheckUniqueOnField(tp,LOCATION_SZONE)
+	local mt=_G["c"..c:GetCode()]
+	return mt.zw_equip_monster and c:IsSetCard(0x107e) and c:IsType(TYPE_MONSTER) and not c:IsForbidden() and c:CheckUniqueOnField(tp,LOCATION_SZONE)
 end
 function c75402014.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
@@ -53,21 +54,8 @@ function c75402014.eqop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,c75402014.eqfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,tp)
 		local tc=g:GetFirst()
 		if not tc then return end
-		local mt=_G["c"..tc:GetOriginalCode()]
-		if mt.equip_monster then
-			mt.equip_monster(tc,tp,c)
-		else
-			if not Duel.Equip(tp,tc,c) then return end
-			--equip limit
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-			e1:SetCode(EFFECT_EQUIP_LIMIT)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e1:SetLabelObject(c)
-			e1:SetValue(c75402014.eqlimit)
-			tc:RegisterEffect(e1)
-		end
+		local mt=_G["c"..tc:GetCode()]
+		mt.zw_equip_monster(tc,tp,c)
 	end
 end
 function c75402014.eqlimit(e,c)
