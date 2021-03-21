@@ -34,8 +34,9 @@ function c89785779.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsAbleToChangeControler()
 end
 function c89785779.eqfilter(c)
-	local m=_G["c"..c:GetOriginalCode()]
-	return c:IsFaceup() and ((c:IsSetCard(0x1110) and c:IsType(TYPE_FUSION)) or c:IsCode(64631466)) and m.can_equip_monster(c)
+	local m=_G["c"..c:GetCode()]
+	return c:IsFaceup() and ((c:IsSetCard(0x1110) and c:IsType(TYPE_FUSION)) or c:IsCode(64631466))
+		and m.can_equip_monster and m.can_equip_monster(c)
 end
 function c89785779.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c89785779.filter(chkc) and chkc~=e:GetHandler() end
@@ -53,7 +54,7 @@ function c89785779.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c89785779.eqfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	local tc2=g:GetFirst()
 	if not tc2 then return end
-	local m=_G["c"..tc2:GetOriginalCode()]
+	local m=_G["c"..tc2:GetCode()]
 	if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and tc1:IsControler(1-tp) then
 		m.equip_monster(tc2,tp,tc1)
 	end
