@@ -36,7 +36,7 @@ end
 function c89785779.eqfilter(c)
 	local m=_G["c"..c:GetCode()]
 	return c:IsFaceup() and ((c:IsSetCard(0x1110) and c:IsType(TYPE_FUSION)) or c:IsCode(64631466))
-		and m.can_equip_monster and m.can_equip_monster(c)
+		and not c:IsDisabled() and m.can_equip_monster and m.can_equip_monster(c)
 end
 function c89785779.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c89785779.filter(chkc) and chkc~=e:GetHandler() end
