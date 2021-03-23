@@ -20,6 +20,7 @@ function c34124316.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Duel.GetDecktopGroup(1-tp,5)
 	local hg=Group.CreateGroup()
 	local gg=Group.CreateGroup()
+	local cg=Group.CreateGroup()
 	Duel.ConfirmDecktop(tp,5)
 	local tc=g1:GetFirst()
 	while tc do
@@ -43,12 +44,17 @@ function c34124316.operation(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsLevelBelow(4) and pos~=0 then
 			Duel.DisableShuffleCheck()
 			Duel.SpecialSummonStep(tc,0,1-tp,1-tp,false,false,pos)
+			if tc:IsFacedown() then cg:AddCard(tc) end
 		elseif tc:IsAbleToHand() then
 			hg:AddCard(tc)
 		else gg:AddCard(tc) end
 		tc=g2:GetNext()
 	end
 	Duel.SpecialSummonComplete()
+	if cg:GetCount()>0 then
+		Duel.ConfirmCards(1-tp,cg)
+		Duel.ShuffleSetCard(cg)
+	end
 	if hg:GetCount()>0 then
 		Duel.DisableShuffleCheck()
 		Duel.SendtoHand(hg,nil,REASON_EFFECT)

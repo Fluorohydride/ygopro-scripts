@@ -43,5 +43,6 @@ function c80802524.activate(e,tp,eg,ep,ev,re,r,rp)
 	if sg:GetCount()>0 then
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 		Duel.ConfirmCards(1-tp,sg)
+		Duel.ShuffleSetCard(sg)
 	end
 end
