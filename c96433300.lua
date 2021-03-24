@@ -84,7 +84,7 @@ function c96433300.tgop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c96433300.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_SZONE) and c:IsPreviousPosition(POS_FACEUP) and c:GetSequence()<5
+	return c:IsPreviousLocation(LOCATION_SZONE) and c:IsPreviousPosition(POS_FACEUP) and c:GetPreviousSequence()<5
 end
 function c96433300.cfilter(c)
 	return not c:IsRace(RACE_REPTILE) and c:IsFaceup() and c:IsAbleToGrave()
