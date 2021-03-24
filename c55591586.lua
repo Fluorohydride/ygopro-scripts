@@ -112,7 +112,11 @@ end
 function c55591586.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
-		local opt=Duel.SelectOption(tp,aux.Stringid(55591586,4),aux.Stringid(55591586,5))
-		Duel.SendtoDeck(tc,nil,opt,REASON_EFFECT)
+		if tc:IsExtraDeckMonster()
+			or Duel.SelectOption(tp,aux.Stringid(55591586,4),aux.Stringid(55591586,5))==0 then
+			Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
+		else
+			Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)
+		end
 	end
 end
