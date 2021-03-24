@@ -87,7 +87,7 @@ function c54387923.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and c54387923.rfilter(chkc,szone) end
 	if chk==0 then return Duel.IsExistingTarget(c54387923.rfilter,tp,0,LOCATION_ONFIELD,1,nil,szone) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	Duel.SelectTarget(tp,c54387923.rfilter1,tp,0,LOCATION_ONFIELD,1,1,nil,szone)
+	Duel.SelectTarget(tp,c54387923.rfilter,tp,0,LOCATION_ONFIELD,1,1,nil,szone)
 end
 function c54387923.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
