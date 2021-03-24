@@ -98,6 +98,8 @@ function c91598270.pfilter(c)
 end
 function c91598270.actcon(e)
 	local a=Duel.GetAttacker()
+	local tp=e:GetHandlerPlayer()
+	if not c91598270.cfilter(a,tp) then return false end
 	return Duel.IsExistingMatchingCard(c91598270.pfilter,tp,LOCATION_PZONE,0,1,nil)
 end
 function c91598270.aclimit(e,re,tp)
