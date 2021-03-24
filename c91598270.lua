@@ -90,15 +90,14 @@ function c91598270.srop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
-function c91598270.cfilter(c,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0x162) and c:IsType(TYPE_PENDULUM)
-end
 function c91598270.pfilter(c)
 	return c:GetCurrentScale()%2==0
 end
 function c91598270.actcon(e)
 	local a=Duel.GetAttacker()
-	return Duel.IsExistingMatchingCard(c91598270.pfilter,tp,LOCATION_PZONE,0,1,nil)
+	local tp=e:GetHandlerPlayer()
+	return a:IsControler(tp) and a:IsSetCard(0x162) and a:IsType(TYPE_PENDULUM)
+		and Duel.IsExistingMatchingCard(c91598270.pfilter,tp,LOCATION_PZONE,0,1,nil)
 end
 function c91598270.aclimit(e,re,tp)
 	return re:IsActiveType(TYPE_MONSTER)
