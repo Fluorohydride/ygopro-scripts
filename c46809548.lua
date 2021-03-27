@@ -49,7 +49,7 @@ function c46809548.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,c46809548.costfilter,1,1,REASON_COST+REASON_DISCARD,nil)
 end
 function c46809548.thfilter(c)
-	return c:GetTextAttack()>=0 and c:GetAttack()==c:GetDefense() and not c:IsCode(46809548) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return aux.AtkEqualsDef(c) and not c:IsCode(46809548) and c:IsAbleToHand()
 end
 function c46809548.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c46809548.thfilter,tp,LOCATION_DECK,0,1,nil) end

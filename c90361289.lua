@@ -62,7 +62,7 @@ function c90361289.cfilter(c,e,tp)
 	return c:IsFaceup() and Duel.IsExistingMatchingCard(c90361289.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,e,tp,c:GetAttribute())
 end
 function c90361289.spfilter(c,e,tp,attr)
-	return c:GetTextAttack()>=0 and c:GetTextAttack()==c:GetTextDefense() and c:IsAttribute(attr)
+	return aux.AtkEqualsDef(c) and c:IsAttribute(attr)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c90361289.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

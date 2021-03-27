@@ -2375,6 +2375,12 @@ end
 function Auxiliary.UrsarcticSpSummonLimit(e,c)
 	return c:IsLevel(0)
 end
+--shortcut for Gizmek cards
+function Auxiliary.AtkEqualsDef(c)
+	if not c:IsType(TYPE_MONSTER) or c:IsType(TYPE_LINK) then return false end
+	if c:GetAttack()~=c:GetDefense() then return false end
+	return c:IsLocation(LOCATION_MZONE) or c:GetTextAttack()>=0 and c:GetTextDefense()>=0
+end
 --shortcut for self-banish costs
 function Auxiliary.bfgcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost() end
