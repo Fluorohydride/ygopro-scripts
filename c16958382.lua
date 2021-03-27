@@ -1,6 +1,12 @@
 --Sin パラダイム・ドラゴン
 function c16958382.initial_effect(c)
 	c:EnableReviveLimit()
+	--spsummon condition
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e0:SetCode(EFFECT_SPSUMMON_CONDITION)
+	c:RegisterEffect(e0)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -58,15 +64,13 @@ function c16958382.spop(e,tp,eg,ep,ev,re,r,rp,c)
 		te:UseCountLimit(tp)
 		Duel.Remove(tg,POS_FACEUP,REASON_COST)
 	else
-		local tc=Duel.GetFirstMatchingCard(c16958382.spfilter,tp,LOCATION_EXTRA,0,nil)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+		local tc=Duel.SelectMatchingCard(tp,c16958382.spfilter,tp,LOCATION_EXTRA,0,1,1,nil):GetFirst()
 		Duel.Remove(tc,POS_FACEUP,REASON_COST)
 	end
 end
-function c16958382.codefilter1(c)
-	return c:IsCode(27564031) and c:IsFaceup()
-end
 function c16958382.descon(e)
-	return not Duel.IsExistingMatchingCard(c16958382.codefilter1,0,LOCATION_FZONE,LOCATION_FZONE,1,nil)
+	return not Duel.IsEnvironment(27564031)
 end
 function c16958382.cfilter(c)
 	return c:IsSetCard(0x23) and c:IsAbleToGraveAsCost()
@@ -81,7 +85,7 @@ function c16958382.filter(c)
 	return c:IsType(TYPE_SYNCHRO) and c:IsLevel(8) and c:IsFaceup() and c:IsAbleToExtra()
 end
 function c16958382.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c16958382.filter,tp,LOCATION_REMOVED,0,1,c) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c16958382.filter,tp,LOCATION_REMOVED,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,nil,1,tp,LOCATION_REMOVED)
 end
 function c16958382.operation(e,tp,eg,ep,ev,re,r,rp)
