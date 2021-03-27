@@ -48,7 +48,6 @@ function c34124316.operation(e,tp,eg,ep,ev,re,r,rp)
 		else gg:AddCard(tc) end
 		tc=g2:GetNext()
 	end
-	Duel.SpecialSummonComplete()
 	if hg:GetCount()>0 then
 		Duel.DisableShuffleCheck()
 		Duel.SendtoHand(hg,nil,REASON_EFFECT)
@@ -59,4 +58,5 @@ function c34124316.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.DisableShuffleCheck()
 		Duel.SendtoGrave(gg,REASON_EFFECT)
 	end
+	Duel.SpecialSummonComplete()
 end
