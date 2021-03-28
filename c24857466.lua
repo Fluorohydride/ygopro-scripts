@@ -72,22 +72,28 @@ function c24857466.spfilter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c24857466.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return false end
-	if chk==0 then return true end
-	if ev&TYPE_TRAP+TYPE_MONSTER~=0 then
-		e:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	else
-		e:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	if chkc then 
+		if ev==TYPE_TRAP then
+			return chkc:IsControler(1-tp) and chkc:IsOnField()
+		elseif ev==TYPE_MONSTER then
+			chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c24857466.spfilter(chkc,e,tp)
+		else
+			return false
+		end
 	end
+	if chk==0 then return true end
 	local cat=0
+	local prop=0
 	if ev&TYPE_SPELL~=0 then
 		cat=cat|CATEGORY_DAMAGE
+		prop=prop|EFFECT_FLAG_PLAYER_TARGET
 		Duel.SetTargetPlayer(1-tp)
 		Duel.SetTargetParam(1500)
 		Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,1500)
 	end
 	if ev&TYPE_TRAP~=0 then
 		cat=cat|CATEGORY_DESTROY
+		prop=prop|EFFECT_FLAG_CARD_TARGET
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local g1=Duel.SelectTarget(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,1,nil)
 		if g1:GetCount()>0 then
@@ -96,6 +102,7 @@ function c24857466.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	if ev&TYPE_MONSTER~=0 then
 		cat=cat|CATEGORY_SPECIAL_SUMMON
+		prop=prop|EFFECT_FLAG_CARD_TARGET
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g2=Duel.SelectTarget(tp,c24857466.spfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 		if g2:GetCount()>0 then
@@ -103,6 +110,7 @@ function c24857466.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		end
 	end
 	e:SetCategory(cat)
+	e:SetProperty(prop)
 	e:SetLabel(ev)
 end
 function c24857466.operation(e,tp,eg,ep,ev,re,r,rp)
