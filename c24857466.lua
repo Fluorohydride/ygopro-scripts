@@ -76,7 +76,7 @@ function c24857466.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if ev==TYPE_TRAP then
 			return chkc:IsControler(1-tp) and chkc:IsOnField()
 		elseif ev==TYPE_MONSTER then
-			chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c24857466.spfilter(chkc,e,tp)
+			return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c24857466.spfilter(chkc,e,tp)
 		else
 			return false
 		end
