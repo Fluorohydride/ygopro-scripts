@@ -92,20 +92,20 @@ function c22398665.RitualCheckEqual(g,c,atk)
 end
 function c22398665.RitualCheck(g,tp,c,atk,greater_or_equal)
 	return c22398665["RitualCheck"..greater_or_equal](g,c,atk) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.mat_group_check or c.mat_group_check(g,tp))
-		and (not Auxiliary.RCheckAdditional or Auxiliary.RCheckAdditional(tp,g,c))
+		and (not aux.RCheckAdditional or aux.RCheckAdditional(tp,g,c))
 end
 function c22398665.RitualCheckAdditional(c,atk,greater_or_equal)
 	if greater_or_equal=="Equal" then
 		return	function(g)
-					return (not Auxiliary.RGCheckAdditional or Auxiliary.RGCheckAdditional(g)) and g:GetSum(Card.GetAttack)<=atk
+					return (not aux.RGCheckAdditional or aux.RGCheckAdditional(g)) and g:GetSum(Card.GetAttack)<=atk
 				end
 	else
 		return	function(g,ec)
 					if atk==0 then return #g<=1 end
 					if ec then
-						return (not Auxiliary.RGCheckAdditional or Auxiliary.RGCheckAdditional(g,ec)) and g:GetSum(Card.GetAttack)-Card.GetAttack(ec)<=atk
+						return (not aux.RGCheckAdditional or aux.RGCheckAdditional(g,ec)) and g:GetSum(Card.GetAttack)-Card.GetAttack(ec)<=atk
 					else
-						return not Auxiliary.RGCheckAdditional or Auxiliary.RGCheckAdditional(g)
+						return not aux.RGCheckAdditional or aux.RGCheckAdditional(g)
 					end
 				end
 	end
@@ -122,8 +122,8 @@ function c22398665.RitualUltimateFilter(c,filter,e,tp,m1,m2,attack_function,grea
 		mg:RemoveCard(c)
 	end
 	local atk=attack_function(c)
-	Auxiliary.GCheckAdditional=c22398665.RitualCheckAdditional(c,atk,greater_or_equal)
+	aux.GCheckAdditional=c22398665.RitualCheckAdditional(c,atk,greater_or_equal)
 	local res=mg:CheckSubGroup(c22398665.RitualCheck,1,#mg,tp,c,atk,greater_or_equal)
-	Auxiliary.GCheckAdditional=nil
+	aux.GCheckAdditional=nil
 	return res
 end

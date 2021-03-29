@@ -39,13 +39,13 @@ function c65801012.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			local sg=Duel.GetMatchingGroup(c65801012.exfilter0,tp,LOCATION_GRAVE,0,nil)
 			if sg:GetCount()>0 then
 				mg1:Merge(sg)
-				Auxiliary.FCheckAdditional=c65801012.fcheck
-				Auxiliary.GCheckAdditional=c65801012.gcheck
+				aux.FCheckAdditional=c65801012.fcheck
+				aux.GCheckAdditional=c65801012.gcheck
 			end
 		end
 		local res=Duel.IsExistingMatchingCard(c65801012.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
-		Auxiliary.FCheckAdditional=nil
-		Auxiliary.GCheckAdditional=nil
+		aux.FCheckAdditional=nil
+		aux.GCheckAdditional=nil
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
 			if ce~=nil then
@@ -71,12 +71,12 @@ function c65801012.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	if exmat then
-		Auxiliary.FCheckAdditional=c65801012.fcheck
-		Auxiliary.GCheckAdditional=c65801012.gcheck
+		aux.FCheckAdditional=c65801012.fcheck
+		aux.GCheckAdditional=c65801012.gcheck
 	end
 	local sg1=Duel.GetMatchingGroup(c65801012.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
-	Auxiliary.FCheckAdditional=nil
-	Auxiliary.GCheckAdditional=nil
+	aux.FCheckAdditional=nil
+	aux.GCheckAdditional=nil
 	local mg2=nil
 	local sg2=nil
 	local ce=Duel.GetChainMaterial(tp)
@@ -95,12 +95,12 @@ function c65801012.activate(e,tp,eg,ep,ev,re,r,rp)
 		mg1:RemoveCard(tc)
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			if exmat then
-				Auxiliary.FCheckAdditional=c65801012.fcheck
-				Auxiliary.GCheckAdditional=c65801012.gcheck
+				aux.FCheckAdditional=c65801012.fcheck
+				aux.GCheckAdditional=c65801012.gcheck
 			end
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
-			Auxiliary.FCheckAdditional=nil
-			Auxiliary.GCheckAdditional=nil
+			aux.FCheckAdditional=nil
+			aux.GCheckAdditional=nil
 			tc:SetMaterial(mat1)
 			local rg=mat1:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
 			mat1:Sub(rg)
