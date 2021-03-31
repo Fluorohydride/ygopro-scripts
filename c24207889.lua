@@ -51,14 +51,17 @@ function c24207889.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	local phase=Duel.GetCurrentPhase()
 	if (phase==PHASE_DAMAGE and not Duel.IsDamageCalculated()) or phase==PHASE_DAMAGE_CAL then return end
 	local sg=Group.CreateGroup()
-	for p=0,1 do
+	for i=0,3 do
+		local onlynew=i%2==0
+		local p=math.floor(i/2)
 		local g=Duel.GetMatchingGroup(Card.IsFaceup,p,LOCATION_MZONE,0,nil)
+		g:Sub(sg)
 		local race=1
 		while bit.band(RACE_ALL,race)~=0 do
 			local rg=g:Filter(Card.IsRace,nil,race)
 			local rc=rg:GetCount()
 			if rc>1 then
-				rg:Sub(c24207889[p])
+				if onlynew then rg:Sub(c24207889[p]) end
 				Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TOGRAVE)
 				local dg=rg:Select(p,rc-1,rc-1,nil)
 				sg:Merge(dg)
