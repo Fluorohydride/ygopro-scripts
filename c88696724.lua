@@ -29,7 +29,7 @@ function c88696724.mfilter(c,tp)
 	return c:IsLocation(LOCATION_MZONE) and c:IsCanBeFusionMaterial() and (c:IsControler(tp) or c:IsFaceup())
 end
 function c88696724.fcheck(tp,sg,fc)
-	return Duel.CheckReleaseGroup(tp,Auxiliary.IsInGroup,#sg,nil,sg)
+	return Duel.CheckReleaseGroup(tp,aux.IsInGroup,#sg,nil,sg)
 end
 function c88696724.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
@@ -42,20 +42,20 @@ function c88696724.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		if e:GetLabel()~=1 then return false end
 		e:SetLabel(0)
 		local mg=Duel.GetReleaseGroup(tp):Filter(c88696724.mfilter,nil,tp)
-		Auxiliary.FCheckAdditional=c88696724.fcheck
+		aux.FCheckAdditional=c88696724.fcheck
 		if c59160188 then c59160188.re_activated=true end
 		local res=Duel.IsExistingMatchingCard(c88696724.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,c,chkf)
-		Auxiliary.FCheckAdditional=nil
+		aux.FCheckAdditional=nil
 		if c59160188 then c59160188.re_activated=false end
 		return res
 	end
 	local mg=Duel.GetReleaseGroup(tp):Filter(c88696724.mfilter,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	Auxiliary.FCheckAdditional=c88696724.fcheck
+	aux.FCheckAdditional=c88696724.fcheck
 	if c59160188 then c59160188.re_activated=true end
 	local g=Duel.SelectMatchingCard(tp,c88696724.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,mg,c,chkf)
 	local mat=Duel.SelectFusionMaterial(tp,g:GetFirst(),mg,c,chkf)
-	Auxiliary.FCheckAdditional=nil
+	aux.FCheckAdditional=nil
 	if c59160188 then c59160188.re_activated=false end
 	aux.UseExtraReleaseCount(mat,tp)
 	Duel.Release(mat,REASON_COST)
