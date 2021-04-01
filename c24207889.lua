@@ -54,8 +54,7 @@ function c24207889.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	for i=0,3 do
 		local onlynew=i%2==0
 		local p=math.floor(i/2)
-		local g=Duel.GetMatchingGroup(Card.IsFaceup,p,LOCATION_MZONE,0,nil)
-		g:Sub(sg)
+		local g=Duel.GetMatchingGroup(Card.IsFaceup,p,LOCATION_MZONE,0,sg)
 		local race=1
 		while bit.band(RACE_ALL,race)~=0 do
 			local rg=g:Filter(Card.IsRace,nil,race)
