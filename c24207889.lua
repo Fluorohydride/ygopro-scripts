@@ -34,7 +34,7 @@ function c24207889.initial_effect(c)
 		c24207889[0]={}
 		c24207889[1]={}
 		local race=1
-		while bit.band(RACE_ALL,race)~=0 do
+		while race<RACE_ALL do
 			c24207889[0][race]=Group.CreateGroup()	
 			c24207889[0][race]:KeepAlive()	
 			c24207889[1][race]=Group.CreateGroup()	
