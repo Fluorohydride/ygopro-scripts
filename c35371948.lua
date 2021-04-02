@@ -73,7 +73,7 @@ function c35371948.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_CANNOT_TRIGGER)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DRAW)
 		e1:SetLabelObject(tc)
-		e1:SetCondition(c35371948.rcon)
+		e1:SetCondition(c35371948.relcon)
 		e1:SetValue(1)
 		tc:RegisterEffect(e1)
 		--End of e1
@@ -84,8 +84,8 @@ function c35371948.operation(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DRAW)
 		e2:SetLabel(fid)
 		e2:SetLabelObject(e1)
-		e2:SetCondition(c35371948.rstcon)
-		e2:SetOperation(c35371948.rstop)
+		e2:SetCondition(c35371948.endcon)
+		e2:SetOperation(c35371948.endop)
 		Duel.RegisterEffect(e2,tp)
 		--send to grave
 		local e3=Effect.CreateEffect(c)
@@ -96,8 +96,8 @@ function c35371948.operation(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DRAW)
 		e3:SetLabel(fid)
 		e3:SetLabelObject(tc)
-		e3:SetCondition(c35371948.agcon)
-		e3:SetOperation(c35371948.agop)
+		e3:SetCondition(c35371948.tgcon)
+		e3:SetOperation(c35371948.tgop)
 		Duel.RegisterEffect(e3,1-tp)
 		--activate check
 		local e4=Effect.CreateEffect(c)
@@ -107,14 +107,15 @@ function c35371948.operation(e,tp,eg,ep,ev,re,r,rp)
 		e4:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DRAW)
 		e4:SetLabel(fid)
 		e4:SetLabelObject(e3)
-		e4:SetOperation(c35371948.rstop2)
+		e4:SetCondition(c35371948.rstcon)
+		e4:SetOperation(c35371948.rstop)
 		Duel.RegisterEffect(e4,tp)
 	end
 end
-function c35371948.rcon(e)
+function c35371948.relcon(e)
 	return e:GetOwner():IsHasCardTarget(e:GetHandler()) and e:GetHandler():GetFlagEffect(35371948)~=0
 end
-function c35371948.rstcon(e,tp,eg,ep,ev,re,r,rp)
+function c35371948.endcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=e:GetLabelObject():GetLabelObject()
 	if tc:GetFlagEffectLabel(35371948)==e:GetLabel()
@@ -125,12 +126,12 @@ function c35371948.rstcon(e,tp,eg,ep,ev,re,r,rp)
 		return false
 	end
 end
-function c35371948.rstop(e,tp,eg,ep,ev,re,r,rp)
+function c35371948.endop(e,tp,eg,ep,ev,re,r,rp)
 	local te=e:GetLabelObject()
 	te:Reset()
 	Duel.HintSelection(Group.FromCards(e:GetHandler()))
 end
-function c35371948.agcon(e,tp,eg,ep,ev,re,r,rp)
+function c35371948.tgcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=e:GetLabelObject()
 	if tc:GetFlagEffectLabel(35371948)==e:GetLabel()
@@ -141,17 +142,22 @@ function c35371948.agcon(e,tp,eg,ep,ev,re,r,rp)
 		return false
 	end
 end
-function c35371948.agop(e,tp,eg,ep,ev,re,r,rp)
+function c35371948.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	Duel.SendtoGrave(tc,REASON_RULE)
 end
-function c35371948.rstop2(e,tp,eg,ep,ev,re,r,rp)
-	local tc=eg:GetFirst()
-	if tc:GetFlagEffectLabel(35371948)~=e:GetLabel() then return end
+function c35371948.rstcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	local tc=eg:GetFirst()
+	return tc:GetFlagEffectLabel(35371948)==e:GetLabel()
+		and c:GetFlagEffectLabel(35371948)==e:GetLabel()
+end
+function c35371948.rstop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local tc=eg:GetFirst()
 	c:CancelCardTarget(tc)
-	local te=e:GetLabelObject()
 	tc:ResetFlagEffect(35371948)
+	local te=e:GetLabelObject()
 	if te then te:Reset() end
 end
 function c35371948.damcon1(e,tp,eg,ep,ev,re,r,rp)
