@@ -31,10 +31,16 @@ function c24207889.initial_effect(c)
 	c:RegisterEffect(e6)
 	if not c24207889.global_check then
 		c24207889.global_check=true
-		c24207889[0]=Group.CreateGroup()	
-		c24207889[0]:KeepAlive()	
-		c24207889[1]=Group.CreateGroup()	
-		c24207889[1]:KeepAlive()
+		c24207889[0]={}
+		c24207889[1]={}
+		local race=1
+		while bit.band(RACE_ALL,race)~=0 do
+			c24207889[0][race]=Group.CreateGroup()	
+			c24207889[0][race]:KeepAlive()	
+			c24207889[1][race]=Group.CreateGroup()	
+			c24207889[1][race]:KeepAlive()
+			race=race<<1
+		end
 	end
 end
 function c24207889.rmfilter(c,rc)
@@ -54,16 +60,16 @@ function c24207889.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	for p=0,1 do
 		local g=Duel.GetMatchingGroup(Card.IsFaceup,p,LOCATION_MZONE,0,nil)
 		local race=1
-		while bit.band(RACE_ALL,race)~=0 do
+		while race<RACE_ALL do
 			local rg=g:Filter(Card.IsRace,nil,race)
 			local rc=rg:GetCount()
 			if rc>1 then
-				rg:Sub(c24207889[p])
+				rg:Sub(c24207889[p][race]:Filter(Card.IsRace,nil,race))
 				Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TOGRAVE)
 				local dg=rg:Select(p,rc-1,rc-1,nil)
 				sg:Merge(dg)
 			end
-			race=race*2
+			race=race<<1
 		end
 	end
 	if sg:GetCount()>0 then
@@ -72,7 +78,11 @@ function c24207889.adjustop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	for p=0,1 do
 		local g=Duel.GetMatchingGroup(Card.IsFaceup,p,LOCATION_MZONE,0,nil)
-		c24207889[p]:Clear()
-		c24207889[p]:Merge(g)
+		local race=1
+		while race<RACE_ALL do
+			c24207889[p][race]:Clear()
+			c24207889[p][race]:Merge(g:Filter(Card.IsRace,nil,race))
+			race=race<<1
+		end
 	end
 end
