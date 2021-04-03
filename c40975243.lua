@@ -39,6 +39,7 @@ function c40975243.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE+LOCATION_REMOVED)
 end
 function c40975243.activate(e,tp,eg,ep,ev,re,r,rp)
+	if not Duel.IsPlayerCanSpecialSummonCount(tp,2) then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c40975243.spfilter),tp,LOCATION_GRAVE+LOCATION_REMOVED,0,nil,e,tp)
