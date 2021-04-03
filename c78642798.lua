@@ -69,6 +69,7 @@ function c78642798.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc1=Duel.GetFirstTarget()
 	if tc1:IsRelateToEffect(e) and tc1:IsAbleToChangeControler() then
 		local atk=tc1:GetTextAttack()
+		if atk<0 then atk=0 end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local sg=Duel.SelectMatchingCard(tp,c78642798.eqfilter,tp,LOCATION_MZONE,0,1,1,nil)
 		if sg:GetCount()>0 then
