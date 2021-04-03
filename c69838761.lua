@@ -54,6 +54,7 @@ function c69838761.thop(e,tp,eg,ep,ev,re,r,rp)
 		local sg=g:Select(tp,3,3,nil)
 		Duel.ConfirmCards(1-tp,sg)
 		local tg=sg:RandomSelect(1-tp,1)
+		Duel.ShuffleDeck(tp)
 		Duel.SendtoHand(tg,nil,REASON_EFFECT)
 	end
 end
