@@ -65,7 +65,7 @@ end
 function c54387923.resetop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	c:ResetFlagEffect(54387923)
-	c:Reset()
+	e:Reset()
 end
 function c54387923.subop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
