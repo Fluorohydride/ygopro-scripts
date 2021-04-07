@@ -122,12 +122,12 @@ function c71095768.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c71095768.descon(e,tp,eg,ep,ev,re,r,rp)
+	if not (Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)==c71095768[0]
+		and c71095768[1]==LOCATION_MZONE and re:IsActiveType(TYPE_XYZ)) then return false end
 	local c=e:GetHandler()
 	local zone=(c:GetLinkedZone(0) & 0x7f) | ((c:GetLinkedZone(1) & 0x7f)<<0x10)
 	local seq=c71095768[2]
-	if not seq or bit.extract(zone,seq)==0 then return false end
-	return Duel.GetChainInfo(ev,CHAININFO_CHAIN_ID)==c71095768[0]
-		and c71095768[1]==LOCATION_MZONE and re:IsActiveType(TYPE_XYZ)
+	return seq and bit.extract(zone,seq)~=0
 end
 function c71095768.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and chkc:IsType(TYPE_SPELL+TYPE_TRAP) end
