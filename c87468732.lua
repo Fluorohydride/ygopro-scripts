@@ -90,7 +90,8 @@ function c87468732.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c87468732.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetSequence()~=2
+	local seq=e:GetHandler():GetSequence()
+	return seq<5 and seq~=2
 end
 function c87468732.desop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
