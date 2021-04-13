@@ -77,8 +77,6 @@ function c63767246.atkfilter1(c,tp)
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)
 end
 function c63767246.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	local og=e:GetLabelObject()
-	if og then og:DeleteGroup() end
 	local g=eg:Filter(c63767246.atkfilter1,nil,tp)
 	if #g==0 then return false end
 	g:KeepAlive()
