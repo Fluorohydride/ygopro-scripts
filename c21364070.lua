@@ -81,7 +81,7 @@ function c21364070.initial_effect(c)
 	end
 end
 function c21364070.scalefilter(c)
-	return c:IsFaceup() and c:IsSetCard(0xb3) and c:GetLeftScale()~=11
+	return c:IsFaceup() and c:IsSetCard(0xb3) and c:GetCurrentScale()~=11
 end
 function c21364070.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_PZONE) and chkc:IsControler(tp) and c21364070.scalefilter(chkc) end
