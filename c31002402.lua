@@ -17,6 +17,7 @@ function c31002402.mfilter(c)
 	return c:GetLevel()>0 and c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
 end
 function c31002402.rfilter2(c,e,tp,m1)
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return false end
 	if bit.band(c:GetType(),0x81)~=0x81 or not c:IsSetCard(0x145)
 		or not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,false,true) then return false end
 	local mg=m1:Filter(Card.IsCanBeRitualMaterial,c,c)
