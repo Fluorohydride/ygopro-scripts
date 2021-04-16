@@ -2057,11 +2057,12 @@ function Auxiliary.ExtraDeckSummonCountLimitReset()
 	Auxiliary.ExtraDeckSummonCountLimit[0]=1
 	Auxiliary.ExtraDeckSummonCountLimit[1]=1
 end
+--Fusion Monster is unnecessary to use this
 function Auxiliary.AddMaterialCodeList(c,...)
 	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
 	local mat={}
-	for _,fcode in ipairs{...} do
-		mat[fcode]=true
+	for _,code in ipairs{...} do
+		mat[code]=true
 	end
 	if c.material==nil then
 		local mt=getmetatable(c)
