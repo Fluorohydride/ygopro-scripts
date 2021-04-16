@@ -2057,6 +2057,20 @@ function Auxiliary.ExtraDeckSummonCountLimitReset()
 	Auxiliary.ExtraDeckSummonCountLimit[0]=1
 	Auxiliary.ExtraDeckSummonCountLimit[1]=1
 end
+function Auxiliary.AddMaterialCodeList(c,...)
+	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
+	local mat={}
+	for _,fcode in ipairs{...} do
+		mat[fcode]=true
+	end
+	if c.material==nil then
+		local mt=getmetatable(c)
+		mt.material=mat
+	end
+	for index,_ in pairs(mat) do
+		Auxiliary.AddCodeList(c,index)
+	end
+end
 function Auxiliary.IsMaterialListCode(c,code)
 	return c.material and c.material[code]
 end
