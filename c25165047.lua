@@ -1,5 +1,6 @@
 --ライフ・ストリーム・ドラゴン
 function c25165047.initial_effect(c)
+	aux.AddMaterialCodeList(c,2403771)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.FilterBoolFunction(Card.IsCode,2403771),1,1)
 	c:EnableReviveLimit()

@@ -1,5 +1,6 @@
 --ジオ・ジェネクス
 function c33972299.initial_effect(c)
+	aux.AddMaterialCodeList(c,68505803)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,68505803),aux.NonTuner(Card.IsAttribute,ATTRIBUTE_EARTH),1)
 	c:EnableReviveLimit()

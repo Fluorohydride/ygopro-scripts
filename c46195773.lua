@@ -1,5 +1,6 @@
 --ターボ・ウォリアー
 function c46195773.initial_effect(c)
+	aux.AddMaterialCodeList(c,67270095)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c46195773.tfilter,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()

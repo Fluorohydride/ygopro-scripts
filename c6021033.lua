@@ -1,5 +1,6 @@
 --デスカイザー・ドラゴン
 function c6021033.initial_effect(c)
+	aux.AddMaterialCodeList(c,33420078)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,33420078),aux.NonTuner(Card.IsRace,RACE_ZOMBIE),1)
 	c:EnableReviveLimit()

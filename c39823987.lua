@@ -1,5 +1,6 @@
 --太陽龍インティ
 function c39823987.initial_effect(c)
+	aux.AddMaterialCodeList(c,78275321)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,78275321),aux.NonTuner(nil),1)
 	c:EnableReviveLimit()

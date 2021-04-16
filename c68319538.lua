@@ -1,5 +1,6 @@
 --宇宙砦ゴルガー
 function c68319538.initial_effect(c)
+	aux.AddMaterialCodeList(c,652362)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,652362),aux.NonTuner(Card.IsSetCard,0xc),1)
 	c:EnableReviveLimit()

@@ -1,5 +1,6 @@
 --ジェット・ウォリアー
 function c286392.initial_effect(c)
+	aux.AddMaterialCodeList(c,9742784)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c286392.tfilter,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()

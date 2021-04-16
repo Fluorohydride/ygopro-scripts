@@ -1,5 +1,6 @@
 --セイヴァー・デモン・ドラゴン
 function c67030233.initial_effect(c)
+	aux.AddMaterialCodeList(c,21159309,70902743)
 	--synchro summon
 	aux.AddSynchroMixProcedure(c,c67030233.mfilter1,c67030233.mfilter2,nil,aux.NonTuner(nil),1,1)
 	c:EnableReviveLimit()
@@ -115,7 +116,7 @@ end
 function c67030233.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsExtraDeckMonster() and Duel.SendtoDeck(c,nil,0,REASON_EFFECT)~=0
+	if bit.band(c:GetOriginalType(),0x802040)~=0 and Duel.SendtoDeck(c,nil,0,REASON_EFFECT)~=0
 		and c:IsLocation(LOCATION_EXTRA) and tc and tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
