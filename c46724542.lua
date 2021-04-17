@@ -1,5 +1,6 @@
 --サイバー・ドラゴン・ズィーガー
 function c46724542.initial_effect(c)
+	aux.AddMaterialCodeList(c,70095154)
 	--link summon
 	c:EnableReviveLimit()
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkRace,RACE_MACHINE),2,2,c46724542.lcheck)
