@@ -11,11 +11,14 @@ function c19828680.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c19828680.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0,e:GetHandler())>=3
+	local sg=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
+	return sg:FilterCount(aux.TRUE,e:GetHandler())>=3
 end
 function c19828680.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	local b=e:IsHasType(EFFECT_TYPE_ACTIVATE) and e:GetHandler():IsLocation(LOCATION_HAND)
 	local sg=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
+	if b then sg=sg:Filter(aux.TRUE,e:GetHandler()) end
+	if chk==0 then return sg:GetCount()>0 end
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,sg,sg:GetCount(),0,0)
 end
 function c19828680.spfilter(c,e,tp)
@@ -25,6 +28,7 @@ end
 function c19828680.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT+REASON_DISCARD)~=0
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c19828680.spfilter),tp,LOCATION_GRAVE,0,1,nil,e,tp)
 		and Duel.SelectYesNo(tp,aux.Stringid(19828680,0)) then
 		Duel.BreakEffect()
