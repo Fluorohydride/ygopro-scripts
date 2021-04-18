@@ -22,7 +22,7 @@ function c15155568.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c15155568.cfilter(c)
-	return c:IsFaceup() and aux.IsMaterialListCode(c,78193831)
+	return c:IsFaceup() and c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,78193831)
 end
 function c15155568.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c15155568.cfilter,tp,LOCATION_MZONE,0,1,nil)

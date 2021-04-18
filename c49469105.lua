@@ -18,7 +18,7 @@ function c49469105.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,c49469105.cfilter,1,1,REASON_COST+REASON_DISCARD)
 end
 function c49469105.filter1(c,g)
-	return g:IsExists(c49469105.filter2,1,nil,c)
+	return c:IsType(TYPE_FUSION) and g:IsExists(c49469105.filter2,1,nil,c)
 end
 function c49469105.filter2(c,fc)
 	return aux.IsMaterialListCode(fc,c:GetCode())

@@ -33,11 +33,11 @@ function c67159705.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c67159705.eqlimit(e,c)
-	return c:IsCode(70095154) or aux.IsMaterialListCode(c,70095154) or e:GetHandler():GetEquipTarget()==c
+	return c:IsCode(70095154) or c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,70095154) or e:GetHandler():GetEquipTarget()==c
 end
 function c67159705.filter(c)
 	local ct1,ct2=c:GetUnionCount()
-	return c:IsFaceup() and (c:IsCode(70095154) or aux.IsMaterialListCode(c,70095154)) and ct2==0
+	return c:IsFaceup() and (c:IsCode(70095154) or c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,70095154)) and ct2==0
 end
 function c67159705.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c67159705.filter(chkc) end
