@@ -27,7 +27,7 @@ function c78348934.filter1(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
 end
 function c78348934.filter2(c,rc)
-	return c:GetRace()==rc and c:IsAbleToRemove()
+	return c:IsRace(rc) and c:IsAbleToRemove()
 end
 function c78348934.filter3(c)
 	return c:IsFaceup() and c:IsSetCard(0xd6,0xd7)

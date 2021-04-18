@@ -18,7 +18,7 @@ function c35329581.filter(c,e,tp)
 end
 function c35329581.spfilter(c,e,tp,tc)
 	return c:IsType(TYPE_SYNCHRO) and c:IsLevel(tc:GetLevel())
-		and c:GetRace()==tc:GetRace() and c:GetCode()~=tc:GetCode()
+		and c:IsRace(tc:GetRace()) and not c:IsCode(tc:GetCode())
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
