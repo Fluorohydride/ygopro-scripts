@@ -11,13 +11,12 @@ function c19828680.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c19828680.condition(e,tp,eg,ep,ev,re,r,rp)
-	local sg=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
-	return sg:FilterCount(aux.TRUE,e:GetHandler())>=3
+	return Duel.GetMatchingGroupCount(nil,tp,LOCATION_HAND,0,e:GetHandler())>=3
 end
 function c19828680.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	local b=e:IsHasType(EFFECT_TYPE_ACTIVATE) and e:GetHandler():IsLocation(LOCATION_HAND)
-	local sg=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
-	if b then sg=sg:Filter(aux.TRUE,e:GetHandler()) end
+	local exc=nil
+	if e:IsHasType(EFFECT_TYPE_ACTIVATE) and e:GetHandler():IsLocation(LOCATION_HAND) then exc=e:GetHandler() end
+	local sg=Duel.GetMatchingGroup(nil,tp,LOCATION_HAND,0,exc)
 	if chk==0 then return sg:GetCount()>0 end
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,sg,sg:GetCount(),0,0)
 end
