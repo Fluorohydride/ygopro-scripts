@@ -40,6 +40,8 @@ function c89974904.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		tc:RegisterEffect(e2)
 		Duel.SpecialSummonComplete()
+		Duel.RaiseEvent(c,EVENT_ADJUST,nil,0,PLAYER_NONE,PLAYER_NONE,0)
+		if not tc:IsLocation(LOCATION_MZONE) then return end
 		local g=Duel.GetMatchingGroup(c89974904.cfilter,tp,LOCATION_EXTRA,0,nil,tc)
 		if g:GetCount()>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

@@ -84,6 +84,8 @@ function c62829077.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc=g:GetNext()
 	end
 	Duel.SpecialSummonComplete()
+	Duel.RaiseEvent(e:GetHandler(),EVENT_ADJUST,nil,0,PLAYER_NONE,PLAYER_NONE,0)
+	if g:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)<3 then return end
 	local xyzg=Duel.GetMatchingGroup(c62829077.xyzfilter,tp,LOCATION_EXTRA,0,nil,g)
 	if xyzg:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
