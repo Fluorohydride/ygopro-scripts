@@ -18,7 +18,7 @@ function c30334522.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rc=Duel.AnnounceRace(tp,1,RACE_ALL)
 	e:SetLabel(rc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
-	local at=Duel.AnnounceAttribute(tp,1,0xffff)
+	local at=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL)
 	Duel.SetTargetParam(at)
 end
 function c30334522.operation(e,tp,eg,ep,ev,re,r,rp)
