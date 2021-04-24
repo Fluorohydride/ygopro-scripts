@@ -14,7 +14,7 @@ function c20155904.initial_effect(c)
 	--get effect
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(20155904,1))
-	e2:SetCategory(CATEGORY_DISABLE)
+	e2:SetCategory(CATEGORY_NEGATE)
 	e2:SetType(EFFECT_TYPE_XMATERIAL+EFFECT_TYPE_QUICK_O)
 	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e2:SetCode(EVENT_CHAINING)
@@ -59,7 +59,7 @@ end
 function c20155904.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
-	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
+	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 end
 function c20155904.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateActivation(ev)
