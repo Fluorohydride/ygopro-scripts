@@ -19,7 +19,7 @@ function c43147039.initial_effect(c)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetCountLimit(1,43147039)
 	e2:SetTarget(c43147039.thtg)
-	e2:SetOperation(c43147039.tgop)
+	e2:SetOperation(c43147039.thop)
 	c:RegisterEffect(e2)
 	--cannot attack
 	local e3=Effect.CreateEffect(c)
@@ -52,7 +52,7 @@ function c43147039.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c43147039.thfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end
-function c43147039.tgop(e,tp,eg,ep,ev,re,r,rp)
+function c43147039.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c43147039.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
