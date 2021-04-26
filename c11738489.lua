@@ -55,7 +55,7 @@ function c11738489.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local lg=c:GetLinkedGroup():Filter(Card.IsControler,nil,tp)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c11738489.cfilter(chkc,g,ct) and chkc~=c end
 	if chk==0 then return Duel.IsExistingTarget(c11738489.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,c,lg,ct)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,11738490,0x135,0x4011,0,0,1,RACE_CYBERSE,ATTRIBUTE_DARK,POS_FACEUP,tp,0,zone) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,11738490,0x135,TYPES_TOKEN_MONSTER,0,0,1,RACE_CYBERSE,ATTRIBUTE_DARK,POS_FACEUP,tp,0,zone) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c11738489.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,c,lg,ct)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
@@ -68,7 +68,7 @@ function c11738489.desop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		if not c:IsRelateToEffect(e) then return end
 		local zone=bit.band(c:GetLinkedZone(tp),0x1f)
-		if Duel.IsPlayerCanSpecialSummonMonster(tp,11738490,0x135,0x4011,0,0,1,RACE_CYBERSE,ATTRIBUTE_DARK,POS_FACEUP,tp,0,zone) then
+		if Duel.IsPlayerCanSpecialSummonMonster(tp,11738490,0x135,TYPES_TOKEN_MONSTER,0,0,1,RACE_CYBERSE,ATTRIBUTE_DARK,POS_FACEUP,tp,0,zone) then
 			local token=Duel.CreateToken(tp,11738490)
 			Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP,zone)
 		end

@@ -41,14 +41,14 @@ end
 function c9929398.tkntg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>1
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,9929399,0,0x4011,0,0,1,RACE_WINDBEAST,ATTRIBUTE_DARK) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,9929399,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_WINDBEAST,ATTRIBUTE_DARK) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,0,0)
 end
 function c9929398.tknop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>1
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,9929399,0,0x4011,0,0,1,RACE_WINDBEAST,ATTRIBUTE_DARK) then
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,9929399,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_WINDBEAST,ATTRIBUTE_DARK) then
 		for i=1,2 do
 			local token=Duel.CreateToken(tp,9929399)
 			Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)

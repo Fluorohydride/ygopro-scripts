@@ -16,7 +16,7 @@ function c30069398.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c30069398.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(1-tp,LOCATION_MZONE)<=0 then return end
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,30069399,0,0x4011,0,0,1,RACE_PLANT,ATTRIBUTE_EARTH,POS_FACEUP_DEFENSE,1-tp) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,30069399,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_PLANT,ATTRIBUTE_EARTH,POS_FACEUP_DEFENSE,1-tp) then return end
 	local token=Duel.CreateToken(tp,30069399)
 	if Duel.SpecialSummonStep(token,0,tp,1-tp,false,false,POS_FACEUP_DEFENSE) then
 		local e1=Effect.CreateEffect(e:GetHandler())

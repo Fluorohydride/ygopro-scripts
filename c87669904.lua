@@ -20,7 +20,7 @@ end
 function c87669904.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsDiscardable,tp,LOCATION_HAND,0,1,e:GetHandler(),REASON_EFFECT) and ft>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,87669905,0x14f,0x4011,0,0,2,RACE_WARRIOR,ATTRIBUTE_LIGHT) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,87669905,0x14f,TYPES_TOKEN_MONSTER,0,0,2,RACE_WARRIOR,ATTRIBUTE_LIGHT) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,ft,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,ft,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
@@ -31,7 +31,7 @@ function c87669904.activate(e,tp,eg,ep,ev,re,r,rp)
 	local count=0
 	if Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_EFFECT+REASON_DISCARD,nil,REASON_EFFECT)~=0 then
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-		if ft>0 and Duel.IsPlayerCanSpecialSummonMonster(tp,87669905,0x14f,0x4011,0,0,2,RACE_WARRIOR,ATTRIBUTE_LIGHT) then
+		if ft>0 and Duel.IsPlayerCanSpecialSummonMonster(tp,87669905,0x14f,TYPES_TOKEN_MONSTER,0,0,2,RACE_WARRIOR,ATTRIBUTE_LIGHT) then
 			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 			for i=1,ft do
 				local token=Duel.CreateToken(tp,87669905)

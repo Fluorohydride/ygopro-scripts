@@ -23,14 +23,14 @@ function c55838342.initial_effect(c)
 end
 function c55838342.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and
-		Duel.IsPlayerCanSpecialSummonMonster(tp,55838342,0,0x21,300,2100,2,RACE_INSECT,ATTRIBUTE_EARTH) end
+		Duel.IsPlayerCanSpecialSummonMonster(tp,55838342,0,TYPES_EFFECT_TRAP_MONSTER,300,2100,2,RACE_INSECT,ATTRIBUTE_EARTH) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c55838342.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,55838342,0,0x21,300,2100,2,RACE_INSECT,ATTRIBUTE_EARTH) then return end
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,55838342,0,TYPES_EFFECT_TRAP_MONSTER,300,2100,2,RACE_INSECT,ATTRIBUTE_EARTH) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TRAP)
 	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,true,false,POS_FACEUP)
 end

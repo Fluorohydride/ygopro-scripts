@@ -29,7 +29,7 @@ function c76524506.initial_effect(c)
 end
 function c76524506.desfilter(c,tp)
 	local p=c:GetControler()
-	return Duel.GetLocationCount(p,LOCATION_MZONE,tp)>0 and Duel.IsPlayerCanSpecialSummonMonster(tp,71645243,0,0x4011,800,800,2,RACE_PLANT,ATTRIBUTE_DARK,POS_FACEUP_ATTACK,p)
+	return Duel.GetLocationCount(p,LOCATION_MZONE,tp)>0 and Duel.IsPlayerCanSpecialSummonMonster(tp,71645243,0,TYPES_TOKEN_MONSTER,800,800,2,RACE_PLANT,ATTRIBUTE_DARK,POS_FACEUP_ATTACK,p)
 end
 function c76524506.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_FZONE) and c76524506.desfilter(chkc,tp) end
@@ -44,7 +44,7 @@ function c76524506.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		local p=tc:GetControler()
-		if Duel.Destroy(tc,REASON_EFFECT)~=0 and Duel.GetLocationCount(p,LOCATION_MZONE,tp)>0 and Duel.IsPlayerCanSpecialSummonMonster(tp,71645243,0,0x4011,800,800,2,RACE_PLANT,ATTRIBUTE_DARK,POS_FACEUP_ATTACK,p) then
+		if Duel.Destroy(tc,REASON_EFFECT)~=0 and Duel.GetLocationCount(p,LOCATION_MZONE,tp)>0 and Duel.IsPlayerCanSpecialSummonMonster(tp,71645243,0,TYPES_TOKEN_MONSTER,800,800,2,RACE_PLANT,ATTRIBUTE_DARK,POS_FACEUP_ATTACK,p) then
 			Duel.BreakEffect()
 			local token=Duel.CreateToken(tp,76524507)
 			Duel.SpecialSummon(token,0,tp,p,false,false,POS_FACEUP_ATTACK)

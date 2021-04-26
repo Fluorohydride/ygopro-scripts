@@ -23,7 +23,7 @@ function c32056070.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.IsExistingMatchingCard(aux.nzatk,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
 	local b2=Duel.IsExistingMatchingCard(aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 	local b3=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,11738490,0,0x4011,0,0,1,RACE_CYBERSE,ATTRIBUTE_DARK)
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,11738490,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_CYBERSE,ATTRIBUTE_DARK)
 	local used=Duel.GetFlagEffectLabel(tp,32056070)
 	if used==nil then
 		used=0
@@ -94,7 +94,7 @@ function c32056070.attrop2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c32056070.attrop3(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,11738490,0,0x4011,0,0,1,RACE_CYBERSE,ATTRIBUTE_DARK) then return end
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,11738490,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_CYBERSE,ATTRIBUTE_DARK) then return end
 	local token=Duel.CreateToken(tp,32056071)
 	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 end

@@ -32,7 +32,7 @@ function c75622824.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local ct=Duel.GetFieldGroupCount(1-tp,LOCATION_MZONE,0)
 	if ft<ct then return end
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,75622825,0,0x4011,2000,1200,5,RACE_SPELLCASTER,ATTRIBUTE_WIND) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,75622825,0,TYPES_TOKEN_MONSTER,2000,1200,5,RACE_SPELLCASTER,ATTRIBUTE_WIND) then return end
 	for i=1,ct do
 		local token=Duel.CreateToken(tp,75622825)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP_DEFENSE)

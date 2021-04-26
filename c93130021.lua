@@ -23,7 +23,7 @@ function c93130021.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	local t1=Duel.IsExistingTarget(c93130021.filter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 	local t2=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,0x4011,c:GetAttack(),c:GetDefense(),c:GetLevel(),c:GetRace(),c:GetAttribute())
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,TYPES_TOKEN_MONSTER,c:GetAttack(),c:GetDefense(),c:GetLevel(),c:GetRace(),c:GetAttribute())
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(93130021,0))
 	if t1 and t2 then
 		op=Duel.SelectOption(tp,aux.Stringid(93130021,1),aux.Stringid(93130021,2),aux.Stringid(93130021,3))
@@ -64,7 +64,7 @@ function c93130021.operation(e,tp,eg,ep,ev,re,r,rp)
 		local race=c:GetRace()
 		local att=c:GetAttribute()
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 or not c:IsRelateToEffect(e) or c:IsFacedown()
-			or not Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,0x4011,atk,def,lv,race,att) then return end
+			or not Duel.IsPlayerCanSpecialSummonMonster(tp,93130022,0,TYPES_TOKEN_MONSTER,atk,def,lv,race,att) then return end
 		local token=Duel.CreateToken(tp,93130022)
 		c:CreateRelation(token,RESET_EVENT+RESETS_STANDARD)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)

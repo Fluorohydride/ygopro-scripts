@@ -44,7 +44,7 @@ function c38030232.attg(e,c)
 end
 function c38030232.tkfilter(c,tp)
 	return c:IsFaceup() and c:IsType(TYPE_EFFECT)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,38030233,0x12c,0x4011,c:GetBaseAttack(),0,4,RACE_WYRM,ATTRIBUTE_LIGHT)
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,38030233,0x12c,TYPES_TOKEN_MONSTER,c:GetBaseAttack(),0,4,RACE_WYRM,ATTRIBUTE_LIGHT)
 end
 function c38030232.tktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c38030232.tkfilter(chkc,tp) end
@@ -60,7 +60,7 @@ function c38030232.tkop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local atk=tc:GetBaseAttack()
 	if not tc:IsRelateToEffect(e) or not tc:IsFaceup() then atk=0 end
-	if Duel.IsPlayerCanSpecialSummonMonster(tp,38030233,0x12c,0x4011,atk,0,4,RACE_WYRM,ATTRIBUTE_LIGHT) then
+	if Duel.IsPlayerCanSpecialSummonMonster(tp,38030233,0x12c,TYPES_TOKEN_MONSTER,atk,0,4,RACE_WYRM,ATTRIBUTE_LIGHT) then
 		local token=Duel.CreateToken(tp,38030233)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

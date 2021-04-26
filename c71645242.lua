@@ -82,12 +82,12 @@ function c71645242.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	Duel.BreakEffect()
 	if bit.extract(ev,tp)~=0 and Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,71645243,0,0x4011,800,800,2,RACE_PLANT,ATTRIBUTE_DARK,POS_FACEUP_ATTACK,1-tp) then
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,71645243,0,TYPES_TOKEN_MONSTER,800,800,2,RACE_PLANT,ATTRIBUTE_DARK,POS_FACEUP_ATTACK,1-tp) then
 		local token=Duel.CreateToken(tp,71645243)
 		Duel.SpecialSummonStep(token,SUMMON_VALUE_BLACK_GARDEN,tp,1-tp,false,false,POS_FACEUP_ATTACK)
 	end
 	if bit.extract(ev,1-tp)~=0 and Duel.GetLocationCount(tp,LOCATION_MZONE,1-tp)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(1-tp,71645243,0,0x4011,800,800,2,RACE_PLANT,ATTRIBUTE_DARK) then
+		and Duel.IsPlayerCanSpecialSummonMonster(1-tp,71645243,0,TYPES_TOKEN_MONSTER,800,800,2,RACE_PLANT,ATTRIBUTE_DARK) then
 		local token=Duel.CreateToken(1-tp,71645243)
 		Duel.SpecialSummonStep(token,SUMMON_VALUE_BLACK_GARDEN,1-tp,tp,false,false,POS_FACEUP_ATTACK)
 	end

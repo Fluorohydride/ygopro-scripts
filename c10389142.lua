@@ -22,7 +22,7 @@ function c10389142.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c10389142.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,10389143,0,0x4011,2000,0,6,RACE_MACHINE,ATTRIBUTE_WIND) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,10389143,0,TYPES_TOKEN_MONSTER,2000,0,6,RACE_MACHINE,ATTRIBUTE_WIND) end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,ft,0,0)
@@ -38,7 +38,7 @@ function c10389142.spop(e,tp,eg,ep,ev,re,r,rp)
 	e0:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e0,tp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<=0 or not Duel.IsPlayerCanSpecialSummonMonster(tp,10389143,0,0x4011,2000,0,6,RACE_MACHINE,ATTRIBUTE_WIND) then return end
+	if ft<=0 or not Duel.IsPlayerCanSpecialSummonMonster(tp,10389143,0,TYPES_TOKEN_MONSTER,2000,0,6,RACE_MACHINE,ATTRIBUTE_WIND) then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local fid=e:GetHandler():GetFieldID()
 	local g=Group.CreateGroup()

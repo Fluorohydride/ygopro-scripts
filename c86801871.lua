@@ -16,7 +16,7 @@ function c86801871.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c86801871.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,86801872,0,0x4011,1200,1200,3,RACE_REPTILE,ATTRIBUTE_EARTH) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,86801872,0,TYPES_TOKEN_MONSTER,1200,1200,3,RACE_REPTILE,ATTRIBUTE_EARTH) then return end
 	local token=Duel.CreateToken(tp,86801872)
 	if Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP) then
 		local e1=Effect.CreateEffect(e:GetHandler())

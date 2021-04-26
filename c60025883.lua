@@ -41,7 +41,7 @@ end
 function c60025883.costfilter(c,e,tp)
 	return c:IsType(TYPE_SYNCHRO) and c:IsAbleToRemoveAsCost()
 		and (c:IsSetCard(0xc2) or c:IsRace(RACE_DRAGON) and (c:IsLevel(7) or c:IsLevel(8)))
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,60025884,0,0x4011,c:GetAttack(),c:GetDefense(),c:GetLevel(),c:GetRace(),c:GetAttribute())
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,60025884,0,TYPES_TOKEN_MONSTER,c:GetAttack(),c:GetDefense(),c:GetLevel(),c:GetRace(),c:GetAttribute())
 end
 function c60025883.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c60025883.costfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
@@ -66,7 +66,7 @@ function c60025883.spop(e,tp,eg,ep,ev,re,r,rp)
 	local race=tc:GetOriginalRace()
 	local att=tc:GetOriginalAttribute()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,60025884,0,0x4011,atk,def,lv,race,att) then return end
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,60025884,0,TYPES_TOKEN_MONSTER,atk,def,lv,race,att) then return end
 	local token=Duel.CreateToken(tp,60025884)
 	Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP,zone)
 	local e1=Effect.CreateEffect(c)
