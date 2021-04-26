@@ -77,6 +77,7 @@ function c53184342.disop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
+		Duel.AdjustInstantly()
 		local ct=Duel.GetMatchingGroupCount(c53184342.eqfilter,tp,LOCATION_ONFIELD,0,nil)
 		if ct>0 then
 			local e3=Effect.CreateEffect(c)
