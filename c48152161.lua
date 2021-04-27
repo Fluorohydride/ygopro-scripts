@@ -34,8 +34,9 @@ function c48152161.activate(e,tp,eg,ep,ev,re,r,rp)
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then exc=e:GetHandler() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g=Duel.SelectMatchingCard(tp,c48152161.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,exc)
-	if g:GetCount()>0 then
-		local tc=g:GetFirst()
+	local tc=g:GetFirst()
+	if tc and not tc:IsImmuneToEffect(e) then
+		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
@@ -49,6 +50,7 @@ function c48152161.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e2)
+		Duel.AdjustInstantly(tc)
 		local atk=tc:GetAttack()
 		if atk>0 then
 			Duel.Recover(tp,atk,REASON_EFFECT)
