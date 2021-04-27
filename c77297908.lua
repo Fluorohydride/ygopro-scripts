@@ -17,21 +17,13 @@ function c77297908.initial_effect(c)
 	e2:SetOperation(c77297908.thop)
 	c:RegisterEffect(e2)
 	--change effect
-	local e3=Effect.CreateEffect(c)
-	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-	e3:SetCode(EVENT_CHAINING)
-	e3:SetRange(LOCATION_FZONE)
-	e3:SetCountLimit(1)
-	e3:SetCondition(c77297908.chcon1)
-	e3:SetOperation(c77297908.chop1)
-	c:RegisterEffect(e3)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e4:SetCode(EVENT_CHAIN_SOLVING)
 	e4:SetRange(LOCATION_FZONE)
 	e4:SetCountLimit(1,77297909)
-	e4:SetCondition(c77297908.chcon2)
-	e4:SetOperation(c77297908.chop2)
+	e4:SetCondition(c77297908.chcon)
+	e4:SetOperation(c77297908.chop)
 	c:RegisterEffect(e4)
 end
 function c77297908.cfilter(c)
@@ -67,21 +59,14 @@ function c77297908.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
-function c77297908.chcon1(e,tp,eg,ep,ev,re,r,rp)
-	return ep==1-tp and re:IsActiveType(TYPE_MONSTER)
-		and Duel.IsExistingMatchingCard(c77297908.confilter,tp,LOCATION_MZONE,0,1,nil)
-end
-function c77297908.chop1(e,tp,eg,ep,ev,re,r,rp)
-	re:GetHandler():RegisterFlagEffect(77297908,RESET_CHAIN,0,1)
-end
 function c77297908.confilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x10ec) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
 end
-function c77297908.chcon2(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():GetFlagEffect(77297908)>0
+function c77297908.chcon(e,tp,eg,ep,ev,re,r,rp)
+	return ep==1-tp and re:IsActiveType(TYPE_MONSTER)
 		and Duel.IsExistingMatchingCard(c77297908.confilter,tp,LOCATION_MZONE,0,1,nil)
 end
-function c77297908.chop2(e,tp,eg,ep,ev,re,r,rp)
+function c77297908.chop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Group.CreateGroup()
 	Duel.ChangeTargetCard(ev,g)
 	return Duel.ChangeChainOperation(ev,c77297908.repop)
