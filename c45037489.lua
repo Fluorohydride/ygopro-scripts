@@ -1,5 +1,6 @@
 --フルール・ド・シュヴァリエ
 function c45037489.initial_effect(c)
+	aux.AddMaterialCodeList(c,19642774)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c45037489.tfilter,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()

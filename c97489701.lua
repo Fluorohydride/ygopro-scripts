@@ -1,5 +1,6 @@
 --スカーレッド・ノヴァ・ドラゴン
 function c97489701.initial_effect(c)
+	aux.AddMaterialCodeList(c,70902743)
 	--synchro summon
 	aux.AddSynchroMixProcedure(c,aux.Tuner(nil),aux.Tuner(nil),nil,aux.FilterBoolFunction(Card.IsCode,70902743),1,1)
 	c:EnableReviveLimit()

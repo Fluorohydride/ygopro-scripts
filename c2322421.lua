@@ -1,5 +1,6 @@
 --ロード・ウォリアー
 function c2322421.initial_effect(c)
+	aux.AddMaterialCodeList(c,71971554)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c2322421.tfilter,aux.NonTuner(nil),2)
 	c:EnableReviveLimit()

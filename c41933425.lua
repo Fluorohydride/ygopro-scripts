@@ -74,7 +74,7 @@ function c41933425.splimit(e,c,sump,sumtype,sumpos,targetp,se)
 	return not c:IsType(TYPE_FUSION) and c:IsLocation(LOCATION_EXTRA)
 end
 function c41933425.confilter(c,tp)
-	return aux.IsMaterialListCode(c,89943723) and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,89943723) and c:IsPreviousLocation(LOCATION_MZONE)
 		and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and c:IsLocation(LOCATION_EXTRA)
 end
 function c41933425.spcon(e,tp,eg,ep,ev,re,r,rp)

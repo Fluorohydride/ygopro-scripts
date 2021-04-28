@@ -1,5 +1,6 @@
 --ジャンク・アーチャー
 function c42810973.initial_effect(c)
+	aux.AddMaterialCodeList(c,63977008)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c42810973.tfilter,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()

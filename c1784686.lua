@@ -24,8 +24,8 @@ function c1784686.tgfilter(c,e,tp)
 		and Duel.IsExistingMatchingCard(c1784686.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c)
 end
 function c1784686.spfilter(c,e,tp,tc)
-	return aux.IsMaterialListCode(c,tc:GetCode()) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)
-		and Duel.GetLocationCountFromEx(tp,tp,tc,c)>0
+	return c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,tc:GetCode())
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,tc,c)>0
 end
 function c1784686.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc==0 then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c1784686.tgfilter(chkc,e,tp) end

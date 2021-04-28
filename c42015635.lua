@@ -24,5 +24,5 @@ function c42015635.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c42015635.atktg(e,c)
-	return c:IsCode(89943723) or aux.IsMaterialListCode(c,89943723)
+	return c:IsCode(89943723) or c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,89943723)
 end

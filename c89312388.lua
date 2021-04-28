@@ -14,7 +14,7 @@ function c89312388.filter2(c,fc)
 	return aux.IsMaterialListCode(fc,c:GetCode()) and c:IsAbleToGraveAsCost()
 end
 function c89312388.filter1(c,tp)
-	return Duel.IsExistingMatchingCard(c89312388.filter2,tp,LOCATION_DECK,0,1,nil,c)
+	return c:IsType(TYPE_FUSION) and Duel.IsExistingMatchingCard(c89312388.filter2,tp,LOCATION_DECK,0,1,nil,c)
 end
 function c89312388.coscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c89312388.filter1,tp,LOCATION_EXTRA,0,1,nil,tp) end

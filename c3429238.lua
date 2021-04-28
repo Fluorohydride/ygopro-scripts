@@ -1,5 +1,6 @@
 --ドリル・ウォリアー
 function c3429238.initial_effect(c)
+	aux.AddMaterialCodeList(c,56286179)
 	--synchro summon
 	aux.AddSynchroProcedure(c,c3429238.tfilter,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()

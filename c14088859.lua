@@ -82,7 +82,7 @@ function c14088859.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_EFFECT)
 end
 function c14088859.repfilter2(c,tp,re)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and aux.IsMaterialListCode(c,89943723) and c:IsType(TYPE_MONSTER)
+	return c:IsControler(tp) and c:IsLocation(LOCATION_MZONE) and aux.IsMaterialListCode(c,89943723) and c:IsType(TYPE_FUSION)
 		and c:GetDestination()==LOCATION_DECK and re:GetOwner()==c
 end
 function c14088859.reptg2(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -96,5 +96,5 @@ function c14088859.repop2(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_EFFECT)
 end
 function c14088859.repval2(e,c)
-	return c:IsControler(e:GetHandlerPlayer()) and c:IsLocation(LOCATION_MZONE) and aux.IsMaterialListCode(c,89943723) and c:IsType(TYPE_MONSTER)
+	return c:IsControler(e:GetHandlerPlayer()) and c:IsLocation(LOCATION_MZONE) and aux.IsMaterialListCode(c,89943723) and c:IsType(TYPE_FUSION)
 end

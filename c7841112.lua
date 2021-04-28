@@ -1,6 +1,6 @@
 --セイヴァー・スター・ドラゴン
 function c7841112.initial_effect(c)
-	aux.AddCodeList(c,44508094)
+	aux.AddMaterialCodeList(c,21159309,44508094)
 	--synchro summon
 	aux.AddSynchroMixProcedure(c,c7841112.mfilter1,c7841112.mfilter2,nil,aux.NonTuner(nil),1,1)
 	c:EnableReviveLimit()
