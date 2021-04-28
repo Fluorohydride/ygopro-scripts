@@ -50,7 +50,7 @@ function c8198620.atop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		bc:RegisterEffect(e1)
 		if lv>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.IsPlayerCanSpecialSummonMonster(tp,8198621,0,0x4011,-2,0,0,RACE_ZOMBIE,ATTRIBUTE_DARK) then
+			and Duel.IsPlayerCanSpecialSummonMonster(tp,8198621,0,TYPES_TOKEN_MONSTER,-2,0,0,RACE_ZOMBIE,ATTRIBUTE_DARK) then
 			local token=Duel.CreateToken(tp,8198621)
 			Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 			local e1=Effect.CreateEffect(c)

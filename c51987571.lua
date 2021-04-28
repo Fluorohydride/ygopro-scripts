@@ -29,7 +29,7 @@ end
 function c51987571.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
-	if not Duel.IsPlayerCanSpecialSummonMonster(tp,51987572,0,0x4011,0,0,1,RACE_ROCK,ATTRIBUTE_EARTH) then return end
+	if not Duel.IsPlayerCanSpecialSummonMonster(tp,51987572,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_ROCK,ATTRIBUTE_EARTH) then return end
 	for i=1,2 do
 		local token=Duel.CreateToken(tp,51987572)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)

@@ -39,7 +39,7 @@ function c43664494.tkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c43664494.tktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,43664495,0x120,0x4011,0,0,1,RACE_PYRO,ATTRIBUTE_FIRE,POS_FACEUP) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,43664495,0x120,TYPES_TOKEN_MONSTER,0,0,1,RACE_PYRO,ATTRIBUTE_FIRE,POS_FACEUP) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,0)
 end
@@ -47,7 +47,7 @@ function c43664494.tkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not Duel.IsPlayerCanSpecialSummonMonster(tp,43664495,0x120,0x4011,0,0,1,RACE_PYRO,ATTRIBUTE_FIRE,POS_FACEUP) then return end
+		or not Duel.IsPlayerCanSpecialSummonMonster(tp,43664495,0x120,TYPES_TOKEN_MONSTER,0,0,1,RACE_PYRO,ATTRIBUTE_FIRE,POS_FACEUP) then return end
 	local token=Duel.CreateToken(tp,43664495)
 	Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 	local e1=Effect.CreateEffect(c)

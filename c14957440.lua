@@ -43,7 +43,7 @@ function c14957440.tkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if e:GetHandler():AddCounter(0x59,1)~=0 and ft>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,14957441,0,0x4011,0,0,1,RACE_BEAST,ATTRIBUTE_EARTH) then
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,14957441,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_BEAST,ATTRIBUTE_EARTH) then
 		Duel.BreakEffect()
 		local ct=c:GetCounter(0x59)
 		if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end

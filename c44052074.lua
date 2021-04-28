@@ -61,7 +61,7 @@ function c44052074.tktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if ft==0 then loc=LOCATION_MZONE end
 		e:SetLabel(loc)
 		return Duel.IsExistingTarget(Card.IsFaceup,tp,loc,0,1,nil)
-			and Duel.IsPlayerCanSpecialSummonMonster(tp,44052075,0x7,0x4011,0,0,1,RACE_MACHINE,ATTRIBUTE_EARTH)
+			and Duel.IsPlayerCanSpecialSummonMonster(tp,44052075,0x7,TYPES_TOKEN_MONSTER,0,0,1,RACE_MACHINE,ATTRIBUTE_EARTH)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,e:GetLabel(),0,1,1,nil)
@@ -73,7 +73,7 @@ function c44052074.tkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-			or not Duel.IsPlayerCanSpecialSummonMonster(tp,44052075,0x7,0x4011,0,0,1,RACE_MACHINE,ATTRIBUTE_EARTH) then return end
+			or not Duel.IsPlayerCanSpecialSummonMonster(tp,44052075,0x7,TYPES_TOKEN_MONSTER,0,0,1,RACE_MACHINE,ATTRIBUTE_EARTH) then return end
 		local token=Duel.CreateToken(tp,44052075)
 		Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 	end

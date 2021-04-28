@@ -86,8 +86,8 @@ function c90884403.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ft2=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
 	local ct=math.min(ft1,ft2)
 	if chk==0 then return ct>0 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,90884404,0,0x4011,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,90884404,0,0x4011,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE,1-tp) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,90884404,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE)
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,90884404,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE,1-tp) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,ct*2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,ct*2,0,0)
 end
@@ -97,8 +97,8 @@ function c90884403.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft2=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
 	local ct=math.min(ft1,ft2)
 	if ct>0 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,90884404,0,0x4011,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,90884404,0,0x4011,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE,1-tp) then
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,90884404,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE)
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,90884404,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE,1-tp) then
 		for i=1,ct do
 			local token=Duel.CreateToken(tp,90884404)
 			Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP_DEFENSE)

@@ -25,14 +25,14 @@ function c7610394.filter(c)
 end
 function c7610394.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,7610395,0x129,0x4011,400,400,1,RACE_FIEND,ATTRIBUTE_DARK) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,7610395,0x129,TYPES_TOKEN_MONSTER,400,400,1,RACE_FIEND,ATTRIBUTE_DARK) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 end
 function c7610394.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local flag=false
-	if ft>0 and Duel.IsPlayerCanSpecialSummonMonster(tp,7610395,0x129,0x4011,400,400,1,RACE_FIEND,ATTRIBUTE_DARK) then
+	if ft>0 and Duel.IsPlayerCanSpecialSummonMonster(tp,7610395,0x129,TYPES_TOKEN_MONSTER,400,400,1,RACE_FIEND,ATTRIBUTE_DARK) then
 		if ft>1 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 			and Duel.IsExistingMatchingCard(c7610394.filter,tp,LOCATION_SZONE,0,1,nil)
 			and Duel.SelectYesNo(tp,aux.Stringid(7610394,2)) then

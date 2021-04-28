@@ -24,7 +24,7 @@ end
 function c54537489.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsLevelAbove(2)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,54537490,0,0x4011,300,200,1,RACE_WYRM,ATTRIBUTE_WATER) end
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,54537490,0,TYPES_TOKEN_MONSTER,300,200,1,RACE_WYRM,ATTRIBUTE_WATER) end
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
@@ -38,7 +38,7 @@ function c54537489.spop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(-1)
 	c:RegisterEffect(e1)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,54537490,0,0x4011,300,200,1,RACE_WYRM,ATTRIBUTE_WATER) then
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,54537490,0,TYPES_TOKEN_MONSTER,300,200,1,RACE_WYRM,ATTRIBUTE_WATER) then
 		local token=Duel.CreateToken(tp,54537490)
 		Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 	end

@@ -26,7 +26,7 @@ function c36247316.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		if e:GetLabel()==0 then return false end
 		e:SetLabel(0)
 		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.IsPlayerCanSpecialSummonMonster(tp,36247316,0x10db,0x11,600,0,2,RACE_WARRIOR,ATTRIBUTE_DARK)
+			and Duel.IsPlayerCanSpecialSummonMonster(tp,36247316,0x10db,TYPES_NORMAL_TRAP_MONSTER,600,0,2,RACE_WARRIOR,ATTRIBUTE_DARK)
 			and Duel.IsExistingTarget(c36247316.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	e:SetLabel(0)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
@@ -58,7 +58,7 @@ function c36247316.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e3,tp)
 		if c:IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and Duel.IsPlayerCanSpecialSummonMonster(tp,36247316,0x10db,0x11,600,0,2,RACE_WARRIOR,ATTRIBUTE_DARK) then
+			and Duel.IsPlayerCanSpecialSummonMonster(tp,36247316,0x10db,TYPES_NORMAL_TRAP_MONSTER,600,0,2,RACE_WARRIOR,ATTRIBUTE_DARK) then
 			Duel.BreakEffect()
 			c:AddMonsterAttribute(TYPE_NORMAL)
 			Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_DEFENSE)
