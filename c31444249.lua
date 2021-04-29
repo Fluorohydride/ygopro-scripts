@@ -28,7 +28,7 @@ function c31444249.initial_effect(c)
 		filter=aux.FilterBoolFunction(Card.IsSetCard,0xbb),
 		mat_location=LOCATION_HAND+LOCATION_MZONE+LOCATION_DECK,
 		fcheck=c31444249.fcheck,
-		gcheck=c31444249.gcheck,
+		get_gcheck=c31444249.get_gcheck,
 		reg=false
 	})
 	e4:SetType(EFFECT_TYPE_IGNITION)
@@ -51,10 +51,12 @@ function c31444249.fcheck(tp,sg,fc)
 	if c31444249.dmcon(tp) then ct=6 end
 	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=ct
 end
-function c31444249.gcheck(sg)
-	local ct=0
-	if c31444249.dmcon(tp) then ct=6 end
-	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=ct
+function c31444249.get_gcheck(e,tp,fc)
+	return function(sg)
+		local ct=0
+		if c31444249.dmcon(tp) then ct=6 end
+		return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=ct
+	end
 end
 function c31444249.dmcon(tp)
 	return not Duel.IsExistingMatchingCard(Card.IsSummonLocation,tp,LOCATION_MZONE,0,1,nil,LOCATION_EXTRA)

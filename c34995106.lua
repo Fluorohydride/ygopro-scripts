@@ -32,7 +32,7 @@ function c34995106.chkfilter(c,tp)
 	return c:IsControler(tp) and c:IsCode(68468459)
 end
 function c34995106.exfilter(c,tp)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE)
+	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE) and not c:IsHasEffect(EFFECT_EXTRA_FUSION_MATERIAL,tp)
 end
 function c34995106.fcheck(tp,sg,fc)
 	if sg:IsExists(c34995106.chkfilter,1,nil,tp) then

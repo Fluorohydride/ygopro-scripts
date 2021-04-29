@@ -1576,10 +1576,14 @@ end
 function Auxiliary.FMaterialRemove(mat)
 	Duel.Remove(mat,POS_FACEUP,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 end
+function Auxiliary.FMaterialToDeck(mat)
+	Duel.SendtoDeck(mat,nil,2,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
+end
 function Auxiliary.AddFusionEffectProcUltimate(c,params)
 	--filter,mat_location,mat_filter,mat_operation,gc,reg,get_extra_mat,include_this_card
 	--grave_filter,grave_operation,removed_filter,removed_operation,deck_filter,deck_operation,
 	--get_fcheck,get_gcheck,get_fgoalcheck,foperation,fcheck,gcheck,fgoalcheck,spsummon_nocheck
+	--category,opinfo,mat_operation2,foperation2
 	if params.mat_location==nil then params.mat_location=LOCATION_HAND+LOCATION_MZONE end
 	if params.mat_filter==nil then params.mat_filter=Auxiliary.FMaterialFilter end
 	if params.mat_operation==nil then params.mat_operation=Auxiliary.FMaterialToGrave end
@@ -1589,8 +1593,9 @@ function Auxiliary.AddFusionEffectProcUltimate(c,params)
 	if params.deck_filter==nil then params.deck_filter=Auxiliary.FMaterialToGraveFilter end
 	if params.deck_operation==nil then params.deck_operation=params.mat_operation end
 	if params.spsummon_nocheck==nil then params.spsummon_nocheck=false end
+	if params.category==nil then params.category=0 end
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON|CATEGORY_FUSION_SUMMON|params.category)
 	e1:SetTarget(Auxiliary.FusionEffectUltimateTarget(params))
 	e1:SetOperation(Auxiliary.FusionEffectUltimateOperation(params))
 	if params.reg~=false then
@@ -1602,7 +1607,7 @@ function Auxiliary.AddFusionEffectProcUltimate(c,params)
 end
 Auxiliary.FMaterialBase=nil
 function Auxiliary.FusionEffectUltimateFilter(c,e,tp,mg,chkf,params)
-	--mg,gc,f1,f2,get_fcheck
+	--mg,gc,f1,f2,get_fcheck,spsummon_nocheck
 	if not c:IsType(TYPE_FUSION) then return false end
 	if not c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,params.spsummon_nocheck,false) then return false end
 	if params.filter1 and not params.filter1(c) then return false end
@@ -1638,6 +1643,9 @@ function Auxiliary.FusionEffectUltimateTarget(params)
 					Auxiliary.FMaterialBase=mgbase:Filter(Auxiliary.IsInGroup,nil,mg1)
 					Auxiliary.FCheckAdditional=params.fcheck
 					Auxiliary.GCheckAdditional=params.gcheck
+					if params.get_gcheck then
+						Auxiliary.GCheckAdditional=params.get_gcheck(e,tp,nil)
+					end
 					Auxiliary.FGoalCheckAdditional=params.fgoalcheck
 					local res=Duel.IsExistingMatchingCard(Auxiliary.FusionEffectUltimateFilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,chkf,{
 						filter1=params.filter,
@@ -1672,8 +1680,17 @@ function Auxiliary.FusionEffectUltimateTarget(params)
 					Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,params.mat_location)
 					e:SetCategory(e:GetCategory()|CATEGORY_REMOVE)
 				end
+				if params.mat_operation==Auxiliary.FMaterialToDeck
+					or params.grave_operation==Auxiliary.FMaterialToDeck
+					or params.deck_operation==Auxiliary.FMaterialToDeck then
+					Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,tp,params.mat_location)
+					e:SetCategory(e:GetCategory()|CATEGORY_TODECK)
+				end
 				if params.mat_location&LOCATION_DECK>0 then
 					e:SetCategory(e:GetCategory()|CATEGORY_DECKDES)
+				end
+				if params.opinfo then
+					params.opinfo(e,tp)
 				end
 			end
 end
@@ -1697,6 +1714,9 @@ function Auxiliary.FusionEffectUltimateOperation(params)
 				Auxiliary.FMaterialBase=mgbase:Filter(Auxiliary.IsInGroup,nil,mg1)
 				Auxiliary.FCheckAdditional=params.fcheck
 				Auxiliary.GCheckAdditional=params.gcheck
+				if params.get_gcheck then
+					Auxiliary.GCheckAdditional=params.get_gcheck(e,tp,nil)
+				end
 				Auxiliary.FGoalCheckAdditional=params.fgoalcheck
 				local sg1=Duel.GetMatchingGroup(Auxiliary.FusionEffectUltimateFilter,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,chkf,{
 					filter1=params.filter,
@@ -1728,10 +1748,14 @@ function Auxiliary.FusionEffectUltimateOperation(params)
 					local tc=tg:GetFirst()
 					Auxiliary.FCheckAdditional=params.fcheck
 					Auxiliary.GCheckAdditional=params.gcheck
+					if params.get_gcheck then
+						Auxiliary.GCheckAdditional=params.get_gcheck(e,tp,tc)
+					end
 					if params.get_fcheck then Auxiliary.FCheckAdditional=params.get_fcheck(tc,e,tp) end
 					if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 						local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,gc,chkf)
 						tc:SetMaterial(mat1)
+						if params.mat_operation2 then params.mat_operation2(e,tp,mat1) end
 						if params.grave_operation~=params.mat_operation then
 							local mat=mat1:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
 							mat1:Sub(mat)
@@ -1762,7 +1786,8 @@ function Auxiliary.FusionEffectUltimateOperation(params)
 				Auxiliary.GCheckAdditional=nil
 				Auxiliary.FGoalCheckAdditional=nil
 				Auxiliary.FMaterialBase=nil
-			end	
+				if params.foperation2 then params.foperation2(e,tp,eg,ep,ev,re,r,rp) end
+			end
 end
 function Auxiliary.AddFusionEffectProc(c,filter,mat_location,mat_filter,mat_operation,params)
 	if params==nil then params={} end
