@@ -1643,6 +1643,7 @@ function Auxiliary.FusionEffectUltimateTarget(params)
 						:Filter(Auxiliary.FusionEffectUltimateMatLocFilter,nil,e,tp,LOCATION_REMOVED,params.removed_filter)
 						:Filter(Auxiliary.FusionEffectUltimateMatLocFilter,nil,e,tp,LOCATION_DECK,params.deck_filter)
 						:Filter(Auxiliary.FusionEffectUltimateMatLocFilter,nil,e,tp,LOCATION_EXTRA,params.extra_filter)
+					if gc then mg1:AddCard(gc) end
 					Auxiliary.FMaterialBase=mgbase:Filter(Auxiliary.IsInGroup,nil,mg1)
 					Auxiliary.FCheckAdditional=params.fcheck
 					Auxiliary.GCheckAdditional=params.gcheck
@@ -1715,6 +1716,7 @@ function Auxiliary.FusionEffectUltimateOperation(params)
 					:Filter(Auxiliary.FusionEffectUltimateMatLocFilter,nil,e,tp,LOCATION_REMOVED,params.removed_filter)
 					:Filter(Auxiliary.FusionEffectUltimateMatLocFilter,nil,e,tp,LOCATION_DECK,params.deck_filter)
 					:Filter(Auxiliary.FusionEffectUltimateMatLocFilter,nil,e,tp,LOCATION_EXTRA,params.extra_filter)
+				if gc then mg1:AddCard(gc) end
 				Auxiliary.FMaterialBase=mgbase:Filter(Auxiliary.IsInGroup,nil,mg1)
 				Auxiliary.FCheckAdditional=params.fcheck
 				Auxiliary.GCheckAdditional=params.gcheck
