@@ -1581,7 +1581,7 @@ function Auxiliary.FMaterialToDeck(mat)
 end
 function Auxiliary.AddFusionEffectProcUltimate(c,params)
 	--filter,mat_location,mat_filter,mat_operation,gc,reg,get_extra_mat,include_this_card
-	--grave_filter,grave_operation,removed_filter,removed_operation,deck_filter,deck_operation,
+	--grave_filter,grave_operation,removed_filter,removed_operation,deck_filter,deck_operation,extra_filter,extra_operation
 	--get_fcheck,get_gcheck,get_fgoalcheck,foperation,fcheck,gcheck,fgoalcheck,spsummon_nocheck
 	--category,opinfo,mat_operation2,foperation2
 	if params.mat_location==nil then params.mat_location=LOCATION_HAND+LOCATION_MZONE end
@@ -1592,6 +1592,8 @@ function Auxiliary.AddFusionEffectProcUltimate(c,params)
 	if params.removed_operation==nil then params.removed_operation=params.mat_operation end
 	if params.deck_filter==nil then params.deck_filter=Auxiliary.FMaterialToGraveFilter end
 	if params.deck_operation==nil then params.deck_operation=params.mat_operation end
+	if params.extra_filter==nil then params.extra_filter=Auxiliary.FMaterialToGraveFilter end
+	if params.extra_operation==nil then params.extra_operation=params.mat_operation end
 	if params.spsummon_nocheck==nil then params.spsummon_nocheck=false end
 	if params.category==nil then params.category=0 end
 	local e1=Effect.CreateEffect(c)
@@ -1640,6 +1642,7 @@ function Auxiliary.FusionEffectUltimateTarget(params)
 						:Filter(Auxiliary.FusionEffectUltimateMatLocFilter,nil,e,tp,LOCATION_GRAVE,params.grave_filter)
 						:Filter(Auxiliary.FusionEffectUltimateMatLocFilter,nil,e,tp,LOCATION_REMOVED,params.removed_filter)
 						:Filter(Auxiliary.FusionEffectUltimateMatLocFilter,nil,e,tp,LOCATION_DECK,params.deck_filter)
+						:Filter(Auxiliary.FusionEffectUltimateMatLocFilter,nil,e,tp,LOCATION_EXTRA,params.extra_filter)
 					Auxiliary.FMaterialBase=mgbase:Filter(Auxiliary.IsInGroup,nil,mg1)
 					Auxiliary.FCheckAdditional=params.fcheck
 					Auxiliary.GCheckAdditional=params.gcheck
@@ -1711,6 +1714,7 @@ function Auxiliary.FusionEffectUltimateOperation(params)
 					:Filter(Auxiliary.FusionEffectUltimateMatLocFilter,nil,e,tp,LOCATION_GRAVE,params.grave_filter)
 					:Filter(Auxiliary.FusionEffectUltimateMatLocFilter,nil,e,tp,LOCATION_REMOVED,params.removed_filter)
 					:Filter(Auxiliary.FusionEffectUltimateMatLocFilter,nil,e,tp,LOCATION_DECK,params.deck_filter)
+					:Filter(Auxiliary.FusionEffectUltimateMatLocFilter,nil,e,tp,LOCATION_EXTRA,params.extra_filter)
 				Auxiliary.FMaterialBase=mgbase:Filter(Auxiliary.IsInGroup,nil,mg1)
 				Auxiliary.FCheckAdditional=params.fcheck
 				Auxiliary.GCheckAdditional=params.gcheck
@@ -1770,6 +1774,11 @@ function Auxiliary.FusionEffectUltimateOperation(params)
 							local mat=mat1:Filter(Card.IsLocation,nil,LOCATION_DECK)
 							mat1:Sub(mat)
 							params.deck_operation(mat)
+						end
+						if params.extra_operation~=params.mat_operation then
+							local mat=mat1:Filter(Card.IsLocation,nil,LOCATION_EXTRA)
+							mat1:Sub(mat)
+							params.extra_operation(mat)
 						end
 						params.mat_operation(mat1)
 						Duel.BreakEffect()
