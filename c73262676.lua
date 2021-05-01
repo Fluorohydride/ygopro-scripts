@@ -10,6 +10,7 @@ function c73262676.initial_effect(c)
 	e1:SetOperation(c73262676.operation)
 	c:RegisterEffect(e1)
 end
+c73262676.counter_add_list={0x100e}
 function c73262676.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0xc) and c:GetLevel()>0
 end

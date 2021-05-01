@@ -18,6 +18,7 @@ function c34541863.initial_effect(c)
 	e2:SetOperation(c34541863.operation)
 	c:RegisterEffect(e2)
 end
+c34541863.counter_add_list={0x100e}
 function c34541863.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end

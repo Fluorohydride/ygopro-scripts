@@ -21,6 +21,7 @@ function c15475415.initial_effect(c)
 	e2:SetOperation(c15475415.ctop)
 	c:RegisterEffect(e2)
 end
+c15475415.counter_add_list={0x100e}
 function c15475415.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and eg:GetFirst():IsSetCard(0xc)
 end

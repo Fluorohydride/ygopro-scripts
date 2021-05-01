@@ -28,6 +28,7 @@ function c64163367.initial_effect(c)
 	e3:SetLabelObject(e0)
 	c:RegisterEffect(e3)
 end
+c64163367.counter_add_list={0x100e}
 function c64163367.ctop1(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():AddCounter(0x100e,1)
 end

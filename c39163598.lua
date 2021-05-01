@@ -11,6 +11,7 @@ function c39163598.initial_effect(c)
 	e1:SetOperation(c39163598.activate)
 	c:RegisterEffect(e1)
 end
+c39163598.counter_add_list={0x100e}
 function c39163598.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,Card.IsSetCard,1,nil,0xc) end
 	local g=Duel.SelectReleaseGroup(tp,Card.IsSetCard,1,1,nil,0xc)

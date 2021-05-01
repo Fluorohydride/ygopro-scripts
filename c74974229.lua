@@ -29,6 +29,7 @@ function c74974229.initial_effect(c)
 	e2:SetOperation(c74974229.spop)
 	c:RegisterEffect(e2)
 end
+c74974229.counter_add_list={0x100e}
 function c74974229.costfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsLevelAbove(1) and c:IsDiscardable()
 end

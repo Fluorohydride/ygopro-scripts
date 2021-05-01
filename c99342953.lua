@@ -25,6 +25,7 @@ function c99342953.initial_effect(c)
 	e3:SetOperation(c99342953.spop)
 	c:RegisterEffect(e3)
 end
+c99342953.counter_add_list={0x100e}
 function c99342953.ctfilter(c)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousSetCard(0xc)
 end
