@@ -106,14 +106,23 @@ end
 function c39000945.rthop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local g=tg:Filter(Card.IsRelateToEffect,nil,e)
-	local ct=0
+	local ctable={}
 	for tc in aux.Next(g) do
 		if tc:IsControler(tp) then
-			ct=ct+tc:GetCounter(0x1)
+			ctable[tc]=tc:GetCounter(0x1)
 		end
 	end
 	Duel.SendtoHand(g,nil,REASON_EFFECT)
-	if Duel.GetOperatedGroup():GetCount()>0 and ct>0 then
+	if not e:GetHandler():IsRelateToEffect(e) then return end
+	local og=Duel.GetOperatedGroup()
+	local ct=0
+	for tc,num in pairs(ctable) do
+		if og:IsContains(tc) and tc:IsLocation(LOCATION_HAND) then
+			ct=ct+num
+		end
+	end
+	if ct>0 then
+		Duel.BreakEffect()
 		e:GetHandler():AddCounter(0x1,ct)
 	end
 end
