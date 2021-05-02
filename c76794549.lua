@@ -23,7 +23,7 @@ function c76794549.initial_effect(c)
 	e2:SetTarget(c76794549.sptg)
 	e2:SetOperation(c76794549.spop)
 	c:RegisterEffect(e2)
-	--special summon
+	--fusion summon
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(76794549,5))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_FUSION_SUMMON)
