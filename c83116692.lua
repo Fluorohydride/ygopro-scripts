@@ -3,28 +3,16 @@ function c83116692.initial_effect(c)
 	--banish
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(83116692,0))
-	e1:SetCategory(CATEGORY_REMOVE)
+	e1:SetCategory(CATEGORY_REMOVE+CATEGORY_GRAVE_ACTION)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetCountLimit(1,83116692)
-	e1:SetCondition(c83116692.rmcon)
 	e1:SetTarget(c83116692.rmtg)
 	e1:SetOperation(c83116692.rmop)
 	c:RegisterEffect(e1)
-	--to grave
-	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(83116692,1))
-	e2:SetCategory(CATEGORY_TOGRAVE)
-	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
-	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e2:SetCountLimit(1,83116692)
-	e2:SetCondition(c83116692.tgcon)
-	e2:SetTarget(c83116692.tgtg)
-	e2:SetOperation(c83116692.tgop)
-	c:RegisterEffect(e2)
 	--special summon
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(83116692,2))
+	e3:SetDescription(aux.Stringid(83116692,1))
 	e3:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetRange(LOCATION_REMOVED)
@@ -42,49 +30,36 @@ function c83116692.initial_effect(c)
 	e4:SetOperation(c83116692.regop)
 	c:RegisterEffect(e4)
 end
-function c83116692.rmcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_GRAVE,nil,TYPE_MONSTER)>Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_GRAVE,nil,TYPE_SPELL+TYPE_TRAP)
-end
 function c83116692.rmfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
-end
-function c83116692.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroup(c83116692.rmfilter,tp,0,LOCATION_GRAVE,nil)
-	if chk==0 then return e:GetHandler():IsAbleToRemove() and g:GetCount()>0 end
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,e:GetHandler(),1,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
-end
-function c83116692.rmop(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0 then
-		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c83116692.rmfilter),tp,0,LOCATION_GRAVE,nil)
-		if g:GetCount()>0 then
-			Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_REMOVE)
-			local sg=g:Select(1-tp,1,1,nil)
-			Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)
-		end
-	end
-end
-function c83116692.tgcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_GRAVE,nil,TYPE_MONSTER)<Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_GRAVE,nil,TYPE_SPELL+TYPE_TRAP)
 end
 function c83116692.tgfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToGrave()
 end
-function c83116692.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroup(c83116692.tgfilter,tp,0,LOCATION_MZONE,nil)
-	if chk==0 then return e:GetHandler():IsAbleToGrave() and g:GetCount()>0 end
-	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,e:GetHandler(),1,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g,1,0,0)
+function c83116692.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
 end
-function c83116692.tgop(e,tp,eg,ep,ev,re,r,rp,chk)
+function c83116692.rmop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SendtoGrave(c,REASON_EFFECT)~=0 then
-		local g=Duel.GetMatchingGroup(c83116692.tgfilter,tp,0,LOCATION_MZONE,nil)
-		if g:GetCount()>0 then
-			Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
-			local sg=g:Select(1-tp,1,1,nil)
-			Duel.SendtoGrave(sg,REASON_EFFECT)
+	local mc=Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_GRAVE,nil,TYPE_MONSTER)
+	local sc=Duel.GetMatchingGroupCount(Card.IsType,tp,0,LOCATION_GRAVE,nil,TYPE_SPELL+TYPE_TRAP)
+	if mc>sc then
+		if c:IsRelateToEffect(e) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0 then
+			local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c83116692.rmfilter),tp,0,LOCATION_GRAVE,nil)
+			if g:GetCount()>0 then
+				Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_REMOVE)
+				local sg=g:Select(1-tp,1,1,nil)
+				Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)
+			end
+		end
+	elseif mc<sc then
+		if c:IsRelateToEffect(e) and Duel.SendtoGrave(c,REASON_EFFECT)~=0 then
+			local g=Duel.GetMatchingGroup(c83116692.tgfilter,tp,0,LOCATION_MZONE,nil)
+			if g:GetCount()>0 then
+				Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
+				local sg=g:Select(1-tp,1,1,nil)
+				Duel.SendtoGrave(sg,REASON_EFFECT)
+			end
 		end
 	end
 end
