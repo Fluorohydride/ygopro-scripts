@@ -50,15 +50,15 @@ function c37972500.teop(e,tp,eg,ep,ev,re,r,rp)
 	local b2=c37972500.chkcon(g,tp,1)
 	local sg=Group.CreateGroup()
 	if b1 and not b2 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(37972500,3))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(37972500,2))
 		sg=g:FilterSelect(tp,c37972500.chkfilter,1,1,nil,0)
 	end
 	if not b1 and b2 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(37972500,3))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(37972500,2))
 		sg=g:FilterSelect(tp,c37972500.chkfilter,1,1,nil,1)
 	end
 	if b1 and b2 then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(37972500,3))
+		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(37972500,2))
 		sg=g:Select(tp,1,1,nil)
 	end
 	local tc=sg:GetFirst()
