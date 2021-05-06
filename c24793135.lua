@@ -75,5 +75,5 @@ function c24793135.actlimitcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetCounter(0x5d)>=10
 end
 function c24793135.actlimittg(e,c)
-	return not c:IsDefense(c:GetAttack())
+	return c:IsDefenseAbove(0) and not c:IsDefense(c:GetAttack())
 end
