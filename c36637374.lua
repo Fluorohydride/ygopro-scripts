@@ -31,20 +31,6 @@ function c36637374.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
 end
 function c36637374.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT+REASON_DISCARD)~=0 then
-		Duel.BreakEffect()
-		local check=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
-		local g=Duel.SelectMatchingCard(tp,c36637374.selfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,check)
-		local tc=g:GetFirst()
-		if check and tc:IsCanBeSpecialSummoned(e,0,tp,false,false)
-			and (not tc:IsAbleToHand() or Duel.SelectOption(tp,1190,1152)==1) then
-			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
-		else
-			Duel.SendtoHand(tc,nil,REASON_EFFECT)
-			Duel.ConfirmCards(1-tp,tc)
-		end
-	end
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
@@ -54,6 +40,21 @@ function c36637374.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetTarget(c36637374.splimit)
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
+	end
+	if Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT+REASON_DISCARD)~=0 then
+		Duel.BreakEffect()
+		local check=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
+		local g=Duel.SelectMatchingCard(tp,c36637374.selfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,check)
+		if #g==0 then return end
+		local tc=g:GetFirst()
+		if check and tc:IsCanBeSpecialSummoned(e,0,tp,false,false)
+			and (not tc:IsAbleToHand() or Duel.SelectOption(tp,1190,1152)==1) then
+			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
+		else
+			Duel.SendtoHand(tc,nil,REASON_EFFECT)
+			Duel.ConfirmCards(1-tp,tc)
+		end
 	end
 end
 function c36637374.splimit(e,c)
