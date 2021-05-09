@@ -30,11 +30,12 @@ function c24793135.initial_effect(c)
 	--act limit
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_FIELD)
-	e5:SetCode(EFFECT_CANNOT_TRIGGER)
+	e5:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e5:SetCode(EFFECT_CANNOT_ACTIVATE)
 	e5:SetRange(LOCATION_FZONE)
-	e5:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
+	e5:SetTargetRange(1,1)
 	e5:SetCondition(c24793135.actlimitcon)
-	e5:SetTarget(c24793135.actlimittg)
+	e5:SetValue(c24793135.actlimit)
 	c:RegisterEffect(e5)
 end
 function c24793135.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -74,6 +75,8 @@ end
 function c24793135.actlimitcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetCounter(0x5d)>=10
 end
-function c24793135.actlimittg(e,c)
-	return c:IsDefenseAbove(0) and not c:IsDefense(c:GetAttack())
+function c24793135.actlimit(e,re,tp)
+	local loc=re:GetActivateLocation()
+	local rc=re:GetHandler()
+	return loc==LOCATION_MZONE and re:IsActiveType(TYPE_MONSTER) and rc:IsDefenseAbove(0) and not rc:IsDefense(rc:GetAttack())
 end
