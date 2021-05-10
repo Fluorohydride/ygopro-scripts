@@ -22,7 +22,6 @@ function c9161357.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCost(c9161357.lpcost)
 	e2:SetOperation(c9161357.lpop)
-	e2:SetLabelObject(e1)
 	c:RegisterEffect(e2)
 end
 c9161357.xyz_number=6
@@ -46,7 +45,6 @@ function c9161357.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		if not Duel.Equip(tp,tc,c,false) then return end
-		e:SetLabelObject(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
@@ -64,17 +62,22 @@ function c9161357.eqop(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetValue(atk)
 			tc:RegisterEffect(e2)
 		end
+		tc:RegisterFlagEffect(9161357,RESET_EVENT+RESETS_STANDARD,0,1)
 	end
 end
 function c9161357.eqlimit(e,c)
 	return e:GetOwner()==c
 end
+function c9161357.lpfilter(c,tp)
+	return c:GetFlagEffect(9161357)~=0 and c:IsControler(tp) and c:IsLocation(LOCATION_SZONE) and c:IsAbleToGraveAsCost()
+end
 function c9161357.lpcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local ec=e:GetLabelObject():GetLabelObject()
-	if chk==0 then return Duel.GetCurrentPhase()==PHASE_MAIN1
-		and ec and ec:GetEquipTarget()==e:GetHandler() and ec:IsAbleToGraveAsCost()
-		and e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
-	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
+	local c=e:GetHandler()
+	local eqg=c:GetEquipGroup()
+	if chk==0 then return Duel.GetCurrentPhase()==PHASE_MAIN1 and eqg:IsExists(c9161357.lpfilter,1,nil,tp)
+		and c:CheckRemoveOverlayCard(tp,1,REASON_COST) end
+	c:RemoveOverlayCard(tp,1,1,REASON_COST)
+	local ec=eqg:FilterSelect(tp,c9161357.lpfilter,1,1,nil,tp)
 	Duel.SendtoGrave(ec,REASON_COST)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
