@@ -35,7 +35,7 @@ function c13361027.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c13361027.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_WINDBEAST) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
