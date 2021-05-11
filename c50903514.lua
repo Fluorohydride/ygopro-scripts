@@ -77,7 +77,7 @@ function c50903514.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c50903514.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToEffect(e) and tc:IsRace(RACE_WARRIOR) and tc:IsAttribute(ATTRIBUTE_FIRE) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
