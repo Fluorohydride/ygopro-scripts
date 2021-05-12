@@ -44,14 +44,16 @@ function c12644061.initial_effect(c)
 	e4:SetCost(c12644061.damcost)
 	e4:SetOperation(c12644061.damop)
 	c:RegisterEffect(e4)
-	--12644061 chk
+	--
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_FIELD)
-	e5:SetCode(12644061)
+	e5:SetCode(EFFECT_CHANGE_GRAVE_ATTRIBUTE)
 	e5:SetRange(LOCATION_FZONE)
 	e5:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e5:SetTargetRange(1,1)
 	e5:SetCondition(c12644061.condition)
+	e5:SetValue(ATTRIBUTE_DARK)
+	e5:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x1034))
 	c:RegisterEffect(e5)
 end
 function c12644061.discon(e,tp,eg,ep,ev,re,r,rp)
