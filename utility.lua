@@ -2637,13 +2637,13 @@ function Auxiliary.SequenceToGlobal(p,loc,seq)
 	end
 	if loc==LOCATION_MZONE then
 		if seq<=6 then
-			return 0x1<<(16*p+seq)
+			return 0x0001<<(16*p+seq)
 		else
 			return 0
 		end
 	elseif loc == LOCATION_SZONE then
 		if seq<=4 then
-			return 0x10<<(16*p+seq)
+			return 0x0100<<(16*p+seq)
 		else
 			return 0
 		end
