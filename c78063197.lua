@@ -96,7 +96,7 @@ function c78063197.filter(c)
 end
 function c78063197.eqfilter(c)
 	local m=_G["c"..c:GetCode()]
-	return c:IsFaceup() and ((c:IsSetCard(0x1110) and c:IsType(TYPE_FUSION)) or c:IsCode(64631466))
+	return m and c:IsFaceup() and ((c:IsSetCard(0x1110) and c:IsType(TYPE_FUSION)) or c:IsCode(64631466))
 		and not c:IsDisabled() and m.can_equip_monster and m.can_equip_monster(c)
 end
 function c78063197.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
