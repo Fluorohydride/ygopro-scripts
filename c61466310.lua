@@ -34,10 +34,10 @@ function c61466310.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp and eg:GetFirst():IsSummonType(SUMMON_TYPE_ADVANCE)
 end
 function c61466310.filter(c,code)
-	return c:IsAttack(2400,2800) and c:IsDefense(1000) and c:GetCode()~=code and c:IsAbleToHand()
+	return c:IsAttack(2400,2800) and c:IsDefense(1000) and not c:IsCode(code) and c:IsAbleToHand()
 end
 function c61466310.filter2(c,atk,code)
-	return c:IsAttack(atk) and c:IsDefense(1000) and c:GetCode()~=code and c:IsAbleToHand()
+	return c:IsAttack(atk) and c:IsDefense(1000) and not c:IsCode(code) and c:IsAbleToHand()
 end
 function c61466310.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c61466310.filter,tp,LOCATION_DECK,0,1,nil,eg:GetFirst():GetCode()) end
