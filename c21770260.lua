@@ -38,7 +38,7 @@ function c21770260.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c21770260.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
-	return c:GetCode()~=21770261
+	return not c:IsCode(21770261)
 end
 function c21770260.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp

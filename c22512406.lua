@@ -13,7 +13,7 @@ function c22512406.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c22512406.cfilter1(c)
-	return c:IsFaceup() and c:IsSetCard(0x2b) and c:GetCode()~=22512406
+	return c:IsFaceup() and c:IsSetCard(0x2b) and not c:IsCode(22512406)
 end
 function c22512406.cfilter2(c)
 	return c:IsFaceup() and c:IsSetCard(0x2b)

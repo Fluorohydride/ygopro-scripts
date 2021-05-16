@@ -19,7 +19,7 @@ function c16984449.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c16984449.filter(c,e,sp)
-	return c:IsType(TYPE_DUAL) and c:GetCode()~=16984449 and c:IsCanBeSpecialSummoned(e,0,sp,false,false)
+	return c:IsType(TYPE_DUAL) and not c:IsCode(16984449) and c:IsCanBeSpecialSummoned(e,0,sp,false,false)
 end
 function c16984449.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c16984449.filter(chkc,e,tp) end

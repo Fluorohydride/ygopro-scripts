@@ -23,10 +23,10 @@ function c57630503.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c57630503.dhfilter(c)
-	return c:GetCode()~=57630503 and c:IsSetCard(0x35) and c:IsType(TYPE_MONSTER) and c:IsDiscardable()
+	return not c:IsCode(57630503) and c:IsSetCard(0x35) and c:IsType(TYPE_MONSTER) and c:IsDiscardable()
 end
 function c57630503.dhfilter1(c)
-	return c:GetCode()~=57630503 and c:IsType(TYPE_MONSTER) and c:IsDiscardable()
+	return not c:IsCode(57630503) and c:IsType(TYPE_MONSTER) and c:IsDiscardable()
 end
 function c57630503.gselect(g)
 	return g:IsExists(c57630503.dhfilter,1,nil)

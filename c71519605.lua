@@ -24,7 +24,7 @@ function c71519605.atcon(e)
 	return e:GetHandler():IsAttackPos()
 end
 function c71519605.atlimit(e,c)
-	return c:IsFacedown() or c:GetCode()~=71519605
+	return c:IsFacedown() or not c:IsCode(71519605)
 end
 function c71519605.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsLocation(LOCATION_GRAVE) and e:GetHandler():IsReason(REASON_BATTLE)

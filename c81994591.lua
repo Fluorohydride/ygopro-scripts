@@ -19,7 +19,7 @@ function c81994591.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c81994591.filter(c)
-	return c:IsSetCard(0x1d) and c:GetCode()~=81994591 and c:IsAbleToHand()
+	return c:IsSetCard(0x1d) and not c:IsCode(81994591) and c:IsAbleToHand()
 end
 function c81994591.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c81994591.filter,tp,LOCATION_DECK,0,1,nil) end

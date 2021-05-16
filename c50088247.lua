@@ -53,7 +53,7 @@ function c50088247.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c50088247.filter(c,e,tp)
-	return c:IsSetCard(0x2f) and c:GetCode()~=50088247 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x2f) and not c:IsCode(50088247) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c50088247.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and c50088247.filter(chkc,e,tp) end

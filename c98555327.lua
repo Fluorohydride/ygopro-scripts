@@ -35,7 +35,7 @@ function c98555327.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c98555327.filter(c)
-	return c:IsSetCard(0x7b) and c:GetCode()~=98555327 and c:IsAbleToHand()
+	return c:IsSetCard(0x7b) and not c:IsCode(98555327) and c:IsAbleToHand()
 end
 function c98555327.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c98555327.filter,tp,LOCATION_DECK,0,1,nil) end

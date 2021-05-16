@@ -54,7 +54,7 @@ function c21208154.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)
 end
 function c21208154.filter(c)
-	return c:IsFaceup() and c:GetCode()~=21208154 and not c:IsHasEffect(21208154)
+	return c:IsFaceup() and not c:IsCode(21208154) and not c:IsHasEffect(21208154)
 end
 function c21208154.adval(e,c)
 	local g=Duel.GetMatchingGroup(c21208154.filter,0,LOCATION_MZONE,LOCATION_MZONE,nil)

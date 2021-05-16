@@ -36,7 +36,7 @@ function c2511717.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c2511717.atkfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x3d) and c:GetCode()~=2511717
+	return c:IsFaceup() and c:IsSetCard(0x3d) and not c:IsCode(2511717)
 end
 function c2511717.atkcon(e)
 	local c=e:GetHandler()

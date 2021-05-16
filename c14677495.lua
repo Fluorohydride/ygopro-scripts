@@ -44,7 +44,7 @@ function c14677495.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsAttackPos() and e:GetHandler():IsPreviousPosition(POS_DEFENSE)
 end
 function c14677495.filter(c,e,tp)
-	return c:IsSetCard(0x6042) and c:GetCode()~=14677495 and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+	return c:IsSetCard(0x6042) and not c:IsCode(14677495) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c14677495.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

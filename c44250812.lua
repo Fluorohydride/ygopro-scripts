@@ -10,7 +10,7 @@ function c44250812.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c44250812.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x54) and c:GetCode()~=44250812
+	return c:IsFaceup() and c:IsSetCard(0x54) and not c:IsCode(44250812)
 end
 function c44250812.spcon(e,c)
 	if c==nil then return true end

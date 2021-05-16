@@ -18,7 +18,7 @@ function c38041940.condition(e,tp,eg,ep,ev,re,r,rp)
 		and c:IsPreviousControler(tp)
 end
 function c38041940.spfilter(c,e,tp)
-	return c:IsLevelBelow(4) and c:IsRace(RACE_PLANT) and c:GetCode()~=38041940 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsLevelBelow(4) and c:IsRace(RACE_PLANT) and not c:IsCode(38041940) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c38041940.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c38041940.spfilter(chkc,e,tp) end

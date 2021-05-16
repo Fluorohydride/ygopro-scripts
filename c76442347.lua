@@ -26,7 +26,7 @@ function c76442347.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(76442347)~=0
 end
 function c76442347.filter(c,e,tp)
-	return c:IsSetCard(0x5a) and c:GetCode()~=76442347
+	return c:IsSetCard(0x5a) and not c:IsCode(76442347)
 		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE))
 end

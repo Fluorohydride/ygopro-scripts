@@ -65,7 +65,7 @@ function c68184115.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c68184115.cfilter,1,nil,e:GetHandler(),tp)
 end
 function c68184115.spfilter(c,e,tp)
-	return c:IsSetCard(0x56) and c:GetCode()~=68184115 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x56) and not c:IsCode(68184115) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c68184115.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsFaceup()

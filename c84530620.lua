@@ -13,7 +13,7 @@ function c84530620.initial_effect(c)
 end
 function c84530620.filter(c)
 	return c:IsRace(RACE_THUNDER) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(4)
-		and c:GetCode()~=84530620 and c:IsSummonable(true,nil)
+		and not c:IsCode(84530620) and c:IsSummonable(true,nil)
 end
 function c84530620.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c84530620.filter,tp,LOCATION_HAND,0,1,nil) end

@@ -22,7 +22,7 @@ function c45869829.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c45869829.filter(c)
-	return c:IsType(TYPE_QUICKPLAY) and c:GetCode()~=45869829 and c:IsAbleToDeck()
+	return c:IsType(TYPE_QUICKPLAY) and not c:IsCode(45869829) and c:IsAbleToDeck()
 end
 function c45869829.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c45869829.filter(chkc) end
@@ -42,7 +42,7 @@ function c45869829.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_ONFIELD) and c:IsPreviousControler(tp)
 end
 function c45869829.thfilter(c)
-	return c:IsType(TYPE_QUICKPLAY) and c:GetCode()~=45869829 and c:IsAbleToHand()
+	return c:IsType(TYPE_QUICKPLAY) and not c:IsCode(45869829) and c:IsAbleToHand()
 end
 function c45869829.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c45869829.thfilter,tp,LOCATION_DECK,0,1,nil) end

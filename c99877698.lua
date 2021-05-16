@@ -13,7 +13,7 @@ function c99877698.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c99877698.costfilter(c)
-	return c:IsSetCard(0x2e) and c:GetCode()~=99877698
+	return c:IsSetCard(0x2e) and not c:IsCode(99877698)
 end
 function c99877698.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c99877698.costfilter,1,nil) end

@@ -15,7 +15,7 @@ function c53921056.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c53921056.filter(c,e,tp)
-	return c:IsSetCard(0x2f) and c:GetCode()~=53921056 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x2f) and not c:IsCode(53921056) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c53921056.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp

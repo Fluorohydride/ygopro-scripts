@@ -14,7 +14,7 @@ function c16923472.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c16923472.costfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x58) and c:GetCode()~=16923472
+	return c:IsFaceup() and c:IsSetCard(0x58) and not c:IsCode(16923472)
 end
 function c16923472.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c16923472.costfilter,1,nil) end

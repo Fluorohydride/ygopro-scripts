@@ -20,5 +20,5 @@ function c9995766.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c9995766.infilter(e,c)
-	return bit.band(c:GetType(),0x20004)==0x20004 and c:GetCode()~=9995766
+	return bit.band(c:GetType(),0x20004)==0x20004 and not c:IsCode(9995766)
 end

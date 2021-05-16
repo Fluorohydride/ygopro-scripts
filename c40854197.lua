@@ -31,7 +31,7 @@ function c40854197.initial_effect(c)
 end
 c40854197.material_setcode=0x8
 function c40854197.atkfilter(c)
-	return c:IsFaceup() and c:GetCode()~=40854197 and c:IsAttribute(ATTRIBUTE_WATER)
+	return c:IsFaceup() and not c:IsCode(40854197) and c:IsAttribute(ATTRIBUTE_WATER)
 end
 function c40854197.atkup(e,c)
 	return Duel.GetMatchingGroupCount(c40854197.atkfilter,0,LOCATION_MZONE,LOCATION_MZONE,nil)*500

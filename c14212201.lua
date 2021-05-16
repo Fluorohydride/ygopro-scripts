@@ -17,7 +17,7 @@ function c14212201.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c14212201.filter(c,e,tp)
-	return c:GetCode()~=14212201 and c:IsSetCard(0x8e) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return not c:IsCode(14212201) and c:IsSetCard(0x8e) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c14212201.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

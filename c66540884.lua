@@ -18,7 +18,7 @@ function c66540884.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsReason(REASON_EFFECT) or c:IsReason(REASON_BATTLE)
 end
 function c66540884.thfilter(c)
-	return c:IsSetCard(0x45) and c:GetCode()~=66540884 and c:IsAbleToHand()
+	return c:IsSetCard(0x45) and not c:IsCode(66540884) and c:IsAbleToHand()
 end
 function c66540884.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c66540884.thfilter,tp,LOCATION_DECK,0,1,nil) end

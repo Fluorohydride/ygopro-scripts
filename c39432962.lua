@@ -15,7 +15,7 @@ function c39432962.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c39432962.filter(c,e,tp)
-	return c:IsSetCard(0x82) and c:GetCode()~=39432962
+	return c:IsSetCard(0x82) and not c:IsCode(39432962)
 		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE))
 end
 function c39432962.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

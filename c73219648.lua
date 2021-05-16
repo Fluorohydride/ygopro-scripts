@@ -53,5 +53,5 @@ function c73219648.disop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c73219648.atktg(e,c)
-	return c:IsFaceup() and c:IsSetCard(0x45) and c:GetCode()~=73219648
+	return c:IsFaceup() and c:IsSetCard(0x45) and not c:IsCode(73219648)
 end

@@ -56,7 +56,7 @@ function c46448938.effcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetLabel()>0
 end
 function c46448938.sfilter(c)
-	return c:IsSetCard(0x106e) and c:GetCode()~=46448938 and c:IsType(TYPE_SPELL) and c:IsAbleToHand()
+	return c:IsSetCard(0x106e) and not c:IsCode(46448938) and c:IsType(TYPE_SPELL) and c:IsAbleToHand()
 end
 function c46448938.spfilter(c,lv,e,tp)
 	return c:IsLevelBelow(lv) and c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

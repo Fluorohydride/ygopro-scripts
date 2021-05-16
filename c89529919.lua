@@ -12,7 +12,7 @@ function c89529919.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c89529919.filter(c)
-	return c:IsLevelBelow(4) and c:IsRace(RACE_WARRIOR) and c:GetCode()~=89529919
+	return c:IsLevelBelow(4) and c:IsRace(RACE_WARRIOR) and not c:IsCode(89529919)
 end
 function c89529919.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(89529919,1))

@@ -19,7 +19,7 @@ function c33655493.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c33655493.tg(e,c)
-	return c:IsFaceup() and c:GetCode()~=33655493
+	return c:IsFaceup() and not c:IsCode(33655493)
 end
 function c33655493.tgval(e,re,rp)
 	return re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and rp==1-e:GetHandlerPlayer()
