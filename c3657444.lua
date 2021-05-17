@@ -39,8 +39,10 @@ function c3657444.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c3657444.operation1(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Draw(tp,1,REASON_EFFECT)
-	Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
+	if Duel.Draw(tp,1,REASON_EFFECT)>0 then
+		Duel.BreakEffect()
+		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
+	end
 end
 function c3657444.filter2(c)
 	return c:IsFaceup() and c:IsAbleToRemove()
@@ -59,11 +61,12 @@ end
 function c3657444.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFacedown() or not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
-	local sg=Group.FromCards(c,tc)
-	if Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)~=2 then return end
-	Duel.BreakEffect()
-	Duel.Draw(tp,2,REASON_EFFECT)
+	if tc:IsRelateToEffect(e) and tc:IsControler(tp) and tc:IsFaceup() and c:IsRelateToEffect(e) then
+		local sg=Group.FromCards(c,tc)
+		if Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)~=2 then return end
+		Duel.BreakEffect()
+		Duel.Draw(tp,2,REASON_EFFECT)
+	end
 end
 function c3657444.target3(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemove()
