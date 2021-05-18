@@ -38,8 +38,7 @@ function c75402014.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsContains(e:GetHandler())
 end
 function c75402014.eqfilter(c,tp)
-	local mt=_G["c"..c:GetCode()]
-	return mt and mt.zw_equip_monster and c:IsSetCard(0x107e) and c:IsType(TYPE_MONSTER) and not c:IsForbidden() and c:CheckUniqueOnField(tp,LOCATION_SZONE)
+	return c.zw_equip_monster and c:IsSetCard(0x107e) and c:IsType(TYPE_MONSTER) and not c:IsForbidden() and c:CheckUniqueOnField(tp,LOCATION_SZONE)
 end
 function c75402014.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
@@ -54,8 +53,7 @@ function c75402014.eqop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,c75402014.eqfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,tp)
 		local tc=g:GetFirst()
 		if not tc then return end
-		local mt=_G["c"..tc:GetCode()]
-		mt.zw_equip_monster(tc,tp,c)
+		tc.zw_equip_monster(tc,tp,c)
 	end
 end
 function c75402014.eqlimit(e,c)
