@@ -22,9 +22,7 @@ function c29085954.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c29085954.filter(c,e,tp,mc)
-	local m=_G["c"..c:GetCode()]
-	if not m then return false end
-	local no=m.xyz_number
+	local no=c.xyz_number
 	return no and no>=1 and no<=99 and c:IsSetCard(0x48)
 		and mc:IsCanBeXyzMaterial(c)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
