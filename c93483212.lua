@@ -43,7 +43,7 @@ function c93483212.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c93483212.tfilter(c)
-	return c:IsSetCard(0x3042) or c:IsCode(61777313)
+	return c:IsSetCard(0x3042) or c:IsHasEffect(61777313)
 end
 function c93483212.imop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

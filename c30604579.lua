@@ -45,7 +45,7 @@ function c30604579.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c30604579.tfilter(c)
-	return c:IsSetCard(0x6042) or c:IsCode(61777313)
+	return c:IsSetCard(0x6042) or c:IsHasEffect(61777313)
 end
 function c30604579.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,0,LOCATION_MZONE,1,nil) end
