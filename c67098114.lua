@@ -48,7 +48,7 @@ function c67098114.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c67098114.tfilter(c)
-	return c:IsSetCard(0xa042) or c:IsCode(61777313)
+	return c:IsSetCard(0xa042) or c:IsHasEffect(61777313)
 end
 function c67098114.discon(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) and Duel.GetTurnPlayer()==tp
