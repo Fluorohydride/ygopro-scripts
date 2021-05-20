@@ -15,7 +15,7 @@ function c93078761.filter(c)
 	return c.toss_dice and c:IsAbleToHand()
 end
 function c93078761.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return Duel.IsExistingMatchingCard(c93078761.filter,tp,LOCATION_DECK,0,1,nil) end
 end
 function c93078761.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
