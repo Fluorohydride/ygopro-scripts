@@ -47,7 +47,6 @@ function c83286340.thop(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.IsExistingMatchingCard(c83286340.atkfilter,tp,LOCATION_MZONE,0,1,nil) then
 			Duel.BreakEffect()
 			local sg=Duel.GetMatchingGroup(c83286340.atkfilter,tp,LOCATION_MZONE,0,nil)
-			local tc=sg:GetFirst()
 			for tc in aux.Next(sg) do
 				local e1=Effect.CreateEffect(c)
 				e1:SetType(EFFECT_TYPE_SINGLE)

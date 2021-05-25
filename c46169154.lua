@@ -51,7 +51,6 @@ function c46169154.tgop(e,tp,eg,ep,ev,re,r,rp)
 	if #g>0 and Duel.SendtoGrave(g,REASON_EFFECT)>0 then
 		Duel.BreakEffect()
 		local sg=Duel.GetMatchingGroup(c46169154.atkfilter,tp,LOCATION_MZONE,0,nil)
-		local tc=sg:GetFirst()
 		for tc in aux.Next(sg) do
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
