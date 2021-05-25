@@ -24,7 +24,7 @@ function c72022087.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c72022087.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c72022087.filter,tp,LOCATION_MZONE,LOCATION_MZONE,2,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-	local g=Duel.SelectTarget(tp, c72022087.filter,tp,LOCATION_MZONE,LOCATION_MZONE,2,2,nil)
+	local g=Duel.SelectTarget(tp,c72022087.filter,tp,LOCATION_MZONE,LOCATION_MZONE,2,2,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,2,0,0)
 end
 function c72022087.acfilter(c,e)
