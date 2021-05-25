@@ -62,6 +62,14 @@ end
 function c32465539.efop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=c:GetReasonCard()
+	--
+	local e0=Effect.CreateEffect(rc)
+	e0:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e0:SetCode(EVENT_ATTACK_ANNOUNCE)
+	e0:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e0:SetOperation(c32465539.regop)
+	e0:SetReset(RESET_EVENT+RESETS_STANDARD)
+	rc:RegisterEffect(e0,true)
 	local e1=Effect.CreateEffect(rc)
 	e1:SetDescription(aux.Stringid(32465539,1))
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -82,6 +90,14 @@ function c32465539.efop(e,tp,eg,ep,ev,re,r,rp)
 		rc:RegisterEffect(e2,true)
 	end
 end
+function c32465539.regop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local tc=c:GetBattleTarget()
+	if tc and tc:IsDefensePos() then
+		c:RegisterFlagEffect(32465539,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
+	end
+end
 function c32465539.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler() and Duel.GetAttackTarget() and Duel.GetAttackTarget():IsPosition(POS_DEFENSE)
+	local c=e:GetHandler()
+	return Duel.GetAttacker()==c and c:GetFlagEffect(32465539)>0
 end
