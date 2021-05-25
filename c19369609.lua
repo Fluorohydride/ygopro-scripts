@@ -59,7 +59,7 @@ function c19369609.desop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c19369609.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetBattleMonster(tp)
-	return tc:IsFaceup() and tc~=e:GetHandler() and tc:IsRelateToBattle()
+	return tc and tc:IsFaceup() and tc~=e:GetHandler() and tc:IsRelateToBattle()
 end
 function c19369609.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
