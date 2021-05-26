@@ -1,4 +1,4 @@
---パラメタルフォーズフュージョン
+--混錬装融合
 function c58549532.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

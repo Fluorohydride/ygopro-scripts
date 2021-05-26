@@ -1,4 +1,4 @@
---グリーディー・ヴェノム ・フュージョン・ドラゴン
+--グリーディー・ヴェノム・フュージョン・ドラゴン
 function c51570882.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

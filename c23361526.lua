@@ -1,4 +1,4 @@
---HSRコルクー10
+--HSRコルク－10
 function c23361526.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

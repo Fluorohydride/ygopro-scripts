@@ -1,4 +1,4 @@
---U.A.マイティースラッガー
+--U.A.マイティスラッガー
 function c56421754.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

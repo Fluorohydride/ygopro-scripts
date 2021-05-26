@@ -1,4 +1,4 @@
---暗黒方界邪神クリムソン・ノヴァ・トリニティ
+--暗黒方界邪神クリムゾン・ノヴァ・トリニティ
 function c72664875.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()

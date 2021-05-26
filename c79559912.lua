@@ -1,4 +1,4 @@
---DDD怒濤大王エグゼクティブ・シーザー
+--DDD怒涛大王エグゼクティブ・シーザー
 function c79559912.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_FIEND),6,2)

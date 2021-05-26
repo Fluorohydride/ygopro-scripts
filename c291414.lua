@@ -1,4 +1,4 @@
---思い集いし竜
+--想い集いし竜
 function c291414.initial_effect(c)
 	c:SetSPSummonOnce(291414)
 	--synchro limit

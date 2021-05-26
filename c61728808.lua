@@ -1,4 +1,4 @@
---ヘヴィメタルフォシス アマルガム
+--ヘビーメタルフォーゼ・アマルガム
 function c61728808.initial_effect(c)
 	--(0) Link Summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0xe1),2,2)

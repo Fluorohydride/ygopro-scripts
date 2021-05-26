@@ -1,4 +1,4 @@
---S－Force スペシメン
+--S－Force スぺシメン
 function c82977464.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
