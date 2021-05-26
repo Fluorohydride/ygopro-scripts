@@ -20,7 +20,7 @@ function c64659851.thfilter(c)
 end
 function c64659851.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
-		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c64659851.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) 
+		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.IsExistingMatchingCard(c64659851.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp)
 			or Duel.IsExistingMatchingCard(c64659851.thfilter,tp,LOCATION_DECK,0,1,nil)
 	end
 end

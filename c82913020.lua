@@ -32,7 +32,6 @@ function c82913020.initial_effect(c)
 	e3:SetOperation(c82913020.mop)
 	c:RegisterEffect(e3)
 end
---Modified from Bluebeard, the Plunder Patroll Shipwright
 function c82913020.spfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x53) and not c:IsCode(82913020)
 end

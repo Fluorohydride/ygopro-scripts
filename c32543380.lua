@@ -44,7 +44,7 @@ end
 function c32543380.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c32543380.spfilter,tp,LOCATION_ONFIELD,0,1,1,nil)
-	Duel.SendtoGrave(g, REASON_COST)
+	Duel.SendtoGrave(g,REASON_COST)
 end
 function c32543380.atklimit(e,c)
 	return c==e:GetHandler()

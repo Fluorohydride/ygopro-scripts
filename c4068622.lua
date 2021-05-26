@@ -69,7 +69,7 @@ function c4068622.operation(e,tp,eg,ep,ev,re,r,rp)
 		local code=tc:GetOriginalCode()
 		local ba=tc:GetBaseAttack()
 		local reset_flag=RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END
-		c:CopyEffect(code, reset_flag, 1)
+		c:CopyEffect(code,reset_flag,1)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

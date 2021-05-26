@@ -247,7 +247,7 @@ function Auxiliary.EnableUnionAttribute(c,f)
 	c:RegisterEffect(e2)
 end
 function Auxiliary.ChangeCodeCondition(check,condition)
-	return  function(e)
+	return	function(e)
 				if condition and not condition(e) then return false end
 				local le={e:GetHandler():IsHasEffect(EFFECT_DISABLE)}
 				for _,te in ipairs(le) do

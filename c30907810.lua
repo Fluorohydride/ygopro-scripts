@@ -64,7 +64,7 @@ function c30907810.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetMatchingGroup(c30907810.otfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
 	local sg=Duel.SelectTribute(tp,c,1,1,mg)
 	c:SetMaterial(sg)
-	Duel.Release(sg, REASON_SUMMON+REASON_MATERIAL)
+	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end
 function c30907810.regop(e,tp,eg,ep,ev,re,r,rp)
 	if re:GetHandler():IsSetCard(0x108) and rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) then

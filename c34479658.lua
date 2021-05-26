@@ -54,7 +54,7 @@ function c34479658.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	local mg=Duel.GetMatchingGroup(c34479658.otfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
 	local sg=Duel.SelectTribute(tp,c,1,1,mg)
 	c:SetMaterial(sg)
-	Duel.Release(sg, REASON_SUMMON+REASON_MATERIAL)
+	Duel.Release(sg,REASON_SUMMON+REASON_MATERIAL)
 end
 function c34479658.tkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

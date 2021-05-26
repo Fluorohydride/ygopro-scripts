@@ -51,5 +51,5 @@ function c96631852.descon(e,tp,eg,ep,ev,re,r,rp)
 	return tc and eg:IsContains(tc)
 end
 function c96631852.desop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.Destroy(e:GetHandler(), REASON_EFFECT)
+	Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 end

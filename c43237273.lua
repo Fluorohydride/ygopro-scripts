@@ -31,7 +31,7 @@ function c43237273.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(code)
 		c:RegisterEffect(e1)
 		if not tc:IsType(TYPE_TRAPMONSTER) then
-			cid=c:CopyEffect(code, RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END, 1)
+			cid=c:CopyEffect(code,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,1)
 		end
 		local e2=Effect.CreateEffect(c)
 		e2:SetDescription(aux.Stringid(43237273,1))

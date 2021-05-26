@@ -27,7 +27,7 @@ function c38412161.remcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c38412161.remfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToRemove() 
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToRemove()
 end
 function c38412161.remtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(1-tp) and c38412161.remfilter(chkc) end

@@ -72,7 +72,7 @@ function c24857466.spfilter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c24857466.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then 
+	if chkc then
 		if ev==TYPE_TRAP then
 			return chkc:IsControler(1-tp) and chkc:IsOnField()
 		elseif ev==TYPE_MONSTER then

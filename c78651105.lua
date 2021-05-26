@@ -54,7 +54,7 @@ function c78651105.ttop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectTribute(tp,c,3,3)
 	c:SetMaterial(g)
-	Duel.Release(g, REASON_SUMMON+REASON_MATERIAL)
+	Duel.Release(g,REASON_SUMMON+REASON_MATERIAL)
 end
 function c78651105.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_ADVANCE+SUMMON_VALUE_SELF
