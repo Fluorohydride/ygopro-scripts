@@ -247,20 +247,21 @@ RESET_CARD			=0x2000				--重置Owner為指定卡片的效果
 RESET_CODE			=0x4000				--重置指定Code的single效果(不含EFFECT_FLAG_SINGLE_RANGE)
 RESET_COPY			=0x8000				--重置以复制取得的效果
 RESET_DISABLE		=0x00010000			--效果无效重置(只適用於owner==handler的效果)
-RESET_TURN_SET		=0x00020000			--变里侧重置
-RESET_TOGRAVE		=0x00040000			--去墓地重置(以下皆為事件觸發前重置)
+RESET_TURN_SET		=0x00020000			--变里侧重置(皆為事件觸發前重置)
+RESET_TOGRAVE		=0x00040000			--去墓地重置
 RESET_REMOVE		=0x00080000			--除外重置
 RESET_TEMP_REMOVE	=0x00100000			--暂时除外重置
 RESET_TOHAND		=0x00200000			--回手牌或加入手牌重置
 RESET_TODECK		=0x00400000			--回卡组重置
-RESET_LEAVE			=0x00800000			--从场上移到其他位置/超量叠放重置
-RESET_TOFIELD		=0x01000000			--到场上重置(move_to_field())
+RESET_LEAVE			=0x00800000			--从怪兽区或魔法区到不同区域
+RESET_TOFIELD		=0x01000000			--除了返回场上以外，从不同区域移动到怪兽区或魔法区
 RESET_CONTROL		=0x02000000			--控制者变更重置
 RESET_OVERLAY		=0x04000000			--超量叠放重置
 RESET_MSCHANGE		=0x08000000			--从怪兽区到魔法区，或者从魔法区到怪兽区(move_to_field()、寶玉獸)
 ----组合时点
 RESETS_STANDARD				=0x1fe0000	--RESET_TOFIELD+RESET_LEAVE+RESET_TODECK+RESET_TOHAND+RESET_TEMP_REMOVE+RESET_REMOVE+RESET_TOGRAVE+RESET_TURN_SET
 RESETS_REDIRECT				=0xc7e0000	--RESETS_STANDARD+RESET_OVERLAY+RESET_MSCHANGE-RESET_TOFIELD-RESET_LEAVE (EFFECT_LEAVE_FIELD_REDIRECT)
+RESETS_WITHOUT_TEMP_REMOVE	=0x56e0000	--RESETS_STANDARD-RESET_TEMP_REMOVE-RESET_LEAVE+RESET_OVERLAY
 --========== Types ==========	--效果类型（定义效果触发类型，和codes一起使用）
 EFFECT_TYPE_SINGLE			=0x0001		--自己状态变化时触发
 EFFECT_TYPE_FIELD			=0x0002		--场上所有卡状态变化时触发
@@ -642,7 +643,7 @@ EVENT_PHASE_START				=0x2000	--阶段开始时
 EVENT_ADD_COUNTER				=0x10000	--增加指示物时
 EVENT_REMOVE_COUNTER			=0x20000	--去除指示物时(A指示物)，Card.RemoveCounter()必須手動觸發此事件
 EVENT_CUSTOM					=0x10000000	--自訂事件
---Categorys	效果分类（表示这个效果将要发生什么事，OperationInfo设置了效果分类才能触发针对这一类型发动的卡，如破坏->星尘龙
+--Category	效果分类（表示这个效果将要发生什么事，OperationInfo设置了效果分类才能触发针对这一类型发动的卡，如破坏->星尘龙
 CATEGORY_DESTROY			=0x1		--破坏效果
 CATEGORY_RELEASE			=0x2    	--解放效果
 CATEGORY_REMOVE				=0x4    	--除外效果
