@@ -48,5 +48,6 @@ function c79766336.operation(e,tp,eg,ep,ev,re,r,rp)
 	e:SetLabelObject(te:GetLabelObject())
 	local op=te:GetOperation()
 	if op then op(e,tp,eg,ep,ev,re,r,rp) end
+	Duel.BreakEffect()
 	Duel.Remove(te:GetHandler(),POS_FACEUP,REASON_EFFECT)
 end
