@@ -33,10 +33,10 @@ function c55072170.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c55072170.rccfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c55072170.filter(c,tp)
-	return c:IsType(TYPE_SPELL) and Duel.IsExistingMatchingCard(c55072170.filter2,tp,LOCATION_DECK,0,1,nil,c:GetCode())
+	return c:IsType(TYPE_SPELL) and Duel.IsExistingMatchingCard(c55072170.filter2,tp,LOCATION_DECK,0,1,nil,c)
 end
-function c55072170.filter2(c,code)
-	return c:IsCode(code) and c:IsAbleToHand()
+function c55072170.filter2(c,tc)
+	return c:IsCode(tc:GetCode()) and c:IsAbleToHand()
 end
 function c55072170.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c55072170.filter(chkc,tp) end
@@ -47,8 +47,9 @@ function c55072170.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c55072170.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
+	if not tc:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-	local g=Duel.SelectMatchingCard(tp,c55072170.filter2,tp,LOCATION_DECK,0,1,1,nil,tc:GetOriginalCode())
+	local g=Duel.SelectMatchingCard(tp,c55072170.filter2,tp,LOCATION_DECK,0,1,1,nil,tc)
 	if g:GetCount()>0 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
