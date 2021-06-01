@@ -13,7 +13,7 @@ function c18964575.initial_effect(c)
 end
 function c18964575.condition(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
-	return at:GetControler()~=tp and Duel.GetAttackTarget()==nil
+	return at:GetControler()==1-tp and Duel.GetAttackTarget()==nil
 end
 function c18964575.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsDiscardable() end
@@ -21,6 +21,7 @@ function c18964575.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c18964575.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateAttack() then
+		Duel.BreakEffect()
 		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 	end
 end
