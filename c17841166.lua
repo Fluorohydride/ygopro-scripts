@@ -21,6 +21,6 @@ function c17841166.etarget(e,c)
 	return bit.band(c:GetOriginalRace(),RACE_MACHINE+RACE_ROCK)~=0
 end
 function c17841166.efilter(e,te,c)
-	return te:IsActiveType(TYPE_MONSTER) and (te:GetOwner()~=c or te:GetOwner()==c and not c:IsRelateToEffect(te))
+	return te:IsActiveType(TYPE_MONSTER) and te:GetOwner()~=c
 		and te:GetOwnerPlayer()~=e:GetHandlerPlayer()
 end
