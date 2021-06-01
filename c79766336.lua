@@ -45,11 +45,11 @@ function c79766336.operation(e,tp,eg,ep,ev,re,r,rp)
 	local te=e:GetLabelObject()
 	if not te then return end
 	local tc=te:GetHandler()
-	if not (tc:IsRelateToEffect(e) and c:GetType()==0x4) then return end
+	if not (tc:IsRelateToEffect(e) and c:GetType()==TYPE_TRAP) then return end
 	e:SetLabelObject(te:GetLabelObject())
 	local op=te:GetOperation()
 	if op then op(e,tp,eg,ep,ev,re,r,rp) end
-	if tc:IsRelateToEffect(e) and c:GetType()==0x4 then
+	if tc:IsRelateToEffect(e) and c:GetType()==TYPE_TRAP then
 		Duel.BreakEffect()
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	end
