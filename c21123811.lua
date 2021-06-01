@@ -61,7 +61,7 @@ end
 function c21123811.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:IsAbleToRemoveAsCost() end
-	if Duel.Remove(c,POS_FACEUP,REASON_COST+REASON_TEMPORARY)~=0 then
+	if Duel.Remove(c,0,REASON_COST+REASON_TEMPORARY)~=0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)
@@ -85,7 +85,7 @@ function c21123811.disop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c21123811.dscon(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=ep and Duel.GetCurrentChain()==0
+	return ep==1-tp and Duel.GetCurrentChain()==0
 end
 function c21123811.dstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
@@ -97,10 +97,11 @@ function c21123811.dsop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(eg,REASON_EFFECT)
 end
 function c21123811.negcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c21123811.negop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateAttack() then
+		Duel.BreakEffect()
 		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 	end
 end
