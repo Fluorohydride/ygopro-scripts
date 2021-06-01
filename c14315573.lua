@@ -11,7 +11,7 @@ function c14315573.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c14315573.condition(e,tp,eg,ep,ev,re,r,rp)
-	return tp~=Duel.GetTurnPlayer()
+	return Duel.GetAttacker():IsControler(1-tp)
 end
 function c14315573.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tg=Duel.GetAttacker()
@@ -22,6 +22,7 @@ end
 function c14315573.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
 	if tc:IsRelateToEffect(e) and Duel.NegateAttack() then
+		Duel.BreakEffect()
 		Duel.SkipPhase(1-tp,PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 	end
 end
