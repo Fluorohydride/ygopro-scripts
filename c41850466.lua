@@ -33,7 +33,7 @@ function c41850466.xyzcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFlagEffect(tp,41850466)>0
 end
 function c41850466.xyzfilter1(c)
-	return c:IsType(TYPE_XYZ) and c:IsSetCard(0x114a) and c:IsCanOverlay() and (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE))
+	return c:IsType(TYPE_XYZ) and c:IsSetCard(0x48) and c:IsCanOverlay() and (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE))
 end
 function c41850466.xyzfilter2(c)
 	return c:IsCode(41418852) and c:IsCanOverlay() and (c:IsFaceup() or c:IsLocation(LOCATION_GRAVE))
