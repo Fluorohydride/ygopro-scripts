@@ -53,5 +53,5 @@ function c23085002.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e2,tp)
 end
 function c23085002.splimit(e,c)
-	return c:IsLocation(LOCATION_GRAVE)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsType(TYPE_MONSTER)
 end
