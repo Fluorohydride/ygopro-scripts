@@ -10,15 +10,18 @@ function c8634636.initial_effect(c)
 	e1:SetOperation(c8634636.operation)
 	c:RegisterEffect(e1)
 end
+function c8634636.filter(c)
+	return c:IsAbleToHand() and not c:IsStatus(STATUS_BATTLE_DESTROYED)
+end
 function c8634636.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return true end
-	if Duel.IsExistingTarget(Card.IsAbleToHand,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingTarget(Card.IsAbleToHand,tp,0,LOCATION_MZONE,2,nil) then
+	if Duel.IsExistingTarget(c8634636.filter,tp,LOCATION_MZONE,0,1,nil)
+		and Duel.IsExistingTarget(c8634636.filter,tp,0,LOCATION_MZONE,2,nil) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-		local g1=Duel.SelectTarget(tp,Card.IsAbleToHand,tp,0,LOCATION_MZONE,2,2,nil)
+		local g1=Duel.SelectTarget(tp,c8634636.filter,tp,0,LOCATION_MZONE,2,2,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-		local g2=Duel.SelectTarget(tp,Card.IsAbleToHand,tp,LOCATION_MZONE,0,1,1,nil)
+		local g2=Duel.SelectTarget(tp,c8634636.filter,tp,LOCATION_MZONE,0,1,1,nil)
 		g1:Merge(g2)
 		Duel.SetOperationInfo(0,CATEGORY_TOHAND,g1,g1:GetCount(),0,0)
 	end

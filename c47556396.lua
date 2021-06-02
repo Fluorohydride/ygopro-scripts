@@ -32,7 +32,7 @@ function c47556396.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c47556396.filter(c)
-	return c:IsDefensePos() or c:GetAttack()>0
+	return (c:IsDefensePos() or c:GetAttack()>0) and not c:IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c47556396.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c47556396.filter(chkc) end

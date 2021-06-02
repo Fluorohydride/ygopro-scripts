@@ -24,10 +24,10 @@ function c88316955.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c88316955.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) end
-	if chk==0 then return Duel.IsExistingTarget(nil,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and not chkc:IsStatus(STATUS_BATTLE_DESTROYED) end
+	if chk==0 then return Duel.IsExistingTarget(aux.NOT(Card.IsStatus),tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,STATUS_BATTLE_DESTROYED) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,nil,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,aux.NOT(Card.IsStatus),tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,STATUS_BATTLE_DESTROYED)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c88316955.operation(e,tp,eg,ep,ev,re,r,rp)

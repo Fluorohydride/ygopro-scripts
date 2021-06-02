@@ -42,10 +42,10 @@ function c10110717.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c10110717.damtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() end
+	if chkc then return chkc:IsOnField() and not chkc:IsStatus(STATUS_BATTLE_DESTROYED) end
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g=Duel.SelectTarget(tp,nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,aux.NOT(Card.IsStatus),tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil,STATUS_BATTLE_DESTROYED)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,g:GetFirst():GetControler(),500)
 end
 function c10110717.damop(e,tp,eg,ep,ev,re,r,rp)

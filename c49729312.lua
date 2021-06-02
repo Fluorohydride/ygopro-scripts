@@ -52,10 +52,10 @@ function c49729312.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c49729312.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() end
-	if chk==0 then return Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
+	if chkc then return chkc:IsOnField() and not chkc:IsStatus(STATUS_BATTLE_DESTROYED) end
+	if chk==0 then return Duel.IsExistingTarget(aux.NOT(Card.IsStatus),tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil,STATUS_BATTLE_DESTROYED) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-	local g=Duel.SelectTarget(tp,nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,2,nil)
+	local g=Duel.SelectTarget(tp,aux.NOT(Card.IsStatus),tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,2,nil,STATUS_BATTLE_DESTROYED)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c49729312.desop(e,tp,eg,ep,ev,re,r,rp)

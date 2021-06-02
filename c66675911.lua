@@ -28,7 +28,7 @@ function c66675911.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c66675911.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x9d)
+	return c:IsFaceup() and c:IsSetCard(0x9d) and not c:IsStatus(STATUS_BATTLE_DESTROYED)
 end
 function c66675911.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c66675911.filter(chkc) end

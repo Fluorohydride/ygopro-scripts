@@ -11,10 +11,10 @@ function c1347977.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c1347977.filter1(c)
-	return c:IsFaceup() and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck()
+	return c:IsFaceup() and c:IsType(TYPE_MONSTER) and not c:IsStatus(STATUS_BATTLE_DESTROYED) and c:IsAbleToDeck()
 end
 function c1347977.filter2(c)
-	return c:IsFaceup() and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
+	return c:IsFaceup() and c:IsType(TYPE_MONSTER) and not c:IsStatus(STATUS_BATTLE_DESTROYED) and c:IsAbleToHand()
 end
 function c1347977.filter3(c)
 	return c:IsFaceup() and c:IsRace(RACE_WARRIOR)

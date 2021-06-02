@@ -10,11 +10,14 @@ function c93920745.initial_effect(c)
 	e1:SetOperation(c93920745.operation)
 	c:RegisterEffect(e1)
 end
+function c93920745.filter(c)
+	return not c:IsStatus(STATUS_BATTLE_DESTROYED) and c:IsAbleToHand()
+end
 function c93920745.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsAbleToHand() end
-	if chk==0 then return Duel.IsExistingTarget(Card.IsAbleToHand,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c93920745.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=Duel.SelectTarget(tp,Card.IsAbleToHand,tp,LOCATION_MZONE,LOCATION_MZONE,1,2,nil)
+	local g=Duel.SelectTarget(tp,c93920745.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,2,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,g:GetCount(),0,0)
 end
 function c93920745.operation(e,tp,eg,ep,ev,re,r,rp)
