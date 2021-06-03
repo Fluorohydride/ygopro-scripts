@@ -33,8 +33,8 @@ function c30757396.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer()
 end
 function c30757396.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
 	local ct=Duel.GetFieldGroupCount(tp,0,LOCATION_ONFIELD)
+	if chk==0 then return ct>0 end
 	Duel.SetTargetPlayer(1-tp)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,ct*300)
 end
