@@ -53,5 +53,5 @@ function c3966653.aclimit(e,re,tp)
 	return re:GetActivateLocation()==LOCATION_GRAVE
 end
 function c3966653.sumlimit(e,c,sump,sumtype,sumpos,targetp,se)
-	return c:IsLocation(LOCATION_GRAVE)
+	return c:IsLocation(LOCATION_GRAVE) and c:IsType(TYPE_MONSTER)
 end
