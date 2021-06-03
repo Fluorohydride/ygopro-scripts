@@ -23,27 +23,24 @@ function c78348934.initial_effect(c)
 	e2:SetOperation(c78348934.thop)
 	c:RegisterEffect(e2)
 end
-function c78348934.filter1(c)
+function c78348934.filter1(c,e)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
 end
-function c78348934.filter2(c,rc)
-	return c:IsRace(rc) and c:IsAbleToRemove()
+function c78348934.fselect(g)
+	return g:GetClassCount(Card.GetRace)==1
 end
 function c78348934.filter3(c)
 	return c:IsFaceup() and c:IsSetCard(0xd6,0xd7)
 end
 function c78348934.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(1-tp) and c78348934.filter1(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c78348934.filter1,tp,0,LOCATION_GRAVE,1,nil)
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(1-tp) and c78348934.filter1(chkc,e) end
+	if chk==0 then return Duel.IsExistingTarget(c78348934.filter1,tp,0,LOCATION_GRAVE,1,nil,e)
 		and Duel.IsExistingMatchingCard(c78348934.filter3,tp,LOCATION_MZONE,0,1,nil) end
+	local g=Duel.GetMatchingGroup(c78348934.filter1,tp,0,LOCATION_GRAVE,nil,e)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectTarget(tp,c78348934.filter1,tp,0,LOCATION_GRAVE,1,1,nil)
-	local rc=g1:GetFirst():GetRace()
-	if Duel.IsExistingTarget(c78348934.filter2,tp,0,LOCATION_GRAVE,1,g1:GetFirst(),rc)
-		and Duel.SelectYesNo(tp,aux.Stringid(78348934,0)) then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		Duel.SelectTarget(tp,c78348934.filter2,tp,0,LOCATION_GRAVE,1,2,g1:GetFirst(),rc)
-	end
+	local sg=g:SelectSubGroup(tp,c78348934.fselect,false,1,3)
+	Duel.SetTargetCard(sg)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,sg,#sg,0,0)
 end
 function c78348934.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
@@ -53,6 +50,7 @@ function c78348934.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sg=Duel.SelectMatchingCard(tp,c78348934.filter3,tp,LOCATION_MZONE,0,1,1,nil)
 	local tc=sg:GetFirst()
 	if tc then
+		Duel.HintSelection(sg)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
