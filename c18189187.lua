@@ -29,7 +29,7 @@ function c18189187.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x131)
 end
 function c18189187.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsExistingMatchingCard(c18189187.filter,tp,LOCATION_MZONE,0,1,nil)
+	return Duel.IsExistingMatchingCard(c18189187.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
 end
 function c18189187.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
