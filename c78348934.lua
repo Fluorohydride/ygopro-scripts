@@ -24,7 +24,7 @@ function c78348934.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c78348934.filter1(c,e)
-	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
+	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove() and c:IsCanBeEffectTarget(e)
 end
 function c78348934.fselect(g)
 	return g:GetClassCount(Card.GetRace)==1
