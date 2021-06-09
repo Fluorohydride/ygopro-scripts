@@ -35,14 +35,21 @@ function c30834988.operation(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 		tc=g:GetNext()
 	end
-	if Duel.GetFlagEffect(tp,30834988)==0 then
-		Duel.RegisterFlagEffect(tp,30834988,RESET_PHASE+PHASE_END,0,1)
-		e:SetLabel(0)
+	local ct,last_turn,last_lp_0,last_lp_1,last_deck_0,last_deck_1=e:GetLabel()
+	local turn=Duel.GetTurnCount()
+	local lp_0=Duel.GetLP(0)
+	local lp_1=Duel.GetLP(1)
+	local deck_0=Duel.GetFieldGroupCount(0,LOCATION_DECK,0)
+	local deck_1=Duel.GetFieldGroupCount(1,LOCATION_DECK,0)
+	if ct==nil
+		or last_turn~=turn or last_lp_0~=lp_0 or last_lp_1~=lp_1 or last_deck_0-deck_0>5 or last_deck_1-deck_1>5 then
+		e:SetLabel(0,turn,lp_0,lp_1,deck_0,deck_1)
 	else
-		local count=e:GetLabel()
-		e:SetLabel(count+1)
-		if count>49 then
+		ct=ct+1
+		if ct>10 then
 			Duel.SendtoGrave(c,REASON_RULE)
+			return
 		end
+		e:SetLabel(ct,turn,lp_0,lp_1,last_deck_0,last_deck_1)
 	end
 end
