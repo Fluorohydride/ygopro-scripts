@@ -10,10 +10,8 @@ function c6616912.initial_effect(c)
 	--summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(6616912,0))
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_SUMMON_PROC)
-	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c6616912.ntcon)
 	c:RegisterEffect(e2)
 	--indes
