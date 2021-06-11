@@ -56,7 +56,7 @@ function c40939228.gfilter(g,syncard,c1)
 	return g:IsExists(c40939228.cfilter,1,c1)
 end
 function c40939228.disfilter(c)
-	return aux.disfilter1(c) and c:IsType(TYPE_EFFECT)
+	return aux.NegateMonsterTargetFilter(c) and c:IsType(TYPE_EFFECT)
 end
 function c40939228.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c40939228.disfilter,tp,0,LOCATION_MZONE,1,nil) end

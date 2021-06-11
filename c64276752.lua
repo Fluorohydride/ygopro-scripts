@@ -49,7 +49,7 @@ function c64276752.operation(e,tp,eg,ep,ev,re,r,rp)
 		c:RegisterEffect(e1)
 		local mg=c:GetOverlayGroup()
 		if mg:IsExists(c64276752.mgfilter,1,nil) then
-			local g=Duel.GetMatchingGroup(aux.disfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,c)
+			local g=Duel.GetMatchingGroup(aux.NegateMonsterTargetFilter,tp,LOCATION_MZONE,LOCATION_MZONE,c)
 			if #g>0 then Duel.BreakEffect() end
 			for tc in aux.Next(g) do
 				local e1=Effect.CreateEffect(c)

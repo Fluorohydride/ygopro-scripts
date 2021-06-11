@@ -29,12 +29,12 @@ function c43436049.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c43436049.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(aux.disfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler()) end
-	local g=Duel.GetMatchingGroup(aux.disfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
+	if chk==0 then return Duel.IsExistingMatchingCard(aux.NegateMonsterTargetFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler()) end
+	local g=Duel.GetMatchingGroup(aux.NegateMonsterTargetFilter,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,g:GetCount(),0,0)
 end
 function c43436049.operation(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetMatchingGroup(aux.disfilter1,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(aux.NegateMonsterTargetFilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(e:GetHandler())
