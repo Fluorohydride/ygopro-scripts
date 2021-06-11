@@ -61,6 +61,11 @@ function c52927340.disop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c52927340.rcon)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
+		if tc:IsType(TYPE_TRAPMONSTER) then
+			local e2=e1:Clone()
+			e2:SetCode(EFFECT_DISABLE_TRAPMONSTER)
+			tc:RegisterEffect(e2)
+		end
 	end
 end
 function c52927340.rcon(e)
