@@ -67,15 +67,15 @@ function c75402014.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x107e) and c:GetOriginalType()&TYPE_MONSTER~=0
 end
 function c75402014.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and aux.disfilter1(chkc) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and aux.NegateAnyTargetFilter(chkc) end
 	local ct=e:GetHandler():GetEquipGroup():FilterCount(c75402014.cfilter,nil)
-	if chk==0 then return ct>0 and Duel.IsExistingTarget(aux.disfilter1,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return ct>0 and Duel.IsExistingTarget(aux.NegateAnyTargetFilter,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g=Duel.SelectTarget(tp,aux.disfilter1,tp,0,LOCATION_ONFIELD,1,ct,nil)
+	local g=Duel.SelectTarget(tp,aux.NegateAnyTargetFilter,tp,0,LOCATION_ONFIELD,1,ct,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,#g,0,0)
 end
 function c75402014.disfilter(c,e)
-	return aux.disfilter1(c) and c:IsRelateToEffect(e)
+	return aux.NegateAnyTargetFilter(c) and c:IsRelateToEffect(e)
 end
 function c75402014.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

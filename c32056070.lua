@@ -21,7 +21,7 @@ end
 function c32056070.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 and not eg:IsExists(c32056070.filter,1,nil,ATTRIBUTE_ALL,0) then return false end
 	local b1=Duel.IsExistingMatchingCard(aux.nzatk,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
-	local b2=Duel.IsExistingMatchingCard(aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
+	local b2=Duel.IsExistingMatchingCard(aux.NegateAnyTargetFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 	local b3=Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,11738490,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_CYBERSE,ATTRIBUTE_DARK)
 	local used=Duel.GetFlagEffectLabel(tp,32056070)
@@ -75,7 +75,7 @@ end
 function c32056070.attrop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
-	local g=Duel.SelectMatchingCard(tp,aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.NegateAnyTargetFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 	if #g==0 then return end
 	Duel.HintSelection(g)
 	local tc=g:GetFirst()

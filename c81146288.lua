@@ -40,11 +40,11 @@ function c81146288.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Remove(g1,POS_FACEUP,REASON_COST)
 end
 function c81146288.distg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler()) end
+	if chk==0 then return Duel.IsExistingMatchingCard(aux.NegateAnyTargetFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,e:GetHandler()) end
 end
 function c81146288.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetMatchingGroup(aux.disfilter1,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e))
+	local g=Duel.GetMatchingGroup(aux.NegateAnyTargetFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e))
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(c)

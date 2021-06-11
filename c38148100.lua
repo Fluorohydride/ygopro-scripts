@@ -38,10 +38,10 @@ function c38148100.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return ep==tp
 end
 function c38148100.negtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and aux.disfilter1(chkc) end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and aux.NegateAnyTargetFilter(chkc) end
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,aux.disfilter1,tp,0,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,aux.NegateAnyTargetFilter,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end
 function c38148100.negop(e,tp,eg,ep,ev,re,r,rp)
