@@ -2160,7 +2160,7 @@ end
 --filter for "negate the effects of any target"
 function Auxiliary.NegateAnyTargetFilter(c)
 	if c:IsType(TYPE_SPELL+TYPE_TRAP) then
-		return c:IsFaceup() and not c:IsDisabled()
+		return c:IsFaceup() and not c:IsDisabled() and not c:IsType(TYPE_NORMAL)
 	else
 		return aux.NegateMonsterTargetFilter(c)
 	end
