@@ -54,7 +54,7 @@ function c720147.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c720147.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
 		local rg=e:GetLabelObject()
 		local exg=rg:Filter(Card.IsRelateToEffect,nil,e)
 		exg:AddCard(tc)
