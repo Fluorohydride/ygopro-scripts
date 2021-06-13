@@ -22,7 +22,7 @@ function c62200831.initial_effect(c)
 	c:RegisterEffect(e3)
 	--pay and spsummon
 	local e4=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(62200831,2))
+	e4:SetDescription(aux.Stringid(62200831,2))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_TO_GRAVE)
