@@ -75,7 +75,7 @@ function c18558867.spfilter(c,tp)
 	return c:IsPreviousControler(tp) and c:IsAttribute(ATTRIBUTE_EARTH) and c:IsRace(RACE_WARRIOR)
 end
 function c18558867.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c18558867.spfilter,1,nil,tp)
+	return not eg:IsContains(e:GetHandler()) and eg:IsExists(c18558867.spfilter,1,nil,tp)
 end
 function c18558867.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
