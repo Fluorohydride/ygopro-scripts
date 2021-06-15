@@ -48,7 +48,8 @@ function c69868555.discon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c69868555.cfilter,1,nil) and Duel.IsExistingMatchingCard(c69868555.dfilter,tp,LOCATION_MZONE,0,1,nil,eg)
 end
 function c69868555.distg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return e:GetHandler():GetFlagEffect(69868555)==0 end
+	e:GetHandler():RegisterFlagEffect(69868555,RESET_CHAIN,0,1)
 	local g=eg:Filter(c69868555.cfilter,nil)
 	Duel.SetTargetCard(g)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,g:GetCount(),0,0)

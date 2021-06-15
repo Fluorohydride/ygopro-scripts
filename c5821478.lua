@@ -43,7 +43,8 @@ function c5821478.desfilter(c)
 	return c:GetSequence()<5
 end
 function c5821478.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return e:GetHandler():GetFlagEffect(5821478)==0 end
+	e:GetHandler():RegisterFlagEffect(5821478,RESET_CHAIN,0,1)
 	local g=Duel.GetMatchingGroup(c5821478.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
