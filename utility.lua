@@ -2167,6 +2167,8 @@ function Auxiliary.NegateAnyTargetFilter(c)
 		return aux.NegateMonsterTargetFilter(c)
 	end
 end
+--alias for compatibility
+Auxiliary.disfilter1=Auxiliary.NegateAnyTargetFilter
 --condition of EVENT_BATTLE_DESTROYING
 function Auxiliary.bdcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
