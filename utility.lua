@@ -2158,7 +2158,7 @@ function Auxiliary.NegateMonsterFilter(c)
 	return c:IsFaceup() and not c:IsDisabled() and (c:IsType(TYPE_EFFECT) or c:GetOriginalType()&TYPE_EFFECT~=0)
 end
 --filter for "negate the effects of any target"
-function Auxiliary.NegateAnyTargetFilter(c)
+function Auxiliary.NegateAnyFilter(c)
 	if c:IsType(TYPE_TRAPMONSTER) then
 		return c:IsFaceup()
 	elseif c:IsType(TYPE_SPELL+TYPE_TRAP) then
@@ -2168,7 +2168,7 @@ function Auxiliary.NegateAnyTargetFilter(c)
 	end
 end
 --alias for compatibility
-Auxiliary.disfilter1=Auxiliary.NegateAnyTargetFilter
+Auxiliary.disfilter1=Auxiliary.NegateAnyFilter
 --condition of EVENT_BATTLE_DESTROYING
 function Auxiliary.bdcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

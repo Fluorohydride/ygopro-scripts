@@ -30,18 +30,18 @@ function c5795980.cfilter(c,ec,tp)
 	return Duel.IsExistingTarget(c5795980.tgfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,c,ec)
 end
 function c5795980.tgfilter(c,tc,ec)
-	return aux.NegateAnyTargetFilter(c) and c:GetEquipTarget()~=tc and c~=ec
+	return aux.NegateAnyFilter(c) and c:GetEquipTarget()~=tc and c~=ec
 end
 function c5795980.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsOnField() and aux.NegateAnyTargetFilter(chkc) and chkc~=c end
+	if chkc then return chkc:IsOnField() and aux.NegateAnyFilter(chkc) and chkc~=c end
 	if chk==0 then
 		if not Duel.IsPlayerCanDraw(tp,1) then return false end
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
 			return Duel.CheckReleaseGroup(tp,c5795980.cfilter,1,c,c,tp)
 		else
-			return Duel.IsExistingTarget(aux.NegateAnyTargetFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
+			return Duel.IsExistingTarget(aux.NegateAnyFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c)
 		end
 	end
 	if e:GetLabel()==1 then
@@ -50,7 +50,7 @@ function c5795980.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,aux.NegateAnyTargetFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,c)
+	local g=Duel.SelectTarget(tp,aux.NegateAnyFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,c)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end

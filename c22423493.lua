@@ -44,12 +44,12 @@ function c22423493.efilter(e,te)
 end
 function c22423493.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return Duel.IsExistingTarget(aux.NegateAnyTargetFilter,tp,LOCATION_ONFIELD,0,1,e:GetHandler())
-		and Duel.IsExistingTarget(aux.NegateAnyTargetFilter,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(aux.NegateAnyFilter,tp,LOCATION_ONFIELD,0,1,e:GetHandler())
+		and Duel.IsExistingTarget(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SELF)
-	Duel.SelectTarget(tp,aux.NegateAnyTargetFilter,tp,LOCATION_ONFIELD,0,1,1,e:GetHandler())
+	Duel.SelectTarget(tp,aux.NegateAnyFilter,tp,LOCATION_ONFIELD,0,1,1,e:GetHandler())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPPO)
-	Duel.SelectTarget(tp,aux.NegateAnyTargetFilter,tp,0,LOCATION_ONFIELD,1,1,nil)
+	Duel.SelectTarget(tp,aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,1,nil)
 end
 function c22423493.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -64,7 +64,7 @@ function c86379342.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c86379342.cfilter,tp,LOCATION_MZONE,0,1,nil,tp)
 end
 function c86379342.negfilter(c)
-	return aux.NegateAnyTargetFilter(c) and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return aux.NegateAnyFilter(c) and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c86379342.negtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c86379342.negfilter(chkc) end

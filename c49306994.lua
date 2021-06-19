@@ -84,7 +84,7 @@ function c49306994.discon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker()==tc or Duel.GetAttackTarget()==tc
 end
 function c49306994.disfilter(c)
-	return aux.NegateAnyTargetFilter(c) and c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return aux.NegateAnyFilter(c) and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function c49306994.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

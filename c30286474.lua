@@ -45,22 +45,22 @@ function c30286474.costfilter(c,g)
 end
 function c30286474.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local lg=e:GetHandler():GetLinkedGroup()
-	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and aux.NegateAnyTargetFilter(chkc) end
+	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and aux.NegateAnyFilter(chkc) end
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
 			return Duel.IsExistingMatchingCard(c30286474.costfilter,tp,LOCATION_MZONE,0,1,nil,lg)
-				and Duel.IsExistingTarget(aux.NegateAnyTargetFilter,tp,0,LOCATION_ONFIELD,1,nil)
+				and Duel.IsExistingTarget(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,nil)
 		else return false end
 	end
 	e:SetLabel(0)
-	local rt=Duel.GetTargetCount(aux.NegateAnyTargetFilter,tp,0,LOCATION_ONFIELD,nil)
+	local rt=Duel.GetTargetCount(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local cg=Duel.SelectMatchingCard(tp,c30286474.costfilter,tp,LOCATION_MZONE,0,1,rt,nil,lg)
 	local ct=cg:GetCount()
 	Duel.SendtoHand(cg,nil,REASON_COST)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,aux.NegateAnyTargetFilter,tp,0,LOCATION_ONFIELD,ct,ct,nil)
+	local g=Duel.SelectTarget(tp,aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,ct,ct,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,g:GetCount(),0,0)
 end
 function c30286474.disfilter(c,e)

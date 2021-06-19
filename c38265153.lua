@@ -31,7 +31,7 @@ function c38265153.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 and tc:IsType(TYPE_TRAP) then
-		local g1=Duel.GetMatchingGroup(aux.NegateAnyTargetFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,c)
+		local g1=Duel.GetMatchingGroup(aux.NegateAnyFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,c)
 		local g2=Duel.GetMatchingGroup(c38265153.cfilter,tp,LOCATION_MZONE,0,nil)
 		local off=1
 		local ops={}

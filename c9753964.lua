@@ -34,10 +34,10 @@ function c9753964.sfilter(c)
 	return c:IsRace(RACE_DRAGON) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsType(TYPE_SYNCHRO)
 end
 function c9753964.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and aux.NegateAnyTargetFilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(aux.NegateAnyTargetFilter,tp,0,LOCATION_ONFIELD,1,nil) end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and aux.NegateAnyFilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectTarget(tp,aux.NegateAnyTargetFilter,tp,0,LOCATION_ONFIELD,1,1,nil)
+	local g=Duel.SelectTarget(tp,aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end
 function c9753964.operation(e,tp,eg,ep,ev,re,r,rp)
