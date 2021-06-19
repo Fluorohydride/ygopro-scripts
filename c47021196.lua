@@ -44,7 +44,7 @@ function c47021196.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c47021196.negfilter(c)
-	return aux.NegateMonsterTargetFilter(c) and not c:IsSetCard(0xb2)
+	return aux.NegateMonsterFilter(c) and not c:IsSetCard(0xb2)
 end
 function c47021196.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

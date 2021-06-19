@@ -28,14 +28,14 @@ end
 function c54340229.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if Duel.IsExistingMatchingCard(c54340229.lkfilter,tp,LOCATION_MZONE,0,1,nil) then
-		local g=Duel.GetMatchingGroup(aux.NegateMonsterTargetFilter,tp,0,LOCATION_MZONE,nil)
+		local g=Duel.GetMatchingGroup(aux.NegateMonsterFilter,tp,0,LOCATION_MZONE,nil)
 		Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,g:GetCount(),0,0)
 	end
 end
 function c54340229.actop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.IsExistingMatchingCard(c54340229.lkfilter,tp,LOCATION_MZONE,0,1,nil) then
-		local g=Duel.GetMatchingGroup(aux.NegateMonsterTargetFilter,tp,0,LOCATION_MZONE,nil)
+		local g=Duel.GetMatchingGroup(aux.NegateMonsterFilter,tp,0,LOCATION_MZONE,nil)
 		local tc=g:GetFirst()
 		while tc do
 			Duel.NegateRelatedChain(tc,RESET_TURN_SET)

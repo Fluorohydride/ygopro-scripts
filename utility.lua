@@ -2154,7 +2154,7 @@ function Auxiliary.ChangeBattleDamage(player,value)
 			end
 end
 --filter for "negate the effects of a monster target"
-function Auxiliary.NegateMonsterTargetFilter(c)
+function Auxiliary.NegateMonsterFilter(c)
 	return c:IsFaceup() and not c:IsDisabled() and (c:IsType(TYPE_EFFECT) or c:GetOriginalType()&TYPE_EFFECT~=0)
 end
 --filter for "negate the effects of any target"
@@ -2164,7 +2164,7 @@ function Auxiliary.NegateAnyTargetFilter(c)
 	elseif c:IsType(TYPE_SPELL+TYPE_TRAP) then
 		return c:IsFaceup() and not c:IsDisabled()
 	else
-		return aux.NegateMonsterTargetFilter(c)
+		return aux.NegateMonsterFilter(c)
 	end
 end
 --alias for compatibility

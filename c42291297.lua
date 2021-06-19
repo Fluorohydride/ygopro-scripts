@@ -63,7 +63,7 @@ function c42291297.eptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local op=0
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EFFECT)
-	if aux.NegateMonsterTargetFilter(c) then op=Duel.SelectOption(tp,aux.Stringid(42291297,1),aux.Stringid(42291297,2))
+	if aux.NegateMonsterFilter(c) then op=Duel.SelectOption(tp,aux.Stringid(42291297,1),aux.Stringid(42291297,2))
 	else op=Duel.SelectOption(tp,aux.Stringid(42291297,1)) end
 	if op==0 then
 		e:SetCategory(0)

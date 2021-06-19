@@ -46,7 +46,7 @@ function c61525276.cfilter(c,tp)
 	return c:IsFaceup() and c:IsCode(66889139) and Duel.IsExistingMatchingCard(c61525276.disfilter,tp,0,LOCATION_MZONE,1,nil,c:GetAttack())
 end
 function c61525276.disfilter(c,atk)
-	return aux.NegateMonsterTargetFilter(c) and c:IsAttackBelow(atk)
+	return aux.NegateMonsterFilter(c) and c:IsAttackBelow(atk)
 end
 function c61525276.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c61525276.cfilter(chkc,tp) end
