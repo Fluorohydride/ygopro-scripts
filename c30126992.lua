@@ -52,11 +52,15 @@ function c30126992.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFacedown() then
 		Duel.ConfirmCards(tp,tc)
-		if tc:IsExtraDeckMonster()
-			or Duel.SelectOption(tp,aux.Stringid(30126992,1),aux.Stringid(30126992,2))==0 then
-			Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
+		if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then
+			Duel.SendtoDeck(g,nil,1,REASON_EFFECT)
 		else
-			Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)
+			if tc:IsExtraDeckMonster()
+				or Duel.SelectOption(tp,aux.Stringid(30126992,1),aux.Stringid(30126992,2))==0 then
+				Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
+			else
+				Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)
+			end
 		end
 	end
 end
