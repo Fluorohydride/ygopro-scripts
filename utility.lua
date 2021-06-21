@@ -2153,11 +2153,15 @@ function Auxiliary.ChangeBattleDamage(player,value)
 				end
 			end
 end
---filter for "negate the effects of a monster target"
+--filter for "negate the effects of a face-up monster" (無限泡影/Infinite Impermanence)
 function Auxiliary.NegateMonsterFilter(c)
 	return c:IsFaceup() and not c:IsDisabled() and (c:IsType(TYPE_EFFECT) or c:GetOriginalType()&TYPE_EFFECT~=0)
 end
---filter for "negate the effects of any target"
+--filter for "negate the effects of an Effect Monster" (エフェクト・ヴェーラー/Effect Veiler)
+function Auxiliary.NegateEffectMonsterFilter(c)
+	return c:IsFaceup() and not c:IsDisabled() and c:IsType(TYPE_EFFECT)
+end
+--filter for "negate the effects of a face-up card"
 function Auxiliary.NegateAnyFilter(c)
 	if c:IsType(TYPE_TRAPMONSTER) then
 		return c:IsFaceup()
