@@ -53,7 +53,7 @@ function c30126992.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and tc:IsFacedown() then
 		Duel.ConfirmCards(tp,tc)
 		if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then
-			Duel.SendtoDeck(g,nil,1,REASON_EFFECT)
+			Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)
 		else
 			if tc:IsExtraDeckMonster()
 				or Duel.SelectOption(tp,aux.Stringid(30126992,1),aux.Stringid(30126992,2))==0 then
