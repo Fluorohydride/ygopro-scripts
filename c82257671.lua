@@ -33,7 +33,7 @@ function c82257671.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c82257671.cfilter(c)
-	return c:IsFaceup() and c:IsRace(RACE_CYBERSE) and c:IsType(TYPE_EFFECT) and not c:IsDisabled()
+	return c:IsRace(RACE_CYBERSE) and aux.NegateEffectMonsterFilter(c)
 end
 function c82257671.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()

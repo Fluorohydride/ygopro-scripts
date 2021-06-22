@@ -28,18 +28,15 @@ end
 function c3693034.posfilter1(c)
 	return c:IsFaceup() and c:IsSetCard(0x11) and c:IsCanChangePosition()
 end
-function c3693034.disfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and not c:IsDisabled()
-end
 function c3693034.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return Duel.IsExistingTarget(c3693034.posfilter1,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.IsExistingTarget(c3693034.disfilter,tp,0,LOCATION_MZONE,1,nil) end
+		and Duel.IsExistingTarget(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
 	local g1=Duel.SelectTarget(tp,c3693034.posfilter1,tp,LOCATION_MZONE,0,1,1,nil)
 	e:SetLabelObject(g1:GetFirst())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
-	local g2=Duel.SelectTarget(tp,c3693034.disfilter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g2=Duel.SelectTarget(tp,aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g1,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g2,1,0,0)
 end
