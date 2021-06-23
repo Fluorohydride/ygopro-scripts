@@ -32,6 +32,9 @@ function c95664204.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(c95664204.filter,tp,LOCATION_HAND,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
+function c95664204.cfilter(c)
+	return c:IsFaceup() and c:IsSetCard(0x107f)
+end
 function c95664204.lvfilter(c)
 	return c:IsFaceup() and c:IsLevelAbove(0) and (not c:IsLevel(4) or not c:IsLevel(5))
 end
@@ -40,8 +43,10 @@ function c95664204.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=Duel.SelectMatchingCard(tp,c95664204.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	if sg:GetCount()>0 and Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)>0
+		and Duel.IsExistingMatchingCard(c95664204.cfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(c95664204.lvfilter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(95664204,2)) then
+		Duel.BreakEffect()
 		local g=Duel.GetMatchingGroup(c95664204.lvfilter,tp,LOCATION_MZONE,0,nil)
 		local lv=0
 		if g:FilterCount(Card.IsLevel,1,nil,5)==#g then lv=4 end
