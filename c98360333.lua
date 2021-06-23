@@ -20,6 +20,7 @@ function c98360333.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and c98360333.tgfilter(chkc,e,tp) end
 	if chk==0 then return Duel.GetMZoneCount(tp)>0
 		and Duel.IsExistingTarget(c98360333.tgfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectTarget(tp,c98360333.tgfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
