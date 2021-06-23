@@ -60,9 +60,7 @@ function c92607427.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return aux.bdgcon(e,tp,eg,ep,ev,re,r,rp) and e:GetHandler():IsChainAttackable(0)
 end
 function c92607427.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.SelectEffectYesNo(tp,e:GetHandler(),aux.Stringid(92607427,2)) then
-		Duel.ChainAttack()
-	end
+	Duel.ChainAttack()
 end
 function c92607427.cfilter(c)
 	return c:IsFaceup() and c:IsRace(RACE_FAIRY)
