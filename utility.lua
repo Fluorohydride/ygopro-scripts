@@ -2125,7 +2125,9 @@ function Auxiliary.GetColumn(c,p)
 			seq=3
 		end
 	elseif c:IsLocation(LOCATION_SZONE) then
-		if seq>4 then return nil end
+		if seq>4 then
+			return nil
+		end
 	else
 		return nil
 	end
