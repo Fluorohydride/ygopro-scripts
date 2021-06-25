@@ -21,6 +21,7 @@ function c43803845.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(LOCATION_MZONE,0)
 	e3:SetCondition(aux.IsDualState)
+	e3:SetTarget(function(e,tc) local ac=Duel.GetAttacker() if tc:IsImmuneToEffect(e) and (not ac or not ac:IsImmuneToEffect(e)) then e:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE) else e:SetProperty(0) end return true end)
 	e3:SetValue(aux.imval1)
 	c:RegisterEffect(e3)
 end
