@@ -55,17 +55,14 @@ end
 function c40939228.gfilter(g,syncard,c1)
 	return g:IsExists(c40939228.cfilter,1,c1)
 end
-function c40939228.disfilter(c)
-	return aux.disfilter1(c) and c:IsType(TYPE_EFFECT)
-end
 function c40939228.distg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c40939228.disfilter,tp,0,LOCATION_MZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,nil,1,tp,LOCATION_MZONE)
 end
 function c40939228.disop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
-	local g=Duel.SelectMatchingCard(tp,c40939228.disfilter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.HintSelection(g)

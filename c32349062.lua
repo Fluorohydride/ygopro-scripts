@@ -28,7 +28,7 @@ function c32349062.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c32349062.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ) and aux.disfilter1(c)
+	return c:IsFaceup() and c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ) and aux.NegateMonsterFilter(c)
 end
 function c32349062.distg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c32349062.filter(chkc) end
@@ -60,7 +60,7 @@ function c32349062.disop1(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c32349062.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSummonPlayer(1-tp) and c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ) and aux.disfilter1(c)
+	return c:IsFaceup() and c:IsSummonPlayer(1-tp) and c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ) and aux.NegateMonsterFilter(c)
 end
 function c32349062.discon2(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c32349062.cfilter,1,nil,tp)

@@ -46,7 +46,7 @@ function c75130221.discon(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c75130221.disfilter(c)
-	return c:IsFaceup() and (c:IsAttackAbove(1) or aux.disfilter1(c))
+	return c:IsFaceup() and (c:GetAttack()>0 or aux.NegateMonsterFilter(c))
 end
 function c75130221.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c75130221.disfilter(chkc) end

@@ -24,14 +24,11 @@ function c78474168.initial_effect(c)
 	e2:SetOperation(c78474168.activate2)
 	c:RegisterEffect(e2)
 end
-function c78474168.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and not c:IsDisabled()
-end
 function c78474168.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c78474168.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c78474168.filter,tp,0,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and aux.NegateEffectMonsterFilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	Duel.SelectTarget(tp,c78474168.filter,tp,0,LOCATION_MZONE,1,1,nil)
+	Duel.SelectTarget(tp,aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,1,nil)
 end
 function c78474168.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

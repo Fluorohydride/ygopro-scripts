@@ -28,7 +28,7 @@ function c57043986.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c57043986.negfilter(c)
-	return c:IsType(TYPE_MONSTER) and aux.disfilter1(c)
+	return c:IsType(TYPE_MONSTER) and aux.NegateMonsterFilter(c)
 end
 function c57043986.negtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c57043986.negfilter(chkc) end

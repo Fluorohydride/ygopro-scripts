@@ -28,7 +28,7 @@ function c44852429.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c44852429.negfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and aux.disfilter1(c)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) and aux.NegateAnyFilter(c)
 end
 function c44852429.negtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and c44852429.negfilter(chkc) end

@@ -21,7 +21,7 @@ function c93356623.condition(e,tp,eg,ep,ev,re,r,rp)
 		and aux.dscon()
 end
 function c93356623.filter(c)
-	return c:IsFaceup() and (c:IsAttackAbove(1) or c:IsDefenseAbove(1) or aux.disfilter1(c))
+	return c:IsFaceup() and (c:GetAttack()>0 or c:GetDefense()>0 or aux.NegateMonsterFilter(c))
 end
 function c93356623.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c93356623.filter(chkc) end

@@ -18,7 +18,7 @@ function c56588755.filter(c,tp)
 		and Duel.IsExistingTarget(c56588755.filter2,tp,0,LOCATION_MZONE,1,nil,ctype)
 end
 function c56588755.filter2(c,ctype)
-	return c:IsFaceup() and c:IsType(ctype) and c:IsType(TYPE_EFFECT) and not c:IsDisabled()
+	return c:IsType(ctype) and aux.NegateEffectMonsterFilter(c)
 end
 function c56588755.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

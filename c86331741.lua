@@ -70,7 +70,7 @@ function c86331741.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,2,2,REASON_COST)
 end
 function c86331741.atkfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_XYZ) and (not c:IsAttack(4000) or aux.disfilter1(c))
+	return c:IsFaceup() and c:IsType(TYPE_XYZ) and (not c:IsAttack(4000) or aux.NegateMonsterFilter(c))
 end
 function c86331741.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c86331741.atkfilter(chkc) end

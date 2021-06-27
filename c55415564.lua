@@ -71,7 +71,7 @@ function c55415564.discon2(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp and (ph==PHASE_MAIN1 or ph==PHASE_MAIN2)
 end
 function c55415564.disfilter2(c)
-	return aux.disfilter1(c) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
+	return aux.NegateMonsterFilter(c) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c55415564.distg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c55415564.disfilter2(chkc) end

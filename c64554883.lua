@@ -24,7 +24,7 @@ function c64554883.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c64554883.filter(c)
-	return c:IsFaceup() and c:IsLevelAbove(5) and not c:IsDisabled() and c:IsType(TYPE_EFFECT)
+	return c:IsLevelAbove(5) and aux.NegateEffectMonsterFilter(c)
 end
 function c64554883.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c64554883.filter(chkc) end
@@ -36,7 +36,7 @@ end
 function c64554883.operation(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) and not tc:IsDisabled() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
