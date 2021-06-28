@@ -29,24 +29,15 @@ function c71797713.regfilter(c,attr)
 	return c:IsSetCard(0x400d) and bit.band(c:GetOriginalAttribute(),attr)~=0
 end
 function c71797713.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local fg=Group.CreateGroup()
-	for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,61557074)}) do
-		fg:AddCard(pe:GetHandler())
-	end
+	local fe=Duel.IsPlayerAffectedByEffect(tp,61557074)
 	local loc=LOCATION_HAND
-	if fg:GetCount()>0 then loc=LOCATION_HAND+LOCATION_DECK end
+	if fe then loc=LOCATION_HAND+LOCATION_DECK end
 	if chk==0 then return Duel.IsExistingMatchingCard(c71797713.costfilter,tp,loc,0,2,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c71797713.costfilter,tp,loc,0,2,2,e:GetHandler())
 	if g:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then
-		local fc=nil
-		if fg:GetCount()==1 then
-			fc=fg:GetFirst()
-		else
-			fc=fg:Select(tp,1,1,nil)
-		end
-		Duel.Hint(HINT_CARD,0,fc:GetCode())
-		fc:RegisterFlagEffect(61557074,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,0)
+		Duel.Hint(HINT_CARD,0,61557074)
+		fe:UseCountLimit(tp)
 	end
 	local flag=0
 	if g:IsExists(c71797713.regfilter,1,nil,ATTRIBUTE_EARTH+ATTRIBUTE_WIND) then flag=bit.bor(flag,0x1) end

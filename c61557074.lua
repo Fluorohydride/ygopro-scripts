@@ -33,13 +33,9 @@ function c61557074.initial_effect(c)
 	e5:SetCode(61557074)
 	e5:SetRange(LOCATION_FZONE)
 	e5:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e5:SetCountLimit(1)
 	e5:SetTargetRange(1,0)
-	e5:SetCondition(c61557074.condition)
 	c:RegisterEffect(e5)
-	local e6=e5:Clone()
-	e6:SetType(EFFECT_TYPE_SINGLE)
-	e6:SetProperty(EFFECT_FLAG_CLIENT_HINT)
-	c:RegisterEffect(e6)
 end
 function c61557074.atkval(e,c)
 	return Duel.GetMatchingGroup(Card.IsType,e:GetHandlerPlayer(),LOCATION_GRAVE,0,nil,TYPE_MONSTER):GetClassCount(Card.GetAttribute)*200
@@ -75,7 +71,4 @@ function c61557074.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c61557074.skipcon(e)
 	return Duel.GetTurnCount()~=e:GetLabel()
-end
-function c61557074.condition(e)
-	return e:GetHandler():GetFlagEffect(61557074)==0
 end
