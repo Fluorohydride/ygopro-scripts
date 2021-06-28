@@ -74,12 +74,11 @@ function c69327790.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local ex,g1=Duel.GetOperationInfo(0,CATEGORY_TODECK)
 	local ex2,g2=Duel.GetOperationInfo(0,CATEGORY_TOHAND)
 	if not g1 then return end
-	local gc=e:GetLabelObject()
-	local fg=g1:Clone()
-	fg:RemoveCard(gc)
-	local fc=fg:GetFirst()
 	local sg1=g1:Filter(Card.IsRelateToEffect,nil,e)
 	if sg1:GetCount()>0 and Duel.SendtoDeck(sg1,nil,0,REASON_EFFECT)>1 then
+		local gc=e:GetLabelObject()
+		local fc=sg1:GetFirst()
+		if fc==gc then fc=sg1:GetNext() end
 		if fc:GetControler()==gc:GetControler() and fc:IsLocation(LOCATION_DECK) and gc:IsLocation(LOCATION_DECK) then
 			local op=Duel.SelectOption(tp,aux.Stringid(69327790,3),aux.Stringid(69327790,4))
 			if op==0 then
