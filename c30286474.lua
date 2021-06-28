@@ -59,7 +59,7 @@ function c30286474.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local cg=Duel.SelectMatchingCard(tp,c30286474.costfilter,tp,LOCATION_MZONE,0,1,rt,nil,lg)
 	local ct=cg:GetCount()
 	Duel.SendtoHand(cg,nil,REASON_COST)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	local g=Duel.SelectTarget(tp,aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,ct,ct,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,g:GetCount(),0,0)
 end

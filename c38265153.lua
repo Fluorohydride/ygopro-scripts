@@ -55,7 +55,7 @@ function c38265153.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		if op==1 then
 			Duel.BreakEffect()
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(38265153,3))
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 			local sg=g1:Select(tp,1,1,nil)
 			local tc=sg:GetFirst()
 			Duel.NegateRelatedChain(tc,RESET_TURN_SET)

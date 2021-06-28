@@ -107,7 +107,7 @@ function c17739335.disop(e,tp,eg,ep,ev,re,r,rp)
 	local cg=c:GetLinkedGroup()
 	local g=Duel.GetMatchingGroup(c17739335.disfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,cg)
 	if g:GetCount()>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 		local sg=g:Select(tp,1,1,nil)
 		Duel.HintSelection(sg)
 		local tc=sg:GetFirst()

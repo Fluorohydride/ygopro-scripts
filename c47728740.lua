@@ -56,7 +56,7 @@ end
 function c47728740.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return aux.NegateMonsterFilter(chkc) and chkc:IsLocation(LOCATION_MZONE) end
 	if chk==0 then return Duel.IsExistingTarget(aux.NegateMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	Duel.SelectTarget(tp,aux.NegateMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
 function c47728740.disop(e,tp,eg,ep,ev,re,r,rp)

@@ -29,7 +29,7 @@ end
 function c48152161.activate(e,tp,eg,ep,ev,re,r,rp)
 	local exc=nil
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then exc=e:GetHandler() end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	local g=Duel.SelectMatchingCard(tp,aux.NegateEffectMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,exc)
 	local tc=g:GetFirst()
 	if tc and not tc:IsImmuneToEffect(e) then
