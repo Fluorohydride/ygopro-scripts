@@ -1865,7 +1865,7 @@ function Auxiliary.PendOperation()
 				if not g then return end
 				if ce then
 					Duel.Hint(HINT_CARD,0,ce:GetOwner():GetOriginalCode())
-					ce:Reset()
+					ce:UseCountLimit(tp)
 				else
 					Auxiliary.PendulumChecklist=Auxiliary.PendulumChecklist|(0x1<<tp)
 				end
