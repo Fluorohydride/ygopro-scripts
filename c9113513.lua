@@ -113,7 +113,7 @@ function c9113513.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c9113513.mgfilter(c,e,tp,fusc,mg)
 	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE)
-		and bit.band(c:GetReason(),0x40008)==0x40008 and c:GetReasonCard()==fusc
+		and c:GetReason()&(REASON_FUSION+REASON_MATERIAL)==(REASON_FUSION+REASON_MATERIAL) and c:GetReasonCard()==fusc
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and fusc:CheckFusionMaterial(mg,c,PLAYER_NONE,true)
 end
