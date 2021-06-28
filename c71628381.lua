@@ -24,23 +24,22 @@ function c71628381.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOEXTRA,e:GetHandler(),1,0,0)
 end
 function c71628381.mgfilter(c,e,tp,fusc,mg)
-	return not c:IsControler(tp) or not c:IsLocation(LOCATION_GRAVE)
-		or bit.band(c:GetReason(),0x40008)~=0x40008 or c:GetReasonCard()~=fusc
-		or not c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		or not fusc:CheckFusionMaterial(mg,c,PLAYER_NONE,true)
+	return c:IsControler(tp) and c:IsLocation(LOCATION_GRAVE)
+		and c:GetReason()&(REASON_FUSION+REASON_MATERIAL)==(REASON_FUSION+REASON_MATERIAL) and c:GetReasonCard()==fusc
+		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and fusc:CheckFusionMaterial(mg,c,PLAYER_NONE,true)
 end
 function c71628381.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	local mg=c:GetMaterial()
-	local sumable=true
+	local ct=mg:GetCount()
 	local sumtype=c:GetSummonType()
-	if Duel.SendtoDeck(c,nil,0,REASON_EFFECT)==0 or bit.band(sumtype,SUMMON_TYPE_FUSION)~=SUMMON_TYPE_FUSION or mg:GetCount()==0
-		or mg:GetCount()>Duel.GetLocationCount(tp,LOCATION_MZONE)
-		or mg:IsExists(c71628381.mgfilter,1,nil,e,tp,c,mg) then
-		sumable=false
-	end
-	if sumable and Duel.SelectYesNo(tp,aux.Stringid(71628381,1)) then
+	if Duel.SendtoDeck(c,nil,0,REASON_EFFECT)~=0 and bit.band(sumtype,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
+		and ct>0 and ct<=Duel.GetLocationCount(tp,LOCATION_MZONE)
+		and mg:FilterCount(aux.NecroValleyFilter(c71628381.mgfilter),nil,e,tp,c,mg)==ct
+		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
+		and Duel.SelectYesNo(tp,aux.Stringid(71628381,1)) then
 		Duel.BreakEffect()
 		Duel.SpecialSummon(mg,0,tp,tp,false,false,POS_FACEUP)
 	end
