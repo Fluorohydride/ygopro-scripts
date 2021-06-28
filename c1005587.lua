@@ -10,7 +10,7 @@ function c1005587.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c1005587.filter(c,tp)
-	return aux.NegateMonsterFilter(c) and c:IsAttackAbove(2000) and c:IsSummonPlayer(tp) and not c:IsDisabled()
+	return aux.NegateMonsterFilter(c) and c:IsAttackAbove(2000) and c:IsSummonPlayer(tp)
 end
 function c1005587.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
@@ -20,8 +20,7 @@ function c1005587.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c1005587.filter2(c,e,tp)
-	return aux.NegateMonsterFilter(c) and c:IsAttackAbove(2000)
-		and c:IsSummonPlayer(tp) and c:IsRelateToEffect(e)
+	return c1005587.filter(c,tp) and c:IsRelateToEffect(e)
 end
 function c1005587.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c1005587.filter2,nil,e,1-tp)

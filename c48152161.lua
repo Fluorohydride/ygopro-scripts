@@ -14,7 +14,7 @@ end
 function c48152161.costfilter(c)
 	return c:IsSetCard(0xef)
 		and c:IsType(TYPE_MONSTER) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsAbleToGraveAsCost()
-		and Duel.IsExistingMatchingCard(c48152161.filter,0,LOCATION_MZONE,LOCATION_MZONE,1,c)
+		and Duel.IsExistingMatchingCard(aux.NegateEffectMonsterFilter,0,LOCATION_MZONE,LOCATION_MZONE,1,c)
 end
 function c48152161.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c48152161.costfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil) end
@@ -22,18 +22,15 @@ function c48152161.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.SelectMatchingCard(tp,c48152161.costfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil)
 	Duel.SendtoGrave(g,REASON_COST)
 end
-function c48152161.filter(c)
-	return c:IsFaceup() and not c:IsDisabled() and c:IsType(TYPE_EFFECT)
-end
 function c48152161.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c48152161.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(aux.NegateEffectMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,nil,1,0,0)
 end
 function c48152161.activate(e,tp,eg,ep,ev,re,r,rp)
 	local exc=nil
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then exc=e:GetHandler() end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local g=Duel.SelectMatchingCard(tp,c48152161.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,exc)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
+	local g=Duel.SelectMatchingCard(tp,aux.NegateEffectMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,exc)
 	local tc=g:GetFirst()
 	if tc and not tc:IsImmuneToEffect(e) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)

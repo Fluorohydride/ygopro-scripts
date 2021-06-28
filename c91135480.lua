@@ -28,7 +28,7 @@ function c91135480.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		if g:IsExists(Card.IsType,1,nil,TYPE_SPELL)
 			and Duel.IsExistingMatchingCard(c91135480.ctfilter,tp,0,LOCATION_MZONE,1,nil) then return true end
 		if g:IsExists(Card.IsType,1,nil,TYPE_TRAP)
-			and Duel.IsExistingMatchingCard(c91135480.dfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) then return true end
+			and Duel.IsExistingMatchingCard(aux.NegateEffectMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) then return true end
 		return false
 	end
 end
@@ -36,9 +36,6 @@ function c91135480.check(g)
 	return g:FilterCount(Card.IsType,nil,TYPE_MONSTER)<=1
 		and g:FilterCount(Card.IsType,nil,TYPE_SPELL)<=1
 		and g:FilterCount(Card.IsType,nil,TYPE_TRAP)<=1
-end
-function c91135480.dfilter(c)
-	return c:IsFaceup() and not c:IsDisabled() and c:IsType(TYPE_EFFECT)
 end
 function c91135480.ctfilter(c)
 	return c:IsFaceup() and c:IsControlerCanBeChanged()
@@ -92,7 +89,7 @@ function c91135480.operation(e,tp,eg,ep,ev,re,r,rp)
 	if sg:IsExists(Card.IsType,1,nil,TYPE_TRAP) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
-		local g=Duel.SelectMatchingCard(tp,c91135480.dfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,aux.NegateEffectMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 		if g:GetCount()>0 then
 			local tc=g:GetFirst()
 			Duel.NegateRelatedChain(tc,RESET_TURN_SET)

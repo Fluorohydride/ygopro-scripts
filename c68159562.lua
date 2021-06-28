@@ -35,7 +35,7 @@ function c68159562.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		return Duel.IsExistingTarget(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,nil)
 		and Duel.IsExistingTarget(c68159562.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,1,nil)
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	local g1=Duel.SelectTarget(tp,aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,1,1,nil)
 	e:SetLabelObject(g1:GetFirst())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)

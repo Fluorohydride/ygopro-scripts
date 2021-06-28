@@ -49,7 +49,7 @@ function c93655221.eqfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_LINK)
 end
 function c93655221.disfilter(c)
-	return c:IsFaceup() and not c:IsDisabled() and c:IsType(TYPE_LINK)
+	return c:IsType(TYPE_LINK) and aux.NegateMonsterFilter(c)
 end
 function c93655221.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end

@@ -33,12 +33,9 @@ end
 function c5772618.con(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end
-function c5772618.negfilter(c)
-	return c:IsFaceup() and not c:IsDisabled()
-end
 function c5772618.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.GetMatchingGroup(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,e:GetHandler())
-	local b2=Duel.GetMatchingGroup(c5772618.negfilter,tp,0,LOCATION_ONFIELD,nil)
+	local b2=Duel.GetMatchingGroup(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,nil)
 	if chk==0 then return #b1>0 or #b2>0 end
 	local off=1
 	local ops={}
@@ -68,7 +65,7 @@ function c5772618.operation(e,tp,eg,ep,ev,re,r,rp)
 	local sel=e:GetLabel()
 	local c=e:GetHandler()
 	local b1=Duel.GetMatchingGroup(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,aux.ExceptThisCard(e))
-	local b2=Duel.GetMatchingGroup(c5772618.negfilter,tp,0,LOCATION_ONFIELD,nil)
+	local b2=Duel.GetMatchingGroup(aux.NegateAnyFilter,tp,0,LOCATION_ONFIELD,nil)
 	if sel==0 then
 		Duel.Destroy(b1,REASON_EFFECT)
 	else

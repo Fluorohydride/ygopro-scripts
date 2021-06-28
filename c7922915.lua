@@ -64,7 +64,7 @@ end
 function c7922915.negtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and c7922915.negfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c7922915.negfilter,tp,0,LOCATION_ONFIELD,1,nil) end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	Duel.SelectTarget(tp,c7922915.negfilter,tp,0,LOCATION_ONFIELD,1,1,nil)
 end
 function c7922915.negop(e,tp,eg,ep,ev,re,r,rp)

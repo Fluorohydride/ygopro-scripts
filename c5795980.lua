@@ -49,7 +49,7 @@ function c5795980.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		local sg=Duel.SelectReleaseGroup(tp,c5795980.cfilter,1,1,c,c,tp)
 		Duel.Release(sg,REASON_COST)
 	end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 	local g=Duel.SelectTarget(tp,aux.NegateAnyFilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,c)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)

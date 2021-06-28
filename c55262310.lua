@@ -101,9 +101,6 @@ function c55262310.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler():GetEquipTarget()
 	return ec and ec:IsControler(tp)
 end
-function c55262310.tdfilter(c)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and not c:IsDisabled()
-end
 function c55262310.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local ec=e:GetHandler():GetEquipTarget()
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(1-tp) and chkc:IsAbleToDeck() end
