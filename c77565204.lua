@@ -89,6 +89,9 @@ function c77565204.tgop(e,tp,eg,ep,ev,re,r,rp)
 		local mat=Duel.SelectFusionMaterial(tp,tc,mg)
 		mat:KeepAlive()
 		Duel.SendtoGrave(mat,REASON_EFFECT)
+		for mc in aux.Next(mat) do
+			mc:RegisterFlagEffect(77565204,RESET_EVENT+RESETS_STANDARD,0,1)
+		end
 		e:SetLabel(code)
 		e:SetLabelObject(mat)
 		Duel.ShuffleExtra(tp)
@@ -109,7 +112,13 @@ function c77565204.procop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if not tc then return end
 	tc:SetStatus(STATUS_FUTURE_FUSION,true)
-	tc:SetMaterial(e:GetLabelObject():GetLabelObject())
+	local mat=e:GetLabelObject():GetLabelObject()
+	for mc in aux.Next(mat) do
+		if mc:GetFlagEffect(77565204)>0 then
+			mc:SetReason(REASON_EFFECT+REASON_FUSION+REASON_MATERIAL)
+		end
+	end
+	tc:SetMaterial(mat)
 	Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 	tc:CompleteProcedure()
 	c:SetCardTarget(tc)
