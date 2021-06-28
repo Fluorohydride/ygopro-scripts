@@ -28,7 +28,7 @@ function c32349062.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c32349062.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ) and aux.NegateMonsterFilter(c)
+	return c:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ) and aux.NegateMonsterFilter(c)
 end
 function c32349062.distg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and c32349062.filter(chkc) end

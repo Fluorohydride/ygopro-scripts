@@ -94,7 +94,7 @@ function c17739335.discon(e,tp,eg,ep,ev,re,r,rp)
 	return tid and tid~=Duel.GetTurnCount()
 end
 function c17739335.disfilter(c,g)
-	return c:IsFaceup() and not c:IsDisabled() and c:IsType(TYPE_EFFECT) and g:IsContains(c)
+	return aux.NegateEffectMonsterFilter(c) and g:IsContains(c)
 end
 function c17739335.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

@@ -111,7 +111,7 @@ function c80776622.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,#g,0,0)
 end
 function c80776622.disfilter(c,e)
-	return c:IsRelateToEffect(e) and c:IsFaceup()
+	return c:IsRelateToEffect(e) and aux.NegateAnyFilter(c)
 end
 function c80776622.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

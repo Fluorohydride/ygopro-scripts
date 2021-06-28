@@ -61,14 +61,11 @@ function c68679595.discon(e,tp,eg,ep,ev,re,r,rp)
 	local g=c:GetEquipGroup()
 	return g:IsExists(c68679595.cfilter,1,nil)
 end
-function c68679595.disfilter(c)
-	return c:IsFaceup() and not c:IsDisabled() and c:IsType(TYPE_EFFECT)
-end
 function c68679595.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and c68679595.disfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c68679595.disfilter,tp,0,LOCATION_MZONE,1,nil) end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) and aux.NegateEffectMonsterFilter(chkc) end
+	if chk==0 then return Duel.IsExistingTarget(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
-	local g=Duel.SelectTarget(tp,c68679595.disfilter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end
 function c68679595.disop(e,tp,eg,ep,ev,re,r,rp)

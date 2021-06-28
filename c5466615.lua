@@ -34,24 +34,21 @@ function c5466615.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c5466615.tgfilter(c)
-	return c:IsType(TYPE_EFFECT) and c:IsFaceup() and not c:IsDisabled()
-end
-function c5466615.tgfilter2(c)
 	return c:IsSetCard(0x157) and c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
 end
 function c5466615.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return c5466615.tgfilter(chkc) and chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) end
-	if chk==0 then return Duel.IsExistingMatchingCard(c5466615.tgfilter2,tp,LOCATION_GRAVE,0,1,nil)
-		and Duel.IsExistingTarget(c5466615.tgfilter,tp,0,LOCATION_MZONE,1,nil) end
+	if chkc then return aux.NegateEffectMonsterFilter(chkc) and chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_MZONE) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c5466615.tgfilter,tp,LOCATION_GRAVE,0,1,nil)
+		and Duel.IsExistingTarget(aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g=Duel.SelectTarget(tp,c5466615.tgfilter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,aux.NegateEffectMonsterFilter,tp,0,LOCATION_MZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_GRAVE)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,1,0,0)
 end
 function c5466615.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c5466615.tgfilter2,tp,LOCATION_GRAVE,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c5466615.tgfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	if #g>0 and Duel.Remove(g,POS_FACEUP,REASON_EFFECT) then
 		local tc=Duel.GetFirstTarget()
 		if tc:IsRelateToEffect(e) and tc:IsFaceup() then
