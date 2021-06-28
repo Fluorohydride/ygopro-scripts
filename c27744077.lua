@@ -24,7 +24,7 @@ function c27744077.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e2=e1:Clone()
 	e2:SetProperty(0)
 	e2:SetValue(0)
-	c:RegisterEffect(e2)
+	Duel.RegisterEffect(e2,tp)
 	e1:SetLabelObject(e2)
 end
 function c27744077.imval(e,c)
