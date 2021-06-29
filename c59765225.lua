@@ -47,8 +47,15 @@ function c59765225.imop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=re:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() then
-		if rc:IsRelateToEffect(re) and rc:IsControler(1-tp) and rc:GetBaseAttack()>0 then
-			local atk=rc:GetBaseAttack()
+		local atk=0
+		if rc:IsRelateToEffect(re) and (rc:IsFaceup() or not rc:IsLocation(LOCATION_MZONE)) then
+			if rc:IsControler(1-tp) then
+				atk=rc:GetBaseAttack()
+			end
+		else
+			atk=rc:GetTextAttack()
+		end			
+		if atk>0 then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)
