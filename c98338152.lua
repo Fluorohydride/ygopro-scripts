@@ -42,8 +42,9 @@ function c98338152.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e2)
+		Duel.AdjustInstantly()
 		if Duel.GetMatchingGroupCount(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_SPELL)>=3
-			and not tc:IsImmuneToEffect(e) and tc:IsControler(1-tp) and tc:IsControlerCanBeChanged()
+			and tc:IsDisabled() and tc:IsControler(1-tp) and tc:IsControlerCanBeChanged()
 			and Duel.SelectYesNo(tp,aux.Stringid(98338152,0)) then
 			Duel.BreakEffect()
 			Duel.GetControl(tc,tp,PHASE_END,1)
