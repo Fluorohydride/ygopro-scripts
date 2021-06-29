@@ -26,24 +26,15 @@ function c19036557.costfilter(c,tp)
 		and Duel.IsExistingMatchingCard(c19036557.thfilter,tp,LOCATION_DECK,0,1,c)
 end
 function c19036557.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local fg=Group.CreateGroup()
-	for i,pe in ipairs({Duel.IsPlayerAffectedByEffect(tp,61557074)}) do
-		fg:AddCard(pe:GetHandler())
-	end
+	local fe=Duel.IsPlayerAffectedByEffect(tp,61557074)
 	local loc=LOCATION_HAND
-	if fg:GetCount()>0 then loc=LOCATION_HAND+LOCATION_DECK end
+	if fe then loc=LOCATION_HAND+LOCATION_DECK end
 	if chk==0 then return Duel.IsExistingMatchingCard(c19036557.costfilter,tp,loc,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local tc=Duel.SelectMatchingCard(tp,c19036557.costfilter,tp,loc,0,1,1,nil,tp):GetFirst()
 	if tc:IsLocation(LOCATION_DECK) then
-		local fc=nil
-		if fg:GetCount()==1 then
-			fc=fg:GetFirst()
-		else
-			fc=fg:Select(tp,1,1,nil)
-		end
-		Duel.Hint(HINT_CARD,0,fc:GetCode())
-		fc:RegisterFlagEffect(61557074,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,0)
+		Duel.Hint(HINT_CARD,0,61557074)
+		fe:UseCountLimit(tp)
 	end
 	Duel.SendtoGrave(tc,REASON_COST)
 end
