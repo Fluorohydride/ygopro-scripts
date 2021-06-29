@@ -66,6 +66,7 @@ function c79868386.activate(e,tp,eg,ep,ev,re,r,rp)
 			if #sg>0 and Duel.GetTurnPlayer()==tp
 				and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 				and Duel.SelectYesNo(tp,aux.Stringid(79868386,0)) then
+				Duel.BreakEffect()
 				Duel.Destroy(sg,REASON_EFFECT)
 			end
 		end
