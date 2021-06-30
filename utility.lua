@@ -481,39 +481,54 @@ function Auxiliary.SynMixTarget(f1,f2,f3,f4,minc,maxc,gc)
 					mg=Auxiliary.GetSynMaterials(tp,c)
 				end
 				if smat~=nil then mg:AddCard(smat) end
-				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-				local c1=mg:FilterSelect(tp,Auxiliary.SynMixFilter1,1,1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc):GetFirst()
-				g:AddCard(c1)
-				if f2 then
+				repeat
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-					local c2=mg:FilterSelect(tp,Auxiliary.SynMixFilter2,1,1,c1,f2,f3,f4,minc,maxc,c,mg,smat,c1,gc):GetFirst()
-					g:AddCard(c2)
-					if f3 then
+					local c1=mg:Filter(Auxiliary.SynMixFilter1,nil,f1,f2,f3,f4,minc,maxc,c,mg,smat,gc):SelectSubGroup(tp,aux.TRUE,Duel.IsSummonCancelable,1,1)
+					if c1 then
+						g:AddCard(c1:GetFirst())
+						if f2 then
+							Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
+							local c2=mg:Filter(Auxiliary.SynMixFilter2,c1,f2,f3,f4,minc,maxc,c,mg,smat,c1:GetFirst(),gc):SelectSubGroup(tp,aux.TRUE,Duel.IsSummonCancelable,1,1)
+							if c2 then
+								g:AddCard(c2:GetFirst())
+								if f3 then
+									Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
+									local c3=mg:Filter(Auxiliary.SynMixFilter3,Group.FromCards(c1:GetFirst(),c2:GetFirst()),f3,f4,minc,maxc,c,mg,smat,c1:GetFirst(),c2:GetFirst(),gc):SelectSubGroup(tp,aux.TRUE,Duel.IsSummonCancelable,1,1)
+									if c3 then g:AddCard(c3:GetFirst()) else g:Clear() end
+								end
+							else g:Clear() end
+						end
+					end
+					if Duel.AssumeReset then
+						for tn in aux.Next(g) do
+							for _,ef in ipairs{tn:IsHasEffect(EFFECT_SYNCHRO_CHECK)} do
+								ef:GetValue()(ef,tn)
+								for mc in aux.Next(mg:Filter(aux.TRUE,g)) do ef:GetValue()(ef,mc) end
+							end
+						end
+					end
+					local g4=Group.CreateGroup()
+					if #g>0 then for i=0,maxc-1 do
+						local mg2=mg:Clone()
+						if f4 then
+							mg2=mg2:Filter(f4,g,c)
+						else
+							mg2:Sub(g)
+						end
+						local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc)
+						if cg:GetCount()==0 then break end
+						local minct=1
+						if Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc) then
+							minct=0
+						end
 						Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-						local c3=mg:FilterSelect(tp,Auxiliary.SynMixFilter3,1,1,Group.FromCards(c1,c2),f3,f4,minc,maxc,c,mg,smat,c1,c2,gc):GetFirst()
-						g:AddCard(c3)
-					end
-				end
-				local g4=Group.CreateGroup()
-				for i=0,maxc-1 do
-					local mg2=mg:Clone()
-					if f4 then
-						mg2=mg2:Filter(f4,g,c)
-					else
-						mg2:Sub(g)
-					end
-					local cg=mg2:Filter(Auxiliary.SynMixCheckRecursive,g4,tp,g4,mg2,i,minc,maxc,c,g,smat,gc)
-					if cg:GetCount()==0 then break end
-					local minct=1
-					if Auxiliary.SynMixCheckGoal(tp,g4,minc,i,c,g,smat,gc) then
-						minct=0
-					end
-					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SMATERIAL)
-					local tg=cg:Select(tp,minct,1,nil)
-					if tg:GetCount()==0 then break end
-					g4:Merge(tg)
-				end
-				g:Merge(g4)
+						local tg=cg:SelectSubGroup(tp,aux.TRUE,Duel.IsSummonCancelable,1,1)
+						if not tg then g4:Clear() break end
+						g4:Merge(tg)
+					end end
+					if #g4>0 then g:Merge(g4) else g:Clear() end
+				until #g>0 or Duel.IsSummonCancelable()
+				if Duel.AssumeReset then Duel.AssumeReset() end
 				if g:GetCount()>0 then
 					g:KeepAlive()
 					e:SetLabelObject(g)
@@ -547,18 +562,31 @@ function Auxiliary.SynMixFilter3(c,f3,f4,minc,maxc,syncard,mg,smat,c1,c2,gc,mgch
 	end
 end
 function Auxiliary.SynMixFilter4(c,f4,minc,maxc,syncard,mg1,smat,c1,c2,c3,gc,mgchk)
-	if f4 and not f4(c,syncard,c1,c2,c3) then return false end
 	local sg=Group.FromCards(c1,c)
 	sg:AddCard(c1)
 	if c2 then sg:AddCard(c2) end
 	if c3 then sg:AddCard(c3) end
+	if Duel.AssumeReset then
+		for tn in aux.Next(sg) do
+			for _,ef in ipairs{tn:IsHasEffect(EFFECT_SYNCHRO_CHECK)} do
+				ef:GetValue()(ef,tn)
+				ef:GetValue()(ef,c)
+				for tc in aux.Next(mg1,sg:Filter(aux.TRUE,c)) do
+					ef:GetValue()(ef,tc)
+				end
+			end
+		end
+	end
+	if f4 and not f4(c,syncard,c1,c2,c3) then return false end
 	local mg=mg1:Clone()
 	if f4 then
 		mg=mg:Filter(f4,sg,syncard)
 	else
 		mg:Sub(sg)
 	end
-	return aux.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,smat,gc,mgchk)
+	local res=aux.SynMixCheck(mg,sg,minc-1,maxc-1,syncard,smat,gc,mgchk)
+	if Duel.AssumeReset then Duel.AssumeReset() end
+	return res
 end
 function Auxiliary.SynMixCheck(mg,sg1,minc,maxc,syncard,smat,gc,mgchk)
 	local tp=syncard:GetControler()
