@@ -50,6 +50,7 @@ function c68679595.eqop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectMatchingCard(tp,c68679595.eqfilter,tp,LOCATION_EXTRA+LOCATION_DECK,0,1,1,nil,tp)
 		local tc=g:GetFirst()
+		if not tc then return end
 		tc.zw_equip_monster(tc,tp,c)
 	end
 end
