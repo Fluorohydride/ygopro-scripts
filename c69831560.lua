@@ -134,7 +134,8 @@ function c69831560.desop1(e,tp,eg,ep,ev,re,r,rp)
 	else e:SetLabel(0) end
 end
 function c69831560.desop2(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetLabelObject():GetLabel()~=0 then
+	local e3=e:GetLabelObject()
+	if e3 and e3:GetLabel()~=0 then
 		local g=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)
 		Duel.Destroy(g,REASON_EFFECT)
 	end
