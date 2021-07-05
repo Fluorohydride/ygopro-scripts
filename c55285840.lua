@@ -26,7 +26,7 @@ function c55285840.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c55285840.mattg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFieldGroupCount(1-tp,LOCATION_DECK,0)>0 end
+	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ) and Duel.GetFieldGroupCount(1-tp,LOCATION_DECK,0)>0 end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c55285840.matop(e,tp,eg,ep,ev,re,r,rp)

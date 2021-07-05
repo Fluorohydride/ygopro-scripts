@@ -59,7 +59,8 @@ function c90126061.mtfilter(c)
 end
 function c90126061.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c90126061.mtfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c90126061.mtfilter,tp,LOCATION_GRAVE,0,1,nil) end
+	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ)
+		and Duel.IsExistingTarget(c90126061.mtfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local sg=Duel.SelectTarget(tp,c90126061.mtfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,sg,1,0,0)

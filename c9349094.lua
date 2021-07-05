@@ -38,7 +38,8 @@ end
 function c9349094.ovtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local typ=bit.band(re:GetActiveType(),TYPE_MONSTER+TYPE_SPELL+TYPE_TRAP)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c9349094.ovfilter(chkc,typ) end
-	if chk==0 then return Duel.IsExistingTarget(c9349094.ovfilter,tp,LOCATION_GRAVE,0,1,nil,typ) end
+	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ)
+		and Duel.IsExistingTarget(c9349094.ovfilter,tp,LOCATION_GRAVE,0,1,nil,typ) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g=Duel.SelectTarget(tp,c9349094.ovfilter,tp,LOCATION_GRAVE,0,1,1,nil,typ)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
