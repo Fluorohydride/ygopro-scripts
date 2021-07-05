@@ -35,7 +35,7 @@ function c12541409.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateEffect(ev) and rc:IsLevelAbove(1) and Duel.SelectYesNo(tp,aux.Stringid(12541409,1)) then
 		Duel.BreakEffect()
 		local lv=rc:GetLevel()
-		if not rc:IsRelateToEffect(re) then lv=rc:GetOriginLevel() end
+		if not rc:IsRelateToEffect(re) then lv=rc:GetOriginalLevel() end
 		Duel.Damage(1-tp,lv*100,REASON_EFFECT)
 	end
 end
