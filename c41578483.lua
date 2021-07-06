@@ -51,7 +51,7 @@ function c41578483.initial_effect(c)
 	e5:SetCode(EFFECT_CANNOT_ATTACK)
 	e5:SetRange(LOCATION_MZONE)
 	e5:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
-	e5:SetTarget(c41578483.distg)
+	e5:SetTarget(c41578483.atktg)
 	c:RegisterEffect(e5)
 end
 function c41578483.can_equip_monster(c)
@@ -121,9 +121,8 @@ function c41578483.disfilter(c)
 	return c:IsFaceup() and c:GetFlagEffect(41578483)~=0
 end
 function c41578483.distg(e,c)
-	if c:IsFacedown() then return false end
 	local g=e:GetHandler():GetEquipGroup():Filter(c41578483.disfilter,nil)
-	return g:IsExists(Card.IsCode,1,nil,c:GetCode())
+	return g:IsExists(Card.IsCode,1,nil,c:GetCode()) and (c:IsType(TYPE_EFFECT) or c:GetOriginalType()&TYPE_EFFECT~=0)
 end
 function c41578483.discon(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetHandler():GetEquipGroup():Filter(c41578483.disfilter,nil)
@@ -132,4 +131,8 @@ function c41578483.discon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c41578483.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
+end
+function c41578483.atktg(e,c)
+	local g=e:GetHandler():GetEquipGroup():Filter(c41578483.disfilter,nil)
+	return g:IsExists(Card.IsCode,1,nil,c:GetCode())
 end
