@@ -14,7 +14,7 @@ function c91819979.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_PREDRAW)
 	e2:SetRange(LOCATION_GRAVE)
-	e2:SetCondition(c91819979.thcon)
+	e2:SetCondition(aux.DrawReplaceCondition)
 	e2:SetTarget(c91819979.thtg)
 	e2:SetOperation(c91819979.thop)
 	c:RegisterEffect(e2)
@@ -34,31 +34,14 @@ function c91819979.damop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetMatchingGroupCount(c91819979.cfilter,tp,LOCATION_MZONE,0,nil)
 	Duel.Damage(p,ct*200,REASON_EFFECT)
 end
-function c91819979.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return tp==Duel.GetTurnPlayer() and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0
-		and Duel.GetDrawCount(tp)>0
-end
 function c91819979.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToHand() end
-	local dt=Duel.GetDrawCount(tp)
-	if dt~=0 then
-		aux.DrawReplaceCount=0
-		aux.DrawReplaceMax=dt
-		local e1=Effect.CreateEffect(e:GetHandler())
-		e1:SetType(EFFECT_TYPE_FIELD)
-		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-		e1:SetCode(EFFECT_DRAW_COUNT)
-		e1:SetTargetRange(1,0)
-		e1:SetReset(RESET_PHASE+PHASE_DRAW)
-		e1:SetValue(0)
-		Duel.RegisterEffect(e1,tp)
-	end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetHandler(),1,0,0)
 end
 function c91819979.thop(e,tp,eg,ep,ev,re,r,rp)
+	if not aux.UseDrawReplace(e,tp) then return end
 	local c=e:GetHandler()
-	aux.DrawReplaceCount=aux.DrawReplaceCount+1
-	if aux.DrawReplaceCount<=aux.DrawReplaceMax and c:IsRelateToEffect(e) then
+	if c:IsRelateToEffect(e) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,c)
 	end
