@@ -40,7 +40,7 @@ end
 function c42388271.spfilter(c,e,tp)
 	return c:IsPreviousPosition(POS_FACEUP) and c:IsPreviousControler(tp) and bit.band(c:GetPreviousTypeOnField(),TYPE_LINK)~=0
 		and c:IsLocation(LOCATION_GRAVE) and c:IsControler(tp) and c:IsType(TYPE_LINK)
-		and c:IsReason(REASON_EFFECT) and c:GetReasonPlayer()==1-tp
+		and c:IsReason(REASON_EFFECT) and c:IsReason(REASON_DESTROY) and c:GetReasonPlayer()==1-tp
 		and c:IsCanBeEffectTarget(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c42388271.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
