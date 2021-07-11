@@ -84,7 +84,7 @@ function c5370235.thop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetTargetRange(LOCATION_GRAVE,0)
 	--e2:SetCountLimit(1,5370237)
 	e2:SetTarget(c5370235.mttg)
-	e2:SetValue(c5370235.fuslimit)
+	e2:SetValue(1)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e2,tp)
 end
