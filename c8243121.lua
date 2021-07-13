@@ -85,7 +85,7 @@ function c8243121.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c8243121.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local a,d=Duel.GetBattleMonster(1-tp)
-	if d:IsRelateToBattle() and a:IsRelateToBattle() and d:IsFaceup() and a:IsFaceup() then
+	if a and d and d:IsRelateToBattle() and a:IsRelateToBattle() and d:IsFaceup() and a:IsFaceup() then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
