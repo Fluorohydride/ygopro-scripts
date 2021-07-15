@@ -76,19 +76,37 @@ function c13224603.sumop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		Duel.Summon(tp,tc,true,nil)
-		local e1=Effect.CreateEffect(e:GetHandler())
+		local c=e:GetHandler()
+		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		e1:SetTargetRange(1,0)
 		e1:SetLabel(tc:GetOriginalRace())
 		e1:SetTarget(c13224603.splimit)
+		e1:SetCondition(c13224603.lmcon)
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
+		local e2=Effect.CreateEffect(c)
+		e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+		e2:SetCode(EVENT_SUMMON_SUCCESS)
+		e2:SetRange(LOCATION_MZONE)
+		e2:SetReset(RESET_EVENT+0xff0000)
+		e2:SetLabelObject(e1)
+		e2:SetOperation(c13224603.regop)
+		tc:RegisterEffect(e2)
 	end
 end
 function c13224603.splimit(e,c)
 	return bit.band(c:GetOriginalRace(),e:GetLabel())==0
+end
+function c13224603.lmcon(e)
+	return e:GetLabel()==1
+end
+function c13224603.regop(e,tp,eg,ep,ev,re,r,rp)
+	local e1=e:GetLabelObject()
+	e1:SetLabel(1)
+	e:Reset()
 end
 function c13224603.reccon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
