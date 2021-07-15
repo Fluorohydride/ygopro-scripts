@@ -82,7 +82,7 @@ function c13224603.sumop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
 		e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		e1:SetTargetRange(1,0)
-		e1:SetLabel(tc:GetOriginalRace())
+		e1:SetLabel(tc:GetOriginalRace(),0)
 		e1:SetTarget(c13224603.splimit)
 		e1:SetCondition(c13224603.lmcon)
 		e1:SetReset(RESET_PHASE+PHASE_END)
@@ -101,11 +101,13 @@ function c13224603.splimit(e,c)
 	return bit.band(c:GetOriginalRace(),e:GetLabel())==0
 end
 function c13224603.lmcon(e)
-	return e:GetLabel()==1
+	local l1,l2=e:GetLabel()
+	return l2==1
 end
 function c13224603.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=e:GetLabelObject()
-	e1:SetLabel(1)
+	local l1=e1:GetLabel()
+	e1:SetLabel(l1,1)
 	e:Reset()
 end
 function c13224603.reccon(e,tp,eg,ep,ev,re,r,rp)
