@@ -55,16 +55,19 @@ function c56673480.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,PLAYER_ALL,1)
 end
 function c56673480.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local lp0=Duel.GetLP(tp)
 	if lp0>=1000 then
 		Duel.SetLP(tp,lp0-1000)
 		Duel.Draw(tp,1,REASON_EFFECT)
+	else
+		Duel.SetLP(tp,0)
 	end
 	local lp1=Duel.GetLP(1-tp)
 	if lp1>=1000 then
 		Duel.SetLP(1-tp,lp1-1000)
 		Duel.Draw(1-tp,1,REASON_EFFECT)
+	else
+		Duel.SetLP(1-tp,0)
 	end
 end
 function c56673480.drop(e,tp,eg,ep,ev,re,r,rp)
@@ -77,7 +80,7 @@ function c56673480.drop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do
 		pg:AddCard(tc)
-		tc:RegisterFlagEffect(56673481,RESET_EVENT+RESETS_STANDARD,0,1)
+		tc:RegisterFlagEffect(56673481,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,66)
 		tc=eg:GetNext()
 	end
 end
