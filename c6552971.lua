@@ -61,9 +61,12 @@ function c6552971.activate(e,tp,eg,ep,ev,re,r,rp)
 	e3:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e3,tp)
 end
+function c6552971.regfilter(c,tp,code)
+	return c:IsSummonPlayer(tp) and c:IsCode(code)
+end
 function c6552971.regop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 then return end
-	if eg:IsExists(Card.IsCode,1,nil,e:GetLabel()) then
+	if eg:IsExists(c6552971.regfilter,1,nil,tp,e:GetLabel()) then
 		e:SetLabel(0)
 	end
 end
