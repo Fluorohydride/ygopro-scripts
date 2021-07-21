@@ -19,26 +19,18 @@ function c6992184.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==1-tp
 		and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 end
-function c6992184.check(e,tp,exc)
-	local lpz=Duel.GetFieldCard(tp,LOCATION_PZONE,0)
-	if lpz==nil then return false end
-	local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_HAND+LOCATION_EXTRA,0,exc,TYPE_PENDULUM)
-	if #g==0 then return false end
-	local pcon=aux.PendCondition()
-	return pcon(e,lpz,g)
-end
-function c6992184.cfilter(c,e,tp)
-	return c:IsDiscardable() and c6992184.check(e,tp,c)
+function c6992184.cfilter(c,tp)
+	if not c:IsDiscardable() then return false end
+	local mg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_HAND+LOCATION_EXTRA,0,c,TYPE_PENDULUM)
+	return Duel.IsPlayerCanPendulumSummon(tp,mg)
 end
 function c6992184.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		e:SetLabel(100)
-		if not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_HAND+LOCATION_EXTRA,0,1,nil,TYPE_PENDULUM)
-			or Duel.GetFieldGroupCount(tp,LOCATION_PZONE,0)<2 then return false end
-		return Duel.IsExistingMatchingCard(c6992184.cfilter,tp,LOCATION_HAND,0,1,nil,e,tp)
+		return Duel.IsExistingMatchingCard(c6992184.cfilter,tp,LOCATION_HAND,0,1,nil,tp)
 	end
 	e:SetLabel(0)
-	Duel.DiscardHand(tp,c6992184.cfilter,1,1,REASON_COST+REASON_DISCARD,nil,e,tp)
+	Duel.DiscardHand(tp,c6992184.cfilter,1,1,REASON_COST+REASON_DISCARD,nil,tp)
 end
 function c6992184.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -46,7 +38,8 @@ function c6992184.target(e,tp,eg,ep,ev,re,r,rp,chk)
 			e:SetLabel(0)
 			return true
 		end
-		return c6992184.check(e,tp,nil)
+		local mg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_HAND+LOCATION_EXTRA,0,nil,TYPE_PENDULUM)
+		return Duel.IsPlayerCanPendulumSummon(tp,mg)
 	end
 	e:SetLabel(0)
 end
@@ -72,15 +65,9 @@ function c6992184.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetOperation(c6992184.retop)
 		Duel.RegisterEffect(e3,tp)
 	end
-	local lpz=Duel.GetFieldCard(tp,LOCATION_PZONE,0)
-	if lpz==nil then return end
 	local g=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_HAND+LOCATION_EXTRA,0,nil,TYPE_PENDULUM)
 	if #g==0 then return end
-	--the summon should be done after the chain end
-	local sg=Group.CreateGroup()
-	local pop=aux.PendOperation()
-	pop(e,tp,eg,ep,ev,re,r,rp,lpz,sg,g)
-	Duel.SpecialSummon(sg,SUMMON_TYPE_PENDULUM,tp,tp,false,false,POS_FACEUP)
+	Duel.PendulumSummon(tp,g)
 end
 function c6992184.retop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetFieldGroup(tp,LOCATION_PZONE,0)
