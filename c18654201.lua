@@ -17,7 +17,7 @@ function c18654201.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c18654201.filter(c,tp)
-	return c:IsControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsType(TYPE_MONSTER)
+	return c:IsControler(tp) and c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousTypeOnField()&TYPE_MONSTER~=0
 end
 function c18654201.regop(e,tp,eg,ep,ev,re,r,rp)
 	local p1=false local p2=false
