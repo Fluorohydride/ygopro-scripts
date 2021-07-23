@@ -54,7 +54,6 @@ function c19814508.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c19814508.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
 	local tc=g:GetFirst()
 	while tc do

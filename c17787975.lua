@@ -63,7 +63,6 @@ function c17787975.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c17787975.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=c:GetFirstCardTarget()
 	if not tc then return false end
 	local at=Duel.GetAttacker()

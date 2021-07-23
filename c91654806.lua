@@ -86,7 +86,6 @@ function c91654806.drop(e,tp,eg,ep,ev,re,r,rp)
 		tc=g:GetNext()
 	end
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if res and Duel.SendtoGrave(c,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_GRAVE) then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end

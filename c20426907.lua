@@ -49,7 +49,6 @@ function c20426907.distg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c20426907.disop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)

@@ -72,7 +72,6 @@ function c53363708.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c53363708.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=c:GetEquipTarget()
 	if tc and Duel.ChangePosition(tc,POS_FACEUP_DEFENSE,POS_FACEUP_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)

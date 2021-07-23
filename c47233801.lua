@@ -27,7 +27,6 @@ function c47233801.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47233801.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local dam=c:GetFlagEffectLabel(47233801)
 	if dam==nil then
 		c:RegisterFlagEffect(47233801,RESET_EVENT+RESETS_STANDARD,0,0,200)

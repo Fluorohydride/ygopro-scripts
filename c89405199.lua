@@ -58,7 +58,6 @@ function c89405199.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c89405199.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local ct1=c:GetFlagEffectLabel(89405199+tp)
 	local ct2=c:GetFlagEffectLabel(89405199+1-tp)
 	if ct1 then Duel.Damage(tp,ct1*500,REASON_EFFECT,true) end

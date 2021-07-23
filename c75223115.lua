@@ -29,7 +29,6 @@ function c75223115.actfilter(c,tp)
 end
 function c75223115.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c75223115.actfilter,tp,LOCATION_DECK,0,nil,tp)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(75223115,0)) then
 		Duel.BreakEffect()

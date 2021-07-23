@@ -37,7 +37,6 @@ function c86885905.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c86885905.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,86885905,0x103,TYPES_EFFECT_TRAP_MONSTER,1400,1800,4,RACE_SPELLCASTER,ATTRIBUTE_LIGHT) then return end
 	c:AddMonsterAttribute(TYPE_TRAP+TYPE_EFFECT)

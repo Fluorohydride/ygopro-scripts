@@ -89,7 +89,6 @@ function c75987257.poscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c75987257.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local ec=c:GetEquipTarget()
 	if ec then
 		Duel.ChangePosition(ec,POS_FACEUP_DEFENSE,0,POS_FACEUP_ATTACK,0)

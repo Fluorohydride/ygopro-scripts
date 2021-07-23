@@ -39,7 +39,6 @@ function c36415522.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c36415522.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if not Duel.NegateAttack() then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

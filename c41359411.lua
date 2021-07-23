@@ -69,7 +69,6 @@ function c41359411.dircost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c41359411.dirop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_EQUIP)
 	e1:SetCode(EFFECT_DIRECT_ATTACK)
