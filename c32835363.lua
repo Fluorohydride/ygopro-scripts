@@ -51,7 +51,6 @@ function c32835363.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,0,ep,800)
 end
 function c32835363.damop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local d=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	if ep==PLAYER_ALL then
 		Duel.Damage(tp,d,REASON_EFFECT,true)

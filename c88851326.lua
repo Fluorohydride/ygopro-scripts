@@ -78,7 +78,6 @@ function c88851326.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c88851326.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if Duel.NegateAttack() and tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)

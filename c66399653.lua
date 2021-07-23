@@ -28,7 +28,6 @@ function c66399653.thfilter(c)
 		and c:IsType(TYPE_UNION) and c:IsAbleToHand()
 end
 function c66399653.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c66399653.thfilter,tp,LOCATION_DECK,0,nil)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(66399653,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
@@ -59,7 +58,6 @@ function c66399653.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c66399653.eqop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsControler(tp) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)

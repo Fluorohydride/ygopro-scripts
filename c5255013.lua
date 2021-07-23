@@ -48,7 +48,6 @@ function c5255013.filter(c)
 	return (c:IsFacedown() or not c:IsSetCard(0xc4)) and c:IsAbleToDeck()
 end
 function c5255013.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c5255013.filter,tp,LOCATION_MZONE,0,nil)
 	if g:GetCount()>0 then
 		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)

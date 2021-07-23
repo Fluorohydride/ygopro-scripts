@@ -97,7 +97,6 @@ function c49551909.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler():GetEquipTarget():GetBattleTarget(),1,0,0)
 end
 function c49551909.desop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local bc=e:GetHandler():GetEquipTarget():GetBattleTarget()
 	if bc:IsRelateToBattle() then
 		Duel.Destroy(bc,REASON_EFFECT)

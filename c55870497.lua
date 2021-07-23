@@ -21,7 +21,6 @@ function c55870497.skipcon(e,tp,eg,ep,ev,re,r,rp)
 		and re:GetHandler():IsSetCard(0x60)
 end
 function c55870497.skipop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_SKIP_M1)

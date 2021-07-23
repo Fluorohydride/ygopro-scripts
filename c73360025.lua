@@ -67,7 +67,6 @@ function c73360025.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c73360025.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c73360025.mfilter1,nil,e)
 	local sg1=Duel.GetMatchingGroup(c73360025.spfilter1,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
@@ -123,7 +122,6 @@ function c73360025.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,0,tp,1000)
 end
 function c73360025.damop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Damage(p,d,REASON_EFFECT)
 end

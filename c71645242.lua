@@ -65,7 +65,6 @@ function c71645242.opfilter(c,e)
 	return c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
 end
 function c71645242.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=eg:Filter(c71645242.opfilter,nil,e)
 	if g:GetCount()==0 then return end
 	local tc=g:GetFirst()

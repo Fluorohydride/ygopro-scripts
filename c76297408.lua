@@ -43,7 +43,6 @@ function c76297408.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g1,g1:GetCount(),PLAYER_ALL,LOCATION_GRAVE)
 end
 function c76297408.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	if not g then return end
 	g=g:Filter(Card.IsRelateToEffect,nil,e)

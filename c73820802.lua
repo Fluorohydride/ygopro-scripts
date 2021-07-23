@@ -22,7 +22,6 @@ function c73820802.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer()
 end
 function c73820802.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then return end
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_CARDTYPE)
 	local op=Duel.AnnounceType(1-tp)

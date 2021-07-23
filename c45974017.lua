@@ -53,7 +53,6 @@ function c45974017.pctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c45974017.pcop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return false end
 	if e:GetLabel()==0 then
 		local tc=Duel.GetFirstTarget()
@@ -78,7 +77,6 @@ function c45974017.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,0,tp,1000)
 end
 function c45974017.damop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Damage(p,d,REASON_EFFECT)
 end

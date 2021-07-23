@@ -31,7 +31,6 @@ function c67048711.filter(c)
 	return c:IsFaceup() and c:IsCode(67048711)
 end
 function c67048711.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetMatchingGroupCount(c67048711.filter,tp,LOCATION_SZONE,0,nil)==3 then
 		Duel.RaiseSingleEvent(e:GetHandler(),EVENT_CUSTOM+67048711,e,0,0,0,0)
 	end
@@ -43,7 +42,6 @@ function c67048711.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c67048711.drop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetMatchingGroupCount(c67048711.filter,tp,LOCATION_SZONE,0,nil)==3 then
 		Duel.Draw(tp,3,REASON_EFFECT)
 	end

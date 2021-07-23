@@ -34,6 +34,5 @@ function c22201234.qtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetTargetCard(tg)
 end
 function c22201234.qop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.NegateAttack()
 end

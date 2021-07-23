@@ -55,7 +55,6 @@ function c19508728.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return ec and tc and tc:IsFaceup() and tc:IsControler(1-tp)
 end
 function c19508728.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ec=e:GetHandler():GetEquipTarget()
 	local tc=ec:GetBattleTarget()
 	if ec and tc and ec:IsFaceup() and tc:IsFaceup() then

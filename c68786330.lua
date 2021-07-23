@@ -22,7 +22,6 @@ function c68786330.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return a and d and a:IsRelateToBattle() and d:IsRelateToBattle() and a:IsRace(RACE_REPTILE) and d:IsDefensePos()
 end
 function c68786330.posop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local a=Duel.GetAttackTarget()
 	Duel.ChangePosition(a,POS_FACEUP_ATTACK)
 end

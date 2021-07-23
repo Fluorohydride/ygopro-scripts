@@ -70,7 +70,6 @@ function c76224717.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c76224717.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local act=false
 	if c76224717[tp]>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

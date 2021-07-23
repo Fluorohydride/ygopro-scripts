@@ -29,7 +29,6 @@ function c63394872.seqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c63394872.filter,tp,LOCATION_MZONE,0,1,1,nil,tp)
 end
 function c63394872.seqop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) then return end
 	local seq=tc:GetSequence()
