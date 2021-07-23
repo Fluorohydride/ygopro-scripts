@@ -104,7 +104,6 @@ function c97182396.natg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,ec,1,0,0)
 end
 function c97182396.naop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ec=e:GetHandler():GetEquipTarget()
 	if Duel.NegateAttack()~=0 and ec then
 		Duel.GetControl(ec,1-ec:GetControler(),PHASE_BATTLE,1)

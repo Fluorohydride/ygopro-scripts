@@ -44,7 +44,6 @@ function c55312487.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c55312487.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local rc=e:GetLabelObject()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

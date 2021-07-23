@@ -50,7 +50,6 @@ function c25163979.mvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(op)
 end
 function c25163979.mvop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if e:GetLabel()==0 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(25163979,3))

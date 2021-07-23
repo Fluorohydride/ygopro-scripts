@@ -28,7 +28,6 @@ function c12931061.thfilter(c)
 		or c:IsLocation(LOCATION_GRAVE) and c:IsCode(19814508)
 end
 function c12931061.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c12931061.thfilter,tp,LOCATION_DECK+LOCATION_GRAVE,0,nil)
 	local sel=1
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(12931061,0))

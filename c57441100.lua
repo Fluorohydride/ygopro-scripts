@@ -31,7 +31,6 @@ function c57441100.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function c57441100.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	if Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)>0
 		or Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)==0 then return end

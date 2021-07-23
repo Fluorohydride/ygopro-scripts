@@ -46,7 +46,6 @@ function c54807656.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c54807656.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
