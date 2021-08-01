@@ -1,5 +1,6 @@
 --スプリガンズ・ブラスト！
 function c10584050.initial_effect(c)
+	aux.AddCodeList(c,68468459)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DISABLE)

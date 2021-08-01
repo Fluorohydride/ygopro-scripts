@@ -1,5 +1,6 @@
 --デスピアン・クエリティス
 function c72272462.initial_effect(c)
+	aux.AddCodeList(c,68468459)
 	--fusion summon
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0x164),c72272462.matfilter,true)
