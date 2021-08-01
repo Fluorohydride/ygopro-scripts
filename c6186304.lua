@@ -1,5 +1,6 @@
 --D－フォース
 function c6186304.initial_effect(c)
+	aux.AddSetNameMonsterList(c,0xc008)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_GRAVE_ACTION)

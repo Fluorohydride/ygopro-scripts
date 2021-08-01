@@ -2105,6 +2105,27 @@ end
 function Auxiliary.IsCodeListed(c,code)
 	return c.card_code_list and c.card_code_list[code]
 end
+function Auxiliary.AddSetNameMonsterList(c,...)
+	if c:IsStatus(STATUS_COPYING_EFFECT) then return end
+	if c.setcode_monster_list==nil then
+		local mt=getmetatable(c)
+		mt.setcode_monster_list={}
+		for i,scode in ipairs{...} do
+			mt.setcode_monster_list[i]=scode
+		end
+	else
+		for i,scode in ipairs{...} do
+			c.setcode_monster_list[i]=scode
+		end
+	end
+end
+function Auxiliary.IsSetNameMonsterListed(c,setcode)
+	if not c.setcode_monster_list then return false end
+	for i,scode in ipairs(c.setcode_monster_list) do
+		if setcode&0xfff==scode&0xfff and setcode&scode==setcode then return true end
+	end
+	return false
+end
 function Auxiliary.IsCounterAdded(c,counter)
 	if not c.counter_add_list then return false end
 	for i,ccounter in ipairs(c.counter_add_list) do
