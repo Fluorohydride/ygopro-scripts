@@ -25,6 +25,7 @@ function c80758812.initial_effect(c)
 	e3:SetOperation(c80758812.spop2)
 	c:RegisterEffect(e3)
 end
+c80758812.has_text_type=TYPE_DUAL
 function c80758812.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2
 end

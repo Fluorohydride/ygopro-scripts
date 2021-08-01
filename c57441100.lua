@@ -17,6 +17,7 @@ function c57441100.initial_effect(c)
 	e1:SetOperation(c57441100.operation)
 	c:RegisterEffect(e1)
 end
+c57441100.has_text_type=TYPE_DUAL
 function c57441100.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
 		and Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE)~=0
