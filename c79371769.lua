@@ -16,7 +16,7 @@ function c79371769.initial_effect(c)
 	e2:SetOperation(c79371769.disop)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
-	e3:SetCode(EVENT_FLIP_SUMMON_SUCCESS)
+	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	c:RegisterEffect(e3)
 	--to deck
 	local e4=Effect.CreateEffect(c)
