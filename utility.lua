@@ -2444,7 +2444,6 @@ end
 --Drytron common summon effect
 function Auxiliary.AddDrytronSpSummonEffect(c,func)
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_SEARCH)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e1:SetCost(Auxiliary.DrytronSpSummonCost)

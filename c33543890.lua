@@ -10,6 +10,7 @@ function c33543890.initial_effect(c)
 	--spsummon
 	local e2=aux.AddDrytronSpSummonEffect(c,c33543890.extraop)
 	e2:SetDescription(aux.Stringid(33543890,0))
+	e2:SetCategory(CATEGORY_SPECIAL_SUMMON+CATEGORY_TOGRAVE)
 	e2:SetCountLimit(1,33543890)
 end
 function c33543890.splimit(e,se,sp,st)
