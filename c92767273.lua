@@ -36,7 +36,6 @@ function c92767273.atkcon1(e,tp,eg,ep,ev,re,r,rp)
 	return bc:IsFaceup() and tc:IsFaceup() and tc:IsSetCard(0x9f) and bc:GetBaseAttack()~=bc:GetAttack()
 end
 function c92767273.atkop1(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local bc=e:GetLabelObject()
 	if bc:IsRelateToBattle() and bc:IsFaceup() and bc:IsControler(1-tp) then
 		local diff=math.abs(bc:GetBaseAttack()-bc:GetAttack())

@@ -48,7 +48,6 @@ function c88757791.sctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c88757791.scfilter,tp,LOCATION_PZONE,0,1,1,nil,cg:GetFirst())
 end
 function c88757791.scop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	local pc=e:GetLabelObject()
 	if tc:IsRelateToEffect(e) then

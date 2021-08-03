@@ -37,7 +37,6 @@ function c93892436.ddestg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DECKDES,0,0,1-tp,1)
 end
 function c93892436.ddesop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.DiscardDeck(1-tp,1,REASON_EFFECT)
 end
 function c93892436.poscon(e,tp,eg,ep,ev,re,r,rp)
