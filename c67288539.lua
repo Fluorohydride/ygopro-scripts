@@ -72,7 +72,7 @@ function c67288539.valcheck(e,c)
 	end
 end
 function c67288539.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetFlagEffect(67288539)~=0
+	return e:GetHandler():GetFlagEffect(67288539)~=0 and Duel.GetAttackTarget()~=nil
 end
 function c67288539.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
