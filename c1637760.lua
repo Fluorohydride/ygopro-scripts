@@ -24,5 +24,6 @@ function c1637760.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Destroy(eg,REASON_EFFECT)
 	Duel.BreakEffect()
 	Duel.Draw(1-tp,1,REASON_EFFECT)
+	Duel.BreakEffect()
 	Duel.SkipPhase(1-tp,Duel.GetCurrentPhase(),RESET_PHASE+PHASE_END,1)
 end
