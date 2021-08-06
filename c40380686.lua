@@ -12,7 +12,7 @@ function c40380686.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BE_MATERIAL)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e2:SetCondition(c40380686.conditiom)
+	e2:SetCondition(c40380686.condition)
 	e2:SetTarget(c40380686.target)
 	e2:SetOperation(c40380686.operation)
 	c:RegisterEffect(e2)
@@ -41,7 +41,7 @@ function c40380686.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c40380686.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e)) or tc:IsFacedown() or tc:IsImmuneToEffect(e) then return end
+	if not tc:IsRelateToEffect(e) or tc:IsFacedown() or tc:IsImmuneToEffect(e) then return end
 	local c,op,ar=e:GetHandler(),e:GetLabel()
 	if op>0 then
 		local e1=Effect.CreateEffect(c)
