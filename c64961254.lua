@@ -29,7 +29,6 @@ function c64961254.thfilter(c)
 	return c:IsCode(91969909) and c:IsAbleToHand()
 end
 function c64961254.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c64961254.thfilter,tp,LOCATION_DECK,0,nil)
 	if #g>0 and c64961254.thcon(e,tp,eg,ep,ev,re,r,rp) and
 		Duel.SelectYesNo(tp,aux.Stringid(64961254,0)) then

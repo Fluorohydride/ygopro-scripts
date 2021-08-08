@@ -67,7 +67,6 @@ function c47705572.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,tp,LOCATION_ONFIELD+LOCATION_GRAVE)
 end
 function c47705572.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c47705572.filter1,nil,e)
 	local mg2=Duel.GetMatchingGroup(c47705572.filter3,tp,LOCATION_GRAVE,0,nil)

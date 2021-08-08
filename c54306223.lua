@@ -38,7 +38,6 @@ function c54306223.atkval(e,c)
 	return c:GetCounter(0x1009)*-500
 end
 function c54306223.acop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Group.CreateGroup()
 	local tg=Duel.GetFieldGroup(tp,LOCATION_MZONE,LOCATION_MZONE)
 	local tc=tg:GetFirst()
@@ -62,7 +61,6 @@ function c54306223.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,eg:GetCount(),0,0)
 end
 function c54306223.desop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=eg:Filter(Card.IsRelateToEffect,nil,e)
 	if g:GetCount()>0 then
 		Duel.Destroy(g,REASON_EFFECT)

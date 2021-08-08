@@ -26,7 +26,6 @@ function c59237154.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c59237154.filter,tp,LOCATION_MZONE,0,2,nil) end
 end
 function c59237154.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c59237154.filter,tp,LOCATION_MZONE,0,nil)
 	Duel.ShuffleSetCard(g)
 end

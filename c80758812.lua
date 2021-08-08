@@ -64,7 +64,6 @@ function c80758812.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)
 end
 function c80758812.spop2(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local rg=Duel.SelectReleaseGroup(tp,c80758812.relfilter,1,1,nil,tp)
 	if rg:GetCount()==0 then return end
 	local relchk=rg:GetFirst():IsDualState()

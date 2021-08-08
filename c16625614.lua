@@ -37,7 +37,6 @@ function c16625614.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_COIN,nil,0,tp,1)
 end
 function c16625614.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetAttacker()
 	local coin=Duel.TossCoin(tp,1)
 	if coin==1 then

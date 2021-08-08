@@ -67,7 +67,6 @@ function c50418970.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return ec and ec:IsAttackPos() and ec:IsCanChangePosition() end
 end
 function c50418970.posop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.ChangePosition(e:GetHandler():GetEquipTarget(),POS_FACEUP_DEFENSE)
 end
 function c50418970.damcon(e,tp,eg,ep,ev,re,r,rp)

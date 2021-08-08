@@ -33,7 +33,6 @@ function c3701074.rectg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,1-tp,0)
 end
 function c3701074.recop1(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=eg:GetFirst()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local rec=math.ceil(tc:GetAttack()/2)
@@ -50,7 +49,6 @@ function c3701074.rectg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,1-tp,0)
 end
 function c3701074.recop2(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=eg:Filter(c3701074.filter,nil,e,tp)
 	if g:GetCount()>0 then
 		if g:GetCount()>1 then

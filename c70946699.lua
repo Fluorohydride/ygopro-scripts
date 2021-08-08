@@ -31,7 +31,6 @@ function c70946699.filter(c)
 	return c:IsType(TYPE_CONTINUOUS) and c:IsFaceup()
 end
 function c70946699.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local rec=Duel.GetMatchingGroupCount(c70946699.filter,tp,LOCATION_ONFIELD,0,nil)*500
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 	Duel.Recover(p,rec,REASON_EFFECT)

@@ -20,7 +20,6 @@ function c18658572.cfcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)~=0
 end
 function c18658572.cfop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
 	if g:GetCount()==0 then return end
 	local tc=g:GetMinGroup(Card.GetSequence):GetFirst()

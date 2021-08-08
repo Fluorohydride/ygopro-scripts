@@ -103,7 +103,6 @@ function c13331639.ddtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c13331639.ddop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=eg:Filter(c13331639.ddfilter,nil,tp)
 	if g:GetCount()>0 then
 		Duel.Destroy(g,REASON_EFFECT)

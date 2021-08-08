@@ -46,7 +46,6 @@ function c41482598.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,4-ht)
 end
 function c41482598.drop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ht=Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)
 	if ht<4 then
 		Duel.Draw(tp,4-ht,REASON_EFFECT)
@@ -64,7 +63,6 @@ function c41482598.dctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,e:GetLabel())
 end
 function c41482598.dcop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 	local sg=g:RandomSelect(tp,e:GetLabel())
 	Duel.SendtoGrave(sg,REASON_EFFECT+REASON_DISCARD)
