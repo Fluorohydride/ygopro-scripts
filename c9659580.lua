@@ -50,7 +50,6 @@ function c9659580.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c9659580.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c9659580.tgfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,99,nil)
 	if Duel.SendtoGrave(g,REASON_EFFECT)~=0 then

@@ -32,7 +32,6 @@ function c34572613.spfilter(c,e,tp)
 	return c:IsSetCard(0x157) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsLevelBelow(4) and (c:IsFaceup() or c:IsLocation(LOCATION_HAND))
 end
 function c34572613.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetMZoneCount(tp)<=0 then return end
 	local g=Duel.GetMatchingGroup(c34572613.spfilter,tp,LOCATION_HAND+LOCATION_REMOVED,0,nil,e,tp)
 	if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(34572613,0)) then

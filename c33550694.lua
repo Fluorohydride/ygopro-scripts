@@ -43,7 +43,6 @@ function c33550694.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c33550694.operation(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c33550694.filter1,nil,e)
 	local sg1=Duel.GetMatchingGroup(c33550694.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil

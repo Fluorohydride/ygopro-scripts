@@ -113,7 +113,6 @@ function c39000945.rthop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	Duel.SendtoHand(g,nil,REASON_EFFECT)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local og=Duel.GetOperatedGroup()
 	local ct=0
 	for tc,num in pairs(ctable) do

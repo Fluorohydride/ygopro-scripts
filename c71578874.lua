@@ -36,7 +36,6 @@ function c71578874.adtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c71578874.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
 function c71578874.adop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local val=math.min(tc:GetAttack(),tc:GetDefense())

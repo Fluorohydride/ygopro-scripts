@@ -25,7 +25,6 @@ function c16227556.cfcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,500)
 end
 function c16227556.cfop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND):RandomSelect(tp,1)
 	if g:GetCount()~=0 then
 		Duel.ConfirmCards(tp,g)

@@ -31,7 +31,6 @@ function c2148918.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetCard(eg)
 end
 function c2148918.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=eg:Filter(c2148918.tgfilter,nil,e,1-tp)
 	local tc=g:GetFirst()
 	while tc do

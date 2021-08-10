@@ -36,7 +36,6 @@ function c65472618.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,Card.IsDiscardable,1,1,REASON_DISCARD+REASON_COST,nil)
 end
 function c65472618.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local bc=e:GetLabelObject()
 	if bc:IsRelateToBattle() and bc:IsFaceup() and bc:IsControler(1-tp) then
 		local e1=Effect.CreateEffect(e:GetHandler())

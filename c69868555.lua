@@ -58,7 +58,6 @@ function c69868555.filter(c,e)
 	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and not c:IsPreviousLocation(LOCATION_GRAVE) and c:IsRelateToEffect(e)
 end
 function c69868555.disop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=eg:Filter(c69868555.filter,nil,e)
 	local tc=g:GetFirst()
 	while tc do

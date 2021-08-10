@@ -71,7 +71,6 @@ function c59385322.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetLabelObject(),1,0,0)
 end
 function c59385322.desop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=e:GetLabelObject()
 	if tc:IsFaceup() and tc:IsRelateToBattle() then
 		Duel.Destroy(tc,REASON_EFFECT)

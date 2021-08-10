@@ -31,7 +31,6 @@ function c47075569.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x9f)
 end
 function c47075569.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c47075569.filter,tp,LOCATION_MZONE,0,nil)
 	local tc=g:GetFirst()
 	while tc do

@@ -40,7 +40,6 @@ function c61650133.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 end
 function c61650133.rmop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local rm1=false
 	local rm2=false
 	local tc=eg:GetFirst()

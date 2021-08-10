@@ -24,7 +24,6 @@ function c37582948.thfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x1151) and c:IsAbleToHand()
 end
 function c37582948.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c37582948.thfilter,tp,LOCATION_DECK,0,nil)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(37582948,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

@@ -29,7 +29,6 @@ function c96015976.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c96015976.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
 function c96015976.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local dc=Duel.TossDice(tp,1)
