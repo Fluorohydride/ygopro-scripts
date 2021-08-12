@@ -48,7 +48,6 @@ function c62121.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end
 function c62121.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ct=e:GetLabel()
 	e:GetLabelObject():SetValue(ct*200)
 	e:GetLabelObject():GetLabelObject():SetValue(ct*200)
