@@ -31,7 +31,7 @@ function c77384395.initial_effect(c)
 		e4:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
 		e4:SetCode(EVENT_SPSUMMON_SUCCESS)
 		e4:SetOperation(function() e3:Reset() g:Clear() e4:Reset() end)
-		tc:RegisterEffect(e4)
+		tc:RegisterEffect(e4,true)
 	end end)
 	c:RegisterEffect(e2)
 end
