@@ -75,7 +75,8 @@ function c21915012.atkval(e,c)
 	return c:GetLevel()*400
 end
 function c21915012.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsLocation(LOCATION_GRAVE) and r==REASON_SYNCHRO
+	local c=e:GetHandler()
+	return c:IsSummonType(SUMMON_TYPE_SYNCHRO) and c:IsLocation(LOCATION_GRAVE) and r==REASON_SYNCHRO
 end
 function c21915012.thfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsLevelBelow(8) and c:IsDefense(600) and c:IsAbleToHand()
