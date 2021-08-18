@@ -46,7 +46,6 @@ function c50277973.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50277973.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local rac=e:GetLabel()
 	local att=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0

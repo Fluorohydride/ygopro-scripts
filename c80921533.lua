@@ -71,7 +71,6 @@ function c80921533.sfilter(c,se,ct)
 end
 function c80921533.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local ct=e:GetLabel()
 	local se=e:GetLabelObject()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)

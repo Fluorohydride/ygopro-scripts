@@ -49,7 +49,6 @@ function c51053997.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c51053997.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 		local ct=1

@@ -38,7 +38,6 @@ function c67007102.filter(c)
 end
 function c67007102.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,67007102,0,TYPES_NORMAL_TRAP_MONSTER,800,2500,8,RACE_ZOMBIE,ATTRIBUTE_LIGHT) then return end
 	c:AddMonsterAttribute(TYPE_NORMAL+TYPE_TRAP)

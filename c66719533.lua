@@ -69,7 +69,6 @@ function c66719533.filter(c)
 end
 function c66719533.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c66719533.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	for tc in aux.Next(g) do
 		local e1=Effect.CreateEffect(c)

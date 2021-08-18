@@ -36,7 +36,6 @@ function c17722185.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c17722185.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	c:RegisterFlagEffect(17722185,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	local flag=e:GetLabel()
 	local e1=Effect.CreateEffect(c)

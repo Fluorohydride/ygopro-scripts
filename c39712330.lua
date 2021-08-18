@@ -50,7 +50,6 @@ function c39712330.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c39712330.activate1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if e:GetLabel()~=1 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SUMMON)
 	local g=Duel.SelectMatchingCard(tp,c39712330.filter,tp,LOCATION_HAND,0,1,1,nil)

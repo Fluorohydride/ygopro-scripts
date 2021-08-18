@@ -58,7 +58,6 @@ function c16269385.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c16269385.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
 	for tc in aux.Next(g) do
 		local e1=Effect.CreateEffect(c)
@@ -77,7 +76,6 @@ function c16269385.atktg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c16269385.atkop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	for tc in aux.Next(g) do
 		local e1=Effect.CreateEffect(c)

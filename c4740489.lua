@@ -68,7 +68,6 @@ function c4740489.atcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c4740489.atop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=e:GetLabelObject()
 	if tc:IsRelateToBattle() then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)

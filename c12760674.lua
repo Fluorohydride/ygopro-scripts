@@ -64,7 +64,6 @@ function c12760674.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c12760674.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local ec=c:GetEquipTarget()
 	local tc=ec:GetBattleTarget()
 	if ec and tc and ec:IsFaceup() and tc:IsFaceup() then

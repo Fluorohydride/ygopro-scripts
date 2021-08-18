@@ -31,7 +31,6 @@ function c92092092.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c92092092.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,92092092,0,TYPES_EFFECT_TRAP_MONSTER+TYPE_TUNER,0,1800,1,RACE_MACHINE,ATTRIBUTE_FIRE) then return end
 	c:AddMonsterAttribute(TYPE_EFFECT+TYPE_TUNER+TYPE_TRAP)

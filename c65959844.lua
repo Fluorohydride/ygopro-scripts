@@ -59,7 +59,6 @@ function c65959844.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c65959844.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c65959844.rmfilter,tp,LOCATION_MZONE,0,1,1,nil)
 	local rc=g:GetFirst()
