@@ -50,7 +50,6 @@ function c76136345.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c76136345.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c76136345.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)

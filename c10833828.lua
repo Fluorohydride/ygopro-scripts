@@ -49,7 +49,6 @@ function c10833828.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c10833828.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c10833828.spfilter1,tp,LOCATION_HAND,0,1,1,nil,e,tp)
@@ -110,7 +109,6 @@ function c10833828.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c10833828.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local chkf=tp
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c10833828.spfilter2,nil,e)
 	aux.FCheckAdditional=c10833828.fcheck1(c:GetFieldID())

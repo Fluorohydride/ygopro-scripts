@@ -54,7 +54,6 @@ function c33971095.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c33971095.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
@@ -72,7 +71,6 @@ function c33971095.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c33971095.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetAttacker()
 	if tc:IsFaceup() then
 		local e1=Effect.CreateEffect(c)

@@ -27,7 +27,6 @@ function c60675348.filter(c)
 end
 function c60675348.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c60675348.filter,tp,LOCATION_DECK,0,nil)
 	local ct=0
 	if Duel.CheckLocation(tp,LOCATION_PZONE,0) then ct=ct+1 end

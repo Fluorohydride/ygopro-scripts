@@ -57,7 +57,6 @@ function c5641251.lvlcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c5641251.lvlop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetAttacker()
 	local bc=Duel.GetAttackTarget()
 	if not bc then return false end

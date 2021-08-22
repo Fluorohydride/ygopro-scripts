@@ -55,7 +55,6 @@ function c28927782.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c28927782.efop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if e:GetLabel()==0 then
 		local tc=Duel.GetFirstTarget()
 		if tc and tc:IsRelateToEffect(e) then

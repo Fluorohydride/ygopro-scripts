@@ -63,7 +63,6 @@ function c84171830.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c84171830.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(84171830,1))
 	local g=Duel.SelectMatchingCard(tp,c84171830.filter,tp,LOCATION_HAND,0,1,1,nil)
 	if g:GetCount()>0 then

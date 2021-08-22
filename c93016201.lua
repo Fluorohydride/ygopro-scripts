@@ -71,7 +71,6 @@ end
 function c93016201.activate1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if e:GetLabel()~=1 then return end
-	if not c:IsRelateToEffect(e) then return end
 	local ct=Duel.GetChainInfo(0,CHAININFO_CHAIN_COUNT)
 	local te=Duel.GetChainInfo(ct-1,CHAININFO_TRIGGERING_EFFECT)
 	local tc=te:GetHandler()

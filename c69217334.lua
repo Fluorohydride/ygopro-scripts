@@ -42,7 +42,6 @@ function c69217334.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c69217334.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	local ec=tc
 	if not tc:IsRelateToEffect(e) then ec=nil end

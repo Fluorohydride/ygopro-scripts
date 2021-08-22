@@ -44,7 +44,6 @@ end
 function c6471156.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local lv=e:GetLabel()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c6471156.lvfilter,tp,LOCATION_MZONE,0,nil,0)
 	local lc=g:GetFirst()
 	while lc do

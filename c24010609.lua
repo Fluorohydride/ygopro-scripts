@@ -102,7 +102,6 @@ function c24010609.gselect(g,ft)
 end
 function c24010609.setop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c24010609.setfilter),tp,LOCATION_GRAVE,0,nil)
 	local ct=e:GetHandler():GetFlagEffectLabel(24010609) or 0
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)

@@ -46,7 +46,6 @@ function c61840587.sfilter(c,e,tp)
 end
 function c61840587.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local sg=g:Filter(c61840587.sfilter,nil,e,tp)
 	local sct=sg:GetCount()

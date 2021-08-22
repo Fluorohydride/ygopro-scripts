@@ -25,7 +25,6 @@ function c21843307.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ec=eg:GetFirst()
 	if not ec:IsRelateToEffect(e) then return end
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,ec:GetCode(),0,TYPES_NORMAL_TRAP_MONSTER,0,0,ec:GetLevel(),RACE_WARRIOR,ATTRIBUTE_LIGHT) then return end
 	c:AddMonsterAttribute(TYPE_NORMAL+TYPE_TRAP,0,0,ec:GetLevel(),0,0)

@@ -59,7 +59,6 @@ function c17874674.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c17874674.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc and ((tc:IsFaceup() and not tc:IsDisabled()) or tc:IsType(TYPE_TRAPMONSTER)) and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)

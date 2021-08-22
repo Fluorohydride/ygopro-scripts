@@ -89,7 +89,6 @@ function c60168186.filter(c,tp,typ)
 end
 function c60168186.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=eg:Filter(c60168186.filter,nil,tp,e:GetLabel())
 	local tc=g:GetFirst()
 	while tc do
