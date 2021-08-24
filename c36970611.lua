@@ -32,7 +32,9 @@ function c36970611.initial_effect(c)
 	e3:SetOperation(c36970611.thop)
 	c:RegisterEffect(e3)
 end
-function c36970611.cfilter(c,tp,g)
+function c36970611.cfilter(c,tp,xg)
+	local g=xg:Clone()
+	g:AddCard(c)
 	return c:IsSetCard(0xc1) and c:IsType(TYPE_MONSTER) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsAbleToRemoveAsCost()
 		and Duel.IsExistingTarget(Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,g,tp,POS_FACEDOWN)
 end
