@@ -90,6 +90,7 @@ function c2542230.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCondition(c2542230.discon)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		c:RegisterEffect(e2)
+		Duel.AdjustInstantly(c)
 	else
 		c:CancelToGrave(false)
 	end
