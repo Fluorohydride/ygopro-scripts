@@ -82,7 +82,6 @@ function c13224603.sumop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EVENT_SUMMON_SUCCESS)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetOperation(c13224603.regop)
-		e1:SetLabelObject(e2)
 		tc:RegisterEffect(e1,true)
 		--reset when negated
 		local e2=Effect.CreateEffect(c)
@@ -91,6 +90,7 @@ function c13224603.sumop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetOperation(c13224603.rstop)
 		e2:SetLabelObject(e1)
 		Duel.RegisterEffect(e2,tp)
+		e1:SetLabelObject(e2)
 		Duel.Summon(tp,tc,true,nil)
 	end
 end
