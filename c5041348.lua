@@ -31,7 +31,7 @@ function c5041348.rmcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c5041348.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rc=re:GetHandler()
-	if chk==0 then return rc:IsRelateToEffect(re) and rc:IsAbleToRemove() end
+	if chk==0 then return rc:IsRelateToEffect(re) and rc:IsAbleToRemove() and not rc:IsLocation(LOCATION_REMOVED) end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,rc,1,0,0)
 end
 function c5041348.rmop(e,tp,eg,ep,ev,re,r,rp)
