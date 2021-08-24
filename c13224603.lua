@@ -99,7 +99,7 @@ function c13224603.splimit(e,c)
 end
 function c13224603.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local e1=Effect.CreateEffect(c)
+	local e1=Effect.CreateEffect(e:GetOwner())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
