@@ -49,7 +49,6 @@ function c90200789.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c90200789.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tg=g:Filter(Card.IsRelateToEffect,nil,e)
 	if tg:GetCount()==0 then return end

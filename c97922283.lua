@@ -33,7 +33,6 @@ function c97922283.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,dam)
 end
 function c97922283.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 	local dam=Duel.GetMatchingGroupCount(c97922283.filter,tp,LOCATION_MZONE,0,nil)*300
 	Duel.Damage(p,dam,REASON_EFFECT)

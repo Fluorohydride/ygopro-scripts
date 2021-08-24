@@ -34,7 +34,6 @@ function c95352218.filter2(c,lv)
 	return c:IsFaceup() and not c:IsLevel(lv) and c:IsLevelAbove(1)
 end
 function c95352218.adjustop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local turnp=Duel.GetTurnPlayer()
 	local g=Duel.GetMatchingGroup(c95352218.filter1,turnp,LOCATION_MZONE,0,nil)
 	if g:GetCount()<2 then return end

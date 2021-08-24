@@ -30,7 +30,6 @@ function c94804055.cfilter(c)
 	return c:IsRace(RACE_PYRO) and c:IsAbleToRemoveAsCost()
 end
 function c94804055.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.NegateAttack()
 end
 function c94804055.condition(e,tp,eg,ep,ev,re,r,rp)

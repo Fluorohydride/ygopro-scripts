@@ -91,6 +91,7 @@ function c21438286.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetHandler(),1,0,0)
 end
 function c21438286.thop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
-	Duel.SendtoHand(e:GetHandler(),nil,REASON_EFFECT)
+	if e:GetHandler():IsRelateToEffect(e) then
+		Duel.SendtoHand(e:GetHandler(),nil,REASON_EFFECT)
+	end
 end

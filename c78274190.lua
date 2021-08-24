@@ -50,7 +50,6 @@ function c78274190.catg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetCard(a)
 end
 function c78274190.caop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsControler(tp) and tc:IsRelateToBattle() then
 		Duel.ChainAttack()

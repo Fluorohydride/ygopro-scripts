@@ -31,6 +31,7 @@ function c27979109.initial_effect(c)
 	e3:SetOperation(c27979109.drop)
 	c:RegisterEffect(e3)
 end
+c27979109.has_text_type=TYPE_DUAL
 function c27979109.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return tp==Duel.GetTurnPlayer() and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0 and Duel.GetDrawCount(tp)>0
 end

@@ -30,7 +30,6 @@ function c77584012.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c77584012.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local code=e:GetLabel()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

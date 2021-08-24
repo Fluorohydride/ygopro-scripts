@@ -33,7 +33,6 @@ function c54340229.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c54340229.actop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.IsExistingMatchingCard(c54340229.lkfilter,tp,LOCATION_MZONE,0,1,nil) then
 		local g=Duel.GetMatchingGroup(aux.NegateMonsterFilter,tp,0,LOCATION_MZONE,nil)
 		local tc=g:GetFirst()

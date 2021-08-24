@@ -38,7 +38,6 @@ function c50766506.gselect(g,slv)
 	return g:GetSum(Card.GetLevel)<=slv
 end
 function c50766506.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end

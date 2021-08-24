@@ -1,5 +1,6 @@
 --烙印凶鳴
 function c67100549.initial_effect(c)
+	aux.AddCodeList(c,68468459)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(67100549,0))

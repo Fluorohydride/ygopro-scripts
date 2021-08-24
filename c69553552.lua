@@ -47,7 +47,6 @@ function c69553552.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c69553552.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_GRAVE,0,1,1,nil)
 	local tc=g:GetFirst()

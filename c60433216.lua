@@ -31,7 +31,6 @@ function c60433216.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(1)
 	e1:SetReset(RESET_PHASE+PHASE_DAMAGE)
 	tc:RegisterEffect(e1)
-	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,60433216,0,TYPES_NORMAL_TRAP_MONSTER+TYPE_TUNER,0,0,1,RACE_FIEND,ATTRIBUTE_FIRE) then return end
 	c:AddMonsterAttribute(TYPE_NORMAL+TYPE_TUNER+TYPE_TRAP)

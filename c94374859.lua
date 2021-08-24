@@ -31,7 +31,6 @@ function c94374859.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c94374859.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) then
 		Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)

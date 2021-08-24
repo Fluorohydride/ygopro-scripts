@@ -59,7 +59,6 @@ function c63881033.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c63881033.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c63881033.filter,tp,LOCATION_MZONE,0,nil)
 	local tc=g:GetFirst()
 	while tc do

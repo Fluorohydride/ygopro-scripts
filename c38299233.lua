@@ -35,7 +35,6 @@ function c38299233.rdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c38299233.rdop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local d1=6
 	while d1==6 do
 		d1=Duel.TossDice(tp,1)

@@ -57,7 +57,6 @@ function c7394770.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c7394770.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local chkf=tp
 	local mg1=Duel.GetMatchingGroup(c7394770.filter1,tp,LOCATION_DECK,0,nil,e)
 	local sg1=Duel.GetMatchingGroup(c7394770.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
@@ -120,7 +119,6 @@ function c7394770.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFirstCardTarget() end
 end
 function c7394770.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=e:GetHandler():GetFirstCardTarget()
 	if not tc then return end
 	local e1=Effect.CreateEffect(e:GetHandler())

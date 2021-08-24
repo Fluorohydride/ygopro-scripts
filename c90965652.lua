@@ -23,6 +23,7 @@ function c90965652.initial_effect(c)
 	e2:SetOperation(c90965652.atkop)
 	c:RegisterEffect(e2)
 end
+c90965652.has_text_type=TYPE_DUAL
 function c90965652.thfilter1(c)
 	return c:IsCode(65959844) and c:IsAbleToHand()
 end

@@ -28,7 +28,7 @@ function c36577931.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c36577931.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsReason(REASON_EFFECT)
+	return e:GetHandler():IsReason(REASON_EFFECT+REASON_REDIRECT)
 end
 function c36577931.thfilter(c)
 	return c:IsSetCard(0x164) and not c:IsCode(36577931) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()

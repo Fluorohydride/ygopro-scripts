@@ -1,5 +1,6 @@
 --スプリガンズ・メリーメイカー
 function c48285768.initial_effect(c)
+	aux.AddCodeList(c,68468459)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)
 	c:EnableReviveLimit()

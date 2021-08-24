@@ -49,7 +49,6 @@ function c47598941.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47598941.setop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if not (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 	local g=Duel.SelectMatchingCard(tp,c47598941.filter,tp,LOCATION_DECK,0,1,1,nil)

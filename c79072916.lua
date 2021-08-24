@@ -73,7 +73,6 @@ function c79072916.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,tc,1,0,0)
 end
 function c79072916.rmop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ec=e:GetHandler():GetEquipTarget()
 	local tc=ec:GetBattleTarget()
 	if tc:IsRelateToBattle() then

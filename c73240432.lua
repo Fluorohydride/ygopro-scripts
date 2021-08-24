@@ -48,7 +48,6 @@ function c73240432.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c73240432.drop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.Draw(tp,1,REASON_EFFECT)
 end
 function c73240432.damfilter(c)

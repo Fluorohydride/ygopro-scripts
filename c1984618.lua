@@ -1,5 +1,6 @@
 --天底の使徒
 function c1984618.initial_effect(c)
+	aux.AddCodeList(c,68468459)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOGRAVE+CATEGORY_TOHAND+CATEGORY_SEARCH)

@@ -88,7 +88,6 @@ function c49306994.disfilter(c)
 end
 function c49306994.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c49306994.disfilter,tp,0,LOCATION_ONFIELD,c)
 	local tc=g:GetFirst()
 	while tc do

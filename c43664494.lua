@@ -45,7 +45,6 @@ function c43664494.tktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c43664494.tkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,43664495,0x120,TYPES_TOKEN_MONSTER,0,0,1,RACE_PYRO,ATTRIBUTE_FIRE,POS_FACEUP) then return end
 	local token=Duel.CreateToken(tp,43664495)
@@ -78,7 +77,6 @@ function c43664494.drtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c43664494.drop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if not tg or tg:FilterCount(Card.IsRelateToEffect,nil,e)~=3 then return end
 	Duel.SendtoDeck(tg,nil,0,REASON_EFFECT)

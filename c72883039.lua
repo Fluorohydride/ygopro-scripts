@@ -91,7 +91,6 @@ function c72883039.gselect(g)
 	return aux.dncheck(g) and g:GetClassCount(Card.GetLocation)==#g
 end
 function c72883039.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end

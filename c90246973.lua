@@ -54,7 +54,6 @@ function c90246973.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c90246973.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local ec=c:GetEquipTarget()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 then

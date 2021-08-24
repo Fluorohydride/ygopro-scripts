@@ -49,7 +49,6 @@ function c25407643.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetCard(eg)
 end
 function c25407643.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if not Duel.IsExistingMatchingCard(c25407643.cfilter1,tp,LOCATION_SZONE,0,1,e:GetHandler())
 		or Duel.IsExistingMatchingCard(c25407643.cfilter1,tp,0,LOCATION_SZONE,1,nil) then return end
 	local tc=eg:GetFirst()

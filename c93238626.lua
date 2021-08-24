@@ -52,7 +52,6 @@ function c93238626.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,ct*500)
 end
 function c93238626.recop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 	local ct=Duel.GetFlagEffect(tp,93238626)
 	Duel.Recover(p,ct*500,REASON_EFFECT)

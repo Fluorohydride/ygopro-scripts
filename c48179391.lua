@@ -54,7 +54,6 @@ function c48179391.acttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c48179391.actop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c48179391.desfilter,tp,LOCATION_MZONE,0,nil)
 	if g:GetCount()>0 then
 		Duel.Destroy(g,REASON_EFFECT)

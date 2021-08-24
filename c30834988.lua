@@ -23,7 +23,6 @@ function c30834988.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c30834988.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=eg:Filter(Card.IsRelateToEffect,nil,e)
 	Duel.ChangePosition(g,POS_FACEUP_ATTACK)
 	local tc=g:GetFirst()

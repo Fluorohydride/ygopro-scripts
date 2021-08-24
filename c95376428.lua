@@ -27,7 +27,6 @@ function c95376428.filter(c,tp)
 	return c:IsSummonPlayer(tp)
 end
 function c95376428.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if eg:IsExists(c95376428.filter,1,nil,tp) and Duel.IsPlayerCanDraw(1-tp,1) and Duel.SelectYesNo(1-tp,aux.Stringid(95376428,1)) then
 		Duel.Draw(1-tp,1,REASON_EFFECT)
 	end

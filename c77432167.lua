@@ -52,7 +52,7 @@ end
 function c77432167.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100,0)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.GetLP(tp)>100 and c:GetFlagEffect(100424107)==0 end
+	if chk==0 then return Duel.GetLP(tp)>100 and c:GetFlagEffect(77432168)==0 end
 	local lp=Duel.GetLP(tp)
 	e:SetLabel(100,lp-100)
 	Duel.PayLPCost(tp,lp-100)
@@ -102,7 +102,7 @@ function c77432167.reccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.SelectReleaseGroup(tp,c77432167.recfilter,1,1,nil)
 	e:SetLabel(100,g:GetFirst():GetAttack())
 	Duel.Release(g,REASON_COST)
-	c:RegisterFlagEffect(100424107,RESET_CHAIN,0,1)
+	c:RegisterFlagEffect(77432168,RESET_CHAIN,0,1)
 end
 function c77432167.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local label,rec=e:GetLabel()

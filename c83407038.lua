@@ -54,7 +54,6 @@ function c83407038.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c83407038.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tc=Duel.SelectMatchingCard(tp,c83407038.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp):GetFirst()
