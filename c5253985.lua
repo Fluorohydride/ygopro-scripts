@@ -69,8 +69,7 @@ function c5253985.sumop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c5253985.regop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local g=tc:GetMaterial()
+	local g=e:GetHandler():GetMaterial()
 	if g and g:IsExists(c5253985.cfilter,1,nil,tp) then
 		local oc=e:GetOwner()
 		local e1=Effect.CreateEffect(oc)
