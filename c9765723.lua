@@ -54,8 +54,8 @@ function c9765723.descost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c9765723.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end
-	local xg=Group.CreateGroup()
-	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then xg:AddCard(e:GetHandler()) end
+	local xg=nil
+	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then xg=e:GetHandler() end
 	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,xg) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,xg)

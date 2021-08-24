@@ -27,8 +27,8 @@ function c85893201.descon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c85893201.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end
-	local exg=Group.CreateGroup()
-	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then exg:AddCard(e:GetHandler()) end
+	local exg=nil
+	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then exg=e:GetHandler() end
 	if chk==0 then return Duel.IsExistingTarget(aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,exg) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,exg)

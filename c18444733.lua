@@ -45,8 +45,8 @@ function c18444733.rmfilter(c)
 end
 function c18444733.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsType(TYPE_SPELL+TYPE_TRAP) end
-	local xg=Group.CreateGroup()
-	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then xg:AddCard(e:GetHandler()) end
+	local xg=nil
+	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then xg=e:GetHandler() end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsType,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,xg,TYPE_SPELL+TYPE_TRAP)
 		and Duel.IsExistingMatchingCard(c18444733.rmfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

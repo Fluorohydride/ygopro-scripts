@@ -32,25 +32,26 @@ function c36970611.initial_effect(c)
 	e3:SetOperation(c36970611.thop)
 	c:RegisterEffect(e3)
 end
-function c36970611.cfilter(c,tp,xg)
-	local g=xg:Clone()
-	g:AddCard(c)
+function c36970611.tgfilter(c,tp,xc)
+	return c:IsAbleToRemove(tp,POS_FACEDOWN) and c~=xc
+end
+function c36970611.cfilter(c,tp,xc)
 	return c:IsSetCard(0xc1) and c:IsType(TYPE_MONSTER) and (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and c:IsAbleToRemoveAsCost()
-		and Duel.IsExistingTarget(Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,g,tp,POS_FACEDOWN)
+		and Duel.IsExistingTarget(c36970611.tgfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,c,tp,xc)
 end
 function c36970611.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	local xg=Group.CreateGroup()
-	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then xg:AddCard(e:GetHandler()) end
-	if chk==0 then return Duel.IsExistingMatchingCard(c36970611.cfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil,tp,xg) end
+	local xc=nil
+	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then xc=e:GetHandler() end
+	if chk==0 then return Duel.IsExistingMatchingCard(c36970611.cfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil,tp,xc) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local cg=Duel.SelectMatchingCard(tp,c36970611.cfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil,tp,xg)
+	local cg=Duel.SelectMatchingCard(tp,c36970611.cfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil,tp,xc)
 	Duel.Remove(cg,POS_FACEUP,REASON_COST)
 end
 function c36970611.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsAbleToRemove() end
 	if chk==0 then return true end
-	local xg=Group.CreateGroup()
-	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then xg:AddCard(e:GetHandler()) end
+	local xg=nil
+	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then xg=e:GetHandler() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,xg,tp,POS_FACEDOWN)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
