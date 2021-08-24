@@ -60,6 +60,7 @@ function c29948294.activate(e,tp,eg,ep,ev,re,r,rp)
 	local cc=g:GetFirst()
 	if cc then
 		Duel.ConfirmCards(1-tp,cc)
+		Duel.ShuffleHand(tp)
 		local race=cc:GetRace()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local tg=Duel.SelectMatchingCard(tp,c29948294.tgfilter,tp,LOCATION_EXTRA,0,1,1,nil,race)
