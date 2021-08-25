@@ -48,7 +48,7 @@ function c36970611.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(cg,POS_FACEUP,REASON_COST)
 end
 function c36970611.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc:IsAbleToRemove() end
+	if chkc then return chkc:IsOnField() and chkc:IsAbleToRemove(tp,POS_FACEDOWN) end
 	if chk==0 then return true end
 	local xg=nil
 	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then xg=e:GetHandler() end
