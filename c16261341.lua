@@ -41,7 +41,7 @@ function c16261341.spcon2(e,tp,eg,ep,ev,re,r,rp)
 	return dp==tp and (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE))
 end
 function c16261341.cfilter(c)
-	return c:IsRace(RACE_FAIRY) and c:IsAbleToRemoveAsCost()
+	return c:IsRace(RACE_FAIRY) and (c:IsFaceup() or not c:IsLocation(LOCATION_MZONE)) and c:IsAbleToRemoveAsCost()
 end
 function c16261341.mzfilter(c)
 	return c:IsLocation(LOCATION_MZONE) and c:GetSequence()<5
