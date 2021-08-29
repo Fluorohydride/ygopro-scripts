@@ -21,7 +21,7 @@ function c44364207.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c44364207.indestg(e,c)
-	return c:IsRace(RACE_MACHINE) and c:IsAttackBelow(1200)
+	return c:IsRace(RACE_MACHINE) and c:IsAttackBelow(1200) and e:GetHandler():IsAttackPos()
 end
 function c44364207.indesval(e,re)
 	return re:GetHandler():IsType(TYPE_TRAP)
