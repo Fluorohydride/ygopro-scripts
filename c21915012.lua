@@ -45,7 +45,16 @@ function c21915012.valcheck(e,c)
 	local mg=g:Filter(Card.IsType,nil,TYPE_TUNER)
 	if #mg==1 then
 		local tc=mg:GetFirst()
-		e:GetLabelObject():SetLabel(tc:GetLevel())
+		local lv=tc:GetSynchroLevel(c)
+		local lv2=lv>>16
+		lv=lv&0xffff
+		if lv2>0 and not g:CheckWithSumEqual(Card.GetLevel,c:GetLevel(),#g,#g,c) then
+			lv=lv2
+		end
+		if tc:IsHasEffect(89818984) and not g:CheckWithSumEqual(Card.GetSynchroLevel,c:GetLevel(),#g,#g,c) then
+			lv=2
+		end
+		e:GetLabelObject():SetLabel(lv)
 	end
 end
 function c21915012.lvcon(e,tp,eg,ep,ev,re,r,rp)
