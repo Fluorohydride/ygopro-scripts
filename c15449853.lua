@@ -1,6 +1,5 @@
 --パーシアスの神域
 function c15449853.initial_effect(c)
-	aux.AddCodeList(c,56433456)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)

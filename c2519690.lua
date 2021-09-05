@@ -3,7 +3,6 @@ function c2519690.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0xbd),aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),true)
-	aux.AddCodeList(c,66889139)
 	--change name
 	aux.EnableChangeCode(c,66889139)
 	--search

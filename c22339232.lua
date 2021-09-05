@@ -1,6 +1,5 @@
 --ワイトメア
 function c22339232.initial_effect(c)
-	aux.AddCodeList(c,32274490)
 	--change code
 	aux.EnableChangeCode(c,32274490,LOCATION_GRAVE)
 	--to grave

@@ -1,6 +1,5 @@
 --竜魔道騎士ガイア
 function c15989522.initial_effect(c)
-	aux.AddCodeList(c,66889139)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFun2(c,aux.FilterBoolFunction(Card.IsFusionSetCard,0xbd),c15989522.ffilter2,true)

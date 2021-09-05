@@ -1,6 +1,5 @@
 --マジシャン・オブ・カオス
 function c47963370.initial_effect(c)
-	aux.AddCodeList(c,46986414)
 	c:EnableReviveLimit()
 	--change name
 	aux.EnableChangeCode(c,46986414,LOCATION_MZONE+LOCATION_GRAVE)
