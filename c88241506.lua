@@ -1,5 +1,6 @@
 --青き眼の乙女
 function c88241506.initial_effect(c)
+	aux.AddCodeList(c,89631139)
 	--negate attack
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(88241506,0))

@@ -1,5 +1,6 @@
 --青眼の光龍
 function c53347303.initial_effect(c)
+	aux.AddCodeList(c,23995346)
 	c:EnableReviveLimit()
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)

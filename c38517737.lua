@@ -1,5 +1,6 @@
 --青眼の亜白龍
 function c38517737.initial_effect(c)
+	aux.AddCodeList(c,89631139)
 	c:EnableReviveLimit()
 	--special summon
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,6 @@
 --ブレイク・ザ・デステニー
 function c4008212.initial_effect(c)
+	aux.AddCodeList(c,76263644)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(4008212,0))
