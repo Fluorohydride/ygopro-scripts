@@ -1,6 +1,5 @@
 --人造人間－サイコ・ジャッカー
 function c51916032.initial_effect(c)
-	aux.AddCodeList(c,77585513)
 	--change
 	aux.EnableChangeCode(c,77585513,LOCATION_MZONE+LOCATION_GRAVE)
 	--tohand

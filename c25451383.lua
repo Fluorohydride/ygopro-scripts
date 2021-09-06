@@ -1,6 +1,5 @@
 --黒衣竜アルビオン
 function c25451383.initial_effect(c)
-	aux.AddCodeList(c,68468459)
 	--change name
 	aux.EnableChangeCode(c,68468459,LOCATION_MZONE+LOCATION_GRAVE)
 	--to grave

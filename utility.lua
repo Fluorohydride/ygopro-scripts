@@ -257,6 +257,7 @@ function Auxiliary.ChangeCodeCondition(check,condition)
 			end
 end
 function Auxiliary.EnableChangeCode(c,code,location,condition)
+	Auxiliary.AddCodeList(c,code)
 	local loc=c:GetOriginalType()&TYPE_MONSTER~=0 and LOCATION_MZONE or LOCATION_SZONE
 	loc=location or loc
 	local e1=Effect.CreateEffect(c)

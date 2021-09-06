@@ -1,5 +1,6 @@
 --ブルーアイズ・ソリッド・ドラゴン
 function c57043986.initial_effect(c)
+	aux.AddCodeList(c,89631139)
 	--negate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(57043986,0))
