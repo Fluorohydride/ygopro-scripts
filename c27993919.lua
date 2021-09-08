@@ -67,7 +67,7 @@ function c27993919.resetop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c27993919.subop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetFlagEffect(80776622)~=0 then
+	if c:GetFlagEffect(27993919)~=0 then
 		Duel.SetChainLimitTillChainEnd(c27993919.chlimit)
 	end
 end
