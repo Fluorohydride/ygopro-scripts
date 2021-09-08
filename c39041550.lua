@@ -48,7 +48,8 @@ function c39041550.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c39041550.condition(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsOnField() and re:GetHandler():IsRelateToEffect(re) and re:IsActiveType(TYPE_MONSTER)
+	local tc=re:GetHandler()
+	return tc:IsControler(1-tp) and tc:IsOnField() and tc:IsRelateToEffect(re) and re:IsActiveType(TYPE_MONSTER)
 end
 function c39041550.cfilter(c,tp)
 	return c:IsRace(RACE_INSECT) and (c:IsControler(tp) or c:IsFaceup())
