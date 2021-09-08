@@ -21,7 +21,8 @@ function c22420202.drfilter(c)
 end
 function c22420202.extraop(e,tp)
 	local g=Duel.GetMatchingGroup(c22420202.drfilter,tp,LOCATION_HAND,0,nil)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(22420202,1)) then
+	if g:GetCount()>0 and Duel.IsPlayerCanDraw(tp,1)
+		and Duel.SelectYesNo(tp,aux.Stringid(22420202,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 		local sg=g:Select(tp,1,1,nil)
