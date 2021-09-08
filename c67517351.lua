@@ -63,7 +63,7 @@ function c67517351.cfilter(c,e)
 end
 function c67517351.matcon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	return rc and rc:IsType(TYPE_XYZ) and rc:IsRankAbove(10) and rc:IsSetCard(0x7f) and eg:IsExists(c67517351.cfilter,1,nil,e)
+	return rc and re:IsActivated() and rc:IsType(TYPE_XYZ) and rc:IsRankAbove(10) and rc:IsSetCard(0x7f) and eg:IsExists(c67517351.cfilter,1,nil,e)
 end
 function c67517351.tgfilter(c,eg)
 	return eg:IsContains(c) and c:IsFaceup() and c:IsType(TYPE_XYZ)
