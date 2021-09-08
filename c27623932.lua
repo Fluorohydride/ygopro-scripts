@@ -39,22 +39,27 @@ function c27623932.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local dg=Duel.GetMatchingGroup(c27623932.desfilter,tp,0,LOCATION_MZONE,nil,g:GetFirst():GetAttack())
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,dg,dg:GetCount(),0,0)
 end
-function c27623932.efilter(c,tp)
-	return c:IsType(TYPE_EQUIP) and aux.IsCodeListed(c,3285552) and c:CheckUniqueOnField(tp) and not c:IsForbidden()
+function c27623932.CanEquipFilter(c,eqc)
+	return c:IsFaceup() and eqc:CheckEquipTarget(c)
+end
+function c27623932.eqfilter(c,tp)
+	return aux.IsCodeListed(c,3285552) and c:IsType(TYPE_EQUIP) and c:CheckUniqueOnField(tp) and not c:IsForbidden() 
+		and Duel.IsExistingMatchingCard(c27623932.CanEquipFilter,tp,LOCATION_MZONE,0,1,nil,c)
 end
 function c27623932.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local dg=Duel.GetMatchingGroup(c27623932.desfilter,tp,0,LOCATION_MZONE,nil,tc:GetAttack())
 		if Duel.Destroy(dg,REASON_EFFECT)~=0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-			and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c27623932.efilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,tp)
+			and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c27623932.eqfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,tp)
 			and Duel.SelectYesNo(tp,aux.Stringid(27623932,0)) then
 			Duel.BreakEffect()
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(27623932,1))
-			local eg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c27623932.efilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,tp)
-			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(27623932,2))
-			local mg=Duel.SelectMatchingCard(tp,Card.IsFaceup,tp,LOCATION_MZONE,0,1,1,nil)
-			Duel.Equip(tp,eg:GetFirst(),mg:GetFirst())
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
+			local eqg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c27623932.eqfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,tp)
+			local eqc=eqg:GetFirst()
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
+			local mg=Duel.SelectMatchingCard(tp,c27623932.CanEquipFilter,tp,LOCATION_MZONE,0,1,1,nil,eqc)
+			Duel.Equip(tp,eqc,mg:GetFirst())
 		end
 	end
 end
