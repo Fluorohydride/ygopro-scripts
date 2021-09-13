@@ -2174,6 +2174,7 @@ function Auxiliary.SZoneSequence(seq)
 	if seq>4 then return nil end
 	return seq
 end
+--generate the value function of EFFECT_CHANGE_BATTLE_DAMAGE on monsters
 function Auxiliary.ChangeBattleDamage(player,value)
 	return	function(e,damp)
 				if player==0 then
