@@ -2,6 +2,7 @@
 function c3779493.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,36107810),aux.NonTuner(nil),1)
+	aux.AddMaterialCodeList(c,36107810)
 	--banish
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(3779493,0))
