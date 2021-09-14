@@ -1,7 +1,9 @@
 --Night's End Administrator
 function c3779493.initial_effect(c)
-	c:EnableReviveLimit()
+	aux.AddMaterialCodeList(c,36107810)
+	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsCode,36107810),aux.NonTuner(nil),1)
+	c:EnableReviveLimit()
 	--banish
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(3779493,0))
