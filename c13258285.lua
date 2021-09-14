@@ -21,6 +21,7 @@ function c13258285.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCountLimit(1,13258286)
 	e2:SetCondition(c13258285.sccon)
+	e2:SetCost(c13258285.sccost)
 	e2:SetTarget(c13258285.sctarg)
 	e2:SetOperation(c13258285.scop)
 	c:RegisterEffect(e2)
@@ -87,12 +88,12 @@ function c13258285.spop(e,tp,eg,ep,ev,re,r,rp)
 		tc:CompleteProcedure()
 	end
 end
+function c13258285.sccon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetTurnPlayer()~=tp
+end
 function c13258285.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,600) end
 	Duel.PayLPCost(tp,600)
-end
-function c13258285.sccon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetTurnPlayer()~=tp
 end
 function c13258285.syncfilter(c)
 	return c:IsSetCard(0x171) and c:IsSynchroSummonable(nil)
