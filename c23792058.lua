@@ -20,7 +20,7 @@ function c23792058.initial_effect(c)
 	c:RegisterEffect(e0)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
-	e2:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
+	e2:SetCode(EFFECT_CHANGE_INVOLVING_BATTLE_DAMAGE)
 	e2:SetValue(HALF_DAMAGE)
 	c:RegisterEffect(e2)
 	--spsummon

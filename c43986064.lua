@@ -46,7 +46,7 @@ function c43986064.activate(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetValue(1)
 		tc:RegisterEffect(e3)
 		local e4=e2:Clone()
-		e4:SetCode(EFFECT_CHANGE_BATTLE_DAMAGE)
+		e4:SetCode(EFFECT_CHANGE_INVOLVING_BATTLE_DAMAGE)
 		e4:SetValue(HALF_DAMAGE)
 		tc:RegisterEffect(e4)
 	end
