@@ -36,6 +36,7 @@ function c77891946.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g1=Duel.SelectMatchingCard(tp,c77891946.spfilter1,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	if #g1==0 then return end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g2=Duel.SelectMatchingCard(tp,c77891946.spfilter2,tp,LOCATION_DECK,0,1,1,g1,e,tp,g1:GetFirst())
 	g1:Merge(g2)
 	local tc=g1:GetFirst()
