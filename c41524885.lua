@@ -66,7 +66,7 @@ function c41524885.aclimit(e,re,tp)
 	return re:GetActivateLocation()==LOCATION_GRAVE
 end
 function c41524885.indval(e,te,rp)
-	return rp==1-e:GetHandlerPlayer() and te:IsActivated() and te:GetHandler():IsSummonLocation(LOCATION_GRAVE)
+	return te:IsActivated() and te:GetHandler():IsSummonLocation(LOCATION_GRAVE)
 end
 function c41524885.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

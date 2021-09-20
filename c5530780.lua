@@ -91,7 +91,7 @@ function c5530780.disop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c5530780.indval(e,te,rp)
-	return rp==1-e:GetHandlerPlayer() and te:IsActivated() and te:GetHandler():IsSummonLocation(LOCATION_GRAVE)
+	return te:IsActivated() and te:GetHandler():IsSummonLocation(LOCATION_GRAVE)
 end
 function c5530780.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
