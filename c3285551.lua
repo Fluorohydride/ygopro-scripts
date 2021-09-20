@@ -57,7 +57,8 @@ function c3285551.operation(e,tp,eg,ep,ev,re,r,rp)
 	local token=Duel.CreateToken(tp,3285552)
 	Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 	local g=Duel.GetMatchingGroup(c3285551.setfilter,tp,LOCATION_DECK,0,nil)
-	if not Duel.IsExistingMatchingCard(c3285551.cfilter,tp,LOCATION_SZONE,0,1,nil) and g:GetCount()>0
+	if not Duel.IsExistingMatchingCard(c3285551.cfilter,tp,LOCATION_SZONE,0,1,nil)
+		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and g:GetCount()>0
 		and Duel.SelectYesNo(tp,aux.Stringid(3285551,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
