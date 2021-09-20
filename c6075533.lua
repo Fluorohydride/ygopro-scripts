@@ -69,7 +69,7 @@ function c6075533.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c6075533.tfilter(c,tp)
-	return c:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and c:IsSetCard(0x2f) and c:IsType(TYPE_SYNCHRO)
+	return c:IsLocation(LOCATION_MZONE) and c:IsControler(tp) and c:IsFaceup() and c:IsSetCard(0x2f) and c:IsType(TYPE_SYNCHRO)
 end
 function c6075533.discon(e,tp,eg,ep,ev,re,r,rp)
 	if ep==tp then return false end
