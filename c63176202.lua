@@ -17,19 +17,22 @@ function c63176202.initial_effect(c)
 	e2:SetTarget(c63176202.desreptg)
 	e2:SetOperation(c63176202.desrepop)
 	c:RegisterEffect(e2)
-	--activate limit
+	--effect count
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e3:SetCode(EVENT_CHAINING)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetOperation(c63176202.aclimit1)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e3:SetOperation(c63176202.count)
 	c:RegisterEffect(e3)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e4:SetCode(EVENT_CHAIN_NEGATED)
 	e4:SetRange(LOCATION_MZONE)
-	e4:SetOperation(c63176202.aclimit2)
+	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e4:SetOperation(c63176202.rst)
 	c:RegisterEffect(e4)
+	--activate limit
 	local e5=Effect.CreateEffect(c)
 	e5:SetType(EFFECT_TYPE_FIELD)
 	e5:SetCode(EFFECT_CANNOT_ACTIVATE)
@@ -70,11 +73,11 @@ function c63176202.desrepop(e,tp,eg,ep,ev,re,r,rp)
 	tc:SetStatus(STATUS_DESTROY_CONFIRMED,false)
 	Duel.Destroy(tc,REASON_EFFECT+REASON_REPLACE)
 end
-function c63176202.aclimit1(e,tp,eg,ep,ev,re,r,rp)
+function c63176202.count(e,tp,eg,ep,ev,re,r,rp)
 	if ep==tp or not re:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
 	e:GetHandler():RegisterFlagEffect(63176202,RESET_EVENT+0x3ff0000+RESET_PHASE+PHASE_END,0,1)
 end
-function c63176202.aclimit2(e,tp,eg,ep,ev,re,r,rp)
+function c63176202.rst(e,tp,eg,ep,ev,re,r,rp)
 	if ep==tp or not re:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
 	e:GetHandler():ResetFlagEffect(63176202)
 end
