@@ -51,7 +51,7 @@ function c37706769.poscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
 function c37706769.posfilter(c)
-	return c:IsFaceup() and c:IsCanTurnSet()
+	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsCanTurnSet()
 end
 function c37706769.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
