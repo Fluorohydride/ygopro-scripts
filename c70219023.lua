@@ -42,47 +42,77 @@ function c70219023.thfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
 end
 function c70219023.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLP(tp)>=2000 end
+	local off=1
+	local ops={}
+	local opval={}
+	if Duel.IsExistingMatchingCard(c70219023.thfilter,tp,LOCATION_GRAVE,0,1,nil) then
+		--to hand
+		ops[off]=aux.Stringid(70219023,1)
+		opval[off]=1
+		off=off+1
+	end
+	if Duel.IsExistingMatchingCard(nil,tp,0,LOCATION_ONFIELD,3,nil) then
+		--destroy
+		ops[off]=aux.Stringid(70219023,2)
+		opval[off]=2
+		off=off+1
+	end
+	local ops_lp_equal={table.unpack(ops)}
+	local opval_lp_equal={table.unpack(opval)}
+	--attack up
+	ops[off]=aux.Stringid(70219023,3)
+	opval[off]=4
+	off=off+1
+	if chk==0 then return off>1 end
+	local op=0
+	local pay=0
+	while pay<6000 and Duel.CheckLPCost(tp,pay+2000) do
+		local sel
+		local selval
+		if Duel.GetLP(tp)-pay-2000-Duel.GetLP(1-tp)~=0 then
+			sel=Duel.SelectOption(tp,table.unpack(ops))+1
+			selval=opval[sel]
+		else
+			sel=Duel.SelectOption(tp,table.unpack(ops_lp_equal))+1
+			selval=opval_lp_equal[sel]
+		end
+		if pay==0 then
+			--stop
+			ops[off]=aux.Stringid(70219023,4)
+			opval[off]=0
+			ops_lp_equal[off-1]=aux.Stringid(70219023,4)
+			opval_lp_equal[off-1]=0
+		end
+		if selval==0 then break end
+		table.remove(ops,sel)
+		table.remove(opval,sel)
+		table.remove(ops_lp_equal,sel)
+		table.remove(opval_lp_equal,sel)
+		op=op|selval
+		pay=pay+2000
+	end
+	Duel.PayLPCost(tp,pay)
+	e:SetLabel(op)
 	e:GetHandler():RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(70219023,0))
 end
 function c70219023.operation(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetLP(tp)<2000 then return end
 	local c=e:GetHandler()
-	local b1=Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c70219023.thfilter),tp,LOCATION_GRAVE,0,1,nil)
-	local b2=Duel.IsExistingMatchingCard(nil,tp,0,LOCATION_ONFIELD,3,nil)
-	local b3=c:IsRelateToEffect(e) and c:IsFaceup()
-	local pay=0
-	if b1 then pay=pay+2000 end
-	if b2 and Duel.GetLP(tp)-pay>=2000 then pay=pay+2000 end
-	if b3 and Duel.GetLP(tp)-pay>=2000 then pay=pay+2000 end
-	if pay<2000 then return end
-	local m=math.floor(pay/2000)
-	local t={}
-	for i=1,m do
-		t[i]=i*2000
-	end
-	local ac=Duel.AnnounceNumber(tp,table.unpack(t))
-	Duel.PayLPCost(tp,ac)
-	if Duel.GetLP(tp)<=0 then return end
-	m=math.floor(ac/2000)
-	local g=nil
-	if b1 and (m>2 or (m>1 and not (b2 and b3)) or m>0 and (not (b2 or b3) or Duel.SelectYesNo(tp,aux.Stringid(70219023,1)))) then
+	local op=e:GetLabel()
+	if op&1~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c70219023.thfilter),tp,LOCATION_GRAVE,0,1,1,nil)
+		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c70219023.thfilter),tp,LOCATION_GRAVE,0,1,1,nil)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)
 		Duel.ShuffleHand(tp)
-		m=m-1
 	end
-	if b2 and (m>1 or m>0 and (not b3 or Duel.SelectYesNo(tp,aux.Stringid(70219023,2)))) then
+	if op&2~=0 then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		g=Duel.SelectMatchingCard(tp,nil,tp,0,LOCATION_ONFIELD,3,3,nil)
+		local g=Duel.SelectMatchingCard(tp,nil,tp,0,LOCATION_ONFIELD,3,3,nil)
 		Duel.HintSelection(g)
 		Duel.Destroy(g,REASON_EFFECT)
-		m=m-1
 	end
-	if b3 and m>0 then
+	if op&4~=0 and c:IsRelateToEffect(e) and c:IsFaceup() then
 		Duel.BreakEffect()
 		local atk=math.floor(math.abs(Duel.GetLP(tp)-Duel.GetLP(1-tp))/2)
 		local e1=Effect.CreateEffect(c)
