@@ -43,21 +43,28 @@ function c5253985.sumop(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 		e1:SetCode(EFFECT_ADD_EXTRA_TRIBUTE)
 		e1:SetRange(LOCATION_HAND)
 		e1:SetTargetRange(0,LOCATION_MZONE)
 		e1:SetValue(POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e1)
-		Duel.Summon(tp,tc,true,nil,1)
+		--limit
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_SUMMON_SUCCESS)
+		e1:SetReset(RESET_PHASE+PHASE_MAIN1)
+		e1:SetOperation(c5253985.limitop)
+		Duel.RegisterEffect(e1,tp)
+		--reset when negated
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e2:SetCode(EVENT_CHAIN_END)
-		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-		e2:SetOperation(c5253985.limitop)
-		e2:SetLabelObject(tc)
+		e2:SetCode(EVENT_SUMMON_NEGATED)
+		e2:SetOperation(c5253985.rstop)
+		e2:SetLabelObject(e1)
+		e2:SetReset(RESET_PHASE+PHASE_MAIN1)
 		Duel.RegisterEffect(e2,tp)
+		Duel.Summon(tp,tc,true,nil,1)
 	end
 end
 function c5253985.cfilter(c,tp)
@@ -65,17 +72,11 @@ function c5253985.cfilter(c,tp)
 end
 function c5253985.limitop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local tc=e:GetLabelObject()
+	local tc=eg:GetFirst()
 	local g=tc:GetMaterial()
 	if g and g:IsExists(c5253985.cfilter,1,nil,tp) then
-		--can't activate effects
-		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e2:SetCode(EVENT_CHAINING)
-		e2:SetCondition(c5253985.regcon)
-		e2:SetOperation(c5253985.regop)
-		e2:SetReset(RESET_PHASE+PHASE_END,2)
-		Duel.RegisterEffect(e2,tp)
+		Duel.AddCustomActivityCounter(5253985,ACTIVITY_CHAIN,c5253985.chainfilter)
+		--activate limit
 		local e3=Effect.CreateEffect(c)
 		e3:SetType(EFFECT_TYPE_FIELD)
 		e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
@@ -88,16 +89,18 @@ function c5253985.limitop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	e:Reset()
 end
-function c5253985.regcon(e,tp,eg,ep,ev,re,r,rp)
-	return ep==tp and not re:GetHandler():IsRace(RACE_DIVINE)
+function c5253985.rstop(e,tp,eg,ep,ev,re,r,rp)
+	local e1=e:GetLabelObject()
+	e1:Reset()
+	e:Reset()
 end
-function c5253985.regop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.RegisterFlagEffect(tp,5253985,RESET_PHASE+PHASE_END,2,0,1)
+function c5253985.chainfilter(re,tp,cid)
+	return re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsRace(RACE_DIVINE)
 end
 function c5253985.actcon(e)
 	local tp=e:GetHandlerPlayer()
-	return Duel.GetFlagEffect(tp,5253985)>0
+	return Duel.GetCustomActivityCount(5253985,tp,ACTIVITY_CHAIN)~=0
 end
 function c5253985.aclimit(e,re,tp)
-	return not re:GetHandler():IsRace(RACE_DIVINE)
+	return not (re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsRace(RACE_DIVINE))
 end
