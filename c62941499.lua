@@ -32,7 +32,7 @@ function c62941499.desfilter(c)
 end
 function c62941499.seqfilter(c,seq)
 	local loc=LOCATION_MZONE
-	if seq>8 then
+	if seq>=8 then
 		loc=LOCATION_SZONE
 		seq=seq-8
 	end
