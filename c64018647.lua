@@ -50,7 +50,7 @@ function c64018647.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	Duel.SpecialSummonComplete()
-	local eqg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c64018647.eqfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,tp)
+	local eqg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c64018647.eqfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,tp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and #eqg>0 and Duel.SelectYesNo(tp,aux.Stringid(64018647,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
