@@ -83,8 +83,7 @@ function c55920742.rctg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
-	local dam=bc:GetAttack()
-	if dam<0 then dam=0 end
+	local dam=bc:GetBaseAttack()
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(dam)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,dam)
