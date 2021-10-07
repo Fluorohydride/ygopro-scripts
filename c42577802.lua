@@ -15,7 +15,7 @@ function c42577802.filter0(c)
 	return c:IsType(TYPE_MONSTER) and c:IsCanBeFusionMaterial() and c:IsAbleToRemove()
 end
 function c42577802.filter1(c,e)
-	return not c:IsImmuneToEffect(e)
+	return c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
 end
 function c42577802.filter2(c,e,tp,m,f,chkf)
 	return c:IsType(TYPE_FUSION) and c:IsSetCard(0x157) and (not f or f(c))
@@ -30,7 +30,7 @@ end
 function c42577802.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
-		local mg1=Duel.GetFusionMaterial(tp)
+		local mg1=Duel.GetFusionMaterial(tp):Filter(c42577802.filter1,nil,e)
 		if Duel.GetCustomActivityCount(42577802,1-tp,ACTIVITY_CHAIN)~=0 then
 			local mg2=Duel.GetMatchingGroup(c42577802.filter0,tp,LOCATION_DECK+LOCATION_GRAVE,0,nil)
 			if mg2:GetCount()>0 then
