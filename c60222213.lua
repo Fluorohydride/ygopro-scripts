@@ -63,7 +63,7 @@ function c60222213.damfilter(c,e)
 	return c:IsFaceup() and e:GetHandler():GetBattledGroup():IsContains(c)
 end
 function c60222213.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetBattledGroupCount()>0 or e:GetHandler():GetAttackedCount()>0
+	return e:GetHandler():GetBattledGroupCount()>0
 end
 function c60222213.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

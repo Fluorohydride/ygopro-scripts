@@ -58,7 +58,7 @@ function c7733560.ntcon(e,c,minc)
 		and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c7733560.lpcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetBattledGroupCount()>0 or e:GetHandler():GetAttackedCount()>0
+	return e:GetHandler():GetBattledGroupCount()>0
 end
 function c7733560.lpop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SetLP(1-tp,math.ceil(Duel.GetLP(1-tp)/2))

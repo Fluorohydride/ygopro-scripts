@@ -61,7 +61,7 @@ function c34137269.ntcon(e,c,minc)
 		and Duel.GetLocationCount(c:GetControler(),LOCATION_MZONE)>0
 end
 function c34137269.damcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetBattledGroupCount()>0 or e:GetHandler():GetAttackedCount()>0
+	return e:GetHandler():GetBattledGroupCount()>0
 end
 function c34137269.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
