@@ -1,4 +1,5 @@
 --リザレクション・ブレス
+local s,id,o=GetID()
 function c64018647.initial_effect(c)
 	aux.AddCodeList(c,3285552)
 	--spsummon & equip
@@ -50,13 +51,15 @@ function c64018647.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	Duel.SpecialSummonComplete()
-	local eqg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c64018647.eqfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,tp)
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and #eqg>0 and Duel.SelectYesNo(tp,aux.Stringid(64018647,0)) then
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)>0 
+		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(s.eqfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,tp) 
+		and Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-		local eqc=eqg:Select(tp,1,1,nil):GetFirst()
+		local eqg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(s.eqfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,tp)
+		local eqc=eqg:GetFirst()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-		local mg=Duel.SelectMatchingCard(tp,c64018647.CanEquipFilter,tp,LOCATION_MZONE,0,1,1,nil,eqc)
+		local mg=Duel.SelectMatchingCard(tp,s.CanEquipFilter,tp,LOCATION_MZONE,0,1,1,nil,eqc)
 		Duel.Equip(tp,eqc,mg:GetFirst())
 	end
 end
