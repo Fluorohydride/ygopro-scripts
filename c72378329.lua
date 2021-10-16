@@ -9,7 +9,7 @@ function c72378329.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetValue(c72378329.splimit)
+	e1:SetValue(aux.fuslimit)
 	c:RegisterEffect(e1)
 	--damage
 	local e3=Effect.CreateEffect(c)
@@ -17,7 +17,7 @@ function c72378329.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e3:SetCode(EVENT_BATTLE_DESTROYING)
-	e3:SetCondition(c72378329.damcon)
+	e3:SetCondition(aux.bdcon)
 	e3:SetTarget(c72378329.damtg)
 	e3:SetOperation(c72378329.damop)
 	c:RegisterEffect(e3)
@@ -30,14 +30,6 @@ function c72378329.initial_effect(c)
 end
 function c72378329.ffilter(c)
 	return c:IsRace(RACE_DRAGON) and c:IsFusionAttribute(ATTRIBUTE_DARK)
-end
-function c72378329.splimit(e,se,sp,st)
-	return bit.band(st,SUMMON_TYPE_FUSION)==SUMMON_TYPE_FUSION
-end
-function c72378329.damcon(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	local bc=c:GetBattleTarget()
-	return c:IsRelateToBattle() and bc:IsType(TYPE_MONSTER)
 end
 function c72378329.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
