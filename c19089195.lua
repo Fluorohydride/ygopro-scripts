@@ -29,7 +29,7 @@ function c19089195.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c19089195.filter(c,tp)
-	return c:IsCode(22702055) and c:GetActivateEffect() and c:GetActivateEffect():IsActivatable(tp,true,true)
+	return c:IsCode(22702055) and (c:GetType()==(TYPE_SPELL+TYPE_FIELD) or Duel.GetLocationCount(tp,LOCATION_SZONE,tp)>0) and c:GetActivateEffect() and c:GetActivateEffect():IsActivatable(tp,true,true)
 end
 function c19089195.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c19089195.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,tp)
@@ -37,12 +37,16 @@ function c19089195.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 		local tc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c19089195.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,tp):GetFirst()
 		if tc then
-			local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
-			if fc then
-				Duel.SendtoGrave(fc,REASON_RULE)
-				Duel.BreakEffect()
+			if tc:GetType()==(TYPE_SPELL+TYPE_FIELD) then
+				local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
+				if fc then
+					Duel.SendtoGrave(fc,REASON_RULE)
+					Duel.BreakEffect()
+				end
+				Duel.MoveToField(tc,tp,tp,LOCATION_FZONE,POS_FACEUP,true)
+			else
+				Duel.MoveToField(tc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
 			end
-			Duel.MoveToField(tc,tp,tp,LOCATION_FZONE,POS_FACEUP,true)
 			local te=tc:GetActivateEffect()
 			te:UseCountLimit(tp,1,true)
 			local tep=tc:GetControler()
