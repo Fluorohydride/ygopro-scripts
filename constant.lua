@@ -838,7 +838,7 @@ ACTIVITY_FLIPSUMMON		=4		--
 ACTIVITY_ATTACK			=5		--
 ACTIVITY_BATTLE_PHASE	=6		-- not available in custom counter
 ACTIVITY_CHAIN			=7		-- only available in custom counter
---cards with double names
-CARD_MARINE_DOLPHIN		=78734254	--海洋海豚
-CARD_TWINKLE_MOSS		=13857930	--光輝苔蘚
+--Special cards
+CARD_MARINE_DOLPHIN		=78734254	--海洋海豚(double name)
+CARD_TWINKLE_MOSS		=13857930	--光輝苔蘚(double name)
 CARD_QUESTION		    =38723936	--谜题
