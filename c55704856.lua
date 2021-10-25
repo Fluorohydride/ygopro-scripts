@@ -34,6 +34,8 @@ function c55704856.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
 		local mg=Duel.GetMatchingGroup(c55704856.filter0,tp,LOCATION_MZONE+LOCATION_REMOVED,0,nil)
+		local mg2=Duel.GetFusionMaterial(tp):Filter(aux.NOT(Card.IsLocation),nil,LOCATION_HAND)
+		mg:Merge(mg2)
 		local res=Duel.IsExistingMatchingCard(c55704856.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg,nil,chkf)
 		if not res then
 			local ce=Duel.GetChainMaterial(tp)
@@ -51,6 +53,8 @@ end
 function c55704856.activate(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
 	local mg=Duel.GetMatchingGroup(c55704856.filter1,tp,LOCATION_MZONE+LOCATION_REMOVED,0,nil,e)
+	local mg2=Duel.GetFusionMaterial(tp):Filter(aux.NOT(Card.IsLocation),nil,LOCATION_HAND)
+	mg:Merge(mg2)
 	local sg1=Duel.GetMatchingGroup(c55704856.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg,nil,chkf)
 	local mg3=nil
 	local sg2=nil
