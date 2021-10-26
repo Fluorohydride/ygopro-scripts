@@ -61,7 +61,7 @@ function c79371769.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c79371769.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc then return end
+	if not tc:IsRelateToEffect(e) then return end
 	if Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
