@@ -30,7 +30,7 @@ function c21454943.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c21454943.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=e:GetLabelObject()
-	if chk==0 then return Duel.CheckLPCost(tp,100) and e:GetHandler():GetFlagEffect(21454943)==0
+	if chk==0 then return Duel.CheckLPCost(tp,100,true) and e:GetHandler():GetFlagEffect(21454943)==0
 						and (bc:IsAttackAbove(100) or bc:IsDefenseAbove(100)) end
 	local lp=Duel.GetLP(tp)-1
 	local alp=100
@@ -44,7 +44,7 @@ function c21454943.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	elseif lp>=300 then alp=Duel.AnnounceNumber(tp,100,200,300)
 	elseif lp>=200 then alp=Duel.AnnounceNumber(tp,100,200)
 	end
-	Duel.PayLPCost(tp,alp)
+	Duel.PayLPCost(tp,alp,true)
 	e:SetLabel(alp)
 	e:GetHandler():RegisterFlagEffect(21454943,RESET_PHASE+PHASE_DAMAGE,0,1)
 end

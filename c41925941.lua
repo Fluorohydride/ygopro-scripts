@@ -30,7 +30,7 @@ function c41925941.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c41925941.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=e:GetLabelObject()
-	if chk==0 then return Duel.CheckLPCost(tp,100) and (bc:IsAttackAbove(100) or bc:IsDefenseAbove(100)) end
+	if chk==0 then return Duel.CheckLPCost(tp,100,true) and (bc:IsAttackAbove(100) or bc:IsDefenseAbove(100)) end
 	local maxc=Duel.GetLP(tp)
 	local maxpay=bc:GetAttack()
 	local def=bc:GetDefense()
@@ -43,7 +43,7 @@ function c41925941.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		t[i]=i*100
 	end
 	local cost=Duel.AnnounceNumber(tp,table.unpack(t))
-	Duel.PayLPCost(tp,cost)
+	Duel.PayLPCost(tp,cost,true)
 	e:SetLabel(cost)
 end
 function c41925941.target(e,tp,eg,ep,ev,re,r,rp,chk)

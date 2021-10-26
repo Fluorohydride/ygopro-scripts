@@ -59,7 +59,7 @@ function c6039967.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c6039967.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(6039967)==0
-		and Duel.CheckLPCost(tp,100) end
+		and Duel.CheckLPCost(tp,100,true) end
 	local lp=Duel.GetLP(tp)
 	local m=math.floor(math.min(lp,3000)/100)
 	local t={}
@@ -67,7 +67,7 @@ function c6039967.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 		t[i]=i*100
 	end
 	local ac=Duel.AnnounceNumber(tp,table.unpack(t))
-	Duel.PayLPCost(tp,ac)
+	Duel.PayLPCost(tp,ac,true)
 	e:SetLabel(ac)
 	e:GetHandler():RegisterFlagEffect(6039967,RESET_PHASE+PHASE_DAMAGE_CAL,0,1)
 end
