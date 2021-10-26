@@ -1,4 +1,4 @@
---Court of Cards
+--絵札の絆
 function c28340377.initial_effect(c)
 	aux.AddCodeList(c,25652259,64788463,90876561)
 	--Activate

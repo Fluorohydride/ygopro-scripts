@@ -1,4 +1,4 @@
---Myutant Cry
+--ミュートリアスの産声
 function c31855260.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

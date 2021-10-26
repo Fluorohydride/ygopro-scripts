@@ -1,4 +1,4 @@
---Myutant Evolution Lab
+--ミュートリア進化研究所
 function c34572613.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

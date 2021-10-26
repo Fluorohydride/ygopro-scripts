@@ -1,4 +1,4 @@
---Raging Storm Dragon - Beaufort IX
+--颶風龍－ビュフォート・ノウェム
 function c8836329.initial_effect(c)
 	c:EnableReviveLimit()
 	--disable

@@ -1,4 +1,4 @@
---XYZ Hyper Cannon
+--X・Y・Zハイパーキャノン
 function c21723081.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Synchro Transmission
+--シンクロ・トランスミッション
 function c35817848.initial_effect(c)
 	--synchro effect
 	local e1=Effect.CreateEffect(c)

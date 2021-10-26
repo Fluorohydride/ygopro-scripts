@@ -1,4 +1,4 @@
---War Rock Meteoragon
+--ウォークライ・メテオラゴン
 function c10497636.initial_effect(c)
 	--indestructable
 	local e1=Effect.CreateEffect(c)

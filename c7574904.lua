@@ -1,4 +1,4 @@
---Myutant Arsenal
+--ミュートリアル・アームズ
 function c7574904.initial_effect(c)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

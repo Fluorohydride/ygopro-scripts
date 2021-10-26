@@ -1,4 +1,4 @@
---Thunderspeed Summon
+--神速召喚
 function c55557574.initial_effect(c)
 	aux.AddCodeList(c,25652259,64788463,90876561)
 	--Activate

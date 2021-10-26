@@ -1,4 +1,4 @@
---War Rock Mountain
+--ザ・ロック・オブ・ウォークライ
 function c45943516.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

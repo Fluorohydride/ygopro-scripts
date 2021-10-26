@@ -1,4 +1,4 @@
---Underdog
+--形勢反転
 function c5779502.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

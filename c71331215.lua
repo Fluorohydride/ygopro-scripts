@@ -1,4 +1,4 @@
---War Rock Ordeal
+--ウォークライ・オーディール
 function c71331215.initial_effect(c)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	c:EnableCounterPermit(0x5a,LOCATION_SZONE)

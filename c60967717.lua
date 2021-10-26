@@ -1,4 +1,4 @@
---Myutant Expansion
+--ミュートリア超個体系
 function c60967717.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

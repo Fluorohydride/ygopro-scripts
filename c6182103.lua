@@ -1,4 +1,4 @@
---Myutant Ultimus
+--究極体ミュートリアス
 function c6182103.initial_effect(c)
 	--fusion summon
 	c:EnableReviveLimit()

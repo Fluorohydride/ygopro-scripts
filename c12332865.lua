@@ -1,4 +1,4 @@
---Thron the Disciplined Angel
+--聖座天嗣ストン
 function c12332865.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

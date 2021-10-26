@@ -1,4 +1,4 @@
---Pendulum Encore
+--ペンデュラム・アンコール
 --not fully implemented
 function c6992184.initial_effect(c)
 	--Activate
