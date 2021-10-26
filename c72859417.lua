@@ -37,6 +37,7 @@ function c72859417.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.GetMatchingGroup(c72859417.ovfilter,tp,LOCATION_MZONE,0,nil,e)
 	if chkc then return false end
 	if chk==0 then return g:CheckSubGroup(c72859417.fselect,2,2) end
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local sg=g:SelectSubGroup(tp,c72859417.fselect,false,2,2)
 	Duel.SetTargetCard(sg)
 end
@@ -59,7 +60,7 @@ function c72859417.activate(e,tp,eg,ep,ev,re,r,rp)
 		c2=g:Filter(aux.TRUE,c1):GetFirst()
 	end
 	local mg=c1:GetOverlayGroup()
-	if mg:GetCount()>0 then Duel.Overlay(c2,mg) end
+	if mg:GetCount()>0 then Duel.Overlay(c2,mg,false) end
 	Duel.Overlay(c2,Group.FromCards(c1))
 end
 function c72859417.drfilter(c)
