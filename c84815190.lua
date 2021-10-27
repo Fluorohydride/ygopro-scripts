@@ -58,6 +58,7 @@ function c84815190.discon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c84815190.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
+	e:GetHandler():RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(84815190,3))
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
