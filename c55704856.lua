@@ -84,18 +84,20 @@ function c55704856.activate(e,tp,eg,ep,ev,re,r,rp)
 			fop(ce,e,tp,tc,mat2)
 		end
 		tc:CompleteProcedure()
+		local fid=e:GetHandler():GetFieldID()
+		tc:RegisterFlagEffect(55704856,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_CANNOT_ATTACK)
 		e1:SetProperty(EFFECT_FLAG_OATH)
 		e1:SetTargetRange(LOCATION_MZONE,0)
 		e1:SetTarget(c55704856.ftarget)
-		e1:SetLabel(tc:GetFieldID())
+		e1:SetLabel(fid)
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
 	end
 	aux.FCheckAdditional=nil
 end
 function c55704856.ftarget(e,c)
-	return e:GetLabel()~=c:GetFieldID()
+	return e:GetLabel()~=c:GetFlagEffectLabel(55704856)
 end
