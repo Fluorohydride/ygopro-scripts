@@ -1,6 +1,7 @@
 --黒竜降臨
 function c18803791.initial_effect(c)
-	aux.AddRitualProcGreaterCode(c,71408082)
+	local e0=aux.AddRitualProcGreaterCode(c,71408082)
+	c:RegisterEffect(e0)
 	--to hand
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)

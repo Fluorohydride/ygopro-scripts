@@ -1,6 +1,7 @@
 --機械天使の儀式
 function c39996157.initial_effect(c)
-	aux.AddRitualProcGreater2(c,c39996157.ritual_filter)
+	local e0=aux.AddRitualProcGreater2(c,c39996157.ritual_filter)
+	c:RegisterEffect(e0)
 	--destroy replace
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

@@ -10,6 +10,7 @@ function c25726386.initial_effect(c)
 	e1:SetCountLimit(1,25726386)
 	e1:SetCondition(c25726386.rscon)
 	e1:SetCost(c25726386.rscost)
+	c:RegisterEffect(e1)
 	--negate
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(25726386,1))

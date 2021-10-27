@@ -1,6 +1,7 @@
 --光子竜降臨
 function c34834619.initial_effect(c)
-	aux.AddRitualProcEqualCode(c,85346853)
+	local e0=aux.AddRitualProcEqualCode(c,85346853)
+	c:RegisterEffect(e0)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(34834619,0))

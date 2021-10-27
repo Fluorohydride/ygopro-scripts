@@ -1584,7 +1584,6 @@ function Auxiliary.AddRitualProcUltimate(c,filter,level_function,greater_or_equa
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetTarget(Auxiliary.RitualUltimateTarget(filter,level_function,greater_or_equal,summon_location,grave_filter,mat_filter))
 	e1:SetOperation(Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equal,summon_location,grave_filter,mat_filter))
-	c:RegisterEffect(e1)
 	return e1
 end
 function Auxiliary.RitualCheckGreater(g,c,lv)

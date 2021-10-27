@@ -1,6 +1,7 @@
 --リトマスの死儀式
 function c8955148.initial_effect(c)
-	aux.AddRitualProcGreaterCode(c,72566043)
+	local e0=aux.AddRitualProcGreaterCode(c,72566043)
+	c:RegisterEffect(e0)
 	--to deck
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TODECK+CATEGORY_DRAW)

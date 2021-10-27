@@ -1,6 +1,7 @@
 --祝祷の聖歌
 function c80566312.initial_effect(c)
-	aux.AddRitualProcGreaterCode(c,56350972)
+	locale e0=aux.AddRitualProcGreaterCode(c,56350972)
+	c:RegisterEffect(e0)
 	--destroy replace
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

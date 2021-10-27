@@ -9,6 +9,7 @@ function c99628747.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,99628747)
 	e1:SetCost(c99628747.rscost)
+	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(99628747,1))

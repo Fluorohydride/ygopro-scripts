@@ -1,6 +1,7 @@
 --原初の叫喚
 function c47435107.initial_effect(c)
-	aux.AddRitualProcGreaterCode(c,10441498)
+	local e0=aux.AddRitualProcGreaterCode(c,10441498)
+	c:RegisterEffect(e0)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(47435107,0))

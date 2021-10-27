@@ -1,6 +1,7 @@
 --エンドレス・オブ・ザ・ワールド
 function c32828635.initial_effect(c)
-	aux.AddRitualProcGreater2Code2(c,46427957,72426662,nil,nil,c32828635.mfilter)
+	local e0=aux.AddRitualProcGreater2Code2(c,46427957,72426662,nil,nil,c32828635.mfilter)
+	c:RegisterEffect(e0)
 	--salvage
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(32828635,0))

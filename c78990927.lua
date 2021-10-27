@@ -21,6 +21,7 @@ function c78990927.initial_effect(c)
 	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_MAIN_END)
 	e2:SetCountLimit(1,78990928)
 	e2:SetCondition(c78990927.rscon)
+	c:RegisterEffect(e2)
 end
 function c78990927.thfilter(c,lv)
 	return c:IsType(TYPE_RITUAL) and c:IsType(TYPE_MONSTER) and not c:IsLevel(lv) and c:IsAbleToHand()

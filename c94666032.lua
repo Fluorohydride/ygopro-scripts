@@ -1,7 +1,8 @@
 --リヴェンデット・ボーン
 function c94666032.initial_effect(c)
 	aux.AddCodeList(c,4388680)
-	aux.AddRitualProcGreater2(c,c94666032.filter,LOCATION_HAND+LOCATION_GRAVE,c94666032.mfilter)
+	local e0=aux.AddRitualProcGreater2(c,c94666032.filter,LOCATION_HAND+LOCATION_GRAVE,c94666032.mfilter)
+	c:RegisterEffect(e0)
 	--destroy replace
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

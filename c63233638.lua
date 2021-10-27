@@ -9,6 +9,7 @@ function c63233638.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCountLimit(1,63233638)
 	e1:SetCost(c63233638.rscost)
+	c:RegisterEffect(e1)
 	--atk/def up
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)

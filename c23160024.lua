@@ -33,6 +33,7 @@ function c23160024.initial_effect(c)
 	e5:SetCode(0)
 	e5:SetRange(LOCATION_GRAVE)
 	e5:SetCost(aux.bfgcost)
+	c:RegisterEffect(e5)
 end
 function c23160024.cfilter(c,tp)
 	return c:IsPreviousSetCard(0xe0) and c:IsReason(REASON_RELEASE) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)

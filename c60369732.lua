@@ -1,4 +1,5 @@
 --大邪神の儀式
 function c60369732.initial_effect(c)
-	aux.AddRitualProcGreaterCode(c,62420419)
+	local e0=aux.AddRitualProcGreaterCode(c,62420419)
+	c:RegisterEffect(e0)
 end
