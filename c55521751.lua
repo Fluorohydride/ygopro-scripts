@@ -72,7 +72,7 @@ function c55521751.drop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(p,c55521751.drfilter,p,LOCATION_HAND,0,1,2,nil)
 	if g:GetCount()>0 then
 		Duel.ConfirmCards(1-p,g)
-		Duel.SendtoDeck(g,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_EFFECT)
 		local og=Duel.GetOperatedGroup()
 		local ct=og:FilterCount(Card.IsLocation,nil,LOCATION_DECK)
 		if ct==0 then return end

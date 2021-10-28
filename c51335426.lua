@@ -35,7 +35,7 @@ function c51335426.activate(e,tp,eg,ep,ev,re,r,rp)
 			if g:GetCount()==0 then return end
 			Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 			local sg=g:Select(p,ct,ct,nil)
-			Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)
+			Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
 			Duel.SortDecktop(p,p,ct)
 			for i=1,ct do
 				local mg=Duel.GetDecktopGroup(p,1)

@@ -32,7 +32,7 @@ function c78610936.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not tc:IsRelateToEffect(e) then return end
 	local mg=tc:GetOverlayGroup()
 	Duel.SendtoGrave(mg,REASON_EFFECT)
-	if Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)>0 then
+	if Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)>0 then
 		local g=mg:Filter(aux.NecroValleyFilter(c78610936.spfilter),nil,e,tp)
 		local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
 		if ft>0 and g:GetCount()>0 then

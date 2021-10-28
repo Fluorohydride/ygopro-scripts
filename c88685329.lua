@@ -54,7 +54,7 @@ function c88685329.drop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ShuffleHand(tp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 			local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,1,1,nil)
-			Duel.SendtoDeck(g,nil,0,REASON_EFFECT)
+			Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_EFFECT)
 		end
 	elseif label==2 then
 		Duel.Draw(tp,1,REASON_EFFECT)

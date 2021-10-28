@@ -23,7 +23,7 @@ function c22454453.activate(e,tp,eg,ep,ev,re,r,rp,chk)
 		else
 			local opt=Duel.SelectOption(tp,aux.Stringid(22454453,0),aux.Stringid(22454453,1))
 			if opt==0 then
-				Duel.SendtoDeck(g,nil,0,REASON_EFFECT)
+				Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_EFFECT)
 			else
 				Duel.SendtoDeck(g,nil,1,REASON_EFFECT)
 			end

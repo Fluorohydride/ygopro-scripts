@@ -65,7 +65,7 @@ function c78362751.spop2(e,tp,eg,ep,ev,re,r,rp)
 			local tc=dg:GetFirst()
 			while tc do
 				if tc:IsLocation(LOCATION_GRAVE) then
-					Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
+					Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 				end
 				Duel.MoveSequence(tc,0)
 				tc=dg:GetNext()

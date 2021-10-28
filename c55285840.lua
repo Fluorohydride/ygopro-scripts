@@ -99,7 +99,7 @@ function c55285840.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local dg=Duel.SelectMatchingCard(tp,c55285840.tgfilter,tp,0,LOCATION_ONFIELD,1,1,nil)
-		Duel.SendtoDeck(dg,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(dg,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 end
 function c55285840.retop(e,tp,eg,ep,ev,re,r,rp)

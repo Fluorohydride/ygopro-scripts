@@ -44,7 +44,7 @@ function c71583486.operation(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetCount()>0 and Duel.SendtoHand(g,nil,REASON_EFFECT)~=0 and g:GetFirst():IsLocation(LOCATION_HAND) then
 			Duel.ConfirmCards(1-tp,g)
 			Duel.ShuffleDeck(tp)
-			Duel.SendtoDeck(c,nil,0,REASON_EFFECT)
+			Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT)
 		end
 	end
 end

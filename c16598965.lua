@@ -30,7 +30,7 @@ function c16598965.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 		local sg=g:Select(tp,2,2,nil)
-		Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
 		Duel.SortDecktop(tp,tp,2)
 		for i=1,2 do
 			local mg=Duel.GetDecktopGroup(tp,1)

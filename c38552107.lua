@@ -64,6 +64,6 @@ function c38552107.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c38552107.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		Duel.SendtoDeck(e:GetHandler(),nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 end
