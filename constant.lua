@@ -12,9 +12,13 @@ LOCATION_REMOVED	=0x20		--除外区
 LOCATION_EXTRA		=0x40		--额外
 LOCATION_OVERLAY	=0x80		--超量素材
 LOCATION_ONFIELD	=0x0c		--场上（LOCATION_MZONE+LOCATION_SZONE）
---Locations (for redirect) 若在重定向类效果中指定LOCATION_DECK则为弹回卡组顶部
+--Locations (for redirect) 若在重定向类效果中仅指定LOCATION_DECK则为弹回卡组顶部
 LOCATION_DECKBOT	=0x10001	--弹回卡组底部
 LOCATION_DECKSHF	=0x20001	--弹回卡组并洗牌
+--Sequences (for Duel.SendtoDeck)
+SEQ_DECKTOP			=0			--弹回卡组顶端
+SEQ_DECKBOTTOM		=1			--弹回卡组底端
+SEQ_DECKSHUFFLE		=2			--弹回卡组并洗牌（洗牌前暂时放在底端）
 --Locations of spell cards
 LOCATION_FZONE		=0x100		--场地区
 LOCATION_PZONE		=0x200		--灵摆区
