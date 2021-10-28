@@ -2,7 +2,7 @@
 function c25726386.initial_effect(c)
 	c:EnableReviveLimit()
 	--ritual summon
-	local e1=aux.AddRitualProcGreater2(c,c25726386.filter,nil,nil,c25726386.matfilter)
+	local e1=aux.AddRitualProcGreater2(c,c25726386.filter,nil,nil,c25726386.matfilter,true)
 	e1:SetDescription(aux.Stringid(25726386,0))
 	e1:SetType(EFFECT_TYPE_QUICK_O)
 	e1:SetRange(LOCATION_HAND)
@@ -10,6 +10,7 @@ function c25726386.initial_effect(c)
 	e1:SetCountLimit(1,25726386)
 	e1:SetCondition(c25726386.rscon)
 	e1:SetCost(c25726386.rscost)
+	c:RegisterEffect(e1)
 	--negate
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(25726386,1))
