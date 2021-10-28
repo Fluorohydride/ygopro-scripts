@@ -68,7 +68,7 @@ function c69840739.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c69840739.drop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND,LOCATION_HAND)
-	if Duel.SendtoDeck(g,nil,0,REASON_EFFECT)~=0 then
+	if Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 then
 		local og=g:Filter(Card.IsLocation,nil,LOCATION_DECK)
 		if og:IsExists(Card.IsControler,1,nil,tp) then Duel.ShuffleDeck(tp) end
 		if og:IsExists(Card.IsControler,1,nil,1-tp) then Duel.ShuffleDeck(1-tp) end

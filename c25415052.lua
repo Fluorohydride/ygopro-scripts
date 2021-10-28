@@ -48,7 +48,7 @@ function c25415052.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()<=0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=g:Select(tp,1,3,nil)
-	if Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)~=0 then
+	if Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 then
 		local sg2=Duel.GetOperatedGroup()
 		if sg2:IsExists(c25415052.cfilter,1,nil,tp) then Duel.ShuffleDeck(tp) end
 		if sg2:IsExists(c25415052.cfilter,1,nil,1-tp) then Duel.ShuffleDeck(1-tp) end

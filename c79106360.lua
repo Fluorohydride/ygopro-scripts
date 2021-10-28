@@ -16,7 +16,7 @@ function c79106360.filter(c)
 end
 function c79106360.operation(e,tp,eg,ep,ev,re,r,rp)
 	local rg=Duel.GetMatchingGroup(c79106360.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	Duel.SendtoDeck(rg,nil,0,REASON_EFFECT)
+	Duel.SendtoDeck(rg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	local ct1=0
 	local ct2=0
 	rg=Duel.GetOperatedGroup()
