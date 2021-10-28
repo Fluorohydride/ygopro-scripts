@@ -45,7 +45,7 @@ function c13482262.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 		Duel.BreakEffect()
-		Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
 function c13482262.cfilter(c,tp)

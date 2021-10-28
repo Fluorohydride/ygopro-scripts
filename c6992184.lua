@@ -84,5 +84,5 @@ function c6992184.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c6992184.retop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetFieldGroup(tp,LOCATION_PZONE,0)
-	Duel.SendtoDeck(tg,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end

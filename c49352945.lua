@@ -68,7 +68,7 @@ end
 function c49352945.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	Duel.SendtoDeck(c,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end
 function c49352945.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
@@ -92,5 +92,5 @@ function c49352945.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c49352945.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
-	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end

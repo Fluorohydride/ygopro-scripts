@@ -99,7 +99,7 @@ function c55878038.desop(e,tp,eg,ep,ev,re,r,rp)
 	elseif label==2 then
 		if Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)<=0 then return end
 		local g2=Duel.GetFieldGroup(tp,0,LOCATION_HAND):RandomSelect(tp,1)
-		Duel.SendtoDeck(g2,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g2,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	else
 		local g3=Duel.GetMatchingGroup(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 		if g3:GetCount()>0 then

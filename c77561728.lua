@@ -18,7 +18,7 @@ end
 function c77561728.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
 	if g:GetCount()==0 then return end
-	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	Duel.ShuffleDeck(1-tp)
 	Duel.BreakEffect()
 	Duel.Draw(1-tp,g:GetCount(),REASON_EFFECT)

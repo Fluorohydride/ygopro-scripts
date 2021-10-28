@@ -26,6 +26,6 @@ function c79759367.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) and Duel.IsExistingMatchingCard(c79759367.cfilter,tp,LOCATION_ONFIELD,0,1,nil)
 		and Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 then
 		local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND):RandomSelect(tp,1)
-		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

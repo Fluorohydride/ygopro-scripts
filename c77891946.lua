@@ -78,7 +78,7 @@ function c77891946.tdcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c77891946.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end
 function c77891946.splimit(e,c)
 	return not c:IsSetCard(0x172) and c:IsLocation(LOCATION_EXTRA)

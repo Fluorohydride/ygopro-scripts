@@ -23,7 +23,7 @@ function c10489311.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c10489311.drop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SendtoDeck(c,nil,2,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_DECK) then
+	if c:IsRelateToEffect(e) and Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_DECK) then
 		Duel.ShuffleDeck(tp)
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end

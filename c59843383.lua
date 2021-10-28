@@ -35,7 +35,7 @@ function c59843383.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local sg=g:Select(tp,1,g:GetCount(),nil)
-	local ct=Duel.SendtoDeck(sg,nil,2,REASON_EFFECT)
+	local ct=Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	local dg=Duel.GetMatchingGroup(nil,tp,0,LOCATION_ONFIELD,nil)
 	if ct>0 and dg:GetCount()>=ct and Duel.SelectYesNo(tp,aux.Stringid(59843383,1)) then
 		Duel.BreakEffect()

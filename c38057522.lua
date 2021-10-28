@@ -61,7 +61,7 @@ function c38057522.thop(e,tp,eg,ep,ev,re,r,rp)
 		if hc and Duel.SendtoHand(hc,nil,REASON_EFFECT)~=0 then
 			Duel.ConfirmCards(1-tp,hc)
 			if hc:IsLocation(LOCATION_HAND) then
-				Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+				Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 			end
 		end
 	end

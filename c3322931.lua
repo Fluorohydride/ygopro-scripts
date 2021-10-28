@@ -59,7 +59,7 @@ function c3322931.tdop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetMatchingGroup(nil,tp,0,LOCATION_MZONE,nil)
 		if g:GetCount()>0 then
 			g:AddCard(c)
-			Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+			Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		end
 	end
 end

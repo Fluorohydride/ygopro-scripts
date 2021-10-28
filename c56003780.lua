@@ -46,7 +46,7 @@ function c56003780.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c56003780.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) and e:GetHandler():IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) and e:GetHandler():IsRelateToEffect(e) then
 		local g=Duel.GetMatchingGroup(c56003780.filter,tp,LOCATION_MZONE,0,nil)
 		if g:GetCount()<=0 then return end
 		local zone=0

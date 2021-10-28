@@ -62,7 +62,7 @@ function c65687442.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c65687442.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,LOCATION_MZONE,0,nil)
-	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end
 function c65687442.thfilter(c)
 	return c:IsCode(92182447) and c:IsAbleToHand()

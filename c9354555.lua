@@ -27,7 +27,7 @@ function c9354555.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local dg=g:Select(tp,3,3,nil)
 	Duel.ConfirmCards(1-tp,dg)
-	Duel.SendtoDeck(dg,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(dg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	local sg=Duel.GetMatchingGroup(c9354555.filter2,tp,LOCATION_DECK,0,nil)
 	if sg:GetCount()==0 then return end
 	Duel.BreakEffect()
