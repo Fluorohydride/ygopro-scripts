@@ -53,7 +53,7 @@ end
 function c21723081.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetTurnPlayer()==tp then
 		local tc=Duel.GetFirstTarget()
-		if tc and tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_DECK) then
+		if tc and tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_DECK) then
 			Duel.Draw(tp,1,REASON_EFFECT)
 		end
 	else

@@ -21,5 +21,5 @@ end
 function c29380133.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,1,99,nil)
-	Duel.SendtoDeck(g,nil,1,REASON_EFFECT)
+	Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 end

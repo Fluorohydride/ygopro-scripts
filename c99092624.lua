@@ -89,7 +89,7 @@ function c99092624.tdop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetOperation(c99092624.retop)
 		Duel.RegisterEffect(e1,tp)
 		if c:IsRelateToEffect(e) then
-			Duel.SendtoDeck(c,nil,1,REASON_EFFECT)
+			Duel.SendtoDeck(c,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 		end
 	end
 end

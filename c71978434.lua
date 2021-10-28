@@ -96,7 +96,7 @@ function c71978434.tdop(e,tp,eg,ep,ev,re,r,rp)
 			or Duel.SelectOption(tp,aux.Stringid(71978434,2),aux.Stringid(71978434,3))==0 then
 			Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 		else
-			Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)
+			Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 		end
 	end
 end

@@ -41,7 +41,7 @@ function c55705473.drop(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.SelectOption(tp,aux.Stringid(55705473,1),aux.Stringid(55705473,2))==0 then
 			Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_EFFECT)
 		else
-			Duel.SendtoDeck(g,nil,1,REASON_EFFECT)
+			Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 		end
 	end
 end
