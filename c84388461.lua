@@ -12,13 +12,14 @@ function c84388461.initial_effect(c)
 	e2:SetTarget(c84388461.splimit)
 	c:RegisterEffect(e2)
 	--spsummon
-	local e3=aux.AddRitualProcEqual2(c,c84388461.filter,nil,nil,c84388461.mfilter)
+	local e3=aux.AddRitualProcEqual2(c,c84388461.filter,nil,nil,c84388461.mfilter,true)
 	e3:SetDescription(aux.Stringid(84388461,1))
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetCode(0)
 	e3:SetCountLimit(1,84388461)
 	e3:SetRange(LOCATION_MZONE+LOCATION_HAND)
 	e3:SetCost(c84388461.cost)
+	c:RegisterEffect(e3)
 end
 function c84388461.splimit(e,c,sump,sumtype,sumpos,targetp)
 	if c:IsSetCard(0xb4,0xc4) then return false end
