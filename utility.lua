@@ -1929,9 +1929,11 @@ function Auxiliary.AddLinkProcedure(c,f,min,max,gf)
 	e1:SetOperation(Auxiliary.LinkOperation(f,min,max,gf))
 	e1:SetValue(SUMMON_TYPE_LINK)
 	c:RegisterEffect(e1)
+	return e1
 end
-function Auxiliary.LConditionFilter(c,f,lc)
-	return (c:IsFaceup() or not c:IsOnField()) and c:IsCanBeLinkMaterial(lc) and (not f or f(c))
+function Auxiliary.LConditionFilter(c,f,lc,e)
+	return (c:IsFaceup() or not c:IsOnField() or e:IsHasProperty(EFFECT_FLAG_SET_AVAILABLE))
+		and c:IsCanBeLinkMaterial(lc) and (not f or f(c))
 end
 function Auxiliary.LExtraFilter(c,f,lc,tp)
 	if c:IsLocation(LOCATION_ONFIELD) and not c:IsFaceup() then return false end
@@ -1949,8 +1951,8 @@ function Auxiliary.GetLinkCount(c)
 		return 1+0x10000*c:GetLink()
 	else return 1 end
 end
-function Auxiliary.GetLinkMaterials(tp,f,lc)
-	local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f,lc)
+function Auxiliary.GetLinkMaterials(tp,f,lc,e)
+	local mg=Duel.GetMatchingGroup(Auxiliary.LConditionFilter,tp,LOCATION_MZONE,0,nil,f,lc,e)
 	local mg2=Duel.GetMatchingGroup(Auxiliary.LExtraFilter,tp,LOCATION_HAND+LOCATION_SZONE,LOCATION_ONFIELD,nil,f,lc,tp)
 	if mg2:GetCount()>0 then mg:Merge(mg2) end
 	return mg
@@ -2004,12 +2006,12 @@ function Auxiliary.LinkCondition(f,minc,maxc,gf)
 				local tp=c:GetControler()
 				local mg=nil
 				if og then
-					mg=og:Filter(Auxiliary.LConditionFilter,nil,f,c)
+					mg=og:Filter(Auxiliary.LConditionFilter,nil,f,c,e)
 				else
-					mg=Auxiliary.GetLinkMaterials(tp,f,c)
+					mg=Auxiliary.GetLinkMaterials(tp,f,c,e)
 				end
 				if lmat~=nil then
-					if not Auxiliary.LConditionFilter(lmat,f,c) then return false end
+					if not Auxiliary.LConditionFilter(lmat,f,c,e) then return false end
 					mg:AddCard(lmat)
 				end
 				local fg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_LMATERIAL)
@@ -2029,12 +2031,12 @@ function Auxiliary.LinkTarget(f,minc,maxc,gf)
 				end
 				local mg=nil
 				if og then
-					mg=og:Filter(Auxiliary.LConditionFilter,nil,f,c)
+					mg=og:Filter(Auxiliary.LConditionFilter,nil,f,c,e)
 				else
-					mg=Auxiliary.GetLinkMaterials(tp,f,c)
+					mg=Auxiliary.GetLinkMaterials(tp,f,c,e)
 				end
 				if lmat~=nil then
-					if not Auxiliary.LConditionFilter(lmat,f,c) then return false end
+					if not Auxiliary.LConditionFilter(lmat,f,c,e) then return false end
 					mg:AddCard(lmat)
 				end
 				local fg=Auxiliary.GetMustMaterialGroup(tp,EFFECT_MUST_BE_LMATERIAL)
