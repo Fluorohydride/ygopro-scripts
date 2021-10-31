@@ -23,12 +23,9 @@ function c41858121.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=Duel.SelectTarget(tp,c41858121.filter,tp,LOCATION_GRAVE,0,3,3,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,3,0,0)
 end
-function c41858121.tgfilter(c,e)
-	return not c:IsRelateToEffect(e)
-end
 function c41858121.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	if g:IsExists(c41858121.tgfilter,1,nil,e) then return end
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	if g:GetCount()<=0 then return end
 	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	local og=Duel.GetOperatedGroup()
 	if not og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then return end
