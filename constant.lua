@@ -827,11 +827,12 @@ EFFECT_COUNT_CODE_SINGLE		=0x1		--同一张卡的多个效果公共使用次数
 --特殊选项
 DUEL_TEST_MODE			=0x01		--测试模式(目前暫無)
 DUEL_ATTACK_FIRST_TURN	=0x02		--第一回合可以攻击(用于残局)
-DUEL_NO_CHAIN_HINT		=0x04		--N/A
+DUEL_OLD_REPLAY			=0x04		--旧录像
 DUEL_OBSOLETE_RULING	=0x08		--使用舊規則
 DUEL_PSEUDO_SHUFFLE		=0x10		--不洗牌
 DUEL_TAG_MODE			=0x20		--双打PP
 DUEL_SIMPLE_AI			=0x40		--AI(用于残局)
+DUEL_RETURN_DECK_TOP	=0x80		--回卡组洗切的卡放到卡组最上方（不洗牌模式下曾经的默认行为）
 --Activity counter
 --global: 1-6 (binary: 5,6)
 --custom: 1-5,7 (binary: 1-5)
