@@ -69,7 +69,7 @@ function c10000010.setcon(e,c,minc)
 	return false
 end
 function c10000010.splimit(e,se,sp,st)
-	return Duel.IsPlayerAffectedByEffect(sp,41044418) and se:GetHandler():IsCode(83764718)
+	return Duel.IsPlayerAffectedByEffect(sp,41044418) and st&SUMMON_VALUE_MONSTER_REBORN>0
 		and e:GetHandler():IsControler(sp) and e:GetHandler():IsLocation(LOCATION_GRAVE)
 end
 function c10000010.genchainlm(c)
