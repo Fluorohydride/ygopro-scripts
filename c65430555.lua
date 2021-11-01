@@ -59,7 +59,7 @@ function c65430555.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tg=g:Filter(Card.IsRelateToEffect,nil,e)
 	if tg:GetCount()>0 then
-		Duel.SendtoDeck(tg,nil,1,REASON_EFFECT)
+		Duel.SendtoDeck(tg,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 	end
 end
 function c65430555.schfilter(c)

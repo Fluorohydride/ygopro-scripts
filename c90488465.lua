@@ -74,7 +74,7 @@ function c90488465.tdop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 			tg:Sub(sg)
 		end
-		Duel.SendtoDeck(tg,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(tg,nil,SEQ_DECKTOP,REASON_EFFECT)
 		local p=tp
 		for i=1,2 do
 			local dg=tg:Filter(c90488465.dfilter,nil,p)

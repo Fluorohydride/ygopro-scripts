@@ -55,7 +55,7 @@ function c12215894.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(p,c12215894.filter,p,LOCATION_HAND,0,1,99,nil)
 	if g:GetCount()>0 then
 		Duel.ConfirmCards(1-p,g)
-		local ct=Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		local ct=Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		Duel.ShuffleDeck(p)
 		Duel.BreakEffect()
 		Duel.Draw(p,ct,REASON_EFFECT)
@@ -84,6 +84,6 @@ function c12215894.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,0,LOCATION_ONFIELD+LOCATION_GRAVE+LOCATION_HAND,nil)
 	if aux.NecroValleyNegateCheck(g) then return end
 	if g:GetCount()>0 then
-		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

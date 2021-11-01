@@ -54,7 +54,7 @@ function c42377643.spop(e,tp,eg,ep,ev,re,r,rp)
 			end
 		else
 			Duel.BreakEffect()
-			Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)
+			Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 		end
 	end
 end

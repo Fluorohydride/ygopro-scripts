@@ -40,7 +40,7 @@ function c23020408.activate(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsLocation(LOCATION_DECK) then
 			Duel.MoveSequence(tc,0)
 		else
-			Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
+			Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 		end
 		if tc:IsLocation(LOCATION_DECK) then
 			Duel.ConfirmDecktop(tp,1)

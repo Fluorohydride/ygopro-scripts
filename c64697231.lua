@@ -28,7 +28,7 @@ function c64697231.activate(e,tp,eg,ep,ev,re,r,rp)
 		if tg:GetCount()>0 then
 			Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 			local sg=tg:Select(p,1,1,nil)
-			Duel.SendtoDeck(sg,nil,2,REASON_EFFECT)
+			Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		end
 		Duel.ShuffleHand(1-p)
 	end

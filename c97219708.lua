@@ -109,5 +109,5 @@ function c97219708.tdcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c97219708.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end

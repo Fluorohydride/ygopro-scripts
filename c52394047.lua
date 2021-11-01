@@ -51,7 +51,7 @@ function c52394047.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if cf:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,cf)
 	end
-	Duel.SendtoDeck(g,nil,2,REASON_COST)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c52394047.atkfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x19) and c:GetBaseDefense()>0

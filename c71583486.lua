@@ -37,14 +37,14 @@ function c71583486.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	if e:GetLabel()==0 then
-		Duel.SendtoDeck(c,nil,1,REASON_EFFECT)
+		Duel.SendtoDeck(c,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 	else
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,c71583486.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 		if g:GetCount()>0 and Duel.SendtoHand(g,nil,REASON_EFFECT)~=0 and g:GetFirst():IsLocation(LOCATION_HAND) then
 			Duel.ConfirmCards(1-tp,g)
 			Duel.ShuffleDeck(tp)
-			Duel.SendtoDeck(c,nil,0,REASON_EFFECT)
+			Duel.SendtoDeck(c,nil,SEQ_DECKTOP,REASON_EFFECT)
 		end
 	end
 end

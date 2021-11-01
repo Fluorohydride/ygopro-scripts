@@ -57,7 +57,7 @@ function c28677304.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c28677304.retop(e,tp,eg,ep,ev,re,r,rp)
 	if not e:GetHandler():IsRelateToEffect(e) or e:GetHandler():IsFacedown() then return end
-	Duel.SendtoDeck(e:GetHandler(),nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end
 function c28677304.discon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetCardTargetCount()==0

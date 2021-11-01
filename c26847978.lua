@@ -69,6 +69,6 @@ function c26847978.drop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.BreakEffect()
-		Duel.SendtoDeck(g,nil,1,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 	end
 end

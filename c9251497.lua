@@ -32,7 +32,7 @@ function c9251497.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) then
 		if g:GetFirst():GetAttribute()&tc:GetAttribute()~=0 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
-			Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+			Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		else
 			Duel.SendtoGrave(g,REASON_EFFECT+REASON_REVEAL)
 			Duel.Destroy(e:GetHandler(),REASON_EFFECT)

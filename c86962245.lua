@@ -60,7 +60,7 @@ function c86962245.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local lc=g:GetFirst()
 	if lc==sc then lc=g:GetNext() end
-	if lc and lc:IsRelateToEffect(e) and Duel.SendtoDeck(lc,nil,2,REASON_EFFECT)>0 and lc:IsLocation(LOCATION_EXTRA) and sc and sc:IsRelateToEffect(e) then
+	if lc and lc:IsRelateToEffect(e) and Duel.SendtoDeck(lc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0 and lc:IsLocation(LOCATION_EXTRA) and sc and sc:IsRelateToEffect(e) then
 		Duel.Destroy(sc,REASON_EFFECT)
 	end
 end

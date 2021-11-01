@@ -18,7 +18,7 @@ function c32828635.mfilter(c)
 end
 function c32828635.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToDeckAsCost() end
-	Duel.SendtoDeck(e:GetHandler(),nil,2,REASON_COST)
+	Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c32828635.filter(c)
 	return c:IsCode(8198712) and c:IsAbleToHand()

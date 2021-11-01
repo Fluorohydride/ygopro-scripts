@@ -69,7 +69,7 @@ end
 function c78512663.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	Duel.SendtoDeck(c,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end
 function c78512663.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return re:GetLabelObject()==e

@@ -31,12 +31,12 @@ function c82016179.activate(e,tp,eg,ep,ev,re,r,rp)
 			local sg2=g:Select(p,1,1,sg1:GetFirst())
 			sg1:Merge(sg2)
 			Duel.ConfirmCards(1-p,sg1)
-			Duel.SendtoDeck(sg1,nil,0,REASON_EFFECT)
+			Duel.SendtoDeck(sg1,nil,SEQ_DECKTOP,REASON_EFFECT)
 			Duel.SortDecktop(p,p,2)
 		else
 			local hg=Duel.GetFieldGroup(p,LOCATION_HAND,0)
 			Duel.ConfirmCards(1-p,hg)
-			local ct=Duel.SendtoDeck(hg,nil,0,REASON_EFFECT)
+			local ct=Duel.SendtoDeck(hg,nil,SEQ_DECKTOP,REASON_EFFECT)
 			Duel.SortDecktop(p,p,ct)
 		end
 	end

@@ -65,7 +65,7 @@ function c48063985.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c48063985.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToExtraAsCost() end
-	Duel.SendtoDeck(e:GetHandler(),nil,0,REASON_COST)
+	Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKTOP,REASON_COST)
 end
 function c48063985.filter1(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x10b5) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

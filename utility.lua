@@ -2777,7 +2777,7 @@ function Auxiliary.tdcfop(c)
 				if cg:GetCount()>0 then
 					Duel.ConfirmCards(1-c:GetControler(),cg)
 				end
-				Duel.SendtoDeck(g,nil,2,REASON_COST)
+				Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 			end
 end
 --return the global index of the zone in (p,loc,seq)

@@ -57,7 +57,7 @@ function c34072799.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Duel.SelectMatchingCard(tp,c34072799.thfilter,tp,LOCATION_DECK,0,1,1,nil,g1:GetFirst())
 	if g2:GetCount()>0 and Duel.SendtoHand(g2,nil,REASON_EFFECT)~=0 then
 		Duel.ConfirmCards(1-tp,g2)
-		Duel.SendtoDeck(g1,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g1,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
 function c34072799.rscon(e,tp,eg,ep,ev,re,r,rp)

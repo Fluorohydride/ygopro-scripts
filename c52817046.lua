@@ -26,7 +26,7 @@ function c52817046.activate(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 	local g=Duel.GetFieldGroup(p,LOCATION_HAND,0)
 	if g:GetCount()==0 then return end
-	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	Duel.ShuffleDeck(p)
 	Duel.BreakEffect()
 	Duel.Draw(p,g:GetCount(),REASON_EFFECT)

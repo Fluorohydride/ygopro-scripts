@@ -67,7 +67,7 @@ function c51476410.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c51476410.spfilter3),tp,LOCATION_GRAVE,0,1,1,nil,e,tp,chkf,nil)
 	local tc=g:GetFirst()
-	if tc and Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_EXTRA) then
+	if tc and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_EXTRA) then
 		local mg1=Duel.GetMatchingGroup(c51476410.spfilter1,tp,LOCATION_GRAVE,0,nil,e)
 		local mgchk1=c51476410.spfilter2(tc,e,tp,mg1,nil,chkf)
 		local mg2=nil

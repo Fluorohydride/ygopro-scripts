@@ -96,7 +96,7 @@ end
 function c96915510.retop(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject()
 	local tg=g:Filter(c96915510.retfilter,nil,e:GetLabel())
-	Duel.SendtoDeck(tg,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end
 function c96915510.atktg(e,c)
 	return c:IsSetCard(0x117) and not c:IsType(TYPE_RITUAL)

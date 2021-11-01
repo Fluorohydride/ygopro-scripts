@@ -23,5 +23,5 @@ function c68477598.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c68477598.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateSummon(eg)
-	Duel.SendtoDeck(eg,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(eg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end

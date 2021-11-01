@@ -12,9 +12,13 @@ LOCATION_REMOVED	=0x20		--除外区
 LOCATION_EXTRA		=0x40		--额外
 LOCATION_OVERLAY	=0x80		--超量素材
 LOCATION_ONFIELD	=0x0c		--场上（LOCATION_MZONE+LOCATION_SZONE）
---Locations (for redirect) 若在重定向类效果中指定LOCATION_DECK则为弹回卡组顶部
+--Locations (for redirect) 若在重定向类效果中仅指定LOCATION_DECK则为弹回卡组顶部
 LOCATION_DECKBOT	=0x10001	--弹回卡组底部
 LOCATION_DECKSHF	=0x20001	--弹回卡组并洗牌
+--Sequences (for Duel.SendtoDeck)
+SEQ_DECKTOP			=0			--弹回卡组顶端
+SEQ_DECKBOTTOM		=1			--弹回卡组底端
+SEQ_DECKSHUFFLE		=2			--弹回卡组并洗牌（洗牌前暂时放在底端）
 --Locations of spell cards
 LOCATION_FZONE		=0x100		--场地区
 LOCATION_PZONE		=0x200		--灵摆区
@@ -823,11 +827,12 @@ EFFECT_COUNT_CODE_SINGLE		=0x1		--同一张卡的多个效果公共使用次数
 --特殊选项
 DUEL_TEST_MODE			=0x01		--测试模式(目前暫無)
 DUEL_ATTACK_FIRST_TURN	=0x02		--第一回合可以攻击(用于残局)
-DUEL_NO_CHAIN_HINT		=0x04		--N/A
+DUEL_OLD_REPLAY			=0x04		--旧录像
 DUEL_OBSOLETE_RULING	=0x08		--使用舊規則
 DUEL_PSEUDO_SHUFFLE		=0x10		--不洗牌
 DUEL_TAG_MODE			=0x20		--双打PP
 DUEL_SIMPLE_AI			=0x40		--AI(用于残局)
+DUEL_RETURN_DECK_TOP	=0x80		--回卡组洗切的卡放到卡组最上方（不洗牌模式下曾经的默认行为）
 --Activity counter
 --global: 1-6 (binary: 5,6)
 --custom: 1-5,7 (binary: 1-5)

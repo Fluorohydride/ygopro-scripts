@@ -62,9 +62,9 @@ function c18138630.desop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 			local sc=g:Select(tp,1,1,nil)
 			if Duel.SelectOption(tp,aux.Stringid(18138630,3),aux.Stringid(18138630,4))==0 then
-				Duel.SendtoDeck(sc,nil,0,REASON_EFFECT)
+				Duel.SendtoDeck(sc,nil,SEQ_DECKTOP,REASON_EFFECT)
 			else
-				Duel.SendtoDeck(sc,nil,1,REASON_EFFECT)
+				Duel.SendtoDeck(sc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 			end
 		end
 	end

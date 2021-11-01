@@ -68,7 +68,7 @@ function c85032782.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c85032782.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)~=0 then
+	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c85032782.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
 		if g:GetCount()>0 then

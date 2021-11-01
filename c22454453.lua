@@ -19,13 +19,13 @@ function c22454453.activate(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,1,1,nil)
 	if g:GetCount()>0 then
 		if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then
-			Duel.SendtoDeck(g,nil,1,REASON_EFFECT)
+			Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 		else
 			local opt=Duel.SelectOption(tp,aux.Stringid(22454453,0),aux.Stringid(22454453,1))
 			if opt==0 then
-				Duel.SendtoDeck(g,nil,0,REASON_EFFECT)
+				Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_EFFECT)
 			else
-				Duel.SendtoDeck(g,nil,1,REASON_EFFECT)
+				Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 			end
 		end
 	end

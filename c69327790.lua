@@ -75,7 +75,7 @@ function c69327790.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local ex2,g2=Duel.GetOperationInfo(0,CATEGORY_TOHAND)
 	if not g1 then return end
 	local sg1=g1:Filter(Card.IsRelateToEffect,nil,e)
-	if sg1:GetCount()>0 and Duel.SendtoDeck(sg1,nil,0,REASON_EFFECT)>1 then
+	if sg1:GetCount()>0 and Duel.SendtoDeck(sg1,nil,SEQ_DECKTOP,REASON_EFFECT)>1 then
 		local gc=e:GetLabelObject()
 		local fc=sg1:GetFirst()
 		if fc==gc then fc=sg1:GetNext() end

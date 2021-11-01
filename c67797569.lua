@@ -53,7 +53,7 @@ function c67797569.drop(e,tp,eg,ep,ev,re,r,rp)
 	else
 		local sg=Duel.GetFieldGroup(p,LOCATION_HAND,0)
 		Duel.ConfirmCards(1-p,sg)
-		Duel.SendtoDeck(sg,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
 function c67797569.refilter(c)

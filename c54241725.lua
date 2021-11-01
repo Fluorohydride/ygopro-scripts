@@ -48,7 +48,9 @@ end
 function c54241725.drop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
 	if tg:GetCount()<=0 then return end
-	Duel.SendtoDeck(tg,nil,0,REASON_EFFECT)
+	Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+	local og=Duel.GetOperatedGroup()
+	if not og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then return end
 	Duel.ShuffleDeck(tp)
 	Duel.BreakEffect()
 	Duel.Draw(tp,1,REASON_EFFECT)

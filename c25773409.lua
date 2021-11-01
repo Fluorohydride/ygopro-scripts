@@ -21,5 +21,5 @@ end
 function c25773409.operation(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	if not a:IsRelateToBattle() then return end
-	Duel.SendtoDeck(a,nil,0,REASON_EFFECT)
+	Duel.SendtoDeck(a,nil,SEQ_DECKTOP,REASON_EFFECT)
 end

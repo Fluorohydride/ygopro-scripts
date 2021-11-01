@@ -59,7 +59,7 @@ function c8038143.activate(e,tp,eg,ep,ev,re,r,rp)
 			end
 		end
 	end
-	Duel.SendtoDeck(dg,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(dg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end
 function c8038143.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x307b)

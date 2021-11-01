@@ -63,6 +63,6 @@ function c35815783.thop(e,tp,eg,ep,ev,re,r,rp,chk)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local sg=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_HAND,0,1,1,nil)
-		Duel.SendtoDeck(sg,nil,1,REASON_EFFECT)
+		Duel.SendtoDeck(sg,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 	end
 end

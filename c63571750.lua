@@ -18,7 +18,7 @@ function c63571750.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) then return end
 	c:CancelToGrave()
-	Duel.SendtoDeck(c,tp,2,REASON_EFFECT)
+	Duel.SendtoDeck(c,tp,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	if not c:IsLocation(LOCATION_DECK) then return end
 	Duel.ShuffleDeck(tp)
 	c:ReverseInDeck()

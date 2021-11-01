@@ -57,7 +57,7 @@ function c12079734.operation(e,tp,eg,ep,ev,re,r,rp)
 			aux.SetUnionState(tc)
 		end
 	else
-		if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
+		if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 			if tc:IsLocation(LOCATION_DECK) then Duel.ShuffleDeck(tp) end
 			Duel.BreakEffect()
 			Duel.Draw(tp,1,REASON_EFFECT)

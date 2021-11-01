@@ -39,7 +39,7 @@ function c75901113.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	if not bc:IsRelateToBattle() then return false end
-	Duel.SendtoDeck(bc,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(bc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end
 function c75901113.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end

@@ -28,7 +28,7 @@ function c68223137.operation(e,tp,eg,ep,ev,re,r,rp)
 	local p=tc:GetControler()
 	local ft=Duel.GetLocationCount(p,LOCATION_MZONE,tp)
 	if tc:IsAbleToExtra() and (not tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,p) or ft<=0 or Duel.SelectOption(tp,aux.Stringid(68223137,1),1152)==0) then
-		Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	else
 		Duel.SpecialSummon(tc,0,tp,p,false,false,POS_FACEUP)
 	end

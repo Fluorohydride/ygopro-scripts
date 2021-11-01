@@ -121,7 +121,7 @@ function c74997493.drop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 		local sg=g:Select(p,3,3,nil)
-		Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
 		Duel.SortDecktop(p,p,3)
 		for i=1,3 do
 			local mg=Duel.GetDecktopGroup(p,1)

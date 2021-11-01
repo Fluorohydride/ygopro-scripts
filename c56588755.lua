@@ -39,7 +39,7 @@ function c56588755.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc1=e:GetLabelObject()
 	local tc2=g:GetFirst()
 	if tc1==tc2 then tc2=g:GetNext() end
-	if tc1:IsRelateToEffect(e) and Duel.SendtoDeck(tc1,nil,2,REASON_EFFECT)~=0 and tc1:IsLocation(LOCATION_EXTRA) then
+	if tc1:IsRelateToEffect(e) and Duel.SendtoDeck(tc1,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc1:IsLocation(LOCATION_EXTRA) then
 		if tc2:IsRelateToEffect(e) and tc2:IsFaceup() and tc2:IsControler(1-tp) and not tc2:IsDisabled() then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

@@ -38,7 +38,7 @@ function c74879881.spop(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetOperation(c74879881.retop)
 			Duel.RegisterEffect(e1,tp)
 			if c:IsRelateToEffect(e) then
-				Duel.SendtoDeck(c,nil,1,REASON_EFFECT)
+				Duel.SendtoDeck(c,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 			end
 		end
 	else
@@ -54,5 +54,5 @@ function c74879881.retcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c74879881.retop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)
+	Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 end

@@ -27,7 +27,9 @@ function c72648577.operation(e,tp,eg,ep,ev,re,r,rp)
 	local sg=g:Select(tp,3,3,nil)
 	local cg=sg:Filter(Card.IsLocation,nil,LOCATION_HAND)
 	Duel.ConfirmCards(1-tp,cg)
-	Duel.SendtoDeck(sg,nil,0,REASON_EFFECT)
+	Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+	local og=Duel.GetOperatedGroup()
+	if not og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK+LOCATION_EXTRA) then return end
 	local dg=Duel.GetMatchingGroup(c72648577.thfilter,tp,LOCATION_DECK,0,nil)
 	if dg:GetCount()>1 and Duel.SelectYesNo(tp,aux.Stringid(72648577,0)) then
 		Duel.BreakEffect()
@@ -36,7 +38,7 @@ function c72648577.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(tg,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tg)
 	else
-		if sg:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then
+		if og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then
 			Duel.ShuffleDeck(tp)
 		end
 	end
