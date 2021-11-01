@@ -24,9 +24,10 @@ function c86532744.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetLP(tp)<=Duel.GetLP(1-tp)-3000
 end
 function c86532744.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLP(tp)>10 and e:GetHandler():CheckRemoveOverlayCard(tp,3,REASON_COST) end
+	local lp=Duel.GetLP(tp)
+	if chk==0 then return Duel.CheckLPCost(tp,lp-10,true) and e:GetHandler():CheckRemoveOverlayCard(tp,3,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,3,3,REASON_COST)
-	Duel.PayLPCost(tp,Duel.GetLP(tp)-10)
+	Duel.PayLPCost(tp,lp-10,true)
 end
 function c86532744.filter(c)
 	return c:IsAbleToRemove()

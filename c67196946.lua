@@ -10,11 +10,8 @@ function c67196946.initial_effect(c)
 	e1:SetOperation(c67196946.op)
 	c:RegisterEffect(e1)
 end
-function c67196946.con(e,tp,eg,ep,ev,re,r,rp)
-	return not Duel.IsPlayerAffectedByEffect(tp,EFFECT_LPCOST_CHANGE)
-end
 function c67196946.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckLPCost(tp,500) end
+	if chk==0 then return Duel.CheckLPCost(tp,500,true) end
 	local lp=Duel.GetLP(tp)
 	local g=Duel.GetMatchingGroup(Card.IsLevelAbove,tp,LOCATION_HAND+LOCATION_MZONE,0,nil,2)
 	local tg=g:GetMaxGroup(Card.GetLevel)
@@ -27,7 +24,7 @@ function c67196946.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(67196946,0))
 	local announce=Duel.AnnounceNumber(tp,table.unpack(t))
-	Duel.PayLPCost(tp,announce)
+	Duel.PayLPCost(tp,announce,true)
 	e:SetLabel(announce/500)
 end
 function c67196946.tg(e,tp,eg,ep,ev,re,r,rp,chk)

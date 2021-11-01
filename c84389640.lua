@@ -32,7 +32,7 @@ function c84389640.condition(e,tp,eg,ep,ev,re,r,rp)
 		and d:IsFaceup() and d:IsRelateToBattle()
 end
 function c84389640.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(84389640)==0 and Duel.CheckLPCost(tp,100)
+	if chk==0 then return e:GetHandler():GetFlagEffect(84389640)==0 and Duel.CheckLPCost(tp,100,true)
 		and e:GetLabelObject():IsAttackAbove(100) end
 	local lp=Duel.GetLP(tp)
 	local atk=e:GetLabelObject():GetAttack()
@@ -44,7 +44,7 @@ function c84389640.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(84389640,1))
 	local pay=Duel.AnnounceNumber(tp,table.unpack(t))
-	Duel.PayLPCost(tp,pay)
+	Duel.PayLPCost(tp,pay,true)
 	e:SetLabel(pay)
 	e:GetHandler():RegisterFlagEffect(84389640,RESET_PHASE+PHASE_DAMAGE,0,1)
 end

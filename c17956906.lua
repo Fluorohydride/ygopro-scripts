@@ -7,14 +7,10 @@ function c17956906.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,17956906+EFFECT_COUNT_CODE_OATH)
-	e1:SetCondition(c17956906.condition)
 	e1:SetCost(c17956906.cost)
 	e1:SetTarget(c17956906.target)
 	e1:SetOperation(c17956906.operation)
 	c:RegisterEffect(e1)
-end
-function c17956906.condition(e,tp,eg,ep,ev,re,r,rp)
-	return not Duel.IsPlayerAffectedByEffect(tp,EFFECT_LPCOST_CHANGE)
 end
 function c17956906.spfilter(c,e,tp)
 	return c:IsSetCard(0x122) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and c:IsCanBeEffectTarget(e)
@@ -32,7 +28,7 @@ function c17956906.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return ft>0 and g:GetCount()>0 and Duel.CheckLPCost(tp,1000)
+		return ft>0 and g:GetCount()>0 and Duel.CheckLPCost(tp,1000,true)
 	end
 	e:SetLabel(0)
 	local ct=math.min(g:GetClassCount(Card.GetCode),ft)
@@ -41,11 +37,11 @@ function c17956906.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 	local pay_list = {}
 	for p=1,ct do
-		if Duel.CheckLPCost(tp,1000*p) then table.insert(pay_list,p) end
+		if Duel.CheckLPCost(tp,1000*p,true) then table.insert(pay_list,p) end
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(17956906,0))
 	local pay=Duel.AnnounceNumber(tp,table.unpack(pay_list))
-	Duel.PayLPCost(tp,pay*1000)
+	Duel.PayLPCost(tp,pay*1000,true)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	aux.GCheckAdditional=aux.dncheck
 	local sg=g:SelectSubGroup(tp,aux.TRUE,false,pay,pay)

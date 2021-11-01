@@ -59,8 +59,8 @@ function c28265983.descon2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c28265983.descost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lp=Duel.GetLP(tp)-Duel.GetLP(1-tp)
-	if chk==0 then return Duel.CheckLPCost(tp,lp) end
-	Duel.PayLPCost(tp,lp)
+	if chk==0 then return Duel.CheckLPCost(tp,lp,true) end
+	Duel.PayLPCost(tp,lp,true)
 	e:SetLabel(lp)
 end
 function c28265983.desfilter2(c,num)

@@ -11,8 +11,9 @@ function c32603633.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c32603633.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLP(tp)>100 end
-	Duel.PayLPCost(tp,Duel.GetLP(tp)-100)
+	local lp=Duel.GetLP(tp)
+	if chk==0 then return Duel.CheckLPCost(tp,lp-100,true) end
+	Duel.PayLPCost(tp,lp-100,true)
 end
 function c32603633.filter(c,e,tp)
 	return c:IsSetCard(0x3d) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

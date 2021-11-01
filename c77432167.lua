@@ -52,10 +52,10 @@ end
 function c77432167.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(100,0)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.GetLP(tp)>100 and c:GetFlagEffect(77432168)==0 end
 	local lp=Duel.GetLP(tp)
+	if chk==0 then return Duel.CheckLPCost(tp,lp-100,true) and c:GetFlagEffect(77432168)==0 end
 	e:SetLabel(100,lp-100)
-	Duel.PayLPCost(tp,lp-100)
+	Duel.PayLPCost(tp,lp-100,true)
 	c:RegisterFlagEffect(77432167,RESET_CHAIN,0,1)
 end
 function c77432167.atkfilter(c)

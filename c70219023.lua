@@ -66,7 +66,7 @@ function c70219023.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return off>1 end
 	local op=0
 	local pay=0
-	while pay<6000 and Duel.CheckLPCost(tp,pay+2000) do
+	while pay<6000 and Duel.CheckLPCost(tp,pay+2000,true) do
 		local sel
 		local selval
 		if Duel.GetLP(tp)-pay-2000-Duel.GetLP(1-tp)~=0 then
@@ -91,7 +91,7 @@ function c70219023.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		op=op|selval
 		pay=pay+2000
 	end
-	Duel.PayLPCost(tp,pay)
+	Duel.PayLPCost(tp,pay,true)
 	e:SetLabel(op)
 	e:GetHandler():RegisterFlagEffect(0,RESET_EVENT+RESETS_STANDARD,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(70219023,0))
 end
