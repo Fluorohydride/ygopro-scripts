@@ -2,7 +2,7 @@
 function c90359458.initial_effect(c)
 	--set top
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(aux.Stringid(90359458,0))
+	e1:SetDescription(aux.Stringid(90359458,1))
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCountLimit(1,90359458+EFFECT_COUNT_CODE_OATH)

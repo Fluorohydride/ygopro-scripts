@@ -15,6 +15,7 @@ function c86993168.initial_effect(c)
 	c:RegisterEffect(e1)
 	--control
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(86993168,1))
 	e2:SetCategory(CATEGORY_CONTROL)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_PHASE+PHASE_END)
