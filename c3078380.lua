@@ -25,7 +25,7 @@ function c3078380.initial_effect(c)
 end
 function c3078380.cfilter(c,tp)
 	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup()) and Duel.GetMZoneCount(tp,c)>0 and c:IsAbleToGraveAsCost()
-		and (c:IsRace(RACE_SPELLCASTER) or aux.IsCodeListed(c,46986414) and c:IsType(TYPE_SPELL+TYPE_TRAP))
+		and (c:IsRace(RACE_SPELLCASTER) and c:IsType(TYPE_MONSTER) or aux.IsCodeListed(c,46986414) and c:IsType(TYPE_SPELL+TYPE_TRAP))
 end
 function c3078380.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c3078380.cfilter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,nil,tp) end
