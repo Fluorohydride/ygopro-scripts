@@ -37,6 +37,7 @@ function c50482813.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50482813.thop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=Duel.GetMatchingGroupCount(c50482813.cfilter,tp,LOCATION_MZONE,0,aux.ExceptThisCard(e))
+	Duel.ConfirmDecktop(tp,ct)
 	local g=Duel.GetDecktopGroup(tp,ct)
 	if #g>0 then
 		Duel.DisableShuffleCheck()
