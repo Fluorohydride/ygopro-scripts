@@ -23,8 +23,8 @@ function c53442500.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,ct)
 end
 function c53442500.operation(e,tp,eg,ep,ev,re,r,rp)
-	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
-	if Duel.Draw(p,d,REASON_EFFECT)>0 and Duel.GetLP(p)<10 then
+	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
+	if Duel.Draw(p,2,REASON_EFFECT)>0 and Duel.GetLP(p)<10 then
 		Duel.BreakEffect()
 		Duel.Draw(p,2,REASON_EFFECT)
 	end
