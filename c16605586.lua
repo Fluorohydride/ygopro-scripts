@@ -48,7 +48,7 @@ function c16605586.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		if not tc:IsLocation(LOCATION_DECK) then
-			Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+			Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 		end
 		if loc&LOCATION_DECK>0 then
 			Duel.ShuffleDeck(tp)
