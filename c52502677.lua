@@ -24,7 +24,7 @@ function c52502677.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c52502677.costfilter(c,ec)
-	return c:IsSetCard(0x19) and not c:IsCode(52502677) and not c:IsCode(ec:GetCode()) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
+	return c:IsSetCard(0x19) and not c:IsCode(52502677) and not c:IsCode(ec:GetCode()) and c:IsType(TYPE_MONSTER) and c:IsLevelAbove(1) and c:IsAbleToGraveAsCost()
 end
 function c52502677.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
