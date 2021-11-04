@@ -125,7 +125,8 @@ function c50907446.FShaddollSpFilter2(c,fc,tp,mc,chkf)
 	local sg=Group.FromCards(c,mc)
 	if sg:IsExists(aux.TuneMagicianCheckX,1,nil,sg,EFFECT_TUNE_MAGICIAN_F) then return false end
 	if not aux.MustMaterialCheck(sg,tp,EFFECT_MUST_BE_FMATERIAL) then return false end
-	if aux.FCheckAdditional and not aux.FCheckAdditional(tp,sg,fc) then return false end
+	if aux.FCheckAdditional and not aux.FCheckAdditional(tp,sg,fc)
+		or aux.FGoalCheckAdditional and not aux.FGoalCheckAdditional(tp,sg,fc) then return false end
 	return ((c50907446.FShaddollFilter1(c,sg) and c50907446.FShaddollFilter2(mc))
 		or (c50907446.FShaddollFilter1(mc,sg) and c50907446.FShaddollFilter2(c)))
 		and (chkf==PLAYER_NONE or Duel.GetLocationCountFromEx(tp,tp,sg,fc)>0)
