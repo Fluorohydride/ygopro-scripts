@@ -70,7 +70,8 @@ function c55920742.spop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local tg=Duel.SelectMatchingCard(tp,Card.IsAbleToGrave,tp,LOCATION_HAND,0,1,1,nil)
 	if tg:GetCount()>0 then
-		if Duel.SendtoGrave(tg,REASON_EFFECT)==0 then return end
+		local tc=tg:GetFirst()
+		if Duel.SendtoGrave(tg,REASON_EFFECT)==0 or not tc:IsLocation(LOCATION_GRAVE) then return end
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c55920742.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
