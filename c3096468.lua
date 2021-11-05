@@ -44,6 +44,7 @@ function c3096468.syngoal(g,tp,lv,syncard,minc,ct)
 		and g:CheckWithSumEqual(Card.GetSynchroLevel,lv,ct,ct,syncard)
 		and Duel.GetLocationCountFromEx(tp,tp,g,syncard)>0
 		and g:FilterCount(Card.IsLocation,nil,LOCATION_HAND)<=1
+		and Duel.CheckMustMaterial(tp,g,EFFECT_MUST_BE_SMATERIAL)
 end
 function c3096468.syncon(e)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_NORMAL)

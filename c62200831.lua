@@ -82,7 +82,7 @@ function c62200831.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.PayLPCost(1-tp,def)
 	if Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_XMATERIAL)
+		and Duel.CheckMustMaterial(tp,nil,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingMatchingCard(c62200831.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp)
 		and Duel.SelectYesNo(tp,aux.Stringid(62200831,3)) then
 		Duel.BreakEffect()

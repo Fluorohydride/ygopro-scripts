@@ -32,7 +32,7 @@ function c27503418.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttackTarget()
 	if Duel.NegateAttack() and tc:IsRelateToEffect(e)
 		and tc:IsAbleToRemove() and not tc:IsImmuneToEffect(e)
-		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
+		and Duel.CheckMustMaterial(tp,nil,EFFECT_MUST_BE_SMATERIAL)
 		and Duel.IsExistingMatchingCard(c27503418.filter1,tp,LOCATION_EXTRA,0,1,nil,e,tp,tc)
 		and Duel.SelectYesNo(tp,aux.Stringid(27503418,0)) then
 		Duel.BreakEffect()

@@ -54,7 +54,7 @@ end
 function c83319610.spfilter1(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x58) and c:IsType(TYPE_XYZ)
 		and Duel.IsExistingMatchingCard(c83319610.spfilter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,c:GetRank()+1)
-		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
+		and Duel.CheckMustMaterial(tp,c,EFFECT_MUST_BE_XMATERIAL)
 end
 function c83319610.spfilter2(c,e,tp,mc,rk)
 	return c:IsRank(rk) and c:IsSetCard(0x58) and mc:IsCanBeXyzMaterial(c)
@@ -74,7 +74,7 @@ function c83319610.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c83319610.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL) then return end
+	if not Duel.CheckMustMaterial(tp,tc,EFFECT_MUST_BE_XMATERIAL) then return end
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c83319610.spfilter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc,tc:GetRank()+1)

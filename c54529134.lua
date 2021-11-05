@@ -15,7 +15,7 @@ end
 function c54529134.filter1(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x119) and c:IsType(TYPE_LINK)
 		and Duel.IsExistingMatchingCard(c54529134.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c)
-		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_LMATERIAL)
+		and Duel.CheckMustMaterial(tp,c,EFFECT_MUST_BE_LMATERIAL)
 end
 function c54529134.filter2(c,e,tp,mc)
 	return c:IsSetCard(0x119) and c:IsType(TYPE_LINK) and c:IsCode(mc:GetCode()) and mc:IsCanBeLinkMaterial(c)
@@ -31,7 +31,7 @@ end
 function c54529134.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_LMATERIAL) then return end
+	if not Duel.CheckMustMaterial(tp,tc,EFFECT_MUST_BE_LMATERIAL) then return end
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c54529134.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc)

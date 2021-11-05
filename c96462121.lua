@@ -32,7 +32,7 @@ function c96462121.immtg(e,c)
 end
 function c96462121.tgfilter(c,e,tp)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsSetCard(0x127)
-		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
+		and Duel.CheckMustMaterial(tp,c,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingMatchingCard(c96462121.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetRank()+2,c)
 end
 function c96462121.spfilter(c,e,tp,rank,mc)
@@ -49,7 +49,7 @@ end
 function c96462121.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsControler(tp) and tc:IsFaceup()
-		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then
+		and Duel.CheckMustMaterial(tp,c,EFFECT_MUST_BE_XMATERIAL) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c96462121.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetRank()+2,tc)
 		local sc=g:GetFirst()

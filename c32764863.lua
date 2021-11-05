@@ -52,7 +52,7 @@ function c32764863.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c32764863.rkfilter(c,e,tp)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WATER) and c:IsType(TYPE_XYZ)
-		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
+		and Duel.CheckMustMaterial(tp,c,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingMatchingCard(c32764863.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,c:GetRank())
 end
 function c32764863.spfilter(c,e,tp,mc,rank)
@@ -68,7 +68,7 @@ function c32764863.rktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c32764863.rkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL)
+	if not Duel.CheckMustMaterial(tp,tc,EFFECT_MUST_BE_XMATERIAL)
 		or tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c32764863.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc,tc:GetRank())

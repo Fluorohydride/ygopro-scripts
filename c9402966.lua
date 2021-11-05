@@ -32,7 +32,7 @@ function c9402966.sctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	local lv=c:GetOriginalLevel()
 	if chk==0 then return Duel.IsExistingTarget(c9402966.filter,tp,0,LOCATION_MZONE,1,nil,e,tp,lv,c)
-		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL) end
+		and Duel.CheckMustMaterial(tp,nil,EFFECT_MUST_BE_SMATERIAL) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectTarget(tp,c9402966.filter,tp,0,LOCATION_MZONE,1,1,nil,e,tp,lv,c)
 	g:AddCard(c)
@@ -42,7 +42,7 @@ end
 function c9402966.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL) then return end
+	if not Duel.CheckMustMaterial(tp,nil,EFFECT_MUST_BE_SMATERIAL) then return end
 	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
 	local g=Group.FromCards(c,tc)
 	if Duel.SendtoGrave(g,REASON_EFFECT)==2 and c:GetLevel()>0 and c:IsLocation(LOCATION_GRAVE)

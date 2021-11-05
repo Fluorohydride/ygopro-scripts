@@ -54,11 +54,11 @@ function c72218246.spcost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c72218246.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL) end
+	if chk==0 then return Duel.CheckMustMaterial(tp,nil,EFFECT_MUST_BE_SMATERIAL) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c72218246.spop1(e,tp,eg,ep,ev,re,r,rp)
-	if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL) then return end
+	if not Duel.CheckMustMaterial(tp,nil,EFFECT_MUST_BE_SMATERIAL) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c72218246.spfilter1,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,nil)
 	local tc=g:GetFirst()

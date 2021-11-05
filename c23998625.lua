@@ -67,14 +67,14 @@ function c23998625.spfilter(c,e,tp)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c23998625.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.MustMaterialCheck(e:GetHandler(),tp,EFFECT_MUST_BE_XMATERIAL)
+	if chk==0 then return Duel.CheckMustMaterial(tp,e:GetHandler(),EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingMatchingCard(c23998625.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,e:GetHandler(),1,tp,0)
 end
 function c23998625.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or not aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then return end
+	if not c:IsRelateToEffect(e) or not Duel.CheckMustMaterial(tp,c,EFFECT_MUST_BE_XMATERIAL) then return end
 	local tc=Duel.GetFirstMatchingCard(c23998625.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp)
 	if tc then
 		local cg=Group.FromCards(c)

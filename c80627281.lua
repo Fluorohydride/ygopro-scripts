@@ -24,7 +24,7 @@ function c80627281.spfilter2(c,e,tp,lk)
 end
 function c80627281.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c80627281.spfilter1(chkc,e,tp) end
-	if chk==0 then return aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_LMATERIAL)
+	if chk==0 then return Duel.CheckMustMaterial(tp,nil,EFFECT_MUST_BE_LMATERIAL)
 		and eg:IsExists(c80627281.spfilter1,1,nil,e,tp) end
 	if eg:GetCount()==1 then
 		Duel.SetTargetCard(eg)
@@ -38,7 +38,7 @@ end
 function c80627281.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_LMATERIAL) then return end
+	if not tc:IsRelateToEffect(e) or not Duel.CheckMustMaterial(tp,nil,EFFECT_MUST_BE_LMATERIAL) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c80627281.spfilter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetLink())
 	local tc=g:GetFirst()

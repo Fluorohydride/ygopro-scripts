@@ -38,7 +38,7 @@ function c43383478.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c43383478.filter1(c,e,tp)
 	return c:IsSetCard(0xba) and c:IsType(TYPE_XYZ) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
+		and Duel.CheckMustMaterial(tp,c,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingMatchingCard(c43383478.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,c:GetRank()+1)
 end
 function c43383478.filter2(c,e,tp,mc,rk)
@@ -59,7 +59,7 @@ function c43383478.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) then return end
 	if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==0 then return end
-	if not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL) then return end
+	if not Duel.CheckMustMaterial(tp,tc,EFFECT_MUST_BE_XMATERIAL) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c43383478.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc,tc:GetRank()+1)
 	local sc=g:GetFirst()

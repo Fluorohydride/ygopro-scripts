@@ -79,7 +79,7 @@ end
 function c93238626.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.NegateAttack() then return end
 	local tc=Duel.GetAttackTarget()
-	if not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL) then return end
+	if not Duel.CheckMustMaterial(tp,tc,EFFECT_MUST_BE_XMATERIAL) then return end
 	local m=_G["c"..tc:GetCode()]
 	if tc:IsFacedown() or not tc:IsRelateToBattle() or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) or not m then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
