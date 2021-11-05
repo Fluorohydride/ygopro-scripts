@@ -1,4 +1,4 @@
---War Rock Mountain
+--ザ・ロック・オブ・ウォークライ
 function c45943516.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -34,7 +34,6 @@ function c45943516.thfilter(c)
 	return c:IsSetCard(0x15f) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c45943516.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c45943516.thfilter,tp,LOCATION_DECK,0,nil)
 	if #g>0 and Duel.SelectYesNo(tp,aux.Stringid(45943516,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)

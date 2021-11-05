@@ -1,4 +1,4 @@
---Psychic Eraser Laser
+--サイコ・イレイザー
 function c9322133.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

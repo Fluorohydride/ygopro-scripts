@@ -29,7 +29,7 @@ function c75539614.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c75539614.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckLPCost(tp,100) end
+	if chk==0 then return Duel.CheckLPCost(tp,100,true) end
 	local lp=Duel.GetLP(tp)
 	local m=math.floor(math.min(lp,2000)/100)
 	local t={}
@@ -37,7 +37,7 @@ function c75539614.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		t[i]=i*100
 	end
 	local ac=Duel.AnnounceNumber(tp,table.unpack(t))
-	Duel.PayLPCost(tp,ac)
+	Duel.PayLPCost(tp,ac,true)
 	e:GetHandler():RegisterFlagEffect(75539614,RESET_EVENT+RESETS_STANDARD,0,1,ac)
 end
 function c75539614.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

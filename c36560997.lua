@@ -42,7 +42,6 @@ function c36560997.attg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c36560997.atop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c36560997.filter,tp,LOCATION_MZONE,0,nil)
 	local tc=g:GetFirst()
 	while tc do

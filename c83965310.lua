@@ -69,10 +69,13 @@ function c83965310.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	end
 	Duel.Release(g,REASON_COST)
 end
+function c83965310.cfilter(c)
+	return c:GetFlagEffect(83965310)>0
+end
 function c83965310.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local eqg=c:GetEquipGroup()
-	return eqg==nil or not eqg:IsExists(Card.GetFlagEffect,1,nil,83965310)
+	return eqg==nil or not eqg:IsExists(c83965310.cfilter,1,nil)
 end
 function c83965310.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsAbleToChangeControler() end

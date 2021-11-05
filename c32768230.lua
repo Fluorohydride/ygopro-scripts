@@ -41,7 +41,7 @@ function c32768230.activate(e,tp,eg,ep,ev,re,r,rp)
 			and (not tc:IsAbleToExtra() or Duel.SelectOption(tp,aux.Stringid(32768230,0),1152)==1) then
 			Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
 		else
-			Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)
+			Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		end
 	end
 end

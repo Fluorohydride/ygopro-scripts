@@ -1,5 +1,6 @@
 --スプリガンズ・コール！
 function c83199011.initial_effect(c)
+	aux.AddCodeList(c,68468459)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(83199011,0))

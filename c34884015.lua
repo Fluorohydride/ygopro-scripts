@@ -50,7 +50,6 @@ function c34884015.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c34884015.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tg=g:Filter(Card.IsRelateToEffect,nil,e)
 	local tc=tg:GetFirst()
@@ -98,7 +97,6 @@ function c34884015.exptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c34884015.expop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(34884015,4))
 	e1:SetType(EFFECT_TYPE_FIELD)

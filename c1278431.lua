@@ -1,5 +1,6 @@
 --古代の機械素体
 function c1278431.initial_effect(c)
+	aux.AddCodeList(c,83104731)
 	--search
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(1278431,0))

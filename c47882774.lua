@@ -1,4 +1,4 @@
---War Rock Dignity
+--ウォークライ・ディグニティ
 function c47882774.initial_effect(c)
 	--Negate
 	local e1=Effect.CreateEffect(c)

@@ -1,4 +1,4 @@
---Myutant Mist
+--ミュートリアル・ミスト
 function c61089209.initial_effect(c)
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)

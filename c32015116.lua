@@ -37,7 +37,6 @@ function c32015116.rdfilter(c,lv)
 	end
 end
 function c32015116.rdop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local d1=Duel.TossDice(tp,1)
 	local g=Duel.GetMatchingGroup(c32015116.rdfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,d1)
 	Duel.Destroy(g,REASON_EFFECT)

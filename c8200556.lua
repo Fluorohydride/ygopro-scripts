@@ -1,4 +1,4 @@
---Myutant ST-46
+--被検体ミュートリアST－４６
 function c8200556.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

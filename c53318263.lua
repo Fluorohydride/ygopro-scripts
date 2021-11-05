@@ -101,7 +101,7 @@ function c53318263.thop(e,tp,eg,ep,ev,re,r,rp)
 	if ct>0 and dg:FilterCount(Card.IsAbleToRemove,nil,tp,POS_FACEDOWN)==ct and Duel.Remove(dg,POS_FACEDOWN,REASON_EFFECT)==ct then
 		Duel.BreakEffect()
 		local og=Duel.GetOperatedGroup()
-		if Duel.SendtoDeck(hg,nil,2,REASON_EFFECT)>0 then
+		if Duel.SendtoDeck(hg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0 then
 			Duel.SendtoHand(og,p,REASON_EFFECT)
 		end
 	end

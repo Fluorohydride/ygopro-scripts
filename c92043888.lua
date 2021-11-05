@@ -31,7 +31,7 @@ function c92043888.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c92043888.tdfilter,tp,LOCATION_EXTRA,0,1,1,nil)
 	local tc=g:GetFirst()
-	if tc and Duel.SendtoDeck(tc,nil,2,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK)
+	if tc and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK)
 		and Duel.IsExistingMatchingCard(c92043888.cfilter,tp,LOCATION_ONFIELD,0,1,nil) then
 		Duel.BreakEffect()
 		local e1=Effect.CreateEffect(e:GetHandler())

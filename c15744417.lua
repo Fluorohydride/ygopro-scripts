@@ -26,6 +26,9 @@ function c15744417.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(atk)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END,2)
 	c:RegisterEffect(e1)
+	local e2=e1:Clone()
+	e2:SetCode(EFFECT_UPDATE_DEFENSE)
+	c:RegisterEffect(e2)
 	local res12=false
 	local res34=false
 	local res56=false

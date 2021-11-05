@@ -52,9 +52,9 @@ function c58165765.operation(e,tp,eg,ep,ev,re,r,rp)
 		if tc:IsAbleToDeck() then
 			if tc:IsExtraDeckMonster()
 				or Duel.SelectOption(tp,aux.Stringid(58165765,1),aux.Stringid(58165765,2))==0 then
-				Duel.SendtoDeck(tc,nil,0,REASON_EFFECT)
+				Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 			else
-				Duel.SendtoDeck(tc,nil,1,REASON_EFFECT)
+				Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 			end
 		end
 	end

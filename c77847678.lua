@@ -10,8 +10,11 @@ function c77847678.initial_effect(c)
 	e1:SetOperation(c77847678.activate)
 	c:RegisterEffect(e1)
 end
+function c77847678.cfilter(c,tp)
+	return c:IsSetCard(0x3d) and c:IsPreviousControler(tp)
+end
 function c77847678.condition(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(Card.IsSetCard,1,nil,0x3d)
+	return eg:IsExists(c77847678.cfilter,1,nil,tp)
 end
 function c77847678.filter(c,e,tp)
 	return c:IsSetCard(0x3d) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

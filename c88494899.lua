@@ -8,19 +8,22 @@ function c88494899.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c88494899.spcon)
 	c:RegisterEffect(e1)
-	--activate limit
+	--effect count
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetRange(LOCATION_MZONE)
-	e2:SetOperation(c88494899.aclimit1)
+	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e2:SetOperation(c88494899.count)
 	c:RegisterEffect(e2)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 	e3:SetCode(EVENT_CHAIN_NEGATED)
 	e3:SetRange(LOCATION_MZONE)
-	e3:SetOperation(c88494899.aclimit2)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e3:SetOperation(c88494899.rst)
 	c:RegisterEffect(e3)
+	--activate limit
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
 	e4:SetCode(EFFECT_CANNOT_ACTIVATE)
@@ -37,11 +40,11 @@ function c88494899.spcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.GetFieldGroupCount(tp,0,LOCATION_ONFIELD)-Duel.GetFieldGroupCount(tp,LOCATION_ONFIELD,0)>=4
 end
-function c88494899.aclimit1(e,tp,eg,ep,ev,re,r,rp)
+function c88494899.count(e,tp,eg,ep,ev,re,r,rp)
 	if ep==tp or not re:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
 	e:GetHandler():RegisterFlagEffect(88494899,RESET_EVENT+0x3ff0000+RESET_PHASE+PHASE_END,0,1)
 end
-function c88494899.aclimit2(e,tp,eg,ep,ev,re,r,rp)
+function c88494899.rst(e,tp,eg,ep,ev,re,r,rp)
 	if ep==tp or not re:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
 	e:GetHandler():ResetFlagEffect(88494899)
 end

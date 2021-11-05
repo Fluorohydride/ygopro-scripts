@@ -69,7 +69,7 @@ function c10000010.setcon(e,c,minc)
 	return false
 end
 function c10000010.splimit(e,se,sp,st)
-	return Duel.IsPlayerAffectedByEffect(sp,41044418) and se:GetHandler():IsCode(83764718)
+	return Duel.IsPlayerAffectedByEffect(sp,41044418) and st&SUMMON_VALUE_MONSTER_REBORN>0
 		and e:GetHandler():IsControler(sp) and e:GetHandler():IsLocation(LOCATION_GRAVE)
 end
 function c10000010.genchainlm(c)
@@ -81,10 +81,10 @@ function c10000010.sumsuc(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SetChainLimitTillChainEnd(c10000010.genchainlm(e:GetHandler()))
 end
 function c10000010.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLP(tp)>100 end
 	local lp=Duel.GetLP(tp)
+	if chk==0 then return Duel.CheckLPCost(tp,lp-100,true) end
 	e:SetLabel(lp-100)
-	Duel.PayLPCost(tp,lp-100)
+	Duel.PayLPCost(tp,lp-100,true)
 end
 function c10000010.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

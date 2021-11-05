@@ -22,5 +22,5 @@ function c48216773.activate(e,tp,eg,ep,ev,re,r,rp)
 	local dg2=Duel.SelectMatchingCard(1-tp,Card.IsAbleToDeck,1-tp,LOCATION_MZONE,0,1,1,nil)
 	dg1:Merge(dg2)
 	Duel.HintSelection(dg1)
-	Duel.SendtoDeck(dg1,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(dg1,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end

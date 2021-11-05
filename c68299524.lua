@@ -35,7 +35,7 @@ function c68299524.filter(c)
 	return c:IsFaceup() and c:IsAttackAbove(100)
 end
 function c68299524.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckLPCost(tp,100)
+	if chk==0 then return Duel.CheckLPCost(tp,100,true)
 		and Duel.IsExistingMatchingCard(c68299524.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler()) end
 	local g=Duel.GetMatchingGroup(c68299524.filter,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
 	local tg,atk=g:GetMaxGroup(Card.GetAttack)
@@ -46,7 +46,7 @@ function c68299524.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 		t[i]=i*100
 	end
 	local cost=Duel.AnnounceNumber(tp,table.unpack(t))
-	Duel.PayLPCost(tp,cost)
+	Duel.PayLPCost(tp,cost,true)
 	e:SetLabel(cost)
 end
 function c68299524.operation(e,tp,eg,ep,ev,re,r,rp)

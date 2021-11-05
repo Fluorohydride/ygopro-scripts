@@ -1,4 +1,4 @@
---War Rock Skyler
+--ウォークライ・スキーラ
 function c72554862.initial_effect(c)
 	--atkup
 	local e1=Effect.CreateEffect(c)

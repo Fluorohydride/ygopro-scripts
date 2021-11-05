@@ -1,5 +1,6 @@
 --深淵の青眼龍
 function c64202399.initial_effect(c)
+	aux.AddCodeList(c,89631139)
 	--to hand
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(64202399,0))

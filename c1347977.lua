@@ -38,7 +38,7 @@ function c1347977.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ex,g1=Duel.GetOperationInfo(0,CATEGORY_TODECK)
 	local ex,g2=Duel.GetOperationInfo(0,CATEGORY_TOHAND)
 	if g1 and g1:GetFirst():IsRelateToEffect(e) then
-		Duel.SendtoDeck(g1,nil,0,REASON_EFFECT)
+		Duel.SendtoDeck(g1,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 	if g2 and g2:GetFirst():IsRelateToEffect(e) then
 		Duel.SendtoHand(g2,nil,REASON_EFFECT)

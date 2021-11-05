@@ -29,7 +29,7 @@ function c33611061.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetMatchingGroup(c33611061.filter,tp,LOCATION_GRAVE,0,nil)
 	if aux.NecroValleyNegateCheck(tg) then return end
 	if tg:GetCount()>0 then
-		Duel.SendtoDeck(tg,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		local hg=Duel.GetFieldGroup(tp,LOCATION_HAND,0)
 		Duel.SendtoGrave(hg,REASON_EFFECT)
 		Duel.BreakEffect()

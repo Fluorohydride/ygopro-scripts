@@ -58,6 +58,6 @@ function c23656668.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToBattle() then return end
 	if tc and tc:IsRelateToBattle() and tc:IsControler(1-tp) then
 		local g=Group.FromCards(c,tc)
-		Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

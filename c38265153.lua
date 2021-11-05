@@ -53,7 +53,7 @@ function c38265153.activate(e,tp,eg,ep,ev,re,r,rp)
 		if #ops>1 then
 			op=Duel.SelectOption(tp,table.unpack(ops))
 		end
-		if op==1 then
+		if opval[op]==1 then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
 			local sg=g1:Select(tp,1,1,nil)
@@ -81,7 +81,7 @@ function c38265153.activate(e,tp,eg,ep,ev,re,r,rp)
 				tc:RegisterEffect(e3)
 			end
 		end
-		if op==2 then
+		if opval[op]==2 then
 			Duel.BreakEffect()
 			local tc=g2:GetFirst()
 			while tc do

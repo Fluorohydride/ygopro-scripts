@@ -1,4 +1,4 @@
---Myutant M-05
+--被検体ミュートリアM－０５
 function c62201847.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)

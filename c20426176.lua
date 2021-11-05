@@ -64,7 +64,7 @@ function c20426176.atrop(e,tp,eg,ep,ev,re,r,rp)
 				Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)
 			else
 				Duel.HintSelection(g)
-				Duel.SendtoDeck(sc,nil,2,REASON_EFFECT)
+				Duel.SendtoDeck(sc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 			end
 		end
 	end

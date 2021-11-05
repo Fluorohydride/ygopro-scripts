@@ -52,7 +52,6 @@ function c31076103.cfilter1(c,code)
 	return c:IsFaceup() and c:IsCode(code)
 end
 function c31076103.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	if not Duel.IsExistingMatchingCard(c31076103.cfilter1,tp,LOCATION_SZONE,0,1,nil,4081094) then
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(31076103,2))

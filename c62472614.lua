@@ -65,7 +65,6 @@ function c62472614.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,damp,500)
 end
 function c62472614.damop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local damp=e:GetHandler():GetEquipTarget():GetControler()
 	local d=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 	Duel.Damage(damp,d,REASON_EFFECT)

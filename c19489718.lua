@@ -70,7 +70,7 @@ function c19489718.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(p,Card.IsAbleToDeck,p,LOCATION_HAND,0,1,63,nil)
 	if g:GetCount()==0 then return end
-	if Duel.SendtoDeck(g,nil,1,REASON_EFFECT)~=0 and tc and tc:IsRelateToBattle() and tc:IsControler(1-tp)
+	if Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_EFFECT)~=0 and tc and tc:IsRelateToBattle() and tc:IsControler(1-tp)
 		and not tc:IsStatus(STATUS_DISABLED) and not tc:IsImmuneToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

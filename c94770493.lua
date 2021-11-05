@@ -27,19 +27,20 @@ function c94770493.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 		local e2=Effect.CreateEffect(c)
-		e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-		e2:SetCode(EVENT_BATTLE_START)
-		e2:SetCountLimit(1)
-		e2:SetOperation(c94770493.atkop)
-		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+		e2:SetType(EFFECT_TYPE_SINGLE)
+		e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+		e2:SetRange(LOCATION_MZONE)
+		e2:SetCode(EFFECT_SET_ATTACK_FINAL)
+		e2:SetCondition(c94770493.atkcon)
+		e2:SetValue(c94770493.atkval)
+		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE_CAL+PHASE_END)
 		tc:RegisterEffect(e2)
 	end
 end
-function c94770493.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local e1=Effect.CreateEffect(e:GetOwner())
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SET_ATTACK_FINAL)
-	e1:SetValue(e:GetHandler():GetAttack()*2)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE)
-	e:GetHandler():RegisterEffect(e1)
+function c94770493.atkcon(e)
+	local ph=Duel.GetCurrentPhase()
+	return ph==PHASE_DAMAGE or ph==PHASE_DAMAGE_CAL
+end
+function c94770493.atkval(e,c)
+	return e:GetHandler():GetAttack()*2
 end

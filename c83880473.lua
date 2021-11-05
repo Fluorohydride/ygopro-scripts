@@ -1,4 +1,4 @@
---War Rock Spirit
+--ウォークライ・スピリッツ
 function c83880473.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

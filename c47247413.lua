@@ -27,5 +27,5 @@ function c47247413.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TODECK)
 	local rg=g:Select(1-tp,1,1,nil)
 	Duel.ConfirmCards(tp,rg)
-	Duel.SendtoDeck(rg,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(rg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end

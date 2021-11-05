@@ -58,7 +58,7 @@ end
 function c40080312.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	Duel.SendtoDeck(c,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	if c:IsLocation(LOCATION_EXTRA) then
 		local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil,tp,POS_FACEDOWN)
 		Duel.Remove(g,POS_FACEDOWN,REASON_EFFECT)

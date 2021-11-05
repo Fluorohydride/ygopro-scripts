@@ -18,6 +18,7 @@ function c67045174.initial_effect(c)
 		Duel.RegisterEffect(ge1,0)
 	end
 end
+c67045174.has_text_type=TYPE_DUAL
 function c67045174.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local t=Duel.GetAttackTarget()

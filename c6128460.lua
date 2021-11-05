@@ -1,6 +1,5 @@
 --ワイトベイキング
 function c6128460.initial_effect(c)
-	aux.AddCodeList(c,32274490)
 	--change code
 	aux.EnableChangeCode(c,32274490,LOCATION_GRAVE)
 	--destroy replace

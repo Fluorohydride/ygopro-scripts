@@ -21,7 +21,7 @@ function c5439384.filter2(c,e,tp,lv)
 end
 function c5439384.spfilter(c,e,tp,lv)
 	return c:IsAttribute(ATTRIBUTE_FIRE) and c:IsType(TYPE_SYNCHRO) and c:IsLevel(lv)
-		and Duel.GetLocationCountFromEx(tp,tp,c)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+		and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0 and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c5439384.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chkc then return false end

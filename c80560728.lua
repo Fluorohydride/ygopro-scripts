@@ -72,7 +72,6 @@ function c80560728.atcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c80560728.atop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=c:GetFirstCardTarget()
 	if tc:IsRelateToBattle() then
 		local e1=Effect.CreateEffect(c)

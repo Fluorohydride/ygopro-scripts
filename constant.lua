@@ -1,6 +1,6 @@
 --min/max value
-MIN_ID		=1000		--4 digit, by DataManager::GetDesc()
-MAX_ID		=268435455	--9 digit, by DataManager::GetDesc()
+MIN_ID		=1000		--4 digits, by DataManager::GetDesc()
+MAX_ID		=268435455	--28 bits, by DataManager::GetDesc()
 MAX_COUNTER	=65535		--max number for adding/removing counters, by card::add_counter(), field::remove_counter()
 --Locations 区域
 LOCATION_DECK		=0x01		--卡组
@@ -12,9 +12,13 @@ LOCATION_REMOVED	=0x20		--除外区
 LOCATION_EXTRA		=0x40		--额外
 LOCATION_OVERLAY	=0x80		--超量素材
 LOCATION_ONFIELD	=0x0c		--场上（LOCATION_MZONE+LOCATION_SZONE）
---Locations (for redirect) 若在重定向类效果中指定LOCATION_DECK则为弹回卡组顶部
+--Locations (for redirect) 若在重定向类效果中仅指定LOCATION_DECK则为弹回卡组顶部
 LOCATION_DECKBOT	=0x10001	--弹回卡组底部
 LOCATION_DECKSHF	=0x20001	--弹回卡组并洗牌
+--Sequences (for Duel.SendtoDeck)
+SEQ_DECKTOP			=0			--弹回卡组顶端
+SEQ_DECKBOTTOM		=1			--弹回卡组底端
+SEQ_DECKSHUFFLE		=2			--弹回卡组并洗牌（洗牌前暂时放在底端）
 --Locations of spell cards
 LOCATION_FZONE		=0x100		--场地区
 LOCATION_PZONE		=0x200		--灵摆区
@@ -143,6 +147,7 @@ SUMMON_VALUE_SELF					=0x1	--自身效果或条件
 SUMMON_VALUE_BLACK_GARDEN			=0x10	--黑色花园
 SUMMON_VALUE_SYNCHRO_MATERIAL		=0x11	--特殊召唤并作为同调素材（黑羽-东云之东风检查）
 SUMMON_VALUE_DARK_SANCTUARY			=0x12	--暗黑圣域
+SUMMON_VALUE_MONSTER_REBORN			=0x13	--死者苏生（千年的启示）
 SUMMON_VALUE_LV						=0x1000	--对应LV怪兽的效果
 SUMMON_VALUE_GLADIATOR				=0x2000	--剑斗兽
 SUMMON_VALUE_EVOLTILE				=0x4000	--进化虫
@@ -297,7 +302,7 @@ EFFECT_FLAG_DAMAGE_STEP		=0x4000		--可以在伤害步骤发动
 EFFECT_FLAG_DAMAGE_CAL		=0x8000		--可以在伤害计算时发动
 EFFECT_FLAG_DELAY			=0x10000	--場合型誘發效果、用於永續效果的EFFECT_TYPE_CONTINUOUS、神之化身/恐惧之源的攻击力变化最后计算
 EFFECT_FLAG_SINGLE_RANGE	=0x20000	--只对自己有效
-EFFECT_FLAG_UNCOPYABLE		=0x40000	--不能复制（效果外文本）
+EFFECT_FLAG_UNCOPYABLE		=0x40000	--不能复制的原始效果（效果外文本）
 EFFECT_FLAG_OATH			=0x80000	--誓约效果
 EFFECT_FLAG_SPSUM_PARAM		=0x100000	--指定召喚/规则特殊召唤的位置和表示形式(熔岩魔神)
 EFFECT_FLAG_REPEAT			=0x200000	--神之化身的攻击力重复计算
@@ -472,13 +477,13 @@ EFFECT_ONLY_BE_ATTACKED			=196	--只能攻击此卡
 EFFECT_ATTACK_DISABLED			=197	--攻击已被無效(Duel.NegateAttack()成功的標記)
 EFFECT_NO_BATTLE_DAMAGE			=200	--不会给对方造成战斗伤害
 EFFECT_AVOID_BATTLE_DAMAGE		=201	--不会对自己造成战斗伤害
-EFFECT_REFLECT_BATTLE_DAMAGE	=202	--反弹战斗伤害
+EFFECT_REFLECT_BATTLE_DAMAGE	=202	--战斗伤害由对方代为承受
 EFFECT_PIERCE					=203	--贯穿伤害
 EFFECT_BATTLE_DESTROY_REDIRECT	=204	--战斗破坏时重新指定去向
 EFFECT_BATTLE_DAMAGE_TO_EFFECT	=205	--战斗伤害视为效果伤害
 EFFECT_BOTH_BATTLE_DAMAGE		=206    --战斗伤害由双方承受
 EFFECT_ALSO_BATTLE_DAMAGE		=207    --对自己的战斗伤害让对方也承受
-EFFECT_CHANGE_BATTLE_DAMAGE		=208    --改变战斗伤害
+EFFECT_CHANGE_BATTLE_DAMAGE		=208    --改变此卡给予的战斗伤害、改变玩家受到的战斗伤害
 EFFECT_TOSS_COIN_REPLACE		=220	--重新抛硬币
 EFFECT_TOSS_DICE_REPLACE		=221	--重新掷骰子
 EFFECT_FUSION_MATERIAL			=230	--指定融合素材的條件
@@ -525,7 +530,7 @@ EFFECT_SYNCHRO_CHECK			=310	--基因组斗士
 EFFECT_QP_ACT_IN_NTPHAND		=311	--对方回合从自己手卡发动（失乐的圣女）
 EFFECT_MUST_BE_SMATERIAL		=312	--必须作为同调素材（波动龙 声子龙）
 EFFECT_TO_GRAVE_REDIRECT_CB		=313	--重新指定去向(寶玉獸)
-EFFECT_CHANGE_LEVEL_FINAL		=314	--N/A
+EFFECT_CHANGE_INVOLVING_BATTLE_DAMAGE	=314	--改变此卡的战斗产生的战斗伤害
 EFFECT_CHANGE_RANK_FINAL		=315	--N/A
 EFFECT_MUST_BE_FMATERIAL		=316	--必须作为融合素材
 EFFECT_MUST_BE_XMATERIAL		=317	--必须作为超量素材
@@ -594,6 +599,7 @@ EVENT_CHAINING					=1027	--效果发动时
 EVENT_BECOME_TARGET				=1028	--成为效果对象时
 EVENT_DESTROYED					=1029	--被破坏时
 EVENT_MOVE						=1030	--移動卡片(急兔馬)
+EVENT_LEAVE_GRAVE				=1031	--离开墓地时
 EVENT_ADJUST					=1040	--adjust_all()调整後（御前试合）
 EVENT_BREAK_EFFECT				=1050	--Duel.BreakEffect()被调用时
 EVENT_SUMMON_SUCCESS			=1100	--通常召唤成功时
@@ -822,11 +828,12 @@ EFFECT_COUNT_CODE_SINGLE		=0x1		--同一张卡的多个效果公共使用次数
 --特殊选项
 DUEL_TEST_MODE			=0x01		--测试模式(目前暫無)
 DUEL_ATTACK_FIRST_TURN	=0x02		--第一回合可以攻击(用于残局)
-DUEL_NO_CHAIN_HINT		=0x04		--N/A
+DUEL_OLD_REPLAY			=0x04		--旧录像
 DUEL_OBSOLETE_RULING	=0x08		--使用舊規則
 DUEL_PSEUDO_SHUFFLE		=0x10		--不洗牌
 DUEL_TAG_MODE			=0x20		--双打PP
 DUEL_SIMPLE_AI			=0x40		--AI(用于残局)
+DUEL_RETURN_DECK_TOP	=0x80		--回卡组洗切的卡放到卡组最上方（不洗牌模式下曾经的默认行为）
 --Activity counter
 --global: 1-6 (binary: 5,6)
 --custom: 1-5,7 (binary: 1-5)
@@ -837,7 +844,7 @@ ACTIVITY_FLIPSUMMON		=4		--
 ACTIVITY_ATTACK			=5		--
 ACTIVITY_BATTLE_PHASE	=6		-- not available in custom counter
 ACTIVITY_CHAIN			=7		-- only available in custom counter
---cards with double names
-CARD_MARINE_DOLPHIN		=78734254	--海洋海豚
-CARD_TWINKLE_MOSS		=13857930	--光輝苔蘚
+--Special cards
+CARD_MARINE_DOLPHIN		=78734254	--海洋海豚(double name)
+CARD_TWINKLE_MOSS		=13857930	--光輝苔蘚(double name)
 CARD_QUESTION		    =38723936	--谜题

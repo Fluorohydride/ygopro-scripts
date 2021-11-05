@@ -125,5 +125,5 @@ function c15758127.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tct=math.min(ct-7,#g)
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TODECK)
 	local sg=g:Select(1-tp,tct,tct,nil)
-	Duel.SendtoDeck(sg,nil,2,REASON_RULE)
+	Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_RULE)
 end

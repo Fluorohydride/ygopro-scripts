@@ -1,4 +1,4 @@
---Proof of Pruflas
+--プルーフ・プルフラス
 function c85847157.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)

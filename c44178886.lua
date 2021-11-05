@@ -30,7 +30,7 @@ end
 function c44178886.op(e,tp,eg,ep,ev,re,r,rp)
 	local t=Duel.GetAttackTarget()
 	if t~=nil and t:IsRelateToBattle() and not t:IsAttackPos() then
-		Duel.SendtoDeck(t,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(t,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
 function c44178886.discon(e,tp,eg,ep,ev,re,r,rp)

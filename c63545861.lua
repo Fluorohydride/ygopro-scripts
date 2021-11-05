@@ -25,5 +25,5 @@ function c63545861.retop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Group.CreateGroup()
 	if a:IsSetCard(0x53) and d and d:IsControler(1-tp) and d:IsRelateToBattle() then g:AddCard(d) end
 	if d and d:IsSetCard(0x53) and a:IsControler(1-tp) and a:IsRelateToBattle() then g:AddCard(a) end
-	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end

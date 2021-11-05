@@ -34,6 +34,6 @@ function c75448086.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,sg)
 		Duel.ShuffleDeck(tp)
 		Duel.BreakEffect()
-		Duel.SendtoDeck(g1,nil,1,REASON_EFFECT)
+		Duel.SendtoDeck(g1,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 	end
 end

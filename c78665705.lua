@@ -53,10 +53,10 @@ function c78665705.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c78665705.gaintg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetFlagEffect(tp,100424104)==0 end
+	if chk==0 then return Duel.GetFlagEffect(tp,78665706)==0 end
 end
 function c78665705.gainop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFlagEffect(tp,100424104)~=0 then return end
+	if Duel.GetFlagEffect(tp,78665706)~=0 then return end
 	local c=e:GetHandler()
 	--tribute check
 	local e1=Effect.CreateEffect(c)
@@ -76,7 +76,7 @@ function c78665705.gainop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetReset(RESET_PHASE+PHASE_END)
 	e2:SetLabelObject(e1)
 	Duel.RegisterEffect(e2,tp)
-	Duel.RegisterFlagEffect(tp,100424104,RESET_PHASE+PHASE_END,0,1)
+	Duel.RegisterFlagEffect(tp,78665706,RESET_PHASE+PHASE_END,0,1)
 end
 function c78665705.valcheck(e,c)
 	if e:GetLabel()==1 then

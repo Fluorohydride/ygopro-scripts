@@ -52,7 +52,7 @@ function c78661338.spop(e,tp,eg,ep,ev,re,r,rp)
 		if ct>0 then
 			Duel.BreakEffect()
 			if g:GetCount()>0 then
-				Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+				Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 			end
 		end
 	end

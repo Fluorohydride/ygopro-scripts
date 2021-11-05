@@ -47,7 +47,6 @@ function c72043279.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c72043279.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local tc=e:GetLabelObject()
 	if tc:IsRelateToBattle() and tc:IsFaceup() and tc:IsControler(tp) then
 		local e1=Effect.CreateEffect(c)

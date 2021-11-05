@@ -42,7 +42,7 @@ function c99724761.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c99724761.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFacedown() then
+	if tc:IsRelateToEffect(e) and tc:IsControler(1-tp) and tc:IsFacedown() then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

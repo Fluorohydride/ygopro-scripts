@@ -50,6 +50,11 @@ function c29208536.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetCondition(c29208536.rcon)
 		tc:RegisterEffect(e1)
+		if tc:IsType(TYPE_TRAPMONSTER) then
+			local e2=e1:Clone()
+			e2:SetCode(EFFECT_DISABLE_TRAPMONSTER)
+			tc:RegisterEffect(e2)
+		end
 	end
 end
 function c29208536.rcon(e)

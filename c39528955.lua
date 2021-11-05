@@ -51,7 +51,7 @@ function c39528955.seqcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c39528955.seqfilter(c)
 	local tp=c:GetControler()
-	return c:IsFaceup() and c:GetSequence()<5 and Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0)>0
+	return c:GetSequence()<5 and Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0)>0
 end
 function c39528955.seqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()

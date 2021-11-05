@@ -79,7 +79,7 @@ function c34479658.tkop(e,tp,eg,ep,ev,re,r,rp)
 		local token=Duel.CreateToken(tp,34479659)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 		matc=matc-1
-		if matc<=0 or not Duel.SelectYesNo(tp,aux.Stringid(34479659,2)) then ctn=false end
+		if matc<=0 or not Duel.SelectYesNo(tp,aux.Stringid(34479658,2)) then ctn=false end
 	end
 	Duel.SpecialSummonComplete()
 end

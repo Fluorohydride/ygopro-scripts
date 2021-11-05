@@ -66,7 +66,6 @@ function c93368494.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return at:IsControler(tp) and at:IsSetCard(0xb3)
 end
 function c93368494.atkop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local at=Duel.GetAttacker()
 	if at:IsFaceup() and at:IsRelateToBattle() then
 		local e1=Effect.CreateEffect(e:GetHandler())

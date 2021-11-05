@@ -33,6 +33,7 @@ function c95750695.initial_effect(c)
 	e4:SetOperation(c95750695.spop)
 	c:RegisterEffect(e4)
 end
+c95750695.has_text_type=TYPE_DUAL
 function c95750695.eqlimit(e,c)
 	return c:IsType(TYPE_DUAL)
 end

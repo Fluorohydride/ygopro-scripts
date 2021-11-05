@@ -1,5 +1,6 @@
 --正義の味方 カイバーマン
 function c34627841.initial_effect(c)
+	aux.AddCodeList(c,89631139)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(34627841,0))

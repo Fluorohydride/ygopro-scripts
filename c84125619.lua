@@ -1,4 +1,4 @@
---Expendable Dai
+--刺し違GUY
 function c84125619.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

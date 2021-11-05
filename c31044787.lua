@@ -5,6 +5,7 @@ function c31044787.initial_effect(c)
 	e1:SetCategory(CATEGORY_TODECK)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
+	e1:SetHintTiming(0,TIMINGS_CHECK_MONSTER)
 	e1:SetCondition(c31044787.condition)
 	e1:SetTarget(c31044787.target)
 	e1:SetOperation(c31044787.activate)
@@ -29,5 +30,5 @@ function c31044787.activate(e,tp,eg,ep,ev,re,r,rp)
 	local diff=atk-lp
 	if diff<=0 then return end
 	local sg=g:SelectWithSumGreater(1-tp,Card.GetAttack,diff)
-	Duel.SendtoDeck(sg,nil,2,REASON_RULE)
+	Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_RULE)
 end

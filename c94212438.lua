@@ -47,7 +47,6 @@ function c94212438.plfilter(c,id)
 end
 function c94212438.plop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local ids={31893528,67287533,94772232,30170981}
 	local id=ids[c:GetFlagEffect(94212438)+1]
 	local res=Duel.IsPlayerAffectedByEffect(tp,16625614) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0

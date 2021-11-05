@@ -44,7 +44,6 @@ end
 function c6471156.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local lv=e:GetLabel()
-	if not c:IsRelateToEffect(e) then return end
 	local g=Duel.GetMatchingGroup(c6471156.lvfilter,tp,LOCATION_MZONE,0,nil,0)
 	local lc=g:GetFirst()
 	while lc do
@@ -77,7 +76,6 @@ function c6471156.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c6471156.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)

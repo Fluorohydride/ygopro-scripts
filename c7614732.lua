@@ -1,4 +1,4 @@
---Greater Polymerization
+--大融合
 function c7614732.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

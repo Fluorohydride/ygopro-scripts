@@ -1,4 +1,4 @@
---Terrors of the Underroot
+--常世離レ
 function c11110218.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

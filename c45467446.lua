@@ -1,5 +1,6 @@
 --白き霊龍
 function c45467446.initial_effect(c)
+	aux.AddCodeList(c,89631139)
 	--Normal monster
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

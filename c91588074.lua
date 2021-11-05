@@ -49,7 +49,7 @@ function c91588074.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	if cg:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,cg)
 	end
-	Duel.SendtoDeck(rg,nil,2,REASON_COST)
+	Duel.SendtoDeck(rg,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c91588074.tdfilter(c)
 	return (c:IsLocation(0x1e) or (c:IsFaceup() and c:IsType(TYPE_PENDULUM))) and c:IsAbleToDeck()
@@ -63,5 +63,5 @@ end
 function c91588074.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c91588074.tdfilter,tp,0x5e,0x5e,aux.ExceptThisCard(e))
 	if aux.NecroValleyNegateCheck(g) then return end
-	Duel.SendtoDeck(g,nil,2,REASON_EFFECT)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end

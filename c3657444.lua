@@ -88,7 +88,7 @@ function c3657444.operation3(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local gg=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_GRAVE,0,1,1,nil)
 		if gg:GetCount()>0 then
-			Duel.SendtoDeck(gg,nil,0,REASON_EFFECT)
+			Duel.SendtoDeck(gg,nil,SEQ_DECKTOP,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,gg)
 		end
 	end

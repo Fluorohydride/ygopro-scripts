@@ -1,4 +1,4 @@
---Materiactor Gigaboros
+--マテリアクトル・ギガヴォロス
 function c70597485.initial_effect(c)
 	--xyz summon
 	c:EnableReviveLimit()

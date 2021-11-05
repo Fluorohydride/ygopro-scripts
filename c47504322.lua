@@ -1,4 +1,4 @@
---War Rock Wento
+--ウォークライ・ウェント
 function c47504322.initial_effect(c)
 	--atk
 	local e1=Effect.CreateEffect(c)

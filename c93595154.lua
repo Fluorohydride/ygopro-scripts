@@ -1,5 +1,6 @@
 --烙印の裁き
 function c93595154.initial_effect(c)
+	aux.AddCodeList(c,68468459)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(93595154,0))

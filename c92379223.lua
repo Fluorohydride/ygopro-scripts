@@ -58,7 +58,7 @@ function c92379223.activate(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetClassCount(Card.GetCode)>=3 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 			local tg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
-			Duel.SendtoDeck(tg,nil,0,REASON_EFFECT)
+			Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 			local og=Duel.GetOperatedGroup()
 			if og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then Duel.ShuffleDeck(tp) end
 			local ct=og:FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_EXTRA)
@@ -75,7 +75,7 @@ function c92379223.activate(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetClassCount(Card.GetCode)>=3 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 			local tg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
-			Duel.SendtoDeck(tg,nil,0,REASON_EFFECT)
+			Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 			local og=Duel.GetOperatedGroup()
 			if og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then Duel.ShuffleDeck(tp) end
 			local ct=og:FilterCount(Card.IsLocation,nil,LOCATION_DECK+LOCATION_EXTRA)

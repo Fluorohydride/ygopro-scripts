@@ -40,7 +40,6 @@ end
 function c35011819.activate1(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()~=1 then return end
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
 	local ct=Duel.GetChainInfo(0,CHAININFO_CHAIN_COUNT)
 	Duel.NegateActivation(ct-1)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
@@ -57,7 +56,6 @@ function c35011819.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,rp,1)
 end
 function c35011819.activate2(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	if not Duel.NegateActivation(ev) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Draw(p,d,REASON_EFFECT)

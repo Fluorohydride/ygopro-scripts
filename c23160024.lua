@@ -28,11 +28,12 @@ function c23160024.initial_effect(c)
 	e4:SetOperation(c23160024.drop)
 	c:RegisterEffect(e4)
 	--ritural
-	local e5=aux.AddRitualProcEqualCode(c,98287529,nil,nil,c23160024.mfilter)
+	local e5=aux.AddRitualProcEqualCode(c,98287529,nil,nil,c23160024.mfilter,true)
 	e5:SetType(EFFECT_TYPE_IGNITION)
 	e5:SetCode(0)
 	e5:SetRange(LOCATION_GRAVE)
 	e5:SetCost(aux.bfgcost)
+	c:RegisterEffect(e5)
 end
 function c23160024.cfilter(c,tp)
 	return c:IsPreviousSetCard(0xe0) and c:IsReason(REASON_RELEASE) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)

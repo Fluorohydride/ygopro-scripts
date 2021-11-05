@@ -1,6 +1,5 @@
 --マジシャン・オブ・ブラック・イリュージョン
 function c35191415.initial_effect(c)
-	aux.AddCodeList(c,46986414)
 	--change name
 	aux.EnableChangeCode(c,46986414)
 	--spsummon (self)

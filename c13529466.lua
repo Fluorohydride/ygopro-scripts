@@ -3,13 +3,18 @@ function c13529466.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcCodeFun(c,86120751,aux.FilterBoolFunction(Card.IsFusionAttribute,ATTRIBUTE_DARK),1,true,true)
-	--activate limit
+	--effect count
 	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetOperation(c13529466.aclimit1)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetOperation(c13529466.scount)
 	c:RegisterEffect(e1)
+	local e4=e1:Clone()
+	e4:SetOperation(c13529466.ocount)
+	c:RegisterEffect(e4)
+	--activate limit
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_FIELD)
 	e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
@@ -19,9 +24,6 @@ function c13529466.initial_effect(c)
 	e3:SetCondition(c13529466.econ1)
 	e3:SetValue(c13529466.elimit)
 	c:RegisterEffect(e3)
-	local e4=e1:Clone()
-	e4:SetOperation(c13529466.aclimit3)
-	c:RegisterEffect(e4)
 	local e6=e3:Clone()
 	e6:SetCondition(c13529466.econ2)
 	e6:SetTargetRange(0,1)
@@ -45,14 +47,14 @@ function c13529466.initial_effect(c)
 	e8:SetLabelObject(e7)
 	c:RegisterEffect(e8)
 end
-function c13529466.aclimit1(e,tp,eg,ep,ev,re,r,rp)
+function c13529466.scount(e,tp,eg,ep,ev,re,r,rp)
 	if ep~=tp or not re:IsActiveType(TYPE_MONSTER) then return end
 	e:GetHandler():RegisterFlagEffect(13529466,RESET_EVENT+0x3ff0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c13529466.econ1(e)
 	return e:GetHandler():GetFlagEffect(13529466)~=0
 end
-function c13529466.aclimit3(e,tp,eg,ep,ev,re,r,rp)
+function c13529466.ocount(e,tp,eg,ep,ev,re,r,rp)
 	if ep==tp or not re:IsActiveType(TYPE_MONSTER) then return end
 	e:GetHandler():RegisterFlagEffect(13529467,RESET_EVENT+0x3ff0000+RESET_PHASE+PHASE_END,0,1)
 end

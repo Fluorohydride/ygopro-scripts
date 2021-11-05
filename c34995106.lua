@@ -1,5 +1,6 @@
 --白の烙印
 function c34995106.initial_effect(c)
+	aux.AddCodeList(c,68468459)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(34995106,0))

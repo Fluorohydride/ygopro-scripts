@@ -41,7 +41,7 @@ end
 function c39581190.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local d=Duel.GetAttackTarget()
 	if d:IsRelateToBattle() and d:IsPosition(POS_FACEDOWN_DEFENSE) then
-		Duel.SendtoDeck(d,nil,2,REASON_EFFECT)
+		Duel.SendtoDeck(d,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
 function c39581190.spcon(e,tp,eg,ep,ev,re,r,rp)

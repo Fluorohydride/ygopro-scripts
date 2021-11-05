@@ -46,6 +46,5 @@ function c70422863.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.DiscardHand(tp,c70422863.cfilter,1,1,REASON_COST)
 end
 function c70422863.negop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
 	Duel.NegateAttack()
 end

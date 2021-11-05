@@ -36,7 +36,7 @@ function c5506791.thfilter(c)
 	return c:IsSetCard(0xd0) and c:IsAbleToHand()
 end
 function c5506791.regtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_DECK,0,1,nil,0xd0) end
+	if chk==0 then return true end
 end
 function c5506791.regop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
