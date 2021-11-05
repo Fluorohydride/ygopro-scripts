@@ -1743,14 +1743,6 @@ function Auxiliary.AddRitualProcGreater2Code2(c,code1,code2,summon_location,grav
 end
 --add procedure to Pendulum monster, also allows registeration of activation effect
 function Auxiliary.EnablePendulumAttribute(c,reg)
-	if not Auxiliary.PendulumChecklist then
-		Auxiliary.PendulumChecklist=0
-		local ge1=Effect.GlobalEffect()
-		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge1:SetCode(EVENT_PHASE_START+PHASE_DRAW)
-		ge1:SetOperation(Auxiliary.PendulumReset)
-		Duel.RegisterEffect(ge1,0)
-	end
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(1163)
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -1771,9 +1763,6 @@ function Auxiliary.EnablePendulumAttribute(c,reg)
 		c:RegisterEffect(e2)
 	end
 end
-function Auxiliary.PendulumReset(e,tp,eg,ep,ev,re,r,rp)
-	Auxiliary.PendulumChecklist=0
-end
 function Auxiliary.PConditionExtraFilterSpecific(c,e,tp,lscale,rscale,te)
 	if not te then return true end
 	local f=te:GetValue()
@@ -1785,7 +1774,7 @@ function Auxiliary.PConditionExtraFilter(c,e,tp,lscale,rscale,eset)
 	end
 	return false
 end
-function Auxiliary.PConditionFilter(c,e,tp,lscale,rscale,eset,chk)
+function Auxiliary.PConditionFilter(c,e,tp,lscale,rscale,eset)
 	local lv=0
 	if c.pendulum_level then
 		lv=c.pendulum_level
@@ -1796,14 +1785,14 @@ function Auxiliary.PConditionFilter(c,e,tp,lscale,rscale,eset,chk)
 	return (c:IsLocation(LOCATION_HAND) or (c:IsFaceup() and c:IsType(TYPE_PENDULUM)))
 		and lv>lscale and lv<rscale and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_PENDULUM,tp,bool,bool)
 		and not c:IsForbidden()
-		and (chk==1 or Auxiliary.PendulumChecklist&(0x1<<tp)==0 or Auxiliary.PConditionExtraFilter(c,e,tp,lscale,rscale,eset))
+		and (Duel.IsPlayerCanAdditionalPSummon(tp) or Auxiliary.PConditionExtraFilter(c,e,tp,lscale,rscale,eset))
 end
 function Auxiliary.PendCondition()
-	return	function(e,c,chk,og)
+	return	function(e,c,og)
 				if c==nil then return true end
 				local tp=c:GetControler()
 				local eset={Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_PENDULUM_SUMMON)}
-				if chk==0 and Auxiliary.PendulumChecklist&(0x1<<tp)~=0 and #eset==0 then return false end
+				if not Duel.IsPlayerCanAdditionalPSummon(tp) and #eset==0 then return false end
 				local rpz=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 				if rpz==nil or c==rpz then return false end
 				local lscale=c:GetLeftScale()
@@ -1819,7 +1808,7 @@ function Auxiliary.PendCondition()
 				else
 					g=Duel.GetFieldGroup(tp,loc,0)
 				end
-				return g:IsExists(Auxiliary.PConditionFilter,1,nil,e,tp,lscale,rscale,eset,chk)
+				return g:IsExists(Auxiliary.PConditionFilter,1,nil,e,tp,lscale,rscale,eset)
 			end
 end
 function Auxiliary.PendOperationCheck(ft1,ft2,ft)
@@ -1830,7 +1819,7 @@ function Auxiliary.PendOperationCheck(ft1,ft2,ft)
 			end
 end
 function Auxiliary.PendOperation()
-	return	function(e,tp,eg,ep,ev,re,r,rp,c,sg,chk,og)
+	return	function(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 				local rpz=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 				local lscale=c:GetLeftScale()
 				local rscale=rpz:GetRightScale()
@@ -1851,34 +1840,13 @@ function Auxiliary.PendOperation()
 				if ft1>0 then loc=loc|LOCATION_HAND end
 				if ft2>0 then loc=loc|LOCATION_EXTRA end
 				if og then
-					tg=og:Filter(Card.IsLocation,nil,loc):Filter(Auxiliary.PConditionFilter,nil,e,tp,lscale,rscale,eset,chk)
+					tg=og:Filter(Card.IsLocation,nil,loc):Filter(Auxiliary.PConditionFilter,nil,e,tp,lscale,rscale,eset)
 				else
-					tg=Duel.GetMatchingGroup(Auxiliary.PConditionFilter,tp,loc,0,nil,e,tp,lscale,rscale,eset,chk)
+					tg=Duel.GetMatchingGroup(Auxiliary.PConditionFilter,tp,loc,0,nil,e,tp,lscale,rscale,eset)
 				end
-				if chk==0 then
-					local ce=nil
-					local b1=Auxiliary.PendulumChecklist&(0x1<<tp)==0
-					local b2=#eset>0
-					if b1 and b2 then
-						local options={1163}
-						for _,te in ipairs(eset) do
-							table.insert(options,te:GetDescription())
-						end
-						local op=Duel.SelectOption(tp,table.unpack(options))
-						if op>0 then
-							ce=eset[op]
-						end
-					elseif b2 and not b1 then
-						local options={}
-						for _,te in ipairs(eset) do
-							table.insert(options,te:GetDescription())
-						end
-						local op=Duel.SelectOption(tp,table.unpack(options))
-						ce=eset[op+1]
-					end
-					if ce then
-						tg=tg:Filter(Auxiliary.PConditionExtraFilterSpecific,nil,e,tp,lscale,rscale,ce)
-					end
+				local ce=Duel.GetAdditionalPSummon(tp)
+				if ce then
+					tg=tg:Filter(Auxiliary.PConditionExtraFilterSpecific,nil,e,tp,lscale,rscale,ce)
 				end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				Auxiliary.GCheckAdditional=Auxiliary.PendOperationCheck(ft1,ft2,ft)
@@ -1886,14 +1854,7 @@ function Auxiliary.PendOperation()
 				local g=tg:SelectSubGroup(tp,aux.TRUE,cancel,1,math.min(#tg,ft))
 				Auxiliary.GCheckAdditional=nil
 				if not g then return end
-				if chk==0 then
-					if ce then
-						Duel.Hint(HINT_CARD,0,ce:GetOwner():GetOriginalCode())
-						ce:UseCountLimit(tp)
-					else
-						Auxiliary.PendulumChecklist=Auxiliary.PendulumChecklist|(0x1<<tp)
-					end
-				end
+				Duel.SetAdditionalPSummon(tp,ce)
 				sg:Merge(g)
 				Duel.HintSelection(Group.FromCards(c))
 				Duel.HintSelection(Group.FromCards(rpz))
