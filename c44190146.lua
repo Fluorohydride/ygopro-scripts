@@ -48,7 +48,7 @@ function c44190146.initial_effect(c)
 end
 function c44190146.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local cid=Duel.GetCurrentChain()
-	if cid>0 then
+	if cid>0 and (r&REASON_COST)>0 then
 		local te=Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_EFFECT)
 		local rc=te:GetHandler()
 		if rc:IsRelateToEffect(te) and c44190146[1][rc]~=nil then

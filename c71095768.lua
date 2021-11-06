@@ -50,7 +50,7 @@ function c71095768.initial_effect(c)
 end
 function c71095768.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local cid=Duel.GetCurrentChain()
-	if cid>0 then
+	if cid>0 and (r&REASON_COST)>0 then
 		c71095768[0]=Duel.GetChainInfo(cid,CHAININFO_CHAIN_ID)
 		c71095768[1]=Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_LOCATION)
 		local seq=Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_SEQUENCE)
