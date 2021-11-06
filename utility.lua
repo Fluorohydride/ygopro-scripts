@@ -1675,6 +1675,7 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				local tg=Duel.SelectMatchingCard(tp,Auxiliary.NecroValleyFilter(Auxiliary.RitualUltimateFilter),tp,summon_location,0,1,1,nil,filter,e,tp,mg,exg,level_function,greater_or_equal)
 				local tc=tg:GetFirst()
+				local mat
 				if tc then
 					mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
 					if exg then
@@ -1688,7 +1689,7 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 					local lv=level_function(tc)
 					Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(tc,lv,greater_or_equal)
-					local mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,false,1,lv,tp,tc,lv,greater_or_equal)
+					mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,false,1,lv,tp,tc,lv,greater_or_equal)
 					Auxiliary.GCheckAdditional=nil
 					tc:SetMaterial(mat)
 					Duel.ReleaseRitualMaterial(mat)
