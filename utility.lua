@@ -1697,7 +1697,7 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 					tc:CompleteProcedure()
 				end
 				if extra_operation then
-					extra_operation(e,tp,eg,ep,ev,re,r,rp,tc)
+					extra_operation(e,tp,eg,ep,ev,re,r,rp,tc,mat)
 				end
 			end
 end
