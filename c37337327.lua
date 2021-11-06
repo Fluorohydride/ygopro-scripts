@@ -67,12 +67,12 @@ function c37337327.spfilter(c,e,tp)
 		and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c37337327.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckMustMaterial(tp,nil,EFFECT_MUST_BE_SMATERIAL)
+	if chk==0 then return aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL)
 		and Duel.IsExistingMatchingCard(c37337327.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c37337327.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.CheckMustMaterial(tp,nil,EFFECT_MUST_BE_SMATERIAL) then return end
+	if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_SMATERIAL) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c37337327.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then

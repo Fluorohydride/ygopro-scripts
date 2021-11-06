@@ -40,7 +40,7 @@ function c1295111.initial_effect(c)
 end
 function c1295111.lmfilter(c,lc,tp,og,lmat)
 	return c:IsFaceup() and c:IsCanBeLinkMaterial(lc) and c:IsLinkCode(lc:GetCode()) and c:IsLinkType(TYPE_LINK)
-		and Duel.GetLocationCountFromEx(tp,tp,c,lc)>0 and Duel.CheckMustMaterial(tp,c,EFFECT_MUST_BE_LMATERIAL)
+		and Duel.GetLocationCountFromEx(tp,tp,c,lc)>0 and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_LMATERIAL)
 		and (not og or og:IsContains(c)) and (not lmat or lmat==c)
 end
 function c1295111.linkcon(e,c,og,lmat,min,max)

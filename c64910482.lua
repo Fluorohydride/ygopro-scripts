@@ -42,7 +42,7 @@ function c64910482.syngoal(g,tp,lv,syncard,minc,ct)
 	return ct>=minc
 		and g:CheckWithSumEqual(Card.GetSynchroLevel,lv,ct,ct,syncard)
 		and Duel.GetLocationCountFromEx(tp,tp,g,syncard)>0
-		and Duel.CheckMustMaterial(tp,g,EFFECT_MUST_BE_SMATERIAL)
+		and aux.MustMaterialCheck(g,tp,EFFECT_MUST_BE_SMATERIAL)
 end
 function c64910482.syntg(e,syncard,f,min,max)
 	local minc=min+1

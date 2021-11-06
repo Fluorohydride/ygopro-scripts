@@ -30,7 +30,7 @@ function c45950291.filter1(c,e,tp)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)
 		and not Duel.IsExistingMatchingCard(c45950291.cfilter,tp,LOCATION_MZONE,0,1,nil,rk)
 		and Duel.IsExistingMatchingCard(c45950291.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,rk+2,c:GetRace(),c:GetAttribute(),c:GetCode())
-		and Duel.CheckMustMaterial(tp,c,EFFECT_MUST_BE_XMATERIAL)
+		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 end
 function c45950291.filter2(c,e,tp,mc,rk,rc,att,code)
 	if c:GetOriginalCode()==6165656 and code~=48995978 then return false end
@@ -47,7 +47,7 @@ function c45950291.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c45950291.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not Duel.CheckMustMaterial(tp,tc,EFFECT_MUST_BE_XMATERIAL) then return end
+	if not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL) then return end
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c45950291.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc,tc:GetRank()+2,tc:GetRace(),tc:GetAttribute(),tc:GetCode())

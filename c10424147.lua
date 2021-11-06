@@ -35,7 +35,7 @@ end
 function c10424147.spfilter1(c,e,tp)
 	return c:IsFaceup() and c:IsSetCard(0x10dc)
 		and Duel.IsExistingMatchingCard(c10424147.spfilter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,c:GetAttribute())
-		and Duel.CheckMustMaterial(tp,c,EFFECT_MUST_BE_XMATERIAL)
+		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 end
 function c10424147.spfilter2(c,e,tp,mc,att)
 	return c:IsType(TYPE_XYZ) and c:IsSetCard(0x20dc) and c:IsAttribute(att) and mc:IsCanBeXyzMaterial(c)

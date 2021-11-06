@@ -47,13 +47,13 @@ function c18326736.filter(c,e,tp,rk,mc)
 end
 function c18326736.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.CheckMustMaterial(tp,c,EFFECT_MUST_BE_XMATERIAL)
+	if chk==0 then return aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingMatchingCard(c18326736.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c:GetRank()+1,c) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c18326736.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not Duel.CheckMustMaterial(tp,c,EFFECT_MUST_BE_XMATERIAL) then return end
+	if not aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then return end
 	if c:IsFacedown() or not c:IsRelateToEffect(e) or c:IsControler(1-tp) or c:IsImmuneToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c18326736.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,c:GetRank()+1,c)

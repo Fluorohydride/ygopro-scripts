@@ -61,7 +61,7 @@ end
 function c98452268.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return Duel.IsPlayerCanSpecialSummonCount(tp,2) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.CheckMustMaterial(tp,nil,EFFECT_MUST_BE_XMATERIAL)
+		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_XMATERIAL)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and Duel.IsExistingMatchingCard(c98452268.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)

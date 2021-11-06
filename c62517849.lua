@@ -31,7 +31,7 @@ function c62517849.spfilter(c,e,tp,mc)
 end
 function c62517849.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c62517849.thfilter,tp,LOCATION_DECK,0,1,nil)
-		and Duel.CheckMustMaterial(tp,e:GetHandler(),EFFECT_MUST_BE_XMATERIAL)
+		and aux.MustMaterialCheck(e:GetHandler(),tp,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.IsExistingMatchingCard(c62517849.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp,e:GetHandler()) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
@@ -43,7 +43,7 @@ function c62517849.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoHand(g1,nil,REASON_EFFECT)
 	Duel.ConfirmCards(1-tp,g1)
 	local c=e:GetHandler()
-	if Duel.CheckMustMaterial(tp,c,EFFECT_MUST_BE_XMATERIAL) then
+	if aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then
 		if c:IsFaceup() and c:IsRelateToEffect(e) and c:IsControler(tp) and not c:IsImmuneToEffect(e) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local g=Duel.SelectMatchingCard(tp,c62517849.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,c)

@@ -15,7 +15,7 @@ function c47185546.filter1(c,e,tp)
 	local rk=c:GetRank()
 	return c:IsFaceup() and c:IsRace(RACE_INSECT) and c:IsType(TYPE_XYZ)
 		and Duel.IsExistingMatchingCard(c47185546.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,rk)
-		and Duel.CheckMustMaterial(tp,c,EFFECT_MUST_BE_XMATERIAL)
+		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 end
 function c47185546.filter2(c,e,tp,mc,rk)
 	return (c:IsRank(rk+2) or c:IsRank(rk-2)) and c:IsRace(RACE_INSECT) and mc:IsCanBeXyzMaterial(c)
@@ -31,7 +31,7 @@ function c47185546.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c47185546.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not Duel.CheckMustMaterial(tp,tc,EFFECT_MUST_BE_XMATERIAL) then return end
+	if not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL) then return end
 	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c47185546.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc,tc:GetRank())

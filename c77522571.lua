@@ -115,11 +115,11 @@ function c77522571.spcost3(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(g,REASON_COST)
 end
 function c77522571.sptg3(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckMustMaterial(tp,nil,EFFECT_MUST_BE_FMATERIAL) end
+	if chk==0 then return aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c77522571.spop3(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.CheckMustMaterial(tp,nil,EFFECT_MUST_BE_FMATERIAL) then return end
+	if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_FMATERIAL) then return end
 	local lv=e:GetLabel()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c77522571.spfilter3,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,lv,nil)
