@@ -1,7 +1,7 @@
 --ネフティスの輪廻
 function c23459650.initial_effect(c)
 	aux.AddCodeList(c,88176533,24175232)
-	aux.AddRitualProcGreater2(c,c23459650.filter,LOCATION_HAND,nil,nil,nil,c23459650.extraop)
+	aux.AddRitualProcGreater2(c,c23459650.filter,LOCATION_HAND,nil,nil,false,c23459650.extraop)
 end
 function c23459650.filter(c,e,tp)
 	return c:IsSetCard(0x11f)
