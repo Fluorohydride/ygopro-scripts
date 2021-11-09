@@ -39,7 +39,7 @@ function c18249921.cfilter(c)
 end
 function c18249921.cpcon(e,tp,eg,ep,ev,re,r,rp)
 	local ph=Duel.GetCurrentPhase()
-	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and Duel.IsExistingMatchingCard(c18249921.cfilter,tp,LOCATION_SZONE,0,1,e:GetHandler())
+	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE and Duel.IsExistingMatchingCard(c18249921.cfilter,tp,LOCATION_ONFIELD,0,1,e:GetHandler())
 end
 function c18249921.cpfilter(c)
 	return c:IsFaceup() and c:IsCanChangePosition()
