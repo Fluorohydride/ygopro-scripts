@@ -35,7 +35,29 @@ function c88504133.cfilter(c,e,tp)
 		and Duel.IsExistingMatchingCard(c88504133.cefilter,tp,LOCATION_EXTRA,0,1,nil,c,ct,e,tp)
 end
 function c88504133.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	e:SetLabel(1)
+	if chk==0 then return true end	
+end
+function c88504133.tgefilter(c,tc,e,tp,rank)
+	if not c:IsType(TYPE_XYZ) then return false end
+	local r=c:GetRank()-tc:GetRank()
+	return c:IsSetCard(0xba,0x10db,0x2073)
+		and tc:IsCanBeXyzMaterial(c) and r==rank
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
+		and Duel.GetLocationCountFromEx(tp,tp,tc,c)>0
+end
+function c88504133.tgfilter(c,e,tp,rank)
+	return c:IsType(TYPE_XYZ) and c:IsAttribute(ATTRIBUTE_DARK)
+		and Duel.IsExistingMatchingCard(c88504133.tgefilter,tp,LOCATION_EXTRA,0,1,nil,c,e,tp,rank)
+end
+function c88504133.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c88504133.cfilter(chkc,e,tp) end	
+	if chk==0 then
+		if e:GetLabel()==0 then return false end
+		e:SetLabel(0)
+		return Duel.IsExistingTarget(c88504133.cfilter,tp,LOCATION_MZONE,0,1,nil,e,tp)
+	end
+	e:SetLabel(0)
 	local avail={}
 	local availbool={}
 	local ct=Duel.GetMatchingGroupCount(c88504133.cgfilter,tp,LOCATION_GRAVE,0,nil)
@@ -54,24 +76,8 @@ function c88504133.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(num)
 	local cost=Duel.SelectMatchingCard(tp,c88504133.cgfilter,tp,LOCATION_GRAVE,0,num,num,nil)
 	Duel.Remove(cost,POS_FACEUP,REASON_COST)
-end
-function c88504133.tgefilter(c,tc,e,tp,rank)
-	if not c:IsType(TYPE_XYZ) then return false end
-	local r=c:GetRank()-tc:GetRank()
-	return c:IsSetCard(0xba,0x10db,0x2073)
-		and tc:IsCanBeXyzMaterial(c) and r==rank
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
-		and Duel.GetLocationCountFromEx(tp,tp,tc,c)>0
-end
-function c88504133.tgfilter(c,e,tp,rank)
-	return c:IsType(TYPE_XYZ) and c:IsAttribute(ATTRIBUTE_DARK)
-		and Duel.IsExistingMatchingCard(c88504133.tgefilter,tp,LOCATION_EXTRA,0,1,nil,c,e,tp,rank)
-end
-function c88504133.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c88504133.cfilter(chkc,e,tp) end
-	if chk==0 then return Duel.IsExistingTarget(c88504133.cfilter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g=Duel.SelectTarget(tp,c88504133.tgfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp,e:GetLabel())
+	local g=Duel.SelectTarget(tp,c88504133.tgfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp,num)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c88504133.activate(e,tp,eg,ep,ev,re,r,rp)
