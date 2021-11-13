@@ -2,6 +2,7 @@
 function c88504133.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(88504133,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -35,25 +36,8 @@ function c88504133.cfilter(c,e,tp)
 		and Duel.IsExistingMatchingCard(c88504133.cefilter,tp,LOCATION_EXTRA,0,1,nil,c,ct,e,tp)
 end
 function c88504133.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
-	local avail={}
-	local availbool={}
-	local ct=Duel.GetMatchingGroupCount(c88504133.cgfilter,tp,LOCATION_GRAVE,0,nil)
-	local gfield=Duel.GetMatchingGroup(c88504133.cfilter,tp,LOCATION_MZONE,0,nil,e,tp)
-	for tc in aux.Next(gfield) do
-		local gextra=Duel.GetMatchingGroup(c88504133.cefilter,tp,LOCATION_EXTRA,0,nil,tc,ct,e,tp)
-		for ex in aux.Next(gextra) do
-			local r=ex:GetRank()-tc:GetRank()
-			if not availbool[r] then
-				availbool[r]=true
-				table.insert(avail,r)
-			end
-		end
-	end
-	local num=Duel.AnnounceNumber(tp,table.unpack(avail))
-	e:SetLabel(num)
-	local cost=Duel.SelectMatchingCard(tp,c88504133.cgfilter,tp,LOCATION_GRAVE,0,num,num,nil)
-	Duel.Remove(cost,POS_FACEUP,REASON_COST)
+	e:SetLabel(1)
+	if chk==0 then return true end	
 end
 function c88504133.tgefilter(c,tc,e,tp,rank)
 	if not c:IsType(TYPE_XYZ) then return false end
@@ -68,10 +52,35 @@ function c88504133.tgfilter(c,e,tp,rank)
 		and Duel.IsExistingMatchingCard(c88504133.tgefilter,tp,LOCATION_EXTRA,0,1,nil,c,e,tp,rank)
 end
 function c88504133.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c88504133.cfilter(chkc,e,tp) end
-	if chk==0 then return Duel.IsExistingTarget(c88504133.cfilter,tp,LOCATION_MZONE,0,1,nil,e,tp) end
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c88504133.cfilter(chkc,e,tp) end	
+	if chk==0 then
+		if e:GetLabel()==0 then return false end
+		e:SetLabel(0)
+		return Duel.IsExistingTarget(c88504133.cfilter,tp,LOCATION_MZONE,0,1,nil,e,tp)
+	end
+	e:SetLabel(0)
+	local avail={}
+	local availbool={}
+	local ct=Duel.GetMatchingGroupCount(c88504133.cgfilter,tp,LOCATION_GRAVE,0,nil)
+	local gfield=Duel.GetMatchingGroup(c88504133.cfilter,tp,LOCATION_MZONE,0,nil,e,tp)
+	for tc in aux.Next(gfield) do
+		local gextra=Duel.GetMatchingGroup(c88504133.cefilter,tp,LOCATION_EXTRA,0,nil,tc,ct,e,tp)
+		for ex in aux.Next(gextra) do
+			local r=ex:GetRank()-tc:GetRank()
+			if not availbool[r] then
+				availbool[r]=true
+				table.insert(avail,r)
+			end
+		end
+	end
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(88504133,1))
+	local num=Duel.AnnounceNumber(tp,table.unpack(avail))
+	e:SetLabel(num)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local cost=Duel.SelectMatchingCard(tp,c88504133.cgfilter,tp,LOCATION_GRAVE,0,num,num,nil)
+	Duel.Remove(cost,POS_FACEUP,REASON_COST)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
-	local g=Duel.SelectTarget(tp,c88504133.tgfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp,e:GetLabel())
+	local g=Duel.SelectTarget(tp,c88504133.tgfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp,num)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c88504133.activate(e,tp,eg,ep,ev,re,r,rp)
