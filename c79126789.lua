@@ -28,7 +28,7 @@ function c79126789.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c79126789.drop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
-	if Duel.Draw(p,d,REASON_EFFECT)~=0 and tp==e:GetLabel() then
+	if Duel.Draw(p,d,REASON_EFFECT)~=0 and tp~=rp and tp==e:GetLabel() then
 		Duel.BreakEffect()
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end
