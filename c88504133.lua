@@ -2,6 +2,7 @@
 function c88504133.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(88504133,0))
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
@@ -72,8 +73,10 @@ function c88504133.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 			end
 		end
 	end
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(88504133,1))
 	local num=Duel.AnnounceNumber(tp,table.unpack(avail))
 	e:SetLabel(num)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local cost=Duel.SelectMatchingCard(tp,c88504133.cgfilter,tp,LOCATION_GRAVE,0,num,num,nil)
 	Duel.Remove(cost,POS_FACEUP,REASON_COST)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
