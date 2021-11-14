@@ -73,7 +73,8 @@ function c48589580.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end
 		e:SetLabel(0)
-		return Duel.IsExistingMatchingCard(c48589580.costfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
+		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+			and Duel.IsExistingMatchingCard(c48589580.costfilter,tp,LOCATION_GRAVE,0,1,nil,e,tp)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local rg=Duel.SelectMatchingCard(tp,c48589580.costfilter,tp,LOCATION_GRAVE,0,1,1,nil,e,tp)
