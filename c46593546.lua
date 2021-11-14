@@ -70,7 +70,8 @@ function c46593546.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c46593546.ovlcon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	return rc:IsControler(1-tp) and rc:GetOriginalType()&TYPE_MONSTER~=0 and re:GetActivateLocation()&LOCATION_ONFIELD~=0
+	return rc:IsControler(1-tp) and rc:GetOriginalType()&TYPE_MONSTER~=0
+		and (re:GetActivateLocation()&LOCATION_ONFIELD~=0 or re:IsHasType(EFFECT_TYPE_ACTIVATE))
 end
 function c46593546.ovltgfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0xae)
