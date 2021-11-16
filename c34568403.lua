@@ -53,8 +53,8 @@ function c34568403.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c34568403.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetHandler():GetBattleTarget()
-	if chk==0 then return (not tc:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		or tc:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(tp,tp,nil,tc)>0)
+	if chk==0 then return (tc:IsLocation(LOCATION_GRAVE) or tc:IsLocation(LOCATION_REMOVED) and tc:IsFaceup()) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		or tc:IsLocation(LOCATION_EXTRA) and tc:IsFaceup() and Duel.GetLocationCountFromEx(tp,tp,nil,tc)>0)
 		and tc:IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetTargetCard(tc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,tc,1,0,0)
