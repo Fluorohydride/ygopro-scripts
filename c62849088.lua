@@ -48,14 +48,17 @@ end
 function c62849088.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(Card.IsSummonPlayer,1,nil,1-tp)
 end
+function c62849088.spfilter(c,loc)
+	return c:GetOriginalType()&TYPE_MONSTER~=0 and c:IsSummonLocation(loc)
+end
 function c62849088.desfilter(c,tp)
 	return c:IsSummonPlayer(1-tp) and c:IsSummonLocation(LOCATION_EXTRA) and c:IsLocation(LOCATION_MZONE)
 end
 function c62849088.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local b1=eg:IsExists(Card.IsSummonLocation,1,nil,LOCATION_HAND) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	local b1=eg:IsExists(c62849088.spfilter,1,nil,LOCATION_HAND) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(Card.IsCanBeSpecialSummoned,tp,LOCATION_HAND,0,1,nil,e,0,tp,false,false)
-	local b2=eg:IsExists(Card.IsSummonLocation,1,nil,LOCATION_DECK) and Duel.IsPlayerCanDraw(tp,2)
-	local b3=eg:IsExists(Card.IsSummonLocation,1,nil,LOCATION_EXTRA)
+	local b2=eg:IsExists(c62849088.spfilter,1,nil,LOCATION_DECK) and Duel.IsPlayerCanDraw(tp,2)
+	local b3=eg:IsExists(c62849088.spfilter,1,nil,LOCATION_EXTRA)
 	if chk==0 then return b1 or b2 or b3 end
 	local off=1
 	local ops={}
