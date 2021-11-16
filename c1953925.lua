@@ -59,10 +59,10 @@ function c1953925.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c1953925.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler() and aux.dsercon(e)
+	return Duel.GetAttacker()==e:GetHandler()
 end
 function c1953925.descon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler()==Duel.GetAttacker()
+	return e:GetHandler()==Duel.GetAttacker() and aux.dsercon(e)
 end
 function c1953925.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
