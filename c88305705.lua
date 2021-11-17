@@ -78,7 +78,8 @@ function c88305705.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	e:SetLabelObject(bc)
-	return c==Duel.GetAttacker() and bc and c:IsStatus(STATUS_OPPO_BATTLE) and bc:IsOnField() and bc:IsRelateToBattle()
+	return aux.dsercon(e) and c==Duel.GetAttacker() and c:IsStatus(STATUS_OPPO_BATTLE)
+		and bc and bc:IsOnField() and bc:IsRelateToBattle()
 end
 function c88305705.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetLabelObject():IsAbleToRemove() end
