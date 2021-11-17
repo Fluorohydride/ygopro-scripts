@@ -46,7 +46,6 @@ function c26570480.cfilter(c,tp,ec)
 		return ((np==POS_FACEUP_DEFENSE and pp==POS_FACEUP_ATTACK) or (np==POS_FACEUP_ATTACK and pp&POS_DEFENSE~=0))
 			and c:IsControler(tp) and c:IsSetCard(0x71)
 	end
-	
 end
 function c26570480.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c26570480.cfilter,1,nil,tp,e:GetHandler())

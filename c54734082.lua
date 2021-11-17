@@ -8,7 +8,7 @@ function c54734082.initial_effect(c)
 	e1:SetCondition(c54734082.spcon)
 	e1:SetTarget(c54734082.sptg)
 	e1:SetOperation(c54734082.spop)
-	c:RegisterEffect(e1)	
+	c:RegisterEffect(e1)
 end
 function c54734082.cpfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x2066) and c:GetOriginalLevel()<=4

@@ -29,7 +29,7 @@ function c2625939.activate(e,tp,eg,ep,ev,re,r,rp)
 				i=i+1
 			end
 			Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(2625939,1))
-			ct=Duel.AnnounceNumber(tp,table.unpack(num))	
+			ct=Duel.AnnounceNumber(tp,table.unpack(num))
 		end
 		repeat
 			local token=Duel.CreateToken(tp,2625940)
