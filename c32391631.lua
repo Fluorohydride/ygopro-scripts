@@ -12,6 +12,7 @@ function c32391631.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_DAMAGE_STEP_END)
 	e2:SetRange(LOCATION_FZONE)
+	e2:SetCondition(c32391631.reccon)
 	e2:SetTarget(c32391631.rectg)
 	e2:SetOperation(c32391631.recop)
 	c:RegisterEffect(e2)
@@ -34,6 +35,9 @@ function c32391631.initial_effect(c)
 	e5:SetOperation(c32391631.desop)
 	c:RegisterEffect(e5)
 end
+function c32391631.reccon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetAttacker():IsRelateToBattle()
+end
 function c32391631.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetTargetPlayer(Duel.GetTurnPlayer())
@@ -41,7 +45,7 @@ function c32391631.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,Duel.GetTurnPlayer(),300)
 end
 function c32391631.recop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) or not Duel.GetAttacker():IsRelateToBattle() then return end
+	if not Duel.GetAttacker():IsRelateToBattle() then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Recover(p,d,REASON_EFFECT)
 end
