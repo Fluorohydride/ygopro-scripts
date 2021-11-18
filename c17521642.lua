@@ -16,8 +16,11 @@ end
 function c17521642.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c17521642.cfilter,1,nil,tp)
 end
+function c17521642.filter(c)
+	return c:IsFaceup() and c:GetAttack()>0
+end
 function c17521642.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(c17521642.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 end
 function c17521642.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
