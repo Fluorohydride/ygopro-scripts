@@ -51,7 +51,6 @@ end
 function c35100834.eqlimit(e,c)
 	return e:GetOwner()==c
 end
-
 function c35100834.atkcon(e)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
