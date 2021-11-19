@@ -21,7 +21,8 @@ function c60037599.rbfilter(c,e,tp)
 end
 function c60037599.extraop(e,tp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c60037599.rbfilter),tp,LOCATION_GRAVE,0,nil,e,tp)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(60037599,1)) then
+	if g:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.SelectYesNo(tp,aux.Stringid(60037599,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=g:Select(tp,1,1,nil)
