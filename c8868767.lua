@@ -37,7 +37,7 @@ function c8868767.activate(e,tp,eg,ep,ev,re,r,rp)
 			local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(Card.IsAbleToRemove),tp,LOCATION_GRAVE,0,1,1,nil)
 			if g:GetCount()>0 then
 				Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
-			end			
+			end
 		end
 	end
 end

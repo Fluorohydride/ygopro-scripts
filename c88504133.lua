@@ -37,7 +37,7 @@ function c88504133.cfilter(c,e,tp)
 end
 function c88504133.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
-	if chk==0 then return true end	
+	if chk==0 then return true end
 end
 function c88504133.tgefilter(c,tc,e,tp,rank)
 	if not c:IsType(TYPE_XYZ) then return false end
@@ -52,7 +52,7 @@ function c88504133.tgfilter(c,e,tp,rank)
 		and Duel.IsExistingMatchingCard(c88504133.tgefilter,tp,LOCATION_EXTRA,0,1,nil,c,e,tp,rank)
 end
 function c88504133.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c88504133.cfilter(chkc,e,tp) end	
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c88504133.cfilter(chkc,e,tp) end
 	if chk==0 then
 		if e:GetLabel()==0 then return false end
 		e:SetLabel(0)

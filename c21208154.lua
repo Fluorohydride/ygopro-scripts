@@ -42,7 +42,7 @@ function c21208154.initial_effect(c)
 	e7:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e7:SetRange(LOCATION_MZONE)
 	e7:SetValue(1)
-	c:RegisterEffect(e7)	
+	c:RegisterEffect(e7)
 end
 function c21208154.ttcon(e,c,minc)
 	if c==nil then return true end

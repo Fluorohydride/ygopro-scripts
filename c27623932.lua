@@ -44,7 +44,7 @@ function c27623932.CanEquipFilter(c,eqc)
 	return c:IsFaceup() and eqc:CheckEquipTarget(c)
 end
 function c27623932.eqfilter(c,tp)
-	return aux.IsCodeListed(c,3285552) and c:IsType(TYPE_EQUIP) and c:CheckUniqueOnField(tp) and not c:IsForbidden() 
+	return aux.IsCodeListed(c,3285552) and c:IsType(TYPE_EQUIP) and c:CheckUniqueOnField(tp) and not c:IsForbidden()
 		and Duel.IsExistingMatchingCard(c27623932.CanEquipFilter,tp,LOCATION_MZONE,0,1,nil,c)
 end
 function c27623932.operation(e,tp,eg,ep,ev,re,r,rp)
