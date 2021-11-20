@@ -16,6 +16,7 @@ end
 function c47658964.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c47658964.cfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c47658964.cfilter,tp,LOCATION_GRAVE,0,1,ft,nil)
 	e:SetLabel(g:GetCount())
@@ -29,7 +30,8 @@ function c47658964.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47658964.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	if ft<e:GetLabel() or not Duel.IsPlayerCanSpecialSummonMonster(tp,47658965,0x39,TYPES_TOKEN_MONSTER,0,0,1,RACE_PYRO,ATTRIBUTE_FIRE) then return end
+	if ft<e:GetLabel() or not Duel.IsPlayerCanSpecialSummonMonster(tp,47658965,0x39,TYPES_TOKEN_MONSTER,0,0,1,RACE_PYRO,ATTRIBUTE_FIRE)
+		or (e:GetLabel()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
 	for i=1,e:GetLabel() do
 		local token=Duel.CreateToken(tp,47658965)
 		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP_DEFENSE)

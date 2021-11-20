@@ -37,6 +37,7 @@ function c64283880.spop(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(64283880,0)) then
 			Duel.BreakEffect()
 			if ct>2 then ct=2 end
+			if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local sg=g:Select(tp,1,ct,nil)
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
