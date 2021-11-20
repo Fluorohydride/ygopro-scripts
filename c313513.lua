@@ -36,7 +36,7 @@ function c313513.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_DECK)
 end
 function c313513.dfilter(c)
-	return c:IsFacedown() or c:GetCode()~=83104731
+	return c:IsFacedown() or not c:IsCode(83104731)
 end
 function c313513.fselect(g)
 	return g:GetClassCount(Card.GetLocation)==g:GetCount()
