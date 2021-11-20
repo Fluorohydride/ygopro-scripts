@@ -64,7 +64,7 @@ function c65472618.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 end
-function c65472618.thfilter2(c)
+function c65472618.thfilter(c)
 	return c:IsAttackBelow(2000) and c:IsRace(RACE_WARRIOR+RACE_SPELLCASTER) and not c:IsCode(65472618) and c:IsAbleToHand()
 end
 function c65472618.thcon(e,tp,eg,ep,ev,re,r,rp)
