@@ -11,7 +11,7 @@ function c31531170.initial_effect(c)
 end
 function c31531170.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return (Duel.IsPlayerCanAdditionalPSummon(tp) or Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_PENDULUM_SUMMON)) and Duel.IsExistingTarget(nil,tp,0,LOCATION_PZONE,2,nil) end
+	if chk==0 then return (Duel.IsPlayerCanAdditionalPendulumSummon(tp) or Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_PENDULUM_SUMMON)) and Duel.IsExistingTarget(nil,tp,0,LOCATION_PZONE,2,nil) end
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_PZONE)
 	Duel.SetTargetCard(g)
 end
@@ -37,7 +37,7 @@ function c31531170.pendcon(e,c,og)
 	if c==nil then return true end
 	local tp=e:GetOwnerPlayer()
 	local eset={Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_PENDULUM_SUMMON)}
-	if not Duel.IsPlayerCanAdditionalPSummon(tp) and #eset==0 then return false end
+	if not Duel.IsPlayerCanAdditionalPendulumSummon(tp) and #eset==0 then return false end
 	local rpz=Duel.GetFieldCard(1-tp,LOCATION_PZONE,1)
 	if rpz==nil or rpz:GetFieldID()~=c:GetFlagEffectLabel(31531170) then return false end
 	local lscale=c:GetLeftScale()
@@ -68,11 +68,11 @@ function c31531170.pendop(e,tp,eg,ep,ev,re,r,rp,c,sg,og)
 	else
 		tg=Duel.GetMatchingGroup(aux.PConditionFilter,tp,LOCATION_EXTRA,0,nil,e,tp,lscale,rscale,eset)
 	end
-	local ce=Duel.GetAdditionalPSummon(tp)
+	local ce=Duel.GetAdditionalPendulumSummon(tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=tg:FilterSelect(tp,aux.PConditionExtraFilterSpecific,0,ft,nil,e,tp,lscale,rscale,ce)
 	if #g==0 then return end
-	Duel.SetAdditionalPSummon(tp,ce)
+	Duel.SetAdditionalPendulumSummon(tp,ce)
 	Duel.Hint(HINT_CARD,0,31531170)
 	sg:Merge(g)
 	Duel.HintSelection(Group.FromCards(c))

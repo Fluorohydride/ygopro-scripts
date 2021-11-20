@@ -1785,14 +1785,14 @@ function Auxiliary.PConditionFilter(c,e,tp,lscale,rscale,eset)
 	return (c:IsLocation(LOCATION_HAND) or (c:IsFaceup() and c:IsType(TYPE_PENDULUM)))
 		and lv>lscale and lv<rscale and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_PENDULUM,tp,bool,bool)
 		and not c:IsForbidden()
-		and (Duel.IsPlayerCanAdditionalPSummon(tp) or Auxiliary.PConditionExtraFilter(c,e,tp,lscale,rscale,eset))
+		and (Duel.IsPlayerCanAdditionalPendulumSummon(tp) or Auxiliary.PConditionExtraFilter(c,e,tp,lscale,rscale,eset))
 end
 function Auxiliary.PendCondition()
 	return	function(e,c,og)
 				if c==nil then return true end
 				local tp=c:GetControler()
 				local eset={Duel.IsPlayerAffectedByEffect(tp,EFFECT_EXTRA_PENDULUM_SUMMON)}
-				if not Duel.IsPlayerCanAdditionalPSummon(tp) and #eset==0 then return false end
+				if not Duel.IsPlayerCanAdditionalPendulumSummon(tp) and #eset==0 then return false end
 				local rpz=Duel.GetFieldCard(tp,LOCATION_PZONE,1)
 				if rpz==nil or c==rpz then return false end
 				local lscale=c:GetLeftScale()
@@ -1844,7 +1844,7 @@ function Auxiliary.PendOperation()
 				else
 					tg=Duel.GetMatchingGroup(Auxiliary.PConditionFilter,tp,loc,0,nil,e,tp,lscale,rscale,eset)
 				end
-				local ce=Duel.GetAdditionalPSummon(tp)
+				local ce=Duel.GetAdditionalPendulumSummon(tp)
 				if ce then
 					tg=tg:Filter(Auxiliary.PConditionExtraFilterSpecific,nil,e,tp,lscale,rscale,ce)
 				end
@@ -1854,7 +1854,7 @@ function Auxiliary.PendOperation()
 				local g=tg:SelectSubGroup(tp,aux.TRUE,cancel,1,math.min(#tg,ft))
 				Auxiliary.GCheckAdditional=nil
 				if not g then return end
-				Duel.SetAdditionalPSummon(tp,ce)
+				Duel.SetAdditionalPendulumSummon(tp,ce)
 				sg:Merge(g)
 				Duel.HintSelection(Group.FromCards(c))
 				Duel.HintSelection(Group.FromCards(rpz))
