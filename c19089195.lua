@@ -1,5 +1,6 @@
 --潜海奇襲
 function c19089195.initial_effect(c)
+	aux.AddCodeList(c,22702055)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
@@ -29,7 +30,8 @@ function c19089195.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c19089195.filter(c,tp)
-	return c:IsCode(22702055) and (c:GetType()==(TYPE_SPELL+TYPE_FIELD) or Duel.GetLocationCount(tp,LOCATION_SZONE,tp)>0) and c:GetActivateEffect() and c:GetActivateEffect():IsActivatable(tp,true,true)
+	return c:IsCode(22702055) and (c:IsType(TYPE_FIELD) or Duel.GetLocationCount(tp,LOCATION_SZONE)>0)
+		and c:GetActivateEffect() and c:GetActivateEffect():IsActivatable(tp,true,true)
 end
 function c19089195.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c19089195.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,tp)
@@ -37,7 +39,8 @@ function c19089195.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 		local tc=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c19089195.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,tp):GetFirst()
 		if tc then
-			if tc:GetType()==(TYPE_SPELL+TYPE_FIELD) then
+			local field=tc:IsType(TYPE_FIELD)
+			if field then
 				local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
 				if fc then
 					Duel.SendtoGrave(fc,REASON_RULE)
@@ -52,7 +55,9 @@ function c19089195.activate(e,tp,eg,ep,ev,re,r,rp)
 			local tep=tc:GetControler()
 			local cost=te:GetCost()
 			if cost then cost(te,tep,eg,ep,ev,re,r,rp,1) end
-			Duel.RaiseEvent(tc,4179255,te,0,tp,tp,Duel.GetCurrentChain())
+			if field then
+				Duel.RaiseEvent(tc,4179255,te,0,tp,tp,Duel.GetCurrentChain())
+			end
 		end
 	end
 end
