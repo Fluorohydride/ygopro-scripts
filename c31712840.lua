@@ -22,8 +22,8 @@ function c31712840.spcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c31712840.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local lp=Duel.GetLP(tp)
-	if chk==0 then return Duel.CheckLPCost(tp,lp-10,true) end
-	Duel.PayLPCost(tp,lp-10,true)
+	if chk==0 then return Duel.CheckLPCost(tp,lp-10) end
+	Duel.PayLPCost(tp,lp-10)
 end
 function c31712840.spfilter(c,e,tp)
 	return c:IsSetCard(0x107f) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP)
