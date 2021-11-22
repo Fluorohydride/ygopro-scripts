@@ -74,9 +74,9 @@ function c41141943.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c41141943.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c41141943.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
-	if g:GetCount()==0 then return end
-	local ft=Duel.GetLocationCount(1-tp,LOCATION_MZONE)
-	if ft>2 then ft=2 end
+	local ft=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),2)
+	if g:GetCount()==0 or ft<=0 then return end
+	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=g:Select(tp,1,ft,nil)
 	local ct=Duel.SpecialSummon(sg,0,tp,1-tp,false,false,POS_FACEUP_DEFENSE)
