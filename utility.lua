@@ -5,12 +5,8 @@ POS_FACEDOWN_DEFENCE=POS_FACEDOWN_DEFENSE
 RACE_CYBERS=RACE_CYBERSE
 
 function GetID()
-	local str=string.match(debug.getinfo(2,"S")["source"],"c%d+%.lua")
-	str=string.sub(str,1,string.len(str)-4)
-	local scard=_G[str]
-	local id=tonumber(string.sub(str,2))
-	local offset=id<100000000 and 1 or 100
-	return scard,id,offset
+	local offset=self_code<100000000 and 1 or 100
+	return self_table,self_code,offset
 end
 
 --the lua version of the bit32 lib, which is deprecated in lua 5.3
