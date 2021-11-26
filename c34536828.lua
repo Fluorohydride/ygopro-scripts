@@ -42,11 +42,11 @@ function c34536828.disop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c34536828.descon(e,tp,eg,ep,ev,re,r,rp)
 	local a,d=Duel.GetBattleMonster(tp)
-	return a and d and a:IsAttack(0) and d:IsAttack(0)
+	return a and d and a:IsAttack(0) and d:IsAttack(0) and d:IsRelateToBattle()
 end
 function c34536828.desop(e,tp,eg,ep,ev,re,r,rp)
 	local a,d=Duel.GetBattleMonster(tp)
-	if d then
+	if d and d:IsRelateToBattle() then
 		Duel.Destroy(d,REASON_EFFECT)
 	end
 end

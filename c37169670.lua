@@ -15,6 +15,7 @@ function c37169670.initial_effect(c)
 	e2:SetCategory(CATEGORY_DAMAGE+CATEGORY_RECOVER)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_F)
 	e2:SetCode(EVENT_DAMAGE_STEP_END)
+	e2:SetCondition(c37169670.damcon)
 	e2:SetTarget(c37169670.damtg)
 	e2:SetOperation(c37169670.damop)
 	c:RegisterEffect(e2)
@@ -31,8 +32,11 @@ function c37169670.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 c37169670.assault_name=95526884
+function c37169670.damcon(e,tp,eg,ep,ev,re,r,rp)
+	return aux.dsercon(e) and Duel.GetAttackTarget()~=nil
+end
 function c37169670.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetAttackTarget()~=nil end
+	if chk==0 then return true end
 	local c=e:GetHandler()
 	local d=Duel.GetAttackTarget()
 	if d==c then d=Duel.GetAttacker() end
