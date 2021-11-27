@@ -18,5 +18,5 @@ function c39806198.spcon(e,c)
 		and not Duel.IsExistingMatchingCard(c39806198.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c39806198.cfilter(c)
-	return c:IsFacedown() or not c:IsSetCard(0x83)
+	return c:IsFacedown() or not c:IsSetCard(0x1083)
 end

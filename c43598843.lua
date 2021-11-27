@@ -20,7 +20,7 @@ function c43598843.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c43598843.spfilter(c,e,tp)
-	return c:IsSetCard(0x83) and not c:IsCode(43598843) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
+	return c:IsSetCard(0x1083) and not c:IsCode(43598843) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c43598843.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c43598843.spfilter(chkc,e,tp) end
@@ -46,7 +46,7 @@ function c43598843.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c43598843.actop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	if re:IsActiveType(TYPE_MONSTER) and rc:IsSetCard(0x83) and ep==tp then
+	if re:IsActiveType(TYPE_MONSTER) and rc:IsSetCard(0x1083) and ep==tp then
 		Duel.SetChainLimit(c43598843.chainlm)
 	end
 end

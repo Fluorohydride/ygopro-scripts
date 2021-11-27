@@ -1,7 +1,7 @@
 --ギミック・パペット－ギガンテス・ドール
 function c7593748.initial_effect(c)
 	--xyz summon
-	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x83),4,2)
+	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x1083),4,2)
 	c:EnableReviveLimit()
 	--control
 	local e1=Effect.CreateEffect(c)
@@ -64,7 +64,7 @@ function c7593748.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e2,tp)
 end
 function c7593748.splimit(e,c)
-	return not c:IsSetCard(0x83)
+	return not c:IsSetCard(0x1083)
 end
 function c7593748.atktg(e,c)
 	return not c:IsType(TYPE_XYZ)

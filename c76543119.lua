@@ -24,7 +24,7 @@ function c76543119.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c76543119.filter(c)
-	return c:IsFaceup() and c:IsSetCard(0x83)
+	return c:IsFaceup() and c:IsSetCard(0x1083)
 end
 function c76543119.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c76543119.filter(chkc) end
@@ -43,7 +43,7 @@ function c76543119.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c76543119.spfilter(c,e,tp)
-	return c:IsSetCard(0x83) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x1083) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c76543119.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
