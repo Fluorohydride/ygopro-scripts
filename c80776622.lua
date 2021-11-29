@@ -23,6 +23,7 @@ function c80776622.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e3:SetRange(LOCATION_HAND)
 	e3:SetCondition(c80776622.spcon)
+	e3:SetTarget(c80776622.sptg)
 	e3:SetOperation(c80776622.spop)
 	c:RegisterEffect(e3)
 	--disable
@@ -92,11 +93,20 @@ function c80776622.spcon(e,c)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c80776622.rfilter,nil,tp)
 	return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp)
 end
-function c80776622.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c80776622.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local rg=Duel.GetReleaseGroup(tp):Filter(c80776622.rfilter,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,false,2,2,tp)
-	Duel.Release(sg,REASON_COST)
+	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,true,2,2,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c80776622.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.Release(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c80776622.pfilter(c)
 	return c:GetCurrentScale()%2~=0

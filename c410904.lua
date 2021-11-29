@@ -7,6 +7,7 @@ function c410904.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND+LOCATION_DECK)
 	e1:SetCondition(c410904.spcon)
+	e1:SetTarget(c410904.sptg)
 	e1:SetOperation(c410904.spop)
 	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
@@ -34,26 +35,38 @@ function c410904.initial_effect(c)
 	e3:SetOperation(c410904.thop)
 	c:RegisterEffect(e3)
 end
-function c410904.spfilter1(c,tp)
-	return c:IsFaceup() and c:IsRace(RACE_SPELLCASTER) and c:IsAbleToGraveAsCost()
-		and Duel.IsExistingMatchingCard(c410904.spfilter2,tp,LOCATION_MZONE,0,1,c)
+function c410904.spfilter(c)
+	return c:IsFaceup() and c:IsAbleToGraveAsCost()
 end
-function c410904.spfilter2(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_WIND) and c:IsAbleToGraveAsCost() and c:IsLevelBelow(4)
+function c410904.fcheck(g)
+	if #g~=2 then return false end
+	local c1=g:GetFirst()
+	local c2=g:GetNext()
+	return c1:IsRace(RACE_SPELLCASTER) and c2:IsAttribute(ATTRIBUTE_WIND) and c2:IsLevelBelow(4) or c1:IsAttribute(ATTRIBUTE_WIND) and c1:IsLevelBelow(4) and c2:IsRace(RACE_SPELLCASTER)
+end
+function c410904.fselect(g,tp)
+	return aux.mzctcheck(g,tp) and c410904.fcheck(g)
 end
 function c410904.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and Duel.IsExistingMatchingCard(c410904.spfilter1,tp,LOCATION_MZONE,0,1,nil,tp)
+	local g=Duel.GetMatchingGroup(c410904.spfilter,tp,LOCATION_MZONE,0,nil)
+	return g:CheckSubGroup(c410904.fselect,2,2,tp)
+end
+function c410904.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c410904.spfilter,tp,LOCATION_MZONE,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local sg=g:SelectSubGroup(tp,c410904.fselect,true,2,2,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c410904.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,c410904.spfilter1,tp,LOCATION_MZONE,0,1,1,nil,tp)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectMatchingCard(tp,c410904.spfilter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst())
-	g1:Merge(g2)
-	Duel.SendtoGrave(g1,REASON_COST)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c410904.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF

@@ -7,6 +7,7 @@ function c32750510.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c32750510.spcon)
+	e1:SetTarget(c32750510.sptg)
 	e1:SetOperation(c32750510.spop)
 	c:RegisterEffect(e1)
 	--add counter
@@ -34,35 +35,26 @@ end
 function c32750510.rfilter(c,tp)
 	return c:IsAttribute(ATTRIBUTE_WATER) and (c:IsControler(tp) or c:IsFaceup())
 end
-function c32750510.mzfilter(c,tp)
-	return c:IsControler(tp) and c:GetSequence()<5
-end
 function c32750510.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local rg=Duel.GetReleaseGroup(tp):Filter(c32750510.rfilter,nil,tp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft+1
-	return ft>-2 and rg:GetCount()>1 and (ft>0 or rg:IsExists(c32750510.mzfilter,ct,nil,tp))
+	return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp)
+end
+function c32750510.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local rg=Duel.GetReleaseGroup(tp):Filter(c32750510.rfilter,nil,tp)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
+	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,true,2,2,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c32750510.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local rg=Duel.GetReleaseGroup(tp):Filter(c32750510.rfilter,nil,tp)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=nil
-	if ft>0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		g=rg:Select(tp,2,2,nil)
-	elseif ft==0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		g=rg:FilterSelect(tp,c32750510.mzfilter,1,1,nil,tp)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local g2=rg:Select(tp,1,1,g:GetFirst())
-		g:Merge(g2)
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		g=rg:FilterSelect(tp,c32750510.mzfilter,2,2,nil,tp)
-	end
+	local g=e:GetLabelObject()
 	Duel.Release(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c32750510.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsCanAddCounter(0x1015,1) end

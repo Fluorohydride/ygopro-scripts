@@ -8,6 +8,7 @@ function c58330108.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c58330108.spcon)
+	e1:SetTarget(c58330108.sptg)
 	e1:SetOperation(c58330108.spop)
 	c:RegisterEffect(e1)
 	--atk gain
@@ -35,29 +36,23 @@ end
 function c58330108.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local g=Duel.GetMatchingGroup(c58330108.cfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,c)
-	return g:GetCount()>=2 and ft>-2 and g:FilterCount(Card.IsLocation,nil,LOCATION_MZONE)>-ft
+	return g:CheckSubGroup(aux.mzctcheck,2,2,tp)
+end
+function c58330108.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c58330108.cfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,c)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local sg=g:SelectSubGroup(tp,aux.mzctcheck,true,2,2,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c58330108.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft+1
-	local g=Duel.GetMatchingGroup(c58330108.cfilter,tp,LOCATION_MZONE+LOCATION_HAND,0,c)
-	local sg=nil
-	if ft<=0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		sg=g:FilterSelect(tp,Card.IsLocation,ct,ct,nil,LOCATION_MZONE)
-		if ct<2 then
-			g:Sub(sg)
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-			local sg1=g:Select(tp,2-ct,2-ct,nil)
-			sg:Merge(sg1)
-		end
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		sg=g:Select(tp,2,2,nil)
-	end
-	Duel.SendtoGrave(sg,REASON_COST)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c58330108.value(e,c)
 	return Duel.GetFieldGroupCount(c:GetControler(),LOCATION_REMOVED,LOCATION_REMOVED)*300

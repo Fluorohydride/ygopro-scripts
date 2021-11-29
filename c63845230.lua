@@ -14,6 +14,7 @@ function c63845230.initial_effect(c)
 	e2:SetCode(EFFECT_SPSUMMON_PROC)
 	e2:SetRange(LOCATION_HAND)
 	e2:SetCondition(c63845230.spcon)
+	e2:SetTarget(c63845230.sptg)
 	e2:SetOperation(c63845230.spop)
 	c:RegisterEffect(e2)
 	--atk/def
@@ -65,30 +66,23 @@ end
 function c63845230.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft+1
 	local g=Duel.GetMatchingGroup(Card.IsAbleToRemoveAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_EXTRA,0,c,POS_FACEDOWN)
-	return g:GetCount()>=5 and (ft>0 or g:IsExists(Card.IsLocation,ct,nil,LOCATION_MZONE))
+	return g:CheckSubGroup(aux.mzctcheck,5,#g,tp)
+end
+function c63845230.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(Card.IsAbleToRemoveAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_EXTRA,0,c,POS_FACEDOWN)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=mg:SelectSubGroup(tp,aux.mzctcheck,true,5,#g,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c63845230.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local ct=-ft+1
-	local g=Duel.GetMatchingGroup(Card.IsAbleToRemoveAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_EXTRA,0,c,POS_FACEDOWN)
-	local rg=nil
-	if ft<=0 then
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		rg=g:FilterSelect(tp,Card.IsLocation,ct,ct,nil,LOCATION_MZONE)
-		if ct<5 then
-			g:Sub(rg)
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-			local g1=g:Select(tp,5-ct,99-ct,nil)
-			rg:Merge(g1)
-		end
-	else
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		rg=g:Select(tp,5,99,nil)
-	end
-	Duel.Remove(rg,POS_FACEDOWN,REASON_COST)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEDOWN,REASON_COST)
+	g:DeleteGroup()
 end
 function c63845230.val(e,c)
 	return Duel.GetMatchingGroupCount(Card.IsFacedown,0,LOCATION_REMOVED,LOCATION_REMOVED,nil)*100

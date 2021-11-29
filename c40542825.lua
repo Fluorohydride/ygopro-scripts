@@ -7,6 +7,7 @@ function c40542825.initial_effect(c)
 	e1:SetCode(EFFECT_SPSUMMON_PROC)
 	e1:SetRange(LOCATION_HAND+LOCATION_DECK)
 	e1:SetCondition(c40542825.spcon)
+	e1:SetTarget(c40542825.sptg)
 	e1:SetOperation(c40542825.spop)
 	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
@@ -27,26 +28,32 @@ function c40542825.initial_effect(c)
 	e3:SetCondition(c40542825.condition)
 	c:RegisterEffect(e3)
 end
-function c40542825.spfilter1(c,tp)
-	return c:IsFaceup() and c:IsCode(73318863) and c:IsAbleToGraveAsCost()
-		and Duel.IsExistingMatchingCard(c40542825.spfilter2,tp,LOCATION_MZONE,0,1,c)
+function c40542825.spfilter(c)
+	return c:IsFaceup() and c:IsAbleToGraveAsCost()
 end
-function c40542825.spfilter2(c)
-	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsAbleToGraveAsCost()
+function c40542825.fselect(g,tp)
+	return aux.mzctcheck(g,tp) and aux.gffcheck(g,Card.IsCode,73318863,Card.IsAttribute,ATTRIBUTE_LIGHT)
 end
 function c40542825.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.GetLocationCount(tp,LOCATION_MZONE)>-2
-		and Duel.IsExistingMatchingCard(c40542825.spfilter1,tp,LOCATION_MZONE,0,1,nil,tp)
+	local g=Duel.GetMatchingGroup(c40542825.spfilter,tp,LOCATION_MZONE,0,nil)
+	return g:CheckSubGroup(c40542825.fselect,2,2,tp)
+end
+function c40542825.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c40542825.spfilter,tp,LOCATION_MZONE,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
+	local sg=g:SelectSubGroup(tp,c40542825.fselect,true,2,2,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c40542825.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g1=Duel.SelectMatchingCard(tp,c40542825.spfilter1,tp,LOCATION_MZONE,0,1,1,nil,tp)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g2=Duel.SelectMatchingCard(tp,c40542825.spfilter2,tp,LOCATION_MZONE,0,1,1,g1:GetFirst())
-	g1:Merge(g2)
-	Duel.SendtoGrave(g1,REASON_COST)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c40542825.thfilter(c)
 	return c:IsDefense(1500) and c:IsRace(RACE_SPELLCASTER) and not c:IsCode(40542825) and c:IsAbleToHand()
