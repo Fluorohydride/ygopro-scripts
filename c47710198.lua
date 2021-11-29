@@ -75,7 +75,7 @@ function c47710198.remop1(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		tc=g:Select(tp,1,1,nil):GetFirst()
 	end
-	if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 then
+	if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED) then
 		Duel.Damage(1-tp,1200,REASON_EFFECT)
 	end
 end
@@ -89,8 +89,9 @@ function c47710198.remtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,1200)
 end
 function c47710198.remop2(e,tp,eg,ep,ev,re,r,rp)
-	if re:GetHandler():IsRelateToEffect(re) then
-		if Duel.Remove(re:GetHandler(),POS_FACEUP,REASON_EFFECT)~=0 then
+	local tc=re:GetHandler()
+	if tc:IsRelateToEffect(re) then
+		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED) then
 			 Duel.Damage(1-tp,1200,REASON_EFFECT)
 		end
 	end
