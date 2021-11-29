@@ -79,6 +79,7 @@ function c67331360.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		sg=g:SelectSubGroup(tp,aux.gfcheck,2,2,false,Card.IsCode,code1,code2)
 	end
+	if not sg then return end
 	local sc=sg:GetFirst()
 	while sc do
 		Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEUP)
