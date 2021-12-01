@@ -35,7 +35,7 @@ function c55521751.otfilter(c,e,tp)
 	return c:IsAbleToGrave() and not c:IsImmuneToEffect(e) and Duel.GetMZoneCount(tp,c)>0
 end
 function c55521751.otfilter2(c,e)
-	return c:IsAbleToGrave() and not c:IsImmuneToEffect(e)
+	return c:IsAbleToGrave() and not c:IsImmuneToEffect(e) and not c:IsStatus(STATUS_LEAVE_CONFIRMED)
 end
 function c55521751.otcon(e,c,minc)
 	if c==nil then return true end
