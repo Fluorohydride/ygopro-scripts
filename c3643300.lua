@@ -1,5 +1,6 @@
 --伝説のフィッシャーマン
 function c3643300.initial_effect(c)
+	aux.AddCodeList(c,22702055)
 	--immune spell
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
