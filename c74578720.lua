@@ -47,7 +47,7 @@ function c74578720.cfilter(c,tp)
 		and bit.band(c:GetPreviousTypeOnField(),TYPE_XYZ)~=0 and c:IsPreviousLocation(LOCATION_MZONE)
 end
 function c74578720.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c74578720.cfilter,1,nil,tp)
+	return eg:IsExists(c74578720.cfilter,1,nil,tp) and not eg:IsContains(e:GetHandler())
 end
 function c74578720.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
