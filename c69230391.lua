@@ -57,15 +57,16 @@ function c69230391.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c69230391.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
-	if g:GetCount()==0 then return end
-	Duel.ConfirmCards(tp,g)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
-	local hg=g:Select(tp,1,1,nil)
-	Duel.SendtoGrave(hg,REASON_EFFECT+REASON_DISCARD)
-	Duel.ShuffleHand(1-tp)
-	local tc=hg:GetFirst()
-	if tc:IsType(TYPE_MONSTER) then
-		Duel.Damage(1-tp,tc:GetLevel()*200,REASON_EFFECT)
+	if g:GetCount()>0 then
+		Duel.ConfirmCards(tp,g)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
+		local hg=g:Select(tp,1,1,nil)
+		Duel.SendtoGrave(hg,REASON_EFFECT+REASON_DISCARD)
+		Duel.ShuffleHand(1-tp)
+		local tc=hg:GetFirst()
+		if tc:IsType(TYPE_MONSTER) then
+			Duel.Damage(1-tp,tc:GetLevel()*200,REASON_EFFECT)
+		end
 	end
 	if e:GetLabel()==1 then
 		Duel.BreakEffect()
