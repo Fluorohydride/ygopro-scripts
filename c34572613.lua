@@ -60,7 +60,10 @@ function c34572613.drop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c34572613.drtgfilter,tp,LOCATION_HAND,0,1,1,nil)
 	local tc=g:GetFirst()
-	if tc and Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK) then
-		Duel.Draw(tp,1,REASON_EFFECT)
+	if tc then
+		Duel.ConfirmCards(1-tp,tc)
+		if Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_DECK) then
+			Duel.Draw(tp,1,REASON_EFFECT)
+		end
 	end
 end
