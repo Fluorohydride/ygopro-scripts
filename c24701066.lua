@@ -64,7 +64,8 @@ function c24701066.xyzcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=c:GetBattleTarget()
 	if not c:IsRelateToBattle() then return false end
 	e:SetLabelObject(tc)
-	return tc and tc:IsType(TYPE_MONSTER) and tc:IsReason(REASON_BATTLE) and tc:IsCanOverlay()
+	return tc and tc:IsType(TYPE_MONSTER) and tc:IsReason(REASON_BATTLE) and
+		(tc:IsFaceup() and tc:IsLocation(LOCATION_EXTRA+LOCATION_REMOVED) or tc:IsLocation(LOCATION_GRAVE)) and tc:IsCanOverlay()
 end
 function c24701066.xyztg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsType(TYPE_XYZ) end
