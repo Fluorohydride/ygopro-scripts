@@ -28,15 +28,19 @@ function c6075533.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c6075533.cfilter,tp,LOCATION_MZONE,0,1,nil)
 	local ct=g:GetClassCount(Card.GetCode)
 	if chk==0 then return ct>=1 and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,nil)
-		and (ct<2 or Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,nil))
-		and (ct<3 or Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_HAND,1,nil)) end
-	local rct=1
-	local loc=LOCATION_ONFIELD
-	if ct>=2 then
+		or ct>=2 and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,nil)
+		or ct>=3 and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_HAND,1,nil) end
+	local rct=0
+	local loc=0
+	if ct>=1 and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,nil) then
+		rct=rct+1
+		loc=loc+LOCATION_ONFIELD
+	end
+	if ct>=2 and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,nil) then
 		rct=rct+1
 		loc=loc+LOCATION_GRAVE
 	end
-	if ct>=3 then
+	if ct>=3 and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_HAND,1,nil) then
 		rct=rct+1
 		loc=loc+LOCATION_HAND
 	end
