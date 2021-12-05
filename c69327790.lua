@@ -51,40 +51,44 @@ end
 function c69327790.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
 	if chk==0 then return true end
+	local g1=nil
 	if Duel.IsExistingTarget(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil)
 		and Duel.IsExistingTarget(nil,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-		local g1=Duel.SelectTarget(tp,nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
+		g1=Duel.SelectTarget(tp,nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 		local g2=Duel.SelectTarget(tp,nil,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil)
-		if e:GetLabel()==1
-			and Duel.IsExistingTarget(Card.IsAbleToHand,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,g1:GetFirst())
-			and Duel.SelectYesNo(tp,aux.Stringid(69327790,2)) then
-			e:SetCategory(CATEGORY_TODECK+CATEGORY_TOHAND)
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-			local g3=Duel.SelectTarget(tp,Card.IsAbleToHand,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,g1:GetFirst())
-			Duel.SetOperationInfo(0,CATEGORY_TOHAND,g3,1,0,0)
-		end
 		e:SetLabelObject(g2:GetFirst())
 		g1:Merge(g2)
 		Duel.SetOperationInfo(0,CATEGORY_TODECK,g1,2,0,0)
+	end
+	if e:GetLabel()==1
+		and Duel.IsExistingTarget(Card.IsAbleToHand,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,g1)
+		and Duel.SelectYesNo(tp,aux.Stringid(69327790,2)) then
+		e:SetCategory(CATEGORY_TODECK+CATEGORY_TOHAND)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
+		local g3=Duel.SelectTarget(tp,Card.IsAbleToHand,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,g1)
+		Duel.SetOperationInfo(0,CATEGORY_TOHAND,g3,1,0,0)
+	else
+		e:SetCategory(CATEGORY_TODECK)
 	end
 end
 function c69327790.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local ex,g1=Duel.GetOperationInfo(0,CATEGORY_TODECK)
 	local ex2,g2=Duel.GetOperationInfo(0,CATEGORY_TOHAND)
-	if not g1 then return end
-	local sg1=g1:Filter(Card.IsRelateToEffect,nil,e)
-	if sg1:GetCount()>0 and Duel.SendtoDeck(sg1,nil,SEQ_DECKTOP,REASON_EFFECT)>1 then
-		local gc=e:GetLabelObject()
-		local fc=sg1:GetFirst()
-		if fc==gc then fc=sg1:GetNext() end
-		if fc:GetControler()==gc:GetControler() and fc:IsLocation(LOCATION_DECK) and gc:IsLocation(LOCATION_DECK) then
-			local op=Duel.SelectOption(tp,aux.Stringid(69327790,3),aux.Stringid(69327790,4))
-			if op==0 then
-				Duel.MoveSequence(fc,0)
-			else
-				Duel.MoveSequence(gc,0)
+	if g1 then
+		local sg1=g1:Filter(Card.IsRelateToEffect,nil,e)
+		if sg1:GetCount()>0 and Duel.SendtoDeck(sg1,nil,SEQ_DECKTOP,REASON_EFFECT)>1 then
+			local gc=e:GetLabelObject()
+			local fc=sg1:GetFirst()
+			if fc==gc then fc=sg1:GetNext() end
+			if fc:GetControler()==gc:GetControler() and fc:IsLocation(LOCATION_DECK) and gc:IsLocation(LOCATION_DECK) then
+				local op=Duel.SelectOption(tp,aux.Stringid(69327790,3),aux.Stringid(69327790,4))
+				if op==0 then
+					Duel.MoveSequence(fc,0)
+				else
+					Duel.MoveSequence(gc,0)
+				end
 			end
 		end
 	end
