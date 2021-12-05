@@ -28,15 +28,19 @@ function c6075533.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g=Duel.GetMatchingGroup(c6075533.cfilter,tp,LOCATION_MZONE,0,1,nil)
 	local ct=g:GetClassCount(Card.GetCode)
 	if chk==0 then return ct>=1 and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,nil)
-		and (ct<2 or Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,nil))
-		and (ct<3 or Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_HAND,1,nil)) end
-	local rct=1
-	local loc=LOCATION_ONFIELD
-	if ct>=2 then
+		or ct>=2 and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,nil)
+		or ct>=3 and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_HAND,1,nil) end
+	local rct=0
+	local loc=0
+	if ct>=1 and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,nil) then
+		rct=rct+1
+		loc=loc+LOCATION_ONFIELD
+	end
+	if ct>=2 and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,nil) then
 		rct=rct+1
 		loc=loc+LOCATION_GRAVE
 	end
-	if ct>=3 then
+	if ct>=3 and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_HAND,1,nil) then
 		rct=rct+1
 		loc=loc+LOCATION_HAND
 	end
@@ -45,24 +49,29 @@ end
 function c6075533.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c6075533.cfilter,tp,LOCATION_MZONE,0,nil)
 	local ct=g:GetClassCount(Card.GetCode)
+	local rflag=false
 	if ct>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local g=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,1,nil)
 		if g:GetCount()>0 then
 			Duel.HintSelection(g)
 			Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
+			rflag=true
 		end
 	end
 	if ct>1 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local g=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,1,nil)
 		if g:GetCount()>0 then
+			if rflag then Duel.BreakEffect() end
 			Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
+			rflag=true
 		end
 	end
 	if ct>2 then
 		local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,0,LOCATION_HAND,nil)
 		if g:GetCount()>0 then
+			if rflag then Duel.BreakEffect() end
 			local sg=g:RandomSelect(tp,1)
 			Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)
 		end
