@@ -50,7 +50,7 @@ function c78527720.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local eqg=Duel.SelectMatchingCard(tp,c78527720.efilter,tp,LOCATION_DECK,0,1,1,nil,c)
-		Duel.Equip(tp,eqg:GetFirst(),c)
+		if eqg:GetCount()>0 then Duel.Equip(tp,eqg:GetFirst(),c) end
 	end
 end
 function c78527720.eqcon(e,tp,eg,ep,ev,re,r,rp,chk)
