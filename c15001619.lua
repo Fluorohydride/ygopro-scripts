@@ -28,7 +28,7 @@ function c15001619.initial_effect(c)
 end
 function c15001619.cfilter(c,tp)
 	return c:IsControler(1-tp) and c:IsPreviousLocation(LOCATION_DECK) and not c:IsReason(REASON_DRAW)
-		and c:IsType(TYPE_MONSTER)
+		and c:IsType(TYPE_MONSTER) and not c:IsStatus(STATUS_TO_HAND_WITHOUT_CONFIRM)
 end
 function c15001619.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c15001619.cfilter,1,nil,tp)

@@ -48,6 +48,7 @@ function c90969892.operation(e,tp,eg,ep,ev,re,r,rp)
 			and Duel.SelectOption(tp,1190,1152)==1 then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		else
+			tc:SetStatus(STATUS_TO_HAND_WITHOUT_CONFIRM,true)
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tc)
 		end
