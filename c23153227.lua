@@ -35,7 +35,7 @@ function c23153227.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c23153227.filter,tp,LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc then
-		if tc:IsAbleToHand() and Duel.SelectOption(tp,1190,aux.Stringid(23153227,0))==0 then
+		if tc:IsAbleToHand() and Duel.SelectOption(tp,1190,aux.Stringid(23153227,2))==0 then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			Duel.ConfirmCards(1-tp,tc)
 		else
