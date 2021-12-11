@@ -14,7 +14,7 @@ function c22011689.initial_effect(c)
 	e2:SetCategory(CATEGORY_EQUIP)
 	e2:SetCode(EVENT_BATTLE_DESTROYING)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
-	e2:SetCondition(aux.bdocon)
+	e2:SetCondition(c22011689.eqcon)
 	e2:SetTarget(c22011689.eqtg)
 	e2:SetOperation(c22011689.eqop)
 	c:RegisterEffect(e2)
@@ -32,6 +32,12 @@ function c22011689.initial_effect(c)
 end
 function c22011689.atkval(e,c)
 	return Duel.GetCounter(0,1,1,0x1041)*200
+end
+function c22011689.eqcon(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local bc=c:GetBattleTarget()
+	return c:IsRelateToBattle() and c:IsStatus(STATUS_OPPO_BATTLE) and bc:IsType(TYPE_MONSTER) and
+        	(bc:IsLocation(LOCATION_GRAVE) or bc:IsFaceup() and bc:IsLocation(LOCATION_EXTRA+LOCATION_REMOVED))
 end
 function c22011689.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0 end
