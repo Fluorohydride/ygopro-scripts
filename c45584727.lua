@@ -65,7 +65,8 @@ function c45584727.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	if tc==hc then tc=g:GetNext() end
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) and Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)>0 and hc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e)
+		and Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)>0 and hc:IsRelateToEffect(e) then
 		Duel.Remove(hc,POS_FACEUP,REASON_EFFECT)
 	end
 end
