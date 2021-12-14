@@ -300,12 +300,12 @@ EFFECT_FLAG_BOTH_SIDE		=0x1000		--双方都能使用（部分场地，弹压）
 EFFECT_FLAG_COPY_INHERIT	=0x2000		--若由复制的效果產生則继承其Reset属性
 EFFECT_FLAG_DAMAGE_STEP		=0x4000		--可以在伤害步骤发动
 EFFECT_FLAG_DAMAGE_CAL		=0x8000		--可以在伤害计算时发动
-EFFECT_FLAG_DELAY			=0x10000	--場合型誘發效果、用於永續效果的EFFECT_TYPE_CONTINUOUS、神之化身/恐惧之源的攻击力变化最后计算
+EFFECT_FLAG_DELAY			=0x10000	--場合型誘發效果、用於永續效果的EFFECT_TYPE_CONTINUOUS
 EFFECT_FLAG_SINGLE_RANGE	=0x20000	--只对自己有效
 EFFECT_FLAG_UNCOPYABLE		=0x40000	--不能复制的原始效果（效果外文本）
 EFFECT_FLAG_OATH			=0x80000	--誓约效果
 EFFECT_FLAG_SPSUM_PARAM		=0x100000	--指定召喚/规则特殊召唤的位置和表示形式(熔岩魔神)
-EFFECT_FLAG_REPEAT			=0x200000	--神之化身的攻击力重复计算
+EFFECT_FLAG_REPEAT			=0x200000	--N/A
 EFFECT_FLAG_NO_TURN_RESET	=0x400000	--发条等“这张卡在场上只能发动一次”的效果
 EFFECT_FLAG_EVENT_PLAYER	=0x800000	--视为对方玩家的效果（动作？）
 EFFECT_FLAG_OWNER_RELATE	=0x1000000	--与效果owner关联的效果
@@ -319,6 +319,9 @@ EFFECT_FLAG_IMMEDIATELY_APPLY	=0x80000000	--卡在发动时效果就立即适用
 
 EFFECT_FLAG2_MILLENNIUM_RESTRICT	=0x0001 --N/A
 EFFECT_FLAG2_COF					=0x0002 --通常魔法卡在MP1以外发动（邪恶的仪式的特殊处理）
+EFFECT_FLAG2_WICKED					=0x0004	--神之化身/恐惧之源的攻击力变化最后计算
+EFFECT_FLAG2_OPTION					=0x0008	--子機
+
 --========== Codes ==========	--对永续性效果表示效果类型(EFFECT开头)，对诱发型效果表示触发效果的事件/时点(EVENT开头)
 EFFECT_IMMUNE_EFFECT			=1		--效果免疫
 EFFECT_DISABLE					=2		--效果无效（技能抽取）
@@ -419,8 +422,8 @@ EFFECT_SET_BASE_DEFENSE			=107	--设置原本防御力
 EFFECT_REVERSE_UPDATE			=108	--倒置改变攻击力、防御力（天邪鬼）
 EFFECT_SWAP_AD					=109	--交换攻防(超級漏洞人)
 EFFECT_SWAP_BASE_AD				=110	--交换原本攻防
-EFFECT_SWAP_ATTACK_FINAL		=111	--N/A
-EFFECT_SWAP_DEFENSE_FINAL		=112	--N/A
+EFFECT_SET_BASE_ATTACK_FINAL	=111	--设置最终原本攻击力
+EFFECT_SET_BASE_DEFENSE_FINAL	=112	--设置最终原本防御力
 EFFECT_ADD_CODE					=113	--增加卡名
 EFFECT_CHANGE_CODE				=114	--改变卡名
 EFFECT_ADD_TYPE					=115	--增加卡片种类（types）
