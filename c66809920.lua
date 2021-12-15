@@ -63,11 +63,12 @@ function c66809920.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if rc then
 		if Duel.Remove(rc,POS_FACEUP,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) and c:IsFaceup() then
 			Duel.BreakEffect()
+			local atk=rc:GetBaseAttack()
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
+			e1:SetCode(EFFECT_SET_ATTACK_FINAL)
+			e1:SetValue(atk)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE+RESET_PHASE+PHASE_END)
-			e1:SetCode(EFFECT_SET_ATTACK)
-			e1:SetValue(rc:GetBaseAttack())
 			c:RegisterEffect(e1)
 		end
 	end
