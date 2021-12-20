@@ -38,8 +38,8 @@ end
 function c8400623.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	return Duel.IsExistingMatchingCard(c8400623.cfilter,tp,LOCATION_MZONE,0,1,nil)
-		or (Duel.IsExistingMatchingCard(c8400623.cfilter,tp,LOCATION_GRAVE,0,1,nil) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0)
+	local g=Duel.GetMatchingGroup(c8400623.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil)
+	return #g>0 and Duel.GetMZoneCount(tp,g)>0
 end
 function c8400623.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c8400623.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil)
@@ -65,6 +65,8 @@ function c8400623.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c8400623.desop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	if not c:IsRelateToEffect(e) or c:IsFacedown() or c:IsControler(1-tp) then return end
 	local tc=Duel.GetFirstTarget()
 	if tc and tc:IsRelateToEffect(e) then
 		Duel.Destroy(tc,REASON_EFFECT)
