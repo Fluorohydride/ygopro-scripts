@@ -141,22 +141,28 @@ function c25524823.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if bit.band(sel,2)~=0 then
 		local g=Duel.GetMatchingGroup(c25524823.filter,tp,0,LOCATION_MZONE,nil)
-		Duel.Destroy(g,REASON_EFFECT)
+		if g:GetCount()>0 then
+			Duel.BreakEffect()
+			Duel.Destroy(g,REASON_EFFECT)
+		end
 	end
 	if bit.band(sel,4)~=0 then
 		local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 		local tc=g:GetFirst()
-		while tc do
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_UPDATE_ATTACK)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			e1:SetValue(-2000)
-			tc:RegisterEffect(e1)
-			local e2=e1:Clone()
-			e2:SetCode(EFFECT_UPDATE_DEFENSE)
-			tc:RegisterEffect(e2)
-			tc=g:GetNext()
+		if tc then
+			Duel.BreakEffect()
+			while tc do
+				local e1=Effect.CreateEffect(c)
+				e1:SetType(EFFECT_TYPE_SINGLE)
+				e1:SetCode(EFFECT_UPDATE_ATTACK)
+				e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+				e1:SetValue(-2000)
+				tc:RegisterEffect(e1)
+				local e2=e1:Clone()
+				e2:SetCode(EFFECT_UPDATE_DEFENSE)
+				tc:RegisterEffect(e2)
+				tc=g:GetNext()
+			end
 		end
 	end
 end
