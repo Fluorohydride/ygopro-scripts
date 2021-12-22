@@ -68,7 +68,7 @@ end
 function c10497636.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ac=e:GetLabelObject()
-	if ac:IsFaceup() and ac:IsRelateToBattle() and not ac:IsStatus(STATUS_DISABLED) and not ac:IsImmuneToEffect(e) and ac:IsControler(1-tp) then
+	if ac:IsFaceup() and ac:IsRelateToBattle() and not ac:IsDisabled() and not ac:IsImmuneToEffect(e) and ac:IsControler(1-tp) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
