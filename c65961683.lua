@@ -5,9 +5,9 @@ function c65961683.initial_effect(c)
 	c:EnableReviveLimit()
 	--Atk
 	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e1:SetOperation(c65961683.valop)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_MATERIAL_CHECK)
+	e1:SetValue(c65961683.matcheck)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
@@ -20,15 +20,12 @@ function c65961683.initial_effect(c)
 	e2:SetOperation(c65961683.desop)
 	c:RegisterEffect(e2)
 end
-function c65961683.valop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if not c:IsSummonType(SUMMON_TYPE_SYNCHRO) then return end
+function c65961683.matcheck(e,c)
 	local g=c:GetMaterial()
 	local tc=g:GetFirst()
 	local atk=0
 	while tc do
-		local tatk=tc:GetTextAttack()
-		if tatk<0 then tatk=0 end
+		local tatk=tc:GetBaseAttack()
 		atk=atk+tatk
 		tc=g:GetNext()
 	end
@@ -36,7 +33,7 @@ function c65961683.valop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_ATTACK)
 	e1:SetValue(atk)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD+RESET_DISABLE)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
 	e2:SetCode(EFFECT_SET_DEFENSE)

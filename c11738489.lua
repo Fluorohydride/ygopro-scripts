@@ -6,9 +6,9 @@ function c11738489.initial_effect(c)
 	aux.AddLinkProcedure(c,nil,3,6,c11738489.lcheck)
 	--base atk
 	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
-	e1:SetOperation(c11738489.atkop)
+	e1:SetType(EFFECT_TYPE_SINGLE)
+	e1:SetCode(EFFECT_MATERIAL_CHECK)
+	e1:SetValue(c11738489.matcheck)
 	c:RegisterEffect(e1)
 	--immune
 	local e2=Effect.CreateEffect(c)
@@ -32,14 +32,13 @@ end
 function c11738489.lcheck(g)
 	return g:GetClassCount(Card.GetLinkAttribute)==g:GetCount()
 end
-function c11738489.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local c=e:GetHandler()
-	if not c:IsSummonType(SUMMON_TYPE_LINK) then return end
+function c11738489.matcheck(e,c)
+	local ct=c:GetMaterialCount()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_BASE_ATTACK)
-	e1:SetValue(c:GetMaterialCount()*1000)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
+	e1:SetValue(ct*1000)
+	e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD+RESET_DISABLE)
 	c:RegisterEffect(e1)
 end
 function c11738489.efilter(e,te)
