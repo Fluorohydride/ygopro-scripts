@@ -69,7 +69,7 @@ end
 function c71736213.fusop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local chkf=tp
-	if c:IsFacedown() or not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) then return end
+	if not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) then return end
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c71736213.filter1,nil,e)
 	local sg1=Duel.GetMatchingGroup(c71736213.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,c,chkf)
 	local mg2=nil
