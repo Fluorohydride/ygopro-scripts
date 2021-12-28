@@ -32,12 +32,32 @@ function c35606858.initial_effect(c)
 	e3:SetCategory(CATEGORY_DICE+CATEGORY_TOHAND+CATEGORY_TODECK+CATEGORY_SPECIAL_SUMMON)
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
-	e3:SetCode(EVENT_TO_GRAVE)
+	e3:SetCode(EVENT_CUSTOM+35606858)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCost(c35606858.dccost)
 	e3:SetTarget(c35606858.dctg)
 	e3:SetOperation(c35606858.dcop)
 	c:RegisterEffect(e3)
+	--check
+	local g=Group.CreateGroup()
+	g:KeepAlive()
+	local e4=Effect.CreateEffect(c)
+	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e4:SetCode(EVENT_TO_GRAVE)
+	e4:SetRange(LOCATION_MZONE)
+	e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e4:SetLabelObject(g)
+	e4:SetOperation(c35606858.check)
+	c:RegisterEffect(e4)
+	local e5=Effect.CreateEffect(c)
+	e5:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e5:SetCode(EVENT_ADJUST)
+	e5:SetRange(LOCATION_MZONE)
+	e5:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e5:SetLabelObject(g)
+	e5:SetCondition(c35606858.regcon)
+	e5:SetOperation(c35606858.regop)
+	c:RegisterEffect(e5)
 end
 c35606858.toss_dice=true
 function c35606858.mtcon(e,tp,eg,ep,ev,re,r,rp)
@@ -86,7 +106,7 @@ function c35606858.cfilter(c,e,tp)
 		and (c:IsAbleToHand() or c:IsAbleToDeck() or Duel.GetLocationCount(tp,LOCATION_MZONE)>0)
 end
 function c35606858.dctg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanSpecialSummon(tp) and eg:IsExists(c35606858.cfilter,1,nil,e,tp) end
+	if chk==0 then return Duel.IsPlayerCanSpecialSummon(tp) and eg:IsExists(c35606858.cfilter,1,nil,e,tp) and eg:IsContains(e:GetHandler()) end
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)
 end
 function c35606858.dcop(e,tp,eg,ep,ev,re,r,rp)
@@ -107,4 +127,16 @@ function c35606858.dcop(e,tp,eg,ep,ev,re,r,rp)
 	elseif d>=2 and d<=5 then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
+end
+function c35606858.check(e,tp,eg)
+	e:GetLabelObject():Merge(eg)
+end
+function c35606858.regcon(e)
+	return e:GetLabelObject():GetCount()>0 and Duel.GetCurrentChain()==0
+end
+function c35606858.regop(e)
+	local g=e:GetLabelObject()
+	g:AddCard(e:GetHandler())
+	Duel.RaiseEvent(g,EVENT_CUSTOM+35606858,e,0,0,0,0)
+	g:Clear()
 end
