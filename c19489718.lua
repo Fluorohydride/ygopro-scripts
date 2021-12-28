@@ -51,7 +51,7 @@ function c19489718.discon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=c:GetBattleTarget()
 	e:SetLabelObject(tc)
-	return tc and tc:IsFaceup() and tc:IsControler(1-tp) and tc:IsType(TYPE_MONSTER) and not tc:IsStatus(STATUS_DISABLED)
+	return tc and tc:IsFaceup() and tc:IsControler(1-tp) and tc:IsType(TYPE_MONSTER) and not tc:IsDisabled()
 		and Duel.IsExistingMatchingCard(c19489718.cfilter,tp,LOCATION_GRAVE,0,1,nil,tc:GetAttribute())
 end
 function c19489718.distg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -71,7 +71,7 @@ function c19489718.disop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(p,Card.IsAbleToDeck,p,LOCATION_HAND,0,1,63,nil)
 	if g:GetCount()==0 then return end
 	if Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_EFFECT)~=0 and tc and tc:IsRelateToBattle() and tc:IsControler(1-tp)
-		and not tc:IsStatus(STATUS_DISABLED) and not tc:IsImmuneToEffect(e) then
+		and not tc:IsDisabled() and not tc:IsImmuneToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
