@@ -264,6 +264,7 @@ function Auxiliary.EnableChangeCode(c,code,location,condition)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e1:SetCode(EFFECT_CHANGE_CODE)
 	e1:SetRange(loc)
+	e1:SetCondition(condition)
 	e1:SetValue(code)
 	c:RegisterEffect(e1)
 	return e1
