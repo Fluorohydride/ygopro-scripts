@@ -33,11 +33,12 @@ function c79229522.sprop(c)
 	return	function(g)
 				Duel.SendtoGrave(g,REASON_COST)
 				--spsummon condition
+				local ct=g:GetCount()
 				local e1=Effect.CreateEffect(c)
 				e1:SetType(EFFECT_TYPE_SINGLE)
 				e1:SetCode(EFFECT_SET_BASE_ATTACK)
 				e1:SetReset(RESET_EVENT+0xff0000)
-				e1:SetValue(g:GetCount()*1000)
+				e1:SetValue(ct*1000)
 				c:RegisterEffect(e1)
 			end
 end

@@ -40,6 +40,7 @@ function c64599569.sucop(e,tp,eg,ep,ev,re,r,rp)
 	local e3=e1:Clone()
 	e3:SetCode(EFFECT_EXTRA_ATTACK_MONSTER)
 	e3:SetValue(c:GetMaterialCount()-1)
+	e3:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e3)
 end
 function c64599569.tgop(e,tp,eg,ep,ev,re,r,rp)
