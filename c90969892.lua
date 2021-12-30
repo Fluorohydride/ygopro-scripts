@@ -50,7 +50,6 @@ function c90969892.operation(e,tp,eg,ep,ev,re,r,rp)
 		else
 			tc:SetStatus(STATUS_TO_HAND_WITHOUT_CONFIRM,true)
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
-			Duel.ConfirmCards(1-tp,tc)
 		end
 		sg:RemoveCard(tc)
 		Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
