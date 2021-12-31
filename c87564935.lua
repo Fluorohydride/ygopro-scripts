@@ -92,5 +92,5 @@ function c87564935.efilter1(e,re,rp)
 	return rp==1-e:GetHandlerPlayer() and re:IsActiveType(TYPE_MONSTER)
 end
 function c87564935.efilter2(e,te)
-	return te:GetHandlerPlayer()~=e:GetHandlerPlayer() and te:IsActiveType(TYPE_MONSTER)
+	return te:GetOwnerPlayer()~=e:GetHandlerPlayer() and te:IsActiveType(TYPE_MONSTER)
 end

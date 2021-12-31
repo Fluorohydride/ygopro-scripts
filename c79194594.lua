@@ -75,7 +75,7 @@ function c79194594.immop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c79194594.efilter(e,te)
-	return te:IsActiveType(e:GetLabel()) and te:GetHandlerPlayer()~=e:GetHandlerPlayer()
+	return te:IsActiveType(e:GetLabel()) and te:GetOwnerPlayer()~=e:GetHandlerPlayer()
 end
 function c79194594.thcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

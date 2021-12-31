@@ -41,7 +41,7 @@ function c91228233.immtg(e,c)
 	return c:GetEquipCount()>0 and c:GetEquipGroup():IsExists(Card.IsCode,1,nil,92341815)
 end
 function c91228233.immval(e,re)
-	return re:IsActivated() and re:GetHandlerPlayer()~=e:GetHandlerPlayer()
+	return re:IsActivated() and re:GetOwnerPlayer()~=e:GetHandlerPlayer()
 end
 function c91228233.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local rc=eg:GetFirst()
