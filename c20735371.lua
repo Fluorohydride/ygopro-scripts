@@ -19,6 +19,7 @@ function c20735371.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFlagEffect(tp,20735371)==0 end
 end
 function c20735371.activate(e,tp,eg,ep,ev,re,r,rp)
+	if Duel.GetFlagEffect(tp,20735371)~=0 then return end
 	local c=e:GetHandler()
 	local tc=e:GetLabelObject()
 	if not tc:IsRelateToBattle() then return end

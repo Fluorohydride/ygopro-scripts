@@ -15,7 +15,7 @@ function c17449108.filter(c)
 end
 function c17449108.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:GetLocation()==LOCATION_SZONE and c17449108.filter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c17449108.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil) end
+	if chk==0 then return Duel.IsExistingTarget(c17449108.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,e:GetHandler()) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g=Duel.SelectTarget(tp,c17449108.filter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)

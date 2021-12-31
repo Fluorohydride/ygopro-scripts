@@ -32,7 +32,6 @@ function c41578483.initial_effect(c)
 	--disable
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
-	e4:SetProperty(0,EFFECT_FLAG2_MILLENNIUM_RESTRICT)
 	e4:SetCode(EFFECT_DISABLE)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetTargetRange(LOCATION_MZONE,LOCATION_MZONE)
@@ -122,12 +121,12 @@ function c41578483.disfilter(c)
 end
 function c41578483.distg(e,c)
 	local g=e:GetHandler():GetEquipGroup():Filter(c41578483.disfilter,nil)
-	return g:IsExists(Card.IsCode,1,nil,c:GetCode()) and (c:IsType(TYPE_EFFECT) or c:GetOriginalType()&TYPE_EFFECT~=0)
+	return (c:IsType(TYPE_EFFECT) or c:GetOriginalType()&TYPE_EFFECT~=0) and g:IsExists(Card.IsOriginalCodeRule,1,nil,c:GetOriginalCodeRule())
 end
 function c41578483.discon(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetHandler():GetEquipGroup():Filter(c41578483.disfilter,nil)
-	local code,type=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_CODE,CHAININFO_TYPE)
-	return type==TYPE_MONSTER and g:IsExists(Card.IsCode,1,nil,code)
+	local rc=re:GetHandler()
+	return re:IsActiveType(TYPE_MONSTER) and g:IsExists(Card.IsOriginalCodeRule,1,nil,rc:GetOriginalCodeRule())
 end
 function c41578483.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)

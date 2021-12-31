@@ -35,7 +35,7 @@ function c54895237.gspcfilter(c,tp)
 		and Duel.IsExistingMatchingCard(c54895237.gspfilter,tp,LOCATION_HAND,0,1,nil,c,tp)
 end
 function c54895237.gspfilter(c,cc,tp)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsSetCard(0x109)
+	return c:IsType(TYPE_SPELL+TYPE_TRAP) and not c:IsType(TYPE_FIELD) and c:IsSetCard(0x109)
 		and not c:IsForbidden() and c:CheckUniqueOnField(tp,LOCATION_ONFIELD,cc)
 end
 function c54895237.gspcost(e,tp,eg,ep,ev,re,r,rp,chk)

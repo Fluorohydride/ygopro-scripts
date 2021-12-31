@@ -255,33 +255,20 @@ function Auxiliary.EnableUnionAttribute(c,f)
 	e2:SetValue(f)
 	c:RegisterEffect(e2)
 end
-function Auxiliary.ChangeCodeCondition(check,condition)
-	return	function(e)
-				if condition and not condition(e) then return false end
-				local le={e:GetHandler():IsHasEffect(EFFECT_DISABLE)}
-				for _,te in ipairs(le) do
-					if not te:IsHasProperty(0,EFFECT_FLAG2_MILLENNIUM_RESTRICT) then return check end
-				end
-				return not check
-			end
-end
 function Auxiliary.EnableChangeCode(c,code,location,condition)
 	Auxiliary.AddCodeList(c,code)
 	local loc=c:GetOriginalType()&TYPE_MONSTER~=0 and LOCATION_MZONE or LOCATION_SZONE
 	loc=location or loc
+	if condition==nil then condition=Auxiliary.TRUE end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e1:SetCode(EFFECT_CHANGE_CODE)
 	e1:SetRange(loc)
+	e1:SetCondition(condition)
 	e1:SetValue(code)
-	e1:SetCondition(Auxiliary.ChangeCodeCondition(true,condition))
 	c:RegisterEffect(e1)
-	local e2=e1:Clone()
-	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetCondition(Auxiliary.ChangeCodeCondition(false,condition))
-	c:RegisterEffect(e2)
-	return e1,e2
+	return e1
 end
 function Auxiliary.TargetEqualFunction(f,value,...)
 	local ext_params={...}

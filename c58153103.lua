@@ -17,9 +17,7 @@ end
 function c58153103.regop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	--change name
-	local e0,e1=aux.EnableChangeCode(c,59464593,LOCATION_MZONE,c58153103.condition)
-	e0:SetLabel(1)
-	e0:SetReset(RESET_EVENT+RESETS_STANDARD)
+	local e1=aux.EnableChangeCode(c,59464593,LOCATION_MZONE,c58153103.condition)
 	e1:SetLabel(1)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	--control

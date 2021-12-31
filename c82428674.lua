@@ -44,6 +44,7 @@ function c82428674.activate(e,tp,eg,ep,ev,re,r,rp)
 	if rc>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local sg=dg:Select(tp,rc,rc,nil)
+		Duel.HintSelection(sg)
 		Duel.Destroy(sg,REASON_EFFECT)
 	end
 end

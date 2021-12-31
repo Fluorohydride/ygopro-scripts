@@ -56,14 +56,17 @@ end
 function c33026283.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker()==e:GetHandler()
 end
+function c33026283.thfilter(c)
+	return c:IsAbleToHand() and not c:IsStatus(STATUS_BATTLE_DESTROYED)
+end
 function c33026283.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local g=Duel.GetMatchingGroup(Card.IsAbleToHand,tp,0,LOCATION_MZONE,nil)
+	local g=Duel.GetMatchingGroup(c33026283.thfilter,tp,0,LOCATION_MZONE,nil)
 	if chk==0 then return #g>0 end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 end
 function c33026283.thop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
-	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToHand,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c33026283.thfilter,tp,0,LOCATION_MZONE,1,1,nil)
 	if #g>0 then
 		Duel.HintSelection(g)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)

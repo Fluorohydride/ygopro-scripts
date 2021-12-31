@@ -75,7 +75,7 @@ function c47710198.remop1(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		tc=g:Select(tp,1,1,nil):GetFirst()
 	end
-	if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED) then
+	if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and (tc:IsLocation(LOCATION_REMOVED) or tc:IsType(TYPE_TOKEN)) then
 		Duel.Damage(1-tp,1200,REASON_EFFECT)
 	end
 end

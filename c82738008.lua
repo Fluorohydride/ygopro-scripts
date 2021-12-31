@@ -31,9 +31,7 @@ function c82738008.filter2(c,e,tp,m,f,chkf)
 end
 function c82738008.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
-		Duel.SendtoHand(tc,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,tc)
+	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
 		local chkf=tp
 		local mg1=Duel.GetFusionMaterial(tp):Filter(c82738008.filter1,nil,e)
 		local sg1=Duel.GetMatchingGroup(c82738008.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)

@@ -11,13 +11,9 @@ function c81066751.initial_effect(c)
 	e4:SetOperation(c81066751.activate)
 	c:RegisterEffect(e4)
 end
-function c81066751.cfilter(c)
-	return c:IsFaceup() and c:IsCode(56433456)
-end
 function c81066751.condition(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.IsExistingMatchingCard(c81066751.cfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) then return false end
-	if not Duel.IsChainNegatable(ev) then return false end
-	return re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE)
+	return Duel.IsEnvironment(56433456) and Duel.IsChainNegatable(ev)
+		and (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE))
 end
 function c81066751.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
