@@ -24,11 +24,18 @@ end
 function c73648243.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
+		local batk=c:GetBaseAttack()
+		local bdef=c:GetBaseDefense()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_SWAP_BASE_AD)
-		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		e1:SetCode(EFFECT_SET_BASE_ATTACK)
+		e1:SetValue(bdef)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
 		c:RegisterEffect(e1)
+		local e2=e1:Clone()
+		e2:SetCode(EFFECT_SET_BASE_DEFENSE)
+		e2:SetValue(batk)
+		c:RegisterEffect(e2)
 	end
 	Duel.SpecialSummonComplete()
 end
