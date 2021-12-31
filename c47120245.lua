@@ -64,6 +64,7 @@ function c47120245.thop(e,tp,eg,ep,ev,re,r,rp)
 		local tg=sg:RandomSelect(1-tp,1)
 		local tc=tg:GetFirst()
 		if tc:IsAbleToHand() then
+			tc:SetStatus(STATUS_TO_HAND_WITHOUT_CONFIRM,true)
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			sg:RemoveCard(tc)
 		end
