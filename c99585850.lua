@@ -88,12 +88,19 @@ function c99585850.rmop(e,tp,eg,ep,ev,re,r,rp,chk)
 	if Duel.Remove(g,POS_FACEUP,REASON_EFFECT)~=0 then
 		local op=Duel.GetOperatedGroup()
 		if op:IsContains(c) then
-			if Duel.GetTurnPlayer()==tp and Duel.GetCurrentPhase()==PHASE_END then
+			local owner_player=c:GetOwner()
+			local reset_flag=RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END
+			if owner_player==tp then
+				reset_flag=reset_flag+RESET_SELF_TURN
+			else
+				reset_flag=reset_flag+RESET_OPPO_TURN
+			end
+			if Duel.GetTurnPlayer()==owner_player and Duel.GetCurrentPhase()==PHASE_END then
 				e:GetLabelObject():SetLabel(Duel.GetTurnCount())
-				c:RegisterFlagEffect(99585850,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,2)
+				c:RegisterFlagEffect(99585850,reset_flag,0,2)
 			else
 				e:GetLabelObject():SetLabel(0)
-				c:RegisterFlagEffect(99585850,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_SELF_TURN,0,1)
+				c:RegisterFlagEffect(99585850,reset_flag,0,1)
 			end
 		end
 	end
