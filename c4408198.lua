@@ -15,7 +15,7 @@ function c4408198.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c4408198.checkfilter(c)
-	return c:IsFaceup() and c:IsSummonLocation(LOCATION_GRAVE)
+	return c:IsSummonLocation(LOCATION_GRAVE)
 end
 function c4408198.condition(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsExistingMatchingCard(c4408198.checkfilter,tp,0,LOCATION_MZONE,1,nil) then return true end
