@@ -19,7 +19,7 @@ function c20994205.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c20994205.nofilter(c)
 	local m=_G["c"..c:GetCode()]
-	if not m then return false end
+	if not m then return c.xyz_number end
 	local no=m.xyz_number
 	return no
 end
