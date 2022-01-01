@@ -25,10 +25,16 @@ function c31044787.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c31044787.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c31044787.filter,tp,0,LOCATION_MZONE,nil,1-tp)
-	local atk=g:GetSum(Card.GetAttack)
 	local lp=Duel.GetLP(tp)
+	local mustg=g:Filter(Card.IsAttackAbove,nil,lp)
+	g:Sub(mustg)
+	local atk=g:GetSum(Card.GetAttack)
 	local diff=atk-lp
-	if diff<=0 then return end
+	if diff<=0 then
+		Duel.SendtoDeck(mustg,nil,SEQ_DECKSHUFFLE,REASON_RULE)
+		return
+	end
 	local sg=g:SelectWithSumGreater(1-tp,Card.GetAttack,diff)
+	sg:Merge(mustg)
 	Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_RULE)
 end
