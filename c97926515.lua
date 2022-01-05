@@ -31,6 +31,5 @@ function c97926515.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tg=sg:Select(1-tp,1,1,nil)
 		tg:GetFirst():SetStatus(STATUS_TO_HAND_WITHOUT_CONFIRM,true)
 		Duel.SendtoHand(tg,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,tg)
 	end
 end
