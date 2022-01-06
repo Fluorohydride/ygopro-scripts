@@ -44,7 +44,7 @@ function c83326048.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e2,tp)
 end
 function c83326048.sumlimit(e,c,sump,sumtype,sumpos,targetp)
-	return c:IsType(e:GetLabel())
+	return c:GetOriginalType()&e:GetLabel()>0
 end
 function c83326048.distg(e,c)
 	return c:IsType(e:GetLabel())
