@@ -19,7 +19,7 @@ function c18302224.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c18302224.cfilter,1,nil,tp)
 end
 function c18302224.filter(c,e,tp)
-	return c:IsCode(89943723) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsCode(89943723) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK)
 end
 function c18302224.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

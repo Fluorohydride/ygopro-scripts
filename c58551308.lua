@@ -25,8 +25,7 @@ function c58551308.flipop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c58551308.filter(c,e,tp)
-	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
-		or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
+	return c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 end
 function c58551308.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
@@ -51,18 +50,12 @@ function c58551308.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=sg:GetFirst()
 	if tc and Duel.GetLocationCount(tc:GetControler(),LOCATION_MZONE)>0 then
 		local sp=tc:GetControler()
-		local spos=0
-		if tc:IsCanBeSpecialSummoned(e,0,sp,false,false,POS_FACEUP_ATTACK) then spos=spos+POS_FACEUP_ATTACK end
-		if tc:IsCanBeSpecialSummoned(e,0,sp,false,false,POS_FACEDOWN_DEFENSE) then spos=spos+POS_FACEDOWN_DEFENSE end
-		if spos~=0 then Duel.SpecialSummonStep(tc,0,sp,sp,false,false,spos) end
+		Duel.SpecialSummonStep(tc,0,sp,sp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 	end
 	tc=sg:GetNext()
 	if tc and Duel.GetLocationCount(tc:GetControler(),LOCATION_MZONE)>0 then
 		local sp=tc:GetControler()
-		local spos=0
-		if tc:IsCanBeSpecialSummoned(e,0,sp,false,false,POS_FACEUP_ATTACK) then spos=spos+POS_FACEUP_ATTACK end
-		if tc:IsCanBeSpecialSummoned(e,0,sp,false,false,POS_FACEDOWN_DEFENSE) then spos=spos+POS_FACEDOWN_DEFENSE end
-		if spos~=0 then Duel.SpecialSummonStep(tc,0,sp,sp,false,false,spos) end
+		Duel.SpecialSummonStep(tc,0,sp,sp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 	end
 	Duel.SpecialSummonComplete()
 end

@@ -44,7 +44,7 @@ function c48115277.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 		if not ct then ct=0 end
 		return (ct==0 or not Duel.IsPlayerAffectedByEffect(tp,59822133))
 			and Duel.GetLocationCount(tp,LOCATION_MZONE)>ct-1
-			and Duel.IsPlayerCanSpecialSummonMonster(tp,48115278,0,TYPES_TOKEN_MONSTER,1000,1500,4,RACE_ROCK,ATTRIBUTE_EARTH)
+			and Duel.IsPlayerCanSpecialSummonMonster(tp,48115278,0,TYPES_TOKEN_MONSTER,1000,1500,4,RACE_ROCK,ATTRIBUTE_EARTH,POS_FACEUP_DEFENSE)
 	end
 	local ct=e:GetLabel()
 	Duel.SetOperationInfo(0,CATEGORY_TOKEN,nil,ct+1,0,0)
@@ -54,7 +54,7 @@ function c48115277.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetLabel()
 	if ct>0 and Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>ct
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,48115278,0,TYPES_TOKEN_MONSTER,1000,1500,4,RACE_ROCK,ATTRIBUTE_EARTH) then
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,48115278,0,TYPES_TOKEN_MONSTER,1000,1500,4,RACE_ROCK,ATTRIBUTE_EARTH,POS_FACEUP_DEFENSE) then
 		for i=1,ct+1 do
 			local token=Duel.CreateToken(tp,48115278)
 			Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP_DEFENSE)

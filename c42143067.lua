@@ -21,8 +21,7 @@ function c42143067.cfilter(c,e,tp)
 		and Duel.IsExistingMatchingCard(c42143067.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,c:GetOriginalAttribute(),c:GetOriginalLevel())
 end
 function c42143067.spfilter(c,e,tp,att,lv)
-	return c:IsRace(RACE_ROCK) and c:GetOriginalAttribute()==att and c:GetOriginalLevel()==lv
-		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE))
+	return c:IsRace(RACE_ROCK) and c:GetOriginalAttribute()==att and c:GetOriginalLevel()==lv and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 end
 function c42143067.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
@@ -44,11 +43,7 @@ function c42143067.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c42143067.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp,gc:GetOriginalAttribute(),gc:GetOriginalLevel())
 	local tc=g:GetFirst()
 	if tc then
-		local spos=0
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK) then spos=spos+POS_FACEUP_ATTACK end
-		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE) then spos=spos+POS_FACEDOWN_DEFENSE end
-		Duel.SpecialSummon(tc,0,tp,tp,false,false,spos)
-		if tc:IsFacedown() then
+		if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)~=0 and tc:IsFacedown() then
 			Duel.ConfirmCards(1-tp,tc)
 		end
 	end
