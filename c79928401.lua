@@ -43,11 +43,10 @@ function c79928401.spop(e,tp,eg,ep,ev,re,r,rp)
 		if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 			e1:SetCode(EFFECT_SET_ATTACK)
 			e1:SetValue(math.ceil(atk*2))
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-			tc:RegisterEffect(e1,true)
+			tc:RegisterEffect(e1)
 			local lp=Duel.GetLP(tp)-tc:GetBaseAttack()
 			Duel.SetLP(tp,lp)
 		end

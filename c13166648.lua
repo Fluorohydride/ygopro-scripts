@@ -27,7 +27,9 @@ function c13166648.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c13166648.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
-	if tc and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK)~=0 then
+	local ss=false
+	if tc and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK) then
+		ss=true
 		local a=Duel.GetAttacker()
 		if a:IsRelateToBattle() and a:IsFaceup() then
 			local e1=Effect.CreateEffect(e:GetHandler())
@@ -40,13 +42,16 @@ function c13166648.activate(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetCode(EFFECT_DISABLE)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-			tc:RegisterEffect(e2,true)
+			tc:RegisterEffect(e2)
 			local e3=Effect.CreateEffect(e:GetHandler())
 			e3:SetType(EFFECT_TYPE_SINGLE)
 			e3:SetCode(EFFECT_DISABLE_EFFECT)
 			e3:SetReset(RESET_EVENT+RESETS_STANDARD)
-			tc:RegisterEffect(e3,true)
-			Duel.CalculateDamage(a,tc)
+			tc:RegisterEffect(e3)
 		end
+	end
+	Duel.SpecialSummonComplete()
+	if ss then
+		Duel.CalculateDamage(a,tc)
 	end
 end
