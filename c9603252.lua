@@ -44,7 +44,8 @@ function c9603252.matfilter(c)
 	return c:IsRace(RACE_SPELLCASTER)
 end
 function c9603252.condition(e,tp,eg,ep,ev,re,r,rp)
-	return (re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsRace(RACE_SPELLCASTER) and not re:GetHandler():IsType(TYPE_FUSION))
+	local race=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_RACE)
+	return (re:IsActiveType(TYPE_MONSTER) and race&RACE_SPELLCASTER>0 and not re:IsActiveType(TYPE_FUSION))
 		or re:IsActiveType(TYPE_SPELL)
 end
 function c9603252.destg(e,tp,eg,ep,ev,re,r,rp,chk)
