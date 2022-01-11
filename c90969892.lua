@@ -52,11 +52,13 @@ function c90969892.operation(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		end
 		sg:RemoveCard(tc)
-		Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
+		Duel.ShuffleDeck(tp)
+		Duel.MoveSequence(sg:GetFirst(),SEQ_DECKTOP)
+		Duel.MoveSequence(sg:GetNext(),SEQ_DECKTOP)
 		Duel.SortDecktop(tp,tp,2)
 		for i=1,2 do
 			local mg=Duel.GetDecktopGroup(tp,1)
-			Duel.MoveSequence(mg:GetFirst(),1)
+			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 		end
 	end
 end
