@@ -57,8 +57,9 @@ function c81767888.spop(e,tp,eg,ep,ev,re,r,rp)
 	if ct>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	for i=1,ct do
 		local token=Duel.CreateToken(tp,81767889)
-		Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
+		Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
 	end
+	Duel.SpecialSummonComplete()
 end
 function c81767888.thfilter(c)
 	return (c:IsCode(68468459) or aux.IsCodeListed(c,68468459) and c:IsType(TYPE_MONSTER)) and c:IsFaceup() and c:IsAbleToHand()
