@@ -6,8 +6,15 @@ function c86271510.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1)
+	e1:SetTarget(c86271510.target)
 	e1:SetOperation(c86271510.operation)
 	c:RegisterEffect(e1)
+end
+function c86271510.filter(c)
+	return c:IsFaceup() and not c:IsAttack(c:GetBaseAttack())
+end
+function c86271510.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsExistingMatchingCard(c86271510.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 end
 function c86271510.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
