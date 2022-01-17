@@ -63,6 +63,7 @@ function c10045474.activate(e,tp,eg,ep,ev,re,r,rp)
 			e6:SetReset(RESET_PHASE+PHASE_END)
 			e6:SetLabel(c:GetSequence())
 			Duel.RegisterEffect(e6,tp)
+			Duel.Hint(HINT_ZONE,tp,0x1<<(c:GetSequence()+8))
 		end
 	end
 end
