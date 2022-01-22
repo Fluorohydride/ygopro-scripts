@@ -35,7 +35,8 @@ function c14934922.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x119) and c:IsSummonType(SUMMON_TYPE_LINK) and c:GetFlagEffect(14934922)~=0
 end
 function c14934922.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsOnField() and chkc~=e:GetHandler() end
+	if chkc then return e:GetLabel()==0 and chkc:IsOnField() and chkc~=e:GetHandler()
+		or e:GetLabel()==1 and chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c14934922.filter(chkc) end
 	local b1=Duel.IsExistingMatchingCard(c14934922.costfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil,e:GetHandler(),tp)
 	local b2=Duel.IsExistingTarget(c14934922.filter,tp,LOCATION_MZONE,0,1,nil)
 		and Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_ONFIELD,1,nil)
