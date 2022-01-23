@@ -52,6 +52,7 @@ function c23649496.operation(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		local dg=Duel.GetMatchingGroup(c23649496.filter,tp,LOCATION_MZONE,LOCATION_MZONE,tc,tc:GetCode())
 		Duel.Destroy(dg,REASON_EFFECT)
+		if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetRange(LOCATION_MZONE)
