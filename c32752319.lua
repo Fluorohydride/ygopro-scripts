@@ -21,7 +21,6 @@ function c32752319.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local atk=0
 	while tc do
 		local catk=tc:GetBaseAttack()
-		if catk<0 then catk=0 end
 		atk=atk+catk
 		tc=g:GetNext()
 	end

@@ -27,7 +27,7 @@ function c65384019.activate(e,tp,eg,ep,ev,re,r,rp)
 		if not tc:IsImmuneToEffect(e) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_SET_BASE_ATTACK)
+			e1:SetCode(EFFECT_SET_BASE_ATTACK_FINAL)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			e1:SetValue(0)
 			tc:RegisterEffect(e1)
