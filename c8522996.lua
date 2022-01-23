@@ -63,7 +63,7 @@ function c8522996.chop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
 	e1:SetCode(EFFECT_CHANGE_ATTRIBUTE)
 	e1:SetValue(att)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+	e1:SetReset(RESET_EVENT+RESET_DISABLE+RESETS_STANDARD)
 	c:RegisterEffect(e1)
 	--double tribute
 	local e2=Effect.CreateEffect(c)
