@@ -42,7 +42,7 @@ function c8198620.atop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	if bc:IsRelateToBattle() and bc:IsFaceup() then
-		
+		local lv=bc:GetOriginalLevel()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
@@ -53,7 +53,6 @@ function c8198620.atop(e,tp,eg,ep,ev,re,r,rp)
 			and Duel.IsPlayerCanSpecialSummonMonster(tp,8198621,0,TYPES_TOKEN_MONSTER,-2,0,0,RACE_ZOMBIE,ATTRIBUTE_DARK) then
 			local token=Duel.CreateToken(tp,8198621)
 			local atk=bc:GetBaseAttack()
-			local lv=bc:GetOriginalLevel()
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_SET_ATTACK)
