@@ -1,5 +1,6 @@
 --BF－極光のアウロラ
 function c4068622.initial_effect(c)
+	c:EnableReviveLimit()
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -26,7 +27,6 @@ function c4068622.initial_effect(c)
 	e3:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e3:SetValue(aux.FALSE)
 	c:RegisterEffect(e3)
-	c:EnableReviveLimit()
 end
 function c4068622.spfilter1(c,ft,tp)
 	if c:GetSequence()<5 then ft=ft+1 end
@@ -96,11 +96,11 @@ function c4068622.operation(e,tp,eg,ep,ev,re,r,rp)
 		e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		e3:SetLabel(cid)
 		e3:SetLabelObject(e2)
-		e3:SetOperation(s.rstop)
+		e3:SetOperation(c4068622.rstop)
 		c:RegisterEffect(e3)
 	end
 end
-function s.rstop(e,tp,eg,ep,ev,re,r,rp)
+function c4068622.rstop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local cid=e:GetLabel()
 	c:ResetEffect(cid,RESET_COPY)
