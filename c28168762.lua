@@ -52,7 +52,7 @@ function c28168762.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c28168762.filter(c,ec)
-	return c:IsFaceup() and c:IsSetCard(0x2158) and c:IsType(TYPE_LINK) and c:GetLinkedGroup():IsContains(ec)
+	return c:IsFaceup() and c:IsSetCard(0x2158) and c:IsType(TYPE_LINK) and (c:GetLinkedGroup():IsContains(ec) or ec:GetLinkedGroup():IsContains(c))
 end
 function c28168762.dmcon(e,tp,eg,ep,ev,re,r,rp)
 	local a,d=Duel.GetBattleMonster(tp)
