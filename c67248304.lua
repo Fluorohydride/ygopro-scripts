@@ -52,9 +52,9 @@ function c67248304.operation(e,tp,eg,ep,ev,re,r,rp)
 				Duel.Hint(HINT_SELECTMSG,1-turnp,HINTMSG_SET)
 				setg2=sg2:SelectSubGroup(1-turnp,c67248304.fselect,false,1,math.min(ct2,ft2+1),ft2)
 			end
-			if sg1:GetCount()>0 or sg2:GetCount()>0 then Duel.BreakEffect() end
-			if sg1:GetCount()>0 then Duel.SSet(turnp,sg1,turnp,false) end
-			if sg2:GetCount()>0 then Duel.SSet(1-turnp,sg2,1-turnp,false) end
+			if setg1:GetCount()>0 or setg2:GetCount()>0 then Duel.BreakEffect() end
+			if setg1:GetCount()>0 then Duel.SSet(turnp,setg1,turnp,false) end
+			if setg2:GetCount()>0 then Duel.SSet(1-turnp,setg2,1-turnp,false) end
 		end
 	end
 end
