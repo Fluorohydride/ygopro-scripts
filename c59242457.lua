@@ -65,13 +65,13 @@ end
 function c59242457.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED)
 end
-function c59242457.toexfilter(c)
-	return c:IsType(TYPE_XYZ) and c:IsAbleToExtra()
+function c59242457.toexfilter(c,tp)
+	return c:IsType(TYPE_XYZ) and c:IsAbleToExtra() and c:GetOwner()==tp
 end
 function c59242457.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local g=c:GetOverlayGroup()
-	if chk==0 then return g:IsExists(c59242457.toexfilter,1,nil) end
+	if chk==0 then return g:IsExists(c59242457.toexfilter,1,nil,tp) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c59242457.spop(e,tp,eg,ep,ev,re,r,rp)
@@ -79,7 +79,7 @@ function c59242457.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=c:GetOverlayGroup()
 	if c:IsRelateToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-		local sc=g:FilterSelect(tp,c59242457.toexfilter,1,1,nil):GetFirst()
+		local sc=g:FilterSelect(tp,c59242457.toexfilter,1,1,nil,tp):GetFirst()
 		if sc and Duel.SendtoDeck(sc,nil,0,REASON_EFFECT)>0 and sc:IsLocation(LOCATION_EXTRA)
 			and c:IsFaceup() and c:IsControler(tp) and not c:IsImmuneToEffect(e)
 			and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) and c:IsCanBeXyzMaterial(sc)
