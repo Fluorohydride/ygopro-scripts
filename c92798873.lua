@@ -53,7 +53,18 @@ function c92798873.atkfilter(c,lp)
 	return c:IsFaceup() and c:GetAttack()~=lp
 end
 function c92798873.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c92798873.atkfilter,tp,0,LOCATION_MZONE,1,nil,Duel.GetLP(tp)) end
+	if chk==0 then
+		local cost=math.floor(Duel.GetLP(tp)/2)
+		local ce={Duel.IsPlayerAffectedByEffect(tp,EFFECT_LPCOST_CHANGE)}
+		for _,te in ipairs(ce) do
+			local con=te:GetCondition()
+			local val=te:GetValue()
+			if (not con or con(te)) then
+				cost=val(te,e,tp,cost)
+			end
+		end
+		return Duel.IsExistingMatchingCard(c92798873.atkfilter,tp,0,LOCATION_MZONE,1,nil,Duel.GetLP(tp)-cost)
+	end
 end
 function c92798873.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
