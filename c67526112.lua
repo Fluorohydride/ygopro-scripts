@@ -101,6 +101,7 @@ function c67526112.bttg(e,c)
 	return not c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c67526112.immval(e,te)
-	return te:GetOwner()~=e:GetHandler() and te:IsActiveType(TYPE_MONSTER) and te:IsActivated()
-		and te:GetOwner():IsSummonLocation(LOCATION_EXTRA)
+	local tc=te:GetOwner()
+	return tc~=e:GetHandler() and te:IsActiveType(TYPE_MONSTER) and te:IsActivated()
+		and te:GetActivateLocation()==LOCATION_MZONE and tc:IsSummonLocation(LOCATION_EXTRA)
 end
