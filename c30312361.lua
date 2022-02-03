@@ -59,7 +59,7 @@ function c30312361.operation(e,tp,eg,ep,ev,re,r,rp)
 		--copy effect
 		local cid=c:CopyEffect(code,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,1)
 		local e3=Effect.CreateEffect(c)
-		e3:SetDescription(1193)
+		e3:SetDescription(1162)
 		e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e3:SetCode(EVENT_PHASE+PHASE_END)
 		e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
