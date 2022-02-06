@@ -41,7 +41,7 @@ function c44362883.filter2(c,e,tp,m,f,chkf)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
 end
 function c44362883.fcheck(tp,sg,fc)
-	return sg:GetCount()==2
+	return sg:GetCount()<=2
 end
 function c44362883.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
