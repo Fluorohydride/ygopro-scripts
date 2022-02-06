@@ -71,7 +71,8 @@ end
 function c59242457.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local g=c:GetOverlayGroup()
-	if chk==0 then return g:IsExists(c59242457.toexfilter,1,nil,tp) end
+	if chk==0 then return c:GetFlagEffect(59242457)==0 and g:IsExists(c59242457.toexfilter,1,nil,tp) end
+	c:RegisterFlagEffect(59242457,RESET_CHAIN,0,1)
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c59242457.spop(e,tp,eg,ep,ev,re,r,rp)
