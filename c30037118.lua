@@ -18,9 +18,9 @@ function s.initial_effect(c)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCode(EVENT_BATTLE_DESTROYED)
 	e2:SetCountLimit(1,id)
-	e2:SetCondition(s.condition)
+	e2:SetCondition(s.condition2)
 	e2:SetCost(aux.bfgcost)
-	e2:SetTarget(s.target)
+	e2:SetTarget(s.target2)
 	e2:SetOperation(s.operation)
 	c:RegisterEffect(e2)
 end
@@ -53,6 +53,17 @@ end
 function s.cfilter(c,tp)
 	return c:GetPreviousRaceOnField()==RACE_ZOMBIE and c:IsReason(REASON_BATTLE) and c:IsPreviousControler(tp)
 end
-function s.condition(e,tp,eg,ep,ev,re,r,rp)
-	return not eg:IsContains(e:GetHandler()) and eg:IsExists(s.cfilter,1,nil,tp)
+function s.condition2(e,tp,eg,ep,ev,re,r,rp)
+	if eg:IsContains(e:GetHandler()) then return false end
+	local ac=eg:Filter(s.cfilter,nil,tp):GetFirst()
+	if not ac then return false end
+	local bc=ac:GetBattleTarget()
+	e:SetLabelObject(bc)
+	return bc and bc:IsControler(1-tp)
+end
+function s.target2(e,tp,eg,ep,ev,re,r,rp,chk)
+	local bc=e:GetLabelObject()
+	if chk==0 then return bc and bc:IsRelateToBattle() and bc:IsControlerCanBeChanged() end
+	Duel.SetTargetCard(bc)
+	Duel.SetOperationInfo(0,CATEGORY_CONTROL,bc,1,0,0)
 end
