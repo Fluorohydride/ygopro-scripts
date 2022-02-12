@@ -20,7 +20,7 @@ function c80280737.filter1(c,e,tp)
 		and Duel.IsExistingMatchingCard(c80280737.filter2,tp,LOCATION_DECK,0,1,nil,e,tp,c:GetCode())
 end
 function c80280737.filter2(c,e,tp,tcode)
-	return c:IsSetCard(0x104f) and c.assault_name==tcode and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+	return c:IsSetCard(0x104f) and c.assault_name==tcode and c:IsCanBeSpecialSummoned(e,0,tp,true,false,POS_FACEUP_ATTACK)
 end
 function c80280737.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then

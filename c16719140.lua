@@ -31,8 +31,7 @@ function c16719140.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 end
 function c16719140.costfilter(c,e,tp,mg,rlv,mc)
-	if not (c:IsLevelAbove(0) and c:IsSetCard(0xed) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost()
-		and (c:IsCanBeSpecialSummoned(e,0,tp,false,false) or c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN))) then return false end
+	if not (c:IsLevelAbove(0) and c:IsSetCard(0xed) and c:IsType(TYPE_MONSTER) and c:IsAbleToGraveAsCost() and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_DEFENSE)) then return false end
 	return mg:CheckSubGroup(c16719140.fselect,1,c:GetLevel(),tp,c:GetLevel()-rlv,mc)
 end
 function c16719140.fselect(g,tp,lv,mc)
@@ -72,16 +71,13 @@ function c16719140.spop1(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
 	local mg=Duel.GetReleaseGroup(tp):Filter(c16719140.relfilter,c)
 	if mg:GetCount()==0 then return end
-	local spos=0
-	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then spos=spos+POS_FACEUP_DEFENSE end
-	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN) then spos=spos+POS_FACEDOWN_DEFENSE end
-	if spos~=0 then
+	if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_DEFENSE) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 		local g=mg:SelectSubGroup(tp,c16719140.fselect,false,1,tc:GetLevel(),tp,tc:GetLevel()-c:GetOriginalLevel(),c)
 		if g and g:GetCount()>0 then
 			g:AddCard(c)
 			if Duel.Release(g,REASON_EFFECT)~=0 then
-				Duel.SpecialSummon(tc,0,tp,tp,false,false,spos)
+				Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_DEFENSE)
 				if tc:IsFacedown() then
 					Duel.ConfirmCards(1-tp,tc)
 				end

@@ -23,14 +23,14 @@ function c12247206.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local g=Duel.GetMatchingGroup(c12247206.nfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,tc)
 		return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-			and g:GetCount()>0 and g:GetCount()==g:FilterCount(Card.IsCanBeSpecialSummoned,nil,e,0,tp,false,false)
+			and g:GetCount()>0 and g:GetCount()==g:FilterCount(Card.IsCanBeSpecialSummoned,nil,e,0,tp,false,false,POS_FACEUP_ATTACK)
 	end
 	tc:CreateEffectRelation(e)
 	local g=Duel.GetMatchingGroup(c12247206.filter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,tc,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,g:GetCount(),PLAYER_ALL,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE)
 end
 function c12247206.filter(c,tc,e,tp)
-	return c12247206.nfilter(c,tc) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c12247206.nfilter(c,tc) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK)
 end
 function c12247206.selfilter(c,e,tp)
 	return c:IsFaceup() and Duel.IsExistingMatchingCard(c12247206.filter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,nil,c,e,tp)
