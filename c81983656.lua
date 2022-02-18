@@ -16,7 +16,7 @@ function c81983656.initial_effect(c)
 	c:RegisterEffect(e1)
 	--change battle target
 	local e2=Effect.CreateEffect(c)
-	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
+	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_BE_BATTLE_TARGET)
 	e2:SetRange(LOCATION_MZONE)
@@ -55,7 +55,7 @@ function c81983656.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c81983656.cbcon(e,tp,eg,ep,ev,re,r,rp)
-	return r~=REASON_REPLACE
+	return r~=REASON_REPLACE and Duel.GetAttackTarget()==e:GetHandler()
 end
 function c81983656.cbfilter(c,at)
 	return c:IsFaceup() and c:IsSetCard(0x33) and at:IsContains(c)
