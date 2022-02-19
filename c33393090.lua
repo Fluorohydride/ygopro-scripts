@@ -11,6 +11,7 @@ function c33393090.initial_effect(c)
 	e1:SetCountLimit(1,33393090+EFFECT_COUNT_CODE_DUEL)
 	e1:SetCost(c33393090.cost)
 	e1:SetCondition(c33393090.condition)
+	e1:SetTarget(c33393090.target)
 	e1:SetOperation(c33393090.activate)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
@@ -44,6 +45,9 @@ function c33393090.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c33393090.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:GetCount()==1 and eg:IsContains(e:GetHandler())
+end
+function c33393090.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(1-tp,EFFECT_SKIP_DP) end
 end
 function c33393090.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

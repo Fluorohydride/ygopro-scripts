@@ -13,12 +13,16 @@ function c55870497.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCondition(c55870497.skipcon)
+	e3:SetTarget(c55870497.skiptg)
 	e3:SetOperation(c55870497.skipop)
 	c:RegisterEffect(e3)
 end
 function c55870497.skipcon(e,tp,eg,ep,ev,re,r,rp)
 	return rp==tp and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 		and re:GetHandler():IsSetCard(0x60)
+end
+function c55870497.skiptg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(1-tp,EFFECT_SKIP_M1) end
 end
 function c55870497.skipop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
