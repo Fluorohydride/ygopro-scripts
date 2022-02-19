@@ -2801,3 +2801,31 @@ end
 function Auxiliary.ExtraReleaseFilter(c,tp)
 	return c:IsControler(1-tp) and c:IsHasEffect(EFFECT_EXTRA_RELEASE_NONSUM,tp)
 end
+--for "You can give up your normal draw this turn" or "instead of conducting your normal draw" effects
+function Auxiliary.DrawReplaceCondition(e,tp)
+	return tp==Duel.GetTurnPlayer() and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0 and Duel.GetDrawCount(tp)>0
+end
+function Auxiliary.UseDrawReplace(e,tp,activating)
+	if not Auxiliary.DrawReplaceCondition(e,tp) then return false end
+	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetType(EFFECT_TYPE_FIELD)
+	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_OATH)
+	e1:SetCode(EFFECT_DRAW_COUNT)
+	e1:SetTargetRange(1,0)
+	e1:SetReset(RESET_PHASE+PHASE_DRAW)
+	if activating then
+		e1:SetValue(Auxiliary.DrawWillBeReplaced)
+	else
+		e1:SetValue(0)
+	end
+	Duel.RegisterEffect(e1,tp)
+	return true
+end
+function Auxiliary.DrawWillBeReplaced(e)
+	if Duel.CheckEvent(EVENT_PREDRAW) then return 1 end
+	return 0
+end
+function Auxiliary.DrawReplaceCost(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Auxiliary.DrawReplaceCondition(e,tp) end
+	Auxiliary.UseDrawReplace(e,tp,true)
+end
