@@ -50,8 +50,8 @@ function c60514625.tkop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0
 		and Duel.GetLocationCount(p,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(p,60514626,0,TYPES_TOKEN_MONSTER,-2,-2,1,RACE_SPELLCASTER,ATTRIBUTE_DARK) then
-		local atk=tc:GetAttack()
-		local def=tc:GetDefense()
+		local atk=tc:GetPreviousAttackOnField()
+		local def=tc:GetPreviousDefenseOnField()
 		local token=Duel.CreateToken(tp,60514626)
 		if Duel.SpecialSummonStep(token,0,p,p,false,false,POS_FACEUP) then
 			local e1=Effect.CreateEffect(c)
