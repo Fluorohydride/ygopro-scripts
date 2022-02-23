@@ -1,5 +1,4 @@
 --肆世壊の継承
---not fully implemented
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Activate
@@ -46,7 +45,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 end
 function s.splimit(e,c,tp,sumtp,sumpos)
-	return sumpos==POS_FACEUP_ATTACK --(sumpos&POS_ATTACK)>0
+	return (sumpos&POS_ATTACK)>0
 end
 function s.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
