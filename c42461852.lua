@@ -51,6 +51,10 @@ function c42461852.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerCanSpecialSummon(tp)
 		or Duel.GetMatchingGroupCount(Card.IsFacedown,tp,LOCATION_EXTRA,0,nil)==0 then return end
 	Duel.ShuffleExtra(tp)
+	local sg=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_EXTRA,0,nil)
+	for sc in aux.Next(sg) do
+		Duel.MoveSequence(sc,SEQ_DECKBOTTOM)
+	end
 	Duel.ConfirmExtratop(tp,1)
 	local tc=Duel.GetExtraTopGroup(tp,1):GetFirst()
 	if tc:IsType(TYPE_LINK) and tc:IsRace(RACE_CYBERSE) then
