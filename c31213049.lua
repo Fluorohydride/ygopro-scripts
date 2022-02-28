@@ -12,7 +12,7 @@ function c31213049.initial_effect(c)
 end
 function c31213049.condition(e,tp,eg,ep,ev,re,r,rp)
 	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
-	return loc==LOCATION_HAND and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
+	return ep==1-tp and loc==LOCATION_HAND and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainNegatable(ev)
 end
 function c31213049.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
