@@ -61,10 +61,10 @@ end
 function c69700783.activate(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 then
 		local tc=Duel.GetFirstTarget()
+		if not (tc:IsRelateToEffect(e) and tc:IsFaceup()) then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c69700783.tgfilter2,tp,LOCATION_DECK,0,1,1,nil,tc:GetLevel())
-		if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)~=0 and g:GetFirst():IsLocation(LOCATION_GRAVE)
-			and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)~=0 and g:GetFirst():IsLocation(LOCATION_GRAVE) then
 			local lv=g:GetFirst():GetLevel()
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
