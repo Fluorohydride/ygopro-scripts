@@ -28,15 +28,16 @@ function c28400508.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
-function c28400508.cfilter(c)
-	return c:IsRace(RACE_DRAGON) and c:IsSetCard(0x48) and not c:IsCode(28400508) and c:IsCanOverlay()
+function c28400508.cfilter(c,tc)
+	return c:IsRace(RACE_DRAGON) and c:IsSetCard(0x48) and not c:IsCode(28400508)
+		and c:IsCanOverlay() and not c:IsCode(tc:GetCode())
 end
 function c28400508.spfilter(c,e,tp)
 	return c:IsRace(RACE_DRAGON) and c:IsSetCard(0x48) and not c:IsCode(28400508)
 		and c:IsType(TYPE_XYZ) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 		and (c:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 			or c:IsLocation(LOCATION_GRAVE) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0)
-		and Duel.IsExistingMatchingCard(c28400508.cfilter,tp,LOCATION_EXTRA+LOCATION_GRAVE,0,1,c)
+		and Duel.IsExistingMatchingCard(c28400508.cfilter,tp,LOCATION_EXTRA+LOCATION_GRAVE,0,1,c,c)
 end
 function c28400508.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c28400508.spfilter,tp,LOCATION_EXTRA+LOCATION_GRAVE,0,1,nil,e,tp) end
@@ -50,7 +51,7 @@ function c28400508.spop(e,tp,eg,ep,ev,re,r,rp)
 	local fid=0
 	if tc then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-		local g2=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c28400508.cfilter),tp,LOCATION_EXTRA+LOCATION_GRAVE,0,1,1,tc)
+		local g2=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c28400508.cfilter),tp,LOCATION_EXTRA+LOCATION_GRAVE,0,1,1,tc,tc)
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		Duel.Overlay(tc,g2)
 		fid=tc:GetFieldID()
