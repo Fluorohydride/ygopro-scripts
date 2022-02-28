@@ -58,7 +58,7 @@ end
 function c39752820.actfilter(c)
 	return c:IsSetCard(0xfe) and c:IsType(TYPE_MONSTER)
 end
-function c39752820.aclimit(e，re)
+function c39752820.aclimit(e,re)
 	return not Duel.IsExistingMatchingCard(c39752820.actfilter,e:GetHandlerPlayer(),LOCATION_GRAVE,0,1,nil) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c39752820.tdcon(e,tp,eg,ep,ev,re,r,rp)
