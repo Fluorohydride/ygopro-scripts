@@ -15,9 +15,13 @@ function c14644902.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c14644902.rfilter(c,e,tp)
 	return c:IsReleasableByEffect() and not c:IsImmuneToEffect(e)
+		and Duel.IsExistingMatchingCard(c14644902.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp,c)
 end
-function c14644902.filter(c,e,tp)
-	return c:IsType(TYPE_FUSION) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
+function c14644902.filter(c,e,tp,mc)
+	return c:IsType(TYPE_FUSION) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
+end
+function c14644902.rfilter2(c,tp)
+	return c:IsReleasableByEffect() and Duel.GetLocationCountFromEx(tp,tp,c,TYPE_FUSION)>0
 end
 function c14644902.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -36,6 +40,12 @@ function c14644902.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			e1:SetCountLimit(1)
 			sg:GetFirst():RegisterEffect(e1)
+		end
+	end
+	if #rg==0 then
+		rg=Duel.SelectReleaseGroup(tp,c14644902.rfilter2,1,1,aux.ExceptThisCard(e),tp)
+		if #rg>0 then
+			Duel.Release(rg,REASON_EFFECT)
 		end
 	end
 end
