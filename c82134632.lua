@@ -22,8 +22,8 @@ function c82134632.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local min=1
 	while true do
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DEATTACHFROM)
-		local sg=Duel.SelectMatchingCard(tp,c82134632.rmfilter,tp,LOCATION_MZONE,0,min,1,nil,tp)
-		if #sg==0 then break end
+		local sg=Duel.GetMatchingGroup(c82134632.rmfilter,tp,LOCATION_MZONE,0,nil,tp):SelectSubGroup(tp,aux.TRUE,min==0,min,1)
+		if not sg or #sg==0 then break end
 		sg:GetFirst():RemoveOverlayCard(tp,1,1,REASON_COST)
 		ct=ct+1
 		min=0
