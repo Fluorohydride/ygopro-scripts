@@ -27,7 +27,7 @@ function c52684508.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.RegisterEffect(e1,tp)
 end
 function c52684508.filter(c)
-	return c:IsFaceup() and c:IsCode(74677422)
+	return c:IsFaceup() and c:IsCode(74677422) and c:GetBaseAttack()>0
 end
 function c52684508.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c52684508.filter(chkc) end
