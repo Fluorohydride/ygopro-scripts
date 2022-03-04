@@ -2377,7 +2377,7 @@ end
 --filter for necro_valley test
 function Auxiliary.NecroValleyFilter(f)
 	return	function(target,...)
-				return (not f or f(target,...)) and not (target:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0))
+				return (not f or f(target,...)) and not target:IsHasEffect(EFFECT_NECRO_VALLEY)
 			end
 end
 --Necrovalley test for effect with not certain target or not certain action
