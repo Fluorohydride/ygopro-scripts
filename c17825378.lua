@@ -1,4 +1,5 @@
 --捕食植物トリアンティス
+--not fully implemented
 function c17825378.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
@@ -22,8 +23,8 @@ function c17825378.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c17825378.mtval(e,c)
-	if not c then return false end
-	return c:IsAttribute(ATTRIBUTE_DARK)
+	if not c then return true end
+	return true --c:IsAttribute(ATTRIBUTE_DARK)
 end
 function c17825378.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
