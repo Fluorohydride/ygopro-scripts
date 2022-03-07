@@ -26,19 +26,20 @@ function c63394872.seqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c63394872.filter(chkc,tp) end
 	if chk==0 then return Duel.IsExistingTarget(c63394872.filter,tp,LOCATION_MZONE,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(63394872,1))
-	Duel.SelectTarget(tp,c63394872.filter,tp,LOCATION_MZONE,0,1,1,nil,tp)
-end
-function c63394872.seqop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) then return end
-	local seq=tc:GetSequence()
-	if seq>4 then return end
+	local g=Duel.SelectTarget(tp,c63394872.filter,tp,LOCATION_MZONE,0,1,1,nil,tp)
+	local seq=g:GetFirst():GetSequence()
 	local flag=0
 	if seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1) then flag=flag|(1<<(seq-1)) end
 	if seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1) then flag=flag|(1<<(seq+1)) end
-	if flag==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
 	local s=Duel.SelectDisableField(tp,1,LOCATION_MZONE,0,~flag)
 	local nseq=math.log(s,2)
-	Duel.MoveSequence(tc,nseq)
+	e:SetLabel(nseq)
+	Duel.Hint(HINT_ZONE,tp,s)
+end
+function c63394872.seqop(e,tp,eg,ep,ev,re,r,rp)
+	local tc=Duel.GetFirstTarget()
+	local seq=e:GetLabel()
+	if not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:GetSequence()>4 or not Duel.CheckLocation(tp,LOCATION_MZONE,seq) then return end
+	Duel.MoveSequence(tc,seq)
 end
