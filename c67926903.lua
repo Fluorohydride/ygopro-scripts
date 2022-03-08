@@ -23,10 +23,7 @@ function c67926903.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c67926903.ovfilter(c)
-	local code=c:GetCode()
-	local class=_G["c"..code]
-	if class==nil then return false end
-	local no=class.xyz_number
+	local no=aux.xyz_number[c:GetCode()]
 	return c:IsFaceup() and no and no>=101 and no<=107 and c:IsSetCard(0x1048)
 end
 function c67926903.atkval(e,c)

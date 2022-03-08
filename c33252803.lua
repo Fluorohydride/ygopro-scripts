@@ -11,13 +11,13 @@ function c33252803.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c33252803.filter1(c,e,tp)
-	local m=_G["c"..c:GetCode()]
-	return c:IsFaceup() and c:IsSetCard(0x48) and not c:IsSetCard(0x1048) and m
+	local no=aux.xyz_number[c:GetCode()]
+	return c:IsFaceup() and c:IsSetCard(0x48) and not c:IsSetCard(0x1048) and no
 		and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
-		and Duel.IsExistingMatchingCard(c33252803.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,c:GetRank()+1,m.xyz_number)
+		and Duel.IsExistingMatchingCard(c33252803.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,c:GetRank()+1,no)
 end
 function c33252803.filter2(c,e,tp,mc,rk,no)
-	return c:IsRank(rk) and c:IsSetCard(0x1048) and c.xyz_number==no and mc:IsCanBeXyzMaterial(c)
+	return c:IsRank(rk) and c:IsSetCard(0x1048) and aux.xyz_number[c:GetCode()]==no and mc:IsCanBeXyzMaterial(c)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
 end
 function c33252803.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -29,11 +29,11 @@ function c33252803.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c33252803.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	local m=_G["c"..tc:GetCode()]
+	local no=aux.xyz_number[tc:GetCode()]
 	if not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL)
-		or tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) or not m then return end
+		or tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) or not no then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local g=Duel.SelectMatchingCard(tp,c33252803.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc,tc:GetRank()+1,m.xyz_number)
+	local g=Duel.SelectMatchingCard(tp,c33252803.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc,tc:GetRank()+1,no)
 	local sc=g:GetFirst()
 	if sc then
 		local mg=tc:GetOverlayGroup()

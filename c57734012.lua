@@ -39,9 +39,7 @@ function c57734012.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():GetFlagEffect(57734012)~=0 end
 end
 function c57734012.filter1(c,e,tp)
-	local m=_G["c"..c:GetCode()]
-	if not m then return false end
-	local no=m.xyz_number
+	local no=aux.xyz_number[c:GetCode()]
 	local ect=c29724053 and Duel.IsPlayerAffectedByEffect(tp,29724053) and c29724053[tp]
 	return no and no>=101 and no<=107 and c:IsSetCard(0x48) and not c:IsSetCard(0x1048)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
@@ -49,7 +47,7 @@ function c57734012.filter1(c,e,tp)
 		and Duel.IsExistingMatchingCard(c57734012.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,c,no)
 end
 function c57734012.filter2(c,e,tp,mc,no)
-	return c.xyz_number==no and c:IsSetCard(0x1048) and mc:IsCanBeXyzMaterial(c)
+	return aux.xyz_number[c:GetCode()]==no and c:IsSetCard(0x1048) and mc:IsCanBeXyzMaterial(c)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
 end
 function c57734012.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -78,10 +76,9 @@ function c57734012.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc1=g1:GetFirst()
 	if tc1 and Duel.SpecialSummon(tc1,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		if not aux.MustMaterialCheck(tc1,tp,EFFECT_MUST_BE_XMATERIAL) then return end
-		local m=_G["c"..tc1:GetCode()]
-		if not m then return end
+		local no=aux.xyz_number[tc1:GetCode()]
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local g2=Duel.SelectMatchingCard(tp,c57734012.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc1,m.xyz_number)
+		local g2=Duel.SelectMatchingCard(tp,c57734012.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc1,no)
 		local tc2=g2:GetFirst()
 		if tc2 then
 			Duel.BreakEffect()
