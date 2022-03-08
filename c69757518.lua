@@ -33,7 +33,6 @@ function c69757518.initial_effect(c)
 	e3:SetOperation(c69757518.operation)
 	c:RegisterEffect(e3)
 end
-c69757518.xyz_number=5
 function c69757518.atkval(e,c)
 	return c:GetOverlayCount()*1000
 end

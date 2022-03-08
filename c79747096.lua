@@ -33,7 +33,6 @@ function c79747096.initial_effect(c)
 	e3:SetLabelObject(e2)
 	c:RegisterEffect(e3)
 end
-c79747096.xyz_number=1
 function c79747096.ovfilter(c)
 	return c:IsFaceup() and c:IsCode(15232745)
 end

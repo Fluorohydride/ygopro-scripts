@@ -39,7 +39,6 @@ function c8165596.initial_effect(c)
 	e3:SetOperation(c8165596.operation)
 	c:RegisterEffect(e3)
 end
-c8165596.xyz_number=90
 function c8165596.indcon(e)
 	return e:GetHandler():GetOverlayGroup():IsExists(Card.IsSetCard,1,nil,0x55)
 end

@@ -16,7 +16,6 @@ function c86532744.initial_effect(c)
 	e1:SetOperation(c86532744.operation)
 	c:RegisterEffect(e1)
 end
-c86532744.xyz_number=39
 function c86532744.ovfilter(c)
 	return c:IsFaceup() and c:IsCode(84013237)
 end

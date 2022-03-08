@@ -28,7 +28,6 @@ function c77205367.initial_effect(c)
 	e3:SetOperation(c77205367.atkop)
 	c:RegisterEffect(e3)
 end
-c77205367.xyz_number=96
 function c77205367.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetOverlayGroup():IsExists(Card.IsCode,1,nil,55727845)
 end

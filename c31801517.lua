@@ -31,7 +31,6 @@ function c31801517.initial_effect(c)
 	e3:SetValue(aux.ChangeBattleDamage(1,HALF_DAMAGE))
 	c:RegisterEffect(e3)
 end
-c31801517.xyz_number=62
 function c31801517.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c==Duel.GetAttacker() or c==Duel.GetAttackTarget()

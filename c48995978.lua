@@ -25,7 +25,6 @@ function c48995978.initial_effect(c)
 	e2:SetOperation(c48995978.winop)
 	c:RegisterEffect(e2)
 end
-c48995978.xyz_number=88
 function c48995978.filter(c)
 	return c:GetSequence()<5
 end

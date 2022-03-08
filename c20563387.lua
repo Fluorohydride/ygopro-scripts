@@ -26,7 +26,6 @@ function c20563387.initial_effect(c)
 	e2:SetOperation(c20563387.rmop)
 	c:RegisterEffect(e2)
 end
-c20563387.xyz_number=80
 function c20563387.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)
 end

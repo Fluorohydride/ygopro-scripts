@@ -24,7 +24,6 @@ function c69170557.initial_effect(c)
 	e2:SetOperation(c69170557.ctop)
 	c:RegisterEffect(e2)
 end
-c69170557.xyz_number=40
 function c69170557.desfilter(c)
 	return c:GetCounter(0x1024)~=0
 end

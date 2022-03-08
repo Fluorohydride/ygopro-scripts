@@ -24,7 +24,6 @@ function c9161357.initial_effect(c)
 	e2:SetOperation(c9161357.lpop)
 	c:RegisterEffect(e2)
 end
-c9161357.xyz_number=6
 function c9161357.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end

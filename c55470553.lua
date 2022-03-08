@@ -28,7 +28,6 @@ function c55470553.initial_effect(c)
 	e2:SetOperation(c55470553.spop)
 	c:RegisterEffect(e2)
 end
-c55470553.xyz_number=98
 function c55470553.poscost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)

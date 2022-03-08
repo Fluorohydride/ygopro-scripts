@@ -36,7 +36,6 @@ function c57314798.initial_effect(c)
 	e4:SetOperation(c57314798.spop)
 	c:RegisterEffect(e4)
 end
-c57314798.xyz_number=100
 function c57314798.mfilter(c,xyzc)
 	return c:IsSetCard(0x48) and c:IsXyzType(TYPE_XYZ)
 end

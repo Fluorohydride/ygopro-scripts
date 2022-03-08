@@ -29,7 +29,6 @@ function s.initial_effect(c)
 	e2:SetOperation(s.spop2)
 	c:RegisterEffect(e2)
 end
-s.xyz_number=39
 function s.spfilter(c,e,tp)
 	return c:IsSetCard(0x48) and c:IsType(TYPE_XYZ) and not c:IsCode(id)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE)

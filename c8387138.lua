@@ -30,7 +30,6 @@ function c8387138.initial_effect(c)
 	e3:SetTarget(c8387138.reptg)
 	c:RegisterEffect(e3)
 end
-c8387138.xyz_number=27
 function c8387138.regop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterFlagEffect(8387138,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
 end
