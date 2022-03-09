@@ -36,7 +36,7 @@ function s.initial_effect(c)
 end
 function s.immtg(e,c)
 	if c:IsSetCard(0x1073,0x1048) then return true end
-	local no=aux.xyz_number[c:GetCode()]
+	local no=aux.GetXyzNumber(c)
 	return c:IsSetCard(0x48) and no and no>=101 and no<=107
 end
 function s.cfilter(c,tp)

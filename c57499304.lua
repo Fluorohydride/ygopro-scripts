@@ -11,7 +11,7 @@ function c57499304.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c57499304.filter(c)
-	local no=aux.xyz_number[c:GetCode()]
+	local no=aux.GetXyzNumber(c)
 	return no and no>=101 and no<=107 and c:IsSetCard(0x48) and c:IsType(TYPE_XYZ)
 end
 function c57499304.condition(e,tp,eg,ep,ev,re,r,rp)

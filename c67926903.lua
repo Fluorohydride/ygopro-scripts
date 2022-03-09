@@ -23,7 +23,7 @@ function c67926903.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c67926903.ovfilter(c)
-	local no=aux.xyz_number[c:GetCode()]
+	local no=aux.GetXyzNumber(c)
 	return c:IsFaceup() and no and no>=101 and no<=107 and c:IsSetCard(0x1048)
 end
 function c67926903.atkval(e,c)

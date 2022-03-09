@@ -35,7 +35,7 @@ function c92362073.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE
 end
 function c92362073.atkfilter(c)
-	local no=aux.xyz_number[c:GetCode()]
+	local no=aux.GetXyzNumber(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ) and c:IsSetCard(0x48) and no
 		and c:GetOriginalAttribute()==ATTRIBUTE_LIGHT and c:GetOriginalRace()==RACE_DRAGON
 end
@@ -48,7 +48,7 @@ end
 function c92362073.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	local no=aux.xyz_number[tc:GetCode()]
+	local no=aux.GetXyzNumber(tc)
 	if no and tc:IsFaceup() and tc:IsRelateToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

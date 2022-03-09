@@ -47,6 +47,12 @@ end
 
 --the table of xyz number
 Auxiliary.xyz_number={}
+function Auxiliary.GetXyzNumber(v)
+	local id
+	if Auxiliary.GetValueType(v)=="Card" then id=v:GetCode() end
+	if Auxiliary.GetValueType(v)=="number" then id=v end
+	return Auxiliary.xyz_number[id]
+end
 
 --the chain id of the results modified by EVENT_TOSS_DICE_NEGATE
 Auxiliary.dice_chain_id=0

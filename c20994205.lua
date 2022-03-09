@@ -18,7 +18,7 @@ function c20994205.condition(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c20994205.cfilter,tp,0,LOCATION_MZONE,1,nil)
 end
 function c20994205.nofilter(c)
-	return aux.xyz_number[c:GetCode()]
+	return aux.GetXyzNumber(c)
 end
 function c20994205.spfilter(c,e,tp)
 	if not c20994205.nofilter(c) then return end

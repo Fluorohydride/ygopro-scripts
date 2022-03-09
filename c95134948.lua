@@ -87,7 +87,7 @@ function c95134948.ftarget(e,c)
 	return e:GetLabel()~=c:GetFieldID()
 end
 function c95134948.spfilter(c,e,tp)
-	local no=aux.xyz_number[c:GetCode()]
+	local no=aux.GetXyzNumber(c)
 	return no and no>=1 and no<=100 and c:IsSetCard(0x48)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end

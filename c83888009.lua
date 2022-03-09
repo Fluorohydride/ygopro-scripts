@@ -64,7 +64,7 @@ function c83888009.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c83888009.ovfilter(c)
-	local no=aux.xyz_number[c:GetCode()]
+	local no=aux.GetXyzNumber(c)
 	return no and no>=101 and no<=107 and c:IsType(TYPE_XYZ) and (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup())
 end
 function c83888009.damop(e,tp,eg,ep,ev,re,r,rp)
