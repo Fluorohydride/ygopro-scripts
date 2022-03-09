@@ -47,6 +47,7 @@ function c95474755.initial_effect(c)
 	e4:SetOperation(c95474755.dkop)
 	c:RegisterEffect(e4)
 end
+c95474755.xyz_number=89
 function c95474755.excost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)

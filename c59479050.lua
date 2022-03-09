@@ -24,6 +24,7 @@ function c59479050.initial_effect(c)
 	e2:SetOperation(c59479050.tdop)
 	c:RegisterEffect(e2)
 end
+c59479050.xyz_number=71
 function c59479050.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetOverlayCount()>0
 end

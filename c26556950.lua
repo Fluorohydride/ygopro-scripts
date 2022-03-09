@@ -38,6 +38,7 @@ function c26556950.initial_effect(c)
 	e4:SetOperation(c26556950.desop)
 	c:RegisterEffect(e4)
 end
+c26556950.xyz_number=84
 function c26556950.ovfilter(c)
 	local rk=c:GetRank()
 	return c:IsFaceup() and c:GetOverlayCount()>=2 and c:IsType(TYPE_XYZ) and c:IsAttribute(ATTRIBUTE_DARK) and rk>=8 and rk<=10

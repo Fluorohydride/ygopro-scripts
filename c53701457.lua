@@ -28,6 +28,7 @@ function c53701457.initial_effect(c)
 	e3:SetOperation(c53701457.damop)
 	c:RegisterEffect(e3)
 end
+c53701457.xyz_number=28
 function c53701457.dircon(e)
 	return Duel.GetFieldGroupCount(e:GetHandlerPlayer(),LOCATION_MZONE,0)<=1
 end

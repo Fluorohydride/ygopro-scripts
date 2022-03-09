@@ -21,6 +21,7 @@ function c78625448.initial_effect(c)
 	e2:SetOperation(c78625448.atkop)
 	c:RegisterEffect(e2)
 end
+c78625448.xyz_number=3
 function c78625448.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)

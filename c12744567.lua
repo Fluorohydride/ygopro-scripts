@@ -25,6 +25,7 @@ function c12744567.initial_effect(c)
 	e2:SetOperation(c12744567.spop)
 	c:RegisterEffect(e2)
 end
+c12744567.xyz_number=101
 function c12744567.filter(c)
 	return c:IsSummonType(SUMMON_TYPE_SPECIAL) and c:IsCanOverlay()
 end
