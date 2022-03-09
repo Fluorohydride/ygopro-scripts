@@ -65,7 +65,7 @@ function c93238626.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end
 function c93238626.filter(c,e,tp,mc,no)
-	return aux.GetXyzNumber(tc)==no and c:IsSetCard(0x1048) and mc:IsCanBeXyzMaterial(c)
+	return aux.GetXyzNumber(c)==no and c:IsSetCard(0x1048) and mc:IsCanBeXyzMaterial(c)
 		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0
 end
 function c93238626.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
