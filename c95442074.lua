@@ -35,7 +35,7 @@ function c95442074.initial_effect(c)
 	e4:SetValue(1)
 	c:RegisterEffect(e4)
 end
-c95442074.xyz_number=31
+Auxiliary.xyz_number[95442074]=31
 function c95442074.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)

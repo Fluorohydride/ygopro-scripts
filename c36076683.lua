@@ -18,7 +18,7 @@ function c36076683.initial_effect(c)
 	e1:SetOperation(c36076683.atkop)
 	c:RegisterEffect(e1)
 end
-c36076683.xyz_number=73
+Auxiliary.xyz_number[36076683]=73
 function c36076683.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)

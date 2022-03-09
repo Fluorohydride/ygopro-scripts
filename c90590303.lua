@@ -45,7 +45,7 @@ function c90590303.initial_effect(c)
 	e5:SetOperation(c90590303.disop)
 	c:RegisterEffect(e5)
 end
-c90590303.xyz_number=41
+Auxiliary.xyz_number[90590303]=41
 function c90590303.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp
 end

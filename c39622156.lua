@@ -24,7 +24,7 @@ function c39622156.initial_effect(c)
 	e2:SetOperation(c39622156.operation)
 	c:RegisterEffect(e2)
 end
-c39622156.xyz_number=26
+Auxiliary.xyz_number[39622156]=26
 function c39622156.dacost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)

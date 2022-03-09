@@ -36,6 +36,7 @@ function c95134948.initial_effect(c)
 		Duel.RegisterEffect(ge1,0)
 	end
 end
+Auxiliary.xyz_number[95134948]=99
 function c95134948.counterfilter(c)
 	return not c:IsSummonLocation(LOCATION_EXTRA) or c:IsType(TYPE_XYZ)
 end

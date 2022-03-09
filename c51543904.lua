@@ -28,7 +28,7 @@ function c51543904.initial_effect(c)
 	e2:SetOperation(c51543904.disop)
 	c:RegisterEffect(e2)
 end
-c51543904.xyz_number=99
+Auxiliary.xyz_number[51543904]=99
 function c51543904.cfilter(c)
 	return c:IsSetCard(0x95) and c:IsType(TYPE_SPELL) and c:IsDiscardable()
 end
