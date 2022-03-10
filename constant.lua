@@ -576,6 +576,7 @@ EFFECT_SET_BATTLE_DEFENSE		=363    --战斗的伤害计算用设置的守备力�
 EFFECT_OVERLAY_RITUAL_MATERIAL  =364    --此卡的超量素材也能用于仪式召唤
 EFFECT_CHANGE_GRAVE_ATTRIBUTE	=365	--墓地的卡将会改变属性（升级转变）
 EFFECT_CHANGE_GRAVE_RACE		=366	--墓地的卡将会改变种族（升级转变）
+EFFECT_LIMIT_SPECIAL_SUMMON_POSITION	=368	--
 
 --下面是诱发效果的诱发事件、时点 （如果是TYPE_SINGLE则自己发生以下事件后触发，如果TYPE_FIELD则场上任何卡发生以下事件都触发）
 EVENT_STARTUP					=1000	--N/A
