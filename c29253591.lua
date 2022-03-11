@@ -30,7 +30,7 @@ function c29253591.synlimit(e,c)
 end
 function c29253591.slevel(e,c)
 	local lv=e:GetHandler():GetLevel()
-	return 4*65536+lv
+	return 4<<16+lv
 end
 function c29253591.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

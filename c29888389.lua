@@ -21,7 +21,7 @@ function c29888389.rlevel(e,c)
 	local lv=e:GetHandler():GetLevel()
 	if c:IsAttribute(ATTRIBUTE_WATER) then
 		local clv=c:GetLevel()
-		return lv*65536+clv
+		return lv<<16+clv
 	else return lv end
 end
 function c29888389.cost(e,tp,eg,ep,ev,re,r,rp,chk)
