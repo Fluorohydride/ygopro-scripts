@@ -58,6 +58,7 @@ function c21903613.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=og:Select(tp,1,ft,nil)
 		for tc in aux.Next(sg) do
+			Duel.DisableShuffleCheck()
 			if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 				local e1=Effect.CreateEffect(c)
 				e1:SetType(EFFECT_TYPE_SINGLE)
