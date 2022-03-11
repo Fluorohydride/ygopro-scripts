@@ -39,7 +39,7 @@ function c89477759.initial_effect(c)
 	e3:SetOperation(c89477759.spop)
 	c:RegisterEffect(e3)
 end
-c89477759.xyz_number=1000
+aux.xyz_number[89477759]=1000
 function c89477759.descost1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)

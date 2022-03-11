@@ -36,10 +36,8 @@ function s.initial_effect(c)
 end
 function s.immtg(e,c)
 	if c:IsSetCard(0x1073,0x1048) then return true end
-	local m=_G["c"..c:GetCode()]
-	if not c:IsSetCard(0x48) or not m then return false end
-	local no=m.xyz_number
-	return no and no>=101 and no<=107
+	local no=aux.GetXyzNumber(c)
+	return c:IsSetCard(0x48) and no and no>=101 and no<=107
 end
 function s.cfilter(c,tp)
 	return c:IsFaceup() and c:IsSummonPlayer(tp) and c:IsType(TYPE_XYZ)

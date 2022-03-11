@@ -24,7 +24,7 @@ function c15862758.initial_effect(c)
 	e2:SetOperation(c15862758.naop)
 	c:RegisterEffect(e2)
 end
-c15862758.xyz_number=1000
+aux.xyz_number[15862758]=1000
 function c15862758.condition(e,tp,eg,ep,ev,re,r,rp)
 	return re and re:GetHandler():IsCode(89477759)
 end

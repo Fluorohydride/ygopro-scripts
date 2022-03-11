@@ -26,7 +26,7 @@ function c29208536.initial_effect(c)
 	e3:SetValue(c29208536.aclimit)
 	c:RegisterEffect(e3)
 end
-c29208536.xyz_number=45
+aux.xyz_number[29208536]=45
 function c29208536.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)

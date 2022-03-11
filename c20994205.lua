@@ -18,10 +18,7 @@ function c20994205.condition(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c20994205.cfilter,tp,0,LOCATION_MZONE,1,nil)
 end
 function c20994205.nofilter(c)
-	local m=_G["c"..c:GetCode()]
-	if not m then return c.xyz_number end
-	local no=m.xyz_number
-	return no
+	return aux.GetXyzNumber(c)
 end
 function c20994205.spfilter(c,e,tp)
 	if not c20994205.nofilter(c) then return end
@@ -30,7 +27,7 @@ function c20994205.spfilter(c,e,tp)
 		and g:CheckSubGroup(c20994205.fselect,4,4,c)
 end
 function c20994205.fselect(sg,c)
-	return sg:GetSum(c20994205.nofilter)==c.xyz_number and sg:GetClassCount(Card.GetRank)==4
+	return sg:GetSum(aux.GetXyzNumber)==aux.GetXyzNumber(c) and sg:GetClassCount(Card.GetRank)==4
 		and sg:Filter(Card.IsCanBeXyzMaterial,nil,c):GetCount()==4
 end
 function c20994205.target(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -43,7 +40,7 @@ function c20994205.gselect(sg,e,tp)
 	return g:IsExists(c20994205.spfilter2,1,nil,sg,e,tp)
 end
 function c20994205.spfilter2(c,sg,e,tp)
-	return sg:GetSum(c20994205.nofilter)==c.xyz_number and sg:GetClassCount(Card.GetRank)==4
+	return sg:GetSum(aux.GetXyzNumber)==aux.GetXyzNumber(c) and sg:GetClassCount(Card.GetRank)==4
 		and sg:Filter(Card.IsCanBeXyzMaterial,nil,c):GetCount()==4
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end

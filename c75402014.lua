@@ -33,7 +33,8 @@ function c75402014.initial_effect(c)
 	e3:SetOperation(c75402014.disop)
 	c:RegisterEffect(e3)
 end
-c75402014.xyz_number=39
+aux.xyz_number[75402014]=39
+aux.xyz_number[56840427]=39
 function c75402014.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsContains(e:GetHandler())
 end

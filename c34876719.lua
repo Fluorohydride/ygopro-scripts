@@ -38,9 +38,7 @@ function c34876719.ovcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,2,2,REASON_COST)
 end
 function c34876719.ovfilter(c,sc)
-	local m=_G["c"..c:GetCode()]
-	if not m then return false end
-	local no=m.xyz_number
+	local no=aux.GetXyzNumber(c)
 	return no and no>=101 and no<=107 and c:IsSetCard(0x48) and c:IsType(TYPE_XYZ) and c:IsCanBeXyzMaterial(sc)
 end
 function c34876719.ovtg(e,tp,eg,ep,ev,re,r,rp,chk)

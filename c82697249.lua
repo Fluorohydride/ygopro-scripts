@@ -25,7 +25,7 @@ function c82697249.initial_effect(c)
 	e2:SetOperation(c82697249.desop)
 	c:RegisterEffect(e2)
 end
-c82697249.xyz_number=59
+aux.xyz_number[82697249]=59
 function c82697249.imcon(e)
 	return Duel.GetFieldGroupCount(e:GetHandlerPlayer(),LOCATION_ONFIELD,0)==1
 end

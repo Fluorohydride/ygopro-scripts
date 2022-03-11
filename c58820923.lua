@@ -31,7 +31,7 @@ function c58820923.initial_effect(c)
 	e3:SetOperation(c58820923.atkop)
 	c:RegisterEffect(e3)
 end
-c58820923.xyz_number=95
+aux.xyz_number[58820923]=95
 function c58820923.ovfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x107b) and c:IsType(TYPE_XYZ)
 end
