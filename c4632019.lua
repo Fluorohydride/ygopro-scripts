@@ -19,7 +19,7 @@ function c4632019.initial_effect(c)
 end
 function c4632019.synclv(e,c)
 	local lv=e:GetHandler():GetLevel()
-	return 8*65536+lv
+	return (8<<16)+lv
 end
 function c4632019.efcon(e,tp,eg,ep,ev,re,r,rp)
 	return r==REASON_SYNCHRO

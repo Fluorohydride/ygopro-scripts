@@ -46,7 +46,7 @@ function c22211622.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c22211622.splimcon(e)
-	return Duel.IsExistingMatchingCard(Card.IsStatus,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil,STATUS_EFFECT_ENABLED)
+	return Duel.GetFieldGroupCount(e:GetHandlerPlayer(),LOCATION_MZONE,0)>0
 end
 function c22211622.splimit(e,c,sump,sumtype,sumpos,targetp)
 	return bit.band(sumtype,SUMMON_TYPE_PENDULUM)==SUMMON_TYPE_PENDULUM

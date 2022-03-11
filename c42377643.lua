@@ -73,7 +73,7 @@ end
 function c42377643.lvlop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsFaceup() and tc:IsRelateToEffect(e) then return end
+	if not (tc:IsFaceup() and tc:IsRelateToEffect(e)) then return end
 	local sel=0
 	if tc:IsLevel(4) then
 		sel=Duel.SelectOption(tp,aux.Stringid(42377643,4))+1
