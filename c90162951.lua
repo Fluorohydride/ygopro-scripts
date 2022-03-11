@@ -34,7 +34,7 @@ function c90162951.initial_effect(c)
 	e4:SetOperation(c90162951.desop)
 	c:RegisterEffect(e4)
 end
-Auxiliary.xyz_number[90162951]=35
+aux.xyz_number[90162951]=35
 function c90162951.val(e,c)
 	return math.abs(Duel.GetLP(0)-Duel.GetLP(1))
 end

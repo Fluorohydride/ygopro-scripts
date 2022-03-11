@@ -26,7 +26,7 @@ function c20563387.initial_effect(c)
 	e2:SetOperation(c20563387.rmop)
 	c:RegisterEffect(e2)
 end
-Auxiliary.xyz_number[20563387]=80
+aux.xyz_number[20563387]=80
 function c20563387.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_XYZ)
 end

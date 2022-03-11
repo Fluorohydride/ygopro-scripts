@@ -26,7 +26,7 @@ function c21521304.initial_effect(c)
 	e2:SetOperation(c21521304.spop)
 	c:RegisterEffect(e2)
 end
-Auxiliary.xyz_number[21521304]=39
+aux.xyz_number[21521304]=39
 function c21521304.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end

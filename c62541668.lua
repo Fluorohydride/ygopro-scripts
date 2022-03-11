@@ -23,7 +23,7 @@ function c62541668.initial_effect(c)
 	e2:SetTarget(c62541668.reptg)
 	c:RegisterEffect(e2)
 end
-Auxiliary.xyz_number[62541668]=77
+aux.xyz_number[62541668]=77
 function c62541668.ovfilter(c)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_DARK) and c:IsType(TYPE_XYZ) and c:IsRank(10,11)
 end

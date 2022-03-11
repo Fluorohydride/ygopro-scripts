@@ -16,7 +16,7 @@ function c63746411.initial_effect(c)
 	e1:SetOperation(c63746411.operation)
 	c:RegisterEffect(e1)
 end
-Auxiliary.xyz_number[63746411]=106
+aux.xyz_number[63746411]=106
 function c63746411.condition(e,tp,eg,ep,ev,re,r,rp)
 	return rp==1-tp and re:IsActiveType(TYPE_MONSTER)
 		and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_MZONE

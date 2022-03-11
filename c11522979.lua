@@ -27,7 +27,7 @@ function c11522979.initial_effect(c)
 	e2:SetOperation(c11522979.operation)
 	c:RegisterEffect(e2)
 end
-Auxiliary.xyz_number[11522979]=69
+aux.xyz_number[11522979]=69
 function c11522979.descon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp)
 end

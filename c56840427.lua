@@ -14,7 +14,7 @@ function c56840427.initial_effect(c)
 	e1:SetOperation(c56840427.operation)
 	c:RegisterEffect(e1)
 end
-Auxiliary.xyz_number[56840427]=39
+aux.xyz_number[56840427]=39
 function c56840427.ovfilter(c)
 	return c:IsFaceup() and c:IsCode(84013237)
 end

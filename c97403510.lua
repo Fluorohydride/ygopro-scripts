@@ -56,7 +56,7 @@ function c97403510.initial_effect(c)
 		Duel.RegisterEffect(ge1,0)
 	end
 end
-Auxiliary.xyz_number[97403510]=92
+aux.xyz_number[97403510]=92
 function c97403510.checkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do

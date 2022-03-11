@@ -33,7 +33,7 @@ function c79747096.initial_effect(c)
 	e3:SetLabelObject(e2)
 	c:RegisterEffect(e3)
 end
-Auxiliary.xyz_number[79747096]=1
+aux.xyz_number[79747096]=1
 function c79747096.ovfilter(c)
 	return c:IsFaceup() and c:IsCode(15232745)
 end

@@ -40,7 +40,7 @@ function c92015800.initial_effect(c)
 	e4:SetOperation(c92015800.xyzop)
 	c:RegisterEffect(e4)
 end
-Auxiliary.xyz_number[92015800]=76
+aux.xyz_number[92015800]=76
 function c92015800.effilter(c)
 	return c:IsType(TYPE_MONSTER)
 end

@@ -20,7 +20,7 @@ function c42421606.initial_effect(c)
 	e2:SetOperation(c42421606.efop)
 	c:RegisterEffect(e2)
 end
-Auxiliary.xyz_number[42421606]=85
+aux.xyz_number[42421606]=85
 c42421606.toss_dice=true
 function c42421606.efcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

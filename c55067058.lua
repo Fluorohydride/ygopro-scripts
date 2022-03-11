@@ -14,7 +14,7 @@ function c55067058.initial_effect(c)
 	e1:SetOperation(c55067058.rop)
 	c:RegisterEffect(e1)
 end
-Auxiliary.xyz_number[55067058]=19
+aux.xyz_number[55067058]=19
 function c55067058.rcon(e,tp,eg,ep,ev,re,r,rp)
 	return bit.band(r,REASON_COST)~=0 and re:IsActivated() and re:IsActiveType(TYPE_XYZ)
 		and e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_EFFECT)

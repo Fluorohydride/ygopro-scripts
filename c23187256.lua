@@ -26,7 +26,7 @@ function c23187256.initial_effect(c)
 	e4:SetCode(EFFECT_INDESTRUCTABLE_EFFECT)
 	c:RegisterEffect(e4)
 end
-Auxiliary.xyz_number[23187256]=93
+aux.xyz_number[23187256]=93
 function c23187256.mfilter(c,xyzc)
 	return c:IsXyzType(TYPE_XYZ) and c:IsSetCard(0x48) and c:GetOverlayCount()>0
 end

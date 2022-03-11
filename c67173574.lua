@@ -35,7 +35,7 @@ function c67173574.initial_effect(c)
 	e3:SetOperation(c67173574.operation)
 	c:RegisterEffect(e3)
 end
-Auxiliary.xyz_number[67173574]=102
+aux.xyz_number[67173574]=102
 function c67173574.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,2,REASON_EFFECT) end
 	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then

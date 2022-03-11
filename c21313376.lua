@@ -23,7 +23,7 @@ function c21313376.initial_effect(c)
 	e2:SetOperation(c21313376.desop)
 	c:RegisterEffect(e2)
 end
-Auxiliary.xyz_number[21313376]=14
+aux.xyz_number[21313376]=14
 function c21313376.refcon(e,re,val,r,rp,rc)
 	return bit.band(r,REASON_EFFECT)~=0 and rp==1-e:GetHandlerPlayer()
 end

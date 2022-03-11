@@ -16,7 +16,7 @@ function c80117527.initial_effect(c)
 	e1:SetOperation(c80117527.operation)
 	c:RegisterEffect(e1)
 end
-Auxiliary.xyz_number[80117527]=11
+aux.xyz_number[80117527]=11
 function c80117527.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST)
 		and e:GetHandler():GetAttackAnnouncedCount()==0 end
