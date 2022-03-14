@@ -73,6 +73,10 @@ function s.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local tc1=e:GetLabelObject()
 	local tc2=g:Filter(Card.IsControler,tc1,1-tp):GetFirst()
 	if tc1:IsType(TYPE_XYZ) and not tc1:IsImmuneToEffect(e) and tc2 then
+		local og=tc2:GetOverlayGroup()
+		if og:GetCount()>0 then
+			Duel.SendtoGrave(og,REASON_RULE)
+		end
 		Duel.Overlay(tc1,tc2)
 	end
 end
