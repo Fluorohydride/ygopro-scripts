@@ -47,6 +47,7 @@ function c28806532.tftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		and Duel.IsExistingTarget(c28806532.tffilter,tp,LOCATION_GRAVE,0,1,nil,tp) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	local ct=math.min((Duel.GetLocationCount(tp,LOCATION_SZONE)),2)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 	local g=Duel.SelectTarget(tp,c28806532.tffilter,tp,LOCATION_GRAVE,0,1,ct,nil,tp)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,g:GetCount(),0,0)
 end
