@@ -71,7 +71,7 @@ function c57261568.operation(e,tp,eg,ep,ev,re,r,rp)
 			if opt==1 then
 				for i=1,ct do
 					local mg=Duel.GetDecktopGroup(1-tp,1)
-					Duel.MoveSequence(mg:GetFirst(),1)
+					Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 				end
 			end
 		else

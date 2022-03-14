@@ -43,7 +43,7 @@ function c49838105.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.DisableShuffleCheck()
 		Duel.SendtoGrave(tc,REASON_EFFECT+REASON_REVEAL)
 	else
-		Duel.MoveSequence(tc,1)
+		Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
 	end
 end
 function c49838105.cfcon(e,tp,eg,ep,ev,re,r,rp)

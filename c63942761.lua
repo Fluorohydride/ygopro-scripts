@@ -28,6 +28,6 @@ function c63942761.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SortDecktop(tp,tp,5-sg:GetCount())
 	for i=1,5-sg:GetCount() do
 		local mg=Duel.GetDecktopGroup(tp,1)
-		Duel.MoveSequence(mg:GetFirst(),1)
+		Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 	end
 end
