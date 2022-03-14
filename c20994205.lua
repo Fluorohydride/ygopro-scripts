@@ -18,40 +18,50 @@ function c20994205.condition(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c20994205.cfilter,tp,0,LOCATION_MZONE,1,nil)
 end
 function c20994205.nofilter(c)
-	return aux.GetXyzNumber(c)
+	return c:IsType(TYPE_XYZ) and c:IsSetCard(0x48) and aux.GetXyzNumber(c)
 end
 function c20994205.spfilter(c,e,tp)
-	if not c20994205.nofilter(c) then return end
-	local g=Duel.GetMatchingGroup(c20994205.nofilter,tp,LOCATION_EXTRA,0,c)
-	return c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
-		and g:CheckSubGroup(c20994205.fselect,4,4,c)
+	return c20994205.nofilter(c)
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
-function c20994205.fselect(sg,c)
-	return sg:GetSum(aux.GetXyzNumber)==aux.GetXyzNumber(c) and sg:GetClassCount(Card.GetRank)==4
-		and sg:Filter(Card.IsCanBeXyzMaterial,nil,c):GetCount()==4
+function c20994205.gselect(g,spg)
+	return spg:IsExists(c20994205.spnofilter,1,g,g:GetSum(aux.GetXyzNumber))
+end
+function c20994205.spnofilter(c,sum)
+	return aux.GetXyzNumber(c)==sum
+end
+function c20994205.gcheck(max)
+	return	function(g)
+				return g:GetClassCount(Card.GetRank)==#g and g:GetSum(aux.GetXyzNumber)<=max
+			end
 end
 function c20994205.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c20994205.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp)
-		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_XMATERIAL) end
+	if chk==0 then
+		if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_XMATERIAL) then return false end
+		local mg=Duel.GetMatchingGroup(c20994205.nofilter,tp,LOCATION_EXTRA,0,nil)
+		local spg=Duel.GetMatchingGroup(c20994205.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp)
+		if #mg<5 or #spg==0 then return false end
+		local _,max=spg:GetMaxGroup(aux.GetXyzNumber)
+		aux.GCheckAdditional=c20994205.gcheck(max)
+		local res=mg:CheckSubGroup(c20994205.gselect,4,4,spg)
+		aux.GCheckAdditional=nil
+		return res
+	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
-end
-function c20994205.gselect(sg,e,tp)
-	local g=Duel.GetMatchingGroup(c20994205.nofilter,tp,LOCATION_EXTRA,0,sg)
-	return g:IsExists(c20994205.spfilter2,1,nil,sg,e,tp)
-end
-function c20994205.spfilter2(c,sg,e,tp)
-	return sg:GetSum(aux.GetXyzNumber)==aux.GetXyzNumber(c) and sg:GetClassCount(Card.GetRank)==4
-		and sg:Filter(Card.IsCanBeXyzMaterial,nil,c):GetCount()==4
-		and c:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
 end
 function c20994205.activate(e,tp,eg,ep,ev,re,r,rp)
 	if not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_XMATERIAL) then return end
-	local g=Duel.GetMatchingGroup(c20994205.nofilter,tp,LOCATION_EXTRA,0,nil)
+	local mg=Duel.GetMatchingGroup(c20994205.nofilter,tp,LOCATION_EXTRA,0,nil)
+	local spg=Duel.GetMatchingGroup(c20994205.spfilter,tp,LOCATION_EXTRA,0,nil,e,tp)
+	if #mg<5 or #spg==0 then return end
+	local _,max=spg:GetMaxGroup(aux.GetXyzNumber)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-	local sg=g:SelectSubGroup(tp,c20994205.gselect,false,4,4,e,tp)
+	aux.GCheckAdditional=c20994205.gcheck(max)
+	local sg=mg:SelectSubGroup(tp,c20994205.gselect,false,4,4,spg)
+	aux.GCheckAdditional=nil
 	if sg then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-		local xyz=g:FilterSelect(tp,c20994205.spfilter2,1,1,sg,sg,e,tp):GetFirst()
+		local xyz=spg:FilterSelect(tp,c20994205.spnofilter,1,1,sg,sg:GetSum(aux.GetXyzNumber)):GetFirst()
 		Duel.SpecialSummon(xyz,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)
 		xyz:CompleteProcedure()
 		Duel.Overlay(xyz,sg)
