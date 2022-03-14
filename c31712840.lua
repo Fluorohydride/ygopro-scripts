@@ -67,7 +67,7 @@ function c31712840.spop(e,tp,eg,ep,ev,re,r,rp)
 		local tc2=g2:GetFirst()
 		if tc2 then
 			Duel.ShuffleDeck(tp)
-			Duel.MoveSequence(tc2,0)
+			Duel.MoveSequence(tc2,SEQ_DECKTOP)
 			Duel.ConfirmDecktop(tp,1)
 		end
 	end

@@ -36,7 +36,7 @@ function c26534688.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26534688,3))
 		local tc=g:Select(tp,1,1,nil):GetFirst()
 		Duel.ShuffleDeck(tp)
-		Duel.MoveSequence(tc,0)
+		Duel.MoveSequence(tc,SEQ_DECKTOP)
 		Duel.ConfirmDecktop(tp,1)
 	end
 end

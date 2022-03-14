@@ -54,7 +54,7 @@ function c16605586.tdop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ShuffleDeck(tp)
 		end
 		if tc:IsLocation(LOCATION_DECK) then
-			Duel.MoveSequence(tc,0)
+			Duel.MoveSequence(tc,SEQ_DECKTOP)
 			Duel.ConfirmDecktop(tp,1)
 		end
 	end

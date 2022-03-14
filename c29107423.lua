@@ -53,7 +53,7 @@ function c29107423.thop(e,tp,eg,ep,ev,re,r,rp)
 		local dc=dg:GetFirst()
 		if dc then
 			Duel.ShuffleDeck(tp)
-			Duel.MoveSequence(dc,0)
+			Duel.MoveSequence(dc,SEQ_DECKTOP)
 			Duel.ConfirmDecktop(tp,1)
 			if Duel.IsExistingMatchingCard(c29107423.sumfilter,tp,LOCATION_HAND,0,1,nil) and Duel.SelectYesNo(tp,aux.Stringid(29107423,3)) then
 				Duel.BreakEffect()

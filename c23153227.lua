@@ -40,7 +40,7 @@ function c23153227.operation(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ConfirmCards(1-tp,tc)
 		else
 			Duel.ShuffleDeck(tp)
-			Duel.MoveSequence(tc,0)
+			Duel.MoveSequence(tc,SEQ_DECKTOP)
 			Duel.ConfirmDecktop(tp,1)
 		end
 	end

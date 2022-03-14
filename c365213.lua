@@ -45,7 +45,7 @@ function c365213.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tc=g:Select(tp,1,1,nil):GetFirst()
 		if tc:IsLocation(LOCATION_DECK) then
 			Duel.ShuffleDeck(tp)
-			Duel.MoveSequence(tc,0)
+			Duel.MoveSequence(tc,SEQ_DECKTOP)
 			Duel.ConfirmDecktop(tp,1)
 		else
 			Duel.ConfirmCards(1-tp,tc)

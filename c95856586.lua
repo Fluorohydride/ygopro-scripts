@@ -92,7 +92,7 @@ function c95856586.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local dc=Duel.SelectMatchingCard(tp,c95856586.tdfilter,tp,LOCATION_DECK,0,1,1,nil):GetFirst()
 	if dc then
 		Duel.ShuffleDeck(tp)
-		Duel.MoveSequence(dc,0)
+		Duel.MoveSequence(dc,SEQ_DECKTOP)
 		Duel.ConfirmDecktop(tp,1)
 	end
 end
