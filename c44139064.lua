@@ -109,7 +109,7 @@ function c44139064.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=tg:GetFirst()
-	if tc:IsRelateToBattle() and tc:IsControler(1-tp) then
+	if tc:IsRelateToBattle() and tc:IsControler(tp) then
 		local batk=tc:GetBaseAttack()
 		local bdef=tc:GetBaseDefense()
 		local e1=Effect.CreateEffect(c)
