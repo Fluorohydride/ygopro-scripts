@@ -72,7 +72,7 @@ end
 function c63845230.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToRemoveAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_EXTRA,0,c,POS_FACEDOWN)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg=mg:SelectSubGroup(tp,aux.mzctcheck,true,5,#g,tp)
+	local sg=g:SelectSubGroup(tp,aux.mzctcheck,true,5,#g,tp)
 	if sg then
 		sg:KeepAlive()
 		e:SetLabelObject(sg)
