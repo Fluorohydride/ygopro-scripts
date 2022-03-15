@@ -7,6 +7,7 @@ function c19028307.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c19028307.spcon)
+	e1:SetTarget(c19028307.sptg)
 	e1:SetOperation(c19028307.spop)
 	c:RegisterEffect(e1)
 	--no battle damage
@@ -27,9 +28,18 @@ function c19028307.spcon(e,c)
 	local g=Duel.GetMatchingGroup(c19028307.spcostfilter,tp,LOCATION_MZONE+LOCATION_HAND+LOCATION_GRAVE,0,c)
 	return g:CheckSubGroup(c19028307.spcheck,2,2,tp)
 end
-function c19028307.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c19028307.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c19028307.spcostfilter,tp,LOCATION_MZONE+LOCATION_HAND+LOCATION_GRAVE,0,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg=g:SelectSubGroup(tp,c19028307.spcheck,false,2,2,tp)
-	Duel.Remove(sg,POS_FACEUP,REASON_COST)
+	local sg=g:SelectSubGroup(tp,c19028307.spcheck,true,2,2,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c19028307.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	g:DeleteGroup()
 end

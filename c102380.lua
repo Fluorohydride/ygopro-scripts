@@ -10,6 +10,7 @@ function c102380.initial_effect(c)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetTargetRange(POS_FACEUP,1)
 	e1:SetCondition(c102380.spcon)
+	e1:SetTarget(c102380.sptg)
 	e1:SetOperation(c102380.spop)
 	c:RegisterEffect(e1)
 	--damage
@@ -33,27 +34,29 @@ function c102380.initial_effect(c)
 	e3:SetOperation(c102380.spcop)
 	c:RegisterEffect(e3)
 end
-function c102380.filter1(c,tp,rg)
-	return rg:IsExists(c102380.filter2,1,c,tp,c)
-end
-function c102380.filter2(c,tp,mc)
-	local mg=Group.FromCards(c,mc)
-	return Duel.GetMZoneCount(1-tp,mg,tp)>0
+function c102380.fselect(g,tp)
+	return Duel.GetMZoneCount(1-tp,g,tp)>0
 end
 function c102380.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
 	local rg=Duel.GetMatchingGroup(Card.IsReleasable,tp,0,LOCATION_MZONE,nil)
-	return rg:IsExists(c102380.filter1,1,nil,tp,rg)
+	return rg:CheckSubGroup(c102380.fselect,2,2,tp)
 end
-function c102380.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c102380.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local rg=Duel.GetMatchingGroup(Card.IsReleasable,tp,0,LOCATION_MZONE,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g=rg:FilterSelect(tp,c102380.filter1,1,1,nil,tp,rg)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local g2=rg:FilterSelect(tp,c102380.filter2,1,1,g:GetFirst(),tp,g:GetFirst())
-	g:Merge(g2)
+	local sg=rg:SelectSubGroup(tp,c102380.fselect,true,2,2,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c102380.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
 	Duel.Release(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c102380.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==tp

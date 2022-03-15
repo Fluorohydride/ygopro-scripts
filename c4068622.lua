@@ -8,6 +8,7 @@ function c4068622.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c4068622.spcon)
+	e1:SetTarget(c4068622.sptg)
 	e1:SetOperation(c4068622.spop)
 	c:RegisterEffect(e1)
 	--special summon
@@ -28,30 +29,38 @@ function c4068622.initial_effect(c)
 	e3:SetValue(aux.FALSE)
 	c:RegisterEffect(e3)
 end
-function c4068622.spfilter1(c,ft,tp)
-	if c:GetSequence()<5 then ft=ft+1 end
-	return c:IsFaceup() and c:IsSetCard(0x33) and c:IsType(TYPE_TUNER) and c:IsAbleToRemove()
-		and ft>-1 and Duel.IsExistingMatchingCard(c4068622.spfilter2,tp,LOCATION_MZONE,0,1,nil,ft)
+function c4068622.spfilter(c)
+	return c:IsFaceup() and c:IsAbleToRemoveAsCost()
 end
-function c4068622.spfilter2(c,ft)
-	return c:IsFaceup() and not c:IsType(TYPE_TUNER) and c:IsAbleToRemove() and (ft>0 or c:GetSequence()<5)
+function c4068622.spfilter1(c)
+	return c:IsSetCard(0x33) and c:IsType(TYPE_TUNER)
+end
+function c4068622.spfilter2(c)
+	return not c:IsType(TYPE_TUNER)
+end
+function c4068622.fselect(g,tp)
+	return aux.mzctcheck(g,tp) and aux.gffcheck(g,c4068622.spfilter1,nil,c4068622.spfilter2,nil)
 end
 function c4068622.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	return ft>-2 and Duel.IsExistingMatchingCard(c4068622.spfilter1,tp,LOCATION_MZONE,0,1,nil,ft,tp)
+	local g=Duel.GetMatchingGroup(c4068622.spfilter,tp,LOCATION_MZONE,0,nil)
+	return g:CheckSubGroup(c4068622.fselect,2,2,tp)
+end
+function c4068622.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c4068622.spfilter,tp,LOCATION_MZONE,0,nil)
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
+	local sg=g:SelectSubGroup(tp,c4068622.fselect,true,2,2,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
 end
 function c4068622.spop(e,tp,eg,ep,ev,re,r,rp,c)
-	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g1=Duel.SelectMatchingCard(tp,c4068622.spfilter1,tp,LOCATION_MZONE,0,1,1,nil,ft,tp)
-	local tc=g1:GetFirst()
-	if tc:GetSequence()<5 then ft=ft+1 end
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g2=Duel.SelectMatchingCard(tp,c4068622.spfilter2,tp,LOCATION_MZONE,0,1,1,nil,ft)
-	g1:Merge(g2)
-	Duel.Remove(g1,POS_FACEUP,REASON_COST)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	g:DeleteGroup()
 end
 function c4068622.filter(c)
 	return c:IsSetCard(0x33) and c:IsAbleToRemove()

@@ -8,6 +8,7 @@ function c15574615.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c15574615.spcon)
+	e1:SetTarget(c15574615.sptg)
 	e1:SetOperation(c15574615.spop)
 	c:RegisterEffect(e1)
 	--spsummon
@@ -33,11 +34,20 @@ function c15574615.spcon(e,c)
 	local g=Duel.GetMatchingGroup(c15574615.spcostfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
 	return g:CheckSubGroupEach(c15574615.spchecks,aux.mzctcheck,tp)
 end
-function c15574615.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c15574615.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c15574615.spcostfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local sg=g:SelectSubGroupEach(tp,c15574615.spchecks,false,aux.mzctcheck,tp)
-	Duel.SendtoGrave(sg,REASON_COST)
+	local sg=g:SelectSubGroupEach(tp,c15574615.spchecks,true,aux.mzctcheck,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c15574615.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.SendtoGrave(g,REASON_COST)
+	g:DeleteGroup()
 end
 function c15574615.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end

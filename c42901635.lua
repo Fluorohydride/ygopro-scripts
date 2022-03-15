@@ -8,6 +8,7 @@ function c42901635.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c42901635.spcon)
+	e1:SetTarget(c42901635.sptg)
 	e1:SetOperation(c42901635.spop)
 	c:RegisterEffect(e1)
 	--destroy
@@ -42,11 +43,20 @@ function c42901635.spcon(e,c)
 	local g=Duel.GetMatchingGroup(c42901635.spcostfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
 	return g:CheckSubGroupEach(c42901635.spchecks,aux.mzctcheck,tp)
 end
-function c42901635.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c42901635.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c42901635.spcostfilter,tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg=g:SelectSubGroupEach(tp,c42901635.spchecks,false,aux.mzctcheck,tp)
-	Duel.Remove(sg,POS_FACEUP,REASON_COST)
+	local sg=g:SelectSubGroupEach(tp,c42901635.spchecks,true,aux.mzctcheck,tp)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c42901635.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
+	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	g:DeleteGroup()
 end
 function c42901635.costfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x2066) and c:IsLevelBelow(4) and c:IsAbleToRemoveAsCost()
