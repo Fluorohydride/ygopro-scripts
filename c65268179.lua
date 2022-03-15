@@ -35,26 +35,23 @@ function c65268179.initial_effect(c)
 	e3:SetOperation(c65268179.thop)
 	c:RegisterEffect(e3)
 end
-function c65268179.spfilter(c)
+function c65268179.spfilter1(c)
 	return c:IsFaceup() and c:IsAbleToGraveAsCost()
 end
-function c65268179.fcheck(g)
-	if #g~=2 then return false end
-	local c1=g:GetFirst()
-	local c2=g:GetNext()
-	return c1:IsRace(RACE_SPELLCASTER) and c2:IsAttribute(ATTRIBUTE_EARTH) and c2:IsLevelBelow(4) or c1:IsAttribute(ATTRIBUTE_EARTH) and c1:IsLevelBelow(4) and c2:IsRace(RACE_SPELLCASTER)
+function c65268179.spfilter2(c)
+	return c:IsAttribute(ATTRIBUTE_EARTH) and c:IsLevelBelow(4)
 end
 function c65268179.fselect(g,tp)
-	return aux.mzctcheck(g,tp) and c65268179.fcheck(g)
+	return aux.mzctcheck(g,tp) and aux.gffcheck(g,Card.IsRace,RACE_SPELLCASTER,c65268179.spfilter2,nil)
 end
 function c65268179.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(c65268179.spfilter,tp,LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(c65268179.spfilter1,tp,LOCATION_MZONE,0,nil)
 	return g:CheckSubGroup(c65268179.fselect,2,2,tp)
 end
 function c65268179.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local g=Duel.GetMatchingGroup(c65268179.spfilter,tp,LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(c65268179.spfilter1,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local sg=g:SelectSubGroup(tp,c65268179.fselect,true,2,2,tp)
 	if sg then
