@@ -32,7 +32,7 @@ function c10000040.initial_effect(c)
 	e4:SetOperation(c10000040.winop)
 	c:RegisterEffect(e4)
 end
-c10000040.spchecks=aux.CreateChecks(Card.IsOriginalCodeRule,{10000000,10000010,10000020})
+c10000040.spchecks=aux.CreateChecks(Card.IsOriginalCodeRule,{10000020,10000000,10000010})
 function c10000040.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
