@@ -17,11 +17,12 @@ function c81945678.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(81945678,1))
 	e2:SetCategory(CATEGORY_TODECK+CATEGORY_TOHAND)
-	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
-	e2:SetCode(EVENT_PHASE+PHASE_END)
+	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,81945679)
+	e2:SetCondition(c81945678.tdcon)
 	e2:SetTarget(c81945678.tdtg)
 	e2:SetOperation(c81945678.tdop)
 	c:RegisterEffect(e2)
@@ -63,6 +64,9 @@ function c81945678.cpop(e,tp,eg,ep,ev,re,r,rp)
 		local op=te:GetOperation()
 		if op then op(e,tp,eg,ep,ev,re,r,rp) end
 	end
+end
+function c81945678.tdcon(e,tp,eg,ep,ev,re,r,rp)
+	return Duel.GetCurrentPhase()==PHASE_END
 end
 function c81945678.tdfilter(c)
 	return c:IsRace(RACE_WARRIOR) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsAbleToDeck()
