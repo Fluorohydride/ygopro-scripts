@@ -38,14 +38,11 @@ end
 function c92652813.spfilter(c)
 	return c:IsFaceup() and c:IsAbleToGraveAsCost()
 end
-function c92652813.fcheck(g)
-	if #g~=2 then return false end
-	local c1=g:GetFirst()
-	local c2=g:GetNext()
-	return c1:IsRace(RACE_SPELLCASTER) and c2:IsAttribute(ATTRIBUTE_FIRE) and c2:IsLevelBelow(4) or c1:IsAttribute(ATTRIBUTE_FIRE) and c1:IsLevelBelow(4) and c2:IsRace(RACE_SPELLCASTER)
+function c92652813.spfilter2(c)
+	return c:IsAttribute(ATTRIBUTE_FIRE) and c:IsLevelBelow(4)
 end
 function c92652813.fselect(g,tp)
-	return aux.mzctcheck(g,tp) and c92652813.fcheck(g)
+	return aux.mzctcheck(g,tp) and aux.gffcheck(g,Card.IsRace,RACE_SPELLCASTER,c92652813.spfilter2,nil)
 end
 function c92652813.spcon(e,c)
 	if c==nil then return true end
