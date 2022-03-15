@@ -97,5 +97,7 @@ function c20071842.indval(e,c)
 	return c:IsSummonLocation(LOCATION_EXTRA)
 end
 function c20071842.immval(e,te)
-	return te:IsActiveType(TYPE_MONSTER) and te:IsActivated() and te:GetHandler():IsSummonLocation(LOCATION_EXTRA)
+	local tc=te:GetOwner()
+	return tc~=e:GetHandler() and te:IsActiveType(TYPE_MONSTER) and te:IsActivated()
+		and te:GetActivateLocation()==LOCATION_MZONE and tc:IsSummonLocation(LOCATION_EXTRA)
 end

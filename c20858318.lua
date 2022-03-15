@@ -20,7 +20,7 @@ function c20858318.con(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c20858318.cfilter,tp,LOCATION_MZONE,0,1,nil,74153887)
 end
 function c20858318.tg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE) end
 	local g=Duel.GetFieldGroup(tp,LOCATION_MZONE,0)
 	Duel.SetTargetCard(g)
 end

@@ -26,15 +26,14 @@ function c22747316.filter(c,code)
 end
 function c22747316.activate(e,tp,eg,ep,ev,re,r,rp)
 	local code=re:GetHandler():GetCode()
-	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
-		Duel.Destroy(eg,REASON_EFFECT)
-	end
-	local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c22747316.filter),tp,LOCATION_GRAVE,0,nil,code)
-	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(22747316,0)) then
-		Duel.BreakEffect()
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local sg=g:Select(tp,1,1,nil)
-		Duel.SendtoHand(sg,nil,REASON_EFFECT)
-		Duel.ConfirmCards(1-tp,sg)
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)~=0 then
+		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c22747316.filter),tp,LOCATION_GRAVE,0,nil,code)
+		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(22747316,0)) then
+			Duel.BreakEffect()
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
+			local sg=g:Select(tp,1,1,nil)
+			Duel.SendtoHand(sg,nil,REASON_EFFECT)
+			Duel.ConfirmCards(1-tp,sg)
+		end		
 	end
 end

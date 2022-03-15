@@ -49,10 +49,10 @@ function c12930501.spcfilter(c)
 end
 function c12930501.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToRemoveAsCost()
-		and Duel.IsExistingMatchingCard(c12930501.spcfilter,tp,LOCATION_SZONE+LOCATION_HAND,0,1,nil) end
+		and Duel.IsExistingMatchingCard(c12930501.spcfilter,tp,LOCATION_ONFIELD+LOCATION_HAND,0,1,nil) end
 	Duel.Remove(e:GetHandler(),POS_FACEUP,REASON_COST)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,c12930501.spcfilter,tp,LOCATION_SZONE+LOCATION_HAND,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,c12930501.spcfilter,tp,LOCATION_ONFIELD+LOCATION_HAND,0,1,1,nil)
 	Duel.SendtoGrave(g,REASON_COST)
 end
 function c12930501.sptgfilter(c,e,tp)

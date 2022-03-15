@@ -70,7 +70,7 @@ function c27753563.cmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_DECK,0)
 	if g:GetCount()==0 then return end
 	local tc=g:GetMinGroup(Card.GetSequence):GetFirst()
-	Duel.MoveSequence(tc,0)
+	Duel.MoveSequence(tc,SEQ_DECKTOP)
 	Duel.ConfirmDecktop(tp,1)
 	local opt=Duel.SelectOption(tp,aux.Stringid(27753563,1),aux.Stringid(27753563,2))
 	Duel.MoveSequence(tc,opt)

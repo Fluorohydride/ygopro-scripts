@@ -53,7 +53,7 @@ function c4740489.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c4740489.atcon(e,tp,eg,ep,ev,re,r,rp)
 	local a,d=Duel.GetBattleMonster(tp)
-	if not d then return false end
+	if not a or not d then return false end
 	e:SetLabelObject(d)
 	return a:IsRace(RACE_ROCK) and a:IsAttribute(ATTRIBUTE_EARTH)
 		and d:IsRelateToBattle() and d:IsLocation(LOCATION_ONFIELD)

@@ -14,7 +14,7 @@ function c50755.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsRace(RACE_SPELLCASTER)
 end
 function c50755.filter(c,e,tp)
-	return c:IsAttackBelow(2000) and c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsAttackBelow(2000) and c:IsRace(RACE_SPELLCASTER) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK)
 end
 function c50755.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c50755.filter,tp,LOCATION_DECK,0,1,nil,e,tp)

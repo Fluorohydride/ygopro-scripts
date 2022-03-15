@@ -28,7 +28,7 @@ function c49456901.initial_effect(c)
 	e2:SetOperation(c49456901.operation)
 	c:RegisterEffect(e2)
 end
-c49456901.xyz_number=104
+aux.xyz_number[49456901]=104
 function c49456901.desfilter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end

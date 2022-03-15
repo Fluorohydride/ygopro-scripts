@@ -43,13 +43,14 @@ function c65500515.seqop(e,tp,eg,ep,ev,re,r,rp)
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,65500516,0,TYPES_TOKEN_MONSTER,atk,0,2,RACE_AQUA,ATTRIBUTE_WATER) then return end
 	Duel.BreakEffect()
 	local token=Duel.CreateToken(tp,65500516)
-	Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SET_ATTACK)
-	e1:SetValue(atk)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-	token:RegisterEffect(e1,true)
+	if Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP) then
+		local e1=Effect.CreateEffect(c)
+		e1:SetType(EFFECT_TYPE_SINGLE)
+		e1:SetCode(EFFECT_SET_ATTACK)
+		e1:SetValue(atk)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+		token:RegisterEffect(e1,true)
+	end
 	Duel.SpecialSummonComplete()
 end
 function c65500515.atcon(e)

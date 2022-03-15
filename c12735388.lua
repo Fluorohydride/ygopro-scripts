@@ -1,4 +1,5 @@
 --レインボー・ヴェール
+local s,id,o=GetID()
 function c12735388.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -22,15 +23,15 @@ function c12735388.initial_effect(c)
 	e3:SetCode(EVENT_BE_BATTLE_TARGET)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-	e3:SetCondition(c12735388.discon1)
-	e3:SetOperation(c12735388.disop1)
+	e3:SetCondition(s.discon1)
+	e3:SetOperation(s.disop1)
 	c:RegisterEffect(e3)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD)
 	e4:SetCode(EFFECT_DISABLE)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetTargetRange(0,LOCATION_MZONE)
-	e4:SetTarget(c12735388.distg)
+	e4:SetTarget(s.distg)
 	c:RegisterEffect(e4)
 	local e5=e4:Clone()
 	e5:SetCode(EFFECT_DISABLE_EFFECT)
@@ -49,16 +50,16 @@ function c12735388.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
 end
-function c12735388.discon1(e,tp,eg,ep,ev,re,r,rp)
+function s.discon1(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler():GetEquipTarget()
 	return ec and (ec==Duel.GetAttacker() or ec==Duel.GetAttackTarget()) and ec:GetBattleTarget()
 end
-function c12735388.disop1(e,tp,eg,ep,ev,re,r,rp)
+function s.disop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=c:GetEquipTarget():GetBattleTarget()
-	tc:RegisterFlagEffect(12735388,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
+	tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
 	Duel.AdjustInstantly(c)
 end
-function c12735388.distg(e,c)
-	return c:GetFlagEffect(12735388)~=0
+function s.distg(e,c)
+	return c:GetFlagEffect(id)~=0
 end

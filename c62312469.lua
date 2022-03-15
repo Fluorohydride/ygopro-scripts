@@ -72,7 +72,7 @@ function c62312469.stop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ShuffleDeck(tp)
 		local tc=g1:GetFirst()
 		while tc do
-			Duel.MoveSequence(tc,0)
+			Duel.MoveSequence(tc,SEQ_DECKTOP)
 			tc=g1:GetNext()
 		end
 		Duel.SortDecktop(tp,tp,4)

@@ -76,6 +76,6 @@ function c72064891.mttg(e,c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove()
 end
 function c72064891.mtval(e,c)
-	if not c then return false end
-	return c:IsLevel(7) and c:IsRace(RACE_DRAGON)
+	if not c then return true end
+	return true --c:IsLevel(7) and c:IsRace(RACE_DRAGON)
 end

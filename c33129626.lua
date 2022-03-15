@@ -64,7 +64,8 @@ end
 function c33129626.negcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if ep==tp or c:IsStatus(STATUS_BATTLE_DESTROYED) then return false end
-	return Duel.GetTurnPlayer()==tp and re:IsActiveType(TYPE_TRAP) and Duel.IsChainNegatable(ev)
+	return Duel.GetTurnPlayer()==tp and re:IsActiveType(TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
+		and Duel.IsChainNegatable(ev)
 end
 function c33129626.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

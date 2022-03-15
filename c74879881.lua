@@ -42,7 +42,7 @@ function c74879881.spop(e,tp,eg,ep,ev,re,r,rp)
 			end
 		end
 	else
-		Duel.MoveSequence(tc,1)
+		Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
 	end
 end
 function c74879881.retcon(e,tp,eg,ep,ev,re,r,rp)

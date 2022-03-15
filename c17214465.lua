@@ -1,5 +1,6 @@
 --海神の巫女
 function c17214465.initial_effect(c)
+	aux.AddCodeList(c,22702055)
 	--field
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

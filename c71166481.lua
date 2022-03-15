@@ -26,7 +26,7 @@ function c71166481.initial_effect(c)
 	e2:SetOperation(c71166481.xop)
 	c:RegisterEffect(e2)
 end
-c71166481.xyz_number=75
+aux.xyz_number[71166481]=75
 function c71166481.chcon(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsActiveType(TYPE_MONSTER) and rp==1-tp
 end

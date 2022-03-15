@@ -24,7 +24,7 @@ function c35772782.initial_effect(c)
 	e2:SetOperation(c35772782.diceop)
 	c:RegisterEffect(e2)
 end
-c35772782.xyz_number=67
+aux.xyz_number[35772782]=67
 c35772782.toss_dice=true
 function c35772782.dccon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentPhase()==PHASE_MAIN1

@@ -37,5 +37,5 @@ function c73820802.operation(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SendtoGrave(sg,REASON_DISCARD+REASON_EFFECT)
 		end
 	end
-	Duel.MoveSequence(tc,1)
+	Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
 end

@@ -95,12 +95,12 @@ function c26964762.deckop(e,tp,eg,ep,ev,re,r,rp)
 	local tc2=g2:GetFirst()
 	if tc1 then
 		Duel.ShuffleDeck(tp)
-		Duel.MoveSequence(tc1,0)
+		Duel.MoveSequence(tc1,SEQ_DECKTOP)
 		Duel.ConfirmDecktop(tp,1)
 	end
 	if tc2 then
 		Duel.ShuffleDeck(1-tp)
-		Duel.MoveSequence(tc2,0)
+		Duel.MoveSequence(tc2,SEQ_DECKTOP)
 		Duel.ConfirmDecktop(1-tp,1)
 	end
 end

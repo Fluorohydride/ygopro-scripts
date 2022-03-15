@@ -42,7 +42,6 @@ function c8198620.atop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	if bc:IsRelateToBattle() and bc:IsFaceup() then
-		local atk=bc:GetBaseAttack()
 		local lv=bc:GetOriginalLevel()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -53,18 +52,18 @@ function c8198620.atop(e,tp,eg,ep,ev,re,r,rp)
 		if lv>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 			and Duel.IsPlayerCanSpecialSummonMonster(tp,8198621,0,TYPES_TOKEN_MONSTER,-2,0,0,RACE_ZOMBIE,ATTRIBUTE_DARK) then
 			local token=Duel.CreateToken(tp,8198621)
-			Duel.SpecialSummonStep(token,0,tp,tp,false,false,POS_FACEUP)
+			local atk=bc:GetBaseAttack()
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_SET_BASE_ATTACK)
+			e1:SetCode(EFFECT_SET_ATTACK)
 			e1:SetValue(atk)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+			e1:SetReset(RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD)
 			token:RegisterEffect(e1)
 			local e2=e1:Clone()
 			e2:SetCode(EFFECT_CHANGE_LEVEL)
 			e2:SetValue(lv)
 			token:RegisterEffect(e2)
-			Duel.SpecialSummonComplete()
+			Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end
 end

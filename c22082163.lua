@@ -38,7 +38,7 @@ function c22082163.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c22082163.filter(c,e,tp)
-	return c:IsSetCard(0x4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsSetCard(0x4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK)
 end
 function c22082163.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:GetControler()==tp and c22082163.filter(chkc,e,tp) end

@@ -83,7 +83,7 @@ function c90488465.tdop(e,tp,eg,ep,ev,re,r,rp)
 			end
 			for i=1,#dg do
 				local mg=Duel.GetDecktopGroup(p,1)
-				Duel.MoveSequence(mg:GetFirst(),1)
+				Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 			end
 			p=1-tp
 		end

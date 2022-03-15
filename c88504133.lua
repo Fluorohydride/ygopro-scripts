@@ -31,7 +31,7 @@ function c88504133.cefilter(c,tc,ct,e,tp)
 end
 function c88504133.cfilter(c,e,tp)
 	local ct=Duel.GetMatchingGroupCount(c88504133.cgfilter,tp,LOCATION_GRAVE,0,nil)
-	return c:IsType(TYPE_XYZ) and c:IsAttribute(ATTRIBUTE_DARK)
+	return c:IsType(TYPE_XYZ) and c:IsAttribute(ATTRIBUTE_DARK) and c:IsFaceup()
 		and c:IsCanBeEffectTarget(e)
 		and Duel.IsExistingMatchingCard(c88504133.cefilter,tp,LOCATION_EXTRA,0,1,nil,c,ct,e,tp)
 end

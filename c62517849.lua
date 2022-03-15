@@ -16,7 +16,7 @@ function c62517849.initial_effect(c)
 	e1:SetOperation(c62517849.spop)
 	c:RegisterEffect(e1)
 end
-c62517849.xyz_number=39
+aux.xyz_number[62517849]=39
 function c62517849.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then return c:CheckRemoveOverlayCard(tp,1,REASON_COST) end
@@ -56,18 +56,19 @@ function c62517849.spop(e,tp,eg,ep,ev,re,r,rp)
 				end
 				sc:SetMaterial(Group.FromCards(c))
 				Duel.Overlay(sc,Group.FromCards(c))
-				Duel.SpecialSummonStep(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)
-				local e1=Effect.CreateEffect(c)
-				e1:SetType(EFFECT_TYPE_SINGLE)
-				e1:SetCode(EFFECT_SET_ATTACK)
-				e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-				e1:SetValue(sc:GetAttack()*2)
-				sc:RegisterEffect(e1,true)
-				local e2=Effect.CreateEffect(c)
-				e2:SetType(EFFECT_TYPE_SINGLE)
-				e2:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
-				e2:SetReset(RESET_EVENT+RESETS_STANDARD)
-				sc:RegisterEffect(e2,true)
+				if Duel.SpecialSummonStep(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP) then
+					local e1=Effect.CreateEffect(c)
+					e1:SetType(EFFECT_TYPE_SINGLE)
+					e1:SetCode(EFFECT_SET_ATTACK)
+					e1:SetReset(RESET_EVENT+RESETS_STANDARD)
+					e1:SetValue(sc:GetAttack()*2)
+					sc:RegisterEffect(e1)
+					local e2=Effect.CreateEffect(c)
+					e2:SetType(EFFECT_TYPE_SINGLE)
+					e2:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
+					e2:SetReset(RESET_EVENT+RESETS_STANDARD)
+					sc:RegisterEffect(e2)
+				end
 				Duel.SpecialSummonComplete()
 				sc:CompleteProcedure()
 			end

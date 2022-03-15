@@ -1,5 +1,6 @@
 --海竜神の怒り
 function c82685480.initial_effect(c)
+	aux.AddCodeList(c,22702055)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_DESTROY)

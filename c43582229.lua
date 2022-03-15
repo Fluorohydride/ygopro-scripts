@@ -52,6 +52,8 @@ function c43582229.condition(e)
 	return Duel.IsExistingMatchingCard(c43582229.imfilter,e:GetHandlerPlayer(),LOCATION_MZONE,0,3,nil)
 end
 function c43582229.efilter(e,te)
+	local tc=te:GetOwner()
 	return te:IsActiveType(TYPE_MONSTER) and te:IsActivated()
-		and te:GetOwnerPlayer()==1-e:GetHandlerPlayer() and te:GetHandler():IsSummonLocation(LOCATION_EXTRA)
+		and te:GetOwnerPlayer()==1-e:GetHandlerPlayer()
+		and te:GetActivateLocation()==LOCATION_MZONE and tc:IsSummonLocation(LOCATION_EXTRA)
 end

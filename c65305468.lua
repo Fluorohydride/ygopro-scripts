@@ -38,7 +38,7 @@ function c65305468.initial_effect(c)
 	e7:SetTarget(c65305468.reptg)
 	c:RegisterEffect(e7)
 end
-c65305468.xyz_number=0
+aux.xyz_number[65305468]=0
 function c65305468.mfilter(c,xyzc)
 	return c:IsXyzType(TYPE_XYZ) and not c:IsSetCard(0x48)
 end

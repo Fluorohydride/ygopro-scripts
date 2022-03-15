@@ -45,13 +45,13 @@ function c8200556.spcostexcheckfilter(c,e,tp,code)
 end
 function c8200556.spcostexcheck(c,e,tp)
 	local result=false
-	if c:IsType(TYPE_MONSTER) then
+	if c:GetOriginalType()&TYPE_MONSTER~=0 then
 		result=result or Duel.IsExistingMatchingCard(c8200556.spcostexcheckfilter,tp,LOCATION_DECK+LOCATION_HAND,0,1,c,e,tp,34695290)
 	end
-	if c:IsType(TYPE_SPELL) then
+	if c:GetOriginalType()&TYPE_SPELL~=0 then
 		result=result or Duel.IsExistingMatchingCard(c8200556.spcostexcheckfilter,tp,LOCATION_DECK+LOCATION_HAND,0,1,c,e,tp,61089209)
 	end
-	if c:IsType(TYPE_TRAP) then
+	if c:GetOriginalType()&TYPE_TRAP~=0 then
 		result=result or Duel.IsExistingMatchingCard(c8200556.spcostexcheckfilter,tp,LOCATION_DECK+LOCATION_HAND,0,1,c,e,tp,7574904)
 	end
 	return result
@@ -71,7 +71,7 @@ function c8200556.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Release(e:GetHandler(),REASON_COST)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local cost=Duel.SelectMatchingCard(tp,c8200556.spcostfilter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,1,1,e:GetHandler(),e,tp,e:GetHandler()):GetFirst()
-	e:SetLabel(cost:GetType())
+	e:SetLabel(cost:GetOriginalType())
 	Duel.Remove(cost,POS_FACEUP,REASON_COST)
 end
 function c8200556.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -83,9 +83,9 @@ function c8200556.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c8200556.spopfilter(c,e,tp,typ)
-	return (((typ & TYPE_MONSTER)>0 and c:IsCode(34695290))
-		or ((typ & TYPE_SPELL)>0 and c:IsCode(61089209))
-		or ((typ & TYPE_TRAP)>0 and c:IsCode(7574904)))
+	return (((typ&TYPE_MONSTER)>0 and c:IsCode(34695290))
+		or ((typ&TYPE_SPELL)>0 and c:IsCode(61089209))
+		or ((typ&TYPE_TRAP)>0 and c:IsCode(7574904)))
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c8200556.spop(e,tp,eg,ep,ev,re,r,rp)

@@ -35,7 +35,7 @@ function c66547759.initial_effect(c)
 	e3:SetOperation(c66547759.disop)
 	c:RegisterEffect(e3)
 end
-c66547759.xyz_number=23
+aux.xyz_number[66547759]=23
 function c66547759.dacon(e)
 	return e:GetHandler():GetOverlayCount()>0
 end

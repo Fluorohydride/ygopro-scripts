@@ -28,7 +28,7 @@ function c37279508.initial_effect(c)
 	e2:SetOperation(c37279508.spop)
 	c:RegisterEffect(e2)
 end
-c37279508.xyz_number=37
+aux.xyz_number[37279508]=37
 function c37279508.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)

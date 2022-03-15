@@ -23,7 +23,7 @@ function c90307777.rlevel(e,c)
 	local lv=e:GetHandler():GetLevel()
 	if c:IsSetCard(0xb4) then
 		local clv=c:GetLevel()
-		return lv*65536+clv
+		return (lv<<16)+clv
 	else return lv end
 end
 function c90307777.thcon(e,tp,eg,ep,ev,re,r,rp)

@@ -31,16 +31,17 @@ function c58851034.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58851034.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
-		Duel.Destroy(eg,REASON_EFFECT)
+		if Duel.Destroy(eg,REASON_EFFECT)>0 then
+			local e1=Effect.CreateEffect(e:GetHandler())
+			e1:SetType(EFFECT_TYPE_FIELD)
+			e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+			e1:SetCode(EFFECT_CANNOT_ACTIVATE)
+			e1:SetTargetRange(0,1)
+			e1:SetValue(c58851034.aclimit)
+			e1:SetLabel(re:GetHandler():GetCode())
+			Duel.RegisterEffect(e1,tp)
+		end
 	end
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e1:SetCode(EFFECT_CANNOT_ACTIVATE)
-	e1:SetTargetRange(0,1)
-	e1:SetValue(c58851034.aclimit)
-	e1:SetLabel(re:GetHandler():GetCode())
-	Duel.RegisterEffect(e1,tp)
 end
 function c58851034.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsCode(e:GetLabel())

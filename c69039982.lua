@@ -33,7 +33,7 @@ function c69039982.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsAbleToEnterBP()
 end
 function c69039982.eafilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x116) and c:IsType(TYPE_LINK)
+	return c:IsFaceup() and c:IsSetCard(0x116) and c:IsType(TYPE_LINK) and not c:IsHasEffect(EFFECT_CANNOT_ATTACK)
 end
 function c69039982.eatg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c69039982.eafilter(chkc) end

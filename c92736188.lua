@@ -41,12 +41,21 @@ function c92736188.adtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c92736188.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 end
 function c92736188.adop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsAttribute(ATTRIBUTE_EARTH) then
-		local e1=Effect.CreateEffect(e:GetHandler())
+		local batk=tc:GetBaseAttack()
+		local bdef=tc:GetBaseDefense()
+		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_SWAP_BASE_AD)
+		e1:SetCode(EFFECT_SET_BASE_ATTACK_FINAL)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetValue(bdef)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
+		local e2=e1:Clone()
+		e2:SetCode(EFFECT_SET_BASE_DEFENSE_FINAL)
+		e2:SetValue(batk)
+		tc:RegisterEffect(e2)
 	end
 end

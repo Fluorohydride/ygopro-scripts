@@ -73,17 +73,17 @@ function c92868896.repfilter(c,tp)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD) and c:IsSetCard(0x29)
 		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT)) and not c:IsReason(REASON_REPLACE)
 end
-function c92868896.desfilter(c,e,tp)
-	return c:IsControler(tp) and c:IsLocation(LOCATION_SZONE) and c:IsSetCard(0x29)
+function c92868896.desfilter(c,e)
+	return c:IsLocation(LOCATION_SZONE) and c:IsSetCard(0x29)
 		and e:GetHandler():GetEquipGroup():IsContains(c)
 		and c:IsDestructable(e) and not c:IsStatus(STATUS_DESTROY_CONFIRMED)
 end
 function c92868896.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c92868896.repfilter,1,nil,tp)
-		and Duel.IsExistingMatchingCard(c92868896.desfilter,tp,LOCATION_SZONE,0,1,nil,e,tp) end
+		and Duel.IsExistingMatchingCard(c92868896.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil,e) end
 	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESREPLACE)
-		local g=Duel.SelectMatchingCard(tp,c92868896.desfilter,tp,LOCATION_SZONE,0,1,1,nil,e,tp)
+		local g=Duel.SelectMatchingCard(tp,c92868896.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil,e)
 		e:SetLabelObject(g:GetFirst())
 		g:GetFirst():SetStatus(STATUS_DESTROY_CONFIRMED,true)
 		return true

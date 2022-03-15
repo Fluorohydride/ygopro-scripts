@@ -6,11 +6,15 @@ function c57069605.initial_effect(c)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetHintTiming(0,TIMING_MAIN_END)
 	e1:SetCondition(c57069605.condition)
+	e1:SetTarget(c57069605.target)
 	e1:SetOperation(c57069605.activate)
 	c:RegisterEffect(e1)
 end
 function c57069605.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetLP(tp)+2000<=Duel.GetLP(1-tp)
+end
+function c57069605.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return not Duel.IsPlayerAffectedByEffect(1-tp,EFFECT_SKIP_BP) end
 end
 function c57069605.activate(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())

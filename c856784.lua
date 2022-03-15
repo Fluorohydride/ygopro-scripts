@@ -40,7 +40,7 @@ function c856784.activate(e,tp,eg,ep,ev,re,r,rp)
 				else
 					tc=sg:GetFirst()
 				end
-				Duel.MoveSequence(tc,0)
+				Duel.MoveSequence(tc,SEQ_DECKTOP)
 				sg:RemoveCard(tc)
 			end
 		end

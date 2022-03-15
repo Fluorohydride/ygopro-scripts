@@ -45,6 +45,15 @@ function bit.replace(r,v,field,width)
 	return (r&~(m<<f))|((v&m)<< f)
 end
 
+--the table of xyz number
+Auxiliary.xyz_number={}
+function Auxiliary.GetXyzNumber(v)
+	local id
+	if Auxiliary.GetValueType(v)=="Card" then id=v:GetCode() end
+	if Auxiliary.GetValueType(v)=="number" then id=v end
+	return Auxiliary.xyz_number[id]
+end
+
 --the chain id of the results modified by EVENT_TOSS_DICE_NEGATE
 Auxiliary.dice_chain_id=0
 Auxiliary.idx_table=table.pack(1,2,3,4,5,6,7,8)
@@ -255,33 +264,20 @@ function Auxiliary.EnableUnionAttribute(c,f)
 	e2:SetValue(f)
 	c:RegisterEffect(e2)
 end
-function Auxiliary.ChangeCodeCondition(check,condition)
-	return	function(e)
-				if condition and not condition(e) then return false end
-				local le={e:GetHandler():IsHasEffect(EFFECT_DISABLE)}
-				for _,te in ipairs(le) do
-					if not te:IsHasProperty(0,EFFECT_FLAG2_MILLENNIUM_RESTRICT) then return check end
-				end
-				return not check
-			end
-end
 function Auxiliary.EnableChangeCode(c,code,location,condition)
 	Auxiliary.AddCodeList(c,code)
 	local loc=c:GetOriginalType()&TYPE_MONSTER~=0 and LOCATION_MZONE or LOCATION_SZONE
 	loc=location or loc
+	if condition==nil then condition=Auxiliary.TRUE end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e1:SetCode(EFFECT_CHANGE_CODE)
 	e1:SetRange(loc)
+	e1:SetCondition(condition)
 	e1:SetValue(code)
-	e1:SetCondition(Auxiliary.ChangeCodeCondition(true,condition))
 	c:RegisterEffect(e1)
-	local e2=e1:Clone()
-	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_CANNOT_DISABLE)
-	e2:SetCondition(Auxiliary.ChangeCodeCondition(false,condition))
-	c:RegisterEffect(e2)
-	return e1,e2
+	return e1
 end
 function Auxiliary.TargetEqualFunction(f,value,...)
 	local ext_params={...}
@@ -2390,7 +2386,7 @@ end
 --filter for necro_valley test
 function Auxiliary.NecroValleyFilter(f)
 	return	function(target,...)
-				return (not f or f(target,...)) and not (target:IsHasEffect(EFFECT_NECRO_VALLEY) and Duel.IsChainDisablable(0))
+				return (not f or f(target,...)) and not target:IsHasEffect(EFFECT_NECRO_VALLEY)
 			end
 end
 --Necrovalley test for effect with not certain target or not certain action
@@ -2813,4 +2809,7 @@ function Auxiliary.UseExtraReleaseCount(g,tp)
 end
 function Auxiliary.ExtraReleaseFilter(c,tp)
 	return c:IsControler(1-tp) and c:IsHasEffect(EFFECT_EXTRA_RELEASE_NONSUM,tp)
+end
+function Auxiliary.IsSpecialSummonedByEffect(e)
+	return not ((e:GetCode()==EFFECT_SPSUMMON_PROC or e:GetCode()==EFFECT_SPSUMMON_PROC_G) and e:GetProperty()&(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)==(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE))
 end

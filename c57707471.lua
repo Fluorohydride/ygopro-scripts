@@ -23,7 +23,7 @@ function c57707471.initial_effect(c)
 	e3:SetOperation(c57707471.desop)
 	c:RegisterEffect(e3)
 end
-c57707471.xyz_number=21
+aux.xyz_number[57707471]=21
 function c57707471.ovfilter(c)
 	return c:IsFaceup() and c:IsXyzType(TYPE_XYZ) and c:IsRank(5)
 end

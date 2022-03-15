@@ -49,7 +49,7 @@ function c61587183.operation(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ConfirmCards(tp,g)
 			Duel.Hint(HINT_SELECTMSG,tp,0)
 			local ac=Duel.SelectOption(tp,aux.Stringid(61587183,3),aux.Stringid(61587183,4))
-			if ac==1 then Duel.MoveSequence(g:GetFirst(),1) end
+			if ac==1 then Duel.MoveSequence(g:GetFirst(),SEQ_DECKBOTTOM) end
 		end
 	end
 end

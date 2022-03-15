@@ -125,7 +125,7 @@ function c74997493.drop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SortDecktop(p,p,3)
 		for i=1,3 do
 			local mg=Duel.GetDecktopGroup(p,1)
-			Duel.MoveSequence(mg:GetFirst(),1)
+			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 		end
 	end
 end

@@ -11,21 +11,30 @@ function c80161395.initial_effect(c)
 	e1:SetOperation(c80161395.activate)
 	c:RegisterEffect(e1)
 end
+function c80161395.filter(c,tp)
+	return (c:GetAttack()>0 or c:GetDefense()>0) and (c:IsControler(tp) or c:IsFaceup())
+end
 function c80161395.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,nil) end
-	local sg=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
+	if chk==0 then return Duel.CheckReleaseGroup(tp,c80161395.filter,1,nil,tp) end
+	local sg=Duel.SelectReleaseGroup(tp,c80161395.filter,1,1,nil,tp)
 	local tc=sg:GetFirst()
 	local atk=tc:GetAttack()
 	local def=tc:GetDefense()
-	local isdef=tc:IsDefenseAbove(0)
 	Duel.Release(tc,REASON_COST)
-	local sel=0
-	if isdef then
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(80161395,0))
-		sel=Duel.SelectOption(tp,aux.Stringid(80161395,1),aux.Stringid(80161395,2))
+	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(80161395,0))
+	if atk>0 and def>0 then
+		if Duel.SelectOption(tp,aux.Stringid(80161395,1),aux.Stringid(80161395,2))==0 then
+			e:SetLabel(atk)
+		else
+			e:SetLabel(def)
+		end
+	elseif atk>0 then
+		Duel.SelectOption(tp,aux.Stringid(80161395,1))
+		e:SetLabel(atk)
+	else
+		Duel.SelectOption(tp,aux.Stringid(80161395,2))
+		e:SetLabel(def)
 	end
-	if sel==0 then e:SetLabel(atk)
-	else e:SetLabel(def) end
 end
 function c80161395.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

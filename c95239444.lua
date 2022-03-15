@@ -72,7 +72,7 @@ function c95239444.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SortDecktop(tp,tp,ac)
 		for i=1,ac do
 			local mg=Duel.GetDecktopGroup(tp,1)
-			Duel.MoveSequence(mg:GetFirst(),1)
+			Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
 		end
 	end
 end

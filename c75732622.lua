@@ -26,7 +26,7 @@ function c75732622.spcon(e,c)
 	return Duel.GetLocationCount(tp,LOCATION_MZONE)>=2 and Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>0
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133)
 		and Duel.IsPlayerCanSpecialSummonCount(tp,2)
-		and Duel.IsPlayerCanSpecialSummonMonster(tp,75732623,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_FIEND,ATTRIBUTE_DARK)
+		and Duel.IsPlayerCanSpecialSummonMonster(tp,75732623,0,TYPES_TOKEN_MONSTER,0,0,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP_ATTACK)
 end
 function c75732622.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	for i=1,2 do

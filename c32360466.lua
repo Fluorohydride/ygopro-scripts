@@ -37,6 +37,7 @@ function c32360466.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tc=tg:GetFirst()
 		Duel.Hint(HINT_CARD,0,tc:GetCode())
 		if c32360466.filter2(tc) and tc:IsAbleToHand() then
+			tc:SetStatus(STATUS_TO_HAND_WITHOUT_CONFIRM,true)
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			sg1:RemoveCard(tc)
 		end

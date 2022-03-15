@@ -37,7 +37,7 @@ function c13093792.operation(e,tp,eg,ep,ev,re,r,rp)
 			tc:RegisterEffect(e1)
 		end
 	else
-		Duel.MoveSequence(tc,1)
+		Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
 	end
 end
 function c13093792.spellcon(e,tp,eg,ep,ev,re,r,rp,chk)

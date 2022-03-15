@@ -47,6 +47,7 @@ function c50756327.thop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,sg1)
 		local cg=sg1:RandomSelect(1-tp,1)
 		local tc=cg:GetFirst()
+		tc:SetStatus(STATUS_TO_HAND_WITHOUT_CONFIRM,true)
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		Duel.ShuffleDeck(tp)
 	end

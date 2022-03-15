@@ -32,7 +32,7 @@ function c37129797.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e3:SetCode(EFFECT_ADD_EXTRA_TRIBUTE)
 	e3:SetTargetRange(0,LOCATION_MZONE)
-	e3:SetTarget(aux.TargetBoolFunction(Card.IsRace,RACE_ZOMBIE))
+	e3:SetTarget(c37129797.exrtg)
 	e3:SetValue(POS_FACEUP_ATTACK+POS_FACEDOWN_DEFENSE)
 	local e4=Effect.CreateEffect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_GRANT)
@@ -82,4 +82,7 @@ end
 function c37129797.drop(e,tp,eg,ep,ev,re,r,rp)
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Draw(p,d,REASON_EFFECT)
+end
+function c37129797.exrtg(e,c)
+	return c:IsFaceup() and c:IsRace(RACE_ZOMBIE)
 end

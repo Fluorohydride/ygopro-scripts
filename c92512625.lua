@@ -30,9 +30,14 @@ end
 function c92512625.cfilter(c)
 	return c:IsFacedown() and c:GetSequence()<5
 end
+function c92512625.condition(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	return c:IsLocation(LOCATION_SZONE) and c:IsFacedown()
+		and not Duel.IsExistingMatchingCard(c92512625.cfilter,tp,LOCATION_SZONE,0,1,c)
+end
 function c92512625.condition1(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetCurrentChain()==0
-		and not Duel.IsExistingMatchingCard(c92512625.cfilter,tp,LOCATION_SZONE,0,1,e:GetHandler())
+		and c92512625.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c92512625.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,3000) end
@@ -49,7 +54,7 @@ function c92512625.activate1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c92512625.condition2(e,tp,eg,ep,ev,re,r,rp)
 	return (re:IsActiveType(TYPE_MONSTER) or re:IsHasType(EFFECT_TYPE_ACTIVATE)) and Duel.IsChainNegatable(ev)
-		and not Duel.IsExistingMatchingCard(c92512625.cfilter,tp,LOCATION_SZONE,0,1,e:GetHandler())
+		and c92512625.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c92512625.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

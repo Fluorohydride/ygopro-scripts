@@ -42,7 +42,7 @@ function c89516305.initial_effect(c)
 	e3:SetOperation(c89516305.atkop)
 	c:RegisterEffect(e3)
 end
-c89516305.xyz_number=87
+aux.xyz_number[89516305]=87
 function c89516305.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())

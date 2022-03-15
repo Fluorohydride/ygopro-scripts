@@ -25,7 +25,8 @@ end
 function c43739056.actlimit(e,re,tp)
 	local rc=re:GetHandler()
 	local c=e:GetHandler()
-	return re:IsActiveType(TYPE_MONSTER) and rc:IsAttribute(c:GetAttribute()) and rc~=c and tp==c:GetControler()
+	return re:IsActiveType(TYPE_MONSTER) and rc:IsSummonType(SUMMON_TYPE_SPECIAL) and re:GetActivateLocation()==LOCATION_MZONE
+		and rc:IsAttribute(c:GetAttribute()) and rc~=c and tp==c:GetControler()
 end
 function c43739056.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	local p=e:GetHandler():GetOwner()

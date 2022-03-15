@@ -23,7 +23,7 @@ function c83764718.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c83764718.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and aux.NecroValleyFilter()(tc) then
 		Duel.SpecialSummon(tc,SUMMON_VALUE_MONSTER_REBORN,tp,tp,false,false,POS_FACEUP)
 	end
 end

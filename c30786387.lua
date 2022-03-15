@@ -40,7 +40,7 @@ function c30786387.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ShuffleDeck(tp)
 		local tg=rg:GetFirst()
 		while tg do
-			Duel.MoveSequence(tg,0)
+			Duel.MoveSequence(tg,SEQ_DECKTOP)
 			tg=rg:GetNext()
 		end
 		Duel.SortDecktop(tp,tp,3)

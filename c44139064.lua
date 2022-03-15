@@ -27,6 +27,7 @@ function c44139064.initial_effect(c)
 	e3:SetCountLimit(1,44139065)
 	e3:SetCondition(c44139064.atkcon)
 	e3:SetCost(c44139064.atkcost)
+	e3:SetTarget(c44139064.atktg)
 	e3:SetOperation(c44139064.atkop)
 	c:RegisterEffect(e3)
 	Duel.AddCustomActivityCounter(44139064,ACTIVITY_SPSUMMON,c44139064.counterfilter)
@@ -96,14 +97,30 @@ function c44139064.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 end
+function c44139064.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return true end
+	local a=Duel.GetAttacker()
+	if not a:IsControler(tp) then
+		a=Duel.GetAttackTarget()
+	end
+	Duel.SetTargetCard(a)
+end
 function c44139064.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetAttacker()
-	if tc:IsControler(1-tp) then tc=Duel.GetAttackTarget() end
-	if tc:IsRelateToBattle() then
-		local e1=Effect.CreateEffect(e:GetHandler())
+	local c=e:GetHandler()
+	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
+	local tc=tg:GetFirst()
+	if tc:IsRelateToBattle() and tc:IsControler(tp) then
+		local batk=tc:GetBaseAttack()
+		local bdef=tc:GetBaseDefense()
+		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
-		e1:SetCode(EFFECT_SWAP_BASE_AD)
-		e1:SetReset(RESET_PHASE+PHASE_DAMAGE)
+		e1:SetCode(EFFECT_SET_BASE_ATTACK_FINAL)
+		e1:SetValue(bdef)
+		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_DAMAGE_CAL)
 		tc:RegisterEffect(e1)
+		local e2=e1:Clone()
+		e2:SetCode(EFFECT_SET_BASE_DEFENSE_FINAL)
+		e2:SetValue(batk)
+		tc:RegisterEffect(e2)
 	end
 end
