@@ -27,6 +27,7 @@ function c8820526.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()
 	return c:IsRelateToBattle() and bc and bc:IsFaceup() and bc:IsRelateToBattle() and c:IsSummonType(SUMMON_TYPE_ADVANCE)
+		and Duel.GetMatchingGroupCount(c8820526.filter,tp,LOCATION_EXTRA,0,nil)>0
 end
 function c8820526.filter(c)
 	return c:IsFaceup() and c:IsType(TYPE_PENDULUM)
