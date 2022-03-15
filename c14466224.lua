@@ -42,7 +42,7 @@ end
 function c14466224.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(c14466224.gfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local sg=mg:SelectSubGroup(tp,c14466224.fselect,true,3,3,tp)
+	local sg=g:SelectSubGroup(tp,c14466224.fselect,true,3,3,tp)
 	if sg then
 		sg:KeepAlive()
 		e:SetLabelObject(sg)
