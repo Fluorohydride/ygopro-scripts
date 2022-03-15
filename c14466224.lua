@@ -28,7 +28,7 @@ function c14466224.gfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemoveAsCost()
 end
 function c14466224.fcheck(c,g)
-	return c:IsLocation(LOCATION_MZONE) and g:IsExists(Card.IsLocation,2,c,LOCATION_GRAVE)
+	return c:IsLocation(LOCATION_GRAVE) and g:IsExists(Card.IsLocation,2,c,LOCATION_MZONE)
 end
 function c14466224.fselect(g,tp)
 	return aux.mzctcheck(g,tp) and g:IsExists(c14466224.fcheck,1,nil,g)
