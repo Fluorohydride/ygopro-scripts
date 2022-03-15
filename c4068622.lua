@@ -32,23 +32,23 @@ end
 function c4068622.spfilter(c)
 	return c:IsFaceup() and c:IsAbleToRemoveAsCost()
 end
-function c4068622.fcheck(g)
-	if #g~=2 then return false end
-	local c1=g:GetFirst()
-	local c2=g:GetNext()
-	return c1:IsSetCard(0x33) and c1:IsType(TYPE_TUNER) and not c2:IsType(TYPE_TUNER) or c2:IsSetCard(0x33) and c2:IsType(TYPE_TUNER) and not c1:IsType(TYPE_TUNER)
+function c4068622.spfilter1(c)
+	return c:IsSetCard(0x33) and c:IsType(TYPE_TUNER)
+end
+function c4068622.spfilter2(c)
+	return not c:IsType(TYPE_TUNER)
 end
 function c4068622.fselect(g,tp)
-	return aux.mzctcheck(g,tp) and c4068622.fcheck(g)
+	return aux.mzctcheck(g,tp) and aux.gffcheck(g,c4068622.spfilter1,nil,c4068622.spfilter2,nil)
 end
 function c4068622.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local g=Duel.GetMatchingGroup(c4068622.filter,tp,LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(c4068622.spfilter,tp,LOCATION_MZONE,0,nil)
 	return g:CheckSubGroup(c4068622.fselect,2,2,tp)
 end
 function c4068622.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local g=Duel.GetMatchingGroup(c4068622.filter,tp,LOCATION_MZONE,0,nil)
+	local g=Duel.GetMatchingGroup(c4068622.spfilter,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local sg=g:SelectSubGroup(tp,c4068622.fselect,true,2,2,tp)
 	if sg then
