@@ -83,7 +83,7 @@ end
 function c95515518.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_TEMPORARY)~=0 then
-		local ct=Duel.GetCurrentPhase()==PHASE_STANDBY and 2 or 1
+		local ct=Duel.GetCurrentPhase()<=PHASE_STANDBY and 2 or 1
 		tc:RegisterFlagEffect(95515518,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_STANDBY,0,ct)
 		local e2=Effect.CreateEffect(e:GetHandler())
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
