@@ -46,7 +46,7 @@ function c53485634.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsPlayerAffectedByEffect(tp,59822133) and c:IsRelateToEffect(e) then
 		if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE) then
 			local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-			if ft<=0 or g:GetCount()==0 or (ft>1 and g:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
+			if ft<=0 or g:GetCount()==0 or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 			if g:GetCount()>ft then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 				g=g:Select(tp,ft,ft,nil)
