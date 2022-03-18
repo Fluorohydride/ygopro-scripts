@@ -47,5 +47,6 @@ function c43845801.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c43845801.actcon(e)
-	return Duel.GetAttacker()==e:GetLabelObject()
+	local tc=Duel.GetAttacker()
+	return tc and tc==e:GetLabelObject() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end

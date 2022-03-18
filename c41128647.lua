@@ -28,12 +28,7 @@ function c41128647.initial_effect(c)
 	e4:SetCondition(c41128647.actcon)
 	c:RegisterEffect(e4)
 end
-function c41128647.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0xd8) and c:IsControler(tp)
-end
 function c41128647.actcon(e)
-	local tp=e:GetHandlerPlayer()
-	local a=Duel.GetAttacker()
-	local d=Duel.GetAttackTarget()
-	return (a and c41128647.cfilter(a,tp)) or (d and c41128647.cfilter(d,tp))
+	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
+	return tc and tc:IsFaceup() and tc:IsSetCard(0xd8) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end

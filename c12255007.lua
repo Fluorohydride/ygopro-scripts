@@ -29,7 +29,7 @@ end
 function c12255007.actcon(e)
 	local tc=Duel.GetAttacker()
 	local tp=e:GetHandlerPlayer()
-	return tc and tc:IsControler(tp) and tc:IsSetCard(0x9f,0x99)
+	return tc and tc:IsControler(tp) and tc:IsSetCard(0x9f,0x99) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c12255007.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker():IsControler(1-tp)

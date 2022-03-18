@@ -41,5 +41,6 @@ function c40583194.etarget(e,re,c)
 	return c:IsType(TYPE_MONSTER) and (c:IsFaceup() or c:IsLocation(LOCATION_MZONE))
 end
 function c40583194.limcon(e)
-	return Duel.GetAttacker()==e:GetHandler()
+	local tc=Duel.GetAttacker()
+	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end

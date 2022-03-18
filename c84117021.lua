@@ -59,11 +59,15 @@ function c84117021.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tc=Duel.GetFirstTarget()
 		if tc:IsFaceup() and tc:IsRelateToEffect(e) then
 			local e1=Effect.CreateEffect(e:GetHandler())
-			e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
-			e1:SetCode(EVENT_ATTACK_ANNOUNCE)
-			e1:SetOperation(c84117021.atkop)
+			e1:SetType(EFFECT_TYPE_FIELD)
+			e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+			e1:SetCode(EFFECT_CANNOT_ACTIVATE)
+			e1:SetTargetRange(0,1)
+			e1:SetLabelObject(tc)
+			e1:SetValue(1)
+			e1:SetCondition(c84117021.actcon)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-			tc:RegisterEffect(e1)
+			Duel.RegisterEffect(e1,tp)
 		end
 	end
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE) then
@@ -90,13 +94,7 @@ end
 function c84117021.efun(e,ep,tp)
 	return ep==tp
 end
-function c84117021.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local e1=Effect.CreateEffect(e:GetHandler())
-	e1:SetType(EFFECT_TYPE_FIELD)
-	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
-	e1:SetCode(EFFECT_CANNOT_ACTIVATE)
-	e1:SetTargetRange(0,1)
-	e1:SetValue(1)
-	e1:SetReset(RESET_PHASE+PHASE_DAMAGE)
-	Duel.RegisterEffect(e1,tp)
+function c84117021.actcon(e)
+	local tc=Duel.GetAttacker()
+	return tc and tc==e:GetLabelObject() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end

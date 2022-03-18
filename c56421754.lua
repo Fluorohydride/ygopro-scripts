@@ -38,5 +38,6 @@ function c56421754.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.SendtoHand(g,nil,REASON_COST)
 end
 function c56421754.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler()
+	local tc=Duel.GetAttacker()
+	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end

@@ -38,7 +38,8 @@ function c77967790.actlimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c77967790.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()
+	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
+	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c77967790.atklimit(e,c)
 	return c~=e:GetHandler()

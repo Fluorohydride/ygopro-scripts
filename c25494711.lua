@@ -65,7 +65,8 @@ function c25494711.ftarget(e,c)
 	return e:GetLabel()~=c:GetFieldID()
 end
 function c25494711.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()
+	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
+	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c25494711.repfilter(c,e)
 	return c:IsFaceup() and c:IsSetCard(0xab)

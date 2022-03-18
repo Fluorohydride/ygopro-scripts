@@ -40,7 +40,8 @@ function c83866861.initial_effect(c)
 	c:RegisterEffect(e4)
 end
 function c83866861.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()
+	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
+	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c83866861.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

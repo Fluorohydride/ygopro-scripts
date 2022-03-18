@@ -51,19 +51,20 @@ function c10805153.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetType(EFFECT_TYPE_FIELD)
 		e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 		e2:SetCode(EFFECT_CANNOT_ACTIVATE)
-		e2:SetRange(LOCATION_MZONE)
 		e2:SetTargetRange(0,1)
+		e2:SetLabelObject(tc)
 		e2:SetValue(c10805153.aclimit)
 		e2:SetCondition(c10805153.actcon)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		tc:RegisterEffect(e2)
+		Duel.RegisterEffect(e2,tp)
 	end
 end
 function c10805153.aclimit(e,re,tp)
 	return re:GetHandler():IsType(TYPE_SPELL+TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c10805153.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()
+	local tc=Duel.GetAttacker()
+	return tc and tc==e:GetLabelObject() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c10805153.rccfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x128)

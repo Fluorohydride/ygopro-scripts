@@ -93,9 +93,6 @@ function c75059201.aclimit(e,re,tp)
 end
 function c75059201.actcon(e)
 	if not e:GetHandler():IsLevelAbove(7) then return false end
-	local a=Duel.GetAttacker()
-	if not a then return false end
-	local d=a:GetBattleTarget()
-	if a:IsControler(1-e:GetHandler():GetControler()) then a,d=d,a end
-	return a and a:IsSetCard(0x107)
+	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
+	return tc and tc:IsFaceup() and tc:IsSetCard(0x107) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end

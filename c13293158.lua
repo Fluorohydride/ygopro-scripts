@@ -42,7 +42,8 @@ function c13293158.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c13293158.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler()
+	local tc=Duel.GetAttacker()
+	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c13293158.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ep~=tp

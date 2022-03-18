@@ -12,7 +12,8 @@ function c7264861.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c7264861.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0 and Duel.GetAttacker()==e:GetHandler()
+	local tc=Duel.GetAttacker()
+	return Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0 and tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c7264861.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)

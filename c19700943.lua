@@ -21,7 +21,8 @@ function c19700943.sumcon(e,c,minc)
 	return false
 end
 function c19700943.immcon(e)
-	return Duel.GetAttacker()==e:GetHandler()
+	local tc=Duel.GetAttacker()
+	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c19700943.efilter(e,te)
 	return te:GetOwner()~=e:GetOwner()

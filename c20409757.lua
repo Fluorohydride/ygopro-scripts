@@ -47,11 +47,8 @@ function c20409757.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)==0
 end
 function c20409757.actcon(e)
-	local tp=e:GetHandlerPlayer()
-	local tc=Duel.GetAttacker()
-	if not tc then return false end
-	if tc:IsControler(1-tp) then tc=Duel.GetAttackTarget() end
-	return tc and tc:IsControler(tp) and tc:IsType(TYPE_PENDULUM)
+	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
+	return tc and tc:IsType(TYPE_PENDULUM) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c20409757.aclimit(e,re,tp)
 	return re:IsActiveType(TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE)

@@ -41,17 +41,12 @@ function c4810585.initial_effect(c)
 	e3:SetOperation(c4810585.spop)
 	c:RegisterEffect(e3)
 end
-function c4810585.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x137) and c:IsControler(tp)
-end
 function c4810585.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c4810585.actcon(e)
-	local tp=e:GetHandlerPlayer()
-	local a=Duel.GetAttacker()
-	local d=Duel.GetAttackTarget()
-	return (a and c4810585.cfilter(a,tp)) or (d and c4810585.cfilter(d,tp))
+	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
+	return tc and tc:IsFaceup() and tc:IsSetCard(0x137) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c4810585.atcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==1-tp

@@ -26,7 +26,7 @@ end
 function c58569561.accon(e)
 	local tp=e:GetHandlerPlayer()
 	local ac=Duel.GetAttacker()
-	return Duel.GetLP(tp)>Duel.GetLP(1-tp) and ac and ac:IsControler(tp) and ac:IsRace(RACE_PLANT)
+	return Duel.GetLP(tp)>Duel.GetLP(1-tp) and ac and ac:IsControler(tp) and ac:IsRace(RACE_PLANT) and not ac:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c58569561.actlimit(e,re,tp)
 	return re:IsActiveType(TYPE_MONSTER)

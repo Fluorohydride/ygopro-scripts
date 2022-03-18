@@ -36,12 +36,9 @@ function c72772445.initial_effect(c)
 	e4:SetOperation(c72772445.spop)
 	c:RegisterEffect(e4)
 end
-function c72772445.actfilter(c,tp)
-	return c and c:IsFaceup() and c:IsSetCard(0xe2) and c:IsType(TYPE_MONSTER) and c:IsControler(tp)
-end
 function c72772445.actcon(e)
-	local tp=e:GetHandlerPlayer()
-	return c72772445.actfilter(Duel.GetAttacker(),tp) or c72772445.actfilter(Duel.GetAttackTarget(),tp)
+	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
+	return tc and tc:IsFaceup() and tc:IsSetCard(0xe2) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c72772445.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

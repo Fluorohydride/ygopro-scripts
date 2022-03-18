@@ -35,7 +35,8 @@ function c45349196.mfilter2(c)
 	return c:IsFusionSetCard(0x3b) and c:IsFusionType(TYPE_NORMAL)
 end
 function c45349196.accon(e)
-	return Duel.GetAttacker()==e:GetHandler() or Duel.GetAttackTarget()==e:GetHandler()
+	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
+	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c45349196.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

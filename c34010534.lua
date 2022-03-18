@@ -52,12 +52,7 @@ end
 function c34010534.splimit(e,c)
 	return not c:IsRace(RACE_CYBERSE) and c:IsLocation(LOCATION_EXTRA)
 end
-function c34010534.cfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0x101) and c:IsControler(tp)
-end
 function c34010534.actcon(e)
-	local tp=e:GetHandlerPlayer()
-	local a=Duel.GetAttacker()
-	local d=Duel.GetAttackTarget()
-	return (a and c34010534.cfilter(a,tp)) or (d and c34010534.cfilter(d,tp))
+	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
+	return tc and tc:IsFaceup() and tc:IsSetCard(0x101) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end

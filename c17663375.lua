@@ -65,5 +65,6 @@ function c17663375.aclimit(e,re,tp)
 	return re:IsActiveType(TYPE_MONSTER)
 end
 function c17663375.actcon(e)
-	return Duel.GetAttacker()==e:GetHandler()
+	local tc=Duel.GetAttacker()
+	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end

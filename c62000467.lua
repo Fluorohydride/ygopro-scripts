@@ -42,7 +42,7 @@ end
 function c62000467.actcon(e)
 	local tc=Duel.GetAttacker()
 	local tp=e:GetHandlerPlayer()
-	return tc and tc:IsControler(tp) and tc:IsSetCard(0x19)
+	return tc and tc:IsControler(tp) and tc:IsSetCard(0x19) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c62000467.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetBattledGroupCount()>0

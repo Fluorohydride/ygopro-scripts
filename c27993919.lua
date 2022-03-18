@@ -104,7 +104,7 @@ end
 function c27993919.actcon2(e)
 	local a=Duel.GetAttacker()
 	local tp=e:GetHandlerPlayer()
-	return a and a:IsControler(tp) and a:IsSetCard(0x162)
+	return a and a:IsControler(tp) and a:IsSetCard(0x162) and not a:IsStatus(STATUS_ATTACK_CANCELED)
 		and Duel.IsExistingMatchingCard(c27993919.pfilter,tp,LOCATION_PZONE,0,1,nil)
 end
 function c27993919.actlimit2(e,re,tp)
