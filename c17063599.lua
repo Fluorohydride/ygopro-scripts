@@ -56,15 +56,14 @@ end
 function c17063599.actop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and tc and tc:IsRelateToEffect(e) and tc:IsFaceup()
-		and not tc:IsImmuneToEffect(e) then
+	if c:IsRelateToEffect(e) and c:IsFaceup() and tc and tc:IsRelateToEffect(e) then
 		c:SetCardTarget(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CANNOT_TRIGGER)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetCondition(c17063599.ctcon)
-		tc:RegisterEffect(e1)
+		tc:RegisterEffect(e1,true)
 	end
 end
 function c17063599.ctcon(e)

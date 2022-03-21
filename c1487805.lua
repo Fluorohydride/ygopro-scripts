@@ -37,7 +37,7 @@ function c1487805.initial_effect(c)
 	c:RegisterEffect(e3)
 	local e4=e3:Clone()
 	e4:SetCode(EFFECT_CANNOT_TRIGGER)
-	e4:SetValue(aux.TRUE)
+	e4:SetValue(1)
 	c:RegisterEffect(e4)
 end
 function c1487805.thcon(e,tp,eg,ep,ev,re,r,rp)
