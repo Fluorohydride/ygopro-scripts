@@ -47,13 +47,8 @@ function c87188910.initial_effect(c)
 	e4:SetOperation(c87188910.desop)
 	c:RegisterEffect(e4)
 end
-function c87188910.matfilter(c)
-	return not c:IsType(TYPE_TUNER)
-end
 function c87188910.valcheck(e,c)
-	local g=c:GetMaterial()
-	local ct=g:FilterCount(c87188910.matfilter,nil)
-	e:GetLabelObject():SetLabel(ct)
+	e:GetLabelObject():SetLabel(c:GetMaterialCount()-1)
 end
 function c87188910.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
