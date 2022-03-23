@@ -42,20 +42,20 @@ function c35952884.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_TRIGGER_O+EFFECT_TYPE_SINGLE)
 	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP)
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
-	e4:SetCode(EVENT_LEAVE_FIELD)
+	e4:SetCode(EVENT_TO_GRAVE)
 	e4:SetCondition(c35952884.sumcon)
 	e4:SetTarget(c35952884.sumtg)
 	e4:SetOperation(c35952884.sumop)
 	c:RegisterEffect(e4)
-end
-c35952884.material_type=TYPE_SYNCHRO
-function c35952884.mfilter(c)
-	return not c:IsType(TYPE_TUNER)
+	local e5=e4:Clone()
+	e5:SetCode(EVENT_REMOVE)
+	c:RegisterEffect(e5)
+	local e6=e4:Clone()
+	e6:SetCode(EVENT_TO_DECK)
+	c:RegisterEffect(e6)
 end
 function c35952884.valcheck(e,c)
-	local g=c:GetMaterial()
-	local ct=g:FilterCount(c35952884.mfilter,nil)
-	e:GetLabelObject():SetLabel(ct)
+	e:GetLabelObject():SetLabel(c:GetMaterialCount()-1)
 end
 function c35952884.mtcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO) and e:GetLabel()>0
@@ -66,7 +66,7 @@ function c35952884.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_EXTRA_ATTACK)
-	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
+	e1:SetReset(RESET_EVENT+0x1ff0000)
 	e1:SetValue(ct-1)
 	c:RegisterEffect(e1)
 end
@@ -89,10 +89,11 @@ function c35952884.sumcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousPosition(POS_FACEUP) and e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
 function c35952884.filter(c,e,tp)
-	return c:IsCode(24696097) and c:IsCanBeSpecialSummoned(e,0,tp,false,true) and Duel.GetLocationCountFromEx(tp,tp,nil,c)>0
+	return c:IsCode(24696097) and c:IsCanBeSpecialSummoned(e,0,tp,false,true)
 end
 function c35952884.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(c35952884.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
+	if chk==0 then return Duel.GetLocationCountFromEx(tp)>0
+		and Duel.IsExistingMatchingCard(c35952884.filter,tp,LOCATION_EXTRA,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c35952884.sumop(e,tp,eg,ep,ev,re,r,rp)
