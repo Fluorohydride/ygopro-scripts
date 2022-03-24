@@ -29,8 +29,8 @@ function c98301564.initial_effect(c)
 	e4:SetOperation(c98301564.regop)
 	c:RegisterEffect(e4)
 end
-function c98301564.costchange(e,re,rp,val)
-	if re and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsType(TYPE_TRAP) and re:GetHandler():IsType(TYPE_COUNTER) then
+function c98301564.costchange(e,re,rp,val,r)
+	if re and re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsType(TYPE_TRAP) and re:GetHandler():IsType(TYPE_COUNTER) and r==REASON_COST then
 		return 0
 	else
 		return val

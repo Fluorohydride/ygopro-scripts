@@ -37,8 +37,8 @@ end
 function c74936480.ffilter(c,fc,sub,mg,sg)
 	return c:IsFusionSetCard(0x173) and (not sg or not sg:IsExists(Card.IsFusionCode,1,c,c:GetFusionCode()))
 end
-function c74936480.costchange(e,re,rp,val)
-	if Duel.GetLP(e:GetHandlerPlayer())<=2000 and re
+function c74936480.costchange(e,re,rp,val,r)
+	if Duel.GetLP(e:GetHandlerPlayer())<=2000 and re and r==REASON_COST
 		and (re:GetHandler():IsSetCard(0x173) and re:IsActiveType(TYPE_MONSTER)
 			or re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:GetHandler():IsType(TYPE_TRAP)) then
 		return 0

@@ -33,9 +33,9 @@ function c33438666.repfilter(c,tp)
 end
 function c33438666.reptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local ct=eg:FilterCount(c33438666.repfilter,nil,tp)
-	if chk==0 then return ct>0 and Duel.CheckLPCost(tp,1000*ct) end
+	if chk==0 then return ct>0 and Duel.CheckLPEffect(tp,1000*ct) end
 	if Duel.SelectEffectYesNo(tp,e:GetHandler(),96) then
-		Duel.PayLPCost(tp,1000*ct)
+		Duel.PayLPEffect(tp,1000*ct)
 		return true
 	else return false end
 end

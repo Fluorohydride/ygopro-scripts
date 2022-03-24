@@ -38,7 +38,7 @@ function c53535814.cfilter(c)
 end
 function c53535814.llpcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c53535814.cfilter,tp,LOCATION_MZONE,0,1,e:GetHandler())
-		and ep==1-tp and re:IsActivated()
+		and ep==1-tp and re:IsActivated() and r==REASON_COST
 end
 function c53535814.llpop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,53535814)

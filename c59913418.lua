@@ -60,8 +60,8 @@ end
 function c59913418.costcon(e)
 	return e:GetHandler():GetFlagEffect(59913418)>0
 end
-function c59913418.costval(e,re,rp,val)
-	if re and re:IsActivated() and re:GetHandler()==e:GetHandler() then
+function c59913418.costval(e,re,rp,val,r)
+	if re and re:IsActivated() and re:GetHandler()==e:GetHandler() and r==REASON_COST then
 		return 0
 	else return val end
 end

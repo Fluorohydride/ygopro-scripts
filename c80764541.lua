@@ -34,9 +34,9 @@ function c80764541.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c80764541.desop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.IsChainDisablable(0) and Duel.CheckLPCost(1-tp,1000)
+	if Duel.IsChainDisablable(0) and Duel.CheckLPEffect(1-tp,1000)
 		and Duel.SelectYesNo(1-tp,aux.Stringid(80764541,1)) then
-		Duel.PayLPCost(1-tp,1000)
+		Duel.PayLPEffect(1-tp,1000)
 		Duel.NegateEffect(0)
 		return
 	end

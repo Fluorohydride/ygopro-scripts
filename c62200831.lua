@@ -79,7 +79,7 @@ end
 function c62200831.spop(e,tp,eg,ep,ev,re,r,rp)
 	local def=math.min(e:GetLabel(),Duel.GetLP(1-tp))
 	if def==0 then return end
-	Duel.PayLPCost(1-tp,def)
+	Duel.PayLPEffect(1-tp,def)
 	if Duel.IsPlayerCanSpecialSummonCount(tp,2)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_XMATERIAL)
