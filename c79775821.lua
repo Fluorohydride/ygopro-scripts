@@ -49,7 +49,7 @@ function c79775821.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 			local sg=g:Select(tp,1,1,nil)
-			local ec=g:GetFirst()
+			local ec=sg:GetFirst()
 			if ec then
 				if not Duel.Equip(tp,ec,tc) then return end
 				--equip limit
