@@ -2822,3 +2822,12 @@ function Auxiliary.GetCappedLevel(c)
 		return lv
 	end
 end
+--
+function Auxiliary.GetCappedAttack(c)
+	local x=c:GetAttack()
+	if x>MAX_PARAMETER then
+		return MAX_PARAMETER
+	else
+		return x
+	end
+end
