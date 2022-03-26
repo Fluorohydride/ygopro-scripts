@@ -44,7 +44,8 @@ function c94585852.regop(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Group.CreateGroup()
 	local tc=eg:GetFirst()
 	while tc do
-		if tc:IsReason(REASON_DESTROY) and not tc:IsReason(REASON_BATTLE) and tc:IsSetCard(0x45) and tc:GetLevel()>0 then
+		if tc:IsReason(REASON_DESTROY) and not tc:IsReason(REASON_BATTLE) and tc:GetPreviousTypeOnField()&TYPE_MONSTER~=0
+			and tc:IsSetCard(0x45) and tc:GetLevel()>0 then
 			local tlv=tc:GetLevel()
 			if tc:IsControler(0) then
 				if tlv>lv1 then lv1=tlv end
