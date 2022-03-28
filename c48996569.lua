@@ -12,7 +12,7 @@ function c48996569.initial_effect(c)
 	e1:SetValue(c48996569.splimit)
 	c:RegisterEffect(e1)
 	--return
-	aux.EnableNeosReturn(c,c40080312.retop)
+	aux.EnableNeosReturn(c,c48996569.retop)
 	--tohand
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(48996569,1))
