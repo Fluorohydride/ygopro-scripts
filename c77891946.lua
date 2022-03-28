@@ -83,7 +83,8 @@ function c77891946.tdcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c77891946.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=e:GetLabelObject()
-	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+	local tg=g:Filter(c77891946.tdfilter,nil,e:GetLabel())
+	Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end
 function c77891946.splimit(e,c)
 	return not c:IsSetCard(0x172) and c:IsLocation(LOCATION_EXTRA)
