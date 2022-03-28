@@ -212,11 +212,10 @@ function Auxiliary.SpiritReturnOperation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
 end
---
 function Auxiliary.EnableNeosReturn(c,operation)
 	--return
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription()
+	e1:SetDescription(1105)
 	e1:SetCategory(CATEGORY_TODECK)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_PHASE+PHASE_END)
@@ -231,6 +230,7 @@ function Auxiliary.EnableNeosReturn(c,operation)
 	e2:SetCondition(Auxiliary.NeosReturnConditionOptional)
 	e2:SetTarget(Auxiliary.NeosReturnTargetOptional)
 	c:RegisterEffect(e2)
+	return e1,e2
 end
 function Auxiliary.NeosReturnConditionForced(e,tp,eg,ep,ev,re,r,rp)
 	return not e:GetHandler():IsHasEffect(42015635)
