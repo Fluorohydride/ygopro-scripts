@@ -6,7 +6,7 @@ function c77585513.initial_effect(c)
 	e1:SetCode(EFFECT_CANNOT_TRIGGER)
 	e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 	e1:SetRange(LOCATION_MZONE)
-	e1:SetTargetRange(0xa,0xa)
+	e1:SetTargetRange(LOCATION_HAND+LOCATION_SZONE,LOCATION_HAND+LOCATION_SZONE)
 	e1:SetTarget(c77585513.distg)
 	c:RegisterEffect(e1)
 	--disable
