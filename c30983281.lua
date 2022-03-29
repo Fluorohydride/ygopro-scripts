@@ -138,10 +138,10 @@ function c30983281.scop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		e1:SetOwnerPlayer(tp)
 		tc:RegisterEffect(e1,true)
+		tc:CompleteProcedure()
 		res=true
 	end
 	Duel.SpecialSummonComplete()
-	tc:CompleteProcedure()
 	Duel.RaiseEvent(c,EVENT_ADJUST,nil,0,PLAYER_NONE,PLAYER_NONE,0)
 	local tg=Duel.GetMatchingGroup(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,nil,nil)
 	if res and tg:GetCount()>0 then
