@@ -1,4 +1,4 @@
---転生竜 サンサーラ
+--転生竜サンサーラ
 function c29143726.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)

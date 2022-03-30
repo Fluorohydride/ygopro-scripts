@@ -1,4 +1,4 @@
---魔界台本 「ファンタジー・マジック」
+--魔界台本「ファンタジー・マジック」
 function c87390798.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

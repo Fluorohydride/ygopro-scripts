@@ -1,4 +1,4 @@
---ギアギアーノ Mk－II
+--ギアギアーノ Mk－Ⅱ
 function c1045143.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
