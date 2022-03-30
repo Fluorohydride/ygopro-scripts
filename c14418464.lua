@@ -13,7 +13,6 @@ function c14418464.initial_effect(c)
 	c:RegisterEffect(e1)
 	--move
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(14418464,0))
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
