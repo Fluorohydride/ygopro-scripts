@@ -1,4 +1,4 @@
---プロモーシコン
+--プロモーション
 function c88617904.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

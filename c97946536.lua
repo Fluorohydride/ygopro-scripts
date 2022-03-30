@@ -1,4 +1,4 @@
---Zektrike Kou-Ou
+--Zektrike Kou-ou
 function c97946536.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
