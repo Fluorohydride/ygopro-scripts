@@ -18,7 +18,7 @@ function c4632019.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c4632019.synclv(e,c)
-	local lv=e:GetHandler():GetLevel()
+	local lv=aux.GetCappedLevel(e:GetHandler())
 	return (8<<16)+lv
 end
 function c4632019.efcon(e,tp,eg,ep,ev,re,r,rp)

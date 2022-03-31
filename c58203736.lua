@@ -1,4 +1,4 @@
---潜海奇襲II
+--潜海奇襲Ⅱ
 function c58203736.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--code

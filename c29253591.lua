@@ -29,7 +29,7 @@ function c29253591.synlimit(e,c)
 	return not c:IsSetCard(0x29)
 end
 function c29253591.slevel(e,c)
-	local lv=e:GetHandler():GetLevel()
+	local lv=aux.GetCappedLevel(e:GetHandler())
 	return (4<<16)+lv
 end
 function c29253591.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

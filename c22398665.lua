@@ -50,14 +50,14 @@ end
 function c22398665.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local mg=Duel.GetRitualMaterialEx(tp):Filter(Card.IsRace,nil,RACE_MACHINE)
-		return Duel.IsExistingMatchingCard(c22398665.RitualUltimateFilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,nil,e,tp,mg,nil,Card.GetAttack,"Greater")
+		return Duel.IsExistingMatchingCard(c22398665.RitualUltimateFilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,nil,e,tp,mg,nil,aux.GetCappedAttack,"Greater")
 	end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 end
 function c22398665.operation(e,tp,eg,ep,ev,re,r,rp)
 	local mg=Duel.GetRitualMaterialEx(tp):Filter(Card.IsRace,nil,RACE_MACHINE)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
-	local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c22398665.RitualUltimateFilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,nil,e,tp,mg,nil,Card.GetAttack,"Greater")
+	local tg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c22398665.RitualUltimateFilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,nil,e,tp,mg,nil,aux.GetCappedAttack,"Greater")
 	local tc=tg:GetFirst()
 	if tc then
 		mg=mg:Filter(Card.IsCanBeRitualMaterial,tc,tc)
@@ -84,11 +84,11 @@ end
 function c22398665.RitualCheckGreater(g,c,atk)
 	if atk==0 then return false end
 	Duel.SetSelectedCard(g)
-	return g:CheckWithSumGreater(Card.GetAttack,atk)
+	return g:CheckWithSumGreater(aux.GetCappedAttack,atk)
 end
 function c22398665.RitualCheckEqual(g,c,atk)
 	if atk==0 then return false end
-	return g:CheckWithSumEqual(Card.GetAttack,atk,#g,#g)
+	return g:CheckWithSumEqual(aux.GetCappedAttack,atk,#g,#g)
 end
 function c22398665.RitualCheck(g,tp,c,atk,greater_or_equal)
 	return c22398665["RitualCheck"..greater_or_equal](g,c,atk) and Duel.GetMZoneCount(tp,g,tp)>0 and (not c.mat_group_check or c.mat_group_check(g,tp))
@@ -97,13 +97,13 @@ end
 function c22398665.RitualCheckAdditional(c,atk,greater_or_equal)
 	if greater_or_equal=="Equal" then
 		return	function(g)
-					return (not aux.RGCheckAdditional or aux.RGCheckAdditional(g)) and g:GetSum(Card.GetAttack)<=atk
+					return (not aux.RGCheckAdditional or aux.RGCheckAdditional(g)) and g:GetSum(aux.GetCappedAttack)<=atk
 				end
 	else
 		return	function(g,ec)
 					if atk==0 then return #g<=1 end
 					if ec then
-						return (not aux.RGCheckAdditional or aux.RGCheckAdditional(g,ec)) and g:GetSum(Card.GetAttack)-Card.GetAttack(ec)<=atk
+						return (not aux.RGCheckAdditional or aux.RGCheckAdditional(g,ec)) and g:GetSum(aux.GetCappedAttack)-aux.GetCappedAttack(ec)<=atk
 					else
 						return not aux.RGCheckAdditional or aux.RGCheckAdditional(g)
 					end

@@ -1,4 +1,4 @@
---V・HEROヴァイオン
+--V・HERO ヴァイオン
 function c27780618.initial_effect(c)
 	--Tograve
 	local e1=Effect.CreateEffect(c)

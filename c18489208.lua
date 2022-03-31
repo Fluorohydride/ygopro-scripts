@@ -33,8 +33,7 @@ function c18489208.op(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetCode(EFFECT_CANNOT_TRIGGER)
 			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 			e1:SetCondition(c18489208.rcon)
-			e1:SetValue(1)
-			tc:RegisterEffect(e1)
+			tc:RegisterEffect(e1,true)
 		end
 		tc=g:GetNext()
 	end
