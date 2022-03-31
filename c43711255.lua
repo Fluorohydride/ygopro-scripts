@@ -35,4 +35,5 @@ function c43711255.activate(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetLabel(ac)
 	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e2)
+	Duel.AdjustInstantly(c)
 end
