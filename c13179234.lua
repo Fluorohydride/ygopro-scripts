@@ -64,7 +64,7 @@ function c13179234.pstg(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(c13179234.psfilter,tp,LOCATION_EXTRA,0,1,nil) end
 end
 function c13179234.psop(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return false end
+	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 	local g=Duel.SelectMatchingCard(tp,c13179234.psfilter,tp,LOCATION_EXTRA,0,1,1,nil)
 	if g:GetCount()>0 then
