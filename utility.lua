@@ -55,7 +55,6 @@ function Auxiliary.GetXyzNumber(v)
 end
 
 --the chain id of the results modified by EVENT_TOSS_DICE_NEGATE
-Auxiliary.dice_chain_id=0
 Auxiliary.idx_table=table.pack(1,2,3,4,5,6,7,8)
 
 function Auxiliary.Stringid(code,id)
