@@ -19,6 +19,7 @@ function c45082499.initial_effect(c)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetTargetRange(LOCATION_ONFIELD,0)
 	e2:SetTarget(aux.TargetBoolFunction(Card.IsSetCard,0x107e))
+	e2:SetCondition(c45082499.indcon)
 	e2:SetValue(aux.indoval)
 	c:RegisterEffect(e2)
 	--destroy sub
@@ -73,6 +74,9 @@ function c45082499.zw_equip_monster(c,tp,tc)
 end
 function c45082499.eqlimit(e,c)
 	return c==e:GetLabelObject()
+end
+function c45082499.indcon(e)
+	return e:GetHandler():GetEquipTarget()
 end
 function c45082499.repval(e,re,r,rp)
 	return bit.band(r,REASON_EFFECT)~=0

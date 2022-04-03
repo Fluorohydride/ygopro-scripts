@@ -81,9 +81,10 @@ function c32164201.eqlimit(e,c)
 	return c==e:GetLabelObject()
 end
 function c32164201.negcon(e,tp,eg,ep,ev,re,r,rp)
-	return rp==1-tp and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_MZONE
+	local c=e:GetHandler()
+	return c:GetEquipTarget() and rp==1-tp and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)==LOCATION_MZONE
 		and re:IsActiveType(TYPE_MONSTER) and Duel.IsChainDisablable(ev)
-		and e:GetHandler():GetFlagEffect(32164201)==0
+		and c:GetFlagEffect(32164201)==0
 end
 function c32164201.negop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SelectYesNo(tp,aux.Stringid(32164201,1)) then

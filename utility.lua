@@ -213,7 +213,7 @@ function Auxiliary.SpiritReturnOperation(e,tp,eg,ep,ev,re,r,rp)
 end
 function Auxiliary.IsUnionState(effect)
 	local c=effect:GetHandler()
-	return c:IsHasEffect(EFFECT_UNION_STATUS)
+	return c:IsHasEffect(EFFECT_UNION_STATUS) and c:GetEquipTarget()
 end
 --set EFFECT_EQUIP_LIMIT after equipping
 function Auxiliary.SetUnionState(c)
