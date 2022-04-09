@@ -68,7 +68,7 @@ function c220414.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c220414.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	if Duel.Remove(g,POS_FACEUP,REASON_EFFECT+REASON_TEMPORARY)~=0 then
+	if Duel.Remove(g,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 		local c=e:GetHandler()
 		local og=Duel.GetOperatedGroup()
 		local fid=c:GetFieldID()
