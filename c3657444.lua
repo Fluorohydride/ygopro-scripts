@@ -24,6 +24,7 @@ function c3657444.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(3657444,2))
 	e3:SetCategory(CATEGORY_TODECK)
+	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTarget(c3657444.target3)
@@ -68,13 +69,16 @@ function c3657444.operation2(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Draw(tp,2,REASON_EFFECT)
 	end
 end
-function c3657444.target3(e,tp,eg,ep,ev,re,r,rp,chk)
+function c3657444.target3(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_GRAVE) and chkc:IsAbleToDeck() end
 	if chk==0 then return e:GetHandler():IsAbleToRemove()
 		and Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,LOCATION_HAND,0,1,nil)
-		and Duel.IsExistingMatchingCard(Card.IsAbleToDeck,tp,LOCATION_GRAVE,0,1,nil) end
+		and Duel.IsExistingTarget(Card.IsAbleToDeck,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
+	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
+	local g=Duel.SelectTarget(tp,Card.IsAbleToDeck,tp,LOCATION_GRAVE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,2,0,0)
-	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,tp,LOCATION_GRAVE)
+	Duel.SetOperationInfo(0,CATEGORY_TODECK,g,1,0,0)
 end
 function c3657444.operation3(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -84,12 +88,10 @@ function c3657444.operation3(e,tp,eg,ep,ev,re,r,rp)
 	if hg:GetCount()>0 then
 		hg:AddCard(c)
 		if Duel.Remove(hg,POS_FACEUP,REASON_EFFECT)~=2 then return end
-		Duel.BreakEffect()
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
-		local gg=Duel.SelectMatchingCard(tp,Card.IsAbleToDeck,tp,LOCATION_GRAVE,0,1,1,nil)
-		if gg:GetCount()>0 then
-			Duel.SendtoDeck(gg,nil,SEQ_DECKTOP,REASON_EFFECT)
-			Duel.ConfirmCards(1-tp,gg)
+		local tc=Duel.GetFirstTarget()
+		if tc:IsRelateToEffect(e) then
+			Duel.BreakEffect()
+			Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 		end
 	end
 end
