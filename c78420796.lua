@@ -46,7 +46,7 @@ function c78420796.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
 		local chkf=tp
 		local mg1=Duel.GetMatchingGroup(c78420796.filter1,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil)
-		aux.FCheckAdditional=c78420796.fcheck
+		aux.FGoalCheckAdditional=c78420796.fcheck
 		aux.GCheckAdditional=c78420796.gcheck
 		local res=Duel.IsExistingMatchingCard(c78420796.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg1,nil,chkf)
 		if not res then
@@ -58,7 +58,7 @@ function c78420796.target(e,tp,eg,ep,ev,re,r,rp,chk)
 				res=Duel.IsExistingMatchingCard(c78420796.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,mg2,mf,chkf)
 			end
 		end
-		aux.FCheckAdditional=nil
+		aux.FGoalCheckAdditional=nil
 		aux.GCheckAdditional=nil
 		return res
 	end
@@ -68,7 +68,7 @@ end
 function c78420796.operation(e,tp,eg,ep,ev,re,r,rp)
 	local chkf=tp
 	local mg1=Duel.GetMatchingGroup(c78420796.filter1,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil)
-	aux.FCheckAdditional=c78420796.fcheck
+	aux.FGoalCheckAdditional=c78420796.fcheck
 	aux.GCheckAdditional=c78420796.gcheck
 	local sg1=Duel.GetMatchingGroup(c78420796.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,chkf)
 	local mg2=nil
@@ -99,7 +99,7 @@ function c78420796.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc:CompleteProcedure()
 	end
-	aux.FCheckAdditional=nil
+	aux.FGoalCheckAdditional=nil
 	aux.GCheckAdditional=nil
 end
 function c78420796.cdcon(e,tp,eg,ep,ev,re,r,rp)
