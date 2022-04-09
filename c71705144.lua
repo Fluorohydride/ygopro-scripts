@@ -15,7 +15,7 @@ function c71705144.filter(c)
 	return c:IsSetCard(0x9f) and c:IsType(TYPE_MONSTER) and c:IsAbleToDeck() and not c:IsPublic()
 end
 function c71705144.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDraw(tp)
+	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
 		and Duel.IsExistingMatchingCard(c71705144.filter,tp,LOCATION_HAND,0,1,e:GetHandler()) end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,nil,1,tp,LOCATION_HAND)
