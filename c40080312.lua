@@ -12,7 +12,7 @@ function c40080312.initial_effect(c)
 	e1:SetValue(c40080312.splimit)
 	c:RegisterEffect(e1)
 	--return
-	aux.EnableNeosReturn(c,c40080312.retop)
+	aux.EnableNeosReturn(c,c40080312.retop,c40080312.set_category)
 	--draw
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(40080312,1))
@@ -27,6 +27,11 @@ end
 c40080312.material_setcode=0x8
 function c40080312.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
+end
+function c40080312.set_category(e,tp,eg,ep,ev,re,r,rp)
+	e:SetCategory(CATEGORY_TODECK+CATEGORY_REMOVE)
+	local g=Duel.GetMatchingGroup(Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,e:GetHandler(),tp,POS_FACEDOWN)
+	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,#g,0,0)
 end
 function c40080312.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

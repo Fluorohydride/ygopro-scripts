@@ -12,7 +12,7 @@ function c90050480.initial_effect(c)
 	e1:SetValue(c90050480.splimit)
 	c:RegisterEffect(e1)
 	--return
-	aux.EnableNeosReturn(c,c90050480.retop)
+	aux.EnableNeosReturn(c,c90050480.retop,c90050480.set_category)
 	--act limit
 	local e5=Effect.CreateEffect(c)
 	e5:SetDescription(aux.Stringid(90050480,1))
@@ -30,6 +30,11 @@ function c90050480.ffilter(c,fc,sub,mg,sg)
 end
 function c90050480.splimit(e,se,sp,st)
 	return not e:GetHandler():IsLocation(LOCATION_EXTRA)
+end
+function c90050480.set_category(e,tp,eg,ep,ev,re,r,rp)
+	e:SetCategory(CATEGORY_TODECK+CATEGORY_DESTROY)
+	local g=Duel.GetMatchingGroup(nil,tp,0,LOCATION_ONFIELD,1,1,e:GetHandler())
+	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,#g,0,0)
 end
 function c90050480.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
