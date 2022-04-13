@@ -214,7 +214,7 @@ end
 function Auxiliary.EnableNeosReturn(c,operation,set_category)
 	--return
 	local e1=Effect.CreateEffect(c)
-	e1:SetDescription(1105)
+	e1:SetDescription(1193)
 	e1:SetCategory(CATEGORY_TODECK)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e1:SetCode(EVENT_PHASE+PHASE_END)
