@@ -1500,8 +1500,8 @@ end
 function Auxiliary.FShaddollFilter(c,fc,attr)
 	return (Auxiliary.FShaddollFilter1(c) or Auxiliary.FShaddollFilter2(c,attr)) and c:IsCanBeFusionMaterial(fc) and not c:IsHasEffect(6205579)
 end
-function Auxiliary.FShaddollExFilter(c,fc,attr)
-	return c:IsFaceup() and Auxiliary.FShaddollFilter(c,fc,attr)
+function Auxiliary.FShaddollExFilter(c,fc,attr,fe)
+	return c:IsFaceup() and not c:IsImmuneToEffect(fe) and Auxiliary.FShaddollFilter(c,fc,attr)
 end
 function Auxiliary.FShaddollFilter1(c)
 	return c:IsFusionSetCard(0x9d)
@@ -1532,7 +1532,8 @@ function Auxiliary.FShaddollCondition(attr)
 				local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
 				local exg=nil
 				if fc and fc:IsHasEffect(81788994) and fc:IsCanRemoveCounter(tp,0x16,3,REASON_EFFECT) then
-					exg=Duel.GetMatchingGroup(Auxiliary.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,attr)
+					local fe=fc:IsHasEffect(81788994)
+					exg=Duel.GetMatchingGroup(Auxiliary.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,attr,fe)
 				end
 				if gc then
 					if not mg:IsContains(gc) then return false end
@@ -1548,7 +1549,8 @@ function Auxiliary.FShaddollOperation(attr)
 				local fc=Duel.GetFieldCard(tp,LOCATION_FZONE,0)
 				local exg=nil
 				if fc and fc:IsHasEffect(81788994) and fc:IsCanRemoveCounter(tp,0x16,3,REASON_EFFECT) then
-					exg=Duel.GetMatchingGroup(Auxiliary.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,attr)
+					local fe=fc:IsHasEffect(81788994)
+					exg=Duel.GetMatchingGroup(Auxiliary.FShaddollExFilter,tp,0,LOCATION_MZONE,mg,c,attr,fe)
 				end
 				local g=nil
 				if gc then
