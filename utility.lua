@@ -885,7 +885,7 @@ function Auxiliary.AddXyzProcedureLevelFree(c,f,gf,minc,maxc,alterf,desc,op)
 end
 --Xyz Summon(level free)
 function Auxiliary.XyzLevelFreeFilter(c,xyzc,f)
-	return c:IsFaceup() and c:IsCanBeXyzMaterial(xyzc) and (not f or f(c,xyzc))
+	return (not c:IsLocation(LOCATION_ONFIELD+LOCATION_REMOVED) or c:IsFaceup()) and c:IsCanBeXyzMaterial(xyzc) and (not f or f(c,xyzc))
 end
 function Auxiliary.XyzLevelFreeGoal(g,tp,xyzc,gf)
 	return (not gf or gf(g)) and Duel.GetLocationCountFromEx(tp,tp,g,xyzc)>0
