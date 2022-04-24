@@ -30,6 +30,7 @@ function c46052429.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c46052429.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	::cancel::
 	local mg=Duel.GetMatchingGroup(c46052429.matfilter,tp,LOCATION_DECK,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tg=Duel.SelectMatchingCard(tp,c46052429.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp,mg)
@@ -39,7 +40,8 @@ function c46052429.activate(e,tp,eg,ep,ev,re,r,rp)
 			mg=mg:Filter(tc.mat_filter,nil,tp)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local mat=mg:SelectWithSumEqual(tp,Card.GetRitualLevel,tc:GetLevel(),1,99,tc)
+		local mat=mg:SelectSubGroup(tp,function(sg) return sg:GetSum(Card.GetRitualLevel)==tc:GetLevel() end,true,1,99)
+		if not mat then goto cancel end
 		tc:SetMaterial(mat)
 		Duel.SendtoGrave(mat,REASON_EFFECT+REASON_MATERIAL+REASON_RITUAL)
 		Duel.BreakEffect()

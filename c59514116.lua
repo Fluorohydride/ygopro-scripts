@@ -82,17 +82,20 @@ function c59514116.activate(e,tp,eg,ep,ev,re,r,rp)
 		if sg1:GetCount()>0 or (sg2~=nil and sg2:GetCount()>0) then
 			local sg=sg1:Clone()
 			if sg2 then sg:Merge(sg2) end
+			::fcancel::
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local tg=sg:Select(tp,1,1,nil)
 			local tc=tg:GetFirst()
 			if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 				local mat=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
+				if #mat==0 then goto cancel end
 				tc:SetMaterial(mat)
 				Duel.SendtoGrave(mat,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 				Duel.BreakEffect()
 				Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 			else
 				local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
+				if #mat2==0 then goto cancel end
 				local fop=ce:GetOperation()
 				fop(ce,e,tp,tc,mat2)
 			end
@@ -100,6 +103,7 @@ function c59514116.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		aux.FCheckAdditional=nil
 	elseif e:GetLabel()==1 then
+		::rcancel::
 		local mg=Duel.GetRitualMaterial(tp)
 		aux.RCheckAdditional=c59514116.rcheck
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -113,12 +117,11 @@ function c59514116.activate(e,tp,eg,ep,ev,re,r,rp)
 				mg:RemoveCard(tc)
 			end
 			aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Greater")
-			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-			local mat=mg:SelectSubGroup(tp,aux.RitualCheck,false,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
+			local mat=mg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
 			aux.GCheckAdditional=nil
 			if not mat or mat:GetCount()==0 then
 				aux.RCheckAdditional=nil
-				return
+				goto rcancel
 			end
 			tc:SetMaterial(mat)
 			Duel.ReleaseRitualMaterial(mat)
