@@ -1174,8 +1174,8 @@ function Auxiliary.FOperationMix(insf,sub,...)
 				local mg=eg:Filter(Auxiliary.FConditionFilterMix,c,c,sub,concat_fusion,table.unpack(funs))
 				if gc then Duel.SetSelectedCard(Group.FromCards(gc)) end
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-				local sg=mg:SelectSubGroup(tp,Auxiliary.FCheckMixGoal,false,#funs,#funs,tp,c,sub,chkfnf,table.unpack(funs))
-				Duel.SetFusionMaterial(sg)
+				local sg=mg:SelectSubGroup(tp,Auxiliary.FCheckMixGoal,true,#funs,#funs,tp,c,sub,chkfnf,table.unpack(funs))
+				Duel.SetFusionMaterial(sg or Group.CreateGroup())
 			end
 end
 function Auxiliary.FConditionFilterMix(c,fc,sub,concat_fusion,...)
@@ -1294,7 +1294,7 @@ function Auxiliary.FOperationMixRep(insf,sub,fun1,minc,maxc,...)
 					local cancel_group=sg:Clone()
 					if gc then cancel_group:RemoveCard(gc) end
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-					local tc=cg:SelectUnselect(cancel_group,tp,finish,false,minc+#funs,maxc+#funs)
+					local tc=cg:SelectUnselect(cancel_group,tp,finish,#sg==0,minc+#funs,maxc+#funs)
 					if not tc then break end
 					if sg:IsContains(tc) then
 						sg:RemoveCard(tc)
@@ -1556,19 +1556,19 @@ function Auxiliary.FShaddollOperation(attr)
 					mg:RemoveCard(gc)
 				else
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-					g=mg:FilterSelect(tp,Auxiliary.FShaddollSpFilter1,1,1,nil,c,tp,mg,exg,attr,chkf)
-					mg:Sub(g)
+					g=mg:Filter(Auxiliary.FShaddollSpFilter1,nil,c,tp,mg,exg,attr,chkf):SelectSubGroup(tp,aux.TRUE,true,1,1)
+					if g then mg:Sub(g) else Duel.SetFusionMaterial(Group.CreateGroup()) return end
 				end
 				if exg and exg:IsExists(Auxiliary.FShaddollSpFilter2,1,nil,c,tp,g:GetFirst(),attr,chkf)
 					and (mg:GetCount()==0 or (exg:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(81788994,0)))) then
 					fc:RemoveCounter(tp,0x16,3,REASON_EFFECT)
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-					local sg=exg:FilterSelect(tp,Auxiliary.FShaddollSpFilter2,1,1,nil,c,tp,g:GetFirst(),attr,chkf)
-					g:Merge(sg)
+					local sg=exg:Filter(Auxiliary.FShaddollSpFilter2,nil,c,tp,g:GetFirst(),attr,chkf):SelectSubGroup(tp,aux.TRUE,true,1,1)
+					if sg then g:Merge(sg) else Duel.SetFusionMaterial(Group.CreateGroup()) return end
 				else
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FMATERIAL)
-					local sg=mg:FilterSelect(tp,Auxiliary.FShaddollSpFilter2,1,1,nil,c,tp,g:GetFirst(),attr,chkf)
-					g:Merge(sg)
+					local sg=mg:Filter(Auxiliary.FShaddollSpFilter2,nil,c,tp,g:GetFirst(),attr,chkf):SelectSubGroup(tp,aux.TRUE,true,1,1)
+					if sg then g:Merge(sg) else Duel.SetFusionMaterial(Group.CreateGroup()) return end
 				end
 				Duel.SetFusionMaterial(g)
 			end
@@ -1583,6 +1583,7 @@ function Auxiliary.AddContactFusionProcedure(c,filter,self_location,opponent_loc
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_EXTRA)
 	e2:SetCondition(Auxiliary.ContactFusionCondition(filter,self_location,opponent_location))
+	e2:SetTarget(Auxiliary.ContactFusionTarget(filter,self_location,opponent_location))
 	e2:SetOperation(Auxiliary.ContactFusionOperation(filter,self_location,opponent_location,mat_operation,operation_params))
 	c:RegisterEffect(e2)
 	return e2
@@ -1599,12 +1600,23 @@ function Auxiliary.ContactFusionCondition(filter,self_location,opponent_location
 				return c:CheckFusionMaterial(mg,nil,tp|0x200)
 			end
 end
-function Auxiliary.ContactFusionOperation(filter,self_location,opponent_location,mat_operation,operation_params)
-	return	function(e,tp,eg,ep,ev,re,r,rp,c)
+function Auxiliary.ContactFusionTarget(filter,self_location,opponent_location)
+	return	function(e,tp,eg,ep,ev,re,r,rp,chk,c)
 				local mg=Duel.GetMatchingGroup(Auxiliary.ContactFusionMaterialFilter,tp,self_location,opponent_location,c,c,filter)
 				local g=Duel.SelectFusionMaterial(tp,c,mg,nil,tp|0x200)
+				if g and #g>0 then
+					g:KeepAlive()
+					e:SetLabelObject(g)
+					return true
+				else return false end
+			end
+end
+function Auxiliary.ContactFusionOperation(filter,self_location,opponent_location,mat_operation,operation_params)
+	return	function(e,tp,eg,ep,ev,re,r,rp,c)
+				local g=e:GetLabelObject()
 				c:SetMaterial(g)
 				mat_operation(g,table.unpack(operation_params))
+				g:DeleteGroup()
 			end
 end
 function Auxiliary.AddRitualProcUltimate(c,filter,level_function,greater_or_equal,summon_location,grave_filter,mat_filter,pause,extra_operation)
@@ -1697,6 +1709,7 @@ function Auxiliary.RitualUltimateTarget(filter,level_function,greater_or_equal,s
 end
 function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equal,summon_location,grave_filter,mat_filter,extra_operation)
 	return	function(e,tp,eg,ep,ev,re,r,rp)
+				::cancel::
 				local mg=Duel.GetRitualMaterial(tp)
 				if mat_filter then mg=mg:Filter(mat_filter,nil,e,tp) end
 				local exg=nil
@@ -1720,7 +1733,8 @@ function Auxiliary.RitualUltimateOperation(filter,level_function,greater_or_equa
 					Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 					local lv=level_function(tc)
 					Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(tc,lv,greater_or_equal)
-					mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,false,1,lv,tp,tc,lv,greater_or_equal)
+					mat=mg:SelectSubGroup(tp,Auxiliary.RitualCheck,true,1,lv,tp,tc,lv,greater_or_equal)
+					if not mat then goto cancel end
 					Auxiliary.GCheckAdditional=nil
 					tc:SetMaterial(mat)
 					Duel.ReleaseRitualMaterial(mat)
