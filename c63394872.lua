@@ -40,6 +40,7 @@ end
 function c63394872.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local seq=e:GetLabel()
-	if not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:GetSequence()>4 or not Duel.CheckLocation(tp,LOCATION_MZONE,seq) then return end
+	local tseq=tc:GetSequence()
+	if not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tseq>4 or math.abs(tseq-seq)~=1 or not Duel.CheckLocation(tp,LOCATION_MZONE,seq) then return end
 	Duel.MoveSequence(tc,seq)
 end
