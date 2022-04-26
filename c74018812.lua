@@ -53,7 +53,7 @@ function c74018812.cfilter(c)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsReason(REASON_EFFECT)
 end
 function c74018812.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and rp==tp and re:GetHandler():GetType()==TYPE_TRAP
+	return re and rp==tp and re:IsActiveType(TYPE_TRAP) and re:GetHandler():GetOriginalType()==TYPE_TRAP
 		and eg:IsExists(c74018812.cfilter,1,nil) and not eg:IsContains(e:GetHandler())
 end
 function c74018812.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
