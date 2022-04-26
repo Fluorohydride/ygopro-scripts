@@ -43,7 +43,8 @@ function c38383368.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c38383368.drcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsReason(REASON_DESTROY) and c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
+	return c:IsReason(REASON_DESTROY) and c:IsPreviousLocation(LOCATION_MZONE)
+		and c:GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF
 end
 function c38383368.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
