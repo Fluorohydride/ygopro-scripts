@@ -61,7 +61,7 @@ function c67526112.activate(e,tp,eg,ep,ev,re,r,rp)
 		local res=false
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
-			if #mat1==0 then goto cancel end
+			if #mat1<2 then goto cancel end
 			tc:SetMaterial(mat1)
 			if Duel.Destroy(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)==#mat1 then
 				Duel.BreakEffect()
@@ -70,7 +70,7 @@ function c67526112.activate(e,tp,eg,ep,ev,re,r,rp)
 			end
 		else
 			local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
-			if #mat2==0 then goto cancel end
+			if #mat2<2 then goto cancel end
 			local fop=ce:GetOperation()
 			fop(ce,e,tp,tc,mat2)
 			res=true

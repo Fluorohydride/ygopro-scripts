@@ -102,7 +102,7 @@ function c65801012.activate(e,tp,eg,ep,ev,re,r,rp)
 			local mat1=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
 			aux.FCheckAdditional=nil
 			aux.GCheckAdditional=nil
-			if #mat1==0 then goto cancel end
+			if #mat1<2 then goto cancel end
 			tc:SetMaterial(mat1)
 			local rg=mat1:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
 			mat1:Sub(rg)
@@ -112,7 +112,7 @@ function c65801012.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 		else
 			local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
-			if #mat2==0 then goto cancel end
+			if #mat2<2 then goto cancel end
 			local fop=ce:GetOperation()
 			fop(ce,e,tp,tc,mat2)
 		end

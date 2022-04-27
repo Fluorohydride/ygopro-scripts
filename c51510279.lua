@@ -75,14 +75,14 @@ function c51510279.activate(e,tp,eg,ep,ev,re,r,rp)
 		fmg1:RemoveCard(tc)
 		if fsg1:IsContains(tc) and (fsg2==nil or not fsg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			local mat1=Duel.SelectFusionMaterial(tp,tc,fmg1,nil,chkf)
-			if #mat1==0 then goto cancel end
+			if #mat1<2 then goto cancel end
 			tc:SetMaterial(mat1)
 			Duel.SendtoGrave(mat1,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP_DEFENSE)
 		else
 			local mat2=Duel.SelectFusionMaterial(tp,tc,fmg2,nil,chkf)
-			if #mat2==0 then goto cancel end
+			if #mat2<2 then goto cancel end
 			local fop=ce:GetOperation()
 			fop(ce,e,tp,tc,mat2)
 		end
@@ -101,7 +101,7 @@ function c51510279.activate(e,tp,eg,ep,ev,re,r,rp)
 		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Greater")
 		local mat=rmg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
 		aux.GCheckAdditional=nil
-		if not mat or mat:GetCount()==0 then goto cancel end
+		if not mat or mat:GetCount()<2 then goto cancel end
 		tc:SetMaterial(mat)
 		Duel.ReleaseRitualMaterial(mat)
 		Duel.BreakEffect()

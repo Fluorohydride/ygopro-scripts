@@ -58,7 +58,7 @@ function c15717011.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local mat=Duel.SelectFusionMaterial(tp,g:GetFirst(),mg,c,chkf)
 	aux.FCheckAdditional=nil
 	if c59160188 then c59160188.re_activated=false end
-	if #mat==0 then goto cancel end
+	if #mat<2 then goto cancel end
 	aux.UseExtraReleaseCount(mat,tp)
 	Duel.Release(mat,REASON_COST)
 	e:SetLabel(g:GetFirst():GetCode())

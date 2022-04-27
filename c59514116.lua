@@ -88,14 +88,14 @@ function c59514116.activate(e,tp,eg,ep,ev,re,r,rp)
 			local tc=tg:GetFirst()
 			if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 				local mat=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
-				if #mat==0 then goto cancel end
+				if #mat<2 then goto fcancel end
 				tc:SetMaterial(mat)
 				Duel.SendtoGrave(mat,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 				Duel.BreakEffect()
 				Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 			else
 				local mat2=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
-				if #mat2==0 then goto cancel end
+				if #mat2<2 then goto fcancel end
 				local fop=ce:GetOperation()
 				fop(ce,e,tp,tc,mat2)
 			end
