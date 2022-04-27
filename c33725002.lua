@@ -81,8 +81,9 @@ function c33725002.eqlimit(e,c)
 	return c==e:GetLabelObject()
 end
 function c33725002.descost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetEquipTarget() and e:GetHandler():GetEquipTarget():CheckRemoveOverlayCard(tp,1,REASON_COST) end
-	e:GetHandler():GetEquipTarget():RemoveOverlayCard(tp,1,1,REASON_COST)
+	local c=e:GetHandler()
+	if chk==0 then return c:GetEquipTarget() and c:GetEquipTarget():CheckRemoveOverlayCard(tp,1,REASON_COST) end
+	c:GetEquipTarget():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c33725002.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(aux.TRUE,tp,0,LOCATION_MZONE,1,nil) end
