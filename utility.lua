@@ -1086,10 +1086,12 @@ function Auxiliary.AddFusionProcMix(c,sub,insf,...)
 			mat[val[i]]=true
 		end
 	end
-	if c.material_count==nil then
-		local mt=getmetatable(c)
+	local mt=getmetatable(c)
+	if mt.material==nil then
+		mt.material=mat
+	end
+	if mt.material_count==nil then
 		mt.material_count={#fun,#fun}
-		if c.material==nil then mt.material=mat end
 	end
 	for index,_ in pairs(mat) do
 		Auxiliary.AddCodeList(c,index)
@@ -1203,10 +1205,12 @@ function Auxiliary.AddFusionProcMixRep(c,sub,insf,fun1,minc,maxc,...)
 			mat[val[i]]=true
 		end
 	end
-	if c.material_count==nil then
-		local mt=getmetatable(c)
+	local mt=getmetatable(c)
+	if mt.material==nil then
+		mt.material=mat
+	end
+	if mt.material_count==nil then
 		mt.material_count={#fun+minc-1,#fun+maxc-1}
-		if c.material==nil then mt.material=mat end
 	end
 	for index,_ in pairs(mat) do
 		Auxiliary.AddCodeList(c,index)
