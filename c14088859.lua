@@ -35,7 +35,7 @@ function c14088859.filter1(c,e)
 end
 function c14088859.filter2(c,e,tp,m,chkf)
 	local min,max=aux.GetMaterialListCount(c)
-	return min==2 and max==2 and and aux.IsMaterialListCode(c,89943723)
+	return min==2 and max==2 and aux.IsMaterialListCode(c,89943723)
 		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and c:CheckFusionMaterial(m,nil,chkf,true)
 end
 function c14088859.target(e,tp,eg,ep,ev,re,r,rp,chk)
