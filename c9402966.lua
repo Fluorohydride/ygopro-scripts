@@ -53,8 +53,10 @@ function c9402966.scop(e,tp,eg,ep,ev,re,r,rp)
 		local tc=sg:GetFirst()
 		if tc then
 			Duel.BreakEffect()
-			Duel.SpecialSummon(tc,SUMMON_TYPE_SYNCHRO,tp,tp,false,false,POS_FACEUP)
-			tc:CompleteProcedure()
+			tc:SetMaterial(nil)
+			if Duel.SpecialSummon(tc,SUMMON_TYPE_SYNCHRO,tp,tp,false,false,POS_FACEUP)>0 then
+				tc:CompleteProcedure()
+			end
 		end
 	end
 end

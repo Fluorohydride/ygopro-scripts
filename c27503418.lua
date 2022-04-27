@@ -43,6 +43,7 @@ function c27503418.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g2=Duel.SelectMatchingCard(tp,c27503418.filter2,tp,LOCATION_GRAVE,0,1,1,nil,tp,lv)
 		g2:AddCard(tc)
 		Duel.Remove(g2,POS_FACEUP,REASON_EFFECT)
+		g1:GetFirst():SetMaterial(nil)
 		Duel.SpecialSummon(g1,SUMMON_TYPE_SYNCHRO,tp,tp,false,false,POS_FACEUP)
 		g1:GetFirst():CompleteProcedure()
 	end

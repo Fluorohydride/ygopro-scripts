@@ -62,6 +62,7 @@ function c20994205.activate(e,tp,eg,ep,ev,re,r,rp)
 	if sg then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local xyz=spg:FilterSelect(tp,c20994205.spnofilter,1,1,sg,sg:GetSum(aux.GetXyzNumber)):GetFirst()
+		xyz:SetMaterial(nil)
 		Duel.SpecialSummon(xyz,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)
 		xyz:CompleteProcedure()
 		Duel.Overlay(xyz,sg)

@@ -27,14 +27,16 @@ end
 function c12930501.condition(e,tp,eg,ep,ev,re,r,rp)
 	return tp~=Duel.GetTurnPlayer()
 end
-function c12930501.filter(c,tp)
-	return c:IsType(TYPE_SPELL) and c:IsSSetable() and (c:IsType(TYPE_FIELD) or Duel.GetLocationCount(tp,LOCATION_SZONE)>0)
+function c12930501.filter(c,ft)
+	return c:IsType(TYPE_SPELL) and c:IsSSetable(true) and (c:IsType(TYPE_FIELD) or ft>0)
 end
 function c12930501.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_GRAVE) and c12930501.filter(chkc,tp) end
-	if chk==0 then return Duel.IsExistingTarget(c12930501.filter,tp,0,LOCATION_GRAVE,1,nil,tp) end
+	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
+	if e:IsHasType(EFFECT_TYPE_ACTIVATE) and not e:GetHandler():IsLocation(LOCATION_SZONE) then ft=ft-1 end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsLocation(LOCATION_GRAVE) and c12930501.filter(chkc,ft) end
+	if chk==0 then return Duel.IsExistingTarget(c12930501.filter,tp,0,LOCATION_GRAVE,1,nil,ft) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
-	local g=Duel.SelectTarget(tp,c12930501.filter,tp,0,LOCATION_GRAVE,1,1,nil,tp)
+	local g=Duel.SelectTarget(tp,c12930501.filter,tp,0,LOCATION_GRAVE,1,1,nil,ft)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,#g,0,0)
 end
 function c12930501.activate(e,tp,eg,ep,ev,re,r,rp)
