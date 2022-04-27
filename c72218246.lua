@@ -62,8 +62,11 @@ function c72218246.spop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c72218246.spfilter1,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,nil)
 	local tc=g:GetFirst()
-	if tc and Duel.SpecialSummon(tc,SUMMON_TYPE_SYNCHRO,tp,tp,false,false,POS_FACEUP)~=0 then
-		tc:CompleteProcedure()
+	if tc then
+		tc:SetMaterial(nil)
+		if Duel.SpecialSummon(tc,SUMMON_TYPE_SYNCHRO,tp,tp,false,false,POS_FACEUP)~=0 then
+			tc:CompleteProcedure()
+		end
 	end
 end
 function c72218246.cfilter(c,tp)
