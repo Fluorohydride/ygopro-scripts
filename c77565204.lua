@@ -87,7 +87,7 @@ function c77565204.tgop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,tc)
 		local code=tc:GetCode()
 		local mat=Duel.SelectFusionMaterial(tp,tc,mg)
-		if #mat==0 then goto cancel end
+		if #mat<2 then goto cancel end
 		mat:KeepAlive()
 		Duel.SendtoGrave(mat,REASON_EFFECT)
 		for mc in aux.Next(mat) do

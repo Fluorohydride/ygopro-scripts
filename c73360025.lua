@@ -93,7 +93,7 @@ function c73360025.spop(e,tp,eg,ep,ev,re,r,rp)
 		if sg1:IsContains(tc) and (sg3==nil or not sg3:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			if tc:IsSetCard(0xaf) then
 				local mat1=Duel.SelectFusionMaterial(tp,tc,mg2,nil,chkf)
-				if #mat1==0 then goto cancel end
+				if #mat1<2 then goto cancel end
 				tc:SetMaterial(mat1)
 				local mat2=mat1:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
 				mat1:Sub(mat2)
@@ -101,7 +101,7 @@ function c73360025.spop(e,tp,eg,ep,ev,re,r,rp)
 				Duel.Remove(mat2,POS_FACEUP,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			else
 				local mat2=Duel.SelectFusionMaterial(tp,tc,mg1,nil,chkf)
-				if #mat2==0 then goto cancel end
+				if #mat2<2 then goto cancel end
 				tc:SetMaterial(mat2)
 				Duel.SendtoGrave(mat2,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			end
@@ -109,7 +109,7 @@ function c73360025.spop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
 		else
 			local mat=Duel.SelectFusionMaterial(tp,tc,mg3,nil,chkf)
-			if #mat==0 then goto cancel end
+			if #mat<2 then goto cancel end
 			local fop=ce:GetOperation()
 			fop(ce,e,tp,tc,mat)
 		end
