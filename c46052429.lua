@@ -40,7 +40,7 @@ function c46052429.activate(e,tp,eg,ep,ev,re,r,rp)
 			mg=mg:Filter(tc.mat_filter,nil,tp)
 		end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local mat=mg:SelectSubGroup(tp,function(sg) return sg:GetSum(Card.GetRitualLevel)==tc:GetLevel() end,true,1,99)
+		local mat=mg:SelectSubGroup(tp,function(sg) return sg:GetSum(function(c) return c:GetRitualLevel(tc) end)==tc:GetLevel() end,true,1,99)
 		if not mat then goto cancel end
 		tc:SetMaterial(mat)
 		Duel.SendtoGrave(mat,REASON_EFFECT+REASON_MATERIAL+REASON_RITUAL)

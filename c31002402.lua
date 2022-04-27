@@ -62,7 +62,7 @@ function c31002402.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ReleaseRitualMaterial(mat)
 		else
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-			local mat=mg2:Filter(Card.IsLevel,nil,tc:GetLevel()):SelectUnselect(Group.CreateGroup(),tp,false,true,1,1)
+			local mat=mg2:SelectSubGroup(tp,function(sg) return #sg>0 and sg:GetFirst():IsLevel(tc:GetLevel()) end,true,1,1)
 			if not mat then goto cancel end
 			tc:SetMaterial(mat)
 			Duel.SendtoGrave(mat,REASON_EFFECT+REASON_MATERIAL+REASON_RITUAL)

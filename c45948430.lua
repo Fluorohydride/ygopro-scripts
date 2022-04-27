@@ -37,9 +37,9 @@ function c45948430.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c45948430.filter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)
 	local rc=rg:GetFirst()
 	if rc then
-		local mg=Duel.GetMatchingGroup(function(c) return c:IsLevelBelow(7) and c:IsAttribute(ATTRIBUTE_LIGHT)+ATTRIBUTE_DARK and c:IsAbleToGrave() and c:IsCanBeRitualMaterial(rc) end,tp,LOCATION_DECK+LOCATION_HAND,0,nil)
+		local mg=Duel.GetMatchingGroup(function(c) return c:IsLevelBelow(7) and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK) and c:IsAbleToGrave() and c:IsCanBeRitualMaterial(rc) end,tp,LOCATION_DECK+LOCATION_HAND,0,nil)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-		local mat=mg:SelectSubGroup(tp,function(g) aux.dabcheck(g) and g:GetClassCount(Card.GetLocation)==#g and g:GetSum(Card.GetLevel)==8 end,true,2,2)
+		local mat=mg:SelectSubGroup(tp,function(g) return aux.dabcheck(g) and g:GetClassCount(Card.GetLocation)==#g and g:GetSum(Card.GetLevel)==8 end,true,2,2)
 		if not mat then goto cancel end
 		rc:SetMaterial(mat)
 		Duel.SendtoGrave(mat,REASON_EFFECT+REASON_MATERIAL+REASON_RITUAL)
