@@ -8,7 +8,6 @@ function c16178681.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e2:SetCode(EVENT_PRE_BATTLE_DAMAGE)
 	e2:SetRange(LOCATION_PZONE)
-	e2:SetCountLimit(1,16178681)
 	e2:SetCondition(c16178681.rdcon)
 	e2:SetOperation(c16178681.rdop)
 	c:RegisterEffect(e2)
@@ -35,11 +34,13 @@ end
 function c16178681.rdcon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
 	if tc:IsControler(1-tp) then tc=Duel.GetAttackTarget() end
-	return ep==tp and tc and tc:IsType(TYPE_PENDULUM)
+	return ep==tp and tc and tc:IsType(TYPE_PENDULUM) and Duel.GetFlagEffect(tp,16178681)==0
 end
 function c16178681.rdop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SelectYesNo(tp,aux.Stringid(16178681,2)) then
+		Duel.Hint(HINT_CARD,0,16178681)
 		Duel.ChangeBattleDamage(tp,0)
+		Duel.RegisterFlagEffect(tp,16178681,RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c16178681.thcon(e,tp,eg,ep,ev,re,r,rp)
