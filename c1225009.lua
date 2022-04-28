@@ -47,7 +47,8 @@ function c1225009.cfilter(c)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsReason(REASON_EFFECT)
 end
 function c1225009.drcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and rp==tp and re:GetHandler():GetType()==TYPE_TRAP and eg:IsExists(c1225009.cfilter,1,nil)
+	return re and rp==tp and re:IsActiveType(TYPE_TRAP) and re:GetHandler():GetOriginalType()==TYPE_TRAP
+		and eg:IsExists(c1225009.cfilter,1,nil)
 end
 function c1225009.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end

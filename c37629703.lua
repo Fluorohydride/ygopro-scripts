@@ -49,7 +49,7 @@ function c37629703.cfilter(c)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsReason(REASON_EFFECT)
 end
 function c37629703.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and rp==tp and re:GetHandler():GetType()==TYPE_TRAP
+	return re and rp==tp and re:IsActiveType(TYPE_TRAP) and re:GetHandler():GetOriginalType()==TYPE_TRAP
 		and eg:IsExists(c37629703.cfilter,1,nil) and not eg:IsContains(e:GetHandler())
 end
 function c37629703.thtg(e,tp,eg,ep,ev,re,r,rp,chk)

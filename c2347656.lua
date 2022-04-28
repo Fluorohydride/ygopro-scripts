@@ -74,7 +74,8 @@ function c2347656.cfilter(c)
 	return c:IsPreviousLocation(LOCATION_MZONE) and c:IsReason(REASON_EFFECT)
 end
 function c2347656.descon(e,tp,eg,ep,ev,re,r,rp)
-	return re and rp==tp and re:GetHandler():GetType()==TYPE_TRAP and eg:IsExists(c2347656.cfilter,1,nil)
+	return re and rp==tp and re:IsActiveType(TYPE_TRAP) and re:GetHandler():GetOriginalType()==TYPE_TRAP
+		and eg:IsExists(c2347656.cfilter,1,nil)
 end
 function c2347656.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,0,LOCATION_ONFIELD+LOCATION_HAND)>0 end
