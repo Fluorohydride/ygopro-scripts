@@ -76,12 +76,12 @@ function c49306994.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
 end
 function c49306994.actcon(e)
-	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
-	return tc and tc==e:GetHandler():GetEquipTarget() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
+	local tc=e:GetHandler():GetEquipTarget()
+	return (Duel.GetAttacker()==tc or Duel.GetAttackTarget()==tc) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c49306994.discon(e,tp,eg,ep,ev,re,r,rp)
-	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
-	return tc and tc==e:GetHandler():GetEquipTarget()
+	local tc=e:GetHandler():GetEquipTarget()
+	return Duel.GetAttacker()==tc or Duel.GetAttackTarget()==tc
 end
 function c49306994.disfilter(c)
 	return aux.NegateAnyFilter(c) and c:IsType(TYPE_SPELL+TYPE_TRAP)
