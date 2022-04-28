@@ -51,7 +51,7 @@ function c22900219.actlimit(e,re,tp)
 end
 function c22900219.actcon(e)
 	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
-	return tc and tc==e:GetHandler() and tc:IsFaceup() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
+	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c22900219.atklimit(e,c)
 	return c~=e:GetHandler()
