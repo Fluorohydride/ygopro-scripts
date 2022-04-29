@@ -68,7 +68,7 @@ function c32828466.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_EXTRA_ATTACK_MONSTER)
-	e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_DISABLE)
+	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 	e2:SetValue(ct2-1)
 	c:RegisterEffect(e2)
 end

@@ -80,7 +80,7 @@ function c5380979.cfilter(c)
 end
 function c5380979.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c5380979.cfilter,1,nil) and not eg:IsContains(e:GetHandler()) and rp==tp
-		and re:IsActiveType(TYPE_TRAP) and re:GetHandler():GetType()==TYPE_TRAP and aux.exccon(e)
+		and re:IsActiveType(TYPE_TRAP) and re:GetHandler():GetOriginalType()==TYPE_TRAP and aux.exccon(e)
 end
 function c5380979.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsSSetable() end

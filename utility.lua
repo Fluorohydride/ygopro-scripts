@@ -2819,6 +2819,11 @@ function Auxiliary.nbcon(tp,re)
 	return Duel.IsPlayerCanRemove(tp)
 		and (not rc:IsRelateToEffect(re) or rc:IsAbleToRemove())
 end
+--condition of "negate activation and return to deck"
+function Auxiliary.ndcon(tp,re)
+	local rc=re:GetHandler()
+	return re:IsHasType(EFFECT_TYPE_ACTIVATE) or not rc:IsRelateToEffect(re) or rc:IsAbleToDeck()
+end
 --send to deck of contact fusion
 function Auxiliary.tdcfop(c)
 	return	function(g)
