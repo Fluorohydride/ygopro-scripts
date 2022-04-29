@@ -87,7 +87,8 @@ function c88307361.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c88307361.disop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=re:GetHandler()
-	if not tc:IsDisabled() and Duel.NegateEffect(ev) and tc:IsRelateToEffect(re) then
+	if tc:IsRelateToEffect(re) and tc:IsDisabled() then return end
+	if Duel.NegateEffect(ev) and tc:IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end
