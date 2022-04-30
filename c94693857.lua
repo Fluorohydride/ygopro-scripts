@@ -1,5 +1,7 @@
 --ブンボーグ001
 function c94693857.initial_effect(c)
+	--same effect send this card to grave and summon another card check
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	--atk/def
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -19,19 +21,21 @@ function c94693857.initial_effect(c)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
+	e3:SetLabelObject(e0)
 	e3:SetCondition(c94693857.spcon)
 	e3:SetTarget(c94693857.sptg)
 	e3:SetOperation(c94693857.spop)
 	c:RegisterEffect(e3)
 end
-function c94693857.filter(c)
-	return c:IsFaceup() and c:IsRace(RACE_MACHINE)
+function c94693857.filter(c,se)
+	return c:IsFaceup() and c:IsRace(RACE_MACHINE) and (se==nil or c:GetReasonEffect()~=se)
 end
 function c94693857.atkval(e,c)
 	return Duel.GetMatchingGroupCount(c94693857.filter,c:GetControler(),LOCATION_MZONE,0,nil)*500
 end
 function c94693857.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c94693857.filter,2,nil)
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c94693857.filter,2,nil,se)
 end
 function c94693857.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
