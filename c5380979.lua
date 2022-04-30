@@ -24,7 +24,7 @@ function c5380979.initial_effect(c)
 	e2:SetOperation(c5380979.setop)
 	c:RegisterEffect(e2)
 end
-function Auxiliary.LabrynthDestroyOp(e,tp,res)
+function aux.LabrynthDestroyOp(e,tp,res)
 	local c=e:GetHandler()
 	local chk=not c:IsStatus(STATUS_ACT_FROM_HAND) and c:IsSetCard(0x117e) and c:GetType()==TYPE_TRAP and e:IsHasType(EFFECT_TYPE_ACTIVATE)
 	local exc=nil

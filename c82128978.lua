@@ -13,7 +13,7 @@ function s.initial_effect(c)
 	e1:SetOperation(s.spop)
 	c:RegisterEffect(e1)
 	--Ritual sum
-	local e2=Auxiliary.AddRitualProcGreater2(c,s.ritfilter,LOCATION_HAND)
+	local e2=aux.AddRitualProcGreater2(c,s.ritfilter,LOCATION_HAND)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)

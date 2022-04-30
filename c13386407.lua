@@ -26,13 +26,13 @@ function c13386407.RitualUltimateFilter(c,filter,e,tp,m1,m2,level_function,great
 		mg:RemoveCard(c)
 	end
 	local lv=level_function(c)
-	Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(c,lv,greater_or_equal)
+	aux.GCheckAdditional=aux.RitualCheckAdditional(c,lv,greater_or_equal)
 	local res=mg:CheckSubGroup(c13386407.rcheck,1,lv,tp,c,lv,greater_or_equal,mc)
-	Auxiliary.GCheckAdditional=nil
+	aux.GCheckAdditional=nil
 	return res
 end
 function c13386407.rcheck(g,tp,c,lv,greater_or_equal,mc)
-	return Auxiliary.RitualCheck(g,tp,c,lv,greater_or_equal) and g:IsContains(mc)
+	return aux.RitualCheck(g,tp,c,lv,greater_or_equal) and g:IsContains(mc)
 end
 function c13386407.spfilter(c,e,tp)
 	if not (c:IsSetCard(0x106) and not c:IsCode(29348048)
@@ -79,9 +79,9 @@ function c13386407.activate(e,tp,eg,ep,ev,re,r,rp)
 			end
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 			local lv=Card.GetLevel(tc)
-			Auxiliary.GCheckAdditional=Auxiliary.RitualCheckAdditional(tc,lv,"Greater")
+			aux.GCheckAdditional=aux.RitualCheckAdditional(tc,lv,"Greater")
 			mat=mg:SelectSubGroup(tp,c13386407.rcheck,false,1,lv,tp,tc,lv,"Greater",sc)
-			Auxiliary.GCheckAdditional=nil
+			aux.GCheckAdditional=nil
 			tc:SetMaterial(mat)
 			Duel.ReleaseRitualMaterial(mat)
 			Duel.BreakEffect()
