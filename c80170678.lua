@@ -1,4 +1,4 @@
---ＥＮ－エンゲージ・ネオスペース
+--EN－エンゲージ・ネオスペース
 local s,id,o=GetID()
 function s.initial_effect(c)
 	aux.AddCodeList(c,89943723)
