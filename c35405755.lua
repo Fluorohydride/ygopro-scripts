@@ -1,4 +1,4 @@
---倶利伽羅天童
+--俱利伽羅天童
 local s,id,o=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()

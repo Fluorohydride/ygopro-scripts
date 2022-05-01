@@ -1,4 +1,4 @@
---Ｅ・ＨＥＲＯ スピリット・オブ・ネオス
+--E・HERO スピリット・オブ・ネオス
 local s,id,o=GetID()
 function s.initial_effect(c)
 	--Special Summon (from hand : itself)
