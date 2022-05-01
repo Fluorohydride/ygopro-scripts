@@ -17,7 +17,7 @@ function c76981308.initial_effect(c)
 	c:RegisterEffect(e1)
 	--atk down
 	local e2=Effect.CreateEffect(c)
-	e2:SetDescription(aux.Stringid(43175027,1))
+	e2:SetDescription(aux.Stringid(76981308,1))
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_PHASE+PHASE_BATTLE_START)
 	e2:SetRange(LOCATION_SZONE)
