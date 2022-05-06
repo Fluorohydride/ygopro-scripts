@@ -51,7 +51,7 @@ function c16494704.operation(e,tp,eg,ep,ev,re,r,rp)
 		aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Greater")
 		local mat=mg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
 		aux.GCheckAdditional=nil
-		if not mat or mat:GetCount()<2 then goto cancel end
+		if not mat then goto cancel end
 		tc:SetMaterial(mat)
 		local mat2=mat:Filter(Card.IsLocation,nil,LOCATION_EXTRA)
 		mat:Sub(mat2)

@@ -117,6 +117,7 @@ function c59514116.activate(e,tp,eg,ep,ev,re,r,rp)
 				mg:RemoveCard(tc)
 			end
 			aux.GCheckAdditional=aux.RitualCheckAdditional(tc,tc:GetLevel(),"Greater")
+			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 			local mat=mg:SelectSubGroup(tp,aux.RitualCheck,true,1,tc:GetLevel(),tp,tc,tc:GetLevel(),"Greater")
 			aux.GCheckAdditional=nil
 			if not mat or mat:GetCount()==0 then
