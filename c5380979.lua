@@ -24,24 +24,6 @@ function c5380979.initial_effect(c)
 	e2:SetOperation(c5380979.setop)
 	c:RegisterEffect(e2)
 end
-function Auxiliary.LabrynthDestroyOp(e,tp,res)
-	local c=e:GetHandler()
-	local chk=not c:IsStatus(STATUS_ACT_FROM_HAND) and c:IsSetCard(0x117e) and c:GetType()==TYPE_TRAP and e:IsHasType(EFFECT_TYPE_ACTIVATE)
-	local exc=nil
-	if c:IsStatus(STATUS_LEAVE_CONFIRMED) then exc=c end
-	local te=Duel.IsPlayerAffectedByEffect(tp,33407125)
-	if chk and te
-		and Duel.IsExistingMatchingCard(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,exc)
-		and Duel.SelectYesNo(tp,aux.Stringid(33407125,0)) then
-		if res>0 then Duel.BreakEffect() end
-		Duel.Hint(HINT_CARD,0,33407125)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local dg=Duel.SelectMatchingCard(tp,nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,exc)
-		Duel.HintSelection(dg)
-		Duel.Destroy(dg,REASON_EFFECT)
-		te:UseCountLimit(tp)
-	end
-end
 function c5380979.spfilter(c,e,tp)
 	return c:IsSetCard(0x17e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
@@ -80,7 +62,7 @@ function c5380979.cfilter(c)
 end
 function c5380979.setcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c5380979.cfilter,1,nil) and not eg:IsContains(e:GetHandler()) and rp==tp
-		and re:IsActiveType(TYPE_TRAP) and re:GetHandler():GetType()==TYPE_TRAP and aux.exccon(e)
+		and re:IsActiveType(TYPE_TRAP) and re:GetHandler():GetOriginalType()==TYPE_TRAP and aux.exccon(e)
 end
 function c5380979.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsSSetable() end

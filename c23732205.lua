@@ -3,6 +3,8 @@ function c23732205.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c23732205.mfilter,2)
 	c:EnableReviveLimit()
+	--same effect send this card to grave and spsummon another card check
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	--to deck
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(23732205,0))
@@ -25,6 +27,7 @@ function c23732205.initial_effect(c)
 	e2:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,23732206)
+	e2:SetLabelObject(e0)
 	e2:SetCondition(c23732205.spcon)
 	e2:SetTarget(c23732205.sptg)
 	e2:SetOperation(c23732205.spop)
@@ -59,11 +62,13 @@ function c23732205.desop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function c23732205.cfilter(c,tp)
+function c23732205.cfilter(c,tp,se)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0x102)
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c23732205.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c23732205.cfilter,1,nil,tp)
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c23732205.cfilter,1,nil,tp,se)
 end
 function c23732205.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
