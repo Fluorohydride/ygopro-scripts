@@ -83,7 +83,8 @@ function c95886782.cfilter(c,tp)
 	return c:IsSummonPlayer(1-tp)
 end
 function c95886782.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:IsActivated() and e:GetOwnerPlayer()==1-re:GetOwnerPlayer() and eg:IsExists(c95886782.cfilter,1,nil,tp)
+	return e:GetHandler():GetEquipTarget() and re and re:IsActivated() and e:GetOwnerPlayer()==1-re:GetOwnerPlayer()
+		and eg:IsExists(c95886782.cfilter,1,nil,tp)
 end
 function c95886782.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

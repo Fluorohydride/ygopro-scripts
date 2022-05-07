@@ -19,7 +19,7 @@ function c15286412.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c15286412.cfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c15286412.cfilter,tp,LOCATION_MZONE,0,1,1,nil)
-	Duel.Remove(g,POS_FACEUP,REASON_COST+REASON_TEMPORARY)
+	Duel.Remove(g,0,REASON_COST+REASON_TEMPORARY)
 	e:SetLabelObject(g:GetFirst())
 end
 function c15286412.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

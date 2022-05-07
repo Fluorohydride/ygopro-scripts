@@ -2,6 +2,8 @@
 function c43266605.initial_effect(c)
 	--change name
 	aux.EnableChangeCode(c,49036338,LOCATION_HAND+LOCATION_GRAVE)
+	--same effect send this card to grave and spsummon another card check
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	--destroy replace
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -20,6 +22,7 @@ function c43266605.initial_effect(c)
 	e3:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e3:SetRange(LOCATION_GRAVE)
 	e3:SetCountLimit(1,43266605)
+	e3:SetLabelObject(e0)
 	e3:SetCondition(c43266605.spcon)
 	e3:SetTarget(c43266605.sptg)
 	e3:SetOperation(c43266605.spop)
@@ -40,11 +43,13 @@ end
 function c43266605.repop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT+REASON_DISCARD+REASON_REPLACE)
 end
-function c43266605.cfilter(c,tp)
+function c43266605.cfilter(c,tp,se)
 	return c:IsSetCard(0xc1) and c:IsType(TYPE_TUNER) and c:IsControler(tp)
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c43266605.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c43266605.cfilter,1,nil,tp)
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c43266605.cfilter,1,nil,tp,se)
 end
 function c43266605.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

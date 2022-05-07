@@ -43,6 +43,7 @@ function c24590232.activate(e,tp,eg,ep,ev,re,r,rp)
 		local g3=rg:SelectWithSumEqual(tp,Card.GetLevel,rlv,1,63)
 		g2:Merge(g3)
 		Duel.Remove(g2,POS_FACEUP,REASON_EFFECT)
+		g1:GetFirst():SetMaterial(nil)
 		Duel.SpecialSummon(g1,SUMMON_TYPE_SYNCHRO,tp,tp,false,false,POS_FACEUP)
 		g1:GetFirst():CompleteProcedure()
 	end

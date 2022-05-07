@@ -61,10 +61,11 @@ function c96300057.eqop(e,tp,eg,ep,ev,re,r,rp)
 	aux.SetUnionState(c)
 end
 function c96300057.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():GetFlagEffect(96300057)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,true,false) end
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
-	e:GetHandler():RegisterFlagEffect(96300057,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
+	local c=e:GetHandler()
+	if chk==0 then return c:GetFlagEffect(96300057)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and c:GetEquipTarget() and c:IsCanBeSpecialSummoned(e,0,tp,true,false) end
+	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,c,1,0,0)
+	c:RegisterFlagEffect(96300057,RESET_EVENT+0x7e0000+RESET_PHASE+PHASE_END,0,1)
 end
 function c96300057.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

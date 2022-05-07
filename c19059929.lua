@@ -22,7 +22,6 @@ function c19059929.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_TARGET)
 	e3:SetCode(EFFECT_CANNOT_TRIGGER)
 	e3:SetRange(LOCATION_SZONE)
-	e3:SetValue(1)
 	c:RegisterEffect(e3)
 end
 function c19059929.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

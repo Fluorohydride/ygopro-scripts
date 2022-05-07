@@ -72,7 +72,7 @@ function c19089195.remcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c19089195.costfilter,tp,LOCATION_MZONE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c19089195.costfilter,tp,LOCATION_MZONE,0,1,1,nil)
-	if Duel.Remove(g,POS_FACEUP,REASON_COST+REASON_TEMPORARY)~=0 then
+	if Duel.Remove(g,0,REASON_COST+REASON_TEMPORARY)~=0 then
 		local rc=g:GetFirst()
 		if rc:IsType(TYPE_TOKEN) then return end
 		local e1=Effect.CreateEffect(c)

@@ -13,6 +13,9 @@ end
 function c99995595.filter(c)
 	return c:IsRace(RACE_THUNDER) and c:IsAttackBelow(1500) and c:IsAbleToHand()
 end
+function c99995595.opfilter(c,e)
+	return c:IsRelateToEffect(e) and c:IsRace(RACE_THUNDER)
+end
 function c99995595.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:GetControler()==tp and chkc:GetLocation()==LOCATION_GRAVE and c99995595.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c99995595.filter,tp,LOCATION_GRAVE,0,2,nil) end
@@ -22,7 +25,7 @@ function c99995595.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c99995595.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local sg=g:Filter(c99995595.opfilter,nil,e)
 	if sg:GetCount()>0 then
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,sg)

@@ -72,6 +72,7 @@ end
 function c27870337.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sel=e:GetLabel()
 	if sel==0 then
+		if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 		local sg=Duel.SelectMatchingCard(tp,c27870337.pendfilter,tp,LOCATION_DECK,0,1,1,nil)
 		local tc=sg:GetFirst()

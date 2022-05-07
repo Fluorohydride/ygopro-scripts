@@ -1,4 +1,4 @@
---守護霊 アイリン
+--守護霊アイリン
 function c11678191.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)

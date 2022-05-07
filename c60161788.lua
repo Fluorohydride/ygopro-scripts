@@ -1,4 +1,4 @@
---氷結界の番人ブリズド
+--氷結界の番人 ブリズド
 function c60161788.initial_effect(c)
 	--draw
 	local e1=Effect.CreateEffect(c)

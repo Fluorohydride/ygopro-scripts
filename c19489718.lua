@@ -51,7 +51,7 @@ function c19489718.discon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=c:GetBattleTarget()
 	e:SetLabelObject(tc)
-	return tc and tc:IsFaceup() and tc:IsControler(1-tp) and tc:IsType(TYPE_MONSTER) and not tc:IsDisabled()
+	return tc and tc:IsControler(1-tp) and tc:IsType(TYPE_MONSTER) and aux.NegateMonsterFilter(tc)
 		and Duel.IsExistingMatchingCard(c19489718.cfilter,tp,LOCATION_GRAVE,0,1,nil,tc:GetAttribute())
 end
 function c19489718.distg(e,tp,eg,ep,ev,re,r,rp,chk)

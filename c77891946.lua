@@ -40,23 +40,24 @@ function c77891946.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g2=Duel.SelectMatchingCard(tp,c77891946.spfilter2,tp,LOCATION_DECK,0,1,1,g1,e,tp,g1:GetFirst())
 	g1:Merge(g2)
 	local tc=g1:GetFirst()
+	local fid=c:GetFieldID()
 	while tc do
 		Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP)
-		local fid=c:GetFieldID()
 		tc:RegisterFlagEffect(77891946,RESET_EVENT+RESETS_STANDARD,0,1,fid)
-		local e1=Effect.CreateEffect(c)
-		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
-		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetCountLimit(1)
-		e1:SetLabel(fid)
-		e1:SetLabelObject(tc)
-		e1:SetCondition(c77891946.tdcon)
-		e1:SetOperation(c77891946.tdop)
-		Duel.RegisterEffect(e1,tp)
 		tc=g1:GetNext()
 	end
 	Duel.SpecialSummonComplete()
+	g1:KeepAlive()
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(EVENT_PHASE+PHASE_END)
+	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
+	e1:SetCountLimit(1)
+	e1:SetLabel(fid)
+	e1:SetLabelObject(g1)
+	e1:SetCondition(c77891946.tdcon)
+	e1:SetOperation(c77891946.tdop)
+	Duel.RegisterEffect(e1,tp)
 	if not e:IsHasType(EFFECT_TYPE_ACTIVATE) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -67,18 +68,23 @@ function c77891946.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 end
+function c77891946.tdfilter(c,fid)
+	return c:GetFlagEffectLabel(77891946)==fid
+end
 function c77891946.tdcon(e,tp,eg,ep,ev,re,r,rp)
-	local tc=e:GetLabelObject()
-	if tc:GetFlagEffectLabel(77891946)==e:GetLabel() then
-		return true
-	else
+	local g=e:GetLabelObject()
+	if not g:IsExists(c77891946.tdfilter,1,nil,e:GetLabel()) then
+		g:DeleteGroup()
 		e:Reset()
 		return false
+	else
+		return true
 	end
 end
 function c77891946.tdop(e,tp,eg,ep,ev,re,r,rp)
-	local tc=e:GetLabelObject()
-	Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+	local g=e:GetLabelObject()
+	local tg=g:Filter(c77891946.tdfilter,nil,e:GetLabel())
+	Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end
 function c77891946.splimit(e,c)
 	return not c:IsSetCard(0x172) and c:IsLocation(LOCATION_EXTRA)
