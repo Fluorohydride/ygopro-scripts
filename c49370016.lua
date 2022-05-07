@@ -52,7 +52,7 @@ function c49370016.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 end
 function c49370016.drcon(e,tp,eg,ep,ev,re,r,rp)
-	if not (tp==ep and re and re:IsActivated() and re:GetActivateLocation()==LOCATION_MZONE) then return false end
+	if not (tp==ep and re and re:IsActivated() and re:GetActivateLocation()==LOCATION_MZONE and r==REASON_COST) then return false end
 	local rc=re:GetHandler()
 	return rc:IsRelateToEffect(re) and rc:IsRace(RACE_PSYCHO)
 		or not rc:IsRelateToEffect(re) and rc:GetPreviousRaceOnField()&RACE_PSYCHO~=0
