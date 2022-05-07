@@ -42,27 +42,18 @@ function c78942513.activate(e,tp,eg,ep,ev,re,r,rp)
 			local e2=e1:Clone()
 			e2:SetCode(EFFECT_UPDATE_DEFENSE)
 			tc:RegisterEffect(e2)
-			local fid=c:GetFieldID()
-			tc:RegisterFlagEffect(78942513,RESET_EVENT+RESETS_STANDARD,0,1,fid)
 			local e3=Effect.CreateEffect(c)
 			e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 			e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 			e3:SetCode(EVENT_PHASE+PHASE_END)
 			e3:SetCountLimit(1)
-			e3:SetLabel(fid)
-			e3:SetLabelObject(tc)
-			e3:SetCondition(c78942513.flipcon)
+			e3:SetRange(LOCATION_MZONE)
 			e3:SetOperation(c78942513.flipop)
-			Duel.RegisterEffect(e3,tp)
+			e3:SetReset(RESET_EVENT+RESETS_STANDARD)
+			tc:RegisterEffect(e3)
 		end
 	end
 end
-function c78942513.flipcon(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetLabelObject():GetFlagEffectLabel(78942513)~=e:GetLabel() then
-		e:Reset()
-		return false
-	else return true end
-end
 function c78942513.flipop(e,tp,eg,ep,ev,re,r,rp)
-	Duel.ChangePosition(e:GetLabelObject(),POS_FACEDOWN_DEFENSE)
+	Duel.ChangePosition(e:GetHandler(),POS_FACEDOWN_DEFENSE)
 end
