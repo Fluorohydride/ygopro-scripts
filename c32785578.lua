@@ -11,24 +11,6 @@ function c32785578.initial_effect(c)
 	e1:SetOperation(c32785578.activate)
 	c:RegisterEffect(e1)
 end
-function Auxiliary.LabrynthDestroyOp(e,tp,res)
-	local c=e:GetHandler()
-	local chk=not c:IsStatus(STATUS_ACT_FROM_HAND) and c:IsSetCard(0x117e) and c:GetType()==TYPE_TRAP and e:IsHasType(EFFECT_TYPE_ACTIVATE)
-	local exc=nil
-	if c:IsStatus(STATUS_LEAVE_CONFIRMED) then exc=c end
-	local te=Duel.IsPlayerAffectedByEffect(tp,33407125)
-	if chk and te
-		and Duel.IsExistingMatchingCard(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,exc)
-		and Duel.SelectYesNo(tp,aux.Stringid(33407125,0)) then
-		if res>0 then Duel.BreakEffect() end
-		Duel.Hint(HINT_CARD,0,33407125)
-		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
-		local dg=Duel.SelectMatchingCard(tp,nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,exc)
-		Duel.HintSelection(dg)
-		Duel.Destroy(dg,REASON_EFFECT)
-		te:UseCountLimit(tp)
-	end
-end
 function c32785578.cfilter(c)
 	return c:IsRace(RACE_FIEND) and c:IsFaceup()
 end

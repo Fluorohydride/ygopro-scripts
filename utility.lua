@@ -2588,6 +2588,25 @@ function Auxiliary.DrytronSpSummonOperation(func)
 		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0 then func(e,tp) end
 	end
 end
+--additional destroy effect for the Labrynth field
+function Auxiliary.LabrynthDestroyOp(e,tp,res)
+	local c=e:GetHandler()
+	local chk=not c:IsStatus(STATUS_ACT_FROM_HAND) and c:IsSetCard(0x117e) and c:GetType()==TYPE_TRAP and e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	local exc=nil
+	if c:IsStatus(STATUS_LEAVE_CONFIRMED) then exc=c end
+	local te=Duel.IsPlayerAffectedByEffect(tp,33407125)
+	if chk and te
+		and Duel.IsExistingMatchingCard(nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,exc)
+		and Duel.SelectYesNo(tp,aux.Stringid(33407125,0)) then
+		if res>0 then Duel.BreakEffect() end
+		Duel.Hint(HINT_CARD,0,33407125)
+		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+		local dg=Duel.SelectMatchingCard(tp,nil,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,exc)
+		Duel.HintSelection(dg)
+		Duel.Destroy(dg,REASON_EFFECT)
+		te:UseCountLimit(tp)
+	end
+end
 --shortcut for Gizmek cards
 function Auxiliary.AtkEqualsDef(c)
 	if not c:IsType(TYPE_MONSTER) or c:IsType(TYPE_LINK) then return false end
@@ -2886,4 +2905,45 @@ function Auxiliary.GetCappedAttack(c)
 	else
 		return x
 	end
+end
+--when this card is sent to grave, record the reason effect
+--to check whether the reason effect do something simultaneously
+--so the "while this card is in your GY" condition isn't met
+function Auxiliary.AddThisCardInGraveAlreadyCheck(c)
+	local e1=Effect.CreateEffect(c)
+	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)
+	e1:SetCode(EVENT_TO_GRAVE)
+	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+	e1:SetOperation(Auxiliary.ThisCardInGraveAlreadyCheckOperation)
+	c:RegisterEffect(e1)
+	return e1
+end
+function Auxiliary.ThisCardInGraveAlreadyCheckOperation(e,tp,eg,ep,ev,re,r,rp)
+	if (r&REASON_EFFECT)>0 then
+		e:SetLabelObject(re)
+		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+		e1:SetCode(EVENT_CHAIN_END)
+		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
+		e1:SetOperation(Auxiliary.ThisCardInGraveAlreadyReset1)
+		e1:SetLabelObject(e)
+		Duel.RegisterEffect(e1,tp)
+		local e2=e1:Clone()
+		e2:SetCode(EVENT_BREAK_EFFECT)
+		e2:SetOperation(Auxiliary.ThisCardInGraveAlreadyReset2)
+		e2:SetReset(RESET_CHAIN)
+		e2:SetLabelObject(e1)
+		Duel.RegisterEffect(e2,tp)
+	end
+end
+function Auxiliary.ThisCardInGraveAlreadyReset1(e)
+	--this will run after EVENT_SPSUMMON_SUCCESS
+	e:GetLabelObject():SetLabelObject(nil)
+	e:Reset()
+end
+function Auxiliary.ThisCardInGraveAlreadyReset2(e)
+	local e1=e:GetLabelObject()
+	e1:GetLabelObject():SetLabelObject(nil)
+	e1:Reset()
+	e:Reset()
 end
