@@ -30,7 +30,7 @@ function c11067666.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SelectEffectYesNo(tp,e:GetHandler()) then
 		Duel.Hint(HINT_CARD,0,11067666)
 		e:GetHandler():RegisterFlagEffect(11067666,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
-		if Duel.NegateEffect(ev) then
+		if Duel.NegateEffect(ev,true) then
 			Duel.BreakEffect()
 			Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 		end

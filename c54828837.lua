@@ -45,7 +45,7 @@ function c54828837.negop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	if Duel.SelectYesNo(tp,aux.Stringid(54828837,0)) then
 		Duel.Hint(HINT_CARD,0,54828837)
-		if Duel.NegateEffect(ev) and Duel.IsExistingMatchingCard(c54828837.cfilter,tp,LOCATION_MZONE,0,1,nil) then
+		if Duel.NegateEffect(ev,true) and Duel.IsExistingMatchingCard(c54828837.cfilter,tp,LOCATION_MZONE,0,1,nil) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
 			local g=Duel.SelectMatchingCard(tp,c54828837.cfilter,tp,LOCATION_MZONE,0,1,1,nil)

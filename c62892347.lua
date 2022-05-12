@@ -89,7 +89,7 @@ function c62892347.disop(e,tp,eg,ep,ev,re,r,rp)
 	if (val==1 and rp==1-ec:GetControler()) or (val==0 and rp==ec:GetControler()) then return end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	if not g or not g:IsContains(ec) then return end
-	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateEffect(ev,true) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(re:GetHandler(),REASON_EFFECT)
 	end
 end
