@@ -32,6 +32,8 @@ function c92661479.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,1000)
 end
 function c92661479.operation(e,tp,eg,ep,ev,re,r,rp)
+	local rc=re:GetHandler()
+	if rc:IsRelateToEffect(re) and rc:IsDisabled() then return end
 	if Duel.NegateEffect(ev) then
 		Duel.Damage(1-tp,1000,REASON_EFFECT)
 	end

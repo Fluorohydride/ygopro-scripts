@@ -19,6 +19,8 @@ function c33784505.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
 end
 function c33784505.activate(e,tp,eg,ep,ev,re,r,rp)
+	local rc=re:GetHandler()
+	if rc:IsRelateToEffect(re) and rc:IsDisabled() then return end
 	if Duel.NegateEffect(ev) then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end

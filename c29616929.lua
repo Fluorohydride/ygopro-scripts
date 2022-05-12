@@ -23,10 +23,9 @@ function c29616929.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c29616929.activate(e,tp,eg,ep,ev,re,r,rp)
-	local tc=re:GetHandler()
-	if not tc:IsDisabled() then
-		if Duel.NegateEffect(ev) and tc:IsRelateToEffect(re) then
-			Duel.Destroy(eg,REASON_EFFECT)
-		end
+	local rc=re:GetHandler()
+	if rc:IsRelateToEffect(re) and rc:IsDisabled() then return end
+	if Duel.NegateEffect(ev) and rc:IsRelateToEffect(re) then
+		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

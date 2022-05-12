@@ -126,6 +126,8 @@ function c66425726.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) and c:IsFaceup() and not c:IsImmuneToEffect(e) then
 		if Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true) and c:IsLocation(LOCATION_PZONE) then
+			local rc=re:GetHandler()
+			if rc:IsRelateToEffect(re) and rc:IsDisabled() then return end		
 			if Duel.NegateEffect(ev) and c:IsSummonType(SUMMON_TYPE_RITUAL)
 				and Duel.IsExistingMatchingCard(c66425726.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp)
 				and Duel.SelectYesNo(tp,aux.Stringid(66425726,2)) then

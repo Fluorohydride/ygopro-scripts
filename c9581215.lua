@@ -21,6 +21,8 @@ function c9581215.rmfilter(c,p,tc)
 	return c:IsAbleToRemove(p) and c:IsOriginalCodeRule(tc:GetOriginalCodeRule())
 end
 function c9581215.activate(e,tp,eg,ep,ev,re,r,rp)
+	local rc=re:GetHandler()
+	if rc:IsRelateToEffect(re) and rc:IsDisabled() then return end
 	if not Duel.NegateEffect(ev) then return end
 	Duel.BreakEffect()
 	local sel=1

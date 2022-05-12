@@ -59,6 +59,8 @@ function c49161188.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c49161188.disop(e,tp,eg,ep,ev,re,r,rp)
+	local rc=re:GetHandler()
+	if rc:IsRelateToEffect(re) and rc:IsDisabled() then return end
 	if Duel.NegateEffect(ev) then
 		local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil)
 		if g:GetCount()>0 then

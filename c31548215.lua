@@ -20,6 +20,8 @@ function c31548215.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,2000)
 end
 function c31548215.activate(e,tp,eg,ep,ev,re,r,rp)
+	local rc=re:GetHandler()
+	if rc:IsRelateToEffect(re) and rc:IsDisabled() then return end
 	if Duel.NegateEffect(ev) then
 		Duel.Damage(1-tp,2000,REASON_EFFECT)
 	end

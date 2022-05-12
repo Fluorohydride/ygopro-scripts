@@ -25,10 +25,12 @@ function c13166204.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c13166204.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(re:GetHandler(),REASON_EFFECT)~=0 then
+	local rc=re:GetHandler()
+	if rc:IsRelateToEffect(re) and rc:IsDisabled() then return end
+	if Duel.NegateEffect(ev) and rc:IsRelateToEffect(re) and Duel.Destroy(rc,REASON_EFFECT)~=0 then
 		Duel.BreakEffect()
-		local a=re:GetHandler():GetAttack()
-		local b=re:GetHandler():GetDefense()
+		local a=rc:GetAttack()
+		local b=rc:GetDefense()
 		if b>a then a=b end
 		if a<0 then a=0 end
 		if a>0 then Duel.Damage(1-tp,a,REASON_EFFECT) end

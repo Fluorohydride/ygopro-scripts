@@ -60,6 +60,8 @@ function c95824983.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c95824983.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
+	local rc=re:GetHandler()
+	if rc:IsRelateToEffect(re) and rc:IsDisabled() then return end
 	if Duel.NegateEffect(ev) and c:IsRelateToEffect(e) and c:IsFaceup()
 		and Duel.SelectYesNo(tp,aux.Stringid(95824983,2)) then
 		Duel.BreakEffect()

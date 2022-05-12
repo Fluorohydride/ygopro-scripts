@@ -25,6 +25,8 @@ function c76045757.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,eg,1,0,0)
 end
 function c76045757.operation(e,tp,eg,ep,ev,re,r,rp)
+	local rc=re:GetHandler()
+	if rc:IsRelateToEffect(re) and rc:IsDisabled() then return end
 	if Duel.NegateEffect(ev) and Duel.IsExistingMatchingCard(c76045757.tgfilter,tp,LOCATION_DECK,0,1,nil) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)

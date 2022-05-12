@@ -70,6 +70,8 @@ function c63941210.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c63941210.disop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(tp,LOCATION_ONFIELD,LOCATION_ONFIELD)
+	local rc=re:GetHandler()
+	if rc:IsRelateToEffect(re) and rc:IsDisabled() then return end
 	if Duel.NegateEffect(ev) and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(63941210,1)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local tg=g:Select(tp,1,1,nil)

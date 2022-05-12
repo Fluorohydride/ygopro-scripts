@@ -22,6 +22,7 @@ function c71098407.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c71098407.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
+	if rc:IsRelateToEffect(re) and rc:IsDisabled() then return end
 	if Duel.NegateEffect(ev) and rc:IsRelateToEffect(e) then
 		Duel.ChangePosition(rc,POS_FACEUP_DEFENSE)
 	end

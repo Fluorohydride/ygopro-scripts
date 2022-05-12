@@ -64,6 +64,8 @@ function c68490573.atkfilter(c)
 	return c:IsType(TYPE_SYNCHRO) and c:IsFaceup()
 end
 function c68490573.disop(e,tp,eg,ep,ev,re,r,rp)
+	local rc=re:GetHandler()
+	if rc:IsRelateToEffect(re) and rc:IsDisabled() then return end
 	local g=Duel.GetMatchingGroup(c68490573.atkfilter,tp,LOCATION_MZONE,0,nil)
 	if Duel.NegateEffect(ev) and g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(68490573,2))

@@ -32,6 +32,7 @@ function c12541409.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c12541409.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
+	if rc:IsRelateToEffect(re) and rc:IsDisabled() then return end
 	if Duel.NegateEffect(ev) and rc:IsLevelAbove(1) and Duel.SelectYesNo(tp,aux.Stringid(12541409,1)) then
 		Duel.BreakEffect()
 		local lv=rc:GetLevel()
