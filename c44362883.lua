@@ -37,11 +37,15 @@ function c44362883.filter1(c,e)
 	return not c:IsImmuneToEffect(e)
 end
 function c44362883.filter2(c,e,tp,m,f,chkf)
-	return c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,68468459) and (not f or f(c))
-		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false) and c:CheckFusionMaterial(m,nil,chkf)
+	if not (c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,68468459) and (not f or f(c))
+		and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_FUSION,tp,false,false)) then return false end
+	aux.FCheckAdditional=c44362883.fcheck
+	local res=c:CheckFusionMaterial(m,nil,chkf)
+	aux.FCheckAdditional=nil
+	return res
 end
 function c44362883.fcheck(tp,sg,fc)
-	return sg:GetCount()<=2
+	return sg:GetCount()<=2 and sg:IsExists(Card.IsFusionCode,1,nil,68468459)
 end
 function c44362883.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then
