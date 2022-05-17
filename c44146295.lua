@@ -34,7 +34,10 @@ function c44146295.sfcfilter(c,fc)
 	return c:IsFusionCode(68468459) or c:CheckFusionSubstitute(fc)
 end
 function c44146295.synchro_fusion_check(tp,sg,fc)
-	return aux.gffcheck(sg,c44146295.sfcfilter,fc,Card.IsFusionType,TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK)
+	return aux.gffcheck(sg,c44146295.sfcfilter,fc,Card.IsFusionType,TYPE_SYNCHRO)
+end
+function c44146295.branded_fusion_check(tp,sg,fc)
+	return aux.gffcheck(sg,Card.IsFusionCode,68468459,Card.IsFusionType,TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ+TYPE_LINK)
 end
 function c44146295.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetFlagEffect(44146295)==0
