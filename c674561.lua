@@ -22,7 +22,7 @@ function c674561.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c674561.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsAttribute(ATTRIBUTE_DARK) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

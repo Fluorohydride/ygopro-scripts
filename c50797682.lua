@@ -69,6 +69,7 @@ function c50797682.activate(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e1)
 		local e2=e1:Clone()
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
+		e2:SetValue(RESET_TURN_SET)
 		tc:RegisterEffect(e2)
 		tc=g1:GetNext()
 	end

@@ -38,16 +38,16 @@ function c84488827.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g1=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,LOCATION_MZONE,e:GetHandler())
 	local g2=Duel.GetMatchingGroup(c84488827.sfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(84488827,0))
-	if g1:GetCount()>0 and g2:GetCount()>0 then
-		op=Duel.SelectOption(tp,aux.Stringid(84488827,1),aux.Stringid(84488827,2))+1
-	elseif g1:GetCount()>0 then
+	if g1:GetCount()>0 and g2:GetCount()==0 then
 		op=Duel.SelectOption(tp,aux.Stringid(84488827,1))+1
-	elseif g2:GetCount()>0 then
-		op=Duel.SelectOption(tp,aux.Stringid(84488827,2))+2
+	elseif g1:GetCount()==0 and g2:GetCount()>0 then
+		op=Duel.SelectOption(tp,aux.Stringid(84488827,1))+2
+	else
+		op=Duel.SelectOption(tp,aux.Stringid(84488827,1),aux.Stringid(84488827,2))+1
 	end
-	if op==1 then
+	if op==1 and g1:GetCount()>0 then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g1,g1:GetCount(),0,0)
-	elseif op==2 then
+	elseif op==2 and g2:GetCount()>0 then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,g2,g2:GetCount(),0,0)
 	end
 	e:SetLabel(op)
