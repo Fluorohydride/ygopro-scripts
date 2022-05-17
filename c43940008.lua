@@ -89,7 +89,7 @@ function c43940008.dop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c43940008.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return Duel.GetTurnCount()==e:GetLabel() and c:IsLocation(LOCATION_ONFIELD) and c:IsFaceup()
+	return Duel.GetTurnCount()==e:GetLabel() and c:IsOnField() and c:IsFaceup()
 		and c:GetFlagEffect(43940008)>0
 end
 function c43940008.desop(e,tp,eg,ep,ev,re,r,rp)

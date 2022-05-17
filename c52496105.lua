@@ -40,7 +40,7 @@ function c52496105.filter(c)
 	return c:IsFaceup() and c:IsSetCard(0x19)
 end
 function c52496105.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetLocation()==LOCATION_MZONE and c52496105.filter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c52496105.filter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c52496105.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	Duel.SelectTarget(tp,c52496105.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
@@ -56,7 +56,7 @@ end
 function c52496105.retcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ec=c:GetPreviousEquipTarget()
-	return c:IsReason(REASON_LOST_TARGET) and (ec:GetLocation()==LOCATION_DECK or ec:GetLocation()==LOCATION_EXTRA)
+	return c:IsReason(REASON_LOST_TARGET) and ec:IsLocation(LOCATION_DECK+LOCATION_EXTRA)
 end
 function c52496105.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToHand() end

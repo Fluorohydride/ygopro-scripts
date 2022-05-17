@@ -35,7 +35,7 @@ function c74580251.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c74580251.repfilter(c,tp)
-	return c:IsFaceup() and c:IsSetCard(0xc4) and c:IsLocation(LOCATION_ONFIELD)
+	return c:IsFaceup() and c:IsSetCard(0xc4) and c:IsOnField()
 		and c:IsControler(tp)
 end
 function c74580251.reptg(e,tp,eg,ep,ev,re,r,rp,chk)

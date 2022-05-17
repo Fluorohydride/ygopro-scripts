@@ -70,7 +70,7 @@ function c92868896.splimit(e,c)
 	return not c:IsRace(RACE_DRAGON) and c:IsLocation(LOCATION_EXTRA)
 end
 function c92868896.repfilter(c,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsLocation(LOCATION_ONFIELD) and c:IsSetCard(0x29)
+	return c:IsFaceup() and c:IsControler(tp) and c:IsOnField() and c:IsSetCard(0x29)
 		and (c:IsReason(REASON_BATTLE) or c:IsReason(REASON_EFFECT)) and not c:IsReason(REASON_REPLACE)
 end
 function c92868896.desfilter(c,e)

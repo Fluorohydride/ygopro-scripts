@@ -63,7 +63,7 @@ end
 function c14418464.filter(c)
 	local seq=c:GetSequence()
 	local tp=c:GetControler()
-	if seq>4 or not c:IsSetCard(0x17d) or not c:IsFaceup() then return false end
+	if seq>4 or not c:IsSetCard(0x17d) or c:IsFacedown() then return false end
 	return (seq>0 and Duel.CheckLocation(tp,LOCATION_MZONE,seq-1))
 		or (seq<4 and Duel.CheckLocation(tp,LOCATION_MZONE,seq+1))
 end

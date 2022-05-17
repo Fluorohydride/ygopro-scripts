@@ -18,7 +18,7 @@ function c42391240.tgfilter(c)
 	return c:IsSetCard(0x53) and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
 function c42391240.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:GetControler()==tp and c42391240.tgfilter(chkc) end
+	if chkc then return chkc:IsLocation(LOCATION_GRAVE) and chkc:IsControler(tp) and c42391240.tgfilter(chkc) end
 	if chk==0 then return Duel.IsExistingTarget(c42391240.tgfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,c42391240.tgfilter,tp,LOCATION_GRAVE,0,1,1,nil)

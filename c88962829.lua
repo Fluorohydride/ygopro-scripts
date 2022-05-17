@@ -71,7 +71,7 @@ function c88962829.aclimit(e,re,tp)
 end
 function c88962829.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
-	return at:GetControler()~=tp
+	return at:IsControler(1-tp)
 end
 function c88962829.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

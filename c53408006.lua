@@ -22,8 +22,8 @@ function c53408006.condition(e,tp,eg,ep,ev,re,r,rp)
 	if phase~=PHASE_DAMAGE or Duel.IsDamageCalculated() then return false end
 	local a=Duel.GetAttacker()
 	local d=Duel.GetAttackTarget()
-	return (a:GetControler()==tp and c53408006.filter(a) and a:IsRelateToBattle())
-		or (d and d:GetControler()==tp and d:IsFaceup() and c53408006.filter(d) and d:IsRelateToBattle())
+	return (a:IsControler(tp) and c53408006.filter(a) and a:IsRelateToBattle())
+		or (d and d:IsControler(tp) and d:IsFaceup() and c53408006.filter(d) and d:IsRelateToBattle())
 end
 function c53408006.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end

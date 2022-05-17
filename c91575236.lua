@@ -41,7 +41,7 @@ function c91575236.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c91575236.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsFaceup() or not c:IsRelateToEffect(e) then return end
+	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c91575236.tgfilter,tp,LOCATION_DECK,0,1,1,nil,c:GetLevel(),c:GetOriginalLevel())
 	local tc=g:GetFirst()

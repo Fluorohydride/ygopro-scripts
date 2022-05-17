@@ -19,7 +19,7 @@ function c75525309.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ct==1 and tg:IsFaceup() and tg:IsAttackPos() and tg:IsSetCard(0x3d)
 end
 function c75525309.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return chkc:GetControler()~=tp and chkc:IsOnField() and chkc:IsAbleToHand() end
+	if chkc then return chkc:IsControler(1-tp) and chkc:IsOnField() and chkc:IsAbleToHand() end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,2,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local g=Duel.SelectTarget(tp,Card.IsAbleToHand,tp,0,LOCATION_ONFIELD,2,2,nil)
