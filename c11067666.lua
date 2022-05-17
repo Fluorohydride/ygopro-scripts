@@ -24,13 +24,14 @@ end
 function c11067666.condition(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	return e:GetHandler():GetFlagEffect(11067666)==0 and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET)
-		and g and g:IsExists(c11067666.cfilter,1,nil,tp) and Duel.IsChainDisablable(ev)
+		and g and g:IsExists(c11067666.cfilter,1,nil,tp)
+		and Duel.IsChainDisablable(ev) and not Duel.IsChainDisabled(ev)
 end
 function c11067666.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SelectEffectYesNo(tp,e:GetHandler()) then
 		Duel.Hint(HINT_CARD,0,11067666)
 		e:GetHandler():RegisterFlagEffect(11067666,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
-		if Duel.NegateEffect(ev,true) then
+		if Duel.NegateEffect(ev) then
 			Duel.BreakEffect()
 			Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 		end

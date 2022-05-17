@@ -29,12 +29,13 @@ end
 function c38988538.negcon(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	return e:GetHandler():GetFlagEffect(38988538)==0 and re:IsHasProperty(EFFECT_FLAG_CARD_TARGET)
-		and g and g:IsExists(c38988538.tfilter,1,e:GetHandler(),tp) and Duel.IsChainDisablable(ev)
+		and g and g:IsExists(c38988538.tfilter,1,e:GetHandler(),tp)
+		and Duel.IsChainDisablable(ev) and not Duel.IsChainDisabled(ev)
 end
 function c38988538.negop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.SelectEffectYesNo(tp,e:GetHandler()) then
 		e:GetHandler():RegisterFlagEffect(38988538,RESET_EVENT+RESETS_STANDARD,0,1)
-		if Duel.NegateEffect(ev,true) then
+		if Duel.NegateEffect(ev) then
 			Duel.BreakEffect()
 			Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 		end

@@ -38,21 +38,23 @@ function c54828837.cfilter(c)
 end
 function c54828837.negcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c54828837.cfilter,tp,LOCATION_MZONE,0,1,nil)
-		and rp==1-tp and re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and Duel.IsChainDisablable(ev)
+		and rp==1-tp and re:IsActiveType(TYPE_SPELL+TYPE_TRAP)
+		and Duel.IsChainDisablable(ev) and not Duel.IsChainDisabled(ev)
 		and e:GetHandler():GetFlagEffect(54828837)<=0
 end
 function c54828837.negop(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
 	local rc=re:GetHandler()
-	if Duel.SelectYesNo(tp,aux.Stringid(54828837,0)) then
+	if Duel.SelectEffectYesNo(tp,c) then
 		Duel.Hint(HINT_CARD,0,54828837)
-		if Duel.NegateEffect(ev,true) and Duel.IsExistingMatchingCard(c54828837.cfilter,tp,LOCATION_MZONE,0,1,nil) then
+		if Duel.NegateEffect(ev) and Duel.IsExistingMatchingCard(c54828837.cfilter,tp,LOCATION_MZONE,0,1,nil) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_POSCHANGE)
 			local g=Duel.SelectMatchingCard(tp,c54828837.cfilter,tp,LOCATION_MZONE,0,1,1,nil)
 			Duel.HintSelection(g)
 			Duel.ChangePosition(g:GetFirst(),POS_FACEUP_DEFENSE)
 		end
-		e:GetHandler():RegisterFlagEffect(54828837,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+		c:RegisterFlagEffect(54828837,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end
 function c54828837.protfilter(c,tp)
