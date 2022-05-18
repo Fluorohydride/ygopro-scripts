@@ -36,10 +36,15 @@ function c90020065.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,0)
 end
+function c90020065.damfilter(c)
+	if c:IsPreviousPosition(POS_FACEUP) then
+		return c:GetPreviousAttackOnField()
+	else return 0 end
+end
 function c90020065.desop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local g1=Duel.GetMatchingGroup(aux.TRUE,tp,LOCATION_MZONE,0,nil)
-	local g2=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
-	local dam=math.floor(g2:GetSum(Card.GetAttack)/2)
-	Duel.Destroy(g1,REASON_EFFECT)
+	if Duel.Destroy(g1,REASON_EFFECT)==0 then return end
+	local og=Duel.GetOperatedGroup()
+	local dam=math.floor(og:GetSum(c90020065.damfilter)/2)
 	Duel.Damage(1-tp,dam,REASON_EFFECT)
 end
