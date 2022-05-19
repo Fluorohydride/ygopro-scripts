@@ -1,5 +1,7 @@
 --トークンコレクター
 function c43534808.initial_effect(c)
+	--same effect send this card to grave and spsummon another card check
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(43534808,0))
@@ -9,6 +11,7 @@ function c43534808.initial_effect(c)
 	e1:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetCountLimit(1,43534808)
+	e1:SetLabelObject(e0)
 	e1:SetCondition(c43534808.spcon)
 	e1:SetTarget(c43534808.sptg)
 	e1:SetOperation(c43534808.spop)
@@ -33,8 +36,12 @@ function c43534808.initial_effect(c)
 	e3:SetTarget(c43534808.sumlimit)
 	c:RegisterEffect(e3)
 end
+function c43534808.cfilter(c,se)
+	return c:IsType(TYPE_TOKEN) and (se==nil or c:GetReasonEffect()~=se)
+end
 function c43534808.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(Card.IsType,1,nil,TYPE_TOKEN)
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c43534808.cfilter,1,nil,se)
 end
 function c43534808.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0

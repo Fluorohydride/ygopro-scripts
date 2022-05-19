@@ -1,5 +1,7 @@
 --アマゾネスペット仔虎
 function c10928224.initial_effect(c)
+	--same effect send this card to grave and spsummon another card check
+	local e0=aux.AddThisCardInGraveAlreadyCheck(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(10928224,0))
@@ -9,6 +11,7 @@ function c10928224.initial_effect(c)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
 	e1:SetRange(LOCATION_HAND+LOCATION_GRAVE)
 	e1:SetCountLimit(1,10928224)
+	e1:SetLabelObject(e0)
 	e1:SetCondition(c10928224.spcon)
 	e1:SetTarget(c10928224.sptg)
 	e1:SetOperation(c10928224.spop)
@@ -27,11 +30,13 @@ function c10928224.initial_effect(c)
 	e4:SetValue(c10928224.val)
 	c:RegisterEffect(e4)
 end
-function c10928224.cfilter(c,tp)
+function c10928224.cfilter(c,tp,se)
 	return c:IsFaceup() and c:IsControler(tp) and c:IsSetCard(0x4)
+		and (se==nil or c:GetReasonEffect()~=se)
 end
 function c10928224.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c10928224.cfilter,1,nil,tp)
+	local se=e:GetLabelObject():GetLabelObject()
+	return eg:IsExists(c10928224.cfilter,1,nil,tp,se)
 end
 function c10928224.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
