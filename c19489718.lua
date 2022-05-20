@@ -70,7 +70,14 @@ function c19489718.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(p,Card.IsAbleToDeck,p,LOCATION_HAND,0,1,63,nil)
 	if g:GetCount()==0 then return end
-	if Duel.SendtoDeck(g,nil,SEQ_DECKBOTTOM,REASON_EFFECT)~=0 and tc and tc:IsRelateToBattle() and tc:IsControler(1-tp)
+	local ct=Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_EFFECT)
+	if ct==0 then return end
+	Duel.SortDecktop(p,p,ct)
+	for i=1,ct do
+		local mg=Duel.GetDecktopGroup(p,1)
+		Duel.MoveSequence(mg:GetFirst(),SEQ_DECKBOTTOM)
+	end
+	if tc and tc:IsRelateToBattle() and tc:IsControler(1-tp)
 		and not tc:IsDisabled() and not tc:IsImmuneToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -81,6 +88,6 @@ function c19489718.disop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		tc:RegisterEffect(e2)
 		Duel.BreakEffect()
-		Duel.Draw(p,g:GetCount(),REASON_EFFECT)
+		Duel.Draw(p,ct,REASON_EFFECT)
 	end
 end
