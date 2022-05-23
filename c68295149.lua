@@ -1,7 +1,7 @@
 --リンクメイル・デーモン
 function c68295149.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,nil,2,99,c68295149.lcheck)
+	aux.AddLinkProcedure(c,nil,2,nil,c68295149.lcheck)
 	c:EnableReviveLimit()
 	--atkdown
 	local e1=Effect.CreateEffect(c)

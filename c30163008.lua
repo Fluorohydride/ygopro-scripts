@@ -1,7 +1,7 @@
 --Ra'ten, the Heavenly General
 function c30163008.initial_effect(c)
 	c:EnableReviveLimit()
-	aux.AddLinkProcedure(c,nil,2,99,c30163008.lcheck)
+	aux.AddLinkProcedure(c,nil,2,nil,c30163008.lcheck)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
