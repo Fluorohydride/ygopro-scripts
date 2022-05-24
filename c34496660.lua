@@ -53,7 +53,7 @@ function c34496660.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c34496660.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or Duel.ChangePosition(c,POS_FACEUP_ATTACK)==0 then return end
+	if not c:IsRelateToEffect(e) or not c:IsPosition(POS_FACEUP_DEFENSE) or Duel.ChangePosition(c,POS_FACEUP_ATTACK)==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c34496660.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then
