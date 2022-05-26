@@ -35,6 +35,9 @@ function c87746184.initial_effect(c)
 	e3:SetOperation(c87746184.thop)
 	c:RegisterEffect(e3)
 end
+function c87746184.branded_fusion_check(tp,sg,fc)
+	return aux.gffcheck(sg,Card.IsFusionCode,68468459,Card.IsFusionAttribute,ATTRIBUTE_LIGHT)
+end
 function c87746184.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_FUSION) and Duel.GetCurrentPhase()&(PHASE_DAMAGE+PHASE_DAMAGE_CAL)==0
 end
