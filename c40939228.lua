@@ -100,6 +100,11 @@ function c40939228.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 		local g=eg:Clone()+c
 		Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,#g,0,0)
 	end
+	if re:GetActivateLocation()==LOCATION_GRAVE then
+		e:SetCategory(e:GetCategory()|CATEGORY_GRAVE_ACTION)
+	else
+		e:SetCategory(e:GetCategory()&~CATEGORY_GRAVE_ACTION)
+	end
 end
 function c40939228.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

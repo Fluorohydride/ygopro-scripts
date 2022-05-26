@@ -29,7 +29,7 @@ function c55063751.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCondition(c55063751.negcon)
 	e3:SetCost(c55063751.negcost)
-	e3:SetTarget(c55063751.negtg)
+	e3:SetTarget(aux.nbtg)
 	e3:SetOperation(c55063751.negop)
 	c:RegisterEffect(e3)
 end
@@ -62,13 +62,6 @@ end
 function c55063751.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,1,0x37,2,REASON_COST) end
 	Duel.RemoveCounter(tp,1,1,0x37,2,REASON_COST)
-end
-function c55063751.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.nbcon(tp,re) end
-	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) then
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
-	end
 end
 function c55063751.negop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then

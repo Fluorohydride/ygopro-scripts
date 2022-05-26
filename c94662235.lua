@@ -15,7 +15,7 @@ function c94662235.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_ACTIVATE)
 	e2:SetCode(EVENT_CHAINING)
 	e2:SetCondition(c94662235.condition2)
-	e2:SetTarget(c94662235.target2)
+	e2:SetTarget(aux.nbtg)
 	e2:SetOperation(c94662235.activate2)
 	c:RegisterEffect(e2)
 end
@@ -53,13 +53,6 @@ function c94662235.activate1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c94662235.condition2(e,tp,eg,ep,ev,re,r,rp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsChainNegatable(ev) and c94662235.check(tp)
-end
-function c94662235.target2(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.nbcon(tp,re) end
-	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) then
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
-	end
 end
 function c94662235.activate2(e,tp,eg,ep,ev,re,r,rp)
 	local ec=eg:GetFirst()
