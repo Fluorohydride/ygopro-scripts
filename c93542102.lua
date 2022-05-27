@@ -33,7 +33,10 @@ function c93542102.cfilter(c)
 	return c:IsLevelBelow(4) and c:IsSetCard(0x26) and c:IsType(TYPE_MONSTER)
 end
 function c93542102.tga(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0
+	if chk==0 then return Duel.IsPlayerCanSpecialSummon(tp)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and not Duel.IsPlayerAffectedByEffect(tp,63060238)
+		and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0
 		and Duel.IsExistingMatchingCard(c93542102.cfilter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_DICE,nil,0,tp,1)
 end

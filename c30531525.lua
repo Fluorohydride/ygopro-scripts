@@ -14,22 +14,27 @@ function c30531525.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,800) end
 	Duel.PayLPCost(tp,800)
 end
-function c30531525.filter(c,e,tp)
-	return c:IsType(TYPE_NORMAL) and c:IsLevelBelow(3) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+function c30531525.filter(c)
+	return c:IsType(TYPE_NORMAL) and c:IsLevelBelow(3)
 end
 function c30531525.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chk==0 then return Duel.IsPlayerCanSpecialSummon(tp)
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and not Duel.IsPlayerAffectedByEffect(tp,63060238)
 		and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>3
-		and Duel.IsExistingMatchingCard(c30531525.filter,tp,LOCATION_DECK,0,1,nil,e,tp) end
+		and Duel.IsExistingMatchingCard(c30531525.filter,tp,LOCATION_DECK,0,1,nil) end
+end
+function c30531525.spfilter(c,e,tp)
+	return c:IsType(TYPE_NORMAL) and c:IsLevelBelow(3) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c30531525.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.ConfirmDecktop(tp,4)
-	local g=Duel.GetDecktopGroup(tp,4):Filter(c30531525.filter,nil,e,tp)
+	local g=Duel.GetDecktopGroup(tp,4):Filter(c30531525.spfilter,nil,e,tp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	if g:GetCount()>0 then
 		if ft<=0 then
-			Duel.SendtoGrave(g,REASON_EFFECT)
+			Duel.SendtoGrave(g,REASON_RULE)
 		elseif ft>=g:GetCount() then
 			Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 		else
@@ -37,7 +42,7 @@ function c30531525.activate(e,tp,eg,ep,ev,re,r,rp)
 			local sg=g:Select(tp,ft,ft,nil)
 			Duel.SpecialSummon(sg,0,tp,tp,false,false,POS_FACEUP)
 			g:Sub(sg)
-			Duel.SendtoGrave(g,REASON_EFFECT)
+			Duel.SendtoGrave(g,REASON_RULE)
 		end
 	end
 	Duel.ShuffleDeck(tp)
