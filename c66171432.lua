@@ -21,24 +21,22 @@ function c66171432.initial_effect(c)
 	e2:SetOperation(c66171432.spop)
 	c:RegisterEffect(e2)
 end
-function c66171432.filter(c)
-	return c:IsSetCard(0xe6) and c:IsType(TYPE_MONSTER)
+function c66171432.filter(c,e,tp)
+	return c:IsSetCard(0xe6) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function c66171432.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanRemove(tp)
+		and Duel.IsPlayerCanSpecialSummon(tp)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and not Duel.IsPlayerAffectedByEffect(tp,63060238)
-		and Duel.IsExistingMatchingCard(c66171432.filter,tp,LOCATION_DECK,0,1,nil) end
-end
-function c66171432.spfilter(c,e,tp)
-	return c:IsSetCard(0xe6) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
+		and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>2 end
 end
 function c66171432.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not Duel.IsPlayerCanRemove(tp) then return end
 	Duel.ConfirmDecktop(tp,3)
 	local g=Duel.GetDecktopGroup(tp,3)
-	local sg=g:Filter(c66171432.spfilter,nil,e,tp)
+	local sg=g:Filter(c66171432.filter,nil,e,tp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	if g:GetCount()>0 then
