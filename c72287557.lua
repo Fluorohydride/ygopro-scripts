@@ -17,13 +17,28 @@ function c72287557.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:GetCount()==1 and tc:IsControler(1-tp) and tc:IsSummonType(SUMMON_TYPE_FUSION)
 end
 function c72287557.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroup(tp,nil,1,nil) end
-	local g=Duel.SelectReleaseGroup(tp,nil,1,1,nil)
-	Duel.Release(g,REASON_COST)
+	e:SetLabel(1)
+	return true
+end
+function c72287557.costfilter(c,tp)
+	return Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0
 end
 function c72287557.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
-	if chk==0 then return eg:GetFirst():IsCanBeEffectTarget(e) and eg:GetFirst():IsControlerCanBeChanged() end
+	if chk==0 then
+		if e:GetLabel()==1 then
+			e:SetLabel(0)
+			return Duel.CheckReleaseGroup(tp,c72287557.costfilter,1,eg:GetFirst(),tp)
+				and eg:GetFirst():IsCanBeEffectTarget(e) and eg:GetFirst():IsControlerCanBeChanged(true)
+		else
+			return eg:GetFirst():IsCanBeEffectTarget(e) and eg:GetFirst():IsControlerCanBeChanged()
+		end
+	end
+	if e:GetLabel()==1 then
+		e:SetLabel(0)
+		local sg=Duel.SelectReleaseGroup(tp,c72287557.costfilter,1,1,eg:GetFirst(),tp)
+		Duel.Release(sg,REASON_COST)
+	end
 	Duel.SetTargetCard(eg)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,eg,1,0,0)
 end

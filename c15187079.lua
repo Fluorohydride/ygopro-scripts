@@ -42,11 +42,11 @@ function c15187079.ctcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(1)
 	return true
 end
-function c15187079.filter(c)
-	return c:IsFaceup() and c:IsAbleToChangeControler()
+function c15187079.filter(c,check)
+	return c:IsFaceup() and c:IsControlerCanBeChanged(check)
 end
 function c15187079.costfilter(c,tp)
-	return Duel.IsExistingTarget(c15187079.filter,tp,0,LOCATION_MZONE,1,c)
+	return Duel.GetMZoneCount(tp,c,tp,LOCATION_REASON_CONTROL)>0 and Duel.IsExistingTarget(c15187079.filter,tp,0,LOCATION_MZONE,1,c,true)
 end
 function c15187079.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
@@ -56,7 +56,7 @@ function c15187079.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 			e:SetLabel(0)
 			return Duel.CheckReleaseGroup(tp,c15187079.costfilter,1,c,tp)
 		else
-			return Duel.IsExistingTarget(c15187079.filter,tp,0,LOCATION_MZONE,1,nil)
+			return Duel.IsExistingTarget(c15187079.filter,tp,0,LOCATION_MZONE,1,nil,false)
 		end
 	end
 	if e:GetLabel()==1 then
@@ -65,7 +65,7 @@ function c15187079.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONTROL)
-	local g=Duel.SelectTarget(tp,c15187079.filter,tp,0,LOCATION_MZONE,1,1,nil)
+	local g=Duel.SelectTarget(tp,c15187079.filter,tp,0,LOCATION_MZONE,1,1,nil,false)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,1,0,0)
 end
 function c15187079.ctop(e,tp,eg,ep,ev,re,r,rp)
