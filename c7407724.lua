@@ -10,6 +10,7 @@ function c7407724.initial_effect(c)
 	e1:SetCountLimit(1,7407724)
 	e1:SetCondition(c7407724.atkcon)
 	e1:SetCost(c7407724.atkcost)
+	e1:SetTarget(c7407724.atktg)
 	e1:SetOperation(c7407724.atkop)
 	c:RegisterEffect(e1)
 	--special summon
@@ -37,6 +38,9 @@ end
 function c7407724.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsReleasable() end
 	Duel.Release(e:GetHandler(),REASON_COST)
+end
+function c7407724.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return aux.IsMonsterAttacking() end
 end
 function c7407724.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

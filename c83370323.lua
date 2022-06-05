@@ -28,16 +28,12 @@ function c83370323.op(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetTargetRange(0,1)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetValue(c83370323.aclimit)
-	e1:SetCondition(c83370323.actcon)
+	e1:SetCondition(aux.ThisCardAttackingCondition)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	sync:RegisterEffect(e1,true)
 end
 function c83370323.aclimit(e,re,tp)
 	return re:GetHandler():IsType(TYPE_TRAP) and re:IsHasType(EFFECT_TYPE_ACTIVATE)
-end
-function c83370323.actcon(e)
-	local tc=Duel.GetAttacker()
-	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c83370323.synlimit(e,c)
 	if not c then return false end

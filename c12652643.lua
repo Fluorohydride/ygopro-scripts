@@ -23,7 +23,7 @@ function c12652643.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(0,1)
 	e3:SetValue(c12652643.aclimit)
-	e3:SetCondition(c12652643.actcon)
+	e3:SetCondition(aux.ThisCardAttackingCondition)
 	c:RegisterEffect(e3)
 	--Special summon
 	local e4=Effect.CreateEffect(c)
@@ -38,10 +38,6 @@ function c12652643.initial_effect(c)
 end
 function c12652643.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
-end
-function c12652643.actcon(e)
-	local tc=Duel.GetAttacker()
-	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c12652643.spfilter(c,e,tp)
 	return c:IsCode(83104731) and c:IsCanBeSpecialSummoned(e,0,tp,true,false)

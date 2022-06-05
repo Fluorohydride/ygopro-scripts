@@ -45,7 +45,7 @@ function c28645123.atkval(e)
 end
 function c28645123.actcon(e)
 	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
-	return tc and tc:IsFaceup() and tc:IsSetCard(0x135) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
+	return tc and tc:IsFaceup() and tc:IsSetCard(0x135) and aux.IsMonsterAttacking()
 end
 function c28645123.cfilter(c,tp)
 	return c:IsPreviousSetCard(0x135) and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp)

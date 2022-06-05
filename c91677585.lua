@@ -48,7 +48,7 @@ function c91677585.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c91677585.actcon(e)
 	local tc=Duel.GetAttacker()
-	return tc and tc==e:GetLabelObject() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
+	return tc and tc==e:GetLabelObject() and aux.IsMonsterAttacking()
 end
 function c91677585.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE) or re:IsActiveType(TYPE_MONSTER)

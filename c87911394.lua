@@ -11,7 +11,7 @@ function c87911394.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(0,1)
 	e1:SetValue(c87911394.aclimit)
-	e1:SetCondition(c87911394.actcon)
+	e1:SetCondition(aux.ThisCardAttackingCondition)
 	c:RegisterEffect(e1)
 	--destroy
 	local e2=Effect.CreateEffect(c)
@@ -27,10 +27,6 @@ end
 aux.xyz_number[87911394]=39
 function c87911394.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
-end
-function c87911394.actcon(e)
-	local tc=Duel.GetAttacker()
-	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c87911394.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttackTarget()

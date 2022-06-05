@@ -18,7 +18,7 @@ function c56421754.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTargetRange(0,1)
 	e2:SetValue(1)
-	e2:SetCondition(c56421754.actcon)
+	e2:SetCondition(aux.ThisCardAttackingCondition)
 	c:RegisterEffect(e2)
 end
 function c56421754.spfilter(c,ft)
@@ -36,8 +36,4 @@ function c56421754.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 	local g=Duel.SelectMatchingCard(tp,c56421754.spfilter,tp,LOCATION_MZONE,0,1,1,nil,ft)
 	Duel.SendtoHand(g,nil,REASON_COST)
-end
-function c56421754.actcon(e)
-	local tc=Duel.GetAttacker()
-	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end

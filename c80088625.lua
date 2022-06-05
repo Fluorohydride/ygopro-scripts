@@ -9,6 +9,7 @@ function c80088625.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetCondition(c80088625.atkcon)
+	e1:SetTarget(c80088625.atktg)
 	e1:SetOperation(c80088625.atkop)
 	c:RegisterEffect(e1)
 	--remove
@@ -24,6 +25,9 @@ function c80088625.initial_effect(c)
 end
 function c80088625.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttackTarget()~=nil and e:GetHandler():GetMutualLinkedGroupCount()>0
+end
+function c80088625.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return aux.IsMonsterAttacking() end
 end
 function c80088625.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

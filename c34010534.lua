@@ -54,5 +54,5 @@ function c34010534.splimit(e,c)
 end
 function c34010534.actcon(e)
 	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
-	return tc and tc:IsFaceup() and tc:IsSetCard(0x101) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
+	return tc and tc:IsFaceup() and tc:IsSetCard(0x101) and aux.IsMonsterAttacking()
 end

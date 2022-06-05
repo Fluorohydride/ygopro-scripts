@@ -12,17 +12,13 @@ function c19700943.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCode(EFFECT_IMMUNE_EFFECT)
-	e2:SetCondition(c19700943.immcon)
+	e2:SetCondition(aux.ThisCardAttackingCondition)
 	e2:SetValue(c19700943.efilter)
 	c:RegisterEffect(e2)
 end
 function c19700943.sumcon(e,c,minc)
 	if not c then return true end
 	return false
-end
-function c19700943.immcon(e)
-	local tc=Duel.GetAttacker()
-	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c19700943.efilter(e,te)
 	return te:GetOwner()~=e:GetOwner()

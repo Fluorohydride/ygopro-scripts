@@ -56,7 +56,7 @@ end
 function c18486927.actcon(e)
 	local tc=Duel.GetAttacker()
 	local tp=e:GetHandlerPlayer()
-	return tc and tc:IsControler(tp) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
+	return tc and tc:IsControler(tp) and aux.IsMonsterAttacking()
 end
 function c18486927.nametg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

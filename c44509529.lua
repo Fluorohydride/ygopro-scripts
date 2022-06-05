@@ -31,7 +31,7 @@ function c44509529.initial_effect(c)
 end
 function c44509529.actcon(e)
 	local a=Duel.GetAttacker()
-	return a and a:IsControler(e:GetHandlerPlayer()) and a:IsSetCard(0x120) and not a:IsStatus(STATUS_ATTACK_CANCELED)
+	return a and a:IsControler(e:GetHandlerPlayer()) and a:IsSetCard(0x120) and aux.IsMonsterAttacking()
 end
 function c44509529.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()~=tp

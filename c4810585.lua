@@ -46,7 +46,7 @@ function c4810585.aclimit(e,re,tp)
 end
 function c4810585.actcon(e)
 	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
-	return tc and tc:IsFaceup() and tc:IsSetCard(0x137) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
+	return tc and tc:IsFaceup() and tc:IsSetCard(0x137) and aux.IsMonsterAttacking()
 end
 function c4810585.atcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==1-tp

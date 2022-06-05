@@ -97,7 +97,8 @@ function c49816630.drcon(e,tp,eg,ep,ev,re,r,rp)
 	return ec and (Duel.GetAttacker()==ec or Duel.GetAttackTarget()==ec)
 end
 function c49816630.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
+	if chk==0 then return Duel.IsPlayerCanDraw(tp,1)
+		and aux.IsMonsterAttacking() end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)

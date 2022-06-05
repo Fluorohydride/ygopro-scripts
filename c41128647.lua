@@ -30,5 +30,5 @@ function c41128647.initial_effect(c)
 end
 function c41128647.actcon(e)
 	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
-	return tc and tc:IsFaceup() and tc:IsSetCard(0xd8) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
+	return tc and tc:IsFaceup() and tc:IsSetCard(0xd8) and aux.IsMonsterAttacking()
 end

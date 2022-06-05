@@ -17,7 +17,7 @@ function c33026283.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(0,1)
 	e1:SetValue(1)
-	e1:SetCondition(c33026283.actcon)
+	e1:SetCondition(aux.ThisCardBattlingCondition)
 	c:RegisterEffect(e1)
 	--tohand
 	local e2=Effect.CreateEffect(c)
@@ -49,10 +49,6 @@ function c33026283.matcheck(e,c)
 	if g:IsExists(Card.IsType,1,nil,TYPE_EFFECT) then
 		c:RegisterFlagEffect(85360035,RESET_EVENT+RESETS_STANDARD-RESET_TOFIELD,0,1)
 	end
-end
-function c33026283.actcon(e)
-	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
-	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c33026283.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker()==e:GetHandler()

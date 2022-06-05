@@ -63,7 +63,7 @@ function c1118137.ctcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetAttacker()==tc or Duel.GetAttackTarget()==tc
 end
 function c1118137.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return aux.IsMonsterAttacking() end
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x1)
 end
 function c1118137.ctop(e,tp,eg,ep,ev,re,r,rp)

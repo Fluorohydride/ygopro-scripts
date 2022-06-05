@@ -23,6 +23,7 @@ function c16317140.initial_effect(c)
 	e3:SetRange(LOCATION_SZONE)
 	e3:SetCondition(c16317140.atkcon)
 	e3:SetCost(c16317140.atkcost)
+	e3:SetTarget(c16317140.atktg)
 	e3:SetOperation(c16317140.atkop)
 	c:RegisterEffect(e3)
 	--tohand/spsummon
@@ -56,6 +57,9 @@ function c16317140.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c16317140.cfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil)
 	Duel.SendtoGrave(g:GetFirst(),nil,REASON_COST)
+end
+function c16317140.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return aux.IsMonsterAttacking() end
 end
 function c16317140.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

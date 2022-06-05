@@ -79,5 +79,5 @@ function c34974462.cfilter(c)
 end
 function c34974462.actcon(e)
 	local a=Duel.GetAttacker()
-	return a and c34974462.cfilter(a) and e:GetHandler():GetLinkedGroup():IsContains(a) and not a:IsStatus(STATUS_ATTACK_CANCELED)
+	return a and c34974462.cfilter(a) and e:GetHandler():GetLinkedGroup():IsContains(a) and aux.IsMonsterAttacking()
 end

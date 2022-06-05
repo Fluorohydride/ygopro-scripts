@@ -18,7 +18,7 @@ function c56832966.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTargetRange(0,1)
 	e2:SetValue(1)
-	e2:SetCondition(c56832966.actcon)
+	e2:SetCondition(aux.ThisCardBattlingCondition)
 	c:RegisterEffect(e2)
 	--atk
 	local e3=Effect.CreateEffect(c)
@@ -35,10 +35,6 @@ end
 aux.xyz_number[56832966]=39
 function c56832966.ovfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x107f) and c:IsType(TYPE_XYZ) and c:IsRank(4)
-end
-function c56832966.actcon(e)
-	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
-	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c56832966.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetBattleTarget()~=nil and e:GetHandler():GetOverlayGroup():IsExists(Card.IsSetCard,1,nil,0x107f)

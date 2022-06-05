@@ -11,7 +11,7 @@ function c45349196.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 	e1:SetTargetRange(0,1)
-	e1:SetCondition(c45349196.accon)
+	e1:SetCondition(aux.ThisCardBattlingCondition)
 	e1:SetValue(1)
 	c:RegisterEffect(e1)
 	--damage
@@ -33,10 +33,6 @@ function c45349196.mfilter1(c)
 end
 function c45349196.mfilter2(c)
 	return c:IsFusionSetCard(0x3b) and c:IsFusionType(TYPE_NORMAL)
-end
-function c45349196.accon(e)
-	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
-	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c45349196.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

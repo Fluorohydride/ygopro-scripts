@@ -9,6 +9,7 @@ function c86028783.initial_effect(c)
 	e1:SetCountLimit(1,86028783)
 	e1:SetCondition(c86028783.atkcon)
 	e1:SetCost(c86028783.atkcost)
+	e1:SetTarget(c86028783.atktg)
 	e1:SetOperation(c86028783.atkop)
 	c:RegisterEffect(e1)
 	--to hand
@@ -31,6 +32,9 @@ end
 function c86028783.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
+end
+function c86028783.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return aux.IsMonsterAttacking() end
 end
 function c86028783.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

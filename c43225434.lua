@@ -7,6 +7,7 @@ function c43225434.initial_effect(c)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e1:SetCountLimit(1,43225434+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c43225434.condition)
+	e1:SetTarget(c43225434.target)
 	e1:SetOperation(c43225434.activate)
 	c:RegisterEffect(e1)
 end
@@ -15,6 +16,9 @@ function c43225434.condition(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttackTarget()
 	return at and ((a:IsControler(tp) and a:IsType(TYPE_FUSION))
 		or (at:IsControler(tp) and at:IsFaceup() and at:IsType(TYPE_FUSION)))
+end
+function c43225434.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return aux.IsMonsterAttacking() end
 end
 function c43225434.activate(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()

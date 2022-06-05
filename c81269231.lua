@@ -85,5 +85,5 @@ end
 function c81269231.actcon(e)
 	local tp=e:GetHandlerPlayer()
 	local a=Duel.GetAttacker()
-	return a and a:IsSetCard(0x7) and a:IsControler(tp) and not a:IsStatus(STATUS_ATTACK_CANCELED)
+	return a and a:IsSetCard(0x7) and a:IsControler(tp) and aux.IsMonsterAttacking()
 end

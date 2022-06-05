@@ -19,13 +19,9 @@ function c83104731.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(0,1)
 	e3:SetValue(c83104731.aclimit)
-	e3:SetCondition(c83104731.actcon)
+	e3:SetCondition(aux.ThisCardAttackingCondition)
 	c:RegisterEffect(e3)
 end
 function c83104731.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
-end
-function c83104731.actcon(e)
-	local tc=Duel.GetAttacker()
-	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end

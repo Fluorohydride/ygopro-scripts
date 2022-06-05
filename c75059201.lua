@@ -94,5 +94,5 @@ end
 function c75059201.actcon(e)
 	if not e:GetHandler():IsLevelAbove(7) then return false end
 	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
-	return tc and tc:IsFaceup() and tc:IsSetCard(0x107) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
+	return tc and tc:IsFaceup() and tc:IsSetCard(0x107) and aux.IsMonsterAttacking()
 end

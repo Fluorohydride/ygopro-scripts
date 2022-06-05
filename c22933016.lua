@@ -72,7 +72,8 @@ function c22933016.thfilter(c)
 end
 function c22933016.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_REMOVED) and chkc:IsControler(tp) and c22933016.thfilter(chkc) end
-	if chk==0 then return Duel.IsExistingTarget(c22933016.thfilter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,e:GetHandler()) end
+	if chk==0 then return Duel.IsExistingTarget(c22933016.thfilter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,e:GetHandler())
+		and aux.IsMonsterAttacking() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectTarget(tp,c22933016.thfilter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,1,e:GetHandler())
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)

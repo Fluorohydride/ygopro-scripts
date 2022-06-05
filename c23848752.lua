@@ -34,6 +34,7 @@ function c23848752.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1,23848752+o)
 	e3:SetCondition(c23848752.rccon)
+	e3:SetTarget(c23848752.rctg)
 	e3:SetOperation(c23848752.rcop)
 	c:RegisterEffect(e3)
 end
@@ -78,9 +79,14 @@ function c23848752.rccon(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=Duel.GetBattleMonster(1-tp)
 	return tc and tc:IsFaceup() and tc:IsRelateToBattle()
 end
+function c23848752.rctg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return aux.IsMonsterAttacking() end
+	local tc=Duel.GetBattleMonster(1-tp)
+	Duel.SetOperationInfo(0,CATEGORY_RECOVER,nil,0,tp,math.ceil(tc:GetAttack()/2))
+end
 function c23848752.rcop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetBattleMonster(1-tp)
 	if tc and tc:IsFaceup() and tc:IsRelateToBattle() then
-		Duel.Recover(tp,tc:GetAttack()/2,REASON_EFFECT)
+		Duel.Recover(tp,math.ceil(tc:GetAttack()/2),REASON_EFFECT)
 	end
 end

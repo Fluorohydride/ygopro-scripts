@@ -42,7 +42,7 @@ function c28168762.descon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c28168762.cfilter,1,nil,tp)
 end
 function c28168762.destg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return aux.IsMonsterAttacking() end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 end
 function c28168762.desop(e,tp,eg,ep,ev,re,r,rp)

@@ -11,6 +11,7 @@ function c58938528.initial_effect(c)
 	e1:SetCountLimit(1)
 	e1:SetCondition(c58938528.atkcon)
 	e1:SetCost(c58938528.atkcost)
+	e1:SetTarget(c58938528.atktg)
 	e1:SetOperation(c58938528.atkop)
 	c:RegisterEffect(e1)
 	--draw
@@ -47,6 +48,9 @@ end
 function c58938528.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c58938528.costfilter,tp,LOCATION_HAND,0,1,nil) end
 	Duel.DiscardHand(tp,c58938528.costfilter,1,1,REASON_COST+REASON_DISCARD,nil)
+end
+function c58938528.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return aux.IsMonsterAttacking() end
 end
 function c58938528.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

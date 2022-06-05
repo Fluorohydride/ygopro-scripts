@@ -22,7 +22,7 @@ function c17663375.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(0,1)
 	e3:SetValue(c17663375.aclimit)
-	e3:SetCondition(c17663375.actcon)
+	e3:SetCondition(aux.ThisCardAttackingCondition)
 	c:RegisterEffect(e3)
 end
 function c17663375.thfilter(c)
@@ -63,8 +63,4 @@ function c17663375.sumlimit(e,c,sump,sumtype,sumpos,targetp)
 end
 function c17663375.aclimit(e,re,tp)
 	return re:IsActiveType(TYPE_MONSTER)
-end
-function c17663375.actcon(e)
-	local tc=Duel.GetAttacker()
-	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end

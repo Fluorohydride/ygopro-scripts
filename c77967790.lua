@@ -11,7 +11,7 @@ function c77967790.initial_effect(c)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetTargetRange(0,1)
 	e1:SetValue(c77967790.actlimit)
-	e1:SetCondition(c77967790.actcon)
+	e1:SetCondition(aux.ThisCardBattlingCondition)
 	c:RegisterEffect(e1)
 	--atk limit
 	local e2=Effect.CreateEffect(c)
@@ -36,10 +36,6 @@ function c77967790.initial_effect(c)
 end
 function c77967790.actlimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
-end
-function c77967790.actcon(e)
-	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
-	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c77967790.atklimit(e,c)
 	return c~=e:GetHandler()

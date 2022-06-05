@@ -67,7 +67,7 @@ function c52253888.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return bc and bc:IsPosition(POS_FACEUP_ATTACK) and (Duel.GetAttacker()==c or Duel.GetAttackTarget()==c)
 end
 function c52253888.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return true end
+	if chk==0 then return aux.IsMonsterAttacking() end
 	local dam=math.ceil(e:GetHandler():GetBattleTarget():GetBaseAttack()/2)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,dam)
 end

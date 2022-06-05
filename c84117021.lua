@@ -96,5 +96,5 @@ function c84117021.efun(e,ep,tp)
 end
 function c84117021.actcon(e)
 	local tc=Duel.GetAttacker()
-	return tc and tc==e:GetLabelObject() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
+	return tc and tc==e:GetLabelObject() and aux.IsMonsterAttacking()
 end

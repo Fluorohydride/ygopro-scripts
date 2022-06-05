@@ -75,7 +75,7 @@ end
 function c66750703.actcon(e)
 	local tc=Duel.GetAttacker()
 	local tp=e:GetHandlerPlayer()
-	return tc and tc:IsControler(tp) and tc:IsRace(RACE_BEASTWARRIOR) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
+	return tc and tc:IsControler(tp) and tc:IsRace(RACE_BEASTWARRIOR) and aux.IsMonsterAttacking()
 end
 function c66750703.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsCanRemoveCounter(tp,1,0,0x56,6,REASON_COST) end

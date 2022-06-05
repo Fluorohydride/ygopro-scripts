@@ -60,7 +60,7 @@ function c90592429.operation(e,tp,eg,ep,ev,re,r,rp)
 end
 function c90592429.actcon(e)
 	local tc=Duel.GetAttacker()
-	return tc and tc==e:GetHandler():GetEquipTarget() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
+	return tc and tc==e:GetHandler():GetEquipTarget() and aux.IsMonsterAttacking()
 end
 function c90592429.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)

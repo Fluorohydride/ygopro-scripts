@@ -26,7 +26,7 @@ function c1953925.initial_effect(c)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetTargetRange(0,1)
 	e4:SetValue(c1953925.aclimit)
-	e4:SetCondition(c1953925.actcon)
+	e4:SetCondition(aux.ThisCardAttackingCondition)
 	c:RegisterEffect(e4)
 	--destroy
 	local e5=Effect.CreateEffect(c)
@@ -57,10 +57,6 @@ function c1953925.disop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c1953925.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE)
-end
-function c1953925.actcon(e)
-	local tc=Duel.GetAttacker()
-	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c1953925.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler()==Duel.GetAttacker() and aux.dsercon(e)

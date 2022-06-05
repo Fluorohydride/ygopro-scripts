@@ -32,6 +32,7 @@ function c49306994.initial_effect(c)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCode(EVENT_ATTACK_ANNOUNCE)
 	e4:SetCondition(c49306994.discon)
+	e4:SetTarget(c49306994.distg)
 	e4:SetOperation(c49306994.disop)
 	c:RegisterEffect(e4)
 	--destroy
@@ -77,11 +78,14 @@ function c49306994.aclimit(e,re,tp)
 end
 function c49306994.actcon(e)
 	local tc=e:GetHandler():GetEquipTarget()
-	return (Duel.GetAttacker()==tc or Duel.GetAttackTarget()==tc) and not tc:IsStatus(STATUS_ATTACK_CANCELED)
+	return (Duel.GetAttacker()==tc or Duel.GetAttackTarget()==tc) and aux.IsMonsterAttacking()
 end
 function c49306994.discon(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetEquipTarget()
 	return Duel.GetAttacker()==tc or Duel.GetAttackTarget()==tc
+end
+function c49306994.distg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return aux.IsMonsterAttacking() end
 end
 function c49306994.disfilter(c)
 	return aux.NegateAnyFilter(c) and c:IsType(TYPE_SPELL+TYPE_TRAP)

@@ -23,7 +23,7 @@ function c34293667.initial_effect(c)
 end
 function c34293667.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=Duel.GetBattleMonster(1-tp)
-	if chk==0 then return tc and tc:IsRelateToBattle() end
+	if chk==0 then return tc and tc:IsRelateToBattle() and aux.IsMonsterAttacking() end
 end
 function c34293667.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

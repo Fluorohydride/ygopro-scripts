@@ -64,7 +64,7 @@ function c10805153.aclimit(e,re,tp)
 end
 function c10805153.actcon(e)
 	local tc=Duel.GetAttacker()
-	return tc and tc==e:GetLabelObject() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
+	return tc and tc==e:GetLabelObject() and aux.IsMonsterAttacking()
 end
 function c10805153.rccfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x128)

@@ -79,6 +79,7 @@ function c77075360.regop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetRange(LOCATION_MZONE)
 	e1:SetCountLimit(1,77075361)
 	e1:SetCondition(c77075360.atkcon)
+	e1:SetTarget(c77075360.atktg)
 	e1:SetOperation(c77075360.atkop)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 	c:RegisterEffect(e1)
@@ -86,6 +87,9 @@ end
 function c77075360.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c==Duel.GetAttacker() and Duel.GetAttackTarget()~=nil or c==Duel.GetAttackTarget()
+end
+function c77075360.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return aux.IsMonsterAttacking() end
 end
 function c77075360.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

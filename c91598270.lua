@@ -96,7 +96,7 @@ end
 function c91598270.actcon(e)
 	local a=Duel.GetAttacker()
 	local tp=e:GetHandlerPlayer()
-	return a and a:IsControler(tp) and a:IsSetCard(0x162) and a:IsType(TYPE_PENDULUM) and not a:IsStatus(STATUS_ATTACK_CANCELED)
+	return a and a:IsControler(tp) and a:IsSetCard(0x162) and a:IsType(TYPE_PENDULUM) and aux.IsMonsterAttacking()
 		and Duel.IsExistingMatchingCard(c91598270.pfilter,tp,LOCATION_PZONE,0,1,nil)
 end
 function c91598270.aclimit(e,re,tp)

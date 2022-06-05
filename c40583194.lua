@@ -32,15 +32,11 @@ function c40583194.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetRange(LOCATION_MZONE)
 		e1:SetTargetRange(0,0xff)
 		e1:SetValue(c40583194.etarget)
-		e1:SetCondition(c40583194.limcon)
+		e1:SetCondition(aux.ThisCardAttackingCondition)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
 	end
 end
 function c40583194.etarget(e,re,c)
 	return c:IsType(TYPE_MONSTER) and (c:IsFaceup() or c:IsLocation(LOCATION_MZONE))
-end
-function c40583194.limcon(e)
-	local tc=Duel.GetAttacker()
-	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end

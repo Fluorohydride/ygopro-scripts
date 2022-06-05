@@ -39,7 +39,7 @@ function c93149655.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c93149655.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=e:GetLabelObject()
-	if chk==0 then return tc:IsOnField() end
+	if chk==0 then return tc:IsOnField() and aux.IsMonsterAttacking() end
 	Duel.SetTargetCard(tc)
 end
 function c93149655.atkop(e,tp,eg,ep,ev,re,r,rp)

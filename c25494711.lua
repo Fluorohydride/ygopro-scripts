@@ -18,7 +18,7 @@ function c25494711.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTargetRange(0,1)
 	e2:SetValue(1)
-	e2:SetCondition(c25494711.actcon)
+	e2:SetCondition(aux.ThisCardBattlingCondition)
 	c:RegisterEffect(e2)
 	--destroy replace
 	local e3=Effect.CreateEffect(c)
@@ -63,10 +63,6 @@ function c25494711.atkop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c25494711.ftarget(e,c)
 	return e:GetLabel()~=c:GetFieldID()
-end
-function c25494711.actcon(e)
-	local tc=Duel.GetBattleMonster(e:GetHandlerPlayer())
-	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c25494711.repfilter(c,e)
 	return c:IsFaceup() and c:IsSetCard(0xab)

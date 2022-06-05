@@ -23,7 +23,7 @@ function c44874522.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetTargetRange(0,1)
 	e3:SetValue(c44874522.aclimit)
-	e3:SetCondition(c44874522.actcon)
+	e3:SetCondition(aux.ThisCardAttackingCondition)
 	c:RegisterEffect(e3)
 	--Destroy
 	local e4=Effect.CreateEffect(c)
@@ -71,10 +71,6 @@ function c44874522.regop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c44874522.aclimit(e,re,tp)
 	return re:IsHasType(EFFECT_TYPE_ACTIVATE) or re:IsActiveType(TYPE_MONSTER)
-end
-function c44874522.actcon(e)
-	local tc=Duel.GetAttacker()
-	return tc and tc==e:GetHandler() and not tc:IsStatus(STATUS_ATTACK_CANCELED)
 end
 function c44874522.condition(e,tp,eg,ep,ev,re,r,rp)
 	return aux.dsercon(e) and Duel.GetAttacker()==e:GetHandler()
