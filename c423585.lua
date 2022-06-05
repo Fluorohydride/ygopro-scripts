@@ -36,7 +36,7 @@ function c423585.initial_effect(c)
 	c:RegisterEffect(e5)
 end
 function c423585.potg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chk==0 then return e:GetHandler():IsAttackPos() end
+	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,e:GetHandler(),1,0,0)
 end
 function c423585.poop(e,tp,eg,ep,ev,re,r,rp)

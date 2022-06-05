@@ -1,4 +1,4 @@
---大邪神レシェフ
+--大邪神 レシェフ
 function c62420419.initial_effect(c)
 	c:EnableReviveLimit()
 	--control

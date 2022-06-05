@@ -1,4 +1,4 @@
---軍貫処『海せん』
+--軍貫処 『海せん』
 function c62200831.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

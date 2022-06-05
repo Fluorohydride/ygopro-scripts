@@ -62,7 +62,7 @@ function c94573223.eqlimit(e,c)
 end
 function c94573223.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_SZONE) and not c:IsReason(REASON_LOST_TARGET)
+	return c:IsPreviousLocation(LOCATION_SZONE) and c:GetPreviousEquipTarget() and not c:IsReason(REASON_LOST_TARGET)
 end
 function c94573223.spfilter(c,e,tp)
 	return c:IsSetCard(0x56) and not c:IsCode(94573223) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

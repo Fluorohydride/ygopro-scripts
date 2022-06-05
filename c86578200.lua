@@ -1,4 +1,4 @@
---魔界大道具 「ニゲ馬車」
+--魔界大道具「ニゲ馬車」
 function c86578200.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)

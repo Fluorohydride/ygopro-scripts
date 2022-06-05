@@ -66,6 +66,8 @@ end
 function c63845230.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
+	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
+	if ft<=0 and Duel.GetMatchingGroupCount(Card.IsAbleToRemoveAsCost,tp,LOCATION_MZONE,0,c,POS_FACEDOWN)<=-ft then return false end
 	local g=Duel.GetMatchingGroup(Card.IsAbleToRemoveAsCost,tp,LOCATION_HAND+LOCATION_ONFIELD+LOCATION_EXTRA,0,c,POS_FACEDOWN)
 	return g:CheckSubGroup(aux.mzctcheck,5,#g,tp)
 end

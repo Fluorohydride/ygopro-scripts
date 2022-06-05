@@ -1,4 +1,4 @@
---海晶乙女コーラルトライアング
+--海晶乙女コーラルトライアングル
 function c84546257.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0x12b),2)

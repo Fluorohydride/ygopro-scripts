@@ -97,18 +97,18 @@ end
 function c10000020.adval(e,c)
 	return Duel.GetFieldGroupCount(c:GetControler(),LOCATION_HAND,0)*1000
 end
-function c10000020.atkfilter(c,e,tp)
-	return c:IsControler(tp) and c:IsPosition(POS_FACEUP_ATTACK) and (not e or c:IsRelateToEffect(e))
+function c10000020.atkfilter(c,tp)
+	return c:IsControler(tp) and c:IsPosition(POS_FACEUP_ATTACK)
 end
 function c10000020.atkcon(e,tp,eg,ep,ev,re,r,rp)
-	return eg:IsExists(c10000020.atkfilter,1,nil,nil,1-tp)
+	return eg:IsExists(c10000020.atkfilter,1,nil,1-tp)
 end
 function c10000020.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetTargetCard(eg)
 end
 function c10000020.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local g=eg:Filter(c10000020.atkfilter,nil,e,1-tp)
+	local g=eg:Filter(Card.IsRelateToEffect,nil,e):Filter(Card.IsFaceup,nil)
 	local dg=Group.CreateGroup()
 	local c=e:GetHandler()
 	local tc=g:GetFirst()

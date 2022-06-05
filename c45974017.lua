@@ -53,13 +53,13 @@ function c45974017.pctg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c45974017.pcop(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return false end
 	if e:GetLabel()==0 then
 		local tc=Duel.GetFirstTarget()
 		if tc:IsRelateToEffect(e) then
 			Duel.MoveToField(tc,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 		end
 	else
+		if not Duel.CheckLocation(tp,LOCATION_PZONE,0) and not Duel.CheckLocation(tp,LOCATION_PZONE,1) then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
 		local g=Duel.SelectMatchingCard(tp,c45974017.pcfilter,tp,LOCATION_EXTRA,0,1,1,nil)
 		if g:GetCount()>0 then

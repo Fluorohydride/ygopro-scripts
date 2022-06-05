@@ -33,7 +33,6 @@ function c90307498.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 c90307498.material_setcode=0x8
-c90307498.neos_fusion=true
 function c90307498.damcon(e,tp,eg,ep,ev,re,r,rp)
 	local bc=e:GetHandler():GetBattleTarget()
 	return bc and bc:IsControler(1-tp)

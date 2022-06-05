@@ -14,7 +14,7 @@ function c57722593.initial_effect(c)
 	c:RegisterEffect(e1)
 	--act limit
 	local e3=Effect.CreateEffect(c)
-	e3:SetDescription(aux.Stringid(11327848,0))
+	e3:SetDescription(aux.Stringid(57722593,0))
 	e3:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e3:SetCode(EVENT_PHASE+PHASE_END)
@@ -49,6 +49,6 @@ function c57722593.actop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CANNOT_TRIGGER)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-		tc:RegisterEffect(e1)
+		tc:RegisterEffect(e1,true)
 	end
 end

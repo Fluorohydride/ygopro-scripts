@@ -16,7 +16,7 @@ end
 function c39454112.diceop(e,tp,eg,ep,ev,re,r,rp)
 	local cc=Duel.GetCurrentChain()
 	local cid=Duel.GetChainInfo(cc,CHAININFO_CHAIN_ID)
-	if aux.dice_chain_id~=cid and Duel.SelectYesNo(tp,aux.Stringid(39454112,0)) then
+	if Duel.SelectYesNo(tp,aux.Stringid(39454112,0)) then
 		Duel.Hint(HINT_CARD,0,39454112)
 		local dc={Duel.GetDiceResult()}
 		local ac=1
@@ -30,6 +30,5 @@ function c39454112.diceop(e,tp,eg,ep,ev,re,r,rp)
 		if dc[ac]==1 or dc[ac]==3 or dc[ac]==5 then dc[ac]=6
 		else dc[ac]=1 end
 		Duel.SetDiceResult(table.unpack(dc))
-		aux.dice_chain_id=cid
 	end
 end

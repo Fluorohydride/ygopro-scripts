@@ -1,4 +1,4 @@
---プロモーシコン
+--プロモーション
 function c88617904.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -12,7 +12,7 @@ function c88617904.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c88617904.tgfilter(c,tp)
-	return c:IsRace(RACE_WARRIOR) and c:IsAttribute(ATTRIBUTE_EARTH) and c:IsLevelBelow(3)
+	return c:IsFaceup() and c:IsRace(RACE_WARRIOR) and c:IsAttribute(ATTRIBUTE_EARTH) and c:IsLevelBelow(3)
 		and c:IsAbleToGrave() and Duel.GetMZoneCount(tp,c)>0
 end
 function c88617904.spfilter(c,e,tp)

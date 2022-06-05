@@ -52,7 +52,7 @@ function c31772684.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(Card.IsSetCard,nil,0x106)
 	local rc=g:GetFirst()
 	if not rc then return end
-	local e1=Effect.CreateEffect(c)
+	local e1=Effect.CreateEffect(rc)
 	e1:SetDescription(aux.Stringid(31772684,1))
 	e1:SetCategory(CATEGORY_REMOVE)
 	e1:SetType(EFFECT_TYPE_QUICK_O)

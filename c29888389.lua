@@ -18,7 +18,7 @@ function c29888389.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c29888389.rlevel(e,c)
-	local lv=e:GetHandler():GetLevel()
+	local lv=aux.GetCappedLevel(e:GetHandler())
 	if c:IsAttribute(ATTRIBUTE_WATER) then
 		local clv=c:GetLevel()
 		return (lv<<16)+clv

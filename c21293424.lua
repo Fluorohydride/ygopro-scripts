@@ -1,9 +1,15 @@
 --空母軍貫－しらうお型特務艦
 function c21293424.initial_effect(c)
+	aux.AddCodeList(c,24639891,78362751)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)
 	c:EnableReviveLimit()
 	--apply the effect
+	local e0=Effect.CreateEffect(c)
+	e0:SetType(EFFECT_TYPE_SINGLE)
+	e0:SetCode(EFFECT_MATERIAL_CHECK)
+	e0:SetValue(c21293424.valcheck)
+	c:RegisterEffect(e0)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(21293424,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
@@ -13,6 +19,7 @@ function c21293424.initial_effect(c)
 	e1:SetTarget(c21293424.efftg)
 	e1:SetOperation(c21293424.effop)
 	c:RegisterEffect(e1)
+	e0:SetLabelObject(e1)
 	--protection
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
@@ -28,6 +35,13 @@ function c21293424.initial_effect(c)
 	e3:SetValue(c21293424.atkval)
 	c:RegisterEffect(e3)
 end
+function c21293424.valcheck(e,tp,eg,ep,ev,re,r,rp)
+	local c=e:GetHandler()
+	local flag=0
+	if c:GetMaterial():FilterCount(Card.IsCode,nil,24639891)>0 then flag=flag|1 end
+	if c:GetMaterial():FilterCount(Card.IsCode,nil,78362751)>0 then flag=flag|2 end
+	e:GetLabelObject():SetLabel(flag)
+end
 function c21293424.effcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_XYZ)
 end
@@ -35,9 +49,8 @@ function c21293424.thfilter(c)
 	return c:IsSetCard(0x166) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
 end
 function c21293424.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
-	local c=e:GetHandler()
-	local chk1=c:GetMaterial():FilterCount(Card.IsCode,nil,24639891)>0
-	local chk2=c:GetMaterial():FilterCount(Card.IsCode,nil,78362751)>0
+	local chk1=e:GetLabel()&1>0
+	local chk2=e:GetLabel()&2>0
 	if chk==0 then return chk1 and Duel.IsPlayerCanDraw(tp,1)
 		or chk2 and Duel.IsExistingMatchingCard(c21293424.thfilter,tp,LOCATION_DECK,0,1,nil) end
 	e:SetCategory(0)
@@ -52,8 +65,8 @@ function c21293424.efftg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c21293424.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local chk1=c:GetMaterial():FilterCount(Card.IsCode,nil,24639891)>0
-	local chk2=c:GetMaterial():FilterCount(Card.IsCode,nil,78362751)>0
+	local chk1=e:GetLabel()&1>0
+	local chk2=e:GetLabel()&2>0
 	if chk1 then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end

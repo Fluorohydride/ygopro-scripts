@@ -30,7 +30,7 @@ function c39468724.initial_effect(c)
 	e3:SetCountLimit(1,39468725)
 	e3:SetCondition(c39468724.negcon)
 	e3:SetCost(c39468724.negcost)
-	e3:SetTarget(c39468724.negtg)
+	e3:SetTarget(aux.nbtg)
 	e3:SetOperation(c39468724.negop)
 	c:RegisterEffect(e3)
 end
@@ -76,13 +76,6 @@ function c39468724.negcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
 	local g=Duel.SelectReleaseGroupEx(tp,c39468724.negfilter,1,1,nil,tp)
 	Duel.Release(g,REASON_COST)
-end
-function c39468724.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.nbcon(tp,re) end
-	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) then
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
-	end
 end
 function c39468724.negop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then

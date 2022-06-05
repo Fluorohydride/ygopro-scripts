@@ -49,12 +49,10 @@ function c25407643.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetCard(eg)
 end
 function c25407643.operation(e,tp,eg,ep,ev,re,r,rp)
-	if not Duel.IsExistingMatchingCard(c25407643.cfilter1,tp,LOCATION_SZONE,0,1,e:GetHandler())
-		or Duel.IsExistingMatchingCard(c25407643.cfilter1,tp,0,LOCATION_SZONE,1,nil) then return end
 	local tc=eg:GetFirst()
 	local c=e:GetHandler()
 	while tc do
-		if tc:IsRelateToEffect(e) and c25407643.cfilter2(tc,1-tp) then
+		if tc:IsRelateToEffect(e) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_CANNOT_ATTACK)
@@ -64,7 +62,7 @@ function c25407643.operation(e,tp,eg,ep,ev,re,r,rp)
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetCode(EFFECT_CANNOT_TRIGGER)
 			e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
-			tc:RegisterEffect(e2)
+			tc:RegisterEffect(e2,true)
 		end
 		tc=eg:GetNext()
 	end

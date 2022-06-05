@@ -33,6 +33,9 @@ function c1906812.initial_effect(c)
 	e2:SetOperation(c1906812.thop)
 	c:RegisterEffect(e2)
 end
+function c1906812.branded_fusion_check(tp,sg,fc)
+	return aux.gffcheck(sg,Card.IsFusionCode,68468459,c1906812.mfilter,nil)
+end
 function c1906812.mfilter(c)
 	return c:IsStatus(STATUS_SPSUMMON_TURN) and c:IsFusionType(TYPE_EFFECT) and c:IsLocation(LOCATION_MZONE)
 end

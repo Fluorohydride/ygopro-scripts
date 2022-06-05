@@ -38,7 +38,7 @@ function c56256517.activate(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
 	e1:SetCountLimit(1)
-	e1:SetLabel(fid)
+	e1:SetLabel(fid,0)
 	e1:SetLabelObject(g)
 	e1:SetCondition(c56256517.thcon)
 	e1:SetOperation(c56256517.thop)
@@ -53,12 +53,13 @@ function c56256517.thfilter(c,fid)
 end
 function c56256517.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local ct=c:GetTurnCounter()
+	local fid,ct=e:GetLabel()
 	ct=ct+1
 	c:SetTurnCounter(ct)
+	e:SetLabel(fid,ct)
 	if ct==3 then
 		local g=e:GetLabelObject()
-		if g:FilterCount(c56256517.thfilter,nil,e:GetLabel())==3 then
+		if g:FilterCount(c56256517.thfilter,nil,fid)==3 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
 		end
 	end

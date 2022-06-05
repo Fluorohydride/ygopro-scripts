@@ -84,7 +84,7 @@ end
 function c35772782.diceop(e,tp,eg,ep,ev,re,r,rp)
 	local cc=Duel.GetCurrentChain()
 	local cid=Duel.GetChainInfo(cc,CHAININFO_CHAIN_ID)
-	if aux.dice_chain_id~=cid and Duel.SelectYesNo(tp,aux.Stringid(35772782,1)) then
+	if Duel.SelectYesNo(tp,aux.Stringid(35772782,1)) then
 		Duel.Hint(HINT_CARD,0,35772782)
 		e:GetHandler():RegisterFlagEffect(35772782,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 		local dc={Duel.GetDiceResult()}
@@ -98,6 +98,5 @@ function c35772782.diceop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		dc[ac]=7
 		Duel.SetDiceResult(table.unpack(dc))
-		aux.dice_chain_id=cid
 	end
 end

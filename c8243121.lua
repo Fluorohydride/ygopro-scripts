@@ -78,7 +78,7 @@ end
 function c8243121.atkcon(e,tp,eg,ep,ev,re,r,rp)
 	local a,d=Duel.GetBattleMonster(1-tp)
 	if not (a and d) then return false end
-	return d:IsFaceup() and d:IsSetCard(0xf7)
+	return Duel.GetAttacker()==a and d:IsFaceup() and d:IsSetCard(0xf7)
 end
 function c8243121.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local a,d=Duel.GetBattleMonster(1-tp)

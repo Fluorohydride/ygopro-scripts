@@ -62,7 +62,7 @@ function c48285768.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
 		local ct=c:GetOverlayCount()
-		Duel.Remove(c,POS_FACEUP,REASON_EFFECT+REASON_TEMPORARY)
+		Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)

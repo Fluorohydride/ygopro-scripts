@@ -7,7 +7,7 @@ function c51849216.initial_effect(c)
 	e1:SetCode(EVENT_CHAINING)
 	e1:SetCountLimit(1,51849216+EFFECT_COUNT_CODE_OATH)
 	e1:SetCondition(c51849216.condition)
-	e1:SetTarget(c51849216.target)
+	e1:SetTarget(aux.nbtg)
 	e1:SetOperation(c51849216.activate)
 	c:RegisterEffect(e1)
 end
@@ -17,13 +17,6 @@ end
 function c51849216.condition(e,tp,eg,ep,ev,re,r,rp)
 	return ep==1-tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and Duel.IsChainNegatable(ev)
 		and Duel.IsExistingMatchingCard(c51849216.filter,tp,LOCATION_MZONE,0,1,nil)
-end
-function c51849216.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.nbcon(tp,re) end
-	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) then
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,eg,1,0,0)
-	end
 end
 function c51849216.atkfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x29)
