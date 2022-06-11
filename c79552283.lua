@@ -22,7 +22,6 @@ function c79552283.initial_effect(c)
 	e4:SetCategory(CATEGORY_DISABLE)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_CHAINING)
-	e4:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DAMAGE_CAL)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCountLimit(1,79552283)
 	e4:SetCondition(c79552283.discon)
@@ -59,7 +58,7 @@ function c79552283.exfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x17a) and c:GetSequence()>=5
 end
 function c79552283.discon(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.IsChainNegatable(ev) and Duel.IsExistingMatchingCard(c79552283.exfilter,tp,LOCATION_MZONE,0,1,nil) and rp==1-tp
+	return Duel.IsChainDisablable(ev) and Duel.IsExistingMatchingCard(c79552283.exfilter,tp,LOCATION_MZONE,0,1,nil) and rp==1-tp
 end
 function c79552283.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
