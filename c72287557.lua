@@ -25,18 +25,19 @@ function c72287557.costfilter(c,tp)
 end
 function c72287557.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return false end
+	local tc=eg:GetFirst()
 	if chk==0 then
 		if e:GetLabel()==1 then
 			e:SetLabel(0)
-			return Duel.CheckReleaseGroup(tp,c72287557.costfilter,1,eg:GetFirst(),tp)
-				and eg:GetFirst():IsCanBeEffectTarget(e) and eg:GetFirst():IsControlerCanBeChanged(true)
+			return Duel.CheckReleaseGroup(tp,c72287557.costfilter,1,tc,tp)
+				and tc:IsCanBeEffectTarget(e) and tc:IsControlerCanBeChanged(true)
 		else
-			return eg:GetFirst():IsCanBeEffectTarget(e) and eg:GetFirst():IsControlerCanBeChanged()
+			return tc:IsCanBeEffectTarget(e) and tc:IsControlerCanBeChanged()
 		end
 	end
 	if e:GetLabel()==1 then
 		e:SetLabel(0)
-		local sg=Duel.SelectReleaseGroup(tp,c72287557.costfilter,1,1,eg:GetFirst(),tp)
+		local sg=Duel.SelectReleaseGroup(tp,c72287557.costfilter,1,1,tc,tp)
 		Duel.Release(sg,REASON_COST)
 	end
 	Duel.SetTargetCard(eg)
