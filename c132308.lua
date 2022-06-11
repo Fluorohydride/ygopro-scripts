@@ -52,7 +52,8 @@ function c132308.discon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c132308.filter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c132308.costfilter(c,tp)
-	return (c:IsControler(tp) or c:IsFaceup()) and (c:IsRace(RACE_PLANT) or c:IsHasEffect(76869711))
+	return (c:IsControler(tp) or c:IsFaceup())
+		and (c:IsRace(RACE_PLANT) or c:IsHasEffect(76869711,tp) and c:IsControler(1-tp))
 end
 function c132308.discost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsAbleToDeckAsCost() and Duel.CheckReleaseGroup(tp,c132308.costfilter,1,nil,tp) end

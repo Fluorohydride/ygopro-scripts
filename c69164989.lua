@@ -44,7 +44,7 @@ function c69164989.activate(e,tp,eg,ep,ev,re,r,rp)
 end
 function c69164989.costfilter(c,tp)
 	return (c:IsControler(tp) or c:IsFaceup())
-		and (c:IsRace(RACE_PLANT) or c:IsHasEffect(76869711))
+		and (c:IsRace(RACE_PLANT) or c:IsHasEffect(76869711,tp) and c:IsControler(1-tp))
 end
 function c69164989.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c69164989.costfilter,1,nil,tp) end

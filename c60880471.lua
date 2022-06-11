@@ -50,8 +50,8 @@ function c60880471.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
 end
 function c60880471.spfilter(c,tp)
-	return (c:IsControler(tp) or c:IsFaceup()) and (c:IsRace(RACE_PLANT) or c:IsHasEffect(76869711))
-		and Duel.GetMZoneCount(tp,c)>0
+	return (c:IsControler(tp) or c:IsFaceup()) and Duel.GetMZoneCount(tp,c)>0
+		and (c:IsRace(RACE_PLANT) or c:IsHasEffect(76869711,tp) and c:IsControler(1-tp))
 end
 function c60880471.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckReleaseGroup(tp,c60880471.spfilter,1,nil,tp) end
