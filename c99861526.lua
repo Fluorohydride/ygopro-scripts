@@ -38,7 +38,7 @@ function c99861526.poscon(e,tp,eg,ep,ev,re,r,rp)
 	return c:IsRelateToBattle() and c:IsAttackPos()
 end
 function c99861526.posop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		Duel.ChangePosition(e:GetHandler(),POS_FACEUP_DEFENSE)
 	end
 end

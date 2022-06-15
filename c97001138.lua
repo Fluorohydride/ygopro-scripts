@@ -31,7 +31,7 @@ function c97001138.sumfilter(c)
 end
 function c97001138.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
+	if tc:IsRelateToChain(0) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
 		local g=Duel.GetMatchingGroup(c97001138.sumfilter,tp,LOCATION_HAND,0,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(97001138,0)) then
 			Duel.BreakEffect()

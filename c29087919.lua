@@ -34,7 +34,7 @@ function c29087919.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg1,sg1:GetCount(),0,0)
 end
 function c29087919.filter2(c,e,tp)
-	return c:IsRelateToEffect(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRelateToChain(0) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c29087919.spfilter(c,mg,ct)
 	return c:IsXyzSummonable(mg,ct,ct)

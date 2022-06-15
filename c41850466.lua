@@ -58,7 +58,7 @@ function c41850466.xyztg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c41850466.mtfilter(c,e)
-	return c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
+	return c:IsRelateToChain(0) and not c:IsImmuneToEffect(e)
 end
 function c41850466.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

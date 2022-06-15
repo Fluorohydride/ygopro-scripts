@@ -19,7 +19,7 @@ function c72648810.condition(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsChainNegatable(ev)
 end
 function c72648810.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToChain(ev) then
 		Duel.Remove(eg,POS_FACEUP,REASON_EFFECT)
 	end
 end

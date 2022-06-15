@@ -24,7 +24,7 @@ function c9822220.initial_effect(c)
 end
 function c9822220.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local fid=c:GetFieldID()
 	c:RegisterFlagEffect(9822220,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_OPPO_TURN,EFFECT_FLAG_CLIENT_HINT,1,fid,66)
 	local e1=Effect.CreateEffect(c)
@@ -72,7 +72,7 @@ function c9822220.setfilter(c)
 end
 function c9822220.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local g=Duel.GetMatchingGroup(c9822220.setfilter,tp,LOCATION_DECK,0,nil)
 		if e:GetLabel()==1 and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(9822220,2)) then
 			Duel.BreakEffect()

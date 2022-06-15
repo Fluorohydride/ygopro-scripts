@@ -44,7 +44,7 @@ function c220414.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c220414.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		c:AddCounter(0x50,1)
 	end
 end

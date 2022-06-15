@@ -32,7 +32,7 @@ function c60312997.operation(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetValue(HALF_DAMAGE)
 	Duel.RegisterEffect(e1,tp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local e2=Effect.CreateEffect(e:GetHandler())
 		e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e2:SetCode(EVENT_DAMAGE_STEP_END)

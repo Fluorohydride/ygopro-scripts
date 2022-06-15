@@ -45,7 +45,7 @@ function c72859417.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local c1=g:GetFirst()
 	local c2=g:GetNext()
-	if not c1:IsRelateToEffect(e) or not c2:IsRelateToEffect(e) then return end
+	if not c1:IsRelateToChain(0) or not c2:IsRelateToChain(0) then return end
 	if c1:IsImmuneToEffect(e) or c2:IsImmuneToEffect(e) then return end
 	local b1=c1:IsCanOverlay()
 	local b2=c2:IsCanOverlay()

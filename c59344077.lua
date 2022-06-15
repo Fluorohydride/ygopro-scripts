@@ -30,7 +30,7 @@ function c59344077.activate(e,tp,eg,ep,ev,re,r,rp)
 			return
 		end
 	end
-	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToChain(ev) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

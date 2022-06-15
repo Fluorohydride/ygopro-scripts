@@ -38,7 +38,7 @@ function c47778083.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local oc=g:GetFirst()
 	if oc==sc then oc=g:GetNext() end
-	if sc:IsRelateToEffect(e) then
+	if sc:IsRelateToChain(0) then
 		Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEUP)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -52,7 +52,7 @@ function c47778083.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetLabel(Duel.GetTurnCount())
 		sc:RegisterEffect(e1,true)
 	end
-	if oc:IsRelateToEffect(e) then
+	if oc:IsRelateToChain(0) then
 		Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEUP)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

@@ -59,7 +59,7 @@ end
 function c65471349.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local dc=Duel.GetAttacker()
-	if c:IsRelateToEffect(e) and dc:IsRelateToBattle() then
+	if c:IsRelateToChain(0) and dc:IsRelateToBattle() then
 		local g=Group.FromCards(c,dc)
 		Duel.Destroy(g,REASON_EFFECT)
 	end

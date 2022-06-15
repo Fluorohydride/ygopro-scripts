@@ -32,7 +32,7 @@ function c52792430.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c52792430.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:AddCounter(0x1041,1) and tc:GetLevel()>1 then
+	if tc:IsRelateToChain(0) and tc:AddCounter(0x1041,1) and tc:GetLevel()>1 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_LEVEL)

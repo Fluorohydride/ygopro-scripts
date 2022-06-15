@@ -25,7 +25,7 @@ end
 function c38562933.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local d=e:GetLabelObject()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and d:IsRelateToBattle() and d:IsDefenseBelow(c:GetAttack()) then
+	if c:IsFaceup() and c:IsRelateToChain(0) and d:IsRelateToBattle() and d:IsDefenseBelow(c:GetAttack()) then
 		Duel.Destroy(d,REASON_EFFECT)
 	end
 end

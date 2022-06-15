@@ -49,7 +49,7 @@ function c93900406.ctltg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c93900406.ctlop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.GetControl(c,1-tp)
 	end
 end

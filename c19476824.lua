@@ -37,7 +37,7 @@ function c19476824.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if #g<=0 then return end
 	Duel.DisableShuffleCheck()
 	if Duel.Remove(g,POS_FACEUP,REASON_EFFECT)~=0
-		and c:IsFaceup() and c:IsRelateToEffect(e) then
+		and c:IsFaceup() and c:IsRelateToChain(0) then
 		local og=Duel.GetOperatedGroup()
 		local oc=og:FilterCount(Card.IsSetCard,nil,0x105)
 		if oc==0 then return end

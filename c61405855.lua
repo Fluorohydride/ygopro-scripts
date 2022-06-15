@@ -49,7 +49,7 @@ function c61405855.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c61405855.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if e:GetHandler():IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
 end
@@ -66,7 +66,7 @@ function c61405855.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c61405855.desop(e,tp,eg,ep,ev,re,r,rp)
 	local bc=Duel.GetFirstTarget()
-	if bc:IsRelateToEffect(e) then
+	if bc:IsRelateToChain(0) then
 		Duel.Destroy(bc,REASON_EFFECT)
 	end
 end

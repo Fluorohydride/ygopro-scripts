@@ -55,7 +55,7 @@ function c87902575.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c87902575.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	if tc:IsRelateToEffect(e) and tc:IsLocation(LOCATION_MZONE) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_TEMPORARY)~=0 then
+	if tc:IsRelateToChain(0) and tc:IsLocation(LOCATION_MZONE) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 		tc:CreateRelation(e:GetHandler(),RESET_EVENT+RESETS_STANDARD)
 		e:GetLabelObject():GetLabelObject():AddCard(tc)
 	end

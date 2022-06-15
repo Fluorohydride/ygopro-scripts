@@ -41,7 +41,7 @@ function c90579153.damtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c90579153.damop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Damage(1-tp,tc:GetAttack(),REASON_EFFECT)
 	end
 end
@@ -59,7 +59,7 @@ end
 function c90579153.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) and c:IsFaceup() then
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 and c:IsRelateToChain(0) and c:IsFaceup() then
 		local atk=c:GetBaseAttack()
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

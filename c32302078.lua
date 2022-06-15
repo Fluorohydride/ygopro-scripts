@@ -59,7 +59,7 @@ function c32302078.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c32302078.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoGrave(tc,REASON_EFFECT)
 	end
 end

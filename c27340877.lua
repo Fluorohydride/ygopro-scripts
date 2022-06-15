@@ -22,7 +22,7 @@ function c27340877.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c27340877.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFacedown() then
+	if tc:IsRelateToChain(0) and tc:IsFacedown() then
 		Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_ATTRIBUTE)
 		local rc=Duel.AnnounceAttribute(1-tp,2,ATTRIBUTE_ALL)
 		Duel.ConfirmCards(1-tp,tc)

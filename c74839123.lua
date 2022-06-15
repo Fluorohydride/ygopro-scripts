@@ -48,7 +48,7 @@ function c74839123.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c74839123.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 end

@@ -108,9 +108,9 @@ function c39261576.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c39261576.atkop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local sc=eg:GetFirst()
-	if not sc:IsRelateToEffect(e) or sc:IsFacedown() then return end
+	if not sc:IsRelateToChain(0) or sc:IsFacedown() then return end
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)

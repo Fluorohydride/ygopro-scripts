@@ -63,7 +63,7 @@ end
 function c49919798.cpop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) and (not tc:IsLocation(LOCATION_MZONE) or tc:IsFaceup()) then
+	if c:IsRelateToChain(0) and c:IsFaceup() and tc:IsRelateToChain(0) and (not tc:IsLocation(LOCATION_MZONE) or tc:IsFaceup()) then
 		local code=tc:GetCode()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -88,7 +88,7 @@ function c49919798.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c49919798.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

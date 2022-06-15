@@ -130,7 +130,7 @@ end
 function c25524823.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local sel=e:GetLabel()
-	if bit.band(sel,1)~=0 and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if bit.band(sel,1)~=0 and c:IsFaceup() and c:IsRelateToChain(0) then
 		local lv=e:GetLabelObject():GetLabel()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

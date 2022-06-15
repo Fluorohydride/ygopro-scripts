@@ -49,7 +49,7 @@ function c50797682.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or tc:IsFacedown() then return end
 	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c50797682.spfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,nil,e,tp,tc:GetRank())
 	local exg=Duel.GetMatchingGroup(c50797682.xyzfilter,tp,LOCATION_EXTRA,0,nil,e,tp,mg)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

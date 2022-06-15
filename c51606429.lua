@@ -39,7 +39,7 @@ end
 function c51606429.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.IsPlayerCanSpecialSummonMonster(tp,51606429,0x10db,TYPES_NORMAL_TRAP_MONSTER,0,0,3,RACE_WARRIOR,ATTRIBUTE_DARK,POS_FACEUP_ATTACK) then
+	if c:IsRelateToChain(0) and Duel.IsPlayerCanSpecialSummonMonster(tp,51606429,0x10db,TYPES_NORMAL_TRAP_MONSTER,0,0,3,RACE_WARRIOR,ATTRIBUTE_DARK,POS_FACEUP_ATTACK) then
 		c:AddMonsterAttribute(TYPE_NORMAL)
 		Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)
 	end
@@ -59,7 +59,7 @@ end
 function c51606429.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsDisabled() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and not tc:IsDisabled() then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

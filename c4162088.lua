@@ -32,7 +32,7 @@ end
 function c4162088.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and c4162088.filter(tc,c:GetAttack()) then
+	if c:IsFaceup() and c:IsRelateToChain(0) and tc:IsRelateToChain(0) and c4162088.filter(tc,c:GetAttack()) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

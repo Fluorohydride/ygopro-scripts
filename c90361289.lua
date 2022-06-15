@@ -54,7 +54,7 @@ function c90361289.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c90361289.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -76,7 +76,7 @@ end
 function c90361289.spop2(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local attr=tc:GetAttribute()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c90361289.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp,attr)

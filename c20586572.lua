@@ -36,7 +36,7 @@ function c20586572.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c20586572.operation(e,tp,eg,ep,ev,re,r,rp)
 	local rc=e:GetHandler():GetReasonCard()
-	if rc:IsRelateToEffect(e) then
+	if rc:IsRelateToChain(0) then
 		Duel.Destroy(rc,REASON_EFFECT)
 	end
 end

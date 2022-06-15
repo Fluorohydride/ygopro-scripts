@@ -61,7 +61,7 @@ end
 function c34029630.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and c:IsCanRemoveCounter(tp,0x1,1,REASON_EFFECT) and tc:IsCanAddCounter(0x1,1) then
+	if tc and tc:IsRelateToChain(0) and c:IsCanRemoveCounter(tp,0x1,1,REASON_EFFECT) and tc:IsCanAddCounter(0x1,1) then
 		c:RemoveCounter(tp,0x1,1,REASON_EFFECT)
 		tc:AddCounter(0x1,1)
 	end

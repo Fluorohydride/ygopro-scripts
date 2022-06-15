@@ -20,7 +20,7 @@ function c62896588.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c62896588.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and c62896588.filter(tc) then
+	if tc:IsRelateToChain(0) and c62896588.filter(tc) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_ADD_TYPE)

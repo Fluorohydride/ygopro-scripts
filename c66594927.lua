@@ -40,7 +40,7 @@ end
 function c66594927.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local atk=0
 		local g=Duel.GetMatchingGroup(c66594927.atkfilter,tp,LOCATION_MZONE,0,nil)
 		if g:GetCount()>0 then atk=g:GetSum(Card.GetBaseAttack) end

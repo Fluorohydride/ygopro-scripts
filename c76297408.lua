@@ -45,6 +45,6 @@ end
 function c76297408.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	if not g then return end
-	g=g:Filter(Card.IsRelateToEffect,nil,e)
+	g=g:Filter(Card.IsRelateToChain,nil,0)
 	Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 end

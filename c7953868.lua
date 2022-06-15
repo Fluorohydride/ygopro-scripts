@@ -31,7 +31,7 @@ function c7953868.potg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c7953868.poop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsAttackPos() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsAttackPos() and c:IsRelateToChain(0) then
 		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end
@@ -52,7 +52,7 @@ function c7953868.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c7953868.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_ZOMBIE) then
+	if tc:IsRelateToChain(0) and tc:IsRace(RACE_ZOMBIE) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

@@ -26,7 +26,7 @@ function c75014062.tfilter(c)
 end
 function c75014062.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:AddCounter(0x1,1) then
+	if tc and tc:IsFaceup() and tc:IsRelateToChain(0) and tc:AddCounter(0x1,1) then
 		local th=Duel.GetFirstMatchingCard(c75014062.tfilter,tp,LOCATION_DECK,0,nil)
 		if th and Duel.SelectYesNo(tp,aux.Stringid(75014062,0)) then
 			Duel.BreakEffect()

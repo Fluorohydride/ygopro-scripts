@@ -19,7 +19,7 @@ function c52097679.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetCard(g)
 end
 function c52097679.efilter(c,e)
-	return c52097679.filter(c) and c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
+	return c52097679.filter(c) and c:IsRelateToChain(0) and not c:IsImmuneToEffect(e)
 end
 function c52097679.activate(e,tp,eg,ep,ev,re,r,rp)
 	local sg=Duel.GetMatchingGroup(c52097679.efilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,e)

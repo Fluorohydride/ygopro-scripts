@@ -46,7 +46,7 @@ function c8576764.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c8576764.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
+	if tc:IsRelateToChain(0) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CANNOT_TRIGGER)
@@ -63,12 +63,12 @@ function c8576764.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c8576764.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rc=e:GetHandler():GetReasonCard()
-	if chk==0 then return rc:IsRelateToEffect(e) and rc:IsFaceup() and Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 end
+	if chk==0 then return rc:IsRelateToChain(0) and rc:IsFaceup() and Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)>0 end
 end
 function c8576764.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=e:GetHandler():GetReasonCard()
 	local ct=Duel.GetFieldGroupCount(tp,0,LOCATION_HAND)
-	if rc:IsRelateToEffect(e) and rc:IsFaceup() and ct>0 then
+	if rc:IsRelateToChain(0) and rc:IsFaceup() and ct>0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

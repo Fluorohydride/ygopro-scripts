@@ -40,7 +40,7 @@ function c98596596.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,0,0)
 end
 function c98596596.spop1(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) or Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
+	if not e:GetHandler():IsRelateToChain(0) or Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	if Duel.IsPlayerCanSpecialSummonMonster(tp,23116809,0,TYPES_TOKEN_MONSTER,100,100,1,RACE_PYRO,ATTRIBUTE_FIRE) then
 		local token=Duel.CreateToken(tp,98596597)
 		Duel.SpecialSummon(token,0,tp,tp,false,false,POS_FACEUP)
@@ -66,7 +66,7 @@ function c98596596.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c98596596.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local ct=math.min((Duel.GetLocationCount(tp,LOCATION_MZONE)),e:GetLabel())
-	if not e:GetHandler():IsRelateToEffect(e) or ct<=0
+	if not e:GetHandler():IsRelateToChain(0) or ct<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,23116809,0,TYPES_TOKEN_MONSTER,100,100,1,RACE_PYRO,ATTRIBUTE_FIRE) then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ct=1 end
 	for i=1,ct do

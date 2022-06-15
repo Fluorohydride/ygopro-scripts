@@ -61,7 +61,7 @@ function c5606466.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc1=g:GetFirst()
 	local tc2=g:GetNext()
 	local sc=e:GetLabelObject()
-	if tc1 and tc1:IsRelateToEffect(e) and tc2 and tc2:IsRelateToEffect(e) and sc:IsFacedown() then
+	if tc1 and tc1:IsRelateToChain(0) and tc2 and tc2:IsRelateToChain(0) and sc:IsFacedown() then
 		Duel.Destroy(g,REASON_EFFECT,LOCATION_REMOVED)
 	end
 end

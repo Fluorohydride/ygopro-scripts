@@ -30,7 +30,7 @@ function c16226786.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c16226786.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) then
+	if tc and tc:IsRelateToChain(0) and tc:IsControler(1-tp) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -49,7 +49,7 @@ function c16226786.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c16226786.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

@@ -75,7 +75,7 @@ function c26920296.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 end
 function c26920296.lvop(e,tp,eg,ep,ev,re,r,rp)
-	local g=eg:Filter(c26920296.lvfilter,nil):Filter(Card.IsRelateToEffect,nil,e)
+	local g=eg:Filter(c26920296.lvfilter,nil):Filter(Card.IsRelateToChain,nil,0)
 	local tc=g:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(e:GetHandler())

@@ -79,15 +79,15 @@ function c37390589.operation(e,tp,eg,ep,ev,re,r,rp)
 	local opt=e:GetLabel()
 	if opt==0 or opt==2 then
 		local tc=Duel.GetAttacker()
-		if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsAttackable() and not tc:IsStatus(STATUS_ATTACK_CANCELED) then
+		if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:IsAttackable() and not tc:IsStatus(STATUS_ATTACK_CANCELED) then
 			Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)
 		end
 	end
 	if opt==1 or opt==2 then
 		if not c:IsLocation(LOCATION_SZONE) then return end
-		if not c:IsRelateToEffect(e) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
+		if not c:IsRelateToChain(0) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
 		local tc=e:GetLabelObject()
-		if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsControler(tp) then
+		if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:IsControler(tp) then
 			Duel.Equip(tp,c,tc)
 			--Atkup
 			local e1=Effect.CreateEffect(c)

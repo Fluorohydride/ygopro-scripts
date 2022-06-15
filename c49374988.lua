@@ -31,7 +31,7 @@ function c49374988.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,e:GetHandler(),1,0,0)
 end
 function c49374988.retop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
@@ -53,7 +53,7 @@ function c49374988.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g1,2,0,0)
 end
 function c49374988.pfilter(c,e)
-	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsRelateToEffect(e)
+	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsRelateToChain(0)
 end
 function c49374988.posop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c49374988.pfilter,nil,e)

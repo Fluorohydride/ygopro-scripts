@@ -45,7 +45,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,#g)
 end
 function s.operation(e,tp,eg,ep,ev,re,r,rp)
-	local sg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local sg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	if #sg==0 then return end
 	Duel.SendtoDeck(sg,nil,SEQ_DECKTOP,REASON_EFFECT)
 	local og=Duel.GetOperatedGroup()

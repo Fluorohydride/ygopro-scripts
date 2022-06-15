@@ -31,7 +31,7 @@ function c91350799.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,e:GetHandler(),1,0,0)
 end
 function c91350799.retop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		Duel.SendtoDeck(e:GetHandler(),nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
@@ -53,7 +53,7 @@ function c91350799.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c91350799.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)>0 then
+	if tc and tc:IsRelateToChain(0) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)>0 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c91350799.filter,tp,LOCATION_DECK,0,1,1,nil,e,tp)

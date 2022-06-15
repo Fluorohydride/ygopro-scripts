@@ -27,7 +27,7 @@ function c637216.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c637216.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local race=tc:GetOriginalRace()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c637216.tgfilter,tp,LOCATION_EXTRA,0,1,1,nil,race)

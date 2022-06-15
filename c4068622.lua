@@ -74,7 +74,7 @@ function c4068622.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c4068622.filter,tp,LOCATION_EXTRA,0,1,1,nil)
 	local tc=g:GetFirst()
 	local c=e:GetHandler()
-	if tc and c:IsFaceup() and c:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)>0 then
+	if tc and c:IsFaceup() and c:IsRelateToChain(0) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)>0 then
 		--copy name, base atk
 		local code=tc:GetOriginalCode()
 		local ba=tc:GetBaseAttack()

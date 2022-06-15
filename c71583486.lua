@@ -35,7 +35,7 @@ function c71583486.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c71583486.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if e:GetLabel()==0 then
 		Duel.SendtoDeck(c,nil,SEQ_DECKBOTTOM,REASON_EFFECT)
 	else

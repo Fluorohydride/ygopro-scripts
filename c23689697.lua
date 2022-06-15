@@ -67,7 +67,7 @@ function c23689697.chlimit(e,ep,tp)
 end
 function c23689697.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local sg=g:Filter(Card.IsRelateToChain,nil,0)
 	Duel.Destroy(sg,REASON_EFFECT)
 end
 function c23689697.valcheck(e,c)

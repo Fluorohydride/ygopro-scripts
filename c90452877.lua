@@ -26,7 +26,7 @@ function c90452877.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c90452877.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		local b1=Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD,1,nil)
 		local b2=Duel.IsExistingMatchingCard(Card.IsAbleToRemove,tp,0,LOCATION_GRAVE,1,nil)
 		local op=0

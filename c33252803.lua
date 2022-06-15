@@ -31,7 +31,7 @@ function c33252803.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local no=aux.GetXyzNumber(tc)
 	if not aux.MustMaterialCheck(tc,tp,EFFECT_MUST_BE_XMATERIAL)
-		or tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) or not no then return end
+		or tc:IsFacedown() or not tc:IsRelateToChain(0) or tc:IsControler(1-tp) or tc:IsImmuneToEffect(e) or not no then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c33252803.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc,tc:GetRank()+1,no)
 	local sc=g:GetFirst()

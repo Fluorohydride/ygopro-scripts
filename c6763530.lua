@@ -36,7 +36,7 @@ end
 function c6763530.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 and tc:IsLocation(LOCATION_MZONE) then
+	if tc:IsRelateToChain(0) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 and tc:IsLocation(LOCATION_MZONE) then
 		local chkf=tp
 		local mg1=Duel.GetFusionMaterial(tp):Filter(c6763530.filter0,nil,e)
 		local mg2=Duel.GetMatchingGroup(c6763530.filter1,tp,0,LOCATION_MZONE,nil,e)

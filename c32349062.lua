@@ -40,7 +40,7 @@ end
 function c32349062.disop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not c:IsDisabled() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and not c:IsDisabled() then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -53,7 +53,7 @@ function c32349062.disop1(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e2)
-		if c:IsRelateToEffect(e) and c:IsLocation(LOCATION_PZONE) then
+		if c:IsRelateToChain(0) and c:IsLocation(LOCATION_PZONE) then
 			Duel.BreakEffect()
 			Duel.Destroy(c,REASON_EFFECT)
 		end
@@ -82,7 +82,7 @@ end
 function c32349062.disop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CANNOT_ATTACK)

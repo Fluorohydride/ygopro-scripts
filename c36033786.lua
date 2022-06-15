@@ -25,7 +25,7 @@ end
 function c36033786.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)~=0 then
+	if tc:IsRelateToChain(0) and Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)~=0 then
 		local fid=tc:GetRealFieldID()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)

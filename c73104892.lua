@@ -34,7 +34,7 @@ end
 function c73104892.attop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local att=e:GetLabel()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_CHANGE_ATTRIBUTE)
@@ -73,7 +73,7 @@ function c73104892.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c73104892.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(1-tp,c73104892.tgfilter,tp,LOCATION_MZONE,LOCATION_ONFIELD,1,1,nil,tp,tc:GetSequence())
 	Duel.HintSelection(g)

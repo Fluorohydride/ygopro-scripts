@@ -47,7 +47,7 @@ end
 function c68679595.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectMatchingCard(tp,c68679595.eqfilter,tp,LOCATION_EXTRA+LOCATION_DECK,0,1,1,nil,tp)
 		local tc=g:GetFirst()
@@ -73,7 +73,7 @@ end
 function c68679595.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) and not tc:IsDisabled() then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and tc:IsType(TYPE_MONSTER) and not tc:IsDisabled() then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local atk=tc:GetAttack()
 		local e1=Effect.CreateEffect(c)

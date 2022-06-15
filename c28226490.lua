@@ -55,7 +55,7 @@ function c28226490.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c28226490.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
@@ -76,7 +76,7 @@ function c28226490.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c28226490.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:GetFlagEffect(99456344)~=0 and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
+	if c:IsRelateToChain(0) and c:GetFlagEffect(99456344)~=0 and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c28226490.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
 		if #g>0 then

@@ -47,7 +47,7 @@ function c91607976.tgd1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsCanAddCounter(0x8,1) end
 end
 function c91607976.opd1(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		e:GetHandler():AddCounter(0x8,1)
 	end
 end

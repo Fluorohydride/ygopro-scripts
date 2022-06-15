@@ -97,7 +97,7 @@ function c21949879.thfilter(c)
 end
 function c21949879.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 		local g=Duel.GetMatchingGroup(c21949879.thfilter,tp,LOCATION_PZONE,0,nil)
 		if c:IsLocation(LOCATION_HAND) and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(21949879,3)) then

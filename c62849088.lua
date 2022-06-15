@@ -41,7 +41,7 @@ function c62849088.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c62849088.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -108,7 +108,7 @@ function c62849088.desop(e,tp,eg,ep,ev,re,r,rp)
 		local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 		Duel.Draw(p,d,REASON_EFFECT)
 	else
-		local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e):Filter(Card.IsSummonLocation,nil,LOCATION_EXTRA)
+		local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0):Filter(Card.IsSummonLocation,nil,LOCATION_EXTRA)
 		if g:GetCount()>0 then
 			if g:GetCount()>1 then
 				Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)

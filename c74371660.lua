@@ -40,7 +40,7 @@ function c74371660.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c74371660.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	local g=Duel.GetMatchingGroup(c74371660.filter,tp,0,LOCATION_MZONE,nil,c:GetAttack())
 	local tc=g:GetFirst()
 	while tc do

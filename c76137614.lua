@@ -27,7 +27,7 @@ function c76137614.thop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsCanRemoveCounter(tp,1,1,0x1,1,REASON_EFFECT) then
 		Duel.RemoveCounter(tp,1,1,0x1,1,REASON_EFFECT)
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		end
 	end

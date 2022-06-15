@@ -24,14 +24,14 @@ function c81601517.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	Duel.SelectTarget(tp,c81601517.filter,tp,LOCATION_MZONE,0,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToChain(ev) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
 end
 function c81601517.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)~=0 then
-		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)~=0 then
+		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToChain(ev) then
 			Duel.Destroy(eg,REASON_EFFECT)
 		end
 	end

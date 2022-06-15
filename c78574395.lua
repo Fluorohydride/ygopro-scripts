@@ -40,7 +40,7 @@ function c78574395.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c78574395.operation(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		c:AddCounter(0x32,e:GetLabel())
 	end
 end

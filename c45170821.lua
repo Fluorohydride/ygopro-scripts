@@ -33,7 +33,7 @@ function c45170821.valop(e,tp,eg,ep,ev,re,r,rp)
 	local o=e:GetLabelObject()
 	local s=g:GetFirst()
 	if s==o then s=g:GetNext() end
-	if s:IsFaceup() and o:IsFaceup() and s:IsRelateToEffect(e) and o:IsRelateToEffect(e) then
+	if s:IsFaceup() and o:IsFaceup() and s:IsRelateToChain(0) and o:IsRelateToChain(0) then
 		local val=s:GetAttack()*-1
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

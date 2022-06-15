@@ -29,7 +29,7 @@ function c30230789.poscon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c30230789.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end

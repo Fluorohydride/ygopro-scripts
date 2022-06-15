@@ -59,7 +59,7 @@ function c60759087.activate1(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local a=g:GetFirst()
 	local b=g:GetNext()
-	if a:IsRelateToEffect(e) and b:IsRelateToEffect(e) then
+	if a:IsRelateToChain(0) and b:IsRelateToChain(0) then
 		Duel.SwapControl(a,b)
 	end
 end
@@ -76,7 +76,7 @@ function c60759087.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c60759087.activate2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

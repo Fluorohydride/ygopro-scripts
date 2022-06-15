@@ -47,7 +47,7 @@ function c31525442.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c31525442.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		Duel.BreakEffect()
 		for p=tp,1-tp,1-tp-tp do
@@ -82,7 +82,7 @@ end
 function c31525442.dmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		if Duel.Destroy(tc,REASON_EFFECT)~=0 then
 			Duel.Damage(1-tp,2000,REASON_EFFECT)
 		end

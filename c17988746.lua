@@ -26,7 +26,7 @@ function c17988746.filter(c,e,tp,atk)
 end
 function c17988746.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local g=Duel.GetMatchingGroup(c17988746.filter,tp,LOCATION_HAND,0,nil,e,tp,ev)
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and g:GetCount()>0

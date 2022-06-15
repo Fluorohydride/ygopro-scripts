@@ -64,7 +64,7 @@ end
 function c18832779.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToChain(ev) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
 end
@@ -76,8 +76,8 @@ function c18832779.thfilter(c)
 end
 function c18832779.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re)
-		and Duel.Destroy(eg,REASON_EFFECT)>0 and c:IsRelateToEffect(e)
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToChain(ev)
+		and Duel.Destroy(eg,REASON_EFFECT)>0 and c:IsRelateToChain(0)
 		and c:GetEquipGroup():IsExists(c18832779.eqfilter,1,nil)
 		and Duel.IsExistingMatchingCard(c18832779.thfilter,tp,LOCATION_DECK,0,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(18832779,2)) then

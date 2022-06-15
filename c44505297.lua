@@ -44,7 +44,7 @@ end
 function c44505297.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	if not Duel.Equip(tp,tc,c,false) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
@@ -89,7 +89,7 @@ function c44505297.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,g1,2,0,0)
 end
 function c44505297.tgfilter(c,e)
-	return c:IsFaceup() and c:IsRelateToEffect(e)
+	return c:IsFaceup() and c:IsRelateToChain(0)
 end
 function c44505297.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)

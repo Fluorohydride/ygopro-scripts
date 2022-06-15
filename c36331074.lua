@@ -43,7 +43,7 @@ function c36331074.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local a=g:GetFirst()
 	local b=g:GetNext()
-	if a:IsRelateToEffect(e) and b:IsRelateToEffect(e) then
+	if a:IsRelateToChain(0) and b:IsRelateToChain(0) then
 		Duel.SwapControl(a,b)
 	end
 end

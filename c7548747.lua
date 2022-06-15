@@ -39,7 +39,7 @@ function c7548747.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c7548747.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
 		local check=c7548747.check(tp,TYPE_FUSION) and c7548747.check(tp,TYPE_SYNCHRO) and c7548747.check(tp,TYPE_XYZ) and c7548747.check(tp,TYPE_LINK)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c7548747.eqfilter),tp,LOCATION_EXTRA+LOCATION_MZONE+LOCATION_GRAVE,0,1,1,tc,check)

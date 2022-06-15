@@ -26,7 +26,7 @@ function c13760677.initial_effect(c)
 end
 function c13760677.cfilter(c,e,tp)
 	return c:IsRace(RACE_ZOMBIE) and c:IsSummonPlayer(tp) and c:IsSummonType(SUMMON_TYPE_PENDULUM)
-		and (not e or c:IsRelateToEffect(e))
+		and (not e or c:IsRelateToChain(0))
 end
 function c13760677.indcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c13760677.cfilter,1,nil,nil,tp)
@@ -37,7 +37,7 @@ function c13760677.indtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c13760677.indop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local g=eg:Filter(c13760677.cfilter,nil,e,tp)
 	local tc=g:GetFirst()
 	while tc do
@@ -69,7 +69,7 @@ function c13760677.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c13760677.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

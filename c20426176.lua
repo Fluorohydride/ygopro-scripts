@@ -46,7 +46,7 @@ end
 function c20426176.atrop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local att=e:GetLabel()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) and not tc:IsAttribute(att) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) and not tc:IsAttribute(att) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_ATTRIBUTE)
@@ -81,7 +81,7 @@ function c20426176.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c20426176.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 	end
 end

@@ -43,9 +43,9 @@ function c35877582.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c35877582.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() or not c:IsControler(tp) then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() or not c:IsControler(tp) then return end
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:IsFacedown() or not tc:IsRelateToEffect(e) then
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:IsFacedown() or not tc:IsRelateToChain(0) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end

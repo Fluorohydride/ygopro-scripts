@@ -35,7 +35,7 @@ function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)>0 then
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)>0 then
 		local g=Duel.GetDecktopGroup(1-tp,2)
 		if #g>0 then
 			Duel.BreakEffect()

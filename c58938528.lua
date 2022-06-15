@@ -93,7 +93,7 @@ function c58938528.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58938528.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

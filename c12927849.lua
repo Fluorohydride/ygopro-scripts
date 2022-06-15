@@ -46,7 +46,7 @@ function c12927849.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c12927849.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end
@@ -62,9 +62,9 @@ function c12927849.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c12927849.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:GetControler()~=tp or tc:IsFacedown() or not tc:IsRelateToEffect(e) then
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:GetControler()~=tp or tc:IsFacedown() or not tc:IsRelateToChain(0) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
@@ -101,7 +101,7 @@ function c12927849.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c12927849.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tc)
 	end

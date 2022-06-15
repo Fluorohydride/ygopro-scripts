@@ -43,7 +43,7 @@ end
 function c37679169.adop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local lv=e:GetLabel()
 		--atkdown
 		local e1=Effect.CreateEffect(c)

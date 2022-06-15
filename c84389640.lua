@@ -56,7 +56,7 @@ function c84389640.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c84389640.operation(e,tp,eg,ep,ev,re,r,rp)
 	local bc=Duel.GetFirstTarget()
-	if not e:GetHandler():IsRelateToEffect(e) or not bc or not bc:IsRelateToEffect(e) or not bc:IsControler(1-tp) then return end
+	if not e:GetHandler():IsRelateToChain(0) or not bc or not bc:IsRelateToChain(0) or not bc:IsControler(1-tp) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetOwnerPlayer(tp)
 	e1:SetType(EFFECT_TYPE_SINGLE)

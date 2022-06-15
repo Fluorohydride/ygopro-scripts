@@ -39,7 +39,7 @@ function c87263576.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c87263576.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local res=false
 		if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
 			res=true
@@ -77,7 +77,7 @@ function c87263576.lktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c87263576.lkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsControler(1-tp) or not c:IsRelateToEffect(e) then return end
+	if c:IsControler(1-tp) or not c:IsRelateToChain(0) then return end
 	local g=Duel.GetMatchingGroup(c87263576.lkfilter,tp,LOCATION_EXTRA,0,nil,c)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

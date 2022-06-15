@@ -62,7 +62,7 @@ end
 function c92015800.indval2(e,re,rp)
 	if not (rp==1-e:GetHandlerPlayer() and re:IsActivated() and re:IsActiveType(TYPE_MONSTER)) then return false end
 	local rc=re:GetHandler()
-	if rc:IsRelateToEffect(re) and rc:IsControler(rp) and (rc:IsFaceup() or not rc:IsLocation(LOCATION_MZONE)) then
+	if rc:IsRelateToChain(ev) and rc:IsControler(rp) and (rc:IsFaceup() or not rc:IsLocation(LOCATION_MZONE)) then
 		return e:GetHandler():IsAttribute(rc:GetAttribute())
 	else
 		return e:GetHandler():IsAttribute(rc:GetOriginalAttribute())
@@ -81,7 +81,7 @@ end
 function c92015800.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:RemoveOverlayCard(tp,1,1,REASON_EFFECT) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and c:RemoveOverlayCard(tp,1,1,REASON_EFFECT) and tc:IsRelateToChain(0) then
 		Duel.Overlay(c,Group.FromCards(tc))
 	end
 end

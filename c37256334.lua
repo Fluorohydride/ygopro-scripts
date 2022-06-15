@@ -35,9 +35,9 @@ function c37256334.deftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c37256334.defop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local g=Duel.GetMatchingGroup(Card.IsPosition,tp,LOCATION_MZONE,0,nil,POS_FACEUP_DEFENSE)
 		local def=g:GetSum(Card.GetBaseDefense)
 		local e1=Effect.CreateEffect(c)

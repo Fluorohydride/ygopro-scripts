@@ -56,7 +56,7 @@ function c4266839.retg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c4266839.reop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local ec=c:GetEquipTarget()
 	if ec then
 		local atk=ec:GetAttack()

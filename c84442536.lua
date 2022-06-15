@@ -39,7 +39,7 @@ function c84442536.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(sel)
 	if sel==1 then
 		Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-		if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
+		if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToChain(ev) then
 			Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 		end
 	end
@@ -49,7 +49,7 @@ function c84442536.activate(e,tp,eg,ep,ev,re,r,rp)
 	if sel==0 then
 		Duel.ChangeChainOperation(ev,c84442536.repop)
 	else
-		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
+		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToChain(ev) then
 			Duel.Destroy(eg,REASON_EFFECT)
 		end
 	end
@@ -57,7 +57,7 @@ end
 function c84442536.repop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

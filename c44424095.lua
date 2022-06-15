@@ -32,7 +32,7 @@ function c44424095.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	Duel.ShuffleDeck(tp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.BreakEffect()
 		if Duel.Destroy(tc,REASON_EFFECT)==0 then return end
 		Duel.Draw(tp,1,REASON_EFFECT)

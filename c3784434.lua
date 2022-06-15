@@ -41,7 +41,7 @@ end
 function c3784434.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local seq=e:GetLabel()
-	if not c:IsRelateToEffect(e) or c:IsControler(1-tp) or c:GetSequence()>4 or not Duel.CheckLocation(tp,LOCATION_MZONE,seq) then return end
+	if not c:IsRelateToChain(0) or c:IsControler(1-tp) or c:GetSequence()>4 or not Duel.CheckLocation(tp,LOCATION_MZONE,seq) then return end
 	Duel.MoveSequence(c,seq)
 end
 function c3784434.atkcon(e)

@@ -75,7 +75,7 @@ function c79747096.damfilter(c)
 end
 function c79747096.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
 		and Duel.IsEnvironment(41418852,tp,LOCATION_FZONE)
 		and Duel.IsExistingMatchingCard(c79747096.damfilter,tp,LOCATION_REMOVED,LOCATION_REMOVED,1,nil) then
 		Duel.BreakEffect()

@@ -28,7 +28,7 @@ function c61831093.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,sg,2,0,0)
 end
 function c61831093.dfilter(c,e)
-	return c:IsRelateToEffect(e) and c:IsFacedown()
+	return c:IsRelateToChain(0) and c:IsFacedown()
 end
 function c61831093.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)

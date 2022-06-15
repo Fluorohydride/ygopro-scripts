@@ -35,7 +35,7 @@ function c14989021.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,PLAYER_ALL,0)
 end
 function c14989021.damop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
+	if not e:GetHandler():IsRelateToChain(0) then return end
 	local c1=Duel.GetMatchingGroupCount(c14989021.filter,tp,LOCATION_ONFIELD,0,nil)
 	if c1<2 then
 		Duel.Damage(tp,1000-c1*500,REASON_EFFECT)

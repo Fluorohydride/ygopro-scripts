@@ -40,7 +40,7 @@ function c42713844.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c42713844.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	end
 end
@@ -59,7 +59,7 @@ function c42713844.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c42713844.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c42713844.postg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -70,7 +70,7 @@ function c42713844.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c42713844.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end

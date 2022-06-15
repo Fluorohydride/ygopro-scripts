@@ -44,7 +44,7 @@ function c86643777.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c86643777.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+	if tc:IsRelateToChain(0) and not tc:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,c86643777.matfilter,tp,LOCATION_HAND,0,1,1,nil)
 		if g:GetCount()>0 then

@@ -44,7 +44,7 @@ function c69680031.ofilter(c)
 end
 function c69680031.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0
 		and Duel.IsExistingMatchingCard(c69680031.ofilter,tp,LOCATION_MZONE,0,1,c)
 		and Duel.IsExistingMatchingCard(aux.NegateMonsterFilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil)
 		and Duel.SelectYesNo(tp,aux.Stringid(69680031,2)) then

@@ -30,7 +30,7 @@ function c88617904.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c88617904.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoGrave(tc,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_GRAVE) then
+	if tc:IsRelateToChain(0) and Duel.SendtoGrave(tc,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_GRAVE) then
 		local g=Duel.GetMatchingGroup(c88617904.spfilter,tp,LOCATION_DECK,0,nil,e,tp)
 		if g:GetCount()>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

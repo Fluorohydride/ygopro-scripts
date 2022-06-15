@@ -51,7 +51,7 @@ end
 function c58016954.operation(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsExistingMatchingCard(c58016954.cfilter,tp,LOCATION_PZONE,0,1,nil) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

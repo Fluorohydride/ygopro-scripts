@@ -25,7 +25,7 @@ function c63323539.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c63323539.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	local atk=tc:GetAttack()
 	if atk<0 or tc:IsFacedown() then atk=0 end
 	if Duel.Destroy(tc,REASON_EFFECT)~=0 then

@@ -60,7 +60,7 @@ function c58074177.atkop(e,tp,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local d=a:GetBattleTarget()
 	if a:IsControler(1-tp) then a,d=d,a end
-	if e:GetHandler():IsRelateToEffect(e)
+	if e:GetHandler():IsRelateToChain(0)
 		and a:IsFaceup() and a:IsRelateToBattle()
 		and d:IsFaceup() and d:IsRelateToBattle() then
 		local e1=Effect.CreateEffect(e:GetHandler())
@@ -80,7 +80,7 @@ end
 function c58074177.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
@@ -122,7 +122,7 @@ function c58074177.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58074177.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

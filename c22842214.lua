@@ -47,10 +47,10 @@ function c22842214.eqlimit(e,c)
 end
 function c22842214.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 	local tg=Group.CreateGroup()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		if ft>=g:GetCount() then
 			tg:Merge(g)
 		else

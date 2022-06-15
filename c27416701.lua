@@ -30,7 +30,7 @@ function c27416701.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c27416701.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
 end

@@ -39,11 +39,11 @@ end
 function c46589034.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
+	if tc:IsFacedown() or not tc:IsRelateToChain(0) then return end
 	local atk=tc:GetAttack()
 	local def=tc:GetDefense()
 	local val=math.min(atk,def)
-	if Duel.Damage(tp,val,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) then
+	if Duel.Damage(tp,val,REASON_EFFECT)~=0 and c:IsRelateToChain(0) then
 		if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

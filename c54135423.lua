@@ -33,7 +33,7 @@ function c54135423.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c54135423.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 	local e1=Effect.CreateEffect(c)
@@ -64,7 +64,7 @@ function c54135423.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c54135423.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	if not tg or tg:FilterCount(Card.IsRelateToEffect,nil,e)~=1 then return end
+	if not tg or tg:FilterCount(Card.IsRelateToChain,nil,0)~=1 then return end
 	Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	local g=Duel.GetOperatedGroup()
 	if g:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then Duel.ShuffleDeck(tp) end

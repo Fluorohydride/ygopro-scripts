@@ -67,7 +67,7 @@ function c41782653.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c41782653.desfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,nil,1,tp,LOCATION_HAND+LOCATION_MZONE)
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToChain(ev) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
 end
@@ -75,7 +75,7 @@ function c41782653.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 	local g1=Duel.SelectMatchingCard(tp,c41782653.desfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,1,nil)
 	if g1:GetCount()>0 and Duel.Destroy(g1,REASON_EFFECT)~=0 then
-		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
+		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToChain(ev) then
 			Duel.Destroy(eg,REASON_EFFECT)
 		end
 	end

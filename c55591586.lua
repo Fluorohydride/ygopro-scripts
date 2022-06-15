@@ -69,7 +69,7 @@ function c55591586.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c55591586.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
@@ -111,7 +111,7 @@ function c55591586.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c55591586.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		if tc:IsExtraDeckMonster()
 			or Duel.SelectOption(tp,aux.Stringid(55591586,4),aux.Stringid(55591586,5))==0 then
 			Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)

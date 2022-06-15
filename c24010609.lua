@@ -56,7 +56,7 @@ function c24010609.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterEffect(e1,tp)
 	Duel.RegisterFlagEffect(tp,24010610,RESET_PHASE+PHASE_END,0,1)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	Duel.BreakEffect()
 	Duel.SendtoGrave(tc,REASON_EFFECT)
 end

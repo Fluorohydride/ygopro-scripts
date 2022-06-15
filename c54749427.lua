@@ -25,7 +25,7 @@ function c54749427.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c54749427.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or not c:IsPosition(POS_FACEUP_DEFENSE) then return end
+	if not c:IsRelateToChain(0) or not c:IsPosition(POS_FACEUP_DEFENSE) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Draw(p,d,REASON_EFFECT)
 end

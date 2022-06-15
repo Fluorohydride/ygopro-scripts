@@ -26,7 +26,7 @@ end
 function c57115864.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateAttack()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 		local g=Duel.SelectMatchingCard(tp,c57115864.filter,tp,LOCATION_MZONE,0,1,1,nil)
 		local ac=g:GetFirst()

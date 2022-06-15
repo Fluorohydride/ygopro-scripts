@@ -46,9 +46,9 @@ function c42444868.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,1000)
 end
 function c42444868.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return aux.ndcon(tp,re) end
+	if chk==0 then return aux.ndcon(tp,re,ev) end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsRelateToChain(ev) then
 		Duel.SetOperationInfo(0,CATEGORY_TODECK,eg,1,0,0)
 	end
 end
@@ -59,7 +59,7 @@ function c42444868.spfilter(c,e,tp)
 end
 function c42444868.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ec=re:GetHandler()
-	if Duel.NegateActivation(ev) and ec:IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and ec:IsRelateToChain(ev) then
 		ec:CancelToGrave()
 		if Duel.SendtoDeck(ec,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and ec:IsLocation(LOCATION_DECK+LOCATION_EXTRA) then
 			local g=Duel.GetMatchingGroup(c42444868.spfilter,tp,LOCATION_DECK+LOCATION_EXTRA,0,nil,e,tp)

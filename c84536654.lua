@@ -28,7 +28,7 @@ function c84536654.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c84536654.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	local code=tc:GetCode()
 	local lv=tc:GetOriginalLevel()
 	if Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)==0 then return end

@@ -47,7 +47,7 @@ function c77515704.thtg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c77515704.thop1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
+	if tc:IsRelateToChain(0) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,c77515704.thfilter2,tp,LOCATION_DECK,0,1,1,nil)
 		if g:GetCount()>0 then
@@ -70,7 +70,7 @@ function c77515704.thtg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c77515704.thop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
+	if tc:IsRelateToChain(0) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RTOHAND)
 		local g=Duel.SelectMatchingCard(tp,c77515704.thfilter3,tp,0,LOCATION_ONFIELD,1,1,nil)
 		if g:GetCount()>0 then

@@ -71,7 +71,7 @@ end
 function c97489701.naop(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.NegateAttack()
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0 then
+	if c:IsRelateToChain(0) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0 then
 		c:RegisterFlagEffect(97489701,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 	end
 end
@@ -84,6 +84,6 @@ function c97489701.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c97489701.spop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end

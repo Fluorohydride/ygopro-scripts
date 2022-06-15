@@ -32,7 +32,7 @@ function c85457355.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c85457355.lvfilter(chkc) and chkc~=e:GetHandler() end
 	local lv=e:GetHandler():GetLevel()
 	if chk==0 then return Duel.IsExistingTarget(c85457355.lvfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,e:GetHandler(),lv)
-		and e:GetHandler():IsLevelAbove(1) and e:GetHandler():IsRelateToEffect(e) end
+		and e:GetHandler():IsLevelAbove(1) and e:GetHandler():IsRelateToChain(0) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TARGET)
 	local g=Duel.SelectTarget(tp,c85457355.lvfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,e:GetHandler(),lv)
 	local rec=g:GetFirst():GetLevel()*200
@@ -41,7 +41,7 @@ end
 function c85457355.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local lv=tc:GetLevel()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

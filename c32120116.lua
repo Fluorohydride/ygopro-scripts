@@ -20,7 +20,7 @@ function c32120116.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function c32120116.filter2(c,e,tp)
-	return c:IsSummonPlayer(tp) and c:IsRelateToEffect(e)
+	return c:IsSummonPlayer(tp) and c:IsRelateToChain(0)
 end
 function c32120116.rmfilter(c)
 	return c:IsRace(RACE_ZOMBIE) and c:IsAbleToRemove()

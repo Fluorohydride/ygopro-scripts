@@ -36,9 +36,9 @@ function c15936370.pentg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c15936370.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		Duel.MoveToField(c,tp,1-tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

@@ -50,7 +50,7 @@ function c42160203.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		e1:SetValue(0)
 		tc:RegisterEffect(e1)
-		if c:IsRelateToEffect(e) and c:IsFaceup() then
+		if c:IsRelateToChain(0) and c:IsFaceup() then
 			local e2=Effect.CreateEffect(c)
 			e2:SetType(EFFECT_TYPE_SINGLE)
 			e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

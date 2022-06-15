@@ -43,7 +43,7 @@ function c22866836.operation1(e,tp,eg,ep,ev,re,r,rp)
 	local ex2,dg=Duel.GetOperationInfo(0,CATEGORY_DESTROY)
 	local pc=pg:GetFirst()
 	local dc=dg:GetFirst()
-	if pc:IsRelateToEffect(e) and dc:IsRelateToEffect(e)
+	if pc:IsRelateToChain(0) and dc:IsRelateToChain(0)
 		and pc:IsControler(tp)
 		and Duel.ChangePosition(pc,POS_FACEUP_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)~=0
 		and dc:IsControler(1-tp) then
@@ -70,7 +70,7 @@ function c22866836.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local ex2,dg=Duel.GetOperationInfo(0,CATEGORY_DESTROY)
 	local pc=pg:GetFirst()
 	local dc=dg:GetFirst()
-	if pc:IsRelateToEffect(e) and dc:IsRelateToEffect(e)
+	if pc:IsRelateToChain(0) and dc:IsRelateToChain(0)
 		and pc:IsControler(tp)
 		and Duel.ChangePosition(pc,POS_FACEUP_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)~=0
 		and dc:IsControler(1-tp) then

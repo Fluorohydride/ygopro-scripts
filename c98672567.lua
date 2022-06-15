@@ -44,7 +44,7 @@ function c98672567.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c98672567.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	if not tg or tg:FilterCount(Card.IsRelateToEffect,nil,e)~=3 then return end
+	if not tg or tg:FilterCount(Card.IsRelateToChain,nil,0)~=3 then return end
 	Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	local g=Duel.GetOperatedGroup()
 	if g:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then Duel.ShuffleDeck(tp) end

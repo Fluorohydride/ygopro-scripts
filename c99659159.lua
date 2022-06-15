@@ -46,7 +46,7 @@ end
 function c99659159.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or not tc:IsControler(tp) then return end
+	if tc:IsFacedown() or not tc:IsRelateToChain(0) or not tc:IsControler(tp) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local sg=Duel.SelectMatchingCard(tp,c99659159.filter,tp,LOCATION_HAND,0,1,1,nil)
 	if sg:GetCount()==0 then return end

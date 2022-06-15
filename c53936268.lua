@@ -43,7 +43,7 @@ function c53936268.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c53936268.operation(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():GetFlagEffect(53936268)==0 or not e:GetHandler():IsRelateToEffect(e) then return end
+	if e:GetHandler():GetFlagEffect(53936268)==0 or not e:GetHandler():IsRelateToChain(0) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local g=Duel.SelectMatchingCard(tp,c53936268.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then

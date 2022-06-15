@@ -60,7 +60,7 @@ function c79016563.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc1=g:GetFirst()
 	local tc2=g:GetNext()
-	if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and tc2:IsFaceup() and tc2:IsRelateToEffect(e) then
+	if tc1:IsFaceup() and tc1:IsRelateToChain(0) and tc2:IsFaceup() and tc2:IsRelateToChain(0) then
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(79016563,2))
 		local sg=g:Select(tp,1,1,nil)
 		local atk=sg:GetFirst():GetAttack()

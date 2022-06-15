@@ -33,7 +33,7 @@ end
 function c18514525.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local atk=c:GetAttack()
-	if not c:IsRelateToEffect(e) or atk<1000 then return end
+	if not c:IsRelateToChain(0) or atk<1000 then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)
@@ -99,7 +99,7 @@ end
 function c18514525.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local g=tg:Filter(Card.IsRelateToEffect,nil,e)
+	local g=tg:Filter(Card.IsRelateToChain,nil,0)
 	if g:GetCount()==0 or ft<=0 or (g:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133)) then return end
 	if ft<g:GetCount() then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

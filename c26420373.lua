@@ -52,7 +52,7 @@ function c26420373.sccost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c26420373.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local ct=e:GetLabel()
 	local sel=0
 	if c:GetLeftScale()==1 then
@@ -94,7 +94,7 @@ function c26420373.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c26420373.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

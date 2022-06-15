@@ -49,7 +49,7 @@ function c52904476.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,LOCATION_HAND,0,1,1,nil)
 	if #g==0 then return end
 	local tc=Duel.GetFirstTarget()
-	if Duel.Destroy(g,REASON_EFFECT)~=0 and tc:IsRelateToEffect(e)
+	if Duel.Destroy(g,REASON_EFFECT)~=0 and tc:IsRelateToChain(0)
 		and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE) then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
@@ -89,7 +89,7 @@ function c52904476.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c52904476.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

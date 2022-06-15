@@ -46,7 +46,7 @@ function c78527720.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0
 		and Duel.IsEnvironment(72283691,PLAYER_ALL,LOCATION_FZONE) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and Duel.IsExistingMatchingCard(c78527720.efilter,tp,LOCATION_DECK,0,1,nil,c)
-		and c:IsRelateToEffect(e) and c:IsFaceup() and Duel.SelectYesNo(tp,aux.Stringid(78527720,1)) then
+		and c:IsRelateToChain(0) and c:IsFaceup() and Duel.SelectYesNo(tp,aux.Stringid(78527720,1)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local eqg=Duel.SelectMatchingCard(tp,c78527720.efilter,tp,LOCATION_DECK,0,1,1,nil,c)
@@ -77,8 +77,8 @@ function c78527720.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	local sc=g:GetNext()
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e)
-		or sc:IsFacedown() or not sc:IsRelateToEffect(e) then return end
+	if tc:IsFacedown() or not tc:IsRelateToChain(0)
+		or sc:IsFacedown() or not sc:IsRelateToChain(0) then return end
 	local ec=e:GetLabelObject()
 	if tc==ec then tc=sc end
 	Duel.Equip(tp,ec,tc)

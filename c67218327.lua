@@ -41,7 +41,7 @@ function c67218327.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c67218327.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local lg=Duel.GetMatchingGroup(c67218327.lkfilter,tp,LOCATION_MZONE,0,nil)
 	local zone=0
 	for tc in aux.Next(lg) do
@@ -49,7 +49,7 @@ function c67218327.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if zone~=0 and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP,zone)~=0 then
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		end
 	end

@@ -71,7 +71,7 @@ function c32986898.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c32986898.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		if Duel.Destroy(tc,REASON_EFFECT)~=0 and e:GetHandler():GetFlagEffect(32986898)~=0 then
 			Duel.BreakEffect()
 			local atk=tc:GetBaseAttack()

@@ -46,9 +46,9 @@ function c9349094.ovtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c9349094.ovop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.Overlay(c,Group.FromCards(tc))
 	end
 end
@@ -62,13 +62,13 @@ function c9349094.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 		return c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT) and c:GetOverlayGroup():IsExists(Card.IsType,1,nil,typ)
 	end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToChain(ev) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
 end
 function c9349094.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or not c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT) then return end
+	if not c:IsRelateToChain(0) or not c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT) then return end
 	local typ=bit.band(re:GetActiveType(),TYPE_MONSTER+TYPE_SPELL+TYPE_TRAP)
 	local og=e:GetHandler():GetOverlayGroup():Filter(Card.IsType,nil,typ)
 	if og:GetCount()<=0 then return end
@@ -76,7 +76,7 @@ function c9349094.negop(e,tp,eg,ep,ev,re,r,rp)
 	local g=og:Select(tp,1,1,nil)
 	if g:GetCount()>0 and Duel.SendtoGrave(g,REASON_EFFECT)>0 then
 		Duel.RaiseSingleEvent(c,EVENT_DETACH_MATERIAL,e,0,0,0,0)
-		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
+		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToChain(ev) then
 			Duel.Destroy(eg,REASON_EFFECT)
 		end
 	end

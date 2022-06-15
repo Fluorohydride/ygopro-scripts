@@ -61,7 +61,7 @@ function c39354437.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c39354437.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetCode(EFFECT_INDESTRUCTABLE_COUNT)

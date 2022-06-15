@@ -28,7 +28,7 @@ end
 function c8955148.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) then
 		local g=Group.FromCards(c,tc)
 		if Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)==0 then return end
 		Duel.ShuffleDeck(tp)

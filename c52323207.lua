@@ -28,7 +28,7 @@ function c52323207.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c52323207.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end
@@ -41,7 +41,7 @@ function c52323207.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c52323207.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

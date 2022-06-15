@@ -30,7 +30,7 @@ function c34989413.ractg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c34989413.racop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local lg=c:GetLinkedGroup()
 	local g=Duel.GetMatchingGroup(c34989413.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,lg)
 	local tc=g:GetFirst()
@@ -53,7 +53,7 @@ function c34989413.atttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c34989413.attop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local lg=c:GetLinkedGroup()
 	local g=Duel.GetMatchingGroup(c34989413.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,lg)
 	local tc=g:GetFirst()

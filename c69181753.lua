@@ -24,7 +24,7 @@ function c69181753.hsptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c69181753.hspop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local a=Duel.GetAttacker()
 		if a:IsAttackable() and not a:IsImmuneToEffect(e) then
 			local e1=Effect.CreateEffect(c)

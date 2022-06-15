@@ -36,7 +36,7 @@ end
 function c70546737.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e)
+	if c:IsRelateToChain(0) and c:IsFaceup() and tc:IsRelateToChain(0)
 		and (not tc:IsLocation(LOCATION_MZONE) or tc:IsFaceup()) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -58,7 +58,7 @@ function c70546737.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c70546737.desop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=Duel.GetFirstTarget()
-	if rc:IsRelateToEffect(e) then
+	if rc:IsRelateToChain(0) then
 		Duel.Destroy(rc,REASON_EFFECT)
 	end
 end

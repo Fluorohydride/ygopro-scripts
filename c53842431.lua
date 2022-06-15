@@ -65,7 +65,7 @@ function c53842431.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c53842431.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.Destroy(c,REASON_EFFECT)~=0 then
+	if c:IsRelateToChain(0) and Duel.Destroy(c,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,c53842431.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 		if g:GetCount()>0 then
@@ -100,7 +100,7 @@ end
 function c53842431.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and c:IsFaceup() and c:IsRelateToChain(0) then
 		local atk=tc:GetBaseAttack()
 		if atk<0 then atk=0 end
 		local e1=Effect.CreateEffect(c)

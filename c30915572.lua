@@ -28,10 +28,10 @@ function c30915572.spoperation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.BreakEffect()
 		if tc:IsType(TYPE_MONSTER) then
 			Duel.Damage(1-tp,tc:GetLevel()*200,REASON_EFFECT)
-			if not c:IsRelateToEffect(e) then return end
+			if not c:IsRelateToChain(0) then return end
 			Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 		else
-			if c:IsRelateToEffect(e) then Duel.Destroy(c,REASON_EFFECT) end
+			if c:IsRelateToChain(0) then Duel.Destroy(c,REASON_EFFECT) end
 		end
 	end
 end

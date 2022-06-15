@@ -45,7 +45,7 @@ function c42378577.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c42378577.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -61,7 +61,7 @@ function c42378577.pentg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c42378577.penop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.MoveToField(tc,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

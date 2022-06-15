@@ -24,7 +24,7 @@ function c49776811.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c49776811.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		c:AddCounter(0x5f,1)
 		local ct=c:GetCounter(0x5f)
 		local dg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_DECK,0,nil,TYPE_MONSTER)

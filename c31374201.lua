@@ -56,7 +56,7 @@ function c31374201.spop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=Duel.SelectMatchingCard(tp,c31374201.spfilter1,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,attr)
 	local sc=sg:GetFirst()
-	if sc and Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)~=0 and sc:IsFaceup() and c:IsRelateToEffect(e) and c:IsControler(tp) then
+	if sc and Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)~=0 and sc:IsFaceup() and c:IsRelateToChain(0) and c:IsControler(tp) then
 		if not Duel.Equip(tp,c,sc,false) then return end
 		--equip limit
 		local e1=Effect.CreateEffect(c)

@@ -50,7 +50,7 @@ function c70914287.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c70914287.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -78,7 +78,7 @@ function c70914287.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c70914287.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SendtoHand(c,nil,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_HAND)
+	if c:IsRelateToChain(0) and Duel.SendtoHand(c,nil,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_HAND)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>=5 and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c70914287.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil,e,tp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

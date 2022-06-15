@@ -31,7 +31,7 @@ end
 function c5168381.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local g=Duel.GetMatchingGroup(c5168381.tgfilter,tp,LOCATION_DECK,0,nil)
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)>0 and g:GetCount()>0
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)>0 and g:GetCount()>0
 		and Duel.SelectYesNo(tp,aux.Stringid(5168381,0)) then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)

@@ -17,7 +17,7 @@ end
 function c22747316.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsRelateToChain(ev) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
 end
@@ -26,7 +26,7 @@ function c22747316.filter(c,code)
 end
 function c22747316.activate(e,tp,eg,ep,ev,re,r,rp)
 	local code=re:GetHandler():GetCode()
-	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)~=0 then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToChain(ev) and Duel.Destroy(eg,REASON_EFFECT)~=0 then
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c22747316.filter),tp,LOCATION_GRAVE,0,nil,code)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(22747316,0)) then
 			Duel.BreakEffect()

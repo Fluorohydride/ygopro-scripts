@@ -39,7 +39,7 @@ end
 function c58066722.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		tc:AddCounter(0x100e,2)
 	end
 end
@@ -55,7 +55,7 @@ function c58066722.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c58066722.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

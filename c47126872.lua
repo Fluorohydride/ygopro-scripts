@@ -34,8 +34,8 @@ function c47126872.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c47126872.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) then
-		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and not tc:IsType(TYPE_TOKEN) and e:GetHandler():IsRelateToEffect(e) then
+	if tc and tc:IsFaceup() and tc:IsRelateToChain(0) then
+		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and not tc:IsType(TYPE_TOKEN) and e:GetHandler():IsRelateToChain(0) then
 			e:SetLabelObject(tc)
 			tc:RegisterFlagEffect(47126872,RESET_EVENT+RESETS_STANDARD,0,1)
 		end
@@ -58,7 +58,7 @@ function c47126872.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47126872.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	if tc:IsType(TYPE_MONSTER) then
 		Duel.SpecialSummon(tc,0,tp,1-tp,false,false,POS_FACEDOWN_DEFENSE)
 	else

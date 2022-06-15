@@ -31,7 +31,7 @@ end
 function c51611041.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local race,attr=e:GetLabel()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,51611042,0,TYPES_TOKEN_MONSTER,0,0,1,race,attr) then
 		Duel.BreakEffect()

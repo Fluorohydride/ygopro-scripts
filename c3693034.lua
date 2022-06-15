@@ -46,8 +46,8 @@ function c3693034.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	if tc==hc then tc=g:GetNext() end
-	if hc:IsRelateToEffect(e) and hc:IsControler(tp) and Duel.ChangePosition(hc,POS_FACEUP_DEFENSE,POS_FACEUP_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)~=0
-		and tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsDisabled() and tc:IsControler(1-tp) then
+	if hc:IsRelateToChain(0) and hc:IsControler(tp) and Duel.ChangePosition(hc,POS_FACEUP_DEFENSE,POS_FACEUP_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)~=0
+		and tc:IsRelateToChain(0) and tc:IsFaceup() and not tc:IsDisabled() and tc:IsControler(1-tp) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -80,7 +80,7 @@ function c3693034.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c3693034.posop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE,POS_FACEUP_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)
 	end
 end

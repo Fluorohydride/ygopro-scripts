@@ -45,10 +45,10 @@ function c75380687.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,g:GetCount(),PLAYER_ALL,LOCATION_GRAVE)
 end
 function c75380687.operation(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	local ct=Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 	local c=e:GetHandler()
-	if ct>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if ct>0 and c:IsFaceup() and c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
@@ -70,7 +70,7 @@ function c75380687.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c75380687.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_SPELLCASTER) then
+	if tc:IsRelateToChain(0) and tc:IsRace(RACE_SPELLCASTER) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

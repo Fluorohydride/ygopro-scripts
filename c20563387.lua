@@ -39,9 +39,9 @@ function c20563387.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c20563387.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:GetControler()~=tp or tc:IsFacedown() or not tc:IsRelateToEffect(e) then
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or tc:GetControler()~=tp or tc:IsFacedown() or not tc:IsRelateToChain(0) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
@@ -89,7 +89,7 @@ function c20563387.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c20563387.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	end
 end

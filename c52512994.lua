@@ -47,7 +47,7 @@ function c52512994.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(Card.IsAbleToDeck,tp,LOCATION_MZONE,LOCATION_MZONE,aux.ExceptThisCard(e))
 	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	local rt=Duel.GetOperatedGroup():FilterCount(c52512994.rfilter,nil)
-	if rt>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if rt>0 and c:IsFaceup() and c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)

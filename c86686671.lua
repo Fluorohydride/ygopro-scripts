@@ -67,7 +67,7 @@ function c86686671.activate(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if op~=0 then
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			if op==2 and res~=0 then Duel.BreakEffect() end
 			Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		end

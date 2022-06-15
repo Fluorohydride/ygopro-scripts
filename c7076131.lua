@@ -24,7 +24,7 @@ function c7076131.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c7076131.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c7076131.filter,tp,LOCATION_DECK,0,1,1,nil,tc:GetCode())
 		Duel.SendtoGrave(g,REASON_EFFECT)

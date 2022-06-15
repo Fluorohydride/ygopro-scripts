@@ -59,7 +59,7 @@ function c83546647.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 then return end
 	local tc1=Duel.GetFirstTarget()
-	if not tc1:IsRelateToEffect(e) or not tc1:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
+	if not tc1:IsRelateToChain(0) or not tc1:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
 	local tc2=Duel.GetFirstMatchingCard(c83546647.spfilter2,tp,LOCATION_DECK,0,nil,e,tp,tc1:GetCode())
 	if tc2 then
 		Duel.SpecialSummonStep(tc1,0,tp,tp,false,false,POS_FACEUP)

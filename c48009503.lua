@@ -17,7 +17,7 @@ function c48009503.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c48009503.filter(c,e,tp)
-	return c:IsFaceup() and c:IsControler(1-tp) and c:IsLevelBelow(4) and (not e or c:IsRelateToEffect(e))
+	return c:IsFaceup() and c:IsControler(1-tp) and c:IsLevelBelow(4) and (not e or c:IsRelateToChain(0))
 end
 function c48009503.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():CheckRemoveOverlayCard(tp,1,REASON_COST) end

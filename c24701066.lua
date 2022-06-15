@@ -76,7 +76,7 @@ end
 function c24701066.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) then
 		Duel.Overlay(c,tc)
 	end
 end
@@ -94,7 +94,7 @@ function c24701066.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c24701066.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end

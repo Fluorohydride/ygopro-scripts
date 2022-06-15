@@ -48,9 +48,9 @@ function c53656677.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateAttack()
 	local c=e:GetHandler()
 	if not c:IsLocation(LOCATION_SZONE) then return end
-	if not c:IsRelateToEffect(e) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
+	if not c:IsRelateToChain(0) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Equip(tp,c,tc)
 		local a=Duel.GetAttacker()
 		local d=Duel.GetAttackTarget()

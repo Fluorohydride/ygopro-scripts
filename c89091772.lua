@@ -33,7 +33,7 @@ function c89091772.sumop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c89091772.filter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	if g:GetCount()==0 then return end
 	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
-	if c:IsRelateToEffect(e) and c:IsPosition(POS_FACEUP_ATTACK) then
+	if c:IsRelateToChain(0) and c:IsPosition(POS_FACEUP_ATTACK) then
 		Duel.BreakEffect()
 		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end

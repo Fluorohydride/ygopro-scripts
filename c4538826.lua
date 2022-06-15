@@ -67,7 +67,7 @@ end
 function c4538826.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and Duel.Destroy(c,REASON_EFFECT)~=0 and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and Duel.Destroy(c,REASON_EFFECT)~=0 and tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

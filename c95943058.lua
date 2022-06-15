@@ -32,7 +32,7 @@ function c95943058.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	--extra atk
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
@@ -65,6 +65,6 @@ function c95943058.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c95943058.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_ATTACK)
 end

@@ -19,7 +19,7 @@ function c18444902.damcon(e,tp,eg,ep,ev,re,r,rp)
 	return de and dp~=tp and re:IsHasType(EFFECT_TYPE_ACTIVATE) and rp==tp
 end
 function c18444902.damcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e)
+	if chk==0 then return e:GetHandler():IsRelateToChain(0)
 		and e:GetHandler():IsAbleToGraveAsCost() end
 	Duel.SendtoGrave(e:GetHandler(),REASON_COST)
 end

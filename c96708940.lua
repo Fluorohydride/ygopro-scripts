@@ -33,9 +33,9 @@ function c96708940.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c96708940.opetation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local at=Duel.GetAttackTarget()
-	if at:IsRelateToEffect(e) then
+	if at:IsRelateToChain(0) then
 		Duel.ChangePosition(at,POS_FACEUP_ATTACK)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

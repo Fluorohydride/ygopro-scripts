@@ -51,7 +51,7 @@ function c8581705.disop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	local dc=Duel.TossDice(tp,1)
 	if dc~=2 and dc~=5 then return end
-	if Duel.NegateEffect(ev,true) and rc:IsRelateToEffect(re) then
+	if Duel.NegateEffect(ev,true) and rc:IsRelateToChain(ev) then
 		Duel.Destroy(rc,REASON_EFFECT)
 	end
 end
@@ -66,7 +66,7 @@ function c8581705.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c8581705.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetType(EFFECT_TYPE_SINGLE)

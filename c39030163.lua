@@ -46,11 +46,11 @@ function c39030163.mttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetTargetCard(tg)
 end
 function c39030163.matfilter(c,e)
-	return c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e)
+	return c:IsRelateToChain(0) and not c:IsImmuneToEffect(e)
 end
 function c39030163.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c39030163.matfilter,nil,e)
 	if g:GetCount()>0 then
 		Duel.Overlay(c,g)
@@ -73,7 +73,7 @@ function c39030163.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c39030163.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

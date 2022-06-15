@@ -38,7 +38,7 @@ function c52558805.atkfilter(c)
 end
 function c52558805.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:GetOverlayCount()==0 then return end
+	if not tc:IsRelateToChain(0) or tc:GetOverlayCount()==0 then return end
 	tc:RemoveOverlayCard(tp,1,1,REASON_EFFECT)
 	local g=Duel.GetMatchingGroup(c52558805.atkfilter,tp,LOCATION_MZONE,0,nil)
 	local tc=g:GetFirst()

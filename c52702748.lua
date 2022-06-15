@@ -28,7 +28,7 @@ function c52702748.ctltg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c52702748.ctlop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	Duel.GetControl(c,1-tp)
 end
 function c52702748.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -40,7 +40,7 @@ function c52702748.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c52702748.rmop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	end
 end

@@ -27,7 +27,7 @@ function c61850482.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.BreakEffect()
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	if Duel.SpecialSummonStep(tc,0,tp,tp,true,false,POS_FACEUP) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

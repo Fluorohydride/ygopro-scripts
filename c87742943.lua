@@ -32,7 +32,7 @@ function c87742943.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c87742943.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local atk=c:GetAttack()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local g=Duel.SelectMatchingCard(tp,c87742943.desfilter,tp,0,LOCATION_MZONE,1,1,nil,atk)

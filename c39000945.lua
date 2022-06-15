@@ -77,7 +77,7 @@ function c39000945.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c39000945.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
+	if not c:IsRelateToChain(0) or not c:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<2 or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c39000945.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
@@ -105,7 +105,7 @@ function c39000945.rthtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c39000945.rthop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local g=tg:Filter(Card.IsRelateToEffect,nil,e)
+	local g=tg:Filter(Card.IsRelateToChain,nil,0)
 	local ctable={}
 	for tc in aux.Next(g) do
 		if tc:IsControler(tp) then

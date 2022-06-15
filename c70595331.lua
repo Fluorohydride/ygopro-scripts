@@ -35,7 +35,7 @@ function c70595331.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc then
 		if Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==0 then return end
-		if c:IsFaceup() and c:IsRelateToEffect(e) then c:SetCardTarget(tc) end
+		if c:IsFaceup() and c:IsRelateToChain(0) then c:SetCardTarget(tc) end
 	end
 end
 function c70595331.desfilter(c,rc)

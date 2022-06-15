@@ -36,7 +36,7 @@ function c78621186.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c78621186.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local dam=tc:GetBaseAttack()
 		if dam<0 then dam=0 end
 		if Duel.Damage(1-tp,dam,REASON_EFFECT)==0 then return end

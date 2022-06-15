@@ -49,7 +49,7 @@ end
 function c45819647.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ct=Duel.GetMatchingGroupCount(c45819647.ctfilter,tp,LOCATION_ONFIELD+LOCATION_GRAVE,LOCATION_ONFIELD+LOCATION_GRAVE,nil)
-	if c:IsFaceup() and c:IsRelateToEffect(e) and ct>0 then
+	if c:IsFaceup() and c:IsRelateToChain(0) and ct>0 then
 		c:AddCounter(0x1,ct)
 	end
 end
@@ -77,7 +77,7 @@ function c45819647.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c45819647.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local zone=bit.band(e:GetHandler():GetLinkedZone(tp),0x1f)
 	if zone==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

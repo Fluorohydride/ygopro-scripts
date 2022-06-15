@@ -44,7 +44,7 @@ end
 function c5087128.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local lg=c:GetColumnGroup()
-	if c:IsRelateToEffect(e) and Duel.Destroy(c,REASON_EFFECT)>0 then
+	if c:IsRelateToChain(0) and Duel.Destroy(c,REASON_EFFECT)>0 then
 		local g=Duel.GetMatchingGroup(c5087128.desfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,lg)
 		if g:GetCount()==0 then return end
 		Duel.BreakEffect()

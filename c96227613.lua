@@ -67,7 +67,7 @@ function c96227613.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c96227613.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local g=Duel.GetFieldGroup(tp,LOCATION_PZONE,0)
 	if g:GetCount()<2 then return end
 	if Duel.Destroy(g,REASON_EFFECT)==2 then
@@ -99,7 +99,7 @@ end
 function c96227613.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) or not tc:IsRelateToChain(0) then return end
 	local dg=Group.FromCards(c,tc)
 	if Duel.Destroy(dg,REASON_EFFECT)==2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -147,7 +147,7 @@ function c96227613.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c96227613.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

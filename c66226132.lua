@@ -27,7 +27,7 @@ function c66226132.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c66226132.operation(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	tc:RegisterFlagEffect(66226132,RESET_EVENT+0x1220000+RESET_PHASE+PHASE_END,EFFECT_FLAG_CLIENT_HINT,1,0,aux.Stringid(66226132,1))
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

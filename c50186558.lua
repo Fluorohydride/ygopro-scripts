@@ -45,7 +45,7 @@ function c50186558.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c50186558.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	local ct=g:GetSum(Card.GetLink)
 	local tc=Duel.GetFirstTarget()
-	if ct>0 and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if ct>0 and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

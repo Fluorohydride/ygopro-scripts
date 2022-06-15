@@ -32,7 +32,7 @@ function c12423762.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c12423762.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c12423762.indcost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -41,7 +41,7 @@ function c12423762.indcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c12423762.indop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)

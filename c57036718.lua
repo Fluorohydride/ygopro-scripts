@@ -43,7 +43,7 @@ function c57036718.desop(e,tp,eg,ep,ev,re,r,rp)
 		else Duel.Destroy(tg,REASON_EFFECT) end
 	end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

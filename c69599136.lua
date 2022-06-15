@@ -30,7 +30,7 @@ function c69599136.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetCard(tc)
 end
 function c69599136.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	if Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)~=0 then
 		local og=Duel.GetOperatedGroup()
 		local tc=og:GetFirst()

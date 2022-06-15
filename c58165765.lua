@@ -46,7 +46,7 @@ function c58165765.limit(c)
 end
 function c58165765.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsFacedown() then
+	if tc and tc:IsRelateToChain(0) and tc:IsFacedown() then
 		Duel.ConfirmCards(tp,tc)
 		Duel.BreakEffect()
 		if tc:IsAbleToDeck() then

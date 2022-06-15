@@ -53,10 +53,10 @@ function c84332527.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c84332527.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsRelateToEffect(e)
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsRelateToChain(0)
 		and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
+		if tc:IsRelateToChain(0) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
 			Duel.Equip(tp,tc,c,false)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
@@ -88,7 +88,7 @@ function c84332527.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c84332527.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local tg=g:Filter(Card.IsRelateToChain,nil,0)
 	if tg:GetCount()>0 then
 		Duel.Destroy(tg,REASON_EFFECT)
 	end

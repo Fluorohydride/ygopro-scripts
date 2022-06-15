@@ -39,7 +39,7 @@ end
 function c47021196.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -81,7 +81,7 @@ end
 function c47021196.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 then
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			Duel.Destroy(tc,REASON_EFFECT)
 		end
 	else

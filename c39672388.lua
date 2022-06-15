@@ -22,7 +22,7 @@ function c39672388.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c39672388.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local opt=Duel.SelectOption(tp,aux.Stringid(39672388,1),aux.Stringid(39672388,2))
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)

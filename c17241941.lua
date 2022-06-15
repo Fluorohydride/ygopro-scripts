@@ -76,7 +76,7 @@ function c17241941.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c17241941.posop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local tg=g:Filter(Card.IsRelateToChain,nil,0)
 	if tg:GetCount()>0 then
 		Duel.ChangePosition(tg,POS_FACEUP_DEFENSE,POS_FACEDOWN_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)
 	end
@@ -87,7 +87,7 @@ function c17241941.postg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c17241941.posop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.ChangePosition(c,POS_FACEUP_DEFENSE,POS_FACEDOWN_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)
 	end
 end
@@ -103,7 +103,7 @@ function c17241941.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c17241941.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

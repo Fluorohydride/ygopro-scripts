@@ -72,7 +72,7 @@ end
 function c72402069.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local g=Duel.GetMatchingGroup(c72402069.desfilter2,tp,0,LOCATION_MZONE,nil,tc:GetAttack())
 		if g:GetCount()==0 then return end
 		local oc=Duel.Destroy(g,REASON_EFFECT)
@@ -115,7 +115,7 @@ function c72402069.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c72402069.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

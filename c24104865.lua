@@ -73,7 +73,7 @@ function c24104865.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,dg,dg:GetCount(),0,0)
 end
 function c24104865.sfilter(c,e,tp)
-	return c:IsRelateToEffect(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRelateToChain(0) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
 function c24104865.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)

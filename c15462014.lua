@@ -60,7 +60,7 @@ function c15462014.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c15462014.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		local tg=eg:Filter(c15462014.egfilter,nil)
 		for p=0,1 do

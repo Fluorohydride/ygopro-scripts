@@ -53,7 +53,7 @@ function c48654323.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,c48654323.atktgfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,g)
 end
 function c48654323.atkfilter(c,e)
-	return c:IsRelateToEffect(e) and c:IsFaceup()
+	return c:IsRelateToChain(0) and c:IsFaceup()
 end
 function c48654323.atkupfilter(c,g)
 	return g:FilterCount(c48654323.atktgfilter2,c)>0

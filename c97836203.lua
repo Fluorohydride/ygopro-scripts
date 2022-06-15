@@ -53,7 +53,7 @@ function c97836203.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c97836203.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+	if c:IsFacedown() or not c:IsRelateToChain(0) then return end
 	Duel.NegateSummon(eg)
 	Duel.Destroy(eg,REASON_EFFECT)
 end
@@ -73,7 +73,7 @@ function c97836203.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c97836203.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,true,POS_FACEUP)
 	end
 end

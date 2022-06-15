@@ -48,7 +48,7 @@ function c96693371.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c96693371.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.MoveToField(c,tp,tp,LOCATION_SZONE,POS_FACEUP,true) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetCode(EFFECT_CHANGE_TYPE)
@@ -77,7 +77,7 @@ function c96693371.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c96693371.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c96693371.atkcon(e,tp,eg,ep,ev,re,r,rp)

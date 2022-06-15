@@ -38,7 +38,7 @@ function c7817703.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c7817703.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if e:GetHandler():IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Equip(tp,e:GetHandler(),tc)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetCategory(CATEGORY_DESTROY+CATEGORY_DAMAGE)
@@ -67,7 +67,7 @@ function c7817703.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c7817703.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local dam=c:GetEquipTarget():GetBaseAttack()
 		if Duel.Destroy(e:GetHandler(),REASON_EFFECT)==0 then return end
 		Duel.Damage(tp,dam,REASON_EFFECT)

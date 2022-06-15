@@ -41,7 +41,7 @@ end
 function c57043986.negop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and not tc:IsDisabled() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and not tc:IsDisabled() and tc:IsRelateToChain(0) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -69,7 +69,7 @@ function c57043986.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c57043986.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 then
+	if c:IsRelateToChain(0) and Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c57043986.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)

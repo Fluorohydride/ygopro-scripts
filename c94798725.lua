@@ -63,7 +63,7 @@ function c94798725.effop(e,tp,eg,ep,ev,re,r,rp)
 	if chk1 then
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end
-	if chk2 and c:IsRelateToEffect(e) then
+	if chk2 and c:IsRelateToChain(0) then
 		Duel.BreakEffect()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -90,7 +90,7 @@ function c94798725.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c94798725.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	local tc=tg:GetFirst()
 	while tc do
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)

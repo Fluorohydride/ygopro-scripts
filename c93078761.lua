@@ -28,7 +28,7 @@ function c93078761.activate(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ConfirmCards(1-tp,tc)
 		end
 		return
-	elseif c:IsRelateToEffect(e) then
+	elseif c:IsRelateToChain(0) then
 		local dice2=Duel.TossDice(tp,1)
 		if (dice2==1 or dice2==6) then
 			c:CancelToGrave()

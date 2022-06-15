@@ -40,7 +40,7 @@ function c84565800.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c84565800.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsType(TYPE_SPELL+TYPE_TRAP) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:IsType(TYPE_SPELL+TYPE_TRAP) then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	end
 end
@@ -56,7 +56,7 @@ end
 function c84565800.cpop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) and c:IsFaceup() and c:IsRelateToChain(0) then
 		local code=tc:GetCode()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

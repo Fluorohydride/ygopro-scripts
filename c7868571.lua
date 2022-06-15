@@ -35,7 +35,7 @@ end
 function c7868571.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 		local g=Duel.SelectMatchingCard(tp,c7868571.filter,tp,LOCATION_DECK,0,1,1,nil,false)
 		if g:GetCount()>0 then

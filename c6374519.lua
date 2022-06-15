@@ -35,7 +35,7 @@ function c6374519.spfilter(c,e,tp)
 end
 function c6374519.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 then
+	if tc:IsRelateToChain(0) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 then
 		local g=Duel.GetMatchingGroup(c6374519.spfilter,tp,LOCATION_HAND,0,nil,e,tp)
 		if #g>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(6374519,1)) then
 			Duel.BreakEffect()

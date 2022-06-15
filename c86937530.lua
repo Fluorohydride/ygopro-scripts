@@ -55,7 +55,7 @@ end
 function c86937530.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) or not tc:IsRelateToChain(0) then return end
 	if Duel.IsChainDisablable(0) and tc:IsFaceup() then
 		local g=Duel.GetMatchingGroup(c86937530.cfilter,tp,0,LOCATION_DECK+LOCATION_EXTRA,nil,tc:GetCode())
 		if g:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(86937530,2)) then

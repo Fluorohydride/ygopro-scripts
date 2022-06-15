@@ -56,7 +56,7 @@ function c71095768.checkop(e,tp,eg,ep,ev,re,r,rp)
 		local seq=Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_SEQUENCE)
 		local te=Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_EFFECT)
 		local tc=te:GetHandler()
-		if tc:IsRelateToEffect(te) then
+		if tc:IsRelateToChain(cid) then
 			if tc:IsControler(1) then seq=seq+16 end
 		else
 			if tc:IsPreviousControler(1) then seq=seq+16 end
@@ -141,7 +141,7 @@ function c71095768.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c71095768.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

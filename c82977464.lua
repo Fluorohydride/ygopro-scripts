@@ -49,7 +49,7 @@ function c82977464.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c82977464.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	local zone=0
 	local lg=Duel.GetFieldGroup(tp,0,LOCATION_MZONE)
 	for lc in aux.Next(lg) do
@@ -73,7 +73,7 @@ end
 function c82977464.mvop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) or not tc:IsControler(tp) then return end
+	if not tc:IsRelateToChain(0) or tc:IsImmuneToEffect(e) or not tc:IsControler(tp) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
 	local s=Duel.SelectDisableField(tp,1,LOCATION_MZONE,0,0)
 	local nseq=math.log(s,2)

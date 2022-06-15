@@ -42,7 +42,7 @@ function c13923256.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c13923256.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
+	if tc:IsRelateToChain(0) and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c13923256.thfilter),tp,LOCATION_GRAVE,0,1,1,nil,tc:GetCode())
 		if g:GetCount()>0 then
@@ -63,7 +63,7 @@ function c13923256.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c13923256.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

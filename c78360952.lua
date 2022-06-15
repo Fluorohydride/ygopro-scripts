@@ -41,7 +41,7 @@ function c78360952.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c78360952.spop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local cg=c:GetColumnGroup():Filter(Card.IsControler,nil,1-tp)
 		if #cg==0 then return end
 		Duel.BreakEffect()

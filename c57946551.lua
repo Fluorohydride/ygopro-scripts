@@ -38,7 +38,7 @@ end
 function s.activate1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if tc:IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
+	if tc:IsRelateToChain(0) and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and s.filter1(tc,tp) and tc:IsType(TYPE_MONSTER) then
 		if not Duel.Equip(tp,tc,c,false) then return end
 		tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD,0,0)

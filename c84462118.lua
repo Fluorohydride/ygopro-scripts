@@ -64,7 +64,7 @@ end
 function s.activate2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local lv=e:GetLabel()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and lv then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and lv then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_LEVEL)

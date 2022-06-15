@@ -26,7 +26,7 @@ end
 function c95905259.operation(e,tp,eg,ep,ev,re,r,rp)
 	local res=e:GetLabel()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFacedown() then
+	if tc:IsRelateToChain(0) and tc:IsFacedown() then
 		Duel.ConfirmCards(tp,tc)
 		if (res==0 and tc:IsType(TYPE_SPELL)) or (res==1 and tc:IsType(TYPE_TRAP)) then
 			local e1=Effect.CreateEffect(e:GetHandler())

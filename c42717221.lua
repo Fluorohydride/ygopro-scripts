@@ -69,7 +69,7 @@ function c42717221.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetLabel(c:GetFieldID())
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
-		if ct>0 and c:IsFaceup() and c:IsRelateToEffect(e) then
+		if ct>0 and c:IsFaceup() and c:IsRelateToChain(0) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)

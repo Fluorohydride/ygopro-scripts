@@ -37,7 +37,7 @@ function c59627393.operation(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
 	local at=Duel.GetAttackTarget()
 	if at:IsControler(tp) then a,at=at,a end
-	if a:IsFacedown() or not a:IsRelateToEffect(e) or not at:IsRelateToEffect(e) then return end
+	if a:IsFacedown() or not a:IsRelateToChain(0) or not at:IsRelateToChain(0) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)

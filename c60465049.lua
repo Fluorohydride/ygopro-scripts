@@ -60,7 +60,7 @@ function c60465049.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c60465049.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local tg=g:Filter(Card.IsRelateToChain,nil,0)
 	if tg:GetCount()>0 then
 		Duel.Remove(tg,POS_FACEUP,REASON_EFFECT)
 	end
@@ -70,7 +70,7 @@ function c60465049.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c60465049.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

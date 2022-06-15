@@ -43,10 +43,10 @@ function c20191720.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c20191720.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		end
 	end
@@ -66,7 +66,7 @@ function c20191720.thfilter(c)
 end
 function c20191720.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_EXTRA) then
+	if tc:IsRelateToChain(0) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_EXTRA) then
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c20191720.thfilter),tp,LOCATION_GRAVE,0,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(20191720,2)) then
 			Duel.BreakEffect()

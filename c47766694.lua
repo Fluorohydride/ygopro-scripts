@@ -33,7 +33,7 @@ function c47766694.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c47766694.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if tc and tc:IsFaceup() and tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		local dp=tc:GetControler()
 		local g=Duel.GetMatchingGroup(Card.IsSSetable,dp,LOCATION_HAND,0,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(dp,aux.Stringid(47766694,0)) then
@@ -61,7 +61,7 @@ function c47766694.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c47766694.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

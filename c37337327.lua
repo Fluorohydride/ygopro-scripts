@@ -49,7 +49,7 @@ function c37337327.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c37337327.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local mg=c:GetLinkedGroup()
 	local g=Duel.GetMatchingGroup(c37337327.scfilter,tp,LOCATION_EXTRA,0,nil,mg)
 	if g:GetCount()>0 then

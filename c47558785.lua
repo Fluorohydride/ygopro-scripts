@@ -20,7 +20,7 @@ function c47558785.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47558785.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:GetLeftScale()<=1 then return end
+	if not c:IsRelateToChain(0) or c:GetLeftScale()<=1 then return end
 	local dc=Duel.TossDice(tp,1)
 	local sch=math.min(c:GetLeftScale()-1,dc)
 	local e1=Effect.CreateEffect(c)

@@ -51,7 +51,7 @@ function c44190146.checkop(e,tp,eg,ep,ev,re,r,rp)
 	if cid>0 and (r&REASON_COST)>0 then
 		local te=Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_EFFECT)
 		local rc=te:GetHandler()
-		if rc:IsRelateToEffect(te) and c44190146[1][rc]~=nil then
+		if rc:IsRelateToChain(cid) and c44190146[1][rc]~=nil then
 			local dg=c44190146[1][rc]-rc:GetOverlayGroup()
 			if dg:IsExists(Card.IsType,1,nil,TYPE_NORMAL) then
 				c44190146[0][rc]=rc:GetFieldID()
@@ -138,8 +138,8 @@ function c44190146.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	if tc==rc then tc=g:GetNext() end
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)>0
-		and rc:IsRelateToEffect(e) and rc:IsFaceup() then
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)>0
+		and rc:IsRelateToChain(0) and rc:IsFaceup() then
 		Duel.Damage(1-tp,rc:GetRank()*300,REASON_EFFECT)
 	end
 end

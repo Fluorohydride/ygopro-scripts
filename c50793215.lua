@@ -61,7 +61,7 @@ function c50793215.thop(e,tp,eg,ep,ev,re,r,rp)
 				Duel.ConfirmCards(1-tp,sc)
 			end
 			local tc=Duel.GetFirstTarget()
-			if res~=0 and tc:IsRelateToEffect(e) then
+			if res~=0 and tc:IsRelateToChain(0) then
 				Duel.SendtoHand(tc,nil,REASON_EFFECT)
 			end
 		end
@@ -95,7 +95,7 @@ function c50793215.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c50793215.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

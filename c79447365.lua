@@ -41,7 +41,7 @@ end
 function c79447365.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or tc:IsFacedown() then return end
 	local lv=0
 	if tc:IsType(TYPE_XYZ) then
 		lv=tc:GetRank()

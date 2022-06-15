@@ -55,7 +55,7 @@ function c89785779.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc2=g:GetFirst()
 	if not tc2 then return end
 	local m=_G["c"..tc2:GetCode()]
-	if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and tc1:IsControler(1-tp) then
+	if tc1:IsFaceup() and tc1:IsRelateToChain(0) and tc1:IsControler(1-tp) then
 		m.equip_monster(tc2,tp,tc1)
 	end
 end
@@ -70,7 +70,7 @@ function c89785779.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetHandler(),1,0,0)
 end
 function c89785779.thop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		Duel.SendtoHand(e:GetHandler(),nil,REASON_EFFECT)
 	end
 end

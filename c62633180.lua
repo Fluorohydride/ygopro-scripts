@@ -20,7 +20,7 @@ function c62633180.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c62633180.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)>0 then
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)>0 then
 		Duel.BreakEffect()
 		Duel.DiscardDeck(1-tp,2,REASON_EFFECT)
 	end

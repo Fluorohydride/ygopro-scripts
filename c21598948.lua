@@ -38,7 +38,7 @@ function c21598948.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c21598948.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetAttacker()
-	if not a:IsRelateToEffect(e) then return end
+	if not a:IsRelateToChain(0) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_COIN)
 	local coin=Duel.AnnounceCoin(tp)
 	local res=Duel.TossCoin(tp,1)

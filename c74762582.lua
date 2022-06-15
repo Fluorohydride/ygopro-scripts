@@ -48,7 +48,7 @@ end
 function c74762582.disop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) then
 		local tc=Duel.GetFirstTarget()
-		if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+		if tc:IsFaceup() and tc:IsRelateToChain(0) then
 			Duel.BreakEffect()
 			Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
 		end
@@ -72,7 +72,7 @@ function c74762582.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c74762582.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc1=Duel.GetFirstTarget()
-	if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and Duel.ChangePosition(tc1,POS_FACEDOWN_DEFENSE)>0
+	if tc1:IsFaceup() and tc1:IsRelateToChain(0) and Duel.ChangePosition(tc1,POS_FACEDOWN_DEFENSE)>0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c74762582.spfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,1,1,nil,e,tp)

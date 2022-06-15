@@ -49,7 +49,7 @@ function c53184342.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c53184342.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c53184342.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
@@ -64,7 +64,7 @@ end
 function c53184342.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DISABLE)
@@ -109,9 +109,9 @@ function c53184342.eqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c53184342.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e):Filter(aux.NecroValleyFilter(c53184342.chkfilter),nil,tp)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0):Filter(aux.NecroValleyFilter(c53184342.chkfilter),nil,tp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
-	if c:IsFaceup() and c:IsRelateToEffect(e) and #g>0 and ft>0 then
+	if c:IsFaceup() and c:IsRelateToChain(0) and #g>0 and ft>0 then
 		local sg=nil
 		if #g>ft then
 			sg=g:Select(tp,ft,ft,nil)

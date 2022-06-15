@@ -24,7 +24,7 @@ end
 function c65384188.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc1,tc2=Duel.GetFirstTarget()
-	if tc1:IsRelateToEffect(e) and tc1:IsFaceup() and tc2:IsRelateToEffect(e) and tc2:IsFaceup() then
+	if tc1:IsRelateToChain(0) and tc1:IsFaceup() and tc2:IsRelateToChain(0) and tc2:IsFaceup() then
 		local a=0
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

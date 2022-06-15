@@ -91,7 +91,7 @@ function c76075139.ptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c76075139.pop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local zone=1<<c:GetSequence()
 	if e:GetLabel()==0 then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP,zone)
@@ -127,9 +127,9 @@ end
 function c76075139.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
+	if tc:IsRelateToChain(0) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
 		local dam=Duel.Damage(1-tp,tc:GetAttack(),REASON_EFFECT)
-		if dam>0 and c:IsRelateToEffect(e) and c:IsFaceup() then
+		if dam>0 and c:IsRelateToChain(0) and c:IsFaceup() then
 			Duel.BreakEffect()
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

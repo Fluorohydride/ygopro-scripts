@@ -76,7 +76,7 @@ function c89320376.postg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c89320376.posop1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFacedown() then
+	if tc:IsRelateToChain(0) and tc:IsFacedown() then
 		local pos1=0
 		if not tc:IsPosition(POS_FACEUP_ATTACK) then pos1=pos1+POS_FACEUP_ATTACK end
 		if not tc:IsPosition(POS_FACEUP_DEFENSE) then pos1=pos1+POS_FACEUP_DEFENSE end
@@ -108,7 +108,7 @@ function c89320376.postg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c89320376.posop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
 	end
 end

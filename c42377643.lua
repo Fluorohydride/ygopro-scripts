@@ -43,9 +43,9 @@ function c42377643.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c42377643.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local tc=e:GetLabelObject()
-		if not tc:IsRelateToEffect(e) then return end
+		if not tc:IsRelateToChain(0) then return end
 		if tc:IsCode(24639891) then
 			if tc:IsCanBeSpecialSummoned(e,0,tp,false,false) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 				and Duel.SelectYesNo(tp,aux.Stringid(42377643,2)) then
@@ -73,7 +73,7 @@ end
 function c42377643.lvlop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not (tc:IsFaceup() and tc:IsRelateToEffect(e)) then return end
+	if not (tc:IsFaceup() and tc:IsRelateToChain(0)) then return end
 	local sel=0
 	if tc:IsLevel(4) then
 		sel=Duel.SelectOption(tp,aux.Stringid(42377643,4))+1

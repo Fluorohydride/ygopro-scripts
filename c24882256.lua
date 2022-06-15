@@ -54,7 +54,7 @@ function c24882256.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c24882256.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	Duel.Damage(1-tp,c:GetAttack(),REASON_EFFECT)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
@@ -98,7 +98,7 @@ function c24882256.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c24882256.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

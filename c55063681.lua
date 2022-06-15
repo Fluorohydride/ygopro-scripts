@@ -23,7 +23,7 @@ end
 function c55063681.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and c:IsFaceup() and c:IsRelateToChain(0) then
 		if tc~=c then
 			c:SetCardTarget(tc)
 			local e1=Effect.CreateEffect(c)

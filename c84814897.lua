@@ -81,8 +81,8 @@ end
 function c84814897.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	if not tc:IsRelateToEffect(e) or not c84814897.filter(tc) then
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or not c84814897.filter(tc) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
@@ -98,7 +98,7 @@ function c84814897.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c84814897.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)
 end
 function c84814897.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -109,7 +109,7 @@ function c84814897.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c84814897.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DIRECT_ATTACK)

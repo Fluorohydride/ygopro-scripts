@@ -35,7 +35,7 @@ function c40703393.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then ft=-ft+1 else ft=1 end
-	if not tc:IsRelateToEffect(e) or not tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
+	if not tc:IsRelateToChain(0) or not tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
 	local rg=Duel.GetMatchingGroup(c40703393.rmfilter,tp,LOCATION_MZONE,0,nil)
 	local lv=tc:GetLevel()
 	if rg:CheckWithSumEqual(Card.GetLevel,lv,ft,99) then

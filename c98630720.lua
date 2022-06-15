@@ -70,7 +70,7 @@ function c98630720.disop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	if tc==hc then tc=g:GetNext() end
-	if hc:IsRelateToEffect(e) and not hc:IsImmuneToEffect(e) then
+	if hc:IsRelateToChain(0) and not hc:IsImmuneToEffect(e) then
 		Duel.NegateRelatedChain(hc,RESET_TURN_SET)
 		local c=e:GetHandler()
 		local e1=Effect.CreateEffect(c)
@@ -83,7 +83,7 @@ function c98630720.disop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetCode(EFFECT_DISABLE_EFFECT)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		hc:RegisterEffect(e2)
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

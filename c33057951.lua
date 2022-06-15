@@ -23,7 +23,7 @@ function c33057951.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c33057951.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end

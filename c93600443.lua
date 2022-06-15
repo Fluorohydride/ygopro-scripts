@@ -42,7 +42,7 @@ function c93600443.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c93600443.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	local att=tc:GetAttribute()
 	local lv=tc:GetLevel()
 	if Duel.SendtoGrave(tc,REASON_EFFECT)==0 then return end

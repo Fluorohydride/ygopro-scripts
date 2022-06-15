@@ -67,7 +67,7 @@ function c7617062.filter(c)
 end
 function c7617062.posop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c7617062.filter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
 	end
 end

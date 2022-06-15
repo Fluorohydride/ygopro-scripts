@@ -54,7 +54,7 @@ function c48015771.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c48015771.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SendtoGrave(c,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_GRAVE) then
+	if c:IsRelateToChain(0) and Duel.SendtoGrave(c,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_GRAVE) then
 		local g=Duel.GetMatchingGroup(c48015771.tgfilter,tp,0,LOCATION_MZONE,nil)
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	end

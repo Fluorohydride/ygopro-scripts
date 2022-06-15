@@ -24,7 +24,7 @@ function c97738431.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c97738431.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.GetMatchingGroup(c97738431.matfilter,tp,LOCATION_HAND,0,nil)
 		if g:GetCount()>=2 then

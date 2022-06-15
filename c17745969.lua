@@ -46,7 +46,7 @@ function c17745969.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c17745969.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c17745969.spfilter2,tp,LOCATION_DECK+LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetAttack())
 		if g:GetCount()>0 then
@@ -67,8 +67,8 @@ end
 function c17745969.mvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsControler(tp) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0
-		and tc:IsLocation(LOCATION_HAND) and c:IsFaceup() and c:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) and tc:IsControler(tp) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0
+		and tc:IsLocation(LOCATION_HAND) and c:IsFaceup() and c:IsRelateToChain(0) then
 		local seq=tc:GetPreviousSequence()
 		Duel.MoveSequence(c,seq)
 	end

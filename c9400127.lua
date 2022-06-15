@@ -58,8 +58,8 @@ function c9400127.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local lc=tg:GetFirst()
 	if lc==tc then lc=tg:GetNext() end
-	if lc:IsRelateToEffect(e) and Duel.SpecialSummon(lc,0,tp,1-tp,false,false,POS_FACEUP)~=0
-		and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) then
+	if lc:IsRelateToChain(0) and Duel.SpecialSummon(lc,0,tp,1-tp,false,false,POS_FACEUP)~=0
+		and tc:IsRelateToChain(0) and tc:IsControler(1-tp) then
 		Duel.SendtoGrave(tc,REASON_EFFECT)
 	end
 end
@@ -76,7 +76,7 @@ function c9400127.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c9400127.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
 end

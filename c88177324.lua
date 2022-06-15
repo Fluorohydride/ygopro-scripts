@@ -83,7 +83,7 @@ function c88177324.negop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		tc=g:GetNext()
 	end
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		c:RegisterFlagEffect(88177324,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_BATTLE,0,1)
 	end
 end

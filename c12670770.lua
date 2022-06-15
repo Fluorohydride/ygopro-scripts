@@ -71,7 +71,7 @@ function c12670770.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	e:GetHandler():RegisterFlagEffect(12670770,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 end
 function c12670770.operation(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():GetFlagEffect(12670770)==0 or not e:GetHandler():IsRelateToEffect(e) then return end
+	if e:GetHandler():GetFlagEffect(12670770)==0 or not e:GetHandler():IsRelateToChain(0) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c12670770.filter2,tp,LOCATION_DECK,0,1,1,nil)
 	if g:GetCount()>0 then

@@ -31,7 +31,7 @@ function c41077745.datcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c41077745.datop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_DIRECT_ATTACK)
@@ -54,7 +54,7 @@ function c41077745.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c41077745.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFacedown() and tc:IsRelateToEffect(e) then
+	if tc:IsFacedown() and tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

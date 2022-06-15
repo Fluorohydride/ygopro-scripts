@@ -27,7 +27,7 @@ function c87910978.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c87910978.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.GetControl(tc,tp,PHASE_END,1)
 	end
 end

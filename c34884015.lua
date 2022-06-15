@@ -51,7 +51,7 @@ end
 function c34884015.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local tg=g:Filter(Card.IsRelateToChain,nil,0)
 	local tc=tg:GetFirst()
 	while tc do
 		Duel.HintSelection(Group.FromCards(tc))

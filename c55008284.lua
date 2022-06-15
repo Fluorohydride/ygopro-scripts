@@ -30,7 +30,7 @@ function c55008284.activate(e,tp,eg,ep,ev,re,r,rp)
 	if ft<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or tc:IsFacedown() then return end
 	local g=Duel.GetMatchingGroup(c55008284.spfilter,tp,LOCATION_DECK,0,nil,e,tp,tc:GetCode())
 	local sc=g:GetFirst()
 	while ft>0 and sc do

@@ -52,8 +52,8 @@ end
 function c12196873.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0
-		and c:IsLocation(LOCATION_REMOVED) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and Duel.Remove(c,POS_FACEUP,REASON_EFFECT)~=0
+		and c:IsLocation(LOCATION_REMOVED) and tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK)
 	end
 end
@@ -68,6 +68,6 @@ function c12196873.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c12196873.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end

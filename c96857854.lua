@@ -94,7 +94,7 @@ end
 function c96857854.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(1-tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e)
+	if c:IsRelateToChain(0)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,96857854,0,TYPES_NORMAL_TRAP_MONSTER,0,1000,1,RACE_FIEND,ATTRIBUTE_DARK,POS_FACEUP_DEFENSE,1-tp) then
 		c:AddMonsterAttribute(TYPE_NORMAL)
 		Duel.SpecialSummonStep(c,0,tp,1-tp,true,false,POS_FACEUP_DEFENSE)

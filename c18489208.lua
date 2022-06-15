@@ -26,7 +26,7 @@ function c18489208.op(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	while tc do
-		if c:IsRelateToEffect(e) and tc:IsFacedown() and tc:IsRelateToEffect(e) then
+		if c:IsRelateToChain(0) and tc:IsFacedown() and tc:IsRelateToChain(0) then
 			c:SetCardTarget(tc)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

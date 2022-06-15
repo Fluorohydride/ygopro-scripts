@@ -27,7 +27,7 @@ end
 function c44072894.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	if not g then return end
-	g=g:Filter(Card.IsRelateToEffect,nil,e)
+	g=g:Filter(Card.IsRelateToChain,nil,0)
 	if g:GetCount()==2 then
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,g)

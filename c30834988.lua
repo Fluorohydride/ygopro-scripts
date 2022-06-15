@@ -23,7 +23,7 @@ function c30834988.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c30834988.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=eg:Filter(Card.IsRelateToEffect,nil,e)
+	local g=eg:Filter(Card.IsRelateToChain,nil,0)
 	Duel.ChangePosition(g,POS_FACEUP_ATTACK)
 	local tc=g:GetFirst()
 	while tc do

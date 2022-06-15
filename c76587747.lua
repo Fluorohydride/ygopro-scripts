@@ -28,7 +28,7 @@ function c76587747.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c76587747.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	if Duel.NegateActivation(ev) and rc:IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and rc:IsRelateToChain(ev) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 		local g=Duel.SelectMatchingCard(tp,c76587747.cfilter2,tp,LOCATION_MZONE,0,1,1,nil)
 		if g:GetCount()>0 and not g:GetFirst():IsImmuneToEffect(e) then

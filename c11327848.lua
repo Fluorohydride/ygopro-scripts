@@ -43,7 +43,7 @@ function c11327848.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c11327848.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	local tc1=g:Filter(Card.IsControler,nil,tp):GetFirst()
 	local tc2=g:Filter(Card.IsControler,nil,1-tp):GetFirst()
 	if tc1 and tc2 and tc2:IsFaceup() then

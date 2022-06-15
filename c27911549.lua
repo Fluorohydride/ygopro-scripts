@@ -16,7 +16,7 @@ function c27911549.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c27911549.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsStatus(STATUS_BATTLE_DESTROYED) then return end
+	if not c:IsRelateToChain(0) or c:IsStatus(STATUS_BATTLE_DESTROYED) then return end
 	Duel.SendtoDeck(c,1-tp,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	if not c:IsLocation(LOCATION_DECK) then return end
 	Duel.ShuffleDeck(1-tp)
@@ -32,12 +32,12 @@ function c27911549.operation(e,tp,eg,ep,ev,re,r,rp)
 	c:RegisterEffect(e1)
 end
 function c27911549.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return e:GetHandler():IsRelateToChain(0) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c27911549.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)>0 then
 			Duel.Damage(tp,1000,REASON_EFFECT)
 			local e1=Effect.CreateEffect(c)

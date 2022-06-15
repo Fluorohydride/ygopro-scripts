@@ -63,7 +63,7 @@ function c2511.tstg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c2511.tsop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if aux.NecroValleyNegateCheck(c) then return end
 	if not aux.NecroValleyFilter()(c) then return end
 	local b1=c:IsAbleToHand()

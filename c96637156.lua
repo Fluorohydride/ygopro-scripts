@@ -25,7 +25,7 @@ function c96637156.movtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c96637156.movop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:GetSequence()>=5 then return end
+	if not c:IsRelateToChain(0) or c:GetSequence()>=5 then return end
 	local winflag=c:GetOverlayCount()<=6
 	local dice=Duel.TossDice(tp,1)
 	if dice<1 or dice>6 then return end

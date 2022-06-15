@@ -50,7 +50,7 @@ function c25494711.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c25494711.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local g=Duel.GetMatchingGroup(c25494711.atkfilter,tp,LOCATION_MZONE,0,nil)
 		local atk=g:GetSum(Card.GetAttack)
 		local e1=Effect.CreateEffect(e:GetHandler())

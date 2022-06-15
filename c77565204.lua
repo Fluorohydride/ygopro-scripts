@@ -57,7 +57,7 @@ end
 function c77565204.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ct=c:GetTurnCounter()
-	if not c:IsRelateToEffect(e) or ct>=2 then
+	if not c:IsRelateToChain(0) or ct>=2 then
 		c:SetTurnCounter(0)
 		e:Reset()
 		return

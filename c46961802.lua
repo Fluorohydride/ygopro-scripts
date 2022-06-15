@@ -27,7 +27,7 @@ function c46961802.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc1=g:GetFirst()
 	local tc2=g:GetNext()
-	if tc1:IsFacedown() or tc2:IsFacedown() or not tc1:IsRelateToEffect(e) or not tc2:IsRelateToEffect(e)
+	if tc1:IsFacedown() or tc2:IsFacedown() or not tc1:IsRelateToChain(0) or not tc2:IsRelateToChain(0)
 		or not tc1:IsAttack(tc2:GetAttack()) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)

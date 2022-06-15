@@ -70,7 +70,7 @@ function c63092423.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c63092423.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)~=0 then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)~=0 then
 		c:AddCounter(0x44,2)
 		c:CompleteProcedure()
 	end
@@ -86,13 +86,13 @@ function c63092423.ctcon1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c63092423.ctop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		c:RemoveCounter(tp,0x44,2,REASON_EFFECT)
 	end
 end
 function c63092423.ctop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		c:AddCounter(0x44,1)
 	end
 end

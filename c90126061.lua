@@ -68,7 +68,7 @@ end
 function c90126061.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) and tc:IsRelateToChain(0) then
 		Duel.Overlay(c,Group.FromCards(tc))
 	end
 end
@@ -81,7 +81,7 @@ function c90126061.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c90126061.retop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 end

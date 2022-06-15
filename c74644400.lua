@@ -68,7 +68,7 @@ function c74644400.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c74644400.spop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
+	if tc:IsRelateToChain(0) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(74644400,2))
 		local lv=Duel.AnnounceNumber(tp,1,2,3,4)
 		local e1=Effect.CreateEffect(e:GetHandler())

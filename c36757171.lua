@@ -41,7 +41,7 @@ function c36757171.operation(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()==0 then return end
 	Duel.SendtoGrave(g,REASON_EFFECT+REASON_DISCARD)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.GetControl(tc,tp)
 	end
 end

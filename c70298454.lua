@@ -50,8 +50,8 @@ end
 function c70298454.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	if not tc:IsRelateToEffect(e) or not c70298454.filter(tc) then
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or not c70298454.filter(tc) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
@@ -67,7 +67,7 @@ function c70298454.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c70298454.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)==0 and Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) then
 		Duel.SendtoGrave(c,REASON_RULE)

@@ -28,7 +28,7 @@ function c86871614.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c86871614.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ec=eg:GetFirst()
-	if not ec:IsRelateToEffect(e) or ec:IsFacedown() then return end
+	if not ec:IsRelateToChain(0) or ec:IsFacedown() then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
 		or not Duel.IsPlayerCanSpecialSummonMonster(tp,86871615,0,TYPES_TOKEN_MONSTER,ec:GetBaseAttack(),ec:GetBaseDefense(),
 			ec:GetOriginalLevel(),ec:GetOriginalRace(),ec:GetOriginalAttribute()) then return end

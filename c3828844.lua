@@ -45,7 +45,7 @@ function c3828844.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c3828844.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
@@ -72,7 +72,7 @@ function c3828844.spop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c3828844.spfilter),tp,LOCATION_EXTRA+LOCATION_GRAVE,0,1,1,nil,e,tp)
 	local tc=g:GetFirst()
 	if tc and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		if not c:IsRelateToEffect(e) or not c:IsCanOverlay() or not aux.NecroValleyFilter()(c) then return end
+		if not c:IsRelateToChain(0) or not c:IsCanOverlay() or not aux.NecroValleyFilter()(c) then return end
 		if c:IsLocation(LOCATION_HAND+LOCATION_DECK) or (not c:IsLocation(LOCATION_GRAVE) and c:IsFacedown()) then return end
 		if Duel.SelectYesNo(tp,aux.Stringid(3828844,2)) then
 			Duel.BreakEffect()

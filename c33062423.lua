@@ -23,7 +23,7 @@ end
 function c33062423.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not (tc:IsFaceup() and tc:IsRelateToEffect(e)) then return end
+	if not (tc:IsFaceup() and tc:IsRelateToChain(0)) then return end
 	local ct=tc:GetLinkedGroupCount()
 	if ct>=1 then
 		local e1=Effect.CreateEffect(c)

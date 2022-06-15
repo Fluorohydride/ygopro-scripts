@@ -56,7 +56,7 @@ function c21420702.desop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.SendtoGrave(g,REASON_EFFECT)
 		local tc=Duel.GetFirstTarget()
-		if tc and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+		if tc and tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 			Duel.Damage(1-tp,500,REASON_EFFECT)
 		end
 	end

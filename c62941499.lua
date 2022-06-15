@@ -63,7 +63,7 @@ function c62941499.seqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c62941499.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local seq=e:GetLabel()
 	local ct=Duel.GetMatchingGroupCount(c62941499.seqfilter,tp,0,LOCATION_ONFIELD,nil,seq)
 	if ct<=0 or not c:CheckRemoveOverlayCard(tp,1,REASON_EFFECT) then return end
@@ -85,7 +85,7 @@ function c62941499.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c62941499.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
+	if c:IsRelateToChain(0) and Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_END)

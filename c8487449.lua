@@ -63,7 +63,7 @@ end
 function c8487449.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc and c:IsFaceup() and c:IsRelateToChain(0) and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local g=Group.FromCards(c,tc)
 		Duel.SendtoHand(g,nil,REASON_EFFECT)
 	end

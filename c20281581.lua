@@ -54,7 +54,7 @@ function c20281581.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c20281581.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -65,7 +65,7 @@ function c20281581.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c20281581.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end

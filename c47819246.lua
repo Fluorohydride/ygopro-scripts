@@ -73,9 +73,9 @@ end
 function c47819246.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsLocation(LOCATION_SZONE) then return end
-	if not c:IsRelateToEffect(e) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
+	if not c:IsRelateToChain(0) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetControler()==c:GetControler() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:GetControler()==c:GetControler() then
 		Duel.Equip(tp,c,tc)
 		--Equip limit
 		local e1=Effect.CreateEffect(c)
@@ -110,7 +110,7 @@ function c47819246.mttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47819246.mtop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=Duel.GetFirstTarget()
-	if ec:IsLocation(LOCATION_MZONE) and ec:IsFaceup() and ec:IsRelateToEffect(e) then
+	if ec:IsLocation(LOCATION_MZONE) and ec:IsFaceup() and ec:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EXTRA_ATTACK)

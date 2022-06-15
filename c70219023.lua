@@ -112,7 +112,7 @@ function c70219023.operation(e,tp,eg,ep,ev,re,r,rp)
 		Duel.HintSelection(g)
 		Duel.Destroy(g,REASON_EFFECT)
 	end
-	if op&4~=0 and c:IsRelateToEffect(e) and c:IsFaceup() then
+	if op&4~=0 and c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.BreakEffect()
 		local atk=math.floor(math.abs(Duel.GetLP(tp)-Duel.GetLP(1-tp))/2)
 		local e1=Effect.CreateEffect(c)

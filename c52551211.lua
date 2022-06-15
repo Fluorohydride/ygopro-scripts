@@ -35,7 +35,7 @@ function c52551211.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c52551211.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
@@ -54,7 +54,7 @@ function c52551211.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c52551211.posop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	if tc:IsSetCard(0x9d) then
 		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)
 	else

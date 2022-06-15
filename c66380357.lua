@@ -29,7 +29,7 @@ function c66380357.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c66380357.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	local zone=bit.band(tc:GetLinkedZone(tp),0x1f)
 	local upbound=Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)
 	if upbound<=0 then return end

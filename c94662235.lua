@@ -56,7 +56,7 @@ function c94662235.condition2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c94662235.activate2(e,tp,eg,ep,ev,re,r,rp)
 	local ec=eg:GetFirst()
-	if Duel.NegateActivation(ev) and ec:IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and ec:IsRelateToChain(ev) then
 		if Duel.Remove(ec,POS_FACEUP,REASON_EFFECT)~=0 then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)

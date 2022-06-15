@@ -60,7 +60,7 @@ function c71386411.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c71386411.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:GetControler()~=tp or not c:IsRelateToEffect(e) then return end
+	if c:GetControler()~=tp or not c:IsRelateToChain(0) then return end
 	local g=Duel.GetMatchingGroup(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,nil,c)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -95,14 +95,14 @@ function c71386411.spop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) or tc:IsLevel(1) then return end
+	if tc:IsFacedown() or not tc:IsRelateToChain(0) or tc:IsImmuneToEffect(e) or tc:IsLevel(1) then return end
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_UPDATE_LEVEL)
 	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 	e2:SetValue(-1)
 	tc:RegisterEffect(e2)
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

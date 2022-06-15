@@ -53,7 +53,7 @@ function c70597485.mattg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c70597485.matop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e) then
+	if c:IsRelateToChain(0) and not c:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,c70597485.matfilter,tp,LOCATION_DECK,0,1,1,nil)
 		if g:GetCount()>0 then
@@ -73,7 +73,7 @@ function c70597485.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c70597485.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local g=c:GetOverlayGroup()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local tg=g:FilterSelect(tp,Card.IsAbleToHand,1,1,nil)

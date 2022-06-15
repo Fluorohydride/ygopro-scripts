@@ -20,7 +20,7 @@ function c55599882.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c55599882.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetDescription(aux.Stringid(55599882,0))
 		e1:SetCategory(CATEGORY_REMOVE)

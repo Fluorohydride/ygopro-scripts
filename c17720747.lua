@@ -33,7 +33,7 @@ function c17720747.operation(e,tp,eg,ep,ev,re,r,rp)
 		if not tc:IsType(TYPE_MONSTER) then
 			Duel.BreakEffect()
 			Duel.SendtoGrave(tc,REASON_EFFECT)
-			if e:GetHandler():IsRelateToEffect(e) then
+			if e:GetHandler():IsRelateToChain(0) then
 				Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 			end
 		end

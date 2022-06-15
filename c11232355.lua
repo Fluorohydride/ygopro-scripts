@@ -40,7 +40,7 @@ function c11232355.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c11232355.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFacedown() and tc:IsRelateToEffect(e) then
+	if tc:IsFacedown() and tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -56,7 +56,7 @@ function c11232355.sdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c11232355.sdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		Duel.Destroy(c,REASON_EFFECT)
 	end
 end

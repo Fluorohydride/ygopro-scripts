@@ -59,9 +59,9 @@ end
 function c91182675.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e)
+	if c:IsRelateToChain(0)
 		and Duel.Destroy(c,REASON_EFFECT)~=0
-		and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+		and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		tc:AddCounter(0x1,1)
 	end
 end

@@ -72,7 +72,7 @@ end
 function c1187243.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Equip(tp,c,tc)
 	end
 end
@@ -92,7 +92,7 @@ function c1187243.spop1(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
 	local ec=c:GetEquipTarget()
-	if ec and ec:IsFaceup() and c:IsRelateToEffect(e) then
+	if ec and ec:IsFaceup() and c:IsRelateToChain(0) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c1187243.spfilter1,tp,LOCATION_DECK,0,1,1,nil,e,tp,ec:GetRace())
 		if g:GetCount()>0 then

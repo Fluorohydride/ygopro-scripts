@@ -51,9 +51,9 @@ function c75290703.sptg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c75290703.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsRelateToEffect(e)
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsRelateToChain(0)
 		and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+		local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 		local ft=Duel.GetLocationCount(tp,LOCATION_SZONE)
 		if ft<=0 then return end
 		if g:GetCount()>ft then
@@ -108,7 +108,7 @@ end
 function c75290703.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=c:GetEquipTarget()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP) and tc then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP) and tc then
 		Duel.BreakEffect()
 		Duel.Equip(tp,tc,c,false)
 		local e1=Effect.CreateEffect(c)

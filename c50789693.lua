@@ -32,7 +32,7 @@ function c50789693.adcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50789693.adop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local opt=Duel.SelectOption(tp,aux.Stringid(50789693,2),aux.Stringid(50789693,3))
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

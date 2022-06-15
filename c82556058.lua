@@ -38,7 +38,7 @@ function c82556058.spop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c82556058.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
@@ -63,7 +63,7 @@ function c82556058.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c82556058.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.Destroy(c,REASON_EFFECT)
 	end
 end

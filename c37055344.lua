@@ -65,7 +65,7 @@ end
 function c37055344.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if e:GetLabel()==0 then
-		if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
+		if not tc:IsRelateToChain(0) or tc:IsFacedown() then return end
 		if Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)==0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEDOWNDEFENSE)
 		local g=Duel.SelectMatchingCard(tp,c37055344.filter2,tp,0,LOCATION_MZONE,1,1,nil)
@@ -73,7 +73,7 @@ function c37055344.operation(e,tp,eg,ep,ev,re,r,rp)
 			Duel.ChangePosition(g,POS_FACEUP_ATTACK)
 		end
 	else
-		if not tc:IsRelateToEffect(e) or tc:IsPosition(POS_FACEUP_ATTACK) then return end
+		if not tc:IsRelateToChain(0) or tc:IsPosition(POS_FACEUP_ATTACK) then return end
 		if Duel.ChangePosition(tc,POS_FACEUP_ATTACK)==0 or not tc:IsSetCard(0x8d) then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 		local g=Duel.SelectMatchingCard(tp,c37055344.filter4,tp,0,LOCATION_MZONE,1,1,nil)

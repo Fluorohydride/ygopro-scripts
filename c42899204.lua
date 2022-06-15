@@ -51,7 +51,7 @@ end
 function c42899204.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) then
 		c:SetCardTarget(tc)
 	end
 end

@@ -51,7 +51,7 @@ function c55762976.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c55762976.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -77,7 +77,7 @@ function c55762976.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c55762976.damop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 		local dam=tc:GetBaseAttack()
 		if dam<0 then dam=0 end

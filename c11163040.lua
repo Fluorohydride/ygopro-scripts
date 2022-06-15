@@ -70,7 +70,7 @@ end
 function c11163040.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	local cc=tc:GetControler()
 	local code=tc:GetOriginalCodeRule()
 	if Duel.Destroy(tc,REASON_EFFECT)~=0 then

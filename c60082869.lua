@@ -23,7 +23,7 @@ function c60082869.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c60082869.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if tc and tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		local g=Duel.GetMatchingGroup(Card.IsSSetable,tp,LOCATION_HAND,0,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(60082869,0)) then
 			Duel.BreakEffect()

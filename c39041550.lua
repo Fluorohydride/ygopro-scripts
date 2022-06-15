@@ -43,13 +43,13 @@ function c39041550.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c39041550.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
 function c39041550.condition(e,tp,eg,ep,ev,re,r,rp)
 	local tc=re:GetHandler()
-	return tc:IsControler(1-tp) and tc:IsOnField() and tc:IsRelateToEffect(re) and re:IsActiveType(TYPE_MONSTER)
+	return tc:IsControler(1-tp) and tc:IsOnField() and tc:IsRelateToChain(ev) and re:IsActiveType(TYPE_MONSTER)
 end
 function c39041550.cfilter(c,tp)
 	return c:IsRace(RACE_INSECT) and (c:IsControler(tp) or c:IsFaceup())
@@ -64,7 +64,7 @@ function c39041550.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 end
 function c39041550.operation(e,tp,eg,ep,ev,re,r,rp)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsRelateToChain(ev) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

@@ -25,7 +25,7 @@ end
 function c24545464.activate(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateAttack()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

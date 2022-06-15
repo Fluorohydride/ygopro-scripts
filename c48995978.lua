@@ -49,7 +49,7 @@ function c48995978.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c48995978.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and c:RemoveOverlayCard(tp,1,1,REASON_EFFECT) then
+	if c:IsRelateToChain(0) and c:IsFaceup() and c:RemoveOverlayCard(tp,1,1,REASON_EFFECT) then
 		c:AddCounter(0x2b,1)
 	end
 end

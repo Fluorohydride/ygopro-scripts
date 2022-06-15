@@ -55,7 +55,7 @@ function c29432356.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c29432356.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(29432356,1))
 	local g=Duel.SelectMatchingCard(tp,c29432356.scfilter,tp,LOCATION_DECK,0,1,1,nil,c)
 	local tc=g:GetFirst()

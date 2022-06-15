@@ -32,7 +32,7 @@ function c35329581.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c35329581.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sg=Duel.SelectMatchingCard(tp,c35329581.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc)
 	if sg:GetCount()>0 then

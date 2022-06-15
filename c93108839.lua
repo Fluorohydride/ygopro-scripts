@@ -48,8 +48,8 @@ end
 function c93108839.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	if not tc:IsRelateToEffect(e) or tc:IsFacedown() or tc:IsControler(1-tp) then
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or tc:IsFacedown() or tc:IsControler(1-tp) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
@@ -85,7 +85,7 @@ function c93108839.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c93108839.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)
 end
 function c93108839.damcon(e,tp,eg,ep,ev,re,r,rp)

@@ -47,7 +47,7 @@ function c41463181.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c41463181.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
@@ -88,7 +88,7 @@ function c41463181.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local sc=g:GetFirst()
 	if sc==tc then sc=g:GetNext() end
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or not sc:IsRelateToEffect(e) then return end
+	if tc:IsFacedown() or not tc:IsRelateToChain(0) or not sc:IsRelateToChain(0) then return end
 	local ac=e:GetLabelObject()
 	if tc==ac then tc=sc end
 	local atk=tc:GetAttack()

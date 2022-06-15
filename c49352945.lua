@@ -42,7 +42,7 @@ function c49352945.splimit(e,se,sp,st)
 end
 function c49352945.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 end
 function c49352945.desfilter(c)

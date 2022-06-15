@@ -50,7 +50,7 @@ end
 function c75539614.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Equip(tp,c,tc)
 	end
 end

@@ -77,7 +77,7 @@ end
 function c90809975.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToChain(ev) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
 	if bit.band(re:GetHandler():GetOriginalType(),TYPE_MONSTER)~=0 then
@@ -89,7 +89,7 @@ end
 function c90809975.negop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
 	if not Duel.NegateActivation(ev) then return end
-	if rc:IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)~=0
+	if rc:IsRelateToChain(ev) and Duel.Destroy(eg,REASON_EFFECT)~=0
 		and not (rc:IsLocation(LOCATION_HAND+LOCATION_DECK) or rc:IsLocation(LOCATION_REMOVED) and rc:IsFacedown())
 		and aux.NecroValleyFilter()(rc) then
 		if rc:IsType(TYPE_MONSTER) and (not rc:IsLocation(LOCATION_EXTRA) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -118,7 +118,7 @@ function c90809975.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c90809975.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

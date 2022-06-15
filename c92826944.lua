@@ -26,7 +26,7 @@ end
 function c92826944.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRace(RACE_ZOMBIE) and tc:IsRelateToEffect(e) then
+	if tc:IsRace(RACE_ZOMBIE) and tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

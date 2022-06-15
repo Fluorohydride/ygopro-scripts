@@ -44,7 +44,7 @@ function c55168550.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c55168550.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local lv=e:GetLabel()
 	if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) and c:GetLevel()~=lv then
 		local e1=Effect.CreateEffect(c)
@@ -68,7 +68,7 @@ end
 function c55168550.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not (c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e)) then return end
+	if not (c:IsRelateToChain(0) and c:IsFaceup() and tc:IsRelateToChain(0)) then return end
 	local atk=tc:GetAttack()
 	local def=tc:GetDefense()
 	if atk>0 then

@@ -67,7 +67,7 @@ function c15308295.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local a=g:GetFirst()
 	local b=g:GetNext()
-	if a:IsRelateToEffect(e) and b:IsRelateToEffect(e) and Duel.SwapControl(a,b) then
+	if a:IsRelateToChain(0) and b:IsRelateToChain(0) and Duel.SwapControl(a,b) then
 		Duel.BreakEffect()
 		Duel.Destroy(e:GetHandler(),REASON_EFFECT)
 	end
@@ -81,7 +81,7 @@ function c15308295.cttg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c15308295.ctop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.GetControl(c,1-tp)
 	end
 end

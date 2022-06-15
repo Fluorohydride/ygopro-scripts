@@ -33,7 +33,7 @@ end
 function c83747250.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local g=Duel.GetMatchingGroup(c83747250.filter,tp,LOCATION_GRAVE,0,nil)
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and g:GetCount()>0 then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 		local sg=g:Select(tp,1,g:GetCount(),nil)
 		local rc=Duel.Remove(sg,POS_FACEUP,REASON_EFFECT)

@@ -55,9 +55,9 @@ function c46035545.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c46035545.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
@@ -90,7 +90,7 @@ function c46035545.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c46035545.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0
+	if tc:IsRelateToChain(0) and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0
 		and tc:IsLocation(LOCATION_HAND) then
 		local ct=0
 		if Duel.CheckLocation(tp,LOCATION_PZONE,0) then ct=ct+1 end

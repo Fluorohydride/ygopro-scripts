@@ -53,7 +53,7 @@ end
 function c30163008.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or not tc:IsRelateToChain(0) or tc:IsFacedown() then return end
 	local zone=c:GetLinkedZone(tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local sc=Duel.SelectMatchingCard(tp,c30163008.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp,tc:GetRace(),zone):GetFirst()
@@ -70,7 +70,7 @@ function c30163008.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c30163008.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

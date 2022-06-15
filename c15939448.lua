@@ -30,7 +30,7 @@ function c15939448.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c15939448.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsPosition(POS_FACEUP_ATTACK) and Duel.ChangePosition(c,POS_FACEUP_DEFENSE)~=0 then
+	if c:IsRelateToChain(0) and c:IsPosition(POS_FACEUP_ATTACK) and Duel.ChangePosition(c,POS_FACEUP_DEFENSE)~=0 then
 		local ct=Duel.GetMatchingGroupCount(c15939448.filter,tp,LOCATION_MZONE,0,nil)
 		if ct>0 then
 			Duel.BreakEffect()

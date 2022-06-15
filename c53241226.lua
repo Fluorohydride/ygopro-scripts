@@ -37,7 +37,7 @@ function c53241226.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local hc=g:GetFirst()
 	if hc==tc then hc=g:GetNext() end
-	if hc:IsControler(tp) and tc:IsFaceup() and tc:IsRelateToEffect(e)
+	if hc:IsControler(tp) and tc:IsFaceup() and tc:IsRelateToChain(0)
 		and tc:IsControler(1-tp) and tc:IsLocation(LOCATION_MZONE)
 		and tc:IsAbleToChangeControler() and Duel.Equip(tp,tc,hc,false) then
 		--Add Equip limit

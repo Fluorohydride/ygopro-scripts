@@ -59,7 +59,7 @@ function c60158866.operation(e,tp,eg,ep,ev,re,r,rp)
 	local s=e:GetLabel()
 	local tc=Duel.GetFirstTarget()
 	if s==0 then
-		if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
+		if not tc:IsRelateToChain(0) or tc:IsFacedown() then return end
 		local sg=Duel.GetMatchingGroup(c60158866.disfilter,tp,0,LOCATION_MZONE,nil,tc:GetAttack())
 		if sg:GetCount()>0 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISABLE)
@@ -83,7 +83,7 @@ function c60158866.operation(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	if s==1 then
-		if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+		if tc:IsRelateToChain(0) and not tc:IsImmuneToEffect(e) then
 			local og=tc:GetOverlayGroup()
 			if og:GetCount()>0 and Duel.SendtoGrave(og,REASON_EFFECT)>0
 				and Duel.GetLocationCount(tp,LOCATION_MZONE)>0

@@ -70,7 +70,7 @@ function c28346136.op(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	local c=e:GetHandler()
 	local sc=g:GetFirst()
-	if sc:IsLocation(LOCATION_EXTRA) and c:IsRelateToEffect(e) and c:IsFaceup() and c:IsControler(tp)
+	if sc:IsLocation(LOCATION_EXTRA) and c:IsRelateToChain(0) and c:IsFaceup() and c:IsControler(tp)
 		and c:IsCanBeXyzMaterial(sc) and sc:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
 		and Duel.GetLocationCountFromEx(tp,tp,c,sc)>0 and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL)
 		and Duel.SelectYesNo(tp,aux.Stringid(28346136,4)) then

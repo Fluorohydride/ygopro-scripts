@@ -38,10 +38,10 @@ function s.hsptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function s.hspop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsRelateToEffect(e)
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsRelateToChain(0)
 		and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		if tc:IsRelateToChain(0) and tc:IsFaceup() then
 			Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
@@ -83,7 +83,7 @@ end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local clv=c:GetLevel()
-	if clv<=2 or c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+	if clv<=2 or c:IsFacedown() or not c:IsRelateToChain(0) then return end
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end

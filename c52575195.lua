@@ -48,7 +48,7 @@ end
 function c52575195.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsControler(tp) and Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
+	if tc:IsRelateToChain(0) and tc:IsControler(tp) and Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_PHASE+PHASE_STANDBY)
@@ -67,7 +67,7 @@ function c52575195.tgop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCondition(c52575195.retcon)
 		e1:SetOperation(c52575195.retop)
 		tc:RegisterEffect(e1)
-		if not c:IsRelateToEffect(e) then return end
+		if not c:IsRelateToChain(0) then return end
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

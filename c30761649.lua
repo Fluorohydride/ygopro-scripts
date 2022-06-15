@@ -68,7 +68,7 @@ function s.xyztg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SelectTarget(tp,s.tgfilter2,tp,0,LOCATION_MZONE,1,1,tg1)
 end
 function s.xyzop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	if #g~=2 then return end
 	local tc1=e:GetLabelObject()
 	local tc2=g:Filter(Card.IsControler,tc1,1-tp):GetFirst()

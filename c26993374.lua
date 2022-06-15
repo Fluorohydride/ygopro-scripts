@@ -29,7 +29,7 @@ function c26993374.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c26993374.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)
 	end
 end

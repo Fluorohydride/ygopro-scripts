@@ -63,7 +63,7 @@ end
 function c37750912.lvlop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local opt=0
 		if tc:IsLevel(1) then
 			opt=Duel.SelectOption(tp,aux.Stringid(37750912,1))

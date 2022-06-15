@@ -69,7 +69,7 @@ function c12289247.rptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c12289247.rpop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.Destroy(c,REASON_EFFECT)>0 then
+	if c:IsRelateToChain(0) and Duel.Destroy(c,REASON_EFFECT)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(12289247,6))
 		local g=Duel.SelectMatchingCard(tp,c12289247.rpfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp)
 		local tc=g:GetFirst()
@@ -96,7 +96,7 @@ function c12289247.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c12289247.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 then
 		return
 	end

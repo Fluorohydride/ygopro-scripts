@@ -14,7 +14,7 @@ function c59438930.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c59438930.condition(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsOnField() and re:GetHandler():IsRelateToEffect(re) and (re:IsActiveType(TYPE_MONSTER)
+	return re:GetHandler():IsOnField() and re:GetHandler():IsRelateToChain(ev) and (re:IsActiveType(TYPE_MONSTER)
 		or (re:IsActiveType(TYPE_SPELL+TYPE_TRAP) and not re:IsHasType(EFFECT_TYPE_ACTIVATE)))
 end
 function c59438930.cost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -26,7 +26,7 @@ function c59438930.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 end
 function c59438930.operation(e,tp,eg,ep,ev,re,r,rp)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsRelateToChain(ev) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

@@ -39,7 +39,7 @@ function c25339070.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c25339070.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c25339070.cpcost(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -71,7 +71,7 @@ end
 function c25339070.cpop(e,tp,eg,ep,ev,re,r,rp)
 	local te=e:GetLabelObject()
 	if not te then return end
-	if not te:GetHandler():IsRelateToEffect(e) then return end
+	if not te:GetHandler():IsRelateToChain(0) then return end
 	e:SetLabelObject(te:GetLabelObject())
 	local op=te:GetOperation()
 	if op then op(e,tp,eg,ep,ev,re,r,rp) end

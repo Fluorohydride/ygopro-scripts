@@ -39,7 +39,7 @@ function c9097866.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c9097866.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c9097866.atkcon(e,tp,eg,ep,ev,re,r,rp)
@@ -62,7 +62,7 @@ function c9097866.atkop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local a=e:GetLabelObject()
 	local tc=Duel.GetFirstTarget()
-	if a:IsFaceup() and a:IsRelateToBattle() and tc:IsRelateToEffect(e) then
+	if a:IsFaceup() and a:IsRelateToBattle() and tc:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

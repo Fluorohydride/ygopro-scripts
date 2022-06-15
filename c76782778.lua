@@ -73,7 +73,7 @@ function c76782778.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c76782778.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SendtoHand(c,nil,REASON_EFFECT)~=0
+	if c:IsRelateToChain(0) and Duel.SendtoHand(c,nil,REASON_EFFECT)~=0
 		and c:IsLocation(LOCATION_HAND) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c76782778.spfilter2,tp,LOCATION_HAND,0,1,1,nil,e,tp)

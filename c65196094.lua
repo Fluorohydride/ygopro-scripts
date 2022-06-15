@@ -62,7 +62,7 @@ function c65196094.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,sg,sg:GetCount(),0,0)
 end
 function c65196094.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	local ct=g:GetCount()
 	if ct==0 or (ct>1 and Duel.IsPlayerAffectedByEffect(tp,59822133))
 		or ct>Duel.GetLocationCount(tp,LOCATION_MZONE) then return end

@@ -67,7 +67,7 @@ function c28406301.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local g=Duel.GetMatchingGroup(c28406301.atkfilter2,tp,LOCATION_ONFIELD+LOCATION_GRAVE,0,nil)
 	local atk=g:GetClassCount(Card.GetCode)*500
-	if atk>0 and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if atk>0 and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
@@ -93,7 +93,7 @@ function c28406301.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c28406301.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 end
 function c28406301.drcon(e,tp,eg,ep,ev,re,r,rp)

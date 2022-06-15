@@ -55,7 +55,7 @@ function c42237854.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,g:GetCount(),0,0)
 end
 function c42237854.tgfilter(c,e)
-	return c:IsFaceup() and c:IsRelateToEffect(e)
+	return c:IsFaceup() and c:IsRelateToChain(0)
 end
 function c42237854.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

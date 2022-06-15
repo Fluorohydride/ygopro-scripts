@@ -29,7 +29,7 @@ function c24181936.atktg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c24181936.atkop1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		if tc:GetFlagEffect(24181936)==0 then
 			tc:RegisterFlagEffect(24181936,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
 			local e1=Effect.CreateEffect(e:GetHandler())

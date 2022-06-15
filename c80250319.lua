@@ -37,7 +37,7 @@ function c80250319.spfilter2(c,e,tp,lv)
 end
 function c80250319.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if tc:IsRelateToChain(0) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local g=Duel.GetMatchingGroup(c80250319.spfilter2,tp,LOCATION_HAND,0,nil,e,tp,tc:GetLevel())
 		if g:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 			and Duel.SelectYesNo(tp,aux.Stringid(80250319,1)) then

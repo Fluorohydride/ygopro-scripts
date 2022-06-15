@@ -60,7 +60,7 @@ function c71459017.fuslimit(e,c,sumtype)
 end
 function c71459017.countop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		c:AddCounter(0x58,6)
 	end
 end
@@ -73,7 +73,7 @@ function c71459017.ctrtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c71459017.ctrop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.GetControl(c,1-tp)
 	end
 end
@@ -86,7 +86,7 @@ function c71459017.dicetg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c71459017.diceop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and c:IsCanRemoveCounter(tp,0x58,1,REASON_EFFECT) then
+	if c:IsRelateToChain(0) and c:IsFaceup() and c:IsCanRemoveCounter(tp,0x58,1,REASON_EFFECT) then
 		local dc=Duel.TossDice(tp,1)
 		if dc>c:GetCounter(0x58) then dc=c:GetCounter(0x58) end
 		c:RemoveCounter(tp,0x58,dc,REASON_EFFECT)

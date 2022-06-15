@@ -39,7 +39,7 @@ function c71197066.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c71197066.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -58,7 +58,7 @@ function c71197066.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c71197066.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

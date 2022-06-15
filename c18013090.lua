@@ -74,7 +74,7 @@ function c18013090.catg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c18013090.caop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.ChangePosition(tc,POS_FACEUP_ATTACK)
 		Duel.ChainAttack(tc)
 	end

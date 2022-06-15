@@ -49,7 +49,7 @@ function c17775525.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c17775525.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local rg=tg:Filter(Card.IsRelateToEffect,nil,e)
+	local rg=tg:Filter(Card.IsRelateToChain,nil,0)
 	if rg:GetCount()>0 then
 		Duel.Destroy(rg,REASON_EFFECT)
 	end

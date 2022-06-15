@@ -29,7 +29,7 @@ function c61656650.eftg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c61656650.efop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.CheckChainTarget(ev,tc) then
+	if tc:IsRelateToChain(0) and Duel.CheckChainTarget(ev,tc) then
 		local g=Group.FromCards(tc)
 		Duel.ChangeTargetCard(ev,g)
 	end

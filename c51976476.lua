@@ -11,7 +11,7 @@ function c51976476.initial_effect(c)
 end
 function c51976476.filter(c,e,tp)
 	return c:IsSummonPlayer(tp) and c:IsDefensePos() and c:IsAbleToRemove()
-		and (not e or (c:IsRelateToEffect(e) and c:IsLocation(LOCATION_MZONE)))
+		and (not e or (c:IsRelateToChain(0) and c:IsLocation(LOCATION_MZONE)))
 end
 function c51976476.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c51976476.filter,1,nil,nil,1-tp) end

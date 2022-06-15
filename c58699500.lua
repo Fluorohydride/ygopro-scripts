@@ -81,7 +81,7 @@ end
 function c58699500.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local sc=e:GetLabelObject()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and sc then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and sc then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

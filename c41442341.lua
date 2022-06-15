@@ -36,7 +36,7 @@ function c41442341.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	if ft<=0 then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local fg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local fg=g:Filter(Card.IsRelateToChain,nil,0)
 	if fg:GetCount()>1 and Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	if fg:GetCount()>1 and ft==1 then fg=fg:Select(tp,1,1,nil) end

@@ -34,14 +34,14 @@ function c3701074.rectg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c3701074.recop1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local rec=math.ceil(tc:GetAttack()/2)
 		Duel.Recover(1-tp,rec,REASON_EFFECT)
 	end
 end
 function c3701074.filter(c,e,tp)
 	return c:IsFaceup() and c:IsLocation(LOCATION_MZONE) and c:IsSummonPlayer(1-tp)
-		and (not e or c:IsRelateToEffect(e))
+		and (not e or c:IsRelateToChain(0))
 end
 function c3701074.rectg2(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c3701074.filter,1,nil,nil,tp) end

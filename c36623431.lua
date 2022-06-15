@@ -47,7 +47,7 @@ end
 function c36623431.operation1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	aux.DrawReplaceCount=aux.DrawReplaceCount+1
-	if aux.DrawReplaceCount<=aux.DrawReplaceMax and c:IsRelateToEffect(e) then
+	if aux.DrawReplaceCount<=aux.DrawReplaceMax and c:IsRelateToChain(0) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,c)
 	end
@@ -68,7 +68,7 @@ function c36623431.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c36623431.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,c)
 	end

@@ -48,7 +48,7 @@ function c44330098.sumtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c44330098.sumop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local typ=bit.band(r,REASON_BATTLE)~=0 and 1 or 2
 	e:SetLabel(typ,ev)
 	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,false,false,POS_FACEUP)

@@ -54,7 +54,7 @@ function c54082269.efilter(e,te)
 end
 function c54082269.acop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=re:GetHandler()
-	if not tc:IsRelateToEffect(re) or not re:IsActiveType(TYPE_MONSTER) or not tc:IsFaceup() or tc:GetCounter(0x1002)>0 then return end
+	if not tc:IsRelateToChain(ev) or not re:IsActiveType(TYPE_MONSTER) or not tc:IsFaceup() or tc:GetCounter(0x1002)>0 then return end
 	local p,loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_PLAYER,CHAININFO_TRIGGERING_LOCATION)
 	if p~=tp and loc==LOCATION_MZONE and e:GetHandler():GetFlagEffect(1)>0 then
 		tc:AddCounter(0x1002,1)
@@ -72,7 +72,7 @@ function c54082269.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c54082269.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.GetControl(tc,tp)
 	end
 end

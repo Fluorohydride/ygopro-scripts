@@ -66,7 +66,7 @@ end
 function c48868994.opd(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsAttackPos() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:IsAttackPos() then
 		if not Duel.Equip(tp,tc,c,false) then return end
 		--Add Equip limit
 		tc:CreateRelation(c,RESET_EVENT+RESETS_STANDARD)

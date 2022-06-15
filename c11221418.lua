@@ -27,7 +27,7 @@ end
 function c11221418.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 then
+	if tc:IsRelateToChain(0) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 then
 		tc:RegisterFlagEffect(11221418,RESET_EVENT+RESETS_STANDARD,0,0)
 		local g=Duel.GetMatchingGroup(Card.IsAbleToHand,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		if g:GetCount()==0 then return end
@@ -129,7 +129,7 @@ function c11221418.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
 	local mc=Duel.GetFirstTarget()
 	if tc:GetFlagEffect(11221418)~=0 and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
-		if mc and mc:IsRelateToEffect(e) then
+		if mc and mc:IsRelateToChain(0) then
 			Duel.Overlay(tc,Group.FromCards(mc))
 		end
 	end

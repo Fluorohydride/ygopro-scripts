@@ -66,7 +66,7 @@ function c10547580.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local lc=tg:GetFirst()
 	if lc==tc then lc=tg:GetNext() end
-	if tc:IsRelateToEffect(e) and tc:IsControler(tp) and Duel.Destroy(tc,REASON_EFFECT)~=0 and lc:IsRelateToEffect(e)
+	if tc:IsRelateToChain(0) and tc:IsControler(tp) and Duel.Destroy(tc,REASON_EFFECT)~=0 and lc:IsRelateToChain(0)
 		and lc:IsControler(1-tp) and lc:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

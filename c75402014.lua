@@ -49,7 +49,7 @@ end
 function c75402014.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectMatchingCard(tp,c75402014.eqfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,tp)
 		local tc=g:GetFirst()
@@ -76,7 +76,7 @@ function c75402014.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,#g,0,0)
 end
 function c75402014.disfilter(c,e)
-	return aux.NegateAnyFilter(c) and c:IsRelateToEffect(e)
+	return aux.NegateAnyFilter(c) and c:IsRelateToChain(0)
 end
 function c75402014.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

@@ -34,7 +34,7 @@ function c31828916.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function c31828916.cfilter2(c,e,tp)
-	return c:IsRace(RACE_MACHINE) and c:IsControler(tp) and c:IsRelateToEffect(e)
+	return c:IsRace(RACE_MACHINE) and c:IsControler(tp) and c:IsRelateToChain(0)
 		and Duel.IsExistingMatchingCard(c31828916.filter,tp,LOCATION_DECK,0,1,nil,c:GetAttack(),c:GetAttribute(),e,tp)
 end
 function c31828916.operation(e,tp,eg,ep,ev,re,r,rp)

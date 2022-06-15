@@ -29,7 +29,7 @@ function c56364287.lvtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c56364287.lvop(e,tp,eg,ep,ev,re,r,rp,c)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)

@@ -39,7 +39,7 @@ function c35960413.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c35960413.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -69,7 +69,7 @@ function c35960413.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local lc=tg:GetFirst()
 	if lc==tc then lc=tg:GetNext() end
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsControler(tp) and lc:IsRelateToEffect(e) and lc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:IsControler(tp) and lc:IsRelateToChain(0) and lc:IsFaceup() then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_LEVEL)

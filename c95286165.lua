@@ -28,7 +28,7 @@ function c95286165.mgfilter(c,e,tp,fusc,mg)
 end
 function c95286165.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not (tc:IsRelateToEffect(e) and tc:IsFaceup()) then return end
+	if not (tc:IsRelateToChain(0) and tc:IsFaceup()) then return end
 	local mg=tc:GetMaterial()
 	local ct=mg:GetCount()
 	local sumtype=tc:GetSummonType()

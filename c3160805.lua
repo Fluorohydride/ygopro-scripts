@@ -55,7 +55,7 @@ function c3160805.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:SetLabel(op)
 end
 function c3160805.operation(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetLabel()==2 or not e:GetHandler():IsRelateToEffect(e) then return end
+	if e:GetLabel()==2 or not e:GetHandler():IsRelateToChain(0) then return end
 	if e:GetLabel()==0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c3160805.tgfilter1,tp,LOCATION_HAND,0,1,1,nil,tp)

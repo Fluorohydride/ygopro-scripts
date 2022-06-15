@@ -32,7 +32,7 @@ end
 function c39761138.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsExistingMatchingCard(Card.IsSetCard,tp,LOCATION_GRAVE,0,3,nil,0x2c) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 		if e:GetLabel()==1 then
 			Duel.BreakEffect()

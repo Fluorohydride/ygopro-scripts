@@ -157,7 +157,7 @@ end
 function c33900648.desop(e,tp,eg,ep,ev,re,r,rp)
 	if bit.band(c33900648[Duel.GetTurnPlayer()],ATTRIBUTE_EARTH)==0 then return end
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsPosition(POS_FACEUP_DEFENSE) then
+	if tc and tc:IsRelateToChain(0) and tc:IsPosition(POS_FACEUP_DEFENSE) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

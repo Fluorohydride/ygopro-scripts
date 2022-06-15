@@ -57,7 +57,7 @@ function c87602890.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c87602890.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		if Duel.Destroy(tc,REASON_EFFECT)==0 or bit.band(tc:GetPreviousAttributeOnField(),ATTRIBUTE_LIGHT)==0 then return end
 		local lv=tc:GetOriginalLevel()
 		if tc:IsType(TYPE_XYZ) then

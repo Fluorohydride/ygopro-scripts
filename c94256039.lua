@@ -50,7 +50,7 @@ function c94256039.acop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c94256039.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return e:GetHandler():IsRelateToChain(0) end
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,ep,3000)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,e:GetHandler(),1,0,0)
 end

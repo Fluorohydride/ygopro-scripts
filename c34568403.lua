@@ -23,7 +23,7 @@ function c34568403.cointg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c34568403.coinop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	local res=0
 	if c:IsHasEffect(73206827) then
 		res=1-Duel.SelectOption(tp,60,61)
@@ -61,7 +61,7 @@ function c34568403.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c34568403.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetHandler():GetBattleTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

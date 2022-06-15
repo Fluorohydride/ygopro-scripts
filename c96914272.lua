@@ -41,7 +41,7 @@ function c96914272.lvcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c96914272.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local lv=e:GetLabelObject():GetLabel()
 		local clv=c:GetLevel()
 		local e1=Effect.CreateEffect(c)

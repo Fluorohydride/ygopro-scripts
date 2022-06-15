@@ -35,14 +35,14 @@ function c57970721.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local lc=tg:GetFirst()
 	if lc==tc then lc=tg:GetNext() end
-	if tc:IsRelateToEffect(e) and tc:IsControler(tp) and tc:IsFaceup() and tc:IsAttackAbove(1000) then
+	if tc:IsRelateToChain(0) and tc:IsControler(tp) and tc:IsFaceup() and tc:IsAttackAbove(1000) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
 		e1:SetValue(-1000)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_OPPO_TURN)
 		tc:RegisterEffect(e1)
-		if not tc:IsHasEffect(EFFECT_REVERSE_UPDATE) and lc:IsRelateToEffect(e) and lc:IsControler(1-tp) then
+		if not tc:IsHasEffect(EFFECT_REVERSE_UPDATE) and lc:IsRelateToChain(0) and lc:IsControler(1-tp) then
 			Duel.Destroy(lc,REASON_EFFECT)
 		end
 	end

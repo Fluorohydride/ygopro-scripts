@@ -71,7 +71,7 @@ function c58981727.tfop(e,tp,eg,ep,ev,re,r,rp)
 	if sc then
 		Duel.MoveToField(sc,tp,tp,LOCATION_SZONE,POS_FACEUP,true)
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 		end
 	end
@@ -95,7 +95,7 @@ function c58981727.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58981727.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
 end

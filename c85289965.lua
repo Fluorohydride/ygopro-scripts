@@ -53,10 +53,10 @@ end
 function c85289965.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsAttackPos() and tc:IsRelateToEffect(e) then
+	if tc:IsAttackPos() and tc:IsRelateToChain(0) then
 		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE)
 	end
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
 		e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
@@ -77,8 +77,8 @@ end
 function c85289965.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() or tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if not c:IsRelateToChain(0) or c:IsFacedown() or tc:IsFacedown() or not tc:IsRelateToChain(0) then return end
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local atk=tc:GetAttack()
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)
@@ -87,7 +87,7 @@ function c85289965.atkop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		e2:SetValue(math.ceil(atk/2))
 		c:RegisterEffect(e2)
-		if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+		if tc:IsFaceup() and tc:IsRelateToChain(0) and not tc:IsImmuneToEffect(e) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_SET_ATTACK_FINAL)

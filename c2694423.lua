@@ -28,7 +28,7 @@ function c2694423.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c2694423.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end
@@ -41,7 +41,7 @@ function c2694423.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c2694423.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) then
+	if tc and tc:IsRelateToChain(0) and tc:IsControler(1-tp) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

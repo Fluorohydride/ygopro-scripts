@@ -58,7 +58,7 @@ function c87046457.desop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c87046457.filter(c,e,tp)
-	return c:IsFaceup() and c:IsRace(RACE_PLANT) and c:IsControler(tp) and c:IsPreviousLocation(LOCATION_GRAVE) and (not e or c:IsRelateToEffect(e))
+	return c:IsFaceup() and c:IsRace(RACE_PLANT) and c:IsControler(tp) and c:IsPreviousLocation(LOCATION_GRAVE) and (not e or c:IsRelateToChain(0))
 end
 function c87046457.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c87046457.filter,1,nil,nil,tp) end

@@ -57,7 +57,7 @@ function c92767273.atktg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c92767273.atkop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local diff=math.abs(tc:GetBaseAttack()-tc:GetAttack())
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

@@ -73,7 +73,7 @@ end
 function c86607583.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ct=Duel.GetMatchingGroupCount(c86607583.cfilter,tp,LOCATION_GRAVE,0,nil)
-	if c:IsRelateToEffect(e) and ct>0 and c:IsCanAddCounter(0x47,ct) then
+	if c:IsRelateToChain(0) and ct>0 and c:IsCanAddCounter(0x47,ct) then
 		c:AddCounter(0x47,ct)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c86607583.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
@@ -106,7 +106,7 @@ function c86607583.rccon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c86607583.rcop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		if c:IsCanRemoveCounter(tp,0x47,1,REASON_EFFECT) then
 			c:RemoveCounter(tp,0x47,1,REASON_EFFECT)
 		else

@@ -44,7 +44,7 @@ function c95440946.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c95440946.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoGrave(tc,REASON_EFFECT)
 	end
 end
@@ -64,7 +64,7 @@ function c95440946.spfilter(c,e,tp)
 end
 function c95440946.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SendtoHand(c,nil,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_HAND)
+	if c:IsRelateToChain(0) and Duel.SendtoHand(c,nil,REASON_EFFECT)~=0 and c:IsLocation(LOCATION_HAND)
 		and Duel.IsExistingMatchingCard(c95440946.spfilter,tp,LOCATION_HAND,0,1,nil,e,tp)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(95440946,2)) then
 		Duel.ShuffleHand(tp)

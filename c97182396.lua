@@ -74,8 +74,8 @@ end
 function c97182396.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		if c:IsRelateToEffect(e) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
+		if c:IsRelateToChain(0) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
 			Duel.Equip(tp,c,tc)
 			--eqlimit
 			local e1=Effect.CreateEffect(c)
@@ -86,7 +86,7 @@ function c97182396.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetValue(c97182396.eqlimit)
 			c:RegisterEffect(e1)
 		end
-	elseif c:IsRelateToEffect(e) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
+	elseif c:IsRelateToChain(0) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
 		c:CancelToGrave(false)
 	end
 end

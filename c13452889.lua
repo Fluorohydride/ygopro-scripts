@@ -41,7 +41,7 @@ end
 function c13452889.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local zone1=c:GetLinkedZone(tp)
 		local zone2=c:GetLinkedZone(1-tp)
 		if tc:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP,tp,zone1)

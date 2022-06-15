@@ -91,7 +91,7 @@ end
 function c21903613.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) or not tc:IsRelateToChain(0) then return end
 	local lg=c:GetLinkedGroup()
 	local lv=tc:GetLevel()
 	local g=Duel.GetMatchingGroup(c21903613.lvfilter2,tp,LOCATION_MZONE,LOCATION_MZONE,nil,lg,lv)

@@ -32,7 +32,7 @@ function c19420830.tdfilter(c)
 end
 function c19420830.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local g=Duel.GetMatchingGroup(c19420830.tdfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0
 		and g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(19420830,1)) then

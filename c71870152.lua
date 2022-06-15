@@ -41,7 +41,7 @@ function c71870152.lvcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c71870152.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFacedown() or not c:IsRelateToEffect(e) or c:IsLevelAbove(12) then return end
+	if c:IsFacedown() or not c:IsRelateToChain(0) or c:IsLevelAbove(12) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_LEVEL)
@@ -68,7 +68,7 @@ function c71870152.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc then return end
 	local atk=tc:GetAttack()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		Duel.Damage(1-tp,atk,REASON_EFFECT)
 	end
 end

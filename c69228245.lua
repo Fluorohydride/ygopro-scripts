@@ -44,7 +44,7 @@ end
 function c69228245.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=eg:GetFirst()
-	if c:IsRelateToEffect(e)
+	if c:IsRelateToChain(0)
 		and Duel.Destroy(c,REASON_EFFECT)~=0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and tc and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK)~=0 then
@@ -66,7 +66,7 @@ end
 function c69228245.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e)
+	if c:IsRelateToChain(0) and tc:IsFaceup() and tc:IsRelateToChain(0)
 		and not tc:IsImmuneToEffect(e) then
 		c:SetCardTarget(tc)
 		local e1=Effect.CreateEffect(c)

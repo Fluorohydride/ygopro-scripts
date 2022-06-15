@@ -22,7 +22,7 @@ end
 function c11228035.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,0,nil)
-	if g:GetCount()>0 and tc:IsRelateToEffect(e) then
+	if g:GetCount()>0 and tc:IsRelateToChain(0) then
 		local atk=tc:GetRank()*200
 		local sc=g:GetFirst()
 		while sc do

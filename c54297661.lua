@@ -60,7 +60,7 @@ end
 function c54297661.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not (c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup()) then return end
+	if not (c:IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup()) then return end
 	local atk=tc:GetAttack()
 	local def=tc:GetDefense()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0

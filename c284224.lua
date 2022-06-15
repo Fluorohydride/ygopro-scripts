@@ -74,7 +74,7 @@ function c284224.cfilter(c)
 end
 function c284224.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return ep==1-tp and re:GetHandler():IsOnField() and re:GetHandler():IsRelateToEffect(re) and re:IsActiveType(TYPE_MONSTER)
+	return ep==1-tp and re:GetHandler():IsOnField() and re:GetHandler():IsRelateToChain(ev) and re:IsActiveType(TYPE_MONSTER)
 		and Duel.IsExistingMatchingCard(c284224.cfilter,tp,LOCATION_MZONE,0,2,nil)
 end
 function c284224.destg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -82,7 +82,7 @@ function c284224.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 end
 function c284224.desop(e,tp,eg,ep,ev,re,r,rp)
-	if re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsRelateToChain(ev) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

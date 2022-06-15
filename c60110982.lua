@@ -40,7 +40,7 @@ function c60110982.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c60110982.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.GetControl(c,1-tp)
 	end
 end

@@ -51,7 +51,7 @@ function c32281491.spop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
-		if Duel.GetLocationCount(tp,LOCATION_SZONE)<2 or not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+		if Duel.GetLocationCount(tp,LOCATION_SZONE)<2 or not c:IsRelateToChain(0) or c:IsFacedown() then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local sg=Duel.SelectMatchingCard(tp,c32281491.eqfilter,tp,LOCATION_MZONE,0,1,1,tc)
 		local ec=sg:GetFirst()

@@ -32,14 +32,14 @@ function c74298287.spcon1(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.IsExistingMatchingCard(c74298287.cfilter,tp,LOCATION_MZONE,0,1,nil)
 end
 function c74298287.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+	if chk==0 then return e:GetHandler():IsRelateToChain(0) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and e:GetHandler():IsCanBeSpecialSummoned(e,0,tp,false,false) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c74298287.spop1(e,tp,eg,ep,ev,re,r,rp)
 	if not Duel.IsExistingMatchingCard(c74298287.cfilter,tp,LOCATION_MZONE,0,1,nil) then return end
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c74298287.spcon2(e,tp,eg,ep,ev,re,r,rp)
@@ -58,7 +58,7 @@ function c74298287.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c74298287.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

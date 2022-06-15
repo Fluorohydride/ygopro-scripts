@@ -45,7 +45,7 @@ function c67865534.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c67865534.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.NegateAttack() then
 		Duel.BreakEffect()
 		Duel.Destroy(c,REASON_EFFECT)
@@ -83,7 +83,7 @@ function c67865534.spop(e,tp,eg,ep,ev,re,r,rp)
 		end
 		Duel.SpecialSummonComplete()
 		if (Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1))
-			and c:IsRelateToEffect(e) and c:IsFaceup()
+			and c:IsRelateToChain(0) and c:IsFaceup()
 			and Duel.SelectEffectYesNo(tp,c,aux.Stringid(67865534,3)) then
 			Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 		end
@@ -106,7 +106,7 @@ end
 function c67865534.xyzop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) and tc:IsRelateToChain(0) then
 		Duel.Overlay(c,Group.FromCards(tc))
 	end
 end

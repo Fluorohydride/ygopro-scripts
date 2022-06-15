@@ -48,7 +48,7 @@ function c2665273.drop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local td=Duel.Draw(tp,1,REASON_EFFECT)
 	local ed=Duel.Draw(1-tp,1,REASON_EFFECT)
-	if td+ed>0 and c:IsRelateToEffect(e) then
+	if td+ed>0 and c:IsRelateToChain(0) then
 		local sg=Group.CreateGroup()
 		local tg1=Duel.GetMatchingGroup(c2665273.matfilter,tp,LOCATION_HAND+LOCATION_ONFIELD,0,aux.ExceptThisCard(e),e)
 		if td>0 and tg1:GetCount()>0 then

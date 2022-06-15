@@ -92,7 +92,7 @@ end
 function c77498348.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==ATTRIBUTE_LIGHT then
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 		end
 	else

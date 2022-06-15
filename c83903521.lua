@@ -28,7 +28,7 @@ function c83903521.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c83903521.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsRace(RACE_ZOMBIE) then
+	if tc:IsRelateToChain(0) and tc:IsRace(RACE_ZOMBIE) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

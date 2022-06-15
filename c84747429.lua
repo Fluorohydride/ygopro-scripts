@@ -35,7 +35,7 @@ end
 function c84747429.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 and c:IsRelateToChain(0) then
 		Duel.BreakEffect()
 		if Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)==0 then return end
 		local e1=Effect.CreateEffect(c)

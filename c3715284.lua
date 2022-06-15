@@ -32,7 +32,7 @@ function c3715284.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c3715284.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.Destroy(c,REASON_EFFECT)>0
+	if c:IsRelateToChain(0) and Duel.Destroy(c,REASON_EFFECT)>0
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>=2 and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c3715284.spfilter,tp,LOCATION_DECK,0,2,2,nil,e,tp)

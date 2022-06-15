@@ -48,7 +48,7 @@ function c52834429.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c52834429.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	if not tc or not tc:IsRelateToEffect(e) then return end
+	if not tc or not tc:IsRelateToChain(0) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)>0 then
 		Duel.Draw(p,d,REASON_EFFECT)

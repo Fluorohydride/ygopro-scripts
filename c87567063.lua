@@ -24,7 +24,7 @@ function c87567063.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c87567063.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.GetControl(tc,tp,PHASE_BATTLE,1)
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())

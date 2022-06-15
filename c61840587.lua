@@ -42,7 +42,7 @@ function c61840587.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	e:SetLabelObject(nil)
 end
 function c61840587.sfilter(c,e,tp)
-	return c:IsRelateToEffect(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK)
+	return c:IsRelateToChain(0) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_ATTACK)
 end
 function c61840587.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

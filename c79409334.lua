@@ -16,7 +16,7 @@ function c79409334.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c79409334.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsPosition(POS_FACEUP_ATTACK) then
+	if c:IsRelateToChain(0) and c:IsPosition(POS_FACEUP_ATTACK) then
 		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end

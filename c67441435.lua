@@ -22,7 +22,7 @@ function c67441435.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.DiscardDeck(tp,1,REASON_EFFECT)~=0 then
 		local oc=Duel.GetOperatedGroup():GetFirst()
 		local c=e:GetHandler()
-		if oc:IsLocation(LOCATION_GRAVE) and c:IsRelateToEffect(e) then
+		if oc:IsLocation(LOCATION_GRAVE) and c:IsRelateToChain(0) then
 			Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

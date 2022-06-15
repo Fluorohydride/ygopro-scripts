@@ -49,7 +49,7 @@ function c59170782.tgcon1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c59170782.tgop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		if Duel.CheckChainTarget(ev,c) then
 			local g=Group.CreateGroup()
 			g:AddCard(c)
@@ -68,7 +68,7 @@ function c59170782.tgcon2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c59170782.tgop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and not Duel.GetAttacker():IsImmuneToEffect(e) then
+	if c:IsRelateToChain(0) and not Duel.GetAttacker():IsImmuneToEffect(e) then
 		Duel.ChangeAttackTarget(c)
 	end
 end
@@ -88,7 +88,7 @@ function c59170782.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c59170782.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

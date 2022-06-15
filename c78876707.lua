@@ -43,7 +43,7 @@ function c78876707.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,tg,ct,0,0)
 end
 function c78876707.thop(e,tp,eg,ep,ev,re,r,rp,chk)
-	local rg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local rg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	if rg:GetCount()>0 then
 		Duel.SendtoHand(rg,nil,REASON_EFFECT)
 	end
@@ -73,7 +73,7 @@ function c78876707.spop(e,tp,eg,ep,ev,re,r,rp)
 		tc:SetMaterial(nil)
 		if Duel.SpecialSummon(tc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)>0 then
 			tc:CompleteProcedure()
-			if c:IsRelateToEffect(e) then
+			if c:IsRelateToChain(0) then
 				Duel.Overlay(tc,Group.FromCards(c))
 			end
 		end

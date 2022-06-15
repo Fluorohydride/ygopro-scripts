@@ -44,7 +44,7 @@ function c56292140.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,1,0,0x40)
 end
 function c56292140.ctop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		e:GetHandler():AddCounter(0x40,1)
 	end
 end

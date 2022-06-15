@@ -66,7 +66,7 @@ function c90488465.dfilter(c,tp)
 	return c:IsLocation(LOCATION_DECK) and c:IsControler(tp)
 end
 function c90488465.tdop(e,tp,eg,ep,ev,re,r,rp)
-	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	if tg:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=tg:FilterSelect(tp,c90488465.spfilter,1,1,nil,e,tp)

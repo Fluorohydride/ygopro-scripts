@@ -62,7 +62,7 @@ function c66141736.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c66141736.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -80,7 +80,7 @@ function c66141736.sptg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c66141736.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	if ft<2 or g:GetCount()~=2 or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 end

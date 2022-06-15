@@ -54,7 +54,7 @@ end
 function c35645105.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local lv=c:GetOriginalLevel()+tc:GetOriginalLevel()
 		c35645105.setlv(c,c,lv)
 		c35645105.setlv(c,tc,lv)

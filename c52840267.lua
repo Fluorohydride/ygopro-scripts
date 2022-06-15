@@ -77,7 +77,7 @@ end
 function c52840267.cpop(e,tp,eg,ep,ev,re,r,rp)
 	local te=e:GetLabelObject()
 	if not te then return end
-	if not te:GetHandler():IsRelateToEffect(e) then return end
+	if not te:GetHandler():IsRelateToChain(0) then return end
 	e:SetLabelObject(te:GetLabelObject())
 	local op=te:GetOperation()
 	if op then op(e,tp,eg,ep,ev,re,r,rp) end

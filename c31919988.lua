@@ -41,7 +41,7 @@ end
 function c31919988.atop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=c:GetBattleTarget()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() or tc:IsFacedown() or not tc:IsRelateToEffect(e)
+	if not c:IsRelateToChain(0) or c:IsFacedown() or tc:IsFacedown() or not tc:IsRelateToChain(0)
 		or tc:GetAttack()<=c:GetAttack() then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

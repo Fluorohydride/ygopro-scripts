@@ -32,8 +32,8 @@ function c89326990.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<1 then return end
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==0 then return end
-	if not c:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) or Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)==0 then return end
+	if not c:IsRelateToChain(0) then return end
 	local mg=Group.FromCards(c,tc)
 	local g=Duel.GetMatchingGroup(c89326990.scfilter,tp,LOCATION_EXTRA,0,nil,mg)
 	if g:GetCount()>0 then

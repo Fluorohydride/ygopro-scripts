@@ -77,8 +77,8 @@ function c94303232.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	if dc==tc then tc=g:GetNext() end
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		if Duel.Equip(tp,c,tc) and dc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup() then
+		if Duel.Equip(tp,c,tc) and dc:IsRelateToChain(0) then
 			tc:RegisterFlagEffect(94303233,RESET_EVENT+RESETS_STANDARD,0,1)
 			c:SetCardTarget(dc)
 		end
@@ -100,7 +100,7 @@ function c94303232.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c94303232.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	end
 end

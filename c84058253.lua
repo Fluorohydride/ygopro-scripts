@@ -39,7 +39,7 @@ function c84058253.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,g:GetCount(),0,0)
 end
 function c84058253.desop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	Duel.Destroy(g,REASON_EFFECT)
 end
 function c84058253.tgfilter(c)
@@ -56,7 +56,7 @@ function c84058253.tgop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(g,REASON_EFFECT)
 	local c=e:GetHandler()
 	local ct=g:FilterCount(Card.IsLocation,nil,LOCATION_GRAVE)
-	if ct>0 and c:IsRelateToEffect(e) then
+	if ct>0 and c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EXTRA_ATTACK)

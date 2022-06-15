@@ -46,7 +46,7 @@ function c25343017.potg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c25343017.poop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsAttackPos() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsAttackPos() and c:IsRelateToChain(0) then
 		Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 	end
 end
@@ -67,7 +67,7 @@ end
 function c25343017.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local c=e:GetHandler()
-	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and c:IsRelateToChain(0) then
 		tc:RegisterFlagEffect(25343017,RESET_EVENT+RESETS_STANDARD,0,0)
 		e:GetLabelObject():SetLabel(1)
 		if c:GetFlagEffect(25343017)==0 then
@@ -103,7 +103,7 @@ function c25343017.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c25343017.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

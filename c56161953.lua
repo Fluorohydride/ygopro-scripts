@@ -40,7 +40,7 @@ function c56161953.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c56161953.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -60,7 +60,7 @@ function c56161953.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c56161953.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

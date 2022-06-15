@@ -41,7 +41,7 @@ function c80764541.desop(e,tp,eg,ep,ev,re,r,rp)
 		return
 	end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

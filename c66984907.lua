@@ -78,8 +78,8 @@ end
 function c66984907.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		if c:IsRelateToEffect(e) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
+		if c:IsRelateToChain(0) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
 			Duel.Equip(tp,c,tc)
 			--Add Equip limit
 			local e1=Effect.CreateEffect(c)
@@ -90,7 +90,7 @@ function c66984907.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetValue(c66984907.eqlimit)
 			c:RegisterEffect(e1)
 		end
-	elseif c:IsRelateToEffect(e) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
+	elseif c:IsRelateToChain(0) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
 		c:CancelToGrave(false)
 	end
 end
@@ -112,7 +112,7 @@ end
 function c66984907.togop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) then
 		local g=Group.FromCards(c,tc)
 		Duel.SendtoGrave(g,REASON_EFFECT)
 	end
@@ -136,7 +136,7 @@ function c66984907.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc and Duel.SendtoHand(tc,nil,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_HAND) then
 		Duel.ConfirmCards(1-tp,tc)
-		if c:IsRelateToEffect(e) then
+		if c:IsRelateToChain(0) then
 			Duel.SendtoGrave(c,REASON_EFFECT)
 		end
 	end

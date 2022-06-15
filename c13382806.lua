@@ -33,7 +33,7 @@ end
 function c13382806.operation(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0
+	if tc:IsRelateToChain(0) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0
 		and Duel.IsExistingMatchingCard(c13382806.spfilter2,tp,LOCATION_HAND,0,1,nil,e,tp,tc:GetAttribute())
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(13382806,0)) then
 		Duel.BreakEffect()

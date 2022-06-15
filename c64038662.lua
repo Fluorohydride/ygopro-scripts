@@ -59,7 +59,7 @@ function c64038662.efop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 		local tc2=g:GetFirst()
 		if tc1==tc2 then tc2=g:GetNext() end
-		if tc1:IsFaceup() and tc2:IsFaceup() and tc1:IsRelateToEffect(e) and tc2:IsRelateToEffect(e) and Duel.Equip(tp,tc1,tc2,false) then
+		if tc1:IsFaceup() and tc2:IsFaceup() and tc1:IsRelateToChain(0) and tc2:IsRelateToChain(0) and Duel.Equip(tp,tc1,tc2,false) then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_EQUIP_LIMIT)
@@ -71,7 +71,7 @@ function c64038662.efop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	else
 		local tc=Duel.GetFirstTarget()
-		if tc and tc:IsRelateToEffect(e) then
+		if tc and tc:IsRelateToChain(0) then
 			Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 		end
 	end

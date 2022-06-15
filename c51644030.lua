@@ -24,7 +24,7 @@ function c51644030.initial_effect(c)
 end
 function c51644030.atkop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
@@ -44,7 +44,7 @@ end
 function c51644030.atkop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and c:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and c:IsFaceup() then
 		local atk=c:GetAttack()
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -52,7 +52,7 @@ function c51644030.atkop2(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetValue(-atk)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		tc:RegisterEffect(e1)
-		if c:IsRelateToEffect(e) and not tc:IsHasEffect(EFFECT_REVERSE_UPDATE) then
+		if c:IsRelateToChain(0) and not tc:IsHasEffect(EFFECT_REVERSE_UPDATE) then
 			Duel.BreakEffect()
 			if Duel.Remove(c,0,REASON_EFFECT+REASON_TEMPORARY)~=0 then
 				local e2=Effect.CreateEffect(c)

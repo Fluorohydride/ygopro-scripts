@@ -24,7 +24,7 @@ function c62279055.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c62279055.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		if Duel.NegateAttack() then
 			Duel.Damage(1-tp,tc:GetAttack(),REASON_EFFECT)
 		end

@@ -25,7 +25,7 @@ function c77994337.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c77994337.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local dc=Duel.TossDice(tp,1)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

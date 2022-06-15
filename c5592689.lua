@@ -38,7 +38,7 @@ function c5592689.sstg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,0,0)
 end
 function c5592689.ssop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) and not Duel.IsExistingMatchingCard(c5592689.filter,tp,LOCATION_ONFIELD,0,1,nil) then
+	if e:GetHandler():IsRelateToChain(0) and not Duel.IsExistingMatchingCard(c5592689.filter,tp,LOCATION_ONFIELD,0,1,nil) then
 		Duel.SpecialSummon(e:GetHandler(),0,tp,tp,false,false,POS_FACEUP_ATTACK)
 	end
 end
@@ -52,7 +52,7 @@ function c5592689.dmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,0,0,tp,1000)
 end
 function c5592689.dmop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) or e:GetHandler():IsFacedown() then return end
+	if not e:GetHandler():IsRelateToChain(0) or e:GetHandler():IsFacedown() then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Damage(p,d,REASON_EFFECT)
 end

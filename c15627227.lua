@@ -43,7 +43,7 @@ end
 function c15627227.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local lc=Duel.GetFirstTarget()
-	if lc:IsRelateToEffect(e) and lc:IsFaceup() then
+	if lc:IsRelateToChain(0) and lc:IsFaceup() then
 		local zone=lc:GetLinkedZone(tp)
 		if Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)<=0 then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
@@ -97,7 +97,7 @@ function c15627227.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c15627227.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

@@ -23,7 +23,7 @@ function c21830679.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c21830679.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and not c:IsImmuneToEffect(e) then
+	if c:IsRelateToChain(0) and c:IsFaceup() and not c:IsImmuneToEffect(e) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)

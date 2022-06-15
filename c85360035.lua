@@ -66,7 +66,7 @@ function c85360035.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c85360035.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if tc and tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,c85360035.thfilter,tp,LOCATION_DECK,0,1,1,nil)
 		if g:GetCount()>0 then
@@ -82,7 +82,7 @@ function c85360035.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c85360035.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
 end

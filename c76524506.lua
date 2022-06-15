@@ -42,7 +42,7 @@ function c76524506.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c76524506.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local p=tc:GetControler()
 		if Duel.Destroy(tc,REASON_EFFECT)~=0 and Duel.GetLocationCount(p,LOCATION_MZONE,tp)>0 and Duel.IsPlayerCanSpecialSummonMonster(tp,71645243,0,TYPES_TOKEN_MONSTER,800,800,2,RACE_PLANT,ATTRIBUTE_DARK,POS_FACEUP_ATTACK,p) then
 			Duel.BreakEffect()
@@ -75,7 +75,7 @@ function c76524506.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c76524506.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsControler(tp) or not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsControler(tp) or not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	local g=Duel.GetMatchingGroup(Card.IsSynchroSummonable,tp,LOCATION_EXTRA,0,nil,c)
 	if g:GetCount()>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

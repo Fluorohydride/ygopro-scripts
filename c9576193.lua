@@ -33,8 +33,8 @@ function c9576193.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc2=g:GetFirst()
 	if tc2==tc1 then tc2=g:GetNext() end
-	if tc1:IsFacedown() or not tc1:IsRelateToEffect(e) then return end
-	if not tc2:IsRelateToEffect(e) or not tc2:IsLevel(tc1:GetLevel()) or Duel.Remove(tc2,POS_FACEUP,REASON_EFFECT)==0 then return end
+	if tc1:IsFacedown() or not tc1:IsRelateToChain(0) then return end
+	if not tc2:IsRelateToChain(0) or not tc2:IsLevel(tc1:GetLevel()) or Duel.Remove(tc2,POS_FACEUP,REASON_EFFECT)==0 then return end
 	Duel.BreakEffect()
 	if Duel.Draw(tp,1,REASON_EFFECT)==0 then return end
 	local dr=Duel.GetOperatedGroup():GetFirst()

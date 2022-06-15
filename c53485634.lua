@@ -39,12 +39,12 @@ function c53485634.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,g:GetCount(),0,0)
 end
 function c53485634.filter(c,e,tp)
-	return c:IsRelateToEffect(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,c:GetPreviousPosition())
+	return c:IsRelateToChain(0) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,c:GetPreviousPosition())
 end
 function c53485634.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c53485634.filter,nil,e,tp)
-	if not Duel.IsPlayerAffectedByEffect(tp,59822133) and c:IsRelateToEffect(e) then
+	if not Duel.IsPlayerAffectedByEffect(tp,59822133) and c:IsRelateToChain(0) then
 		if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE) then
 			local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 			if ft>0 and g:GetCount()>0 and not Duel.IsPlayerAffectedByEffect(tp,59822133) then

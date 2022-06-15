@@ -39,7 +39,7 @@ function c38105306.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c38105306.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		c:AddCounter(0x62,1)
 	end
 end
@@ -55,7 +55,7 @@ function c38105306.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,e:GetHandler(),1,0,0)
 end
 function c38105306.hdop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) and Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT) then
+	if e:GetHandler():IsRelateToChain(0) and Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT) then
 		Duel.BreakEffect()
 		Duel.DiscardHand(1-tp,nil,e:GetLabel(),e:GetLabel(),REASON_EFFECT+REASON_DISCARD)
 	end

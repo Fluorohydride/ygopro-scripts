@@ -34,7 +34,7 @@ function c77133792.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c77133792.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local sg=g:Filter(Card.IsRelateToChain,nil,0)
 	Duel.SendtoHand(sg,nil,REASON_EFFECT)
 end
 function c77133792.spfilter(c,e,tp)
@@ -51,7 +51,7 @@ function c77133792.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c77133792.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

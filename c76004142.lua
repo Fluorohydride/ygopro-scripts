@@ -34,7 +34,7 @@ function c76004142.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c76004142.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local atk=math.floor(tc:GetAttack()/2)
 		local val=Duel.Damage(tp,atk,REASON_EFFECT)
 		if val>0 and Duel.GetLP(tp)>0 then

@@ -43,7 +43,7 @@ function c15317640.addct(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_COUNTER,nil,2,0,0x1f)
 end
 function c15317640.addc(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		e:GetHandler():AddCounter(0x1f,2)
 	end
 end
@@ -71,7 +71,7 @@ function c15317640.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c15317640.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		Duel.Destroy(c,REASON_EFFECT)
 	end
 end

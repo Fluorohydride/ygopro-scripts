@@ -47,7 +47,7 @@ function c90434926.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c90434926.drop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	if not e:GetHandler():IsRelateToEffect(e) or not tc:IsRelateToEffect(e) then return end
+	if not e:GetHandler():IsRelateToChain(0) or not tc:IsRelateToChain(0) then return end
 	Duel.SendtoGrave(tc,REASON_EFFECT)
 	if tc:IsLocation(LOCATION_GRAVE) and Duel.IsPlayerCanDraw(tp,1) and Duel.SelectYesNo(tp,aux.Stringid(90434926,1)) then
 		Duel.BreakEffect()

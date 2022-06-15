@@ -27,7 +27,7 @@ function c54458867.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c54458867.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g,p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
-	g=g:Filter(Card.IsRelateToEffect,nil,e)
+	g=g:Filter(Card.IsRelateToChain,nil,0)
 	if g:GetCount()>0 and Duel.Destroy(g,REASON_EFFECT)>0 then
 		Duel.Draw(p,d,REASON_EFFECT)
 	end

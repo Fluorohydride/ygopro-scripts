@@ -39,7 +39,7 @@ function c65398390.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c65398390.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -59,7 +59,7 @@ end
 function c65398390.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local res=Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP)
 		if res then
 			local e1=Effect.CreateEffect(c)
@@ -71,7 +71,7 @@ function c65398390.spop(e,tp,eg,ep,ev,re,r,rp)
 			c:RegisterEffect(e1)
 		end
 		Duel.SpecialSummonComplete()
-		if res and tc:IsRelateToEffect(e) and tc:IsControler(tp) then
+		if res and tc:IsRelateToChain(0) and tc:IsControler(tp) then
 			if not Duel.Equip(tp,tc,c,false) then return end
 			--equip limit
 			local e2=Effect.CreateEffect(c)

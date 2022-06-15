@@ -20,7 +20,7 @@ end
 function c93920745.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	if tg then
-		local sg=tg:Filter(Card.IsRelateToEffect,nil,e)
+		local sg=tg:Filter(Card.IsRelateToChain,nil,0)
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
 	end
 end

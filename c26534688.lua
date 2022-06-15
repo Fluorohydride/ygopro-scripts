@@ -51,7 +51,7 @@ function c26534688.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c26534688.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(26534688,4))
 		local lv=Duel.AnnounceNumber(tp,1,2)
 		local e1=Effect.CreateEffect(e:GetHandler())

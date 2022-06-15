@@ -43,7 +43,7 @@ function c69937550.cbtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c69937550.cbop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and not Duel.GetAttacker():IsImmuneToEffect(e) then
+	if c:IsRelateToChain(0) and not Duel.GetAttacker():IsImmuneToEffect(e) then
 		Duel.ChangeAttackTarget(c)
 	end
 end

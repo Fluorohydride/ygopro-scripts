@@ -43,7 +43,7 @@ function c17315396.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c17315396.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0 then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 		local g=Duel.GetMatchingGroup(c17315396.spfilter,tp,LOCATION_DECK+LOCATION_HAND,0,nil,e,tp)

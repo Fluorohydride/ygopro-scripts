@@ -55,7 +55,7 @@ function c74605254.sctg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c74605254.scop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:GetLeftScale()>=10 then return end
+	if not c:IsRelateToChain(0) or c:GetLeftScale()>=10 then return end
 	local scl=2
 	if c:GetLeftScale()==9 then scl=1 end
 	local e1=Effect.CreateEffect(c)
@@ -89,7 +89,7 @@ function c74605254.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c74605254.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tc)
 	end

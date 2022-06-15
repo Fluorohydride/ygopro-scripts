@@ -37,7 +37,7 @@ end
 function c3019642.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsRace(RACE_DRAGON) then
+	if tc and tc:IsRelateToChain(0) and tc:IsRace(RACE_DRAGON) then
 		local atk=tc:GetTextAttack()
 		if atk<0 then atk=0 end
 		if not Duel.Equip(tp,tc,c,false) then return end

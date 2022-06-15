@@ -24,15 +24,15 @@ function c86060749.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c86060749.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local rc=re:GetHandler()
-	if chk==0 then return aux.ndcon(tp,re) end
+	if chk==0 then return aux.ndcon(tp,re,ev) end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if rc:IsRelateToEffect(re) then
+	if rc:IsRelateToChain(ev) then
 		Duel.SetOperationInfo(0,CATEGORY_TODECK,eg,1,0,0)
 	end
 end
 function c86060749.activate(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()
-	if Duel.NegateActivation(ev) and rc:IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and rc:IsRelateToChain(ev) then
 		rc:CancelToGrave()
 		Duel.SendtoDeck(rc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end

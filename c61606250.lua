@@ -46,7 +46,7 @@ function c61606250.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c61606250.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c61606250.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e,tp,tc:GetCode())
 		local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)

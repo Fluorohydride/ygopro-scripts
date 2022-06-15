@@ -50,7 +50,7 @@ function c30126992.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c30126992.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFacedown() then
+	if tc:IsRelateToChain(0) and tc:IsFacedown() then
 		Duel.ConfirmCards(tp,tc)
 		if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)==0 then
 			Duel.SendtoDeck(tc,nil,SEQ_DECKBOTTOM,REASON_EFFECT)

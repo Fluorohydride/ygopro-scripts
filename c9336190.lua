@@ -34,7 +34,7 @@ function c9336190.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c9336190.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tc)
 	end
@@ -60,8 +60,8 @@ end
 function c9336190.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0
-		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsRelateToEffect(e)
+	if tc:IsRelateToChain(0) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsRelateToChain(0)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,9336190,0x10db,TYPES_NORMAL_TRAP_MONSTER,0,0,tc:GetLevel(),RACE_WARRIOR,ATTRIBUTE_DARK) then
 		c:AddMonsterAttribute(TYPE_NORMAL,0,0,tc:GetLevel(),0,0)
 		Duel.SpecialSummonStep(c,0,tp,tp,true,false,POS_FACEUP)

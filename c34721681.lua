@@ -66,11 +66,11 @@ function c34721681.posop(e,tp,eg,ep,ev,re,r,rp)
 	local opt=e:GetLabel()
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	if opt==0 then
 		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE,POS_FACEDOWN_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)
 	else
-		if c:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+		if c:IsRelateToChain(0) and not tc:IsImmuneToEffect(e) then
 			Duel.Overlay(tc,c)
 		end
 	end

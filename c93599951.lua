@@ -24,7 +24,7 @@ function c93599951.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c93599951.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()
-	if Duel.NegateAttack() and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if Duel.NegateAttack() and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		if tc:IsDefensePos() then
 			Duel.ChangePosition(tc,POS_FACEUP_ATTACK)
 		end

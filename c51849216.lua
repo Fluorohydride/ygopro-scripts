@@ -25,7 +25,7 @@ function c51849216.cfilter(c)
 	return c51849216.atkfilter(c) and c:IsLevel(10)
 end
 function c51849216.activate(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re)
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToChain(ev)
 		and Duel.Remove(eg,POS_FACEUP,REASON_EFFECT)~=0 and eg:GetFirst():IsLocation(LOCATION_REMOVED) then
 		local ct=Duel.GetMatchingGroupCount(Card.IsFaceup,tp,LOCATION_REMOVED,LOCATION_REMOVED,nil)
 		if Duel.IsExistingMatchingCard(c51849216.cfilter,tp,LOCATION_MZONE,0,1,nil) and ct>0

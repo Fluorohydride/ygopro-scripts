@@ -52,7 +52,7 @@ function c54040484.countop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local sg=g:SelectSubGroup(tp,c54040484.fselect,false,1,g:GetCount(),c)
 	if sg and sg:GetCount()>0 and Duel.SendtoGrave(sg,REASON_EFFECT)~=0 then
-		if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+		if c:IsFacedown() or not c:IsRelateToChain(0) then return end
 		local og=Duel.GetOperatedGroup()
 		local ct=og:FilterCount(Card.IsLocation,nil,LOCATION_GRAVE)
 		if ct>0 and c:AddCounter(0x57,ct) then

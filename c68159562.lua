@@ -48,7 +48,7 @@ function c68159562.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local lc=tg:GetFirst()
 	if lc==tc then lc=tg:GetNext() end
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:IsControler(1-tp)
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and tc:IsControler(1-tp)
 		and not tc:IsDisabled() and not tc:IsImmuneToEffect(e) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
@@ -72,7 +72,7 @@ function c68159562.activate(e,tp,eg,ep,ev,re,r,rp)
 			e3:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 			tc:RegisterEffect(e3)
 		end
-		if lc:IsRelateToEffect(e) and lc:IsControler(tp) then
+		if lc:IsRelateToChain(0) and lc:IsControler(tp) then
 			Duel.SendtoHand(lc,nil,REASON_EFFECT)
 		end
 	end
@@ -92,7 +92,7 @@ function c68159562.mattg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c68159562.matop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
+	if tc:IsRelateToChain(0) and not tc:IsImmuneToEffect(e) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c68159562.matfilter),tp,LOCATION_HAND+LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil,e)
 		if g:GetCount()>0 then

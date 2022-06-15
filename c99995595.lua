@@ -14,7 +14,7 @@ function c99995595.filter(c)
 	return c:IsRace(RACE_THUNDER) and c:IsAttackBelow(1500) and c:IsAbleToHand()
 end
 function c99995595.opfilter(c,e)
-	return c:IsRelateToEffect(e) and c:IsRace(RACE_THUNDER)
+	return c:IsRelateToChain(0) and c:IsRace(RACE_THUNDER)
 end
 function c99995595.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:GetControler()==tp and chkc:GetLocation()==LOCATION_GRAVE and c99995595.filter(chkc) end

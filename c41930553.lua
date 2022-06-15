@@ -41,7 +41,7 @@ function c41930553.operation(e,tp,eg,ep,ev,re,r,rp)
 	local cg=Duel.SelectMatchingCard(tp,c41930553.cfilter,tp,LOCATION_HAND,0,1,1,nil)
 	if cg:GetCount()==0 then return end
 	Duel.SendtoGrave(cg,REASON_EFFECT+REASON_DISCARD)
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	end
 end

@@ -49,7 +49,7 @@ end
 function c13143275.spop(e,tp,eg,ep,ev,re,r,rp)
 	local zone=aux.GetMultiLinkedZone(tp)
 	local tc=Duel.GetFirstTarget()
-	if zone~=0 and tc:IsRelateToEffect(e) then
+	if zone~=0 and tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP,zone)
 	end
 end

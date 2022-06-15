@@ -31,7 +31,7 @@ function c63995093.activate(e,tp,eg,ep,ev,re,r,rp)
 	if ft>2 then ft=2 end
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then ft=1 end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local sg=Duel.SelectMatchingCard(tp,c63995093.filter2,tp,LOCATION_DECK,0,1,ft,nil,tc:GetCode(),e,tp)
 		if sg:GetCount()>0 then

@@ -23,7 +23,7 @@ function c62476197.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c62476197.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
 		Duel.Damage(1-tp,400,REASON_EFFECT)
 	end
 end

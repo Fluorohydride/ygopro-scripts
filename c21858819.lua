@@ -47,7 +47,7 @@ function c21858819.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c21858819.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end
@@ -64,7 +64,7 @@ function c21858819.rectg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c21858819.recop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetBaseAttack()>0 then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:GetBaseAttack()>0 then
 		Duel.Recover(tp,tc:GetBaseAttack(),REASON_EFFECT)
 	end
 end

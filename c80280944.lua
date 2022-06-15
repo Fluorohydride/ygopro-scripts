@@ -27,7 +27,7 @@ function c80280944.filter(c)
 end
 function c80280944.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
+	if c:IsRelateToChain(0) and Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP) then
 		local ct=Duel.GetMatchingGroupCount(c80280944.filter,tp,LOCATION_REMOVED,0,nil)
 		if ct>0 then
 			local e1=Effect.CreateEffect(c)

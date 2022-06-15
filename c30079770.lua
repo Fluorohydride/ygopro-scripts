@@ -24,7 +24,7 @@ function c30079770.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c30079770.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local atk=c:GetBaseAttack()
 		Duel.Damage(1-tp,atk,REASON_EFFECT)
 	end

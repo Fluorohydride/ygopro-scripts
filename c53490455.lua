@@ -49,10 +49,10 @@ function c53490455.recop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	if tc==hc then tc=g:GetNext() end
-	if hc:IsFaceup() and hc:IsRelateToEffect(e) then
+	if hc:IsFaceup() and hc:IsRelateToChain(0) then
 		Duel.Recover(tp,hc:GetAttack(),REASON_EFFECT)
 	end
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
@@ -73,7 +73,7 @@ function c53490455.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c53490455.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
 end

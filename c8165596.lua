@@ -61,7 +61,7 @@ function c8165596.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	end
 end
 function c8165596.negop(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToEffect(re) and e:GetLabelObject():IsSetCard(0x7b) then
+	if Duel.NegateEffect(ev) and re:GetHandler():IsRelateToChain(ev) and e:GetLabelObject():IsSetCard(0x7b) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end

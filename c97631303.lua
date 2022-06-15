@@ -57,10 +57,10 @@ function c97631303.spfilter(c,e,tp)
 end
 function c97631303.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if e:GetLabel()==0 and c:IsRelateToEffect(e) then
+	if e:GetLabel()==0 and c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
-	if e:GetLabel()==1 and c:IsRelateToEffect(e)
+	if e:GetLabel()==1 and c:IsRelateToChain(0)
 		and Duel.SendtoGrave(c,REASON_EFFECT)>0 and c:IsLocation(LOCATION_GRAVE)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
 		and Duel.IsExistingMatchingCard(aux.NecroValleyFilter(c97631303.spfilter),tp,LOCATION_GRAVE,0,1,nil,e,tp)

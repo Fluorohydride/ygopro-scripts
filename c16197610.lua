@@ -40,7 +40,7 @@ function c16197610.cfilter(c)
 	return c:IsFaceup() and c:IsSetCard(0x18)
 end
 function c16197610.addc(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		local ct=Duel.GetMatchingGroupCount(c16197610.cfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		e:GetHandler():AddCounter(0x1019,ct)
 	end

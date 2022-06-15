@@ -29,7 +29,7 @@ function c68815132.sumfilter(c)
 end
 function c68815132.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
+	if tc:IsRelateToChain(0) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_HAND) then
 		if Duel.IsExistingMatchingCard(c68815132.sumfilter,tp,LOCATION_HAND+LOCATION_MZONE,0,1,nil)
 			and Duel.SelectYesNo(tp,aux.Stringid(68815132,1)) then
 			Duel.BreakEffect()

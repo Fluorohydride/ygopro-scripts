@@ -43,10 +43,10 @@ function c8264361.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,g,1,0,0)
 end
 function c8264361.spop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
+	if not e:GetHandler():IsRelateToChain(0) then return end
 	local tc=Duel.GetFirstTarget()
 	local zone=bit.band(e:GetHandler():GetLinkedZone(tp),0x1f)
-	if tc:IsRelateToEffect(e) and zone~=0 then
+	if tc:IsRelateToChain(0) and zone~=0 then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP,zone)
 	end
 end

@@ -45,7 +45,7 @@ function c86758915.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c86758915.spfilter,tp,LOCATION_DECK,0,1,1,nil,e,tp)
 	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local c=e:GetHandler()
-		if c:IsRelateToEffect(e) then
+		if c:IsRelateToChain(0) then
 			Duel.BreakEffect()
 			Duel.SendtoHand(c,nil,REASON_EFFECT)
 		end

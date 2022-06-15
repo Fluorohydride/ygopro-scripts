@@ -27,7 +27,7 @@ function c24838456.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		if te:IsHasType(EFFECT_TYPE_ACTIVATE) or te:IsActiveType(TYPE_MONSTER) then
 			local tc=te:GetHandler()
 			ng:AddCard(tc)
-			if tc:IsRelateToEffect(te) then
+			if tc:IsRelateToChain(i) then
 				dg:AddCard(tc)
 			end
 		end
@@ -42,7 +42,7 @@ function c24838456.activate(e,tp,eg,ep,ev,re,r,rp)
 		local te=Duel.GetChainInfo(i,CHAININFO_TRIGGERING_EFFECT)
 		local tc=te:GetHandler()
 		if (te:IsHasType(EFFECT_TYPE_ACTIVATE) or te:IsActiveType(TYPE_MONSTER))
-			and Duel.NegateActivation(i) and tc:IsRelateToEffect(e) and tc:IsRelateToEffect(te) then
+			and Duel.NegateActivation(i) and tc:IsRelateToChain(0) and tc:IsRelateToChain(i) then
 			dg:AddCard(tc)
 		end
 	end

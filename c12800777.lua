@@ -52,7 +52,7 @@ function c12800777.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c12800777.posop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.ChangePosition(tc,POS_FACEUP_DEFENSE,0,POS_FACEUP_ATTACK,0)
 	end
 end

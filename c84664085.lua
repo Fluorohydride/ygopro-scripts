@@ -42,7 +42,7 @@ function c84664085.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c84664085.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	local ct=Duel.Destroy(tg,REASON_EFFECT)
 	if ct~=0 then
 		local e1=Effect.CreateEffect(c)

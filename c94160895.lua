@@ -78,7 +78,7 @@ function c94160895.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	local rm=g1:IsExists(Card.IsAttribute,2,nil,ATTRIBUTE_WIND)
 	if Duel.Destroy(g1,REASON_EFFECT)==2 then
-		if not c:IsRelateToEffect(e) then return end
+		if not c:IsRelateToChain(0) then return end
 		if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)==0 then
 			return
 		end

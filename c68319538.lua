@@ -42,7 +42,7 @@ function c68319538.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c68319538.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local rg=tg:Filter(Card.IsRelateToEffect,nil,e)
+	local rg=tg:Filter(Card.IsRelateToChain,nil,0)
 	Duel.SendtoHand(rg,nil,REASON_EFFECT)
 	local ct=rg:FilterCount(Card.IsLocation,nil,LOCATION_HAND)
 	local g=Duel.GetMatchingGroup(Card.IsCanAddCounter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,0x100e,1)
@@ -66,7 +66,7 @@ function c68319538.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c68319538.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

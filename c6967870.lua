@@ -45,7 +45,7 @@ end
 function c6967870.operation(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 then
 		local tc=Duel.GetFirstTarget()
-		if tc and tc:IsRelateToEffect(e) then
+		if tc and tc:IsRelateToChain(0) then
 			Duel.Destroy(tc,REASON_EFFECT)
 		end
 	else

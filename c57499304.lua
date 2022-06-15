@@ -32,7 +32,7 @@ function c57499304.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c57499304.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetBattleMonster(tp)
-	if tc and tc:IsRelateToEffect(e) and tc:IsControler(tp) then
+	if tc and tc:IsRelateToChain(0) and tc:IsControler(tp) then
 		local og=tc:GetOverlayGroup()
 		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_REMOVED) and og:GetCount()>0 then
 			Duel.Remove(og,POS_FACEUP,REASON_EFFECT)

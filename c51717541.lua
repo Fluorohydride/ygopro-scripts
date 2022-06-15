@@ -34,10 +34,10 @@ end
 function c51717541.activate(e,tp,eg,ep,ev,re,r,rp)
 	local ex1,g1=Duel.GetOperationInfo(0,CATEGORY_REMOVE)
 	local rm=g1:GetFirst()
-	if not rm:IsRelateToEffect(e) then return end
+	if not rm:IsRelateToChain(0) then return end
 	if Duel.Remove(rm,POS_FACEUP,REASON_EFFECT)==0 then return end
 	local ex2,g2=Duel.GetOperationInfo(0,CATEGORY_DESTROY)
 	local ds=g2:GetFirst()
-	if not ds:IsRelateToEffect(e) then return end
+	if not ds:IsRelateToChain(0) then return end
 	Duel.Destroy(ds,REASON_EFFECT)
 end

@@ -23,7 +23,7 @@ function c97452817.cointg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c97452817.coinop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	local res=0
 	if c:IsHasEffect(73206827) then
 		res=1-Duel.SelectOption(tp,60,61)
@@ -87,7 +87,7 @@ function c97452817.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c97452817.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsControler(tp) then
+	if tc:IsRelateToChain(0) and tc:IsControler(tp) then
 		Duel.GetControl(tc,1-tp)
 	end
 end

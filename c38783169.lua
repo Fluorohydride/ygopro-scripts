@@ -36,7 +36,7 @@ function c38783169.tntg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c38783169.tnop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_ADD_TYPE)
@@ -98,8 +98,8 @@ end
 function c38783169.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	if not tc:IsRelateToEffect(e) or not c38783169.filter(tc) then
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or not c38783169.filter(tc) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
@@ -115,6 +115,6 @@ function c38783169.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c38783169.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)
 end

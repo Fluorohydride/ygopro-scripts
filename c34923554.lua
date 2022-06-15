@@ -38,7 +38,7 @@ function c34923554.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c34923554.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end

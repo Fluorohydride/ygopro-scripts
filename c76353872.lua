@@ -38,7 +38,7 @@ function c76353872.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c76353872.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c76353872.condition(e,tp,eg,ep,ev,re,r,rp)
@@ -51,7 +51,7 @@ function c76353872.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c76353872.opetation(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttackTarget()
-	if at:IsRelateToEffect(e) and at:IsFaceup() then
+	if at:IsRelateToChain(0) and at:IsFaceup() then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)

@@ -65,7 +65,7 @@ end
 function c89181134.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local chkf=tp
-	if not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) or (c:IsControler(1-tp) and c:GetCounter(0x1041)<=0) then return end
+	if not c:IsRelateToChain(0) or c:IsImmuneToEffect(e) or (c:IsControler(1-tp) and c:GetCounter(0x1041)<=0) then return end
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c89181134.filter1,nil,e)
 	local mg2=Duel.GetMatchingGroup(c89181134.filter3,tp,0,LOCATION_MZONE,nil,e)
 	mg1:Merge(mg2)

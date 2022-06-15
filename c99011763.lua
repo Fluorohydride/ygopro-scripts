@@ -65,7 +65,7 @@ function c99011763.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c99011763.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		tc:AddCounter(0x1049,1)
 		if tc:GetFlagEffect(99011764)~=0 then return end
 		local e1=Effect.CreateEffect(e:GetHandler())

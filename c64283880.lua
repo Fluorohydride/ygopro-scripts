@@ -30,7 +30,7 @@ function c64283880.spfilter(c,e,tp)
 end
 function c64283880.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if tc:IsRelateToChain(0) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local ct=Duel.GetLocationCount(tp,LOCATION_MZONE)
 		if ct<=0 then return end
 		local g=Duel.GetMatchingGroup(c64283880.spfilter,tp,LOCATION_HAND,0,nil,e,tp)

@@ -90,7 +90,7 @@ function c10000020.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c10000020.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 	end
 end
@@ -108,7 +108,7 @@ function c10000020.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetCard(eg)
 end
 function c10000020.atkop(e,tp,eg,ep,ev,re,r,rp)
-	local g=eg:Filter(Card.IsRelateToEffect,nil,e):Filter(Card.IsFaceup,nil)
+	local g=eg:Filter(Card.IsRelateToChain,nil,0):Filter(Card.IsFaceup,nil)
 	local dg=Group.CreateGroup()
 	local c=e:GetHandler()
 	local tc=g:GetFirst()

@@ -41,7 +41,7 @@ function c41619242.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c41619242.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local tg=g:Filter(Card.IsRelateToChain,nil,0)
 	if tg:GetCount()<2 then return end
 	local sc1=tg:Filter(Card.IsControler,nil,tp):GetFirst()
 	local sc2=tg:Filter(Card.IsControler,nil,1-tp):GetFirst()

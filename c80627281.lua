@@ -38,7 +38,7 @@ end
 function c80627281.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_LMATERIAL) then return end
+	if not tc:IsRelateToChain(0) or not aux.MustMaterialCheck(nil,tp,EFFECT_MUST_BE_LMATERIAL) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c80627281.spfilter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc:GetLink())
 	local tc=g:GetFirst()

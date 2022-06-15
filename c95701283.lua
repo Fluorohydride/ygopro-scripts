@@ -43,7 +43,7 @@ function c95701283.tgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c95701283.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 	end
 end

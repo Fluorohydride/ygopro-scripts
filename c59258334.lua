@@ -56,7 +56,7 @@ end
 function c59258334.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:GetCounter(0x100e)>0 and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:GetCounter(0x100e)>0 and tc:IsRelateToChain(0) then
 		c:SetCardTarget(tc)
 	end
 end

@@ -70,8 +70,8 @@ end
 function c87798440.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	if not tc:IsRelateToEffect(e) or not c87798440.filter(tc) then
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or not c87798440.filter(tc) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
@@ -86,7 +86,7 @@ function c87798440.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c87798440.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)
 end
 function c87798440.descon(e,tp,eg,ep,ev,re,r,rp)
@@ -101,7 +101,7 @@ function c87798440.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c87798440.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

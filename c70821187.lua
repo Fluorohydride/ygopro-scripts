@@ -15,11 +15,11 @@ function c70821187.condition(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_HAND) and rp==1-tp and bit.band(r,REASON_EFFECT)==REASON_EFFECT
 end
 function c70821187.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return e:GetHandler():IsRelateToChain(0) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,e:GetHandler(),1,0,0)
 end
 function c70821187.operation(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) and Duel.SendtoHand(e:GetHandler(),nil,REASON_EFFECT)==1 then
+	if e:GetHandler():IsRelateToChain(0) and Duel.SendtoHand(e:GetHandler(),nil,REASON_EFFECT)==1 then
 		Duel.ConfirmCards(1-tp,e:GetHandler())
 	end
 end

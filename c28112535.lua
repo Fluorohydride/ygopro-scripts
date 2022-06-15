@@ -58,7 +58,7 @@ function c28112535.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c28112535.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local c1,c2,c3=Duel.TossCoin(tp,3)
 		if c1+c2+c3<2 then return end
 		Duel.Destroy(tc,REASON_EFFECT)

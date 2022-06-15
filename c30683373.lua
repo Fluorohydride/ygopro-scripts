@@ -22,7 +22,7 @@ function c30683373.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c30683373.activate(e)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsDefensePos() then
+	if tc and tc:IsRelateToChain(0) and tc:IsDefensePos() then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

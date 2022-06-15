@@ -47,7 +47,7 @@ function c31588572.settg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c31588572.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	local res=false
 	if tc:IsType(TYPE_MONSTER) then
 		res=Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)

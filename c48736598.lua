@@ -42,7 +42,7 @@ function c48736598.spfilter(c,e,tp)
 	return ok
 end
 function c48736598.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e)
+	if chk==0 then return e:GetHandler():IsRelateToChain(0)
 		and Duel.IsExistingMatchingCard(c48736598.spfilter,tp,LOCATION_HAND+LOCATION_GRAVE,0,1,nil,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND+LOCATION_GRAVE)
 end

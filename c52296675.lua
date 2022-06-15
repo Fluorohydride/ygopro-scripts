@@ -51,7 +51,7 @@ function c52296675.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c52296675.drop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.Destroy(c,REASON_EFFECT)~=0 then
+	if c:IsRelateToChain(0) and Duel.Destroy(c,REASON_EFFECT)~=0 then
 		Duel.BreakEffect()
 		Duel.Draw(tp,1,REASON_EFFECT)
 	end

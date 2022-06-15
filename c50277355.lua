@@ -45,7 +45,7 @@ function c50277355.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_GRAVE)
 end
 function c50277355.activate(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) then return end
+	if not e:GetHandler():IsRelateToChain(0) then return end
 	local lg=e:GetHandler():GetLinkedGroup()
 	local res=0
 	local b1=Duel.IsPlayerCanDraw(tp,2) and lg:IsExists(c50277355.lkfilter,1,nil,TYPE_RITUAL)

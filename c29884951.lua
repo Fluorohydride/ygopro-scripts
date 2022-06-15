@@ -58,7 +58,7 @@ end
 function c29884951.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -76,7 +76,7 @@ end
 function c29884951.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local a,d=Duel.GetBattleMonster(tp)
-	if c:IsFaceup() and c:IsRelateToEffect(e) and d and d:IsRelateToBattle() then
+	if c:IsFaceup() and c:IsRelateToChain(0) and d and d:IsRelateToBattle() then
 		local g=Group.FromCards(d,c)
 		Duel.Destroy(g,REASON_EFFECT)
 	end
@@ -111,7 +111,7 @@ function c29884951.remtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c29884951.remop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	end
 end

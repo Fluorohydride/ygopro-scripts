@@ -36,7 +36,7 @@ function c7852509.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c7852509.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		Duel.Damage(tp,500,REASON_EFFECT,true)
 		Duel.Damage(1-tp,500,REASON_EFFECT,true)
 		Duel.RDComplete()

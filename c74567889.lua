@@ -60,7 +60,7 @@ function c74567889.seqtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c74567889.seqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not (c:IsRelateToEffect(e) and c:IsFaceup()) then return end
+	if not (c:IsRelateToChain(0) and c:IsFaceup()) then return end
 	local zone=bit.band(e:GetHandler():GetLinkedZone(tp),0x1f)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0,zone)<=0 then return end
 	local s=zone

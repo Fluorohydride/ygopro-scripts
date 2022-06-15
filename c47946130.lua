@@ -72,7 +72,7 @@ function c47946130.ChainUniqueCost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47946130.negop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if c:IsFacedown() or c:GetAttack()<500 or not c:IsRelateToEffect(e)
+	if c:IsFacedown() or c:GetAttack()<500 or not c:IsRelateToChain(0)
 		or Duel.GetCurrentChain()~=ev+1 or c:IsStatus(STATUS_BATTLE_DESTROYED) then
 		return
 	end
@@ -93,7 +93,7 @@ function c47946130.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c47946130.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)

@@ -74,7 +74,7 @@ function c82670878.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c82670878.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,SUMMON_VALUE_SELF,tp,tp,false,false,POS_FACEUP)
 end
 function c82670878.adcon(e,tp,eg,ep,ev,re,r,rp)
@@ -83,7 +83,7 @@ end
 function c82670878.adop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=c82670878[2]
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		if tc and tc:GetFlagEffect(82670878) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

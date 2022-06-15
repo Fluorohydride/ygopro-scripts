@@ -62,7 +62,7 @@ function c24857466.hsptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c24857466.hspop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local tpe=Duel.GetChainInfo(0,CHAININFO_TARGET_PARAM)
 		Duel.RaiseSingleEvent(c,EVENT_CUSTOM+24857466,e,0,0,tp,tpe)
@@ -124,7 +124,7 @@ function c24857466.operation(e,tp,eg,ep,ev,re,r,rp)
 		local ex1,g1=Duel.GetOperationInfo(0,CATEGORY_DESTROY)
 		if g1 then
 			local tc1=g1:GetFirst()
-			if tc1:IsRelateToEffect(e) then
+			if tc1:IsRelateToChain(0) then
 				if res~=0 then Duel.BreakEffect() end
 				res=Duel.Destroy(tc1,REASON_EFFECT)
 			end
@@ -134,7 +134,7 @@ function c24857466.operation(e,tp,eg,ep,ev,re,r,rp)
 		local ex2,g2=Duel.GetOperationInfo(0,CATEGORY_SPECIAL_SUMMON)
 		if g2 then
 			local tc2=g2:GetFirst()
-			if tc2:IsRelateToEffect(e) then
+			if tc2:IsRelateToChain(0) then
 				if res~=0 then Duel.BreakEffect() end
 				Duel.SpecialSummon(tc2,0,tp,tp,false,false,POS_FACEUP)
 			end

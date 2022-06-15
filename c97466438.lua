@@ -55,7 +55,7 @@ function c97466438.zop(e,tp,eg,ep,ev,re,r,rp)
 		zone=((zone&0xffff)<<16)|((zone>>16)&0xffff)
 	end
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetRange(LOCATION_PZONE)

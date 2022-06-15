@@ -31,7 +31,7 @@ function c44035031.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c44035031.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsFaceup() or not c:IsRelateToEffect(e) then return end
+	if not c:IsFaceup() or not c:IsRelateToChain(0) then return end
 	local ct=Duel.GetMatchingGroupCount(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -52,7 +52,7 @@ function c44035031.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c44035031.posop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.ChangePosition(tc,POS_FACEUP_ATTACK)
 		if tc:IsFaceup() then
 			local e1=Effect.CreateEffect(e:GetHandler())

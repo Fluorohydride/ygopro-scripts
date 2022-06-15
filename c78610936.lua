@@ -29,7 +29,7 @@ function c78610936.spfilter(c,e,tp)
 end
 function c78610936.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	local mg=tc:GetOverlayGroup()
 	Duel.SendtoGrave(mg,REASON_EFFECT)
 	if Duel.SendtoDeck(tc,nil,SEQ_DECKTOP,REASON_EFFECT)>0 then

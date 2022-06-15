@@ -27,7 +27,7 @@ function c84124261.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	if Duel.NegateAttack() and tc:IsType(TYPE_XYZ) and tc:IsFaceup()
-		and c:IsRelateToEffect(e) and c:IsFaceup() then
+		and c:IsRelateToChain(0) and c:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)

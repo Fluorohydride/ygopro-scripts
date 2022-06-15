@@ -29,7 +29,7 @@ function c23323812.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c23323812.activate(e,tp,eg,ep,ev,re,r,rp)
 	local a=Duel.GetFirstTarget()
-	if a:IsRelateToEffect(e) then
+	if a:IsRelateToChain(0) then
 		local atk=a:GetAttack()
 		if Duel.Destroy(a,REASON_EFFECT)~=0 then
 			Duel.Recover(tp,atk,REASON_EFFECT)

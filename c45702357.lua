@@ -38,7 +38,7 @@ function c45702357.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local cg=c:GetColumnGroup()
 	cg:AddCard(c)
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local g=Duel.GetMatchingGroup(c45702357.posfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,cg)
 		if g:GetCount()>0 then
 			Duel.ChangePosition(g,POS_FACEDOWN_DEFENSE)
@@ -60,7 +60,7 @@ function c45702357.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local cg=c:GetColumnGroup()
 	if not c:IsStatus(STATUS_BATTLE_DESTROYED) then cg:AddCard(c) end
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local g=Duel.GetMatchingGroup(c45702357.tdfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,cg)
 		if g:GetCount()>0 then
 			Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)

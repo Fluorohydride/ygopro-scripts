@@ -59,6 +59,6 @@ function c58054262.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<3 then return end
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	if g:FilterCount(Card.IsRelateToEffect,nil,e)~=3 then return end
+	if g:FilterCount(Card.IsRelateToChain,nil,0)~=3 then return end
 	Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
 end

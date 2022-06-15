@@ -50,7 +50,7 @@ function c70333910.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c70333910.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -78,7 +78,7 @@ function c70333910.discon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c70333910.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
-	local tg=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS):Filter(Card.IsFacedown,nil):Filter(Card.IsRelateToEffect,nil,re)
+	local tg=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS):Filter(Card.IsFacedown,nil):Filter(Card.IsRelateToChain,nil,ev)
 	local tc=tg:GetFirst()
 	while tc do
 		local e1=Effect.CreateEffect(e:GetHandler())

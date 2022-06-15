@@ -19,7 +19,7 @@ function c80987696.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c80987696.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tc:GetPreviousControler(),false,false,tc:GetPreviousPosition())
 	end
 end

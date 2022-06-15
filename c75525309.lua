@@ -27,7 +27,7 @@ function c75525309.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c75525309.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local sg=g:Filter(Card.IsRelateToChain,nil,0)
 	if sg:GetCount()>0 then
 		Duel.SendtoHand(sg,nil,REASON_EFFECT)
 	end

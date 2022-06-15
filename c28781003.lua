@@ -33,7 +33,7 @@ function c28781003.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c28781003.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and c:IsControler(tp) and not c:IsImmuneToEffect(e) and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then
+	if c:IsFaceup() and c:IsRelateToChain(0) and c:IsControler(tp) and not c:IsImmuneToEffect(e) and aux.MustMaterialCheck(c,tp,EFFECT_MUST_BE_XMATERIAL) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c28781003.filter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,c)
 		local tc=g:GetFirst()

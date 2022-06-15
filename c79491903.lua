@@ -53,7 +53,7 @@ function c79491903.postg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c79491903.posop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and c:IsDefensePos() then
+	if c:IsFaceup() and c:IsRelateToChain(0) and c:IsDefensePos() then
 		Duel.ChangePosition(c,0,0,POS_FACEUP_ATTACK,0)
 	end
 end

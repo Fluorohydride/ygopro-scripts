@@ -53,7 +53,7 @@ end
 function c90583279.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0
+	if tc:IsRelateToChain(0) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0
 		and ((tc:IsType(TYPE_RITUAL) and tc:IsLocation(LOCATION_DECK))
 			or (tc:IsType(TYPE_FUSION+TYPE_SYNCHRO+TYPE_XYZ) and tc:IsLocation(LOCATION_EXTRA))) then
 		if tc:IsType(TYPE_RITUAL+TYPE_FUSION) then
@@ -62,7 +62,7 @@ function c90583279.tdop(e,tp,eg,ep,ev,re,r,rp)
 			Duel.Draw(tp,1,REASON_EFFECT)
 		end
 		if tc:IsType(TYPE_SYNCHRO+TYPE_XYZ)
-			and c:IsFaceup() and c:IsRelateToEffect(e) then
+			and c:IsFaceup() and c:IsRelateToChain(0) then
 			Duel.BreakEffect()
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

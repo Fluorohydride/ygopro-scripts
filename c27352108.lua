@@ -32,7 +32,7 @@ function c27352108.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c27352108.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummonStep(c,0,tp,tp,false,false,POS_FACEUP_ATTACK) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -71,7 +71,7 @@ end
 function c27352108.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c27352108.thfilter2),1-tp,LOCATION_GRAVE,0,nil)
 		if g:GetCount()>0 and Duel.SelectYesNo(1-tp,aux.Stringid(27352108,0)) then

@@ -74,8 +74,8 @@ end
 function c47415292.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
-	if not tc:IsRelateToEffect(e) or not c47415292.filter(tc) then
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or not c47415292.filter(tc) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end
@@ -90,6 +90,6 @@ function c47415292.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c47415292.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP_ATTACK)
 end

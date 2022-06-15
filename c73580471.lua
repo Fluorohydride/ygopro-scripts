@@ -58,7 +58,7 @@ function c73580471.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c73580471.posop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc or tc:IsAttackPos() or not tc:IsRelateToEffect(e) then return end
+	if not tc or tc:IsAttackPos() or not tc:IsRelateToChain(0) then return end
 	if Duel.ChangePosition(tc,POS_FACEUP_ATTACK)==0 then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)

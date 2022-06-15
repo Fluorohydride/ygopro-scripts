@@ -39,7 +39,7 @@ function c35191415.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c35191415.operation1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -59,7 +59,7 @@ function c35191415.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c35191415.operation2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

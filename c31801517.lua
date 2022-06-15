@@ -44,7 +44,7 @@ function c31801517.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c31801517.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		local val=g:GetSum(Card.GetRank)*200
 		local e1=Effect.CreateEffect(c)

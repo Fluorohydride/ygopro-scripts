@@ -43,12 +43,12 @@ function c37198732.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c37198732.activate(e,tp,eg,ep,ev,re,r,rp)
 	local lc=e:GetLabelObject()
-	if not lc:IsRelateToEffect(e) then return end
+	if not lc:IsRelateToChain(0) then return end
 	local lv=lc:GetLevel()
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	while tc do
-		if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		if tc:IsRelateToChain(0) and tc:IsFaceup() then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_CHANGE_LEVEL)

@@ -26,7 +26,7 @@ function c30646525.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c30646525.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFacedown() or not c:IsRelateToEffect(e) then return end
+	if c:IsFacedown() or not c:IsRelateToChain(0) then return end
 	local g=Duel.GetMatchingGroup(c30646525.filter,tp,LOCATION_MZONE,LOCATION_MZONE,c,c:GetAttack())
 	local ct=Duel.Destroy(g,REASON_EFFECT)
 	if ct>0 then

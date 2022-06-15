@@ -27,7 +27,7 @@ function c39131963.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c39131963.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

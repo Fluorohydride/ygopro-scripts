@@ -78,8 +78,8 @@ end
 function c93473606.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
-		if c:IsRelateToEffect(e) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
+		if c:IsRelateToChain(0) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
 			Duel.Equip(tp,c,tc)
 			--Add Equip limit
 			local e1=Effect.CreateEffect(c)
@@ -90,7 +90,7 @@ function c93473606.operation(e,tp,eg,ep,ev,re,r,rp)
 			e1:SetValue(c93473606.eqlimit)
 			c:RegisterEffect(e1)
 		end
-	elseif c:IsRelateToEffect(e) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
+	elseif c:IsRelateToChain(0) and not c:IsStatus(STATUS_LEAVE_CONFIRMED) then
 		c:CancelToGrave(false)
 	end
 end
@@ -128,7 +128,7 @@ end
 function c93473606.swop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ec=c:GetEquipTarget()
-	if ec and c:IsRelateToEffect(e) then
+	if ec and c:IsRelateToChain(0) then
 		local atk=ec:GetAttack()
 		local def=ec:GetDefense()
 		local e1=Effect.CreateEffect(c)

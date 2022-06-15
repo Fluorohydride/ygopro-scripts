@@ -39,7 +39,7 @@ function c69811710.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c69811710.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
 	local tc=g:GetFirst()
 	if tc and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE) then
-		if c:GetColumnGroup():GetCount()>=2 and c:IsFaceup() and c:IsRelateToEffect(e) then
+		if c:GetColumnGroup():GetCount()>=2 and c:IsFaceup() and c:IsRelateToChain(0) then
 			Duel.BreakEffect()
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

@@ -46,7 +46,7 @@ function c38695361.atktg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c38695361.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		tc:RegisterFlagEffect(38695361,RESET_EVENT+0x1220000+RESET_PHASE+PHASE_END,0,1)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -97,7 +97,7 @@ function c38695361.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c38695361.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,c)
 	end

@@ -51,7 +51,7 @@ end
 function c90397998.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not Duel.IsExistingMatchingCard(c90397998.cfilter,tp,LOCATION_MZONE,0,1,nil) then return end
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

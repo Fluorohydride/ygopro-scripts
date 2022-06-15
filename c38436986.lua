@@ -47,7 +47,7 @@ function c38436986.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c38436986.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)>0 then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c38436986.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
 		if #g>0 then
@@ -71,7 +71,7 @@ function c38436986.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c38436986.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

@@ -44,7 +44,7 @@ end
 function c84988419.operation(e,tp,eg,ep,ev,re,r,rp)
 	local bc=Duel.GetFirstTarget()
 	local atk=math.abs(e:GetHandler():GetBaseAttack()-bc:GetBaseAttack())
-	if bc:IsRelateToEffect(e) and bc:IsFaceup() and Duel.Damage(1-tp,atk,REASON_EFFECT)~=0 then
+	if bc:IsRelateToChain(0) and bc:IsFaceup() and Duel.Damage(1-tp,atk,REASON_EFFECT)~=0 then
 		Duel.Destroy(bc,REASON_EFFECT)
 	end
 end

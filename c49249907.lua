@@ -56,7 +56,7 @@ function c49249907.rettg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c49249907.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
 end

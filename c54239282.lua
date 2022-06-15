@@ -25,7 +25,7 @@ function c54239282.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local g=Duel.GetMatchingGroup(c54239282.filter,tp,LOCATION_HAND,0,nil,type)
 	local op=0
-	if g:GetCount()>0 and tc:IsDiscardable(REASON_EFFECT) and c:IsRelateToEffect(e) and c:GetLeaveFieldDest()==0 and Duel.IsPlayerCanDraw(tp,1) then
+	if g:GetCount()>0 and tc:IsDiscardable(REASON_EFFECT) and c:IsRelateToChain(0) and c:GetLeaveFieldDest()==0 and Duel.IsPlayerCanDraw(tp,1) then
 		op=Duel.SelectOption(tp,aux.Stringid(54239282,0),aux.Stringid(54239282,1))
 	else
 		op=Duel.SelectOption(tp,aux.Stringid(54239282,1))+1
@@ -35,7 +35,7 @@ function c54239282.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DISCARD)
 		local sg=g:Select(tp,1,1,nil)
 		sg:AddCard(tc)
-		if Duel.SendtoGrave(sg,REASON_EFFECT+REASON_DISCARD)~=0 and c:IsRelateToEffect(e) then
+		if Duel.SendtoGrave(sg,REASON_EFFECT+REASON_DISCARD)~=0 and c:IsRelateToChain(0) then
 			Duel.BreakEffect()
 			c:CancelToGrave()
 			if Duel.SendtoHand(c,1-tp,REASON_EFFECT)~=0 then

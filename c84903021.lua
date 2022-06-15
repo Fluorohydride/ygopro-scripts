@@ -49,7 +49,7 @@ end
 function c84903021.dsop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)>0 then
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)>0 then
 		Duel.BreakEffect()
 		local ag=Duel.GetMatchingGroup(c84903021.atkfilter,tp,LOCATION_MZONE,0,nil)
 		for tc2 in aux.Next(ag) do

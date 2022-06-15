@@ -64,7 +64,7 @@ end
 function c93717133.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not c:IsRelateToEffect(e) or not tc:IsRelateToEffect(e) or tc:IsControler(tp) then return end
+	if not c:IsRelateToChain(0) or not tc:IsRelateToChain(0) or tc:IsControler(tp) then return end
 	local g=Group.FromCards(c,tc)
 	local mcount=0
 	if tc:IsFaceup() then mcount=tc:GetOverlayCount() end

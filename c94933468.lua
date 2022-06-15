@@ -50,7 +50,7 @@ end
 function c94933468.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and tc:IsFaceup() and tc:IsRelateToChain(0) then
 		c:SetCardTarget(tc)
 	end
 end
@@ -72,6 +72,6 @@ function c94933468.decktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c94933468.deckop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	Duel.DiscardDeck(1-tp,3,REASON_EFFECT)
 end

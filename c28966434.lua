@@ -34,13 +34,13 @@ function c28966434.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	if tc==c1 then tc=g:GetNext() end
-	if c1:IsLevelBelow(3) or c1:IsFacedown() or not c1:IsRelateToEffect(e) then return end
+	if c1:IsLevelBelow(3) or c1:IsFacedown() or not c1:IsRelateToChain(0) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_LEVEL)
 	e1:SetValue(-3)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c1:RegisterEffect(e1)
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
+	if tc:IsFacedown() or not tc:IsRelateToChain(0) then return end
 	Duel.Destroy(tc,REASON_EFFECT)
 end

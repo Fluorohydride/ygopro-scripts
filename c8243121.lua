@@ -44,7 +44,7 @@ function c8243121.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c8243121.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local atk=tc:GetAttack()
 		local g=Duel.GetMatchingGroup(c8243121.atkfilter,tp,0,LOCATION_MZONE,nil,atk)
 		local cc=g:GetFirst()

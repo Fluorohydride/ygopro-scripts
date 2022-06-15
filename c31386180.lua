@@ -52,7 +52,7 @@ end
 function c31386180.desop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():GetOverlayCount()==0 then return end
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsControler(1-tp) then
+	if tc and tc:IsRelateToChain(0) and tc:IsControler(1-tp) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

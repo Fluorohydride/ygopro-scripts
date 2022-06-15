@@ -92,7 +92,7 @@ function c33015627.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c33015627.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

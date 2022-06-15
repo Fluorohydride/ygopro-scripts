@@ -43,7 +43,7 @@ function c55569674.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c55569674.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if e:GetHandler():IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if e:GetHandler():IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Equip(tp,e:GetHandler(),tc)
 	end
 end
@@ -64,7 +64,7 @@ function c55569674.atkfilter(c)
 end
 function c55569674.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local ct=Duel.GetMatchingGroupCount(c55569674.atkfilter,tp,LOCATION_REMOVED,LOCATION_REMOVED,nil)
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)

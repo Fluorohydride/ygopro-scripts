@@ -56,7 +56,7 @@ function c27204311.spop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 and Duel.Release(g,REASON_EFFECT)~=0 then
 		local og=Duel.GetOperatedGroup()
 		local c=e:GetHandler()
-		if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
+		if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
 			if og:GetCount()==0 then return end
 			local atk=og:GetSum(c27204311.adfilter,Card.GetTextAttack)
 			local def=og:GetSum(c27204311.adfilter,Card.GetTextDefense)

@@ -69,7 +69,7 @@ function c93655221.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc=g:GetFirst()
 	if tc==hc then tc=g:GetNext() end
-	if hc:IsFaceup() and hc:IsRelateToEffect(e) and hc:IsType(TYPE_MONSTER) and not hc:IsDisabled() and hc:IsControler(1-tp) then
+	if hc:IsFaceup() and hc:IsRelateToChain(0) and hc:IsType(TYPE_MONSTER) and not hc:IsDisabled() and hc:IsControler(1-tp) then
 		Duel.NegateRelatedChain(hc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -83,8 +83,8 @@ function c93655221.activate(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		hc:RegisterEffect(e2)
 		if not c:IsLocation(LOCATION_SZONE) then return end
-		if not c:IsRelateToEffect(e) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
-		if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		if not c:IsRelateToChain(0) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
+		if tc:IsRelateToChain(0) and tc:IsFaceup() then
 			Duel.Equip(tp,c,tc)
 			local e3=Effect.CreateEffect(c)
 			e3:SetType(EFFECT_TYPE_SINGLE)

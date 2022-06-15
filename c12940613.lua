@@ -31,7 +31,7 @@ function c12940613.tdfilter2(c)
 end
 function c12940613.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 	local g=Duel.GetMatchingGroup(c12940613.filter,tp,LOCATION_MZONE,0,nil)

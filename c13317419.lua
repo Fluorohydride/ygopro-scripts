@@ -66,9 +66,9 @@ end
 function c13317419.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if not c:IsLocation(LOCATION_SZONE) then return end
-	if not c:IsRelateToEffect(e) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
+	if not c:IsRelateToChain(0) or c:IsStatus(STATUS_LEAVE_CONFIRMED) then return end
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsControler(tp) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:IsControler(tp) then
 		Duel.Equip(tp,c,tc)
 		--Atkup
 		local e1=Effect.CreateEffect(c)
@@ -110,7 +110,7 @@ end
 function c13317419.desop(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetLabelObject()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0
 		and ec and ec:IsFaceup() and ec:IsLocation(LOCATION_MZONE) then
 		Duel.BreakEffect()
 		local e1=Effect.CreateEffect(e:GetHandler())

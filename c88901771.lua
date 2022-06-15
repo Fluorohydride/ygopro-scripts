@@ -74,7 +74,7 @@ function c88901771.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c88901771.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		tc:AddCounter(0x1,1)
 	end
 end

@@ -26,7 +26,7 @@ function c2359348.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c2359348.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local sg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local sg=g:Filter(Card.IsRelateToChain,nil,0)
 	if sg:GetCount()==2 and Duel.Destroy(sg,REASON_EFFECT)==2 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_FIELD)

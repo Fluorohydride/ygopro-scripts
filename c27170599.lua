@@ -32,15 +32,15 @@ end
 function c27170599.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsLocation(LOCATION_MZONE) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsLocation(LOCATION_MZONE) and tc:IsFaceup() then
 		local sel=1
 		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(27170599,0))
-		if c:IsRelateToEffect(e) and c:IsCanTurnSet() and Duel.CheckLPCost(1-tp,2000) then
+		if c:IsRelateToChain(0) and c:IsCanTurnSet() and Duel.CheckLPCost(1-tp,2000) then
 			sel=Duel.SelectOption(1-tp,1213,1214)
 		end
 		if sel==0 then
 			Duel.PayLPCost(1-tp,2000)
-			if c:IsRelateToEffect(e) and c:IsCanTurnSet() then
+			if c:IsRelateToChain(0) and c:IsCanTurnSet() then
 				Duel.BreakEffect()
 				c:CancelToGrave()
 				Duel.ChangePosition(c,POS_FACEDOWN)

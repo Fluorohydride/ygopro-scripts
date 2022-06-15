@@ -24,7 +24,7 @@ function c14618326.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c14618326.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		if tc:IsFacedown() then Duel.ConfirmCards(tp,tc) end
 		if tc:IsType(TYPE_TRAP) then Duel.Destroy(tc,REASON_EFFECT) end
 	end

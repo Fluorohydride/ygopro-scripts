@@ -55,11 +55,11 @@ end
 function c19301729.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 and Duel.SelectYesNo(tp,aux.Stringid(19301729,2)) then
 		Duel.BreakEffect()
 		local g=Group.FromCards(c)
-		if tc:IsRelateToEffect(e) then g:AddCard(tc) end
+		if tc:IsRelateToChain(0) then g:AddCard(tc) end
 		g=g:Filter(Card.IsFaceup,nil)
 		local lv=Duel.AnnounceNumber(tp,5,7)
 		for oc in aux.Next(g) do

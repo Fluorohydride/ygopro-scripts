@@ -29,7 +29,7 @@ function c50366775.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50366775.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
+	if not c:IsRelateToChain(0) or c:IsFacedown() then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
 	local cg=Duel.SelectMatchingCard(tp,c50366775.cfilter,tp,LOCATION_EXTRA,0,1,1,nil,c)
 	if cg:GetCount()==0 then return end

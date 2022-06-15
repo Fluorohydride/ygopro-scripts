@@ -19,11 +19,11 @@ function c70832512.condition(e,tp,eg,ep,ev,re,r,rp)
 	return true
 end
 function c70832512.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and e:GetHandler():IsReleasable() end
+	if chk==0 then return e:GetHandler():IsRelateToChain(0) and e:GetHandler():IsReleasable() end
 	Duel.Release(e:GetHandler(),REASON_COST)
 end
 function c70832512.dfilter(c,e)
-	return c:IsFaceup() and c:IsLevelAbove(5) and (not e or c:IsRelateToEffect(e))
+	return c:IsFaceup() and c:IsLevelAbove(5) and (not e or c:IsRelateToChain(0))
 end
 function c70832512.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c70832512.dfilter,1,nil) end

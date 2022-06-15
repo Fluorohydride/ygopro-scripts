@@ -41,7 +41,7 @@ function c17751597.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c17751597.filter1,tp,LOCATION_MZONE,0,1,nil)
 		or Duel.IsExistingMatchingCard(c17751597.filter2,tp,LOCATION_GRAVE,0,2,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
-	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToEffect(re) then
+	if re:GetHandler():IsDestructable() and re:GetHandler():IsRelateToChain(ev) then
 		Duel.SetOperationInfo(0,CATEGORY_DESTROY,eg,1,0,0)
 	end
 end
@@ -62,7 +62,7 @@ function c17751597.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoDeck(g,nil,SEQ_DECKTOP,REASON_EFFECT)
 	local fg=g:Filter(Card.IsLocation,nil,LOCATION_EXTRA)
 	if #fg~=#g then return end
-	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
+	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToChain(ev) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
 end
@@ -78,7 +78,7 @@ function c17751597.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c17751597.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

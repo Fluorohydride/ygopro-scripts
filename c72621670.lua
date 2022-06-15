@@ -48,7 +48,7 @@ function c72621670.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_CONTROL,g,2,0,0)
 end
 function c72621670.tfilter(c,e)
-	return c:IsRelateToEffect(e) and c:IsFaceup()
+	return c:IsRelateToChain(0) and c:IsFaceup()
 end
 function c72621670.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c72621670.tfilter,nil,e)

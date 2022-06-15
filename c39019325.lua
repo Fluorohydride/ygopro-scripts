@@ -30,7 +30,7 @@ function c39019325.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c39019325.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.Release(tc,REASON_EFFECT)>0 then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and Duel.Release(tc,REASON_EFFECT)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local dg=Duel.SelectMatchingCard(tp,c39019325.dfilter,tp,0,LOCATION_ONFIELD,1,2,nil)
 		if dg:GetCount()>0 then

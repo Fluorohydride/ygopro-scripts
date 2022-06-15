@@ -39,7 +39,7 @@ function c67225377.sptg1(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c67225377.spop1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c67225377.cfilter(c)
@@ -56,6 +56,6 @@ function c67225377.sptg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c67225377.spop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end

@@ -51,7 +51,7 @@ function c83880473.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	local op=e:GetLabel()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		if op==0 then
 			Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK)
 			local e1=Effect.CreateEffect(c)

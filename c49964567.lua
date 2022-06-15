@@ -43,13 +43,13 @@ function c49964567.indop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	local exc=nil
-	if tc:IsRelateToEffect(e) then exc=tc end
+	if tc:IsRelateToChain(0) then exc=tc end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	local g=Duel.SelectMatchingCard(tp,c49964567.cfilter,tp,LOCATION_MZONE,0,1,1,exc)
 	local sc=g:GetFirst()
 	if sc then
 		Duel.HintSelection(g)
-		if Duel.SendtoGrave(sc,REASON_EFFECT)~=0 and sc:IsLocation(LOCATION_GRAVE) and tc:IsRelateToEffect(e) then
+		if Duel.SendtoGrave(sc,REASON_EFFECT)~=0 and sc:IsLocation(LOCATION_GRAVE) and tc:IsRelateToChain(0) then
 			local e1=Effect.CreateEffect(c)
 			e1:SetDescription(aux.Stringid(49964567,2))
 			e1:SetType(EFFECT_TYPE_SINGLE)

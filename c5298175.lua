@@ -36,7 +36,7 @@ function c5298175.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c5298175.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c5298175.rmcon(e,tp,eg,ep,ev,re,r,rp)
@@ -55,7 +55,7 @@ function c5298175.rmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c5298175.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)~=0
+	if tc:IsRelateToChain(0) and Duel.Remove(tc,0,REASON_EFFECT+REASON_TEMPORARY)~=0
 		and tc:IsLocation(LOCATION_REMOVED) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetDescription(aux.Stringid(5298175,2))
@@ -78,7 +78,7 @@ function c5298175.rmop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c5298175.retcon(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetTurnPlayer()~=tp or Duel.GetTurnCount()==e:GetValue() then return false end
-	return e:GetLabelObject():IsRelateToEffect(e)
+	return e:GetLabelObject():IsRelateToChain(0)
 end
 function c5298175.retop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=e:GetLabelObject()

@@ -32,7 +32,7 @@ function c62560742.mgfilter(c,e,tp,sync)
 end
 function c62560742.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	local mg=tc:GetMaterial()
 	local ct=mg:GetCount()
 	local sumtype=tc:GetSummonType()

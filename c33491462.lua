@@ -45,7 +45,7 @@ end
 function c33491462.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)>1 and not Duel.IsPlayerAffectedByEffect(tp,59822133)
-		and c:IsRelateToEffect(e) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
+		and c:IsRelateToChain(0) and c:IsCanBeSpecialSummoned(e,0,tp,false,false) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local g=Duel.SelectMatchingCard(tp,c33491462.spfilter,tp,LOCATION_HAND,0,1,1,c,e,tp)
 		if g:GetCount()>0 then
@@ -82,7 +82,7 @@ function c33491462.lvtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c33491462.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
+	if tc:IsFacedown() or not tc:IsRelateToChain(0) then return end
 	local lv=tc:GetLevel()
 	local g=Duel.GetMatchingGroup(c33491462.lvfilter,tp,LOCATION_MZONE,0,nil)
 	local lc=g:GetFirst()

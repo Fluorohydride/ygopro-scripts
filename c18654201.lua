@@ -33,11 +33,11 @@ function c18654201.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c18654201.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) end
+	if chk==0 then return e:GetHandler():IsRelateToChain(0) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,ep,LOCATION_HAND)
 end
 function c18654201.hdop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsRelateToEffect(e) or e:GetHandler():IsFacedown() then return end
+	if not e:GetHandler():IsRelateToChain(0) or e:GetHandler():IsFacedown() then return end
 	if ep==PLAYER_ALL then
 		Duel.DiscardHand(0,nil,1,1,REASON_EFFECT)
 		Duel.DiscardHand(1,nil,1,1,REASON_EFFECT)

@@ -52,14 +52,14 @@ function c26964762.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c26964762.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,1-tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end
 function c26964762.disop(e,tp,eg,ep,ev,re,r,rp)
 	if rp==tp and re:IsActiveType(TYPE_SPELL) then
 		local rc=re:GetHandler()
-		if Duel.NegateEffect(ev,true) and rc:IsRelateToEffect(re) then
+		if Duel.NegateEffect(ev,true) and rc:IsRelateToChain(ev) then
 			Duel.Destroy(rc,REASON_EFFECT)
 		end
 	end

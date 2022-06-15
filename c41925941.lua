@@ -54,7 +54,7 @@ end
 function c41925941.operation(e,tp,eg,ep,ev,re,r,rp,chk)
 	local bc=Duel.GetFirstTarget()
 	local val=e:GetLabel()
-	if not bc or not bc:IsRelateToEffect(e) or not bc:IsControler(1-tp) then return end
+	if not bc or not bc:IsRelateToChain(0) or not bc:IsControler(1-tp) then return end
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)

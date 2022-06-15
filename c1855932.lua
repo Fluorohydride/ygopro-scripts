@@ -33,7 +33,7 @@ end
 function c1855932.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.DiscardDeck(tp,5,REASON_EFFECT)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local ct=Duel.GetOperatedGroup():FilterCount(Card.IsSetCard,nil,0x88)
 		if ct>0 then
 			local e1=Effect.CreateEffect(c)

@@ -83,7 +83,7 @@ function c96157835.spop2(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 		local c=e:GetHandler()
-		if c:IsRelateToEffect(e) then
+		if c:IsRelateToChain(0) then
 			Duel.Overlay(tc,Group.FromCards(c))
 		end
 	end

@@ -56,7 +56,7 @@ function c97729135.mvop1(e,tp,eg,ep,ev,re,r,rp)
 		zone=bit.bor(zone,tc:GetColumnZone(LOCATION_MZONE,1-tp))
 	end
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsControler(tp)
+	if not tc:IsRelateToChain(0) or tc:IsControler(tp)
 		or Duel.GetLocationCount(1-tp,LOCATION_MZONE,PLAYER_NONE,0,zone)<=0 then return end
 	local flag=bit.bxor(zone,0xff)*0x10000
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)
@@ -86,7 +86,7 @@ function c97729135.mvop2(e,tp,eg,ep,ev,re,r,rp)
 		zone=bit.bor(zone,tc:GetColumnZone(LOCATION_MZONE,tp))
 	end
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsControler(1-tp)
+	if not tc:IsRelateToChain(0) or tc:IsControler(1-tp)
 		or Duel.GetLocationCount(tp,LOCATION_MZONE,PLAYER_NONE,0,zone)<=0 then return end
 	local flag=bit.bxor(zone,0xff)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOZONE)

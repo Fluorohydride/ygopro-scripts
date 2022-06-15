@@ -50,7 +50,7 @@ function c1953925.disop(e,tp,eg,ep,ev,re,r,rp)
 	if not re:IsHasProperty(EFFECT_FLAG_CARD_TARGET) then return end
 	local g=Duel.GetChainInfo(ev,CHAININFO_TARGET_CARDS)
 	if g and g:IsContains(e:GetHandler()) then
-		if Duel.NegateEffect(ev,true) and rc:IsRelateToEffect(re) then
+		if Duel.NegateEffect(ev,true) and rc:IsRelateToChain(ev) then
 			Duel.Destroy(rc,REASON_EFFECT)
 		end
 	end
@@ -76,7 +76,7 @@ function c1953925.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c1953925.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) then
+	if tc and tc:IsRelateToChain(0) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

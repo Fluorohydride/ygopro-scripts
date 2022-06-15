@@ -30,7 +30,7 @@ function c30494314.operation(e,tp,eg,ep,ev,re,r,rp)
 	if sg:GetCount()==0 then return end
 	sg:GetFirst():RemoveOverlayCard(tp,1,1,REASON_EFFECT)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 		e1:SetType(EFFECT_TYPE_SINGLE)

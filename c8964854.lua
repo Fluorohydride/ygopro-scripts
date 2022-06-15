@@ -32,7 +32,7 @@ end
 function c8964854.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	local op=tc:GetOwner()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.GetLocationCount(op,LOCATION_MZONE)>0 then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and Duel.GetLocationCount(op,LOCATION_MZONE)>0 then
 		local g=Duel.GetMatchingGroup(c8964854.eqfilter,tp,LOCATION_SZONE,0,nil,e,tp,tc)
 		if Duel.SpecialSummon(g,0,tp,op,false,false,POS_FACEUP)>0 then
 			local e1=Effect.CreateEffect(e:GetHandler())

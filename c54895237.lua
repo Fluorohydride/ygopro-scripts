@@ -53,7 +53,7 @@ function c54895237.gsptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c54895237.gspop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsRelateToEffect(e)
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsRelateToChain(0)
 		and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP_DEFENSE)>0
 		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOFIELD)
@@ -83,7 +83,7 @@ function c54895237.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c54895237.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

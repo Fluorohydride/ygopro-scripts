@@ -36,10 +36,10 @@ function c43434803.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local oc=g:GetFirst()
 	if oc==sc then oc=g:GetNext() end
-	if sc:IsRelateToEffect(e) then
+	if sc:IsRelateToChain(0) then
 		Duel.SpecialSummonStep(sc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
 	end
-	if oc:IsRelateToEffect(e) then
+	if oc:IsRelateToChain(0) then
 		Duel.SpecialSummonStep(oc,0,1-tp,1-tp,false,false,POS_FACEDOWN_DEFENSE)
 	end
 	Duel.SpecialSummonComplete()

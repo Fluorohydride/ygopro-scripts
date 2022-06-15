@@ -57,7 +57,7 @@ end
 function c14017402.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and c:IsFaceup() and tc:IsRelateToChain(0) then
 		if Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=1 then return end
 		local code=tc:GetCode()
 		local reset_flag=RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END

@@ -59,7 +59,7 @@ function c42155488.sumlimit(e,c)
 end
 function c42155488.decop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local rc=e:GetLabel()
 		c:SetHint(CHINT_RACE,rc)
 		local e1=Effect.CreateEffect(c)

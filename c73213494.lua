@@ -50,7 +50,7 @@ function c73213494.sstg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c73213494.ssop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c73213494.thfilter(c)
@@ -65,7 +65,7 @@ function c73213494.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c73213494.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFacedown() then
+	if tc:IsRelateToChain(0) and tc:IsFacedown() then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

@@ -49,7 +49,7 @@ end
 function c2287848.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc1,tc2=Duel.GetFirstTarget()
 	if tc1~=e:GetLabelObject() then tc1,tc2=tc2,tc1 end
-	if tc1:IsRelateToEffect(e) and Duel.SpecialSummon(tc1,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0 and tc2:IsRelateToEffect(e) then
+	if tc1:IsRelateToChain(0) and Duel.SpecialSummon(tc1,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0 and tc2:IsRelateToChain(0) then
 		Duel.SendtoHand(tc2,nil,REASON_EFFECT)
 	end
 end
@@ -67,7 +67,7 @@ function c2287848.drtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c2287848.drop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	if not tg or tg:FilterCount(Card.IsRelateToEffect,nil,e)~=5 then return end
+	if not tg or tg:FilterCount(Card.IsRelateToChain,nil,0)~=5 then return end
 	Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	local g=Duel.GetOperatedGroup()
 	if g:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then Duel.ShuffleDeck(tp) end

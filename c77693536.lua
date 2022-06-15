@@ -53,7 +53,7 @@ function c77693536.eqop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 then return end
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not (tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsType(TYPE_EFFECT)) then return end
+	if not (tc:IsRelateToChain(0) and tc:IsFaceup() and tc:IsType(TYPE_EFFECT)) then return end
 	local atk=tc:GetTextAttack()
 	if atk<0 then atk=0 end
 	if not Duel.Equip(tp,tc,c) then return end

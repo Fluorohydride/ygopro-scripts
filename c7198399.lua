@@ -53,7 +53,7 @@ function c7198399.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c7198399.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 then
+	if tc:IsRelateToChain(0) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0 then
 		local a=Duel.GetAttacker()
 		local ag=a:GetAttackableTarget()
 		if a:IsAttackable() and not a:IsImmuneToEffect(e) and ag:IsContains(tc) then

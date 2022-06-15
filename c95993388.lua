@@ -37,10 +37,10 @@ function c95993388.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c95993388.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsRelateToEffect(e)
+	if Duel.GetLocationCount(tp,LOCATION_MZONE)>0 and c:IsRelateToChain(0)
 		and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+		if tc:IsRelateToChain(0) and tc:IsFaceup() then
 			Duel.ChangePosition(tc,POS_FACEDOWN_DEFENSE)
 		end
 	end
@@ -71,7 +71,7 @@ function c95993388.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c95993388.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

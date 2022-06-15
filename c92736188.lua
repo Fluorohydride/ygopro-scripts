@@ -27,7 +27,7 @@ function c92736188.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c92736188.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end
@@ -43,7 +43,7 @@ end
 function c92736188.adop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsAttribute(ATTRIBUTE_EARTH) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:IsAttribute(ATTRIBUTE_EARTH) then
 		local batk=tc:GetBaseAttack()
 		local bdef=tc:GetBaseDefense()
 		local e1=Effect.CreateEffect(c)

@@ -44,9 +44,9 @@ function c61728808.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c61728808.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local tc=Duel.GetFirstTarget()
-	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or not tc:IsControler(tp) or tc:IsFacedown() or not tc:IsRelateToEffect(e) then return end
+	if Duel.GetLocationCount(tp,LOCATION_SZONE)<=0 or not tc:IsControler(tp) or tc:IsFacedown() or not tc:IsRelateToChain(0) then return end
 	if not c:CheckUniqueOnField(tp) or c:IsForbidden() then return end
 	if not Duel.Equip(tp,c,tc) then return end
 	local e1=Effect.CreateEffect(c)
@@ -82,9 +82,9 @@ function c61728808.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c61728808.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		local c=e:GetHandler()
-		if c:IsRelateToEffect(e) then
+		if c:IsRelateToChain(0) then
 			Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

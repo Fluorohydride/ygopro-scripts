@@ -40,7 +40,7 @@ end
 function c8057630.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e)
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0)
 		and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP_ATTACK) then
 		c:SetCardTarget(tc)
 	end

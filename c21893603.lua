@@ -57,7 +57,7 @@ function c21893603.thtg2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c21893603.thop2(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 	end
 end

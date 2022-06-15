@@ -38,7 +38,7 @@ function c52927340.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c52927340.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0 then
 		Duel.NegateAttack()
 	end
 end
@@ -52,7 +52,7 @@ end
 function c52927340.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e)
+	if c:IsFaceup() and c:IsRelateToChain(0) and tc:IsFaceup() and tc:IsRelateToChain(0)
 		and not tc:IsImmuneToEffect(e) then
 		c:SetCardTarget(tc)
 		local e1=Effect.CreateEffect(c)

@@ -49,7 +49,7 @@ end
 function c95911373.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and c:IsFaceup()
-		and c:IsRelateToEffect(e) and c:IsLocation(LOCATION_MZONE) then
+		and c:IsRelateToChain(0) and c:IsLocation(LOCATION_MZONE) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectMatchingCard(tp,c95911373.eqfilter,tp,LOCATION_EXTRA,0,1,1,nil,c)
 		if g:GetCount()>0 then
@@ -91,9 +91,9 @@ function c95911373.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c95911373.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
+	if tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 then
 		local c=e:GetHandler()
-		if c:IsRelateToEffect(e) then
+		if c:IsRelateToChain(0) then
 			Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end

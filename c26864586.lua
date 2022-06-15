@@ -33,7 +33,7 @@ function c26864586.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc1==tc2 then tc2=g:GetNext() end
 	local lv=tc1:GetLevel()
 	if tc2:IsLevel(lv) then return end
-	if tc1:IsFaceup() and tc1:IsRelateToEffect(e) and tc2:IsFaceup() and tc2:IsRelateToEffect(e) then
+	if tc1:IsFaceup() and tc1:IsRelateToChain(0) and tc2:IsFaceup() and tc2:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_LEVEL)

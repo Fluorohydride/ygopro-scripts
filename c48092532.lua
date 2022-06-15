@@ -37,7 +37,7 @@ function c48092532.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c48092532.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then
 			Duel.SendtoGrave(e:GetHandler(),REASON_EFFECT)
 			return

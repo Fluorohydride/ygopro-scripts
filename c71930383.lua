@@ -19,7 +19,7 @@ function c71930383.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c71930383.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and tc:IsFacedown() then
+	if tc and tc:IsRelateToChain(0) and tc:IsFacedown() then
 		Duel.ConfirmCards(tp,tc)
 	end
 end

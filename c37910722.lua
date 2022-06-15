@@ -29,7 +29,7 @@ function c37910722.atkcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c37910722.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local ct=Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -64,7 +64,7 @@ function c37910722.spop(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	local c=e:GetHandler()
 	local mg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local g=mg:Filter(Card.IsRelateToEffect,nil,e)
+	local g=mg:Filter(Card.IsRelateToChain,nil,0)
 	if g:GetCount()<mg:GetCount() then return end
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<g:GetCount() then return end
 	local tc=g:GetFirst()

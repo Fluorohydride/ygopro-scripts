@@ -51,10 +51,10 @@ function c29146185.rettg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c29146185.retop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	if Duel.SendtoHand(g,nil,REASON_EFFECT)>0 then
 		Duel.ConfirmCards(1-tp,g)
-		if c:IsFaceup() and c:IsRelateToEffect(e) then
+		if c:IsFaceup() and c:IsRelateToChain(0) then
 			Duel.RaiseSingleEvent(c,EVENT_CUSTOM+29146185,re,r,rp,0,0)
 		end
 	end

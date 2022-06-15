@@ -44,13 +44,13 @@ function c5489987.drop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,tc)
 		Duel.BreakEffect()
 		if tc:IsType(TYPE_MONSTER) and tc:IsSetCard(0xe6) then
-			if c:IsRelateToEffect(e) then
+			if c:IsRelateToChain(0) then
 				if Duel.SpecialSummon(c,0,tp,tp,true,false,POS_FACEUP)~=0 then
 					c:CompleteProcedure()
 				end
 			end
 		else
-			if c:IsRelateToEffect(e) then
+			if c:IsRelateToChain(0) then
 				g:AddCard(c)
 			end
 			Duel.SendtoGrave(g,REASON_EFFECT)

@@ -35,7 +35,7 @@ function c5130393.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c5130393.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -55,7 +55,7 @@ function c5130393.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c5130393.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) then return end
+	if not tc:IsRelateToChain(0) then return end
 	local vc=tc:GetTextAttack()
 	local sel=1
 	local g=Duel.GetMatchingGroup(c5130393.thfilter,tp,0,LOCATION_DECK,nil)

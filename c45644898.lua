@@ -35,7 +35,7 @@ function c45644898.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c45644898.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
@@ -61,7 +61,7 @@ function c45644898.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c45644898.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e)
+	if tc:IsRelateToChain(0)
 		and Duel.SendtoGrave(tc,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_GRAVE)
 		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)

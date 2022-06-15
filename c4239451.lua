@@ -36,7 +36,7 @@ function c4239451.adtg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c4239451.adop1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local atk=tc:GetAttack()
 		local def=tc:GetDefense()
 		local e1=Effect.CreateEffect(e:GetHandler())
@@ -62,7 +62,7 @@ function c4239451.adtg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c4239451.adop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e)
+	if tc:IsRelateToChain(0)
 		and Duel.ChangePosition(tc,POS_FACEUP_DEFENSE,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK,POS_FACEUP_ATTACK)~=0 then
 		local atk=tc:GetAttack()
 		local def=tc:GetDefense()

@@ -102,7 +102,7 @@ function c63251695.effop(e,tp,eg,ep,ev,re,r,rp)
 			sg=g2:Select(tp,1,1,nil)
 		end
 		Duel.SendtoDeck(sg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
-		if sg:GetFirst():IsLocation(LOCATION_DECK) and c:IsRelateToEffect(e) and c:IsFaceup() then
+		if sg:GetFirst():IsLocation(LOCATION_DECK) and c:IsRelateToChain(0) and c:IsFaceup() then
 			Duel.BreakEffect()
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)

@@ -67,7 +67,7 @@ function c53670497.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c53670497.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if e:GetLabel()~=1 or not c:IsRelateToEffect(e) then return end
+	if e:GetLabel()~=1 or not c:IsRelateToChain(0) then return end
 	local turnp=Duel.GetTurnPlayer()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 	if turnp~=tp then
@@ -95,7 +95,7 @@ function c53670497.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c53670497.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

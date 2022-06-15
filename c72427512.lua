@@ -32,7 +32,7 @@ end
 function c72427512.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) and c:IsFaceup() then
+	if tc and tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)~=0 and c:IsRelateToChain(0) and c:IsFaceup() then
 		local atk=tc:GetBaseAttack()
 		if atk<=0 then return end
 		local race=tc:GetOriginalRace()
@@ -55,7 +55,7 @@ end
 function c72427512.efilter(e,re,rp)
 	if not re:IsActiveType(TYPE_MONSTER) then return false end
 	local rc=re:GetHandler()
-	if (re:IsActivated() and rc:IsRelateToEffect(re) or not re:IsHasProperty(EFFECT_FLAG_FIELD_ONLY))
+	if (re:IsActivated() and rc:IsRelateToChain(ev) or not re:IsHasProperty(EFFECT_FLAG_FIELD_ONLY))
 		and (rc:IsFaceup() or not rc:IsLocation(LOCATION_MZONE)) then
 		return e:GetHandler():IsRace(rc:GetRace())
 	else

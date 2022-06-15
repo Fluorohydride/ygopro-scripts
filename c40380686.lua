@@ -45,7 +45,7 @@ function c40380686.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c40380686.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or tc:IsFacedown() then return end
+	if not tc:IsRelateToChain(0) or tc:IsFacedown() then return end
 	local c,op,ar=e:GetHandler(),e:GetLabel()
 	if op==0 then
 		local e1=Effect.CreateEffect(c)

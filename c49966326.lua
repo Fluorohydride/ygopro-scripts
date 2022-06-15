@@ -35,11 +35,11 @@ end
 function c49966326.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c,tc=e:GetHandler(),Duel.GetFirstTarget()
 	local type1=tc:GetType()&0x7
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c49966326.tgfilter,tp,LOCATION_DECK,0,1,1,nil,type1)
 		local tgc=g:GetFirst()
-		if tgc and Duel.SendtoGrave(tgc,REASON_EFFECT)~=0 and tgc:IsLocation(LOCATION_GRAVE) and c:IsRelateToEffect(e)
+		if tgc and Duel.SendtoGrave(tgc,REASON_EFFECT)~=0 and tgc:IsLocation(LOCATION_GRAVE) and c:IsRelateToChain(0)
 			and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 			local type1=tgc:GetType()&0x7|type1
 			local sg=Duel.GetMatchingGroup(c49966326.tgfilter2,tp,LOCATION_DECK,0,nil,type1)

@@ -11,7 +11,7 @@ function c71315423.initial_effect(c)
 end
 function c71315423.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsFaceup() end
-	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and e:GetHandler():IsFaceup()
+	if chk==0 then return e:GetHandler():IsRelateToChain(0) and e:GetHandler():IsFaceup()
 		and Duel.GetLocationCount(tp,LOCATION_SZONE)>0
 		and not e:GetHandler():IsStatus(STATUS_BATTLE_DESTROYED) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
@@ -21,8 +21,8 @@ end
 function c71315423.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc or c:IsFacedown() or not c:IsRelateToEffect(e) then return end
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) then
+	if not tc or c:IsFacedown() or not c:IsRelateToChain(0) then return end
+	if tc:IsFacedown() or not tc:IsRelateToChain(0) then
 		Duel.SendtoGrave(c,REASON_EFFECT)
 		return
 	end

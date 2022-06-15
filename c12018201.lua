@@ -27,7 +27,7 @@ function c12018201.initial_effect(c)
 end
 function c12018201.descon(e,tp,eg,ep,ev,re,r,rp)
 	local loc=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_LOCATION)
-	return ep==1-tp and re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsRelateToEffect(re) and (LOCATION_HAND+LOCATION_ONFIELD)&loc~=0
+	return ep==1-tp and re:IsActiveType(TYPE_MONSTER) and re:GetHandler():IsRelateToChain(ev) and (LOCATION_HAND+LOCATION_ONFIELD)&loc~=0
 end
 function c12018201.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return re:GetHandler():IsDestructable() end
@@ -37,7 +37,7 @@ function c12018201.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DAMAGE,nil,0,1-tp,1000)
 end
 function c12018201.desop(e,tp,eg,ep,ev,re,r,rp)
-	if re:GetHandler():IsRelateToEffect(re) and Duel.Destroy(eg,REASON_EFFECT)~=0 then
+	if re:GetHandler():IsRelateToChain(ev) and Duel.Destroy(eg,REASON_EFFECT)~=0 then
 		local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 		Duel.Damage(p,d,REASON_EFFECT)
 	end

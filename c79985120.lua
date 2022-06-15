@@ -49,7 +49,7 @@ function c79985120.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c79985120.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local dam=tc:GetAttack()
 		if dam<0 or tc:IsFacedown() then dam=0 end
 		if Duel.Destroy(tc,REASON_EFFECT)~=0 then
@@ -74,7 +74,7 @@ function c79985120.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c79985120.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp)
-	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0 and c:IsRelateToEffect(e) then
+	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)~=0 and c:IsRelateToChain(0) then
 		Duel.Overlay(g:GetFirst(),Group.FromCards(c))
 	end
 end

@@ -40,7 +40,7 @@ function c60431417.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c60431417.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 then
+	if tc:IsRelateToChain(0) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 then
 		Duel.BreakEffect()
 		Duel.DiscardDeck(tp,4,REASON_EFFECT)
 	end
@@ -64,7 +64,7 @@ function c60431417.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c60431417.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 then
+	if tc:IsRelateToChain(0) and Duel.SendtoHand(tc,nil,REASON_EFFECT)>0 then
 		Duel.BreakEffect()
 		local rg=Duel.GetDecktopGroup(tp,4)
 		Duel.DisableShuffleCheck()

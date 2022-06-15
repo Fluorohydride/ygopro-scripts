@@ -43,7 +43,7 @@ function c79130389.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
 	local zone=bit.band(e:GetHandler():GetLinkedZone(tp),0x1f)
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and zone~=0 then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) and zone~=0 then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP,zone)
 	end
 	local e1=Effect.CreateEffect(e:GetHandler())
@@ -73,7 +73,7 @@ function c79130389.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c79130389.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

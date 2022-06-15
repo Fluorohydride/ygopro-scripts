@@ -22,7 +22,7 @@ end
 function c51706604.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local code=tc:GetOriginalCodeRule()
 		--disable
 		local e1=Effect.CreateEffect(c)
@@ -34,7 +34,7 @@ function c51706604.activate(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetReset(RESET_PHASE+PHASE_END)
 		Duel.RegisterEffect(e1,tp)
 	end
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		--redirect
 		local e2=Effect.CreateEffect(c)
 		e2:SetType(EFFECT_TYPE_SINGLE)

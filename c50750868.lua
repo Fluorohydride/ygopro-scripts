@@ -56,7 +56,7 @@ function c50750868.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50750868.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
+	if c:IsRelateToChain(0) and not Duel.IsPlayerAffectedByEffect(tp,59822133) then
 		local zone=c:GetLinkedZone(tp)&0x1f
 		local ct=Duel.GetLocationCount(tp,LOCATION_MZONE,tp,LOCATION_REASON_TOFIELD,zone)
 		if ct>=3 then

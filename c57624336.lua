@@ -38,7 +38,7 @@ function c57624336.destg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c57624336.desop1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Destroy(Group.FromCards(tc,e:GetHandler()),REASON_EFFECT)
 	end
 end
@@ -55,7 +55,7 @@ function c57624336.destg2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c57624336.desop2(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsType(TYPE_MONSTER) then
+	if tc:IsRelateToChain(0) and tc:IsType(TYPE_MONSTER) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

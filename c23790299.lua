@@ -53,7 +53,7 @@ function c23790299.atkcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c23790299.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_UPDATE_ATTACK)
@@ -73,7 +73,7 @@ function c23790299.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,0,LOCATION_MZONE,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)
-		if Duel.Destroy(g,REASON_EFFECT)~=0 and c:IsRelateToEffect(e) and c:IsChainAttackable() then
+		if Duel.Destroy(g,REASON_EFFECT)~=0 and c:IsRelateToChain(0) and c:IsChainAttackable() then
 			Duel.ChainAttack()
 		end
 	end

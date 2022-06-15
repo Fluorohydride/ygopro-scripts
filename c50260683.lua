@@ -46,7 +46,7 @@ function c50260683.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c50260683.operation(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:GetAttack()>0 then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and tc:GetAttack()>0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_ATTACK_FINAL)
@@ -72,7 +72,7 @@ function c50260683.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c50260683.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsAttack(tc:GetBaseAttack()) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and not tc:IsAttack(tc:GetBaseAttack()) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

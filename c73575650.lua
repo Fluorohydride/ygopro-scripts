@@ -69,7 +69,7 @@ function c73575650.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsCanTurnSet() then
+	if c:IsRelateToChain(0) and c:IsCanTurnSet() then
 		Duel.BreakEffect()
 		c:CancelToGrave()
 		Duel.ChangePosition(c,POS_FACEDOWN)

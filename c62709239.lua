@@ -44,7 +44,7 @@ function c62709239.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c62709239.desop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local tg=g:Filter(Card.IsRelateToEffect,nil,e)
+	local tg=g:Filter(Card.IsRelateToChain,nil,0)
 	if tg:GetCount()>0 then
 		Duel.Destroy(tg,REASON_EFFECT)
 	end
@@ -76,7 +76,7 @@ end
 function c62709239.spop(e,tp,eg,ep,ev,re,r,rp)
 	local ft=Duel.GetLocationCount(tp,LOCATION_MZONE)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	local g=tg:Filter(Card.IsRelateToEffect,nil,e)
+	local g=tg:Filter(Card.IsRelateToChain,nil,0)
 	local ct=g:GetCount()
 	if ft>0 and ct<=ft and (ct==1 or not Duel.IsPlayerAffectedByEffect(tp,59822133)) then
 		local tc=g:GetFirst()

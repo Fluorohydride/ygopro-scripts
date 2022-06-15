@@ -55,7 +55,7 @@ function c22555834.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c22555834.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if Duel.DiscardHand(tp,aux.TRUE,2,2,REASON_EFFECT+REASON_DISCARD)>1 and tc:IsRelateToEffect(e) then
+	if Duel.DiscardHand(tp,aux.TRUE,2,2,REASON_EFFECT+REASON_DISCARD)>1 and tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end

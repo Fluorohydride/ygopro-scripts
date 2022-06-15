@@ -43,7 +43,7 @@ function c50065971.dircon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c50065971.dirop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e) then
+	if c:IsFaceup() and c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_SET_BASE_DEFENSE)
@@ -81,7 +81,7 @@ function c50065971.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c50065971.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

@@ -62,7 +62,7 @@ function c91140491.cttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c91140491.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local ct=e:GetLabelObject():GetLabel()
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		e:GetHandler():AddCounter(0x53,ct)
 	end
 end

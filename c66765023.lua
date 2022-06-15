@@ -36,7 +36,7 @@ function c66765023.effcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c66765023.effop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(66765023,0))
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_CONTINUOUS)

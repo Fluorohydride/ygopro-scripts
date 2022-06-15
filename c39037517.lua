@@ -63,7 +63,7 @@ function c39037517.mtop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c39037517.filter(c,e)
 	return c:IsPosition(POS_FACEUP_ATTACK) and c:IsAttribute(ATTRIBUTE_LIGHT+ATTRIBUTE_DARK)
-		and (not e or c:IsRelateToEffect(e))
+		and (not e or c:IsRelateToChain(0))
 end
 function c39037517.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c39037517.filter,1,nil) end

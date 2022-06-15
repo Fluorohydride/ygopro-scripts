@@ -42,8 +42,8 @@ function c85032782.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c85032782.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	if not c:IsRelateToChain(0) then return end
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	if Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 and g:GetCount()>0 then
 		Duel.Destroy(g,REASON_EFFECT)
 	end
@@ -68,7 +68,7 @@ function c85032782.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c85032782.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 then
+	if tc:IsRelateToChain(0) and Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c85032782.thfilter),tp,LOCATION_DECK+LOCATION_GRAVE,0,1,1,nil)
 		if g:GetCount()>0 then

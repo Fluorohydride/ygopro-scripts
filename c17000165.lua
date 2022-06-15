@@ -52,7 +52,7 @@ function c17000165.desop(e,tp,eg,ep,ev,re,r,rp)
 	local ex,g2=Duel.GetOperationInfo(0,CATEGORY_SPECIAL_SUMMON)
 	local tc1=g1:GetFirst()
 	local tc2=g2:GetFirst()
-	if tc1:IsRelateToEffect(e) and Duel.Destroy(tc1,REASON_EFFECT)~=0 and tc2:IsRelateToEffect(e) then
+	if tc1:IsRelateToChain(0) and Duel.Destroy(tc1,REASON_EFFECT)~=0 and tc2:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc2,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -72,7 +72,7 @@ function c17000165.cttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c17000165.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.GetControl(tc,tp)
+	if tc:IsRelateToChain(0) and Duel.GetControl(tc,tp)
 		and Duel.GetLocationCount(1-tp,LOCATION_MZONE,tp)>0
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,21179144,0x3c,TYPES_TOKEN_MONSTER,0,0,1,RACE_REPTILE,ATTRIBUTE_EARTH) then
 		Duel.BreakEffect()

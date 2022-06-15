@@ -36,7 +36,7 @@ end
 function c17259470.spop(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsFaceup() and c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) and tc:IsRace(RACE_ZOMBIE) then
+	if c:IsFaceup() and c:IsRelateToChain(0) and tc:IsRelateToChain(0) and tc:IsRace(RACE_ZOMBIE) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

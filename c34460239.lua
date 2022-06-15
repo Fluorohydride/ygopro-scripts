@@ -30,7 +30,7 @@ function c34460239.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c34460239.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and Duel.Destroy(tc,REASON_EFFECT)>0 then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and Duel.Destroy(tc,REASON_EFFECT)>0 then
 		Duel.BreakEffect()
 		local g=Duel.SelectMatchingCard(tp,c34460239.nfilter2,tp,LOCATION_DECK,0,1,1,nil,tc)
 		local hc=g:GetFirst()

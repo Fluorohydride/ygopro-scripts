@@ -41,7 +41,7 @@ end
 function c49684352.dbop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and tc:IsRelateToChain(0) then
 		tc:RegisterFlagEffect(49684352,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,0)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

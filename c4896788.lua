@@ -23,7 +23,7 @@ function c4896788.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,rp,1)
 end
 function c4896788.drop(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetHandler():IsAttackPos() or not e:GetHandler():IsRelateToEffect(e) then return end
+	if not e:GetHandler():IsAttackPos() or not e:GetHandler():IsRelateToChain(0) then return end
 	local p,d=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER,CHAININFO_TARGET_PARAM)
 	Duel.Draw(p,d,REASON_EFFECT)
 end

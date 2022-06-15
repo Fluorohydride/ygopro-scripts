@@ -40,7 +40,7 @@ function c29088922.lvcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c29088922.lvop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFacedown() or not c:IsRelateToEffect(e) or c:IsLevelAbove(12) then return end
+	if c:IsFacedown() or not c:IsRelateToChain(0) or c:IsLevelAbove(12) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_LEVEL)

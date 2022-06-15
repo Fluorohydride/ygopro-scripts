@@ -54,7 +54,7 @@ function c58600555.tdtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c58600555.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end
@@ -75,7 +75,7 @@ function c58600555.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58600555.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 	local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c58600555.matfilter),tp,LOCATION_GRAVE,0,1,1,nil)
 	if g:GetCount()>0 then

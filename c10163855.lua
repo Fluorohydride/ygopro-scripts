@@ -32,7 +32,7 @@ function c10163855.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c10163855.damop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsAttackPos() and c:IsRelateToEffect(e) and Duel.ChangePosition(c,POS_FACEUP_DEFENSE) then
+	if c:IsFaceup() and c:IsAttackPos() and c:IsRelateToChain(0) and Duel.ChangePosition(c,POS_FACEUP_DEFENSE) then
 		Duel.Damage(1-tp,500,REASON_EFFECT)
 	end
 end

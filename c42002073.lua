@@ -51,7 +51,7 @@ end
 function c42002073.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local chkf=tp
-	if not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) then return end
+	if not c:IsRelateToChain(0) or c:IsImmuneToEffect(e) then return end
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c42002073.filter1,nil,e)
 	local sg1=Duel.GetMatchingGroup(c42002073.filter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,c,chkf)
 	local mg2=nil
@@ -100,7 +100,7 @@ function c42002073.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c42002073.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if tc:IsRelateToChain(0) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local fid=e:GetHandler():GetFieldID()
 		tc:RegisterFlagEffect(42002073,RESET_EVENT+RESETS_STANDARD,0,1,fid)
 		local e1=Effect.CreateEffect(e:GetHandler())

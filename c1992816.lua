@@ -61,8 +61,8 @@ function c1992816.oltg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c1992816.olop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
-		local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	if c:IsRelateToChain(0) then
+		local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 		if g:GetCount()>0 then
 			Duel.Overlay(c,g)
 		end
@@ -81,7 +81,7 @@ function c1992816.dacost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c1992816.daop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsFaceup() and c:IsRelateToEffect(e)
+	if c:IsFaceup() and c:IsRelateToChain(0)
 		and Duel.IsExistingMatchingCard(c1992816.dafilter,tp,0,LOCATION_MZONE,1,nil,c:GetAttack()) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

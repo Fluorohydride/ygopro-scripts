@@ -47,7 +47,7 @@ end
 function c82257671.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsDisabled() and not tc:IsImmuneToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and not tc:IsDisabled() and not tc:IsImmuneToEffect(e) then
 		Duel.NegateRelatedChain(tc,RESET_TURN_SET)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
@@ -60,7 +60,7 @@ function c82257671.spop(e,tp,eg,ep,ev,re,r,rp)
 		e2:SetValue(RESET_TURN_SET)
 		e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 		tc:RegisterEffect(e2)
-		if c:IsRelateToEffect(e) then
+		if c:IsRelateToChain(0) then
 			Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 		end
 	end
@@ -84,7 +84,7 @@ function c82257671.imtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c82257671.imop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsControler(tp) and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsControler(tp) and tc:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_IMMUNE_EFFECT)

@@ -36,7 +36,7 @@ end
 function c26211048.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or not tc:IsType(TYPE_MONSTER) then return end
+	if not tc:IsRelateToChain(0) or not tc:IsType(TYPE_MONSTER) then return end
 	if not Duel.Equip(tp,tc,c,false) then return end
 	local e1=Effect.CreateEffect(c)
 	e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)

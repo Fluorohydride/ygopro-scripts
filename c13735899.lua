@@ -57,7 +57,7 @@ function c13735899.remtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c13735899.remop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local g=Group.FromCards(tc)
 		if tc:IsFaceup() then
 			g=g+Duel.GetMatchingGroup(c13735899.rmfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tc)

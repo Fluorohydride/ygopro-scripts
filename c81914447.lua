@@ -49,7 +49,7 @@ function c81914447.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c81914447.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -78,9 +78,9 @@ end
 function c81914447.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=re:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local atk=0
-		if rc:IsRelateToEffect(re) and (rc:IsFaceup() or not rc:IsLocation(LOCATION_MZONE)) then
+		if rc:IsRelateToChain(ev) and (rc:IsFaceup() or not rc:IsLocation(LOCATION_MZONE)) then
 			if rc:IsControler(1-tp) then
 				atk=rc:GetBaseAttack()
 			end

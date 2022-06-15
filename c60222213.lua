@@ -73,7 +73,7 @@ function c60222213.damop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g=Duel.SelectMatchingCard(tp,c60222213.damfilter,tp,0,LOCATION_MZONE,1,1,nil,e)
 	local tc=g:GetFirst()
-	if tc and c:IsRelateToEffect(e) then
+	if tc and c:IsRelateToChain(0) then
 		local atk=tc:GetAttack()
 		Duel.Damage(1-tp,atk,REASON_EFFECT)
 	end
@@ -87,7 +87,7 @@ function c60222213.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c60222213.tdop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 	end
 end

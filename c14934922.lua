@@ -67,12 +67,12 @@ end
 function c14934922.activate(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()==0 then
 		local tc=Duel.GetFirstTarget()
-		if tc:IsRelateToEffect(e) then
+		if tc:IsRelateToChain(0) then
 			Duel.Destroy(tc,REASON_EFFECT)
 		end
 	else
 		local tc=Duel.GetFirstTarget()
-		if not tc:IsRelateToEffect(e) then return end
+		if not tc:IsRelateToChain(0) then return end
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
 		local g=Duel.SelectMatchingCard(tp,aux.TRUE,tp,0,LOCATION_ONFIELD,1,tc:GetLink(),nil)
 		if g:GetCount()>0 then

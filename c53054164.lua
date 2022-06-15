@@ -66,7 +66,7 @@ function c53054164.spfilter(c,e,tp)
 end
 function c53054164.teop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local ct=tc:GetOverlayCount()
 		if Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_EXTRA)
 			and ct>0 and Duel.GetLocationCount(tp,LOCATION_MZONE)>0

@@ -24,7 +24,7 @@ function c43661068.tfilter(c,tp)
 end
 function c43661068.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		local g=Duel.GetMatchingGroup(c43661068.filter,tp,LOCATION_MZONE,0,tc,tc:GetAttack(),tc:GetDefense())
 		local lv=tc:GetLevel()
 		local lc=g:GetFirst()

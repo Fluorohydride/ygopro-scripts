@@ -38,7 +38,7 @@ function c33334269.tgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c33334269.tgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
 		local g=Duel.SelectMatchingCard(tp,c33334269.tgfilter2,tp,LOCATION_DECK,0,1,1,nil,tc:GetCode())
 		if g:GetCount()>0 then
@@ -58,7 +58,7 @@ function c33334269.rtgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c33334269.rtgop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoGrave(tc,REASON_EFFECT+REASON_RETURN)
 	end
 end

@@ -30,7 +30,7 @@ function c90365482.postg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c90365482.posop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and not tc:IsImmuneToEffect(e) then
 		local c=e:GetHandler()
 		local fid=c:GetFieldID()
 		tc:RegisterFlagEffect(90365482,RESET_EVENT+RESETS_STANDARD,0,1,fid)

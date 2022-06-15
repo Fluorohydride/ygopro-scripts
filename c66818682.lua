@@ -33,7 +33,7 @@ function c66818682.rectg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c66818682.recop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetAttacker()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		Duel.Recover(tp,math.ceil(tc:GetAttack()/2),REASON_EFFECT)
 	end
 end
@@ -53,7 +53,7 @@ function c66818682.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c66818682.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

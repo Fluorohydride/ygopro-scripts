@@ -49,7 +49,7 @@ function c9505425.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c9505425.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c9505425.atttg(e,tp,eg,ep,ev,re,r,rp,chk)
@@ -60,7 +60,7 @@ function c9505425.atttg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c9505425.attop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_CHANGE_ATTRIBUTE)
@@ -86,7 +86,7 @@ function c9505425.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c9505425.eqop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 		local g=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c9505425.eqfilter),tp,LOCATION_GRAVE,0,1,1,nil)
 		local ec=g:GetFirst()

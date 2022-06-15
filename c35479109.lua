@@ -25,7 +25,7 @@ function c35479109.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,g:GetCount(),0,0)
 end
 function c35479109.cfilter(c,e)
-	return c:IsRelateToEffect(e) and c:IsFacedown()
+	return c:IsRelateToChain(0) and c:IsFacedown()
 end
 function c35479109.fselect(g,ft)
 	local fc=g:FilterCount(Card.IsType,nil,TYPE_FIELD)
@@ -34,7 +34,7 @@ end
 function c35479109.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(c35479109.cfilter,nil,e)
-	if c:IsRelateToEffect(e) and tg:GetCount()>0 then
+	if c:IsRelateToChain(0) and tg:GetCount()>0 then
 		c:CancelToGrave()
 		tg:AddCard(c)
 		if Duel.SendtoHand(tg,nil,REASON_EFFECT)~=0 then

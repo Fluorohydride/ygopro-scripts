@@ -29,7 +29,7 @@ function c3027001.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c3027001.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_CONTINUOUS+EFFECT_TYPE_FIELD)
 		e1:SetCode(EFFECT_DESTROY_REPLACE)

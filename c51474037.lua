@@ -51,13 +51,13 @@ function c51474037.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local sel=e:GetLabel()
 	if sel==0 then
-		local tg=g:Filter(Card.IsRelateToEffect,nil,e)
+		local tg=g:Filter(Card.IsRelateToChain,nil,0)
 		Duel.ChangePosition(tg,POS_FACEDOWN_DEFENSE)
 	else
 		local tc1=e:GetLabelObject()
 		local tc2=g:GetFirst()
 		if tc2==tc1 then tc2=g:GetNext() end
-		if tc1:IsRelateToEffect(e) and Duel.Destroy(tc1,REASON_EFFECT)~=0 and tc2 and tc2:IsRelateToEffect(e) then
+		if tc1:IsRelateToChain(0) and Duel.Destroy(tc1,REASON_EFFECT)~=0 and tc2 and tc2:IsRelateToChain(0) then
 			local e1=Effect.CreateEffect(e:GetHandler())
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_SET_ATTACK_FINAL)

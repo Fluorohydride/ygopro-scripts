@@ -43,11 +43,11 @@ function c13857930.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SkipPhase(Duel.GetTurnPlayer(),PHASE_BATTLE,RESET_PHASE+PHASE_BATTLE_STEP,1)
 	elseif tc:IsType(TYPE_SPELL) then
 		if c==Duel.GetAttacker() and not c:IsHasEffect(EFFECT_CANNOT_DIRECT_ATTACK)
-			and c:IsRelateToEffect(e) and c:IsFaceup() and Duel.SelectYesNo(tp,aux.Stringid(13857930,1)) then
+			and c:IsRelateToChain(0) and c:IsFaceup() and Duel.SelectYesNo(tp,aux.Stringid(13857930,1)) then
 			Duel.ChangeAttackTarget(nil)
 		end
 	else
-		if c:IsRelateToEffect(e) and c:IsFaceup() then
+		if c:IsRelateToChain(0) and c:IsFaceup() then
 			Duel.ChangePosition(c,POS_FACEUP_DEFENSE)
 		end
 	end

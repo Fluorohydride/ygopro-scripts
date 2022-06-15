@@ -22,7 +22,7 @@ function c42578427.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c42578427.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) and tc:GetAttack()<=500 then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) and tc:GetAttack()<=500 then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

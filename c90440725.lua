@@ -74,7 +74,7 @@ function c90440725.settg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c90440725.setop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsLocation(LOCATION_MZONE) then
+	if c:IsRelateToChain(0) and c:IsLocation(LOCATION_MZONE) then
 		Duel.ChangePosition(c,POS_FACEDOWN_DEFENSE)
 	end
 end

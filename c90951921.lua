@@ -49,7 +49,7 @@ function c90951921.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c90951921.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and Duel.IsPlayerCanDiscardDeck(tp,2) then
+	if tc:IsRelateToChain(0) and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and Duel.IsPlayerCanDiscardDeck(tp,2) then
 		Duel.BreakEffect()
 		local g=Duel.GetDecktopGroup(tp,2)
 		Duel.ConfirmCards(tp,g)

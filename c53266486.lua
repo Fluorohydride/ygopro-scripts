@@ -35,7 +35,7 @@ function c53266486.destg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c53266486.desop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.Destroy(c,REASON_EFFECT)>0 then
+	if c:IsRelateToChain(0) and Duel.Destroy(c,REASON_EFFECT)>0 then
 		local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 		if g:GetCount()==0 then return end
 		Duel.BreakEffect()

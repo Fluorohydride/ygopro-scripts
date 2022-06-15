@@ -60,7 +60,7 @@ function c95824983.distg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c95824983.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if Duel.NegateEffect(ev) and c:IsRelateToEffect(e) and c:IsFaceup()
+	if Duel.NegateEffect(ev) and c:IsRelateToChain(0) and c:IsFaceup()
 		and Duel.SelectYesNo(tp,aux.Stringid(95824983,2)) then
 		Duel.BreakEffect()
 		local e1=Effect.CreateEffect(c)

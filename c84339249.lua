@@ -61,7 +61,7 @@ function c84339249.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c84339249.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
@@ -88,9 +88,9 @@ function c84339249.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local tg=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local lc=tg:GetFirst()
 	if lc==tc then lc=tg:GetNext() end
-	if tc:IsRelateToEffect(e) and tc:IsControler(1-tp)
+	if tc:IsRelateToChain(0) and tc:IsControler(1-tp)
 		and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)~=0 and tc:IsLocation(LOCATION_REMOVED)
-		and lc:IsRelateToEffect(e) and lc:IsControler(tp) then
+		and lc:IsRelateToChain(0) and lc:IsControler(tp) then
 		Duel.ChangePosition(lc,POS_FACEUP_DEFENSE,POS_FACEDOWN_DEFENSE,POS_FACEUP_DEFENSE,POS_FACEDOWN_DEFENSE)
 	end
 end
@@ -106,7 +106,7 @@ function c84339249.indtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c84339249.indop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)

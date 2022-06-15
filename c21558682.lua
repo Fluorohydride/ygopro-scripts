@@ -33,7 +33,7 @@ function c21558682.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c21558682.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc and tc:IsFaceup() and tc:IsRelateToEffect(e) and not Duel.GetAttacker():IsImmuneToEffect(e) then
+	if tc and tc:IsFaceup() and tc:IsRelateToChain(0) and not Duel.GetAttacker():IsImmuneToEffect(e) then
 		Duel.ChangeAttackTarget(tc)
 	end
 end

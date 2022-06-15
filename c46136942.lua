@@ -106,7 +106,7 @@ function c46136942.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c46136942.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local tc=e:GetLabelObject()
 		if not tc:IsRelateToBattle() then return end
 		local e1=Effect.CreateEffect(c)
@@ -150,7 +150,7 @@ end
 function c46136942.mfop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local chkf=tp
-	if not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) then return end
+	if not c:IsRelateToChain(0) or c:IsImmuneToEffect(e) then return end
 	local mg1=Duel.GetFusionMaterial(tp):Filter(c46136942.mffilter1,nil,e)
 	mg1:Merge(Duel.GetMatchingGroup(c46136942.mffilter0,tp,LOCATION_PZONE,0,nil,e))
 	local sg1=Duel.GetMatchingGroup(c46136942.mffilter2,tp,LOCATION_EXTRA,0,nil,e,tp,mg1,nil,c,chkf)

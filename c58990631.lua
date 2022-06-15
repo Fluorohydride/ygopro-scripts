@@ -41,7 +41,7 @@ function c58990631.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58990631.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
-	if tc and tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsAttackAbove(1000) then
+	if tc and tc:IsRelateToChain(0) and tc:IsFaceup() and tc:IsAttackAbove(1000) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end
@@ -56,7 +56,7 @@ function c58990631.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c58990631.filter3(c,e,tp)
 	return c:IsFaceup() and c:IsAttackAbove(1000) and c:IsSummonPlayer(1-tp)
-		and c:IsRelateToEffect(e)
+		and c:IsRelateToChain(0)
 end
 function c58990631.activate2(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c58990631.filter3,nil,e,tp)

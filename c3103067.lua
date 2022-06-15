@@ -36,7 +36,7 @@ function c3103067.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 	if e:GetLabel()==1 then
 		local tc=Duel.GetFirstTarget()
-		if tc and tc:IsRelateToEffect(e) and a:IsAttackable() and not a:IsImmuneToEffect(e) then
+		if tc and tc:IsRelateToChain(0) and a:IsAttackable() and not a:IsImmuneToEffect(e) then
 			Duel.CalculateDamage(a,tc)
 		end
 	end

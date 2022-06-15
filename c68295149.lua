@@ -47,7 +47,7 @@ function c68295149.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c68295149.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if not tc:IsRelateToEffect(e) or (tc:IsLocation(LOCATION_MZONE) and tc:IsFacedown()) then return end
+	if not tc:IsRelateToChain(0) or (tc:IsLocation(LOCATION_MZONE) and tc:IsFacedown()) then return end
 	local atk=tc:GetAttack()
 	local g=Duel.GetMatchingGroup(Card.IsFaceup,tp,0,LOCATION_MZONE,nil)
 	local sc=g:GetFirst()

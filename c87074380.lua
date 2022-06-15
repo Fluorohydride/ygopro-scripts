@@ -55,7 +55,7 @@ function c87074380.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c87074380.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRace(RACE_MACHINE) then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:IsRace(RACE_MACHINE) then
 		local g=Duel.GetMatchingGroup(c87074380.desfilter,tp,0,LOCATION_MZONE,nil,tc:GetAttack())
 		if g:GetCount()>0 then
 			g:AddCard(tc)
@@ -78,7 +78,7 @@ function c87074380.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c87074380.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 	end
 end

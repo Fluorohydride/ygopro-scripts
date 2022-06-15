@@ -64,7 +64,7 @@ function c46593546.spop(e,tp,eg,ep,ev,re,r,rp)
 	local fc=Duel.GetFirstTarget()
 	if tc and Duel.GetMZoneCount(tp)>0
 		and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)>0
-		and fc:IsRelateToEffect(e) then
+		and fc:IsRelateToChain(0) then
 		Duel.MoveToField(fc,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end
@@ -82,13 +82,13 @@ function c46593546.ovltg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return c:GetFlagEffect(46593546)==0
 		and (c:CheckRemoveOverlayCard(tp,2,REASON_EFFECT)
 			or Duel.IsExistingMatchingCard(c46593546.ovltgfilter,tp,LOCATION_ONFIELD,0,1,nil))
-		and rc:IsRelateToEffect(re) and rc:IsCanBeXyzMaterial(c) end
+		and rc:IsRelateToChain(ev) and rc:IsCanBeXyzMaterial(c) end
 	c:RegisterFlagEffect(46593546,RESET_CHAIN,0,1)
 end
 function c46593546.ovlop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local rc=re:GetHandler()
-	local opt1=c:IsRelateToEffect(e) and c:CheckRemoveOverlayCard(tp,2,REASON_EFFECT)
+	local opt1=c:IsRelateToChain(0) and c:CheckRemoveOverlayCard(tp,2,REASON_EFFECT)
 	local opt2=Duel.IsExistingMatchingCard(c46593546.ovltgfilter,tp,LOCATION_ONFIELD,0,1,nil)
 	local result=0
 	if not opt1 and not opt2 then return end
@@ -103,8 +103,8 @@ function c46593546.ovlop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.HintSelection(g)
 		result=Duel.Destroy(g,REASON_EFFECT)
 	end
-	if result>0 and c:IsRelateToEffect(e)
-		and rc:IsRelateToEffect(re) and rc:IsControler(1-tp) and not rc:IsImmuneToEffect(e) then
+	if result>0 and c:IsRelateToChain(0)
+		and rc:IsRelateToChain(ev) and rc:IsControler(1-tp) and not rc:IsImmuneToEffect(e) then
 		local og=rc:GetOverlayGroup()
 		if og:GetCount()>0 then
 			Duel.SendtoGrave(og,REASON_RULE)
@@ -120,7 +120,7 @@ function c46593546.pentg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c46593546.penop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true)
 	end
 end

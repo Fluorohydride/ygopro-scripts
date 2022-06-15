@@ -43,7 +43,7 @@ function c79775821.eqfilter(c)
 end
 function c79775821.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
+	if tc:IsRelateToChain(0) and Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)~=0 then
 		local g=Duel.GetMatchingGroup(aux.NecroValleyFilter(c79775821.eqfilter),tp,LOCATION_HAND+LOCATION_GRAVE,0,nil)
 		if g:GetCount()>0 and Duel.GetLocationCount(tp,LOCATION_SZONE)>0 and Duel.SelectYesNo(tp,aux.Stringid(79775821,0)) then
 			Duel.BreakEffect()
@@ -86,7 +86,7 @@ function c79775821.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_LEAVE_GRAVE,g,1,0,0)
 end
 function c79775821.eqop(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	local tc=g:Filter(Card.IsLocation,nil,LOCATION_MZONE):GetFirst()
 	local ec=g:Filter(Card.IsLocation,nil,LOCATION_GRAVE):GetFirst()
 	if tc and ec and tc:IsFaceup() and tc:IsControler(tp) then

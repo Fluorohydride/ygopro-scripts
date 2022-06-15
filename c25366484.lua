@@ -43,7 +43,7 @@ function c25366484.damtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c25366484.damop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
 		local dam=tc:GetAttack()
 		if dam<0 then dam=0 end

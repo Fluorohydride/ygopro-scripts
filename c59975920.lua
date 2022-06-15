@@ -52,7 +52,7 @@ function c59975920.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c59975920.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 	end
 end
@@ -69,7 +69,7 @@ function c59975920.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c59975920.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
+	if tc:IsRelateToChain(0) and Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		local e1=Effect.CreateEffect(e:GetHandler())
 		e1:SetDescription(aux.Stringid(59975920,3))
 		e1:SetType(EFFECT_TYPE_SINGLE)

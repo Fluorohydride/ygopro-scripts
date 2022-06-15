@@ -47,7 +47,7 @@ function c62370023.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c62370023.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() then
 		local g=Duel.GetMatchingGroup(c62370023.atkfilter,tp,LOCATION_MZONE,0,tc)
 		local atk=g:GetSum(Card.GetBaseAttack)
 		local e1=Effect.CreateEffect(e:GetHandler())

@@ -64,7 +64,7 @@ function c30286474.distg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.SetOperationInfo(0,CATEGORY_DISABLE,g,g:GetCount(),0,0)
 end
 function c30286474.disfilter(c,e)
-	return aux.NegateAnyFilter(c) and c:IsRelateToEffect(e)
+	return aux.NegateAnyFilter(c) and c:IsRelateToChain(0)
 end
 function c30286474.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

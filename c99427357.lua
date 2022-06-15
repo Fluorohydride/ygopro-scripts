@@ -45,7 +45,7 @@ function c99427357.rectg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c99427357.recop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and tc:IsFaceup() and tc:GetAttack()>0 then
+	if tc:IsRelateToChain(0) and tc:IsFaceup() and tc:GetAttack()>0 then
 		Duel.Recover(tp,math.ceil(tc:GetAttack()/2),REASON_EFFECT)
 	end
 end
@@ -80,8 +80,8 @@ end
 function c99427357.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0
-		and tc:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) and Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)>0
+		and tc:IsRelateToChain(0) then
 		Duel.GetControl(tc,tp)
 	end
 end

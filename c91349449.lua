@@ -69,8 +69,8 @@ function c91349449.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local tc2=g:GetFirst()
 	if tc1==tc2 then tc2=g:GetNext() end
-	if tc1:IsRelateToEffect(e) and Duel.SendtoDeck(tc1,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 then
-		if tc2:IsFaceup() and tc2:IsRelateToEffect(e) then
+	if tc1:IsRelateToChain(0) and Duel.SendtoDeck(tc1,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 then
+		if tc2:IsFaceup() and tc2:IsRelateToChain(0) then
 			Duel.Remove(tc2,POS_FACEUP,REASON_EFFECT)
 		end
 	end

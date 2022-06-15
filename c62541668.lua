@@ -53,7 +53,7 @@ function c62541668.rmop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 		local og=Duel.GetOperatedGroup():Filter(c62541668.matfilter,nil)
-		if og:GetCount()>0 and c:IsRelateToEffect(e) then
+		if og:GetCount()>0 and c:IsRelateToChain(0) then
 			Duel.BreakEffect()
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
 			local sg=og:Select(tp,1,1,nil)

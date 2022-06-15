@@ -23,7 +23,7 @@ function c62325062.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetTargetCard(eg)
 end
 function c62325062.filter2(c,e,tp)
-	return c:IsFaceup() and c:IsSummonPlayer(1-tp) and c:IsRelateToEffect(e)
+	return c:IsFaceup() and c:IsSummonPlayer(1-tp) and c:IsRelateToChain(0)
 end
 function c62325062.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=eg:Filter(c62325062.filter2,nil,e,tp)

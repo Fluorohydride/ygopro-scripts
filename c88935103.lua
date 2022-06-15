@@ -78,7 +78,7 @@ function c88935103.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c88935103.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFacedown() or not tc:IsRelateToEffect(e) or tc:IsImmuneToEffect(e) or tc:IsLevelBelow(3) then return end
+	if tc:IsFacedown() or not tc:IsRelateToChain(0) or tc:IsImmuneToEffect(e) or tc:IsLevelBelow(3) then return end
 	local c=e:GetHandler()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -86,6 +86,6 @@ function c88935103.spop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 	e1:SetValue(-3)
 	tc:RegisterEffect(e1)
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end

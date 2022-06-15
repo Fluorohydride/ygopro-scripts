@@ -38,7 +38,7 @@ function c39537362.target2(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c39537362.activate(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetLabel()~=1 or Duel.GetFieldGroupCount(tp,LOCATION_HAND,0)==0
-		or not e:GetHandler():IsRelateToEffect(e) or not Duel.GetAttacker():IsRelateToEffect(e)	then return end
+		or not e:GetHandler():IsRelateToChain(0) or not Duel.GetAttacker():IsRelateToChain(0)	then return end
 	local g=Duel.GetFieldGroup(tp,LOCATION_HAND,0):RandomSelect(1-tp,1,nil)
 	local tc=g:GetFirst()
 	Duel.Hint(HINT_SELECTMSG,1-tp,HINTMSG_CARDTYPE)

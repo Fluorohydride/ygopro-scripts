@@ -33,7 +33,7 @@ function c71071546.initial_effect(c)
 end
 function c71071546.ctop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		c:AddCounter(0x2c,1)
 	end
 end
@@ -47,7 +47,7 @@ function c71071546.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c71071546.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() then
+	if c:IsRelateToChain(0) and c:IsFaceup() then
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT)
@@ -89,7 +89,7 @@ function c71071546.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c71071546.thop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.SendtoHand(tc,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,tc)
 	end

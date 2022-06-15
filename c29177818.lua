@@ -39,7 +39,7 @@ function c29177818.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c29177818.spop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if not c:IsRelateToEffect(e) then return end
+	if not c:IsRelateToChain(0) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
 function c29177818.filter(c)
@@ -54,7 +54,7 @@ function c29177818.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c29177818.thop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) then
+	if c:IsRelateToChain(0) then
 		Duel.SendtoHand(c,nil,REASON_EFFECT)
 		Duel.ConfirmCards(1-tp,c)
 	end

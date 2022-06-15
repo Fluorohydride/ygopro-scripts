@@ -85,7 +85,7 @@ function c42158279.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c42158279.thop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
-	if g:FilterCount(Card.IsRelateToEffect,nil,e)<2 or not g:IsExists(c42158279.fcheck,1,nil,g) then return end
+	if g:FilterCount(Card.IsRelateToChain,nil,0)<2 or not g:IsExists(c42158279.fcheck,1,nil,g) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
 	local sg=g:FilterSelect(tp,c42158279.fcheck,1,1,nil,g)
 	if Duel.SendtoHand(sg,nil,REASON_EFFECT)>0 and sg:GetFirst():IsLocation(LOCATION_HAND) then

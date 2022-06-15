@@ -42,7 +42,7 @@ function c13662809.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	end
 end
 function c13662809.activate(e,tp,eg,ep,ev,re,r,rp)
-	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToEffect,nil,e)
+	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS):Filter(Card.IsRelateToChain,nil,0)
 	Duel.Destroy(g,REASON_EFFECT)
 end
 function c13662809.chainlm(e,rp,tp)

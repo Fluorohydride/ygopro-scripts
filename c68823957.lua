@@ -55,7 +55,7 @@ function c68823957.cbtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c68823957.cbop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) and not Duel.GetAttacker():IsImmuneToEffect(e) then
+	if tc:IsRelateToChain(0) and not Duel.GetAttacker():IsImmuneToEffect(e) then
 		Duel.ChangeAttackTarget(tc)
 	end
 end
@@ -78,7 +78,7 @@ function c68823957.cetg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c68823957.ceop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.ChangeTargetCard(ev,Group.FromCards(tc))
 	end
 end

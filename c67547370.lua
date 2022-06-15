@@ -80,7 +80,7 @@ function c67547370.counttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c67547370.countop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if tc:IsFaceup() and tc:IsRelateToChain(0) then
 		tc:AddCounter(0x1039,1)
 	end
 end

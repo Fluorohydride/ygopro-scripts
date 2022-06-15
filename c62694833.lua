@@ -42,7 +42,7 @@ function c62694833.settg1(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c62694833.setop1(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToChain(0) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SET)
 		local g=Duel.SelectMatchingCard(tp,c62694833.setfilter2,tp,LOCATION_DECK,0,1,1,nil,tc:GetCode())
 		if g:GetCount()>0 then

@@ -60,7 +60,7 @@ function c86962245.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetChainInfo(0,CHAININFO_TARGET_CARDS)
 	local lc=g:GetFirst()
 	if lc==sc then lc=g:GetNext() end
-	if lc and lc:IsRelateToEffect(e) and Duel.SendtoDeck(lc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0 and lc:IsLocation(LOCATION_EXTRA) and sc and sc:IsRelateToEffect(e) then
+	if lc and lc:IsRelateToChain(0) and Duel.SendtoDeck(lc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0 and lc:IsLocation(LOCATION_EXTRA) and sc and sc:IsRelateToChain(0) then
 		Duel.Destroy(sc,REASON_EFFECT)
 	end
 end
@@ -77,7 +77,7 @@ function c86962245.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,e:GetHandler(),1,tp,LOCATION_GRAVE)
 end
 function c86962245.spop(e,tp,eg,ep,ev,re,r,rp)
-	if e:GetHandler():IsRelateToEffect(e) then
+	if e:GetHandler():IsRelateToChain(0) then
 		Duel.SpecialSummon(e:GetHandler(),0,tp,tp,false,false,POS_FACEUP_DEFENSE)
 	end
 end
