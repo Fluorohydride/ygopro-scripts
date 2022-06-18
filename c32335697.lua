@@ -23,13 +23,13 @@ function c32335697.initial_effect(c)
 	e2:SetOperation(c32335697.setop)
 	c:RegisterEffect(e2)
 end
-function c32335697.rmfilter(c)
+function c32335697.rmfilter(c,tp)
 	return c:IsRace(RACE_ZOMBIE) and c:IsLevelAbove(1) and c:IsAbleToRemove()
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,32335698,nil,TYPES_TOKEN_MONSTER,0,0,c:GetLevel(),RACE_ZOMBIE,ATTRIBUTE_DARK)
 end
 function c32335697.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>1
-		and Duel.IsExistingMatchingCard(c32335697.rmfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil)
+		and Duel.IsExistingMatchingCard(c32335697.rmfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,nil,tp)
 		and not Duel.IsPlayerAffectedByEffect(tp,59822133) end
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,PLAYER_ALL,LOCATION_GRAVE)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,2,0,0)
@@ -38,7 +38,7 @@ end
 function c32335697.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=1 or Duel.IsPlayerAffectedByEffect(tp,59822133) then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local tc=Duel.SelectMatchingCard(tp,c32335697.rmfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil):GetFirst()
+	local tc=Duel.SelectMatchingCard(tp,c32335697.rmfilter,tp,LOCATION_GRAVE,LOCATION_GRAVE,1,1,nil,tp):GetFirst()
 	if tc and Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)>0 and tc:IsLocation(LOCATION_REMOVED)
 		and Duel.IsPlayerCanSpecialSummonMonster(tp,32335698,nil,TYPES_TOKEN_MONSTER,0,0,tc:GetLevel(),RACE_ZOMBIE,ATTRIBUTE_DARK) then
 		for i=1,2 do
