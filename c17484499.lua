@@ -20,6 +20,8 @@ function c17484499.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.PayLPCost(tp,1000)
 end
 function c17484499.activate(e,tp,eg,ep,ev,re,r,rp)
+	local g=Duel.GetFieldGroup(tp,LOCATION_GRAVE,LOCATION_GRAVE)
+	if aux.NecroValleyNegateCheck(g) then return end
 	Duel.SwapDeckAndGrave(tp)
 	Duel.SwapDeckAndGrave(1-tp)
 end
