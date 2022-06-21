@@ -24,7 +24,7 @@ function c62480168.filter(c,tp,pcon)
 end
 function c62480168.activate(e,tp,eg,ep,ev,re,r,rp)
 	local pcon=Duel.CheckLocation(tp,LOCATION_PZONE,0) or Duel.CheckLocation(tp,LOCATION_PZONE,1)
-	local g=Duel.GetMatchingGroup(c62480168.filter,tp,LOCATION_DECK,0,nil,tp)
+	local g=Duel.GetMatchingGroup(c62480168.filter,tp,LOCATION_DECK,0,nil,tp,pcon)
 	if g:GetCount()>0 and Duel.SelectYesNo(tp,aux.Stringid(62480168,0)) then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 		local sc=g:Select(tp,1,1,nil):GetFirst()
