@@ -30,7 +30,7 @@ function c32453837.initial_effect(c)
 	e4:SetOperation(c32453837.ctop)
 	c:RegisterEffect(e4)
 end
-c32453837.xyz_number=2
+aux.xyz_number[32453837]=2
 function c32453837.filter(c)
 	return c:GetCounter(0x1063)>0 and c:IsFaceup()
 end
