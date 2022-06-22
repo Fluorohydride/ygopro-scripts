@@ -1,5 +1,7 @@
 --鎮魂の決闘
 function c46570372.initial_effect(c)
+	aux.AddCodeList(c,89943723)
+	aux.AddSetNameMonsterList(c,0x3008)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
