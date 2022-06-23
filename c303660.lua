@@ -21,6 +21,7 @@ function c303660.initial_effect(c)
 	local e3=Effect.CreateEffect(c)
 	e3:SetType(EFFECT_TYPE_EQUIP)
 	e3:SetCode(303660)
+	e3:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	c:RegisterEffect(e3)
 	--leave
 	local e4=Effect.CreateEffect(c)
