@@ -43,16 +43,16 @@ function c35283277.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	end
 end
-function c35283277.eqfilter(c)
+function c35283277.eqfilter(c,tp)
 	return c:IsFaceup() and c:CheckUniqueOnField(tp,LOCATION_SZONE) and not c:IsForbidden()
 end
 function c35283277.eqtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
-	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c35283277.eqfilter(chkc) and chkc~=c end
+	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(tp) and c35283277.eqfilter(chkc,tp) and chkc~=c end
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_SZONE)>0
-		and Duel.IsExistingTarget(c35283277.eqfilter,tp,LOCATION_MZONE,0,1,c) end
+		and Duel.IsExistingTarget(c35283277.eqfilter,tp,LOCATION_MZONE,0,1,c,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
-	local g=Duel.SelectTarget(tp,c35283277.eqfilter,tp,LOCATION_MZONE,0,1,1,c)
+	local g=Duel.SelectTarget(tp,c35283277.eqfilter,tp,LOCATION_MZONE,0,1,1,c,tp)
 	Duel.SetOperationInfo(0,CATEGORY_EQUIP,g,1,0,0)
 end
 function c35283277.eqop(e,tp,eg,ep,ev,re,r,rp)
