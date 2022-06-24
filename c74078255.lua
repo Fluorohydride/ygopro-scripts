@@ -63,12 +63,13 @@ function c74078255.target(e,tp,eg,ep,ev,re,r,rp,chk)
 		end
 		return res
 	end
+	e:GetHandler():RegisterFlagEffect(99456344,RESET_EVENT+RESETS_STANDARD+RESET_CHAIN,0,1)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_EXTRA)
 end
 function c74078255.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local chkf=tp
-	if not c:IsRelateToEffect(e) or c:IsImmuneToEffect(e) then return end
+	if not c:IsRelateToEffect(e) or c:GetFlagEffect(99456344)==0 or c:IsImmuneToEffect(e) then return end
 	local mg=Duel.GetMatchingGroup(aux.NecroValleyFilter(c74078255.filter0),tp,LOCATION_HAND+LOCATION_MZONE+LOCATION_GRAVE,0,nil,e)
 	local sg1=Duel.GetMatchingGroup(c74078255.filter1,tp,LOCATION_EXTRA,0,nil,e,tp,mg,nil,chkf)
 	local mg2=nil

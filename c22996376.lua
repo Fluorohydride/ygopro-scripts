@@ -37,6 +37,8 @@ function c22996376.otop(e,tp,eg,ep,ev,re,r,rp,c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetReset(RESET_EVENT+0xff0000)
 	e1:SetCode(EFFECT_SET_BASE_ATTACK)
+	e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
+	e1:SetRange(LOCATION_MZONE)
 	e1:SetValue(2000)
 	c:RegisterEffect(e1)
 end

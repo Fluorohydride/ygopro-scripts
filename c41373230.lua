@@ -37,6 +37,9 @@ function c41373230.initial_effect(c)
 	e4:SetOperation(c41373230.thop)
 	c:RegisterEffect(e4)
 end
+function c41373230.branded_fusion_check(tp,sg,fc)
+	return aux.gffcheck(sg,Card.IsFusionCode,68468459,Card.IsAttackAbove,2500)
+end
 function c41373230.matfilter(c)
 	return c:IsFusionType(TYPE_MONSTER) and c:GetOriginalLevel()>0
 end

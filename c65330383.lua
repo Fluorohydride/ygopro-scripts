@@ -1,7 +1,7 @@
 --トロイメア・グリフォン
 function c65330383.initial_effect(c)
 	--link summon
-	aux.AddLinkProcedure(c,nil,2,99,c65330383.lcheck)
+	aux.AddLinkProcedure(c,nil,2,nil,c65330383.lcheck)
 	c:EnableReviveLimit()
 	--set
 	local e1=Effect.CreateEffect(c)

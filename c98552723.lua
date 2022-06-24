@@ -67,6 +67,7 @@ function c98552723.operation(e,tp,eg,ep,ev,re,r,rp)
 		tc:RegisterEffect(e2)
 		local e3=e2:Clone()
 		e3:SetCode(EFFECT_DISABLE_EFFECT)
+		e3:SetValue(RESET_TURN_SET)
 		tc:RegisterEffect(e3)
 		Duel.SpecialSummonComplete()
 	end

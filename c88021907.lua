@@ -99,9 +99,10 @@ function c88021907.effop(e,tp,eg,ep,ev,re,r,rp)
 	local sel=e:GetLabel()
 	if bit.band(sel,1)~=0 then
 		local g=Duel.GetFieldGroup(tp,0,LOCATION_HAND)
-		if g:GetCount()==0 then return end
-		local sg=g:RandomSelect(tp,1)
-		Duel.SendtoGrave(sg,REASON_EFFECT)
+		if g:GetCount()>0 then
+			local sg=g:RandomSelect(tp,1)
+			Duel.SendtoGrave(sg,REASON_EFFECT)
+		end
 	end
 	if bit.band(sel,2)~=0 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)

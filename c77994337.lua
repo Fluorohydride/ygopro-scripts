@@ -14,6 +14,7 @@ function c77994337.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 c77994337.toss_dice=true
+c77994337.toss_dice_in_pendulum_only=true
 function c77994337.lvfilter(c)
 	return c:IsFaceup() and c:GetLevel()>0
 end
