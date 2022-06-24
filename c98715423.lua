@@ -41,7 +41,7 @@ function c98715423.initial_effect(c)
 	--confirm deck
 	local e4=Effect.CreateEffect(c)
 	e4:SetCategory(CATEGORY_ANNOUNCE+CATEGORY_TOGRAVE)
-	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
+	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_PREDRAW)
 	e4:SetRange(LOCATION_SZONE)
 	e4:SetCountLimit(1,98715424)
