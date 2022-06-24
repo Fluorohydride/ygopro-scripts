@@ -94,6 +94,6 @@ function c4836680.tgop(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsAbleToGrave() and (not tc:IsAbleToExtra() or Duel.SelectOption(tp,aux.Stringid(4836680,0),1191)==1) then
 		Duel.SendtoGrave(tc,REASON_EFFECT)
 	else
-		Duel.SendtoExtraP(tc,tp,REASON_EFFECT)
+		Duel.SendtoExtraP(tc,nil,REASON_EFFECT)
 	end
 end
